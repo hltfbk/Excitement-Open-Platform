@@ -1,0 +1,21 @@
+package eu.excitement.entailment.core.exceptions;
+
+/**
+ * 
+ * Implementations of distance calculation components can throw
+this exception. <I>[Quote from Spec, Section 6.2]</I>  
+ * @author Gil
+ */
+public class KnowledgeComponentException extends ComponentException {
+
+	private static final long serialVersionUID = 2583907787885648667L;
+
+	public KnowledgeComponentException(String message) {
+		super(message);
+	}
+
+	public KnowledgeComponentException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+}

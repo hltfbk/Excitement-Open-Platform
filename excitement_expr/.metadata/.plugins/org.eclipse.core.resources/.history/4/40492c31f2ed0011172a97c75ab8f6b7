@@ -1,0 +1,7 @@
+package eu.excitement.entailment.core.component.syntacticknowledge;
+
+import eu.excitement.entailment.core.Components;
+
+public interface SyntacticResource extends Components {
+
+}

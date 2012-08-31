@@ -1,0 +1,10 @@
+package eu.excitement.entailment.core;
+
+import java.util.List;
+import org.apache.uima.jcas.JCas;
+
+public interface EDAMultiTH<T extends TEDecision> extends EDABasic<T> {
+	
+	public List<T> processMultiTH(JCas aCas);
+	
+}

@@ -1,0 +1,42 @@
+package eu.excitement.entailment.core.component.knowledge;
+
+import java.util.List;
+import eu.excitement.entailment.core.component.knowledge.parsetree.PartOfSpeech;
+
+
+
+
+
+/**
+ * [DELETEME_LATER: imported from BIUTEE infrastructure, with some extension] 
+ * A lexical resource is a collection of lexical rules of a certain type 
+ * (like WordNet, or VerbOcean) which can be queried. The interface provides 
+ * three types of query methods. Queries are specified by lemma and POS pairs,
+ * (and optionally, relation) and the results are returned as a list of 
+ * LexicalRule objects. 
+ * 
+ * @author Gil  
+ * @since 
+ * @param <I> RuleInfo for LexicalRule implementation 
+ */
+public interface LexicalResource<I extends RuleInfo> {
+
+
+	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos);
+	
+	
+	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos, TELexicalRelation relation);
+	
+	
+	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos);
+	
+	
+	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos, TELexicalRelation relation);
+	
+	
+	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos);
+	
+	
+	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, TELexicalRelation relation);
+	
+}

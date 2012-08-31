@@ -1,0 +1,11 @@
+package eu.excitement.entailment.core.component.knowledge.parsetree;
+
+import java.io.Serializable;
+
+public abstract class PartOfSpeech implements Serializable {
+
+	public PartOfSpeech() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

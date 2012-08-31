@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core.representation.parsetree;
+
+public class DefaultEdgeInfo {
+
+	public DefaultEdgeInfo() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

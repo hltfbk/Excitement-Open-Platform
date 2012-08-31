@@ -1,0 +1,15 @@
+package eu.excitement.entailment.core.exceptions;
+
+public class EDAException extends BaseException {
+
+	private static final long serialVersionUID = -850791993030362703L;
+
+	public EDAException(String message) {
+		super(message);
+	}
+
+	public EDAException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+}

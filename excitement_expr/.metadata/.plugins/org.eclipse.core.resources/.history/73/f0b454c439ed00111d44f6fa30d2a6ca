@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core.component.knowledge.parsetree;
+
+public class UnsupportedPosTagStringException {
+
+	public UnsupportedPosTagStringException() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

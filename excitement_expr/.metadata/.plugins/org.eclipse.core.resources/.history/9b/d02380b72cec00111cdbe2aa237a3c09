@@ -1,0 +1,19 @@
+package eu.excitement.entailment.core.test;
+
+import static org.junit.Assert.*;
+import eu.excitement.entailment.core.DecisionLabel;
+import org.junit.Test;
+
+public class DecisionLabelTest {
+
+	@Test
+	public void test() {
+		DecisionLabel a = DecisionLabel.Entailment;
+		DecisionLabel b = DecisionLabel.Paraphrase;
+				
+		assertTrue(b.is(a));
+		assertTrue(DecisionLabel.Paraphrase.is(DecisionLabel.Entailment)); 
+		fail("Not yet implemented");
+	}
+
+}

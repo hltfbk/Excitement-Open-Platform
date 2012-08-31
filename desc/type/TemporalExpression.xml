@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>TemporalExpression</name>
+  <description>The temporal expression types are needed for event models, and they are used in event-based EDAs.
+This file defines two set of types: One is TemporalExpression and the other is DefaultTimeOfText and its subtypes. TemporalExpression has four sub-types: Date, Time, Duration, and Set.</description>
+  <version>1.0</version>
+  <vendor/>
+  <types>
+    <typeDescription>
+      <name>eu.excitement.type.temporal.DefaultTimeOfText</name>
+      <description>It is anchored to a textual region (a paragraph, or a document), and holds the "default time" that has been determined for this passage and can be useful to interpret relative time expressions ("now", "yesterday") in the text.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>time</name>
+          <description>This feature holds the default time for the textual unit which is annotated
+by this annotation. The time string is expressed in the normalized ISO 8601 format. More specifically,
+it is a concatenation of the ISO 8601 calendar date and extended time: "YYYY-MM-DD hh:mm:ss".</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.temporal.TemporalExpression</name>
+      <description>TemporalExpression annotates a temporal expression. It is a uima.tcas.Annotation that annotates a temporal expression within a passage, adding a normalized time representation. It holds two string features: One contains the original temporal expression, and the other contains a normalized time representation, using ISO 8601. This is the top annotation for temporal expressions, with a normalized time representation. It has four subtypes, which reflects TIMEX3 temporal types of Date, Time, Duration and Set</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>text</name>
+          <description>his feature holds the original expression appearing in the text.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>resolvedTime</name>
+          <description>This feature holds the resolved time in ISO 8601 format. For
+example, "Yesterday", will be resolved into "2012-11-01", etc. See the type DefaultTimeOfText for details.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.temporal.Date</name>
+      <description>This type represents a temporal expression of type Date. The expression describes a calendar time like yesterday, November 1943, Tuesday 18th, etc.</description>
+      <supertypeName>eu.excitement.type.temporal.TemporalExpression</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.temporal.Time</name>
+      <description>This type represents a temporal expression of type Time. The expression refers to a time of the day, even if in a very indefinite way: eleven in the morning, late last night, twenty
+after twelve, etc.</description>
+      <supertypeName>eu.excitement.type.temporal.TemporalExpression</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.temporal.Duration</name>
+      <description>This type represents a temporal expression of type Duration. The expression describes a duration with explicit durations: 2 months, 48 hours, all last night, 20 days, etc.</description>
+      <supertypeName>eu.excitement.type.temporal.TemporalExpression</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.temporal.Set</name>
+      <description>This type represents a temporal expression of type Set. For example, every winter,
+each Monday, etc. It indicates a recurrence pattern.</description>
+      <supertypeName>eu.excitement.type.temporal.TemporalExpression</supertypeName>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

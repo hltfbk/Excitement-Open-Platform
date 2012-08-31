@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core.component.syntacticknowledge;
+
+import eu.excitement.entailment.core.Components;
+
+public interface SyntacticResource<I,S extends AbstractNode<I,S>> extends Components {
+
+	List<RuleMatch<I,S>> findMatches(S currentTree);
+	
+}

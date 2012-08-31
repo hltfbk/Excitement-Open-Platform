@@ -1,0 +1,20 @@
+package eu.excitement.entailment.core;
+
+import eu.excitement.entailment.core.configuration.CommonConfig;
+
+/** Any entailment core component that supports reconfiguration should implement this capability though
+this interface. This also includes EDAs. If EDA needs to support online reconfiguration, it should sup-
+port the capability with this interface. Note that when an EDA provides this interface, the EDA should
+also update the states of its sub-components according to the configuration method argument. It is the
+responsibility of EDA implementers to ensure that configuration changes are handed through to sub-
+components, if applicable. This may mean simply reconfiguring some sub-components (which support
+this) and re-initializing others (which do not).
+
+ * @author Gil
+ *
+ */
+public interface Reconfigurable {
+
+	public void reconfigure(CommonConfig config);
+	
+}

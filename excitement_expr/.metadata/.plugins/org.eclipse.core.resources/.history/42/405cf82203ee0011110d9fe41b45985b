@@ -1,0 +1,44 @@
+package eu.excitement.entailment.core;
+
+import eu.excitement.entailment.core.configuration.CommonConfig;
+import eu.excitement.entailment.core.exceptions.ComponentException;
+import eu.excitement.entailment.core.exceptions.ConfigurationException;
+import eu.excitement.entailment.core.exceptions.EDAException;
+
+import org.apache.uima.jcas.JCas;
+
+
+/**
+ * This interface defines the basic capability of EDAs that all EDAs must 
+ * support. It has four methods. <code>process()</code> is main access method 
+ * of textual entailment decision. It uses JCas as input type, and TEDecision 
+ * as output type.
+ * @author Gil
+ *
+ * @param <T> a type that extends TEDecision. An instance of T will be returned by the main method process()   
+ */
+public interface EDABasic<T extends TEDecision> {
+	
+	/**
+	 * (You can copy the specification text here...) 
+	 * @param config : A CommonConfig instance 
+	 */
+	public void initialize (CommonConfig config) throws ConfigurationException, EDAException, ComponentException;
+	
+	/**
+	 * @param aCas
+	 * @return
+	 */
+	public T process(JCas aCas) throws EDAException, ComponentException; 
+	
+	/**
+	 * 
+	 */
+	public void shutdown(); 
+	
+	/**
+	 * 
+	 */
+	public void startTraining() throws ConfigurationException, EDAException, ComponentException; 
+	
+}

@@ -1,0 +1,36 @@
+package eu.excitement.entailment.core;
+
+import eu.excitement.entailment.core.configuration.CommonConfig;
+//import eu.excitement.entailment.uimaconnection.JCas; // temporary 
+import org.apache.uima.jcas.JCas;
+
+
+/**
+ * @author Gil
+ * 
+ */
+public interface EDABasic<T extends TEDecision> {
+	
+	/**
+	 * (You can copy the specification text here...) 
+	 * @param config : A CommonConfig instance 
+	 */
+	public void initialize (CommonConfig config);
+	
+	/**
+	 * @param aCas
+	 * @return
+	 */
+	public T process(JCas aCas); 
+	
+	/**
+	 * 
+	 */
+	public void shutdown(); 
+	
+	/**
+	 * 
+	 */
+	public void startTraining(); 
+	
+}

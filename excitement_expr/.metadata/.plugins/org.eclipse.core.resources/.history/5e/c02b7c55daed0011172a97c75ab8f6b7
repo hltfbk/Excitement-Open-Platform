@@ -1,0 +1,63 @@
+package eu.excitement.entailment.core.component.knowledge;
+
+import java.util.List;
+import eu.excitement.entailment.core.component.knowledge.parsetree.PartOfSpeech;
+
+
+
+
+
+/**
+ * [DELETEME_LATER: imported from BIUTEE infrastructure, with some extension] 
+ * A lexical resource is a collection of lexical rules of a certain type 
+ * (like WordNet, or VerbOcean) which can be queried. The interface provides 
+ * three types of query methods. Queries are specified by lemma and POS pairs,
+ * (and optionally, relation) and the results are returned as a list of 
+ * LexicalRule objects. 
+ * 
+ * @author Gil  
+ * @since 
+ * @param <I> RuleInfo for LexicalRule implementation 
+ */
+public interface LexicalResource<I extends RuleInfo> {
+
+
+	/**
+	 * Returns a list of lexical rules whose left side (the head of the lexical relation) matches
+	 * the given lemma and POS. An empty list means that no rules were matched. If the user 
+	 * gives null POS, the interface will retrieve rules for all possible POSes.
+	 * @param lemma Lemma to be matched on LHS. 
+	 * @param pos POS to be matched on LHS. null means "don't care" 
+	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
+	 */
+	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos);
+	
+	
+	/**an overloaded method for getRulesForLeft. In addition to the previous method, this method 
+	 * also matches the relation field of LexicalRule with the argument.
+	 * @param lemma Lemma to be matched on LHS
+	 * @param pos POS to be matched on LHS
+	 * @param relation The canonical relation of the rule (from LHS to RHS, TELexicalRelation.Entailment or .Nonentailment)
+	 * @return A list of rules that matches the given condition. Empty list if there's no match. 
+	 */
+	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos, TELexicalRelation relation);
+	
+	
+	/** Returns a list of lexical rules whose right side (the target of the lexical relation) matches 
+	 * the given lemma and POS. An empty list means that no rules were matched.
+	 * @param lemma Lemma to be matched on RHS. 
+	 * @param pos POS to be matched on RHS. null means "don't care". 
+	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
+	 */
+	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos);
+	
+	
+	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos, TELexicalRelation relation);
+	
+	
+	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos);
+	
+	
+	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, TELexicalRelation relation);
+	
+}

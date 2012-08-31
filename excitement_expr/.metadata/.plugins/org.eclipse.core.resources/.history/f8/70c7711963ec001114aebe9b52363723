@@ -1,0 +1,7 @@
+package eu.excitement.entailment.core.component.distance;
+
+import eu.excitement.entailment.core.Components;
+
+public interface DistanceCalculation extends Components {
+
+}

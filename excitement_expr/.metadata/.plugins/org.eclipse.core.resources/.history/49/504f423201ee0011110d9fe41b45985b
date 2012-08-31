@@ -1,0 +1,16 @@
+package eu.excitement.entailment.core;
+
+import java.util.List;
+import org.apache.uima.jcas.JCas;
+
+/** The goal of this interface is to provide an access method for 
+ * EDAs (and/or EDA wrappers) that can process a set of entailment 
+ * decision problems concurrently.
+ * 
+ * @author Gil
+ */
+public interface EDAConcurrentProcessing {
+
+	public List<TEDecision> processDataSetConcurrently(List<JCas> casList);
+	
+}

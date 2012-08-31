@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core.representation.parsetree;
+
+public class DefaultNodeInfo {
+
+	public DefaultNodeInfo() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

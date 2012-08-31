@@ -1,0 +1,12 @@
+package eu.excitement.entailment.core.component.distance;
+
+import org.apache.uima.jcas.JCas;
+
+import eu.excitement.entailment.core.Components;
+
+public interface DistanceCalculation extends Components {
+
+	public DistanceValue calculation(JCas aCas);
+	
+	
+}
