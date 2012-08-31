@@ -1,0 +1,13 @@
+package eu.excitement.entailment.core.exceptions;
+
+public class ComponentException extends BaseException {
+
+	public ComponentException(String message) {
+		super(message);
+	}
+
+	public ComponentException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+}

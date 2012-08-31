@@ -1,0 +1,13 @@
+package eu.excitement.entailment.core.exceptions;
+
+public class KnowledgeComponentException extends ComponentException {
+
+	public KnowledgeComponentException(String message) {
+		super(message);
+	}
+
+	public KnowledgeComponentException(String message, Throwable cause) {
+		super(message, cause);
+	}
+
+}

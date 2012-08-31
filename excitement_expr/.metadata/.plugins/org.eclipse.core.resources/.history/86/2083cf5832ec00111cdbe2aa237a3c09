@@ -1,0 +1,45 @@
+package eu.excitement.entailment.core;
+
+/**
+ * @author Gil 
+ * 
+ */
+
+public enum DecisionLabel {
+
+	Entailment(null),
+	NonEntailment(null),
+	Abstain(null),
+	Paraphrase(Entailment),
+	Contradiction(NonEntailment),
+	Unknown(NonEntailment), 
+	//YourLabel(Paraphrase), ;// You can extend it like this...  
+	; 
+	
+	/**
+	 * Compares the decision label to another decision label. 
+	 * The method checks a "is-a" relationship. For example; 
+	 * if a variable is paraphrase (say, "a=DecisionLabel.Paraphrase;"), both  
+	 * "a.is(DecisionLabel.Paraphrase)" and "a.is(DecisionLabel.Entailment)" 
+	 * returns true.  
+	 * @param e The DecisionLabel to be compared. 
+	 * @return true if the label is one of (is-a) e; false otherwise. 
+	 * 
+	 */	
+	public boolean is(DecisionLabel e) {
+	if (e == null) {
+		return false;
+	}
+	for(DecisionLabel t = this; t != null; t=t.parent)
+		if (e == t) {
+			return true;
+		}
+		return false;
+	}
+	
+	private DecisionLabel parent = null;
+	private DecisionLabel(DecisionLabel parent) {
+		this.parent = parent;
+	}
+
+}

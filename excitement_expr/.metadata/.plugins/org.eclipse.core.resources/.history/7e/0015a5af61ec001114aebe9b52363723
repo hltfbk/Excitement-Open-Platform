@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core;
+
+public interface Components {
+
+	
+	public void initialize(CommonConfig config) throws ConfigurationException, ComponentException;
+	
+	
+}

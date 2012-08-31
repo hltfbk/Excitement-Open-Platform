@@ -1,0 +1,24 @@
+package eu.excitement.entailment.core.component.distance;
+
+import org.apache.uima.jcas.JCas;
+
+import eu.excitement.entailment.core.Components;
+
+/**
+ * <P>The ability to calculate the distance or similarity of two textual 
+ * units is essential in many textual entailment algorithms. Distance 
+ * calculations and similarity calculations are generalized with the distance
+ * calculation interface within the EXCITEMENT platform. The interface 
+ * generalizes both similarity and distance calculations in a normalized 
+ * range of distance 0 (totally identical) to distance 1 (maximally different).</P>
+ * 
+ * The interface is a subinterface of Component. 
+ * The new methods it adds is calculation(), which gets a JCas and returns 
+ * an object of DistanceValue. 
+ */
+public interface DistanceCalculation extends Components {
+
+	public DistanceValue calculation(JCas aCas);
+	
+	
+}

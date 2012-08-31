@@ -1,0 +1,5 @@
+package eu.excitement.entailment.core.helpers;
+
+public interface SinglePairProcessHelper<T extends TEDecision> {
+
+}

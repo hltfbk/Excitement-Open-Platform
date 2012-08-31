@@ -1,0 +1,17 @@
+package eu.excitement.entailment.core.representation.parsetree;
+
+
+/**
+ * 
+ * @author Asher Stern
+ *
+ */
+public final class BasicNode extends AbstractNode<Info, BasicNode>
+{
+	private static final long serialVersionUID = -7675517339109702503L;
+
+	public BasicNode(Info info)
+	{
+		super(info);
+	}
+}

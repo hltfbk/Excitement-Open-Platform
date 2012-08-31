@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core.representation.parsetree;
+
+public class BasicNode {
+
+	public BasicNode() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

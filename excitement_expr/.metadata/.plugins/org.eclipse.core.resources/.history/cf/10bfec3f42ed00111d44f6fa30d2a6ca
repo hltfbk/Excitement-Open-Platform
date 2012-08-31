@@ -1,0 +1,86 @@
+package eu.excitement.entailment.core.component.knowledge;
+
+import java.io.Serializable;
+
+import eu.excitement.entailment.core.component.knowledge.parsetree.PartOfSpeech;
+
+/**
+ * <P> [DELETEME_LATER: Imported and extended from BIUTEE 2.4.1, with one modification - a field with TELexicalRelation added ] </P> 
+ * 
+ * This type represents a generalization of lexical relationships between two 
+ * words, which are provided by resources like WordNet, VerbOcean and 
+ * distributional resources. It has two parts: a left hand side and a right 
+ * hand side. The basic arrangement of lexical resource is that the left hand 
+ * side has a relationship to the right hand side (like entailments, or nonentailment)
+ * Additional pieces of information includes confidence, relation, and resource name. 
+ * Lexical rules are parameterized by a type I which allows the type to hold 
+ * additional resource-specific properties.
+ *
+ * <b>Immutable</b>
+ * @param <I> type of the additional information of the rule
+ */
+
+public final class LexicalRule<I extends RuleInfo> implements Serializable
+{
+	private static final long serialVersionUID = -5588732603979427544L;
+
+	public static final double DEFAULT_CONFIDENCE = 0.5;
+	
+	private final String leftLemma;
+	private final PartOfSpeech leftPos;
+	private final String rightLemma;
+	private final PartOfSpeech rightPos;
+	private final I info;
+	private final TELexicalRelation relation; 
+	private final String originalRelation;
+	private final String resourceName;
+	private final double confidence;
+
+	
+	/**
+	 * Ctor with all possible params
+	 * @param leftLemma
+	 * @param leftPos
+	 * @param rightLemma
+	 * @param rightPos
+	 * @param confidence the confidence score of the rule, in [0,1]. If now meaningful confidence score is available, the default is 0.5
+	 * @param relation the canonical relation (Entailment / NonEntailment) of LHS to RHS. 
+	 * @param orgRelation If the resource uses real relations (like Wordnet or Wiktionary), it's a String name of the relevant relation. Else, null
+	 * @param resourceName the resource's name
+	 * @param info the additional information of the rule
+	 * @throws LexicalResourceException
+	 */
+	public LexicalRule(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, double confidence, TELexicalRelation relation, String orgRelation, String resourceName, I info) 
+		throws LexicalResourceException 
+	{
+		if (leftLemma == null || leftLemma.length() == 0)
+			throw new LexicalResourceException("leftLemma is null");
+		if (leftPos == null)
+			throw new LexicalResourceException("leftPos is null");
+		if (rightLemma == null || rightLemma.length() == 0)
+			throw new LexicalResourceException("rightLemma is null");
+		if (rightPos == null)
+			throw new LexicalResourceException("rightPos is null");
+		if (confidence < 0 || confidence > 1)
+			throw new LexicalResourceException("score must be in the interval [0,1]");
+	
+		if (orgRelation != null && orgRelation.length() == 0)
+			throw new LexicalResourceException("orgRelation is an empty string");
+		if (resourceName == null || resourceName.length() == 0)
+			throw new LexicalResourceException("resourceName is null");
+		if (info == null)
+			throw new LexicalResourceException("info is null");
+		
+		this.leftLemma = leftLemma;
+		this.leftPos = leftPos;
+		this.rightLemma = rightLemma;
+		this.rightPos = rightPos;
+		this.confidence = confidence;
+		this.relation = relation;
+		this.resourceName = resourceName;
+		this.info = info;
+	}
+
+	
+	
+}

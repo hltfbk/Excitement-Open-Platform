@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core.component.syntacticknowledge;
+
+public class RuleMatch<I,S extends AbstractNode<I, S>> {
+
+	public RuleMatch() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

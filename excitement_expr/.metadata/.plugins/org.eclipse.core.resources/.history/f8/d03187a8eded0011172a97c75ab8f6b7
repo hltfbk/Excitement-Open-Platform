@@ -1,0 +1,49 @@
+package eu.excitement.entailment.core.component.syntacticknowledge;
+
+import java.io.Serializable;
+import eu.excitement.entailment.core.representation.parsetree.AbstractNode;
+import eu.excitement.entailment.core.utilities.BidirectionalMap;
+
+
+/**
+ * [DELETEME_LATER: imported and extended from BIUTEE 2.1.4] 
+ * 
+ * Some entailment relationships cannot be described well at the lexical level, 
+ * but require access to the syntactic level. Examples include changes of verb 
+ * voice, changes in a predicate's argument structure, or proper paraphrase.
+ * In the EXCITEMENT platform, we call syntactic level knowledge syntactic rules, 
+ * and a collection of such rules with standard access methods a syntactic rulebase. 
+ * Similar to lexical rules, syntactic rules also have two sides (LHS and RHS) and 
+ * define the relationship between the them (for example, LHS entails RHS, or LHS 
+ * does not entail RHS). Unlike in the case of lexical knowledge, each side (LHS / 
+ * RHS) is defined as a partial parse tree. (The BasicNode) 
+ * @author tailblues
+ *
+ * @param <I> The information type of the tree-nodes, e.g. {@link Info}.  See {@link AbstractNode}.
+ * @param <S> The rule's nodes, e.g. {@link BasicNode}. See {@link AbstractNode}.
+ */
+public class SyntacticRule<I,S extends AbstractNode<I,S>> implements Serializable {
+
+	private static final long serialVersionUID = 1804205599883182009L;
+
+
+	public SyntacticRule(S leftHandSide, S rightHandSide, BidirectionalMap<S, S> mapNodes)
+	{
+		super();
+		this.leftHandSide = leftHandSide;
+		this.rightHandSide = rightHandSide;
+		this.mapNodes = mapNodes;
+	}
+
+	//
+	//
+	
+	protected S leftHandSide;
+	protected S rightHandSide;
+	
+	/**
+	 * map from LHS to RHS
+	 */
+	protected BidirectionalMap<S,S> mapNodes;
+	
+}

@@ -1,0 +1,50 @@
+package eu.excitement.entailment.core.component.knowledge.parsetree;
+
+import java.io.Serializable;
+
+
+/**
+ * DELETEME_LATER [This code has been imported from BIUTEE, 
+ * 
+ * Represents part-of-speech tag.
+ * The purpose of this class is to wrap the part-of-speech tag that is given by an external
+ * resource (e.g. parser or pos-tagger).
+ * <P><B>THIS CLASS IS IMMUTABLE. SUBCLASSES SHOULD BE IMMUTABLE AS WELL!</B><P>
+ * This class is abstract, and each sub-class should specify which tags are supported, and
+ * how each tag is mapped to a canonical part-of-speech tag: {@link CanonicalPosTag}.
+ * For those purposes, each subclass should override the methods {@link #validatePosTagString(String)}
+ * and {@link #setCanonicalPosTag()}.
+ * <P>
+ * <B>Improtant note for all implementations</B>:
+ * The validation, from the user's point of view is optional. I.e. the user may write a code like:
+ * <code>
+ * <pre>
+ * MyPartOfSpeech pos = null;
+ * try
+ * {
+ *    MyPartOfSpeech pos = new MyPartOfSpeech("blabla");
+ * }
+ * catch(UnsupportedPosTagStringException e)
+ * {
+ *    // do nothing
+ * }
+ * ...
+ * // continue code here, using pos, and assuming pos is not null.
+ * </pre>
+ * </code>
+ * 
+ * 
+ * @author Asher Stern
+ * @since Dec 26, 2010
+ *
+ */
+
+public abstract class PartOfSpeech implements Serializable {
+
+	private static final long serialVersionUID = -1476141823590371836L;
+
+	public PartOfSpeech() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

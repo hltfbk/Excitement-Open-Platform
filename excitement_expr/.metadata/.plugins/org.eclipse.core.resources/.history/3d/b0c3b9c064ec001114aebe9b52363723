@@ -1,0 +1,49 @@
+package eu.excitement.entailment.core.component.distance;
+
+import java.util.Vector;
+
+
+/**
+ * 
+ * This type holds the distance calculation result. It has some member 
+ * variables and public access functions for the variable. The type is 
+ * used to exchange data between the component and the EDA and
+ * should be immutable. Its variables are set by the constructor. 
+ */
+public abstract class DistanceValue {
+
+	/**
+	 * Returns the normalized distance. The maximum value is 1 
+	 * (maximally different), and the minimum value is 0 (totally identical).
+	 */
+	public double getDistance() 
+	{ 
+		return distance; 
+	}
+	
+	public boolean isSimBased()
+	{
+		return simBased; 
+	}
+	
+	public double getUnnormalizedValue()
+	{
+		return unnormalizedValue; 
+	}
+
+	public Vector<Double> getDistanceVector()
+	{
+		return distanceVector; 
+	}
+	
+	// variables 	
+	private double distance;
+	
+	private boolean simBased; 
+	
+	private double unnormalizedValue; 
+	
+	private Vector<Double> distanceVector; 
+	
+	
+}

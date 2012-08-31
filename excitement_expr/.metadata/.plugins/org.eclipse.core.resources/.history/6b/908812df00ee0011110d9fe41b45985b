@@ -1,0 +1,5 @@
+package eu.excitement.entailment.core;
+
+public interface EDAConcurrentProcessing {
+
+}

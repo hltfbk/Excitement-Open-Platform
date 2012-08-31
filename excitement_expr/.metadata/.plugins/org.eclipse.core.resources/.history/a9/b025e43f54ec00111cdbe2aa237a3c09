@@ -1,0 +1,13 @@
+package eu.excitement.entailment.core.helpers;
+
+import java.util.List;
+import eu.excitement.entailment.core.*;
+import org.apache.uima.jcas.JCas; 
+
+public abstract class MultipleTHModeHelper<T extends TEDecision> {
+
+	abstract public void setEDA(EDABasic<T> eda);
+	abstract public List<T> processMultiT(JCas aCas) throws ;
+	abstract public List<T> processMultiH(JCas aCas);
+	
+}

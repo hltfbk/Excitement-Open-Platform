@@ -1,0 +1,21 @@
+package eu.excitement.entailment.core.component.syntacticknowledge;
+
+import eu.excitement.entailment.core.representation.parsetree.AbstractNode;
+import eu.excitement.entailment.core.utilities.BidirectionalMap;
+
+
+public class RuleMatch<I,S extends AbstractNode<I, S>> {
+
+
+	public RuleMatch(SyntacticRule<I,S> rule, BidirectionalMap<S,S> mapLHStoTree)
+	{
+		
+		
+	}
+	
+	// protected 
+	
+	private SyntacticRule<I,S> rule;
+	private BidirectionalMap<S,S> mapLHStoTree; 
+	
+}

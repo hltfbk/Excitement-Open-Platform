@@ -1,0 +1,5 @@
+package eu.excitement.entailment.core.representation.parsetree;
+
+public enum DependencyRelationType {
+
+}

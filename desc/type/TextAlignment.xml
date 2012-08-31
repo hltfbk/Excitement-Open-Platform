@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>TextAlignment</name>
+  <description>A simple annotation type is provided for text alignment. EXCITEMENT.alignment.AlignedText rep-
+resent an aligned textual unit. It is a uima.tcas.Annotation. Its span refers to the "source" linguistic
+entity. This can be a token (word alignment), a syntax node (phrase alignments), or a sentence (sen-
+tence alignment). It has a single feature that can point other instances of of AlignedText:
+</description>
+  <version>1.0</version>
+  <vendor/>
+  <types>
+    <typeDescription>
+      <name>eu.excitement.type.alignment.AlignedText</name>
+      <description>This type represent an aligned textual unit. Its span refers to the "source" linguistic entity. This can be a token (word alignment), a syntax node (phrase alignments), or a sentence
+(sentence alignment).</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>alignedTo</name>
+          <description>This feature holds references to other AlignedText instances. The array can have multiple references, which means that it is one-to-many alignment. Likewise, a null array can also be a valid value for this feature, if the underlying alignment method is an asymmetric one; empty array means that this AlignedText instance is a recipient, but it does not align itself to other text.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>eu.excitement.type.alignment.AlignedText</elementType>
+        </featureDescription>
+        <featureDescription>
+          <name>alignmentType</name>
+          <description>This feature holds additional information for the alignment as a string.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

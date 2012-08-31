@@ -1,0 +1,18 @@
+package eu.excitement.entailment.core.component.knowledge;
+
+import eu.excitement.entailment.core.exceptions.ComponentException;
+
+public class LexicalResourceException extends ComponentException {
+
+	private static final long serialVersionUID = -2578869289508192705L;
+
+	public LexicalResourceException(String message) {
+		super(message);
+	}
+
+	public LexicalResourceException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+}

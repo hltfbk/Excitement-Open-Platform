@@ -1,0 +1,9 @@
+package eu.excitement.entailment.core.component.knowledge;
+
+public enum TELexicalRelation {
+	Entailment,
+	NonEntailment,
+	;
+	
+
+}

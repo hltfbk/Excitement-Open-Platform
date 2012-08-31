@@ -1,0 +1,24 @@
+package eu.excitement.entailment.core.exceptions;
+
+public class ComponentException extends BaseException {
+
+	public ComponentException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public ComponentException(String message) {
+		super(message);
+		// TODO Auto-generated constructor stub
+	}
+
+	public ComponentException(Throwable cause) {
+		super(cause);
+		// TODO Auto-generated constructor stub
+	}
+
+	public ComponentException(String message, Throwable cause) {
+		super(message, cause);
+		// TODO Auto-generated constructor stub
+	}
+
+}
