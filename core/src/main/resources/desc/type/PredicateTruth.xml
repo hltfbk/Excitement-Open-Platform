@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>PredicateTruth</name>
+  <description/>
+  <version>1.0</version>
+  <vendor/>
+  <types>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.PredicateTruthValue</name>
+      <description>This type provides labels for PredicateTruth. This type is a string subtype that only permits "PT+", "PT-", and "PT?".
+</description>
+      <supertypeName>uima.cas.String</supertypeName>
+      <allowedValues>
+        <value>
+          <string>PT+</string>
+          <description/>
+        </value>
+        <value>
+          <string>PT-</string>
+          <description/>
+        </value>
+        <value>
+          <string>PT?</string>
+          <description/>
+        </value>
+      </allowedValues>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.PredicateTruth</name>
+      <description>This type represents a predicate truth value annotation.
+</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>value</name>
+          <description>This represents the value of the annotation.
+</description>
+          <rangeTypeName>eu.excitement.type.predicatetruth.PredicateTruthValue</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.ClauseTruthValue</name>
+      <description>This type provides labels for ClauseTruth. This type is a string subtype that only permits "CT+", "CT-", and "CT?".
+</description>
+      <supertypeName>uima.cas.String</supertypeName>
+      <allowedValues>
+        <value>
+          <string>CT+</string>
+          <description/>
+        </value>
+        <value>
+          <string>CT-</string>
+          <description/>
+        </value>
+        <value>
+          <string>CT?</string>
+          <description/>
+        </value>
+      </allowedValues>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.ClauseTruth</name>
+      <description>This type represents a clause truth value annotation.
+</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>value</name>
+          <description>This represents the value of the annotation.
+</description>
+          <rangeTypeName>eu.excitement.type.predicatetruth.ClauseTruthValue</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.NegationAndUncertainty</name>
+      <description>This type represents a negation-and-uncertainty annotation.
+</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>value</name>
+          <description>This represents the value of the annotation.
+</description>
+          <rangeTypeName>eu.excitement.type.predicatetruth.NegationAndUncertaintyValue</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.NegationAndUncertaintyValue</name>
+      <description>This type provides labels for NegationAndUncerntainty. This type is a string
+subtype that only permits "NU+", "NU-", and "NU?".
+</description>
+      <supertypeName>uima.cas.String</supertypeName>
+      <allowedValues>
+        <value>
+          <string>NU+</string>
+          <description/>
+        </value>
+        <value>
+          <string>NU-</string>
+          <description/>
+        </value>
+        <value>
+          <string>NU?</string>
+          <description/>
+        </value>
+      </allowedValues>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.PredicateSignature</name>
+      <description>This type represents an implication signature of a predicate.
+</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.predicatetruth.PredicateSignatureValue</name>
+      <description>This type provides labels for PredicateSignature. This type is a string subtype
+that only permits one of the following strings: "+ / -", "+ / ?", "? / -", "- \ +", "- / ?", "? / +", "+ /
++", "- / -", "? / ?".
+</description>
+      <supertypeName>uima.cas.String</supertypeName>
+      <allowedValues>
+        <value>
+          <string>+/-</string>
+          <description/>
+        </value>
+        <value>
+          <string>+/?</string>
+          <description/>
+        </value>
+        <value>
+          <string>?/-</string>
+          <description/>
+        </value>
+        <value>
+          <string>-/+</string>
+          <description/>
+        </value>
+        <value>
+          <string>-/?</string>
+          <description/>
+        </value>
+        <value>
+          <string>?/+</string>
+          <description/>
+        </value>
+        <value>
+          <string>+/+</string>
+          <description/>
+        </value>
+        <value>
+          <string>-/-</string>
+          <description/>
+        </value>
+        <value>
+          <string>?/?</string>
+          <description/>
+        </value>
+      </allowedValues>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
