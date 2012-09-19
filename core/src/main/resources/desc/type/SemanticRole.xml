@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>SemanticRole</name>
+  <description>A type for expressing Semantic Role Labeling result. 
+(Following EXCITEMENT specification 1.1 Section 3.3.3.8 
+
+eu.excitement-project.semanticrole.type.Predicate</description>
+  <version>1.0</version>
+  <vendor/>
+  <types>
+    <typeDescription>
+      <name>eu.excitement.type.semanticrole.Predicate</name>
+      <description>Predicate is a uima.tcas.Annotation. It represents a predicate. It holds the predicate sense as string and links to its arguments (An array of Argument). It has the following features:
+- predicateName (uima.cas.String): This feature represents the name of this predicate. It actually refers to the sense of the predicate in PropBank or FrameNet.
+ -arguments (uima.cas.FSArray):This feature is an array of EXCITEMENT.semanticrole.Argument. It holds the predicate's arguments.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>predicateName</name>
+          <description>This feature represents the name of this predicate. It actually refers to the sense of the predicate in PropBank or FrameNet.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>arguments</name>
+          <description>This feature is an array of semanticrole.Argument. It holds the predicate's arguments.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>eu.excitement.type.semanticrole.Argument</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.semanticrole.Argument</name>
+      <description>It represents an argument (of semantic role labeling). It has two features; the argument's semantic role (type), and a backward reference to the predicate that governs the argument.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>argumentName</name>
+          <description>This feature represents the semantic role (type) of this argument. The fact that this feature is a String means that arbitrary role labels can be adopted, such as the PropBank argument set (A0, A1, AM-LOC, etc.), the FrameNet role set (Communication.Communicator, Communication.Message, etc.), or any other.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>predicates</name>
+          <description>This feature is an array of semanticrole.Predicate. (Backward) references to the predicates which governs it.</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>eu.excitement.type.semanticrole.Predicate</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
