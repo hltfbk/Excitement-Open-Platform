@@ -1,8 +1,0 @@
-package eu.excitement.entailment.core;
-
-public interface Reconfigurable {
-
-	
-	public void reconfigure(CommonConfig config);
-	
-}

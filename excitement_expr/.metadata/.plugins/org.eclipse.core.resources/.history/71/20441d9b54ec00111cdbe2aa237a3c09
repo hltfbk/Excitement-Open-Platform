@@ -1,9 +1,0 @@
-package eu.excitement.entailment.core.helpers;
-
-import eu.excitement.entailment.core.TEDecision;
-
-
-
-public interface SinglePairProcessHelper<T extends TEDecision> {
-
-}
