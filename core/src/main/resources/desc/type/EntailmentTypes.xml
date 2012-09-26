@@ -46,7 +46,7 @@ esis item within the HypothesisView. It can occur multiple times (for multi-hypo
     <typeDescription>
       <name>eu.excitement.type.entailment.Pair</name>
       <description>This type represents a text-hypothesis pair.</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
           <name>pairID</name>
@@ -70,7 +70,7 @@ resents the text part of this pair.</description>
     <typeDescription>
       <name>eu.excitement.type.entailment.EntailmentMetadata</name>
       <description>This type provides metadata for entailment problem.</description>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>uima.cas.TOP</supertypeName>
       <features>
         <featureDescription>
           <name>task</name>
@@ -118,7 +118,7 @@ fies the collection name where the document of the HypothesisView belongs to.</d
         </featureDescription>
         <featureDescription>
           <name>language</name>
-          <description>Language of this CAS. </description>
+          <description>Language of this CAS.</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
