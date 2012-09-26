@@ -73,6 +73,6 @@ is called.
 	 * Please see Spec1.1 section 4.2.1.4 and 4.2.1.7 for startTraining() issue.  
 	 */
 	
-	public void startTraining() throws ConfigurationException, EDAException, ComponentException; 
+	public void startTraining(CommonConfig c) throws ConfigurationException, EDAException, ComponentException; 
 	
 }
