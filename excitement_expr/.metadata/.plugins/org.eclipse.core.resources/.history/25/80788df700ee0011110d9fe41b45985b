@@ -1,7 +1,0 @@
-package eu.excitement.entailment.core;
-
-public interface EDAConcurrentProcessing {
-
-	
-	public List<TEDecision>
-}

@@ -1,5 +1,0 @@
-package eu.excitement.entailment.core.utilities;
-
-public interface BidirectionalMap {
-
-}

@@ -1,9 +1,0 @@
-package eu.excitement.entailment.core.utilities;
-
-public class SimpleBidirectionalMap {
-
-	public SimpleBidirectionalMap() {
-		// TODO Auto-generated constructor stub
-	}
-
-}
