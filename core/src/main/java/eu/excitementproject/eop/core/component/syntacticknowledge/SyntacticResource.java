@@ -27,7 +27,7 @@ public interface SyntacticResource<I,S extends AbstractNode<I,S>> extends Compon
 	 * @param currentTree a parse tree with BasicNode 
 	 * @return a list of SyntacticRule that can be applied to the currentTree  
 	 */
-	public List<RuleMatch<I,S>> findMatches(S currentTree);
+	public List<RuleMatch<I,S>> findMatches(S currentTree) throws SyntacticResourceException;
 	
 	/**
 	 * This overloaded version of findMatches method gets two trees instead of one. 
@@ -44,6 +44,6 @@ public interface SyntacticResource<I,S extends AbstractNode<I,S>> extends Compon
 	 * @param hypothesisTree parse tree of the hypothesis 
 	 * @return a list of SyntacticRule that can match between textTree to hypothesisTree
 	 */
-	public List<RuleMatch<I,S>> findMatches(S textTree, S hypothesisTree);
+	public List<RuleMatch<I,S>> findMatches(S textTree, S hypothesisTree) throws SyntacticResourceException;
 	
 }
