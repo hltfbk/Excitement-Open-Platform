@@ -29,7 +29,7 @@ public interface LexicalResource<I extends RuleInfo> extends Components {
 	 * @param pos POS to be matched on LHS. null means "don't care". 
 	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
 	 */
-	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos);
+	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos) throws LexicalResourceException;
 	
 	
 	/**an overloaded method for getRulesForLeft. In addition to the previous method, this method 
@@ -39,7 +39,7 @@ public interface LexicalResource<I extends RuleInfo> extends Components {
 	 * @param relation The canonical relation of the rule (from LHS to RHS, TERuleRelation.Entailment or .Nonentailment)
 	 * @return A list of rules that matches the given condition. Empty list if there's no match. 
 	 */
-	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos, TERuleRelation relation);
+	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos, TERuleRelation relation) throws LexicalResourceException;
 	
 	
 	/** Returns a list of lexical rules whose right side (the target of the lexical relation) matches 
@@ -48,7 +48,7 @@ public interface LexicalResource<I extends RuleInfo> extends Components {
 	 * @param pos POS to be matched on RHS. null means "don't care". 
 	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
 	 */
-	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos);
+	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos) throws LexicalResourceException;
 	
 	/** An overloaded method for getRulesForRight. In addition to the previous method, 
 	 * this method also matches the relation field of LexicalRule with the argument.
@@ -57,7 +57,7 @@ public interface LexicalResource<I extends RuleInfo> extends Components {
 	 * @param relation The canonical relation of the rule (from LHS to RHS, TERuleRelation.Entailment or .Nonentailment)
 	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
 	 */	
-	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos, TERuleRelation relation);
+	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos, TERuleRelation relation) throws LexicalResourceException;
 	
 	
 	/** This method returns a list of lexical rules whose left and right sides match the two given pairs of lemma and POS.
@@ -67,7 +67,7 @@ public interface LexicalResource<I extends RuleInfo> extends Components {
 	 * @param rightPos POS to be matched on RHS. null means "don't care". 
 	 * @return a list of rules that matches the given condition. Empty list if there's no match.
 	 */
-	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos);
+	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos) throws LexicalResourceException;
 	
 	
 	/** An overloaded method for getRules. In addition to the previous method, this method also matches the relation field of LexicalRule with the argument.
@@ -78,6 +78,6 @@ public interface LexicalResource<I extends RuleInfo> extends Components {
 	 * @param relation The canonical relation of the rule (from LHS to RHS, TERuleRelation.Entailment or .Nonentailment)
 	 * @return a list of rules that matches the given condition. Empty list if there's no match.
 	 */
-	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, TERuleRelation relation);
+	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, TERuleRelation relation) throws LexicalResourceException;
 	
 }
