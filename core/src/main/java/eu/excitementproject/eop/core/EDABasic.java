@@ -2,10 +2,9 @@ package eu.excitementproject.eop.core;
 
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.core.configuration.CommonConfig;
-import eu.excitementproject.eop.core.exceptions.ComponentException;
-import eu.excitementproject.eop.core.exceptions.EDAException;
-import eu.excitementproject.eop.core.exceptions.ConfigurationException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.exception.ComponentException;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 
 
 /**

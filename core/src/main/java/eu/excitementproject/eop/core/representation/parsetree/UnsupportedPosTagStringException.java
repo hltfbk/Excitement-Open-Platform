@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.core.representation.parsetree;
 
-import eu.excitementproject.eop.core.exceptions.BaseException;
+import eu.excitementproject.eop.common.exception.BaseException;
 
 /**
  * <P> [DELETEME_LATER: Imported from BIUTEE, for PartOfSpeech interface.] </P> 

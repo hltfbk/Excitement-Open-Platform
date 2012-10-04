@@ -2,7 +2,7 @@ package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.util.List;
 
-import eu.excitementproject.eop.core.Components;
+import eu.excitementproject.eop.common.Components;
 import eu.excitementproject.eop.core.representation.parsetree.AbstractNode;
 
 /**

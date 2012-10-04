@@ -26,10 +26,10 @@ import eu.excitementproject.eop.core.representation.parsetree.PartOfSpeech;
  * @author tailblues
  *
  * @param <I> an extension of RuleInfo @see RuleInfo, LexicalRule 
- * @param <R> the enum type that represents this resources fine relations. 
+ * @param <R> the enum type that represents this resource's fine relations. 
  * 
  * <P>
- * Note that R (R fineGrainedRelation in the method argument) is an enum. Java Enum does not permit 
+ * Note that R (R originalRelation in the method argument) is an enum. Java Enum does not permit 
  * inheritance, but all enums are implicit extension of java.lang.Enum. Any normal enum 
  * can be parametrize the R of this interface. Each resource implementation needs to provide 
  * this enum class. For example, a lexical resource based on WordNet might be parameterized 
@@ -47,22 +47,22 @@ public interface LexicalResourceWithOwnRelation<I extends RuleInfo , R extends j
 	 * An empty list means that no rules were matched. null POS is permitted, just as LexicalResource.
 	 * @param lemma
 	 * @param pos
-	 * @param fineGrainedRelation
+	 * @param originalRelation
 	 * @return
 	 * @throws LexicalResourceException
 	 */
-	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos, R fineGrainedRelation) throws LexicalResourceException;
+	List<LexicalRule<? extends I>> getRulesForLeft(String lemma, PartOfSpeech pos, R originalRelation) throws LexicalResourceException;
 	
 	/**
 	 * Returns a list of lexical rules where right side matches the given lemma, POS and fine-grained relation. 
 	 * An empty list means that no rules were matched. null POS is permitted, just as LexicalResource.
 	 * @param lemma
 	 * @param pos
-	 * @param fineGrainedRelation
+	 * @param originalRelation
 	 * @return
 	 * @throws LexicalResourceException
 	 */
-	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos, R fineGrainedRelation) throws LexicalResourceException;
+	List<LexicalRule<? extends I>> getRulesForRight(String lemma, PartOfSpeech pos, R originalRelation) throws LexicalResourceException;
 
 	/**
 	 *  This method returns a list of lexical rules whose left and right sides 
@@ -71,10 +71,10 @@ public interface LexicalResourceWithOwnRelation<I extends RuleInfo , R extends j
 	 * @param leftPos
 	 * @param rightLemma
 	 * @param rightPos
-	 * @param fineGrainedRelation
+	 * @param originalRelation
 	 * @return
 	 * @throws LexicalResourceException
 	 */
-	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, R fineGrainedRelation) throws LexicalResourceException;	
+	List<LexicalRule<? extends I>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, R originalRelation) throws LexicalResourceException;	
 
 }

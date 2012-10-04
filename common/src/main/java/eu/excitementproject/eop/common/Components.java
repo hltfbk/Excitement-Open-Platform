@@ -1,8 +1,8 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.common;
 
-import eu.excitementproject.eop.core.configuration.CommonConfig;
-import eu.excitementproject.eop.core.exceptions.ComponentException;
-import eu.excitementproject.eop.core.exceptions.ConfigurationException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.exception.ComponentException;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 
 /**
  * There is a small set of methods that are common to all components whatever their internal structure.

@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.configuration;
+package eu.excitementproject.eop.common.configuration;
 
 public abstract class NameValueTable {
 
