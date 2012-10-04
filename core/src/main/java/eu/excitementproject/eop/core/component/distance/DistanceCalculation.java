@@ -2,8 +2,7 @@ package eu.excitementproject.eop.core.component.distance;
 
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.core.Components;
-import eu.excitementproject.eop.core.exceptions.DistanceComponentException;
+import eu.excitementproject.eop.common.Components;
 
 /**
  * <P>The ability to calculate the distance or similarity of two textual 

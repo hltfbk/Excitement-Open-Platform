@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.core.exceptions.ComponentException;
-import eu.excitementproject.eop.core.exceptions.EDAException;
+import eu.excitementproject.eop.common.exception.ComponentException;
 
 /** 
  * Multiple Text and/or Hypothesis interfaces: 

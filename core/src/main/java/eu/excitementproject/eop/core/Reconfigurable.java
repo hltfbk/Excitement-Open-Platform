@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.core;
 
-import eu.excitementproject.eop.core.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 
 /** Any entailment core component that supports reconfiguration should implement 
  * the capability though this interface. This also includes EDAs. If EDA needs to 

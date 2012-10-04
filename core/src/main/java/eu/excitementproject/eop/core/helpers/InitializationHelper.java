@@ -2,14 +2,14 @@ package eu.excitementproject.eop.core.helpers;
 
 import java.io.File;
 
+import eu.excitementproject.eop.common.exception.ComponentException;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.EDABasic;
+import eu.excitementproject.eop.core.EDAException;
 import eu.excitementproject.eop.core.EDAMultiH;
 import eu.excitementproject.eop.core.EDAMultiT;
 import eu.excitementproject.eop.core.EDAMultiTH;
 import eu.excitementproject.eop.core.TEDecision;
-import eu.excitementproject.eop.core.exceptions.ComponentException;
-import eu.excitementproject.eop.core.exceptions.ConfigurationException;
-import eu.excitementproject.eop.core.exceptions.EDAException;
 
 public abstract class InitializationHelper<T extends TEDecision> {
 	

@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.exceptions;
+package eu.excitementproject.eop.common.exception;
 
 /**
  * The top-level abstract exception of the EXCITEMENT platform. 
