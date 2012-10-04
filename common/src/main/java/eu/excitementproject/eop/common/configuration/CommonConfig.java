@@ -1,7 +1,7 @@
-package eu.excitementproject.eop.core.configuration;
+package eu.excitementproject.eop.common.configuration;
 
 import java.io.File;
-import eu.excitementproject.eop.core.exceptions.ConfigurationException;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 
 public abstract class CommonConfig 
 {

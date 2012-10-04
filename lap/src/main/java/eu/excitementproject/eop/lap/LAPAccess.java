@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.lap;
 
 import java.io.File;
-
+import eu.excitementproject.eop.common.Components; 
 import org.apache.uima.jcas.JCas; 
 
 /**
@@ -18,7 +18,7 @@ import org.apache.uima.jcas.JCas;
  * @author tailblues
  * @since oct 1, 2012 
  */
-public interface LAPAccess extends eu.excitementproject.eop.core.Components {
+public interface LAPAccess extends Components {
 
 	/**
 	 * This method gets two strings as input and generates a CAS for an EDA. The resulting CAS must 

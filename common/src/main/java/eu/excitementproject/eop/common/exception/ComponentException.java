@@ -1,7 +1,7 @@
-package eu.excitementproject.eop.core.exceptions;
+package eu.excitementproject.eop.common.exception;
 
 /**
- * This is an exception caused within an entailment core component. 
+ * This is an exception caused within an entailment component. 
  * It is the base type that will be inherited by core component exceptions 
  * like <code>KnowledgeComponentException</code>, <code>DistanceComponentException</code>, 
  * or that of future core components. <I>[Quote from Spec, Section 6.2]</I>  

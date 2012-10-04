@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.core.component.syntacticknowledge;
 
-import eu.excitementproject.eop.core.exceptions.KnowledgeComponentException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.KnowledgeComponentException;
 
 public class SyntacticResourceException extends KnowledgeComponentException {
 

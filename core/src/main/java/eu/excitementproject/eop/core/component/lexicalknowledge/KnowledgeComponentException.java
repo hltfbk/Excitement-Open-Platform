@@ -1,4 +1,6 @@
-package eu.excitementproject.eop.core.exceptions;
+package eu.excitementproject.eop.core.component.lexicalknowledge;
+
+import eu.excitementproject.eop.common.exception.ComponentException;
 
 /**
  * Implementations of knowledge components (lexical resource

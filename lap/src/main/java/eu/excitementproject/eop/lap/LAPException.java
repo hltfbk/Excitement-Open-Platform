@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.lap;
 
-import eu.excitementproject.eop.core.exceptions.BaseException;
+import eu.excitementproject.eop.common.exception.ComponentException;
 
-public class LAPException extends BaseException {
+public class LAPException extends ComponentException {
 
 	private static final long serialVersionUID = -5677803552113728008L;
 
