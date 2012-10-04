@@ -1,4 +1,6 @@
-package eu.excitementproject.eop.core.exceptions;
+package eu.excitementproject.eop.core;
+
+import eu.excitementproject.eop.common.exception.BaseException;
 
 /**
  * Interfaces and implementations of EDAs can generate this type of exception. All

@@ -1,4 +1,6 @@
-package eu.excitementproject.eop.core.exceptions;
+package eu.excitementproject.eop.core.component.distance;
+
+import eu.excitementproject.eop.common.exception.ComponentException;
 
 /**
  * Implementations of distance calculation components can throw

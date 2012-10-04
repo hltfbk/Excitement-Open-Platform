@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.core.helpers;
 
+import eu.excitementproject.eop.common.exception.ComponentException;
+import eu.excitementproject.eop.core.EDAException;
 import eu.excitementproject.eop.core.TEDecision;
-import eu.excitementproject.eop.core.exceptions.ComponentException;
-import eu.excitementproject.eop.core.exceptions.EDAException;
 
 /**
  * <P>This interface is a convenience interface for "end users" of an entailment engine. The implementation

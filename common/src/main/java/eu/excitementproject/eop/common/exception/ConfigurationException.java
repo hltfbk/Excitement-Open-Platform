@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.exceptions;
+package eu.excitementproject.eop.common.exception;
 
 /**
  * Interfaces of common configuration can throw exceptions of various
