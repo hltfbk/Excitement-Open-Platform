@@ -49,6 +49,10 @@
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
   	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>common</artifactId>
+		<version>0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
-  <version>0.2-SNAPSHOT</version>
 </project>
