@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>eu.excitementproject.eop.lap.lappoc.WSSeparatorAE</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>WSSeparator</name>
+    <description>A simple pseudo tokenizer, that things everything separated with a whitespace, is a token. 
+
+Just an example for LAP sample. Replacing this into a real AE, makes the sample into real LAP component that follows interface LAPAccess</description>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import name="desc.type.LexicalUnits"/>
+        <import name="desc.type.NamedEntity"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>
