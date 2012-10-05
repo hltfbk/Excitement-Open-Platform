@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>typesystem</name>
+  <description/>
+  <version>1.0</version>
+  <vendor/>
+  <imports>
+    <import name="desc.type.Constituent"/>
+    <import name="desc.type.Dependency"/>
+    <import name="desc.type.DocumentMetaData"/>
+    <import name="desc.type.EntailmentTypes"/>
+    <import name="desc.type.LexicalUnits"/>
+    <import name="desc.type.NamedEntity"/>
+    <import name="desc.type.POS"/>
+    <import name="desc.type.PredicateTruth"/>
+    <import name="desc.type.SemanticRole"/>
+    <import name="desc.type.TemporalExpression"/>
+    <import name="desc.type.TextAlignment"/>
+    <import name="desc.type.coref"/>
+  </imports>
+</typeSystemDescription>
