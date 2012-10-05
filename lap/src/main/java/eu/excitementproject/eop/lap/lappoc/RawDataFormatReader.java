@@ -13,16 +13,30 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
- * 
+ * <P>
  * A very simple XML reader for Single Pair T-H RawInput Data 
- * that is defined in the specification (Basically, RTE-5 data) 
+ * that is defined in the specification (Basically, RTE-5 data). 
  * 
- * TODO add XML validation, so don't even try to read anything but the defined format. 
+ * <P> 
+ * Usage is simple. Construct a new instance by passing the XML-format file. nextPair() will 
+ * return a simple structure (PairXMLData) that holds pair data. hasNextPair() will tell you 
+ * whether or not additional pairs are there to fetch. 
+ *  
+ * <P>
+ * TODO add XML validation before doing DOM parse, so don't even try to read anything but 
+ * the defined format. ... 
  * 
  * @author Gil 
  */
 public class RawDataFormatReader {
 
+	/**
+	 * This constructor will open up the XML file and parse it & make a DOM. 
+	 * Once it is successful (without any Exception), you can call nextPair() 
+	 * to get each pair iteratively.  
+	 * @param xmlFile
+	 * @throws RawFormatReaderException
+	 */
 	public RawDataFormatReader(File xmlFile) throws RawFormatReaderException
 	{
 		// prepare dom, and store it 
@@ -57,6 +71,10 @@ public class RawDataFormatReader {
 		}
 	}
 	
+	/**
+	 * Returns true, if there is additional pair to be fetched by nextPair(). 
+	 * @return 
+	 */
 	public boolean hasNextPair()
 	{
 		if (current < pairNodes.getLength())
@@ -65,6 +83,11 @@ public class RawDataFormatReader {
 			return false; 
 	}
 	
+	/**
+	 * returns fetch a Pair. iterates into the next one. 
+	 * @return PairXMLData
+	 * @throws RawFormatReaderException
+	 */
 	public PairXMLData nextPair() throws RawFormatReaderException
 	{
 		// open up pairNodes(current) 

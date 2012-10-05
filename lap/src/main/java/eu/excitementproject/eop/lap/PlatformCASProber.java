@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.List;
@@ -40,25 +41,46 @@ import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.lap.LAPException;
 
-
-// TODO remove all relative path, which won't work in Jar. (getResource) 
-// (it has at least one such path --- typeAeDescPath) 
-
 /**
+ * A utility class that provides a set of static methods for EXCITEMENT CAS (input for EDA and other components) 
+ *
+ *<P>
  * This class provides a few "probing" methods into CAS, that will check whether or not 
- * the given CAS follows CAS structure (views and annotations) that EXCITEMENT platform 
+ * the given CAS follows the structure (views and annotations) that EXCITEMENT platform 
  * specification defined for EDA (and other component) input. 
  *   
- * It provides two static methods: 
- * - one that check a given CAS (argument is a JCas) 
- * - one that will check a file (argument is a File, that holds serialized CAS file (XMI)) 
+ * <P>
+ * It provides basically the two sets of methods: 
+ * <LI> probeCAS(): one that check a given CAS (argument is a JCas) 
+ * <LI> probeXmi(): one that will check a file  -- serialized CAS. 
  * 
+ * <P>
+ * Both method tries to write some info (e.g. number of annotations, having correct views, etc) 
+ * back to the given OutputStream. (2nd arg). If something is wrong on the CAS, it will raise Exceptions 
+ * According to the type of error. 
  * 
+ * Note that if 2nd arg (aOut - outputstream) is null, it won't try to print, but still checks and 
+ * raise exceptions. 
+ * 
+ * @author Gil
+ * 
+ */
+
+/**
  * @author tailblues
  *
  */
 public class PlatformCASProber {
 
+	/**
+	 * Check the given JCas (aJCas), raise exceptions if doesn't have proper Entailment View structure 
+	 * and type annotations. If aOut is not null, print some info there (e.g. what was the Pair ID, and 
+	 * which annotation is annotated on TextView and HypothesisView, etc). 
+	 *  
+	 * @param aJCas
+	 * @param aOut
+	 * @throws LAPException
+	 */
 	public static void probeCas(JCas aJCas, PrintStream aOut) throws LAPException
 	{
 		// Okay, we got a CAS, check it for needed data. 
@@ -159,6 +181,15 @@ public class PlatformCASProber {
 		}
 	}
 	
+	/**
+	 * This method first does probeCAS() (see that method). But it also prints whole 
+	 * annotation content (annotation, its begin, end, pointing structures, etc etc -- beware, large) 
+	 * also to the aOut, after the brief info of probeCAS(). It prints both TextView and HypothesisView 
+	 * 
+	 * @param aJCas
+	 * @param aOut
+	 * @throws LAPException
+	 */
 	public static void probeCasAndPrintContent(JCas aJCas, PrintStream aOut) throws LAPException
 	{
 		probeCas(aJCas, aOut); 
@@ -180,22 +211,41 @@ public class PlatformCASProber {
 		printAnnotations(hView.getCas(), aOut);
 	}
 		
+	/**
+	 * Reads in an XMI file, deserialize the file, and does 
+	 * probeCAS() on it. See probeCAS() for argument meaning and behavior. 
+     * 
+	 * Note that this static method returns the resulting JCas. So it is possible 
+	 * to use this as a XMI reader, (with aOut null), which will check the format, and 
+	 * does a sanity check, and returns the CAS to you ... 
+	 *  (If you process more than single XMI, this is bad strategy --- in terms of efficiency, 
+	 *  this method generates a new JCas every time it is called. It is a costly operation (making  
+	 *  a new JCas). and not efficient. ) 
+	 *  
+	 * @param xmiFile
+	 * @param aOut
+	 * @return
+	 * @throws LAPException
+	 */
 	public static JCas probeXmi(File xmiFile, PrintStream aOut) throws LAPException
 	{
 		//
 		// 1. deserialize the XMI file 
 		JCas aJCas = null; 
-		try {
+		try {			
 			// prepare AE that has the type system, and get JCas 	
-			XMLInputSource in = new XMLInputSource(typeAeDescPath); // This AE does nothing, but holding all types. 
+			InputStream s = PlatformCASProber.class.getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types. 
+			XMLInputSource in = new XMLInputSource(s, null);
+			//XMLInputSource in = new XMLInputSource("./src/main/resources/desc/DummyAE.xml");  
 			ResourceSpecifier specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);		
 			AnalysisEngine ae = UIMAFramework.produceAnalysisEngine(specifier); 
 
 			aJCas = ae.newJCas(); 
 		}
-		catch (IOException e) {
-			throw new LAPException("Unable to open the AE descriptor file", e); 
-		} catch (InvalidXMLException e) {
+//		catch (IOException e) {
+//			throw new LAPException("Unable to open the AE descriptor file", e); 
+//		}
+		catch (InvalidXMLException e) {
 			throw new LAPException("Invalid XML descriptor for AE", e); 
 		} catch (ResourceInitializationException e) {
 			throw new LAPException("Failed to produce the AE for typesystem", e); 
@@ -219,6 +269,15 @@ public class PlatformCASProber {
 		return aJCas; 
 	}
 	
+	/**
+	 * This method probes an XMI file, and print its content, just as probeCASAndPrintContent does, 
+	 * but on the serialized file. It returns the resulting JCas back to you. 
+	 * 
+	 * @param xmilFile
+	 * @param aOut
+	 * @return
+	 * @throws LAPException
+	 */
 	public static JCas probeXmiAndPrintContent(File xmilFile, PrintStream aOut) throws LAPException
 	{
 		// 1. run probeXmi 
@@ -249,7 +308,7 @@ public class PlatformCASProber {
 		// Lemma, 
 		// NER, 
 		// Dependency parse
-		// TODO Add other types like alignment, temporal, semrole, constituent? 
+		// TODO (In future, as needed) add other types like alignment, temporal, semrole, constituent. 
 	
 		try 
 		{
@@ -301,11 +360,7 @@ public class PlatformCASProber {
 		
 		return count; 
 	}
-	
-
-	
-	
-	private static final String typeAeDescPath = "./src/main/resources/desc/DummyAE.xml"; 
+		
 	private static final String TVIEW = "TextView";
 	private static final String HVIEW = "HypothesisView"; 
 
@@ -361,6 +416,7 @@ public class PlatformCASProber {
 	  }
 
 	  /**
+	   * (Borrowed code from UIMAJ example)
 	   * Prints a FeatureStructure to a PrintStream.
 	   * 
 	   * @param aFS
