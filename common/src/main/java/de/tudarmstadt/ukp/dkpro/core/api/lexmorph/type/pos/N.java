@@ -10,8 +10,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** Noun
- * Updated by JCasGen Fri Oct 05 09:56:45 CEST 2012
- * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/LexicalUnits.xml
+ * Updated by JCasGen Fri Oct 05 20:17:19 CEST 2012
+ * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/POS.xml
  * @generated */
 public class N extends POS {
   /** @generated
