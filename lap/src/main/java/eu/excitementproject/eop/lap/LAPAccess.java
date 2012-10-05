@@ -15,7 +15,7 @@ import org.apache.uima.jcas.JCas;
  * 
  * See specification 1.1.1 (or later) "interface LAPAccess". 
  * 
- * @author tailblues
+ * @author Gil
  * @since oct 1, 2012 
  */
 public interface LAPAccess extends Components {

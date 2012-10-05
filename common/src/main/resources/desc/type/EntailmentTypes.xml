@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>Entailment Types</name>
+  <description>Types that are needed to express entailment problems.</description>
+  <version>1.0</version>
+  <vendor/>
+  <types>
+    <typeDescription>
+      <name>eu.excitement.type.entailment.Decision</name>
+      <description>String subtype that describe entailment Decision. *Note*: If you extend/change this type, you *MUST* also update "enum TEDecision" in the entailment core.</description>
+      <supertypeName>uima.cas.String</supertypeName>
+      <allowedValues>
+        <value>
+          <string>ENTAILMENT</string>
+          <description/>
+        </value>
+        <value>
+          <string>NONENTAILMENT</string>
+          <description/>
+        </value>
+        <value>
+          <string>PARAPHRASE</string>
+          <description/>
+        </value>
+        <value>
+          <string>CONTRADICTION</string>
+          <description/>
+        </value>
+        <value>
+          <string>UNKNOWN</string>
+          <description/>
+        </value>
+      </allowedValues>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.entailment.Text</name>
+      <description>This type represents a text part of a T-H pair. This type annotates a text item within
+the TextView. It can occur multiple times (for multi-text problems).</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.entailment.Hypothesis</name>
+      <description>This type represents a hypothesis part of a T-H pair. This type annotates a hypoth-
+esis item within the HypothesisView. It can occur multiple times (for multi-hypothesis problems)</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.entailment.Pair</name>
+      <description>This type represents a text-hypothesis pair.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>pairID</name>
+          <description>ID of this pair. The main purpose of this value is to distinguish
+a certain pair among multiple pairs.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>text</name>
+          <description>This feature points a Text instance, which rep-
+resents the text part of this pair.</description>
+          <rangeTypeName>eu.excitement.type.entailment.Text</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>hypothesis</name>
+          <description>This feature points a Hypothesis instance, which represents the hypothesis part of this pair.</description>
+          <rangeTypeName>eu.excitement.type.entailment.Hypothesis</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>goldAnswer</name>
+          <description>This features records the gold standard answer for this pair. If the pair (and CAS) represents a training data, this value will be filled in with the gold standard answer. If it is a null value, the pair represents a entailment problem that is yet
+to be answered.</description>
+          <rangeTypeName>eu.excitement.type.entailment.Decision</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.entailment.EntailmentMetadata</name>
+      <description>This type provides metadata for entailment problem.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>task</name>
+          <description>This string holds the task description which can be found in the
+RTE challenge data.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>channel</name>
+          <description>his feature can holds a string that shows the channel where
+this problem was originated. For example, "customer e-mail", "online forum", or " customer
+transcription", etc.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>origin</name>
+          <description>This metadata field can hold a string that shows the origin of
+this text and hypothesis. A company name, or a product name.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>TextDocumentID</name>
+          <description>This field can hold a string that identifies the doc-
+ument of the TextView. This feature must have a value, if TextCollectionID is not null.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>TextCollectionID</name>
+          <description>This field can hold a string that identifies the
+collection name where the document of the TextView belongs to.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>HypothesisDocumentID</name>
+          <description>This field can hold a string that identifies
+the document of the HypothesisView. This feature must have a value, if HypothesisCollec-
+tionID is not null.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>HypothesisCollectionID</name>
+          <description>This field can hold a string that identi-
+fies the collection name where the document of the HypothesisView belongs to.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>language</name>
+          <description>Language of this CAS.</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
