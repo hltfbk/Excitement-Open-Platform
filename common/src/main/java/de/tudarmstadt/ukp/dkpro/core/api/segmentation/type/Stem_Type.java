@@ -14,7 +14,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Fri Oct 05 09:56:45 CEST 2012
+ * Updated by JCasGen Fri Oct 05 20:17:06 CEST 2012
  * @generated */
 public class Stem_Type extends Annotation_Type {
   /** @generated */

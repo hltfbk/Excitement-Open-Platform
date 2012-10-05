@@ -5,7 +5,7 @@
   <annotatorImplementationName>eu.excitementproject.eop.lap.DummyAE</annotatorImplementationName>
   <analysisEngineMetaData>
     <name>DummyAE</name>
-    <description>This AE does nothing. But it holds all EXCITEMENT typesystem, and (banilla) UIMA needs an AE to generate CAS(and JCas). </description>
+    <description>This AE does nothing. But it holds all EXCITEMENT typesystem, and (banilla) UIMA needs an AE to generate CAS(and JCas).</description>
     <version>1.0</version>
     <vendor/>
     <configurationParameters/>

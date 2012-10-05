@@ -11,7 +11,7 @@ import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 
 /** Verb and verb phrase
- * Updated by JCasGen Fri Oct 05 09:56:45 CEST 2012
+ * Updated by JCasGen Fri Oct 05 20:17:20 CEST 2012
  * @generated */
 public class V_Type extends POS_Type {
   /** @generated */

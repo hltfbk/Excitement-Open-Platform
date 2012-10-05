@@ -11,7 +11,7 @@ import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 
 /** Adjective
- * Updated by JCasGen Fri Oct 05 09:56:44 CEST 2012
+ * Updated by JCasGen Fri Oct 05 20:17:19 CEST 2012
  * @generated */
 public class ADJ_Type extends POS_Type {
   /** @generated */

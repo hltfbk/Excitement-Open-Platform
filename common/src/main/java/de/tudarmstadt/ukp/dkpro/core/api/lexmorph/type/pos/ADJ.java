@@ -10,8 +10,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** Adjective
- * Updated by JCasGen Fri Oct 05 09:56:44 CEST 2012
- * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/LexicalUnits.xml
+ * Updated by JCasGen Fri Oct 05 20:17:19 CEST 2012
+ * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/POS.xml
  * @generated */
 public class ADJ extends POS {
   /** @generated
