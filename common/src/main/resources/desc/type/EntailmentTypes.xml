@@ -65,6 +65,12 @@ resents the text part of this pair.</description>
           <description>This feature points a Hypothesis instance, which represents the hypothesis part of this pair.</description>
           <rangeTypeName>eu.excitement.type.entailment.Hypothesis</rangeTypeName>
         </featureDescription>
+        <featureDescription>
+          <name>goldAnswer</name>
+          <description>This features records the gold standard answer for this pair. If the pair (and CAS) represents a training data, this value will be filled in with the gold standard answer. If it is a null value, the pair represents a entailment problem that is yet
+to be answered.</description>
+          <rangeTypeName>eu.excitement.type.entailment.Decision</rangeTypeName>
+        </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
