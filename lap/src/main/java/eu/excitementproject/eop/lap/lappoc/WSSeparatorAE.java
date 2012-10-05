@@ -11,6 +11,12 @@ import org.apache.uima.jcas.JCas;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
+/**
+ * An example AE that uses java.util.StringTokenizer to make whitespace breaking. 
+ * 
+ * @author UIMA-library example + Gil 
+ *
+ */
 public class WSSeparatorAE extends CasAnnotator_ImplBase {
 
 	@Override

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,11 +34,16 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 
-// TODO remove all "relative path" for AE Descriptors. (getResource) 
-//    (We have two AE desc path in this file: DummyAE descriptor path, and Main descriptor path in "descPath")
-
 /**
- * A sample LAP component that follows the interface LAPAccess. 
+ * <P>
+ * A sample LAP component that follows the interface LAPAccess. This example LAP 
+ * don't annotate much linguistic annotations -- but it annotates all data that is 
+ * defined for entailment problem description. If you replace the linguistic annotation 
+ * part of this LAP (single method, addAnnotationOn()) you get a LAPAccess implementation 
+ * for your language, that knows how to read input format (RTE5+) and how to generate 
+ * CASes that can be consumed by EDAs. 
+ * 
+ * <P> 
  * This implementation intentionally uses only the "addAnnotationOn(Jcas, String)" 
  * as the main annotation method. This may be a bit inefficient (especially when 
  * you use AE in addAnnotationOn()), but it makes this sample implementation as a
@@ -45,33 +51,45 @@ import eu.excitementproject.eop.lap.LAPException;
  * you automatically get other methods like "generateSingleTHPair()" and 
  * "processRawInputFormat()". 
  * 
+ * <P>
  * Note that addAnnotationOn() of this sample LAP only annotates "Token" by 
  * whitespace separation. Replace it with a real linguistic analysys component, 
- * (and add some codes for "Language" and other metadata) you get your LAP. 
- * (Again, this may not be an efficient implementation.) 
+ * (and add some codes for "Language" and other metadata). 
  * 
+ * <P>
  * Note that generating a new CAS is an expansive operation. try to reuse 
- * existing one by cleaning it up with reset().
+ * existing one by cleaning it up with reset(). -- this code does so in 
+ * processRawInputFormat(). (This doesn't mean the code is efficient, but...) 
+ * 
+ * <P> 
+ * (Don't read this if you have no plan to use AE/AAEs soon.) -- Also note that when you 
+ * use AE or AAE (like that of DKPro), this addAnnotationTo() is really not 
+ * efficient to be used in two other methods (generateSingleTH and processRawInput). 
+ * , since it initialize the AE each time addAnnotationTo is being called. Rewrite
+ * them, with two AEs mapped on TextView and HypothesisView, that is only initialized 
+ * once. 
  * 
  * @author Gil 
  *
  */
-public class WSTokenizerEN implements LAPAccess {
+public class SampleLAP implements LAPAccess {
 
-	public WSTokenizerEN() throws LAPException {
+	public SampleLAP() throws LAPException {
 		// setting up the AE, which is needed to get a new JCAS
 		// note that you need at least one AE to get a JCAS. (valina UIMA) 
 		try {
 			// Type System AE 
-			XMLInputSource in = new XMLInputSource("./src/main/resources/desc/DummyAE.xml"); // This AE does nothing, but holding all types. 
+			InputStream s = this.getClass().getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
+			//XMLInputSource in = new XMLInputSource("./src/main/resources/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
+			XMLInputSource in = new XMLInputSource(s, null); 
 			ResourceSpecifier specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);		
 			AnalysisEngine ae = UIMAFramework.produceAnalysisEngine(specifier); 
 			this.typeAE = ae; 
 		} 
-		catch (IOException e)
-		{
-			throw new LAPException("Unable to open AE descriptor file", e); 
-		}
+//		catch (IOException e)
+//		{
+//			throw new LAPException("Unable to open AE descriptor file", e); 
+//		}
 		catch (InvalidXMLException e)
 		{
 			throw new LAPException("AE descriptor is not a valid XML", e);			
@@ -191,12 +209,15 @@ public class WSTokenizerEN implements LAPAccess {
 		UimaContextAdmin rootContext = UIMAFramework.newUimaContext(UIMAFramework.getLogger(), UIMAFramework.newDefaultResourceManager(), UIMAFramework.newConfigurationManager());
 		ResourceSpecifier desc = null; 
 		try {
-			XMLInputSource input = new XMLInputSource(this.descPath);
+			InputStream s = this.getClass().getResourceAsStream(descClasspathName); 
+			//XMLInputSource input = new XMLInputSource(this.descPath);
+			XMLInputSource input = new XMLInputSource(s, null); 
 			desc = UIMAFramework.getXMLParser().parseAnalysisEngineDescription(input);
 		}
-		catch (IOException e) {
-			throw new LAPException("Unable to open AE descriptor file", e); 
-		} catch (InvalidXMLException e) {
+//		catch (IOException e) {
+//			throw new LAPException("Unable to open AE descriptor file", e); 
+//		} 
+		catch (InvalidXMLException e) {
 			throw new LAPException("AE descriptor is not a valid XML", e);			
 		}
 		
@@ -306,7 +327,8 @@ public class WSTokenizerEN implements LAPAccess {
 	/**
 	 * Path to actual "worker AE". If you don't use AE, this isn't needed (unlike typeAE). 
 	 */
-	private final String descPath = "./src/main/resources/desc/WSSeparator.xml"; 
+	private final String descClasspathName = "/desc/WSSeparator.xml"; 
+//	private final String descPath = "./src/main/resources/desc/WSSeparator.xml"; 
 
 	/**
 	 * Analysis engine that holds the type system. Note that even if you 
