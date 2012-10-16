@@ -10,3 +10,7 @@ target/
 *.ear
 
 .DS_Store
+
+bin/eu/excitementproject/eop/common/.gitignore
+
+bin/eu/excitementproject/eop/lap/textpro/.gitignore
