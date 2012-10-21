@@ -31,25 +31,40 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 	private final String rightLemma;
 	private final PartOfSpeech rightPos;
 	private final I info;
-	private final TERuleRelation relation; 
-	private final String originalRelation;
+	private final String relation;
 	private final String resourceName;
 	private final double confidence;
 
 	/**
-	 * Constructor with all parameters 
+	 * Constructor uses {@link #DEFAULT_CONFIDENCE}
+	 * @param leftLemma
+	 * @param leftPos
+	 * @param rightLemma
+	 * @param rightPos
+	 * @param relation If the resource uses real relations (like Wordnet or Wiktionary), it's a String name of the relevant relation. Else, null 
+	 * represents the resource's name
+	 * @param resourceName the resource's name
+	 * @param info the additional information of the rule
+	 * @throws LexicalResourceException
+	 */
+	public LexicalRule(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, String relation, String resourceName, I info) throws LexicalResourceException
+	{
+		this(leftLemma, leftPos, rightLemma, rightPos, DEFAULT_CONFIDENCE, relation, resourceName, info);
+	}
+	
+	/**
+	 * Ctor with all possible params
 	 * @param leftLemma
 	 * @param leftPos
 	 * @param rightLemma
 	 * @param rightPos
 	 * @param confidence the confidence score of the rule, in [0,1]. If now meaningful confidence score is available, the default is 0.5
-	 * @param relation the canonical relation (Entailment / NonEntailment) of LHS to RHS. 
-	 * @param originalRelation If the resource uses real relations (like Wordnet or Wiktionary), it's a String name of the relevant relation. Else, null
+	 * @param relation If the resource uses real relations (like Wordnet or Wiktionary), it's a String name of the relevant relation. Else, null
 	 * @param resourceName the resource's name
 	 * @param info the additional information of the rule
 	 * @throws LexicalResourceException
 	 */
-	public LexicalRule(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, double confidence, TERuleRelation relation, String originalRelation, String resourceName, I info) 
+	public LexicalRule(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, double confidence, String relation, String resourceName, I info) 
 		throws LexicalResourceException 
 	{
 		if (leftLemma == null || leftLemma.length() == 0)
@@ -62,8 +77,8 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 			throw new LexicalResourceException("rightPos is null");
 		if (confidence < 0 || confidence > 1)
 			throw new LexicalResourceException("score must be in the interval [0,1]");
-		if (originalRelation != null && originalRelation.length() == 0)
-			throw new LexicalResourceException("orgRelation is an empty string");
+		if (relation != null && relation.length() == 0)
+			throw new LexicalResourceException("relation is an empty string");
 		if (resourceName == null || resourceName.length() == 0)
 			throw new LexicalResourceException("resourceName is null");
 		if (info == null)
@@ -75,30 +90,10 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 		this.rightPos = rightPos;
 		this.confidence = confidence;
 		this.relation = relation;
-		this.originalRelation = originalRelation; 
 		this.resourceName = resourceName;
 		this.info = info;
 	}
-	
-	/**
-	 * Constructor with {@link #DEFAULT_CONFIDENCE}
-	 * @param leftLemma
-	 * @param leftPos
-	 * @param rightLemma
-	 * @param rightPos
-	 * @param relation canonical relation of LHS to RHS. 
-	 * @param originalRelation If the resource uses real relations (like Wordnet or Wiktionary), it's a String name of the relevant relation. Else, null 
-	 * represents the resource's name
-	 * @param resourceName the resource's name
-	 * @param info the additional information of the rule
-	 * @throws LexicalResourceException
-	 */
-	public LexicalRule(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos, TERuleRelation relation, String originalRelation, String resourceName, I info) throws LexicalResourceException
-	{
-		this(leftLemma, leftPos, rightLemma, rightPos, DEFAULT_CONFIDENCE, relation, originalRelation, resourceName, info);
-	}
-	
-	
+
 	public String getLLemma() {
 		return leftLemma;
 	}
@@ -124,24 +119,14 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 	}
 	
 	/**
-	 * Returns the canonical relation from LHS to RHS (Entailment or NonEntailment) 
-	 * @return relation enum 
-	 */
-	public TERuleRelation getRelation()
-	{
-		return relation;
-	}
-	
-	
-	/**
 	 * If the resource uses real relations (like Wordnet or Wiktionary), return a String name of the relevant relation. Else, return null 
 	 * the resource's name.<br>
 	 * Note that, if applicable for the implemented {@link LexicalResource}, the {@link RuleInfo} object holds a {@code getTypedRelation()} method that returns the relation as an enum 
 	 * @return relation name
 	 */
-	public String getOriginalRelation()
+	public String getRelation()
 	{
-		return originalRelation;
+		return relation;
 	}
 	
 	/**
@@ -189,8 +174,6 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 		result = prime * result + ((rightPos == null) ? 0 : rightPos.hashCode());
 		result = prime * result
 				+ ((relation == null) ? 0 : relation.hashCode());
-		result = prime * result
-				+ ((originalRelation == null) ? 0 : originalRelation.hashCode());
 		result = prime * result
 				+ ((resourceName == null) ? 0 : resourceName.hashCode());
 		return result;
@@ -245,11 +228,6 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 			if (other.relation != null)
 				return false;
 		} else if (!relation.equals(other.relation))
-			return false;
-		if (originalRelation == null) {
-			if (other.originalRelation != null)
-				return false;
-		} else if (!originalRelation.equals(other.originalRelation))
 			return false;
 		if (resourceName == null) {
 			if (other.resourceName != null)
