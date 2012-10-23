@@ -23,23 +23,6 @@ import eu.excitement.type.entailment.Hypothesis;
 import eu.excitement.type.entailment.Pair;
 import eu.excitement.type.entailment.Text;
 
-
-/**
-* This is another very simple CAS access example.
-* This example shows the following aspects
-*
-* 1) How to create additional Views
-* 2) How to add annotations to a view, and read annotations on the view.
-* 3) How to add annotations that points another annotation on a different View.
-*
-* We will do this by EXCITEMENT.entailment.* types.
-* CASes for EDAs require TextView and HypothesisView, and an entailment.Pair
-* needs to connect Text on Textview and Hypothesis on HypothesisView.
-*
-* @author Gil
-*
-*/
-
 public class CasCreation {
 
 	private String tText = "";
