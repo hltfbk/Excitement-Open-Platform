@@ -199,6 +199,30 @@ public class SampleLAP implements LAPAccess {
 		
 		return aJCas; 
 	}
+	
+	public JCas generateSingleTHPairCAS(String text, String hypothesis, String goldAnswer)
+			throws LAPException {
+		// get a new JCAS
+		JCas aJCas = null; 
+		try {
+			aJCas = typeAE.newJCas(); 
+		}
+		catch (ResourceInitializationException e)
+		{
+			throw new LAPException("Unable to create new JCas", e); 
+		}
+		
+		// prepare it with Views and Entailment.* annotations. 
+		addTEViewAndAnnotations(aJCas, text, hypothesis, null, null, goldAnswer); // last three args are PairId, task, and golden Answer --  which we don't fill here 
+		
+		// now aJCas has TextView, HypothesisView and Entailment.* types. (Pair, T and H) 
+		// it is time to add linguistic annotations 
+		addAnnotationOn(aJCas, TEXTVIEW);
+		addAnnotationOn(aJCas, HYPOTHESISVIEW); 
+		
+		return aJCas; 
+	}
+
 
 
 	@Override
