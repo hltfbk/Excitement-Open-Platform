@@ -50,11 +50,13 @@ import eu.excitementproject.eop.lap.LAPException;
  * "generic" one. --- if you replace "addAnnotationOn()" for your own annotator, 
  * you automatically get other methods like "generateSingleTHPair()" and 
  * "processRawInputFormat()". 
- * 
+ *    
  * <P>
  * Note that addAnnotationOn() of this sample LAP only annotates "Token" by 
  * whitespace separation. Replace it with a real linguistic analysys component, 
- * (and add some codes for "Language" and other metadata). 
+ * and override some codes for "Language" (and other metadata if needed). 
+ * To see override example; see OpenNLPTaggerEN or any class that extends this 
+ * class.  
  * 
  * <P>
  * Note that generating a new CAS is an expansive operation. try to reuse 
@@ -72,24 +74,18 @@ import eu.excitementproject.eop.lap.LAPException;
  * @author Gil 
  *
  */
-public class SampleLAP implements LAPAccess {
+public class LAP_ImplBase implements LAPAccess {
 
-	public SampleLAP() throws LAPException {
-		// setting up the AE, which is needed to get a new JCAS
+	public LAP_ImplBase() throws LAPException {
+		// setting up the AE for type system 
 		// note that you need at least one AE to get a JCAS. (valina UIMA) 
 		try {
-			// Type System AE 
 			InputStream s = this.getClass().getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
-			//XMLInputSource in = new XMLInputSource("./src/main/resources/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
 			XMLInputSource in = new XMLInputSource(s, null); 
 			ResourceSpecifier specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);		
 			AnalysisEngine ae = UIMAFramework.produceAnalysisEngine(specifier); 
 			this.typeAE = ae; 
 		} 
-//		catch (IOException e)
-//		{
-//			throw new LAPException("Unable to open AE descriptor file", e); 
-//		}
 		catch (InvalidXMLException e)
 		{
 			throw new LAPException("AE descriptor is not a valid XML", e);			
@@ -97,7 +93,7 @@ public class SampleLAP implements LAPAccess {
 		catch (ResourceInitializationException e)
 		{
 			throw new LAPException("Unable to initialize the AE", e); 
-		}
+		}		
 	}
 
 	@Override
@@ -213,7 +209,7 @@ public class SampleLAP implements LAPAccess {
 		}
 		
 		// prepare it with Views and Entailment.* annotations. 
-		addTEViewAndAnnotations(aJCas, text, hypothesis, null, null, goldAnswer); // last three args are PairId, task, and golden Answer --  which we don't fill here 
+		addTEViewAndAnnotations(aJCas, text, hypothesis, null, null, goldAnswer); // last three args are PairId, task, and golden Answer 
 		
 		// now aJCas has TextView, HypothesisView and Entailment.* types. (Pair, T and H) 
 		// it is time to add linguistic annotations 
@@ -222,8 +218,6 @@ public class SampleLAP implements LAPAccess {
 		
 		return aJCas; 
 	}
-
-
 
 	@Override
 	public JCas addAnnotationOn(JCas aJCas, String viewName)
@@ -352,7 +346,6 @@ public class SampleLAP implements LAPAccess {
 	 * Path to actual "worker AE". If you don't use AE, this isn't needed (unlike typeAE). 
 	 */
 	private final String descClasspathName = "/desc/WSSeparator.xml"; 
-//	private final String descPath = "./src/main/resources/desc/WSSeparator.xml"; 
 
 	/**
 	 * Analysis engine that holds the type system. Note that even if you 
@@ -361,23 +354,22 @@ public class SampleLAP implements LAPAccess {
 	private final AnalysisEngine typeAE; 
 	
 	/**
-	 * We will set language directly with this id. 
+	 * Language Identifier --- The component uses this to set language of CAS. 
+	 * Default is "EN". One has to set this value in their constructor. 
 	 */
-	private final String languageIdentifier = "EN"; 
-
+	protected String languageIdentifier = "EN"; // EN is default value here. One 
+	
 	/**
 	 *  string constants 
 	 */
 	private final String TEXTVIEW = "TextView";
 	private final String HYPOTHESISVIEW = "HypothesisView";
 
-	
-	
 	// From "interface Components" 
 	@Override
 	public void initialize(CommonConfig config) throws ConfigurationException,
 			ComponentException {
-		// TODO this example does not use configuration. But when you replace it with 
+		// TODO Maybe not? this example does not use configuration. But when you replace it with 
 		// your own annotator, use this part to get CommonConfiguration, and setup your 
 		// annotator properly. 		
 		return; 

@@ -1,39 +1,30 @@
 package eu.excitementproject.eop.lap.lappoc;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
-//import java.io.InputStream;
-//import java.net.URL;
 
 import org.apache.uima.jcas.JCas;
+import org.junit.Test;
+
+import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.PlatformCASProber; 
+import eu.excitementproject.eop.lap.PlatformCASProber;
 
-public class UsageExample1 {
+public class OpenNLPTaggerENTest {
 
-	// TODO remove all "relative path", which won't work in Jars. 
-	// Well, this isn't really important in this file, since this is just an example... 
-	
-	/**
-	 * Simple usage example of sample LAP, and also that of PlatformCASProber.  
-	 * LAP main class is WSTokenizerEN, which uses an AE WSSeparatorAE. 
-	 * 
-	 * If you re-implement a method in WSTokenizerEN (don't need to be an AE) 
-	 * you automatically gets all LAPAccess interfaces. see WSTokenizerEN.java 
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Test
+	public void test() {
 		
-		LAP_ImplBase lap = null; 
+		LAPAccess lap = null; 
 		JCas aJCas = null; 
 
 		// Generating a Single CAS 
 		try {
-			//lap = new SampleLAP(); 
 			lap = new OpenNLPTaggerEN(); 
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
-			aJCas = lap.generateSingleTHPairCAS("This is Something.", "This is something else."); 
+			aJCas = lap.generateSingleTHPairCAS("Bush used his weekly radio address to try to build support for his plan to allow workers to divert part of their Social Security payroll taxes into private investment accounts", "Mr. Bush is proposing that workers be allowed to divert their payroll taxes into private accounts."); 
 
 			// probeCas check whether or not the CAS has all needed "Entailment" information. 
 			// If it does not, it raises an LAPException. 
@@ -47,11 +38,9 @@ public class UsageExample1 {
 		}
 		catch(LAPException e)
 		{
-			System.err.println(e.getMessage()); 
-			e.printStackTrace();
-			System.exit(1); 
+			fail(e.getMessage()); 
 		}
-		
+
 		// process TE data format, and produce XMI files.
 		// Let's process English RTE3 data (formatted as RTE5+) as an example. 
 		File input = new File("./src/test/resources/small.xml"); // this only holds the first 3 of them.. generate 3 XMIs (first 3 of t.xml) 
@@ -61,7 +50,7 @@ public class UsageExample1 {
 			lap.processRawInputFormat(input, outputDir); // outputDir will have those XMIs
 		} catch (LAPException e)
 		{
-			e.printStackTrace(); 
+			fail(e.getMessage()); 
 		}
 
 		// Now time to open up the XMI files. 
@@ -72,9 +61,9 @@ public class UsageExample1 {
 		try {
 			PlatformCASProber.probeXmi(testXmi, System.out);
 		} catch (LAPException e) {
-			e.printStackTrace();
+			fail(e.getMessage()); 
 		} 
-		
+
 	}
-	
+
 }

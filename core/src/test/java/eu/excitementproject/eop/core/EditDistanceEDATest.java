@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.SampleLAP; 
+import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase; 
 
 public class EditDistanceEDATest {
 
@@ -21,10 +21,10 @@ public class EditDistanceEDATest {
         // CasCreation is basically a broken code (since it uses file path)  
         // I replaced the code to lap/SampleLAP  --- Gil 
         
-        SampleLAP lap = null; 
+        LAP_ImplBase lap = null; 
         try 
         {
-        	lap = new SampleLAP(); 
+        	lap = new LAP_ImplBase(); 
         }
         catch (LAPException e)
         {

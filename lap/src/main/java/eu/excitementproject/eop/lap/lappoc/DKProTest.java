@@ -6,6 +6,7 @@ import org.apache.uima.UIMAFramework;
 //import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceSpecifier;
+import org.apache.uima.resource.metadata.TypeSystemDescription;
 //import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.apache.uima.util.XMLInputSource;
 
@@ -19,6 +20,7 @@ import static org.uimafit.factory.AnalysisEngineFactory.*;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import org.uimafit.component.xwriter.CASDumpWriter;
 import org.uimafit.factory.AggregateBuilder;
+import de.tudarmstadt.ukp.dkpro.core.treetagger.*; 
 
 //import static org.uimafit.pipeline.SimplePipeline.*;
 //import static org.uimafit.factory.TypeSystemDescriptionFactory.*; 
@@ -42,6 +44,7 @@ public class DKProTest {
 		
 		AnalysisEngineDescription seg = createPrimitiveDescription(BreakIteratorSegmenter.class);
 		AnalysisEngineDescription tagger = createPrimitiveDescription(OpenNlpPosTagger.class);
+		//AnalysisEngineDescription lemma = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
 		
 		AnalysisEngineDescription cc = createPrimitiveDescription(
 			         CASDumpWriter.class,
@@ -58,8 +61,8 @@ public class DKProTest {
 		AnalysisEngine ae = UIMAFramework.produceAnalysisEngine(specifier); 
 		JCas aJCas = ae.newJCas(); 
 
-//		TypeSystemDescription typeSystemDescription = createTypeSystemDescription(); 
-//		JCas aJCas = createJCas(typeSystemDescription);
+		//TypeSystemDescription typeSystemDescription = createTypeSystemDescription(); 
+		//JCas aJCas = createJCas(typeSystemDescription);
 		
 		JCas tView = aJCas.createView("TextView"); 
 		tView.setDocumentText("Ich denke, das war ein glueck."); 
@@ -73,11 +76,13 @@ public class DKProTest {
 		AggregateBuilder builder = new AggregateBuilder();
 		builder.add(seg, "_InitialView", "TextView");
 		builder.add(tagger, "_InitialView", "TextView"); 
+		//builder.add(lemma, "_InitialView", "TextView");
+		// we need model ; 
 		builder.add(cc); 
 		
 		AnalysisEngine textViewAE = builder.createAggregate(); 
 		textViewAE.process(aJCas); 
-				
+			
 		
 		}
 
