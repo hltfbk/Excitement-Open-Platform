@@ -142,7 +142,10 @@ public class PlatformCASProber {
 			{
 				Pair p = (Pair) iter.next(); 
 				if (aOut != null)
+				{
 					aOut.printf("PairID: %s\n", p.getPairID()); 
+					aOut.printf("GoldAnswer: %s\n", p.getGoldAnswer()); 
+				}
 				String text = null; 
 				String hypothesis = null; 
 				try {
