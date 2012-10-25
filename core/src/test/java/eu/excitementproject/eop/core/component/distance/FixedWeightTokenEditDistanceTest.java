@@ -4,7 +4,7 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.OpenNLPTaggerEN;
+import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 
 
 public class FixedWeightTokenEditDistanceTest {
@@ -14,16 +14,12 @@ public class FixedWeightTokenEditDistanceTest {
     	
         FixedWeightTokenEditDistance fixedEd
             = new FixedWeightTokenEditDistance();
-
-        // removed using of CasCreation - Gil 
-        //CasCreation  aCas = new CasCreation();
-        //JCas mycas = aCas.create();
         
         JCas mycas = null; 
-        OpenNLPTaggerEN lap = null; 
+        ExampleLAP lap = null; 
         try 
         {
-        	lap = new OpenNLPTaggerEN(); 
+        	lap = new ExampleLAP(); 
             mycas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.", "The person must have a PhD.", "ENTAILMENT"); 
         }
         catch(LAPException e)
