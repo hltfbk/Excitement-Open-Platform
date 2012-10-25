@@ -8,23 +8,17 @@ import java.util.List;
 import java.util.ArrayList;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.OpenNLPTaggerEN;
+import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 
 public class EditDistanceEDATest {
 
 	@Test
 	public void test() {
-    	
-//        EditDistanceEDATest editDistance
-//            = new EditDistanceEDATest();
-        
-        // CasCreation is basically a broken code (since it uses file path)  
-        // I replaced the code to lap/SampleLAP  --- Gil 
-        
-        OpenNLPTaggerEN lap = null; 
+    	        
+        ExampleLAP lap = null; 
         try 
         {
-        	lap = new OpenNLPTaggerEN(); 
+        	lap = new ExampleLAP(); 
         }
         catch (LAPException e)
         {
