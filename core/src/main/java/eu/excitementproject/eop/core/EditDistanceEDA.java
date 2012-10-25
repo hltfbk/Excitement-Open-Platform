@@ -474,33 +474,33 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 	}
 	
-	public static void main(String[] args) {
+	// public static void main(String[] args) {
 		
 		
-		EditDistanceEDA edit = new EditDistanceEDA();
-		CommonConfig config = null;
+	// 	EditDistanceEDA edit = new EditDistanceEDA();
+	// 	CommonConfig config = null;
 		
-		try {
+	// 	try {
 			
-			edit.initialize(config);
-			System.out.println("training ...");
-			edit.startTraining(config);
-			System.out.println("calculated threshold:" + edit.threshold);
+	// 		edit.initialize(config);
+	// 		System.out.println("training ...");
+	// 		edit.startTraining(config);
+	// 		System.out.println("calculated threshold:" + edit.threshold);
 	
-			String t = "The train was unconfortable.";
-			String h = "The train was expensive.";
+	// 		String t = "The train was unconfortable.";
+	// 		String h = "The train was expensive.";
 		
-			CasCreation cas1 = new CasCreation(t, h, "NONENTAILMENT");
+	// 		CasCreation cas1 = new CasCreation(t, h, "NONENTAILMENT");
 			
-			System.out.println("annotating:");
-			System.out.println("T:" + t);
-			System.out.println("H:" + h);
-			System.out.println("decision:" + edit.process(cas1.create()).getDecision());
+	// 		System.out.println("annotating:");
+	// 		System.out.println("T:" + t);
+	// 		System.out.println("H:" + h);
+	// 		System.out.println("decision:" + edit.process(cas1.create()).getDecision());
 		
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
+	// 	}catch(Exception e) {
+	// 		e.printStackTrace();
+	// 	}
 		
-	}
+	// }
 	
 }

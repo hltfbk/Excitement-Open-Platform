@@ -31,6 +31,7 @@ import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
 import org.xml.sax.SAXException;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
@@ -142,7 +143,10 @@ public class PlatformCASProber {
 			{
 				Pair p = (Pair) iter.next(); 
 				if (aOut != null)
+				{
 					aOut.printf("PairID: %s\n", p.getPairID()); 
+					aOut.printf("GoldAnswer: %s\n", p.getGoldAnswer()); 
+				}
 				String text = null; 
 				String hypothesis = null; 
 				try {
@@ -318,6 +322,9 @@ public class PlatformCASProber {
 			Token token = new Token(aJCas); 
 			int tokenCount = countAnnotation(aJCas, token.getType()); 
 			
+			POS pos = new POS(aJCas); 
+			int posCount = countAnnotation(aJCas, pos.getType());
+			
 			Lemma lemma = new Lemma(aJCas);
 			int lemmaCount = countAnnotation(aJCas, lemma.getType());
 			
@@ -332,6 +339,7 @@ public class PlatformCASProber {
 				aOut.println("It has:"); 
 				aOut.println(sentCount + " sentence Annotation(s)");
 				aOut.println(tokenCount +" token Annotation(s)");
+				aOut.println(posCount + " pos Annotation(s)"); 
 				aOut.println(lemmaCount +" lemma Annotation(s)");
 				aOut.println(nerCount +" NER Annotation(s)");
 				aOut.println(depCount +" Dependency Annotation(s)");
