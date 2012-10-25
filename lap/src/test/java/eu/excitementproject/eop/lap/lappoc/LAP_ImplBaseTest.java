@@ -7,6 +7,7 @@ import java.io.File;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
+import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -15,16 +16,18 @@ public class LAP_ImplBaseTest {
 	@Test
 	public void test() {
 		
-		LAP_ImplBase lap = null; 
+		LAPAccess lap = null; 
 		JCas aJCas = null; 
 
 		// Generating a Single CAS 
 		try {
-			lap = new LAP_ImplBase(); 
+			lap = new ExampleLAP(); 
+			assertFalse(lap==null); 
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
 			aJCas = lap.generateSingleTHPairCAS("This is Something.", "This is something else."); 
-
+			assertFalse(aJCas == null); 
+			
 			// probeCas check whether or not the CAS has all needed "Entailment" information. 
 			// If it does not, it raises an LAPException. 
 			// It will also print the summarized data of the CAS to the PrintStream. 
@@ -56,7 +59,7 @@ public class LAP_ImplBaseTest {
 		// PlatformCASPRober also provides a probe method 
 		// for XMI files: probeXmi() --- this does the same thing 
 		// of probeCas(), but on XMI. 
-		File testXmi = new File("./target/3.xmi"); // you can pick and probe any XMI..  
+		File testXmi = new File("./target/3.xmi"); // you can pick and probe any XMI..
 		try {
 			PlatformCASProber.probeXmi(testXmi, System.out);
 		} catch (LAPException e) {

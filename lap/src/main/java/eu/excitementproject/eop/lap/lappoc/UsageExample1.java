@@ -5,6 +5,8 @@ import java.io.File;
 //import java.net.URL;
 
 import org.apache.uima.jcas.JCas;
+
+import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber; 
 
@@ -24,13 +26,12 @@ public class UsageExample1 {
 	 */
 	public static void main(String[] args) {
 		
-		LAP_ImplBase lap = null; 
+		LAPAccess lap = null; 
 		JCas aJCas = null; 
 
 		// Generating a Single CAS 
 		try {
-			//lap = new SampleLAP(); 
-			lap = new OpenNLPTaggerEN(); 
+			lap = new ExampleLAP(); 
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
 			aJCas = lap.generateSingleTHPairCAS("This is Something.", "This is something else."); 

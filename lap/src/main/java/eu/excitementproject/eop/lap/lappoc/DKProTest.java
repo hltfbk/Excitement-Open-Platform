@@ -6,7 +6,7 @@ import org.apache.uima.UIMAFramework;
 //import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceSpecifier;
-import org.apache.uima.resource.metadata.TypeSystemDescription;
+//import org.apache.uima.resource.metadata.TypeSystemDescription;
 //import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.apache.uima.util.XMLInputSource;
 
@@ -20,7 +20,7 @@ import static org.uimafit.factory.AnalysisEngineFactory.*;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import org.uimafit.component.xwriter.CASDumpWriter;
 import org.uimafit.factory.AggregateBuilder;
-import de.tudarmstadt.ukp.dkpro.core.treetagger.*; 
+//import de.tudarmstadt.ukp.dkpro.core.treetagger.*; 
 
 //import static org.uimafit.pipeline.SimplePipeline.*;
 //import static org.uimafit.factory.TypeSystemDescriptionFactory.*; 

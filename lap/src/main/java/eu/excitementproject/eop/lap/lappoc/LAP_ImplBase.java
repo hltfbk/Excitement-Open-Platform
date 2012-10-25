@@ -5,18 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
 import org.apache.uima.UIMAFramework;
-import org.apache.uima.UimaContextAdmin;
+//import org.apache.uima.UimaContextAdmin;
 import org.apache.uima.analysis_engine.AnalysisEngine;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+//import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.CASRuntimeException;
 import org.apache.uima.cas.impl.XmiCasSerializer;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.Resource;
+//import org.apache.uima.resource.Resource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.InvalidXMLException;
@@ -36,32 +36,29 @@ import eu.excitementproject.eop.lap.LAPException;
 
 /**
  * <P>
- * A sample LAP component that follows the interface LAPAccess. This example LAP 
- * don't annotate much linguistic annotations -- but it annotates all data that is 
- * defined for entailment problem description. If you replace the linguistic annotation 
- * part of this LAP (single method, addAnnotationOn()) you get a LAPAccess implementation 
- * for your language, that knows how to read input format (RTE5+) and how to generate 
- * CASes that can be consumed by EDAs. 
+ * An implementation base for LAP components that follows the interface LAPAccess. 
+ * This implementation base don't annotate linguistic annotations (abstract method 
+ * addAnnotationOn() must be provided by class that extends this base). 
+ * 
+ * <P> 
+ * But the base annotates all data that is defined for Entailment problem description. 
+ * If you provide the linguistic annotation part of this LAP (single method, 
+ * addAnnotationOn()) you get a LAPAccess implementation for your language, that knows 
+ * how to read input format (RTE5+) and how to generate CASes that can be consumed by EDAs. 
  * 
  * <P> 
  * This implementation intentionally uses only the "addAnnotationOn(Jcas, String)" 
- * as the main annotation method. This may be a bit inefficient (especially when 
- * you use AE in addAnnotationOn()), but it makes this sample implementation as a
- * "generic" one. --- if you replace "addAnnotationOn()" for your own annotator, 
- * you automatically get other methods like "generateSingleTHPair()" and 
- * "processRawInputFormat()". 
- *    
- * <P>
- * Note that addAnnotationOn() of this sample LAP only annotates "Token" by 
- * whitespace separation. Replace it with a real linguistic analysys component, 
- * and override some codes for "Language" (and other metadata if needed). 
- * To see override example; see OpenNLPTaggerEN or any class that extends this 
- * class.  
- * 
+ * as the main annotation method. This may be a bit inefficient, but it makes this 
+ * implementation as a "generic" base. --- if you provide "addAnnotationOn()" for 
+ * your own annotator, you automatically get other methods like 
+ * "generateSingleTHPair()" and "processRawInputFormat()". 
+ * To see examples; see ExampleLAP, or OpenNLPTaggerEN, or other classes that extends 
+ * this abstract class. 
+ *  
  * <P>
  * Note that generating a new CAS is an expansive operation. try to reuse 
  * existing one by cleaning it up with reset(). -- this code does so in 
- * processRawInputFormat(). (This doesn't mean the code is efficient, but...) 
+ * processRawInputFormat(). 
  * 
  * <P> 
  * (Don't read this if you have no plan to use AE/AAEs soon.) -- Also note that when you 
@@ -74,7 +71,7 @@ import eu.excitementproject.eop.lap.LAPException;
  * @author Gil 
  *
  */
-public class LAP_ImplBase implements LAPAccess {
+public abstract class LAP_ImplBase implements LAPAccess {
 
 	public LAP_ImplBase() throws LAPException {
 		// setting up the AE for type system 
@@ -220,47 +217,50 @@ public class LAP_ImplBase implements LAPAccess {
 	}
 
 	@Override
-	public JCas addAnnotationOn(JCas aJCas, String viewName)
-			throws LAPException {
-
-		// prepare UIMA context (For "View" mapping), for the AE.  
-		UimaContextAdmin rootContext = UIMAFramework.newUimaContext(UIMAFramework.getLogger(), UIMAFramework.newDefaultResourceManager(), UIMAFramework.newConfigurationManager());
-		ResourceSpecifier desc = null; 
-		try {
-			InputStream s = this.getClass().getResourceAsStream(descClasspathName); 
-			//XMLInputSource input = new XMLInputSource(this.descPath);
-			XMLInputSource input = new XMLInputSource(s, null); 
-			desc = UIMAFramework.getXMLParser().parseAnalysisEngineDescription(input);
-		}
-//		catch (IOException e) {
-//			throw new LAPException("Unable to open AE descriptor file", e); 
+	public abstract JCas addAnnotationOn(JCas aJCas, String viewName) throws LAPException; 
+	
+//	@Override
+//	public JCas addAnnotationOn(JCas aJCas, String viewName)
+//			throws LAPException {
+//
+//		// prepare UIMA context (For "View" mapping), for the AE.  
+//		UimaContextAdmin rootContext = UIMAFramework.newUimaContext(UIMAFramework.getLogger(), UIMAFramework.newDefaultResourceManager(), UIMAFramework.newConfigurationManager());
+//		ResourceSpecifier desc = null; 
+//		try {
+//			InputStream s = this.getClass().getResourceAsStream(descClasspathName); 
+//			//XMLInputSource input = new XMLInputSource(this.descPath);
+//			XMLInputSource input = new XMLInputSource(s, null); 
+//			desc = UIMAFramework.getXMLParser().parseAnalysisEngineDescription(input);
+//		}
+////		catch (IOException e) {
+////			throw new LAPException("Unable to open AE descriptor file", e); 
+////		} 
+//		catch (InvalidXMLException e) {
+//			throw new LAPException("AE descriptor is not a valid XML", e);			
+//		}
+//		
+//		//setup sofa name mappings using the api
+//		HashMap<String,String> sofamappings = new HashMap<String,String>();
+//		sofamappings.put("_InitialView", viewName);
+//		UimaContextAdmin childContext = rootContext.createChild("WSSeparator", sofamappings);
+//		Map<String,Object> additionalParams = new HashMap<String,Object>();
+//		additionalParams.put(Resource.PARAM_UIMA_CONTEXT, childContext);
+//
+//		// time to run 
+//		try {
+//			//instantiate AE, passing the UIMA Context through the additional parameters map
+//			AnalysisEngine ae =  UIMAFramework.produceAnalysisEngine(desc,additionalParams);
+//			// and run the AE 
+//			ae.process(aJCas); 
+//		}
+//		catch (ResourceInitializationException e) {
+//			throw new LAPException("Unable to initialize the AE", e); 
 //		} 
-		catch (InvalidXMLException e) {
-			throw new LAPException("AE descriptor is not a valid XML", e);			
-		}
-		
-		//setup sofa name mappings using the api
-		HashMap<String,String> sofamappings = new HashMap<String,String>();
-		sofamappings.put("_InitialView", viewName);
-		UimaContextAdmin childContext = rootContext.createChild("WSSeparator", sofamappings);
-		Map<String,Object> additionalParams = new HashMap<String,Object>();
-		additionalParams.put(Resource.PARAM_UIMA_CONTEXT, childContext);
-
-		// time to run 
-		try {
-			//instantiate AE, passing the UIMA Context through the additional parameters map
-			AnalysisEngine ae =  UIMAFramework.produceAnalysisEngine(desc,additionalParams);
-			// and run the AE 
-			ae.process(aJCas); 
-		}
-		catch (ResourceInitializationException e) {
-			throw new LAPException("Unable to initialize the AE", e); 
-		} 
-		catch (AnalysisEngineProcessException e) {
-			throw new LAPException("AE reported back an Exception", e); 
-		}
-		return aJCas;
-	}
+//		catch (AnalysisEngineProcessException e) {
+//			throw new LAPException("AE reported back an Exception", e); 
+//		}
+//		return aJCas;
+//	}
 
 	@Override
 	public JCas addAnnotationOn(JCas aJCas) throws LAPException {
@@ -342,11 +342,6 @@ public class LAP_ImplBase implements LAPAccess {
 		m.addToIndexes(); 
 	}
 		
-	/**
-	 * Path to actual "worker AE". If you don't use AE, this isn't needed (unlike typeAE). 
-	 */
-	private final String descClasspathName = "/desc/WSSeparator.xml"; 
-
 	/**
 	 * Analysis engine that holds the type system. Note that even if you 
 	 * don't call AE, (or not using any AE), you need this. AE provides .newJCas() 
