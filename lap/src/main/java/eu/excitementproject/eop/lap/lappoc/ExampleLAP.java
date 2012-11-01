@@ -1,6 +1,5 @@
 package eu.excitementproject.eop.lap.lappoc;
 
-import org.apache.uima.jcas.JCas;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,11 +8,13 @@ import org.apache.uima.UIMAFramework;
 import org.apache.uima.UimaContextAdmin;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.Resource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
+
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 
@@ -48,7 +49,7 @@ public class ExampleLAP extends LAP_ImplBase implements LAPAccess {
 	}
 
 	@Override
-	public JCas addAnnotationOn(JCas aJCas, String viewName)
+	public void addAnnotationOn(JCas aJCas, String viewName)
 			throws LAPException {
 		// prepare UIMA context (For "View" mapping), for the AE.  
 		UimaContextAdmin rootContext = UIMAFramework.newUimaContext(UIMAFramework.getLogger(), UIMAFramework.newDefaultResourceManager(), UIMAFramework.newConfigurationManager());
@@ -82,7 +83,6 @@ public class ExampleLAP extends LAP_ImplBase implements LAPAccess {
 		catch (AnalysisEngineProcessException e) {
 			throw new LAPException("AE reported back an Exception", e); 
 		}
-		return aJCas;	
 	}
 	
 	/**
