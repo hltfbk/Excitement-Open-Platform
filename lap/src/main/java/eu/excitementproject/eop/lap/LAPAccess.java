@@ -1,8 +1,10 @@
 package eu.excitementproject.eop.lap;
 
 import java.io.File;
-import eu.excitementproject.eop.common.Components; 
-import org.apache.uima.jcas.JCas; 
+
+import org.apache.uima.jcas.JCas;
+
+import eu.excitementproject.eop.common.Components;
 
 /**
  * 
@@ -73,7 +75,7 @@ has the view name equal to viewName.
 	 * @return a reference to aJCas -- the same reference to the input aJCas object, which is successfully annotated, if no exception is thrown.   
 	 * @throws LAPException
 	 */
-	public JCas addAnnotationOn(JCas aJCas, String viewName) throws LAPException; 
+	public void addAnnotationOn(JCas aJCas, String viewName) throws LAPException; 
 	
 	/**
 	 * Same as addAnnotationOn(JCas, String), but on the single view CAS (_InitialView). 
@@ -82,7 +84,7 @@ has the view name equal to viewName.
 	 * @return a reference to aJCas -- the same reference to the input aJCas object, which is successfully annotated, if no exception is thrown.
 	 * @throws LAPException
 	 */
-	public JCas addAnnotationOn(JCas aJCas) throws LAPException; 
+	public void addAnnotationOn(JCas aJCas) throws LAPException; 
 	
 	
 }

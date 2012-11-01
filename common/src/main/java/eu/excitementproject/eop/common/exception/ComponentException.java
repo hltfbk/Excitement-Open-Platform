@@ -15,6 +15,10 @@ public class ComponentException extends BaseException {
 		super(message);
 	}
 
+	public ComponentException(Throwable cause) {
+	    super(cause);
+	}
+	
 	public ComponentException(String message, Throwable cause) {
 		super(message, cause);
 	}

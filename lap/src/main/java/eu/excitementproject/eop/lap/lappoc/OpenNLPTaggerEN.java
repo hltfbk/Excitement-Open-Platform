@@ -1,16 +1,16 @@
 package eu.excitementproject.eop.lap.lappoc;
 
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.ResourceInitializationException;
+import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
+
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import static org.uimafit.factory.AnalysisEngineFactory.*;
-import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
 import org.uimafit.factory.AggregateBuilder;
 
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 
@@ -30,7 +30,7 @@ public class OpenNLPTaggerEN extends LAP_ImplBase implements LAPAccess {
 	}	
 
 	@Override 
-	public JCas addAnnotationOn(JCas aJCas, String viewName)
+	public void addAnnotationOn(JCas aJCas, String viewName)
 			throws LAPException 
 	{
 		// prepare DKPro components 
@@ -61,7 +61,6 @@ public class OpenNLPTaggerEN extends LAP_ImplBase implements LAPAccess {
 		{
 			throw new LAPException("An exception while running the aggregate AE", e); 
 		}		
-		return aJCas; 
 	}
 
 }
