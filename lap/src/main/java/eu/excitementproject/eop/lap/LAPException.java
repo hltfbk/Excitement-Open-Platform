@@ -9,6 +9,10 @@ public class LAPException extends ComponentException {
 	public LAPException(String message) {
 		super(message);
 	}
+	
+	public LAPException(Throwable cause) {
+	    super(cause);
+	}
 
 	public LAPException(String message, Throwable cause) {
 		super(message, cause);
