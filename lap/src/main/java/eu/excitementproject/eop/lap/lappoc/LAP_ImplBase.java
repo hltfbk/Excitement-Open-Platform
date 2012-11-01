@@ -5,18 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-//import java.util.HashMap;
-//import java.util.Map;
 
 import org.apache.uima.UIMAFramework;
-//import org.apache.uima.UimaContextAdmin;
 import org.apache.uima.analysis_engine.AnalysisEngine;
-//import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.CASRuntimeException;
 import org.apache.uima.cas.impl.XmiCasSerializer;
 import org.apache.uima.jcas.JCas;
-//import org.apache.uima.resource.Resource;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.InvalidXMLException;
@@ -33,6 +28,11 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
+//import java.util.HashMap;
+//import java.util.Map;
+//import org.apache.uima.UimaContextAdmin;
+//import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+//import org.apache.uima.resource.Resource;
 
 /**
  * <P>
@@ -217,7 +217,7 @@ public abstract class LAP_ImplBase implements LAPAccess {
 	}
 
 	@Override
-	public abstract JCas addAnnotationOn(JCas aJCas, String viewName) throws LAPException; 
+	public abstract void addAnnotationOn(JCas aJCas, String viewName) throws LAPException; 
 	
 //	@Override
 //	public JCas addAnnotationOn(JCas aJCas, String viewName)
@@ -263,8 +263,8 @@ public abstract class LAP_ImplBase implements LAPAccess {
 //	}
 
 	@Override
-	public JCas addAnnotationOn(JCas aJCas) throws LAPException {
-		return addAnnotationOn(aJCas, "_InitialView"); 
+	public void addAnnotationOn(JCas aJCas) throws LAPException {
+		addAnnotationOn(aJCas, "_InitialView"); 
 	}
 	
 	/**
