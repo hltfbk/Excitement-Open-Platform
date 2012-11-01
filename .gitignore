@@ -10,3 +10,5 @@ target/
 *.ear
 
 .DS_Store
+
+bin/*
