@@ -13,8 +13,11 @@ import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.distance.BagOfLemmasSimilarity;
 import eu.excitementproject.eop.core.component.distance.BagOfWordsSimilarity;
 import eu.excitementproject.eop.core.component.distance.DistanceCalculation;
+import eu.excitementproject.eop.core.component.distance.DistanceValue;
+import eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 
@@ -46,7 +49,13 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 		components = new ArrayList<DistanceCalculation>();
 		DistanceCalculation component = new BagOfWordsSimilarity();
 		component.initialize(config);
+		DistanceCalculation component1 = new FixedWeightTokenEditDistance();
+		component1.initialize(config);
+		DistanceCalculation component2 = new BagOfLemmasSimilarity();
+		component2.initialize(config);
 		components.add(component);
+		components.add(component1);
+		components.add(component2);
 		
 		model = new HashMap<String, Vector<Double>>(); // or read in the model via configuration
 		
@@ -69,7 +78,7 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 //			JCas jcas4 = lap.generateSingleTHPairCAS("b b b", "a a a", "NONENTAILMENT"); 
 //			JCas jcas5 = lap.generateSingleTHPairCAS("b b a","a a a", "NONENTAILMENT"); 
 			JCas jcas3 = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
-			JCas jcas4 = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable", "NONENTAILMENT"); 
+			JCas jcas4 = lap.generateSingleTHPairCAS("The train was uncomfortable", "the train was comfortable", "NONENTAILMENT"); 
 //			trainingData.add(jcas1); 
 //			trainingData.add(jcas2); 
 			trainingData.add(jcas3); 
@@ -86,7 +95,12 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 			ComponentException {		
 		Vector<Double> featureVector = new Vector<Double>();
 		for (DistanceCalculation component : components) {
-			featureVector.addAll(component.calculation(aCas).getDistanceVector());
+			DistanceValue dValue = component.calculation(aCas);
+			if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+				featureVector.add(dValue.getDistance());
+				continue;
+			}
+			featureVector.addAll(dValue.getDistanceVector());
 		}
 		
 		double minDistance = 2.0d;
@@ -141,8 +155,13 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 				featureVector = model.get(goldAnswer);
 				int index = 0;
 				for (DistanceCalculation component : components) {
-					Vector<Double> values = component.calculation(cas).getDistanceVector();
-					for (Double value : values) {
+					DistanceValue dValue = component.calculation(cas);
+					if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+						featureVector.set(index, featureVector.get(index) + dValue.getDistance());
+						index ++;
+						continue;
+					}
+					for (Double value : dValue.getDistanceVector()) {
 						featureVector.set(index, featureVector.get(index) + value);
 						index ++;
 					}
@@ -155,7 +174,12 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 				
 				// first score
 				for (DistanceCalculation component : components) {
-					featureVector.addAll(component.calculation(cas).getDistanceVector());
+					DistanceValue dValue = component.calculation(cas);
+					if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+						featureVector.add(dValue.getDistance());
+						continue;
+					}
+					featureVector.addAll(dValue.getDistanceVector());
 				}
 			}
 			model.put(goldAnswer, featureVector);

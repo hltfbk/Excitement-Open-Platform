@@ -109,7 +109,7 @@ public class BagOfWordsSimilarity implements DistanceCalculation {
      * @param hBag the bag of tokens of H stored in a HashMap
      * @return a vector of double values, which contains: 1) the ratio between the number of overlapping tokens and the number of tokens in H; 2) the ratio between the number of overlapping tokens and the number of tokens in T; 3) the product of the above two
      */
-	private Vector<Double> calculateSimilarity(HashMap<String, Integer> tBag, HashMap<String, Integer> hBag) {
+	protected Vector<Double> calculateSimilarity(HashMap<String, Integer> tBag, HashMap<String, Integer> hBag) {
 		double sum = 0.0d;
 		int hSize = 0;
 		int tSize = 0;
@@ -133,7 +133,7 @@ public class BagOfWordsSimilarity implements DistanceCalculation {
     /**
      * BoWSimilarityValue extends DistanceValue
      */
-    private class BoWSimilarityValue extends DistanceValue {
+    protected class BoWSimilarityValue extends DistanceValue {
 
     	public BoWSimilarityValue(double distance, double rawValue)
     	{

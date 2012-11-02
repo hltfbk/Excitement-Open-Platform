@@ -30,7 +30,7 @@ public class ClassificationEDATest {
 	        {
 	        	System.err.println(e.getMessage()); 
 	        }
-			JCas aCas = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable", "NONENTAILMENT"); 
+			JCas aCas = lap.generateSingleTHPairCAS("The train was uncomfortable", "the train was comfortable", "NONENTAILMENT"); 
 			JCas bCas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
 			
 			ClassificationTEDecision decision1 = ceda.process(aCas);
