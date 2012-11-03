@@ -1,11 +1,15 @@
 package eu.excitementproject.eop.core;
 
+import static org.junit.Assert.*;
+
+import java.io.File;
+
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+import eu.excitementproject.eop.lap.lappoc.OpenNLPTaggerEN;
 
 public class ClassificationEDATest {
 
@@ -17,14 +21,18 @@ public class ClassificationEDATest {
 		CommonConfig config = null;
 		
 		try {
+			// training
 			ceda.initialize(config);
 			ceda.startTraining(config);
+			File modelFile = new File(ceda.getModelFile());
+			assertTrue(modelFile.exists());
 			System.out.println("training done");
 			
-	        ExampleLAP lap = null; 
+			// testing
+			OpenNLPTaggerEN lap = null; 
 	        try 
 	        {
-	        	lap = new ExampleLAP(); 
+	        	lap = new OpenNLPTaggerEN();
 	        }
 	        catch (LAPException e)
 	        {
