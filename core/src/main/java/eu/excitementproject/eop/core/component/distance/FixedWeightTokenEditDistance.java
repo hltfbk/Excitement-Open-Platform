@@ -102,17 +102,17 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     /* 
 	 * @see DistanceCalculation#calculation()
 	 */
-    public DistanceValue calculation(JCas aCas) throws DistanceComponentException {
+    public DistanceValue calculation(JCas jcas) throws DistanceComponentException {
     	
     	DistanceValue distanceValue = null;
     	
     	try {
     	    // get Text
-	    	JCas tView = aCas.getView("TextView");
+	    	JCas tView = jcas.getView("TextView");
 	    	List<Token> tTokensSequence = getTokenSequences(tView);
 	    	
 	    	// get Hypothesis
-	    	JCas hView = aCas.getView("HypothesisView"); 
+	    	JCas hView = jcas.getView("HypothesisView"); 
 	    	List<Token> hTokensSequence = getTokenSequences(hView);
 	    	
 	    	distanceValue = distance(tTokensSequence, hTokensSequence);
@@ -134,11 +134,11 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      * @return The list of tokens in the CAS.
      *
 	 */
-    private List<Token> getTokenSequences(JCas aCas) {
+    private List<Token> getTokenSequences(JCas jcas) {
     	
     	List<Token> tokensList = new ArrayList<Token>();
     	
-    	AnnotationIndex<Annotation> tokenIndex = aCas.getAnnotationIndex(Token.type);
+    	AnnotationIndex<Annotation> tokenIndex = jcas.getAnnotationIndex(Token.type);
     	
     	Iterator<Annotation> tokenIter = tokenIndex.iterator();
     	
