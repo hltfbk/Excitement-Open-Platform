@@ -14,7 +14,8 @@ public class EditDistanceEDATest {
 
 	@Test
 	public void test() {
-    	        
+    	
+		
         ExampleLAP lap = null; 
         try 
         {
@@ -26,12 +27,7 @@ public class EditDistanceEDATest {
         }
         
 		List<JCas> casList = new ArrayList<JCas>(2);
-		//CasCreation cas1 = new CasCreation("The person is hired as a postdoc.", 
-		//			"The person is hired as a postdoc.", "ENTAILMENT");
-		//casList.add(cas1.create());
-		//CasCreation cas2 = new CasCreation("The train was unconfortable.", 
-		//		    "The train was expensive.", "NONENTAILMENT");
-		//casList.add(cas2.create());
+		
 		try {
 			JCas jcas1 = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
 			JCas jcas2 = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable", "NONENTAILMENT"); 
@@ -42,21 +38,26 @@ public class EditDistanceEDATest {
 			e.printStackTrace(); 
 		}
 		
-		EditDistanceEDA<IEditDistanceTEDecision> edit = 
-				new EditDistanceEDA<IEditDistanceTEDecision>(casList);
+		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<IEditDistanceTEDecision>();
+		
 		CommonConfig config = null;
 		
 		try {
 			
-			edit.initialize(config);
-			edit.startTraining(config);
-			IEditDistanceTEDecision teDecision1 = edit.process(casList.get(0));
+			editDistanceEDA.initialize(config);
+			editDistanceEDA.startTraining(config);
+			IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(casList.get(0));
+			// System.err.println(teDecision1.getDecision().toString()) ;
 			assertTrue(teDecision1.getDecision().toString().equals("Entailment"));
-			IEditDistanceTEDecision teDecision2 = edit.process(casList.get(1));
+			IEditDistanceTEDecision teDecision2 = editDistanceEDA.process(casList.get(1));
+			// System.err.println(teDecision2.getDecision().toString()) ;
 			assertTrue(teDecision2.getDecision().toString().equals("NonEntailment"));
 		
-		}catch(Exception e) {
+		} catch(Exception e) {
+			
 			e.printStackTrace();
+			
 		}
 		
     }

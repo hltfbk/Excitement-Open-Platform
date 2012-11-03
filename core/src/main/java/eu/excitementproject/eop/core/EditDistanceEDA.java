@@ -1,10 +1,8 @@
 
 package eu.excitementproject.eop.core;
 
-import java.lang.reflect.Array;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Vector;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +17,8 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.distance.*;
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+import eu.excitementproject.eop.lap.LAPException;
 
 
 /**
@@ -60,28 +60,37 @@ public class EditDistanceEDA<T extends TEDecision>
 		this.trainingSet = null;
 		
     }
-	
-	/**
-	 * Construct an edit distance EDA.
-	 * It is a temporary solution to test the class providing it with a training data set
-	 */
-	public EditDistanceEDA(List<JCas> traininSet) {
-    	
-		this.threshold = 0.0;
-		this.component = null;
-		this.trainingSet = traininSet;
-		
-    }
-	
+
 	
 	/* 
 	 * @see EDABasic#initialize()
 	 */
 	public void initialize (CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
 		
-		checkConfiguration(config);
-		component = new FixedWeightTokenEditDistance();
-		component.initialize(config);
+		ExampleLAP lap = null; 
+		
+        try {
+        	
+        	// add 2 examples in the training set; it is a temporary solution to have a training set
+        	// for training the algorithm.
+        	lap = new ExampleLAP();
+			JCas jcas1 = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
+			JCas jcas2 = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable", "NONENTAILMENT"); 
+			trainingSet = new ArrayList<JCas>(2);
+			trainingSet.add(jcas1); 
+			trainingSet.add(jcas2);
+			
+			checkConfiguration(config);
+			component = new FixedWeightTokenEditDistance();
+			component.initialize(config);
+			
+		} catch (LAPException e) {
+			throw new EDAException(e.getMessage());
+		} catch (ConfigurationException e) {
+			throw e;
+		} catch (ComponentException e) {
+			throw e;
+		}
 		
 	}
 	
@@ -89,12 +98,13 @@ public class EditDistanceEDA<T extends TEDecision>
 	/* 
 	 * @see EDABasic#process()
 	 */
-	public IEditDistanceTEDecision process(JCas aCas) throws EDAException, ComponentException {
+	public IEditDistanceTEDecision process(JCas jcas) throws EDAException, ComponentException {
 	
-		String pairId = getPairId(aCas);
+		String pairId = getPairId(jcas);
 		
-		DistanceValue distanceValue =  component.calculation(aCas);
+		DistanceValue distanceValue =  component.calculation(jcas);
 		double distance = distanceValue.getDistance();
+		// System.err.println("distance:" + distance);
 		
 		// During the test phase the method applies the threshold, so that
 		// pairs resulting in a distance below the threshold are classiﬁed as ENTAILMENT, while pairs 
@@ -112,6 +122,8 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public void shutdown() {
 		
+		trainingSet.clear();
+		
 	}
 	
 	
@@ -122,8 +134,8 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		try {
 			
-			//it is a temporary solution to train and test the system.
 			threshold = sequentialSearch(trainingSet);
+			// System.err.println("threshold:" + threshold);
 			
 		} catch (ConfigurationException e) {
 			throw e;
@@ -156,25 +168,25 @@ public class EditDistanceEDA<T extends TEDecision>
      * @return The threshold
      * @throws ComponentException, EDAException, Exception
      */
-	private double sequentialSearch(List<JCas> casList) 
+	private double sequentialSearch(List<JCas> jcasList) 
 			throws ComponentException, EDAException, Exception {
 		
 		double threshold = 0.0;
 		
 		try {
 		
-			List<DistanceValue> distanceValueList = getDistanceValues(casList);
-			List<String> entailmentValueList = getEntailmentAnnotation(casList);
+			List<DistanceValue> distanceValueList = getDistanceValues(jcasList);
+			List<String> entailmentValueList = getEntailmentAnnotation(jcasList);
 			
 			// the distanceValueList sorted in increasing order
 			List<DistanceValue> sortedDistanceValueList = sortDistanceValues(distanceValueList);
 			
 			// get the smallest distance value. It is the first element of the array.
 			double min = getMinimum(sortedDistanceValueList);
-			// System.out.println("min:" + min);
+			// System.err.println("min:" + min);
 			// get the largest distance value. It is the last element of the array.
 			double max = getMaximum(sortedDistanceValueList);
-			// System.out.println("max:" + max);
+			// System.err.println("max:" + max);
 			// get the increment
 			double increment = getIncrement(sortedDistanceValueList)/2;
 			// System.out.println("increment:" + increment);
@@ -287,14 +299,14 @@ public class EditDistanceEDA<T extends TEDecision>
      * @param aCas The CAS
      * @return The pair identifier
      */
-	private String getPairId(JCas aCas) {
+	private String getPairId(JCas jcas) {
 		
 		Pair p = null;
 		
-		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
-		while(pairIter.hasNext()) {
-			p = (Pair) pairIter.next();
-		}
+		FSIterator<TOP> pairIter = jcas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
+		
+		if (pairIter.hasNext())
+			p = (Pair)pairIter.next();
 		
 		return p.getPairID();
 	
@@ -336,13 +348,15 @@ public class EditDistanceEDA<T extends TEDecision>
      * @return The list of distance values.
      * @throws DistanceComponentException
      */
-	private List<DistanceValue> getDistanceValues(List<JCas> aCasList)
+	private List<DistanceValue> getDistanceValues(List<JCas> jcasList)
 			throws DistanceComponentException {
 	
-		List<DistanceValue> distanceValues = new ArrayList<DistanceValue>(aCasList.size());
+		List<DistanceValue> distanceValues = new ArrayList<DistanceValue>(jcasList.size());
 		
 		try {
-			Iterator<JCas> iterator = aCasList.iterator();
+			
+			Iterator<JCas> iterator = jcasList.iterator();
+			
 			while (iterator.hasNext()) {
 				JCas aCas = iterator.next();
 				DistanceValue distanceValue = component.calculation(aCas);
@@ -366,18 +380,18 @@ public class EditDistanceEDA<T extends TEDecision>
      * @return The list of the annotations.
      * @throws Exception
      */
-	private List<String> getEntailmentAnnotation(List<JCas> aCasList) 
+	private List<String> getEntailmentAnnotation(List<JCas> jcasList) 
 			throws Exception {
 			
-		List<String> entailmentValueList = new ArrayList<String>(aCasList.size());
+		List<String> entailmentValueList = new ArrayList<String>(jcasList.size());
 			
 		try {
 			
-			Iterator<JCas> iterator = aCasList.iterator();
+			Iterator<JCas> iterator = jcasList.iterator();
 			while (iterator.hasNext()) {
 				Pair p = null;
-				JCas aCas = iterator.next();
-				FSIterator<TOP> pairIter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
+				JCas jcas = iterator.next();
+				FSIterator<TOP> pairIter = jcas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 				p = (Pair) pairIter.next();
 				String goldAnswer = p.getGoldAnswer();
 				entailmentValueList.add(goldAnswer);
@@ -400,7 +414,8 @@ public class EditDistanceEDA<T extends TEDecision>
 	 * @param tDeleted Token deleted.
 	 * @return Weight of deleting token.
 	 */
-	public double[] pocketAlgortihm() {
+	public double[] pocketAlgortihm(List<JCas> jcasList) 
+			throws ComponentException, EDAException, Exception {
 		
 		double threshold = 0.5;
 		int maxNumberOfIterations = 1000;
@@ -474,10 +489,14 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 	}
 	
-	// public static void main(String[] args) {
+    // public static void main(String[] args) {
 		
 		
-	// 	EditDistanceEDA edit = new EditDistanceEDA();
+		// EditDistanceEDA edit = new EditDistanceEDA();
+		// double[] result = edit.pocketAlgortihm();
+		// System.err.println(result[0] + " " + result[1]);
+		
+		
 	// 	CommonConfig config = null;
 		
 	// 	try {
@@ -501,6 +520,6 @@ public class EditDistanceEDA<T extends TEDecision>
 	// 		e.printStackTrace();
 	// 	}
 		
-	// }
+	//}
 	
 }
