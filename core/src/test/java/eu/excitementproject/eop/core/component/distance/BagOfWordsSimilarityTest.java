@@ -1,10 +1,12 @@
 package eu.excitementproject.eop.core.component.distance;
 
+import java.io.File;
+
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+import eu.excitementproject.eop.lap.PlatformCASProber;
 
 public class BagOfWordsSimilarityTest {
 	@Test
@@ -13,27 +15,42 @@ public class BagOfWordsSimilarityTest {
 		BagOfWordsSimilarity bs = new BagOfWordsSimilarity();
 		
 		JCas cas = null;
-		ExampleLAP lap = null;
+//		OpenNLPTaggerEN lap = null;
+		
+//		File inputFile = new File("./src/test/resources/small.xml"); // this only holds the first 3 of them.. generate 3 XMIs (first 3 of t.xml) 
+//		File inputFile = new File("./src/test/resources/t.xml");  // this is full, and will generate 800 XMIs (serialized CASes)
+//		File inputFile = new File("./src/test/resources/English_dev.xml");  // this is full, and will generate 800 XMIs (serialized CASes)
+//		File inputFile = new File("./src/test/resources/German_dev.xml");  // this is full, and will generate 800 XMIs (serialized CASes)
+		File outputDir = new File("./target/EN/"); 
+//		File outputDir = new File("./target/DE/"); 
 
+		
         try 
         {
-        	lap = new ExampleLAP(); 
-        	cas = lap.generateSingleTHPairCAS("I'm a student .", "I am a person .", "ENTAILMENT"); 
-//        	cas = lap.generateSingleTHPairCAS("a a", "a a b a a", "ENTAILMENT"); 
-//        	cas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.", "The person must have a PhD.", "ENTAILMENT"); 
+        	// LAP
+//        	lap = new OpenNLPTaggerEN();
+//        	lap = new OpenNLPTaggerDE();
+//			lap.processRawInputFormat(inputFile, outputDir);
+        	
+        	// test BoW similarity module
+			for (File xmi : outputDir.listFiles()) {
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				cas = PlatformCASProber.probeXmi(xmi, System.out);
+				DistanceValue bowsim = bs.calculation(cas);
+	    		System.out.println(bowsim.getDistance());
+	    		System.out.println(bowsim.getUnnormalizedValue());
+	    		System.out.println(bowsim.getDistanceVector());
+				cas.reset(); 
+			}
         }
         catch(LAPException e)
         {
         	System.err.println(e.getMessage()); 
         }
-        try {
-    		DistanceValue bowsim = bs.calculation(cas);
-    		System.out.println(bowsim.getDistance());
-    		System.out.println(bowsim.getUnnormalizedValue());
-    		System.out.println(bowsim.getDistanceVector());
-        } catch(Exception e) {
-        	System.err.println(e.getMessage());
+        catch (DistanceComponentException e) {
+        	System.err.println(e.getMessage()); 
         }
-        
     }
 }
