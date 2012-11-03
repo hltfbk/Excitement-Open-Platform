@@ -1,5 +1,11 @@
 package eu.excitementproject.eop.core;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,8 +24,7 @@ import eu.excitementproject.eop.core.component.distance.BagOfWordsSimilarity;
 import eu.excitementproject.eop.core.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.core.component.distance.DistanceValue;
 import eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance;
-import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+import eu.excitementproject.eop.lap.PlatformCASProber;
 
 /**
  * The <code>ClassificationEDA</code> class implements the <code>EDABasic</code> interface.
@@ -34,18 +39,33 @@ import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
  */
 public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 
-//	list of components used in this EDA
+public String getLanguage() {
+		return language;
+	}
+
+	public String getModelFile() {
+		return modelFile;
+	}
+
+	public String getXmiDIR() {
+		return xmiDIR;
+	}
+
+	//	list of components used in this EDA
 	private List<DistanceCalculation> components;
 	
-//	the model trained, consisting of parameter name and value pairs
-	private HashMap<String, Vector<Double>> model;
+	private String language;
 	
-//	training data
-	private List<JCas> trainingData;
+//	the model file, consisting of parameter name and value pairs
+	private String modelFile;
+	
+//	training data directory
+	private String xmiDIR;
 
 	@Override
 	public void initialize(CommonConfig config) throws ConfigurationException,
 			EDAException, ComponentException {
+		
 		components = new ArrayList<DistanceCalculation>();
 		DistanceCalculation component = new BagOfWordsSimilarity();
 		component.initialize(config);
@@ -55,44 +75,34 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 		component2.initialize(config);
 		components.add(component);
 		components.add(component1);
-		components.add(component2);
+//		components.add(component2);
 		
-		model = new HashMap<String, Vector<Double>>(); // or read in the model via configuration
+		language = "EN";
 		
-		trainingData = new ArrayList<JCas>(2); // or read in the training data via configuration
+		modelFile = "./src/test/resources/ClassificationEDAModel" + language; // or read in the model via configuration
 		
-        ExampleLAP lap = null; 
-        try 
-        {
-        	lap = new ExampleLAP(); 
-        }
-        catch (LAPException e)
-        {
-        	System.err.println(e.getMessage()); 
-        }
-		
-		try {
-//			JCas jcas1 = lap.generateSingleTHPairCAS("a a a","a a a", "ENTAILMENT"); 
-//			JCas jcas2 = lap.generateSingleTHPairCAS("b a a", "a a a", "ENTAILMENT"); 
-//			JCas jcas3 = lap.generateSingleTHPairCAS("a a b","a a a", "ENTAILMENT"); 
-//			JCas jcas4 = lap.generateSingleTHPairCAS("b b b", "a a a", "NONENTAILMENT"); 
-//			JCas jcas5 = lap.generateSingleTHPairCAS("b b a","a a a", "NONENTAILMENT"); 
-			JCas jcas3 = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
-			JCas jcas4 = lap.generateSingleTHPairCAS("The train was uncomfortable", "the train was comfortable", "NONENTAILMENT"); 
-//			trainingData.add(jcas1); 
-//			trainingData.add(jcas2); 
-			trainingData.add(jcas3); 
-			trainingData.add(jcas4);
-//			trainingData.add(jcas5);
-		} catch (LAPException e)
-		{
-			e.printStackTrace(); 
-		}
+		xmiDIR = "./target/" + language + "/"; // or read in the training data via configuration
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ClassificationTEDecision process(JCas aCas) throws EDAException,
-			ComponentException {		
+			ComponentException {
+		// read in the model
+		HashMap<String, Vector<Double>> model = null;
+       try
+       {
+    	   ObjectInputStream in = new ObjectInputStream(new FileInputStream(modelFile));
+    	   model = (HashMap<String, Vector<Double>>) in.readObject();
+           in.close();
+       } catch(IOException e)
+       {
+           System.err.println(e.getMessage());
+       } catch(ClassNotFoundException e)
+       {
+    	   System.err.println(e.getMessage());
+       }
+		
 		Vector<Double> featureVector = new Vector<Double>();
 		for (DistanceCalculation component : components) {
 			DistanceValue dValue = component.calculation(aCas);
@@ -104,7 +114,7 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 		}
 		
 		double minDistance = 2.0d;
-		String currentLabel = null;
+		String currentLabel = "ABSTAIN";
 		for (String goldAnswer : model.keySet()) {
 			if (goldAnswer.startsWith("#")) {
 				continue;
@@ -132,14 +142,22 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 	@Override
 	public void shutdown() {
 		components.clear();
-		model.clear();
-		trainingData.clear();
+		modelFile = "";
+		xmiDIR = "";
 	}
 
 	@Override
 	public void startTraining(CommonConfig c) throws ConfigurationException,
 			EDAException, ComponentException {
-		for (JCas cas : trainingData) {
+		JCas cas;
+//		the model trained, consisting of parameter name and value pairs
+		HashMap<String, Vector<Double>> model = new HashMap<String, Vector<Double>>();
+
+		for (File xmi : (new File(xmiDIR)).listFiles()) {
+			if (!xmi.getName().endsWith(".xmi")) {
+				continue;
+			}
+			cas = PlatformCASProber.probeXmi(xmi, System.out);
 			String goldAnswer = getGoldLabel(cas);
 			if (null == getGoldLabel(cas)) {
 				continue;
@@ -183,6 +201,7 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 				}
 			}
 			model.put(goldAnswer, featureVector);
+			cas.reset(); 
 		}
 		
 		// store all the averaged scores in model
@@ -197,6 +216,17 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 				featureVector.set(i, featureVector.get(i) / number.get(0));
 			}
 		}
+		
+		// serialize the model
+	    try
+	    {
+	    	ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(modelFile));
+	        out.writeObject(model);
+	        out.close();
+	    }catch(IOException e)
+	    {
+	         System.err.println(e.getMessage());
+	    }
 	}
 	
 	/**
