@@ -23,7 +23,7 @@ public class ClassificationEDATest {
 		try {
 			// training
 			ceda.initialize(config);
-			ceda.startTraining(config);
+//			ceda.startTraining(config);
 			File modelFile = new File(ceda.getModelFile());
 			assertTrue(modelFile.exists());
 			System.out.println("training done");
