@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.cas.CASException;
+//import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.tcas.Annotation;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
@@ -243,7 +243,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      */
     public DistanceValue distance(List<Token> source, List<Token> target ) throws ArithmeticException {
         	
-    	DistanceValue distanceValue = new EditDistanceValue(0, false, 0);
+    	//DistanceValue distanceValue = new EditDistanceValue(0, false, 0);
     	
     	// distanceTable is a table with sizeSource+1 rows and sizeTarget+1 columns
     	double[][] distanceTable = new double[source.size() + 1][target.size() + 1];
