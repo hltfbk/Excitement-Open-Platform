@@ -13,6 +13,8 @@ import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.ae.tokenizer.MaxentTokenizerAE;
+import eu.excitementproject.eop.lap.ae.tokenizer.OpenNLPTokenizerAE;
 
 /**
  * 
@@ -35,10 +37,13 @@ public class OpenNLPTaggerEN extends LAP_ImplBase implements LAPAccess {
 	{
 		// prepare DKPro components 
 		AnalysisEngineDescription seg = null; 
+		
 		AnalysisEngineDescription tagger = null; 
 		try {
-			seg = createPrimitiveDescription(BreakIteratorSegmenter.class);
-			tagger = createPrimitiveDescription(OpenNlpPosTagger.class);
+			seg = createPrimitiveDescription(BreakIteratorSegmenter.class, BreakIteratorSegmenter.PARAM_SPLIT_AT_APOSTROPHE, true);
+			tagger = createPrimitiveDescription(MaxentTokenizerAE.class);
+			//tagger = createPrimitiveDescription(OpenNLPTokenizerAE.class, OpenNLPTokenizerAE.PARAM_MODEL_FILE, "D:/Java/Jars/opennlp-tools-1.3.0/models/english/tokenize/EnglishTok.bin.gz");
+			//tagger = createPrimitiveDescription(OpenNlpPosTagger.class);
 		}
 		catch (ResourceInitializationException re)
 		{
