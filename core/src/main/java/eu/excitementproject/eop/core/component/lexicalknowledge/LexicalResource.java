@@ -2,7 +2,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.Components;
+import eu.excitementproject.eop.common.Component;
 import eu.excitementproject.eop.core.representation.parsetree.PartOfSpeech;
 
 /**
@@ -18,7 +18,7 @@ import eu.excitementproject.eop.core.representation.parsetree.PartOfSpeech;
  * @since 
  * @param <I> RuleInfo for LexicalRule implementation 
  */
-public interface LexicalResource<I extends RuleInfo> extends Components {
+public interface LexicalResource<I extends RuleInfo> extends Component {
 
 
 	/**

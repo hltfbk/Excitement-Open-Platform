@@ -19,7 +19,7 @@ import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.distance.BagOfLemmasSimilarity;
+//import eu.excitementproject.eop.core.component.distance.BagOfLemmasSimilarity;
 import eu.excitementproject.eop.core.component.distance.BagOfWordsSimilarity;
 import eu.excitementproject.eop.core.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.core.component.distance.DistanceValue;
@@ -68,11 +68,11 @@ public String getLanguage() {
 		
 		components = new ArrayList<DistanceCalculation>();
 		DistanceCalculation component = new BagOfWordsSimilarity();
-		component.initialize(config);
+		//component.initialize(config); // Gil: initialize() is removed from interface Component
 		DistanceCalculation component1 = new FixedWeightTokenEditDistance();
-		component1.initialize(config);
-		DistanceCalculation component2 = new BagOfLemmasSimilarity();
-		component2.initialize(config);
+		//component1.initialize(config); // Gil: initialize() is removed from interface Component
+		//DistanceCalculation component2 = new BagOfLemmasSimilarity();
+		//component2.initialize(config); // Gil: initialize() is removed from interface Component
 		components.add(component);
 		components.add(component1);
 //		components.add(component2);
@@ -106,11 +106,14 @@ public String getLanguage() {
 		Vector<Double> featureVector = new Vector<Double>();
 		for (DistanceCalculation component : components) {
 			DistanceValue dValue = component.calculation(aCas);
-			if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+			Vector<Double> distanceVector = component.calculateScores(aCas); 
+			//if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+			if (null == distanceVector || distanceVector.size() == 0) {
 				featureVector.add(dValue.getDistance());
 				continue;
 			}
-			featureVector.addAll(dValue.getDistanceVector());
+			//featureVector.addAll(dValue.getDistanceVector());
+			featureVector.addAll(distanceVector); 	
 		}
 		
 		double minDistance = 2.0d;
@@ -174,12 +177,14 @@ public String getLanguage() {
 				int index = 0;
 				for (DistanceCalculation component : components) {
 					DistanceValue dValue = component.calculation(cas);
-					if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					Vector<Double> distanceVector = component.calculateScores(cas); 
+					//if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					if (null == distanceVector || distanceVector.size() == 0) {
 						featureVector.set(index, featureVector.get(index) + dValue.getDistance());
 						index ++;
 						continue;
 					}
-					for (Double value : dValue.getDistanceVector()) {
+					for (Double value : distanceVector) {
 						featureVector.set(index, featureVector.get(index) + value);
 						index ++;
 					}
@@ -193,11 +198,13 @@ public String getLanguage() {
 				// first score
 				for (DistanceCalculation component : components) {
 					DistanceValue dValue = component.calculation(cas);
-					if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					Vector<Double> vec = component.calculateScores(cas);
+					//if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					if (null == vec || vec.size() == 0) {
 						featureVector.add(dValue.getDistance());
 						continue;
 					}
-					featureVector.addAll(dValue.getDistanceVector());
+					featureVector.addAll(vec);
 				}
 			}
 			model.put(goldAnswer, featureVector);

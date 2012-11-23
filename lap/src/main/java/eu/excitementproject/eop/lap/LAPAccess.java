@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.common.Components;
+import eu.excitementproject.eop.common.Component;
 
 /**
  * 
@@ -20,7 +20,7 @@ import eu.excitementproject.eop.common.Components;
  * @author Gil
  * @since oct 1, 2012 
  */
-public interface LAPAccess extends Components {
+public interface LAPAccess extends Component {
 
 	/**
 	 * This method gets two strings as input and generates a CAS for an EDA. The resulting CAS must 

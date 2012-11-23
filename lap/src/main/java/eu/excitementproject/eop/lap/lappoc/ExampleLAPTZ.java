@@ -267,7 +267,7 @@ public class ExampleLAPTZ implements LAPAccess {
     
     
     // From "interface Components" 
-    @Override
+    //@Override //Gil: initialize is removed from interface Component
     public void initialize(CommonConfig config) throws ConfigurationException,
             ComponentException {
         // TODO this example does not use configuration. But when you replace it with 
