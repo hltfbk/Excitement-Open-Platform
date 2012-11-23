@@ -2,7 +2,7 @@ package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.Components;
+import eu.excitementproject.eop.common.Component;
 import eu.excitementproject.eop.core.representation.parsetree.AbstractNode;
 
 /**
@@ -15,7 +15,7 @@ import eu.excitementproject.eop.core.representation.parsetree.AbstractNode;
  * <P> Type argument I and S follow that of SyntacticRule (thus, I=Info and S=BasicNode, for BasicNode based syntactic Rule)
  * @author Gil
  */
-public interface SyntacticResource<I,S extends AbstractNode<I,S>> extends Components {
+public interface SyntacticResource<I,S extends AbstractNode<I,S>> extends Component {
 
 	/**
 	 * The interface takes in a parse tree (which is represented in common parse tree 

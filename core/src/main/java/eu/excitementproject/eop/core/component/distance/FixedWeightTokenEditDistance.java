@@ -16,6 +16,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.scoring.ScoringComponentException;
 
 
 /**
@@ -102,6 +103,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     /* 
 	 * @see DistanceCalculation#calculation()
 	 */
+    @Override
     public DistanceValue calculation(JCas jcas) throws DistanceComponentException {
     	
     	DistanceValue distanceValue = null;
@@ -125,7 +127,37 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	return distanceValue;
     	
     }
-    
+
+    // Made up from calculation(), to support vector returning method 
+    // of calculateScores() (to support the super-interface ScoringComponent )
+    // -- Gil 
+    @Override
+    public Vector<Double> calculateScores(JCas jcas) throws ScoringComponentException {
+    	
+    	DistanceValue distanceValue = null;
+    	Vector<Double> v = new Vector<Double>(); 
+    	
+    	try {
+    	    // get Text
+	    	JCas tView = jcas.getView("TextView");
+	    	List<Token> tTokensSequence = getTokenSequences(tView);
+	    	
+	    	// get Hypothesis
+	    	JCas hView = jcas.getView("HypothesisView"); 
+	    	List<Token> hTokensSequence = getTokenSequences(hView);
+	    	
+	    	distanceValue = distance(tTokensSequence, hTokensSequence);
+	    	
+    	} catch (Exception e) {
+    		//e.printStackTrace();
+    		throw new ScoringComponentException(e.getMessage());
+    	}
+    	
+    	v.add(distanceValue.getDistance()); 
+    	v.add(distanceValue.getUnnormalizedValue()); 
+    	return v;
+    }
+
     
     /* 
 	 * Returns a list of tokens contained in the specified CAS
@@ -292,15 +324,17 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      */
     private class EditDistanceValue extends DistanceValue {
 
+    	// DistanceValue no longer has the vector -- Gil 
     	public EditDistanceValue(double distance, boolean simBased, double rawValue)
     	{
-    		super(distance, simBased, rawValue, null); 
+    		//super(distance, simBased, rawValue, null); 
+    		super(distance, simBased, rawValue); 
     	}
     	
-    	public EditDistanceValue(double distance, boolean simBased, double rawValue, Vector<Double> distanceVector)
-    	{
-    		super(distance, simBased, rawValue, distanceVector); 
-    	}
+//    	public EditDistanceValue(double distance, boolean simBased, double rawValue, Vector<Double> distanceVector)
+//    	{
+//    		super(distance, simBased, rawValue, distanceVector); 
+//    	}
     	
     }
 
