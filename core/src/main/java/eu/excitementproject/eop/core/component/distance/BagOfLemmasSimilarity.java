@@ -9,9 +9,11 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import eu.excitementproject.eop.core.component.scoring.ScoringComponentException;
 
 public class BagOfLemmasSimilarity extends BagOfWordsSimilarity {
-	
+
+	@Override
 	public DistanceValue calculation(JCas aCas)
 			throws DistanceComponentException {
 //		(1 - (T&H/H))
@@ -38,9 +40,44 @@ public class BagOfLemmasSimilarity extends BagOfWordsSimilarity {
 			throw new DistanceComponentException(e.getMessage());
 		}
 
-		return new BoWSimilarityValue(distance, unnormalized, distanceVector);
+		// vector returning capability has moved out from DistanceValue to 
+		// interface ScoringComponent (method calculateScores())   -- Gil 
+		//return new BoWSimilarityValue(distance, unnormalized, distanceVector);
+		return new BoWSimilarityValue(distance, unnormalized); 
 	}
-	
+
+	// made-up from calculation, to support super class ScoringComponent 
+	// -- Gil 
+	@Override
+	public Vector<Double> calculateScores(JCas aCas)
+			throws ScoringComponentException {
+//		(1 - (T&H/H))
+//		double distance = 0.0d;
+		
+//		(T&H/H)
+//		double unnormalized = 0.0d;
+		
+//		all the values: (T&H/H), (T&H/T), and ((T&H/H)*(T&H/T))
+		Vector<Double> distanceVector = new Vector<Double>();
+		
+		try {
+			JCas tView = aCas.getView("TextView");
+	    	HashMap<String, Integer> tBag = countTokens(tView);
+	    	
+			JCas hView = aCas.getView("HypothesisView");
+	    	HashMap<String, Integer> hBag = countTokens(hView);
+
+	    	distanceVector.addAll(calculateSimilarity(tBag, hBag));
+//	    	unnormalized = distanceVector.get(0);
+//	    	distance = 1.0d - unnormalized;
+		}
+		catch (CASException e) {
+			throw new ScoringComponentException(e.getMessage());
+		}
+		return distanceVector; 
+
+	}
+
     /**
      * Count the tokens contained in a text and store the counts in a HashMap
      * 

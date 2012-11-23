@@ -82,14 +82,14 @@ public class EditDistanceEDA<T extends TEDecision>
 			
 			checkConfiguration(config);
 			component = new FixedWeightTokenEditDistance();
-			component.initialize(config);
+			//component.initialize(config); //Gil: initialize() is removed from interface Component
 			
 		} catch (LAPException e) {
 			throw new EDAException(e.getMessage());
 		} catch (ConfigurationException e) {
 			throw e;
-		} catch (ComponentException e) {
-			throw e;
+//		} catch (ComponentException e) {
+//			throw e;
 		}
 		
 	}
