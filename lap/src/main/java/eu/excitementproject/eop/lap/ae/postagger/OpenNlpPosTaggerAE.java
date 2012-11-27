@@ -4,10 +4,8 @@ import java.io.File;
 
 import org.uimafit.descriptor.ConfigurationParameter;
 
-import eu.excitementproject.eop.lap.util.Envelope;
-
 import ac.biu.nlp.nlp.instruments.postagger.OpenNlpPosTagger;
-import ac.biu.nlp.nlp.instruments.tokenizer.OpenNlpTokenizer;
+import eu.excitementproject.eop.lap.util.Envelope;
 
 public class OpenNlpPosTaggerAE extends PosTaggerAE<OpenNlpPosTagger> {
 
@@ -16,9 +14,13 @@ public class OpenNlpPosTaggerAE extends PosTaggerAE<OpenNlpPosTagger> {
 	 * Model file of this tokenizer.
 	 */
 	public static final String PARAM_MODEL_FILE = "model_file";
-	@ConfigurationParameter(name = PARAM_MODEL_FILE, mandatory = true, defaultValue="D:/Java/Jars/opennlp-tools-1.3.0/models/english/parser/tag.bin.gz")
-	private String modelFile;
+	@ConfigurationParameter(name = PARAM_MODEL_FILE, mandatory = true)
+	private File modelFile;
 	
+	public static final String PARAM_TAG_DICT = "tagDict";
+	@ConfigurationParameter(name = PARAM_TAG_DICT, mandatory = true)
+	private String tagDict;
+
 	private static Envelope<OpenNlpPosTagger> envelope = new Envelope<OpenNlpPosTagger>();
 	
 	@Override
@@ -26,10 +28,7 @@ public class OpenNlpPosTaggerAE extends PosTaggerAE<OpenNlpPosTagger> {
 	
 	@Override
 	protected OpenNlpPosTagger buildInnerTool() throws Exception {
-		//TODO why does modelFile equal null here?
-		File mf = new File("D:/Java/Jars/opennlp-tools-1.3.0/models/english/parser/tag.bin.gz");
-		String tdp = "D:/Java/Jars/opennlp-tools-1.3.0/models/english/parser/tagdict";
-		OpenNlpPosTagger tagger = new OpenNlpPosTagger(mf, tdp);
+		OpenNlpPosTagger tagger = new OpenNlpPosTagger(modelFile, tagDict);
 		tagger.init();
 		return tagger;
 	}
