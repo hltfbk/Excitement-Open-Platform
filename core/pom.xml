@@ -60,11 +60,9 @@
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>de.tuebingen.uni.sfs.germanet.api</groupId>
-			<artifactId>germanet</artifactId>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/GermaNetApi7.0.1.jar</systemPath>
-			<version>7.0.1</version>
-		</dependency>
+            <groupId>unituebingen</groupId>
+            <artifactId>GermaNetAPI</artifactId>
+            <version>7.0.1</version>
+    	</dependency>
   </dependencies>
 </project>

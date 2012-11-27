@@ -1,7 +1,9 @@
 
 package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 
-public enum GermaNetRelation {
+import eu.excitementproject.eop.core.component.lexicalknowledge.RelationSpecifier;
+
+public enum GermaNetRelation implements RelationSpecifier {
 	causes,
 	entails,
 	has_hypernym,

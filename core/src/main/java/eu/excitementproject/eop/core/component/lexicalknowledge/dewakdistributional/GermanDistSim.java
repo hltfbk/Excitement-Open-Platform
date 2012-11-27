@@ -2,7 +2,7 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional;
 
 // Component imports
-import eu.excitementproject.eop.common.Components;
+import eu.excitementproject.eop.common.Component;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
@@ -29,7 +29,7 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
 
-public class GermanDistSim implements Components, LexicalResource<GermanDistSimInfo> {
+public class GermanDistSim implements Component, LexicalResource<GermanDistSimInfo> {
 
 	/** Stores similarity values: measurename -&gt; LHS word -&gt; RHS word -&gt; similarityvalue */
 	private Map<String, Map<String, Map<String, Float>>> sims = new HashMap<String, Map<String, Map<String, Float>>>();
@@ -53,7 +53,7 @@ public class GermanDistSim implements Components, LexicalResource<GermanDistSimI
 				return !f.isDirectory() && f.canRead() && f.getPath().contains(".sim.");
 			}
 		};
-		final String SIMFILESPATH = "lib/dewakdistributional-data"; // TODO read directory where the sim files are located from config
+		final String SIMFILESPATH = "src/main/resources/dewakdistributional-data"; // TODO read directory where the sim files are located from config
 		File[] simfiles = (new File(SIMFILESPATH)).listFiles(filter); 
 
 		try {
@@ -84,7 +84,7 @@ public class GermanDistSim implements Components, LexicalResource<GermanDistSimI
 			}
 		}
 		catch (java.lang.Exception e) {
-			throw new ComponentException("Cannot read similarity file: " + e.getMessage(), e);
+			throw new GermanDistSimNotInstalledException("Cannot read similarity file: " + e.getMessage(), e);
 		}
 	}
 	
@@ -92,8 +92,8 @@ public class GermanDistSim implements Components, LexicalResource<GermanDistSimI
 	/**
 	 * This method provides the (human-readable) name of the component. It is used to 
 	 * identify the relevant section in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, “Overview of the common configuration ” and Section 4.9.3, 
-	 * “Component name and instance name”.
+	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
+	 * ���Component name and instance name���.
 	 */
 	public String getComponentName()
 	{
@@ -103,8 +103,8 @@ public class GermanDistSim implements Components, LexicalResource<GermanDistSimI
 	
 	/** This method provides the (human-readable) name of the instance. It is used to 
 	 * identify the relevant subsection in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, “Overview of the common configuration ” and Section 4.9.3, 
-	 * “Component name and instance name”. Note that this method can return null value, if 
+	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
+	 * ���Component name and instance name���. Note that this method can return null value, if 
 	 * and only if all instances of the component shares the same configuration.
 	 */
 	public String getInstanceName() {

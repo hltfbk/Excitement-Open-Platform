@@ -1,13 +1,13 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 
 // Component imports
-import eu.excitementproject.eop.common.Components;
+import eu.excitementproject.eop.common.Component;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 
 // LexicalResource imports
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceWithOwnRelation;
+import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceWithRelation;
 import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.core.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceException;
@@ -31,7 +31,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 
-public class GermaNetWrapper implements Components, LexicalResourceWithOwnRelation<GermaNetInfo, GermaNetRelation> {
+public class GermaNetWrapper implements Component, LexicalResourceWithRelation<GermaNetInfo, GermaNetRelation> {
 
 	/** conceptual relations indicating entailment */
 	private final ConRel[] CONREL_E = { ConRel.causes, ConRel.entails, ConRel.has_hypernym }; 
@@ -98,7 +98,7 @@ public class GermaNetWrapper implements Components, LexicalResourceWithOwnRelati
 			this.germanet = new GermaNet("/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/"); // TODO: Read path from config!
 		}
 		catch (java.io.FileNotFoundException e) {
-			throw new ConfigurationException("Path to GermaNet is not set correctly.", e);
+			throw new GermaNetNotInstalledException("Path to GermaNet is not set correctly.", e);
 		}
 		catch (java.lang.Exception e) {
 			throw new ComponentException("Cannot initialize GermaNet.", e);
@@ -116,8 +116,8 @@ public class GermaNetWrapper implements Components, LexicalResourceWithOwnRelati
 	/**
 	 * This method provides the (human-readable) name of the component. It is used to 
 	 * identify the relevant section in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, “Overview of the common configuration ” and Section 4.9.3, 
-	 * “Component name and instance name”.
+	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
+	 * ���Component name and instance name���.
 	 */
 	public String getComponentName()
 	{
@@ -127,8 +127,8 @@ public class GermaNetWrapper implements Components, LexicalResourceWithOwnRelati
 	
 	/** This method provides the (human-readable) name of the instance. It is used to 
 	 * identify the relevant subsection in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, “Overview of the common configuration ” and Section 4.9.3, 
-	 * “Component name and instance name”. Note that this method can return null value, if 
+	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
+	 * ���Component name and instance name���. Note that this method can return null value, if 
 	 * and only if all instances of the component shares the same configuration.
 	 */
 	public String getInstanceName() {

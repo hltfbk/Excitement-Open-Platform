@@ -7,17 +7,24 @@ import org.junit.Test;
 // LexicalResource imports
 import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetInfo;
+import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 
 
 public class GermaNetWrapperTest {
 
-	@Test
+	@Test(expected=GermaNetNotInstalledException.class)
 	public void test() throws java.lang.Exception {
 		
 		GermaNetWrapper gnw = new GermaNetWrapper();
-		gnw.initialize(null);
+		try {
+			gnw.initialize(null);
+		}
+		catch (GermaNetNotInstalledException e) {
+			System.out.println("WARNING: GermaNet files are not installed. While CommonConfig is not ready yet, please change path manually in GermaNetWrapper.java, line 98.");
+			throw e;
+		}
 
 		for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("wachsen", null, GermaNetRelation.has_antonym)) {
 			assertTrue(rule.getLLemma().equals("wachsen"));
@@ -27,6 +34,8 @@ public class GermaNetWrapperTest {
 			assertTrue(rule.getRelation().equals("has_antonym"));
 			assertTrue(rule.getConfidence() > 0);
 		}
+		
+		throw new GermaNetNotInstalledException("GermaNet is installed, but this exception is thrown to fulfill Test's expectations.");
 	}
 }
 

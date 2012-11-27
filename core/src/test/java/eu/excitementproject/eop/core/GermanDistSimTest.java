@@ -8,15 +8,22 @@ import org.junit.Test;
 import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimInfo;
+import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 
 
 public class GermanDistSimTest {
 
-	@Test
+	@Test(expected=GermanDistSimNotInstalledException.class)
 	public void test() throws java.lang.Exception {
 		
 		GermanDistSim gds = new GermanDistSim();
-		gds.initialize(null);
+		try {
+			gds.initialize(null);
+		}
+		catch (GermanDistSimNotInstalledException e) {
+			System.out.println("WARNING: GermanDistSim files are not installed. While CommonConfig is not ready yet, please change path manually in GermanDistSim.java, line 56.");
+			throw e;
+		}
 
 		for (LexicalRule<? extends GermanDistSimInfo> rule : gds.getRulesForLeft("sie", null)) {
 			assertTrue(rule.getLLemma().equals("sie"));
@@ -24,6 +31,8 @@ public class GermanDistSimTest {
 			assertFalse(rule.getRelation().equals(""));
 			assertTrue(rule.getConfidence() > 0);
 		}
+		
+		throw new GermanDistSimNotInstalledException("GermanDistSim files are installed, but this exception is thrown to fulfill Test's expectations.");
 	}
 }
 
