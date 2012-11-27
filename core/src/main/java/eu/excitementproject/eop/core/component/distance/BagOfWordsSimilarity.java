@@ -12,6 +12,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.scoring.ScoringComponentException;
 
 /**
  * The <code>BagOfWordsSimilarity</code> class implements the DistanceCalculation interface.
@@ -34,7 +35,7 @@ public class BagOfWordsSimilarity implements DistanceCalculation {
 		super();
 	}
 	
-	@Override
+    //@Override //Gil: initialize is removed from interface Component
 	public void initialize(CommonConfig config) throws ConfigurationException,
 			ComponentException {
 		
@@ -77,8 +78,43 @@ public class BagOfWordsSimilarity implements DistanceCalculation {
 			throw new DistanceComponentException(e.getMessage());
 		}
 
-		return new BoWSimilarityValue(distance, unnormalized, distanceVector);
+		//return new BoWSimilarityValue(distance, unnormalized, distanceVector);
+		// vector retuning moved into calculateScores() - Gil 
+		return new BoWSimilarityValue(distance, unnormalized); 
 	}
+	
+	@Override
+	public Vector<Double> calculateScores(JCas aCas)
+			throws ScoringComponentException {
+		// Generated this vector retuning from previous distance calculation() vector part. 
+		// - Gil 
+		
+//		(1 - (T&H/H))
+		//double distance = 0.0d;
+		
+//		(T&H/H)
+		//double unnormalized = 0.0d;
+		
+//		all the values: (T&H/H), (T&H/T), and ((T&H/H)*(T&H/T))
+		Vector<Double> distanceVector = new Vector<Double>();
+		
+		try {
+			JCas tView = aCas.getView("TextView");
+	    	HashMap<String, Integer> tBag = countTokens(tView);
+	    	
+			JCas hView = aCas.getView("HypothesisView");
+	    	HashMap<String, Integer> hBag = countTokens(hView);
+
+	    	distanceVector.addAll(calculateSimilarity(tBag, hBag));
+	    	//unnormalized = distanceVector.get(0);
+	    	//distance = 1.0d - unnormalized;
+		}
+		catch (CASException e) {
+			throw new ScoringComponentException(e.getMessage());
+		}
+		return distanceVector; 
+	}
+
 	
     /**
      * Count the tokens contained in a text and store the counts in a HashMap
@@ -137,13 +173,15 @@ public class BagOfWordsSimilarity implements DistanceCalculation {
 
     	public BoWSimilarityValue(double distance, double rawValue)
     	{
-    		super(distance, true, rawValue, null); 
+    		//super(distance, true, rawValue, null); // vector removed from DistanceValue - Gil 
+    		super(distance,true,rawValue); 
     	}
-    	
-    	public BoWSimilarityValue(double distance, double rawValue, Vector<Double> distanceVector)
-    	{
-    		super(distance, true, rawValue, distanceVector); 
-    	}
+    
+    	// Feature vector removed from DistanceValue - Gil 
+    	//public BoWSimilarityValue(double distance, double rawValue, Vector<Double> distanceVector)
+    	//{
+    	//	super(distance, true, rawValue, distanceVector); 
+    	//}
     	
     }
 

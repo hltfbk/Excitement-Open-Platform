@@ -361,7 +361,7 @@ public abstract class LAP_ImplBase implements LAPAccess {
 	private final String HYPOTHESISVIEW = "HypothesisView";
 
 	// From "interface Components" 
-	@Override
+	//@Override // Gil: initialize is removed from interface Component 
 	public void initialize(CommonConfig config) throws ConfigurationException,
 			ComponentException {
 		// TODO Maybe not? this example does not use configuration. But when you replace it with 
