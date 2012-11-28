@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 // Component imports
 import eu.excitementproject.eop.common.Component;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 
@@ -85,17 +86,56 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	}
 
 	/**
-	 * This method will be called by the component user as the signal for initializing 
-	 * the component. All initialization (including connecting and preparing resources) 
-	 * should be done within this method. Implementations must check the configuration and 
-	 * raise exceptions if the provided configuration is not compatible with the implementation.
+	 * Creates a new GermaNetWrapper instance, and initializes the instance
+	 * (basically loads GermaNet files into memory).
 	 * 
-	 * @param config a common configuration object. This configuration object holds the platform- wide configuration. An implementation should process the object to retrieve relevant configuration values for the component. 
+	 * @param config		Configuration for the GermaNetWrapper instance
+	 * @throws ConfigurationException
+	 * @throws ComponentException
 	 */
-	public void initialize(CommonConfig config) throws ConfigurationException, ComponentException
-	{
+	public GermaNetWrapper(CommonConfig config) throws ConfigurationException, ComponentException {
+		// TODO CommonConfig not implemented yet -- this is how it MIGHT work. Change it later!
+		this(config.getSection("GermaNetWrapper").getString("germaNetFilesPath"),
+				config.getSection("GermaNetWrapper").getDouble("causesConfidence"),
+				config.getSection("GermaNetWrapper").getDouble("entailsConfidence"),
+				config.getSection("GermaNetWrapper").getDouble("hypernymConfidence"),
+				config.getSection("GermaNetWrapper").getDouble("synonymConfidence"),
+				config.getSection("GermaNetWrapper").getDouble("antonymConfidence"));
+		// TODO Remove the following line, if done.
+		throw new ComponentException("This method is not implemented yet.");
+	}
+	
+	/**
+	 * Creates a new GermaNetWrapper instance, and initializes the instance
+	 * (basically loads GermaNet files into memory).
+	 * Sets the default value 1.0 as confidence value for all relations.
+	 * 
+	 * @param germaNetFilesPath			Path to GermaNet XML files
+	 * @throws ConfigurationException
+	 * @throws ComponentException
+	 */
+	public GermaNetWrapper(String germaNetFilesPath) throws ConfigurationException, ComponentException {
+		this(germaNetFilesPath, 1, 1, 1, 1, 1);
+	}
+	
+	/**
+	 * Creates a new GermaNetWrapper instance, and initializes the instance
+	 * (basically loads GermaNet files into memory).
+	 * 
+	 * @param germaNetFilesPath		Path to GermaNet XML files
+	 * @param causesConfidence		Confidence to be set for "causes" relations
+	 * @param entailsConfidence		Confidence to be set for "entails" relations
+	 * @param hypernymConfidence	Confidence to be set for "hypernym" relations
+	 * @param synonymConfidence		Confidence to be set for "synonym" relations
+	 * @param antonymConfidence		Confidence to be set for "antonym" relations
+	 * @throws ConfigurationException
+	 * @throws ComponentException
+	 */
+	public GermaNetWrapper(String germaNetFilesPath, double causesConfidence, double entailsConfidence,
+			double hypernymConfidence, double synonymConfidence, double antonymConfidence)
+			throws ConfigurationException, ComponentException {
 		try {
-			this.germanet = new GermaNet("/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/"); // TODO: Read path from config!
+			this.germanet = new GermaNet(germaNetFilesPath);
 		}
 		catch (java.io.FileNotFoundException e) {
 			throw new GermaNetNotInstalledException("Path to GermaNet is not set correctly.", e);
@@ -104,20 +144,18 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 			throw new ComponentException("Cannot initialize GermaNet.", e);
 		}
 
-		// TODO read confidence values from config
-		CONFIDENCES.put(ConRel.causes, 0.5);
-		CONFIDENCES.put(ConRel.entails, 0.8);
-		CONFIDENCES.put(ConRel.has_hypernym, 0.7);
-		CONFIDENCES.put(LexRel.has_synonym, 0.8);
-		CONFIDENCES.put(LexRel.has_antonym, 0.8);
+		CONFIDENCES.put(ConRel.causes, causesConfidence);
+		CONFIDENCES.put(ConRel.entails, entailsConfidence);
+		CONFIDENCES.put(ConRel.has_hypernym, hypernymConfidence);
+		CONFIDENCES.put(LexRel.has_synonym, synonymConfidence);
+		CONFIDENCES.put(LexRel.has_antonym, antonymConfidence);
 	}
-	
 	
 	/**
 	 * This method provides the (human-readable) name of the component. It is used to 
 	 * identify the relevant section in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
-	 * ���Component name and instance name���.
+	 * See Spec Section 5.1.2, Overview of the common configuration  and Section 4.9.3, 
+	 * Component name and instance name.
 	 */
 	public String getComponentName()
 	{
@@ -127,8 +165,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	
 	/** This method provides the (human-readable) name of the instance. It is used to 
 	 * identify the relevant subsection in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
-	 * ���Component name and instance name���. Note that this method can return null value, if 
+	 * See Spec Section 5.1.2, Overview of the common configuration  and Section 4.9.3, 
+	 * Component name and instance name. Note that this method can return null value, if 
 	 * and only if all instances of the component shares the same configuration.
 	 */
 	public String getInstanceName() {

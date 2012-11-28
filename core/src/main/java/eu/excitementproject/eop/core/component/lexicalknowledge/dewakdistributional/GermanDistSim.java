@@ -38,23 +38,36 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	private Map<String, Map<String, Map<String, Float>>> reverse_sims = new HashMap<String, Map<String, Map<String, Float>>>();
 
 	/**
-	 * This method will be called by the component user as the signal for initializing 
-	 * the component. All initialization (including connecting and preparing resources) 
-	 * should be done within this method. Implementations must check the configuration and 
-	 * raise exceptions if the provided configuration is not compatible with the implementation.
+	 * Creates a new GermanDistSim instance, and initializes the instance
+	 * (basically loads similarity files into memory).
 	 * 
-	 * @param config a common configuration object. This configuration object holds the platform- wide configuration. An implementation should process the object to retrieve relevant configuration values for the component. 
+	 * @param config		Configuration for the GermanDistSim instance
+	 * @throws ConfigurationException
+	 * @throws ComponentException
 	 */
-	public void initialize(CommonConfig config) throws ConfigurationException, ComponentException
-	{
+	public GermanDistSim(CommonConfig config) throws ConfigurationException, ComponentException {
+		// TODO CommonConfig not implemented yet -- this is how it MIGHT work. Change it later!
+		this(config.getSection("GermanDistSim").getString("similarityFilesPath"));
+		// TODO Remove the following line, if done.
+		throw new ComponentException("This method is not implemented yet.");
+	}
+	
+	/**
+	 * Creates a new GermanDistSim instance, and initializes the instance
+	 * (basically loads similarity files into memory).
+	 * 
+	 * @param similarityFilesPath		Path to similarity files.
+	 * @throws ConfigurationException
+	 */
+	public GermanDistSim(String similarityFilesPath) throws ConfigurationException {
 		// Read all similarity files
 		FileFilter filter = new FileFilter() {
 			public boolean accept(File f) {
 				return !f.isDirectory() && f.canRead() && f.getPath().contains(".sim.");
 			}
 		};
-		final String SIMFILESPATH = "src/main/resources/dewakdistributional-data"; // TODO read directory where the sim files are located from config
-		File[] simfiles = (new File(SIMFILESPATH)).listFiles(filter); 
+		
+		File[] simfiles = (new File(similarityFilesPath)).listFiles(filter); 
 
 		try {
 			for (File simfile : simfiles) {
@@ -88,12 +101,11 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 		}
 	}
 	
-	
 	/**
 	 * This method provides the (human-readable) name of the component. It is used to 
 	 * identify the relevant section in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
-	 * ���Component name and instance name���.
+	 * See Spec Section 5.1.2, "Overview of the common configuration " and Section 4.9.3, 
+	 * "Component name and instance name".
 	 */
 	public String getComponentName()
 	{
@@ -103,8 +115,8 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	
 	/** This method provides the (human-readable) name of the instance. It is used to 
 	 * identify the relevant subsection in the common configuration for the current component. 
-	 * See Spec Section 5.1.2, ���Overview of the common configuration ��� and Section 4.9.3, 
-	 * ���Component name and instance name���. Note that this method can return null value, if 
+	 * See Spec Section 5.1.2, "Overview of the common configuration " and Section 4.9.3, 
+	 * "Component name and instance name". Note that this method can return null value, if 
 	 * and only if all instances of the component shares the same configuration.
 	 */
 	public String getInstanceName() {

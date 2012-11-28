@@ -17,9 +17,9 @@ public class GermaNetWrapperTest {
 	@Test(expected=GermaNetNotInstalledException.class)
 	public void test() throws java.lang.Exception {
 		
-		GermaNetWrapper gnw = new GermaNetWrapper();
+		GermaNetWrapper gnw;
 		try {
-			gnw.initialize(null);
+			gnw = new GermaNetWrapper("/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not installed. While CommonConfig is not ready yet, please change path manually in GermaNetWrapper.java, line 98.");

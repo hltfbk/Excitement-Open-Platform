@@ -16,9 +16,9 @@ public class GermanDistSimTest {
 	@Test(expected=GermanDistSimNotInstalledException.class)
 	public void test() throws java.lang.Exception {
 		
-		GermanDistSim gds = new GermanDistSim();
+		GermanDistSim gds = null;
 		try {
-			gds.initialize(null);
+			gds = new GermanDistSim("src/main/resources/dewakdistributional-data");
 		}
 		catch (GermanDistSimNotInstalledException e) {
 			System.out.println("WARNING: GermanDistSim files are not installed. While CommonConfig is not ready yet, please change path manually in GermanDistSim.java, line 56.");

@@ -1,9 +1,11 @@
 
 package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 
-import eu.excitementproject.eop.core.component.lexicalknowledge.RelationSpecifier;
+import eu.excitementproject.eop.core.component.lexicalknowledge.CanonicalRelationSpecifier;
+import eu.excitementproject.eop.core.component.lexicalknowledge.OwnRelationSpecifier;
+import eu.excitementproject.eop.core.component.lexicalknowledge.TERuleRelation;
 
-public enum GermaNetRelation implements RelationSpecifier {
+public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationSpecifier<GermaNetRelation> {
 	causes,
 	entails,
 	has_hypernym,
@@ -18,6 +20,23 @@ public enum GermaNetRelation implements RelationSpecifier {
 			case has_antonym: return "has_antonym";
 			case has_synonym: return "has_synonym";
 		}
+		return null;
+	}
+
+	@Override
+	public GermaNetRelation getOwnRelation() {
+		return this;
+	}
+
+	@Override
+	public TERuleRelation getCanonicalRelation() {
+		switch (this) {
+		case causes: return TERuleRelation.Entailment;
+		case entails: return TERuleRelation.Entailment;
+		case has_hypernym: return TERuleRelation.Entailment;
+		case has_antonym: return TERuleRelation.NonEntailment;
+		case has_synonym: return TERuleRelation.Entailment;
+	}
 		return null;
 	}
 }
