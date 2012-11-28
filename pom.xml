@@ -63,6 +63,11 @@
   			<artifactId>junit</artifactId>
   			<version>4.8.2</version>
   		</dependency>
+  		<dependency>
+            <groupId>unituebingen</groupId>
+            <artifactId>GermaNetAPI</artifactId>
+            <version>7.0.1</version>
+    	</dependency>
   	</dependencies>
   </dependencyManagement>
 
@@ -81,8 +86,7 @@
        		<enabled>false</enabled>
    		</releases>
   	</repository>
-  </repositories>
-  
+  </repositories>  
    
   <pluginRepositories>
  	<pluginRepository>

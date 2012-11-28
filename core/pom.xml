@@ -59,5 +59,10 @@
 			<artifactId>lap</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+            <groupId>unituebingen</groupId>
+            <artifactId>GermaNetAPI</artifactId>
+            <version>7.0.1</version><!--$NO-MVN-MAN-VER$-->
+    	</dependency>
   </dependencies>
 </project>
