@@ -12,3 +12,8 @@ target/
 .DS_Store
 
 bin/*
+
+common/bin/
+lap/bin/
+uima.log
+
