@@ -3,7 +3,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 // Component imports
 import eu.excitementproject.eop.common.Component;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
-import eu.excitementproject.eop.common.configuration.NameValueTable;
+//import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 
@@ -32,6 +32,30 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * This class implements a German Lexical Resource based on GermaNet 7.0, which is 
+ * the German WordNet. The implementation accesses GermaNet via GermaNet API.
+ * (It uses GermaNet API each time it is being called upon).
+ * 
+ * <P>
+ * The implementation supports both LexicalResource and LexicalResourceWithRelation. 
+ * For the relation, it supports both OwnRelationSpecifier (with GermaNetRelation) and CanonicalRelationSpecifier.
+ * 
+ * <P> It has a few configurable values. Basically, it needs path to GermaNet data itself, 
+ * and a set of double values that indicates "confidence" for each own relation when they are 
+ * treated as "entailment". See the main constructor for the detailed parameter info. 
+ *  
+ * <P>
+ * Note that EXCITEMENT project cannot and do not redistribute GermaNet, and the
+ * user of this component must get it with a proper license agreement from Tuebingen 
+ * University. If the GermaNet is not found, the component will raise an exception and
+ * will not be initialized. 
+ * 
+ * TODO: Jan, is there any additional assumptions or conditions that a user might need to know? 
+ * 
+ * @author Jan Pawellek 
+ * @since Nov 2012 
+ */
 public class GermaNetWrapper implements Component, LexicalResourceWithRelation<GermaNetInfo, GermaNetRelation> {
 
 	/** conceptual relations indicating entailment */

@@ -29,6 +29,16 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
 
+/**
+ * This class implements a German lexical resource based on corpus term distribution.  
+ * It uses the distance vectors that is gathered from DeWac, on 10k most frequent 
+ * German words observed in the corpus. 
+ * 
+ * TODO: Jan, is there anything else to add on the comments? 
+ * 
+ * @author Jan Pawellek 
+ * @since Nov. 2012 
+ */
 public class GermanDistSim implements Component, LexicalResource<GermanDistSimInfo> {
 
 	/** Stores similarity values: measurename -&gt; LHS word -&gt; RHS word -&gt; similarityvalue */
