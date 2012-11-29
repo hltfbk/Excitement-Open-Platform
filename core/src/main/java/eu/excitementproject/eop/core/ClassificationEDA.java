@@ -68,11 +68,8 @@ public String getLanguage() {
 		
 		components = new ArrayList<DistanceCalculation>();
 		DistanceCalculation component = new BagOfWordsSimilarity();
-		//component.initialize(config); // Gil: initialize() is removed from interface Component
 		DistanceCalculation component1 = new FixedWeightTokenEditDistance();
-		//component1.initialize(config); // Gil: initialize() is removed from interface Component
 		//DistanceCalculation component2 = new BagOfLemmasSimilarity();
-		//component2.initialize(config); // Gil: initialize() is removed from interface Component
 		components.add(component);
 		components.add(component1);
 //		components.add(component2);

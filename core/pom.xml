@@ -64,5 +64,10 @@
             <artifactId>GermaNetAPI</artifactId>
             <version>7.0.1</version><!--$NO-MVN-MAN-VER$-->
     	</dependency>
+		<dependency>
+			<groupId>weka</groupId>
+			<artifactId>weka</artifactId>
+			<version>3.7.5</version>
+		</dependency>
   </dependencies>
 </project>

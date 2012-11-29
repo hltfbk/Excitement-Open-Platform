@@ -1,19 +1,21 @@
 package eu.excitementproject.eop.core;
 
 /**
- * The <code>ClassificationTEDecision</code> class implements the <code>TEDecision</code> interface.
+ * The <code>ClassificationTEDecision</code> class implements the
+ * <code>TEDecision</code> interface.
  * 
- * It supports two kinds of constructors, with <code>confidence</code> value or without.
+ * It supports two kinds of constructors, with <code>confidence</code> value or
+ * without.
  * 
- * @author  Rui
+ * @author Rui
  */
 
 public class ClassificationTEDecision implements TEDecision {
-	
+
 	private DecisionLabel decision = null;
 	private double confidence = CONFIDENCE_NOT_AVAILABLE;
 	private String pairId = null;
-	
+
 	public ClassificationTEDecision(DecisionLabel decision, String pairId) {
 		super();
 		this.decision = decision;
