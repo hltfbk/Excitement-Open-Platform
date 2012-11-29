@@ -115,6 +115,34 @@
     		de.tudarmstadt.ukp.dkpro.core.treetagger-asl
     	</artifactId>
     </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-bin
+    	</artifactId>
+    	<version>20120912.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-model-de
+    	</artifactId>
+    	<version>20120417.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-model-en
+    	</artifactId>
+    	<version>20111109.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-model-it
+    	</artifactId>
+    	<version>20101115.0</version>
+    </dependency>
   </dependencies>
 
     <dependencyManagement>
