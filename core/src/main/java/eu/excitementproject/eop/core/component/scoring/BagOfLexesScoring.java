@@ -22,6 +22,14 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributio
  */
 public class BagOfLexesScoring extends BagOfWordsScoring {
 	
+//	the number of features
+	protected final int NUM_OF_FEATS = 1;
+	
+	@Override
+	public int getNumOfFeats() {
+		return NUM_OF_FEATS;
+	}
+	
 	private GermanDistSim gds = null;
 	
 	public BagOfLexesScoring() {
@@ -36,6 +44,11 @@ public class BagOfLexesScoring extends BagOfWordsScoring {
 		{
 			e.printStackTrace(); 
 		}
+	}
+	
+	@Override
+	public String getComponentName() {
+		return "BagOfLexesScoring";
 	}
 	
 	@Override

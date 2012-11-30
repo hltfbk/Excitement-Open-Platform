@@ -27,6 +27,13 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
  * @author Rui
  */
 public class BagOfWordsScoring implements ScoringComponent {
+	
+//	the number of features
+	protected final int NUM_OF_FEATS = 3;
+
+	public int getNumOfFeats() {
+		return NUM_OF_FEATS;
+	}
 
 	@Override
 	public String getComponentName() {

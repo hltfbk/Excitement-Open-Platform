@@ -20,6 +20,19 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
  */
 public class BagOfLemmasScoring extends BagOfWordsScoring {
 
+//	the number of features
+	protected final int NUM_OF_FEATS = 3;
+
+	@Override
+	public int getNumOfFeats() {
+		return NUM_OF_FEATS;
+	}
+	
+	@Override
+	public String getComponentName() {
+		return "BagOfLemmasScoring";
+	}
+	
 	@Override
 	public Vector<Double> calculateScores(JCas aCas)
 			throws ScoringComponentException {
