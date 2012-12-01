@@ -95,7 +95,7 @@ public class WekaClassificationEDA extends ClassificationEDA {
 		super.initialize(config);
 		components = new ArrayList<ScoringComponent>();
 		components.add(new BagOfWordsScoring());
-		components.add(new BagOfLexesScoring());
+		components.add(new BagOfLexesScoring(true, true, true));
 
 		answerList = new ArrayList<String>();
 		answerList.add(DecisionLabel.Abstain.toString());

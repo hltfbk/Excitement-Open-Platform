@@ -18,7 +18,7 @@ public class BagOfWordsScoringTest {
 	public void test() {
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		// BagOfLemmasScoring bols = new BagOfLemmasScoring();
-		BagOfLexesScoring bols = new BagOfLexesScoring();
+		BagOfLexesScoring bols = new BagOfLexesScoring(true, true, true);
 
 		JCas aCas = null;
 		OpenNLPTaggerEN lap = null;
