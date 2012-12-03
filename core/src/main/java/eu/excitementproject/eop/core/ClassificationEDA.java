@@ -54,6 +54,7 @@ public String getLanguage() {
 	//	list of components used in this EDA
 	private List<DistanceCalculation> components;
 	
+//	language flag
 	private String language;
 	
 //	the model file, consisting of parameter name and value pairs
@@ -68,11 +69,8 @@ public String getLanguage() {
 		
 		components = new ArrayList<DistanceCalculation>();
 		DistanceCalculation component = new BagOfWordsSimilarity();
-		//component.initialize(config); // Gil: initialize() is removed from interface Component
 		DistanceCalculation component1 = new FixedWeightTokenEditDistance();
-		//component1.initialize(config); // Gil: initialize() is removed from interface Component
 		//DistanceCalculation component2 = new BagOfLemmasSimilarity();
-		//component2.initialize(config); // Gil: initialize() is removed from interface Component
 		components.add(component);
 		components.add(component1);
 //		components.add(component2);
@@ -107,12 +105,10 @@ public String getLanguage() {
 		for (DistanceCalculation component : components) {
 			DistanceValue dValue = component.calculation(aCas);
 			Vector<Double> distanceVector = component.calculateScores(aCas); 
-			//if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
 			if (null == distanceVector || distanceVector.size() == 0) {
 				featureVector.add(dValue.getDistance());
 				continue;
 			}
-			//featureVector.addAll(dValue.getDistanceVector());
 			featureVector.addAll(distanceVector); 	
 		}
 		
@@ -240,7 +236,7 @@ public String getLanguage() {
 	 * @param aCas input T-H pair
 	 * @return return the pairID of the pair
 	 */
-	private String getPairID(JCas aCas) {
+	protected String getPairID(JCas aCas) {
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
 		return p.getPairID();
@@ -250,7 +246,7 @@ public String getLanguage() {
 	 * @param aCas input T-H pair
 	 * @return if the pair contains the gold answer, return it; otherwise, return null
 	 */
-	private String getGoldLabel(JCas aCas) {		
+	protected String getGoldLabel(JCas aCas) {		
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
 		if (null == p.getGoldAnswer() || p.getGoldAnswer().equals("") || p.getGoldAnswer().equals("ABSTAIN")) {
