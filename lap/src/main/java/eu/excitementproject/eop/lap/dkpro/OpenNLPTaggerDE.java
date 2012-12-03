@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.dkpro;
 
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;

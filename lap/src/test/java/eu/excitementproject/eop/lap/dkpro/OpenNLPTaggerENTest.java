@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.dkpro;
 
 import static org.junit.Assert.*;
 
@@ -10,6 +10,7 @@ import org.junit.Test;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
+import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 
 public class OpenNLPTaggerENTest {
 
