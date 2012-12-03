@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.dkpro;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
@@ -13,6 +13,7 @@ import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 /**
  * 

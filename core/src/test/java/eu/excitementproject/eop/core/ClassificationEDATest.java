@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.OpenNLPTaggerEN;
+import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 
 public class ClassificationEDATest {
 	
