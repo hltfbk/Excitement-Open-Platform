@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
+import org.junit.Assume;
 
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
@@ -19,7 +20,13 @@ public class TextProTaggerITTest {
 		
 		try {
 			lap = new TextProTaggerIT();
-
+		} catch (LAPException e) {
+			System.out.println("WARNING: Could not instantiate the interface to TextPro -- make sure TextPro is installed, and the system variable TEXTPRO is correctly set");
+		}
+		
+		Assume.assumeNotNull(lap);
+		
+		try{
 			// one of the LAPAccess interface: that generates single TH CAS. 
 			aJCas = lap.generateSingleTHPairCAS("Claude Chabrol e stato un regista, sceneggiatore e attore francese.","Le Beau Serge e stato diretto da Chabrol.");
 
