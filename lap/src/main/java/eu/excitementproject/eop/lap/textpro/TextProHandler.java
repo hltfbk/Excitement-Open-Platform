@@ -2,11 +2,6 @@ package eu.excitementproject.eop.lap.textpro;
 
 
 import java.io.IOException;
-import java.util.*;
-import java.util.regex.*;
-import java.io.*;
-
-import eu.excitementproject.eop.lap.LAPException;
 
 
 /** La classe TextProHandler fornisce dei metodi di utilita`
@@ -31,10 +26,13 @@ public class TextProHandler {
     
     //file temporaneo per la memorizzazione del testo da analizzare
     private static final String TEMP_FILENAME = "esempio";
+    
     //file temporaneo per la memorizzazzione del testo analizzato; è l'output di TextPro
     private static final String TEMP_FILENAME_OUT = TEMP_FILENAME + ".txp";
+    
     //.log file
-    private static final String TEMP_FILENAME_LOG = TEMP_FILENAME + ".log";
+//    private static final String TEMP_FILENAME_LOG = TEMP_FILENAME + ".log";
+    
     //directory dei file temporanei
     private static final String TEMP_PATH = "./";
     //private static final String TEMP_PATH = "/home/k9/Desktop/TextProLinux1.4.3/tmp/";
@@ -218,7 +216,7 @@ public class TextProHandler {
      * rather than the beginning
      * @exception IOException
      */
-    private void save(String fileName, String text, boolean append) throws Exception {
+    public void save(String fileName, String text, boolean append) throws Exception {
 
         LOADER.save(fileName, text, append);
 
