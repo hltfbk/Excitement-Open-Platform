@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 
 
 import org.apache.uima.cas.text.AnnotationIndex;
-import org.apache.uima.examples.PrintAnnotations;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
@@ -25,15 +24,15 @@ import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 public class LAP_TextPro extends LAP_ImplBase {
 
-	private String CMD = "-y -no_abstract_lemma -c token+tokenstart+sentence+pos+entity+lemma"; 
-	private String TXP_LANGUAGE = "ita";
+	protected String CMD = "-y -no_abstract_lemma -c token+tokenstart+sentence+pos+entity+lemma"; 
+	protected String TXP_LANGUAGE = "ita";
 
-	private TextProHandler txp = null;
-	private TextProAnnotation txpAnn = null;
+	protected TextProHandler txp = null;
+	protected TextProAnnotation txpAnn = null;
 	
 	private String TXPAnnotMapFile = "src/main/resources/TextPro/it-tagger.map";
 			
-	private HashMap<String,String> AnnotMap = null; 
+	protected HashMap<String,String> AnnotMap = null; 
 	
 	public LAP_TextPro() throws LAPException {
 
@@ -89,7 +88,7 @@ public class LAP_TextPro extends LAP_ImplBase {
 				addTXPAnnotations(aJCas, viewName, type);
 			}
 			
-			PrintAnnotations.printAnnotations(aJCas.getView(viewName).getCas(), System.out); 
+//			PrintAnnotations.printAnnotations(aJCas.getView(viewName).getCas(), System.out); 
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -156,15 +155,15 @@ public class LAP_TextPro extends LAP_ImplBase {
 	}
 	
 	
-	private Annotation getAnnotationObject(JCas aJCas, String viewName, String txpAnnotValue, Class defaultClass) throws Exception{
+	private Annotation getAnnotationObject(JCas aJCas, String viewName, String txpAnnotValue, Class<?> defaultClass) throws Exception{
 		
 		if (AnnotMap.containsKey(txpAnnotValue)) {
-			Class txpAnnotClass = Class.forName(AnnotMap.get(txpAnnotValue));
-			Constructor txpAnnotClassConstr = txpAnnotClass.getConstructor(JCas.class);
+			Class<?> txpAnnotClass = Class.forName(AnnotMap.get(txpAnnotValue));
+			Constructor<?> txpAnnotClassConstr = txpAnnotClass.getConstructor(JCas.class);
 			return (Annotation) txpAnnotClassConstr.newInstance(aJCas.getView(viewName));
 		}
 		
-		Constructor txpAnnotClassConstr = defaultClass.getConstructor(JCas.class);
+		Constructor<?> txpAnnotClassConstr = defaultClass.getConstructor(JCas.class);
 		return (Annotation) txpAnnotClassConstr.newInstance(aJCas.getView(viewName));
 	}
 		
@@ -244,7 +243,7 @@ public class LAP_TextPro extends LAP_ImplBase {
 				matcher = posLine.matcher(line);
 				if (matcher.matches()) {
 					AnnotMap.put(matcher.group(1), matcher.group(2));
-					System.out.println("\t/" + matcher.group(1) + " = " + matcher.group(2) + "/");
+//					System.out.println("\t/" + matcher.group(1) + " = " + matcher.group(2) + "/");
 				}
 			}
 			
