@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.lap.textpro;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

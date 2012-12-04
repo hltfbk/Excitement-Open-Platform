@@ -2,7 +2,6 @@ package eu.excitementproject.eop.lap.textpro;
 
 
 import java.io.*;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
@@ -29,16 +28,16 @@ public class Loader {
 
     }
 
-    public List load(String fileName) throws Exception {
+    public List<String> load(String fileName) throws Exception {
     	
-    	List text = null;
+    	List<String> text = null;
     	
     	//creazione del flusso di lettura  con buffer
     	BufferedReader reader = null; 
     	
     	try {
     		
-    		text = new ArrayList();
+    		text = new ArrayList<String>();
     		reader = new BufferedReader(new FileReader(fileName));
     		String line = reader.readLine();
     		//lettura delle linee del file
@@ -141,7 +140,7 @@ public class Loader {
 
     }
     
-    public void save(String fileName, List list, boolean append) throws Exception {
+    public void save(String fileName, List<String> list, boolean append) throws Exception {
     	
     	BufferedWriter writer = null;
     	
@@ -151,7 +150,7 @@ public class Loader {
 	    	// ... che incapsulo in un PrintWriter
 	    	PrintWriter printout = new PrintWriter(writer, append);
     	
-	    	Iterator iterator = list.iterator();
+	    	Iterator<String> iterator = list.iterator();
 	    	while(iterator.hasNext()) {
 	    		printout.println(iterator.next());
 	    	}
