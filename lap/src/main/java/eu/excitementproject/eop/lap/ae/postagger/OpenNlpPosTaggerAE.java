@@ -9,15 +9,14 @@ import eu.excitementproject.eop.lap.util.Envelope;
 
 public class OpenNlpPosTaggerAE extends PosTaggerAE<OpenNlpPosTagger> {
 
-	// TODO remove  defaultValue?
 	/**
-	 * Model file of this tokenizer.
+	 * Model file of this POS tagger.
 	 */
 	public static final String PARAM_MODEL_FILE = "model_file";
 	@ConfigurationParameter(name = PARAM_MODEL_FILE, mandatory = true)
 	private File modelFile;
 	
-	public static final String PARAM_TAG_DICT = "tagDict";
+	public static final String PARAM_TAG_DICT = "tag_dict";
 	@ConfigurationParameter(name = PARAM_TAG_DICT, mandatory = true)
 	private String tagDict;
 

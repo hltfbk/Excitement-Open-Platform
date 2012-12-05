@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.lap.ae;
 
 import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.resource.ResourceInitializationException;
+import org.uimafit.component.JCasAnnotator_ImplBase;
 
 import eu.excitementproject.eop.lap.util.Envelope;
 
