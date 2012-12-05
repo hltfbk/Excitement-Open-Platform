@@ -4,6 +4,9 @@ import java.io.File;
 
 import org.uimafit.descriptor.ConfigurationParameter;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
+import de.tudarmstadt.ukp.dkpro.core.api.resources.MappingProvider;
+
 import ac.biu.nlp.nlp.instruments.postagger.OpenNlpPosTagger;
 import eu.excitementproject.eop.lap.util.Envelope;
 
@@ -30,6 +33,12 @@ public class OpenNlpPosTaggerAE extends PosTaggerAE<OpenNlpPosTagger> {
 		OpenNlpPosTagger tagger = new OpenNlpPosTagger(modelFile, tagDict);
 		tagger.init();
 		return tagger;
+	}
+
+	@Override
+	protected void configureMapping() {
+		mappingProvider.setDefault(MappingProvider.LOCATION, PennPOSMapping.MAPPING_LOCATION);
+		mappingProvider.setDefault("tagger.tagset", "default");
 	}
 	
 }

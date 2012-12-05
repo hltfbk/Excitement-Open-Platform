@@ -3,40 +3,6 @@ package eu.excitementproject.eop.lap.ae.postagger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.cas.CAS;
-import org.apache.uima.cas.Type;
-import org.apache.uima.jcas.JCas;
-import org.uimafit.util.JCasUtil;
-
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
-import de.tudarmstadt.ukp.dkpro.core.api.resources.CasConfigurableProviderBase;
-import de.tudarmstadt.ukp.dkpro.core.api.resources.MappingProvider;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import eu.excitementproject.eop.lap.ae.SingletonSynchronizedAnnotator;
-
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
-import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
-
-
-/////////////////
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import opennlp.maxent.MaxentModel;
-import opennlp.maxent.io.SuffixSensitiveGISModelReader;
-import opennlp.tools.ngram.Dictionary;
-import opennlp.tools.postag.DefaultPOSContextGenerator;
-import opennlp.tools.postag.POSDictionary;
-import opennlp.tools.postag.POSTagger;
-import opennlp.tools.postag.POSTaggerME;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
@@ -44,17 +10,18 @@ import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.Type;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.uimafit.component.JCasAnnotator_ImplBase;
-import org.uimafit.descriptor.ConfigurationParameter;
+import org.uimafit.util.JCasUtil;
 
+import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
+import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
+import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
-import de.tudarmstadt.ukp.dkpro.core.api.parameter.ComponentParameters;
-import de.tudarmstadt.ukp.dkpro.core.api.resources.CasConfigurableProviderBase;
 import de.tudarmstadt.ukp.dkpro.core.api.resources.MappingProvider;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import eu.excitementproject.eop.lap.ae.SingletonSynchronizedAnnotator;
 
-/////////////
+
 /**
  * A UIMA Analysis Engine tags the document in the CAS for Part Of Speech tags. <BR>
  * This is only a wrapper for an existing non-UIMA <code>PosTagger</code>
@@ -66,8 +33,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
  */
 public abstract class PosTaggerAE<T extends PosTagger> extends SingletonSynchronizedAnnotator<T> {
 
-	//private CasConfigurableProviderBase<POSTagger> modelProvider;
-	private MappingProvider mappingProvider;
+	protected MappingProvider mappingProvider;
 	
 	@Override
 	public void initialize(UimaContext aContext)
@@ -75,65 +41,15 @@ public abstract class PosTaggerAE<T extends PosTagger> extends SingletonSynchron
 	{
 		super.initialize(aContext);
 
-//		modelProvider = new CasConfigurableProviderBase<POSTagger>() {
-//			{
-//				setDefault(VERSION, "20120616.0");
-//				setDefault(GROUP_ID, "de.tudarmstadt.ukp.dkpro.core");
-//				setDefault(ARTIFACT_ID,
-//						"de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-${language}-${variant}");
-//				
-//				setDefault(LOCATION, "classpath:/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/" +
-//						"tagger-${language}-${variant}.bin");
-//				setDefault(VARIANT, "maxent");
-//				
-//				setOverride(LOCATION, null);
-//				setOverride(LANGUAGE, null);
-//				setOverride(VARIANT, null);
-//			}
-//			
-//			@Override
-//			protected POSTagger produceResource(URL aUrl) throws IOException
-//			{
-//				//////////////////////////////////
-//				// TODO copied from infrastructure's OpenNlpPosTagger
-//				// TODO consts are the ones used for it
-//				MaxentModel posTaggerModel;
-//				Dictionary dict;
-//				POSDictionary tagDict;
-//				File posTaggerModelFile = new File("D:/Java/Jars/opennlp-tools-1.3.0/models/english/parser/tag.bin.gz");
-//				String posTaggerTagDictionaryFile = "D:/Java/Jars/opennlp-tools-1.3.0/models/english/parser/tagdict";
-//				boolean posTaggerTagDictionaryCaseSensitive = false;
-//				String posTaggerDictionaryFile = null;
-//				
-//				try {
-//					posTaggerModel = new SuffixSensitiveGISModelReader(posTaggerModelFile).getModel();
-//					tagDict = new POSDictionary(posTaggerTagDictionaryFile, posTaggerTagDictionaryCaseSensitive);
-//					dict = posTaggerDictionaryFile != null ? new Dictionary(posTaggerDictionaryFile) : null;
-//				} catch (IOException e) {
-//					throw new IOException("Error constructing a SuffixSensitiveGISModelReader with " + posTaggerModelFile + 
-//							", " + posTaggerTagDictionaryFile + " and " + posTaggerDictionaryFile + ". See nested.", e);
-//				}
-//				return new POSTaggerME(posTaggerModel, new DefaultPOSContextGenerator(dict), tagDict);
-//				/////////////////////////////
-//			}
-//		};
-		
 		mappingProvider = new MappingProvider();
-		mappingProvider.setDefault(MappingProvider.LOCATION, "classpath:/de/tudarmstadt/ukp/dkpro/" +
-				"core/api/lexmorph/tagset/${language}-${tagger.tagset}-tagger.map");
 		mappingProvider.setDefault(MappingProvider.BASE_TYPE, POS.class.getName());
-		mappingProvider.setDefault("tagger.tagset", "default");
-		mappingProvider.setOverride(MappingProvider.LOCATION, null);
-		mappingProvider.setOverride(MappingProvider.LANGUAGE, null);
-		//mappingProvider.addImport("tagger.tagset", modelProvider);
-		
+		configureMapping();
 	}
 	
 	@Override
 	public void process(JCas jcas) throws AnalysisEngineProcessException {
 		try {
 			CAS cas = jcas.getCas();
-			//modelProvider.configure(cas);
 			mappingProvider.configure(cas);
 			
 			Collection<Sentence> sentenceAnnotations = JCasUtil.select(jcas, Sentence.class);
@@ -170,21 +86,17 @@ public abstract class PosTaggerAE<T extends PosTagger> extends SingletonSynchron
 					throw new PosTaggerException("Got pos tagging for " + taggedTokensOnesentence.size() +
 							" tokens, should have gotten according to the total number of tokens in the sentence: " + tokenAnnotationsOnesentence.size());
 				}
-				
+								
 				// Process each token
 				for (int j=0; j<taggedTokensOnesentence.size(); j++) {
 					PosTaggedToken taggedToken = taggedTokensOnesentence.get(j);
+					String tagString = taggedToken.getPartOfSpeech().getStringRepresentation();
 					Token tokenAnnotation = tokenAnnotationsOnesentence.get(j);
 					
-					// TODO build specific POS instance according to the POS string or the CanonicalPosTag
-					// in the PartOfspeech object in taggedToken
-					//////////////////////////////////
-					Type posTag = mappingProvider.getTagType(taggedToken.getPartOfSpeech().getStringRepresentation());
+					// Get an annotation with the appropriate UIMA type via the mappingProvider
+					Type posTag = mappingProvider.getTagType(tagString);
 					POS posAnnotation = (POS) cas.createAnnotation(posTag, tokenAnnotation.getBegin(), tokenAnnotation.getEnd());
-					//////////////////////
-					
-					/////////POS posAnnotation = new POS(jcas, tokenAnnotation.getBegin(), tokenAnnotation.getEnd());
-					posAnnotation.setPosValue(taggedToken.getPartOfSpeech().getStringRepresentation());
+					posAnnotation.setPosValue(tagString);
 					posAnnotation.addToIndexes();
 					
 					tokenAnnotation.setPos(posAnnotation);
@@ -195,11 +107,15 @@ public abstract class PosTaggerAE<T extends PosTagger> extends SingletonSynchron
 		}
 	}
 	
-	// TODO add innerTool.cleanup() in an @Override of destroy()
 	@Override
 	public void destroy() {
 		synchronized (innerTool) {
 			innerTool.cleanUp();
 		}
 	}
+	
+	/**
+	 * Allow the subclass to provide details regarding its MappingProvider.
+	 */
+	protected abstract void configureMapping();
 }
