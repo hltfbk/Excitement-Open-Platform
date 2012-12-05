@@ -19,13 +19,11 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 
 /**
- * The <code>BagOfLexesScoring</code> class extends <code>BagOfWordsScoring</code>.
- * 
- * ToDo: for the moment, I use the word forms; in the future, may consider to use lemmas (<code>BagOfLemmasScoring</code>).
+ * The <code>BagOfLexesScoring</code> class extends <code>BagOfLemmasScoring</code>.
  * 
  * @author  Rui
  */
-public class BagOfLexesScoring extends BagOfWordsScoring {
+public class BagOfLexesScoring extends BagOfLemmasScoring {
 	
 	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
 	
