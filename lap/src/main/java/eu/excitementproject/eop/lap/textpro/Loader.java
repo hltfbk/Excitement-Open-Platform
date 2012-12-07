@@ -154,6 +154,7 @@ public class Loader {
 	    	while(iterator.hasNext()) {
 	    		printout.println(iterator.next());
 	    	}
+	    	printout.close();
 	    	
     	} catch (Exception e) {
     		System.err.println(e.getMessage());

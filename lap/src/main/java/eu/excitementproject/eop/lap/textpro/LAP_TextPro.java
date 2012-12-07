@@ -246,7 +246,7 @@ public class LAP_TextPro extends LAP_ImplBase {
 //					System.out.println("\t/" + matcher.group(1) + " = " + matcher.group(2) + "/");
 				}
 			}
-			
+			reader.close();
 		} catch (IOException e) {
 			System.err.println("Error loading POS map from file " + TXPAnnotMapFile);
 			e.printStackTrace();
