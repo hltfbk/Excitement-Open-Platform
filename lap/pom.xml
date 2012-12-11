@@ -94,16 +94,6 @@
     	<artifactId>
     		de.tudarmstadt.ukp.dkpro.core.opennlp-asl
     	</artifactId>
-    	<exclusions>
-    		<exclusion>
-    			<artifactId>opennlp-maxent</artifactId>
-    			<groupId>org.apache.opennlp</groupId>
-    		</exclusion>
-    		<exclusion>
-    			<artifactId>opennlp-tools</artifactId>
-    			<groupId>org.apache.opennlp</groupId>
-    		</exclusion>
-    	</exclusions>
     </dependency>
     <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
