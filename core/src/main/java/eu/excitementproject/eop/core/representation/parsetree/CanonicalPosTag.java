@@ -23,7 +23,7 @@ public enum CanonicalPosTag
 	CONJ, // Conjunction 
 	N,    // Noun
 	NN,   // Common Noun (is-a N) 
-	NP,   // Noun Phrase 
+	NP,   // Proper Noun (is-a N)  
 	O,    // Exclamation
 	PP,   // Preposition
 	PR,   // Pronoun
