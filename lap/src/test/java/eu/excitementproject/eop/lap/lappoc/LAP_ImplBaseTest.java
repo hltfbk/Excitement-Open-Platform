@@ -3,9 +3,13 @@ package eu.excitementproject.eop.lap.lappoc;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.FileOutputStream;
 
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.junit.Test;
+import org.uimafit.factory.TypeSystemDescriptionFactory;
 
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
@@ -65,6 +69,24 @@ public class LAP_ImplBaseTest {
 		} catch (LAPException e) {
 			fail(e.getMessage()); 
 		} 
+		
+		// write down the type system, for future usage. 
+		TypeSystemDescription typeSystemDescription = null; 
+		try {
+			typeSystemDescription = TypeSystemDescriptionFactory.createTypeSystemDescription();
+		}
+		catch (ResourceInitializationException e)
+		{
+			fail(e.getMessage()); 
+		}
+		
+		try {
+		typeSystemDescription.toXML(new FileOutputStream(new File(outputDir, "typesystem.xml"))); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
 
 	}
 
