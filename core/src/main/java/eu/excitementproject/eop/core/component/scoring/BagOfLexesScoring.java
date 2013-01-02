@@ -7,11 +7,11 @@ import java.util.logging.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.exception.BaseException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResource;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
-import eu.excitementproject.eop.core.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;

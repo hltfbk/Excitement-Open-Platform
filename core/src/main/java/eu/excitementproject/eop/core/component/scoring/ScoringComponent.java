@@ -4,7 +4,8 @@
 package eu.excitementproject.eop.core.component.scoring;
 import java.util.Vector;
 import org.apache.uima.jcas.JCas;
-import eu.excitementproject.eop.common.Component;
+
+import eu.excitementproject.eop.common.component.Component;
 
 /**
  * <P>

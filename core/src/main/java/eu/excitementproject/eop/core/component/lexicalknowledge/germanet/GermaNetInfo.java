@@ -1,7 +1,7 @@
 
 package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 
-import eu.excitementproject.eop.core.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 
 public class GermaNetInfo implements RuleInfo
 {

@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.component.lexicalknowledge;
+package eu.excitementproject.eop.common.component.lexicalknowledge;
 
 import eu.excitementproject.eop.common.exception.ComponentException;
 

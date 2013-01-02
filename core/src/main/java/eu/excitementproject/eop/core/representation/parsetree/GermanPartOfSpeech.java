@@ -1,6 +1,10 @@
 
 package eu.excitementproject.eop.core.representation.parsetree;
 
+import eu.excitementproject.eop.common.representation.parsetree.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.parsetree.UnsupportedPosTagStringException;
+
 
 public class GermanPartOfSpeech extends PartOfSpeech {
 

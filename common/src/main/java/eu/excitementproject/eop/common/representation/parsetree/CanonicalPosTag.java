@@ -1,4 +1,5 @@
-package eu.excitementproject.eop.core.representation.parsetree;
+package eu.excitementproject.eop.common.representation.parsetree;
+
 
 /**
  * <P> [DELETEME_LATER: Imported from BIUTEE with a modification - types are changed to adopted UIMA POS Type] </P> 

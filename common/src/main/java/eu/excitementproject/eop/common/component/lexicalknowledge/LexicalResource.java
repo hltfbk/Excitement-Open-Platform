@@ -1,9 +1,13 @@
-package eu.excitementproject.eop.core.component.lexicalknowledge;
+package eu.excitementproject.eop.common.component.lexicalknowledge;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.Component;
-import eu.excitementproject.eop.core.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.component.Component;
+//import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceException;
+//import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
+//import eu.excitementproject.eop.core.component.lexicalknowledge.RuleInfo;
+//import eu.excitementproject.eop.core.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
 
 /**
  * [DELETEME_LATER: imported from BIUTEE infrastructure] 

@@ -1,6 +1,8 @@
-package eu.excitementproject.eop.core.component.lexicalknowledge;
+package eu.excitementproject.eop.common.component.lexicalknowledge;
 
 import java.io.Serializable;
+
+//import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
 
 
 /**

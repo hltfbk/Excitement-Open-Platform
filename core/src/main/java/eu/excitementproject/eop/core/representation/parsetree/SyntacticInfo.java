@@ -3,6 +3,8 @@ package eu.excitementproject.eop.core.representation.parsetree;
 
 import java.io.Serializable;
 
+import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
+
 
 /**
  * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification] 

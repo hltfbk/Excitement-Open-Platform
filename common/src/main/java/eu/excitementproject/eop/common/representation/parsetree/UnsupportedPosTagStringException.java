@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.representation.parsetree;
+package eu.excitementproject.eop.common.representation.parsetree;
 
 import eu.excitementproject.eop.common.exception.BaseException;
 

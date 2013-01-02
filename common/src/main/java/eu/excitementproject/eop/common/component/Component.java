@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.common;
+package eu.excitementproject.eop.common.component;
 
 //import eu.excitementproject.eop.common.configuration.CommonConfig;
 //import eu.excitementproject.eop.common.exception.ComponentException;

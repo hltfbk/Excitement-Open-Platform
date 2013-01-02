@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.core.representation.parsetree;
 
+import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
+
 /**
  * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification - but enum in PartOfSpeech is different]
  * This class is immutable.
