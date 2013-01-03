@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>eu.excitementproject</groupId>
@@ -10,6 +11,7 @@
   	<module>core</module>
   	<module>lap</module>
   	<module>common</module>
+    <module>infrastructure</module>
   </modules>
   <dependencyManagement>
   	<dependencies>
@@ -68,6 +70,62 @@
             <artifactId>GermaNetAPI</artifactId>
             <version>7.0.1</version>
     	</dependency>
+  		<dependency>
+  			<groupId>log4j</groupId>
+  			<artifactId>log4j</artifactId>
+  			<version>1.2.17</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>arkref</groupId>
+  			<artifactId>arkref</artifactId>
+  			<version>unversioned-20110321</version>
+  		</dependency>
+  		<dependency>
+  			<groupId>edu.stanford.nlp</groupId>
+  			<artifactId>stanford-parser</artifactId>
+  			<version>2008-10</version>
+  			<classifier>26</classifier>
+  		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.collections-generic</artifactId>
+			<version>4.01_1</version>
+		</dependency>
+		<dependency>
+    		<groupId>edu.cmu.ark</groupId>
+		    <artifactId>supersense-tagger</artifactId>
+    		<version>unversioned-2011</version>
+		</dependency>
+		<dependency>
+    		<groupId>commons-lang</groupId>
+    		<artifactId>commons-lang</artifactId>
+    		<version>2.4</version>
+		</dependency>	
+		<dependency>
+    		<groupId>com.sleepycat</groupId>
+    		<artifactId>je</artifactId>
+    		<version>4.1.10</version>
+		</dependency>
+		<dependency>
+    		<groupId>de.tudarmstadt.ukp</groupId>
+    		<artifactId>jwktl</artifactId>
+    		<version>0.14.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+    		<artifactId>concurrentlinkedhashmap-lru</artifactId>
+    		<version>1.2</version>
+		</dependency>
+		<dependency>
+    		<groupId>net.sf.extjwnl</groupId>
+    		<artifactId>extjwnl</artifactId>
+    		<version>1.6.3</version>
+		</dependency>	
+		<dependency>
+    		<groupId>edu.mit</groupId>
+    		<artifactId>jwi</artifactId>
+    		<version>2.2.2</version>
+		</dependency>			
   	</dependencies>
   </dependencyManagement>
 

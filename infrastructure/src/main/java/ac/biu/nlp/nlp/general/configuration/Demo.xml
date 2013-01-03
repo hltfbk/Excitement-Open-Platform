@@ -1,0 +1,16 @@
+		<configuration>
+		
+			<module name="logging">
+				<param name="main-output-dir">\\nlp-srv\amnon\temp</param>
+				<param name="experiment-name">rank dev</param>
+				<param name="__COMMENTED-OUT-MODULE">mailer</param>
+				<param name="log-file-max-size">500MB</param>
+			</module>
+			
+			<!-- main module for LexicalGraph-->
+			<module name="lexical inference">
+				<param name="num of expansions">2</param>		<!-- number of steps when building the graph -->
+				<param name="senses to use">1</param>			<!-- wn senses of seeds will be set to those sense numbers -->  
+			</module>
+		
+		</configuration>

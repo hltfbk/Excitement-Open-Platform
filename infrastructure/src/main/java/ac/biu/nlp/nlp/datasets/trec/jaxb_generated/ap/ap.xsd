@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="AP_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="FILEID"/>
+        <xs:element ref="FIRST"/>
+        <xs:element ref="SECOND"/>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="BYLINE"/>
+          <xs:element ref="DATELINE"/>
+          <xs:element ref="HEAD"/>
+          <xs:element ref="NOTE"/>
+          <xs:element ref="TEXT"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="FILEID" type="xs:string"/>
+  <xs:element name="FIRST" type="xs:string"/>
+  <xs:element name="SECOND" type="xs:string"/>
+  <xs:element name="BYLINE" type="xs:string"/>
+  <xs:element name="DATELINE" type="xs:string"/>
+  <xs:element name="HEAD" type="xs:string"/>
+  <xs:element name="NOTE" type="xs:string"/>
+  <xs:element name="TEXT" type="xs:string"/>
+</xs:schema>

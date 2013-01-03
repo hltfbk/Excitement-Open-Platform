@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="LATIMES_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="DOCID"/>
+        <xs:element ref="DATE"/>
+        <xs:element ref="SECTION"/>
+        <xs:element minOccurs="0" ref="LENGTH"/>
+        <xs:element minOccurs="0" ref="HEADLINE"/>
+        <xs:element minOccurs="0" ref="BYLINE"/>
+        <xs:element minOccurs="0" ref="DATELINE"/>
+        <xs:element minOccurs="0" ref="TEXT"/>
+        <xs:element minOccurs="0" ref="GRAPHIC"/>
+        <xs:element minOccurs="0" ref="TYPE"/>
+        <xs:element minOccurs="0" ref="SUBJECT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="DOCID" type="xs:integer"/>
+  <xs:element name="DATE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SECTION">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LENGTH">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HEADLINE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BYLINE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DATELINE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TEXT">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="P"/>
+        <xs:element ref="TABLE"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TABLE">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="ROWRULE"/>
+        <xs:element ref="TABLEROW"/>
+      </xs:choice>
+      <xs:attribute name="CWL" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="NCOLS" use="required" type="xs:integer"/>
+      <xs:attribute name="WDM" use="required" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ROWRULE">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="TABLEROW">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref="CELLRULE"/>
+        <xs:element ref="TABLECELL"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CELLRULE">
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="TABLECELL">
+    <xs:complexType mixed="true">
+      <xs:attribute name="CHJ" type="xs:NCName"/>
+      <xs:attribute name="CVJ" type="xs:NCName"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GRAPHIC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TYPE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SUBJECT">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="P"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="P" type="xs:string"/>
+</xs:schema>

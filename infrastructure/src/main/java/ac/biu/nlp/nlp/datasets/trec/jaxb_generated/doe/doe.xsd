@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="DOE_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="TEXT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="TEXT" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="FR94_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="PARENT"/>
+        <xs:element ref="TEXT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="PARENT" type="xs:NCName"/>
+  <xs:element name="TEXT">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="FOOTCITE"/>
+        <xs:element ref="FOOTNOTE"/>
+        <xs:element ref="TABLE"/>
+        <xs:element ref="ACTION"/>
+        <xs:element ref="ADDRESS"/>
+        <xs:element ref="AGENCY"/>
+        <xs:element ref="BILLING"/>
+        <xs:element ref="CFRNO"/>
+        <xs:element ref="DATE"/>
+        <xs:element ref="FRFILING"/>
+        <xs:element ref="FURTHER"/>
+        <xs:element ref="RINDOCK"/>
+        <xs:element ref="SIGNER"/>
+        <xs:element ref="SIGNJOB"/>
+        <xs:element ref="SUMMARY"/>
+        <xs:element ref="SUPPLEM"/>
+        <xs:element ref="USBUREAU"/>
+        <xs:element ref="USDEPT"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ACTION" type="xs:string"/>
+  <xs:element name="ADDRESS" type="xs:string"/>
+  <xs:element name="AGENCY" type="xs:string"/>
+  <xs:element name="BILLING" type="xs:string"/>
+  <xs:element name="CFRNO" type="xs:string"/>
+  <xs:element name="DATE" type="xs:string"/>
+  <xs:element name="FRFILING" type="xs:string"/>
+  <xs:element name="FURTHER" type="xs:string"/>
+  <xs:element name="RINDOCK" type="xs:string"/>
+  <xs:element name="SIGNER" type="xs:string"/>
+  <xs:element name="SIGNJOB" type="xs:string"/>
+  <xs:element name="SUMMARY" type="xs:string"/>
+  <xs:element name="SUPPLEM">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="FOOTCITE"/>
+        <xs:element ref="FOOTNOTE"/>
+        <xs:element ref="TABLE"/>
+        <xs:element ref="IMPORT"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IMPORT" type="xs:NMTOKEN"/>
+  <xs:element name="USBUREAU" type="xs:string"/>
+  <xs:element name="USDEPT" type="xs:string"/>
+  <xs:element name="FOOTCITE" type="xs:integer"/>
+  <xs:element name="TABLE" type="xs:string"/>
+  <xs:element name="FOOTNOTE">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="FOOTNAME"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FOOTNAME" type="xs:integer"/>
+</xs:schema>

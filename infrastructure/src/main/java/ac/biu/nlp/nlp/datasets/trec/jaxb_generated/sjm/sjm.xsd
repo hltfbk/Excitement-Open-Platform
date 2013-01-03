@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="SJM_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="ACCESS"/>
+        <xs:element minOccurs="0" ref="CAPTION"/>
+        <xs:element minOccurs="0" ref="DESCRIPT"/>
+        <xs:element ref="LEADPARA"/>
+        <xs:element ref="SECTION"/>
+        <xs:element ref="HEADLINE"/>
+        <xs:element minOccurs="0" ref="MEMO"/>
+        <xs:element minOccurs="0" ref="TEXT"/>
+        <xs:element minOccurs="0" ref="BYLINE"/>
+        <xs:element ref="COUNTRY"/>
+        <xs:element minOccurs="0" ref="CITY"/>
+        <xs:element ref="EDITION"/>
+        <xs:element ref="CODE"/>
+        <xs:element ref="NAME"/>
+        <xs:element ref="PUBDATE"/>
+        <xs:element ref="DAY"/>
+        <xs:element ref="MONTH"/>
+        <xs:element ref="PG.COL"/>
+        <xs:element ref="PUBYEAR"/>
+        <xs:element ref="REGION"/>
+        <xs:element minOccurs="0" ref="FEATURE"/>
+        <xs:element ref="STATE"/>
+        <xs:element ref="WORD.CT"/>
+        <xs:element ref="DATELINE"/>
+        <xs:element minOccurs="0" ref="COPYRGHT"/>
+        <xs:element ref="LIMLEN"/>
+        <xs:element ref="LANGUAGE"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="ACCESS" type="xs:integer"/>
+  <xs:element name="CAPTION" type="xs:string"/>
+  <xs:element name="DESCRIPT" type="xs:string"/>
+  <xs:element name="LEADPARA" type="xs:string"/>
+  <xs:element name="SECTION" type="xs:string"/>
+  <xs:element name="HEADLINE" type="xs:string"/>
+  <xs:element name="MEMO" type="xs:string"/>
+  <xs:element name="TEXT" type="xs:string"/>
+  <xs:element name="BYLINE" type="xs:string"/>
+  <xs:element name="COUNTRY" type="xs:NCName"/>
+  <xs:element name="CITY" type="xs:string"/>
+  <xs:element name="EDITION" type="xs:string"/>
+  <xs:element name="CODE" type="xs:NCName"/>
+  <xs:element name="NAME" type="xs:string"/>
+  <xs:element name="PUBDATE" type="xs:integer"/>
+  <xs:element name="DAY" type="xs:NCName"/>
+  <xs:element name="MONTH" type="xs:NCName"/>
+  <xs:element name="PG.COL" type="xs:NMTOKEN"/>
+  <xs:element name="PUBYEAR" type="xs:integer"/>
+  <xs:element name="REGION" type="xs:NCName"/>
+  <xs:element name="FEATURE" type="xs:string"/>
+  <xs:element name="STATE" type="xs:NCName"/>
+  <xs:element name="WORD.CT" type="xs:string"/>
+  <xs:element name="DATELINE" type="xs:string"/>
+  <xs:element name="COPYRGHT" type="xs:string"/>
+  <xs:element name="LIMLEN" type="xs:integer"/>
+  <xs:element name="LANGUAGE" type="xs:string"/>
+</xs:schema>

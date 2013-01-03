@@ -1,0 +1,74 @@
+package ac.biu.nlp.nlp.representation;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * This PartOfSpeech merely stores a {@link CanonicalPosTag}, but not a specific pos-tag-string.
+ * 
+ * 
+ * @author Asher Stern
+ * @since Mar 31, 2011
+ *
+ */
+public class UnspecifiedPartOfSpeech extends PartOfSpeech
+{
+	private static final long serialVersionUID = -4220287183818990303L;
+
+	///////////////////// PUBLIC ////////////////////////////
+	
+	// PUBLIC STATIC
+	
+	public static final Set<String> CANONICAL_POS_TAGS_STRINGS;
+	static
+	{
+		CANONICAL_POS_TAGS_STRINGS = new HashSet<String>();
+		for (CanonicalPosTag pos : CanonicalPosTag.values())
+		{
+			CANONICAL_POS_TAGS_STRINGS.add(pos.name());
+		}
+	}
+	
+	////////////////// PUBLIC CONSTRUCTORS AND METHODS /////////////////////////
+	
+	public UnspecifiedPartOfSpeech(String posTagString) throws UnsupportedPosTagStringException
+	{
+		super(posTagString);
+	}
+	
+	public UnspecifiedPartOfSpeech(CanonicalPosTag canonicalPosTag) throws UnsupportedPosTagStringException
+	{
+		this(canonicalPosTag.name());
+	}
+
+	@Override
+	public PartOfSpeech createNewPartOfSpeech(String posTagString) throws UnsupportedPosTagStringException
+	{
+		return new UnspecifiedPartOfSpeech(posTagString);
+	}
+
+	@Override
+	protected void setCanonicalPosTag()
+	{
+		this.canonicalPosTag = CanonicalPosTag.OTHER;
+		try{this.canonicalPosTag = CanonicalPosTag.valueOf(posTagString);}
+		catch(RuntimeException e){this.canonicalPosTag = CanonicalPosTag.OTHER;}
+	}
+
+	
+	///////////////////// PROTECTED ////////////////////////////
+	
+	@Override
+	protected void validatePosTagString(String posTagString) throws UnsupportedPosTagStringException
+	{
+		if (this.posTagString!=null)
+		{
+			if (this.posTagString.length()>0)
+			{
+				if (!CANONICAL_POS_TAGS_STRINGS.contains(posTagString))
+					throw new UnsupportedPosTagStringException("The pos tag \""+posTagString+"\" is not in the set of canonical part of speeches");
+			}
+		}
+	}
+
+}

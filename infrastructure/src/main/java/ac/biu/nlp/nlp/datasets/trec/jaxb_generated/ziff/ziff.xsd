@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="ZIFF_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="DOCID"/>
+        <xs:element ref="JOURNAL"/>
+        <xs:element ref="TITLE"/>
+        <xs:element minOccurs="0" ref="AUTHOR"/>
+        <xs:element minOccurs="0" ref="SUMMARY"/>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="DESCRIPT"/>
+          <xs:element ref="TEXT"/>
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="DOCID" type="xs:string"/>
+  <xs:element name="JOURNAL" type="xs:string"/>
+  <xs:element name="TITLE" type="xs:string"/>
+  <xs:element name="AUTHOR" type="xs:string"/>
+  <xs:element name="SUMMARY" type="xs:string"/>
+  <xs:element name="DESCRIPT" type="xs:string"/>
+  <xs:element name="TEXT">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ABSTRACT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ABSTRACT" type="xs:string"/>
+</xs:schema>

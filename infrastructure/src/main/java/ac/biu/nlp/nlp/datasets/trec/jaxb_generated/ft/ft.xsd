@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="FT_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="PROFILE"/>
+        <xs:element ref="DATE"/>
+        <xs:element ref="HEADLINE"/>
+        <xs:element minOccurs="0" ref="BYLINE"/>
+        <xs:element minOccurs="0" ref="DATELINE"/>
+        <xs:element ref="TEXT"/>
+        <xs:element ref="PUB"/>
+        <xs:element ref="PAGE"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="PROFILE" type="xs:NCName"/>
+  <xs:element name="DATE" type="xs:integer"/>
+  <xs:element name="HEADLINE" type="xs:string"/>
+  <xs:element name="BYLINE" type="xs:string"/>
+  <xs:element name="DATELINE" type="xs:string"/>
+  <xs:element name="TEXT" type="xs:string"/>
+  <xs:element name="PUB" type="xs:string"/>
+  <xs:element name="PAGE" type="xs:string"/>
+</xs:schema>

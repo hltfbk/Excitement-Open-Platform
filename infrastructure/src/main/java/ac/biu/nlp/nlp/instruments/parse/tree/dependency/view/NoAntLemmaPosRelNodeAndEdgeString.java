@@ -1,0 +1,66 @@
+package ac.biu.nlp.nlp.instruments.parse.tree.dependency.view;
+
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
+import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
+
+public class NoAntLemmaPosRelNodeAndEdgeString implements NodeAndEdgeString<Info>
+{
+
+	public String getEdgeStringRepresentation()
+	{
+		String ret = "";
+		try{
+			ret = node.getInfo().getEdgeInfo().getDependencyRelation().getStringRepresentation();
+			if (null==ret) ret = "";
+		}catch(NullPointerException e) {}
+
+		return ret;
+	}
+
+	public String getNodeStringRepresentation()
+	{
+		AbstractNode<? extends Info,?> relevantNode = node;
+		if (node.getAntecedent()!=null)
+			relevantNode = AbstractNodeUtils.weakGetDeepAntecedentOf(node);
+		
+		String lemma = "";
+		try{
+			lemma = node.getInfo().getNodeInfo().getWordLemma();
+			if (null==lemma) lemma = "";
+		}catch(NullPointerException e) {}
+		
+		if ( (lemma.equals("")) && (node.getAntecedent()!=null))
+		{
+			try{
+				lemma = relevantNode.getInfo().getNodeInfo().getWordLemma();
+				if (null==lemma) lemma = "";
+			}catch(NullPointerException e) {}
+		}
+
+		
+		String pos = "";
+		try{
+			pos = InfoGetFields.getPartOfSpeech(node.getInfo());
+			if (null==pos) pos = "";
+		}catch(NullPointerException e){}
+		
+		String ret = "";
+		if (lemma!=null) ret = ret + lemma;
+		
+		if (pos!=null) ret = ret + " ["+pos+"]";
+		
+		return ret;
+	}
+
+	public void set(AbstractNode<? extends Info, ?> node)
+	{
+		this.node = node;
+	}
+	
+	private AbstractNode<? extends Info, ?> node;
+	
+	
+
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="WSJ_FILE">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="DOC"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOC">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="DOCNO"/>
+        <xs:element ref="HL"/>
+        <xs:element ref="DD"/>
+        <xs:element ref="SO"/>
+        <xs:element minOccurs="0" ref="IN"/>
+        <xs:element minOccurs="0" ref="DATELINE"/>
+        <xs:element ref="TEXT"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DOCNO" type="xs:NCName"/>
+  <xs:element name="HL" type="xs:string"/>
+  <xs:element name="DD" type="xs:string"/>
+  <xs:element name="SO" type="xs:string"/>
+  <xs:element name="IN" type="xs:string"/>
+  <xs:element name="DATELINE" type="xs:string"/>
+  <xs:element name="TEXT" type="xs:string"/>
+</xs:schema>
