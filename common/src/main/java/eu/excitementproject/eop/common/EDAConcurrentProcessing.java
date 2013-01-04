@@ -1,8 +1,9 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.common;
 
 import java.util.List;
 
 import org.apache.uima.jcas.JCas;
+
 
 /** The goal of this interface is to provide an access method for 
  * EDAs (and/or EDA wrappers) that can process a set of entailment 

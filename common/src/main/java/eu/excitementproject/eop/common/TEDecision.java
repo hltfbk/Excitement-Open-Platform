@@ -1,4 +1,6 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.common;
+
+import eu.excitementproject.eop.common.DecisionLabel;
 
 /**
  * This interface represents the return value for EDA process() results.

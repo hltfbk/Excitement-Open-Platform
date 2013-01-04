@@ -12,6 +12,11 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDABasic;
+import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.IEditDistanceTEDecision;
+import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
 import eu.excitementproject.eop.common.component.distance.DistanceValue;

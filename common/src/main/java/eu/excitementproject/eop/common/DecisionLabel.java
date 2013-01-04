@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.common;
 
 /**
  * <P>

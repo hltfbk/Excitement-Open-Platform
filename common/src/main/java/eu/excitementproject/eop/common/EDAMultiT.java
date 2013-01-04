@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.common;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import eu.excitementproject.eop.common.exception.ComponentException;
  * multiple T/H interfaces are optional. Multiple Texts and Hypotheses are marked 
  * in the CAS by multiple EXCITEMENT.entailment.Pair annotations. 
  */
-public interface EDAMultiH<T extends TEDecision> extends EDABasic<T> {
+public interface EDAMultiT<T extends TEDecision> extends EDABasic<T> {
 	
-	public List<T> processMultiH(JCas aCas) throws EDAException, ComponentException;
+	public List<T> processMultiT(JCas aCas) throws EDAException, ComponentException;
 	
 }
