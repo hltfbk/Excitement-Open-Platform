@@ -1,9 +1,9 @@
 
 package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 
-import eu.excitementproject.eop.core.component.lexicalknowledge.CanonicalRelationSpecifier;
-import eu.excitementproject.eop.core.component.lexicalknowledge.OwnRelationSpecifier;
-import eu.excitementproject.eop.core.component.lexicalknowledge.TERuleRelation;
+import eu.excitementproject.eop.common.component.lexicalknowledge.CanonicalRelationSpecifier;
+import eu.excitementproject.eop.common.component.lexicalknowledge.OwnRelationSpecifier;
+import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 
 public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationSpecifier<GermaNetRelation> {
 	causes,
