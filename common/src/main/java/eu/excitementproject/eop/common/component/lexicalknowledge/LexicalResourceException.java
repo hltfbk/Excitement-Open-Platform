@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.component.lexicalknowledge;
 
-//import eu.excitementproject.eop.core.component.lexicalknowledge.KnowledgeComponentException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.KnowledgeComponentException;
 
 
 public class LexicalResourceException extends KnowledgeComponentException {

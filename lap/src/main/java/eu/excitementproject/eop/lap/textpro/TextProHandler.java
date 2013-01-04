@@ -25,7 +25,7 @@ public class TextProHandler {
 	protected String YAMCHA_HOME;
     
     //file temporaneo per la memorizzazione del testo da analizzare
-    private static final String TEMP_FILENAME = "esempio";
+    private static final String TEMP_FILENAME = "src/main/resources/TextPro/esempio";
     
     //file temporaneo per la memorizzazzione del testo analizzato; è l'output di TextPro
     private static final String TEMP_FILENAME_OUT = TEMP_FILENAME + ".txp";

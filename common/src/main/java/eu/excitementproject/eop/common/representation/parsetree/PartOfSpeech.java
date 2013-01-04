@@ -2,8 +2,8 @@ package eu.excitementproject.eop.common.representation.parsetree;
 
 import java.io.Serializable;
 
-//import eu.excitementproject.eop.core.representation.parsetree.CanonicalPosTag;
-//import eu.excitementproject.eop.core.representation.parsetree.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.representation.parsetree.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.parsetree.UnsupportedPosTagStringException;
 
 /**
  * <P> [DELETEME_LATER This code has been imported from BIUTEE 2.4.1, with minor modifications: 1) the field "CanonicalPosTag" is a different type. 2) The exception "UnsupportedPosTagString" is a different type.] </P> 

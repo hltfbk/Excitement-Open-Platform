@@ -2,7 +2,7 @@ package eu.excitementproject.eop.common.component.lexicalknowledge;
 
 import java.io.Serializable;
 
-//import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 
 
 /**

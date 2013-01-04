@@ -2,8 +2,7 @@ package eu.excitementproject.eop.common.component.lexicalknowledge;
 
 import java.io.Serializable;
 
-//import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceException;
-//import eu.excitementproject.eop.core.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
 
 /**

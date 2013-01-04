@@ -12,6 +12,9 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
+import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
