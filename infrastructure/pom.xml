@@ -24,28 +24,12 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-    	<groupId>eu.excitementproject</groupId>
-    	<artifactId>common</artifactId>
-    	<version>0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-    	<groupId>eu.excitementproject</groupId>
-    	<artifactId>core</artifactId>
-    	<version>0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-    	<groupId>eu.excitementproject</groupId>
-    	<artifactId>lap</artifactId>
-    	<version>0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
     	<groupId>arkref</groupId>
     	<artifactId>arkref</artifactId>
     </dependency>
   		<dependency>
   			<groupId>edu.stanford.nlp</groupId>
   			<artifactId>stanford-parser</artifactId>
-  			<classifier>26</classifier>
   		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
@@ -78,6 +62,34 @@
 		<dependency>
     		<groupId>edu.mit</groupId>
     		<artifactId>jwi</artifactId>
-		</dependency>			
+		</dependency>
+		<dependency>
+    		<groupId>net.sf.jwordnet</groupId>
+    		<artifactId>jwnl</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>edu.stanford.nlp</groupId>
+    		<artifactId>stanford-ner</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.lucene</groupId>
+    		<artifactId>lucene-core</artifactId>
+		</dependency>		
+		<!--  Excitement modules dependencies -->
+	    <dependency>
+    		<groupId>eu.excitementproject</groupId>
+    		<artifactId>common</artifactId>
+    		<version>0.1-SNAPSHOT</version>
+    	</dependency>
+    	<dependency>
+	    	<groupId>eu.excitementproject</groupId>
+    		<artifactId>core</artifactId>
+    		<version>0.1-SNAPSHOT</version>
+    	</dependency>
+    	<dependency>
+	    	<groupId>eu.excitementproject</groupId>
+    		<artifactId>lap</artifactId>
+    		<version>0.1-SNAPSHOT</version>
+    	</dependency>
   </dependencies>
 </project>
