@@ -27,22 +27,10 @@
     	<groupId>arkref</groupId>
     	<artifactId>arkref</artifactId>
     </dependency>
-  		<dependency>
-  			<groupId>edu.stanford.nlp</groupId>
-  			<artifactId>stanford-parser</artifactId>
-  		</dependency>
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.collections-generic</artifactId>
 		</dependency>  		
-		<dependency>
-    		<groupId>edu.cmu.ark</groupId>
-		    <artifactId>supersense-tagger</artifactId>
-		</dependency>
-		<dependency>
-    		<groupId>commons-lang</groupId>
-    		<artifactId>commons-lang</artifactId>
-		</dependency>
 		<dependency>
     		<groupId>com.sleepycat</groupId>
     		<artifactId>je</artifactId>
@@ -74,7 +62,27 @@
 		<dependency>
     		<groupId>org.apache.lucene</groupId>
     		<artifactId>lucene-core</artifactId>
-		</dependency>		
+		</dependency>
+		<dependency>
+    		<groupId>edu.stanford.nlp</groupId>
+    		<artifactId>stanford-postagger</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>opennlp</groupId>
+    		<artifactId>opennlp-tools</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>com.aliasi</groupId>
+    		<artifactId>lingpipe</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>edu.northwestern</groupId>
+    		<artifactId>morphadorner</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>gate</groupId>
+    		<artifactId>gate</artifactId>
+		</dependency>
 		<!--  Excitement modules dependencies -->
 	    <dependency>
     		<groupId>eu.excitementproject</groupId>
