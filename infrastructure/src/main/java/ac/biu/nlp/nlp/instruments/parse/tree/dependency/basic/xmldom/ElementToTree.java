@@ -133,14 +133,18 @@ public class ElementToTree
 		String corefGroupIdString = nodeElement.getAttribute(COREFERENCE_GROUP_ATTRIBUTE_NAME);
 		if (corefGroupIdString!=null)
 		{
-			try
+			corefGroupIdString = corefGroupIdString.trim();
+			if (corefGroupIdString.length()>0)
 			{
-				int corefGroupId = Integer.parseInt(corefGroupIdString);
-				addNodeToCorefGroup(node,corefGroupId);
-			}
-			catch(NumberFormatException e)
-			{
-				throw new TreeXmlException("Bad argument value for coreference. Value is: "+corefGroupIdString,e);
+				try
+				{
+					int corefGroupId = Integer.parseInt(corefGroupIdString);
+					addNodeToCorefGroup(node,corefGroupId);
+				}
+				catch(NumberFormatException e)
+				{
+					throw new TreeXmlException("Bad argument value for coreference. Value is: \""+corefGroupIdString+"\"",e);
+				}
 			}
 		}
 	}

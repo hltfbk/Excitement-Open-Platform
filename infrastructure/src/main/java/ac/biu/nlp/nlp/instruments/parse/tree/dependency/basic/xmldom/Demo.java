@@ -1,19 +1,38 @@
 package ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
+import ac.biu.nlp.nlp.general.match.Matcher;
+import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
+import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
+import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
+import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
+import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
+import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefCoreferenceResolver;
+import ac.biu.nlp.nlp.instruments.ner.NamedEntityMergeServices;
+import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
+import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
+import ac.biu.nlp.nlp.instruments.ner.NamedEntityWord;
+import ac.biu.nlp.nlp.instruments.ner.stanford.StanfordNamedEntityRecognizer;
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.IdLemmaPosRelNodeAndEdgeString;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
+import ac.biu.nlp.nlp.instruments.tokenizer.MaxentTokenizer;
+import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
+import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 
 public class Demo
 {
@@ -31,7 +50,7 @@ public class Demo
 		try
 		{
 			Iterator<String> argsIterator = Arrays.asList(args).iterator();
-			Demo app = new Demo(argsIterator.next(),Integer.parseInt(argsIterator.next()),argsIterator.next());
+			Demo app = new Demo(argsIterator.next(),Integer.parseInt(argsIterator.next()),argsIterator.next(),argsIterator.next());
 			app.go();
 		}
 		catch(Exception e)
@@ -41,27 +60,32 @@ public class Demo
 
 	}
 
-	public Demo(String hostname, int port, String postaggerFileName)
+	public Demo(String hostname, int port, String postaggerFileName, String nerModelFileName)
 	{
 		super();
 		this.hostname = hostname;
 		this.port = port;
 		this.postaggerFileName = postaggerFileName;
+		this.nerModelFileName = nerModelFileName;
 	}
 
 
-	public void go() throws ParserRunException, TreeXmlException, TreeDotFileGeneratorException
+	public void go() throws ParserRunException, TreeXmlException, TreeDotFileGeneratorException, ArkrefClientException, IOException, CoreferenceResolutionException, TreeCoreferenceInformationException, NamedEntityRecognizerException, TokenizerException
 	{
+		System.out.println("Writing...");
 		write();
+		System.out.println("Writing done.");
+		System.out.println("Reading...");
 		read();
+		System.out.println("Reading done.");
 	}
 	
-	public void read() throws TreeXmlException, TreeDotFileGeneratorException
+	public void read() throws TreeXmlException, TreeDotFileGeneratorException, TreeCoreferenceInformationException
 	{
 		XmlToListTrees xmlToListTrees = new XmlToListTrees(FILENAME,new PennXmlTreePosFactory());
 		xmlToListTrees.createListTrees();
-		System.out.println(xmlToListTrees.getCorpusInformation());
-		System.out.println(xmlToListTrees.getListTrees().size());
+		System.out.println("Corpus information: "+xmlToListTrees.getCorpusInformation());
+		System.out.println("Number of trees: "+xmlToListTrees.getListTrees().size());
 		int index=1;
 		for (TreeAndSentence tas : xmlToListTrees.getListTrees())
 		{
@@ -70,43 +94,139 @@ public class Demo
 			++index;
 		}
 		
+		// print coreference information
+		System.out.println("coreference information:");
+		TreeCoreferenceInformation<BasicNode> corefInformation =
+				xmlToListTrees.getCoreferenceInformation();
+		for (Integer groupId : corefInformation.getAllExistingGroupIds())
+		{
+			System.out.print(groupId+": ");
+			boolean firstIteration = true;
+			for (BasicNode node : corefInformation.getGroup(groupId))
+			{
+				if (firstIteration) firstIteration = false;
+				else System.out.print(", ");
+				System.out.print(node.getInfo().getId()+" ("+InfoGetFields.getLemma(node.getInfo())+")");
+			}
+			System.out.println();
+		}
+		
+		
 		
 	}
 
-	public void write() throws ParserRunException, TreeXmlException
+	public void write() throws ParserRunException, TreeXmlException, ArkrefClientException, IOException, CoreferenceResolutionException, NamedEntityRecognizerException, TokenizerException, TreeCoreferenceInformationException
 	{
-		String sentence = "This is a sentence";
-		String sentence2 = " An Israeli official says Prime Minister Benjamin Netanyahu will visit Europe in a few months to persuade leaders to step up sanctions on Iran over its nuclear program.";
-		
-		BasicParser parser = new EasyFirstParser(hostname,port,postaggerFileName);
-		parser.init();
+
+		Tokenizer tokenizer = new MaxentTokenizer();
+		tokenizer.init();
 		try
 		{
-			List<TreeAndSentence> list = new ArrayList<TreeAndSentence>();
+			NamedEntityRecognizer namedEntityRecognizer = new StanfordNamedEntityRecognizer(new File(this.nerModelFileName));
+			namedEntityRecognizer.init();
+			try
+			{
+				CoreferenceResolver<BasicNode> coreferenceResolver = new ArkrefCoreferenceResolver();
+				coreferenceResolver.init();
+				try
+				{
+					List<BasicNode> listTrees = new LinkedList<BasicNode>();
 
-			parser.setSentence(sentence);
-			parser.parse();
-			BasicNode tree = parser.getParseTree();
-			TreeAndSentence tas = new TreeAndSentence(sentence, tree);
-			list.add(tas);
 
-			parser.setSentence(sentence2);
-			parser.parse();
-			tree = parser.getParseTree();
-			tas = new TreeAndSentence(sentence2, tree);
-			list.add(tas);
+					String sentence = "This is a sentence.";
+					String sentence2 = " An Israeli official says Prime Minister Benjamin Netanyahu will visit Europe in a few months to persuade leaders to step up sanctions on Iran over its nuclear program.";
 
-			ListTreesToXml lttx = new ListTreesToXml(list, "demo corpus", FILENAME);
-			lttx.create();
+					BasicParser parser = new EasyFirstParser(hostname,port,postaggerFileName);
+					parser.init();
+					try
+					{
+						List<TreeAndSentence> list = new ArrayList<TreeAndSentence>();
+
+						namedEntityRecognizer.setSentence(sentence, tokenizer);
+						namedEntityRecognizer.recognize();
+						parser.setSentence(sentence);
+						parser.parse();
+						
+						Matcher<NamedEntityWord, BasicConstructionNode> matcher =
+								new Matcher<NamedEntityWord, BasicConstructionNode>(
+										namedEntityRecognizer.getAnnotatedSentence().iterator(),
+										parser.getNodesOrderedByWords().iterator(),
+										NamedEntityMergeServices.getMatchFinder(),
+										NamedEntityMergeServices.getOperator()
+										);
+						matcher.makeMatchOperation();
+						
+						BasicNode tree = parser.getParseTree();
+						TreeAndSentence tas = new TreeAndSentence(sentence, tree);
+						list.add(tas);
+						listTrees.add(tree);
+
+						namedEntityRecognizer.setSentence(sentence2, tokenizer);
+						namedEntityRecognizer.recognize();
+						parser.setSentence(sentence2);
+						parser.parse();
+						matcher =
+								new Matcher<NamedEntityWord, BasicConstructionNode>(
+										namedEntityRecognizer.getAnnotatedSentence().iterator(),
+										parser.getNodesOrderedByWords().iterator(),
+										NamedEntityMergeServices.getMatchFinder(),
+										NamedEntityMergeServices.getOperator()
+										);
+						matcher.makeMatchOperation();
+						tree = parser.getParseTree();
+						tas = new TreeAndSentence(sentence2, tree);
+						list.add(tas);
+						listTrees.add(tree);
+
+						coreferenceResolver.setInput(listTrees, sentence+" "+sentence2);
+						coreferenceResolver.resolve();
+						TreeCoreferenceInformation<BasicNode> corefInformation =
+								coreferenceResolver.getCoreferenceInformation();
+
+						ListTreesToXml lttx = new ListTreesToXml(list, "demo corpus", FILENAME, corefInformation);
+						lttx.create();
+						
+						
+						
+						// print coreference information
+						System.out.println("coreference information:");
+						for (Integer groupId : corefInformation.getAllExistingGroupIds())
+						{
+							System.out.print(groupId+": ");
+							boolean firstIteration = true;
+							for (BasicNode node : corefInformation.getGroup(groupId))
+							{
+								if (firstIteration) firstIteration = false;
+								else System.out.print(", ");
+								System.out.print(node.getInfo().getId()+" ("+InfoGetFields.getLemma(node.getInfo())+")");
+							}
+							System.out.println();
+						}
+					}
+					finally
+					{
+						parser.cleanUp();	
+					}
+				}
+				finally
+				{
+					coreferenceResolver.cleanUp();
+				}
+			}
+			finally
+			{
+				namedEntityRecognizer.cleanUp();
+			}
 		}
 		finally
 		{
-			parser.cleanUp();	
+			tokenizer.cleanUp();
 		}
-		
+
 	}
 
 	private final String hostname;
 	private final int port;
 	private final String postaggerFileName;
+	private final String nerModelFileName; 
 }
