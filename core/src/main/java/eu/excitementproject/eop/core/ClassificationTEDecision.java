@@ -1,5 +1,8 @@
 package eu.excitementproject.eop.core;
 
+import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.TEDecision;
+
 /**
  * The <code>ClassificationTEDecision</code> class implements the
  * <code>TEDecision</code> interface.

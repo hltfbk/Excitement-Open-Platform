@@ -1,7 +1,8 @@
 package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
-import eu.excitementproject.eop.core.DecisionLabel;
+import eu.excitementproject.eop.common.DecisionLabel;
+
 import org.junit.Test;
 
 public class DecisionLabelTest {
