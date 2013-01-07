@@ -6,10 +6,10 @@ import static org.junit.Assert.*;
 import org.junit.Assume;
 import org.junit.Test;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.exception.BaseException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceException;
 // LexicalResource imports
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;

@@ -25,14 +25,17 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDABasic;
+import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.scoring.BagOfLemmasScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
-import eu.excitementproject.eop.core.component.scoring.ScoringComponent;
-import eu.excitementproject.eop.core.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 

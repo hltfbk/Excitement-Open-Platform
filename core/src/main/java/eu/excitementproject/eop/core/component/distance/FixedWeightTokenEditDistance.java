@@ -13,10 +13,13 @@ import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.tcas.Annotation;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
+import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
+import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.scoring.ScoringComponentException;
 
 
 /**

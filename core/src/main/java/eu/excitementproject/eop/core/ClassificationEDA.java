@@ -16,13 +16,16 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDABasic;
+import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 //import eu.excitementproject.eop.core.component.distance.BagOfLemmasSimilarity;
 import eu.excitementproject.eop.core.component.distance.BagOfWordsSimilarity;
-import eu.excitementproject.eop.core.component.distance.DistanceCalculation;
-import eu.excitementproject.eop.core.component.distance.DistanceValue;
 import eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 

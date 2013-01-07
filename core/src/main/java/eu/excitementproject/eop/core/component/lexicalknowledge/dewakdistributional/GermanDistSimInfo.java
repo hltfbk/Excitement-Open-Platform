@@ -1,7 +1,7 @@
 
 package eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional;
 
-import eu.excitementproject.eop.core.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 
 public class GermanDistSimInfo implements RuleInfo
 {
