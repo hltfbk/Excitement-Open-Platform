@@ -65,11 +65,7 @@ public class ListTreesToXml
 	 */
 	public ListTreesToXml(List<TreeAndSentence> listTrees, String corpusInformation, String filename)
 	{
-		super();
-		this.listTrees = listTrees;
-		this.filename = filename;
-		this.corpusInformation = corpusInformation;
-		this.coreferenceInformation = null;
+		this(listTrees,corpusInformation,filename,null);
 	}
 
 	/**

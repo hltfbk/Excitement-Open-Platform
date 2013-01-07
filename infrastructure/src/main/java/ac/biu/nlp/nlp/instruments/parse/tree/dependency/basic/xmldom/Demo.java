@@ -37,6 +37,7 @@ import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 public class Demo
 {
 	public static final String FILENAME = "trees.xml";
+	public static final boolean RESOLVE_COREFERENCE = true;
 
 	/**
 	 * @param args should be:<BR>
@@ -93,22 +94,29 @@ public class Demo
 			tdfg.generate();
 			++index;
 		}
-		
+
 		// print coreference information
 		System.out.println("coreference information:");
 		TreeCoreferenceInformation<BasicNode> corefInformation =
 				xmlToListTrees.getCoreferenceInformation();
-		for (Integer groupId : corefInformation.getAllExistingGroupIds())
+		if (corefInformation!=null)
 		{
-			System.out.print(groupId+": ");
-			boolean firstIteration = true;
-			for (BasicNode node : corefInformation.getGroup(groupId))
+			for (Integer groupId : corefInformation.getAllExistingGroupIds())
 			{
-				if (firstIteration) firstIteration = false;
-				else System.out.print(", ");
-				System.out.print(node.getInfo().getId()+" ("+InfoGetFields.getLemma(node.getInfo())+")");
+				System.out.print(groupId+": ");
+				boolean firstIteration = true;
+				for (BasicNode node : corefInformation.getGroup(groupId))
+				{
+					if (firstIteration) firstIteration = false;
+					else System.out.print(", ");
+					System.out.print(node.getInfo().getId()+" ("+InfoGetFields.getLemma(node.getInfo())+")");
+				}
+				System.out.println();
 			}
-			System.out.println();
+		}
+		else
+		{
+			System.out.println("no coreference information has been read.");
 		}
 		
 		
@@ -178,29 +186,39 @@ public class Demo
 						list.add(tas);
 						listTrees.add(tree);
 
-						coreferenceResolver.setInput(listTrees, sentence+" "+sentence2);
-						coreferenceResolver.resolve();
-						TreeCoreferenceInformation<BasicNode> corefInformation =
-								coreferenceResolver.getCoreferenceInformation();
+						TreeCoreferenceInformation<BasicNode> corefInformation = null;
+						if (RESOLVE_COREFERENCE)
+						{
+							coreferenceResolver.setInput(listTrees, sentence+" "+sentence2);
+							coreferenceResolver.resolve();
+							corefInformation = coreferenceResolver.getCoreferenceInformation();
+						}
 
 						ListTreesToXml lttx = new ListTreesToXml(list, "demo corpus", FILENAME, corefInformation);
 						lttx.create();
-						
-						
-						
+
+
+
 						// print coreference information
-						System.out.println("coreference information:");
-						for (Integer groupId : corefInformation.getAllExistingGroupIds())
+						if (corefInformation!=null)
 						{
-							System.out.print(groupId+": ");
-							boolean firstIteration = true;
-							for (BasicNode node : corefInformation.getGroup(groupId))
+							System.out.println("coreference information:");
+							for (Integer groupId : corefInformation.getAllExistingGroupIds())
 							{
-								if (firstIteration) firstIteration = false;
-								else System.out.print(", ");
-								System.out.print(node.getInfo().getId()+" ("+InfoGetFields.getLemma(node.getInfo())+")");
+								System.out.print(groupId+": ");
+								boolean firstIteration = true;
+								for (BasicNode node : corefInformation.getGroup(groupId))
+								{
+									if (firstIteration) firstIteration = false;
+									else System.out.print(", ");
+									System.out.print(node.getInfo().getId()+" ("+InfoGetFields.getLemma(node.getInfo())+")");
+								}
+								System.out.println();
 							}
-							System.out.println();
+						}
+						else
+						{
+							System.out.println("no coreference information has been resolved.");
 						}
 					}
 					finally
