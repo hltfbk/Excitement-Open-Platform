@@ -1,0 +1,66 @@
+package ac.biu.nlp.nlp.engineml.small_unit_tests;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import ac.biu.nlp.nlp.engineml.utilities.preprocess.NewNormalizerBasedTextPreProcessor;
+import ac.biu.nlp.nlp.general.ExceptionUtil;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.*;
+
+public class DemoNewNumberNormalizer
+{
+	public static void f(String[] args) throws Exception
+	{
+		ConfigurationFile configurationFile = new ConfigurationFile(args[0]);
+		ConfigurationParams params =  configurationFile.getModuleConfiguration(RTE_PAIRS_PREPROCESS_MODULE_NAME);
+		
+		NewNormalizerBasedTextPreProcessor textPreprocessor = new NewNormalizerBasedTextPreProcessor(params);
+		
+		String line = null;
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		boolean stop = false;
+		do
+		{
+			stop = true;
+		
+			System.out.println("Enter a string:");
+			line = reader.readLine();
+			if (line!=null)
+			{
+				if (!line.equalsIgnoreCase("bye"))
+				{
+					stop = false;
+					textPreprocessor.setText(line);
+					textPreprocessor.preprocess();
+					String normalizedLine = textPreprocessor.getPreprocessedText();
+					System.out.println(normalizedLine);
+				}
+			}
+		}while(!stop);
+		
+		System.out.println("Bye Bye! Hope you enjoyed.");
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			f(args);
+			
+		}
+		catch(Exception e)
+		{
+			ExceptionUtil.outputException(e, System.out);
+		}
+
+	}
+
+}

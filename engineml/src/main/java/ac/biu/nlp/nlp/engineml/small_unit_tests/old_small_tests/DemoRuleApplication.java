@@ -1,0 +1,146 @@
+package ac.biu.nlp.nlp.engineml.small_unit_tests.old_small_tests;
+
+
+import ac.biu.nlp.nlp.engineml.datastructures.SimpleNullForbiddenBidirectionalMap;
+import ac.biu.nlp.nlp.engineml.operations.OperationException;
+import ac.biu.nlp.nlp.engineml.operations.operations.ExtendedSubstitutionRuleApplicationOperation;
+import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
+import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
+import ac.biu.nlp.nlp.general.BidirectionalMap;
+import ac.biu.nlp.nlp.general.ExceptionUtil;
+import ac.biu.nlp.nlp.general.StringUtil;
+import ac.biu.nlp.nlp.instruments.parse.BasicParser;
+import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultSyntacticInfo;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
+import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import ac.biu.nlp.nlp.representation.MiniparPartOfSpeech;
+import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
+
+public class DemoRuleApplication
+{
+	public static Rule<Info, BasicNode> createRule() throws UnsupportedPosTagStringException
+	{
+		BasicNode lhsRoot = new BasicNode(new DefaultInfo("lhsRoot", new DefaultNodeInfo("love", "love", 0, null, new DefaultSyntacticInfo(new MiniparPartOfSpeech("V"))), new DefaultEdgeInfo(null)));
+		BasicNode lhsSubj = new BasicNode(new DefaultInfo("lhsSubj",DefaultNodeInfo.newVariableDefaultNodeInfo(0, new DefaultSyntacticInfo(new MiniparPartOfSpeech("N"))),new DefaultEdgeInfo(new DependencyRelation("subj", null))));
+		BasicNode lhsObj = new BasicNode(new DefaultInfo("lhsObj",DefaultNodeInfo.newVariableDefaultNodeInfo(1, new DefaultSyntacticInfo(new MiniparPartOfSpeech("N"))),new DefaultEdgeInfo(new DependencyRelation("obj", null))));
+		lhsRoot.addChild(lhsSubj);
+		lhsRoot.addChild(lhsObj);
+		
+		
+		BasicNode rhsRoot = new BasicNode(new DefaultInfo("rhsRoot", new DefaultNodeInfo("like", "like", 0, null, new DefaultSyntacticInfo(new MiniparPartOfSpeech("V"))), new DefaultEdgeInfo(null)));
+		BasicNode rhsinter = new BasicNode(new DefaultInfo("rhsinter", new DefaultNodeInfo("inter", "inter", 0, null, new DefaultSyntacticInfo(new MiniparPartOfSpeech("V"))), new DefaultEdgeInfo(new DependencyRelation("inter", null))));
+		BasicNode rhsSubj = new BasicNode(new DefaultInfo("rhsSubj",DefaultNodeInfo.newVariableDefaultNodeInfo(0, new DefaultSyntacticInfo(new MiniparPartOfSpeech("N"))),new DefaultEdgeInfo(new DependencyRelation("subj", null))));
+		BasicNode rhsObj = new BasicNode(new DefaultInfo("rhsObj",DefaultNodeInfo.newVariableDefaultNodeInfo(1, new DefaultSyntacticInfo(new MiniparPartOfSpeech("N"))),new DefaultEdgeInfo(new DependencyRelation("obj", null))));
+		rhsRoot.addChild(rhsinter);
+		rhsinter.addChild(rhsSubj);
+		rhsinter.addChild(rhsObj);
+		
+		BidirectionalMap<BasicNode, BasicNode> map = new SimpleNullForbiddenBidirectionalMap<BasicNode, BasicNode>();
+		map.put(lhsRoot,rhsRoot);
+		map.put(lhsSubj, rhsSubj);
+		map.put(lhsObj, rhsObj);
+		
+		Rule<Info,BasicNode> ret = new Rule<Info, BasicNode>(lhsRoot, rhsRoot, map);
+		return ret;
+	}
+	
+	public static void f(String[] args) throws TeEngineMlException, ParserRunException, TreeStringGeneratorException, OperationException, TreeAndParentMapException, UnsupportedPosTagStringException
+	{
+		@SuppressWarnings("deprecation")
+		BasicParser parser = ParserFactory.getParser("localhost");
+		parser.init();
+		try
+		{
+			parser.setSentence("I love you and him very much.");
+			parser.parse();
+			BasicNode originalTree = parser.getParseTree();
+			ExtendedNode tree = TreeUtilities.copyFromBasicNode(originalTree);
+			TreeAndParentMap<ExtendedInfo, ExtendedNode> treeAndParentMap = new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree);
+			System.out.println(TreeUtilities.treeToString(tree));
+			System.out.println(StringUtil.generateStringOfCharacter('-', 100));
+			
+			ExtendedNode loveNode = null;
+			ExtendedNode subjNode = null;
+			ExtendedNode objNode = null;
+			for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+			{
+				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("love"))
+					loveNode = node;
+				if (InfoGetFields.getRelation(node.getInfo()).equalsIgnoreCase("subj"))
+					subjNode = node;
+				if (InfoGetFields.getRelation(node.getInfo()).equalsIgnoreCase("obj"))
+					objNode = node;
+			}
+			Rule<Info,BasicNode> rule = createRule();
+			BasicNode lhsloveNode = null;
+			BasicNode lhssubjNode = null;
+			BasicNode lhsobjNode = null;
+			for (BasicNode node : AbstractNodeUtils.treeToSet(rule.getLeftHandSide()))
+			{
+				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("love"))
+					lhsloveNode = node;
+				if (InfoGetFields.getRelation(node.getInfo()).equalsIgnoreCase("subj"))
+					lhssubjNode = node;
+				if (InfoGetFields.getRelation(node.getInfo()).equalsIgnoreCase("obj"))
+					lhsobjNode = node;
+			}
+			BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree = new SimpleNullForbiddenBidirectionalMap<BasicNode, ExtendedNode>();
+			mapLhsToTree.put(lhsloveNode,loveNode);
+			mapLhsToTree.put(lhssubjNode,subjNode);
+			mapLhsToTree.put(lhsobjNode, objNode);
+			if (loveNode==null)System.out.println("loveNode is null");
+			if (lhsloveNode==null)System.out.println("lhsloveNode is null");
+			if (lhsloveNode==rule.getLeftHandSide())System.out.println("OK");else System.out.println("not OK");
+			
+			if (subjNode==null)System.out.println("subjNode is null");else System.out.println("subjNode is not null");
+			if (objNode==null)System.out.println("objNode is null");else System.out.println("objNode is not null");
+
+			if (lhssubjNode==null)System.out.println("lhssubjNode is null");else System.out.println("lhssubjNode is not null");
+			if (lhsobjNode==null)System.out.println("lhsobjNode is null");else System.out.println("lhsobjNode is not null");
+
+			ExtendedSubstitutionRuleApplicationOperation operation = new ExtendedSubstitutionRuleApplicationOperation(treeAndParentMap, treeAndParentMap, rule, mapLhsToTree);
+			//IntroductionRuleApplicationOperation operation = new IntroductionRuleApplicationOperation(treeAndParentMap, treeAndParentMap, rule, mapLhsToTree);
+			operation.generate();
+			ExtendedNode generated = operation.getGeneratedTree();
+			System.out.println(TreeUtilities.treeToString(generated));
+		}
+		finally
+		{
+			parser.cleanUp();
+		}
+		
+		
+		
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			f(args);
+			
+		}
+		catch(Exception e)
+		{
+			ExceptionUtil.outputException(e, System.out);
+		}
+
+	}
+
+}
+

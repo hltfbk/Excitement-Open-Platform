@@ -1,0 +1,87 @@
+package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import ac.biu.nlp.nlp.engineml.rteflow.document_sublayer.DocumentInitializer;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
+import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+
+
+/**
+ * 
+ * @author Asher Stern
+ * @since Jun 5, 2011
+ *
+ */
+public class ExtendedTopicDataSetGenerator
+{
+	/////////////////////////////// PUBLIC //////////////////////////////
+
+	public ExtendedTopicDataSetGenerator(PreprocessedTopicDataSet topic, TESystemEnvironment teSystemEnvironment)
+	{
+		super();
+		this.topic = topic;
+		this.teSystemEnvironment = teSystemEnvironment;
+	}
+
+	public void generate() throws TreeCoreferenceInformationException, TeEngineMlException, AnnotatorException
+	{
+		Map<String, Map<Integer, ExtendedNode>> convertedDocumentTrees = new LinkedHashMap<String, Map<Integer,ExtendedNode>>();
+		Map<String,ExtendedNode> convertedDocumentsHeadlinesTrees = new LinkedHashMap<String, ExtendedNode>();
+		Map<String,TreeCoreferenceInformation<ExtendedNode>> convertedCoreferenceInformation = new LinkedHashMap<String, TreeCoreferenceInformation<ExtendedNode>>();
+
+		for (String documentId : topic.getDocumentsTreesMap().keySet())
+		{
+			Map<Integer,BasicNode> documentAsMap = topic.getDocumentsTreesMap().get(documentId);
+			if (!topic.getDocumentsHeadlinesTrees().containsKey(documentId)) throw new TeEngineMlException("document headline for document "+documentId+" was not found.");
+			BasicNode headlineTree = topic.getDocumentsHeadlinesTrees().get(documentId);
+			if (!topic.getCoreferenceInformation().containsKey(documentId)) throw new TeEngineMlException("Coreference information for "+documentId+" was not found.");
+			TreeCoreferenceInformation<BasicNode> coreferenceInformation = topic.getCoreferenceInformation().get(documentId);
+			
+			DocumentInitializer documentInitializerForDocument =
+					new DocumentInitializer(coreferenceInformation,teSystemEnvironment,documentAsMap);
+			documentInitializerForDocument.initialize();
+			convertedDocumentTrees.put(documentId, documentInitializerForDocument.getDocumentAsTreesMap());
+			convertedCoreferenceInformation.put(documentId,documentInitializerForDocument.getCreatedCoreferenceInformation());
+			
+			DocumentInitializer documentInitializerForHeadline =
+					new DocumentInitializer(null,teSystemEnvironment,headlineTree);
+			documentInitializerForHeadline.initialize();
+			convertedDocumentsHeadlinesTrees.put(documentId,documentInitializerForHeadline.getDocumentAsTree());
+		}
+		
+		Map<String,ExtendedNode> convertedHypothesisMap = new LinkedHashMap<String, ExtendedNode>();
+		for (String hypothesisId : topic.getHypothesisTreesMap().keySet())
+		{
+			BasicNode originalHypothesis = topic.getHypothesisTreesMap().get(hypothesisId);
+			DocumentInitializer documentInitializerForHypothesis =
+					new DocumentInitializer(null,teSystemEnvironment,originalHypothesis);
+			documentInitializerForHypothesis.initialize();
+			convertedHypothesisMap.put(hypothesisId,documentInitializerForHypothesis.getDocumentAsTree());
+		}
+		
+		this.extendedTopic = new ExtendedPreprocessedTopicDataSet(topic.getTopicDataSet(),convertedHypothesisMap,convertedDocumentTrees,convertedCoreferenceInformation,convertedDocumentsHeadlinesTrees);
+	}
+	
+	
+	public ExtendedPreprocessedTopicDataSet getExtendedTopic() throws TeEngineMlException
+	{
+		if (null==extendedTopic) throw new TeEngineMlException("generate() was not called");
+		return extendedTopic;
+	}
+
+
+	/////////////////////////////// PRIVATE //////////////////////////////
+
+	private PreprocessedTopicDataSet topic;
+	private TESystemEnvironment teSystemEnvironment;
+	
+	private ExtendedPreprocessedTopicDataSet extendedTopic = null;
+
+}

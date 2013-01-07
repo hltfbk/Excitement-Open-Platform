@@ -1,0 +1,103 @@
+﻿<?xml version="1.0"?>
+
+
+<!-- Redirect these paths to fit your machine !!-->
+<!DOCTYPE page [
+<!ENTITY stopwords "C:\utils\RESOURCES\Stop Word lists\stopwords-Eyal.txt">
+<!ENTITY jars "C:\utils\jars\">
+<!ENTITY resources "C:\utils\RESOURCES">							
+]>
+
+<configuration>
+
+<module name="lexical inference">	
+	<param name="lexical resources">WN,catvar</param>				
+	<param name="__negative lexical resources">WNneg,VerbOceanNeg,BapNeg</param>
+	<param name="transitivity length">1</param>				<!-- number of steps when building the graph -->
+	<param name="default sense for seeds">true</param>			<!-- true means use first sense, false means use all senses -->
+	<param name="stop words">&stopwords;</param>	
+	<param name="refine labels to relation types">true</param>		<!-- optional, default is true -->		
+	<param name="refine WordNet labels to relation types">false</param>	<!-- optional, default is the same as the flag above. enables to change the above flag just to WordNet -->
+	<param name="model type">mplm</param>					<!-- base|hnplm|mplm|witnesses -->
+	<param name="learnt model">F:\uni\code\biu-lab\engineml\src\ac\biu\nlp\nlp\engineml\operations\rules\lexicalchain\graphbased\mplm_model_parameters.txt</param>		<!-- should suite the model type (parameter set varies across models)-->
+	<param name="serialize dir">F:\uni\runs\ser-files\BiuTee\6</param>	
+	<param name="number of threads">-10</param>				<!-- each term will be expanded in a separate thread. negative number means no threads -->
+	<param name="labels of resources and relations in use">WORDNET,CatVar</param>		
+</module>
+
+<module name = "WN">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedWordNet</param>
+	<param name="wordnet dictionary implementation type">EXT_JWNL</param>
+	<param name="wordnet-dir">&resources;\WordNet\3.0\dict.wn.orig</param>
+	<param name="entailing-relations">SYNONYM,DERIVATIONALLY_RELATED,HYPERNYM,INSTANCE_HYPERNYM,PART_HOLONYM,MEMBER_HOLONYM,SUBSTANCE_MERONYM,ENTAILMENT,SIMILAR_TO</param>					  
+	<param name="wordnet-depth">1</param>
+	<param name="useFirstSenseOnlyLeft">false</param>
+	<param name="useFirstSenseOnlyRight">false</param>
+</module>
+
+
+<module name="catvar">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedCatvar</param>
+	<param name="catver-file-name">&resources;\CatVar\catvar21</param>
+</module>
+
+<module name="Wiki">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedWikipedia</param>
+	<param name="stop words">&stopwords;</param>
+	<param name="extraction types to keep">Redirect,BeComp,BeCompIndirect,Parenthesis,AllNounsTop</param>
+	<param name="wikiKB DB url">jdbc:mysql://localhost:3306/wikikb?user=root&amp;password=sqlsql</param>
+	<param name="cooccurrence threshold">0.001</param>
+</module>
+
+<module name = "WNneg">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedWordNet</param>
+	<param name="wordnet dictionary implementation type">JWI</param>
+	<param name="wordnet-dir">&resources;\WordNet\3.0\dict.wn.orig</param>
+	<param name="entailing-relations">ANTONYM,STRICT_2ND_DEGREE_COUSIN</param>
+	<param name="wordnet-depth">1</param>
+	<param name="useFirstSenseOnlyLeft">false</param>
+	<param name="useFirstSenseOnlyRight">false</param>
+</module>
+
+<module name="VerbOcean">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedVerbOcean</param>
+	<param name="threshold">1</param>
+	<param name="file">&resources;\VerbOcean\verbocean.unrefined.2004-05-20.txt</param> 
+	<param name="allowedRelations">SIMILAR,STRONGER_THAN</param> 
+</module>
+
+<module name="VerbOceanNeg">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedVerbOcean</param>
+	<param name="threshold">1</param>
+	<param name="file">&resources;\VerbOcean\verbocean.unrefined.2004-05-20.txt</param> 
+	<param name="allowedRelations">OPPOSITE_OF</param> 
+</module>
+
+<module name="Bap">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedDirect200LexicalResource</param>
+	<param name="database_url">jdbc:mysql://localhost:3306/bap?user=root&amp;password=sqlsql</param>
+	<param name="limit on retrieved rules">10</param>
+</module>
+
+<module name="BapNeg">
+	<param name="resource-class">ac.biu.nlp.inference.lexical.integration.sensed_lexical_resource.SensedDirectNotIn1000LexicalResource</param>
+	<param name="database_url">jdbc:mysql://localhost:3306/bap?user=root&amp;password=sqlsql</param>
+	<param name="limit on retrieved rules">100000</param>
+</module>
+
+
+<module name="preprocessing">
+	<param name="opennlp-pos-tagger-model-file-path">&jars;opennlp-tools-1.3.0\models\english\parser\tag.bin.gz</param>
+	<param name="opennlp-pos-tag-dictionary-file-path">&jars;opennlp-tools-1.3.0\models\english\parser\tagdict</param>
+	<param name="ner-classifier-path">&jars;stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</param>
+	<param name="lemmatizer_rule_file">&jars;GATE-3.1/plugins/Tools/resources/morph/default.rul</param>
+	<param name="stop words">&stopwords;</param>
+</module>
+
+
+<module name="Gate-lemmatizer">
+	<param name="__lemmatizer-class">org.BURST.NLP.impl.Gatelemmatizer</param>
+	<param name="lemmatizer-rule-file">&jars;\GATE-3.1\plugins\Tools\resources\morph\default.rul</param>
+</module>
+
+</configuration>

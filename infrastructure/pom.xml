@@ -81,6 +81,10 @@
     		<groupId>gate</groupId>
     		<artifactId>gate</artifactId>
 		</dependency>
+		<dependency>
+    		<groupId>mysql</groupId>
+    		<artifactId>mysql-connector-java</artifactId>
+		</dependency>		
 		<!--  Excitement modules dependencies -->
 	    <dependency>
     		<groupId>eu.excitementproject</groupId>

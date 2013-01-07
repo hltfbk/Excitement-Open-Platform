@@ -1,0 +1,132 @@
+/**
+ * 
+ */
+package ac.biu.nlp.nlp.engineml.generic.truthteller.application;
+
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
+import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
+import ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge.AnnotationsMerger;
+import ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge.DefaultAnnotationsMerger;
+import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
+import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.BasicRuleAnnotations;
+import ac.biu.nlp.nlp.engineml.operations.OperationException;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import ac.biu.nlp.nlp.engineml.utilities.view.AnnotationRulesViewer;
+import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedConstructionRulesViewer;
+import ac.biu.nlp.nlp.general.BidirectionalMap;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
+import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
+
+/**
+ * Apply a normal annotation rule to all possible matches in the tree, and return the tree after all applications were performed on it.
+	 * This means that 
+	 * <li> 1) {@link AllEmbeddedMatcher} finds a list of all matches of the rule in the tree
+	 * <li> 2)  the rules are applied iteratively to the tree according to the matches 
+	 *<p>
+	 * Annotation value flipping is also supported!
+	 * <p>
+	 * This is different than the way the engine applies a rule on a tree to produce a new tree for each application (and its corresponding match).
+	 * <p>
+ * 
+ * @author Amnon Lotan
+ * @since 13/06/2011
+ *
+ */
+public class DefaultAnnotationRuleApplier implements AnnotationRuleApplier<ExtendedConstructionNode> 
+{
+	
+	/**
+	 * Ctor
+	 * @param rule
+	 * @throws AnnotatorException 
+	 */
+	public DefaultAnnotationRuleApplier(AnnotationRule<ExtendedNode, BasicRuleAnnotations> rule) throws AnnotatorException {
+		if (rule == null)
+			throw new AnnotatorException("null annotation rule");
+		this.rule = rule;
+	}
+	
+	/**
+	 * Apply a normal annotation rule to all possible matches in the tree, and return the tree after all matches were performed on it.
+	 * This means that 
+	 * <li>1) {@link AllEmbeddedMatcher} finds a list of all matches of the rule in the tree
+	 * <li>2)  the rule is applied iteratively to the tree according to the matches
+	 * <p>
+	 * annotation flipping is supported here, in the sense that matches are sought once, and then applied in a batch. This way a flip may occur
+	 * only once per match.
+	 * <p>
+	 * This is different than the way the engine applies a rule on a tree to produce a new tree for each application (and its corresponding match).
+	 *  
+	 * @param tree
+	 * @return
+	 * @throws AnnotatorException
+	 */
+	public void annotateTreeWithOneRule(ExtendedConstructionNode tree) throws AnnotatorException
+	{
+		// get all matches between the tree and the rule's LHS
+		Set<BidirectionalMap<ExtendedNode, ExtendedConstructionNode>> matchesOfLhsToTree;
+		try {
+			matchesOfLhsToTree = AnnotationRuleApplierUtils.getMatchesOfLhsToTree(tree, rule);
+		} catch (MatcherException e) {
+			logger.error("Error matching the following tree to the following rule");
+			try {	TREE_VIEWER.printTree(tree, false);	} catch (TreeStringGeneratorException e1) {	}
+			try {	RULE_VIEWER.viewRule(rule);	} catch (TreeStringGeneratorException e1) {	}
+			throw new AnnotatorException("see nested", e );
+		}
+		
+		
+		// iteratively apply the rule on the tree, according to the the set of matches 
+		if (matchesOfLhsToTree != null & !matchesOfLhsToTree.isEmpty())
+		{
+			int applications = 0;	
+			TreeAndParentMap<ExtendedInfo, ExtendedConstructionNode> textTreeAndParentMap;
+			try {	textTreeAndParentMap = new TreeAndParentMap<ExtendedInfo, ExtendedConstructionNode>(tree);	}
+			catch (	TreeAndParentMapException e) { throw new AnnotatorException("see nested", e); 	}
+			
+			for (BidirectionalMap<ExtendedNode, ExtendedConstructionNode> matchOfLhsToTree : matchesOfLhsToTree )
+			{
+				boolean applicationChangedTree;
+				try {
+					applicationChangedTree = 
+						AnnotationRuleApplierUtils.applyRuleToMatchedTree(textTreeAndParentMap, matchOfLhsToTree, rule.getMapLhsToAnnotations(), annotationsMerger);
+				} catch (OperationException e) {
+					logger.error("Error applying the following rule to the following tree");
+					try {	TREE_VIEWER.printTree(textTreeAndParentMap.getTree(), false);	} catch (TreeStringGeneratorException e1) {	}
+					try {	RULE_VIEWER.viewRule(rule);	} catch (TreeStringGeneratorException e1) {	}
+					throw new AnnotatorException("see nested", e );
+				}
+				if (applicationChangedTree)
+					applications++;
+			}
+			if(applications>0)
+			{
+				if (logger.isDebugEnabled())
+				{
+					logger.debug("Rule applied "+applications+" times.");
+					try {	
+						TREE_VIEWER.printTree(tree, true);	
+						RULE_VIEWER.viewRule(rule);
+					}
+					catch (TreeStringGeneratorException e) { throw new AnnotatorException("See nested",e );	}
+				}
+			}
+		}
+	}
+	
+	//////////////////////////////////////////////////// PRIVATE	//////////////////////////////////////////////////////
+	
+	private static final AnnotationRulesViewer RULE_VIEWER = new AnnotationRulesViewer(null);
+	private static final ExtendedConstructionRulesViewer TREE_VIEWER = new ExtendedConstructionRulesViewer (null);
+	private static final Logger logger = Logger.getLogger(DefaultAnnotationRuleApplier.class);
+	private static final AnnotationsMerger annotationsMerger = new DefaultAnnotationsMerger();	//annotatiorMerger;
+	
+	private final AnnotationRule<ExtendedNode, BasicRuleAnnotations> rule;
+}

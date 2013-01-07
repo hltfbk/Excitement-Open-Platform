@@ -1,0 +1,35 @@
+package ac.biu.nlp.nlp.engineml.operations.rules.legacylexical;
+
+import org.BIU.NLP.LR.resources.geo.GeoLexicalResource;
+
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.configuration.InitException;
+
+
+/**
+ * 
+ * @author Asher Stern
+ * @since Mar 9, 2011
+ *
+ */
+public class GeoLexicalRuleBase extends GeneralLegacyLexicalRuleBase
+{
+	public GeoLexicalRuleBase(ConfigurationParams params) throws RuleBaseException
+	{
+		this.lexicalResource = new GeoLexicalResource();
+		try
+		{
+			lexicalResource.init(params);
+		} catch (InitException e)
+		{
+			throw new RuleBaseException("Geo initialization failed.",e);
+		} catch (ConfigurationException e)
+		{
+			throw new RuleBaseException("Geo initialization failed.",e);
+		}
+	}
+	
+
+}

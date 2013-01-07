@@ -1,0 +1,230 @@
+package ac.biu.nlp.nlp.engineml.operations.rules.legacylexical;
+
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
+
+import org.BIU.NLP.LR.resources.Wikipedia.WikiConsts;
+import org.BIU.NLP.LR.resources.Wikipedia.WikiKB;
+import org.BIU.NLP.LR.resources.Wikipedia.WikiRule;
+import org.BURST.NLP.TE.rep.Term;
+import org.BURST.v2bridge.MiniparTermUtils;
+import org.BURST.v2bridge.UnspecifiedTermUtils;
+
+import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCache;
+import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
+import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRuleBase;
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
+import ac.biu.nlp.nlp.general.immutable.ImmutableMapWrapper;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
+import ac.biu.nlp.nlp.representation.PartOfSpeech;
+import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
+
+
+/**
+ * RuleBase of Wikipedia rules, as described in<BR>
+ * <tt>Eyal Shnarch, Libby Barak, Ido Dagan. Extracting Lexical Reference Rules from Wikipedia.
+ * In Proceedings of ACL, 2009.</tt>
+ * <BR>
+ * This class wraps org.BIU.NLP.LR.resources.Wikipedia.WikiKB
+ * <P>
+ * This class, like all other {@linkplain LexicalRuleBase}s, is thread safe.
+ * 
+ * @author Asher Stern
+ * @since Feb 15, 2011
+ *
+ */
+public class WikipediaLexicalRuleBase extends ByLemmaPosLexicalRuleBaseWithCache<LexicalRule>
+{
+	////////////////////// PUBLIC ////////////////////////////////
+	
+	public WikipediaLexicalRuleBase(ConfigurationParams configurationParams) throws RuleBaseException
+	{
+		try
+		{
+			WikiKB wikiKB = new WikiKB();
+			wikiKB.init(configurationParams);
+			this.wikiKBLexicalResource = wikiKB;
+		}
+		catch(RuntimeException e)
+		{
+			throw new RuleBaseException("Could not construct WikiKB rule base.",e);
+		}
+	}
+	
+	
+	@Override
+	protected ImmutableSet<LexicalRule> getRulesNotInCache(String lhsLemma, PartOfSpeech lhsPos) throws RuleBaseException
+	{
+		ImmutableSet<LexicalRule> ret = null;
+		if (lhsLemma.length()==0)
+			ret = EMPTY_SET;
+		else
+		{
+			try
+			{
+				List<WikiRule> legacyRules = findLegacyRules(lhsLemma,lhsPos);
+				
+				ret = fromLegacyRules(legacyRules,lhsLemma,lhsPos);
+			}
+			catch (Exception e)
+			{
+				throw new RuleBaseException("Legacy rule base failed. See nested exception.",e);
+			}
+		}
+		return ret;
+	}
+	
+//	@Override
+//	public ImmutableSet<LexicalRule> getRules(String lhsLemma, String lhsPos, ImmutableSet<LemmaAndPos> hypothesisLemmas) throws RuleBaseException
+//	{
+//		Set<LexicalRule> setRules = new LinkedHashSet<LexicalRule>();
+//		try
+//		{
+//			for (LemmaAndPos hypothesisLemma : hypothesisLemmas)
+//			{
+//				WikiRule legacyRule = findLegacyRule2D(lhsLemma,lhsPos,hypothesisLemma.getLemma(),hypothesisLemma.getPartOfSpeech());
+//				if (legacyRule!=null)
+//				{
+//					LexicalRule lexicalRule = fromLegacyRule(legacyRule, lhsLemma, lhsPos);
+//					if (lexicalRule!=null)
+//						setRules.add(lexicalRule);
+//				}
+//			}
+//		}
+//		catch (Exception e)
+//		{
+//			throw new RuleBaseException("Legacy rule base failed. See nested exception.",e);
+//		}
+//		
+//		return new ImmutableSetWrapper<LexicalRule>(setRules);
+//	}
+
+	
+
+	////////////////////////////// PROTECTED & PRIVATE ////////////////////////////////////
+	
+//	protected WikiRule findLegacyRule2D(String lhsLemma, String lhsPos, String rhsLemma, String rhsPos) throws Exception
+//	{
+//		Term leftTerm = TermUtils.fromLemmaAndPos(lhsLemma, lhsPos);
+//		Term rightTerm = TermUtils.fromLemmaAndPos(rhsLemma, rhsPos);
+//		WikiRule ret = null;
+//		synchronized(wikiKBLexicalResource) // I don't know whether the lexicalResource is thread safe
+//		{
+//			ret = wikiKBLexicalResource.getRule(org.BURST.NLP.rule_base.RuleType.ENTAILMENT, leftTerm, rightTerm);
+//		}
+//		return ret;
+//	}
+
+	
+	protected List<WikiRule> findLegacyRules(String lhsLemma, PartOfSpeech lhsPos) throws Exception
+	{
+		Term term = MiniparTermUtils.createTermFromLemmaAndPos(lhsLemma, lhsPos);
+		List<WikiRule> ret = null;
+		synchronized(wikiKBLexicalResource) // I don't know whether the lexicalResource is thread safe
+		{
+			ret = wikiKBLexicalResource.getRulesForLeft(org.BURST.NLP.rule_base.RuleType.ENTAILMENT, term);
+		}
+		return ret;
+	}
+	
+	
+	protected LexicalRule fromLegacyRule(WikiRule rule, String lhsLemma, PartOfSpeech lhsPos) throws UnsupportedPosTagStringException
+	{
+		LexicalRule ret = null;
+		
+		Term rightTerm = rule.right();
+		String rhsLemma = rightTerm.lemma();
+		PartOfSpeech rhsPos = termUtils.convertBurstPosToPartOfSpeech(rightTerm.posTag());
+//		String rhsPos = MiniparTermUtils.toMiniparPos(rightTerm.posTag());
+		if (rhsLemma!=null){if (rhsLemma.length()>0)
+		{
+			double confidence = precisionOfVectorExtractionType(rule.extrTypes());
+			ret = new LexicalRule(lhsLemma, lhsPos, rhsLemma, rhsPos, confidence);
+		}}
+		
+		return ret;
+	}
+	
+	protected ImmutableSet<LexicalRule> fromLegacyRules(List<WikiRule> legacyRules, String lhsLemma, PartOfSpeech lhsPos) throws UnsupportedPosTagStringException
+	{
+		Set<LexicalRule> ret = new LinkedHashSet<LexicalRule>();
+		for (WikiRule rule : legacyRules)
+		{
+			LexicalRule lexicalRule = fromLegacyRule(rule, lhsLemma, lhsPos);
+			if (lexicalRule!=null)
+				ret.add(lexicalRule);
+		}
+		return new ImmutableSetWrapper<LexicalRule>(ret);
+	}
+
+	protected static double precisionOfVectorExtractionType(Vector<WikiConsts.ExtractionType> vector)
+	{
+		double ret = 0;
+		if (null==vector)
+		{
+			ret = DEFAULT_PRECISION;
+		}
+		else
+		{
+			ret = 0;
+			for (WikiConsts.ExtractionType type : vector)
+			{
+				double currentTypePrecision = precisionOfExtractionType(type);
+				if (ret<currentTypePrecision)
+					ret = currentTypePrecision;
+			}
+		}
+		return ret;
+	}
+	
+	protected static double precisionOfExtractionType(WikiConsts.ExtractionType type)
+	{
+		if (MAP_PRECISIONS.containsKey(type))
+		{
+			return MAP_PRECISIONS.get(type).doubleValue();
+		}
+		else
+		{
+			return DEFAULT_PRECISION;
+		}
+	}
+	
+	
+	/**
+	 * The MAP_PRECISIONS map is based on tables in Eyal's paper:
+	 * Eyal Shnarch, Libby Barak, Ido Dagan. Extracting Lexical Reference Rules from Wikipedia. In Proceedings of ACL, 2009.
+	 */
+	protected static final ImmutableMap<WikiConsts.ExtractionType,Double> MAP_PRECISIONS;
+	protected static final double DEFAULT_PRECISION = 0.25; // This value was artificially set with no justification. I just need a value if the extraction type does not exist in the map, and I have decided to set it to 0.25
+	static
+	{
+		Map<WikiConsts.ExtractionType,Double> realMapPrecisions = new LinkedHashMap<WikiConsts.ExtractionType, Double>();
+		realMapPrecisions.put(WikiConsts.ExtractionType.Redirect,0.87);
+		realMapPrecisions.put(WikiConsts.ExtractionType.BeComp,0.78);
+		realMapPrecisions.put(WikiConsts.ExtractionType.BeCompIndirect,0.78);
+		realMapPrecisions.put(WikiConsts.ExtractionType.Parenthesis,0.71);
+		realMapPrecisions.put(WikiConsts.ExtractionType.Link,0.7);
+		realMapPrecisions.put(WikiConsts.ExtractionType.AllNounsTop,0.60);
+		realMapPrecisions.put(WikiConsts.ExtractionType.AllNounsMid,0.46);
+		realMapPrecisions.put(WikiConsts.ExtractionType.AllNounsBot,0.41);
+		realMapPrecisions.put(WikiConsts.ExtractionType.AllNouns,0.49);
+		
+		MAP_PRECISIONS = new ImmutableMapWrapper<WikiConsts.ExtractionType, Double>(Collections.synchronizedMap(realMapPrecisions));
+	}
+	
+	protected WikiKB wikiKBLexicalResource;
+	protected UnspecifiedTermUtils termUtils = new UnspecifiedTermUtils();
+	protected final static ImmutableSet<LexicalRule> EMPTY_SET = new ImmutableSetWrapper<LexicalRule>(new HashSet<LexicalRule>());
+	
+	
+
+}

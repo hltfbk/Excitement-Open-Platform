@@ -12,6 +12,7 @@
   	<module>lap</module>
   	<module>common</module>
     <module>infrastructure</module>
+    <module>engineml</module>
   </modules>
   <dependencyManagement>
   	<dependencies>
@@ -150,6 +151,26 @@
     		<artifactId>gate</artifactId>
     		<version>3.1</version>
 		</dependency>
+		<dependency>
+    		<groupId>ac.biu.nlp</groupId>
+    		<artifactId>biu-normalizer</artifactId>
+    		<version>0.6.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>jnisvmlight</groupId>
+    		<artifactId>jnisvmlight</artifactId>
+    		<version>6.01</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.inet</groupId>
+    		<artifactId>jortho</artifactId>
+    		<version>2010_09</version>
+		</dependency>
+		<dependency>
+    		<groupId>mysql</groupId>
+    		<artifactId>mysql-connector-java</artifactId>
+    		<version>5.1.12</version>
+		</dependency>		
   	</dependencies>
   </dependencyManagement>
 

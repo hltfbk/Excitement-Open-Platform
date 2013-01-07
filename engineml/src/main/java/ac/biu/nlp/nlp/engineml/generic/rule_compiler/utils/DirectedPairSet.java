@@ -1,0 +1,50 @@
+/**
+ * 
+ */
+package ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import ac.biu.nlp.nlp.general.Pair;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
+
+/**
+ * Much like {@link PairSet}, except that here the pairs are {@link DirectedPair}s.
+ * @author amnon
+ *
+ */
+@SuppressWarnings("serial")
+public class DirectedPairSet<K> extends PairSet<K> implements Serializable {
+
+	public void put(DirectedPair<K> pair)
+	{
+		super.put(pair);
+	}
+	
+	public boolean containsPair(DirectedPair<K> pair)
+	{
+		return super.containsPair(pair);
+	}
+	
+	public ImmutableSet<DirectedPair<K>> getDirectedPairsContaining(K key) 
+	{	
+		Set<DirectedPair<K>> ret = new HashSet<DirectedPair<K>>();
+		for (Pair<K> pair : super.mapKeyToPairContainingIt.get(key))
+			ret.add((DirectedPair<K>) pair);
+		
+		
+		return new ImmutableSetWrapper<DirectedPair<K>>(ret);
+	}
+	
+	public ImmutableSet<DirectedPair<K>> getAll()
+	{
+		Set<DirectedPair<K>> ret = new HashSet<DirectedPair<K>>();
+		for (Pair<K> pair : super.pairsSet)
+			ret.add((DirectedPair<K>) pair);
+		
+		return new ImmutableSetWrapper<DirectedPair<K>>(ret);				
+	}
+}
