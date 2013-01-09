@@ -2,6 +2,14 @@
 package eu.excitementproject.eop.core.representation.parsetree;
 
 
+/**
+ * Class that sets the Part of Speech tags for the German tagset 
+ * called STTS. Maps each STTS tag onto the corresponding 
+ * {@link CanonicalPosTag}.  
+ * 
+ * @author zeller
+ *
+ */
 public class GermanPartOfSpeech extends PartOfSpeech {
 
 	private static final long serialVersionUID = 6295826063805145349L;
@@ -25,6 +33,8 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 	protected void setCanonicalPosTag() {
 		assert posTagString != null && !posTagString.equals("");
 
+		posTagString = mapOntoStts(posTagString);
+		
 		try {
 			canonicalPosTag = CanonicalPosTag.valueOf(posTagString.toUpperCase());
 		}
@@ -32,6 +42,53 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 			canonicalPosTag = CanonicalPosTag.OTHER;
 		}
 	}
+	
+	
+
+	/**
+	 * Maps the STTS tags onto the corresponding {@link CanonicalPosTag}s.
+	 * 
+	 * @param posTagString a string that represents part-of-speech in STTS format.
+	 * @return the {@link CanonicalPosTag} that corresponds to the given STTS tag.
+	 */
+	private String mapOntoStts(String posTagString) {
+
+		if (posTagString.startsWith("ADJ")) {
+			posTagString = "ADJ";
+		} else if (posTagString.equals("ADV")) {
+			posTagString = "ADV";
+		} else if (posTagString.startsWith("KO")) {
+			posTagString = "CONJ";
+		} else if (posTagString.equals("NE") ) {
+			posTagString = "NP";
+		} else if (posTagString.equals("ITJ") || posTagString.equals("FM")) {
+			posTagString = "O"; 
+		} else if (posTagString.startsWith("AP")) {
+			posTagString = "PP";
+		} else if (posTagString.startsWith("$")) {
+			posTagString = "PUNC";
+		} else if (posTagString.startsWith("P") && !posTagString.startsWith("PTK")) {
+			if (posTagString.equals("PAV")) {
+				posTagString = "ADV";
+			} else {
+				posTagString = "PR";
+			}
+		} else if (posTagString.equals("PTKZU")) {
+			posTagString = "PR";
+		} else if (posTagString.equals("PTKA")) {
+			posTagString = "ADV";
+		//} else if (posTagString.equals("TRUNC")) {
+			//posTagString = "O";
+		} else if (posTagString.startsWith("V") || posTagString.equals("PTKVZ")) {
+			posTagString = "V";
+		} else if (posTagString.equals("XY")) {
+			posTagString = "O";
+		}
+		// do nothing for "ART", "CARD", "NN", since it has correct form already
+		
+		return posTagString;
+	}
+
 
 	/**
 	 * Validates that the given string is one of the expected strings for that
@@ -41,6 +98,9 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 	 * @throws UnsupportedPosTagStringException if the string is not supported.
 	 */
 	protected void validatePosTagString(String posTagString) throws UnsupportedPosTagStringException {
+		
+		posTagString = mapOntoStts(posTagString);
+		
 		try {
 			CanonicalPosTag.valueOf(posTagString.toUpperCase());
 		}
