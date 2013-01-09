@@ -84,8 +84,13 @@
 		<dependency>
     		<groupId>mysql</groupId>
     		<artifactId>mysql-connector-java</artifactId>
-		</dependency>		
+		</dependency>	
+  		<dependency>
+  			<groupId>log4j</groupId>
+  			<artifactId>log4j</artifactId>
+  		</dependency>
 		<!--  Excitement modules dependencies -->
+		<!--
 	    <dependency>
     		<groupId>eu.excitementproject</groupId>
     		<artifactId>common</artifactId>
@@ -101,5 +106,6 @@
     		<artifactId>lap</artifactId>
     		<version>0.1-SNAPSHOT</version>
     	</dependency>
+    	 -->
   </dependencies>
 </project>
