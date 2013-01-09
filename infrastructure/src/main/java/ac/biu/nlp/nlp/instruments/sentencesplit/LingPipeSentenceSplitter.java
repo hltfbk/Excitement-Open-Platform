@@ -10,7 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.StringUtil;
 
 import com.aliasi.chunk.Chunk;
 import com.aliasi.chunk.Chunking;
@@ -18,6 +17,7 @@ import com.aliasi.sentences.IndoEuropeanSentenceModel;
 import com.aliasi.sentences.SentenceChunker;
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory;
 
+import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**

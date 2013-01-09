@@ -17,14 +17,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.LiveIOProgramExecution;
-import ac.biu.nlp.nlp.general.LiveIOProgramExecutionException;
-import ac.biu.nlp.nlp.general.OS;
-import ac.biu.nlp.nlp.general.TimeOutLiveIOProgramExecutionException;
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraphException;
-import ac.biu.nlp.nlp.general.dgraph.view.DirectedGraphToDot;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphException;
+import eu.excitementproject.eop.common.datastructures.dgraph.view.DirectedGraphToDot;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.LiveIOProgramExecution;
+import eu.excitementproject.eop.common.utilities.LiveIOProgramExecutionException;
+import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.TimeOutLiveIOProgramExecutionException;
+
 
 
 /**

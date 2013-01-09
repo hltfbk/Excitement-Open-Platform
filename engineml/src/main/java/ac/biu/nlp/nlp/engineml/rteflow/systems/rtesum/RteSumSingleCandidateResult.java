@@ -3,7 +3,8 @@ package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
 import java.io.Serializable;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 

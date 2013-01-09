@@ -15,6 +15,11 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+
 import ac.biu.nlp.nlp.engineml.codeannotations.Workaround;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.Workarounds;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
@@ -25,10 +30,6 @@ import ac.biu.nlp.nlp.engineml.utilities.preprocess.ListOfTextPreprocessors;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.NewNormalizerBasedTextPreProcessor;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.WorkaroundTextPreprocessor;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
-import ac.biu.nlp.nlp.general.text.TextPreprocessor;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
 import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefCoreferenceResolver;

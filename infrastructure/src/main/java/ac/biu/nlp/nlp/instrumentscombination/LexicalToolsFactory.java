@@ -6,8 +6,9 @@ package ac.biu.nlp.nlp.instrumentscombination;
 import java.io.File;
 import java.net.MalformedURLException;
 
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+
 import ac.biu.nlp.nlp.instruments.lemmatizer.GateLemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;

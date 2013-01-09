@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.instruments.lemmatizer;
 
 import java.io.File;
 
-import ac.biu.nlp.nlp.general.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 import ac.biu.nlp.nlp.representation.PartOfSpeech;
 import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;

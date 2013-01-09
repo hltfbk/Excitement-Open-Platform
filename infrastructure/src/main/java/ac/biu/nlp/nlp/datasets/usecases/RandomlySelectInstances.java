@@ -7,12 +7,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6DatasetLoader;
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6mainIOException;
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
-import ac.biu.nlp.nlp.datasets.rte6main.TopicDataSet;
-import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.Utils;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6DatasetLoader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+
 
 public class RandomlySelectInstances
 {

@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import ac.biu.nlp.nlp.general.Utils;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 import arkref.analysis.FindMentions;
@@ -22,6 +21,7 @@ import arkref.data.EntityGraph;
 import arkref.data.Mention;
 import arkref.data.Sentence;
 import edu.stanford.nlp.trees.Tree;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 
 /**

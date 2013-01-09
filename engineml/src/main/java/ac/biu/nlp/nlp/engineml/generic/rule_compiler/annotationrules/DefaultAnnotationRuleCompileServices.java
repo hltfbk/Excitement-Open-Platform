@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.utilities.Utils;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.CgxMultipleChoiceExpander;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.CgxReadingUtils;
@@ -26,7 +28,6 @@ import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.NegationAndUncertainty;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
-import ac.biu.nlp.nlp.general.Utils;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;

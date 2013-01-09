@@ -4,11 +4,12 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
-import ac.biu.nlp.nlp.general.Cache;
-import ac.biu.nlp.nlp.general.CacheFactory;
 
 /**
  * Stores in a cache (a pool) trained linear classifiers.

@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
 
-import ac.biu.nlp.nlp.general.text.TextPreprocessor;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
  * A {@link TextPreprocessor} which returns the given sentence "as is" - changes

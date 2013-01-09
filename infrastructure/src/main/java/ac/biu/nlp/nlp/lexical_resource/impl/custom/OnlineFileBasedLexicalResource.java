@@ -4,10 +4,10 @@ import java.io.IOException;
 
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMapFromStringCreator;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 

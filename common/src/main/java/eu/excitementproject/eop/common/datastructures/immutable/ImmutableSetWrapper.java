@@ -1,9 +1,8 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-
 
 
 /**

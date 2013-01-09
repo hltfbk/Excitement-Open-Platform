@@ -1,9 +1,7 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.io.Serializable;
 import java.util.Map;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * Represents an immutable map.

@@ -9,15 +9,16 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.datasets.rte6main.DocumentMetaData;
-import ac.biu.nlp.nlp.datasets.rte6main.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaData;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.PreprocessUtilities;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.text.TextPreprocessor;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;

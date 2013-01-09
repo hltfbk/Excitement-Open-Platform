@@ -9,6 +9,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.AnnotationRuleApplier;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.AnnotationRuleApplierFactory;
@@ -28,8 +30,6 @@ import ac.biu.nlp.nlp.engineml.representation.annotations.PredTruth;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedConstructionRulesViewer;
 import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedRulesViewer;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier.InfoConverter;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;

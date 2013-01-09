@@ -8,7 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.Utils;
+import eu.excitementproject.eop.common.utilities.Utils;
+
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 import ac.biu.nlp.nlp.representation.PartOfSpeech;

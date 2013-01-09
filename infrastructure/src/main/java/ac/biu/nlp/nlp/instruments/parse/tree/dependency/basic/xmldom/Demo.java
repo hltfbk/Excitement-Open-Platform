@@ -8,7 +8,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.match.Matcher;
+import eu.excitementproject.eop.common.utilities.match.Matcher;
+
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;

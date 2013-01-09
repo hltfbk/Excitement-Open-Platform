@@ -5,8 +5,9 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Vector;
 
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6mainIOException;
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;

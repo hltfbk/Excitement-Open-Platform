@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess;
 
 import java.util.Map;
 
-import ac.biu.nlp.nlp.datasets.rte6main.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

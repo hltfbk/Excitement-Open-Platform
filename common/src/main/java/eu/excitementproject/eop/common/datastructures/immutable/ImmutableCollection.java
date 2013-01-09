@@ -1,9 +1,7 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.io.Serializable;
 import java.util.Collection;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 
 /**
  * A collection with only operations that make no changes on

@@ -11,11 +11,12 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.Utils;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistoryComponent;
-import ac.biu.nlp.nlp.general.Utils;
 
 /**
  * To be used to display the history with colors indicating the more expensive and less

@@ -11,8 +11,8 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
-import ac.biu.nlp.nlp.general.ExceptionUtil;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 
 

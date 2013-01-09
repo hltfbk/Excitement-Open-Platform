@@ -15,8 +15,9 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import eu.excitementproject.eop.common.utilities.Utils;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
-import ac.biu.nlp.nlp.general.Utils;
 
 /**
  * This class gets a text of a Cgx rule file, and "expands" it, that is, for each multiple choice parameter value in the text 

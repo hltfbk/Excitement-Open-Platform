@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 
 import javax.xml.bind.JAXBException;
 
+import eu.excitementproject.eop.common.utilities.search.lucene.IrException;
+
 
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
@@ -16,7 +18,6 @@ import ac.biu.nlp.nlp.instruments.sentencesplit.LingPipeSentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 import ac.biu.nlp.nlp.instrumentscombination.InstrumentCombinationException;
-import ac.biu.nlp.nlp.search.lucene.IrException;
 
 /**
  * @author Amnon Lotan

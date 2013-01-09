@@ -8,9 +8,9 @@ import org.w3c.dom.NodeList;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
 
-import ac.biu.nlp.nlp.general.xmldom.XmlDomUtils;
-import ac.biu.nlp.nlp.general.xmldom.XmlDomUtilitiesException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

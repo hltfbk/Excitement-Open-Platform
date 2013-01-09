@@ -3,9 +3,9 @@ package ac.biu.nlp.nlp.lexical_resource.impl.custom;
 import java.io.IOException;
 
 import eu.excitementproject.eop.common.datastructures.ValueSetMapFromStringCreator;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 

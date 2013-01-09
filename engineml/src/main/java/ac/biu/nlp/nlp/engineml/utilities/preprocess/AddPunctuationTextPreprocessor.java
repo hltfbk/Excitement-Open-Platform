@@ -2,8 +2,8 @@ package ac.biu.nlp.nlp.engineml.utilities.preprocess;
 
 
 
-import ac.biu.nlp.nlp.general.text.TextPreprocessor;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
  * Adds a point at the end of sentence, if no ending punctuation exists.

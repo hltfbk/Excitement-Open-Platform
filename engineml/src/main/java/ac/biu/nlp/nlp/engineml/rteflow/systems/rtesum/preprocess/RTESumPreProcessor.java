@@ -18,19 +18,20 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6DatasetLoader;
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6mainIOException;
-import ac.biu.nlp.nlp.datasets.rte6main.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6DatasetLoader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.InstrumentsFactory;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;

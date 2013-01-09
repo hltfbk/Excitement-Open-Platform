@@ -10,8 +10,11 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6mainIOException;
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
@@ -21,8 +24,6 @@ import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.ScriptFactory;
 import ac.biu.nlp.nlp.engineml.utilities.StopFlag;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;

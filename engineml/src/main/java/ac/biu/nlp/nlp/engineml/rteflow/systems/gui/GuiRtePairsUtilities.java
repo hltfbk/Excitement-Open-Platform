@@ -31,12 +31,12 @@ import javax.swing.event.ChangeListener;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.file.FileFilterByExtension;
 
-import ac.biu.nlp.nlp.datasets.DefaultRTEMainReader;
-import ac.biu.nlp.nlp.datasets.RTEMainReader;
-import ac.biu.nlp.nlp.datasets.RTEMainReaderException;
-import ac.biu.nlp.nlp.datasets.TextHypothesisPair;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 
 /**

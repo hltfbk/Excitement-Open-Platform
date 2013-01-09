@@ -5,8 +5,8 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.utilities.Utils;
 
-import ac.biu.nlp.nlp.general.Utils;
 
 /**
  * A Penn Treebank pos-tag

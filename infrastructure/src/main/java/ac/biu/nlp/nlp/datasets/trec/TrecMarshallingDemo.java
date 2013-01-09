@@ -6,7 +6,8 @@ package ac.biu.nlp.nlp.datasets.trec;
 import java.io.File;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.configuration.JaxbLoader;
+import eu.excitementproject.eop.common.utilities.configuration.JaxbLoader;
+
 
 /**
  * @author Amnon Lotan

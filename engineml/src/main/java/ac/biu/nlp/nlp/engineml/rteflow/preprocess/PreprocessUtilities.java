@@ -6,8 +6,9 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.match.Matcher;
+
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.general.match.Matcher;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityMergeServices;

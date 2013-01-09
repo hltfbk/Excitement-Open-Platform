@@ -13,6 +13,13 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
@@ -33,12 +40,6 @@ import ac.biu.nlp.nlp.engineml.script.ScriptException;
 import ac.biu.nlp.nlp.engineml.script.ScriptFactory;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.ExperimentManager;
-import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

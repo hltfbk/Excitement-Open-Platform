@@ -7,9 +7,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.LiveIOProgramExecution;
-import ac.biu.nlp.nlp.general.LiveIOProgramExecutionException;
-import ac.biu.nlp.nlp.general.Utils;
+import eu.excitementproject.eop.common.utilities.LiveIOProgramExecution;
+import eu.excitementproject.eop.common.utilities.LiveIOProgramExecutionException;
+import eu.excitementproject.eop.common.utilities.Utils;
+
 
 /**
  * @deprecated And old class that does not implement the

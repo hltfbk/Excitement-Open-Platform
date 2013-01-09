@@ -10,6 +10,8 @@ import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.plugin.InstanceBasedPlugin;
@@ -20,8 +22,6 @@ import ac.biu.nlp.nlp.engineml.plugin.PluginException;
 import ac.biu.nlp.nlp.engineml.plugin.PluginFactory;
 import ac.biu.nlp.nlp.engineml.plugin.PluginRegistry;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 
 /**
  * Initializes all {@link Plugin}s, in addition to the initialization of all

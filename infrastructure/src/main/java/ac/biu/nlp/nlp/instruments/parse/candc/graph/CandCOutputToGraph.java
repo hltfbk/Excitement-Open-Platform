@@ -6,9 +6,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraphException;
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraphFactory;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphException;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphFactory;
+
 
 
 /**

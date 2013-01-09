@@ -28,6 +28,13 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
@@ -61,12 +68,6 @@ import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamples;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.classifiers_io.SafeClassifiersIO;
-import ac.biu.nlp.nlp.general.ExperimentManager;
-import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 
 
 /**

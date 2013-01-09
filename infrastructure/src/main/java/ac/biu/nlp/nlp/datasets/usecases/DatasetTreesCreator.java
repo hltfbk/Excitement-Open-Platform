@@ -8,12 +8,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.datasets.DefaultRTEMainReader;
-import ac.biu.nlp.nlp.datasets.RTEClassificationType;
-import ac.biu.nlp.nlp.datasets.RTEMainReader;
-import ac.biu.nlp.nlp.datasets.RTEMainReaderException;
-import ac.biu.nlp.nlp.datasets.TextHypothesisPair;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassificationType;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.minipar.AbstractMiniparParser;

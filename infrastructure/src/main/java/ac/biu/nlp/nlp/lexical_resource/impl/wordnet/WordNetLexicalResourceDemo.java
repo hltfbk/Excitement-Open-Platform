@@ -8,8 +8,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;

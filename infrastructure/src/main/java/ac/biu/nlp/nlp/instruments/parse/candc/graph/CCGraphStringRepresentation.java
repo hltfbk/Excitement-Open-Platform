@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.instruments.parse.candc.graph;
 
 
-import ac.biu.nlp.nlp.general.dgraph.view.StringRepresentation;
+import eu.excitementproject.eop.common.datastructures.dgraph.view.StringRepresentation;
 
 
 /**

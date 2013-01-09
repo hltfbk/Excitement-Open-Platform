@@ -6,7 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.Vector;
 
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.RteSumSingleCandidateResult;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 

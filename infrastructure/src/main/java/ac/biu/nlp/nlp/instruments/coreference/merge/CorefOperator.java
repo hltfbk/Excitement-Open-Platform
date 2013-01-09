@@ -3,7 +3,8 @@ package ac.biu.nlp.nlp.instruments.coreference.merge;
 import java.util.HashMap;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.general.match.Operator;
+import eu.excitementproject.eop.common.utilities.match.Operator;
+
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 

@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.plugin;
 
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 /**
  * A base class for subclasses by which plug-ins are registered.

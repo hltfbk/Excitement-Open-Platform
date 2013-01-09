@@ -13,6 +13,10 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.alignment.DefaultAlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorFactory;
@@ -29,10 +33,6 @@ import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.StopWordsFileLoader;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.UnigramProbabilityEstimation;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.instruments.lemmatizer.GateLemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;

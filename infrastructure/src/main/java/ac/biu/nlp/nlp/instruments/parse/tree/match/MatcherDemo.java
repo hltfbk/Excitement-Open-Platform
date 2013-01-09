@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
-import ac.biu.nlp.nlp.general.ExceptionUtil;
 import ac.biu.nlp.nlp.instruments.parse.EnglishSingleTreeParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparClientParser;

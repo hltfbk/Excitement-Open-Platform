@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.engineml.rteflow.preprocess;
 
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

@@ -6,9 +6,8 @@ import java.util.Map;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 
+
 /**
- * [DELETEME_LATER: imported from BIUTEE 2.4.1. infrastructure without modification] 
- * 
  * An implementation of {@linkplain BidirectionalMap} that uses two
  * <code>java.util.Map</code>s as underlying maps, and keeps them
  * compatible with each other to represent exactly one-to-one mapping.

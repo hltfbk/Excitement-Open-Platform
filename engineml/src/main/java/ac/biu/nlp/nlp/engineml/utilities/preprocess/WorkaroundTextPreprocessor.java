@@ -5,9 +5,10 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+
 import ac.biu.nlp.nlp.engineml.codeannotations.Workaround;
-import ac.biu.nlp.nlp.general.text.TextPreprocessor;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
 
 /**
  * A temporary class that handles sentences that make pre-processing

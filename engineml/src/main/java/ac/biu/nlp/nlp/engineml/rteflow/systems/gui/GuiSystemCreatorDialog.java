@@ -19,8 +19,9 @@ import javax.swing.JTextArea;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.log4j.GuiAppender;
+
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.log.GuiAppender;
 
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.GUI_LOADS_LABELED_SAMPLES;
 /**

@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
@@ -36,7 +37,6 @@ import ac.biu.nlp.nlp.engineml.script.SingleOperationItem;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.AdvancedEqualities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.general.Utils;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

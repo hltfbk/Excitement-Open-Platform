@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 //import java.util.Vector;
 //
 //import org.BIU.utils.Serializer;
@@ -37,7 +38,6 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules
 //import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 //import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 //import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 //import ac.biu.nlp.nlp.general.file.FileUtils;
 //import ac.biu.nlp.nlp.general.immutable.ImmutableList;
 //import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;

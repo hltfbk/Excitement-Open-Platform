@@ -7,7 +7,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
-import ac.biu.nlp.nlp.general.StringUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+
 import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 

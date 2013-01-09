@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.datasets.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;

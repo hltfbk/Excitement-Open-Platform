@@ -10,10 +10,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.utilities.Utils;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.Constants;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules.lexicon.ExpandPredicatedWithWN;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
-import ac.biu.nlp.nlp.general.Utils;
 
 /**
  * Some static utils for manipulating the {@link PredicateSignature} lexicon files

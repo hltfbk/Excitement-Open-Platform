@@ -8,9 +8,9 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.utilities.AllChoices;
+import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
 
-import ac.biu.nlp.nlp.general.AllChoices;
-import ac.biu.nlp.nlp.general.AllChoices.AllChoicesException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteria;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;

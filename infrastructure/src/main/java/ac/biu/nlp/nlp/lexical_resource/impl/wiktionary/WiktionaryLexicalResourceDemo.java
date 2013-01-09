@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.Utils;
+import eu.excitementproject.eop.common.utilities.Utils;
+
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;

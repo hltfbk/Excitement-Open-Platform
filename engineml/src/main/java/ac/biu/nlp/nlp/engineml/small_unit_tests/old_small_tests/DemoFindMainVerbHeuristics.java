@@ -5,17 +5,18 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.datasets.DefaultRTEMainReader;
-import ac.biu.nlp.nlp.datasets.RTEMainReader;
-import ac.biu.nlp.nlp.datasets.RTEMainReaderException;
-import ac.biu.nlp.nlp.datasets.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.FindMainVerbHeuristic;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;

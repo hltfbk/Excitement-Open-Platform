@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseEnvelope;
@@ -24,7 +25,6 @@ import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.OperationsScriptForBuiltinKnowledgeAndPlugins;
 import ac.biu.nlp.nlp.engineml.script.SingleOperationItem;
 import ac.biu.nlp.nlp.engineml.script.SingleOperationType;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 
 
 /**

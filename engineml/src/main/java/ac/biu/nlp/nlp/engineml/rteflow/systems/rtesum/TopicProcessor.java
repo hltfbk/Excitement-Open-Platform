@@ -8,8 +8,9 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
-import ac.biu.nlp.nlp.datasets.rte6main.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;

@@ -8,8 +8,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.StringUtilException;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.StringUtilException;
+
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 

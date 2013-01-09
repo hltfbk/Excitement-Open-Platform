@@ -1,12 +1,7 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.util.Collection;
 import java.util.Iterator;
-
-import eu.excitementproject.eop.common.datastructures.immutable.EmptyIterator;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableCollection;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIteratorWrapper;
 
 /**
  * An immutable collection.

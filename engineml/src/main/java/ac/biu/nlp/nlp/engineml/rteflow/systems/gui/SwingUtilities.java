@@ -13,7 +13,8 @@ import javax.swing.plaf.FontUIResource;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.general.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+
 
 /**
  * 

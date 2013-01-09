@@ -5,9 +5,9 @@ import java.util.Map;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
+
+
 /**
- * [DELETEME_LATER: imported from BIUTEE 2.4.1. infrastructure without modification] 
- * 
  * A one-to-one mapping of elements of type <code>L</code> to elements of
  * type <code>R</code>.
  * <BR>
@@ -20,6 +20,7 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
  * <B>Not thread safe, unless explicitly specified.</B>
  * 
  * @author Asher Stern
+ * 
  * @see <code>lava.util.Map</code>
  *
  * @param <L>

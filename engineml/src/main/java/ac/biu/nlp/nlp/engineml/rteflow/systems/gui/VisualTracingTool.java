@@ -53,12 +53,13 @@ import javax.swing.text.JTextComponent;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+
 import ac.biu.nlp.nlp.engineml.rteflow.macro.Feature;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.gui.SpellCheckerRegister.SpellCheckerRegisterResult;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.version.Version;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
 
 /**
  * 

@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
-import ac.biu.nlp.nlp.general.dgraph.view.DirectedGraphToDot;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
+import eu.excitementproject.eop.common.datastructures.dgraph.view.DirectedGraphToDot;
+import eu.excitementproject.eop.common.utilities.Utils;
+
 
 public class CCGraphDemo {
 	protected static List<String> retrieveCandCOutput2()

@@ -16,11 +16,16 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.datasets.rte6main.AnswerScoreComputer;
-import ac.biu.nlp.nlp.datasets.rte6main.AnswersFileWriter;
-import ac.biu.nlp.nlp.datasets.rte6main.DefaultAnswersFileWriter;
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6mainIOException;
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswerScoreComputer;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
@@ -37,10 +42,6 @@ import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.classifiers_io.SafeClassifiersIO;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.ExperimentManager;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;

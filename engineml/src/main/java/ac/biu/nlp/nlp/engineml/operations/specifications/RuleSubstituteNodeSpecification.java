@@ -1,10 +1,10 @@
 package ac.biu.nlp.nlp.engineml.operations.specifications;
 
+import eu.excitementproject.eop.common.utilities.StringUtil;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.NodePrintUtilities;
-import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 

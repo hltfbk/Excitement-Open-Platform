@@ -4,13 +4,14 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.datasets.DefaultRTEMainReader;
-import ac.biu.nlp.nlp.datasets.DefaultRTEMainWriter;
-import ac.biu.nlp.nlp.datasets.RTEMainReader;
-import ac.biu.nlp.nlp.datasets.RTEMainReaderException;
-import ac.biu.nlp.nlp.datasets.RTEMainWriter;
-import ac.biu.nlp.nlp.datasets.RTEMainWriterException;
-import ac.biu.nlp.nlp.datasets.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriterException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 
 /**

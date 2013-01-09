@@ -16,7 +16,8 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.Utils;
+import eu.excitementproject.eop.common.utilities.Utils;
+
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;

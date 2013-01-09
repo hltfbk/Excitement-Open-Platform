@@ -1,12 +1,9 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 
 
 /**

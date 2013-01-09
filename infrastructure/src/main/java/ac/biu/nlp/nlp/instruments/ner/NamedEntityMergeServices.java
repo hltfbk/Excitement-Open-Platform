@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.instruments.ner;
 
-import ac.biu.nlp.nlp.general.match.MatchFinder;
-import ac.biu.nlp.nlp.general.match.Operator;
+import eu.excitementproject.eop.common.utilities.match.MatchFinder;
+import eu.excitementproject.eop.common.utilities.match.Operator;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

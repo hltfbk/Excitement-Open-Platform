@@ -10,10 +10,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import ac.biu.nlp.nlp.general.AllChoices;
-import ac.biu.nlp.nlp.general.AllChoices.AllChoicesException;
-import ac.biu.nlp.nlp.general.ChoiceHandler;
-import ac.biu.nlp.nlp.general.Utils;
+import eu.excitementproject.eop.common.utilities.AllChoices;
+import eu.excitementproject.eop.common.utilities.ChoiceHandler;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
+
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

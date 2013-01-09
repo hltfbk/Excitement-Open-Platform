@@ -10,6 +10,7 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ConfidenceChainItem;
 import ac.biu.nlp.nlp.engineml.operations.specifications.InsertNodeSpecification;
@@ -32,7 +33,6 @@ import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.AdvancedEqualities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.Equalities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.PathInTree;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;

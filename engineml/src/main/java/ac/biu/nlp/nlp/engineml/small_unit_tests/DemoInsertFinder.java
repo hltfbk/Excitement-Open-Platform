@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.utilities.StringUtil;
+
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.alignment.DefaultAlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
@@ -15,7 +17,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;

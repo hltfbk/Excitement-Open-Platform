@@ -2,8 +2,9 @@ package ac.biu.nlp.nlp.engineml.utilities.preprocess;
 
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.text.TextPreprocessor;
-import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+
 
 /**
  * A {@link TextPreprocessor} that runs a list of (given) {@link TextPreprocessor} for

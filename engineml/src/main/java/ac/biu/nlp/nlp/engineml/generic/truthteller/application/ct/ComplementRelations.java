@@ -10,9 +10,9 @@ import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
-import ac.biu.nlp.nlp.general.Utils;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 
 

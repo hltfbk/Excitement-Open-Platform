@@ -14,9 +14,10 @@ import java.util.Vector;
 
 import javax.xml.bind.JAXBException;
 
-import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.configuration.JaxbLoader;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.JaxbLoader;
+
 
 /**
  * Use this class to read all of TREC {@link \\nlp-srv\data2\CORPORA2\TREC\} into document-size text chunks (one String is returned for each DOC xml object).

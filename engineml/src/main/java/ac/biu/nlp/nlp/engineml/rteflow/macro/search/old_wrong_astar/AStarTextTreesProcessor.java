@@ -11,6 +11,7 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
@@ -32,7 +33,6 @@ import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.ScriptException;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.general.Utils;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
@@ -378,7 +378,7 @@ public class AStarTextTreesProcessor extends AbstractTextTreesProcessor implemen
 		
 		if (logger.isDebugEnabled())
 		{
-			logger.debug(ac.biu.nlp.nlp.general.StringUtil.generateStringOfCharacter('=', 50));
+			logger.debug(eu.excitementproject.eop.common.utilities.StringUtil.generateStringOfCharacter('=', 50));
 			logger.debug("Current \"future estimation\" is "+String.format("%-4.6f", this.futureEstimationPerNode) );
 			logger.debug("Current element estimation = "+element.getaStarEstimation());
 			logger.debug("Current element distance = "+element.getDistance());

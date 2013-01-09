@@ -11,9 +11,10 @@ import java.io.StringReader;
 import java.util.LinkedList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.OS;
-import ac.biu.nlp.nlp.general.ProgramExecution;
-import ac.biu.nlp.nlp.general.ProgramExecutionException;
+import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.ProgramExecution;
+import eu.excitementproject.eop.common.utilities.ProgramExecutionException;
+
 import ac.biu.nlp.nlp.instruments.sentencesplit.AbstractSentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;

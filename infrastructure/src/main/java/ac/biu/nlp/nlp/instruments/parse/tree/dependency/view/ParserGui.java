@@ -29,10 +29,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import ac.biu.nlp.nlp.general.EnvironmentVerifier;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.OS;
-import ac.biu.nlp.nlp.general.ProgramExecution;
+import eu.excitementproject.eop.common.utilities.EnvironmentVerifier;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.ProgramExecution;
+
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparClientParser;

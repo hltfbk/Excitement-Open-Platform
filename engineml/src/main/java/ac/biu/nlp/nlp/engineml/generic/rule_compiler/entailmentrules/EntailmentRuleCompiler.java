@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
@@ -26,9 +29,6 @@ import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.RuleCompilerUtils;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;

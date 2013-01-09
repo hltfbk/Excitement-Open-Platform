@@ -18,9 +18,11 @@ import java.util.concurrent.Future;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6mainIOException;
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
-import ac.biu.nlp.nlp.datasets.rte6main.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
@@ -42,7 +44,6 @@ import ac.biu.nlp.nlp.engineml.script.ScriptFactory;
 import ac.biu.nlp.nlp.engineml.utilities.StopFlag;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.TimeElapsedTracker;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

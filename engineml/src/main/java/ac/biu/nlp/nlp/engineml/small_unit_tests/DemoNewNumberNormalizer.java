@@ -3,10 +3,11 @@ package ac.biu.nlp.nlp.engineml.small_unit_tests;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.NewNormalizerBasedTextPreProcessor;
-import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.*;
 
 public class DemoNewNumberNormalizer

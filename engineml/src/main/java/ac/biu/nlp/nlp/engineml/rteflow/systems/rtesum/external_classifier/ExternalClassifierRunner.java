@@ -15,14 +15,17 @@ import java.util.Set;
 import java.util.Vector;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.SVMPerfNative;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswerScoreComputer;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
-import ac.biu.nlp.nlp.datasets.rte6main.AnswerScoreComputer;
-import ac.biu.nlp.nlp.datasets.rte6main.AnswersFileReader;
-import ac.biu.nlp.nlp.datasets.rte6main.AnswersFileWriter;
-import ac.biu.nlp.nlp.datasets.rte6main.DefaultAnswersFileReader;
-import ac.biu.nlp.nlp.datasets.rte6main.DefaultAnswersFileWriter;
-import ac.biu.nlp.nlp.datasets.rte6main.Rte6mainIOException;
-import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
@@ -33,9 +36,6 @@ import ac.biu.nlp.nlp.engineml.classifiers.scaling.LinearScalingTrainableStorabl
 import ac.biu.nlp.nlp.engineml.classifiers.scaling.ScalingClassifier;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.RteSumSingleCandidateResult;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.OS;
-import ac.biu.nlp.nlp.general.SVMPerfNative;
-import ac.biu.nlp.nlp.general.Utils;
 
 /**
  * No longer used.

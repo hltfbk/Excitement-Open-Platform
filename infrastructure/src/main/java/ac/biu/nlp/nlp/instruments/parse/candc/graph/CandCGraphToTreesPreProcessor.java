@@ -6,11 +6,11 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
+import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphException;
+import eu.excitementproject.eop.common.datastructures.dgraph.EdgeAndNode;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
-import ac.biu.nlp.nlp.general.dgraph.DirectedGraphException;
-import ac.biu.nlp.nlp.general.dgraph.EdgeAndNode;
 
 /**
  * Pre-processing on the C&C graph - before converting it to a set of trees.

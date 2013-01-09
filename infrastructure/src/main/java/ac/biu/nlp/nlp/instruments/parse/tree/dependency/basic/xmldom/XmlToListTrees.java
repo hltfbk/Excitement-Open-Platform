@@ -1,10 +1,10 @@
 package ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom;
 
-import static ac.biu.nlp.nlp.general.xmldom.XmlDomUtils.getChildElement;
-import static ac.biu.nlp.nlp.general.xmldom.XmlDomUtils.getTextOfElement;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.ListTreesToXml.CORPUS_INFORMATION_ELEMENT_NAME;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.ListTreesToXml.SENTENCE_ELEMENT_NAME;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.ListTreesToXml.TREE_AND_SENTENCE_ELEMENT_NAME;
+import static eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils.getChildElement;
+import static eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils.getTextOfElement;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +18,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-import ac.biu.nlp.nlp.general.xmldom.XmlDomUtils;
-import ac.biu.nlp.nlp.general.xmldom.XmlDomUtilitiesException;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
+
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;

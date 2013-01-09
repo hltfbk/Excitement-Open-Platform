@@ -1,9 +1,7 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.io.Serializable;
 import java.util.List;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListIterator;
 
 /**
  * List, like <code> java.util.List </code>, but has no

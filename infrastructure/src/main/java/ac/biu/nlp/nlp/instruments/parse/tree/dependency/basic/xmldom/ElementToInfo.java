@@ -1,7 +1,5 @@
 package ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom;
 
-import static ac.biu.nlp.nlp.general.xmldom.XmlDomUtils.getChildElement;
-import static ac.biu.nlp.nlp.general.xmldom.XmlDomUtils.getTextOfElement;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.InfoToElement.DEPENDENCY_RELATION_STRING_ELEMENT_NAME;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.InfoToElement.EXIST_ATTRIBUTE_NAME;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.InfoToElement.ID_ELEMENT_NAME;
@@ -12,10 +10,13 @@ import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.Info
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.InfoToElement.VARIABLE_ATTRIBUTE_NAME;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.InfoToElement.VARIABLE_ID_ELEMENT_NAME;
 import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.InfoToElement.WORD_ELEMENT_NAME;
+import static eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils.getChildElement;
+import static eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils.getTextOfElement;
 
 import org.w3c.dom.Element;
 
-import ac.biu.nlp.nlp.general.xmldom.XmlDomUtilitiesException;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
+
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;

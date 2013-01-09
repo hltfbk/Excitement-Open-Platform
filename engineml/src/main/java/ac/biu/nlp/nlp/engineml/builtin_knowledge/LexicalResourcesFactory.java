@@ -4,6 +4,10 @@ import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWrapper;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
@@ -15,9 +19,6 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.graphbased.PlisRuleBase;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.Workarounds;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
-import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;

@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.instruments.coreference.merge;
 
-import ac.biu.nlp.nlp.general.match.MatchFinder;
+import eu.excitementproject.eop.common.utilities.match.MatchFinder;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**

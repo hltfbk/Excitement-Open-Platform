@@ -1,8 +1,6 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.util.NoSuchElementException;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListIteratorWrapper;
 
 /**
  * 

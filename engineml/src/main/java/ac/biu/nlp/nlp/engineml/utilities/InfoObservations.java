@@ -6,8 +6,8 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
-import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;

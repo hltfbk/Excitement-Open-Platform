@@ -1,7 +1,6 @@
-package eu.excitementproject.eop.common.datastructures.immutable; 
+package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.util.Set;
-
 
 /**
  * Much like <code> java.util.Set </code> but only with
