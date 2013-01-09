@@ -55,7 +55,7 @@
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NP</name>
-      <description>Noun phrase</description>
+      <description>Proper noun</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.N</supertypeName>
     </typeDescription>
     <typeDescription>

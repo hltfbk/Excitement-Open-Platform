@@ -35,7 +35,7 @@ C=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CONJ
 CADV=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CONJ
 
 # 7.	CCHE	che
-CCHE=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos
+CCHE=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS
 
 # 8.	CCHI	chi
 CCHI=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR

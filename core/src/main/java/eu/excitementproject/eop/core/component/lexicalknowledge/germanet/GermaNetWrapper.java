@@ -1,20 +1,20 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 
 // Component imports
-import eu.excitementproject.eop.common.Component;
+import eu.excitementproject.eop.common.component.Component;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceWithRelation;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 //import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.representation.parsetree.GermanPartOfSpeech;
+import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.parsetree.UnsupportedPosTagStringException;
 
 // LexicalResource imports
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceWithRelation;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
-import eu.excitementproject.eop.core.component.lexicalknowledge.TERuleRelation;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceException;
-import eu.excitementproject.eop.core.representation.parsetree.GermanPartOfSpeech;
-import eu.excitementproject.eop.core.representation.parsetree.PartOfSpeech;
-import eu.excitementproject.eop.core.representation.parsetree.UnsupportedPosTagStringException;
 
 // GermaNet imports
 import de.tuebingen.uni.sfs.germanet.api.GermaNet;

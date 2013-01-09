@@ -5,7 +5,9 @@ import java.io.File;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
-import eu.excitementproject.eop.core.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;

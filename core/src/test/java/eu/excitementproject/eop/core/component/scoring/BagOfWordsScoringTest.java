@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;

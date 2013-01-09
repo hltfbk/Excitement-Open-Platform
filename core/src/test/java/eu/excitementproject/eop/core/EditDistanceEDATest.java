@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 //import eu.excitementproject.eop.core.component.distance.CasCreation;
 import java.util.List;
 import java.util.ArrayList;
+
+import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.lappoc.ExampleLAP;

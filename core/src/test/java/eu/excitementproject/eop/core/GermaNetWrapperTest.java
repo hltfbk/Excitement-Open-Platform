@@ -15,9 +15,9 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.junit.Assume;
 import org.junit.Test;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.exception.BaseException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;

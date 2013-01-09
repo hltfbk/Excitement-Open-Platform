@@ -4,8 +4,11 @@ import java.util.Vector;
 
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
+import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.core.component.scoring.BagOfLemmasScoring;
-import eu.excitementproject.eop.core.component.scoring.ScoringComponentException;
 
 /**
  * The <code>BagOfLemmasSimilarity</code> extends the

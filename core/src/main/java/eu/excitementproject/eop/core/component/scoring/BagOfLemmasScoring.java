@@ -9,6 +9,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 
 /**
  * The <code>BagOfWordsScoring</code> class implements the
