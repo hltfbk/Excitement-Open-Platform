@@ -2,9 +2,10 @@ package ac.biu.nlp.nlp.engineml.rteflow.micro.perform.dummy;
 
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.DummySet;
+
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
-import ac.biu.nlp.nlp.general.DummySet;
 
 
 /**

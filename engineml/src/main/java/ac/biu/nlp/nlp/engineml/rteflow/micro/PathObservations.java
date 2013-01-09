@@ -3,7 +3,8 @@ package ac.biu.nlp.nlp.engineml.rteflow.micro;
 import java.util.HashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+
 import ac.biu.nlp.nlp.engineml.operations.specifications.MoveNodeSpecification;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;

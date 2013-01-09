@@ -2,12 +2,13 @@ package ac.biu.nlp.nlp.engineml.operations.operations;
 
 import java.util.LinkedHashSet;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+
 import ac.biu.nlp.nlp.engineml.datastructures.FromBidirectionalMapValueSetMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 /**

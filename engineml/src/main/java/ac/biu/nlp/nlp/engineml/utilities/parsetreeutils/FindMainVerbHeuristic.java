@@ -3,7 +3,8 @@ package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
 import java.util.HashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.InfoObservations;
 import ac.biu.nlp.nlp.general.StringUtil;

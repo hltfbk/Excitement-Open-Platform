@@ -9,6 +9,11 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalmw_utils.LexicalRuleInTreeFinder;
@@ -16,10 +21,6 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalmw_utils.ListNodesToTree;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.RuleToString;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
-import ac.biu.nlp.nlp.general.ValueSetMap;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;

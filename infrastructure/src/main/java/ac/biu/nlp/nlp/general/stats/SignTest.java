@@ -6,7 +6,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.file.FileUtils;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+
 
 /**
  * Calculates the Z value of the sign test

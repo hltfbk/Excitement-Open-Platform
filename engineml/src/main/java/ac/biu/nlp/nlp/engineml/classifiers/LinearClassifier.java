@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.engineml.classifiers;
 
 import java.util.Map;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+
 
 
 /**

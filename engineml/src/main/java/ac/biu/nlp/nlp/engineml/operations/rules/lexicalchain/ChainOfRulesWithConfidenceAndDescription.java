@@ -2,10 +2,11 @@ package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
 
 import java.util.ArrayList;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
-import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**

@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.engineml.datastructures.ImmutableSetSubTypeWrapper;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**

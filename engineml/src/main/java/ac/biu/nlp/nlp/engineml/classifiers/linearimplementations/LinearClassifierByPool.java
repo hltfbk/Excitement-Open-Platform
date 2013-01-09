@@ -3,11 +3,12 @@ package ac.biu.nlp.nlp.engineml.classifiers.linearimplementations;
 import java.util.Map;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
 import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
 
 /**
  * Wrapper of {@link LinearTrainableStorableClassifier} which uses an already-exist

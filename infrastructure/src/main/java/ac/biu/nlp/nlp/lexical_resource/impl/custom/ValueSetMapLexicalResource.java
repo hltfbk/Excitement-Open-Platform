@@ -2,9 +2,10 @@ package ac.biu.nlp.nlp.lexical_resource.impl.custom;
 
 import java.util.*;
 
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
-import ac.biu.nlp.nlp.general.ValueSetMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;

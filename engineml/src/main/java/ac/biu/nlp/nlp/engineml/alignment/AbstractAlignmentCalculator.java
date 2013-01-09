@@ -3,9 +3,10 @@ package ac.biu.nlp.nlp.engineml.alignment;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
-import ac.biu.nlp.nlp.general.ValueSetMap;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;

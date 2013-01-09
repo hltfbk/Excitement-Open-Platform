@@ -8,6 +8,8 @@ import java.util.Set;
 
 import org.apache.log4j.BasicConfigurator;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
 import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.rules.DynamicRuleBase;
@@ -22,7 +24,6 @@ import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.representation.MiniparPartOfSpeech;

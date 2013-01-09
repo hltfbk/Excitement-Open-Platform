@@ -5,10 +5,11 @@ package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules;
 
 import java.util.Set;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
 
 /**
  * Holds the info in one line of the PhrasalImplicativeTemplates.properties file.

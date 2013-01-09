@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+
 import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 
 

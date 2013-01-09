@@ -10,15 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
-import ac.biu.nlp.nlp.general.ValueSetMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
-import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 
 /**

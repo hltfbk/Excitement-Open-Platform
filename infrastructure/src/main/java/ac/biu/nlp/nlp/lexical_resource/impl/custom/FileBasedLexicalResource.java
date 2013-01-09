@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.lexical_resource.impl.custom;
 
 import java.io.IOException;
 
-import ac.biu.nlp.nlp.general.ValueSetMapFromStringCreator;
+import eu.excitementproject.eop.common.datastructures.ValueSetMapFromStringCreator;
+
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;

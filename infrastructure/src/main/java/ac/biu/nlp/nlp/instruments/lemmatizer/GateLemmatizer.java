@@ -1,5 +1,7 @@
 package ac.biu.nlp.nlp.instruments.lemmatizer;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 import gate.creole.ResourceInstantiationException;
 import gate.creole.morph.Interpret;
 
@@ -7,8 +9,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
-import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
 
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 import ac.biu.nlp.nlp.representation.PartOfSpeech;

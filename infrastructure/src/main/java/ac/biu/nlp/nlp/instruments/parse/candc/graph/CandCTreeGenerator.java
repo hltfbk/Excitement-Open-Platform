@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.instruments.parse.candc.graph;
 
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraphException;
 import ac.biu.nlp.nlp.general.dgraph.scan.BfsDirectedGraphScan;

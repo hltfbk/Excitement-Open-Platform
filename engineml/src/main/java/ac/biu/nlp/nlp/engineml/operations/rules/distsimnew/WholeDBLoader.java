@@ -20,15 +20,16 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
 import ac.biu.nlp.nlp.engineml.operations.rules.distsim.DistSimParameters;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
-import ac.biu.nlp.nlp.general.ValueSetMap;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 

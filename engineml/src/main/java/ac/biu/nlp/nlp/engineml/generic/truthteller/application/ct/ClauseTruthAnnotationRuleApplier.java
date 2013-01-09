@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.AnnotationRuleApplier;

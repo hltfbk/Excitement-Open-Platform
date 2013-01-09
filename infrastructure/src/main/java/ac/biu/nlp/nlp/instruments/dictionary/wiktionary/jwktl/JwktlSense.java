@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
-import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryPartOfSpeech;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
@@ -16,6 +14,8 @@ import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionarySense;
 import de.tudarmstadt.ukp.wiktionary.api.Quotation;
 import de.tudarmstadt.ukp.wiktionary.api.WikiString;
 import de.tudarmstadt.ukp.wiktionary.api.WordEntry;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 
 /**
  * Represents one of the senses of a wiktionary JWKTL {@link WordEntry}, a specific sense of a lemma+POS pair.

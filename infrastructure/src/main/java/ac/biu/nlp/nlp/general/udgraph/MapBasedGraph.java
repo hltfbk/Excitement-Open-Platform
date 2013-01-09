@@ -4,10 +4,11 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.Pair;
-import ac.biu.nlp.nlp.general.PairMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.datastructures.Pair;
+import eu.excitementproject.eop.common.datastructures.PairMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+
 
 
 /**

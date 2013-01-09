@@ -6,6 +6,9 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.datastructures.Table;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
@@ -21,8 +24,6 @@ import ac.biu.nlp.nlp.engineml.script.HypothesisInformation;
 import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.ScriptException;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.Table;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;

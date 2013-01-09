@@ -10,7 +10,10 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+
 import ac.biu.nlp.nlp.engineml.codeannotations.Workaround;
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatedTreeAndMap;
@@ -23,8 +26,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

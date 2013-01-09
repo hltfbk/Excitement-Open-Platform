@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.engineml.datastructures;
 
 import java.io.PrintWriter;
 
-import ac.biu.nlp.nlp.general.Table;
+import eu.excitementproject.eop.common.datastructures.Table;
+
 
 /**
  * 

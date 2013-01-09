@@ -4,13 +4,14 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.srl.SemanticRoleLabelById;
 import ac.biu.nlp.nlp.engineml.representation.srl.SemanticRoleLabelSet;
 import ac.biu.nlp.nlp.engineml.representation.srl.SemanticRoleLabelByString;
 import ac.biu.nlp.nlp.engineml.representation.srl.SrlPredicateId;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.instruments.srl.SemanticRole;
 import ac.biu.nlp.nlp.instruments.srl.SemanticRoleType;
 

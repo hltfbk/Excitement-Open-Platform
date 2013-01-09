@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.Constants;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.CgxDomParser;
@@ -13,8 +16,6 @@ import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.RuleBuildingUtils;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.PairSet;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.RuleType;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;

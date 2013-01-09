@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.general.udgraph;
 
 
-import ac.biu.nlp.nlp.general.Pair;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.Pair;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * Undirected graph.

@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
 
-import ac.biu.nlp.nlp.codeannotations.ThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 
 /**

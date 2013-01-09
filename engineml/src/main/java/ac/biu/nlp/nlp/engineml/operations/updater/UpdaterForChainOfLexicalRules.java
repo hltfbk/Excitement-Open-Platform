@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ConfidenceChainItem;
@@ -13,7 +15,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.FeatureUpdate;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 

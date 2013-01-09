@@ -5,6 +5,9 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
@@ -21,8 +24,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;

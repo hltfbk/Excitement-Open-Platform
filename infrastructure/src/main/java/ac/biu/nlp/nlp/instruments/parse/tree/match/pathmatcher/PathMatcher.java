@@ -5,10 +5,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.DummyList;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
-import ac.biu.nlp.nlp.general.DummyList;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
+
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.Matcher;

@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
-import ac.biu.nlp.nlp.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import ac.biu.nlp.nlp.engineml.datastructures.FromBidirectionalMapValueSetMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.specifications.IsASpecification;

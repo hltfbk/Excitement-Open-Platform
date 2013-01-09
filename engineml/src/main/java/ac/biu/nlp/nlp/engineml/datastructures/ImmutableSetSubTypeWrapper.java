@@ -4,10 +4,11 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableCollection;
-import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableCollection;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+
 
 /**
  * 

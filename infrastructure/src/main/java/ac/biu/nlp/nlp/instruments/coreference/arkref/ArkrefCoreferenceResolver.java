@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.file.FileUtils;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;

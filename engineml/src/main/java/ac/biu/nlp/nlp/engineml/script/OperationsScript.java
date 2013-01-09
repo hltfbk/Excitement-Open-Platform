@@ -7,7 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaLexicalRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
@@ -17,9 +21,6 @@ import ac.biu.nlp.nlp.engineml.plugin.InstanceBasedPlugin;
 import ac.biu.nlp.nlp.engineml.plugin.Plugin;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeAndFeatureVector;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;

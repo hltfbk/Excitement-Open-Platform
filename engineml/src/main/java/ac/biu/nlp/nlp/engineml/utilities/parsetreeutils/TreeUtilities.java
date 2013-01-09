@@ -6,6 +6,10 @@ import java.util.Map;
 
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
@@ -13,9 +17,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeNodeString;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.SingleTreeEvaluations;
 import ac.biu.nlp.nlp.engineml.rteflow.micro.OperationsEnvironment;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
-import ac.biu.nlp.nlp.general.ValueSetMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.instruments.parse.minipar.AbstractMiniparParser;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;

@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro.perform;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;

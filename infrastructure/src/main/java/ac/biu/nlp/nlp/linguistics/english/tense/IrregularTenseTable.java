@@ -3,9 +3,10 @@ package ac.biu.nlp.nlp.linguistics.english.tense;
 import java.util.HashMap;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMapWrapper;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
+
 
 /**
  * 

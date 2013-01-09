@@ -2,8 +2,9 @@ package ac.biu.nlp.nlp.general.match;
 
 import java.util.Iterator;
 
-import ac.biu.nlp.nlp.general.DuplicateableIterator;
-import ac.biu.nlp.nlp.general.SimpleDuplicateableIterator;
+import eu.excitementproject.eop.common.datastructures.DuplicateableIterator;
+import eu.excitementproject.eop.common.datastructures.SimpleDuplicateableIterator;
+
 
 
 /**

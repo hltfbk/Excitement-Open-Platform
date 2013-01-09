@@ -2,6 +2,9 @@ package ac.biu.nlp.nlp.engineml.utilities;
 
 import java.util.Map;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 import ac.biu.nlp.nlp.engineml.classifiers.TrainableClassifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierFactory;
@@ -12,8 +15,6 @@ import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.ScriptFactory;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamples;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
-import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
 
 
 /**

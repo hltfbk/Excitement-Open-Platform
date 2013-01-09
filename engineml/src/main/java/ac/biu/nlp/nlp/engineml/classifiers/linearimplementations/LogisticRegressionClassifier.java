@@ -7,13 +7,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.datastructures.DummySet;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
 import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
 import ac.biu.nlp.nlp.engineml.classifiers.io.StorableClassifier;
-import ac.biu.nlp.nlp.general.DummySet;
 import ac.biu.nlp.nlp.general.Utils;
 
 

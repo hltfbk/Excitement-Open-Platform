@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
 
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 /**
  * A {@link BidirectionalMap} that does not allow <code>null</code> values (for both left

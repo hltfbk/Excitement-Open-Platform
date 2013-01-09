@@ -9,7 +9,10 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.codeannotations.ThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
+
 import ac.biu.nlp.nlp.engineml.datastructures.BooleanAndString;
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
 import ac.biu.nlp.nlp.engineml.plugin.PluginAdministrationException;
@@ -21,8 +24,6 @@ import ac.biu.nlp.nlp.engineml.script.RuleBasesAndPluginsContainer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamples;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMapWrapper;
 
 /**
  * Builds and stores the structure of the feature-vectors used in the system.

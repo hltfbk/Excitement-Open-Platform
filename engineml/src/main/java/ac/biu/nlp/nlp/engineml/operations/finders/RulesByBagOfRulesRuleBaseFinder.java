@@ -3,6 +3,8 @@ package ac.biu.nlp.nlp.engineml.operations.finders;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+
 import ac.biu.nlp.nlp.engineml.datastructures.FlippedBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.BagOfRulesRuleBase;
@@ -12,7 +14,6 @@ import ac.biu.nlp.nlp.engineml.operations.specifications.RuleSpecification;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;

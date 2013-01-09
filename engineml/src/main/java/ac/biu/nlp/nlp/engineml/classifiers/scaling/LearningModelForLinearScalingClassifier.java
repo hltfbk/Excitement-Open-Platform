@@ -6,8 +6,9 @@ import java.util.Set;
 import javax.xml.bind.annotation.XmlAccessOrder;
 import javax.xml.bind.annotation.XmlAccessorOrder;
 
+import eu.excitementproject.eop.common.datastructures.DummySet;
+
 import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
-import ac.biu.nlp.nlp.general.DummySet;
 
 /**
  * 

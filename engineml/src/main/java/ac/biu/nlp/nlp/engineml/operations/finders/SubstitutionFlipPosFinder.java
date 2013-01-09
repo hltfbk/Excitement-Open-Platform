@@ -5,6 +5,10 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.specifications.SubstituteNodeSpecification;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
@@ -13,10 +17,7 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.Equalities;
 import ac.biu.nlp.nlp.general.Cache;
 import ac.biu.nlp.nlp.general.CacheFactory;
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
 import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.ValueSetMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;

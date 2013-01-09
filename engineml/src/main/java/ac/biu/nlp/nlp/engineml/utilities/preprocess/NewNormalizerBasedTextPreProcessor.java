@@ -4,7 +4,8 @@ import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNam
 
 import java.io.File;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.general.text.TextPreprocessor;

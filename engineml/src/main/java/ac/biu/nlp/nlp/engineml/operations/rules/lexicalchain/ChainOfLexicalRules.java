@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
 
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
 import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**

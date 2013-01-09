@@ -2,11 +2,12 @@ package ac.biu.nlp.nlp.engineml.operations.specifications;
 
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.PRINT_SENTENCE_PART_IN_RULE_SPECIFICATION;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.WHEN_PRINT_SENTENCE_PART_IN_RULE_SPECIFICATION_INCLUDE_NON_RULE_MODIFIERS;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;

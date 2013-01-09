@@ -3,9 +3,10 @@ package ac.biu.nlp.nlp.representation;
 import java.util.HashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 
 /**
  * A Penn Treebank pos-tag

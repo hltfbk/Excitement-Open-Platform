@@ -5,7 +5,8 @@ package ac.biu.nlp.nlp.instruments.dictionary.wiktionary;
 
 import java.io.Serializable;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 
 /**
  * A wiktionary sense holds all the wiktionary info about a specific sense  of a <lemma, part of speech> entry. (each entry can have several senses).

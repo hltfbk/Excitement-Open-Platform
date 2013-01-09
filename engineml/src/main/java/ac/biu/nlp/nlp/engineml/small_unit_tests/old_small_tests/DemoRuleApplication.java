@@ -1,6 +1,7 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests.old_small_tests;
 
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import ac.biu.nlp.nlp.engineml.datastructures.SimpleNullForbiddenBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.operations.ExtendedSubstitutionRuleApplicationOperation;
@@ -10,7 +11,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.general.ExceptionUtil;
 import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;

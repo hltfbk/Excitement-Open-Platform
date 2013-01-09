@@ -6,8 +6,9 @@ import java.util.Map;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import ac.biu.nlp.nlp.general.BidirectionalMap;
-import ac.biu.nlp.nlp.general.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+
 import ac.biu.nlp.nlp.general.xmldom.XmlDomUtils;
 import ac.biu.nlp.nlp.general.xmldom.XmlDomUtilitiesException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;

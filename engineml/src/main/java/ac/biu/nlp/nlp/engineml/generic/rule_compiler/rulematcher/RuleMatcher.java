@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+
 import ac.biu.nlp.nlp.engineml.datastructures.FlippedBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.EntailmentRuleCompiler;
@@ -28,7 +30,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.view.RulesViewer;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

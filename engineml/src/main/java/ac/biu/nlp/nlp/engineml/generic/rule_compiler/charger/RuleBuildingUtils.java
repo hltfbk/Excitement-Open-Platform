@@ -9,12 +9,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.datastructures.Pair;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompileServices;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.PairSet;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
-import ac.biu.nlp.nlp.general.Pair;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;

@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+
 import ac.biu.nlp.nlp.datasets.rte6main.AnswerScoreComputer;
 import ac.biu.nlp.nlp.datasets.rte6main.AnswersFileReader;
 import ac.biu.nlp.nlp.datasets.rte6main.AnswersFileWriter;
@@ -34,7 +36,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.general.OS;
 import ac.biu.nlp.nlp.general.SVMPerfNative;
 import ac.biu.nlp.nlp.general.Utils;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
 
 /**
  * No longer used.

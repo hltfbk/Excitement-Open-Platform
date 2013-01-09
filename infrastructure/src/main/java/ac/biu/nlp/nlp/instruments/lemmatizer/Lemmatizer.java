@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.instruments.lemmatizer;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**

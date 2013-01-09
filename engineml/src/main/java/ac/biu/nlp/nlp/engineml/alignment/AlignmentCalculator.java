@@ -4,7 +4,8 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.SingleTreeEvaluations;

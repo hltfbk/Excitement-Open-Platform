@@ -10,8 +10,9 @@ import java.util.UUID;
 
 import org.apache.log4j.FileAppender;
 
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+
 import ac.biu.nlp.nlp.general.ExceptionUtil;
-import ac.biu.nlp.nlp.general.file.FileUtils;
 
 
 /**

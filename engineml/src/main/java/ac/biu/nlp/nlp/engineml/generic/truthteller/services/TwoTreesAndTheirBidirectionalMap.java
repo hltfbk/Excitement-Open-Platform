@@ -3,8 +3,8 @@
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.services;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 

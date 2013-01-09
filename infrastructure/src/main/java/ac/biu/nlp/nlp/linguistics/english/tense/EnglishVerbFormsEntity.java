@@ -4,7 +4,8 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+
 
 /**
  * 

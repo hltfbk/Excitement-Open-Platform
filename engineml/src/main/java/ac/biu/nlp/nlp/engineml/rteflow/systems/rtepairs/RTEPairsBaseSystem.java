@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.GlobalPairInformation;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.InitialFeatureVectorUtility;
@@ -19,9 +22,7 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.RTESystemsUtils;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.SystemInitialization;
 import ac.biu.nlp.nlp.engineml.utilities.DatasetParameterValueParser;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.ValueSetMap;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
 
 /**
  * A base class for {@link RTEPairsMultiThreadTrainer} and {@link RTEPairsMultiThreadTester},

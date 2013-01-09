@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.instruments.coreference.merge;
 
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.IteratorByMultipleIterables;
+import eu.excitementproject.eop.common.datastructures.IteratorByMultipleIterables;
+
 import ac.biu.nlp.nlp.general.match.MatchFinder;
 import ac.biu.nlp.nlp.general.match.Matcher;
 import ac.biu.nlp.nlp.general.match.Operator;

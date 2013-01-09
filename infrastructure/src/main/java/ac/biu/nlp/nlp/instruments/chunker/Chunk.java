@@ -6,7 +6,8 @@ package ac.biu.nlp.nlp.instruments.chunker;
 import java.util.ArrayList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
 
 

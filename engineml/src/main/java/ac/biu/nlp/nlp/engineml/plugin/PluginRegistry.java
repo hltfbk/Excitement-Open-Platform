@@ -5,11 +5,12 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMapWrapper;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 
 /**
  * Contains all the factories for all plug-ins registered in the system.

@@ -21,7 +21,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import ac.biu.nlp.nlp.general.KeyCaseInsensitiveHashTable;
+import eu.excitementproject.eop.common.datastructures.KeyCaseInsensitiveHashTable;
+
 import ac.biu.nlp.nlp.general.configuration.configuration_file.generated.ConfigurationType;
 import ac.biu.nlp.nlp.general.configuration.configuration_file.generated.ModuleType;
 import ac.biu.nlp.nlp.general.configuration.configuration_file.generated.ParameterType;

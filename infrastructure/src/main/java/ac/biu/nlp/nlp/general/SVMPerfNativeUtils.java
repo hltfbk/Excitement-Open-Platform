@@ -10,8 +10,9 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+
 import ac.biu.nlp.nlp.general.SVMPerfNative;
-import ac.biu.nlp.nlp.general.file.FileUtils;
 
 
 /**

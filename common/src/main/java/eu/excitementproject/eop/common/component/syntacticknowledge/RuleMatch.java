@@ -2,7 +2,7 @@ package eu.excitementproject.eop.common.component.syntacticknowledge;
 
 import eu.excitementproject.eop.common.representation.parsetree.AbstractNode;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
-import eu.excitementproject.eop.common.utilities.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 
 /**

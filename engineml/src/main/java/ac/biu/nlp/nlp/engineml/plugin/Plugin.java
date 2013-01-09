@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.engineml.plugin;
 
 import java.util.List;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;
 import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;

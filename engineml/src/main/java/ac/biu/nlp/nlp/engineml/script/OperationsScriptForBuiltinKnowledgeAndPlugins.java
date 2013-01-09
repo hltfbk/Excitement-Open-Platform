@@ -6,7 +6,11 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.plugin.InstanceBasedPlugin;
 import ac.biu.nlp.nlp.engineml.plugin.InstanceBasedPluginFactory;
@@ -18,9 +22,6 @@ import ac.biu.nlp.nlp.engineml.plugin.PluginRegistry;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMapWrapper;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
 
 /**
  * Initializes all {@link Plugin}s, in addition to the initialization of all

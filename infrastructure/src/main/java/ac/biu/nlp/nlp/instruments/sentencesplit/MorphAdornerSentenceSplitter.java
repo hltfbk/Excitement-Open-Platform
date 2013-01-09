@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.northwestern.at.utils.corpuslinguistics.sentencesplitter.DefaultSentenceSplitter;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
-import ac.biu.nlp.nlp.general.file.FileUtils;
 
 /**
  * Uses $JARS/morphadorner

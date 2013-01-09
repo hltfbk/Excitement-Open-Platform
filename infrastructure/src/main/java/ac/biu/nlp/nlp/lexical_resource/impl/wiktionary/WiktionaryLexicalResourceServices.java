@@ -10,7 +10,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryDictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryEntry;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;

@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.DummyList;
+import eu.excitementproject.eop.common.datastructures.DummyList;
+
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;

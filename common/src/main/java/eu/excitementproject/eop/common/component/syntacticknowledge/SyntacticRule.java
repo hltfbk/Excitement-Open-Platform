@@ -3,10 +3,10 @@ package eu.excitementproject.eop.common.component.syntacticknowledge;
 import java.io.Serializable;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parsetree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parsetree.BasicNode;
 import eu.excitementproject.eop.common.representation.parsetree.Info;
-import eu.excitementproject.eop.common.utilities.BidirectionalMap;
 
 /**
  * [DELETEME_LATER: imported and extended from BIUTEE 2.4.1 "rule", but somewhat different. 1) "relation" added. 2) introduction removed.(NEED2TALK?)] 

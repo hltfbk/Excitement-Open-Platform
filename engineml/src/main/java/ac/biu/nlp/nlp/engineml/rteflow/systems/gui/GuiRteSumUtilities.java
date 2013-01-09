@@ -27,6 +27,8 @@ import static javax.swing.SwingUtilities.invokeLater;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.file.FileFilterByExtension;
+
 import ac.biu.nlp.nlp.datasets.rte6main.SentenceIdentifier;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
@@ -34,7 +36,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.ExtendedPreproc
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.ExtendedTopicDataSetGenerator;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.PreprocessedTopicDataSet;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.general.file.FileFilterByExtension;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 
 /**

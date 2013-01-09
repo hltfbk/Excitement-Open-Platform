@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
 
-import ac.biu.nlp.nlp.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.SystemInitialization;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;

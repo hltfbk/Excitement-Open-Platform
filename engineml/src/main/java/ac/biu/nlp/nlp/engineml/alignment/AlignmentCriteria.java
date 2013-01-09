@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.alignment;
 
-import ac.biu.nlp.nlp.codeannotations.ThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;

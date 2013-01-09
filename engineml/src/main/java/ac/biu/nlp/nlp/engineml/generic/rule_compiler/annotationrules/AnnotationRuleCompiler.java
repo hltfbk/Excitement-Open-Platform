@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompilerParameterNames;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.RuleCompilerUtils;
@@ -29,7 +31,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
-import ac.biu.nlp.nlp.general.file.FileUtils;
 
 /**
  * This class compiles CharGer files into {@link AnnotationRule}s

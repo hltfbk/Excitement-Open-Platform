@@ -4,11 +4,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.Feature;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
 
 /**
  * Wraps another classifier while normalizing all features in hypothesis length.<BR>

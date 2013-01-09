@@ -3,7 +3,8 @@ package ac.biu.nlp.nlp.instruments.parse.tree.match;
 import java.io.File;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+
 import ac.biu.nlp.nlp.general.ExceptionUtil;
 import ac.biu.nlp.nlp.instruments.parse.EnglishSingleTreeParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;

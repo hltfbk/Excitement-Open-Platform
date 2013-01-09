@@ -6,7 +6,8 @@ package ac.biu.nlp.nlp.instruments.dictionary.wiktionary;
 import java.util.List;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 
 
 /**

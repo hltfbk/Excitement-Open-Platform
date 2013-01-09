@@ -11,13 +11,14 @@ import java.util.List;
 import java.util.Set;
 
 import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.file.FileUtils;
 
 import com.aliasi.chunk.Chunk;
 import com.aliasi.chunk.Chunking;
 import com.aliasi.sentences.IndoEuropeanSentenceModel;
 import com.aliasi.sentences.SentenceChunker;
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory;
+
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**
  * Uses the OpenNlp {@link SentenceChunker}, in {@code JARS\lingpipe-3.1.1.jar} to split sentences. I believe this is

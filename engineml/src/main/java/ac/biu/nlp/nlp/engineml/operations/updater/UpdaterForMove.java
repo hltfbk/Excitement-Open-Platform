@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;
 import ac.biu.nlp.nlp.engineml.operations.specifications.MoveNodeSpecification;
@@ -13,7 +15,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.macro.FeatureUpdate;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.PathFinder;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.PathInTree;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 /**

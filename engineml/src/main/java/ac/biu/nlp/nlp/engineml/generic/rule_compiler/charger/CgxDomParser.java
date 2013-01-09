@@ -18,11 +18,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import eu.excitementproject.eop.common.datastructures.Pair;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.DirectedPair;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.DirectedPairSet;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.PairSet;
-import ac.biu.nlp.nlp.general.Pair;
 
 /**
  * This class is concerned with Cgx xml files, particularly with parsing out all the nodes, edges and mappings 

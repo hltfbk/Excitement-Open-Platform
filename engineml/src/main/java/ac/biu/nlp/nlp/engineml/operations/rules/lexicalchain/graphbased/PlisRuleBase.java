@@ -11,6 +11,8 @@ package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.graphbased;
 import java.util.List;
 //import java.util.Map;
 import java.util.Set;
+
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 //import java.util.Vector;
 //
 //import org.BIU.utils.Serializer;
@@ -39,7 +41,6 @@ import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
 //import ac.biu.nlp.nlp.general.file.FileUtils;
 //import ac.biu.nlp.nlp.general.immutable.ImmutableList;
 //import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 //import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
 //import ac.biu.nlp.nlp.instrumentscombination.TokenInfo;
 import ac.biu.nlp.nlp.representation.PartOfSpeech;

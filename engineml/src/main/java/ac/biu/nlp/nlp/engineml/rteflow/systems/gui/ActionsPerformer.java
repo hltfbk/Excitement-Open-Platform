@@ -45,6 +45,8 @@ import javax.swing.text.BadLocationException;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 import ac.biu.nlp.nlp.datasets.RTEMainReaderException;
 import ac.biu.nlp.nlp.datasets.RTEMainWriterException;
 import ac.biu.nlp.nlp.datasets.TextHypothesisPair;
@@ -71,7 +73,6 @@ import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.general.Utils;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
 import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;

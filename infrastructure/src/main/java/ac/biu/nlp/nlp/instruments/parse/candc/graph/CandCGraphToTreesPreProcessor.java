@@ -4,12 +4,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
-import ac.biu.nlp.nlp.general.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraphException;
 import ac.biu.nlp.nlp.general.dgraph.EdgeAndNode;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 
 /**
  * Pre-processing on the C&C graph - before converting it to a set of trees.

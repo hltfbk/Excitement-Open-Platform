@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.plugin;
 
-import ac.biu.nlp.nlp.codeannotations.ThreadSafe;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * 

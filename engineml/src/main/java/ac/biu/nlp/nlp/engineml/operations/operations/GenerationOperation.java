@@ -2,12 +2,13 @@ package ac.biu.nlp.nlp.engineml.operations.operations;
 
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
 import ac.biu.nlp.nlp.engineml.operations.finders.SubstitutionMultiWordUnderlyingFinder;
 import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
-import ac.biu.nlp.nlp.general.ValueSetMap;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;

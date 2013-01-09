@@ -3,6 +3,8 @@ package ac.biu.nlp.nlp.engineml.operations.finders;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
@@ -17,7 +19,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.AdvancedEqualities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.Equalities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultSyntacticInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;

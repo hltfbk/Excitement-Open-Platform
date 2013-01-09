@@ -4,7 +4,7 @@
 package ac.biu.nlp.nlp.engineml.representation.annotations;
 
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ComplementRelations;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;

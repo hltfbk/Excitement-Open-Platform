@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.ObservableStack;
+import eu.excitementproject.eop.common.datastructures.SimpleObservableStack;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+
 
 
 /**

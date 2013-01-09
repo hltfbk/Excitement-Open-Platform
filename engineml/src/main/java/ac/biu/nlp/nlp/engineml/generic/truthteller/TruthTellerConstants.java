@@ -3,8 +3,8 @@
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
-import ac.biu.nlp.nlp.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ClauseTruthAnnotationRuleApplier;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ComplementRelations;
 import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;

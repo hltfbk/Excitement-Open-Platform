@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 
 /**
  * 

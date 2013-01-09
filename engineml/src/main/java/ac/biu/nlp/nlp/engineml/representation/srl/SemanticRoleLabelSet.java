@@ -3,8 +3,9 @@ package ac.biu.nlp.nlp.engineml.representation.srl;
 import java.io.Serializable;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+
 
 /**
  * 

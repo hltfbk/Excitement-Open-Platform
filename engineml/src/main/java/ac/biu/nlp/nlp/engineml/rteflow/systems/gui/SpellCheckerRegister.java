@@ -9,10 +9,11 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
 
 import com.inet.jortho.FileUserDictionary;
 import com.inet.jortho.SpellChecker;
+
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 
 
 /**

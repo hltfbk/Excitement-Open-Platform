@@ -2,13 +2,14 @@ package ac.biu.nlp.nlp.engineml.rteflow.systems;
 
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.SynchronizedAtomicAnnotator;
 import ac.biu.nlp.nlp.engineml.plugin.PluginRegistry;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.UnigramProbabilityEstimation;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 
 
 /**

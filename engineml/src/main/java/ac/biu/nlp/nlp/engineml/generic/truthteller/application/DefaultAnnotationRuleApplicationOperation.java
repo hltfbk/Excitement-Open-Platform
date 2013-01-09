@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge.AnnotationsMerger;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge.AnnotationsMergerException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
@@ -17,7 +19,6 @@ import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 /**

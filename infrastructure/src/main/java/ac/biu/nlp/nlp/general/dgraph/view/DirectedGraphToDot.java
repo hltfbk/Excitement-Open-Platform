@@ -3,13 +3,14 @@ package ac.biu.nlp.nlp.general.dgraph.view;
 import java.io.PrintStream;
 import java.util.HashSet;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.general.StringUtilException;
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraphException;
 import ac.biu.nlp.nlp.general.dgraph.EdgeAndNode;
 import ac.biu.nlp.nlp.general.dgraph.HeadAndTail;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 
 
 /**

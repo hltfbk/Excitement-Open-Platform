@@ -5,7 +5,8 @@ package ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils;
 
 import java.io.Serializable;
 
-import ac.biu.nlp.nlp.general.Pair;
+import eu.excitementproject.eop.common.datastructures.Pair;
+
 
 /**
  * An ordered pair of elements, left and right.

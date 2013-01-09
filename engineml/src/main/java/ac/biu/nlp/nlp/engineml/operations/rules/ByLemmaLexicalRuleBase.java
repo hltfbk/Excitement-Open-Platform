@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * A {@link LexicalRuleBase} which returns rule that match a given lemma as

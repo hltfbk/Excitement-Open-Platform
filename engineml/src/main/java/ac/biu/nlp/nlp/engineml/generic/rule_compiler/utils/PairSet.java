@@ -12,7 +12,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.Pair;
+import eu.excitementproject.eop.common.datastructures.Pair;
+
 
 /**
  * 
@@ -122,14 +123,14 @@ public class PairSet<K> implements Serializable, Iterable<Pair<K>>
 	 * @param key
 	 * @return
 	 */
-	public ac.biu.nlp.nlp.general.immutable.ImmutableSet<Pair<K>> getPairContaining(K key)
+	public eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet<Pair<K>> getPairContaining(K key)
 	{
-		ac.biu.nlp.nlp.general.immutable.ImmutableSet<Pair<K>> ret = null;
+		eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet<Pair<K>> ret = null;
 		
 		if (mapKeyToPairContainingIt.containsKey(key))
 		{
 			if (null!=mapKeyToPairContainingIt.get(key))
-				ret =  new ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper<Pair<K>>(mapKeyToPairContainingIt.get(key));
+				ret =  new eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper<Pair<K>>(mapKeyToPairContainingIt.get(key));
 		}
 		
 		return ret;

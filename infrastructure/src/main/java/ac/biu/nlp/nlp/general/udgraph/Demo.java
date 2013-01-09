@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.general.udgraph;
 
-import ac.biu.nlp.nlp.general.Pair;
+import eu.excitementproject.eop.common.datastructures.Pair;
 
 
 /**

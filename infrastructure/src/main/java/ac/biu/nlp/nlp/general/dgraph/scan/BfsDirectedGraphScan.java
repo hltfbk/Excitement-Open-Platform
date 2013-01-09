@@ -5,10 +5,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraph;
 import ac.biu.nlp.nlp.general.dgraph.DirectedGraphException;
 import ac.biu.nlp.nlp.general.dgraph.EdgeAndNode;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 
 /**
  * 

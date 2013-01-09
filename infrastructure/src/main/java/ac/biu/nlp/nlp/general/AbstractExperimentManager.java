@@ -13,11 +13,12 @@ import java.util.LinkedHashSet;
 import java.util.UUID;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+import eu.excitementproject.eop.common.utilities.file.FileUtils.CopyDirectoryException;
+
 import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
-import ac.biu.nlp.nlp.general.file.FileUtils;
-import ac.biu.nlp.nlp.general.file.FileUtils.CopyDirectoryException;
 
 /**
  * Copies files of an experiment to a given destination.

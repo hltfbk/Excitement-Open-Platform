@@ -3,7 +3,7 @@
  */
 package ac.biu.nlp.nlp.instruments.parse.representation.basic;
 
-import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 
 /**
  * A {@link DependencyRelation} backed by the {@link StanfordDepedencyRelationType} enum representation of the standard Stanford Dependency 

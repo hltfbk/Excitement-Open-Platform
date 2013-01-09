@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.general.dgraph;
 
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.general.dgraph.view.DirectedGraphToDot;
 import ac.biu.nlp.nlp.general.dgraph.view.StringRepresentation;
-import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
 
 public class DirectedGraphDemo {
 

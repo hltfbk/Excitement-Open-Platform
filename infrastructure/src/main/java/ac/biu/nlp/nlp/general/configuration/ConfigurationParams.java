@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.datastructures.KeyCaseInsensitiveHashTable;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+
 import ac.biu.nlp.nlp.general.DictionaryRegExp;
 import ac.biu.nlp.nlp.general.DictionaryRegExp.DictionaryRegExpException;
-import ac.biu.nlp.nlp.general.KeyCaseInsensitiveHashTable;
 import ac.biu.nlp.nlp.general.StringUtil;
-import ac.biu.nlp.nlp.general.file.FileUtils;
 
 /**
  * 

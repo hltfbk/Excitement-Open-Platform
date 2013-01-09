@@ -2,8 +2,9 @@ package ac.biu.nlp.nlp.engineml.utilities;
 
 import java.util.LinkedHashSet;
 
-import ac.biu.nlp.nlp.general.SimpleValueSetMap;
-import ac.biu.nlp.nlp.general.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+
 
 /**
  * Parses the value of the parameter "dataset" in the configuration file.

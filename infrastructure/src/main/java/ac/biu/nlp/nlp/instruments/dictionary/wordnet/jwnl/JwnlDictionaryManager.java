@@ -7,9 +7,10 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.UUID;
 
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.JWNLException;
-import ac.biu.nlp.nlp.general.file.FileUtils;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetInitializationException;
 

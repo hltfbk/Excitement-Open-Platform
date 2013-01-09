@@ -5,7 +5,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableIteratorWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIteratorWrapper;
+
 
 
 /**

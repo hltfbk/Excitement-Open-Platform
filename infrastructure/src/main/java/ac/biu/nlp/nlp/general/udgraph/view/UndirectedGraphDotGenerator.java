@@ -5,7 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.general.Pair;
+import eu.excitementproject.eop.common.datastructures.Pair;
+
 import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.general.StringUtilException;
 import ac.biu.nlp.nlp.general.udgraph.UndirectedGraph;

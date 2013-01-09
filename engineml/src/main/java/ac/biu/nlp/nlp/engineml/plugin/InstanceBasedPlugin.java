@@ -2,9 +2,10 @@ package ac.biu.nlp.nlp.engineml.plugin;
 
 import java.util.List;
 
-import ac.biu.nlp.nlp.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.general.immutable.ImmutableMap;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 
 /**

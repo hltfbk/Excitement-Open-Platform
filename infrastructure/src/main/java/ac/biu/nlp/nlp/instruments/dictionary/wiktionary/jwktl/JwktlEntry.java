@@ -11,8 +11,6 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 import java.util.Vector;
 
-import ac.biu.nlp.nlp.general.immutable.ImmutableList;
-import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryEntry;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryPartOfSpeech;
@@ -21,6 +19,8 @@ import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionarySense;
 import de.tudarmstadt.ukp.wiktionary.api.Quotation;
 import de.tudarmstadt.ukp.wiktionary.api.WikiString;
 import de.tudarmstadt.ukp.wiktionary.api.WordEntry;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 
 
 /**

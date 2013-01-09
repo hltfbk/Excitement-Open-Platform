@@ -21,7 +21,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
-import ac.biu.nlp.nlp.general.BidirectionalMap;
 import ac.biu.nlp.nlp.general.ExceptionUtil;
 import ac.biu.nlp.nlp.general.StringUtil;
 import ac.biu.nlp.nlp.instruments.parse.EnglishSingleTreeParser;
@@ -39,6 +38,8 @@ import ac.biu.nlp.nlp.instruments.parse.tree.match.Matcher;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 @Deprecated
 public class DynRuleBaseTester
