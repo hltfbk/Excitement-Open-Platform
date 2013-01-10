@@ -127,8 +127,8 @@ public class MaxEntClassificationEDA implements
 		modelFile = "./src/test/resources/MaxEntClassificationEDAModel"
 				+ language;
 
-		trainDIR = "./target/" + language + "/";
-		// testDIR = "./target/" + language + "/";
+		trainDIR = "./target/" + language + "/dev/";
+		testDIR = "./target/" + language + "/test/";
 
 		// initialize the model: if it's training, check the model file exsits;
 		// if it's testing, read in the model
@@ -182,7 +182,7 @@ public class MaxEntClassificationEDA implements
 		// System.out.println();
 
 		return new ClassificationTEDecision(
-				getAnswerLabel(result[numOutcomes - 1].stringValue), pairId);
+				getAnswerLabel(result[numOutcomes - 1].stringValue), result[numOutcomes - 1].doubleValue, pairId);
 	}
 
 	/**
