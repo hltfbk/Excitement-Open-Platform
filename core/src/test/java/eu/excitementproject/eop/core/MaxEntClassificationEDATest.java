@@ -25,6 +25,21 @@ public class MaxEntClassificationEDATest {
 			.getName());
 	
 	@Test
+	public void test() {
+		// This is a very very long test. (More than build prcess itself) 
+		// Commented for that reason. 
+		// Uncomment the following tests to do the Full Test 
+		// on MaxEntClassificationEDA --Gil 
+		
+		/* 
+		testLAP_DE(); 
+		testTraining_DE(); 
+		testTesting_SingleTH_DE(); 
+		testTesting_MultiTH_DE(); 
+		*/
+	}
+	
+	//@Test 
 	public void testLAP_DE() {
 		File inputFile = null;
 		File outputDir = null;
@@ -64,7 +79,7 @@ public class MaxEntClassificationEDATest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testTraining_DE() {
 		File trainingDir = null;
 		trainingDir = new File("./target/DE/dev/");
@@ -89,7 +104,7 @@ public class MaxEntClassificationEDATest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testTesting_SingleTH_DE() {
 		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
 		meceda.setLanguage("DE");
@@ -128,7 +143,7 @@ public class MaxEntClassificationEDATest {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void testTesting_MultiTH_DE() {
 		File testingDir = null;
 		testingDir = new File("./target/DE/test/");
