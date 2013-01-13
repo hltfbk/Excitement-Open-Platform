@@ -1,13 +1,6 @@
 package eu.excitementproject.eop.common.representation.parse.representation.basic;
 
-import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
-
-
-
 /**
- * [DELETEME_LATER: imported from BIUTEE 2.4.1. with no modification] 
- * 
  * This class is immutable.
  * @see Info
  * 

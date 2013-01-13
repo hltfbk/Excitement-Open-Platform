@@ -2,18 +2,17 @@ package eu.excitementproject.eop.common.representation.parse.representation.basi
 
 import java.io.Serializable;
 
-import eu.excitementproject.eop.common.representation.parse.representation.basic.DependencyRelationType;
+// This class is immutable
 
 /**
- * 
- * [DELETEME_LATER: Imported from BIUTEE 2.4.1 with no modification - but note that the <code>DependencyRelationType</code> is a new type]
  * dependency relation is the relation between a node in the dependency
  * parse tree and its parent.
  * For example: subject, object.
  * <P>
- * The relation is represented as a string, and as a canonical representation by 
- * {@link DependencyRelationType}. 
- * 
+ * The relation is represented as a string, and if that relation
+ * fits into one of the small closed list of predefined dependency
+ * relation specified by {@link DependencyRelationType}, it is
+ * also represented as {@link DependencyRelationType}.
  * <P>
  * This class is IMMUTABLE
  * 
@@ -23,8 +22,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
  */
 public class DependencyRelation implements Serializable
 {
-	
-	private static final long serialVersionUID = -1407618627652677290L;
+	private static final long serialVersionUID = -1722667140106151428L;
 	
 	/**
 	 * 
@@ -57,6 +55,12 @@ public class DependencyRelation implements Serializable
 		ret = ((itsStringRepresentation==null)?"null":itsStringRepresentation);
 		return ret;
 	}
+	
+	
+	
+	
+
+	
 	
 	@Override
 	public int hashCode()
@@ -97,7 +101,12 @@ public class DependencyRelation implements Serializable
 		return true;
 	}
 
+
+
+
+
+
+
 	protected String itsStringRepresentation;
-	protected DependencyRelationType type = null; // null is legal here. 
-											      // Gil: should it also be legal on EXCITEMENT? (we now have canonical dep rel). NEED2TALK  
+	protected DependencyRelationType type = null; // null is legal here.
 }

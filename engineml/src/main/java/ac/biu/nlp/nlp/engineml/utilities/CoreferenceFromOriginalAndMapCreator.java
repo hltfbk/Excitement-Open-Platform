@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.engineml.utilities;
 import org.apache.log4j.Logger;
 
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 
 
 /**

@@ -4,11 +4,11 @@ import java.util.Map;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_beam_search.BeamSearchTextTreesProcessor;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 

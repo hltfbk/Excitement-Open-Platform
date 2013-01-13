@@ -6,12 +6,12 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityMergeServices;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityWord;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.BasicParser;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;

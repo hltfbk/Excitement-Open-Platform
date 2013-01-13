@@ -1,12 +1,7 @@
 package eu.excitementproject.eop.common.representation.parse.representation.basic;
 
-import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
-
 
 /**
- * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification - but some enums are different - POS & NER]  
- * 
  * This class is immutable, provided the underlying implementations of the type:
  * {@linkplain SyntacticInfo} is immutable as well.
  * <P>

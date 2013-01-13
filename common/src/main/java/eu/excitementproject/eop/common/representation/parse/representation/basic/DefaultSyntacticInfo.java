@@ -1,16 +1,14 @@
 package eu.excitementproject.eop.common.representation.parse.representation.basic;
 
-import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
+
 /**
- * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification - but enum in PartOfSpeech is different]
  * This class is immutable.
  * 
  * @author Asher Stern
  *
  */
-
 public class DefaultSyntacticInfo implements SyntacticInfo
 {
 	private static final long serialVersionUID = 2529017158634018005L;
@@ -20,10 +18,19 @@ public class DefaultSyntacticInfo implements SyntacticInfo
 		this.partOfSpeech = pos;
 	}
 	
+	
+
+
 	public PartOfSpeech getPartOfSpeech()
 	{
 		return this.partOfSpeech;
 	}
+	
+
+
+
+
+
 
 	@Override
 	public int hashCode()
@@ -34,6 +41,9 @@ public class DefaultSyntacticInfo implements SyntacticInfo
 				+ ((this.getPartOfSpeech() == null) ? 0 : this.getPartOfSpeech().hashCode());
 		return result;
 	}
+
+
+
 
 	@Override
 	public boolean equals(Object obj)
@@ -54,6 +64,12 @@ public class DefaultSyntacticInfo implements SyntacticInfo
 		return true;
 	}
 
+
+
+
+
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -61,6 +77,12 @@ public class DefaultSyntacticInfo implements SyntacticInfo
 	public String toString() {
 		return "DefaultSyntacticInfo [partOfSpeech=" + partOfSpeech + "]";
 	}
+
+
+
+
+
+
 
 	protected PartOfSpeech partOfSpeech;
 

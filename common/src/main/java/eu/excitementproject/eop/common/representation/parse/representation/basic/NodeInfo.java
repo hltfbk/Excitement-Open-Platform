@@ -2,16 +2,24 @@ package eu.excitementproject.eop.common.representation.parse.representation.basi
 
 import java.io.Serializable;
 
-import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+
+
 
 /**
- * 
- * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification]
  * Represents the information of the contents of a {@linkplain BasicNode}.
  * <P>
  * The information in this object does not contains information about the edge that connects
  * the node to its parent. That kind of information is given by {@linkplain EdgeInfo}
+ * <P>
+ * <B>All implementations must be immutable!!!</B>
+ * 
+ * It is recommended to use the default implementation: {@link DefaultNodeInfo}
+ * 
+ * @see DefaultNodeInfo
+ * @see Info
+ * 
  * @author Asher Stern
  *
  */
@@ -33,7 +41,7 @@ public interface NodeInfo extends Serializable
 	 * My advice, if the parser does not returns this information,
 	 * Use another tool (hopefully you have another tool for that)
 	 * on the {@linkplain BasicConstructionNode}s returned by
-	 * the {@linkplain EnglishSingleTreeParser} to add this information.
+	 * the {@linkplain BasicParser} to add this information.
 	 * @return the lemma (root form) of the node
 	 */
 	public String getWordLemma();

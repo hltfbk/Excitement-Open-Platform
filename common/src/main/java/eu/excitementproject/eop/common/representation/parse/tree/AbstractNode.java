@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 
 /**
- * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification]
- * 
+ *
  * Represents a node in a parse tree.
  * <P>
  * Important notes:<BR>
@@ -94,7 +93,7 @@ public abstract class AbstractNode<T,S extends AbstractNode<T,S>> implements Ser
 	 */
 	@Override
 	public String toString() {
-		return "AbstractNode [info=" + info + "]";
+		return "AbstractNode [info=" + getInfo() + "]";
 	}
 
 

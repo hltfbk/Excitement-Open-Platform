@@ -32,7 +32,7 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.ExtendedPreproc
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.ExtendedTopicDataSetGenerator;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.PreprocessedTopicDataSet;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 import eu.excitementproject.eop.common.utilities.file.FileFilterByExtension;
 

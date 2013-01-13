@@ -3,7 +3,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;

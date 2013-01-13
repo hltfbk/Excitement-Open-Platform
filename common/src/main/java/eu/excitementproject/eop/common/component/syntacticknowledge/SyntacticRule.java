@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 

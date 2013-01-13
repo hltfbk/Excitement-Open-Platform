@@ -1,14 +1,12 @@
 package eu.excitementproject.eop.common.representation.parse.representation.basic;
+
 import java.io.Serializable;
 
-import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+
 
 
 /**
- * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification]
- * 
  * Represents a parse-tree-node's information:
  * <OL>
  * <LI> The node's content (word, lemma, part-of-speech, etc)</LI>
@@ -20,6 +18,8 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
  * An easy way to get the Strings in an Info object, is by using {@link InfoGetFields}
  * <P>
  * <B>Classes that implement Info - must be immutable</B>
+ * <P>
+ * It is recommended to use the default implementation: {@link DefaultInfo}.
  * 
  * @see DefaultInfo
  * @see InfoGetFields

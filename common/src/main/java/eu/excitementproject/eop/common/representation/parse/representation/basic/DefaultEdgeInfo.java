@@ -2,17 +2,13 @@ package eu.excitementproject.eop.common.representation.parse.representation.basi
 
 
 /**
- * 
- * [DELETEME_LATER: imported from BIUTEE 2.4.1 with no modification - although the enum in dependency relation is different] 
- * 
  * Immutable.
  * @author Asher Stern
  *
  */
 public class DefaultEdgeInfo implements EdgeInfo
 {
-
-	private static final long serialVersionUID = -738966898545696065L;
+	private static final long serialVersionUID = -4848315032220376641L;
 
 	public DefaultEdgeInfo(DependencyRelation relation)
 	{
@@ -35,6 +31,8 @@ public class DefaultEdgeInfo implements EdgeInfo
 		
 		return this.relation.equals(other.getDependencyRelation());
 	}
+	
+	
 	
 	@Override
 	public int hashCode()
@@ -65,6 +63,8 @@ public class DefaultEdgeInfo implements EdgeInfo
 		return true;
 	}
 
+
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -73,6 +73,10 @@ public class DefaultEdgeInfo implements EdgeInfo
 		return "DefaultEdgeInfo [relation=" + relation + "]";
 	}
 
+
+
 	protected DependencyRelation relation;
+
+
 
 }

@@ -2,6 +2,8 @@ package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
@@ -9,8 +11,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.document_sublayer.DocumentInitializer;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 
 
 /**
