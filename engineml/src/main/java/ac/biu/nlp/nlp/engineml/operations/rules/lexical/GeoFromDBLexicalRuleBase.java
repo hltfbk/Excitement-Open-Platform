@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
@@ -24,7 +25,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.macro.DefaultOperationScript;
 import ac.biu.nlp.nlp.engineml.rteflow.micro.perform.LexicalRuleByLemmaPos2DPerformFactory;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * Geographical lexical rule base. Retrieves the rules directly

@@ -8,6 +8,9 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+
 import opennlp.maxent.MaxentModel;
 import opennlp.maxent.io.SuffixSensitiveGISModelReader;
 import opennlp.tools.ngram.Dictionary;
@@ -15,8 +18,6 @@ import opennlp.tools.postag.DefaultPOSContextGenerator;
 import opennlp.tools.postag.POSDictionary;
 import opennlp.tools.postag.POSTagger;
 import opennlp.tools.postag.POSTaggerME;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * A {@link PosTagger} implemented with the {@link POSTaggerME} in {@code opennlp-tools-1.3.0.jar} from the {@code opennlp-tools-1.3.0} package.

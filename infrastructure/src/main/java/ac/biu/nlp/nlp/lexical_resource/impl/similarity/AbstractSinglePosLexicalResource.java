@@ -6,10 +6,11 @@ package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 
 /**

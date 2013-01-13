@@ -10,6 +10,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
@@ -18,10 +22,6 @@ import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 
 /**

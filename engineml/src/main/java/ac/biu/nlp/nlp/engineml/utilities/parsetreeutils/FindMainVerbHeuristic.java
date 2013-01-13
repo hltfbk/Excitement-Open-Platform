@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.InfoObservations;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 
 /**

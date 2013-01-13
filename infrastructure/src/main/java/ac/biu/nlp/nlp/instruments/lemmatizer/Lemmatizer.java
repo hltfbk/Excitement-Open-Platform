@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.instruments.lemmatizer;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * Lemmatizer: gets a word as an input, and returns its lemma as output.

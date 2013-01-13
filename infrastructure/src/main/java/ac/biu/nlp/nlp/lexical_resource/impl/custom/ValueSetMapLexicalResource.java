@@ -4,6 +4,7 @@ import java.util.*;
 
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.*;
 
 
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
@@ -11,7 +12,6 @@ import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
-import ac.biu.nlp.nlp.representation.*;
 
 /**
  * <p>A lexical resource based on a {@link ValueSetMap} (a bidirectional multi-map) of Strings.

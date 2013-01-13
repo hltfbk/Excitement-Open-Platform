@@ -7,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
+
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.ParseTreeUtils.ParseTreeException;
@@ -19,9 +23,6 @@ import ac.biu.nlp.nlp.instruments.postagger.MaxentPosTagger;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
 import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech.PennPosTag;
 
 /**
  * This class extracts hypernyms of words out of their wiki sense descriptions. It does so by prefixing gloss descriptions with "WORD is ..." and parsing 

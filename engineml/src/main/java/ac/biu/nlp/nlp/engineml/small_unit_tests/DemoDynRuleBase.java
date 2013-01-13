@@ -9,6 +9,8 @@ import java.util.Set;
 import org.apache.log4j.BasicConfigurator;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -26,8 +28,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TimeElapsedTracker;
 import ac.biu.nlp.nlp.engineml.utilities.legacy.ExperimentLoggerNeutralizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.representation.MiniparPartOfSpeech;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 @Deprecated
 public class DemoDynRuleBase

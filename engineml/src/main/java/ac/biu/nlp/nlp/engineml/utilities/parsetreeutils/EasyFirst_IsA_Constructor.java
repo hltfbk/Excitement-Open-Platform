@@ -7,6 +7,9 @@ import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalInformationServices;
@@ -19,9 +22,6 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultSyntacticInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelationType;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech.PennPosTag;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * 

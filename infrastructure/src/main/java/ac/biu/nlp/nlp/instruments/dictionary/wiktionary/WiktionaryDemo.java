@@ -6,11 +6,11 @@ package ac.biu.nlp.nlp.instruments.dictionary.wiktionary;
 import java.util.List;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.JwktlDictionary;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * @author Amnon Lotan

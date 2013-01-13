@@ -3,6 +3,8 @@
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.services;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
@@ -10,8 +12,6 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteri
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.WildcardPartOfSpeech;
 
 /**
  * Compares {@link ExtendedInfo}s. To be used in rule-text matching, where null values in a rule node (text node) acts like a 

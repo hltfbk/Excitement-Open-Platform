@@ -4,6 +4,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelationType;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
@@ -11,8 +14,6 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.SyntacticInfo;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * Gets an {@link Info}, and creates an XML element ({@link Element}) which

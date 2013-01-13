@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -32,7 +33,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * Read all the .cgx files in the given entailment rule directory and compile each file into {@link Rule}s.

@@ -5,6 +5,9 @@ package ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct;
 
 import java.util.Iterator;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
+
 import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
@@ -14,8 +17,6 @@ import ac.biu.nlp.nlp.instruments.parse.minipar.AbstractMiniparParser;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech.PennPosTag;
 
 /**
  * @author Amnon Lotan

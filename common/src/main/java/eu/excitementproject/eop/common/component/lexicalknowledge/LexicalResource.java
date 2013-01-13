@@ -6,7 +6,7 @@ import eu.excitementproject.eop.common.component.Component;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
-import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * [DELETEME_LATER: imported from BIUTEE infrastructure] 

@@ -4,6 +4,9 @@ import java.util.LinkedList;
 
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
@@ -12,8 +15,6 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * Conversion of a formal string to a tree, and vice versa.

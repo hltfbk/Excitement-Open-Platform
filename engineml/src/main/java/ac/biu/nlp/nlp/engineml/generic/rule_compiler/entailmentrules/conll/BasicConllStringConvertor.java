@@ -6,12 +6,13 @@ package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.conll;
 
 import java.util.Map;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
+
 import ac.biu.nlp.nlp.engineml.generic.truthteller.conll.TreeConllStringConverter;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.WildcardPartOfSpeech;
 
 
 /**

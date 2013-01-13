@@ -1,4 +1,4 @@
-package ac.biu.nlp.nlp.representation;
+package eu.excitementproject.eop.common.representation.partofspeech;
 
 /**
  * Enumeration of a small set of part-of-speech tags.

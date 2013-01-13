@@ -16,6 +16,11 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
@@ -33,11 +38,6 @@ import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech.PennPosTag;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * This class basically wraps Yoav Goldberg's EasyFirst parser. It publishes a {@link #parse(String)} method.

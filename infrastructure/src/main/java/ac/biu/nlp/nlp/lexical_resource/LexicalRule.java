@@ -5,7 +5,8 @@ package ac.biu.nlp.nlp.lexical_resource;
 
 import java.io.Serializable;
 
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+
 
 /**
  * A generic Lexical Rule, composed of two {@code <lemma, part of speech>} lexical items, on left and right, a confidence score, 

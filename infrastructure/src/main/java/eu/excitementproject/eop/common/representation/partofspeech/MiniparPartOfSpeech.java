@@ -1,4 +1,4 @@
-package ac.biu.nlp.nlp.representation;
+package eu.excitementproject.eop.common.representation.partofspeech;
 
 import java.util.HashMap;
 import java.util.Map;

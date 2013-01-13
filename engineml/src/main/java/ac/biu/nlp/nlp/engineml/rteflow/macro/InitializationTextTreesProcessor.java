@@ -18,6 +18,7 @@ import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
 import eu.excitementproject.eop.common.utilities.SealedObject;
@@ -68,7 +69,6 @@ import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapEx
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNodeConstructor;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 
 /**

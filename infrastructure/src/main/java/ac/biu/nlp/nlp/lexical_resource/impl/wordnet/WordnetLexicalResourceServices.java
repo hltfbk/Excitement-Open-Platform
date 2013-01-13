@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.EmptySynset;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.SensedWord;
@@ -22,8 +25,6 @@ import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordnetDictionaryImplementa
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
 
 /**
  * This class inherits its interface and implementation-outline from {@link WordnetLexicalResource}, and completes the implementation.  

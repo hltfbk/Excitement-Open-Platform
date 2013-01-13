@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.instruments.postagger;
 
 import java.io.Serializable;
 
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+
 
 /**
  * Represents a token and its part-of-speech.

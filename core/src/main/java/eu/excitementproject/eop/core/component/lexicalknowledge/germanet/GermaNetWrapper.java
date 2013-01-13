@@ -10,9 +10,9 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 //import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.common.representation.parsetree.GermanPartOfSpeech;
-import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.parsetree.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 // LexicalResource imports
 

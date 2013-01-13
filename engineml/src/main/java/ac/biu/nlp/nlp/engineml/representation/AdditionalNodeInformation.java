@@ -2,6 +2,8 @@ package ac.biu.nlp.nlp.engineml.representation;
 
 import java.io.Serializable;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+
 import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.NegationAndUncertainty;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredTruth;
@@ -9,7 +11,6 @@ import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
 import ac.biu.nlp.nlp.engineml.representation.srl.SemanticRoleLabelSet;
 import ac.biu.nlp.nlp.engineml.representation.srl.SrlPredicateId;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.ContentAncestorSetter;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 
 /**
  * 

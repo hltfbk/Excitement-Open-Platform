@@ -2,12 +2,12 @@ package ac.biu.nlp.nlp.engineml.operations.rules;
 
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
 import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * A {@link LexicalRuleBase} which returns rule that match a given lemma-and-part-of-speech

@@ -2,9 +2,9 @@ package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
 
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * A {@link LexicalRule} which is actually a chain of lexical rules.

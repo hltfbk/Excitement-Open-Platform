@@ -2,6 +2,8 @@ package ac.biu.nlp.nlp.instruments.lemmatizer;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import gate.creole.ResourceInstantiationException;
 import gate.creole.morph.Interpret;
 
@@ -10,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 
 /**

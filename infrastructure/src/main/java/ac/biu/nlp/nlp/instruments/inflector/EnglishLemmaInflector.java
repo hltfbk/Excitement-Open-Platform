@@ -8,9 +8,10 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+
 import ac.biu.nlp.nlp.instruments.inflector.Inflection.InflectionType;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 
 /**
  * This class accepts a verb/noun lemma and returns all its inflections, according to the regular English inflection conventions, 

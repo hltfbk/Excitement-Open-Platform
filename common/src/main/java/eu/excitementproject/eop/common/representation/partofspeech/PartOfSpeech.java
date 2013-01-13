@@ -1,9 +1,13 @@
-package ac.biu.nlp.nlp.representation;
+package eu.excitementproject.eop.common.representation.partofspeech;
 
 import java.io.Serializable;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
+ * <P> [DELETEME_LATER This code has been imported from BIUTEE 2.4.1, with minor modifications: 1) the field "CanonicalPosTag" is a different type. 2) The exception "UnsupportedPosTagString" is a different type.] </P> 
+ * 
  * Represents part-of-speech tag.
  * The purpose of this class is to wrap the part-of-speech tag that is given by an external
  * resource (e.g. parser or pos-tagger).
@@ -31,15 +35,14 @@ import java.io.Serializable;
  * </pre>
  * </code>
  * 
- * 
- * @author Asher Stern
- * @since Dec 26, 2010
- *
+ * @author Asher Stern (Imported from BIUTEE 2.4.1)
+ * @since 
  */
-public abstract class PartOfSpeech implements Serializable
-{
-	private static final long serialVersionUID = 1130885324993018772L;
-	
+
+public abstract class PartOfSpeech implements Serializable {
+
+	private static final long serialVersionUID = -1476141823590371836L;
+
 	/**
 	 * Gets a string that represents the part of speech, and constructs a {@link PartOfSpeech}
 	 * object based on that string.
@@ -82,7 +85,7 @@ public abstract class PartOfSpeech implements Serializable
 		if (exception !=null)
 			throw exception;
 	}
-	
+
 	/**
 	 * Returns a canonical representation of this part-of-speech.
 	 * @return
@@ -103,7 +106,7 @@ public abstract class PartOfSpeech implements Serializable
 	{
 		return this.posTagString;
 	}
-	
+
 	/**
 	 * Creates a new {@link PartOfSpeech} object, that has the same type of
 	 * the callee.
@@ -160,6 +163,7 @@ public abstract class PartOfSpeech implements Serializable
 		return true;
 	}
 
+		
 	/////////////////////////////// PROTECTED AND PRIVATE //////////////////////////////////////
 	
 	/**

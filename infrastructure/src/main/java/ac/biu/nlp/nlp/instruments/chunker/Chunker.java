@@ -5,8 +5,9 @@ package ac.biu.nlp.nlp.instruments.chunker;
 
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * Chunker: Generates chunk tags for the given sequence of words and POS tags, returning the result in a list of "chunks"

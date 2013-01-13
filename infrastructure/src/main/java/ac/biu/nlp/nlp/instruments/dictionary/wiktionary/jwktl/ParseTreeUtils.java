@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.AllChoices;
 import eu.excitementproject.eop.common.utilities.ChoiceHandler;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -23,7 +24,6 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyR
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDependencyException;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 
 /**
  * A handy set of utilities that scan an {@link AbstractNode}'s subtree, parsed by {@link EasyFirstParser}, for certain dominated words. 

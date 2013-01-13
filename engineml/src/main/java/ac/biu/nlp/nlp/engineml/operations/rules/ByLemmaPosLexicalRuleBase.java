@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * A {@link LexicalRuleBase} which returns rule that match a given lemma-and-part-of-speech

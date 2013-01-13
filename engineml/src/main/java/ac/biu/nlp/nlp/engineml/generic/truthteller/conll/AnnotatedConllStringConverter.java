@@ -5,11 +5,12 @@ package ac.biu.nlp.nlp.engineml.generic.truthteller.conll;
 
 import java.util.Map;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.WildcardPartOfSpeech;
 
 /**
  * Implementation of {@link RuleConllStringConverter} that converts {@link ExtendedNode}s into CoNLL nodes with annotations

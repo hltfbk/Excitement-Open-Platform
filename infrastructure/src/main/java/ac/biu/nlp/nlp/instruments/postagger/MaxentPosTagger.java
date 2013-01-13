@@ -6,13 +6,13 @@ package ac.biu.nlp.nlp.instruments.postagger;
 import java.util.LinkedList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.ling.Sentence;
 import edu.stanford.nlp.ling.TaggedWord;
 import edu.stanford.nlp.ling.Word;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
  * A {@link PosTagger} implemented with  {@link edu.stanford.nlp.tagger.maxent.MaxentTagger} in {@code stanford-postagger-2008-09-28.jar}. 

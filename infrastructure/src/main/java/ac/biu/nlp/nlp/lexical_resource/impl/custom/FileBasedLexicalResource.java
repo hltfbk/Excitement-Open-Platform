@@ -3,11 +3,11 @@ package ac.biu.nlp.nlp.lexical_resource.impl.custom;
 import java.io.IOException;
 
 import eu.excitementproject.eop.common.datastructures.ValueSetMapFromStringCreator;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * <p>A lexical resource based on a two-column text-file. 

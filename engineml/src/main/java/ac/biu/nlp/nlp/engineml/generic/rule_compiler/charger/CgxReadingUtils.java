@@ -7,6 +7,12 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.RuleType;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
@@ -15,11 +21,6 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDependencyException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.SyntacticInfo;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-import ac.biu.nlp.nlp.representation.PennPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
-import ac.biu.nlp.nlp.representation.WildcardPartOfSpeech;
 
 /**
  * This class contains some static generic utilities for reading parameter values in CGX rule files

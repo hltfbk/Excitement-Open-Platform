@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
@@ -22,7 +23,6 @@ import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwnl.JwnlUtils;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * This class defines the interface for a wordnet lexical resource, and holds some of the implementation. The implementation here uses a

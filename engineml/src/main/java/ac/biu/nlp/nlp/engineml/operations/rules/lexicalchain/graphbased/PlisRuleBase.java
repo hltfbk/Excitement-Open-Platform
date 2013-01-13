@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 //import java.util.Vector;
 //
@@ -43,9 +44,6 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules
 //import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
 //import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
 //import ac.biu.nlp.nlp.instrumentscombination.TokenInfo;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
-//import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
-//import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 
 /**
  * A wrapper for {@link PLM}, a probabilistic lexical model, which provides 

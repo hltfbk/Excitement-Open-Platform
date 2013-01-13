@@ -3,6 +3,8 @@ package eu.excitementproject.eop.common.representation.parsetree;
 
 import java.io.Serializable;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+
 
 
 /**

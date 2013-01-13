@@ -3,7 +3,7 @@ package eu.excitementproject.eop.common.component.lexicalknowledge;
 import java.io.Serializable;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
-import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * <P> [DELETEME_LATER: Imported and extended from BIUTEE 2.4.1, with one modification - a field with TERuleRelation added ] </P> 

@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
 
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * 

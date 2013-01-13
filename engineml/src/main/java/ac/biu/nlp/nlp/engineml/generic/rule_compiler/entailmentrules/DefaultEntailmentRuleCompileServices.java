@@ -3,6 +3,10 @@ package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules;
 import java.util.HashSet;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.CgxMultipleChoiceExpander;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.CgxReadingUtils;
@@ -21,9 +25,6 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyR
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.SyntacticInfo;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
-import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
-import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
 /**
  * Main implementation for {@link EntailmentRuleCompileServices}.<br>
  * Singleton

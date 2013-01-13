@@ -3,10 +3,10 @@
  */
 package ac.biu.nlp.nlp.engineml.utilities;
 
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.representation.WildcardPartOfSpeech;
 
 /**
  * If rhsInfo has a POS (not {@link WildcardPartOfSpeech}), copy it to treeInfo. Return treeInfo

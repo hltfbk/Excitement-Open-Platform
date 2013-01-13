@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 
 import ac.biu.nlp.nlp.engineml.representation.AdditionalInformationServices;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
@@ -15,7 +16,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
-import ac.biu.nlp.nlp.representation.CanonicalPosTag;
 
 
 /**

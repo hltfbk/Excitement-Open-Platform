@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.instrumentscombination;
 
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 
 /**

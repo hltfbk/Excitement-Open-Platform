@@ -1,5 +1,5 @@
 
-package eu.excitementproject.eop.common.representation.parsetree;
+package eu.excitementproject.eop.common.representation.partofspeech;
 
 
 

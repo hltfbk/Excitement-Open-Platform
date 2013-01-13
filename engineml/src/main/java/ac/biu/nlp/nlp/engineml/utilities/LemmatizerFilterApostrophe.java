@@ -2,11 +2,11 @@ package ac.biu.nlp.nlp.engineml.utilities;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import ac.biu.nlp.nlp.engineml.datastructures.SingleItemList;
 import ac.biu.nlp.nlp.instruments.lemmatizer.GateLemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
-import ac.biu.nlp.nlp.representation.PartOfSpeech;
 
 /**
  * This is a {@link Lemmatizer}, which wraps another lemmatizer, and returns exactly
