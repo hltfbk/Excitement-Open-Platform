@@ -39,10 +39,10 @@ public class SimplerPosTagConvertor
 				simplerCanonicalPosTag = SimplerCanonicalPosTag.DETERMINER;
 				break;
 			case CARD:
-				simplerCanonicalPosTag = SimplerCanonicalPosTag.ADJECTIVE;
+				simplerCanonicalPosTag = SimplerCanonicalPosTag.OTHER;
 				break;
 			case CONJ:
-				simplerCanonicalPosTag = SimplerCanonicalPosTag.OTHER;
+				simplerCanonicalPosTag = SimplerCanonicalPosTag.PREPOSITION;
 				break;
 			case N:
 				simplerCanonicalPosTag = SimplerCanonicalPosTag.NOUN;
