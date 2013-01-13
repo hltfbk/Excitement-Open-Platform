@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 /**
  * {@link GenerationOperation} in which the generic types are {@link ExtendedInfo}

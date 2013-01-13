@@ -4,6 +4,10 @@
 package ac.biu.nlp.nlp.engineml.utilities.view;
 import java.util.Map;
 
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.BasicAnnotationsGetFields;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.BasicRuleAnnotations;
@@ -11,9 +15,6 @@ import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeString;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 
 /**
  * Get an {@link AnnotationRule}'s mapping from {@link ExtendedNode}s to {@link AdditionalNodeInformation}s, and then in each call 

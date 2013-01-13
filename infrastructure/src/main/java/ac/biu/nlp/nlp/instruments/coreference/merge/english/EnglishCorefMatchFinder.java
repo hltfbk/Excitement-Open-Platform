@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.instruments.coreference.merge.english;
 
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.coreference.merge.CorefMatchFinder;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 
 public class EnglishCorefMatchFinder extends CorefMatchFinder<BasicNode>
 {

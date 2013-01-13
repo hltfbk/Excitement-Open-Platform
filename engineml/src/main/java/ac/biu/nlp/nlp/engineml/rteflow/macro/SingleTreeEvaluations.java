@@ -1,6 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.search.astar.GeneratedTreeStateCalculations;
@@ -8,7 +10,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.macro.search.local_creative.LocalCreative
 import ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_beam_search.BeamSearchTextTreesProcessor;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.AdvancedEqualities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 /**
  * Information about the "gap" between the given text-tree

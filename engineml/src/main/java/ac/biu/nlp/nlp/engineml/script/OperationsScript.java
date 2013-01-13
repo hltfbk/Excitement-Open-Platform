@@ -15,13 +15,13 @@ import ac.biu.nlp.nlp.engineml.plugin.InstanceBasedPlugin;
 import ac.biu.nlp.nlp.engineml.plugin.Plugin;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeAndFeatureVector;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 /**
  * Defines the operations and their ordering that are involved in constructing a proof.

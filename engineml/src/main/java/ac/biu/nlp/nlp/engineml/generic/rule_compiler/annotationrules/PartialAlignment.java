@@ -2,9 +2,9 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.RuleAnnotations;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**
  * This generic class represents a partial alignment arrow in a Cgx file. It has:

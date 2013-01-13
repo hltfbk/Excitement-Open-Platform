@@ -1,12 +1,12 @@
 package ac.biu.nlp.nlp.engineml.representation;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.NegationAndUncertainty;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
 import ac.biu.nlp.nlp.engineml.representation.srl.SemanticRoleLabelSet;
 import ac.biu.nlp.nlp.engineml.representation.srl.SrlPredicateId;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 
 /**
  * Easy get the fields of {@link ExtendedInfo}, {@link AnnotatedNodeInfo} and {@link EdgeInfo}, with no null

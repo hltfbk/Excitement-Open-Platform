@@ -1,4 +1,7 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro.perform;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.ChangeAnnotationFinder;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
@@ -13,9 +16,6 @@ import ac.biu.nlp.nlp.engineml.operations.updater.UpdaterForChangePredicateTruth
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 
 /**
  * 

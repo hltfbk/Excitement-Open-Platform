@@ -17,17 +17,17 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.InfoObservations;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbeddedMatcher;
+import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 

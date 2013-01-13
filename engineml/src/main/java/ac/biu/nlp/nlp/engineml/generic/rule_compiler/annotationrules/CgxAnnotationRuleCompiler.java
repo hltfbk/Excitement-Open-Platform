@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.Constants;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.CgxDomParser;
@@ -18,11 +24,6 @@ import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.RuleAnnotations;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.RuleType;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**
  * This class helps {@link AnnotationRuleCompiler} in compiling rule files into {@link AnnotationRule}s, by performing some operations specific to

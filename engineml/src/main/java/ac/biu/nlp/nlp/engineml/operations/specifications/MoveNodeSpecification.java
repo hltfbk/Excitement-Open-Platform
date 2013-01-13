@@ -2,12 +2,13 @@ package ac.biu.nlp.nlp.engineml.operations.specifications;
 import java.util.HashSet;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.parse.minipar.AbstractMiniparParser;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.NodePrintUtilities;
-import ac.biu.nlp.nlp.instruments.parse.minipar.AbstractMiniparParser;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 
 
 /**

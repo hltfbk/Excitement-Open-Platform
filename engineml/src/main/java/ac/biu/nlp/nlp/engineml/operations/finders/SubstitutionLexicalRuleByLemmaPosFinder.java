@@ -16,13 +16,13 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.AdvancedEqualities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.Equalities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultSyntacticInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultSyntacticInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
 
 

@@ -2,7 +2,8 @@ package ac.biu.nlp.nlp.instruments.ner.stanford;
 
 import java.util.HashMap;
 
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
+
 
 
 /**

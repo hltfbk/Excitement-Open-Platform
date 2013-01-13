@@ -8,8 +8,8 @@ import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseEnvelope;
 import ac.biu.nlp.nlp.engineml.plugin.Plugin;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 
 
 /**

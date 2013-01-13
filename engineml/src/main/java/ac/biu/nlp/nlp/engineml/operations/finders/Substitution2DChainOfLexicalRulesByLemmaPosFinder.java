@@ -8,9 +8,9 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.LexicalRuleWithName
 import ac.biu.nlp.nlp.engineml.operations.specifications.RuleSubstituteNodeSpecification;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
 /**
  * Finds lexical rules of type {@link ChainOfLexicalRules} that can be applied on the given tree and their right-hand-side

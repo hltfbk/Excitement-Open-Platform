@@ -27,18 +27,18 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.view.RulesViewer;
-import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
-import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.IdLemmaPosRelNodeString;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NoAntLemmaPosRelNodeAndEdgeString;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.ParserRunException;
+import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.IdLemmaPosRelNodeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NoAntLemmaPosRelNodeAndEdgeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeDotFileGenerator;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
+import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbeddedMatcher;
+import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 
 /**
  * Match rules using the engine's code, and print the matched trees to DOTs

@@ -21,11 +21,11 @@ import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.ScriptException;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.datastructures.Table;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 
 /**

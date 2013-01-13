@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeMap;
 
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
@@ -16,8 +19,6 @@ import ac.biu.nlp.nlp.instruments.coreference.merge.CorefMerger;
 import ac.biu.nlp.nlp.instruments.coreference.merge.CorefOperator;
 import ac.biu.nlp.nlp.instruments.coreference.merge.GenericCorefMerger;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 
 /**
  * Merges the output of a parser, with the output of a co-reference system.

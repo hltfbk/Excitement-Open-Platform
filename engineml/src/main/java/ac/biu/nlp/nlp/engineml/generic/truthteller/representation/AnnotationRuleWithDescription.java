@@ -1,8 +1,9 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller.representation;
 import java.io.Serializable;
 
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 
 /**
  * 

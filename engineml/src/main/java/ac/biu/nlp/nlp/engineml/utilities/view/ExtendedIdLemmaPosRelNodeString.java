@@ -2,11 +2,11 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.utilities.view;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeString;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeString;
 
 /**
  * A {@link NodeString} that produces string representations for {@link ExtendedNode}s like: 
@@ -20,7 +20,7 @@ public class ExtendedIdLemmaPosRelNodeString implements NodeString<ExtendedInfo>
 	/**
 	 * Returns a string representations for {@link ExtendedNode}s like: 
  * 		<code>id:lemma{X_8}/[NOUN]/<dobj>/{predicateType}/{negation}/{clauseTruth}/{monotonicity}</code>
-	 * @see ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeString#getStringRepresentation()
+	 * @see eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeString#getStringRepresentation()
 	 */
 	public String getStringRepresentation()
 	{

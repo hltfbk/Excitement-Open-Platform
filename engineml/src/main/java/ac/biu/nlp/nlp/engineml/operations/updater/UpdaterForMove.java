@@ -12,8 +12,8 @@ import ac.biu.nlp.nlp.engineml.rteflow.macro.FeatureUpdate;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.PathFinder;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.PathInTree;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
 /**
  * 

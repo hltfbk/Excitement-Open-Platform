@@ -12,16 +12,16 @@ import ac.biu.nlp.nlp.instruments.ner.NamedEntityMergeServices;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityWord;
-import ac.biu.nlp.nlp.instruments.parse.BasicParser;
-import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.BasicParser;
+import eu.excitementproject.eop.common.representation.parse.ParserRunException;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.match.Matcher;
 
 /**

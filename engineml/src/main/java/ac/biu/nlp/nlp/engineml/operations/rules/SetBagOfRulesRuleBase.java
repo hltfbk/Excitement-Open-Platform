@@ -7,9 +7,9 @@ import java.io.ObjectInputStream;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 
 /**
  * 

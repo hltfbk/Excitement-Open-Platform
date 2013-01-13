@@ -4,8 +4,9 @@
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.conll;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 
 /**
  * Convert {@link AbstractNode}s to strings in CoNLL format

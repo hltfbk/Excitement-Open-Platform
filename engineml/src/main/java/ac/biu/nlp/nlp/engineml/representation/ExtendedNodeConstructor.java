@@ -1,9 +1,10 @@
 package ac.biu.nlp.nlp.engineml.representation;
 import java.util.List;
 
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeConstructor;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNodeConstructor;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeConstructor;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
+
 
 
 /**

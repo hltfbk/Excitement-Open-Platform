@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.engineml.script.HypothesisInformation;
 import ac.biu.nlp.nlp.engineml.script.OperationsScript;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 
 /**
  * 

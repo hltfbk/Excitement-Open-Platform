@@ -1,5 +1,5 @@
 package ac.biu.nlp.nlp.engineml.representation;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
 
 /**
  * 

@@ -15,17 +15,18 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalmw_utils.ListNodesToTree;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.RuleToString;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 
 /**
  * 
@@ -44,7 +45,7 @@ public class MultiWordNamedEntityUtils
 		ValueSetMap<BasicNode, List<BasicNode>> vsmNeInTree = mapNamedEntitiesFromTree(hypothesisTree);
 		for (BasicNode lhsNode : vsmNeInTree.keySet())
 		{
-			SimplerCanonicalPosTag pos = InfoGetFields.getCanonicalPartOfSpeech(lhsNode.getInfo());
+			SimplerCanonicalPosTag pos = SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(lhsNode.getInfo()));
 			if (pos!=null){ if (pos.equals(SimplerCanonicalPosTag.NOUN))
 			{
 				for (List<BasicNode> neList : vsmNeInTree.get(lhsNode))

@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_wrong_astar;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
@@ -9,7 +10,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 /**
  * 

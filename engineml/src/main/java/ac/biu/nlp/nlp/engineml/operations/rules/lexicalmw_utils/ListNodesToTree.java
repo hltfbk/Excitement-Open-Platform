@@ -3,7 +3,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+
 
 
 /**

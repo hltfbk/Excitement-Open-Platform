@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
@@ -16,7 +18,6 @@ import ac.biu.nlp.nlp.instruments.coreference.bart.BartCoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.merge.CorefMergeException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 import ac.biu.nlp.nlp.instruments.coreference.merge.english.EnglishCorefMerger;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 
 /**
  * A naive resolver, returning union of Arkref's ({@link ArkrefClient}) and BART's ({@link BartClient}) outputs. See their

@@ -1,11 +1,11 @@
 package ac.biu.nlp.nlp.engineml.utilities.rules;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.engineml.utilities.InfoServices;
 import ac.biu.nlp.nlp.engineml.utilities.InfoServicesUtils;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 
 /**
  * Used for the instantiation of rules' right-hand-sides.

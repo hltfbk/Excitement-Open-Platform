@@ -1,13 +1,13 @@
 package ac.biu.nlp.nlp.engineml.alignment;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.USE_ADVANCED_EQUALITIES;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.Constants;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.AdvancedEqualities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.ContentAncestorSetter;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.Equalities;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 /**
  * The actual {@link AlignmentCriteria} used by the system.

@@ -12,11 +12,11 @@ import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompileServices;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.PairSet;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.datastructures.Pair;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 
 /**
  * This class contains some static generic utilities helpful for building an entailment/annotation rule

@@ -8,11 +8,11 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNodeConstructo
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier.InfoConverter;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier.InfoConverter;
 
 /**
  * 

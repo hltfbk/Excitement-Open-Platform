@@ -8,11 +8,11 @@ import org.apache.log4j.Logger;
 
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.EnglishSingleTreeParser;
-import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
-import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
-import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparClientParser;
-import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparParser;
+import eu.excitementproject.eop.common.representation.parse.EnglishSingleTreeParser;
+import eu.excitementproject.eop.common.representation.parse.ParserRunException;
+import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
+import eu.excitementproject.eop.common.representation.parse.minipar.MiniparClientParser;
+import eu.excitementproject.eop.common.representation.parse.minipar.MiniparParser;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 

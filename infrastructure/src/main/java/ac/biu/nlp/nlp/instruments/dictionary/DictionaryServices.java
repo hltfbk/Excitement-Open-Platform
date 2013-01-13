@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.instruments.dictionary;
 
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.BurstPartOfSpeechType;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.BurstPartOfSpeechType;
 
 /**
  * This interface is not yet implemented, and is a candidate for

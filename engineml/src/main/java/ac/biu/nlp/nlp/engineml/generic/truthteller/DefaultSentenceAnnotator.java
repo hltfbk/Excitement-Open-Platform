@@ -25,10 +25,10 @@ import ac.biu.nlp.nlp.engineml.representation.annotations.PredTruth;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedConstructionRulesViewer;
 import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedRulesViewer;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier.InfoConverter;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier.InfoConverter;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 

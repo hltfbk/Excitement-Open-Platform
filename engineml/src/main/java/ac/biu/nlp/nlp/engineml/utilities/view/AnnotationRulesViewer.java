@@ -3,13 +3,14 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRuleWithDescription;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.BasicRuleAnnotations;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 
 /**
  * To be used with {@link AnnotationNodeString}

@@ -5,9 +5,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 
 /**

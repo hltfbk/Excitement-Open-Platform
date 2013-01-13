@@ -1,10 +1,10 @@
 package ac.biu.nlp.nlp.engineml.representation;
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteria;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultMatchCriteria;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.match.MatchCriteria;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 

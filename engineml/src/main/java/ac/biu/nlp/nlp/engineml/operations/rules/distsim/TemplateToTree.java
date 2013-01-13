@@ -6,18 +6,18 @@ import java.util.Set;
 
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations.PARSER;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultSyntacticInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultSyntacticInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DependencyRelation;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 

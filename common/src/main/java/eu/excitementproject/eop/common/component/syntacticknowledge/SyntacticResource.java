@@ -5,7 +5,7 @@ import java.util.List;
 import eu.excitementproject.eop.common.component.Component;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleMatch;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
-import eu.excitementproject.eop.common.representation.parsetree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 
 /**
  * A syntactic resource is a collection of syntactic rules. For syntactic rule collections, 

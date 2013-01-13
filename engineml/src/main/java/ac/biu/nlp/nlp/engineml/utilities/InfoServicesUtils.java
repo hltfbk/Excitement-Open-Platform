@@ -2,9 +2,9 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.utilities;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 /**

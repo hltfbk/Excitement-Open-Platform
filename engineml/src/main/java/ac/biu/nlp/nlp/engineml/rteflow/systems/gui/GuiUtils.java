@@ -12,10 +12,10 @@ import javax.imageio.ImageIO;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.NodePrintUtilities;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeAndEdgeString;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeAndEdgeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeDotFileGenerator;
 import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 

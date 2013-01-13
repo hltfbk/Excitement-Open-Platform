@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.representation;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeAndEdgeString;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeAndEdgeString;
 
 /**
  * {@link NodeAndEdgeString} with description about the strings.

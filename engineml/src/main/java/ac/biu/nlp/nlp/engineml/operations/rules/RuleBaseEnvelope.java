@@ -1,10 +1,11 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
 import java.util.LinkedHashSet;
 
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 import ac.biu.nlp.nlp.engineml.operations.rules.distsimnew.DirtDBRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
 import ac.biu.nlp.nlp.engineml.rteflow.micro.TreesGeneratorByOperations;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 
 /**

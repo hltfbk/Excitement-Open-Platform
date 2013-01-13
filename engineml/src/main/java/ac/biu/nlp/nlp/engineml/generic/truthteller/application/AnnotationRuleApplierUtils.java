@@ -16,10 +16,10 @@ import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbeddedMatcher;
+import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 
 /**
  * This class holds several static methods used by {@link DefaultAnnotationRuleApplier}

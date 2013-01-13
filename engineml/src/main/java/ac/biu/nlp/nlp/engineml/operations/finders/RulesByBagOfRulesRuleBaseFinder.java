@@ -11,12 +11,12 @@ import ac.biu.nlp.nlp.engineml.operations.specifications.RuleSpecification;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbeddedMatcher;
+import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 
 /**
  * This {@link Finder} returns a set of {@link RuleSpecification}s, based on the

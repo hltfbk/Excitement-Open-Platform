@@ -6,14 +6,15 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompileServices;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.CgxEntailmentRuleCompiler;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.RuleAnnotations;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**
  * An interface for dealing with the implementation details of interpreting the String values in annotation rule CGX/XML files,

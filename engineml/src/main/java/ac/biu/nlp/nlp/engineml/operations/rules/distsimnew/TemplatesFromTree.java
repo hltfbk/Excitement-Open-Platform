@@ -1,29 +1,10 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsimnew;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-//import java.util.HashSet;
-//import java.util.Hashtable;
-//import java.util.LinkedHashSet;
-//import java.util.LinkedList;
-//import java.util.List;
-//
-//import org.BIU.NLP.DIRT.binary.BinaryDIRTUtils;
-//import org.BIU.NLP.DIRT.binary.GraphPathExtractor;
-//import org.BIU.NLP.DIRT.binary.TemplateInstancesExtractor;
-//import org.BIU.NLP.DIRT.lexical.LexicalExtractor.LexicalElementInfo;
-//import org.BURST.NLP.TE.impl.Minipar.MiniparSentence;
-//import org.BURST.NLP.TE.rep.Edge;
-//import org.BURST.NLP.TE.rep.Node;
-//import org.BURST.NLP.TE.rep.Term.Type;
-//import org.BURST.NLP.TE.rep.Tree;
-//import org.BURST.NLP.TE.rep.TreeNode;
-//import org.BURST.NLP.rep.POS;
-//import org.BURST.NLP.utils.TreeUtils;
-//import org.BURST.v2bridge.BurstConvertException;
-//import org.BURST.v2bridge.GenericTreeToBurstSentence;
 
 /**
  * 

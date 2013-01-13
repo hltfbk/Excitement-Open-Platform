@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.engineml.representation;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeString;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
 
 /**
  * Used in {@link TreeStringGenerator} for {@link ExtendedNode}.

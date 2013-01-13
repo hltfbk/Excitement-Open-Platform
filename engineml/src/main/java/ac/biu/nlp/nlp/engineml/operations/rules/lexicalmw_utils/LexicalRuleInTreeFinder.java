@@ -11,18 +11,18 @@ import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfRulesWithConfidenceAndDescription;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultSyntacticInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultSyntacticInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DependencyRelation;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.Utils;
 
 

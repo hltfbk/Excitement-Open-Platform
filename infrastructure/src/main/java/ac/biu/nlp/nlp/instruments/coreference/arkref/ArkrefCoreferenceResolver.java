@@ -13,7 +13,7 @@ import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientEx
 import ac.biu.nlp.nlp.instruments.coreference.merge.CorefMergeException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 import ac.biu.nlp.nlp.instruments.coreference.merge.english.EnglishCorefMerger;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**

@@ -3,9 +3,9 @@
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.services;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
 
 /**
  * Meant to hold the information produced by a {@link TreeCopier}: A tree, a copied Tree, and the {@link BidirectionalMap}

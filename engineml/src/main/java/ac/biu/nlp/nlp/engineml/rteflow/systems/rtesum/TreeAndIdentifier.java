@@ -1,7 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
 import java.io.Serializable;
 
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 
 /**
  * 

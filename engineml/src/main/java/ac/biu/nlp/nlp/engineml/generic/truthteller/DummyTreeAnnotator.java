@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 
 /**
  * A "dummy" {@link SentenceAnnotator} that does no annotation, and

@@ -12,13 +12,13 @@ import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.RuleBuildingUtils;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils.PairSet;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.RuleType;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 
 /**
  * This class helps {@link EntailmentRuleCompiler} in compiling rule files into {@link Rule}s, by performing some operations specific to

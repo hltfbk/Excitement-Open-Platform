@@ -16,10 +16,10 @@ import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryPartOfSpeech;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionarySense;
-import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import de.tudarmstadt.ukp.wiktionary.api.Language;
 import de.tudarmstadt.ukp.wiktionary.api.Wiktionary;
 import de.tudarmstadt.ukp.wiktionary.api.WordEntry;
+import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 
 
 /**

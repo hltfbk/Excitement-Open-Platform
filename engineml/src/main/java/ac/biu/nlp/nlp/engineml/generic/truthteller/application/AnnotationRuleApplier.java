@@ -2,11 +2,11 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ClauseTruthAnnotationRuleApplier;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
 
 /**
  * This is a common interface for all classes that apply a single annotation rule on a tree, 

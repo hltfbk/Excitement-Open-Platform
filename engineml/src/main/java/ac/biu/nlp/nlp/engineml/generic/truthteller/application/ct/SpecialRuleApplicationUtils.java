@@ -9,10 +9,10 @@ import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.minipar.AbstractMiniparParser;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.minipar.AbstractMiniparParser;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 

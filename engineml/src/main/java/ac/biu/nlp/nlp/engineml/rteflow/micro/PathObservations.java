@@ -12,9 +12,9 @@ import ac.biu.nlp.nlp.engineml.utilities.InfoObservations;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.PathInTree;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations.PARSER;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
 /**
  * This class contains several static methods that give information about a path

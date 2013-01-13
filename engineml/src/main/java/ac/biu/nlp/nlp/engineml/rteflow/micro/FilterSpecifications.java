@@ -2,6 +2,8 @@ package ac.biu.nlp.nlp.engineml.rteflow.micro;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
@@ -15,7 +17,6 @@ import ac.biu.nlp.nlp.engineml.operations.specifications.SubstituteNodeSpecifica
 import ac.biu.nlp.nlp.engineml.operations.specifications.SubstitutionSubtreeSpecification;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 
 /**
  * Given a set of {@link Specification}s and a set of "affected nodes", this class

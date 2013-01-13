@@ -7,10 +7,10 @@ import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
-import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
 
 /**

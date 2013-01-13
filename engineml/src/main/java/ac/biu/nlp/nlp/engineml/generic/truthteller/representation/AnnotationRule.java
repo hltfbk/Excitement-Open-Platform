@@ -2,10 +2,11 @@ package ac.biu.nlp.nlp.engineml.generic.truthteller.representation;
 import java.io.Serializable;
 import java.util.Map;
 
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**
  * A Rule is:

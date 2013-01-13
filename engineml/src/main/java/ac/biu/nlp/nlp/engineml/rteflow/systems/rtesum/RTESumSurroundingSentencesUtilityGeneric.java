@@ -5,8 +5,8 @@ import java.util.Map;
 
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.GenericPreprocessedTopicDataSet;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaData;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 

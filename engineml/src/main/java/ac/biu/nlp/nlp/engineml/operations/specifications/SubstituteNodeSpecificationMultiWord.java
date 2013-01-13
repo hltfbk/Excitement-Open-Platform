@@ -1,9 +1,10 @@
 package ac.biu.nlp.nlp.engineml.operations.specifications;
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 
 
 /**

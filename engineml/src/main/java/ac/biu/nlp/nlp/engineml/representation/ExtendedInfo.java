@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.engineml.representation;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
 
 /**
  * 

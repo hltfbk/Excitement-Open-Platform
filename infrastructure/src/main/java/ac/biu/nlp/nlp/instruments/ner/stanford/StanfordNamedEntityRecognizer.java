@@ -10,12 +10,12 @@ import ac.biu.nlp.nlp.instruments.ner.NamedEntityPhrase;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityWord;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 import edu.stanford.nlp.ie.crf.CRFClassifier;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.Word;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
 
 
 

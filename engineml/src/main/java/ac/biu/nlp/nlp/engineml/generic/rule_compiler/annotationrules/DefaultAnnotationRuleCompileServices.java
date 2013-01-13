@@ -25,11 +25,11 @@ import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.NegationAndUncertainty;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.SyntacticInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DependencyRelation;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
 import eu.excitementproject.eop.common.utilities.Utils;
 
 /**

@@ -2,11 +2,11 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**
  * An interface for some utility methods that help compile both {@link Rule}s and {@link AnnotationRule}s, out of CGX/XML files. The implementations are supposed to 

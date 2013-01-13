@@ -3,7 +3,8 @@ package ac.biu.nlp.nlp.instruments.ner;
 import java.util.List;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
+
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 

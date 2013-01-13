@@ -2,15 +2,16 @@ package ac.biu.nlp.nlp.instruments.factory;
 
 import java.io.File;
 
+import eu.excitementproject.eop.common.representation.parse.BasicParser;
+import eu.excitementproject.eop.common.representation.parse.ParserRunException;
+import eu.excitementproject.eop.common.representation.parse.minipar.MiniparParser;
+
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.ext_jwnl.ExtJwnlDictionary;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import ac.biu.nlp.nlp.instruments.ner.stanford.StanfordNamedEntityRecognizer;
-import ac.biu.nlp.nlp.instruments.parse.BasicParser;
-import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
-import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparParser;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.nagel.NagelSentenceSplitter;

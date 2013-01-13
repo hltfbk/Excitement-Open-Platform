@@ -1,7 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
+
 
 /**
  * A marker for rule bases that should be applied only on nodes that

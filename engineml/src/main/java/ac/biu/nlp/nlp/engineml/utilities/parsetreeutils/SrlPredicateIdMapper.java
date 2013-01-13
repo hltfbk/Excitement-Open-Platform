@@ -2,11 +2,12 @@ package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.srl.SrlPredicateId;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 
 /**
  * 

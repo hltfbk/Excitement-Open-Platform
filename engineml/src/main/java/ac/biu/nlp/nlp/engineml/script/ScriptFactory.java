@@ -3,8 +3,8 @@ import org.apache.log4j.Logger;
 
 import ac.biu.nlp.nlp.engineml.plugin.PluginRegistry;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.DefaultOperationScript;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 /**

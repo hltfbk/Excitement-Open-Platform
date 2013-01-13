@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.conll.RuleConllStringConverter;
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**

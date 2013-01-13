@@ -2,13 +2,13 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeAndEdgeString;
 import ac.biu.nlp.nlp.engineml.representation.AnnotatedExtendedNodeAndEdgeString;
 import ac.biu.nlp.nlp.engineml.representation.AnnotatedLemmaPosExtendedNodeAndEdgeString;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedLemmaPosNodeAndEdgeString;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeNodeAndEdgeString;
 import ac.biu.nlp.nlp.engineml.representation.NodeAndEdgeStringWithDescription;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeAndEdgeString;
 
 /**
  * Indicates what will be printed on each node of a parse-tree in the Visual-Tracing-Tool.

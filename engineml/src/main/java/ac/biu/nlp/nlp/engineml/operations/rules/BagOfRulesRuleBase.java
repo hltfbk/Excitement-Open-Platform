@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 
 /**
  * A rule base which contains all the rules with no particular structure.

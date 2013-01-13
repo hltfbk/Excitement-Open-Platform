@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.rteflow.document_sublayer;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
-import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 /**
  * 
