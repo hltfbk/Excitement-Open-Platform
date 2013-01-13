@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.wikipedia;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,17 +9,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
-
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 
 /**
@@ -127,8 +127,8 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 		if (leftLemma == null)	throw new LexicalResourceException("got null leftLemma");
 		if (rightLemma == null)	throw new LexicalResourceException("got null rightLemma");
 		//Wiki supports only nouns. pos can be null
-		if(leftPos  != null && !CanonicalPosTag.NOUN.equals( leftPos.getCanonicalPosTag())) 	return new Vector<LexicalRule<? extends WikiRuleInfo>>();
-		if(rightPos != null && !CanonicalPosTag.NOUN.equals(rightPos.getCanonicalPosTag())) 	return new Vector<LexicalRule<? extends WikiRuleInfo>>();
+		if(leftPos  != null && !SimplerCanonicalPosTag.NOUN.equals( simplerPos(leftPos.getCanonicalPosTag()))) 	return new Vector<LexicalRule<? extends WikiRuleInfo>>();
+		if(rightPos != null && !SimplerCanonicalPosTag.NOUN.equals(simplerPos(rightPos.getCanonicalPosTag()))) 	return new Vector<LexicalRule<? extends WikiRuleInfo>>();
 		
 		List<LexicalRule<? extends WikiRuleInfo>> rules = wikiDbServices.getRulesFromDb(leftLemma, rightLemma);
 		filterRules(rules, false);
@@ -148,7 +148,7 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 		if (lemma == null)
 			throw new LexicalResourceException("got null lemma");
 		//Wiki supports only nouns. pos can be null
-		if(pos != null && !CanonicalPosTag.NOUN.equals(pos.getCanonicalPosTag()))
+		if(pos != null && !SimplerCanonicalPosTag.NOUN.equals(simplerPos(pos.getCanonicalPosTag())))
 			return new Vector<LexicalRule<? extends WikiRuleInfo>>();
 		//		avoid rules with a stop word as one of their sides
 		if (STOP_WORDS.contains(lemma))

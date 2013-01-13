@@ -1,14 +1,8 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
-
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
-
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
@@ -32,6 +26,9 @@ import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.IdLemmaPosRelNodeString;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 
 /**

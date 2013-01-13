@@ -1,14 +1,12 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import ac.biu.nlp.nlp.engineml.codeannotations.Workaround;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-
-import ac.biu.nlp.nlp.engineml.codeannotations.Workaround;
 
 /**
  * A temporary class that handles sentences that make pre-processing

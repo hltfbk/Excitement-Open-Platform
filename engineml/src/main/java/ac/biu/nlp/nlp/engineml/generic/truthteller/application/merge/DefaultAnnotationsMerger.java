@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge;
-
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationValueException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.BasicRuleAnnotations;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalInformationServices;

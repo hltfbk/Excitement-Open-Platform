@@ -1,12 +1,8 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests.old_small_tests;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.alignment.DefaultAlignmentCriteria;
@@ -33,6 +29,8 @@ import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapEx
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 public class DemoOntheflyWithAdvancedEqualities
 {

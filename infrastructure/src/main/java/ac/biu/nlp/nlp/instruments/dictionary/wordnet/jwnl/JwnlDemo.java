@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwnl;
-
 import java.io.File;
 import java.util.List;
 import java.util.Map;

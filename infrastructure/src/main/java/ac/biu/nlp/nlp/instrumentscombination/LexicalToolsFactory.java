@@ -6,9 +6,6 @@ package ac.biu.nlp.nlp.instrumentscombination;
 import java.io.File;
 import java.net.MalformedURLException;
 
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.instruments.lemmatizer.GateLemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
@@ -22,6 +19,8 @@ import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
 import ac.biu.nlp.nlp.instruments.tokenizer.MaxentTokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * A factory for {@link Tokenizer}, {@link PosTagger}, {@link Lemmatizer} and {@link NamedEntityRecognizer}.

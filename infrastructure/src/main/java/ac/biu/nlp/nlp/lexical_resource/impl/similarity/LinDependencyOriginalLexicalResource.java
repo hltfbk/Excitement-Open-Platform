@@ -2,6 +2,7 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,11 +10,10 @@ import java.sql.PreparedStatement;
 import java.util.HashSet;
 import java.util.Set;
 
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 
 /**
  * <b>Resource name</b>: Dekang Lin's dependency-based thesaurus.<br>
@@ -177,7 +177,7 @@ public class LinDependencyOriginalLexicalResource extends AbstractSimilarityLexi
 		{
 			if (pos == null)
 				return SET_OF_ALL_RIGHT_STMTS;
-			switch (pos.getCanonicalPosTag())
+			switch (simplerPos(pos.getCanonicalPosTag()))
 			{
 			case NOUN:
 				return SET_OF_RIGHT_STMT_NOUN;
@@ -193,7 +193,7 @@ public class LinDependencyOriginalLexicalResource extends AbstractSimilarityLexi
 		{
 			if (pos == null)
 				return SET_OF_ALL_LEFT_STMTS;
-			switch (pos.getCanonicalPosTag())
+			switch (simplerPos(pos.getCanonicalPosTag()))
 			{
 			case NOUN:
 				return SET_OF_LEFT_STMT_NOUN;
@@ -216,7 +216,7 @@ public class LinDependencyOriginalLexicalResource extends AbstractSimilarityLexi
 	{
 		if (pos == null)
 			return SET_OF_ALL_SCORES_STMTS;
-		switch (pos.getCanonicalPosTag())
+		switch (simplerPos(pos.getCanonicalPosTag()))
 		{
 			case NOUN:
 				return SET_OF_SCORES_STMT_NOUN;

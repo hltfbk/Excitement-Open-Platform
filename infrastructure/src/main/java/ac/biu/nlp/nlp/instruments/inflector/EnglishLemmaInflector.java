@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.instruments.inflector;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,10 +9,9 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-
 import ac.biu.nlp.nlp.instruments.inflector.Inflection.InflectionType;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * This class accepts a verb/noun lemma and returns all its inflections, according to the regular English inflection conventions, 
@@ -101,11 +101,11 @@ public class EnglishLemmaInflector
 		Vector<Inflection> inflections =  new Vector<Inflection>();
 		
 		String lemmaPhrase = token.getToken();
-		CanonicalPosTag pos = token.getPartOfSpeech().getCanonicalPosTag();
+		SimplerCanonicalPosTag pos = simplerPos(token.getPartOfSpeech().getCanonicalPosTag());
 		
-		if(pos == CanonicalPosTag.NOUN)
+		if(pos == SimplerCanonicalPosTag.NOUN)
 			inflections = inflectNoun(lemmaPhrase, nouns);
-		else if (pos == CanonicalPosTag.VERB && lemmaPhrase.length() >= 2)
+		else if (pos == SimplerCanonicalPosTag.VERB && lemmaPhrase.length() >= 2)
 			inflections = inflectVerb(lemmaPhrase.toLowerCase(), verbs);
 		// else return empty list
 		
@@ -130,7 +130,7 @@ public class EnglishLemmaInflector
 		Vector<String> retQueryInflections = new Vector<String>();
 		
 		String phrase = token.getToken();
-		switch (token.getPartOfSpeech().getCanonicalPosTag())
+		switch (simplerPos(token.getPartOfSpeech().getCanonicalPosTag()))
 		{
 			case NOUN:
 				String lastWord = phrase.substring( phrase.lastIndexOf(SPACE) + 1);

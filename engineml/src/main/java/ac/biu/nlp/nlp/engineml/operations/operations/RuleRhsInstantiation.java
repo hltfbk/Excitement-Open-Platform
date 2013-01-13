@@ -1,12 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
@@ -15,6 +11,8 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeConstructor;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 
 /**

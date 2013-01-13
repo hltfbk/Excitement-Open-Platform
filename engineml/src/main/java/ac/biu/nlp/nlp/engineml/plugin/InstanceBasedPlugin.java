@@ -1,12 +1,10 @@
 package ac.biu.nlp.nlp.engineml.plugin;
-
 import java.util.List;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 
 /**
  * An instance based plug-in is a plug-in which can be initialized for each

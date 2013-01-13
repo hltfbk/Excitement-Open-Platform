@@ -2,15 +2,16 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.conll;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.Map;
 
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
-
+import ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.conll.RuleConllStringConverter;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 /**
  * Implementation of {@link RuleConllStringConverter} that converts {@link ExtendedNode}s into CoNLL nodes with annotations
@@ -57,7 +58,7 @@ public class AnnotatedConllStringConverter implements TreeConllStringConverter<E
 			lemma = UNDERSCORE;
 		PartOfSpeech pos = ExtendedInfoGetFields.getPartOfSpeechObject(info);
 		String canonicalPos = WildcardPartOfSpeech.isWildCardPOS(pos) ? pos.getStringRepresentation() :
-				pos != null ? pos.getCanonicalPosTag().name() : UNDERSCORE;
+				pos != null ? simplerPos(pos.getCanonicalPosTag()).name() : UNDERSCORE;
 		int antecedentId = mapNodeToId.get(antecedent);
 		String relation = antecedentId == ROOT_ID ? ROOT : ExtendedInfoGetFields.getRelation(info, ROOT);
 		String signature = ExtendedInfoGetFields.getPredicateSignature(info, UNDERSCORE);

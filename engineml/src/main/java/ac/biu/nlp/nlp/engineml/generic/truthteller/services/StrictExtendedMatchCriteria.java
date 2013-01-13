@@ -2,9 +2,7 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.services;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
@@ -13,6 +11,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteri
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 /**
  * Compares {@link ExtendedInfo}s. To be used for comparing trees and other exact match scenarios, where any difference between 
@@ -125,7 +125,7 @@ public class StrictExtendedMatchCriteria<TM extends ExtendedInfo,TT extends Exte
 	{
 		return (WildcardPartOfSpeech.isWildCardPOS(rulePartOfSpeech) 
 				|| 
-				textPartOfSpeech.getCanonicalPosTag()==rulePartOfSpeech.getCanonicalPosTag()
+				simplerPos(textPartOfSpeech.getCanonicalPosTag())==simplerPos(rulePartOfSpeech.getCanonicalPosTag())
 				);
 	}
 

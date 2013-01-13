@@ -1,12 +1,9 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCalculator;
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
@@ -35,6 +32,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 /**
  * 

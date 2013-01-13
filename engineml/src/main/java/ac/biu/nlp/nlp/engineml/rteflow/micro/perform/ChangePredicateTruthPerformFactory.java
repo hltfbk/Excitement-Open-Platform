@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro.perform;
-
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.ChangeAnnotationFinder;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;

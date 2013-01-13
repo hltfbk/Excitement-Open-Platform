@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,18 +9,17 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 
 /**
@@ -74,9 +72,9 @@ public abstract class AbstractSimilarityLexicalResource extends LexicalResourceN
 	 */
 	public AbstractSimilarityLexicalResource(int limitOnRetrievedRules) throws LexicalResourceException {
 		try {
-			ADJECTIVE = new UnspecifiedPartOfSpeech(CanonicalPosTag.ADJECTIVE);
-			NOUN = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
-			VERB = new UnspecifiedPartOfSpeech(CanonicalPosTag.VERB);
+			ADJECTIVE = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
+			NOUN = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+			VERB = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB);
 		} catch (UnsupportedPosTagStringException e) {
 			throw new LexicalResourceException("Couldn't create UnspecifiedPartOfSpeech", e);
 		}

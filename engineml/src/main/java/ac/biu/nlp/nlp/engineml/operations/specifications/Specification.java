@@ -1,8 +1,7 @@
 package ac.biu.nlp.nlp.engineml.operations.specifications;
-
 import java.io.Serializable;
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;

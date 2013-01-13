@@ -1,11 +1,9 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.ext_jwnl;
-
 import java.io.File;
 import java.io.IOException;
 
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
-
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetInitializationException;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 
 

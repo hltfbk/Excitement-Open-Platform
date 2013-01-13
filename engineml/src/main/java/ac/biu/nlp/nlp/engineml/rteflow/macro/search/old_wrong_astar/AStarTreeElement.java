@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_wrong_astar;
-
 import java.util.Map;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;

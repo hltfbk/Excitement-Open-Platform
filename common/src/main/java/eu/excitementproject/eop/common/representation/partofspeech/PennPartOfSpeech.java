@@ -50,41 +50,41 @@ public class PennPartOfSpeech extends PartOfSpeech
 	static
 	{
 		// map between all canonical POSs and Penn POSs
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.VERB, PennPosTag.VB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.VERB, PennPosTag.VBD);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.VERB, PennPosTag.VBG);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.VERB, PennPosTag.VBN);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.VERB, PennPosTag.VBP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.VERB, PennPosTag.VBZ);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NOUN, PennPosTag.NN);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NOUN, PennPosTag.NNS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NOUN, PennPosTag.NNP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NOUN, PennPosTag.NNPS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJECTIVE, PennPosTag.JJ);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJECTIVE, PennPosTag.JJR);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJECTIVE, PennPosTag.JJS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.DETERMINER, PennPosTag.DT);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.DETERMINER, PennPosTag.WDT);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.DETERMINER, PennPosTag.PDT);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PRONOUN, PennPosTag.PRP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PRONOUN, PennPosTag.PRP$);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PRONOUN, PennPosTag.WP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PRONOUN, PennPosTag.WP$);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADVERB, PennPosTag.RB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADVERB, PennPosTag.RBR);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADVERB, PennPosTag.RBS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADVERB, PennPosTag.WRB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PREPOSITION, PennPosTag.CC);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PREPOSITION, PennPosTag.IN);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PREPOSITION, PennPosTag.RP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBD);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBG);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBN);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBZ);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.N, PennPosTag.NN);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.N, PennPosTag.NNS);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.N, PennPosTag.NNP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.N, PennPosTag.NNPS);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, PennPosTag.JJ);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, PennPosTag.JJR);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, PennPosTag.JJS);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.DT);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.WDT);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.PDT);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.PRP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.PRP$);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.WP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.WP$);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RBR);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RBS);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.WRB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.CC);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.IN);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.RP);
 			// particles, like not, infinitival to, anyway... see http://en.wikipedia.org/wiki/Grammatical_particle
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PREPOSITION, PennPosTag.TO);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNCTUATION, PennPosTag.PUNC);	// not a Penn Treebank pos-tag
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNCTUATION, PennPosTag.RCB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNCTUATION, PennPosTag.LCB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNCTUATION, PennPosTag.LRB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNCTUATION, PennPosTag.RRB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNCTUATION, PennPosTag.LS);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.TO);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.PUNC);	// not a Penn Treebank pos-tag
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.RCB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.LCB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.LRB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.RRB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.LS);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.OTHER, PennPosTag.SYM);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.OTHER, PennPosTag.SYM1);	// symbols not included in Penn Treebank SYM
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.OTHER, PennPosTag.CD);

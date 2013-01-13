@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsim;
-
 import ac.biu.nlp.nlp.engineml.utilities.BIUTEEBaseException;
 
 @SuppressWarnings("serial")

@@ -1,9 +1,8 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests.old_small_tests;
-
+import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
 
 public class DemoValueSetMap
 {
@@ -57,4 +56,3 @@ public class DemoValueSetMap
 	}
 
 }
-

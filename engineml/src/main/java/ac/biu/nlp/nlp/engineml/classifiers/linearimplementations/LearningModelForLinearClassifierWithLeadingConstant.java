@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.linearimplementations;
-
 import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessOrder;

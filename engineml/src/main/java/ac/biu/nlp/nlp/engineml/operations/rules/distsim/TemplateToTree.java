@@ -1,14 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsim;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
-import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
-import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations.PARSER;
@@ -22,6 +16,10 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 
 /**

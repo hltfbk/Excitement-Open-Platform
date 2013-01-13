@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import static javax.swing.SwingUtilities.invokeLater;
 
 import java.awt.Color;
@@ -45,16 +44,6 @@ import javax.swing.text.BadLocationException;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriterException;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
 import ac.biu.nlp.nlp.engineml.datastructures.SingleItemList;
@@ -84,6 +73,15 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriterException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
  * 

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
-
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 

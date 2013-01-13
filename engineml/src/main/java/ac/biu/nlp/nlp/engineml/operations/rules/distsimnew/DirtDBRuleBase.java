@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsimnew;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_DRIVER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_URL;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.LIMIT_NUMBER_OF_RULES;
@@ -20,20 +19,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.DummySet;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.utilities.Cache;
-import eu.excitementproject.eop.common.utilities.CacheFactory;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
@@ -49,6 +34,19 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.DummySet;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 
 /**

@@ -1,13 +1,13 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.ArrayList;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 
 /**
  * 
@@ -56,10 +56,10 @@ public class ChainOfRulesWithConfidenceAndDescription<I, S extends AbstractNode<
 			{
 				sb.append("[").append(
 						realLexicalRule.getRule().getLhsLemma()).append("/").append(
-								realLexicalRule.getRule().getLhsPos().getCanonicalPosTag().name()
+								simplerPos(realLexicalRule.getRule().getLhsPos().getCanonicalPosTag()).name()
 								).append("==>").append(
 										realLexicalRule.getRule().getRhsLemma()
-										).append("/").append(realLexicalRule.getRule().getRhsPos().getCanonicalPosTag().name()).append("] ");
+										).append("/").append(simplerPos(realLexicalRule.getRule().getRhsPos().getCanonicalPosTag()).name()).append("] ");
 			}
 			return sb.toString();
 		}

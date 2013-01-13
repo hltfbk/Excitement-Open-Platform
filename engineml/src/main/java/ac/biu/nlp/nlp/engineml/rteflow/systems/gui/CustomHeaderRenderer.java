@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;

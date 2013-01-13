@@ -2,6 +2,7 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,12 +11,11 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceCloseException;
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceCloseException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 
 /**
  * this abstract class implements most of {@link Direct1000LexicalResource} and {@link Direct200LexicalResource}, and  contains everything but the table names.
@@ -171,7 +171,7 @@ public abstract class AbstractDirectLexicalResource extends AbstractSimilarityLe
 		{
 			if (pos == null)	// wildcard POS
 				return ALL_RULES_FOR_RIGHT_STMTS;
-			switch (pos.getCanonicalPosTag())
+			switch (simplerPos(pos.getCanonicalPosTag()))
 				{
 				case NOUN:
 					return RULES_FOR_RIGHT_STMT_NOUN;
@@ -185,7 +185,7 @@ public abstract class AbstractDirectLexicalResource extends AbstractSimilarityLe
 		{
 			if (pos == null)	// wildcard POS
 				return ALL_RULES_FOR_LEFT_STMTS;
-			switch (pos.getCanonicalPosTag())
+			switch (simplerPos(pos.getCanonicalPosTag()))
 				{
 				case NOUN:
 					return RULES_FOR_LEFT_STMT_NOUN;
@@ -206,7 +206,7 @@ public abstract class AbstractDirectLexicalResource extends AbstractSimilarityLe
 	{
 		if (pos == null)
 			return ALL_SCORES_STMTS;
-		switch (pos.getCanonicalPosTag())
+		switch (simplerPos(pos.getCanonicalPosTag()))
 		{
 			case NOUN:
 				return NOUN_SCORE_STMT_SET;

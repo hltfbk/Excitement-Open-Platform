@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wordnet;
-
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Synset;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;

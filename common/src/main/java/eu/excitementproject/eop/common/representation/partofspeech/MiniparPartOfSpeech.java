@@ -17,21 +17,21 @@ public class MiniparPartOfSpeech extends PartOfSpeech
 	static
 	{
 		MINIPAR_POS_TAGS = new HashMap<String, CanonicalPosTag>();
-		MINIPAR_POS_TAGS.put("V",CanonicalPosTag.VERB);
-		MINIPAR_POS_TAGS.put("N",CanonicalPosTag.NOUN);
+		MINIPAR_POS_TAGS.put("V",CanonicalPosTag.V);
+		MINIPAR_POS_TAGS.put("N",CanonicalPosTag.N);
 		MINIPAR_POS_TAGS.put("Aux",CanonicalPosTag.OTHER);
 		MINIPAR_POS_TAGS.put("AUX",CanonicalPosTag.OTHER);
-		MINIPAR_POS_TAGS.put("VBE",CanonicalPosTag.VERB);
-		MINIPAR_POS_TAGS.put("A",CanonicalPosTag.ADJECTIVE);
-		MINIPAR_POS_TAGS.put("Det",CanonicalPosTag.DETERMINER);
-		MINIPAR_POS_TAGS.put("det",CanonicalPosTag.DETERMINER);
-		MINIPAR_POS_TAGS.put("DET",CanonicalPosTag.DETERMINER);
-		MINIPAR_POS_TAGS.put("PostDet",CanonicalPosTag.DETERMINER);
-		MINIPAR_POS_TAGS.put("PreDet",CanonicalPosTag.DETERMINER);
-		MINIPAR_POS_TAGS.put("Prep",CanonicalPosTag.PREPOSITION);
-		MINIPAR_POS_TAGS.put("prep",CanonicalPosTag.PREPOSITION);
-		MINIPAR_POS_TAGS.put("PREP",CanonicalPosTag.PREPOSITION);
-		MINIPAR_POS_TAGS.put("PpSpec",CanonicalPosTag.PREPOSITION);
+		MINIPAR_POS_TAGS.put("VBE",CanonicalPosTag.V);
+		MINIPAR_POS_TAGS.put("A",CanonicalPosTag.ADJ);
+		MINIPAR_POS_TAGS.put("Det",CanonicalPosTag.ART);
+		MINIPAR_POS_TAGS.put("det",CanonicalPosTag.ART);
+		MINIPAR_POS_TAGS.put("DET",CanonicalPosTag.ART);
+		MINIPAR_POS_TAGS.put("PostDet",CanonicalPosTag.ART);
+		MINIPAR_POS_TAGS.put("PreDet",CanonicalPosTag.ART);
+		MINIPAR_POS_TAGS.put("Prep",CanonicalPosTag.PP);
+		MINIPAR_POS_TAGS.put("prep",CanonicalPosTag.PP);
+		MINIPAR_POS_TAGS.put("PREP",CanonicalPosTag.PP);
+		MINIPAR_POS_TAGS.put("PpSpec",CanonicalPosTag.PP);
 		MINIPAR_POS_TAGS.put("U",CanonicalPosTag.OTHER);
 		MINIPAR_POS_TAGS.put("",CanonicalPosTag.OTHER);
 		MINIPAR_POS_TAGS.put(" ",CanonicalPosTag.OTHER);

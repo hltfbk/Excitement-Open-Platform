@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import javax.swing.JCheckBoxMenuItem;
 
 /**

@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
@@ -18,9 +20,7 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-
-import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * A collection of utilities for data-structures.
@@ -91,7 +91,7 @@ public class DsUtils
 	 *
 	 * Returns <tt>true</tt> if and only if the given <code>set</code> contains
 	 * the given <code>lemmaAndPos</code>, ignoring the string representation
-	 * of its part-of-speech, but depending solely on its {@link CanonicalPosTag}.
+	 * of its part-of-speech, but depending solely on its {@link SimplerCanonicalPosTag}.
 	 * @param set
 	 * @param lemmaAndPos
 	 * @return
@@ -107,7 +107,7 @@ public class DsUtils
 	/**
 	 * Returns <tt>true</tt> if and only if the given <code>set</code> contains
 	 * the given <code>lemmaAndPos</code>, ignoring the string representation
-	 * of its part-of-speech, but depending solely on its {@link CanonicalPosTag}.
+	 * of its part-of-speech, but depending solely on its {@link SimplerCanonicalPosTag}.
 	 * @param set
 	 * @param lemmaAndPos
 	 * @return
@@ -122,7 +122,7 @@ public class DsUtils
 		{
 			if (lemmaAndPos.getLemma().equals(lemmaAndPosItem.getLemma()))
 			{
-				if (lemmaAndPos.getPartOfSpeech().getCanonicalPosTag()==lemmaAndPosItem.getPartOfSpeech().getCanonicalPosTag())
+				if (simplerPos(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag())==simplerPos(lemmaAndPosItem.getPartOfSpeech().getCanonicalPosTag()))
 				{
 					found = true;
 					break;

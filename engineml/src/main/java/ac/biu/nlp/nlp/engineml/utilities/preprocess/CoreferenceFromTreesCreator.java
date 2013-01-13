@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
-
 import java.util.Collection;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;

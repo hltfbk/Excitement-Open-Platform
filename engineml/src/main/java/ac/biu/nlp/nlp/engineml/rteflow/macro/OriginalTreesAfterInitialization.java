@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import java.util.List;
 import java.util.Map;
 

@@ -1,16 +1,16 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.custom;
-
 import java.util.Collection;
 
-import org.junit.*;
-
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
  * JUnit test for {@link ValueSetMapLexicalResource}
@@ -31,7 +31,7 @@ public class ValueSetMapLexicalResourceTest {
 		theMap.put("bird", "flyable");
 		
 		nounOcean = new ValueSetMapLexicalResource(
-				theMap,	CanonicalPosTag.NOUN,
+				theMap,	SimplerCanonicalPosTag.NOUN,
 				"DemoResource", "DemoRelation");
 	}
 
@@ -48,10 +48,10 @@ public class ValueSetMapLexicalResourceTest {
 
 	@Test public void test() throws LexicalResourceException, UnsupportedPosTagStringException {
 		assertCollection(nounOcean.getRulesForLeft("bird", null), 2);
-		assertCollection(nounOcean.getRulesForRight("animal", new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN)), 2);
+		assertCollection(nounOcean.getRulesForRight("animal", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)), 2);
 		assertCollection(nounOcean.getRules("bird", null, "animal", null), 1);
-		assertCollection(nounOcean.getRulesForLeft("bird", new UnspecifiedPartOfSpeech(CanonicalPosTag.VERB)), 0);
-		assertCollection(nounOcean.getRulesForLeft("cow", new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN)), 1);
+		assertCollection(nounOcean.getRulesForLeft("bird", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB)), 0);
+		assertCollection(nounOcean.getRulesForLeft("cow", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)), 1);
 		assertCollection(nounOcean.getRulesForRight("flyable", null), 1);
 	}
 	

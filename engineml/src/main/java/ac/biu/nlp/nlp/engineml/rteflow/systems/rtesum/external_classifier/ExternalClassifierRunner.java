@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.external_classifier;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +13,16 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
+import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
+import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
+import ac.biu.nlp.nlp.engineml.classifiers.dummy.DummyAllTrueClassifier;
+import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
+import ac.biu.nlp.nlp.engineml.classifiers.scaling.LinearScalingTrainableStorableClassifier;
+import ac.biu.nlp.nlp.engineml.classifiers.scaling.ScalingClassifier;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.RteSumSingleCandidateResult;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.SVMPerfNative;
@@ -25,17 +34,6 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersF
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileWriter;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-
-import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
-import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
-import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
-import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
-import ac.biu.nlp.nlp.engineml.classifiers.dummy.DummyAllTrueClassifier;
-import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
-import ac.biu.nlp.nlp.engineml.classifiers.scaling.LinearScalingTrainableStorableClassifier;
-import ac.biu.nlp.nlp.engineml.classifiers.scaling.ScalingClassifier;
-import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.RteSumSingleCandidateResult;
-import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 
 /**
  * No longer used.

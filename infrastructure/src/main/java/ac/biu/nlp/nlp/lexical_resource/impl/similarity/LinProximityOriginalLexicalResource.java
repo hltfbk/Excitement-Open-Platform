@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,14 +9,13 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 
 /**
  * <b>Resource name</b>: Dekang Lin's proximity-based thesaurus<br>
@@ -83,8 +81,8 @@ public class LinProximityOriginalLexicalResource extends AbstractSinglePosLexica
 		super(limitOnRetrievedRules);
 		
 		// DEFAULT_POS must be initialized first thing, cos subsequent statements read it
-		try 										{ DEFAULT_POS = new UnspecifiedPartOfSpeech(CanonicalPosTag.OTHER);	} 
-		catch (UnsupportedPosTagStringException e) 	{ throw new LexicalResourceException("Bug: couldn't construct a new UnspecifiedPartOfSpeech(CanonicalPosTag.OTHER)",e);		}
+		try 										{ DEFAULT_POS = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.OTHER);	} 
+		catch (UnsupportedPosTagStringException e) 	{ throw new LexicalResourceException("Bug: couldn't construct a new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.OTHER)",e);		}
 		
 		PreparedStatement getRulesForLeftStmt;
 		PreparedStatement getRulesForRightStmt;

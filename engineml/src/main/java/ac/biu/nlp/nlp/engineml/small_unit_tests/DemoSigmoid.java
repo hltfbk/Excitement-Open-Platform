@@ -1,12 +1,10 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
 /**
  * 

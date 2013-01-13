@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.ext_jwnl;
-
 import net.sf.extjwnl.data.POS;
 import net.sf.extjwnl.data.PointerType;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;

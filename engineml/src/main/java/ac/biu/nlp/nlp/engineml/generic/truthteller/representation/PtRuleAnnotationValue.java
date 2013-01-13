@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.representation;
-
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredTruth;
 
 /**

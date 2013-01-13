@@ -1,20 +1,18 @@
 package ac.biu.nlp.nlp.engineml.utilities;
-
 import java.util.Map;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-
-import ac.biu.nlp.nlp.engineml.classifiers.TrainableClassifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierFactory;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
+import ac.biu.nlp.nlp.engineml.classifiers.TrainableClassifier;
 import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.ScriptFactory;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamples;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 
 /**

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.representation.srl;
-
 import java.io.Serializable;
 import java.util.Set;
 
@@ -63,4 +62,3 @@ public class SemanticRoleLabelSet implements Serializable
 	private final ImmutableSet<SemanticRoleLabelByString> srlByString;
 	private final ImmutableSet<SemanticRoleLabelById> srlById;
 }
-

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.f1_logicstic_regression;
-
 import javax.xml.bind.annotation.XmlAccessOrder;
 import javax.xml.bind.annotation.XmlAccessorOrder;
 

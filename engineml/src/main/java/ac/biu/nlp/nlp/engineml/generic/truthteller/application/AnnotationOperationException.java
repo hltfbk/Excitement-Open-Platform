@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application;
-
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 
 /**

@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexical;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_DRIVER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_URL;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.LIMIT_NUMBER_OF_RULES;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,16 +12,15 @@ import java.sql.SQLException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCache;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * Lexical-resource of BAP - Directional Similarity.<BR>
@@ -111,9 +110,9 @@ public class BapFromDBLexicalRuleBase extends ByLemmaPosLexicalRuleBaseWithCache
 	private String tableNameByPos(PartOfSpeech pos)
 	{
 		String ret = null;
-		if (pos.getCanonicalPosTag()==CanonicalPosTag.VERB)
+		if (simplerPos(pos.getCanonicalPosTag())==SimplerCanonicalPosTag.VERB)
 			ret = "verbs_200";
-		else if (pos.getCanonicalPosTag()==CanonicalPosTag.NOUN)
+		else if (simplerPos(pos.getCanonicalPosTag())==SimplerCanonicalPosTag.NOUN)
 			ret = "nouns_200";
 		
 		return ret;

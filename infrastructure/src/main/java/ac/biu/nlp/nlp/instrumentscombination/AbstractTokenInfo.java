@@ -2,9 +2,8 @@ package ac.biu.nlp.nlp.instrumentscombination;
 
 import java.io.Serializable;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 
 /**

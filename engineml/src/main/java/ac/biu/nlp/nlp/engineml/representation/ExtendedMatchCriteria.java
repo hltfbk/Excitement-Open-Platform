@@ -1,12 +1,12 @@
 package ac.biu.nlp.nlp.engineml.representation;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteria;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 /**
  * @author Asher Stern
@@ -74,7 +74,7 @@ public class ExtendedMatchCriteria implements MatchCriteria<ExtendedInfo, Info, 
 	{
 		return (WildcardPartOfSpeech.isWildCardPOS(rulePartOfSpeech) 
 				|| 
-				textPartOfSpeech.getCanonicalPosTag()==rulePartOfSpeech.getCanonicalPosTag()
+				simplerPos(textPartOfSpeech.getCanonicalPosTag())==simplerPos(rulePartOfSpeech.getCanonicalPosTag())
 				);
 	}
 

@@ -1,12 +1,8 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
-
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 
 import ac.biu.nlp.nlp.engineml.representation.AdditionalInformationServices;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
@@ -16,6 +12,8 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 
 /**
@@ -63,14 +61,14 @@ public class ContentAncestorSetter
 		return setter.getGeneratedTree();
 	}
 	
-	public static final Set<CanonicalPosTag> contentPoses;
+	public static final Set<SimplerCanonicalPosTag> contentPoses;
 	static
 	{
-		contentPoses=new HashSet<CanonicalPosTag>();
-		contentPoses.add(CanonicalPosTag.VERB);
-		contentPoses.add(CanonicalPosTag.NOUN);
-		contentPoses.add(CanonicalPosTag.ADJECTIVE);
-		contentPoses.add(CanonicalPosTag.ADVERB);
+		contentPoses=new HashSet<SimplerCanonicalPosTag>();
+		contentPoses.add(SimplerCanonicalPosTag.VERB);
+		contentPoses.add(SimplerCanonicalPosTag.NOUN);
+		contentPoses.add(SimplerCanonicalPosTag.ADJECTIVE);
+		contentPoses.add(SimplerCanonicalPosTag.ADVERB);
 	}
 
 	// Constructor

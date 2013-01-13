@@ -1,14 +1,12 @@
 package ac.biu.nlp.nlp.engineml.classifiers.scaling;
-
 import java.util.Map;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlAccessOrder;
 import javax.xml.bind.annotation.XmlAccessorOrder;
 
-import eu.excitementproject.eop.common.datastructures.DummySet;
-
 import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
+import eu.excitementproject.eop.common.datastructures.DummySet;
 
 /**
  * 

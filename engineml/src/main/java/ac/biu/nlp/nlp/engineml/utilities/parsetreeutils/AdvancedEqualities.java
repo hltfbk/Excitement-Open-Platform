@@ -1,15 +1,10 @@
 
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCalculator;
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
@@ -21,6 +16,11 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 
 /**
@@ -57,8 +57,8 @@ public class AdvancedEqualities
 		String textLemma = InfoGetFields.getLemma(textNode);
 		String hypothesisLemma = InfoGetFields.getLemma(hypothesisNode);
 
-		CanonicalPosTag textPos = InfoGetFields.getPartOfSpeechObject(textNode).getCanonicalPosTag();
-		CanonicalPosTag hypothesisPos = InfoGetFields.getPartOfSpeechObject(hypothesisNode).getCanonicalPosTag();
+		SimplerCanonicalPosTag textPos = simplerPos(InfoGetFields.getPartOfSpeechObject(textNode).getCanonicalPosTag());
+		SimplerCanonicalPosTag hypothesisPos = simplerPos(InfoGetFields.getPartOfSpeechObject(hypothesisNode).getCanonicalPosTag());
 
 		if (lemmasEqual(textLemma, hypothesisLemma))
 		{

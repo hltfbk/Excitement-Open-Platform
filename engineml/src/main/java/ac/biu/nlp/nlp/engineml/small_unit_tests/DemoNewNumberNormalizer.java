@@ -1,14 +1,13 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_MODULE_NAME;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+import ac.biu.nlp.nlp.engineml.utilities.preprocess.NewNormalizerBasedTextPreProcessor;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.engineml.utilities.preprocess.NewNormalizerBasedTextPreProcessor;
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.*;
 
 public class DemoNewNumberNormalizer
 {

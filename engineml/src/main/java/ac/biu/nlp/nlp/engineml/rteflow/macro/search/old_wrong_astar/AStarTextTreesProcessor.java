@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_wrong_astar;
-
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -9,9 +8,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
@@ -39,6 +35,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 
 /**

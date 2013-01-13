@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_beam_search;
-
 import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeAndFeatureVector;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
@@ -79,4 +78,3 @@ public class TreeAndHistory
 	private final TreeAndFeatureVector tree;
 	private final TreeHistory history;
 }
-

@@ -1,15 +1,13 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.external_classifier;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.RteSumSingleCandidateResult;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
  * No longer used.

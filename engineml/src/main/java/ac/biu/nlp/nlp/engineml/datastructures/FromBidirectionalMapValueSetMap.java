@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
-
 import java.util.HashSet;
 import java.util.Set;
 

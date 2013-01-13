@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexical;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_DRIVER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_URL;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.LIMIT_NUMBER_OF_RULES;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,16 +16,15 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCache;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * TODO Hard Coded String 
@@ -101,9 +100,9 @@ public class LinDependencyFromDBLexicalRuleBase extends ByLemmaPosLexicalRuleBas
 		{
 			Set<LexicalRule> setRules = new LinkedHashSet<LexicalRule>();
 			
-			if (MAP_POS_TO_TABLE.get(lhsPos.getCanonicalPosTag())!=null)
+			if (MAP_POS_TO_TABLE.get(simplerPos(lhsPos.getCanonicalPosTag()))!=null)
 			{
-				PreparedStatement statement = connection.prepareStatement(MAP_POS_TO_TABLE.get(lhsPos.getCanonicalPosTag()));
+				PreparedStatement statement = connection.prepareStatement(MAP_POS_TO_TABLE.get(simplerPos(lhsPos.getCanonicalPosTag())));
 				statement.setString(1,lhsLemma);
 				statement.setInt(2, limitNumberOfRules);
 				
@@ -129,16 +128,16 @@ public class LinDependencyFromDBLexicalRuleBase extends ByLemmaPosLexicalRuleBas
 	
 	private Connection connection;
 	
-	private Map<CanonicalPosTag,String> MAP_POS_TO_TABLE;
+	private Map<SimplerCanonicalPosTag,String> MAP_POS_TO_TABLE;
 	
 	private void initMapPosToTable() throws SQLException
 	{
-		MAP_POS_TO_TABLE = new HashMap<CanonicalPosTag, String>();
+		MAP_POS_TO_TABLE = new HashMap<SimplerCanonicalPosTag, String>();
 		
-		MAP_POS_TO_TABLE.put(CanonicalPosTag.ADJECTIVE, QUERY_A);
-		MAP_POS_TO_TABLE.put(CanonicalPosTag.ADVERB, QUERY_A);
-		MAP_POS_TO_TABLE.put(CanonicalPosTag.VERB, QUERY_V);
-		MAP_POS_TO_TABLE.put(CanonicalPosTag.NOUN, QUERY_N);
+		MAP_POS_TO_TABLE.put(SimplerCanonicalPosTag.ADJECTIVE, QUERY_A);
+		MAP_POS_TO_TABLE.put(SimplerCanonicalPosTag.ADVERB, QUERY_A);
+		MAP_POS_TO_TABLE.put(SimplerCanonicalPosTag.VERB, QUERY_V);
+		MAP_POS_TO_TABLE.put(SimplerCanonicalPosTag.NOUN, QUERY_N);
 	}
 	
 	private int limitNumberOfRules = 0;

@@ -2,9 +2,7 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.services;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
@@ -12,6 +10,8 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteria;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 /**
  * Compare two nodes {@link ExtendedInfo}s, <b>ignore </b>their {@link AdditionalNodeInformation}s!
@@ -85,7 +85,7 @@ public class IgonreAdditionalInfoMatchCriteria implements MatchCriteria<Extended
 	{
 		return (WildcardPartOfSpeech.isWildCardPOS(rulePartOfSpeech) 
 				|| 
-				textPartOfSpeech.getCanonicalPosTag()==rulePartOfSpeech.getCanonicalPosTag()
+				simplerPos(textPartOfSpeech.getCanonicalPosTag())==simplerPos(rulePartOfSpeech.getCanonicalPosTag())
 				);
 	}
 

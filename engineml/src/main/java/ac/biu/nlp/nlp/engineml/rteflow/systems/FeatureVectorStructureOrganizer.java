@@ -1,6 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems;
-
-
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -8,10 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
 
 import ac.biu.nlp.nlp.engineml.datastructures.BooleanAndString;
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
@@ -24,6 +18,9 @@ import ac.biu.nlp.nlp.engineml.script.RuleBasesAndPluginsContainer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamples;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
+import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
 
 /**
  * Builds and stores the structure of the feature-vectors used in the system.

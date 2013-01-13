@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities;
-
 import ac.biu.nlp.nlp.engineml.operations.operations.RuleRhsInstantiation;
 
 /**
@@ -77,4 +76,3 @@ public interface InfoServices<IT, IR>
 	 */
 	public IT convertFromIR(IR info);
 }
-

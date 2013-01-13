@@ -3,6 +3,8 @@ package eu.excitementproject.eop.common.representation.partofspeech;
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 /**
  * This PartOfSpeech merely stores a {@link CanonicalPosTag}, but not a specific pos-tag-string.
  * 
@@ -40,6 +42,13 @@ public class UnspecifiedPartOfSpeech extends PartOfSpeech
 	{
 		this(canonicalPosTag.name());
 	}
+
+	public UnspecifiedPartOfSpeech(SimplerCanonicalPosTag simplerCanonicalPosTag) throws UnsupportedPosTagStringException
+	{
+		this(simplerCanonicalPosTag.name());
+	}
+
+	
 
 	@Override
 	public PartOfSpeech createNewPartOfSpeech(String posTagString) throws UnsupportedPosTagStringException

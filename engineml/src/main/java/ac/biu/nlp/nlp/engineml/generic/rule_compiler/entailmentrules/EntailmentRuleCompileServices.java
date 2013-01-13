@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules;
-
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompileServices;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

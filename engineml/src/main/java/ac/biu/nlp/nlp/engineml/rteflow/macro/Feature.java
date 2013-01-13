@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;

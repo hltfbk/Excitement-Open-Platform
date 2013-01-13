@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.catvar;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
@@ -17,7 +17,7 @@ final class WordAndPartOfSpeech
 	{
 		super();
 		this.word = word;
-		this.pos = ((null==pos)?new UnspecifiedPartOfSpeech(CanonicalPosTag.OTHER):pos);
+		this.pos = ((null==pos)?new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.OTHER):pos);
 	}
 	
 	public String getWord()
@@ -37,7 +37,7 @@ final class WordAndPartOfSpeech
 	{
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((pos.getCanonicalPosTag() == null) ? 0 : pos.getCanonicalPosTag().hashCode());
+		result = prime * result + ((simplerPos(pos.getCanonicalPosTag()) == null) ? 0 : simplerPos(pos.getCanonicalPosTag()).hashCode());
 		result = prime * result + ((word == null) ? 0 : word.hashCode());
 		return result;
 	}
@@ -52,11 +52,11 @@ final class WordAndPartOfSpeech
 		if (getClass() != obj.getClass())
 			return false;
 		WordAndPartOfSpeech other = (WordAndPartOfSpeech) obj;
-		if (pos.getCanonicalPosTag() == null)
+		if (simplerPos(pos.getCanonicalPosTag()) == null)
 		{
-			if (other.pos.getCanonicalPosTag() != null)
+			if (simplerPos(other.pos.getCanonicalPosTag()) != null)
 				return false;
-		} else if (!pos.getCanonicalPosTag().equals(other.pos.getCanonicalPosTag()))
+		} else if (!simplerPos(pos.getCanonicalPosTag()).equals(simplerPos(other.pos.getCanonicalPosTag())))
 			return false;
 		if (word == null)
 		{

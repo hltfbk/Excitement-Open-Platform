@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -10,9 +9,6 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
-import eu.excitementproject.eop.common.utilities.OS;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.NodePrintUtilities;
@@ -20,6 +16,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeAndEdgeString;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator;
+import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 /**
  * 
@@ -306,4 +304,3 @@ public class GuiUtils
 	
 	private ActionsPerformer actionsPerformer;
 }
-

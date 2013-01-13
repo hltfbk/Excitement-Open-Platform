@@ -1,10 +1,7 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct;
-
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
@@ -26,6 +23,7 @@ import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
 import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedConstructionRulesViewer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 
 /**
  * Get a {@link ExtendedConstructionNode} tree and annotate it with {@link ClauseTruth} and {@link PredTruth}

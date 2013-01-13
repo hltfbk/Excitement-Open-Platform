@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.hypothesis_normalize;
-
 import java.util.Vector;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;

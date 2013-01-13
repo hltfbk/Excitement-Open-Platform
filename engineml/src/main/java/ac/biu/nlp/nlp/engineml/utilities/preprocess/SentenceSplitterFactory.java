@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
-
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.nagel.NagelSentenceSplitter;
 

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -10,13 +9,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.linearimplementations.LogisticRegressionClassifier;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 
 /**

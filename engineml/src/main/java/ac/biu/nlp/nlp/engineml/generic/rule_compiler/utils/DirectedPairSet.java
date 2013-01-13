@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;

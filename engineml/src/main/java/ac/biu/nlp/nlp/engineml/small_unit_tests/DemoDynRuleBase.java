@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
@@ -7,15 +6,6 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.log4j.BasicConfigurator;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
 import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
@@ -28,6 +18,14 @@ import ac.biu.nlp.nlp.engineml.utilities.TimeElapsedTracker;
 import ac.biu.nlp.nlp.engineml.utilities.legacy.ExperimentLoggerNeutralizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 @Deprecated
 public class DemoDynRuleBase

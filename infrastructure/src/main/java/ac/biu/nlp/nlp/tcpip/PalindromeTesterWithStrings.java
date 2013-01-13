@@ -1,7 +1,8 @@
 package ac.biu.nlp.nlp.tcpip;
 
-import java.io.*;
-import java.net.*;
+import java.io.Console;
+import java.io.IOException;
+import java.net.UnknownHostException;
 
 /**
  * <p>A demo application. Reads your input and tests whether it's a palindrome.

@@ -1,15 +1,10 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.PreprocessUtilities;
@@ -29,6 +24,9 @@ import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
  * Used by {@link PairsPreProcessor} to make pre-processing for a single

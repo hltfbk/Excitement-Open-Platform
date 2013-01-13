@@ -1,12 +1,9 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
-
-
 import java.util.List;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * A version of {@link ChainOfLexicalRules} with mutable List.

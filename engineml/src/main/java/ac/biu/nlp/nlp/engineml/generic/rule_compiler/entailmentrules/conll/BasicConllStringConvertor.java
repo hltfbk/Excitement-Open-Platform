@@ -2,17 +2,16 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.conll;
-
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.Map;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.conll.TreeConllStringConverter;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 
 /**
@@ -49,7 +48,7 @@ public class BasicConllStringConvertor implements RuleConllStringConverter<Info,
 			lemma = UNDERSCORE;
 		PartOfSpeech pos = InfoGetFields.getPartOfSpeechObject(info);
 		String canonicalPos = WildcardPartOfSpeech.isWildCardPOS(pos) ? pos.getStringRepresentation() :
-				pos != null ? pos.getCanonicalPosTag().name() : UNDERSCORE;
+				pos != null ? simplerPos(pos.getCanonicalPosTag()).name() : UNDERSCORE;
 		int antecedentId = mapNodeToId.get(node.getAntecedent());
 		String relation = antecedentId == TreeConllStringConverter.ROOT_ID ? TreeConllStringConverter.ROOT : 
 			InfoGetFields.getRelation(info, TreeConllStringConverter.ROOT);

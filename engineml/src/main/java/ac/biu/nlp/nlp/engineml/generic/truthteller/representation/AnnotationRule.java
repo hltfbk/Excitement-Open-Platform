@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller.representation;
-
 import java.io.Serializable;
 import java.util.Map;
 

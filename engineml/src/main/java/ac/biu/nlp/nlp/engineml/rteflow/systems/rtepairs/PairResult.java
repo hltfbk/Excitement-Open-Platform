@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.io.Serializable;
 
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeAndFeatureVector;

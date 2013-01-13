@@ -1,6 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -9,10 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
@@ -31,6 +25,9 @@ import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationExceptio
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 
 /**
  * This is a base class for {@link RTEPairsSingleThreadTrainer} and

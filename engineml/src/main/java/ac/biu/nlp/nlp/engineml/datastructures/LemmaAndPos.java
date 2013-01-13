@@ -1,10 +1,8 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
-
 import java.io.Serializable;
 
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 
 /**

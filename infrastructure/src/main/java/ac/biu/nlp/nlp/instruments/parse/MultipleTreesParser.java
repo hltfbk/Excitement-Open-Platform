@@ -2,11 +2,10 @@ package ac.biu.nlp.nlp.instruments.parse;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * Generates multiple trees for a single sentence. The trees may be

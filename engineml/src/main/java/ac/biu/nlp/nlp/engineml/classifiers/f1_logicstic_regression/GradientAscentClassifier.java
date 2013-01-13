@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.f1_logicstic_regression;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,14 +7,13 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.datastructures.DummySet;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
 import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
+import eu.excitementproject.eop.common.datastructures.DummySet;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 /**
  * This linear-classifier uses gradient-ascent method to find the optimal

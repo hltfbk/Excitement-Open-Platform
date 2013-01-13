@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.representation;
-
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;

@@ -1,10 +1,9 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.custom;
-
 import java.io.IOException;
 
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMapFromStringCreator;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -26,7 +25,7 @@ public class OnlineFileBasedLexicalResource extends ValueSetMapLexicalResource {
 	 * @param params configuration params for initialization. Should include:
 	 * <li>table_file - path to the file that contains the rules, in table format. Can also be a URL.
 	 * <li>table_separator - pattern of column-separator, e.g. "->".
-	 * <li>part_of_speech - canonical name of the part-of-speech for this rule-base. For possible values, see {@link CanonicalPosTag}.
+	 * <li>part_of_speech - canonical name of the part-of-speech for this rule-base. For possible values, see {@link SimplerCanonicalPosTag}.
 	 * <li>relation_name - name of relation to put in rules (the same for all rules).
 	 * <li>minimum_seconds_between_loads (int) - The minimum number of seconds between each consecutive loads from the file.
 	 * <li>(NOTE: The params.getModuleName() is used as the resource_name).  
@@ -34,7 +33,7 @@ public class OnlineFileBasedLexicalResource extends ValueSetMapLexicalResource {
 	public OnlineFileBasedLexicalResource(ConfigurationParams params) throws UnsupportedPosTagStringException, IOException, ConfigurationException {
 		super(
 				null, 
-				params.getEnum(CanonicalPosTag.class, "part_of_speech"), 
+				params.getEnum(SimplerCanonicalPosTag.class, "part_of_speech"), 
 				params.getModuleName(),
 				params.getString("relation_name"));
 		this.file = params.getString("file");

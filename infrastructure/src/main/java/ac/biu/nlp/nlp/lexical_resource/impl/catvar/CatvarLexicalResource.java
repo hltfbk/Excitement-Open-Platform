@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.catvar;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,19 +12,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.DummyList;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.impl.catvar.EquivalenceClasses.EquivalenceClassesException;
+import eu.excitementproject.eop.common.datastructures.DummyList;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * Wraps CatVar lexical resource.
@@ -174,10 +172,10 @@ public class CatvarLexicalResource extends LexicalResourceNothingToClose<EmptyRu
 		try
 		{
 			posMap = new LinkedHashMap<String, PartOfSpeech>();
-			posMap.put("N",new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN));
-			posMap.put("V",new UnspecifiedPartOfSpeech(CanonicalPosTag.VERB));
-			posMap.put("AJ",new UnspecifiedPartOfSpeech(CanonicalPosTag.ADJECTIVE));
-			posMap.put("AV",new UnspecifiedPartOfSpeech(CanonicalPosTag.ADVERB));
+			posMap.put("N",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN));
+			posMap.put("V",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB));
+			posMap.put("AJ",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE));
+			posMap.put("AV",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADVERB));
 		}
 		catch(UnsupportedPosTagStringException e)
 		{

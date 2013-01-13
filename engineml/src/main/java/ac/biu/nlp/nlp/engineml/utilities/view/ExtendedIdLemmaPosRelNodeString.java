@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.utilities.view;
-
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;

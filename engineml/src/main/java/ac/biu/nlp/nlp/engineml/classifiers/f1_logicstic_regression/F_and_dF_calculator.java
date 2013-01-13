@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.f1_logicstic_regression;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

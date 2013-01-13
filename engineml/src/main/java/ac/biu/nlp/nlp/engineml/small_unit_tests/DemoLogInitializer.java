@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import org.apache.log4j.Logger;
 
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;

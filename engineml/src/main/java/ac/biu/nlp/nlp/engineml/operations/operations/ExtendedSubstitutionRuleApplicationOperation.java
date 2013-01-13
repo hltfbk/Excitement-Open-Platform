@@ -2,8 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.operations.operations;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
@@ -16,6 +14,7 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeConstructor;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * This class performs the regular substitution rule application, where the rule uses {@link BasicNode} and {@link Info}, while the text tree uses 

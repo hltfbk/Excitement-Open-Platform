@@ -1,12 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
@@ -14,6 +10,8 @@ import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
  * 

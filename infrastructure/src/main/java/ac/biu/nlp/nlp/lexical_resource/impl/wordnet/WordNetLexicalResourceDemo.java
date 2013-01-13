@@ -2,22 +2,20 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wordnet;
-
 import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 
 /**
  * Demo for LexResource
@@ -53,8 +51,8 @@ public class WordNetLexicalResourceDemo {
 	
 
 		String lLemma = "peach";
-		PartOfSpeech pos1 = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
-		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+		PartOfSpeech pos1 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 		String rLemma = "fruit";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		
@@ -112,7 +110,7 @@ public class WordNetLexicalResourceDemo {
 //	WiktionaryLexResource wktLexR = new WiktionaryLexResource("//qa-srv/data/RESOURCES/Wiktionary/parse", "//qa-srv/jars/stanford-postagger-2008-09-28/bidirectional-wsj-0-18.tagger");
 //	
 //	String lemma = "dog";
-//	PartOfSpeech pos = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+//	PartOfSpeech pos = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 //	String lemma2 = "cat";
 //	wktLexR.setRightSense(WiktionaryLexResource.ALL_SENSES);
 //	wktLexR.setLeftSense(WiktionaryLexResource.ALL_SENSES);

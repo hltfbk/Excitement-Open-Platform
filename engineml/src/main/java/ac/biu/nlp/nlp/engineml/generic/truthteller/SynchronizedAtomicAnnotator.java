@@ -1,7 +1,6 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
-
-import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
 
 /**
  * Wraps {@link SentenceAnnotator} such that the annotation is done as an

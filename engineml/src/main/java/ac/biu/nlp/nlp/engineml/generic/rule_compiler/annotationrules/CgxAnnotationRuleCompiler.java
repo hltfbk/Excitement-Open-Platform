@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;

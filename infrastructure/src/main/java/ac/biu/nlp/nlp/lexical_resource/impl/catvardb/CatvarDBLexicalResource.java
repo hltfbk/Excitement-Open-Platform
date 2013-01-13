@@ -2,6 +2,7 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.catvardb;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,19 +12,18 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 
 /**
@@ -183,7 +183,7 @@ public class CatvarDBLexicalResource extends LexicalResourceNothingToClose<RuleI
 			if (pos == null)
 				return null;
 			else
-				switch(pos.getCanonicalPosTag() )
+				switch(simplerPos(pos.getCanonicalPosTag()) )
 				{
 				case ADJECTIVE:
 					return "a";
@@ -346,39 +346,39 @@ public class CatvarDBLexicalResource extends LexicalResourceNothingToClose<RuleI
 	 */
 	private PartOfSpeech toPartOfSpeech(String shortPos) throws LexicalResourceException
 	{
-	 	CanonicalPosTag canonicalPosTag;
+	 	SimplerCanonicalPosTag canonicalPosTag;
 		 
 		 switch(shortPos.charAt(0) )
 		 {
 			case 'a':
-				canonicalPosTag = CanonicalPosTag.ADJECTIVE;
+				canonicalPosTag = SimplerCanonicalPosTag.ADJECTIVE;
 				 break;
 	
 			 case 'r':
-				 canonicalPosTag = CanonicalPosTag.ADVERB;
+				 canonicalPosTag = SimplerCanonicalPosTag.ADVERB;
 				 break;
 
 			 case 'd':
-				 canonicalPosTag = CanonicalPosTag.DETERMINER;
+				 canonicalPosTag = SimplerCanonicalPosTag.DETERMINER;
 				 break;
 	
 			 case 'n':
-				 canonicalPosTag = CanonicalPosTag.NOUN;
+				 canonicalPosTag = SimplerCanonicalPosTag.NOUN;
 				 break;
 			
 			 case 'v':
-				 canonicalPosTag = CanonicalPosTag.VERB;
+				 canonicalPosTag = SimplerCanonicalPosTag.VERB;
 				 break;
 
 			 default:
 			 	if (shortPos.equals("p"))
-		 			canonicalPosTag = CanonicalPosTag.PREPOSITION;
+		 			canonicalPosTag = SimplerCanonicalPosTag.PREPOSITION;
 			 	else if (shortPos.equals("pro"))
-			 			canonicalPosTag = CanonicalPosTag.PRONOUN;
+			 			canonicalPosTag = SimplerCanonicalPosTag.PRONOUN;
 			 	else if (shortPos.equals("punc"))
-			 		canonicalPosTag = CanonicalPosTag.PUNCTUATION;
+			 		canonicalPosTag = SimplerCanonicalPosTag.PUNCTUATION;
 			 	else
-			 		canonicalPosTag = CanonicalPosTag.OTHER;
+			 		canonicalPosTag = SimplerCanonicalPosTag.OTHER;
 		 }
 		 try {
 			return new UnspecifiedPartOfSpeech(canonicalPosTag);

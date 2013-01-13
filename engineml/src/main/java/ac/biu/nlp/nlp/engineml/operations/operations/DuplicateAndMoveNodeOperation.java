@@ -1,9 +1,5 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
-
 import java.util.LinkedHashSet;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
@@ -13,6 +9,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 
 
 /**

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,14 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
@@ -31,6 +22,13 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 
 /**
  * 
@@ -187,10 +185,10 @@ public class DemoLexicalResources extends SystemInitialization
 		try
 		{
 			mapPos = new LinkedHashMap<String, PartOfSpeech>();
-			mapPos.put("V",new UnspecifiedPartOfSpeech(CanonicalPosTag.VERB));
-			mapPos.put("N",new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN));
+			mapPos.put("V",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB));
+			mapPos.put("N",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN));
 			
-			for (CanonicalPosTag cpt : CanonicalPosTag.values())
+			for (SimplerCanonicalPosTag cpt : SimplerCanonicalPosTag.values())
 			{
 				mapPos.put(cpt.name(),new UnspecifiedPartOfSpeech(cpt));
 			}

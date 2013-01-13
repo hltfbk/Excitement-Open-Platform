@@ -1,14 +1,7 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_DO_NER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_DO_TEXT_NORMALIZATION;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_MODULE_NAME;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.InstrumentsFactory;
@@ -26,6 +19,12 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 
 /**

@@ -2,12 +2,9 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application;
-
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge.AnnotationsMerger;
@@ -25,6 +22,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapEx
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * Apply a normal annotation rule to all possible matches in the tree, and return the tree after all applications were performed on it.

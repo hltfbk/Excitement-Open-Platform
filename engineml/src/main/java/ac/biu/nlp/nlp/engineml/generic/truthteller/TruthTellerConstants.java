@@ -2,13 +2,12 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
-
-import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
-import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ClauseTruthAnnotationRuleApplier;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ComplementRelations;
 import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 
 /**
  * @author Amnon Lotan

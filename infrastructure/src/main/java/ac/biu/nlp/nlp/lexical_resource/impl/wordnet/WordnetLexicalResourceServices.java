@@ -2,16 +2,12 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wordnet;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.EmptySynset;
@@ -25,6 +21,8 @@ import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordnetDictionaryImplementa
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 
 /**
  * This class inherits its interface and implementation-outline from {@link WordnetLexicalResource}, and completes the implementation.  

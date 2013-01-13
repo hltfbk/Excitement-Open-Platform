@@ -1,9 +1,6 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.datastructures.FlippedBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
@@ -19,6 +16,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * This {@link Finder} returns a set of {@link RuleSpecification}s, based on the

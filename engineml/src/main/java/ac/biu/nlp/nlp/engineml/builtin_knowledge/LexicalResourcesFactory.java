@@ -1,12 +1,7 @@
 package ac.biu.nlp.nlp.engineml.builtin_knowledge;
-
 import java.sql.SQLException;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWrapper;
@@ -30,6 +25,9 @@ import ac.biu.nlp.nlp.lexical_resource.impl.similarity.LinProximityOriginalLexic
 import ac.biu.nlp.nlp.lexical_resource.impl.verb_ocean.VerbOceanLexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.impl.wikipedia.WikiLexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.impl.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * 

@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.GUI_LOADS_LABELED_SAMPLES;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,11 +20,8 @@ import javax.swing.JTextArea;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.utilities.log4j.GuiAppender;
-
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.GUI_LOADS_LABELED_SAMPLES;
+import eu.excitementproject.eop.common.utilities.log4j.GuiAppender;
 /**
  * 
  * @author Asher Stern

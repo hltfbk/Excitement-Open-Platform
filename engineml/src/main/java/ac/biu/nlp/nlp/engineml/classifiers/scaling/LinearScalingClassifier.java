@@ -1,12 +1,10 @@
 package ac.biu.nlp.nlp.engineml.classifiers.scaling;
-
 import java.util.Map;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 
 
 /**

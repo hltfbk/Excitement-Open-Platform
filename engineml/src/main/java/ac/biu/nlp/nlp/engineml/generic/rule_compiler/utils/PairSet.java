@@ -2,8 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.utils;
-
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,6 +10,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V;
 import eu.excitementproject.eop.common.datastructures.Pair;
 
 

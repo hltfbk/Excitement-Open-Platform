@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules;
-
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 
 /**

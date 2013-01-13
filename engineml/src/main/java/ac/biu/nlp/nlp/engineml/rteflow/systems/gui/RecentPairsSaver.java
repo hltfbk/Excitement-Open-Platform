@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import java.io.File;
 import java.util.LinkedList;
 import java.util.Map;
 
+import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainWriter;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
@@ -11,8 +11,6 @@ import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriter;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriterException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-
-import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 
 /**
  * A class to save the pairs that were processed by the "visual tracing tool".

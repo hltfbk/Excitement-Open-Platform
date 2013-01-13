@@ -1,12 +1,10 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.util.HashMap;
 import java.util.Map;
 
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-
 import ac.biu.nlp.nlp.engineml.datastructures.FastIntegerKeyMap;
 import ac.biu.nlp.nlp.engineml.datastructures.FastIntegerKeyMap.FastIntegerKeyMapException;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
 public class DemoFastIntegerKeyMap
 {

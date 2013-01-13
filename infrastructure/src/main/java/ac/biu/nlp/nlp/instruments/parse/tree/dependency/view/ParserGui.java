@@ -29,11 +29,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import eu.excitementproject.eop.common.utilities.EnvironmentVerifier;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.OS;
-import eu.excitementproject.eop.common.utilities.ProgramExecution;
-
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparClientParser;
@@ -41,6 +36,10 @@ import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparParser;
 import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparServer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.EnvironmentVerifier;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.ProgramExecution;
 
 /**
  * A GUI application to view parse tree.

@@ -1,7 +1,8 @@
 package ac.biu.nlp.nlp.instruments.ner.stanford;
 
 import java.io.File;
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
 
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityWord;
 

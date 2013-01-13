@@ -2,9 +2,7 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.services;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedMatchCriteria;
@@ -12,6 +10,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteri
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 
 /**
  * Compares {@link ExtendedInfo}s. To be used in rule-text matching, where null values in a rule node (text node) acts like a 
@@ -138,7 +138,7 @@ public class AnnotationsWithWildcardsMatchCriteria<TM extends ExtendedInfo,TT ex
 		if (textPartOfSpeech.equals(rulePartOfSpeech))			// this covers cases where the rule's and text's POSs are of the same subclass and match
 			return true;
 		// this covers all other cases where the rule uses a canonical POS (and the text may use any other POS type)
-		if (isUnspecifiedPos(rulePartOfSpeech) && textPartOfSpeech.getCanonicalPosTag()==rulePartOfSpeech.getCanonicalPosTag())
+		if (isUnspecifiedPos(rulePartOfSpeech) && simplerPos(textPartOfSpeech.getCanonicalPosTag())==simplerPos(rulePartOfSpeech.getCanonicalPosTag()))
 			return true;
 		return false;
 	}
@@ -148,7 +148,7 @@ public class AnnotationsWithWildcardsMatchCriteria<TM extends ExtendedInfo,TT ex
 	 * @return
 	 */
 	private boolean isUnspecifiedPos(PartOfSpeech partOfSpeech) {
-		return partOfSpeech.getCanonicalPosTag().toString().equals(partOfSpeech.getStringRepresentation());
+		return simplerPos(partOfSpeech.getCanonicalPosTag()).toString().equals(partOfSpeech.getStringRepresentation());
 	}
 
 	private DefaultMatchCriteria defaultMatchCriteria = new DefaultMatchCriteria();

@@ -1,13 +1,11 @@
 package ac.biu.nlp.nlp.engineml.script;
-
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 import ac.biu.nlp.nlp.engineml.plugin.PluginRegistry;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.DefaultOperationScript;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 /**
  * A factory which returns an {@link OperationsScript}.

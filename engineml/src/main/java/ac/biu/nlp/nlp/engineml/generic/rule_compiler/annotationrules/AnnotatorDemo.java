@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -10,10 +9,6 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.List;
-
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompilerParameterNames;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
@@ -33,6 +28,9 @@ import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * @author Amnon Lotan

@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.instruments.parse.easyfirst;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,13 +17,6 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
-import eu.excitementproject.eop.common.utilities.Utils;
-
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
@@ -38,6 +32,12 @@ import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 /**
  * This class basically wraps Yoav Goldberg's EasyFirst parser. It publishes a {@link #parse(String)} method.
@@ -191,13 +191,13 @@ public class EasyFirstClient
 			PosTaggedToken posTaggedToken = iter.next();
 			String token = posTaggedToken.getToken().toLowerCase();
 			PartOfSpeech pos = posTaggedToken.getPartOfSpeech();
-			if (NOMINATIVE_ACCUSATIVE_PRONOUNS.contains(token) && !pos.getCanonicalPosTag().equals(CanonicalPosTag.PRONOUN))
+			if (NOMINATIVE_ACCUSATIVE_PRONOUNS.contains(token) && !simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 			// replace this postaggedToken
 			{
 				iter.remove();
 				iter.add(new PosTaggedToken(token, PRP_POS));
 			}
-			else if (GENITIVE_PRONOUNS.contains(token) && !pos.getCanonicalPosTag().equals(CanonicalPosTag.PRONOUN))
+			else if (GENITIVE_PRONOUNS.contains(token) && !simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 			// replace this postaggedToken with PRP$
 			{
 				iter.remove();

@@ -1,5 +1,6 @@
 package ac.biu.nlp.nlp.instruments.parse.candc.graph;
 
+import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
@@ -7,7 +8,6 @@ import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphExcept
 import eu.excitementproject.eop.common.datastructures.dgraph.scan.BfsDirectedGraphScan;
 import eu.excitementproject.eop.common.datastructures.dgraph.scan.DirectedGraphScanException;
 import eu.excitementproject.eop.common.datastructures.dgraph.scan.ScanOperation;
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
 
 /**
  * Given a graph ({@link DirectedGraph}) produced by C&C parser,

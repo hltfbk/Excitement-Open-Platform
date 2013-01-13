@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ac.biu.nlp.nlp.instruments.tokenizer.TextToPennTreeBankConverter;
 import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
 import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphException;
 import eu.excitementproject.eop.common.datastructures.dgraph.view.DirectedGraphToDot;
@@ -33,7 +34,7 @@ import eu.excitementproject.eop.common.utilities.TimeOutLiveIOProgramExecutionEx
  * @author Asher Stern
  *
  */
-@SuppressWarnings("serial")
+@SuppressWarnings({ "serial", "deprecation" })
 @Deprecated
 public class CandCDemoGui extends JFrame implements ActionListener, WindowListener
 {

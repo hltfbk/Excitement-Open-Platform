@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.view;
-
 import java.util.List;
 
 import org.apache.log4j.Logger;

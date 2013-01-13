@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_SUM_DATASET_DIR_NAME;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_SUM_IS_NOVELTY_TASK_FLAG;
@@ -23,16 +22,6 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.utilities.ExperimentManager;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileReader;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileReader;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.FileSystemNamesFactory;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6FileSystemNames;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
@@ -55,6 +44,15 @@ import ac.biu.nlp.nlp.engineml.utilities.safemodel.classifiers_io.SafeClassifier
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.FileSystemNamesFactory;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6FileSystemNames;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
  * 

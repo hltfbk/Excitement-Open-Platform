@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -9,11 +8,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
@@ -27,6 +21,10 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
  * Used only if {@link Constants#USE_OLD_CONCURRENCY_IN_RTE_SUM} is <tt>true</tt>

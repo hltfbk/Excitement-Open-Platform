@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
-
 import java.io.Serializable;
 
 public class ConfidenceChainItem implements Serializable

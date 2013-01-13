@@ -1,16 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
-
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.utilities.Cache;
-import eu.excitementproject.eop.common.utilities.CacheFactory;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.specifications.SubstituteNodeSpecification;
@@ -23,6 +15,12 @@ import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 
 

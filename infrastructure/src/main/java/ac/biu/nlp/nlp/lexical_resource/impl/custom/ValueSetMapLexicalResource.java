@@ -1,17 +1,22 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.custom;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
-import java.util.*;
-
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.partofspeech.*;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
  * <p>A lexical resource based on a {@link ValueSetMap} (a bidirectional multi-map) of Strings.
@@ -31,7 +36,7 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 	 * @param theRelationName will be inserted in the rules, for information only. 
 	 * @throws UnsupportedPosTagStringException if the given part-of-speech is illegal.
 	 */
-	public ValueSetMapLexicalResource(ValueSetMap<String,String> theMap, CanonicalPosTag thePartOfSpeech, String theResourceName, String theRelationName) throws UnsupportedPosTagStringException {
+	public ValueSetMapLexicalResource(ValueSetMap<String,String> theMap, SimplerCanonicalPosTag thePartOfSpeech, String theResourceName, String theRelationName) throws UnsupportedPosTagStringException {
 		map = theMap;
 		setCanonicalPartOfSpeech (thePartOfSpeech);
 		resourceName = theResourceName;
@@ -40,7 +45,7 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 
 	@SuppressWarnings("unchecked")
 	@Override public List<LexicalRule<? extends RuleInfo>> getRulesForLeft(String leftLemma, PartOfSpeech leftPos) throws LexicalResourceException {
-		if (leftPos==null || leftPos.getCanonicalPosTag()==this.canonicalPartOfSpeech) {
+		if (leftPos==null || simplerPos(leftPos.getCanonicalPosTag())==this.canonicalPartOfSpeech) {
 			PartOfSpeech posForRule = (leftPos==null? this.partOfSpeech: leftPos); 
 			List<LexicalRule<? extends RuleInfo>> theRules = new ArrayList<LexicalRule<? extends RuleInfo>>();
 			for (String rightLemma: getMap().get(leftLemma)) {  // NOTE: getMap() is used instead of this.map, to allow overriding in OnlineFileBasedLexicalResource.
@@ -57,7 +62,7 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 
 	@SuppressWarnings("unchecked")
 	@Override public List<LexicalRule<? extends RuleInfo>> getRulesForRight(String rightLemma, PartOfSpeech rightPos) throws LexicalResourceException {
-		if (rightPos==null || rightPos.getCanonicalPosTag()==this.canonicalPartOfSpeech) { 
+		if (rightPos==null || simplerPos(rightPos.getCanonicalPosTag())==this.canonicalPartOfSpeech) { 
 			PartOfSpeech posForRule = (rightPos==null? this.partOfSpeech: rightPos); 
 			List<LexicalRule<? extends RuleInfo>> theRules = new ArrayList<LexicalRule<? extends RuleInfo>>();
 			for (String leftLemma: getMap().getKeysOf(rightLemma)) { // NOTE: getMap() is used instead of this.map, to allow overriding in OnlineFileBasedLexicalResource.
@@ -74,8 +79,8 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 
 	@SuppressWarnings("unchecked")
 	@Override public List<LexicalRule<? extends RuleInfo>> getRules(String leftLemma, PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos) throws LexicalResourceException {
-		if (rightPos==null || rightPos.getCanonicalPosTag()==this.canonicalPartOfSpeech) {
-			if (leftPos==null || leftPos.getCanonicalPosTag()==this.canonicalPartOfSpeech) {
+		if (rightPos==null || simplerPos(rightPos.getCanonicalPosTag())==this.canonicalPartOfSpeech) {
+			if (leftPos==null || simplerPos(leftPos.getCanonicalPosTag())==this.canonicalPartOfSpeech) {
 				ImmutableSet<String> rightLemmas = getMap().get(leftLemma); // NOTE: getMap() is used instead of this.map, to allow overriding in OnlineFileBasedLexicalResource.
 				if (rightLemmas.contains(rightLemma)) {
 					List<LexicalRule<? extends RuleInfo>> theRules = new ArrayList<LexicalRule<? extends RuleInfo>>();
@@ -102,7 +107,7 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 	/**
 	 * @return the canonicalPartOfSpeech
 	 */
-	public CanonicalPosTag getCanonicalPartOfSpeech() {
+	public SimplerCanonicalPosTag getCanonicalPartOfSpeech() {
 		return canonicalPartOfSpeech;
 	}
 
@@ -117,7 +122,7 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 	 * @param canonicalPartOfSpeech the canonicalPartOfSpeech to set
 	 * @throws UnsupportedPosTagStringException 
 	 */
-	private void setCanonicalPartOfSpeech(CanonicalPosTag canonicalPartOfSpeech) throws UnsupportedPosTagStringException {
+	private void setCanonicalPartOfSpeech(SimplerCanonicalPosTag canonicalPartOfSpeech) throws UnsupportedPosTagStringException {
 		this.canonicalPartOfSpeech = canonicalPartOfSpeech;
 		partOfSpeech = new UnspecifiedPartOfSpeech(canonicalPartOfSpeech);
 	}
@@ -145,7 +150,7 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 	 */
 	
 	protected ValueSetMap<String,String> map;
-	protected CanonicalPosTag canonicalPartOfSpeech;
+	protected SimplerCanonicalPosTag canonicalPartOfSpeech;
 	protected PartOfSpeech partOfSpeech;  // for insertion in rules when the input POS is null
 	protected String resourceName, relationName; 
 	

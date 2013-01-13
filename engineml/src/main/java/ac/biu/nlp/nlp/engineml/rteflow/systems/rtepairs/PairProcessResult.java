@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.io.Serializable;
 import java.util.Map;
 

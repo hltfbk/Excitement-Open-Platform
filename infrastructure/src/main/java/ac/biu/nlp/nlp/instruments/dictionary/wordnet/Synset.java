@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;

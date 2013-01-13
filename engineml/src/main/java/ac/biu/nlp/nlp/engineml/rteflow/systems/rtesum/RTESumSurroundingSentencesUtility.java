@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import org.apache.log4j.Logger;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;

@@ -3,9 +3,6 @@ package ac.biu.nlp.nlp.instruments.parse.minipar;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.excitementproject.eop.common.utilities.strings.distance.LevenshteinDistance;
-import eu.excitementproject.eop.common.utilities.strings.distance.StringsDistanceException;
-
 import ac.biu.nlp.nlp.instruments.parse.EnglishSingleTreeParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
@@ -14,6 +11,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.strings.distance.LevenshteinDistance;
+import eu.excitementproject.eop.common.utilities.strings.distance.StringsDistanceException;
 
 
 /**

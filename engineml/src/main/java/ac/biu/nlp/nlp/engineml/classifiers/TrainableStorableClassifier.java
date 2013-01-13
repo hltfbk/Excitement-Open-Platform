@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers;
-
 import ac.biu.nlp.nlp.engineml.classifiers.io.StorableClassifier;
 
 /**

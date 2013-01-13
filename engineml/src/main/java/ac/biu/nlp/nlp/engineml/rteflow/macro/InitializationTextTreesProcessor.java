@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.CACHE_SIZE_HYPOTHESIS_TEMPLATES;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.HANDLE_LEXICAL_MULTI_WORD;
 
@@ -12,17 +11,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.Cache;
-import eu.excitementproject.eop.common.utilities.CacheFactory;
-import eu.excitementproject.eop.common.utilities.SealedObject;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
@@ -69,6 +57,16 @@ import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapEx
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNodeConstructor;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
+import eu.excitementproject.eop.common.utilities.SealedObject;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 
 /**

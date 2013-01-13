@@ -2,12 +2,9 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge.AnnotationsMerger;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.merge.AnnotationsMergerException;
@@ -20,6 +17,7 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * This class applies an {@link AnnotationRule} to an {@link ExtendedConstructionNode} tree, given a map between the tree and the LHS of the rule. 

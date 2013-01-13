@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,14 +19,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 
 /**
  * <b>Resource name</b>: Lin distributional similarity for Reuters<br>
@@ -99,8 +97,8 @@ public class LinDistsimLexicalResource extends AbstractSinglePosLexicalResource
 		super(limitOnRetrievedRules);
 		
 		// DEFAULT_POS must be initialized first thing, cos subsequent statements read it
-		try 										{ DEFAULT_POS = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);	} 
-		catch (UnsupportedPosTagStringException e) 	{ throw new LexicalResourceException("Bug: couldn't construct a new UnspecifiedPartOfSpeech(CanonicalPosTag.OTHER)",e);		}		
+		try 										{ DEFAULT_POS = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);	} 
+		catch (UnsupportedPosTagStringException e) 	{ throw new LexicalResourceException("Bug: couldn't construct a new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.OTHER)",e);		}		
 		
 		PreparedStatement getRulesForLeftStmt;
 		PreparedStatement getRulesForRightStmt;

@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wordnet;
-
 import java.io.File;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;

@@ -1,11 +1,4 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests.old_small_tests;
-
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 import ac.biu.nlp.nlp.engineml.datastructures.SimpleNullForbiddenBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.operations.ExtendedSubstitutionRuleApplicationOperation;
@@ -29,6 +22,11 @@ import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 public class DemoRuleApplication
 {
@@ -143,4 +141,3 @@ public class DemoRuleApplication
 	}
 
 }
-

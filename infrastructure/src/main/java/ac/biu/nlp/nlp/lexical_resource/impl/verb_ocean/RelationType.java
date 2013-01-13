@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.verb_ocean;
-
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 
 /**

@@ -1,10 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.specifications.IsASpecification;
@@ -16,6 +14,8 @@ import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationExceptio
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * 
@@ -81,7 +81,7 @@ public class IsA_ByCoreferenceFinder implements Finder<IsASpecification>
 		PartOfSpeech pos = InfoGetFields.getPartOfSpeechObject(node.getInfo());
 		if (pos!=null)
 		{
-			if (!CanonicalPosTag.PRONOUN.equals(pos.getCanonicalPosTag()))
+			if (!SimplerCanonicalPosTag.PRONOUN.equals(simplerPos(pos.getCanonicalPosTag())))
 			{
 				ret = false;
 			}

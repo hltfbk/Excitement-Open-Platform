@@ -2,14 +2,12 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules;
-
 import java.util.Set;
 
+import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-
-import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
 
 /**
  * Holds the info in one line of the PhrasalImplicativeTemplates.properties file.

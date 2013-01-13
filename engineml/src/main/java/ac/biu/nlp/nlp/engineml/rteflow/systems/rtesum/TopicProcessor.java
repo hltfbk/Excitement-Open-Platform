@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -7,9 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
@@ -36,6 +32,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
 
 /**
  * !!! NO LONGER USED !!!

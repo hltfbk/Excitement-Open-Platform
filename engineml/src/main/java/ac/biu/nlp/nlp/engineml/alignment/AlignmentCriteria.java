@@ -1,9 +1,8 @@
 package ac.biu.nlp.nlp.engineml.alignment;
-
-import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
 
 /**
  * A criteria by which it is said that a node or an edge in the text-parse-tree is equal

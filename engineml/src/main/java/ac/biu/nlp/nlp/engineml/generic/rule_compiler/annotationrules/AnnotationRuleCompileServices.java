@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;

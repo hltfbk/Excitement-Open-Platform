@@ -1,11 +1,5 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.builder;
-
 import java.util.Map;
-
-import eu.excitementproject.eop.common.datastructures.DummySet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
@@ -13,6 +7,10 @@ import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.DefaultOperationScript;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.datastructures.DummySet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * A lexical rule base, which is not a single lexical rule base, but

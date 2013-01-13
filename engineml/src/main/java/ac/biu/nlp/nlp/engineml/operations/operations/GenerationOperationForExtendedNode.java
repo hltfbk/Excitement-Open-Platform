@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
-
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;

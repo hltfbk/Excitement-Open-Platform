@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexical;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,12 +9,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.engineml.operations.finders.Substitution2DLexicalRuleByLemmaPosNerFinder;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCache;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
@@ -25,6 +18,11 @@ import ac.biu.nlp.nlp.engineml.rteflow.macro.DefaultOperationScript;
 import ac.biu.nlp.nlp.engineml.rteflow.micro.perform.LexicalRuleByLemmaPos2DPerformFactory;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * Geographical lexical rule base. Retrieves the rules directly

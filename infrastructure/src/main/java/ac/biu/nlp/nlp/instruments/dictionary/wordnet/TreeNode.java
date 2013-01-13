@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet;
-
 import java.util.Set;
 
 /**

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_beam_search;
-
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeAndFeatureVector;
 
 

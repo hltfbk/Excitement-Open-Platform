@@ -1,14 +1,12 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 
 /**
  * Contains information about Text-Hypothesis pair - the original T-H pair and

@@ -1,8 +1,5 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
-
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
@@ -13,6 +10,7 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 
 /**

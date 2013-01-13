@@ -2,15 +2,13 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wikipedia;
-
 import java.util.HashSet;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 
 /**
  * This record holds a lot if wikipedia relation information.

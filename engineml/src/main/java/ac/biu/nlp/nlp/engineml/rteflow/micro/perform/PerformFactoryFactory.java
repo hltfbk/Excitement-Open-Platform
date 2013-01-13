@@ -1,11 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro.perform;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 
 import ac.biu.nlp.nlp.engineml.datastructures.SingleItemList;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
@@ -21,6 +18,7 @@ import ac.biu.nlp.nlp.engineml.script.SingleOperationItem;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 
 /**
  * 

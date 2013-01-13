@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.builtin_knowledge;
-
 import ac.biu.nlp.nlp.engineml.rteflow.macro.DefaultOperationScript;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 

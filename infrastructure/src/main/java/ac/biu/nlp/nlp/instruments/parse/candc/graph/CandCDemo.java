@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import ac.biu.nlp.nlp.instruments.tokenizer.TextToPennTreeBankConverter;
 import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
 import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphException;
 import eu.excitementproject.eop.common.datastructures.dgraph.view.DirectedGraphToDot;
@@ -17,8 +18,6 @@ import eu.excitementproject.eop.common.utilities.LiveIOProgramExecution;
 import eu.excitementproject.eop.common.utilities.LiveIOProgramExecutionException;
 import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.TimeOutLiveIOProgramExecutionException;
-
-import ac.biu.nlp.nlp.instruments.tokenizer.TextToPennTreeBankConverter;
 
 @Deprecated
 public class CandCDemo

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
@@ -8,12 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaData;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.PreprocessUtilities;
@@ -29,6 +22,11 @@ import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaData;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
  * 

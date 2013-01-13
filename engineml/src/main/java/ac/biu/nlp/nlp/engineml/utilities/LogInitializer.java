@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,17 +8,16 @@ import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import eu.excitementproject.eop.common.utilities.ConstantsSummary;
-import eu.excitementproject.eop.common.utilities.ExperimentManager;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
-import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
-
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.Workarounds;
 import ac.biu.nlp.nlp.engineml.utilities.legacy.ExperimentLoggerNeutralizer;
 import ac.biu.nlp.nlp.engineml.version.Citation;
 import ac.biu.nlp.nlp.engineml.version.License;
 import ac.biu.nlp.nlp.engineml.version.Version;
+import eu.excitementproject.eop.common.utilities.ConstantsSummary;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
+import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
 
 
 /**

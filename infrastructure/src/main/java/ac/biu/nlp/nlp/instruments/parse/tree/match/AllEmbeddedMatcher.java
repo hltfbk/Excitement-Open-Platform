@@ -3,11 +3,10 @@ package ac.biu.nlp.nlp.instruments.parse.tree.match;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteria;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 
 /**

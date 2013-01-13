@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
-
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 

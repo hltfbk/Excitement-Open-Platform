@@ -1,15 +1,13 @@
 package ac.biu.nlp.nlp.engineml.classifiers.linearimplementations;
-
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.utilities.Cache;
-import eu.excitementproject.eop.common.utilities.CacheFactory;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
 
 /**
  * Stores in a cache (a pool) trained linear classifiers.

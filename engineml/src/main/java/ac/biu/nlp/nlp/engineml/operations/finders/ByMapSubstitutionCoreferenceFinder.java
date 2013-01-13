@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
-
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -10,7 +9,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
-
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 
 

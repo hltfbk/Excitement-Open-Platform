@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi;
-
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +10,7 @@ import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Synset;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetPartOfSpeech;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
+import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwnl.JwnlDictionaryManager;
 
 
 /**

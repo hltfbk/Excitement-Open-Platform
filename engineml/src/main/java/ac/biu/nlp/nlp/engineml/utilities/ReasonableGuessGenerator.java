@@ -1,10 +1,7 @@
 package ac.biu.nlp.nlp.engineml.utilities;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.utilities.math.GaussianPseudoRandomGenerator;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierFactory;
@@ -13,6 +10,7 @@ import ac.biu.nlp.nlp.engineml.classifiers.LinearTrainableStorableClassifier;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.Feature;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.FeatureVectorStructureOrganizer;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.RTESystemsUtils;
+import eu.excitementproject.eop.common.utilities.math.GaussianPseudoRandomGenerator;
 
 /**
  * Creates a "reasonable-guess" classifier, which is logistic-regression classifier

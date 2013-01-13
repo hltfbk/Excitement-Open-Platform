@@ -1,12 +1,13 @@
 package eu.excitementproject.eop.common.datastructures;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;

@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl;
-
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 
 /**

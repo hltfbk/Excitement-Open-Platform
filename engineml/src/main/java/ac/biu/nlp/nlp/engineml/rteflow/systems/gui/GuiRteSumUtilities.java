@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
+import static javax.swing.SwingUtilities.invokeLater;
 
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -22,13 +23,8 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import static javax.swing.SwingUtilities.invokeLater;
-
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-import eu.excitementproject.eop.common.utilities.file.FileFilterByExtension;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
@@ -37,6 +33,8 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.ExtendedTopicDa
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.PreprocessedTopicDataSet;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.file.FileFilterByExtension;
 
 /**
  * 

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.safemodel.classifiers_io;
-
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;

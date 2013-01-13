@@ -1,11 +1,10 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_EASYFIRST;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_MINIPAR;
 
 import java.io.File;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
@@ -14,9 +13,8 @@ import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparClientParser;
 import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparParser;
-
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_EASYFIRST;
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_MINIPAR;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * Factory to construct a {@link MiniparParser}

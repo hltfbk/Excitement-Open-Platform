@@ -1,8 +1,7 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * Represents a lexical-syntactic rule base.<BR>

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
-
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,13 +10,6 @@ import java.util.List;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.MapsBasedTable;
-import eu.excitementproject.eop.common.datastructures.Table;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
@@ -43,6 +35,12 @@ import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationExceptio
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.MapsBasedTable;
+import eu.excitementproject.eop.common.datastructures.Table;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 
 /**
  * An entry point for "system" flow for RTE-pairs test phase.

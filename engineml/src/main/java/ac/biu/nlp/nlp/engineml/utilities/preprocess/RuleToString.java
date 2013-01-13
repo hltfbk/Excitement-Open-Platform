@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
-
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

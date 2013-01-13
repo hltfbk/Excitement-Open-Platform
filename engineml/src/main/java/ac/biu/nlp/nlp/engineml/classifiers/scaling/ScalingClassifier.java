@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.scaling;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -10,13 +9,12 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.datastructures.DummySet;
-
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.TrainableClassifier;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
+import eu.excitementproject.eop.common.datastructures.DummySet;
 
 /**
  * The scaling classifier scales each feature value, x, to fulfill |x|<=1.

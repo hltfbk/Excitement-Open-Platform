@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT;
 
 import java.util.ArrayList;
@@ -8,11 +7,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseEnvelope;
@@ -25,6 +19,10 @@ import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.engineml.script.OperationsScriptForBuiltinKnowledgeAndPlugins;
 import ac.biu.nlp.nlp.engineml.script.SingleOperationItem;
 import ac.biu.nlp.nlp.engineml.script.SingleOperationType;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 
 /**

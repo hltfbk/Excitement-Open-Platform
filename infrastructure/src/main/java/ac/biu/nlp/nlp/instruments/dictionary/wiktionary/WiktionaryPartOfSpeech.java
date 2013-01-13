@@ -5,6 +5,7 @@ package ac.biu.nlp.nlp.instruments.dictionary.wiktionary;
 
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
@@ -45,7 +46,7 @@ public enum WiktionaryPartOfSpeech
 	 */
 	public static WiktionaryPartOfSpeech toWiktionaryPartOfspeech(PartOfSpeech partOfSpeech) throws WiktionaryException 
 	{
-		switch (partOfSpeech.getCanonicalPosTag())
+		switch (SimplerPosTagConvertor.simplerPos(partOfSpeech.getCanonicalPosTag()))
 		{
 			case ADJECTIVE:
 				return ADJECTIVE;

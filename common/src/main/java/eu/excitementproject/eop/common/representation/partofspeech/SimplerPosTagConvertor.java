@@ -12,8 +12,14 @@ public class SimplerPosTagConvertor
 	{
 		return simplerArray[canonicalPosTag.ordinal()];
 	}
+	
+	public static CanonicalPosTag fromSimplerToCanonical(SimplerCanonicalPosTag simplerCanonicalPosTag)
+	{
+		return canonicalArray[simplerCanonicalPosTag.ordinal()];
+	}
 
 	private static final SimplerCanonicalPosTag[] simplerArray;
+	private static final CanonicalPosTag[] canonicalArray;
 	static
 	{
 		simplerArray = new SimplerCanonicalPosTag[CanonicalPosTag.values().length];
@@ -68,5 +74,43 @@ public class SimplerPosTagConvertor
 			}
 			simplerArray[ordinal] = simplerCanonicalPosTag;
 		}
+		
+		canonicalArray = new CanonicalPosTag[SimplerCanonicalPosTag.values().length];
+		for (SimplerCanonicalPosTag simplerCanonicalPosTag : SimplerCanonicalPosTag.values())
+		{
+			CanonicalPosTag canonicalPosTag = null;
+			switch(simplerCanonicalPosTag)
+			{
+			case ADJECTIVE:
+				canonicalPosTag = CanonicalPosTag.ADJ;
+				break;
+			case ADVERB:
+				canonicalPosTag = CanonicalPosTag.ADV;
+				break;
+			case DETERMINER:
+				canonicalPosTag = CanonicalPosTag.ART;
+				break;
+			case NOUN:
+				canonicalPosTag = CanonicalPosTag.N;
+				break;
+			case OTHER:
+				canonicalPosTag = CanonicalPosTag.OTHER;
+				break;
+			case PREPOSITION:
+				canonicalPosTag = CanonicalPosTag.PP;
+				break;
+			case PRONOUN:
+				canonicalPosTag = CanonicalPosTag.PR;
+				break;
+			case PUNCTUATION:
+				canonicalPosTag = CanonicalPosTag.PUNC;
+				break;
+			case VERB:
+				canonicalPosTag = CanonicalPosTag.V;
+				break;
+			}
+			canonicalArray[simplerCanonicalPosTag.ordinal()] = canonicalPosTag;
+		}
+		
 	}
 }

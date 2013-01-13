@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.script;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_PARAMETER_NAME;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.MANUAL_FILE_RULEBASE_DYNAMIC_PARAMETER_NAME;
@@ -23,13 +22,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
@@ -58,6 +50,12 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * Creates and initializes all the built-in knowledge resources.

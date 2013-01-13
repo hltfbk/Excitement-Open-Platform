@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct;
-
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.AnnotationRuleApplier;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalInformationServices;

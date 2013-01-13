@@ -1,14 +1,13 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.manual;
-
-import eu.excitementproject.eop.common.datastructures.DummySet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 import ac.biu.nlp.nlp.engineml.operations.rules.BagOfRulesRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.DefaultOperationScript;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.DummySet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 
 /**
  * An empty rule base.

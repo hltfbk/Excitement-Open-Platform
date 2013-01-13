@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.io;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 
 /**

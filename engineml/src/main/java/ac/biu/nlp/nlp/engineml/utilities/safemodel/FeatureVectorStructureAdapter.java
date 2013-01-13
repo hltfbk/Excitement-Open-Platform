@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.safemodel;
-
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import ac.biu.nlp.nlp.engineml.rteflow.systems.FeatureVectorStructure;

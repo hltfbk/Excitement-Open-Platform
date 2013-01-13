@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

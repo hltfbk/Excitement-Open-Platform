@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.safemodel;
-
 import ac.biu.nlp.nlp.engineml.version.AbstractVersion;
 import ac.biu.nlp.nlp.engineml.version.BuildType;
 

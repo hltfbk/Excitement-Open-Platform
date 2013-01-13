@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.document_sublayer;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.Workarounds.ANNOTATOR_FAILURE_IS_BLOCKING;
 
 import java.util.ArrayList;
@@ -9,10 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.codeannotations.Workaround;
 import ac.biu.nlp.nlp.engineml.datastructures.DsUtils;
@@ -31,6 +26,9 @@ import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationExceptio
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 /**
  * 

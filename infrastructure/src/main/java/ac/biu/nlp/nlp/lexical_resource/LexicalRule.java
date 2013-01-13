@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource;
-
 import java.io.Serializable;
 
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;

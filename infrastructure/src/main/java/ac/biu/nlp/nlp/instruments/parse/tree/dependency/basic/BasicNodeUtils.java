@@ -3,10 +3,9 @@ package ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-
-import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 
 public class BasicNodeUtils
 {

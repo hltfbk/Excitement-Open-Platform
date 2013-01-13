@@ -1,8 +1,5 @@
 package ac.biu.nlp.nlp.engineml.representation;
-
 import java.io.Serializable;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 
 import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.NegationAndUncertainty;
@@ -11,6 +8,7 @@ import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
 import ac.biu.nlp.nlp.engineml.representation.srl.SemanticRoleLabelSet;
 import ac.biu.nlp.nlp.engineml.representation.srl.SrlPredicateId;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.ContentAncestorSetter;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * 
@@ -48,7 +46,7 @@ public class AdditionalNodeInformation implements Serializable
 	
 	
 	/**
-	 * This is a label for {@link AdditionalNodeInformation}s pertaining to verbs ({@link CanonicalPosTag}{@code .VERB}) that says
+	 * This is a label for {@link AdditionalNodeInformation}s pertaining to verbs ({@link SimplerCanonicalPosTag}{@code .VERB}) that says
 	 * whether the verb's monotonicity value is UP or DOWN. This is useful cos if a verb is UP, you can calmly delete its modifiers and preserve
 	 * entailment.  
 	 * <br>For example: 

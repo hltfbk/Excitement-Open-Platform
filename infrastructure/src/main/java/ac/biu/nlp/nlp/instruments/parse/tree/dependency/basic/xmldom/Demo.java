@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import eu.excitementproject.eop.common.utilities.match.Matcher;
-
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
@@ -34,6 +32,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerato
 import ac.biu.nlp.nlp.instruments.tokenizer.MaxentTokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
+import eu.excitementproject.eop.common.utilities.match.Matcher;
 
 public class Demo
 {

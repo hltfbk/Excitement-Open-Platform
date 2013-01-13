@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.parse.easyfirst;
-
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;

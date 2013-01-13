@@ -1,14 +1,7 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
@@ -27,6 +20,11 @@ import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 public class DemoInteractiveRTEPairsSystem
 {

@@ -1,14 +1,9 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
-
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.specifications.SubstitutionSubtreeSpecification;
@@ -19,6 +14,9 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 
 /**

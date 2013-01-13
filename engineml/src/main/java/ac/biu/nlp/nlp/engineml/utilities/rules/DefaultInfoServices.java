@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.rules;
-
 import ac.biu.nlp.nlp.engineml.operations.operations.RuleRhsInstantiation;
 import ac.biu.nlp.nlp.engineml.utilities.InfoServices;
 import ac.biu.nlp.nlp.engineml.utilities.InfoServicesUtils;

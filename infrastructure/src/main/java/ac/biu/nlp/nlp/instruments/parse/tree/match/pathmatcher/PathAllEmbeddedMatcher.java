@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * Much like {@link AllEmbeddedMatcher}, but only for tested-trees that are paths

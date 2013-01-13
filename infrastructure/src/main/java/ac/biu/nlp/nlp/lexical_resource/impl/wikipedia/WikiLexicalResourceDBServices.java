@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wikipedia;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,13 +14,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 
 
@@ -154,7 +152,7 @@ public class WikiLexicalResourceDBServices {
 
 		COOCURENCE_THRESHOLD = cocurrence_threshold;	// may be null
 		this.PERMITTED_EXTRACTION_TYPES = permittedExtractionTypes ;
-		try {	NOUN = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);	}
+		try {	NOUN = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);	}
 		catch (UnsupportedPosTagStringException e) {	throw new LexicalResourceException("Internal error", e);	}
 	}
 	

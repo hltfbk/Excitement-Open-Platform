@@ -2,15 +2,10 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wiktionary;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryEntry;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
@@ -20,6 +15,9 @@ import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import ac.biu.nlp.nlp.lexical_resource.impl.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * <b>ERROR:</b> right now there is a slight defect, that makes the {@link #getRulesForLeft(String, PartOfSpeech)} and {@link #getRulesForRight(String, PartOfSpeech)}

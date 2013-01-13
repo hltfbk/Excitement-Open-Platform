@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi;
-
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetPartOfSpeech;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;

@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wiktionary;
-
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionarySense;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;

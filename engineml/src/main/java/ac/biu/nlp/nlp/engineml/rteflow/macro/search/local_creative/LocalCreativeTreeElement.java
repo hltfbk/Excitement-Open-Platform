@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.local_creative;
-
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;

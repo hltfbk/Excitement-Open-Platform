@@ -2,14 +2,11 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
@@ -23,6 +20,9 @@ import ac.biu.nlp.nlp.instruments.postagger.MaxentPosTagger;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
 import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * This class extracts hypernyms of words out of their wiki sense descriptions. It does so by prefixing gloss descriptions with "WORD is ..." and parsing 
@@ -102,7 +102,7 @@ public class WktGlossParser {
 				throw new WiktionaryException("Error constructing EnglishTreeAndParentMap out of the sentence: " + sentence, e);
 			}
 			
-			if (!pos.getCanonicalPosTag().equals(CanonicalPosTag.VERB))
+			if (!simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.VERB))
 				// noun glosses are parsed differently, and the relevant subtree needs to be pinpointed
 				parseTree = findParentOfWord(term, sentence, nodesList, treeAndParentMap );	
 			
@@ -126,7 +126,7 @@ public class WktGlossParser {
 	private List<String> splitIntoSentences(String term, PartOfSpeech pos, String gloss) throws JwktlException {
 		if (gloss.length() == 0)
 			return new Vector<String>();
-		if (pos.getCanonicalPosTag().equals(CanonicalPosTag.VERB))
+		if (simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.VERB))
 			return splitIntoSentencesForVerb(gloss);
 		// else
 			return splitIntoSentencesForNoun(term, gloss);
@@ -169,7 +169,7 @@ public class WktGlossParser {
 			String part = parts[i].trim(); 					// trim is important
 			String firstWord = part.split(" ")[0];
 			if (firstWord.toLowerCase().equals("to") || 
-				posTag(part).get(0).getPartOfSpeech().getCanonicalPosTag().equals(CanonicalPosTag.VERB))	// first word is a verb
+					simplerPos(posTag(part).get(0).getPartOfSpeech().getCanonicalPosTag()).equals(SimplerCanonicalPosTag.VERB))	// first word is a verb
 			{
 				// open a new sentence
 				glosses.add(currGloss.toString() + PERIOD);

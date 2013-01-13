@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.rulematcher;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,8 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.datastructures.FlippedBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
@@ -41,6 +38,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerato
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * Match rules using the engine's code, and print the matched trees to DOTs

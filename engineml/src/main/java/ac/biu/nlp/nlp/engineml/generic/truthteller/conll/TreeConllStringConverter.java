@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.conll;
-
 import java.util.Map;
 
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

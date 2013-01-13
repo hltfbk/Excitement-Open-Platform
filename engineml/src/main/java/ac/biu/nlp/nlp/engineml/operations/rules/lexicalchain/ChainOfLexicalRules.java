@@ -1,10 +1,9 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
-
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * A {@link LexicalRule} which is actually a chain of lexical rules.
@@ -25,9 +24,9 @@ public class ChainOfLexicalRules extends LexicalRule
 		if (null==chain) throw new TeEngineMlException("Null chain");
 		if (chain.size()==0)throw new TeEngineMlException("Empty chain");
 		if (!chain.get(0).getRule().getLhsLemma().equals(lhsLemma)) throw new TeEngineMlException("Bad chain: expected: "+lhsLemma+" but found: "+chain.get(0).getRule().getLhsLemma()+parametersDescription(lhsLemma,  lhsPos, rhsLemma, rhsPos, confidence, chain));
-		if (!chain.get(0).getRule().getLhsPos().getCanonicalPosTag().equals(lhsPos.getCanonicalPosTag())) throw new TeEngineMlException("Bad chain: expected pos: "+lhsPos.getCanonicalPosTag()+", but found: "+chain.get(0).getRule().getLhsPos().getCanonicalPosTag()+parametersDescription(lhsLemma,  lhsPos, rhsLemma, rhsPos, confidence, chain));
+		if (!chain.get(0).simplerPos(getRule().getLhsPos().getCanonicalPosTag()).equals(simplerPos(lhsPos.getCanonicalPosTag()))) throw new TeEngineMlException("Bad chain: expected pos: "+simplerPos(lhsPos.getCanonicalPosTag())+", but found: "+chain.get(0).simplerPos(getRule().getLhsPos().getCanonicalPosTag())+parametersDescription(lhsLemma,  lhsPos, rhsLemma, rhsPos, confidence, chain));
 		if (!chain.get(chain.size()-1).getRule().getRhsLemma().equals(rhsLemma)) throw new TeEngineMlException("Bad chain: expected rhsLemma: "+rhsLemma+" but found: "+chain.get(chain.size()-1).getRule().getRhsLemma()+parametersDescription(lhsLemma,  lhsPos, rhsLemma, rhsPos, confidence, chain));
-		if (!chain.get(chain.size()-1).getRule().getRhsPos().getCanonicalPosTag().equals(rhsPos.getCanonicalPosTag())) throw new TeEngineMlException("Bad chain: expected rhs pos: "+rhsPos.getCanonicalPosTag()+", but found: "+chain.get(chain.size()-1).getRule().getRhsPos().getCanonicalPosTag()+parametersDescription(lhsLemma,  lhsPos, rhsLemma, rhsPos, confidence, chain));
+		if (!chain.get(chain.size()-1).simplerPos(getRule().getRhsPos().getCanonicalPosTag()).equals(simplerPos(rhsPos.getCanonicalPosTag()))) throw new TeEngineMlException("Bad chain: expected rhs pos: "+simplerPos(rhsPos.getCanonicalPosTag())+", but found: "+chain.get(chain.size()-1).simplerPos(getRule().getRhsPos().getCanonicalPosTag())+parametersDescription(lhsLemma,  lhsPos, rhsLemma, rhsPos, confidence, chain));
 	}
 
 	public ImmutableList<LexicalRuleWithName> getChain()

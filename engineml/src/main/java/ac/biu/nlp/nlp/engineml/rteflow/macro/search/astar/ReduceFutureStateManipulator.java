@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.astar;
-
 import ac.biu.nlp.nlp.engineml.rteflow.macro.search.astar.AStarAlgorithm.StateCalculations;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.search.astar.AStarAlgorithm.StateManipulator;
 

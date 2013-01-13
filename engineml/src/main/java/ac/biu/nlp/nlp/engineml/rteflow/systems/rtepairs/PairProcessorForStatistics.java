@@ -1,13 +1,9 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.Table;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
@@ -28,6 +24,8 @@ import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.Table;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 
 /**

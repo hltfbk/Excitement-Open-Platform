@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.rules;
-
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;

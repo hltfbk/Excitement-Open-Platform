@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro;
-
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -7,9 +6,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
@@ -23,6 +19,7 @@ import ac.biu.nlp.nlp.engineml.plugin.PluginException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.FeatureUpdate;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.TextTreesProcessor;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeAndFeatureVector;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistoryComponent;
@@ -42,6 +39,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 
 /**
  * This class performs the operations on a given tree.

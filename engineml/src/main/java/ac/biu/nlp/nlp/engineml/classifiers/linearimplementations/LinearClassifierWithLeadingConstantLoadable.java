@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.linearimplementations;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;
 import ac.biu.nlp.nlp.engineml.classifiers.io.LoadableClassifier;

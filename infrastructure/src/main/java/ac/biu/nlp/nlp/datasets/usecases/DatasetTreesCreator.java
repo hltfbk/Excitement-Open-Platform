@@ -8,13 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassificationType;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.minipar.AbstractMiniparParser;
@@ -29,6 +22,12 @@ import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerato
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.nagel.NagelSentenceSplitter;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassificationType;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 
 
 /**

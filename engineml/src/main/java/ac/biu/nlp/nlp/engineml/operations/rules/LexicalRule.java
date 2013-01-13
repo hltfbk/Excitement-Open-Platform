@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-
 import java.io.Serializable;
 
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;

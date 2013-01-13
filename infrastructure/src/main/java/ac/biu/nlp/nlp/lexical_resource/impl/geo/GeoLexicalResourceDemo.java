@@ -2,17 +2,15 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.geo;
-
 import java.util.List;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
  * @author Amnon Lotan
@@ -31,7 +29,7 @@ public class GeoLexicalResourceDemo {
 		System.out.println("Start \n*****************************\n");
 
 		String lLemma = "San Jose";
-		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 		String rLemma = "United Kingdom";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		

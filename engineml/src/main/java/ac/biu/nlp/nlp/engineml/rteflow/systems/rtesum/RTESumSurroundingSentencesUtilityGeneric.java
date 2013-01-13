@@ -1,16 +1,14 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaData;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess.GenericPreprocessedTopicDataSet;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaData;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
  * 

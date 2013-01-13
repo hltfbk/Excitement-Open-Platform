@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LABELED_SAMPLES_FILE_POSTFIX;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LABELED_SAMPLES_FILE_PREFIX;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_PREDICTIONS_INDICATOR;
@@ -19,16 +18,6 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.ExperimentManager;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswerScoreComputer;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileWriter;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileWriter;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
@@ -46,6 +35,15 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswerScoreComputer;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileWriter;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
  * An executable class that performs training over RTE-Summarization full data-set.

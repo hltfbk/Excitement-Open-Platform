@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler;
-
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 
 /**

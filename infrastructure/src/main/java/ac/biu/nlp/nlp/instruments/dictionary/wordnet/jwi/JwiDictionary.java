@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

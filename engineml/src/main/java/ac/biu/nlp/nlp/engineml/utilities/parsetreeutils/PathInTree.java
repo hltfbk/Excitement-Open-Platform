@@ -1,7 +1,5 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
-
 import java.util.List;
-
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 

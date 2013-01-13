@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.builder;
-
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
 import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;

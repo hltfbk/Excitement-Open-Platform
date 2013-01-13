@@ -2,19 +2,12 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.utilities.AllChoices;
-import eu.excitementproject.eop.common.utilities.ChoiceHandler;
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
@@ -24,6 +17,11 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyR
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDependencyException;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.AllChoices;
+import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
+import eu.excitementproject.eop.common.utilities.ChoiceHandler;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 /**
  * A handy set of utilities that scan an {@link AbstractNode}'s subtree, parsed by {@link EasyFirstParser}, for certain dominated words. 
@@ -137,7 +135,7 @@ public class ParseTreeUtils {
 				parentTerms.addAll(getEntailedModifiersOf(child));
 				break;
 			case rcmod:		//relations that define quasi entailment from parent to child, so long as the child isn't a verb
-				if(	!InfoGetFields.getPartOfSpeechObject(child.getInfo()).getCanonicalPosTag().equals(CanonicalPosTag.VERB)	)
+				if(	!InfoGetFields.getPartOfSpeechObject(child.getInfo()).getCanonicalPosTag().equals(SimplerCanonicalPosTag.VERB)	)
 					modifiers.addAll(	getEntailedModifiersOf(child));	
 				break;
 			case amod:	case nn:

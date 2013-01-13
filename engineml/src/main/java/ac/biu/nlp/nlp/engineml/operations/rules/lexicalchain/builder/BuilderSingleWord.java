@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.builder;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -7,11 +8,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.LexicalRuleWithName;
@@ -19,6 +15,10 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 
 /**
@@ -143,7 +143,7 @@ public class BuilderSingleWord
 				{
 					if (rule.getRLemma().equalsIgnoreCase(lemma))
 					{
-						if (!rule.getRPos().getCanonicalPosTag().equals(pos.getCanonicalPosTag())){throw new TeEngineMlException("Bad rule from lexical resource: "+resourceEntry.getKey()+": Requested right lemma was: "+lemma+", with part of speech: "+pos+", but returned lemma is: "+rule.getRLemma()+" with part of speech: "+rule.getRPos());}
+						if (!simplerPos(rule.getRPos().getCanonicalPosTag()).equals(simplerPos(pos.getCanonicalPosTag()))){throw new TeEngineMlException("Bad rule from lexical resource: "+resourceEntry.getKey()+": Requested right lemma was: "+lemma+", with part of speech: "+pos+", but returned lemma is: "+rule.getRLemma()+" with part of speech: "+rule.getRPos());}
 						LexicalRuleWithName lexicalRuleWithName = fromInfrastructureLexicalRule(rule,resourceEntry.getKey());
 						int newChainLength = 1;
 						if (rhs.getChain()!=null){newChainLength+=rhs.getChain().getChain().size();}

@@ -2,22 +2,20 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
-
 import java.io.File;
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
 
 /**
  * @author Amnon Lotan
@@ -43,7 +41,7 @@ public class SimilarityLexicalResourceDemo {
 		AbstractSimilarityLexicalResource lexResource = new LinProximityOriginalLexicalResource(params);
 		
 		String lemma = "left";
-		PartOfSpeech pos = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+		PartOfSpeech pos = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 		List<LexicalRule<? extends RuleInfo>> rules = lexResource.getRulesForRight(lemma, pos);
 		
 		System.out.println("Found " +rules.size()+" right rules for <"+ lemma+", "+ pos+">");

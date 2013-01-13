@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.catvar;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,15 +7,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.Utils;
-
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 public class DemoForCatVar
 {
@@ -54,19 +54,19 @@ public class DemoForCatVar
 			PartOfSpeech posObj = null;
 			if (pos.equalsIgnoreCase("V"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(CanonicalPosTag.VERB);
+				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB);
 			}
 			else if (pos.equalsIgnoreCase("N"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 			}
 			else if (pos.equalsIgnoreCase("ADV"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(CanonicalPosTag.ADVERB);
+				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADVERB);
 			}
 			else if (pos.equalsIgnoreCase("ADJ"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(CanonicalPosTag.ADJECTIVE);
+				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
 			}
 			
 			List<LexicalRule<? extends EmptyRuleInfo>> rules = catvarResource.getRulesForLeft(word, posObj);
@@ -78,7 +78,7 @@ public class DemoForCatVar
 			{
 				for (LexicalRule<? extends EmptyRuleInfo> rule : rules)
 				{
-					System.out.println(rule.getRLemma()+"/"+rule.getRPos().getCanonicalPosTag().name());
+					System.out.println(rule.getRLemma()+"/"+simplerPos(rule.getRPos().getCanonicalPosTag()).name());
 				}
 			}
 

@@ -2,16 +2,15 @@ package ac.biu.nlp.nlp.instruments.coreference.merge;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.datastructures.IteratorByMultipleIterables;
-import eu.excitementproject.eop.common.utilities.match.MatchFinder;
-import eu.excitementproject.eop.common.utilities.match.Matcher;
-import eu.excitementproject.eop.common.utilities.match.Operator;
-
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.english.EnglishCorefMerger;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.IteratorByMultipleIterables;
+import eu.excitementproject.eop.common.utilities.match.MatchFinder;
+import eu.excitementproject.eop.common.utilities.match.Matcher;
+import eu.excitementproject.eop.common.utilities.match.Operator;
 
 
 /**

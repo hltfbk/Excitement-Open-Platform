@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.local_creative;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY;
 
 import java.util.ArrayList;
@@ -15,9 +14,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCalculator;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
@@ -48,6 +44,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 /**
  * Implementation of LLGS algorithm

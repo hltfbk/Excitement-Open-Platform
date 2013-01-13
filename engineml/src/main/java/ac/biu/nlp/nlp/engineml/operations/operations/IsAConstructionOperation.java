@@ -1,8 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
-
-import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
-import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import ac.biu.nlp.nlp.engineml.datastructures.FromBidirectionalMapValueSetMap;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.specifications.IsASpecification;
@@ -11,6 +7,9 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.EasyFirst_IsA_Constructor;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
  * 

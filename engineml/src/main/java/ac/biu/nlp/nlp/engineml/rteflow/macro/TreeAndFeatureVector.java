@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import java.io.Serializable;
 import java.util.Map;
 
@@ -42,4 +41,3 @@ public class TreeAndFeatureVector implements Serializable
 	private Map<Integer, Double> featureVector;
 
 }
-

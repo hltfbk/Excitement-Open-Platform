@@ -18,12 +18,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
-import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
-
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
 
 
 /**

@@ -1,7 +1,9 @@
 package ac.biu.nlp.nlp.tcpip;
 
 import java.util.ArrayList;
+
 import ac.biu.nlp.nlp.instruments.parse.minipar.MiniparJni;
+import ac.biu.nlp.nlp.instruments.parse.minipar.NetworkDemo;
 
 
 /**

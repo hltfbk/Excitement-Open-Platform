@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.specifications;
-
 import java.util.List;
 
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;

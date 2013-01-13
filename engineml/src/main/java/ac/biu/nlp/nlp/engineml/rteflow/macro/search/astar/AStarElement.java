@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.astar;
-
 import java.util.Map;
 
 import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;

@@ -1,5 +1,14 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.graphbased;
+import java.util.List;
+import java.util.Set;
 
+import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
+import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 //import java.io.File;
 //import java.io.FileNotFoundException;
 //import java.io.IOException;
@@ -8,13 +17,7 @@ package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.graphbased;
 //import java.util.HashMap;
 //import java.util.HashSet;
 //import java.util.LinkedHashMap;
-import java.util.List;
 //import java.util.Map;
-import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 //import java.util.Vector;
 //
 //import org.BIU.utils.Serializer;
@@ -29,11 +32,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 //import ac.biu.nlp.models.LexicalModelException;
 //import ac.biu.nlp.models.PLM;
 //import ac.biu.nlp.models.PLMFactory;
-import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
-import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
 //import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
-import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
-import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
 //import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.LexicalRuleWithName;
 //import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 //import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
@@ -167,7 +166,7 @@ public class PlisRuleBase extends ByLemmaPosLexicalRuleBase<ChainOfLexicalRules>
 //	public ImmutableSet<ChainOfLexicalRules> getRules(String lhsLemma, PartOfSpeech lhsPos) throws RuleBaseException {
 //		ImmutableSet<ChainOfLexicalRules> rules;
 //		try {
-//			LemmaAndPos lhs = new LemmaAndPos(lhsLemma, new UnspecifiedPartOfSpeech(lhsPos.getCanonicalPosTag()));
+//			LemmaAndPos lhs = new LemmaAndPos(lhsLemma, new UnspecifiedPartOfSpeech(simplerPos(lhsPos.getCanonicalPosTag())));
 //			if (m_lhsChainsMap.containsKey(lhs))
 //				rules = m_lhsChainsMap.get(lhs);
 //			else

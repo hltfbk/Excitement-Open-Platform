@@ -1,9 +1,5 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.File;
-
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
@@ -12,6 +8,8 @@ import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 public class DemoShowGenericRules
 {

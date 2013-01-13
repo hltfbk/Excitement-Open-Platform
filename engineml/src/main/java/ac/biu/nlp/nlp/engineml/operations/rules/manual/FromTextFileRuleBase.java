@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.manual;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,11 +12,6 @@ import java.util.Vector;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-
 import ac.biu.nlp.nlp.engineml.operations.rules.BagOfRulesRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
@@ -28,6 +22,10 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicTreeFormalString;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicTreeFormalString.EnglishTreeFormalStringException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 
 /**
  * This rule base contains rules that are loaded from a text file that

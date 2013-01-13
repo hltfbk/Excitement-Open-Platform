@@ -1,16 +1,10 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.DummySet;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
@@ -19,6 +13,10 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.InfoServices;
 import ac.biu.nlp.nlp.engineml.utilities.rules.ExtendedInfoServices;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.DummySet;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 
 /**
  * An operations which replaces a sub-tree of the original tree by a new sub-tree.

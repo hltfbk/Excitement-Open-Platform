@@ -1,14 +1,12 @@
 package ac.biu.nlp.nlp.engineml.plugin;
-
 import java.util.List;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;
 import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;
 import ac.biu.nlp.nlp.engineml.operations.updater.FeatureVectorUpdater;
 import ac.biu.nlp.nlp.engineml.rteflow.micro.perform.PerformFactory;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 
 /**
  * Plug-in is a list of {@link PerformFactory}, which is a data-structure of:

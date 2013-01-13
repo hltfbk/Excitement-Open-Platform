@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
-
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * 
@@ -19,7 +19,7 @@ public final class CanonicalLemmaAndPos
 		super();
 		if (null==lemma) throw new TeEngineMlException("null lemma");
 		if (null==pos) throw new TeEngineMlException("null pos");
-		if (null==pos.getCanonicalPosTag()) throw new TeEngineMlException("null canonical pos");
+		if (null==simplerPos(pos.getCanonicalPosTag())) throw new TeEngineMlException("null canonical pos");
 		this.lemma = lemma;
 		this.pos = pos;
 	}
@@ -44,7 +44,7 @@ public final class CanonicalLemmaAndPos
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((lemma == null) ? 0 : lemma.hashCode());
-		result = prime * result + ((pos.getCanonicalPosTag() == null) ? 0 : pos.getCanonicalPosTag().hashCode());
+		result = prime * result + ((simplerPos(pos.getCanonicalPosTag()) == null) ? 0 : simplerPos(pos.getCanonicalPosTag()).hashCode());
 		return result;
 	}
 	
@@ -64,11 +64,11 @@ public final class CanonicalLemmaAndPos
 				return false;
 		} else if (!lemma.equals(other.lemma))
 			return false;
-		if (pos.getCanonicalPosTag() == null)
+		if (simplerPos(pos.getCanonicalPosTag()) == null)
 		{
-			if (other.pos.getCanonicalPosTag() != null)
+			if (simplerPos(other.pos.getCanonicalPosTag()) != null)
 				return false;
-		} else if (!pos.getCanonicalPosTag().equals(other.pos.getCanonicalPosTag()))
+		} else if (!simplerPos(pos.getCanonicalPosTag()).equals(simplerPos(other.pos.getCanonicalPosTag())))
 			return false;
 		return true;
 	}

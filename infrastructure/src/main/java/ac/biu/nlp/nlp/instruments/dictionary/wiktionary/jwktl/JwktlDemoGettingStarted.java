@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl;
-
 import java.util.List;
 
 import de.tudarmstadt.ukp.wiktionary.api.Language;

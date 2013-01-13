@@ -5,12 +5,11 @@ package ac.biu.nlp.nlp.instruments.dictionary.wiktionary;
 
 import java.util.List;
 
+import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.JwktlDictionary;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-
-import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.JwktlDictionary;
 
 /**
  * @author Amnon Lotan
@@ -29,7 +28,7 @@ public class WiktionaryDemo {
 		
 		String lemma = "dog";
 		
-		WiktionaryPartOfSpeech wktPos = WiktionaryPartOfSpeech.toWiktionaryPartOfspeech(new UnspecifiedPartOfSpeech( CanonicalPosTag.NOUN));
+		WiktionaryPartOfSpeech wktPos = WiktionaryPartOfSpeech.toWiktionaryPartOfspeech(new UnspecifiedPartOfSpeech( CanonicalPosTag.N));
 		List<WiktionarySense> senses = wiktionary.getSortedSensesOf(lemma, wktPos);
 //		for (List<WktSense> senseList : senses.values())
 		{

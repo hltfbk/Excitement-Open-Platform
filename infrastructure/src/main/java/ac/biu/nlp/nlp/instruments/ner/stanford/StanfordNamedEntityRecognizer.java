@@ -1,11 +1,10 @@
 package ac.biu.nlp.nlp.instruments.ner.stanford;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Map;
-
 
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityPhrase;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
@@ -14,10 +13,9 @@ import ac.biu.nlp.nlp.instruments.ner.NamedEntityWord;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
-
-import edu.stanford.nlp.ie.crf.*;
-import edu.stanford.nlp.ling.Word;
+import edu.stanford.nlp.ie.crf.CRFClassifier;
 import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.ling.Word;
 
 
 

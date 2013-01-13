@@ -11,7 +11,6 @@ import java.util.NoSuchElementException;
 
 import javax.xml.bind.JAXBException;
 
-
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 

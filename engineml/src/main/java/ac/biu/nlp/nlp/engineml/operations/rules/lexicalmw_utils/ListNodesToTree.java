@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalmw_utils;
-
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Queue;

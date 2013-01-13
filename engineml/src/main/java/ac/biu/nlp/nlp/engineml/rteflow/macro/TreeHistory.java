@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -7,13 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
-
 import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistoryComponent.TreeHistoryComponentType;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.TreeHistoryUtilities;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 
 
 /**

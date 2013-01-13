@@ -1,12 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import java.util.LinkedHashMap;
-
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 
 import ac.biu.nlp.nlp.engineml.plugin.PluginAdministrationException;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
@@ -14,6 +10,7 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.FeatureVectorStructureOrganizer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.FindMainVerbHeuristic;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 
 /**
  * Used to create an initial feature-vector, i.e. a feature vector of a tree from the 

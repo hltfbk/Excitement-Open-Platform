@@ -2,12 +2,10 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.representation.annotations;
-
-
-import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ComplementRelations;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 
 /**
  * <b>IMPORTANT!</b> each enum const must be accounted for in {@link #getPositiveSide(StanfordDepedencyRelationType)}, 

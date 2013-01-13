@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import java.awt.Component;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +7,6 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.text.JTextComponent;
-
 
 import com.inet.jortho.FileUserDictionary;
 import com.inet.jortho.SpellChecker;

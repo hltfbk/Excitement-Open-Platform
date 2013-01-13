@@ -1,13 +1,11 @@
 package ac.biu.nlp.nlp.engineml.utilities.legacy;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-//import org.BIU.utils.logging.EL;
-
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+//import org.BIU.utils.logging.EL;
 
 /**
  * The <code>ExperimentLogger</code> is a class, in Utils project, in package

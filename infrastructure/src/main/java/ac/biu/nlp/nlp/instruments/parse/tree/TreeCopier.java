@@ -1,10 +1,10 @@
 package ac.biu.nlp.nlp.instruments.parse.tree;
 
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 /**
  * This class is used to create a copy of a given tree. The original tree and its copy might

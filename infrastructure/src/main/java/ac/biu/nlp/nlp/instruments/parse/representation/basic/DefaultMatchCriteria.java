@@ -3,8 +3,8 @@ package ac.biu.nlp.nlp.instruments.parse.representation.basic;
 
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
-import ac.biu.nlp.nlp.instruments.parse.tree.match.Matcher;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatchCriteria;
+import ac.biu.nlp.nlp.instruments.parse.tree.match.Matcher;
 
 /**
  * A simple {@link MatchCriteria} for {@link BasicNode}.

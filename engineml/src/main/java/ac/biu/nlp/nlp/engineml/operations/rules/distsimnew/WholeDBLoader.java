@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsimnew;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_DRIVER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_URL;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.LIMIT_NUMBER_OF_RULES;
@@ -20,6 +19,10 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.engineml.operations.rules.distsim.DistSimParameters;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
+import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
@@ -27,11 +30,6 @@ import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
-import ac.biu.nlp.nlp.engineml.operations.rules.distsim.DistSimParameters;
-import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
-import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 
 /**
  * Loads the whole data-base of a DIRT-like rules.

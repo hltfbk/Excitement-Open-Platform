@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-
 import java.util.Set;
 
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;

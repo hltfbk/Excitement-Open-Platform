@@ -1,23 +1,21 @@
 
 package ac.biu.nlp.nlp.lexical_resource.impl.custom;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
 
 /**
  * A lexical resource based on a two-column text-file. 
@@ -36,7 +34,7 @@ public class FileBasedLexicalResourceWithPos extends FileBasedLexicalResource {
 	 * <li>POS_separator - pattern of lemma-part of speech separator, e.g. ":".
 	 * <li>table_separator - pattern of column-separator, e.g. "->".
 	 * <li>part_of_speech - canonical name of a default part-of-speech for this rule-base. 
-	 * For possible values, see {@link CanonicalPosTag}. The default part-of-speech will be used in cases 
+	 * For possible values, see {@link SimplerCanonicalPosTag}. The default part-of-speech will be used in cases 
 	 * where a part-of-speech was not provided for a certain lemma.    
 	 * <li>relation_name - name of relation to put in rules (the same for all rules).
 	 * <li>(NOTE: The params.getModuleName() is used as the resource_name).  
@@ -132,7 +130,7 @@ public class FileBasedLexicalResourceWithPos extends FileBasedLexicalResource {
 			FileBasedLexicalResourceWithPos biLingDict = new FileBasedLexicalResourceWithPos(dictParams);
 			
 			String enTerm = "country";
-			PartOfSpeech pos = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+			PartOfSpeech pos = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 			System.out.println("Rules for right for "+enTerm+":"+pos);
 			List<LexicalRule<? extends RuleInfo>> rules = 
 					biLingDict.getRulesForRight(enTerm, pos);
@@ -143,7 +141,7 @@ public class FileBasedLexicalResourceWithPos extends FileBasedLexicalResource {
 			}
 			System.out.println();
 			String fTerm = "comisión";
-			PartOfSpeech fPos = null;//new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+			PartOfSpeech fPos = null;//new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 			System.out.println("Rules for left for "+fTerm+":"+fPos);
 			rules = biLingDict.getRulesForLeft(fTerm, fPos);
 			for(LexicalRule<? extends RuleInfo> rule : rules){

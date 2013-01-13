@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.datastructures;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;

@@ -6,11 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.instruments.lemmatizer.GateLemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
@@ -25,6 +20,10 @@ import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
 import ac.biu.nlp.nlp.instruments.tokenizer.MaxentTokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * This class combines several instruments to lexically process (i.e. no parsing) a sentence.

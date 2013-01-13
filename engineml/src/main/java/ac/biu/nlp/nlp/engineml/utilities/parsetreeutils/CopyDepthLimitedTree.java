@@ -1,12 +1,11 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 /**
  * Copies a given tree, up to a given depth.<BR>

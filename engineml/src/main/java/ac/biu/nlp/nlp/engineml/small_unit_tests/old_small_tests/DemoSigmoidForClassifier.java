@@ -1,7 +1,6 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests.old_small_tests;
-
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
 public class DemoSigmoidForClassifier
 {

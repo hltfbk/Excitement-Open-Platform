@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
-
 import ac.biu.nlp.nlp.engineml.utilities.BIUTEEBaseException;
 
 /**

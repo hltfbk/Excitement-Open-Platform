@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;

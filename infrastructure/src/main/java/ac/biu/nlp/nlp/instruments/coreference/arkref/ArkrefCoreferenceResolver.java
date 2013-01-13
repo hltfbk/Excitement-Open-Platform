@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.util.List;
 
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
-
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
@@ -16,6 +14,7 @@ import ac.biu.nlp.nlp.instruments.coreference.merge.CorefMergeException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 import ac.biu.nlp.nlp.instruments.coreference.merge.english.EnglishCorefMerger;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**
  * A coreference resolver, running Arkref ({@link ArkrefClient}) for a given text and further merging this output with parse trees, representing the text.

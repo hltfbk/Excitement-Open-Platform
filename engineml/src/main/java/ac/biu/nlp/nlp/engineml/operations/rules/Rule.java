@@ -1,12 +1,10 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-
 import java.io.Serializable;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * A Rule is:

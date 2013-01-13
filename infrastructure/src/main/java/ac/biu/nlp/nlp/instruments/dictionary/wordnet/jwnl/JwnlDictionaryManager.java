@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwnl;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,12 +6,11 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.UUID;
 
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
-
 import net.didion.jwnl.JWNL;
 import net.didion.jwnl.JWNLException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetInitializationException;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 
 /**

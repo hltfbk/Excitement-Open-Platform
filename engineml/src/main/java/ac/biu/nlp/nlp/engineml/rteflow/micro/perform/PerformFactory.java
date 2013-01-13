@@ -1,6 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro.perform;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;
@@ -16,6 +14,7 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 
 /**
  * 

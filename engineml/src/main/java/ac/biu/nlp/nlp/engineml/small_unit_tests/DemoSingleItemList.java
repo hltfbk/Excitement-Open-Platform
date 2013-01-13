@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.util.ListIterator;
 
 import ac.biu.nlp.nlp.engineml.datastructures.SingleItemList;

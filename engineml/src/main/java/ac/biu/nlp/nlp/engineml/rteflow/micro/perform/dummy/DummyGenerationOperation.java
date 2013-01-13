@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro.perform.dummy;
-
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

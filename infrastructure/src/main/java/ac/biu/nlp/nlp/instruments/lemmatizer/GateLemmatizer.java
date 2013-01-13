@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.instruments.lemmatizer;
-
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import gate.creole.ResourceInstantiationException;
 import gate.creole.morph.Interpret;
 
@@ -94,11 +94,11 @@ public class GateLemmatizer implements Lemmatizer
 		String category = null;
 		if (partOfSpeech!=null)
 		{
-			if (partOfSpeech.getCanonicalPosTag().equals(CanonicalPosTag.VERB))
+			if (simplerPos(partOfSpeech.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.VERB))
 				category = GATE_LEMMATIZER_VERB_CATEGORY_STRING;
-			else if (partOfSpeech.getCanonicalPosTag().equals(CanonicalPosTag.NOUN))
+			else if (simplerPos(partOfSpeech.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.NOUN))
 				category = GATE_LEMMATIZER_NOUN_CATEGORY_STRING;
-			else if (partOfSpeech.getCanonicalPosTag().equals(CanonicalPosTag.PRONOUN))
+			else if (simplerPos(partOfSpeech.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 				category = GATE_LEMMATIZER_NOUN_CATEGORY_STRING;
 			else
 				category = null;

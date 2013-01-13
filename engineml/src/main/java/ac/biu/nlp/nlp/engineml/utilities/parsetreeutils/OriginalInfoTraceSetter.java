@@ -1,8 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalInformationServices;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
@@ -12,6 +8,9 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.engineml.representation.OriginalInfoTrace;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * Given a generated-tree, and a tree from which that generated-tree was generated,

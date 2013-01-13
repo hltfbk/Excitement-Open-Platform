@@ -2,14 +2,10 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct;
-
 import java.util.Iterator;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
-
-import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
+import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
@@ -17,6 +13,8 @@ import ac.biu.nlp.nlp.instruments.parse.minipar.AbstractMiniparParser;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * @author Amnon Lotan
@@ -134,7 +132,7 @@ public class SpecialRuleApplicationUtils {
 	private static ExtendedConstructionNode skipPrepositionNodes(ExtendedConstructionNode node, StanfordDepedencyRelationType relation) throws AnnotatorException {
 		ExtendedConstructionNode ret;
 		if (	!relation.equals(StanfordDepedencyRelationType.prep) || 
-				!ExtendedInfoGetFields.getCanonicalPartOfSpeech(node.getInfo()).equals(CanonicalPosTag.PREPOSITION) || 
+				!ExtendedInfoGetFields.getCanonicalPartOfSpeech(node.getInfo()).equals(SimplerCanonicalPosTag.PREPOSITION) || 
 				!node.hasChildren())
 			// in case this node is not a 'prep', nor a PREPOSITION, or has no children (a parser error, but a benign one), it doesn't get any special prep-skipping 
 			// treatment and is returned as is.

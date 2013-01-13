@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.kstaged.localcreative;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

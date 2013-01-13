@@ -1,19 +1,16 @@
 package ac.biu.nlp.nlp.engineml.classifiers.linearimplementations;
-
-
 import java.util.Map;
 import java.util.Vector;
-
-import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
-import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
-import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
-import ac.biu.nlp.nlp.engineml.classifiers.TrainableClassifier;
 
 import jnisvmlight.FeatureVector;
 import jnisvmlight.LabeledFeatureVector;
 import jnisvmlight.SVMLightInterface;
 import jnisvmlight.SVMLightModel;
 import jnisvmlight.TrainingParameters;
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
+import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
+import ac.biu.nlp.nlp.engineml.classifiers.TrainableClassifier;
 
 /**
  * A wrapper of SVM-light classifier.

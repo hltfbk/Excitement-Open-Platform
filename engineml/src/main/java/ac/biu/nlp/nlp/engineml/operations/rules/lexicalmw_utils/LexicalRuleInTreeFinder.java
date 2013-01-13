@@ -1,15 +1,10 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalmw_utils;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
@@ -26,6 +21,9 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 
 /**

@@ -2,12 +2,9 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.application;
-
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.datastructures.FlippedBidirectionalMap;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorException;
@@ -22,6 +19,7 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.AllEmbeddedMatcher;
 import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * This class holds several static methods used by {@link DefaultAnnotationRuleApplier}

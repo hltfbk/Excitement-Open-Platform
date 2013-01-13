@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-
 import java.util.LinkedHashSet;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.distsimnew.DirtDBRuleBase;

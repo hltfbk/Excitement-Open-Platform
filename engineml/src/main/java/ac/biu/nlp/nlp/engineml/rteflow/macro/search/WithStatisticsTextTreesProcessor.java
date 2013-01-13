@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search;
-
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TextTreesProcessor;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 

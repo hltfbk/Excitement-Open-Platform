@@ -1,11 +1,8 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.alignment.DefaultAlignmentCriteria;
@@ -25,6 +22,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 
 /**

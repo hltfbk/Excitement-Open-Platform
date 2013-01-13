@@ -10,6 +10,7 @@ package ac.biu.nlp.nlp.datasets.trec.jaxb_generated.fbis;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

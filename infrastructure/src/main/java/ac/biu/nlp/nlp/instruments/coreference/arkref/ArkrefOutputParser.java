@@ -12,8 +12,8 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
+import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 
 /**

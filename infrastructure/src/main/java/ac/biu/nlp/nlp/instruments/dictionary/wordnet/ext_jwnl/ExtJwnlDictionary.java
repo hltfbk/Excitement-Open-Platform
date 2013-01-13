@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.ext_jwnl;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

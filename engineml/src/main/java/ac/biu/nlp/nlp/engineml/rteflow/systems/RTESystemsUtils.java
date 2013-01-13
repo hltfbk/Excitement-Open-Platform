@@ -1,6 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems;
-
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.LEXICAL_RESOURCES_RETRIEVE_MULTIWORDS_PARAMETER_NAME;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_ENGINE_UNIGRAM_LIDSTON_SER_FILE;
@@ -27,13 +25,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.ExperimentManager;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
 import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
@@ -68,6 +59,12 @@ import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamples;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.classifiers_io.SafeClassifiersIO;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 
 /**

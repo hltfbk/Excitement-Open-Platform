@@ -3,10 +3,9 @@ package ac.biu.nlp.nlp.instruments.coreference.merge;
 import java.util.HashMap;
 import java.util.Map;
 
-import eu.excitementproject.eop.common.utilities.match.Operator;
-
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
+import eu.excitementproject.eop.common.utilities.match.Operator;
 
 
 // THE USER SHOULD HANDLE THE EXCEPTION (this.exception)

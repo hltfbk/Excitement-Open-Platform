@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.utilities.view;
-
 import java.util.Map;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;

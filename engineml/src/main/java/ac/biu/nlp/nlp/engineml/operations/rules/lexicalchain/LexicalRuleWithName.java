@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain;
-
 import java.io.Serializable;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
@@ -46,4 +45,3 @@ public class LexicalRuleWithName implements Serializable
 	private final LexicalRule rule;
 	private final String ruleBaseName;
 }
-

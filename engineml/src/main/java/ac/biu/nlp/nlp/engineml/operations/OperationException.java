@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations;
-
 import ac.biu.nlp.nlp.engineml.operations.operations.GenerationOperation;
 import ac.biu.nlp.nlp.engineml.utilities.BIUTEEBaseException;
 

@@ -1,14 +1,9 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
@@ -20,6 +15,9 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 
 /**

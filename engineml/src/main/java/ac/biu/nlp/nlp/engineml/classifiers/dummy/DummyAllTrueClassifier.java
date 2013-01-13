@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.dummy;
-
 import java.util.Map;
 import java.util.Vector;
 

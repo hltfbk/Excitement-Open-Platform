@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.script;
-
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
 
 /**

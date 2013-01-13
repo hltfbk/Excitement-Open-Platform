@@ -6,11 +6,14 @@ import arkref.analysis.ARKref.Opts;
 import arkref.analysis.Sem;
 import arkref.analysis.SyntacticPaths;
 import arkref.analysis.Types;
-import arkref.data.*;
+import arkref.data.Document;
+import arkref.data.Mention;
+import arkref.data.Sentence;
 import arkref.parsestuff.AnalysisUtilities;
 import arkref.parsestuff.TregexPatternFactory;
-import edu.stanford.nlp.trees.*;
-import edu.stanford.nlp.trees.tregex.*;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.trees.tregex.TregexMatcher;
+import edu.stanford.nlp.trees.tregex.TregexPattern;
 
 /**
  * This is a copy of the class arkref.analysis.Resolve.

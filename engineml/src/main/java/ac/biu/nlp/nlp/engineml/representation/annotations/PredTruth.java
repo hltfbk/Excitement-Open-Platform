@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.representation.annotations;
-
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 
 /**

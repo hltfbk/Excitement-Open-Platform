@@ -1,6 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
-
 import java.util.List;
 
 import org.apache.log4j.Logger;

@@ -1,4 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_POSTFIX;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_PREDICTIONS_INDICATOR;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_PREFIX;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_SEARCH_INDICATOR;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,13 +23,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.ExperimentManager;
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
@@ -53,12 +50,12 @@ import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationExceptio
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-
-
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_PREFIX;
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_POSTFIX;
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_SEARCH_INDICATOR;
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.LEARNING_MODEL_FILE_PREDICTIONS_INDICATOR;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * 

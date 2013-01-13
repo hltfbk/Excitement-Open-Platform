@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum.preprocess;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_DO_NER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_DO_TEXT_NORMALIZATION;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_SUM_DATASET_DIR_NAME;
@@ -18,16 +17,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6DatasetLoader;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
-import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.InstrumentsFactory;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
@@ -38,6 +27,15 @@ import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6DatasetLoader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
  * Executable class that makes pre-processing to the whole data-set, and stores

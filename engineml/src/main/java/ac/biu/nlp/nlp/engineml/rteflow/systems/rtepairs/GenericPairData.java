@@ -1,14 +1,12 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 
 /**
  * Contains information about Text-Hypothesis pair of the official RTE dataset (1-5).

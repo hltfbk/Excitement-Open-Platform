@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
-
 import java.sql.PreparedStatement;
 
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;

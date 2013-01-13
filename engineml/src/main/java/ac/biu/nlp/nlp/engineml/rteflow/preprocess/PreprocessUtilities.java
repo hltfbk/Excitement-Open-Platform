@@ -1,12 +1,9 @@
 package ac.biu.nlp.nlp.engineml.rteflow.preprocess;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.match.Matcher;
 
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
@@ -25,6 +22,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.match.Matcher;
 
 /**
  * 

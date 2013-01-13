@@ -1,16 +1,8 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests.old_small_tests;
-
 import java.io.File;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
@@ -21,6 +13,12 @@ import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.ParserRunException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
+import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 
 public class DemoFindMainVerbHeuristics
 {

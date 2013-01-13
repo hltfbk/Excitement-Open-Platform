@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.version.changelog;
-
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.List;

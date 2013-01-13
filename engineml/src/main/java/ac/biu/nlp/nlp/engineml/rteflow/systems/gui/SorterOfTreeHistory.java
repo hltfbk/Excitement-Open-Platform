@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,12 +10,11 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.utilities.Utils;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistoryComponent;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 /**
  * To be used to display the history with colors indicating the more expensive and less

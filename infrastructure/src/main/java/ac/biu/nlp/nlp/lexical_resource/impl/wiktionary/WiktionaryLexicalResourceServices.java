@@ -2,16 +2,12 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wiktionary;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryDictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryEntry;
@@ -23,6 +19,8 @@ import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.JwktlDictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.JwktlException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 /**
  * A class of package-visible service methods that use {@link WktDictionary} for {@link WiktionaryLexicalResource}

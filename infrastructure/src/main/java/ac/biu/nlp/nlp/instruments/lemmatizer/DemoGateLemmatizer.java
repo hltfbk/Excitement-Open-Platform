@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.instruments.lemmatizer;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.File;
 
@@ -32,7 +33,7 @@ public class DemoGateLemmatizer
 				System.out.println(lemma);
 				System.out.println("--------------------");
 				PartOfSpeech pos = new FakePartOfSpeech("n");
-				System.out.println(pos.getCanonicalPosTag().name());
+				System.out.println(simplerPos(pos.getCanonicalPosTag()).name());
 				lemmatizer.set("children",pos);
 				lemmatizer.process();
 				lemma = lemmatizer.getLemma();
@@ -65,9 +66,9 @@ public class DemoGateLemmatizer
 		protected void setCanonicalPosTag()
 		{
 			if (this.posTagString.equals("v"))
-				canonicalPosTag = CanonicalPosTag.VERB;
+				canonicalPosTag = CanonicalPosTag.V;
 			else if (this.posTagString.equals("n"))
-				canonicalPosTag = CanonicalPosTag.NOUN;
+				canonicalPosTag = CanonicalPosTag.N;
 			else
 				canonicalPosTag = CanonicalPosTag.OTHER;
 		}

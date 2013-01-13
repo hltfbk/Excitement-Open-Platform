@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities;
-
 import ac.biu.nlp.nlp.engineml.rteflow.macro.AbstractTextTreesProcessor;
 
 /**

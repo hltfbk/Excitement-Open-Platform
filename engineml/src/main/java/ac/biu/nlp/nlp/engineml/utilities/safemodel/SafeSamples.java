@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.safemodel;
-
 import java.io.Serializable;
 import java.util.Vector;
 

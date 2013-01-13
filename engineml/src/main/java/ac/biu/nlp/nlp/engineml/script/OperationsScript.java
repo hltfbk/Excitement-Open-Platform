@@ -1,16 +1,10 @@
 package ac.biu.nlp.nlp.engineml.script;
-
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaLexicalRuleBase;
@@ -24,6 +18,10 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * Defines the operations and their ordering that are involved in constructing a proof.

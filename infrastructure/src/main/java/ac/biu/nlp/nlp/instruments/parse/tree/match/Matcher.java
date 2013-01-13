@@ -6,15 +6,14 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.utilities.AllChoices;
-import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
-
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultMatchCriteria;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.utilities.AllChoices;
+import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
 
 /**
  * Matching two trees. Tests whether "testedTree" is embedded in "mainTree", and if it is - 

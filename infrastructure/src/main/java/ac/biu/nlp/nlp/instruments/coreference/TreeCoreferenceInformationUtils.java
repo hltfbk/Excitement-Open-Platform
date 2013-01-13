@@ -2,10 +2,9 @@ package ac.biu.nlp.nlp.instruments.coreference;
 
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 public class TreeCoreferenceInformationUtils
 {

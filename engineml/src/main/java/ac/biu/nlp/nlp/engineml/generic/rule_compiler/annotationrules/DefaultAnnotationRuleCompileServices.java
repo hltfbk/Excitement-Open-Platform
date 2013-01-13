@@ -1,12 +1,9 @@
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.charger.CgxMultipleChoiceExpander;
@@ -33,6 +30,7 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DependencyRelation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.SyntacticInfo;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 /**
  * Default implementation of {@link AnnotationRuleCompileServices}, for interpreting the String values in rule CGX/XML files meant to be annotation rules, 

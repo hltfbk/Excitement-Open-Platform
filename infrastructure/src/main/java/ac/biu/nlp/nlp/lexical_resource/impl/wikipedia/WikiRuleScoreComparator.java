@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wikipedia;
-
 import java.util.Comparator;
 
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;

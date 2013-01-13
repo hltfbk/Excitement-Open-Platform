@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.version.changelog;
-
 import ac.biu.nlp.nlp.engineml.version.Version;
 
 /**

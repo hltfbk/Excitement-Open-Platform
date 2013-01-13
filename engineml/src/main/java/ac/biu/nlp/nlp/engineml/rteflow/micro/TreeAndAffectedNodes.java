@@ -1,11 +1,9 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro;
-
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 /**
  * 

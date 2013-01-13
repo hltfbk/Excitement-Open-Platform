@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -7,10 +6,9 @@ import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import ac.biu.nlp.nlp.engineml.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-
-import ac.biu.nlp.nlp.engineml.rteflow.systems.SystemInitialization;
 
 /**
  * Loads a file of stop-words, and provides them as an {@link ImmutableSet}.

@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

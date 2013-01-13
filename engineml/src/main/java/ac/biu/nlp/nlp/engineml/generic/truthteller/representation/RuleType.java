@@ -2,13 +2,11 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.truthteller.representation;
-
 import java.util.HashSet;
-
-import eu.excitementproject.eop.common.utilities.Utils;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.AnnotationRuleApplierFactory;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.ct.ClauseTruthAnnotationRuleApplier;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 /**
  * This enums all the types and subtypes of entailment rules and annotation rules that the engine may use vis a vis

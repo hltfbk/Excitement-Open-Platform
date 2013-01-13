@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import static javax.swing.SwingUtilities.invokeLater;
 
 import java.awt.BorderLayout;
@@ -31,13 +30,12 @@ import javax.swing.event.ChangeListener;
 
 import org.apache.log4j.Logger;
 
+import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.file.FileFilterByExtension;
-
-import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 
 /**
  * 

@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,11 +9,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 
 /**
  * <b>Resource description</b>: Directional similarity rules calculated using the balancedAP (bap) measure over Reuters RCV1 corpus with dependency-based features. Downloabable from our homepage.<br>

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,10 +7,9 @@ import java.io.ObjectInputStream;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 /**
  * 

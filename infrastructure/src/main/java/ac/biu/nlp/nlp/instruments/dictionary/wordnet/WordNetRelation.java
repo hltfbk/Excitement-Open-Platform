@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet;
-
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi.JwiSensedWord;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi.JwiSynset;
 

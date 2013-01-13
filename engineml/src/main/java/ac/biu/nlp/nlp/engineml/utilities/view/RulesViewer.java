@@ -1,10 +1,7 @@
 package ac.biu.nlp.nlp.engineml.utilities.view;
-
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
@@ -13,6 +10,7 @@ import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.NodeString;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 
 /**

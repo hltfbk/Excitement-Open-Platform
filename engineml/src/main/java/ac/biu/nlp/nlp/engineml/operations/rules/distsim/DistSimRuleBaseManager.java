@@ -1,16 +1,19 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsim;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_DRIVER;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.DB_URL;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.LIMIT_NUMBER_OF_RULES;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RULES_TABLE_NAME;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.TEMPLATES_TABLE_NAME;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.*;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 
 /**

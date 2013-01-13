@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.multiword_namedentity_utils;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -8,12 +7,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
@@ -28,6 +21,11 @@ import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * 
@@ -46,8 +44,8 @@ public class MultiWordNamedEntityUtils
 		ValueSetMap<BasicNode, List<BasicNode>> vsmNeInTree = mapNamedEntitiesFromTree(hypothesisTree);
 		for (BasicNode lhsNode : vsmNeInTree.keySet())
 		{
-			CanonicalPosTag pos = InfoGetFields.getCanonicalPartOfSpeech(lhsNode.getInfo());
-			if (pos!=null){ if (pos.equals(CanonicalPosTag.NOUN))
+			SimplerCanonicalPosTag pos = InfoGetFields.getCanonicalPartOfSpeech(lhsNode.getInfo());
+			if (pos!=null){ if (pos.equals(SimplerCanonicalPosTag.NOUN))
 			{
 				for (List<BasicNode> neList : vsmNeInTree.get(lhsNode))
 				{

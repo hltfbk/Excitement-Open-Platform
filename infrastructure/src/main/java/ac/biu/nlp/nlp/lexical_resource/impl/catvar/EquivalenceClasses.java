@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.catvar;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;

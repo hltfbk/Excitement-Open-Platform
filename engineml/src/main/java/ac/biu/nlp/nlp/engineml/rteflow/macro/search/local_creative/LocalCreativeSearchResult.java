@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro.search.local_creative;
-
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeAndFeatureVector;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;

@@ -1,15 +1,14 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsimnew;
-
-//import java.util.HashSet;
-//import java.util.Hashtable;
-//import java.util.LinkedHashSet;
-//import java.util.LinkedList;
-//import java.util.List;
 import java.util.Set;
 
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+//import java.util.HashSet;
+//import java.util.Hashtable;
+//import java.util.LinkedHashSet;
+//import java.util.LinkedList;
+//import java.util.List;
 //
 //import org.BIU.NLP.DIRT.binary.BinaryDIRTUtils;
 //import org.BIU.NLP.DIRT.binary.GraphPathExtractor;

@@ -1,7 +1,7 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
@@ -22,7 +22,7 @@ public enum WordNetPartOfSpeech
 	 */
 	public static WordNetPartOfSpeech toWordNetPartOfspeech(PartOfSpeech abstractPos)
 	{
-		switch (abstractPos.getCanonicalPosTag())
+		switch (simplerPos(abstractPos.getCanonicalPosTag()))
 		{
 			case ADJECTIVE:
 				return ADJECTIVE;
@@ -40,9 +40,9 @@ public enum WordNetPartOfSpeech
 	public UnspecifiedPartOfSpeech toPartOfSpeech() throws WordNetException
 	{
 		try {
-			return new UnspecifiedPartOfSpeech(CanonicalPosTag.valueOf(this.name()));
+			return new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.valueOf(this.name()));
 		} catch (UnsupportedPosTagStringException e) {
-			throw new WordNetException("Internal bug! this value WordNetPartOfSpeech."+this.name()+" isn't a CanonicalPosTag");
+			throw new WordNetException("Internal bug! this value WordNetPartOfSpeech."+this.name()+" isn't a SimplerCanonicalPosTag");
 		}
 	}
 	

@@ -1,16 +1,15 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller.conll;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
-
+import ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.conll.RuleConllStringConverter;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**
  * Convert a  tree(s) into CoNLL String/file format.<br>

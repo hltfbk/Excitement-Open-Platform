@@ -1,16 +1,14 @@
 package ac.biu.nlp.nlp.engineml.alignment;
-
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.SingleTreeEvaluations;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 
 /**
  * 

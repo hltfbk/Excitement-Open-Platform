@@ -1,18 +1,10 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import ac.biu.nlp.nlp.engineml.builtin_knowledge.KnowledgeResource;
@@ -28,6 +20,14 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * 
@@ -54,7 +54,7 @@ public class DemoSimpleLexicalChain
 		BuilderSetOfWords builder = new BuilderSetOfWords(con.constructResources(),params.getInt(ConfigurationParametersNames.SIMPLE_LEXICAL_CHAIN_DEPTH_PARAMETER_NAME));
 		System.out.println("2");
 		Set<LemmaAndPos> setWords = new LinkedHashSet<LemmaAndPos>();
-		setWords.add(new LemmaAndPos("machine", new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN)));
+		setWords.add(new LemmaAndPos("machine", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)));
 		ImmutableSet<LemmaAndPos> imSetWords = new ImmutableSetWrapper<LemmaAndPos>(setWords);
 		System.out.println("3");
 		builder.createRuleBase(imSetWords);
@@ -73,7 +73,7 @@ public class DemoSimpleLexicalChain
 				for (LexicalRuleWithName rule_ : chain.getChain())
 				{
 					LexicalRule rule = rule_.getRule();
-					System.out.print(rule.getLhsLemma()+"["+rule.getLhsPos().getCanonicalPosTag().name()+"] => "+rule.getRhsLemma()+"["+rule.getRhsPos().getCanonicalPosTag().name()+"] ");
+					System.out.print(rule.getLhsLemma()+"["+simplerPos(rule.getLhsPos().getCanonicalPosTag()).name()+"] => "+rule.getRhsLemma()+"["+simplerPos(rule.getRhsPos().getCanonicalPosTag()).name()+"] ");
 				}
 				System.out.println();
 			}

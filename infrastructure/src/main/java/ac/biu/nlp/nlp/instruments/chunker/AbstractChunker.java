@@ -5,9 +5,8 @@ package ac.biu.nlp.nlp.instruments.chunker;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 
 /**

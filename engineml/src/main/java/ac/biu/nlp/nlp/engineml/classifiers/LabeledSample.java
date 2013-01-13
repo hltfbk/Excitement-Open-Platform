@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers;
-
 import java.io.Serializable;
 import java.util.Map;
 

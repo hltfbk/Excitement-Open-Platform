@@ -1,9 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro;
+import static ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations.getParserMode;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 
 import ac.biu.nlp.nlp.engineml.operations.specifications.MoveNodeSpecification;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
@@ -15,7 +14,7 @@ import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.PathInTree;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations.PARSER;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
-import static ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserSpecificConfigurations.getParserMode;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 
 /**
  * This class contains several static methods that give information about a path

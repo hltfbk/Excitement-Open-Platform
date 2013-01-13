@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.codeannotations;
-
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;

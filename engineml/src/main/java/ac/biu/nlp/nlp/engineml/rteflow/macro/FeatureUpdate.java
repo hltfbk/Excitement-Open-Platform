@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.USE_MLE_FOR_INSERTION_COST;
 
 import java.util.HashSet;
@@ -7,10 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ConfidenceChainItem;
 import ac.biu.nlp.nlp.engineml.operations.specifications.InsertNodeSpecification;
@@ -38,6 +33,9 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 
 /**

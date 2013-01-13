@@ -1,9 +1,8 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.custom;
-
 import java.io.IOException;
 
 import eu.excitementproject.eop.common.datastructures.ValueSetMapFromStringCreator;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -25,14 +24,14 @@ public class FileBasedLexicalResource extends ValueSetMapLexicalResource {
 	 * @param params configuration params for initialization. Should include:
 	 * <li>table_file - path to the file that contains the rules, in table format. Can also be a URL.
 	 * <li>table_separator - pattern of column-separator, e.g. "->".
-	 * <li>part_of_speech - canonical name of the part-of-speech for this rule-base. For possible values, see {@link CanonicalPosTag}.
+	 * <li>part_of_speech - canonical name of the part-of-speech for this rule-base. For possible values, see {@link SimplerCanonicalPosTag}.
 	 * <li>relation_name - name of relation to put in rules (the same for all rules).
 	 * <li>(NOTE: The params.getModuleName() is used as the resource_name).  
 	 */
 	public FileBasedLexicalResource(ConfigurationParams params) throws UnsupportedPosTagStringException, IOException, ConfigurationException {
 		super(
 				ValueSetMapFromStringCreator.mapFromConfigurationParams(params), 
-				params.getEnum(CanonicalPosTag.class, "part_of_speech"), 
+				params.getEnum(SimplerCanonicalPosTag.class, "part_of_speech"), 
 				params.getModuleName(),
 				params.getString("relation_name"));
 	}

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import static javax.swing.SwingUtilities.invokeLater;
 
 import java.awt.BorderLayout;
@@ -53,13 +52,12 @@ import javax.swing.text.JTextComponent;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-
 import ac.biu.nlp.nlp.engineml.rteflow.macro.Feature;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.gui.SpellCheckerRegister.SpellCheckerRegisterResult;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.version.Version;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
 /**
  * 

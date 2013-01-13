@@ -1,6 +1,5 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBase;
@@ -11,6 +10,7 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * Finds lexical rules of type {@link ChainOfLexicalRules} that can be applied on the given tree and their right-hand-side
@@ -63,10 +63,10 @@ public class Substitution2DChainOfLexicalRulesByLemmaPosFinder extends Substitut
 		{
 			sb.append("[").append(realRule.getRuleBaseName()).append(" ");
 			sb.append(realRule.getRule().getLhsLemma());
-			sb.append("/").append(realRule.getRule().getLhsPos().getCanonicalPosTag().name());
+			sb.append("/").append(simplerPos(realRule.getRule().getLhsPos().getCanonicalPosTag()).name());
 			sb.append("==>");
 			sb.append(realRule.getRule().getRhsLemma());
-			sb.append("/").append(realRule.getRule().getRhsPos().getCanonicalPosTag().name());
+			sb.append("/").append(simplerPos(realRule.getRule().getRhsPos().getCanonicalPosTag()).name());
 			sb.append(" ");
 			sb.append(String.format("%-4.4f", realRule.getRule().getConfidence()));
 			sb.append("] ");

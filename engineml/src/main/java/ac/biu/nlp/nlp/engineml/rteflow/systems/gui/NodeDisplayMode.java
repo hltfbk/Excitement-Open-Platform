@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import ac.biu.nlp.nlp.engineml.representation.AnnotatedExtendedNodeAndEdgeString;
 import ac.biu.nlp.nlp.engineml.representation.AnnotatedLemmaPosExtendedNodeAndEdgeString;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;

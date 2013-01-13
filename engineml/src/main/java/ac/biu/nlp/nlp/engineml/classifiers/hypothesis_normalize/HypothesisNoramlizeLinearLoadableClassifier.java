@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers.hypothesis_normalize;
-
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
 import ac.biu.nlp.nlp.engineml.classifiers.io.LearningModel;

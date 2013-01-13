@@ -1,11 +1,7 @@
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.Constants;
@@ -21,6 +17,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractConstructionNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 
 /**
  * This class helps {@link EntailmentRuleCompiler} in compiling rule files into {@link Rule}s, by performing some operations specific to

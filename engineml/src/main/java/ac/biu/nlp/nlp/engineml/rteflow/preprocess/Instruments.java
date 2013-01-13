@@ -1,11 +1,10 @@
 package ac.biu.nlp.nlp.engineml.rteflow.preprocess;
-
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
 import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
 import ac.biu.nlp.nlp.instruments.parse.BasicParser;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 
 
 /**

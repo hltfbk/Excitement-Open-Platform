@@ -2,18 +2,16 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wikipedia;
-
 import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.utilities.Utils;
-
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
 
 
 /**
@@ -36,7 +34,7 @@ public class WikipediaLexicalResourceDemo {
 	
 
 		String lLemma = "wednesday";
-		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(CanonicalPosTag.NOUN);
+		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 		String rLemma = "Microsoft Windows";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		

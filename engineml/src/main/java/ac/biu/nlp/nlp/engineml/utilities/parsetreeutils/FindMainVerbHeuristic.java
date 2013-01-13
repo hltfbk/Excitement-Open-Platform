@@ -1,17 +1,17 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.InfoObservations;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 
 /**
@@ -69,7 +69,7 @@ public class FindMainVerbHeuristic
 		if (InfoObservations.infoHasLemma(info))
 		{
 			PartOfSpeech pos = InfoGetFields.getPartOfSpeechObject(info);
-			if (pos.getCanonicalPosTag()==CanonicalPosTag.VERB)
+			if (simplerPos(pos.getCanonicalPosTag())==SimplerCanonicalPosTag.VERB)
 				ret = true;
 		}
 		return ret;

@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.utilities;
-
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 
 

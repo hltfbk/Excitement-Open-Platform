@@ -1,6 +1,4 @@
 package ac.biu.nlp.nlp.engineml.classifiers;
-
-
 import java.util.Map;
 
 /**

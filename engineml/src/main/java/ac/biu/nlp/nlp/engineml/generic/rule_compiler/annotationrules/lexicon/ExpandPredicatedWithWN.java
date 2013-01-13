@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules.lexicon;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -11,14 +10,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.Vector;
-
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
-import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.CompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompilerParameterNames;
@@ -31,6 +22,13 @@ import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetPartOfSpeech;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi.JwiDictionary;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**
  * This class is an executable that gets: the single word predicate lexicon properties file, word net dictionary path, and path to a new expanded lexicon. 

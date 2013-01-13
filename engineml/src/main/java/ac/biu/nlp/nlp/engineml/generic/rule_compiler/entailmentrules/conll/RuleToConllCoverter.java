@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.conll;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -7,12 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompilerParameterNames;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.entailmentrules.EntailmentCompilationException;
@@ -24,6 +17,11 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNodeUtils;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 /**
  * Convert a {@link Rule} or a set of rules into CoNLL String/file format.<br>

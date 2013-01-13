@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl;
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -15,6 +14,7 @@ import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryDictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryEntry;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryPartOfSpeech;
+import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionarySense;
 import ac.biu.nlp.nlp.instruments.parse.easyfirst.EasyFirstParser;
 import de.tudarmstadt.ukp.wiktionary.api.Language;

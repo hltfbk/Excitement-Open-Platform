@@ -6,13 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.utilities.AllChoices;
-import eu.excitementproject.eop.common.utilities.ChoiceHandler;
 import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
-
-import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.utilities.ChoiceHandler;
 
 
 /**

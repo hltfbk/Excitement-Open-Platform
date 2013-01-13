@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.verb_ocean;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,19 +16,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.common.datastructures.Pair;
-import eu.excitementproject.eop.common.datastructures.PairMap;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-
 import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
 import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.datastructures.Pair;
+import eu.excitementproject.eop.common.datastructures.PairMap;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 
 /**
@@ -113,7 +113,7 @@ public class VerbOceanLexicalResource extends LexicalResourceNothingToClose<Verb
 			if (allowedRelationTypes.contains(forbiddenRelationType))
 				throw new LexicalResourceException("The given allowed relation types set "+allowedRelationTypes+" contains a forbidden relation type " + forbiddenRelationType);
 				
-		try {		VERB = new UnspecifiedPartOfSpeech(CanonicalPosTag.VERB);	}
+		try {		VERB = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB);	}
 		catch (UnsupportedPosTagStringException e) {	throw new LexicalResourceException("Internal error", e);	}
 		
 		PairMap<String, LexicalRule<? extends VerbOceanRuleInfo>> mapRulesByUnorderedPair = new PairMap<String, LexicalRule<? extends VerbOceanRuleInfo>>();
@@ -184,7 +184,7 @@ public class VerbOceanLexicalResource extends LexicalResourceNothingToClose<Verb
 		if (lemma == null)
 			throw new LexicalResourceException("lemma is null");
 		List<LexicalRule<? extends VerbOceanRuleInfo>> rules = new Vector<LexicalRule<? extends VerbOceanRuleInfo>>(); 
-		if((pos==null || pos.getCanonicalPosTag() == CanonicalPosTag.VERB) &&
+		if((pos==null || simplerPos(pos.getCanonicalPosTag()) == SimplerCanonicalPosTag.VERB) &&
 				mapRulesByEntailedVerb.containsKey(lemma)){
 			rules.addAll(mapRulesByEntailedVerb.get(lemma));
 		}
@@ -210,7 +210,7 @@ public class VerbOceanLexicalResource extends LexicalResourceNothingToClose<Verb
 		if (lemma == null)
 			throw new LexicalResourceException("lemma is null");
 		List<LexicalRule<? extends VerbOceanRuleInfo>> rules = new Vector<LexicalRule<? extends VerbOceanRuleInfo>>(); 
-		if((pos==null || pos.getCanonicalPosTag() == CanonicalPosTag.VERB) &&
+		if((pos==null || simplerPos(pos.getCanonicalPosTag()) == SimplerCanonicalPosTag.VERB) &&
 				mapRulesByEntailingVerb.containsKey(lemma)){
 			rules.addAll(mapRulesByEntailingVerb.get(lemma));
 		}
@@ -240,8 +240,8 @@ public class VerbOceanLexicalResource extends LexicalResourceNothingToClose<Verb
 		if (rightLemma == null)
 			throw new LexicalResourceException("right lemma is null");
 		List<LexicalRule<? extends VerbOceanRuleInfo>> rules = new ArrayList<LexicalRule<? extends VerbOceanRuleInfo>>();
-		if((leftPos==null || leftPos.getCanonicalPosTag() == CanonicalPosTag.VERB) &&
-				(rightPos==null || rightPos.getCanonicalPosTag() == CanonicalPosTag.VERB)){
+		if((leftPos==null || simplerPos(leftPos.getCanonicalPosTag()) == SimplerCanonicalPosTag.VERB) &&
+				(rightPos==null || simplerPos(rightPos.getCanonicalPosTag()) == SimplerCanonicalPosTag.VERB)){
 			LexicalRule<? extends VerbOceanRuleInfo> rule = mapRulesByEntailmentPair.get(new EntailmentPair(leftLemma, rightLemma));
 			if(rule != null){
 				rules.add(rule);

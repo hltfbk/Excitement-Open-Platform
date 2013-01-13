@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.rteflow.systems.gui;
-
 import java.util.HashMap;
 import java.util.Map;
 

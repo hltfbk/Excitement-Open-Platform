@@ -1,21 +1,24 @@
 package ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom;
 
+import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.TreeToElement.ANTECEDENT_ATTRIBUTE_NAME;
+import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.TreeToElement.CHILDREN_ELEMENT_NAME;
+import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.TreeToElement.COREFERENCE_GROUP_ATTRIBUTE_NAME;
+import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.TreeToElement.XML_UNIQUE_ID_ATTRIBUTE_NAME;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
-import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
-
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
-import static ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.xmldom.TreeToElement.*;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
 
 
 /**

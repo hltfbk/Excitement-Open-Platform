@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems.rtesum;
-
 import ac.biu.nlp.nlp.engineml.script.HypothesisInformation;
 import ac.biu.nlp.nlp.engineml.script.OperationsScript;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

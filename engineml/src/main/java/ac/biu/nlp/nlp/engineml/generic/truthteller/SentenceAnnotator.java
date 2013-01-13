@@ -1,9 +1,8 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
-
-import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * Annotates a tree - assigns values to the annotation fields in

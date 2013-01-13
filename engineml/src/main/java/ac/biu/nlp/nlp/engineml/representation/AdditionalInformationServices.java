@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.representation;
-
 import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation.Monotonicity;
 import ac.biu.nlp.nlp.engineml.representation.annotations.ClauseTruth;
 import ac.biu.nlp.nlp.engineml.representation.annotations.NegationAndUncertainty;

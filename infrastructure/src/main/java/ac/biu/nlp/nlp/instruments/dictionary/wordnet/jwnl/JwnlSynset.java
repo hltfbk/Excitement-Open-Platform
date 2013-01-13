@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwnl;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

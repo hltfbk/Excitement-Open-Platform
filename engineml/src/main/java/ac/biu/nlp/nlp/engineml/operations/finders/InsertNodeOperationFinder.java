@@ -1,9 +1,6 @@
 package ac.biu.nlp.nlp.engineml.operations.finders;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCalculator;
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
@@ -13,6 +10,7 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 
 /**

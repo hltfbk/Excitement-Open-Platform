@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.representation.srl;
-
 import java.io.Serializable;
 
 /**

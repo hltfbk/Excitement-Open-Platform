@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.engineml.rteflow.systems;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.RTE_TRAIN_AND_TEST_STOP_WORDS;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.FILTER_STOP_WORDS_IN_LEXICAL_RESOURCES;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -11,12 +11,6 @@ import java.net.MalformedURLException;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.alignment.DefaultAlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.AnnotatorFactory;
@@ -36,6 +30,11 @@ import ac.biu.nlp.nlp.engineml.utilities.UnigramProbabilityEstimation;
 import ac.biu.nlp.nlp.instruments.lemmatizer.GateLemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * Performs some initializations required for any flow of the system (by "flow"

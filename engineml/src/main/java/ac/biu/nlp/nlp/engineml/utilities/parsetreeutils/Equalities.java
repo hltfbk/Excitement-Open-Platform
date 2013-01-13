@@ -1,9 +1,7 @@
 package ac.biu.nlp.nlp.engineml.utilities.parsetreeutils;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.Map;
-
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCalculator;
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
@@ -11,6 +9,8 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 
 /**
  * Contains criteria about equalities of two nodes or two edges.
@@ -44,8 +44,8 @@ public class Equalities
 		String lemma1 = InfoGetFields.getLemma(info1);
 		String lemma2 = InfoGetFields.getLemma(info2);
 		
-		CanonicalPosTag canonicalPos1 = InfoGetFields.getPartOfSpeechObject(info1).getCanonicalPosTag();
-		CanonicalPosTag canonicalPos2 = InfoGetFields.getPartOfSpeechObject(info2).getCanonicalPosTag();
+		SimplerCanonicalPosTag canonicalPos1 = simplerPos(InfoGetFields.getPartOfSpeechObject(info1).getCanonicalPosTag());
+		SimplerCanonicalPosTag canonicalPos2 = simplerPos(InfoGetFields.getPartOfSpeechObject(info2).getCanonicalPosTag());
 		if ( (lemma1.equalsIgnoreCase(lemma2)) && (canonicalPos1.equals(canonicalPos2)))
 			return true;
 		else
@@ -89,8 +89,8 @@ public class Equalities
 	public static final boolean posEqual(PartOfSpeech textPos, PartOfSpeech hypothesisPos)
 	{
 		if (textPos==hypothesisPos)return true;
-		CanonicalPosTag canonicalText = (null==textPos)?CanonicalPosTag.OTHER:textPos.getCanonicalPosTag();
-		CanonicalPosTag canonicalhypothesis = (null==hypothesisPos)?CanonicalPosTag.OTHER:hypothesisPos.getCanonicalPosTag();
+		SimplerCanonicalPosTag canonicalText = (null==textPos)?SimplerCanonicalPosTag.OTHER:simplerPos(textPos.getCanonicalPosTag());
+		SimplerCanonicalPosTag canonicalhypothesis = (null==hypothesisPos)?SimplerCanonicalPosTag.OTHER:simplerPos(hypothesisPos.getCanonicalPosTag());
 		
 		if (canonicalText.equals(canonicalhypothesis))
 			return true;

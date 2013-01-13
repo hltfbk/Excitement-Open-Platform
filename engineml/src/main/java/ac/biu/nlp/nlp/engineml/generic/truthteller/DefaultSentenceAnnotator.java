@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,10 +6,6 @@ import java.io.ObjectInputStream;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.AnnotationRuleApplier;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.application.AnnotationRuleApplierFactory;
@@ -33,6 +28,9 @@ import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedRulesViewer;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeCopier.InfoConverter;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
 /**
  * Applies all the annotation rules on the tree under the given ExtendedNode, assumed to be one whole sentence.

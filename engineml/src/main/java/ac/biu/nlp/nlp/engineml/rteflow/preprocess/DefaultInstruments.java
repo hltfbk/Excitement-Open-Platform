@@ -1,10 +1,10 @@
 package ac.biu.nlp.nlp.engineml.rteflow.preprocess;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_BART_PORT;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_BART_SERVER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_COREFERENCE_RESOLUTION_ENGINE;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_DO_NER;
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_STANFORD_NE_CLASSIFIER_PATH;
+import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.USE_NUMBER_NORMALIZER;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,11 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 import ac.biu.nlp.nlp.engineml.codeannotations.Workaround;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.Workarounds;
@@ -48,7 +43,10 @@ import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
 import ac.biu.nlp.nlp.instruments.sentencesplit.nagel.NagelSentenceSplitter;
 import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
 import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
-import static ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.USE_NUMBER_NORMALIZER;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
  * This class implements {@link Instruments} with default set of instruments.

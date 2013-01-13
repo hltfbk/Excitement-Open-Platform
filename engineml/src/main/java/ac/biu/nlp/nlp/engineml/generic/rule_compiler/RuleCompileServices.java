@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler;
-
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

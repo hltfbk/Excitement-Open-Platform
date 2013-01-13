@@ -1,17 +1,17 @@
 package ac.biu.nlp.nlp.engineml.utilities;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
-import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 /**
  * Currently this class is fine for easy-first as well as minipar.
@@ -30,7 +30,7 @@ public class InfoObservations
 	public static final String MINIPAR_LEX_MOD_RELATION = "lex-mod";
 	public static final Set<String> MINIPAR_NON_WORDS_LEMMAS;
 	public static final Set<String> NON_CONTENT_VERBS;
-	public static final Set<CanonicalPosTag> CONTENT_CANONICAL_PART_OF_SPEECH;
+	public static final Set<SimplerCanonicalPosTag> CONTENT_CANONICAL_PART_OF_SPEECH;
 	public static final Set<String> PRONOUNS;
 	public static final Set<String> NON_CONTENT_WORDS;
 	static
@@ -45,12 +45,12 @@ public class InfoObservations
 		NON_CONTENT_VERBS.add("have");
 		
 		
-		CONTENT_CANONICAL_PART_OF_SPEECH = new HashSet<CanonicalPosTag>();
-		CONTENT_CANONICAL_PART_OF_SPEECH.add(CanonicalPosTag.NOUN);
-		CONTENT_CANONICAL_PART_OF_SPEECH.add(CanonicalPosTag.ADJECTIVE);
-		CONTENT_CANONICAL_PART_OF_SPEECH.add(CanonicalPosTag.ADVERB);
-		CONTENT_CANONICAL_PART_OF_SPEECH.add(CanonicalPosTag.PRONOUN);
-		CONTENT_CANONICAL_PART_OF_SPEECH.add(CanonicalPosTag.VERB);
+		CONTENT_CANONICAL_PART_OF_SPEECH = new HashSet<SimplerCanonicalPosTag>();
+		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.NOUN);
+		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.ADJECTIVE);
+		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.ADVERB);
+		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.PRONOUN);
+		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.VERB);
 		
 		
 		
@@ -111,7 +111,7 @@ public class InfoObservations
 		if (infoHasLemma(info))
 		{
 			PartOfSpeech posObject = InfoGetFields.getPartOfSpeechObject(info);
-			if (posObject.getCanonicalPosTag()==CanonicalPosTag.VERB)
+			if (simplerPos(posObject.getCanonicalPosTag())==SimplerCanonicalPosTag.VERB)
 			{
 				String lemma = InfoGetFields.getLemma(info);
 				if (!StringUtil.setContainsIgnoreCase(NON_CONTENT_VERBS, lemma))
@@ -132,9 +132,9 @@ public class InfoObservations
 			if (!NON_CONTENT_WORDS.contains(lemma))
 			{
 				PartOfSpeech posObject = InfoGetFields.getPartOfSpeechObject(info);
-				CanonicalPosTag canonicalPos = CanonicalPosTag.OTHER;
+				SimplerCanonicalPosTag canonicalPos = SimplerCanonicalPosTag.OTHER;
 				if (posObject!=null)
-					canonicalPos=posObject.getCanonicalPosTag();
+					canonicalPos=simplerPos(posObject.getCanonicalPosTag());
 				if (CONTENT_CANONICAL_PART_OF_SPEECH.contains(canonicalPos))
 				{
 					ret = true;

@@ -1,7 +1,6 @@
 package ac.biu.nlp.nlp.engineml.version.changelog;
-
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import ac.biu.nlp.nlp.engineml.version.Version;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
 public class PrintChangeLog
 {

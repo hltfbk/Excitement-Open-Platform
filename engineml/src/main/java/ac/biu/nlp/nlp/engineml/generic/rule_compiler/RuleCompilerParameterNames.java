@@ -2,10 +2,9 @@
  * 
  */
 package ac.biu.nlp.nlp.engineml.generic.rule_compiler;
-
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import ac.biu.nlp.nlp.engineml.generic.truthteller.representation.AnnotationRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 
 /**
  * Names of {@link ConfigurationFile} parameters used for {@link Rule} and {@link AnnotationRule} compilation

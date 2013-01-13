@@ -8,12 +8,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
-
 import opennlp.maxent.MaxentModel;
 import opennlp.maxent.io.SuffixSensitiveGISModelReader;
 import opennlp.tools.chunker.ChunkerME;
 import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
+import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 
 
 

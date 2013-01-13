@@ -15,11 +15,6 @@ import static eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils.getTe
 
 import org.w3c.dom.Element;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
-
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultEdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
@@ -31,6 +26,10 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.SyntacticInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
 
 /**
  * 

@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsimnew;
-
 import java.io.Serializable;
 
 /**

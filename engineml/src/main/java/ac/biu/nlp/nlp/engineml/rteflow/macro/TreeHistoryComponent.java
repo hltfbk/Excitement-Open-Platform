@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.rteflow.macro;
-
 import java.io.Serializable;
 import java.util.Map;
 import java.util.Set;

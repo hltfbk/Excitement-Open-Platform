@@ -7,10 +7,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
-import eu.excitementproject.eop.common.utilities.StringUtil;
-
 import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 public class ArkrefClientDemo {
 

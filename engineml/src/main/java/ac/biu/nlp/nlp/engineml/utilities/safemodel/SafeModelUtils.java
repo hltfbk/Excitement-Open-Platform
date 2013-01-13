@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.utilities.safemodel;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

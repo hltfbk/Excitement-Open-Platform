@@ -1,4 +1,5 @@
 package ac.biu.nlp.nlp.engineml.operations.rules.distsim;
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,14 +11,6 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.utilities.Cache;
-import eu.excitementproject.eop.common.utilities.CacheFactory;
-
 import ac.biu.nlp.nlp.engineml.datastructures.LemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.rules.DynamicRuleBase;
 import ac.biu.nlp.nlp.engineml.operations.rules.Rule;
@@ -25,6 +18,13 @@ import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleWithConfidenceAndDescription;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
 
 /**
  * Represents a distributional similarity rule base that is stored in a DIRT-style data-base.
@@ -300,16 +300,16 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 	{
 		String ret = null;
 		
-		//if ( !(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag().equals(CanonicalPosTag.VERB)) && !(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag().equals(CanonicalPosTag.NOUN)) )
-		if ( !(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag().equals(CanonicalPosTag.VERB)) )		
+		//if ( !(simplerPos(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag()).equals(SimplerCanonicalPosTag.VERB)) && !(simplerPos(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag()).equals(SimplerCanonicalPosTag.NOUN)) )
+		if ( !(simplerPos(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag()).equals(SimplerCanonicalPosTag.VERB)) )		
 		{
 		}
 		else
 		{
 			String pos;
-			if (lemmaAndPos.getPartOfSpeech().getCanonicalPosTag().equals(CanonicalPosTag.VERB))
+			if (simplerPos(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag()).equals(SimplerCanonicalPosTag.VERB))
 				pos = "v";
-			else if (lemmaAndPos.getPartOfSpeech().getCanonicalPosTag().equals(CanonicalPosTag.NOUN))
+			else if (simplerPos(lemmaAndPos.getPartOfSpeech().getCanonicalPosTag()).equals(SimplerCanonicalPosTag.NOUN))
 				pos = "n";
 			else throw new RuleBaseException("Internal bug");
 			

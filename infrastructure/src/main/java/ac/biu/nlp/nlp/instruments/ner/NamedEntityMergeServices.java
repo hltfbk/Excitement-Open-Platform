@@ -1,7 +1,5 @@
 package ac.biu.nlp.nlp.instruments.ner;
 
-import eu.excitementproject.eop.common.utilities.match.MatchFinder;
-import eu.excitementproject.eop.common.utilities.match.Operator;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultNodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
@@ -9,6 +7,8 @@ import ac.biu.nlp.nlp.instruments.parse.representation.basic.NamedEntity;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.NodeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.SyntacticInfo;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicConstructionNode;
+import eu.excitementproject.eop.common.utilities.match.MatchFinder;
+import eu.excitementproject.eop.common.utilities.match.Operator;
 
 
 /**

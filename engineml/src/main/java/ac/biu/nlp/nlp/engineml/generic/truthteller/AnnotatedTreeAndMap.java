@@ -1,7 +1,6 @@
 package ac.biu.nlp.nlp.engineml.generic.truthteller;
-
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 /**
  * Encapsulates a parse-tree and a map of nodes from original tree to
@@ -38,4 +37,3 @@ public class AnnotatedTreeAndMap
 	private final ExtendedNode annotatedTree;
 	private final BidirectionalMap<ExtendedNode, ExtendedNode> mapOriginalToAnnotated;
 }
-

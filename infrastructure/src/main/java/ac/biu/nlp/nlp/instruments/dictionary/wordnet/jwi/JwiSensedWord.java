@@ -2,7 +2,6 @@
  * 
  */
 package ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

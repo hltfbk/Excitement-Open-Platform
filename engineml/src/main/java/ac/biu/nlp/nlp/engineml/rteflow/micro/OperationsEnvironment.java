@@ -1,9 +1,6 @@
 package ac.biu.nlp.nlp.engineml.rteflow.micro;
-
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;
 import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
@@ -23,6 +20,7 @@ import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
 import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 /**
  * A collection of several objects required to generate new trees from

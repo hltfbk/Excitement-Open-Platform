@@ -1,8 +1,5 @@
 package ac.biu.nlp.nlp.engineml.operations.operations;
-
 import java.util.Set;
-
-import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
@@ -12,6 +9,7 @@ import ac.biu.nlp.nlp.engineml.representation.AdditionalNodeInformation;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
 import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
 import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 
 /**
  * A generation operation creates a new tree, based on an existing one.

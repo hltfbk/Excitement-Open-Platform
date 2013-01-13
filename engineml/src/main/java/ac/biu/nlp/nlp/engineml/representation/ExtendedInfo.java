@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.representation;
-
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.DefaultInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.EdgeInfo;
 import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;

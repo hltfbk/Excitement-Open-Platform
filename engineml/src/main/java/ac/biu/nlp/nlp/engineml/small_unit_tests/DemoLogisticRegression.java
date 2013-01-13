@@ -1,5 +1,4 @@
 package ac.biu.nlp.nlp.engineml.small_unit_tests;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
 import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
 import ac.biu.nlp.nlp.engineml.classifiers.linearimplementations.LogisticRegressionClassifier;
-import ac.biu.nlp.nlp.engineml.rteflow.systems.RTESystemsUtils;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 
 

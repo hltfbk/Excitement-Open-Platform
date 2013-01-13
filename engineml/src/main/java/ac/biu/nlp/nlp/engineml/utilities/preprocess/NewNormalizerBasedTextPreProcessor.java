@@ -1,16 +1,14 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
-
 import static ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames.PREPROCESS_NEW_NORMALIZER_FILE;
 
 import java.io.File;
 
+import ac.biu.nlp.normalization.BiuNormalizer;
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-
-import ac.biu.nlp.normalization.BiuNormalizer;
 
 
 /**

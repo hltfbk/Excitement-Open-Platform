@@ -1,15 +1,13 @@
 package ac.biu.nlp.nlp.engineml.utilities.safemodel;
-
 import java.util.LinkedHashSet;
 import java.util.Map;
-
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
-import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
 
 import ac.biu.nlp.nlp.engineml.datastructures.BooleanAndString;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.FeatureVectorStructure;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.FeatureVectorStructureOrganizer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
 
 
 /**

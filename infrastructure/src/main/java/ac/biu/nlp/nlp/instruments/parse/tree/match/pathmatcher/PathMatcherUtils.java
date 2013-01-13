@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-
-import ac.biu.nlp.nlp.instruments.parse.tree.match.MatcherException;
 
 /**
  * 
