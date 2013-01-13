@@ -14,20 +14,20 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.graphbased.PlisRuleBase;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.Workarounds;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.lexical_resource.impl.catvar.CatvarLexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.impl.similarity.Direct200LexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.impl.similarity.LinDependencyOriginalLexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.impl.similarity.LinDistsimLexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.impl.similarity.LinProximityOriginalLexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.impl.verb_ocean.VerbOceanLexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.impl.wikipedia.WikiLexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.impl.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.Direct200LexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.LinDependencyOriginalLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.LinDistsimLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.LinProximityOriginalLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 
 /**
  * 

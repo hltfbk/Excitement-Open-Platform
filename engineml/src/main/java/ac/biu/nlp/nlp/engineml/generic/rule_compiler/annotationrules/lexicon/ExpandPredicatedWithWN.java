@@ -16,12 +16,6 @@ import ac.biu.nlp.nlp.engineml.generic.rule_compiler.RuleCompilerParameterNames;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules.AnnotationCompilationException;
 import ac.biu.nlp.nlp.engineml.generic.rule_compiler.annotationrules.AnnotationRuleLexiconUtils;
 import ac.biu.nlp.nlp.engineml.representation.annotations.PredicateSignature;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Synset;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetPartOfSpeech;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi.JwiDictionary;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
@@ -29,6 +23,12 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Dictionary;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Synset;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetException;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetPartOfSpeech;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.jwi.JwiDictionary;
 
 /**
  * This class is an executable that gets: the single word predicate lexicon properties file, word net dictionary path, and path to a new expanded lexicon. 

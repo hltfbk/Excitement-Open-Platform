@@ -2,6 +2,9 @@ package ac.biu.nlp.nlp.instruments.factory;
 
 import java.io.File;
 
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Dictionary;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetException;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.ext_jwnl.ExtJwnlDictionary;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.en.ner.stanford.StanfordNamedEntityRecognizer;
@@ -12,9 +15,6 @@ import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;
 
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;
-import ac.biu.nlp.nlp.instruments.dictionary.wordnet.ext_jwnl.ExtJwnlDictionary;
 
 public class NagelMiniparStanfordJwnlFactory implements Factory
 {
