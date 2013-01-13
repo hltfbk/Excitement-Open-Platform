@@ -12,7 +12,7 @@ import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCac
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.datastructures.DummySet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;

@@ -12,9 +12,9 @@ import ac.biu.nlp.nlp.engineml.datastructures.CanonicalLemmaAndPos;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules;
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.LexicalRuleWithName;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
@@ -132,14 +132,14 @@ public class BuilderSingleWord
 			
 			for (Map.Entry<String,? extends LexicalResource<? extends RuleInfo>> resourceEntry : resources.entrySet())
 			{
-				List<? extends ac.biu.nlp.nlp.lexical_resource.LexicalRule<? extends RuleInfo>> rules =
+				List<? extends eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule<? extends RuleInfo>> rules =
 						resourceEntry.getValue().getRulesForRight(lemma, pos);
 				if (logger.isDebugEnabled())
 				{
 					logger.debug("Number of rules expanded from \""+resourceEntry.getKey()+"\" for word \""+lemma+"\" is "+rules.size());
 				}
 				
-				for (ac.biu.nlp.nlp.lexical_resource.LexicalRule<? extends RuleInfo> rule : rules)
+				for (eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule<? extends RuleInfo> rule : rules)
 				{
 					if (rule.getRLemma().equalsIgnoreCase(lemma))
 					{
@@ -173,7 +173,7 @@ public class BuilderSingleWord
 	 * @param ruleBaseName
 	 * @return
 	 */
-	private LexicalRuleWithName fromInfrastructureLexicalRule(ac.biu.nlp.nlp.lexical_resource.LexicalRule<? extends RuleInfo> rule, String ruleBaseName)
+	private LexicalRuleWithName fromInfrastructureLexicalRule(eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule<? extends RuleInfo> rule, String ruleBaseName)
 	{
 		LexicalRuleWithName ret = new LexicalRuleWithName(
 				new ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule(

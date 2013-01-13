@@ -5,9 +5,9 @@ package ac.biu.nlp.nlp.lexical_resource.impl.similarity;
 import java.util.ArrayList;
 import java.util.List;
 
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 

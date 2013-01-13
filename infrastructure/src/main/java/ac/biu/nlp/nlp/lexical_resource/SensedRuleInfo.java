@@ -3,6 +3,10 @@
  */
 package ac.biu.nlp.nlp.lexical_resource;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+
 
 /**
  * A {@link RuleInfo} type that has senses (like wiktionary senses, of Wordnet synsets) for each side of the {@link LexicalRule}, 

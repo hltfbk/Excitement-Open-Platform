@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.util.HashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;

@@ -2,9 +2,9 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.wordnet;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.EmptySynset;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetRelation;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 
 /**
  * A {@link WordnetRuleInfo} which holds the ordinal number of sense

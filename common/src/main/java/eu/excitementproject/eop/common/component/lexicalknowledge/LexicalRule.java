@@ -1,29 +1,23 @@
+/**
+ * 
+ */
 package eu.excitementproject.eop.common.component.lexicalknowledge;
-
 import java.io.Serializable;
 
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
+
 /**
- * <P> [DELETEME_LATER: Imported and extended from BIUTEE 2.4.1, with one modification - a field with TERuleRelation added ] </P> 
- * 
- * This type represents a generalization of lexical relationships between two 
- * words, which are provided by resources like WordNet, VerbOcean and 
- * distributional resources. It has two parts: a left hand side and a right 
- * hand side. The basic arrangement of lexical resource is that the left hand 
- * side has a relationship to the right hand side (like entailments, or nonentailment)
- * Additional pieces of information includes confidence, relation, and resource name. 
- * Lexical rules are parameterized by a type I which allows the type to hold 
- * additional resource-specific properties.
- *
- * <b>Immutable, with hashCode() and equal()</b>
+ * A generic Lexical Rule, composed of two {@code <lemma, part of speech>} lexical items, on left and right, a confidence score, 
+ * the name of the lexical/semantic relation used (if any), the name of the {@link LexicalResource} that created the rule, and some extra rule 
+ * info in {@link RuleInfo}. 
+ * <p>
+ * <b>Immutable</b>
  * @param <I> type of the additional information of the rule
  */
-
 public final class LexicalRule<I extends RuleInfo> implements Serializable
-{
-	private static final long serialVersionUID = -5588732603979427544L;
+{ 
+	private static final long serialVersionUID = 9087473152642923174L;
 
 	public static final double DEFAULT_CONFIDENCE = 0.5;
 	
@@ -37,7 +31,7 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 	private final double confidence;
 
 	/**
-	 * Constructor uses {@link #DEFAULT_CONFIDENCE}
+	 * Ctor uses {@link #DEFAULT_CONFIDENCE}
 	 * @param leftLemma
 	 * @param leftPos
 	 * @param rightLemma

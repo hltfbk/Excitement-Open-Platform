@@ -3,6 +3,8 @@
  */
 package ac.biu.nlp.nlp.lexical_resource;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+
 
 
 /**

@@ -2,8 +2,8 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.verb_ocean;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 
 /**
  * Holds the VerbOcean score and {@link RelationType} of a rule 

@@ -1,5 +1,9 @@
 package ac.biu.nlp.nlp.lexical_resource;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+
 /**
  * 
  * @author Asher Stern

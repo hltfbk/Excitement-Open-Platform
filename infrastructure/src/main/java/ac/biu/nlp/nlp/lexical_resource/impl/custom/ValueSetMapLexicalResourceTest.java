@@ -5,7 +5,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;

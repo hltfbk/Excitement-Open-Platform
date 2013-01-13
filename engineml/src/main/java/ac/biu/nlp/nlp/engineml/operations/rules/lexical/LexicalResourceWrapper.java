@@ -7,10 +7,10 @@ import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCac
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
 import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRuleBaseCloseException;
 import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceCloseException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
@@ -44,12 +44,12 @@ public class LexicalResourceWrapper extends ByLemmaPosLexicalRuleBaseWithCache<L
 	{
 		try
 		{
-			List<? extends ac.biu.nlp.nlp.lexical_resource.LexicalRule<? extends RuleInfo>> rulesFromResource =
+			List<? extends eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule<? extends RuleInfo>> rulesFromResource =
 					realLexicalResource.getRulesForLeft(lhsLemma, lhsPos);
 			Set<LexicalRule> ret = new LinkedHashSet<LexicalRule>();
 			if (rulesFromResource!=null)
 			{
-				for (ac.biu.nlp.nlp.lexical_resource.LexicalRule<? extends RuleInfo> ruleFromResource : rulesFromResource)
+				for (eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule<? extends RuleInfo> ruleFromResource : rulesFromResource)
 				{
 					double confidence = ruleFromResource.getConfidence();
 					if ( (confidence<=0) || (confidence >= 1) ) throw new RuleBaseException("Bad confidence for rule from "+this.realLexicalResource.getClass().getSimpleName()+". The confidene is: "+String.format("%-4.4f", confidence));

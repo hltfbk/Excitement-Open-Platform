@@ -7,7 +7,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+
 
 /**
  * This enum is an ordered list of Types of extractions of rules from a Wikipedia dump. 

@@ -4,6 +4,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributi
 // Component imports
 import eu.excitementproject.eop.common.component.Component;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
@@ -267,6 +268,13 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public void close() throws LexicalResourceCloseException
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

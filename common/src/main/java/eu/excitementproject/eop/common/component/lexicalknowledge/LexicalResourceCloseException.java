@@ -1,4 +1,4 @@
-package ac.biu.nlp.nlp.lexical_resource;
+package eu.excitementproject.eop.common.component.lexicalknowledge;
 
 /**
  * Indicates that {@link LexicalResource#close()} failed.

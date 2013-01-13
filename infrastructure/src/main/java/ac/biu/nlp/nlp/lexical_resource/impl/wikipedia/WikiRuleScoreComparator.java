@@ -4,7 +4,8 @@
 package ac.biu.nlp.nlp.lexical_resource.impl.wikipedia;
 import java.util.Comparator;
 
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+
 
 /**
  * Compare two wikipedia lexical rules by rank, and secondarily by coocurrence score.

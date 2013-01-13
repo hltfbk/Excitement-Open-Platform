@@ -8,8 +8,8 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;

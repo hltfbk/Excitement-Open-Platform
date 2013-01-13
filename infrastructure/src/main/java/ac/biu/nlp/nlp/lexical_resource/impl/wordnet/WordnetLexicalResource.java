@@ -15,9 +15,9 @@ import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordnetDictionaryImplementa
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.ext_jwnl.ExtJwnlUtils;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwi.JwiUtils;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.jwnl.JwnlUtils;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;

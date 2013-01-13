@@ -2,6 +2,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.germanet;
 
 // Component imports
 import eu.excitementproject.eop.common.component.Component;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceWithRelation;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
@@ -375,6 +376,13 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
                 List<LexicalRule<? extends GermaNetInfo>> result = getRules(leftLemma, leftPos, rightLemma, rightPos);
                 this.fineGrainedRelation = "";
                 return result;
+	}
+
+	@Override
+	public void close() throws LexicalResourceCloseException
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }

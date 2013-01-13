@@ -2,7 +2,7 @@
  * 
  */
 package ac.biu.nlp.nlp.lexical_resource.impl.verb_ocean;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 
 /**
  * This enum lists all the relation types between verbs in VerbOcean. Each relation type has an {@link EntailmentDirection} i.e. indicates leftToRight entialment, 

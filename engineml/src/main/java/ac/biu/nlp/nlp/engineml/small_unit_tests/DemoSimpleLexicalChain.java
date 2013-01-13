@@ -19,7 +19,7 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.builder.SimpleLexic
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;

@@ -14,9 +14,6 @@ import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.ChainOfLexicalRules
 import ac.biu.nlp.nlp.engineml.operations.rules.lexicalchain.graphbased.PlisRuleBase;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants.Workarounds;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResource;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
 import ac.biu.nlp.nlp.lexical_resource.impl.catvar.CatvarLexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.impl.similarity.Direct200LexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.impl.similarity.LinDependencyOriginalLexicalResource;
@@ -25,6 +22,9 @@ import ac.biu.nlp.nlp.lexical_resource.impl.similarity.LinProximityOriginalLexic
 import ac.biu.nlp.nlp.lexical_resource.impl.verb_ocean.VerbOceanLexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.impl.wikipedia.WikiLexicalResource;
 import ac.biu.nlp.nlp.lexical_resource.impl.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;

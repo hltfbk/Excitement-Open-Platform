@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;

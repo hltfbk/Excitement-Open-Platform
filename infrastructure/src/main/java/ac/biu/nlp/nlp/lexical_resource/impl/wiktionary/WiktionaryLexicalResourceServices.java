@@ -17,8 +17,8 @@ import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionarySense;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.JwktlDictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.JwktlException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 

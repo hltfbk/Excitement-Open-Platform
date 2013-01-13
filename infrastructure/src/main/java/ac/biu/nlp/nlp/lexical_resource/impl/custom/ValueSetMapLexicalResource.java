@@ -7,10 +7,10 @@ import java.util.Collections;
 import java.util.List;
 
 import ac.biu.nlp.nlp.lexical_resource.EmptyRuleInfo;
-import ac.biu.nlp.nlp.lexical_resource.LexicalResourceException;
 import ac.biu.nlp.nlp.lexical_resource.LexicalResourceNothingToClose;
-import ac.biu.nlp.nlp.lexical_resource.LexicalRule;
-import ac.biu.nlp.nlp.lexical_resource.RuleInfo;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
