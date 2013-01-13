@@ -2,12 +2,12 @@ package ac.biu.nlp.nlp.instruments.factory;
 
 import eu.excitementproject.eop.common.representation.parse.BasicParser;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetException;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 
 public interface Factory
 {

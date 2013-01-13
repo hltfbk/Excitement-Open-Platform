@@ -47,7 +47,6 @@ import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.AdvancedEqualities;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.ContentAncestorSetter;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.SelfTraceSetter;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
@@ -67,6 +66,7 @@ import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
 import eu.excitementproject.eop.common.utilities.SealedObject;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
 
 
 /**

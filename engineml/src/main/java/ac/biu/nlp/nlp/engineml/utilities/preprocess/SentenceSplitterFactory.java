@@ -1,6 +1,6 @@
 package ac.biu.nlp.nlp.engineml.utilities.preprocess;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.nagel.NagelSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;
 
 /**
  * Factory to create and return a {@link SentenceSplitter}.

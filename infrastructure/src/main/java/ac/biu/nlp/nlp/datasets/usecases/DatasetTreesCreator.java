@@ -8,9 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
-import ac.biu.nlp.nlp.instruments.sentencesplit.nagel.NagelSentenceSplitter;
 import eu.excitementproject.eop.common.representation.parse.BasicParser;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.minipar.AbstractMiniparParser;
@@ -28,6 +25,9 @@ import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassifica
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;
 
 
 /**

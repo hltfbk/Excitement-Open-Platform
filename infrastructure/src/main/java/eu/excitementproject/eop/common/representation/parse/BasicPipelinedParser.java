@@ -2,7 +2,8 @@ package eu.excitementproject.eop.common.representation.parse;
 
 import java.util.List;
 
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
+
 
 /**
  * Extends {@link AbstractBasicParser} with the ability of providing the input sentence

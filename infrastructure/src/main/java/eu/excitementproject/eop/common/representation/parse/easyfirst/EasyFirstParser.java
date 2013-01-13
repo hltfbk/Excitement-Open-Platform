@@ -12,14 +12,14 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUti
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
+import eu.excitementproject.eop.lap.biu.en.postagger.MaxentPosTagger;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTagger;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.MaxentTokenizer;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
 
-import ac.biu.nlp.nlp.instruments.postagger.MaxentPosTagger;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
-import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
-import ac.biu.nlp.nlp.instruments.tokenizer.MaxentTokenizer;
-import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
-import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 
 
 /**

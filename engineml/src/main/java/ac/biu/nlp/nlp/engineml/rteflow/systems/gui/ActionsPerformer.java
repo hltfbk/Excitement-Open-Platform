@@ -63,10 +63,6 @@ import ac.biu.nlp.nlp.engineml.script.ScriptException;
 import ac.biu.nlp.nlp.engineml.utilities.ProgressFire;
 import ac.biu.nlp.nlp.engineml.utilities.ShortMessageFire;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
-import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
@@ -82,6 +78,10 @@ import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriterException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 
 /**
  * 

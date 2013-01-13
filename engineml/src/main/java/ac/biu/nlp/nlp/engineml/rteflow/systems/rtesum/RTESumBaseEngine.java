@@ -41,7 +41,6 @@ import ac.biu.nlp.nlp.engineml.script.ScriptFactory;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.SafeSamplesUtils;
 import ac.biu.nlp.nlp.engineml.utilities.safemodel.classifiers_io.SafeClassifiersIO;
-import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
@@ -53,6 +52,7 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.FileSystemNames
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6FileSystemNames;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
 
 /**
  * 

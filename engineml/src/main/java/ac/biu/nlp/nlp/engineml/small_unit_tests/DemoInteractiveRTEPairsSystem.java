@@ -13,10 +13,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.interactive.RTEPairsSing
 import ac.biu.nlp.nlp.engineml.script.ScriptException;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.TreeHistoryUtilities;
-import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
-import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
@@ -25,6 +21,10 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 
 public class DemoInteractiveRTEPairsSystem
 {

@@ -2,6 +2,7 @@ package ac.biu.nlp.nlp.engineml.rteflow.micro.perform;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
 import ac.biu.nlp.nlp.engineml.operations.OperationException;
 import ac.biu.nlp.nlp.engineml.operations.finders.Finder;
 import ac.biu.nlp.nlp.engineml.operations.finders.SubstitutionFlipPosFinder;
@@ -16,7 +17,6 @@ import ac.biu.nlp.nlp.engineml.operations.updater.UpdaterForSubstitutionFlipPos;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 
 public class SubstitutionFlipPosPerformFactory extends PerformFactory<SubstituteNodeSpecification>
 {

@@ -20,7 +20,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
  * @since Mar 8, 2011
  *
  */
-@SuppressWarnings("unused")
 public class DemoLogisticRegression
 {
 	

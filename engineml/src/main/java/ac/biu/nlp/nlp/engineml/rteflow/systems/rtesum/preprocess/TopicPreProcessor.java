@@ -12,10 +12,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.preprocess.Instruments;
 import ac.biu.nlp.nlp.engineml.rteflow.preprocess.PreprocessUtilities;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
-import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.BasicParser;
@@ -27,6 +23,10 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaDat
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
 
 /**
  * 

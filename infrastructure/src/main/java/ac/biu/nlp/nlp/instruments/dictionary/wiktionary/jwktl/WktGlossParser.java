@@ -11,10 +11,6 @@ import java.util.Vector;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryException;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.jwktl.ParseTreeUtils.ParseTreeException;
-import ac.biu.nlp.nlp.instruments.postagger.MaxentPosTagger;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
-import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
@@ -23,6 +19,10 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.lap.biu.en.postagger.MaxentPosTagger;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTagger;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
 
 /**
  * This class extracts hypernyms of words out of their wiki sense descriptions. It does so by prefixing gloss descriptions with "WORD is ..." and parsing 

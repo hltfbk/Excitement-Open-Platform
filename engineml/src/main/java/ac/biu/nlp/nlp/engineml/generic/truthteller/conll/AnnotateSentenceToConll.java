@@ -12,9 +12,6 @@ import ac.biu.nlp.nlp.engineml.generic.truthteller.DefaultSentenceAnnotator;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import ac.biu.nlp.nlp.instruments.sentencesplit.LingPipeSentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -24,6 +21,9 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.LingPipeSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 
 /**
  * @author Amnon Lotan

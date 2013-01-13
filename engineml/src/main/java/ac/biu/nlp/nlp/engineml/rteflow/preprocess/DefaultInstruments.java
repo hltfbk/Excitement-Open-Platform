@@ -25,20 +25,6 @@ import ac.biu.nlp.nlp.engineml.utilities.preprocess.ListOfTextPreprocessors;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.NewNormalizerBasedTextPreProcessor;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.WorkaroundTextPreprocessor;
-import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
-import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefCoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.coreference.arkrefbart.ArkrefAndBartCoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.coreference.bart.BartCoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityPhrase;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizer;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityWord;
-import ac.biu.nlp.nlp.instruments.ner.stanford.StanfordNamedEntityRecognizer;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.nagel.NagelSentenceSplitter;
-import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
-import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 import eu.excitementproject.eop.common.representation.parse.BasicParser;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -47,6 +33,20 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefCoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient.ArkrefClientException;
+import eu.excitementproject.eop.lap.biu.en.coreference.arkrefbart.ArkrefAndBartCoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.en.coreference.bart.BartCoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityPhrase;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityWord;
+import eu.excitementproject.eop.lap.biu.en.ner.stanford.StanfordNamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
 
 /**
  * This class implements {@link Instruments} with default set of instruments.

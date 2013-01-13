@@ -9,10 +9,11 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.LingPipeSentenceSplitter;
+
 import ac.biu.nlp.nlp.datasets.trec.TrecDocReader;
 import ac.biu.nlp.nlp.datasets.trec.TrecException;
 import ac.biu.nlp.nlp.datasets.trec.TrecSentenceReader;
-import ac.biu.nlp.nlp.instruments.sentencesplit.LingPipeSentenceSplitter;
 
 
 /**

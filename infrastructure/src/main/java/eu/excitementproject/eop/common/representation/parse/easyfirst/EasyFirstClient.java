@@ -17,12 +17,6 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Set;
 
-import ac.biu.nlp.nlp.instruments.postagger.MaxentPosTagger;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
-import ac.biu.nlp.nlp.instruments.postagger.PosTagger;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
-import ac.biu.nlp.nlp.instruments.tokenizer.Tokenizer;
-import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
@@ -38,6 +32,12 @@ import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpe
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.lap.biu.en.postagger.MaxentPosTagger;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTagger;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
 
 /**
  * This class basically wraps Yoav Goldberg's EasyFirst parser. It publishes a {@link #parse(String)} method.

@@ -15,12 +15,12 @@ import ac.biu.nlp.nlp.engineml.rteflow.macro.FeatureUpdate;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.InitializationTextTreesProcessor;
 import ac.biu.nlp.nlp.engineml.rteflow.macro.TreeHistory;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
-import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
 
 /**
  * A collection of several objects required to generate new trees from

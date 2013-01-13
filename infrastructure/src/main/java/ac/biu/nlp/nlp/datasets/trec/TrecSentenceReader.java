@@ -11,8 +11,9 @@ import java.util.NoSuchElementException;
 
 import javax.xml.bind.JAXBException;
 
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
+
 
 /**
  * This class adds sentence splitting to {@link TrecDocReader} and returns one String for each sentence of each text in the TREC corpora. 

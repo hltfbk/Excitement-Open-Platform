@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Vector;
 
 import ac.biu.nlp.nlp.instruments.inflector.Inflection.InflectionType;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggedToken;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
 
 /**
  * This class accepts a verb/noun lemma and returns all its inflections, according to the regular English inflection conventions, 

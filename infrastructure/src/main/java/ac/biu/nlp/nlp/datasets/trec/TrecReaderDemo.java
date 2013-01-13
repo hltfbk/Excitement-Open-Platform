@@ -9,13 +9,13 @@ import java.net.MalformedURLException;
 
 import javax.xml.bind.JAXBException;
 
-import ac.biu.nlp.nlp.instruments.lemmatizer.LemmatizerException;
-import ac.biu.nlp.nlp.instruments.postagger.PosTaggerException;
-import ac.biu.nlp.nlp.instruments.sentencesplit.LingPipeSentenceSplitter;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
-import ac.biu.nlp.nlp.instruments.tokenizer.TokenizerException;
 import ac.biu.nlp.nlp.instrumentscombination.InstrumentCombinationException;
 import eu.excitementproject.eop.common.utilities.search.lucene.IrException;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.LingPipeSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
 
 /**
  * @author Amnon Lotan

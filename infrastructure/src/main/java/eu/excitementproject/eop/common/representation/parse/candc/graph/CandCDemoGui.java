@@ -17,7 +17,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ac.biu.nlp.nlp.instruments.tokenizer.TextToPennTreeBankConverter;
 import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraph;
 import eu.excitementproject.eop.common.datastructures.dgraph.DirectedGraphException;
 import eu.excitementproject.eop.common.datastructures.dgraph.view.DirectedGraphToDot;
@@ -26,6 +25,7 @@ import eu.excitementproject.eop.common.utilities.LiveIOProgramExecution;
 import eu.excitementproject.eop.common.utilities.LiveIOProgramExecutionException;
 import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.TimeOutLiveIOProgramExecutionException;
+import eu.excitementproject.eop.lap.biu.en.tokenizer.TextToPennTreeBankConverter;
 
 
 
@@ -65,7 +65,7 @@ public class CandCDemoGui extends JFrame implements ActionListener, WindowListen
 	private String exec;
 	private String modelsDir;
 	private LiveIOProgramExecution execution = null;
-	private ac.biu.nlp.nlp.instruments.tokenizer.TextToPennTreeBankConverter converter = null;
+	private eu.excitementproject.eop.lap.biu.en.tokenizer.TextToPennTreeBankConverter converter = null;
 	private boolean cAndCFirstTimeReadLine = true;
 	
 	
@@ -142,7 +142,7 @@ public class CandCDemoGui extends JFrame implements ActionListener, WindowListen
 		//execution = new LiveIOProgramExecution(programAndArgs);
 		execution.start();
 		
-		converter = new ac.biu.nlp.nlp.instruments.tokenizer.TextToPennTreeBankConverter();
+		converter = new eu.excitementproject.eop.lap.biu.en.tokenizer.TextToPennTreeBankConverter();
 	}
 	
 	/**
@@ -158,7 +158,7 @@ public class CandCDemoGui extends JFrame implements ActionListener, WindowListen
 	 * @throws TextToPennTreeBankConverter.PennTreeBankConverterException
 	 * @throws InterruptedException
 	 */
-	private void readAndParse(String line) throws IOException, LiveIOProgramExecutionException, DirectedGraphException, CandCMalformedOutputException, ac.biu.nlp.nlp.instruments.tokenizer.TextToPennTreeBankConverter.PennTreeBankConverterException, InterruptedException, CandCDemoGuiException
+	private void readAndParse(String line) throws IOException, LiveIOProgramExecutionException, DirectedGraphException, CandCMalformedOutputException, eu.excitementproject.eop.lap.biu.en.tokenizer.TextToPennTreeBankConverter.PennTreeBankConverterException, InterruptedException, CandCDemoGuiException
 	{
 		String originalSentence = line;
 		List<String> asList = new ArrayList<String>(1);

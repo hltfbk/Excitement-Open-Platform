@@ -11,9 +11,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.PairData;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.PairDataToExtendedPairDataConverter;
 import ac.biu.nlp.nlp.engineml.utilities.ShortMessageFire;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
-import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
-import ac.biu.nlp.nlp.instruments.ner.NamedEntityRecognizerException;
-import ac.biu.nlp.nlp.instruments.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -25,6 +22,9 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 
 
 /**

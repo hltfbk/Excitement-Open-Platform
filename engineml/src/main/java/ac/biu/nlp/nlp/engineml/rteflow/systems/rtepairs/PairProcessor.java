@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
 
 import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
 import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
@@ -30,7 +31,6 @@ import ac.biu.nlp.nlp.engineml.utilities.ProgressFire;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.TimeElapsedTracker;
 import ac.biu.nlp.nlp.engineml.utilities.TreeHistoryUtilities;
-import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
 
 
 /**
