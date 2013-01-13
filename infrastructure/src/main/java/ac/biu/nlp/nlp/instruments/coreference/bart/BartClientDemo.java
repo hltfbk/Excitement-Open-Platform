@@ -6,12 +6,12 @@ import java.io.FileReader;
 import java.util.LinkedList;
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.BasicParser;
 import eu.excitementproject.eop.common.representation.parse.minipar.MiniparClientParser;
 import eu.excitementproject.eop.common.representation.parse.minipar.MiniparParser;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationUtils;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 import ac.biu.nlp.nlp.instruments.coreference.merge.english.EnglishCorefMerger;

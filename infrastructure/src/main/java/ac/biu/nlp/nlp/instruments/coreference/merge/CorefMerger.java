@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.instruments.coreference.merge;
 
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 
 /**
  * Merges a co-reference resolution system's output, with list of trees.

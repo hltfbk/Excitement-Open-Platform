@@ -7,12 +7,12 @@ import java.util.List;
 
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationUtils;
 import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.CorefMergeException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.WordWithCoreferenceTag;
 import ac.biu.nlp.nlp.instruments.coreference.merge.english.EnglishCorefMerger;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 

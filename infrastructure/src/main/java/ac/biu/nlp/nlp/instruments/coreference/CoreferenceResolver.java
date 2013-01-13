@@ -2,6 +2,8 @@ package ac.biu.nlp.nlp.instruments.coreference;
 
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
+
 
 /**
  * Resolves co-reference relations, and creates a {@link TreeCoreferenceInformation} that

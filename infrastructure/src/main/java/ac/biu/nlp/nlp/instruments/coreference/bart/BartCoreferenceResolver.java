@@ -2,11 +2,11 @@ package ac.biu.nlp.nlp.instruments.coreference.bart;
 
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationUtils;
 import ac.biu.nlp.nlp.instruments.coreference.bart.BartClient.BartClientException;
 import ac.biu.nlp.nlp.instruments.coreference.merge.CorefMergeException;

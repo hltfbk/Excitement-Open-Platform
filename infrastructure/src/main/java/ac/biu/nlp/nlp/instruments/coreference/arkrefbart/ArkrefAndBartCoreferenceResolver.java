@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolutionException;
 import ac.biu.nlp.nlp.instruments.coreference.CoreferenceResolver;
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
 import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationUtils;
 import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient;
 import ac.biu.nlp.nlp.instruments.coreference.arkref.ArkrefClient.ArkrefClientException;

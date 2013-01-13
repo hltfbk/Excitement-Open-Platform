@@ -2,8 +2,8 @@ package eu.excitementproject.eop.common.representation.parse;
 
 import java.util.List;
 
-import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 

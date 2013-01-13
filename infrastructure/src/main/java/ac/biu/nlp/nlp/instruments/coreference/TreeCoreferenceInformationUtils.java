@@ -3,6 +3,8 @@ package ac.biu.nlp.nlp.instruments.coreference;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 
