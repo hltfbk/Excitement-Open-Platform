@@ -1,8 +1,8 @@
 package ac.biu.nlp.nlp.engineml.operations.specifications;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.parse.minipar.AbstractMiniparParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
 
 import ac.biu.nlp.nlp.engineml.datastructures.SingleItemSet;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;

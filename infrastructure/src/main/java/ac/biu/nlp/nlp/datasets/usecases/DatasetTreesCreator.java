@@ -8,12 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
-import eu.excitementproject.eop.common.representation.parse.minipar.AbstractMiniparParser;
-import eu.excitementproject.eop.common.representation.parse.minipar.MiniparClientParser;
-import eu.excitementproject.eop.common.representation.parse.minipar.MiniparParser;
-import eu.excitementproject.eop.common.representation.parse.minipar.NormalizedMiniparParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.IdLemmaPosRelNodeAndEdgeString;
@@ -25,6 +19,12 @@ import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassifica
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.MiniparClientParser;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.MiniparParser;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.NormalizedMiniparParser;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;

@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.Vector;
 
 import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionaryRelation;
-import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation;
@@ -22,6 +21,7 @@ import eu.excitementproject.eop.common.utilities.AllChoices;
 import eu.excitementproject.eop.common.utilities.AllChoices.AllChoicesException;
 import eu.excitementproject.eop.common.utilities.ChoiceHandler;
 import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
 
 /**
  * A handy set of utilities that scan an {@link AbstractNode}'s subtree, parsed by {@link EasyFirstParser}, for certain dominated words. 

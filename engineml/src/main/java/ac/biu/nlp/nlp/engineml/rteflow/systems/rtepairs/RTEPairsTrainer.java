@@ -21,12 +21,12 @@ import ac.biu.nlp.nlp.engineml.rteflow.systems.Constants;
 import ac.biu.nlp.nlp.engineml.script.ScriptException;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 
 /**

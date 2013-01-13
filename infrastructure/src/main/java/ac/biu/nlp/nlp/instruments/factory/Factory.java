@@ -1,9 +1,9 @@
 package ac.biu.nlp.nlp.instruments.factory;
 
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 import ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary;

@@ -9,12 +9,12 @@ import ac.biu.nlp.nlp.engineml.generic.truthteller.TruthTellerConstants;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedConstructionNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedInfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.minipar.AbstractMiniparParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
 
 /**
  * @author Amnon Lotan

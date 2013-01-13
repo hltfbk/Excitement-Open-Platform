@@ -14,15 +14,15 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeConstructor;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
-import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
 
 
 /**

@@ -2,8 +2,8 @@ package ac.biu.nlp.nlp.tcpip;
 
 import java.util.ArrayList;
 
-import eu.excitementproject.eop.common.representation.parse.minipar.MiniparJni;
-import eu.excitementproject.eop.common.representation.parse.minipar.NetworkDemo;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.MiniparJni;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.NetworkDemo;
 
 
 

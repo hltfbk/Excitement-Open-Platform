@@ -22,7 +22,6 @@ import ac.biu.nlp.nlp.engineml.rteflow.preprocess.InstrumentsFactory;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
@@ -36,6 +35,7 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 
 /**
  * Executable class that makes pre-processing to the whole data-set, and stores

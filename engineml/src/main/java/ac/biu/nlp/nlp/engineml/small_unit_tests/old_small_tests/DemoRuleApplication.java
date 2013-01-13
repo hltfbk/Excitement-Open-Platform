@@ -9,8 +9,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
@@ -27,6 +25,8 @@ import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOf
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 
 public class DemoRuleApplication
 {

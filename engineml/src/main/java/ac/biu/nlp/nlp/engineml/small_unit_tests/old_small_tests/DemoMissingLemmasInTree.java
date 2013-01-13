@@ -5,11 +5,11 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
 import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 
 public class DemoMissingLemmasInTree
 {

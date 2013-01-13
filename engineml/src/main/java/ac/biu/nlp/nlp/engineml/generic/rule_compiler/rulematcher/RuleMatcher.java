@@ -28,8 +28,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.LogInitializer;
 import ac.biu.nlp.nlp.engineml.utilities.view.RulesViewer;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
-import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -39,6 +37,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.view
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
 import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbeddedMatcher;
 import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
 
 /**
  * Match rules using the engine's code, and print the matched trees to DOTs

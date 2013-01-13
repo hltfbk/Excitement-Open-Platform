@@ -66,7 +66,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
@@ -81,6 +80,7 @@ import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 
 /**

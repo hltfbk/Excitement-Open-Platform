@@ -4,15 +4,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
-import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
 
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCalculator;
 import ac.biu.nlp.nlp.engineml.alignment.AlignmentCriteria;

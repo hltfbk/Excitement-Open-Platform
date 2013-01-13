@@ -24,8 +24,6 @@ import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.representation.parse.EnglishSingleTreeParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultMatchCriteria;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
@@ -39,6 +37,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.match.Matcher;
 import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.lap.biu.en.parser.EnglishSingleTreeParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 
 @Deprecated
 public class DynRuleBaseTester

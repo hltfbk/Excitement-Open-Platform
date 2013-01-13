@@ -9,8 +9,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.FindMainVerbHeuristic;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
@@ -19,6 +17,8 @@ import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMai
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 
 public class DemoFindMainVerbHeuristics
 {

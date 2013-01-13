@@ -22,8 +22,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.view.ExtendedRulesViewer;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
-import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeDotFileGenerator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
@@ -31,6 +29,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.view
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
 
 /**
  * @author Amnon Lotan

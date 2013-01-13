@@ -14,7 +14,6 @@ import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.parse.minipar.AbstractMiniparParser;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
@@ -29,6 +28,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.IdLemmaPosRelNodeString;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
 
 
 /**

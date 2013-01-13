@@ -2,12 +2,12 @@ package ac.biu.nlp.nlp.instruments.factory;
 
 import java.io.File;
 
-import eu.excitementproject.eop.common.representation.parse.BasicParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
-import eu.excitementproject.eop.common.representation.parse.minipar.MiniparParser;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.en.ner.stanford.StanfordNamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.MiniparParser;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;

@@ -19,7 +19,7 @@ import ac.biu.nlp.nlp.instruments.dictionary.wiktionary.WiktionarySense;
 import de.tudarmstadt.ukp.wiktionary.api.Language;
 import de.tudarmstadt.ukp.wiktionary.api.Wiktionary;
 import de.tudarmstadt.ukp.wiktionary.api.WordEntry;
-import eu.excitementproject.eop.common.representation.parse.easyfirst.EasyFirstParser;
+import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
 
 
 /**

@@ -12,8 +12,6 @@ import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
 import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
 import ac.biu.nlp.nlp.engineml.utilities.parsetreeutils.TreeUtilities;
 import ac.biu.nlp.nlp.engineml.utilities.preprocess.ParserFactory;
-import eu.excitementproject.eop.common.representation.parse.EnglishSingleTreeParser;
-import eu.excitementproject.eop.common.representation.parse.ParserRunException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
@@ -21,6 +19,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.lap.biu.en.parser.EnglishSingleTreeParser;
+import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 
 public class DemoMoveOperation
 {
