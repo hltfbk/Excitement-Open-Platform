@@ -386,3 +386,4 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	}
 
 }
+

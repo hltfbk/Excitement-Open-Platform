@@ -278,3 +278,4 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	}
 
 }
+
