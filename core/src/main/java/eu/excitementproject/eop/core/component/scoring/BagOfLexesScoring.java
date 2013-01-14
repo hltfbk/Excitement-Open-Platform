@@ -36,6 +36,8 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		return numOfFeats;
 	}
 	
+	protected boolean[] moduleFlags = new boolean[5];
+	
 	private GermanDistSim gds = null;
 	
 	private GermaNetWrapper gnw = null;
@@ -45,6 +47,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			try {
 				gds = new GermanDistSim("src/main/resources/dewakdistributional-data");
 				numOfFeats ++;
+				moduleFlags[0] = true;
 			}
 			catch (GermanDistSimNotInstalledException e) {
 				logger.warning("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
@@ -54,21 +57,35 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			{
 				logger.info(e.getMessage());
 			}
+		} else {
+			moduleFlags[0] = false;
 		}
 		if (useGNWCau || useGNWEnt || useGNWHyn || useGNWSyn) {
 			try {
 				gnw = new GermaNetWrapper("./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
 				if (useGNWCau) {
 					numOfFeats ++;
+					moduleFlags[1] = true;
+				} else {
+					moduleFlags[1] = false;
 				}
 				if (useGNWEnt) {
 					numOfFeats ++;
+					moduleFlags[2] = true;
+				} else {
+					moduleFlags[2] = false;
 				}
 				if (useGNWHyn) {
 					numOfFeats ++;
+					moduleFlags[3] = true;
+				} else {
+					moduleFlags[3] = false;
 				}
 				if (useGNWSyn) {
 					numOfFeats ++;
+					moduleFlags[4] = true;
+				} else {
+					moduleFlags[3] = false;
 				}
 			}
 			catch (GermaNetNotInstalledException e) {
@@ -78,6 +95,11 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			catch (BaseException e) {
 				logger.info(e.getMessage());
 			}
+		} else {
+			moduleFlags[1] = false;
+			moduleFlags[2] = false;
+			moduleFlags[3] = false;
+			moduleFlags[4] = false;
 		}
 	}
 	
@@ -104,12 +126,21 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 //				hSize += hBag.get(hWord).intValue();
 //			}
 			
-			scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
-			scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_hypernym));
-			scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.causes));
-			scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.entails));
-			scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_synonym));
-		
+			if (moduleFlags[0]) {
+				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
+			}
+			if (moduleFlags[1]) {
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_hypernym));
+			}
+			if (moduleFlags[2]) {
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.causes));
+			}
+			if (moduleFlags[3]) {
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.entails));
+			}
+			if (moduleFlags[4]) {
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_synonym));
+			}
 		} catch (CASException e) {
 			throw new ScoringComponentException(e.getMessage());
 		}

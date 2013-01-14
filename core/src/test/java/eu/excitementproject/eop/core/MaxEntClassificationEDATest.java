@@ -39,6 +39,7 @@ public class MaxEntClassificationEDATest {
 		*/
 		
 		// Rui: if you want to test MaxEntClassificationEDA with different lexical resources, please check MaxEntClassificationEDA.initialize() for the moment
+		// Rui: Make sure the trained model is consistent with the testing configuration!
 	}
 	
 	//@Test 
