@@ -11,8 +11,10 @@
   	<module>core</module>
   	<module>lap</module>
   	<module>common</module>
-    <module>infrastructure</module>
+<!--     <module>infrastructure</module> -->
     <module>engineml</module>
+    <module>transformations</module>
+    <module>biutee</module>
   </modules>
   <dependencyManagement>
   	<dependencies>

@@ -1,15 +1,12 @@
 package eu.excitementproject.eop.common.component.syntacticknowledge;
-
 import java.io.Serializable;
 
-import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
-import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 /**
- * [DELETEME_LATER: imported and extended from BIUTEE 2.4.1 "rule", but somewhat different. 1) "relation" added. 2) introduction removed.(NEED2TALK?)] 
  * 
  * Some entailment relationships cannot be described well at the lexical level, 
  * but require access to the syntactic level. Examples include changes of verb 
@@ -21,7 +18,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
  * does not entail RHS). Unlike in the case of lexical knowledge, each side (LHS / 
  * RHS) is defined as a partial parse tree. (e.g. that of BasicNode) 
  *
- * * <P>
+ * <P>
+ * 
  * A Rule is:
  * <OL>
  * <LI>left hand side</LI>
@@ -32,23 +30,38 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
  * <P>
  * Note that Rule does <B>not</B> implement equals() and hashCode(). I.e. each rule is
  * unique in the system. 
+ * <P>
+ * It is optional to specify that the rule is <tt>introduction</tt> rule or
+ * <tt>substitution</tt> rule, but it is also possible to omit that specification
+ * (and make the type of the rule unspecified).
  * 
+ * 
+ * 
+ * @author Asher Stern
+ * @since Feb 5, 2011
+ *
  * @param <I> The information type of the tree-nodes, e.g. {@link Info}.  See {@link AbstractNode}.
  * @param <S> The rule's nodes, e.g. {@link BasicNode}. See {@link AbstractNode}.
- * 
  */
+public class SyntacticRule<I, S extends AbstractNode<I, S>> implements Serializable
+{
+	private static final long serialVersionUID = 2817957141706110612L;
 
-public class SyntacticRule<I,S extends AbstractNode<I,S>> implements Serializable {
-
-	private static final long serialVersionUID = 1804205599883182009L;
-
-	public SyntacticRule(S leftHandSide, S rightHandSide, BidirectionalMap<S, S> mapNodes, TERuleRelation relation)
+	public SyntacticRule(S leftHandSide, S rightHandSide, BidirectionalMap<S, S> mapNodes)
 	{
 		super();
 		this.leftHandSide = leftHandSide;
 		this.rightHandSide = rightHandSide;
 		this.mapNodes = mapNodes;
-		this.relation = relation; 
+	}
+
+	public SyntacticRule(S leftHandSide, S rightHandSide, BidirectionalMap<S, S> mapNodes, Boolean isExtraction)
+	{
+		super();
+		this.leftHandSide = leftHandSide;
+		this.rightHandSide = rightHandSide;
+		this.mapNodes = mapNodes;
+		this.isExtraction = isExtraction;
 	}
 
 	public S getLeftHandSide()
@@ -65,26 +78,28 @@ public class SyntacticRule<I,S extends AbstractNode<I,S>> implements Serializabl
 	{
 		return mapNodes;
 	}
-
-	public TERuleRelation getRelation()
+	
+	public Boolean isExtraction()
 	{
-		return relation; 
+		return this.isExtraction;
 	}
-
-	// protected
 	
 	protected S leftHandSide;
 	protected S rightHandSide;
-	
-	
-	/**
-	 * relation from LHS to RHS. (entailment, or nonentailment) 
-	 */
-	protected TERuleRelation relation; 
 	
 	/**
 	 * map from LHS to RHS
 	 */
 	protected BidirectionalMap<S,S> mapNodes;
-		
+	
+	/**
+	 * There are two types of rules: introduction and substitution.
+	 * This field:<BR>
+	 * <tt>true</tt> - the rule is introduction.
+	 * <tt>false</tt> - the rule is substitution.
+	 * <tt>null</tt> - the type is not specified.
+	 * <BR>
+	 * This field is <tt>null</tt> by default.
+	 */
+	protected Boolean isExtraction = null;
 }
