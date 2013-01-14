@@ -16,6 +16,8 @@ import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 
 /**
+ * <B>This class has to be removed, since Excitement uses another type of
+ * configuration files.</B>
  * 
  * ConfigurationParams is an elaborated Hash table of Strings (keys are case
  * insensitive) with extra checks, used to represent one xml file

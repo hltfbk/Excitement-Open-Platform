@@ -31,6 +31,9 @@ import eu.excitementproject.eop.common.utilities.configuration.configuration_fil
 
 
 /**
+ * <B>This class has to be removed, since Excitement uses another type of
+ * configuration files.</B>
+ * 
  * 
  * The classes {@link ConfigurationFile} and {@link ConfigurationParams} use the JaxB jars {@link https://jaxb.dev.java.net/}
  * to provide a comprehensive and more user friendly Java interface to XML files.
