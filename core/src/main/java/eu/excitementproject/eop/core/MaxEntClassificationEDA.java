@@ -121,8 +121,18 @@ public class MaxEntClassificationEDA implements
 		ScoringComponent comp2 = new BagOfLemmasScoring();
 		components.add(comp2);
 
-		ScoringComponent comp3 = new BagOfLexesScoring(true, true, true);
-		components.add(comp3);
+		// these five boolean values control the lexical resources used.
+		// they refer to whether to use GermanDistSim, GermaNetRelation.causes, GermaNetRelation.entails, GermaNetRelation.has_hypernym, and GermaNetRelation.has_synonym
+		boolean isGDS = true;
+		boolean isGNRcauses = true;
+		boolean isGNRentails = true;
+		boolean isGNRhypernym = true;
+		boolean isGNRsynonym = true;
+		
+		if (isGDS || isGNRcauses || isGNRentails || isGNRhypernym || isGNRsynonym) {
+			ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
+			components.add(comp3);
+		}
 
 		modelFile = "./src/test/resources/MaxEntClassificationEDAModel"
 				+ language;

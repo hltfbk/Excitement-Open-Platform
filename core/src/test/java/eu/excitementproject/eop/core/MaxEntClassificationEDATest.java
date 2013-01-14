@@ -26,17 +26,20 @@ public class MaxEntClassificationEDATest {
 	
 	@Test
 	public void test() {
-		// This is a very very long test. (More than build prcess itself) 
+		// testLAP_DE() is a very very long test. (More than build process itself) 
 		// Commented for that reason. 
 		// Uncomment the following tests to do the Full Test 
 		// on MaxEntClassificationEDA --Gil 
-		
+				
 		/* 
 		testLAP_DE(); 
 		testTraining_DE(); 
 		testTesting_SingleTH_DE(); 
 		testTesting_MultiTH_DE(); 
 		*/
+		
+		// Rui: if you want to test MaxEntClassificationEDA with different lexical resources, please check MaxEntClassificationEDA.initialize() for the moment
+		// Rui: Make sure the trained model is consistent with the testing configuration!
 	}
 	
 	//@Test 

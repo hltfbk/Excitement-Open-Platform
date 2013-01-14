@@ -23,7 +23,7 @@ public class BagOfWordsScoringTest {
 		
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		 BagOfLemmasScoring bols = new BagOfLemmasScoring();
-		BagOfLexesScoring bolexs = new BagOfLexesScoring(true, true, true);
+		BagOfLexesScoring bolexs = new BagOfLexesScoring(true, true, true, true, true);
 
 		JCas aCas = null;
 		LAPAccess lap = null;
