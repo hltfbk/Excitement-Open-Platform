@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus>
+<pair id="6_2P1HSTLB3L0FDL0HHSAEQREVKJ9IUM" entailment="YES" task="SUM">
+  <t>Hallo Folgendes Problem, der CPU ist bei 100%. Wo die Auslastung liegt, lässt sich nicht erkennen im Task. Spy und Virenprogramm AV lässt sich nicht starten. AVcenter ist keine zulässige win32 anwendung u.s.w. Soundkarte gibt keine Musik mehr von sich. Nur die Windows Töne. Treiber lässt sich auch nicht mehr installieren. Online Virenscan, wie hier beschrieben, geht nur in Zeitlupe, wegen des CPU. Bisher wurde der Beagle Virus gefunden. Tool installiert. Abgesicherter Modus geht aber nicht , trotz mehrerer Versuche. Was nun? Vielen Dank für die Antwort schon jetzt!</t>
+  <h>Der Computer ist durch Malware verseucht, der Hauptprozessor komplett beansprucht und es ist nicht möglich den Virenscanner zu aktivieren.</h>
+</pair>
+<pair id="19_2YQ8MQU6L5OBXE90KEO4HIJFDUCWDX" entailment="YES" task="SUM">
+  <t>Hallo, habe mir ein Asus P5Q geholt und am Anfang lief alles prima. Hab mir direkt ausm Netz von der Asus Seite die neusten Chipsatztreiber geholt und installiert. Nach dem reboot sind die USB-Ports wie tot Beim hochfahren gehen sie, sprich Hardwaredefekt liegt keiner vor. Sobald der Windowsladebildschirm kommt. Geht die Maus aus und nichts geht mehr. Hab dann mit der Tastatur mal im Hardwaremanager geguckt und siehe da bei USB-Port-Hub sind überall Ausrufungszeichen. Wenn ich dann von dann die USB Treiber manuell installieren will steht nur da. Sie haben WinXP SP2 sie brauchen diese Treiber nicht. System: Asus P5Q E8400 Ati 3850 2 GB G-Data Vitesta Ram Hoffe jemand kann mir da helfen. Vielen Dank im vorarus!</t>
+  <h>Die USB-Anschlüsse funktionieren bei dem neuen Asus P5Q nach der Installation des Chipsatztreibers nicht mehr.</h>
+</pair>
+<pair id="16_2JVIPDOBDDP8RLNJNU484MB3WHSC1F" entailment="NO" task="SUM">
+  <t>Hallo Leute! Ein Bekannter von mir hat folgendes Problem: Immer wenn er mit Kaspersky seine Festplatte auf Viren überprüft bekommt er einen Blue Screen mit Error 77 bzw. 77a angezeigt. Er hat gehört das dieses auf eine defekte Festplatte hinweist. Allerdings erreicht sein Prozessor unter Last 67°C und das Problem tritt auch sporadisch bei Spielen und im Sommer wenn das Dachgeschoss ohnehin schon warm ist auf. Habt Ihr dort eine Idee bzw. Lösungsvorschlag um den Fehler zu beheben? Mfg wiesenpieper</t>
+  <h>Mein Rechner stürzt bei hohen Problemen ab.</h>
+</pair>
+</entailment-corpus>
