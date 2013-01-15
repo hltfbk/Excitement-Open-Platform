@@ -175,11 +175,12 @@ public class ChangeLog
 				ChangeLogItem[] logArray = new ChangeLogItem[]
 						{
 						// example new ChangeLogItem(VERSION_BEFORE_CHANGE, ChangeType.FIXED, "change description"),
+						new ChangeLogItem(VER_2_4_1, ChangeType.CHANGED, "Migration (Renames & Maven) of code into Excitement. Splitting the code into \"transformations\" project and \"biutee\" project."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.ADDED, "Learning models are stored and loaded into/from XML files."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.ADDED, "Adding \"is a\" by-coreference transformation."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.CHANGED, "Adding \"document sublayer\", for (1) Truth-Teller annotations and (2) converting from BasicNode to ExtendedNode representation."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.ADDED, "Syntactic manipulation based on \"ref\" relations, by copying the appropriate argument to the appropriate predicates."),
-						new ChangeLogItem(VER_2_4_1, ChangeType.CHANGED, "Training and text of RTE-sum (RTE 6 AND 7) is done using advanced concurrency mechanisms, to improve run-time performance."),
+						new ChangeLogItem(VER_2_4_1, ChangeType.CHANGED, "Training and test of RTE-sum (RTE 6 AND 7) is done using advanced concurrency mechanisms, to improve run-time performance."),
 						new ChangeLogItem(VER_2_4_1, true,ChangeType.ADDED, "RTE-pairs can be trained with multiple dataset files."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.CHANGED, "Training of RTE-Pairs is done using advanced concurrency mechanisms, to improve run-time performance."),
 						new ChangeLogItem(VER_2_4_1,true, ChangeType.ADDED, "Code for syntactic-rules compilation as well as TruthTeller have been integrated."),

@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.common.representation.partofspeech;
 
 /**
+ * Convertors of {@link CanonicalPosTag} to/from {@link SimplerCanonicalPosTag}
  * 
  * @author Asher Stern
  * @since Jan 13, 2013
