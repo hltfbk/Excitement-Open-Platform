@@ -62,6 +62,13 @@ public class UnspecifiedPartOfSpeech extends PartOfSpeech
 		this.canonicalPosTag = CanonicalPosTag.OTHER;
 		try{this.canonicalPosTag = CanonicalPosTag.valueOf(posTagString);}
 		catch(RuntimeException e){this.canonicalPosTag = CanonicalPosTag.OTHER;}
+		try
+		{
+			SimplerCanonicalPosTag simpler = SimplerCanonicalPosTag.valueOf(posTagString);
+			this.canonicalPosTag = SimplerPosTagConvertor.fromSimplerToCanonical(simpler);
+		}
+		catch(RuntimeException e){this.canonicalPosTag = CanonicalPosTag.OTHER;}
+		
 	}
 
 	
