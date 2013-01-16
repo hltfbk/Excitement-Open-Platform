@@ -1,18 +1,35 @@
+/**
+ * 
+ */
 package eu.excitementproject.eop.common.component.lexicalknowledge;
 
-import eu.excitementproject.eop.common.component.lexicalknowledge.KnowledgeComponentException;
+/**
+ * @author Amnon Lotan
+ * @since 07/05/2011
+ * 
+ */
+@SuppressWarnings("serial")
+public class LexicalResourceException extends Exception 
+{
 
 
-public class LexicalResourceException extends KnowledgeComponentException {
-
-	private static final long serialVersionUID = -2578869289508192705L;
-
-	public LexicalResourceException(String message) {
-		super(message);
+	/**
+	 * Ctor
+	 * @param arg0
+	 */
+	public LexicalResourceException(String arg0) {
+		super(arg0);
+		// TODO Auto-generated constructor stub
 	}
 
-	public LexicalResourceException(String message, Throwable cause) {
-		super(message, cause);
+	/**
+	 * Ctor
+	 * @param arg0
+	 * @param arg1
+	 */
+	public LexicalResourceException(String arg0, Throwable arg1) {
+		super(arg0, arg1);
+		// TODO Auto-generated constructor stub
 	}
 
 }

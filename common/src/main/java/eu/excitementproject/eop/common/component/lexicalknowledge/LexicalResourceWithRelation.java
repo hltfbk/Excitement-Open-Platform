@@ -2,7 +2,7 @@ package eu.excitementproject.eop.common.component.lexicalknowledge;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.parsetree.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RelationSpecifier;
 
 /**

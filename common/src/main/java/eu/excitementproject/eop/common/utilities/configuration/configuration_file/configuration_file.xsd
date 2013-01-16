@@ -1,0 +1,42 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<xsd:element name="configuration" type="ConfigurationType"/>
+
+
+<xsd:complexType name="ConfigurationType">
+	<xsd:sequence>
+		<xsd:element name="param" type="ParameterType" minOccurs="0" maxOccurs="unbounded"/>
+		<xsd:element name="module" type="ModuleType" minOccurs="0" maxOccurs="unbounded"/>
+	</xsd:sequence>
+</xsd:complexType>
+
+
+<xsd:complexType name="ModuleType">
+	<xsd:sequence>
+		<xsd:element name="param" type="ParameterType" minOccurs="0" maxOccurs="unbounded"/>
+		<xsd:element name="submodule" type="SubModuleType" minOccurs="0" maxOccurs="unbounded"/>
+	</xsd:sequence>
+
+	<xsd:attribute name="name" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+
+<xsd:complexType name="ParameterType">
+	<xsd:simpleContent>
+		<xsd:extension base="xsd:string">
+    	<xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:extension>
+	</xsd:simpleContent>
+</xsd:complexType>
+
+
+<xsd:complexType name="SubModuleType">
+	<xsd:sequence>
+		<xsd:element name="param" type="ParameterType" minOccurs="0" maxOccurs="unbounded"/>
+	</xsd:sequence>
+
+	<xsd:attribute name="name" type="xsd:string" use="required"/>
+</xsd:complexType>
+
+
+</xsd:schema>

@@ -1,0 +1,28 @@
+#Note: lexical resources should be in upper case
+
+UNCOVERED	0.11
+MATCH	0.9573
+
+WORDNET	0.9695
+CATVAR	0.8286
+
+
+
+0-0	0.0001
+0-1	0.0466
+1-0	0.3364
+1-1	0.9997
+
+
+==============  End Of File  ======
+
+BAP200	0.6
+
+REDIRECT	0.9
+BECOMP	0.8
+BECOMPINDIRECT	0.8
+ALLNOUNSTOP	0.8
+PARENTHESIS	0.7
+
+SIMILAR	0.6
+STRONGER_THAN	0.6

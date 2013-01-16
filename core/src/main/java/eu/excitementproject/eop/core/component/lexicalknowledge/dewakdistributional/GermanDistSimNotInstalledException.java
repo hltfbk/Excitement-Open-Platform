@@ -15,3 +15,4 @@ public class GermanDistSimNotInstalledException extends ConfigurationException {
 	}
 
 }
+

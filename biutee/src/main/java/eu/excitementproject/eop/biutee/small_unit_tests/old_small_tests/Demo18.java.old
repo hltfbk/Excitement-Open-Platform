@@ -1,0 +1,87 @@
+package ac.biu.nlp.nlp.engineml.demos;
+
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
+
+import ac.biu.nlp.nlp.engineml.classifiers.Classifier;
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierUtils;
+import ac.biu.nlp.nlp.engineml.classifiers.LabeledSample;
+import ac.biu.nlp.nlp.engineml.classifiers.LogisticRegressionClassifier;
+import ac.biu.nlp.nlp.engineml.classifiers.ParametersExpanderClassifier;
+import ac.biu.nlp.nlp.engineml.rteflow.Feature;
+import ac.biu.nlp.nlp.general.ExceptionUtil;
+import ac.biu.nlp.nlp.general.StringUtil;
+
+public class Demo18
+{
+	public static void f(String[] args) throws ClassifierException
+	{
+		Classifier rc = new LogisticRegressionClassifier(LogisticRegressionClassifier.DEFAULT_LEARNING_RATE,2.0);
+		Set<Set<Integer>> expanders = new HashSet<Set<Integer>>();
+		Set<Integer> set = new HashSet<Integer>();
+		set.add(Feature.HYPOTHESIS_MAIN_PREDICATE_IS_NOT_VERB.getFeatureIndex());
+		set.add(Feature.HYPOTHESIS_MAIN_PREDICATE_IS_VERB.getFeatureIndex());
+		expanders.add(set);
+		set = new HashSet<Integer>();
+		set.add(Feature.INVERSE_HYPOTHESIS_LENGTH.getFeatureIndex());
+		expanders.add(set);
+		ParametersExpanderClassifier pec = new ParametersExpanderClassifier(expanders,rc);
+
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		double value = 1.0;
+		for (Feature featrue : Feature.values())
+		{
+			if (featrue.equals(Feature.HYPOTHESIS_MAIN_PREDICATE_IS_NOT_VERB))
+			{
+				featureVector.put(featrue.getFeatureIndex(), 0.0);
+			}
+			else
+			{
+				featureVector.put(featrue.getFeatureIndex(), value);
+			}
+			value+=1.0;
+		}
+
+		
+		Vector<LabeledSample> samples = new Vector<LabeledSample>();
+		for (int ii=0;ii<20;ii++)
+		{
+
+			samples.add(new LabeledSample(featureVector, true));
+		}
+		
+		
+		pec.setFeaturesNames(Feature.toMapOfNames());
+		pec.train(samples);
+
+		System.out.println(pec.descriptionOfTraining());
+		System.out.println(pec.classify(samples.get(0).getFeatures()));
+		System.out.println(StringUtil.generateStringOfCharacter('-', 50));
+		
+		LabeledSample es = pec.expandLabledSample(samples.get(0));
+		System.out.println(ClassifierUtils.printLabeledSample(es));
+		
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			f(args);
+			
+		}
+		catch(Exception e)
+		{
+			ExceptionUtil.outputException(e, System.out);
+		}
+
+	}
+
+
+
+}

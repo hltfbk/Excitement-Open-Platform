@@ -1,0 +1,69 @@
+package ac.biu.nlp.nlp.engineml.operations.rules.legacylexical;
+
+import java.util.HashSet;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import org.BIU.NLP.TE.impl.VerbOcean.VerbOceanManager;
+
+import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCache;
+import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.configuration.InitException;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
+import ac.biu.nlp.nlp.representation.CanonicalPosTag;
+import ac.biu.nlp.nlp.representation.PartOfSpeech;
+
+public class VerbOceanLexicalRuleBase extends ByLemmaPosLexicalRuleBaseWithCache<LexicalRule>
+{
+	public VerbOceanLexicalRuleBase(ConfigurationParams confParams) throws RuleBaseException
+	{
+		this.manager = new VerbOceanManager();
+		
+		try
+		{
+			manager.init(confParams);
+		} catch (InitException e)
+		{
+			throw new RuleBaseException("VerbOcean initialization failed.",e);
+		} catch (ConfigurationException e)
+		{
+			throw new RuleBaseException("VerbOcean initialization failed.",e);
+		}
+		
+	}
+	
+	@Override
+	protected ImmutableSet<LexicalRule> getRulesNotInCache(String lhsLemma, PartOfSpeech lhsPos) throws RuleBaseException
+	{
+		ImmutableSet<LexicalRule> ret = null;
+		if (lhsLemma.length()==0)
+			ret = EMPTYRULESET;
+		else if (null==lhsPos)
+			ret = EMPTYRULESET;
+		else if (!(lhsPos.getCanonicalPosTag()==CanonicalPosTag.VERB))
+			ret = EMPTYRULESET;
+		else
+		{
+			Set<LexicalRule> rules = new LinkedHashSet<LexicalRule>();
+			Iterable<String> entailedVerbs = manager.getVerbsEntailedByVerb(lhsLemma);
+			for (String verbRhs : entailedVerbs)
+			{
+				rules.add(new LexicalRule(lhsLemma, lhsPos, verbRhs, lhsPos, EMINUS1));
+			}
+			ret = new ImmutableSetWrapper<LexicalRule>(rules);
+		}
+		return ret;
+	}
+	
+	private VerbOceanManager manager;
+	private final double EMINUS1 = Math.exp(-1); 
+	private final static ImmutableSet<LexicalRule> EMPTYRULESET = new ImmutableSetWrapper<LexicalRule>(new HashSet<LexicalRule>());
+	
+	
+
+}

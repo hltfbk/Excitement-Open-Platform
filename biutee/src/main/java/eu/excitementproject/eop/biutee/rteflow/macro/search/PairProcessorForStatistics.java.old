@@ -1,0 +1,756 @@
+package ac.biu.nlp.nlp.engineml.rteflow.macro.search;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
+import java.util.Map;
+import java.util.Vector;
+
+import org.apache.log4j.Logger;
+
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
+import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
+import ac.biu.nlp.nlp.engineml.generic.annotation.AnnotatorException;
+import ac.biu.nlp.nlp.engineml.operations.OperationException;
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.engineml.operations.specifications.Specification;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.GlobalPairInformation;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.TextTreesProcessor;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.astar.AStarTextTreesProcessor;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.old_beam_search.BeamSearchTextTreesProcessor;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.TESystemEnvironment;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.ExtendedPairData;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.PairProcessor;
+import ac.biu.nlp.nlp.engineml.script.HypothesisInformation;
+import ac.biu.nlp.nlp.engineml.script.OperationsScript;
+import ac.biu.nlp.nlp.engineml.script.ScriptException;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.general.Table;
+import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
+import ac.biu.nlp.nlp.instruments.parse.representation.english.Info;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.english.EnglishNode;
+
+
+/**
+ * 
+ * TODO: This is not a very nice code.
+ * 
+ * @author Asher Stern
+ * @since Jun 19, 2011
+ *
+ */
+public class PairProcessorForStatistics extends PairProcessor
+{
+	public PairProcessorForStatistics(ExtendedPairData pairData,
+			LinearClassifier classifier, Lemmatizer lemmatizer,
+			OperationsScript<Info, EnglishNode> script,
+			TESystemEnvironment teSystemEnvironment,
+			Table<String, Double> costTable, Table<String,Long> timeTable,
+			Table<String, Long> expandedTable,
+			Table<String, Long> generatedeTable)
+	{
+		super(pairData, classifier, lemmatizer, script, teSystemEnvironment);
+		this.costTable = costTable;
+		this.timeTable = timeTable;
+		this.expandedTable = expandedTable;
+		this.generatedeTable = generatedeTable;
+	}
+	
+	public void process() throws TeEngineMlException, OperationException, ClassifierException, ScriptException, RuleBaseException, AnnotatorException
+	{
+		try
+		{
+			String id = this.pairData.getPair().getId().toString();
+			id = "(pair #"+id+") ";
+			threadMXBean = ManagementFactory.getThreadMXBean();
+			
+			this.script.setHypothesisInformation(new HypothesisInformation(pairData.getPair().getHypothesis(), pairData.getHypothesisTree()));
+			
+			String algorithmName;
+			AStarTextTreesProcessor astarTextTreesProcessor;
+			
+			algorithmName = "Caches filler (A* Future = 5 Cost = 1)";
+			logger.info(id+"Staring "+algorithmName);
+			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment);
+			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+			astarTextTreesProcessor.setWeightOfCost(1);
+			astarTextTreesProcessor.setWeightOfFuture(5);
+			process(astarTextTreesProcessor,algorithmName);
+			astarTextTreesProcessor = null;
+			logger.info("Done.");
+			
+			
+		
+//			algorithmName = "KStaged";
+//			logger.info(id+"Staring "+algorithmName);
+//			KStagedTextTreesProcessor kStagedTextTreesProcessor =
+//				new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords,135,135,5,1,1);
+//			process(kStagedTextTreesProcessor,algorithmName);
+//			kStagedTextTreesProcessor = null;
+//			logger.info("Done.");
+
+			// not commented
+//			for (int bigK=20; bigK<=220;bigK+=40)
+//			{
+//				for (int smallK=20; smallK<=bigK;smallK+=40)
+//				{
+//					algorithmName = "KStaged_"+bigK+"_"+smallK;
+//					logger.info(id+"Staring "+algorithmName);
+//					KStagedTextTreesProcessor kStagedTextTreesProcessor =
+//						new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment,smallK,bigK,5,2,1);
+//					kStagedTextTreesProcessor.setDynamicWeightingMode(20);
+//					// kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
+//					process(kStagedTextTreesProcessor,algorithmName);
+//					kStagedTextTreesProcessor = null;
+//					logger.info("Done.");
+//				}
+//			}
+
+//			// not commented
+//			algorithmName = "KStaged gradient mode weight of future = 1000";
+//			logger.info(id+"Staring "+algorithmName);
+//			KStagedTextTreesProcessor kStagedTextTreesProcessor =
+//				new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment,5,5,5,1,1000);
+//			kStagedTextTreesProcessor.setGradientMode(true);
+//			kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
+//			process(kStagedTextTreesProcessor,algorithmName);
+//			kStagedTextTreesProcessor = null;
+//			logger.info("Done.");
+
+
+//			algorithmName = "KStaged gradient mode Local Creative Mode";
+//			logger.info(id+"Staring "+algorithmName);
+//			KStagedTextTreesProcessor kStagedTextTreesProcessor =
+//				new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment,1,1,5,1,1);
+//			kStagedTextTreesProcessor.setLocalCreativeMode(true);
+//			kStagedTextTreesProcessor.setGradientMode(true);
+//			kStagedTextTreesProcessor.setSeparatelyProcessTextSentencesMode(true);
+//			kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
+//			process(kStagedTextTreesProcessor,algorithmName);
+//			kStagedTextTreesProcessor = null;
+//			logger.info("Done.");
+//
+//			algorithmName = "KStaged gradient mode Local Creative Mode K=k=2";
+//			logger.info(id+"Staring "+algorithmName);
+//			kStagedTextTreesProcessor =
+//				new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment,2,2,5,1,1);
+//			kStagedTextTreesProcessor.setLocalCreativeMode(true);
+//			kStagedTextTreesProcessor.setGradientMode(true);
+//			kStagedTextTreesProcessor.setSeparatelyProcessTextSentencesMode(true);
+//			kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
+//			process(kStagedTextTreesProcessor,algorithmName);
+//			kStagedTextTreesProcessor = null;
+//			logger.info("Done.");
+//			
+//			algorithmName = "KStaged gradient mode Local Creative Mode K=k=4";
+//			logger.info(id+"Staring "+algorithmName);
+//			kStagedTextTreesProcessor =
+//				new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment,4,4,5,1,1);
+//			kStagedTextTreesProcessor.setLocalCreativeMode(true);
+//			kStagedTextTreesProcessor.setGradientMode(true);
+//			kStagedTextTreesProcessor.setSeparatelyProcessTextSentencesMode(true);
+//			kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
+//			process(kStagedTextTreesProcessor,algorithmName);
+//			kStagedTextTreesProcessor = null;
+//			logger.info("Done.");
+//			
+//			algorithmName = "KStaged gradient mode Local Creative Mode K=k=10";
+//			logger.info(id+"Staring "+algorithmName);
+//			kStagedTextTreesProcessor =
+//				new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment,10,10,5,1,1);
+//			kStagedTextTreesProcessor.setLocalCreativeMode(true);
+//			kStagedTextTreesProcessor.setGradientMode(true);
+//			kStagedTextTreesProcessor.setSeparatelyProcessTextSentencesMode(true);
+//			kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
+//			process(kStagedTextTreesProcessor,algorithmName);
+//			kStagedTextTreesProcessor = null;
+//			logger.info("Done.");
+//
+//			algorithmName = "KStaged gradient mode Local Creative Mode K=k=30";
+//			logger.info(id+"Staring "+algorithmName);
+//			kStagedTextTreesProcessor =
+//				new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment,10,10,5,1,1);
+//			kStagedTextTreesProcessor.setLocalCreativeMode(true);
+//			kStagedTextTreesProcessor.setGradientMode(true);
+//			kStagedTextTreesProcessor.setSeparatelyProcessTextSentencesMode(true);
+//			kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
+//			process(kStagedTextTreesProcessor,algorithmName);
+//			kStagedTextTreesProcessor = null;
+//			logger.info("Done.");
+
+			
+			// not-commented
+			algorithmName = "A* Only Future";
+			logger.info(id+"Staring "+algorithmName);
+			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment);
+			astarTextTreesProcessor.setWeightOfCost(0);
+			astarTextTreesProcessor.setWeightOfFuture(1);
+			process(astarTextTreesProcessor,algorithmName);
+			astarTextTreesProcessor = null;
+			logger.info("Done.");
+
+			// not-commented
+			algorithmName = "A* Future = 10 Cost = 1";
+			logger.info(id+"Staring "+algorithmName);
+			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment);
+			astarTextTreesProcessor.setWeightOfCost(1);
+			astarTextTreesProcessor.setWeightOfFuture(10);
+			process(astarTextTreesProcessor,algorithmName);
+			astarTextTreesProcessor = null;
+			logger.info("Done.");
+			
+			// not-commented
+			algorithmName = "A* Future = 5 Cost = 1";
+			logger.info(id+"Staring "+algorithmName);
+			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment);
+			astarTextTreesProcessor.setWeightOfCost(1);
+			astarTextTreesProcessor.setWeightOfFuture(5);
+			process(astarTextTreesProcessor,algorithmName);
+			astarTextTreesProcessor = null;
+			logger.info("Done.");
+
+//			algorithmName = "A* Future = 3 Cost = 1";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+			
+//			algorithmName = "A* Future = 2.5 Cost = 1";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+			
+//			
+//			algorithmName = "A* Future = 3 Cost = 1 K = 3";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(3);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//			
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTime = 30";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.setAnyTime_numberOfGoalStates(30);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 100 AnyTime = 30";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(100);
+//			astarTextTreesProcessor.setAnyTime_numberOfGoalStates(30);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 10";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+			// not-commented
+			algorithmName = "A* Future = 5 Cost = 1 K = 10";
+			logger.info(id+"Staring "+algorithmName);
+			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,teSystemEnvironment);
+			astarTextTreesProcessor.setWeightOfCost(1);
+			astarTextTreesProcessor.setWeightOfFuture(5);
+			astarTextTreesProcessor.setK_expandInEachIteration(10);
+			process(astarTextTreesProcessor,algorithmName);
+			logger.info("Done.");
+
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 WhenEqualTakeAll = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(true);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			// not-commented
+//			algorithmName = "A* Future = 5 Cost = 1 K = 10 preferred = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 10 AnyTime = 30";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.setAnyTime_numberOfGoalStates(30);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* AnyTimeMode Future = 3 Cost = 1 K = 3 MaxGen = 25000 ReduceFactor = 0.8";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useAnyTimeMode(25000, 0.8);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* AnyTimeMode Future = 3 Cost = 1 K = 3 MaxGen = 25000 ReduceFactor = 0.6";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useAnyTimeMode(25000, 0.6);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* AnyTimeMode Future = 3 Cost = 1 K = 3 MaxGen = 25000 ReduceFactor = 0.2";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useAnyTimeMode(25000, 0.2);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* AnyTimeMode Future = 3 Cost = 1 MaxGen = 25000 ReduceFactor = 0.8";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useAnyTimeMode(25000, 0.8);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* AnyTimeMode Future = 3 Cost = 1 MaxGen = 20000 ReduceFactor = 0.8";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useAnyTimeMode(20000, 0.8);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* AnyTimeMode Future = 2.5 Cost = 1 MaxGen = 20000 ReduceFactor = 0.8";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useAnyTimeMode(20000, 0.8);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* AnyTimeMode Future = 2.5 Cost = 1 K=3 MaxGen = 20000 ReduceFactor = 0.8";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useAnyTimeMode(20000, 0.8);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(3);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+			
+//			algorithmName = "A* SmartAnyTimeMode Future = 3 Cost = 1 K = 3 MaxGen = 25000 ReduceFactor = 0.8";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useSmartAnyTimeMode(25000, 0.8);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//
+//			algorithmName = "A* SmartAnyTimeMode Future = 3 Cost = 1 K = 3 MaxGen = 25000 ReduceFactor = 0.6";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useSmartAnyTimeMode(25000, 0.6);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* SmartAnyTimeMode Future = 3 Cost = 1 K = 3 MaxGen = 25000 ReduceFactor = 0.4";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useSmartAnyTimeMode(25000, 0.4);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//
+//			algorithmName = "A* SmartAnyTimeMode Future = 3 Cost = 1 K = 3 MaxGen = 25000 ReduceFactor = 0.2";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.useSmartAnyTimeMode(25000, 0.2);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+			
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 10 BeliefMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.setBeliefMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 BeliefMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.setBeliefMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 20000 ReduceFactor = 0.7";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(20000, 0.7);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 20000 ReduceFactor = 0.7 BeliefMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(20000, 0.7);
+//			astarTextTreesProcessor.setBeliefMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 10000 ReduceFactor = 0.7 BeliefMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(10000, 0.7);
+//			astarTextTreesProcessor.setBeliefMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 30 AnyTime = 50 BeliefMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(30);
+//			astarTextTreesProcessor.setAnyTime_numberOfGoalStates(50);
+//			astarTextTreesProcessor.setBeliefMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			// not-commented
+//			algorithmName = "A* Future = 5 Cost = 1 K = 10 AnyTimeMode MaxGen = 30000 ReduceFactor = 0.7";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(30000, 0.7);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 30000 ReduceFactor = 0.7 Prefered = true WhenEqualTakeAll = false";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(30000, 0.7);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//			
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 15000 ReduceFactor = 0.7 Expansive = true WhenEqualTakeAll = false";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(15000, 0.7, true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//			
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 30000 ReduceFactor = 0.7 Expansive = true Prefered = true WhenEqualTakeAll = false";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(30000, 0.7, true);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//			
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 10000 ReduceFactor = 0.7 Expansive = true WhenEqualTakeAll = false";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(10000, 0.7, true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//			
+//			algorithmName = "A* Future = 3 Cost = 1 K = 10 AnyTimeMode MaxGen = 10000 ReduceFactor = 0.7 Expansive = true Prefered = true WhenEqualTakeAll = false";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.useAnyTimeMode(10000, 0.7, true);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 3 AnyTimeMode MaxGen = 6000 ReduceFactor = 0.6 Expansive = true Prefered = true WhenEqualTakeAll = false";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(3);
+//			astarTextTreesProcessor.useAnyTimeMode(6000, 0.6, true);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 3 Cost = 1 K = 3 AnyTimeMode MaxGen = 6000 ReduceFactor = 0.6 Prefered = true WhenEqualTakeAll = false";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+//			astarTextTreesProcessor.setWhenEqualTakeAll(false);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(3);
+//			astarTextTreesProcessor.setK_expandInEachIteration(3);
+//			astarTextTreesProcessor.useAnyTimeMode(6000, 0.6);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 10 PreferedMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 10 AnyTimeMode MaxGen = 10000 ReduceFactor = 0.7 PreferedMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			astarTextTreesProcessor.useAnyTimeMode(10000, 0.7);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 3 AnyTimeMode MaxGen = 10000 ReduceFactor = 0.7 PreferedMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(3);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			astarTextTreesProcessor.useAnyTimeMode(10000, 0.7);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 3 AnyTimeMode MaxGen = 60000 ReduceFactor = 0.7 PreferedMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(3);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			astarTextTreesProcessor.useAnyTimeMode(60000, 0.7);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+//
+//			algorithmName = "A* Future = 2.5 Cost = 1 K = 10 AnyTimeMode MaxGen = 60000 ReduceFactor = 0.7 PreferedMode = true";
+//			logger.info(id+"Staring "+algorithmName);
+//			astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
+//			astarTextTreesProcessor.setWeightOfCost(1);
+//			astarTextTreesProcessor.setWeightOfFuture(2.5);
+//			astarTextTreesProcessor.setK_expandInEachIteration(10);
+//			astarTextTreesProcessor.setPreferedMode(true);
+//			astarTextTreesProcessor.useAnyTimeMode(60000, 0.7);
+//			process(astarTextTreesProcessor,algorithmName);
+//			logger.info("Done.");
+
+			// not commented
+			textTreesProcessor=null;
+			algorithmName = "LocalCreativeTextTreesProcessor";
+			logger.info(id+"Staring "+algorithmName);
+			LocalCreativeTextTreesProcessor lcTextTreesProcessor = new LocalCreativeTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, teSystemEnvironment);
+			process(lcTextTreesProcessor,algorithmName);
+			logger.info("Done.");
+			lcTextTreesProcessor=null;
+			
+
+			// not commented
+			astarTextTreesProcessor = null;
+			algorithmName = "BeamSearchTextTreesProcessor";
+			logger.info(id+"Staring "+algorithmName);
+			textTreesProcessor = new BeamSearchTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, teSystemEnvironment);
+			process(textTreesProcessor,algorithmName);
+			logger.info("Done.");
+			
+			this.bestTree = textTreesProcessor.getBestTree();
+			this.bestTreeHistory = textTreesProcessor.getBestTreeHistory();
+			this.bestTreeSentence = textTreesProcessor.getBestTreeSentence();
+
+
+		}
+		catch(TreeAndParentMapException e)
+		{
+			throw new TeEngineMlException("Processing failed. See nested exception",e);
+		}
+	}
+	
+	protected void process(WithStatisticsTextTreesProcessor processor, String processorDescription) throws TeEngineMlException, OperationException, ClassifierException, ScriptException, RuleBaseException, TreeAndParentMapException, AnnotatorException
+	{
+		processImpl(processor, processorDescription);
+		String id = this.pairData.getPair().getId().toString();
+		expandedTable.put(id, processorDescription, processor.getNumberOfExpandedElements());
+		generatedeTable.put(id, processorDescription, processor.getNumberOfGeneratedElements());
+	}
+	
+	protected void process(TextTreesProcessor processor, String processorDescription) throws TeEngineMlException, OperationException, ClassifierException, ScriptException, RuleBaseException, TreeAndParentMapException, AnnotatorException
+	{
+		processImpl(processor, processorDescription);
+	}
+	
+	protected void processImpl(TextTreesProcessor processor, String processorDescription) throws TeEngineMlException, OperationException, ClassifierException, ScriptException, RuleBaseException, TreeAndParentMapException, AnnotatorException
+	{
+		setTaskNameInTextTreesProcessor(processor);
+		long startNano = getCpuTime();
+		processor.process();
+		long endNano = getCpuTime();
+		
+		long elapsed = endNano-startNano;
+		String id = this.pairData.getPair().getId().toString();
+		timeTable.put(id, processorDescription, elapsed);
+		Map<Integer, Double> featureVector =  processor.getBestTree().getFeatureVector();
+		double cost = -this.classifier.getProduct(featureVector);
+		costTable.put(id, processorDescription,cost);
+		
+		logSummary(processor, processorDescription, cost);
+	}
+	
+	protected void setTaskNameInTextTreesProcessor(TextTreesProcessor ttProcessor)
+	{
+		if (ignoreTaskName)
+			logger.debug("Ignoring task name");
+		else
+		{
+			String taskName = pairData.getPair().getAdditionalInfo();
+			if (logger.isDebugEnabled()){logger.debug("Setting task name = "+taskName);}
+			ttProcessor.setGlobalPairInformation(new GlobalPairInformation(taskName));
+		}
+
+	}
+	
+	protected void logSummary(TextTreesProcessor processor, String processorDescription, double cost) throws TeEngineMlException
+	{
+		StringBuffer sb = new StringBuffer();
+		sb.append("Summary for ");
+		sb.append(processorDescription);
+		sb.append(":\n");
+		sb.append("Text sentence: ");
+		sb.append(processor.getBestTreeSentence());
+		sb.append("\nHypothesis: ");
+		sb.append(this.pairData.getPair().getHypothesis());
+		sb.append("\nCost = ");
+		sb.append(String.format("%4.5f", cost));
+		sb.append("\n");
+		
+		Vector<Specification> specs =  processor.getBestTreeHistory().getSpecifications();
+		for (Specification spec : specs)
+		{
+			sb.append(spec.toString());
+			sb.append("\n");
+		}
+		
+		logger.info(sb.toString());
+	}
+	
+	protected long getCpuTime( )
+	{
+		return this.threadMXBean.isCurrentThreadCpuTimeSupported() ?
+				this.threadMXBean.getCurrentThreadCpuTime( ) : 0L;
+	}
+
+
+	
+
+	
+	protected Table<String, Double> costTable;
+	protected Table<String,Long> timeTable;
+	protected Table<String, Long> expandedTable;
+	protected Table<String, Long> generatedeTable;
+	
+
+	protected ThreadMXBean threadMXBean;
+	
+	private static final Logger logger = Logger.getLogger(PairProcessorForStatistics.class);
+}
