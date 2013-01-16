@@ -1,0 +1,176 @@
+package ac.biu.nlp.nlp.engineml.rteflow.macro;
+
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
+import ac.biu.nlp.nlp.engineml.classifiers.ClassifierException;
+import ac.biu.nlp.nlp.engineml.classifiers.LinearClassifier;
+import ac.biu.nlp.nlp.engineml.operations.OperationException;
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.AStarAlgorithm;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.AStarElement;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.AStarTextTreesProcessor;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.GeneratedTreeStateCalculations;
+import ac.biu.nlp.nlp.engineml.rteflow.macro.search.AStarAlgorithm.AStarException;
+import ac.biu.nlp.nlp.engineml.script.OperationsScript;
+import ac.biu.nlp.nlp.engineml.script.ScriptException;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.engineml.utilities.TreeUtilities;
+import ac.biu.nlp.nlp.engineml.utilities.UnigramProbabilityEstimation;
+import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
+import ac.biu.nlp.nlp.instruments.lemmatizer.Lemmatizer;
+import ac.biu.nlp.nlp.instruments.parse.representation.english.Info;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.english.EnglishNode;
+
+
+/**
+ * 
+ * @author Asher Stern
+ * @since Jul 14, 2011
+ *
+ */
+@Deprecated
+public class Rte7TextTreesProcessor extends AbstractTextTreesProcessor
+{
+	// Constants
+	public static final double WEIGHT_OF_COST = 1.0;
+	public static final double WEIGHT_OF_FUTURE = 2.5;
+	public static final int MAX_NUMBER_OF_GENERATIONS = 6000;
+
+	public Rte7TextTreesProcessor(List<ExtendedNode> originalTextTrees,
+			ExtendedNode hypothesisTree,
+			Map<ExtendedNode, String> originalMapTreesToSentences,
+			TreeCoreferenceInformation<ExtendedNode> coreferenceInformation,
+			LinearClassifier classifier, Lemmatizer lemmatizer,
+			OperationsScript<Info, EnglishNode> script,
+			UnigramProbabilityEstimation unigramProbabilityEstimation,
+			Set<String> ruleBasesToRetrieveMultiWords)
+			throws TeEngineMlException
+	{
+		super(originalTextTrees, hypothesisTree, originalMapTreesToSentences,
+				coreferenceInformation, classifier, lemmatizer, script,
+				unigramProbabilityEstimation, ruleBasesToRetrieveMultiWords);
+	}
+
+	public TreeAndFeatureVector getBestTree() throws TeEngineMlException
+	{
+		if (null==bestTree)throw new TeEngineMlException("Bug in caller: did not call process()");
+		return bestTree;
+	}
+
+	public String getBestTreeSentence() throws TeEngineMlException
+	{
+		if (null==bestTreeSentence)throw new TeEngineMlException("Bug in caller: did not call process()");
+		return bestTreeSentence;
+	}
+
+	public TreeHistory getBestTreeHistory() throws TeEngineMlException
+	{
+		if (null==bestTreeHistory)throw new TeEngineMlException("Bug in caller: did not call process()");
+		return bestTreeHistory;
+	}
+
+	////////////////////// PROTECTED & PRIVATE ///////////////////////////
+	
+	@Override
+	protected void processPair() throws ClassifierException,
+	TreeAndParentMapException, TeEngineMlException, OperationException,
+	ScriptException, RuleBaseException
+	{
+		try
+		{
+			logger.info("Searching for proof using A* with limited number of generatiosn...");
+			boolean aStarSucceeded = processPairAStar();
+			if (aStarSucceeded)
+			{
+				logger.info("A proof was found by A* search.");
+			}
+			else
+			{
+				logger.info("Could not find a proof using A*. Starting Beam search...");
+				processPairBeamSearch();
+			}
+			logger.info("Searching for best proof done.");
+		}
+		catch(AStarException e)
+		{
+			throw new TeEngineMlException("AStar failure.",e);
+		}
+	}
+	
+	protected boolean processPairAStar() throws ClassifierException, TreeAndParentMapException, AStarException, TeEngineMlException
+	{
+		Set<String> hypothesisLemmasLowerCase = TreeUtilities.constructSetLemmasLowerCase(operationsEnvironment.getHypothesis());
+		Map<Integer,Double> featureVector = initialFeatureVector();
+		Set<AStarElement> startStates = new LinkedHashSet<AStarElement>();
+		for (ExtendedNode originalTree : originalTextTrees)
+		{
+			String sentence = originalMapTreesToSentences.get(originalTree);
+			double cost = GeneratedTreeStateCalculations.generateCost(classifier, featureVector, WEIGHT_OF_COST);
+			TreeAndParentMap<ExtendedInfo, ExtendedNode> treeAndParentMap =
+				new TreeAndParentMap<ExtendedInfo, ExtendedNode>(originalTree);
+			SingleTreeEvaluations evaluations = SingleTreeEvaluations.create(treeAndParentMap, operationsEnvironment.getHypothesis(), hypothesisLemmasLowerCase, hypothesisNumberOfNodes);
+				
+			double unweightedFutureEstimation = GeneratedTreeStateCalculations.generateUnweightedFutureEstimation(evaluations);
+			double futureEstimation = GeneratedTreeStateCalculations.generateFutureEstimation(evaluations,WEIGHT_OF_FUTURE);
+			boolean itIsGoal = (0==evaluations.getMissingRelations());
+			AStarElement astarElement = 
+				new AStarElement(0, originalTree, sentence, featureVector,
+						null, new TreeHistory(), null, cost, unweightedFutureEstimation,
+						futureEstimation, itIsGoal);
+			
+			startStates.add(astarElement);
+		}
+		
+		GeneratedTreeStateCalculations stateCalculations =
+			new GeneratedTreeStateCalculations(classifier,script,
+					operationsEnvironment,
+					hypothesisLemmasLowerCase,hypothesisNumberOfNodes,
+					
+					WEIGHT_OF_COST,WEIGHT_OF_FUTURE);
+		
+		AStarAlgorithm<AStarElement> astarAlgorithm =
+			new AStarAlgorithm<AStarElement>(startStates,stateCalculations,new AStarTextTreesProcessor.ComparatorByCostOnly());
+		astarAlgorithm.setMaxNumberOfGenerations(MAX_NUMBER_OF_GENERATIONS);
+		astarAlgorithm.find();
+		
+		boolean found = astarAlgorithm.isAnyGoalFound();
+		if (found)
+		{
+			AStarElement goalElement = astarAlgorithm.getFoundGoalState();
+			bestTree = new TreeAndFeatureVector(goalElement.getTree(), goalElement.getFeatureVector());
+			bestTreeSentence = goalElement.getOriginalSentence();
+			bestTreeHistory = goalElement.getHistory();
+		}
+		
+		return found;
+	}
+	
+	protected void processPairBeamSearch() throws TeEngineMlException, OperationException, ClassifierException, ScriptException, RuleBaseException, TreeAndParentMapException
+	{
+		BeamSearchTextTreesProcessor beamSearchProcessor =
+			new BeamSearchTextTreesProcessor(originalTextTrees,hypothesisTree,originalMapTreesToSentences,
+					coreferenceInformation,classifier,lemmatizer,script,
+					unigramProbabilityEstimation,ruleBasesToRetrieveMultiWords);
+		
+		beamSearchProcessor.process();
+		bestTree = beamSearchProcessor.getBestTree();
+		bestTreeHistory = beamSearchProcessor.getBestTreeHistory();
+		bestTreeSentence = beamSearchProcessor.getBestTreeSentence();
+	}
+	
+	
+
+	private TreeAndFeatureVector bestTree;
+	private String bestTreeSentence;
+	private TreeHistory bestTreeHistory;
+	private static final Logger logger = Logger.getLogger(Rte7TextTreesProcessor.class);
+}
