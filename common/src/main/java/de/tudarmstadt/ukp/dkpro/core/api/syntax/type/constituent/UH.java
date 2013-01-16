@@ -17,12 +17,12 @@ public class UH extends Constituent {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(UH.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated  */
   @Override

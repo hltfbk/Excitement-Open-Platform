@@ -73,11 +73,60 @@
   		<groupId>junit</groupId>
   		<artifactId>junit</artifactId>
   	</dependency>
+  	
+  	<dependency>
+    	<groupId>arkref</groupId>
+    	<artifactId>arkref</artifactId>
+    </dependency>
+  	
+  	
+  	<dependency>
+    	<groupId>edu.stanford.nlp</groupId>
+    	<artifactId>stanford-ner</artifactId>
+	</dependency>
+	<dependency>
+   		<groupId>edu.stanford.nlp</groupId>
+   		<artifactId>stanford-postagger</artifactId>
+	</dependency>
+	<dependency>
+   		<groupId>com.aliasi</groupId>
+   		<artifactId>lingpipe</artifactId>
+	</dependency>
+	<dependency>
+   		<groupId>edu.northwestern</groupId>
+   		<artifactId>morphadorner</artifactId>
+	</dependency>
+	<dependency>
+   		<groupId>gate</groupId>
+   		<artifactId>gate</artifactId>
+	</dependency>
+
+  	
+	<dependency>
+   		<groupId>com.sleepycat</groupId>
+   		<artifactId>je</artifactId>
+	</dependency>
+
+	<dependency>
+   		<groupId>com.googlecode.concurrentlinkedhashmap</groupId>
+   		<artifactId>concurrentlinkedhashmap-lru</artifactId>
+	</dependency>
+	
+	<!-- 
+	<dependency>
+   		<groupId>opennlp</groupId>
+   		<artifactId>opennlp-tools</artifactId>
+	</dependency>
+	-->
+
+  	
 	<dependency>
 		<groupId>eu.excitementproject</groupId>
 		<artifactId>common</artifactId>
 		<version>0.1-SNAPSHOT</version>
 	</dependency>
+	
+	
 
     <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -115,6 +164,37 @@
     		de.tudarmstadt.ukp.dkpro.core.treetagger-asl
     	</artifactId>
     </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-bin
+    	</artifactId>
+    	<version>20120912.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-model-de
+    	</artifactId>
+    	<version>20120417.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-model-en
+    	</artifactId>
+    	<version>20111109.0</version>
+    </dependency>
+    <dependency>
+    	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    	<artifactId>
+    		de.tudarmstadt.ukp.dkpro.core.treetagger-model-it
+    	</artifactId>
+    	<version>20101115.0</version>
+    </dependency>
+    
+    
+    
   </dependencies>
 
     <dependencyManagement>

@@ -37,11 +37,11 @@ public class Pair_Type extends TOP_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = Pair.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.entailment.Pair");
  
   /** @generated */

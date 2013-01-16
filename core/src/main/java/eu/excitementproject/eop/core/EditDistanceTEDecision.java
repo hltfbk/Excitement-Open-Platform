@@ -1,5 +1,8 @@
 package eu.excitementproject.eop.core;
 
+import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.IEditDistanceTEDecision;
+
 public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 
 	private DecisionLabel decisionLabel = null;

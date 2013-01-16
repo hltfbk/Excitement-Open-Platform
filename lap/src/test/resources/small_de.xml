@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entailment-corpus lang="DE">
+	<pair id="1" task="IE">
+		<t>Claude Chabrol (geboren am 24. Juni 1930) ist ein französischer Regisseur und wurde in den 40er Jahren nach seinem ersten Film, 'Le Beau Serge', berühmt für seine schaurigen Mordgeschichten, wie 'Le Boucher'.</t>
+		<h>Le Beau Serge wurde von Chabrol geleitet.</h>
+	</pair>
+	<pair id="2" task="IE">
+		<t>Claude Chabrol (geboren am 24. Juni 1930) ist ein französischer Regisseur und wurde in den 40er Jahren nach seinem ersten Film, 'Le Beau Serge', berühmt für seine schaurigen Mordgeschichten, wie 'Le Boucher'.</t>
+		<h>Le Boucher wurde von einem französischen Regisseur geleitet.</h>
+	</pair>
+	<pair id="3" task="IE">
+		<t>Claude Chabrol ließ sich von seiner ersten Frau Agnes scheiden, um die Schauspielerin Stéphane Audran zu heiraten. Seine dritte Frau ist Aurore Paquiss.</t>
+		<h>Aurore Paquiss heiratete Chabrol.</h>
+	</pair>
+</entailment-corpus>

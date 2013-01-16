@@ -12,6 +12,14 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDABasic;
+import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.IEditDistanceTEDecision;
+import eu.excitementproject.eop.common.TEDecision;
+import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
+import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
@@ -82,14 +90,14 @@ public class EditDistanceEDA<T extends TEDecision>
 			
 			checkConfiguration(config);
 			component = new FixedWeightTokenEditDistance();
-			component.initialize(config);
+			//component.initialize(config); //Gil: initialize() is removed from interface Component
 			
 		} catch (LAPException e) {
 			throw new EDAException(e.getMessage());
 		} catch (ConfigurationException e) {
 			throw e;
-		} catch (ComponentException e) {
-			throw e;
+//		} catch (ComponentException e) {
+//			throw e;
 		}
 		
 	}

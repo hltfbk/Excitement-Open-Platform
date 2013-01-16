@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="1" task="IE" >
+		<t>Claude Chabrol e stato un regista, sceneggiatore e attore francese.</t>
+		<h>Le Beau Serge e stato diretto da Chabrol.</h>
+	</pair>
+	<pair id="2" task="IE" >
+		<t>Claude Chabrol e un regista francese ed e diventato ben noto nei 40 anni da quando il suo primo film, Le Beau Serge, per i suoi racconti agghiaccianti di omicidi, tra cui Le Boucher.</t>
+		<h>Le Boucher e stato fatto da un regista francese.</h>
+	</pair>
+	<pair id="3" task="IE" >
+		<t>Claude Chabrol ha divorziato Agnes, la sua prima moglie, per sposare l'attrice Stephane Audran. La sua terza moglie e Paquiss Aurore.</t>
+		<h>Aurore Paquiss ha sposato Chabrol.</h>
+	</pair>
+</entailment-corpus>

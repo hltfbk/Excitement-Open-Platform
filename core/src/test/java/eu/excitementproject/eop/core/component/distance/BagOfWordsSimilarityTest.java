@@ -5,9 +5,12 @@ import java.io.File;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 
+import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
-import eu.excitementproject.eop.lap.lappoc.OpenNLPTaggerEN;
+import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 
 public class BagOfWordsSimilarityTest {
 	@Test
@@ -45,7 +48,9 @@ public class BagOfWordsSimilarityTest {
 				DistanceValue bowsim = bs.calculation(cas);
 	    		System.out.println(bowsim.getDistance());
 	    		System.out.println(bowsim.getUnnormalizedValue());
-	    		System.out.println(bowsim.getDistanceVector());
+	    		//System.out.println(bowsim.getDistanceVector());
+	    		System.out.println(bs.calculateScores(cas)); 
+	    		
 				cas.reset(); 
 			}
         }
@@ -54,6 +59,9 @@ public class BagOfWordsSimilarityTest {
         	System.err.println(e.getMessage()); 
         }
         catch (DistanceComponentException e) {
+        	System.err.println(e.getMessage()); 
+        }
+        catch (ScoringComponentException e) {
         	System.err.println(e.getMessage()); 
         }
     }

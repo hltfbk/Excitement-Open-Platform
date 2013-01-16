@@ -34,11 +34,11 @@ public class PR_Type extends POS_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = PR.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR");
 
 

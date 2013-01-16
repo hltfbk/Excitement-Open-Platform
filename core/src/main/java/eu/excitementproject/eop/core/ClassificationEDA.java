@@ -16,13 +16,16 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDABasic;
+import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
+import eu.excitementproject.eop.common.component.distance.DistanceValue;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.distance.BagOfLemmasSimilarity;
+//import eu.excitementproject.eop.core.component.distance.BagOfLemmasSimilarity;
 import eu.excitementproject.eop.core.component.distance.BagOfWordsSimilarity;
-import eu.excitementproject.eop.core.component.distance.DistanceCalculation;
-import eu.excitementproject.eop.core.component.distance.DistanceValue;
 import eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -54,6 +57,7 @@ public String getLanguage() {
 	//	list of components used in this EDA
 	private List<DistanceCalculation> components;
 	
+//	language flag
 	private String language;
 	
 //	the model file, consisting of parameter name and value pairs
@@ -68,11 +72,8 @@ public String getLanguage() {
 		
 		components = new ArrayList<DistanceCalculation>();
 		DistanceCalculation component = new BagOfWordsSimilarity();
-		component.initialize(config);
 		DistanceCalculation component1 = new FixedWeightTokenEditDistance();
-		component1.initialize(config);
-		DistanceCalculation component2 = new BagOfLemmasSimilarity();
-		component2.initialize(config);
+		//DistanceCalculation component2 = new BagOfLemmasSimilarity();
 		components.add(component);
 		components.add(component1);
 //		components.add(component2);
@@ -106,11 +107,12 @@ public String getLanguage() {
 		Vector<Double> featureVector = new Vector<Double>();
 		for (DistanceCalculation component : components) {
 			DistanceValue dValue = component.calculation(aCas);
-			if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+			Vector<Double> distanceVector = component.calculateScores(aCas); 
+			if (null == distanceVector || distanceVector.size() == 0) {
 				featureVector.add(dValue.getDistance());
 				continue;
 			}
-			featureVector.addAll(dValue.getDistanceVector());
+			featureVector.addAll(distanceVector); 	
 		}
 		
 		double minDistance = 2.0d;
@@ -174,12 +176,14 @@ public String getLanguage() {
 				int index = 0;
 				for (DistanceCalculation component : components) {
 					DistanceValue dValue = component.calculation(cas);
-					if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					Vector<Double> distanceVector = component.calculateScores(cas); 
+					//if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					if (null == distanceVector || distanceVector.size() == 0) {
 						featureVector.set(index, featureVector.get(index) + dValue.getDistance());
 						index ++;
 						continue;
 					}
-					for (Double value : dValue.getDistanceVector()) {
+					for (Double value : distanceVector) {
 						featureVector.set(index, featureVector.get(index) + value);
 						index ++;
 					}
@@ -193,11 +197,13 @@ public String getLanguage() {
 				// first score
 				for (DistanceCalculation component : components) {
 					DistanceValue dValue = component.calculation(cas);
-					if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					Vector<Double> vec = component.calculateScores(cas);
+					//if (null == dValue.getDistanceVector() || dValue.getDistanceVector().size() == 0) {
+					if (null == vec || vec.size() == 0) {
 						featureVector.add(dValue.getDistance());
 						continue;
 					}
-					featureVector.addAll(dValue.getDistanceVector());
+					featureVector.addAll(vec);
 				}
 			}
 			model.put(goldAnswer, featureVector);
@@ -233,7 +239,7 @@ public String getLanguage() {
 	 * @param aCas input T-H pair
 	 * @return return the pairID of the pair
 	 */
-	private String getPairID(JCas aCas) {
+	protected String getPairID(JCas aCas) {
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
 		return p.getPairID();
@@ -243,7 +249,7 @@ public String getLanguage() {
 	 * @param aCas input T-H pair
 	 * @return if the pair contains the gold answer, return it; otherwise, return null
 	 */
-	private String getGoldLabel(JCas aCas) {		
+	protected String getGoldLabel(JCas aCas) {		
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
 		if (null == p.getGoldAnswer() || p.getGoldAnswer().equals("") || p.getGoldAnswer().equals("ABSTAIN")) {

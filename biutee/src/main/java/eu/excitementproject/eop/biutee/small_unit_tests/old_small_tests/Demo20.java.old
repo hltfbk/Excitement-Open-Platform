@@ -1,0 +1,104 @@
+package ac.biu.nlp.nlp.engineml.demos;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+
+import ac.biu.nlp.nlp.engineml.representation.ExtendedInfo;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedNode;
+import ac.biu.nlp.nlp.engineml.representation.ExtendedNodeNodeAndEdgeString;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.ExtendedPairData;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.PairData;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.rtepairs.PairDataToExtendedPairDataConverter;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.general.ExceptionUtil;
+import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformation;
+import ac.biu.nlp.nlp.instruments.coreference.TreeCoreferenceInformationException;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.InfoGetFields;
+import ac.biu.nlp.nlp.instruments.parse.tree.AbstractNode;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.view.TreeDotFileGenerator.TreeDotFileGeneratorException;
+
+public class Demo20
+{
+	public static void f(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException, TeEngineMlException, TreeCoreferenceInformationException, TreeDotFileGeneratorException
+	{
+		ObjectInputStream inStream = new ObjectInputStream(new FileInputStream(new File("1.ser")));
+		try
+		{
+			PairData pairData = (PairData) inStream.readObject();
+			printCorefInfo(pairData.getCoreferenceInformation());
+			PairDataToExtendedPairDataConverter converter = new PairDataToExtendedPairDataConverter(pairData);
+			converter.convert();
+			ExtendedPairData extendedPairData = converter.getExtendedPairData();
+			printCorefInfo(extendedPairData.getCoreferenceInformation());
+			int index=1;
+			for (ExtendedNode tree : extendedPairData.getTextTrees())
+			{
+				TreeDotFileGenerator<ExtendedInfo> tdfg =
+					new TreeDotFileGenerator<ExtendedInfo>(
+							new ExtendedNodeNodeAndEdgeString(),
+							tree,
+							extendedPairData.getMapTreesToSentences().get(tree),
+							new File("tree_"+index+".dot")
+							);
+				
+				tdfg.generate();
+				
+				index++;
+			}
+			
+			TreeDotFileGenerator<ExtendedInfo> tdfg =
+				new TreeDotFileGenerator<ExtendedInfo>(
+						new ExtendedNodeNodeAndEdgeString(),
+						extendedPairData.getHypothesisTree(),
+						extendedPairData.getPair().getHypothesis(),
+						new File("hypothesis.dot")
+						);
+			
+			tdfg.generate();
+			
+			
+			
+			
+		}
+		finally
+		{
+			inStream.close();
+		}
+		
+		
+	}
+	
+	public static void printCorefInfo(TreeCoreferenceInformation<? extends AbstractNode<? extends Info,?>> corefInfo) throws TreeCoreferenceInformationException
+	{
+		for (Integer groupId : corefInfo.getAllExistingGroupIds())
+		{
+			System.out.print(groupId+": ");
+			for (AbstractNode<? extends Info,?> node : corefInfo.getGroup(groupId))
+			{
+				
+				System.out.print(node.getInfo().getId()+":"+InfoGetFields.getLemma(node.getInfo())+", ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			f(args);
+			
+		}
+		catch(Exception e)
+		{
+			ExceptionUtil.outputException(e, System.out);
+		}
+
+	}
+
+}

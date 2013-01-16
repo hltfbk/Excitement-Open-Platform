@@ -17,12 +17,12 @@ public class Person extends NamedEntity {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(Person.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated  */
   @Override

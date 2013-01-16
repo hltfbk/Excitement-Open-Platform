@@ -34,11 +34,11 @@ public class Duration_Type extends TemporalExpression_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = Duration.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.temporal.Duration");
 
 

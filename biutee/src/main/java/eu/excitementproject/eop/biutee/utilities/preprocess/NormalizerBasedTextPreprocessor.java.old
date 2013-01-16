@@ -1,0 +1,85 @@
+package ac.biu.nlp.nlp.engineml.utilities.preprocess;
+
+import org.BIU.NLP.corpora.annotators.normalization.Normalizer;
+
+import ac.biu.nlp.nlp.codeannotations.LanguageDependent;
+import ac.biu.nlp.nlp.engineml.rteflow.systems.ConfigurationParametersNames;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.text.TextPreprocessor;
+import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
+
+/**
+ * Wraps {@link Normalizer} as {@link TextPreprocessor}.
+ * 
+ * @deprecated This class is actually not used (see {@link NewNormalizerBasedTextPreProcessor})
+ * 
+ * @see NewNormalizerBasedTextPreProcessor
+ * 
+ * 
+ * @author Asher Stern
+ * @since May 12, 2011
+ *
+ */
+@Deprecated
+@LanguageDependent("English")
+public class NormalizerBasedTextPreprocessor implements TextPreprocessor
+{
+	public static NormalizerBasedTextPreprocessor fromConfigurationFile(ConfigurationFile configurationFile) throws ConfigurationException, TeEngineMlException
+	{
+		ConfigurationParams normalizerParams =
+			configurationFile.getModuleConfiguration(ConfigurationParametersNames.NORMALIZER_MODULE_NAME);
+		
+		Normalizer normalizer = new Normalizer();
+		try
+		{
+			normalizer.init(normalizerParams);
+			NormalizerBasedTextPreprocessor ret = new NormalizerBasedTextPreprocessor(normalizer);
+			return ret;
+		}
+		catch(Exception e)
+		{
+			throw new TeEngineMlException("Unknown problem with Normalizer. See nested exception.",e);
+		}
+	}
+	
+	public NormalizerBasedTextPreprocessor(Normalizer normalizer) throws TextPreprocessorException
+	{
+		if (null==normalizer) throw new TextPreprocessorException("Given normalizer is null.");
+		this.normalizer = normalizer;
+	}
+
+	public void setText(String text) throws TextPreprocessorException
+	{
+		if (null==text) throw new TextPreprocessorException("null==text");
+		this.text = text;
+		normalizedText = null;
+	}
+
+	public void preprocess() throws TextPreprocessorException
+	{
+		if (null==this.text) throw new TextPreprocessorException("setText() was not called.");
+		
+		try
+		{
+			normalizedText = this.normalizer.normalize(this.text);
+		}
+		catch (Exception e)
+		{
+			throw new TextPreprocessorException("Normalizer exception.",e);
+		}
+	}
+
+	public String getPreprocessedText() throws TextPreprocessorException
+	{
+		if (null==normalizedText) throw new TextPreprocessorException("preprocess() was not called.");
+		return normalizedText;
+	}
+
+	protected Normalizer normalizer;
+	private String text = null;
+	private String normalizedText;
+
+}

@@ -34,11 +34,11 @@ public class MD_Type extends Constituent_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = MD.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.MD");
 
 

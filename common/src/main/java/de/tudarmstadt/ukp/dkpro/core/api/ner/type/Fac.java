@@ -17,12 +17,12 @@ public class Fac extends NamedEntity {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(Fac.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated  */
   @Override

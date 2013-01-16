@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.EDABasic;
+import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.exception.ComponentException;
-import eu.excitementproject.eop.core.EDABasic;
-import eu.excitementproject.eop.core.EDAException;
-import eu.excitementproject.eop.core.TEDecision;
 
 public abstract class MultipleTHModeHelper<T extends TEDecision> {
 

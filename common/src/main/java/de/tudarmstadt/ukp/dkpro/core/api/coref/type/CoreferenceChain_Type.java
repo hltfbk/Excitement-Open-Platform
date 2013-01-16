@@ -37,11 +37,11 @@ public class CoreferenceChain_Type extends AnnotationBase_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = CoreferenceChain.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain");
  
   /** @generated */

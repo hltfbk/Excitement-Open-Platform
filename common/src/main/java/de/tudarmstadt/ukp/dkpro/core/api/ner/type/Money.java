@@ -17,12 +17,12 @@ public class Money extends NamedEntity {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(Money.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated  */
   @Override

@@ -19,12 +19,12 @@ public class Dependency extends Annotation {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(Dependency.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated  */
   @Override
