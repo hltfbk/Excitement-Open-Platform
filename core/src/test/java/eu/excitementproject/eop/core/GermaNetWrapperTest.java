@@ -15,8 +15,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
-import eu.excitementproject.eop.common.representation.parsetree.GermanPartOfSpeech;
-import eu.excitementproject.eop.common.representation.parsetree.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;;
 
 
 
