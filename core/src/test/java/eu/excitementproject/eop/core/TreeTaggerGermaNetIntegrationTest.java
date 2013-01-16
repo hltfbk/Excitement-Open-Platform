@@ -33,8 +33,8 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.common.exception.BaseException;
-import eu.excitementproject.eop.common.representation.parsetree.GermanPartOfSpeech;
-import eu.excitementproject.eop.common.representation.parsetree.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
