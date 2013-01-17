@@ -1,0 +1,348 @@
+package ac.biu.nlp.nlp.engineml.rteflow;
+
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import ac.biu.nlp.nlp.engineml.operations.PathInTree;
+import ac.biu.nlp.nlp.engineml.operations.specifications.InsertNodeSpecification;
+import ac.biu.nlp.nlp.engineml.operations.specifications.MoveNodeSpecification;
+import ac.biu.nlp.nlp.engineml.operations.specifications.SubstituteNodeSpecificationMultiWord;
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.engineml.utilities.UnigramProbabilityEstimation;
+import ac.biu.nlp.nlp.general.StringUtil;
+import ac.biu.nlp.nlp.instruments.parse.representation.english.Info;
+import ac.biu.nlp.nlp.instruments.parse.representation.english.InfoGetFields;
+import ac.biu.nlp.nlp.instruments.parse.tree.TreeAndParentMap;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.english.EnglishNode;
+
+import static ac.biu.nlp.nlp.engineml.rteflow.Constants.USE_MLE_FOR_INSERTION_COST;
+
+
+/**
+ * Given a feature-vector of the original tree, and an operation that was done on it to
+ * generate a new tree, this class contains methods to calculate the new tree's feature vector.
+ * @author Asher Stern
+ * @since Jan 30, 2011
+ *
+ */
+public class FeatureUpdate
+{
+	public FeatureUpdate(Set<String> pairLemmas, LinkedHashSet<String> ruleBasesNames, UnigramProbabilityEstimation unigramProbabilityEstimation)
+	{
+		this.pairLemmas = pairLemmas;
+		mapRuleBaseNameToFeatureIndex = new LinkedHashMap<String, Integer>();
+		
+		int start = Feature.values()[0].getFeatureIndex();
+		for (Feature feature : Feature.values())
+		{
+			if (feature.getFeatureIndex()>start)
+				start = feature.getFeatureIndex();
+		}
+		start += 1;
+		int index=start;
+		for (String ruleBaseName : ruleBasesNames)
+		{
+			mapRuleBaseNameToFeatureIndex.put(ruleBaseName,index);
+			++index;
+		}
+		
+		this.unigramProbabilityEstimation = unigramProbabilityEstimation;
+		
+	}
+	
+	public Map<Integer,Double> forRuleWithConfidence(Map<Integer,Double> originalFeatureVector, String ruleBaseName, double confidence) throws TeEngineMlException
+	{
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		featureVector.putAll(originalFeatureVector);
+		if (!mapRuleBaseNameToFeatureIndex.containsKey(ruleBaseName)) throw new TeEngineMlException("Rule base: "+ruleBaseName+" is unrecognized.");
+		Integer featureIndex = mapRuleBaseNameToFeatureIndex.get(ruleBaseName);
+		if (null==featureIndex) throw new TeEngineMlException("Rule base: "+ruleBaseName+" has null index, which is an anomaly.");
+		Double origValue = originalFeatureVector.get(featureIndex);
+		if (null==origValue) origValue=0.0;
+		Double newValue = origValue+Math.log(confidence);
+		featureVector.put(featureIndex,newValue);
+		return featureVector;
+	}
+
+	public Map<Integer,Double> forInsert(InsertNodeSpecification insertSpec, Map<Integer,Double> originalFeatureVector)
+	{
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		featureVector.putAll(originalFeatureVector);
+
+		if (InfoObservations.infoHasLemma(insertSpec.getHypothesisNodeToInsert().getInfo()))
+		{
+			if (InfoObservations.insertOnlyLexModOfMultiWord(insertSpec.getHypothesisNodeToInsert().getInfo(), insertSpec.getTextNodeToBeParent().getInfo()))
+			{
+				insertSpec.addDescription("only lex-mode");
+				// Do nothing. This operation costs 0.
+			}
+			else
+			{
+				String lemmaToInsert = InfoGetFields.getLemma(insertSpec.getHypothesisNodeToInsert().getInfo());
+				double featureValue = -1.0;
+
+				if (USE_MLE_FOR_INSERTION_COST)
+				{
+					List<String> wordsInLemma = StringUtil.stringToWords(lemmaToInsert);
+					double logEstimation = 0.0;
+					boolean foundEstimation = false;
+					for (String word : wordsInLemma)
+					{
+						if (word.length()>0)
+						{
+							logEstimation += Math.log(unigramProbabilityEstimation.getEstimationFor(word.toLowerCase()));
+							foundEstimation = true;
+						}
+					}
+					if (!foundEstimation)
+						logEstimation = unigramProbabilityEstimation.getEstimationFor(lemmaToInsert.toLowerCase());
+
+					featureValue = logEstimation;
+				} // end of if(USE_MLE_FOR_INSERTION_COST)
+				
+				//double estimation = unigramProbabilityEstimation.getEstimationFor(lemmaToInsert);
+				//double featureValue = Math.log(estimation);
+				
+				insertSpec.addDescription("\""+lemmaToInsert+"\""+" costs "+String.format("%-3.4f", featureValue));
+				
+				
+				boolean existInPair = false;
+				if (StringUtil.setContainsIgnoreCase(pairLemmas, lemmaToInsert))
+				{
+					existInPair=true;
+					insertSpec.addDescription("Exists in text pair");
+				}
+				else
+				{
+					existInPair=false;
+				}
+				
+				
+
+				boolean isNamedEntity = InfoObservations.infoIsNamedEntity(insertSpec.getHypothesisNodeToInsert().getInfo());
+				if (isNamedEntity)
+					insertSpec.addDescription("Named Entity");
+				boolean isNumber = InfoObservations.infoIsNumber(insertSpec.getHypothesisNodeToInsert().getInfo());
+
+				boolean contentVerb = InfoObservations.infoIsContentVerb(insertSpec.getHypothesisNodeToInsert().getInfo());
+				boolean contentWord = InfoObservations.infoIsContentWord(insertSpec.getHypothesisNodeToInsert().getInfo());
+
+				if (existInPair)
+				{
+					if (isNamedEntity)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_NAMED_ENTITY_EXIST_IN_PAIR, featureValue);
+					}
+					else if (isNumber)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_NUMBER_EXIST_IN_PAIR, featureValue);
+					}
+					else if (contentVerb)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_CONTENT_VERB_EXIST_IN_PAIR, featureValue);
+					}
+					else if (contentWord)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_CONTENT_WORD_EXIST_IN_PAIR, featureValue);
+					}
+					else
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_NON_CONTENT_NON_EMPTY_WORD_EXIST_IN_PAIR, featureValue);
+					}
+				}
+				else
+				{
+					if (isNamedEntity)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_NAMED_ENTITY, featureValue);
+					}
+					else if (isNumber)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_NUMBER, featureValue);
+					}
+					else if (contentVerb)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_CONTENT_VERB, featureValue);
+					}
+					else if (contentWord)
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_CONTENT_WORD, featureValue);
+					}
+					else
+					{
+						updateFeatureVector(featureVector, Feature.INSERT_NON_CONTENT_NON_EMPTY_WORD, featureValue);
+					}
+
+				}
+
+			}
+		}
+		else
+		{
+			updateFeatureVector(featureVector, Feature.INSERT_EMPTY_WORD, -1.0);
+		}
+		
+		return featureVector;
+		
+		
+	}
+	
+	public Map<Integer,Double> forMove(Map<Integer,Double> originalFeatureVector, PathInTree path, TreeAndParentMap<Info,EnglishNode> textTreeAndParentMap, MoveNodeSpecification moveSpec)
+	{
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		featureVector.putAll(originalFeatureVector);
+		
+		
+		if (PathObservations.introduceOnlySurfaceRelation(moveSpec))
+		{
+			updateFeatureVector(featureVector, Feature.MOVE_INTRODUCE_SURFACE_RELATION, -1.0);
+		}
+		else if (!InfoObservations.infoHasLemma(moveSpec.getTextNodeToBeParent().getInfo()))
+		{
+			updateFeatureVector(featureVector, Feature.MOVE_CONNECT_TO_EMPTY_NODE, -1.0);
+		}
+		else
+		{
+			double length = lengthOfPathInTree(path);
+			if (PathObservations.pathCrossContentVerb(path))
+			{
+				updateFeatureVector(featureVector, Feature.MOVE_CROSS_CONTENT_VERB, -length);
+			}
+			else
+			{
+				if (PathObservations.pathOnlyChangeRelation(path, textTreeAndParentMap))
+				{
+					if (PathObservations.moveChangeRelationStrong(moveSpec, path, textTreeAndParentMap))
+					{
+						updateFeatureVector(featureVector, Feature.MOVE_ONLY_CHANGE_RELATION_STRONG, -1.0);
+					}
+					else
+					{
+						updateFeatureVector(featureVector, Feature.MOVE_ONLY_CHANGE_RELATION_WEAK, -1.0);
+					}
+				}
+				else
+				{
+					if (PathObservations.pathStrongChangeRelationToRootVerb(path))
+					{
+						updateFeatureVector(featureVector, Feature.MOVE_IN_VERB_TREE_CHANGE_RELATION_STRONG, -length);
+					}
+					else
+					{
+						updateFeatureVector(featureVector, Feature.MOVE_NODE, -length);
+					}
+				}
+			}
+		}
+		
+		return featureVector;
+	}
+	
+	public Map<Integer,Double> forSubstitutionMultiWord(Map<Integer,Double> originalFeatureVector, SubstituteNodeSpecificationMultiWord spec)
+	{
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		featureVector.putAll(originalFeatureVector);
+
+		Set<String> addedHypothesisWord = new HashSet<String>();
+		for (String hypothesisWord : spec.getHypothesisWords())
+		{
+			if (!StringUtil.setContainsIgnoreCase(spec.getTextWords(), hypothesisWord))
+			{
+				addedHypothesisWord.add(hypothesisWord);
+			}
+		}
+		if (addedHypothesisWord.size()==0)
+		{
+			spec.addDescription("remove words");
+			updateFeatureVector(featureVector, Feature.SUBSTITUTION_MULTI_WORD_REMOVE_WORDS, -1.0);
+		}
+		else
+		{
+			double featureValue = -1.0;
+			if (USE_MLE_FOR_INSERTION_COST)
+			{
+				double logEstimationAllWords = 0;
+				for (String hypothesisWord : addedHypothesisWord)
+				{
+					logEstimationAllWords += Math.log(unigramProbabilityEstimation.getEstimationFor(hypothesisWord));
+				}
+				featureValue=logEstimationAllWords;
+			}
+			
+			if (spec.getNewNodeInfo().getNamedEntityRelation()!=null)
+			{
+				spec.addDescription("add named entity, with cost "+String.format("%-3.4f",featureValue));
+				updateFeatureVector(featureVector, Feature.SUBSTITUTION_MULTI_WORD_ADD_WORDS_NAMED_ENTITY, featureValue);
+			}
+			else
+			{
+				spec.addDescription("add words with cost "+String.format("%-3.4f",featureValue));
+				updateFeatureVector(featureVector, Feature.SUBSTITUTION_MULTI_WORD_ADD_WORDS, featureValue);
+			}
+		}
+		
+		return featureVector;
+	}
+	
+	public Map<Integer,Double> forSubstitutionFlipPos(Map<Integer,Double> originalFeatureVector)
+	{
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		featureVector.putAll(originalFeatureVector);
+		updateFeatureVector(featureVector, Feature.SUBSTITUTION_FLIP_POS, -1.0);
+		return featureVector;
+	}
+	
+
+	public Map<Integer,Double> forSubstitutionParserAntecedent(Map<Integer,Double> originalFeatureVector)
+	{
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		featureVector.putAll(originalFeatureVector);
+		updateFeatureVector(featureVector, Feature.SUBSTITUTION_PARSER_ANTECEDENT, -1.0);
+		return featureVector;
+	}
+	
+	public Map<Integer, Double> forSubstitutionCoreference(Map<Integer,Double> originalFeatureVector)
+	{
+		Map<Integer,Double> featureVector = new LinkedHashMap<Integer, Double>();
+		featureVector.putAll(originalFeatureVector);
+		updateFeatureVector(featureVector, Feature.SUBSTITUTION_COREFERENCE, -1.0);
+		return featureVector;
+	}
+
+	
+	
+	private static void updateFeatureVector(Map<Integer,Double> featureVector, Feature feature, double valueToAdd)
+	{
+		featureVector.put(feature.getFeatureIndex(), featureVector.get(feature.getFeatureIndex())+valueToAdd);
+	}
+	
+	private static double lengthOfPathInTree(PathInTree pathInTree)
+	{
+		int ret = 0;
+		ret += pathInTree.getDownNodes().size();
+		ret += pathInTree.getUpNodes().size();
+		if ( (pathInTree.getLeastCommonAncestor()!=pathInTree.getFrom())
+			&&
+			(pathInTree.getLeastCommonAncestor()!=pathInTree.getTo())
+			)
+		{
+			ret += 1;
+		}
+		return (double)ret;
+	}
+	
+
+	
+ 
+
+
+	private Set<String> pairLemmas;
+	private Map<String,Integer> mapRuleBaseNameToFeatureIndex;
+	
+	private UnigramProbabilityEstimation unigramProbabilityEstimation = null;
+	
+}

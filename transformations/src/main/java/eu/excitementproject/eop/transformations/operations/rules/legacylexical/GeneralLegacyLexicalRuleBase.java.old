@@ -1,0 +1,152 @@
+package ac.biu.nlp.nlp.engineml.operations.rules.legacylexical;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import org.BIU.NLP.LR.resources.LexicalResource;
+import org.BURST.NLP.TE.rep.Term;
+import org.BURST.v2bridge.MiniparTermUtils;
+import org.BURST.v2bridge.TermUtils;
+import org.BURST.v2bridge.UnspecifiedTermUtils;
+
+import ac.biu.nlp.nlp.engineml.operations.rules.ByLemmaPosLexicalRuleBaseWithCache;
+import ac.biu.nlp.nlp.engineml.operations.rules.LexicalRule;
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSet;
+import ac.biu.nlp.nlp.general.immutable.ImmutableSetWrapper;
+import ac.biu.nlp.nlp.representation.PartOfSpeech;
+import ac.biu.nlp.nlp.representation.UnspecifiedPartOfSpeech;
+import ac.biu.nlp.nlp.representation.UnsupportedPosTagStringException;
+
+/**
+ * 
+ * @author Asher Stern
+ * @since Feb 15, 2011
+ *
+ */
+public class GeneralLegacyLexicalRuleBase extends ByLemmaPosLexicalRuleBaseWithCache<LexicalRule>
+{
+	////////////////////// PUBLIC ////////////////////////////////
+	
+	protected ImmutableSet<LexicalRule> getRulesNotInCache(String lhsLemma, PartOfSpeech lhsPos) throws RuleBaseException
+	{
+		ImmutableSet<LexicalRule> ret = null;
+		if (lhsLemma.length()==0)
+			ret = EMPTY_SET;
+		else
+		{
+			try
+			{
+				Collection<? extends org.BURST.NLP.rule_base.Rule<? extends Term>> legacyRules =
+					findLegacyRules(lhsLemma,lhsPos);
+				
+				ret = fromLegacyRules(legacyRules,lhsLemma,lhsPos);
+			}
+			catch (Exception e)
+			{
+				throw new RuleBaseException("Legacy rule base failed. See nested exception.",e);
+			}
+		}
+		return ret;
+	}
+	
+//	@Override
+//	public ImmutableSet<LexicalRule> getRules(String lhsLemma, PartOfSpeech lhsPos, ImmutableSet<LemmaAndPos> hypothesisLemmas) throws RuleBaseException
+//	{
+//		Set<LexicalRule> setRules = new LinkedHashSet<LexicalRule>();
+//		try
+//		{
+//			for (LemmaAndPos hypothesisLemma : hypothesisLemmas)
+//			{
+//				org.BURST.NLP.rule_base.Rule<? extends Term> legacyRule = findLegacyRule2D(lhsLemma,lhsPos,hypothesisLemma.getLemma(),hypothesisLemma.getPartOfSpeech());
+//				if (legacyRule!=null)
+//				{
+//					LexicalRule lexicalRule = fromLegacyRule(legacyRule, lhsLemma, lhsPos);
+//					if (lexicalRule!=null)
+//						setRules.add(lexicalRule);
+//				}
+//			}
+//		}
+//		catch (Exception e)
+//		{
+//			throw new RuleBaseException("Legacy rule base failed. See nested exception.",e);
+//		}
+//		
+//		return new ImmutableSetWrapper<LexicalRule>(setRules);
+//	}
+
+	
+
+	////////////////////////////// PROTECTED & PRIVATE ////////////////////////////////////
+	
+	
+	/**
+	 * Calls the legacy lexical resource and gets the rules in the legacy format.
+	 * @param lhsLemma
+	 * @param lhsPos
+	 * @return
+	 * @throws Exception
+	 */
+	protected Collection<? extends org.BURST.NLP.rule_base.Rule<? extends Term>> findLegacyRules(String lhsLemma, PartOfSpeech lhsPos) throws Exception
+	{
+		Term term = TermUtils.createTermFromLemmaAndPos(lhsLemma, lhsPos);
+//		Term term = MiniparTermUtils.createTermFromLemmaAndPos(lhsLemma, lhsPos);
+		Collection<? extends org.BURST.NLP.rule_base.Rule<? extends Term>> ret = null;
+		synchronized(lexicalResource) // I don't know whether the lexicalResource is thread safe
+		{
+			ret = lexicalResource.getRulesForLeft(org.BURST.NLP.rule_base.RuleType.ENTAILMENT, term);
+		}
+		return ret;
+	}
+
+	protected org.BURST.NLP.rule_base.Rule<? extends Term> findLegacyRule2D(String lhsLemma, PartOfSpeech lhsPos, String rhsLemma, PartOfSpeech rhsPos) throws Exception
+	{
+		Term leftTerm = MiniparTermUtils.createTermFromLemmaAndPos(lhsLemma, lhsPos);
+		Term rightTerm = MiniparTermUtils.createTermFromLemmaAndPos(rhsLemma, rhsPos);
+		org.BURST.NLP.rule_base.Rule<? extends Term> ret = null;
+		synchronized(lexicalResource) // I don't know whether the lexicalResource is thread safe
+		{
+			ret = lexicalResource.getRule(org.BURST.NLP.rule_base.RuleType.ENTAILMENT, leftTerm, rightTerm);
+		}
+		return ret;
+	}
+
+	protected LexicalRule fromLegacyRule(org.BURST.NLP.rule_base.Rule<? extends Term> rule, String lhsLemma, PartOfSpeech lhsPos) throws UnsupportedPosTagStringException
+	{
+		LexicalRule ret = null;
+		
+		Term rightTerm = rule.right();
+		String rhsLemma = rightTerm.lemma();
+		PartOfSpeech rhsPos = termUtils.convertBurstPosToPartOfSpeech(rightTerm.posTag());
+		//String rhsPos = MiniparTermUtils.toMiniparPos(rightTerm.posTag());
+		if (rhsLemma!=null){if (rhsLemma.length()>0)
+		{
+			ret = new LexicalRule(lhsLemma, lhsPos, rhsLemma, rhsPos, EMINUS1);
+		}}
+		
+		return ret;
+	}
+	
+	protected ImmutableSet<LexicalRule> fromLegacyRules(Collection<? extends org.BURST.NLP.rule_base.Rule<? extends Term>> legacyRules, String lhsLemma, PartOfSpeech lhsPos) throws UnsupportedPosTagStringException
+	{
+		Set<LexicalRule> ret = new LinkedHashSet<LexicalRule>();
+		for (org.BURST.NLP.rule_base.Rule<? extends Term> rule : legacyRules)
+		{
+			LexicalRule lexicalRule = fromLegacyRule(rule, lhsLemma, lhsPos);
+			if (lexicalRule!=null)
+				ret.add(lexicalRule);
+		}
+		return new ImmutableSetWrapper<LexicalRule>(ret);
+	}
+	
+	
+	
+	protected LexicalResource lexicalResource;
+	
+	protected TermUtils<UnspecifiedPartOfSpeech> termUtils = new UnspecifiedTermUtils();
+	
+	protected final static double EMINUS1 = Math.exp(-1.0);
+	protected final static ImmutableSet<LexicalRule> EMPTY_SET = new ImmutableSetWrapper<LexicalRule>(new HashSet<LexicalRule>());
+}

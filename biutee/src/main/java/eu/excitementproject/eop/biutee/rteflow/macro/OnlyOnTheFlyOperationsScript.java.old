@@ -1,0 +1,52 @@
+package ac.biu.nlp.nlp.engineml.rteflow.macro;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import ac.biu.nlp.nlp.engineml.operations.OperationException;
+import ac.biu.nlp.nlp.engineml.script.OperationsScript;
+import ac.biu.nlp.nlp.engineml.script.SingleOperationItem;
+import ac.biu.nlp.nlp.engineml.script.SingleOperationType;
+import ac.biu.nlp.nlp.general.immutable.ImmutableList;
+import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
+import ac.biu.nlp.nlp.instruments.parse.representation.english.Info;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.english.EnglishNode;
+
+/**
+ * 
+ * @author Asher Stern
+ * 
+ *
+ */
+public class OnlyOnTheFlyOperationsScript extends OperationsScript<Info, EnglishNode>
+{
+	public static ImmutableList<SingleOperationItem> listOperations;
+	static
+	{
+		List<SingleOperationItem> opers = new ArrayList<SingleOperationItem>();
+		opers.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
+		opers.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
+		opers.add(new SingleOperationItem(SingleOperationType.MULTIWORD_SUBSTITUTION));
+		opers.add(new SingleOperationItem(SingleOperationType.FLIP_POS_SUBSTITUTION));
+		listOperations = new ImmutableListWrapper<SingleOperationItem>(opers);
+	}
+	
+	@Override
+	public void init() throws OperationException
+	{
+	}
+
+	@Override
+	public void cleanUp()
+	{
+	}
+
+	@Override
+	public ImmutableList<SingleOperationItem> getItemListForIterationImpl(
+			int iterationIndex, Set<TreeAndFeatureVector> trees)
+	{
+		return listOperations;
+	}
+
+}

@@ -1,0 +1,55 @@
+package ac.biu.nlp.nlp.engineml.demos;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import ac.biu.nlp.nlp.engineml.utilities.TeEngineMlException;
+import ac.biu.nlp.nlp.engineml.utilities.legacy.ExperimentLoggerNeutralizer;
+import ac.biu.nlp.nlp.engineml.utilities.preprocess.NormalizerBasedTextPreprocessor;
+import ac.biu.nlp.nlp.general.ExceptionUtil;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationFileDuplicateKeyException;
+import ac.biu.nlp.nlp.general.text.TextPreprocessorException;
+
+@Deprecated
+public class DemoNormalizer
+{
+	public static void f(String[] args) throws ConfigurationFileDuplicateKeyException, ConfigurationException, TeEngineMlException, IOException, TextPreprocessorException
+	{
+		new ExperimentLoggerNeutralizer().neutralize();
+		ConfigurationFile configurationFile = new ConfigurationFile(args[0]);
+		configurationFile.setExpandingEnvironmentVariables(true);
+		NormalizerBasedTextPreprocessor textPreprocessor = NormalizerBasedTextPreprocessor.fromConfigurationFile(configurationFile);
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter text:");
+		String line = reader.readLine();
+		while (!line.equals("bye"))
+		{
+			textPreprocessor.setText(line);
+			textPreprocessor.preprocess();
+			System.out.println(textPreprocessor.getPreprocessedText());
+			System.out.println("Enter text:");
+			line = reader.readLine();
+		}
+		
+		
+		
+	}
+	
+	public static void main(String[] args)
+	{
+		try
+		{
+			f(args);
+			
+		}
+		catch(Exception e)
+		{
+			ExceptionUtil.outputException(e, System.out);
+		}
+
+	}
+
+}

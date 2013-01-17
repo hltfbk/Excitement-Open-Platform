@@ -40,3 +40,4 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 		return null;
 	}
 }
+

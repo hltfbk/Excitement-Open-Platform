@@ -1,0 +1,73 @@
+package ac.biu.nlp.nlp.engineml.operations.rules.legacylexical;
+
+import java.util.Collection;
+
+import org.BIU.NLP.LR.resources.lin.LinDependencySimilarityKB;
+import org.BURST.NLP.TE.rep.Term;
+import org.BURST.v2bridge.TermUtils;
+
+
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.configuration.InitException;
+import ac.biu.nlp.nlp.representation.PartOfSpeech;
+
+
+/**
+ * 
+ * @author Asher Stern
+ * @since Feb 17, 2011
+ *
+ */
+public class LinDependencySimilarityLexicalRuleBase extends GeneralLegacyLexicalRuleBase
+{
+	public LinDependencySimilarityLexicalRuleBase(ConfigurationParams configurationParams) throws RuleBaseException
+	{
+		try
+		{
+			LinDependencySimilarityKB linDependencySimilarityKB = 
+				new LinDependencySimilarityKB();
+			linDependencySimilarityKB.init(configurationParams);
+			this.lexicalResource = linDependencySimilarityKB;
+		}
+		catch(ConfigurationException e)
+		{
+			throw new RuleBaseException("Could not initialize LinDependencySimilarityKB due to configuration exception. See nested exception.",e);
+		}
+		catch (InitException e)
+		{
+			throw new RuleBaseException("Could not initialize LinDependencySimilarityKB due to configuration exception. See nested exception.",e);
+		}
+	}
+	
+
+
+	
+	
+
+	/**
+	 * Since LinDependencySimilarity gets only SIMILARITY RuleType - I have to override.
+	 * @param lhsLemma
+	 * @param lhsPos
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	protected Collection<? extends org.BURST.NLP.rule_base.Rule<? extends Term>> findLegacyRules(String lhsLemma, PartOfSpeech lhsPos) throws Exception
+	{
+		Term term = TermUtils.createTermFromLemmaAndPos(lhsLemma, lhsPos);
+		Collection<? extends org.BURST.NLP.rule_base.Rule<? extends Term>> ret = null;
+		synchronized(lexicalResource) // I don't know whether the lexicalResource is thread safe
+		{
+			ret = lexicalResource.getRulesForLeft(org.BURST.NLP.rule_base.RuleType.SIMILARITY, term);
+		}
+		return ret;
+	}
+	
+
+
+
+
+
+}

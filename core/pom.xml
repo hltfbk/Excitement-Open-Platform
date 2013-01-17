@@ -54,6 +54,25 @@
 			<artifactId>common</artifactId>
 			<version>0.1-SNAPSHOT</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>de.tudarmstadt.ukp</groupId>
+    		<artifactId>jwktl</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>net.sf.extjwnl</groupId>
+    		<artifactId>extjwnl</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>edu.mit</groupId>
+    		<artifactId>jwi</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>net.sf.jwordnet</groupId>
+    		<artifactId>jwnl</artifactId>
+		</dependency>
+		
+		
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>lap</artifactId>

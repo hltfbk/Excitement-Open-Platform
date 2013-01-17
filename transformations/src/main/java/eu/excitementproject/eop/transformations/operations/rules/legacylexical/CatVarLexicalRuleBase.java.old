@@ -1,0 +1,27 @@
+package ac.biu.nlp.nlp.engineml.operations.rules.legacylexical;
+
+import org.BIU.NLP.LR.resources.CatVar.CatVarKB;
+
+import ac.biu.nlp.nlp.engineml.operations.rules.RuleBaseException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+
+/**
+ * 
+ * @deprecated This class uses the Catvar data-base which is
+ * slow.
+ * 
+ * @author Asher Stern
+ * @since Feb 17, 2011
+ *
+ */
+@Deprecated
+public class CatVarLexicalRuleBase extends GeneralLegacyLexicalRuleBase
+{
+	public CatVarLexicalRuleBase(ConfigurationParams configurationParams) throws RuleBaseException
+	{
+		CatVarKB catVarKB = new CatVarKB();
+		catVarKB.init(configurationParams);
+		this.lexicalResource = catVarKB;
+	}
+
+}
