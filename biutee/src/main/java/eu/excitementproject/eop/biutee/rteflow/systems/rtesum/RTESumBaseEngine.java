@@ -13,8 +13,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -40,6 +42,7 @@ import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeCl
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileReader;
@@ -48,12 +51,14 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.FileSystemNames
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6FileSystemNames;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
+import static eu.excitementproject.eop.transformations.utilities.Constants.RTESUM_DATASET_PARAM_DELIMITER;
 /**
  * 
  * <B>Note:</B> The real entailment work starts in {@link TextTreesProcessor} and its implementations.
@@ -87,9 +92,9 @@ public class RTESumBaseEngine extends SystemInitialization
 		{
 			topics = (List<PreprocessedTopicDataSet>) serStream.readObject();
 			
-			File datasetDir = configurationParams.getDirectory(RTE_SUM_DATASET_DIR_NAME);
+			//File datasetDir = configurationParams.getDirectory(RTE_SUM_DATASET_DIR_NAME);
 			
-			setFileSystemNames();
+			File datasetDir = retrieveDatasetDirAndSetFileSystemNames();
 			
 			File goldStandardFile = new File(datasetDir,fileSystemNames.getGoldStandardFileName());
 			if (goldStandardFile.exists()&&goldStandardFile.isFile())
@@ -397,17 +402,36 @@ public class RTESumBaseEngine extends SystemInitialization
 		return String.format("%-3.6f", d);
 	}
 	
-	private void setFileSystemNames() throws ConfigurationException, TeEngineMlException
+	private File retrieveDatasetDirAndSetFileSystemNames() throws ConfigurationException, TeEngineMlException
 	{
-		File datasetDir = configurationParams.getDirectory(RTE_SUM_DATASET_DIR_NAME);
+		//File datasetDir = configurationParams.getDirectory(RTE_SUM_DATASET_DIR_NAME);
+		String datasetParameterValue = configurationParams.get(RTE_SUM_DATASET_DIR_NAME);
+		String[] datasetValueComponents = datasetParameterValue.split(RTESUM_DATASET_PARAM_DELIMITER);
+		Iterator<String> datasetValueIterator = Utils.arrayToCollection(datasetValueComponents, new LinkedList<String>()).iterator();
+		TeEngineMlException badDatasetValueException = new TeEngineMlException("Bad value for dataset name: \""+datasetParameterValue+"\". Should be annual-flag"+RTESUM_DATASET_PARAM_DELIMITER+"dev-test-flag"+RTESUM_DATASET_PARAM_DELIMITER+"path" +
+				"\nAnnual flag should be: "+FileSystemNamesFactory.RTE6_FLAG+" or "+FileSystemNamesFactory.RTE7_FLAG+
+				"\ndev-test-flag should be: "+FileSystemNamesFactory.DEV_FLAG+" or "+FileSystemNamesFactory.TEST_FLAG);
+		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		String annualFlag = datasetValueIterator.next().trim();
+		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		String devTestFlag = datasetValueIterator.next().trim();
+		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		String datasetDirAsString = datasetValueIterator.next().trim();
+		datasetDirAsString = FileUtils.normalizeCygwinPathToWindowsPath(datasetDirAsString);
+		File datasetDir = new File(datasetDirAsString);
+		datasetDir = FileUtils.normalizeFileNameByOS(datasetDir);
+		
+		
 		boolean isNoveltyTask = false;
 		if (configurationParams.containsKey(RTE_SUM_IS_NOVELTY_TASK_FLAG))
 			isNoveltyTask = configurationParams.getBoolean(RTE_SUM_IS_NOVELTY_TASK_FLAG);
 		logger.info("Loading " + (isNoveltyTask ? "Novelty" : "Main") + " task files");
 		
-		fileSystemNames = FileSystemNamesFactory.chooseFilteredFileSystemNames(datasetDir, isNoveltyTask);
+		fileSystemNames = FileSystemNamesFactory.chooseFilteredFileSystemNames(annualFlag,devTestFlag, datasetDir, isNoveltyTask);
 		logger.info("Working on folders of type: " + fileSystemNames.getClass().getSimpleName()+
-				"( "+FileSystemNamesFactory.chooseUnfilteredFileSystemNames(datasetDir, isNoveltyTask).getClass().getSimpleName()+" )");
+				"( "+FileSystemNamesFactory.chooseUnfilteredFileSystemNames(annualFlag,devTestFlag, datasetDir, isNoveltyTask).getClass().getSimpleName()+" )");
+		
+		return datasetDir;
 	}
 
 	
