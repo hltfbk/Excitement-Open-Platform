@@ -71,7 +71,11 @@
     		<groupId>net.sf.jwordnet</groupId>
     		<artifactId>jwnl</artifactId>
 		</dependency>
-		
+    	<dependency>
+    		<groupId>eu.excitementproject</groupId>
+    		<artifactId>JMWN</artifactId>
+    		<version>0.0.1-20130108.144312-1</version>
+		</dependency>		
 		
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
@@ -83,5 +87,6 @@
             <artifactId>GermaNetAPI</artifactId>
             <version>7.0.1</version><!--$NO-MVN-MAN-VER$-->
     	</dependency>
+
   </dependencies>
 </project>
