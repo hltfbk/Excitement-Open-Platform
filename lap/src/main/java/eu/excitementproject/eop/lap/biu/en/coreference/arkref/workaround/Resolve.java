@@ -167,8 +167,17 @@ public class Resolve {
 				//find the mention for the parent
 				for(Mention cand:d.mentions()){
 					if(cand.node() == maxProj){
-						if(Types.personhood(cand) == Types.Personhood.Person){
-							return cand;
+						// Asher, 20-January-2013 - yet another workaround:
+						// Wrapping the "if" by try...catch
+						try
+						{
+							if(Types.personhood(cand) == Types.Personhood.Person){
+								return cand;
+							}
+						}
+						catch(NullPointerException npe)
+						{
+							// Do nothing. Just assume that Types.personhood(cand) != Types.Personhood.Person
 						}
 						break;
 					}
@@ -266,6 +275,10 @@ public class Resolve {
 				match = Types.checkPronominalMatch(mention, cand);
 			}
 			catch(NullPointerException npe)
+			{
+				// do nothing. Workaround. match is false.
+			}
+			catch(ArrayIndexOutOfBoundsException aiofbe)
 			{
 				// do nothing. Workaround. match is false.
 			}
@@ -472,5 +485,6 @@ public class Resolve {
 
 
 
+	
 	
 }

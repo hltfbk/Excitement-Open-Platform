@@ -405,9 +405,10 @@ public class EasyFirstClient
 							wordsNodesList.add(node);
 						}
 
+
 						if (parentId==0)
 						{
-							if (tree!=null)throw new ParserRunException("More than one root.\nParser output was:\n"+listStringToString(parserOutput)+"\nInput was: \""+rawTextForExceptionString+"\"");
+							if (tree!=null)throw new ParserRunException("More than one root.\nParser output was:\n"+listStringToString(parserOutput)+"\n"+rawTextForExceptionString);
 							tree=node;
 						}
 						else
@@ -418,11 +419,11 @@ public class EasyFirstClient
 				}
 				catch(ArrayIndexOutOfBoundsException e)
 				{
-					throw new ParserRunException("Wrong line returned by the parser: "+line+".\nParser output was:\n"+listStringToString(parserOutput)+"\nInput was: \""+rawTextForExceptionString+"\"");
+					throw new ParserRunException("Wrong line returned by the parser: "+line+".\nParser output was:\n"+listStringToString(parserOutput)+"\n"+rawTextForExceptionString);
 				}
 				catch (UnsupportedPosTagStringException e)
 				{
-					throw new ParserRunException("Unsupported part-of-speech tag, occurred in line: \""+line+"\". See nested exception.\nParser output was:\n"+listStringToString(parserOutput)+"\nInput was: \""+rawTextForExceptionString+"\"",e);
+					throw new ParserRunException("Unsupported part-of-speech tag, occurred in line: \""+line+"\". See nested exception.\nParser output was:\n"+listStringToString(parserOutput)+"\n"+rawTextForExceptionString,e);
 				}
 			}}
 			
