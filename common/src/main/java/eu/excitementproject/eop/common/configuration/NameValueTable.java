@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.common.configuration;
 
 import java.io.File;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 
 /**
  * <P> This abstract class outlines the capability of NameValueTable. 
@@ -25,18 +26,19 @@ are not expected to be called from a entailment core component.
 
 public abstract class NameValueTable {
 	
-	abstract public String getString(String name);
+	abstract public String getString(String name) throws ConfigurationException;
 	
-	abstract public Integer getInteger(String name);
+	abstract public Integer getInteger(String name) throws ConfigurationException;
 	
-	abstract public Double getDouble(String name);
+	abstract public Double getDouble(String name) throws ConfigurationException;
 	
-	abstract public File getFile(String name);
+	abstract public File getFile(String name) throws ConfigurationException;
 	
-	abstract public File getDirectory(String name); 
+	abstract public File getDirectory(String name) throws ConfigurationException;
 	
 	abstract public void setString(String name, String value);
 	
+	/*
 	abstract public void setInteger(String name, Integer value); 
 	
 	abstract public void setDouble(String name, Double value); 
@@ -44,5 +46,6 @@ public abstract class NameValueTable {
 	abstract public void setFile(String name, File value); 
 	
 	abstract public void setDirectory(String name, File value); 
+	*/
 	
 }
