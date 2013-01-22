@@ -21,12 +21,16 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 
 /**
  * The <code>BagOfLexesScoring</code> class extends <code>BagOfLemmasScoring</code>.
+ * It supports (currently) <code>GermanDistSim</code> and <code>GermaNetWrapper</code> two lexical resources.
  * 
  * @author  Rui
  */
 public class BagOfLexesScoring extends BagOfLemmasScoring {
 	
 	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
+	
+	private static final String GDS_PATH = "./src/main/resources/dewakdistributional-data/";
+	private static final String GNW_PATH = "./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/";
 	
 //	the number of features
 	protected int numOfFeats = 0;
@@ -45,7 +49,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	public BagOfLexesScoring(boolean useGDS, boolean useGNWCau, boolean useGNWEnt, boolean useGNWHyn, boolean useGNWSyn) {
 		if (useGDS) {
 			try {
-				gds = new GermanDistSim("src/main/resources/dewakdistributional-data");
+				gds = new GermanDistSim(GDS_PATH);
 				numOfFeats ++;
 				moduleFlags[0] = true;
 			}
@@ -62,7 +66,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		}
 		if (useGNWCau || useGNWEnt || useGNWHyn || useGNWSyn) {
 			try {
-				gnw = new GermaNetWrapper("./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
+				gnw = new GermaNetWrapper(GNW_PATH);
 				if (useGNWCau) {
 					numOfFeats ++;
 					moduleFlags[1] = true;
