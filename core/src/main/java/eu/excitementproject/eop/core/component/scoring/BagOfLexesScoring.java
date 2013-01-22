@@ -21,12 +21,16 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 
 /**
  * The <code>BagOfLexesScoring</code> class extends <code>BagOfLemmasScoring</code>.
+ * It supports (currently) <code>GermanDistSim</code> and <code>GermaNetWrapper</code> two lexical resources.
  * 
  * @author  Rui
  */
 public class BagOfLexesScoring extends BagOfLemmasScoring {
 	
 	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
+	
+	private static final String GDS_PATH = "./src/main/resources/dewakdistributional-data/";
+	private static final String GNW_PATH = "./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/";
 	
 //	the number of features
 	protected int numOfFeats = 0;
@@ -42,27 +46,25 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	
 	private GermaNetWrapper gnw = null;
 
-	public BagOfLexesScoring(boolean useGDS, boolean useGNWCau, boolean useGNWEnt, boolean useGNWHyn, boolean useGNWSyn) {
+	public BagOfLexesScoring(boolean useGDS, boolean useGNWCau, boolean useGNWEnt, boolean useGNWHyn, boolean useGNWSyn) throws LexicalResourceException {
 		if (useGDS) {
 			try {
-				gds = new GermanDistSim("src/main/resources/dewakdistributional-data");
+				gds = new GermanDistSim(GDS_PATH);
 				numOfFeats ++;
 				moduleFlags[0] = true;
 			}
 			catch (GermanDistSimNotInstalledException e) {
 				logger.warning("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
-				//throw e;
-			}
-			catch (BaseException e)
-			{
-				logger.info(e.getMessage());
+				throw new LexicalResourceException(e.getMessage());
+			} catch (BaseException e) {
+				throw new LexicalResourceException(e.getMessage());
 			}
 		} else {
 			moduleFlags[0] = false;
 		}
 		if (useGNWCau || useGNWEnt || useGNWHyn || useGNWSyn) {
 			try {
-				gnw = new GermaNetWrapper("./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
+				gnw = new GermaNetWrapper(GNW_PATH);
 				if (useGNWCau) {
 					numOfFeats ++;
 					moduleFlags[1] = true;
@@ -85,15 +87,15 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 					numOfFeats ++;
 					moduleFlags[4] = true;
 				} else {
-					moduleFlags[3] = false;
+					moduleFlags[4] = false;
 				}
 			}
 			catch (GermaNetNotInstalledException e) {
 				logger.warning("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
-				//throw e;
+				throw new LexicalResourceException(e.getMessage());
 			}
 			catch (BaseException e) {
-				logger.info(e.getMessage());
+				throw new LexicalResourceException(e.getMessage());
 			}
 		} else {
 			moduleFlags[1] = false;
