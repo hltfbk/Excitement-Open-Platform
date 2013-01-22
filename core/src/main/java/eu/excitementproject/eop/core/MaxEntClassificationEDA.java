@@ -129,7 +129,7 @@ public class MaxEntClassificationEDA implements
 		boolean isGNRhypernym = true;
 		boolean isGNRsynonym = true;
 		
-		if (isGDS || isGNRcauses || isGNRentails || isGNRhypernym || isGNRsynonym) {
+		if (language.equals("DE") && (isGDS || isGNRcauses || isGNRentails || isGNRhypernym || isGNRsynonym)) {
 			ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
 			components.add(comp3);
 		}
@@ -175,6 +175,7 @@ public class MaxEntClassificationEDA implements
 		}
 
 		String[] context = constructContext(aCas);
+//		System.out.println(Arrays.asList(context));
 		float[] values = RealValueFileEventStream.parseContexts(context);
 		double[] ocs = model.eval(context, values);
 		int numOutcomes = ocs.length;
