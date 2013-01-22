@@ -13,6 +13,7 @@ import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
+import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
 /**
  * The test contains three parts: 1) use LAP to do preprocessing and generate
@@ -31,18 +32,24 @@ public class MaxEntClassificationEDATest {
 		// Uncomment the following tests to do the Full Test 
 		// on MaxEntClassificationEDA --Gil 
 				
-		/* 
+		/* German RTE tests
 		testLAP_DE(); 
 		testTraining_DE(); 
 		testTesting_SingleTH_DE(); 
 		testTesting_MultiTH_DE(); 
 		*/
 		
+		/* English RTE tests
+		testLAP_EN();
+		testTraining_EN();
+		testTesting_SingleTH_EN();
+		testTesting_MultiTH_EN();
+		 */
+		
 		// Rui: if you want to test MaxEntClassificationEDA with different lexical resources, please check MaxEntClassificationEDA.initialize() for the moment
 		// Rui: Make sure the trained model is consistent with the testing configuration!
 	}
 	
-	//@Test 
 	public void testLAP_DE() {
 		File inputFile = null;
 		File outputDir = null;
@@ -82,7 +89,45 @@ public class MaxEntClassificationEDATest {
 		}
 	}
 	
-	//@Test
+	public void testLAP_EN() {
+		File inputFile = null;
+		File outputDir = null;
+		
+		// generate XMI files for the training data
+		inputFile = new File("./src/test/resources/English_dev.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/EN/dev/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+
+		LAPAccess lap = null;
+
+		try {
+			lap = new TreeTaggerEN();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+		
+		// generate XMI files for the testing data
+		inputFile = new File("./src/test/resources/English_test.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/EN/test/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+		
+		try {
+			lap = new TreeTaggerEN();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
 	public void testTraining_DE() {
 		File trainingDir = null;
 		trainingDir = new File("./target/DE/dev/");
@@ -107,7 +152,30 @@ public class MaxEntClassificationEDATest {
 		}
 	}
 	
-	//@Test
+	public void testTraining_EN() {
+		File trainingDir = null;
+		trainingDir = new File("./target/EN/dev/");
+		assertTrue(trainingDir.exists());
+		
+		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
+		meceda.setLanguage("EN");
+
+		CommonConfig config = null;
+
+		try {
+			meceda.setTrain(true);
+			meceda.initialize(config);
+			File modelFile = new File(meceda.getModelFile());
+			assertTrue(!modelFile.exists());
+
+			meceda.startTraining(config);
+			assertTrue(modelFile.exists());
+			logger.info("training done");
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
 	public void testTesting_SingleTH_DE() {
 		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
 		meceda.setLanguage("DE");
@@ -146,7 +214,38 @@ public class MaxEntClassificationEDATest {
 		}
 	}
 	
-	//@Test
+	public void testTesting_SingleTH_EN() {
+		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
+		meceda.setLanguage("EN");
+		
+		CommonConfig config = null;
+		
+		LAPAccess lap = null;
+		
+		try {
+			meceda.setTrain(false);
+			meceda.initialize(config);
+			File modelFile = new File(meceda.getModelFile());
+			assertTrue(modelFile.exists());
+			
+			logger.info("build CASes for input sentence pairs:");
+			lap = new TreeTaggerEN();
+			// ENTAILMENT
+			JCas test1Cas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.");
+			// NONENTAILMENT
+			JCas test2Cas = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable");
+			logger.info("Answers are:");
+			ClassificationTEDecision decision1 = meceda.process(test1Cas);
+			System.out.println(decision1.getDecision().toString());
+			System.out.println(decision1.getConfidence());
+			ClassificationTEDecision decision2 = meceda.process(test2Cas);
+			System.out.println(decision2.getDecision().toString());
+			System.out.println(decision2.getConfidence());
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
 	public void testTesting_MultiTH_DE() {
 		File testingDir = null;
 		testingDir = new File("./target/DE/test/");
@@ -163,6 +262,8 @@ public class MaxEntClassificationEDATest {
 			File modelFile = new File(meceda.getModelFile());
 			assertTrue(modelFile.exists());
 			
+			int correct = 0;
+			int sum = 0;
 			for (File file : testingDir.listFiles()) {
 				// ignore all the non-xmi files
 				if (!file.getName().endsWith(".xmi")) {
@@ -171,9 +272,55 @@ public class MaxEntClassificationEDATest {
 				JCas cas = PlatformCASProber.probeXmi(file, null);
 				ClassificationTEDecision decision = meceda.process(cas);
 				System.out.println(decision.getPairID());
+				System.out.println(meceda.getGoldLabel(cas));
 				System.out.println(decision.getDecision().toString());
+				if (meceda.getGoldLabel(cas).equalsIgnoreCase(decision.getDecision().toString())) {
+					correct ++;
+				}
+				sum ++;
 				System.out.println(decision.getConfidence());
 			}
+			System.out.println("The correctly predicted pairs are " + correct + " / " + sum);
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
+	public void testTesting_MultiTH_EN() {
+		File testingDir = null;
+		testingDir = new File("./target/EN/test/");
+		assertTrue(testingDir.exists());
+		
+		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
+		meceda.setLanguage("EN");
+		
+		CommonConfig config = null;
+		
+		try {
+			meceda.setTrain(false);
+			meceda.initialize(config);
+			File modelFile = new File(meceda.getModelFile());
+			assertTrue(modelFile.exists());
+			
+			int correct = 0;
+			int sum = 0;
+			for (File file : testingDir.listFiles()) {
+				// ignore all the non-xmi files
+				if (!file.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(file, null);
+				ClassificationTEDecision decision = meceda.process(cas);
+				System.out.println(decision.getPairID());
+				System.out.println(meceda.getGoldLabel(cas));
+				System.out.println(decision.getDecision().toString());
+				if (meceda.getGoldLabel(cas).equalsIgnoreCase(decision.getDecision().toString())) {
+					correct ++;
+				}
+				sum ++;
+				System.out.println(decision.getConfidence());
+			}
+			System.out.println("The correctly predicted pairs are " + correct + " / " + sum);
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
