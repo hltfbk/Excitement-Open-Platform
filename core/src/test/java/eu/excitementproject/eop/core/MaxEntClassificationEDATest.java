@@ -31,6 +31,9 @@ public class MaxEntClassificationEDATest {
 		// Commented for that reason. 
 		// Uncomment the following tests to do the Full Test 
 		// on MaxEntClassificationEDA --Gil 
+		
+		// Rui: if you want to test MaxEntClassificationEDA with different lexical resources, please check MaxEntClassificationEDA.initialize() for the moment
+		// Rui: Make sure the trained model is consistent with the testing configuration!
 				
 		/* German RTE tests
 		testLAP_DE(); 
@@ -39,15 +42,13 @@ public class MaxEntClassificationEDATest {
 		testTesting_MultiTH_DE(); 
 		*/
 		
+		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
 		/* English RTE tests
 		testLAP_EN();
 		testTraining_EN();
 		testTesting_SingleTH_EN();
 		testTesting_MultiTH_EN();
 		 */
-		
-		// Rui: if you want to test MaxEntClassificationEDA with different lexical resources, please check MaxEntClassificationEDA.initialize() for the moment
-		// Rui: Make sure the trained model is consistent with the testing configuration!
 	}
 	
 	public void testLAP_DE() {
