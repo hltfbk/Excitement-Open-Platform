@@ -208,9 +208,26 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 				for (int i = 0; i < tokenList.size(); i++) {
 					String word = tokenList.get(i).split(" ")[0];
 					String tag = tokenList.get(i).split(" ")[4];
-					if (tag.equals("I-MISC")) {
-						tag = "O";
+					if (tag.equals("B-LOC")) {
+						tag = "I-LOC";
+					} else if (tag.equals("B-MISC")) {
+						tag = "I-MISC";
+					} else if (tag.equals("B-ORG")) {
+						tag = "I-ORG";
+					} else if (tag.equals("B-PER")) {
+						tag = "I-PER";
 					}
+//					if (
+//							tag.contains("PER") 
+//							|| 
+//							tag.contains("LOC")
+//							|| 
+//							tag.contains("ORG") 
+//							|| 
+//							tag.contains("MISC")
+//							) {
+//						tag = "O";
+//					}
 					if (!tag.equals("O")) {
 						if (!tag.equals(prevTag)) {
 							if (!prevTag.equals("O") && i != 0) {
@@ -222,6 +239,8 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 								output.write("<START:location> ");
 							} else if (tag.contains("ORG")) {
 								output.write("<START:organization> ");
+							} else if (tag.contains("MISC")) {
+								output.write("<START:miscellaneous> ");
 							} else {
 								output.write("<START:" + tag + "> ");
 							}
@@ -270,9 +289,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 				new PreviousMapFeatureGenerator(),
 				new BigramNameFeatureGenerator(),
 				
-				// newly added: word cluster features
-				new WindowFeatureGenerator(new TokenClusterFeatureGenerator(
-						true), 2, 2),
+//				// newly added: word cluster features
+//				new WindowFeatureGenerator(new TokenClusterFeatureGenerator(
+//						true), 2, 2),
 //				// newly added: word cluster features for the previous map
 //				new PreviousWClMapFeatureGenerator(),
 //				// newly added: bigram word cluster features
