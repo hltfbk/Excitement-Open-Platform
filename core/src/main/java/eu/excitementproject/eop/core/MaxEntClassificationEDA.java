@@ -136,19 +136,23 @@ public class MaxEntClassificationEDA implements
 		boolean isGNRsynonym = true;
 		
 		if (language.equals("DE") && (isGDS || isGNRcauses || isGNRentails || isGNRhypernym || isGNRsynonym)) {
-			ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
-			components.add(comp3);
+			try {
+				ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
+				components.add(comp3);
+			} catch (LexicalResourceException e) {
+				throw new ComponentException(e.getMessage());
+			}
 		}
 		
-		boolean isWNHyponym = true;
+		boolean isWNHypernym = true;
 		boolean isWNSynonym = true;
 		boolean isVOStrongerThan = true;
 		boolean isVOCanResultIn = true;
 		boolean isVOSimilar = true;
-		if (language.equals("EN") && (isWNHyponym || isWNSynonym || isVOStrongerThan || isVOCanResultIn || isVOSimilar)) {
+		if (language.equals("EN") && (isWNHypernym || isWNSynonym || isVOStrongerThan || isVOCanResultIn || isVOSimilar)) {
 			 Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
-			 if (isWNHyponym) {
-				 wnRelSet.add(WordNetRelation.HYPONYM);
+			 if (isWNHypernym) {
+				 wnRelSet.add(WordNetRelation.HYPERNYM);
 			 }
 			 if (isWNSynonym) {
 				 wnRelSet.add(WordNetRelation.SYNONYM);

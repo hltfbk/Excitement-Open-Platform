@@ -24,34 +24,23 @@ public class BagOfWordsScoringTest {
 	
 	@Test
 	public void test() throws LexicalResourceException {
-//		testDE();
+		testDE();
 		testEN();
 	}
-	
-	public void testEN() throws LexicalResourceException {
+
+	public void testDE() throws LexicalResourceException {
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		 BagOfLemmasScoring bols = new BagOfLemmasScoring();
-		 
-		 Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
-		 wnRelSet.add(WordNetRelation.HYPONYM);
-		 wnRelSet.add(WordNetRelation.SYNONYM);
-		 
-		 Set<RelationType> voRelSet = new HashSet<RelationType>();
-		 voRelSet.add(RelationType.STRONGER_THAN);
-		 voRelSet.add(RelationType.CAN_RESULT_IN);
-		 voRelSet.add(RelationType.SIMILAR);
-		 
-		BagOfLexesScoringEN bolexs = new BagOfLexesScoringEN(wnRelSet, voRelSet);
+		BagOfLexesScoring bolexs = new BagOfLexesScoring(true, true, true, true, true);
 
 		JCas aCas = null;
 		LAPAccess lap = null;
 
 		try {
-       	lap = new TreeTaggerEN();
-       	// Entailment
+        	lap = new TreeTaggerDE();
 			aCas = lap.generateSingleTHPairCAS(
-					"The person is hired as a postdoc.",
-					"The person must have a PhD.");
+					"Ich bin ein Student .",
+					"Er ist kein Person .");
 			Vector<Double> scoresVector1 = bows.calculateScores(aCas);
 			 Vector<Double> scoresVector2 = bols.calculateScores(aCas);
 			 Vector<Double> scoresVector3 = bolexs.calculateScores(aCas);
@@ -73,20 +62,31 @@ public class BagOfWordsScoringTest {
 			logger.info(e.getMessage());
 		}
 	}
-
-	public void testDE() {
+	
+	public void testEN() throws LexicalResourceException {
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		 BagOfLemmasScoring bols = new BagOfLemmasScoring();
-		BagOfLexesScoring bolexs = new BagOfLexesScoring(true, true, true, true, true);
+		 
+		 Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+		 wnRelSet.add(WordNetRelation.HYPERNYM);
+		 wnRelSet.add(WordNetRelation.SYNONYM);
+		 
+		 Set<RelationType> voRelSet = new HashSet<RelationType>();
+		 voRelSet.add(RelationType.STRONGER_THAN);
+		 voRelSet.add(RelationType.CAN_RESULT_IN);
+		 voRelSet.add(RelationType.SIMILAR);
+		 
+		BagOfLexesScoringEN bolexs = new BagOfLexesScoringEN(wnRelSet, voRelSet);
 
 		JCas aCas = null;
 		LAPAccess lap = null;
 
 		try {
-        	lap = new TreeTaggerDE();
+       	lap = new TreeTaggerEN();
+       	// Entailment
 			aCas = lap.generateSingleTHPairCAS(
-					"Ich bin ein Student .",
-					"Er ist kein Person .");
+					"The person is hired as a postdoc.",
+					"The person must have a PhD.");
 			Vector<Double> scoresVector1 = bows.calculateScores(aCas);
 			 Vector<Double> scoresVector2 = bols.calculateScores(aCas);
 			 Vector<Double> scoresVector3 = bolexs.calculateScores(aCas);
