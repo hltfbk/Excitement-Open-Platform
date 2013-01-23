@@ -134,7 +134,7 @@ public class RTEPairsMultiThreadTrainer extends RTEPairsTrainer
 	}
 	
 	@Override
-	protected void init() throws ConfigurationFileDuplicateKeyException, MalformedURLException, ConfigurationException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
+	public void init() throws ConfigurationFileDuplicateKeyException, MalformedURLException, ConfigurationException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
 	{
 		super.init();
 		
@@ -192,7 +192,7 @@ public class RTEPairsMultiThreadTrainer extends RTEPairsTrainer
 
 	
 	@Override
-	protected void cleanUp()
+	public void cleanUp()
 	{
 		super.cleanUp();
 		if (this.scriptQueue!=null)
