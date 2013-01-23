@@ -350,7 +350,7 @@ public class MaxEntClassificationEDATest {
 			File modelFile = new File(meceda.getModelFile());
 			assertTrue(modelFile.exists());
 			
-			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile)));
+			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8"));
 
 			for (File file : testingDir.listFiles()) {
 				// ignore all the non-xmi files
@@ -392,7 +392,7 @@ public class MaxEntClassificationEDATest {
 			File modelFile = new File(meceda.getModelFile());
 			assertTrue(modelFile.exists());
 			
-			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile)));
+			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8"));
 
 			for (File file : testingDir.listFiles()) {
 				// ignore all the non-xmi files
