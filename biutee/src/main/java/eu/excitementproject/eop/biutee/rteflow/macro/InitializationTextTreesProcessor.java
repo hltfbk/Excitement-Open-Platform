@@ -41,7 +41,7 @@ import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
 import eu.excitementproject.eop.common.utilities.SealedObject;
 import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.datastructures.CanonicalLemmaAndPos;
 import eu.excitementproject.eop.transformations.datastructures.DsUtils;
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;

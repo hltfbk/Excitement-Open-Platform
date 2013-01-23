@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityWord;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
 
 
 /**

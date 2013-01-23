@@ -13,8 +13,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMa
 import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
 import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.SubstituteNodeSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;

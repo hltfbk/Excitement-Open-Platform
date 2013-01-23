@@ -48,24 +48,28 @@ public class Rte6DatasetLoader
 	 */
 	public Rte6DatasetLoader(File datasetDir) throws Rte6mainIOException
 	{
-		this(datasetDir, false, true);	// default flag is RTE Main Task
-	}
-	
-	/**
-	 * Ctor with Novelty Task flag, and <i>filtered</i> flag
-	 * @param datasetDir
-	 * @param isFiltered
-	 * @param isNoveltyTask is true, the novelty task files will be loaded. If false, the main task will be loaded
-	 * @throws Rte6mainIOException
-	 */
-	public Rte6DatasetLoader(File datasetDir, boolean isNoveltyTask, boolean isFiltered) throws Rte6mainIOException
-	{
 		super();
 		if (null==datasetDir) throw new Rte6mainIOException("null dataset dir");
-		this.DATASET_DIR = datasetDir;
-		this.IS_NOVELTY_TASK = isNoveltyTask;
-		this.IS_FILTERED = isFiltered;
+		this.datasetDir = datasetDir;
+
+//		this(datasetDir, false, true);	// default flag is RTE Main Task
 	}
+	
+//	/**
+//	 * Ctor with Novelty Task flag, and <i>filtered</i> flag
+//	 * @param datasetDir
+//	 * @param isFiltered
+//	 * @param isNoveltyTask is true, the novelty task files will be loaded. If false, the main task will be loaded
+//	 * @throws Rte6mainIOException
+//	 */
+//	public Rte6DatasetLoader(File datasetDir, boolean isNoveltyTask, boolean isFiltered) throws Rte6mainIOException
+//	{
+//		super();
+//		if (null==datasetDir) throw new Rte6mainIOException("null dataset dir");
+//		this.DATASET_DIR = datasetDir;
+//		this.IS_NOVELTY_TASK = isNoveltyTask;
+//		this.IS_FILTERED = isFiltered;
+//	}
 	
 	/**
 	 * Specifies whether to load the gold-standard, which will be retrieved by
@@ -101,15 +105,16 @@ public class Rte6DatasetLoader
 	public void load() throws Rte6mainIOException
 	{
 		// choosing the right fileSystemNames according to the dataset dir name
-		if (null==DATASET_DIR) throw new Rte6mainIOException("datasetDir is null");
+		if (null==datasetDir) throw new Rte6mainIOException("datasetDir is null");
 		if (fileSystemNames == null)
-			fileSystemNames = IS_FILTERED ? FileSystemNamesFactory.chooseFilteredFileSystemNames(DATASET_DIR, IS_NOVELTY_TASK)
-										  :	FileSystemNamesFactory.chooseUnfilteredFileSystemNames(DATASET_DIR, IS_NOVELTY_TASK);
-			
-		if (!DATASET_DIR.isDirectory()) throw new Rte6mainIOException("not dir: "+DATASET_DIR.getPath());
-		readGoldStandard(DATASET_DIR);
+			throw new Rte6mainIOException("You must set the file-system-names. Please call the method: setFileSystemNames");
+//			fileSystemNames = IS_FILTERED ? FileSystemNamesFactory.chooseFilteredFileSystemNames(DATASET_DIR, IS_NOVELTY_TASK)
+//										  :	FileSystemNamesFactory.chooseUnfilteredFileSystemNames(DATASET_DIR, IS_NOVELTY_TASK);
+//			
+		if (!datasetDir.isDirectory()) throw new Rte6mainIOException("not dir: "+datasetDir.getPath());
+		readGoldStandard(datasetDir);
 		
-		File[] topicsDirs = DATASET_DIR.listFiles(new FileFilter()
+		File[] topicsDirs = datasetDir.listFiles(new FileFilter()
 		{
 			public boolean accept(File pathname)
 			{
@@ -242,9 +247,9 @@ public class Rte6DatasetLoader
 
 
 
-	private final File DATASET_DIR;
-	private final boolean IS_NOVELTY_TASK;
-	private final boolean IS_FILTERED;
+	private final File datasetDir;
+//	private final boolean IS_NOVELTY_TASK;
+//	private final boolean IS_FILTERED;
 	
 	private Map<String,Map<String,Set<SentenceIdentifier>>> answers;
 	private Map<String,TopicDataSet> topics;

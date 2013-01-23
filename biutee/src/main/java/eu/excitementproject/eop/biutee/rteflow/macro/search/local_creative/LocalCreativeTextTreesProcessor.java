@@ -35,7 +35,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMa
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCalculator;
 import eu.excitementproject.eop.transformations.datastructures.SingleItemSet;
 import eu.excitementproject.eop.transformations.operations.OperationException;

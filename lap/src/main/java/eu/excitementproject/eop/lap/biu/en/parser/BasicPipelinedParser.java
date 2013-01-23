@@ -2,7 +2,7 @@ package eu.excitementproject.eop.lap.biu.en.parser;
 
 import java.util.List;
 
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
 
 
 /**

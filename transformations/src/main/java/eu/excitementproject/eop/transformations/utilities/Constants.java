@@ -263,6 +263,8 @@ public class Constants
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that there is no reason to change, now and ever.
 	
+	public static final String RTESUM_DATASET_PARAM_DELIMITER = "#";
+	
 	/**
 	 * Indicates if {@link TreeHistory} will contain not only {@link Specification}s
 	 * of the operations performed, but also the feature-vector assigned after

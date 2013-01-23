@@ -70,11 +70,11 @@ import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainWriterException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
-import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.transformations.datastructures.SingleItemList;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
