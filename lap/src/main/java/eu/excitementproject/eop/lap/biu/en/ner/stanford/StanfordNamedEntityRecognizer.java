@@ -10,12 +10,12 @@ import edu.stanford.nlp.ie.crf.CRFClassifier;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.Word;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityPhrase;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityWord;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityPhrase;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
 
 
 

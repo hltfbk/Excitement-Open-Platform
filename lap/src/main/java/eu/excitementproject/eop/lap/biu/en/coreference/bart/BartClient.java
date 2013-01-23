@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.WordWithCoreferenceTag;
+import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 
 
 

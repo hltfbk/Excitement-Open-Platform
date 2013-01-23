@@ -5,6 +5,7 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_IS_NOVELTY_TASK_FLAG;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_PREPROCESS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_PREPROCESS_SERIALIZATION_FILE_NAME;
+import static eu.excitementproject.eop.transformations.utilities.Constants.RTESUM_DATASET_PARAM_DELIMITER;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,6 +13,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,17 +27,21 @@ import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenc
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
+import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.FileSystemNamesFactory;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6DatasetLoader;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6FileSystemNames;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -133,15 +140,18 @@ public class RTESumPreProcessor
 	
 	protected void loadAndProcessDataSet() throws ConfigurationException, Rte6mainIOException, TeEngineMlException, ParserRunException, NamedEntityRecognizerException, CoreferenceResolutionException, TreeCoreferenceInformationException, TextPreprocessorException
 	{
-		String datasetDirName = preprocessParameters.get(RTE_SUM_DATASET_DIR_NAME);
-		logger.info("Loading dataset from directory: "+datasetDirName);
-		boolean isNoveltyTask = false;
-		if (preprocessParameters.containsKey(RTE_SUM_IS_NOVELTY_TASK_FLAG))
-			isNoveltyTask = preprocessParameters.getBoolean(RTE_SUM_IS_NOVELTY_TASK_FLAG);
-		logger.info("Loading " + (isNoveltyTask ? "Novelty" : "Main") + " task files");
-		Rte6DatasetLoader loader = new Rte6DatasetLoader(new File(datasetDirName), isNoveltyTask, true);
-		// Note: you can set here other file-system-names if the dataset is not RTE6-Main
-		// but another data-set.
+//		String datasetDirName = preprocessParameters.get(RTE_SUM_DATASET_DIR_NAME);
+//		logger.info("Loading dataset from directory: "+datasetDirName);
+//		boolean isNoveltyTask = false;
+//		if (preprocessParameters.containsKey(RTE_SUM_IS_NOVELTY_TASK_FLAG))
+//			isNoveltyTask = preprocessParameters.getBoolean(RTE_SUM_IS_NOVELTY_TASK_FLAG);
+//		logger.info("Loading " + (isNoveltyTask ? "Novelty" : "Main") + " task files");
+		
+		File datasetDirAsFile = retrieveDatasetDirAndSetFileSystemNames(preprocessParameters);
+		
+		Rte6DatasetLoader loader = new Rte6DatasetLoader(datasetDirAsFile);
+		loader.setFileSystemNames(this.fileSystemNames);
+		// Note: you can set here other file-system-names.
 		
 		loader.load();
 		logger.info("Loaded using file-system-names: "+loader.getFileSystemNames().getClass().getName());
@@ -171,11 +181,46 @@ public class RTESumPreProcessor
 		}
 	}
 	
+	
+	// TODO code duplication with RTESumBaseEngine
+	private File retrieveDatasetDirAndSetFileSystemNames(ConfigurationParams configurationParams) throws ConfigurationException, TeEngineMlException
+	{
+		//File datasetDir = configurationParams.getDirectory(RTE_SUM_DATASET_DIR_NAME);
+		String datasetParameterValue = configurationParams.get(RTE_SUM_DATASET_DIR_NAME);
+		String[] datasetValueComponents = datasetParameterValue.split(RTESUM_DATASET_PARAM_DELIMITER);
+		Iterator<String> datasetValueIterator = Utils.arrayToCollection(datasetValueComponents, new LinkedList<String>()).iterator();
+		TeEngineMlException badDatasetValueException = new TeEngineMlException("Bad value for dataset name: \""+datasetParameterValue+"\". Should be annual-flag"+RTESUM_DATASET_PARAM_DELIMITER+"dev-test-flag"+RTESUM_DATASET_PARAM_DELIMITER+"path" +
+				"\nAnnual flag should be: "+FileSystemNamesFactory.RTE6_FLAG+" or "+FileSystemNamesFactory.RTE7_FLAG+
+				"\ndev-test-flag should be: "+FileSystemNamesFactory.DEV_FLAG+" or "+FileSystemNamesFactory.TEST_FLAG);
+		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		String annualFlag = datasetValueIterator.next().trim();
+		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		String devTestFlag = datasetValueIterator.next().trim();
+		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		String datasetDirAsString = datasetValueIterator.next().trim();
+		datasetDirAsString = FileUtils.normalizeCygwinPathToWindowsPath(datasetDirAsString);
+		File datasetDir = new File(datasetDirAsString);
+		datasetDir = FileUtils.normalizeFileNameByOS(datasetDir);
+		
+		
+		boolean isNoveltyTask = false;
+		if (configurationParams.containsKey(RTE_SUM_IS_NOVELTY_TASK_FLAG))
+			isNoveltyTask = configurationParams.getBoolean(RTE_SUM_IS_NOVELTY_TASK_FLAG);
+		logger.info("Loading " + (isNoveltyTask ? "Novelty" : "Main") + " task files");
+		
+		fileSystemNames = FileSystemNamesFactory.chooseFilteredFileSystemNames(annualFlag,devTestFlag, datasetDir, isNoveltyTask);
+		logger.info("Working on folders of type: " + fileSystemNames.getClass().getSimpleName()+
+				"( "+FileSystemNamesFactory.chooseUnfilteredFileSystemNames(annualFlag,devTestFlag, datasetDir, isNoveltyTask).getClass().getSimpleName()+" )");
+		
+		return datasetDir;
+	}
+	
 
 	private String configurationFileName;
 	
 	private ConfigurationFile configurationFile;
 	private ConfigurationParams preprocessParameters;
+	private Rte6FileSystemNames fileSystemNames;
 	private Instruments<Info, BasicNode> instruments;
 	private boolean doNer = true;
 	private boolean doTextNormalization = true;

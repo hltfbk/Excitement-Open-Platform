@@ -5,6 +5,7 @@ import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -27,6 +28,13 @@ public class ReutersCorpusReader implements CorpusReader<ReutersDocumentReader>
 		this.reutersDirectory = reutersDirectory;
 	}
 	
+	public ReutersCorpusReader(File[] reuters_CD_Directories)
+	{
+		super();
+		this.reuters_CD_Directories = reuters_CD_Directories;
+	}
+
+	
 	
 	public Iterator<CorpusDocumentEntity<ReutersDocumentReader>> iterator() throws CorporaException
 	{
@@ -41,29 +49,43 @@ public class ReutersCorpusReader implements CorpusReader<ReutersDocumentReader>
 	{
 		public ReutersCorpusReaderIterator() throws CorporaException
 		{
-			if (!reutersDirectory.exists()) throw new CorporaException(reutersDirectory.getPath()+" does not exist.");
-			if (!reutersDirectory.isDirectory()) throw new CorporaException(reutersDirectory.getPath()+" is not a directory.");
-			subdirs = new File[REUTERS_SUB_DIRECTORIES.size()];
-			for (int index=0;index<REUTERS_SUB_DIRECTORIES.size();++index)
+			if (ReutersCorpusReader.this.reutersDirectory!=null)
 			{
-				subdirs[index] = new File(reutersDirectory,REUTERS_SUB_DIRECTORIES.get(index));
+				if (!reutersDirectory.exists()) throw new CorporaException(reutersDirectory.getPath()+" does not exist.");
+				if (!reutersDirectory.isDirectory()) throw new CorporaException(reutersDirectory.getPath()+" is not a directory.");
+				subdirs = new File[REUTERS_SUB_DIRECTORIES.size()];
+				for (int index=0;index<REUTERS_SUB_DIRECTORIES.size();++index)
+				{
+					subdirs[index] = new File(reutersDirectory,REUTERS_SUB_DIRECTORIES.get(index));
+				}
 			}
+			else if (ReutersCorpusReader.this.reuters_CD_Directories != null)
+			{
+				subdirs = reuters_CD_Directories;
+			}
+			else
+			{
+				throw new CorporaException("Bug: nothing given for Reuters path (I don\'t know where the corpus exists).");
+			}
+			for (File subdir : subdirs)
+			{
+				if (!subdir.isDirectory()) throw new CorporaException("Bad input. \""+subdir.getAbsolutePath()+"\" is not a directory.");
+			}
+			currentSubdirIndex = 0;
 			buildSubdirDirs();
 			buildSubsubdirFiles();
 		}
 
 		@Override
-		public boolean hasNext()
+		public synchronized boolean hasNext()
 		{
-			synchronized(this)
-			{
-				return itHasNext;
-			}
+			return itHasNext;
 		}
 
 		@Override
-		public CorpusDocumentEntity<ReutersDocumentReader> next()
+		public synchronized CorpusDocumentEntity<ReutersDocumentReader> next()
 		{
+			if (!itHasNext) throw new NoSuchElementException();
 			// take the file
 			File currentFile = currentSubsubdirFiles[currentSubsubdirFilesIndex];
 			
@@ -177,5 +199,7 @@ public class ReutersCorpusReader implements CorpusReader<ReutersDocumentReader>
 	}
 
 	private static final ArrayList<String> REUTERS_SUB_DIRECTORIES = Utils.arrayToCollection(new String[]{"CD1","CD2"}, new ArrayList<String>());
-	private File reutersDirectory;
+	private File reutersDirectory = null;
+	private File[] reuters_CD_Directories = null;
+
 }

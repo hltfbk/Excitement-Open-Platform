@@ -1,10 +1,10 @@
 package eu.excitementproject.eop.biutee.rteflow.preprocess;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolver;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
-import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 
 
 /**

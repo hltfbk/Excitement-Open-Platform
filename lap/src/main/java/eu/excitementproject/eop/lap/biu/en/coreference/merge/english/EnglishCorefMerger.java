@@ -11,13 +11,13 @@ import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenc
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolver;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.CorefMatchFinder;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.CorefMergeException;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.CorefMerger;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.CorefOperator;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.GenericCorefMerger;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.WordWithCoreferenceTag;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.coreference.merge.CorefMatchFinder;
+import eu.excitementproject.eop.lap.biu.coreference.merge.CorefMergeException;
+import eu.excitementproject.eop.lap.biu.coreference.merge.CorefMerger;
+import eu.excitementproject.eop.lap.biu.coreference.merge.CorefOperator;
+import eu.excitementproject.eop.lap.biu.coreference.merge.GenericCorefMerger;
+import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 
 
 /**

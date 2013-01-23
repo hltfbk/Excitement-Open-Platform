@@ -25,9 +25,9 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.GateLemmatizer;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.alignment.DefaultAlignmentCriteria;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorFactory;
 import eu.excitementproject.eop.transformations.generic.truthteller.SentenceAnnotator;

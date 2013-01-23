@@ -23,7 +23,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPa
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.ByLemmaPosLexicalRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.LexicalRule;

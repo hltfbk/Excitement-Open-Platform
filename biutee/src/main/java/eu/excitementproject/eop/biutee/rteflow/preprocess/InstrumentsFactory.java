@@ -4,8 +4,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
