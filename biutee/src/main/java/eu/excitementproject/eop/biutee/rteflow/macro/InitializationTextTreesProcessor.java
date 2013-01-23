@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.macro;
-import static eu.excitementproject.eop.transformations.utilities.Constants.CACHE_SIZE_HYPOTHESIS_TEMPLATES;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.CACHE_SIZE_HYPOTHESIS_TEMPLATES;
 import static eu.excitementproject.eop.transformations.utilities.Constants.HANDLE_LEXICAL_MULTI_WORD;
 
 import java.util.ArrayList;

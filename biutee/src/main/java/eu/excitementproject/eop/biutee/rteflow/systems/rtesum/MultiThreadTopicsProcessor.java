@@ -30,6 +30,7 @@ import eu.excitementproject.eop.biutee.script.HypothesisInformation;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
@@ -44,7 +45,6 @@ import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorExc
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.StopFlag;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;
@@ -439,7 +439,7 @@ public class MultiThreadTopicsProcessor implements AllTopicsProcessor
 			Map<Integer,Double> featureVector = processor.getBestTree().getFeatureVector();
 			
 			RteSumSingleCandidateResult resultCurrentCandidate = null;
-			if (Constants.PRINT_TIME_STATISTICS)
+			if (BiuteeConstants.PRINT_TIME_STATISTICS)
 			{
 				resultCurrentCandidate =
 					new RteSumSingleCandidateResult(candidateIdentifier.getSentenceID(), candidateIdentifier.getHypothesisID(), textSentence,hypothesisSentence,processor.getBestTree().getTree(),featureVector,processor.getBestTreeHistory(),

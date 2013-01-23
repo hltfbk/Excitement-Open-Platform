@@ -1,10 +1,12 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtesum;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_POSTFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_PREFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.RTESUM_DATASET_PARAM_DELIMITER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_DATASET_DIR_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_IS_NOVELTY_TASK_FLAG;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_PREPROCESS_SERIALIZATION_FILE_NAME;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LEARNING_MODEL_FILE_POSTFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LEARNING_MODEL_FILE_PREFIX;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,6 +38,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.PreprocessedTopicDataSet;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamplesUtils;
 import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeClassifiersIO;
@@ -55,10 +58,7 @@ import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
-
-import static eu.excitementproject.eop.transformations.utilities.Constants.RTESUM_DATASET_PARAM_DELIMITER;
 /**
  * 
  * <B>Note:</B> The real entailment work starts in {@link TextTreesProcessor} and its implementations.
@@ -331,7 +331,7 @@ public class RTESumBaseEngine extends SystemInitialization
 					logger.info(sb.toString());
 					
 					count++;
-					if (Constants.PRINT_TIME_STATISTICS)
+					if (BiuteeConstants.PRINT_TIME_STATISTICS)
 					{
 						sumCpuTime += candidateResult.getCpuTime();
 						sumExpand += candidateResult.getNumberOfExpanded();
@@ -348,7 +348,7 @@ public class RTESumBaseEngine extends SystemInitialization
 	
 	private final void logAverageTimes(long sumCpuTime, long sumExpand, long sumGenerated, double sumCosts, long count)
 	{
-		if (Constants.PRINT_TIME_STATISTICS)
+		if (BiuteeConstants.PRINT_TIME_STATISTICS)
 		{
 			logger.info(
 					"Average CPU time = " + sumCpuTime/count

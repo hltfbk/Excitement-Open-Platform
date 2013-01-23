@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.macro;
-import static eu.excitementproject.eop.transformations.utilities.Constants.USE_MLE_FOR_INSERTION_COST;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.USE_MLE_FOR_INSERTION_COST;
 
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -10,6 +11,7 @@ import java.util.Set;
 import eu.excitementproject.eop.biutee.operations.updater.FeatureVectorUpdater;
 import eu.excitementproject.eop.biutee.rteflow.micro.PathObservations;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -326,7 +328,7 @@ public class FeatureUpdate
 		double featureValue = -1.0;
 
 		boolean updateForRootPTDone = false;
-		if (Constants.SPECIAL_FEATURE_FOR_MOVE_BASED_ON_PT && (TreeUtilities.isArtificialRoot(moveSpec.getTextNodeToBeParent())) && (ptPlusOrMinus(moveSpec.getTextNodeToMove().getInfo())) )
+		if (BiuteeConstants.SPECIAL_FEATURE_FOR_MOVE_BASED_ON_PT && (TreeUtilities.isArtificialRoot(moveSpec.getTextNodeToBeParent())) && (ptPlusOrMinus(moveSpec.getTextNodeToMove().getInfo())) )
 		{
 			moveSpec.addDescription("predicate-truth justified");
 			updateFeatureVector(featureVector, Feature.MOVE_TO_ROOT_IF_PT_PLUS_OR_MINUS, -1.0);

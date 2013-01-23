@@ -47,6 +47,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTESerializedPairsReader;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ResultWithScores;
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.biutee.utilities.ReasonableGuessGenerator;
 import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamples;
@@ -61,7 +62,6 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.MLELidstonSmoothedUnigramProbabilityEstimation;
 import eu.excitementproject.eop.transformations.utilities.MeanAndStandardDeviation;
 import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
@@ -114,7 +114,7 @@ public class RTESystemsUtils
 	}
 	public static void normalizeClassifierForSearch(TrainableClassifier classifier, boolean ignoreConstantsFlag) throws TeEngineMlException, ClassifierException
 	{
-		if ( (!Constants.RESTRICT_SEARCH_CLASSIFIER_DURING_TRAINING) || (ignoreConstantsFlag) )
+		if ( (!BiuteeConstants.RESTRICT_SEARCH_CLASSIFIER_DURING_TRAINING) || (ignoreConstantsFlag) )
 		{
 			logger.info("Normaliaing classifier for search");
 			TrainableClassifier innerClassifier = getDeepRealClassifier(classifier);
@@ -124,7 +124,7 @@ public class RTESystemsUtils
 			{
 				LogisticRegressionClassifier lrClassifier = (LogisticRegressionClassifier) innerClassifier;
 				lrClassifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
-				lrClassifier.increaseAllButConstantByBut(Constants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, new HashSet<Integer>());
+				lrClassifier.increaseAllButConstantByBut(BiuteeConstants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, new HashSet<Integer>());
 
 
 				// These features do not represent operations
@@ -633,11 +633,11 @@ public class RTESystemsUtils
 		File samplesSerFile = null;
 		if (null == pathToStoreSamples)
 		{
-			samplesSerFile = new File(Constants.LABELED_SAMPLES_FILE_PREFIX+String.valueOf(mainLoopIterationIndex)+Constants.LABELED_SAMPLES_FILE_POSTFIX);
+			samplesSerFile = new File(BiuteeConstants.LABELED_SAMPLES_FILE_PREFIX+String.valueOf(mainLoopIterationIndex)+BiuteeConstants.LABELED_SAMPLES_FILE_POSTFIX);
 		}
 		else
 		{
-			samplesSerFile = new File(pathToStoreSamples+String.valueOf(mainLoopIterationIndex)+Constants.LABELED_SAMPLES_FILE_POSTFIX);
+			samplesSerFile = new File(pathToStoreSamples+String.valueOf(mainLoopIterationIndex)+BiuteeConstants.LABELED_SAMPLES_FILE_POSTFIX);
 		}
 			
 		logger.info("Writing samples to: "+samplesSerFile.getAbsolutePath());
@@ -869,7 +869,7 @@ public class RTESystemsUtils
 	
 	public static void savePairResultsInSerFile(LinkedHashMap<ExtendedPairData, PairProcessResult> allPairsResults, int iterationIndex) throws FileNotFoundException, IOException
 	{
-		String filename = Constants.RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX+iterationIndex+Constants.RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX;
+		String filename = BiuteeConstants.RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX+iterationIndex+BiuteeConstants.RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX;
 		logger.info("Writing \""+filename+"\"...");
 		saveInSerFile(filename, allPairsResults);
 		ExperimentManager.getInstance().register(new File(filename));
