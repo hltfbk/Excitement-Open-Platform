@@ -33,6 +33,17 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseExcepti
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * The actual BIUTEE system used by {@link BiuteeEDA}.
+ * This system is used by the methods
+ * {@link BiuteeEDA#initialize(eu.excitementproject.eop.common.configuration.CommonConfig)},
+ * {@link BiuteeEDA#process(org.apache.uima.jcas.JCas)}
+ * and
+ * {@link BiuteeEDA#shutdown()}.
+ * <P>
+ * 
+ * Note that the method
+ * {@link BiuteeEDA#startTraining(eu.excitementproject.eop.common.configuration.CommonConfig)}
+ * does not use this class.
  * 
  * @author Asher Stern
  * @since Jan 23, 2013
@@ -40,11 +51,23 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 {
+	/**
+	 * Constructor with the configuration-file-name. This file is BIU
+	 * configuration file, not Excitement configuration file.
+	 * 
+	 * @see BiuteeEdaUtilities#convertExcitementConfigurationFileToBiuConfigurationFile(File, File).
+	 * 
+	 * @param configurationFileName The configuration file name. This file is
+	 * BIU configuration file, not Excitement configuration file.
+	 */
 	public BiuteeEdaUnderlyingSystem(String configurationFileName)
 	{
 		super(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
 	}
 	
+	/**
+	 * Initialization of the system.
+	 */
 	@Override
 	public void init() throws ConfigurationFileDuplicateKeyException, ConfigurationException, MalformedURLException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
 	{
@@ -77,6 +100,23 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 		}
 	}
 	
+	/**
+	 * Processes the given {@link PairData}, and returns a {@link PairProcessor} object.
+	 * The returned {@link PairProcessor} state is with its state after the method
+	 * {@link PairProcessor#process()} has been called.
+	 * 
+	 * @param pairData
+	 * @return
+	 * @throws TeEngineMlException
+	 * @throws AnnotatorException
+	 * @throws TreeCoreferenceInformationException
+	 * @throws OperationException
+	 * @throws ClassifierException
+	 * @throws ScriptException
+	 * @throws RuleBaseException
+	 * @throws MalformedURLException
+	 * @throws LemmatizerException
+	 */
 	public PairProcessor process(PairData pairData) throws TeEngineMlException, AnnotatorException, TreeCoreferenceInformationException, OperationException, ClassifierException, ScriptException, RuleBaseException, MalformedURLException, LemmatizerException
 	{
 		logger.info("Running document-sublayer: converting PairData to ExtendedPairData...");
@@ -92,11 +132,22 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	}
 	
 
+	/**
+	 * The classifier used to decide entailment. To get a result for a given
+	 * T-H pair, that has been processed by the {@link #process(PairData)} method,
+	 * one has to call {@link Classifier#classify(java.util.Map)} on the feature
+	 * vector of {@link PairProcessor#getBestTree()}.
+	 * 
+	 * @return
+	 */
 	public Classifier getClassifierForPredictions()
 	{
 		return classifierForPredictions;
 	}
 
+	/**
+	 * Clean up of the system.
+	 */
 	@Override
 	public void cleanUp()
 	{

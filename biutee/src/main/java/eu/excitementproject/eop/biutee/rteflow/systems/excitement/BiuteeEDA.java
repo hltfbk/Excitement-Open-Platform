@@ -30,6 +30,7 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseExcepti
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * BIUTEE implementation of {@link EDABasic}.
  * 
  * @author Asher Stern
  * @since Jan 23, 2013
@@ -40,6 +41,10 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 	public static final String TEMPORARY_CONFIGURATION_FILE_PREFIX = "biutee_configuration_file";
 	public static final String TEMPORARY_CONFIGURATION_FILE_SUFFIX = ".xml";
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.EDABasic#initialize(eu.excitementproject.eop.common.configuration.CommonConfig)
+	 */
 	@Override
 	public void initialize(CommonConfig config) throws ConfigurationException, EDAException, ComponentException
 	{
@@ -66,6 +71,10 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.EDABasic#process(org.apache.uima.jcas.JCas)
+	 */
 	@Override
 	public TEDecision process(JCas aCas) throws EDAException, ComponentException
 	{
@@ -87,12 +96,20 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.EDABasic#shutdown()
+	 */
 	@Override
 	public void shutdown()
 	{
 		underlyingSystem.cleanUp();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.EDABasic#startTraining(eu.excitementproject.eop.common.configuration.CommonConfig)
+	 */
 	@Override
 	public void startTraining(CommonConfig config) throws ConfigurationException, EDAException, ComponentException
 	{

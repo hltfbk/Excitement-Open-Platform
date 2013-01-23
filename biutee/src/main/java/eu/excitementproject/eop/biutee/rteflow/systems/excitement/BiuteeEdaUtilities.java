@@ -21,6 +21,12 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class BiuteeEdaUtilities
 {
+	/**
+	 * Converts an Excitement configuration-file to BIU configuration file.
+	 * 
+	 * @param excitementConfigurationFile the Excitement configuration file. Should not be touched.
+	 * @param biuConfigurationFile the BIU configuration-file. It is an empty, or not-exist, and should be written by this method.
+	 */
 	public static void convertExcitementConfigurationFileToBiuConfigurationFile(File excitementConfigurationFile, File biuConfigurationFile)
 	{
 		// TODO
@@ -39,6 +45,18 @@ public class BiuteeEdaUtilities
 		throw new RuntimeException("Not yet implemented.");
 	}
 	
+	/**
+	 * Constructs a {@link TEDecision} from a given {@link PairProcessor}. This method
+	 * assumes that {@link PairProcessor#process()} has been called.
+	 * This {@link PairProcessor} is typically returned by
+	 * {@link BiuteeEdaUnderlyingSystem#process(PairData)}.
+	 *   
+	 * @param pairId
+	 * @param pairProcessor
+	 * @param classifierForPredictions
+	 * @return
+	 * @throws ClassifierException
+	 */
 	public static TEDecision createDecisionFromPairProcessor(final String pairId, PairProcessor pairProcessor, Classifier classifierForPredictions) throws ClassifierException
 	{
 		final double classification = classifierForPredictions.classify(pairProcessor.getBestTree().getFeatureVector());
