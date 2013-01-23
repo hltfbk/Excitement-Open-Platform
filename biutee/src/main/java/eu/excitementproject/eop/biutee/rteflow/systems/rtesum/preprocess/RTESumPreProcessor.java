@@ -39,9 +39,9 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOExcep
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**

@@ -19,10 +19,10 @@ import eu.excitementproject.eop.core.utilities.dictionary.wiktionary.WiktionaryR
 import eu.excitementproject.eop.core.utilities.dictionary.wiktionary.jwktl.ParseTreeUtils.ParseTreeException;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
-import eu.excitementproject.eop.lap.biu.en.postagger.MaxentPosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.en.postagger.stanford.MaxentPosTagger;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.postagger.PosTagger;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
 
 /**
  * This class extracts hypernyms of words out of their wiki sense descriptions. It does so by prefixing gloss descriptions with "WORD is ..." and parsing 

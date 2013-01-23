@@ -20,8 +20,8 @@ import arkref.data.Mention;
 import arkref.data.Sentence;
 import edu.stanford.nlp.trees.Tree;
 import eu.excitementproject.eop.common.utilities.Utils;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.WordWithCoreferenceTag;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 
 
 /**

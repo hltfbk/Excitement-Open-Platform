@@ -32,12 +32,12 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanoni
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
-import eu.excitementproject.eop.lap.biu.en.postagger.MaxentPosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.en.postagger.stanford.MaxentPosTagger;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.postagger.PosTagger;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
 
 /**
  * This class basically wraps Yoav Goldberg's EasyFirst parser. It publishes a {@link #parse(String)} method.

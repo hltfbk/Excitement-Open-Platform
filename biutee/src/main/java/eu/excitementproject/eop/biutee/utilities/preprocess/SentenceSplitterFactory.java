@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.biutee.utilities.preprocess;
-import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 
 /**
  * Factory to create and return a {@link SentenceSplitter}.

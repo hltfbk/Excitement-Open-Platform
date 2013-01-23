@@ -6,16 +6,16 @@ import java.util.List;
 
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolver;
-import eu.excitementproject.eop.lap.biu.en.coreference.TreeCoreferenceInformationUtils;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.coreference.TreeCoreferenceInformationUtils;
+import eu.excitementproject.eop.lap.biu.coreference.merge.CorefMergeException;
+import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient.ArkrefClientException;
 import eu.excitementproject.eop.lap.biu.en.coreference.bart.BartClient;
 import eu.excitementproject.eop.lap.biu.en.coreference.bart.BartCoreferenceResolver;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.CorefMergeException;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.WordWithCoreferenceTag;
 import eu.excitementproject.eop.lap.biu.en.coreference.merge.english.EnglishCorefMerger;
 
 

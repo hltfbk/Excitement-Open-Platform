@@ -21,7 +21,7 @@ import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.StopFlag;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;

@@ -52,7 +52,7 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6FileSystemN
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
 import eu.excitementproject.eop.transformations.utilities.Constants;

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Stack;
 
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient.ArkrefClientException;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.WordWithCoreferenceTag;
 
 public class ArkrefClientDemo {
 

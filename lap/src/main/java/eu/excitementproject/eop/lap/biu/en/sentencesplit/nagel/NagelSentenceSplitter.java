@@ -14,9 +14,9 @@ import java.util.List;
 import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.ProgramExecution;
 import eu.excitementproject.eop.common.utilities.ProgramExecutionException;
-import eu.excitementproject.eop.lap.biu.en.sentencesplit.AbstractSentenceSplitter;
-import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitter;
-import eu.excitementproject.eop.lap.biu.en.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.sentencesplit.AbstractSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
+import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 
 
 /**
