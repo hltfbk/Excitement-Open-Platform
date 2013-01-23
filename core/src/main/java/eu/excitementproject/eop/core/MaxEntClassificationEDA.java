@@ -3,7 +3,9 @@ package eu.excitementproject.eop.core;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -28,14 +30,18 @@ import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
 import eu.excitementproject.eop.core.component.scoring.BagOfLemmasScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
+import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -129,9 +135,46 @@ public class MaxEntClassificationEDA implements
 		boolean isGNRhypernym = true;
 		boolean isGNRsynonym = true;
 		
-		if (isGDS || isGNRcauses || isGNRentails || isGNRhypernym || isGNRsynonym) {
-			ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
-			components.add(comp3);
+		if (language.equals("DE") && (isGDS || isGNRcauses || isGNRentails || isGNRhypernym || isGNRsynonym)) {
+			try {
+				ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
+				components.add(comp3);
+			} catch (LexicalResourceException e) {
+				throw new ComponentException(e.getMessage());
+			}
+		}
+		
+		boolean isWNHypernym = true;
+		boolean isWNSynonym = true;
+		boolean isVOStrongerThan = true;
+		boolean isVOCanResultIn = true;
+		boolean isVOSimilar = true;
+		if (language.equals("EN") && (isWNHypernym || isWNSynonym || isVOStrongerThan || isVOCanResultIn || isVOSimilar)) {
+			 Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+			 if (isWNHypernym) {
+				 wnRelSet.add(WordNetRelation.HYPERNYM);
+			 }
+			 if (isWNSynonym) {
+				 wnRelSet.add(WordNetRelation.SYNONYM);
+			 }
+			 
+			 Set<RelationType> voRelSet = new HashSet<RelationType>();
+			 if (isVOStrongerThan) {
+				 voRelSet.add(RelationType.STRONGER_THAN);
+			 }
+			 if (isVOCanResultIn) {
+				 voRelSet.add(RelationType.CAN_RESULT_IN);
+			 }
+			 if (isVOSimilar) {
+				 voRelSet.add(RelationType.SIMILAR);
+			 }
+			 
+			 try {
+				 ScoringComponent comp3 = new BagOfLexesScoringEN(wnRelSet, voRelSet);
+				 components.add(comp3);
+			 } catch (LexicalResourceException e) {
+				 throw new ComponentException(e.getMessage());
+			 }
 		}
 
 		modelFile = "./src/test/resources/MaxEntClassificationEDAModel"
@@ -175,6 +218,7 @@ public class MaxEntClassificationEDA implements
 		}
 
 		String[] context = constructContext(aCas);
+//		System.out.println(Arrays.asList(context));
 		float[] values = RealValueFileEventStream.parseContexts(context);
 		double[] ocs = model.eval(context, values);
 		int numOutcomes = ocs.length;
