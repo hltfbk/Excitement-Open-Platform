@@ -151,7 +151,10 @@ public class LogInitializer
 		{
 			try
 			{
-				Class<?>[] classesOfConstants = new Class<?>[]{Constants.class,Workarounds.class};
+				Class<?>[] classesOfConstants = new Class<?>[]{
+						Constants.class,Workarounds.class,
+						BiuteeConstants.class,BiuteeConstants.Workarounds.class
+						};
 				for (Class<?> classOfConstants : classesOfConstants)
 				{
 					ConstantsSummary constantsSummary = new ConstantsSummary(classOfConstants);
