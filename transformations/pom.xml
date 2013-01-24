@@ -44,6 +44,11 @@
     		<artifactId>core</artifactId>
     		<version>0.1-SNAPSHOT</version>
     	</dependency>
+    	<!-- Dependency on legacy code of Bar-Ilan University NLP lab -->
+		<dependency>
+    		<groupId>org.biu.nlp</groupId>
+    		<artifactId>biu_legacy</artifactId>
+		</dependency>
     
   </dependencies>
 </project>

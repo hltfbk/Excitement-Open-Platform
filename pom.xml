@@ -172,7 +172,12 @@
     		<groupId>mysql</groupId>
     		<artifactId>mysql-connector-java</artifactId>
     		<version>5.1.12</version>
-		</dependency>		
+		</dependency>
+		<dependency>
+    		<groupId>org.biu.nlp</groupId>
+    		<artifactId>biu_legacy</artifactId>
+    		<version>2013-jan-24</version>
+		</dependency>
   	</dependencies>
   </dependencyManagement>
 
