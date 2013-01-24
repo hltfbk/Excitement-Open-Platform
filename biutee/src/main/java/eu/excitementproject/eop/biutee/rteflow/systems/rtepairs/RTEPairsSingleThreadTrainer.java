@@ -17,6 +17,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -28,7 +29,6 @@ import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.StopFlag;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -48,7 +48,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 @Deprecated
 public class RTEPairsSingleThreadTrainer extends RTEPairsTrainer
 {
-	public static final double ACCURACY_DIFFERENCE_TO_STOP = Constants.TRAINER_ACCURACY_DIFFERENCE_TO_STOP;
+	public static final double ACCURACY_DIFFERENCE_TO_STOP = BiuteeConstants.TRAINER_ACCURACY_DIFFERENCE_TO_STOP;
 	
 	public static void main(String[] args)
 	{

@@ -18,6 +18,7 @@ import eu.excitementproject.eop.biutee.plugin.PluginRegisterer;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
@@ -55,7 +56,7 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
  */
 public class SystemInitialization
 {
-	public static final boolean LEMMATIZER_SINGLE_INSTANCE = Constants.LEMMATIZER_SINGLE_INSTANCE;
+	public static final boolean LEMMATIZER_SINGLE_INSTANCE = BiuteeConstants.LEMMATIZER_SINGLE_INSTANCE;
 	
 	/**
 	 * Constructor which takes the configuration file name, and the module name

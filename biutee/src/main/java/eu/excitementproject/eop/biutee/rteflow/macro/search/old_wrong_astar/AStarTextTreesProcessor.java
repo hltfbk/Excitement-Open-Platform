@@ -21,6 +21,7 @@ import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -34,7 +35,6 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseExcepti
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
@@ -276,8 +276,8 @@ public class AStarTextTreesProcessor extends AbstractTextTreesProcessor implemen
 		double averageEstimation = sumEstimations/((double)estimations.size());
 		
 		this.futureEstimationPerNode =
-			Constants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION*averageEstimation+
-			(1-Constants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION)*this.futureEstimationPerNode;
+				BiuteeConstants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION*averageEstimation+
+			(1-BiuteeConstants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION)*this.futureEstimationPerNode;
 		
 		for (TreesGeneratorByOperations generator : generatorsOfLastDfsIterations)
 		{
@@ -341,7 +341,7 @@ public class AStarTextTreesProcessor extends AbstractTextTreesProcessor implemen
 		{
 			generatorsOfLastDfsIterations = new Vector<TreesGeneratorByOperations>();
 			mapGeneratorToPreviousElement = new LinkedHashMap<TreesGeneratorByOperations, AStarTreeElement>();
-			dfs(Constants.ASTAR_DFS_ITERATIONS,element,element);
+			dfs(BiuteeConstants.ASTAR_DFS_ITERATIONS,element,element);
 			offerAllLastDfsIterations(element);
 			generatorsOfLastDfsIterations = null;
 			mapGeneratorToPreviousElement = null;
@@ -447,8 +447,8 @@ public class AStarTextTreesProcessor extends AbstractTextTreesProcessor implemen
 			double averageEstimation = sumEstimations/((double)estimations.size());
 			
 			this.futureEstimationPerNode =
-				Constants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION*averageEstimation+
-				(1-Constants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION)*this.futureEstimationPerNode;
+					BiuteeConstants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION*averageEstimation+
+				(1-BiuteeConstants.LEARNING_RATE_ASTAR_FUTURE_ESTIMATION)*this.futureEstimationPerNode;
 			
 			// Here, we insert those new trees into the queue, as new elements.
 			for (TreeAndFeatureVector generatedTree : generatedTrees)

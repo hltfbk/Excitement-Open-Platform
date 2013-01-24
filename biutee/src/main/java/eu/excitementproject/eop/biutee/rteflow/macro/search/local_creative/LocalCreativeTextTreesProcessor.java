@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +28,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.SingleOperationItem;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.TreeHistoryUtilities;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
@@ -42,7 +44,6 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.SingleTreeEvaluations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
@@ -58,7 +59,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 {
 	public static final int WARNING_IF_EXCEEDS_NUMBER_OF_GLOBAL_ITERATIONS = 20;
 	// if <=0 it means all.
-	public static final int NUMBER_OF_TREES_TO_PROCESS = Constants.LOCAL_CREATIVE_NUMBER_OF_TREES_TO_PROCESS;
+	public static final int NUMBER_OF_TREES_TO_PROCESS = BiuteeConstants.LOCAL_CREATIVE_NUMBER_OF_TREES_TO_PROCESS;
 	
 	public LocalCreativeTextTreesProcessor(
 			String textText, String hypothesisText,
@@ -649,7 +650,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	protected long numberOfGeneratedElements = 0;
 	
 	// For example: 3 means son, grandson, great-grandson
-	protected int numberOfLocalIterations = Constants.LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS;
+	protected int numberOfLocalIterations = BiuteeConstants.LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS;
 
 	// used for GUI
 	protected double progressSoFar = 0.0;

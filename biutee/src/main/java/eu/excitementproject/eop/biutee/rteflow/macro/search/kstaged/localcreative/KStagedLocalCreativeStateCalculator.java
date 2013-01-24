@@ -12,12 +12,12 @@ import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.Looka
 import eu.excitementproject.eop.biutee.rteflow.micro.OperationsEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
@@ -56,7 +56,7 @@ public class KStagedLocalCreativeStateCalculator implements StateCalculator<KSta
 			LookaheadChildrenGenerator generator = 
 				new LookaheadChildrenGenerator(
 						state,
-						Constants.LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS,
+						BiuteeConstants.LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS,
 						this.script,
 						this.operationsEnvironment,
 						this.classifier);

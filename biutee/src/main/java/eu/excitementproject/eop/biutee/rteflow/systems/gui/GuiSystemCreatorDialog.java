@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.gui;
-import static eu.excitementproject.eop.transformations.utilities.Constants.GUI_LOADS_LABELED_SAMPLES;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.GUI_LOADS_LABELED_SAMPLES;
 
 import java.awt.Color;
 import java.awt.Dimension;

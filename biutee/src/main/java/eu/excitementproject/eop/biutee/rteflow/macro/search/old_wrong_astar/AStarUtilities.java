@@ -4,10 +4,10 @@ import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierUtils;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
@@ -20,7 +20,7 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
 @Deprecated
 public class AStarUtilities
 {
-	public static final double MINIMUM_COST_PER_NODE_ESTIMATION = Constants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER;
+	public static final double MINIMUM_COST_PER_NODE_ESTIMATION = BiuteeConstants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER;
 
 	/**
 	 * Returns a lower bound estimation about the cost in the future.

@@ -12,6 +12,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -19,7 +20,6 @@ import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.StopFlag;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -95,7 +95,7 @@ public class ListOfPairsProcessor
 		TreeAndFeatureVector treeAndFeatureVector = processor.getBestTree();
 		LabeledSample sample = new LabeledSample(treeAndFeatureVector.getFeatureVector(), pair.getPair().getBooleanClassificationType().booleanValue());
 		PairProcessResult result;
-		if (Constants.PRINT_TIME_STATISTICS)
+		if (BiuteeConstants.PRINT_TIME_STATISTICS)
 		{
 			result = new PairProcessResult(treeAndFeatureVector.getTree(), treeAndFeatureVector.getFeatureVector(), processor.getBestTreeSentence(), pair, processor.getBestTreeHistory(), sample, processor.getCpuTime(),processor.getWorldClockTime());
 		}
