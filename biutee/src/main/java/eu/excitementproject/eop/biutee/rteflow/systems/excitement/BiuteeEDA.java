@@ -13,6 +13,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.SystemInformationLog;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
@@ -60,6 +61,7 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			File biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
 			BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
 			logger.info("Log file has been converted to BIU log file, and temporarily stored in "+biuConfigurationFile.getPath());
+			new SystemInformationLog(biuConfigurationFile.getPath()).log();
 			logger.info("Initializing BIUTEE underlying system...");
 			underlyingSystem = new BiuteeEdaUnderlyingSystem(biuConfigurationFile.getPath());
 			underlyingSystem.init();
@@ -125,6 +127,7 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			File biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
 			BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
 			logger.info("Log file has been converted to BIU log file, and temporarily stored in "+biuConfigurationFile.getPath());
+			new SystemInformationLog(biuConfigurationFile.getPath()).log();
 			
 			RTEPairsMultiThreadTrainer trainer = new RTEPairsMultiThreadTrainer(biuConfigurationFile.getPath());
 			try
