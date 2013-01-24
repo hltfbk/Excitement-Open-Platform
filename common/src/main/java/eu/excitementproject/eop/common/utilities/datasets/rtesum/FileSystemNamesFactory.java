@@ -17,26 +17,37 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.rte7main.Testse
  * 
  */
 public class FileSystemNamesFactory {
+	
+	public static final String RTE6_FLAG = "RTE6";
+	public static final String RTE7_FLAG = "RTE7";
+	public static final String DEV_FLAG = "DEV";
+	public static final String TEST_FLAG = "TEST";
+	
+	
 
 	/**
 	 * Use default Main Task flag
 	 * @param datasetDir
+	 * @param annualFlag either {@value #RTE6_FLAG} or {@value #RTE7_FLAG}
+	 * @param devTestFlag either {@value #DEV_FLAG} or {@value #TEST_FLAG}
 	 * @return
 	 */
-	public static FilteredCandidatesRte6FileSystemNames chooseFilteredFileSystemNames(File datasetDir)
+	public static FilteredCandidatesRte6FileSystemNames chooseFilteredFileSystemNames(String annualFlag, String devTestFlag, File datasetDir)
 	{
-		return chooseFilteredFileSystemNames(datasetDir, false);	
+		return chooseFilteredFileSystemNames(annualFlag, devTestFlag, datasetDir, false);	
 	}
 	
 	/**
 	 * Use default Main Task flag
 	 * @param datasetDir
+	 * @param annualFlag either {@value #RTE6_FLAG} or {@value #RTE7_FLAG}
+	 * @param devTestFlag either {@value #DEV_FLAG} or {@value #TEST_FLAG}
 	 * @param isNoveltyTask
 	 * @return
 	 */
-	public static Rte6FileSystemNames chooseUnfilteredFileSystemNames(File datasetDir)
+	public static Rte6FileSystemNames chooseUnfilteredFileSystemNames(String annualFlag, String devTestFlag, File datasetDir)
 	{
-		return chooseUnfilteredFileSystemNames(datasetDir, false);
+		return chooseUnfilteredFileSystemNames(annualFlag, devTestFlag, datasetDir, false);
 	}
 	
 	
@@ -44,78 +55,95 @@ public class FileSystemNamesFactory {
 	 * 
 	 * @param datasetDir
 	 * @param isNoveltyTask
+	 * @param annualFlag either {@value #RTE6_FLAG} or {@value #RTE7_FLAG}
+	 * @param devTestFlag either {@value #DEV_FLAG} or {@value #TEST_FLAG}
 	 * @return
 	 */
-	public static Rte6FileSystemNames chooseUnfilteredFileSystemNames(File datasetDir, boolean isNoveltyTask)
+	public static Rte6FileSystemNames chooseUnfilteredFileSystemNames(String annualFlag, String devTestFlag, File datasetDir, boolean isNoveltyTask)
 	{
-		boolean itIsRte7 = DefaultRte7MainFileSystemNames.isRte7(datasetDir.getAbsolutePath());
-		boolean isDevSet = DefaultRte7MainFileSystemNames.isDevSet(datasetDir);
-		Rte6FileSystemNames fileSystemNames = null;
-		if (isNoveltyTask)
+		// boolean itIsRte7 = DefaultRte7MainFileSystemNames.isRte7(datasetDir.getAbsolutePath());
+		// boolean isDevSet = DefaultRte7MainFileSystemNames.isDevSet(datasetDir);
+		Boolean itIsRte7 = null;
+		if (annualFlag.equals(RTE6_FLAG))
 		{
-//			logger.info("Working on Novelty Task");
-			if (itIsRte7)
-			{
-//				logger.info("Working on RTE-7");
-				if (isDevSet)
-				{
-//					logger.info("Working on Training folders");
-					fileSystemNames = new DefaultRte7NoveltyFileSystemNames(); 
-				}
-				else
-				{
-//					logger.info("Working on Test folders");
-					fileSystemNames = new TestsetRte7NoveltyFileSystemNames();
-				}
-			}
-			else
-			{
-//				logger.info("Working on RTE-6");
-				if (isDevSet)
-				{
-//					logger.info("Working on Training folders");
-					fileSystemNames = new DefaultRte6NoveltyFileSystemNames(); 
-				}
-				else
-				{
-//					logger.info("Working on Test folders");
-					fileSystemNames = new TestsetRte6NoveltyFileSystemNames();
-				}
-			}
+			itIsRte7=false;
+		}
+		else if (annualFlag.equals(RTE7_FLAG))
+		{
+			itIsRte7=true;
 		}
 		else
 		{
-//			logger.info("Working on Main Task");
-			if (itIsRte7)
+			itIsRte7=null;
+		}
+		Boolean isDevSet = null;
+		if (devTestFlag.equals(DEV_FLAG))
+		{
+			isDevSet=true;
+		}
+		else if (devTestFlag.equals(TEST_FLAG))
+		{
+			isDevSet=false;
+		}
+		else
+		{
+			isDevSet=null;
+		}
+		Rte6FileSystemNames fileSystemNames = null;
+		if ( (itIsRte7!=null) && (isDevSet!=null) )
+		{
+			if (isNoveltyTask)
 			{
-//				logger.info("Working on RTE-7");
-				if (isDevSet)
+				if (itIsRte7)
 				{
-//					logger.info("Working on Training folders");
-					fileSystemNames = new DefaultRte7MainFileSystemNames(); 
+					if (isDevSet)
+					{
+						fileSystemNames = new DefaultRte7NoveltyFileSystemNames(); 
+					}
+					else // test set
+					{
+						fileSystemNames = new TestsetRte7NoveltyFileSystemNames();
+					}
 				}
-				else
+				else // rte-6
 				{
-//					logger.info("Working on Test folders");
-					fileSystemNames = new TestsetRte7MainFileSystemNames();
+					if (isDevSet)
+					{
+						fileSystemNames = new DefaultRte6NoveltyFileSystemNames(); 
+					}
+					else // test set
+					{
+						fileSystemNames = new TestsetRte6NoveltyFileSystemNames();
+					}
 				}
 			}
-			else
+			else // main task
 			{
-//				logger.info("Working on RTE-6");
-				if (isDevSet)
+				if (itIsRte7)
 				{
-//					logger.info("Working on Training folders");
-					fileSystemNames = new DefaultRte6MainFileSystemNames(); 
+					if (isDevSet)
+					{
+						fileSystemNames = new DefaultRte7MainFileSystemNames(); 
+					}
+					else
+					{
+						fileSystemNames = new TestsetRte7MainFileSystemNames();
+					}
 				}
-				else
+				else // rte-6
 				{
-//					logger.info("Working on Test folders");
-					fileSystemNames = new TestsetRte6MainFileSystemNames();
+					if (isDevSet)
+					{
+						fileSystemNames = new DefaultRte6MainFileSystemNames(); 
+					}
+					else
+					{
+						fileSystemNames = new TestsetRte6MainFileSystemNames();
+					}
 				}
 			}
 		}
-		
+
 		return fileSystemNames;
 	}
 	
@@ -123,10 +151,20 @@ public class FileSystemNamesFactory {
 	 * 
 	 * @param datasetDir
 	 * @param isNoveltyTask
+	 * @param annualFlag either {@value #RTE6_FLAG} or {@value #RTE7_FLAG}
+	 * @param devTestFlag either {@value #DEV_FLAG} or {@value #TEST_FLAG}
 	 * @return
 	 */
-	public static FilteredCandidatesRte6FileSystemNames chooseFilteredFileSystemNames(File datasetDir, boolean isNoveltyTask)
+	public static FilteredCandidatesRte6FileSystemNames chooseFilteredFileSystemNames(String annualFlag, String devTestFlag, File datasetDir, boolean isNoveltyTask)
 	{
-		return new FilteredCandidatesRte6FileSystemNames(chooseUnfilteredFileSystemNames(datasetDir, isNoveltyTask));	// filtered candidates files
+		Rte6FileSystemNames unfiltered = chooseUnfilteredFileSystemNames(annualFlag, devTestFlag, datasetDir, isNoveltyTask);
+		if (unfiltered!=null)
+		{
+			return new FilteredCandidatesRte6FileSystemNames(unfiltered);	// filtered candidates files
+		}
+		else
+		{
+			return null;
+		}
 	}
 }

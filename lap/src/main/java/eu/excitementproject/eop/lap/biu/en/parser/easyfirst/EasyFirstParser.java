@@ -12,13 +12,13 @@ import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicPipelinedParser;
 import eu.excitementproject.eop.lap.biu.en.parser.EnglishSingleTreeParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
-import eu.excitementproject.eop.lap.biu.en.postagger.MaxentPosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.en.postagger.stanford.MaxentPosTagger;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.MaxentTokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.postagger.PosTagger;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
 
 
 

@@ -32,12 +32,12 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanoni
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
-import eu.excitementproject.eop.lap.biu.en.postagger.MaxentPosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggedToken;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTagger;
-import eu.excitementproject.eop.lap.biu.en.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.en.postagger.stanford.MaxentPosTagger;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.postagger.PosTagger;
+import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
 
 /**
  * This class basically wraps Yoav Goldberg's EasyFirst parser. It publishes a {@link #parse(String)} method.
@@ -405,9 +405,10 @@ public class EasyFirstClient
 							wordsNodesList.add(node);
 						}
 
+
 						if (parentId==0)
 						{
-							if (tree!=null)throw new ParserRunException("More than one root.\nParser output was:\n"+listStringToString(parserOutput)+"\nInput was: \""+rawTextForExceptionString+"\"");
+							if (tree!=null)throw new ParserRunException("More than one root.\nParser output was:\n"+listStringToString(parserOutput)+"\n"+rawTextForExceptionString);
 							tree=node;
 						}
 						else
@@ -418,11 +419,11 @@ public class EasyFirstClient
 				}
 				catch(ArrayIndexOutOfBoundsException e)
 				{
-					throw new ParserRunException("Wrong line returned by the parser: "+line+".\nParser output was:\n"+listStringToString(parserOutput)+"\nInput was: \""+rawTextForExceptionString+"\"");
+					throw new ParserRunException("Wrong line returned by the parser: "+line+".\nParser output was:\n"+listStringToString(parserOutput)+"\n"+rawTextForExceptionString);
 				}
 				catch (UnsupportedPosTagStringException e)
 				{
-					throw new ParserRunException("Unsupported part-of-speech tag, occurred in line: \""+line+"\". See nested exception.\nParser output was:\n"+listStringToString(parserOutput)+"\nInput was: \""+rawTextForExceptionString+"\"",e);
+					throw new ParserRunException("Unsupported part-of-speech tag, occurred in line: \""+line+"\". See nested exception.\nParser output was:\n"+listStringToString(parserOutput)+"\n"+rawTextForExceptionString,e);
 				}
 			}}
 			

@@ -12,9 +12,9 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient.ArkrefClientException;
-import eu.excitementproject.eop.lap.biu.en.coreference.merge.WordWithCoreferenceTag;
 
 
 /**

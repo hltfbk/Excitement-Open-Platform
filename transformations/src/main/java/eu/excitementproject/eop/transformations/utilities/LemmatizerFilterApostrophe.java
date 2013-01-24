@@ -2,9 +2,9 @@ package eu.excitementproject.eop.transformations.utilities;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.GateLemmatizer;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.Lemmatizer;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.datastructures.SingleItemList;
 
 /**

@@ -16,12 +16,12 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUti
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.match.Matcher;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityMergeServices;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizer;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityRecognizerException;
-import eu.excitementproject.eop.lap.biu.en.ner.NamedEntityWord;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityMergeServices;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizer;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
+import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
 /**

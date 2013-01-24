@@ -38,7 +38,7 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswersFileWrit
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.DefaultAnswersFileWriter;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.utilities.Constants;

@@ -18,6 +18,8 @@ import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory;
 
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
+import eu.excitementproject.eop.lap.biu.sentencesplit.AbstractSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 
 /**
  * Uses the OpenNlp {@link SentenceChunker}, in {@code JARS\lingpipe-3.1.1.jar} to split sentences. I believe this is

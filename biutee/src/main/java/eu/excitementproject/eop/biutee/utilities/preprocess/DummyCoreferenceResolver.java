@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.biutee.utilities.preprocess;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.coreference.CoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 
 
 /**
