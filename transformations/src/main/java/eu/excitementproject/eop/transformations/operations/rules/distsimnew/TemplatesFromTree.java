@@ -38,20 +38,6 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class TemplatesFromTree<T extends Info, S extends AbstractNode<T,S>> extends TemplateInstancesExtractor
 {
-//	public TemplatesFromTree(S tree) throws TeEngineMlException
-//	{
-//		throw new RuntimeException("Disabled temporarily during migration");
-//	}
-//	public void createTemplate() throws TeEngineMlException
-//	{
-//		throw new RuntimeException("Disabled temporarily during migration");
-//	}
-//	public Set<String> getTemplates() throws TeEngineMlException
-//	{
-//		throw new RuntimeException("Disabled temporarily during migration");
-//	}
-	
-//	
 	public TemplatesFromTree(S tree) throws TeEngineMlException
 	{
 		super();
