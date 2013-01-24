@@ -30,12 +30,12 @@ import javax.swing.event.ChangeListener;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.file.FileFilterByExtension;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 
 /**
  * 
@@ -78,7 +78,7 @@ public class GuiRtePairsUtilities implements ActionListener, ChangeListener
 			}
 			else if (e.getActionCommand().equals("loadLastPairsMenuItem"))
 			{
-				final File file = new File(Constants.FILENAME_RECENT_PAIRS_IN_GUI);
+				final File file = new File(BiuteeConstants.FILENAME_RECENT_PAIRS_IN_GUI);
 				cpe.getMainFrame().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 				new Thread(
 						new Runnable()

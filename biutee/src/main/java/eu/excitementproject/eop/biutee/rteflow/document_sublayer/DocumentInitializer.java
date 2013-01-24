@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.document_sublayer;
-import static eu.excitementproject.eop.transformations.utilities.Constants.Workarounds.ANNOTATOR_FAILURE_IS_BLOCKING;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.Workarounds.ANNOTATOR_FAILURE_IS_BLOCKING;
 
 import java.util.ArrayList;
 import java.util.Iterator;

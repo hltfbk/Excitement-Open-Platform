@@ -18,6 +18,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.Preproc
 import eu.excitementproject.eop.biutee.script.HypothesisInformation;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
@@ -149,7 +150,7 @@ public class TopicProcessor
 					Map<Integer,Double> featureVector = processor.getBestTree().getFeatureVector();
 					
 					RteSumSingleCandidateResult resultCurrentCandidate = null;
-					if (Constants.PRINT_TIME_STATISTICS)
+					if (BiuteeConstants.PRINT_TIME_STATISTICS)
 					{
 						resultCurrentCandidate =
 							new RteSumSingleCandidateResult(sentenceID,hypothesisID,textSentence,hypothesisSentence,processor.getBestTree().getTree(),featureVector,processor.getBestTreeHistory(),

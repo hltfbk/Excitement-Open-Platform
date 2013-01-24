@@ -14,6 +14,7 @@ import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassi
 import eu.excitementproject.eop.biutee.classifiers.TrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -26,7 +27,6 @@ import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -50,7 +50,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 public abstract class RTEPairsTrainer extends RTEPairsBaseSystem
 {
 
-	public static final double ACCURACY_DIFFERENCE_TO_STOP = Constants.TRAINER_ACCURACY_DIFFERENCE_TO_STOP;
+	public static final double ACCURACY_DIFFERENCE_TO_STOP = BiuteeConstants.TRAINER_ACCURACY_DIFFERENCE_TO_STOP;
 	
 	public RTEPairsTrainer(String configurationFileName) throws ConfigurationFileDuplicateKeyException, FileNotFoundException, ConfigurationException, IOException, ClassNotFoundException, OperationException, TeEngineMlException, TreeCoreferenceInformationException, LemmatizerException
 	{
@@ -162,7 +162,7 @@ public abstract class RTEPairsTrainer extends RTEPairsBaseSystem
 		logger.info("Memory used: "+Utils.stringMemoryUsedInMB());
 		logger.info("Iteration 0 done. Current accuracy: "+String.format("%4.4f",accuracy));
 		int mainLoopIterationCounter = 1;
-		if (mainLoopIterationCounter<Constants.MAX_NUMBER_OF_MAIN_LOOP_ITERATIONS)
+		if (mainLoopIterationCounter<BiuteeConstants.MAX_NUMBER_OF_MAIN_LOOP_ITERATIONS)
 		{
 			boolean stopDueToConvergence=false;
 			do
@@ -170,14 +170,14 @@ public abstract class RTEPairsTrainer extends RTEPairsBaseSystem
 				logger.info("Starting main loop iteration");
 				oldAccuracy = accuracy;
 				accuracy = oneIteration();
-				stopDueToConvergence = (Math.abs(accuracy-oldAccuracy)<=ACCURACY_DIFFERENCE_TO_STOP)&&Constants.MAIN_LOOP_STOPS_WHEN_ACCURACY_CONVERGES;
+				stopDueToConvergence = (Math.abs(accuracy-oldAccuracy)<=ACCURACY_DIFFERENCE_TO_STOP)&&BiuteeConstants.MAIN_LOOP_STOPS_WHEN_ACCURACY_CONVERGES;
 				logger.info("Memory used: "+Utils.stringMemoryUsedInMB());
 				logger.info("Iteration "+mainLoopIterationCounter+" done. Current accuracy: "+String.format("%4.4f",accuracy));
 				mainLoopIterationCounter++;
-			}while( (mainLoopIterationCounter<Constants.MAX_NUMBER_OF_MAIN_LOOP_ITERATIONS) && !stopDueToConvergence );
+			}while( (mainLoopIterationCounter<BiuteeConstants.MAX_NUMBER_OF_MAIN_LOOP_ITERATIONS) && !stopDueToConvergence );
 		}
 		logger.info("All iterations in main loop done. Returning.");
-		if (Constants.MAX_NUMBER_OF_MAIN_LOOP_ITERATIONS>1)
+		if (BiuteeConstants.MAX_NUMBER_OF_MAIN_LOOP_ITERATIONS>1)
 		{
 			logger.info("Accuracy last delta: "+ String.format("%-4.5f",Math.abs(accuracy-oldAccuracy)));
 		}

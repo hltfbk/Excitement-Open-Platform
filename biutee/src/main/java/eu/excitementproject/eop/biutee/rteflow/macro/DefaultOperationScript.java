@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.macro;
-import static eu.excitementproject.eop.transformations.utilities.Constants.FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -16,6 +17,7 @@ import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.OperationsScriptForBuiltinKnowledgeAndPlugins;
 import eu.excitementproject.eop.biutee.script.SingleOperationItem;
 import eu.excitementproject.eop.biutee.script.SingleOperationType;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
@@ -87,7 +89,7 @@ import eu.excitementproject.eop.transformations.utilities.Constants;
 @NotThreadSafe
 public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeAndPlugins
 {
-	public static final int NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE = Constants.NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE_IN_DEFAULT_OPERATION_SCRIPT;
+	public static final int NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE = BiuteeConstants.NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE_IN_DEFAULT_OPERATION_SCRIPT;
 
 	public DefaultOperationScript(ConfigurationFile configurationFile,PluginRegistry pluginRegistry)
 	{

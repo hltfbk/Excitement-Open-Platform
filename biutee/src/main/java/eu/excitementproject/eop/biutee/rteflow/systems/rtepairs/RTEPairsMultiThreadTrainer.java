@@ -1,8 +1,9 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtepairs;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LEARNING_MODEL_FILE_POSTFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LEARNING_MODEL_FILE_PREDICTIONS_INDICATOR;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LEARNING_MODEL_FILE_PREFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LEARNING_MODEL_FILE_SEARCH_INDICATOR;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_POSTFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_PREDICTIONS_INDICATOR;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_PREFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_SEARCH_INDICATOR;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,6 +38,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeClassifiersIO;
@@ -53,7 +55,6 @@ import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.StopFlag;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -133,7 +134,7 @@ public class RTEPairsMultiThreadTrainer extends RTEPairsTrainer
 	}
 	
 	@Override
-	protected void init() throws ConfigurationFileDuplicateKeyException, MalformedURLException, ConfigurationException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
+	public void init() throws ConfigurationFileDuplicateKeyException, MalformedURLException, ConfigurationException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
 	{
 		super.init();
 		
@@ -191,7 +192,7 @@ public class RTEPairsMultiThreadTrainer extends RTEPairsTrainer
 
 	
 	@Override
-	protected void cleanUp()
+	public void cleanUp()
 	{
 		super.cleanUp();
 		if (this.scriptQueue!=null)
@@ -461,7 +462,7 @@ public class RTEPairsMultiThreadTrainer extends RTEPairsTrainer
 				TreeAndFeatureVector treeAndFeatureVector = processor.getBestTree();
 				LabeledSample sample = new LabeledSample(treeAndFeatureVector.getFeatureVector(), pairData.getPair().getBooleanClassificationType().booleanValue());
 				PairProcessResult result;
-				if (Constants.PRINT_TIME_STATISTICS)
+				if (BiuteeConstants.PRINT_TIME_STATISTICS)
 				{
 					result = new PairProcessResult(treeAndFeatureVector.getTree(), treeAndFeatureVector.getFeatureVector(), processor.getBestTreeSentence(), pairData, processor.getBestTreeHistory(), sample, processor.getCpuTime(),processor.getWorldClockTime());
 				}

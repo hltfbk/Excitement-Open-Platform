@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.biutee.rteflow.macro;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -6,9 +7,9 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.FindMainVerbHeuristic;
 
@@ -56,9 +57,9 @@ public class InitialFeatureVectorUtility
 		{
 			ret.put(key, 0.0);
 		}
-		if (Constants.USE_HYPOTHESIS_LENGTH_FEATURE)
+		if (BiuteeConstants.USE_HYPOTHESIS_LENGTH_FEATURE)
 		{
-			if (Constants.INVERSE_HYPOTHESIS_LENGTH_IS_HYPOTHESIS_LENGTH)
+			if (BiuteeConstants.INVERSE_HYPOTHESIS_LENGTH_IS_HYPOTHESIS_LENGTH)
 			{
 				ret.put(Feature.INVERSE_HYPOTHESIS_LENGTH.getFeatureIndex(),(double)hypothesisNumberOfNodes);
 			}

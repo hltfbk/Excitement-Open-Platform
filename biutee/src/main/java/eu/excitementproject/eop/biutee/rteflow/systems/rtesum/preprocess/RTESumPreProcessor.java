@@ -1,11 +1,12 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess;
+
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_DO_NER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_DO_TEXT_NORMALIZATION;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_DATASET_DIR_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_IS_NOVELTY_TASK_FLAG;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_PREPROCESS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_SUM_PREPROCESS_SERIALIZATION_FILE_NAME;
-import static eu.excitementproject.eop.transformations.utilities.Constants.RTESUM_DATASET_PARAM_DELIMITER;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.RTESUM_DATASET_PARAM_DELIMITER;
 
 import java.io.File;
 import java.io.FileNotFoundException;

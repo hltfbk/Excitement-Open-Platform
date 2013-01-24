@@ -1,10 +1,10 @@
 package eu.excitementproject.eop.biutee.rteflow.preprocess;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.USE_NUMBER_NORMALIZER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_BART_PORT;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_BART_SERVER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_COREFERENCE_RESOLUTION_ENGINE;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_DO_NER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_STANFORD_NE_CLASSIFIER_PATH;
-import static eu.excitementproject.eop.transformations.utilities.Constants.USE_NUMBER_NORMALIZER;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +15,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.preprocess.AddPunctuationTextPreprocessor;
 import eu.excitementproject.eop.biutee.utilities.preprocess.DummyCoreferenceResolver;
 import eu.excitementproject.eop.biutee.utilities.preprocess.HandleAllCapitalTextPreprocessor;
@@ -29,8 +30,8 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
-import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient.ArkrefClientException;
+import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkrefbart.ArkrefAndBartCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.coreference.bart.BartCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.ner.stanford.StanfordNamedEntityRecognizer;
@@ -46,7 +47,6 @@ import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.transformations.codeannotations.Workaround;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
-import eu.excitementproject.eop.transformations.utilities.Constants.Workarounds;
 
 /**
  * This class implements {@link Instruments} with default set of instruments.
@@ -108,7 +108,7 @@ public class DefaultInstruments implements Instruments<Info, BasicNode>
 		AddPunctuationTextPreprocessor addPunctuationTextPreprocessor = new AddPunctuationTextPreprocessor();
 		listPreprocessors.add(addPunctuationTextPreprocessor);
 		
-		if (Workarounds.USE_WORKAROUND_TEXT_PROCESSOR)
+		if (BiuteeConstants.Workarounds.USE_WORKAROUND_TEXT_PROCESSOR)
 		{
 			listPreprocessors.add(new WorkaroundTextPreprocessor());
 		}
