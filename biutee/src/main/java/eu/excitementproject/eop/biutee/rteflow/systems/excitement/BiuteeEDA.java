@@ -80,6 +80,7 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 	@Override
 	public TEDecision process(JCas aCas) throws EDAException, ComponentException
 	{
+		if (hasBeenShutDown) throw new EDAException("After calling the method shutdown(), no method should be called.");
 		if (null == underlyingSystem) throw new EDAException("Method initialize must be called before calling method process.");
 		try
 		{
@@ -105,7 +106,17 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 	@Override
 	public void shutdown()
 	{
-		underlyingSystem.cleanUp();
+		try
+		{
+			if (underlyingSystem!=null)
+			{
+				underlyingSystem.cleanUp();
+			}
+		}
+		finally
+		{
+			hasBeenShutDown = true;
+		}
 	}
 
 	/*
@@ -158,13 +169,11 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 		{
 			throw new EDAException("Training failed. See nested exception.",e);
 		}
-		
-		
-		
 	}
 
 	private BiuteeEdaUnderlyingSystem underlyingSystem = null;
 	private Boolean trainingMode = null;
+	private boolean hasBeenShutDown = false;
 	
 	private static final Logger logger = Logger.getLogger(BiuteeEDA.class);
 }
