@@ -14,6 +14,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.junit.Assume;
 import org.junit.Test;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
@@ -30,7 +31,7 @@ public class EDAScorer {
 	static Logger logger = Logger.getLogger(EDAScorer.class
 			.getName());
 	
-	public static void score(String resultFile, String outputFile) {
+	public static void score(File resultFile, String outputFile) {
 		BufferedReader input;
 		float pos_corrt = 0f;
 		float pos_wrong = 0f;
@@ -95,7 +96,7 @@ public class EDAScorer {
 			Document doc = docBuilder.newDocument();
 			Element root = doc.createElement("Result");
 			Attr attr_EDA = doc.createAttribute("EDA_Configuration");
-			attr_EDA.setValue(resultFile);
+			attr_EDA.setValue(resultFile.getName());
 			root.setAttributeNode(attr_EDA);
 			doc.appendChild(root);
 	 
@@ -175,6 +176,11 @@ public class EDAScorer {
 	
 	@Test
 	public void test() {
-//		score("./target/EN/eu.excitementproject.eop.core.MaxEntClassificationEDATest_config.txt", "./src/test/resources/example_of_evaluation_result.xml");
+//		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml_Result.txt");
+//		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_EN.xml_Result.txt");
+//		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_DE.xml_Result.txt");
+		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml_Result.txt");
+		Assume.assumeTrue(resultFile.exists());
+		score(resultFile, resultFile.getAbsolutePath() + "_Eval.xml");
 	}
 }
