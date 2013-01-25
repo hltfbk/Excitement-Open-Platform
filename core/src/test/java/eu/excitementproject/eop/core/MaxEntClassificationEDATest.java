@@ -2,7 +2,10 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
@@ -40,6 +43,7 @@ public class MaxEntClassificationEDATest {
 		testTraining_DE(); 
 		testTesting_SingleTH_DE(); 
 		testTesting_MultiTH_DE(); 
+		testTesting_MultiTH_AND_Output_DE("./target/DE/" + this.getClass().getName() + "_" + "config" + ".txt");
 		*/
 		
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
@@ -48,6 +52,7 @@ public class MaxEntClassificationEDATest {
 		testTraining_EN();
 		testTesting_SingleTH_EN();
 		testTesting_MultiTH_EN();
+		testTesting_MultiTH_AND_Output_EN("./target/EN/" + this.getClass().getName() + "_" + "config" + ".txt");
 		 */
 	}
 	
@@ -272,16 +277,16 @@ public class MaxEntClassificationEDATest {
 				}
 				JCas cas = PlatformCASProber.probeXmi(file, null);
 				ClassificationTEDecision decision = meceda.process(cas);
-				System.out.println(decision.getPairID());
-				System.out.println(meceda.getGoldLabel(cas));
-				System.out.println(decision.getDecision().toString());
+				logger.info(decision.getPairID());
+				logger.info(meceda.getGoldLabel(cas));
+				logger.info(decision.getDecision().toString());
 				if (meceda.getGoldLabel(cas).equalsIgnoreCase(decision.getDecision().toString())) {
 					correct ++;
 				}
 				sum ++;
 				System.out.println(decision.getConfidence());
 			}
-			System.out.println("The correctly predicted pairs are " + correct + " / " + sum);
+			logger.info("The correctly predicted pairs are " + correct + " / " + sum);
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
@@ -322,6 +327,90 @@ public class MaxEntClassificationEDATest {
 				System.out.println(decision.getConfidence());
 			}
 			System.out.println("The correctly predicted pairs are " + correct + " / " + sum);
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+	}
+
+	public void testTesting_MultiTH_AND_Output_DE(String outputFile) {
+		File testingDir = null;
+		testingDir = new File("./target/DE/test/");
+		assertTrue(testingDir.exists());
+		
+		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
+		meceda.setLanguage("DE");
+		
+		CommonConfig config = null;
+		
+		BufferedWriter output = null;
+		
+		try {
+			meceda.setTrain(false);
+			meceda.initialize(config);
+			File modelFile = new File(meceda.getModelFile());
+			assertTrue(modelFile.exists());
+			
+			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8"));
+
+			for (File file : testingDir.listFiles()) {
+				// ignore all the non-xmi files
+				if (!file.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(file, null);
+				ClassificationTEDecision decision = meceda.process(cas);
+				output.write(decision.getPairID());
+				output.write("\t");
+				output.write(meceda.getGoldLabel(cas).toUpperCase());
+				output.write("\t");
+				output.write(decision.getDecision().toString().toUpperCase());
+				output.write("\t");
+				output.write(String.valueOf(decision.getConfidence()));
+				output.newLine();
+			}
+			output.close();
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
+	public void testTesting_MultiTH_AND_Output_EN(String outputFile) {
+		File testingDir = null;
+		testingDir = new File("./target/EN/test/");
+		assertTrue(testingDir.exists());
+		
+		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
+		meceda.setLanguage("EN");
+		
+		CommonConfig config = null;
+		
+		BufferedWriter output = null;
+		
+		try {
+			meceda.setTrain(false);
+			meceda.initialize(config);
+			File modelFile = new File(meceda.getModelFile());
+			assertTrue(modelFile.exists());
+			
+			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8"));
+
+			for (File file : testingDir.listFiles()) {
+				// ignore all the non-xmi files
+				if (!file.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(file, null);
+				ClassificationTEDecision decision = meceda.process(cas);
+				output.write(decision.getPairID());
+				output.write("\t");
+				output.write(meceda.getGoldLabel(cas).toUpperCase());
+				output.write("\t");
+				output.write(decision.getDecision().toString().toUpperCase());
+				output.write("\t");
+				output.write(String.valueOf(decision.getConfidence()));
+				output.newLine();
+			}
+			output.close();
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
