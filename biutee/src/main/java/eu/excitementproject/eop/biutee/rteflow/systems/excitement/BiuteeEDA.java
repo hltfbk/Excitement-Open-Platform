@@ -56,9 +56,10 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			else throw new EDAException("Method initialize must not be called if startTraining was called.");
 		}
 		trainingMode = false;
+		File biuConfigurationFile = null;
 		try
 		{
-			File biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
+			biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
 			BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
 			logger.info("Log file has been converted to BIU log file, and temporarily stored in "+biuConfigurationFile.getPath());
 			new SystemInformationLog(biuConfigurationFile.getPath()).log();
@@ -70,6 +71,13 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 		catch (IOException | TeEngineMlException | PluginAdministrationException | eu.excitementproject.eop.common.utilities.configuration.ConfigurationException | LemmatizerException e)
 		{
 			throw new EDAException("Initialization failure. See nested exception.",e);
+		}
+		finally
+		{
+			if (biuConfigurationFile!=null){ if (biuConfigurationFile.exists())
+			{
+				try{biuConfigurationFile.delete();}catch(RuntimeException e){}
+			}}
 		}
 	}
 
@@ -153,7 +161,14 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			finally
 			{
 				trainer.cleanUp();
+				
+				if (biuConfigurationFile!=null){ if (biuConfigurationFile.exists())
+				{
+					try{biuConfigurationFile.delete();}catch(RuntimeException e){}
+				}}
+
 			}
+
 
 		}
 		catch (IOException | ClassNotFoundException | OperationException |
