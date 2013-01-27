@@ -1,15 +1,22 @@
 package eu.excitementproject.eop.core.component.scoring;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
+import org.junit.Assume;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.common.exception.BaseException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
+import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.LAPAccess;
@@ -29,6 +36,36 @@ public class BagOfWordsScoringTest {
 	}
 
 	public void testDE() throws LexicalResourceException {
+		// to test whether GermanDistSim is there
+		GermanDistSim gds = null;
+		try {
+			gds = new GermanDistSim("./src/main/resources/dewakdistributional-data/");
+		}catch (GermanDistSimNotInstalledException e) {
+			logger.warning("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
+			//throw e;
+		}
+		catch(BaseException e)
+		{
+			e.printStackTrace(); 
+		}
+		Assume.assumeNotNull(gds); // if gds is null, the following tests will not be run.
+		
+		// to test whether GermaNet is there
+		GermaNetWrapper gnw = null;
+		try {
+			gnw = new GermaNetWrapper("./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
+		}
+		catch (GermaNetNotInstalledException e) {
+			logger.warning("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
+			//throw e;
+		}
+		catch(BaseException e)
+		{
+			e.printStackTrace(); 
+		}
+		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run.
+		
+		
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		 BagOfLemmasScoring bols = new BagOfLemmasScoring();
 		BagOfLexesScoring bolexs = new BagOfLexesScoring(true, true, true, true, true);
@@ -64,6 +101,18 @@ public class BagOfWordsScoringTest {
 	}
 	
 	public void testEN() throws LexicalResourceException {
+		File wnPath = new File("./src/main/resources/EnglishWordNet-dict/");
+		if (!wnPath.exists()) {
+			logger.warning("WARNING: English WordNet is not found. Please install it properly, and pass its location correctly to the component.");
+		}
+		Assume.assumeTrue(wnPath.exists());
+		
+		File voPath = new File("./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt");
+		if (!voPath.exists()) {
+			logger.warning("WARNING: VerbOcean is not found. Please install it properly, and pass its location correctly to the component.");
+		}
+		Assume.assumeTrue(voPath.exists());
+		
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		 BagOfLemmasScoring bols = new BagOfLemmasScoring();
 		 
