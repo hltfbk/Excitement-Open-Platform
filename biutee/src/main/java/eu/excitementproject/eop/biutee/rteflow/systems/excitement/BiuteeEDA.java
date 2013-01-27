@@ -10,7 +10,7 @@ import org.apache.uima.jcas.JCas;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.utilities.SystemInformationLog;
@@ -97,9 +97,9 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			PairData pairData = BiuteeEdaUtilities.convertJCasToPairData(aCas);
 			logger.info("Building PairData from the given JCas - done.");
 			logger.info("Processing T-H pair...");
-			PairProcessor pairProcessor = underlyingSystem.process(pairData);
+			PairResult pairResult = underlyingSystem.process(pairData);
 			logger.info("Processing T-H pair - done.");
-			return BiuteeEdaUtilities.createDecisionFromPairProcessor(pairId,pairProcessor,underlyingSystem.getClassifierForPredictions());
+			return BiuteeEdaUtilities.createDecisionFromPairResult(pairId,pairResult,underlyingSystem.getClassifierForPredictions());
 		}
 		catch (TeEngineMlException | AnnotatorException | OperationException | ClassifierException | MalformedURLException | TreeCoreferenceInformationException | ScriptException | RuleBaseException | LemmatizerException e)
 		{

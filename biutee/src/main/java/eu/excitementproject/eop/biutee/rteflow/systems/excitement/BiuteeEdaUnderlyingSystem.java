@@ -16,6 +16,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairDataToExtendedPairDataConverter;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
@@ -117,7 +118,7 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	 * @throws MalformedURLException
 	 * @throws LemmatizerException
 	 */
-	public PairProcessor process(PairData pairData) throws TeEngineMlException, AnnotatorException, TreeCoreferenceInformationException, OperationException, ClassifierException, ScriptException, RuleBaseException, MalformedURLException, LemmatizerException
+	public PairResult process(PairData pairData) throws TeEngineMlException, AnnotatorException, TreeCoreferenceInformationException, OperationException, ClassifierException, ScriptException, RuleBaseException, MalformedURLException, LemmatizerException
 	{
 		logger.info("Running document-sublayer: converting PairData to ExtendedPairData...");
 		PairDataToExtendedPairDataConverter converter = new PairDataToExtendedPairDataConverter(pairData,this.teSystemEnvironment);
@@ -128,7 +129,7 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 		PairProcessor pairProcessor = new PairProcessor(extendedPairData,classifierForSearch,this.getLemmatizer(),script,this.teSystemEnvironment);
 		pairProcessor.process();
 		logger.info("Generating entailment proof  - done.");
-		return pairProcessor;
+		return new PairResult(pairProcessor.getBestTree(),pairProcessor.getBestTreeSentence(),pairProcessor.getBestTreeHistory());
 	}
 	
 
