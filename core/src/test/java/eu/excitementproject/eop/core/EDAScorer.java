@@ -110,7 +110,9 @@ public class EDAScorer {
 			
 			// positive cases
 			Element pos = doc.createElement("Positive_Pairs");
-			pos.appendChild(doc.createTextNode(String.valueOf((int)EntailmentGold)));
+			Attr attr_pos = doc.createAttribute("Number");
+			attr_pos.setValue(String.valueOf((int)EntailmentGold));
+			pos.setAttributeNode(attr_pos);
 			root.appendChild(pos);
 			
 			Element pos_pre = doc.createElement("Precision");
@@ -135,7 +137,9 @@ public class EDAScorer {
 			
 			// negative cases
 			Element neg = doc.createElement("Negative_Pairs");
-			neg.appendChild(doc.createTextNode(String.valueOf((int)NonEntailmentGold)));
+			Attr attr_neg = doc.createAttribute("Number");
+			attr_neg.setValue(String.valueOf((int)NonEntailmentGold));
+			neg.setAttributeNode(attr_neg);
 			root.appendChild(neg);
 			
 			Element neg_pre = doc.createElement("Precision");
