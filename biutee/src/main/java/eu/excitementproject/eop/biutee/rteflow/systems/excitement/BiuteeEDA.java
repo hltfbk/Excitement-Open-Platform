@@ -3,6 +3,7 @@ package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
@@ -101,7 +102,7 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			logger.info("Processing T-H pair - done.");
 			return BiuteeEdaUtilities.createDecisionFromPairResult(pairId,pairResult,underlyingSystem.getClassifierForPredictions());
 		}
-		catch (TeEngineMlException | AnnotatorException | OperationException | ClassifierException | MalformedURLException | TreeCoreferenceInformationException | ScriptException | RuleBaseException | LemmatizerException e)
+		catch (TeEngineMlException | AnnotatorException | OperationException | ClassifierException | MalformedURLException | TreeCoreferenceInformationException | ScriptException | RuleBaseException | LemmatizerException | InterruptedException | ExecutionException e)
 		{
 			throw new EDAException("Failed to process given CAS. See nested exception.",e);
 		}
