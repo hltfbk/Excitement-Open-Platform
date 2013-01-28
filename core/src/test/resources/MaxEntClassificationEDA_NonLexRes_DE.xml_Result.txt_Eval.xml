@@ -2,13 +2,15 @@
 <Result EDA_Configuration="MaxEntClassificationEDA_NonLexRes_DE.xml_Result.txt">
 <Total_Pairs>800</Total_Pairs>
 <Accuracy>0.56375</Accuracy>
-<Positive_Pairs>409<Precision>0.5443787</Precision>
+<Positive_Pairs Number="409">
+<Precision>0.5443787</Precision>
 <Recall>0.8997555</Recall>
 <F_Measure>0.678341</F_Measure>
 <Classified_As_Positive>368</Classified_As_Positive>
 <Classified_As_Negative>41</Classified_As_Negative>
 </Positive_Pairs>
-<Negative_Pairs>391<Precision>0.66935486</Precision>
+<Negative_Pairs Number="391">
+<Precision>0.66935486</Precision>
 <Recall>0.21227622</Recall>
 <F_Measure>0.3223301</F_Measure>
 <Classified_As_Positive>308</Classified_As_Positive>
