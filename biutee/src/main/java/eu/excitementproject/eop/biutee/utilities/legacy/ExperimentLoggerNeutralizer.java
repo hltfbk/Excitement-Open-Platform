@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import org.BIU.utils.logging.EL;
+
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -33,8 +35,8 @@ public class ExperimentLoggerNeutralizer
 	 */
 	public void neutralize() throws TeEngineMlException
 	{
-		throw new RuntimeException("Disabled temporarily during migration");
-//		EL.initByPass();
+		//throw new RuntimeException("Disabled temporarily during migration");
+		EL.initByPass();
 //		ac.biu.nlp.inference.lexical.logging.EL.initByPass();
 	}
 	
