@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.common.representation.partofspeech;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,14 +22,20 @@ public class UnspecifiedPartOfSpeech extends PartOfSpeech
 	
 	// PUBLIC STATIC
 	
+	
 	public static final Set<String> CANONICAL_POS_TAGS_STRINGS;
 	static
 	{
-		CANONICAL_POS_TAGS_STRINGS = new HashSet<String>();
+		Set<String> canonicalPosTagsStrings = new HashSet<String>();
 		for (CanonicalPosTag pos : CanonicalPosTag.values())
 		{
-			CANONICAL_POS_TAGS_STRINGS.add(pos.name());
+			canonicalPosTagsStrings.add(pos.name());
 		}
+		for (SimplerCanonicalPosTag pos : SimplerCanonicalPosTag.values())
+		{
+			canonicalPosTagsStrings.add(pos.name());
+		}
+		CANONICAL_POS_TAGS_STRINGS = Collections.unmodifiableSet(canonicalPosTagsStrings);
 	}
 	
 	////////////////// PUBLIC CONSTRUCTORS AND METHODS /////////////////////////
