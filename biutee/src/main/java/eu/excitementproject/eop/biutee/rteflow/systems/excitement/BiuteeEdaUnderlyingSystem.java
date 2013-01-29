@@ -9,7 +9,6 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 
@@ -158,30 +157,15 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 		super.cleanUp();
 		logger.info("Shuting down thread pool.");
 		this.threadPool.shutdown();
-		try
+		logger.info("Termination of scripts ...");
+		synchronized (scriptStack)
 		{
-			this.threadPool.awaitTermination(WAIT_TERMINATION_THREAD_POOL_MINUTES, TimeUnit.MINUTES);
-		}
-		catch(InterruptedException e)
-		{
-			logger.error("An error occurred during clean up, but program continues.",e);
-		}
-		if (this.threadPool.isTerminated())
-		{
-			logger.info("Termination of scripts ...");
-			synchronized (scriptStack)
+			while (!scriptStack.empty())
 			{
-				while (!scriptStack.empty())
-				{
-					scriptStack.pop().cleanUp();
-				}
+				scriptStack.pop().cleanUp();
 			}
-			logger.info("Termination of scripts - done.");
 		}
-		else
-		{
-			logger.error("Not all processors have been terminated. Clean up is not completed.");
-		}
+		logger.info("Termination of scripts - done.");
 	}
 	
 	
@@ -212,11 +196,11 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 		public PairResult call() throws TeEngineMlException, AnnotatorException, TreeCoreferenceInformationException, OperationException, ClassifierException, ScriptException, RuleBaseException, MalformedURLException, LemmatizerException
 		{
 			OperationsScriptGetter scriptGetter = null;
+			OperationsScript<Info, BasicNode> scriptForThread = null;
 			try
 			{
 				scriptGetter = BiuteeEdaUnderlyingSystem.this.scriptStack.pop();
-				OperationsScript<Info, BasicNode> scriptForThread =
-						scriptGetter.getScript();
+				scriptForThread = scriptGetter.getScript();
 				logger.info("Running document-sublayer: converting PairData to ExtendedPairData...");
 				PairDataToExtendedPairDataConverter converter = new PairDataToExtendedPairDataConverter(pairData,BiuteeEdaUnderlyingSystem.this.teSystemEnvironment);
 				converter.convert();
@@ -237,10 +221,21 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 			{
 				if (scriptGetter!=null)
 				{
-					BiuteeEdaUnderlyingSystem.this.scriptStack.push(scriptGetter);
+					synchronized(scriptStack)
+					{
+						if (!cleanUpHasBeenCalled)
+							scriptStack.push(scriptGetter);
+						else
+						{
+							if (scriptForThread!=null)
+							{
+								scriptForThread.cleanUp();
+							}
+						}
+					} // end of synchronized(scriptStack)
 				}
-			}
-		}
+			} // end of finally
+		} // end of method call()
 
 		private PairData pairData;
 	}
