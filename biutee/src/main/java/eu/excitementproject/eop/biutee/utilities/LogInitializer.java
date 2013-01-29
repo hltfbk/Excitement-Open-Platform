@@ -9,16 +9,10 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.biutee.utilities.legacy.ExperimentLoggerNeutralizer;
-import eu.excitementproject.eop.biutee.version.Citation;
-import eu.excitementproject.eop.biutee.version.License;
-import eu.excitementproject.eop.biutee.version.Version;
-import eu.excitementproject.eop.common.utilities.ConstantsSummary;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
-import eu.excitementproject.eop.transformations.utilities.Constants.Workarounds;
 
 
 /**
@@ -103,71 +97,10 @@ public class LogInitializer
 			}
 		}
 		
-		
-		// Print the version
-		logger.info(Version.getVersion().toString());
-		
-		// print citation instructions
-		logger.info(Citation.citationInsturction());
-		
-		// print license
-		logger.info(License.LICENSE);
-		
-		// Print the class path
-		try
-		{
-			String strClassPath = System.getProperty("java.class.path");
-			logger.info("System class path is:\n"+strClassPath);
-		}
-		catch(Exception e)
-		{
-			logger.warn("Could not write the class path to log file.",e);
-		}
-
-		// Print the java.library.path
-		try
-		{
-			String javaLibraryPath = System.getProperty("java.library.path");
-			logger.info("java.library.path is:\n"+javaLibraryPath);
-		}
-		catch(Exception e)
-		{
-			logger.warn("Could not write the class path to log file.",e);
-		}
-
-		// Print the contents of the configuration file
-		if (configurationFileName!=null)
-		{
-			StringBuffer sb = new StringBuffer();
-			sb.append("Configuration file ");
-			sb.append(configurationFileName);
-			sb.append(":\n");
-			sb.append(FileUtils.loadFileToString(configurationFileName));
-			logger.info(sb.toString());
-		}
-		
-		// Print the constants values of the class "Constants"
-		if (logger.isInfoEnabled())
-		{
-			try
-			{
-				Class<?>[] classesOfConstants = new Class<?>[]{Constants.class,Workarounds.class};
-				for (Class<?> classOfConstants : classesOfConstants)
-				{
-					ConstantsSummary constantsSummary = new ConstantsSummary(classOfConstants);
-					logger.info("Constants in "+classOfConstants.getName()+" class:\n"+
-							constantsSummary.getSummary());
-					
-				}
-			}
-			catch(Exception e)
-			{
-				logger.warn("Could not print summary of constants.", e);
-			}
-		}
-		
 		new ExperimentLoggerNeutralizer().neutralize();
 		
+		SystemInformationLog systemInformationLog = new SystemInformationLog(configurationFileName);
+		systemInformationLog.log();
 	}
 
 	private String configurationFileName;

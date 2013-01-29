@@ -1,10 +1,11 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtesum;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LABELED_SAMPLES_FILE_POSTFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.LABELED_SAMPLES_FILE_PREFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.RTE_SUM_OUTPUT_ANSWER_FILE_POSTFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.RTE_SUM_OUTPUT_ANSWER_FILE_PREFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.RTE_SUM_OUTPUT_RESULTS_FILE_POSTFIX;
-import static eu.excitementproject.eop.transformations.utilities.Constants.RTE_SUM_OUTPUT_RESULTS_FILE_PREFIX;
+
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LABELED_SAMPLES_FILE_POSTFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LABELED_SAMPLES_FILE_PREFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.RTE_SUM_OUTPUT_ANSWER_FILE_POSTFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.RTE_SUM_OUTPUT_ANSWER_FILE_PREFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.RTE_SUM_OUTPUT_RESULTS_FILE_POSTFIX;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.RTE_SUM_OUTPUT_RESULTS_FILE_PREFIX;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,6 +24,7 @@ import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamplesUtils;
@@ -41,7 +43,6 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentif
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -188,7 +189,7 @@ public class RTESumTester extends RTESumBaseEngine
 			logger.info("Note! labeled-samples file will not be created! the reason: gold-standard does not exist.");
 		}
 		AllTopicsProcessor processor = null;
-		if (Constants.USE_OLD_CONCURRENCY_IN_RTE_SUM)
+		if (BiuteeConstants.USE_OLD_CONCURRENCY_IN_RTE_SUM)
 		{
 			processor = new MultiThreadTopicsProcessorOld(topics, goldStandardAnswers, numberOfThreads, this.configurationFile, classifierForSearch, lemmatizer, teSystemEnvironment);
 		}

@@ -3,6 +3,7 @@ import java.io.File;
 import java.util.LinkedList;
 import java.util.Map;
 
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainReader;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.DefaultRTEMainWriter;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReader;
@@ -25,7 +26,7 @@ import eu.excitementproject.eop.transformations.utilities.Constants;
  */
 public class RecentPairsSaver
 {
-	public static final int SIZE = Constants.SIZE_QUEUE_RECENT_PAIRS_IN_GUI;
+	public static final int SIZE = BiuteeConstants.SIZE_QUEUE_RECENT_PAIRS_IN_GUI;
 	
 	public RecentPairsSaver() throws RTEMainReaderException
 	{
@@ -99,5 +100,5 @@ public class RecentPairsSaver
 
 	private int lastId = 1;
 	private LinkedList<TextHypothesisPair> queue = null;
-	private File file = new File(Constants.FILENAME_RECENT_PAIRS_IN_GUI);
+	private File file = new File(BiuteeConstants.FILENAME_RECENT_PAIRS_IN_GUI);
 }

@@ -21,6 +21,7 @@ import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.SingleOperationItem;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
@@ -32,7 +33,6 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseExcepti
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.SingleTreeEvaluations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -44,7 +44,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class AStarLocalCreativeStateCalculations implements StateCalculations<AStarLocalCreativeElement>
 {
-	public static final int NUMBER_OF_LOCAL_ITERATIONS = Constants.LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS;
+	public static final int NUMBER_OF_LOCAL_ITERATIONS = BiuteeConstants.LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS;
 	
 	public AStarLocalCreativeStateCalculations(LinearClassifier classifier,
 			OperationsScript<Info, BasicNode> script,

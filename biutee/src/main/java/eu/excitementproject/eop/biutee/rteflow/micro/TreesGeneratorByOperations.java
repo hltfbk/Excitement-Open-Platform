@@ -23,6 +23,7 @@ import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.SingleOperationItem;
 import eu.excitementproject.eop.biutee.script.SingleOperationType;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -586,7 +587,7 @@ public class TreesGeneratorByOperations
 		}
 		else
 		{
-			if (Constants.ADD_FEATURE_VECTOR_TO_HISTORY)
+			if (BiuteeConstants.ADD_FEATURE_VECTOR_TO_HISTORY)
 			{
 				generatedTreeHistory.addSpecificationAndVector(specification, generatedTree.getFeatureVector());
 			}

@@ -24,6 +24,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
@@ -40,7 +41,6 @@ import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorExc
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
@@ -236,7 +236,7 @@ public class RTEPairsMultiThreadTester extends RTEPairsBaseSystem
 		
 		try
 		{
-			String resultsSerFileName = Constants.RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX+Constants.RTE_PAIRS_OUTPUT_RESULTS_FILE_INFIX_TEX+Constants.RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX;
+			String resultsSerFileName = BiuteeConstants.RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX+BiuteeConstants.RTE_PAIRS_OUTPUT_RESULTS_FILE_INFIX_TEX+BiuteeConstants.RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX;
 			logger.info("Storing results in a serialization file: \""+resultsSerFileName+"\"");
 			RTESystemsUtils.saveInSerFile(resultsSerFileName, pairsResults);
 			ExperimentManager.getInstance().register(new File(resultsSerFileName));
@@ -304,7 +304,7 @@ public class RTEPairsMultiThreadTester extends RTEPairsBaseSystem
 		logger.info("Accuracy = "+String.format("%-4.4f", accuracy));
 		
 		logger.info(StringUtil.generateStringOfCharacter('-', 100));
-		if (Constants.PRINT_TIME_STATISTICS)
+		if (BiuteeConstants.PRINT_TIME_STATISTICS)
 		{
 			logger.info("Printing time statistics (CSV format)...");
 			StringBuffer sb = new StringBuffer();
@@ -440,7 +440,7 @@ public class RTEPairsMultiThreadTester extends RTEPairsBaseSystem
 					pairProcessor.process();
 					logger.info("Processing of pair "+pairId+" is done. Memory used = "+Utils.stringMemoryUsedInMB());
 					PairResult pairResult;
-					if (Constants.PRINT_TIME_STATISTICS)
+					if (BiuteeConstants.PRINT_TIME_STATISTICS)
 					{
 						pairResult = new PairResult(pairProcessor.getBestTree(), pairProcessor.getBestTreeSentence(), pairProcessor.getBestTreeHistory(),pairProcessor.getCpuTime(),pairProcessor.getWorldClockTime(),pairProcessor.getNumberOfExpandedElements(),pairProcessor.getNumberOfGeneratedElements());
 					}
