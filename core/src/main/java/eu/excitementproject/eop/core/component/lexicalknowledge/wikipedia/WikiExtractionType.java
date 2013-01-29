@@ -34,6 +34,9 @@ public enum WikiExtractionType {
 	ALL_NOUNS_BOT(0.41, "AllNounsBot", 30), 
 	CLIQUE(0.49, "Clique", 0.99), 
 	RPT(0.21, "RPT", 0.87), 
+	CATEGORY(0.5,"Category",1),
+	LEX_ALL_NOUNS(0.49, "LexicalAllNoun", 1),
+	SYNT_ALL_NOUNS(0.49, "SyntacticAllNoun", 1),
 	OTHER(-1, "", -1),
 	;
 	
@@ -50,6 +53,7 @@ public enum WikiExtractionType {
 		{
 			mapStringRepresentationToEnum.put(value.stringRepresentation, value);
 			mapCodeToEnum.put(value.code, value);
+			System.out.println("Mapped wiki extraction type: " + value.stringRepresentation);
 		}
 	}
 	
@@ -91,7 +95,8 @@ public enum WikiExtractionType {
 		String[] extractionTypeStrings = extractionTypesStr.split(SEPARATOR);
 		for (int i = 0; i < extractionTypeStrings.length; i++) {
 			currType = parseExtractionTypeStr(extractionTypeStrings[i]);
-
+			System.out.println(" -- extraction type: " + currType.stringRepresentation);
+			
 			//split All-Nouns into 3 parts
 			if (currType == ALL_NOUNS) {
 				if (rulePrecision > 0.66) {
@@ -105,12 +110,21 @@ public enum WikiExtractionType {
 
 			toReturn.add(currType);
 		}
+		
+		System.out.println("  number of extraction types:  " + toReturn.size());
 		return toReturn;
 	}
 	
 	 public static WikiExtractionType parseExtractionTypeStr(String extractionTypeString) throws LexicalResourceException	
 	 {
 		 double extractionTypeCode;
+		 
+		 System.out.println("Extraction type string: >" + extractionTypeString + "<");
+		 
+		 if (extractionTypeString.matches(".*[a-z]+.*")) {
+			 System.out.println("\textraction type is string: " + extractionTypeString);			 
+			 return mapStringRepresentationToEnum.get(extractionTypeString);
+		 }
 		 try{
 			 extractionTypeCode = Double.parseDouble(extractionTypeString);
 		 }catch (NumberFormatException e) {
