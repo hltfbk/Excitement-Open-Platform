@@ -244,7 +244,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		Set<LexicalRule<? extends GermaNetInfo>> result = new HashSet<LexicalRule<? extends GermaNetInfo>>();
 		
 		// check POS is valid or not for GermaNet. Note that GermaNet only has noun, verb, and adjective.
-		if (!isValidPos(pos))
+		if ( pos != null && !isValidPos(pos))
 		{
 			// POS class that GermaNet knows not.  
 			// No need to look up, return an empty list.  
