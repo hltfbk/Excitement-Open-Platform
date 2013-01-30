@@ -42,9 +42,9 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	
 	protected boolean[] moduleFlags = new boolean[5];
 	
-	private GermanDistSim gds = null;
+	protected GermanDistSim gds = null;
 	
-	private GermaNetWrapper gnw = null;
+	protected GermaNetWrapper gnw = null;
 
 	public BagOfLexesScoring(boolean useGDS, boolean useGNWCau, boolean useGNWEnt, boolean useGNWHyn, boolean useGNWSyn) throws LexicalResourceException {
 		if (useGDS) {
@@ -209,6 +209,16 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			int counts = tBag.get(word);
 			try {
 				tWordBag.put(word, counts);
+				/*
+				 * Britta: AFAIK, GermaNet doesn't accept "hitze" as noun, since it expects capitalisation for
+				 * nouns ("Hitze"); it would return an empty result. Thus, ambiguity of verbs and nouns is
+				 * not resolved with "null" POS.
+				 * However, this idea works for the ambiguity of adjectives and past participle verbs:
+				 * (gedeckt, V_pastPart) would not give a hit in GermaNet, but (gedeckt, null) returns
+				 * values for (gedeckt, ADJ).
+				 * 
+				 * Rui: In the future, we may think about normalizing the word by toLowerCase(), to tackle the first case.
+				 */
 				for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word, null, gnr)) {
 					if (tWordBag.containsKey(rule.getRLemma())) {
 						int tmp = tWordBag.get(rule.getRLemma());
