@@ -24,6 +24,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.SingleOperationItem;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -37,7 +38,6 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.SingleTreeEvaluations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.AdvancedEqualities;
@@ -67,7 +67,7 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 {
 	////////////////////// PUBLIC /////////////////////////////////
 	
-	public static final boolean USE_CACHE_OF_GENERATED_TREES = Constants.BEAM_SEARCH_USE_CACHE_OF_GENERATED_TREES;
+	public static final boolean USE_CACHE_OF_GENERATED_TREES = BiuteeConstants.BEAM_SEARCH_USE_CACHE_OF_GENERATED_TREES;
 	
 
 	// constructor and methods
@@ -145,7 +145,7 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 		if (USE_CACHE_OF_GENERATED_TREES) cache = new LinkedHashMap<TreeAndOperationItem, Set<TreeAndHistory>>();
 		iterationIndex=0;
 		int iterationIndexAfterConversion=0;
-		while (iterationIndexAfterConversion<Constants.PAIR_PROCESS_ITERATION_AFTER_CONVERSION)
+		while (iterationIndexAfterConversion<BiuteeConstants.PAIR_PROCESS_ITERATION_AFTER_CONVERSION)
 		{
 			Set<TreeAndFeatureVector> thisIterationMatchingTrees = findMatchingTextTrees(treesSet);
 			matchingTrees.addAll(thisIterationMatchingTrees);
@@ -155,7 +155,7 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 			treesSet.addAll(generatedTrees);
 			if (logger.isDebugEnabled()){logger.debug("treesSet size before shrink: "+treesSet.size());}
 			treesSet = shrinkSetOfTrees(treesSet,iterationIndex);
-			if (treesSet.size()>Constants.MAX_NUMBER_OF_TREES)
+			if (treesSet.size()>BiuteeConstants.MAX_NUMBER_OF_TREES)
 				throw new TeEngineMlException("BUG: bad shrink.");
 			
 			if (USE_CACHE_OF_GENERATED_TREES)
@@ -336,7 +336,7 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 	{
 		Set<TreeAndFeatureVector> ret = null;
 		if (setOfTrees.size()==0)throw new TeEngineMlException("BUG");
-		if (setOfTrees.size()<=Constants.MAX_NUMBER_OF_TREES)
+		if (setOfTrees.size()<=BiuteeConstants.MAX_NUMBER_OF_TREES)
 		{
 			ret = setOfTrees;
 		}
@@ -361,12 +361,12 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 			EvaluatedTreeAndFeatureVector[] evaluatedTreesAsArray = evaluatedTrees.toArray(new EvaluatedTreeAndFeatureVector[0]);
 			ret = new LinkedHashSet<TreeAndFeatureVector>();
 			int retNumberOfTrees = 0;
-			for (int index=(evaluatedTreesAsArray.length-1);(index>=0)&&(retNumberOfTrees<Constants.MAX_NUMBER_OF_TREES);--index)
+			for (int index=(evaluatedTreesAsArray.length-1);(index>=0)&&(retNumberOfTrees<BiuteeConstants.MAX_NUMBER_OF_TREES);--index)
 			{
 				ret.add(evaluatedTreesAsArray[index].getTreeAndFeatureVector());
 				retNumberOfTrees++;
 			}
-			if (ret.size()!=Constants.MAX_NUMBER_OF_TREES)throw new TeEngineMlException("BUG. Single we deal with setOfTrees with size>MAX_NUMBER_OF_TREES, the returned set must be of size MAX_NUMBER_OF_TREES");
+			if (ret.size()!=BiuteeConstants.MAX_NUMBER_OF_TREES)throw new TeEngineMlException("BUG. Single we deal with setOfTrees with size>MAX_NUMBER_OF_TREES, the returned set must be of size MAX_NUMBER_OF_TREES");
 		}
 		return ret;
 	}

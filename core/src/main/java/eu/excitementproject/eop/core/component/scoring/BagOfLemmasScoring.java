@@ -55,12 +55,12 @@ public class BagOfLemmasScoring extends BagOfWordsScoring {
 	}
 
 	/**
-	 * Count the tokens contained in a text and store the counts in a HashMap
+	 * Count the lemmas contained in a text and store the counts in a HashMap
 	 * 
 	 * @param text
 	 *            the input text represented in a JCas
-	 * @return a HashMap represents the bag of tokens contained in the text, in
-	 *         the form of <Token, Frequency>
+	 * @return a HashMap represents the bag of lemmas contained in the text, in
+	 *         the form of <Lemma, Frequency>
 	 */
 	protected HashMap<String, Integer> countTokens(JCas text) {
 		HashMap<String, Integer> tokenNumMap = new HashMap<String, Integer>();

@@ -34,13 +34,12 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
-import eu.excitementproject.eop.core.component.scoring.BagOfLemmasScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
-import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
@@ -58,9 +57,6 @@ public class MaxEntClassificationEDA implements
 
 	static Logger logger = Logger.getLogger(MaxEntClassificationEDA.class
 			.getName());
-
-	// whether it's training or testing
-	protected boolean isTrain;
 
 	// list of components used in this EDA
 	protected List<ScoringComponent> components;
@@ -80,24 +76,12 @@ public class MaxEntClassificationEDA implements
 	// the model
 	protected MaxentModel model;
 
-	public boolean isTrain() {
-		return isTrain;
-	}
-
-	public void setTrain(boolean isTrain) {
-		this.isTrain = isTrain;
-	}
-
 	public List<ScoringComponent> getComponents() {
 		return components;
 	}
 
 	public String getLanguage() {
 		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
 	}
 
 	public String getModelFile() {
@@ -119,77 +103,178 @@ public class MaxEntClassificationEDA implements
 	@Override
 	public void initialize(CommonConfig config) throws ConfigurationException,
 			EDAException, ComponentException {
+		// initialize the language
+		initializeLanguage(config);
+		
+		// initialize the model
+		initializeModel(config, false);
+		
+		// initialize the data paths
+		initializeData(config, false, false);
 
+		// initialize the components
+		initializeComponents(config);
+	}
+	
+	private void initializeLanguage(CommonConfig config) throws ConfigurationException {
+		NameValueTable top = config.getSection("PlatformConfiguration");
+		language = top.getString("language");
+		if (null == language) {
+			// default language would be EN
+			language = "EN";
+		}
+	}
+	
+	private void initializeComponents(CommonConfig config) throws ConfigurationException, ComponentException {
+		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class.getName());
+		String tempComps = EDA.getString("Components");
+		if (null == tempComps || 0 == tempComps.trim().length()) {
+			throw new ConfigurationException("Wrong configuation: no components contained in the EDA!");
+		}
+		String[] componentArray = tempComps.split(",");
+		
+		// to store the list of components used in this EDA
 		components = new ArrayList<ScoringComponent>();
-		ScoringComponent comp1 = new BagOfWordsScoring();
-		components.add(comp1);
 
-		ScoringComponent comp2 = new BagOfLemmasScoring();
-		components.add(comp2);
-
+		for (String component : componentArray) {
+			NameValueTable comp = config.getSubSection("Components", component);
+			if (null == comp) {
+				throw new ConfigurationException("Wrong configuation: didn't find the corresponding setting for the component: " + component);
+			}
+			if (component.equals("BagOfLexesScoring")) {
+				if (language.equalsIgnoreCase("DE")) {
+					initializeLexCompsDE(comp);
+				} else {
+					initializeLexCompsEN(comp);
+				}
+			} else {
+				try {
+					@SuppressWarnings("unchecked")
+					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class.forName("eu.excitementproject.eop.core.component.scoring."+component);
+					components.add(comp1.newInstance());
+				} catch (Exception e) {
+					throw new ConfigurationException(e.getMessage());
+				}
+			}
+		}
+	}
+	
+	private void initializeLexCompsDE(NameValueTable comp) throws ConfigurationException, ComponentException {
+		if (null == comp.getString("GermanDistSim") && null == comp.getString("GermaNet")) {
+			throw new ConfigurationException("Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
+		}
 		// these five boolean values control the lexical resources used.
 		// they refer to whether to use GermanDistSim, GermaNetRelation.causes, GermaNetRelation.entails, GermaNetRelation.has_hypernym, and GermaNetRelation.has_synonym
-		boolean isGDS = true;
-		boolean isGNRcauses = true;
-		boolean isGNRentails = true;
-		boolean isGNRhypernym = true;
-		boolean isGNRsynonym = true;
+		boolean isGDS = false;
+		boolean isGNRcauses = false;
+		boolean isGNRentails = false;
+		boolean isGNRhypernym = false;
+		boolean isGNRsynonym = false;
+		if (null != comp.getString("GermanDistSim")) {
+			isGDS = true;
+		}
+		if (null != comp.getString("GermaNet")) {
+			String[] GermaNetRelations = comp.getString("GermaNet").split(",");
+			if (null == GermaNetRelations || 0 == GermaNetRelations.length) {
+				throw new ConfigurationException("Wrong configuation: didn't find any relations for the GermaNet");
+			}
+			for (String relation : GermaNetRelations) {
+				if (relation.equalsIgnoreCase("causes")) {
+					isGNRcauses = true;
+				} else if (relation.equalsIgnoreCase("entails")) {
+					isGNRentails = true;
+				} else if (relation.equalsIgnoreCase("has_hypernym")) {
+					isGNRhypernym = true;
+				} else if (relation.equalsIgnoreCase("has_synonym")) {
+					isGNRsynonym = true;
+				} else {
+					logger.warning("Warning: wrong relation names for the GermaNet");
+				}
+			}
+		}
+		try {
+			ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
+			components.add(comp3);
+		} catch (LexicalResourceException e) {
+			throw new ComponentException(e.getMessage());
+		}
+	}
+	
+	private void initializeLexCompsEN(NameValueTable comp) throws ConfigurationException, ComponentException {
+		if (null == comp.getString("WordNetRelations") && null == comp.getString("VerbOceanRelations")) {
+			throw new ConfigurationException("Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
+		}		
 		
-		if (language.equals("DE") && (isGDS || isGNRcauses || isGNRentails || isGNRhypernym || isGNRsynonym)) {
-			try {
-				ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
-				components.add(comp3);
-			} catch (LexicalResourceException e) {
-				throw new ComponentException(e.getMessage());
+		// these five boolean values control the lexical resources used.
+		// they refer to whether to use WordNet relations hypernym, synonym, and VerbOcean relations, StrongerThan, CanResultIn, Similar
+		boolean isWNHypernym = false;
+		boolean isWNSynonym = false;
+		boolean isVOStrongerThan = false;
+		boolean isVOCanResultIn = false;
+		boolean isVOSimilar = false;
+		if (null != comp.getString("WordNetRelations")) {
+			String[] WNRelations = comp.getString("WordNetRelations").split(",");
+			if (null == WNRelations || 0 == WNRelations.length) {
+				throw new ConfigurationException("Wrong configuation: didn't find any relations for the WordNet");
+			}
+			for (String relation : WNRelations) {
+				if (relation.equalsIgnoreCase("hypernym")) {
+					isWNHypernym = true;
+				} else if (relation.equalsIgnoreCase("synonym")) {
+					isWNSynonym = true;
+				} else {
+					logger.warning("Warning: wrong relation names for the WordNet");
+				}
+			}
+		}
+		if (null != comp.getString("VerbOceanRelations")) {
+			String[] VORelations = comp.getString("VerbOceanRelations").split(",");
+			if (null == VORelations || 0 == VORelations.length) {
+				throw new ConfigurationException("Wrong configuation: didn't find any relations for the VerbOcean");
+			}
+			for (String relation : VORelations) {
+				if (relation.equalsIgnoreCase("strongerthan")) {
+					isVOStrongerThan = true;
+				} else if (relation.equalsIgnoreCase("canresultin")) {
+					isVOCanResultIn = true;
+				} else if (relation.equalsIgnoreCase("similar")) {
+					isVOSimilar = true;
+				} else {
+					logger.warning("Warning: wrong relation names for the VerbOcean");
+				}
 			}
 		}
 		
-		boolean isWNHypernym = true;
-		boolean isWNSynonym = true;
-		boolean isVOStrongerThan = true;
-		boolean isVOCanResultIn = true;
-		boolean isVOSimilar = true;
-		if (language.equals("EN") && (isWNHypernym || isWNSynonym || isVOStrongerThan || isVOCanResultIn || isVOSimilar)) {
-			 Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
-			 if (isWNHypernym) {
-				 wnRelSet.add(WordNetRelation.HYPERNYM);
-			 }
-			 if (isWNSynonym) {
-				 wnRelSet.add(WordNetRelation.SYNONYM);
-			 }
-			 
-			 Set<RelationType> voRelSet = new HashSet<RelationType>();
-			 if (isVOStrongerThan) {
-				 voRelSet.add(RelationType.STRONGER_THAN);
-			 }
-			 if (isVOCanResultIn) {
-				 voRelSet.add(RelationType.CAN_RESULT_IN);
-			 }
-			 if (isVOSimilar) {
-				 voRelSet.add(RelationType.SIMILAR);
-			 }
-			 
-			 try {
-				 ScoringComponent comp3 = new BagOfLexesScoringEN(wnRelSet, voRelSet);
-				 components.add(comp3);
-			 } catch (LexicalResourceException e) {
-				 throw new ComponentException(e.getMessage());
-			 }
-		}
-
-		modelFile = "./src/test/resources/MaxEntClassificationEDAModel"
-				+ language;
-
-		trainDIR = "./target/" + language + "/dev/";
-		testDIR = "./target/" + language + "/test/";
-
-		// initialize the model: if it's training, check the model file exsits;
-		// if it's testing, read in the model
-		initializeModel(config);
+		 Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+		 if (isWNHypernym) {
+			 wnRelSet.add(WordNetRelation.HYPERNYM);
+		 }
+		 if (isWNSynonym) {
+			 wnRelSet.add(WordNetRelation.SYNONYM);
+		 }
+		 
+		 Set<RelationType> voRelSet = new HashSet<RelationType>();
+		 if (isVOStrongerThan) {
+			 voRelSet.add(RelationType.STRONGER_THAN);
+		 }
+		 if (isVOCanResultIn) {
+			 voRelSet.add(RelationType.CAN_RESULT_IN);
+		 }
+		 if (isVOSimilar) {
+			 voRelSet.add(RelationType.SIMILAR);
+		 }
+		 
+		 try {
+			 ScoringComponent comp3 = new BagOfLexesScoringEN(wnRelSet, voRelSet);
+			 components.add(comp3);
+		 } catch (LexicalResourceException e) {
+			 throw new ComponentException(e.getMessage());
+		 }
 	}
 
-	private void initializeModel(CommonConfig config)
-			throws ConfigurationException {
+	private void initializeModel(CommonConfig config, boolean isTrain) throws ConfigurationException {
+		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class.getName());
+		modelFile = EDA.getString("modelFile");
 		if (isTrain) {
 			File file = new File(modelFile);
 			if (file.exists()) {
@@ -208,9 +293,25 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 
+	public void initializeData(CommonConfig config, boolean isTrain, boolean isTestingBatch) throws ConfigurationException {
+		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class.getName());		
+		trainDIR = EDA.getString("trainDir");
+		if (null == trainDIR) {
+			if (isTrain) {
+				throw new ConfigurationException("Please specify the training data directory.");
+			} else {
+				logger.warning("Warning: Please specify the training data directory.");				
+			}
+		}
+		testDIR = EDA.getString("testDir");
+		if (null == testDIR) {
+			logger.warning("Warning: Please specify the testing data directory.");
+		}
+	}
+	
 	@Override
 	public ClassificationTEDecision process(JCas aCas) throws EDAException,
-			ComponentException {
+			ComponentException {		
 		String pairId = getPairID(aCas);
 		String goldAnswer = getGoldLabel(aCas);
 		if (null == goldAnswer) {
@@ -270,6 +371,18 @@ public class MaxEntClassificationEDA implements
 	@Override
 	public void startTraining(CommonConfig c) throws ConfigurationException,
 			EDAException, ComponentException {
+		// initialize the language
+		initializeLanguage(c);
+		
+		// initialize the model
+		initializeModel(c, true);
+		
+		// initialize the data paths
+		initializeData(c, true, false);
+		
+		// initialize the components
+		initializeComponents(c);
+		
 		boolean USE_SMOOTHING = false;
 		double SMOOTHING_OBSERVATION = 0.1;
 
@@ -302,7 +415,6 @@ public class MaxEntClassificationEDA implements
 	protected EventStream readInXmiFiles(String filePath)
 			throws ConfigurationException {
 		List<Event> eventList = new ArrayList<Event>();
-		try {
 			File dir = new File(filePath);
 			if (dir.isFile()) {
 				eventList.add(readInXmiFile(dir.getAbsolutePath()));
@@ -316,9 +428,6 @@ public class MaxEntClassificationEDA implements
 					eventList.add(readInXmiFile(file.getAbsolutePath()));
 				}
 			}
-		} catch (Exception e) {
-			throw new ConfigurationException(e.getMessage());
-		}
 		return new ListEventStream(eventList);
 	}
 

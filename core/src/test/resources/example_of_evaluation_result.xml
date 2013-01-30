@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Result EDA_Configuration="./target/EN/eu.excitementproject.eop.core.MaxEntClassificationEDATest_config.txt">
+<Total_Pairs>800</Total_Pairs>
+<Accuracy>0.525</Accuracy>
+<Positive_Pairs>410<Precision>0.5191327</Precision>
+<Recall>0.99268293</Recall>
+<F_Measure>0.6817421</F_Measure>
+<Classified_As_Positive>407</Classified_As_Positive>
+<Classified_As_Negative>3</Classified_As_Negative>
+</Positive_Pairs>
+<Negative_Pairs>390<Precision>0.8125</Precision>
+<Recall>0.033333335</Recall>
+<F_Measure>0.06403941</F_Measure>
+<Classified_As_Positive>377</Classified_As_Positive>
+<Classified_As_Negative>13</Classified_As_Negative>
+</Negative_Pairs>
+</Result>

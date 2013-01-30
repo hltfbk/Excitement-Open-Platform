@@ -9,16 +9,10 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.biutee.utilities.legacy.ExperimentLoggerNeutralizer;
-import eu.excitementproject.eop.biutee.version.Citation;
-import eu.excitementproject.eop.biutee.version.License;
-import eu.excitementproject.eop.biutee.version.Version;
-import eu.excitementproject.eop.common.utilities.ConstantsSummary;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
-import eu.excitementproject.eop.transformations.utilities.Constants.Workarounds;
 
 
 /**
@@ -41,7 +35,7 @@ public class LogInitializer
 	
 	public static final String DEFAULT_LOG4J_PROPERTIES_CONTENTS = 
 		"log4j.rootLogger=warn, stdout\n"+
-		"log4j.logger.ac.biu.nlp.nlp.engineml=info, logfile\n"+
+		"log4j.logger.eu.excitementproject.eop=info, logfile\n"+
 		"log4j.logger.org.BIU.utils.logging.ExperimentLogger=warn\n"+
 		"\n"+
 		"log4j.appender.stdout = org.apache.log4j.ConsoleAppender\n"+
@@ -49,7 +43,7 @@ public class LogInitializer
 		"log4j.appender.stdout.layout.ConversionPattern = %-5p %d{HH:mm:ss} [%t]: %m%n\n"+
 		"\n"+
 		//"log4j.appender.logfile = org.apache.log4j.FileAppender\n"+
-		"log4j.appender.logfile = ac.biu.nlp.nlp.log.BackupOlderFileAppender\n"+
+		"log4j.appender.logfile = eu.excitementproject.eop.common.utilities.log4j.BackupOlderFileAppender\n"+
 		"log4j.appender.logfile.append=false\n"+
 		"log4j.appender.logfile.layout = org.apache.log4j.PatternLayout\n"+
 		"log4j.appender.logfile.layout.ConversionPattern = %-5p %d{HH:mm:ss} [%t]: %m%n\n"+
@@ -103,71 +97,10 @@ public class LogInitializer
 			}
 		}
 		
-		
-		// Print the version
-		logger.info(Version.getVersion().toString());
-		
-		// print citation instructions
-		logger.info(Citation.citationInsturction());
-		
-		// print license
-		logger.info(License.LICENSE);
-		
-		// Print the class path
-		try
-		{
-			String strClassPath = System.getProperty("java.class.path");
-			logger.info("System class path is:\n"+strClassPath);
-		}
-		catch(Exception e)
-		{
-			logger.warn("Could not write the class path to log file.",e);
-		}
-
-		// Print the java.library.path
-		try
-		{
-			String javaLibraryPath = System.getProperty("java.library.path");
-			logger.info("java.library.path is:\n"+javaLibraryPath);
-		}
-		catch(Exception e)
-		{
-			logger.warn("Could not write the class path to log file.",e);
-		}
-
-		// Print the contents of the configuration file
-		if (configurationFileName!=null)
-		{
-			StringBuffer sb = new StringBuffer();
-			sb.append("Configuration file ");
-			sb.append(configurationFileName);
-			sb.append(":\n");
-			sb.append(FileUtils.loadFileToString(configurationFileName));
-			logger.info(sb.toString());
-		}
-		
-		// Print the constants values of the class "Constants"
-		if (logger.isInfoEnabled())
-		{
-			try
-			{
-				Class<?>[] classesOfConstants = new Class<?>[]{Constants.class,Workarounds.class};
-				for (Class<?> classOfConstants : classesOfConstants)
-				{
-					ConstantsSummary constantsSummary = new ConstantsSummary(classOfConstants);
-					logger.info("Constants in "+classOfConstants.getName()+" class:\n"+
-							constantsSummary.getSummary());
-					
-				}
-			}
-			catch(Exception e)
-			{
-				logger.warn("Could not print summary of constants.", e);
-			}
-		}
-		
 		new ExperimentLoggerNeutralizer().neutralize();
 		
+		SystemInformationLog systemInformationLog = new SystemInformationLog(configurationFileName);
+		systemInformationLog.log();
 	}
 
 	private String configurationFileName;
