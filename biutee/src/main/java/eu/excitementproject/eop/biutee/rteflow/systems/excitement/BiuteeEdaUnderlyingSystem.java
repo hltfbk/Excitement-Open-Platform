@@ -3,9 +3,14 @@ package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.EmptyStackException;
+import java.util.Stack;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.log4j.Logger;
-
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
@@ -16,6 +21,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairDataToExtendedPairDataConverter;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
@@ -51,6 +57,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 {
+	public static final long WAIT_TERMINATION_THREAD_POOL_MINUTES = 10;
 	/**
 	 * Constructor with the configuration-file-name. This file is BIU
 	 * configuration file, not Excitement configuration file.
@@ -89,14 +96,14 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 			File modelForPredictions = this.configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_PREDICTIONS_MODEL);
 			classifierForPredictions = SafeClassifiersIO.load(this.teSystemEnvironment.getFeatureVectorStructureOrganizer(), modelForPredictions);
 			logger.info("Loading learning models and constructing classifiers - done.");
+			
+			
+			initScriptsAndThreadPool();
+			initDone = true;
 		}
 		catch (OperationException e)
 		{
 			throw new TeEngineMlException("Failed to initialize operation-sciprt.",e);
-		}
-		finally
-		{
-			
 		}
 	}
 	
@@ -116,19 +123,14 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	 * @throws RuleBaseException
 	 * @throws MalformedURLException
 	 * @throws LemmatizerException
+	 * @throws ExecutionException 
+	 * @throws InterruptedException 
 	 */
-	public PairProcessor process(PairData pairData) throws TeEngineMlException, AnnotatorException, TreeCoreferenceInformationException, OperationException, ClassifierException, ScriptException, RuleBaseException, MalformedURLException, LemmatizerException
+	public PairResult process(PairData pairData) throws TeEngineMlException, AnnotatorException, TreeCoreferenceInformationException, OperationException, ClassifierException, ScriptException, RuleBaseException, MalformedURLException, LemmatizerException, InterruptedException, ExecutionException
 	{
-		logger.info("Running document-sublayer: converting PairData to ExtendedPairData...");
-		PairDataToExtendedPairDataConverter converter = new PairDataToExtendedPairDataConverter(pairData,this.teSystemEnvironment);
-		converter.convert();
-		ExtendedPairData extendedPairData = converter.getExtendedPairData();
-		logger.info("Converting PairData to ExtendedPairData - done.");
-		logger.info("Generating entailment proof...");
-		PairProcessor pairProcessor = new PairProcessor(extendedPairData,classifierForSearch,this.getLemmatizer(),script,this.teSystemEnvironment);
-		pairProcessor.process();
-		logger.info("Generating entailment proof  - done.");
-		return pairProcessor;
+		if (!initDone) throw new TeEngineMlException("Initialization has not been completed properly. The method process can be called only after a successful initialization.");
+		if (cleanUpHasBeenCalled) throw new TeEngineMlException("Cannot process after calling cleanUp.");
+		return threadPool.submit(new Processor(pairData)).get();
 	}
 	
 
@@ -151,28 +153,125 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	@Override
 	public void cleanUp()
 	{
+		cleanUpHasBeenCalled = true;
 		super.cleanUp();
-		if ( (script!=null) && (scriptInitialized) )
+		logger.info("Shuting down thread pool.");
+		this.threadPool.shutdown();
+		logger.info("Termination of scripts ...");
+		synchronized (scriptStack)
 		{
-			try
+			while (!scriptStack.empty())
 			{
-				script.cleanUp();
-			}
-			catch(RuntimeException e)
-			{
-				// do nothing
-				logger.error("Failed to clean up script. However, this is just a clean-up. Continuing.",e);
+				scriptStack.pop().cleanUp();
 			}
 		}
+		logger.info("Termination of scripts - done.");
 	}
 	
 	
+	private void initScriptsAndThreadPool() throws ConfigurationException
+	{
+		int numberOfThreads = this.configurationParams.getInt(ConfigurationParametersNames.RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME);
+		scriptStack = new SynchronizedStack<OperationsScriptGetter>();
+		for (int index=0;index<(numberOfThreads-1);++index)
+		{
+			scriptStack.push(new OperationsScriptGetter(new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry())));
+		}
+		scriptStack.push(new OperationsScriptGetter(this.script));
+		
+		threadPool = Executors.newFixedThreadPool(numberOfThreads);
+	}
+	
+	
+	
+	private class Processor implements Callable<PairResult> 
+	{
+		public Processor(PairData pairData)
+		{
+			super();
+			this.pairData = pairData;
+		}
 
+		@Override
+		public PairResult call() throws TeEngineMlException, AnnotatorException, TreeCoreferenceInformationException, OperationException, ClassifierException, ScriptException, RuleBaseException, MalformedURLException, LemmatizerException
+		{
+			OperationsScriptGetter scriptGetter = null;
+			OperationsScript<Info, BasicNode> scriptForThread = null;
+			try
+			{
+				scriptGetter = BiuteeEdaUnderlyingSystem.this.scriptStack.pop();
+				scriptForThread = scriptGetter.getScript();
+				logger.info("Running document-sublayer: converting PairData to ExtendedPairData...");
+				PairDataToExtendedPairDataConverter converter = new PairDataToExtendedPairDataConverter(pairData,BiuteeEdaUnderlyingSystem.this.teSystemEnvironment);
+				converter.convert();
+				ExtendedPairData extendedPairData = converter.getExtendedPairData();
+				logger.info("Converting PairData to ExtendedPairData - done.");
+				logger.info("Generating entailment proof...");
+				PairProcessor pairProcessor = new PairProcessor(extendedPairData,classifierForSearch,BiuteeEdaUnderlyingSystem.this.getLemmatizer(),scriptForThread,BiuteeEdaUnderlyingSystem.this.teSystemEnvironment);
+				pairProcessor.process();
+				logger.info("Generating entailment proof  - done.");
+				PairResult ret = new PairResult(pairProcessor.getBestTree(),pairProcessor.getBestTreeSentence(),pairProcessor.getBestTreeHistory());
+				return ret;
+			}
+			catch(EmptyStackException e)
+			{
+				throw new TeEngineMlException("BUG",e);
+			}
+			finally
+			{
+				if (scriptGetter!=null)
+				{
+					synchronized(scriptStack)
+					{
+						if (!cleanUpHasBeenCalled)
+							scriptStack.push(scriptGetter);
+						else
+						{
+							if (scriptForThread!=null)
+							{
+								scriptForThread.cleanUp();
+							}
+						}
+					} // end of synchronized(scriptStack)
+				}
+			} // end of finally
+		} // end of method call()
+
+		private PairData pairData;
+	}
+	
+
+	/**
+	 * A subclass of java.util.Stack, which wraps the stack methods
+	 * by synchronizing them.<P>
+	 * This had to be done since it is not documented whether java.util.Stack
+	 * is thread safe or not. 
+	 * @author Asher Stern
+	 * @since Jan 28, 2013
+	 *
+	 * @param <T>
+	 */
+	private static class SynchronizedStack<T> extends Stack<T>
+	{
+		private static final long serialVersionUID = -2312238022756467211L;
+		@Override synchronized public boolean empty(){return super.empty();}
+		@Override synchronized public T peek(){return super.peek();}
+		@Override synchronized public T pop(){return super.pop();}
+		@Override synchronized public T push(T item){return super.push(item);}
+		@Override synchronized public int search(Object o){return super.search(o);}
+	}
+	
+
+	protected SynchronizedStack<OperationsScriptGetter> scriptStack;
+	protected ExecutorService threadPool;
 	protected OperationsScript<Info, BasicNode> script = null;
 	protected LinearClassifier classifierForSearch = null;
 	protected Classifier classifierForPredictions = null;
 	
+	@SuppressWarnings("unused")
 	private boolean scriptInitialized = false;
+	private boolean initDone = false;
+	private boolean cleanUpHasBeenCalled = false;
 	
 	private static final Logger logger = Logger.getLogger(BiuteeEdaUnderlyingSystem.class);
 }
