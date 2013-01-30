@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration [
+<!ENTITY myVar "Some common #PCDATA that can be reused... ">
+]>
+
+<configuration>
+
+	<section name="GermanDistSim">
+	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
+	</section> 
+
+	<section name="GermaNetWrapper">
+	        <property name=""></property> 
+	</section> 
+
+</configuration>

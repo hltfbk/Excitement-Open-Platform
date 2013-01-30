@@ -3,6 +3,8 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.Assume;
 import org.junit.Test;
 
@@ -20,9 +22,6 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributio
  *
  */
 public class GermanDistSimTest {
-
-	//@Test(expected=GermanDistSimNotInstalledException.class)
-	// [Gil: replaced it with Assume.assumeNotNull()] 
 	
 	@Test 
 	public void test() /* throws java.lang.Exception */ {
@@ -54,7 +53,37 @@ public class GermanDistSimTest {
 		{
 			e.printStackTrace(); 
 		}
-		//throw new GermanDistSimNotInstalledException("GermanDistSim files are installed, but this exception is thrown to fulfill Test's expectations.");
+
+		/* Testing init via CommonConfig */ 
+		gds=null; 
+		try {
+			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
+			gds = new GermanDistSim(new ImplCommonConfig(f)); 
+		}
+		catch (GermanDistSimNotInstalledException e) {
+			System.out.println("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly in the CommonConfig, that is passed to the component.");
+			//throw e;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace(); 
+		}
+		
+		//Assume.assumeNotNull(gds); // Let's assume the file is correct. no need. 
+		
+		try {
+			for (LexicalRule<? extends GermanDistSimInfo> rule : gds.getRulesForLeft("sie", null)) {
+				assertTrue(rule.getLLemma().equals("sie"));
+				assertFalse(rule.getRLemma().equals(""));
+				assertFalse(rule.getRelation().equals(""));
+				assertTrue(rule.getConfidence() > 0);
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+
 	}
 }
 
