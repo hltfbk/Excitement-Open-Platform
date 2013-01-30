@@ -11,6 +11,7 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 //import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+//import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
@@ -78,6 +79,19 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 
 	private GermaNet germanet;
 
+	private boolean isValidPos(PartOfSpeech pos) {
+		
+		switch(pos.getCanonicalPosTag()) {
+			case ADJ:	
+			case N:
+			case NN:
+			case V:
+				return true; 
+			default:
+				return false; 
+		}
+	}
+	
 	private WordCategory posToWordCategory(PartOfSpeech pos) throws LexicalResourceException {
 		switch (pos.getCanonicalPosTag()) {
 			case ADJ:
@@ -88,7 +102,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 			case V:
 				return WordCategory.verben;
 			default:
-				throw new LexicalResourceException("Part-of-Speech " + pos.getStringRepresentation() + " is not covered by GermaNet.");
+				//throw new LexicalResourceException("Part-of-Speech " + pos.getStringRepresentation() + " is not covered by GermaNet.");
+				throw new LexicalResourceException("Integrity failure; non-compatible POS shouldn't be passed to this point. "); 
 		} 
 	}
 
@@ -227,6 +242,14 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	{
 		// using a set makes the result unique
 		Set<LexicalRule<? extends GermaNetInfo>> result = new HashSet<LexicalRule<? extends GermaNetInfo>>();
+		
+		// check POS is valid or not for GermaNet. Note that GermaNet only has noun, verb, and adjective.
+		if (!isValidPos(pos))
+		{
+			// POS class that GermaNet knows not.  
+			// No need to look up, return an empty list.  
+			return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result);
+		}
 
 		// Fetch synsets for lemma
 		List<Synset> syns = pos == null ? germanet.getSynsets(lemma) : germanet.getSynsets(lemma, posToWordCategory(pos));
