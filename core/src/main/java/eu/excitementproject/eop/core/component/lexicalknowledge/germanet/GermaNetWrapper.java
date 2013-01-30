@@ -53,8 +53,6 @@ import java.util.HashMap;
  * University. If the GermaNet is not found, the component will raise an exception and
  * will not be initialized. 
  * 
- * TODO: Jan, is there any additional assumptions or conditions that a user might need to know? 
- * 
  * @author Jan Pawellek 
  * @since Nov 2012 
  */
@@ -134,15 +132,13 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 * @throws ComponentException
 	 */
 	public GermaNetWrapper(CommonConfig config) throws ConfigurationException, ComponentException {
-		// TODO CommonConfig not implemented yet -- this is how it MIGHT work. Change it later!
 		this(config.getSection("GermaNetWrapper").getString("germaNetFilesPath"),
 				config.getSection("GermaNetWrapper").getDouble("causesConfidence"),
 				config.getSection("GermaNetWrapper").getDouble("entailsConfidence"),
 				config.getSection("GermaNetWrapper").getDouble("hypernymConfidence"),
 				config.getSection("GermaNetWrapper").getDouble("synonymConfidence"),
 				config.getSection("GermaNetWrapper").getDouble("antonymConfidence"));
-		// TODO Remove the following line, if done.
-		throw new ComponentException("This method is not implemented yet.");
+		//throw new ComponentException("This method is not implemented yet.");
 	}
 	
 	/**
@@ -183,7 +179,10 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		catch (java.lang.Exception e) {
 			throw new ComponentException("Cannot initialize GermaNet.", e);
 		}
-
+		
+		// TODO null value in any confidence (e.g. missing value from CommonConfig), treat them as zeros? 
+		// TODO 0 value. it seems that currently it returns rule with simply 0 confidence. Shouldn't we not return them? 
+		
 		CONFIDENCES.put(ConRel.causes, causesConfidence);
 		CONFIDENCES.put(ConRel.entails, entailsConfidence);
 		CONFIDENCES.put(ConRel.has_hypernym, hypernymConfidence);
@@ -199,7 +198,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 */
 	public String getComponentName()
 	{
-		return "GermaNetWrapper"; // TODO: change to some official name
+		return "GermaNetWrapper"; 
 	}
 	
 	
@@ -210,7 +209,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 * and only if all instances of the component shares the same configuration.
 	 */
 	public String getInstanceName() {
-		return null; // TODO: change 
+		return null; 
         }
   
 	/**
@@ -404,7 +403,6 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	@Override
 	public void close() throws LexicalResourceCloseException
 	{
-		// TODO Auto-generated method stub
 		
 	}
 

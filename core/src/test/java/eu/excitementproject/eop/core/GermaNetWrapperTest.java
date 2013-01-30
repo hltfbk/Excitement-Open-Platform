@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.List;
 
 import org.junit.Assume;
@@ -100,6 +101,36 @@ public class GermaNetWrapperTest {
 			e.printStackTrace(); 
 		}
 		
+		
+		// Test for CommonConfig passing 
+		gnw=null;
+		try {
+			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
+			gnw = new GermaNetWrapper(new ImplCommonConfig(f)); 
+		}
+		catch (GermaNetNotInstalledException e) {
+			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and update the path in the configuration file");
+			//throw e;
+		}
+		catch(BaseException e)
+		{
+			e.printStackTrace(); 
+		}
+		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
+
+		// repeat the test for common nouns
+		try{
+			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym)) {
+				assertTrue(rule.getLLemma().equals("Hitze"));
+				assertTrue(rule.getRLemma().equals("Kälte"));
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getConfidence() > 0);
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
 		
 	}
 }
