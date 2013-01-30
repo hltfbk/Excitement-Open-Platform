@@ -26,10 +26,8 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
  */
 public class GermaNetWrapperTest {
 
-//	@Test(expected=GermaNetNotInstalledException.class) 
-//  [Gil: used Assume.assumeNotNull instead of expected exception.] 
 	@Test
-	public void test() throws UnsupportedPosTagStringException /* throws java.lang.Exception */ {
+	public void test() throws UnsupportedPosTagStringException {
 		
 		GermaNetWrapper gnw=null;
 		try {
@@ -88,7 +86,18 @@ public class GermaNetWrapperTest {
 		{
 			e.printStackTrace(); 
 		}
-		//throw new GermaNetNotInstalledException("GermaNet is installed, but this exception is thrown to fulfill Test's expectations.");
+		
+		// Test of not-supported POS type (should return an empty list) 
+		try {
+			List<LexicalRule<? extends GermaNetInfo>> l = gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("PTKA")); 
+			assertTrue(l.size() == 0); 
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+		
+		
 	}
 }
 
