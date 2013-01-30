@@ -223,6 +223,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	public List<LexicalRule<? extends GermaNetInfo>> getRulesForLeft(String lemma, PartOfSpeech pos) throws LexicalResourceException
 	{
 		// concatenate Entailment and NonEntailment rules and return
+		
+		// TODO: this basic method *always* returns everything, including antonym? hmm. HEI internal discussion needed
 		List<LexicalRule<? extends GermaNetInfo>> result;
 		result = this.getRulesForLeft(lemma, pos, TERuleRelation.Entailment);
 		result.addAll(this.getRulesForLeft(lemma, pos, TERuleRelation.NonEntailment));

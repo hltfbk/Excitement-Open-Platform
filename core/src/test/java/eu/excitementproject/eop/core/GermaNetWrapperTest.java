@@ -45,6 +45,16 @@ public class GermaNetWrapperTest {
 		}
 		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
 
+		// Test for "simplest" generic method 
+		List<LexicalRule<? extends GermaNetInfo>> list1 = null; 
+		try {
+			list1 = gnw.getRulesForLeft("wachsen", null); 
+			assertTrue(list1.size() > 0); 
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}			
 		
 		// Test for verbs
 		try{
@@ -118,7 +128,7 @@ public class GermaNetWrapperTest {
 		}
 		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
 
-		// repeat the test for common nouns
+		// repeat the test for common nouns, with CommonConfig inited gnw
 		try{
 			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym)) {
 				assertTrue(rule.getLLemma().equals("Hitze"));
@@ -130,6 +140,26 @@ public class GermaNetWrapperTest {
 		catch (LexicalResourceException e)
 		{
 			e.printStackTrace(); 
+		}
+		
+		// repeat test for "simplest" generic method, with CommonConfig inited gnw. 
+		// and compares the result to previous one.  
+		List<LexicalRule<? extends GermaNetInfo>> list2 = null; 
+		try {
+			list2 = gnw.getRulesForLeft("wachsen", null); 
+			assertTrue(list2.size() > 0); 
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}			
+
+		// should be identical ... (well, unless someone edited the test configuration. none should have) 
+		assertTrue(list1.size() == list2.size());
+		for(int i=0; i < list1.size(); i++)
+		{
+			assertTrue(list1.get(i).getLLemma().equals(list2.get(i).getLLemma())); 
+			assertTrue(list1.get(i).getRLemma().equals(list2.get(i).getRLemma())); 			
 		}
 		
 	}
