@@ -1,10 +1,19 @@
 package eu.excitementproject.eop.gui;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.uima.jcas.JCas;
 import org.kohsuke.args4j.CmdLineException;
@@ -12,22 +21,25 @@ import org.kohsuke.args4j.CmdLineParser;
 
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerDE;
-import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
+import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.textpro.TextProTaggerIT;
+import static java.nio.file.StandardCopyOption.*;
 
 public class Demo {
 
 	private static String lapAnnotDir = "./target/";
 	
 	private static String baseConfigFile = "configuration_example.xml";
-	private static String configFileDir = "src/test/resources";
+	private static String configFileDir = "../core/src/test/resources";
 	private static String configFile; 
 	
 	private static CommonConfig config;
@@ -45,12 +57,13 @@ public class Demo {
 
 
 	private static void initializeLAP(String language) {
+		language = language.toUpperCase();
 		try {
-			if (language.matches("it")) {
+			if (language.matches("IT")) {
 				lap = new TextProTaggerIT();
-			} else if (language.matches("en")) {
-				lap = new OpenNLPTaggerEN();
-			} else if (language.matches("de")) {
+			} else if (language.matches("EN")) {
+				lap = new TreeTaggerEN();
+			} else if (language.matches("DE")) {
 				lap = new OpenNLPTaggerDE();
 			}		
 		} catch (LAPException e) {
@@ -77,6 +90,7 @@ public class Demo {
 		JCas aJCas = null;
 		try {
 			aJCas = lap.generateSingleTHPairCAS(text, hypothesis);
+			PlatformCASProber.probeCasAndPrintContent(aJCas, System.out);
 		} catch (LAPException e) {
 			System.err.println("Error running the LAP");
 			e.printStackTrace();
@@ -110,11 +124,72 @@ public class Demo {
 			configFile += "_NoLexRes";
 		}	
 		configFile += "_" + option.language + ".xml";
-		
+			
 		try {
 			config = new ImplCommonConfig(new File(configFile));
 		} catch (ConfigurationException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+	}
+	
+	private static HashMap<String,String> readResults(String file) {
+		HashMap<String,String> results = new HashMap<String,String>();
+		try {
+			InputStream in = Files.newInputStream(Paths.get(file));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			String line = null;
+			Pattern p = Pattern.compile("^(.*?)\\t(.*)$");
+			Matcher m;
+			
+			while ((line = reader.readLine()) != null) {
+				m = p.matcher(line);
+				if (m.matches()) {
+					results.put(m.group(1), m.group(2));
+					System.out.println("Added result: " + m.group(1) + " / " + m.group(2));
+				}
+			}
+			reader.close();
+			in.close();
+		} catch (IOException e) {
+			System.out.println("Problems reading results file " + file);
+			e.printStackTrace();
+		}
+		return results;
+	}
+	
+	private static void generateXMLResults(String testFile, String resultsFile, String xmlFile) {
+		
+		HashMap<String,String> results = readResults(resultsFile);
+		try {
+			InputStream in = Files.newInputStream(Paths.get(testFile));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			
+			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+			
+			String line = null, id;
+			String[] entDec;
+			Pattern p = Pattern.compile("^(.*pair id=\"(\\d)\") .* (task.*)$");
+			Matcher m;
+			
+			while ((line = reader.readLine()) != null) {
+				m = p.matcher(line);
+				if (m.matches()) {
+					id = m.group(2);
+					if (results.containsKey(id)) {
+						entDec = results.get(id).split("\\t");
+						line = m.group(1) + " " + "entailment=\"" + entDec[1] + "\" benchmark=\"" + entDec[0] + "\" score=\"" + entDec[2] + "\" confidence=\"1\" " + m.group(3);
+					}
+				}
+				writer.write(line + "\n");
+			}
+			writer.close();
+			out.close();
+			reader.close();
+			in.close();
+		} catch (IOException e) {
+			System.out.println("Problems reading test file " + testFile);
 			e.printStackTrace();
 		}
 		
@@ -140,18 +215,20 @@ public class Demo {
 	}
 */
 	// copy the generated files to the given directory
-	private static void runEOP(String test, String outDir) {
+	private static void runEOP(String testFile, String outDir) {
 		String resultsFile = configFile + "_Result.txt";
-		String evalFile = resultsFile + "_Eval.txt";
+		String xmlResultsFile = outDir + "/results.xml";
+		String evalFile = resultsFile + "_Eval.xml";
 		Path source;
 		Path target = Paths.get(outDir);
 				
 		try {
-			source = Paths.get(resultsFile);
-			Files.copy(source, target.resolve(source.getFileName()));
+//			source = Paths.get(resultsFile);
+//			Files.copy(source, target.resolve(source.getFileName()), REPLACE_EXISTING);
+			generateXMLResults(testFile, resultsFile, xmlResultsFile);
 			
 			source = Paths.get(evalFile);
-			Files.copy(source, target.resolve(source.getFileName()));
+			Files.copy(source, target.resolve(source.getFileName()), REPLACE_EXISTING);
 
 		} catch (IOException e) {
 			System.out.println("Error copying run output files " + resultsFile + " and " + evalFile + " to directory " + outDir);
@@ -162,9 +239,13 @@ public class Demo {
 	
 	
 	private static void runEOPSinglePair(String text, String hypoth) {
+		System.out.println("Text: " + text);
+		System.out.println("Hypothesis: " + hypoth);
+		
 		JCas aJCas = runLAP(text, hypoth);
 		try {
-			eda.process(aJCas);
+			TEDecision te = eda.process(aJCas);
+			System.out.println("T/H pair processing result: " + te.getDecision() + " with confidence " + te.getConfidence());
 		} catch (EDAException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -193,8 +274,6 @@ public class Demo {
 		}
 		try{ 
 			parser.parseArgument(args);
-		
-			System.out.println("Test " + option.text);
 			
 			initializeLAP(option.language);
 //			editConfigFile(option);
@@ -205,13 +284,13 @@ public class Demo {
 			eda = dih.startEngineBasic(new File(configFile));
 			System.out.println("EDA object created from class " + eda.getClass());
 			
-//			eda.initialize(config);
+			eda.initialize(config);
 			if (option.test != null) {
 				runEOP(option.test, option.output);
 			} else {
 				runEOPSinglePair(option.text, option.hypothesis);
 			}
-//			eda.shutdown();
+			eda.shutdown();
 
 		} catch(CmdLineException | ConfigurationException | EDAException | ComponentException e) {
 			e.printStackTrace();

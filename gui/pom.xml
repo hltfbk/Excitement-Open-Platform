@@ -5,9 +5,12 @@
     <groupId>eu.excitementproject</groupId>
     <version>0.1-SNAPSHOT</version>
   </parent>
+  <groupId>eu.excitementproject</groupId>
   <artifactId>gui</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <name>gui</name>
+  <description>gui</description>
   <dependencies>
-
   	<dependency>
   		<groupId>eu.excitementproject</groupId>
   		<artifactId>core</artifactId>
@@ -18,12 +21,5 @@
   		<artifactId>lap</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
-  	<dependency>
-  		<groupId>eu.excitementproject</groupId>
-  		<artifactId>common</artifactId>
-  		<version>0.1-SNAPSHOT</version>
-  	</dependency>
   </dependencies>
-  <name>gui</name>
-  <description>gui</description>
 </project>
