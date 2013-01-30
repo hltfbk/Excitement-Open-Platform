@@ -91,6 +91,9 @@ public class GermaNetWrapperTest {
 		try {
 			List<LexicalRule<? extends GermaNetInfo>> l = gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("PTKA")); 
 			assertTrue(l.size() == 0); 
+			// Still, null POS should mean, don't care
+			l = gnw.getRulesForLeft("Hitze",  null); 
+			assertTrue(l.size() > 0);
 		}
 		catch (LexicalResourceException e)
 		{
