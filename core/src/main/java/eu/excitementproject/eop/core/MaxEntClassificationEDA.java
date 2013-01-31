@@ -137,13 +137,13 @@ public class MaxEntClassificationEDA implements
 		components = new ArrayList<ScoringComponent>();
 
 		for (String component : componentArray) {
-			NameValueTable comp = config.getSubSection("Components", component);
+			NameValueTable comp = config.getSection(component);
 			if (null == comp) {
 				throw new ConfigurationException("Wrong configuation: didn't find the corresponding setting for the component: " + component);
 			}
 			if (component.equals("BagOfLexesScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
-					initializeLexCompsDE(comp);
+					initializeLexCompsDE(config);
 				} else {
 					initializeLexCompsEN(comp);
 				}
@@ -159,44 +159,15 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 	
-	private void initializeLexCompsDE(NameValueTable comp) throws ConfigurationException, ComponentException {
-		if (null == comp.getString("GermanDistSim") && null == comp.getString("GermaNet")) {
-			throw new ConfigurationException("Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
-		}
-		// these five boolean values control the lexical resources used.
-		// they refer to whether to use GermanDistSim, GermaNetRelation.causes, GermaNetRelation.entails, GermaNetRelation.has_hypernym, and GermaNetRelation.has_synonym
-		boolean isGDS = false;
-		boolean isGNRcauses = false;
-		boolean isGNRentails = false;
-		boolean isGNRhypernym = false;
-		boolean isGNRsynonym = false;
-		if (null != comp.getString("GermanDistSim")) {
-			isGDS = true;
-		}
-		if (null != comp.getString("GermaNet")) {
-			String[] GermaNetRelations = comp.getString("GermaNet").split(",");
-			if (null == GermaNetRelations || 0 == GermaNetRelations.length) {
-				throw new ConfigurationException("Wrong configuation: didn't find any relations for the GermaNet");
-			}
-			for (String relation : GermaNetRelations) {
-				if (relation.equalsIgnoreCase("causes")) {
-					isGNRcauses = true;
-				} else if (relation.equalsIgnoreCase("entails")) {
-					isGNRentails = true;
-				} else if (relation.equalsIgnoreCase("has_hypernym")) {
-					isGNRhypernym = true;
-				} else if (relation.equalsIgnoreCase("has_synonym")) {
-					isGNRsynonym = true;
-				} else {
-					logger.warning("Warning: wrong relation names for the GermaNet");
-				}
-			}
-		}
+	private void initializeLexCompsDE(CommonConfig config) throws ConfigurationException {
 		try {
-			ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
-			components.add(comp3);
+			ScoringComponent comp3 = new BagOfLexesScoring(config);
+			// check the number of features. if it's 0, no instantiation of the component.
+			if (((BagOfLexesScoring)comp3).getNumOfFeats() > 0) {
+				components.add(comp3);
+			}
 		} catch (LexicalResourceException e) {
-			throw new ComponentException(e.getMessage());
+			throw new ConfigurationException(e.getMessage());
 		}
 	}
 	

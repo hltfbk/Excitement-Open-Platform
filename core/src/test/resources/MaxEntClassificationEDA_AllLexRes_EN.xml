@@ -11,15 +11,15 @@
 		<property name="language">EN</property>
 	</section>
 	
-	<section name="Components">
-		<subsection name="BagOfWordsScoring">
-		</subsection>
-		<subsection name="BagOfLemmasScoring">
-		</subsection>
-		<subsection name="BagOfLexesScoring">
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="BagOfLemmasScoring">
+	</section>
+	
+	<section name="BagOfLexesScoring">
 			<property name="WordNetRelations">Hypernym,Synonym</property>
 			<property name="VerbOceanRelations">StrongerThan,CanResultIn,Similar</property>
-		</subsection>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
