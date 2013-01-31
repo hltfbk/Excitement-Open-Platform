@@ -11,11 +11,10 @@
 		<property name="language">EN</property>
 	</section>
 	
-	<section name="Components">
-		<subsection name="BagOfWordsScoring">
-		</subsection>
-		<subsection name="BagOfLemmasScoring">
-		</subsection>
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="BagOfLemmasScoring">
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
