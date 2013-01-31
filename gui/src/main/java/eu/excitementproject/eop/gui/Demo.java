@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
@@ -30,16 +31,19 @@ import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerDE;
+import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.textpro.TextProTaggerIT;
 import static java.nio.file.StandardCopyOption.*;
 
+@SuppressWarnings("unused")
 public class Demo {
 
 	private static String lapAnnotDir = "./target/";
 	
 	private static String baseConfigFile = "configuration_example.xml";
-	private static String configFileDir = "../core/src/test/resources";
+//	private static String configFileDir = "resources/";
+	private static String configFileDir = "../core/src/test/resources/";
 	private static String configFile; 
 	
 	private static CommonConfig config;
@@ -48,7 +52,6 @@ public class Demo {
 			
 	private static EDABasic<?> eda;
 	
-	@SuppressWarnings("unused")
 	private static String configSection = "PlatformConfiguration";
 	
 	/**
@@ -62,7 +65,8 @@ public class Demo {
 			if (language.matches("IT")) {
 				lap = new TextProTaggerIT();
 			} else if (language.matches("EN")) {
-				lap = new TreeTaggerEN();
+//				lap = new TreeTaggerEN();
+				lap = new OpenNLPTaggerEN();
 			} else if (language.matches("DE")) {
 				lap = new OpenNLPTaggerDE();
 			}		
@@ -73,8 +77,6 @@ public class Demo {
 		}
 	}
 
-	
-	@SuppressWarnings("unused")
 	private static void runLAP(String inputFile) {
 		try {
 			lap.processRawInputFormat(new File(inputFile), new File(lapAnnotDir));
@@ -101,7 +103,6 @@ public class Demo {
 	}
 	
 	
-	@SuppressWarnings("unused")
 	private static void editConfigFile(DemoCmdOptions option) {
 		try {
 			configFile = baseConfigFile + ".edited.xml";
@@ -196,6 +197,34 @@ public class Demo {
 	}
 	
 	
+	private static void makeSinglePairXML(TEDecision decision, JCas aJCas, String outDir, String lang) {
+		
+		String xmlResultsFile = outDir + "/results.xml";
+		try {
+			
+			OutputStream out = Files.newOutputStream(Paths.get(xmlResultsFile));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+			
+			writer.write("<entailment-corpus lang=\"" + lang + "\">\n");
+			writer.write("  <pair id=\"1\" entailment=\"" + decision.getDecision().name() + "\" benchmark=\"N/A\" score=\"" + decision.getConfidence() + "\" confidence=\"1\" task=\"EOP test\">\n");
+			writer.write("    <t>" + aJCas.getView("TextView").getDocumentText() + "</t>\n");
+			writer.write("    <h>" + aJCas.getView("HypothesisView").getDocumentText() + "</h>\n");
+			writer.write("  </pair>\n");
+			writer.write("</entailment-corpus>\n");
+			writer.close();
+			out.close();
+
+			
+			System.out.println("Results file: " + xmlResultsFile);
+			
+		} catch (IOException | CASException e) {
+			System.out.println("Coudl not write to output file " + xmlResultsFile);
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 /*	private static void runEOP(String test) {
 		try {
 			eda.startTraining(config);
@@ -220,7 +249,7 @@ public class Demo {
 		String xmlResultsFile = outDir + "/results.xml";
 		String evalFile = resultsFile + "_Eval.xml";
 		Path source;
-		Path target = Paths.get(outDir);
+		Path target = Paths.get(outDir + "/report.xml");
 				
 		try {
 //			source = Paths.get(resultsFile);
@@ -228,8 +257,11 @@ public class Demo {
 			generateXMLResults(testFile, resultsFile, xmlResultsFile);
 			
 			source = Paths.get(evalFile);
-			Files.copy(source, target.resolve(source.getFileName()), REPLACE_EXISTING);
+			Files.copy(source, target, REPLACE_EXISTING);
 
+			System.out.println("Results file: " + xmlResultsFile);
+			System.out.println("Evaluation file: " + target.getFileName());
+			
 		} catch (IOException e) {
 			System.out.println("Error copying run output files " + resultsFile + " and " + evalFile + " to directory " + outDir);
 			e.printStackTrace();
@@ -238,14 +270,15 @@ public class Demo {
 	}
 	
 	
-	private static void runEOPSinglePair(String text, String hypoth) {
-		System.out.println("Text: " + text);
-		System.out.println("Hypothesis: " + hypoth);
+	private static void runEOPSinglePair(DemoCmdOptions option) {
+		System.out.println("Text: " + option.text);
+		System.out.println("Hypothesis: " + option.hypothesis);
 		
-		JCas aJCas = runLAP(text, hypoth);
+		JCas aJCas = runLAP(option.text, option.hypothesis);
 		try {
 			TEDecision te = eda.process(aJCas);
 			System.out.println("T/H pair processing result: " + te.getDecision() + " with confidence " + te.getConfidence());
+			makeSinglePairXML(te, aJCas, option.output, option.language);
 		} catch (EDAException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -288,7 +321,7 @@ public class Demo {
 			if (option.test != null) {
 				runEOP(option.test, option.output);
 			} else {
-				runEOPSinglePair(option.text, option.hypothesis);
+				runEOPSinglePair(option);
 			}
 			eda.shutdown();
 
