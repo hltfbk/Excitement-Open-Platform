@@ -12,7 +12,10 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.BaseException;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
@@ -20,40 +23,55 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 
 /**
- * The <code>BagOfLexesScoring</code> class extends <code>BagOfLemmasScoring</code>.
- * It supports (currently) <code>GermanDistSim</code> and <code>GermaNetWrapper</code> two lexical resources.
+ * The <code>BagOfLexesScoring</code> class extends
+ * <code>BagOfLemmasScoring</code>. It supports (currently)
+ * <code>GermanDistSim</code> and <code>GermaNetWrapper</code> two lexical
+ * resources.
  * 
- * @author  Rui
+ * @author Rui
  */
 public class BagOfLexesScoring extends BagOfLemmasScoring {
-	
+
 	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
-	
-	private static final String GDS_PATH = "./src/main/resources/dewakdistributional-data/";
-	private static final String GNW_PATH = "./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/";
-	
-//	the number of features
+
+	// replaced by configuration
+//	private static final String GDS_PATH = "./src/main/resources/dewakdistributional-data/";
+//	private static final String GNW_PATH = "./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/";
+
+	// the number of features
 	protected int numOfFeats = 0;
-	
+
 	@Override
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
-	
+
 	protected boolean[] moduleFlags = new boolean[5];
-	
+
 	protected GermanDistSim gds = null;
-	
+
 	protected GermaNetWrapper gnw = null;
 
-	public BagOfLexesScoring(boolean useGDS, boolean useGNWCau, boolean useGNWEnt, boolean useGNWHyn, boolean useGNWSyn) throws LexicalResourceException {
-		if (useGDS) {
+	public BagOfLexesScoring(CommonConfig config)
+			throws ConfigurationException, LexicalResourceException {
+		for (int i = 0; i < moduleFlags.length; i++) {
+			moduleFlags[i] = false;
+		}
+		
+		NameValueTable comp = config.getSection("BagOfLexesScoring");
+		
+		// initialize GermanDistSim
+		if (null == comp.getString("GermanDistSim")
+				&& null == comp.getString("GermaNetWrapper")) {
+			throw new ConfigurationException(
+					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
+		}
+		if (null != comp.getString("GermanDistSim")) {
 			try {
-				gds = new GermanDistSim(GDS_PATH);
-				numOfFeats ++;
+				gds = new GermanDistSim(config);
+				numOfFeats++;
 				moduleFlags[0] = true;
-			}
-			catch (GermanDistSimNotInstalledException e) {
+			} catch (GermanDistSimNotInstalledException e) {
 				logger.warning("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
 				throw new LexicalResourceException(e.getMessage());
 			} catch (BaseException e) {
@@ -62,106 +80,109 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		} else {
 			moduleFlags[0] = false;
 		}
-		if (useGNWCau || useGNWEnt || useGNWHyn || useGNWSyn) {
-			try {
-				gnw = new GermaNetWrapper(GNW_PATH);
-				if (useGNWCau) {
-					numOfFeats ++;
-					moduleFlags[1] = true;
-				} else {
-					moduleFlags[1] = false;
-				}
-				if (useGNWEnt) {
-					numOfFeats ++;
-					moduleFlags[2] = true;
-				} else {
-					moduleFlags[2] = false;
-				}
-				if (useGNWHyn) {
-					numOfFeats ++;
-					moduleFlags[3] = true;
-				} else {
-					moduleFlags[3] = false;
-				}
-				if (useGNWSyn) {
-					numOfFeats ++;
-					moduleFlags[4] = true;
-				} else {
-					moduleFlags[4] = false;
-				}
+		
+		// initialize GermaNet
+		if (null != comp.getString("GermaNetWrapper")) {
+			String[] GermaNetRelations = comp.getString("GermaNetWrapper").split(",");
+			if (null == GermaNetRelations || 0 == GermaNetRelations.length) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the GermaNet");
 			}
-			catch (GermaNetNotInstalledException e) {
+			try {
+				gnw = new GermaNetWrapper(config);
+				for (String relation : GermaNetRelations) {
+					if (relation.equalsIgnoreCase("causes")) {
+						numOfFeats++;
+						moduleFlags[1] = true;
+					} else if (relation.equalsIgnoreCase("entails")) {
+						numOfFeats++;
+						moduleFlags[2] = true;
+					} else if (relation.equalsIgnoreCase("has_hypernym")) {
+						numOfFeats++;
+						moduleFlags[3] = true;
+					} else if (relation.equalsIgnoreCase("has_synonym")) {
+						numOfFeats++;
+						moduleFlags[4] = true;
+					} else {
+						logger.warning("Warning: wrong relation names for the GermaNet");
+					}
+				}
+			} catch (GermaNetNotInstalledException e) {
 				logger.warning("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
 				throw new LexicalResourceException(e.getMessage());
-			}
-			catch (BaseException e) {
+			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
-		} else {
-			moduleFlags[1] = false;
-			moduleFlags[2] = false;
-			moduleFlags[3] = false;
-			moduleFlags[4] = false;
 		}
 	}
-	
+
 	@Override
 	public String getComponentName() {
 		return "BagOfLexesScoring";
 	}
-	
+
 	@Override
 	public Vector<Double> calculateScores(JCas aCas)
 			throws ScoringComponentException {
-		// 1) how many words of H (extended with multiple relations) can be found in T divided by the length of H
+		// 1) how many words of H (extended with multiple relations) can be
+		// found in T divided by the length of H
 		Vector<Double> scoresVector = new Vector<Double>();
-			
+
 		try {
 			JCas tView = aCas.getView("TextView");
 			HashMap<String, Integer> tBag = countTokens(tView);
 
 			JCas hView = aCas.getView("HypothesisView");
 			HashMap<String, Integer> hBag = countTokens(hView);
-			
-//			int hSize = 0;
-//			for (String hWord : hBag.keySet()) {
-//				hSize += hBag.get(hWord).intValue();
-//			}
-			
+
+			// int hSize = 0;
+			// for (String hWord : hBag.keySet()) {
+			// hSize += hBag.get(hWord).intValue();
+			// }
+
 			if (moduleFlags[0]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
 			}
 			if (moduleFlags[1]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_hypernym));
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
+						tBag, hBag, GermaNetRelation.has_hypernym));
 			}
 			if (moduleFlags[2]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.causes));
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
+						tBag, hBag, GermaNetRelation.causes));
 			}
 			if (moduleFlags[3]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.entails));
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
+						tBag, hBag, GermaNetRelation.entails));
 			}
 			if (moduleFlags[4]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_synonym));
+				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
+						tBag, hBag, GermaNetRelation.has_synonym));
 			}
 		} catch (CASException e) {
 			throw new ScoringComponentException(e.getMessage());
 		}
 		return scoresVector;
 	}
-	
-	protected double calculateSingleLexScore(HashMap<String, Integer> tBag, HashMap<String, Integer> hBag, LexicalResource<? extends RuleInfo> lex) throws ScoringComponentException{
+
+	protected double calculateSingleLexScore(HashMap<String, Integer> tBag,
+			HashMap<String, Integer> hBag,
+			LexicalResource<? extends RuleInfo> lex)
+			throws ScoringComponentException {
 		if (null == lex) {
-			throw new ScoringComponentException("WARNING: the specified lexical resource has not been properly initialized!");
+			throw new ScoringComponentException(
+					"WARNING: the specified lexical resource has not been properly initialized!");
 		}
-		
+
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
-		
+
 		for (String word : tBag.keySet()) {
 			int counts = tBag.get(word);
 			try {
 				tWordBag.put(word, counts);
-				for (LexicalRule<? extends RuleInfo> rule : lex.getRulesForLeft(word, null)) {
+				for (LexicalRule<? extends RuleInfo> rule : lex
+						.getRulesForLeft(word, null)) {
 					if (tWordBag.containsKey(rule.getRLemma())) {
 						int tmp = tWordBag.get(rule.getRLemma());
 						tWordBag.put(rule.getRLemma(), tmp + counts);
@@ -173,53 +194,61 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 				throw new ScoringComponentException(e.getMessage());
 			}
 		}
-		
+
 		score = calculateSimilarity(tWordBag, hBag).get(0);
-		
+
 		return score;
-		
-//		for (String word : hBag.keySet()) {
-//			int counts = hBag.get(word);
-//			HashMap<String, Integer> hWordBag = new HashMap<String, Integer>();
-//			try {
-//				hWordBag.put(word, counts);
-//					for (LexicalRule<? extends RuleInfo> rule : lex.getRulesForLeft(word, null)) {
-//						hWordBag.put(rule.getRLemma(), counts);
-//					}
-//			}
-//			catch (LexicalResourceException e)
-//			{
-//				throw new ScoringComponentException(e.getMessage());
-//			}
-//			score += Math.min(counts, calculateSimilarity(tBag, hWordBag).get(0) * hWordBag.size());
-//		}
-//		
-//		return score;
+
+		// for (String word : hBag.keySet()) {
+		// int counts = hBag.get(word);
+		// HashMap<String, Integer> hWordBag = new HashMap<String, Integer>();
+		// try {
+		// hWordBag.put(word, counts);
+		// for (LexicalRule<? extends RuleInfo> rule : lex.getRulesForLeft(word,
+		// null)) {
+		// hWordBag.put(rule.getRLemma(), counts);
+		// }
+		// }
+		// catch (LexicalResourceException e)
+		// {
+		// throw new ScoringComponentException(e.getMessage());
+		// }
+		// score += Math.min(counts, calculateSimilarity(tBag, hWordBag).get(0)
+		// * hWordBag.size());
+		// }
+		//
+		// return score;
 	}
-	
-	protected double calculateSingleLexScoreWithGermaNetRelation(HashMap<String, Integer> tBag, HashMap<String, Integer> hBag, GermaNetRelation gnr) throws ScoringComponentException{
+
+	protected double calculateSingleLexScoreWithGermaNetRelation(
+			HashMap<String, Integer> tBag, HashMap<String, Integer> hBag,
+			GermaNetRelation gnr) throws ScoringComponentException {
 		if (null == gnw) {
-			throw new ScoringComponentException("WARNING: the specified lexical resource has not been properly initialized!");
+			throw new ScoringComponentException(
+					"WARNING: the specified lexical resource has not been properly initialized!");
 		}
-		
+
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
-		
+
 		for (String word : tBag.keySet()) {
 			int counts = tBag.get(word);
 			try {
 				tWordBag.put(word, counts);
 				/*
-				 * Britta: AFAIK, GermaNet doesn't accept "hitze" as noun, since it expects capitalisation for
-				 * nouns ("Hitze"); it would return an empty result. Thus, ambiguity of verbs and nouns is
-				 * not resolved with "null" POS.
-				 * However, this idea works for the ambiguity of adjectives and past participle verbs:
-				 * (gedeckt, V_pastPart) would not give a hit in GermaNet, but (gedeckt, null) returns
-				 * values for (gedeckt, ADJ).
+				 * Britta: AFAIK, GermaNet doesn't accept "hitze" as noun, since
+				 * it expects capitalisation for nouns ("Hitze"); it would
+				 * return an empty result. Thus, ambiguity of verbs and nouns is
+				 * not resolved with "null" POS. However, this idea works for
+				 * the ambiguity of adjectives and past participle verbs:
+				 * (gedeckt, V_pastPart) would not give a hit in GermaNet, but
+				 * (gedeckt, null) returns values for (gedeckt, ADJ).
 				 * 
-				 * Rui: In the future, we may think about normalizing the word by toLowerCase(), to tackle the first case.
+				 * Rui: In the future, we may think about normalizing the word
+				 * by toLowerCase(), to tackle the first case.
 				 */
-				for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word, null, gnr)) {
+				for (LexicalRule<? extends RuleInfo> rule : gnw
+						.getRulesForLeft(word, null, gnr)) {
 					if (tWordBag.containsKey(rule.getRLemma())) {
 						int tmp = tWordBag.get(rule.getRLemma());
 						tWordBag.put(rule.getRLemma(), tmp + counts);
@@ -231,42 +260,47 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 				throw new ScoringComponentException(e.getMessage());
 			}
 		}
-		
+
 		score = calculateSimilarity(tWordBag, hBag).get(0);
-		
+
 		return score;
-		
-//		for (String word : hBag.keySet()) {
-//			int counts = hBag.get(word);
-//			HashMap<String, Integer> hWordBag = new HashMap<String, Integer>();
-//			try {
-//				hWordBag.put(word, counts);
-//				if (both) {
-//					for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word, null, gnr)) {
-//						hWordBag.put(rule.getRLemma(), counts);
-//					}
-////					for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForRight(word, null, gnr)) {
-////						hWordBag.put(rule.getRLemma(), counts);
-////					}
-//				} else {
-//					if (forLeft) {
-//						for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word, null, gnr)) {
-//							hWordBag.put(rule.getRLemma(), counts);
-//						}	
-//					} else {
-////						for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForRight(word, null, gnr)) {
-////							hWordBag.put(rule.getRLemma(), counts);
-////						}
-//					}
-//				}
-//			}
-//			catch (LexicalResourceException e)
-//			{
-//				throw new ScoringComponentException(e.getMessage());
-//			}
-//			score += Math.min(counts, calculateSimilarity(tBag, hWordBag).get(0) * hWordBag.size());
-//		}
-//		
-//		return score;
+
+		// for (String word : hBag.keySet()) {
+		// int counts = hBag.get(word);
+		// HashMap<String, Integer> hWordBag = new HashMap<String, Integer>();
+		// try {
+		// hWordBag.put(word, counts);
+		// if (both) {
+		// for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word,
+		// null, gnr)) {
+		// hWordBag.put(rule.getRLemma(), counts);
+		// }
+		// // for (LexicalRule<? extends RuleInfo> rule :
+		// gnw.getRulesForRight(word, null, gnr)) {
+		// // hWordBag.put(rule.getRLemma(), counts);
+		// // }
+		// } else {
+		// if (forLeft) {
+		// for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word,
+		// null, gnr)) {
+		// hWordBag.put(rule.getRLemma(), counts);
+		// }
+		// } else {
+		// // for (LexicalRule<? extends RuleInfo> rule :
+		// gnw.getRulesForRight(word, null, gnr)) {
+		// // hWordBag.put(rule.getRLemma(), counts);
+		// // }
+		// }
+		// }
+		// }
+		// catch (LexicalResourceException e)
+		// {
+		// throw new ScoringComponentException(e.getMessage());
+		// }
+		// score += Math.min(counts, calculateSimilarity(tBag, hWordBag).get(0)
+		// * hWordBag.size());
+		// }
+		//
+		// return score;
 	}
 }

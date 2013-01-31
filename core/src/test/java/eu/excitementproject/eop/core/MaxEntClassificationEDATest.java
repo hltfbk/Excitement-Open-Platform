@@ -41,10 +41,10 @@ public class MaxEntClassificationEDATest {
 	
 	@Test
 	public void test() {		
-		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
+//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
 //		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_DE.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml");
+		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml");
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {
@@ -72,8 +72,6 @@ public class MaxEntClassificationEDATest {
 		testTesting_MultiTH(config);
 		testTesting_MultiTH_AND_Output(config);
 		 */
-		
-		testTraining(config);
 	}
 	
 	public void testLAP_DE() {

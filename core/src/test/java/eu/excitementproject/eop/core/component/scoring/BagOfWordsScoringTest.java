@@ -12,7 +12,10 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.BaseException;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
@@ -31,8 +34,8 @@ public class BagOfWordsScoringTest {
 	
 	@Test
 	public void test() throws LexicalResourceException {
-		testDE();
-//		testEN();
+//		testDE();
+		testEN();
 	}
 
 	public void testDE() throws LexicalResourceException {
@@ -65,11 +68,31 @@ public class BagOfWordsScoringTest {
 		}
 		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run.
 		
+		// test the configuration file
+		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
+		Assume.assumeTrue(configFile.exists());
+		CommonConfig config = null;
+		try {
+			// read in the configuration from the file
+			config = new ImplCommonConfig(configFile);
+		} catch (ConfigurationException e) {
+			logger.warning(e.getMessage());
+		}
+		Assume.assumeNotNull(config);
 		
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		 BagOfLemmasScoring bols = new BagOfLemmasScoring();
-		BagOfLexesScoring bolexs = new BagOfLexesScoring(true, true, true, true, true);
-		BagOfLexesPosScoring bolexposs = new BagOfLexesPosScoring(true, true, true, true, true);
+		 BagOfLexesScoring bolexs = null;
+		 BagOfLexesPosScoring bolexposs = null;
+		 try {
+		bolexs = new BagOfLexesScoring(config);
+		bolexposs = new BagOfLexesPosScoring(config);
+
+		 } catch (ConfigurationException e) {
+			logger.warning(e.getMessage());
+		 }
+		 Assume.assumeNotNull(bolexs);
+		 Assume.assumeNotNull(bolexposs);
 
 		JCas aCas = null;
 		LAPAccess lap = null;

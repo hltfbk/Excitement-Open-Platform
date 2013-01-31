@@ -13,16 +13,17 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;
 
 public class BagOfLexesPosScoring extends BagOfLexesScoring {
 
-	public BagOfLexesPosScoring(boolean useGDS, boolean useGNWCau,
-			boolean useGNWEnt, boolean useGNWHyn, boolean useGNWSyn)
-			throws LexicalResourceException {
-		super(useGDS, useGNWCau, useGNWEnt, useGNWHyn, useGNWSyn);
+	public BagOfLexesPosScoring(CommonConfig config)
+			throws ConfigurationException, LexicalResourceException {
+		super(config);
 	}
 	
 	@Override
