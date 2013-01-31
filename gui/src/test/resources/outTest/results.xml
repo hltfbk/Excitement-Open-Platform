@@ -1,0 +1,6 @@
+<entailment-test lang="EN">
+  <pair id="1" entailment="NonEntailment" benchmark="N/A" score="0.5060175368229985" confidence="1" task="EOP test">
+    <t>Hubble is a telescope</t>
+    <h>Hubble is an instrument</h>
+  </pair>
+</entailment-test>

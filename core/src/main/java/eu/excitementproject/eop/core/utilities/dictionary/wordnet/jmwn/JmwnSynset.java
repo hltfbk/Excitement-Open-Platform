@@ -140,6 +140,7 @@ public class JmwnSynset implements Synset {
 		Pattern p = Pattern.compile(".*?(\\d+)");
 		Matcher pm = p.matcher(mwnOffset);
 		if (pm.matches()) {
+//			System.out.println("Offset found: " + pm.group(1));
 			return Long.parseLong(pm.group(1));
 		}
 		
@@ -161,19 +162,21 @@ public class JmwnSynset implements Synset {
 
 	public Set<Synset> getRelatedSynsets(WordNetRelation relation,
 			int chainingLength) throws WordNetException {
-				
+		
+//		System.out.println("Getting related synsets for " + this.getGloss() + "\n\t relation: " + relation.name());
+		
 		if (chainingLength < 1)
 			throw new WordNetException("chaining length must be positive. I got " + chainingLength);
 		if (WordNetRelation.STRICT_2ND_DEGREE_COUSIN.equals(relation))
 			throw new WordNetMethodNotSupportedException("Extracting cousin relations is currently not supported by JwnlDictionary. Use JwiDictionary instead");
 		org.itc.mwn.PointerType pointerType = JmwnUtils.wordNetRelationToPointerType(relation);
 		
-		if (pointerType == null)		
+		if (pointerType == null) {		
 			// some relations (inc. SYNONYM) have no neighbors, cos they have no matching JMWN relation
 			// other relations just don't exist in ext JMWN
 			return new HashSet<Synset>();
-		else
-		{
+		} else {
+//			System.out.println("Relation type found: " + pointerType.getLabel());
 			if (!relation.isTransitive())
 				chainingLength = 1;			// most relations make no sense when chained
 			try {	return getSetOfSynsets(PointerUtils.getInstance().gatherPointerTargets(realSynset, pointerType, chainingLength));	}
@@ -229,9 +232,14 @@ public class JmwnSynset implements Synset {
 		if (null==list) 
 			return null;
 		Set<Synset> ret = new HashSet<Synset>();
+		
 		for (int i=0; i < list.length; i++) {
-			ret.add(new JmwnSynset(this.jmwnDictionary,(org.itc.mwn.Synset)list[i]));
+			if (list[i] != null) {
+//				System.out.println(this.getClass().toString() + " word: " + list[i].getDescription());
+				ret.add(new JmwnSynset(this.jmwnDictionary,(org.itc.mwn.Synset)list[i]));
+			}
 		}
+
 		return ret;
 	}
 

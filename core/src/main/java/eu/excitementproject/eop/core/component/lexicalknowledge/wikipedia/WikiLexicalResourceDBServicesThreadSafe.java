@@ -32,16 +32,16 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
  */
 public class WikiLexicalResourceDBServicesThreadSafe {
 
-	private static final String JDBC_DRIVER_CLASS = "com.mysql.jdbc.Driver";
-	private static final WikiRuleScoreComparator RULE_RANK_AND_COOCURRENCE_COMPARATOR = new WikiRuleScoreComparator();
-	private static final String WILDCARD = "%";
+	protected static final String JDBC_DRIVER_CLASS = "com.mysql.jdbc.Driver";
+	protected static final WikiRuleScoreComparator RULE_RANK_AND_COOCURRENCE_COMPARATOR = new WikiRuleScoreComparator();
+	protected static final String WILDCARD = "%";
 
-	private final Double COOCURENCE_THRESHOLD;
-	private final PartOfSpeech NOUN ;
-	private final Set<WikiExtractionType> PERMITTED_EXTRACTION_TYPES;
+	protected final Double COOCURENCE_THRESHOLD;
+	protected final PartOfSpeech NOUN ;
+	protected final Set<WikiExtractionType> PERMITTED_EXTRACTION_TYPES;
 	
-	private static final String ARG1 = "?";
-	private static final String ARG2 = "@";
+	protected static final String ARG1 = "?";
+	protected static final String ARG2 = "@";
 
 //	private final PreparedStatement getRulesFromRightStmt;
 //	private final PreparedStatement getRulesFromRightStmt2;
@@ -50,7 +50,7 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 //	private final PreparedStatement getRulesFromRightAndLeftStmt;
 //	private final PreparedStatement getHeadRuleStmt;
 	
-	private Connection con;
+	protected Connection con;
 
 	//////////////////////////////////////////// SQL infrastructure for this class	/////////////////////////////////////////////////////////////////////
 
@@ -123,10 +123,13 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 	 * @param permittedExtractionTypes 
 	 * @throws LexicalResourceException 
 	 */
-	WikiLexicalResourceDBServicesThreadSafe(String dbConnectionString, String dbUser, String dbPassword, Double cocurrence_threshold, 
+	protected WikiLexicalResourceDBServicesThreadSafe(String dbConnectionString, String dbUser, String dbPassword, Double cocurrence_threshold, 
 			Set<WikiExtractionType> permittedExtractionTypes) throws LexicalResourceException 
 	{
 		// setup the prepared statements
+		
+		System.out.println(this.getClass().toString() + " connecting: " + dbConnectionString + " / user: " + dbUser + " / password: " + dbPassword );
+		
 		try {
 			Class.forName(JDBC_DRIVER_CLASS).newInstance();
 //			Connection con;
@@ -163,7 +166,7 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 	 * @return
 	 * @throws LexicalResourceException 
 	 */
-	List<LexicalRule<? extends WikiRuleInfo>> getRulesForSideImpl(	String lemma, boolean getRulesFromRight) throws LexicalResourceException 
+	protected List<LexicalRule<? extends WikiRuleInfo>> getRulesForSideImpl(	String lemma, boolean getRulesFromRight) throws LexicalResourceException 
 	{
 		List<LexicalRule<? extends WikiRuleInfo>> rules = new ArrayList<LexicalRule<? extends WikiRuleInfo>>();
 		lemma = lemma.replace("'", "\\'");	//escape apostrophe (e.g. Sophie's Choice)
@@ -222,7 +225,7 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 	 * @return
 	 * @throws LexicalResourceException 
 	 */
-	List<LexicalRule<? extends WikiRuleInfo>> getRulesFromDb(String leftLemma, String rightLemma) throws LexicalResourceException {
+	public List<LexicalRule<? extends WikiRuleInfo>> getRulesFromDb(String leftLemma, String rightLemma) throws LexicalResourceException {
 		// query database and create one rule
 		List<LexicalRule<? extends WikiRuleInfo>> ruleList;
 		leftLemma = leftLemma.replace("'", "\\'");	//escape apostrophe (e.g. Sophie's Choice)
@@ -256,7 +259,7 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 	 * @return
 	 * @throws LexicalResourceException 
 	 */
-	private LexicalRule<WikiRuleInfo> constructRule(ResultSet resultSet, String lemma, boolean lemmaIsOnTheRight) throws LexicalResourceException 
+	protected LexicalRule<WikiRuleInfo> constructRule(ResultSet resultSet, String lemma, boolean lemmaIsOnTheRight) throws LexicalResourceException 
 	{
 		LexicalRule<WikiRuleInfo> rule = null;
 		
@@ -307,7 +310,7 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 	 * @param mapLemmasToRules 
 	 * @throws LexicalResourceException 
 	 */
-	void addToRules(List<LexicalRule<? extends WikiRuleInfo>> rules, LexicalRule<WikiRuleInfo> rule, 
+	protected void addToRules(List<LexicalRule<? extends WikiRuleInfo>> rules, LexicalRule<WikiRuleInfo> rule, 
 			Map<LhsRhs, LexicalRule<WikiRuleInfo>> mapLemmasToRules) throws LexicalResourceException {
 		if (rule != null)
 		{
@@ -362,7 +365,7 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 	 * @return
 	 * @throws LexicalResourceException
 	 */
-	private int getRuleSideFreqFromDB(String lhsLemma, String rhsLemma, int ngramCount, String extactionTypesString)	throws LexicalResourceException {
+	protected int getRuleSideFreqFromDB(String lhsLemma, String rhsLemma, int ngramCount, String extactionTypesString)	throws LexicalResourceException {
 		int ruleSideFreq = ngramCount;
 		lhsLemma = lhsLemma.replace("'", "\\'");	//escape apostrophe (e.g. Sophie's Choice)
 		rhsLemma = rhsLemma.replace("'", "\\'");	//escape apostrophe (e.g. Sophie's Choice)

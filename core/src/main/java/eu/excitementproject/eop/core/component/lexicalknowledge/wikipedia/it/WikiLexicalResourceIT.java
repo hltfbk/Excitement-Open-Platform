@@ -1,4 +1,5 @@
-package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
+package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.it;
+
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.File;
@@ -9,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceNothingToClose;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
@@ -19,6 +19,9 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanoni
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiExtractionType;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRuleInfo;
 
 
 /**
@@ -35,53 +38,29 @@ import eu.excitementproject.eop.common.utilities.file.FileUtils;
  *
  * @since Dec 4, 2011
  */
-public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleInfo> {
+public class WikiLexicalResourceIT extends WikiLexicalResource {
 
-	public static final String WIKIPEDIA_RESOURCE_NAME = "WIKIPEDIA";
-	
-	protected static final String NAME = "name";
-
-	protected static final String PARAM_STOP_WORDS = "stop words";
-
-	protected static final String PARAM_EXTRACTION_TYPES = "extraction types to keep";
-
-	protected static final String PARAM_DB_CONN_STRING = "wikiKB DB url";
-
-	protected static final String PARAM_COOCURRENCE_THRESHOLD = "cooccurrence threshold";
-
-	protected Double COOCURENCE_THRESHOLD;
-	protected Set<String> STOP_WORDS;
-	protected final WikiLexicalResourceDBServicesThreadSafe wikiDbServices;
+	protected final WikiLexicalResourceDBServicesThreadSafeIT wikiDbServices;
 
 	///////////////////////////////////////////// PUBLIC	////////////////////////////////////////////////////////////////////////////////
 	
-	public WikiLexicalResource() {
-		STOP_WORDS = null;
-		COOCURENCE_THRESHOLD = 0.0;
-		wikiDbServices = null;
-	}
-	
-	public WikiLexicalResource(ConfigurationParams params) throws LexicalResourceException, ConfigurationException
+	public WikiLexicalResourceIT(ConfigurationParams params) throws LexicalResourceException, ConfigurationException
 	{
+//		super(
 		this(
 				params.getFile(PARAM_STOP_WORDS),
 				WikiExtractionType.parseExtractionTypeListOfStrings(params.getString(PARAM_EXTRACTION_TYPES)),
 				params.getString(PARAM_DB_CONN_STRING),	null, null,
 				params.getDouble(PARAM_COOCURRENCE_THRESHOLD));
+		
+//		wikiDbServices = new WikiLexicalResourceDBServicesThreadSafeIT(params.getString(PARAM_DB_CONN_STRING), null, null, COOCURENCE_THRESHOLD, WikiExtractionType.parseExtractionTypeListOfStrings(params.getString(PARAM_EXTRACTION_TYPES)));
 	}
 	
-	/**
-	 * Ctor
-	 * @param stopWordsFile	e.g. "//qa-srv/Data/RESOURCES/stopwords-Eyal.txt"
-	 * @param permittedExtractionTypes	Only rules with these extraction types will be retrieved
-	 * @param dbConnectionString	e.g. "jdbc:mysql://qa-srv:3308/wikikb?user=db_readonly"
-	 * @param dbUser	optional
-	 * @param dbPassword	optional
-	 * @param coocurrenceThreshold Only rules with a larger coocurrence score will be retrieved - used in DB queries - used to get more accurate rules, improves run time
-	 * @throws LexicalResourceException
-	 */
-	public WikiLexicalResource(File stopWordsFile, Set<WikiExtractionType> permittedExtractionTypes, String dbConnectionString, String dbUser, String dbPassword, 
-			Double coocurrenceThreshold) throws LexicalResourceException {
+	public WikiLexicalResourceIT(File stopWordsFile, Set<WikiExtractionType> permittedExtractionTypes, String dbConnectionString, String dbUser, String dbPassword, 
+			Double cooccurrenceThreshold) throws LexicalResourceException {
+		
+	//	super(stopWordsFile, permittedExtractionTypes, dbConnectionString, dbUser, dbPassword, cooccurrenceThreshold);
+		
 		if (stopWordsFile == null)
 			throw new LexicalResourceException("stop words file is null");
 		if (!stopWordsFile.exists())
@@ -98,13 +77,14 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 		if (dbConnectionString == null)
 			throw new LexicalResourceException("got null connection string");
 		
-		if (coocurrenceThreshold != null && coocurrenceThreshold < 0)
-			throw new LexicalResourceException("coocorrenceThreshold must be positive, or null. I got " + coocurrenceThreshold);
-		this.COOCURENCE_THRESHOLD  = coocurrenceThreshold;
+		if (cooccurrenceThreshold != null && cooccurrenceThreshold < 0)
+			throw new LexicalResourceException("coocorrenceThreshold must be positive, or null. I got " + cooccurrenceThreshold);
+		this.COOCURENCE_THRESHOLD  = cooccurrenceThreshold;
 		
-		wikiDbServices = new WikiLexicalResourceDBServicesThreadSafe(dbConnectionString, dbUser, dbPassword, COOCURENCE_THRESHOLD, permittedExtractionTypes);
+		
+		wikiDbServices = new WikiLexicalResourceDBServicesThreadSafeIT(dbConnectionString, dbUser, dbPassword, COOCURENCE_THRESHOLD, permittedExtractionTypes);	
+		
 	}
-	
 	/* (non-Javadoc)
 	 * @see ac.biu.cs.nlp.lexical.resource.LexicalResource#getRulesForRight(java.lang.String, ac.biu.nlp.nlp.representation.PartOfSpeech)
 	 */
@@ -160,7 +140,7 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 		if (STOP_WORDS.contains(lemma))
 			return new Vector<LexicalRule<? extends WikiRuleInfo>>();
 
-		List<LexicalRule<? extends WikiRuleInfo>> rules = wikiDbServices.getRulesForSideImpl(lemma, getRuleForRight);
+		List<LexicalRule<? extends WikiRuleInfo>> rules = this.wikiDbServices.getRulesForSideImpl(lemma, getRuleForRight);
 		filterRules(rules, getRuleForRight);
 		return rules;
 	}

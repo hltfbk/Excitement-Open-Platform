@@ -1,7 +1,7 @@
 /**
  * 
  */
-package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
+package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.it;
 import java.io.File;
 import java.util.HashSet;
 import java.util.List;
@@ -12,6 +12,8 @@ import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiExtractionType;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRuleInfo;
 
 
 /**
@@ -21,7 +23,7 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * @since 06/05/2011
  * 
  */
-public class WikipediaLexicalResourceDemo {
+public class WikipediaLexicalResourceDemoIT {
 
 
 	/**
@@ -33,19 +35,18 @@ public class WikipediaLexicalResourceDemo {
 		System.out.println("Start \n*****************************\n");
 	
 
-		String lLemma = "Italy";
+		String lLemma = "Italia";
 		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
-		String rLemma = "Venice";
+		String rLemma = "Venezia";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		
 		// test Wikipedia
 		System.out.println("\nFrom the new WikiLexicalResource:");
 
-		Set<WikiExtractionType> extractionTypes = Utils.arrayToCollection(new WikiExtractionType[]{WikiExtractionType.REDIRECT,WikiExtractionType.BE_COMP,
-				WikiExtractionType.BE_COMP_IDIRECT,WikiExtractionType.ALL_NOUNS_TOP}, new HashSet<WikiExtractionType>());
+		Set<WikiExtractionType> extractionTypes = Utils.arrayToCollection(new WikiExtractionType[]{WikiExtractionType.REDIRECT,WikiExtractionType.CATEGORY,
+				WikiExtractionType.LEX_ALL_NOUNS,WikiExtractionType.SYNT_ALL_NOUNS}, new HashSet<WikiExtractionType>());
 		File stopWordsFile = new File("src/test/resources/stopwords.txt");
-//		WikiLexicalResource wikiLexR = new WikiLexicalResource(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikilexresita","root","nat_2k12", 0.01);
-		WikiLexicalResource wikiLexR = new WikiLexicalResource(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikikb","root","nat_2k12", 0.01);
+		WikiLexicalResourceIT wikiLexR = new WikiLexicalResourceIT(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikilexresita","root","nat_2k12", 0.01);
 
 		
 //		ConfigurationFile  confFile = new ConfigurationFile(new File("B:/Apps/BIUTEE/workdir/biutee_train.xml"));
