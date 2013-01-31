@@ -17,10 +17,7 @@
 	import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 
 	/**
-	 * The test contains three parts: 1) use LAP to do preprocessing and generate
-	 * xmi files; 2) train a MaxEnt model; 3) test on the input example(s).
 	 * 
-	 * @author Rui
 	 */
 	public class EditDistanceEDAAndLapTest {
 		
@@ -39,8 +36,6 @@
 			//testTraining_IT(); 
 			//testTesting_SingleTH_IT(); 
 			
-			// Rui: if you want to test MaxEntClassificationEDA with different lexical resources, please check MaxEntClassificationEDA.initialize() for the moment
-			// Rui: Make sure the trained model is consistent with the testing configuration!
 		}
 		
 		//@Test 

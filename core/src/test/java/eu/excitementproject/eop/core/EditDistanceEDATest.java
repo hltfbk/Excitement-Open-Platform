@@ -129,6 +129,7 @@ public class EditDistanceEDATest {
 		}
 	}
 	
+	//taken for the code provided by RUI
 	public void scorer(ArrayList<String> list) {
 	
 		float pos_corrt = 0f;

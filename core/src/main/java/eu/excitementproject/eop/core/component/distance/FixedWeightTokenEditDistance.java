@@ -197,9 +197,6 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	
     }
 
-    // Made up from calculation(), to support vector returning method 
-    // of calculateScores() (to support the super-interface ScoringComponent )
-    // -- Gil 
     @Override
     public Vector<Double> calculateScores(JCas jcas) throws ScoringComponentException {
     	
@@ -438,7 +435,6 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      */
     private class EditDistanceValue extends DistanceValue {
 
-    	// DistanceValue no longer has the vector -- Gil 
     	public EditDistanceValue(double distance, boolean simBased, double rawValue)
     	{
     		//super(distance, simBased, rawValue, null); 
