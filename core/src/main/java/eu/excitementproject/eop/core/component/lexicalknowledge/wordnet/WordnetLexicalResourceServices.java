@@ -114,13 +114,16 @@ public class WordnetLexicalResourceServices {
 			for (int lSynsetNo = 1; lSynsetNo <= lSelectSynsets.size()  ; lSynsetNo++ )
 			{
 				Synset lSynset = lSelectSynsets.get(lSynsetNo-1);
+
 				for (int rSynsetNo = 1; rSynsetNo <= rSelectSynsets.size()  ; rSynsetNo++ )
 				{
 					Synset rSynset = rSelectSynsets.get(rSynsetNo-1);
+
 					for (WordNetRelation relation : relations)
 					{
 						Set<Synset> neighbors = getSemanticOrLexicalNeighbors(lLemma, lSynset, relation, chainingLength);
 						if (neighbors.contains(rSynset)	|| 								// usually, the relation connects between neighboring synsets
+								doubleCheckContains(neighbors, rSynset) ||
 								(relation.equals(SYNONYM) && lSynset.equals(rSynset) ))	// special condition for SYNONYMs, which are just words within a Synset
 						{
 							// just in case the given rPos or lPos are null, replace them with the POSs from the synsets
@@ -317,15 +320,17 @@ public class WordnetLexicalResourceServices {
 	 */
 	private Set<Synset> getSemanticOrLexicalNeighbors(String lemma, Synset synset, WordNetRelation relation, int chainingLength) throws WordNetException {
 		Set<Synset> synsets;
+		
 		if (relation.isLexical())
 		{
 			SensedWord sensedWord = dictionary.getSensedWord(lemma, synset);
 			synsets = new HashSet<Synset>();
-			for (SensedWord aSensedWord : sensedWord.getNeighborSensedWords(relation))
+			for (SensedWord aSensedWord : sensedWord.getNeighborSensedWords(relation)) {
 				synsets.add(aSensedWord.getSynset());
-		}
-		else
+			}
+		} else { 
 			synsets = synset.getRelatedSynsets(relation, chainingLength);
+		}
 		return synsets;
 	}
 	
@@ -490,5 +495,20 @@ public class WordnetLexicalResourceServices {
 		}
 		return poss;
 	}
+	
+	private boolean doubleCheckContains(Set<Synset> set, Synset s) {
+		if (s != null) {
+			if (set.contains(s)) 
+				return true;
+		
+			if (set != null && !set.isEmpty()) {
+				for(Synset x: set) {
+					if (s.equals(x))
+						return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }
-

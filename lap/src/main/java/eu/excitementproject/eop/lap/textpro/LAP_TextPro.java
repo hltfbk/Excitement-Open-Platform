@@ -30,7 +30,7 @@ public class LAP_TextPro extends LAP_ImplBase {
 	protected TextProHandler txp = null;
 	protected TextProAnnotation txpAnn = null;
 	
-	private String TXPAnnotMapFile = "src/main/resources/TextPro/it-tagger.map";
+	private String TXPAnnotMapFile = "../lap/src/main/resources/TextPro/it-tagger.map";
 			
 	protected HashMap<String,String> AnnotMap = null; 
 	
