@@ -26,12 +26,12 @@ public class JmwnSensedWord implements SensedWord {
 	public JmwnSensedWord(JmwnSynset synset, String strWord) throws WordNetException {
 		this.synset = synset;
 		this.word = strWord;
-		
+				
 		String wordToLookup = strWord.replace(' ', '_');
 		Word[] words = synset.realSynset.getWords();
 		Word wordObj = lookupWordInWords(words, wordToLookup);
 		if (wordObj == null) 
-	 		throw new WordNetException("\""+ strWord + "\" is not a memeber of the given synset " + synset);
+	 		throw new WordNetException("\""+ strWord + "\" is not a memeber of the given synset " + synset + "/" + synset.getOffset());
 	 	this.wordObj = wordObj;
 	 	dictionary = synset.jmwnDictionary;
 	 	this.pos = JmwnUtils.getWordNetPartOfSpeech( wordObj.getPOS());
@@ -109,6 +109,9 @@ public class JmwnSensedWord implements SensedWord {
 		for (int i = 0; i < words.length && !found; i++) {
 			someWord = words[i];
 			found = someWord.getLemma().equalsIgnoreCase(wordToLookup);
+		}
+		if (!found) {
+			someWord = new Word(synset.realSynset, 0, wordToLookup);
 		}
 		return someWord;
 	}

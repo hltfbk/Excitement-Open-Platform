@@ -230,7 +230,9 @@ public class JmwnSynset implements Synset {
 			return null;
 		Set<Synset> ret = new HashSet<Synset>();
 		for (int i=0; i < list.length; i++) {
-			ret.add(new JmwnSynset(this.jmwnDictionary,(org.itc.mwn.Synset)list[i]));
+			if (list[i] != null) {
+				ret.add(new JmwnSynset(this.jmwnDictionary,(org.itc.mwn.Synset)list[i]));
+			}
 		}
 		return ret;
 	}
@@ -254,7 +256,6 @@ public class JmwnSynset implements Synset {
 				if (this.getOffset() == other.getOffset())
 					return true;
 			} catch (Exception e) {
-				System.err.println("Problems checking JMWN synset equality: ");
 				e.printStackTrace();
 			}
 			return false;
