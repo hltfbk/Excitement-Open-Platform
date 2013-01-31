@@ -7,11 +7,20 @@ public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 
 	private DecisionLabel decisionLabel = null;
 	private String pairId = null;
+	private double confidence = IEditDistanceTEDecision.CONFIDENCE_NOT_AVAILABLE;
 	
 	public EditDistanceTEDecision (DecisionLabel decisionLabel, String pairId) {
 		
 		this.decisionLabel = decisionLabel;
 		this.pairId = pairId;
+		
+	}
+	
+	public EditDistanceTEDecision (DecisionLabel decisionLabel, String pairId, double confidence) {
+		
+		this.decisionLabel = decisionLabel;
+		this.pairId = pairId;
+		this.confidence = confidence;
 		
 	}
 	
@@ -23,7 +32,7 @@ public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 	
 	public double getConfidence() {
 		
-		return CONFIDENCE_NOT_AVAILABLE;
+		return this.confidence;
 		
 	}
 	

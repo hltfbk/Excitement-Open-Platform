@@ -6,13 +6,27 @@ import java.util.List;
 import java.util.Vector;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Set;
+import java.util.HashSet;
+import java.io.File;
 
 import org.apache.uima.jcas.JCas;
 //import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.tcas.Annotation;
+
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CARD;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CONJ;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PP;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PUNC;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
+import edu.northwestern.at.utils.corpuslinguistics.postagger.PartOfSpeechTagger;
 import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
 import eu.excitementproject.eop.common.component.distance.DistanceValue;
@@ -20,6 +34,38 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
+
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
+
+
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.DKProPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
+
+
+
+
 
 
 /**
@@ -58,6 +104,11 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     private final double mInsertWeight;
     // weight for substitute
     private final double mSubstituteWeight;
+    // wordnet
+    private WordnetLexicalResource lexR;
+    // removing stop words
+    private boolean stopWordRemoval;
+    Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
 
     
     /**
@@ -68,9 +119,11 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     public FixedWeightTokenEditDistance() {
     	
     	mMatchWeight = 0.0;
-        mDeleteWeight = 2.0;
-        mInsertWeight = 2.0;
+        mDeleteWeight = 5.0;
+        mInsertWeight = 5.0;
         mSubstituteWeight = 1.0;
+        lexR = null;
+        boolean stopWordRemoval = false;
         
     }
 
@@ -78,8 +131,21 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     /* 
 	 * @see DistanceCalculation#initialize()
 	 */
-    public void initialize(CommonConfig config) throws ConfigurationException, ComponentException {
+    public FixedWeightTokenEditDistance(CommonConfig config) throws ConfigurationException, ComponentException {
     
+    	mMatchWeight = 0.0;
+        mDeleteWeight = 20.0;
+        mInsertWeight = 20.0;
+        mSubstituteWeight = 10.0;
+        
+    	NameValueTable nameValueTable = config.getSubSection(this.getClass().getCanonicalName(), "instance1");
+		
+    	String wordnet = nameValueTable.getString("multiWordnet");
+		if (wordnet.equals("true"))
+			initializeWordnet();
+		
+		stopWordRemoval = Boolean.valueOf(nameValueTable.getString("stopWordRemoval"));
+		
     }
     
     
@@ -88,7 +154,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	 */
     public String getComponentName() {
     	
-    	return null;
+    	return "FixedWeightTokenEditDistance";
     	
     }
     
@@ -177,13 +243,29 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	
     	Iterator<Annotation> tokenIter = tokenIndex.iterator();
     	
+    	
+    	
     	while(tokenIter.hasNext()) {
     		Token curr = (Token) tokenIter.next();
-    		tokensList.add(curr);
-    		//String tokenText = curr.getCoveredText();
-    		//int tokenBegin = curr.getBegin();
-    		//int tokenEnd = curr.getEnd();
-    		//System.out.printf("Token : %s (%d,%d)\n", tokenText, tokenBegin, tokenEnd);
+    		
+    		//soluzione temporanea per la demo
+    		//SimplerCanonicalPosTag.PREPOSITION
+    		//SimplerCanonicalPosTag.PUNCTUATION
+    		
+    		if (stopWordRemoval) {
+    			if(curr.getPos().getTypeIndexID() != PP.typeIndexID &&
+    			curr.getPos().getTypeIndexID() != PR.typeIndexID &&
+    			curr.getPos().getTypeIndexID() != PUNC.typeIndexID &&
+    			curr.getPos().getTypeIndexID() != ART.typeIndexID &&
+    			curr.getPos().getTypeIndexID() != CONJ.typeIndexID &&
+    			curr.getPos().getTypeIndexID() != CARD.typeIndexID &&
+    			curr.getPos().getTypeIndexID() != O.typeIndexID &&
+    			curr.getPos().getTypeIndexID() != POS.typeIndexID) {
+    				tokensList.add(curr);
+    			}
+    		}
+    		else
+    			tokensList.add(curr);
     	}
     	
     	return tokensList;
@@ -278,6 +360,8 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      */
     public DistanceValue distance(List<Token> source, List<Token> target ) throws ArithmeticException {
         	
+    	
+    	
     	//DistanceValue distanceValue = new EditDistanceValue(0, false, 0);
     	
     	// distanceTable is a table with sizeSource+1 rows and sizeTarget+1 columns
@@ -289,14 +373,41 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	for (int j = 1; j <= target.size(); j++)
     		distanceTable[0][j] = distanceTable[0][j-1] + insertWeight(target.get(j-1));
  
-    	for (int i = 1; i <= source.size(); i++)
-    		for (int j = 1; j <= target.size(); j++)
-    			distanceTable[i][j] = minimum(
-    					source.get(i-1).getCoveredText().equals(target.get(j-1).getCoveredText())
-    					? distanceTable[i - 1][j - 1] + matchWeight(source.get(i-1))
-    				    : distanceTable[i - 1][j - 1] + substituteWeight(source.get(i-1), target.get(j-1)),
-    				    distanceTable[i - 1][j] + deleteWeight(source.get(i-1)),
-    				    distanceTable[i][j - 1] + insertWeight(target.get(j-1)));
+    	try {
+    	
+	    	for (int i = 1; i <= source.size(); i++)
+	    		for (int j = 1; j <= target.size(); j++) {
+	    			
+	    			//if(getRulesFromWordnet(source.get(i-1).getLemma().getValue(), new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()), 
+    				//		target.get(j-1).getLemma().getValue(), new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName()))) {
+	    			//	System.out.println("s:" + source.get(i-1).getLemma().getValue() + "\t" + new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()));
+		    		///	System.out.println("t:" + target.get(j-1).getLemma().getValue() + "\t" + new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName()));
+		    		//	System.exit(0);
+	    			//}
+    						
+	    			
+	    			//System.out.println("========" + source.get(i-1).getPos().getType().getName());
+	    			//System.out.println("s:" + source.get(i-1).getLemma().getCoveredText() + "\t" + new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()));
+	    			//System.out.println("t:" + target.get(j-1).getLemma().getCoveredText() + "\t" + new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName()));
+	    			distanceTable[i][j] = minimum(
+	    					source.get(i-1).getLemma().getValue().equals(target.get(j-1).getLemma().getValue()) || (
+	    							//getRulesFromWordnet("mela", null, "frutta", null))
+	    					//lexR != null && getRulesFromWordnet(source.get(i-1).getLemma().getValue(), null, 
+	    						//target.get(j-1).getLemma().getValue(), null))
+	    					lexR != null && source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && getRulesFromWordnet(source.get(i-1).getLemma().getValue(), new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()), 
+	    						target.get(j-1).getLemma().getValue(), new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName())))
+	    					//new PennPartOfSpeech(posAnnotation.getPosValue())
+	    						
+	    					? distanceTable[i - 1][j - 1] + matchWeight(source.get(i-1))
+	    				    : distanceTable[i - 1][j - 1] + substituteWeight(source.get(i-1), target.get(j-1)),
+	    				    distanceTable[i - 1][j] + deleteWeight(source.get(i-1)),
+	    				    distanceTable[i][j - 1] + insertWeight(target.get(j-1)));
+	    		}
+    	
+    	} catch(Exception e) {
+    		System.err.println("==" + e.getMessage());
+    		System.exit(0);
+    	}
     	
     	// distance is the the edit distance between source and target
     	double distance = distanceTable[source.size()][target.size()];
@@ -339,6 +450,83 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 //    		super(distance, simBased, rawValue, distanceVector); 
 //    	}
     	
+    }
+    
+    
+    private void initializeWordnet() {
+    	
+    	List<LexicalRule<? extends WordnetRuleInfo>> rules;
+    	
+		//Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
+		
+		String configurationFileName = "src/test/resources/";
+	
+		//String lLemma = "mela";
+		//String rLemma = "frutta";
+		
+		//PartOfSpeech pos1 = null, pos2 = null;
+		
+		try {
+			
+			//relations.add(WordNetRelation.INSTANCE_HYPERNYM);
+			//relations.add(WordNetRelation.INSTANCE_HYPONYM);
+			//relations.add(WordNetRelation.HYPERNYM);
+			//relations.add(WordNetRelation.HYPONYM);
+			//relations.add(WordNetRelation.PART_HOLONYM);
+			//relations.add(WordNetRelation.CATEGORY_MEMBER);
+			relations.add(WordNetRelation.SYNONYM);
+			relations.add(WordNetRelation.HYPONYM);
+			
+			lexR = new WordnetLexicalResource(new File(configurationFileName), false, false, relations, 1, WordnetDictionaryImplementationType.JMWN);
+			
+		//} catch (UnsupportedPosTagStringException e1) {
+			//System.out.println("Error assigning POS tag");
+			//e1.printStackTrace();
+		} catch (LexicalResourceException e) {
+			System.out.println("Error initialising Italian MultiWordnet");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+    }
+    
+    
+    private boolean getRulesFromWordnet(String leftLemma, PartOfSpeech leftPos, 
+    		String rightLemma, PartOfSpeech rightPos) {
+    	
+    	System.out.println("leftLemma:" + leftLemma + "\t" + "leftPos:" + leftPos +  
+    		"\t" + "rightLemma:" + rightLemma + "\t" +  "rightPos:" + rightPos);
+    	
+    	
+    	List<LexicalRule<? extends WordnetRuleInfo>> rules = null;
+    	
+		try {
+			
+			rules = lexR.getRules(leftLemma, leftPos, rightLemma, rightPos);
+			
+			
+			//System.out.println("Got "+rules.size());
+			//for (LexicalRule<? extends WordnetRuleInfo> rule : rules)
+				//System.out.println(rule);
+		
+		} catch (LexicalResourceException e) {
+			System.out.println("Error extracting entailment rules from Italian MultiWordNet");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(0);
+		}
+		
+		System.out.println("==============================");
+		
+		if (rules.size() >0) {
+			Iterator it = rules.iterator();
+			System.out.println("==" + ((LexicalRule)it.next()).getRelation());
+			
+			
+			return true;
+		}
+		
+		return false;
     }
 
     

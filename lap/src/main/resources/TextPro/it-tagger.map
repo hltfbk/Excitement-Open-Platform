@@ -70,7 +70,7 @@ PN=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR
 # 20.	RS	Article, singular
 RS=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART
 # 21.	RP	Article, plural
-RS=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART
+RP=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART
 
 # 22.	SS	Noun, singular
 SS=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NN
