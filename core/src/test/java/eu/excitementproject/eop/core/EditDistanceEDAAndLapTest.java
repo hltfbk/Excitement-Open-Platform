@@ -85,11 +85,13 @@
 		}
 		
 		//@Test
+		//
 		public void testTraining_IT() {
 			File trainingDir = null;
 			trainingDir = new File("./target/IT/dev/");
 			assertTrue(trainingDir.exists());
 			
+			@SuppressWarnings("rawtypes")
 			EditDistanceEDA ed = new EditDistanceEDA();
 			ed.setLanguage("IT");
 
@@ -111,12 +113,14 @@
 		
 		//@Test
 		public void testTesting_SingleTH_IT() {
+			
+			@SuppressWarnings("rawtypes")
 			EditDistanceEDA  ed = new EditDistanceEDA ();
 			ed.setLanguage("IT");
 			
 			CommonConfig config = null;
 			
-			LAPAccess lap = null;
+			//LAPAccess lap = null;
 			
 			try {
 				ed.setTrain(false);

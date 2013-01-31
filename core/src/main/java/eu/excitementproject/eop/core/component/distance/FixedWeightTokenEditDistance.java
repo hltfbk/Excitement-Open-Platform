@@ -23,10 +23,10 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PR;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PUNC;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
+//import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
-import edu.northwestern.at.utils.corpuslinguistics.postagger.PartOfSpeechTagger;
+//import edu.northwestern.at.utils.corpuslinguistics.postagger.PartOfSpeechTagger;
 import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
 import eu.excitementproject.eop.common.component.distance.DistanceValue;
@@ -34,34 +34,34 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.common.configuration.CommonConfig;
+//import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+//import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+//import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+//import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
+//import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+//import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
 
 
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+//import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+//import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+//import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.DKProPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
-import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
+//import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+//import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+//import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+//import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+//import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
+//import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
+//import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
 
 
 
@@ -123,7 +123,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
         mInsertWeight = 5.0;
         mSubstituteWeight = 1.0;
         lexR = null;
-        boolean stopWordRemoval = false;
+        //boolean stopWordRemoval = false;
         
     }
 
@@ -455,7 +455,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     
     private void initializeWordnet() {
     	
-    	List<LexicalRule<? extends WordnetRuleInfo>> rules;
+    	//List<LexicalRule<? extends WordnetRuleInfo>> rules;
     	
 		//Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
 		
@@ -519,8 +519,9 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 		System.out.println("==============================");
 		
 		if (rules.size() >0) {
-			Iterator it = rules.iterator();
-			System.out.println("==" + ((LexicalRule)it.next()).getRelation());
+			//@SuppressWarnings("rawtypes")
+			//Iterator it = rules.iterator();
+			//System.out.println("==" + ((LexicalRule)it.next()).getRelation());
 			
 			
 			return true;

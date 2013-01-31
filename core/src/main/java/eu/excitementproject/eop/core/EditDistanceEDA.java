@@ -1,7 +1,7 @@
 
 package eu.excitementproject.eop.core;
 
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -28,8 +28,8 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.distance.*;
 import eu.excitement.type.entailment.Pair;
-import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
-import eu.excitementproject.eop.lap.LAPException;
+//import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+//import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
 
@@ -129,7 +129,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public void initialize (CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
 		
-		ExampleLAP lap = null; 
+		//ExampleLAP lap = null; 
 		
         try {
         	
@@ -167,7 +167,6 @@ public class EditDistanceEDA<T extends TEDecision>
 			
 			testDIR = nameValueTable.getString("testDir");
 			
-			//initializeModel(config);
 			//nameValueTable = config.getSection("FixedWeightTokenEditDistance");
 			component = new FixedWeightTokenEditDistance(config);
 			
@@ -180,30 +179,6 @@ public class EditDistanceEDA<T extends TEDecision>
 //			throw e;
 		}
 		
-	}
-	
-	
-	private void initializeModel(CommonConfig config)
-			throws ConfigurationException {
-		if (isTrain) {
-			System.out.println("entrato");
-			File file = new File(modelFile);
-			if (file.exists()) {
-				//throw new ConfigurationException(
-						//"The model file exists! Please specify another file name.");
-			} 
-			else {
-				logger.info("The trained model will be stored in "
-						+ file.getAbsolutePath());
-			}
-		} else {
-			System.out.println("entrato2");
-			try {
-				threshold = loadModel(new File(modelFile));
-			} catch (IOException e) {
-				throw new ConfigurationException(e.getMessage());
-			}
-		}
 	}
 	
 	

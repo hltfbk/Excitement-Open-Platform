@@ -1,25 +1,25 @@
 package eu.excitementproject.eop.core;
 
 import org.apache.uima.jcas.JCas;
-import org.junit.Test;
-import static org.junit.Assert.*;
+//import org.junit.Test;
+//import static org.junit.Assert.*;
 //import eu.excitementproject.eop.core.component.distance.CasCreation;
-import java.util.List;
+//import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.io.File;
 
 
 import org.apache.uima.cas.FSIterator;
-import org.apache.uima.jcas.JCas;
+//import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
 
 import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
-import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+//import eu.excitementproject.eop.lap.LAPException;
+//import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
 public class EditDistanceEDATest {
@@ -51,7 +51,7 @@ public class EditDistanceEDATest {
 		}
 		*/
 		
-		ArrayList list = new ArrayList();
+		ArrayList<String> list = new ArrayList<String>();
 		
 		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
 				new EditDistanceEDA<IEditDistanceTEDecision>();
@@ -129,7 +129,7 @@ public class EditDistanceEDATest {
 		}
 	}
 	
-	public void scorer(ArrayList list) {
+	public void scorer(ArrayList<String> list) {
 	
 		float pos_corrt = 0f;
 		float pos_wrong = 0f;
@@ -137,11 +137,11 @@ public class EditDistanceEDATest {
 		float neg_wrong = 0f;
 		
 		
-		Iterator iterator = list.iterator();
+		Iterator<String> iterator = list.iterator();
 		
 		while(iterator.hasNext()) {	
 		
-			String line = (String)iterator.next();
+			String line = iterator.next();
 			
 			String[] items = line.split("\t");
 			//if (items.length != 4) {

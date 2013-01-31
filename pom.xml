@@ -15,6 +15,7 @@
 <!--     <module>engineml</module> -->
     <module>transformations</module>
     <module>biutee</module>
+    <module>gui</module>
   </modules>
   <dependencyManagement>
   	<dependencies>
