@@ -35,22 +35,22 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
  */
 public class WikiLexicalResourceDBServices {
 
-	private static final String JDBC_DRIVER_CLASS = "com.mysql.jdbc.Driver";
-	private static final WikiRuleScoreComparator RULE_RANK_AND_COOCURRENCE_COMPARATOR = new WikiRuleScoreComparator();
-	private static final String WILDCARD = "%";
+	protected static final String JDBC_DRIVER_CLASS = "com.mysql.jdbc.Driver";
+	protected static final WikiRuleScoreComparator RULE_RANK_AND_COOCURRENCE_COMPARATOR = new WikiRuleScoreComparator();
+	protected static final String WILDCARD = "%";
 
-	private final Double COOCURENCE_THRESHOLD;
-	private final PartOfSpeech NOUN ;
-	private final Set<WikiExtractionType> PERMITTED_EXTRACTION_TYPES;
+	protected final Double COOCURENCE_THRESHOLD;
+	protected final PartOfSpeech NOUN ;
+	protected final Set<WikiExtractionType> PERMITTED_EXTRACTION_TYPES;
 
-	private final PreparedStatement getRulesFromRightStmt;
-	private final PreparedStatement getRulesFromRightStmt2;
-	private final PreparedStatement getRulesFromLeftStmt;
-	private final PreparedStatement getRulesFromLeftStmt2;
-	private final PreparedStatement getRulesFromRightAndLeftStmt;
-	private final PreparedStatement getHeadRuleStmt;
+	protected final PreparedStatement getRulesFromRightStmt;
+	protected final PreparedStatement getRulesFromRightStmt2;
+	protected final PreparedStatement getRulesFromLeftStmt;
+	protected final PreparedStatement getRulesFromLeftStmt2;
+	protected final PreparedStatement getRulesFromRightAndLeftStmt;
+	protected final PreparedStatement getHeadRuleStmt;
 	
-	private Connection con;
+	protected Connection con;
 
 	//////////////////////////////////////////// SQL infrastructure for this class	/////////////////////////////////////////////////////////////////////
 
@@ -123,7 +123,7 @@ public class WikiLexicalResourceDBServices {
 	 * @param permittedExtractionTypes 
 	 * @throws LexicalResourceException 
 	 */
-	WikiLexicalResourceDBServices(String dbConnectionString, String dbUser, String dbPassword, Double cocurrence_threshold, 
+	protected WikiLexicalResourceDBServices(String dbConnectionString, String dbUser, String dbPassword, Double cocurrence_threshold, 
 			Set<WikiExtractionType> permittedExtractionTypes) throws LexicalResourceException 
 	{
 		// setup the prepared statements
@@ -249,7 +249,7 @@ public class WikiLexicalResourceDBServices {
 	 * @return
 	 * @throws LexicalResourceException 
 	 */
-	private LexicalRule<WikiRuleInfo> constructRule(ResultSet resultSet, String lemma, boolean lemmaIsOnTheRight) throws LexicalResourceException 
+	public LexicalRule<WikiRuleInfo> constructRule(ResultSet resultSet, String lemma, boolean lemmaIsOnTheRight) throws LexicalResourceException 
 	{
 		LexicalRule<WikiRuleInfo> rule = null;
 		
