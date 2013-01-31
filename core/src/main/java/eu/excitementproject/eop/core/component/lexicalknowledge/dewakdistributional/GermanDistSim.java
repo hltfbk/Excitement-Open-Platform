@@ -57,10 +57,8 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	 * @throws ComponentException
 	 */
 	public GermanDistSim(CommonConfig config) throws ConfigurationException, ComponentException {
-		// TODO CommonConfig not implemented yet -- this is how it MIGHT work. Change it later!
 		this(config.getSection("GermanDistSim").getString("similarityFilesPath"));
-		// TODO Remove the following line, if done.
-		throw new ComponentException("This method is not implemented yet.");
+//		this(config.getSection(getComponentName()).getString("similarityFilesPath"));
 	}
 	
 	/**
