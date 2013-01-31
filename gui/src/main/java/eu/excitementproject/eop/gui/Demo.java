@@ -171,7 +171,7 @@ public class Demo {
 			
 			String line = null, id;
 			String[] entDec;
-			Pattern p = Pattern.compile("^(.*pair id=\"(\\d)\") .* (task.*)$");
+			Pattern p = Pattern.compile("^(.*pair id=\"(\\d+)\") .* (task.*)$");
 			Matcher m;
 			
 			while ((line = reader.readLine()) != null) {
