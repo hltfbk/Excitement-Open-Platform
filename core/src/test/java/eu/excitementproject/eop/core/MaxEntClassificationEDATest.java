@@ -41,11 +41,11 @@ public class MaxEntClassificationEDATest {
 	
 	@Test
 	public void test() {		
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
-		File configFile = new File("./src/main/resources/MaxEntClassificationEDA_AllLexResPos_DE.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_EN.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_DE.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {
@@ -257,7 +257,7 @@ public class MaxEntClassificationEDATest {
 			// check the test data directory
 			meceda.initializeData(config, false, true);
 			
-			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName() + "_Result.txt"), "UTF-8"));
+			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName().replace("configuration-file", "results") + "_Result.txt"), "UTF-8"));
 			logger.info("build CASes for input sentence pairs:");
 			for (File file : (new File(meceda.getTestDIR())).listFiles()) {
 				// ignore all the non-xmi files
