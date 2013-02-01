@@ -69,7 +69,7 @@ public class BagOfWordsScoringTest {
 		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run.
 		
 		// test the configuration file
-		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {

@@ -23,7 +23,7 @@
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/MaxEntClassificationEDAModel_AllLexRes_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_AllLexRes_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
 		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
