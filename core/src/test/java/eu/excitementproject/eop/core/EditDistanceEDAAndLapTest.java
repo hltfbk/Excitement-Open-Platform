@@ -24,7 +24,7 @@
 		static Logger logger = Logger.getLogger(EditDistanceEDAAndLapTest.class
 				.getName());
 		
-		@Test
+		//@Test
 		public void test() {
 			// testLAP_DE() is a very very long test. (More than build process itself) 
 			// Commented for that reason. 
