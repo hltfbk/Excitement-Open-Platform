@@ -27,7 +27,7 @@ public class TestJMWN {
 		WordnetLexicalResource wnLexR = null;
 		Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
 		
-		String configurationFileName = "src/test/resources/";
+		String configurationFileName = "src/main/resources/";
 
 		String lLemma = "gigante";
 		String rLemma = "piccolo";

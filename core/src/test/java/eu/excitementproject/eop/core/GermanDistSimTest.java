@@ -57,7 +57,7 @@ public class GermanDistSimTest {
 		/* Testing init via CommonConfig */ 
 		gds=null; 
 		try {
-			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
+			File f = new File("./src/main/resources/german_resource_test_configuration.xml");
 			gds = new GermanDistSim(new ImplCommonConfig(f)); 
 		}
 		catch (GermanDistSimNotInstalledException e) {

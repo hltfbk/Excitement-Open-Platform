@@ -45,7 +45,7 @@
 			File outputDir = null;
 			
 			// generate XMI files for the training data
-			inputFile = new File("./src/test/resources/Italian_dev.xml");
+			inputFile = new File("./src/main/resources/Italian_dev.xml");
 			assertTrue(inputFile.exists());
 			outputDir = new File("./target/IT/dev/");
 			if (!outputDir.exists()) {
@@ -63,7 +63,7 @@
 			}
 			
 			// generate XMI files for the testing data
-			inputFile = new File("./src/test/resources/Italian_test.xml");
+			inputFile = new File("./src/main/resources/Italian_test.xml");
 			assertTrue(inputFile.exists());
 			outputDir = new File("./target/IT/test/");
 			if (!outputDir.exists()) {
