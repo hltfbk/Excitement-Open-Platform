@@ -58,7 +58,7 @@ public class EditDistanceEDATest {
 		
 		try {
 		
-			File configFile = new File("./src/test/resources/ITA_EditDistance_TokenEditDistance_configuration_file.xml");
+			File configFile = new File("./src/main/resources/ITA_EditDistance_TokenEditDistance_configuration_file.xml");
 			CommonConfig config = new ImplCommonConfig(configFile);
 		
 			editDistanceEDA.setTrain(true);

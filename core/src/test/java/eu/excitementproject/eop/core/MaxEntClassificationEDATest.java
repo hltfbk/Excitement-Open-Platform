@@ -41,7 +41,7 @@ public class MaxEntClassificationEDATest {
 	
 	@Test
 	public void test() {		
-		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
+		File configFile = new File("./src/main/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
 //		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_DE.xml");
 //		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml");
@@ -79,7 +79,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/test/resources/German_dev.xml");
+		inputFile = new File("./src/main/resources/German_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/dev/");
 		if (!outputDir.exists()) {
@@ -97,7 +97,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/test/resources/German_test.xml");
+		inputFile = new File("./src/main/resources/German_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/test/");
 		if (!outputDir.exists()) {
@@ -118,7 +118,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/test/resources/English_dev.xml");
+		inputFile = new File("./src/main/resources/English_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/dev/");
 		if (!outputDir.exists()) {
@@ -136,7 +136,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/test/resources/English_test.xml");
+		inputFile = new File("./src/main/resources/English_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/test/");
 		if (!outputDir.exists()) {

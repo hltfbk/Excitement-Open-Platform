@@ -71,7 +71,7 @@ public class TreeTaggerGermaNetIntegrationTest {
 			jcas1 = ae.newJCas();
 			
 		    //Let's load an XMI file and check it in a new CAS
-			File xmiFile = new File("./src/test/resources/TestTreeTaggerGermaNetIntegration.xmi");
+			File xmiFile = new File("./src/main/resources/TestTreeTaggerGermaNetIntegration.xmi");
 		    FileInputStream inputStream = new FileInputStream(xmiFile);
 		    XmiCasDeserializer.deserialize(inputStream, jcas1.getCas());
 		    inputStream.close();
