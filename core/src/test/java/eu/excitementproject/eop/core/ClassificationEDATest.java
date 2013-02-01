@@ -1,11 +1,10 @@
 package eu.excitementproject.eop.core;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
+import org.junit.Assume;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -28,8 +27,8 @@ public class ClassificationEDATest {
 			ceda.initialize(config);
 //			ceda.startTraining(config);
 			File modelFile = new File(ceda.getModelFile());
-			assertTrue(modelFile.exists());
 			logger.info("training done");
+			Assume.assumeTrue(modelFile.exists());
 			
 			// testing
 			OpenNLPTaggerEN lap = null; 
