@@ -9,7 +9,7 @@ import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 
 public class FixedWeightTokenEditDistanceTest {
 
-	@Test
+	//@Test
 	public void test() {
     	
         FixedWeightTokenEditDistance fixedEd
