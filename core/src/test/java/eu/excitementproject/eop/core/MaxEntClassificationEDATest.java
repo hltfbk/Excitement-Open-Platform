@@ -72,7 +72,6 @@ public class MaxEntClassificationEDATest {
 		testTesting_MultiTH(config);
 		testTesting_MultiTH_AND_Output(config);
 		 */
-		testTraining(config);
 	}
 	
 	public void testLAP_DE() {
