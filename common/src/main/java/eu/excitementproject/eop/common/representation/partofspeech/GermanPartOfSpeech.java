@@ -89,6 +89,9 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 			posTagString = "O";
 		} else if (posTagString.equals("PTKNEG")) {
 			posTagString = "O"; 
+		} else if (posTagString.equals("TRUNC")) {
+			// Rui: quick fix for the "illegal" POS tag
+			posTagString = "O"; 
 		}
 		
 		// do nothing for "ART", "CARD", "NN", since it has correct form already
