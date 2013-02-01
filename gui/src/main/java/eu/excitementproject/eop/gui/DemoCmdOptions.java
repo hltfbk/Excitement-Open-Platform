@@ -33,4 +33,8 @@ public class DemoCmdOptions {
 	
 	@Option(name="-output", usage="Directory for the run's output")
 	public String output = "";
+	
+	@Option(name="-dir", usage="Directory for the configuration files")
+	public String dir = "";
+
 }
