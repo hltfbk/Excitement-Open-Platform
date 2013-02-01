@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
@@ -79,6 +80,23 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	@Override
 	public String getComponentName() {
 		return "BagOfLexesScoringEN";
+	}
+	
+	public void close() throws ScoringComponentException {
+		try {
+			if (null != wnlrSet) {
+				for (WordnetLexicalResource wnlr : wnlrSet) {
+					wnlr.close();
+				}
+			}
+			if (null != volrSet) {
+				for (VerbOceanLexicalResource volr : volrSet) {
+					volr.close();
+				}
+			}
+		} catch (LexicalResourceCloseException e) {
+			throw new ScoringComponentException(e.getMessage());
+		}
 	}
 	
 	@Override
