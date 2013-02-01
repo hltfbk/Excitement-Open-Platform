@@ -41,10 +41,10 @@ public class MaxEntClassificationEDATest {
 	
 	@Test
 	public void test() {		
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
+		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
 //		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_DE.xml");
-		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml");
+//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml");
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {
@@ -156,7 +156,10 @@ public class MaxEntClassificationEDATest {
 		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
 		try {
 			meceda.startTraining(config);
-			logger.info("training done");
+			logger.info("training done.");
+			
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.warning(e.getMessage());
 		}
@@ -200,6 +203,9 @@ public class MaxEntClassificationEDATest {
 			ClassificationTEDecision decision2 = meceda.process(test2Cas);
 			logger.info(decision2.getDecision().toString());
 			logger.info(String.valueOf(decision2.getConfidence()));
+			
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
@@ -232,6 +238,9 @@ public class MaxEntClassificationEDATest {
 				sum ++;
 			}
 			logger.info("The correctly predicted pairs are " + correct + " / " + sum);
+			
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
@@ -267,6 +276,9 @@ public class MaxEntClassificationEDATest {
 				logger.info("Pair " + decision.getPairID() + " is done.");
 			}
 			output.close();
+			
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}

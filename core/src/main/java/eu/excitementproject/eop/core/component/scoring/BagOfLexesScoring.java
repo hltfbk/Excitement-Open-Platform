@@ -8,6 +8,7 @@ import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
@@ -119,6 +120,15 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	@Override
 	public String getComponentName() {
 		return "BagOfLexesScoring";
+	}
+	
+	public void close() throws ScoringComponentException {
+		try {
+			gds.close();
+			gnw.close();
+		} catch (LexicalResourceCloseException e) {
+			throw new ScoringComponentException(e.getMessage());
+		}
 	}
 
 	@Override
