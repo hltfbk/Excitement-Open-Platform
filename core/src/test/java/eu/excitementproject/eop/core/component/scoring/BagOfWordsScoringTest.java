@@ -34,8 +34,8 @@ public class BagOfWordsScoringTest {
 	
 	@Test
 	public void test() throws LexicalResourceException {
-//		testDE();
-		testEN();
+		testDE();
+//		testEN();
 	}
 
 	public void testDE() throws LexicalResourceException {
@@ -127,6 +127,14 @@ public class BagOfWordsScoringTest {
 		} catch (ScoringComponentException e) {
 			logger.info(e.getMessage());
 		}
+		
+		try {
+			bolexs.close();
+			bolexposs.close();
+			logger.info("Components and lexical resources are closed.");
+		} catch (ScoringComponentException e) {
+			logger.info(e.getMessage());
+		}
 	}
 	
 	public void testEN() throws LexicalResourceException {
@@ -182,6 +190,13 @@ public class BagOfWordsScoringTest {
 			 }
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
+		} catch (ScoringComponentException e) {
+			logger.info(e.getMessage());
+		}
+		
+		try {
+			bolexs.close();
+			logger.info("Components and lexical resources are closed.");
 		} catch (ScoringComponentException e) {
 			logger.info(e.getMessage());
 		}

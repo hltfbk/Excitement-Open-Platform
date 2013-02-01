@@ -40,6 +40,7 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
+import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
@@ -332,7 +333,16 @@ public class MaxEntClassificationEDA implements
 
 	@Override
 	public void shutdown() {
-		components.clear();
+		if (null != components) {
+			for (ScoringComponent comp : components) {
+				try {
+					((BagOfWordsScoring) comp).close();
+				} catch (ScoringComponentException e) {
+					logger.warning(e.getMessage());
+				}
+			}
+			components.clear();
+		}
 		modelFile = "";
 		trainDIR = "";
 		testDIR = "";

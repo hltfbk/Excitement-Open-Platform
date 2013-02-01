@@ -46,6 +46,10 @@ public class BagOfWordsScoring implements ScoringComponent {
 	public String getInstanceName() {
 		return null;
 	}
+	
+	public void close() throws ScoringComponentException{
+		
+	}
 
 	@Override
 	public Vector<Double> calculateScores(JCas cas)
