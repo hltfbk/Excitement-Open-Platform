@@ -52,6 +52,9 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 	 * @param posTagString a string that represents part-of-speech in STTS format.
 	 * @return the {@link CanonicalPosTag} that corresponds to the given STTS tag.
 	 */
+	
+	// Mapping STTS -> DKPro POS can be found at 
+	// http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/src/main/resources/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/de-stts-tagger.map
 	private String mapOntoStts(String posTagString) {
 
 		if (posTagString.startsWith("ADJ")) {
@@ -84,7 +87,13 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 			posTagString = "V";
 		} else if (posTagString.equals("XY")) {
 			posTagString = "O";
+		} else if (posTagString.equals("PTKNEG")) {
+			posTagString = "O"; 
+		} else if (posTagString.equals("TRUNC")) {
+			// Rui: quick fix for the "illegal" POS tag
+			posTagString = "O"; 
 		}
+		
 		// do nothing for "ART", "CARD", "NN", since it has correct form already
 		
 		return posTagString;

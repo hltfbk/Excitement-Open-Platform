@@ -143,7 +143,7 @@ public class MaxEntClassificationEDA implements
 			if (null == comp) {
 				throw new ConfigurationException("Wrong configuation: didn't find the corresponding setting for the component: " + component);
 			}
-			if (component.equals("BagOfLexesScoring") || component.equals("BagOfLexesPosScoring")) {
+			if (component.equals("BagOfLexesScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
 					if (comp.getInteger("withPOS") == 1) {
 						initializeLexCompsDE(config, true);
