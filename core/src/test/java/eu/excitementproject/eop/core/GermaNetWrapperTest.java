@@ -115,7 +115,7 @@ public class GermaNetWrapperTest {
 		// Test for CommonConfig passing 
 		gnw=null;
 		try {
-			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
+			File f = new File("./src/main/resources/german_resource_test_configuration.xml");
 			gnw = new GermaNetWrapper(new ImplCommonConfig(f)); 
 		}
 		catch (GermaNetNotInstalledException e) {

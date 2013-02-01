@@ -1,7 +1,7 @@
 <assembly>
     <id>bin</id>
     <formats>
-        <format>jar</format>
+        <format>zip</format>
     </formats>
     <includeBaseDirectory>true</includeBaseDirectory>
     <baseDirectory>EOP-${artifact.version}</baseDirectory>
@@ -12,9 +12,9 @@
                 <include>eu.excitementproject:common</include>
                 <include>eu.excitementproject:biutee</include>
                 <include>eu.excitementproject:lap</include>
-                <!--
+                
                 <include>eu.excitementproject:gui</include>
-                -->
+                
                 <include>eu.excitementproject:transformations</include>
             </includes>
             <binaries>

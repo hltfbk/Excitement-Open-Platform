@@ -181,7 +181,7 @@ public class EDAScorer {
 	@Test
 	public void test() {
 //		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml_Result.txt");
-		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexResPos_DE.xml_Result.txt");
+		File resultFile = new File("./src/main/resources/MaxEntClassificationEDA_AllLexResPos_DE.xml_Result.txt");
 //		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_EN.xml_Result.txt");
 //		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_DE.xml_Result.txt");
 //		File resultFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml_Result.txt");

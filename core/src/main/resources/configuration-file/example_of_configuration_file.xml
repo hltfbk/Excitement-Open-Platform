@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration [
+<!ENTITY myVar "Some common #PCDATA that can be reused... ">
+]>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">core.MyEDA</property>
+		<property name="language">EN</property>
+	</section>
+	
+	
+	<section name="PhoneticDistanceComponent">
+		<property name="KlingonDictionaryPath">$RESOURCE/VD/KDict.cvs</property>
+		<property name="beta">0.1</property>
+		
+		<subsection name="instance1">
+			<property name="consonantScore">1.0</property>
+			<property name="vowelScore">0.6</property>
+			<property name="alpha">0.17663311</property>
+		</subsection>
+	
+		<subsection name="instance2">
+			<property name="consonantScore">0.6</property>
+			<property name="vowelScore">1.0</property>
+			<property name="alpha">0.17663311</property>
+		</subsection>
+	</section>
+	
+	
+	<section name="core.MyEDA">
+		<property name="myLongKey">&myVar;</property>
+		<property name="someOption">PhoneticDistanceComponent,EditDistanceComponent</property>                    
+	</section>
+
+</configuration>
