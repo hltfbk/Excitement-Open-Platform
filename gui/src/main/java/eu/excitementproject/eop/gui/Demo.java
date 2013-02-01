@@ -42,8 +42,7 @@ public class Demo {
 	private static String lapAnnotDir = "./target/";
 	
 	private static String baseConfigFile = "configuration_example.xml";
-//	private static String configFileDir = "resources/";
-	private static String configFileDir = "../core/src/test/resources/";
+	private static String configFileDir = "./";
 	private static String configFile; 
 	
 	private static CommonConfig config;
@@ -65,8 +64,8 @@ public class Demo {
 			if (language.matches("IT")) {
 				lap = new TextProTaggerIT();
 			} else if (language.matches("EN")) {
-//				lap = new TreeTaggerEN();
-				lap = new OpenNLPTaggerEN();
+				lap = new TreeTaggerEN();
+//				lap = new OpenNLPTaggerEN();
 			} else if (language.matches("DE")) {
 				lap = new OpenNLPTaggerDE();
 			}		
@@ -307,6 +306,10 @@ public class Demo {
 		}
 		try{ 
 			parser.parseArgument(args);
+
+			if (! option.dir.isEmpty()) {
+				configFileDir = option.dir;
+			}
 			
 			initializeLAP(option.language);
 //			editConfigFile(option);
