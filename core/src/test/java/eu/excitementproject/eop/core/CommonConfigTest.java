@@ -15,7 +15,7 @@ public class CommonConfigTest {
 		
 		try {
 			
-			File f = new File("./src/main/resources/example_of_configuration_file.xml");
+			File f = new File("./src/test/resources/example_of_configuration_file.xml");
 			ImplCommonConfig commonConfig = new ImplCommonConfig(f);
 			
 			NameValueTable nameValueTable = commonConfig.getSection("core.MyEDA");

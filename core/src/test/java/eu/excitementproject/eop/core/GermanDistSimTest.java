@@ -57,7 +57,9 @@ public class GermanDistSimTest {
 		/* Testing init via CommonConfig */ 
 		gds=null; 
 		try {
-			File f = new File("./src/main/resources/german_resource_test_configuration.xml");
+			// An example configuration file that only holds two German lexical component
+			// configuration. 
+			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
 			gds = new GermanDistSim(new ImplCommonConfig(f)); 
 		}
 		catch (GermanDistSimNotInstalledException e) {
@@ -68,7 +70,7 @@ public class GermanDistSimTest {
 		{
 			e.printStackTrace(); 
 		}
-		
+		assertNotNull(gds); 
 		//Assume.assumeNotNull(gds); // Let's assume the file is correct. no need. 
 		
 		try {
