@@ -38,6 +38,7 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
+import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
@@ -142,9 +143,13 @@ public class MaxEntClassificationEDA implements
 			if (null == comp) {
 				throw new ConfigurationException("Wrong configuation: didn't find the corresponding setting for the component: " + component);
 			}
-			if (component.equals("BagOfLexesScoring")) {
+			if (component.equals("BagOfLexesScoring") || component.equals("BagOfLexesPosScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
-					initializeLexCompsDE(config);
+					if (comp.getInteger("withPOS") == 1) {
+						initializeLexCompsDE(config, true);
+					} else {
+						initializeLexCompsDE(config, false);
+					}
 				} else {
 					initializeLexCompsEN(comp);
 				}
@@ -160,9 +165,14 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 	
-	private void initializeLexCompsDE(CommonConfig config) throws ConfigurationException {
+	private void initializeLexCompsDE(CommonConfig config, boolean withPOS) throws ConfigurationException {
 		try {
-			ScoringComponent comp3 = new BagOfLexesScoring(config);
+			ScoringComponent comp3 = null;
+			if (withPOS) {
+				comp3 = new BagOfLexesPosScoring(config);
+			} else {
+				comp3 = new BagOfLexesScoring(config);
+			}
 			// check the number of features. if it's 0, no instantiation of the component.
 			if (((BagOfLexesScoring)comp3).getNumOfFeats() > 0) {
 				components.add(comp3);

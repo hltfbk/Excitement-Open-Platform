@@ -109,7 +109,8 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 			throw new UnsupportedPosTagStringException("posTagString must not be null");
 		}
 		catch (IllegalArgumentException e) {
-			throw new UnsupportedPosTagStringException("posTagString is not a valid GermanPartOfSpeech specifier");
+			// Rui: I changed this for debugging usage
+			throw new UnsupportedPosTagStringException(posTagString + " is not a valid GermanPartOfSpeech specifier");
 		}
 
 	}

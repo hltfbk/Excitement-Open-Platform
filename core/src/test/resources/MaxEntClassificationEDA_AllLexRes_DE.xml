@@ -18,6 +18,7 @@
 	</section>
 	
 	<section name="BagOfLexesScoring">
+		<property name="withPOS">1</property>
 		<property name="GermanDistSim"></property>
 		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
 	</section>
