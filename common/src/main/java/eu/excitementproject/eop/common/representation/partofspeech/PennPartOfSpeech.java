@@ -28,8 +28,10 @@ public class PennPartOfSpeech extends PartOfSpeech
 	 * All Penn pos tags
 	 */
 	public enum PennPosTag {
-		CC, CD, DT, EX, FW, IN, JJ, JJR, JJS, LCB, LRB, LS, MD, NN, NNS, NNP, NNPS, PDT, POS, PRP, PRP$, 
-		RB, RBR, RBS, RCB, RP, RRB, SYM, TO, UH, VB, VBD, VBG, VBN, VBP, VBZ, WDT, WP, WP$, WRB, PUNC, SYM1
+		CC, CD, DT, EX, FW, IN, JJ, JJR, JJS, LCB, LRB, LS, MD, NN, NNS, NNP, NNPS,
+		NP, NPS, PDT, POS, PP$, PP, PRP, PRP$, RB, RBR, RBS, RCB, RP, RRB, SENT,
+		SYM, TO, UH, VB, VBD, VBG, VBN, VBP, VBZ, VH, VHD, VHG, VHN, VHP, VHZ, VV,
+		VVD, VVG, VVN, VVP, VVZ, WDT, WP, WP$, WRB, PUNC, SYM1
 	};
 
 	public static final Set<String> PUNCTUATION;
@@ -66,19 +68,19 @@ public class PennPartOfSpeech extends PartOfSpeech
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NNP);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NNPS);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NN, PennPosTag.NNS);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NP);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NPS);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NPS);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.PDT);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.POS);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP$);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP$);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PRP$);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PRP);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RB);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RBR);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RBS);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.RP);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.SENT);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.SENT);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.SYM);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.TO);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.UH);
@@ -88,18 +90,18 @@ public class PennPartOfSpeech extends PartOfSpeech
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBN);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBP);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBZ);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VH);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHD);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHG);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHN);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHP);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHZ);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VV);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVD);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVG);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVN);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVP);
-//		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVZ);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VH);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHD);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHG);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHN);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHZ);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VV);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVD);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVG);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVN);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVP);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVZ);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.WDT);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.WP$);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.WP);
