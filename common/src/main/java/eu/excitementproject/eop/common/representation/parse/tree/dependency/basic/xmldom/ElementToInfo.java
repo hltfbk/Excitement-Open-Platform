@@ -39,11 +39,12 @@ import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException
  */
 public class ElementToInfo
 {
-	public ElementToInfo(XmlTreePartOfSpeechFactory posFactory, Element infoElement)
+	public ElementToInfo(boolean ignoreSavedCanonicalPosTag, XmlTreePartOfSpeechFactory posFactory, Element infoElement)
 	{
 		super();
 		this.posFactory = posFactory;
 		this.infoElement = infoElement;
+		this.ignoreSavedCanonicalPosTag = ignoreSavedCanonicalPosTag;
 	}
 
 
@@ -145,21 +146,27 @@ public class ElementToInfo
 				Element partOfSpeechElement = getChildElement(syntacticInfoElement, PartOfSpeech.class.getSimpleName());
 				if (markedAsExist(partOfSpeechElement))
 				{
-
-					String canonicalPosTagString = getTextOfElement(getChildElement(partOfSpeechElement, CanonicalPosTag.class.getSimpleName()));
-					CanonicalPosTag canonicalPosTag = null;
-					try{canonicalPosTag = CanonicalPosTag.valueOf(canonicalPosTagString);}
-					catch(IllegalArgumentException e){throw new TreeXmlException("Bad value for canonicalPosTag \""+canonicalPosTagString+"\"",e);}
-
 					String posString = getTextOfElement(getChildElement(partOfSpeechElement, POS_STRING_ELEMENT_NAME));
 
 					try
 					{
-						partOfSpeech = posFactory.createPartOfSpeech(canonicalPosTag, posString);
+						if (ignoreSavedCanonicalPosTag)
+						{
+							partOfSpeech = posFactory.createPartOfSpeech(posString);
+						}
+						else
+						{
+							String canonicalPosTagString = getTextOfElement(getChildElement(partOfSpeechElement, CanonicalPosTag.class.getSimpleName()));
+							CanonicalPosTag canonicalPosTag = null;
+							try{canonicalPosTag = CanonicalPosTag.valueOf(canonicalPosTagString);}
+							catch(IllegalArgumentException e){throw new TreeXmlException("Bad value for canonicalPosTag \""+canonicalPosTagString+"\"\n" +
+									"Try setting \"ignoreSavedCanonicalPosTag = true\"",e);}
+							partOfSpeech = posFactory.createPartOfSpeech(canonicalPosTag, posString);	
+						}
 					}
 					catch (UnsupportedPosTagStringException e)
 					{
-						throw new TreeXmlException("Malformed part of speech: "+posString+" / "+canonicalPosTag.name(),e);
+						throw new TreeXmlException("Malformed part of speech: "+posString,e);
 					}
 				}
 
@@ -236,6 +243,7 @@ public class ElementToInfo
 
 	
 
+	private boolean ignoreSavedCanonicalPosTag = false;
 	private XmlTreePartOfSpeechFactory posFactory;
 	private Element infoElement;
 	private boolean variable = false;
