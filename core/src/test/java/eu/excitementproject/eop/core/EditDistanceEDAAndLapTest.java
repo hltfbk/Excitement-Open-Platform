@@ -8,6 +8,7 @@
 
 	import org.apache.uima.jcas.JCas;
 	import org.junit.Test;
+	import org.junit.Ignore; 
 
 	import eu.excitementproject.eop.common.configuration.CommonConfig;
 	import eu.excitementproject.eop.lap.LAPAccess;
@@ -24,6 +25,7 @@
 		static Logger logger = Logger.getLogger(EditDistanceEDAAndLapTest.class
 				.getName());
 		
+		@Ignore
 		@Test
 		public void test() {
 			// testLAP_DE() is a very very long test. (More than build process itself) 
