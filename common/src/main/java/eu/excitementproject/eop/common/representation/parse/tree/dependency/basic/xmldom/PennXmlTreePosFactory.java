@@ -18,6 +18,12 @@ public class PennXmlTreePosFactory implements XmlTreePartOfSpeechFactory
 	public PartOfSpeech createPartOfSpeech(CanonicalPosTag canonicalPosTag,
 			String partOfSpeechRepresentation) throws UnsupportedPosTagStringException
 	{
+		return createPartOfSpeech(partOfSpeechRepresentation);
+	}
+
+	@Override
+	public PartOfSpeech createPartOfSpeech(String partOfSpeechRepresentation) throws UnsupportedPosTagStringException
+	{
 		return new PennPartOfSpeech(partOfSpeechRepresentation);
 	}
 
