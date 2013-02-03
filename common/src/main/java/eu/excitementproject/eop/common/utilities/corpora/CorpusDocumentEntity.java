@@ -3,6 +3,14 @@ package eu.excitementproject.eop.common.utilities.corpora;
 import java.util.List;
 
 /**
+ * Represents a document, and information about it.
+ * This information includes the {@link DocumentReader} (which can read
+ * the document contents), the document-relative-path - which is a path
+ * relative to the corpus main directory, and a free string of description.
+ * <P>
+ * This class is used by {@link CorpusReader}.
+ * 
+ * @see CorpusReader
  * 
  * @author Asher Stern
  * @since Oct 25, 2012

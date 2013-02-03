@@ -29,9 +29,10 @@ import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
  */
 public class ElementToTree
 {
-	public ElementToTree(XmlTreePartOfSpeechFactory posFactory, Element element)
+	public ElementToTree(boolean ignoreSavedCanonicalPosTag, XmlTreePartOfSpeechFactory posFactory, Element element)
 	{
 		super();
+		this.ignoreSavedCanonicalPosTag = ignoreSavedCanonicalPosTag;
 		this.posFactory = posFactory;
 		this.element = element;
 	}
@@ -84,7 +85,7 @@ public class ElementToTree
 //		Element infoElement = (Element) nodeListInfoElement.item(0);
 		
 		Element infoElement = XmlDomUtils.getChildElement(nodeElement, Info.class.getSimpleName());
-		ElementToInfo elementToInfo = new ElementToInfo(posFactory, infoElement);
+		ElementToInfo elementToInfo = new ElementToInfo(ignoreSavedCanonicalPosTag, posFactory, infoElement);
 		elementToInfo.createInfo();
 		Info info = elementToInfo.getInfo();
 		
@@ -162,7 +163,8 @@ public class ElementToTree
 		}
 		coreferenceInformation.addNodeToGroup(groupId, node);
 	}
-	
+
+	private boolean ignoreSavedCanonicalPosTag = false;
 	private XmlTreePartOfSpeechFactory posFactory;
 	private Element element;
 	
