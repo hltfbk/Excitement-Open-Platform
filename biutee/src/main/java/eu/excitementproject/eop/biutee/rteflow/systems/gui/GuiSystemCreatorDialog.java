@@ -139,7 +139,7 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 	
 	public boolean isUseF1Classifier() throws VisualTracingToolException
 	{
-		if (GUI_LOADS_LABELED_SAMPLES)
+		if (!GUI_LOADS_LABELED_SAMPLES)
 			throw new VisualTracingToolException("Internal Bug. Method isUseF1Classifier() should not be called when loading model from XML model file");
 		return useF1Classifier;
 	}
