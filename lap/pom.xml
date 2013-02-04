@@ -169,7 +169,7 @@
      <artifactId>
      de.tudarmstadt.ukp.dkpro.core.treetagger-bin
      </artifactId>
-     <version>20120912.0.32bit</version>
+     <version>20120912.0</version>
     </dependency>
     <dependency>
      <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
