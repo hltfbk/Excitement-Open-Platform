@@ -39,21 +39,27 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 
 	public static final String WIKIPEDIA_RESOURCE_NAME = "WIKIPEDIA";
 	
-	private static final String NAME = "name";
+	protected static final String NAME = "name";
 
-	private static final String PARAM_STOP_WORDS = "stop words";
+	protected static final String PARAM_STOP_WORDS = "stop words";
 
-	private static final String PARAM_EXTRACTION_TYPES = "extraction types to keep";
+	protected static final String PARAM_EXTRACTION_TYPES = "extraction types to keep";
 
-	private static final String PARAM_DB_CONN_STRING = "wikiKB DB url";
+	protected static final String PARAM_DB_CONN_STRING = "wikiKB DB url";
 
-	private static final String PARAM_COOCURRENCE_THRESHOLD = "cooccurrence threshold";
+	protected static final String PARAM_COOCURRENCE_THRESHOLD = "cooccurrence threshold";
 
-	private final Double COOCURENCE_THRESHOLD;
-	private final Set<String> STOP_WORDS;
-	private final WikiLexicalResourceDBServicesThreadSafe wikiDbServices;
+	protected Double COOCURENCE_THRESHOLD;
+	protected Set<String> STOP_WORDS;
+	protected final WikiLexicalResourceDBServicesThreadSafe wikiDbServices;
 
 	///////////////////////////////////////////// PUBLIC	////////////////////////////////////////////////////////////////////////////////
+	
+	public WikiLexicalResource() {
+		STOP_WORDS = null;
+		COOCURENCE_THRESHOLD = 0.0;
+		wikiDbServices = null;
+	}
 	
 	public WikiLexicalResource(ConfigurationParams params) throws LexicalResourceException, ConfigurationException
 	{
@@ -182,6 +188,7 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 	 * @return
 	 */
 	private boolean filterRule(LexicalRule<? extends WikiRuleInfo> rule, boolean getRuleForRight) {
+	  if (rule != null) {
 		String lhsLemma = rule.getLLemma();
 		String rhsLemma = rule.getRLemma();
 		double coocurenceScore = rule.getInfo().getCoocurenceScore();
@@ -203,6 +210,8 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 				//	Eyal 3.2.10 - reject rules entailing "name", cos it's regarded as a "transparent head" 
 				(!getRuleForRight && rhsLemma.equals(NAME))
 			);
+	  }
+	  return false;
 	}
 	
 	/**

@@ -1,0 +1,11 @@
+# FILE: ../lap/src/main/resources/TextPro/esempio
+# FIELDS: token	tokenstart	sentence	pos	lemma	entity
+Le	0	-	RP	det	O
+Beau	3	-	SPN	Beau	B-PER
+Serge	8	-	SPN	Serge	I-PER
+e	14	-	C	e	O
+stato	16	-	SS	stato	O
+diretto	22	-	AS	diretto	O
+da	30	-	E	da	O
+Chabrol	33	-	SPN	Chabrol	B-PER
+.	40	<eos>	XPS	full_stop	O

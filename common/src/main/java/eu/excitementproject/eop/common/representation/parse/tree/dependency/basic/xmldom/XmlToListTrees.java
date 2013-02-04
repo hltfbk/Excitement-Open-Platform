@@ -21,11 +21,16 @@ import org.xml.sax.SAXException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtilitiesException;
 import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
 
 
 /**
+ * Given an XML document which contains a parsed document, this class
+ * reads this XML, and returns the document as a list of parse-trees, along
+ * with coreference information.
  * 
  * @author Asher Stern
  * @since Oct 3, 2012
@@ -33,11 +38,29 @@ import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
  */
 public class XmlToListTrees
 {
+	/**
+	 * Constructor with the XML file name, which contains the parsed-document,
+	 * and the part-of-speech factory. 
+	 * For any file that was created prior to the migration-to-Excitement, it
+	 * is recommended to set the value of <code>ignoreSavedCanonicalPosTag</code>
+	 * to <tt>true</tt>.
+	 *  
+	 * @param xmlFileName the file which contains the parsed document.
+	 * @param ignoreSavedCanonicalPosTag <tt>true</tt> means that
+	 * the value of {@link CanonicalPosTag} saved in the file is ignored.
+	 * It is recommended to set it to true for any file that was created before
+	 * the migration of BIU code into Excitement.
+	 * 
+	 * @param posFactory A factory which creates a {@link PartOfSpeech} object from
+	 * a string (or from a string + canonical-pos-tag).
+	 */
 	public XmlToListTrees(String xmlFileName,
+			boolean ignoreSavedCanonicalPosTag,
 			XmlTreePartOfSpeechFactory posFactory)
 	{
 		super();
 		this.xmlFileName = xmlFileName;
+		this.ignoreSavedCanonicalPosTag = ignoreSavedCanonicalPosTag;
 		this.posFactory = posFactory;
 	}
 
@@ -112,7 +135,7 @@ public class XmlToListTrees
 	{
 		String sentence = getTextOfElement(getChildElement(treeAndSentenceElement, SENTENCE_ELEMENT_NAME));
 		Element treeElement = getChildElement(treeAndSentenceElement, BasicNode.class.getSimpleName());
-		ElementToTree elementToTree = new ElementToTree(posFactory,treeElement);
+		ElementToTree elementToTree = new ElementToTree(ignoreSavedCanonicalPosTag, posFactory,treeElement);
 		elementToTree.createTree();
 		BasicNode tree = elementToTree.getTree();
 		if (elementToTree.hasCoreferenceInformation())
@@ -163,6 +186,7 @@ public class XmlToListTrees
 	}
 
 	private String xmlFileName;
+	private boolean ignoreSavedCanonicalPosTag = false;
 	private XmlTreePartOfSpeechFactory posFactory;
 	
 	private Document document;

@@ -189,7 +189,7 @@ public class ImplCommonConfig extends CommonConfig
 									//System.out.println("propertyAttributeValue:" + propertyAttributeValue);
 									//System.out.println("propertyNodeValue:" + propertyNodeValue);
 									nameValueTable.setString(propertyAttributeValue, propertyNodeValue);
-									
+
 								}
 						
 							}

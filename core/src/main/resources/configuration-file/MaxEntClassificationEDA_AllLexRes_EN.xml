@@ -11,19 +11,19 @@
 		<property name="language">EN</property>
 	</section>
 	
-	<section name="Components">
-		<subsection name="BagOfWordsScoring">
-		</subsection>
-		<subsection name="BagOfLemmasScoring">
-		</subsection>
-		<subsection name="BagOfLexesScoring">
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="BagOfLemmasScoring">
+	</section>
+	
+	<section name="BagOfLexesScoring">
 			<property name="WordNetRelations">Hypernym,Synonym</property>
 			<property name="VerbOceanRelations">StrongerThan,CanResultIn,Similar</property>
-		</subsection>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/test/resources/MaxEntClassificationEDAModel_AllLexRes_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_AllLexRes_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
 		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>

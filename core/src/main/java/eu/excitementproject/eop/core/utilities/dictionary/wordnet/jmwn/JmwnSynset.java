@@ -1,3 +1,5 @@
+
+
 package eu.excitementproject.eop.core.utilities.dictionary.wordnet.jmwn;
 
 import java.util.ArrayList;
@@ -23,14 +25,14 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelatio
 public class JmwnSynset implements Synset {
 
 	/**
-	 * 
-	 */
+	*
+	*/
 	private static final long serialVersionUID = 7237110583140606492L;
 	
 	protected JmwnDictionary jmwnDictionary;
 	org.itc.mwn.Synset realSynset;
 	protected Set<String> words;
-
+	
 	JmwnSynset(JmwnDictionary jmwnDictionary, org.itc.mwn.Synset jmwnRealSynset) {
 		this.jmwnDictionary = jmwnDictionary;
 		this.realSynset = jmwnRealSynset;
@@ -40,8 +42,8 @@ public class JmwnSynset implements Synset {
 		Word[] words = realSynset.getWords();
 		if (words != null) {
 			List<SensedWord> sensedWords = new ArrayList<SensedWord>(words.length);
-			for (int i = 0; i < words.length; i++) 
-				sensedWords.add(new JmwnSensedWord(words[i], this.jmwnDictionary));
+			for (int i = 0; i < words.length; i++)
+			sensedWords.add(new JmwnSensedWord(words[i], this.jmwnDictionary));
 			return sensedWords;
 		}
 		return new ArrayList<SensedWord>(0);
@@ -52,23 +54,23 @@ public class JmwnSynset implements Synset {
 	}
 	
 	public Set<Synset> getAntonyms() throws WordNetException {
-		 return getNeighbors(WordNetRelation.ANTONYM);
+		return getNeighbors(WordNetRelation.ANTONYM);
 	}
-
+	
 	public Set<Synset> getAttributes() throws WordNetException {
 		return getNeighbors(WordNetRelation.ATTRIBUTE);
 	}
-
+	
 	public Set<Synset> getCauses() throws WordNetException {
 		return getNeighbors(WordNetRelation.CAUSE);
 	}
-
+	
 	public Set<Synset> getCoordinateTerms() throws WordNetException
 	{
 		try {
 			return getSetOfSynsets(PointerUtils.getInstance().getCoordinateTerms(this.realSynset));
 		} catch (Exception e) {
-			throw new WordNetException("See nested", e);
+		throw new WordNetException("See nested", e);
 		}
 	}
 	
@@ -77,7 +79,7 @@ public class JmwnSynset implements Synset {
 	{
 		return getNeighbors(WordNetRelation.DERIVED);
 	}
-
+	
 	/** not supported */
 	public Set<Synset> getEntailedBy() throws WordNetException
 	{
@@ -87,155 +89,163 @@ public class JmwnSynset implements Synset {
 	public Set<Synset> getEntailments() throws WordNetException {
 		return getNeighbors(WordNetRelation.ENTAILMENT);
 	}
-
+	
 	public String getGloss() throws WordNetException {
 		return this.realSynset.getGloss();
 	}
-
+	
 	public Set<Synset> getHolonyms() throws WordNetException {
 		try {
 			return getSetOfSynsets(org.itc.mwn.PointerUtils.getInstance().getHolonyms(this.realSynset));
 		} catch (Exception e) {
-			throw new WordNetException("See nested", e);
+		throw new WordNetException("See nested", e);
 		}
 	}
-
+	
 	public Set<Synset> getHypernyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.HYPERNYM);
 	}
-
+	
 	public Set<Synset> getHyponyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.HYPONYM);
 	}
-
+	
 	public Set<Synset> getMemberHolonyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.MEMBER_HOLONYM);
 	}
-
+	
 	public Set<Synset> getMemberMeronyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.MEMBER_MERONYM);
 	}
-
+	
 	public Set<Synset> getMeronyms() throws WordNetException {
-		try {
+	try {
 			return getSetOfSynsets(PointerUtils.getInstance().getMeronyms(this.realSynset));
 		} catch (Exception e) {
-			throw new WordNetException("See nested", e);
-		}
+		throw new WordNetException("See nested", e);
 	}
-
+	}
+	
 	public Set<Synset> getNeighbors(WordNetRelation relationType)
-			throws WordNetException {
+	throws WordNetException {
 		return getRelatedSynsets(relationType, 1);
 	}
 	
-
+	
 	// The offset in MultiWordNet also contains the part of speech
 	public long getOffset() throws WordNetException {
 		String mwnOffset = realSynset.getOffset();
-/*		if (mwnOffset.matches("\\w\\#\\d+")) {
-			return Long.parseLong(realSynset.getOffset().substring(mwnOffset.indexOf("#")+1));
-		} 
+		/* if (mwnOffset.matches("\\w\\#\\d+")) {
+		return Long.parseLong(realSynset.getOffset().substring(mwnOffset.indexOf("#")+1));
+		}
 		*/
 		Pattern p = Pattern.compile(".*?(\\d+)");
 		Matcher pm = p.matcher(mwnOffset);
 		if (pm.matches()) {
+			// System.out.println("Offset found: " + pm.group(1));
 			return Long.parseLong(pm.group(1));
 		}
-		
+	
 		System.err.println("malformed offset for synset " + this.getWords());
 		throw new WordNetException("Malformed offset: " + mwnOffset + " for synset " + this.getWords());
 	}
-
+	
 	public Set<Synset> getPartHolonyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.PART_HOLONYM);
 	}
-
+	
 	public Set<Synset> getPartMeronyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.PART_MERONYM);
 	}
-
+	
 	public WordNetPartOfSpeech getPartOfSpeech() throws WordNetException {
 		return JmwnUtils.getWordNetPartOfSpeech(this.realSynset.getPOS());
 	}
-
+	
 	public Set<Synset> getRelatedSynsets(WordNetRelation relation,
-			int chainingLength) throws WordNetException {
-				
+		int chainingLength) throws WordNetException {
+		
+		// System.out.println("Getting related synsets for " + this.getGloss() + "\n\t relation: " + relation.name());
+		
 		if (chainingLength < 1)
 			throw new WordNetException("chaining length must be positive. I got " + chainingLength);
 		if (WordNetRelation.STRICT_2ND_DEGREE_COUSIN.equals(relation))
 			throw new WordNetMethodNotSupportedException("Extracting cousin relations is currently not supported by JwnlDictionary. Use JwiDictionary instead");
 		org.itc.mwn.PointerType pointerType = JmwnUtils.wordNetRelationToPointerType(relation);
 		
-		if (pointerType == null)		
+		if (pointerType == null) {
 			// some relations (inc. SYNONYM) have no neighbors, cos they have no matching JMWN relation
 			// other relations just don't exist in ext JMWN
 			return new HashSet<Synset>();
-		else
-		{
+		} else {
+			// System.out.println("Relation type found: " + pointerType.getLabel());
 			if (!relation.isTransitive())
-				chainingLength = 1;			// most relations make no sense when chained
-			try {	return getSetOfSynsets(PointerUtils.getInstance().gatherPointerTargets(realSynset, pointerType, chainingLength));	}
-			catch (Exception e) { throw new WordNetException("see nested" , e);	}
+				chainingLength = 1; // most relations make no sense when chained
+			try { return getSetOfSynsets(PointerUtils.getInstance().gatherPointerTargets(realSynset, pointerType, chainingLength)); }
+			catch (Exception e) { throw new WordNetException("see nested" , e); }
 		}
 	}
-
+	
 	public Set<Synset> getSubstanceHolonyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.SUBSTANCE_HOLONYM);
 	}
-
+	
 	public Set<Synset> getSubstanceMeronyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.SUBSTANCE_MERONYM);
 	}
-
+	
 	public Set<Synset> getSynonyms() throws WordNetException {
 		return getNeighbors(WordNetRelation.SYNONYM);
 	}
-
+	
 	public long getUsageOf(String word) throws WordNetException {
 		// not sure how to get this from MultiWordNet
 		return 0;
 	}
-
+	
 	public Set<Synset> getVerbGroup() throws WordNetException {
 		return getNeighbors(WordNetRelation.VERB_GROUP);
 	}
-
+	
 	public Set<String> getWords() throws WordNetException {
 		if (words == null) {
 			words = new HashSet<String>();
 			Word[] mwnWords = this.realSynset.getWords();
 			if (mwnWords != null) {
 				for(int i = 0; i < mwnWords.length; i++) {
-//				for (org.itc.mwn.Word word : this.realSynset.getWords()) {
-//					String lemma = word.getLemma();
+					// for (org.itc.mwn.Word word : this.realSynset.getWords()) {
+					// String lemma = word.getLemma();
 					String lemma = mwnWords[i].getLemma();
 					lemma = lemma.replaceAll("_", " ");
 					words.add(lemma);
 				}
 			}
 		}
-		return new HashSet<String>(words); 
+		return new HashSet<String>(words);
 	}
-
+	
 	public List<WordAndUsage> getWordsAndUsages() throws WordNetException {
 		// Not sure how to get this from MultiWordNet
 		return null;
 	}
-
+	
 	
 	protected Set<Synset> getSetOfSynsets(org.itc.mwn.PointerTarget[] list) {
-		if (null==list) 
+		if (null==list)
 			return null;
 		Set<Synset> ret = new HashSet<Synset>();
+		
 		for (int i=0; i < list.length; i++) {
-			ret.add(new JmwnSynset(this.jmwnDictionary,(org.itc.mwn.Synset)list[i]));
+			if (list[i] != null) {
+				// System.out.println(this.getClass().toString() + " word: " + list[i].getDescription());
+				ret.add(new JmwnSynset(this.jmwnDictionary,(org.itc.mwn.Synset)list[i]));
+			}
 		}
-		return ret;
+	
+	return ret;
 	}
-
-
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -250,24 +260,24 @@ public class JmwnSynset implements Synset {
 				return false;
 			return true;
 		} else {
-			try {
-				if (this.getOffset() == other.getOffset())
-					return true;
-			} catch (Exception e) {
-				System.err.println("Problems checking JMWN synset equality: ");
-				e.printStackTrace();
-			}
-			return false;
+		try {
+			if (this.getOffset() == other.getOffset())
+				return true;
+		} catch (Exception e) {
+		System.err.println("Problems checking JMWN synset equality: ");
+		e.printStackTrace();
 		}
-			
-		//	if (!realSynset.equals(other.realSynset))
-		//	return false;
-		// return true;
+		return false;
 	}
-
+	
+	// if (!realSynset.equals(other.realSynset))
+	// return false;
+	// return true;
+	}
+	
 	public LexicographerFileInformation getLexicographerFileInformation() throws WordNetException {
 		// TODO Auto-generated method stub
 		throw new WordNetException("MultiWordNet does not have lexicographer file information");
 	}
-	
+
 }

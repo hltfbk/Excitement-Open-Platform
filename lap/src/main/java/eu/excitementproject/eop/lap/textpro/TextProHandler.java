@@ -34,7 +34,7 @@ public class TextProHandler {
 //    private static final String TEMP_FILENAME_LOG = TEMP_FILENAME + ".log";
     
     //directory dei file temporanei
-    private static final String TEMP_PATH = "src/main/resources/TextPro/";
+    private static final String TEMP_PATH = "../lap/src/main/resources/TextPro/";
     //private static final String TEMP_PATH = "/home/k9/Desktop/TextProLinux1.4.3/tmp/";
     
     //Variabili Globali: TEXTPRO, YAMCHA_HOME e PATH
