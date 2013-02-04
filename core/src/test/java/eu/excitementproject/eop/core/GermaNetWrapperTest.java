@@ -32,7 +32,6 @@ public class GermaNetWrapperTest {
 		
 		GermaNetWrapper gnw=null;
 		try {
-			// TODO: in the future, this test code also should read from the common config. 
 			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
 		}
 		catch (GermaNetNotInstalledException e) {
@@ -111,7 +110,6 @@ public class GermaNetWrapperTest {
 			e.printStackTrace(); 
 		}
 		
-		
 		// Test for CommonConfig passing 
 		gnw=null;
 		try {
@@ -160,6 +158,44 @@ public class GermaNetWrapperTest {
 		{
 			assertTrue(list1.get(i).getLLemma().equals(list2.get(i).getLLemma())); 
 			assertTrue(list1.get(i).getRLemma().equals(list2.get(i).getRLemma())); 			
+		}
+		
+		// checking that no antonym in getRulesForLeft() 
+		try{
+			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", null)) {
+				assertTrue(rule.getLLemma().equals("Hitze"));
+				assertFalse(rule.getRLemma().equals("Kälte")); // no "Kaelte" should be here.  
+				assertTrue(rule.getConfidence() > 0);
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+				
+		// check that no 0 confidence value returns 
+		try {// Initiating with "no hypernym" (0 confidence on hypernym)  
+			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/", 1.0, 1.0, 0.0, 1.0);
+		}
+		catch (GermaNetNotInstalledException e) {
+			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
+			//throw e;
+		}
+		catch(BaseException e)
+		{
+			e.printStackTrace(); 
+		}
+
+		// there should be no hypernym RHS, neither anyone with 0 confidence. 
+		try{
+			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hund", null)) {
+				assertTrue(rule.getConfidence() > 0);
+				assertFalse(rule.getRelation().equals("has_hypernym")); 
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
 		}
 		
 	}
