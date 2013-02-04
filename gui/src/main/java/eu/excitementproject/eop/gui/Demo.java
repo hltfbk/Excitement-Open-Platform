@@ -14,6 +14,7 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -162,8 +163,9 @@ public class Demo {
 		
 		HashMap<String,String> results = readResults(resultsFile);
 		try {
-			InputStream in = Files.newInputStream(Paths.get(testFile));
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			BufferedReader reader = Files.newBufferedReader(Paths.get(testFile), StandardCharsets.UTF_8);
+			//InputStream in = Files.newInputStream(Paths.get(testFile));
+			//BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			
 			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
@@ -187,7 +189,7 @@ public class Demo {
 			writer.close();
 			out.close();
 			reader.close();
-			in.close();
+			//in.close();
 		} catch (IOException e) {
 			System.out.println("Problems reading test file " + testFile);
 			e.printStackTrace();
