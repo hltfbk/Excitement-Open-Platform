@@ -13,7 +13,7 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 public class TextProTaggerITTest {
 
 	@Test
-	public void test() {				
+	public void test() {
 		
 		LAPAccess lap = null;
 		JCas aJCas = null;

@@ -59,8 +59,6 @@ public class EditDistanceEDA<T extends TEDecision>
 	private double threshold;
 	// the edit distance component to be used
 	private DistanceCalculation component;
-	// this is a temporary training set to train and test the system
-	private List<JCas> trainingSet;
 	
 	static Logger logger = Logger.getLogger(EditDistanceEDA.class
 			.getName());
@@ -118,7 +116,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public EditDistanceEDA() {
     	
-		this.threshold = 0.0;
+		this.threshold = -1.0;
 		this.component = null;
 		
     }
@@ -170,13 +168,12 @@ public class EditDistanceEDA<T extends TEDecision>
 			//nameValueTable = config.getSection("FixedWeightTokenEditDistance");
 			component = new FixedWeightTokenEditDistance(config);
 			
-			
+		} catch (ConfigurationException e) {
+			throw e;
+		} catch (ComponentException e) {
+			throw e;
 		} catch (Exception e) {
 			throw new EDAException(e.getMessage());
-		//} catch (ConfigurationException e) {
-			//throw e;
-//		} catch (ComponentException e) {
-//			throw e;
 		}
 		
 	}
@@ -187,6 +184,16 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public IEditDistanceTEDecision process(JCas jcas) throws EDAException, ComponentException {
 		
+		try {
+			if (threshold == -1.0) {
+				//System.err.println("loading model ...");
+				threshold = loadModel(new File(modelFile));
+				//System.err.println("done.");
+			}
+		} catch(IOException e) {
+			throw new EDAException(e.getMessage());
+		}
+			
 		String pairId = getPairId(jcas);
 		
 		DistanceValue distanceValue =  component.calculation(jcas);
@@ -210,7 +217,8 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public void shutdown() {
 		
-		trainingSet.clear();
+		if (component.getComponentName().equals("FixedWeightTokenEditDistance"))
+			((FixedWeightTokenEditDistance)component).shutdown();
 		
 	}
 	
@@ -223,11 +231,11 @@ public class EditDistanceEDA<T extends TEDecision>
 		try {
 			logger.info("The trained model will be stored in "
 					+ modelFile);
-			logger.info("start training ...");
-			threshold = loadModel(new File(modelFile));
+			logger.info("Start training ...");
+			//threshold = loadModel(new File(modelFile));
 			List<DistanceValue> distanceValueList = new ArrayList<DistanceValue>();
 			List<String> entailmentValueList = new ArrayList<String>();
-			System.err.println(trainDIR);
+			
 			for (File xmi : (new File(trainDIR)).listFiles()) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
@@ -236,7 +244,6 @@ public class EditDistanceEDA<T extends TEDecision>
 				getDistanceValues(cas, distanceValueList);
 				getEntailmentAnnotation(cas, entailmentValueList);
 				//System.err.println(distanceValueList.size());
-				
 			}
 			
 			threshold = sequentialSearch(distanceValueList, entailmentValueList);
@@ -244,7 +251,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			saveModel(new File(modelFile), threshold);
 			// System.err.println("threshold:" + threshold);
 			
-			logger.info("training done.");
+			logger.info("done.");
 			
 		} catch (ConfigurationException e) {
 			throw e;
@@ -322,7 +329,7 @@ public class EditDistanceEDA<T extends TEDecision>
 
 			// Searching the threshold begins at a lower bound (i.e. min) and
 			// increments by a step size up to an upper bound (i.e. max). 
-			System.err.println("min:" + min + "\t" + "max:" +max + "\t" + "invrement:" + increment);
+			//System.err.println("min:" + min + "\t" + "max:" +max + "\t" + "invrement:" + increment);
 			for (double i = min; i <= max; i = i + increment) {
 				for (int j = 0; j < distanceValueList.size(); j++) {
 					double distanceValue = distanceValueList.get(j).getDistance();
@@ -359,7 +366,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			throw e;
 		}
 		
-		System.err.println("done.");
+		//System.err.println("done.");
 		return threshold;
 		
 	}
@@ -627,7 +634,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	
 	public void saveModel(File modelFile, double threshold) throws IOException {
     	
-		System.err.println("save model:" + modelFile.getCanonicalPath());
+		//System.err.println("save model:" + modelFile.getCanonicalPath());
 		
     	BufferedWriter writer = null;
     	
