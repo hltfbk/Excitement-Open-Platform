@@ -2,7 +2,6 @@ package eu.excitementproject.eop.core.component.distance;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
-import org.junit.Ignore;
 import static org.junit.Assert.*;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
@@ -10,7 +9,6 @@ import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 
 public class FixedWeightTokenEditDistanceTest {
 
-	@Ignore
 	@Test
 	public void test() {
     	
@@ -30,7 +28,7 @@ public class FixedWeightTokenEditDistanceTest {
         }
         try {
         	
-        	System.out.println(fixedEd.calculation(mycas).getDistance());
+        	//System.out.println(fixedEd.calculation(mycas).getDistance());
         	assertTrue(fixedEd.calculation(mycas).getDistance() == 0.19230769230769232);
         	
         } catch(Exception e) {

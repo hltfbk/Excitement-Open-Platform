@@ -40,14 +40,15 @@
 			
 		}
 		
-		//@Test 
+		@Ignore
+		@Test 
 		public void testLAP_IT() {
 			
 			File inputFile = null;
 			File outputDir = null;
 			
 			// generate XMI files for the training data
-			inputFile = new File("./src/main/resources/Italian_dev.xml");
+			inputFile = new File("./src/main/resources/data-set/Italian_dev.xml");
 			assertTrue(inputFile.exists());
 			outputDir = new File("./target/IT/dev/");
 			if (!outputDir.exists()) {
@@ -65,7 +66,7 @@
 			}
 			
 			// generate XMI files for the testing data
-			inputFile = new File("./src/main/resources/Italian_test.xml");
+			inputFile = new File("./src/main/resources/data-set/Italian_test.xml");
 			assertTrue(inputFile.exists());
 			outputDir = new File("./target/IT/test/");
 			if (!outputDir.exists()) {
@@ -81,8 +82,8 @@
 			}
 		}
 		
-		//@Test
-		//
+		@Ignore
+		@Test
 		public void testTraining_IT() {
 			File trainingDir = null;
 			trainingDir = new File("./target/IT/dev/");
@@ -108,7 +109,9 @@
 			}
 		}
 		
-		//@Test
+		
+		@Ignore
+		@Test
 		public void testTesting_SingleTH_IT() {
 			
 			@SuppressWarnings("rawtypes")
