@@ -63,13 +63,13 @@ public class JmwnSensedWord implements SensedWord {
 
 	public Set<SensedWord> getNeighborSensedWords(WordNetRelation relation) throws WordNetException {
 		Set<SensedWord> sensedWords = new HashSet<SensedWord>();
-		System.out.println(this.getClass() + " : " + this.getWord());
+		//System.out.println(this.getClass() + " : " + this.getWord());
 		if (relation.isLexical()) {
-			System.out.println( "\t\t" + relation.name());
+			//System.out.println( "\t\t" + relation.name());
 			PointerType pointerType = JmwnUtils.wordNetRelationToPointerType(relation);
 			if (pointerType != null) {
 				Pointer[] pointers = wordObj.getPointers(pointerType);
-				System.out.println("Found pointers: " + pointers.length);
+				//System.out.println("Found pointers: " + pointers.length);
 				for (Pointer pointer: pointers) { 
 					try {
 						sensedWords.add(new JmwnSensedWord(((Word) pointer.getTarget()), dictionary));
