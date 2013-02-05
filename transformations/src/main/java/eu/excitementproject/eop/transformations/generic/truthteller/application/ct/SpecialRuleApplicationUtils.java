@@ -9,6 +9,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech.PennPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.generic.truthteller.TruthTellerConstants;
@@ -132,7 +133,7 @@ public class SpecialRuleApplicationUtils {
 	private static ExtendedConstructionNode skipPrepositionNodes(ExtendedConstructionNode node, StanfordDepedencyRelationType relation) throws AnnotatorException {
 		ExtendedConstructionNode ret;
 		if (	!relation.equals(StanfordDepedencyRelationType.prep) || 
-				!ExtendedInfoGetFields.getCanonicalPartOfSpeech(node.getInfo()).equals(SimplerCanonicalPosTag.PREPOSITION) || 
+				!SimplerPosTagConvertor.simplerPos(ExtendedInfoGetFields.getCanonicalPartOfSpeech(node.getInfo())).equals(SimplerCanonicalPosTag.PREPOSITION) || 
 				!node.hasChildren())
 			// in case this node is not a 'prep', nor a PREPOSITION, or has no children (a parser error, but a benign one), it doesn't get any special prep-skipping 
 			// treatment and is returned as is.
