@@ -11,22 +11,16 @@
 		<property name="language">EN</property>
 	</section>
 	
-	<section name="BagOfWordsScoring">
-	</section>
-	
-	<section name="BagOfLemmasScoring">
-	</section>
-	
 	<section name="BagOfLexesScoring">
 			<property name="WordNetRelations">HYPERNYM,SYNONYM,PART_HOLONYM</property>
 			<property name="VerbOceanRelations">StrongerThan,CanResultIn,Similar</property>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_AllLexRes_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_OnlyLexRes_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
+		<property name="Components">BagOfLexesScoring</property>
 	</section>
 
 </configuration>

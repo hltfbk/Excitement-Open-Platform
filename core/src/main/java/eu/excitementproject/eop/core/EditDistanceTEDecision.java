@@ -5,14 +5,17 @@ import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 
 public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 
-	private DecisionLabel decisionLabel = null;
-	private String pairId = null;
-	private double confidence = IEditDistanceTEDecision.CONFIDENCE_NOT_AVAILABLE;
+	private DecisionLabel decisionLabel;
+	private String pairId;
+	//private double score;
+	private double confidence;
 	
 	public EditDistanceTEDecision (DecisionLabel decisionLabel, String pairId) {
 		
 		this.decisionLabel = decisionLabel;
 		this.pairId = pairId;
+		//this.score = 0.0;
+		this.confidence = IEditDistanceTEDecision.CONFIDENCE_NOT_AVAILABLE;
 		
 	}
 	
@@ -20,6 +23,7 @@ public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 		
 		this.decisionLabel = decisionLabel;
 		this.pairId = pairId;
+		//this.score = score;
 		this.confidence = confidence;
 		
 	}
@@ -35,6 +39,12 @@ public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 		return this.confidence;
 		
 	}
+	
+	//public double getScore() {
+		
+		//return this.score;
+		
+	//}
 	
 	public String getPairID() {
 		

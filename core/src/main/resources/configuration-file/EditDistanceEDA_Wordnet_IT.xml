@@ -11,7 +11,7 @@
 	    <property name="instances">instance1</property>
 		<subsection name="instance1">
 			<property name="stopWordRemoval">true</property>
-			<property name="multiWordnet">true</property>
+			<property name="multiWordnet">/configuration-file/</property>
 		</subsection>
 	</section>	
 		
