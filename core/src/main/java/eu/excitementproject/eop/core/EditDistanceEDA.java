@@ -240,6 +240,7 @@ public class EditDistanceEDA<T extends TEDecision>
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
 				}
+				
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
 				getDistanceValues(cas, distanceValueList);
 				getEntailmentAnnotation(cas, entailmentValueList);
@@ -288,7 +289,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	private double sequentialSearch(List<DistanceValue> distanceValueList, List<String> entailmentValueList) 
 			throws ComponentException, EDAException, Exception {
 		
-		System.err.println("sequential serach ...");
+		//System.err.println("sequential search ...");
 		
 		double threshold = 0.0;
 		
@@ -300,10 +301,10 @@ public class EditDistanceEDA<T extends TEDecision>
 			// the distanceValueList sorted in increasing order
 			List<DistanceValue> sortedDistanceValueList = sortDistanceValues(distanceValueList);
 			
-			System.err.println(sortedDistanceValueList.get(0).getDistance());
-			System.err.println(sortedDistanceValueList.get(1).getDistance());
-			System.err.println(sortedDistanceValueList.get(2).getDistance());
-			System.err.println(sortedDistanceValueList.get(3).getDistance());
+			//System.err.println(sortedDistanceValueList.get(0).getDistance());
+			//System.err.println(sortedDistanceValueList.get(1).getDistance());
+			//System.err.println(sortedDistanceValueList.get(2).getDistance());
+			//System.err.println(sortedDistanceValueList.get(3).getDistance());
 			//System.exit(0);
 			
 			// get the smallest distance value. It is the first element of the array.
@@ -329,7 +330,7 @@ public class EditDistanceEDA<T extends TEDecision>
 
 			// Searching the threshold begins at a lower bound (i.e. min) and
 			// increments by a step size up to an upper bound (i.e. max). 
-			//System.err.println("min:" + min + "\t" + "max:" +max + "\t" + "invrement:" + increment);
+			//System.err.println("min:" + min + "\t" + "max:" +max + "\t" + "increment:" + increment);
 			for (double i = min; i <= max; i = i + increment) {
 				for (int j = 0; j < distanceValueList.size(); j++) {
 					double distanceValue = distanceValueList.get(j).getDistance();
@@ -357,6 +358,9 @@ public class EditDistanceEDA<T extends TEDecision>
 				fn = 0;
 						 	
 			}
+			
+			//System.err.println(maxAccuracy);
+			//System.err.println(threshold);
 			
 		//} catch(EDAException e) {
 			//throw e;
@@ -620,7 +624,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			}
 		
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			//System.err.println(e.getMessage());
 			throw new IOException(e.getMessage());
 		} finally { 
 			if (reader != null)
@@ -649,7 +653,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	    	printout.close();
 	    	
     	} catch (Exception e) {
-    		System.err.println(e.getMessage());
+    		//System.err.println(e.getMessage());
     		throw new IOException(e.getMessage());
     	} finally {
     		if (writer != null)

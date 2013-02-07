@@ -15,6 +15,7 @@
 	import eu.excitementproject.eop.lap.LAPException;
 	import eu.excitementproject.eop.lap.PlatformCASProber;
 	import eu.excitementproject.eop.lap.textpro.*;
+	//import eu.excitementproject.eop.lap.dkpro.*;
 	import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 
 	/**
@@ -48,9 +49,14 @@
 			File outputDir = null;
 			
 			// generate XMI files for the training data
-			inputFile = new File("./src/main/resources/data-set/Italian_dev.xml");
-			assertTrue(inputFile.exists());
+			//inputFile = new File("./src/main/resources/data-set/Italian_dev.xml");
+			//inputFile = new File("./src/main/resources/data-set/English_dev.xml");
+			//inputFile = new File("./src/main/resources/data-set/German_dev.xml");
+			//assertTrue(inputFile.exists());
 			outputDir = new File("./target/IT/dev/");
+			//outputDir = new File("./target/ENG/dev/");
+			//outputDir = new File("./target/GER/dev/");
+			
 			if (!outputDir.exists()) {
 				outputDir.mkdirs();
 			}
@@ -60,15 +66,21 @@
 
 			try {
 				lap = new LAP_TextPro();
+				//lap = new TreeTaggerEN();
 				lap.processRawInputFormat(inputFile, outputDir);
 			} catch (LAPException e) {
 				logger.info(e.getMessage());
 			}
 			
 			// generate XMI files for the testing data
-			inputFile = new File("./src/main/resources/data-set/Italian_test.xml");
+			//inputFile = new File("./src/main/resources/data-set/Italian_test.xml");
+			//inputFile = new File("./src/main/resources/data-set/English_test.xml");
+			inputFile = new File("./src/main/resources/data-set/German_test.xml");
 			assertTrue(inputFile.exists());
 			outputDir = new File("./target/IT/test/");
+			//outputDir = new File("./target/ENG/test/");
+			//outputDir = new File("./target/GER/test/");
+			
 			if (!outputDir.exists()) {
 				outputDir.mkdirs();
 			}
@@ -76,6 +88,8 @@
 			
 			try {
 				lap = new LAP_TextPro();
+				//lap = new TreeTaggerEN();
+				//lap = new TreeTaggerDE();
 				lap.processRawInputFormat(inputFile, outputDir);
 			} catch (LAPException e) {
 				logger.info(e.getMessage());
