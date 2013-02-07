@@ -34,7 +34,12 @@ EnglishSingleTreeParser // for backward compatibility
 	public static final String URL_PROTOCOL = "http";
 	public static final String URL_FILE = "/parse";
 	public static final String DEFAULT_HOST = "localhost";
-	public static final int DEFAULT_PORT = 8080;
+	
+	// Needs to be a constant String, for use in UimaFit's annotation @ConfigurationParameter
+	public static final String DEFAULT_PORT_STR = "8080";
+	
+	// Preserving the old const, as a calculation of the above String const
+	public static final int DEFAULT_PORT = Integer.parseInt(DEFAULT_PORT_STR);
 	
 	
 	/**
