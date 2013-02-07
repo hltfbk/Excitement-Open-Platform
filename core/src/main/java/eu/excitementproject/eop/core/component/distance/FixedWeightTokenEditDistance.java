@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.HashSet;
 import java.io.File;
 import java.net.URL;
+import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
 //import org.apache.uima.cas.CASException;
@@ -110,6 +111,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     private boolean stopWordRemoval;
     Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
 
+    static Logger logger = Logger.getLogger(FixedWeightTokenEditDistance.class.getName());
     
     /**
      * Construct a fixed weight edit distance with the following constant
@@ -134,22 +136,45 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     public FixedWeightTokenEditDistance(CommonConfig config) throws ConfigurationException, ComponentException {
     
     	mMatchWeight = 0.0;
-        mDeleteWeight = 2.0;
-        mInsertWeight = 2.0;
+        mDeleteWeight = 1.0;
+        mInsertWeight = 1.0;
         mSubstituteWeight = 1.0;
         
+        logger.info(getComponentName());
+        
     	NameValueTable nameValueTable = config.getSubSection(this.getClass().getCanonicalName(), "instance1");
-		
-    	String wordnet = nameValueTable.getString("multiWordnet");
+    	
     	try {
-    		if (wordnet.equals("true"))
-    			initializeWordnet();
-    	} catch (LexicalResourceException e) {
-    		throw new ComponentException(e.getMessage());
+    		String multiWordnet = nameValueTable.getString("multiWordnet");
+    		if (multiWordnet != null) {
+    			if (multiWordnet.equals("/configuration-file/")) {
+	    			try {
+	    				initializeItalianWordnet();
+	    			} catch (LexicalResourceException e) {
+	    				throw new ComponentException(e.getMessage());
+	    	    	}
+    			}
+	    		else {
+	    			try {
+	    				initializeEnglishWordnet(multiWordnet);
+	    			} catch (LexicalResourceException e) {
+	    				throw new ComponentException(e.getMessage());
+	    	    	}
+	    		}
+    		}
+    	} catch (ConfigurationException e) {
+    		// no multiWordnet option
+    		//throw new ComponentException(e.getMessage());
     	}
-		
-		stopWordRemoval = Boolean.valueOf(nameValueTable.getString("stopWordRemoval"));
-		
+    	
+    	
+    	try {
+    		stopWordRemoval = Boolean.parseBoolean(nameValueTable.getString("stopWordRemoval"));
+    		logger.info("stopWordRemoval activated");
+    	} catch (ConfigurationException e) {
+    		stopWordRemoval = false;
+    		logger.info("stopWordRemoval deactivated");
+    	}
     }
     
     
@@ -457,47 +482,38 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     }
     
     
-    private void initializeWordnet() throws LexicalResourceException {
-    	
-    	//List<LexicalRule<? extends WordnetRuleInfo>> rules;
-    	
-		//Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
+    private void initializeItalianWordnet() throws LexicalResourceException {
 		
+    	logger.info("initialize ItalianWordnet");
+    	
     	try {
     	
 	    	URL filePath =  ClassLoader.getSystemClassLoader().getResource("./configuration-file/");
-	    	//File file = new File( filePath.toURI() );
-			//String configurationFileName = "src/main/resources/configuration-file/";
-		
-	
-			//String lLemma = "mela";
-			//String rLemma = "frutta";
-			
-			//PartOfSpeech pos1 = null, pos2 = null;
-		
-		
-			
-			//relations.add(WordNetRelation.INSTANCE_HYPERNYM);
-			//relations.add(WordNetRelation.INSTANCE_HYPONYM);
-			//relations.add(WordNetRelation.HYPERNYM);
-			//relations.add(WordNetRelation.HYPONYM);
-			//relations.add(WordNetRelation.PART_HOLONYM);
-			//relations.add(WordNetRelation.CATEGORY_MEMBER);
+	    	
 			relations.add(WordNetRelation.SYNONYM);
-			relations.add(WordNetRelation.HYPONYM);
+			relations.add(WordNetRelation.HYPERNYM);
 			
-			//System.out.println(filePath);
+			lexR = new WordnetLexicalResource(new File(filePath.toURI()), false, false, relations, 3, WordnetDictionaryImplementationType.JMWN);
 			
-			//lexR = new WordnetLexicalResource(new File(configurationFileName), false, false, relations, 1, WordnetDictionaryImplementationType.JMWN);
-			lexR = new WordnetLexicalResource(new File(filePath.toURI()), false, false, relations, 1, WordnetDictionaryImplementationType.JMWN);
-			
-			
-		//} catch (UnsupportedPosTagStringException e1) {
-			//System.out.println("Error assigning POS tag");
-			//e1.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new LexicalResourceException(e.getMessage());
+		}
+		
+    }
+    
+    
+    private void initializeEnglishWordnet(String path) throws LexicalResourceException {
+    	
+    	logger.info("initialize EnglishWordnet");
+    	
+    	try {
+    	
+			relations.add(WordNetRelation.SYNONYM);
+			relations.add(WordNetRelation.HYPERNYM);
 			
+			lexR = new WordnetLexicalResource(new File(path), false, false, relations, 3);
+			
+		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());
 		}
 		
@@ -508,7 +524,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     		String rightLemma, PartOfSpeech rightPos) throws LexicalResourceException {
     	
         //System.out.println("leftLemma:" + leftLemma + "\t" + "leftPos:" + leftPos +  
-    		//"\t" + "rightLemma:" + rightLemma + "\t" +  "rightPos:" + rightPos);
+    	//	"\t" + "rightLemma:" + rightLemma + "\t" +  "rightPos:" + rightPos);
     	
     	List<LexicalRule<? extends WordnetRuleInfo>> rules = null;
     	
@@ -533,6 +549,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 			//@SuppressWarnings("rawtypes")
 			//Iterator it = rules.iterator();
 			//System.out.println("==" + ((LexicalRule)it.next()).getRelation());
+			//System.exit(1);
 			return true;
 		}
 		
