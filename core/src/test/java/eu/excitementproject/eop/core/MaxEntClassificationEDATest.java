@@ -42,6 +42,7 @@ public class MaxEntClassificationEDATest {
 	@Test
 	public void test() {		
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DistSim_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_DE.xml");
