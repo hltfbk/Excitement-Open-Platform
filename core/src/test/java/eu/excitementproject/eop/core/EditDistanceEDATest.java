@@ -24,36 +24,25 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 //import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
+/* This class tests EDADistanceEDA training and testing it 
+ * on the 3 different languages */
+/* this test has been disabled because it requires a lot of time to do it */
 public class EditDistanceEDATest {
 
 	@Ignore
 	@Test
 	public void test() {
     	
-		/*
-        ExampleLAP lap = null; 
-        try 
-        {
-        	lap = new ExampleLAP(); 
-        }
-        catch (LAPException e)
-        {
-        	System.err.println(e.getMessage()); 
-        }
-        
-		List<JCas> casList = new ArrayList<JCas>(2);
+		testItalian();
+		testEnglish();
+		testGerman();
 		
-		try {
-			JCas jcas1 = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
-			JCas jcas2 = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable", "NONENTAILMENT"); 
-			casList.add(jcas1); 
-			casList.add(jcas2); 
-		} catch (LAPException e)
-		{
-			e.printStackTrace(); 
-		}
-		*/
-		
+	}
+	
+	// I T A L I A N
+	// No lexical resources
+	public void testItalian() {
+	
 		ArrayList<String> list = new ArrayList<String>();
 		
 		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
@@ -61,51 +50,56 @@ public class EditDistanceEDATest {
 		
 		try {
 		
+			// I T A L I A N
 			//No lexical resources
 			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_IT.xml");
 			File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_NonLexRes_IT.xml_Result.txt");
 			String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_NonLexRes_IT.xml_Result.txt_Eval.xml";
-			
-			//Wordnet
-			//File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_Wordnet_IT.xml");
-			//File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_Wordnet_IT.xml_Result.txt");
-			//String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_Wordnet_IT.xml_Result.txt_Eval.xml";
+			File testDir = new File("./target/IT/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
-		
-			//editDistanceEDA.setTrain(true);
-			editDistanceEDA.initialize(config);
-			//editDistanceEDA.startTraining(config);
 			
-			File testDir = null;
-			testDir = new File("./target/IT/test/");
+			editDistanceEDA.setTrain(true);
+			editDistanceEDA.initialize(config);
+			editDistanceEDA.startTraining(config);
+			
 			for (File xmi : (testDir.listFiles())) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
 				}
-				//JCas cas = PlatformCASProber.probeXmi(xmi, System.out);
+				//System.out.print(".");
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
 				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
-				// System.err.println(teDecision1.getDecision().toString()) ;
-				//System.err.println(teDecision1.getDecision().toString());
-				//System.err.println(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
-				
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
-			    
 			}
 			
 			save(annotatedFileName, list, false);
+			list.clear();
 			EDAScorer.score(annotatedFileName, evaluationFileName);
 			
-			//scorer(list);
-			/*
-			IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(casList.get(0));
-			// System.err.println(teDecision1.getDecision().toString()) ;
-			assertTrue(teDecision1.getDecision().toString().equals("Entailment"));
-			IEditDistanceTEDecision teDecision2 = editDistanceEDA.process(casList.get(1));
-			// System.err.println(teDecision2.getDecision().toString()) ;
-			assertTrue(teDecision2.getDecision().toString().equals("NonEntailment"));
-			*/
+			//Wordnet
+			configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_Wordnet_IT.xml");
+			annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_Wordnet_IT.xml_Result.txt");
+			evaluationFileName = "./src/main/resources/results/EditDistanceEDA_Wordnet_IT.xml_Result.txt_Eval.xml";
+			testDir = new File("./target/IT/test/");
+			
+			config = new ImplCommonConfig(configFile);
+			editDistanceEDA.setTrain(true);
+			editDistanceEDA.initialize(config);
+			editDistanceEDA.startTraining(config);
+			
+			for (File xmi : (testDir.listFiles())) {
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(xmi, null);
+				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
+			}
+			
+			save(annotatedFileName, list, false);
+			list.clear();
+			EDAScorer.score(annotatedFileName, evaluationFileName);
 		
 		} catch(Exception e) {
 			
@@ -113,10 +107,119 @@ public class EditDistanceEDATest {
 			
 		}
 		
-    }
+	}
 	
 	
-	
+	// E N G L I S H
+	// No lexical resources
+	public void testEnglish() {
+		
+		ArrayList<String> list = new ArrayList<String>();
+		
+		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<IEditDistanceTEDecision>();
+		
+		try {
+			
+		    File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_EN.xml");
+	        File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_NonLexRes_EN.xml_Result.txt");
+		    String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_NonLexRes_EN.xml_Result.txt_Eval.xml";	
+		    File testDir = new File("./target/ENG/test/");
+			
+		    CommonConfig config = new ImplCommonConfig(configFile);
+			editDistanceEDA.setTrain(true);
+			editDistanceEDA.initialize(config);
+			editDistanceEDA.startTraining(config);
+		    
+			for (File xmi : (testDir.listFiles())) {
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(xmi, null);
+				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
+			}
+			
+			save(annotatedFileName, list, false);
+			list.clear();
+			EDAScorer.score(annotatedFileName, evaluationFileName);
+			
+			//Wordnet
+			configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_Wordnet_EN.xml");
+			annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_Wordnet_EN.xml_Result.txt");
+			evaluationFileName = "./src/main/resources/results/EditDistanceEDA_Wordnet_EN.xml_Result.txt_Eval.xml";
+			testDir = new File("./target/ENG/test/");
+			
+			config = new ImplCommonConfig(configFile);
+			editDistanceEDA.setTrain(true);
+			editDistanceEDA.initialize(config);
+			editDistanceEDA.startTraining(config);
+			
+			for (File xmi : (testDir.listFiles())) {
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(xmi, null);
+				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
+			}
+			
+			save(annotatedFileName, list, false);
+			list.clear();
+			EDAScorer.score(annotatedFileName, evaluationFileName);
+
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+			
+		
+	// G E R M A N
+	// No lexical resources
+	public void testGerman() {
+		
+		ArrayList<String> list = new ArrayList<String>();
+		
+		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<IEditDistanceTEDecision>();
+		
+		try {
+			
+			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_DE.xml");
+			File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_NonLexRes_DE.xml_Result.txt");
+			String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_NonLexRes_DE.xml_Result.txt_Eval.xml";
+			File testDir = new File("./target/GER/test/");
+			
+			CommonConfig config = new ImplCommonConfig(configFile);
+			editDistanceEDA.setTrain(true);
+			editDistanceEDA.initialize(config);
+			editDistanceEDA.startTraining(config);
+			
+			for (File xmi : (testDir.listFiles())) {
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(xmi, null);
+				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
+			}
+			
+			save(annotatedFileName, list, false);
+			list.clear();
+			EDAScorer.score(annotatedFileName, evaluationFileName);
+			
+		} catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+			
+		
 	/**
 	 * @param aCas
 	 *            the <code>JCas</code> object
@@ -128,6 +231,7 @@ public class EditDistanceEDATest {
 		Pair p = (Pair) pairIter.next();
 		return p.getPairID();
 	}
+	
 	
 	/**
 	 * @param aCas
@@ -148,36 +252,6 @@ public class EditDistanceEDATest {
 	}
 	
 	
-	/** Save text in the specified text file
-     * @param fileName name of the file
-     * @param text Text to be saved
-     * @exception IOException
-     */
-    public void save(String fileName, String text, boolean append) throws Exception {
-    	
-    	BufferedWriter writer = null;
-    	
-    	try {
-    		
-    		//creo un oggetto FileWriter...
-	    	// ... che incapsulo in un BufferedWriter...
-	    	writer = new BufferedWriter(new FileWriter(fileName, append));
-	    	// ... che incapsulo in un PrintWriter
-	    	PrintWriter printout = new PrintWriter(writer);
-	    	printout.print(text);
-	    	printout.close();
-	    	
-    	} catch (Exception e) {
-    		//System.err.println(e.getMessage());
-    		throw new Exception(e.getMessage());
-    	} finally {
-    		if (writer != null)
-    			writer.close();
-    	}
-
-    }
-    
-    
     public void save(File file, List<String> list, boolean append) throws Exception {
     	
     	BufferedWriter writer = null;
@@ -203,79 +277,6 @@ public class EditDistanceEDATest {
     	}
 
     }
-	
-	
-	//taken for the code provided by RUI
-	public void scorer(ArrayList<String> list) {
-	
-		float pos_corrt = 0f;
-		float pos_wrong = 0f;
-		float neg_corrt = 0f;
-		float neg_wrong = 0f;
-		
-		
-		Iterator<String> iterator = list.iterator();
-		
-		while(iterator.hasNext()) {	
-		
-			String line = iterator.next();
-			
-			String[] items = line.split("\t");
-			//if (items.length != 4) {
-			//	logger.warning("Wrong format! Ignore the line...");
-			//	continue;
-			//}
-			if (items[1].equalsIgnoreCase("Entailment")) {
-				if (items[2].equalsIgnoreCase("Entailment")) {
-					pos_corrt += 1f;
-				} else if (items[2].equalsIgnoreCase("NonEntailment")) {
-					pos_wrong += 1f;
-				} else {
-					System.err.println("Wrong format! Ignore the line...");
-					continue;
-				}
-			} else if (items[1].equalsIgnoreCase("NonEntailment")) {
-				if (items[2].equalsIgnoreCase("NonEntailment")) {
-					neg_corrt += 1f;
-				} else if (items[2].equalsIgnoreCase("Entailment")) {
-					neg_wrong += 1f;
-				} else {
-					System.err.println("Wrong format! Ignore the line...");
-					continue;
-				}
-			} else {
-				System.err.println("Wrong format! Ignore the line...");
-				continue;
-			}
-		}
-		
-	//	logger.info(String.valueOf(pos_corrt));
-	//	logger.info(String.valueOf(pos_wrong));
-	//	logger.info(String.valueOf(neg_corrt));
-	//	logger.info(String.valueOf(neg_wrong));
-		
-		float EntailmentGold = pos_corrt + pos_wrong;
-		float NonEntailmentGold = neg_corrt + neg_wrong;
-		float Sum = EntailmentGold + NonEntailmentGold;
-		float EntailmentPrecision = pos_corrt / (pos_corrt + neg_wrong);
-		float EntailmentRecall = pos_corrt / EntailmentGold;
-		float EntailmentFMeasure = 2 * EntailmentPrecision * EntailmentRecall / (EntailmentPrecision + EntailmentRecall);
-		float NonEntailmentPrecision = neg_corrt / (neg_corrt + pos_wrong);
-		float NonEntailmentRecall = neg_corrt / NonEntailmentGold;
-		float NonEntailmentFMeasure = 2 * NonEntailmentPrecision * NonEntailmentRecall / (NonEntailmentPrecision + NonEntailmentRecall);
-		float Accuracy = (pos_corrt + neg_corrt) / Sum;
-		
-		System.out.println("EntailmentGold:" + EntailmentGold);
-		System.out.println("NonEntailmentGold:" +  NonEntailmentGold);
-		System.out.println("EntailmentPrecision:" + EntailmentPrecision);
-		System.out.println("EntailmentRecall:" + EntailmentRecall);
-		System.out.println("EntailmentFMeasure:" + EntailmentFMeasure);
-		System.out.println("NonEntailmentPrecision:" + NonEntailmentPrecision);
-		System.out.println("NonEntailmentRecall:" + NonEntailmentRecall);
-		System.out.println("NonEntailmentFMeasure:" + NonEntailmentFMeasure);
-		System.out.println("Accuracy:" + Accuracy);
-		
-	}
 	
 }
 

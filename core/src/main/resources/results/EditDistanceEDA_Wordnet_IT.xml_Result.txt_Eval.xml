@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Result EDA_Configuration="EditDistanceEDA_Wordnet_IT.xml_Result.txt">
 <Total_Pairs>800</Total_Pairs>
-<Accuracy>0.5075</Accuracy>
+<Accuracy>0.53125</Accuracy>
 <Positive_Pairs Number="411">
-<Precision>0.55944055</Precision>
-<Recall>0.19464721</Recall>
-<F_Measure>0.28880867</F_Measure>
-<Classified_As_Positive>80</Classified_As_Positive>
-<Classified_As_Negative>331</Classified_As_Negative>
+<Precision>0.55487806</Precision>
+<Recall>0.4428224</Recall>
+<F_Measure>0.49255753</F_Measure>
+<Classified_As_Positive>182</Classified_As_Positive>
+<Classified_As_Negative>229</Classified_As_Negative>
 </Positive_Pairs>
 <Negative_Pairs Number="389">
-<Precision>0.49619484</Precision>
-<Recall>0.83804625</Recall>
-<F_Measure>0.6233269</F_Measure>
-<Classified_As_Positive>63</Classified_As_Positive>
-<Classified_As_Negative>326</Classified_As_Negative>
+<Precision>0.5148305</Precision>
+<Recall>0.6246787</Recall>
+<F_Measure>0.56446</F_Measure>
+<Classified_As_Positive>146</Classified_As_Positive>
+<Classified_As_Negative>243</Classified_As_Negative>
 </Negative_Pairs>
 </Result>
