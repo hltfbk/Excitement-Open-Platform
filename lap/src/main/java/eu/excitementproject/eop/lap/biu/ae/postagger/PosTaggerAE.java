@@ -53,58 +53,34 @@ public abstract class PosTaggerAE<T extends PosTagger> extends SingletonSynchron
 			CAS cas = jcas.getCas();
 			mappingProvider.configure(cas);
 			
-			Collection<Sentence> sentenceAnnotations = JCasUtil.select(jcas, Sentence.class);
-			List<List<Token>> tokenAnnotations = new ArrayList<List<Token>>(sentenceAnnotations.size());
-			List<List<String>> tokenStrings = new ArrayList<List<String>>(sentenceAnnotations.size());
-			
-			for (Sentence sentenceAnnotation : sentenceAnnotations) {
-				List<Token> tokenAnnotationsOnesentence = JCasUtil.selectCovered(jcas, Token.class, sentenceAnnotation);
-				tokenAnnotations.add(tokenAnnotationsOnesentence);
-				List<String> tokenStringsOneSentence = JCasUtil.toText(tokenAnnotationsOnesentence);
-				tokenStrings.add(tokenStringsOneSentence);
-			}
-
-			List<List<PosTaggedToken>> taggedTokens = new ArrayList<List<PosTaggedToken>>(tokenStrings.size());
-			
-			// Using the inner tool
-			// This is done in a different for-loop, to avoid entering the synchornized() block
-			// many times (once per Sentence)
-			synchronized (innerTool) {
-				for (List<String> tokenStringsOneSentence : tokenStrings) {
-					innerTool.setTokenizedSentence(tokenStringsOneSentence);
-					innerTool.process();
-					List<PosTaggedToken> taggedTokensOneSentence = innerTool.getPosTaggedTokens();
-					taggedTokens.add(taggedTokensOneSentence);
-				}
-			}
-			
-			// Process each sentence
-			Iterator<List<PosTaggedToken>> iterTaggedtokens = taggedTokens.iterator();
-			Iterator<List<Token>> iterTokenAnnotations = tokenAnnotations.iterator();
-			while (iterTaggedtokens.hasNext()) {
-				List<PosTaggedToken> taggedTokensOnesentence = iterTaggedtokens.next();
-				List<Token> tokenAnnotationsOnesentence = iterTokenAnnotations.next();
+			for (Sentence sentenceAnno : JCasUtil.select(jcas, Sentence.class)) {
+				List<Token> tokens = JCasUtil.selectCovered(jcas, Token.class, sentenceAnno);
+				List<String> tokenStrings = JCasUtil.toText(tokens);
+				List<PosTaggedToken> taggedTokens;
 				
-				if (taggedTokensOnesentence.size() != tokenAnnotationsOnesentence.size()) {
-					throw new PosTaggerException("Got pos tagging for " + taggedTokensOnesentence.size() +
-							" tokens, should have gotten according to the total number of tokens in the sentence: " + tokenAnnotationsOnesentence.size());
+				synchronized (innerTool) {
+					innerTool.setTokenizedSentence(tokenStrings);
+					innerTool.process();
+					taggedTokens = innerTool.getPosTaggedTokens();
 				}
-								
-				// Process each token
-				Iterator<PosTaggedToken> iterTaggedtokensOnesentence = taggedTokensOnesentence.iterator();
-				Iterator<Token> iterTokenAnnotationsOnesentence = tokenAnnotationsOnesentence.iterator();
-				while (iterTaggedtokensOnesentence.hasNext()) {
-					PosTaggedToken taggedToken = iterTaggedtokensOnesentence.next();
+				
+				if (taggedTokens.size() != tokens.size()) {
+					throw new PosTaggerException("Got pos tagging for " + taggedTokens.size() +
+							" tokens, should have gotten according to the total number of tokens in the sentence: " + tokens.size());
+				}
+				
+				Iterator<Token> tokenIter = tokens.iterator();
+				for (PosTaggedToken taggedToken : taggedTokens) {
+					Token tokenAnno = tokenIter.next();
 					String tagString = taggedToken.getPartOfSpeech().getStringRepresentation();
-					Token tokenAnnotation = iterTokenAnnotationsOnesentence.next();
 					
 					// Get an annotation with the appropriate UIMA type via the mappingProvider
 					Type posTag = mappingProvider.getTagType(tagString);
-					POS posAnnotation = (POS) cas.createAnnotation(posTag, tokenAnnotation.getBegin(), tokenAnnotation.getEnd());
+					POS posAnnotation = (POS) cas.createAnnotation(posTag, tokenAnno.getBegin(), tokenAnno.getEnd());
 					posAnnotation.setPosValue(tagString);
 					posAnnotation.addToIndexes();
 					
-					tokenAnnotation.setPos(posAnnotation);
+					tokenAnno.setPos(posAnnotation);
 				}
 			}
 		} catch (PosTaggerException e) {
