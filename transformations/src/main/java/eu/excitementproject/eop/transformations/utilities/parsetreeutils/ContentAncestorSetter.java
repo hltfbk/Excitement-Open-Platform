@@ -8,6 +8,7 @@ import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 import eu.excitementproject.eop.transformations.representation.AdditionalInformationServices;
 import eu.excitementproject.eop.transformations.representation.AdditionalNodeInformation;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
@@ -137,7 +138,8 @@ public class ContentAncestorSetter
 	private boolean isContent(ExtendedNode node)
 	{
 		return contentPoses.contains(
-				InfoGetFields.getPartOfSpeechObject(node.getInfo()).getCanonicalPosTag());
+				SimplerPosTagConvertor.simplerPos(
+						InfoGetFields.getPartOfSpeechObject(node.getInfo()).getCanonicalPosTag()));
 	}
 	
 	
