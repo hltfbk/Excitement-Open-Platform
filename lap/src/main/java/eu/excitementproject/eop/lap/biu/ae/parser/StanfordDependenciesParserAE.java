@@ -113,12 +113,12 @@ public abstract class StanfordDependenciesParserAE<T extends BasicPipelinedParse
 						throw new ParserRunException("Got node that should hve an antecedent, but doesn't have one: " + node);
 					}
 					
-					// the parent in the dependency is the topmost antecedent
-					BasicConstructionNode dependencyParentNode = AbstractNodeUtils.getDeepAntecedentOf(node);
-					
-					// the child in the dependency is the node's parent
-					BasicConstructionNode dependencyChildNode = parentMap.get(node);
+					// the child in the dependency is the topmost antecedent
+					BasicConstructionNode dependencyChildNode = AbstractNodeUtils.getDeepAntecedentOf(node);
 					Token dependencyChildToken = AbstractNodeCASUtils.nodeToToken(tokenAnnotations, dependencyChildNode);
+					
+					// the parent in the dependency is the node's parent
+					BasicConstructionNode dependencyParentNode = parentMap.get(node);
 					
 					String relationName = node.getInfo().getEdgeInfo().getDependencyRelation().getStringRepresentation();
 					processDependency(jcas, dependencyChildToken, dependencyParentNode, relationName, tokenAnnotations, sentenceAnno);
@@ -154,6 +154,8 @@ public abstract class StanfordDependenciesParserAE<T extends BasicPipelinedParse
         }
         
         Token parentTokenAnno = AbstractNodeCASUtils.nodeToToken(tokenAnnotations, parentNode);
+        
+        // TODO - fix comparing arrays of dependencies - now it fails becuase they are not the same instance. you can just do a loop on them and copare attrs or something.
 		
 		AnnotationFS anno = jcas.getCas().createAnnotation(type, sentenceAnno.getBegin(), sentenceAnno.getEnd());
 		anno.setStringValue(type.getFeatureByBaseName("DependencyType"), relationName);
