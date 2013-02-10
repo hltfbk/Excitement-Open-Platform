@@ -10,9 +10,9 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
@@ -34,8 +34,8 @@ public class TestJMWN {
 		
 		PartOfSpeech pos1 = null, pos2 = null;
 		try {
-			pos1 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
-			pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
+			pos1 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+			pos2 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
 
 			System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		

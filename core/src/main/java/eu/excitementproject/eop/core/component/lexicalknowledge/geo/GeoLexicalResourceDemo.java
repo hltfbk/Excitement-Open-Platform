@@ -1,15 +1,13 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.geo;
+
 import java.util.List;
 
 import eu.excitementproject.eop.core.component.lexicalknowledge.EmptyRuleInfo;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
@@ -29,7 +27,7 @@ public class GeoLexicalResourceDemo {
 		System.out.println("Start \n*****************************\n");
 
 		String lLemma = "San Jose";
-		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+		PartOfSpeech pos2 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 		String rLemma = "United Kingdom";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		

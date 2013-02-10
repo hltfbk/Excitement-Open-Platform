@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.catvar;
-import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -10,9 +10,9 @@ import java.util.List;
 import eu.excitementproject.eop.core.component.lexicalknowledge.EmptyRuleInfo;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.Utils;
 
@@ -54,19 +54,19 @@ public class DemoForCatVar
 			PartOfSpeech posObj = null;
 			if (pos.equalsIgnoreCase("V"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB);
+				posObj = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.VERB);
 			}
 			else if (pos.equalsIgnoreCase("N"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+				posObj = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 			}
 			else if (pos.equalsIgnoreCase("ADV"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADVERB);
+				posObj = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.ADVERB);
 			}
 			else if (pos.equalsIgnoreCase("ADJ"))
 			{
-				posObj = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
+				posObj = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
 			}
 			
 			List<LexicalRule<? extends EmptyRuleInfo>> rules = catvarResource.getRulesForLeft(word, posObj);

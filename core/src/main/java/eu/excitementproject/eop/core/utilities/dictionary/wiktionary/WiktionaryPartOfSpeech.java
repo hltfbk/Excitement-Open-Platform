@@ -1,12 +1,9 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.utilities.dictionary.wiktionary;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
@@ -28,10 +25,10 @@ public enum WiktionaryPartOfSpeech
 	OTHER;
 	
 	
-	public UnspecifiedPartOfSpeech toPartOfSpeech() throws WiktionaryException
+	public BySimplerCanonicalPartOfSpeech toPartOfSpeech() throws WiktionaryException
 	{
 		try {
-			return new UnspecifiedPartOfSpeech(CanonicalPosTag.valueOf(this.name()));
+			return new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.valueOf(this.name()));
 		} catch (UnsupportedPosTagStringException e) {
 			throw new WiktionaryException("Internal bug! this value WordNetPartOfSpeech."+this.name()+" isn't a CanonicalPosTag");
 		}

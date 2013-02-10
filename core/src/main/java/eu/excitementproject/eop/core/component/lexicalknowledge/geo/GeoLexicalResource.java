@@ -12,9 +12,9 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceN
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -45,7 +45,7 @@ public class GeoLexicalResource extends LexicalResourceNothingToClose<EmptyRuleI
 	private final PreparedStatement GET_RULES_ENTAILING_STMT;
 	private final PreparedStatement GET_RULE_FOR_BOTH_SIDES_STMT;
 	
-	private final UnspecifiedPartOfSpeech NOUN;
+	private final BySimplerCanonicalPartOfSpeech NOUN;
 	
 	/**
 	 * Ctor
@@ -80,7 +80,7 @@ public class GeoLexicalResource extends LexicalResourceNothingToClose<EmptyRuleI
 		}
 		catch (SQLException e) {	throw new LexicalResourceException("Could not open connection or create statments at : " + dbConnectionString, e);		}
 		
-		try 										{ NOUN = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);	} 
+		try 										{ NOUN = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);	} 
 		catch (UnsupportedPosTagStringException e) 	{ throw new LexicalResourceException("Bug: couldn't construct a new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)",e);		}
 	}
 

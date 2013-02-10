@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.utilities;
 
+import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.transformations.codeannotations.Workaround;
 import eu.excitementproject.eop.transformations.operations.finders.SubstitutionFlipPosFinder;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
@@ -41,6 +42,11 @@ public class BiuteeConstants
 	public static final boolean PRINT_TIME_STATISTICS = false;
 
 
+	/**
+	 * If true - it means that BIUTEE uses value of Unigram language model
+	 * for an inserted-on-the-fly node. If false - than a constant value is
+	 * used, regardless whether the inserted word is common or rare.
+	 */
 	public static final boolean USE_MLE_FOR_INSERTION_COST = true;
 
 	public static final int LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS = 3;
@@ -53,6 +59,21 @@ public class BiuteeConstants
 
 
 	public static final int FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT = 3;
+	
+	/**
+	 * The "script" ({@link OperationsScript}) determines which transformations
+	 * can be applied in a current step, or iteration, of the proof.
+	 * Generally, there are two lists of available transformations, one
+	 * is "first" and one is "other". "other" is contained in "first".
+	 * <BR>
+	 * In LLGS algorithm, each step is part of "global loop" and "local loop"
+	 * (the loop of the local-lookahead). So, this constants, determines in how
+	 * many "global" iterations, the "first" list is returned, when we are
+	 * in the first iteration of the "local loop". In other words: when the
+	 * "global" iteration number is smaller than this constant, and the "local"
+	 * iteration number is 0, then the "first" list is returned. Otherwise, "other"
+	 * list is returned.
+	 */
 	public static final int NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE_IN_DEFAULT_OPERATION_SCRIPT = 2;
 
 	/**
@@ -164,6 +185,10 @@ public class BiuteeConstants
 	// Constants that there is no reason to change, now and ever.
 
 
+	/**
+	 * A delimiter in the value of "dataset" parameter, for RTE-sum.
+	 * The parameter value should be annual-flag#dev-test-flag#dataset-path
+	 */
 	public static final String RTESUM_DATASET_PARAM_DELIMITER = "#";
 	
 	/**
