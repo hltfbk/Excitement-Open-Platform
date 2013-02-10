@@ -4,12 +4,10 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.uima.jcas.JCas;
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
@@ -17,13 +15,6 @@ import org.uimafit.util.JCasUtil;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
-
-import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.lap.LAPAccess;
 

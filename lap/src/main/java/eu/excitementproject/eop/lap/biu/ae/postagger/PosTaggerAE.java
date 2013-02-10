@@ -1,7 +1,5 @@
 package eu.excitementproject.eop.lap.biu.ae.postagger;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
