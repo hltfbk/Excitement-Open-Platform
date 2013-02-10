@@ -24,7 +24,9 @@ import java.util.UUID;
 
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
@@ -75,6 +77,7 @@ public class ParserGui extends JFrame implements ActionListener
 	private static final int GRAPH_COMPONENT_HEIGHT = 300;
 	private final static Font textFont = new Font("arial",0,25);
 	private final static String OK_BUTTON_TEXT = "OK";
+	private final static String SAVE_BUTTON_TEXT = "Save Image";
 	private final static String CLEANUP_BUTTON_TEXT = "exit";
 	private final static String DEFAULT_SENTENCE ="===== Please enter a sentence here. =====";
 	private final static String GRAPH_VIZ_PROGRAM_NAME ="dot";
@@ -154,6 +157,7 @@ public class ParserGui extends JFrame implements ActionListener
 	// private fields:
 	private TextField sentenceField = new TextField(DEFAULT_SENTENCE);
 	private Button buttonOk = new Button(OK_BUTTON_TEXT);
+	private Button buttonSave = new Button(SAVE_BUTTON_TEXT);
 	private BufferedImage image = null;
 	private BasicParser parser;
 	private GraphComponent graphComponent;
@@ -198,6 +202,8 @@ public class ParserGui extends JFrame implements ActionListener
     	JPanel buttonsPanel = new JPanel(new FlowLayout());
     	buttonOk.addActionListener(this);
     	buttonsPanel.add(this.buttonOk);
+    	buttonSave.addActionListener(this);
+    	buttonsPanel.add(this.buttonSave);
     	Button cleanUpButton = new Button(CLEANUP_BUTTON_TEXT);
     	cleanUpButton.addActionListener(this);
     	buttonsPanel.add(cleanUpButton);
@@ -289,6 +295,24 @@ public class ParserGui extends JFrame implements ActionListener
     	
     }
     
+    private void saveImage() {
+    	try {
+	    	if (image != null) {
+		    	JFileChooser fc = new JFileChooser();
+		    	int returnVal = fc.showSaveDialog(this);
+		    	if (returnVal == JFileChooser.APPROVE_OPTION) {
+		    		File file = fc.getSelectedFile();
+		    		ImageIO.write(image, GRAPH_IMAGE_FORMAT, file);
+		    	}
+	    	}
+	    	else {
+	    		JOptionPane.showMessageDialog(this, "No image to save!", "Error", JOptionPane.ERROR_MESSAGE);
+	    	}
+    	}
+    	catch (Exception e) {
+    		JOptionPane.showMessageDialog(this, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    	}
+    }
     
     ///////////////// PUBLIC PART ///////////////////////////
     
@@ -297,6 +321,10 @@ public class ParserGui extends JFrame implements ActionListener
 		if (e.getActionCommand().equals(OK_BUTTON_TEXT))
 		{
 			commandParse();
+		}
+		else if (e.getActionCommand().equals(SAVE_BUTTON_TEXT))
+		{
+			saveImage();
 		}
 		else if (e.getActionCommand().equals(CLEANUP_BUTTON_TEXT))
 		{

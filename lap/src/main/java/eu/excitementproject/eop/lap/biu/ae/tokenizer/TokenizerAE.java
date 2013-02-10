@@ -1,7 +1,5 @@
 package eu.excitementproject.eop.lap.biu.ae.tokenizer;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.SortedMap;
 
@@ -31,43 +29,27 @@ public abstract class TokenizerAE<T extends Tokenizer> extends SingletonSynchron
 
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
-
 		try {
-			List<List<String>> tokenStrings = null;
-			Collection<Sentence> sentenceAnnotations = JCasUtil.select(aJCas, Sentence.class);
-			List<String> sentenceStrings = JCasUtil.toText(sentenceAnnotations);
-
-			// Using the inner tool - smallest "synchronize" block possible
-			synchronized (innerTool) {
-				innerTool.setSentences(sentenceStrings);
-				innerTool.tokenize();
-				tokenStrings = innerTool.getTokenizedSentences();
-			}
-			
-			if (sentenceStrings.size() != tokenStrings.size()) {
-				throw new TokenizerException("Got tokenization for " + tokenStrings.size() +
-						" sentences, should have gotten according to the total number of sentences: " + sentenceStrings.size());
-			}
-			
-			
-			Iterator<String> iterSentenceStrings = sentenceStrings.iterator();
-			Iterator<List<String>> iterTokenStrings = tokenStrings.iterator();
-			while (iterSentenceStrings.hasNext())
-			{
-				String oneSentence = iterSentenceStrings.next();
-				List<String> tokensOneSentence = iterTokenStrings.next();
+			for (Sentence sentenceAnno : JCasUtil.select(aJCas, Sentence.class)) {
+				List<String> tokenStrings;
 				
+				synchronized (innerTool) {
+					innerTool.setSentence(sentenceAnno.getCoveredText());
+					innerTool.tokenize();
+					tokenStrings = innerTool.getTokenizedSentence();
+				}
+
 				// If you get an exception for an unfound token, you can change
 				// the "true" to "false", and tokens unfound in the text will be ignored  
-				SortedMap<Integer, DockedToken> dockedTokens = StringUtil.getTokensOffsets(oneSentence, tokensOneSentence, true);
+				SortedMap<Integer, DockedToken> dockedTokens = StringUtil.getTokensOffsets(sentenceAnno.getCoveredText(), tokenStrings, true);
 				
 				for (DockedToken dockedToken : dockedTokens.values()) {
 					Token tokenAnnot = new Token(aJCas);
-					tokenAnnot.setBegin(dockedToken.getCharOffsetStart());
-					tokenAnnot.setEnd(dockedToken.getCharOffsetEnd());
+					tokenAnnot.setBegin(dockedToken.getCharOffsetStart() + sentenceAnno.getBegin());
+					tokenAnnot.setEnd(dockedToken.getCharOffsetEnd() + sentenceAnno.getBegin());
 					tokenAnnot.addToIndexes();
 				}
-			}			
+			}		
 		} catch (TokenizerException e) {
 			throw new AnalysisEngineProcessException(AnalysisEngineProcessException.ANNOTATOR_EXCEPTION, null, e);
 		} catch (StringUtilException e) {
