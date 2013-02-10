@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.transformations.operations.operations;
+
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
@@ -9,7 +10,8 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.transformations.datastructures.FromBidirectionalMapValueSetMap;
 import eu.excitementproject.eop.transformations.operations.OperationException;
@@ -44,7 +46,7 @@ public class IntroductionRuleApplicationOperation extends GenerationOperationFor
 	
 	protected void setOverrideRelationToArtificialRoot(EdgeInfo overrideRelationToArtificialRoot) throws UnsupportedPosTagStringException
 	{
-		this.overrideRelationToArtificialRoot = new ExtendedInfo("", new DefaultNodeInfo("", "", 0, null, new DefaultSyntacticInfo(new UnspecifiedPartOfSpeech(""))), overrideRelationToArtificialRoot, ExtendedNodeConstructor.EMPTY_ADDITIONAL_NODE_INFORMATION);
+		this.overrideRelationToArtificialRoot = new ExtendedInfo("", new DefaultNodeInfo("", "", 0, null, new DefaultSyntacticInfo(new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.OTHER))), overrideRelationToArtificialRoot, ExtendedNodeConstructor.EMPTY_ADDITIONAL_NODE_INFORMATION);
 	}
 	
 	

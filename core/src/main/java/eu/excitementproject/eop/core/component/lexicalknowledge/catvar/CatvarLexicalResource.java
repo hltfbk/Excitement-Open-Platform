@@ -17,9 +17,9 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceN
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.datastructures.DummyList;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -172,10 +172,10 @@ public class CatvarLexicalResource extends LexicalResourceNothingToClose<EmptyRu
 		try
 		{
 			posMap = new LinkedHashMap<String, PartOfSpeech>();
-			posMap.put("N",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN));
-			posMap.put("V",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB));
-			posMap.put("AJ",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE));
-			posMap.put("AV",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADVERB));
+			posMap.put("N",new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN));
+			posMap.put("V",new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.VERB));
+			posMap.put("AJ",new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE));
+			posMap.put("AV",new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.ADVERB));
 		}
 		catch(UnsupportedPosTagStringException e)
 		{

@@ -3,9 +3,9 @@ package eu.excitementproject.eop.core.utilities.dictionary.wordnet.jmwn;
 import org.itc.mwn.POS;
 import org.itc.mwn.PointerType;
 
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetException;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetPartOfSpeech;
@@ -53,16 +53,16 @@ public class JmwnUtils {
 	}
 
 	
-	public static UnspecifiedPartOfSpeech getUnspecifiedPartOfSpeech(POS jmwnPos) throws WordNetException{
+	public static ByCanonicalPartOfSpeech getUnspecifiedPartOfSpeech(POS jmwnPos) throws WordNetException{
 	 try {
 		if (jmwnPos.equals(POS.ADJ)) {
-			return new UnspecifiedPartOfSpeech(CanonicalPosTag.ADJ);
+			return new ByCanonicalPartOfSpeech(CanonicalPosTag.ADJ.name());
 		} else if (jmwnPos.equals(POS.ADV)) {
-			return new UnspecifiedPartOfSpeech(CanonicalPosTag.ADV);
+			return new ByCanonicalPartOfSpeech(CanonicalPosTag.ADV.name());
 		} else if (jmwnPos.equals(POS.NOUN)) {
-			return new UnspecifiedPartOfSpeech(CanonicalPosTag.N);
+			return new ByCanonicalPartOfSpeech(CanonicalPosTag.N.name());
 		} else if (jmwnPos.equals(POS.VERB)) {
-			return new UnspecifiedPartOfSpeech(CanonicalPosTag.V);
+			return new ByCanonicalPartOfSpeech(CanonicalPosTag.V.name());
 		} else {
 			return null;
 		}
