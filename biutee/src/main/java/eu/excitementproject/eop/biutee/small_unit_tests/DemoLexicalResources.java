@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.biutee.small_unit_tests;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,9 +18,9 @@ import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
@@ -185,12 +186,12 @@ public class DemoLexicalResources extends SystemInitialization
 		try
 		{
 			mapPos = new LinkedHashMap<String, PartOfSpeech>();
-			mapPos.put("V",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB));
-			mapPos.put("N",new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN));
+			mapPos.put("V",new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.VERB));
+			mapPos.put("N",new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN));
 			
 			for (SimplerCanonicalPosTag cpt : SimplerCanonicalPosTag.values())
 			{
-				mapPos.put(cpt.name(),new UnspecifiedPartOfSpeech(cpt));
+				mapPos.put(cpt.name(),new BySimplerCanonicalPartOfSpeech(cpt));
 			}
 		}
 		catch (UnsupportedPosTagStringException e)

@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.similarity;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,9 +8,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -81,7 +79,7 @@ public class LinProximityOriginalLexicalResource extends AbstractSinglePosLexica
 		super(limitOnRetrievedRules);
 		
 		// DEFAULT_POS must be initialized first thing, cos subsequent statements read it
-		try 										{ DEFAULT_POS = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.OTHER);	} 
+		try 										{ DEFAULT_POS = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.OTHER);	} 
 		catch (UnsupportedPosTagStringException e) 	{ throw new LexicalResourceException("Bug: couldn't construct a new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.OTHER)",e);		}
 		
 		PreparedStatement getRulesForLeftStmt;

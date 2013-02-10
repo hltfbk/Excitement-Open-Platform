@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.biutee.small_unit_tests;
-import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
+import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -10,8 +10,8 @@ import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -54,7 +54,7 @@ public class DemoSimpleLexicalChain
 		BuilderSetOfWords builder = new BuilderSetOfWords(con.constructResources(),params.getInt(TransformationsConfigurationParametersNames.SIMPLE_LEXICAL_CHAIN_DEPTH_PARAMETER_NAME));
 		System.out.println("2");
 		Set<LemmaAndPos> setWords = new LinkedHashSet<LemmaAndPos>();
-		setWords.add(new LemmaAndPos("machine", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)));
+		setWords.add(new LemmaAndPos("machine", new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN)));
 		ImmutableSet<LemmaAndPos> imSetWords = new ImmutableSetWrapper<LemmaAndPos>(setWords);
 		System.out.println("3");
 		builder.createRuleBase(imSetWords);

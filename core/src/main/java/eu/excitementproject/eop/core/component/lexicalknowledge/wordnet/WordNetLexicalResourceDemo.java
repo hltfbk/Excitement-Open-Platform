@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wordnet;
+
 import java.io.File;
 import java.util.HashSet;
 import java.util.List;
@@ -9,9 +7,9 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -51,8 +49,8 @@ public class WordNetLexicalResourceDemo {
 	
 
 		String lLemma = "peach";
-		PartOfSpeech pos1 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
-		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+		PartOfSpeech pos1 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+		PartOfSpeech pos2 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 		String rLemma = "fruit";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		

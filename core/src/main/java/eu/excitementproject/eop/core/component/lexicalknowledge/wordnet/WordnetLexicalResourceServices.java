@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wordnet;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,8 +10,8 @@ import java.util.Vector;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Dictionary;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.EmptySynset;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.SensedWord;
@@ -386,7 +384,7 @@ public class WordnetLexicalResourceServices {
 					}
 					if (addThisRule)
 					{
-						UnspecifiedPartOfSpeech pos = synset.getPartOfSpeech().toPartOfSpeech();
+						BySimplerCanonicalPartOfSpeech pos = synset.getPartOfSpeech().toPartOfSpeech();
 						rules.add(newDirectedRule(lemma, pos, baseLemma, pos, SYNONYM, synset, synset, synsetNo, isNotCrossed));
 					}
 				}

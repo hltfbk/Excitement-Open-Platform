@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.similarity;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,9 +13,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
@@ -72,9 +70,9 @@ public abstract class AbstractSimilarityLexicalResource extends LexicalResourceN
 	 */
 	public AbstractSimilarityLexicalResource(int limitOnRetrievedRules) throws LexicalResourceException {
 		try {
-			ADJECTIVE = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
-			NOUN = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
-			VERB = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB);
+			ADJECTIVE = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
+			NOUN = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+			VERB = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.VERB);
 		} catch (UnsupportedPosTagStringException e) {
 			throw new LexicalResourceException("Couldn't create UnspecifiedPartOfSpeech", e);
 		}

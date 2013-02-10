@@ -1,8 +1,9 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.catvar;
+
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
@@ -17,7 +18,7 @@ final class WordAndPartOfSpeech
 	{
 		super();
 		this.word = word;
-		this.pos = ((null==pos)?new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.OTHER):pos);
+		this.pos = ((null==pos)?new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.OTHER):pos);
 	}
 	
 	public String getWord()

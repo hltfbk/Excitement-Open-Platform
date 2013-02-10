@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.common.representation.parse.representation.basic;
 
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
@@ -235,7 +235,7 @@ public class InfoGetFields
 			ret = nodeInfo.getSyntacticInfo().getPartOfSpeech();
 		}}}
 		if (null==ret)
-			try{ret = new UnspecifiedPartOfSpeech(CanonicalPosTag.OTHER.name());}catch(UnsupportedPosTagStringException e){ /* ignore exception */}
+			try{ret = new ByCanonicalPartOfSpeech(CanonicalPosTag.OTHER.name());}catch(UnsupportedPosTagStringException e){ /* ignore exception */}
 		
 		return ret;
 	}

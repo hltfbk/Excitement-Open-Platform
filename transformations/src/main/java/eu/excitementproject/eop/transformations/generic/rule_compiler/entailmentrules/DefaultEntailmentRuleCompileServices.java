@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,8 +17,8 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.CompilationException;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.charger.CgxMultipleChoiceExpander;
@@ -75,7 +76,7 @@ public class DefaultEntailmentRuleCompileServices implements EntailmentRuleCompi
 	private DefaultEntailmentRuleCompileServices() throws EntailmentCompilationException {
 		try {
 			PERIOD_NODE = new BasicNode(new DefaultInfo("", new DefaultNodeInfo(PERIOD, PERIOD, -1, null, 
-					new DefaultSyntacticInfo(new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.PUNCTUATION))), 
+					new DefaultSyntacticInfo(new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.PUNCTUATION))), 
 					new DefaultEdgeInfo(new DependencyRelation(StanfordDepedencyRelationType.punct.name(), null))));
 		} catch (UnsupportedPosTagStringException e) {
 			throw new EntailmentCompilationException("Internal bug! could not instantiate a new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.PUNCTUATION)", e);

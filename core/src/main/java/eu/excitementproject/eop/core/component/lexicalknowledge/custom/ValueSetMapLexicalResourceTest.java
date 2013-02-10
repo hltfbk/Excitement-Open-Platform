@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.custom;
+
 import java.util.Collection;
 
 import org.junit.AfterClass;
@@ -8,8 +9,8 @@ import org.junit.Test;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
@@ -48,10 +49,10 @@ public class ValueSetMapLexicalResourceTest {
 
 	@Test public void test() throws LexicalResourceException, UnsupportedPosTagStringException {
 		assertCollection(nounOcean.getRulesForLeft("bird", null), 2);
-		assertCollection(nounOcean.getRulesForRight("animal", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)), 2);
+		assertCollection(nounOcean.getRulesForRight("animal", new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN)), 2);
 		assertCollection(nounOcean.getRules("bird", null, "animal", null), 1);
-		assertCollection(nounOcean.getRulesForLeft("bird", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB)), 0);
-		assertCollection(nounOcean.getRulesForLeft("cow", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)), 1);
+		assertCollection(nounOcean.getRulesForLeft("bird", new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.VERB)), 0);
+		assertCollection(nounOcean.getRulesForLeft("cow", new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN)), 1);
 		assertCollection(nounOcean.getRulesForRight("flyable", null), 1);
 	}
 	

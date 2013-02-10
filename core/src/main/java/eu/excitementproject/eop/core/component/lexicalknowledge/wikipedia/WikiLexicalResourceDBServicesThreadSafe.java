@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,9 +15,9 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 
@@ -155,7 +153,7 @@ public class WikiLexicalResourceDBServicesThreadSafe {
 
 		COOCURENCE_THRESHOLD = cocurrence_threshold;	// may be null
 		this.PERMITTED_EXTRACTION_TYPES = permittedExtractionTypes ;
-		try {	NOUN = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);	}
+		try {	NOUN = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);	}
 		catch (UnsupportedPosTagStringException e) {	throw new LexicalResourceException("Internal error", e);	}
 	}
 	
