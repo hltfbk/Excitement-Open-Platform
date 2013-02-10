@@ -10,6 +10,7 @@ import java.util.Set;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
@@ -62,6 +63,7 @@ public class BIU_LAP_Test {
 	private LinkedHashMap<Token, Set<TestDependencyInfo>> governors;
 	
 
+	@Ignore("Environment doesn't support yet Stanford POS tagger model file + running easyfirst")
 	@Test
 	public void test() throws Exception {
 		try {
