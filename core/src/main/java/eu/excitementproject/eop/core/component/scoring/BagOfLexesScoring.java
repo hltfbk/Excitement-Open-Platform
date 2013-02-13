@@ -124,8 +124,12 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	
 	public void close() throws ScoringComponentException {
 		try {
-			gds.close();
-			gnw.close();
+			if (null != gds) {
+				gds.close();
+			}
+			if (null != gnw) {
+				gnw.close();
+			}
 		} catch (LexicalResourceCloseException e) {
 			throw new ScoringComponentException(e.getMessage());
 		}
