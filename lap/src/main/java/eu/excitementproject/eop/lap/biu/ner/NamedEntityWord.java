@@ -47,6 +47,10 @@ public final class NamedEntityWord
 		return namedEntity;
 	}
 	
+	public String toString() {
+		return word + "/" + namedEntity;
+	}
+	
 	protected String word;
 	protected NamedEntity namedEntity;
 }
