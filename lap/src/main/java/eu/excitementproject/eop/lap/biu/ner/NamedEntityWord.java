@@ -47,6 +47,46 @@ public final class NamedEntityWord
 		return namedEntity;
 	}
 	
+	public String toString() {
+		return word + "/" + namedEntity;
+	}
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((namedEntity == null) ? 0 : namedEntity.hashCode());
+		result = prime * result + ((word == null) ? 0 : word.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		NamedEntityWord other = (NamedEntityWord) obj;
+		if (namedEntity != other.namedEntity) {
+			return false;
+		}
+		if (word == null) {
+			if (other.word != null) {
+				return false;
+			}
+		} else if (!word.equals(other.word)) {
+			return false;
+		}
+		return true;
+	}
+
 	protected String word;
 	protected NamedEntity namedEntity;
 }
