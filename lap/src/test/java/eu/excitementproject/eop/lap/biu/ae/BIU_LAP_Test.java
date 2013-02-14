@@ -4,7 +4,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 
 import org.apache.uima.jcas.JCas;
@@ -12,6 +14,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
@@ -24,29 +27,29 @@ import eu.excitementproject.eop.lap.LAPAccess;
 public class BIU_LAP_Test {
 	
 	// We check only TEXT, not HYPOTHESIS
-	private static final String TEXT = "Tom likes to eat apples at home. Julie likes to drink juice.";
+	private static final String TEXT = "Ken likes to eat apples in Rome. Julie likes to drink juice.";
 	private static final String HYPOTHESIS = "";
 	
 	private static final TestSentenceInfo[] EXPECTED_SENTENCES = new TestSentenceInfo[] {
-		new TestSentenceInfo(0,  32, "Tom likes to eat apples at home."),
+		new TestSentenceInfo(0,  32, "Ken likes to eat apples in Rome."),
 		new TestSentenceInfo(33, 60, "Julie likes to drink juice.")
 	};
 	
 	private static final TestTokenInfo[] EXPECTED_TOKENS = new TestTokenInfo[] {
-		new TestTokenInfo(1,  0,  3,  "Tom",     "tom",    "NP",    "NNP", new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 2), new TestDependencyInfo("xsubj", 4)}),
-		new TestTokenInfo(2,  4,  9,  "likes",   "like",   "V",     "VBZ", new TestDependencyInfo[]{}),
-		new TestTokenInfo(3,  10, 12, "to",      "to",     "O",     "TO",  new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 4)}),
-		new TestTokenInfo(4,  13, 16, "eat",     "eat",    "V",     "VB",  new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 2)}),
-		new TestTokenInfo(5,  17, 23, "apples",  "apple",  "NN",    "NNS", new TestDependencyInfo[]{new TestDependencyInfo("dobj", 4)}),
-		new TestTokenInfo(6,  24, 26, "at",      "at",     "PP",    "IN",  new TestDependencyInfo[]{new TestDependencyInfo("prep", 4)}),
-		new TestTokenInfo(7,  27, 31, "home",    "home",   "NN",    "NN",  new TestDependencyInfo[]{new TestDependencyInfo("pobj", 6)}),
-		new TestTokenInfo(8,  31, 32, ".",       ".",      "PUNC",  ".",   new TestDependencyInfo[]{new TestDependencyInfo("punct", 2)}),
-		new TestTokenInfo(9,  33, 38, "Julie",   "julie",  "NP",    "NNP", new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 10), new TestDependencyInfo("xsubj", 12)}),
-		new TestTokenInfo(10, 39, 44, "likes",   "like",   "V",     "VBZ", new TestDependencyInfo[]{}),
-		new TestTokenInfo(11, 45, 47, "to",      "to",     "O",     "TO",  new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 12)}),
-		new TestTokenInfo(12, 48, 53, "drink",   "drink",  "V",     "VB",  new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 10)}),
-		new TestTokenInfo(13, 54, 59, "juice",   "juice",  "NN",    "NN",  new TestDependencyInfo[]{new TestDependencyInfo("dobj", 12)}),
-		new TestTokenInfo(14, 59, 60, ".",       ".",      "PUNC",  ".",   new TestDependencyInfo[]{new TestDependencyInfo("punct", 10)}),
+		new TestTokenInfo(1,  0,  3,  "Ken",     "ken",    "NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 2), new TestDependencyInfo("xsubj", 4)}),
+		new TestTokenInfo(2,  4,  9,  "likes",   "like",   "V",     "VBZ", null,       new TestDependencyInfo[]{}),
+		new TestTokenInfo(3,  10, 12, "to",      "to",     "O",     "TO",  null,       new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 4)}),
+		new TestTokenInfo(4,  13, 16, "eat",     "eat",    "V",     "VB",  null,       new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 2)}),
+		new TestTokenInfo(5,  17, 23, "apples",  "apple",  "NN",    "NNS", null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 4)}),
+		new TestTokenInfo(6,  24, 26, "in",      "in",     "PP",    "IN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("prep", 4)}),
+		new TestTokenInfo(7,  27, 31, "Rome",    "rome",   "NP",    "NNP", "Location", new TestDependencyInfo[]{new TestDependencyInfo("pobj", 6)}),
+		new TestTokenInfo(8,  31, 32, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 2)}),
+		new TestTokenInfo(9,  33, 38, "Julie",   "julie",  "NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 10), new TestDependencyInfo("xsubj", 12)}),
+		new TestTokenInfo(10, 39, 44, "likes",   "like",   "V",     "VBZ", null,       new TestDependencyInfo[]{}),
+		new TestTokenInfo(11, 45, 47, "to",      "to",     "O",     "TO",  null,       new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 12)}),
+		new TestTokenInfo(12, 48, 53, "drink",   "drink",  "V",     "VB",  null,       new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 10)}),
+		new TestTokenInfo(13, 54, 59, "juice",   "juice",  "NN",    "NN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 12)}),
+		new TestTokenInfo(14, 59, 60, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 10)}),
 	};
 	
 	private LinkedHashMap<Integer, TestTokenInfo> tokensById;
@@ -54,7 +57,7 @@ public class BIU_LAP_Test {
 	private LinkedHashMap<Token, Set<TestDependencyInfo>> governors;
 	
 
-	@Ignore("Environment doesn't support yet Stanford POS tagger model file + running easyfirst")
+	@Ignore("Environment doesn't support yet storing model files + running easyfirst")
 	@Test
 	public void test() throws Exception {
 		try {
@@ -128,6 +131,18 @@ public class BIU_LAP_Test {
 			throw new LAPVerificationException("Bad token POS type for " + info.id + ":" + info.text + ", expected " + info.posType + ", got " + token.getPos().getType().getShortName());
 		if (!info.posValue.equals(token.getPos().getPosValue()))
 			throw new LAPVerificationException("Bad token POS value for " + info.id + ":" + info.text + ", expected \"" + info.posValue + "\", got \"" + token.getPos().getPosValue() + "\"");
+		
+		String nerType = null;
+		List<NamedEntity> ners = JCasUtil.selectCovered(NamedEntity.class, token);
+		if (ners.size() == 1) {
+			nerType = ners.get(0).getType().getShortName();
+		}
+		else if (ners.size() > 1) {
+			throw new LAPVerificationException("Got more than one NER annotation for " + info.id + ":" + info.text + " - " + ners);
+		}
+		if (!Objects.equals(info.nerType, nerType))
+			throw new LAPVerificationException("Bad token NER value for " + info.id + ":" + info.text + ", expected \"" + info.nerType + "\", got \"" + nerType + "\"");
+		
 		Set<TestDependencyInfo> infoDependencies = new HashSet<TestDependencyInfo>(Arrays.asList(info.dependencies));
 		if (!infoDependencies.equals(governors.get(token)))		
 			throw new LAPVerificationException("Bad token dependencies for " + info.id + ":" + info.text + ", expected " + infoDependencies + ", got " + governors.get(token));
