@@ -453,7 +453,7 @@ public class InitializationTextTreesProcessor
 		}
 	}
 	
-	protected <T extends LexicalRule> Set<RuleWithConfidenceAndDescription<Info, BasicNode>> createSetOfRulesForMultiWord(String ruleBaseName, ByLemmaPosLexicalRuleBase<T> ruleBase , BasicNode hypothesisTreeAsEnglishNode) throws TreeAndParentMapException, TeEngineMlException, OperationException
+	protected <T extends LexicalRule> Set<RuleWithConfidenceAndDescription<Info, BasicNode>> createSetOfRulesForMultiWord(String ruleBaseName, ByLemmaPosLexicalRuleBase<T> ruleBase , BasicNode hypothesisTreeAsBasicNode) throws TreeAndParentMapException, TeEngineMlException, OperationException
 	{
 		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> setRules = new LinkedHashSet<RuleWithConfidenceAndDescription<Info, BasicNode>>();
 
@@ -465,7 +465,7 @@ public class InitializationTextTreesProcessor
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> treeAndParentMap =
 				new TreeAndParentMap<ExtendedInfo, ExtendedNode>(textTree);
 			MultiWordRuleBaseCreator<T> creator =
-				new MultiWordRuleBaseCreator<T>(hypothesisTreeAsEnglishNode, treeAndParentMap, ruleBase, ruleBaseName, teSystemEnvironment.getStopWords());
+				new MultiWordRuleBaseCreator<T>(hypothesisTreeAsBasicNode, treeAndParentMap, ruleBase, ruleBaseName, teSystemEnvironment.getStopWords());
 			creator.create();
 			setRules.addAll(creator.getSetRules());
 			++iterationIndex;

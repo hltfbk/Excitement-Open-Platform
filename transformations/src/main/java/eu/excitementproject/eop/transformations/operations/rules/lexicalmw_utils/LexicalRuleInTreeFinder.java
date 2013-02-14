@@ -43,7 +43,7 @@ public class LexicalRuleInTreeFinder
 	 * in the sentence has serial 1, the second word has serial 2, etc.
 	 *
 	 * @param <T> The information on each node (e.g. ac.biu.nlp.nlp.instruments.parse.representation.english.Info)
-	 * @param <S> The nodes (e.g. EnglishNode)
+	 * @param <S> The nodes (e.g. BasicNode)
 	 */
 	public static class BySerialComparator<T extends Info, S extends AbstractNode<T,S>> implements Comparator<S>
 	{
