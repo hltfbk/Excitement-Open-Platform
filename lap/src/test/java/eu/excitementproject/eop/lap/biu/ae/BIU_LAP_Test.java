@@ -27,12 +27,12 @@ import eu.excitementproject.eop.lap.LAPAccess;
 public class BIU_LAP_Test {
 	
 	// We check only TEXT, not HYPOTHESIS
-	private static final String TEXT = "Ken likes to eat apples in Rome. Julie likes to drink juice.";
+	private static final String TEXT = "Ken likes to eat apples in Rome. Julie Andrews likes to drink juice.";
 	private static final String HYPOTHESIS = "";
 	
 	private static final TestSentenceInfo[] EXPECTED_SENTENCES = new TestSentenceInfo[] {
 		new TestSentenceInfo(0,  32, "Ken likes to eat apples in Rome."),
-		new TestSentenceInfo(33, 60, "Julie likes to drink juice.")
+		new TestSentenceInfo(33, 68, "Julie Andrews likes to drink juice.")
 	};
 	
 	private static final TestTokenInfo[] EXPECTED_TOKENS = new TestTokenInfo[] {
@@ -44,12 +44,13 @@ public class BIU_LAP_Test {
 		new TestTokenInfo(6,  24, 26, "in",      "in",     "PP",    "IN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("prep", 4)}),
 		new TestTokenInfo(7,  27, 31, "Rome",    "rome",   "NP",    "NNP", "Location", new TestDependencyInfo[]{new TestDependencyInfo("pobj", 6)}),
 		new TestTokenInfo(8,  31, 32, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 2)}),
-		new TestTokenInfo(9,  33, 38, "Julie",   "julie",  "NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 10), new TestDependencyInfo("xsubj", 12)}),
-		new TestTokenInfo(10, 39, 44, "likes",   "like",   "V",     "VBZ", null,       new TestDependencyInfo[]{}),
-		new TestTokenInfo(11, 45, 47, "to",      "to",     "O",     "TO",  null,       new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 12)}),
-		new TestTokenInfo(12, 48, 53, "drink",   "drink",  "V",     "VB",  null,       new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 10)}),
-		new TestTokenInfo(13, 54, 59, "juice",   "juice",  "NN",    "NN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 12)}),
-		new TestTokenInfo(14, 59, 60, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 10)}),
+		new TestTokenInfo(9,  33, 38, "Julie",   "julie",  "NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nn", 10)}),
+		new TestTokenInfo(10, 39, 46, "Andrews", "andrews","NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 11), new TestDependencyInfo("xsubj", 13)}),
+		new TestTokenInfo(11, 47, 52, "likes",   "like",   "V",     "VBZ", null,       new TestDependencyInfo[]{}),
+		new TestTokenInfo(12, 53, 55, "to",      "to",     "O",     "TO",  null,       new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 13)}),
+		new TestTokenInfo(13, 56, 61, "drink",   "drink",  "V",     "VB",  null,       new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 11)}),
+		new TestTokenInfo(14, 62, 67, "juice",   "juice",  "NN",    "NN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 13)}),
+		new TestTokenInfo(15, 67, 68, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 11)}),
 	};
 	
 	private LinkedHashMap<Integer, TestTokenInfo> tokensById;
@@ -57,7 +58,7 @@ public class BIU_LAP_Test {
 	private LinkedHashMap<Token, Set<TestDependencyInfo>> governors;
 	
 
-	@Ignore("Environment doesn't support yet storing model files + running easyfirst")
+	//@Ignore("Environment doesn't support yet storing model files + running easyfirst")
 	@Test
 	public void test() throws Exception {
 		try {
