@@ -125,34 +125,46 @@ public class StanfordNamedEntityRecognizer implements NamedEntityRecognizer
 		if (nerredList==null)
 			throw new NamedEntityRecognizerException("classification returned a null list");
 		
+		// Add a sentinel object at the end of the list, for building mapOfEntities
+		// does not affect listOfEntities
+		nerredList.add(null);
+		
 		StringBuffer currentNamedEntity = new StringBuffer();
 		NamedEntity currentNamedEntityType = null;
 		int startOfCurrentNamedEntity = 0;
 		for (int iToken=0; iToken<nerredList.size(); ++iToken) {
+			NamedEntity newNamedEntityType = null;
+			String strWord = null;
 			CoreLabel label = nerredList.get(iToken);
-			String strWord = label.get(edu.stanford.nlp.ling.CoreAnnotations.WordAnnotation.class);
-			String strNamedEntity = label.get(edu.stanford.nlp.ling.CoreAnnotations.AnswerAnnotation.class);
-			NamedEntity newNamedEntityType = StanfordAnswerToNamedEntityMapper.convert(strNamedEntity);
+			boolean sentinelToken = (iToken == nerredList.size()-1);
+			
+			if (!sentinelToken) {
+				strWord = label.get(edu.stanford.nlp.ling.CoreAnnotations.WordAnnotation.class);
+				String strNamedEntity = label.get(edu.stanford.nlp.ling.CoreAnnotations.AnswerAnnotation.class);
+				newNamedEntityType = StanfordAnswerToNamedEntityMapper.convert(strNamedEntity);
 
-			listOfEntities.add(new NamedEntityWord(strWord, newNamedEntityType));
-
-			boolean endNamedEntity = (currentNamedEntityType!=null && newNamedEntityType!=currentNamedEntityType);
-			boolean startNewNamedEntity = (newNamedEntityType!=null && newNamedEntityType!=currentNamedEntityType);
-			boolean continueNamedEntity = (currentNamedEntityType!=null && newNamedEntityType==currentNamedEntityType);
-
-			if (startNewNamedEntity) {
-				currentNamedEntity.append(strWord);
-				currentNamedEntityType = newNamedEntityType;
-				startOfCurrentNamedEntity = iToken;
+				listOfEntities.add(new NamedEntityWord(strWord, newNamedEntityType));
 			}
-			if (continueNamedEntity) {
+
+			// Calculate building a full phrase from all adjacent entities with the same type
+			// This implementation supports entities adjacent to each other (with different types) and entities at the end of the sentence
+			boolean endEntityPreviousToken =     (currentNamedEntityType!=null && newNamedEntityType!=currentNamedEntityType);
+			boolean startEntityCurrentToken =    (newNamedEntityType!=null     && newNamedEntityType!=currentNamedEntityType);
+			boolean continueEntityCurrentToken = (currentNamedEntityType!=null && newNamedEntityType==currentNamedEntityType);
+
+			if (continueEntityCurrentToken) {
 				currentNamedEntity.append(" ").append(strWord);
 			}
-			if (endNamedEntity) {
+			if (endEntityPreviousToken) {
 				String canonicalNamedEntity = currentNamedEntity.toString();
 				mapOfEntities.put(startOfCurrentNamedEntity, new NamedEntityPhrase(canonicalNamedEntity, currentNamedEntityType));
 				currentNamedEntityType = null;
 				currentNamedEntity.setLength(0);
+			}
+			if (startEntityCurrentToken) {
+				currentNamedEntity.append(strWord);
+				currentNamedEntityType = newNamedEntityType;
+				startOfCurrentNamedEntity = iToken;
 			}
 		}
 	}
