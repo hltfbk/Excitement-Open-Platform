@@ -73,7 +73,9 @@ public final class WordWithCoreferenceTag
 	}
 
 
-
+	public String toString() {
+		return word + ":" + coreferenceTag;
+	}
 
 
 	private final String word;
