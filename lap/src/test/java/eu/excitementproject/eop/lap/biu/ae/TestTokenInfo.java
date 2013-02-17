@@ -11,11 +11,12 @@ public class TestTokenInfo {
 	public String lemma;
 	public String posType;
 	public String posValue;
+	public String nerType;
 	public TestDependencyInfo[] dependencies;
 
 	
 	public TestTokenInfo(int id, int begin, int end, String text, String lemma, 
-			String posType, String posValue, TestDependencyInfo[] dependencies) {
+			String posType, String posValue, String nerType, TestDependencyInfo[] dependencies) {
 		this.id = id;
 		this.begin = begin;
 		this.end = end;
@@ -23,6 +24,7 @@ public class TestTokenInfo {
 		this.lemma = lemma;
 		this.posType = posType;
 		this.posValue = posValue;
+		this.nerType = nerType;
 		this.dependencies = dependencies;
 	}
 
@@ -30,8 +32,8 @@ public class TestTokenInfo {
 	@Override
 	public String toString() {
 		return String
-				.format("TestTokenInfo [id=%s, begin=%s, end=%s, text=%s, lemma=%s, posType=%s, posValue=%s, dependencies=%s]",
-						id, begin, end, text, lemma, posType, posValue,
+				.format("TestTokenInfo [id=%s, begin=%s, end=%s, text=%s, lemma=%s, posType=%s, posValue=%s, nerType=%s, dependencies=%s]",
+						id, begin, end, text, lemma, posType, posValue, nerType,
 						Arrays.toString(dependencies));
 	}
 
