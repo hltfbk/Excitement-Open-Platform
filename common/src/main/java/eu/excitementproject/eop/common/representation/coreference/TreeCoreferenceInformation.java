@@ -25,7 +25,7 @@ import eu.excitementproject.eop.common.utilities.ExceptionUtil;
  * same entity), so the meaning is that each node in that
  * group refers to the same entity.
  * 
- * @param <T> the node type (e.g. <code>EnglishNode</code>)
+ * @param <T> the node type (e.g. {@link BasicNode})
  * 
  * <P>
  * <B> Note: the class is not thread safe! </B>
