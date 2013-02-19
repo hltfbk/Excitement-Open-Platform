@@ -11,7 +11,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
@@ -165,11 +165,11 @@ public class BasicTreeFormalString
 			{
 				String variableIdStr = lemma.substring(VARIABLE_INDICATOR.length());
 				Integer variableId = Integer.parseInt(variableIdStr);
-				nodeInfo = DefaultNodeInfo.newVariableDefaultNodeInfo(variableId, new DefaultSyntacticInfo(new UnspecifiedPartOfSpeech(partOfSpeech)));
+				nodeInfo = DefaultNodeInfo.newVariableDefaultNodeInfo(variableId, new DefaultSyntacticInfo(new BySimplerCanonicalPartOfSpeech(partOfSpeech)));
 			}
 			else
 			{
-				nodeInfo = new DefaultNodeInfo(word, lemma, 0, null, new DefaultSyntacticInfo(new UnspecifiedPartOfSpeech(partOfSpeech)));
+				nodeInfo = new DefaultNodeInfo(word, lemma, 0, null, new DefaultSyntacticInfo(new BySimplerCanonicalPartOfSpeech(partOfSpeech)));
 			}
 		}
 		catch(NumberFormatException e)

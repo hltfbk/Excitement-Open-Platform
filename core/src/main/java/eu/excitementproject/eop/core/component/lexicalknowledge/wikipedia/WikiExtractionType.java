@@ -53,7 +53,7 @@ public enum WikiExtractionType {
 		{
 			mapStringRepresentationToEnum.put(value.stringRepresentation, value);
 			mapCodeToEnum.put(value.code, value);
-			System.out.println("Mapped wiki extraction type: " + value.stringRepresentation);
+			//System.out.println("Mapped wiki extraction type: " + value.stringRepresentation);
 		}
 	}
 	
@@ -95,7 +95,7 @@ public enum WikiExtractionType {
 		String[] extractionTypeStrings = extractionTypesStr.split(SEPARATOR);
 		for (int i = 0; i < extractionTypeStrings.length; i++) {
 			currType = parseExtractionTypeStr(extractionTypeStrings[i]);
-			System.out.println(" -- extraction type: " + currType.stringRepresentation);
+			//System.out.println(" -- extraction type: " + currType.stringRepresentation);
 			
 			//split All-Nouns into 3 parts
 			if (currType == ALL_NOUNS) {
@@ -111,7 +111,7 @@ public enum WikiExtractionType {
 			toReturn.add(currType);
 		}
 		
-		System.out.println("  number of extraction types:  " + toReturn.size());
+		//System.out.println("  number of extraction types:  " + toReturn.size());
 		return toReturn;
 	}
 	
@@ -119,10 +119,10 @@ public enum WikiExtractionType {
 	 {
 		 double extractionTypeCode;
 		 
-		 System.out.println("Extraction type string: >" + extractionTypeString + "<");
+		 //System.out.println("Extraction type string: >" + extractionTypeString + "<");
 		 
 		 if (extractionTypeString.matches(".*[a-z]+.*")) {
-			 System.out.println("\textraction type is string: " + extractionTypeString);			 
+			 //System.out.println("\textraction type is string: " + extractionTypeString);			 
 			 return mapStringRepresentationToEnum.get(extractionTypeString);
 		 }
 		 try{

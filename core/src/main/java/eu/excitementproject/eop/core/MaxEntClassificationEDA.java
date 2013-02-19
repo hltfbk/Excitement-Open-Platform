@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -191,6 +192,7 @@ public class MaxEntClassificationEDA implements
 		// they refer to whether to use WordNet relations hypernym, synonym, and VerbOcean relations, StrongerThan, CanResultIn, Similar
 		boolean isWNHypernym = false;
 		boolean isWNSynonym = false;
+		boolean isWNHolonym = false;
 		boolean isVOStrongerThan = false;
 		boolean isVOCanResultIn = false;
 		boolean isVOSimilar = false;
@@ -200,10 +202,12 @@ public class MaxEntClassificationEDA implements
 				throw new ConfigurationException("Wrong configuation: didn't find any relations for the WordNet");
 			}
 			for (String relation : WNRelations) {
-				if (relation.equalsIgnoreCase("hypernym")) {
+				if (relation.equalsIgnoreCase("HYPERNYM")) {
 					isWNHypernym = true;
-				} else if (relation.equalsIgnoreCase("synonym")) {
+				} else if (relation.equalsIgnoreCase("SYNONYM")) {
 					isWNSynonym = true;
+				} else if (relation.equalsIgnoreCase("PART_HOLONYM")) {
+					isWNHolonym = true;
 				} else {
 					logger.warning("Warning: wrong relation names for the WordNet");
 				}
@@ -233,6 +237,9 @@ public class MaxEntClassificationEDA implements
 		 }
 		 if (isWNSynonym) {
 			 wnRelSet.add(WordNetRelation.SYNONYM);
+		 }
+		 if (isWNHolonym) {
+			 wnRelSet.add(WordNetRelation.PART_HOLONYM);
 		 }
 		 
 		 Set<RelationType> voRelSet = new HashSet<RelationType>();
@@ -301,7 +308,7 @@ public class MaxEntClassificationEDA implements
 		}
 
 		String[] context = constructContext(aCas);
-//		System.out.println(Arrays.asList(context));
+		logger.info(Arrays.asList(context).toString());
 		float[] values = RealValueFileEventStream.parseContexts(context);
 		double[] ocs = model.eval(context, values);
 		int numOutcomes = ocs.length;

@@ -4,10 +4,9 @@
 package eu.excitementproject.eop.core.utilities.dictionary.wiktionary;
 
 import java.util.List;
-
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.utilities.dictionary.wiktionary.jwktl.JwktlDictionary;
 
@@ -28,7 +27,7 @@ public class WiktionaryDemo {
 		
 		String lemma = "dog";
 		
-		WiktionaryPartOfSpeech wktPos = WiktionaryPartOfSpeech.toWiktionaryPartOfspeech(new UnspecifiedPartOfSpeech( CanonicalPosTag.N));
+		WiktionaryPartOfSpeech wktPos = WiktionaryPartOfSpeech.toWiktionaryPartOfspeech(new ByCanonicalPartOfSpeech( CanonicalPosTag.N.name()));
 		List<WiktionarySense> senses = wiktionary.getSortedSensesOf(lemma, wktPos);
 //		for (List<WktSense> senseList : senses.values())
 		{

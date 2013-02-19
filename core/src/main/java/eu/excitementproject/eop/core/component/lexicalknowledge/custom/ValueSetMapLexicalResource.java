@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.custom;
+
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.util.ArrayList;
@@ -13,9 +14,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 /**
@@ -124,7 +125,7 @@ public class ValueSetMapLexicalResource extends LexicalResourceNothingToClose<Ru
 	 */
 	private void setCanonicalPartOfSpeech(SimplerCanonicalPosTag canonicalPartOfSpeech) throws UnsupportedPosTagStringException {
 		this.canonicalPartOfSpeech = canonicalPartOfSpeech;
-		partOfSpeech = new UnspecifiedPartOfSpeech(canonicalPartOfSpeech);
+		partOfSpeech = new BySimplerCanonicalPartOfSpeech(canonicalPartOfSpeech);
 	}
 
 	/**

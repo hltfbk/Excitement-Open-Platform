@@ -42,10 +42,12 @@ public class MaxEntClassificationEDATest {
 	@Test
 	public void test() {		
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DistSim_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {
@@ -192,9 +194,13 @@ public class MaxEntClassificationEDATest {
 				lap = new TreeTaggerEN();
 				
 				// ENTAILMENT
-				test1Cas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.");
+//				test1Cas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.");
 				// NONENTAILMENT
-				test2Cas = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable");
+//				test2Cas = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable");
+//				test1Cas = lap.generateSingleTHPairCAS("I visit Jerusalem","I visit Israel");
+//				test2Cas = lap.generateSingleTHPairCAS("I visit Jerusalem", "I visit Iran");
+				test1Cas = lap.generateSingleTHPairCAS("I saw a car","I saw an automobile");
+				test2Cas = lap.generateSingleTHPairCAS("I saw a car", "I saw a cat");			
 			}
 
 			logger.info("Answers are:");

@@ -181,10 +181,12 @@ public class EDAScorer {
 	@Test
 	public void test() {
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_AllLexRes_DE.xml_Result.txt");
-		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_AllLexResPos_DE.xml_Result.txt");
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_AllLexResPos_DE.xml_Result.txt");
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_DistSim_DE.xml_Result.txt");
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_AllLexRes_EN.xml_Result.txt");
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_NonLexRes_DE.xml_Result.txt");
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_NonLexRes_EN.xml_Result.txt");
+		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_OnlyLexRes_EN.xml_Result.txt");
 		Assume.assumeTrue(resultFile.exists());
 		score(resultFile, resultFile.getAbsolutePath() + "_Eval.xml");
 	}

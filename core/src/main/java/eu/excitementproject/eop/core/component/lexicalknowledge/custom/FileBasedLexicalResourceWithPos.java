@@ -1,5 +1,5 @@
-
 package eu.excitementproject.eop.core.component.lexicalknowledge.custom;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,9 +8,9 @@ import java.util.List;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -102,8 +102,8 @@ public class FileBasedLexicalResourceWithPos extends FileBasedLexicalResource {
 			String[] rhs = r.getRLemma().split(POS_SEP);
 			PartOfSpeech lPos, rPos;
 			try {
-				lPos = lhs.length == 2 ? new UnspecifiedPartOfSpeech(lhs[1]) : defaultPos;
-				rPos = rhs.length == 2 ? new UnspecifiedPartOfSpeech(rhs[1]) : defaultPos;
+				lPos = lhs.length == 2 ? new BySimplerCanonicalPartOfSpeech(lhs[1]) : defaultPos;
+				rPos = rhs.length == 2 ? new BySimplerCanonicalPartOfSpeech(rhs[1]) : defaultPos;
 			} catch (UnsupportedPosTagStringException e) {
 				throw new LexicalResourceException("nested exception while reading the POS tags of the rule"+r,e);
 			}
@@ -130,7 +130,7 @@ public class FileBasedLexicalResourceWithPos extends FileBasedLexicalResource {
 			FileBasedLexicalResourceWithPos biLingDict = new FileBasedLexicalResourceWithPos(dictParams);
 			
 			String enTerm = "country";
-			PartOfSpeech pos = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+			PartOfSpeech pos = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 			System.out.println("Rules for right for "+enTerm+":"+pos);
 			List<LexicalRule<? extends RuleInfo>> rules = 
 					biLingDict.getRulesForRight(enTerm, pos);

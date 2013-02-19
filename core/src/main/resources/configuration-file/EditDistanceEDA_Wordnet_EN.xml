@@ -11,11 +11,12 @@
 	    <property name="instances">instance1</property>
 		<subsection name="instance1">
 			<property name="stopWordRemoval">true</property>
+			<property name="multiWordnet">/tmp/WordNet/3.0/dict.wn.orig/</property>
 		</subsection>
 	</section>	
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
-	    <property name="modelFile">./src/main/resources/model/EditDistanceEDA_NonLexRes_EN_Model</property>
+	    <property name="modelFile">./src/main/resources/model/EditDistanceEDA_WORDNET_EN_Model</property>
 		<property name="trainDir">./target/ENG/dev/</property>
 		<property name="testDir">./target/ENG/test/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
