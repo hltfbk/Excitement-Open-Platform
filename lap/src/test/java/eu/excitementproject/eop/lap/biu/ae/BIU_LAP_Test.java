@@ -58,7 +58,7 @@ public class BIU_LAP_Test {
 	private LinkedHashMap<Token, Set<TestDependencyInfo>> governors;
 	
 
-	//@Ignore("Environment doesn't support yet storing model files + running easyfirst")
+	@Ignore("Environment doesn't support yet storing model files + running easyfirst")
 	@Test
 	public void test() throws Exception {
 		try {
