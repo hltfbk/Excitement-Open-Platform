@@ -6,7 +6,6 @@ import org.uimafit.descriptor.ConfigurationParameter;
 
 import de.tudarmstadt.ukp.dkpro.core.api.resources.MappingProvider;
 import eu.excitementproject.eop.common.datastructures.Envelope;
-import eu.excitementproject.eop.lap.biu.ae.postagger.PennPOSMapping;
 import eu.excitementproject.eop.lap.biu.en.ner.stanford.StanfordNamedEntityRecognizer;
 
 public class StanfordNamedEntityRecognizerAE extends NamedEntityRecognizerAE<StanfordNamedEntityRecognizer> {
