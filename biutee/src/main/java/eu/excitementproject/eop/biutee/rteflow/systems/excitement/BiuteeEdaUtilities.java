@@ -7,6 +7,7 @@ import org.apache.uima.jcas.JCas;
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierUtils;
+import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.common.DecisionLabel;
@@ -26,11 +27,11 @@ public class BiuteeEdaUtilities
 	 * 
 	 * @param excitementConfigurationFile the Excitement configuration file. Should not be touched.
 	 * @param biuConfigurationFile the BIU configuration-file. It is an empty, or not-exist, and should be written by this method.
+	 * @throws ExcitementToBiuConfigurationFileConverterException 
 	 */
-	public static void convertExcitementConfigurationFileToBiuConfigurationFile(File excitementConfigurationFile, File biuConfigurationFile)
+	public static void convertExcitementConfigurationFileToBiuConfigurationFile(File excitementConfigurationFile, File biuConfigurationFile) throws ExcitementToBiuConfigurationFileConverterException
 	{
-		// TODO
-		throw new RuntimeException("Not yet implemented.");
+		new ExcitementToBiuConfigurationFileConverter(excitementConfigurationFile, biuConfigurationFile).convert();
 	}
 	
 	public static PairData convertJCasToPairData(JCas aCas) throws TeEngineMlException
