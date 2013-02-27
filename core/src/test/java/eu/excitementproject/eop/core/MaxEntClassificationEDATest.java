@@ -41,6 +41,7 @@ public class MaxEntClassificationEDATest {
 	
 	@Test
 	public void test() {		
+
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DistSim_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
@@ -59,13 +60,13 @@ public class MaxEntClassificationEDATest {
 		Assume.assumeNotNull(config);
 				
 		// Gil: testLAP_DE() is a very very long test. (More than build process itself) 
-		/* German RTE tests
-		testLAP_DE(); 
-		testTraining(config);
-		testTesting_SingleTH(config); 
-		testTesting_MultiTH(config); 
-		testTesting_MultiTH_AND_Output(config);
-		*/
+		//German RTE tests
+		//testLAP_DE(); 
+		//testTraining(config);
+		//testTesting_SingleTH(config); 
+		//testTesting_MultiTH(config); 
+		//testTesting_MultiTH_AND_Output(config);
+		
 		
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
 		/* English RTE tests
@@ -155,7 +156,7 @@ public class MaxEntClassificationEDATest {
 		}
 	}
 	
-	public void testTraining(CommonConfig config) {		
+	public void testTraining(CommonConfig config) {	
 		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
 		try {
 			meceda.startTraining(config);
@@ -265,6 +266,8 @@ public class MaxEntClassificationEDATest {
 			
 			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName().replace("configuration-file", "results") + "_Result.txt"), "UTF-8"));
 			logger.info("build CASes for input sentence pairs:");
+			int correct = 0;
+			int sum = 0;			
 			for (File file : (new File(meceda.getTestDIR())).listFiles()) {
 				// ignore all the non-xmi files
 				if (!file.getName().endsWith(".xmi")) {
@@ -281,9 +284,13 @@ public class MaxEntClassificationEDATest {
 				output.write(String.valueOf(decision.getConfidence()));
 				output.newLine();
 				logger.info("Pair " + decision.getPairID() + " is done.");
+				if (meceda.getGoldLabel(cas).equalsIgnoreCase(decision.getDecision().toString())) {
+					correct ++;
+				}
+				sum ++;
 			}
 			output.close();
-			
+			logger.info("The correctly predicted pairs are " + correct + " / " + sum);
 			meceda.shutdown();
 			logger.info("EDA shuts down.");
 		} catch (Exception e) {
