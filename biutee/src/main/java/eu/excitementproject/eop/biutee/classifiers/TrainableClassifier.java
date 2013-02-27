@@ -5,6 +5,9 @@ import java.util.Vector;
 /**
  * Represents a classifier like SVM or Logistic-regression.
  * <P>
+ * <B>See instructions about classifiers in the package-java-doc (package-info.java)
+ * of package <code>eu.excitementproject.eop.biutee.classifiers</code></B>
+ * <P>
  * Thread-safety: The "get" methods can be called concurrently from two or more
  * threads. The "get" methods are:  {@link #classify(Map)} {@link #classifyBoolean(Map)},
  * {@link #descriptionOfTraining()}, {@link #getFeatureNames()}, {@link #getNormalizedSample(LabeledSample)}.
