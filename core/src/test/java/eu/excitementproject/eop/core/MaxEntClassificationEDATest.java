@@ -62,10 +62,10 @@ public class MaxEntClassificationEDATest {
 		// Gil: testLAP_DE() is a very very long test. (More than build process itself) 
 		//German RTE tests
 		//testLAP_DE(); 
-		testTraining(config);
-		testTesting_SingleTH(config); 
-		testTesting_MultiTH(config); 
-		testTesting_MultiTH_AND_Output(config);
+		//testTraining(config);
+		//testTesting_SingleTH(config); 
+		//testTesting_MultiTH(config); 
+		//testTesting_MultiTH_AND_Output(config);
 		
 		
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
