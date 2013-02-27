@@ -1,16 +1,14 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
+
 import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.utilities.Utils;
 
 
@@ -33,9 +31,9 @@ public class WikipediaLexicalResourceDemo {
 		System.out.println("Start \n*****************************\n");
 	
 
-		String lLemma = "wednesday";
-		PartOfSpeech pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
-		String rLemma = "Microsoft Windows";
+		String lLemma = "Italy";
+		PartOfSpeech pos2 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+		String rLemma = "Venice";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		
 		// test Wikipedia
@@ -43,8 +41,10 @@ public class WikipediaLexicalResourceDemo {
 
 		Set<WikiExtractionType> extractionTypes = Utils.arrayToCollection(new WikiExtractionType[]{WikiExtractionType.REDIRECT,WikiExtractionType.BE_COMP,
 				WikiExtractionType.BE_COMP_IDIRECT,WikiExtractionType.ALL_NOUNS_TOP}, new HashSet<WikiExtractionType>());
-		File stopWordsFile = new File("//qa-srv/Data/RESOURCES/Stop Word lists/stopwords-Eyal.txt");
-		WikiLexicalResource wikiLexR = new WikiLexicalResource(stopWordsFile, extractionTypes, "jdbc:mysql://qa-srv:3308/wikikb?user=db_readonly", null, null, 0.01);
+		File stopWordsFile = new File("src/test/resources/stopwords.txt");
+//		WikiLexicalResource wikiLexR = new WikiLexicalResource(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikilexresita","root","nat_2k12", 0.01);
+		WikiLexicalResource wikiLexR = new WikiLexicalResource(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikikb","root","nat_2k12", 0.01);
+
 		
 //		ConfigurationFile  confFile = new ConfigurationFile(new File("B:/Apps/BIUTEE/workdir/biutee_train.xml"));
 //		WikiLexicalResource wikiLexR = new WikiLexicalResource(confFile.getModuleConfiguration("Wiki"));

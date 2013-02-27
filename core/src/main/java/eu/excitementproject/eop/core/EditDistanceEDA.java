@@ -1,12 +1,14 @@
 
 package eu.excitementproject.eop.core;
 
-import java.util.Iterator;
+//import java.util.Iterator;
 import java.util.List;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.logging.Logger;
+import java.io.*;
 
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.cas.TOP;
@@ -21,12 +23,15 @@ import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
 import eu.excitementproject.eop.common.component.distance.DistanceValue;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.distance.*;
 import eu.excitement.type.entailment.Pair;
-import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
-import eu.excitementproject.eop.lap.LAPException;
+//import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+//import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.PlatformCASProber;
+
 
 
 /**
@@ -54,8 +59,56 @@ public class EditDistanceEDA<T extends TEDecision>
 	private double threshold;
 	// the edit distance component to be used
 	private DistanceCalculation component;
-	// this is a temporary training set to train and test the system
-	private List<JCas> trainingSet;
+	
+	static Logger logger = Logger.getLogger(EditDistanceEDA.class
+			.getName());
+
+	// whether it's training or testing
+	protected boolean isTrain;
+	// language flag
+	
+	protected String language;
+
+	// the model file, consisting of parameter name and value pairs
+	protected String modelFile;
+
+	// training data directory
+	protected String trainDIR;
+
+	// testing data directory
+	protected String testDIR;
+
+	public boolean isTrain() {
+		return this.isTrain;
+	}
+
+	public void setTrain(boolean isTrain) {
+		this.isTrain = isTrain;
+	}
+	
+	public String getLanguage() {
+		return this.language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getModelFile() {
+		return this.modelFile;
+	}
+
+	public String getTrainDIR() {
+		return this.trainDIR;
+	}
+
+	public String getTestDIR() {
+		return this.testDIR;
+	}
+
+	public double getThreshold() {
+		return this.threshold;
+	}
 	
 	
 	/**
@@ -63,9 +116,8 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public EditDistanceEDA() {
     	
-		this.threshold = 0.0;
+		this.threshold = -1.0;
 		this.component = null;
-		this.trainingSet = null;
 		
     }
 
@@ -75,29 +127,53 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public void initialize (CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
 		
-		ExampleLAP lap = null; 
+		//ExampleLAP lap = null; 
 		
         try {
         	
+        	//modelFile = "./src/test/resources/EditDistanceEDA"
+    			//+ language;
+
+    		//trainDIR = "./target/" + language + "/dev/";
+    		//testDIR = "./target/" + language + "/test/";
+
+    		// initialize the model: if it's training, check the model file exsits;
+    		// if it's testing, read in the model
+    		
         	// add 2 examples in the training set; it is a temporary solution to have a training set
         	// for training the algorithm.
+    		/*
         	lap = new ExampleLAP();
 			JCas jcas1 = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
 			JCas jcas2 = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable", "NONENTAILMENT"); 
 			trainingSet = new ArrayList<JCas>(2);
 			trainingSet.add(jcas1); 
 			trainingSet.add(jcas2);
-			
+			*/
+    		
 			checkConfiguration(config);
-			component = new FixedWeightTokenEditDistance();
-			//component.initialize(config); //Gil: initialize() is removed from interface Component
 			
-		} catch (LAPException e) {
-			throw new EDAException(e.getMessage());
+			//File f = new File("./src/test/resources/example_of_configuration_file.xml");
+			//ImplCommonConfig commonConfig = new ImplCommonConfig(f);
+			
+			NameValueTable nameValueTable = config.getSection(this.getClass().getCanonicalName());
+			
+			modelFile = nameValueTable.getString("modelFile");
+			//training or test
+			
+			trainDIR = nameValueTable.getString("trainDir");
+			
+			testDIR = nameValueTable.getString("testDir");
+			
+			//nameValueTable = config.getSection("FixedWeightTokenEditDistance");
+			component = new FixedWeightTokenEditDistance(config);
+			
 		} catch (ConfigurationException e) {
 			throw e;
-//		} catch (ComponentException e) {
-//			throw e;
+		} catch (ComponentException e) {
+			throw e;
+		} catch (Exception e) {
+			throw new EDAException(e.getMessage());
 		}
 		
 	}
@@ -107,20 +183,31 @@ public class EditDistanceEDA<T extends TEDecision>
 	 * @see EDABasic#process()
 	 */
 	public IEditDistanceTEDecision process(JCas jcas) throws EDAException, ComponentException {
-	
+		
+		try {
+			if (threshold == -1.0) {
+				//System.err.println("loading model ...");
+				threshold = loadModel(new File(modelFile));
+				//System.err.println("done.");
+			}
+		} catch(IOException e) {
+			throw new EDAException(e.getMessage());
+		}
+			
 		String pairId = getPairId(jcas);
 		
 		DistanceValue distanceValue =  component.calculation(jcas);
 		double distance = distanceValue.getDistance();
+		
 		// System.err.println("distance:" + distance);
 		
 		// During the test phase the method applies the threshold, so that
 		// pairs resulting in a distance below the threshold are classiﬁed as ENTAILMENT, while pairs 
 		// above the threshold are classiﬁed as NONENTAILMENT.
 		if (distance <= threshold)
-			return new EditDistanceTEDecision(DecisionLabel.Entailment, pairId);
+			return new EditDistanceTEDecision(DecisionLabel.Entailment, pairId, threshold - distance);
 		
-		return new EditDistanceTEDecision(DecisionLabel.NonEntailment, pairId);
+		return new EditDistanceTEDecision(DecisionLabel.NonEntailment, pairId, distance - threshold);
 		
 	}
 	
@@ -130,7 +217,8 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public void shutdown() {
 		
-		trainingSet.clear();
+		if (component.getComponentName().equals("FixedWeightTokenEditDistance"))
+			((FixedWeightTokenEditDistance)component).shutdown();
 		
 	}
 	
@@ -141,9 +229,30 @@ public class EditDistanceEDA<T extends TEDecision>
 	public void startTraining(CommonConfig c) throws ConfigurationException, EDAException, ComponentException {
 		
 		try {
+			logger.info("The trained model will be stored in "
+					+ modelFile);
+			logger.info("Start training ...");
+			//threshold = loadModel(new File(modelFile));
+			List<DistanceValue> distanceValueList = new ArrayList<DistanceValue>();
+			List<String> entailmentValueList = new ArrayList<String>();
 			
-			threshold = sequentialSearch(trainingSet);
+			for (File xmi : (new File(trainDIR)).listFiles()) {
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				
+				JCas cas = PlatformCASProber.probeXmi(xmi, null);
+				getDistanceValues(cas, distanceValueList);
+				getEntailmentAnnotation(cas, entailmentValueList);
+				//System.err.println(distanceValueList.size());
+			}
+			
+			threshold = sequentialSearch(distanceValueList, entailmentValueList);
+			
+			saveModel(new File(modelFile), threshold);
 			// System.err.println("threshold:" + threshold);
+			
+			logger.info("done.");
 			
 		} catch (ConfigurationException e) {
 			throw e;
@@ -152,6 +261,7 @@ public class EditDistanceEDA<T extends TEDecision>
 		} catch (ComponentException e) {
 			throw e;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new EDAException(e.getMessage());
 		}
 		
@@ -176,18 +286,26 @@ public class EditDistanceEDA<T extends TEDecision>
      * @return The threshold
      * @throws ComponentException, EDAException, Exception
      */
-	private double sequentialSearch(List<JCas> jcasList) 
+	private double sequentialSearch(List<DistanceValue> distanceValueList, List<String> entailmentValueList) 
 			throws ComponentException, EDAException, Exception {
+		
+		//System.err.println("sequential search ...");
 		
 		double threshold = 0.0;
 		
 		try {
 		
-			List<DistanceValue> distanceValueList = getDistanceValues(jcasList);
-			List<String> entailmentValueList = getEntailmentAnnotation(jcasList);
+			//List<DistanceValue> distanceValueList = getDistanceValues(jcasList);
+			//List<String> entailmentValueList = getEntailmentAnnotation(jcasList);
 			
 			// the distanceValueList sorted in increasing order
 			List<DistanceValue> sortedDistanceValueList = sortDistanceValues(distanceValueList);
+			
+			//System.err.println(sortedDistanceValueList.get(0).getDistance());
+			//System.err.println(sortedDistanceValueList.get(1).getDistance());
+			//System.err.println(sortedDistanceValueList.get(2).getDistance());
+			//System.err.println(sortedDistanceValueList.get(3).getDistance());
+			//System.exit(0);
 			
 			// get the smallest distance value. It is the first element of the array.
 			double min = getMinimum(sortedDistanceValueList);
@@ -212,6 +330,7 @@ public class EditDistanceEDA<T extends TEDecision>
 
 			// Searching the threshold begins at a lower bound (i.e. min) and
 			// increments by a step size up to an upper bound (i.e. max). 
+			//System.err.println("min:" + min + "\t" + "max:" +max + "\t" + "increment:" + increment);
 			for (double i = min; i <= max; i = i + increment) {
 				for (int j = 0; j < distanceValueList.size(); j++) {
 					double distanceValue = distanceValueList.get(j).getDistance();
@@ -240,14 +359,18 @@ public class EditDistanceEDA<T extends TEDecision>
 						 	
 			}
 			
-		} catch(EDAException e) {
-			throw e;
-		} catch(ComponentException e) {
-			throw e;
+			//System.err.println(maxAccuracy);
+			//System.err.println(threshold);
+			
+		//} catch(EDAException e) {
+			//throw e;
+		//} catch(ComponentException e) {
+			//throw e;
 		} catch(Exception e) {
 			throw e;
 		}
 		
+		//System.err.println("done.");
 		return threshold;
 		
 	}
@@ -266,7 +389,7 @@ public class EditDistanceEDA<T extends TEDecision>
 		for (int i = 1; i < sortedDistanceValueList.size(); i++) {
 			double diff = sortedDistanceValueList.get(i).getDistance() - 
 					sortedDistanceValueList.get(i-1).getDistance();
-			if (diff < result)
+			if (diff != 0 && diff < result)
 				result = diff;
 		}
 		
@@ -337,7 +460,7 @@ public class EditDistanceEDA<T extends TEDecision>
 		Collections.sort(newDistanceValues, new Comparator<DistanceValue>(){
 			 
             public int compare(DistanceValue d1,  DistanceValue d2) {
-                return (d1.getDistance() > d1.getDistance() ? 1 :
+                return (d1.getDistance() > d2.getDistance() ? 1 :
                 	(d1.getDistance() == d2.getDistance() ? 0 : -1));
             }
   
@@ -356,26 +479,18 @@ public class EditDistanceEDA<T extends TEDecision>
      * @return The list of distance values.
      * @throws DistanceComponentException
      */
-	private List<DistanceValue> getDistanceValues(List<JCas> jcasList)
+	private void getDistanceValues(JCas jcas, List<DistanceValue> distanceValues)
 			throws DistanceComponentException {
 	
-		List<DistanceValue> distanceValues = new ArrayList<DistanceValue>(jcasList.size());
-		
 		try {
 			
-			Iterator<JCas> iterator = jcasList.iterator();
-			
-			while (iterator.hasNext()) {
-				JCas aCas = iterator.next();
-				DistanceValue distanceValue = component.calculation(aCas);
+				DistanceValue distanceValue = component.calculation(jcas);
+				//System.err.println(distanceValue.getDistance());
 				distanceValues.add(distanceValue);
-			}
 			
 		} catch(DistanceComponentException e) {
 			throw e;
 		}
-		
-		return distanceValues;
 			
 	}
 		
@@ -388,28 +503,22 @@ public class EditDistanceEDA<T extends TEDecision>
      * @return The list of the annotations.
      * @throws Exception
      */
-	private List<String> getEntailmentAnnotation(List<JCas> jcasList) 
+	private void getEntailmentAnnotation(JCas jcas, List<String> entailmentValueList) 
 			throws Exception {
-			
-		List<String> entailmentValueList = new ArrayList<String>(jcasList.size());
 			
 		try {
 			
-			Iterator<JCas> iterator = jcasList.iterator();
-			while (iterator.hasNext()) {
 				Pair p = null;
-				JCas jcas = iterator.next();
 				FSIterator<TOP> pairIter = jcas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 				p = (Pair) pairIter.next();
 				String goldAnswer = p.getGoldAnswer();
 				entailmentValueList.add(goldAnswer);
-			}
+			
 				
 		} catch(Exception e) {
 			throw e;
 		}
 			
-		return entailmentValueList;
 				
 	}
 			
@@ -496,6 +605,63 @@ public class EditDistanceEDA<T extends TEDecision>
 		return sum;
 		
 	}
+	
+	
+	private double loadModel(File modelFile) throws IOException {
+		
+		double result = -1.0;
+		
+		BufferedReader reader = null; 
+		
+		try {
+			
+			reader = new BufferedReader(new FileReader(modelFile));
+			String line = reader.readLine();
+			//lettura delle linee del file
+			while (line != null) {
+				result = Double.parseDouble(line);
+				break;
+			}
+		
+		} catch (Exception e) {
+			//System.err.println(e.getMessage());
+			throw new IOException(e.getMessage());
+		} finally { 
+			if (reader != null)
+				reader.close();
+		}
+	
+		return result;
+		
+	}
+	
+	
+	public void saveModel(File modelFile, double threshold) throws IOException {
+    	
+		//System.err.println("save model:" + modelFile.getCanonicalPath());
+		
+    	BufferedWriter writer = null;
+    	
+    	try {
+    		
+    		//creo un oggetto FileWriter...
+	    	// ... che incapsulo in un BufferedWriter...
+	    	writer = new BufferedWriter(new FileWriter(modelFile));
+	    	// ... che incapsulo in un PrintWriter
+	    	PrintWriter printout = new PrintWriter(writer);
+	    	printout.print(threshold);
+	    	printout.close();
+	    	
+    	} catch (Exception e) {
+    		//System.err.println(e.getMessage());
+    		throw new IOException(e.getMessage());
+    	} finally {
+    		if (writer != null)
+    			writer.close();
+    	}
+
+    }
+	
 	
     // public static void main(String[] args) {
 		

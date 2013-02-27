@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,8 +39,10 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
+import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
+import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
@@ -137,13 +140,17 @@ public class MaxEntClassificationEDA implements
 		components = new ArrayList<ScoringComponent>();
 
 		for (String component : componentArray) {
-			NameValueTable comp = config.getSubSection("Components", component);
+			NameValueTable comp = config.getSection(component);
 			if (null == comp) {
 				throw new ConfigurationException("Wrong configuation: didn't find the corresponding setting for the component: " + component);
 			}
 			if (component.equals("BagOfLexesScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
-					initializeLexCompsDE(comp);
+					if (comp.getInteger("withPOS") == 1) {
+						initializeLexCompsDE(config, true);
+					} else {
+						initializeLexCompsDE(config, false);
+					}
 				} else {
 					initializeLexCompsEN(comp);
 				}
@@ -159,44 +166,20 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 	
-	private void initializeLexCompsDE(NameValueTable comp) throws ConfigurationException, ComponentException {
-		if (null == comp.getString("GermanDistSim") && null == comp.getString("GermaNet")) {
-			throw new ConfigurationException("Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
-		}
-		// these five boolean values control the lexical resources used.
-		// they refer to whether to use GermanDistSim, GermaNetRelation.causes, GermaNetRelation.entails, GermaNetRelation.has_hypernym, and GermaNetRelation.has_synonym
-		boolean isGDS = false;
-		boolean isGNRcauses = false;
-		boolean isGNRentails = false;
-		boolean isGNRhypernym = false;
-		boolean isGNRsynonym = false;
-		if (null != comp.getString("GermanDistSim")) {
-			isGDS = true;
-		}
-		if (null != comp.getString("GermaNet")) {
-			String[] GermaNetRelations = comp.getString("GermaNet").split(",");
-			if (null == GermaNetRelations || 0 == GermaNetRelations.length) {
-				throw new ConfigurationException("Wrong configuation: didn't find any relations for the GermaNet");
-			}
-			for (String relation : GermaNetRelations) {
-				if (relation.equalsIgnoreCase("causes")) {
-					isGNRcauses = true;
-				} else if (relation.equalsIgnoreCase("entails")) {
-					isGNRentails = true;
-				} else if (relation.equalsIgnoreCase("has_hypernym")) {
-					isGNRhypernym = true;
-				} else if (relation.equalsIgnoreCase("has_synonym")) {
-					isGNRsynonym = true;
-				} else {
-					logger.warning("Warning: wrong relation names for the GermaNet");
-				}
-			}
-		}
+	private void initializeLexCompsDE(CommonConfig config, boolean withPOS) throws ConfigurationException {
 		try {
-			ScoringComponent comp3 = new BagOfLexesScoring(isGDS, isGNRcauses, isGNRentails, isGNRhypernym, isGNRsynonym);
-			components.add(comp3);
+			ScoringComponent comp3 = null;
+			if (withPOS) {
+				comp3 = new BagOfLexesPosScoring(config);
+			} else {
+				comp3 = new BagOfLexesScoring(config);
+			}
+			// check the number of features. if it's 0, no instantiation of the component.
+			if (((BagOfLexesScoring)comp3).getNumOfFeats() > 0) {
+				components.add(comp3);
+			}
 		} catch (LexicalResourceException e) {
-			throw new ComponentException(e.getMessage());
+			throw new ConfigurationException(e.getMessage());
 		}
 	}
 	
@@ -209,6 +192,7 @@ public class MaxEntClassificationEDA implements
 		// they refer to whether to use WordNet relations hypernym, synonym, and VerbOcean relations, StrongerThan, CanResultIn, Similar
 		boolean isWNHypernym = false;
 		boolean isWNSynonym = false;
+		boolean isWNHolonym = false;
 		boolean isVOStrongerThan = false;
 		boolean isVOCanResultIn = false;
 		boolean isVOSimilar = false;
@@ -218,10 +202,12 @@ public class MaxEntClassificationEDA implements
 				throw new ConfigurationException("Wrong configuation: didn't find any relations for the WordNet");
 			}
 			for (String relation : WNRelations) {
-				if (relation.equalsIgnoreCase("hypernym")) {
+				if (relation.equalsIgnoreCase("HYPERNYM")) {
 					isWNHypernym = true;
-				} else if (relation.equalsIgnoreCase("synonym")) {
+				} else if (relation.equalsIgnoreCase("SYNONYM")) {
 					isWNSynonym = true;
+				} else if (relation.equalsIgnoreCase("PART_HOLONYM")) {
+					isWNHolonym = true;
 				} else {
 					logger.warning("Warning: wrong relation names for the WordNet");
 				}
@@ -251,6 +237,9 @@ public class MaxEntClassificationEDA implements
 		 }
 		 if (isWNSynonym) {
 			 wnRelSet.add(WordNetRelation.SYNONYM);
+		 }
+		 if (isWNHolonym) {
+			 wnRelSet.add(WordNetRelation.PART_HOLONYM);
 		 }
 		 
 		 Set<RelationType> voRelSet = new HashSet<RelationType>();
@@ -319,7 +308,7 @@ public class MaxEntClassificationEDA implements
 		}
 
 		String[] context = constructContext(aCas);
-//		System.out.println(Arrays.asList(context));
+		logger.info(Arrays.asList(context).toString());
 		float[] values = RealValueFileEventStream.parseContexts(context);
 		double[] ocs = model.eval(context, values);
 		int numOutcomes = ocs.length;
@@ -361,7 +350,16 @@ public class MaxEntClassificationEDA implements
 
 	@Override
 	public void shutdown() {
-		components.clear();
+		if (null != components) {
+			for (ScoringComponent comp : components) {
+				try {
+					((BagOfWordsScoring) comp).close();
+				} catch (ScoringComponentException e) {
+					logger.warning(e.getMessage());
+				}
+			}
+			components.clear();
+		}
 		modelFile = "";
 		trainDIR = "";
 		testDIR = "";

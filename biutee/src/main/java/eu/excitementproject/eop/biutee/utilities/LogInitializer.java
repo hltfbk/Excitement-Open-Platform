@@ -35,7 +35,7 @@ public class LogInitializer
 	
 	public static final String DEFAULT_LOG4J_PROPERTIES_CONTENTS = 
 		"log4j.rootLogger=warn, stdout\n"+
-		"log4j.logger.ac.biu.nlp.nlp.engineml=info, logfile\n"+
+		"log4j.logger.eu.excitementproject.eop=info, logfile\n"+
 		"log4j.logger.org.BIU.utils.logging.ExperimentLogger=warn\n"+
 		"\n"+
 		"log4j.appender.stdout = org.apache.log4j.ConsoleAppender\n"+
@@ -43,7 +43,7 @@ public class LogInitializer
 		"log4j.appender.stdout.layout.ConversionPattern = %-5p %d{HH:mm:ss} [%t]: %m%n\n"+
 		"\n"+
 		//"log4j.appender.logfile = org.apache.log4j.FileAppender\n"+
-		"log4j.appender.logfile = ac.biu.nlp.nlp.log.BackupOlderFileAppender\n"+
+		"log4j.appender.logfile = eu.excitementproject.eop.common.utilities.log4j.BackupOlderFileAppender\n"+
 		"log4j.appender.logfile.append=false\n"+
 		"log4j.appender.logfile.layout = org.apache.log4j.PatternLayout\n"+
 		"log4j.appender.logfile.layout.ConversionPattern = %-5p %d{HH:mm:ss} [%t]: %m%n\n"+

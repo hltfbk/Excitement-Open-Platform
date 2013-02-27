@@ -8,8 +8,8 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
@@ -45,7 +45,7 @@ public class TestWordNet
 				new WordnetLexicalResource(new File(wordNetDir), true,true, Collections.singleton(WordNetRelation.HYPERNYM));
 		
 		List<? extends LexicalRule<?>> rules =
-				resource.getRulesForLeft("boy", new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN));
+				resource.getRulesForLeft("boy", new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN));
 		
 		for (LexicalRule<?> rule : rules)
 		{

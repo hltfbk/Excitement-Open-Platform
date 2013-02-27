@@ -12,7 +12,10 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.BaseException;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
@@ -32,7 +35,7 @@ public class BagOfWordsScoringTest {
 	@Test
 	public void test() throws LexicalResourceException {
 		testDE();
-		testEN();
+//		testEN();
 	}
 
 	public void testDE() throws LexicalResourceException {
@@ -65,10 +68,31 @@ public class BagOfWordsScoringTest {
 		}
 		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run.
 		
+		// test the configuration file
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
+		Assume.assumeTrue(configFile.exists());
+		CommonConfig config = null;
+		try {
+			// read in the configuration from the file
+			config = new ImplCommonConfig(configFile);
+		} catch (ConfigurationException e) {
+			logger.warning(e.getMessage());
+		}
+		Assume.assumeNotNull(config);
 		
 		BagOfWordsScoring bows = new BagOfWordsScoring();
 		 BagOfLemmasScoring bols = new BagOfLemmasScoring();
-		BagOfLexesScoring bolexs = new BagOfLexesScoring(true, true, true, true, true);
+		 BagOfLexesScoring bolexs = null;
+		 BagOfLexesPosScoring bolexposs = null;
+		 try {
+		bolexs = new BagOfLexesScoring(config);
+		bolexposs = new BagOfLexesPosScoring(config);
+
+		 } catch (ConfigurationException e) {
+			logger.warning(e.getMessage());
+		 }
+		 Assume.assumeNotNull(bolexs);
+		 Assume.assumeNotNull(bolexposs);
 
 		JCas aCas = null;
 		LAPAccess lap = null;
@@ -81,6 +105,7 @@ public class BagOfWordsScoringTest {
 			Vector<Double> scoresVector1 = bows.calculateScores(aCas);
 			 Vector<Double> scoresVector2 = bols.calculateScores(aCas);
 			 Vector<Double> scoresVector3 = bolexs.calculateScores(aCas);
+			 Vector<Double> scoresVector4 = bolexposs.calculateScores(aCas);
 			logger.info("The bag of words scores:");
 			for (Double score : scoresVector1) {
 				logger.info(String.valueOf(score));
@@ -93,8 +118,20 @@ public class BagOfWordsScoringTest {
 			 for (Double score : scoresVector3) {
 			 logger.info(String.valueOf(score));
 			 }
+			 logger.info("The bag of lexical+pos scores:");
+			 for (Double score : scoresVector4) {
+			 logger.info(String.valueOf(score));
+			 }
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
+		} catch (ScoringComponentException e) {
+			logger.info(e.getMessage());
+		}
+		
+		try {
+			bolexs.close();
+			bolexposs.close();
+			logger.info("Components and lexical resources are closed.");
 		} catch (ScoringComponentException e) {
 			logger.info(e.getMessage());
 		}
@@ -153,6 +190,13 @@ public class BagOfWordsScoringTest {
 			 }
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
+		} catch (ScoringComponentException e) {
+			logger.info(e.getMessage());
+		}
+		
+		try {
+			bolexs.close();
+			logger.info("Components and lexical resources are closed.");
 		} catch (ScoringComponentException e) {
 			logger.info(e.getMessage());
 		}

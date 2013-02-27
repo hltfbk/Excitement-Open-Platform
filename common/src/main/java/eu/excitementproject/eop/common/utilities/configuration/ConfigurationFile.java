@@ -102,7 +102,10 @@ public class ConfigurationFile implements Serializable {
 	//////////////////////////////////// private constants //////////////////////////////////////////// 
 
 	private static final long serialVersionUID = -1138823445156480837L;	// required for implementing Serializable
-	private static final String GENERATED_JAXB_FILES_PACKAGE = "ac.biu.nlp.nlp.general.configuration.configuration_file.generated";
+	//private static final String GENERATED_JAXB_FILES_PACKAGE = "ac.biu.nlp.nlp.general.configuration.configuration_file.generated";
+	private static final String GENERATED_JAXB_FILES_PACKAGE = eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated.ObjectFactory.class.getPackage().getName();
+//			"eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated";
+	
 	
 	///////////////////////////////////////////////////////// public section /////////////////////////////////////////////////
 	

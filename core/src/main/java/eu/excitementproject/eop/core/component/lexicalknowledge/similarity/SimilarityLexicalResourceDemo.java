@@ -1,16 +1,14 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.similarity;
+
 import java.io.File;
 import java.util.List;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -41,7 +39,7 @@ public class SimilarityLexicalResourceDemo {
 		AbstractSimilarityLexicalResource lexResource = new LinProximityOriginalLexicalResource(params);
 		
 		String lemma = "left";
-		PartOfSpeech pos = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+		PartOfSpeech pos = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
 		List<LexicalRule<? extends RuleInfo>> rules = lexResource.getRulesForRight(lemma, pos);
 		
 		System.out.println("Found " +rules.size()+" right rules for <"+ lemma+", "+ pos+">");

@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wordnet;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,8 +10,8 @@ import java.util.Vector;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Dictionary;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.EmptySynset;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.SensedWord;
@@ -114,13 +112,16 @@ public class WordnetLexicalResourceServices {
 			for (int lSynsetNo = 1; lSynsetNo <= lSelectSynsets.size()  ; lSynsetNo++ )
 			{
 				Synset lSynset = lSelectSynsets.get(lSynsetNo-1);
+
 				for (int rSynsetNo = 1; rSynsetNo <= rSelectSynsets.size()  ; rSynsetNo++ )
 				{
 					Synset rSynset = rSelectSynsets.get(rSynsetNo-1);
+
 					for (WordNetRelation relation : relations)
 					{
 						Set<Synset> neighbors = getSemanticOrLexicalNeighbors(lLemma, lSynset, relation, chainingLength);
 						if (neighbors.contains(rSynset)	|| 								// usually, the relation connects between neighboring synsets
+								doubleCheckContains(neighbors, rSynset) ||
 								(relation.equals(SYNONYM) && lSynset.equals(rSynset) ))	// special condition for SYNONYMs, which are just words within a Synset
 						{
 							// just in case the given rPos or lPos are null, replace them with the POSs from the synsets
@@ -317,15 +318,17 @@ public class WordnetLexicalResourceServices {
 	 */
 	private Set<Synset> getSemanticOrLexicalNeighbors(String lemma, Synset synset, WordNetRelation relation, int chainingLength) throws WordNetException {
 		Set<Synset> synsets;
+		
 		if (relation.isLexical())
 		{
 			SensedWord sensedWord = dictionary.getSensedWord(lemma, synset);
 			synsets = new HashSet<Synset>();
-			for (SensedWord aSensedWord : sensedWord.getNeighborSensedWords(relation))
+			for (SensedWord aSensedWord : sensedWord.getNeighborSensedWords(relation)) {
 				synsets.add(aSensedWord.getSynset());
-		}
-		else
+			}
+		} else { 
 			synsets = synset.getRelatedSynsets(relation, chainingLength);
+		}
 		return synsets;
 	}
 	
@@ -381,7 +384,7 @@ public class WordnetLexicalResourceServices {
 					}
 					if (addThisRule)
 					{
-						UnspecifiedPartOfSpeech pos = synset.getPartOfSpeech().toPartOfSpeech();
+						BySimplerCanonicalPartOfSpeech pos = synset.getPartOfSpeech().toPartOfSpeech();
 						rules.add(newDirectedRule(lemma, pos, baseLemma, pos, SYNONYM, synset, synset, synsetNo, isNotCrossed));
 					}
 				}
@@ -490,5 +493,20 @@ public class WordnetLexicalResourceServices {
 		}
 		return poss;
 	}
+	
+	private boolean doubleCheckContains(Set<Synset> set, Synset s) {
+		if (s != null) {
+			if (set.contains(s)) 
+				return true;
+		
+			if (set != null && !set.isEmpty()) {
+				for(Synset x: set) {
+					if (s.equals(x))
+						return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }
-

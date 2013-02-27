@@ -172,7 +172,7 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @param useF1Classifier
 	 * @throws TeEngineMlException
 	 */
-	public void setUnderlyingSystem(SingleComponentUnderlyingSystem underLyingSystem, boolean useF1Classifier) throws TeEngineMlException
+	public void setUnderlyingSystem(SingleComponentUnderlyingSystem underLyingSystem, Boolean useF1Classifier) throws TeEngineMlException
 	{
 		this.underLyingSystem = underLyingSystem;
 		Set<String> allowedDatasets = this.underLyingSystem.getAllowedDatasetNames().getMutableSetCopy();
@@ -188,11 +188,11 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 		
 		this.useF1Classifier = useF1Classifier;
 		
-		if (this.useF1Classifier)
+		if (this.useF1Classifier!=null){if (this.useF1Classifier.booleanValue())
 		{
 			cpe.setStatusBarClassifierType(VisualTracingTool.STATUS_BAR_CLASSIFIER_TYPE_F1_OPTIMIZED);
 			cpe.updateStatusBarLabel();
-		}
+		}}
 
 		
 	}
@@ -217,12 +217,15 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 				// Shows a warning if the user wants to work on RTE-Sum dataset, but the classifier
 				// is set to optimize accuracy, rather than F1
 				boolean doIt = true;
-				if (this.cpe.getSumUtilities().isSumDatasetSentenceSelected() && (!this.useF1Classifier))
+				if (this.useF1Classifier!=null)
 				{
-					int answer = JOptionPane.showConfirmDialog(cpe.getMainFrame(),WARNING_SUM_BUT_NO_F1, "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null);
-					if (JOptionPane.YES_OPTION!=answer)
+					if (this.cpe.getSumUtilities().isSumDatasetSentenceSelected() && (!this.useF1Classifier.booleanValue()))
 					{
-						doIt = false;
+						int answer = JOptionPane.showConfirmDialog(cpe.getMainFrame(),WARNING_SUM_BUT_NO_F1, "Warning", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null);
+						if (JOptionPane.YES_OPTION!=answer)
+						{
+							doIt = false;
+						}
 					}
 				}
 				// Proceed with pre-processing
@@ -1818,7 +1821,7 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	
 	private GuiUtils guiUtils;
 
-	private boolean useF1Classifier = false;
+	private Boolean useF1Classifier = null;
 	private SinglePairPreProcessor preProcessor = null;
 	private SingleComponentUnderlyingSystem underLyingSystem = null;
 

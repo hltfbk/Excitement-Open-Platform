@@ -44,6 +44,41 @@ public final class NamedEntityPhrase {
 		return "["+namedEntity+" "+phrase+"]";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((namedEntity == null) ? 0 : namedEntity.hashCode());
+		result = prime * result + ((phrase == null) ? 0 : phrase.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		NamedEntityPhrase other = (NamedEntityPhrase) obj;
+		if (namedEntity != other.namedEntity) {
+			return false;
+		}
+		if (phrase == null) {
+			if (other.phrase != null) {
+				return false;
+			}
+		} else if (!phrase.equals(other.phrase)) {
+			return false;
+		}
+		return true;
+	}
+
 	protected String phrase;
 	protected NamedEntity namedEntity;
 }

@@ -3,6 +3,7 @@ package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
@@ -10,7 +11,7 @@ import org.apache.uima.jcas.JCas;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.utilities.SystemInformationLog;
@@ -56,9 +57,10 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			else throw new EDAException("Method initialize must not be called if startTraining was called.");
 		}
 		trainingMode = false;
+		File biuConfigurationFile = null;
 		try
 		{
-			File biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
+			biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
 			BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
 			logger.info("Log file has been converted to BIU log file, and temporarily stored in "+biuConfigurationFile.getPath());
 			new SystemInformationLog(biuConfigurationFile.getPath()).log();
@@ -70,6 +72,13 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 		catch (IOException | TeEngineMlException | PluginAdministrationException | eu.excitementproject.eop.common.utilities.configuration.ConfigurationException | LemmatizerException e)
 		{
 			throw new EDAException("Initialization failure. See nested exception.",e);
+		}
+		finally
+		{
+			if (biuConfigurationFile!=null){ if (biuConfigurationFile.exists())
+			{
+				try{biuConfigurationFile.delete();}catch(RuntimeException e){}
+			}}
 		}
 	}
 
@@ -89,11 +98,11 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			PairData pairData = BiuteeEdaUtilities.convertJCasToPairData(aCas);
 			logger.info("Building PairData from the given JCas - done.");
 			logger.info("Processing T-H pair...");
-			PairProcessor pairProcessor = underlyingSystem.process(pairData);
+			PairResult pairResult = underlyingSystem.process(pairData);
 			logger.info("Processing T-H pair - done.");
-			return BiuteeEdaUtilities.createDecisionFromPairProcessor(pairId,pairProcessor,underlyingSystem.getClassifierForPredictions());
+			return BiuteeEdaUtilities.createDecisionFromPairResult(pairId,pairResult,underlyingSystem.getClassifierForPredictions());
 		}
-		catch (TeEngineMlException | AnnotatorException | OperationException | ClassifierException | MalformedURLException | TreeCoreferenceInformationException | ScriptException | RuleBaseException | LemmatizerException e)
+		catch (TeEngineMlException | AnnotatorException | OperationException | ClassifierException | MalformedURLException | TreeCoreferenceInformationException | ScriptException | RuleBaseException | LemmatizerException | InterruptedException | ExecutionException e)
 		{
 			throw new EDAException("Failed to process given CAS. See nested exception.",e);
 		}
@@ -153,7 +162,14 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			finally
 			{
 				trainer.cleanUp();
+				
+				if (biuConfigurationFile!=null){ if (biuConfigurationFile.exists())
+				{
+					try{biuConfigurationFile.delete();}catch(RuntimeException e){}
+				}}
+
 			}
+
 
 		}
 		catch (IOException | ClassNotFoundException | OperationException |

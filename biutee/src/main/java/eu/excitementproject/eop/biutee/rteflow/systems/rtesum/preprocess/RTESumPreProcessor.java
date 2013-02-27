@@ -193,11 +193,11 @@ public class RTESumPreProcessor
 		TeEngineMlException badDatasetValueException = new TeEngineMlException("Bad value for dataset name: \""+datasetParameterValue+"\". Should be annual-flag"+RTESUM_DATASET_PARAM_DELIMITER+"dev-test-flag"+RTESUM_DATASET_PARAM_DELIMITER+"path" +
 				"\nAnnual flag should be: "+FileSystemNamesFactory.RTE6_FLAG+" or "+FileSystemNamesFactory.RTE7_FLAG+
 				"\ndev-test-flag should be: "+FileSystemNamesFactory.DEV_FLAG+" or "+FileSystemNamesFactory.TEST_FLAG);
-		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		if (!datasetValueIterator.hasNext()) throw badDatasetValueException;
 		String annualFlag = datasetValueIterator.next().trim();
-		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		if (!datasetValueIterator.hasNext()) throw badDatasetValueException;
 		String devTestFlag = datasetValueIterator.next().trim();
-		if (datasetValueIterator.hasNext()) throw badDatasetValueException;
+		if (!datasetValueIterator.hasNext()) throw badDatasetValueException;
 		String datasetDirAsString = datasetValueIterator.next().trim();
 		datasetDirAsString = FileUtils.normalizeCygwinPathToWindowsPath(datasetDirAsString);
 		File datasetDir = new File(datasetDirAsString);

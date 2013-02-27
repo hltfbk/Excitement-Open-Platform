@@ -2,6 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.core.component.lexicalknowledge.catvardb;
+
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.sql.Connection;
@@ -18,9 +19,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -381,7 +382,7 @@ public class CatvarDBLexicalResource extends LexicalResourceNothingToClose<RuleI
 			 		canonicalPosTag = SimplerCanonicalPosTag.OTHER;
 		 }
 		 try {
-			return new UnspecifiedPartOfSpeech(canonicalPosTag);
+			return new BySimplerCanonicalPartOfSpeech(canonicalPosTag);
 		} catch (UnsupportedPosTagStringException e) 
 		{
 			throw new LexicalResourceException("This is some strange bug regarding UnspecifiedPartOfSpeech", e);

@@ -8,7 +8,7 @@ import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierUtils;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
@@ -46,20 +46,17 @@ public class BiuteeEdaUtilities
 	}
 	
 	/**
-	 * Constructs a {@link TEDecision} from a given {@link PairProcessor}. This method
-	 * assumes that {@link PairProcessor#process()} has been called.
-	 * This {@link PairProcessor} is typically returned by
-	 * {@link BiuteeEdaUnderlyingSystem#process(PairData)}.
+	 * Constructs a {@link TEDecision} from a given {@link PairResult}.
 	 *   
 	 * @param pairId
-	 * @param pairProcessor
+	 * @param pairResult
 	 * @param classifierForPredictions
-	 * @return
+	 * @return The {@link TEDecision} constructed by the given {@link PairResult}.
 	 * @throws ClassifierException
 	 */
-	public static TEDecision createDecisionFromPairProcessor(final String pairId, PairProcessor pairProcessor, Classifier classifierForPredictions) throws ClassifierException
+	public static TEDecision createDecisionFromPairResult(final String pairId, PairResult pairResult, Classifier classifierForPredictions) throws ClassifierException
 	{
-		final double classification = classifierForPredictions.classify(pairProcessor.getBestTree().getFeatureVector());
+		final double classification = classifierForPredictions.classify(pairResult.getBestTree().getFeatureVector());
 		final boolean entailment = ClassifierUtils.classifierResultToBoolean(classification);
 		final DecisionLabel decisionLabel;
 		if (entailment)

@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean;
+
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
 import java.io.BufferedReader;
@@ -22,9 +23,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.datastructures.Pair;
 import eu.excitementproject.eop.common.datastructures.PairMap;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -113,7 +114,7 @@ public class VerbOceanLexicalResource extends LexicalResourceNothingToClose<Verb
 			if (allowedRelationTypes.contains(forbiddenRelationType))
 				throw new LexicalResourceException("The given allowed relation types set "+allowedRelationTypes+" contains a forbidden relation type " + forbiddenRelationType);
 				
-		try {		VERB = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.VERB);	}
+		try {		VERB = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.VERB);	}
 		catch (UnsupportedPosTagStringException e) {	throw new LexicalResourceException("Internal error", e);	}
 		
 		PairMap<String, LexicalRule<? extends VerbOceanRuleInfo>> mapRulesByUnorderedPair = new PairMap<String, LexicalRule<? extends VerbOceanRuleInfo>>();

@@ -21,4 +21,5 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
 public interface XmlTreePartOfSpeechFactory
 {
 	public PartOfSpeech createPartOfSpeech(CanonicalPosTag canonicalPosTag, String partOfSpeechRepresentation) throws UnsupportedPosTagStringException;
+	public PartOfSpeech createPartOfSpeech(String partOfSpeechRepresentation) throws UnsupportedPosTagStringException;
 }

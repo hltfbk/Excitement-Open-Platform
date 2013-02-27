@@ -11,6 +11,7 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 //import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+//import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
@@ -25,6 +26,7 @@ import de.tuebingen.uni.sfs.germanet.api.WordCategory;
 import de.tuebingen.uni.sfs.germanet.api.ConRel;
 import de.tuebingen.uni.sfs.germanet.api.LexRel;
 
+import java.util.Iterator;
 // other imports
 import java.util.List;
 import java.util.ArrayList;
@@ -52,11 +54,14 @@ import java.util.HashMap;
  * University. If the GermaNet is not found, the component will raise an exception and
  * will not be initialized. 
  * 
- * TODO: Jan, is there any additional assumptions or conditions that a user might need to know? 
- * 
  * @author Jan Pawellek 
  * @since Nov 2012 
  */
+
+// TODO : Missing Feature: support (maybe in-complete but working) rules for Right. 
+// TODO : Problem: Hypernym goes up too much (all the way to "lemma" GN_ROOT ?!? ), with all same confidence.  
+// TODO : Bug: RHS lemma same as LHS returned from synonym. (Hund -> Hund ?!?) 
+
 public class GermaNetWrapper implements Component, LexicalResourceWithRelation<GermaNetInfo, GermaNetRelation> {
 
 	/** conceptual relations indicating entailment */
@@ -78,6 +83,19 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 
 	private GermaNet germanet;
 
+	private boolean isValidPos(PartOfSpeech pos) {
+		
+		switch(pos.getCanonicalPosTag()) {
+			case ADJ:	
+			case N:
+			case NN:
+			case V:
+				return true; 
+			default:
+				return false; 
+		}
+	}
+	
 	private WordCategory posToWordCategory(PartOfSpeech pos) throws LexicalResourceException {
 		switch (pos.getCanonicalPosTag()) {
 			case ADJ:
@@ -88,7 +106,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 			case V:
 				return WordCategory.verben;
 			default:
-				throw new LexicalResourceException("Part-of-Speech " + pos.getStringRepresentation() + " is not covered by GermaNet.");
+				//throw new LexicalResourceException("Part-of-Speech " + pos.getStringRepresentation() + " is not covered by GermaNet.");
+				throw new LexicalResourceException("Integrity failure; non-compatible POS shouldn't be passed to this point. "); 
 		} 
 	}
 
@@ -119,15 +138,12 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 * @throws ComponentException
 	 */
 	public GermaNetWrapper(CommonConfig config) throws ConfigurationException, ComponentException {
-		// TODO CommonConfig not implemented yet -- this is how it MIGHT work. Change it later!
 		this(config.getSection("GermaNetWrapper").getString("germaNetFilesPath"),
 				config.getSection("GermaNetWrapper").getDouble("causesConfidence"),
 				config.getSection("GermaNetWrapper").getDouble("entailsConfidence"),
 				config.getSection("GermaNetWrapper").getDouble("hypernymConfidence"),
-				config.getSection("GermaNetWrapper").getDouble("synonymConfidence"),
-				config.getSection("GermaNetWrapper").getDouble("antonymConfidence"));
-		// TODO Remove the following line, if done.
-		throw new ComponentException("This method is not implemented yet.");
+				config.getSection("GermaNetWrapper").getDouble("synonymConfidence"));  //,
+				// config.getSection("GermaNetWrapper").getDouble("antonymConfidence"));
 	}
 	
 	/**
@@ -140,7 +156,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 * @throws ComponentException
 	 */
 	public GermaNetWrapper(String germaNetFilesPath) throws ConfigurationException, ComponentException {
-		this(germaNetFilesPath, 1, 1, 1, 1, 1);
+		this(germaNetFilesPath, 1.0, 1.0, 1.0, 1.0); //, 1.0);
 	}
 	
 	/**
@@ -152,13 +168,16 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 * @param entailsConfidence		Confidence to be set for "entails" relations
 	 * @param hypernymConfidence	Confidence to be set for "hypernym" relations
 	 * @param synonymConfidence		Confidence to be set for "synonym" relations
-	 * @param antonymConfidence		Confidence to be set for "antonym" relations
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
-	public GermaNetWrapper(String germaNetFilesPath, double causesConfidence, double entailsConfidence,
-			double hypernymConfidence, double synonymConfidence, double antonymConfidence)
+	public GermaNetWrapper(String germaNetFilesPath, Double causesConfidence, Double entailsConfidence,
+			Double hypernymConfidence, Double synonymConfidence) //, Double antonymConfidence) 
 			throws ConfigurationException, ComponentException {
+		
+		// Note that, Antonym can only be reached by withOwnRelation interface, and 
+		// cannot be accessed via basic LexicalResource interface methods 
+
 		try {
 			this.germanet = new GermaNet(germaNetFilesPath);
 		}
@@ -168,12 +187,31 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		catch (java.lang.Exception e) {
 			throw new ComponentException("Cannot initialize GermaNet.", e);
 		}
+				
+		// the Double values can be null, if they are from CommonConfig XML files. 
+		// we treat null as 0 values (meaning = ignore, not returning this relation). - Gil 
+		if (causesConfidence == null)
+			CONFIDENCES.put(ConRel.causes, 0.0);
+		else
+			CONFIDENCES.put(ConRel.causes, causesConfidence);
+		if (entailsConfidence == null)
+			CONFIDENCES.put(ConRel.entails, 0.0);
+		else
+			CONFIDENCES.put(ConRel.entails, entailsConfidence);
+		if (hypernymConfidence == null)
+			CONFIDENCES.put(ConRel.has_hypernym, 0.0);
+		else
+			CONFIDENCES.put(ConRel.has_hypernym, hypernymConfidence);
+		if (synonymConfidence == null)
+			CONFIDENCES.put(LexRel.has_synonym, 0.0);
+		else
+			CONFIDENCES.put(LexRel.has_synonym, synonymConfidence);
 
-		CONFIDENCES.put(ConRel.causes, causesConfidence);
-		CONFIDENCES.put(ConRel.entails, entailsConfidence);
-		CONFIDENCES.put(ConRel.has_hypernym, hypernymConfidence);
-		CONFIDENCES.put(LexRel.has_synonym, synonymConfidence);
-		CONFIDENCES.put(LexRel.has_antonym, antonymConfidence);
+//		if (antonymConfidence == null)
+//			CONFIDENCES.put(LexRel.has_antonym, 0.0);
+//		else
+//			CONFIDENCES.put(LexRel.has_antonym, antonymConfidence);
+
 	}
 	
 	/**
@@ -184,7 +222,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 */
 	public String getComponentName()
 	{
-		return "GermaNetWrapper"; // TODO: change to some official name
+		return "GermaNetWrapper"; 
 	}
 	
 	
@@ -195,7 +233,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 * and only if all instances of the component shares the same configuration.
 	 */
 	public String getInstanceName() {
-		return null; // TODO: change 
+		return null; 
         }
   
 	/**
@@ -209,9 +247,12 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	public List<LexicalRule<? extends GermaNetInfo>> getRulesForLeft(String lemma, PartOfSpeech pos) throws LexicalResourceException
 	{
 		// concatenate Entailment and NonEntailment rules and return
+		
 		List<LexicalRule<? extends GermaNetInfo>> result;
 		result = this.getRulesForLeft(lemma, pos, TERuleRelation.Entailment);
-		result.addAll(this.getRulesForLeft(lemma, pos, TERuleRelation.NonEntailment));
+		
+		// The Contract of getRulesForLeft, only returns entailing lexicons. --- Gil 
+		//result.addAll(this.getRulesForLeft(lemma, pos, TERuleRelation.NonEntailment));
 		return result;
 	}
 	
@@ -227,6 +268,14 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	{
 		// using a set makes the result unique
 		Set<LexicalRule<? extends GermaNetInfo>> result = new HashSet<LexicalRule<? extends GermaNetInfo>>();
+		
+		// check POS is valid or not for GermaNet. Note that GermaNet only has noun, verb, and adjective.
+		if ( pos != null && !isValidPos(pos))
+		{
+			// POS class that GermaNet knows not.  
+			// No need to look up, return an empty list.  
+			return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result);
+		}
 
 		// Fetch synsets for lemma
 		List<Synset> syns = pos == null ? germanet.getSynsets(lemma) : germanet.getSynsets(lemma, posToWordCategory(pos));
@@ -293,10 +342,17 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 			}
 		}
 
+		// Gil: check all result, and remove any 0 confidence value 
+		Iterator<LexicalRule<? extends GermaNetInfo>> i = result.iterator(); 
+		while (i.hasNext()) {
+			LexicalRule<? extends GermaNetInfo> r = i.next(); 
+			if (r.getConfidence() == 0 ) // 0 confidence 
+				i.remove(); 
+		}
+		
 		return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result);
 	}
-	
-	
+		
 	/** Returns a list of lexical rules whose right side (the target of the lexical relation) matches 
 	 * the given lemma and POS. An empty list means that no rules were matched.
 	 * @param lemma Lemma to be matched on RHS. 
@@ -381,7 +437,6 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	@Override
 	public void close() throws LexicalResourceCloseException
 	{
-		// TODO Auto-generated method stub
 		
 	}
 

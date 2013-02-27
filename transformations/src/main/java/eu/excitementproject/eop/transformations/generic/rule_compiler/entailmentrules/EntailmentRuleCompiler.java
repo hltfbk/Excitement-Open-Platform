@@ -152,14 +152,13 @@ public final class EntailmentRuleCompiler  {
 	 */
 	public static void main(String[] args) throws UnsupportedPosTagStringException, EntailmentCompilationException, FileNotFoundException, IOException, ConfigurationException 
 	{
-		if (args.length < (1+1))
-			throw new EntailmentCompilationException("usage: EntailmentRuleCompiler configurationFile.xml <module_name>");
+		if (args.length < 1)
+			throw new EntailmentCompilationException("usage: EntailmentRuleCompiler configurationFile.xml");
 		ConfigurationFile confFile = new ConfigurationFile(new File(args[0]));
 		confFile.setExpandingEnvironmentVariables(true);
-		String confModuleName = args[1];
 		ConfigurationParams compilationParams = confFile.getModuleConfiguration(RuleCompilerParameterNames.RULE_COMPILER_PARAMS_MODULE);
 		//ConfigurationParams applictionParams = confFile.getModuleConfiguration(KnowledgeResource.SYNTACTIC.getModuleName());
-		ConfigurationParams applictionParams = confFile.getModuleConfiguration(confModuleName);
+		ConfigurationParams applictionParams = confFile.getModuleConfiguration(RuleCompilerParameterNames.SYNTACTIC_PARAMS_MODULE);
 		
 		File dir = compilationParams.getDirectory(RuleCompilerParameterNames.ENTAILMENT_RULES_DIRECTORY);	//new File(props.getProperty("directoryName").trim());
 		final String ruleFileSuffix = compilationParams.get(RuleCompilerParameterNames.RULE_FILE_SUFFIX);	//props.getProperty("graphFileSuffix").trim();

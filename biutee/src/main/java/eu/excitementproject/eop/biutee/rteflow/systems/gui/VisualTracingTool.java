@@ -54,6 +54,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.rteflow.systems.gui.SpellCheckerRegister.SpellCheckerRegisterResult;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.biutee.version.Version;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
@@ -484,7 +485,12 @@ public class VisualTracingTool
 			boolean built = systemCreator.go();
 			if (built)
 			{
-				actionsPerformer.setUnderlyingSystem(systemCreator.getUnderlyingSystem(),systemCreator.isUseF1Classifier());
+				boolean useF1Classifier = false;
+				if (BiuteeConstants.GUI_LOADS_LABELED_SAMPLES)
+				{
+					useF1Classifier = systemCreator.isUseF1Classifier();
+				}
+				actionsPerformer.setUnderlyingSystem(systemCreator.getUnderlyingSystem(),useF1Classifier);
 			}
 			else
 			{
@@ -597,6 +603,7 @@ public class VisualTracingTool
 				ExceptionUtil.logException(e, logger);
 				System.out.println();
 				System.out.println("Presenting GUI failed. Aborting.");
+				System.exit(0);
 			}
 		}
 	}

@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.List;
 
 import org.junit.Assume;
@@ -26,14 +27,11 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
  */
 public class GermaNetWrapperTest {
 
-//	@Test(expected=GermaNetNotInstalledException.class) 
-//  [Gil: used Assume.assumeNotNull instead of expected exception.] 
 	@Test
-	public void test() throws UnsupportedPosTagStringException /* throws java.lang.Exception */ {
+	public void test() throws UnsupportedPosTagStringException {
 		
 		GermaNetWrapper gnw=null;
 		try {
-			// TODO: in the future, this test code also should read from the common config. 
 			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
 		}
 		catch (GermaNetNotInstalledException e) {
@@ -46,6 +44,16 @@ public class GermaNetWrapperTest {
 		}
 		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
 
+		// Test for "simplest" generic method 
+		List<LexicalRule<? extends GermaNetInfo>> list1 = null; 
+		try {
+			list1 = gnw.getRulesForLeft("wachsen", null); 
+			assertTrue(list1.size() > 0); 
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}			
 		
 		// Test for verbs
 		try{
@@ -88,7 +96,108 @@ public class GermaNetWrapperTest {
 		{
 			e.printStackTrace(); 
 		}
-		//throw new GermaNetNotInstalledException("GermaNet is installed, but this exception is thrown to fulfill Test's expectations.");
+		
+		// Test of not-supported POS type (should return an empty list) 
+		try {
+			List<LexicalRule<? extends GermaNetInfo>> l = gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("PTKA")); 
+			assertTrue(l.size() == 0); 
+			// Still, null POS should mean, don't care
+			l = gnw.getRulesForLeft("Hitze",  null); 
+			assertTrue(l.size() > 0);
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+		
+		// Test for CommonConfig passing 
+		gnw=null;
+		try {
+			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
+			gnw = new GermaNetWrapper(new ImplCommonConfig(f)); 
+		}
+		catch (GermaNetNotInstalledException e) {
+			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and update the path in the configuration file");
+			//throw e;
+		}
+		catch(BaseException e)
+		{
+			e.printStackTrace(); 
+		}
+		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
+
+		// repeat the test for common nouns, with CommonConfig inited gnw
+		try{
+			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym)) {
+				assertTrue(rule.getLLemma().equals("Hitze"));
+				assertTrue(rule.getRLemma().equals("Kälte"));
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getConfidence() > 0);
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+		
+		// repeat test for "simplest" generic method, with CommonConfig inited gnw. 
+		// and compares the result to previous one.  
+		List<LexicalRule<? extends GermaNetInfo>> list2 = null; 
+		try {
+			list2 = gnw.getRulesForLeft("wachsen", null); 
+			assertTrue(list2.size() > 0); 
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}			
+
+		// should be identical ... (well, unless someone edited the test configuration. none should have) 
+		assertTrue(list1.size() == list2.size());
+		for(int i=0; i < list1.size(); i++)
+		{
+			assertTrue(list1.get(i).getLLemma().equals(list2.get(i).getLLemma())); 
+			assertTrue(list1.get(i).getRLemma().equals(list2.get(i).getRLemma())); 			
+		}
+		
+		// checking that no antonym in getRulesForLeft() 
+		try{
+			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", null)) {
+				assertTrue(rule.getLLemma().equals("Hitze"));
+				assertFalse(rule.getRLemma().equals("Kälte")); // no "Kaelte" should be here.  
+				assertTrue(rule.getConfidence() > 0);
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+				
+		// check that no 0 confidence value returns 
+		try {// Initiating with "no hypernym" (0 confidence on hypernym)  
+			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/", 1.0, 1.0, 0.0, 1.0);
+		}
+		catch (GermaNetNotInstalledException e) {
+			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
+			//throw e;
+		}
+		catch(BaseException e)
+		{
+			e.printStackTrace(); 
+		}
+
+		// there should be no hypernym RHS, neither anyone with 0 confidence. 
+		try{
+			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hund", null)) {
+				assertTrue(rule.getConfidence() > 0);
+				assertFalse(rule.getRelation().equals("has_hypernym")); 
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+		
 	}
 }
 

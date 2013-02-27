@@ -41,11 +41,14 @@ public class MaxEntClassificationEDATest {
 	
 	@Test
 	public void test() {		
-		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_DistSimOnly_DE.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_DE.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_AllLexRes_EN.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_DE.xml");
-//		File configFile = new File("./src/test/resources/MaxEntClassificationEDA_NonLexRes_EN.xml");
+
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DistSim_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {
@@ -80,7 +83,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/test/resources/German_dev.xml");
+		inputFile = new File("./src/main/resources/German_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/dev/");
 		if (!outputDir.exists()) {
@@ -98,7 +101,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/test/resources/German_test.xml");
+		inputFile = new File("./src/main/resources/German_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/test/");
 		if (!outputDir.exists()) {
@@ -119,7 +122,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/test/resources/English_dev.xml");
+		inputFile = new File("./src/main/resources/English_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/dev/");
 		if (!outputDir.exists()) {
@@ -137,7 +140,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/test/resources/English_test.xml");
+		inputFile = new File("./src/main/resources/English_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/test/");
 		if (!outputDir.exists()) {
@@ -157,7 +160,10 @@ public class MaxEntClassificationEDATest {
 		MaxEntClassificationEDA meceda = new MaxEntClassificationEDA();
 		try {
 			meceda.startTraining(config);
-			logger.info("training done");
+			logger.info("training done.");
+			
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.warning(e.getMessage());
 		}
@@ -189,9 +195,13 @@ public class MaxEntClassificationEDATest {
 				lap = new TreeTaggerEN();
 				
 				// ENTAILMENT
-				test1Cas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.");
+//				test1Cas = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.");
 				// NONENTAILMENT
-				test2Cas = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable");
+//				test2Cas = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable");
+//				test1Cas = lap.generateSingleTHPairCAS("I visit Jerusalem","I visit Israel");
+//				test2Cas = lap.generateSingleTHPairCAS("I visit Jerusalem", "I visit Iran");
+				test1Cas = lap.generateSingleTHPairCAS("I saw a car","I saw an automobile");
+				test2Cas = lap.generateSingleTHPairCAS("I saw a car", "I saw a cat");			
 			}
 
 			logger.info("Answers are:");
@@ -201,6 +211,9 @@ public class MaxEntClassificationEDATest {
 			ClassificationTEDecision decision2 = meceda.process(test2Cas);
 			logger.info(decision2.getDecision().toString());
 			logger.info(String.valueOf(decision2.getConfidence()));
+			
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
@@ -233,6 +246,9 @@ public class MaxEntClassificationEDATest {
 				sum ++;
 			}
 			logger.info("The correctly predicted pairs are " + correct + " / " + sum);
+			
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
@@ -248,7 +264,7 @@ public class MaxEntClassificationEDATest {
 			// check the test data directory
 			meceda.initializeData(config, false, true);
 			
-			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName() + "_Result.txt"), "UTF-8"));
+			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName().replace("configuration-file", "results") + "_Result.txt"), "UTF-8"));
 			logger.info("build CASes for input sentence pairs:");
 			int correct = 0;
 			int sum = 0;			
@@ -275,6 +291,8 @@ public class MaxEntClassificationEDATest {
 			}
 			output.close();
 			logger.info("The correctly predicted pairs are " + correct + " / " + sum);
+			meceda.shutdown();
+			logger.info("EDA shuts down.");
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}

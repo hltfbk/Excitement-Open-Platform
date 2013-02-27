@@ -1,0 +1,34 @@
+<assembly>
+    <id>bin</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>EOP-${artifact.version}</baseDirectory>
+    <moduleSets>
+        <moduleSet>
+            <includes>
+                <include>eu.excitementproject:core</include>
+                <include>eu.excitementproject:common</include>
+                <include>eu.excitementproject:biutee</include>
+                <include>eu.excitementproject:lap</include>
+                
+                <include>eu.excitementproject:gui</include>
+                
+                <include>eu.excitementproject:transformations</include>
+            </includes>
+            <binaries>
+                <outputDirectory>/</outputDirectory>
+                <unpack>false</unpack>
+                <dependencySets>
+                    <dependencySet>
+                        <outputDirectory>/</outputDirectory>
+                        <unpack>false</unpack>
+                    </dependencySet>
+                </dependencySets>
+            </binaries>
+        </moduleSet>
+    </moduleSets>
+    
+</assembly>
+

@@ -13,6 +13,7 @@ import eu.excitementproject.eop.transformations.generic.truthteller.representati
  * @since Jun 14, 2012
  */
 public class RuleCompilerParameterNames {
+	public static final String SYNTACTIC_PARAMS_MODULE = "Syntactic";
 	public static final String RULE_COMPILER_PARAMS_MODULE = "RuleCompilation";
 	/**
 	 * inside the {@link #RULE_COMPILER_PARAMS_MODULE} 

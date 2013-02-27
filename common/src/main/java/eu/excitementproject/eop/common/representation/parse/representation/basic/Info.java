@@ -13,7 +13,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
  * <LI> The information about the edge connecting this node to its parent (i.e. dependency relation (subject, object, etc.))</LI>
  * </OL>
  * This is an interface to the actual object that is used as the actual information
- * in a node ({@link BasicNode}
+ * in a node ({@link BasicNode})
  * <P>
  * An easy way to get the Strings in an Info object, is by using {@link InfoGetFields}
  * <P>

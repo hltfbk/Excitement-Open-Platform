@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.core.EditDistanceEDA</property>
+		<property name="language">DE</property>
+	</section>
+	
+	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
+	    <property name="instances">instance1</property>
+		<subsection name="instance1">
+			<property name="stopWordRemoval">true</property>
+		</subsection>
+	</section>	
+		
+	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
+	    <property name="modelFile">./src/main/resources/model/EditDistanceEDA_NonLexRes_DE_Model</property>
+		<property name="trainDir">./target/GER/dev/</property>
+		<property name="testDir">./target/GER/test/</property>
+	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
+	</section>
+	
+</configuration>

@@ -31,7 +31,7 @@ import eu.excitementproject.eop.transformations.utilities.InfoObservations;
  * text lemma by the hypothesis lemma.
  * <P>
  * 
- * All those specifications are found by the {@link #find(TreeAndParentMap<Info,EnglishNode>)} method, and
+ * All those specifications are found by the {@link #find(TreeAndParentMap)} method, and
  * returned by the {@link #getSpecs()} method.
  * 
  * @author Asher Stern

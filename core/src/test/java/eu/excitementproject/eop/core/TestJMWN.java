@@ -10,9 +10,9 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
@@ -27,15 +27,15 @@ public class TestJMWN {
 		WordnetLexicalResource wnLexR = null;
 		Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
 		
-		String configurationFileName = "src/test/resources/";
+		String configurationFileName = "src/main/resources/";
 
-		String lLemma = "mela";
-		String rLemma = "frutta";
+		String lLemma = "gigante";
+		String rLemma = "piccolo";
 		
 		PartOfSpeech pos1 = null, pos2 = null;
 		try {
-			pos1 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
-			pos2 = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+			pos1 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
+			pos2 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.ADJECTIVE);
 
 			System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		
@@ -45,6 +45,7 @@ public class TestJMWN {
 			relations.add(WordNetRelation.HYPONYM);
 			relations.add(WordNetRelation.PART_HOLONYM);
 			relations.add(WordNetRelation.CATEGORY_MEMBER);
+			relations.add(WordNetRelation.SYNONYM);
 		
 			wnLexR = new WordnetLexicalResource(new File(configurationFileName), false, false, relations, 1, WordnetDictionaryImplementationType.JMWN);
 			
@@ -61,6 +62,7 @@ public class TestJMWN {
 		
 		List<LexicalRule<? extends WordnetRuleInfo>> rules;
 		try {
+			
 			rules = wnLexR.getRulesForLeft(lLemma, pos1 );
 
 			System.out.println("Got "+rules.size() + " left rules for: " + lLemma + ", " + pos1 + ", " + relations);
@@ -79,13 +81,19 @@ public class TestJMWN {
 			System.out.println(rLemma +" has " + rules.size() + " "+relations.toString()+" relations");
 			System.out.println("\n*****************************\n");
 
-			List<LexicalRule<? extends WordnetRuleInfo>> otherRules = wnLexR.getRules(lLemma, null, rLemma, null, relations, null);
+			
+			//for (int i = 0; i < 1000000; i++) {
+			List<LexicalRule<? extends WordnetRuleInfo>> otherRules = wnLexR.getRules(lLemma, pos1, rLemma, pos2, relations, null);
+			//List<LexicalRule<? extends WordnetRuleInfo>> otherRules = wnLexR.getRules(lLemma, null, rLemma, null);
+				
 			System.out.println("Got "+otherRules.size() + " for: " + lLemma + ", " + pos2 + ", "  + rLemma + ", "  + null + ", "  + relations);
 			for (LexicalRule<? extends WordnetRuleInfo> rule : otherRules)
 				System.out.println(rule);
+			
 		
-			System.out.println(lLemma +" has " + otherRules.size() + " "+relations.toString()+" relations");
-		} catch (LexicalResourceException e) {
+			//System.out.println(lLemma +" has " + otherRules.size() + " "+relations.toString()+" relations");
+			//}
+			} catch (LexicalResourceException e) {
 			System.out.println("Error extracting entailment rules from Italian MultiWordNet");
 			// TODO Auto-generated catch block
 			e.printStackTrace();

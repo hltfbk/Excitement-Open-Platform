@@ -26,12 +26,12 @@ public class JmwnSensedWord implements SensedWord {
 	public JmwnSensedWord(JmwnSynset synset, String strWord) throws WordNetException {
 		this.synset = synset;
 		this.word = strWord;
-		
+				
 		String wordToLookup = strWord.replace(' ', '_');
 		Word[] words = synset.realSynset.getWords();
 		Word wordObj = lookupWordInWords(words, wordToLookup);
 		if (wordObj == null) 
-	 		throw new WordNetException("\""+ strWord + "\" is not a memeber of the given synset " + synset);
+	 		throw new WordNetException("\""+ strWord + "\" is not a memeber of the given synset " + synset + "/" + synset.getOffset());
 	 	this.wordObj = wordObj;
 	 	dictionary = synset.jmwnDictionary;
 	 	this.pos = JmwnUtils.getWordNetPartOfSpeech( wordObj.getPOS());
@@ -63,10 +63,13 @@ public class JmwnSensedWord implements SensedWord {
 
 	public Set<SensedWord> getNeighborSensedWords(WordNetRelation relation) throws WordNetException {
 		Set<SensedWord> sensedWords = new HashSet<SensedWord>();
+		//System.out.println(this.getClass() + " : " + this.getWord());
 		if (relation.isLexical()) {
+			//System.out.println( "\t\t" + relation.name());
 			PointerType pointerType = JmwnUtils.wordNetRelationToPointerType(relation);
 			if (pointerType != null) {
 				Pointer[] pointers = wordObj.getPointers(pointerType);
+				//System.out.println("Found pointers: " + pointers.length);
 				for (Pointer pointer: pointers) { 
 					try {
 						sensedWords.add(new JmwnSensedWord(((Word) pointer.getTarget()), dictionary));
@@ -109,6 +112,9 @@ public class JmwnSensedWord implements SensedWord {
 		for (int i = 0; i < words.length && !found; i++) {
 			someWord = words[i];
 			found = someWord.getLemma().equalsIgnoreCase(wordToLookup);
+		}
+		if (!found) {
+			someWord = new Word(synset.realSynset, 0, wordToLookup);
 		}
 		return someWord;
 	}

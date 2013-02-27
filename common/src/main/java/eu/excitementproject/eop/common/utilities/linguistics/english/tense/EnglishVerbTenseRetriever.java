@@ -33,39 +33,46 @@ public class EnglishVerbTenseRetriever
 	public static EnglishVerbFormsEntity buildForRegularVerb(String verb) throws LinguisticsException
 	{
 		verb = verb.trim();
-		if (verb.length()<2) throw new LinguisticsException("Wrong verb: "+verb);
 		String pastTense;
-		if ('e'==verb.charAt(verb.length()-1))
+		if (verb.length()<2)
 		{
-			pastTense = verb+'d';
+			// throw new LinguisticsException("Wrong verb: "+verb);
+			pastTense = verb+"ed";
 		}
 		else
 		{
-			if ('y'==verb.charAt(verb.length()-1))
+			if ('e'==verb.charAt(verb.length()-1))
 			{
-				if (CONSONANTS.contains(verb.charAt(verb.length()-2)))
+				pastTense = verb+'d';
+			}
+			else
+			{
+				if ('y'==verb.charAt(verb.length()-1))
 				{
-					pastTense = verb.substring(0, verb.length()-1)+"ied";
+					if (CONSONANTS.contains(verb.charAt(verb.length()-2)))
+					{
+						pastTense = verb.substring(0, verb.length()-1)+"ied";
+					}
+					else
+					{
+						pastTense = verb+"ed";
+					}
+				}
+				else if ( (VOWELS.contains(verb.charAt(verb.length()-2))) && (CONSONANTS.contains(verb.charAt(verb.length()-1))))
+				{
+					if ('c'==verb.charAt(verb.length()-1))
+					{
+						pastTense = verb+"ked" +", "+verb+"ed"; // handling stressed and unstressed cases
+					}
+					else
+					{
+						pastTense = verb+verb.charAt(verb.length()-1)+"ed" +", "+verb+"ed"; // handling stressed and unstressed cases
+					}
 				}
 				else
 				{
 					pastTense = verb+"ed";
 				}
-			}
-			else if ( (VOWELS.contains(verb.charAt(verb.length()-2))) && (CONSONANTS.contains(verb.charAt(verb.length()-1))))
-			{
-				if ('c'==verb.charAt(verb.length()-1))
-				{
-					pastTense = verb+"ked" +", "+verb+"ed"; // handling stressed and unstressed cases
-				}
-				else
-				{
-					pastTense = verb+verb.charAt(verb.length()-1)+"ed" +", "+verb+"ed"; // handling stressed and unstressed cases
-				}
-			}
-			else
-			{
-				pastTense = verb+"ed";
 			}
 		}
 		// if (null==pastTense) throw new LinguisticsException("Internal bug");

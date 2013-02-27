@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,9 +14,9 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 
@@ -35,22 +33,22 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
  */
 public class WikiLexicalResourceDBServices {
 
-	private static final String JDBC_DRIVER_CLASS = "com.mysql.jdbc.Driver";
-	private static final WikiRuleScoreComparator RULE_RANK_AND_COOCURRENCE_COMPARATOR = new WikiRuleScoreComparator();
-	private static final String WILDCARD = "%";
+	protected static final String JDBC_DRIVER_CLASS = "com.mysql.jdbc.Driver";
+	protected static final WikiRuleScoreComparator RULE_RANK_AND_COOCURRENCE_COMPARATOR = new WikiRuleScoreComparator();
+	protected static final String WILDCARD = "%";
 
-	private final Double COOCURENCE_THRESHOLD;
-	private final PartOfSpeech NOUN ;
-	private final Set<WikiExtractionType> PERMITTED_EXTRACTION_TYPES;
+	protected final Double COOCURENCE_THRESHOLD;
+	protected final PartOfSpeech NOUN ;
+	protected final Set<WikiExtractionType> PERMITTED_EXTRACTION_TYPES;
 
-	private final PreparedStatement getRulesFromRightStmt;
-	private final PreparedStatement getRulesFromRightStmt2;
-	private final PreparedStatement getRulesFromLeftStmt;
-	private final PreparedStatement getRulesFromLeftStmt2;
-	private final PreparedStatement getRulesFromRightAndLeftStmt;
-	private final PreparedStatement getHeadRuleStmt;
+	protected final PreparedStatement getRulesFromRightStmt;
+	protected final PreparedStatement getRulesFromRightStmt2;
+	protected final PreparedStatement getRulesFromLeftStmt;
+	protected final PreparedStatement getRulesFromLeftStmt2;
+	protected final PreparedStatement getRulesFromRightAndLeftStmt;
+	protected final PreparedStatement getHeadRuleStmt;
 	
-	private Connection con;
+	protected Connection con;
 
 	//////////////////////////////////////////// SQL infrastructure for this class	/////////////////////////////////////////////////////////////////////
 
@@ -123,7 +121,7 @@ public class WikiLexicalResourceDBServices {
 	 * @param permittedExtractionTypes 
 	 * @throws LexicalResourceException 
 	 */
-	WikiLexicalResourceDBServices(String dbConnectionString, String dbUser, String dbPassword, Double cocurrence_threshold, 
+	protected WikiLexicalResourceDBServices(String dbConnectionString, String dbUser, String dbPassword, Double cocurrence_threshold, 
 			Set<WikiExtractionType> permittedExtractionTypes) throws LexicalResourceException 
 	{
 		// setup the prepared statements
@@ -152,7 +150,7 @@ public class WikiLexicalResourceDBServices {
 
 		COOCURENCE_THRESHOLD = cocurrence_threshold;	// may be null
 		this.PERMITTED_EXTRACTION_TYPES = permittedExtractionTypes ;
-		try {	NOUN = new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN);	}
+		try {	NOUN = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);	}
 		catch (UnsupportedPosTagStringException e) {	throw new LexicalResourceException("Internal error", e);	}
 	}
 	
@@ -249,7 +247,7 @@ public class WikiLexicalResourceDBServices {
 	 * @return
 	 * @throws LexicalResourceException 
 	 */
-	private LexicalRule<WikiRuleInfo> constructRule(ResultSet resultSet, String lemma, boolean lemmaIsOnTheRight) throws LexicalResourceException 
+	public LexicalRule<WikiRuleInfo> constructRule(ResultSet resultSet, String lemma, boolean lemmaIsOnTheRight) throws LexicalResourceException 
 	{
 		LexicalRule<WikiRuleInfo> rule = null;
 		

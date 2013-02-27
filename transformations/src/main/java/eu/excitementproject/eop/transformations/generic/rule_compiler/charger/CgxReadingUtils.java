@@ -1,7 +1,5 @@
-/**
- * 
- */
 package eu.excitementproject.eop.transformations.generic.rule_compiler.charger;
+
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,9 +9,9 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation.StanfordDependencyException;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.representation.partofspeech.WildcardPartOfSpeech;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.CompilationException;
@@ -127,8 +125,8 @@ public class CgxReadingUtils {
 			else
 			{
 				partOfSpeech = partOfSpeech.toUpperCase();
-				if (UnspecifiedPartOfSpeech.CANONICAL_POS_TAGS_STRINGS.contains(partOfSpeech))
-					try 	{ pos = new UnspecifiedPartOfSpeech(partOfSpeech);	} 
+				if (BySimplerCanonicalPartOfSpeech.SIMPLER_CANONICAL_POS_TAG_STRINGS.contains(partOfSpeech))
+					try 	{ pos = new BySimplerCanonicalPartOfSpeech(partOfSpeech);	} 
 					catch (UnsupportedPosTagStringException e) { throw new CompilationException("Error reading this part of speech: " + partOfSpeech, e);	}
 				else 
 					try		{	pos = new PennPartOfSpeech(partOfSpeech);	}  
