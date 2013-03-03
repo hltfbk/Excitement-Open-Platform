@@ -240,6 +240,14 @@ public class RTEPairsMultiThreadTester extends RTEPairsBaseSystem
 			logger.info("Storing results in a serialization file: \""+resultsSerFileName+"\"");
 			RTESystemsUtils.saveInSerFile(resultsSerFileName, pairsResults);
 			ExperimentManager.getInstance().register(new File(resultsSerFileName));
+
+			
+			File xmlResultsFile = new File(BiuteeConstants.RTE_PAIRS_XML_RESULTS_FILE_NAME_PREFIX+BiuteeConstants.RTE_PAIRS_XML_RESULTS_FILE_NAME_POSTFIX);
+			logger.info("Printing results in an XML file: "+xmlResultsFile.getPath());
+			ResultsToXml resultsToXml = new ResultsToXml(ResultsToXml.convertPairResults(pairsResults, classifierForPredictions),xmlResultsFile);
+			resultsToXml.output();
+			ExperimentManager.getInstance().register(xmlResultsFile);
+			
 			printPairsResults();
 		}
 		catch(ClassifierException e)
