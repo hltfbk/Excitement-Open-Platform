@@ -8,6 +8,9 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * Contains all parse-trees and coreference-information of an RTE-Sum topic.
+ * The type of tree nodes is a generic parameter.
+ * 
  * 
  * @author Asher Stern
  * @since Jun 2, 2011

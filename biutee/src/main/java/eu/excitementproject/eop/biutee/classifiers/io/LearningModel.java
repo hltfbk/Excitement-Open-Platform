@@ -10,6 +10,9 @@ import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeLe
  * <B>See instructions about classifiers in the package-java-doc (package-info.java)
  * of package <code>eu.excitementproject.eop.biutee.classifiers</code></B>
  * <P>
+ * Writing a sub-class of {@link LearningModel}:
+ * The {@link LearningModel} is stored in an XML file using JAXB.
+ * Thus, You must write public getter and setter for each field you add.
  * 
  * @see LoadableClassifier
  * @see StorableClassifier

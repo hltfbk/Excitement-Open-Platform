@@ -28,7 +28,7 @@
  * Let's start with the easy stuff. The description methods (getDescriptionOfTraining and setDescriptionOfTraining)
  * are quite free. Implement them in whatever way you want. They have no effect on the classifier.
  * The most significant method is {@link eu.excitementproject.eop.biutee.classifiers.io.LearningModel#getClassifierClassOfModel()}.
- * This class returns a string, which must be the fully-qualified-name of a class
+ * This method returns a string, which must be the fully-qualified-name of a class
  * that implements {@link eu.excitementproject.eop.biutee.classifiers.io.LoadableClassifier}.
  * You might ask "What is this class? Where do I take it from?", well, just a few
  * minutes. You will know everything.
@@ -43,6 +43,11 @@
  * and uses an "inner classifier", your {@link eu.excitementproject.eop.biutee.classifiers.io.LearningModel#getNestedModel()}
  * will have to return the {@link eu.excitementproject.eop.biutee.classifiers.io.LearningModel}
  * of that "inner classifier".
+ * <BR>
+ * Usually, you will write your sub-class of {@link eu.excitementproject.eop.biutee.classifiers.io.LearningModel}
+ * which additional fields, getters and setters. Note that {@link eu.excitementproject.eop.biutee.classifiers.io.LearningModel}
+ * is actually stored in an XML file using JAXB. So, for each field, you must add public
+ * getter and setter.
  * <P>
  * Good!
  * You are done with writing a classifier with store capability!
