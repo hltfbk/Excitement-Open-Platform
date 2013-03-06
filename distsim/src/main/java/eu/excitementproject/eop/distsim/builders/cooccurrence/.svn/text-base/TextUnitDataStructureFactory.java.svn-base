@@ -1,9 +1,0 @@
-package eu.excitementproject.eop.distsim.builders.cooccurrence;
-
-
-import eu.excitementproject.eop.distsim.items.TextUnit;
-import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
-
-public interface TextUnitDataStructureFactory {
-	CountableIdentifiableStorage<TextUnit> create();
-}

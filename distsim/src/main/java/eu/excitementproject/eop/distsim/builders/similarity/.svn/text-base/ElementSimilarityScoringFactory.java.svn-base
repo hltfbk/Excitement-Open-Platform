@@ -1,9 +1,0 @@
-package eu.excitementproject.eop.distsim.builders.similarity;
-
-
-import eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScoring;
-import eu.excitementproject.eop.distsim.util.CreationException;
-
-public interface ElementSimilarityScoringFactory {
-	ElementSimilarityScoring create() throws CreationException;
-}
