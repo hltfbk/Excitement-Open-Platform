@@ -1,0 +1,39 @@
+/**
+ * 
+ */
+package org.excitement.distsim.scoring.combine;
+
+import java.util.List;
+
+import org.excitement.distsim.scoring.Score;
+
+/**
+ * @author Meni Adler
+ * @since 18/04/2012
+ *
+ * <P>
+ * Immutable. Thread-safe
+ */
+public class DirtOverallScorer implements SimilarityCombination {
+
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.scorer.overall.RuleOverallScorer#score(java.util.List)
+	 */
+	@Override
+	public double combine(List<Score> scores) throws IlegalScoresException {
+		
+		if(scores.size() > 2)
+			throw new IlegalScoresException("Number of variable must not exceed 2");
+		if(scores.size() == 0)
+			throw new IlegalScoresException("Number of variable must be at least 1");	
+
+		if(scores.size() == 1)
+			return 0;
+
+		double unifiedScore = 1;		
+		for (Score score : scores)
+			unifiedScore *= score.getPrimaryScore();
+		return Math.pow(unifiedScore, 0.5);
+	}
+
+}

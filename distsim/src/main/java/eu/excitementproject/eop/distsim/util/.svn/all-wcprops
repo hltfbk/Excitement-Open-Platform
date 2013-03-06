@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util
+END
+SetBasedFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/SetBasedFilter.java
+END
+FileUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/FileUtils.java
+END
+Loggers.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/Loggers.java
+END
+BasicFormatter.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/BasicFormatter.java
+END
+Resetable.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/Resetable.java
+END
+Factory.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/Factory.java
+END
+Configuration.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/Configuration.java
+END
+Serialization.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/Serialization.java
+END
+SetBasedPOSFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/SetBasedPOSFilter.java
+END
+DoubleArrayIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/DoubleArrayIterator.java
+END
+CreationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/CreationException.java
+END
+SortUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/SortUtil.java
+END
+Filter.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/Filter.java
+END
+Pair.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/Pair.java
+END
+SerializationException.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/util/SerializationException.java
+END

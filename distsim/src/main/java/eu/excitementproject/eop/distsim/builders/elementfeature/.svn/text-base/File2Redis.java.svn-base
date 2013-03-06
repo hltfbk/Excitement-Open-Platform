@@ -1,0 +1,27 @@
+package org.excitement.distsim.builders.elementfeature;
+
+import java.io.IOException;
+
+import org.excitement.distsim.items.Element;
+import org.excitement.distsim.storage.File;
+import org.excitement.distsim.storage.LoadingStateException;
+import org.excitement.distsim.storage.PatternBasedCountableIdentifiableStorage;
+import org.excitement.distsim.storage.RedisBasedCountableIdentifiableStorage;
+import org.excitement.util.Factory;
+
+public class ElementsFile2PatternBasedRedis {
+	public static void main(String[] args) throws LoadingStateException, IOException {
+		
+		if (args.length != 3) {
+			System.err.println("Usage: ElementsFile2PatternBasedRedis <in elements file> <out element redis host> <out element redis port>");
+			System.exit(0);
+		}
+
+		File elementsDevice = new File(new java.io.File(args[0]),true);
+		String elementDBHost = args[1];
+		int elementDBPort = Integer.parseInt(args[2]);
+		PatternBasedCountableIdentifiableStorage<Element> patternBasedElementsStorage = new RedisBasedCountableIdentifiableStorage<Element>(elementDBHost, elementDBPort);
+		patternBasedElementsStorage.loadState(elementsDevice);
+		elementsDevice.close();		
+	}
+}

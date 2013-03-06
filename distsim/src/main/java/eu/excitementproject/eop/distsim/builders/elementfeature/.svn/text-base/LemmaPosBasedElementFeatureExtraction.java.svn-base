@@ -1,0 +1,128 @@
+/**
+ * 
+ */
+package eu.excitementproject.eop.distsim.builders.elementfeature;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+
+import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
+import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
+import eu.excitementproject.eop.distsim.builders.similarity.GeneralElementSimilarityCalculator;
+import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
+import eu.excitementproject.eop.distsim.items.ArgumentFeature;
+import eu.excitementproject.eop.distsim.items.Cooccurrence;
+import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
+import eu.excitementproject.eop.distsim.items.DefaultRelation;
+import eu.excitementproject.eop.distsim.items.Element;
+import eu.excitementproject.eop.distsim.items.Feature;
+import eu.excitementproject.eop.distsim.items.LemmaPos;
+import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
+import eu.excitementproject.eop.distsim.items.LemmaPosFeature;
+import eu.excitementproject.eop.distsim.items.LemmaPosTextUnit;
+import eu.excitementproject.eop.distsim.items.PredicateElement;
+import eu.excitementproject.eop.distsim.items.Relation;
+import eu.excitementproject.eop.distsim.items.RelationBasedLemmaPosFeature;
+import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
+import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
+import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureCountStorage;
+import eu.excitementproject.eop.distsim.storage.ElementFeatureCountStorage;
+import eu.excitementproject.eop.distsim.storage.ItemNotFoundException;
+import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
+import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.distsim.util.Factory;
+import eu.excitementproject.eop.distsim.util.Filter;
+import eu.excitementproject.eop.distsim.util.Pair;
+import eu.excitementproject.eop.distsim.util.SerializationException;
+import eu.excitementproject.eop.distsim.util.SetBasedFilter;
+import eu.excitementproject.eop.distsim.util.SetBasedPOSFilter;
+
+import ac.biu.nlp.nlp.general.ExceptionUtil;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
+import ac.biu.nlp.nlp.representation.CanonicalPosTag;
+
+/**
+ * @author Meni Adler
+ * @since 04/09/2012
+ *
+ * Given a co-occurrence of two lexical items, each composed of lemma and pos, and their dependency relation 
+ * extracts two element-feature pairs where the element is the one word and the feature is the other word, with or without the dependency relation
+ * and the same for opposite order 
+ */
+public class LemmaPosBasedElementFeatureExtraction extends IrelevantListBasedElementFeatureExtraction {
+
+	private final static Logger logger = Logger.getLogger(LemmaPosBasedElementFeatureExtraction.class);
+	protected static final String OPPOSITE_SIGN ="@R@";
+		
+	public LemmaPosBasedElementFeatureExtraction(boolean bIncludeDependencyRelation) {
+		this(bIncludeDependencyRelation, new HashSet<String>());
+	}
+
+	public LemmaPosBasedElementFeatureExtraction(boolean bIncludeDependencyRelation, Set<String> stopWordsFeatures) {
+		super(stopWordsFeatures);
+		this.bIncludeDependencyRelation = bIncludeDependencyRelation;
+		this.posFilter = new SetBasedPOSFilter();
+	}
+
+	public LemmaPosBasedElementFeatureExtraction(boolean bIncludeDependencyRelation, Set<String> stopWordsFeatures, CanonicalPosTag... relevantPOSs) {
+		super(stopWordsFeatures);
+		this.bIncludeDependencyRelation = bIncludeDependencyRelation;
+		this.posFilter = new SetBasedPOSFilter(relevantPOSs);
+	}
+		
+	public LemmaPosBasedElementFeatureExtraction(ConfigurationParams params) throws ConfigurationException, IOException {
+		super(params);
+		this.bIncludeDependencyRelation = params.getBoolean(Configuration.INCLUDE_DEPENDENCY_RELATION);
+		this.posFilter = new SetBasedPOSFilter(params);
+	}
+		
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.builders.elementfeature.ElementFeatureExtractor#extractElementsFeatures(org.excitement.distsim.items.Cooccurrence)
+	 */
+	@Override
+	public List<Pair<Element, Feature>> extractElementsFeature(Cooccurrence<?> cooccurrence) throws ElementFeatureExtractionException {
+		
+		List<Pair<Element, Feature>> ret = new LinkedList<Pair<Element, Feature>>();		
+		if (isStopWordFeature(cooccurrence))
+			return ret;
+		
+		LemmaPosTextUnit word1 = (LemmaPosTextUnit)cooccurrence.getTextItem1();
+		LemmaPosTextUnit word2 = (LemmaPosTextUnit)cooccurrence.getTextItem2();
+		if (posFilter.isRelevant(word1.getData().getPOS()) && posFilter.isRelevant(word2.getData().getPOS())) {
+			String rel = (String)cooccurrence.getRelation().getValue();
+			ret.add(new Pair<Element, Feature>(					
+				new LemmaPosBasedElement(word1.getData()),
+				(bIncludeDependencyRelation ?
+						new RelationBasedLemmaPosFeature(rel,word2.getData()) :
+						new LemmaPosFeature(word2.getData()))
+							
+				));
+		
+			//opposite - to check
+			ret.add(new Pair<Element, Feature>(					
+					new LemmaPosBasedElement(word2.getData()),
+					(bIncludeDependencyRelation ?
+							new RelationBasedLemmaPosFeature(rel+ OPPOSITE_SIGN,word1.getData()) :
+							new LemmaPosFeature(word1.getData()))
+								
+					));
+		}
+		return ret;
+	}
+
+	protected boolean bIncludeDependencyRelation;
+	protected Filter<CanonicalPosTag> posFilter;
+	
+	
+}

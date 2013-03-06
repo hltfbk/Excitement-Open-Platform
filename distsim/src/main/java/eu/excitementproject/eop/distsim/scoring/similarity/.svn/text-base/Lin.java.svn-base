@@ -1,0 +1,52 @@
+package eu.excitementproject.eop.distsim.scoring.similarity;
+
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
+
+/**
+ * Lin similarity of two feature vectors
+ * See: http://acl.ldc.upenn.edu/J/J05/J05-4002.pdf, Section 4.6
+ * 
+ * @author Meni Adler
+ * @since 17/04/2012
+ *
+ * <P>
+ * Thread-safe
+ */
+public class Lin implements ElementSimilarityScoring {
+
+	public Lin(ConfigurationParams params) {
+		this();
+	}
+
+	public Lin() {
+		sum = 0;
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.scoring.similarity.ElementSimilarityScoring#addElementFeatureScore(double, double, org.excitement.distsim.scoring.similarity.Numerator)
+	 */
+	@Override
+	public void addElementFeatureScore(double leftElementFeatureScore, double rightElementFeatureScore) {
+		if(leftElementFeatureScore > 0 && rightElementFeatureScore > 0)
+			sum += (leftElementFeatureScore + rightElementFeatureScore);		
+	}
+
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.scoring.similarity.ElementSimilarityScoring#getSimilarityScore(org.excitement.distsim.scoring.similarity.Numerator, double, double)
+	 */
+	@Override
+	public double getSimilarityScore(double leftDenominator, double rightDenominator) {
+		return sum / (leftDenominator + rightDenominator);
+	}
+
+	@Override
+	public double getSimilarity(ImmutableIterator leftFeatures, ImmutableIterator rightFeatures) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+
+	
+	protected double sum;
+}

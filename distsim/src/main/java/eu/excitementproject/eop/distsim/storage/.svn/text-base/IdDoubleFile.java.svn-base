@@ -1,0 +1,46 @@
+/**
+ * 
+ */
+package eu.excitementproject.eop.distsim.storage;
+
+import java.io.Serializable;
+
+import eu.excitementproject.eop.distsim.util.SerializationException;
+
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+
+/**
+ * Extends the {@link IdDataFile} class, by storing the data as a simple double instead of it serialization
+ * 
+ * @author Meni Adler
+ * @since 10/09/2012
+ *
+ */
+public class IdDoubleFile extends IdDataFile {
+
+	/**
+	 * @throws IOException 
+	 * 
+	 */
+	public IdDoubleFile(java.io.File file, Boolean bRead) {
+		super(file,bRead);
+	}
+
+	public IdDoubleFile(ConfigurationParams params) throws ConfigurationException {
+		super(params);
+	}
+	
+	protected Serializable getData(String[] toks) throws SerializationException {
+		if (toks.length != 2)
+			throw new SerializationException("wrong line format: " + toks);		
+		return Double.parseDouble(toks[1]);
+	}
+	
+	protected void writeData(int id, Serializable data) {
+		writer.print(id);
+		writer.print("\t");
+		writer.print((Double)data);
+		writer.print("\n");
+	}
+}

@@ -1,0 +1,59 @@
+package org.excitement.distsim.items;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.excitement.util.DoubleArrayIterator;
+
+import ac.biu.nlp.nlp.general.immutable.ImmutableList;
+import ac.biu.nlp.nlp.general.immutable.ImmutableListWrapper;
+
+/**
+ * @author Meni Adler
+ * @since 21/03/2012
+ *
+ * Simple implementation of Scores interface
+ * 
+ * <P>
+ * Immutable. Thread-safe.
+ */
+public class SimpleScores implements Scores {
+
+	
+	/**
+	 * @param primaryScore 
+	 */
+	public SimpleScores(double primaryScore) {
+		this.primaryScore = primaryScore;
+		this.secondaryScores = null;
+	}
+	
+	public SimpleScores(double primaryScore, double... otherScores) {
+		this.primaryScore = primaryScore;
+		this.secondaryScores = new double[otherScores.length];
+		for (int i = 0; i<otherScores.length; i++)
+			this.secondaryScores[i] = otherScores[i]; 		
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.items.Scores#getPrimaryScore()
+	 */
+	@Override
+	public double getPrimaryScore() {
+		return primaryScore;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.items.Scores#getOtherScores()
+	 */
+	@Override
+	public double getSecondaryScore(int index) throws MissingScoreException {
+		if (secondaryScores == null || index >= secondaryScores.length)
+			throw new MissingScoreException(); 
+		return secondaryScores[index];
+	}
+
+	final protected double primaryScore;
+	final protected double[] secondaryScores;
+}

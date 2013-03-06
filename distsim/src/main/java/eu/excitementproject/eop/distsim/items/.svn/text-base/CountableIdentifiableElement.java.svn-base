@@ -1,0 +1,11 @@
+package org.excitement.distsim.items;
+
+/**
+ * @author Meni Adler
+ * @since 23/04/2012
+ *
+ * Element extends {@link BasicElement} with identification and counting functionality (in order to support the distributional similarity statistics)
+ * 
+ */
+public interface Element<C extends Number> extends BasicElement, Identifiable, Countable<C> {
+}

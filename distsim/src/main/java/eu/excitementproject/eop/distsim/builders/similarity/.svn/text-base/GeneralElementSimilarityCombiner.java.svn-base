@@ -1,0 +1,90 @@
+/**
+ * 
+ */
+package eu.excitementproject.eop.distsim.builders.similarity;
+
+import eu.excitementproject.eop.distsim.scoring.combine.SimilarityCombination;
+import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
+import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.distsim.util.Factory;
+import eu.excitementproject.eop.distsim.util.Pair;
+import eu.excitementproject.eop.distsim.util.SortUtil;
+import gnu.trove.map.TIntDoubleMap;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntDoubleHashMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
+
+import java.io.File;
+import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map.Entry;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import ac.biu.nlp.nlp.general.ExceptionUtil;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+
+/**
+ * @author Meni Adler
+ * @since 11/09/2012
+ *
+ */
+public class GeneralElementSimilarityCombiner  {
+
+	private final static Logger logger = Logger.getLogger(GeneralElementSimilarityCombiner.class);
+	
+	public static void main(String[] args) {
+		
+
+		PropertyConfigurator.configure("log4j.properties");
+		
+		if (args.length != 1) {
+			System.err.println("Usage: GeneralElementSimilarityCombiner <configuration file>");
+			System.exit(0);
+		}
+
+		
+		/*
+		*/
+
+		
+		try {			
+		
+			ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			
+			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
+			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));
+						
+			final ConfigurationParams similarityCombinerParams = confFile.getModuleConfiguration(Configuration.ELEMENT_SIMILARITY_COMBINER);			
+			String storageClass = similarityCombinerParams.get(Configuration.STORAGE_DEVICE_CLASS);
+			
+			PersistenceDevice combinedDevice = (PersistenceDevice)Factory.create(storageClass,new java.io.File(similarityCombinerParams.getString(Configuration.OUT_COMBINED_FILE)),false);
+			combinedDevice.open();
+			
+			SimilarityCombination similarityCombination = (SimilarityCombination)Factory.create(similarityCombinerParams.get(Configuration.SIMILARITY_COMBINATION_CLASS),similarityCombinerParams);
+			String[] infiles = similarityCombinerParams.getStringArray(Configuration.IN_FILES);
+			// build the combined similarity storage
+			
+			List<PersistenceDevice> similarityStorageDevices = new LinkedList<PersistenceDevice>();
+			for (int i = 0; i<infiles.length; i++) 
+				similarityStorageDevices.add((PersistenceDevice)Factory.create(storageClass,new java.io.File(infiles[i]),true));
+			
+			ElementSimilarityCombiner combiner = (ElementSimilarityCombiner)Factory.create(similarityCombinerParams.get(Configuration.CLASS),similarityCombinerParams);
+			
+			for (PersistenceDevice device : similarityStorageDevices)
+				device.open();
+			combiner.combinedScores(similarityStorageDevices, similarityCombination,combinedDevice);
+			for (PersistenceDevice device : similarityStorageDevices)
+				device.close();			
+			combinedDevice.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

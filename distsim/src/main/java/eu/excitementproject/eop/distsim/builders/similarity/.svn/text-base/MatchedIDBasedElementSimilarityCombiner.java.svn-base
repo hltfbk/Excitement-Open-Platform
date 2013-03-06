@@ -1,0 +1,191 @@
+/**
+ * 
+ */
+package org.excitement.distsim.builders.similarity;
+
+import gnu.trove.iterator.TIntObjectIterator;
+
+
+import gnu.trove.map.TIntDoubleMap;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntDoubleHashMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.NoSuchElementException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.excitement.distsim.items.Element;
+import org.excitement.distsim.scoring.ElementFeatureScores;
+import org.excitement.distsim.scoring.FeatureScore;
+import org.excitement.distsim.scoring.combine.GeometricMean;
+import org.excitement.distsim.scoring.combine.IlegalScoresException;
+import org.excitement.distsim.scoring.combine.SimilarityCombination;
+import org.excitement.distsim.scoring.similarity.ElementSimilarityScoring;
+import org.excitement.distsim.scoring.similarity.Lin;
+import org.excitement.distsim.storage.BasicMapException;
+import org.excitement.distsim.storage.BasicSet;
+import org.excitement.distsim.storage.DefaultElementFeatureScoreStorage;
+import org.excitement.distsim.storage.DefaultSimilarityStorage;
+import org.excitement.distsim.storage.ElementFeatureScoreStorage;
+import org.excitement.distsim.storage.LoadingStateException;
+import org.excitement.distsim.storage.PatternBasedCountableIdentifiableStorage;
+import org.excitement.distsim.storage.PersistenceDevice;
+import org.excitement.distsim.storage.PersistentBasicMap;
+import org.excitement.distsim.storage.RedisBasedCountableIdentifiableStorage;
+import org.excitement.distsim.storage.RedisBasedIDKeyPersistentBasicMap;
+import org.excitement.distsim.storage.SimilarityStorage;
+import org.excitement.distsim.storage.TroveBasedIDKeyPersistentBasicMap;
+import org.excitement.util.Pair;
+import org.excitement.util.SerializationException;
+import org.excitement.util.SortUtil;
+
+import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
+
+/**
+ * @author Meni Adler
+ * @since 11/09/2012
+ *
+ */
+public class GeneralElementSimilarityCombiner implements ElementSimilarityCombiner {
+
+	private final static Logger logger = Logger.getLogger(GeneralElementSimilarityCombiner.class);
+	
+	public GeneralElementSimilarityCombiner(String redisHost, int redisPort) {
+		this.redisHost =redisHost;
+		this.redisPort = redisPort;
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.builders.similarity.ElementSimilarityCombiner#combinedScores(java.util.List, org.excitement.distsim.scoring.combine.SimilarityCombination)
+	 */
+	@Override
+	public PersistentBasicMap<LinkedHashMap<Integer,Double>> combinedScores(List<PersistenceDevice> similarityStorageDevices, SimilarityCombination combiner) throws SimilarityCombinationException {
+		// Assumption: the element-pair similarities are stored in the same order at each of the given similarityStorageDevices
+		PersistentBasicMap<LinkedHashMap<Integer,Double>> combinedStorage = new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(redisHost, redisPort);
+		boolean b = true;
+		while (b) {
+			int entailingElementId = -1;
+			Map<Integer, List<Double>> entailedsScores = new HashMap<Integer, List<Double>>();
+			for (int i=0; i<similarityStorageDevices.size(); i++) {
+				Pair<Integer, Serializable> pair;
+				try {
+					pair = similarityStorageDevices.get(i).read();
+				} catch (Exception e) {
+					throw new SimilarityCombinationException (e);
+				}
+				if (pair == null) {
+					if (i == 0) {
+						b = false;
+						break;
+					}
+					else 
+						throw new SimilarityCombinationException ("expected data at device  " + i + " is missing");
+				}
+				if (i == 0) {
+					entailingElementId = pair.getFirst();
+				} else {
+					if (entailingElementId != pair.getFirst())
+						throw new SimilarityCombinationException ("un matched element id at device " + i + ". Expected " + entailingElementId + ", found " + pair.getFirst());
+				}
+				for (Entry<Integer,Double> entailedScore : ((LinkedHashMap<Integer,Double>)pair.getSecond()).entrySet()) {
+					int entailedElementId = entailedScore.getKey();
+					double score = entailedScore.getValue();
+					List<Double> scores = entailedsScores.get(entailedElementId);
+					if (scores == null) {
+						scores = new LinkedList<Double>();
+						entailedsScores.put(entailedElementId, scores);
+					}
+					scores.add(score);
+				}		
+			}
+			if (b && entailingElementId != -1) {
+				TIntDoubleMap combinedEntailedsScores = new TIntDoubleHashMap();
+				for (Entry<Integer, List<Double>> entailedScores : entailedsScores.entrySet()) {
+					double combinedScore;
+					try {
+						combinedScore = combiner.combine(entailedScores.getValue());
+					} catch (IlegalScoresException e) {
+						throw new SimilarityCombinationException (e);
+					}
+					combinedEntailedsScores.put(entailedScores.getKey(), combinedScore);
+				}
+				try {
+					combinedStorage.put(entailingElementId, SortUtil.sortMapByValue(combinedEntailedsScores, true));
+				} catch (BasicMapException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return combinedStorage;
+	}
+	
+	protected final String redisHost;
+	protected final int redisPort;
+	
+	
+	public static void main(String[] args) {
+		
+
+		PropertyConfigurator.configure("log4j.properties");
+		
+		if (args.length < 3) {
+			System.err.println("Usage: GeneralElementSimilarityCombiner" +
+					"\n\t <out redis host> " +
+					"\n\t <out redis port> " +
+					"\n\t <in element similarity file>+"
+			);
+			System.exit(0);
+		}
+
+		
+		/*
+		*/
+
+		
+		try {			
+		
+			String redisHost = args[0];
+			int redisPort = Integer.parseInt(args[1]);
+			SimilarityCombination similarityCombination = new GeometricMean();
+			
+			// build the combined similarity storage
+			PersistentBasicMap<LinkedHashMap<Integer,Double>> combinedStorage;
+			if (args.length == 3) {
+				org.excitement.distsim.storage.File device = new org.excitement.distsim.storage.File(new File(args[2]),true);
+				device.open();
+				combinedStorage = new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(redisHost, redisPort);
+				combinedStorage.loadState(device);
+				device.close();
+			} else {
+				List<PersistenceDevice> similarityStorageDevices = new LinkedList<PersistenceDevice>();
+				for (int i = 2; i<args.length; i++) 
+					similarityStorageDevices.add(new org.excitement.distsim.storage.File(new File(args[i]),true));
+				ElementSimilarityCombiner combiner = new GeneralElementSimilarityCombiner(redisHost, redisPort);
+				for (PersistenceDevice device : similarityStorageDevices)
+					device.open();
+				combinedStorage = combiner.combinedScores(similarityStorageDevices, similarityCombination);
+				for (PersistenceDevice device : similarityStorageDevices)
+					device.close();
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

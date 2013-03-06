@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package eu.excitementproject.eop.distsim.builders.cooccurrence;
+
+import java.util.LinkedList;
+
+import java.util.List;
+
+
+import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
+import eu.excitementproject.eop.distsim.items.Cooccurrence;
+import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
+import eu.excitementproject.eop.distsim.items.DefaultRelation;
+import eu.excitementproject.eop.distsim.items.LexicalUnit;
+import eu.excitementproject.eop.distsim.items.TextUnit;
+import eu.excitementproject.eop.distsim.util.Pair;
+
+/**
+ * @author Meni Adler
+ * @since 04/09/2012
+ *
+ */
+public abstract class PredArgCooccurrenceExtraction<T> implements CooccurrenceExtraction<T,PredicateArgumentSlots> {
+	
+}

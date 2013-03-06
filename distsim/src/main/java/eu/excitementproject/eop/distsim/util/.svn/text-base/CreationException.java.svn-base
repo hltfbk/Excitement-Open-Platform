@@ -1,0 +1,30 @@
+package eu.excitementproject.eop.distsim.util;
+
+/**
+ * @author Meni Adler
+ * @since 24/10/2012
+ *
+ * Indicates a problem with the creation of some (reflected) class instance
+ */
+public class CreationException extends Exception {
+
+	public CreationException() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public CreationException(String arg0) {
+		super(arg0);
+		// TODO Auto-generated constructor stub
+	}
+
+	public CreationException(Throwable arg0) {
+		super(arg0);
+		// TODO Auto-generated constructor stub
+	}
+
+	public CreationException(String arg0, Throwable arg1) {
+		super(arg0, arg1);
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,22 @@
+package org.excitement.distsim.items;
+
+import java.util.Iterator;
+
+/**
+ * @author Meni Adler
+ * @since 21/03/2012
+ *
+ * The similarity score is composed of a primary score and a set of other scores
+ */
+public interface Scores {
+	/**
+	 * @return the primary score
+	 */
+	double getPrimaryScore();
+	
+	/**
+	 * @return the set of other scores
+	 * @throws MissingScoreException 
+	 */
+	double getSecondaryScore(int index) throws MissingScoreException;
+}

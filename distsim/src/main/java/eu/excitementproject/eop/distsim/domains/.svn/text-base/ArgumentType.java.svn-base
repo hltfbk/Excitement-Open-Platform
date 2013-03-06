@@ -1,0 +1,11 @@
+package eu.excitementproject.eop.distsim.domains;
+
+/**
+ * @author Meni Adler
+ * @since 03/07/2012
+ *
+ * Defines various slots of arguments of predicate
+ */
+public enum ArgumentType {
+	X,Y;
+}

@@ -1,0 +1,22 @@
+package eu.excitementproject.eop.distsim.parsing;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+import eu.excitementproject.eop.distsim.util.Serialization;
+import eu.excitementproject.eop.distsim.util.SerializationException;
+
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+
+public class DeserializeParsedCorpus {
+	public static void main(String[] args) throws IOException, SerializationException {
+		BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+		String line = null;
+		while ((line = reader.readLine()) != null) {
+			BasicNode tree = (BasicNode)Serialization.deserialize(line);
+			System.out.println(tree);
+		}
+	}
+}

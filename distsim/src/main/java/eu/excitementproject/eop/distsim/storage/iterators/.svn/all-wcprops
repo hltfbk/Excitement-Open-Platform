@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators
+END
+ElementScoreIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/ElementScoreIterator.java
+END
+FeatureScoreIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/FeatureScoreIterator.java
+END
+FilterElementFeatureScoreIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/FilterElementFeatureScoreIterator.java
+END
+MinCountJointCountIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/MinCountJointCountIterator.java
+END
+JointCountIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/JointCountIterator.java
+END
+FilterFeatureScoreIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/FilterFeatureScoreIterator.java
+END
+ElementFeatureScoreIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/ElementFeatureScoreIterator.java
+END
+MinCountFilterIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/MinCountFilterIterator.java
+END
+ElementFeatureScoresIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/ElementFeatureScoresIterator.java
+END
+FeatureCountIterator.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/iterators/FeatureCountIterator.java
+END

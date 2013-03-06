@@ -1,0 +1,5 @@
+package org.excitement.distsim.db;
+
+public enum ArgumentType {
+	X,Y;
+}

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/key
+END
+EcnodableEnum.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/NLP-lab/!svn/ver/17646/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/key/EcnodableEnum.java
+END
+EncodableArgumentType.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/NLP-lab/!svn/ver/17646/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/key/EncodableArgumentType.java
+END
+IntsLongEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/NLP-lab/!svn/ver/17646/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/key/IntsLongEncoder.java
+END
+ElementFeatureKeyEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/NLP-lab/!svn/ver/17646/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/key/ElementFeatureKeyEncoder.java
+END

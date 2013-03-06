@@ -1,0 +1,335 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage
+END
+BasicCooccurrenceStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/BasicCooccurrenceStorage.java
+END
+ElementFile2Redis.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/ElementFile2Redis.java
+END
+FeatureCount.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/FeatureCount.java
+END
+PersistenceDevice.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/PersistenceDevice.java
+END
+ElementFeatureJointCounts.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/ElementFeatureJointCounts.java
+END
+DefaultPersistentBasicMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultPersistentBasicMap.java
+END
+DefaultElementFeatureCountStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultElementFeatureCountStorage.java
+END
+DefaultElementFeatureJointCounts.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultElementFeatureJointCounts.java
+END
+SimilarityStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/SimilarityStorage.java
+END
+DefaultSimilarityMeasure.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultSimilarityMeasure.java
+END
+File.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/File.java
+END
+DefaultSimilarityStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultSimilarityStorage.java
+END
+TestCoOccurrenceDB.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/TestCoOccurrenceDB.java
+END
+IdTroveBasicIntDoubleMapFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/IdTroveBasicIntDoubleMapFile.java
+END
+SimilarityNotFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/SimilarityNotFoundException.java
+END
+NoScoreFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/NoScoreFoundException.java
+END
+DefaultSimilarityRule.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultSimilarityRule.java
+END
+Persistence.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/Persistence.java
+END
+ElementFeatureScoreStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/ElementFeatureScoreStorage.java
+END
+TroveBasedBasicIntSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/TroveBasedBasicIntSet.java
+END
+RedisBasedCountableIdentifiableStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/RedisBasedCountableIdentifiableStorage.java
+END
+DefaultElementSimilarityMeasure.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultElementSimilarityMeasure.java
+END
+IdDoubleFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/IdDoubleFile.java
+END
+File2Redis.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/File2Redis.java
+END
+MemoryBasedCountableIdentifiableStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/MemoryBasedCountableIdentifiableStorage.java
+END
+ResetCountsException.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/ResetCountsException.java
+END
+PatternBasedCountableIdentifiableStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/PatternBasedCountableIdentifiableStorage.java
+END
+CooccurrenceStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/CooccurrenceStorage.java
+END
+PersistentBasicMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/PersistentBasicMap.java
+END
+NoElementFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/NoElementFoundException.java
+END
+CountableIdentifiableStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/CountableIdentifiableStorage.java
+END
+ElementFeatureCountStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/ElementFeatureCountStorage.java
+END
+NoFeatureFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/NoFeatureFoundException.java
+END
+DefaultCooccurrenceStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultCooccurrenceStorage.java
+END
+Storage.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/Storage.java
+END
+IdTroveBasicIntSetFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/IdTroveBasicIntSetFile.java
+END
+TroveBasedIDKeyPersistentBasicMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/TroveBasedIDKeyPersistentBasicMap.java
+END
+PersistenceCountableIdentifiableStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/PersistenceCountableIdentifiableStorage.java
+END
+PersistenceDeviceType.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/PersistenceDeviceType.java
+END
+Redis.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/Redis.java
+END
+SavingStateException.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/SavingStateException.java
+END
+DefaultFeatureCount.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultFeatureCount.java
+END
+DefaultElementsSimilarityMeasure.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultElementsSimilarityMeasure.java
+END
+RedisBasedIDKeyPersistentBasicMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/RedisBasedIDKeyPersistentBasicMap.java
+END
+DeviceBasedCooccurrenceStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DeviceBasedCooccurrenceStorage.java
+END
+BasicMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/BasicMap.java
+END
+TroveBasedIDKeyBasicMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/TroveBasedIDKeyBasicMap.java
+END
+SimilarityStorageBasedLexicalResource.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/SimilarityStorageBasedLexicalResource.java
+END
+IdDataFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/IdDataFile.java
+END
+IdLinkedIntDoubleMapFile.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/IdLinkedIntDoubleMapFile.java
+END
+ItemNotFoundException.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/ItemNotFoundException.java
+END
+DefaultElementFeatureScoreStorage.java
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/DefaultElementFeatureScoreStorage.java
+END
+LoadingStateException.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/LoadingStateException.java
+END
+BasicSet.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/NLP-lab/!svn/ver/17701/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/BasicSet.java
+END
+BasicMapException.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/NLP-lab/!svn/ver/17584/trunk/meni/ExciDistSim/src/eu/excitementproject/eop/distsim/storage/BasicMapException.java
+END

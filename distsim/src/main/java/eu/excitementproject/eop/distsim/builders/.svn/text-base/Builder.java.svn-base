@@ -1,0 +1,11 @@
+package eu.excitementproject.eop.distsim.builders;
+
+/**
+ * @author Meni Adler
+ * @since 29/05/2012
+ *
+ * Definition of one step of building distributional similarity model
+ */
+public interface Builder {
+
+}

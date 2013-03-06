@@ -1,0 +1,91 @@
+package org.excitement.distsim.builders.similarity;
+
+import gnu.trove.iterator.TIntObjectIterator;
+import gnu.trove.map.TIntDoubleMap;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntDoubleHashMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
+
+import java.io.File;
+import java.io.Serializable;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.excitement.distsim.storage.File2Redis;
+import org.excitement.util.Configuration;
+import org.excitement.util.Pair;
+import org.excitement.util.SortUtil;
+
+import ac.biu.nlp.nlp.general.configuration.ConfigurationFile;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
+
+public class Left2RightSimilarities {
+	public static void main(String[] args) {
+				
+		/*if (args.length != 2) {
+			System.err.println("Usage: Left2RightSimilarities <in left element similarity file> <out right element similarity file>");
+			System.exit(0);
+		}*/
+		
+		if (args.length != 1) {
+			System.err.println("Usage: Left2RightSimilarities <configuration file>");
+			System.exit(0);
+		}
+
+
+		
+		try {			
+			
+			ConfigurationFile confFile = new ConfigurationFile(args[0]);			
+			
+			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
+			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));
+			final Logger logger = Logger.getLogger(Left2RightSimilarities.class);
+						
+			final ConfigurationParams confParams = confFile.getModuleConfiguration(Configuration.LEFT_TO_RIGHT_SIMILARITIES);			
+
+			org.excitement.distsim.storage.File leftSimilaritiesFile = new org.excitement.distsim.storage.File(new File(confParams.get(Configuration.INFILE)),true);
+			TIntObjectMap<TIntDoubleMap> rightSimilarities = new TIntObjectHashMap<TIntDoubleMap>();
+			leftSimilaritiesFile.open();
+			
+			// set the left similarities at the right similarities map
+			logger.info("Loading right similarities");
+			Pair<Integer, Serializable> pair = null;
+			while ((pair = leftSimilaritiesFile.read()) != null) {
+				int leftElementId = pair.getFirst();
+				LinkedHashMap<Integer,Double> similarities = (LinkedHashMap<Integer,Double>)pair.getSecond();
+				for (Entry<Integer,Double> entry : similarities.entrySet()) {
+					int rightElementId = entry.getKey();
+					double score = entry.getValue();
+					TIntDoubleMap scores = rightSimilarities.get(rightElementId);
+					if (scores == null) {
+						scores = new TIntDoubleHashMap();
+						rightSimilarities.put(rightElementId, scores);
+					}
+					scores.put(leftElementId, score);
+				}
+			}
+			leftSimilaritiesFile.close();
+			
+			// save the right element similarity file
+			java.io.File outfile = new File(confParams.get(Configuration.OUTFILE));
+			logger.info("Saving right similarities to file: " + outfile.getPath());			
+			org.excitement.distsim.storage.File rightSimilaritiesFile = new org.excitement.distsim.storage.File(outfile,false);
+			rightSimilaritiesFile.open();
+			TIntObjectIterator<TIntDoubleMap> it = rightSimilarities.iterator();
+			while (it.hasNext()) {				
+				it.advance();
+				rightSimilaritiesFile.write(it.key(), SortUtil.sortMapByValue(it.value(),true));
+			}			
+			rightSimilaritiesFile.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}
+
+

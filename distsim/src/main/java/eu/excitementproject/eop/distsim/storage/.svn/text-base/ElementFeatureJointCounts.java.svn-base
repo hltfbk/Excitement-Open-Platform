@@ -1,0 +1,29 @@
+package eu.excitementproject.eop.distsim.storage;
+
+import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
+
+/**
+ * A representation of an element-feature joint count
+ *
+ * @author Meni Adler
+ * @since 22/05/2012
+ *
+ * 
+ */
+public interface ElementFeatureJointCounts {
+	/**
+	 * Get the id of the element
+	 * 
+	 * @return the id of the element of the joint count
+	 */
+	int getElementId();
+	
+	
+	/**
+	 * Get an iterator for the element's features and their joint counts
+	 * 
+	 * @return an iterator for the element's features and their joint counts
+	 */
+	ImmutableIterator<FeatureCount> getFeatureCounts();
+
+}

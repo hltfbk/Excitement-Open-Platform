@@ -1,0 +1,12 @@
+package eu.excitementproject.eop.distsim.domains;
+
+/**
+ * @author Meni Adler
+ * @since 03/07/2012
+ *
+ * Defines various kind of rule elements' ordering 
+ */
+public enum RuleDirection {
+	LEFT_TO_RIGHT,
+	RIGHT_TO_LEFT
+}

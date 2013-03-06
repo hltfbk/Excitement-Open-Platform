@@ -1,0 +1,90 @@
+/**
+ * 
+ */
+package eu.excitementproject.eop.distsim.builders.cooccurrence;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+
+import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
+import eu.excitementproject.eop.distsim.items.ArgumentFeature;
+import eu.excitementproject.eop.distsim.items.Cooccurrence;
+import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
+import eu.excitementproject.eop.distsim.items.DefaultRelation;
+import eu.excitementproject.eop.distsim.items.Element;
+import eu.excitementproject.eop.distsim.items.Feature;
+import eu.excitementproject.eop.distsim.items.IDBasedCooccurrence;
+import eu.excitementproject.eop.distsim.items.LexicalUnit;
+import eu.excitementproject.eop.distsim.items.PredicateElement;
+import eu.excitementproject.eop.distsim.items.TextUnit;
+import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
+import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.distsim.util.Pair;
+import eu.excitementproject.eop.distsim.util.Serialization;
+import eu.excitementproject.eop.distsim.util.SerializationException;
+
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.instruments.parse.DependencyPathsFromTreeBinary;
+import ac.biu.nlp.nlp.instruments.parse.DependencyPathsFromTreeUnaryBinc;
+import ac.biu.nlp.nlp.instruments.parse.representation.basic.Info;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNode;
+import ac.biu.nlp.nlp.instruments.parse.tree.dependency.basic.BasicNodeConstructor;
+import ac.biu.nlp.nlp.representation.CanonicalPosTag;
+
+/**
+ * @author Meni Adler
+ * @since 04/09/2012
+ *
+ */
+public class NodeBasedPredArgCooccurrenceExtraction extends PredArgCooccurrenceExtraction<BasicNode> {
+
+	public NodeBasedPredArgCooccurrenceExtraction(ConfigurationParams confParams) /*throws ConfigurationException*/ {
+		this();
+	}
+
+	public NodeBasedPredArgCooccurrenceExtraction() {
+		this.extractor =  new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), true, true);
+	}
+	
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.builders.cooccurrence.CooccurrenceExtraction#extractCooccurrences(java.lang.Object)
+	 */
+	@Override
+	public Pair<? extends List<? extends TextUnit>, ? extends List<? extends Cooccurrence<PredicateArgumentSlots>>> extractCooccurrences(BasicNode root) throws CooccurrenceExtractionException {
+		List<LexicalUnit> textUnints = new LinkedList<LexicalUnit>();
+		List<DefaultCooccurrence<PredicateArgumentSlots>> coOccurrences = new LinkedList<DefaultCooccurrence<PredicateArgumentSlots>>();
+		try {
+			for (String dependencyPath : extractor.stringDependencyPaths(root)) {
+				//dependencyPath = dependencyPath.trim();
+				int pos1 = dependencyPath.indexOf("<");
+				int pos2 = dependencyPath.lastIndexOf(">");
+				LexicalUnit arg1 = new LexicalUnit(dependencyPath.substring(2,pos1-2));
+				LexicalUnit arg2 = new LexicalUnit(dependencyPath.substring(pos2+3,dependencyPath.length()-2));
+				LexicalUnit pred = new LexicalUnit(dependencyPath.substring(pos1-1,pos2+2));
+				textUnints.add(pred);
+				textUnints.add(arg1);
+				textUnints.add(arg2);
+				
+				coOccurrences.add(new DefaultCooccurrence<PredicateArgumentSlots>(pred, arg1, new DefaultRelation<PredicateArgumentSlots>(PredicateArgumentSlots.X)));
+				coOccurrences.add(new DefaultCooccurrence<PredicateArgumentSlots>(pred, arg2, new DefaultRelation<PredicateArgumentSlots>(PredicateArgumentSlots.Y)));
+			}
+		} catch (Exception e) {			
+			throw new CooccurrenceExtractionException(e);
+		}
+		return new Pair<List<LexicalUnit>,List<DefaultCooccurrence<PredicateArgumentSlots>>>(textUnints,coOccurrences);
+	}
+
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.builders.cooccurrence.CooccurrenceExtraction#string2data(java.lang.String)
+	 */
+	@Override
+	public Pair<BasicNode,Long> extractDataCount(String str) throws SerializationException {
+		return new Pair<BasicNode,Long>((BasicNode)Serialization.deserialize(str), 1L);
+	}
+
+	DependencyPathsFromTreeBinary<Info, BasicNode> extractor;
+}

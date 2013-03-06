@@ -1,0 +1,66 @@
+/**
+ * 
+ */
+package eu.excitementproject.eop.distsim.storage;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Serializable;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.distsim.util.Pair;
+import eu.excitementproject.eop.distsim.util.Serialization;
+import eu.excitementproject.eop.distsim.util.SerializationException;
+
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+import ac.biu.nlp.nlp.general.immutable.ImmutableIterator;
+
+/**
+ * Extends the {@link IdDataFile} class, by storing the given TroveBasedBasicIntSet data with no serialization information
+ * 
+ * @author Meni Adler
+ * @since 10/09/2012
+ *
+ */
+public class IdTroveBasicIntSetFile extends IdDataFile {
+
+	/**
+	 * @throws IOException 
+	 * 
+	 */
+	public IdTroveBasicIntSetFile(java.io.File file, Boolean bRead) {
+		super(file,bRead);
+	}
+
+	public IdTroveBasicIntSetFile(ConfigurationParams params) throws ConfigurationException {
+		super(params);
+	}
+	
+	protected Serializable getData(String[] toks) {
+		TroveBasedBasicIntSet set = new TroveBasedBasicIntSet();
+		for (int i=1; i< toks.length; i++)
+			set.add(Integer.parseInt(toks[i]));
+		return set;
+	}
+	
+	protected void writeData(int id, Serializable data) {
+		TroveBasedBasicIntSet set = (TroveBasedBasicIntSet) data;
+		if (set.size() >0) {
+			writer.print(id);
+			ImmutableIterator<Integer> it = set.iterator();
+			while (it.hasNext()) {
+				writer.print("\t");
+				writer.print(it.next());
+			}
+			writer.print("\n");
+		}
+	}
+}

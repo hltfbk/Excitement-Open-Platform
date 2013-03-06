@@ -1,0 +1,117 @@
+/**
+ * 
+ */
+package org.excitement.distsim.builders.elementfeature;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.log4j.Logger;
+import org.excitement.distsim.builders.similarity.GeneralElementSimilarityCalculator;
+import org.excitement.distsim.domains.relation.PredicateArgumentSlots;
+import org.excitement.distsim.items.ArgumentFeature;
+import org.excitement.distsim.items.Cooccurrence;
+import org.excitement.distsim.items.Element;
+import org.excitement.distsim.items.Feature;
+import org.excitement.distsim.items.PredicateElement;
+import org.excitement.distsim.items.UndefinedKeyException;
+import org.excitement.util.Configuration;
+import org.excitement.util.Pair;
+
+import ac.biu.nlp.nlp.general.configuration.ConfigurationException;
+import ac.biu.nlp.nlp.general.configuration.ConfigurationParams;
+
+/**
+ * @author Meni Adler
+ * @since 04/09/2012
+ *
+ */
+public class PredArgElementFeatureExtraction implements ElementFeatureExtraction {
+
+	private final static Logger logger = Logger.getLogger(PredArgElementFeatureExtraction.class);
+	
+	protected static final String REV_PRED = "@R@";
+	
+	public PredArgElementFeatureExtraction(PredicateArgumentSlots relevantSlot) {
+		this(relevantSlot, new HashSet<String>());
+	}
+
+	public PredArgElementFeatureExtraction(PredicateArgumentSlots relevantSlot, Set<String> stopWordsFeatures) {
+		this.relevantSlot = relevantSlot;
+		this.stopWordsFeatures = stopWordsFeatures;
+	}
+		
+	public PredArgElementFeatureExtraction(ConfigurationParams params) throws ConfigurationException, IOException {
+		this.relevantSlot = PredicateArgumentSlots.valueOf(params.get(Configuration.SLOT));
+		this.stopWordsFeatures = new HashSet<String>();
+		try {
+			initStopWords(new File(params.get(Configuration.STOP_WORDS_FILE)));			
+		} catch (ConfigurationException e) {
+			logger.info("no stop-words file is defined");
+		}
+	}
+	
+	protected void initStopWords(File file) throws IOException {
+		logger.info("reading stop words file: " + file.getAbsolutePath());
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String line = null;
+		while ((line = reader.readLine())!=null)
+			//stopWordsFeatures.add(line.split("\t")[0]);
+			stopWordsFeatures.add(line.trim());
+		logger.info(stopWordsFeatures.size() +" stop words were read");
+			
+		
+	}
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.builders.elementfeature.ElementFeatureExtractor#extractElementsFeatures(org.excitement.distsim.items.Cooccurrence)
+	 */
+	@Override
+	public List<Pair<Element, Feature>> extractElementsFeature(Cooccurrence<?> cooccurrence) throws ElementFeatureExtractionException {
+		
+		List<Pair<Element, Feature>> ret = new LinkedList<Pair<Element, Feature>>();
+		
+		if (isStopWordFeature(cooccurrence))
+			return ret;
+		
+		try {
+			if (isRelevantSlot(cooccurrence))
+				ret.add(new Pair<Element, Feature>(
+					new PredicateElement(cooccurrence.getTextItem1().toKey()),
+					new ArgumentFeature((PredicateArgumentSlots) cooccurrence.getRelation().getValue(),cooccurrence.getTextItem2().toKey())
+					));
+			else
+				ret.add(new Pair<Element, Feature>(
+						new PredicateElement(cooccurrence.getTextItem1().toKey() + REV_PRED),
+						new ArgumentFeature(PredicateArgumentSlots.getOpposite((PredicateArgumentSlots)cooccurrence.getRelation().getValue()),cooccurrence.getTextItem2().toKey())
+						));	
+			
+			//debug
+			if (cooccurrence.getTextItem1().toKey().equals("affect") && cooccurrence.getTextItem2().toKey().equals("life")) {
+				System.out.println(cooccurrence);
+				System.out.println(ret.get(0));
+			}
+			
+			return ret;
+		} catch (UndefinedKeyException e) {			
+			throw new ElementFeatureExtractionException(e);
+		}
+	}
+
+	public boolean isRelevantSlot(Cooccurrence<?> cooccurrence) {
+		return cooccurrence.getRelation().getValue() == relevantSlot;
+	}
+	
+	public boolean isStopWordFeature(Cooccurrence<?> cooccurrence) {
+		return stopWordsFeatures.contains(cooccurrence.getTextItem2().getData() + "\t" + cooccurrence.getRelation().getValue().toString());
+	}
+	
+	PredicateArgumentSlots relevantSlot;
+	Set<String> stopWordsFeatures;
+}

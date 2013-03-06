@@ -1,0 +1,35 @@
+package eu.excitementproject.eop.distsim.application;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+
+
+import eu.excitementproject.eop.distsim.domains.FilterType;
+import eu.excitementproject.eop.distsim.domains.RuleDirection;
+import eu.excitementproject.eop.distsim.items.Element;
+import eu.excitementproject.eop.distsim.items.StringBasedElement;
+import eu.excitementproject.eop.distsim.scoring.ElementSimilarityMeasure;
+import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
+import eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage;
+import eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
+import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
+
+public class TestPredicateSimilarity {
+	public static void main(String[] args) throws SimilarityNotFoundException {
+		SimilarityStorage similarityStorage = new DefaultSimilarityStorage(
+				new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>("te-srv2",6386),
+				new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>("te-srv2",6387),
+				new RedisBasedCountableIdentifiableStorage<Element>("te-srv2",6384),
+				"dist-sim");
+		
+		
+		List<ElementSimilarityMeasure> similarities = similarityStorage.getSimilarityMeasure(new StringBasedElement("affect"), 
+				RuleDirection.RIGHT_TO_LEFT,
+				FilterType.TOP_N, 10);
+		System.out.println("affect");
+		for (ElementSimilarityMeasure similarity : similarities)
+			System.out.println("\t" + similarity.getElement().getData() + ": " + similarity.getSimilarityMeasure());
+		//System.out.println(similarityStorage.getSimilarityMeasure(new StringBasedElement("obtain"), new StringBasedElement("issue")).getSimilarityMeasure());
+	}
+}
