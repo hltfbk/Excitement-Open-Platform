@@ -14,6 +14,8 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
 /**
+ * Converts {@link PreprocessedTopicDataSet} to an {@link ExtendedPreprocessedTopicDataSet}.
+ * This is done by calling the document-sub-layer class {@link DocumentInitializer}.
  * 
  * @author Asher Stern
  * @since Jun 5, 2011

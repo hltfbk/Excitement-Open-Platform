@@ -112,6 +112,8 @@ public class TopicPreProcessor
 		}
 		
 		this.preprocessedTopicDataSet = new PreprocessedTopicDataSet(this.topicDataSet, mapHypothesisIdToTree, allDocumentsTrees, allDocumentsCoreferenceInformation, mapDocumentsHeadlines);
+		
+		logger.info("Pre-processing of topic: "+this.topicDataSet.getTopicId()+" is done.");
 	}
 	
 	public PreprocessedTopicDataSet getPreprocessedTopicDataSet()

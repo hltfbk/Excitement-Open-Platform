@@ -11,6 +11,9 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
  * w1*x1+w2*x2+ ... + wn*xn <= b ===> true 
  * w1*x1+w2*x2+ ... + wn*xn > b ===> false
  * <P>
+ * <B>See instructions about classifiers in the package-java-doc (package-info.java)
+ * of package <code>eu.excitementproject.eop.biutee.classifiers</code></B>
+ * <P>
  * 
  * Thread-safety: Please read the comment about thread-safety in {@link TrainableClassifier}.<BR>
  * As for the methods added in this interface: the "get" methods, i.e.,
