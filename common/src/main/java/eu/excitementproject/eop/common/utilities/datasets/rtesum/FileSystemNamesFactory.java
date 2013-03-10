@@ -12,8 +12,8 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.rte7main.Testse
 
 
 /**
- * @author amnon
- * @since 5 áñôè 2011
+ * @author Amnon Lotan. Modifier by Asher Stern.
+ * @since 2011
  * 
  */
 public class FileSystemNamesFactory {

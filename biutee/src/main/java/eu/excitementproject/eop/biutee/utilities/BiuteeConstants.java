@@ -225,6 +225,9 @@ public class BiuteeConstants
 	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX = "serialized_results";
 	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_INFIX_TEX = "_test";
 	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX = ".ser";
+	
+	public static final String RTE_PAIRS_XML_RESULTS_FILE_NAME_PREFIX = "rte_pairs_results";
+	public static final String RTE_PAIRS_XML_RESULTS_FILE_NAME_POSTFIX = ".xml";
 
 	
 	//////////////////////////////////////////////////////////////////////////
