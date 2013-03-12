@@ -18,15 +18,6 @@ import eu.excitementproject.eop.transformations.utilities.TransformationsConfigu
  */
 public class ConfigurationParametersNames
 {
-	
-	
-
-
-	
-
-	
-
-	
 	// pre-process modules
 	@ConfigurationModuleAnnotation
 	public static final String RTE_PAIRS_PREPROCESS_MODULE_NAME = "rte_pairs_preprocess";
