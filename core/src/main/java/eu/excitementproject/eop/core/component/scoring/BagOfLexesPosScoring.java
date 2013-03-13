@@ -9,6 +9,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
@@ -43,16 +44,7 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
 			}
 			if (moduleFlags[1]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_hypernym));
-			}
-			if (moduleFlags[2]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.causes));
-			}
-			if (moduleFlags[3]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.entails));
-			}
-			if (moduleFlags[4]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(tBag, hBag, GermaNetRelation.has_synonym));
+				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw));
 			}
 		} catch (CASException e) {
 			throw new ScoringComponentException(e.getMessage());
@@ -83,6 +75,45 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 			}
 		}
 		return tokenNumMap;
+	}
+	
+	protected double calculateSingleLexScore(HashMap<String, Integer> tBag,
+			HashMap<String, Integer> hBag,
+			LexicalResource<? extends RuleInfo> lex)
+			throws ScoringComponentException {
+		if (null == lex) {
+			throw new ScoringComponentException(
+					"WARNING: the specified lexical resource has not been properly initialized!");
+		}
+
+		double score = 0.0d;
+		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
+
+		for (String word : tBag.keySet()) {
+			int counts = tBag.get(word);
+			try {
+				tWordBag.put(word, counts);
+				String POS = word.split(" ### ")[1];
+				for (LexicalRule<? extends RuleInfo> rule : lex
+						.getRulesForLeft(word.split(" ### ")[0], new GermanPartOfSpeech(POS))) {
+					String tokenText = rule.getRLemma() + " ### " + POS;
+					if (tWordBag.containsKey(tokenText)) {
+						int tmp = tWordBag.get(tokenText);
+						tWordBag.put(tokenText, tmp + counts);
+					} else {
+						tWordBag.put(tokenText, counts);
+					}
+				}
+			} catch (LexicalResourceException e) {
+				throw new ScoringComponentException(e.getMessage());
+			} catch (UnsupportedPosTagStringException e) {
+				throw new ScoringComponentException(e.getMessage());
+			}
+		}
+
+		score = calculateSimilarity(tWordBag, hBag).get(0);
+
+		return score;
 	}
 	
 	protected double calculateSingleLexScoreWithGermaNetRelation(HashMap<String, Integer> tBag, HashMap<String, Integer> hBag, GermaNetRelation gnr) throws ScoringComponentException{
