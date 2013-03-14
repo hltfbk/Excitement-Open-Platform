@@ -69,7 +69,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	 * Creates a new DerivBaseResource instance, and initializes the instance
 	 * (basically loads DerivBase file into memory).
 	 * 
-	 * @param config		Configuration for the GermaNetWrapper instance
+	 * @param config		Configuration for the DerivBaseResource instance
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
@@ -83,7 +83,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	 * (basically loads DerivBase file into memory).
 	 * Sets the default value 1.0 as confidence value for all relations.
 	 * 
-	 * @param germaNetFilesPath			Path to GermaNet XML files
+	 * @param derivBaseFilesPath			Path to DerivBase file
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */

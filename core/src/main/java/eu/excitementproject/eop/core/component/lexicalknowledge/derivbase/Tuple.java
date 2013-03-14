@@ -1,39 +1,20 @@
-/*
- * This source file is part of the RECIPE project.
- *
- * It is developed as a student software project at the
- * Department of Computational Linguistics at the University of Heidelberg by
- *
- * - Michael Haas <haas@cl.uni-heidelberg.de>
- * - Hiko Schamoni <schamoni@cl.uni-heidelberg.de>
- * - Tilman Wittl <wittl@cl.uni-heidelberg.de>
- * - Britta Zeller <zeller@cl.uni-heidelberg.de>
- *
- * under the supervision of Nils Reiter <reiter@cl.uni-heidelberg.de>
- *
- * RECIPE stands for "Recipe Event Chain Imperative Processing Engine".
- *
- * For the individual authors of this particular source file,
- * please take a look at the class documentation below.
- *
- * In order to generate HTML files from the embedded documentation,
- * please execute the 'javadoc' ant task:
- * $ ant javadoc
- * or run javadoc manually.
- *
- */
 package eu.excitementproject.eop.core.component.lexicalknowledge.derivbase;
 
 import java.io.Serializable;
 
 /**
- * Class used to hold a Tuple.
+ * Class used to hold a Tuple of two items.
  *
  * @author Tilman Wittl <wittl@cl.uni-heidelberg.de>
  */
 public class Tuple<E> implements Serializable {
 
     /**
+	 * Auto-generated.
+	 */
+	private static final long serialVersionUID = -982546336836905784L;
+	
+	/**
      * the first value.
      */
     E a;
@@ -123,7 +104,7 @@ public class Tuple<E> implements Serializable {
             return false;
         }
 
-        Tuple tuple = (Tuple) o;
+        Tuple<E> tuple = (Tuple<E>) o;
 
         if (this.a != null ? !a.equals(tuple.a) : tuple.a != null) {
             return false;
