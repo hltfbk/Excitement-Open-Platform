@@ -27,18 +27,32 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class ResultsToXml
 {
-	public static Map<String, RTEClassificationType> convertPairResults(Map<ExtendedPairData, PairResult> pairsResults, Classifier classifier) throws ClassifierException
+	public static class ScoreAndRTEClassificationType
 	{
-		Map<String, RTEClassificationType> ret = new LinkedHashMap<String, RTEClassificationType>();
+		public ScoreAndRTEClassificationType(double score,RTEClassificationType classification)
+		{this.score = score;this.classification = classification;}
+		
+		public double getScore(){return score;}
+		public RTEClassificationType getClassification(){return classification;}
+
+		private final double score;
+		private final RTEClassificationType classification;
+	}
+	
+	public static Map<String, ScoreAndRTEClassificationType> convertPairResults(Map<ExtendedPairData, PairResult> pairsResults, Classifier classifier) throws ClassifierException
+	{
+		Map<String, ScoreAndRTEClassificationType> ret = new LinkedHashMap<String, ScoreAndRTEClassificationType>();
 		for (Map.Entry<ExtendedPairData, PairResult> pairResult : pairsResults.entrySet())
 		{
-			boolean entailment = ClassifierUtils.classifierResultToBoolean(classifier.classify(pairResult.getValue().getBestTree().getFeatureVector()));
-			ret.put(pairResult.getKey().getPair().getId().toString(),(entailment?RTEClassificationType.ENTAILMENT:RTEClassificationType.UNKNOWN));
+			double classificationScore = classifier.classify(pairResult.getValue().getBestTree().getFeatureVector());
+			boolean entailment = ClassifierUtils.classifierResultToBoolean(classificationScore);
+			ScoreAndRTEClassificationType value = new ScoreAndRTEClassificationType(classificationScore,entailment?RTEClassificationType.ENTAILMENT:RTEClassificationType.UNKNOWN);
+			ret.put(pairResult.getKey().getPair().getId().toString(),value);
 		}
 		return ret;
 	}
 	
-	public ResultsToXml(Map<String, RTEClassificationType> results,
+	public ResultsToXml(Map<String, ScoreAndRTEClassificationType> results,
 			File outputFile)
 	{
 		super();
@@ -64,17 +78,18 @@ public class ResultsToXml
 		Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 		Element rootElement = document.createElement("results");
 		document.appendChild(rootElement);
-		for (Map.Entry<String, RTEClassificationType> result : results.entrySet())
+		for (Map.Entry<String, ScoreAndRTEClassificationType> result : results.entrySet())
 		{
 			Element pairElement = document.createElement("pair");
 			pairElement.setAttribute("id", result.getKey());
-			pairElement.setAttribute("entailment", result.getValue().name());
+			pairElement.setAttribute("entailment", result.getValue().getClassification().name());
+			pairElement.setAttribute("score", String.valueOf(result.getValue().getScore()));
 			rootElement.appendChild(pairElement);
 		}
 		return document;
 	}
 
 	
-	private final Map<String, RTEClassificationType> results;
+	private final Map<String, ScoreAndRTEClassificationType> results;
 	private final File outputFile;
 }

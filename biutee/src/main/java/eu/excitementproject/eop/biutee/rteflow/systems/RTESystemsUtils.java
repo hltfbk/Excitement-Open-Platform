@@ -8,10 +8,12 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SERIALIZED_SAMPLES_NAME;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -893,6 +895,20 @@ public class RTESystemsUtils
 		}
 		
 		return ret;
+	}
+	
+	public static void logTextFile(File textFile, Logger logger) throws FileNotFoundException, IOException
+	{
+		try(BufferedReader reader = new BufferedReader(new FileReader(textFile)))
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.append(textFile.getName()).append(":\n");
+			for (String line = reader.readLine();line!=null;line = reader.readLine())
+			{
+				sb.append(line).append("\n");
+			}
+			logger.info(sb.toString());
+		}
 	}
 	
 	
