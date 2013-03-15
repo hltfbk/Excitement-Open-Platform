@@ -370,12 +370,13 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	 * @param pos POS to be matched on RHS. null means "don't care". 
 	 * @param relation The canonical relation of the rule (from LHS to RHS, TERuleRelation.Entailment or .Nonentailment)
 	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
-	 */	
+	 */
+	/* DEPRECATED 
 	public List<LexicalRule<? extends GermaNetInfo>> getRulesForRight(String lemma, PartOfSpeech pos, TERuleRelation relation) throws LexicalResourceException
         {
                 throw new LexicalResourceException("Unsupported operation for GermaNet.");
         }
-	
+	*/
 	
 	/** This method returns a list of lexical rules whose left and right sides match the two given pairs of lemma and POS.
 	 * @param leftLemma Lemma to be matched on LHS
@@ -412,7 +413,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		}
 		return result;
 	}
-
+	
+	
 	public List<LexicalRule<? extends GermaNetInfo>> getRulesForLeft(String lemma, PartOfSpeech pos, GermaNetRelation fineGrainedRelation) throws LexicalResourceException {
 		this.fineGrainedRelation = fineGrainedRelation.toGermaNetString();
 		List<LexicalRule<? extends GermaNetInfo>> result = getRulesForLeft(lemma, pos);
