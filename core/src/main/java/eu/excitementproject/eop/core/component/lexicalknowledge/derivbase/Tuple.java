@@ -103,9 +103,10 @@ public class Tuple<E> implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
-        Tuple<E> tuple = (Tuple<E>) o;
-
+        
+        @SuppressWarnings("unchecked") // added to suppress warning - gil 
+		Tuple<E> tuple = (Tuple<E>) o;
+        
         if (this.a != null ? !a.equals(tuple.a) : tuple.a != null) {
             return false;
         }
