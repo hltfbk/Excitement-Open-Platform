@@ -1,11 +1,13 @@
 package eu.excitementproject.eop.lap.lappoc;
 
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
 
 import eu.excitementproject.eop.lap.LAPException;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+import org.uimafit.factory.AggregateBuilder;
 
 import java.util.HashMap; 
 
@@ -47,26 +49,68 @@ import java.util.HashMap;
  * <H2> So What to override? </H2> 
  * <P> 
  * If you want to provide a LAPAccess module based on this implementation base, 
- * you have to override two methods. One is constructor, and the other is 
- * listOfAEDescriptors(). 
+ * you have to override two methods. One is the constructor, and the other is 
+ * listOfAEDescriptors(). In the constructor, you simply need to set language ID, & call super(). 
+ * The method listOfAEDescriptors(), will be called in the constructor of ImplBaseAE code, and 
+ * you have to return an ordered array of AnalysisEngineDescriptor. 
+ * 
+ * <P> 
  * Unlike {@link LAP_ImplBase}, you don't need to override addAnnotationOn(), since it is 
  * already provided by this class. However, you have to provide the list of AEs that will 
  * be used in the addAnnotationOn(), in the forms of ordered list of AE Descriptors.   
  * 
- * <P> For a usage example of this implementation base, see {@link XX} </P> 
- * (--- ExampleLAPAE)
+ * <P> Sometimes, an example is much easier to understand than the description. 
+ * For a usage example of this implementation base, see {@link ExampleLAPAE} </P> 
  * @author Gil 
  */
 
 
-public abstract class LAP_ImplBase_AE extends LAP_ImplBase {
-
+public abstract class LAP_ImplBaseAE extends LAP_ImplBase {
 	
-	LAP_ImplBase_AE() throws LAPException
+	/**
+	 * LAP_ImplBaseAE constructor without any argument will simply call 
+	 * LAP_ImplBaseAE(String[] knownViews) with three default view names 
+	 * TextView, HypothesisView and _InitialView 
+	 * @throws LAPException
+	 */
+	LAP_ImplBaseAE() throws LAPException
 	{
-		
-		
-		
+		this(new String[]{INITIALVIEW, TEXTVIEW, HYPOTHESISVIEW}); 
+	}
+	
+	/**
+	 * The constructor of LAP_ImplBaseAE requires "view names" that this 
+	 * LAP will work on. Once initialized addAnnotationOn() will only work 
+	 * on this "known" views only. 
+	 * 
+	 * The constructor pre-generates one AAE for each of the view, and 
+	 * use them to annotate data on that view. 
+	 * 
+	 * @param views
+	 * @throws LAPException
+	 */
+	LAP_ImplBaseAE(String[] views) throws LAPException 
+	{
+		engineForView = new HashMap<String, AnalysisEngine>();  
+		AnalysisEngineDescription[] descList = listAEDescriptors(); 
+		for (String v : views)
+		{
+			AggregateBuilder builder = new AggregateBuilder();
+			for (AnalysisEngineDescription d : descList)
+			{
+				builder.add(d, INITIALVIEW, v); // maps view name v, to AE's default view. 				
+			}
+			
+			AnalysisEngine aae = null; 
+			try {
+				aae = builder.createAggregate(); 
+			}
+			catch (ResourceInitializationException e)
+			{
+				throw new LAPException("Unable to create the AAE from AE descriptions", e); 
+			}
+			engineForView.put(v, aae); 
+		}
 	}
 	
 	/**
@@ -85,7 +129,7 @@ public abstract class LAP_ImplBase_AE extends LAP_ImplBase {
 	 * 
 	 * @return an ordered array of AnalysisEngineDescription 
 	 */
-	public abstract AnalysisEngineDescription[] listOfAEDescriptors();
+	public abstract AnalysisEngineDescription[] listAEDescriptors() throws LAPException;
 	
 	
 	@Override
@@ -95,7 +139,7 @@ public abstract class LAP_ImplBase_AE extends LAP_ImplBase {
 		AnalysisEngine aae = engineForView.get(viewName); 
 		if (aae == null)
 		{
-			throw new LAPException("Unknown View Name \""+viewName +"\". The pipeline can only handle a viewName that is declared in the constructor");			
+			throw new LAPException("Unknown View Name \""+viewName +"\". The pipeline can only handle a viewName that is given to the constructor");			
 		}
 		
 		try {
@@ -105,12 +149,8 @@ public abstract class LAP_ImplBase_AE extends LAP_ImplBase {
 		{
 			throw new LAPException("Underlying AE or AAE reported an exception", e);
 			
-		}
-		
+		}	
 	}
+	protected HashMap<String, AnalysisEngine> engineForView; 
 	
-	private HashMap<String, AnalysisEngine> engineForView; 
-	
-	
-
 }
