@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.dkpro;
 
 import static org.junit.Assert.fail;
 
@@ -12,7 +12,6 @@ import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
-import eu.excitementproject.eop.lap.lappoc.MaltParserEN;
 
 public class MaltParserEnTest {
 	
