@@ -7,8 +7,10 @@ import java.util.Vector;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 
@@ -31,7 +33,7 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 public class BagOfWordsScoring implements ScoringComponent {
 	
 //	the number of features
-	protected int numOfFeats = 3;
+	protected int numOfFeats = 7;
 
 	public int getNumOfFeats() {
 		return numOfFeats;
@@ -65,6 +67,19 @@ public class BagOfWordsScoring implements ScoringComponent {
 			HashMap<String, Integer> hBag = countTokens(hView);
 
 			scoresVector.addAll(calculateSimilarity(tBag, hBag));
+			
+			String task = JCasUtil.select(cas, EntailmentMetadata.class).iterator().next().getTask();
+			if (null == task) {
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				scoresVector.add(0d);				
+			} else {
+				scoresVector.add(isTaskIE(task));
+				scoresVector.add(isTaskIR(task));
+				scoresVector.add(isTaskQA(task));
+				scoresVector.add(isTaskSUM(task));
+			}
 		} catch (CASException e) {
 			throw new ScoringComponentException(e.getMessage());
 		}
@@ -129,6 +144,34 @@ public class BagOfWordsScoring implements ScoringComponent {
 		returnValue.add(sum / tSize);
 		returnValue.add(sum * sum / hSize / tSize);
 		return returnValue;
+	}
+	
+	protected double isTaskIE(String task) {
+		if (task.equalsIgnoreCase("IE")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	protected double isTaskIR(String task) {
+		if (task.equalsIgnoreCase("IR")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	protected double isTaskQA(String task) {
+		if (task.equalsIgnoreCase("QA")) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	protected double isTaskSUM(String task) {
+		if (task.equalsIgnoreCase("SUM")) {
+			return 1;
+		}
+		return 0;
 	}
 
 }
