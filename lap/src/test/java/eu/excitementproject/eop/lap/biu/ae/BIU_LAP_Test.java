@@ -27,8 +27,8 @@ import eu.excitementproject.eop.lap.LAPAccess;
 public class BIU_LAP_Test {
 	
 	// We check only TEXT, not HYPOTHESIS
-	private static final String TEXT = "Ken likes to eat apples in Rome. Julie Andrews likes to drink juice.";
-	private static final String HYPOTHESIS = "";
+	public static final String TEXT = "Ken likes to eat apples in Rome. Julie Andrews likes to drink juice.";
+	public static final String HYPOTHESIS = "";
 	
 	private static final TestSentenceInfo[] EXPECTED_SENTENCES = new TestSentenceInfo[] {
 		new TestSentenceInfo(0,  32, "Ken likes to eat apples in Rome."),
