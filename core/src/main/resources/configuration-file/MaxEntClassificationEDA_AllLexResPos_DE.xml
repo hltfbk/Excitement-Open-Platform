@@ -37,7 +37,6 @@
 		<property name="entailsConfidence">1.0</property>
 		<property name="hypernymConfidence">1.0</property> 
 		<property name="synonymConfidence">1.0</property>
-		<property name="antonymConfidence">1.0</property> 
 	</section> 
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">

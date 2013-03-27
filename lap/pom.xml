@@ -173,6 +173,26 @@
     		</artifactId>
     		<version>1.4.0</version>
     	</dependency>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-linear
+    		</artifactId>
+    		<version>20120312.0</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-poly
+    		</artifactId>
+    		<version>20120312.0</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.maltparser-asl
+    		</artifactId>
+    	</dependency>
  	</dependencies>
 
     <dependencyManagement>
