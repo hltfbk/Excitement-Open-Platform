@@ -24,6 +24,7 @@ public class BagOfDepsScoringTest {
 	
 	public void testEN() {
 		BagOfDepsScoring bds = new BagOfDepsScoring();
+		BagOfDepsPosScoring bdps = new BagOfDepsPosScoring();
 
 		JCas aCas = null;
 		LAPAccess lap = null;
@@ -35,8 +36,13 @@ public class BagOfDepsScoringTest {
 					"The person is hired as a postdoc.",
 					"The person must have a PhD.");
 			Vector<Double> scoresVector1 = bds.calculateScores(aCas);
+			Vector<Double> scoresVector2 = bdps.calculateScores(aCas);
 			logger.info("The bag of deps scores:");
 			for (Double score : scoresVector1) {
+				logger.info(String.valueOf(score));
+			}
+			logger.info("The bag of deps scores:");
+			for (Double score : scoresVector2) {
 				logger.info(String.valueOf(score));
 			}
 		} catch (LAPException e) {

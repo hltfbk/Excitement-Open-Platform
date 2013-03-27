@@ -147,4 +147,16 @@ public class BagOfDepsScoring extends BagOfWordsScoring {
 		
 		return depTree;
 	}
+	
+	protected Map<String, String> indexLemmaDepTree(JCas text) {
+		Map<String, String> depTree = new HashMap<String, String>();
+		
+		for (Dependency dep : JCasUtil.select(text, Dependency.class)) {
+			Token child = dep.getDependent();
+			Token parent = dep.getGovernor();
+			depTree.put(child.getBegin() + " ### " + child.getLemma().getValue().replace("#", "\\#") + " ### " + child.getPos().getPosValue(), dep.getDependencyType() + " ## " + parent.getBegin() + " ### " + parent.getLemma().getValue().replace("#", "\\#") + " ### " + parent.getPos().getPosValue());
+		}
+		
+		return depTree;
+	}
 }
