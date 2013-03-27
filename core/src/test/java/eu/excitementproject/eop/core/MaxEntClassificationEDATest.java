@@ -19,6 +19,7 @@ import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
+import eu.excitementproject.eop.lap.lappoc.MaltParserEN;
 
 /**
  * The test contains several tests:
@@ -42,13 +43,15 @@ public class MaxEntClassificationEDATest {
 	@Test
 	public void test() {		
 
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DistSim_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_DE.xml");
+
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {
@@ -71,6 +74,7 @@ public class MaxEntClassificationEDATest {
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
 		/* English RTE tests
 		testLAP_EN();
+		testParser_EN("poly");
 		testTraining(config);
 		testTesting_SingleTH(config);
 		testTesting_MultiTH(config);
@@ -83,7 +87,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/main/resources/German_dev.xml");
+		inputFile = new File("./src/main/resources/data-set/German_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/dev/");
 		if (!outputDir.exists()) {
@@ -101,7 +105,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/main/resources/German_test.xml");
+		inputFile = new File("./src/main/resources/data-set/German_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/test/");
 		if (!outputDir.exists()) {
@@ -122,7 +126,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/main/resources/English_dev.xml");
+		inputFile = new File("./src/main/resources/data-set/English_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/dev/");
 		if (!outputDir.exists()) {
@@ -140,7 +144,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/main/resources/English_test.xml");
+		inputFile = new File("./src/main/resources/data-set/English_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/test/");
 		if (!outputDir.exists()) {
@@ -150,6 +154,45 @@ public class MaxEntClassificationEDATest {
 		
 		try {
 			lap = new TreeTaggerEN();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
+	public void testParser_EN(String aVariant) {
+		File inputFile = null;
+		File outputDir = null;
+		
+		// generate XMI files for the training data
+		inputFile = new File("./src/main/resources/data-set/English_dev.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/EN/dev/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+
+		LAPAccess lap = null;
+
+		try {
+			lap = new MaltParserEN(aVariant);
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+		
+		// generate XMI files for the testing data
+		inputFile = new File("./src/main/resources/data-set/English_test.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/EN/test/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+		
+		try {
+			lap = new MaltParserEN(aVariant);
 			lap.processRawInputFormat(inputFile, outputDir);
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
