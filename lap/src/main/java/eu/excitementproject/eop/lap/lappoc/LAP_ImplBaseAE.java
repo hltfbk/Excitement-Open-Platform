@@ -73,7 +73,7 @@ public abstract class LAP_ImplBaseAE extends LAP_ImplBase {
 	 * TextView, HypothesisView and _InitialView 
 	 * @throws LAPException
 	 */
-	LAP_ImplBaseAE() throws LAPException
+	protected LAP_ImplBaseAE() throws LAPException
 	{
 		this(new String[]{INITIALVIEW, TEXTVIEW, HYPOTHESISVIEW}); 
 	}
@@ -89,7 +89,7 @@ public abstract class LAP_ImplBaseAE extends LAP_ImplBase {
 	 * @param views
 	 * @throws LAPException
 	 */
-	LAP_ImplBaseAE(String[] views) throws LAPException 
+	protected LAP_ImplBaseAE(String[] views) throws LAPException 
 	{
 		engineForView = new HashMap<String, AnalysisEngine>();  
 		AnalysisEngineDescription[] descList = listAEDescriptors(); 

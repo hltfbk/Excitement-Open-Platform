@@ -35,10 +35,10 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 			
 		try {
 			JCas tView = aCas.getView("TextView");
-			HashMap<String, Integer> tBag = countTokens(tView);
+			HashMap<String, Integer> tBag = countTokenPoses(tView);
 
 			JCas hView = aCas.getView("HypothesisView");
-			HashMap<String, Integer> hBag = countTokens(hView);
+			HashMap<String, Integer> hBag = countTokenPoses(hView);
 			
 			if (moduleFlags[0]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
@@ -60,7 +60,7 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 	 * @return a HashMap represents the bag of lemmas and POSes contained in the text, in
 	 *         the form of <Lemma ### POS, Frequency>
 	 */
-	protected HashMap<String, Integer> countTokens(JCas text) {
+	protected HashMap<String, Integer> countTokenPoses(JCas text) {
 		HashMap<String, Integer> tokenNumMap = new HashMap<String, Integer>();
 		Iterator<Annotation> tokenIter = text.getAnnotationIndex(Token.type)
 				.iterator();
