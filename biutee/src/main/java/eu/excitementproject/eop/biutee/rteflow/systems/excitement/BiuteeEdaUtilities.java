@@ -2,6 +2,7 @@ package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 
 import java.io.File;
 
+import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
@@ -12,6 +13,8 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.TEDecision;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.lap.biu.ae.CasTreeConverterException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -36,14 +39,17 @@ public class BiuteeEdaUtilities
 	
 	public static PairData convertJCasToPairData(JCas aCas) throws TeEngineMlException
 	{
-		// TODO
-		throw new RuntimeException("Not yet implemented.");
+		try {
+			return CasPairDataConverter.convertCasToPairData(aCas);
+		}
+		catch (CASException | CasTreeConverterException | UnsupportedPosTagStringException e) {
+			throw new TeEngineMlException("Error while creating a PairData from a JCas.", e);
+		}
 	}
 	
 	public static String getPairIdFromJCas(JCas aCas) throws TeEngineMlException
 	{
-		// TODO
-		throw new RuntimeException("Not yet implemented.");
+		return CasPairDataConverter.getPairIdFromCas(aCas);
 	}
 	
 	/**

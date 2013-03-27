@@ -356,9 +356,9 @@ public abstract class LAP_ImplBase implements LAPAccess {
 	/**
 	 *  string constants 
 	 */
-	static protected final String TEXTVIEW = "TextView";
-	static protected final String HYPOTHESISVIEW = "HypothesisView";
-	static protected final String INITIALVIEW = "_InitialView"; 
+	static public final String TEXTVIEW = "TextView";
+	static public final String HYPOTHESISVIEW = "HypothesisView";
+	static public final String INITIALVIEW = "_InitialView"; 
 
 	// From "interface Components" 
 	//@Override // Gil: initialize is removed from interface Component 
