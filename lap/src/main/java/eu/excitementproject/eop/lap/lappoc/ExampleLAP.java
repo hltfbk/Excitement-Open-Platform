@@ -45,7 +45,7 @@ public class ExampleLAP extends LAP_ImplBase implements LAPAccess {
 
 	public ExampleLAP() throws LAPException {
 		super(); 
-		languageIdentifier = "EN"; // set languageIdentifer 		
+		languageIdentifier = "EN"; // set languageIdentifer, this is needed for generateTHPair from String  		
 	}
 
 	@Override
