@@ -271,6 +271,7 @@ public class RTESumTrainer extends RTESumBaseEngine
 		answersWriter.setAnswers(answer);
 		answersWriter.setXml(answerFileName);
 		answersWriter.write();
+		RTESystemsUtils.logTextFile(new File(answerFileName), logger);
 
 		
 		AnswerScoreComputer answersComputer = new AnswerScoreComputer(goldStandardFileName, answerFileName);
