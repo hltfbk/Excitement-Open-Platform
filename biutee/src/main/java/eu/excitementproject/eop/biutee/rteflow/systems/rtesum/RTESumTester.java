@@ -227,6 +227,7 @@ public class RTESumTester extends RTESumBaseEngine
 		answersWriter.setAnswers(answer);
 		answersWriter.setXml(answerFileName);
 		answersWriter.write();
+		RTESystemsUtils.logTextFile(new File(answerFileName), logger);
 		
 		
 		if ( (this.goldStandardAnswers!=null) && (this.goldStandardFileName!=null) )

@@ -246,6 +246,7 @@ public class RTEPairsMultiThreadTester extends RTEPairsBaseSystem
 			logger.info("Printing results in an XML file: "+xmlResultsFile.getPath());
 			ResultsToXml resultsToXml = new ResultsToXml(ResultsToXml.convertPairResults(pairsResults, classifierForPredictions),xmlResultsFile);
 			resultsToXml.output();
+			RTESystemsUtils.logTextFile(xmlResultsFile, logger);
 			ExperimentManager.getInstance().register(xmlResultsFile);
 			
 			printPairsResults();

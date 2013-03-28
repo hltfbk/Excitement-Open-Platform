@@ -55,7 +55,7 @@ public class XmlDomUtils
 	 * @param element A given element (we need its child)
 	 * @param childName The name of the child-element that we are looking for.
 	 * @param optional Indicates whether this element must exist, and if it does not
-	 * exist it is an error and an exception will be thrown (optional==true), or not (optional==false).
+	 * exist it is an error and an exception will be thrown (optional==false), or not (optional==true).
 	 * @return The child-element, which is a direct child of the given element, and named "<code>childName</code>".
 	 * @throws TreeXmlException
 	 */
