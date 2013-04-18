@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.util.List;
+import java.util.UUID;
 
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -45,13 +46,15 @@ public class ArkrefCoreferenceResolver extends CoreferenceResolver<BasicNode>
 	/////////////////////////////////// PUBLIC //////////////////////////////////////
 	
 	public ArkrefCoreferenceResolver() throws ArkrefClientException, IOException{
-		this(new File(System.getProperty("java.io.tmpdir") + File.separator + ARKREF_TEMP + PROCESS_ID));   
+		this(new File(System.getProperty("java.io.tmpdir") + File.separator + ARKREF_TEMP + PROCESS_ID + "__" + UUID.randomUUID().toString()));   
 	}
 	
 	public ArkrefCoreferenceResolver(File workDirectory) throws ArkrefClientException, IOException{
 		this.workDirectory = workDirectory;
 		if(workDirectory.exists())
-			FileUtils.deleteDirectory(workDirectory);
+			if (!FileUtils.deleteDirectory(workDirectory)) {
+				throw new ArkrefClientException("Could not delete directory " + workDirectory);
+			}
 		if (workDirectory.mkdir()==false) 
 			throw new ArkrefClientException("Could not make new directory " + workDirectory); 
 		
