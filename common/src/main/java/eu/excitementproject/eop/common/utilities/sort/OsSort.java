@@ -64,18 +64,35 @@ public class OsSort implements DiskSort
 	 */
 	public static void sortStatic(File inFile, File outFile, boolean deleteInFile) throws DiskSortIOException
 	{
+		sortStatic(inFile, outFile,deleteInFile,false);
+	}
+
+	/**
+	 * Same as sort(), only static
+	 * @param inFile
+	 * @param outFile
+	 * @param deleteInFile if true, the in file is deleted
+	 * @param bNumeric indicates whether a numeric sort is required (true)
+	 * @throws DiskSortIOException
+	 */
+	public static void sortStatic(File inFile, File outFile, boolean deleteInFile, boolean bNumeric) throws DiskSortIOException
+	{
 		if (inFile == null)
 			throw new DiskSortIOException("no in file!");
 		if (!inFile.exists())
 			throw new DiskSortIOException(inFile + " doesn't exist!");
 		
+		if (bNumeric && !OS.isLinux() && !OS.isUnix())
+			throw new DiskSortIOException("Numeric sort is not supported in ");
+
 		Process process;
 		try {
 			process = Runtime.getRuntime().exec( new String[]{
 					SORT_CMD, 
 					inFile.getAbsolutePath(), 
 					OS.isWindows() ? WIN_OUTPUT_SWITCH : UNIX_OUTPUT_SWITCH, 
-					outFile.getAbsolutePath()});
+					outFile.getAbsolutePath(),
+					(bNumeric ? UNIX_NUMERICSORT_SWITCH : "")});
 			
 		} catch (IOException e1) {
 			throw new DiskSortIOException("Error in windows-sorting " + inFile, e1);
@@ -99,4 +116,5 @@ public class OsSort implements DiskSort
 	private static final String SORT_CMD = "sort";
 	private static final String WIN_OUTPUT_SWITCH = "/O";
 	private static final String UNIX_OUTPUT_SWITCH = "-o";
+	private static final String UNIX_NUMERICSORT_SWITCH = "-n";
 }
