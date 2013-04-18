@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.util.LinkedList;
+
 import java.util.List;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
@@ -11,7 +12,7 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnspecifiedPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.core.component.lexicalknowledge.EmptyRuleInfo;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
@@ -58,8 +59,8 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Em
 				LemmaPosBasedElement right = (LemmaPosBasedElement)elemenstSimilarityMeasure.getRightElement();
 				LexicalRule<EmptyRuleInfo> rule = 
 					new LexicalRule<EmptyRuleInfo>(
-							left.getData().getLemma(), new UnspecifiedPartOfSpeech(left.getData().getPOS()),
-							right.getData().getLemma(), new UnspecifiedPartOfSpeech(right.getData().getPOS()),
+							left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()),
+							right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()),
 							elemenstSimilarityMeasure.getSimilarityMeasure(), 
 							null, similarityStorage.getResourceName(), EmptyRuleInfo.getInstance());
 				ret.add(rule);
@@ -82,7 +83,7 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Em
 			for (ElementsSimilarityMeasure similarityRule : similarityStorage.getSimilarityMeasure(leftElement.toKey(), rightElement.toKey())) {
 				LemmaPosBasedElement left = (LemmaPosBasedElement)similarityRule.getLeftElement();
 				LemmaPosBasedElement right = (LemmaPosBasedElement)similarityRule.getRightElement();
-				ret.add(new LexicalRule<EmptyRuleInfo>(left.getData().getLemma(), new UnspecifiedPartOfSpeech(left.getData().getPOS()), right.getData().getLemma(), new UnspecifiedPartOfSpeech(right.getData().getPOS()), similarityRule.getSimilarityMeasure(), null, similarityStorage.getResourceName(), EmptyRuleInfo.getInstance()));
+				ret.add(new LexicalRule<EmptyRuleInfo>(left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()), right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()), similarityRule.getSimilarityMeasure(), null, similarityStorage.getResourceName(), EmptyRuleInfo.getInstance()));
 			}
 			return ret;
 		} catch (Exception e) {
