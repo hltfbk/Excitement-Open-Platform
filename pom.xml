@@ -253,8 +253,8 @@
 			      </descriptors>
 			    </configuration>
 			
-			    <!-- se commentato, eseguire mvn assembly:assembly,
-			         altrimenti mvn package 
+			    <!-- when commented, run mvn assembly:assembly,
+			         otherwise mvn package 
 			    
 			    <executions>
 			      <execution>
@@ -266,11 +266,68 @@
 			      </execution>
 			    </executions>
 			    -->
-			    
-			</plugin>
+		</plugin>
+
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-checkstyle-plugin</artifactId>
+			<version>2.10</version>
+			<configuration>
+				<configLocation>./config/code-quality-metrics/checkstyle.xml</configLocation>
+					<excludes>**/gui/**/*</excludes>
+			</configuration>
+		</plugin>
+	      	
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-pmd-plugin</artifactId>
+			<version>3.0.1</version>
+			<configuration>
+				<targetJdk>1.7</targetJdk>
+				<excludes>
+					<exclude>**/gui/**/*</exclude>
+				</excludes>
+			</configuration>
+		</plugin>
+	      
+		<plugin>
+			<groupId>org.codehaus.mojo</groupId>
+				<artifactId>findbugs-maven-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<xmlOutput>true</xmlOutput>
+					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.distsim.*</onlyAnalyze>
+				</configuration>
+		</plugin>
+		 
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-javadoc-plugin</artifactId>
+			<version>2.9</version>
+			<configuration>
+				<sourceFileExcludes>
+					<exclude>eop/gui/*</exclude>
+				</sourceFileExcludes>
+				<aggregate>true</aggregate>         
+			</configuration>
+		</plugin>
+		  		
+ 	</plugins>
     		
-  	</plugins>
   </build>
+
+  <reporting>
+  
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jxr-plugin</artifactId>
+			<version>2.3</version>
+		</plugin>	      
+	</plugins>
+    
+  </reporting>
+
   <properties>
   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
