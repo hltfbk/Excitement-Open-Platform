@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+
+<!--
+
+  Checks for Javadoc comments only.
+
+  Checkstyle is very configurable. Be sure to read the documentation at
+  http://checkstyle.sourceforge.net
+
+  To disable a check, just comment it out
+
+-->
+
+<module name="Checker">
+
+	<module name="JavadocPackage"/>
+
+	<module name="TreeWalker">
+ 	
+		<!-- Checks for Javadoc comments. -->
+		<!-- See http://checkstyle.sf.net/config_javadoc.html -->
+
+                <!-- Checks the Javadoc of a method or constructor. -->
+		<module name="JavadocMethod">
+			<property name="scope" value="public"/>
+			<!-- whether to ignore errors when a method has parameters but does not have
+			matching param tags in the javadoc. -->
+			<property name="allowMissingParamTags" value="true"/>
+			<!-- whether to ignore errors when a method declares that it throws exceptions
+			but does have matching throws tags in the javadoc. -->
+			<property name="allowMissingThrowsTags" value="true"/>
+			<!-- whether to ignore errors when a method returns non-void type does have a
+			return tag in the javadoc. -->
+			<property name="allowMissingReturnTag" value="true"/>
+		</module>
+
+                <!-- Checks Javadoc comments for class and interface definitions. 
+		By default, does not check for author or version tags.-->
+		<module name="JavadocType">
+			<property name="scope" value="public"/>
+			<!-- whether to ignore errors when a class has type parameters but does not have
+			matching param tags in the javadoc.-->
+			<property name="allowMissingParamTags" value="true"/>
+		</module>
+
+                <!-- Checks that variables have Javadoc comments. -->
+		<!--
+		<module name="JavadocVariable">
+			<property name="scope" value="package"/>
+		</module>
+		-->
+
+                <!-- Validates Javadoc comments to help ensure they are well formed. -->
+		<!--
+		<module name="JavadocStyle">
+			<property name="scope" value="public"/>
+		</module>
+		-->
+	</module> 
+
+</module>
+
