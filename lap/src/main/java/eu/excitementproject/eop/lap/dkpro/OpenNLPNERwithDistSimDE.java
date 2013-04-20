@@ -40,10 +40,11 @@ import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 /**
- * This class incomplete, and it is a temporary try of using OpenNLP NER for German.
+ * This class incomplete, and it is a temporary try of using OpenNLP NER for
+ * German.
  * 
  * @author Rui
- *
+ * 
  */
 public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 
@@ -59,7 +60,7 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		return MODEL_PATH;
 	}
 
-	TokenNameFinderModel model;
+	private TokenNameFinderModel model;
 
 	private Map<String, String> POSMap;
 
@@ -70,7 +71,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	}
 
 	private static final String TEST_FILE = "./src/main/resources/DE_NER_distr_cluster/train-data/deu.testa";
-//	private static final String TEST_FILE = "./src/main/resources/DE_NER_distr_cluster/train-data/deu.testb";
+
+	// private static final String TEST_FILE =
+	// "./src/main/resources/DE_NER_distr_cluster/train-data/deu.testb";
 
 	public static String getTestFile() {
 		return TEST_FILE;
@@ -78,7 +81,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 
 	private Map<String, String> lexicon;
 	private static final String LEXICON_PATH = "./src/main/resources/DE_NER_distr_cluster/distr_clusters/hgc2.400.clusters.clean";
-//	private static final String LEXICON_PATH = "./src/main/resources/DE_NER_distr_cluster/distr_clusters/hgc2_full_600";
+
+	// private static final String LEXICON_PATH =
+	// "./src/main/resources/DE_NER_distr_cluster/distr_clusters/hgc2_full_600";
 
 	public static String getLexiconPath() {
 		return LEXICON_PATH;
@@ -149,11 +154,12 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		String line = "";
 		while ((line = input.readLine()) != null) {
 
-			Span nameSpans[] = nameFinder.find(line.split(" "));
+			Span[] nameSpans = nameFinder.find(line.split(" "));
 
 			System.out.println(line);
-			for (Span s : nameSpans)
+			for (Span s : nameSpans) {
 				System.out.println(s.toString());
+			}
 		}
 		input.close();
 
@@ -182,11 +188,11 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 				new PlainTextByLineStream(new InputStreamReader(
 						new FileInputStream(TRAIN_FILE + ".pp"), ENCODING)));
 
-		int iterations = 100;
-		int cutoff = 5;
+		final int ITER = 100;
+		final int CUT_OFF = 5;
 		model = NameFinderME.train(languageIdentifier, "default", sampleStream,
-				createFeatureGenerator(), new HashMap<String, Object>(),
-				iterations, cutoff);
+				createFeatureGenerator(), new HashMap<String, Object>(), ITER,
+				CUT_OFF);
 		FileOutputStream outputStream = new FileOutputStream(MODEL_PATH);
 		model.serialize(outputStream);
 		sampleStream.close();
@@ -220,17 +226,17 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 					} else if (tag.equals("B-PER")) {
 						tag = "I-PER";
 					}
-//					if (
-//							tag.contains("PER") 
-//							|| 
-//							tag.contains("LOC")
-//							|| 
-//							tag.contains("ORG") 
-//							|| 
-//							tag.contains("MISC")
-//							) {
-//						tag = "O";
-//					}
+					// if (
+					// tag.contains("PER")
+					// ||
+					// tag.contains("LOC")
+					// ||
+					// tag.contains("ORG")
+					// ||
+					// tag.contains("MISC")
+					// ) {
+					// tag = "O";
+					// }
 					if (!tag.equals("O")) {
 						if (!tag.equals(prevTag)) {
 							if (!prevTag.equals("O") && i != 0) {
@@ -291,25 +297,25 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 				new OutcomePriorFeatureGenerator(),
 				new PreviousMapFeatureGenerator(),
 				new BigramNameFeatureGenerator(),
-				
-//				// newly added: word cluster features
-//				new WindowFeatureGenerator(new TokenClusterFeatureGenerator(
-//						true), 2, 2),
-//				// newly added: word cluster features for the previous map
-//				new PreviousWClMapFeatureGenerator(),
-//				// newly added: bigram word cluster features
-//				new BigramWClNameFeatureGenerator(),
-				
+
+				// // newly added: word cluster features
+				// new WindowFeatureGenerator(new TokenClusterFeatureGenerator(
+				// true), 2, 2),
+				// // newly added: word cluster features for the previous map
+				// new PreviousWClMapFeatureGenerator(),
+				// // newly added: bigram word cluster features
+				// new BigramWClNameFeatureGenerator(),
+
 				// newly added: POS features
-//				new WindowFeatureGenerator(new TokenPOSFeatureGenerator(true),
-//						2, 2),
-//				// newly added: POS features for the previous map
-//				new PreviousWPOSMapFeatureGenerator(),
+				// new WindowFeatureGenerator(new
+				// TokenPOSFeatureGenerator(true),
+				// 2, 2),
+				// // newly added: POS features for the previous map
+				// new PreviousWPOSMapFeatureGenerator(),
 				// newly added: bigram POS features
-//				new BigramWPOSNameFeatureGenerator(),
-				
-				new SentenceFeatureGenerator(true, false)
-				});
+				// new BigramWPOSNameFeatureGenerator(),
+
+				new SentenceFeatureGenerator(true, false) });
 	}
 
 	/**
