@@ -2,8 +2,8 @@ package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Vector;
 import java.util.Map.Entry;
+import java.util.Vector;
 import java.util.logging.Logger;
 
 import org.apache.uima.cas.CASException;
@@ -37,7 +37,9 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 
 	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
 
-	// the number of features
+	/**
+	 * the number of features
+	 */
 	private int numOfFeats = 0;
 
 	@Override
@@ -51,14 +53,22 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 
 	protected GermaNetWrapper gnw = null;
 
+	/**
+	 * the constructor using the configuration
+	 * 
+	 * @param config
+	 *            the configuation
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
 	public BagOfLexesScoring(CommonConfig config)
 			throws ConfigurationException, LexicalResourceException {
 		for (int i = 0; i < moduleFlags.length; i++) {
 			moduleFlags[i] = false;
 		}
-		
+
 		NameValueTable comp = config.getSection("BagOfLexesScoring");
-		
+
 		// initialize GermanDistSim
 		if (null == comp.getString("GermanDistSim")
 				&& null == comp.getString("GermaNetWrapper")) {
@@ -77,10 +87,11 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 				throw new LexicalResourceException(e.getMessage());
 			}
 		}
-		
+
 		// initialize GermaNet
 		if (null != comp.getString("GermaNetWrapper")) {
-			String[] GermaNetRelations = comp.getString("GermaNetWrapper").split(",");
+			String[] GermaNetRelations = comp.getString("GermaNetWrapper")
+					.split(",");
 			if (null == GermaNetRelations || 0 == GermaNetRelations.length) {
 				throw new ConfigurationException(
 						"Wrong configuation: didn't find any relations for the GermaNet");
@@ -102,7 +113,11 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	public String getComponentName() {
 		return "BagOfLexesScoring";
 	}
-	
+
+	/**
+	 * close the component by closing the lexical resources.
+	 */
+	@Override
 	public void close() throws ScoringComponentException {
 		try {
 			if (null != gds) {
@@ -147,6 +162,19 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		return scoresVector;
 	}
 
+	/**
+	 * calculate the similarity score between T and H based on one lexical
+	 * resource
+	 * 
+	 * @param tBag
+	 *            the bag of words of T
+	 * @param hBag
+	 *            the bag of words of H
+	 * @param lex
+	 *            the lexical resource used
+	 * @return the similarity score
+	 * @throws ScoringComponentException
+	 */
 	protected double calculateSingleLexScore(HashMap<String, Integer> tBag,
 			HashMap<String, Integer> hBag,
 			LexicalResource<? extends RuleInfo> lex)
@@ -159,7 +187,8 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet()
+				.iterator(); iter.hasNext();) {
 			Entry<String, Integer> entry = iter.next();
 			final String word = entry.getKey();
 			final int counts = entry.getValue().intValue();
@@ -184,6 +213,19 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		return score;
 	}
 
+	/**
+	 * calculate the similarity score between T and H based on GermaNet
+	 * relations
+	 * 
+	 * @param tBag
+	 *            the bag of words of T
+	 * @param hBag
+	 *            the bag of words of H
+	 * @param gnr
+	 *            the GermaNet
+	 * @return the similarity score
+	 * @throws ScoringComponentException
+	 */
 	protected double calculateSingleLexScoreWithGermaNetRelation(
 			HashMap<String, Integer> tBag, HashMap<String, Integer> hBag,
 			GermaNetRelation gnr) throws ScoringComponentException {
@@ -195,7 +237,8 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet()
+				.iterator(); iter.hasNext();) {
 			Entry<String, Integer> entry = iter.next();
 			final String word = entry.getKey();
 			final int counts = entry.getValue().intValue();

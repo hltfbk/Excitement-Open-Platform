@@ -51,47 +51,108 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	static Logger logger = Logger.getLogger(OpenNLPNERwithDistSimDE.class
 			.getName());
 
+	/**
+	 * the start symbol
+	 */
 	private static final String START_SYMBOL = "#START";
+
+	/**
+	 * the end symbol
+	 */
 	private static final String END_SYMBOL = "#END";
 
+	/**
+	 * the model path
+	 */
 	private static final String MODEL_PATH = "./target/OpenNLPNERModel";
 
+	/**
+	 * get the model path
+	 * 
+	 * @return
+	 */
 	public static String getModelPath() {
 		return MODEL_PATH;
 	}
 
+	/**
+	 * the model
+	 */
 	private TokenNameFinderModel model;
 
+	/**
+	 * the HashMap to store the POS tags
+	 */
 	private Map<String, String> POSMap;
 
+	/**
+	 * the training data file path
+	 */
 	private static final String TRAIN_FILE = "./src/main/resources/DE_NER_distr_cluster/train-data/deu.train";
 
+	/**
+	 * get the training data file path
+	 * 
+	 * @return
+	 */
 	public static String getTrainFile() {
 		return TRAIN_FILE;
 	}
 
+	/**
+	 * the testing data file path
+	 */
 	private static final String TEST_FILE = "./src/main/resources/DE_NER_distr_cluster/train-data/deu.testa";
 
 	// private static final String TEST_FILE =
 	// "./src/main/resources/DE_NER_distr_cluster/train-data/deu.testb";
 
+	/**
+	 * get the testing data file path
+	 * 
+	 * @return
+	 */
 	public static String getTestFile() {
 		return TEST_FILE;
 	}
 
+	/**
+	 * the lexicon stored in a HashMap
+	 */
 	private Map<String, String> lexicon;
+
+	/**
+	 * the lexicon file path
+	 */
 	private static final String LEXICON_PATH = "./src/main/resources/DE_NER_distr_cluster/distr_clusters/hgc2.400.clusters.clean";
 
 	// private static final String LEXICON_PATH =
 	// "./src/main/resources/DE_NER_distr_cluster/distr_clusters/hgc2_full_600";
 
+	/**
+	 * get the lexicon file path
+	 * 
+	 * @return
+	 */
 	public static String getLexiconPath() {
 		return LEXICON_PATH;
 	}
 
+	/**
+	 * the encoding
+	 */
 	private static final String ENCODING = "ISO-8859-1";
+
+	/**
+	 * the default value for unknown word cluster
+	 */
 	private static final String UNKNOWN_WORD_CLUSTER = "null";
 
+	/**
+	 * the constructor
+	 * 
+	 * @throws LAPException
+	 */
 	public OpenNLPNERwithDistSimDE() throws LAPException {
 		super();
 		languageIdentifier = "DE"; // set languageIdentifer
@@ -122,6 +183,11 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		// TODO: process
 	}
 
+	/**
+	 * the initialization method
+	 * 
+	 * @throws LAPException
+	 */
 	private void initialize() throws LAPException {
 		File modelFile = new File(MODEL_PATH);
 		if (!modelFile.exists()) {
@@ -140,6 +206,12 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		}
 	}
 
+	/**
+	 * Just for test
+	 * 
+	 * @throws LAPException
+	 * @throws IOException
+	 */
 	public void test() throws LAPException, IOException {
 		initialize();
 
@@ -174,6 +246,12 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		System.out.println(result.toString());
 	}
 
+	/**
+	 * the training function
+	 * 
+	 * @throws IOException
+	 */
+	@SuppressWarnings("unused")
 	private void train() throws IOException {
 		File trainFile = new File(TRAIN_FILE);
 		if (!trainFile.exists()) {
@@ -199,6 +277,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		outputStream.close();
 	}
 
+	/**
+	 * preprocess the data
+	 */
 	private void preprocess(String inputFile, String outputFile)
 			throws IOException {
 		// store the POS information, and put it in a HashMap
@@ -288,6 +369,12 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		output.close();
 	}
 
+	/**
+	 * the aggregation of all the feature generators
+	 * 
+	 * @return
+	 * @throws IOException
+	 */
 	private AdaptiveFeatureGenerator createFeatureGenerator()
 			throws IOException {
 		return new CachedFeatureGenerator(new AdaptiveFeatureGenerator[] {
@@ -319,7 +406,13 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	}
 
 	/**
+	 * The feature generator <code>TokenClusterFeatureGenerator</code> extends
+	 * <code>FeatureGeneratorAdapter</code>.
+	 * 
 	 * Generates features for different word clusters.
+	 * 
+	 * @author Rui
+	 * 
 	 */
 	public class TokenClusterFeatureGenerator extends FeatureGeneratorAdapter {
 
@@ -354,7 +447,13 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	}
 
 	/**
+	 * The feature generator <code>TokenPOSFeatureGenerator</code> extends
+	 * <code>FeatureGeneratorAdapter</code>.
+	 * 
 	 * Generates features for different POSes.
+	 * 
+	 * @author Rui
+	 * 
 	 */
 	public class TokenPOSFeatureGenerator extends FeatureGeneratorAdapter {
 
@@ -396,8 +495,14 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	}
 
 	/**
+	 * The feature generator <code>PreviousWClMapFeatureGenerator</code>
+	 * implements <code>AdaptiveFeatureGenerator</code>.
+	 * 
 	 * This {@link FeatureGeneratorAdapter} generates features indicating the
 	 * outcome associated with a previously occuring word cluster.
+	 * 
+	 * @author Rui
+	 * 
 	 */
 	public class PreviousWClMapFeatureGenerator implements
 			AdaptiveFeatureGenerator {
@@ -429,8 +534,14 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	}
 
 	/**
+	 * The feature generator <code>PreviousWPOSMapFeatureGenerator</code>
+	 * implements <code>AdaptiveFeatureGenerator</code>.
+	 * 
 	 * This {@link FeatureGeneratorAdapter} generates features indicating the
 	 * outcome associated with a previously occuring POS.
+	 * 
+	 * @author Rui
+	 * 
 	 */
 	public class PreviousWPOSMapFeatureGenerator implements
 			AdaptiveFeatureGenerator {
@@ -487,6 +598,13 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		}
 	}
 
+	/**
+	 * The feature generator <code>BigramWClNameFeatureGenerator</code> extends
+	 * <code>FeatureGeneratorAdapter</code>.
+	 * 
+	 * @author Rui
+	 * 
+	 */
 	public class BigramWClNameFeatureGenerator extends FeatureGeneratorAdapter {
 
 		public void createFeatures(List<String> features, String[] tokens,
@@ -508,6 +626,13 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		}
 	}
 
+	/**
+	 * The feature generator <code>BigramWPOSNameFeatureGenerator</code> extends
+	 * <code>FeatureGeneratorAdapter</code>.
+	 * 
+	 * @author Rui
+	 * 
+	 */
 	public class BigramWPOSNameFeatureGenerator extends FeatureGeneratorAdapter {
 
 		public void createFeatures(List<String> features, String[] tokens,
@@ -546,10 +671,10 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		}
 	}
 
-	public static void main(String[] args) throws LAPException, IOException {
-		OpenNLPNERwithDistSimDE ner = new OpenNLPNERwithDistSimDE();
-		ner.train();
-		ner.test();
-	}
+	// public static void main(String[] args) throws LAPException, IOException {
+	// OpenNLPNERwithDistSimDE ner = new OpenNLPNERwithDistSimDE();
+	// ner.train();
+	// ner.test();
+	// }
 
 }

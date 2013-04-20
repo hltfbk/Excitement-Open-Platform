@@ -2,8 +2,8 @@ package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Vector;
 import java.util.Map.Entry;
+import java.util.Vector;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -21,26 +21,44 @@ import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfS
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;
 
+/**
+ * The class <code>BagOfLexesPosScoring</code> extends
+ * <code>BagOfLexesScoring</code>.
+ * 
+ * It adds POS tags into the queries to the lexical resources.
+ * 
+ * @author Rui
+ * 
+ */
 public class BagOfLexesPosScoring extends BagOfLexesScoring {
 
+	/**
+	 * the constructor
+	 * 
+	 * @param config
+	 *            the configuration
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
 	public BagOfLexesPosScoring(CommonConfig config)
 			throws ConfigurationException, LexicalResourceException {
 		super(config);
 	}
-	
+
 	@Override
 	public Vector<Double> calculateScores(JCas aCas)
 			throws ScoringComponentException {
-		// 1) how many words of H (extended with multiple relations) can be found in T divided by the length of H
+		// 1) how many words of H (extended with multiple relations) can be
+		// found in T divided by the length of H
 		Vector<Double> scoresVector = new Vector<Double>();
-			
+
 		try {
 			JCas tView = aCas.getView("TextView");
 			HashMap<String, Integer> tBag = countTokenPoses(tView);
 
 			JCas hView = aCas.getView("HypothesisView");
 			HashMap<String, Integer> hBag = countTokenPoses(hView);
-			
+
 			if (moduleFlags[0]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
 			}
@@ -52,14 +70,15 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 		}
 		return scoresVector;
 	}
-	
+
 	/**
-	 * Count the lemmas and POSes contained in a text and store the counts in a HashMap
+	 * Count the lemmas and POSes contained in a text and store the counts in a
+	 * HashMap
 	 * 
 	 * @param text
 	 *            the input text represented in a JCas
-	 * @return a HashMap represents the bag of lemmas and POSes contained in the text, in
-	 *         the form of <Lemma ### POS, Frequency>
+	 * @return a HashMap represents the bag of lemmas and POSes contained in the
+	 *         text, in the form of <Lemma ### POS, Frequency>
 	 */
 	protected HashMap<String, Integer> countTokenPoses(JCas text) {
 		HashMap<String, Integer> tokenNumMap = new HashMap<String, Integer>();
@@ -67,7 +86,8 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 				.iterator();
 		while (tokenIter.hasNext()) {
 			Token curr = (Token) tokenIter.next();
-			String tokenText = curr.getLemma().getValue() + " ### " + curr.getPos().getPosValue();
+			String tokenText = curr.getLemma().getValue() + " ### "
+					+ curr.getPos().getPosValue();
 			Integer num = tokenNumMap.get(tokenText);
 			if (null == num) {
 				tokenNumMap.put(tokenText, 1);
@@ -77,7 +97,8 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 		}
 		return tokenNumMap;
 	}
-	
+
+	@Override
 	protected double calculateSingleLexScore(HashMap<String, Integer> tBag,
 			HashMap<String, Integer> hBag,
 			LexicalResource<? extends RuleInfo> lex)
@@ -90,7 +111,8 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet()
+				.iterator(); iter.hasNext();) {
 			Entry<String, Integer> entry = iter.next();
 			final String word = entry.getKey();
 			final int counts = entry.getValue().intValue();
@@ -98,7 +120,8 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 				tWordBag.put(word, counts);
 				String POS = word.split(" ### ")[1];
 				for (LexicalRule<? extends RuleInfo> rule : lex
-						.getRulesForLeft(word.split(" ### ")[0], new GermanPartOfSpeech(POS))) {
+						.getRulesForLeft(word.split(" ### ")[0],
+								new GermanPartOfSpeech(POS))) {
 					String tokenText = rule.getRLemma() + " ### " + POS;
 					if (tWordBag.containsKey(tokenText)) {
 						int tmp = tWordBag.get(tokenText);
@@ -118,23 +141,30 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 
 		return score;
 	}
-	
-	protected double calculateSingleLexScoreWithGermaNetRelation(HashMap<String, Integer> tBag, HashMap<String, Integer> hBag, GermaNetRelation gnr) throws ScoringComponentException{
+
+	@Override
+	protected double calculateSingleLexScoreWithGermaNetRelation(
+			HashMap<String, Integer> tBag, HashMap<String, Integer> hBag,
+			GermaNetRelation gnr) throws ScoringComponentException {
 		if (null == gnw) {
-			throw new ScoringComponentException("WARNING: the specified lexical resource has not been properly initialized!");
+			throw new ScoringComponentException(
+					"WARNING: the specified lexical resource has not been properly initialized!");
 		}
-		
+
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
-		
-		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet()
+				.iterator(); iter.hasNext();) {
 			Entry<String, Integer> entry = iter.next();
 			final String word = entry.getKey();
 			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				String POS = word.split(" ### ")[1];
-				for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word.split(" ### ")[0], new GermanPartOfSpeech(POS), gnr)) {
+				for (LexicalRule<? extends RuleInfo> rule : gnw
+						.getRulesForLeft(word.split(" ### ")[0],
+								new GermanPartOfSpeech(POS), gnr)) {
 					String tokenText = rule.getRLemma() + " ### " + POS;
 					if (tWordBag.containsKey(tokenText)) {
 						int tmp = tWordBag.get(tokenText);
@@ -149,9 +179,9 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 				throw new ScoringComponentException(e.getMessage());
 			}
 		}
-		
+
 		score = calculateSimilarity(tWordBag, hBag).get(0);
-		
+
 		return score;
 	}
 

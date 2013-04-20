@@ -61,7 +61,7 @@ public class MaxEntClassificationEDA implements
 	/**
 	 * the logger
 	 */
-	public static Logger logger = Logger
+	public final static Logger logger = Logger
 			.getLogger(MaxEntClassificationEDA.class.getName());
 
 	/**
@@ -502,7 +502,9 @@ public class MaxEntClassificationEDA implements
 		initializeComponents(c);
 
 		boolean USE_SMOOTHING = false;
-		final double SMOOTHING_OBSERVATION = 0.1;
+
+		// commented out, use the default value
+		// final double SMOOTHING_OBSERVATION = 0.1;
 
 		// boolean real = false;
 		// String type = "maxent";
@@ -512,7 +514,7 @@ public class MaxEntClassificationEDA implements
 
 		File outputFile = new File(modelFile);
 		try {
-			GIS.SMOOTHING_OBSERVATION = SMOOTHING_OBSERVATION;
+			// GIS.SMOOTHING_OBSERVATION = SMOOTHING_OBSERVATION;
 			model = GIS.trainModel(MAX_ITERATION,
 					new OnePassRealValueDataIndexer(readInXmiFiles(trainDIR),
 							CUT_OFF), USE_SMOOTHING);

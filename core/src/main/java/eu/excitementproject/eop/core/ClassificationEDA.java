@@ -8,7 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Vector;
 
 import org.apache.uima.cas.FSIterator;
@@ -46,28 +48,51 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  */
 public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 
+	/**
+	 * get the language flag
+	 * 
+	 * @return
+	 */
 	public String getLanguage() {
 		return language;
 	}
 
+	/**
+	 * get the model file
+	 * 
+	 * @return
+	 */
 	public String getModelFile() {
 		return modelFile;
 	}
 
+	/**
+	 * get the training data directory
+	 * 
+	 * @return
+	 */
 	public String getXmiDIR() {
 		return xmiDIR;
 	}
 
-	// list of components used in this EDA
+	/**
+	 * list of components used in this EDA
+	 */
 	private List<DistanceCalculation> components;
 
-	// language flag
+	/**
+	 * the language flag
+	 */
 	private String language;
 
-	// the model file, consisting of parameter name and value pairs
+	/**
+	 * the model file, consisting of parameter name and value pairs
+	 */
 	private String modelFile;
 
-	// training data directory
+	/**
+	 * the trainding data directory
+	 */
 	private String xmiDIR;
 
 	@Override
@@ -120,11 +145,14 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 
 		double minDistance = 2.0d;
 		String currentLabel = "ABSTAIN";
-		for (String goldAnswer : model.keySet()) {
+		for (final Iterator<Entry<String, Vector<Double>>> iter = model
+				.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Vector<Double>> entry = iter.next();
+			final String goldAnswer = entry.getKey();
 			if (goldAnswer.startsWith("#")) {
 				continue;
 			}
-			Vector<Double> modelScore = model.get(goldAnswer);
+			final Vector<Double> modelScore = entry.getValue();
 			double distance = calculateDistance(modelScore, featureVector);
 			if (distance <= minDistance) {
 				minDistance = distance;
@@ -222,12 +250,15 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 
 		// store all the averaged scores in model
 		// the key starting with "#" stores the number of training instances
-		for (String goldAnswer : model.keySet()) {
+		for (final Iterator<Entry<String, Vector<Double>>> iter = model
+				.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Vector<Double>> entry = iter.next();
+			final String goldAnswer = entry.getKey();
 			if (goldAnswer.startsWith("#")) {
 				continue;
 			}
-			Vector<Double> featureVector = model.get(goldAnswer);
-			Vector<Double> number = model.get("#" + goldAnswer);
+			final Vector<Double> featureVector = entry.getValue();
+			final Vector<Double> number = model.get("#" + goldAnswer);
 			for (int i = 0; i < featureVector.size(); i++) {
 				featureVector.set(i, featureVector.get(i) / number.get(0));
 			}
