@@ -60,7 +60,7 @@ public class MaxEntClassificationEDA implements
 
 	static Logger logger = Logger.getLogger(MaxEntClassificationEDA.class
 			.getName());
-
+	
 	// list of components used in this EDA
 	protected List<ScoringComponent> components;
 
@@ -79,32 +79,32 @@ public class MaxEntClassificationEDA implements
 	// the model
 	protected MaxentModel model;
 
-	public List<ScoringComponent> getComponents() {
+	public final List<ScoringComponent> getComponents() {
 		return components;
 	}
 
-	public String getLanguage() {
+	public final String getLanguage() {
 		return language;
 	}
 
-	public String getModelFile() {
+	public final String getModelFile() {
 		return modelFile;
 	}
 
-	public String getTrainDIR() {
+	public final String getTrainDIR() {
 		return trainDIR;
 	}
 
-	public String getTestDIR() {
+	public final String getTestDIR() {
 		return testDIR;
 	}
 
-	public MaxentModel getModel() {
+	public final MaxentModel getModel() {
 		return model;
 	}
 
 	@Override
-	public void initialize(CommonConfig config) throws ConfigurationException,
+	public final void initialize(CommonConfig config) throws ConfigurationException,
 			EDAException, ComponentException {
 		// initialize the language
 		initializeLanguage(config);
@@ -157,7 +157,7 @@ public class MaxEntClassificationEDA implements
 			} else {
 				try {
 					@SuppressWarnings("unchecked")
-					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class.forName("eu.excitementproject.eop.core.component.scoring."+component);
+					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class.forName("eu.excitementproject.eop.core.component.scoring." + component);
 					components.add(comp1.newInstance());
 				} catch (Exception e) {
 					throw new ConfigurationException(e.getMessage());
@@ -175,7 +175,7 @@ public class MaxEntClassificationEDA implements
 				comp3 = new BagOfLexesScoring(config);
 			}
 			// check the number of features. if it's 0, no instantiation of the component.
-			if (((BagOfLexesScoring)comp3).getNumOfFeats() > 0) {
+			if (((BagOfLexesScoring) comp3).getNumOfFeats() > 0) {
 				components.add(comp3);
 			}
 		} catch (LexicalResourceException e) {
@@ -282,7 +282,7 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 
-	public void initializeData(CommonConfig config, boolean isTrain, boolean isTestingBatch) throws ConfigurationException {
+	public final void initializeData(CommonConfig config, boolean isTrain, boolean isTestingBatch) throws ConfigurationException {
 		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class.getName());		
 		trainDIR = EDA.getString("trainDir");
 		if (null == trainDIR) {
@@ -299,13 +299,13 @@ public class MaxEntClassificationEDA implements
 	}
 	
 	@Override
-	public ClassificationTEDecision process(JCas aCas) throws EDAException,
+	public final ClassificationTEDecision process(JCas aCas) throws EDAException,
 			ComponentException {		
 		String pairId = getPairID(aCas);
-		String goldAnswer = getGoldLabel(aCas);
-		if (null == goldAnswer) {
-			goldAnswer = DecisionLabel.Abstain.toString();
-		}
+//		String goldAnswer = getGoldLabel(aCas);
+//		if (null == goldAnswer) {
+//			goldAnswer = DecisionLabel.Abstain.toString();
+//		}
 
 		String[] context = constructContext(aCas);
 		logger.info(Arrays.asList(context).toString());
@@ -317,7 +317,7 @@ public class MaxEntClassificationEDA implements
 			result[i] = new DoubleStringPair(ocs[i], model.getOutcome(i));
 		}
 
-		java.util.Arrays.sort(result);
+		Arrays.sort(result);
 
 		// Print the most likely outcome first, down to the least likely.
 		// for (int i = numOutcomes - 1; i >= 0; i--)
@@ -335,7 +335,7 @@ public class MaxEntClassificationEDA implements
 	 * @return return the feature vector of the instance, called
 	 *         <code>Context</code> in the MaxEnt model
 	 */
-	protected String[] constructContext(JCas aCas)
+	protected final String[] constructContext(JCas aCas)
 			throws ScoringComponentException {
 		List<String> featList = new ArrayList<String>();
 		for (ScoringComponent comp : components) {
@@ -349,7 +349,7 @@ public class MaxEntClassificationEDA implements
 	}
 
 	@Override
-	public void shutdown() {
+	public final void shutdown() {
 		if (null != components) {
 			for (ScoringComponent comp : components) {
 				try {
@@ -367,7 +367,7 @@ public class MaxEntClassificationEDA implements
 	}
 
 	@Override
-	public void startTraining(CommonConfig c) throws ConfigurationException,
+	public final void startTraining(CommonConfig c) throws ConfigurationException,
 			EDAException, ComponentException {
 		// initialize the language
 		initializeLanguage(c);
@@ -382,19 +382,19 @@ public class MaxEntClassificationEDA implements
 		initializeComponents(c);
 		
 		boolean USE_SMOOTHING = false;
-		double SMOOTHING_OBSERVATION = 0.1;
+		final double SMOOTHING_OBSERVATION = 0.1;
 
 		// boolean real = false;
 		// String type = "maxent";
-		int maxit = 100;
-		int cutoff = 1;
+		final int MAX_ITERATION = 100;
+		final int CUT_OFF = 1;
 		// double sigma = 1.0;
 
 		File outputFile = new File(modelFile);
 		try {
 			GIS.SMOOTHING_OBSERVATION = SMOOTHING_OBSERVATION;
-			model = GIS.trainModel(maxit, new OnePassRealValueDataIndexer(
-					readInXmiFiles(trainDIR), cutoff), USE_SMOOTHING);
+			model = GIS.trainModel(MAX_ITERATION, new OnePassRealValueDataIndexer(
+					readInXmiFiles(trainDIR), CUT_OFF), USE_SMOOTHING);
 
 			AbstractModelWriter writer = new SuffixSensitiveGISModelWriter(
 					(AbstractModel) model, outputFile);
@@ -410,7 +410,7 @@ public class MaxEntClassificationEDA implements
 	 * @return return the instances of the dataset, represented in
 	 *         <code>Event</code>s
 	 */
-	protected EventStream readInXmiFiles(String filePath)
+	protected final EventStream readInXmiFiles(String filePath)
 			throws ConfigurationException {
 		List<Event> eventList = new ArrayList<Event>();
 			File dir = new File(filePath);
@@ -435,7 +435,7 @@ public class MaxEntClassificationEDA implements
 	 * @return return the instance of that file, represented in
 	 *         <code>Event</code>
 	 */
-	protected Event readInXmiFile(String filePath)
+	protected final Event readInXmiFile(String filePath)
 			throws ConfigurationException {
 		try {
 			File xmiFile = new File(filePath);
@@ -450,7 +450,7 @@ public class MaxEntClassificationEDA implements
 	 *            the <code>JCas</code> object
 	 * @return return the instance of the input, represented in <code>Event</code>
 	 */
-	protected Event casToEvent(JCas cas) throws ConfigurationException {
+	protected final Event casToEvent(JCas cas) throws ConfigurationException {
 		String goldAnswer = getGoldLabel(cas);
 		if (null == goldAnswer) {
 			goldAnswer = DecisionLabel.Abstain.toString();
@@ -469,7 +469,7 @@ public class MaxEntClassificationEDA implements
 	 *            the <code>JCas</code> object
 	 * @return return the pairID of the T-H pair
 	 */
-	protected String getPairID(JCas aCas) {
+	protected final String getPairID(JCas aCas) {
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository()
 				.getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
@@ -482,7 +482,7 @@ public class MaxEntClassificationEDA implements
 	 * @return if the T-H pair contains the gold answer, return it; otherwise,
 	 *         return null
 	 */
-	protected String getGoldLabel(JCas aCas) {
+	protected final String getGoldLabel(JCas aCas) {
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository()
 				.getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
@@ -499,7 +499,7 @@ public class MaxEntClassificationEDA implements
 	 *            the string value of the answer
 	 * @return the <code>DecisionLabel</code> of the answer
 	 */
-	protected DecisionLabel getAnswerLabel(String answer) {
+	protected final DecisionLabel getAnswerLabel(String answer) {
 		if (answer.equalsIgnoreCase("contradiction")) {
 			return DecisionLabel.Contradiction;
 		} else if (answer.equalsIgnoreCase("entailment")) {

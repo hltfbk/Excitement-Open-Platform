@@ -22,7 +22,7 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 public class BagOfLemmasScoring extends BagOfWordsScoring {
 
 //	the number of features
-	protected int numOfFeats = 3;
+	private int numOfFeats = 3;
 
 	@Override
 	public int getNumOfFeats() {

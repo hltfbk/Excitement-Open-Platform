@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core.component.scoring;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
+import java.util.Map.Entry;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -89,8 +90,10 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				String POS = word.split(" ### ")[1];
@@ -124,8 +127,10 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 		
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				String POS = word.split(" ### ")[1];

@@ -187,7 +187,10 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 		model = NameFinderME.train(languageIdentifier, "default", sampleStream,
 				createFeatureGenerator(), new HashMap<String, Object>(),
 				iterations, cutoff);
-		model.serialize(new FileOutputStream(MODEL_PATH));
+		FileOutputStream outputStream = new FileOutputStream(MODEL_PATH);
+		model.serialize(outputStream);
+		sampleStream.close();
+		outputStream.close();
 	}
 
 	private void preprocess(String inputFile, String outputFile)

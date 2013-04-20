@@ -4,8 +4,10 @@ import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
+import java.util.Map.Entry;
 import java.util.logging.Logger;
 
 import org.apache.uima.cas.CASException;
@@ -35,7 +37,7 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	private static final String VO_PATH = "./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt";
 
 //	the number of features
-	protected int numOfFeats = 0;
+	private int numOfFeats = 0;
 	
 	@Override
 	public int getNumOfFeats() {
@@ -132,8 +134,10 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 		
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				for (LexicalRule<? extends RuleInfo> rule : wnlr.getRulesForLeft(word, null)) {
@@ -158,8 +162,10 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 		
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				for (LexicalRule<? extends RuleInfo> rule : volr.getRulesForLeft(word, null)) {

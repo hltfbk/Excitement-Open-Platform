@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
+import java.util.Map.Entry;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -31,7 +32,7 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 public class BagOfDepsScoring extends BagOfWordsScoring {
 	
 //	the number of features
-	protected int numOfFeats = 12;
+	private int numOfFeats = 12;
 
 	public int getNumOfFeats() {
 		return numOfFeats;
@@ -74,9 +75,11 @@ public class BagOfDepsScoring extends BagOfWordsScoring {
 		
 		Map<String, String> depMap = indexDepTree(text);
 		
-		for (String dep : depMap.keySet()) {
+		for (final Iterator<Entry<String, String>> iter = depMap.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, String> entry = iter.next();
+			final String dep = entry.getKey();
 			String childToken = dep.split(" ### ")[1];
-			String[] parentItems = depMap.get(dep).split(" ## ");
+			String[] parentItems = entry.getValue().split(" ## ");
 			String depRel = parentItems[0];
 			String parentToken = parentItems[1].split(" ### ")[1];
 			String matchDep = childToken + " ## " + depRel + " ## " + parentToken;

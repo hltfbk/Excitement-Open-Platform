@@ -1,8 +1,10 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
+import java.util.Map.Entry;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -19,7 +21,7 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 public class BagOfDepsPosScoring extends BagOfDepsScoring {
 	
 //	the number of features
-	protected int numOfFeats = 12;
+	private int numOfFeats = 12;
 
 	public int getNumOfFeats() {
 		return numOfFeats;
@@ -62,10 +64,12 @@ public class BagOfDepsPosScoring extends BagOfDepsScoring {
 		
 		Map<String, String> depMap = indexLemmaDepTree(text);
 		
-		for (String dep : depMap.keySet()) {
+		for (final Iterator<Entry<String, String>> iter = depMap.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, String> entry = iter.next();
+			final String dep = entry.getKey();
 			String[] childItems = dep.split(" ### ");
 			String child = childItems[1].toLowerCase() + " ### " + childItems[2].charAt(0);
-			String[] items = depMap.get(dep).split(" ## ");
+			String[] items = entry.getValue().split(" ## ");
 			String depRel = items[0];
 			String[] parentItems = items[1].split(" ### ");
 			String parent = parentItems[1].toLowerCase() + " ### " + parentItems[2].charAt(0);

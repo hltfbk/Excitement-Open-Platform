@@ -35,17 +35,17 @@ public class ClassificationTEDecision implements TEDecision {
 	}
 
 	@Override
-	public DecisionLabel getDecision() {
+	public final DecisionLabel getDecision() {
 		return decision;
 	}
 
 	@Override
-	public double getConfidence() {
+	public final double getConfidence() {
 		return confidence;
 	}
 
 	@Override
-	public String getPairID() {
+	public final String getPairID() {
 		return pairId;
 	}
 

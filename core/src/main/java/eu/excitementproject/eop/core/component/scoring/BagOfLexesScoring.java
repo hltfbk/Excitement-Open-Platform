@@ -1,7 +1,9 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Vector;
+import java.util.Map.Entry;
 import java.util.logging.Logger;
 
 import org.apache.uima.cas.CASException;
@@ -36,7 +38,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
 
 	// the number of features
-	protected int numOfFeats = 0;
+	private int numOfFeats = 0;
 
 	@Override
 	public int getNumOfFeats() {
@@ -157,8 +159,10 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				for (LexicalRule<? extends RuleInfo> rule : lex
@@ -191,8 +195,10 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				/*

@@ -22,7 +22,13 @@ import eu.excitementproject.eop.lap.lappoc.LAP_ImplBaseAE;
 
 public class MaltParserEN extends LAP_ImplBaseAE {
 
-	private String aVariant = "";
+	private String aVariant;
+	
+	public MaltParserEN() throws LAPException {
+		super();
+		languageIdentifier = "EN";
+		this.aVariant = "";
+	}
 
 	public MaltParserEN(String aVariant) throws LAPException {
 		super();
