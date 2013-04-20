@@ -421,15 +421,27 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 
 		private boolean generateWordAndClusterFeature;
 
+		/**
+		 * the default constructor
+		 * @throws IOException
+		 */
 		public TokenClusterFeatureGenerator() throws IOException {
 			this(false);
 		}
 
+		/**
+		 * the constructor with the parameter whether to generate word+cluster features.
+		 * @param genearteWordAndClusterFeature whether to generate word+cluster features
+		 * @throws IOException
+		 */
 		public TokenClusterFeatureGenerator(
 				boolean genearteWordAndClusterFeature) throws IOException {
 			this.generateWordAndClusterFeature = genearteWordAndClusterFeature;
 		}
 
+		/**
+		 * create the features for words and word clusters
+		 */
 		public void createFeatures(List<String> features, String[] tokens,
 				int index, String[] preds) {
 			String word = tokens[index];
@@ -462,15 +474,27 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 
 		private boolean generateWordAndPOSFeature;
 
+		/**
+		 * the default constructor
+		 * @throws IOException
+		 */
 		public TokenPOSFeatureGenerator() throws IOException {
 			this(false);
 		}
 
+		/**
+		 * the constructor with the parameter whether to generate word+POS features.
+		 * @param generateWordAndPOSFeature whether to generate word+POS features
+		 * @throws IOException
+		 */
 		public TokenPOSFeatureGenerator(boolean generateWordAndPOSFeature)
 				throws IOException {
 			this.generateWordAndPOSFeature = generateWordAndPOSFeature;
 		}
 
+		/**
+		 * create the features for words and word POSes
+		 */
 		public void createFeatures(List<String> features, String[] tokens,
 				int index, String[] preds) {
 			String prev, next;
@@ -509,6 +533,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 
 		private Map<String, String> previousMap = new HashMap<String, String>();
 
+		/**
+		 * create the features for previous word cluster
+		 */
 		public void createFeatures(List<String> features, String[] tokens,
 				int index, String[] preds) {
 			features.add("pdcl=" + previousMap.get(lexicon.get(tokens[index])));
@@ -548,6 +575,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 
 		private Map<String, String> previousMap = new HashMap<String, String>();
 
+		/**
+		 * create the features for previous word POS
+		 */
 		public void createFeatures(List<String> features, String[] tokens,
 				int index, String[] preds) {
 			String prev, next;
@@ -607,6 +637,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	 */
 	public class BigramWClNameFeatureGenerator extends FeatureGeneratorAdapter {
 
+		/**
+		 * create the features word cluster bi-grams
+		 */
 		public void createFeatures(List<String> features, String[] tokens,
 				int index, String[] previousOutcomes) {
 			String wcl = lexicon.get(tokens[index]);
@@ -635,6 +668,9 @@ public class OpenNLPNERwithDistSimDE extends LAP_ImplBase implements LAPAccess {
 	 */
 	public class BigramWPOSNameFeatureGenerator extends FeatureGeneratorAdapter {
 
+		/**
+		 * create the features word POS bi-grams
+		 */
 		public void createFeatures(List<String> features, String[] tokens,
 				int index, String[] previousOutcomes) {
 			// bi-gram features

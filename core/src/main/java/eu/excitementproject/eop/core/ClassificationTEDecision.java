@@ -15,10 +15,26 @@ import eu.excitementproject.eop.common.TEDecision;
 
 public class ClassificationTEDecision implements TEDecision {
 
+	/**
+	 * the decision label
+	 */
 	private DecisionLabel decision = null;
+	
+	/**
+	 * the confidence value
+	 */
 	private double confidence = CONFIDENCE_NOT_AVAILABLE;
+	
+	/**
+	 * the ID of the T-H pair
+	 */
 	private String pairId = null;
 
+	/**
+	 * the constructor with decision label and T-H pair ID
+	 * @param decision the decision label
+	 * @param pairId the ID of the T-H pair
+	 */
 	public ClassificationTEDecision(DecisionLabel decision, String pairId) {
 		super();
 		this.decision = decision;
@@ -26,6 +42,12 @@ public class ClassificationTEDecision implements TEDecision {
 		this.pairId = pairId;
 	}
 
+	/**
+	 * the constructor with decision label, T-H pair ID, and confidence value
+	 * @param decision the decision label
+	 * @param confidence the confidence value
+	 * @param pairId the ID of the T-H pair
+	 */
 	public ClassificationTEDecision(DecisionLabel decision, double confidence,
 			String pairId) {
 		super();
