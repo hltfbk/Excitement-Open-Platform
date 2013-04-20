@@ -269,7 +269,7 @@ public class MaxEntClassificationEDATest {
 		try {
 			meceda.initialize(config);
 			// check the test data directory
-			meceda.initializeData(config, false, true);
+			meceda.initializeData(config, false);
 			
 			int correct = 0;
 			int sum = 0;
@@ -307,7 +307,7 @@ public class MaxEntClassificationEDATest {
 		try {
 			meceda.initialize(config);
 			// check the test data directory
-			meceda.initializeData(config, false, true);
+			meceda.initializeData(config, false);
 			
 			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName().replace("configuration-file", "results") + "_Result.txt"), "UTF-8"));
 			logger.info("build CASes for input sentence pairs:");
