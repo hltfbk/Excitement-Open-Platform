@@ -58,68 +58,121 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 public class MaxEntClassificationEDA implements
 		EDABasic<ClassificationTEDecision> {
 
-	static Logger logger = Logger.getLogger(MaxEntClassificationEDA.class
-			.getName());
+	/**
+	 * the logger
+	 */
+	public final static Logger logger = Logger
+			.getLogger(MaxEntClassificationEDA.class.getName());
 
-	// list of components used in this EDA
-	protected List<ScoringComponent> components;
+	/**
+	 * list of components used in this EDA
+	 */
+	private List<ScoringComponent> components;
 
-	// language flag
-	protected String language;
+	/**
+	 * the language flag
+	 */
+	private String language;
 
-	// the model file, consisting of parameter name and value pairs
-	protected String modelFile;
+	/**
+	 * the model file, consisting of parameter name and value pairs
+	 */
+	private String modelFile;
 
-	// training data directory
-	protected String trainDIR;
+	/**
+	 * the training data directory
+	 */
+	private String trainDIR;
 
-	// testing data directory
-	protected String testDIR;
+	/**
+	 * the testing data directory
+	 */
+	private String testDIR;
 
-	// the model
-	protected MaxentModel model;
+	/**
+	 * the model
+	 */
+	private MaxentModel model;
 
-	public List<ScoringComponent> getComponents() {
+	/**
+	 * get the list of components
+	 * 
+	 * @return
+	 */
+	public final List<ScoringComponent> getComponents() {
 		return components;
 	}
 
-	public String getLanguage() {
+	/**
+	 * get the language flag
+	 * 
+	 * @return
+	 */
+	public final String getLanguage() {
 		return language;
 	}
 
-	public String getModelFile() {
+	/**
+	 * get the model file path
+	 * 
+	 * @return
+	 */
+	public final String getModelFile() {
 		return modelFile;
 	}
 
-	public String getTrainDIR() {
+	/**
+	 * get the training data directory
+	 * 
+	 * @return
+	 */
+	public final String getTrainDIR() {
 		return trainDIR;
 	}
 
-	public String getTestDIR() {
+	/**
+	 * get the testing data directory
+	 * 
+	 * @return
+	 */
+	public final String getTestDIR() {
 		return testDIR;
 	}
 
-	public MaxentModel getModel() {
+	/**
+	 * get the model
+	 * 
+	 * @return
+	 */
+	public final MaxentModel getModel() {
 		return model;
 	}
 
 	@Override
-	public void initialize(CommonConfig config) throws ConfigurationException,
-			EDAException, ComponentException {
+	public final void initialize(CommonConfig config)
+			throws ConfigurationException, EDAException, ComponentException {
 		// initialize the language
 		initializeLanguage(config);
-		
+
 		// initialize the model
 		initializeModel(config, false);
-		
+
 		// initialize the data paths
-		initializeData(config, false, false);
+		initializeData(config, false);
 
 		// initialize the components
 		initializeComponents(config);
 	}
-	
-	private void initializeLanguage(CommonConfig config) throws ConfigurationException {
+
+	/**
+	 * initialize the language flag from the configuration
+	 * 
+	 * @param config
+	 *            the configuration
+	 * @throws ConfigurationException
+	 */
+	private void initializeLanguage(CommonConfig config)
+			throws ConfigurationException {
 		NameValueTable top = config.getSection("PlatformConfiguration");
 		language = top.getString("language");
 		if (null == language) {
@@ -127,22 +180,35 @@ public class MaxEntClassificationEDA implements
 			language = "EN";
 		}
 	}
-	
-	private void initializeComponents(CommonConfig config) throws ConfigurationException, ComponentException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class.getName());
+
+	/**
+	 * initialize the components
+	 * 
+	 * @param config
+	 *            the configuration
+	 * @throws ConfigurationException
+	 * @throws ComponentException
+	 */
+	private void initializeComponents(CommonConfig config)
+			throws ConfigurationException, ComponentException {
+		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
+				.getName());
 		String tempComps = EDA.getString("Components");
 		if (null == tempComps || 0 == tempComps.trim().length()) {
-			throw new ConfigurationException("Wrong configuation: no components contained in the EDA!");
+			throw new ConfigurationException(
+					"Wrong configuation: no components contained in the EDA!");
 		}
 		String[] componentArray = tempComps.split(",");
-		
+
 		// to store the list of components used in this EDA
 		components = new ArrayList<ScoringComponent>();
 
 		for (String component : componentArray) {
 			NameValueTable comp = config.getSection(component);
 			if (null == comp) {
-				throw new ConfigurationException("Wrong configuation: didn't find the corresponding setting for the component: " + component);
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find the corresponding setting for the component: "
+								+ component);
 			}
 			if (component.equals("BagOfLexesScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
@@ -157,7 +223,9 @@ public class MaxEntClassificationEDA implements
 			} else {
 				try {
 					@SuppressWarnings("unchecked")
-					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class.forName("eu.excitementproject.eop.core.component.scoring."+component);
+					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class
+							.forName("eu.excitementproject.eop.core.component.scoring."
+									+ component);
 					components.add(comp1.newInstance());
 				} catch (Exception e) {
 					throw new ConfigurationException(e.getMessage());
@@ -165,8 +233,18 @@ public class MaxEntClassificationEDA implements
 			}
 		}
 	}
-	
-	private void initializeLexCompsDE(CommonConfig config, boolean withPOS) throws ConfigurationException {
+
+	/**
+	 * initialize the lexical components
+	 * 
+	 * @param config
+	 *            the configuration
+	 * @param withPOS
+	 *            whether use POS for the queries to the lexical components
+	 * @throws ConfigurationException
+	 */
+	private void initializeLexCompsDE(CommonConfig config, boolean withPOS)
+			throws ConfigurationException {
 		try {
 			ScoringComponent comp3 = null;
 			if (withPOS) {
@@ -174,22 +252,36 @@ public class MaxEntClassificationEDA implements
 			} else {
 				comp3 = new BagOfLexesScoring(config);
 			}
-			// check the number of features. if it's 0, no instantiation of the component.
-			if (((BagOfLexesScoring)comp3).getNumOfFeats() > 0) {
+			// check the number of features. if it's 0, no instantiation of the
+			// component.
+			if (((BagOfLexesScoring) comp3).getNumOfFeats() > 0) {
 				components.add(comp3);
 			}
 		} catch (LexicalResourceException e) {
 			throw new ConfigurationException(e.getMessage());
 		}
 	}
-	
-	private void initializeLexCompsEN(NameValueTable comp) throws ConfigurationException, ComponentException {
-		if (null == comp.getString("WordNetRelations") && null == comp.getString("VerbOceanRelations")) {
-			throw new ConfigurationException("Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
-		}		
-		
+
+	/**
+	 * initialize the <b>English</b> lexical components
+	 * 
+	 * @param comp
+	 *            the <code>NameValueTable</code> for the components in the
+	 *            configuration
+	 * @throws ConfigurationException
+	 * @throws ComponentException
+	 */
+	private void initializeLexCompsEN(NameValueTable comp)
+			throws ConfigurationException, ComponentException {
+		if (null == comp.getString("WordNetRelations")
+				&& null == comp.getString("VerbOceanRelations")) {
+			throw new ConfigurationException(
+					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
+		}
+
 		// these five boolean values control the lexical resources used.
-		// they refer to whether to use WordNet relations hypernym, synonym, and VerbOcean relations, StrongerThan, CanResultIn, Similar
+		// they refer to whether to use WordNet relations hypernym, synonym, and
+		// VerbOcean relations, StrongerThan, CanResultIn, Similar
 		boolean isWNHypernym = false;
 		boolean isWNSynonym = false;
 		boolean isWNHolonym = false;
@@ -197,9 +289,11 @@ public class MaxEntClassificationEDA implements
 		boolean isVOCanResultIn = false;
 		boolean isVOSimilar = false;
 		if (null != comp.getString("WordNetRelations")) {
-			String[] WNRelations = comp.getString("WordNetRelations").split(",");
+			String[] WNRelations = comp.getString("WordNetRelations")
+					.split(",");
 			if (null == WNRelations || 0 == WNRelations.length) {
-				throw new ConfigurationException("Wrong configuation: didn't find any relations for the WordNet");
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the WordNet");
 			}
 			for (String relation : WNRelations) {
 				if (relation.equalsIgnoreCase("HYPERNYM")) {
@@ -214,9 +308,11 @@ public class MaxEntClassificationEDA implements
 			}
 		}
 		if (null != comp.getString("VerbOceanRelations")) {
-			String[] VORelations = comp.getString("VerbOceanRelations").split(",");
+			String[] VORelations = comp.getString("VerbOceanRelations").split(
+					",");
 			if (null == VORelations || 0 == VORelations.length) {
-				throw new ConfigurationException("Wrong configuation: didn't find any relations for the VerbOcean");
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the VerbOcean");
 			}
 			for (String relation : VORelations) {
 				if (relation.equalsIgnoreCase("strongerthan")) {
@@ -230,39 +326,50 @@ public class MaxEntClassificationEDA implements
 				}
 			}
 		}
-		
-		 Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
-		 if (isWNHypernym) {
-			 wnRelSet.add(WordNetRelation.HYPERNYM);
-		 }
-		 if (isWNSynonym) {
-			 wnRelSet.add(WordNetRelation.SYNONYM);
-		 }
-		 if (isWNHolonym) {
-			 wnRelSet.add(WordNetRelation.PART_HOLONYM);
-		 }
-		 
-		 Set<RelationType> voRelSet = new HashSet<RelationType>();
-		 if (isVOStrongerThan) {
-			 voRelSet.add(RelationType.STRONGER_THAN);
-		 }
-		 if (isVOCanResultIn) {
-			 voRelSet.add(RelationType.CAN_RESULT_IN);
-		 }
-		 if (isVOSimilar) {
-			 voRelSet.add(RelationType.SIMILAR);
-		 }
-		 
-		 try {
-			 ScoringComponent comp3 = new BagOfLexesScoringEN(wnRelSet, voRelSet);
-			 components.add(comp3);
-		 } catch (LexicalResourceException e) {
-			 throw new ComponentException(e.getMessage());
-		 }
+
+		Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+		if (isWNHypernym) {
+			wnRelSet.add(WordNetRelation.HYPERNYM);
+		}
+		if (isWNSynonym) {
+			wnRelSet.add(WordNetRelation.SYNONYM);
+		}
+		if (isWNHolonym) {
+			wnRelSet.add(WordNetRelation.PART_HOLONYM);
+		}
+
+		Set<RelationType> voRelSet = new HashSet<RelationType>();
+		if (isVOStrongerThan) {
+			voRelSet.add(RelationType.STRONGER_THAN);
+		}
+		if (isVOCanResultIn) {
+			voRelSet.add(RelationType.CAN_RESULT_IN);
+		}
+		if (isVOSimilar) {
+			voRelSet.add(RelationType.SIMILAR);
+		}
+
+		try {
+			ScoringComponent comp3 = new BagOfLexesScoringEN(wnRelSet, voRelSet);
+			components.add(comp3);
+		} catch (LexicalResourceException e) {
+			throw new ComponentException(e.getMessage());
+		}
 	}
 
-	private void initializeModel(CommonConfig config, boolean isTrain) throws ConfigurationException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class.getName());
+	/**
+	 * initialize the model
+	 * 
+	 * @param config
+	 *            the configuration
+	 * @param isTrain
+	 *            whether it is training or testing
+	 * @throws ConfigurationException
+	 */
+	private void initializeModel(CommonConfig config, boolean isTrain)
+			throws ConfigurationException {
+		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
+				.getName());
 		modelFile = EDA.getString("modelFile");
 		if (isTrain) {
 			File file = new File(modelFile);
@@ -282,14 +389,26 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 
-	public void initializeData(CommonConfig config, boolean isTrain, boolean isTestingBatch) throws ConfigurationException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class.getName());		
+	/**
+	 * initialize the data, training and/or testing
+	 * 
+	 * @param config
+	 *            the configuration
+	 * @param isTrain
+	 *            whether it is training or testing
+	 * @throws ConfigurationException
+	 */
+	public final void initializeData(CommonConfig config, boolean isTrain)
+			throws ConfigurationException {
+		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
+				.getName());
 		trainDIR = EDA.getString("trainDir");
 		if (null == trainDIR) {
 			if (isTrain) {
-				throw new ConfigurationException("Please specify the training data directory.");
+				throw new ConfigurationException(
+						"Please specify the training data directory.");
 			} else {
-				logger.warning("Warning: Please specify the training data directory.");				
+				logger.warning("Warning: Please specify the training data directory.");
 			}
 		}
 		testDIR = EDA.getString("testDir");
@@ -297,15 +416,15 @@ public class MaxEntClassificationEDA implements
 			logger.warning("Warning: Please specify the testing data directory.");
 		}
 	}
-	
+
 	@Override
-	public ClassificationTEDecision process(JCas aCas) throws EDAException,
-			ComponentException {		
+	public final ClassificationTEDecision process(JCas aCas)
+			throws EDAException, ComponentException {
 		String pairId = getPairID(aCas);
-		String goldAnswer = getGoldLabel(aCas);
-		if (null == goldAnswer) {
-			goldAnswer = DecisionLabel.Abstain.toString();
-		}
+		// String goldAnswer = getGoldLabel(aCas);
+		// if (null == goldAnswer) {
+		// goldAnswer = DecisionLabel.Abstain.toString();
+		// }
 
 		String[] context = constructContext(aCas);
 		logger.info(Arrays.asList(context).toString());
@@ -317,7 +436,7 @@ public class MaxEntClassificationEDA implements
 			result[i] = new DoubleStringPair(ocs[i], model.getOutcome(i));
 		}
 
-		java.util.Arrays.sort(result);
+		Arrays.sort(result);
 
 		// Print the most likely outcome first, down to the least likely.
 		// for (int i = numOutcomes - 1; i >= 0; i--)
@@ -326,7 +445,8 @@ public class MaxEntClassificationEDA implements
 		// System.out.println();
 
 		return new ClassificationTEDecision(
-				getAnswerLabel(result[numOutcomes - 1].stringValue), result[numOutcomes - 1].doubleValue, pairId);
+				getAnswerLabel(result[numOutcomes - 1].stringValue),
+				result[numOutcomes - 1].doubleValue, pairId);
 	}
 
 	/**
@@ -335,7 +455,7 @@ public class MaxEntClassificationEDA implements
 	 * @return return the feature vector of the instance, called
 	 *         <code>Context</code> in the MaxEnt model
 	 */
-	protected String[] constructContext(JCas aCas)
+	protected final String[] constructContext(JCas aCas)
 			throws ScoringComponentException {
 		List<String> featList = new ArrayList<String>();
 		for (ScoringComponent comp : components) {
@@ -349,7 +469,7 @@ public class MaxEntClassificationEDA implements
 	}
 
 	@Override
-	public void shutdown() {
+	public final void shutdown() {
 		if (null != components) {
 			for (ScoringComponent comp : components) {
 				try {
@@ -367,34 +487,37 @@ public class MaxEntClassificationEDA implements
 	}
 
 	@Override
-	public void startTraining(CommonConfig c) throws ConfigurationException,
-			EDAException, ComponentException {
+	public final void startTraining(CommonConfig c)
+			throws ConfigurationException, EDAException, ComponentException {
 		// initialize the language
 		initializeLanguage(c);
-		
+
 		// initialize the model
 		initializeModel(c, true);
-		
+
 		// initialize the data paths
-		initializeData(c, true, false);
-		
+		initializeData(c, true);
+
 		// initialize the components
 		initializeComponents(c);
-		
+
 		boolean USE_SMOOTHING = false;
-		double SMOOTHING_OBSERVATION = 0.1;
+
+		// commented out, use the default value
+		// final double SMOOTHING_OBSERVATION = 0.1;
 
 		// boolean real = false;
 		// String type = "maxent";
-		int maxit = 100;
-		int cutoff = 1;
+		final int MAX_ITERATION = 100;
+		final int CUT_OFF = 1;
 		// double sigma = 1.0;
 
 		File outputFile = new File(modelFile);
 		try {
-			GIS.SMOOTHING_OBSERVATION = SMOOTHING_OBSERVATION;
-			model = GIS.trainModel(maxit, new OnePassRealValueDataIndexer(
-					readInXmiFiles(trainDIR), cutoff), USE_SMOOTHING);
+			// GIS.SMOOTHING_OBSERVATION = SMOOTHING_OBSERVATION;
+			model = GIS.trainModel(MAX_ITERATION,
+					new OnePassRealValueDataIndexer(readInXmiFiles(trainDIR),
+							CUT_OFF), USE_SMOOTHING);
 
 			AbstractModelWriter writer = new SuffixSensitiveGISModelWriter(
 					(AbstractModel) model, outputFile);
@@ -410,22 +533,22 @@ public class MaxEntClassificationEDA implements
 	 * @return return the instances of the dataset, represented in
 	 *         <code>Event</code>s
 	 */
-	protected EventStream readInXmiFiles(String filePath)
+	protected final EventStream readInXmiFiles(String filePath)
 			throws ConfigurationException {
 		List<Event> eventList = new ArrayList<Event>();
-			File dir = new File(filePath);
-			if (dir.isFile()) {
-				eventList.add(readInXmiFile(dir.getAbsolutePath()));
-			} else if (dir.isDirectory()) {
-				for (File file : dir.listFiles()) {
-					// ignore all the non-xmi files
-					if (!file.getName().endsWith(".xmi")) {
-						continue;
-					}
-					// add the instance to the dataset
-					eventList.add(readInXmiFile(file.getAbsolutePath()));
+		File dir = new File(filePath);
+		if (dir.isFile()) {
+			eventList.add(readInXmiFile(dir.getAbsolutePath()));
+		} else if (dir.isDirectory()) {
+			for (File file : dir.listFiles()) {
+				// ignore all the non-xmi files
+				if (!file.getName().endsWith(".xmi")) {
+					continue;
 				}
+				// add the instance to the dataset
+				eventList.add(readInXmiFile(file.getAbsolutePath()));
 			}
+		}
 		return new ListEventStream(eventList);
 	}
 
@@ -435,7 +558,7 @@ public class MaxEntClassificationEDA implements
 	 * @return return the instance of that file, represented in
 	 *         <code>Event</code>
 	 */
-	protected Event readInXmiFile(String filePath)
+	protected final Event readInXmiFile(String filePath)
 			throws ConfigurationException {
 		try {
 			File xmiFile = new File(filePath);
@@ -448,9 +571,10 @@ public class MaxEntClassificationEDA implements
 	/**
 	 * @param cas
 	 *            the <code>JCas</code> object
-	 * @return return the instance of the input, represented in <code>Event</code>
+	 * @return return the instance of the input, represented in
+	 *         <code>Event</code>
 	 */
-	protected Event casToEvent(JCas cas) throws ConfigurationException {
+	protected final Event casToEvent(JCas cas) throws ConfigurationException {
 		String goldAnswer = getGoldLabel(cas);
 		if (null == goldAnswer) {
 			goldAnswer = DecisionLabel.Abstain.toString();
@@ -469,7 +593,7 @@ public class MaxEntClassificationEDA implements
 	 *            the <code>JCas</code> object
 	 * @return return the pairID of the T-H pair
 	 */
-	protected String getPairID(JCas aCas) {
+	protected final String getPairID(JCas aCas) {
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository()
 				.getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
@@ -482,7 +606,7 @@ public class MaxEntClassificationEDA implements
 	 * @return if the T-H pair contains the gold answer, return it; otherwise,
 	 *         return null
 	 */
-	protected String getGoldLabel(JCas aCas) {
+	protected final String getGoldLabel(JCas aCas) {
 		FSIterator<TOP> pairIter = aCas.getJFSIndexRepository()
 				.getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
@@ -499,7 +623,7 @@ public class MaxEntClassificationEDA implements
 	 *            the string value of the answer
 	 * @return the <code>DecisionLabel</code> of the answer
 	 */
-	protected DecisionLabel getAnswerLabel(String answer) {
+	protected final DecisionLabel getAnswerLabel(String answer) {
 		if (answer.equalsIgnoreCase("contradiction")) {
 			return DecisionLabel.Contradiction;
 		} else if (answer.equalsIgnoreCase("entailment")) {

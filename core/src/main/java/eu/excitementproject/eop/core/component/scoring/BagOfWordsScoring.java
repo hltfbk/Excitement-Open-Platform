@@ -2,6 +2,7 @@ package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Vector;
 
 import org.apache.uima.cas.CASException;
@@ -32,9 +33,15 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
  */
 public class BagOfWordsScoring implements ScoringComponent {
 	
-//	the number of features
-	protected int numOfFeats = 7;
+	/**
+	 * the number of features
+	 */
+	private int numOfFeats = 7;
 
+	/**
+	 * get the number of features
+	 * @return
+	 */
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
@@ -49,6 +56,10 @@ public class BagOfWordsScoring implements ScoringComponent {
 		return null;
 	}
 	
+	/**
+	 * close the component
+	 * @throws ScoringComponentException
+	 */
 	public void close() throws ScoringComponentException{
 		
 	}
@@ -128,16 +139,19 @@ public class BagOfWordsScoring implements ScoringComponent {
 		double sum = 0.0d;
 		int hSize = 0;
 		int tSize = 0;
-		for (String hToken : hBag.keySet()) {
-			hSize += hBag.get(hToken).intValue();
+		
+		for (final Iterator<Entry<String, Integer>> iter = hBag.entrySet().iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String hToken = entry.getKey();
+			hSize += entry.getValue().intValue();
 			if (!tBag.keySet().contains(hToken)) {
 				continue;
 			}
 			sum += Math.min(hBag.get(hToken).intValue(), tBag.get(hToken)
-					.intValue());
+						.intValue());
 		}
-		for (String tToken : tBag.keySet()) {
-			tSize += tBag.get(tToken).intValue();
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet().iterator(); iter.hasNext();) {
+			tSize += iter.next().getValue().intValue();
 		}
 		Vector<Double> returnValue = new Vector<Double>();
 		returnValue.add(sum / hSize);
@@ -146,6 +160,11 @@ public class BagOfWordsScoring implements ScoringComponent {
 		return returnValue;
 	}
 	
+	/**
+	 * check whether the task is IE
+	 * @param task
+	 * @return 1: yes; 0: no.
+	 */
 	protected double isTaskIE(String task) {
 		if (task.equalsIgnoreCase("IE")) {
 			return 1;
@@ -153,6 +172,11 @@ public class BagOfWordsScoring implements ScoringComponent {
 		return 0;
 	}
 	
+	/**
+	 * check whether the task is IR
+	 * @param task
+	 * @return 1: yes; 0: no.
+	 */
 	protected double isTaskIR(String task) {
 		if (task.equalsIgnoreCase("IR")) {
 			return 1;
@@ -160,6 +184,11 @@ public class BagOfWordsScoring implements ScoringComponent {
 		return 0;
 	}
 	
+	/**
+	 * check whether the task is QA
+	 * @param task
+	 * @return 1: yes; 0: no.
+	 */
 	protected double isTaskQA(String task) {
 		if (task.equalsIgnoreCase("QA")) {
 			return 1;
@@ -167,6 +196,12 @@ public class BagOfWordsScoring implements ScoringComponent {
 		return 0;
 	}
 	
+	/**
+	 * check whether the task is SUM
+	 * 
+	 * @param task
+	 * @return 1: yes; 0: no.
+	 */
 	protected double isTaskSUM(String task) {
 		if (task.equalsIgnoreCase("SUM")) {
 			return 1;
