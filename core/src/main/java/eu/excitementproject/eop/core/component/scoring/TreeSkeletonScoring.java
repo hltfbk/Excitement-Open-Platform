@@ -200,37 +200,28 @@ public class TreeSkeletonScoring extends BagOfDepsScoring {
 				}
 				String tWordLow = tWordPos.split(" ### ")[0].toLowerCase();
 				String hWordLow = hWordPos.split(" ### ")[0].toLowerCase();
-				if (isStop) {
-					if (stopWordSet.contains(tWordLow)
-							|| stopWordSet.contains(hWordLow)) {
-						continue;
-					}
+				if (isStop && (stopWordSet.contains(tWordLow) || stopWordSet.contains(hWordLow))) {
+					continue;
 				}
 				if (tWordLow.equals(hWordLow)) {
 					wordPairSet.add(tWordPos + " ## " + hWordPos);
 					continue;
 				}
-				if (isContain) {
-					if (tWordLow.startsWith(hWordLow)
-							|| tWordLow.endsWith(hWordLow)
-							|| hWordLow.startsWith(tWordLow)
-							|| hWordLow.endsWith(tWordLow)) {
-						wordPairSet.add(tWordPos + " ## " + hWordPos);
-						continue;
-					}
+				if (isContain && (tWordLow.startsWith(hWordLow)
+						|| tWordLow.endsWith(hWordLow)
+						|| hWordLow.startsWith(tWordLow)
+						|| hWordLow.endsWith(tWordLow))) {
+					wordPairSet.add(tWordPos + " ## " + hWordPos);
+					continue;
 				}
-				if (isFuzzy) {
-					if (isFuzzyMatch(tWordLow, hWordLow, 3, 3)) {
-						wordPairSet.add(tWordPos + " ## " + hWordPos);
-						continue;
-					}
+				if (isFuzzy && isFuzzyMatch(tWordLow, hWordLow, 3, 3)) {
+					wordPairSet.add(tWordPos + " ## " + hWordPos);
+					continue;
 				}
-				if (isAbbrev) {
-					if (isAbbrevMatch(tWordPos.split(" ### ")[0],
-							hWordPos.split(" ### ")[0])) {
-						wordPairSet.add(tWordPos + " ## " + hWordPos);
-						continue;
-					}
+				if (isAbbrev && isAbbrevMatch(tWordPos.split(" ### ")[0],
+						hWordPos.split(" ### ")[0])) {
+					wordPairSet.add(tWordPos + " ## " + hWordPos);
+					continue;
 				}
 			}
 		}
@@ -248,13 +239,13 @@ public class TreeSkeletonScoring extends BagOfDepsScoring {
 
 	private boolean isFuzzyMatch(String tWordLow, String hWordLow,
 			int leftLevel, int rightLevel) {
-		for (float m = 0.0f; m < leftLevel + 1; m = m + 1.0f) {
+		for (int m = 0; m < leftLevel + 1; m++) {
 			if (m >= hWordLow.length()) {
 				m = leftLevel + 1;
 				continue;
 			}
-			for (float n = 0.0f; n < rightLevel + 1; n = n + 1.0f) {
-				if ((hWordLow.length() - m - n) / hWordLow.length() < 0.6) {
+			for (int n = 0; n < rightLevel + 1; n++) {
+				if ((float)(hWordLow.length() - m - n) / hWordLow.length() < 0.6) {
 					n = rightLevel + 1;
 					continue;
 				}
