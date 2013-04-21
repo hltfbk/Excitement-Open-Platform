@@ -21,19 +21,21 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
  */
 public class BagOfLemmasScoring extends BagOfWordsScoring {
 
-//	the number of features
-	protected int numOfFeats = 3;
+	/**
+	 * the number of features
+	 */
+	private int numOfFeats = 3;
 
 	@Override
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
-	
+
 	@Override
 	public String getComponentName() {
 		return "BagOfLemmasScoring";
 	}
-	
+
 	@Override
 	public Vector<Double> calculateScores(JCas aCas)
 			throws ScoringComponentException {

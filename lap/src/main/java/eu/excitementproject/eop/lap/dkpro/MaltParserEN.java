@@ -12,49 +12,79 @@ import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBaseAE;
 
 /**
- *
- * English tokenizer + TreeTagger + MaltParser (wrapped in DKPro component)  
- * This class is provides all LAPAccess methods simply by overriding addAnnotationTo() of LAP_ImplBase
+ * 
+ * English tokenizer + TreeTagger + MaltParser (wrapped in DKPro component).
+ * This class is provides all LAPAccess methods simply by overriding
+ * addAnnotationTo() of LAP_ImplBase.
  * 
  * @author Rui
- *
+ * 
  */
 
 public class MaltParserEN extends LAP_ImplBaseAE {
 
-	private String aVariant = "";
+	/**
+	 * the parameter for the classifier (i.e., SVM).
+	 */
+	private String aVariant;
 
+	/**
+	 * the default constructor.
+	 * 
+	 * @throws LAPException
+	 */
+	public MaltParserEN() throws LAPException {
+		super();
+		languageIdentifier = "EN";
+		this.aVariant = "linear";
+	}
+
+	/**
+	 * constructor with parameter for the classifier.
+	 * 
+	 * @param aVariant
+	 *            the parameter for the classifier
+	 * @throws LAPException
+	 */
 	public MaltParserEN(String aVariant) throws LAPException {
 		super();
 		languageIdentifier = "EN"; // set languageIdentifer
 		this.aVariant = aVariant;
 	}
-	
+
+	/**
+	 * constructor with parameter for the classifier and view names.
+	 * 
+	 * @param aVariant
+	 * @param views
+	 * @throws LAPException
+	 */
 	public MaltParserEN(String aVariant, String[] views) throws LAPException {
 		super(views);
-		languageIdentifier = "EN"; 
+		languageIdentifier = "EN";
 		this.aVariant = aVariant;
 	}
 
 	@Override
-	public AnalysisEngineDescription[] listAEDescriptors() throws LAPException {
-		// This example uses DKPro BreakIterSegmenter, TreeTagger, and MaltParser
-		// simply return them in an array, with order. (sentence segmentation first, then tagging, then parsing) 
-		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[3];
-		try 
-		{
+	public final AnalysisEngineDescription[] listAEDescriptors()
+			throws LAPException {
+		// This example uses DKPro BreakIterSegmenter, TreeTagger, and
+		// MaltParser
+		// simply return them in an array, with order. (sentence segmentation
+		// first, then tagging, then parsing)
+		final int NUM_OF_ARR = 3;
+		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[NUM_OF_ARR];
+		try {
 			descArr[0] = createPrimitiveDescription(BreakIteratorSegmenter.class);
-			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
+			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
 			descArr[2] = createPrimitiveDescription(MaltParser.class,
 					MaltParser.PARAM_VARIANT, aVariant,
 					MaltParser.PARAM_PRINT_TAGSET, true);
+		} catch (ResourceInitializationException e) {
+			throw new LAPException("Unable to create AE descriptions", e);
 		}
-		catch (ResourceInitializationException e)
-		{
-			throw new LAPException("Unable to create AE descriptions", e); 
-		}
-		
-		return descArr; 
+
+		return descArr;
 	}
 
 }
