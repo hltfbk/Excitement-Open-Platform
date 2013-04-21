@@ -51,7 +51,20 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * The <code>MaxEntClassificationEDA</code> class implements the
  * <code>EDABasic</code> interface.
  * 
- * It uses the OpenNLP MaxEnt package to train a <code>GISModel</code>.
+ * It uses the OpenNLP MaxEnt package to train a <code>GISModel</code> in order
+ * to classify Entailment T-H pairs from Non-Entailment ones. Currently, it
+ * works for both English and German.
+ * 
+ * The compatible components are: 1) components in
+ * <code>eu.excitementproject.eop.core.component.distance</code>; 2) components
+ * in <code>eu.excitementproject.eop.core.component.scoring</code>; 3) lexical
+ * knowledge components: for English, WordNet and VerbOcean; for German,
+ * GermaNet and DistSim.
+ * 
+ * The following parameters need to be included in the configuration file: 1)
+ * training data directory; 2) testing data directory; 3) model file path; 4)
+ * component list separated by comma; 5) (optional) settings for the classifier,
+ * maximum number of iterations and cut-off threshold.
  * 
  * @author Rui
  */
@@ -506,9 +519,11 @@ public class MaxEntClassificationEDA implements
 		// commented out, use the default value
 		// final double SMOOTHING_OBSERVATION = 0.1;
 
-		String classifier = c.getSection(MaxEntClassificationEDA.class.getName()).getString("classifier");
-		int max_iteration = 100; //default value
-		int cut_off = 1; //default value
+		String classifier = c.getSection(
+				MaxEntClassificationEDA.class.getName())
+				.getString("classifier");
+		int max_iteration = 100; // default value
+		int cut_off = 1; // default value
 		if (null != classifier && classifier.split(",").length == 2) {
 			max_iteration = Integer.parseInt(classifier.split(",")[0]);
 			cut_off = Integer.parseInt(classifier.split(",")[1]);
