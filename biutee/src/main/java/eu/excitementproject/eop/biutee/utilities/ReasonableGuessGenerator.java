@@ -31,7 +31,9 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class ReasonableGuessGenerator
 {
-	public static final Double DEFAULT_HYPOTHESIS_LENGTH = 10.0;
+	public static final Double DEFAULT_HYPOTHESIS_LENGTH = BiuteeConstants.DEFAULT_HYPOTHESIS_LENGTH_FOR_TRAINING_REASONABLE_GUESS;
+	public static final long RANDOM_SEED_FOR_GAUSSIAN_GENERATOR = BiuteeConstants.RANDOM_SEED_FOR_GAUSSIAN_GENERATOR_FOR_REASONABLE_GUESS_TRAINING; 
+	
 	
 	public ReasonableGuessGenerator(
 			Map<Integer, MeanAndStandardDeviation> priorNegative,
@@ -75,7 +77,7 @@ public class ReasonableGuessGenerator
 	
 	protected void init() throws TeEngineMlException
 	{
-		gaussianGenerator = new GaussianPseudoRandomGenerator();
+		gaussianGenerator = new GaussianPseudoRandomGenerator(RANDOM_SEED_FOR_GAUSSIAN_GENERATOR);
 		zeroFeatureVector = createZeroFeatureVector();
 	}
 

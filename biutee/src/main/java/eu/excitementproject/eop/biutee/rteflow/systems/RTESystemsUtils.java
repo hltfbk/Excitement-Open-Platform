@@ -57,7 +57,6 @@ import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamplesUtils;
 import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeClassifiersIO;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -205,15 +204,17 @@ public class RTESystemsUtils
 		priorPositive.put(Feature.SUBSTITUTION_COREFERENCE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 
 		ReasonableGuessGenerator generator = 
-			new ReasonableGuessGenerator(priorNegative,priorPositive,featureVectorStructure,100,100);
+			new ReasonableGuessGenerator(priorNegative,priorPositive,featureVectorStructure,
+					BiuteeConstants.NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED/(1+1),
+					BiuteeConstants.NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED/(1+1));
 		ret = generator.createClassifierByPrior();
 		
-		List<String> listRuleBasesNames = Utils.getSortedByValue(featureVectorStructure.getRuleBasesFeatures().getMutableCopy());
-		LinkedHashSet<String> ruleBasesNames = new LinkedHashSet<String>();
-		for (String ruleBaseName : listRuleBasesNames)
-		{
-			ruleBasesNames.add(ruleBaseName);
-		}
+//		List<String> listRuleBasesNames = Utils.getSortedByValue(featureVectorStructure.getRuleBasesFeatures().getMutableCopy());
+//		LinkedHashSet<String> ruleBasesNames = new LinkedHashSet<String>();
+//		for (String ruleBaseName : listRuleBasesNames)
+//		{
+//			ruleBasesNames.add(ruleBaseName);
+//		}
 		
 		// ret.setFeaturesNames( ClassifierUtils.extendFeatureNames(Feature.toMapOfNames(), ruleBasesNames));
 		
@@ -222,7 +223,7 @@ public class RTESystemsUtils
 		normalizeClassifierForSearch(ret);
 		
 		if (logger.isInfoEnabled())
-			logger.info("RTEPairsTrainerUtils: Initial classifier description:\n"+ret.descriptionOfTraining());
+			logger.info(RTESystemsUtils.class.getSimpleName()+": Initial classifier description:\n"+ret.descriptionOfTraining());
 		
 		return ret;
 	}
