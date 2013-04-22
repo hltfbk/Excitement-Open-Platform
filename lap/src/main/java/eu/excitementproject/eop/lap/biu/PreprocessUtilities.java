@@ -1,14 +1,15 @@
-package eu.excitementproject.eop.biutee.rteflow.preprocess;
+package eu.excitementproject.eop.lap.biu;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
-
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultSyntacticInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
@@ -18,11 +19,11 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.utilities.match.Matcher;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityMergeServices;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
-import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
 /**
  * 
@@ -34,23 +35,19 @@ public class PreprocessUtilities
 {
 	public static BasicNode generateParseTree(String sentence, BasicParser parser, NamedEntityRecognizer neRecognizer, boolean recognizeNameEntities) throws ParserRunException, NamedEntityRecognizerException
 	{
-		logger.debug("Parsing...");
 		parser.setSentence(sentence);
 		parser.parse();
-		logger.debug("Parsing done by parser.");
 		if (recognizeNameEntities)
 		{
-			logger.debug("Resolving Named Entities...");
 			addNeToNodes(parser.getNodesOrderedByWords(),neRecognizer);
-			logger.debug("Resolving Named Entities done.");
 			BasicConstructionNode mutableTree = parser.getMutableParseTree();
 			addNeToAntecedents(mutableTree);
 		}
 		BasicNode tree = parser.getParseTree();
 		
-		if (!TreeUtilities.isArtificialRoot(tree))
+		if (!isArtificialRoot(tree))
 		{
-			tree = TreeUtilities.addArtificialRoot(tree);
+			tree = addArtificialRoot(tree);
 		}
 		
 		return tree;
@@ -92,25 +89,25 @@ public class PreprocessUtilities
 		neRecognizer.setSentence(words);
 		neRecognizer.recognize();
 		List<NamedEntityWord> neWords = neRecognizer.getAnnotatedSentence();
-		if (logger.isDebugEnabled())
-		{
-			StringBuffer sb = new StringBuffer();
-			for (NamedEntityWord neWord : neWords)
-			{
-				if (neWord.getNamedEntity()!=null)
-				{
-					sb.append(neWord.getNamedEntity().name());
-					sb.append("{");
-				}
-				sb.append(neWord.getWord());
-				if (neWord.getNamedEntity()!=null)
-				{
-					sb.append("}");
-				}
-				sb.append(" ");
-			}
-			logger.debug("Sentence with Named Entities: "+sb.toString());
-		}
+//		if (logger.isDebugEnabled())
+//		{
+//			StringBuffer sb = new StringBuffer();
+//			for (NamedEntityWord neWord : neWords)
+//			{
+//				if (neWord.getNamedEntity()!=null)
+//				{
+//					sb.append(neWord.getNamedEntity().name());
+//					sb.append("{");
+//				}
+//				sb.append(neWord.getWord());
+//				if (neWord.getNamedEntity()!=null)
+//				{
+//					sb.append("}");
+//				}
+//				sb.append(" ");
+//			}
+//			logger.debug("Sentence with Named Entities: "+sb.toString());
+//		}
 		Matcher<NamedEntityWord, BasicConstructionNode> matcher = new Matcher<NamedEntityWord, BasicConstructionNode>(neWords.iterator(), nodes.iterator(),NamedEntityMergeServices.getMatchFinder(),NamedEntityMergeServices.getOperator());
 		matcher.makeMatchOperation();
 	}
@@ -134,6 +131,27 @@ public class PreprocessUtilities
 		}
 		
 	}
-
-	private static final Logger logger = Logger.getLogger(PreprocessUtilities.class);
+	
+	
+	public static boolean isArtificialRoot(AbstractNode<? extends Info, ?> node)
+	{
+		boolean ret = false;
+		try
+		{
+			if (node.getInfo().getId().equals(AbstractMiniparParser.ROOT_NODE_ID))
+				if (node.getInfo().getNodeInfo().getWordLemma()==null)
+					ret = true;
+		}
+		catch(NullPointerException e)
+		{}
+		return ret;
+	}
+	
+	public static BasicNode addArtificialRoot(BasicNode tree)
+	{
+		DefaultInfo rootInfo = new DefaultInfo(AbstractMiniparParser.ROOT_NODE_ID,new DefaultNodeInfo(null,null,0,null,new DefaultSyntacticInfo(null)),new DefaultEdgeInfo(null));
+		BasicNode root = new BasicNode(rootInfo);
+		root.addChild(tree);
+		return root;
+	}
 }
