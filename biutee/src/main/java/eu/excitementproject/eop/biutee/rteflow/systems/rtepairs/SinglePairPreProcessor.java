@@ -7,7 +7,6 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
-import eu.excitementproject.eop.biutee.rteflow.preprocess.PreprocessUtilities;
 import eu.excitementproject.eop.biutee.utilities.DoNothingShortMessageFire;
 import eu.excitementproject.eop.biutee.utilities.ShortMessageFire;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
@@ -19,6 +18,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.view
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+import eu.excitementproject.eop.lap.biu.PreprocessUtilities;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
