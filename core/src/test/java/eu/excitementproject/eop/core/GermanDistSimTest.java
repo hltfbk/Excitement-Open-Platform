@@ -3,8 +3,6 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-
 import org.junit.Assume;
 import org.junit.Test;
 
@@ -18,17 +16,25 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributio
 
 
 /**
- * @author Jan Pawellek 
+ * @author Jan Pawellek & Julia Kreutzer
  *
  */
 public class GermanDistSimTest {
+	//This intends to illustrate the superiority of the 10k distributional data:
+	//assume that a word can only be found in 10k data, not in 1k data 
+	//choose word for testing, e.g.
+	//"sie", "werden", "und" - for failed test runs (words found in both or only 1k data)
+	//"Fauna", "Forschungsreaktor", "sonderpädagogisch" - for a successful test run
 	
-	@Test 
-	public void test() /* throws java.lang.Exception */ {
+	private String testword = "sonderpädagogisch"; //word to be tested - found in distributional data?
+	
+	@Test
+	public void test1() /* throws java.lang.Exception */ {
 		
-		GermanDistSim gds = null;
+		//for 1k dewak-distributional data
+		GermanDistSim gds1 = null;
 		try {
-			gds = new GermanDistSim("src/main/resources/dewakdistributional-data");
+			gds1 = new GermanDistSim("src/main/resources/dewakdistributional-data");
 		}
 		catch (GermanDistSimNotInstalledException e) {
 			System.out.println("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
@@ -39,11 +45,62 @@ public class GermanDistSimTest {
 			e.printStackTrace(); 
 		}
 
-		Assume.assumeNotNull(gds); 
+		Assume.assumeNotNull(gds1); 
 		
 		try {
-			for (LexicalRule<? extends GermanDistSimInfo> rule : gds.getRulesForLeft("sie", null)) {
-				assertTrue(rule.getLLemma().equals("sie"));
+			try {
+				if (! gds1.getRulesForLeft(testword, null).isEmpty()){
+					System.out.println('"'+testword+'"'+" found in 1k data");
+				}
+				else {System.out.println('"'+testword+'"'+" not found in 1k data");}
+				assertTrue(gds1.getRulesForRight(testword, null).isEmpty());
+			} catch (LexicalResourceException e1) {
+				e1.printStackTrace();
+			}
+			for (LexicalRule<? extends GermanDistSimInfo> rule : gds1.getRulesForLeft(testword, null)) {
+				assertTrue(rule.getLLemma().equals(testword));
+				assertFalse(rule.getRLemma().equals(""));
+				assertFalse(rule.getRelation().equals(""));
+				assertTrue(rule.getConfidence() > 0);
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}
+	}
+	
+	@Test
+	public void test10() /* throws java.lang.Exception */ {
+		
+		//for 10k dewak-distributional data
+		GermanDistSim gds10 = null;
+		try {
+			gds10 = new GermanDistSim("src/main/resources/dewakdistributional-data-10k");
+		}
+		catch (GermanDistSimNotInstalledException e) {
+			System.out.println("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
+			//throw e;
+		}
+		catch (BaseException e)
+		{
+			e.printStackTrace(); 
+		}
+
+		Assume.assumeNotNull(gds10); 
+		
+		try {
+			try {
+				if (gds10.getRulesForLeft(testword, null).isEmpty()){
+					System.out.println('"'+testword+'"'+" not found in 10k data");
+				}
+				else {System.out.println('"'+testword+'"'+" found in 10k data");}
+				assertFalse(gds10.getRulesForRight(testword, null).isEmpty());
+			} catch (LexicalResourceException e1) {
+				e1.printStackTrace();
+			}
+			for (LexicalRule<? extends GermanDistSimInfo> rule : gds10.getRulesForRight(testword, null)) {
+				assertTrue(rule.getLLemma().equals(testword));
 				assertFalse(rule.getRLemma().equals(""));
 				assertFalse(rule.getRelation().equals(""));
 				assertTrue(rule.getConfidence() > 0);
@@ -54,37 +111,7 @@ public class GermanDistSimTest {
 			e.printStackTrace(); 
 		}
 
-		/* Testing init via CommonConfig */ 
-		gds=null; 
-		try {
-			// An example configuration file that only holds two German lexical component
-			// configuration. 
-			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
-			gds = new GermanDistSim(new ImplCommonConfig(f)); 
-		}
-		catch (GermanDistSimNotInstalledException e) {
-			System.out.println("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly in the CommonConfig, that is passed to the component.");
-			//throw e;
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace(); 
-		}
-		assertNotNull(gds); 
-		//Assume.assumeNotNull(gds); // Let's assume the file is correct. no need. 
 		
-		try {
-			for (LexicalRule<? extends GermanDistSimInfo> rule : gds.getRulesForLeft("sie", null)) {
-				assertTrue(rule.getLLemma().equals("sie"));
-				assertFalse(rule.getRLemma().equals(""));
-				assertFalse(rule.getRelation().equals(""));
-				assertTrue(rule.getConfidence() > 0);
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}
 
 	}
 }
