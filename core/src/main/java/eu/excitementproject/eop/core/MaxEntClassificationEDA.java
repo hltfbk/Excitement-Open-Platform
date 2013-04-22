@@ -59,12 +59,14 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * <code>eu.excitementproject.eop.core.component.distance</code>; 2) components
  * in <code>eu.excitementproject.eop.core.component.scoring</code>; 3) lexical
  * knowledge components: for English, WordNet and VerbOcean; for German,
- * GermaNet and DistSim.
+ * GermaNet and DistSim. Please refer to the specific lexical resources for more
+ * details.
  * 
  * The following parameters need to be included in the configuration file: 1)
- * training data directory; 2) testing data directory; 3) model file path; 4)
- * component list separated by comma; 5) (optional) settings for the classifier,
- * maximum number of iterations and cut-off threshold.
+ * the training data directory (containing XMI files); 2) the testing data
+ * directory; 3) the model file path; 4) the component list separated by comma;
+ * 5) (optional) settings for the classifier, the maximum number of iterations
+ * and the cut-off threshold.
  * 
  * @author Rui
  */
