@@ -83,11 +83,26 @@ public class DKProTest {
 		AnalysisEngine textViewAE = builder.createAggregate(); 
 		textViewAE.process(aJCas); 
 
-		// TODO build "large" German MST parser model 
+		// DONE build "large" German MST parser model 
+		// TODO (on 8G sys) pass the argument to MST parser, and make sure it works okay. 
 		// TODO upload it to FBK repository 
-		// TODO pass the argument to MST parser, and make sure it works okay. 
+		
+		// Test for "large" model (1G!) 
+		// The following will need 4G XmX Xms ... or something like that. 
+		AnalysisEngineDescription parse2 = createPrimitiveDescription(MSTParser.class,
+				MSTParser.PARAM_VARIANT, "long"); 
+	
+		AggregateBuilder b = new AggregateBuilder(); 
+		b.add(seg); 
+		b.add(lemma); 
+		b.add(parse2); 
+		b.add(cc); 
 
-		//JCas aJCas2 = ae.newJCas(); 
+		AnalysisEngine bAE = b.createAggregate(); 
+		JCas aJCas2 = ae.newJCas(); 
+		aJCas2.setDocumentLanguage("DE");
+		aJCas2.setDocumentText("Ich habe Hunger!"); 
+		bAE.process(aJCas2); 
 
 		//TypeSystemDescription typeSystemDescription = createTypeSystemDescription(); 
 		//JCas aJCas = createJCas(typeSystemDescription);

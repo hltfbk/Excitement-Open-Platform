@@ -219,6 +219,13 @@
     		</artifactId>
     		<version>20130304.0</version>
     	</dependency>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-de-long
+    		</artifactId>
+    		<version>20130301.0</version>
+    	</dependency>
  	</dependencies>
 
     <dependencyManagement>
