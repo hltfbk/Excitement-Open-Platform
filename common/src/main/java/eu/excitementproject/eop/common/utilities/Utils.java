@@ -355,9 +355,13 @@ public class Utils
 	 */
 	public static int[] randomPermutation(int length)
 	{
+		return randomPermutation(length, new Random());
+	}
+	
+	public static int[] randomPermutation(int length, Random random)
+	{
 		int[] ret = new int[length];
 		for (int index=0;index<length;index++){ret[index]=index;}
-		Random random = new Random();
 		for (int index=(length-1);index>0;index--)
 		{
 			int randomIndex = random.nextInt((index+1));

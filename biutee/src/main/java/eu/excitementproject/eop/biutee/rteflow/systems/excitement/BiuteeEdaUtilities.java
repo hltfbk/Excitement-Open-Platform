@@ -34,7 +34,14 @@ public class BiuteeEdaUtilities
 	 */
 	public static void convertExcitementConfigurationFileToBiuConfigurationFile(File excitementConfigurationFile, File biuConfigurationFile) throws ExcitementToBiuConfigurationFileConverterException
 	{
-		new ExcitementToBiuConfigurationFileConverter(excitementConfigurationFile, biuConfigurationFile).convert();
+		try
+		{
+			new ExcitementToBiuConfigurationFileConverter(excitementConfigurationFile, biuConfigurationFile).convert();
+		}
+		catch(RuntimeException e)
+		{
+			throw new ExcitementToBiuConfigurationFileConverterException("Failed to convert "+excitementConfigurationFile.getPath()+" to "+biuConfigurationFile.getPath(),e);
+		}
 	}
 	
 	public static PairData convertJCasToPairData(JCas aCas) throws TeEngineMlException
