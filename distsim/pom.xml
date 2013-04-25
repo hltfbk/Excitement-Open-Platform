@@ -40,11 +40,12 @@
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
   	
-  	<dependency>
+        <dependency>
 		<groupId>eu.excitementproject</groupId>
-  		<artifactId>core</artifactId>
+  		<artifactId>lap</artifactId>
   		<version>0.1-SNAPSHOT</version>
-  	</dependency> 
-  	   
+  	</dependency>
+    
+        
   	</dependencies>
 </project>
