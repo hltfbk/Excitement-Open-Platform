@@ -168,7 +168,6 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 				{
 					try{biuConfigurationFile.delete();}catch(RuntimeException e){}
 				}}
-
 			}
 
 

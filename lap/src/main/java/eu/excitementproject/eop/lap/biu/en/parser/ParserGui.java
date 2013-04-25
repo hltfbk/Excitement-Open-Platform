@@ -34,6 +34,7 @@ import javax.swing.ScrollPaneConstants;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.IdLemmaPosRelNodeAndEdgeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NoAntLemmaPosRelNodeAndEdgeString;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeAndEdgeString;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeString;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeDotFileGenerator;
@@ -88,7 +89,8 @@ public class ParserGui extends JFrame implements ActionListener
 	//private final static Class<? extends NodeString> nodeStringClass = WordAndPosNodeString.class;
 	private final static Class<? extends NodeString<Info>> nodeStringClass = null;
 	//private final static Class<? extends NodeAndEdgeString> nodeAndEdgeStringClass = LemmaPosRelNodeAndEdgeString.class;
-	private final static Class<? extends NodeAndEdgeString<Info>> nodeAndEdgeStringClass = IdLemmaPosRelNodeAndEdgeString.class;
+	//private final static Class<? extends NodeAndEdgeString<Info>> nodeAndEdgeStringClass = IdLemmaPosRelNodeAndEdgeString.class;
+	private final static Class<? extends NodeAndEdgeString<Info>> nodeAndEdgeStringClass = NoAntLemmaPosRelNodeAndEdgeString.NoAntLemmaCanonicalPosRelNodeAndEdgeString.class;
 	//private final static Class<? extends NodeAndEdgeString<Info>> nodeAndEdgeStringClass = IdLemmaPosCanonicalRelNodeAndEdgeString.class;
 
 	///////////////// nested classes //////////////////////
