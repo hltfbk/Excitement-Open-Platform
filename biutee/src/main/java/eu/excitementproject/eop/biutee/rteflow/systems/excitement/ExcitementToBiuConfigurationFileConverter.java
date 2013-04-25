@@ -22,7 +22,6 @@ import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
  */
 public class ExcitementToBiuConfigurationFileConverter
 {
-	
 	public static final String EXCITEMENT_TOP_ELEMENT = "configuration";
 	public static final String BIU_TOP_ELEMENT = "configuration";
 	
@@ -114,19 +113,28 @@ public class ExcitementToBiuConfigurationFileConverter
 			throw new ExcitementToBiuConfigurationFileConverterException("Cannot convert the given Excitement configuration file to BIU configuration file. " +
 					"Section \""+sectionName+"\" has a subsection.");
 		}
-		
-		List<Element> propertiesElements = XmlDomUtils.getChildElements(sectionElement, EXCITEMENT_PROPERTY_ELEMENT);
-		for (Element propertyElement : propertiesElements)
+		try
 		{
-			String propertyName = propertyElement.getAttribute("name");
-			if (null==propertyName) throw new ExcitementToBiuConfigurationFileConverterException("Bad Excitement configuration file. Property has no name in section : "+sectionName);
-			String propertyValue = XmlDomUtils.getTextOfElement(propertyElement);
-			
-			Element paramElement = biuXmlDocument.createElement(BIU_PARAM_ELEMENT);
-			moduleElement.appendChild(paramElement);
-			paramElement.setAttribute("name", propertyName);
-			Text paramValueText = biuXmlDocument.createTextNode(propertyValue);
-			paramElement.appendChild(paramValueText);
+			List<Element> propertiesElements = XmlDomUtils.getChildElements(sectionElement, EXCITEMENT_PROPERTY_ELEMENT);
+			for (Element propertyElement : propertiesElements)
+			{
+				String propertyName = propertyElement.getAttribute("name");
+				if (null==propertyName) throw new ExcitementToBiuConfigurationFileConverterException("Bad Excitement configuration file. Property has no name in section : "+sectionName);
+				String propertyValue = XmlDomUtils.getTextOfElement(propertyElement,false);
+
+				Element paramElement = biuXmlDocument.createElement(BIU_PARAM_ELEMENT);
+				moduleElement.appendChild(paramElement);
+				paramElement.setAttribute("name", propertyName);
+				if (propertyValue!=null)
+				{
+					Text paramValueText = biuXmlDocument.createTextNode(propertyValue);
+					paramElement.appendChild(paramValueText);
+				}
+			}
+		}
+		catch(ExcitementToBiuConfigurationFileConverterException | XmlDomUtilitiesException e)
+		{
+			throw new ExcitementToBiuConfigurationFileConverterException("Failure when converting section \""+sectionName+"\". See nested exception.",e);
 		}
 	}
 

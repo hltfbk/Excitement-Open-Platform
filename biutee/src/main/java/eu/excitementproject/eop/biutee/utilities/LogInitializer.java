@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.utilities;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -58,6 +59,14 @@ public class LogInitializer
 	
 	public void init() throws IOException, TeEngineMlException
 	{
+		initializationWithoutPrintouts();
+		
+		SystemInformationLog systemInformationLog = new SystemInformationLog(configurationFileName);
+		systemInformationLog.log();
+	}
+	
+	public void initializationWithoutPrintouts() throws FileNotFoundException, TeEngineMlException
+	{
 		// First, initialize log4j
 		
 		// Find out whether log4j.properties exists. If it exists use it as is.
@@ -98,9 +107,6 @@ public class LogInitializer
 		}
 		
 		new ExperimentLoggerNeutralizer().neutralize();
-		
-		SystemInformationLog systemInformationLog = new SystemInformationLog(configurationFileName);
-		systemInformationLog.log();
 	}
 
 	private String configurationFileName;

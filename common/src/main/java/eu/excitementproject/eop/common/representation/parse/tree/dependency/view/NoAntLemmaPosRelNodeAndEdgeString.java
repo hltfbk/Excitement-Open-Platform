@@ -4,10 +4,10 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 
 public class NoAntLemmaPosRelNodeAndEdgeString implements NodeAndEdgeString<Info>
 {
-
 	public String getEdgeStringRepresentation()
 	{
 		String ret = "";
@@ -40,11 +40,7 @@ public class NoAntLemmaPosRelNodeAndEdgeString implements NodeAndEdgeString<Info
 		}
 
 		
-		String pos = "";
-		try{
-			pos = InfoGetFields.getPartOfSpeech(node.getInfo());
-			if (null==pos) pos = "";
-		}catch(NullPointerException e){}
+		String pos = getPos();
 		
 		String ret = "";
 		if (lemma!=null) ret = ret + lemma;
@@ -59,8 +55,32 @@ public class NoAntLemmaPosRelNodeAndEdgeString implements NodeAndEdgeString<Info
 		this.node = node;
 	}
 	
-	private AbstractNode<? extends Info, ?> node;
+	protected String getPos()
+	{
+		String pos = "";
+		try{
+			pos = InfoGetFields.getPartOfSpeech(node.getInfo());
+			if (null==pos) pos = "";
+		}catch(NullPointerException e){}
+		return pos;
+
+		
+	}
 	
+	protected AbstractNode<? extends Info, ?> node;
+	
+	
+	/////////// NESTED CLASS - VARIANT OF THIS CLASS ///////////
+	
+	public static class NoAntLemmaCanonicalPosRelNodeAndEdgeString extends NoAntLemmaPosRelNodeAndEdgeString
+	{
+		@Override
+		protected String getPos()
+		{
+			return SimplerPosTagConvertor.simplerPos(
+					InfoGetFields.getCanonicalPartOfSpeech(node.getInfo())).name();
+		}
+	}
 	
 
 }
