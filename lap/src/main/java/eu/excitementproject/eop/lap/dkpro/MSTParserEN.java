@@ -20,6 +20,9 @@ import eu.excitementproject.eop.lap.lappoc.LAP_ImplBaseAE;
  * It will use default English Tree Tagger model, but you can select Parser model by the "variant" string in the constructor. 
  * (variant, is a model ID, that is used by DKPro parser AE) 
  * 
+ * 
+ * // TODO BUG: For the moment, super() is called before modelVariant is set. Thus it fails to update model variant. Need to think a best way to do this. 
+ * // TODO (update exception comment on modelVariant, after a good checking). 
  * @author Gil
  */
 public class MSTParserEN extends LAP_ImplBaseAE {
@@ -47,7 +50,7 @@ public class MSTParserEN extends LAP_ImplBaseAE {
 	 * If you need only need to annotate a specific view (e.g. Default only, not for T & H View, etc) 
 	 * call the full constructor with two arguments. (e.g. if you give one view only, its initialization is faster).
 	 * 
-	 * @param modelVarient String of the model varient. If the given varient is not accessible in the class path, the underlying AE will raise an exception. 
+	 * @param modelVarient String of the model varient. If the given varient is not accessible in the class path, the underlying AE will try to use default. If default isn't there, it will raise an exception. 
 	 * @throws LAPException
 	 */
 	public MSTParserEN(String modelVarient) throws LAPException 
@@ -62,7 +65,7 @@ public class MSTParserEN extends LAP_ImplBaseAE {
 	 * Full constructor, that accepts model Varient and view names. If you use this LAP for EOP EDAs (e.g. where you need TextView & Hypothesis View), you can simply call the constructor without view names (since their default is Default, TView and HView). 
 	 * ModelVarient will load the desinated model-varient. 	(Thus: de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-[LANGID]-[modelVarient] ) 
 	 * 
-	 * @param modelVarient String of the model varient. If the given varient is not accessible in the class path, the underlying AE will raise an exception.
+	 * @param modelVarient String of the model varient. If the given varient is not accessible in the class path, the the underlying AE will try to use default. If default isn't there, it will raise an exception.
 	 * @param views String array of "view names". Once initialized, the instance can only annotate this "previously given" Views only. (See LAP_ImplBaseAE for explanation). 
 	 * @throws LAPException
 	 */

@@ -219,6 +219,18 @@
     		</artifactId>
     		<version>20130304.0</version>
     	</dependency>
+    	
+    	<!--  1G big model for German MST parser: commented out for prevent unneeded downloads -->
+    	<!--  Include them if you need  DE-LONG variant model for MSTParserDE -->
+    	<!-- 
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-de-long
+    		</artifactId>
+    		<version>20130301.0</version>
+    	</dependency>
+    	--> 
  	</dependencies>
 
     <dependencyManagement>
