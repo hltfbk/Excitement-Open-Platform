@@ -1,13 +1,14 @@
 package eu.excitementproject.eop.distsim.application;
 
 import java.util.LinkedHashMap;
+
 import java.util.List;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.EmptyRuleInfo;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage;
@@ -49,11 +50,11 @@ public class TestLemmaPosSimilarity2 {
 				new RedisBasedCountableIdentifiableStorage<Element>(elementRedisHost,elementRedisPort),
 				"lin-dist-sim");
 		
-		LexicalResource<? extends EmptyRuleInfo> resource = new SimilarityStorageBasedLexicalResource(similarityStorage);
-		List<? extends LexicalRule<? extends EmptyRuleInfo>> similarities = resource.getRulesForLeft(
+		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(similarityStorage);
+		List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForLeft(
 				"affect",null);
 		
-		for (LexicalRule<? extends EmptyRuleInfo> similarity : similarities)
+		for (LexicalRule<? extends RuleInfo> similarity : similarities)
 			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
 	}
 }
