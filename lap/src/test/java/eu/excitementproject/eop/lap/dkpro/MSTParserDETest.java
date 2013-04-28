@@ -18,7 +18,8 @@ public class MSTParserDETest {
 		JCas aJCas = null; 
 
 		try {
-			lap = new MSTParserDE(); 
+			lap = new MSTParserDE(); // same as ("default"); 
+			//lap = new MSTParserDE("long"); 
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
 			aJCas = lap.generateSingleTHPairCAS("Freiheit und Leben kann man uns nehmen, die Ehre nicht", "Otto Wels hat das gesagt."); 

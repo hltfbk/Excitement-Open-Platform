@@ -88,7 +88,11 @@ public class DKProTest {
 		// TODO upload it to FBK repository 
 		
 		// Test for "large" model (1G!) 
-		// The following will need 4G XmX Xms ... or something like that. 
+		// NOTE 
+		// a) The following will need -Xmx8G -Xms8G ... or something like that. 
+		// b) Dependency on this big model is commented out on the upstream LAP POM.xml. 
+		//    un-comment that dependency in POM to mark dependency on the long model. 
+		//    if the model is not found, DKPro MST parser will load up default model. 
 		AnalysisEngineDescription parse2 = createPrimitiveDescription(MSTParser.class,
 				MSTParser.PARAM_VARIANT, "long"); 
 	
