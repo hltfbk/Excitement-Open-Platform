@@ -6,9 +6,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.SortedMap;
 import java.util.Stack;
 
 import arkref.analysis.FindMentions;
@@ -19,8 +23,13 @@ import arkref.data.EntityGraph;
 import arkref.data.Mention;
 import arkref.data.Sentence;
 import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.util.IntPair;
+import eu.excitementproject.eop.common.utilities.DockedToken;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.StringUtilException;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
+import eu.excitementproject.eop.lap.biu.coreference.DockedMention;
 import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 
 
@@ -125,6 +134,22 @@ public class ArkrefClient
 		return arkrefStackOutput;
 	}
 	
+	/**
+	 * Returns the Arkref's output, as map from a coreference group tag (<code>String</code>)
+	 * to a list of all of {@link DockedMention} instances in the group.
+	 * First call {@link #process()} method. Then call this method.
+	 * @return
+	 * @throws ArkrefClientException
+	 */
+	public  Map<String,List<DockedMention>> getArkrefDockedOutput() throws ArkrefClientException
+	{
+		if (processDone)
+			return this.arkrefDockedOutput;
+		else
+			throw new ArkrefClientException("process() was not called.");
+	}
+
+	
 		
 	////////////////// PROTECTED & PRIVATE PART //////////////////////
 	
@@ -226,6 +251,50 @@ public class ArkrefClient
 						arkrefStackOutput.add(mapLeavesToWords.get(leaf));
 					}
 				}
+				
+// TODO: Ofer - finish implementing coref
+//				// Build docked output
+//				arkrefDockedOutput = new HashMap<String, List<DockedMention>>();
+//				for (Mention mention : arkrefDocument.mentions()) {
+//					Tree node = mention.node();
+//					List<Tree> leaves = node.getLeaves();
+//					
+//					List<String> tokens = new ArrayList<String>(leaves.size());
+//					for (Tree leaf : leaves) {
+//						tokens.add(leaf.nodeString());
+//					}
+//					SortedMap<Integer, DockedToken> offsets = StringUtil.getTokensOffsets(text, tokens, false);
+//					if (!offsets.isEmpty()) {
+//						int startOffset = offsets.get(offsets.firstKey()).getCharOffsetStart();
+//						int endOffset = offsets.get(offsets.lastKey()).getCharOffsetEnd();
+//						String mentionString = text.substring(startOffset, endOffset);
+//						
+//						String tag = entityGraph.entName(mention);
+//						List<DockedMention> mentionsInGroup = null;
+//						if (arkrefDockedOutput.containsKey(tag)) {
+//							mentionsInGroup = arkrefDockedOutput.get(tag);
+//						}
+//						else {
+//							mentionsInGroup = new ArrayList<DockedMention>();
+//							arkrefDockedOutput.put(tag, mentionsInGroup);
+//						}
+//						
+//						DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
+//						mentionsInGroup.add(dockedMention);
+//					}
+//				}
+//				// Remove groups with only a single mention
+//				Iterator<Entry<String, List<DockedMention>>> iter = arkrefDockedOutput.entrySet().iterator();
+//				while (iter.hasNext()) {
+//					Entry<String, List<DockedMention>> entry = iter.next();
+//					if (entry.getValue().size() <= 1) {
+//						iter.remove();
+//					}
+//				}
+//				
+//			}
+//			catch(StringUtilException e) {
+//				throw new ArkrefClientException("ArkRef client failed. See nested exception.", e);
 			}
 			catch(RuntimeException e) // if run-time exception has been thrown - throw a new exception with very detailed information.
 			{
@@ -442,6 +511,7 @@ public class ArkrefClient
 	
 	protected List<WordWithCoreferenceTag> arkrefOutput = null;
 	protected List<WordAndStackTags> arkrefStackOutput = null;	
+	protected Map<String, List<DockedMention>> arkrefDockedOutput = null;	
 	protected boolean processDone = false;
 	
 }
