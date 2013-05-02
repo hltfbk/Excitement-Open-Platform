@@ -52,7 +52,9 @@ public class MaxEntClassificationEDATest {
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DepTriple_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DepTriple_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeleton_EN.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeletonAll_EN.xml");
 
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
@@ -269,7 +271,7 @@ public class MaxEntClassificationEDATest {
 		try {
 			meceda.initialize(config);
 			// check the test data directory
-			meceda.initializeData(config, false, true);
+			meceda.initializeData(config, false);
 			
 			int correct = 0;
 			int sum = 0;
@@ -307,7 +309,7 @@ public class MaxEntClassificationEDATest {
 		try {
 			meceda.initialize(config);
 			// check the test data directory
-			meceda.initializeData(config, false, true);
+			meceda.initializeData(config, false);
 			
 			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName().replace("configuration-file", "results") + "_Result.txt"), "UTF-8"));
 			logger.info("build CASes for input sentence pairs:");

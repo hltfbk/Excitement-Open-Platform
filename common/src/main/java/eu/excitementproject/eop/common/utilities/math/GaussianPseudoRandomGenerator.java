@@ -24,6 +24,17 @@ public class GaussianPseudoRandomGenerator
 		
 	}
 	
+	public GaussianPseudoRandomGenerator()
+	{
+		
+	}
+
+	public GaussianPseudoRandomGenerator(long randomSeed)
+	{
+		random = new Random(randomSeed);
+	}
+
+	
 	public double generate(double mean, double standardDeviation)
 	{
 		double y1=0;
