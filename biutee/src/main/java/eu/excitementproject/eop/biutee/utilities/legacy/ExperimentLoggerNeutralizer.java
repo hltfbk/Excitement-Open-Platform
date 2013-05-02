@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 
 import org.BIU.utils.logging.EL;
 
-import eu.excitementproject.eop.biutee.utilities.LogInitializer;
+import eu.excitementproject.eop.biutee.utilities.BiuteeLog4jConfigurator;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
@@ -43,7 +43,7 @@ public class ExperimentLoggerNeutralizer
 	@Deprecated
 	public void neutralizeOld() throws TeEngineMlException
 	{
-		createFileIfNotExist(LogInitializer.DEFAULT_LOG4J_PROPERTIES_CONTENTS,LOG4J_FILE_NAME);
+		createFileIfNotExist(BiuteeLog4jConfigurator.DEFAULT_LOG4J_PROPERTIES_CONTENTS,LOG4J_FILE_NAME);
 		try
 		{
 			throw new RuntimeException("Disabled temporarily during migration");
