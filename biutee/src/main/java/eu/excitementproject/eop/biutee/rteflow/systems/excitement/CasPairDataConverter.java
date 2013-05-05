@@ -57,7 +57,7 @@ public class CasPairDataConverter {
 		RTEClassificationType gold = null;
 		String goldString = pairAnno.getGoldAnswer();
 		if (goldString != null) {
-			DecisionLabel goldDecision = DecisionLabel.valueOf(goldString);
+			DecisionLabel goldDecision = DecisionLabel.getLabelFor(goldString);
 			gold = DecisionTypeMap.toRTEClassificationType(goldDecision);
 		}
 		
