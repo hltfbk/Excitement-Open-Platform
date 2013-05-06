@@ -19,7 +19,7 @@ public class CasTreeConverterTester {
 	public static void testConverter(String text) throws Exception {
 		
 		// Run LAP, get CAS
-		LAPAccess lap = new BIUFullLAP(); 
+		LAPAccess lap = new BIUFullLAPConfigured(); 
 		JCas mainJcas = lap.generateSingleTHPairCAS(text, "");
 		JCas jcas = mainJcas.getView(LAP_ImplBase.TEXTVIEW);
 		

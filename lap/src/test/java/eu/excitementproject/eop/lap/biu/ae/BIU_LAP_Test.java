@@ -69,7 +69,7 @@ public class BIU_LAP_Test {
 			}
 			
 			// Run LAP
-			LAPAccess lap = new BIUFullLAP(); 
+			LAPAccess lap = new BIUFullLAPConfigured(); 
 			JCas mainJcas = lap.generateSingleTHPairCAS(TEXT, HYPOTHESIS);
 			JCas jcas = mainJcas.getView("TextView");
 			
