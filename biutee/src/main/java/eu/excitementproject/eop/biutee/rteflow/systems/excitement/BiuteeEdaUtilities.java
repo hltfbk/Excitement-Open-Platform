@@ -12,6 +12,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBi
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.lap.biu.ae.CasTreeConverterException;
@@ -49,7 +50,7 @@ public class BiuteeEdaUtilities
 		try {
 			return CasPairDataConverter.convertCasToPairData(aCas);
 		}
-		catch (CASException | CasTreeConverterException | UnsupportedPosTagStringException e) {
+		catch (CASException | CasTreeConverterException | UnsupportedPosTagStringException | EDAException e) {
 			throw new TeEngineMlException("Error while creating a PairData from a JCas.", e);
 		}
 	}
