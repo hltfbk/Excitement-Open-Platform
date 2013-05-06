@@ -12,7 +12,6 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.lap.LAPAccess;
-import eu.excitementproject.eop.lap.biu.BIUFullLAP;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 public class CasTreeConverterTester {
@@ -20,7 +19,7 @@ public class CasTreeConverterTester {
 	public static void testConverter(String text) throws Exception {
 		
 		// Run LAP, get CAS
-		LAPAccess lap = new BIUFullLAP(); 
+		LAPAccess lap = new BIUFullLAPConfigured(); 
 		JCas mainJcas = lap.generateSingleTHPairCAS(text, "");
 		JCas jcas = mainJcas.getView(LAP_ImplBase.TEXTVIEW);
 		
