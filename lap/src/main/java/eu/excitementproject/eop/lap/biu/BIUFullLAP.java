@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae;
+package eu.excitementproject.eop.lap.biu;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
@@ -9,6 +9,9 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.uimafit.factory.AggregateBuilder;
 
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.biu.ae.ner.StanfordNamedEntityRecognizerAE;
@@ -18,27 +21,52 @@ import eu.excitementproject.eop.lap.biu.ae.sentencesplitter.LingPipeSentenceSpli
 import eu.excitementproject.eop.lap.biu.ae.tokenizer.MaxentTokenizerAE;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
+/**
+ * BIU's LAP (Linguistic Analysis Pipeline). It fits the requirements of
+ * {@link eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeEDA}.
+ * 
+ * @author Ofer Bronstein
+ * @since May 2013
+ */
 public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 
-	public BIUFullLAP() throws LAPException {
+	public BIUFullLAP(String taggerModelFile, String nerModelFile,
+			String parserHost, Integer parserPort) throws LAPException {
 		super();
+		this.taggerModelFile = taggerModelFile;
+		this.nerModelFile = nerModelFile;
+		this.parserHost = parserHost;
+		this.parserPort = parserPort;
+		
 		languageIdentifier = "EN"; // set languageIdentifer 
-	}	
+	}
+	
+	public BIUFullLAP(NameValueTable section) throws LAPException, ConfigurationException {
+		this(
+			section.getFile(DEFAULT_TAGGER_MODEL_FILE_PARAM).getAbsolutePath(),
+			section.getFile(DEFAULT_NER_MODEL_FILE_PARAM).getAbsolutePath(),
+			section.getString(DEFAULT_PARSER_HOST_NAME),
+			section.getInteger(DEFAULT_PARSER_PORT_NAME)
+			);
+	}
+
+	public BIUFullLAP(CommonConfig config) throws LAPException, ConfigurationException {
+		this(config.getSection(DEFAULT_SECTION_NAME));
+	}
 
 	@Override
 	public void addAnnotationOn(JCas aJCas, String viewName) throws LAPException {
 		try {
-			// Build anaysis engines
+			// Build analysis engines
 			AnalysisEngineDescription splitter =   createPrimitiveDescription(LingPipeSentenceSplitterAE.class);
 			AnalysisEngineDescription tokenizer =  createPrimitiveDescription(MaxentTokenizerAE.class);
 			AnalysisEngineDescription tagger =     createPrimitiveDescription(MaxentPosTaggerAE.class,
-					MaxentPosTaggerAE.PARAM_MODEL_FILE , "D:\\java\\jars\\stanford-postagger-full-2008-09-28\\models\\left3words-wsj-0-18.tagger");
+					MaxentPosTaggerAE.PARAM_MODEL_FILE , taggerModelFile);
 			AnalysisEngineDescription ner =        createPrimitiveDescription(StanfordNamedEntityRecognizerAE.class,
-					MaxentPosTaggerAE.PARAM_MODEL_FILE , "D:\\java\\jars\\stanford-ner-2009-01-16\\classifiers\\ner-eng-ie.crf-3-all2008-distsim.ser.gz");
-			AnalysisEngineDescription parser =     createPrimitiveDescription(EasyFirstParserAE.class
-					//,
-					//EasyFirstParserAE.PARAM_HOST , "132.70.6.156", //te-srv1
-					//EasyFirstParserAE.PARAM_PORT , 8081
+					MaxentPosTaggerAE.PARAM_MODEL_FILE , nerModelFile);
+			AnalysisEngineDescription parser =     createPrimitiveDescription(EasyFirstParserAE.class,
+					EasyFirstParserAE.PARAM_HOST , parserHost,
+					EasyFirstParserAE.PARAM_PORT , parserPort
 					);
 
 
@@ -64,4 +92,14 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 		}		
 	}
 
+	private String taggerModelFile;
+	private String nerModelFile;
+	private String parserHost;
+	private Integer parserPort;
+	
+	private static final String DEFAULT_SECTION_NAME = "rte_pairs_preprocess";
+	private static final String DEFAULT_TAGGER_MODEL_FILE_PARAM = "easyfirst_stanford_pos_tagger";
+	private static final String DEFAULT_NER_MODEL_FILE_PARAM = "stanford_ner_classifier_path";
+	private static final String DEFAULT_PARSER_HOST_NAME = "easyfirst_host";
+	private static final String DEFAULT_PARSER_PORT_NAME = "easyfirst_port";
 }
