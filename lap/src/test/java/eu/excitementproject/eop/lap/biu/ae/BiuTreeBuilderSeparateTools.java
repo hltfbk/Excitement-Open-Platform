@@ -37,6 +37,11 @@ import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
  * Used for testing.<BR>
  * The choice of tools and their parameters are hard-coded, according to what's required in the tests.
  * 
+ * <B>NOTE:</B> This class is not currently used, and is here mainly as reference of using the BIU
+ * tools as separate tools sequentially. use {@link BiuTreeBuilder} instead.
+ * <B>NOTE:/<B> This class has a bug, it doesn't produce an artificial root to the tree, although
+ * a BIU tree must have it.
+ * 
  * @author Ofer Bronstein
  * @since March 2013
  */
