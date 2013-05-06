@@ -13,6 +13,7 @@ import eu.excitement.type.entailment.Pair;
 import eu.excitement.type.entailment.Text;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
@@ -37,8 +38,9 @@ public class CasPairDataConverter {
 	 * @throws CasTreeConverterException
 	 * @throws UnsupportedPosTagStringException
 	 * @throws CASException
+	 * @throws EDAException 
 	 */
-	public static PairData convertCasToPairData(JCas jcas) throws CasTreeConverterException, UnsupportedPosTagStringException, CASException {
+	public static PairData convertCasToPairData(JCas jcas) throws CasTreeConverterException, UnsupportedPosTagStringException, CASException, EDAException {
 		Pair pairAnno = JCasUtil.selectSingle(jcas, Pair.class);
 		Text textAnno = pairAnno.getText();
 		Hypothesis hypothesisAnno = pairAnno.getHypothesis();
