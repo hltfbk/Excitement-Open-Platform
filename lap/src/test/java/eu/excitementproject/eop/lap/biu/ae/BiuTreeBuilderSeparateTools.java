@@ -40,9 +40,9 @@ import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
  * @author Ofer Bronstein
  * @since March 2013
  */
-public class BiuTreeBuilder {
+public class BiuTreeBuilderSeparateTools {
 
-	public BiuTreeBuilder() throws TokenizerException, PosTaggerException, NamedEntityRecognizerException, ParserRunException {
+	public BiuTreeBuilderSeparateTools() throws TokenizerException, PosTaggerException, NamedEntityRecognizerException, ParserRunException {
 		splitter = new LingPipeSentenceSplitter();
 		tokenizer = new MaxentTokenizer();
 		tagger = new MaxentPosTagger("D:\\java\\jars\\stanford-postagger-full-2008-09-28\\models\\left3words-wsj-0-18.tagger");
