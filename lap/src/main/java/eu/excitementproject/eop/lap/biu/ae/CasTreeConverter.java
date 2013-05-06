@@ -30,6 +30,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.lap.biu.PreprocessUtilities;
 import eu.excitementproject.eop.lap.biu.ae.parser.StanfordDependenciesParserAE;
 
 /**
@@ -192,7 +193,10 @@ public class CasTreeConverter {
 					nodes.size(), tokenAnnotations.size(), extraNodes.size()));
 		}
 		
-		return root;
+		// Add artificial root on top (this is mandatory in BIU parse trees) 
+		BasicNode artificialRoot = PreprocessUtilities.addArtificialRoot(root);
+		
+		return artificialRoot;
 	}
 	
 	
