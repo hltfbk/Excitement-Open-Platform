@@ -21,10 +21,17 @@ import eu.excitementproject.eop.lap.biu.ae.sentencesplitter.LingPipeSentenceSpli
 import eu.excitementproject.eop.lap.biu.ae.tokenizer.MaxentTokenizerAE;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
+/**
+ * BIU's LAP (Linguistic Analysis Pipeline). It fits the requirements of
+ * {@link eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeEDA}.
+ * 
+ * @author Ofer Bronstein
+ * @since May 2013
+ */
 public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 
 	public BIUFullLAP(String taggerModelFile, String nerModelFile,
-			String parserHost, String parserPort) throws LAPException {
+			String parserHost, Integer parserPort) throws LAPException {
 		super();
 		this.taggerModelFile = taggerModelFile;
 		this.nerModelFile = nerModelFile;
@@ -39,7 +46,7 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 			section.getFile(DEFAULT_TAGGER_MODEL_FILE_PARAM).getAbsolutePath(),
 			section.getFile(DEFAULT_NER_MODEL_FILE_PARAM).getAbsolutePath(),
 			section.getString(DEFAULT_PARSER_HOST_NAME),
-			section.getString(DEFAULT_PARSER_PORT_NAME)
+			section.getInteger(DEFAULT_PARSER_PORT_NAME)
 			);
 	}
 
@@ -88,7 +95,7 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 	private String taggerModelFile;
 	private String nerModelFile;
 	private String parserHost;
-	private String parserPort;
+	private Integer parserPort;
 	
 	private static final String DEFAULT_SECTION_NAME = "rte_pairs_preprocess";
 	private static final String DEFAULT_TAGGER_MODEL_FILE_PARAM = "easyfirst_stanford_pos_tagger";
