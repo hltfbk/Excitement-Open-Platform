@@ -3,6 +3,10 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Assume;
 import org.junit.Test;
 
@@ -14,9 +18,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributio
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 
-
 /**
- * @author Jan Pawellek & Julia Kreutzer
+ * @author Jan Pawellek 
  *
  */
 public class GermanDistSimTest {
@@ -99,7 +102,7 @@ public class GermanDistSimTest {
 			} catch (LexicalResourceException e1) {
 				e1.printStackTrace();
 			}
-			for (LexicalRule<? extends GermanDistSimInfo> rule : gds10.getRulesForRight(testword, null)) {
+			for (LexicalRule<? extends GermanDistSimInfo> rule : gds10.getRulesForLeft(testword, null)) {
 				assertTrue(rule.getLLemma().equals(testword));
 				assertFalse(rule.getRLemma().equals(""));
 				assertFalse(rule.getRelation().equals(""));
@@ -110,9 +113,38 @@ public class GermanDistSimTest {
 		{
 			e.printStackTrace(); 
 		}
-
 		
+		/*for DistSim-Evaluation
+		 
+		//String[] wordlistVerbs = {"hineinhorchen","mästen","zugrundeliegen","ragen","antizipieren","vorausberechnen","überspringen","verpassen","einschießen","zurückzahlen","anstecken","bloßstellen","zermahlen","zieren","glühen"}; 
+		String[] wordlistVerbs = {"abstürzen","terminieren","abkürzen","umringen"};
+		for (String wordV : wordlistVerbs) {
+			try {
+				Set<String> wordSetV = new HashSet<String>();
+				for ( LexicalRule<? extends GermanDistSimInfo> rightWordV : gds10.getRulesForLeft(wordV, null) ){
+					wordSetV.add(rightWordV.getRLemma());
+				}
+				for (String wordRV: wordSetV){ System.out.println(wordV+"\t"+wordRV);}
+			} catch (LexicalResourceException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		String[] wordlistNouns = {"Forstwirtschaft","Uran","Fauna","Malta","Linse","Kurve","Bargeld","Banane","Spargel","Wäscherei","Tennis","Kegelbahn","Hirn","Reifen","Dozent"};
+		for (String wordN : wordlistNouns) {
+			try {
+				Set<String> wordSetN = new HashSet<String>();
+				for ( LexicalRule<? extends GermanDistSimInfo> rightWordN : gds10.getRulesForLeft(wordN, null) ){
+					wordSetN.add(rightWordN.getRLemma());
+				}
+				for (String wordRN: wordSetN){ System.out.println(wordN+"\t"+wordRN);}
+			} catch (LexicalResourceException e) {
+				e.printStackTrace();
+			}
+		} 
+		*/
 
 	}
 }
+	
 

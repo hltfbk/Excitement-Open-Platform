@@ -112,6 +112,7 @@ public class TreeTaggerGermaNetIntegrationTest {
 							//System.out.println(rule.toString());
 						}
 
+			    		/*
 			    		// GN call for left ENTAILMENT relations of the token/POS pair
 						for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft(tokenText, new GermanPartOfSpeech(tokenPos), TERuleRelation.Entailment)) {
 							assertTrue(rule.getConfidence() > 0);
@@ -119,6 +120,7 @@ public class TreeTaggerGermaNetIntegrationTest {
 							assertTrue(rule.getLPos() != null); // if a rule has been created, there must be a rPos!							
 							//System.out.println(rule.toString());
 						}
+						*/
 						
 						//System.out.println();
 			    	}
