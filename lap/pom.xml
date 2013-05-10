@@ -230,7 +230,13 @@
     		</artifactId>
     		<version>20130301.0</version>
     	</dependency>
-    	--> 
+    	-->
+		<dependency>
+    		<groupId>dfki</groupId>
+    		<artifactId>maltparser-german</artifactId>
+    		<version>0.1</version>
+    		<type>model</type>
+		</dependency>
  	</dependencies>
 
     <dependencyManagement>
