@@ -190,7 +190,8 @@ public class EDAScorer {
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_OnlyLexRes_EN.xml_Result.txt");
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_DepTriple_EN.xml_Result.txt");
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_TreeSkeleton_EN.xml_Result.txt");
-		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_TreeSkeletonAll_EN.xml_Result.txt");
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_TreeSkeletonAll_EN.xml_Result.txt");
+		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_TreeSkeletonAll_DE.xml_Result.txt");
 		Assume.assumeTrue(resultFile.exists());
 		score(resultFile, resultFile.getAbsolutePath() + "_Eval.xml");
 	}
