@@ -17,6 +17,7 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
+import eu.excitementproject.eop.lap.dkpro.MaltParserDE;
 import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
@@ -48,13 +49,14 @@ public class MaxEntClassificationEDATest {
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_DE.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_DE.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeletonAll_DE.xml");
 
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DepTriple_EN.xml");
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeleton_EN.xml");
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeletonAll_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeletonAll_EN.xml");
 
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
@@ -68,7 +70,8 @@ public class MaxEntClassificationEDATest {
 				
 		// Gil: testLAP_DE() is a very very long test. (More than build process itself) 
 		//German RTE tests
-		//testLAP_DE(); 
+		//testLAP_DE();
+		//testParser_DE();
 		//testTraining(config);
 		//testTesting_SingleTH(config); 
 		//testTesting_MultiTH(config); 
@@ -158,6 +161,45 @@ public class MaxEntClassificationEDATest {
 		
 		try {
 			lap = new TreeTaggerEN();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
+	public void testParser_DE() {
+		File inputFile = null;
+		File outputDir = null;
+		
+		// generate XMI files for the training data
+		inputFile = new File("./src/main/resources/data-set/German_dev.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/DE/dev/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+
+		LAPAccess lap = null;
+
+		try {
+			lap = new MaltParserDE();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+		
+		// generate XMI files for the testing data
+		inputFile = new File("./src/main/resources/data-set/German_test.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/DE/test/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+		
+		try {
+			lap = new MaltParserDE();
 			lap.processRawInputFormat(inputFile, outputDir);
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
