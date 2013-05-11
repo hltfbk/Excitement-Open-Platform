@@ -79,8 +79,7 @@ public class MaltParserDE extends LAP_ImplBaseAE {
 			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
 			descArr[2] = createPrimitiveDescription(MaltParser.class,
 					MaltParser.PARAM_VARIANT, aVariant,
-					MaltParser.PARAM_PRINT_TAGSET, true,
-					MaltParser.PARAM_MODEL_LOCATION, "http://hlt-services4.fbk.eu:8080/artifactory/repo/dfki/maltparser-german/0.1/maltparser-german-0.1.model");
+					MaltParser.PARAM_PRINT_TAGSET, true);
 		} catch (ResourceInitializationException e) {
 			throw new LAPException("Unable to create AE descriptions", e);
 		}
