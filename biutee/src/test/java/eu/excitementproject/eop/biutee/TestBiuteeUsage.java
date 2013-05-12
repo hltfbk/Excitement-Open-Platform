@@ -8,6 +8,7 @@ import junit.framework.Assert;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeEDA;
@@ -41,6 +42,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  * @author Ofer Bronstein
  * @since May 2013
  */
+@Ignore("Environment doesn't support yet storing model files + running easyfirst")
 public class TestBiuteeUsage {
 	
 	@BeforeClass
