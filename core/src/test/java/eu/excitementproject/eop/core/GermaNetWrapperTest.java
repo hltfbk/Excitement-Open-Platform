@@ -31,13 +31,41 @@ public class GermaNetWrapperTest {
 	public void test() throws UnsupportedPosTagStringException {
 		
 		GermaNetWrapper gnw=null;
+
+		
 		try {
 			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
+			
+			/* for GermaNet Evaluation -> test GermaNet for outputs for specific words, saved in testwords
+			try {
+				String[] testwords = {"Forstwirtschaft","Uran","Fauna","Malta","Linse","Kurve","Bargeld","Banane","Spargel","Wäscherei","Tennis","Kegelbahn","Hirn","Reifen","Dozent","hineinhorchen","mästen","zugrundeliegen","ragen","antizipieren","vorausberechnen","überspringen","verpassen","einschießen","zurückzahlen","anstecken","bloßstellen","zermahlen","zieren","glühen"};
+				//String[] testwords = {"abstürzen","verlegen","abkürzen","umringen"};
+				//String[] testwords = {"schön","abstrakt","klein", "laufen", "lernen", "hoffen"};
+				for (String word : testwords){
+					List<LexicalRule<? extends GermaNetInfo>> l = gnw.getRulesForLeft(word, new GermanPartOfSpeech("NN"));
+					for (LexicalRule<? extends GermaNetInfo> rule : l){
+						System.out.println(rule.getLLemma()+"\t"+rule.getRLemma());
+					}
+				}
+				
+				List<LexicalRule<? extends GermaNetInfo>> k = gnw.getRulesForRight("Hund", null);
+				System.out.print("RightRules for Hund:\n ");
+				for (LexicalRule<? extends GermaNetInfo> rule : k){
+					System.out.println(rule.getRLemma()+" "+rule.getRelation());
+				}
+				
+				
+			} catch (LexicalResourceException e) {
+				e.printStackTrace();
+			}	
+				*/	
+			
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
 			//throw e;
 		}
+		
 		catch(BaseException e)
 		{
 			e.printStackTrace(); 
@@ -82,6 +110,20 @@ public class GermaNetWrapperTest {
 			e.printStackTrace(); 
 		}		
 		
+		// Test for level-maximum for verbs, granted that "lernen" has 4 rules on the first level (might only be true in GermaNet 7.0)
+		try{
+			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("lernen", new GermanPartOfSpeech("VINF"));
+			assertTrue(rules.size()==4);
+			for (LexicalRule<? extends GermaNetInfo> rule : rules){
+				assertFalse(rule.getRLemma()=="lernen");
+				assertFalse(rule.getRLemma()=="aufnehmen");
+				assertFalse(rule.getRLemma()=="GN_ROOT");
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace();
+		}
 		
 		// Test for common nouns
 		try{
@@ -108,7 +150,39 @@ public class GermaNetWrapperTest {
 		catch (LexicalResourceException e)
 		{
 			e.printStackTrace(); 
+		
 		}
+		
+		// Test for level-maximum for nouns, granted that "Katze" has 7 rules on the first two levels (might only be true in GermaNet 7.0)
+		try{
+			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("Katze", new GermanPartOfSpeech("NN"));
+			assertTrue(rules.size()==9);
+			for (LexicalRule<? extends GermaNetInfo> rule : rules){
+				assertFalse(rule.getRLemma()=="Katze");
+				assertFalse(rule.getRLemma()=="Bestie");
+				assertFalse(rule.getRLemma()=="GN_ROOT");
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace();
+		}
+		
+		// Test for level-maximum for adjectives, granted that "klein" has 1 rule on the first level (might only be true in GermaNet 7.0)
+		try{
+			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("klein", new GermanPartOfSpeech("ADJ"));
+			assertTrue(rules.size()==1);
+			for (LexicalRule<? extends GermaNetInfo> rule : rules){
+				assertFalse(rule.getRLemma()=="klein");
+				assertFalse(rule.getRLemma()=="klassenübergreifend");
+				assertFalse(rule.getRLemma()=="GN_ROOT");
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace();
+		}
+
 		
 		// Test for CommonConfig passing 
 		gnw=null;
@@ -140,7 +214,7 @@ public class GermaNetWrapperTest {
 			e.printStackTrace(); 
 		}
 		
-		// repeat test for "simplest" generic method, with CommonConfig inited gnw. 
+		// repeat test for "simplest" generic method, with CommonConfig initiated gnw. 
 		// and compares the result to previous one.  
 		List<LexicalRule<? extends GermaNetInfo>> list2 = null; 
 		try {
@@ -152,6 +226,7 @@ public class GermaNetWrapperTest {
 			e.printStackTrace(); 
 		}			
 
+		
 		// should be identical ... (well, unless someone edited the test configuration. none should have) 
 		assertTrue(list1.size() == list2.size());
 		for(int i=0; i < list1.size(); i++)
@@ -175,7 +250,7 @@ public class GermaNetWrapperTest {
 				
 		// check that no 0 confidence value returns 
 		try {// Initiating with "no hypernym" (0 confidence on hypernym)  
-			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/", 1.0, 1.0, 0.0, 1.0);
+			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/", 1.0, 1.0, 0.0, 1.0, 1.0);
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
@@ -198,6 +273,20 @@ public class GermaNetWrapperTest {
 			e.printStackTrace(); 
 		}
 		
+		//test for getRulesForRight, only hyponyms and synonyms allowed
+		try{
+			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForRight("Hund", new GermanPartOfSpeech("NN"))) {
+				assertTrue(rule.getLLemma().equals("Hund"));
+				assertTrue(!rule.getRLemma().equals("Hund"));
+				assertTrue(rule.getInfo().getLeftSynsetID() == 50708); // might only be true in GermaNet 7.0
+				assertTrue((rule.getRelation().equals("has_hyponym")) || (rule.getRelation().equals("has_synonym")));
+				assertTrue(rule.getConfidence() > 0);
+			}
+		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}		
 	}
 }
 

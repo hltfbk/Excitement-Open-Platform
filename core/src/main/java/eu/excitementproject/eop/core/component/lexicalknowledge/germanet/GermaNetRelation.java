@@ -9,6 +9,7 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 	causes,
 	entails,
 	has_hypernym,
+	has_hyponym,
 	has_antonym,
 	has_synonym;
 
@@ -17,6 +18,7 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 			case causes: return "causes";
 			case entails: return "entails";
 			case has_hypernym: return "has_hypernym";
+			case has_hyponym: return "has_hyponym";
 			case has_antonym: return "has_antonym";
 			case has_synonym: return "has_synonym";
 		}
@@ -34,6 +36,7 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 		case causes: return TERuleRelation.Entailment;
 		case entails: return TERuleRelation.Entailment;
 		case has_hypernym: return TERuleRelation.Entailment;
+		case has_hyponym: return TERuleRelation.Entailment;
 		case has_antonym: return TERuleRelation.NonEntailment;
 		case has_synonym: return TERuleRelation.Entailment;
 	}
