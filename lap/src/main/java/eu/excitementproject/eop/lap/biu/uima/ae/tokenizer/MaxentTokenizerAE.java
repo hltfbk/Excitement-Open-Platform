@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.tokenizer;
+package eu.excitementproject.eop.lap.biu.uima.ae.tokenizer;
 
 import eu.excitementproject.eop.common.datastructures.Envelope;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.MaxentTokenizer;

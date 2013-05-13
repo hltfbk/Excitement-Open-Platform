@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.postagger;
+package eu.excitementproject.eop.lap.biu.uima.ae.postagger;
 
 /**
  * This class is used for accessing DKPro's Penn POS mapping (currently it

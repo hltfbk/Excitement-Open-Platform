@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.ner;
+package eu.excitementproject.eop.lap.biu.uima.ae.ner;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,10 +15,10 @@ import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.resources.MappingProvider;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import eu.excitementproject.eop.lap.biu.ae.SingletonSynchronizedAnnotator;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
+import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
 
 /**
  * A UIMA Analysis Engine tags the document in the CAS for NER tags. <BR>

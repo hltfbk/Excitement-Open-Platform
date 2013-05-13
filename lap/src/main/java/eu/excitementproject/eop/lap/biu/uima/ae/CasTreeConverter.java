@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae;
+package eu.excitementproject.eop.lap.biu.uima.ae;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,7 +31,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.lap.biu.PreprocessUtilities;
-import eu.excitementproject.eop.lap.biu.ae.parser.StanfordDependenciesParserAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.parser.StanfordDependenciesParserAE;
 
 /**
  * Performs various conversions from a JCas created by an EOP LAP, to BIU types.

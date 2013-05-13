@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.postagger;
+package eu.excitementproject.eop.lap.biu.uima.ae.postagger;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,10 +15,10 @@ import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.resources.MappingProvider;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import eu.excitementproject.eop.lap.biu.ae.SingletonSynchronizedAnnotator;
 import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
 import eu.excitementproject.eop.lap.biu.postagger.PosTagger;
 import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
+import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
 
 
 /**

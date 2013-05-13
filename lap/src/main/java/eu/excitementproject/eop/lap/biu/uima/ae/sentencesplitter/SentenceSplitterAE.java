@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.sentencesplitter;
+package eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter;
 
 import java.util.List;
 import java.util.SortedMap;
@@ -10,9 +10,9 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import eu.excitementproject.eop.common.utilities.DockedToken;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.StringUtilException;
-import eu.excitementproject.eop.lap.biu.ae.SingletonSynchronizedAnnotator;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
 
 /**
  * A UIMA Analysis Engine that splits the document in the CAS to sentences. <BR>

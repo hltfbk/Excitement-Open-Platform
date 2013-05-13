@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.parser;
+package eu.excitementproject.eop.lap.biu.uima.ae.parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,12 +22,12 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUti
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.lap.biu.ae.AbstractNodeCASUtils;
-import eu.excitementproject.eop.lap.biu.ae.AbstractNodeCasException;
-import eu.excitementproject.eop.lap.biu.ae.SingletonSynchronizedAnnotator;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicPipelinedParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
+import eu.excitementproject.eop.lap.biu.uima.ae.AbstractNodeCASUtils;
+import eu.excitementproject.eop.lap.biu.uima.ae.AbstractNodeCasException;
+import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
 
 
 /**

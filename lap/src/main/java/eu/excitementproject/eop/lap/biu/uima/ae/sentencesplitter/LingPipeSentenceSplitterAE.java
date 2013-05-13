@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.sentencesplitter;
+package eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter;
 
 import eu.excitementproject.eop.common.datastructures.Envelope;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.LingPipeSentenceSplitter;

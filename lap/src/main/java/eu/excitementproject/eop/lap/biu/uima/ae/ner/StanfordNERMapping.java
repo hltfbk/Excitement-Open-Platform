@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.ner;
+package eu.excitementproject.eop.lap.biu.uima.ae.ner;
 
 /**
  * This class is used for accessing DKPro's Stanford NER mapping (currently it

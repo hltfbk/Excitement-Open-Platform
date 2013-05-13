@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.parser;
+package eu.excitementproject.eop.lap.biu.uima.ae.parser;
 
 import org.uimafit.descriptor.ConfigurationParameter;
 

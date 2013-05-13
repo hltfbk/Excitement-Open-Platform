@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.tokenizer;
+package eu.excitementproject.eop.lap.biu.uima.ae.tokenizer;
 
 /**
  * A UIMA wrapper for BIU's OpenNlpTokenizer.

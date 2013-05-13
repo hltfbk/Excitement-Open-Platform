@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.postagger;
+package eu.excitementproject.eop.lap.biu.uima.ae.postagger;
 
 /**
  * A UIMA wrapper for BIU's OpenNlpPosTagger.

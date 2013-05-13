@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae.tokenizer;
+package eu.excitementproject.eop.lap.biu.uima.ae.tokenizer;
 
 import java.util.List;
 import java.util.SortedMap;
@@ -12,9 +12,9 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitementproject.eop.common.utilities.DockedToken;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.StringUtilException;
-import eu.excitementproject.eop.lap.biu.ae.SingletonSynchronizedAnnotator;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
+import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
 
 /**
  * A UIMA Analysis Engine that tokenizes the document in the CAS. <BR>
