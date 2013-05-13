@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.lap.biu.ae;
 
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.biu.BIUFullLAP;
+import eu.excitementproject.eop.lap.biu.uima.BIUFullLAP;
 
 /***
  * A version of {@link BIUFullLAP} that is configured to paths relative to the biutee/workdir folder.

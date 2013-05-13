@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu;
+package eu.excitementproject.eop.lap.biu.uima;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
@@ -14,11 +14,11 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.biu.ae.ner.StanfordNamedEntityRecognizerAE;
-import eu.excitementproject.eop.lap.biu.ae.parser.EasyFirstParserAE;
-import eu.excitementproject.eop.lap.biu.ae.postagger.MaxentPosTaggerAE;
-import eu.excitementproject.eop.lap.biu.ae.sentencesplitter.LingPipeSentenceSplitterAE;
-import eu.excitementproject.eop.lap.biu.ae.tokenizer.MaxentTokenizerAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.ner.StanfordNamedEntityRecognizerAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.parser.EasyFirstParserAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.LingPipeSentenceSplitterAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.tokenizer.MaxentTokenizerAE;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 /**

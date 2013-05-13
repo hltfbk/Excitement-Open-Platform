@@ -24,7 +24,7 @@ import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
-import eu.excitementproject.eop.lap.biu.BIUFullLAP;
+import eu.excitementproject.eop.lap.biu.uima.BIUFullLAP;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
