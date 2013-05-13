@@ -12,7 +12,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.lap.LAPAccess;
-import eu.excitementproject.eop.lap.biu.uima.ae.CasTreeConverter;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 public class CasTreeConverterTester {

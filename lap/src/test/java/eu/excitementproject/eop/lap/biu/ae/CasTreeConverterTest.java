@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
-import eu.excitementproject.eop.lap.biu.uima.ae.CasTreeConverter;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
 
 
 @Ignore("Environment doesn't support yet storing model files + running easyfirst")

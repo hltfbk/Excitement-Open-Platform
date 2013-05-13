@@ -25,8 +25,8 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
 import eu.excitementproject.eop.lap.biu.en.parser.BasicPipelinedParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.postagger.PosTaggedToken;
-import eu.excitementproject.eop.lap.biu.uima.ae.AbstractNodeCASUtils;
-import eu.excitementproject.eop.lap.biu.uima.ae.AbstractNodeCasException;
+import eu.excitementproject.eop.lap.biu.uima.AbstractNodeCASUtils;
+import eu.excitementproject.eop.lap.biu.uima.AbstractNodeCasException;
 import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
 
 

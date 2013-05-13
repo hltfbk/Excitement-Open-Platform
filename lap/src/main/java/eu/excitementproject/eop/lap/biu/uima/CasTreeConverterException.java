@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.uima.ae;
+package eu.excitementproject.eop.lap.biu.uima;
 
 public class CasTreeConverterException extends Exception {
 

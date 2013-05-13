@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.uima.ae;
+package eu.excitementproject.eop.lap.biu.uima;
 
 import java.util.ArrayList;
 import java.util.Collection;
