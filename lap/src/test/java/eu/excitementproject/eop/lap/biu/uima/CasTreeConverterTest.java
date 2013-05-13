@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.ae;
+package eu.excitementproject.eop.lap.biu.uima;
 
 import java.io.File;
 
