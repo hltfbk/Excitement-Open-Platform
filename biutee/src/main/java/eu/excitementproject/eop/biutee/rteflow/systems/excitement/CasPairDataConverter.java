@@ -19,8 +19,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassificationType;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-import eu.excitementproject.eop.lap.biu.ae.CasTreeConverter;
-import eu.excitementproject.eop.lap.biu.ae.CasTreeConverterException;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 /**
