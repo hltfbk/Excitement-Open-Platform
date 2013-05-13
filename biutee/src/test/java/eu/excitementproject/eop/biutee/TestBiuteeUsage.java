@@ -9,6 +9,7 @@ import junit.framework.Assert;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
+import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -49,12 +50,15 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  * @author Ofer Bronstein
  * @since May 2013
  */
-//@Ignore("Environment doesn't support yet storing model files + running easyfirst")
 public class TestBiuteeUsage {
 	
+	/**
+	 * This class only works under the BIU environment.
+	 */
 	@BeforeClass
 	public static void prepareBiuteeRun() {
-		
+		File workingFolder = new File(System.getProperty("user.dir"));
+		Assume.assumeTrue(workingFolder.getName().toLowerCase().startsWith("workdir"));
 	}
 
 	/**
