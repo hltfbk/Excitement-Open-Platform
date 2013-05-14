@@ -3,6 +3,7 @@ package eu.excitementproject.eop.lap.dkpro;
 import static org.junit.Assert.fail;
 
 import java.io.File;
+import java.util.HashMap;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
@@ -22,14 +23,22 @@ public class MaltParserEnTest {
 
 		// Generating a Single CAS 
 		try {
-			// linear, poly
-			lap = new MaltParserEN("poly");
+			// linear test 
+			lap = new MaltParserEN(); // same as default, which is linear
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
 			aJCas = lap.generateSingleTHPairCAS("Bush used his weekly radio address to try to build support for his plan to allow workers to divert part of their Social Security payroll taxes into private investment accounts", "Mr. Bush is proposing that workers be allowed to divert their payroll taxes into private accounts."); 
 			
-			PlatformCASProber.probeCas(aJCas, System.out); 
+			//PlatformCASProber.probeCas(aJCas, System.out); 
 			
+			// poly model test 
+			// This will load poly model, and trace output will show "poly" too. 
+			HashMap<String,String> m = new HashMap<String,String>(); 
+			m.put("PARSER_MODEL_VARIANT", "poly"); 
+			lap = new MaltParserEN(m); 
+			aJCas = lap.generateSingleTHPairCAS("Bush used his weekly radio address to try to build support for his plan to allow workers to divert part of their Social Security payroll taxes into private investment accounts", "Mr. Bush is proposing that workers be allowed to divert their payroll taxes into private accounts."); 			
+		
+			//PlatformCASProber.probeCas(aJCas, System.out); 
 		}
 		catch(LAPException e)
 		{

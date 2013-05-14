@@ -2,6 +2,8 @@ package eu.excitementproject.eop.lap.dkpro;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
+import java.util.Map;
+
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -37,7 +39,7 @@ public class MSTParserEN extends LAP_ImplBaseAE {
 	 */
 	public MSTParserEN() throws LAPException 
 	{
-		this("default"); // default model 		
+		this(null); // no arguments passed to listAEDescriptors -- means default model
 	}
 	
 	/**
@@ -50,14 +52,14 @@ public class MSTParserEN extends LAP_ImplBaseAE {
 	 * If you need only need to annotate a specific view (e.g. Default only, not for T & H View, etc) 
 	 * call the full constructor with two arguments. (e.g. if you give one view only, its initialization is faster).
 	 * 
-	 * @param modelVarient String of the model varient. If the given varient is not accessible in the class path, the underlying AE will try to use default. If default isn't there, it will raise an exception. 
+	 * @param listAEDescriptorsArgs This argument holds the arguments that will be passed directly to the listAEDescriptorsArgs() which will generate AE descriptors. The arguments are depending on the implementation of listAEDescriptors(). Only one argument is know to this pipeline. PARSER_MODEL_VARIANT: which will load corresponding model variant of MST parser. 
 	 * @throws LAPException
 	 */
-	public MSTParserEN(String modelVarient) throws LAPException 
+	public MSTParserEN(Map<String,String> listAEDescriptorsArgs) throws LAPException 
 	{
-		super(); 
+		super(listAEDescriptorsArgs); 
 		languageIdentifier = "EN"; // set languageIdentifer
-		this.modelVariant = modelVarient; // this will determine model-"variant" for model loading 
+		// REMOVED: use listAEDescriptorArgs instead.	//this.modelVariant = modelVarient; // this will determine model-"variant" for model loading 
 	}
 	
 	/**
@@ -65,23 +67,30 @@ public class MSTParserEN extends LAP_ImplBaseAE {
 	 * Full constructor, that accepts model Varient and view names. If you use this LAP for EOP EDAs (e.g. where you need TextView & Hypothesis View), you can simply call the constructor without view names (since their default is Default, TView and HView). 
 	 * ModelVarient will load the desinated model-varient. 	(Thus: de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-[LANGID]-[modelVarient] ) 
 	 * 
-	 * @param modelVarient String of the model varient. If the given varient is not accessible in the class path, the the underlying AE will try to use default. If default isn't there, it will raise an exception.
 	 * @param views String array of "view names". Once initialized, the instance can only annotate this "previously given" Views only. (See LAP_ImplBaseAE for explanation). 
+	 * @param listAEDescriptorsArgs This argument holds the arguments that will be passed directly to the listAEDescriptorsArgs() which will generate AE descriptors. The arguments are depending on the implementation of listAEDescriptors(). Only one argument is know to this pipeline. PARSER_MODEL_VARIANT: which will load corresponding model variant of MST parser. 
 	 * @throws LAPException
 	 */
-	public MSTParserEN(String modelVarient, String[] views) throws LAPException 
+	public MSTParserEN(String[] views, Map<String,String> listAEDescriptorsArgs) throws LAPException 
 	{
-		super(views);
+		super(views, listAEDescriptorsArgs);
 		languageIdentifier = "EN"; 
-		this.modelVariant = modelVarient; 
+		// REMOVED: use listAEDescriptorArgs instead // this.modelVariant = modelVarient; 
 	}
 	
 	@Override
-	public AnalysisEngineDescription[] listAEDescriptors() throws LAPException {
+	public AnalysisEngineDescription[] listAEDescriptors(Map<String, String> args) throws LAPException {
 
 		// This example uses DKPro BreakIterSegmenter, TreeTagger, and MSTParser 
 		// simply return them in an array, with order. (sentence segmentation first, then tagging, then parsing) 
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[3];
+		String modelVariant=null; 
+
+	    if ( (args != null) && (args.get("PARSER_MODEL_VARIANT") != ""))
+	    { // parser model argument passed in from the constructor. 
+	    	modelVariant = args.get("PARSER_MODEL_VARIANT"); 
+	    }
+	    
 		try 
 		{
 			descArr[0] = createPrimitiveDescription(BreakIteratorSegmenter.class);
@@ -98,7 +107,7 @@ public class MSTParserEN extends LAP_ImplBaseAE {
 				
 	}
 
-	private String modelVariant; 
+	//private String modelVariant; 
 	
 }
 
