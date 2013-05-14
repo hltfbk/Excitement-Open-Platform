@@ -31,7 +31,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
-import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
+//import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.common.exception.BaseException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
@@ -112,6 +112,7 @@ public class TreeTaggerGermaNetIntegrationTest {
 							//System.out.println(rule.toString());
 						}
 
+			    		/*
 			    		// GN call for left ENTAILMENT relations of the token/POS pair
 						for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft(tokenText, new GermanPartOfSpeech(tokenPos), TERuleRelation.Entailment)) {
 							assertTrue(rule.getConfidence() > 0);
@@ -119,6 +120,7 @@ public class TreeTaggerGermaNetIntegrationTest {
 							assertTrue(rule.getLPos() != null); // if a rule has been created, there must be a rPos!							
 							//System.out.println(rule.toString());
 						}
+						*/
 						
 						//System.out.println();
 			    	}

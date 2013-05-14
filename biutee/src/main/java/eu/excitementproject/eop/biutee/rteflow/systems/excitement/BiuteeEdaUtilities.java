@@ -15,7 +15,7 @@ import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.lap.biu.ae.CasTreeConverterException;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
