@@ -26,12 +26,6 @@ import eu.excitementproject.eop.lap.lappoc.LAP_ImplBaseAE;
 public class MaltParserEN extends LAP_ImplBaseAE {
 
 	/**
-	 * the parameter for the classifier (i.e., SVM).
-	 */
-	// REMOVED since not working // private String aVariant;
-	// Use listAEDescriptorsArgs instead. 
-
-	/**
 	 * the default, simple constructor. Will generate default pipeline with default views and models. 
 	 * 
 	 * @throws LAPException
@@ -39,7 +33,6 @@ public class MaltParserEN extends LAP_ImplBaseAE {
 	public MaltParserEN() throws LAPException {
 		super();
 		languageIdentifier = "EN";
-		//REMOVED this.aVariant = "linear";
 	}
 
 	/**
@@ -55,7 +48,6 @@ public class MaltParserEN extends LAP_ImplBaseAE {
 	public MaltParserEN(Map<String,String> listAEDescriptorsArgs) throws LAPException {
 		super(listAEDescriptorsArgs);
 		languageIdentifier = "EN"; // set languageIdentifer
-		// REMOVED this.aVariant = aVariant;
 	}
 
 	/**
@@ -71,16 +63,11 @@ public class MaltParserEN extends LAP_ImplBaseAE {
 	public MaltParserEN(String[] views, Map<String,String> listAEDescriptorsArgs) throws LAPException {
 		super(views, listAEDescriptorsArgs);
 		languageIdentifier = "EN";
-		// REMOVED since not working. use argument listAEDescriptorsArgs instead. // this.aVariant = aVariant;
 	}
 
 	@Override
 	public final AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args)
 			throws LAPException {
-		// This example uses DKPro BreakIterSegmenter, TreeTagger, and
-		// MaltParser
-		// simply return them in an array, with order. (sentence segmentation
-		// first, then tagging, then parsing)
 		final int NUM_OF_ARR = 3;
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[NUM_OF_ARR];
 		
