@@ -13,9 +13,11 @@
 
 
 	<section name="GermaNetWrapper">
-	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
+		<!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS 
+	    	 or RHS->LHS, as a value of confidence [0.0 - 1.0] --> 
 
-		<property name="germaNetFilesPath">/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
+		<!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. -->
+		<property name="germaNetFilesPath">/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property>  
 
 		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
 		<property name="causesConfidence">1.0</property> 
@@ -30,7 +32,9 @@
 	
 	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
 	<section name="DerivBaseResource">
-		<!-- Path to the DErivBase resource file. You can choose either a resource containing scores or no scores. 
+	
+		<!-- Path to the DErivBase resource file. If no file is found, the init will raise an exception. 
+		     You can choose either a resource containing scores or no scores. 
 		     DEFAULT: no scores. -->
 		<property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt</property>
 		
