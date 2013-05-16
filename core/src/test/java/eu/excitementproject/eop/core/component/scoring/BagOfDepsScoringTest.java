@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.core.component.scoring;
 
+import java.util.HashMap;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -30,8 +31,15 @@ public class BagOfDepsScoringTest {
 		LAPAccess lap = null;
 
 		try {
-       	lap = new MaltParserEN("poly");
-       	// Entailment
+			// this is old code (that doesn't load poly, but only default) 
+			// lap = new MaltParserEN("poly");
+
+			// New usage for MaltParserEN passing parameter for Model variant. 
+			HashMap<String, String> descArgs = new HashMap<String,String>(); 
+			descArgs.put("PARSER_MODEL_VARIANT", "poly"); 
+			lap = new MaltParserEN(descArgs); 
+
+			// Entailment
 			aCas = lap.generateSingleTHPairCAS(
 					"The person is hired as a postdoc.",
 					"The person must have a PhD.");

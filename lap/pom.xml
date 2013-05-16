@@ -18,11 +18,13 @@
 			<name>DKPro repository</name>
           	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
      	</repository>
+     <!--  
      	<repository>
      		<id>ukp-oss-snapshot</id>
      		<name>DKPro snapshot repository (for 1.5.0 access)</name>
      		<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots</url> 
      	</repository>
+     --> 
   	</repositories>
   	
    	<pluginRepositories>
@@ -199,6 +201,25 @@
     		</artifactId>
     	</dependency>
     	<dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>
+                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear
+            </artifactId>
+            <version>20130511.0</version>
+        </dependency>
+        <!--
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-ner-en-all.3class.distsim.crf
+    		</artifactId>
+    		<version>20130404.1</version>
+    	</dependency>
+    	-->
+    	<!-- We are not using MST parser for 1.0 release.  -->
+    	<!--  
+    	
+    	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
     			de.tudarmstadt.ukp.dkpro.core.mstparser-asl
@@ -212,6 +233,7 @@
     		</artifactId>
     		<version>20121910.0</version>
     	</dependency>
+    	
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
@@ -219,7 +241,7 @@
     		</artifactId>
     		<version>20130304.0</version>
     	</dependency>
-    	
+    	--> 
     	<!--  1G big model for German MST parser: commented out for prevent unneeded downloads -->
     	<!--  Include them if you need  DE-LONG variant model for MSTParserDE -->
     	<!-- 
@@ -231,13 +253,6 @@
     		<version>20130301.0</version>
     	</dependency>
     	-->
-    	<dependency>
-            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-            <artifactId>
-                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear
-            </artifactId>
-            <version>20130511.0</version>
-        </dependency>
  	</dependencies>
 
     <dependencyManagement>

@@ -10,6 +10,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.uimafit.factory.AggregateBuilder;
 
 import java.util.HashMap; 
+import java.util.Map; 
 
 /**
  * 
@@ -68,17 +69,9 @@ import java.util.HashMap;
 public abstract class LAP_ImplBaseAE extends LAP_ImplBase {
 	
 	/**
-	 * LAP_ImplBaseAE constructor without any argument will simply call 
-	 * LAP_ImplBaseAE(String[] knownViews) with three default view names 
-	 * TextView, HypothesisView and _InitialView 
-	 * @throws LAPException
-	 */
-	protected LAP_ImplBaseAE() throws LAPException
-	{
-		this(new String[]{INITIALVIEW, TEXTVIEW, HYPOTHESISVIEW}); 
-	}
-	
-	/**
+	 * This is the full constructor. 
+	 * <P> 
+	 * 
 	 * The constructor of LAP_ImplBaseAE requires "view names" that this 
 	 * LAP will work on. Once initialized addAnnotationOn() will only work 
 	 * on this "known" views only. 
@@ -86,13 +79,14 @@ public abstract class LAP_ImplBaseAE extends LAP_ImplBase {
 	 * The constructor pre-generates one AAE for each of the view, and 
 	 * use them to annotate data on that view. 
 	 * 
-	 * @param views
+	 * @param views Name of the views that this LAPAccess will process after init. 
+	 * @param listAEDescriptorsArgs This argument holds the arguments that will be passed directly to the listAEDescriptorsArgs() which will generate AE descriptors. The arguments are depending on the implementation of listAEDescriptors(). The constructor does not use this value as itself. 
 	 * @throws LAPException
 	 */
-	protected LAP_ImplBaseAE(String[] views) throws LAPException 
+	protected LAP_ImplBaseAE(String[] views, Map<String,String> listAEDescriptorsArgs) throws LAPException 
 	{
 		engineForView = new HashMap<String, AnalysisEngine>();  
-		AnalysisEngineDescription[] descList = listAEDescriptors(); 
+		AnalysisEngineDescription[] descList = listAEDescriptors(listAEDescriptorsArgs); 
 		for (String v : views)
 		{
 			AggregateBuilder builder = new AggregateBuilder();
@@ -112,6 +106,34 @@ public abstract class LAP_ImplBaseAE extends LAP_ImplBase {
 			engineForView.put(v, aae); 
 		}
 	}
+
+	/**
+	 * Simplified constructor for ImplBaseAE
+	 * <P> 
+	 * LAP_ImplBaseAE constructor without any argument will simply call 
+	 * LAP_ImplBaseAE(String[] knownViews) with three default view names 
+	 * TextView, HypothesisView and _InitialView 
+	 * Also, this passes null arguments for listAEDescriptors 
+	 * 
+	 * @throws LAPException
+	 */
+	protected LAP_ImplBaseAE() throws LAPException
+	{
+		this(new String[]{INITIALVIEW, TEXTVIEW, HYPOTHESISVIEW}, null); 
+	}
+	
+	/**
+	 * Another simplified constructor for ImplBaseAE
+	 * <P>
+	 * This constructor uses the default three views as the target views, and passes the given argument map to listAEDescriptor(). 
+	 * 
+	 * @param listAEDescriptorsArgs This argument holds the arguments that will be passed directly to the listAEDescriptorsArgs() which will generate AE descriptors. The arguments are depending on the implementation of listAEDescriptors(). The constructor does not use this value as itself. 
+	 * @throws LAPException
+	 */
+	protected LAP_ImplBaseAE(Map<String,String> listAEDescriptorsArgs) throws LAPException
+	{
+		this(new String[]{INITIALVIEW, TEXTVIEW, HYPOTHESISVIEW}, listAEDescriptorsArgs); 
+	}
 	
 	/**
 	 * <P>
@@ -129,7 +151,7 @@ public abstract class LAP_ImplBaseAE extends LAP_ImplBase {
 	 * 
 	 * @return an ordered array of AnalysisEngineDescription 
 	 */
-	public abstract AnalysisEngineDescription[] listAEDescriptors() throws LAPException;
+	public abstract AnalysisEngineDescription[] listAEDescriptors(Map<String,String> arguments) throws LAPException;
 	
 	
 	@Override
