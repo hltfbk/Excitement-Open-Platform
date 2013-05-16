@@ -21,7 +21,7 @@ import static org.uimafit.factory.AnalysisEngineFactory.*;
 import org.uimafit.component.xwriter.CASDumpWriter;
 import org.uimafit.factory.AggregateBuilder;
 import de.tudarmstadt.ukp.dkpro.core.treetagger.*; 
-import de.tudarmstadt.ukp.dkpro.core.mstparser.MSTParser; 
+//import de.tudarmstadt.ukp.dkpro.core.mstparser.MSTParser; 
 //import static org.uimafit.pipeline.SimplePipeline.*;
 //import static org.uimafit.factory.TypeSystemDescriptionFactory.*; 
 //import static org.uimafit.factory.JCasFactory.*; 
@@ -45,7 +45,7 @@ public class DKProTest {
 		AnalysisEngineDescription seg = createPrimitiveDescription(BreakIteratorSegmenter.class);
 		//AnalysisEngineDescription tagger = createPrimitiveDescription(OpenNlpPosTagger.class);
 		AnalysisEngineDescription lemma = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
-		AnalysisEngineDescription parse = createPrimitiveDescription(MSTParser.class); 
+		//AnalysisEngineDescription parse = createPrimitiveDescription(MSTParser.class); 
 		AnalysisEngineDescription cc = createPrimitiveDescription(
 			         CASDumpWriter.class,
 			         CASDumpWriter.PARAM_OUTPUT_FILE, "target/output.txt");
@@ -77,7 +77,7 @@ public class DKProTest {
 		builder.add(seg, "_InitialView", "TextView");
 		//builder.add(tagger, "_InitialView", "TextView"); 
 		builder.add(lemma, "_InitialView", "TextView");
-		builder.add(parse, "_InitialView", "TextView");  
+		//builder.add(parse, "_InitialView", "TextView");  
 		builder.add(cc); 
 		
 		AnalysisEngine textViewAE = builder.createAggregate(); 
@@ -93,13 +93,13 @@ public class DKProTest {
 		// b) Dependency on this big model is commented out on the upstream LAP POM.xml. 
 		//    un-comment that dependency in POM to mark dependency on the long model. 
 		//    if the model is not found, DKPro MST parser will load up default model. 
-		AnalysisEngineDescription parse2 = createPrimitiveDescription(MSTParser.class,
-				MSTParser.PARAM_VARIANT, "long"); 
+		//AnalysisEngineDescription parse2 = createPrimitiveDescription(MSTParser.class,
+		//		MSTParser.PARAM_VARIANT, "long"); 
 	
 		AggregateBuilder b = new AggregateBuilder(); 
 		b.add(seg); 
 		b.add(lemma); 
-		b.add(parse2); 
+		//b.add(parse2); 
 		b.add(cc); 
 
 		AnalysisEngine bAE = b.createAggregate(); 

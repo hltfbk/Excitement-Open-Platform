@@ -2,6 +2,8 @@ package eu.excitementproject.eop.lap.lappoc;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
+import java.util.Map;
+
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 
@@ -28,14 +30,15 @@ public class ExampleLAPAE extends LAP_ImplBaseAE {
 	}
 
 	public ExampleLAPAE(String[] views) throws LAPException {
-		super(views);
+		super(views, null);
 		languageIdentifier = "EN"; 
 	}
 
 	@Override
-	public AnalysisEngineDescription[] listAEDescriptors() throws LAPException{
+	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException{
 		// This example uses DKPro BreakIterSegmenter and TreeTagger. 
 		// simply return them in an array, with order. (sentence segmentation first, then tagging) 
+		// also, this example does not use any arguments (e.g. no model selection, etc) 
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[2];
 		try 
 		{

@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
@@ -222,7 +223,13 @@ public class MaxEntClassificationEDATest {
 		LAPAccess lap = null;
 
 		try {
-			lap = new MaltParserEN(aVariant);
+			// previously // lap = new MaltParserEN(aVariant);
+			// now either this; if model variants are needed ... 
+			HashMap<String, String> descArgs = new HashMap<String,String>(); 
+			descArgs.put("PARSER_MODEL_VARIANT", aVariant); 
+			lap = new MaltParserEN(descArgs); 
+			// or you can say, // lap = new MaltParserEN(); // this will load default model. 
+			
 			lap.processRawInputFormat(inputFile, outputDir);
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
@@ -238,7 +245,7 @@ public class MaxEntClassificationEDATest {
 		assertTrue(outputDir.exists());
 		
 		try {
-			lap = new MaltParserEN(aVariant);
+			lap = new MaltParserEN(); // Default model 
 			lap.processRawInputFormat(inputFile, outputDir);
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
