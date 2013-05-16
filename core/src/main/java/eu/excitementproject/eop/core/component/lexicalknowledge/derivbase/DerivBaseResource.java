@@ -15,9 +15,12 @@ import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 
+import java.util.HashMap;
+import java.util.Iterator;
 // other imports
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 //import java.util.Iterator;
@@ -45,8 +48,8 @@ import java.util.HashSet;
 
 public class DerivBaseResource implements Component, LexicalResource<DerivBaseInfo> {
 
-	/** confidences; not yet used, tbd in later version.*/
-	//private final Map<Enum<?>, Double> CONFIDENCES = new HashMap<Enum<?>, Double>();
+	/** global confidence score set by configuration or user parameters */
+	private final double CONFIDENCE; //TODO: is CONFIDENCE needed?
 
 	/** DerivBase object. */
 	private DerivBase derivbase;
@@ -74,50 +77,60 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	 * @throws ComponentException
 	 */
 	public DerivBaseResource(CommonConfig config) throws ConfigurationException, ComponentException {
-		this(config.getSection("DerivBaseResource").getString("derivBaseFilePath"),
-				config.getSection("DerivBaseResource").getDouble("confidences"));
+		this(config.getSection("DerivBaseResource").getString("derivBaseFilePath"), 
+				config.getSection("DerivBaseResource").getDouble("scoreConfidence"), 
+				Boolean.parseBoolean(config.getSection("DerivBaseResource").getString("scoreInfo")));
 	}
 	
 	/**
 	 * Creates a new DerivBaseResource instance, and initializes the instance
-	 * (basically loads DerivBase file into memory).
-	 * Sets the default value 1.0 as confidence value for all relations.
+	 * (basically loads DerivBase file into memory). Since no minimum confidence
+	 * score or score flag are indicated, this constructor assumes a file without
+	 * scores.
 	 * 
 	 * @param derivBaseFilesPath			Path to DerivBase file
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
 	public DerivBaseResource(String derivBaseFilesPath) throws ConfigurationException, ComponentException {
-		this(derivBaseFilesPath, 1.0);
+		this(derivBaseFilesPath, 0.00, false);
 	}
 	
 	/**
 	 * Creates a new DerivBaseResource instance, and initializes the instance
-	 * (basically loads DerivBase file into memory).
+	 * (basically loads DerivBase file into memory). Minimum confidence score
+	 * and score flag are indicated and used.
 	 * 
 	 * @param dbasePath		Path to DerivBase file
-	 *@param confidences	LATER: add scores.
+	 * @param minScore specifies the minimum score value a pair must have to be considered
+	 * @param scoreInfo specifies if the given DerivBase file contains scores for lemma pairs or not
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
-	public DerivBaseResource(String dbasePath, Double confidences) throws ConfigurationException, ComponentException {
+	public DerivBaseResource(String dbasePath, Double minScore, boolean scoreInfo) throws ConfigurationException, ComponentException {
+		
 		try {
-			this.derivbase = new DerivBase(dbasePath);
+			this.derivbase = new DerivBase(dbasePath, minScore, scoreInfo);
 		}
 		catch (java.io.FileNotFoundException e) {
 			throw new DerivBaseNotInstalledException("Path to DErivBase is not correct.", e);
 		}
 		catch (java.lang.Exception e) {
-			throw new ComponentException("Cannot initialize DErivBase. Please check the path" 
-					+ " and the format of your DErivBase version. "
-					+ "Should be: \nlemma_pos: relatedl1_p1 relatedl2_p2 ...", e);
+			throw new ComponentException("Cannot initialize DErivBase (path: "
+					+ dbasePath
+					+ "). Please check the path and the format of your DErivBase version. "
+					+ "Should be: \n1) for resource without confidence scores:\n" 
+					+ "lemma_pos: relatedl1_p1 relatedl2_p2 ..." 
+					+ "\n2) for resource with confidence scores:\n" 
+					+ "lemma_pos: relatedl1_p1 score1 relatedl2_ps score2 ...", e);
 		}
 				
-		/*if (confidences == null)
-			CONFIDENCES.put(ConRel.causes, 0.0);
-		else
-			CONFIDENCES.put(ConRel.causes, confidences);
-			*/
+		if (minScore == null) {
+			CONFIDENCE = 0.0;
+		}
+		else {
+			CONFIDENCE = minScore; 
+		}
 	}
 	
 	
@@ -146,8 +159,9 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 
 	/**
 	 * Returns a list of lexical rules whose left side (the head of the lexical relation) matches
-	 * the given lemma and POS. An empty list means that no rules were matched. If the user 
-	 * gives null POS, the class will retrieve rules for all possible POSes.
+	 * the given lemma and POS. An empty list means that no rules were matched. 
+	 * 
+	 * TODO: If the user gives null POS, the class will retrieve rules for all possible POSes.
 	 * @param lemma Lemma to be matched on LHS. 
 	 * @param pos POS to be matched on LHS. null means "don't care". 
 	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
@@ -160,7 +174,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		
 		// check POS is valid or not for DerivBase. Note that DerivBase only has noun, verb, and adjective.
 		// for POSes unknown to DerivBase, no need to look up: return an empty list.
-		//TODO: if necessary, change later to "pos != null &&" and add logic for unspecified POS 
+		//TODO: if necessary (i.e. null-POSes allowed), change later to "pos != null &&" and add logic for unspecified POS 
 		if (pos == null || !isValidPos(pos)){  
 			return new ArrayList<LexicalRule<? extends DerivBaseInfo>>(result);
 		}
@@ -169,53 +183,137 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		String derivbasePos = pos.toString().substring(0, 1);
 
 		// get related lemma-POS pairs and add them to results LexicalRule
+		// --> Get these pairs once for the resource without scores...
+		// The information in this List will later be written as additional information into DerivBaseInfo
 		ArrayList<Tuple<String>> related = new ArrayList<Tuple<String>>();
-		related = derivbase.getRelatedLemmaPosPairs(lemma, derivbasePos);
-		
-		// if nothing found for this lemma-pos pair: return empty list
-		if (related.size() == 0) {
-			return new ArrayList<LexicalRule<? extends DerivBaseInfo>>(result);
+		if (!derivbase.entries.isEmpty()) {
+			related = derivbase.getRelatedLemmaPosPairs(lemma, derivbasePos);
 		}
+		// --> ... and once for the resource with scores.
+		ArrayList<HashMap<Tuple<String>, Double>> relatedScores = new ArrayList<HashMap<Tuple<String>, Double>>();
+		if (!derivbase.entryScores.isEmpty()) {
+			relatedScores = derivbase.getRelatedLemmaPosPairsWithScore(lemma, derivbasePos);
+		}
+		// Note: ONLY ONE of those two ArrayLists will be filled; if no matches found, both lists are empty.
+		// System.out.println("which one is empty? related: " + related.isEmpty() + ", or relatedScores: " + relatedScores.isEmpty());
 		
-		for (Tuple<String> relatedPair: related) {
-			String relatedLemma = relatedPair.getA();
-			PartOfSpeech relatedPos = null;
-			try {
-				// TODO: is it problematic for calling functions that getB 
-				// returns only N,V,A, but not NN?
-				
-				// enlarge "A" to "ADJ" for GermanPartOfSpeech lookup
-				if (relatedPair.getB().equals("A")) {
-					relatedPos = new GermanPartOfSpeech("ADJ");
-				} else {
-					relatedPos = new GermanPartOfSpeech(relatedPair.getB());
-				}
-			} catch (UnsupportedPosTagStringException e) {
-				System.err.println("Problems converting the DErivBase POS string " 
-						+ relatedPair.getB() + " to GermanPartOfSpeech.");
-				e.printStackTrace();
-			}
+		
+		if (relatedScores.isEmpty()) { // if scores are available
+			result = proceedWithoutScores(related, result, lemma, pos);
 			
-			LexicalRule<? extends DerivBaseInfo> rule = new LexicalRule<DerivBaseInfo>(lemma, pos, 
-					relatedLemma, relatedPos, "derivational", "DErivBase", new DerivBaseInfo());
-			
-			result.add(rule);	
+		} else { // if no scores are available
+			result = proceedWithScores(relatedScores, result, lemma, pos);
 		}
 
-		//TODO: the following check is only necessary when we use confidence scores!
-		/*
+		return new ArrayList<LexicalRule<? extends DerivBaseInfo>>(result);
+	}
+	
+
+
+	/**
+	 * TODO: javadoc 
+	 * 
+	 * @param relatedScores
+	 * @param result
+	 * @param lemma
+	 * @param pos
+	 * @return
+	 * @throws LexicalResourceException
+	 */
+	private Set<LexicalRule<? extends DerivBaseInfo>> proceedWithScores(ArrayList<HashMap<Tuple<String>, Double>> 
+			relatedScores, Set<LexicalRule<? extends DerivBaseInfo>> result, String lemma, PartOfSpeech pos) throws LexicalResourceException {
+		
+		if (relatedScores.size() == 0) {
+			return new HashSet<LexicalRule<? extends DerivBaseInfo>>(result);
+		}
+		
+		// access HashMap with related lemma + score for lemma pair
+		for (HashMap<Tuple<String>, Double> relatedPairAndScore : relatedScores) {
+			for (Map.Entry<Tuple<String>, Double> entry : relatedPairAndScore.entrySet()) {
+				
+			    Tuple<String> relatedPair = entry.getKey();
+			    String relatedLemma = relatedPair.getA();
+			    PartOfSpeech relatedPos = convertPartOfSpeech(relatedPair);
+			    Double relatedConfScore = entry.getValue();
+			    
+			    // prepare saving info about the whole derivational family in 
+				// DerivBaseInfo  as a Set<String>
+				Set<String> derivFamily = new HashSet<String>();
+				for (HashMap<Tuple<String>, Double> relMember : relatedScores) {
+					// this loop always makes just one loop, since the HM only has 1 entry
+					for (Tuple<String> relatedMember : relMember.keySet()) {
+						derivFamily.add(relatedMember.getA().concat("_".concat(relatedMember.getB())));
+					}
+				}
+				
+			    LexicalRule<? extends DerivBaseInfo> rule = new LexicalRule<DerivBaseInfo>(lemma, pos, 
+						relatedLemma, relatedPos, relatedConfScore, "deriv-related", "DErivBase v1.3", new DerivBaseInfo(derivFamily));
+				
+				result.add(rule);	
+			}
+		}
+
+		// Gil's sanity check for non-zero confidence scores should be unnecessary here: 
+		// This is done in the DerivBase resource itself!
+		// TODO: check with SysOut!
 		// Gil: check all result, and remove any 0 confidence value 
 		Iterator<LexicalRule<? extends DerivBaseInfo>> i = result.iterator(); 
 		while (i.hasNext()) {
 			LexicalRule<? extends DerivBaseInfo> rule = i.next(); 
-			if (rule.getConfidence() == 0 ) // 0 confidence 
+			if (rule.getConfidence() == 0 ) { // 0 confidence 
 				i.remove(); 
+				System.out.println("HAD TO REMOVE A 0 CONFIDENCE ITEM!");
+			}
 		}
-		*/
 		
-		return new ArrayList<LexicalRule<? extends DerivBaseInfo>>(result);
+		return new HashSet<LexicalRule<? extends DerivBaseInfo>>(result);		
+		
+	}
+
+
+
+	/**
+	 * TODO: javadoc 
+	 * 
+	 * @param related
+	 * @param result
+	 * @param lemma
+	 * @param pos
+	 * @return
+	 * @throws LexicalResourceException
+	 */
+	private HashSet<LexicalRule<? extends DerivBaseInfo>> proceedWithoutScores(
+			ArrayList<Tuple<String>> related, Set<LexicalRule<? extends DerivBaseInfo>> result, String lemma, PartOfSpeech pos) throws LexicalResourceException {
+
+		// if nothing found for this lemma-pos pair: return empty list
+		if (related.size() == 0) {
+			return new HashSet<LexicalRule<? extends DerivBaseInfo>>(result);
+		}
+		
+		for (Tuple<String> relatedPair: related) {
+			String relatedLemma = relatedPair.getA();
+			PartOfSpeech relatedPos = convertPartOfSpeech(relatedPair);
+			
+			// prepare saving info about the whole derivational family in 
+			// DerivBaseInfo  as a Set<String>
+			Set<String> derivFamily = new HashSet<String>();
+			for (Tuple<String> relatedMember : related) {
+				derivFamily.add(relatedMember.getA().concat("_").concat(relatedMember.getB()));
+			}
+			LexicalRule<? extends DerivBaseInfo> rule = new LexicalRule<DerivBaseInfo>(lemma, pos, 
+					relatedLemma, relatedPos, "deriv-related", "DErivBase v1.3", new DerivBaseInfo(derivFamily));
+			
+			result.add(rule);	
+		}
+		
+		// Gil's sanity check for non-zero confidence scores is not necessary here: 
+		// No scores available.
+		
+		return new HashSet<LexicalRule<? extends DerivBaseInfo>>(result);
 	}
 	
+
+
 
 	/** Returns a list of lexical rules whose right side (the target of the lexical relation) matches 
 	 * the given lemma and POS. An empty list means that no rules were matched.
@@ -230,14 +328,17 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		List<LexicalRule<? extends DerivBaseInfo>> rules = getRulesForLeft(lemma, pos);
 		for (LexicalRule<? extends DerivBaseInfo> rule : rules) {
 			result.add(new LexicalRule<DerivBaseInfo>(rule.getRLemma(), rule.getRPos(), 
-					rule.getLLemma(), rule.getLPos(), "derivational", "DErivBase", new DerivBaseInfo()));
+					rule.getLLemma(), rule.getLPos(), "deriv-related", "DErivBase v1.3", rule.getInfo()));
 		}
 		return result;
 	}
 
 	
 	
-	/** This method returns a list of lexical rules whose left and right sides match the two given pairs of lemma and POS.
+	/** 
+	 * This method returns a list of lexical rules whose left and right sides match the two given 
+	 * pairs of lemma and POS.
+	 * 
 	 * @param leftLemma Lemma to be matched on LHS
 	 * @param leftPos POS to be matched on LHS. null means "don't care". 
 	 * @param rightLemma Lemma to be matched on RHS. 
@@ -251,26 +352,51 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		prelimResult = this.getRulesForLeft(leftLemma, leftPos);
 		
 		for (LexicalRule<? extends DerivBaseInfo> rule : prelimResult) {
-			/*//TODO: is this security check necessary?
 			if (rule.getRLemma().equals(rightLemma)) {
-				if (rule.getRPos().equals(rightPos) 
-						|| (rule.getRPos().toString().equals("NN") && rightPos.toString().equals("N"))
-						|| (rule.getRPos().toString().equals("N") && rightPos.toString().equals("NN"))) {*/
-					ArrayList<LexicalRule<? extends DerivBaseInfo>> result = new ArrayList<LexicalRule<? extends DerivBaseInfo>>();
-					result.add(rule);
-					return new ArrayList<LexicalRule<? extends DerivBaseInfo>>(result);
-				//}
-			//}
+				ArrayList<LexicalRule<? extends DerivBaseInfo>> result = new ArrayList<LexicalRule<? extends DerivBaseInfo>>();
+				result.add(rule);
+				return new ArrayList<LexicalRule<? extends DerivBaseInfo>>(result);
+			}
 		}
 		
 		return new ArrayList<LexicalRule<? extends DerivBaseInfo>>();
 	}
 
 
+	
+	/**
+	 * Converts DErivBase-internal POS notation to the project-wide one, i.e.,
+	 * converts "A" to "ADJ".
+	 * 
+	 * @param relatedPair a tuple of lemma and POS, where the POS should be converted
+	 * @return
+	 */
+	private PartOfSpeech convertPartOfSpeech(Tuple<String> relatedPair) {
+		PartOfSpeech relatedPos = null;
+		try {
+			// TODO: is it problematic for calling functions that getB 
+			// returns only N,V,A, but not NN?
+			
+			// enlarge "A" to "ADJ" for GermanPartOfSpeech lookup
+			if (relatedPair.getB().equals("A")) {
+				relatedPos = new GermanPartOfSpeech("ADJ");
+			} else {
+				relatedPos = new GermanPartOfSpeech(relatedPair.getB());
+			}
+		} catch (UnsupportedPosTagStringException e) {
+			System.err.println("Problems converting the DErivBase POS string " 
+					+ relatedPair.getB() + " to GermanPartOfSpeech.");
+			e.printStackTrace();
+		}
+		return relatedPos;
+	}
+
+
+	
 	@Override
 	public void close() throws LexicalResourceCloseException {
 		
 	}
-
+		
 }
 
