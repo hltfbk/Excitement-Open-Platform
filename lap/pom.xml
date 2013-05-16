@@ -207,6 +207,7 @@
             </artifactId>
             <version>20130511.0</version>
         </dependency>
+        <!--
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
@@ -214,7 +215,7 @@
     		</artifactId>
     		<version>20130404.1</version>
     	</dependency>
-    	    	
+    	-->
     	<!-- We are not using MST parser for 1.0 release.  -->
     	<!--  
     	
