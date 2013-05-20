@@ -300,6 +300,8 @@ public final class StringUtil
 
 	/**
 	 * Trims leading and trailing characters according to the given CharacterCriterion
+	 * This method is used as the actual implementation of the methods
+	 * {@link #trimNonLetters(String)} and {@link #trimNeitherLettersNorDigits(String)}.
 	 * @param str
 	 * @param criterion
 	 * @return
