@@ -40,7 +40,7 @@
 		     DEFAULT: no scores. -->
 		<property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt</property>
 		
-		<!-- Specifies if rules are available or not. True=file with scores avaliable, False=no scores.  
+		<!-- Specifies if rule scores are available or not. True=file with scores avaliable, False=no scores.  
 			 If you choose a resource format containing scores, but declare "false" here (or vice versa), the 
 			 DerivBaseResource implementation will raise an exception. 
 			 DEFAULT: false. -->

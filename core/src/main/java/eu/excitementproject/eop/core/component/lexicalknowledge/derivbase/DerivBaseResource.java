@@ -27,9 +27,19 @@ import java.util.HashSet;
  * which share a morphologic (and ideally a semantic) relationship, e.g. "sleep, 
  * sleepy, to sleep, sleepless" 
  * 
- * The implementation accesses the resource file directly, which contains lemma-POS 
- * pairs and their corresponding derivations. Each lemma is 
- * considered as entailing as well as being entailed by its corresponding derivations. 
+ * The implementation can access the resource file containing lemma-POS pairs and their 
+ * corresponding derivations in two different formats:
+ * 1. with confidence scores for each lemma pair within one derivational family; 
+ *    example:
+      Aalener_Nm: Aalen_Nn 1.00 aalen_V 0.50 Aal_Nn 0.33
+ * 2. simply derivational families without information about lemma pair confidences; 
+ *    example:
+ *    Aalener_Nm: Aalen_Nn aalen_V Aal_Nn 
+ * The user has to specify with the constructor call (or in the CommonConfig setting) 
+ * if the resource format contains scores (1.) or not (2.). 
+ * 
+ * Each lemma is considered as entailing as well as being entailed by its corresponding 
+ * derivations. 
  * 
  * <P>
  * The implementation supports LexicalResource, but not LexicalResourceWithRelation.
@@ -78,7 +88,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	 * Creates a new DerivBaseResource instance, and initializes the instance
 	 * (basically loads DerivBase file into memory).
 	 * 
-	 * @param config		Configuration for the DerivBaseResource instance
+	 * @param config Configuration for the DerivBaseResource instance
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
@@ -92,7 +102,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	 * Creates a new DerivBaseResource instance, and initializes the instance
 	 * (basically loads DerivBase file into memory). Since no minimum confidence
 	 * score or score flag are indicated, this constructor assumes a file without
-	 * scores.
+	 * scores and uses the DEFAULT_CONFIDENCE score of LexicalRule.
 	 * 
 	 * @param derivBaseFilesPath			Path to DerivBase file
 	 * @throws ConfigurationException
