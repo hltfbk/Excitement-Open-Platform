@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Vector;
+import java.util.logging.Logger;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -16,9 +17,13 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
+import eu.excitementproject.eop.common.exception.BaseException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.derivbase.DerivBaseNotInstalledException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.derivbase.DerivBaseResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;
 
 /**
@@ -31,6 +36,22 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
  * 
  */
 public class BagOfLexesPosScoring extends BagOfLexesScoring {
+	
+	static Logger logger = Logger.getLogger(BagOfLexesPosScoring.class.getName());
+	
+	/**
+	 * the number of features
+	 */
+	private int numOfFeats = 0;
+
+	@Override
+	public int getNumOfFeats() {
+		return numOfFeats;
+	}
+	
+	protected boolean[] moduleFlags = new boolean[1];
+	
+	protected DerivBaseResource dbr = null;
 
 	/**
 	 * the constructor
@@ -43,6 +64,27 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 	public BagOfLexesPosScoring(CommonConfig config)
 			throws ConfigurationException, LexicalResourceException {
 		super(config);
+		numOfFeats = super.getNumOfFeats();
+		
+		for (int i = 0; i < moduleFlags.length; i++) {
+			moduleFlags[i] = false;
+		}
+		
+		NameValueTable comp = config.getSection("BagOfLexesScoring");
+		
+		// initialize DerivBaseResource
+		if (null != comp.getString("DerivBaseResource")) {
+			try {
+				dbr = new DerivBaseResource(config);
+				numOfFeats++;
+				moduleFlags[0] = true;
+			} catch (DerivBaseNotInstalledException e) {
+				logger.warning("WARNING: DErivBase file was not found in the given path.");
+				throw new LexicalResourceException(e.getMessage());
+			} catch (BaseException e) {
+				throw new LexicalResourceException(e.getMessage());
+			}
+		}
 	}
 
 	@Override
@@ -59,11 +101,14 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 			JCas hView = aCas.getView("HypothesisView");
 			HashMap<String, Integer> hBag = countTokenPoses(hView);
 
-			if (moduleFlags[0]) {
+			if (super.moduleFlags[0]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
 			}
-			if (moduleFlags[1]) {
+			if (super.moduleFlags[1]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw));
+			}
+			if (moduleFlags[0]) {
+				scoresVector.add(calculateSingleLexScore(tBag, hBag, dbr));
 			}
 		} catch (CASException e) {
 			throw new ScoringComponentException(e.getMessage());
