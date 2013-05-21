@@ -61,8 +61,8 @@ public class DerivBase {
 	 * @throws IOException
 	 * @throws LexicalResourceException
 	 */
-	public DerivBase(String path, Double score, boolean scoreInfo) throws FileNotFoundException, IOException, LexicalResourceException {
-		this(new File(path), score, scoreInfo);
+	public DerivBase(String path, boolean scoreInfo, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
+		this(new File(path), scoreInfo, score);
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class DerivBase {
 	 * @throws IOException
 	 * @throws LexicalResourceException
 	 */
-    public DerivBase(File inFile, Double score, boolean scoreInfo) throws FileNotFoundException, IOException, LexicalResourceException {
+    public DerivBase(File inFile, boolean scoreInfo, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
     	
     	this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
     	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
@@ -88,7 +88,7 @@ public class DerivBase {
                 this.file = inFile;
             }
 
-            load(inFile, score, scoreInfo);        
+            load(inFile, scoreInfo, score);        
     }
     
     
@@ -119,7 +119,7 @@ public class DerivBase {
      * @throws FileNotFoundException
      * @throws LexicalResourceException
      */
-	private void load(File inFile, Double minScore, boolean scoreInfo) throws IOException, FileNotFoundException, LexicalResourceException {
+	private void load(File inFile, boolean scoreInfo, Double minScore) throws IOException, FileNotFoundException, LexicalResourceException {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
         String line;
@@ -142,6 +142,7 @@ public class DerivBase {
         		int i = 1;
         		Tuple<String> tailElement = new Tuple<String>() ; // = <lemma, pos>
         		
+        		
         		for (String t : tailList) {
         			
         			if (i % 2 == 1) { // for lemmas in the family queue
@@ -152,10 +153,10 @@ public class DerivBase {
             			Double score = Double.parseDouble(t); // = score
             			
             			if (score >= minScore) { // if score has at least defined value, save pair; else not.
-                			HashMap<Tuple<String>, Double> s = new HashMap<>();
+            				HashMap<Tuple<String>, Double> s = new HashMap<>();
                 			s.put(tailElement, score);
                 			
-                			scoreTail.add(s); //TODO: check if this keeps the tailElement after reinitializing.    	            				
+                			scoreTail.add(s);
             			}
             			
             			tailElement = new Tuple<String>();

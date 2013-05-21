@@ -34,7 +34,7 @@ public class DerivBaseResourceTest {
 		 * TEST 1: DErivBase format without scores, called directly
 		 * ****************************
 		 */
-		//System.out.println("******* TEST 1 *******");
+		//System.out.println("******* TEST 1: DErivBase format without scores, called directly *******");
 		
 		DerivBaseResource dbWithoutScores = null;
 		try {
@@ -136,8 +136,8 @@ public class DerivBaseResourceTest {
 			//System.out.println("no rule should come up for unsupported POS: " + l.toString());
 			//System.out.println("Test for Hitze_null");
 			l = dbWithoutScores.getRulesForLeft("Hitze",  null); 
-			assertTrue(l.size() == 0); //TODO: if null is later accepted, change to "> 0"
-			//System.out.println("no rule should (yet) come up for null POS: " + l.toString());
+			assertTrue(l.size() > 0);
+			//System.out.println("at least one rule should come up for null POS: " + l.toString());
 		}
 		catch (LexicalResourceException e)
 		{
@@ -151,7 +151,7 @@ public class DerivBaseResourceTest {
 		 * TEST 2: DErivBase format without scores, called via CommonConfig
 		 * ****************************
 		 */
-		//System.out.println("******* TEST 2 *******");
+		//System.out.println("******* TEST 2: DErivBase format without scores, called via CommonConfig *******");
 
 		
 		DerivBaseResource dbWithoutScoresCommConf = null;
@@ -237,8 +237,8 @@ public class DerivBaseResourceTest {
 			//System.out.println("no rule should come up for unsupported POS: " + l.toString());
 			//System.out.println("Test for Hitze_null");
 			l = dbWithoutScoresCommConf.getRulesForLeft("Hitze",  null); 
-			assertTrue(l.size() == 0); //TODO: if null is later accepted, change to "> 0"
-			//System.out.println("no rule should (yet) come up for null POS: " + l.toString());
+			assertTrue(l.size() > 0);
+			//System.out.println("at least one rule should come up for null POS: " + l.toString());
 		}
 		catch (LexicalResourceException e)
 		{
@@ -249,15 +249,15 @@ public class DerivBaseResourceTest {
 		
 		/**
 		 * ****************************
-		 * TEST 2: DErivBase format with scores, called directly
+		 * TEST 3: DErivBase format with scores, called directly
 		 * ****************************
 		 */
-		//System.out.println("******* TEST 3 *******");
+		//System.out.println("******* TEST 3: DErivBase format with scores, called directly *******");
 
 		
 		DerivBaseResource dbWithScores = null;
 		try {
-			dbWithScores = new DerivBaseResource("src/main/resources/derivbase/DErivBase-v1.3-pairs.txt", 1.00, true);
+			dbWithScores = new DerivBaseResource("src/main/resources/derivbase/DErivBase-v1.3-pairs.txt", true, 0.50);
 		}
 		catch (DerivBaseNotInstalledException e) {
 			System.out.println("WARNING: DErivBase file was not found in the given path.");
@@ -285,14 +285,14 @@ public class DerivBaseResourceTest {
 		}			
 				
 		// getRulesForRight for a verb 
-		//System.out.println("rTest for abzeichnen");
+		//System.out.println("rTest for aalen");
 		List<LexicalRule<? extends DerivBaseInfo>> list9 = null; 
 		try {
-			list9 = dbWithScores.getRulesForRight("abzeichnen", new GermanPartOfSpeech("VINF")); 
+			list9 = dbWithScores.getRulesForRight("aalen", new GermanPartOfSpeech("VINF")); 
 			assertTrue(list9.size() > 0);
 			for (LexicalRule<? extends DerivBaseInfo> rule : list9) {
-				assertTrue(rule.getRLemma().equals("abzeichnen"));
-				//System.out.println("one rule for 'abzeichnen': " + rule.toString());
+				assertTrue(rule.getRLemma().equals("aalen"));
+				//System.out.println("one rule for 'aalen': " + rule.toString());
 			}			
 		}
 		catch (LexicalResourceException e)
@@ -338,8 +338,8 @@ public class DerivBaseResourceTest {
 			//System.out.println("no rule should come up for unsupported POS: " + l.toString());
 			//System.out.println("Test for Hitze_null");
 			l = dbWithScores.getRulesForLeft("Hitze",  null); 
-			assertTrue(l.size() == 0); //TODO: if null is later accepted, change to "> 0"
-			//System.out.println("no rule should (yet) come up for null POS: " + l.toString());
+			assertTrue(l.size() > 0);
+			//System.out.println("at least one rule should come up for null POS: " + l.toString());
 		}
 		catch (LexicalResourceException e)
 		{

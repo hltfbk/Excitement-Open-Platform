@@ -34,12 +34,15 @@
 	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
 	<section name="DerivBaseResource">
 	
-		<!-- Path to the DErivBase resource file. If no file is found, the init will raise an exception. 
-		     You can choose either a resource containing scores or no scores. 
+		<!-- Path to the DErivBase resource file. If no file is found, the DerivBaseResource implementation 
+			 will raise an exception. 
+		     You can choose either a resource containing scores or no scores.  
 		     DEFAULT: no scores. -->
 		<property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt</property>
 		
-		<!-- Specifies if rules are available or not. True=file with scores avaliable, False=no scores. 
+		<!-- Specifies if rules are available or not. True=file with scores avaliable, False=no scores.  
+			 If you choose a resource format containing scores, but declare "false" here (or vice versa), the 
+			 DerivBaseResource implementation will raise an exception. 
 			 DEFAULT: false. -->
 		<property name="scoreInfo">false</property> 
 		
@@ -47,6 +50,7 @@
 		     Values range between 0.00 and 1.00; The score is calculated as 1/n, where n is the length of the derivation 
 		     path. Thus, 1.00 trusts only pairs resulting from one linking rule; 0.5 trusts pairs which are linked by two 
 		     rules; 0.33 trusts pairs which are linked by three rules, etc. 
+		     This property is only read if "scoreInfo" = true.
 		     DEFAULT: 0.00. -->		
 		<property name="scoreConfidence">0.00</property>
 	</section>
