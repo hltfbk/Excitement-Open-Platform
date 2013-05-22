@@ -13,17 +13,46 @@
 
 
 	<section name="GermaNetWrapper">
-	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
+		<!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS 
+	    	 or RHS->LHS, as a value of confidence [0.0 - 1.0] --> 
 
-		<property name="germaNetFilesPath">/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
+		<!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. -->
+		<property name="germaNetFilesPath">/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property>  
 
 		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
 		<property name="causesConfidence">1.0</property> 
 		<property name="entailsConfidence">1.0</property>
 		<property name="hypernymConfidence">1.0</property> 
 		<property name="synonymConfidence">1.0</property>
+		
+		<!-- GermaNet relations and their confidences (RHS -> LHS) -->
 		<property name="antonymConfidence">1.0</property> 
 		<property name="hyponymConfidence">1.0</property>
 	</section> 
+	
+	
+	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
+	<section name="DerivBaseResource">
+	
+		<!-- Path to the DErivBase resource file. If no file is found, the DerivBaseResource implementation 
+			 will raise an exception. 
+		     You can choose either a resource containing scores or no scores.  
+		     DEFAULT: no scores. -->
+		<property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt</property>
+		
+		<!-- Specifies if rule scores are available or not. True=file with scores avaliable, False=no scores.  
+			 If you choose a resource format containing scores, but declare "false" here (or vice versa), the 
+			 DerivBaseResource implementation will raise an exception. 
+			 DEFAULT: false. -->
+		<property name="scoreInfo">false</property> 
+		
+		<!-- Specifies the confidence in the derivational relationship of a lemma pair. 
+		     Values range between 0.00 and 1.00; The score is calculated as 1/n, where n is the length of the derivation 
+		     path. Thus, 1.00 trusts only pairs resulting from one linking rule; 0.5 trusts pairs which are linked by two 
+		     rules; 0.33 trusts pairs which are linked by three rules, etc. 
+		     This property is only read if "scoreInfo" = true.
+		     DEFAULT: 0.00. -->		
+		<property name="scoreConfidence">0.00</property>
+	</section>
 
 </configuration>
