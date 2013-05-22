@@ -21,13 +21,9 @@
 		<property name="withPOS">1</property>
 		<property name="GermanDistSim"></property>
 		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
+		<property name="DerivBaseResource"></property>
 	</section>
 	
-	<section name="GermanDistSim">
-	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
-	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
-	</section> 
-
 	<section name="GermaNetWrapper">
 	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
 		<property name="germaNetFilesPath">src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
@@ -39,10 +35,22 @@
 		<property name="synonymConfidence">1.0</property>
 	</section> 
 	
+	<section name="GermanDistSim">
+	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
+	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
+	</section>
+	
+	<section name="DerivBaseResource">
+	    <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
+	    <property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt</property>
+	    <property name="confidences">1.0</property>
+	</section> 
+	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_AllLexResPos_DE</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DS+DBPos_DE</property>
 		<property name="trainDir">./target/DE/dev/</property>
 		<property name="testDir">./target/DE/test/</property>
+		<property name="classifier">10000,1</property>
 		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
 	</section>
 
