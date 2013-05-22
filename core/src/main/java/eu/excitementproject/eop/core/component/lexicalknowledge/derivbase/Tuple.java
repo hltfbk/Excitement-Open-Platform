@@ -36,6 +36,15 @@ public class Tuple<E> implements Serializable {
     }
 
     
+    /**
+     * 
+     * @param a First value
+     * @param b Second value
+     */
+    public Tuple() {
+    }
+
+    
     
     /**
      * Getter method for the first value.
@@ -70,7 +79,7 @@ public class Tuple<E> implements Serializable {
     public void setB(E b) {
         this.b = b;
     }
-
+    
     @Override
     public String toString() {
         return this.a.toString() + ", " + this.b.toString();
