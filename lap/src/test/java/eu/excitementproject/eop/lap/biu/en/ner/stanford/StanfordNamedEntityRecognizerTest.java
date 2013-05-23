@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.lap.biu.en.ner.stanford;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 import junit.framework.Assert;
 
-import org.junit.Ignore;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
@@ -16,6 +17,7 @@ import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityPhrase;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
+import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 
 public class StanfordNamedEntityRecognizerTest {
 
@@ -84,10 +86,15 @@ public class StanfordNamedEntityRecognizerTest {
 			}}
 	);
 
-	@Ignore("Environment doesn't support yet Stanford NER model file")
+	@BeforeClass
+	public static void beforeClass() throws IOException {
+		// Run test only under BIU environment
+		BiuTestUtils.assumeBiuEnvironment();
+	}
+
 	@Test
 	public void test() throws Exception {
-		String stanfordNerClassifier = StringUtil.expandEnvironmentVariables("$JARS/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz");
+		String stanfordNerClassifier = StringUtil.expandEnvironmentVariables("./stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz");
 		StanfordNamedEntityRecognizer ner = new StanfordNamedEntityRecognizer(new File(stanfordNerClassifier));
 		ner.init();
 		

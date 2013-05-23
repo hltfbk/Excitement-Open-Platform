@@ -1,28 +1,32 @@
 package eu.excitementproject.eop.lap.biu.uima;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.log4j.Appender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
-import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
+import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 
 
-@Ignore("Environment doesn't support yet storing model files + running easyfirst")
 public class CasTreeConverterTest {
 	
 	/**
 	 * Initialize log4j. Taken from {@link eu.excitementproject.eop.biutee.utilities.LogInitializer}.
+	 * @throws IOException 
 	 */
 	@BeforeClass
-	public static void beforeClass() {
+	public static void beforeClass() throws IOException {
+		
+		// Run tests only under BIU environment
+		BiuTestUtils.assumeBiuEnvironment();
+		
 		final String LOG4J_PROPERTIES = "log4j.properties";
 		
 		// Use the file log4j.properties to initialize log4j
