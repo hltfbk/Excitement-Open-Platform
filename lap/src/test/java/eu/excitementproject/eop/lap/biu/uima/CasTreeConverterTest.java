@@ -12,10 +12,10 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
+import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
 
 
-@Ignore("Environment doesn't support yet storing model files + running easyfirst")
 public class CasTreeConverterTest {
 	
 	/**
@@ -23,6 +23,10 @@ public class CasTreeConverterTest {
 	 */
 	@BeforeClass
 	public static void beforeClass() {
+		
+		// Run tests only under BIU environment
+		BiuTestUtils.assumeBiuEnvironment();
+		
 		final String LOG4J_PROPERTIES = "log4j.properties";
 		
 		// Use the file log4j.properties to initialize log4j

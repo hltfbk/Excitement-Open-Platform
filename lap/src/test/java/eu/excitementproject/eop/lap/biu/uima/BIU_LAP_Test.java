@@ -10,6 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import org.apache.uima.jcas.JCas;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
@@ -20,6 +21,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.lap.LAPAccess;
+import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 
 /**
  *  Test all BIU linguistic tools using a simple LAP.
@@ -58,7 +60,12 @@ public class BIU_LAP_Test {
 	private LinkedHashMap<Token, Set<TestDependencyInfo>> governors;
 	
 
-	@Ignore("Environment doesn't support yet storing model files + running easyfirst")
+	@BeforeClass
+	public static void beforeClass() {
+		// Run test only under BIU environment
+		BiuTestUtils.assumeBiuEnvironment();
+	}
+
 	@Test
 	public void test() throws Exception {
 		try {
