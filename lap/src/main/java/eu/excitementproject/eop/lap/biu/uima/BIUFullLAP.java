@@ -17,7 +17,7 @@ import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.biu.uima.ae.ner.StanfordNamedEntityRecognizerAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.parser.EasyFirstParserAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
-import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.LingPipeSentenceSplitterAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.NagelSentenceSplitterAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.tokenizer.MaxentTokenizerAE;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
@@ -58,7 +58,7 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 	public void addAnnotationOn(JCas aJCas, String viewName) throws LAPException {
 		try {
 			// Build analysis engines
-			AnalysisEngineDescription splitter =   createPrimitiveDescription(LingPipeSentenceSplitterAE.class);
+			AnalysisEngineDescription splitter =   createPrimitiveDescription(NagelSentenceSplitterAE.class);
 			AnalysisEngineDescription tokenizer =  createPrimitiveDescription(MaxentTokenizerAE.class);
 			AnalysisEngineDescription tagger =     createPrimitiveDescription(MaxentPosTaggerAE.class,
 					MaxentPosTaggerAE.PARAM_MODEL_FILE , taggerModelFile);
