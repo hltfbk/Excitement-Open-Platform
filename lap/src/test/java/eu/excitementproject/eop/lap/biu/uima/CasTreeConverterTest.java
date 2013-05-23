@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.lap.biu.uima;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.apache.log4j.Appender;
 import org.apache.log4j.FileAppender;
@@ -18,9 +19,10 @@ public class CasTreeConverterTest {
 	
 	/**
 	 * Initialize log4j. Taken from {@link eu.excitementproject.eop.biutee.utilities.LogInitializer}.
+	 * @throws IOException 
 	 */
 	@BeforeClass
-	public static void beforeClass() {
+	public static void beforeClass() throws IOException {
 		
 		// Run tests only under BIU environment
 		BiuTestUtils.assumeBiuEnvironment();

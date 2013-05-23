@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeMain;
+import eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeMainException;
 import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.exception.ComponentException;
@@ -31,7 +33,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 public class TestBiuteeUsage {
 	
 	@BeforeClass
-	public static void prepareBiuteeRun() {
+	public static void prepareBiuteeRun() throws IOException {
 		// Run tests only under BIU environment
 		BiuTestUtils.assumeBiuEnvironment();
 	}

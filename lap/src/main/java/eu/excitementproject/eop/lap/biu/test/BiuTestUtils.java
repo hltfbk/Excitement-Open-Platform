@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.lap.biu.test;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.junit.Assume;
 
@@ -28,9 +29,10 @@ public class BiuTestUtils {
 	 * meaning that when the test will be run not in a BIU environment, the test will be
 	 * silently skipped and not fail the entire test suite.
 	 */
-	public static void assumeBiuEnvironment() {
-		File workingFolder = new File(System.getProperty("user.dir"));
-		Assume.assumeTrue(workingFolder.getName().toLowerCase().startsWith("workdir"));
+	public static void assumeBiuEnvironment() throws IOException {
+		String workingFolderName = new File(".").getCanonicalFile().getName();
+		Assume.assumeTrue(workingFolderName.toLowerCase().startsWith("workdir"));
+
 	}
 
 }

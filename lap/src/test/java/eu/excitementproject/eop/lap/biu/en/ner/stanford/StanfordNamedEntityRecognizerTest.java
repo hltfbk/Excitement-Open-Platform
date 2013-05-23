@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.lap.biu.en.ner.stanford;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -86,7 +87,7 @@ public class StanfordNamedEntityRecognizerTest {
 	);
 
 	@BeforeClass
-	public static void beforeClass() {
+	public static void beforeClass() throws IOException {
 		// Run test only under BIU environment
 		BiuTestUtils.assumeBiuEnvironment();
 	}

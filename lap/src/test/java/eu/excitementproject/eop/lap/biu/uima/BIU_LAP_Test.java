@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.lap.biu.uima;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -60,7 +61,7 @@ public class BIU_LAP_Test {
 	
 
 	@BeforeClass
-	public static void beforeClass() {
+	public static void beforeClass() throws IOException {
 		// Run test only under BIU environment
 		BiuTestUtils.assumeBiuEnvironment();
 	}
