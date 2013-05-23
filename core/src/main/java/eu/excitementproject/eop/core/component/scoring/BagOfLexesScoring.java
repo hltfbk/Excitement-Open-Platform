@@ -71,7 +71,8 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 
 		// initialize GermanDistSim
 		if (null == comp.getString("GermanDistSim")
-				&& null == comp.getString("GermaNetWrapper")) {
+				&& null == comp.getString("GermaNetWrapper")
+				&& null == comp.getString("DerivBaseResource")) {
 			throw new ConfigurationException(
 					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
 		}
