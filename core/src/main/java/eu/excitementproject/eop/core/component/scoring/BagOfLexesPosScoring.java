@@ -12,6 +12,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
@@ -87,6 +88,26 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 		}
 	}
 
+	@Override
+	public String getComponentName() {
+		return "BagOfLexesPosScoring";
+	}
+
+	/**
+	 * close the component by closing the lexical resources.
+	 */
+	@Override
+	public void close() throws ScoringComponentException {
+		try {
+			super.close();
+			if (null != dbr) {
+				dbr.close();
+			}
+		} catch (LexicalResourceCloseException e) {
+			throw new ScoringComponentException(e.getMessage());
+		}
+	}
+	
 	@Override
 	public Vector<Double> calculateScores(JCas aCas)
 			throws ScoringComponentException {

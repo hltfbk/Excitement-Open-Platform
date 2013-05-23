@@ -11,8 +11,14 @@
 		<property name="language">DE</property>
 	</section>
 	
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="BagOfLemmasScoring">
+	</section>
+	
 	<section name="BagOfLexesScoring">
-		<property name="withPOS">0</property>
+		<property name="withPOS">1</property>
 		<property name="GermanDistSim"></property>
 		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
 	</section>
@@ -34,10 +40,11 @@
 	</section> 
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_OnlyLexRes_DE</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DS_DE</property>
 		<property name="trainDir">./target/DE/dev/</property>
 		<property name="testDir">./target/DE/test/</property>
-		<property name="Components">BagOfLexesScoring</property>
+		<property name="classifier">10000,1</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
 	</section>
 
 </configuration>
