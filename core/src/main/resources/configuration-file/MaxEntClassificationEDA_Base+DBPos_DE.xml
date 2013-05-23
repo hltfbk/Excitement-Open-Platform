@@ -23,9 +23,9 @@
 	</section>
 	
 	<section name="DerivBaseResource">
-	    <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
-	    <property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt</property>
-	    <property name="confidences">1.0</property>
+	    <property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairs.txt</property>
+	    <property name="scoreInfo">true</property> 
+		<property name="scoreConfidence">0.01</property>
 	</section> 
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
