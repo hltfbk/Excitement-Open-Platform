@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.biutee;
+package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 
 public class BiuteeMainException extends Exception {
 	private static final long serialVersionUID = -6913170428746677633L;

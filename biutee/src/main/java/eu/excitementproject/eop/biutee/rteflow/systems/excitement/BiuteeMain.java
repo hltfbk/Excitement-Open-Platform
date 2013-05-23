@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.biutee;
+package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,8 +9,6 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeEDA;
-import eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeEdaUtilities;
 import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsPreProcessor;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
