@@ -1,9 +1,7 @@
 package eu.excitementproject.eop.biutee;
 
-import java.io.File;
 import java.io.IOException;
 
-import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

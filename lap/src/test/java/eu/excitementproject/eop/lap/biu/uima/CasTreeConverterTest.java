@@ -7,13 +7,11 @@ import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.log4j.LoggerUtilities;
 import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
-import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
 
 
 public class CasTreeConverterTest {

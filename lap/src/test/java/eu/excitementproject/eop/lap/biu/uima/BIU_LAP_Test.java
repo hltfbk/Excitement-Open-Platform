@@ -11,7 +11,6 @@ import java.util.Set;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 

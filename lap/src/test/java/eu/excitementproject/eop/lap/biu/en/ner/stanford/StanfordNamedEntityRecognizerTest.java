@@ -9,7 +9,6 @@ import java.util.Map;
 import junit.framework.Assert;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
