@@ -17,21 +17,15 @@
 	<section name="BagOfLemmasScoring">
 	</section>
 	
-	<section name="BagOfLexesScoring">
-		<property name="withPOS">0</property>
-		<property name="GermanDistSim"></property>
+	<section name="TreeSkeletonScoring">
 	</section>
 	
-	<section name="GermanDistSim">
-	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
-	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
-	</section> 
-	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_DistSim_DE</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TS_DE</property>
 		<property name="trainDir">./target/DE/dev/</property>
 		<property name="testDir">./target/DE/test/</property>
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
+		<property name="classifier">10000,1</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,TreeSkeletonScoring</property>
 	</section>
 
 </configuration>
