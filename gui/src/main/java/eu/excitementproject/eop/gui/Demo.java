@@ -23,6 +23,7 @@ import org.kohsuke.args4j.CmdLineParser;
 
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
@@ -44,7 +45,8 @@ public class Demo {
 	
 	private static String baseConfigFile = "configuration_example.xml";
 	private static String configFileDir = "./";
-	private static String configFile; 
+	private static String configFileName;
+	private static File configFile;
 	
 	private static CommonConfig config;
 	
@@ -59,14 +61,20 @@ public class Demo {
 	 */
 
 
-	private static void initializeLAP(String language) {
-		language = language.toUpperCase();
+	private static void initializeLAP(DemoCmdOptions option) {
+		String language;
+		if (option.language != null) {
+			language = option.language.toUpperCase();
+		} else {
+			language = ConfigFileUtils.getAttribute(configFile, "language");
+		}
+		
 		try {
 			if (language.matches("IT")) {
 				lap = new TextProTaggerIT();
 			} else if (language.matches("EN")) {
-				lap = new TreeTaggerEN();
-//				lap = new OpenNLPTaggerEN();
+//				lap = new TreeTaggerEN();
+				lap = new OpenNLPTaggerEN();
 			} else if (language.matches("DE")) {
 				lap = new OpenNLPTaggerDE();
 			}		
@@ -77,9 +85,12 @@ public class Demo {
 		}
 	}
 
-	private static void runLAP(String inputFile) {
+	private static void runLAPOnFile(String inputFile, String outDir) {
+		
+		System.out.println("Running lap on file: " + inputFile + " // writing output to directory " + outDir);
+		
 		try {
-			lap.processRawInputFormat(new File(inputFile), new File(lapAnnotDir));
+			lap.processRawInputFormat(new File(inputFile), new File(outDir));
 		} catch (LAPException e) {
 			System.err.println("Error running the LAP");
 			e.printStackTrace();
@@ -105,8 +116,9 @@ public class Demo {
 	
 	private static void editConfigFile(DemoCmdOptions option) {
 		try {
-			configFile = baseConfigFile + ".edited.xml";
-			config = new ImplCommonConfig(ConfigFileUtils.editConfigFile(baseConfigFile, new File(configFile), option));
+			configFileName = baseConfigFile + ".edited.xml";
+			configFile = new File(configFileName);
+			config = new ImplCommonConfig(ConfigFileUtils.editConfigFile(baseConfigFile, configFile, option));
 		} catch (Exception e) {
 			System.err.println("Could not generate a configuration file object");
 			e.printStackTrace();
@@ -115,122 +127,33 @@ public class Demo {
 		
 	private static void chooseConfigFile(DemoCmdOptions option) {
 		
+		configFileName = option.config;
+		configFile = new File(configFileName);
 		
-		configFile = configFileDir + "/" + option.activatedEDA;
-		if (! option.distance.isEmpty()) 
-			configFile +=  "_" + option.distance;
-		if (! option.resource.isEmpty()) {
-			configFile += "_" + option.resource;
-		} else {
-			configFile += "_NoLexRes";
-		}	
-		configFile += "_" + option.language + ".xml";
-			
+		System.out.println("Configuration file: " + configFileName);
+		
 		try {
-			config = new ImplCommonConfig(new File(configFile));
+			config = new ImplCommonConfig(configFile);
 		} catch (ConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
 	
-	private static HashMap<String,String> readResults(String file) {
-		HashMap<String,String> results = new HashMap<String,String>();
-		try {
-			InputStream in = Files.newInputStream(Paths.get(file));
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			String line = null;
-			Pattern p = Pattern.compile("^(.*?)\\t(.*)$");
-			Matcher m;
-			
-			while ((line = reader.readLine()) != null) {
-				m = p.matcher(line);
-				if (m.matches()) {
-					results.put(m.group(1), m.group(2));
-					System.out.println("Added result: " + m.group(1) + " / " + m.group(2));
-				}
-			}
-			reader.close();
-			in.close();
-		} catch (IOException e) {
-			System.out.println("Problems reading results file " + file);
-			e.printStackTrace();
-		}
-		return results;
-	}
-	
-	private static void generateXMLResults(String testFile, String resultsFile, String xmlFile) {
+	private static String getOptionValue(String fileOption, String string) {
 		
-		HashMap<String,String> results = readResults(resultsFile);
-		try {
-			BufferedReader reader = Files.newBufferedReader(Paths.get(testFile), StandardCharsets.UTF_8);
-			//InputStream in = Files.newInputStream(Paths.get(testFile));
-			//BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			
-			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
-			
-			String line = null, id;
-			String[] entDec;
-			Pattern p = Pattern.compile("^(.*pair id=\"(\\d+)\") .* (task.*)$");
-			Matcher m;
-			
-			while ((line = reader.readLine()) != null) {
-				m = p.matcher(line);
-				if (m.matches()) {
-					id = m.group(2);
-					if (results.containsKey(id)) {
-						entDec = results.get(id).split("\\t");
-						line = m.group(1) + " " + "entailment=\"" + entDec[1] + "\" benchmark=\"" + entDec[0] + "\" score=\"" + entDec[2] + "\" confidence=\"1\" " + m.group(3);
-					}
-				}
-				writer.write(line + "\n");
-			}
-			writer.close();
-			out.close();
-			reader.close();
-			//in.close();
-		} catch (IOException e) {
-			System.out.println("Problems reading test file " + testFile);
-			e.printStackTrace();
+		if (fileOption == null || fileOption.isEmpty()) {
+			fileOption = ConfigFileUtils.getAttribute(configFile,string);
 		}
 		
+		return fileOption;
 	}
 	
 	
-	private static void makeSinglePairXML(TEDecision decision, JCas aJCas, String outDir, String lang) {
-		
-		String xmlResultsFile = outDir + "/results.xml";
+	private static void runEOPTrain(String trainFile, String trainDir) {
 		try {
-			
-			OutputStream out = Files.newOutputStream(Paths.get(xmlResultsFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
-			
-			writer.write("<entailment-corpus lang=\"" + lang + "\">\n");
-			writer.write("  <pair id=\"1\" entailment=\"" + decision.getDecision().name() + "\" benchmark=\"N/A\" score=\"" + decision.getConfidence() + "\" confidence=\"1\" task=\"EOP test\">\n");
-			writer.write("    <t>" + aJCas.getView("TextView").getDocumentText() + "</t>\n");
-			writer.write("    <h>" + aJCas.getView("HypothesisView").getDocumentText() + "</h>\n");
-			writer.write("  </pair>\n");
-			writer.write("</entailment-corpus>\n");
-			writer.close();
-			out.close();
-
-			
-			System.out.println("Results file: " + xmlResultsFile);
-			
-		} catch (IOException | CASException e) {
-			System.out.println("Coudl not write to output file " + xmlResultsFile);
-			e.printStackTrace();
-		}
-		
-	}
-	
-	
-/*	private static void runEOP(String test) {
-		try {
+			runLAPOnFile(trainFile, trainDir);
 			eda.startTraining(config);
-			runLAP(test);
-			// go through all the annotated objects (.xmi files) and process the single pair			
 			
 		} catch (ConfigurationException e) {
 			// TODO Auto-generated catch block
@@ -243,28 +166,45 @@ public class Demo {
 			e.printStackTrace();
 		}
 	}
-*/
+
+	
 	// copy the generated files to the given directory
-	private static void runEOP(String testFile, String outDir) {
+	private static void runEOPTest(String testFile, String testDirStr, String outDir) {
 		String resultsFile = configFile + "_Result.txt";
 		String xmlResultsFile = outDir + "/results.xml";
-		String evalFile = resultsFile + "_Eval.xml";
 		Path source;
 		Path target = Paths.get(outDir + "/report.xml");
 				
 		try {
 //			source = Paths.get(resultsFile);
 //			Files.copy(source, target.resolve(source.getFileName()), REPLACE_EXISTING);
-			generateXMLResults(testFile, resultsFile, xmlResultsFile);
 			
-			source = Paths.get(evalFile);
-			Files.copy(source, target, REPLACE_EXISTING);
-
+			runLAPOnFile(testFile,testDirStr);
+			
+			File testDir = new File(testDirStr);
+			OutputStream out = Files.newOutputStream(Paths.get(resultsFile));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+			
+			for (File xmi : (testDir.listFiles())) {
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				JCas cas = PlatformCASProber.probeXmi(xmi, System.out);
+				TEDecision teDecision = eda.process(cas);
+				// System.err.println(teDecision1.getDecision().toString()) ;
+				
+				writer.write(OutputUtils.getPairID(cas) + "\t" + OutputUtils.getGoldLabel(cas) + "\t"  + teDecision.getDecision().toString() + "\t" + teDecision.getConfidence() + "\n");				
+			}
+			writer.close();
+			out.close();
+			
+			OutputUtils.generateXMLResults(testFile, resultsFile, xmlResultsFile);
+			
 			System.out.println("Results file: " + xmlResultsFile);
 			System.out.println("Evaluation file: " + target.getFileName());
 			
-		} catch (IOException e) {
-			System.out.println("Error copying run output files " + resultsFile + " and " + evalFile + " to directory " + outDir);
+		} catch (Exception e) {
+			System.out.println("Error copying run output files " + resultsFile + " to directory " + outDir);
 			e.printStackTrace();
 		}
 		
@@ -279,7 +219,7 @@ public class Demo {
 		try {
 			TEDecision te = eda.process(aJCas);
 			System.out.println("T/H pair processing result: " + te.getDecision() + " with confidence " + te.getConfidence());
-			makeSinglePairXML(te, aJCas, option.output, option.language);
+			OutputUtils.makeSinglePairXML(te, aJCas, option.output, option.language);
 		} catch (EDAException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -309,24 +249,40 @@ public class Demo {
 		try{ 
 			parser.parseArgument(args);
 
-			if (! option.dir.isEmpty()) {
+			if (option.dir != null) {
 				configFileDir = option.dir;
 			}
 			
-			initializeLAP(option.language);
 //			editConfigFile(option);
 			chooseConfigFile(option);
+			initializeLAP(option);
 			
 			System.out.println("Initializing EDA from file " + config.getConfigurationFileName());	
 
-			eda = dih.startEngineBasic(new File(configFile));
+			eda = dih.startEngineBasic(configFile);
 			System.out.println("EDA object created from class " + eda.getClass());
 			
-			eda.initialize(config);
-			if (option.test != null) {
-				runEOP(option.test, option.output);
-			} else {
-				runEOPSinglePair(option);
+			
+			if (option.train) {
+				
+//				eda.initialize(config);
+				
+				String trainFile = getOptionValue(option.trainFile, "trainFile");
+				String trainDir = getOptionValue(option.trainDir, "trainDir");
+				runEOPTrain(trainFile, trainDir);
+			}
+			
+			if (option.test) {
+				
+				eda.initialize(config);
+
+				if (option.testFile != null) {
+					String testFile = getOptionValue(option.testFile, "testFile");
+					String testDir = getOptionValue(option.testDir, "testDir");
+					runEOPTest(testFile, testDir, option.output);
+				} else {
+					runEOPSinglePair(option);
+				}
 			}
 			eda.shutdown();
 
