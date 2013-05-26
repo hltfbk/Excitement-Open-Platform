@@ -35,8 +35,8 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	static Logger logger = Logger
 			.getLogger(BagOfLexesScoringEN.class.getName());
 
-	private static final String WN_PATH = "./src/main/resources/EnglishWordNet-dict/";
-	private static final String VO_PATH = "./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt";
+	private static final String WN_PATH = "./target/WordNet/dict/";
+	private static final String VO_PATH = "./target/VerbOcean/verbocean.unrefined.2004-05-20.txt";
 
 	/**
 	 * the number of features
