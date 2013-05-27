@@ -12,14 +12,18 @@
 	</section>
 	
 	<section name="BagOfLexesScoring">
-			<property name="WordNetRelations">HYPERNYM,SYNONYM,PART_HOLONYM</property>
-			<property name="VerbOceanRelations">StrongerThan,CanResultIn,Similar</property>
+			<property name="VerbOceanLexicalResource">StrongerThan,CanResultIn,Similar</property>
+	</section>
+	
+	<section name="VerbOceanLexicalResource">
+			<property name="isCollapsed">false</property>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_OnlyLexRes_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_VO_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
+		<property name="classifier">10000,1</property>
 		<property name="Components">BagOfLexesScoring</property>
 	</section>
 

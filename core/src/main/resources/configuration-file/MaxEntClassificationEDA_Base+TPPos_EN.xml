@@ -17,14 +17,15 @@
 	<section name="BagOfLemmasScoring">
 	</section>
 	
-	<section name="TreeSkeletonScoring">
+	<section name="BagOfDepsPosScoring">
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_TreeSkeleton_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TPPos_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,TreeSkeletonScoring</property>
+		<property name="classifier">10000,1</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfDepsPosScoring</property>
 	</section>
 
 </configuration>
