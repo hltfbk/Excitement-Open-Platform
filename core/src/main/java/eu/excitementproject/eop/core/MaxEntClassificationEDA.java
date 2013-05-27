@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -38,12 +36,10 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -233,7 +229,7 @@ public class MaxEntClassificationEDA implements
 						initializeLexCompsDE(config, false);
 					}
 				} else {
-					initializeLexCompsEN(comp);
+					initializeLexCompsEN(config);
 				}
 			} else {
 				try {
@@ -286,87 +282,13 @@ public class MaxEntClassificationEDA implements
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
-	private void initializeLexCompsEN(NameValueTable comp)
+	private void initializeLexCompsEN(CommonConfig config)
 			throws ConfigurationException, ComponentException {
-		if (null == comp.getString("WordNetRelations")
-				&& null == comp.getString("VerbOceanRelations")) {
-			throw new ConfigurationException(
-					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
-		}
-
-		// these five boolean values control the lexical resources used.
-		// they refer to whether to use WordNet relations hypernym, synonym, and
-		// VerbOcean relations, StrongerThan, CanResultIn, Similar
-		boolean isWNHypernym = false;
-		boolean isWNSynonym = false;
-		boolean isWNHolonym = false;
-		boolean isVOStrongerThan = false;
-		boolean isVOCanResultIn = false;
-		boolean isVOSimilar = false;
-		if (null != comp.getString("WordNetRelations")) {
-			String[] WNRelations = comp.getString("WordNetRelations")
-					.split(",");
-			if (null == WNRelations || 0 == WNRelations.length) {
-				throw new ConfigurationException(
-						"Wrong configuation: didn't find any relations for the WordNet");
-			}
-			for (String relation : WNRelations) {
-				if (relation.equalsIgnoreCase("HYPERNYM")) {
-					isWNHypernym = true;
-				} else if (relation.equalsIgnoreCase("SYNONYM")) {
-					isWNSynonym = true;
-				} else if (relation.equalsIgnoreCase("PART_HOLONYM")) {
-					isWNHolonym = true;
-				} else {
-					logger.warning("Warning: wrong relation names for the WordNet");
-				}
-			}
-		}
-		if (null != comp.getString("VerbOceanRelations")) {
-			String[] VORelations = comp.getString("VerbOceanRelations").split(
-					",");
-			if (null == VORelations || 0 == VORelations.length) {
-				throw new ConfigurationException(
-						"Wrong configuation: didn't find any relations for the VerbOcean");
-			}
-			for (String relation : VORelations) {
-				if (relation.equalsIgnoreCase("strongerthan")) {
-					isVOStrongerThan = true;
-				} else if (relation.equalsIgnoreCase("canresultin")) {
-					isVOCanResultIn = true;
-				} else if (relation.equalsIgnoreCase("similar")) {
-					isVOSimilar = true;
-				} else {
-					logger.warning("Warning: wrong relation names for the VerbOcean");
-				}
-			}
-		}
-
-		Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
-		if (isWNHypernym) {
-			wnRelSet.add(WordNetRelation.HYPERNYM);
-		}
-		if (isWNSynonym) {
-			wnRelSet.add(WordNetRelation.SYNONYM);
-		}
-		if (isWNHolonym) {
-			wnRelSet.add(WordNetRelation.PART_HOLONYM);
-		}
-
-		Set<RelationType> voRelSet = new HashSet<RelationType>();
-		if (isVOStrongerThan) {
-			voRelSet.add(RelationType.STRONGER_THAN);
-		}
-		if (isVOCanResultIn) {
-			voRelSet.add(RelationType.CAN_RESULT_IN);
-		}
-		if (isVOSimilar) {
-			voRelSet.add(RelationType.SIMILAR);
-		}
-
 		try {
-			ScoringComponent comp3 = new BagOfLexesScoringEN(wnRelSet, voRelSet);
-			components.add(comp3);
+			ScoringComponent comp3 = new BagOfLexesScoringEN(config);
+			if (((BagOfLexesScoringEN) comp3).getNumOfFeats() > 0) {
+				components.add(comp3);
+			}
 		} catch (LexicalResourceException e) {
 			throw new ComponentException(e.getMessage());
 		}

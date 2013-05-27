@@ -138,13 +138,13 @@ public class BagOfWordsScoringTest {
 	}
 	
 	public void testEN() throws LexicalResourceException {
-		File wnPath = new File("./src/main/resources/EnglishWordNet-dict/");
+		File wnPath = new File("./target/WordNet/dict/");
 		if (!wnPath.exists()) {
 			logger.warning("WARNING: English WordNet is not found. Please install it properly, and pass its location correctly to the component.");
 		}
 		Assume.assumeTrue(wnPath.exists());
 		
-		File voPath = new File("./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt");
+		File voPath = new File("./target/VerbOcean/verbocean.unrefined.2004-05-20.txt");
 		if (!voPath.exists()) {
 			logger.warning("WARNING: VerbOcean is not found. Please install it properly, and pass its location correctly to the component.");
 		}
@@ -162,7 +162,25 @@ public class BagOfWordsScoringTest {
 		 voRelSet.add(RelationType.CAN_RESULT_IN);
 		 voRelSet.add(RelationType.SIMILAR);
 		 
-		BagOfLexesScoringEN bolexs = new BagOfLexesScoringEN(wnRelSet, voRelSet);
+			// test the configuration file
+			File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO_EN.xml");
+			Assume.assumeTrue(configFile.exists());
+			CommonConfig config = null;
+			try {
+				// read in the configuration from the file
+				config = new ImplCommonConfig(configFile);
+			} catch (ConfigurationException e) {
+				logger.warning(e.getMessage());
+			}
+			Assume.assumeNotNull(config);
+		 
+		BagOfLexesScoringEN bolexs = null;
+		try {
+			bolexs = new BagOfLexesScoringEN(config);
+		} catch (ConfigurationException e) {
+			logger.warning(e.getMessage());
+		}
+		Assume.assumeNotNull(bolexs);
 
 		JCas aCas = null;
 		LAPAccess lap = null;

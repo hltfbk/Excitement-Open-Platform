@@ -258,13 +258,40 @@ public class EDAScorer {
 //		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TPPos+TS_DE.xml_Result.txt");
 		
 		/** English */
+		/* Baseline */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base_EN.xml_Result.txt");
 		
-		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_AllLexRes_EN.xml_Result.txt");
-//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_NonLexRes_EN.xml_Result.txt");
-//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_OnlyLexRes_EN.xml_Result.txt");
-//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_DepTriple_EN.xml_Result.txt");
-//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_TreeSkeleton_EN.xml_Result.txt");
-//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_TreeSkeletonAll_EN.xml_Result.txt");
+		/* WN: WordNet */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_WN_EN.xml_Result.txt");
+		
+		/* Baseline + WN */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+WN_EN.xml_Result.txt");
+		
+		/* VO: VerbOcean */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_VO_EN.xml_Result.txt");
+		
+		/* Baseline + VO */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+VO_EN.xml_Result.txt");
+		
+		/* Baseline + WN + VO */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+WN+VO_EN.xml_Result.txt");
+		
+		/* Baseline + TP */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+TP_EN.xml_Result.txt");
+		
+		/* Baseline + TPPos */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+TPPos_EN.xml_Result.txt");
+		
+		/* Baseline + TS */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+TS_EN.xml_Result.txt");
+		
+		/* Baseline + TP + TPPos + TS */
+//		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml_Result.txt");
+		
+		/* Baseline + WN + VO + TP + TPPos + TS */
+		File resultFile = new File("./src/main/resources/results/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml_Result.txt");
+
+		
 		Assume.assumeTrue(resultFile.exists());
 		score(resultFile, resultFile.getAbsolutePath() + "_Eval.xml");
 	}

@@ -147,13 +147,64 @@ public class MaxEntClassificationEDATest {
 //		0.63
 		
 		/** English */
+		/* Baseline */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_EN.xml");
+//		0.625
+		
+		/* WN: WordNet */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_WN_EN.xml");
+//		0.5125
+		
+		/* Baseline + WN */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN_EN.xml");
+//		0.63 false false false
+//		0.6325 true false false (default)
+//		0.62375 false true true
+//		0.62625 true true true
+		
+		/* VO: VerbOcean */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_VO_EN.xml");
+//		0.5125 true (default)
+//		0.5075 false
+		
+		/* Baseline + VO */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+VO_EN.xml");
+//		0.6225 true (default)
+//		0.6225 false
 
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DepTriple_EN.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeleton_EN.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TreeSkeletonAll_EN.xml");
+		/* Baseline + WN + VO */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO_EN.xml");
+//		0.62375
+		
+		/* TP: dependency triples without POS */
+		
+		/* TPPos: dependency triples with POS */
+		
+		/* Baseline + TP */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP_EN.xml");
+//		0.63125
+		
+		/* Baseline + TPPos */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TPPos_EN.xml");
+//		0.63
+		
+		/* TS: tree skeleton scoring */
+		
+		/* Baseline + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TS_EN.xml");
+//		0.63625
+		
+		/* Baseline + TP + TS */
+		
+		/* Baseline + TPPos + TS */
+		
+		/* Baseline + TP + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml");
+//		0.64375
+		
+		/* Baseline + WN + VO + TP + TPPos + TS */
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml");
+//		0.645
 
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
