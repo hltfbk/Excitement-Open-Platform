@@ -18,6 +18,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
@@ -50,61 +53,131 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 
 	private Set<WordnetLexicalResource> wnlrSet;
 
-	/**
-	 * the WordNet relation set
-	 */
-	private Set<WordNetRelation> wnlrRelSet;
-
-	/**
-	 * get the WordNet relation set
-	 * @return
-	 */
-	public Set<WordNetRelation> getWnlrRelSet() {
-		return wnlrRelSet;
-	}
-
 	private Set<VerbOceanLexicalResource> volrSet;
 
 	/**
-	 * the VerbOcean relation set
-	 */
-	private Set<RelationType> volrRelSet;
-
-	/**
-	 * get the VerbOcean relation set
-	 * @return
-	 */
-	public Set<RelationType> getVolrRelSet() {
-		return volrRelSet;
-	}
-
-	/**
 	 * the constructor using WordNet relations and VerbOcean relations
-	 * @param wnlrRelSet the WordNet relation set
-	 * @param volrRelSet the VerbOcean relation set
+	 * 
+	 * @param wnlrRelSet
+	 *            the WordNet relation set
+	 * @param volrRelSet
+	 *            the VerbOcean relation set
 	 * @throws LexicalResourceException
 	 */
-	public BagOfLexesScoringEN(Set<WordNetRelation> wnlrRelSet,
-			Set<RelationType> volrRelSet) throws LexicalResourceException {
-		this.wnlrRelSet = wnlrRelSet;
-		this.volrRelSet = volrRelSet;
-		if (null != wnlrRelSet && wnlrRelSet.size() != 0) {
+	public BagOfLexesScoringEN(CommonConfig config)
+			throws ConfigurationException, LexicalResourceException {
+		NameValueTable comp = config.getSection("BagOfLexesScoring");
+
+		if (null == comp.getString("WordnetLexicalResource")
+				&& null == comp.getString("VerbOceanLexicalResource")) {
+			throw new ConfigurationException(
+					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
+		}
+
+		if (null != comp.getString("WordnetLexicalResource")) {
+			String[] WNRelations = comp.getString("WordnetLexicalResource")
+					.split(",");
+			if (null == WNRelations || 0 == WNRelations.length) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the WordNet");
+			}
+			Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+			for (String relation : WNRelations) {
+				if (relation.equalsIgnoreCase("HYPERNYM")) {
+					wnRelSet.add(WordNetRelation.HYPERNYM);
+				} else if (relation.equalsIgnoreCase("SYNONYM")) {
+					wnRelSet.add(WordNetRelation.SYNONYM);
+				} else if (relation.equalsIgnoreCase("PART_HOLONYM")) {
+					wnRelSet.add(WordNetRelation.PART_HOLONYM);
+				} else {
+					logger.warning("Warning: wrong relation names for the WordNet");
+				}
+			}
+			if (wnRelSet.isEmpty()) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any (correct) relations for the WordNet");
+			}
+			boolean isCollapsed = true;
+			boolean useFirstSenseOnlyLeft = false;
+			boolean useFirstSenseOnlyRight = false;
+			NameValueTable wnComp = config.getSection("WordnetLexicalResource");
+			if (null != wnComp) {
+				if (null != wnComp.getString("isCollapsed")
+						&& !Boolean.parseBoolean(wnComp
+								.getString("isCollapsed"))) {
+					isCollapsed = false;
+				}
+				if (null != wnComp.getString("useFirstSenseOnlyLeft")
+						&& Boolean.parseBoolean(wnComp
+								.getString("useFirstSenseOnlyLeft"))) {
+					useFirstSenseOnlyLeft = true;
+				}
+				if (null != wnComp.getString("useFirstSenseOnlyRight")
+						&& Boolean.parseBoolean(wnComp
+								.getString("useFirstSenseOnlyRight"))) {
+					useFirstSenseOnlyRight = true;
+				}
+			}
 			wnlrSet = new HashSet<WordnetLexicalResource>();
-			for (WordNetRelation wnr : wnlrRelSet) {
+			if (isCollapsed) {
 				WordnetLexicalResource wnlr = new WordnetLexicalResource(
-						new File(WN_PATH), true, true,
-						Collections.singleton(wnr));
+						new File(WN_PATH), useFirstSenseOnlyLeft,
+						useFirstSenseOnlyRight, wnRelSet);
 				wnlrSet.add(wnlr);
 				numOfFeats++;
+			} else {
+				for (WordNetRelation wnr : wnRelSet) {
+					WordnetLexicalResource wnlr = new WordnetLexicalResource(
+							new File(WN_PATH), useFirstSenseOnlyLeft,
+							useFirstSenseOnlyRight, Collections.singleton(wnr));
+					wnlrSet.add(wnlr);
+					numOfFeats++;
+				}
 			}
 		}
-		if (null != volrRelSet && volrRelSet.size() != 0) {
+
+		if (null != comp.getString("VerbOceanLexicalResource")) {
+			String[] VORelations = comp.getString("VerbOceanLexicalResource")
+					.split(",");
+			if (null == VORelations || 0 == VORelations.length) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the VerbOcean");
+			}
+			Set<RelationType> voRelSet = new HashSet<RelationType>();
+			for (String relation : VORelations) {
+				if (relation.equalsIgnoreCase("strongerthan")) {
+					voRelSet.add(RelationType.STRONGER_THAN);
+				} else if (relation.equalsIgnoreCase("canresultin")) {
+					voRelSet.add(RelationType.CAN_RESULT_IN);
+				} else if (relation.equalsIgnoreCase("similar")) {
+					voRelSet.add(RelationType.SIMILAR);
+				} else {
+					logger.warning("Warning: wrong relation names for the VerbOcean");
+				}
+			}
+			if (voRelSet.isEmpty()) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any (correct) relations for the VerbOcean");
+			}
+			boolean isCollapsed = true;
+			NameValueTable voComp = config.getSection("VerbOceanLexicalResource");
+			if (null != voComp && null != voComp.getString("isCollapsed")
+					&& !Boolean.parseBoolean(voComp.getString("isCollapsed"))) {
+				isCollapsed = false;
+			}
 			volrSet = new HashSet<VerbOceanLexicalResource>();
-			for (RelationType vor : volrRelSet) {
+			if (isCollapsed) {
 				VerbOceanLexicalResource volr = new VerbOceanLexicalResource(1,
-						new File(VO_PATH), Collections.singleton(vor));
+						new File(VO_PATH), voRelSet);
 				volrSet.add(volr);
 				numOfFeats++;
+			} else {
+				for (RelationType vor : voRelSet) {
+					VerbOceanLexicalResource volr = new VerbOceanLexicalResource(
+							1, new File(VO_PATH), Collections.singleton(vor));
+					volrSet.add(volr);
+					numOfFeats++;
+				}
 			}
 		}
 	}
@@ -168,11 +241,14 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	}
 
 	/**
-	 * calculate the similarity score between T and H based on WordNet
-	 * relations
-	 * @param tBag the bag of words of T
-	 * @param hBag the bag of words of H
-	 * @param wnlr the WordNet relations
+	 * calculate the similarity score between T and H based on WordNet relations
+	 * 
+	 * @param tBag
+	 *            the bag of words of T
+	 * @param hBag
+	 *            the bag of words of H
+	 * @param wnlr
+	 *            the WordNet relations
 	 * @return the similarity score
 	 * @throws ScoringComponentException
 	 */
@@ -211,9 +287,13 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	/**
 	 * calculate the similarity score between T and H based on VerbOcean
 	 * relations
-	 * @param tBag the bag of words of T
-	 * @param hBag the bag of words of H
-	 * @param volr the VerbOcean relations
+	 * 
+	 * @param tBag
+	 *            the bag of words of T
+	 * @param hBag
+	 *            the bag of words of H
+	 * @param volr
+	 *            the VerbOcean relations
 	 * @return the similarity score
 	 * @throws ScoringComponentException
 	 */
