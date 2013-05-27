@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 
 import org.apache.log4j.Appender;
 import org.apache.log4j.FileAppender;
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -44,7 +45,10 @@ public class BiuteeLog4jConfigurator
 	
 	public void configure() throws FileNotFoundException, TeEngineMlException
 	{
-		// First, initialize log4j
+		// First, reset log4j configuration
+		LogManager.resetConfiguration();
+
+		// Now, initialize log4j
 		
 		// Find out whether log4j.properties exists. If it exists use it as is.
 		File log4jPropertiesFile = new File(LOG4J_PROPERTIES);
