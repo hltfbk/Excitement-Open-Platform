@@ -15,6 +15,10 @@ import eu.excitementproject.eop.common.utilities.xmldom.XmlDomUtils;
 
 
 /**
+ * A {@link DocumentReader} that reads the Reuters-corpus documents.
+ * Each document is an XML file, with some meta-data, and the document contents.
+ * 
+ * @see ReutersCorpusReader
  * 
  * @author Asher Stern
  * @since Oct 18, 2012

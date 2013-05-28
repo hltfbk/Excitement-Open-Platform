@@ -5,6 +5,17 @@ import java.util.Map;
 
 
 /**
+ * Implementation of {@link Cache} using two <code>java.util.Map</code>.
+ * The maps are maintained such that their size does not exceed the "capacity"
+ * declared for the cache.
+ * <P>
+ * The logic is as follows: each key-value element is stored in the "used-map".
+ * If a new element has to be stored in the cache, but the size of the "used-map"
+ * reached the capacity, then this map is changed to be "previous-map", and a new
+ * empty map is created for "used-map". Eventually, when the new "used-map" reaches
+ * the capacity too, then the previous map is discarded, the "used-map" becomes
+ * "previous-map", and a new empty "used-map" is created.
+ * 
  * 
  * @author Asher Stern
  * 
@@ -26,6 +37,10 @@ public class TwoMapsCache<K,V> implements Cache<K, V>
 			this.maxCapacity = capacity;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.utilities.Cache#containsKey(java.lang.Object)
+	 */
 	public boolean containsKey(K key)
 	{
 		boolean ret = false;
@@ -37,6 +52,10 @@ public class TwoMapsCache<K,V> implements Cache<K, V>
 		return ret;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.utilities.Cache#get(java.lang.Object)
+	 */
 	public V get(K key)
 	{
 		V ret = null;
@@ -56,6 +75,10 @@ public class TwoMapsCache<K,V> implements Cache<K, V>
 		return ret;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.utilities.Cache#put(java.lang.Object, java.lang.Object)
+	 */
 	public void put(K key, V value)
 	{
 		if (usedMap.containsKey(key))
