@@ -56,12 +56,11 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	private Set<VerbOceanLexicalResource> volrSet;
 
 	/**
-	 * the constructor using WordNet relations and VerbOcean relations
+	 * the constructor using <code>CommonConfig</code>
 	 * 
-	 * @param wnlrRelSet
-	 *            the WordNet relation set
-	 * @param volrRelSet
-	 *            the VerbOcean relation set
+	 * @param config
+	 *            the configuration
+	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
 	public BagOfLexesScoringEN(CommonConfig config)
@@ -160,7 +159,8 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 						"Wrong configuation: didn't find any (correct) relations for the VerbOcean");
 			}
 			boolean isCollapsed = true;
-			NameValueTable voComp = config.getSection("VerbOceanLexicalResource");
+			NameValueTable voComp = config
+					.getSection("VerbOceanLexicalResource");
 			if (null != voComp && null != voComp.getString("isCollapsed")
 					&& !Boolean.parseBoolean(voComp.getString("isCollapsed"))) {
 				isCollapsed = false;

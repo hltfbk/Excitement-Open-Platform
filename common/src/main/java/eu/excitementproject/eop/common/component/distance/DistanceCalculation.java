@@ -2,8 +2,6 @@ package eu.excitementproject.eop.common.component.distance;
 
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
-import eu.excitementproject.eop.common.component.distance.DistanceValue;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 
 /**
