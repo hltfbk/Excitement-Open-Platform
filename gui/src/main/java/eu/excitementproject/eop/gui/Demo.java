@@ -159,15 +159,17 @@ public class Demo {
 			  } else {
 				  if (option.lap.matches("(?i).*TreeTagger.*")) {
 					  lapClass += ".dkpro.TreeTagger" + language;
-				  } else {
-					  // fall back to defaults
-					  if (language.matches("IT")) {
-						  lapClass += ".textpro.TextProTaggerIT";
-					  } else {
-						  lapClass += ".dkpro.OpenNLPTagger" + language;
-					  }
-				  }
+				  } 
 			  }
+		  }
+	  }
+	  
+	  if (lapClass.matches("eu.excitementproject.eop.lap")) {
+		  // fall back to defaults
+		  if (language.matches("IT")) {
+			  lapClass += ".textpro.TextProTaggerIT";
+		  } else {
+			  lapClass += ".dkpro.OpenNLPTagger" + language;
 		  }
 	  }
 	  return lapClass;  

@@ -2,16 +2,15 @@ package eu.excitementproject.eop.gui;
 
 import org.junit.Test;
 
-public class DemoTest_MaxEnt_EN {
+public class TestDemo_MaxEnt_DE {
 
 	@Test
 	public void test() {
-		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_EN.xml",
+		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_DE.xml",
 //				        "-train",
-//				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
-						"-lap","opennlp",
+//				        "-trainFile","./src/test/resources/data-set/de_demo_dev.xml",
 				        "-test",
-				        "-testFile","./src/test/resources/data-set/en_demo_test.xml",
+				        "-testFile","./src/test/resources/data-set/de_demo_test.xml",
 				        "-output","./src/test/resources/results/"};
 		try {
 			Demo demo = new Demo(cmd);

@@ -2,7 +2,7 @@ package eu.excitementproject.eop.gui;
 
 import org.junit.Test;
 
-public class DemoTest_MaxEnt_EN_singlePair {
+public class TestDemo_MaxEnt_EN_singlePair {
 
 	@Test
 	public void test() {
