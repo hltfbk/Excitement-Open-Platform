@@ -15,8 +15,19 @@ import java.util.Map;
  * All estimations were already calculated and saved in a serialization file. This class only
  * reads this file to the memory, and returns the estimations as needed.
  * <P>
- * 
- * The code that creates that serialization file is (currently) not part of the engineml project.
+ * The usual was to instantiate this class is by calling the static method
+ * {@link #fromSerializedFile(File)}.
+ * Excitement customers can get the input file from the run-time environment of
+ * BIUTEE (which is shipped along with EOP distribution).
+ * <P>
+ * Bar-Ilan students can get the input file from \\qa-srv\data\RESOURCES\UnigramProbabilities.
+ * Either "Reuters-PPD_unigram.ser" or "unigram_new.ser" can be used.
+ * <BR>
+ * The code by which "unigram_new.ser" was created is in "biutee" project
+ * (the class is eu.excitementproject.eop.biutee.utilities.unigram.UnigramCreator).
+ * The input was Reuters corpus (CD1 and CD2).
+ * <BR>
+ * The code that created "Reuters-PPD_unigram.ser" is (currently) not part of EOP.
  * It is temporarily stored in Asher's "stuff" project, and based on a text file sent from
  * Shachar to Asher, based on Reuters corpus.
  * 
