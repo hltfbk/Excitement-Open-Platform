@@ -25,9 +25,14 @@ import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
  */
 public class OpenNLPTaggerEN extends LAP_ImplBase implements LAPAccess {
 	
+	/**
+	 * The constructor sets the language flag.
+	 * 
+	 * @throws LAPException
+	 */
 	public OpenNLPTaggerEN() throws LAPException {
 		super(); 		
-		languageIdentifier = "EN"; // set languageIdentifer 
+		languageIdentifier = "EN"; 
 	}	
 
 	@Override 
