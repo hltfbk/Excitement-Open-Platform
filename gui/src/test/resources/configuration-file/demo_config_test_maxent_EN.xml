@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="language">EN</property>
+	</section>
+	
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	    <property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_AllLexRes_EN_1</property>
+		<property name="trainDir">./target/LAP_output/EN/dev/</property>
+		<property name="testDir">./target/LAP_output/EN/test/</property>
+		<property name="Components">BagOfWordsScoring</property>
+	</section>
+	
+</configuration>

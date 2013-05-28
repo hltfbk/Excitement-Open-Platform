@@ -38,7 +38,9 @@ public class Loader {
     	try {
     		
     		text = new ArrayList<String>();
-    		reader = new BufferedReader(new FileReader(fileName));
+//    		reader = new BufferedReader(new FileReader(fileName));
+			reader = new BufferedReader( new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
+
     		String line = reader.readLine();
     		//lettura delle linee del file
     		while (line != null) {
@@ -66,6 +68,8 @@ public class Loader {
     	try {
     		text = new StringBuffer();
     		reader = new BufferedReader(new FileReader(fileName));
+//			reader = new BufferedReader( new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
+
     		String line = reader.readLine();
     		//lettura delle linee del file
     		while (line != null) {

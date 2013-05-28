@@ -38,31 +38,84 @@ import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.textpro.TextProTaggerIT;
 import static java.nio.file.StandardCopyOption.*;
 
+/**
+ * 
+ * @author vivi@fbk
+ *
+ * Class for processing data with the EOP. 
+ * 
+ * It can be used for training and/or testing on train/test files or 
+ * given test/hypothesis pairs. 
+ *
+ */
 @SuppressWarnings("unused")
 public class Demo {
 
-	private static String lapAnnotDir = "./target/";
+	// command line options
+	private DemoCmdOptions option;
+	private DemoInitializationHelper<?> dih;
 	
-	private static String baseConfigFile = "configuration_example.xml";
-	private static String configFileDir = "./";
-	private static String configFileName;
-	private static File configFile;
+	private String language;
+	private String lapAnnotDir = "./target/";
 	
-	private static CommonConfig config;
+	private String baseConfigFile = "";
+	private String configFileDir = "";
+	private String configFileName;
+	private File configFile;
 	
-	private static LAPAccess lap = null;
+	private CommonConfig config;
+	
+	private LAPAccess lap = null;
 			
-	private static EDABasic<?> eda;
+	private EDABasic<?> eda;
 	
-	private static String configSection = "PlatformConfiguration";
+	private String configSection = "PlatformConfiguration";
 	
 	/**
 	 * @param args
 	 */
 
+	/**
+	 * Demo object constructor: 
+	 *   - initializes the demo, 
+	 *   - parses the command line arguments
+	 *   - sets value to various parameters
+	 *   - initializes the LAP
+	 *   
+	 * @param args -- command line arguments
+	 */
+	@SuppressWarnings("rawtypes")
+	public Demo(String[] args) {
+		
+		option = new DemoCmdOptions();
+		CmdLineParser parser = new CmdLineParser(option);
 
-	private static void initializeLAP(DemoCmdOptions option) {
-		String language;
+		dih = new DemoInitializationHelper();
+		
+		if (args.length == 0){
+			showHelp(parser);
+		}
+		try{ 
+			parser.parseArgument(args);
+
+			if (option.dir != null) {
+				configFileDir = option.dir;
+			}
+			
+//			editConfigFile(option);
+			chooseConfigFile(option);
+			initializeLAP(option);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Initializes the LAP based on the language information in the configuration file
+	 * 
+	 * @param option -- (parsed) command arguments
+	 */
+	private void initializeLAP(DemoCmdOptions option) {
 		if (option.language != null) {
 			language = option.language.toUpperCase();
 		} else {
@@ -85,7 +138,14 @@ public class Demo {
 		}
 	}
 
-	private static void runLAPOnFile(String inputFile, String outDir) {
+	/**
+	 * When the input consists of a file (as opposed to a test/hypothesis pair)
+	 * it is processed through the LAP
+	 * 
+	 * @param inputFile -- input (RTE formatted) file
+	 * @param outDir -- directory for writing the serialized CAS objects produced from the test/hypothesis pairs in the input data
+	 */
+	private void runLAPOnFile(String inputFile, String outDir) {
 		
 		System.out.println("Running lap on file: " + inputFile + " // writing output to directory " + outDir);
 		
@@ -99,7 +159,14 @@ public class Demo {
 	}
 
 	
-	private static JCas runLAP(String text, String hypothesis) {
+	/**
+	 * Run the LAP on a given text/hypothesis pair
+	 * 
+	 * @param text -- text portion of the entailment pair
+	 * @param hypothesis -- hypothesis portion of the entailment pair
+	 * @return -- a CAS object for the given text/hypothesis pair
+	 */
+	private JCas runLAP(String text, String hypothesis) {
 		JCas aJCas = null;
 		try {
 			aJCas = lap.generateSingleTHPairCAS(text, hypothesis);
@@ -113,8 +180,12 @@ public class Demo {
 		return aJCas;
 	}
 	
-	
-	private static void editConfigFile(DemoCmdOptions option) {
+	/**
+	 * Unused method for editing a given input configuration file
+	 * 
+	 * @param option
+	 */
+	private void editConfigFile(DemoCmdOptions option) {
 		try {
 			configFileName = baseConfigFile + ".edited.xml";
 			configFile = new File(configFileName);
@@ -125,7 +196,12 @@ public class Demo {
 		}
 	}
 		
-	private static void chooseConfigFile(DemoCmdOptions option) {
+	/**
+	 * Create the CommonConfig object based on the configuration file name provided as argument
+	 * 
+	 * @param option -- (parsed) command line arguments
+	 */
+	private void chooseConfigFile(DemoCmdOptions option) {
 		
 		configFileName = option.config;
 		configFile = new File(configFileName);
@@ -140,7 +216,14 @@ public class Demo {
 		}	
 	}
 	
-	private static String getOptionValue(String fileOption, String string) {
+	/**
+	 * Find the value for a given parameter either from the command line arguments or from the configuration file
+	 * 
+	 * @param fileOption -- option value from the command line arguments
+	 * @param string -- name of tag of the wanted value in the configuration file
+	 * @return -- value of the wanted parameter
+	 */
+	private String getOptionValue(String fileOption, String string) {
 		
 		if (fileOption == null || fileOption.isEmpty()) {
 			fileOption = ConfigFileUtils.getAttribute(configFile,string);
@@ -149,8 +232,13 @@ public class Demo {
 		return fileOption;
 	}
 	
-	
-	private static void runEOPTrain(String trainFile, String trainDir) {
+	/**
+	 * Train the EDA
+	 * 
+	 * @param trainFile -- training data (RTE formatted)
+	 * @param trainDir -- directory for storing the processed training data (e.g. CAS-es produced by the LAP)
+	 */
+	private void runEOPTrain(String trainFile, String trainDir) {
 		try {
 			runLAPOnFile(trainFile, trainDir);
 			eda.startTraining(config);
@@ -168,12 +256,18 @@ public class Demo {
 	}
 
 	
-	// copy the generated files to the given directory
-	private static void runEOPTest(String testFile, String testDirStr, String outDir) {
+	/**
+	 * Run the EDA on the test data
+	 * 
+	 * @param testFile -- test file (RTE formatted)
+	 * @param testDirStr -- directory for storing testing decisions
+	 * @param outDir -- directory for storing the results in the web-demo-friendly format
+	 */
+	private void runEOPTest(String testFile, String testDirStr, String outDir) {
 		String resultsFile = configFile + "_Result.txt";
-		String xmlResultsFile = outDir + "/results.xml";
+		String xmlResultsFile = outDir + "/" + configFile.getName() + "_results.xml";
 		Path source;
-		Path target = Paths.get(outDir + "/report.xml");
+		Path target = Paths.get(outDir + "/" + configFile.getName() + "_report.xml");
 				
 		try {
 //			source = Paths.get(resultsFile);
@@ -210,8 +304,12 @@ public class Demo {
 		
 	}
 	
-	
-	private static void runEOPSinglePair(DemoCmdOptions option) {
+	/**
+	 * Run the platform on a single test/hypothesis pair
+	 * 	 	
+	 * @param option -- command line arguments
+	 */
+	private void runEOPSinglePair(DemoCmdOptions option) {
 		System.out.println("Text: " + option.text);
 		System.out.println("Hypothesis: " + option.hypothesis);
 		
@@ -230,33 +328,23 @@ public class Demo {
 	}
 		
 	
+	/**
+	 * When the command line arguments could not be parsed, show the help
+	 * 
+	 * @param parser
+	 */
 	private static void showHelp(CmdLineParser parser) {
 		System.out.println("Demo  [options ...] [arguments ...]");
 		parser.printUsage(System.out);
 	}
+
 	
-	public static void main(String[] args) {
+	/**
+	 * Run the platform, according to the specified command-line arguments
+	 */
+	public void run() {
 		
-		DemoCmdOptions option = new DemoCmdOptions();
-		CmdLineParser parser = new CmdLineParser(option);
-
-		@SuppressWarnings("rawtypes")
-		DemoInitializationHelper<?> dih = new DemoInitializationHelper();
-		
-		if (args.length == 0){
-			showHelp(parser);
-		}
-		try{ 
-			parser.parseArgument(args);
-
-			if (option.dir != null) {
-				configFileDir = option.dir;
-			}
-			
-//			editConfigFile(option);
-			chooseConfigFile(option);
-			initializeLAP(option);
-			
+		try{	
 			System.out.println("Initializing EDA from file " + config.getConfigurationFileName());	
 
 			eda = dih.startEngineBasic(configFile);
@@ -264,9 +352,7 @@ public class Demo {
 			
 			
 			if (option.train) {
-				
-//				eda.initialize(config);
-				
+								
 				String trainFile = getOptionValue(option.trainFile, "trainFile");
 				String trainDir = getOptionValue(option.trainDir, "trainDir");
 				runEOPTrain(trainFile, trainDir);
@@ -279,16 +365,26 @@ public class Demo {
 				if (option.testFile != null) {
 					String testFile = getOptionValue(option.testFile, "testFile");
 					String testDir = getOptionValue(option.testDir, "testDir");
-					runEOPTest(testFile, testDir, option.output);
+					if (option.output.isEmpty()) {
+						runEOPTest(testFile, testDir, "./");
+					} else {
+						runEOPTest(testFile, testDir, option.output);
+					}
 				} else {
 					runEOPSinglePair(option);
 				}
 			}
 			eda.shutdown();
 
-		} catch(CmdLineException | ConfigurationException | EDAException | ComponentException e) {
+		} catch(ConfigurationException | EDAException | ComponentException e) {
 			e.printStackTrace();
 		}
 	}
 
+	
+	public static void main(String[] args) {
+		
+		Demo demo = new Demo(args);
+		demo.run();
+	}
 }
