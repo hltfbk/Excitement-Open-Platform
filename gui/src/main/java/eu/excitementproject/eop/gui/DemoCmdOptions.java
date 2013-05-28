@@ -16,6 +16,9 @@ public class DemoCmdOptions {
 	@Option(name="-activatedEDA", usage="The EDA to be used")
 	public String activatedEDA = null;
 	
+	@Option(name="-lap", usage="The LAP to be used")
+	public String lap = null;
+	
 	@Option(name="-distance", usage="The distance algorithm to be used")
 	public String distance = null;
 	

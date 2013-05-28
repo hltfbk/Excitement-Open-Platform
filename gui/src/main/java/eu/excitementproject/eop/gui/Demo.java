@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -111,7 +113,7 @@ public class Demo {
 	}
 
 	/**
-	 * Initializes the LAP based on the language information in the configuration file
+	 * Initializes the LAP based on the lap parameter (if given) and the language information in the configuration file
 	 * 
 	 * @param option -- (parsed) command arguments
 	 */
@@ -122,22 +124,55 @@ public class Demo {
 			language = ConfigFileUtils.getAttribute(configFile, "language");
 		}
 		
+		String lapClassName = getLAPClass(option, language);		
+		
+		System.out.println("Processing input with " + lapClassName);
+		
 		try {
-			if (language.matches("IT")) {
-				lap = new TextProTaggerIT();
-			} else if (language.matches("EN")) {
-//				lap = new TreeTaggerEN();
-				lap = new OpenNLPTaggerEN();
-			} else if (language.matches("DE")) {
-				lap = new OpenNLPTaggerDE();
-			}		
-		} catch (LAPException e) {
-			System.err.println("Error initializing LAP");
+				Class<?> lapClass = Class.forName(lapClassName);
+				Constructor<?> lapClassConstructor = lapClass.getConstructor();
+				lap = (LAPAccess) lapClassConstructor.newInstance();
+		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			System.err.println("Error initializing LAP : " + e.getClass());
 			e.printStackTrace();
 			System.exit(1);
-		}
+		} 
 	}
 
+	
+	/**
+	 * Determine the class of the chosen LAP tool
+	 * 
+	 * @param option -- command-line arguments
+	 * @param language -- language option
+	 * @return -- the name of the class for the chosen LAP
+	 */
+	private String getLAPClass(DemoCmdOptions option, String language) {
+	  String lapClass = "eu.excitementproject.eop.lap";
+	  if (option.lap != null) {
+		  if (option.lap.matches("(?i).*TextPro.*")) {
+			  // there is TextPro only for Italian
+			  lapClass += ".textpro.TextProTaggerIT";
+		  } else {
+			  if (option.lap.matches("(?i).*OpenNLP.*")) {
+				  lapClass += ".dkpro.OpenNLPTagger" + language;
+			  } else {
+				  if (option.lap.matches("(?i).*TreeTagger.*")) {
+					  lapClass += ".dkpro.TreeTagger" + language;
+				  } else {
+					  // fall back to defaults
+					  if (language.matches("IT")) {
+						  lapClass += ".textpro.TextProTaggerIT";
+					  } else {
+						  lapClass += ".dkpro.OpenNLPTagger" + language;
+					  }
+				  }
+			  }
+		  }
+	  }
+	  return lapClass;  
+	}
+	
 	/**
 	 * When the input consists of a file (as opposed to a test/hypothesis pair)
 	 * it is processed through the LAP
