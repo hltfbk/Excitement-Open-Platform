@@ -12,8 +12,8 @@
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
 	    <property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_AllLexRes_EN_1</property>
-		<property name="trainDir">./target/LAP_output/EN/dev/</property>
-		<property name="testDir">./target/LAP_output/EN/test/</property>
+		<property name="trainDir">./</property>
+		<property name="testDir">./</property>
 		<property name="Components">BagOfWordsScoring</property>
 	</section>
 	
