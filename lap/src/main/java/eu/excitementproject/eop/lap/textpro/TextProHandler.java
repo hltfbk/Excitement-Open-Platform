@@ -35,11 +35,10 @@ public class TextProHandler {
     
     //directory dei file temporanei
     private static final String TEMP_PATH = "../lap/src/main/resources/TextPro/";
-    //private static final String TEMP_PATH = "/home/k9/Desktop/TextProLinux1.4.3/tmp/";
+//    private static final String TEMP_PATH = "/tmp/";
     
     //Variabili Globali: TEXTPRO, YAMCHA_HOME e PATH
     private static String[] CONFIG = {"TEXTPRO=" + ""};
-    //private static final String[] CONFIG = {"TEXTPRO=" + "/home/k9/Desktop/TextProLinux1.4.3/", "YAMCHA_HOME=" + "/home/k9/Desktop/TextProLinux1.4.3/yamChaM1-0.33/yamcha-0.33/", "PATH=" + "/usr/bin/" + ":."};
 
     
     
