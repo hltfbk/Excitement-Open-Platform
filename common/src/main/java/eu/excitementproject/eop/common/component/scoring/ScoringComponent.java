@@ -3,10 +3,10 @@
  */
 package eu.excitementproject.eop.common.component.scoring;
 import java.util.Vector;
+
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.Component;
-import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 
 /**
  * <P>

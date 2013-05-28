@@ -16,9 +16,14 @@ import eu.excitementproject.eop.lap.LAPException;
 
 public class TreeTaggerIT extends TreeTaggerEN {
 
+	/**
+	 * The constructor sets the language flag.
+	 * 
+	 * @throws LAPException
+	 */
 	public TreeTaggerIT() throws LAPException {
 		super(); 
-		languageIdentifier = "IT"; // setting language identifier 
+		languageIdentifier = "IT";
 	}
 
 }

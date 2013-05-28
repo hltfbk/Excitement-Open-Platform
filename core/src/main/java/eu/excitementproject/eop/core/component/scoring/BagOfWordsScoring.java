@@ -1,3 +1,6 @@
+/**
+ * This package contains all the scoring components implements <code>ScoringComponent</code>.
+ */
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.HashMap;
