@@ -1,3 +1,6 @@
+/**
+ * This package contains all the LAP components already existing in dkpro and they extend <code>LAP_ImplBaseAE</code>.
+ */
 package eu.excitementproject.eop.lap.dkpro;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
@@ -73,7 +76,7 @@ public class MaltParserEN extends LAP_ImplBaseAE {
 		
 		String modelVariant=null; 
 		
-	    if ( (args != null) && (args.get("PARSER_MODEL_VARIANT") != ""))
+	    if ( null != args && "" != args.get("PARSER_MODEL_VARIANT"))
 	    { // parser model argument passed in from the constructor. 
 	    	modelVariant = args.get("PARSER_MODEL_VARIANT"); 
 	    }
