@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="DE">
+	<pair id="1" entailment="ENTAILMENT" task="IE">
+		<t>Der Verkauf wurde getätigt, um Yukos Steuerbescheid über 27,5 Milliarden US-Dollar zu bezahlen. Yuganskneftegaz wurde ursprünglich für 9,4 Milliarden US-Dollar an ein kaum bekanntes Unternehmen namens Baikalfinansgroup verkauft, welches später von dem russischen staatseigenen Ölunternehmen Rosneft aufgekauft wurde.</t>
+		<h>Baikalfinansgroup wurde an Rosneft verkauft.</h>
+	</pair>
+	<pair id="2" entailment="NONENTAILMENT" task="IE">
+		<t>Der Verkauf wurde getätigt, um Yukos Steuerbescheid über 27,5 Milliarden US-Dollar zu bezahlen. Yuganskneftegaz wurde ursprünglich für 9,4 Milliarden US-Dollar an ein kaum bekanntes Unternehmen namens Baikalfinansgroup verkauft, welches später von dem russischen staatseigenen Ölunternehmen Rosneft aufgekauft wurde.</t>
+		<h>Yuganskneftegaz hat Kosten in Höhe von 27,5 Milliarden US-Dollar.</h>
+	</pair>
+	<pair id="3" entailment="NONENTAILMENT" task="IE">
+		<t>Außer im Broadwaystück "Dreamgirls", war Loraine in der Nicht-Broadwy-Produktion "Does A Tiger Have A Necktie" zu sehen. 1999 ging Loraine nach London, Großbritannien. Dort nahm sie an der Produktion "RENT" teil, wo sie für die Zweitbesetzung der "Mimi" vorgesehen war.</t>
+		<h>"Does A Tiger Have A Necktie" wurde in London produziert.</h>
+	</pair>
+</entailment-corpus>

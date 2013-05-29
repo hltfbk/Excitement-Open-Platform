@@ -2,8 +2,8 @@ package eu.excitementproject.eop.lap.textpro;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,7 +30,7 @@ public class LAP_TextPro extends LAP_ImplBase {
 	protected TextProHandler txp = null;
 	protected TextProAnnotation txpAnn = null;
 	
-	private String TXPAnnotMapFile = "../lap/src/main/resources/TextPro/it-tagger.map";
+	private String TXPAnnotMapFile = "/TextPro/it-tagger.map";
 			
 	protected HashMap<String,String> AnnotMap = null; 
 	
@@ -235,7 +235,7 @@ public class LAP_TextPro extends LAP_ImplBase {
 	private void loadTXPAnnotMap(){
 		AnnotMap = new HashMap<String,String>();
 		try {
-			BufferedReader reader = new BufferedReader( new FileReader(new File(TXPAnnotMapFile)));
+			BufferedReader reader = new BufferedReader( new InputStreamReader(this.getClass().getResourceAsStream(TXPAnnotMapFile)));
 			String line = null;
 			Pattern posLine = Pattern.compile("^\\s*(.*?)\\s*=\\s*(.*)");
 			Matcher matcher;
