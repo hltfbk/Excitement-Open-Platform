@@ -28,6 +28,10 @@ public class DerivBaseResourceTest {
 
 	@Test
 	public void test() throws UnsupportedPosTagStringException {
+
+		// Gil - no-score test is not really meaningful;
+		// After the "hurried" patch of File-access-removing (as getResource), the resource for the moment only simply loads default score file.
+		// But the tests are kept for the moment, because it will make sure if someone calling with "old style" wouldn't be broken. 
 		
 		/**
 		 * ****************************

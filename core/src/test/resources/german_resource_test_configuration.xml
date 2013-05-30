@@ -7,6 +7,8 @@
 <configuration>
 
 	<section name="GermanDistSim">
+	
+			<!-- TODO: Gil: need to update the description: Now GermanDistSim silently ignore this path, and only use 10k big resource  -->		
 	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
 	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
 	</section> 
@@ -34,6 +36,8 @@
 	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
 	<section name="DerivBaseResource">
 	
+		<!-- TODO: Gil: We need to update the description: first two options are no longer meaningful.  -->
+		
 		<!-- Path to the DErivBase resource file. If no file is found, the DerivBaseResource implementation 
 			 will raise an exception. 
 		     You can choose either a resource containing scores or no scores.  

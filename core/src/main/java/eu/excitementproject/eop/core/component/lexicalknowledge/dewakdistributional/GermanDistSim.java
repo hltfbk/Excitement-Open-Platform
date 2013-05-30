@@ -26,9 +26,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
+//import java.io.File;
+//import java.io.FileFilter;
+//import java.io.FileInputStream;
+//import java.io.InputStream;
 
 /**
  * This class implements a German lexical resource based on corpus term distribution.  
@@ -55,30 +56,35 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	 * @throws ComponentException
 	 */
 	public GermanDistSim(CommonConfig config) throws ConfigurationException, ComponentException {
-		this(config.getSection("GermanDistSim").getString("similarityFilesPath"));
+		this(); // GermanDistSim no longer supports using "different" files. we only use 10k data now. 
+//		this(config.getSection("GermanDistSim").getString("similarityFilesPath"));
 //		this(config.getSection(getComponentName()).getString("similarityFilesPath"));
 	}
 	
-	/**
-	 * Creates a new GermanDistSim instance, and initializes the instance
-	 * (basically loads similarity files into memory).
-	 * 
-	 * @param similarityFilesPath		Path to similarity files.
-	 * @throws ConfigurationException
-	 */
-	public GermanDistSim(String similarityFilesPath) throws ConfigurationException {
-		// Read all similarity files
-		FileFilter filter = new FileFilter() {
-			public boolean accept(File f) {
-				return !f.isDirectory() && f.canRead() && f.getPath().contains(".sim.");
-			}
-		};
+	
+	public GermanDistSim() throws ConfigurationException
+	{
 		
-		File[] simfiles = (new File(similarityFilesPath)).listFiles(filter); 
+		// load up the resource into memory. 		
+//		  drwxr-xr-x  10 tailblues  staff     340 Apr 28 16:02 ..
+//		  -rw-r--r--   1 tailblues  staff  641983 Apr 28 16:02 sdewac.bow.s10k.d10k.freq.w10.sim.balapinc
+//		  -rw-r--r--   1 tailblues  staff  133724 Apr 28 16:02 sdewac.bow.s10k.d10k.freq.w10.sim.dice
+//		  -rw-r--r--   1 tailblues  staff  157370 Apr 28 16:02 sdewac.bow.s10k.d10k.freq.w10.sim.jaccard
+//		  -rw-r--r--   1 tailblues  staff  894564 Apr 28 16:02 sdewac.bow.s10k.d10k.freq.w10.sim.lin
+//		  -rw-r--r--   1 tailblues  staff  894564 Apr 28 16:02 sdewac.bow.s10k.d10k.freq.w10.sim.linOpt
+
+		String[] listResource = new String[5]; 
+		listResource[0] = "/dewakdistributional-data-10k/sdewac.bow.s10k.d10k.freq.w10.sim.balapinc"; 
+		listResource[1] = "/dewakdistributional-data-10k/sdewac.bow.s10k.d10k.freq.w10.sim.dice"; 
+		listResource[2] = "/dewakdistributional-data-10k/sdewac.bow.s10k.d10k.freq.w10.sim.jaccard"; 
+		listResource[3] = "/dewakdistributional-data-10k/sdewac.bow.s10k.d10k.freq.w10.sim.lin"; 
+		listResource[4] = "/dewakdistributional-data-10k/sdewac.bow.s10k.d10k.freq.w10.sim.linOpt"; 
+		
+//		InputStream s = this.getClass().getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
 
 		try {
-			for (File simfile : simfiles) {
-				Scanner scanner = new Scanner(new FileInputStream(simfile), "UTF-8");
+			for (String simresource : listResource) {
+				Scanner scanner = new Scanner(this.getClass().getResourceAsStream(simresource), "UTF-8");
 				Map<String, Map<String, Float>> maps = new HashMap<String, Map<String, Float>>();
 				Map<String, Map<String, Float>> reverse_maps = new HashMap<String, Map<String, Float>>();
 
@@ -98,14 +104,70 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 						}
 					}
 				}
-				sims.put(simfile.getPath().substring(simfile.getPath().lastIndexOf('.') + 1), maps);
-				reverse_sims.put(simfile.getPath().substring(simfile.getPath().lastIndexOf('.') + 1), reverse_maps);
+				sims.put(simresource.substring(simresource.lastIndexOf('.') + 1), maps);
+				reverse_sims.put(simresource.substring(simresource.lastIndexOf('.') + 1), reverse_maps);
 				scanner.close();
 			}
 		}
 		catch (java.lang.Exception e) {
-			throw new GermanDistSimNotInstalledException("Cannot read similarity file: " + e.getMessage(), e);
+			throw new GermanDistSimNotInstalledException("Cannot load similarity file: " + e.getMessage(), e);
 		}
+
+	}
+	
+	/**
+	 * Creates a new GermanDistSim instance, and initializes the instance
+	 * (basically loads similarity files into memory).
+	 * 
+	 * @param similarityFilesPath		Path to similarity files.
+	 * @throws ConfigurationException
+	 */
+	@Deprecated 
+	public GermanDistSim(String similarityFilesPath) throws ConfigurationException {
+		
+		// We no longer give the choice of "resource". 
+		// This resource now only loads 10k fixed data. That's why we ignore the string and only calls this(). 
+		this(); 
+		
+//		// Read all similarity files
+//		FileFilter filter = new FileFilter() {
+//			public boolean accept(File f) {
+//				return !f.isDirectory() && f.canRead() && f.getPath().contains(".sim.");
+//			}
+//		};
+//		
+//		File[] simfiles = (new File(similarityFilesPath)).listFiles(filter); 
+//
+//		try {
+//			for (File simfile : simfiles) {
+//				Scanner scanner = new Scanner(new FileInputStream(simfile), "UTF-8");
+//				Map<String, Map<String, Float>> maps = new HashMap<String, Map<String, Float>>();
+//				Map<String, Map<String, Float>> reverse_maps = new HashMap<String, Map<String, Float>>();
+//
+//				while (scanner.hasNextLine()) {
+//					String[] parts = scanner.nextLine().split("\\s");
+//					// split er|sie|es lemmas
+//					for (String lhspart : parts[0].split("\\|")) {
+//						String lhs = lhspart.intern();
+//						for (String rhspart : parts[1].split("\\|")) {
+//							String rhs = rhspart.intern();
+//							Float similarity = Float.parseFloat(parts[2]);
+//							if (!maps.containsKey(lhs)) maps.put(lhs, new HashMap<String, Float>());
+//							maps.get(lhs).put(rhs, similarity);
+//
+//							if (!reverse_maps.containsKey(rhs)) reverse_maps.put(rhs, new HashMap<String, Float>());
+//							reverse_maps.get(rhs).put(lhs, similarity);
+//						}
+//					}
+//				}
+//				sims.put(simfile.getPath().substring(simfile.getPath().lastIndexOf('.') + 1), maps);
+//				reverse_sims.put(simfile.getPath().substring(simfile.getPath().lastIndexOf('.') + 1), reverse_maps);
+//				scanner.close();
+//			}
+//		}
+//		catch (java.lang.Exception e) {
+//			throw new GermanDistSimNotInstalledException("Cannot read similarity file: " + e.getMessage(), e);
+//		}
 	}
 	
 	/**

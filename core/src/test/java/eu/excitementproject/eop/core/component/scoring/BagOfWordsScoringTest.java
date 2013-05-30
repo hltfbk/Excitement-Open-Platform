@@ -42,7 +42,8 @@ public class BagOfWordsScoringTest {
 		// to test whether GermanDistSim is there
 		GermanDistSim gds = null;
 		try {
-			gds = new GermanDistSim("./src/main/resources/dewakdistributional-data/");
+			//gds = new GermanDistSim("./src/main/resources/dewakdistributional-data/");
+			gds = new GermanDistSim(); // Gil - GermanDistSim no longer supports choice of resource loading. only 10k now available. 
 		}catch (GermanDistSimNotInstalledException e) {
 			logger.warning("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
 			//throw e;
