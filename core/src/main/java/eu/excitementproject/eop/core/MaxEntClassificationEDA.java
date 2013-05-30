@@ -223,10 +223,10 @@ public class MaxEntClassificationEDA implements
 			}
 			if (component.equals("BagOfLexesScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
-					if (comp.getInteger("withPOS") == 1) {
-						initializeLexCompsDE(config, true);
-					} else {
+					if (null == comp.getString("withPOS") || !Boolean.parseBoolean(comp.getString("withPOS"))) {
 						initializeLexCompsDE(config, false);
+					} else {
+						initializeLexCompsDE(config, true);
 					}
 				} else {
 					initializeLexCompsEN(config);

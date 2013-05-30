@@ -38,9 +38,6 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	static Logger logger = Logger
 			.getLogger(BagOfLexesScoringEN.class.getName());
 
-	private static final String WN_PATH = "./target/WordNet/dict/";
-	private static final String VO_PATH = "./target/VerbOcean/verbocean.unrefined.2004-05-20.txt";
-
 	/**
 	 * the number of features
 	 */
@@ -99,6 +96,7 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 			boolean isCollapsed = true;
 			boolean useFirstSenseOnlyLeft = false;
 			boolean useFirstSenseOnlyRight = false;
+			String wnPath = "./src/main/resources/ontologies/EnglishWordNet-dict/";
 			NameValueTable wnComp = config.getSection("WordnetLexicalResource");
 			if (null != wnComp) {
 				if (null != wnComp.getString("isCollapsed")
@@ -116,18 +114,21 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 								.getString("useFirstSenseOnlyRight"))) {
 					useFirstSenseOnlyRight = true;
 				}
+				if (null != wnComp.getString("wordNetFilesPath")) {
+					wnPath = wnComp.getString("wordNetFilesPath");
+				}
 			}
 			wnlrSet = new HashSet<WordnetLexicalResource>();
 			if (isCollapsed) {
 				WordnetLexicalResource wnlr = new WordnetLexicalResource(
-						new File(WN_PATH), useFirstSenseOnlyLeft,
+						new File(wnPath), useFirstSenseOnlyLeft,
 						useFirstSenseOnlyRight, wnRelSet);
 				wnlrSet.add(wnlr);
 				numOfFeats++;
 			} else {
 				for (WordNetRelation wnr : wnRelSet) {
 					WordnetLexicalResource wnlr = new WordnetLexicalResource(
-							new File(WN_PATH), useFirstSenseOnlyLeft,
+							new File(wnPath), useFirstSenseOnlyLeft,
 							useFirstSenseOnlyRight, Collections.singleton(wnr));
 					wnlrSet.add(wnlr);
 					numOfFeats++;
@@ -159,22 +160,29 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 						"Wrong configuation: didn't find any (correct) relations for the VerbOcean");
 			}
 			boolean isCollapsed = true;
+			String voPath = "./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt";
 			NameValueTable voComp = config
 					.getSection("VerbOceanLexicalResource");
-			if (null != voComp && null != voComp.getString("isCollapsed")
-					&& !Boolean.parseBoolean(voComp.getString("isCollapsed"))) {
-				isCollapsed = false;
+			if (null != voComp) {
+				if (null != voComp.getString("isCollapsed")
+						&& !Boolean.parseBoolean(voComp
+								.getString("isCollapsed"))) {
+					isCollapsed = false;
+				}
+				if (null != voComp.getString("verbOceanFilePath")) {
+					voPath = voComp.getString("verbOceanFilePath");
+				}
 			}
 			volrSet = new HashSet<VerbOceanLexicalResource>();
 			if (isCollapsed) {
 				VerbOceanLexicalResource volr = new VerbOceanLexicalResource(1,
-						new File(VO_PATH), voRelSet);
+						new File(voPath), voRelSet);
 				volrSet.add(volr);
 				numOfFeats++;
 			} else {
 				for (RelationType vor : voRelSet) {
 					VerbOceanLexicalResource volr = new VerbOceanLexicalResource(
-							1, new File(VO_PATH), Collections.singleton(vor));
+							1, new File(voPath), Collections.singleton(vor));
 					volrSet.add(volr);
 					numOfFeats++;
 				}

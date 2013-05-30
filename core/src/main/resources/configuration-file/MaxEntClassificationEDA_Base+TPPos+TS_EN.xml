@@ -17,23 +17,18 @@
 	<section name="BagOfLemmasScoring">
 	</section>
 	
-	<section name="BagOfLexesScoring">
-			<property name="WordnetLexicalResource">HYPERNYM,SYNONYM,PART_HOLONYM</property>
+	<section name="BagOfDepsPosScoring">
 	</section>
 	
-	<section name="WordnetLexicalResource">
-			<property name="wordNetFilesPath">./src/main/resources/ontologies/EnglishWordNet-dict/</property>
-			<property name="isCollapsed">true</property>
-			<property name="useFirstSenseOnlyLeft">false</property>
-			<property name="useFirstSenseOnlyRight">false</property>
+	<section name="TreeSkeletonScoring">
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+WN_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TPPos+TS_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
 		<property name="classifier">10000,1</property>
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfDepsPosScoring,TreeSkeletonScoring</property>
 	</section>
 
 </configuration>
