@@ -2,7 +2,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.derivbase;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+//import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -21,7 +21,6 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
  * 
  * For details, please refer to Zeller et al. 2013, "DErivBase: Inducing 
  * and Evaluating a Derivational Morphology Resource for German"
- * 
  * 
  * DErivBase contains POS information for each lemma, and a reliability 
  * score for each lemma pair, computed by the length of the derivational
@@ -56,43 +55,80 @@ public class DerivBase {
 	/**
 	 * Constructor for file path as String.
 	 * 
+	 * @deprecated Gil: Reason of Deprecation: we no longer use File for German resources. We are using getResources only, and also, if there is not big reason to give choice, we simply use the default resource. use DerivBase(boolean,Double) instead. 
 	 * @param path
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws LexicalResourceException
 	 */
-	public DerivBase(String path, boolean scoreInfo, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
-		this(new File(path), scoreInfo, score);
+	@Deprecated  
+	public DerivBase(String path, boolean scoreInfo, Double score) throws FileNotFoundException, IOException, LexicalResourceException {		
+		// we silently ignore path, and call default constructor. 
+		this(score); 
+        //this(new File(path), scoreInfo, score);
 	}
 	
 	/**
 	 * Constructor for file path as File.
 	 * Loads the data from the file.
 	 * 
+	 * @deprecated Gil: Reason of Deprecation: we no longer use File for German resources. We are using getResources only, and also, if there is not big reason to give choice, we simply use the default resource. use DerivBase(boolean,Double) instead. 
 	 * @param inFile
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws LexicalResourceException
 	 */
+	@Deprecated 
     public DerivBase(File inFile, boolean scoreInfo, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
-    	
-    	this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
-    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
+		// we silently ignore path, and call default constructor. 
+		this(score); 
 
-    	file = inFile;
-    	
-
-            if (file.isDirectory()) {
-            	throw new LexicalResourceException("Please indicate the DErivBase resource file, not a directory.");
-            } else {
-                this.file = inFile;
-            }
-
-            load(inFile, scoreInfo, score);        
+//    	this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
+//    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
+//
+//    	file = inFile;
+//    	
+//
+//            if (file.isDirectory()) {
+//            	throw new LexicalResourceException("Please indicate the DErivBase resource file, not a directory.");
+//            } else {
+//                this.file = inFile;
+//            }
+//
+//            load(inFile, scoreInfo, score);        
     }
     
-    
+	/**
+	 * DELETEME LATER TODO 
+	 * Gil: Britta, due to urgent patch need for not using Files (but using getResource) 
+     * --- I've changed DerivBase to load only the File with scores. I thought this is Okay, 
+     * because, score information is "added" information, and EDAs can always choose to ignore. 
+     * But if I am wrong, you have to redo/convert some more. Feel free to discuss this with me. 
+     * 
+     * <P> 
+     * Constructor for DerivBase. (TODO: update argument info) 
+     * 
+	 * @param score specifies the minimum score value a pair must have to be considered
+	 * @throws LexicalResourceException
+	 */
+	public DerivBase(Double score) throws IOException, LexicalResourceException 
+	{
+		this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
+    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
+
+        load(score);        
+		
+	}
+	
+	
     /**
+     * TODO (just the same text, to constructor. DELETEMELATER) 
+     * Gil: Britta, due to urgent patch need for not using Files (but using getResource) 
+     * --- I've changed DerivBase to load only the File with scores. I thought this is Okay, 
+     * because, score information is "added" information, and EDAs can always choose to ignore. 
+     * But if I am wrong, you have to redo/convert some more. Feel free to discuss this with me. 
+     * 
+     * ==== 
      * Loads the data from a DErivBase into the data object. 
      * The input file can have two different formats: 
      * 1. containing scores for each lemma pair within one derivational family; example:
@@ -119,9 +155,15 @@ public class DerivBase {
      * @throws FileNotFoundException
      * @throws LexicalResourceException
      */
-	private void load(File inFile, boolean scoreInfo, Double minScore) throws IOException, FileNotFoundException, LexicalResourceException {
+//	private void load(File inFile, boolean scoreInfo, Double minScore) throws IOException, FileNotFoundException, LexicalResourceException {
+
+	private void load(Double minScore) throws IOException, LexicalResourceException {
+
+		//BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
+		// Gil: for now, simply Hardcoded Resource Loading, maybe store it in class static variable?  
+		BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/derivbase/DErivBase-v1.3-pairs.txt")));
+		boolean scoreInfo = true;  
         String line;
 
 		System.out.print("Loading DErivBase... ");
