@@ -183,10 +183,13 @@ public class MaxEntClassificationEDA implements
 	 * @throws ConfigurationException
 	 */
 	private void initializeEDA(CommonConfig config)
-			throws ConfigurationException {		
+			throws ConfigurationException {
 		NameValueTable top = config.getSection("PlatformConfiguration");
-		if (null == top || !top.getString("activatedEDA").equals(this.getClass().getSimpleName())) {
-			throw new ConfigurationException("Please specify the (correct) EDA.");
+		if (null == top
+				|| !top.getString("activatedEDA").equals(
+						this.getClass().getSimpleName())) {
+			throw new ConfigurationException(
+					"Please specify the (correct) EDA.");
 		}
 		language = top.getString("language");
 		if (null == language) {
@@ -205,8 +208,13 @@ public class MaxEntClassificationEDA implements
 	 */
 	private void initializeComponents(CommonConfig config)
 			throws ConfigurationException, ComponentException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
-				.getName());
+		NameValueTable EDA = null;
+		try {
+			EDA = config.getSection(this.getClass().getSimpleName());
+		} catch (ConfigurationException e) {
+			throw new ConfigurationException(e.getMessage()
+					+ " No EDA section.");
+		}
 		String tempComps = EDA.getString("Components");
 		if (null == tempComps || 0 == tempComps.trim().length()) {
 			throw new ConfigurationException(
@@ -226,7 +234,8 @@ public class MaxEntClassificationEDA implements
 			}
 			if (component.equals("BagOfLexesScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
-					if (null == comp.getString("withPOS") || !Boolean.parseBoolean(comp.getString("withPOS"))) {
+					if (null == comp.getString("withPOS")
+							|| !Boolean.parseBoolean(comp.getString("withPOS"))) {
 						initializeLexCompsDE(config, false);
 					} else {
 						initializeLexCompsDE(config, true);
@@ -308,8 +317,13 @@ public class MaxEntClassificationEDA implements
 	 */
 	private void initializeModel(CommonConfig config, boolean isTrain)
 			throws ConfigurationException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
-				.getName());
+		NameValueTable EDA = null;
+		try {
+			EDA = config.getSection(this.getClass().getSimpleName());
+		} catch (ConfigurationException e) {
+			throw new ConfigurationException(e.getMessage()
+					+ " No EDA section.");
+		}
 		modelFile = EDA.getString("modelFile");
 		if (isTrain) {
 			File file = new File(modelFile);
@@ -340,8 +354,13 @@ public class MaxEntClassificationEDA implements
 	 */
 	public final void initializeData(CommonConfig config, boolean isTrain)
 			throws ConfigurationException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
-				.getName());
+		NameValueTable EDA = null;
+		try {
+			EDA = config.getSection(this.getClass().getSimpleName());
+		} catch (ConfigurationException e) {
+			throw new ConfigurationException(e.getMessage()
+					+ " No EDA section.");
+		}
 		trainDIR = EDA.getString("trainDir");
 		if (null == trainDIR) {
 			if (isTrain) {
@@ -446,8 +465,7 @@ public class MaxEntClassificationEDA implements
 		// commented out, use the default value
 		// final double SMOOTHING_OBSERVATION = 0.1;
 
-		String classifier = c.getSection(
-				MaxEntClassificationEDA.class.getName())
+		String classifier = c.getSection(this.getClass().getSimpleName())
 				.getString("classifier");
 		int max_iteration = 100; // default value
 		int cut_off = 1; // default value

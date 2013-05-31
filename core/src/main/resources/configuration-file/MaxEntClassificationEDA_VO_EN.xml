@@ -20,7 +20,7 @@
 			<property name="isCollapsed">false</property>
 	</section>
 	
-	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	<section name="MaxEntClassificationEDA">
 		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_VO_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>

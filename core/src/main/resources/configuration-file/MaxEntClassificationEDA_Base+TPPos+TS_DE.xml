@@ -23,7 +23,7 @@
 	<section name="TreeSkeletonScoring">
 	</section>
 	
-	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	<section name="MaxEntClassificationEDA">
 		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TPPos+TS_DE</property>
 		<property name="trainDir">./target/DE/dev/</property>
 		<property name="testDir">./target/DE/test/</property>

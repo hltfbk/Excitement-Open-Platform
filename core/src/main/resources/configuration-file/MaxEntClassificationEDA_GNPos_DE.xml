@@ -27,7 +27,7 @@
 		<property name="synonymConfidence">1.0</property>
 	</section> 
 	
-	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	<section name="MaxEntClassificationEDA">
 		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_GNPos_DE</property>
 		<property name="trainDir">./target/DE/dev/</property>
 		<property name="testDir">./target/DE/test/</property>
