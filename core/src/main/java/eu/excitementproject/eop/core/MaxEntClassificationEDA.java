@@ -163,7 +163,7 @@ public class MaxEntClassificationEDA implements
 	public final void initialize(CommonConfig config)
 			throws ConfigurationException, EDAException, ComponentException {
 		// initialize the language
-		initializeLanguage(config);
+		initializeEDA(config);
 
 		// initialize the model
 		initializeModel(config, false);
@@ -182,9 +182,12 @@ public class MaxEntClassificationEDA implements
 	 *            the configuration
 	 * @throws ConfigurationException
 	 */
-	private void initializeLanguage(CommonConfig config)
-			throws ConfigurationException {
+	private void initializeEDA(CommonConfig config)
+			throws ConfigurationException {		
 		NameValueTable top = config.getSection("PlatformConfiguration");
+		if (null == top || !top.getString("activatedEDA").equals(this.getClass().getSimpleName())) {
+			throw new ConfigurationException("Please specify the (correct) EDA.");
+		}
 		language = top.getString("language");
 		if (null == language) {
 			// default language would be EN
@@ -427,7 +430,7 @@ public class MaxEntClassificationEDA implements
 	public final void startTraining(CommonConfig c)
 			throws ConfigurationException, EDAException, ComponentException {
 		// initialize the language
-		initializeLanguage(c);
+		initializeEDA(c);
 
 		// initialize the model
 		initializeModel(c, true);

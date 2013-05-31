@@ -7,7 +7,7 @@
 <configuration>
 
 	<section name="PlatformConfiguration">
-		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="activatedEDA">MaxEntClassificationEDA</property>
 		<property name="language">DE</property>
 	</section>
 	
@@ -18,7 +18,7 @@
 	</section>
 	
 	<section name="BagOfLexesScoring">
-		<property name="withPOS">0</property>
+		<property name="withPOS">false</property>
 		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
 	</section>
 
