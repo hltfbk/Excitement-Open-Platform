@@ -126,7 +126,8 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	public DerivBaseResource(String dbasePath, boolean scoreInfo, Double minScore) throws ConfigurationException, ComponentException {
 		
 		try {
-			this.derivbase = new DerivBase(dbasePath, scoreInfo, minScore);
+			//this.derivbase = new DerivBase(dbasePath, scoreInfo, minScore);
+			this.derivbase = new DerivBase(minScore);
 		}
 		catch (java.io.FileNotFoundException e) {
 			throw new DerivBaseNotInstalledException("Path to DErivBase is not correct.", e);
