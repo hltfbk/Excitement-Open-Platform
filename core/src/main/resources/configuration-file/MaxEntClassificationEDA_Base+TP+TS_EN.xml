@@ -20,12 +20,15 @@
 	<section name="BagOfDepsScoring">
 	</section>
 	
+	<section name="TreeSkeletonScoring">
+	</section>
+	
 	<section name="MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TP_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TP+TS_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
 		<property name="classifier">10000,1</property>
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfDepsScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfDepsScoring,TreeSkeletonScoring</property>
 	</section>
 
 </configuration>

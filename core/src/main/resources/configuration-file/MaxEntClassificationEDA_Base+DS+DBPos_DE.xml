@@ -7,7 +7,7 @@
 <configuration>
 
 	<section name="PlatformConfiguration">
-		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="activatedEDA">MaxEntClassificationEDA</property>
 		<property name="language">DE</property>
 	</section>
 	
@@ -18,7 +18,7 @@
 	</section>
 	
 	<section name="BagOfLexesScoring">
-		<property name="withPOS">1</property>
+		<property name="withPOS">true</property>
 		<property name="GermanDistSim"></property>
 		<property name="DerivBaseResource"></property>
 	</section>
@@ -34,7 +34,7 @@
 		<property name="scoreConfidence">0.01</property>
 	</section> 
 	
-	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	<section name="MaxEntClassificationEDA">
 		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+DS+DBPos_DE</property>
 		<property name="trainDir">./target/DE/dev/</property>
 		<property name="testDir">./target/DE/test/</property>

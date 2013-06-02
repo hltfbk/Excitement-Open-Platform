@@ -7,7 +7,7 @@
 <configuration>
 
 	<section name="PlatformConfiguration">
-		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="activatedEDA">MaxEntClassificationEDA</property>
 		<property name="language">EN</property>
 	</section>
 	
@@ -17,7 +17,7 @@
 	<section name="BagOfLemmasScoring">
 	</section>
 	
-	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	<section name="MaxEntClassificationEDA">
 		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>
