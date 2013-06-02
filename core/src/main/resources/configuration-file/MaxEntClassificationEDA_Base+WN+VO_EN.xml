@@ -7,7 +7,7 @@
 <configuration>
 
 	<section name="PlatformConfiguration">
-		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="activatedEDA">MaxEntClassificationEDA</property>
 		<property name="language">EN</property>
 	</section>
 	
@@ -23,16 +23,18 @@
 	</section>
 	
 	<section name="WordnetLexicalResource">
+			<property name="wordNetFilesPath">./src/main/resources/ontologies/EnglishWordNet-dict/</property>
 			<property name="isCollapsed">true</property>
 			<property name="useFirstSenseOnlyLeft">false</property>
 			<property name="useFirstSenseOnlyRight">false</property>
 	</section>
 	
 	<section name="VerbOceanLexicalResource">
+			<property name="verbOceanFilePath">./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 			<property name="isCollapsed">true</property>
 	</section>
 	
-	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	<section name="MaxEntClassificationEDA">
 		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+WN+VO_EN</property>
 		<property name="trainDir">./target/EN/dev/</property>
 		<property name="testDir">./target/EN/test/</property>

@@ -127,9 +127,12 @@ public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 			model = (HashMap<String, Vector<Double>>) in.readObject();
 			in.close();
 		} catch (IOException e) {
-			System.err.println(e.getMessage());
+			throw new EDAException(e.getMessage());
 		} catch (ClassNotFoundException e) {
-			System.err.println(e.getMessage());
+			throw new EDAException(e.getMessage());
+		}
+		if (null == model) {
+			throw new EDAException("No model is loaded!");
 		}
 
 		Vector<Double> featureVector = new Vector<Double>();
