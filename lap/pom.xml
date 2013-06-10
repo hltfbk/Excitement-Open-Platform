@@ -117,26 +117,31 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
     	</dependency>
+
+	<!-- Tree tagger related dependencies --> 
+	<!-- if you want to use tree tagger, and related LAPs, run treetagger ANT script; read TreeTagger license, and follow the instruction to install TreeTagger and models. And uncomment the followings --> 
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
-     		<version>20120912.0</version>
+     		<version>LATEST</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-de</artifactId>
-     		<version>20120417.0</version>
+     		<version>LATEST</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-en</artifactId>
-     		<version>20111109.0</version>
+     		<version>LATEST</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
-     		<version>20101115.0</version>
+     		<version>LATEST</version>
     	</dependency>
+	<!-- end of tree tagger related dependencies --> 
+
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
