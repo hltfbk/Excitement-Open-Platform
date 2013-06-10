@@ -7,6 +7,20 @@
   <packaging>pom</packaging>
   <name>excitement open platform</name>
   <description>open source platform for textual entailment</description>
+  
+  <scm>
+  <connection>scm:git:git@github.com:hltfbk/Excitement-Open-Platform.git</connection>
+  <developerConnection>scm:git:git@github.com:hltfbk/Excitement-Open-Platform.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+  <distributionManagement>
+   <repository>
+       <id>hlt-services4.fbk.eu</id>
+       <name>hlt-services4.fbk.eu-releases</name>
+       <url>http://hlt-services4.fbk.eu:8080/artifactory/releases</url>
+   </repository>
+  </distributionManagement> 
+
   <modules>
   	<module>core</module>
   	<module>lap</module>
@@ -311,6 +325,17 @@
 				<aggregate>true</aggregate>         
 			</configuration>
 		</plugin>
+
+                <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                                <tagNameFormat>v@{project.version}</tagNameFormat>
+                                <pushChanges>false</pushChanges>
+                                <localCheckout>true</localCheckout>
+                        </configuration>
+                </plugin>
 		  		
  	</plugins>
     		
