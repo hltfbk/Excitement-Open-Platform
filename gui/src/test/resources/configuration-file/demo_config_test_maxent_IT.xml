@@ -5,6 +5,7 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">IT</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.textpro.TextProTaggerIT</property>
 	</section>
 	
 	<section name="BagOfWordsScoring">
