@@ -36,11 +36,11 @@
 			<artifactId>jwnl</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>eu.excitementproject</groupId>
-			<artifactId>JMWN</artifactId>
-			<version>0.0.1-20130129.144837-1</version>
-		</dependency>
+                <dependency>
+   			<groupId>eu.excitementproject</groupId>
+   			<artifactId>JMWN-0.1</artifactId>
+  			 <version>0.1</version>
+		</dependency> 
 
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
