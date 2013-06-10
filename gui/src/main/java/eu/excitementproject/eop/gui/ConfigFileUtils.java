@@ -34,7 +34,9 @@ public class ConfigFileUtils {
 		
 		String value = findAttributeRec(sectionList, attr);
 		
-		System.out.println("Value for attribute " + attr + " : " + value);
+		if (value != null) {
+			System.out.println("Value for attribute " + attr + " : " + value);
+		}
 		
 		return value;
 	}
@@ -46,7 +48,7 @@ public class ConfigFileUtils {
 		
 		NodeList nodesList = findNodesWithTag(sectionList, configTag);
 		String edaName = findAttribute(nodesList, edaTag);
-		
+				
 		System.out.println("EDA class name from config file: " + edaName);
 		
 		return edaName;
