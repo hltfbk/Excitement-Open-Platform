@@ -37,7 +37,7 @@ public class TreeSkeletonScoring extends BagOfDepsScoring {
 	/**
 	 * the stop word file path
 	 */
-	protected static final String STOP_WORD_PATH = "./src/main/resources/external-data/stopwords_EN.txt";
+	protected static final String STOP_WORD_PATH = "../core/src/main/resources/external-data/stopwords_EN.txt";
 
 	/**
 	 * group words together having the following POSes
@@ -95,8 +95,7 @@ public class TreeSkeletonScoring extends BagOfDepsScoring {
 		if (!stopWordFile.exists()) {
 			return;
 		}
-		try (BufferedReader br = new BufferedReader(new FileReader(
-				STOP_WORD_PATH))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(STOP_WORD_PATH))) {
 			String sCurrentLine;
 			while ((sCurrentLine = br.readLine()) != null) {
 				if (sCurrentLine.trim().length() == 0) {
