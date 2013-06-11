@@ -1,9 +1,8 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
@@ -37,7 +36,7 @@ public class TreeSkeletonScoring extends BagOfDepsScoring {
 	/**
 	 * the stop word file path
 	 */
-	protected static final String STOP_WORD_PATH = "../core/src/main/resources/external-data/stopwords_EN.txt";
+	protected static final String STOP_WORD_PATH = "/external-data/stopwords_EN.txt";
 
 	/**
 	 * group words together having the following POSes
@@ -90,12 +89,8 @@ public class TreeSkeletonScoring extends BagOfDepsScoring {
 	 * @throws ConfigurationException
 	 */
 	public TreeSkeletonScoring() throws ConfigurationException {
-		// TODO: input configuration as parameter
-		File stopWordFile = new File(STOP_WORD_PATH);
-		if (!stopWordFile.exists()) {
-			return;
-		}
-		try (BufferedReader br = new BufferedReader(new FileReader(STOP_WORD_PATH))) {
+		// TODO: input configuration as parameter?
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(STOP_WORD_PATH)))) {
 			String sCurrentLine;
 			while ((sCurrentLine = br.readLine()) != null) {
 				if (sCurrentLine.trim().length() == 0) {
