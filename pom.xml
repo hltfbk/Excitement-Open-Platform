@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eu.excitementproject</groupId>
 	<artifactId>eop</artifactId>
-	<version>0.8.2-SNAPSHOT</version>
+	<version>0.8.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>excitement open platform</name>
 	<description>Free Open Source Platform for Recognizing Textual Entailments (RTE)</description>
