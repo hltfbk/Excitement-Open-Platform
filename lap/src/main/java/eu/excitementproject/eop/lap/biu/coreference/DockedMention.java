@@ -16,7 +16,7 @@ public class DockedMention {
 	}
 	
 	public String toString() {
-		return String.format("%s<%s..%s>(tag=%s)", text, charOffsetStart, charOffsetEnd, groupTag);
+		return String.format("DockedMention(tag=%s, span=<%s..%s>, text=%s)", groupTag, charOffsetStart, charOffsetEnd, text);
 	}
 
 }

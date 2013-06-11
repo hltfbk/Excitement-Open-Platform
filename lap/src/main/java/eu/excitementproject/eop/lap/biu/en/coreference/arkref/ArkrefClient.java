@@ -25,6 +25,8 @@ import arkref.data.Sentence;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.IntPair;
 import eu.excitementproject.eop.common.utilities.DockedToken;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinder;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinderException;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.StringUtilException;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -253,48 +255,53 @@ public class ArkrefClient
 				}
 				
 // TODO: Ofer - finish implementing coref
-//				// Build docked output
-//				arkrefDockedOutput = new HashMap<String, List<DockedMention>>();
-//				for (Mention mention : arkrefDocument.mentions()) {
-//					Tree node = mention.node();
-//					List<Tree> leaves = node.getLeaves();
-//					
-//					List<String> tokens = new ArrayList<String>(leaves.size());
-//					for (Tree leaf : leaves) {
-//						tokens.add(leaf.nodeString());
-//					}
-//					SortedMap<Integer, DockedToken> offsets = StringUtil.getTokensOffsets(text, tokens, false);
-//					if (!offsets.isEmpty()) {
-//						int startOffset = offsets.get(offsets.firstKey()).getCharOffsetStart();
-//						int endOffset = offsets.get(offsets.lastKey()).getCharOffsetEnd();
-//						String mentionString = text.substring(startOffset, endOffset);
-//						
-//						String tag = entityGraph.entName(mention);
-//						List<DockedMention> mentionsInGroup = null;
-//						if (arkrefDockedOutput.containsKey(tag)) {
-//							mentionsInGroup = arkrefDockedOutput.get(tag);
-//						}
-//						else {
-//							mentionsInGroup = new ArrayList<DockedMention>();
-//							arkrefDockedOutput.put(tag, mentionsInGroup);
-//						}
-//						
-//						DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
-//						mentionsInGroup.add(dockedMention);
-//					}
-//				}
-//				// Remove groups with only a single mention
-//				Iterator<Entry<String, List<DockedMention>>> iter = arkrefDockedOutput.entrySet().iterator();
-//				while (iter.hasNext()) {
-//					Entry<String, List<DockedMention>> entry = iter.next();
-//					if (entry.getValue().size() <= 1) {
-//						iter.remove();
-//					}
-//				}
-//				
-//			}
-//			catch(StringUtilException e) {
-//				throw new ArkrefClientException("ArkRef client failed. See nested exception.", e);
+				// Build docked output
+				arkrefDockedOutput = new HashMap<String, List<DockedMention>>();
+				for (Mention mention : arkrefDocument.mentions()) {
+					Tree node = mention.node();
+					List<Tree> leaves = node.getLeaves();
+					
+					List<String> tokens = new ArrayList<String>(leaves.size());
+					for (Tree leaf : leaves) {
+						String token = leaf.nodeString();
+						if (CONVERSIONS.containsKey(token)) {
+							token = CONVERSIONS.get(token);
+						}
+						tokens.add(token);
+					}
+					SortedMap<Integer, DockedToken> offsets = DockedTokenFinder.find(text, tokens, true, true);
+					if (!offsets.isEmpty()) {
+						int startOffset = offsets.get(offsets.firstKey()).getCharOffsetStart();
+						int endOffset = offsets.get(offsets.lastKey()).getCharOffsetEnd();
+						String mentionString = text.substring(startOffset, endOffset);
+						
+						String tag = entityGraph.entName(mention);
+						List<DockedMention> mentionsInGroup = null;
+						if (arkrefDockedOutput.containsKey(tag)) {
+							mentionsInGroup = arkrefDockedOutput.get(tag);
+						}
+						else {
+							mentionsInGroup = new ArrayList<DockedMention>();
+							arkrefDockedOutput.put(tag, mentionsInGroup);
+						}
+						
+						DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
+						mentionsInGroup.add(dockedMention);
+					}
+				}
+				// Remove groups with only a single mention
+				Iterator<Entry<String, List<DockedMention>>> iter = arkrefDockedOutput.entrySet().iterator();
+				while (iter.hasNext()) {
+					Entry<String, List<DockedMention>> entry = iter.next();
+					if (entry.getValue().size() <= 1) {
+						iter.remove();
+					}
+				}
+				
+			}
+			catch(DockedTokenFinderException e) {
+				throw new ArkrefClientException("ArkRef client failed. See nested exception.", e);
+////////////////////////////				
 			}
 			catch(RuntimeException e) // if run-time exception has been thrown - throw a new exception with very detailed information.
 			{
@@ -326,6 +333,7 @@ public class ArkrefClient
 				throw new ArkrefClientException(sb.toString(),e);
 			} // end of catch block
 		} // end of synchronized(ArkrefClient.class)
+		int x = 9;
 	}
 	
 	/**
@@ -513,5 +521,11 @@ public class ArkrefClient
 	protected List<WordAndStackTags> arkrefStackOutput = null;	
 	protected Map<String, List<DockedMention>> arkrefDockedOutput = null;	
 	protected boolean processDone = false;
+	
+	protected static final Map<String, String> CONVERSIONS = new HashMap<String, String>();
+	static {
+		CONVERSIONS.put("-LRB-", "(");
+		CONVERSIONS.put("-RRB-", ")");
+	}
 	
 }

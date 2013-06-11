@@ -21,7 +21,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
  * When done, and coreference resolver is not to be used any more, call {@link #cleanUp()}</LI>
  * </OL>
  * 
- * Based on {@link  CoreferenceResolver}.
+ * Based on {@link CoreferenceResolver}.
  * 
  * 
  * @author Ofer Bronstein
