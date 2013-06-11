@@ -187,7 +187,7 @@ public class MaxEntClassificationEDA implements
 		NameValueTable top = config.getSection("PlatformConfiguration");
 		if (null == top
 				|| !top.getString("activatedEDA").equals(
-						this.getClass().getSimpleName())) {
+						this.getClass().getName())) {
 			throw new ConfigurationException(
 					"Please specify the (correct) EDA.");
 		}
@@ -210,7 +210,7 @@ public class MaxEntClassificationEDA implements
 			throws ConfigurationException, ComponentException {
 		NameValueTable EDA = null;
 		try {
-			EDA = config.getSection(this.getClass().getSimpleName());
+			EDA = config.getSection(this.getClass().getName());
 		} catch (ConfigurationException e) {
 			throw new ConfigurationException(e.getMessage()
 					+ " No EDA section.");
@@ -319,7 +319,7 @@ public class MaxEntClassificationEDA implements
 			throws ConfigurationException {
 		NameValueTable EDA = null;
 		try {
-			EDA = config.getSection(this.getClass().getSimpleName());
+			EDA = config.getSection(this.getClass().getName());
 		} catch (ConfigurationException e) {
 			throw new ConfigurationException(e.getMessage()
 					+ " No EDA section.");
@@ -356,7 +356,7 @@ public class MaxEntClassificationEDA implements
 			throws ConfigurationException {
 		NameValueTable EDA = null;
 		try {
-			EDA = config.getSection(this.getClass().getSimpleName());
+			EDA = config.getSection(this.getClass().getName());
 		} catch (ConfigurationException e) {
 			throw new ConfigurationException(e.getMessage()
 					+ " No EDA section.");
@@ -465,7 +465,7 @@ public class MaxEntClassificationEDA implements
 		// commented out, use the default value
 		// final double SMOOTHING_OBSERVATION = 0.1;
 
-		String classifier = c.getSection(this.getClass().getSimpleName())
+		String classifier = c.getSection(this.getClass().getName())
 				.getString("classifier");
 		int max_iteration = 100; // default value
 		int cut_off = 1; // default value
