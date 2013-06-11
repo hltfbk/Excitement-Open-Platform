@@ -7,7 +7,7 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>excitement open platform</name>
-	<description>open source platform for textual entailment</description>
+	<description>Free Open Source Platform for Recognizing Textual Entailments (RTE)</description>
 
 	<scm>
 		<connection>scm:git:git@github.com:hltfbk/Excitement-Open-Platform.git</connection>
