@@ -7,7 +7,7 @@
 <configuration>
 
 	<section name="PlatformConfiguration">
-		<property name="activatedEDA">MaxEntClassificationEDA</property>
+		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">DE</property>
 	</section>
 	
@@ -27,7 +27,7 @@
 		<property name="synonymConfidence">1.0</property>
 	</section> 
 	
-	<section name="MaxEntClassificationEDA">
+	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
 		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_GNPos_DE</property>
 		<property name="trainDir">./target/DE/dev/</property>
 		<property name="testDir">./target/DE/test/</property>
