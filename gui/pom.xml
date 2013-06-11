@@ -3,7 +3,7 @@
   <parent>
     <artifactId>eop</artifactId>
     <groupId>eu.excitementproject</groupId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.8.2-SNAPSHOT</version>
   </parent>
   <artifactId>gui</artifactId>
   <name>gui</name>
@@ -12,12 +12,12 @@
   	<dependency>
   		<groupId>eu.excitementproject</groupId>
   		<artifactId>core</artifactId>
-  		<version>0.1-SNAPSHOT</version>
+  		<version>0.8.2-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>eu.excitementproject</groupId>
   		<artifactId>lap</artifactId>
-  		<version>0.1-SNAPSHOT</version>
+  		<version>0.8.2-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   		<groupId>args4j</groupId>
