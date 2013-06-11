@@ -467,7 +467,7 @@ public class MaxEntClassificationEDA implements
 
 		String classifier = c.getSection(this.getClass().getName())
 				.getString("classifier");
-		int max_iteration = 100; // default value
+		int max_iteration = 10000; // default value
 		int cut_off = 1; // default value
 		if (null != classifier && classifier.split(",").length == 2) {
 			max_iteration = Integer.parseInt(classifier.split(",")[0]);
