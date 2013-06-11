@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -96,7 +97,7 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 			boolean isCollapsed = true;
 			boolean useFirstSenseOnlyLeft = false;
 			boolean useFirstSenseOnlyRight = false;
-			String wnPath = "./src/main/resources/ontologies/EnglishWordNet-dict/";
+			String wnPath = "/ontologies/EnglishWordNet-dict/";
 			NameValueTable wnComp = config.getSection("WordnetLexicalResource");
 			if (null != wnComp) {
 				if (null != wnComp.getString("isCollapsed")
@@ -119,21 +120,33 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 				}
 			}
 			wnlrSet = new HashSet<WordnetLexicalResource>();
+			File wnFile = null;
+			try {
+				wnFile = new File(this.getClass().getResource(wnPath).toURI());
+			}	catch (URISyntaxException | NullPointerException e) {
+//				throw new ConfigurationException("wrong path to WordNet: " + wnPath);
+				logger.warning("wrong path to WordNet: " + wnPath + "; use the default.");
+				try {
+					wnFile = new File(this.getClass().getResource("/ontologies/EnglishWordNet-dict/").toURI());
+				} catch (URISyntaxException e1) {
+					throw new ConfigurationException("cannot find WordNet: " + e1.getMessage());
+				}
+			}
 			if (isCollapsed) {
-				WordnetLexicalResource wnlr = new WordnetLexicalResource(
-						new File(wnPath), useFirstSenseOnlyLeft,
+				WordnetLexicalResource wnlr = new WordnetLexicalResource(wnFile, useFirstSenseOnlyLeft,
 						useFirstSenseOnlyRight, wnRelSet);
 				wnlrSet.add(wnlr);
 				numOfFeats++;
 			} else {
 				for (WordNetRelation wnr : wnRelSet) {
 					WordnetLexicalResource wnlr = new WordnetLexicalResource(
-							new File(wnPath), useFirstSenseOnlyLeft,
+							wnFile, useFirstSenseOnlyLeft,
 							useFirstSenseOnlyRight, Collections.singleton(wnr));
 					wnlrSet.add(wnlr);
 					numOfFeats++;
 				}
 			}
+			logger.info("Load WordNet done.");
 		}
 
 		if (null != comp.getString("VerbOceanLexicalResource")) {
@@ -160,7 +173,7 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 						"Wrong configuation: didn't find any (correct) relations for the VerbOcean");
 			}
 			boolean isCollapsed = true;
-			String voPath = "./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt";
+			String voPath = "/VerbOcean/verbocean.unrefined.2004-05-20.txt";
 			NameValueTable voComp = config
 					.getSection("VerbOceanLexicalResource");
 			if (null != voComp) {
@@ -174,19 +187,32 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 				}
 			}
 			volrSet = new HashSet<VerbOceanLexicalResource>();
+			File voFile = null;
+			try {
+				voFile = new File(this.getClass().getResource(voPath).toURI());
+			}	catch (URISyntaxException | NullPointerException e) {
+//				throw new ConfigurationException("wrong path to VerbOcean: " + voPath);
+				logger.warning("wrong path to VerbOcean: " + voPath + "; use the default.");
+				try {
+					voFile = new File(this.getClass().getResource("/VerbOcean/verbocean.unrefined.2004-05-20.txt").toURI());
+				} catch (URISyntaxException e1) {
+					throw new ConfigurationException("cannot find VerbOcean: " + e1.getMessage());
+				}
+			}
 			if (isCollapsed) {
 				VerbOceanLexicalResource volr = new VerbOceanLexicalResource(1,
-						new File(voPath), voRelSet);
+						voFile, voRelSet);
 				volrSet.add(volr);
 				numOfFeats++;
 			} else {
 				for (RelationType vor : voRelSet) {
 					VerbOceanLexicalResource volr = new VerbOceanLexicalResource(
-							1, new File(voPath), Collections.singleton(vor));
+							1, voFile, Collections.singleton(vor));
 					volrSet.add(volr);
 					numOfFeats++;
 				}
 			}
+			logger.info("Load VerbOcean done.");
 		}
 	}
 
