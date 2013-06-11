@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -83,13 +84,17 @@ public class TreeSkeletonScoring extends BagOfDepsScoring {
 		return null;
 	}
 
-	// TODO: input configuration as parameter
 	/**
 	 * the constructor and initializer of the stop word list
 	 * 
 	 * @throws ConfigurationException
 	 */
 	public TreeSkeletonScoring() throws ConfigurationException {
+		// TODO: input configuration as parameter
+		File stopWordFile = new File(STOP_WORD_PATH);
+		if (!stopWordFile.exists()) {
+			return;
+		}
 		try (BufferedReader br = new BufferedReader(new FileReader(
 				STOP_WORD_PATH))) {
 			String sCurrentLine;
