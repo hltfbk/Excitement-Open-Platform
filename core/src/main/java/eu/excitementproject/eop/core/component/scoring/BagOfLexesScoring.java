@@ -87,6 +87,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
+			logger.info("Load GermanDistSim done.");
 		}
 
 		// initialize GermaNet
@@ -107,6 +108,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
+			logger.info("Load GermaNet done.");
 		}
 	}
 
@@ -145,11 +147,6 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 
 			JCas hView = aCas.getView("HypothesisView");
 			HashMap<String, Integer> hBag = countTokens(hView);
-
-			// int hSize = 0;
-			// for (String hWord : hBag.keySet()) {
-			// hSize += hBag.get(hWord).intValue();
-			// }
 
 			if (moduleFlags[0]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
