@@ -83,8 +83,8 @@ research project EXCITEMENT (EXploring Customer Interactions through Textual Ent
 
     <menu name="Try it" inherit="bottom">
       <item name="Live Demo" href="http://hlt-services4.fbk.eu/eop/index.php" />
-      <item name="Release v0.8.2 (tar)" href="https://github.com/hltfbk/Excitement-Open-Platform/tarball/release" />
-      <item name="Release v0.8.2 (zip)" href="https://github.com/hltfbk/Excitement-Open-Platform/zipball/release" />
+      <item name="Latest Release (tar)" href="https://github.com/hltfbk/Excitement-Open-Platform/tarball/release" />
+      <item name="Latest Release (zip)" href="https://github.com/hltfbk/Excitement-Open-Platform/zipball/release" />
       <item name="Configuration Files" href="http://hlt-services4.fbk.eu:8080/artifactory/repo/eu/excitementproject/core/0.8.2/core-0.8.2-sources.jar" />
       <item name="Knowledge Resources" href="http://hlt-services4.fbk.eu:8080/artifactory/repo/eop-resources/" />
     </menu>
