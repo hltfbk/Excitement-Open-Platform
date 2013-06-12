@@ -5,8 +5,8 @@
 	<artifactId>eop</artifactId>
 	<version>0.8.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>excitement open platform</name>
-	<description>Free Open Source Platform for Recognizing Textual Entailments (RTE)</description>
+	<name>Free Open Source Platform for Recognizing Textual Entailments (RTE)</name>
+	<description>The Excitement Open Platform (EOP), has created a generic architecture and a comprehensive implementation for a multilingual textual inference platform available to the scientific and technological communities. The EOP is a product of the EXCITEMENT project. For more information about the EXCITEMENT project please visit its website: http://www.excitement-project.eu/index.php/about</description>
 
 	<scm>
 		<connection>scm:git:git@github.com:hltfbk/Excitement-Open-Platform.git</connection>
