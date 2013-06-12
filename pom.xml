@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eu.excitementproject</groupId>
 	<artifactId>eop</artifactId>
-	<version>0.8.2-SNAPSHOT</version>
+	<version>0.8.4-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>excitement open platform</name>
-	<description>Free Open Source Platform for Recognizing Textual Entailments (RTE)</description>
+	<name>Free Open Source Platform for Recognizing Textual Entailments (RTE)</name>
+	<description>The Excitement Open Platform (EOP), has created a generic architecture and a comprehensive implementation for a multilingual textual inference platform available to the scientific and technological communities. The EOP is a product of the EXCITEMENT project. For more information about the EXCITEMENT project please visit its website: http://www.excitement-project.eu/index.php/about</description>
 
 	<scm>
 		<connection>scm:git:git@github.com:hltfbk/Excitement-Open-Platform.git</connection>
@@ -370,7 +370,7 @@
 
 	</build>
 
-	<url>http://hltfbk.github.io/Excitement-Open-Platform-Distribution/</url>
+	<url>http://hltfbk.github.io/Excitement-Open-Platform/</url>
 	<inceptionYear>2012</inceptionYear>
 	<licenses>
 		<license>
@@ -457,6 +457,7 @@
 			<roles>
 				<role>architect</role>
 				<role>developer</role>
+				<role>release manager</role>				
 			</roles>
 			<timezone>+1</timezone>
 			<properties>
@@ -539,7 +540,7 @@
 			<organization>DFKI GmbH</organization>
 			<organizationUrl>http://www.dfki.de/</organizationUrl>
 			<roles>
-				<role>Release management</role>
+				<role>release manager</role>
 			</roles>
 			<timezone>+1</timezone>
 		</contributor>
@@ -551,7 +552,7 @@
 			<organization>DFKI GmbH</organization>
 			<organizationUrl>http://www.dfki.de/</organizationUrl>
 			<roles>
-				<role>Release management</role>
+				<role>release manager</role>
 			</roles>
 			<timezone>+1</timezone>
 			<properties>
@@ -564,7 +565,7 @@
 
 	<issueManagement>
 		<system>Github</system>
-		<url>https://github.com/hltfbk/Excitement-Open-Platform-Distribution/issues</url>
+		<url>https://github.com/hltfbk/Excitement-Open-Platform/issues</url>
 	</issueManagement>
 
 	<ciManagement>
