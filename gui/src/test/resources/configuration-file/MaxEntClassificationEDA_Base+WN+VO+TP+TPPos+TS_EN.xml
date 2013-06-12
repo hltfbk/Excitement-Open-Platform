@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration [
+<!ENTITY myVar "Some common #PCDATA that can be reused... ">
+]>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="language">EN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserEN</property>
+	</section>
+	
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="BagOfLemmasScoring">
+	</section>
+	
+	<section name="BagOfLexesScoring">
+			<property name="WordnetLexicalResource">HYPERNYM,SYNONYM,PART_HOLONYM</property>
+			<property name="VerbOceanLexicalResource">StrongerThan,CanResultIn,Similar</property>
+	</section>
+	
+	<section name="WordnetLexicalResource">
+			<property name="wordNetFilesPath">/ontologies/EnglishWordNet-dict/</property>
+			<property name="isCollapsed">true</property>
+			<property name="useFirstSenseOnlyLeft">false</property>
+			<property name="useFirstSenseOnlyRight">false</property>
+	</section>
+	
+	<section name="VerbOceanLexicalResource">
+			<property name="verbOceanFilePath">/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+			<property name="isCollapsed">true</property>
+	</section>
+	
+	<section name="BagOfDepsScoring">
+	</section>
+	
+	<section name="BagOfDepsPosScoring">
+	</section>
+	
+	<section name="TreeSkeletonScoring">
+	</section>
+	
+	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+		<property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_Base+WN+VO+TP+TPPos+TS_EN</property>
+		<property name="trainDir">/tmp/</property>
+		<property name="testDir">/tmp/</property>
+		<property name="classifier">10000,1</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring,BagOfDepsScoring,BagOfDepsPosScoring,TreeSkeletonScoring</property>
+	</section>
+
+</configuration>
