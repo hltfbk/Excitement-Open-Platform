@@ -18,14 +18,14 @@
 			<name>DKPro repository</name>
           	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
      	</repository>
-     <!--  
+  
      	<repository>
      		<id>ukp-oss-snapshot</id>
      		<name>DKPro snapshot repository (for 1.5.0 access)</name>
      		<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots</url> 
      	</repository>
-     --> 
-  	</repositories>
+     
+ 	</repositories>
   	
    	<pluginRepositories>
    		<pluginRepository>
@@ -164,8 +164,6 @@
             </artifactId>
             <version>20130511.0</version>
         </dependency>
-    	<!-- We are not using MST parser for 1.0 release.  -->
-    	<!--  
     	
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -189,10 +187,8 @@
     		</artifactId>
     		<version>20130304.0</version>
     	</dependency>
-    	--> 
     	<!--  1G big model for German MST parser: commented out for prevent unneeded downloads -->
     	<!--  Include them if you need  DE-LONG variant model for MSTParserDE -->
-    	<!-- 
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
@@ -200,8 +196,7 @@
     		</artifactId>
     		<version>20130301.0</version>
     	</dependency>
-    	-->
- 	</dependencies>
+   </dependencies>
 
     <dependencyManagement>
    		<dependencies>
