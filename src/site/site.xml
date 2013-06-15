@@ -89,10 +89,10 @@ research project EXCITEMENT (EXploring Customer Interactions through Textual Ent
     </menu>
 
     <menu name="Contribute" inherit="bottom">
-      <item name="Report issues" href="https://github.com/hltfbk/Excitement-Open-Platform/issues" />
-      <item name="Developers' doc" href="https://github.com/hltfbk/Excitement-Open-Platform/wiki/Developers" />
-      <item name="Become a developer" href="develop.html" />
-      <item name="Become a sponsor" href="sponsor.html" />
+      <item name="Github Hosting Environment" href="https://github.com/hltfbk/Excitement-Open-Platform" />
+      <item name="Developers' Documentation" href="https://github.com/hltfbk/Excitement-Open-Platform/wiki/Developers" />
+      <item name="Become a Developer" href="develop.html" />
+      <item name="Become a Sponsor" href="sponsor.html" />
     </menu>
 
   </body>
