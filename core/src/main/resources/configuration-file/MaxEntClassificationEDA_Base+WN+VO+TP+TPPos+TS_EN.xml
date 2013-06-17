@@ -23,14 +23,12 @@
 	</section>
 	
 	<section name="WordnetLexicalResource">
-			<property name="wordNetFilesPath">./src/main/resources/ontologies/EnglishWordNet-dict/</property>
 			<property name="isCollapsed">true</property>
 			<property name="useFirstSenseOnlyLeft">false</property>
 			<property name="useFirstSenseOnlyRight">false</property>
 	</section>
 	
 	<section name="VerbOceanLexicalResource">
-			<property name="verbOceanFilePath">./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 			<property name="isCollapsed">true</property>
 	</section>
 	

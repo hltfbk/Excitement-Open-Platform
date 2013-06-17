@@ -83,17 +83,16 @@ research project EXCITEMENT (EXploring Customer Interactions through Textual Ent
 
     <menu name="Try it" inherit="bottom">
       <item name="Live Demo" href="http://hlt-services4.fbk.eu/eop/index.php" />
-      <item name="Latest Release (tar)" href="https://github.com/hltfbk/Excitement-Open-Platform/tarball/release" />
-      <item name="Latest Release (zip)" href="https://github.com/hltfbk/Excitement-Open-Platform/zipball/release" />
-      <item name="Configuration Files" href="http://hlt-services4.fbk.eu:8080/artifactory/repo/eu/excitementproject/core/0.8.2/core-0.8.2-sources.jar" />
-      <item name="Knowledge Resources" href="http://hlt-services4.fbk.eu:8080/artifactory/repo/eop-resources/" />
+      <item name="Latest Release (Source)" href="https://github.com/hltfbk/Excitement-Open-Platform/tarball/release" />
+      <item name="Latest Release (Binaries)" href="http://hlt-services4.fbk.eu:8080/artifactory/repo/eu/excitementproject/EOP-release/0.8.3.tar/EOP-release-0.8.3.tar.gz" />
+      <item name="EOP Resources" href="http://hlt-services4.fbk.eu:8080/artifactory/repo/eop-resources/eop-resources.tar/0.1/eop-resources.tar-0.1.gz" />
     </menu>
 
     <menu name="Contribute" inherit="bottom">
-      <item name="Report issues" href="https://github.com/hltfbk/Excitement-Open-Platform/issues" />
-      <item name="Developers' doc" href="https://github.com/hltfbk/Excitement-Open-Platform/wiki/Developers" />
-      <item name="Become a developer" href="develop.html" />
-      <item name="Become a sponsor" href="sponsor.html" />
+      <item name="Github Hosting Environment" href="https://github.com/hltfbk/Excitement-Open-Platform" />
+      <item name="Developers' Documentation" href="https://github.com/hltfbk/Excitement-Open-Platform/wiki/Developers" />
+      <item name="Become a Developer" href="develop.html" />
+      <item name="Become a Sponsor" href="sponsor.html" />
     </menu>
 
   </body>
