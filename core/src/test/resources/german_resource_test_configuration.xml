@@ -6,12 +6,12 @@
 
 <configuration>
 
-	<section name="GermanDistSim">
+  <!--	<section name="GermanDistSim">-->
 	
 			<!-- TODO: Gil: need to update the description: Now GermanDistSim silently ignore this path, and only use 10k big resource  -->		
 	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
-	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
-	</section> 
+		<!--	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
+	</section> -->
 
 
 	<section name="GermaNetWrapper">
@@ -50,7 +50,7 @@
 			 DEFAULT: false. -->
 		<property name="scoreInfo">false</property> 
 		
-		<!-- Specifies the confidence in the derivational relationship of a lemma pair. 
+		<!-- Specifies the minimum required confidence in the derivational relationship of a lemma pair to count as entailment pair. 
 		     Values range between 0.00 and 1.00; The score is calculated as 1/n, where n is the length of the derivation 
 		     path. Thus, 1.00 trusts only pairs resulting from one linking rule; 0.5 trusts pairs which are linked by two 
 		     rules; 0.33 trusts pairs which are linked by three rules, etc. 
