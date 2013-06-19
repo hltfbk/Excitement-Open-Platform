@@ -75,19 +75,19 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	/**
 	 * weight for match
 	 */
-    private final double mMatchWeight;
+    private double mMatchWeight;
     /**
 	 * weight for delete
 	 */
-    private final double mDeleteWeight;
+    private double mDeleteWeight;
     /**
 	 * weight for insert
 	 */
-    private final double mInsertWeight;
+    private double mInsertWeight;
     /**
 	 * weight for substitute
 	 */
-    private final double mSubstituteWeight;
+    private double mSubstituteWeight;
     /**
 	 * the resource
 	 */
@@ -124,13 +124,10 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	 */
     public FixedWeightTokenEditDistance(CommonConfig config) throws ConfigurationException, ComponentException {
     
-    	//Roberto: i pesi delle tre operazioni vanno letti dal configuration file.
-    	mMatchWeight = 0.0;
-        mDeleteWeight = 0.0;
-        mInsertWeight = 1.0;
-        mSubstituteWeight = 1.0;
         
         logger.info(getComponentName());
+        
+        initializeWeights(config);
         
     	NameValueTable nameValueTable = config.getSubSection(this.getClass().getCanonicalName(), "instance1");
     	
@@ -221,7 +218,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	    	// get Hypothesis
 	    	JCas hView = jcas.getView("HypothesisView"); 
 	    	List<Token> hTokensSequence = getTokenSequences(hView);
-	    	
+
 	    	distanceValue = distance(tTokensSequence, hTokensSequence);
 	    	
     	} catch (Exception e) {
@@ -356,7 +353,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      * @return weight of inserting token.
      */
     public double insertWeight(Token tInserted) {
-    	
+
         return mInsertWeight;
         
     }
@@ -372,7 +369,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      * the deleted token.
      */
     public double substituteWeight(Token tDeleted, Token tInserted) {
-    	
+
         return mSubstituteWeight;
         
     }
@@ -402,6 +399,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	for (int j = 1; j <= target.size(); j++)
     		distanceTable[0][j] = distanceTable[0][j-1] + insertWeight(target.get(j-1));
  
+    	
     	try {
     	
 	    	for (int i = 1; i <= source.size(); i++) {
@@ -439,7 +437,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	// the normalizedDistanceValue score has a range from 0 (when source is identical to target), to 1
     	// (when source is completely different form target).
     	double normalizedDistanceValue = distance/norm;
-    	
+    	    	
     	return new EditDistanceValue(normalizedDistanceValue, false, distance);
                 
      }
@@ -569,6 +567,25 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     		super(distance, simBased, rawValue); 
     	}
     	
+    }
+    
+    
+    private void initializeWeights(CommonConfig config) {
+
+    	try{ 
+    		NameValueTable weightsTable = config.getSubSection(this.getClass().getCanonicalName(), "weights");
+
+    		mMatchWeight = weightsTable.getDouble("match");
+    		mDeleteWeight = weightsTable.getDouble("delete");
+    		mInsertWeight = weightsTable.getDouble("insert");
+    		mSubstituteWeight = weightsTable.getDouble("substitute");
+    	} catch (ConfigurationException e) {
+    		logger.info("Could not find weights section in configuration file, using defaults");
+    		mMatchWeight = 0.0;
+    		mDeleteWeight = 0.0;
+    		mInsertWeight = 1.0;
+    		mSubstituteWeight = 1.0;
+    	}
     }
     
 }
