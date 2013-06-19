@@ -6,13 +6,6 @@
 
 <configuration>
 
-  <!--	<section name="GermanDistSim">-->
-	
-			<!-- TODO: Gil: need to update the description: Now GermanDistSim silently ignore this path, and only use 10k big resource  -->		
-	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
-		<!--	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
-	</section> -->
-
 
 	<section name="GermaNetWrapper">
 		<!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS 
@@ -35,28 +28,26 @@
 	
 	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
 	<section name="DerivBaseResource">
-	
-		<!-- TODO: Gil: We need to update the description: first two options are no longer meaningful.  -->
 		
-		<!-- Path to the DErivBase resource file. If no file is found, the DerivBaseResource implementation 
-			 will raise an exception. 
-		     You can choose either a resource containing scores or no scores.  
-		     DEFAULT: no scores. -->
-		<property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt</property>
+		<!-- Specifies if rule scores should be used from the DErivBase resource or not. 
+		     True= scores are used, False = scores are not used.
+		     According to the value set here, the system chooses between two different file formats for DErivBase.
+		     DEFAULT: true.  -->
+		<property name="useScores">true</property> 
 		
-		<!-- Specifies if rule scores are available or not. True=file with scores avaliable, False=no scores.  
-			 If you choose a resource format containing scores, but declare "false" here (or vice versa), the 
-			 DerivBaseResource implementation will raise an exception. 
-			 DEFAULT: false. -->
-		<property name="scoreInfo">false</property> 
-		
-		<!-- Specifies the minimum required confidence in the derivational relationship of a lemma pair to count as entailment pair. 
-		     Values range between 0.00 and 1.00; The score is calculated as 1/n, where n is the length of the derivation 
-		     path. Thus, 1.00 trusts only pairs resulting from one linking rule; 0.5 trusts pairs which are linked by two 
-		     rules; 0.33 trusts pairs which are linked by three rules, etc. 
-		     This property is only read if "scoreInfo" = true.
-		     DEFAULT: 0.00. -->		
-		<property name="scoreConfidence">0.00</property>
+		<!-- Specifies the maximum accepted amount of derivation steps between two derivationally related lemmas
+		     to count as entailment pair. Integer values range between 1 and 10.
+		     Each pair of lemmas within one derivational family is connected by a set of derivation rules. If one
+		     lemma l2 can be directly derived from lemma l1, they are connected by one rule, thus, the number of
+		     derivation steps is one. If l1 derives to l2, and l2 derives to l3, then the pair l1-l3 is connected
+		     by two derivation steps, etc. The maximum amount of derivation steps to combine two lemmas is ten.
+		     We assume the following: The more derivation steps must be carried out to connect two lemmas, the less 
+		     probable it is that these two lemmas are really derivationally related - and thus they are less probable
+		     to build an enailment relationship. 
+		     Thus, a low value for the property "derivationSteps" only considers lemmas which are highly probably related.   
+ 		     This property is only considered if the property "useScores" = true.
+		     DEFAULT: 10. -->		
+		<property name="derivationSteps">10</property>
 	</section>
 
 </configuration>
