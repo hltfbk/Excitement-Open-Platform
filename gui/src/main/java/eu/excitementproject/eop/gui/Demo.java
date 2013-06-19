@@ -25,11 +25,11 @@ import org.kohsuke.args4j.CmdLineParser;
 
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
-import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.EditDistanceTEDecision;
 import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;

@@ -11,47 +11,97 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 
-
 import org.apache.uima.cas.FSIterator;
 //import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
 
-import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 //import eu.excitementproject.eop.lap.LAPException;
 //import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
-/* This class tests EDADistanceEDA training and testing it 
- * on the 3 different languages */
-/* this test has been disabled because it requires a lot of time to do it */
+import java.util.logging.Logger;
+import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
+
+import eu.excitementproject.eop.lap.LAPAccess;
+import eu.excitementproject.eop.lap.LAPException;
+
+/** This class tests EDADistanceEDA training and testing it 
+ * on the 3 different languages
+ * this test has been disabled because it requires a lot of time to do it 
+ */
 public class EditDistanceEDATest {
 
-	@Ignore
+	static Logger logger = Logger.getLogger(EditDistanceEDATest.class
+			.getName());
+	
 	@Test
 	public void test() {
-    	
-		testItalian();
-		testEnglish();
-		testGerman();
+		
+		File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_EN.xml");
+
+		CommonConfig config = null;
+		try {
+			config = new ImplCommonConfig(configFile);
+		} catch (ConfigurationException e) {
+			logger.warning(e.getMessage());
+		}
+		
+		test(config);
+		
+		//testItalian();
+		//testEnglish();
+		//testGerman();
 		
 	}
 	
-	// I T A L I A N
-	// No lexical resources
+	public void test(CommonConfig config) {
+		
+		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<EditDistanceTEDecision>();
+		
+		LAPAccess lap = null;
+		
+		try {
+			editDistanceEDA.initialize(config);
+			
+			JCas test1Cas;
+			
+			lap = new TreeTaggerEN();
+				
+			test1Cas = lap.generateSingleTHPairCAS("Hubble is a telescope, but it is also a spacecraft.","Hubble is a telescope.");	
+
+			logger.info("result:");
+			EditDistanceTEDecision decision = editDistanceEDA.process(test1Cas);
+			logger.info(decision.getDecision().toString());
+			logger.info(String.valueOf(decision.getConfidence()));
+			
+			editDistanceEDA.shutdown();
+			logger.info("shuts down.");
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+		}
+		
+	}
+	
+	/**
+	 * test on the Italian data set
+	 * 
+	 * @return
+	 */
 	public void testItalian() {
 	
 		ArrayList<String> list = new ArrayList<String>();
 		
-		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<IEditDistanceTEDecision>();
+		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<EditDistanceTEDecision>();
 		
 		try {
 		
-			// I T A L I A N
-			//No lexical resources
+			//Without lexical resources
 			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_IT.xml");
 			File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_NonLexRes_IT.xml_Result.txt");
 			String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_NonLexRes_IT.xml_Result.txt_Eval.xml";
@@ -59,7 +109,6 @@ public class EditDistanceEDATest {
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
 			
-			editDistanceEDA.setTrain(true);
 			editDistanceEDA.initialize(config);
 			editDistanceEDA.startTraining(config);
 			
@@ -69,7 +118,7 @@ public class EditDistanceEDATest {
 				}
 				//System.out.print(".");
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
-				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
@@ -77,14 +126,13 @@ public class EditDistanceEDATest {
 			list.clear();
 			EDAScorer.score(annotatedFileName, evaluationFileName);
 			
-			//Wordnet
+			//With lexical resources: Wordnet
 			configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_Wordnet_IT.xml");
 			annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_Wordnet_IT.xml_Result.txt");
 			evaluationFileName = "./src/main/resources/results/EditDistanceEDA_Wordnet_IT.xml_Result.txt_Eval.xml";
 			testDir = new File("./target/IT/test/");
 			
 			config = new ImplCommonConfig(configFile);
-			editDistanceEDA.setTrain(true);
 			editDistanceEDA.initialize(config);
 			editDistanceEDA.startTraining(config);
 			
@@ -93,7 +141,7 @@ public class EditDistanceEDATest {
 					continue;
 				}
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
-				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
@@ -110,24 +158,27 @@ public class EditDistanceEDATest {
 	}
 	
 	
-	// E N G L I S H
-	// No lexical resources
+	/**
+	 * test on the English data set
+	 * 
+	 * @return
+	 */
 	public void testEnglish() {
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<IEditDistanceTEDecision>();
+		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<EditDistanceTEDecision>();
 		
 		try {
 			
+			//Without lexical resources
 		    File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_EN.xml");
 	        File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_NonLexRes_EN.xml_Result.txt");
 		    String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_NonLexRes_EN.xml_Result.txt_Eval.xml";	
-		    File testDir = new File("./target/ENG/test/");
+		    File testDir = new File("./target/EN/");
 			
 		    CommonConfig config = new ImplCommonConfig(configFile);
-			editDistanceEDA.setTrain(true);
 			editDistanceEDA.initialize(config);
 			editDistanceEDA.startTraining(config);
 		    
@@ -136,7 +187,7 @@ public class EditDistanceEDATest {
 					continue;
 				}
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
-				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
@@ -144,23 +195,22 @@ public class EditDistanceEDATest {
 			list.clear();
 			EDAScorer.score(annotatedFileName, evaluationFileName);
 			
-			//Wordnet
+			//With lexical resources: Wordnet
 			configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_Wordnet_EN.xml");
 			annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_Wordnet_EN.xml_Result.txt");
 			evaluationFileName = "./src/main/resources/results/EditDistanceEDA_Wordnet_EN.xml_Result.txt_Eval.xml";
-			testDir = new File("./target/ENG/test/");
+			testDir = new File("./target/EN/");
 			
 			config = new ImplCommonConfig(configFile);
-			editDistanceEDA.setTrain(true);
 			editDistanceEDA.initialize(config);
-			editDistanceEDA.startTraining(config);
+			//editDistanceEDA.startTraining(config);
 			
 			for (File xmi : (testDir.listFiles())) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
 				}
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
-				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
@@ -177,24 +227,27 @@ public class EditDistanceEDATest {
 	}
 			
 		
-	// G E R M A N
-	// No lexical resources
+	/**
+	 * test on the German data set
+	 * 
+	 * @return
+	 */
 	public void testGerman() {
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		EditDistanceEDA<IEditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<IEditDistanceTEDecision>();
+		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<EditDistanceTEDecision>();
 		
 		try {
 			
+			//Without lexical resources
 			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_DE.xml");
 			File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_NonLexRes_DE.xml_Result.txt");
 			String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_NonLexRes_DE.xml_Result.txt_Eval.xml";
 			File testDir = new File("./target/GER/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
-			editDistanceEDA.setTrain(true);
 			editDistanceEDA.initialize(config);
 			editDistanceEDA.startTraining(config);
 			
@@ -203,7 +256,7 @@ public class EditDistanceEDATest {
 					continue;
 				}
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
-				IEditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
+				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
@@ -252,6 +305,9 @@ public class EditDistanceEDATest {
 	}
 	
 	
+	/**
+	 * save the results
+	 */
     public void save(File file, List<String> list, boolean append) throws Exception {
     	
     	BufferedWriter writer = null;
@@ -259,7 +315,6 @@ public class EditDistanceEDATest {
     	try {
     		
 	    	writer = new BufferedWriter(new FileWriter(file));
-	    	// ... che incapsulo in un PrintWriter
 	    	PrintWriter printout = new PrintWriter(writer, append);
     	
 	    	Iterator<String> iterator = list.iterator();
@@ -269,7 +324,6 @@ public class EditDistanceEDATest {
 	    	printout.close();
 	    	
     	} catch (Exception e) {
-    		System.err.println(e.getMessage());
     		throw new Exception(e.getMessage());
     	} finally {
     		if (writer != null)

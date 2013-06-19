@@ -10,6 +10,7 @@
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    <property name="instances">instance1</property>
 		<subsection name="instance1">
+			<property name="language">IT</property>
 			<property name="stopWordRemoval">true</property>
 			<property name="multiWordnet">/configuration-file/</property>
 		</subsection>

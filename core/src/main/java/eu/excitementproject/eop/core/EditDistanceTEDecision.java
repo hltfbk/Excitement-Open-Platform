@@ -1,21 +1,28 @@
 package eu.excitementproject.eop.core;
 
+import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.DecisionLabel;
-import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 
-public class EditDistanceTEDecision implements IEditDistanceTEDecision {
+/**
+ * The <code>EditDistanceTEDecision</code> class implements the
+ * <code>TEDecision</code> interface.
+ * 
+ * It supports two kinds of constructors, with <code>confidence</code> value or
+ * without.
+ * 
+ * @author Roberto Zanoli
+ */
+public class EditDistanceTEDecision implements TEDecision {
 
 	private DecisionLabel decisionLabel;
 	private String pairId;
-	//private double score;
 	private double confidence;
 	
 	public EditDistanceTEDecision (DecisionLabel decisionLabel, String pairId) {
 		
 		this.decisionLabel = decisionLabel;
 		this.pairId = pairId;
-		//this.score = 0.0;
-		this.confidence = IEditDistanceTEDecision.CONFIDENCE_NOT_AVAILABLE;
+		this.confidence = TEDecision.CONFIDENCE_NOT_AVAILABLE;
 		
 	}
 	
@@ -23,7 +30,6 @@ public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 		
 		this.decisionLabel = decisionLabel;
 		this.pairId = pairId;
-		//this.score = score;
 		this.confidence = confidence;
 		
 	}
@@ -40,18 +46,11 @@ public class EditDistanceTEDecision implements IEditDistanceTEDecision {
 		
 	}
 	
-	//public double getScore() {
-		
-		//return this.score;
-		
-	//}
-	
 	public String getPairID() {
 		
 		return pairId;
 		
 	}
-	
 	
 
 }
