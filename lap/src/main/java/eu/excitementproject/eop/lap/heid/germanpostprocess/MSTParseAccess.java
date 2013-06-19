@@ -43,7 +43,7 @@ public class MSTParseAccess {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+	
 		LAPAccess lap = null; 
 		try {
 		// this will initialize a MSTParser (Sentence breaker, TreeTagger & MSTParser) 		
@@ -82,11 +82,11 @@ public class MSTParseAccess {
 		
 		// let's set language ID and text for JCas. 
 		aJCas.setDocumentLanguage("DE"); // as of German 
-		aJCas.setDocumentText("Du siehst gut aus."); // Example #1 something with separable prefix (sehen <--> aussehen) 
-		//aJCas.setDocumentText("Es ist mir gestattet."); // Example #2, something with "|" in lemma (here gestatten|statten from TreeTagger) 
-		
-		// Change above text and try various other things, if you would. 
-		
+		//aJCas.setDocumentText("Du siehst gut aus."); // Example #1 something with separable prefix (sehen <--> aussehen) 
+		//test sentences for task 2
+		//aJCas.setDocumentText("Es ist mir gestattet. Die Würfel sind gefallen. Er fällt den Baum. Sie hat Hunger. "); // Example #2, something with "|" in lemma (here gestatten|statten from TreeTagger) 
+		//test sentences for task 1
+		aJCas.setDocumentText("Er isst den Brei nie auf. Du siehst gut aus. Heute fällt die Schule aus. Er fällt den Baum. Sie fragte ihn an.");
 		
 		try {
 			lap.addAnnotationOn(aJCas); // this takes some time.  
@@ -136,13 +136,13 @@ public class MSTParseAccess {
 		
 		// So the task is, writing the two following methods. 
 		
-		// Task 1: write the following method that will puts back "full lemma" (e.g. aussehen, instead of sehen) 
-		correctSeparableVerbLemma(aJCas);
-		
-		// Task 2: 
+		// Task 2: (must come before correction of separable verb lemmas)
 		// the following method will disambiguate any lemma "something-1|something-2"
 		// into the most frequent lemma. e.g "gestatten|statten" -> "gestatten" --- (hopefully gestatten is more frequent ..? )  
 		correctAmbiguousLemma(aJCas); 
+		
+		// Task 1: write the following method that will puts back "full lemma" (e.g. aussehen, instead of sehen) 
+		correctSeparableVerbLemma(aJCas);
 				
 		
 	}
@@ -151,24 +151,41 @@ public class MSTParseAccess {
 	 * This method will iterate over annotations in the JCas (the default view only), 
 	 * and will correct all separable verb lemmas (wrongly) annotated by TreeTagger, 
 	 * by using dependency tree to fetch the prefix of the verb. 
-	 * 
-	 * 
 	 * @param aJCas
 	 */
 	public static void correctSeparableVerbLemma(JCas aJCas)
 	{
+		AnnotationIndex<Annotation> tokenIndex = aJCas.getAnnotationIndex(Token.type);
+		Iterator<Annotation> tokenItr = tokenIndex.iterator(); 
+		
+		while (tokenItr.hasNext()) {
+			Token t = (Token) tokenItr.next(); 
+			List<Dependency> dl = JCasUtil.selectCovered(aJCas, Dependency.class , t.getBegin(), t.getEnd());  
+			Dependency d = dl.get(0); 
+			if (t.getPos().getPosValue().equals("PTKVZ") && d.getGovernor().getPos().getPosValue().equals("VVFIN") && d.getDependencyType().equals("SVP"))   {
+				d.getGovernor().getLemma().setValue(t.getLemma().getValue().toString()+d.getGovernor().getLemma().getValue().toString()); 
+			}
+		}
 		
 		
 	}
 	
 	/**
 	 * This method will iterate over the lemmas, and fix ambiguous lemma, if any.  
-	 * 
+	 * Disambiguation by choosing the first of all lemmas for each word.
 	 * @param aJCas
 	 */
 	public static void correctAmbiguousLemma(JCas aJCas)
 	{
+		AnnotationIndex<Annotation> tokenIndex = aJCas.getAnnotationIndex(Token.type);
+		Iterator<Annotation> tokenItr = tokenIndex.iterator(); 
 		
+		while (tokenItr.hasNext()) {
+			Token t = (Token) tokenItr.next(); 
+			if (t.getLemma().getValue().contains("|")){
+				t.getLemma().setValue(t.getLemma().getValue().split(new String("\\|"))[0]);
+			}
+		}
 	}
 	
 	private static JCas generateNewJCas() throws Exception 
