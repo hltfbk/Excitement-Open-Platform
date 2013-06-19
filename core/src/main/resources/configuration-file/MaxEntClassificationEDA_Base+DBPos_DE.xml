@@ -23,7 +23,6 @@
 	</section>
 	
 	<section name="DerivBaseResource">
-	    <property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairs.txt</property>
 	    <property name="scoreInfo">true</property> 
 		<property name="scoreConfidence">0.01</property>
 	</section> 
