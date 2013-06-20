@@ -9,6 +9,14 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    <property name="instances">instance1</property>
+	    
+	    <subsection name="weights">
+			<property name="match">0.0</property>
+			<property name="delete">0.0</property>
+			<property name="insert">1.0</property>
+			<property name="substitute">1.0</property>
+		</subsection>
+		
 		<subsection name="instance1">
 			<property name="language">EN</property>
 			<property name="stopWordRemoval">true</property>
@@ -17,8 +25,8 @@
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
 	    <property name="modelFile">./src/main/resources/model/EditDistanceEDA_NonLexRes_EN_Model</property>
-		<property name="trainDir">./target/ENG/dev/</property>
-		<property name="testDir">./target/ENG/test/</property>
+		<property name="trainDir">/tmp/ENG/dev/</property>
+		<property name="testDir">/tmp/ENG/test/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	</section>
 	

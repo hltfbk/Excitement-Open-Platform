@@ -11,23 +11,24 @@
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    <property name="instances">instance1</property>
 	    
-		<subsection name="instance1">
-			<property name="language">EN</property>
-			<property name="stopWordRemoval">true</property>
-			<property name="multiWordnet">/home/nastase/Projects/eop/release/eop-resources/ontologies/EnglishWordNet-dict/</property>
-		</subsection>
-		<subsection name="weights">
+	    <subsection name="weights">
 			<property name="match">0.0</property>
 			<property name="delete">0.0</property>
 			<property name="insert">1.0</property>
 			<property name="substitute">1.0</property>
 		</subsection>
+	    
+		<subsection name="instance1">
+			<property name="language">EN</property>
+			<property name="stopWordRemoval">true</property>
+			<property name="multiWordnet">/opt/share/eop-resources/ontologies/EnglishWordNet-dict/</property>
+		</subsection>
 	</section>
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_WORDNET_EN_Model</property>
-		<property name="trainDir">/tmp/</property>
-		<property name="testDir">/tmp/</property>
+		<property name="trainDir">/tmp/ENG/dev/</property>
+		<property name="testDir">/tmp/ENG/test/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	</section>
 	

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Result EDA_Configuration="EditDistanceEDA_NonLexRes_DE.xml_Result.txt">
+<Result EDA_Configuration="EditDistanceEDA_Wordnet_DE.xml_Result.txt">
 <Total_Pairs>800</Total_Pairs>
 <Accuracy>0.595</Accuracy>
 <Positive_Pairs Number="409">
