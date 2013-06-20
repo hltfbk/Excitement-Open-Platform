@@ -34,6 +34,7 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.DKProPartOfSpeech;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
@@ -42,6 +43,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
 
+import eu.excitementproject.eop.common.exception.BaseException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
 
 
 /**
@@ -194,6 +197,8 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	 */
 	public void shutdown() {
 		
+		logger.info("shutdown()");
+		
 		try {
 			if (lexR != null)
 				lexR.close();
@@ -222,6 +227,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	    	distanceValue = distance(tTokensSequence, hTokensSequence);
 	    	
     	} catch (Exception e) {
+    		e.printStackTrace();
     		throw new DistanceComponentException(e.getMessage());
     	}
     	
@@ -402,30 +408,52 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	
     	try {
     	
-	    	for (int i = 1; i <= source.size(); i++) {
-	    		for (int j = 1; j <= target.size(); j++) {
-	    			
-	    			//if(getRulesFromWordnet(source.get(i-1).getLemma().getValue(), new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()), 
-    				//		target.get(j-1).getLemma().getValue(), new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName()))) {
-	    			//	System.out.println("s:" + source.get(i-1).getLemma().getValue() + "\t" + new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()));
-		    		///	System.out.println("t:" + target.get(j-1).getLemma().getValue() + "\t" + new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName()));
-	    			//}
-    					
-	    			//System.out.println(source.get(i-1).getPos().getType().getName());
-	    			//System.out.println("s:" + source.get(i-1).getLemma().getCoveredText() + "\t" + new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()));
-	    			//System.out.println("t:" + target.get(j-1).getLemma().getCoveredText() + "\t" + new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName()));
-	    			distanceTable[i][j] = minimum(
-	    					source.get(i-1).getLemma().getValue().equals(target.get(j-1).getLemma().getValue()) || (
-	    					lexR != null && source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && getRulesFromWordnet(source.get(i-1).getLemma().getValue(), new DKProPartOfSpeech(source.get(i-1).getPos().getType().getShortName()), 
-	    						target.get(j-1).getLemma().getValue(), new DKProPartOfSpeech(target.get(j-1).getPos().getType().getShortName())))
-	    					? distanceTable[i - 1][j - 1] + matchWeight(source.get(i-1))
-	    				    : distanceTable[i - 1][j - 1] + substituteWeight(source.get(i-1), target.get(j-1)),
-	    				    distanceTable[i - 1][j] + deleteWeight(source.get(i-1)),
-	    				    distanceTable[i][j - 1] + insertWeight(target.get(j-1)));
-	    		}
-	    	}
+    		for (int i = 1; i <= source.size(); i++)
+                for (int j = 1; j <= target.size(); j++) {
+
+                	distanceTable[i][j] = minimum(
+                			source.get(i-1).getLemma().getValue().equals(target.get(j-1).getLemma().getValue()) || (
+                                       
+                					// it doesn't use the PoS to look for the relations in the lexical resource
+                					
+                					lexR != null && !source.get(i-1).getLemma().getValue().equals("essere") && 
+                					!target.get(j-1).getLemma().getValue().equals("essere") && 
+                					!source.get(i-1).getLemma().getValue().equals("avere") && 
+                					!target.get(j-1).getLemma().getValue().equals("avere") && 
+                					!source.get(i-1).getLemma().getValue().equals("be") && 
+                					!target.get(j-1).getLemma().getValue().equals("be") && 
+                					!source.get(i-1).getLemma().getValue().equals("have") && 
+                					!target.get(j-1).getLemma().getValue().equals("have") && 
+                					source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && 
+                					getRulesFromWordnet(source.get(i-1).getLemma().getValue(), null,
+                                   	target.get(j-1).getLemma().getValue(), null))
+                					 
+
+                                    // it uses the PoS to look for the relations in the lexical resource
+                                   	/*
+                					lexR != null && !source.get(i-1).getLemma().getValue().equals("essere") && 
+                						!target.get(j-1).getLemma().getValue().equals("essere") &&
+                						!source.get(i-1).getLemma().getValue().equals("avere") && 
+                						!target.get(j-1).getLemma().getValue().equals("avere") && 
+                						!source.get(i-1).getLemma().getValue().equals("be") && 
+                						!target.get(j-1).getLemma().getValue().equals("be") && 
+                						!source.get(i-1).getLemma().getValue().equals("have") && 
+                						!target.get(j-1).getLemma().getValue().equals("have") && 
+                						source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && 
+                						getRulesFromWordnet(source.get(i-1).getLemma().getValue(), new ByCanonicalPartOfSpeech(source.get(i-1).getPos().getType().getShortName()),
+                							target.get(j-1).getLemma().getValue(), new ByCanonicalPartOfSpeech(target.get(j-1).getPos().getType().getShortName())))
+        							*/
+        
+                                        ? distanceTable[i - 1][j - 1] + matchWeight(source.get(i-1))
+                                    : distanceTable[i - 1][j - 1] + substituteWeight(source.get(i-1), target.get(j-1)),
+                                    distanceTable[i - 1][j] + deleteWeight(source.get(i-1)),
+                                    distanceTable[i][j - 1] + insertWeight(target.get(j-1)));
+                }
+
+	    	
     	
     	} catch(Exception e) {
+    		e.printStackTrace();
     		throw new ArithmeticException(e.getMessage());
     	}
     	
@@ -467,7 +495,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      */
     private void initializeItalianWordnet(String path) throws LexicalResourceException {
 		
-    	logger.info("initialize ItalianWordnet");
+    	logger.info("initializeItalianWordnet");
     	
     	try {
     	
@@ -492,7 +520,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      */
     private void initializeEnglishWordnet(String path) throws LexicalResourceException {
     	
-    	logger.info("initialize EnglishWordnet");
+    	logger.info("initializeEnglishWordnet()");
     	
     	try {
     	
@@ -508,19 +536,27 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     }
     
     
+    /**
+     * Initialize GermaNet
+     * 
+     * @param path the path of the resource
+     * 
+     * @throws LexicalResourceException
+     */
     private void initializeGermaNet(String path) throws LexicalResourceException {
     	
-    	logger.info("initialize GermaNet");
+    	logger.info("initializeGermaNet()");
     	
 		try {
 			
 			lexR = new GermaNetWrapper(path);
 			
-		} catch(Exception e) {
+		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());
 		}
-		
+	
 	}
+    
     
     /**
      * Return true if it exists a relation between leftLemma and rightLemma
@@ -535,7 +571,8 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
      * 
      * @throws LexicalResourceException
      */
-    private boolean getRulesFromWordnet(String leftLemma, PartOfSpeech leftPos, 
+    @SuppressWarnings("unchecked")
+	private boolean getRulesFromWordnet(String leftLemma, PartOfSpeech leftPos, 
     		String rightLemma, PartOfSpeech rightPos) throws LexicalResourceException {
     	
     	List<LexicalRule<? extends WordnetRuleInfo>> rules = null;
@@ -543,10 +580,13 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 		try {
 			
 			rules = lexR.getRules(leftLemma, leftPos, rightLemma, rightPos);
-		
+			
 		} catch (LexicalResourceException e) {
 			throw new LexicalResourceException(e.getMessage());
-		}
+    	} catch (Exception e) {
+    		logger.warning("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
+    		throw new LexicalResourceException(e.getMessage());
+    	}
 		
 		if (rules.size() >0) {
 			return true;
@@ -570,21 +610,30 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     }
     
     
+    /**
+     * Initialize the weights of the edit distance operations
+   
+     * @param config the configuration
+     * 
+     */
     private void initializeWeights(CommonConfig config) {
 
     	try{ 
+    		
     		NameValueTable weightsTable = config.getSubSection(this.getClass().getCanonicalName(), "weights");
-
     		mMatchWeight = weightsTable.getDouble("match");
     		mDeleteWeight = weightsTable.getDouble("delete");
     		mInsertWeight = weightsTable.getDouble("insert");
     		mSubstituteWeight = weightsTable.getDouble("substitute");
+    		
     	} catch (ConfigurationException e) {
+    		
     		logger.info("Could not find weights section in configuration file, using defaults");
     		mMatchWeight = 0.0;
     		mDeleteWeight = 0.0;
     		mInsertWeight = 1.0;
     		mSubstituteWeight = 1.0;
+    		
     	}
     }
     
