@@ -8,11 +8,12 @@ public class TestDemo_EditDistance_DE {
 	public void test() {
 		String[] cmd = {
 						"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_Wordnet_DE.xml",
-//						"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_DE.xml",
+						//"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_DE.xml",
 
 				        "-train",
 				        "-trainFile","./src/test/resources/data-set/de_demo_dev.xml",
 				        "-test",
+				        //"-testFile","./src/test/resources/data-set/de_demo_test.xml",
 				        "-testFile","./src/test/resources/data-set/de_demo_test.xml",
 				        "-output","./src/test/resources/results/"};
 		try {
