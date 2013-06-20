@@ -227,7 +227,7 @@ public class GermaNetWrapperTest {
 		}			
 
 		
-		// should be identical ... (well, unless someone edited the test configuration. none should have) 
+		// should be identical... (well, unless someone edited the test configuration. none should have) 
 		assertTrue(list1.size() == list2.size());
 		for(int i=0; i < list1.size(); i++)
 		{
