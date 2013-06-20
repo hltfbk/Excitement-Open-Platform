@@ -41,7 +41,21 @@ public class EditDistanceEDATest {
 	@Test
 	public void test() {
 		
-		/*
+		testEditDistance();
+		//testItalian();
+		//testEnglish();
+		//testGerman();
+		
+	}
+	
+	
+	public void testEditDistance() {
+		
+		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<EditDistanceTEDecision>();
+		
+		LAPAccess lap = null;
+		
 		File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_NonLexRes_EN.xml");
 
 		CommonConfig config = null;
@@ -50,21 +64,6 @@ public class EditDistanceEDATest {
 		} catch (ConfigurationException e) {
 			logger.warning(e.getMessage());
 		}
-		*/
-		//test(config);
-		
-		testItalian();
-		testEnglish();
-		//testGerman();
-		
-	}
-	
-	public void test(CommonConfig config) {
-		
-		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<EditDistanceTEDecision>();
-		
-		LAPAccess lap = null;
 		
 		try {
 			editDistanceEDA.initialize(config);
