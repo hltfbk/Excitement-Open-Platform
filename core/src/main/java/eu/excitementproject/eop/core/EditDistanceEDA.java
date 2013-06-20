@@ -165,6 +165,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	 */
 	public EditDistanceEDA() {
     	
+		logger.info("EditDistanceEDA()");
 		this.threshold = -1.0;
 		this.component = null;
 		
@@ -182,16 +183,28 @@ public class EditDistanceEDA<T extends TEDecision>
 		
         try {
         	
+        	logger.info("initialize()");
+        	logger.info("config:");
+        	logger.info(config.toString());
+        	
 			checkConfiguration(config);
+			
 			NameValueTable nameValueTable = config.getSection(this.getClass().getCanonicalName());
 			//setting the model file
-			modelFile = nameValueTable.getString("modelFile");
+			if (modelFile == null)
+				modelFile = nameValueTable.getString("modelFile");
+			logger.info("model file name:" + modelFile);
 			//setting the training directory
-			trainDIR = nameValueTable.getString("trainDir");
+			if (trainDIR == null)
+				trainDIR = nameValueTable.getString("trainDir");
+			logger.info("training directory:" + trainDIR);
 			//setting the test directory
-			testDIR = nameValueTable.getString("testDir");
-			//FixedWeightTokenEditDistance component initializazation
-			component = new FixedWeightTokenEditDistance(config);
+			if (testDIR == null)
+				testDIR = nameValueTable.getString("testDir");
+			logger.info("test directory:" + testDIR);
+			//FixedWeightTokenEditDistance component initialization
+			if (component == null)
+				component = new FixedWeightTokenEditDistance(config);
 			
 		} catch (ConfigurationException e) {
 			throw e;
@@ -238,21 +251,26 @@ public class EditDistanceEDA<T extends TEDecision>
 	@Override
 	public void shutdown() {
 		
+		logger.info("shutdown()");
+		
 		if (component.getComponentName().equals("FixedWeightTokenEditDistance"))
 			((FixedWeightTokenEditDistance)component).shutdown();
-		
+		component = null;
+		modelFile = null;
+		trainDIR = null;
+		testDIR = null;
+		threshold = -1.0;
 	}
 	
 	
 	@Override
-	public void startTraining(CommonConfig c) throws ConfigurationException, EDAException, ComponentException {
+	public void startTraining(CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
+		
+		logger.info("startTraining()");
 		
 		try {
-			logger.info("The trained model will be stored in "
-					+ modelFile);
-			logger.info("Start training ...");
 			
-			initialize(c);
+			initialize(config);
 			
 			List<DistanceValue> distanceValueList = new ArrayList<DistanceValue>();
 			List<String> entailmentValueList = new ArrayList<String>();
@@ -270,8 +288,6 @@ public class EditDistanceEDA<T extends TEDecision>
 			threshold = sequentialSearch(distanceValueList, entailmentValueList);
 			
 			saveModel(new File(modelFile), threshold);
-			
-			logger.info("done.");
 			
 		} catch (ConfigurationException e) {
 			throw e;
@@ -297,6 +313,9 @@ public class EditDistanceEDA<T extends TEDecision>
      */
 	private void checkConfiguration(CommonConfig config) 
 			throws ConfigurationException {
+		
+
+		logger.info("checkConfiguration()");
 		
 	}
 	
@@ -539,6 +558,8 @@ public class EditDistanceEDA<T extends TEDecision>
      */
 	private double loadModel(File modelFile) throws IOException {
 		
+		logger.info("loadModel()");
+		
 		double result = -1.0;
 		
 		BufferedReader reader = null; 
@@ -574,6 +595,8 @@ public class EditDistanceEDA<T extends TEDecision>
      */
 	public void saveModel(File modelFile, double threshold) throws IOException {
     	
+		logger.info("saveModel()");
+		
     	BufferedWriter writer = null;
     	
     	try {
