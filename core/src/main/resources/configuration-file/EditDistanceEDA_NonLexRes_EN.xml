@@ -25,8 +25,12 @@
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
 	    <property name="modelFile">./src/main/resources/model/EditDistanceEDA_NonLexRes_EN_Model</property>
+		<!--
 		<property name="trainDir">/tmp/ENG/dev/</property>
 		<property name="testDir">/tmp/ENG/test/</property>
+		-->
+		<property name="trainDir">/tmp/</property>
+		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	</section>
 	
