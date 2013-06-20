@@ -1,9 +1,10 @@
 package eu.excitementproject.eop.core;
 
 import org.apache.uima.jcas.JCas;
-import org.junit.Test;
-//import org.junit.Ignore;
+import org.junit.*;
 import static org.junit.Assert.*;
+
+//import org.junit.Ignore;
 //import eu.excitementproject.eop.core.component.distance.CasCreation;
 //import java.util.List;
 import java.util.Iterator;
@@ -45,7 +46,6 @@ public class EditDistanceEDATest {
 		//testItalian();
 		//testEnglish();
 		//testGerman();
-		
 	}
 	
 	
@@ -82,7 +82,7 @@ public class EditDistanceEDATest {
 			editDistanceEDA.shutdown();
 			logger.info("shuts down.");
 			
-			 assertTrue(true);
+			assertTrue(null, decision.getConfidence() > 0.1);
 			
 		} catch (Exception e) {
 			logger.info(e.getMessage());
