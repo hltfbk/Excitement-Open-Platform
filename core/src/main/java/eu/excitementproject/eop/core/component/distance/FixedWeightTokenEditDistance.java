@@ -584,7 +584,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 		} catch (LexicalResourceException e) {
 			throw new LexicalResourceException(e.getMessage());
     	} catch (Exception e) {
-    		logger.warning("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
+    		logger.severe("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
     		throw new LexicalResourceException(e.getMessage());
     	}
 		
