@@ -2,8 +2,8 @@ package eu.excitementproject.eop.core;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
-import org.junit.Ignore;
-//import static org.junit.Assert.*;
+//import org.junit.Ignore;
+import static org.junit.Assert.*;
 //import eu.excitementproject.eop.core.component.distance.CasCreation;
 //import java.util.List;
 import java.util.Iterator;
@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
 import eu.excitementproject.eop.lap.LAPAccess;
-import eu.excitementproject.eop.lap.LAPException;
+//import eu.excitementproject.eop.lap.LAPException;
 
 /** This class tests EDADistanceEDA training and testing it 
  * on the 3 different languages
@@ -81,6 +81,9 @@ public class EditDistanceEDATest {
 			
 			editDistanceEDA.shutdown();
 			logger.info("shuts down.");
+			
+			 assertTrue(true);
+			
 		} catch (Exception e) {
 			logger.info(e.getMessage());
 		}
