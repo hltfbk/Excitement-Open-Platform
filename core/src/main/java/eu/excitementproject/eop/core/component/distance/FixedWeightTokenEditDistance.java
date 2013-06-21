@@ -93,7 +93,8 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     /**
 	 * the resource
 	 */
-    private LexicalResource lexR;
+    @SuppressWarnings("rawtypes")
+	private LexicalResource lexR;
     /**
 	 * stop word removal
 	 */
@@ -118,10 +119,12 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     }
 
     
-    /* 
+    /** 
 	 * Constructor used to create this object. 
 	 * 
 	 * @param config the configuration
+	 * 
+	 * @throws ConfigurationException, ComponentException
 	 * 
 	 */
     public FixedWeightTokenEditDistance(CommonConfig config) throws ConfigurationException, ComponentException {
@@ -200,7 +203,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     }
     
     
-    /* 
+    /** 
 	 * shutdown the resources
 	 */
 	public void shutdown() {
@@ -272,7 +275,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     }
 
     
-    /* 
+    /** 
 	 * Returns a list of tokens contained in the specified CAS. Stop words can be removed.
 	 * 
      * @param jcas the CAS
