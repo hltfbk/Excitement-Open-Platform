@@ -9,7 +9,7 @@ public class TestDemo_EditDistance_IT {
 	public void test() {
 		String[] cmd = {
 				        "-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_IT.xml",
-				        //"-train",
+				        "-train",
 				        "-trainFile","./src/test/resources/data-set/it_demo_dev.xml",
 				        "-test",
 				        "-testFile","./src/test/resources/data-set/it_demo_test.xml",

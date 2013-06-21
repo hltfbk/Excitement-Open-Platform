@@ -571,7 +571,11 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		try {
 			
-			reader = new BufferedReader(new FileReader(modelFile));
+			//reader = new BufferedReader(new FileReader(modelFile));
+			
+			reader = new BufferedReader(
+	                   new InputStreamReader(new FileInputStream(modelFile), "UTF-8"));
+			
 			String line = reader.readLine();
 			
 			while (line != null) {
@@ -606,7 +610,12 @@ public class EditDistanceEDA<T extends TEDecision>
     	
     	try {
     		
-	    	writer = new BufferedWriter(new FileWriter(modelFile));
+	    	//writer = new BufferedWriter(new FileWriter(modelFile));
+	    	
+	    	writer = new BufferedWriter(new OutputStreamWriter(
+	                  new FileOutputStream(modelFile), "UTF-8"));
+
+	    	
 	    	PrintWriter printout = new PrintWriter(writer);
 	    	printout.print(threshold);
 	    	printout.close();
