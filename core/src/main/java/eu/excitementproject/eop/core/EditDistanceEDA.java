@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.logging.Logger;
 import java.io.*;
+import java.lang.reflect.Constructor;
 
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.cas.TOP;
@@ -192,16 +193,24 @@ public class EditDistanceEDA<T extends TEDecision>
 				testDIR = nameValueTable.getString("testDir");
 			logger.info("test directory:" + testDIR);
 			//FixedWeightTokenEditDistance component initialization
-			if (component == null)
-				component = new FixedWeightTokenEditDistance(config);
+			String componentName = nameValueTable.getString("components");
+			
+			if (component == null) {
+				try {
+					Class<?> componentClass = Class.forName(componentName);
+					Constructor<?> componentClassConstructor = componentClass.getConstructor();
+					component = (DistanceCalculation) componentClassConstructor.newInstance();
+					//component = new FixedWeightTokenEditDistance(config);
+				} catch (Exception e) {
+					throw new ComponentException(e.getMessage());
+				}
+			}
 			//setting the model file
 			if (modelFile == null)
 				modelFile = nameValueTable.getString("modelFile") + "_" + component.getInstanceName();
 			logger.info("model file name:" + modelFile);
 			
 		} catch (ConfigurationException e) {
-			throw e;
-		} catch (ComponentException e) {
 			throw e;
 		} catch (Exception e) {
 			throw new EDAException(e.getMessage());
@@ -248,6 +257,9 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		if (component.getComponentName().equals("FixedWeightTokenEditDistance"))
 			((FixedWeightTokenEditDistance)component).shutdown();
+		else if (component.getComponentName().equals("FixedWeightLemmaEditDistance"))
+			((FixedWeightLemmaEditDistance)component).shutdown();
+		
 		component = null;
 		modelFile = null;
 		trainDIR = null;
