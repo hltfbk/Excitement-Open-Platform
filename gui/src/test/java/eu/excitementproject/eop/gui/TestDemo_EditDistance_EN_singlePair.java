@@ -6,8 +6,8 @@ public class TestDemo_EditDistance_EN_singlePair {
 
 	@Test
 	public void test() {
-		String[] cmd = {"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_Wordnet_EN.xml",
-				        "-train",
+		String[] cmd = {"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_EN.xml",
+				        //"-train",
 				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
 				        "-test",
 				        "-text","Hubble is a telescope.",

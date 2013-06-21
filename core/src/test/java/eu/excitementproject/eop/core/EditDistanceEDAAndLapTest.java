@@ -33,14 +33,13 @@ import eu.excitementproject.eop.lap.textpro.*;
 			// on MaxEntClassificationEDA --Gil 
 					
 			
-			testLAP_IT(); 
+			//testLAP_IT(); 
 			//testTraining_IT(); 
 			//testTesting_SingleTH_IT(); 
 			
 		}
 		
-		@Ignore
-		@Test 
+		
 		public void testLAP_IT() {
 			
 			File inputFile = null;
@@ -94,8 +93,7 @@ import eu.excitementproject.eop.lap.textpro.*;
 			}
 		}
 		
-		@Ignore
-		@Test
+		
 		public void testTraining_IT() {
 			File trainingDir = null;
 			trainingDir = new File("./target/IT/dev/");
@@ -121,8 +119,7 @@ import eu.excitementproject.eop.lap.textpro.*;
 		}
 		
 		
-		@Ignore
-		@Test
+		
 		public void testTesting_SingleTH_IT() {
 			
 			@SuppressWarnings("rawtypes")

@@ -92,6 +92,10 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	 */
     private double mSubstituteWeight;
     /**
+	 * the activated instance
+	 */
+    private String instance;
+    /**
 	 * the resource
 	 */
     private LexicalResource lexR;
@@ -132,12 +136,18 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
         
         initializeWeights(config);
         
-    	NameValueTable nameValueTable = config.getSubSection(this.getClass().getCanonicalName(), "instance1");
+        //to get the platform language value
+        NameValueTable platformNameValueTable = config.getSection("PlatformConfiguration");
+        //to get the selected component instance
+    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
+    	instance = componentNameValueTable.getString("instances");
+    	//to get the parameters from the selected instance
+    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
     	
     	try {
-    		String language = nameValueTable.getString("language");
-    		String multiWordnet = nameValueTable.getString("multiWordnet");
-    		
+    		String language = platformNameValueTable.getString("language");
+    		logger.info("language:" + language);
+    		String multiWordnet = instanceNameValueTable.getString("multiWordnet");
     		
     		if (language.equals("IT") && multiWordnet != null && !multiWordnet.equals("")) {
 	    		try {
@@ -166,7 +176,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     	}
     	
     	try {
-    		stopWordRemoval = Boolean.parseBoolean(nameValueTable.getString("stopWordRemoval"));
+    		stopWordRemoval = Boolean.parseBoolean(instanceNameValueTable.getString("stopWordRemoval"));
     		logger.info("stop word removal activated");
     	} catch (ConfigurationException e) {
     		stopWordRemoval = false;
@@ -187,7 +197,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     @Override
     public String getInstanceName() {
     	
-    	return null;
+    	return instance;
     	
     }
     
@@ -588,7 +598,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     		throw new LexicalResourceException(e.getMessage());
     	}
 		
-		if (rules.size() >0) {
+		if (rules != null && rules.size() >0) {
 			return true;
 		}
 		

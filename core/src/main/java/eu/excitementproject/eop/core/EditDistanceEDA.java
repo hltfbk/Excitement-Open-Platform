@@ -184,16 +184,12 @@ public class EditDistanceEDA<T extends TEDecision>
         try {
         	
         	logger.info("initialize()");
-        	logger.info("config:");
-        	logger.info(config.toString());
+        	//logger.info("config:");
+        	//logger.info(config.toString());
         	
 			checkConfiguration(config);
 			
 			NameValueTable nameValueTable = config.getSection(this.getClass().getCanonicalName());
-			//setting the model file
-			if (modelFile == null)
-				modelFile = nameValueTable.getString("modelFile");
-			logger.info("model file name:" + modelFile);
 			//setting the training directory
 			if (trainDIR == null)
 				trainDIR = nameValueTable.getString("trainDir");
@@ -205,6 +201,10 @@ public class EditDistanceEDA<T extends TEDecision>
 			//FixedWeightTokenEditDistance component initialization
 			if (component == null)
 				component = new FixedWeightTokenEditDistance(config);
+			//setting the model file
+			if (modelFile == null)
+				modelFile = nameValueTable.getString("modelFile") + "_" + component.getInstanceName();
+			logger.info("model file name:" + modelFile);
 			
 		} catch (ConfigurationException e) {
 			throw e;
