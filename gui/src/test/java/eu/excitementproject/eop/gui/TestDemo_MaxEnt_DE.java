@@ -4,7 +4,7 @@ import org.junit.*;
 
 public class TestDemo_MaxEnt_DE {
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_DE.xml",

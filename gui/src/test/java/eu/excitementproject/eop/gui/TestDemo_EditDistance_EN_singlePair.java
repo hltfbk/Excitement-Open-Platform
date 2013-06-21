@@ -4,11 +4,11 @@ import org.junit.*;
 
 public class TestDemo_EditDistance_EN_singlePair {
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_EN.xml",
-				        //"-train",
+				        "-train",
 				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
 				        "-test",
 //				        "-text","Hubble is a telescope.",

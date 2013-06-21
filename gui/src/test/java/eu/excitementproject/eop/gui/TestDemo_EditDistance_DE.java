@@ -4,12 +4,12 @@ import org.junit.*;
 
 public class TestDemo_EditDistance_DE {
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {
 						"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_DE.xml",
-				        //"-train",
+				        "-train",
 				        "-trainFile","./src/test/resources/data-set/de_demo_dev.xml",
 				        "-test",
 				        //"-testFile","./src/test/resources/data-set/de_demo_test.xml",
