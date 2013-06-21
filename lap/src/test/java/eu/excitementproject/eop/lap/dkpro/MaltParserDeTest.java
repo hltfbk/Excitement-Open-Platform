@@ -8,6 +8,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
@@ -17,6 +18,7 @@ import eu.excitementproject.eop.lap.LAPException;
 
 public class MaltParserDeTest {
 	
+	@Ignore
 	@Test
 	public void test() {
 		

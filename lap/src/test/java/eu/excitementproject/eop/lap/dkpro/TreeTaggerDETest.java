@@ -10,6 +10,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.lap.LAPAccess;
@@ -19,6 +20,7 @@ import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
 
 public class TreeTaggerDETest {
 
+	@Ignore
 	@Test
 	public void testAddAnnotationOnJCasString() {
 		

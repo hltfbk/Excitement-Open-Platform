@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.core.EditDistanceEDA</property>
+		<property name="language">IT</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.textpro.TextProTaggerIT</property>
+	</section>
+	
+	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
+	    
+	    <property name="instances">token_basic</property>
+	    
+	    <subsection name="weights">
+			<property name="match">0.0</property>
+			<property name="delete">0.0</property>
+			<property name="insert">1.0</property>
+			<property name="substitute">1.0</property>
+		</subsection>
+		
+		<subsection name="token_basic">
+			<property name="stopWordRemoval">true</property>
+		</subsection>
+		
+		<subsection name="token_wordnet">
+			<property name="stopWordRemoval">true</property>
+			<property name="path">../core/src/main/resources/configuration-file/</property>
+		</subsection>
+		
+	</section>	
+	
+	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
+	    
+	    <property name="instances">lemma_basic</property>
+	    
+	    <subsection name="weights">
+			<property name="match">0.0</property>
+			<property name="delete">0.0</property>
+			<property name="insert">1.0</property>
+			<property name="substitute">1.0</property>
+		</subsection>
+		
+		<subsection name="lemma_basic">
+			<property name="stopWordRemoval">true</property>
+		</subsection>
+		
+		<subsection name="lemma_wordnet">
+			<property name="stopWordRemoval">true</property>
+			<property name="path">../core/src/main/resources/configuration-file/</property>
+		</subsection>
+		
+	</section>	
+		
+	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
+	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_IT_Model</property>
+		<property name="trainDir">/tmp/</property>
+		<property name="testDir">/tmp/</property>
+	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
+	</section>
+	
+</configuration>
