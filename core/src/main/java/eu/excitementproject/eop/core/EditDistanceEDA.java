@@ -1,4 +1,3 @@
-
 package eu.excitementproject.eop.core;
 
 import java.util.List;
@@ -101,7 +100,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	/**
 	 * set the language
 	 * 
-	 * @param the language
+	 * @param language the language
 	 * 
 	 * @return
 	 */
@@ -172,13 +171,7 @@ public class EditDistanceEDA<T extends TEDecision>
     }
 
 	
-	/**
-	 * Initialize the EDA
-	 * 
-	 * @param config the configuration
-	 * 
-	 * @throws ConfigurationException, EDAException, ComponentException
-	 */
+	@Override
 	public void initialize(CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
 		
         try {
