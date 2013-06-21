@@ -420,36 +420,36 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
                 for (int j = 1; j <= target.size(); j++) {
 
                 	distanceTable[i][j] = minimum(
-                			source.get(i-1).getLemma().getValue().equals(target.get(j-1).getLemma().getValue()) || (
+                			source.get(i-1).getCoveredText().equals(target.get(j-1).getCoveredText()) || (
                                        
                 					// it doesn't use the PoS to look for the relations in the lexical resource
                 					
-                					lexR != null && !source.get(i-1).getLemma().getValue().equals("essere") && 
-                					!target.get(j-1).getLemma().getValue().equals("essere") && 
-                					!source.get(i-1).getLemma().getValue().equals("avere") && 
-                					!target.get(j-1).getLemma().getValue().equals("avere") && 
-                					!source.get(i-1).getLemma().getValue().equals("be") && 
-                					!target.get(j-1).getLemma().getValue().equals("be") && 
-                					!source.get(i-1).getLemma().getValue().equals("have") && 
-                					!target.get(j-1).getLemma().getValue().equals("have") && 
+                					lexR != null && !source.get(i-1).getCoveredText().equals("essere") && 
+                					!target.get(j-1).getCoveredText().equals("essere") && 
+                					!source.get(i-1).getCoveredText().equals("avere") && 
+                					!target.get(j-1).getCoveredText().equals("avere") && 
+                					!source.get(i-1).getCoveredText().equals("be") && 
+                					!target.get(j-1).getCoveredText().equals("be") && 
+                					!source.get(i-1).getCoveredText().equals("have") && 
+                					!target.get(j-1).getCoveredText().equals("have") && 
                 					source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && 
-                					getRulesFromWordnet(source.get(i-1).getLemma().getValue(), null,
-                                   	target.get(j-1).getLemma().getValue(), null))
+                					getRulesFromWordnet(source.get(i-1).getCoveredText(), null,
+                                   	target.get(j-1).getCoveredText(), null))
                 					 
 
                                     // it uses the PoS to look for the relations in the lexical resource
                                    	/*
-                					lexR != null && !source.get(i-1).getLemma().getValue().equals("essere") && 
-                						!target.get(j-1).getLemma().getValue().equals("essere") &&
-                						!source.get(i-1).getLemma().getValue().equals("avere") && 
-                						!target.get(j-1).getLemma().getValue().equals("avere") && 
-                						!source.get(i-1).getLemma().getValue().equals("be") && 
-                						!target.get(j-1).getLemma().getValue().equals("be") && 
-                						!source.get(i-1).getLemma().getValue().equals("have") && 
-                						!target.get(j-1).getLemma().getValue().equals("have") && 
+                					lexR != null && !source.get(i-1).getCoveredText().equals("essere") && 
+                						!target.get(j-1).getCoveredText().equals("essere") &&
+                						!source.get(i-1).getCoveredText().equals("avere") && 
+                						!target.get(j-1).getCoveredText().equals("avere") && 
+                						!source.get(i-1).getCoveredText().equals("be") && 
+                						!target.get(j-1).getCoveredText().equals("be") && 
+                						!source.get(i-1).getCoveredText().equals("have") && 
+                						!target.get(j-1).getCoveredText().equals("have") && 
                 						source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && 
-                						getRulesFromWordnet(source.get(i-1).getLemma().getValue(), new ByCanonicalPartOfSpeech(source.get(i-1).getPos().getType().getShortName()),
-                							target.get(j-1).getLemma().getValue(), new ByCanonicalPartOfSpeech(target.get(j-1).getPos().getType().getShortName())))
+                						getRulesFromWordnet(source.get(i-1).getCoveredText(), new ByCanonicalPartOfSpeech(source.get(i-1).getPos().getType().getShortName()),
+                							target.get(j-1).getCoveredText(), new ByCanonicalPartOfSpeech(target.get(j-1).getPos().getType().getShortName())))
         							*/
         
                                         ? distanceTable[i - 1][j - 1] + matchWeight(source.get(i-1))
