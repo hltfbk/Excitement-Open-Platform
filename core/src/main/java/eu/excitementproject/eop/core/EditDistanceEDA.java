@@ -193,13 +193,13 @@ public class EditDistanceEDA<T extends TEDecision>
 				testDIR = nameValueTable.getString("testDir");
 			logger.info("test directory:" + testDIR);
 			//FixedWeightTokenEditDistance component initialization
-			String componentName = nameValueTable.getString("components");
+			String componentName  = nameValueTable.getString("components");
 			
 			if (component == null) {
 				try {
 					Class<?> componentClass = Class.forName(componentName);
-					Constructor<?> componentClassConstructor = componentClass.getConstructor();
-					component = (DistanceCalculation) componentClassConstructor.newInstance();
+					Constructor<?> componentClassConstructor = componentClass.getConstructor(CommonConfig.class);
+					component = (DistanceCalculation) componentClassConstructor.newInstance(config);
 					//component = new FixedWeightTokenEditDistance(config);
 				} catch (Exception e) {
 					throw new ComponentException(e.getMessage());

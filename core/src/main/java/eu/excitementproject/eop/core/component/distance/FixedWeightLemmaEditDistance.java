@@ -144,7 +144,7 @@ public class FixedWeightLemmaEditDistance implements DistanceCalculation {
     	
     		String language = platformNameValueTable.getString("language");
     		logger.info("language:" + language);
-    		String multiWordnet = instanceNameValueTable.getString("multiWordnet");
+    		String multiWordnet = instanceNameValueTable.getString("path");
     		
     		if (language.equals("IT") && multiWordnet != null && !multiWordnet.equals("")) {
 	    		try {
@@ -188,7 +188,7 @@ public class FixedWeightLemmaEditDistance implements DistanceCalculation {
     @Override
     public String getComponentName() {
     	
-    	return "FixedWeightTokenEditDistance";
+    	return "FixedWeightLemmaEditDistance";
     	
     }
     
