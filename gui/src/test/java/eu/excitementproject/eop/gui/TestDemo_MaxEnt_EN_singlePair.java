@@ -1,9 +1,10 @@
 package eu.excitementproject.eop.gui;
 
-import org.junit.Test;
+import org.junit.*;
 
 public class TestDemo_MaxEnt_EN_singlePair {
 
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_EN.xml",

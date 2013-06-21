@@ -1,9 +1,10 @@
 package eu.excitementproject.eop.gui;
 
-import org.junit.Test;
+import org.junit.*;
 
 public class TestDemo_MaxEnt_IT {
 
+	@Ignore
 	@Test
 	public void test() {
 		// needs TextPro to be installed

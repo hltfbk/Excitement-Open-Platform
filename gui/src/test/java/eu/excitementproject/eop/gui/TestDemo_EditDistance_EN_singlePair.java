@@ -1,9 +1,10 @@
 package eu.excitementproject.eop.gui;
 
-import org.junit.Test;
+import org.junit.*;
 
 public class TestDemo_EditDistance_EN_singlePair {
 
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_EN.xml",
