@@ -12,8 +12,8 @@ public class FixedWeightTokenEditDistanceTest {
 	@Test
 	public void test() {
     	
-        FixedWeightTokenEditDistance fixedEd
-            = new FixedWeightTokenEditDistance();
+        FixedWeightLemmaEditDistance fixedEd
+            = new FixedWeightLemmaEditDistance();
         
         JCas mycas = null; 
         ExampleLAP lap = null; 
