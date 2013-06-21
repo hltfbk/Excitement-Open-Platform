@@ -25,7 +25,7 @@
 		
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
-			<property name="multiWordnet">../core/src/main/resources/configuration-file/</property>
+			<property name="path">../core/src/main/resources/configuration-file/</property>
 		</subsection>
 		
 	</section>	

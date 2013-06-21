@@ -25,7 +25,7 @@
 		
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
-			<property name="multiWordnet">/opt/share/eop-resources/ontologies/EnglishWordNet-dict/</property>
+			<property name="path">/opt/share/eop-resources/ontologies/EnglishWordNet-dict/</property>
 		</subsection>
 
 	</section>	
