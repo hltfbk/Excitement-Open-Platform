@@ -15,10 +15,16 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 */
 public class ImplNameValueTable extends NameValueTable {
 	
-	//this table contains key, value pairs
+	/*
+	* this table contains key, value pairs
+	*/
 	private HashMap<String, String> table = null;
 	
 	
+	/**
+	 * The constructor
+	 *
+	*/
 	public ImplNameValueTable() {
 		
 		this.table = new HashMap<String, String>();
