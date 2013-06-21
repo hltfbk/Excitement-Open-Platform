@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Result EDA_Configuration="EditDistanceEDA_DE.xml_Result.txt">
+<Total_Pairs>800</Total_Pairs>
+<Accuracy>0.595</Accuracy>
+<Positive_Pairs Number="409">
+<Precision>0.5815739</Precision>
+<Recall>0.7408313</Recall>
+<F_Measure>0.6516129</F_Measure>
+<Classified_As_Positive>303</Classified_As_Positive>
+<Classified_As_Negative>106</Classified_As_Negative>
+</Positive_Pairs>
+<Negative_Pairs Number="391">
+<Precision>0.6200717</Precision>
+<Recall>0.44245523</Recall>
+<F_Measure>0.5164179</F_Measure>
+<Classified_As_Positive>218</Classified_As_Positive>
+<Classified_As_Negative>173</Classified_As_Negative>
+</Negative_Pairs>
+</Result>

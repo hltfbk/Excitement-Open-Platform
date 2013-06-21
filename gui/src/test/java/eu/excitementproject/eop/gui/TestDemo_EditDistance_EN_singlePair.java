@@ -2,17 +2,18 @@ package eu.excitementproject.eop.gui;
 
 import org.junit.*;
 
-//test for English with MaxEnt
-public class TestDemo_MaxEnt_EN {
+//test for English with EditDistanceEDA
+public class TestDemo_EditDistance_EN_singlePair {
 
 //	@Ignore
 	@Test
 	public void test() {
-		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_EN.xml",
-//				        "-train",
-//				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
-						"-lap","opennlp",
+		String[] cmd = {"-config", "../core/src/main/resources/configuration-file/EditDistanceEDA_EN.xml",
+				        "-train",
+				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
 				        "-test",
+//				        "-text","Hubble is a telescope.",
+//				        "-hypothesis","Hubble is an instrument.",
 				        "-testFile","./src/test/resources/data-set/en_demo_test.xml",
 				        "-output","./src/test/resources/results/"};
 		try {
