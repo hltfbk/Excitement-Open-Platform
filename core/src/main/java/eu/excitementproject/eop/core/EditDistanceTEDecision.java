@@ -14,10 +14,27 @@ import eu.excitementproject.eop.common.DecisionLabel;
  */
 public class EditDistanceTEDecision implements TEDecision {
 
+	/**
+	 * the decision label
+	 */
 	private DecisionLabel decisionLabel;
+	
+	/**
+	 * the ID of the T-H pair
+	 */
 	private String pairId;
+	
+	/**
+	 * the confidence value
+	 */
 	private double confidence;
 	
+	
+	/**
+	 * the constructor
+	 * @param decisionLabel the decision label
+	 * @param pairId the ID of the t-h pair
+	 */
 	public EditDistanceTEDecision (DecisionLabel decisionLabel, String pairId) {
 		
 		this.decisionLabel = decisionLabel;
@@ -26,6 +43,13 @@ public class EditDistanceTEDecision implements TEDecision {
 		
 	}
 	
+	
+	/**
+	 * the constructor
+	 * @param decisionLabel the decision label
+	 * @param confidence the confidence value
+	 * @param pairId the ID of the t-h pair
+	 */
 	public EditDistanceTEDecision (DecisionLabel decisionLabel, String pairId, double confidence) {
 		
 		this.decisionLabel = decisionLabel;
@@ -34,18 +58,24 @@ public class EditDistanceTEDecision implements TEDecision {
 		
 	}
 	
+	
+	@Override
 	public DecisionLabel getDecision() {
 		
 		return decisionLabel;
 		
 	}
 	
+	
+	@Override
 	public double getConfidence() {
 		
 		return this.confidence;
 		
 	}
 	
+	
+	@Override
 	public String getPairID() {
 		
 		return pairId;
