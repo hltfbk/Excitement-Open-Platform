@@ -174,7 +174,7 @@ public class Demo {
 		  if (language.matches("IT")) {
 			lapClass += ".textpro.TextProTaggerIT";
 		  } else {
-			lapClass += ".dkpro.TreeTagger" + language;
+			lapClass += ".dkpro.OpenNLPTagger" + language;
   		  }
 	  }
 	  return lapClass;  

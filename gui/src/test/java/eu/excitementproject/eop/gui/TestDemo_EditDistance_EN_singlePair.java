@@ -11,8 +11,9 @@ public class TestDemo_EditDistance_EN_singlePair {
 				        //"-train",
 				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
 				        "-test",
-				        "-text","Hubble is a telescope.",
-				        "-hypothesis","Hubble is an instrument.",
+//				        "-text","Hubble is a telescope.",
+//				        "-hypothesis","Hubble is an instrument.",
+				        "-testFile","./src/test/resources/data-set/en_demo_test.xml",
 				        "-output","./src/test/resources/results/"};
 		try {
 			Demo demo = new Demo(cmd);

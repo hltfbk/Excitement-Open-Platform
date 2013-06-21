@@ -5,7 +5,7 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.EditDistanceEDA</property>
 		<property name="language">EN</property>
-		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerEN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN</property>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
@@ -32,7 +32,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
 	
-	    <property name="instances">basic</property>
+	    <property name="instances">wordnet</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -53,7 +53,7 @@
 	</section>	
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
-	    <property name="modelFile">./src/main/resources/model/EditDistanceEDA_EN_Model</property>
+	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_EN_Model</property>
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>

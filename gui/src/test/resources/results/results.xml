@@ -1,5 +1,5 @@
 <entailment-corpus lang="null">
-  <pair id="1" entailment="Entailment" benchmark="N/A" score="0.3194444444444445" confidence="1" task="EOP test">
+  <pair id="1" entailment="Entailment" benchmark="N/A" score="0.2490530303030371" confidence="1" task="EOP test">
     <t>Hubble is a telescope.</t>
     <h>Hubble is an instrument.</h>
   </pair>
