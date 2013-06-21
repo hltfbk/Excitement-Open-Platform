@@ -2,6 +2,7 @@ package eu.excitementproject.eop.gui;
 
 import org.junit.*;
 
+// test for German with MaxEnt
 public class TestDemo_MaxEnt_DE {
 
 //	@Ignore

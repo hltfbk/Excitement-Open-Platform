@@ -2,9 +2,14 @@ package eu.excitementproject.eop.gui;
 
 import org.junit.*;
 
+//test for Italian with EditDistanceEDA
 public class TestDemo_EditDistance_IT {
 
+<<<<<<< HEAD
+//	@Ignore
+=======
 	@Ignore
+>>>>>>> 9d2bbeca70c71c66d9428b1f6103b08ff8756776
 	@Test
 	public void test() {
 		String[] cmd = {
