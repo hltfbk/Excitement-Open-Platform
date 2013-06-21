@@ -10,7 +10,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	
-	    <property name="instances">basic</property>
+	    <property name="instances">token_basic</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -19,11 +19,11 @@
 			<property name="substitute">1.0</property>
 		</subsection>
 		
-		<subsection name="basic">
+		<subsection name="token_basic">
 			<property name="stopWordRemoval">true</property>
 		</subsection>
 		
-		<subsection name="wordnet">
+		<subsection name="token_wordnet">
 			<property name="stopWordRemoval">true</property>
 			<property name="path">/opt/share/eop-resources/ontologies/EnglishWordNet-dict/</property>
 		</subsection>
@@ -41,11 +41,11 @@
 			<property name="substitute">1.0</property>
 		</subsection>
 		
-		<subsection name="basic">
+		<subsection name="lemma_basic">
 			<property name="stopWordRemoval">true</property>
 		</subsection>
 		
-		<subsection name="wordnet">
+		<subsection name="lemma_wordnet">
 			<property name="stopWordRemoval">true</property>
 			<property name="path">/opt/share/eop-resources/ontologies/EnglishWordNet-dict/</property>
 		</subsection>
