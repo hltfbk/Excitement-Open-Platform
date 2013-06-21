@@ -1,3 +1,4 @@
+
 package eu.excitementproject.eop.core.component.distance;
 
 import java.util.List;
@@ -67,7 +68,7 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDiction
  * @author  Roberto Zanoli
  * @version 0.1
  */
-public class FixedWeightTokenEditDistance implements DistanceCalculation {
+public class FixedWeightLemmaEditDistance implements DistanceCalculation {
 
 	/**
 	 * weight for match
@@ -100,14 +101,14 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
     private boolean stopWordRemoval;
     Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
 
-    static Logger logger = Logger.getLogger(FixedWeightTokenEditDistance.class.getName());
+    static Logger logger = Logger.getLogger(FixedWeightLemmaEditDistance.class.getName());
     
     /**
      * Construct a fixed weight edit distance with the following constant
      * weights for edits:
      * match weight is 0, substitute, insert and delete weights are
      */
-    public FixedWeightTokenEditDistance() {
+    public FixedWeightLemmaEditDistance() {
     	
     	mMatchWeight = 0.0;
         mDeleteWeight = 0.0;
@@ -124,7 +125,7 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	 * @param config the configuration
 	 * 
 	 */
-    public FixedWeightTokenEditDistance(CommonConfig config) throws ConfigurationException, ComponentException {
+    public FixedWeightLemmaEditDistance(CommonConfig config) throws ConfigurationException, ComponentException {
     
         
         logger.info(getComponentName());
