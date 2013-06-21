@@ -4,7 +4,7 @@ import org.junit.*;
 
 public class TestDemo_EditDistance_IT {
 
-	//@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {
