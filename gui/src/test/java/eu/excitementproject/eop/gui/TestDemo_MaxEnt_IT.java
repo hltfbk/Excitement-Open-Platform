@@ -5,7 +5,7 @@ import org.junit.*;
 //test for Italian with MaxEnt
 public class TestDemo_MaxEnt_IT {
 
-//	@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		// needs TextPro to be installed
