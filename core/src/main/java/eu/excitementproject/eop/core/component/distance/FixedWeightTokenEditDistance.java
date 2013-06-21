@@ -34,17 +34,12 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.DKProPartOfSpeech;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
-
-import eu.excitementproject.eop.common.exception.BaseException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
 
 
 /**
@@ -136,15 +131,16 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
         
         initializeWeights(config);
         
-        //to get the platform language value
-        NameValueTable platformNameValueTable = config.getSection("PlatformConfiguration");
-        //to get the selected component instance
-    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
-    	instance = componentNameValueTable.getString("instances");
-    	//to get the parameters from the selected instance
-    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
+        try {
+        
+	        //to get the platform language value
+	        NameValueTable platformNameValueTable = config.getSection("PlatformConfiguration");
+	        //to get the selected component instance
+	    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
+	    	instance = componentNameValueTable.getString("instances");
+	    	//to get the parameters from the selected instance
+	    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
     	
-    	try {
     		String language = platformNameValueTable.getString("language");
     		logger.info("language:" + language);
     		String multiWordnet = instanceNameValueTable.getString("multiWordnet");
@@ -171,17 +167,19 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
 	    		}
 	    	}
     		
+    		if (instanceNameValueTable.getString("stopWordRemoval") != null) {
+    			stopWordRemoval = Boolean.parseBoolean(instanceNameValueTable.getString("stopWordRemoval"));
+    			logger.info("stop word removal activated");
+    		}
+    		else {
+    			stopWordRemoval = false;
+        		logger.info("stop word removal deactivated");
+    		}
+    			
     	} catch (ConfigurationException e) {
     		throw new ComponentException(e.getMessage());
     	}
     	
-    	try {
-    		stopWordRemoval = Boolean.parseBoolean(instanceNameValueTable.getString("stopWordRemoval"));
-    		logger.info("stop word removal activated");
-    	} catch (ConfigurationException e) {
-    		stopWordRemoval = false;
-    		logger.info("stop word removal deactivated");
-    	}
     }
     
     
