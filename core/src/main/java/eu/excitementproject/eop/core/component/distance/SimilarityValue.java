@@ -10,6 +10,11 @@ import eu.excitementproject.eop.common.component.distance.DistanceValue;
  */
 public class SimilarityValue extends DistanceValue {
 
+	/**
+	 * the similarity value
+	 * @param distance
+	 * @param rawValue
+	 */
 	public SimilarityValue(double distance, double rawValue) {
 		super(distance, true, rawValue);
 	}

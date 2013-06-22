@@ -6,6 +6,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
@@ -17,6 +18,8 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
+import eu.excitementproject.eop.lap.dkpro.MaltParserDE;
+import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
@@ -42,13 +45,167 @@ public class MaxEntClassificationEDATest {
 	@Test
 	public void test() {		
 
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_DE.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DistSim_DE.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexResPos_DE.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_AllLexRes_EN.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_DE.xml");
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_NonLexRes_EN.xml");
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_OnlyLexRes_EN.xml");
+		/** German */
+		/* Baseline: BagOfWords, BagOfLemmas */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_DE.xml");
+//		0.61125
+		
+		/* GermaNet: GermaNet without POS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_GN_DE.xml");
+//		0.51125
+		
+		/* GermaNetPos: GermaNet with POS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_GNPos_DE.xml");
+//		0.51125
+		
+		/* Baseline + GermaNet */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GN_DE.xml");
+//		0.6175
+		
+		/* Baseline + GermaNetPos */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos_DE.xml");
+//		0.61375
+		
+		/* DistSim: distributional similarity */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DS_DE.xml");
+//		0.51125
+		
+		/* Baseline + DistSim */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS_DE.xml");
+//		0.6275
+		
+		/* DBPos: DerivBase with POS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DBPos_DE.xml");
+//		0.51125
+		
+		/* Baseline + DBPos */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DBPos_DE.xml");
+//		0.61375
+		
+		/* Baseline + GermaNet + DistSim */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GN+DS_DE.xml");
+//		0.62125
+		
+		/* Baseline + GermaNetPos + DistSim */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS_DE.xml");
+//		0.61
+		
+		/* Baseline + DistSim + DBPos */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+DBPos_DE.xml");
+//		0.60875
+		
+		/* Baseline + GermaNetPos + DistSim + DBPos */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos_DE.xml");
+//		0.61
+		
+		/* TP: dependency triples without POS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TP_DE.xml");
+//		0.58625
+		
+		/* TPPos: dependency triples with POS */		
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TPPos_DE.xml");
+//		0.5875
+		
+		/* Baseline + TP */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP_DE.xml");
+//		0.62375
+		
+		/* Baseline + TPPos */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TPPos_DE.xml");
+//		0.63125
+		
+		/* TS: tree skeleton scoring */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TS_DE.xml");
+//		0.58
+		
+		/* Basline + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TS_DE.xml");
+//		0.625
+		
+		/* Baseline + TP + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TS_DE.xml");
+//		0.62875
+		
+		/* Baseline + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TPPos+TS_DE.xml");
+//		0.63375
+		
+		/* Baseline + TP + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_DE.xml");
+//		0.63375
+		
+		/* Baseline + DS + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+TPPos+TS_DE.xml");
+//		0.62375
+		
+		/* Baseline + GN + DS + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GN+DS+TPPos+TS_DE.xml");
+//		0.62875
+		
+		/* Baseline + GNPos + DS + DBPos + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TPPos+TS_DE.xml");
+//		0.63
+		
+		/** English */
+		/* Baseline */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_EN.xml");
+//		0.625
+		
+		/* WN: WordNet */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_WN_EN.xml");
+//		0.5125
+		
+		/* Baseline + WN */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN_EN.xml");
+//		0.63 false false false
+//		0.6325 true false false (default)
+//		0.62375 false true true
+//		0.62625 true true true
+		
+		/* VO: VerbOcean */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_VO_EN.xml");
+//		0.5125 true (default)
+//		0.5075 false
+		
+		/* Baseline + VO */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+VO_EN.xml");
+//		0.6225 true (default)
+//		0.6225 false
+
+		/* Baseline + WN + VO */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO_EN.xml");
+//		0.62375
+		
+		/* TP: dependency triples without POS */
+		
+		/* TPPos: dependency triples with POS */
+		
+		/* Baseline + TP */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP_EN.xml");
+//		0.63125
+		
+		/* Baseline + TPPos */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TPPos_EN.xml");
+//		0.63
+		
+		/* TS: tree skeleton scoring */
+		
+		/* Baseline + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TS_EN.xml");
+//		0.63625
+		
+		/* Baseline + TP + TS */
+		
+		/* Baseline + TPPos + TS */
+		
+		/* Baseline + TP + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml");
+//		0.64375
+		
+		/* Baseline + WN + VO + TP + TPPos + TS */
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml");
+//		0.645
+
 		Assume.assumeTrue(configFile.exists());
 		CommonConfig config = null;
 		try {
@@ -61,7 +218,8 @@ public class MaxEntClassificationEDATest {
 				
 		// Gil: testLAP_DE() is a very very long test. (More than build process itself) 
 		//German RTE tests
-		//testLAP_DE(); 
+		//testLAP_DE();
+		//testParser_DE();
 		//testTraining(config);
 		//testTesting_SingleTH(config); 
 		//testTesting_MultiTH(config); 
@@ -71,6 +229,7 @@ public class MaxEntClassificationEDATest {
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
 		/* English RTE tests
 		testLAP_EN();
+		testParser_EN("poly");
 		testTraining(config);
 		testTesting_SingleTH(config);
 		testTesting_MultiTH(config);
@@ -83,7 +242,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/main/resources/German_dev.xml");
+		inputFile = new File("./src/main/resources/data-set/German_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/dev/");
 		if (!outputDir.exists()) {
@@ -101,7 +260,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/main/resources/German_test.xml");
+		inputFile = new File("./src/main/resources/data-set/German_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/DE/test/");
 		if (!outputDir.exists()) {
@@ -122,7 +281,7 @@ public class MaxEntClassificationEDATest {
 		File outputDir = null;
 		
 		// generate XMI files for the training data
-		inputFile = new File("./src/main/resources/English_dev.xml");
+		inputFile = new File("./src/main/resources/data-set/English_dev.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/dev/");
 		if (!outputDir.exists()) {
@@ -140,7 +299,7 @@ public class MaxEntClassificationEDATest {
 		}
 		
 		// generate XMI files for the testing data
-		inputFile = new File("./src/main/resources/English_test.xml");
+		inputFile = new File("./src/main/resources/data-set/English_test.xml");
 		assertTrue(inputFile.exists());
 		outputDir = new File("./target/EN/test/");
 		if (!outputDir.exists()) {
@@ -150,6 +309,90 @@ public class MaxEntClassificationEDATest {
 		
 		try {
 			lap = new TreeTaggerEN();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
+	public void testParser_DE() {
+		File inputFile = null;
+		File outputDir = null;
+		
+		// generate XMI files for the training data
+		inputFile = new File("./src/main/resources/data-set/German_dev.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/DE/dev/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+
+		LAPAccess lap = null;
+
+		try {
+			lap = new MaltParserDE();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+		
+		// generate XMI files for the testing data
+		inputFile = new File("./src/main/resources/data-set/German_test.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/DE/test/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+		
+		try {
+			lap = new MaltParserDE();
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+	}
+	
+	public void testParser_EN(String aVariant) {
+		File inputFile = null;
+		File outputDir = null;
+		
+		// generate XMI files for the training data
+		inputFile = new File("./src/main/resources/data-set/English_dev.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/EN/dev/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+
+		LAPAccess lap = null;
+
+		try {
+			// previously // lap = new MaltParserEN(aVariant);
+			// now either this; if model variants are needed ... 
+			HashMap<String, String> descArgs = new HashMap<String,String>(); 
+			descArgs.put("PARSER_MODEL_VARIANT", aVariant); 
+			lap = new MaltParserEN(descArgs); 
+			// or you can say, // lap = new MaltParserEN(); // this will load default model. 
+			
+			lap.processRawInputFormat(inputFile, outputDir);
+		} catch (LAPException e) {
+			logger.info(e.getMessage());
+		}
+		
+		// generate XMI files for the testing data
+		inputFile = new File("./src/main/resources/data-set/English_test.xml");
+		assertTrue(inputFile.exists());
+		outputDir = new File("./target/EN/test/");
+		if (!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
+		assertTrue(outputDir.exists());
+		
+		try {
+			lap = new MaltParserEN(); // Default model 
 			lap.processRawInputFormat(inputFile, outputDir);
 		} catch (LAPException e) {
 			logger.info(e.getMessage());
@@ -224,7 +467,7 @@ public class MaxEntClassificationEDATest {
 		try {
 			meceda.initialize(config);
 			// check the test data directory
-			meceda.initializeData(config, false, true);
+			meceda.initializeData(config, false);
 			
 			int correct = 0;
 			int sum = 0;
@@ -262,7 +505,7 @@ public class MaxEntClassificationEDATest {
 		try {
 			meceda.initialize(config);
 			// check the test data directory
-			meceda.initializeData(config, false, true);
+			meceda.initializeData(config, false);
 			
 			output = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(config.getConfigurationFileName().replace("configuration-file", "results") + "_Result.txt"), "UTF-8"));
 			logger.info("build CASes for input sentence pairs:");

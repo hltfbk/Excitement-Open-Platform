@@ -10,6 +10,7 @@ import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
+import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
@@ -69,7 +70,7 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			underlyingSystem.init();
 			logger.info("Initializing BIUTEE underlying system - done.");
 		}
-		catch (IOException | TeEngineMlException | PluginAdministrationException | eu.excitementproject.eop.common.utilities.configuration.ConfigurationException | LemmatizerException e)
+		catch (IOException | TeEngineMlException | PluginAdministrationException | eu.excitementproject.eop.common.utilities.configuration.ConfigurationException | LemmatizerException | ExcitementToBiuConfigurationFileConverterException e)
 		{
 			throw new EDAException("Initialization failure. See nested exception.",e);
 		}
@@ -167,7 +168,6 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 				{
 					try{biuConfigurationFile.delete();}catch(RuntimeException e){}
 				}}
-
 			}
 
 
@@ -180,7 +180,7 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 				ClassifierException | AnnotatorException
 				| ParserRunException | SentenceSplitterException
 				| CoreferenceResolutionException | ScriptException
-				| RuleBaseException | InterruptedException
+				| RuleBaseException | InterruptedException | ExcitementToBiuConfigurationFileConverterException
 				e)
 		{
 			throw new EDAException("Training failed. See nested exception.",e);

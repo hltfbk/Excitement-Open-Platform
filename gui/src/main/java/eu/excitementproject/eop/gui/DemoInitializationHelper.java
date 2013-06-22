@@ -24,9 +24,6 @@ public class DemoInitializationHelper<T extends TEDecision> extends Initializati
 	private String getClassName(){
 		
 		return ConfigFileUtils.getAttribute(configFile, configTag, edaConfig, edaAttr);
-		
-//		String className = "eu.excitementproject.eop.core.EditDistanceEDA";
-//		return className;
 	}
 	
 	

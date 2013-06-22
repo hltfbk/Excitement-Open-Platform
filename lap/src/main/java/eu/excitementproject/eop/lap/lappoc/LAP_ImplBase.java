@@ -61,12 +61,11 @@ import eu.excitementproject.eop.lap.LAPException;
  * processRawInputFormat(). 
  * 
  * <P> 
- * (Don't read this if you have no plan to use AE/AAEs soon.) -- Also note that when you 
- * use AE or AAE (like that of DKPro), this addAnnotationTo() is really not 
- * efficient to be used in two other methods (generateSingleTH and processRawInput). 
- * , since it initialize the AE each time addAnnotationTo is being called. Rewrite
- * them, with two AEs mapped on TextView and HypothesisView, that is only initialized 
- * once. 
+ * (If you are using existing AEs) --- Also note that when you 
+ * use existing UIMA AnalysisEngines (like that of DKPro), this addAnnotationTo() is 
+ * really not efficient to be used in two other methods (generateSingleTH and processRawInput). 
+ * , since it initialize the AE each time addAnnotationTo is being called. 
+ * In such a case, use {@link LAP_ImplBaseAE}, which only initialize AEs per view once. 
  * 
  * @author Gil 
  *
@@ -264,7 +263,7 @@ public abstract class LAP_ImplBase implements LAPAccess {
 
 	@Override
 	public void addAnnotationOn(JCas aJCas) throws LAPException {
-		addAnnotationOn(aJCas, "_InitialView"); 
+		addAnnotationOn(aJCas, INITIALVIEW); 
 	}
 	
 	/**
@@ -357,8 +356,9 @@ public abstract class LAP_ImplBase implements LAPAccess {
 	/**
 	 *  string constants 
 	 */
-	private final String TEXTVIEW = "TextView";
-	private final String HYPOTHESISVIEW = "HypothesisView";
+	static public final String TEXTVIEW = "TextView";
+	static public final String HYPOTHESISVIEW = "HypothesisView";
+	static public final String INITIALVIEW = "_InitialView"; 
 
 	// From "interface Components" 
 	//@Override // Gil: initialize is removed from interface Component 

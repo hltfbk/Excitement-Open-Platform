@@ -43,7 +43,7 @@ public class AnnotateSentenceToConll {
 	 * @throws ConfigurationException 
 	 * @throws ConllConverterException 
 	 */
-	public AnnotateSentenceToConll(ConfigurationFile confFile, String posTaggerString) throws ConfigurationException, ConllConverterException {
+	public AnnotateSentenceToConll(ConfigurationFile confFile) throws ConfigurationException, ConllConverterException {
 		
 		confFile.setExpandingEnvironmentVariables(true);
 		ConfigurationParams annotationParams = confFile.getModuleConfiguration(TransformationsConfigurationParametersNames.TRUTH_TELLER_MODULE_NAME); 
@@ -51,9 +51,10 @@ public class AnnotateSentenceToConll {
 		try {
 			annotator = new DefaultSentenceAnnotator(annotationParams);
 			
-//			String posTaggerString = 
-//				confFile.getModuleConfiguration(ConfigurationParametersNames.RTE_SUM_PREPROCESS_MODULE_NAME).get(ConfigurationParametersNames.PREPROCESS_EASYFIRST);
-			parser = new EasyFirstParser(posTaggerString);
+			String posTaggerString = annotationParams.get(TransformationsConfigurationParametersNames.PREPROCESS_EASYFIRST);
+			String easyFirstHost = annotationParams.get(TransformationsConfigurationParametersNames.PREPROCESS_EASYFIRST_HOST);
+			int easyFirstPort = annotationParams.getInt(TransformationsConfigurationParametersNames.PREPROCESS_EASYFIRST_PORT);
+			parser = new EasyFirstParser(easyFirstHost, easyFirstPort, posTaggerString);
 			parser.init();
 		} catch (Exception e) {
 			throw new ConllConverterException("see nested", e);
@@ -121,17 +122,16 @@ public class AnnotateSentenceToConll {
 	 */
 	public static void main(String[] args) throws AnnotatorException, ConfigurationFileDuplicateKeyException, ConfigurationException, ParserRunException, ConllConverterException, SentenceSplitterException {
 
-		if (args.length < (1+1))
-			throw new AnnotatorException("usage: EntailmentRuleCompiler configurationFile.xml <pos-tagger-module-filename> sentence(s)");
+		if (args.length < (1))
+			throw new AnnotatorException(String.format("usage: %s configurationFile.xml sentence(s)", AnnotateSentenceToConll.class.getSimpleName()));
 		
 		List<String> argsList = Utils.arrayToCollection(args, new Vector<String>());
 		Iterator<String> argsIterator = argsList.iterator();
 		
 		ConfigurationFile confFile = new ConfigurationFile(new File(argsIterator.next()));
 		confFile.setExpandingEnvironmentVariables(true);
-		String posTaggerModuleFileName = argsIterator.next();
 		
-		AnnotateSentenceToConll app = new AnnotateSentenceToConll(confFile,posTaggerModuleFileName);
+		AnnotateSentenceToConll app = new AnnotateSentenceToConll(confFile);
 		
 		// Read the text from command line
 		StringBuffer sbInputWords = new StringBuffer();

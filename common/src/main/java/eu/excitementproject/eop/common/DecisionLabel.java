@@ -53,9 +53,24 @@ public enum DecisionLabel {
 		return false;
 	}
 	
-	private DecisionLabel parent = null;
 	private DecisionLabel(DecisionLabel parent) {
 		this.parent = parent;
 	}
+	
+	/**
+	 * Returns the DecisionLabel with a name that equals the input string, ignoring case.
+	 * @param s
+	 * @return
+	 * @throws EDAException if input string does not correspond to any enum value
+	 */
+	public static DecisionLabel getLabelFor(String s) throws EDAException {
+		for (DecisionLabel label : DecisionLabel.values()) {
+			if (label.name().equalsIgnoreCase(s)) {
+				return label;				
+			}
+		}
+		throw new EDAException(String.format("The string '%s' does not correspond to any constant in the enum %s", s, DecisionLabel.class.getSimpleName()));
+	}
 
+	private DecisionLabel parent = null;
 }

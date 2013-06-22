@@ -31,7 +31,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
-import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
+//import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.common.exception.BaseException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;

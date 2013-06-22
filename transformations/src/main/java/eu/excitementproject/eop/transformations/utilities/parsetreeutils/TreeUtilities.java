@@ -8,7 +8,6 @@ import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultSyntacticInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -21,14 +20,15 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.IdLemmaPosRelNodeString;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.lap.biu.PreprocessUtilities;
 import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.ExtendedNodeConstructor;
 import eu.excitementproject.eop.transformations.representation.ExtendedNodeNodeString;
+import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 //import eu.excitementproject.eop.transformations.rteflow.macro.SingleTreeEvaluations;
 //import eu.excitementproject.eop.transformations.rteflow.micro.OperationsEnvironment;
-import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
 /**
@@ -280,24 +280,12 @@ public class TreeUtilities
 	
 	public static boolean isArtificialRoot(AbstractNode<? extends Info, ?> node)
 	{
-		boolean ret = false;
-		try
-		{
-			if (node.getInfo().getId().equals(AbstractMiniparParser.ROOT_NODE_ID))
-				if (node.getInfo().getNodeInfo().getWordLemma()==null)
-					ret = true;
-		}
-		catch(NullPointerException e)
-		{}
-		return ret;
+		return PreprocessUtilities.isArtificialRoot(node);
 	}
 	
 	public static BasicNode addArtificialRoot(BasicNode tree)
 	{
-		DefaultInfo rootInfo = new DefaultInfo(AbstractMiniparParser.ROOT_NODE_ID,new DefaultNodeInfo(null,null,0,null,new DefaultSyntacticInfo(null)),new DefaultEdgeInfo(null));
-		BasicNode root = new BasicNode(rootInfo);
-		root.addChild(tree);
-		return root;
+		return PreprocessUtilities.addArtificialRoot(tree);
 	}
 	
 	public static ExtendedNode addArtificialRoot(ExtendedNode tree)

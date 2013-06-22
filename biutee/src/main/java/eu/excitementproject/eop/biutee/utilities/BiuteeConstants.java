@@ -84,10 +84,15 @@ public class BiuteeConstants
 
 	public static final double F1_CLASSIFIER_GAMMA_FOR_SIGMOID = 100.0;
 	public static final double INCREASE_PARAMETERS_VALUE_IN_F1_CLASSIFIER = 0.0005;
+	
+	public static final int NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED = 2000;
+	public static final Double DEFAULT_HYPOTHESIS_LENGTH_FOR_TRAINING_REASONABLE_GUESS = 10.0;
 
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that are less likely to be changed.
 
+	public static final long RANDOM_SEED_FOR_GAUSSIAN_GENERATOR_FOR_REASONABLE_GUESS_TRAINING = 0L;
+	
 	public static final boolean USE_NUMBER_NORMALIZER = true;
 	
 	/**
@@ -225,6 +230,9 @@ public class BiuteeConstants
 	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX = "serialized_results";
 	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_INFIX_TEX = "_test";
 	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX = ".ser";
+	
+	public static final String RTE_PAIRS_XML_RESULTS_FILE_NAME_PREFIX = "rte_pairs_results";
+	public static final String RTE_PAIRS_XML_RESULTS_FILE_NAME_POSTFIX = ".xml";
 
 	
 	//////////////////////////////////////////////////////////////////////////

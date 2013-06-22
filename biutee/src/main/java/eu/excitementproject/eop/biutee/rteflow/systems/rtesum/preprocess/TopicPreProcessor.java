@@ -9,7 +9,6 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
-import eu.excitementproject.eop.biutee.rteflow.preprocess.PreprocessUtilities;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -19,6 +18,7 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.DocumentMetaDat
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.TopicDataSet;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
+import eu.excitementproject.eop.lap.biu.PreprocessUtilities;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
@@ -112,6 +112,8 @@ public class TopicPreProcessor
 		}
 		
 		this.preprocessedTopicDataSet = new PreprocessedTopicDataSet(this.topicDataSet, mapHypothesisIdToTree, allDocumentsTrees, allDocumentsCoreferenceInformation, mapDocumentsHeadlines);
+		
+		logger.info("Pre-processing of topic: "+this.topicDataSet.getTopicId()+" is done.");
 	}
 	
 	public PreprocessedTopicDataSet getPreprocessedTopicDataSet()

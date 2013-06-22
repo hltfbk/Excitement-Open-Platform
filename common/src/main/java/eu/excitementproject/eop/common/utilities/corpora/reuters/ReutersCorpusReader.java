@@ -15,6 +15,10 @@ import eu.excitementproject.eop.common.utilities.corpora.CorpusReader;
 
 
 /**
+ * A {@link CorpusReader} for Reuters corpus. The Reuters corpus is organized in
+ * two directories, named "CD1" and "CD2", each of these directories has
+ * many sub-directories, and each of these sub-directories has many XML files.
+ * The {@link ReutersDocumentReader} knows how to read these XML files.
  * 
  * @author Asher Stern
  * @since Oct 18, 2012

@@ -517,7 +517,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		}
 		return result;
 	}
-
+	
+	
 	public List<LexicalRule<? extends GermaNetInfo>> getRulesForLeft(String lemma, PartOfSpeech pos, GermaNetRelation fineGrainedRelation) throws LexicalResourceException {
 		this.fineGrainedRelation = fineGrainedRelation.toGermaNetString();
 		List<LexicalRule<? extends GermaNetInfo>> result = getRulesForLeft(lemma, pos);

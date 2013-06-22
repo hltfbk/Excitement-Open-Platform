@@ -1,12 +1,19 @@
 package eu.excitementproject.eop.common.utilities.xmldom;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -48,7 +55,7 @@ public class XmlDomUtils
 	 * @param element A given element (we need its child)
 	 * @param childName The name of the child-element that we are looking for.
 	 * @param optional Indicates whether this element must exist, and if it does not
-	 * exist it is an error and an exception will be thrown (optional==true), or not (optional==false).
+	 * exist it is an error and an exception will be thrown (optional==false), or not (optional==true).
 	 * @return The child-element, which is a direct child of the given element, and named "<code>childName</code>".
 	 * @throws TreeXmlException
 	 */
@@ -196,4 +203,32 @@ public class XmlDomUtils
 	}
 
 
+	public static void writeDocumentToFile(Document document, File file) throws XmlDomUtilitiesException
+	{
+		try
+		{
+			TransformerFactory transfac = TransformerFactory.newInstance();
+			Transformer trans = transfac.newTransformer();
+			trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+			trans.setOutputProperty(OutputKeys.INDENT, "yes");
+			trans.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+
+			//StreamResult streamResult = new StreamResult(this.output);
+			FileOutputStream outputStream = new FileOutputStream(file);
+			try
+			{
+				StreamResult streamResult = new StreamResult(outputStream);
+				DOMSource source = new DOMSource(document);
+				trans.transform(source, streamResult);
+			}
+			finally
+			{
+				outputStream.close();
+			}
+		}
+		catch(IOException | TransformerException e)
+		{
+			throw new XmlDomUtilitiesException("Failed to write into file: "+file.getPath());
+		}
+	}
 }

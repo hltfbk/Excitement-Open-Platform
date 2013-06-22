@@ -5,7 +5,7 @@
   	<parent>
 		<groupId>eu.excitementproject</groupId>
 	  	<artifactId>eop</artifactId>
-	    <version>0.1-SNAPSHOT</version>
+	    <version>0.8.4-SNAPSHOT</version>
 	</parent>
   
   	<artifactId>lap</artifactId>
@@ -18,7 +18,14 @@
 			<name>DKPro repository</name>
           	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
      	</repository>
-  	</repositories>
+  
+     	<repository>
+     		<id>ukp-oss-snapshot</id>
+     		<name>DKPro snapshot repository (for 1.5.0 access)</name>
+     		<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots</url> 
+     	</repository>
+     
+ 	</repositories>
   	
    	<pluginRepositories>
    		<pluginRepository>
@@ -36,43 +43,7 @@
       	</pluginRepository>
    	</pluginRepositories>
 
- 	<dependencies>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-adapter-soap</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-adapter-vinci</artifactId>
-   			</dependency>
-   		<dependency>
-			<groupId>org.apache.uima</groupId>
-			<artifactId>uimaj-bootstrap</artifactId>
-			</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-core</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-cpe</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-document-annotation</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-examples</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-tools</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>jVinci</artifactId>
-   		</dependency>
+ 	<dependencies> 	
    		<dependency>
    			<groupId>junit</groupId>
    			<artifactId>junit</artifactId>
@@ -118,7 +89,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<version>0.8.4-SNAPSHOT</version>
 		</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -169,11 +140,63 @@
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
-    			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+    			de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-linear
     		</artifactId>
-    		<version>1.4.0</version>
+    		<version>20120312.0</version>
     	</dependency>
- 	</dependencies>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-poly
+    		</artifactId>
+    		<version>20120312.0</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.maltparser-asl
+    		</artifactId>
+    	</dependency>
+    	<dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>
+                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear
+            </artifactId>
+            <version>20130511.0</version>
+        </dependency>
+    	
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-asl
+    		</artifactId>
+    		<version>1.5.0-SNAPSHOT</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-en-default
+    		</artifactId>
+    		<version>20121910.0</version>
+    	</dependency>
+    	
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-de-default
+    		</artifactId>
+    		<version>20130304.0</version>
+    	</dependency>
+    	<!--  1G big model for German MST parser: commented out for prevent unneeded downloads -->
+    	<!--  Include them if you need  DE-LONG variant model for MSTParserDE -->
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-de-long
+    		</artifactId>
+    		<version>20130301.0</version>
+    	</dependency>
+   </dependencies>
 
     <dependencyManagement>
    		<dependencies>

@@ -8,10 +8,12 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SERIALIZED_SAMPLES_NAME;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -55,7 +57,6 @@ import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamplesUtils;
 import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeClassifiersIO;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -203,15 +204,17 @@ public class RTESystemsUtils
 		priorPositive.put(Feature.SUBSTITUTION_COREFERENCE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 
 		ReasonableGuessGenerator generator = 
-			new ReasonableGuessGenerator(priorNegative,priorPositive,featureVectorStructure,100,100);
+			new ReasonableGuessGenerator(priorNegative,priorPositive,featureVectorStructure,
+					BiuteeConstants.NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED/(1+1),
+					BiuteeConstants.NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED/(1+1));
 		ret = generator.createClassifierByPrior();
 		
-		List<String> listRuleBasesNames = Utils.getSortedByValue(featureVectorStructure.getRuleBasesFeatures().getMutableCopy());
-		LinkedHashSet<String> ruleBasesNames = new LinkedHashSet<String>();
-		for (String ruleBaseName : listRuleBasesNames)
-		{
-			ruleBasesNames.add(ruleBaseName);
-		}
+//		List<String> listRuleBasesNames = Utils.getSortedByValue(featureVectorStructure.getRuleBasesFeatures().getMutableCopy());
+//		LinkedHashSet<String> ruleBasesNames = new LinkedHashSet<String>();
+//		for (String ruleBaseName : listRuleBasesNames)
+//		{
+//			ruleBasesNames.add(ruleBaseName);
+//		}
 		
 		// ret.setFeaturesNames( ClassifierUtils.extendFeatureNames(Feature.toMapOfNames(), ruleBasesNames));
 		
@@ -220,7 +223,7 @@ public class RTESystemsUtils
 		normalizeClassifierForSearch(ret);
 		
 		if (logger.isInfoEnabled())
-			logger.info("RTEPairsTrainerUtils: Initial classifier description:\n"+ret.descriptionOfTraining());
+			logger.info(RTESystemsUtils.class.getSimpleName()+": Initial classifier description:\n"+ret.descriptionOfTraining());
 		
 		return ret;
 	}
@@ -893,6 +896,20 @@ public class RTESystemsUtils
 		}
 		
 		return ret;
+	}
+	
+	public static void logTextFile(File textFile, Logger logger) throws FileNotFoundException, IOException
+	{
+		try(BufferedReader reader = new BufferedReader(new FileReader(textFile)))
+		{
+			StringBuilder sb = new StringBuilder();
+			sb.append(textFile.getName()).append(":\n");
+			for (String line = reader.readLine();line!=null;line = reader.readLine())
+			{
+				sb.append(line).append("\n");
+			}
+			logger.info(sb.toString());
+		}
 	}
 	
 	

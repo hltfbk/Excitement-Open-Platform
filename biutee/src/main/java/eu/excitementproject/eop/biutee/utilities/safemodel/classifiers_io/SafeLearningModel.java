@@ -10,6 +10,12 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
 /**
+ * A class used for safe storage of {@link LearningModel}.
+ * <P>
+ * <B>See instructions about classifiers in the package-java-doc (package-info.java)
+ * of package <code>eu.excitementproject.eop.biutee.classifiers</code></B>
+ * <P>
+ * 
  * 
  * @author Asher Stern
  * @since Dec 26, 2012

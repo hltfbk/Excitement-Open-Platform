@@ -23,7 +23,24 @@ public class ConfigFileUtils {
 	public static String configTag = "PlatformConfiguration";
 	public static String nameTag = "name";
 	public static String sectionTag = "section";
+	public static String propertyTag = "property";
 	
+	public static String getAttribute(File file, String attr) {
+
+		System.out.println("Looking for a value for attribute: " + attr);
+		
+		Document configDoc = parse(file);
+		NodeList sectionList = configDoc.getElementsByTagName(sectionTag);
+		
+		String value = findAttributeRec(sectionList, attr);
+		
+		if (value != null) {
+			System.out.println("Value for attribute " + attr + " : " + value);
+		}
+		
+		return value;
+	}
+		
 	
 	public static String getAttribute(File file, String configTag, String edaTag, String attr){
 		Document configDoc = parse(file);
@@ -31,14 +48,12 @@ public class ConfigFileUtils {
 		
 		NodeList nodesList = findNodesWithTag(sectionList, configTag);
 		String edaName = findAttribute(nodesList, edaTag);
-		
+				
 		System.out.println("EDA class name from config file: " + edaName);
 		
 		return edaName;
-		
-//		nodesList = findNodesWithTag(sectionList, edaTag);
-//		return findAttribute(nodesList, attr);
 	}
+	
 	
 	private static NodeList findNodesWithTag(NodeList list, String tag) {
 
@@ -73,6 +88,31 @@ public class ConfigFileUtils {
 					val = element.getTextContent();
 				}
 			}			
+			i++;
+		}				
+		return val;
+	}
+	
+	private static String findAttributeRec(NodeList list, String attr) {
+		String val = null;
+		int i = 0;
+		boolean found = false;
+		while( i < list.getLength() && !found) {
+			Node node = list.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) node;
+				if (element.hasAttribute(nameTag) && element.getAttribute(nameTag).equals(attr)) {
+					found = true;
+					val = element.getTextContent();
+				}
+			} 
+			
+			if (!found && node.hasChildNodes()) {
+				val = findAttributeRec(node.getChildNodes(), attr);
+				if (val != null) {
+					found = true;
+				}
+			}
 			i++;
 		}				
 		return val;

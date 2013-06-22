@@ -2,15 +2,20 @@ package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 
 import java.io.File;
 
+import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierUtils;
+import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -26,23 +31,33 @@ public class BiuteeEdaUtilities
 	 * 
 	 * @param excitementConfigurationFile the Excitement configuration file. Should not be touched.
 	 * @param biuConfigurationFile the BIU configuration-file. It is an empty, or not-exist, and should be written by this method.
+	 * @throws ExcitementToBiuConfigurationFileConverterException 
 	 */
-	public static void convertExcitementConfigurationFileToBiuConfigurationFile(File excitementConfigurationFile, File biuConfigurationFile)
+	public static void convertExcitementConfigurationFileToBiuConfigurationFile(File excitementConfigurationFile, File biuConfigurationFile) throws ExcitementToBiuConfigurationFileConverterException
 	{
-		// TODO
-		throw new RuntimeException("Not yet implemented.");
+		try
+		{
+			new ExcitementToBiuConfigurationFileConverter(excitementConfigurationFile, biuConfigurationFile).convert();
+		}
+		catch(RuntimeException e)
+		{
+			throw new ExcitementToBiuConfigurationFileConverterException("Failed to convert "+excitementConfigurationFile.getPath()+" to "+biuConfigurationFile.getPath(),e);
+		}
 	}
 	
 	public static PairData convertJCasToPairData(JCas aCas) throws TeEngineMlException
 	{
-		// TODO
-		throw new RuntimeException("Not yet implemented.");
+		try {
+			return CasPairDataConverter.convertCasToPairData(aCas);
+		}
+		catch (CASException | CasTreeConverterException | UnsupportedPosTagStringException | EDAException e) {
+			throw new TeEngineMlException("Error while creating a PairData from a JCas.", e);
+		}
 	}
 	
 	public static String getPairIdFromJCas(JCas aCas) throws TeEngineMlException
 	{
-		// TODO
-		throw new RuntimeException("Not yet implemented.");
+		return CasPairDataConverter.getPairIdFromCas(aCas);
 	}
 	
 	/**

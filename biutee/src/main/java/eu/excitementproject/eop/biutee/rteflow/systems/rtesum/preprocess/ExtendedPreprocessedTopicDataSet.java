@@ -8,6 +8,8 @@ import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * Contains all parse-trees and coreference-information of an RTE-Sum topic.
+ * The type of tree nodes is {@link ExtendedNode}.
  * 
  * @author Asher Stern
  * @since Jun 5, 2011

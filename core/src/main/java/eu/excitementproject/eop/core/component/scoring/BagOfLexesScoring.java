@@ -1,6 +1,8 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -35,35 +37,42 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 
 	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
 
-	// replaced by configuration
-//	private static final String GDS_PATH = "./src/main/resources/dewakdistributional-data/";
-//	private static final String GNW_PATH = "./src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/";
-
-	// the number of features
-	protected int numOfFeats = 0;
+	/**
+	 * the number of features
+	 */
+	private int numOfFeats = 0;
 
 	@Override
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
 
-	protected boolean[] moduleFlags = new boolean[5];
+	protected boolean[] moduleFlags = new boolean[2];
 
 	protected GermanDistSim gds = null;
 
 	protected GermaNetWrapper gnw = null;
 
+	/**
+	 * the constructor using the configuration
+	 * 
+	 * @param config
+	 *            the configuation
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
 	public BagOfLexesScoring(CommonConfig config)
 			throws ConfigurationException, LexicalResourceException {
 		for (int i = 0; i < moduleFlags.length; i++) {
 			moduleFlags[i] = false;
 		}
-		
+
 		NameValueTable comp = config.getSection("BagOfLexesScoring");
-		
+
 		// initialize GermanDistSim
 		if (null == comp.getString("GermanDistSim")
-				&& null == comp.getString("GermaNetWrapper")) {
+				&& null == comp.getString("GermaNetWrapper")
+				&& null == comp.getString("DerivBaseResource")) {
 			throw new ConfigurationException(
 					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
 		}
@@ -78,42 +87,28 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
-		} else {
-			moduleFlags[0] = false;
+			logger.info("Load GermanDistSim done.");
 		}
-		
+
 		// initialize GermaNet
 		if (null != comp.getString("GermaNetWrapper")) {
-			String[] GermaNetRelations = comp.getString("GermaNetWrapper").split(",");
+			String[] GermaNetRelations = comp.getString("GermaNetWrapper")
+					.split(",");
 			if (null == GermaNetRelations || 0 == GermaNetRelations.length) {
 				throw new ConfigurationException(
 						"Wrong configuation: didn't find any relations for the GermaNet");
 			}
 			try {
 				gnw = new GermaNetWrapper(config);
-				for (String relation : GermaNetRelations) {
-					if (relation.equalsIgnoreCase("causes")) {
-						numOfFeats++;
-						moduleFlags[1] = true;
-					} else if (relation.equalsIgnoreCase("entails")) {
-						numOfFeats++;
-						moduleFlags[2] = true;
-					} else if (relation.equalsIgnoreCase("has_hypernym")) {
-						numOfFeats++;
-						moduleFlags[3] = true;
-					} else if (relation.equalsIgnoreCase("has_synonym")) {
-						numOfFeats++;
-						moduleFlags[4] = true;
-					} else {
-						logger.warning("Warning: wrong relation names for the GermaNet");
-					}
-				}
+				numOfFeats++;
+				moduleFlags[1] = true;
 			} catch (GermaNetNotInstalledException e) {
 				logger.warning("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
 				throw new LexicalResourceException(e.getMessage());
 			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
+			logger.info("Load GermaNet done.");
 		}
 	}
 
@@ -121,11 +116,19 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	public String getComponentName() {
 		return "BagOfLexesScoring";
 	}
-	
+
+	/**
+	 * close the component by closing the lexical resources.
+	 */
+	@Override
 	public void close() throws ScoringComponentException {
 		try {
-			gds.close();
-			gnw.close();
+			if (null != gds) {
+				gds.close();
+			}
+			if (null != gnw) {
+				gnw.close();
+			}
 		} catch (LexicalResourceCloseException e) {
 			throw new ScoringComponentException(e.getMessage());
 		}
@@ -145,29 +148,11 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			JCas hView = aCas.getView("HypothesisView");
 			HashMap<String, Integer> hBag = countTokens(hView);
 
-			// int hSize = 0;
-			// for (String hWord : hBag.keySet()) {
-			// hSize += hBag.get(hWord).intValue();
-			// }
-
 			if (moduleFlags[0]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
 			}
 			if (moduleFlags[1]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
-						tBag, hBag, GermaNetRelation.has_hypernym));
-			}
-			if (moduleFlags[2]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
-						tBag, hBag, GermaNetRelation.causes));
-			}
-			if (moduleFlags[3]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
-						tBag, hBag, GermaNetRelation.entails));
-			}
-			if (moduleFlags[4]) {
-				scoresVector.add(calculateSingleLexScoreWithGermaNetRelation(
-						tBag, hBag, GermaNetRelation.has_synonym));
+				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw));
 			}
 		} catch (CASException e) {
 			throw new ScoringComponentException(e.getMessage());
@@ -175,6 +160,19 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		return scoresVector;
 	}
 
+	/**
+	 * calculate the similarity score between T and H based on one lexical
+	 * resource
+	 * 
+	 * @param tBag
+	 *            the bag of words of T
+	 * @param hBag
+	 *            the bag of words of H
+	 * @param lex
+	 *            the lexical resource used
+	 * @return the similarity score
+	 * @throws ScoringComponentException
+	 */
 	protected double calculateSingleLexScore(HashMap<String, Integer> tBag,
 			HashMap<String, Integer> hBag,
 			LexicalResource<? extends RuleInfo> lex)
@@ -187,8 +185,11 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet()
+				.iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				for (LexicalRule<? extends RuleInfo> rule : lex
@@ -208,28 +209,21 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		score = calculateSimilarity(tWordBag, hBag).get(0);
 
 		return score;
-
-		// for (String word : hBag.keySet()) {
-		// int counts = hBag.get(word);
-		// HashMap<String, Integer> hWordBag = new HashMap<String, Integer>();
-		// try {
-		// hWordBag.put(word, counts);
-		// for (LexicalRule<? extends RuleInfo> rule : lex.getRulesForLeft(word,
-		// null)) {
-		// hWordBag.put(rule.getRLemma(), counts);
-		// }
-		// }
-		// catch (LexicalResourceException e)
-		// {
-		// throw new ScoringComponentException(e.getMessage());
-		// }
-		// score += Math.min(counts, calculateSimilarity(tBag, hWordBag).get(0)
-		// * hWordBag.size());
-		// }
-		//
-		// return score;
 	}
 
+	/**
+	 * calculate the similarity score between T and H based on GermaNet
+	 * relations
+	 * 
+	 * @param tBag
+	 *            the bag of words of T
+	 * @param hBag
+	 *            the bag of words of H
+	 * @param gnr
+	 *            the GermaNet
+	 * @return the similarity score
+	 * @throws ScoringComponentException
+	 */
 	protected double calculateSingleLexScoreWithGermaNetRelation(
 			HashMap<String, Integer> tBag, HashMap<String, Integer> hBag,
 			GermaNetRelation gnr) throws ScoringComponentException {
@@ -241,8 +235,11 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
 
-		for (String word : tBag.keySet()) {
-			int counts = tBag.get(word);
+		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet()
+				.iterator(); iter.hasNext();) {
+			Entry<String, Integer> entry = iter.next();
+			final String word = entry.getKey();
+			final int counts = entry.getValue().intValue();
 			try {
 				tWordBag.put(word, counts);
 				/*
@@ -274,43 +271,5 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 		score = calculateSimilarity(tWordBag, hBag).get(0);
 
 		return score;
-
-		// for (String word : hBag.keySet()) {
-		// int counts = hBag.get(word);
-		// HashMap<String, Integer> hWordBag = new HashMap<String, Integer>();
-		// try {
-		// hWordBag.put(word, counts);
-		// if (both) {
-		// for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word,
-		// null, gnr)) {
-		// hWordBag.put(rule.getRLemma(), counts);
-		// }
-		// // for (LexicalRule<? extends RuleInfo> rule :
-		// gnw.getRulesForRight(word, null, gnr)) {
-		// // hWordBag.put(rule.getRLemma(), counts);
-		// // }
-		// } else {
-		// if (forLeft) {
-		// for (LexicalRule<? extends RuleInfo> rule : gnw.getRulesForLeft(word,
-		// null, gnr)) {
-		// hWordBag.put(rule.getRLemma(), counts);
-		// }
-		// } else {
-		// // for (LexicalRule<? extends RuleInfo> rule :
-		// gnw.getRulesForRight(word, null, gnr)) {
-		// // hWordBag.put(rule.getRLemma(), counts);
-		// // }
-		// }
-		// }
-		// }
-		// catch (LexicalResourceException e)
-		// {
-		// throw new ScoringComponentException(e.getMessage());
-		// }
-		// score += Math.min(counts, calculateSimilarity(tBag, hWordBag).get(0)
-		// * hWordBag.size());
-		// }
-		//
-		// return score;
 	}
 }

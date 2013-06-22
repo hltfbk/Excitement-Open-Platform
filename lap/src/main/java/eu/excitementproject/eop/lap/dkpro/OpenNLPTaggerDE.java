@@ -14,9 +14,14 @@ import eu.excitementproject.eop.lap.LAPException;
  */
 public class OpenNLPTaggerDE extends OpenNLPTaggerEN implements LAPAccess {
 
+	/**
+	 * The constructor sets the language flag.
+	 * 
+	 * @throws LAPException
+	 */
 	public OpenNLPTaggerDE() throws LAPException {
 		super(); 
-		languageIdentifier = "DE"; // setting language identifier 
+		languageIdentifier = "DE"; 
 	}
 
 }
