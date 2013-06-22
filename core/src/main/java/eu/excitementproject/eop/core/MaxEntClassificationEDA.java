@@ -336,6 +336,12 @@ public class MaxEntClassificationEDA implements
 			}
 		} else {
 			try {
+				File file = new File(modelFile);
+				if (!file.exists()) {
+					throw new ConfigurationException("The model specified in the configuration does NOT exist! Please give the correct file path.");
+				} else {
+					logger.info("Reading model from " + file.getAbsolutePath());
+				}
 				model = new GenericModelReader(new File(modelFile)).getModel();
 			} catch (IOException e) {
 				throw new ConfigurationException(e.getMessage());
