@@ -1,11 +1,14 @@
 package eu.excitementproject.eop.core.component.scoring;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
 import org.junit.Test;
@@ -124,7 +127,18 @@ public class BagOfWordsScoringTest {
 			 logger.info(String.valueOf(score));
 			 }
 		} catch (LAPException e) {
-			logger.info(e.getMessage());
+			// check if this is due to missing TreeTagger binary and model. 
+			// In such a case, we just skip this test. 
+			// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
+			if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
+			{
+				logger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
+				Assume.assumeTrue(false); // we won't test this test case any longer. 
+			}
+			
+			// if this is some other exception, the test will fail  
+
+			fail(e.getMessage()); 
 		} catch (ScoringComponentException e) {
 			logger.info(e.getMessage());
 		}
@@ -208,7 +222,18 @@ public class BagOfWordsScoringTest {
 			 logger.info(String.valueOf(score));
 			 }
 		} catch (LAPException e) {
-			logger.info(e.getMessage());
+			// check if this is due to missing TreeTagger binary and model. 
+			// In such a case, we just skip this test. 
+			// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
+			if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
+			{
+				logger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
+				Assume.assumeTrue(false); // we won't test this test case any longer. 
+			}
+			
+			// if this is some other exception, the test will fail  
+
+			fail(e.getMessage()); 
 		} catch (ScoringComponentException e) {
 			logger.info(e.getMessage());
 		}
