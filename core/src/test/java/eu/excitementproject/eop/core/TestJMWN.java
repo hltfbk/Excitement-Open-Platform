@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
@@ -21,6 +22,7 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDiction
 
 public class TestJMWN {
 
+	@Ignore
 	@Test
 	public void test() {
 

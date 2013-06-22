@@ -3,6 +3,7 @@ package eu.excitementproject.eop.lap.textpro;
 import static org.junit.Assert.fail;
 
 import org.apache.uima.jcas.JCas;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Assume;
 
@@ -12,6 +13,7 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 
 public class TextProTaggerITTest {
 
+	@Ignore
 	@Test
 	public void test() {
 		

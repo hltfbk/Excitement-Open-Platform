@@ -45,6 +45,7 @@ public class WikipediaLexicalResourceDemoIT {
 				WikiExtractionType.LEX_ALL_NOUNS,WikiExtractionType.SYNT_ALL_NOUNS}, new HashSet<WikiExtractionType>());
 		File stopWordsFile = new File("src/test/resources/stopwords.txt");
 		WikiLexicalResourceIT wikiLexR = new WikiLexicalResourceIT(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikilexresita","root","nat_2k12", 0.01);
+//		WikiLexicalResourceIT wikiLexR = new WikiLexicalResourceIT(stopWordsFile, extractionTypes, "jdbc:mysql://hlt-services4:3306/wikilexresita","root","hlt4my2sql", 0.01);
 
 		
 //		ConfigurationFile  confFile = new ConfigurationFile(new File("B:/Apps/BIUTEE/workdir/biutee_train.xml"));
