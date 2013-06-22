@@ -1,6 +1,12 @@
 package eu.excitementproject.eop.lap.heid.germanpostprocess;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,26 +26,16 @@ import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.dkpro.MSTParserDE;
+/**
+ * This class provides 
+ * a) an example how to access the annotation of a German text parsed by MSTParser
+ * and b) two methods which aim to correct problems with lemmas (ambiguity and missing verb particles)
+ */
 
 public class MSTParseAccess {
 
 	/**
-	 * Simple example to give a place to start for Julia's Postprocessing of German LAP data. 
-	 * 
-	 * 1. It shows how MST parser can be called 
-	 * 2. It briefly shows how LAP results can be accessed (e.g. lemma, dependency node, etc) 
-	 * 3. It outlines success condition of "postprocessing" as two methods. 
-	 * 
-	 *  You would need to read the following two, after breifly studied this example for more detail:  
-	 * 
-	 * - Specification UIMA section (section 3, and section 6) 
-	 * - cas_access_example, at 
-	 *        https://github.com/gilnoh/cas_access_example.git
-	 *   (CASAccessExample1 and 2 would be suffice) 
-	 * 
-	 *  Best, 
-	 *  Gil 
-	 * 
+	 * generates a CAS Object annotated by the MSTParser, and tests the post-preprocessing methods with some German text.
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -130,28 +126,16 @@ public class MSTParseAccess {
 			System.out.println("\t "+ dTypeStr + " --> " + governerTokenStr); 
 			
 		}
-		
-		// Okay. The printing is done. Check the printout for both examples. 
-		// Those are the two problems. 
-		
-		// So the task is, writing the two following methods. 
-		
-		// Task 2: (must come before correction of separable verb lemmas)
-		// the following method will disambiguate any lemma "something-1|something-2"
-		// into the most frequent lemma. e.g "gestatten|statten" -> "gestatten" --- (hopefully gestatten is more frequent ..? )  
+		//post processing
 		correctAmbiguousLemma(aJCas); 
-		
-		// Task 1: write the following method that will puts back "full lemma" (e.g. aussehen, instead of sehen) 
 		correctSeparableVerbLemma(aJCas);
-				
-		
 	}
 
 	/**
-	 * This method will iterate over annotations in the JCas (the default view only), 
-	 * and will correct all separable verb lemmas (wrongly) annotated by TreeTagger, 
-	 * by using dependency tree to fetch the prefix of the verb. 
-	 * @param aJCas
+	 * This method iterates over annotations in the CAS, 
+	 * and corrects all separable verb lemmas (wrongly) annotated by TreeTagger, 
+	 * by using dependency tree to fetch the prefix of the verb, get its lemma, and add it to the verb lemma.
+	 * @param aJCas CAS where lemmas need to be corrected
 	 */
 	public static void correctSeparableVerbLemma(JCas aJCas)
 	{
@@ -166,35 +150,80 @@ public class MSTParseAccess {
 				d.getGovernor().getLemma().setValue(t.getLemma().getValue().toString()+d.getGovernor().getLemma().getValue().toString()); 
 			}
 		}
-		
-		
 	}
 	
 	/**
-	 * This method will iterate over the lemmas, and fix ambiguous lemma, if any.  
-	 * Disambiguation by choosing the first of all lemmas for each word.
-	 * @param aJCas
+	 * This method iterates over the lemmas, and fixes ambiguous lemma, if any.  
+	 * Disambiguation is performed by choosing the most frequent one (looked up in sdewac)
+	 * @param aJCas CAS where lemmas need to be corrected
 	 */
 	public static void correctAmbiguousLemma(JCas aJCas)
 	{
 		AnnotationIndex<Annotation> tokenIndex = aJCas.getAnnotationIndex(Token.type);
 		Iterator<Annotation> tokenItr = tokenIndex.iterator(); 
+		HashMap <String,Integer> lemmaFreq = getLemmaFreq();
 		
 		while (tokenItr.hasNext()) {
 			Token t = (Token) tokenItr.next(); 
-			if (t.getLemma().getValue().contains("|")){
-				t.getLemma().setValue(t.getLemma().getValue().split(new String("\\|"))[0]);
+			String tokenLemma = t.getLemma().getValue();
+			String posType = t.getPos().getType().toString();
+			//correct only content word lemmas
+			if (tokenLemma.contains("|") && (posType.contains("V") || posType.contains("N") || posType.contains("ADJ"))){
+				String[] lemmas = tokenLemma.split(new String("\\|"));
+				//get frequencies from sdewac
+				int max = 0;
+				//if lemmas not found in sdewac, simply chose the first one
+				String mostFreqLemma = lemmas[0];
+				for (String lemma : lemmas){
+					if (lemmaFreq.get(lemma) != null && lemmaFreq.get(lemma)>=max){
+						max = lemmaFreq.get(lemma);
+						mostFreqLemma = lemma;
+					}
+				}
+				t.getLemma().setValue(mostFreqLemma);	
+				}
 			}
-		}
 	}
 	
+	/**
+	 * Creates a hashmap with lemmas and their frequencies from a corpus file
+	 */
+	private static HashMap<String,Integer> getLemmaFreq() {
+			HashMap<String,Integer> lemmaFreq = new HashMap<String,Integer>();
+		    File file = new File("/home/julia/Dokumente/HiWi/excitement/derivbase/sdewac-lemmas/data/sdewac-mstparsed/sdewac-mstparsed-lemmas.txt");
+		    FileReader freader = null;
+			try {
+				freader = new FileReader(file);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+		    BufferedReader reader = new BufferedReader(freader);
+		    while(true){
+		    	String line = null;
+				try {
+					line = reader.readLine();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		        if(line != null){
+		        	lemmaFreq.put(line.split(new String(" "))[0], Integer.parseInt(line.split(new String(" "))[2]));
+			    }
+		        else break;
+			}
+		return lemmaFreq;
+	}
+
+	/**
+	 * Generates a new CAS from dummy AE
+	 * @return a newly generated CAS
+	 * @throws Exception
+	 */
 	private static JCas generateNewJCas() throws Exception 
 	{
 		InputStream s = MSTParseAccess.class.getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
 		XMLInputSource in = new XMLInputSource(s, null); 
 		ResourceSpecifier specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);		
 		AnalysisEngine ae = UIMAFramework.produceAnalysisEngine(specifier); 
-
 		// Now we have the AE. we can use it to generate CAS
 		JCas jcas = ae.newJCas(); // this is the command to get a JCas. 		
 		return jcas;
