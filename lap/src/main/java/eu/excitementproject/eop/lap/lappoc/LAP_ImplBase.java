@@ -74,22 +74,7 @@ public abstract class LAP_ImplBase implements LAPAccess {
 
 	public LAP_ImplBase() throws LAPException {
 		// setting up the AE for type system 
-		// note that you need at least one AE to get a JCAS. (valina UIMA) 
-		try {
-			InputStream s = this.getClass().getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
-			XMLInputSource in = new XMLInputSource(s, null); 
-			ResourceSpecifier specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);		
-			AnalysisEngine ae = UIMAFramework.produceAnalysisEngine(specifier); 
-			this.typeAE = ae; 
-		} 
-		catch (InvalidXMLException e)
-		{
-			throw new LAPException("AE descriptor is not a valid XML", e);			
-		}
-		catch (ResourceInitializationException e)
-		{
-			throw new LAPException("Unable to initialize the AE", e); 
-		}		
+		this.typeAE = buildEmptyAE();	
 	}
 
 	@Override
@@ -341,6 +326,27 @@ public abstract class LAP_ImplBase implements LAPAccess {
 		m.addToIndexes(); 
 	}
 		
+	/**
+	 * Builds an empty, that could later be used for building an empty JCas.
+	 * Note that you need at least one AE to get a JCAS. (vanilla UIMA) 
+	 */
+	public static AnalysisEngine buildEmptyAE() throws LAPException {
+		try {
+			InputStream s = LAP_ImplBase.class.getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
+			XMLInputSource in = new XMLInputSource(s, null); 
+			ResourceSpecifier specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);		
+			return UIMAFramework.produceAnalysisEngine(specifier); 
+		} 
+		catch (InvalidXMLException e)
+		{
+			throw new LAPException("AE descriptor is not a valid XML", e);			
+		}
+		catch (ResourceInitializationException e)
+		{
+			throw new LAPException("Unable to initialize the AE", e); 
+		}		
+	}
+	
 	/**
 	 * Analysis engine that holds the type system. Note that even if you 
 	 * don't call AE, (or not using any AE), you need this. AE provides .newJCas() 
