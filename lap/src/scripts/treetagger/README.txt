@@ -1,5 +1,5 @@
 
-* About using the TreeTagger 
+* About using the TreeTagger
 
 - There are several Linguistic annotation pipelines (LAPs) that runs 
   TreeTagger to get annotations. However, due to the license
@@ -9,12 +9,14 @@ To use TreeTagger binaries and models, each user should do the
 following.  
 
   1) Read and agree on the TreeTagger license. 
-  2) Download and install TreeTagger binariy and models. 
+  2) Download and install TreeTagger binary and models. 
 
 This README file explains how this can be done easily for the end
 users. 
 
-=== 
+---
+---
+---
 
 * Installation steps 
 
@@ -25,7 +27,8 @@ it in a specific way.
 
 0) Prerequisite: You need "Ant" make tool. If it is not installed in
 your system (try > "ant" in your command line), you can get it from
-Ant homepage. (http://ant.apache.org/)   
+Ant homepage (http://ant.apache.org/). You need ant version 1.8.0 or
+later.
 
 1) Move to the directory /lap/src/scripts/treetagger/
 It has a README (this document) and an Ant build script
@@ -44,7 +47,7 @@ and models.
 The pom file already have the dependency written, but as a commented
 section. Find; 
 
-<!-- Tree tagger related dependencies --> 
+  <!-- TreeTagger related dependencies -->
 
 ; and uncomment the affected artifacts. They are four maven
 artifacts. Tree tagger binary itself, German, English and Italian
@@ -74,16 +77,16 @@ models. It would look like the followings
 
 4) Check that TreeTagger is actually working
 Once you installed the artifacts and added the dependency in POM, it
-is not time to test. Open up Eclipse (or any tool), and run the unit
+is now time to test: open up Eclipse (or any tool), and run the unit
 test class of "TreeTaggerEnTest". (In LAP module, src/test/java,
-package eu.excitementproject.eop.lap.).  
+package eu.excitementproject.eop.lap.dkpro).  
 
 Make sure that the class is not "skipped", but finishing Okay. The
 test code is designed to skip the test, if tree tagger binaries/models
 are not found, and generated an exception. If it shows actual
 processing: now TreeTagger is installed and working correctly. 
 
-=== 
+---
 
 * If an MD5 checksum error stops building of Ant Script 
 
@@ -100,3 +103,11 @@ in the website shows.
 2) notify the responsible person and get an updated version: contact
 noh@cl.uni-heidelberg.de (Tae-Gil Noh) for an updated ant script. 
 
+---
+---
+---
+
+#1 TreeTagger homepage 
+http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/
+#2 DKPro homepage 
+http://code.google.com/p/dkpro-core-asl/
