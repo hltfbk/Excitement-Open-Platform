@@ -37,8 +37,9 @@ public class MSTParseAccess {
 	/**
 	 * generates a CAS Object annotated by the MSTParser, and tests the post-preprocessing methods with some German text.
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 	
 		LAPAccess lap = null; 
 		try {
@@ -156,8 +157,9 @@ public class MSTParseAccess {
 	 * This method iterates over the lemmas, and fixes ambiguous lemma, if any.  
 	 * Disambiguation is performed by choosing the most frequent one (looked up in sdewac)
 	 * @param aJCas CAS where lemmas need to be corrected
+	 * @throws IOException 
 	 */
-	public static void correctAmbiguousLemma(JCas aJCas)
+	public static void correctAmbiguousLemma(JCas aJCas) throws IOException
 	{
 		AnnotationIndex<Annotation> tokenIndex = aJCas.getAnnotationIndex(Token.type);
 		Iterator<Annotation> tokenItr = tokenIndex.iterator(); 
@@ -187,10 +189,11 @@ public class MSTParseAccess {
 	
 	/**
 	 * Creates a hashmap with lemmas and their frequencies from a corpus file
+	 * @throws IOException 
 	 */
-	private static HashMap<String,Integer> getLemmaFreq() {
+	private static HashMap<String,Integer> getLemmaFreq() throws IOException {
 			HashMap<String,Integer> lemmaFreq = new HashMap<String,Integer>();
-		    File file = new File("/home/julia/Dokumente/HiWi/excitement/derivbase/sdewac-lemmas/data/sdewac-mstparsed/sdewac-mstparsed-lemmas.txt");
+		    File file = new File("src/main/resources/german_sdewac_frequencies/sdewac-mstparsed-lemmas.txt");
 		    FileReader freader = null;
 			try {
 				freader = new FileReader(file);
@@ -210,6 +213,7 @@ public class MSTParseAccess {
 			    }
 		        else break;
 			}
+		    reader.close();
 		return lemmaFreq;
 	}
 
