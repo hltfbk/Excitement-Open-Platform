@@ -39,14 +39,13 @@ import java.util.HashSet;
  * if the resource format contains scores (1.) or not (2.). 
  * 
  * Each lemma is considered as entailing as well as being entailed by its corresponding 
- * derivations. 
+ * derivations. The user can restrict this generalization by setting a maximum amount
+ * of derivation steps which may be conducted to derive one lemma from another; for
+ * details, see the german_resource_test_configuration.xml file.
  * 
  * <P>
  * The implementation supports LexicalResource, but not LexicalResourceWithRelation.
  * 
- * <P> If necessary, a later version of the implementation will additionally offer
- * unspecified POS tags (i.e. "null") 
- *  
  * <P>
  * If DErivBase is not found, the component will raise an exception and will not be 
  * initialized. 
@@ -57,8 +56,6 @@ import java.util.HashSet;
 
 public class DerivBaseResource implements Component, LexicalResource<DerivBaseInfo> {
 
-	/** global confidence score set by configuration or user parameters */
-//	private final double CONFIDENCE; // CONFIDENCE not needed
 
 	/** DerivBase object. */
 	private DerivBase derivbase;
@@ -93,61 +90,47 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	 * @throws ComponentException
 	 */
 	public DerivBaseResource(CommonConfig config) throws ConfigurationException, ComponentException {
-		this(config.getSection("DerivBaseResource").getString("derivBaseFilePath"),  
-				Boolean.parseBoolean(config.getSection("DerivBaseResource").getString("scoreInfo")),
-				config.getSection("DerivBaseResource").getDouble("scoreConfidence"));
+		this(Boolean.parseBoolean(config.getSection("DerivBaseResource").getString("useScores")),
+				config.getSection("DerivBaseResource").getInteger("derivatonSteps"));
 	}
 	
-	/**
-	 * Creates a new DerivBaseResource instance, and initializes the instance
-	 * (basically loads DerivBase file into memory). Since no minimum confidence
-	 * score or score flag are indicated, this constructor assumes a file without
-	 * scores and uses the DEFAULT_CONFIDENCE score of LexicalRule.
-	 * 
-	 * @param derivBaseFilesPath			Path to DerivBase file
-	 * @throws ConfigurationException
-	 * @throws ComponentException
-	 */
-	public DerivBaseResource(String derivBaseFilesPath) throws ConfigurationException, ComponentException {
-		this(derivBaseFilesPath, false, 0.00);
-	}
 	
 	/**
 	 * Creates a new DerivBaseResource instance, and initializes the instance
 	 * (basically loads DerivBase file into memory). Minimum confidence score
 	 * and score flag are indicated and used.
 	 * 
-	 * @param dbasePath		Path to DerivBase file
-	 * @param scoreInfo specifies if the given DerivBase file contains scores for lemma pairs or not
-	 * @param minScore specifies the minimum score value a pair must have to be considered
+	 * @param useScores specifies if confidence scores for each lemma pair should be used 
+	 * @param derivSteps specifies the maximum amount of derivational steps that may be 
+	 *  proceeded between two lemmas to be considered
 	 * @throws ConfigurationException
 	 * @throws ComponentException
-	 */
-	public DerivBaseResource(String dbasePath, boolean scoreInfo, Double minScore) throws ConfigurationException, ComponentException {
+	 */	
+	public DerivBaseResource(boolean useScores, Integer derivSteps) throws ConfigurationException, ComponentException {
+
+		// derivSteps = null is possible if configuration is not filled in completely
+		if (derivSteps == null) {
+			derivSteps = 10;
+		}
+		
+		Double minScore = 1.0/derivSteps; 
+		
 		
 		try {
-			//this.derivbase = new DerivBase(dbasePath, scoreInfo, minScore);
-			this.derivbase = new DerivBase(minScore);
+			this.derivbase = new DerivBase(useScores, minScore);
 		}
 		catch (java.io.FileNotFoundException e) {
 			throw new DerivBaseNotInstalledException("Path to DErivBase is not correct.", e);
 		}
 		catch (java.lang.Exception e) {
-			throw new ComponentException("Cannot initialize DErivBase (path: "
-					+ dbasePath
-					+ "). Please check the path and the format of your DErivBase version. "
-					+ "Should be: \n1) for resource without confidence scores:\n" 
+			throw new ComponentException("Cannot initialize DErivBase"
+					+ ". Please check the path and the format of your DErivBase version. "
+					+ "Should be: \n1) if you do not use confidence scores:\n" 
 					+ "lemma_pos: relatedl1_p1 relatedl2_p2 ..." 
-					+ "\n2) for resource with confidence scores:\n" 
+					+ "\n2) if you use confidence scores:\n" 
 					+ "lemma_pos: relatedl1_p1 score1 relatedl2_ps score2 ...", e);
 		}
-				
-		/*if (minScore == null) {
-			CONFIDENCE = 0.0;
-		}
-		else {
-			CONFIDENCE = minScore; 
-		}*/
+	
 	}
 	
 	
@@ -292,9 +275,11 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 						derivFamily.add(relatedMember.getA().concat("_".concat(relatedMember.getB())));
 					}
 				}
+				// prepare saving the resource-internal confidence score
+				Double internalScore = (relatedConfScore-0.5)/0.5;
 				
 			    LexicalRule<? extends DerivBaseInfo> rule = new LexicalRule<DerivBaseInfo>(lemma, pos, 
-						relatedLemma, relatedPos, relatedConfScore, "deriv-related", "DErivBase v1.3", new DerivBaseInfo(derivFamily));
+						relatedLemma, relatedPos, relatedConfScore, "deriv-related", "DErivBase v1.3", new DerivBaseInfo(derivFamily, internalScore));
 				
 				result.add(rule);	
 			}
@@ -345,7 +330,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 			Set<String> derivFamily = new HashSet<String>();
 			for (Tuple<String> relatedMember : related) {
 				derivFamily.add(relatedMember.getA().concat("_").concat(relatedMember.getB()));
-			}
+			}			
 			LexicalRule<? extends DerivBaseInfo> rule = new LexicalRule<DerivBaseInfo>(lemma, pos, 
 					relatedLemma, relatedPos, "deriv-related", "DErivBase v1.3", new DerivBaseInfo(derivFamily));
 			

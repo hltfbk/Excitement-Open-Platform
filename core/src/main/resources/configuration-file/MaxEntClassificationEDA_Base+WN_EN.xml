@@ -22,7 +22,6 @@
 	</section>
 	
 	<section name="WordnetLexicalResource">
-			<property name="wordNetFilesPath">./src/main/resources/ontologies/EnglishWordNet-dict/</property>
 			<property name="isCollapsed">true</property>
 			<property name="useFirstSenseOnlyLeft">false</property>
 			<property name="useFirstSenseOnlyRight">false</property>

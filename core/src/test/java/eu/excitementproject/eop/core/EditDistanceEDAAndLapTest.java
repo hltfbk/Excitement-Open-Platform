@@ -4,27 +4,25 @@
 	import static org.junit.Assert.assertTrue;
 
 	import java.io.File;
-	import java.util.logging.Logger;
+import java.util.logging.Logger;
 
 	import org.apache.uima.jcas.JCas;
-	import org.junit.Test;
-	import org.junit.Ignore; 
+import org.junit.Test;
+import org.junit.Ignore; 
 
 	import eu.excitementproject.eop.common.configuration.CommonConfig;
-	import eu.excitementproject.eop.lap.LAPAccess;
-	import eu.excitementproject.eop.lap.LAPException;
-	import eu.excitementproject.eop.lap.PlatformCASProber;
-	import eu.excitementproject.eop.lap.textpro.*;
+import eu.excitementproject.eop.lap.LAPAccess;
+import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.PlatformCASProber;
+import eu.excitementproject.eop.lap.textpro.*;
 	//import eu.excitementproject.eop.lap.dkpro.*;
-	import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 
 	/**
-	 * 
+	 * Tests both EditDistance and LAP
 	 */
 	public class EditDistanceEDAAndLapTest {
 		
-		static Logger logger = Logger.getLogger(EditDistanceEDAAndLapTest.class
-				.getName());
+		static Logger logger = Logger.getLogger(EditDistanceEDAAndLapTest.class.getName());
 		
 		@Ignore
 		@Test
@@ -35,14 +33,13 @@
 			// on MaxEntClassificationEDA --Gil 
 					
 			
-			testLAP_IT(); 
+			//testLAP_IT(); 
 			//testTraining_IT(); 
 			//testTesting_SingleTH_IT(); 
 			
 		}
 		
-		@Ignore
-		@Test 
+		
 		public void testLAP_IT() {
 			
 			File inputFile = null;
@@ -96,8 +93,7 @@
 			}
 		}
 		
-		@Ignore
-		@Test
+		
 		public void testTraining_IT() {
 			File trainingDir = null;
 			trainingDir = new File("./target/IT/dev/");
@@ -110,7 +106,6 @@
 			CommonConfig config = null;
 
 			try {
-				ed.setTrain(true);
 				ed.initialize(config);
 				File modelFile = new File(ed.getModelFile());
 				//assertTrue(!modelFile.exists());
@@ -124,8 +119,7 @@
 		}
 		
 		
-		@Ignore
-		@Test
+		
 		public void testTesting_SingleTH_IT() {
 			
 			@SuppressWarnings("rawtypes")
@@ -137,7 +131,6 @@
 			//LAPAccess lap = null;
 			
 			try {
-				ed.setTrain(false);
 				ed.initialize(config);
 				File modelFile = new File(ed.getModelFile());
 				assertTrue(modelFile.exists());
@@ -154,7 +147,7 @@
 						continue;
 					}
 					JCas cas = PlatformCASProber.probeXmi(xmi, System.out);
-					IEditDistanceTEDecision teDecision1 = ed.process(cas);
+					EditDistanceTEDecision teDecision1 = ed.process(cas);
 					// System.err.println(teDecision1.getDecision().toString()) ;
 					System.err.println(teDecision1.getDecision().toString());
 					
