@@ -10,7 +10,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    
-	    <property name="instances">token_basic</property>
+	    <property name="instances">token</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -19,7 +19,7 @@
 			<property name="substitute">1.0</property>
 		</subsection>
 		
-		<subsection name="token_basic">
+		<subsection name="token">
 			<property name="stopWordRemoval">true</property>
 		</subsection>
 		
@@ -32,7 +32,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
 	    
-	    <property name="instances">lemma_basic</property>
+	    <property name="instances">lemma</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -41,7 +41,7 @@
 			<property name="substitute">1.0</property>
 		</subsection>
 		
-		<subsection name="lemma_basic">
+		<subsection name="lemma">
 			<property name="stopWordRemoval">true</property>
 		</subsection>
 		
