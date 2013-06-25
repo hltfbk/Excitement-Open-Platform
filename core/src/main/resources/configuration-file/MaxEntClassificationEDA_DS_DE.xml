@@ -12,13 +12,11 @@
 	</section>
 	
 	<section name="BagOfLexesScoring">
-		<property name="withPOS">0</property>
+		<property name="withPOS">false</property>
 		<property name="GermanDistSim"></property>
 	</section>
 	
 	<section name="GermanDistSim">
-	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
-	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
 	</section> 
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">

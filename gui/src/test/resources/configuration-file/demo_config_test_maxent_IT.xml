@@ -5,13 +5,14 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">IT</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.textpro.TextProTaggerIT</property>
 	</section>
 	
 	<section name="BagOfWordsScoring">
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-	    <property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_AllLexRes_IT_1</property>
+	    <property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_AllLexRes_IT_X</property>
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 		<property name="Components">BagOfWordsScoring</property>

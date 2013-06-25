@@ -163,7 +163,7 @@ public class MaxEntClassificationEDA implements
 	public final void initialize(CommonConfig config)
 			throws ConfigurationException, EDAException, ComponentException {
 		// initialize the language
-		initializeLanguage(config);
+		initializeEDA(config);
 
 		// initialize the model
 		initializeModel(config, false);
@@ -182,9 +182,15 @@ public class MaxEntClassificationEDA implements
 	 *            the configuration
 	 * @throws ConfigurationException
 	 */
-	private void initializeLanguage(CommonConfig config)
+	private void initializeEDA(CommonConfig config)
 			throws ConfigurationException {
 		NameValueTable top = config.getSection("PlatformConfiguration");
+		if (null == top
+				|| !top.getString("activatedEDA").equals(
+						this.getClass().getName())) {
+			throw new ConfigurationException(
+					"Please specify the (correct) EDA.");
+		}
 		language = top.getString("language");
 		if (null == language) {
 			// default language would be EN
@@ -202,8 +208,13 @@ public class MaxEntClassificationEDA implements
 	 */
 	private void initializeComponents(CommonConfig config)
 			throws ConfigurationException, ComponentException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
-				.getName());
+		NameValueTable EDA = null;
+		try {
+			EDA = config.getSection(this.getClass().getName());
+		} catch (ConfigurationException e) {
+			throw new ConfigurationException(e.getMessage()
+					+ " No EDA section.");
+		}
 		String tempComps = EDA.getString("Components");
 		if (null == tempComps || 0 == tempComps.trim().length()) {
 			throw new ConfigurationException(
@@ -223,10 +234,11 @@ public class MaxEntClassificationEDA implements
 			}
 			if (component.equals("BagOfLexesScoring")) {
 				if (language.equalsIgnoreCase("DE")) {
-					if (comp.getInteger("withPOS") == 1) {
-						initializeLexCompsDE(config, true);
-					} else {
+					if (null == comp.getString("withPOS")
+							|| !Boolean.parseBoolean(comp.getString("withPOS"))) {
 						initializeLexCompsDE(config, false);
+					} else {
+						initializeLexCompsDE(config, true);
 					}
 				} else {
 					initializeLexCompsEN(config);
@@ -305,8 +317,13 @@ public class MaxEntClassificationEDA implements
 	 */
 	private void initializeModel(CommonConfig config, boolean isTrain)
 			throws ConfigurationException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
-				.getName());
+		NameValueTable EDA = null;
+		try {
+			EDA = config.getSection(this.getClass().getName());
+		} catch (ConfigurationException e) {
+			throw new ConfigurationException(e.getMessage()
+					+ " No EDA section.");
+		}
 		modelFile = EDA.getString("modelFile");
 		if (isTrain) {
 			File file = new File(modelFile);
@@ -319,6 +336,12 @@ public class MaxEntClassificationEDA implements
 			}
 		} else {
 			try {
+				File file = new File(modelFile);
+				if (!file.exists()) {
+					throw new ConfigurationException("The model specified in the configuration does NOT exist! Please give the correct file path.");
+				} else {
+					logger.info("Reading model from " + file.getAbsolutePath());
+				}
 				model = new GenericModelReader(new File(modelFile)).getModel();
 			} catch (IOException e) {
 				throw new ConfigurationException(e.getMessage());
@@ -337,8 +360,13 @@ public class MaxEntClassificationEDA implements
 	 */
 	public final void initializeData(CommonConfig config, boolean isTrain)
 			throws ConfigurationException {
-		NameValueTable EDA = config.getSection(MaxEntClassificationEDA.class
-				.getName());
+		NameValueTable EDA = null;
+		try {
+			EDA = config.getSection(this.getClass().getName());
+		} catch (ConfigurationException e) {
+			throw new ConfigurationException(e.getMessage()
+					+ " No EDA section.");
+		}
 		trainDIR = EDA.getString("trainDir");
 		if (null == trainDIR) {
 			if (isTrain) {
@@ -427,7 +455,7 @@ public class MaxEntClassificationEDA implements
 	public final void startTraining(CommonConfig c)
 			throws ConfigurationException, EDAException, ComponentException {
 		// initialize the language
-		initializeLanguage(c);
+		initializeEDA(c);
 
 		// initialize the model
 		initializeModel(c, true);
@@ -443,10 +471,9 @@ public class MaxEntClassificationEDA implements
 		// commented out, use the default value
 		// final double SMOOTHING_OBSERVATION = 0.1;
 
-		String classifier = c.getSection(
-				MaxEntClassificationEDA.class.getName())
+		String classifier = c.getSection(this.getClass().getName())
 				.getString("classifier");
-		int max_iteration = 100; // default value
+		int max_iteration = 10000; // default value
 		int cut_off = 1; // default value
 		if (null != classifier && classifier.split(",").length == 2) {
 			max_iteration = Integer.parseInt(classifier.split(",")[0]);

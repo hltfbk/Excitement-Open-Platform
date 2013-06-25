@@ -147,14 +147,15 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	/**
 	 * Creates a new GermaNetWrapper instance, and initializes the instance
 	 * (basically loads GermaNet files into memory).
-	 * Sets the default value 1.0 as confidence value for all relations.
+	 * Sets the default value of LexicalRule (0.5) as confidence value for all relations.
 	 * 
 	 * @param germaNetFilesPath			Path to GermaNet XML files
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
 	public GermaNetWrapper(String germaNetFilesPath) throws ConfigurationException, ComponentException {
-		this(germaNetFilesPath, 1.0, 1.0, 1.0, 1.0, 1.0); //, 1.0);
+		this(germaNetFilesPath, LexicalRule.DEFAULT_CONFIDENCE, LexicalRule.DEFAULT_CONFIDENCE, 
+				LexicalRule.DEFAULT_CONFIDENCE, LexicalRule.DEFAULT_CONFIDENCE, LexicalRule.DEFAULT_CONFIDENCE);
 	}
 	
 	/**
@@ -190,23 +191,23 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		// the Double values can be null, if they are from CommonConfig XML files. 
 		// we treat null as 0 values (meaning = ignore, not returning this relation). - Gil 
 		if (causesConfidence == null)
-			CONFIDENCES.put(ConRel.causes, 0.0);
+			CONFIDENCES.put(ConRel.causes, LexicalRule.DEFAULT_CONFIDENCE);
 		else
 			CONFIDENCES.put(ConRel.causes, causesConfidence);
 		if (entailsConfidence == null)
-			CONFIDENCES.put(ConRel.entails, 0.0);
+			CONFIDENCES.put(ConRel.entails, LexicalRule.DEFAULT_CONFIDENCE);
 		else
 			CONFIDENCES.put(ConRel.entails, entailsConfidence);
 		if (hypernymConfidence == null)
-			CONFIDENCES.put(ConRel.has_hypernym, 0.0);
+			CONFIDENCES.put(ConRel.has_hypernym, LexicalRule.DEFAULT_CONFIDENCE);
 		else
 			CONFIDENCES.put(ConRel.has_hypernym, hypernymConfidence);
 		if (hyponymConfidence == null)
-			CONFIDENCES.put(ConRel.has_hyponym, 0.0);
+			CONFIDENCES.put(ConRel.has_hyponym, LexicalRule.DEFAULT_CONFIDENCE);
 		else
 			CONFIDENCES.put(ConRel.has_hyponym, synonymConfidence);
 		if (synonymConfidence == null)
-			CONFIDENCES.put(LexRel.has_synonym, 0.0);
+			CONFIDENCES.put(LexRel.has_synonym, LexicalRule.DEFAULT_CONFIDENCE);
 		else
 			CONFIDENCES.put(LexRel.has_synonym, synonymConfidence);
 		
