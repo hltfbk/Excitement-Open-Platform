@@ -218,7 +218,7 @@ public class MSTParseAccess {
 	 * @return a newly generated CAS
 	 * @throws Exception
 	 */
-	private static JCas generateNewJCas() throws Exception 
+	public static JCas generateNewJCas() throws Exception 
 	{
 		InputStream s = MSTParseAccess.class.getResourceAsStream("/desc/DummyAE.xml"); // This AE does nothing, but holding all types.
 		XMLInputSource in = new XMLInputSource(s, null); 
