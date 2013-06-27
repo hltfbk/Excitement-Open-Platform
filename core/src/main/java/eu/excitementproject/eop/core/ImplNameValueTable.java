@@ -13,14 +13,18 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
  * @author Roberto Zanoli
  *
 */
-
-
 public class ImplNameValueTable extends NameValueTable {
 	
-	//this table contains key, value pairs
+	/*
+	* this table contains key, value pairs
+	*/
 	private HashMap<String, String> table = null;
 	
 	
+	/**
+	 * The constructor
+	 *
+	*/
 	public ImplNameValueTable() {
 		
 		this.table = new HashMap<String, String>();
@@ -28,6 +32,7 @@ public class ImplNameValueTable extends NameValueTable {
 	}
 	
 	
+	@Override
 	public String getString(String name) throws ConfigurationException {
 		
 		String result = null;
@@ -45,6 +50,7 @@ public class ImplNameValueTable extends NameValueTable {
 	}
 	
 	
+	@Override
 	public Integer getInteger(String name) throws ConfigurationException {
 		
 		Integer result = null;
@@ -62,6 +68,7 @@ public class ImplNameValueTable extends NameValueTable {
 	}
 	
 	
+	@Override
 	public Double getDouble(String name) throws ConfigurationException {
 		
 		Double result = null;
@@ -79,6 +86,7 @@ public class ImplNameValueTable extends NameValueTable {
 	}
 	
 	
+	@Override
 	public File getFile(String name) throws ConfigurationException {
 		
 		File result = null;
@@ -96,6 +104,7 @@ public class ImplNameValueTable extends NameValueTable {
 	}
 	
 	
+	@Override
 	public File getDirectory(String name) throws ConfigurationException {
 		
 		File result = null;
@@ -113,6 +122,7 @@ public class ImplNameValueTable extends NameValueTable {
 	}
 	
 	
+	@Override
 	public void setString(String name, String value) {
 		
 		this.table.put(name, value);

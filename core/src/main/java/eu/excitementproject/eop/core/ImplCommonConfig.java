@@ -27,7 +27,7 @@ public class ImplCommonConfig extends CommonConfig
 	
 	/**
 	 * Load a common configuration from XML configuration file 
-	 * @param f
+	 * @param f the configuration file
 	 */
 	public ImplCommonConfig(File f) throws ConfigurationException
 	{
@@ -50,8 +50,8 @@ public class ImplCommonConfig extends CommonConfig
 	/**
 	 * This method returns the name-value table that is associated with the componentName. If there is no such 
 	 * section, the method will raise an exception.
-	 * @param componentName
-	 * @return
+	 * @param componentName the component name
+	 * @return NameValueTable the table
 	 * @throws ConfigurationException
 	 */
 	public NameValueTable getSection(String componentName) throws ConfigurationException {
@@ -122,9 +122,9 @@ public class ImplCommonConfig extends CommonConfig
 		
 	
 	/**This method returns the name-value table that is associated with the componentName and instanceName.
-	 * @param componentName
-	 * @param instanceName
-	 * @return
+	 * @param componentName the component name
+	 * @param instanceName the instance name
+	 * @return NameValueTable the table
 	 * @throws ConfigurationException
 	 */
 	public NameValueTable getSubSection(String componentName, String instanceName) throws ConfigurationException {
@@ -216,7 +216,7 @@ that will prevent overwriting existing XML configurations (ie. only permitting g
 files, etc).
 Note that saveConfiguration() method is provided mainly for user level or transduction layer level
 access. The methods are not expected to be called from a entailment core component.
-	 * @param f
+	 * @param f the configuration file
 	 * @throws ConfigurationException
 	 */
 	public void saveConfiguration(File f) throws ConfigurationException {
@@ -240,7 +240,7 @@ a file and never saved before.
 	
 	/*
 	 * parse the xml configuration file
-	 * @param f
+	 * @param f the configuration file
 	 * @throws ConfigurationException
 	 */
 	private Document parse(File file) throws ConfigurationException {

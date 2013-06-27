@@ -2,7 +2,13 @@ package eu.excitementproject.eop.lap.dkpro;
 
 import static org.junit.Assert.*;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
+import org.junit.Assume;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.lap.LAPAccess;
@@ -11,9 +17,16 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 
 public class TreeTaggerITTest {
 
+	@Ignore
 	@Test
 	public void test() {
 	
+	// Set Log4J for the test 
+	BasicConfigurator.resetConfiguration(); 
+	BasicConfigurator.configure(); 
+	Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
+	Logger testlogger = Logger.getLogger("eu.excitementproject.eop.lap.dkpro.TreeTaggerITTest"); 
+
 	// Generating a Single CAS 
 	LAPAccess lap = null; 
 	JCas aJCas = null; 
@@ -39,6 +52,16 @@ public class TreeTaggerITTest {
 	}
 	catch(LAPException e)
 	{
+		// check if this is due to missing TreeTagger binary and model. 
+		// In such a case, we just skip this test. 
+		// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
+		if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
+		{
+			testlogger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
+			Assume.assumeTrue(false); // we won't test this test case any longer. 
+		}
+		
+		// if this is some other exception, the test will fail  
 		fail(e.getMessage()); 
 	}
 
