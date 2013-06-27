@@ -134,18 +134,19 @@ public class FixedWeightLemmaEditDistance implements DistanceCalculation {
         
         try {
         
-	        //to get the platform language value
+	        //get the platform language value
 	        NameValueTable platformNameValueTable = config.getSection("PlatformConfiguration");
-	        //to get the selected component instance
+	        //get the selected component instance
 	    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
 	    	instance = componentNameValueTable.getString("instances");
-	    	//to get the parameters from the selected instance
+	    	//get the parameters from the selected instance
 	    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
     	
     		String language = platformNameValueTable.getString("language");
     		logger.info("language:" + language);
     		String multiWordnet = instanceNameValueTable.getString("path");
     		
+    		//initialise WordNet
     		if (language.equals("IT") && multiWordnet != null && !multiWordnet.equals("")) {
 	    		try {
 	    			initializeItalianWordnet(multiWordnet);
@@ -301,7 +302,13 @@ public class FixedWeightLemmaEditDistance implements DistanceCalculation {
     			curr.getPos().getTypeIndexID() != CONJ.typeIndexID &&
     			curr.getPos().getTypeIndexID() != CARD.typeIndexID &&
     			curr.getPos().getTypeIndexID() != O.typeIndexID &&
-    			curr.getPos().getTypeIndexID() != POS.typeIndexID) {
+    			curr.getPos().getTypeIndexID() != POS.typeIndexID &&
+    			!curr.getLemma().getValue().equals("have") && 
+    			!curr.getLemma().getValue().equals("be") &&
+    			!curr.getLemma().getValue().equals("avere") && 
+    			!curr.getLemma().getValue().equals("essere") &&
+    			!curr.getLemma().getValue().equals("haben") && 
+    			!curr.getLemma().getValue().equals("sein")) {
     				tokensList.add(curr);
     			}
     		}
@@ -424,15 +431,7 @@ public class FixedWeightLemmaEditDistance implements DistanceCalculation {
                 			source.get(i-1).getLemma().getValue().equals(target.get(j-1).getLemma().getValue()) || (
                                        
                 					// it doesn't use the PoS to look for the relations in the lexical resource
-                					
-                					lexR != null && !source.get(i-1).getLemma().getValue().equals("essere") && 
-                					!target.get(j-1).getLemma().getValue().equals("essere") && 
-                					!source.get(i-1).getLemma().getValue().equals("avere") && 
-                					!target.get(j-1).getLemma().getValue().equals("avere") && 
-                					!source.get(i-1).getLemma().getValue().equals("be") && 
-                					!target.get(j-1).getLemma().getValue().equals("be") && 
-                					!source.get(i-1).getLemma().getValue().equals("have") && 
-                					!target.get(j-1).getLemma().getValue().equals("have") && 
+                					lexR != null && 
                 					source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && 
                 					getRulesFromWordnet(source.get(i-1).getLemma().getValue(), null,
                                    	target.get(j-1).getLemma().getValue(), null))
@@ -440,14 +439,7 @@ public class FixedWeightLemmaEditDistance implements DistanceCalculation {
 
                                     // it uses the PoS to look for the relations in the lexical resource
                                    	/*
-                					lexR != null && !source.get(i-1).getLemma().getValue().equals("essere") && 
-                						!target.get(j-1).getLemma().getValue().equals("essere") &&
-                						!source.get(i-1).getLemma().getValue().equals("avere") && 
-                						!target.get(j-1).getLemma().getValue().equals("avere") && 
-                						!source.get(i-1).getLemma().getValue().equals("be") && 
-                						!target.get(j-1).getLemma().getValue().equals("be") && 
-                						!source.get(i-1).getLemma().getValue().equals("have") && 
-                						!target.get(j-1).getLemma().getValue().equals("have") && 
+                					lexR != null && 
                 						source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && 
                 						getRulesFromWordnet(source.get(i-1).getLemma().getValue(), new ByCanonicalPartOfSpeech(source.get(i-1).getPos().getType().getShortName()),
                 							target.get(j-1).getLemma().getValue(), new ByCanonicalPartOfSpeech(target.get(j-1).getPos().getType().getShortName())))
