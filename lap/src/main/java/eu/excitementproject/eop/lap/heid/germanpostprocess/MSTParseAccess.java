@@ -147,7 +147,7 @@ public class MSTParseAccess {
 			Token t = (Token) tokenItr.next(); 
 			List<Dependency> dl = JCasUtil.selectCovered(aJCas, Dependency.class , t.getBegin(), t.getEnd());  
 			Dependency d = dl.get(0); 
-			if (t.getPos().getPosValue().equals("PTKVZ") && d.getGovernor().getPos().getPosValue().equals("VVFIN") && d.getDependencyType().equals("SVP"))   {
+			if (t.getPos().getPosValue().equals("PTKVZ") && d.getGovernor().getPos().getType().toString().contains("V") && d.getDependencyType().equals("SVP"))   {
 				d.getGovernor().getLemma().setValue(t.getLemma().getValue().toString()+d.getGovernor().getLemma().getValue().toString()); 
 			}
 		}
