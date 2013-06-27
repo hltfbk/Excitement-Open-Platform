@@ -208,7 +208,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			}
 			//setting the model file
 			if (modelFile == null)
-				modelFile = nameValueTable.getString("modelFile") + "_" + component.getInstanceName();
+				modelFile = nameValueTable.getString("modelFile") + "_" + component.getComponentName() + "_" + component.getInstanceName();
 			logger.info("model file name: " + modelFile);
 			
 		} catch (ConfigurationException e) {
