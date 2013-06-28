@@ -10,7 +10,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	
-	    <property name="instances">basic</property>
+	    <property name="instances">wordnet</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
