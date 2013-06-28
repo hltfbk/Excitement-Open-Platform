@@ -42,9 +42,9 @@
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+WN+VO+TP+TPPos+TS_EN</property>
-		<property name="trainDir">./target/EN/dev/</property>
-		<property name="testDir">./target/EN/test/</property>
+		<property name="modelFile">eop-resources-0.8.5/model/MaxEntClassificationEDAModel_Base+WN+VO+TP+TPPos+TS_EN</property>
+		<property name="trainDir">/tmp/</property>
+		<property name="testDir">/tmp/</property>
 		<property name="classifier">10000,1</property>
 		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring,BagOfDepsScoring,BagOfDepsPosScoring,TreeSkeletonScoring</property>
 	</section>
