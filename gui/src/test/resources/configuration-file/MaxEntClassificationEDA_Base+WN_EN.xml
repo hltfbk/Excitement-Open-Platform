@@ -9,7 +9,7 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">EN</property>
-		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserEN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerEN</property>
 	</section>
 	
 	<section name="BagOfWordsScoring">
@@ -20,7 +20,6 @@
 	
 	<section name="BagOfLexesScoring">
 			<property name="WordnetLexicalResource">HYPERNYM,SYNONYM,PART_HOLONYM</property>
-			<property name="VerbOceanLexicalResource">StrongerThan,CanResultIn,Similar</property>
 	</section>
 	
 	<section name="WordnetLexicalResource">
@@ -29,25 +28,12 @@
 			<property name="useFirstSenseOnlyRight">false</property>
 	</section>
 	
-	<section name="VerbOceanLexicalResource">
-			<property name="isCollapsed">true</property>
-	</section>
-	
-	<section name="BagOfDepsScoring">
-	</section>
-	
-	<section name="BagOfDepsPosScoring">
-	</section>
-	
-	<section name="TreeSkeletonScoring">
-	</section>
-	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_Base+WN+VO+TP+TPPos+TS_EN</property>
+		<property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_Base+WN_EN</property>
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 		<property name="classifier">10000,1</property>
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring,BagOfDepsScoring,BagOfDepsPosScoring,TreeSkeletonScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
 	</section>
 
 </configuration>
