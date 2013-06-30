@@ -24,6 +24,8 @@
 	
 	<section name="VerbOceanLexicalResource">
 			<property name="isCollapsed">true</property>
+			<!-- Please update the file path to VerbOcean -->
+			<property name="verbOceanFilePath">eop-resources-0.8.5/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
