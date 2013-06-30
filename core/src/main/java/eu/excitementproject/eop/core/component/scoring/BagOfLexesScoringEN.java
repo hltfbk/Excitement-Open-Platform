@@ -119,17 +119,9 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 				}
 			}
 			wnlrSet = new HashSet<WordnetLexicalResource>();
-			File wnFile = null;
-			try {
-				wnFile = new File(this.getClass().getResource(wnPath).getFile());
-			}	catch (NullPointerException e) {
-//				throw new ConfigurationException("wrong path to WordNet: " + wnPath);
-				logger.warning("wrong path to WordNet: " + wnPath + "; use the default.");
-				try {
-					wnFile = new File(this.getClass().getResource("/ontologies/EnglishWordNet-dict/").getFile());
-				} catch (NullPointerException e1) {
-					throw new ConfigurationException("cannot find WordNet: " + e1.getMessage());
-				}
+			File wnFile = new File(wnPath);			
+			if (!wnFile.exists()) {
+				throw new ConfigurationException("cannot find WordNet at: " + wnPath);
 			}
 			if (isCollapsed) {
 				WordnetLexicalResource wnlr = new WordnetLexicalResource(wnFile, useFirstSenseOnlyLeft,
@@ -186,17 +178,9 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 				}
 			}
 			volrSet = new HashSet<VerbOceanLexicalResource>();
-			File voFile = null;
-			try {
-				voFile = new File(this.getClass().getResource(voPath).getFile());
-			}	catch (NullPointerException e) {
-//				throw new ConfigurationException("wrong path to VerbOcean: " + voPath);
-				logger.warning("wrong path to VerbOcean: " + voPath + "; use the default.");
-				try {
-					voFile = new File(this.getClass().getResource("/VerbOcean/verbocean.unrefined.2004-05-20.txt").getFile());
-				} catch (NullPointerException e1) {
-					throw new ConfigurationException("cannot find VerbOcean: " + e1.getMessage());
-				}
+			File voFile = new File(voPath);
+			if (!voFile.exists()) {
+				throw new ConfigurationException("cannot find VerbOcean at: " + voPath);
 			}
 			if (isCollapsed) {
 				VerbOceanLexicalResource volr = new VerbOceanLexicalResource(1,
