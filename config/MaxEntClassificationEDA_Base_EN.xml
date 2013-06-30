@@ -9,6 +9,7 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">EN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerEN</property>
 	</section>
 	
 	<section name="BagOfWordsScoring">
