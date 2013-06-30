@@ -22,6 +22,7 @@ import arkref.data.Document;
 import arkref.data.EntityGraph;
 import arkref.data.Mention;
 import arkref.data.Sentence;
+import arkref.data.Word;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.IntPair;
 import eu.excitementproject.eop.common.utilities.DockedToken;
@@ -256,38 +257,55 @@ public class ArkrefClient
 				
 // TODO: Ofer - finish implementing coref
 				// Build docked output
+				Tree docTree = arkrefDocument.getTree();
+				List<Word> words = arkrefDocument.allWords();
+				//IntPair intpair = words.get(0).node().getSpan();
+				Map<Integer, Integer> leafNumToOrdinal = new HashMap<Integer, Integer>(words.size());
+				List<String> tokens = new ArrayList<String>();
+				int i=0;
+				for (Word word : words) {
+					String token = word.token;
+					if (CONVERSIONS.containsKey(token)) {
+						token = CONVERSIONS.get(token);
+					}
+					tokens.add(token);
+					leafNumToOrdinal.put(word.node().nodeNumber(docTree), i);
+					i++;
+				}
+				SortedMap<Integer, DockedToken> offsets = DockedTokenFinder.find(text, tokens, true, true);
+				
+				
 				arkrefDockedOutput = new HashMap<String, List<DockedMention>>();
 				for (Mention mention : arkrefDocument.mentions()) {
 					Tree node = mention.node();
 					List<Tree> leaves = node.getLeaves();
 					
-					List<String> tokens = new ArrayList<String>(leaves.size());
-					for (Tree leaf : leaves) {
-						String token = leaf.nodeString();
-						if (CONVERSIONS.containsKey(token)) {
-							token = CONVERSIONS.get(token);
-						}
-						tokens.add(token);
+//					List<String> tokens = new ArrayList<String>(leaves.size());
+//					for (Tree leaf : leaves) {
+//						String token = leaf.nodeString();
+//						if (CONVERSIONS.containsKey(token)) {
+//							token = CONVERSIONS.get(token);
+//						}
+//						tokens.add(token);
+//					}
+					int startNodeNum = leaves.get(0).nodeNumber(docTree);
+					int startOffset = offsets.get(leafNumToOrdinal.get(startNodeNum)).getCharOffsetStart();
+					int endNodeNum = leaves.get(leaves.size()-1).nodeNumber(docTree);
+					int endOffset = offsets.get(leafNumToOrdinal.get(endNodeNum)).getCharOffsetEnd();
+					String mentionString = text.substring(startOffset, endOffset);
+					
+					String tag = entityGraph.entName(mention);
+					List<DockedMention> mentionsInGroup = null;
+					if (arkrefDockedOutput.containsKey(tag)) {
+						mentionsInGroup = arkrefDockedOutput.get(tag);
 					}
-					SortedMap<Integer, DockedToken> offsets = DockedTokenFinder.find(text, tokens, true, true);
-					if (!offsets.isEmpty()) {
-						int startOffset = offsets.get(offsets.firstKey()).getCharOffsetStart();
-						int endOffset = offsets.get(offsets.lastKey()).getCharOffsetEnd();
-						String mentionString = text.substring(startOffset, endOffset);
-						
-						String tag = entityGraph.entName(mention);
-						List<DockedMention> mentionsInGroup = null;
-						if (arkrefDockedOutput.containsKey(tag)) {
-							mentionsInGroup = arkrefDockedOutput.get(tag);
-						}
-						else {
-							mentionsInGroup = new ArrayList<DockedMention>();
-							arkrefDockedOutput.put(tag, mentionsInGroup);
-						}
-						
-						DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
-						mentionsInGroup.add(dockedMention);
+					else {
+						mentionsInGroup = new ArrayList<DockedMention>();
+						arkrefDockedOutput.put(tag, mentionsInGroup);
 					}
+					
+					DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
+					mentionsInGroup.add(dockedMention);
 				}
 				// Remove groups with only a single mention
 				Iterator<Entry<String, List<DockedMention>>> iter = arkrefDockedOutput.entrySet().iterator();
