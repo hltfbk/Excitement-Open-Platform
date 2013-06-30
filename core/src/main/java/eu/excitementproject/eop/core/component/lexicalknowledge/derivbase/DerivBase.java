@@ -27,7 +27,7 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
  * path between the two lemmas.    
  * 
  * @author zeller
- *
+ * @since March 2013 
  */
 public class DerivBase {
 	
@@ -52,83 +52,36 @@ public class DerivBase {
 	HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>> entryScores;
 	
 	
+
 	/**
-	 * Constructor for file path as String.
+	 * Main constructor. If the resource should contain confidence scores for each lemma pair 
+	 * within one family, it loads a score-containing file, otherwise a file without scores.
+	 * The minimum score a lemma pair within a family must achieve to be considered in the 
+	 * created DerivBase object. 
 	 * 
-	 * @deprecated Gil: Reason of Deprecation: we no longer use File for German resources. We are using getResources only, and also, if there is not big reason to give choice, we simply use the default resource. use DerivBase(boolean,Double) instead. 
-	 * @param path
+	 * @param useScores indicates if DerivBase file with scores should be used or not
+	 * @param score indicates the minimum score a lemma pair must achieve to be considered 
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 * @throws LexicalResourceException
 	 */
-	@Deprecated  
-	public DerivBase(String path, boolean scoreInfo, Double score) throws FileNotFoundException, IOException, LexicalResourceException {		
-		// we silently ignore path, and call default constructor. 
-		this(score); 
-        //this(new File(path), scoreInfo, score);
+	public DerivBase(boolean useScores, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
+		
+		if (useScores) { 
+			this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
+	    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
+	        load("/derivbase/DErivBase-v1.3-pairs.txt", useScores, score);  
+	        
+		} else {
+			this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
+	    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
+	    	load("/derivbase/DErivBase-v1.3-pairsWithoutScore.txt", useScores, score);
+		}
 	}
 	
-	/**
-	 * Constructor for file path as File.
-	 * Loads the data from the file.
-	 * 
-	 * @deprecated Gil: Reason of Deprecation: we no longer use File for German resources. We are using getResources only, and also, if there is not big reason to give choice, we simply use the default resource. use DerivBase(boolean,Double) instead. 
-	 * @param inFile
-	 * @throws FileNotFoundException
-	 * @throws IOException
-	 * @throws LexicalResourceException
-	 */
-	@Deprecated 
-    public DerivBase(File inFile, boolean scoreInfo, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
-		// we silently ignore path, and call default constructor. 
-		this(score); 
-
-//    	this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
-//    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
-//
-//    	file = inFile;
-//    	
-//
-//            if (file.isDirectory()) {
-//            	throw new LexicalResourceException("Please indicate the DErivBase resource file, not a directory.");
-//            } else {
-//                this.file = inFile;
-//            }
-//
-//            load(inFile, scoreInfo, score);        
-    }
-    
-	/**
-	 * DELETEME LATER TODO 
-	 * Gil: Britta, due to urgent patch need for not using Files (but using getResource) 
-     * --- I've changed DerivBase to load only the File with scores. I thought this is Okay, 
-     * because, score information is "added" information, and EDAs can always choose to ignore. 
-     * But if I am wrong, you have to redo/convert some more. Feel free to discuss this with me. 
-     * 
-     * <P> 
-     * Constructor for DerivBase. (TODO: update argument info) 
-     * 
-	 * @param score specifies the minimum score value a pair must have to be considered
-	 * @throws LexicalResourceException
-	 */
-	public DerivBase(Double score) throws IOException, LexicalResourceException 
-	{
-		this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
-    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
-
-        load(score);        
-		
-	}
 	
 	
     /**
-     * TODO (just the same text, to constructor. DELETEMELATER) 
-     * Gil: Britta, due to urgent patch need for not using Files (but using getResource) 
-     * --- I've changed DerivBase to load only the File with scores. I thought this is Okay, 
-     * because, score information is "added" information, and EDAs can always choose to ignore. 
-     * But if I am wrong, you have to redo/convert some more. Feel free to discuss this with me. 
-     * 
-     * ==== 
      * Loads the data from a DErivBase into the data object. 
      * The input file can have two different formats: 
      * 1. containing scores for each lemma pair within one derivational family; example:
@@ -144,6 +97,13 @@ public class DerivBase {
      * 
      * Note that EITHER the "entries" field or the "entryScores" field are filled, but 
      * never both of them. 
+     * If "entryScores" is filled, each lemma pair is assigned a confidence score, according
+     * to the relatedness via rules in the DErivBase resource.
+     * 
+     * Note also that the scores for derivationally related pairs from DErivBase are converted 
+     * to another value scale for EXCITEMENT: excitementscore = 0.5*derivbasescore + 0.5
+     * Thus, the values for lemmas within the same derivational family which saved in this 
+     * DerivBase object range always between 0.5 and 1. 
      * 
      * Attention: the gender information for nouns (e.g. Nm, Nf) will be omitted; we only
      * keep "N".
@@ -155,16 +115,10 @@ public class DerivBase {
      * @throws FileNotFoundException
      * @throws LexicalResourceException
      */
-//	private void load(File inFile, boolean scoreInfo, Double minScore) throws IOException, FileNotFoundException, LexicalResourceException {
+	private void load(String inFile, boolean scoreInfo, Double minScore) throws IOException, FileNotFoundException, LexicalResourceException {
 
-	private void load(Double minScore) throws IOException, LexicalResourceException {
-
-		//BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inFile)));
-		
-		// Gil: for now, simply Hardcoded Resource Loading, maybe store it in class static variable?  
-		BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream("/derivbase/DErivBase-v1.3-pairs.txt")));
-		boolean scoreInfo = true;  
-        String line;
+		BufferedReader br = new BufferedReader(new InputStreamReader(this.getClass().getResourceAsStream(inFile)));
+		String line;
 
 		System.out.print("Loading DErivBase... ");
         while ((line = br.readLine()) != null) {
@@ -192,10 +146,14 @@ public class DerivBase {
             			tailElement = new Tuple<String>(t.split("_")[0], t.split("_")[1].substring(0, 1));
             			
         			} else { // for scores in the family queue
+        				// DERIVBASE-INTERNAL CALCULATION, value range 0-1:
             			Double score = Double.parseDouble(t); // = score
             			
-            			if (score >= minScore) { // if score has at least defined value, save pair; else not.
+            			if (score >= minScore) { // save pair only if score has at least defined value.
             				HashMap<Tuple<String>, Double> s = new HashMap<>();
+            				// EXCITEMENT-CONFORMANT RECALCULATION, value range 0.5-1:
+                			score = (0.5 * score) + 0.5; // = score
+                			
                 			s.put(tailElement, score);
                 			
                 			scoreTail.add(s);

@@ -85,6 +85,7 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
+			logger.info("Load DerivBaseResource done.");
 		}
 	}
 

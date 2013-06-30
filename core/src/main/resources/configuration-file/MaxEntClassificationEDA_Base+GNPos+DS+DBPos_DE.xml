@@ -18,7 +18,7 @@
 	</section>
 	
 	<section name="BagOfLexesScoring">
-		<property name="withPOS">1</property>
+		<property name="withPOS">true</property>
 		<property name="GermanDistSim"></property>
 		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
 		<property name="DerivBaseResource"></property>
@@ -36,12 +36,9 @@
 	</section> 
 	
 	<section name="GermanDistSim">
-	        <!-- This is the path to internal resource (in /resource). You should not change this, unless you know what you are doing --> 
-	        <property name="similarityFilesPath">src/main/resources/dewakdistributional-data</property>
 	</section>
 	
 	<section name="DerivBaseResource">
-	    <property name="derivBaseFilePath">src/main/resources/derivbase/DErivBase-v1.3-pairs.txt</property>
 	    <property name="scoreInfo">true</property> 
 		<property name="scoreConfidence">0.01</property>
 	</section> 

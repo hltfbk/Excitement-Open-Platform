@@ -29,10 +29,6 @@ public class DerivBaseResourceTest {
 	@Test
 	public void test() throws UnsupportedPosTagStringException {
 
-		// Gil - no-score test is not really meaningful;
-		// After the "hurried" patch of File-access-removing (as getResource), the resource for the moment only simply loads default score file.
-		// But the tests are kept for the moment, because it will make sure if someone calling with "old style" wouldn't be broken. 
-		
 		/**
 		 * ****************************
 		 * TEST 1: DErivBase format without scores, called directly
@@ -42,7 +38,7 @@ public class DerivBaseResourceTest {
 		
 		DerivBaseResource dbWithoutScores = null;
 		try {
-			dbWithoutScores = new DerivBaseResource("src/main/resources/derivbase/DErivBase-v1.3-pairsWithoutScore.txt");
+			dbWithoutScores = new DerivBaseResource(false, null);
 		}
 		catch (DerivBaseNotInstalledException e) {
 			System.out.println("WARNING: DErivBase file was not found in the given path.");
@@ -218,8 +214,8 @@ public class DerivBaseResourceTest {
 		catch (LexicalResourceException e)
 		{
 			e.printStackTrace(); 
-		}			
-					
+		}	
+		
 		// Negative test for verbs to show the given POS is used
 		try{
 			//System.out.println("Test for affig_NN");
@@ -261,7 +257,7 @@ public class DerivBaseResourceTest {
 		
 		DerivBaseResource dbWithScores = null;
 		try {
-			dbWithScores = new DerivBaseResource("src/main/resources/derivbase/DErivBase-v1.3-pairs.txt", true, 0.50);
+			dbWithScores = new DerivBaseResource(true, 10);
 		}
 		catch (DerivBaseNotInstalledException e) {
 			System.out.println("WARNING: DErivBase file was not found in the given path.");
@@ -316,6 +312,23 @@ public class DerivBaseResourceTest {
 				//System.out.println("one getRules rule (should be only one) for nn+n: " + rule.toString());
 			}						
 		}
+		catch (LexicalResourceException e)
+		{
+			e.printStackTrace(); 
+		}		
+		
+		// getRules for a NN+N
+		//System.out.println("rulesTest for Bettlerin + Erbitterte");
+		List<LexicalRule<? extends DerivBaseInfo>> list11 = null; 
+		try {
+			list11 = dbWithScores.getRules("Bettlerin", new GermanPartOfSpeech("N"), "Erbitterte", new GermanPartOfSpeech("NN"));
+			assertTrue(list11.size() > 0);
+			assertTrue(list11.size() == 1);
+			for (LexicalRule<? extends DerivBaseInfo> rule : list11) {
+				assertTrue(rule.getLLemma().equals("Bettlerin"));
+				//System.out.println("one getRules rule (should be only one) for nn+n: " + rule.toString());
+			}						
+		}		
 		catch (LexicalResourceException e)
 		{
 			e.printStackTrace(); 

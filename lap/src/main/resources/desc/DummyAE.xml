@@ -12,7 +12,7 @@
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import name="desc.typesystem"/>
+        <import name="desc.EOPtypesystem"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>

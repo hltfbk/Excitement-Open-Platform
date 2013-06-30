@@ -5,7 +5,7 @@
   	<parent>
 		<groupId>eu.excitementproject</groupId>
 	  	<artifactId>eop</artifactId>
-	    <version>0.1-SNAPSHOT</version>
+	    <version>0.8.5-SNAPSHOT</version>
 	</parent>
   
   	<artifactId>lap</artifactId>
@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<version>0.8.5-SNAPSHOT</version>
 		</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -117,26 +117,33 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
     	</dependency>
+	
+	<!-- TreeTagger related dependencies --> 
+	<!-- if you want to use TreeTagger, and related LAPs, please read /lap/src/scripts/treetagger/README.txt, and follow the instructions --> 
+	<!--  
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
-     		<version>20120912.0</version>
+     		<version>LATEST</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-de</artifactId>
-     		<version>20120417.0</version>
+     		<version>LATEST</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-en</artifactId>
-     		<version>20111109.0</version>
+     		<version>LATEST</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
-     		<version>20101115.0</version>
+     		<version>LATEST</version>
     	</dependency>
+    --> 
+	<!-- end of TreeTagger related dependencies --> 
+
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>

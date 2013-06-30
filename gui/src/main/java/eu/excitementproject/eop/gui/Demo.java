@@ -25,11 +25,11 @@ import org.kohsuke.args4j.CmdLineParser;
 
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
-import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.EditDistanceTEDecision;
 import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
@@ -124,9 +124,9 @@ public class Demo {
 			language = ConfigFileUtils.getAttribute(configFile, "language");
 		}
 		
-		String lapClassName = getLAPClass(option, language);		
+		String lapClassName = getLAPClass(option, configFile, language);	
 		
-		System.out.println("Processing input with " + lapClassName);
+		System.out.println("LAP initialized from class " + lapClassName);
 		
 		try {
 				Class<?> lapClass = Class.forName(lapClassName);
@@ -147,8 +147,10 @@ public class Demo {
 	 * @param language -- language option
 	 * @return -- the name of the class for the chosen LAP
 	 */
-	private String getLAPClass(DemoCmdOptions option, String language) {
+	private String getLAPClass(DemoCmdOptions option, File configFile, String language) {
+				
 	  String lapClass = "eu.excitementproject.eop.lap";
+	  
 	  if (option.lap != null) {
 		  if (option.lap.matches("(?i).*TextPro.*")) {
 			  // there is TextPro only for Italian
@@ -162,15 +164,18 @@ public class Demo {
 				  } 
 			  }
 		  }
+	  } else {
+			lapClass = ConfigFileUtils.getAttribute(configFile, "activatedLAP");
 	  }
 	  
-	  if (lapClass.matches("eu.excitementproject.eop.lap")) {
-		  // fall back to defaults
+	  if (lapClass == null || lapClass.matches("eu.excitementproject.eop.lap")) {
+				// fall back to defaults
+		  lapClass = "eu.excitementproject.eop.lap";
 		  if (language.matches("IT")) {
-			  lapClass += ".textpro.TextProTaggerIT";
+			lapClass += ".textpro.TextProTaggerIT";
 		  } else {
-			  lapClass += ".dkpro.OpenNLPTagger" + language;
-		  }
+			lapClass += ".dkpro.OpenNLPTagger" + language;
+  		  }
 	  }
 	  return lapClass;  
 	}

@@ -97,6 +97,12 @@ public class TransformationsConfigurationParametersNames
 	public static final String USER_REQUIRES_ANNOTATIONS = "do_annotations";
 	@ConfigurationTruthTellerParameterAnnotation
 	public static final String CONLL_FORMAT_OUTPUT_DIRECTORY = "conll_format_output_directory";
+	@ConfigurationTruthTellerParameterAnnotation
+	public static final String PREPROCESS_EASYFIRST = "easyfirst_stanford_pos_tagger";
+	@ConfigurationTruthTellerParameterAnnotation
+	public static final String PREPROCESS_EASYFIRST_HOST = "easyfirst_host";
+	@ConfigurationTruthTellerParameterAnnotation
+	public static final String PREPROCESS_EASYFIRST_PORT = "easyfirst_port";
 	
 	// simple-lexical-chain
 	@ConfigurationKnowledgeParameterAnnotation(knowledgeResources=KnowledgeResource.SIMPLE_LEXICAL_CHAIN)
