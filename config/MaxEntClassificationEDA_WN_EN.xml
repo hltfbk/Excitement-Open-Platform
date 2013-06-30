@@ -9,6 +9,7 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">EN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerEN</property>
 	</section>
 	
 	<section name="BagOfLexesScoring">
@@ -19,12 +20,14 @@
 			<property name="isCollapsed">true</property>
 			<property name="useFirstSenseOnlyLeft">false</property>
 			<property name="useFirstSenseOnlyRight">false</property>
+			<!-- Please update the file path to WordNet -->
+			<property name="wordNetFilesPath">eop-resources-1.0.0/ontologies/EnglishWordNet-dict/</property>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_WN_EN</property>
-		<property name="trainDir">./target/EN/dev/</property>
-		<property name="testDir">./target/EN/test/</property>
+		<property name="modelFile">eop-resources-0.8.5/model/MaxEntClassificationEDAModel_WN_EN</property>
+		<property name="trainDir">/tmp/</property>
+		<property name="testDir">/tmp/</property>
 		<property name="classifier">10000,1</property>
 		<property name="Components">BagOfLexesScoring</property>
 	</section>

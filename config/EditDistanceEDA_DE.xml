@@ -25,7 +25,7 @@
 		
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
-			<property name="path">/opt/share/eop-resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML</property>
+			<property name="path">eop-resources-1.0.0/ontologies/germanet-7.0/GN_V70/GN_V70_XML</property>
 		</subsection>
 		
 	</section>	
@@ -47,13 +47,13 @@
 		
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
-			<property name="path">/opt/share/eop-resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML</property>
+			<property name="path">eop-resources-1.0.0/ontologies/germanet-7.0/GN_V70/GN_V70_XML</property>
 		</subsection>
 		
 	</section>	
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
-	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_DE_Model</property>
+	    <property name="modelFile">eop-resources-1.0.0/model/EditDistanceEDA_DE_Model</property>
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>

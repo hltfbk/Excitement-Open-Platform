@@ -9,6 +9,7 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">DE</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerDE</property>
 	</section>
 	
 	<section name="BagOfLexesScoring">
@@ -22,9 +23,9 @@
 	</section> 
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_DBPos_DE</property>
-		<property name="trainDir">./target/DE/dev/</property>
-		<property name="testDir">./target/DE/test/</property>
+		<property name="modelFile">eop-resources-1.0.0/model/MaxEntClassificationEDAModel_DBPos_DE</property>
+		<property name="trainDir">/tmp/</property>
+		<property name="testDir">/tmp/</property>
 		<property name="classifier">10000,1</property>
 		<property name="Components">BagOfLexesScoring</property>
 	</section>
