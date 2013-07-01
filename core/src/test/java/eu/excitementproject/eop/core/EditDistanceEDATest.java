@@ -104,10 +104,7 @@ public class EditDistanceEDATest {
 		
 		try {
 		
-			//Without lexical resources
 			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_IT.xml");
-			File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_IT.xml_Result.txt");
-			String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_IT.xml_Result.txt_Eval.xml";
 			File testDir = new File("/tmp/IT/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
@@ -126,6 +123,10 @@ public class EditDistanceEDATest {
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
+			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
+			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
+			String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
+
 			save(annotatedFileName, list, false);
 			list.clear();
 			EDAScorer.score(annotatedFileName, evaluationFileName);
@@ -156,8 +157,8 @@ public class EditDistanceEDATest {
 			
 			//Without lexical resources
 		    File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_EN.xml");
-	        File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_EN.xml_Result.txt");
-		    String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_EN.xml_Result.txt_Eval.xml";	
+	       // File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_EN.xml_Token_Result.txt");
+		    //String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_EN.xml_Token_Result.txt_Eval.xml";	
 		    File testDir = new File("/tmp/ENG/test/");
 			
 		    CommonConfig config = new ImplCommonConfig(configFile);
@@ -175,12 +176,16 @@ public class EditDistanceEDATest {
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
-			editDistanceEDA.shutdown();
+			
+			
+			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
+			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
+			String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
 			
 			save(annotatedFileName, list, false);
 			list.clear();
 			EDAScorer.score(annotatedFileName, evaluationFileName);
-			
+			editDistanceEDA.shutdown();
 			
 		} catch(Exception e) {
 			
@@ -207,8 +212,8 @@ public class EditDistanceEDATest {
 			
 			//Without lexical resources
 			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_DE.xml");
-			File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_DE.xml_Result.txt");
-			String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_DE.xml_Result.txt_Eval.xml";
+			//File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_DE.xml_Token_Result.txt");
+			//String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_DE.xml_Token_Result.txt_Eval.xml";
 			File testDir = new File("/tmp/GER/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
@@ -226,11 +231,15 @@ public class EditDistanceEDATest {
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
 			
-			editDistanceEDA.shutdown();
+			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
+			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
+			String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
 			
 			save(annotatedFileName, list, false);
 			list.clear();
 			EDAScorer.score(annotatedFileName, evaluationFileName);
+
+			editDistanceEDA.shutdown();
 			
 		} catch(Exception e) {
 			

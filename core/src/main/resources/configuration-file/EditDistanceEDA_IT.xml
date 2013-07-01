@@ -10,7 +10,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    
-	    <property name="instances">token</property>
+	    <property name="instances">basic</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -19,11 +19,11 @@
 			<property name="substitute">1.0</property>
 		</subsection>
 		
-		<subsection name="token">
+		<subsection name="basic">
 			<property name="stopWordRemoval">true</property>
 		</subsection>
 		
-		<subsection name="token_wordnet">
+		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
 			<property name="path">../core/src/main/resources/configuration-file/</property>
 		</subsection>
@@ -32,7 +32,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
 	    
-	    <property name="instances">lemma</property>
+	    <property name="instances">basic</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -41,11 +41,11 @@
 			<property name="substitute">1.0</property>
 		</subsection>
 		
-		<subsection name="lemma">
+		<subsection name="basic">
 			<property name="stopWordRemoval">true</property>
 		</subsection>
 		
-		<subsection name="lemma_wordnet">
+		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
 			<property name="path">../core/src/main/resources/configuration-file/</property>
 		</subsection>
