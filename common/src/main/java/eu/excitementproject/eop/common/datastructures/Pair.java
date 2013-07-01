@@ -2,6 +2,7 @@ package eu.excitementproject.eop.common.datastructures;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Iterator;
 
 
 /**
@@ -12,7 +13,7 @@ import java.util.HashSet;
  *
  * @param <T>
  */
-public class Pair<T> implements Serializable
+public class Pair<T> implements Serializable, Iterable<T>
 {
 	private static final long serialVersionUID = -5208740163856925391L;
 	////////////////// PUBLIC CONSTRUCTOR AND METHODS ////////////////////
@@ -46,6 +47,11 @@ public class Pair<T> implements Serializable
 		ret.add(element1);
 		ret.add(element2);
 		return ret;
+	}
+	
+	public Iterator<T> iterator()
+	{
+		return new PairIterator<T>(element1, element2);
 	}
 	
 	// equals() and hashCode() implementations (not so trivial)
