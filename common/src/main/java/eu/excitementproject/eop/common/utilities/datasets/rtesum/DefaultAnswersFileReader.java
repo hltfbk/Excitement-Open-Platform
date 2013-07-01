@@ -91,7 +91,7 @@ public class DefaultAnswersFileReader implements AnswersFileReader
 			throws Rte6mainIOException
 	{
 		if (goldStandard) throw new Rte6mainIOException("Answers were not retrieved since read was done in gold standard mode.");
-		if (!readDone) throw new Rte6mainIOException("Not read!");
+		if (!readDone) throw new Rte6mainIOException("Caller\'s bug. The method read() was not called.");
 		return this.answersContents;
 	}
 
@@ -99,7 +99,7 @@ public class DefaultAnswersFileReader implements AnswersFileReader
 			throws Rte6mainIOException
 	{
 		if (!goldStandard) throw new Rte6mainIOException("Gold Standard was not retrieved since read was done in answers mode.");
-		if (!readDone) throw new Rte6mainIOException("Not read!");
+		if (!readDone) throw new Rte6mainIOException("Caller\'s bug. The method read() was not called.");
 		return this.goldStandardContents;
 
 	}

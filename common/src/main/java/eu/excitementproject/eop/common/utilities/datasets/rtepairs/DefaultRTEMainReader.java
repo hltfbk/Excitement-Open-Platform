@@ -49,6 +49,7 @@ public class DefaultRTEMainReader implements RTEMainReader
 		booleanClassificationMap.put("TRUE", new Boolean(true));
 		booleanClassificationMap.put("NO", new Boolean(false));
 		booleanClassificationMap.put("YES", new Boolean(true));
+		booleanClassificationMap.put("NONENTAILMENT", new Boolean(false));
 
 	}
 	
