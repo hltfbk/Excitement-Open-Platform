@@ -10,8 +10,8 @@ import org.uimafit.util.JCasUtil;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitementproject.eop.common.utilities.DockedToken;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.StringUtilException;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinder;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinderException;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
 import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
@@ -43,12 +43,11 @@ public abstract class TokenizerAE<T extends Tokenizer> extends SingletonSynchron
 					tokenStrings = innerTool.getTokenizedSentence();
 				}
 
-				// NOTE: The method is called in non-strict mode, which means that tokens from the
-				// tokenizer output that are not found in the text are ignored, instead of an exception
-				// being thrown. This is done since, for example, MaxentTokenizer transformed
-				// a '£' to a '#', and we don't have any way to deal with it. Some some tokens may be
-				// discarded.
-				SortedMap<Integer, DockedToken> dockedTokens = StringUtil.getTokensOffsets(sentenceAnno.getCoveredText(), tokenStrings, false);
+				// dock the tokens on text, with heuristic recovery attempts, but not strict -
+				// tokens that are not found in text will be silently ignored!
+				// this is mandatory, for instance - MaxentTokenizer transformed
+				// a '£' to a '#', and we don't have any way to deal with it. 
+				SortedMap<Integer, DockedToken> dockedTokens = DockedTokenFinder.find(sentenceAnno.getCoveredText(), tokenStrings, false, true);
 				
 				for (DockedToken dockedToken : dockedTokens.values()) {
 					Token tokenAnnot = new Token(aJCas);
@@ -59,7 +58,7 @@ public abstract class TokenizerAE<T extends Tokenizer> extends SingletonSynchron
 			}		
 		} catch (TokenizerException e) {
 			throw new AnalysisEngineProcessException(AnalysisEngineProcessException.ANNOTATOR_EXCEPTION, null, e);
-		} catch (StringUtilException e) {
+		} catch (DockedTokenFinderException e) {
 			throw new AnalysisEngineProcessException(AnalysisEngineProcessException.ANNOTATOR_EXCEPTION, null, e);
 		}
 	}
