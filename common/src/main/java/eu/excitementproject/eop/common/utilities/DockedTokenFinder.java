@@ -18,14 +18,20 @@ public class DockedTokenFinder {
 	 * @param tokens A list of Strings, each represents a substring in the text. Must be in order of appearance in text.
 	 * @param strict whether to throw an exception if a token is not found in the text. When this is false, an unfound
 	 * token will be ignored, and won't be included in the result.
+	 * @param tryRecoverMissing whether to use a heuristic for recovering some tokens that are missing from text.
+	 * These heuristics have two assumptions (that are usually correct):
+	 * 1. A whitespace is never part of a token
+	 * 2. Every token has at least one character
 	 * @return a sorted map, where each entry maps a position from the parameter token list, to 
 	 * a DockedToken - a DockedToken has the token string, a start offset and an end offset (in the text,
 	 * counting characters). Usually this map will have the same size as the token list, yet if some of the
 	 * tokens were not found in the text, and the policy is not strict (<tt>strict=false</tt>), then these
 	 * tokens are ignored and the returned map has a smaller size.
-	 * @throws StringUtilException if a token is not found in the text and <tt>strict=true</tt>
+	 * @throws DockedTokenFinderException Specifically, throws {@link TokenMissingException} if a token
+	 * is not found in the text and <tt>strict=true</tt>
 	 * 
-	 * @author Ofer Bronstein 1/8/2012
+	 * @author Ofer Bronstein
+	 * @since 1/8/2012
 	 */
 	public static SortedMap<Integer, DockedToken> find(String text, List<String> tokens, boolean strict, boolean tryRecoverMissing) throws DockedTokenFinderException {
 		SortedMap<Integer, DockedToken> matches = new TreeMap<Integer, DockedToken>();
@@ -72,22 +78,6 @@ public class DockedTokenFinder {
 		// this heuristic assumes that a whitespace is always a delimiter between tokens (yet it does
 		// not assume it is the only delimiter)
 		if (tryRecoverMissing) {
-//			-- look for gaps
-//			-- for each gap
-//				-- calc its len
-//				-- *pop* its tokens from unmatched
-//				-- get its text span
-//				-- trim the text span
-//				-- split text span by whitespace
-//				-- if the splitted text is exactly the length of the gap:
-//					-- create new docked tokens for gapped tokens and add to matches
-//				-- else:
-//					-- if strict:
-//						-- throw exception
-//					-- else:
-//						-- continue
-//			-- if unmatched is still not empty and strict is true:
-//				-- throw exception
 			int prevI = INVALID_INDEX;
 			int i;
 			List<DockedToken> nonMatchedRange = new ArrayList<DockedToken>();
@@ -122,19 +112,21 @@ public class DockedTokenFinder {
 	 * Aligns given ordered list of tokens with given text. Mostly used on an output of a tokenizer
 	 * and its original sentence. Note that the tokens don't need to cover the entire text -
 	 * any arbitrary number of characters can appear in the text but not in the tokens. 
-	 * @Note this is a version of {@link #getTokensOffsets(String, List, boolean)} where <tt>strict=true</tt>, meaning that
-	 * StringUtilException is thrown if a token is not found in the text.
+	 * @Note this is a version of {@link #find(String, List, boolean, boolean)} where <tt>strict=true</tt> and
+	 * <tt>tryRecoverMissing=false</tt>, meaning that TokenMissingException is thrown if a token is
+	 * not found in the text, and no heuristic recovery is attempted.
 	 * @param text The given full text
 	 * @param tokens A list of Strings, each represents a substring in the text. Must be in order of appearance in text.
 	 * @return a sorted map, where each entry maps a position from the parameter token list, to 
 	 * a DockedToken - a DockedToken has the token string, a start offset and an end offset (in the text,
 	 * counting characters). This map will have the exact same size as the token list.
-	 * @throws StringUtilException if a token is not found in the text
+	 * @throws DockedTokenFinderException Specifically, throws {@link TokenMissingException} if a token
+	 * is not found in the text and <tt>strict=true</tt>
 	 * 
-	 * @author Ofer Bronstein 1/8/2012
+	 * @author Ofer Bronstein
+	 * @since 1/8/2012
 	 */
 	public static SortedMap<Integer, DockedToken> find(String text, List<String> tokens) throws DockedTokenFinderException {
-		//!!!TODO decide exactly what to call and fix comments
 		return find(text, tokens, true, false);
 	}
 	
