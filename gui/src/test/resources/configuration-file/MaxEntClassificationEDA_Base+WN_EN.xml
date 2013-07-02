@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration [
+<!ENTITY myVar "Some common #PCDATA that can be reused... ">
+]>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="language">EN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerEN</property>
+	</section>
+	
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="BagOfLemmasScoring">
+	</section>
+	
+	<section name="BagOfLexesScoring">
+			<property name="WordnetLexicalResource">HYPERNYM,SYNONYM,PART_HOLONYM</property>
+	</section>
+	
+	<section name="WordnetLexicalResource">
+			<property name="isCollapsed">true</property>
+			<property name="useFirstSenseOnlyLeft">false</property>
+			<property name="useFirstSenseOnlyRight">false</property>
+			<!-- Please update the file path to WordNet -->
+			<property name="wordNetFilesPath">eop-resources-0.8.5/ontologies/EnglishWordNet-dict/</property>
+	</section>
+	
+	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+		<property name="modelFile">./src/test/resources/model/MaxEntClassificationEDAModel_Base+WN_EN</property>
+		<property name="trainDir">/tmp/</property>
+		<property name="testDir">/tmp/</property>
+		<property name="classifier">10000,1</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
+	</section>
+
+</configuration>

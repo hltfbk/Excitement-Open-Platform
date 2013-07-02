@@ -1,0 +1,229 @@
+<configuration>
+
+	<section name = "rte_pairs_preprocess">
+		<property name = "dataset">dummy.xml</property>
+		<property name = "annotated">true</property>
+		<property name = "serialization_filename">dummy.ser</property>
+		<property name = "easyfirst_stanford_pos_tagger">../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger</property>
+		<property name = "stanford_ner_classifier_path">../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</property>
+		<property name = "new_normalizer">../third-party/BiuNormalizer/string_rules.txt</property>
+		<property name = "coreferencer">ARKREF</property>
+
+
+		<property name = "easyfirst_host">localhost</property>
+		<property name = "easyfirst_port">8080</property>
+
+		<!-- optional parameters -->
+		<!--<property name = "easyfirst_host">localhost</property>-->
+		<!--<property name = "easyfirst_port">8080</property>-->
+		<!--<property name = "bart_server">localhost</property>-->
+		<!--<property name = "bart_port">0</property>-->
+		<!--<property name = "do_named_entity_recognition">true</property>-->
+		<!--<property name = "do_text_normalization">true</property>-->
+
+
+
+	</section>
+
+	<section name = "rte_sum_preprocess">
+		<property name = "dataset">RTE6_DEVSET</property>
+		<property name = "serialization_filename">RTE6_DEVSET.ser</property>
+		<!--<property name = "minipar"></property>-->
+		<property name = "easyfirst_stanford_pos_tagger">../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger</property>
+		<property name = "stanford_ner_classifier_path">../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</property>
+		<property name = "new_normalizer">../third-party/BiuNormalizer/string_rules.txt</property>
+		<property name = "coreferencer">ARKREF</property>
+
+		<!-- optional parameter -->
+		<!--<property name = "is_novelty_task">false</property>-->
+
+		<!-- optional parameters -->
+		<!--<property name = "easyfirst_host">localhost</property>-->
+		<!--<property name = "easyfirst_port">8080</property>-->
+		<!--<property name = "bart_server">localhost</property>-->
+		<!--<property name = "bart_port">0</property>-->
+		<!--<property name = "do_named_entity_recognition">true</property>-->
+		<!--<property name = "do_text_normalization">true</property>-->
+	</section>
+
+	<section name = "rte_pairs_train_and_test">
+		<property name = "serialization_filename">dummy.ser</property>
+		<property name = "lemmatizer_rule_file">../third-party/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
+		<property name = "parser">EASYFIRST</property>
+		<property name = "threads">1</property>
+		<property name = "unigram_lidston_ser_file">Reuters-PPD_unigram.ser</property>
+
+		<property name = "search_model">model_search_1.xml</property>
+		<property name = "predictions_model">model_predictions_2.xml</property>
+
+		<!-- optional parameters -->
+		<property name = "dummy_prediction_classifier">false</property>
+		<!--<property name = "search_classifier_is_reasonable_guess">false</property>-->
+	</section>
+
+	<section name = "rte_sum_train_and_test">
+		<property name = "serialization_filename">RTE6_DEVSET.ser</property>
+		<property name = "lemmatizer_rule_file">../third-party/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
+		<property name = "parser">EASYFIRST</property>
+		<property name = "threads">1</property>
+		<property name = "unigram_lidston_ser_file">Reuters-PPD_unigram.ser</property>
+
+		<property name = "serialized_samples">labeled_samples2.ser</property>
+		<property name = "search_classifier_samples">labeled_samples1.ser</property>
+
+		<!-- optional parameter -->
+		<!--<property name = "is_novelty_task">false</property>-->
+
+		<!-- optional parameter -->
+		<!--<property name = "search_classifier_is_reasonable_guess">false</property>-->
+	</section>
+
+
+	<section name = "transformations">
+		<!--<property name = "knowledge_resources">WORDNET,WIKIPEIDA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
+		<!--<property name = "multiword_resources">WORDNET,WIKIPEIDA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
+		<property name = "knowledge_resources">WORDNET,CATVAR,VERB_OCEAN,SYNTACTIC</property>
+		<property name = "multiword_resources">WORDNET,CATVAR,VERB_OCEAN</property>
+		<property name = "stop_words">stopwords-Eyal.txt</property>
+	</section>
+
+
+	<section name = "simpleLexicalChain">
+		<property name = "knowledge_resources">WORDNET,BAP</property>
+		<property name = "depth">2</property>
+	</section>
+	
+
+	
+
+	<section name = "WNV2">
+		<property name = "wordnet-dir">$DATA/WordNet/3.0/dict.wn.orig</property>
+		<property name = "useFirstSenseOnlyLeft">true</property>
+		<property name = "useFirstSenseOnlyRight">true</property>
+		<property name = "entailing-relations">SYNONYM,DERIVATIONALLY_RELATED,HYPERNYM,INSTANCE_HYPERNYM,MEMBER_HOLONYM,PART_HOLONYM,ENTAILMENT,SUBSTANCE_MERONYM</property>
+		<property name = "wordnet-depth">2</property>
+	</section>
+
+	<section name = "WikiV2">
+		<property name = "stop words">stopwords-Eyal.txt</property>
+		<property name = "extraction types to keep">Redirect,BeComp,BeCompIndirect,AllNounsTop</property>
+		<property name = "wikiKB DB url">jdbc:mysql://$MYSQL/wikikb?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "cooccurrence threshold">0.01</property>
+	</section>
+
+	
+	<section name = "bapV2">
+		<property name = "database_url">jdbc:mysql://$MYSQL/bap?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "limit on retrieved rules">20</property>
+	</section>
+	
+
+	<section name = "Syntactic">
+		<property name = "syntactic_rules_file">serializedRules.ser</property>
+		<property name = "annotation_rules_file">serializedAnnotationRules.ser</property>
+		<property name = "do_annotations">true</property>
+	</section>
+
+
+
+	<section name = "catvarV2">
+		<property name = "catver-file-name">$DATA/CatVar/catvar21</property>
+	</section>
+
+
+	<section name = "VerbOceanV2">
+		<property name = "threshold">1</property>
+		<property name = "file">$DATA/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+		<property name = "allowedRelations">STRONGER_THAN</property>
+	</section>
+
+	<section name = "LinDependencyOriginal">
+		<property name = "connectionString">jdbc:mysql://$MYSQL/lin?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "user">db_readonly</property>
+		<property name = "password">BIUTEE</property>
+		<property name = "limit on retrieved rules">20</property>
+	</section>
+
+	<section name = "LinProximityOriginal">
+		<property name = "database_url">jdbc:mysql://$MYSQL/lin?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "user">db_readonly</property>
+		<property name = "password">BIUTEE</property>
+		<property name = "limit on retrieved rules">20</property>
+	</section>
+
+	<section name = "LinDependencyReuters">
+		<property name = "database_url">jdbc:mysql://$MYSQL/distsim?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "user">db_readonly</property>
+		<property name = "password">BIUTEE</property>
+		<property name = "limit on retrieved rules">20</property>
+	</section>
+
+
+	<section name = "origdirt">
+		<property name = "database_driver">com.mysql.jdbc.Driver</property>
+		<property name = "database_url">jdbc:mysql://$MYSQL/original_dirt?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "templates_table">original_dirt.od_easyfirst_templates</property>
+		<property name = "rules_table">original_dirt.od_rules</property>
+		<property name = "limit_number_of_rules">20</property>
+	</section>
+
+<!-- No easy-first templates
+	<section name = "unary_lin">
+		<property name = "database_driver">com.mysql.jdbc.Driver</property>
+		<property name = "database_url">jdbc:mysql://$MYSQL/distsim?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "templates_table"></property>
+		<property name = "rules_table">distsim.unary_rules_nc_all</property>
+		<property name = "limit_number_of_rules">20</property>
+	</section>
+-->
+
+	<section name = "binary_lin">
+		<property name = "database_driver">com.mysql.jdbc.Driver</property>
+		<property name = "database_url">jdbc:mysql://$MYSQL/distsim?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "templates_table">distsim.binaryd_easyfirst_templates_nncn_no_duplicates</property>
+		<property name = "rules_table">binaryd_rules_nncn_no_duplicates</property>
+		<property name = "limit_number_of_rules">20</property>
+	</section>
+
+<!--
+	No easy first with no duplicates tables currently exist.
+
+	<section name = "unaryBinc">
+		<property name = "database_driver">com.mysql.jdbc.Driver</property>
+		<property name = "database_url">jdbc:mysql://$MYSQL/distsim?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "templates_table">distsim.unary_easyfirst_templates_ncd_all</property>
+		<property name = "rules_table">distsim.unary_rules_ncd_all</property>
+		<property name = "limit_number_of_rules">20</property>
+	</section>
+-->
+
+
+	<section name = "reverb">
+		<property name = "database_driver">com.mysql.jdbc.Driver</property>
+		<property name = "database_url">jdbc:mysql://$MYSQL/reverb?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "templates_table">reverb_templates</property>
+		<property name = "rules_table">reverb_rules</property>
+		<property name = "limit_number_of_rules">20</property>
+	</section>
+
+
+	<section name = "framenet">
+		<property name = "database_driver">com.mysql.jdbc.Driver</property>
+		<property name = "database_url">jdbc:mysql://$MYSQL/framenet?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "templates_table">framenet_easyfirst_element_table_no_duplicates</property>
+		<property name = "rules_table">framenet_rules_easyfirst_server_rules8_no_duplicates</property>
+		<property name = "limit_number_of_rules">20</property>
+	</section>
+
+	<section name = "GeoKB">
+		<property name = "connection">jdbc:mysql://$MYSQL/geo?user=db_readonly&amp;password=BIUTEE</property>
+		<property name = "table">tipster</property>
+	</section>
+
+	<section name = "TruthTeller">
+		<property name = "annotation_rules_file">serializedAnnotationRules.ser</property>
+		<property name = "do_annotations">true</property>
+	</section>
+
+</configuration>
+

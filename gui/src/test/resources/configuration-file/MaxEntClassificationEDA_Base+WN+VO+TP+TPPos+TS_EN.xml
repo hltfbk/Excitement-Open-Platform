@@ -24,15 +24,17 @@
 	</section>
 	
 	<section name="WordnetLexicalResource">
-			<property name="wordNetFilesPath">/ontologies/EnglishWordNet-dict/</property>
 			<property name="isCollapsed">true</property>
 			<property name="useFirstSenseOnlyLeft">false</property>
 			<property name="useFirstSenseOnlyRight">false</property>
+			<!-- Please update the file path to WordNet -->
+			<property name="wordNetFilesPath">eop-resources-0.8.5/ontologies/EnglishWordNet-dict/</property>
 	</section>
 	
 	<section name="VerbOceanLexicalResource">
-			<property name="verbOceanFilePath">/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 			<property name="isCollapsed">true</property>
+			<!-- Please update the file path to VerbOcean -->
+			<property name="verbOceanFilePath">eop-resources-0.8.5/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 	</section>
 	
 	<section name="BagOfDepsScoring">
