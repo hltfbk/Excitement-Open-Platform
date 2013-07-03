@@ -133,12 +133,12 @@ public class FixedWeightTokenEditDistance implements DistanceCalculation {
         
         try {
         
-	        //to get the platform language value
+	        //get the platform language value
 	        NameValueTable platformNameValueTable = config.getSection("PlatformConfiguration");
-	        //to get the selected component instance
+	        //get the selected component instance
 	    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
 	    	instance = componentNameValueTable.getString("instances");
-	    	//to get the parameters from the selected instance
+	    	//get the parameters from the selected instance
 	    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
     	
     		String language = platformNameValueTable.getString("language");

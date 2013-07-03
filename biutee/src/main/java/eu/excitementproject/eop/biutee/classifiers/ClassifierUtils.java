@@ -193,7 +193,7 @@ public class ClassifierUtils
 	{
 		logger.info(printSamplesAsSvmLightInput(samples,true).toString());
 	}
-	
+
 	/**
 	 * Returns a StringBuffer that holds a string that contains a string representation
 	 * of the given samples as used by the input-files of the SVM-light
@@ -203,6 +203,11 @@ public class ClassifierUtils
 	 * @return
 	 */
 	public static StringBuffer printSamplesAsSvmLightInput(List<LabeledSample> samples, boolean startWithNewline)
+	{
+		return printSamplesAsSvmLightInput(samples,startWithNewline,false);
+	}
+	
+	public static StringBuffer printSamplesAsSvmLightInput(List<LabeledSample> samples, boolean startWithNewline, boolean addOneToFeatureIndex)
 	{
 		StringBuffer allSamplesStringBuffer = new StringBuffer();
 		if (startWithNewline) allSamplesStringBuffer.append("\n");
@@ -220,8 +225,10 @@ public class ClassifierUtils
 			
 			for (Integer featureIndex : sample.getFeatures().keySet())
 			{
+				int featureIndexToPrint = featureIndex;
+				if (addOneToFeatureIndex) {featureIndexToPrint+=1;}
 				sb.append(" ");
-				sb.append(featureIndex);
+				sb.append(featureIndexToPrint);
 				sb.append(":");
 				sb.append(String.format("%-6.10f", sample.getFeatures().get(featureIndex)));
 			}

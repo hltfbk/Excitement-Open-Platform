@@ -5,14 +5,15 @@ import java.io.Serializable;
 // This class is immutable
 
 /**
- * dependency relation is the relation between a node in the dependency
+ * Dependency relation is the relation between a node in the dependency
  * parse tree and its parent.
  * For example: subject, object.
  * <P>
- * The relation is represented as a string, and if that relation
- * fits into one of the small closed list of predefined dependency
- * relation specified by {@link DependencyRelationType}, it is
- * also represented as {@link DependencyRelationType}.
+ * The relation is represented as a string.
+ * This data-structure holds also the enum {@link DependencyRelationType},
+ * but this enum should be ignore and never used.
+ * (However, it is recommended that parsers will put the appropriate value
+ * in the field of this enum - {@link #type}, if applicable). 
  * <P>
  * This class is IMMUTABLE
  * 
