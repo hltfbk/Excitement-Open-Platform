@@ -156,13 +156,17 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 		cleanUpHasBeenCalled = true;
 		super.cleanUp();
 		logger.info("Shuting down thread pool.");
-		this.threadPool.shutdown();
+		if (threadPool != null) {
+			threadPool.shutdown();
+		}
 		logger.info("Termination of scripts ...");
-		synchronized (scriptStack)
-		{
-			while (!scriptStack.empty())
+		if (scriptStack != null) {
+			synchronized (scriptStack)
 			{
-				scriptStack.pop().cleanUp();
+				while (!scriptStack.empty())
+				{
+					scriptStack.pop().cleanUp();
+				}
 			}
 		}
 		logger.info("Termination of scripts - done.");
