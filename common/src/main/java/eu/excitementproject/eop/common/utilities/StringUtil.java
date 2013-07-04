@@ -14,7 +14,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -298,6 +300,8 @@ public final class StringUtil
 
 	/**
 	 * Trims leading and trailing characters according to the given CharacterCriterion
+	 * This method is used as the actual implementation of the methods
+	 * {@link #trimNonLetters(String)} and {@link #trimNeitherLettersNorDigits(String)}.
 	 * @param str
 	 * @param criterion
 	 * @return
@@ -836,7 +840,144 @@ public final class StringUtil
 		return new String(chararray, 0, index+1);
 	}
 	
+	
+	/**
+	 * Aligns given ordered list of tokens with given text. Mostly used on an output of a tokenizer
+	 * and its original sentence. Note that the tokens don't need to cover the entire text -
+	 * any arbitrary number of characters can appear in the text but not in the tokens.
+	 * @param text The given full text
+	 * @param tokens A list of Strings, each represents a substring in the text. Must be in order of appearance in text.
+	 * @param strict whether to throw an exception if a token is not found in the text. When this is false, an unfound
+	 * token will be ignored, and won't be included in the result.
+	 * @return a sorted map, where each entry maps a position from the parameter token list, to 
+	 * a DockedToken - a DockedToken has the token string, a start offset and an end offset (in the text,
+	 * counting characters). Usually this map will have the same size as the token list, yet if some of the
+	 * tokens were not found in the text, and the policy is not strict (<tt>strict=false</tt>), then these
+	 * tokens are ignored and the returned map has a smaller size.
+	 * @throws StringUtilException if a token is not found in the text and <tt>strict=true</tt>
+	 * 
+	 * @author Ofer Bronstein 1/8/2012
+	 */
+	public static SortedMap<Integer, DockedToken> getTokensOffsets(String text, List<String> tokens, boolean strict) throws StringUtilException {
+		SortedMap<Integer, DockedToken> result = new TreeMap<Integer, DockedToken>();
+		int startOffset = 0;
+		int endOffset = 0;
+		for (int i=0; i<tokens.size(); i++) {
+			String token = tokens.get(i);
+			int foundOffset = text.indexOf(token, endOffset);
+			if (foundOffset == -1) {
+				//throw an exception only of strict policy is required
+				if (strict) {
+					throw new StringUtilException("Could not find token \"" + token + "\" from offset " + startOffset);
+				}
+				else {
+					continue;
+				}
+			}
+			else {
+				startOffset = foundOffset;
+				endOffset = startOffset + token.length();
+				DockedToken docked = new DockedToken(token, startOffset, endOffset);
+				result.put(i, docked);
+			}
+		}
+		return result;
+	}
 
+	/**
+	 * Aligns given ordered list of tokens with given text. Mostly used on an output of a tokenizer
+	 * and its original sentence. Note that the tokens don't need to cover the entire text -
+	 * any arbitrary number of characters can appear in the text but not in the tokens. 
+	 * @Note this is a version of {@link #getTokensOffsets(String, List, boolean)} where <tt>strict=true</tt>, meaning that
+	 * StringUtilException is thrown if a token is not found in the text.
+	 * @param text The given full text
+	 * @param tokens A list of Strings, each represents a substring in the text. Must be in order of appearance in text.
+	 * @return a sorted map, where each entry maps a position from the parameter token list, to 
+	 * a DockedToken - a DockedToken has the token string, a start offset and an end offset (in the text,
+	 * counting characters). This map will have the exact same size as the token list.
+	 * @throws StringUtilException if a token is not found in the text
+	 * 
+	 * @author Ofer Bronstein 1/8/2012
+	 */
+	public static SortedMap<Integer, DockedToken> getTokensOffsets(String text, List<String> tokens) throws StringUtilException {
+		return getTokensOffsets(text, tokens, true);
+	}
+	
+	
+	
+	
+	
+	
+//	// demo and test some utils:
+//	public static void main(String[] args) throws TokenizerException, StringUtilException
+//	{
+//	
+//		// 	testReverse() {
+//
+//		if (!StringUtil.reverse("abc").equals("cba"))
+//			System.out.println("wrong reverse");
+//
+//		if (StringUtil.reverse(null) != null)
+//			System.out.println("reverse fails on null");
+//		if (!StringUtil.reverse("").equals(""))
+//			System.out.println("reverse fails on empty string");
+//		if (!StringUtil.reverse("Abc").equals("cbA"))
+//			System.out.println("wrong case sensitive reverse");
+//
+//
+//		// testMakeSameCase() {
+//
+//		if (!StringUtil.makeSameCase("ABC", "dEf").equals("DEF"))
+//			System.out.println("failure on all upper");
+//		if (!StringUtil.makeSameCase("", "dEf").equals("dEf"))
+//			System.out.println("failure on first empty");
+//		if (!StringUtil.makeSameCase("ABC", "").equals(""))
+//			System.out.println("failure on second empty");
+//		if (!StringUtil.makeSameCase("", "").equals(""))
+//			System.out.println("failure on both empty");
+//		if (!StringUtil.makeSameCase(null, "dEf").equals("dEf"))
+//			System.out.println("failure on first null");
+//		if (!StringUtil.makeSameCase(null, "dEf").equals("dEf"))
+//			System.out.println("failure on first null");
+//		if (StringUtil.makeSameCase("ABC", null) != null)
+//			System.out.println("failure on second null");
+//		if (StringUtil.makeSameCase(null, null) != null)
+//			System.out.println("failure on both null");
+//		if (!StringUtil.makeSameCase("abc", "deF").equals("def"))
+//			System.out.println("failure on all lower");
+//		if (!StringUtil.makeSameCase("Abc", "dEf").equals("Def"))
+//			System.out.println("failure on title case");
+//		if (!StringUtil.makeSameCase("abC", "dEf").equals("dEf"))
+//			System.out.println("failure on mixed case - should make no change");
+//
+//		// testArrayContainsString() 	
+//	
+//		if (!StringUtil.arrayContainsString(new String[]{"abc","def","ghi"}, "ABc", false))
+//			System.out.println("failure on ignore case");
+//		
+//		if (StringUtil.arrayContainsString(new String[]{"abc","def","ghi"}, "Abc", true))
+//			System.out.println("failure on case sensitive");
+//		
+//		if (!StringUtil.arrayContainsString(new String[]{"abc","def","ghi"}, "Def", false))
+//			System.out.println("failure on case insensitive ");
+//	
+//		
+//		// test getTokensOffsets
+//		
+//		String input = "the dog's owner didn't     see the other dog .";
+//		Tokenizer tokenizer = new MaxentTokenizer();
+//		tokenizer.init();
+//		tokenizer.setSentence(input);
+//		tokenizer.tokenize();
+//		
+//		List<String> tokens = tokenizer.getTokenizedSentence();
+//		SortedMap<Integer, DockedToken> dockedtokens = StringUtil.getTokensOffsets(input, tokens);
+//		
+//		System.out.println("Input: \"" + input + "\"");
+//		System.out.println("Docked tokens: " + dockedtokens);
+//
+//	}
+	
 	public static boolean stringOnlyDigits(String str)
 	{
 		if (null==str) return false;
