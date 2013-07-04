@@ -10,7 +10,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    
-	    <property name="instances">basic</property>
+	    <property name="instances">wikipedia</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -26,6 +26,13 @@
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
 			<property name="path">../core/src/main/resources/configuration-file/</property>
+		</subsection>
+		
+		<subsection name="wikipedia">
+			<property name="stopWordRemoval">true</property>
+			<property name="dbconnection">jdbc:mysql://nathrezim:3306/wikilexresita</property>
+			<property name="dbuser">root</property>
+			<property name="dbpasswd">nat_2k12</property>
 		</subsection>
 		
 	</section>	
@@ -50,11 +57,19 @@
 			<property name="path">../core/src/main/resources/configuration-file/</property>
 		</subsection>
 		
+		<subsection name="wikipedia">
+			<property name="stopWordRemoval">true</property>
+			<property name="dbconnection">jdbc:mysql://nathrezim:3306/wikilexresita</property>
+			<property name="dbuser">root</property>
+			<property name="dbpasswd">nat_2k12</property>
+		</subsection>
+		
 	</section>	
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_IT_Model</property>
-		<property name="trainDir">/tmp/</property>
+		<!-- <property name="trainDir">/tmp/</property> -->
+		<property name="trainDir">/tmp/IT/dev/</property>
 		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	</section>

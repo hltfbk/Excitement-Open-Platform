@@ -10,7 +10,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	
-	    <property name="instances">wordnet</property>
+	    <property name="instances">basic</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -25,8 +25,7 @@
 		
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
-			<!-- <property name="path">/opt/share/eop-resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML</property> -->
-		    <property name="path">/www/hlt-services4/html/eop/eop-resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML</property>
+			<property name="path">/opt/share/eop-resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML</property>
 		</subsection>
 		
 	</section>	
@@ -55,7 +54,7 @@
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_DE_Model</property>
-		<property name="trainDir">/tmp/</property>
+	    <property name="trainDir">/tmp/GER/dev/</property>
 		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	</section>
