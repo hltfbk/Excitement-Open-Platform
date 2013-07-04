@@ -189,20 +189,21 @@ public class EasyFirstClient
 		for (ListIterator<PosTaggedToken> iter = posTaggedTokens.listIterator(); iter.hasNext() ; )
 		{
 			PosTaggedToken posTaggedToken = iter.next();
-			String token = posTaggedToken.getToken().toLowerCase();
+			String origToken = posTaggedToken.getToken();
+			String token = origToken.toLowerCase();
 			PartOfSpeech pos = posTaggedToken.getPartOfSpeech();
 			if (NOMINATIVE_ACCUSATIVE_PRONOUNS.contains(token) && !simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 			// replace this postaggedToken
 			{
 				iter.remove();
-				iter.add(new PosTaggedToken(token, PRP_POS));
+				iter.add(new PosTaggedToken(origToken, PRP_POS));
 			}
 			else if (GENITIVE_PRONOUNS.contains(token) && !simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 			// replace this postaggedToken with PRP$
 			{
 				iter.remove();
-				iter.add(new PosTaggedToken(token, PRP$_POS));
-			}				
+				iter.add(new PosTaggedToken(origToken, PRP$_POS));
+			}
 		}
 		
 		return posTaggedTokens;

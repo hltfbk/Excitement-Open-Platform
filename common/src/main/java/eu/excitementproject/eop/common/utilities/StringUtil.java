@@ -861,10 +861,10 @@ public final class StringUtil
 	public static SortedMap<Integer, DockedToken> getTokensOffsets(String text, List<String> tokens, boolean strict) throws StringUtilException {
 		SortedMap<Integer, DockedToken> result = new TreeMap<Integer, DockedToken>();
 		int startOffset = 0;
-		int endOffset;
+		int endOffset = 0;
 		for (int i=0; i<tokens.size(); i++) {
 			String token = tokens.get(i);
-			int foundOffset = text.indexOf(token, startOffset);
+			int foundOffset = text.indexOf(token, endOffset);
 			if (foundOffset == -1) {
 				//throw an exception only of strict policy is required
 				if (strict) {

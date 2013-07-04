@@ -8,8 +8,8 @@ import org.apache.uima.jcas.JCas;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import eu.excitementproject.eop.common.utilities.DockedToken;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.StringUtilException;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinder;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinderException;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
@@ -39,9 +39,9 @@ public abstract class SentenceSplitterAE<T extends SentenceSplitter> extends Sin
 
 			}
 			
-			// If you get an exception for an unfound token, you can change
-			// the "true" to "false", and tokens unfound in the text will be ignored  
-			SortedMap<Integer, DockedToken> dockedSentences = StringUtil.getTokensOffsets(text, sentenceStrings, true);
+			// dock the tokens on text, with heuristic recovery attempts, but not strict -
+			// tokens that are not found in text will be silently ignored!
+			SortedMap<Integer, DockedToken> dockedSentences = DockedTokenFinder.find(text, sentenceStrings, false, true);
 			
 			for (DockedToken dockedSentence : dockedSentences.values()) {
 				Sentence sentenceAnnot = new Sentence(aJCas);
@@ -51,7 +51,7 @@ public abstract class SentenceSplitterAE<T extends SentenceSplitter> extends Sin
 			}
 		} catch (SentenceSplitterException e) {
 			throw new AnalysisEngineProcessException(AnalysisEngineProcessException.ANNOTATOR_EXCEPTION, null, e);
-		} catch (StringUtilException e) {
+		} catch (DockedTokenFinderException e) {
 			throw new AnalysisEngineProcessException(AnalysisEngineProcessException.ANNOTATOR_EXCEPTION, null, e);
 		}
 	}
