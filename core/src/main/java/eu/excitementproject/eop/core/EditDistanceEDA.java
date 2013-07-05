@@ -337,8 +337,9 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		double threshold = 0.0;
 		
-		if ( (distanceValueList != null && entailmentValueList != null) &&
-				(distanceValueList.size() == 0 || entailmentValueList.size() == 0) )
+		if ( ((distanceValueList != null && entailmentValueList != null) &&
+				(distanceValueList.size() == 0 || entailmentValueList.size() == 0)) ||
+				(distanceValueList == null || entailmentValueList == null))
 			return threshold;
 		
 		try {
@@ -463,15 +464,17 @@ public class EditDistanceEDA<T extends TEDecision>
      */
 	private String getPairId(JCas jcas) {
 		
-		Pair p = null;
-		
 		FSIterator<TOP> pairIter = jcas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		
+		Pair p = null;
 		if (pairIter.hasNext())
 			p = (Pair)pairIter.next();
 		
-		return p.getPairID();
+		if (p != null)
+			return p.getPairID();
 	
+		return null;
+		
 	}
 	
 	
