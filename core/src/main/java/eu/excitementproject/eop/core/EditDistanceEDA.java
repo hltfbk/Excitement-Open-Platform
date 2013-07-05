@@ -256,10 +256,7 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		logger.info("shutdown()");
 		
-		if (component.getComponentName().equals("FixedWeightTokenEditDistance"))
-			((FixedWeightTokenEditDistance)component).shutdown();
-		else if (component.getComponentName().equals("FixedWeightLemmaEditDistance"))
-			((FixedWeightLemmaEditDistance)component).shutdown();
+	    ((FixedWeightEditDistance)component).shutdown();
 		
 		component = null;
 		modelFile = null;
@@ -281,7 +278,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			List<DistanceValue> distanceValueList = new ArrayList<DistanceValue>();
 			List<String> entailmentValueList = new ArrayList<String>();
 			
-			for (File xmi : (new File(trainDIR)).listFiles()) {
+			for (File xmi : new File(trainDIR).listFiles()) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
 				}
@@ -320,8 +317,10 @@ public class EditDistanceEDA<T extends TEDecision>
 	private void checkConfiguration(CommonConfig config) 
 			throws ConfigurationException {
 		
-
 		logger.info("checkConfiguration()");
+		
+		if (config == null)
+			throw new ConfigurationException("Configuration file not available.");
 		
 	}
 	
@@ -337,6 +336,11 @@ public class EditDistanceEDA<T extends TEDecision>
 			throws ComponentException, EDAException, Exception {
 		
 		double threshold = 0.0;
+		
+		if ( (distanceValueList != null && entailmentValueList != null) &&
+				(distanceValueList.size() == 0 || entailmentValueList.size() == 0) ||
+				distanceValueList == null || entailmentValueList == null)
+			return threshold;
 		
 		try {
 		
@@ -460,15 +464,17 @@ public class EditDistanceEDA<T extends TEDecision>
      */
 	private String getPairId(JCas jcas) {
 		
-		Pair p = null;
-		
 		FSIterator<TOP> pairIter = jcas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		
+		Pair p = null;
 		if (pairIter.hasNext())
 			p = (Pair)pairIter.next();
 		
-		return p.getPairID();
+		if (p != null)
+			return p.getPairID();
 	
+		return null;
+		
 	}
 	
 	
@@ -489,8 +495,8 @@ public class EditDistanceEDA<T extends TEDecision>
 		Collections.sort(newDistanceValues, new Comparator<DistanceValue>(){
 			 
             public int compare(DistanceValue d1,  DistanceValue d2) {
-                return (d1.getDistance() > d2.getDistance() ? 1 :
-                	(d1.getDistance() == d2.getDistance() ? 0 : -1));
+                return d1.getDistance() > d2.getDistance() ? 1 :
+                	d1.getDistance() == d2.getDistance() ? 0 : -1;
             }
   
         });
@@ -579,9 +585,8 @@ public class EditDistanceEDA<T extends TEDecision>
 			
 			String line = reader.readLine();
 			
-			while (line != null) {
+			if (line != null) {
 				result = Double.parseDouble(line);
-				break;
 			}
 		
 		} catch (Exception e) {
