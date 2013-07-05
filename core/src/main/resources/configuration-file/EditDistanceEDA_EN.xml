@@ -27,6 +27,13 @@
 			<property name="stopWordRemoval">true</property>
 			<property name="path">/opt/share/eop-resources/ontologies/EnglishWordNet-dict/</property>
 		</subsection>
+		
+		<subsection name="wikipedia">
+			<property name="stopWordRemoval">true</property>
+			<property name="dbconnection">jdbc:mysql://nathrezim:3306/wikikb</property>
+			<property name="dbuser">root</property>
+			<property name="dbpasswd">nat_2k12</property>
+		</subsection>
 
 	</section>	
 	
@@ -49,12 +56,20 @@
 			<property name="stopWordRemoval">true</property>
 			<property name="path">/opt/share/eop-resources/ontologies/EnglishWordNet-dict/</property>
 		</subsection>
+		
+		<subsection name="wikipedia">
+			<property name="stopWordRemoval">true</property>
+			<property name="dbconnection">jdbc:mysql://nathrezim:3306/wikikb</property>
+			<property name="dbuser">root</property>
+			<property name="dbpasswd">nat_2k12</property>
+		</subsection>
 
 	</section>	
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_EN_Model</property>
 		<property name="trainDir">/tmp/</property>
+		<!-- <property name="trainDir">/tmp/ENG/dev/</property> -->
 		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	</section>

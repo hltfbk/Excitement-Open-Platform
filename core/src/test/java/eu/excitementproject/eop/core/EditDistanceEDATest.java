@@ -39,6 +39,7 @@ public class EditDistanceEDATest {
 	static Logger logger = Logger.getLogger(EditDistanceEDATest.class
 			.getName());
 	
+	@Ignore
 	@Test
 	public void test() {
 		
@@ -109,10 +110,14 @@ public class EditDistanceEDATest {
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
 			
+			long startTime = System.currentTimeMillis(); 
 			editDistanceEDA.startTraining(config);
+			long endTime = System.currentTimeMillis(); 
+			logger.info("Time:" + (endTime - startTime)/1000);
 			editDistanceEDA.shutdown();
 			editDistanceEDA.initialize(config);
 			
+			startTime = System.currentTimeMillis(); 
 			for (File xmi : (testDir.listFiles())) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
@@ -122,6 +127,8 @@ public class EditDistanceEDATest {
 				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
+			endTime = System.currentTimeMillis(); 
+			logger.info("Time:" + (endTime - startTime)/1000);
 			
 			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
 			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
@@ -163,10 +170,15 @@ public class EditDistanceEDATest {
 			
 		    CommonConfig config = new ImplCommonConfig(configFile);
 		    
+		    long startTime = System.currentTimeMillis(); 
 		    editDistanceEDA.startTraining(config);
+		    long endTime = System.currentTimeMillis(); 
+		    logger.info("Time:" + (endTime - startTime)/1000);
+		    
 			editDistanceEDA.shutdown();
 			editDistanceEDA.initialize(config);
 		    
+			startTime = System.currentTimeMillis(); 
 			for (File xmi : (testDir.listFiles())) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
@@ -175,8 +187,8 @@ public class EditDistanceEDATest {
 				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
-			
-			
+			endTime = System.currentTimeMillis(); 
+			logger.info("Time:" + (endTime - startTime)/1000);
 			
 			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
 			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
@@ -218,10 +230,15 @@ public class EditDistanceEDATest {
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
 			
+			long startTime = System.currentTimeMillis(); 
 			editDistanceEDA.startTraining(config);
+			long endTime = System.currentTimeMillis(); 
+			logger.info("Time:" + (endTime - startTime)/1000);
+			
 			editDistanceEDA.shutdown();
 			editDistanceEDA.initialize(config);
 			
+			startTime = System.currentTimeMillis(); 
 			for (File xmi : (testDir.listFiles())) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
@@ -230,6 +247,8 @@ public class EditDistanceEDATest {
 				EditDistanceTEDecision teDecision1 = editDistanceEDA.process(cas);
 				list.add(getPairID(cas) + "\t" + getGoldLabel(cas) + "\t"  + teDecision1.getDecision().toString() + "\t" + teDecision1.getConfidence());
 			}
+			endTime = System.currentTimeMillis(); 
+			logger.info("Time:" + (endTime - startTime)/1000);
 			
 			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
 			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
