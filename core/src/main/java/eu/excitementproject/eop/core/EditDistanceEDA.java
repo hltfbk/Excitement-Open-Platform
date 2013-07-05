@@ -339,7 +339,7 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		if ( (distanceValueList != null && entailmentValueList != null) &&
 				(distanceValueList.size() == 0 || entailmentValueList.size() == 0) ||
-				(distanceValueList == null || entailmentValueList == null))
+				distanceValueList == null || entailmentValueList == null)
 			return threshold;
 		
 		try {
@@ -496,7 +496,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			 
             public int compare(DistanceValue d1,  DistanceValue d2) {
                 return d1.getDistance() > d2.getDistance() ? 1 :
-                	(d1.getDistance() == d2.getDistance() ? 0 : -1);
+                	d1.getDistance() == d2.getDistance() ? 0 : -1;
             }
   
         });
