@@ -39,11 +39,12 @@ public class EditDistanceEDATest {
 	static Logger logger = Logger.getLogger(EditDistanceEDATest.class
 			.getName());
 	
+	@Ignore
 	@Test
 	public void test() {
 		
 		//testEditDistance();
-		testItalian();
+		//testItalian();
 		//testEnglish();
 		//testGerman();
 	}
