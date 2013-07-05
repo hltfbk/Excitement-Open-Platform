@@ -278,7 +278,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			List<DistanceValue> distanceValueList = new ArrayList<DistanceValue>();
 			List<String> entailmentValueList = new ArrayList<String>();
 			
-			for (File xmi : (new File(trainDIR)).listFiles()) {
+			for (File xmi : new File(trainDIR).listFiles()) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
 				}
@@ -337,8 +337,8 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		double threshold = 0.0;
 		
-		if ( ((distanceValueList != null && entailmentValueList != null) &&
-				(distanceValueList.size() == 0 || entailmentValueList.size() == 0)) ||
+		if ( (distanceValueList != null && entailmentValueList != null) &&
+				(distanceValueList.size() == 0 || entailmentValueList.size() == 0) ||
 				(distanceValueList == null || entailmentValueList == null))
 			return threshold;
 		
@@ -495,8 +495,8 @@ public class EditDistanceEDA<T extends TEDecision>
 		Collections.sort(newDistanceValues, new Comparator<DistanceValue>(){
 			 
             public int compare(DistanceValue d1,  DistanceValue d2) {
-                return (d1.getDistance() > d2.getDistance() ? 1 :
-                	(d1.getDistance() == d2.getDistance() ? 0 : -1));
+                return d1.getDistance() > d2.getDistance() ? 1 :
+                	(d1.getDistance() == d2.getDistance() ? 0 : -1);
             }
   
         });
