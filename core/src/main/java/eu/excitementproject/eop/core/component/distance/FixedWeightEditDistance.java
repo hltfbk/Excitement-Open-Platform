@@ -38,6 +38,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPa
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiExtractionType;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.it.WikiLexicalResourceIT;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
@@ -614,6 +615,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 					WikiExtractionType.BE_COMP_IDIRECT,WikiExtractionType.ALL_NOUNS_TOP}, new HashSet<WikiExtractionType>());
 			//File stopWordsFile = new File("src/test/resources/stopwords.txt");
 			File stopWordsFile = File.createTempFile("emptystopwordfile", ".tmp"); 
+			stopWordsFile.deleteOnExit();
 			lexR = new WikiLexicalResource(stopWordsFile, extractionTypes, dbConnection, dbUser, dbPasswd, 0.01);
 			
 		} catch (Exception e) {
@@ -645,7 +647,8 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 				//	WikiExtractionType.BE_COMP_IDIRECT,WikiExtractionType.ALL_NOUNS_TOP}, new HashSet<WikiExtractionType>());
     		//File stopWordsFile = new File("src/test/resources/stopwords.txt");
 			File stopWordsFile = File.createTempFile("emptystopwordfile", ".tmp"); 
-			lexR = new WikiLexicalResource(stopWordsFile, extractionTypes, dbConnection, dbUser, dbPasswd, 0.01);
+			stopWordsFile.deleteOnExit();
+			lexR = new WikiLexicalResourceIT(stopWordsFile, extractionTypes, dbConnection, dbUser, dbPasswd, 0.01);
 			
 		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());

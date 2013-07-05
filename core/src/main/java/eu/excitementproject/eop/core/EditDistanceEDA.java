@@ -256,10 +256,7 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		logger.info("shutdown()");
 		
-		if (component.getComponentName().equals("FixedWeightTokenEditDistance"))
-			((FixedWeightTokenEditDistance)component).shutdown();
-		else if (component.getComponentName().equals("FixedWeightLemmaEditDistance"))
-			((FixedWeightLemmaEditDistance)component).shutdown();
+	    ((FixedWeightEditDistance)component).shutdown();
 		
 		component = null;
 		modelFile = null;
@@ -320,8 +317,10 @@ public class EditDistanceEDA<T extends TEDecision>
 	private void checkConfiguration(CommonConfig config) 
 			throws ConfigurationException {
 		
-
 		logger.info("checkConfiguration()");
+		
+		if (config == null)
+			throw new ConfigurationException("Configuration file not available.");
 		
 	}
 	
@@ -337,6 +336,10 @@ public class EditDistanceEDA<T extends TEDecision>
 			throws ComponentException, EDAException, Exception {
 		
 		double threshold = 0.0;
+		
+		if ( (distanceValueList != null && entailmentValueList != null) &&
+				(distanceValueList.size() == 0 || entailmentValueList.size() == 0) )
+			return threshold;
 		
 		try {
 		
@@ -579,9 +582,8 @@ public class EditDistanceEDA<T extends TEDecision>
 			
 			String line = reader.readLine();
 			
-			while (line != null) {
+			if (line != null) {
 				result = Double.parseDouble(line);
-				break;
 			}
 		
 		} catch (Exception e) {
