@@ -10,7 +10,7 @@
 	
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	
-	    <property name="instances">wikipedia</property>
+	    <property name="instances">basic</property>
 	    
 	    <subsection name="weights">
 			<property name="match">0.0</property>
@@ -68,8 +68,8 @@
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_EN_Model</property>
-		<!-- <property name="trainDir">/tmp/</property> -->
-		<property name="trainDir">/tmp/ENG/dev/</property>
+		<property name="trainDir">/tmp/</property>
+		<!-- <property name="trainDir">/tmp/ENG/dev/</property> -->
 		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	</section>
