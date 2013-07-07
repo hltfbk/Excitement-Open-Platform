@@ -2,11 +2,20 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.truthteller.conll;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -32,11 +41,15 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
  */
 public class AnnotateSentenceToConll {
 
+	public static final String INPUT_FILE_SENTENCES_TO_ANNOTATE="input-file";
+	
 	private static AnnotatedConllStringConverter CONLL_CONVERTER  = new AnnotatedConllStringConverter();
 	private static SentenceSplitter SENTENCE_SPLITTER = new LingPipeSentenceSplitter();
 	private EasyFirstParser parser;
 	private DefaultSentenceAnnotator annotator;
 	private final File conllOutputFolder;
+	
+	private ConfigurationParams annotationParams = null;
 
 	/**
 	 * Ctor
@@ -46,7 +59,7 @@ public class AnnotateSentenceToConll {
 	public AnnotateSentenceToConll(ConfigurationFile confFile) throws ConfigurationException, ConllConverterException {
 		
 		confFile.setExpandingEnvironmentVariables(true);
-		ConfigurationParams annotationParams = confFile.getModuleConfiguration(TransformationsConfigurationParametersNames.TRUTH_TELLER_MODULE_NAME); 
+		annotationParams = confFile.getModuleConfiguration(TransformationsConfigurationParametersNames.TRUTH_TELLER_MODULE_NAME); 
 
 		try {
 			annotator = new DefaultSentenceAnnotator(annotationParams);
@@ -92,6 +105,30 @@ public class AnnotateSentenceToConll {
 		return conllString;
 	}
 	
+	
+	public List<String> getSentencesToAnnotate() throws ConfigurationException, FileNotFoundException, IOException
+	{
+		if (annotationParams.contains(INPUT_FILE_SENTENCES_TO_ANNOTATE))
+		{
+			List<String> sentences = new LinkedList<String>();
+			File inputFile = annotationParams.getFile(INPUT_FILE_SENTENCES_TO_ANNOTATE);
+			try(BufferedReader reader = new BufferedReader(new FileReader(inputFile)))
+			{
+				String line = reader.readLine();
+				while (line !=null)
+				{
+					sentences.add(line);
+					line = reader.readLine();
+				}
+			}
+			return sentences;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
 	private ExtendedNode annotateSentece(String sentence) throws ConllConverterException
 	{
 			parser.setSentence(sentence);
@@ -119,9 +156,13 @@ public class AnnotateSentenceToConll {
 	 * @throws ParserRunException 
 	 * @throws ConllConverterException 
 	 * @throws SentenceSplitterException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) throws AnnotatorException, ConfigurationFileDuplicateKeyException, ConfigurationException, ParserRunException, ConllConverterException, SentenceSplitterException {
+	public static void main(String[] args) throws AnnotatorException, ConfigurationFileDuplicateKeyException, ConfigurationException, ParserRunException, ConllConverterException, SentenceSplitterException, FileNotFoundException, IOException {
 
+		BasicConfigurator.configure();
+		Logger.getRootLogger().setLevel(Level.INFO);
 		if (args.length < (1))
 			throw new AnnotatorException(String.format("usage: %s configurationFile.xml sentence(s)", AnnotateSentenceToConll.class.getSimpleName()));
 		
@@ -133,28 +174,35 @@ public class AnnotateSentenceToConll {
 		
 		AnnotateSentenceToConll app = new AnnotateSentenceToConll(confFile);
 		
-		// Read the text from command line
-		StringBuffer sbInputWords = new StringBuffer();
-		boolean firstIteration = true;
-		while (argsIterator.hasNext())
+		List<String> sentencesToAnnotate = app.getSentencesToAnnotate();
+		if (null==sentencesToAnnotate)
 		{
-			if (firstIteration) firstIteration=false;
-			else sbInputWords.append(" ");
+			// Read the text from command line
+			StringBuffer sbInputWords = new StringBuffer();
+			boolean firstIteration = true;
+			while (argsIterator.hasNext())
+			{
+				if (firstIteration) firstIteration=false;
+				else sbInputWords.append(" ");
+				
+				sbInputWords.append(argsIterator.next());
+			}
 			
-			sbInputWords.append(argsIterator.next());
+//			List<String> listOfWords = Utils.arrayToCollection(args, new Vector<String>());
+//			listOfWords.remove(0);	// remove the confFile parameter
+//			listOfWords.remove(1); // remove the pos-tagger-file-name
+//			String text = StringUtil.joinIterableToString(listOfWords, " ");
+			
+			String text = sbInputWords.toString();
+			
+			SENTENCE_SPLITTER.setDocument(text);
+			SENTENCE_SPLITTER.split();
+			sentencesToAnnotate = SENTENCE_SPLITTER.getSentences();
 		}
 		
-//		List<String> listOfWords = Utils.arrayToCollection(args, new Vector<String>());
-//		listOfWords.remove(0);	// remove the confFile parameter
-//		listOfWords.remove(1); // remove the pos-tagger-file-name
-//		String text = StringUtil.joinIterableToString(listOfWords, " ");
-		
-		String text = sbInputWords.toString();
-		
-		SENTENCE_SPLITTER.setDocument(text);
-		SENTENCE_SPLITTER.split();
+
 		List<ExtendedNode> list = new ArrayList<ExtendedNode>();
-		for (String sentence : SENTENCE_SPLITTER.getSentences())
+		for (String sentence : sentencesToAnnotate)
 		{
 			ExtendedNode annotatedSentece =  app.annotateSentece(sentence);
 			list.add(annotatedSentece);
