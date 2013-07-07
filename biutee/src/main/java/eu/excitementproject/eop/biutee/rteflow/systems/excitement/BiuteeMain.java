@@ -2,16 +2,22 @@ package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
+import org.uimafit.util.JCasUtil;
 
+import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsPreProcessor;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
+import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -126,20 +132,49 @@ public class BiuteeMain {
 				throw new BiuteeMainException("Must have at least one preprocessed XMI in " + lapOutputFolder);
 			}
 			logger.trace(String.format("Processing all %d xmi files in %s using BiuteeEDA...", xmiFiles.length, lapOutputFolder));
+			
+			List<Boolean> results = new ArrayList<Boolean>();
 			for (File xmi : xmiFiles) {
 				JCas jcas = PlatformCASProber.probeXmi(xmi, null);
 				TEDecision decision = eda.process(jcas);
+				DecisionLabel gold = readGoldLabel(jcas, xmi);
+				results.add(gold.equals(decision.getDecision()));
 				logger.info(String.format("Decision for %s: label=%s, confidence=%f", xmi, decision.getDecision(), decision.getConfidence()));
 			}
 			
 			logger.trace(String.format("Finished processing %d xmi files using BiuteeEDA.", xmiFiles.length));
+			logger.info("Accuracy: " + calcAccuracy(results));
 		}
 		finally {
 			if (eda != null) {
 				eda.shutdown();
 			}
 		}
+	}
 	
+	private static double calcAccuracy(List<Boolean> results) {
+		int correct = 0;
+		for (Boolean result : results) {
+			if (result) {
+				correct++;
+			}
+		}
+		return ((double)correct) / results.size();
+	}
+	
+	private static DecisionLabel readGoldLabel(JCas jcas, File xmi) throws EDAException {
+		DecisionLabel goldLabel = null;
+		Collection<Pair> pairs = JCasUtil.select(jcas, Pair.class);
+		if (pairs.size() != 1) {
+			throw new EDAException("Ambiguous gold answer for " + xmi);
+		}
+		for (Pair pair : pairs) {
+			goldLabel = DecisionLabel.getLabelFor(pair.getGoldAnswer());
+		}
+		if (goldLabel == null) {
+			throw new EDAException("Unknown gold answer for " + xmi);
+		}
+		return goldLabel;
 	}
 	
 	private static void clearDirectory(File path) throws IOException {
