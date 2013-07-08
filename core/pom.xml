@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>eu.excitementproject</groupId>
 		<artifactId>eop</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 	<artifactId>core</artifactId>
 	<name>core</name>
@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp</groupId>
@@ -44,7 +44,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>lap</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
+			<version>1.0.2-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>unituebingen</groupId>
