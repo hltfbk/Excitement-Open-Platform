@@ -41,7 +41,9 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
  */
 public class AnnotateSentenceToConll {
 
-	public static final String INPUT_FILE_SENTENCES_TO_ANNOTATE="input-file";
+	public static final String INPUT_FILE_INDICATOR = "-f";
+	
+	private static Logger logger = null;
 	
 	private static AnnotatedConllStringConverter CONLL_CONVERTER  = new AnnotatedConllStringConverter();
 	private static SentenceSplitter SENTENCE_SPLITTER = new LingPipeSentenceSplitter();
@@ -106,27 +108,20 @@ public class AnnotateSentenceToConll {
 	}
 	
 	
-	public List<String> getSentencesToAnnotate() throws ConfigurationException, FileNotFoundException, IOException
+	public List<String> getSentencesToAnnotate(String inputFileName) throws ConfigurationException, FileNotFoundException, IOException
 	{
-		if (annotationParams.contains(INPUT_FILE_SENTENCES_TO_ANNOTATE))
+		List<String> sentences = new LinkedList<String>();
+		File inputFile = new File(inputFileName);
+		try(BufferedReader reader = new BufferedReader(new FileReader(inputFile)))
 		{
-			List<String> sentences = new LinkedList<String>();
-			File inputFile = annotationParams.getFile(INPUT_FILE_SENTENCES_TO_ANNOTATE);
-			try(BufferedReader reader = new BufferedReader(new FileReader(inputFile)))
+			String line = reader.readLine();
+			while (line !=null)
 			{
-				String line = reader.readLine();
-				while (line !=null)
-				{
-					sentences.add(line);
-					line = reader.readLine();
-				}
+				sentences.add(line);
+				line = reader.readLine();
 			}
-			return sentences;
 		}
-		else
-		{
-			return null;
-		}
+		return sentences;
 	}
 	
 	private ExtendedNode annotateSentece(String sentence) throws ConllConverterException
@@ -159,33 +154,58 @@ public class AnnotateSentenceToConll {
 	 * @throws IOException 
 	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) throws AnnotatorException, ConfigurationFileDuplicateKeyException, ConfigurationException, ParserRunException, ConllConverterException, SentenceSplitterException, FileNotFoundException, IOException {
-
+	public static void main(String[] args)
+	{
 		BasicConfigurator.configure();
 		Logger.getRootLogger().setLevel(Level.INFO);
-		if (args.length < (1))
-			throw new AnnotatorException(String.format("usage: %s configurationFile.xml sentence(s)", AnnotateSentenceToConll.class.getSimpleName()));
+		logger = Logger.getLogger(AnnotateSentenceToConll.class);
+		try
+		{
+			annotateByCommandLineArguments(args);
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace(System.out);
+			logger.error("TruthTeller failed.",t);
+		}
+	}
+	
+	private static Iterable<String> getSentencesIterable(Iterator<String> argsIterator, AnnotateSentenceToConll app) throws FileNotFoundException, ConfigurationException, IOException, SentenceSplitterException
+	{
+		List<String> sentencesToAnnotate = null;
 		
-		List<String> argsList = Utils.arrayToCollection(args, new Vector<String>());
-		Iterator<String> argsIterator = argsList.iterator();
 		
-		ConfigurationFile confFile = new ConfigurationFile(new File(argsIterator.next()));
-		confFile.setExpandingEnvironmentVariables(true);
+		String firstArgumentAfterConfigurationFile = null;
+		if (argsIterator.hasNext())
+		{
+			firstArgumentAfterConfigurationFile = argsIterator.next();
+		}
 		
-		AnnotateSentenceToConll app = new AnnotateSentenceToConll(confFile);
 		
-		List<String> sentencesToAnnotate = app.getSentencesToAnnotate();
-		if (null==sentencesToAnnotate)
+		if (INPUT_FILE_INDICATOR.equalsIgnoreCase(firstArgumentAfterConfigurationFile))
+		{
+			if (argsIterator.hasNext())
+			{
+				sentencesToAnnotate = app.getSentencesToAnnotate(argsIterator.next());
+			}
+			else
+			{
+				throw new RuntimeException("No input file is given, though \""+INPUT_FILE_INDICATOR+"\" has been encountered as a command line argument.");
+			}
+		}
+		else
 		{
 			// Read the text from command line
 			StringBuffer sbInputWords = new StringBuffer();
-			boolean firstIteration = true;
-			while (argsIterator.hasNext())
+			
+			if (firstArgumentAfterConfigurationFile!=null)
 			{
-				if (firstIteration) firstIteration=false;
-				else sbInputWords.append(" ");
-				
-				sbInputWords.append(argsIterator.next());
+				sbInputWords.append(firstArgumentAfterConfigurationFile);
+				while (argsIterator.hasNext())
+				{
+					sbInputWords.append(" ");
+					sbInputWords.append(argsIterator.next());
+				}
 			}
 			
 //			List<String> listOfWords = Utils.arrayToCollection(args, new Vector<String>());
@@ -200,6 +220,24 @@ public class AnnotateSentenceToConll {
 			sentencesToAnnotate = SENTENCE_SPLITTER.getSentences();
 		}
 		
+		return sentencesToAnnotate;
+	}
+		
+		
+	private static void annotateByCommandLineArguments(String[] args) throws AnnotatorException, ConfigurationFileDuplicateKeyException, ConfigurationException, ParserRunException, ConllConverterException, SentenceSplitterException, FileNotFoundException, IOException
+	{
+		if (args.length < (1))
+			throw new AnnotatorException(String.format("usage: %s configurationFile.xml sentence(s)", AnnotateSentenceToConll.class.getSimpleName()));
+		
+		List<String> argsList = Utils.arrayToCollection(args, new Vector<String>());
+		Iterator<String> argsIterator = argsList.iterator();
+		
+		ConfigurationFile confFile = new ConfigurationFile(new File(argsIterator.next()));
+		confFile.setExpandingEnvironmentVariables(true);
+		AnnotateSentenceToConll app = new AnnotateSentenceToConll(confFile);
+		
+
+		Iterable<String> sentencesToAnnotate = getSentencesIterable(argsIterator,app);
 
 		List<ExtendedNode> list = new ArrayList<ExtendedNode>();
 		for (String sentence : sentencesToAnnotate)
