@@ -38,6 +38,56 @@ public class DockedToken {
 		return charOffsetEnd;
 	}
 	
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public void setCharOffsetStart(int charOffsetStart) {
+		this.charOffsetStart = charOffsetStart;
+	}
+
+	public void setCharOffsetEnd(int charOffsetEnd) {
+		this.charOffsetEnd = charOffsetEnd;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + charOffsetEnd;
+		result = prime * result + charOffsetStart;
+		result = prime * result + ((token == null) ? 0 : token.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		DockedToken other = (DockedToken) obj;
+		if (charOffsetEnd != other.charOffsetEnd) {
+			return false;
+		}
+		if (charOffsetStart != other.charOffsetStart) {
+			return false;
+		}
+		if (token == null) {
+			if (other.token != null) {
+				return false;
+			}
+		} else if (!token.equals(other.token)) {
+			return false;
+		}
+		return true;
+	}
+
 	public String toString() {
 		return String.format("%s[%d:%d]", token, charOffsetStart, charOffsetEnd);
 	}

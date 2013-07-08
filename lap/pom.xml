@@ -5,7 +5,7 @@
   	<parent>
 		<groupId>eu.excitementproject</groupId>
 	  	<artifactId>eop</artifactId>
-	    <version>1.0.0</version>
+	    <version>1.0.1</version>
 	</parent>
   
   	<artifactId>lap</artifactId>
@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -208,6 +208,17 @@
     		<version>20130301.0</version>
     	</dependency>
     	-->
+
+		<!-- MUST BE THE LAST DEPENDENCY, to avoid jar hell with another version of stanfordnlp.
+		     Used only for the file ner-en-all.3class.distsim.crf.map, by the class StanfordNamedEntityRecognizerAE -->
+		<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+    		</artifactId>
+    		<version>1.4.0</version>
+    	</dependency>
+
  	</dependencies>
 
     <dependencyManagement>
