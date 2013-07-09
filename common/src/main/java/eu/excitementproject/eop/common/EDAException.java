@@ -19,4 +19,7 @@ public class EDAException extends BaseException {
 		super(message, cause);
 	}
 
+	public EDAException(Throwable cause) {
+		super(cause);
+	}
 }

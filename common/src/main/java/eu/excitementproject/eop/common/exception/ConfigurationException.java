@@ -18,4 +18,7 @@ public class ConfigurationException extends BaseException {
 		super(message, cause);
 	}
 
+	public ConfigurationException(Throwable cause) {
+		super(cause);
+	}
 }

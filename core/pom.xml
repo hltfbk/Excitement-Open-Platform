@@ -51,5 +51,48 @@
 			<artifactId>GermaNetAPI</artifactId>
 			<version>7.0.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.style-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.structure-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.lexical-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>weka</groupId>
+			<artifactId>weka</artifactId>
+			<version>3.7.1</version>
+		</dependency>
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.similarity</groupId>
+				<artifactId>
+					de.tudarmstadt.ukp.similarity-asl
+				</artifactId>
+				<version>1.0.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<repositories>
+		<repository>
+	        <id>ukp-oss</id>
+	        <name>ukp-oss-releases</name>
+	        <url>https://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ukp-releases-local</url>
+	    </repository>
+	</repositories>
 </project>
