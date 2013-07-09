@@ -6,24 +6,31 @@
 
 <configuration>
 
-
 	<section name="GermaNetWrapper">
-		<!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS 
-	    	 or RHS->LHS, as a value of confidence [0.0 - 1.0] --> 
+		<!-- GermaNetWrapper options: path to GermanNet top directory, and relations to be 
+		     used for LHS->RHS or RHS->LHS, as a value of confidence [0.0 - 1.0] --> 
 
-		<!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. -->
+		<!-- you need to update this for your own GermaNet path. If not found, 
+		     GermaNet init will raise an exception. -->
 		<property name="germaNetFilesPath">/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property>  
 
-		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
+		<!-- GermaNet relations and their confidences. 
+		     Confidence of 1.0 means "this relation absolutely means Entailment".
+		     Confidence of 0.0 means "this relation absolutely means Non-Entailment".
+		     Confidence of 0.5 means "I can't say anything about Entailment decision".
+			 DEFAULT values: 0.5 for all positive relations. -->
+		<!-- LHS -> RHS relations --> 
 		<property name="causesConfidence">0.5</property> 
 		<property name="entailsConfidence">0.5</property>
-		<property name="hypernymConfidence">0.5</property> 
-		<property name="synonymConfidence">0.5</property>
+		<property name="hypernymConfidence">0.5</property>
 		
-		<!-- GermaNet relations and their confidences (RHS -> LHS) -->
-		<property name="antonymConfidence">0.5</property> 
+		<!-- both LHS -> RHS and RHS -> LHS relations --> 
+		<property name="synonymConfidence">0.5</property> 
+		
+		<!-- RHS -> LHS relations -->
 		<property name="hyponymConfidence">0.5</property>
 	</section> 
+	
 	
 	
 	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
