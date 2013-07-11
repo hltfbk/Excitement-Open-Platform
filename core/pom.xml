@@ -72,7 +72,7 @@
 		<dependency>
 			<groupId>weka</groupId>
 			<artifactId>weka</artifactId>
-			<version>3.7.1</version>
+			<version>3.7.5</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -94,5 +94,10 @@
 	        <name>ukp-oss-releases</name>
 	        <url>https://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ukp-releases-local</url>
 	    </repository>
+	    <repository>
+	        <id>ukp-oss-ext</id>
+	        <name>ukp-oss-releases-ext</name>
+	        <url>https://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ext-releases-local</url>
+	    </repository>	    
 	</repositories>
 </project>
