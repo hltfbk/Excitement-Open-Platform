@@ -5,6 +5,7 @@ import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 
 /**
  * 
@@ -17,4 +18,5 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 public abstract class Prover<I extends Instance, P extends Proof>
 {
 	public abstract P prove(I instance, OperationsScript<Info, BasicNode> script, LinearClassifier classifierForSearch) throws BiuteeException;
+	protected abstract Lemmatizer getLemmatizer() throws BiuteeException;
 }

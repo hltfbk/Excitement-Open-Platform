@@ -2,7 +2,7 @@ package eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
-import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
@@ -10,6 +10,7 @@ import eu.excitementproject.eop.biutee.script.HypothesisInformation;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
+import eu.excitementproject.eop.biutee.utilities.Provider;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -25,13 +26,11 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  * @since Jul 15, 2013
  *
  */
-public class RtePairsProver extends Prover<THPairInstance, THPairProof>
+public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 {
-	public RtePairsProver(Lemmatizer lemmatizer,
-			TESystemEnvironment teSystemEnvironment)
+	public RtePairsProver(TESystemEnvironment teSystemEnvironment, Provider<Lemmatizer> lemmatizerProvider)
 	{
-		super();
-		this.lemmatizer = lemmatizer;
+		super(lemmatizerProvider);
 		this.teSystemEnvironment = teSystemEnvironment;
 	}
 	
@@ -53,7 +52,7 @@ public class RtePairsProver extends Prover<THPairInstance, THPairProof>
 					pairData.getPair().getText(), pairData.getPair().getHypothesis(),
 					pairData.getTextTrees(), pairData.getHypothesisTree(),
 					pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),
-					classifierForSearch, lemmatizer, script, teSystemEnvironment
+					classifierForSearch, getLemmatizer(), script, teSystemEnvironment
 					);
 			processor.process();
 			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory());
@@ -65,6 +64,7 @@ public class RtePairsProver extends Prover<THPairInstance, THPairProof>
 		}
 	}
 
-	private final Lemmatizer lemmatizer;
+
 	private final TESystemEnvironment teSystemEnvironment;
+
 }
