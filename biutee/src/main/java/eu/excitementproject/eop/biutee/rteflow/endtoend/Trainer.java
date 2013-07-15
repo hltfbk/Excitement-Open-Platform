@@ -206,7 +206,7 @@ public class Trainer<I extends Instance, P extends Proof>
 	protected TrainableStorableClassifier classifierForPredictions;
 	protected Results<I, P> resultsLastIteration;
 	protected Vector<LabeledSample> samplesLastIteration = null;
-	protected LinkedList<List<LabeledSample>> samplesOfOlderIterations = new LinkedList<>();
+	protected LinkedList<Vector<LabeledSample>> samplesOfOlderIterations = new LinkedList<>();
 
 	private static final Logger logger = Logger.getLogger(Trainer.class);
 }
