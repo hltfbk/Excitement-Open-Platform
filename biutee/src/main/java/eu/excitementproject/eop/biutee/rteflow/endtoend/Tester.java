@@ -2,6 +2,8 @@ package eu.excitementproject.eop.biutee.rteflow.endtoend;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
@@ -44,6 +46,7 @@ public class Tester<I extends Instance, P extends Proof>
 		
 		results = resultsFactory.createResults(proofs, classifierForPredictions);
 		results.compute();
+		logger.info("Test done. Results:\n"+results.print());
 	}
 	
 	
@@ -66,4 +69,6 @@ public class Tester<I extends Instance, P extends Proof>
 	
 	// output
 	private Results<I, P> results = null;
+	
+	private static final Logger logger = Logger.getLogger(Tester.class);
 }

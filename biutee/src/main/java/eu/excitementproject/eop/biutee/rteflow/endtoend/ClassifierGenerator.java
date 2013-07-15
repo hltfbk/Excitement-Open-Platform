@@ -14,7 +14,7 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeException;
  */
 public abstract class ClassifierGenerator
 {
-	public abstract LinearClassifier createReasonableGuessClassifier() throws BiuteeException;
+	public abstract LinearTrainableStorableClassifier createReasonableGuessClassifier() throws BiuteeException;
 	public abstract LinearClassifier loadClassifierForSearch() throws BiuteeException;
 	public abstract Classifier loadClassifierForPredictions() throws BiuteeException;
 	public abstract LinearTrainableStorableClassifier createTrainableClassifierForSearch() throws BiuteeException;

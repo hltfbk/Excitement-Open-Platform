@@ -25,6 +25,7 @@ public abstract class Results<I extends Instance, P extends Proof>
 	
 	public abstract void compute() throws BiuteeException;
 	
+	public abstract Double getSuccessRate() throws BiuteeException;
 	public abstract String print() throws BiuteeException;
 	public abstract void save(File file) throws BiuteeException;
 	

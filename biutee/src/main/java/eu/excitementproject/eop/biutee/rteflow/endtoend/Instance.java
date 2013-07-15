@@ -18,5 +18,5 @@ public abstract class Instance implements Serializable
 	public abstract HypothesisInformation getHypothesisInformation() throws BiuteeException;
 	@Override
 	public abstract String toString();
-	public abstract boolean getBinaryLabel() throws BiuteeException;
+	public abstract Boolean getBinaryLabel() throws BiuteeException;
 }
