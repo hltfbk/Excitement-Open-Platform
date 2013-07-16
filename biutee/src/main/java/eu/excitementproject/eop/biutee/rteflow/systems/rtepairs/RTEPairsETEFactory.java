@@ -48,7 +48,8 @@ public class RTEPairsETEFactory
 			}
 			RtePairsDataset dataset = new RtePairsDataset(extendedPairs);
 			return dataset;
-		} catch (ConfigurationException | ClassNotFoundException | IOException | TeEngineMlException | AnnotatorException | TreeCoreferenceInformationException e)
+		}
+		catch (ConfigurationException | ClassNotFoundException | IOException | TeEngineMlException | AnnotatorException | TreeCoreferenceInformationException e)
 		{
 			throw new BiuteeException("Failed to create dataset.",e);
 		}

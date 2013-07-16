@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.endtoend;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
@@ -27,6 +28,7 @@ public abstract class Results<I extends Instance, P extends Proof>
 	
 	public abstract Double getSuccessRate() throws BiuteeException;
 	public abstract String print() throws BiuteeException;
+	public abstract Iterator<String> instanceDetailsIterator() throws BiuteeException;
 	public abstract void save(File file) throws BiuteeException;
 	
 	protected final List<InstanceAndProof<I, P>> proofs;

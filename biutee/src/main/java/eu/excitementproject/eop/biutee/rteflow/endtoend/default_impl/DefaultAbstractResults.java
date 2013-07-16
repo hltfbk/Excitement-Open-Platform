@@ -77,8 +77,14 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 	
 	
 	/////////////// PROTECTED & PRIVATE ///////////////
+
+	protected boolean isComputeHasBeenCalled()
+	{
+		return computeHasBeenCalled;
+	}
+
 	
-	
+
 	private static final String strDouble(Double d)
 	{
 		if (null==d) return "null";
