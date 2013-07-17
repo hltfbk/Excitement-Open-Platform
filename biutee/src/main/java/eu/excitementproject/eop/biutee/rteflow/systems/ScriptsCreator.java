@@ -47,25 +47,32 @@ public class ScriptsCreator
 		}
 		queue = new ArrayBlockingQueue<OperationsScript<Info,BasicNode>>(numberOfScripts);
 		ExecutorService executor = Executors.newFixedThreadPool(numberOfScripts);
-		List<Future<Boolean>> futures = executor.invokeAll(callables);
 		ExecutionException exception = null;
-		for (Future<Boolean> future : futures)
+		List<Future<Boolean>> futures = executor.invokeAll(callables);
+		try
 		{
-			try
+			for (Future<Boolean> future : futures)
 			{
-				future.get();
-			}
-			catch (ExecutionException e)
-			{
-				if (null==exception)
+				try
 				{
-					exception=e;
+					future.get();
+				}
+				catch (ExecutionException e)
+				{
+					if (null==exception)
+					{
+						exception=e;
+					}
 				}
 			}
 		}
+		finally
+		{
+			executor.shutdown();
+		}
 		
 		scripts = new ArrayList<>(numberOfScripts);
-		while (!queue.isEmpty())
+		for (int scriptIndex=0;scriptIndex<numberOfScripts;++scriptIndex)
 		{
 			OperationsScript<Info,BasicNode> script = queue.take();
 			scripts.add(script);

@@ -55,6 +55,7 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 				trainer.cleanUp();
 			}
 			
+			
 			boolean experimentManagedSucceeded = ExperimentManager.getInstance().save();
 			logger.info("ExperimentManager save "+(experimentManagedSucceeded?"succeeded":"failed")+".");
 		}

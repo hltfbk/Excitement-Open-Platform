@@ -69,15 +69,6 @@ public class DatasetProcessor<I extends Instance, P extends Proof>
 			{
 				throw new BiuteeException("An error occurred when processing an instance. See nested exceptions.",exception);
 			}
-			
-			proofs = new ArrayList<>(mapInstances.keySet().size());
-			for (Integer id : mapInstances.keySet())
-			{
-				I instance = mapInstances.get(id);
-				P proof = mapProofs.get(id);
-				if (null==proof) throw new BiuteeException("Bug. No proof has been generated from the following instance:\n"+instance.toString());
-				proofs.add(new InstanceAndProof<I, P>(instance, proof));
-			}
 		}
 		catch (InterruptedException e)
 		{
@@ -86,6 +77,15 @@ public class DatasetProcessor<I extends Instance, P extends Proof>
 		finally
 		{
 			executor.shutdown();
+		}
+		
+		proofs = new ArrayList<>(mapInstances.keySet().size());
+		for (Integer id : mapInstances.keySet())
+		{
+			I instance = mapInstances.get(id);
+			P proof = mapProofs.get(id);
+			if (null==proof) throw new BiuteeException("Bug. No proof has been generated from the following instance:\n"+instance.toString());
+			proofs.add(new InstanceAndProof<I, P>(instance, proof));
 		}
 	}
 	
@@ -126,6 +126,7 @@ public class DatasetProcessor<I extends Instance, P extends Proof>
 		for (O object : objects)
 		{
 			map.put(id, object);
+			++id;
 		}
 		return map;
 	}
@@ -141,15 +142,18 @@ public class DatasetProcessor<I extends Instance, P extends Proof>
 		@Override
 		public P call() throws BiuteeException
 		{
+			P proof = null;
 			if (!stopFlag.isStop())
 			{
 				boolean failed=true;
 				try
 				{
-					P proof = runProver();
-					mapProofs.put(instanceId, proof);
+					proof = runProver();
+					synchronized(mapProofs)
+					{
+						mapProofs.put(instanceId, proof);
+					}
 					failed=false;
-					return proof;
 				}
 				finally
 				{
@@ -161,18 +165,26 @@ public class DatasetProcessor<I extends Instance, P extends Proof>
 			}
 			else
 			{
-				return null;
+				proof = null;
 			}
+			return proof;
 		}
 		
 		private P runProver() throws BiuteeException
 		{
-			OperationsScript<Info, BasicNode> script;
+			OperationsScript<Info, BasicNode> script = null;
 			try
 			{
+				P proof = null;
 				script = scriptQueue.take();
-				P proof = prover.prove(mapInstances.get(instanceId), script, classifierForSearch);
-				scriptQueue.put(script);
+				try
+				{
+					proof = prover.prove(mapInstances.get(instanceId), script, classifierForSearch);
+				}
+				finally
+				{
+					scriptQueue.put(script);
+				}
 				return proof;
 			}
 			catch (InterruptedException e)

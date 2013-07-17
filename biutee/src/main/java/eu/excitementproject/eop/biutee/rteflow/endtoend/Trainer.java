@@ -80,7 +80,7 @@ public class Trainer<I extends Instance, P extends Proof>
 			endOfIterationEntryPoint();
 		}
 		while (!isMainLoopDone(iterationNumber,successRatePreviousIteration,successRateCurrentIteration));
-		logger.info("Training done. Results of last iteration:\n"+resultsLastIteration.toString());
+		logger.info("Training done. Results of last iteration:\n"+resultsLastIteration.print());
 	}
 	
 	/**
@@ -108,6 +108,7 @@ public class Trainer<I extends Instance, P extends Proof>
 		classifierForPredictions = trainedClassifiers.getClassifierForPredictions();
 		
 		resultsLastIteration = resultsFactory.createResults(proofs, classifierForPredictions);
+		resultsLastIteration.compute();
 	}
 	
 	private Vector<LabeledSample> proofsToLabeledSamples(List<InstanceAndProof<I, P>> proofs) throws BiuteeException

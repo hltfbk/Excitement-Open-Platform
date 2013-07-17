@@ -48,6 +48,7 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 		computeHasBeenCalled=true;
 	}
 	
+	@Override
 	public Double getSuccessRate() throws BiuteeException
 	{
 		if (!computeHasBeenCalled) throw new BiuteeException("Caller\'s bug: compute() has not been called yet.");
@@ -62,6 +63,7 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 		}
 	}
 	
+	@Override
 	public String print() throws BiuteeException
 	{
 		if (!computeHasBeenCalled) throw new BiuteeException("Caller\'s bug: compute() has not been called yet.");
@@ -73,6 +75,27 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 				", Precision = "+strDouble(precision)+
 				", F1 = "+strDouble(f1);
 	}
+	
+	@Override
+	public String toString()
+	{
+		if (isComputeHasBeenCalled())
+		{
+			try
+			{
+				return print();
+			}
+			catch(BiuteeException e)
+			{
+				return "Results: unknown.";
+			}
+		}
+		else
+		{
+			return "Results: unknown.";
+		}
+	}
+	
 	
 	
 	
