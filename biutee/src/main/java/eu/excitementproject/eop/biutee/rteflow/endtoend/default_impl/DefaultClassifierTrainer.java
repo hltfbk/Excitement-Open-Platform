@@ -55,6 +55,18 @@ public class DefaultClassifierTrainer extends ClassifierTrainer
 			throw new BiuteeException("Failed to train classifier",e);
 		}
 	}
+	
+	protected Vector<LabeledSample> samplesForSearch(Vector<LabeledSample> samples,
+			List<Vector<LabeledSample>> olderSamples)
+	{
+		return samples;
+	}
+
+	protected Vector<LabeledSample> samplesForPredictions(Vector<LabeledSample> samples,
+			List<Vector<LabeledSample>> olderSamples)
+	{
+		return samples;
+	}
 
 	private final FeatureVectorStructureOrganizer featureVectorStructureOrganizer;
 }

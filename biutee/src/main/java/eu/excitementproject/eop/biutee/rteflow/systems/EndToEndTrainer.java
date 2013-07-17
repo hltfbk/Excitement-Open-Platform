@@ -13,7 +13,7 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.Proof;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ResultsFactory;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Trainer;
-import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultClassifierTrainer;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.AccuracyClassifierTrainer;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -82,7 +82,7 @@ public abstract class EndToEndTrainer<I extends Instance, P extends Proof> exten
 	
 	protected ClassifierTrainer createClassifierTrainer() throws BiuteeException
 	{
-		return new DefaultClassifierTrainer(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+		return new AccuracyClassifierTrainer(teSystemEnvironment.getFeatureVectorStructureOrganizer());
 	}
 
 
