@@ -91,7 +91,7 @@ public class Trainer<I extends Instance, P extends Proof>
 	 * to do something with the results, in addition to storing the learned
 	 * model (which is done by this class as it is). 
 	 */
-	protected void endOfIterationEntryPoint()
+	protected void endOfIterationEntryPoint() throws BiuteeException
 	{
 		
 	}
