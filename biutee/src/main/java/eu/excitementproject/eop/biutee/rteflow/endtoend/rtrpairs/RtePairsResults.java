@@ -126,7 +126,7 @@ public class RtePairsResults extends DefaultAbstractResults<THPairInstance, THPa
 		boolean classification = proof.getClassification();
 		double score = proof.getScore();
 		sb.append("Real annotation = "+ ((gs==null)?"unknown":String.valueOf(gs.booleanValue())) ).append(", ");
-		sb.append("Classification = ").append(classification).append(". Score = ").append(String.format("%-3.4", score)).append("\n");
+		sb.append("Classification = ").append(classification).append(". Score = ").append(String.format("%-3.4f", score)).append("\n");
 		sb.append("Proof:\n").append(proof.getInstanceAndProof().getProof().toString()).append("\n");
 		
 		return sb.toString();
