@@ -17,8 +17,8 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ConfidenceChainItem;
 import eu.excitementproject.eop.transformations.operations.specifications.InsertNodeSpecification;
@@ -444,7 +444,7 @@ public class FeatureUpdate
 		boolean namedEntity = false;
 		Set<String> addedHypothesisWord = new HashSet<String>();
 		String lhsLemma = InfoGetFields.getLemma(spec.getRule().getRule().getLeftHandSide().getInfo());
-		for (AbstractNode<? extends Info, ?> rhsNode : AbstractNodeUtils.treeToSet(spec.getRule().getRule().getRightHandSide()))
+		for (AbstractNode<? extends Info, ?> rhsNode : TreeIterator.iterableTree(spec.getRule().getRule().getRightHandSide()))
 		{
 			String rhsLemma = InfoGetFields.getLemma(rhsNode.getInfo());
 			if (!rhsLemma.equalsIgnoreCase(lhsLemma))

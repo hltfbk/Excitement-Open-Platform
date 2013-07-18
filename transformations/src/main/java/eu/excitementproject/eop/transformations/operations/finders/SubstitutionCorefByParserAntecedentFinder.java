@@ -46,7 +46,7 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 		
 		nodesAndTheirAntecedent = new LinkedHashMap<ExtendedNode, ExtendedNode>();
 		mapNodeToThoseWhoHaveItAsAntecedent = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
-		Set<ExtendedNode> nodes = AbstractNodeUtils.treeToSet(textTree.getTree());
+		Set<ExtendedNode> nodes = AbstractNodeUtils.treeToLinkedHashSet(textTree.getTree());
 		for (ExtendedNode node : nodes)
 		{
 			if (node.getAntecedent()!=null)

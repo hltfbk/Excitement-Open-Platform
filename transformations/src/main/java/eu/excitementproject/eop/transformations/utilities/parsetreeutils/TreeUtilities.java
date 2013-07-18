@@ -16,6 +16,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.IdLemmaPosRelNodeString;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
@@ -60,8 +61,8 @@ public class TreeUtilities
 	public static Set<ExtendedNode> findNodesNoMatch(TreeAndParentMap<ExtendedInfo,ExtendedNode> text, TreeAndParentMap<ExtendedInfo,ExtendedNode> hypothesis)
 	{
 		Set<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(text.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesis.getTree());
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(text.getTree());
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree());
 		
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{
@@ -83,7 +84,7 @@ public class TreeUtilities
 	public static Set<String> constructSetLemmasLowerCase(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree)
 	{
 		Set<String> ret = new LinkedHashSet<String>();
-		for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree.getTree()))
+		for (ExtendedNode node : TreeIterator.iterableTree(tree.getTree()))
 		{
 			String lemma = InfoGetFields.getLemma(node.getInfo());
 			if (lemma.length()>0)
@@ -171,8 +172,8 @@ public class TreeUtilities
 	public static Set<ExtendedNode> findRelationsNoMatch(TreeAndParentMap<ExtendedInfo,ExtendedNode> text, TreeAndParentMap<ExtendedInfo,ExtendedNode> hypothesis)
 	{
 		Set<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(text.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesis.getTree());
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(text.getTree());
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree());
 		
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{
@@ -193,7 +194,7 @@ public class TreeUtilities
 	
 	public static double missingNodesPortion(TreeAndParentMap<ExtendedInfo,ExtendedNode> text, TreeAndParentMap<ExtendedInfo,ExtendedNode> hypothesis)
 	{
-		int totalNumberOfNodes = AbstractNodeUtils.treeToSet(hypothesis.getTree()).size();
+		int totalNumberOfNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree()).size();
 		int numberOfMissingNodes = findNodesNoMatch(text, hypothesis).size();
 		return ((double)numberOfMissingNodes)/((double)totalNumberOfNodes);
 	}
@@ -201,7 +202,7 @@ public class TreeUtilities
 
 	public static double missingRelationsPortion(TreeAndParentMap<ExtendedInfo,ExtendedNode> text, TreeAndParentMap<ExtendedInfo,ExtendedNode> hypothesis)
 	{
-		int totalNumberOfRelations = AbstractNodeUtils.treeToSet(hypothesis.getTree()).size()-1;
+		int totalNumberOfRelations = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree()).size()-1;
 		if (0==totalNumberOfRelations)
 			return 0;
 		else
@@ -215,8 +216,8 @@ public class TreeUtilities
 	public static ValueSetMap<ExtendedNode, ExtendedNode> findAllMatchingNodes(ExtendedNode fromTree, ExtendedNode toTree)
 	{
 		ValueSetMap<ExtendedNode, ExtendedNode> ret = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
-		Set<ExtendedNode> fromTreeNodes = AbstractNodeUtils.treeToSet(fromTree);
-		Set<ExtendedNode> toTreeNodes = AbstractNodeUtils.treeToSet(toTree);
+		Set<ExtendedNode> fromTreeNodes = AbstractNodeUtils.treeToLinkedHashSet(fromTree);
+		Set<ExtendedNode> toTreeNodes = AbstractNodeUtils.treeToLinkedHashSet(toTree);
 		
 		for (ExtendedNode fromNode : fromTreeNodes)
 		{
@@ -249,7 +250,7 @@ public class TreeUtilities
 	{
 		Set<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
 		ValueSetMap<ExtendedNode, ExtendedNode> matchingNodesMap = findAllMatchingNodes(hypothesisTree.getTree(), textTree.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree.getTree());
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree.getTree());
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{
 			if (
@@ -345,8 +346,7 @@ public class TreeUtilities
 	public static <T extends Info, S extends AbstractNode<T,S>> Map<String,S> mapIdToNode(S tree) throws TeEngineMlException
 	{
 		Map<String,S> ret = new LinkedHashMap<String, S>();
-		Set<S> nodes = AbstractNodeUtils.treeToSet(tree);
-		for (S node : nodes)
+		for (S node : TreeIterator.iterableTree(tree))
 		{
 			String id = node.getInfo().getId();
 			if (null==id) throw new TeEngineMlException("Null id");
@@ -358,8 +358,7 @@ public class TreeUtilities
 	public static <T extends Info, S extends AbstractNode<T,S>> Map<String,S> mapVarIdToNode(S tree)
 	{
 		Map<String,S> ret = new LinkedHashMap<String, S>();
-		Set<S> nodes = AbstractNodeUtils.treeToSet(tree);
-		for (S node : nodes)
+		for (S node : TreeIterator.iterableTree(tree))
 		{
 			if (InfoGetFields.isVariable(node.getInfo()))
 			{

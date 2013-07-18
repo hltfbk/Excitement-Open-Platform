@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -59,6 +60,13 @@ public class AbstractNodeUtils
 	
 	/**
 	 * Gets a parse tree, and returns a set that contains all the nodes in that tree.
+	 * <BR>
+	 * <B>It is strongly recommended not to use this method, since it returns
+	 * a HashSet, which is non-deterministic.</B>
+	 * <BR>
+	 * However, this method must not be deleted or changed, since legacy binaries,
+	 * which cannot be changed (perhaps) use it, so changing this method would result it
+	 * a runtime error.
 	 * <P>
 	 * The difference between this function and {@link #treeToSet(AbstractNode)} is the
 	 * return value.<BR>
@@ -75,6 +83,13 @@ public class AbstractNodeUtils
 
 	/**
 	 * Gets a parse tree, and returns a set that contains all the nodes in that tree.
+	 * <BR>
+	 * <B>It is strongly recommended not to use this method, since it returns
+	 * a HashSet, which is non-deterministic. Use {@link #treeToLinkedHashSet(AbstractNode)} instead.</B>
+	 * <BR>
+	 * However, this method must not be deleted or changed, since legacy binaries,
+	 * which cannot be changed use it, so changing this method would result it
+	 * a runtime error.
 	 * <P>
 	 * The difference between this function and {@link #weakTreeToSet(AbstractNode)} is the
 	 * return value.<BR>
@@ -88,6 +103,22 @@ public class AbstractNodeUtils
 	{
 		return treeToSet(root,new HashSet<S>());
 	}
+
+	/**
+	 * Gets a parse tree and returns its nodes as a {@link LinkedHashSet}.
+	 * @param root
+	 * @return
+	 */
+	public static <T,S extends AbstractNode<T,S>> LinkedHashSet<S> treeToLinkedHashSet(S root)
+	{
+		LinkedHashSet<S> set = new LinkedHashSet<S>();
+		for (S node : TreeIterator.iterableTree(root))
+		{
+			set.add(node);
+		}
+		return set;
+	}
+
 	
 	/**
 	 * Gets a parse tree, and returns a topologically ordered list that contains all the nodes in that tree (where parents appears before their children)

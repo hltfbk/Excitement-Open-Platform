@@ -77,7 +77,7 @@ public class EnglishCorefMerger implements CorefMerger<BasicNode>
 	{
 		List<BasicNode> ret = new LinkedList<BasicNode>();
 		TreeMap<Integer, BasicNode> mapSerialToNode = new TreeMap<Integer, BasicNode>();
-		Set<BasicNode> setNodes =  AbstractNodeUtils.treeToSet(treeRoot);
+		Set<BasicNode> setNodes =  AbstractNodeUtils.treeToLinkedHashSet(treeRoot);
 		if (setNodes!=null)
 		{
 			setNodes = getWithNoAntecedent(setNodes);

@@ -200,8 +200,8 @@ public class AdvancedEqualities
 	public static Set<ExtendedNode> findMissingNodes(TreeAndParentMap<ExtendedInfo, ExtendedNode> text,TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 	{
 		Set<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(text.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesis.getTree());
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(text.getTree());
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree());
 		
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{
@@ -253,8 +253,8 @@ public class AdvancedEqualities
 	public static Set<ExtendedNode> findMissingRelations(TreeAndParentMap<ExtendedInfo, ExtendedNode> text,TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 	{
 		Set<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(text.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesis.getTree());
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(text.getTree());
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree());
 		
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{
@@ -299,8 +299,8 @@ public class AdvancedEqualities
 	public static ValueSetMap<ExtendedNode, ExtendedNode> findMatchingNodes(ExtendedNode textTree, ExtendedNode hypothesisTree)
 	{
 		ValueSetMap<ExtendedNode, ExtendedNode> ret = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree);
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(textTree);
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree);
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree);
 		
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{
@@ -318,8 +318,8 @@ public class AdvancedEqualities
 	public static ValueSetMap<ExtendedNode, ExtendedNode> findSimilarContentNodes(ExtendedNode textTree, ExtendedNode hypothesisTree)
 	{
 		ValueSetMap<ExtendedNode, ExtendedNode> ret = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree);
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(textTree);
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree);
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree);
 		
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{
@@ -353,8 +353,8 @@ public class AdvancedEqualities
 	public static ValueSetMap<ExtendedNode, ExtendedNode> findMatchingRelations(TreeAndParentMap<ExtendedInfo, ExtendedNode> text, TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 	{
 		ValueSetMap<ExtendedNode, ExtendedNode> matching = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(text.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesis.getTree());
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(text.getTree());
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree());
 		
 		for (ExtendedNode hypothesisNode : hypothesisNodes)
 		{

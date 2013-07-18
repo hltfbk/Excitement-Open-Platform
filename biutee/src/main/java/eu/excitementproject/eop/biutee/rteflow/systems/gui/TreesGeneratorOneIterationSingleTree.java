@@ -67,7 +67,7 @@ public class TreesGeneratorOneIterationSingleTree extends InitializationTextTree
 	public void init() throws TeEngineMlException, OperationException, TreeAndParentMapException, AnnotatorException
 	{
 		super.init();
-		hypothesisTotalNumberOfNodes = (double)AbstractNodeUtils.treeToSet(operationsEnvironment.getHypothesis().getTree()).size();
+		hypothesisTotalNumberOfNodes = (double)AbstractNodeUtils.treeToLinkedHashSet(operationsEnvironment.getHypothesis().getTree()).size();
 		hypothesisLemmasLowerCase = TreeUtilities.constructSetLemmasLowerCase(operationsEnvironment.getHypothesis());
 		this.initialized=true;
 		initialFeatureVector = initialFeatureVector();

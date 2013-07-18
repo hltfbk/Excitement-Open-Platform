@@ -260,7 +260,7 @@ public class FilterSpecifications
 		{
 			if (affectedNodes.size()>0)
 			{
-				Set<ExtendedNode> treeNodes = AbstractNodeUtils.treeToSet(tree);
+				Set<ExtendedNode> treeNodes = AbstractNodeUtils.treeToLinkedHashSet(tree);
 				// if (!treeNodes.retainAll(affectedNodes))throw new TeEngineMlException("Unknown problem");
 				treeNodes.retainAll(affectedNodes);
 				if (treeNodes.size()==0)

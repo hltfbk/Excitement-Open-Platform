@@ -197,7 +197,7 @@ public class LeastCommonAncestor<T,S extends AbstractNode<T,S>>
 	protected void init()
 	{
 		mapNodeToIndex = new SimpleBidirectionalMap<Integer, S>();
-		Set<S> setNodes = AbstractNodeUtils.treeToSet(root);
+		Set<S> setNodes = AbstractNodeUtils.treeToLinkedHashSet(root);
 		int index = 0;
 		for (S node : setNodes)
 		{

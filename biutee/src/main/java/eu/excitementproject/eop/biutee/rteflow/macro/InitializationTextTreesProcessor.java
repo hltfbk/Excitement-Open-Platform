@@ -230,7 +230,7 @@ public class InitializationTextTreesProcessor
 		hypothesis = new TreeAndParentMap<ExtendedInfo,ExtendedNode>(this.hypothesisTree);
 		
 		// number of hypothesis nodes, to be used by initialFeatureVector()
-		hypothesisNumberOfNodes = AbstractNodeUtils.treeToSet(this.hypothesisTree).size();
+		hypothesisNumberOfNodes = AbstractNodeUtils.treeToLinkedHashSet(this.hypothesisTree).size();
 		
 		// Creates a set of "LemmaAndPos" of all hypothesis tree's nodes
 		// and set of lemmas (with out pos)
@@ -617,7 +617,7 @@ public class InitializationTextTreesProcessor
 	protected static Set<String> wordsInTree(ExtendedNode tree)
 	{
 		Set<String> ret = new LinkedHashSet<String>();
-		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToSet(tree);
+		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToLinkedHashSet(tree);
 		for (ExtendedNode node : setNodes)
 		{
 			if (InfoObservations.infoHasLemma(node.getInfo()))
@@ -667,7 +667,7 @@ public class InitializationTextTreesProcessor
 	public static Set<LemmaAndPos> lemmasAndPosesInTree(ExtendedNode tree) throws TeEngineMlException
 	{
 		Set<LemmaAndPos> ret = new LinkedHashSet<LemmaAndPos>();
-		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToSet(tree);
+		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToLinkedHashSet(tree);
 		for (ExtendedNode node : setNodes)
 		{
 			if (InfoObservations.infoHasLemma(node.getInfo()))
@@ -719,7 +719,7 @@ public class InitializationTextTreesProcessor
 	
 	private static void mapItself(BidirectionalMap<ExtendedNode, ExtendedNode> map, ExtendedNode tree)
 	{
-		for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+		for (ExtendedNode node : AbstractNodeUtils.treeToLinkedHashSet(tree))
 		{
 			map.put(node,node);
 		}

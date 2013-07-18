@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.transformations.operations.OperationException;
@@ -90,8 +90,7 @@ public class SubstitutionMultiWordUnderlyingFinder
 	private Map<ExtendedNode, List<String>> buildMapForTree(TreeAndParentMap<ExtendedInfo,ExtendedNode> tree)
 	{
 		Map<ExtendedNode, List<String>> ret = new LinkedHashMap<ExtendedNode, List<String>>();
-		Set<ExtendedNode> nodes = AbstractNodeUtils.treeToSet(tree.getTree());
-		for (ExtendedNode node : nodes)
+		for (ExtendedNode node : TreeIterator.iterableTree(tree.getTree()))
 		{
 			String lemma = InfoGetFields.getLemma(node.getInfo());
 			List<String> lemmaAsList = StringUtil.stringToWords(lemma);

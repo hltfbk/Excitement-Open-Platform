@@ -14,7 +14,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
@@ -345,7 +345,7 @@ public class TemplateToTree
 
 	private void setLeaves()
 	{
-		for (BasicNode node : AbstractNodeUtils.treeToSet(tree))
+		for (BasicNode node : TreeIterator.iterableTree(tree))
 		{
 			if (InfoGetFields.isVariable(node.getInfo()))
 			{
