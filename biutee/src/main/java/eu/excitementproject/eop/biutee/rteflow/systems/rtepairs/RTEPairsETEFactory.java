@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Dataset;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ResultsFactory;
@@ -17,6 +19,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
+import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
@@ -34,18 +37,36 @@ public class RTEPairsETEFactory
 	{
 		try
 		{
+			logger.info("Loading dataset from serialization file...");
 			RTESerializedPairsReader pairsReader = new RTESerializedPairsReader(
 					configurationParams.getFile(ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME).getPath()
 					);
 			pairsReader.read();
 			List<PairData> pairs = pairsReader.getPairsData();
+			logger.info("Loading dataset from serialization file - done.");
+			logger.info("Converting pairs into extended pairs. Annotation take place here. This might take some time...");
 			List<ExtendedPairData> extendedPairs = new ArrayList<>(pairs.size());
+			int pairCounter=0;
 			for (PairData pair : pairs)
 			{
+				++pairCounter;
+				if (logger.isDebugEnabled())
+				{
+					Integer idInt = pair.getPair().getId();
+					String id = "unknown id";
+					if (idInt!=null) id = String.valueOf(idInt.intValue());
+					logger.debug("Converting a pair ("+pairCounter+") id = "+id+" ...");
+				}
 				PairDataToExtendedPairDataConverter converter = new PairDataToExtendedPairDataConverter(pair,teSystemEnvironment);
 				converter.convert();
+				if (logger.isDebugEnabled())
+				{
+					logger.debug("Converting a pair - done. Memory in use = "+Utils.stringMemoryUsedInMB());
+				}
 				extendedPairs.add(converter.getExtendedPairData());
+
 			}
+			logger.info("All pairs have been converted.");
 			RtePairsDataset dataset = new RtePairsDataset(extendedPairs);
 			return dataset;
 		}
@@ -78,4 +99,6 @@ public class RTEPairsETEFactory
 	{
 		return new RtePairsResultsFactory();
 	}
+	
+	private static final Logger logger = Logger.getLogger(RTEPairsETEFactory.class);
 }

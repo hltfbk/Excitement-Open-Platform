@@ -48,6 +48,7 @@ public class ScriptsCreator
 		queue = new ArrayBlockingQueue<OperationsScript<Info,BasicNode>>(numberOfScripts);
 		ExecutorService executor = Executors.newFixedThreadPool(numberOfScripts);
 		ExecutionException exception = null;
+		logger.debug("Calling executor.invokeAll to construct all sciprts in parallel.");
 		List<Future<Boolean>> futures = executor.invokeAll(callables);
 		try
 		{
@@ -70,13 +71,15 @@ public class ScriptsCreator
 		{
 			executor.shutdown();
 		}
+		logger.debug("All scripts have been constructed and initialized.");
 		
 		scripts = new ArrayList<>(numberOfScripts);
-		for (int scriptIndex=0;scriptIndex<numberOfScripts;++scriptIndex)
+		while (!queue.isEmpty())
 		{
 			OperationsScript<Info,BasicNode> script = queue.take();
 			scripts.add(script);
 		}
+		logger.debug("List of scripts has been created.");
 		
 		if (exception != null)
 		{
@@ -109,12 +112,22 @@ public class ScriptsCreator
 		@Override
 		public Boolean call() throws OperationException, InterruptedException
 		{
-			OperationsScript<Info,BasicNode> script = new ScriptFactory(configurationFile, pluginRegistry).getDefaultScript();
-			script.init();
-			queue.put(script);
-			return true;
+			try
+			{
+				logger.debug("Constructing a script...");
+				OperationsScript<Info,BasicNode> script = new ScriptFactory(configurationFile, pluginRegistry).getDefaultScript();
+				script.init();
+				logger.info("a script has been constructed.");
+				queue.put(script);
+				logger.debug("Script has been put in script quque.");
+				return true;
+			}
+			catch(Throwable t)
+			{
+				logger.error("Script construction failed.",t);
+				throw t; // This works on JDK 1.7 and above.
+			}
 		}
-		
 	}
 
 	// input

@@ -54,9 +54,15 @@ public abstract class EndToEndSystem extends SystemInitialization
 	protected void cleanUp()
 	{
 		super.cleanUp();
-		for (OperationsScript<Info, BasicNode> script : scripts)
+		if (scripts!=null)
 		{
-			script.cleanUp();
+			for (OperationsScript<Info, BasicNode> script : scripts)
+			{
+				if (script!=null)
+				{
+					script.cleanUp();
+				}
+			}
 		}
 	}
 	
