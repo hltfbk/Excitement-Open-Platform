@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,26 +16,39 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeException;
  */
 public class RtePairsDataset extends Dataset<THPairInstance>
 {
-	private static final long serialVersionUID = 71830345251905296L;
-
-
+	private static final long serialVersionUID = -3596691497099928859L;
+	
 	public RtePairsDataset(List<ExtendedPairData> pairsData)
 	{
 		super();
-		
-		instances = new ArrayList<>(pairsData.size());
-		for (ExtendedPairData pairData : pairsData)
-		{
-			instances.add(new THPairInstance(pairData));
-		}
-		
+		this.pairsData = pairsData;
+		createInstances();
 	}
+	
 	@Override
 	public List<THPairInstance> getListOfInstances() throws BiuteeException
 	{
 		return this.instances;
 	}
-
 	
-	private final List<THPairInstance> instances;
+	
+	
+	private synchronized void createInstances()
+	{
+		instances = new ArrayList<>(pairsData.size());
+		for (ExtendedPairData pairData : pairsData)
+		{
+			instances.add(new THPairInstance(pairData));
+		}
+	}
+
+
+	private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException
+	{
+		in.defaultReadObject();
+		createInstances();
+	}
+
+	private final List<ExtendedPairData> pairsData;
+	private transient List<THPairInstance> instances;
 }
