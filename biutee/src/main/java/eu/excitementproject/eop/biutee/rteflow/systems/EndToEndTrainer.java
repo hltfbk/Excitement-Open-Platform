@@ -62,7 +62,6 @@ public abstract class EndToEndTrainer<I extends Instance, P extends Proof> exten
 		@Override
 		protected void endOfIterationEntryPoint() throws BiuteeException
 		{
-			logger.info("Result of current iteration: "+resultsLastIteration.print());
 			logger.info("Proofs:");
 			Iterator<String> detailsIterator = resultsLastIteration.instanceDetailsIterator();
 			while (detailsIterator.hasNext())
@@ -70,6 +69,7 @@ public abstract class EndToEndTrainer<I extends Instance, P extends Proof> exten
 				String details = detailsIterator.next();
 				logger.info(details);
 			}
+			logger.info("Result of current iteration - summary:\n"+resultsLastIteration.print());
 		}
 	}
 	

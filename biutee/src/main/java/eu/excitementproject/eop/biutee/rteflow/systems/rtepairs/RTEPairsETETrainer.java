@@ -76,7 +76,7 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 	@Override
 	protected Dataset<THPairInstance> createDataset() throws BiuteeException 
 	{
-		return RTEPairsETEFactory.createDataset(configurationParams, teSystemEnvironment);
+		return RTEPairsETEFactory.createDataset(configurationParams, ConfigurationParametersNames.RTE_SERIALIZED_DATASET_FOR_TRAINING ,teSystemEnvironment);
 	}
 
 	@Override

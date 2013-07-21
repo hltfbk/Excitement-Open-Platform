@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtepairs;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +34,14 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class RTEPairsETEFactory
 {
-	public static Dataset<THPairInstance> createDataset(ConfigurationParams configurationParams, TESystemEnvironment teSystemEnvironment) throws BiuteeException 
+	public static Dataset<THPairInstance> createDataset(ConfigurationParams configurationParams, String parameterName, TESystemEnvironment teSystemEnvironment) throws BiuteeException 
 	{
 		try
 		{
-			logger.info("Loading dataset from serialization file...");
+			File serializedDataFile = configurationParams.getFile(parameterName);
+			logger.info("Loading dataset from serialization file :"+serializedDataFile.getPath());
 			RTESerializedPairsReader pairsReader = new RTESerializedPairsReader(
-					configurationParams.getFile(ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME).getPath()
+					serializedDataFile.getPath()
 					);
 			pairsReader.read();
 			List<PairData> pairs = pairsReader.getPairsData();
@@ -47,16 +49,18 @@ public class RTEPairsETEFactory
 			logger.info("Converting pairs into extended pairs. Annotation take place here. This might take some time...");
 			List<ExtendedPairData> extendedPairs = new ArrayList<>(pairs.size());
 			int pairCounter=0;
+			int pairs_size = pairs.size();
 			for (PairData pair : pairs)
 			{
 				++pairCounter;
-				if (logger.isDebugEnabled())
-				{
-					Integer idInt = pair.getPair().getId();
-					String id = "unknown id";
-					if (idInt!=null) id = String.valueOf(idInt.intValue());
-					logger.debug("Converting a pair ("+pairCounter+") id = "+id+" ...");
-				}
+				
+				// log
+				Integer idInt = pair.getPair().getId();
+				String id = "unknown id";
+				if (idInt!=null) id = String.valueOf(idInt.intValue());
+				logger.info("Converting a pair ("+pairCounter+" out of "+pairs_size+"), id = "+id+".");
+					
+				// convert
 				PairDataToExtendedPairDataConverter converter = new PairDataToExtendedPairDataConverter(pair,teSystemEnvironment);
 				converter.convert();
 				if (logger.isDebugEnabled())

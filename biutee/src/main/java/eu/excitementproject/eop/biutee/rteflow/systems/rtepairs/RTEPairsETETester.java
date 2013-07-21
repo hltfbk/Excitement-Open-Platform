@@ -87,7 +87,7 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 	@Override
 	protected Dataset<THPairInstance> createDataset() throws BiuteeException
 	{
-		return RTEPairsETEFactory.createDataset(configurationParams, teSystemEnvironment);
+		return RTEPairsETEFactory.createDataset(configurationParams, ConfigurationParametersNames.RTE_SERIALIZED_DATASET_FOR_TEST, teSystemEnvironment);
 	}
 
 	@Override
@@ -130,6 +130,8 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 			String details = detailsIterator.next();
 			logger.info(details);
 		}
+		
+		logger.info("Results summary: "+results.print());
 	}
 
 	@Override
