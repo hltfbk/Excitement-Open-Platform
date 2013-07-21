@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.common.representation.parse.tree;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -142,7 +141,7 @@ public class AbstractNodeUtils
 	 */
 	public static <T,S extends AbstractNode<T,S>> Map<S,S> parentMap(S root)
 	{
-		HashMap<S,S> ret = new HashMap<S, S>();
+		LinkedHashMap<S,S> ret = new LinkedHashMap<S, S>();
 		HashSet<S> alreadyVisited = new HashSet<S>();
 		parentMap(root,ret,alreadyVisited);
 		return ret;
@@ -160,7 +159,7 @@ public class AbstractNodeUtils
 	 */
 	public static <T> Map<AbstractNode<T,?>,AbstractNode<T,?>> weakParentMap(AbstractNode<T,?> root)
 	{
-		HashMap<AbstractNode<T,?>,AbstractNode<T,?>> ret = new HashMap<AbstractNode<T,?>, AbstractNode<T,?>>();
+		LinkedHashMap<AbstractNode<T,?>,AbstractNode<T,?>> ret = new LinkedHashMap<AbstractNode<T,?>, AbstractNode<T,?>>();
 		HashSet<AbstractNode<T,?>> alreadyVisited = new HashSet<AbstractNode<T,?>>();
 		weakParentMap(root,ret,alreadyVisited);
 		return ret;
@@ -177,8 +176,8 @@ public class AbstractNodeUtils
 	 */
 	public static <T,S extends AbstractNode<T,S>> Set<S> getLeaves(S root)
 	{
-		Set<S> ret = new HashSet<S>();
-		getLeaves(root, ret,new HashSet<S>() );
+		Set<S> ret = new LinkedHashSet<S>();
+		getLeaves(root, ret,new LinkedHashSet<S>() );
 		return ret;
 		
 	}

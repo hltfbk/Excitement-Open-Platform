@@ -2,7 +2,6 @@
 package eu.excitementproject.eop.transformations.utilities.parsetreeutils;
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -448,5 +447,5 @@ public class AdvancedEqualities
 		return ret;
 	}
 
-	private static Set<PredTruth> MEANINGFUL_PRED_TRUTH_VALUES = Utils.arrayToCollection(new PredTruth[]{PredTruth.N,PredTruth.P,PredTruth.U}, new HashSet<PredTruth>());
+	private static Set<PredTruth> MEANINGFUL_PRED_TRUTH_VALUES = Utils.arrayToCollection(new PredTruth[]{PredTruth.N,PredTruth.P,PredTruth.U}, new LinkedHashSet<PredTruth>());
 }

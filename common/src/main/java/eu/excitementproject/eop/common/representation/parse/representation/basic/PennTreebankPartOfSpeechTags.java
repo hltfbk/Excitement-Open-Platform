@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.representation.parse.representation.basic;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
@@ -31,7 +31,7 @@ public class PennTreebankPartOfSpeechTags
 	 
 	static
 	{
-		privateMap = new HashMap<String, BurstPartOfSpeechType>();
+		privateMap = new LinkedHashMap<String, BurstPartOfSpeechType>();
 		privateMap.put("CC", null);
 		privateMap.put("CD", BurstPartOfSpeechType.CARDINAL);
 		privateMap.put("DT", BurstPartOfSpeechType.DETERMINER);

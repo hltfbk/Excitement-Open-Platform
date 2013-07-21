@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
 
 import java.io.File;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -40,7 +40,7 @@ public class WikipediaLexicalResourceDemo {
 		System.out.println("\nFrom the new WikiLexicalResource:");
 
 		Set<WikiExtractionType> extractionTypes = Utils.arrayToCollection(new WikiExtractionType[]{WikiExtractionType.REDIRECT,WikiExtractionType.BE_COMP,
-				WikiExtractionType.BE_COMP_IDIRECT,WikiExtractionType.ALL_NOUNS_TOP}, new HashSet<WikiExtractionType>());
+				WikiExtractionType.BE_COMP_IDIRECT,WikiExtractionType.ALL_NOUNS_TOP}, new LinkedHashSet<WikiExtractionType>());
 		File stopWordsFile = new File("src/test/resources/stopwords.txt");
 //		WikiLexicalResource wikiLexR = new WikiLexicalResource(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikilexresita","root","nat_2k12", 0.01);
 		WikiLexicalResource wikiLexR = new WikiLexicalResource(stopWordsFile, extractionTypes, "jdbc:mysql://nathrezim:3306/wikikb","root","nat_2k12", 0.01);

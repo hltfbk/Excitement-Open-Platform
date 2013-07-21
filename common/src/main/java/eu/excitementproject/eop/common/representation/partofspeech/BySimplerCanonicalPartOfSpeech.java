@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.common.representation.partofspeech;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -69,7 +69,7 @@ public class BySimplerCanonicalPartOfSpeech extends PartOfSpeech
 		
 		SIMPLER_CANONICAL_POS_TAG_STRINGS = Collections.unmodifiableSet(validPosTagStrings_);
 		
-		HashMap<SimplerCanonicalPosTag, CanonicalPosTag> mapSimpleToCanonical_ = new HashMap<SimplerCanonicalPosTag, CanonicalPosTag>();
+		LinkedHashMap<SimplerCanonicalPosTag, CanonicalPosTag> mapSimpleToCanonical_ = new LinkedHashMap<SimplerCanonicalPosTag, CanonicalPosTag>();
 		mapSimpleToCanonical_.put(SimplerCanonicalPosTag.NOUN,CanonicalPosTag.N);
 		mapSimpleToCanonical_.put(SimplerCanonicalPosTag.VERB,CanonicalPosTag.V);
 		mapSimpleToCanonical_.put(SimplerCanonicalPosTag.ADJECTIVE,CanonicalPosTag.ADJ);

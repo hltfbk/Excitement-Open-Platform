@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.utilities;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -67,7 +67,7 @@ public class TwoMapsCache<K,V> implements Cache<K, V>
 			if (usedMap.keySet().size()>=maxCapacity)
 			{
 				previousMap = usedMap;
-				usedMap = new HashMap<K, V>();
+				usedMap = new LinkedHashMap<K, V>();
 			}
 			usedMap.put(key,ret);
 		}
@@ -88,7 +88,7 @@ public class TwoMapsCache<K,V> implements Cache<K, V>
 			if (usedMap.keySet().size()>=maxCapacity)
 			{
 				previousMap = usedMap;
-				usedMap = new HashMap<K, V>();
+				usedMap = new LinkedHashMap<K, V>();
 			}
 			usedMap.put(key,value);
 		}
@@ -98,8 +98,8 @@ public class TwoMapsCache<K,V> implements Cache<K, V>
 		
 	}
 
-	protected Map<K, V> usedMap = new HashMap<K, V>();
-	protected Map<K, V> previousMap = new HashMap<K, V>();
+	protected Map<K, V> usedMap = new LinkedHashMap<K, V>();
+	protected Map<K, V> previousMap = new LinkedHashMap<K, V>();
 	protected int maxCapacity = MINIMUM_CAPACITY;
 	
 }

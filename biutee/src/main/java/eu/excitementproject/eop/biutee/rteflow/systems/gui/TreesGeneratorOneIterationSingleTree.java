@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.gui;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -86,7 +86,7 @@ public class TreesGeneratorOneIterationSingleTree extends InitializationTextTree
 		if (!initialized)throw new VisualTracingToolException("Not initialized");
 		List<SingleTreeComponent> generatedTrees;
 		TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(originalSingleTreeComponent.getTree(), originalSingleTreeComponent.getFeatureVector());
-		Set<TreeAndFeatureVector> setTreeAndFeatureVector = new HashSet<TreeAndFeatureVector>();
+		Set<TreeAndFeatureVector> setTreeAndFeatureVector = new LinkedHashSet<TreeAndFeatureVector>();
 		setTreeAndFeatureVector.add(treeAndFeatureVector);
 		ImmutableList<SingleOperationItem> operations = this.script.getItemListForIteration(originalSingleTreeComponent.getIterationNumber(), setTreeAndFeatureVector);
 		

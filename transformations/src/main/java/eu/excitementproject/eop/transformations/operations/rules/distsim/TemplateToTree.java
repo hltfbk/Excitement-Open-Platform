@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.transformations.operations.rules.distsim;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -46,9 +46,9 @@ public class TemplateToTree
 	public static Map<String, String> POS_MAP;
 	static
 	{
-		POS_MAP = new HashMap<String, String>();
+		POS_MAP = new LinkedHashMap<String, String>();
 		POS_MAP.put("p","Prep");
-		PREP_LIST = new HashSet<String>();
+		PREP_LIST = new LinkedHashSet<String>();
 		PREP_LIST.add("about");
 		PREP_LIST.add("above");
 		PREP_LIST.add("across");
@@ -443,7 +443,7 @@ public class TemplateToTree
 	private BasicNode tree = null;
 	private BasicNode leftVariableNode = null;
 	private BasicNode rightVariableNode = null;
-	private Map<Integer, Boolean> mapVariableIdToLeftRight = new HashMap<Integer, Boolean>();
+	private Map<Integer, Boolean> mapVariableIdToLeftRight = new LinkedHashMap<Integer, Boolean>();
 	private int nextVariableId = 0;
 
 

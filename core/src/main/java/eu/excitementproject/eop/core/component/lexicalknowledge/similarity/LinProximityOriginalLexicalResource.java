@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
@@ -45,9 +45,9 @@ public class LinProximityOriginalLexicalResource extends AbstractSinglePosLexica
 	private static final String R_COL = "word2";
 	private static final String SIM_COL = "sim";
 	
-	final private Set<PreparedStatementAndPos> setOfGetRulesForLeftStmt = new HashSet<PreparedStatementAndPos>();
-	final private Set<PreparedStatementAndPos> setOfGetRulesForRightStmt = new HashSet<PreparedStatementAndPos>();
-	final private Set<PreparedStatementAndPos> setOfGetScoresStmt = new HashSet<PreparedStatementAndPos>();
+	final private Set<PreparedStatementAndPos> setOfGetRulesForLeftStmt = new LinkedHashSet<PreparedStatementAndPos>();
+	final private Set<PreparedStatementAndPos> setOfGetRulesForRightStmt = new LinkedHashSet<PreparedStatementAndPos>();
+	final private Set<PreparedStatementAndPos> setOfGetScoresStmt = new LinkedHashSet<PreparedStatementAndPos>();
 	
 	private PartOfSpeech DEFAULT_POS = null;
 	

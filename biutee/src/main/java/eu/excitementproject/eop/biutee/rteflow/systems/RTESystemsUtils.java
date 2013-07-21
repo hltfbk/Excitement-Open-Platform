@@ -17,7 +17,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -124,8 +123,8 @@ public class RTESystemsUtils
 			if (innerClassifier instanceof LogisticRegressionClassifier)
 			{
 				LogisticRegressionClassifier lrClassifier = (LogisticRegressionClassifier) innerClassifier;
-				lrClassifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
-				lrClassifier.increaseAllButConstantByBut(BiuteeConstants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, new HashSet<Integer>());
+				lrClassifier.setToZeroNegativeParametersBut(new LinkedHashSet<Integer>());
+				lrClassifier.increaseAllButConstantByBut(BiuteeConstants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, new LinkedHashSet<Integer>());
 
 
 				// These features do not represent operations
@@ -759,7 +758,7 @@ public class RTESystemsUtils
 		logger.info("LogisticRegressionClassifier with set to zero negative weights...");
 		lrClassifier = new LogisticRegressionClassifier(ClassifierFactory.LOGISTIC_REGRESSION_LEARNING_RATE, 0.0);
 		lrClassifier.train(trainingSamples);
-		lrClassifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
+		lrClassifier.setToZeroNegativeParametersBut(new LinkedHashSet<Integer>());
 		logger.info(String.format("Accuracy = %.5f",ClassifierUtils.accuracyOf(lrClassifier, samples)));
 
 		logger.info("ScalingClassifier wrapping LogisticRegressionClassifier...");
@@ -772,7 +771,7 @@ public class RTESystemsUtils
 		lrClassifier = new LogisticRegressionClassifier(ClassifierFactory.LOGISTIC_REGRESSION_LEARNING_RATE, 0.0);
 		scClassifier = new LinearScalingTrainableStorableClassifier(lrClassifier);
 		scClassifier.train(trainingSamples);
-		lrClassifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
+		lrClassifier.setToZeroNegativeParametersBut(new LinkedHashSet<Integer>());
 		logger.info(String.format("Accuracy = %.5f",ClassifierUtils.accuracyOf(scClassifier, samples)));
 
 		logger.info("ScalingClassifier wrapping LogisticRegressionClassifier with searhc normalization...");

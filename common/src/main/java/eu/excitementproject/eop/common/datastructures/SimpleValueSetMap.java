@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.common.datastructures;
 
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -231,8 +231,8 @@ public class SimpleValueSetMap<K, V> implements ValueSetMap<K, V>
 	
 	/////////////////////// PROTECTED PART //////////////////////////
 
-	protected <T> Set<T> newSet(){return new HashSet<T>();}
-	protected  <TK,TV> Map<TK,TV> newMap(){return new HashMap<TK,TV>();}
+	protected <T> Set<T> newSet(){return new LinkedHashSet<T>();}
+	protected  <TK,TV> Map<TK,TV> newMap(){return new LinkedHashMap<TK,TV>();}
 	
 	protected Map<K,Set<V>> map = this.<K,Set<V>>newMap();
 	protected Map<V,Set<K>> mapValueToItsKeys = this.<V,Set<K>>newMap();

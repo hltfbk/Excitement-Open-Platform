@@ -1,5 +1,4 @@
 package eu.excitementproject.eop.transformations.operations.finders;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -83,7 +82,7 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 		{
 			if ( (node.getAntecedent()!=null) && (InfoGetFields.getRelation(node.getInfo()).equals(REF_RELATION)) )
 			{
-				HashSet<ExtendedNode> alreadyHandeledNodes = new HashSet<ExtendedNode>();
+				LinkedHashSet<ExtendedNode> alreadyHandeledNodes = new LinkedHashSet<ExtendedNode>();
 				alreadyHandeledNodes.add(node);
 				ExtendedNode parent = textTree.getParentMap().get(node);
 				ExtendedNode antecedent = node.getAntecedent();
@@ -146,7 +145,7 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 			subtreeToOmit = current;
 		}
 		
-		HashSet<ExtendedNode> subtressToOmit = new HashSet<ExtendedNode>();
+		LinkedHashSet<ExtendedNode> subtressToOmit = new LinkedHashSet<ExtendedNode>();
 		if (anywayOmitThis!=null) subtressToOmit.add(anywayOmitThis);
 		if (subtreeToOmit!=null) subtressToOmit.add(subtreeToOmit);
 		return subtressToOmit;
