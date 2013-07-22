@@ -36,8 +36,6 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 	 */
 	public static void main(String[] args)
 	{
-		
-		
 		try
 		{
 			String className = RTEPairsETETester.class.getSimpleName();
@@ -78,7 +76,6 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 				ExceptionUtil.logException(e, logger);
 			}
 		}
-		
 	}
 
 	
