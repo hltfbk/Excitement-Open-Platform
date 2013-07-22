@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
@@ -11,6 +12,7 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.InstanceAndProof;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Proof;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Results;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
 /**
  * 
@@ -97,10 +99,26 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 	}
 	
 	
+	public Iterator<String> instanceDetailsIterator() throws BiuteeException
+	{
+		if (isComputeHasBeenCalled())
+		{
+			return new DetailsIterator(classifications.iterator());
+		}
+		else
+		{
+			throw new BiuteeException("Results have not yet been computed. So, it is impossible to print the results details.");
+		}
+	}
+	
+	
+	
 	
 	
 	/////////////// PROTECTED & PRIVATE ///////////////
 
+	protected abstract String detailsOfProof(InstanceAndProofAndClassification<I, P> proof) throws BiuteeException;
+	
 	protected boolean isComputeHasBeenCalled()
 	{
 		return computeHasBeenCalled;
@@ -194,6 +212,54 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 			f1 = 2*recall*precision/(recall+precision);
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	private class DetailsIterator implements Iterator<String>
+	{
+		public DetailsIterator(Iterator<InstanceAndProofAndClassification<I, P>> proofIterator)
+		{
+			super();
+			this.proofIterator = proofIterator;
+		}
+
+		@Override
+		public boolean hasNext()
+		{
+			return proofIterator.hasNext();
+		}
+
+		@Override
+		public String next()
+		{
+			try
+			{
+				InstanceAndProofAndClassification<I, P> proof = proofIterator.next();
+				return detailsOfProof(proof);
+			}
+			catch (BiuteeException e)
+			{
+				// Nothing to do with this exception. I cannot re-throw it.
+				// In addition, I don't really want to throw it, since it is only a printing task,
+				// So its failure is not supposed to disturb the running of the program.
+				return "Error:\n"+ExceptionUtil.getStackTrace(e);
+			}
+		}
+
+		@Override
+		public void remove()
+		{
+			throw new UnsupportedOperationException();
+		}
+		
+		private final Iterator<InstanceAndProofAndClassification<I, P>> proofIterator;
+	}
+	
+	
 	
 
 	protected final boolean f1_optimized;

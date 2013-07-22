@@ -54,6 +54,11 @@ public class RteSumInstance extends Instance
 		return label.booleanValue();
 	}
 	
+	public CandidateIdentifier getCandidateIdentifier()
+	{
+		return candidateIdentifier;
+	}
+
 	public ExtendedNode getTextTree()
 	{
 		return textTree;

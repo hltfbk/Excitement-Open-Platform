@@ -6,6 +6,7 @@ import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING
 import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_SEARCH_INDICATOR;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -77,6 +78,7 @@ public class Trainer<I extends Instance, P extends Proof>
 			successRateCurrentIteration = resultsLastIteration.getSuccessRate();
 			++iterationNumber;
 			
+			logIterationResults();
 			endOfIterationEntryPoint();
 		}
 		while (!isMainLoopDone(iterationNumber,successRatePreviousIteration,successRateCurrentIteration));
@@ -96,65 +98,9 @@ public class Trainer<I extends Instance, P extends Proof>
 		
 	}
 	
-	private void iterate() throws BiuteeException
-	{
-		DatasetProcessor<I,P> datasetProcessor = new DatasetProcessor<I,P>(dataset,scripts,classifierForSearch,prover,numberOfThreads);
-		datasetProcessor.process();
-		List<InstanceAndProof<I, P>> proofs = datasetProcessor.getProofs();
-		samplesLastIteration = proofsToLabeledSamples(proofs);
-		
-		TrainedClassifiers trainedClassifiers = classifierTrainer.train(samplesLastIteration, samplesOfOlderIterations, classifierGenerator);
-		classifierForSearch = trainedClassifiers.getClassifierForSearch();
-		classifierForPredictions = trainedClassifiers.getClassifierForPredictions();
-		
-		resultsLastIteration = resultsFactory.createResults(proofs, classifierForPredictions);
-		resultsLastIteration.compute();
-	}
-	
-	private Vector<LabeledSample> proofsToLabeledSamples(List<InstanceAndProof<I, P>> proofs) throws BiuteeException
-	{
-		Vector<LabeledSample> samples = new Vector<>();
-		for (InstanceAndProof<I, P> proof : proofs)
-		{
-			samples.add(new LabeledSample(
-					proof.getProof().getFeatureVector(),
-					proof.getInstance().getBinaryLabel().booleanValue()
-					));
-		}
-		return samples;
-	}
-	
-	private void verifyInput() throws BiuteeException
-	{
-		for (I instance : dataset.getListOfInstances())
-		{
-			if (null==instance.getBinaryLabel()) throw new BiuteeException("Invalid input: at least one T-H pair has no binary label. Perhaps the given dataset is an unannotated test-set?");
-		}
-	}
-	
-	protected void storeClassifiers() throws BiuteeException
-	{
-		storeClassifier(classifierForSearch,iterationNumber,LEARNING_MODEL_FILE_SEARCH_INDICATOR);
-		storeClassifier(classifierForPredictions,iterationNumber,LEARNING_MODEL_FILE_PREDICTIONS_INDICATOR);
-	}
-	
-	private void storeClassifier(StorableClassifier classifier, int loopIndex, String searchOrPredictionsIndicator) throws BiuteeException
-	{
-		try
-		{
-			String storeClassifierFileName = LEARNING_MODEL_FILE_PREFIX+"_"+searchOrPredictionsIndicator+"_"+loopIndex+LEARNING_MODEL_FILE_POSTFIX;
-			File storeClassifierFile = new File(storeClassifierFileName);
-			SafeClassifiersIO.store(classifier, featureVectorStructure, storeClassifierFile);
-			ExperimentManager.getInstance().register(storeClassifierFile);
-		}
-		catch (TeEngineMlException e)
-		{
-			throw new BiuteeException("Failed to stroe classifier.",e);
-		}
-	}
-
 	
 
+	
 	/**
 	 * 
 	 * @param iterationNumber iteration number of last iteration (the iteration that
@@ -187,6 +133,82 @@ public class Trainer<I extends Instance, P extends Proof>
 		}
 		return false;
 	}
+	
+	protected void storeClassifiers() throws BiuteeException
+	{
+		storeClassifier(classifierForSearch,iterationNumber,LEARNING_MODEL_FILE_SEARCH_INDICATOR);
+		storeClassifier(classifierForPredictions,iterationNumber,LEARNING_MODEL_FILE_PREDICTIONS_INDICATOR);
+	}
+
+
+	
+	private void iterate() throws BiuteeException
+	{
+		DatasetProcessor<I,P> datasetProcessor = new DatasetProcessor<I,P>(dataset,scripts,classifierForSearch,prover,numberOfThreads);
+		datasetProcessor.process();
+		List<InstanceAndProof<I, P>> proofs = datasetProcessor.getProofs();
+		samplesLastIteration = proofsToLabeledSamples(proofs);
+		
+		TrainedClassifiers trainedClassifiers = classifierTrainer.train(samplesLastIteration, samplesOfOlderIterations, classifierGenerator);
+		classifierForSearch = trainedClassifiers.getClassifierForSearch();
+		classifierForPredictions = trainedClassifiers.getClassifierForPredictions();
+		
+		resultsLastIteration = resultsFactory.createResults(proofs, classifierForPredictions);
+		resultsLastIteration.compute();
+	}
+	
+	private void logIterationResults() throws BiuteeException
+	{
+		logger.info("Iteration done.\nProofs:");
+		Iterator<String> detailsIterator = resultsLastIteration.instanceDetailsIterator();
+		while (detailsIterator.hasNext())
+		{
+			String details = detailsIterator.next();
+			logger.info(details);
+		}
+		logger.info("Current iteration result summary:\n"+resultsLastIteration.print());
+	}
+
+	
+	private Vector<LabeledSample> proofsToLabeledSamples(List<InstanceAndProof<I, P>> proofs) throws BiuteeException
+	{
+		Vector<LabeledSample> samples = new Vector<>();
+		for (InstanceAndProof<I, P> proof : proofs)
+		{
+			samples.add(new LabeledSample(
+					proof.getProof().getFeatureVector(),
+					proof.getInstance().getBinaryLabel().booleanValue()
+					));
+		}
+		return samples;
+	}
+	
+	private void verifyInput() throws BiuteeException
+	{
+		for (I instance : dataset.getListOfInstances())
+		{
+			if (null==instance.getBinaryLabel()) throw new BiuteeException("Invalid input: at least one T-H pair has no binary label. Perhaps the given dataset is an unannotated test-set?");
+		}
+	}
+	
+	
+	private void storeClassifier(StorableClassifier classifier, int loopIndex, String searchOrPredictionsIndicator) throws BiuteeException
+	{
+		try
+		{
+			String storeClassifierFileName = LEARNING_MODEL_FILE_PREFIX+"_"+searchOrPredictionsIndicator+"_"+loopIndex+LEARNING_MODEL_FILE_POSTFIX;
+			File storeClassifierFile = new File(storeClassifierFileName);
+			SafeClassifiersIO.store(classifier, featureVectorStructure, storeClassifierFile);
+			ExperimentManager.getInstance().register(storeClassifierFile);
+		}
+		catch (TeEngineMlException e)
+		{
+			throw new BiuteeException("Failed to stroe classifier.",e);
+		}
+	}
+
+	
+
 	
 	
 	

@@ -1,8 +1,5 @@
 package eu.excitementproject.eop.biutee.rteflow.systems;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ClassifierGenerator;
@@ -14,10 +11,7 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ResultsFactory;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Trainer;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.AccuracyClassifierTrainer;
-import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
-import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 /**
  * 
@@ -40,7 +34,8 @@ public abstract class EndToEndTrainer<I extends Instance, P extends Proof> exten
 		logger.info("Loading dataset.");
 		Dataset<I> dataset = createDataset();
 		logger.info("Creating trainer.");
-		TrainerPrintProofs trainer = new TrainerPrintProofs(
+		
+		Trainer<I,P> trainer = new Trainer<I,P>(
 				dataset,scripts,
 				createClassifierGenerator(),createProver(),
 				numberOfThreads,createResultsFactory(),
@@ -52,26 +47,7 @@ public abstract class EndToEndTrainer<I extends Instance, P extends Proof> exten
 		logger.info("Training done.");
 	}
 	
-	protected class TrainerPrintProofs extends Trainer<I,P>
-	{
-		public TrainerPrintProofs(Dataset<I> dataset,List<OperationsScript<Info, BasicNode>> scripts,ClassifierGenerator classifierGenerator, Prover<I, P> prover,int numberOfThreads, ResultsFactory<I, P> resultsFactory,ClassifierTrainer classifierTrainer,FeatureVectorStructure featureVectorStructure)
-		{
-			super(dataset, scripts, classifierGenerator, prover, numberOfThreads, resultsFactory, classifierTrainer, featureVectorStructure);
-		}
-		
-		@Override
-		protected void endOfIterationEntryPoint() throws BiuteeException
-		{
-			logger.info("Proofs:");
-			Iterator<String> detailsIterator = resultsLastIteration.instanceDetailsIterator();
-			while (detailsIterator.hasNext())
-			{
-				String details = detailsIterator.next();
-				logger.info(details);
-			}
-			logger.info("Result of current iteration - summary:\n"+resultsLastIteration.print());
-		}
-	}
+
 	
 	
 
