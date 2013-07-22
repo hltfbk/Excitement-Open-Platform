@@ -11,6 +11,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -75,6 +76,16 @@ public class SystemUtils
 		return ret;
 	}
 
+	public static Set<Integer> getGlobalFeatureIndexes()
+	{
+		Set<Feature> globalFeatures = Feature.getGlobalFeatures();
+		Set<Integer> globalFeaturesIndexes = new LinkedHashSet<Integer>();
+		for (Feature globalFeature : globalFeatures)
+		{
+			globalFeaturesIndexes.add(globalFeature.getFeatureIndex());
+		}
+		return globalFeaturesIndexes;
+	}
 
 
 

@@ -711,16 +711,6 @@ public class RTESystemsUtils
 		return SystemUtils.getLexicalRuleBasesForMultiWords(configurationFile);
 	}
 	
-	public static Set<Integer> getGlobalFeatureIndexes()
-	{
-		Set<Feature> globalFeatures = Feature.getGlobalFeatures();
-		Set<Integer> globalFeaturesIndexes = new LinkedHashSet<Integer>();
-		for (Feature globalFeature : globalFeatures)
-		{
-			globalFeaturesIndexes.add(globalFeature.getFeatureIndex());
-		}
-		return globalFeaturesIndexes;
-	}
 	
 	public static <T> void saveInSerFile(String filename, T object) throws FileNotFoundException, IOException
 	{
