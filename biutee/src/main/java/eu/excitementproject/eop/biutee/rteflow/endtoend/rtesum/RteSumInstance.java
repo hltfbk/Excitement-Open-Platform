@@ -117,13 +117,20 @@ public class RteSumInstance extends Instance
 	private synchronized void retrieveLabel() throws BiuteeException
 	{
 		Map<String,Map<String,Set<SentenceIdentifier>>> goldStandardAnswers = datasetContents.getGoldStandardAnswers();
-		Map<String,Set<SentenceIdentifier>> mapOfTopic = goldStandardAnswers.get(candidateIdentifier.getTopicId());
-		if (null==mapOfTopic) throw new BiuteeException("Wrong gold-standard was given. The gold-standard does not contain the topic \""+candidateIdentifier.getTopicId()+"\"");
-		Set<SentenceIdentifier> setOfHypothesis = mapOfTopic.get(candidateIdentifier.getHypothesisID());
-		if (null==setOfHypothesis) throw new BiuteeException("Wrong gold-standard was given. The gold-standard does not contain the hypothesis \""+candidateIdentifier.getHypothesisID()+"\"");
-		label = setOfHypothesis.contains(candidateIdentifier.getSentenceID());
+		if (null==goldStandardAnswers)
+		{
+			label=null;
+		}
+		else
+		{
+			Map<String,Set<SentenceIdentifier>> mapOfTopic = goldStandardAnswers.get(candidateIdentifier.getTopicId());
+			if (null==mapOfTopic) throw new BiuteeException("Wrong gold-standard was given. The gold-standard does not contain the topic \""+candidateIdentifier.getTopicId()+"\"");
+			Set<SentenceIdentifier> setOfHypothesis = mapOfTopic.get(candidateIdentifier.getHypothesisID());
+			if (null==setOfHypothesis) throw new BiuteeException("Wrong gold-standard was given. The gold-standard does not contain the hypothesis \""+candidateIdentifier.getHypothesisID()+"\"");
+			label = setOfHypothesis.contains(candidateIdentifier.getSentenceID());
+		}
 	}
-	
+
 	private synchronized void retrieveRelevantInformation() throws BiuteeException
 	{
 		createHypothesisInformation();
