@@ -8,10 +8,9 @@ import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ClassifierGenerator;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
-import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
+import eu.excitementproject.eop.biutee.utilities.ReasonableGuessCreator;
 import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeClassifiersIO;
-import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -47,9 +46,11 @@ public abstract class DefaultAbstractClassifierGenerator extends ClassifierGener
 	{
 		try
 		{
-			return RTESystemsUtils.reasonableGuessClassifier(featureVectorStructure);
+			ReasonableGuessCreator reasonableGuessCreator = new ReasonableGuessCreator(featureVectorStructure);
+			reasonableGuessCreator.create();
+			return reasonableGuessCreator.getClassifier();
 		}
-		catch (ClassifierException | OperationException | TeEngineMlException e)
+		catch (ClassifierException | TeEngineMlException e)
 		{
 			throw new BiuteeException("Failed to create classifier. See nested exception.",e);
 		}
