@@ -18,16 +18,13 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.biutee.rteflow.endtoend.Dataset;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.rtesum.RteSumDataset;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.rtesum.RteSumDatasetContents;
-import eu.excitementproject.eop.biutee.rteflow.endtoend.rtesum.RteSumInstance;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.ExtendedPreprocessedTopicDataSet;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.ExtendedTopicDataSetGenerator;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.PreprocessedTopicDataSet;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
-import eu.excitementproject.eop.common.datastructures.Envelope;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -51,15 +48,24 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class RTESumETEDatasetFactory
 {
-	
-	public static Dataset<RteSumInstance> createDataset(ConfigurationParams configurationParams, String serialized_parameterName, String rawData_parameterName, TESystemEnvironment teSystemEnvironment) throws BiuteeException
+	public RTESumETEDatasetFactory(ConfigurationParams configurationParams,
+			String serialized_parameterName, String rawData_parameterName,
+			TESystemEnvironment teSystemEnvironment)
+	{
+		super();
+		this.configurationParams = configurationParams;
+		this.serialized_parameterName = serialized_parameterName;
+		this.rawData_parameterName = rawData_parameterName;
+		this.teSystemEnvironment = teSystemEnvironment;
+	}
+
+	public void createDataset() throws BiuteeException
 	{
 		try
 		{
-			Envelope<List<PreprocessedTopicDataSet>> topicsEnvelope = new Envelope<List<PreprocessedTopicDataSet>>();
-			RteSumDatasetContents datasetContents = createDatasetContents(configurationParams,serialized_parameterName,rawData_parameterName,teSystemEnvironment,topicsEnvelope);
-			List<CandidateIdentifier> candidates = buildListOfCandidates(topicsEnvelope.getT());
-			return new RteSumDataset(datasetContents, candidates);
+			RteSumDatasetContents datasetContents = createDatasetContents();
+			List<CandidateIdentifier> candidates = buildListOfCandidates();
+			this.dataset = new RteSumDataset(datasetContents, candidates);
 		}
 		catch (ClassNotFoundException
 				| TeEngineMlException | AnnotatorException
@@ -71,11 +77,21 @@ public class RTESumETEDatasetFactory
 		}
 		
 	}
+
+	
+	public RteSumDataset getDataset() throws BiuteeException
+	{
+		if (null==dataset) throw new BiuteeException("Caller\'s bug. Dataset not yet built.");
+		return dataset;
+	}
+	
+	
 	
 	///////////////// PRIVATE /////////////////
 
 	
-	private static List<CandidateIdentifier> buildListOfCandidates(List<PreprocessedTopicDataSet> topics)
+
+	private List<CandidateIdentifier> buildListOfCandidates()
 	{
 		List<CandidateIdentifier> listOfCandidates = new ArrayList<CandidateIdentifier>();
 		for (PreprocessedTopicDataSet topic : topics)
@@ -97,22 +113,19 @@ public class RTESumETEDatasetFactory
 	}
 
 	
-	private static RteSumDatasetContents createDatasetContents(ConfigurationParams configurationParams, String serialized_parameterName, String rawData_parameterName, TESystemEnvironment teSystemEnvironment, Envelope<List<PreprocessedTopicDataSet>> topicsEnvelope) throws BiuteeException, ConfigurationException, FileNotFoundException, IOException, Rte6mainIOException, ClassNotFoundException, TeEngineMlException, AnnotatorException, TreeStringGeneratorException, TreeCoreferenceInformationException 
+	@SuppressWarnings("unchecked")
+	private RteSumDatasetContents createDatasetContents() throws BiuteeException, ConfigurationException, FileNotFoundException, IOException, Rte6mainIOException, ClassNotFoundException, TeEngineMlException, AnnotatorException, TreeStringGeneratorException, TreeCoreferenceInformationException 
 	{
 		File serFile = configurationParams.getFile(serialized_parameterName);
 		logger.info("Reading all topic from serialization file: "+serFile.getPath());
 		ObjectInputStream serStream = new ObjectInputStream(new FileInputStream(serFile));
 		try
 		{
-			@SuppressWarnings("unchecked")
-			List<PreprocessedTopicDataSet> topics = (List<PreprocessedTopicDataSet>) serStream.readObject();
-			topicsEnvelope.setT(topics);
+			this.topics = (List<PreprocessedTopicDataSet>) serStream.readObject();
 			
-			Envelope<Rte6FileSystemNames> fileSystemNamesEnvelope = new Envelope<Rte6FileSystemNames>();
-			File datasetDir = retrieveDatasetDirAndSetFileSystemNames(configurationParams,rawData_parameterName,fileSystemNamesEnvelope);
-			Rte6FileSystemNames fileSystemNames = fileSystemNamesEnvelope.getT();
+			File datasetDir = retrieveDatasetDirAndSetFileSystemNames(configurationParams,rawData_parameterName);
 			
-			Map<String, Map<String, Set<SentenceIdentifier>>> goldStandardAnswers = null;
+			goldStandardAnswers = null;
 			File goldStandardFile = new File(datasetDir,fileSystemNames.getGoldStandardFileName());
 			if (goldStandardFile.exists()&&goldStandardFile.isFile())
 			{
@@ -129,7 +142,8 @@ public class RTESumETEDatasetFactory
 				goldStandardAnswers = null;
 			}
 			
-			return buildMapsOfTopicsAndSurroundingUtilities(topics,goldStandardAnswers,teSystemEnvironment);
+			buildMapsOfTopicsAndSurroundingUtilities();
+			return new RteSumDatasetContents(topics_mapIdToTopic,topics_mapTopicidToSurroundingUtility,goldStandardAnswers);
 		}
 		finally
 		{
@@ -139,7 +153,7 @@ public class RTESumETEDatasetFactory
 	
 	
 	
-	private static File retrieveDatasetDirAndSetFileSystemNames(ConfigurationParams configurationParams, String parameterName, Envelope<Rte6FileSystemNames> fileSystemNames) throws ConfigurationException, BiuteeException
+	private File retrieveDatasetDirAndSetFileSystemNames(ConfigurationParams configurationParams, String parameterName) throws ConfigurationException, BiuteeException
 	{
 		//File datasetDir = configurationParams.getDirectory(RTE_SUM_DATASET_DIR_NAME);
 		String datasetParameterValue = configurationParams.get(parameterName);
@@ -166,7 +180,7 @@ public class RTESumETEDatasetFactory
 		
 		//fileSystemNames
 		Rte6FileSystemNames theFileSystemNames = FileSystemNamesFactory.chooseFilteredFileSystemNames(annualFlag,devTestFlag, datasetDir, isNoveltyTask);
-		fileSystemNames.setT(theFileSystemNames);
+		this.fileSystemNames = theFileSystemNames;
 		
 		logger.info("Working on folders of type: " + theFileSystemNames.getClass().getSimpleName()+
 				"( "+FileSystemNamesFactory.chooseUnfilteredFileSystemNames(annualFlag,devTestFlag, datasetDir, isNoveltyTask).getClass().getSimpleName()+" )");
@@ -174,10 +188,10 @@ public class RTESumETEDatasetFactory
 		return datasetDir;
 	}
 	
-	private static RteSumDatasetContents buildMapsOfTopicsAndSurroundingUtilities(List<PreprocessedTopicDataSet> topics, Map<String, Map<String, Set<SentenceIdentifier>>> goldStandardAnswers, TESystemEnvironment teSystemEnvironment) throws TeEngineMlException, TreeStringGeneratorException, TreeCoreferenceInformationException, AnnotatorException
+	private void buildMapsOfTopicsAndSurroundingUtilities() throws TeEngineMlException, TreeStringGeneratorException, TreeCoreferenceInformationException, AnnotatorException
 	{
-		Map<String, ExtendedPreprocessedTopicDataSet> topics_mapIdToTopic = new LinkedHashMap<String, ExtendedPreprocessedTopicDataSet>();
-		Map<String, RTESumSurroundingSentencesUtility> topics_mapTopicidToSurroundingUtility = new LinkedHashMap<String, RTESumSurroundingSentencesUtility>();
+		topics_mapIdToTopic = new LinkedHashMap<String, ExtendedPreprocessedTopicDataSet>();
+		topics_mapTopicidToSurroundingUtility = new LinkedHashMap<String, RTESumSurroundingSentencesUtility>();
 		
 		for (PreprocessedTopicDataSet topic : topics)
 		{
@@ -198,16 +212,28 @@ public class RTESumETEDatasetFactory
 			topics_mapTopicidToSurroundingUtility.put(topicId, surroundingUtility);
 		}
 		
-		return new RteSumDatasetContents(topics_mapIdToTopic,topics_mapTopicidToSurroundingUtility,goldStandardAnswers);
+		
 	}
 
 	
 	
 	
 	
-	
-	
+	// input
+	private final ConfigurationParams configurationParams;
+	private final String serialized_parameterName;
+	private final String rawData_parameterName;
+	private final TESystemEnvironment teSystemEnvironment;
 
+	// internals
+	private List<PreprocessedTopicDataSet> topics = null;
+	private Rte6FileSystemNames fileSystemNames = null;
+	private Map<String, Map<String, Set<SentenceIdentifier>>> goldStandardAnswers = null;
+	private Map<String, ExtendedPreprocessedTopicDataSet> topics_mapIdToTopic = null;
+	private Map<String, RTESumSurroundingSentencesUtility> topics_mapTopicidToSurroundingUtility = null;
+	
+	// output
+	private RteSumDataset dataset = null;
 	
 	private static final Logger logger = Logger.getLogger(RTESumETEDatasetFactory.class);
 }
