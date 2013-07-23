@@ -159,6 +159,7 @@ public class ChangeLog
 	private static Version VER_2_3_0 = new Version(2, 3, 0, BuildType.RELEASE);
 	private static Version VER_2_4_0 = new Version(2, 4, 0, BuildType.RELEASE);
 	private static Version VER_2_4_1 = new Version(2, 4, 1, BuildType.RELEASE);
+	private static Version VER_2_5_0 = new Version(2, 5, 0, BuildType.RELEASE);
 	
 	
 	/**
@@ -175,6 +176,7 @@ public class ChangeLog
 				ChangeLogItem[] logArray = new ChangeLogItem[]
 						{
 						// example new ChangeLogItem(VERSION_BEFORE_CHANGE, ChangeType.FIXED, "change description"),
+						new ChangeLogItem(VER_2_5_0, ChangeType.ADDED, "New high-level flow implementation."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.CHANGED, "Migration (Renames & Maven) of code into Excitement. Splitting the code into \"transformations\" project and \"biutee\" project."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.ADDED, "Learning models are stored and loaded into/from XML files."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.ADDED, "Adding \"is a\" by-coreference transformation."),

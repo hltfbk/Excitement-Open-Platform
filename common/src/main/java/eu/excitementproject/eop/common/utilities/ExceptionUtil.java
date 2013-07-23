@@ -62,14 +62,15 @@ public class ExceptionUtil
 	 */
 	public static void outputException(Throwable throwable, PrintWriter printWriter)
 	{
-		printWriter.println(ExceptionUtil.getMessages(throwable));
-		printWriter.println();
 		throwable.printStackTrace(printWriter);
+		printWriter.println();
+		printWriter.println(ExceptionUtil.getMessages(throwable));
 	}
 	
 	public static void logException(Throwable throwable, Logger logger)
 	{
-		logger.error(ExceptionUtil.getMessages(throwable),throwable);
+		logger.error("Exception/Error:\n",throwable);
+		logger.error(ExceptionUtil.getMessages(throwable));
 	}
 	
 	public static String getStackTrace(Throwable t)

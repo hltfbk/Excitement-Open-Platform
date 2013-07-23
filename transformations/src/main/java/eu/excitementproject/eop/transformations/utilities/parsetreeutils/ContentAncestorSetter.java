@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.transformations.utilities.parsetreeutils;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -65,7 +65,7 @@ public class ContentAncestorSetter
 	public static final Set<SimplerCanonicalPosTag> contentPoses;
 	static
 	{
-		contentPoses=new HashSet<SimplerCanonicalPosTag>();
+		contentPoses=new LinkedHashSet<SimplerCanonicalPosTag>();
 		contentPoses.add(SimplerCanonicalPosTag.VERB);
 		contentPoses.add(SimplerCanonicalPosTag.NOUN);
 		contentPoses.add(SimplerCanonicalPosTag.ADJECTIVE);

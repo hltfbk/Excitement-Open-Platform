@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.utilities.parsetreeutils;
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
@@ -35,7 +35,7 @@ public class FindMainVerbHeuristic
 	public static final Set<String> NON_CONTENT_VERBS;
 	static
 	{
-		NON_CONTENT_VERBS = new HashSet<String>();
+		NON_CONTENT_VERBS = new LinkedHashSet<String>();
 		NON_CONTENT_VERBS.add("be");
 		NON_CONTENT_VERBS.add("have");
 	}
@@ -45,7 +45,7 @@ public class FindMainVerbHeuristic
 
 	public Set<ExtendedNode> topContentVerbs(ExtendedNode tree)
 	{
-		Set<ExtendedNode> set = new HashSet<ExtendedNode>();
+		Set<ExtendedNode> set = new LinkedHashSet<ExtendedNode>();
 		if (isContentVerb(tree.getInfo()))
 			set.add(tree);
 		else

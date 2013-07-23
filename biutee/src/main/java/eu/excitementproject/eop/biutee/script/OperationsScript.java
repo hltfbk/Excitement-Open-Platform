@@ -47,6 +47,10 @@ public abstract class OperationsScript<I,S extends AbstractNode<I, S>> extends R
 	{
 		this.hypothesisInformation = hypothesisInformation;
 	}
+	public HypothesisInformation getHypothesisInformation()
+	{
+		return this.hypothesisInformation;
+	}
 	
 	/**
 	 * Returns list of operations to be performed in a given iteration.

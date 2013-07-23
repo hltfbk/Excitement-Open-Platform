@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -46,7 +47,7 @@ public class AnnotationRuleLexiconUtils {
 		} catch (Exception e) { throw new AnnotationCompilationException("Error loading properties file " + predListPropsName, e);}
 
 		// iterate over the props file's keys (predicate types)and map their values (predicates) back to them
-		HashMap<String, PredicateSignature> lemmaToPredTypeMap = new HashMap<String, PredicateSignature>();
+		LinkedHashMap<String, PredicateSignature> lemmaToPredTypeMap = new LinkedHashMap<String, PredicateSignature>();
 		for (Object key : predProps.keySet())
 		{
 			String keyStr = key.toString();
@@ -152,7 +153,7 @@ public class AnnotationRuleLexiconUtils {
 		
 		// marshal lists
 		
-		Map<String, Set<String>> verbFamiliesMap = new HashMap<String, Set<String>>();
+		Map<String, Set<String>> verbFamiliesMap = new LinkedHashMap<String, Set<String>>();
 		for (Object verbFamilyLabel: verbFamiliesProperties.keySet())
 		{
 			String labelStr = verbFamilyLabel.toString();
@@ -161,7 +162,7 @@ public class AnnotationRuleLexiconUtils {
 			verbFamiliesMap.put(labelStr, verbs);
 		}
 		
-		Map<String, Set<String>> nounFamiliesMap = new HashMap<String, Set<String>>();
+		Map<String, Set<String>> nounFamiliesMap = new LinkedHashMap<String, Set<String>>();
 		for (Object nounFamilyLabel: nounFamiliesProperties.keySet())
 		{
 			String labelStr = nounFamilyLabel.toString();

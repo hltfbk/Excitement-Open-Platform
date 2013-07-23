@@ -82,9 +82,9 @@ public class EntailmentRuleBuildingUtils {
 		Set<S> rhsNodesSet = null;
 		Set<S> nodesSet = null;
 		try {
-			rhsNodesSet = AbstractNodeUtils.treeToSet(rhs);
+			rhsNodesSet = AbstractNodeUtils.treeToLinkedHashSet(rhs);
 			nodesSet = new HashSet<S>(rhsNodesSet);
-			lhsNodesSet = AbstractNodeUtils.treeToSet(lhs);
+			lhsNodesSet = AbstractNodeUtils.treeToLinkedHashSet(lhs);
 			nodesSet.addAll(lhsNodesSet);
 		} catch (Exception e) {	}	// ignore errors. they're probably because of null lhs's in special function rules
 		

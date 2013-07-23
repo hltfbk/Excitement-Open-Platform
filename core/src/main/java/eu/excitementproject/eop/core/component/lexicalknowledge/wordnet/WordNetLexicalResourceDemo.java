@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.wordnet;
 
 import java.io.File;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -67,7 +67,7 @@ public class WordNetLexicalResourceDemo {
 		
 		// check for HYPERNYM, and also SYNONYM, DERIVATION
 		
-		Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
+		Set<WordNetRelation> relations = new LinkedHashSet<WordNetRelation>();
 //		relations2.addAll( Utils.arrayToCollection(WordNetRelation.values(), new HashSet<WordNetRelation>()));
 //		relations.add(WordNetRelation.DERIVATIONALLY_RELATED);
 //		wnLexR.setDefaultRelationSet(relations);

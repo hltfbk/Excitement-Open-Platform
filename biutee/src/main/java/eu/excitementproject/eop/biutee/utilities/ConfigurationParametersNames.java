@@ -70,6 +70,14 @@ public class ConfigurationParametersNames
 	public static final String RTE_SUM_IS_NOVELTY_TASK_FLAG = "is_novelty_task";
 
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTE_SERIALIZED_DATASET_FOR_TRAINING = "serialized_training_data";
+	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTE_SERIALIZED_DATASET_FOR_TEST = "serialized_test_data";
+	@ConfigurationParameterAnnotation({RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTESUM_DATASET_FOR_TRAINING = "training_data";
+	@ConfigurationParameterAnnotation({RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTESUM_DATASET_FOR_TEST = "test_data";
+	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE = "lemmatizer_rule_file";
 	@ConfigurationParameterAnnotation(value={RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME},mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String RTE_ENGINE_PARSER_PARAMETER_NAME = "parser";
@@ -82,6 +90,7 @@ public class ConfigurationParametersNames
 	public static final String RTE_TRAIN_SERIALIZED_SAMPLES_BASE_PATH = "save_serialized_samples";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_TEST_SERIALIZED_SAMPLES_NAME = "serialized_samples";
+
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_TEST_SAMPLES_FOR_SEARCH_CLASSIFIER = "search_classifier_samples";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})

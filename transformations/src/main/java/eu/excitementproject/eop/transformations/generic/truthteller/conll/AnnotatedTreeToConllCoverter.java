@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.generic.truthteller.conll;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -145,7 +145,7 @@ public class AnnotatedTreeToConllCoverter {
 	
 	private static <I extends Info, N extends AbstractNode<I, N>> Map<N, Integer> mapNodesOfTreeToIds(N root )
 	{
-		Map<N, Integer> mapNodesToIds = new HashMap<N, Integer>();
+		Map<N, Integer> mapNodesToIds = new LinkedHashMap<N, Integer>();
 		Integer id = 1;
 		
 		List<N> nodes = AbstractNodeUtils.treeToList(root);

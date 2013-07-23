@@ -2,7 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.truthteller.application;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -82,7 +82,7 @@ public class DefaultAnnotationRuleApplicationOperation {
 		treeWasAltered = false;
 		
 		// cross the tree-to-LHS map with the LHS-to-RHS-annotations map
-		Map<ExtendedConstructionNode, BasicRuleAnnotations> mapTreeNodesToAnnotations = new HashMap<ExtendedConstructionNode, BasicRuleAnnotations>();
+		Map<ExtendedConstructionNode, BasicRuleAnnotations> mapTreeNodesToAnnotations = new LinkedHashMap<ExtendedConstructionNode, BasicRuleAnnotations>();
 		for (ExtendedNode lhsNode : mapLhsToAnnotations.keySet())
 		{
 			if (!mapLhsToTree.leftContains(lhsNode))

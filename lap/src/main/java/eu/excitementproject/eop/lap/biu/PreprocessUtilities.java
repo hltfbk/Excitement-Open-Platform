@@ -2,7 +2,6 @@ package eu.excitementproject.eop.lap.biu;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
@@ -14,6 +13,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.match.Matcher;
@@ -57,7 +57,7 @@ public class PreprocessUtilities
 	{
 		for (S tree : textTrees)
 		{
-			for (S node : AbstractNodeUtils.treeToSet(tree))
+			for (S node : TreeIterator.iterableTree(tree))
 			{
 				if (!coreferenceInformation.isNodeExist(node))
 				{
@@ -115,8 +115,7 @@ public class PreprocessUtilities
 	
 	private static void addNeToAntecedents(BasicConstructionNode mutableParseTree)
 	{
-		Set<BasicConstructionNode> mutableNodes = AbstractNodeUtils.treeToSet(mutableParseTree);
-		for (BasicConstructionNode mutableNode : mutableNodes)
+		for (BasicConstructionNode mutableNode : TreeIterator.iterableTree(mutableParseTree))
 		{
 			if (mutableNode.getAntecedent()!=null)
 			{

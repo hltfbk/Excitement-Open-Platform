@@ -41,7 +41,7 @@ public class DemoMoveInsert
 		String tree1Str = TreeUtilities.treeToString(tree1);
 		System.out.println(tree1Str);
 		
-		Set<ExtendedNode> tree1Set = AbstractNodeUtils.treeToSet(tree1);
+		Set<ExtendedNode> tree1Set = AbstractNodeUtils.treeToLinkedHashSet(tree1);
 		ExtendedNode muchNode = null;
 		for (ExtendedNode node : tree1Set)
 		{
@@ -73,7 +73,7 @@ public class DemoMoveInsert
 		ExtendedNode tree2 = TreeUtilities.copyFromBasicNode(originalTree2);
 		
 		ExtendedNode johnNode = null;
-		Set<ExtendedNode> tree2Set = AbstractNodeUtils.treeToSet(tree2);
+		Set<ExtendedNode> tree2Set = AbstractNodeUtils.treeToLinkedHashSet(tree2);
 		for (ExtendedNode node : tree2Set)
 		{
 			if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("John"))

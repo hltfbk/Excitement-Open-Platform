@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.lap.biu.en.parser.minipar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
@@ -44,7 +44,7 @@ public abstract class AbstractMiniparParser implements EnglishSingleTreeParser
 	protected static final int IGNORED_MINIPAR_LINES_FOOTER = 1;
 	protected static final int IGNORED_MINIPAR_LINES = IGNORED_MINIPAR_LINES_HEADER+IGNORED_MINIPAR_LINES_FOOTER;
 	protected static final HashSet<String> IGNORED_MINIPAR_LINES_CONTENTES = new HashSet<String>();
-	protected static final HashMap<String,DependencyRelationType> mapRelation = new HashMap<String, DependencyRelationType>();
+	protected static final LinkedHashMap<String,DependencyRelationType> mapRelation = new LinkedHashMap<String, DependencyRelationType>();
 	
 	public static DependencyRelationType getDependencyRelationType(String dependencyRelationString) {
 		return mapRelation.get(dependencyRelationString);
@@ -222,9 +222,9 @@ public abstract class AbstractMiniparParser implements EnglishSingleTreeParser
 		
 		// This map: maps an ID to its ConstructionNode.
 		// In addition, the mapping also maps to the ID of its parent node.
-		HashMap<String, ParentAndConstructionNode> mapIdToNode = new HashMap<String, ParentAndConstructionNode>();
+		LinkedHashMap<String, ParentAndConstructionNode> mapIdToNode = new LinkedHashMap<String, ParentAndConstructionNode>();
 		this.allNodes = new ArrayList<BasicConstructionNode>(miniparOutput.size()-IGNORED_MINIPAR_LINES);
-		this.mapAntecedentOf = new HashMap<String, String>();
+		this.mapAntecedentOf = new LinkedHashMap<String, String>();
 		
 		try
 		{
@@ -383,7 +383,7 @@ public abstract class AbstractMiniparParser implements EnglishSingleTreeParser
 	protected BasicConstructionNode root;
 	protected BasicNode rootOfImmutable = null; // can stay null until somebody
 	                                       // wants the immutable tree.
-	protected HashMap<String,String> mapAntecedentOf; // map ID to ID.
+	protected LinkedHashMap<String,String> mapAntecedentOf; // map ID to ID.
 	protected int serial=1;
 
 

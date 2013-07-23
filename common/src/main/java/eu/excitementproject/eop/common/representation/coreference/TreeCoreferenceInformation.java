@@ -3,12 +3,11 @@ package eu.excitementproject.eop.common.representation.coreference;
 
 import java.io.Serializable;
 import java.io.StringWriter;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
@@ -48,7 +47,7 @@ public class TreeCoreferenceInformation<T> implements Serializable
 	public Integer createNewGroup()
 	{
 		Integer id = nextId;
-		mapIdToCorefGroups.put(id, new HashSet<T>());
+		mapIdToCorefGroups.put(id, new LinkedHashSet<T>());
 		nextId++;
 		return id;
 	}
@@ -198,7 +197,7 @@ public class TreeCoreferenceInformation<T> implements Serializable
 					if (null==currentGroup)
 					{
 						// I still want to keep the stability of this co reference information state.
-						if (badGroups==null) badGroups = new HashSet<Integer>();
+						if (badGroups==null) badGroups = new LinkedHashSet<Integer>();
 						badGroups.add(id);
 					}
 					else
@@ -264,7 +263,7 @@ public class TreeCoreferenceInformation<T> implements Serializable
 	public ImmutableSet<Integer> getAllExistingGroupIds()
 	{
 		// Returning a copy of the keySet is safer.
-		Set<Integer> realSetRet = new HashSet<Integer>();
+		Set<Integer> realSetRet = new LinkedHashSet<Integer>();
 		realSetRet.addAll(mapIdToCorefGroups.keySet());
 		return new ImmutableSetWrapper<Integer>(realSetRet);
 	}
@@ -298,8 +297,8 @@ public class TreeCoreferenceInformation<T> implements Serializable
 
 	//////////////////// PROTECTED PART ////////////////////////////
 	
-	protected Map<T, Integer> mapNodeToId = new HashMap<T, Integer>();
-	protected Map<Integer,Set<T>> mapIdToCorefGroups = new HashMap<Integer, Set<T>>();
+	protected Map<T, Integer> mapNodeToId = new LinkedHashMap<T, Integer>();
+	protected Map<Integer,Set<T>> mapIdToCorefGroups = new LinkedHashMap<Integer, Set<T>>();
 	
 	private Integer nextId = new Integer(1);
 }

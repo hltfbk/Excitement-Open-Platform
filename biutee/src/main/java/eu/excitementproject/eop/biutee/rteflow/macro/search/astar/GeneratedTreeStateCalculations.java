@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.macro.search.astar;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -218,7 +218,7 @@ public class GeneratedTreeStateCalculations implements AStarAlgorithm.StateCalcu
 				else
 				{
 					TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(state.getTree(), state.getFeatureVector());
-					Set<TreeAndFeatureVector> setTrees = new HashSet<TreeAndFeatureVector>();
+					Set<TreeAndFeatureVector> setTrees = new LinkedHashSet<TreeAndFeatureVector>();
 					setTrees.add(treeAndFeatureVector);
 					ImmutableList<SingleOperationItem> operations = script.getItemListForIteration(state.getIteration(), setTrees);
 					TreesGeneratorByOperations generator = 
@@ -286,7 +286,7 @@ public class GeneratedTreeStateCalculations implements AStarAlgorithm.StateCalcu
 	{
 		List<AStarElement> ret = new ArrayList<AStarElement>();
 		TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(state.getTree(), state.getFeatureVector());
-		Set<TreeAndFeatureVector> setTrees = new HashSet<TreeAndFeatureVector>();
+		Set<TreeAndFeatureVector> setTrees = new LinkedHashSet<TreeAndFeatureVector>();
 		setTrees.add(treeAndFeatureVector);
 		ImmutableList<SingleOperationItem> operations = script.getItemListForIteration(state.getIteration(), setTrees);
 		TreesGeneratorByOperations generator = 

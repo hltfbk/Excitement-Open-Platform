@@ -19,8 +19,8 @@ import eu.excitementproject.eop.biutee.classifiers.f1_logicstic_regression.Recal
 import eu.excitementproject.eop.biutee.classifiers.scaling.LinearScalingTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
-import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemUtils;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
@@ -91,7 +91,7 @@ public class DemoF1Classifier
 			GradientAscentClassifier gradientAscentClassifier = new GradientAscentClassifier(0.0, 0.01, new F_alpha_DerivativeCalculator(GAMMA),GAMMA);
 			// gradientAscentClassifier.restrict(Constants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, RTESystemsUtils.getGlobalFeatureIndexes());
 			// // gradientAscentClassifier.restrict(0.000005, new DummySet<Integer>());
-			gradientAscentClassifier.restrict(0.000005, RTESystemsUtils.getGlobalFeatureIndexes());
+			gradientAscentClassifier.restrict(0.000005, SystemUtils.getGlobalFeatureIndexes());
 			LinearTrainableStorableClassifier classifier = new LinearScalingTrainableStorableClassifier(gradientAscentClassifier);
 			classifier.setFeaturesNames( ClassifierUtils.extendFeatureNames(Feature.toMapOfNames(), script.getRuleBasesNames()));
 			logger.info("Loading training data...");
@@ -118,7 +118,7 @@ public class DemoF1Classifier
 				logger.info("Calculating for regularization factor: "+String.format("%-4.4f",regularization));
 				gradientAscentClassifier = new GradientAscentClassifier(regularization, 0.01, new F_alpha_DerivativeCalculator(GAMMA),GAMMA);
 				// gradientAscentClassifier.restrict(Constants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, RTESystemsUtils.getGlobalFeatureIndexes());
-				gradientAscentClassifier.restrict(0.000005, RTESystemsUtils.getGlobalFeatureIndexes());
+				gradientAscentClassifier.restrict(0.000005, SystemUtils.getGlobalFeatureIndexes());
 				classifier = new LinearScalingTrainableStorableClassifier(gradientAscentClassifier);
 				logger.info("Training classifier...");
 				classifier.train(safeSamples.getSamples());

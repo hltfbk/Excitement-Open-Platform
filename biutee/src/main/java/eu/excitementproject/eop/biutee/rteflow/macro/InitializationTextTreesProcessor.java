@@ -4,7 +4,6 @@ import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.CACHE_SI
 import static eu.excitementproject.eop.transformations.utilities.Constants.HANDLE_LEXICAL_MULTI_WORD;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -33,8 +32,8 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
-import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
@@ -230,7 +229,7 @@ public class InitializationTextTreesProcessor
 		hypothesis = new TreeAndParentMap<ExtendedInfo,ExtendedNode>(this.hypothesisTree);
 		
 		// number of hypothesis nodes, to be used by initialFeatureVector()
-		hypothesisNumberOfNodes = AbstractNodeUtils.treeToSet(this.hypothesisTree).size();
+		hypothesisNumberOfNodes = AbstractNodeUtils.treeToLinkedHashSet(this.hypothesisTree).size();
 		
 		// Creates a set of "LemmaAndPos" of all hypothesis tree's nodes
 		// and set of lemmas (with out pos)
@@ -617,7 +616,7 @@ public class InitializationTextTreesProcessor
 	protected static Set<String> wordsInTree(ExtendedNode tree)
 	{
 		Set<String> ret = new LinkedHashSet<String>();
-		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToSet(tree);
+		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToLinkedHashSet(tree);
 		for (ExtendedNode node : setNodes)
 		{
 			if (InfoObservations.infoHasLemma(node.getInfo()))
@@ -648,7 +647,7 @@ public class InitializationTextTreesProcessor
 	
 	protected static Set<String> extractOnlyLemmas(Iterable<LemmaAndPos> lemmasAndPoses)
 	{
-		Set<String> ret = new HashSet<String>();
+		Set<String> ret = new LinkedHashSet<String>();
 		for (LemmaAndPos lemmaAndPos : lemmasAndPoses)
 		{
 			if (lemmaAndPos.getLemma().length()>0)
@@ -667,7 +666,7 @@ public class InitializationTextTreesProcessor
 	public static Set<LemmaAndPos> lemmasAndPosesInTree(ExtendedNode tree) throws TeEngineMlException
 	{
 		Set<LemmaAndPos> ret = new LinkedHashSet<LemmaAndPos>();
-		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToSet(tree);
+		Set<ExtendedNode> setNodes = AbstractNodeUtils.treeToLinkedHashSet(tree);
 		for (ExtendedNode node : setNodes)
 		{
 			if (InfoObservations.infoHasLemma(node.getInfo()))
@@ -719,7 +718,7 @@ public class InitializationTextTreesProcessor
 	
 	private static void mapItself(BidirectionalMap<ExtendedNode, ExtendedNode> map, ExtendedNode tree)
 	{
-		for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+		for (ExtendedNode node : AbstractNodeUtils.treeToLinkedHashSet(tree))
 		{
 			map.put(node,node);
 		}
