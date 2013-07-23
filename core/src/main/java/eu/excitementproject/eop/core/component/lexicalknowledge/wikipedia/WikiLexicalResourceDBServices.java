@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -197,7 +197,7 @@ public class WikiLexicalResourceDBServices {
 //			Date e = new Date();
 //			System.out.println("    WikipediaLexicalResource - after executeQuery "+(e.getTime() - s.getTime())+"\t"+stmt.toString());
 			// make a new rule from every result row
-			Map<LhsRhs, LexicalRule<WikiRuleInfo>> mapLemmasToRules = new HashMap<LhsRhs, LexicalRule<WikiRuleInfo>>();	//	used to detect duplicate rules
+			Map<LhsRhs, LexicalRule<WikiRuleInfo>> mapLemmasToRules = new LinkedHashMap<LhsRhs, LexicalRule<WikiRuleInfo>>();	//	used to detect duplicate rules
 			while (resultSet.next()) {
 				LexicalRule<WikiRuleInfo> rule = constructRule(resultSet, lemma, getRulesFromRight);
 				addToRules(rules, rule, mapLemmasToRules);

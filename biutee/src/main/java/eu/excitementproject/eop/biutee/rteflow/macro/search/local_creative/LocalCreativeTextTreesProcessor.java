@@ -5,7 +5,6 @@ import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LOCAL_CR
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -318,7 +317,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 		if (element.getLocalIteration()<maxLocalIteration)
 		{
 			++numberOfExpandedElements;
-			Set<TreeAndFeatureVector> treeAsSet = new HashSet<TreeAndFeatureVector>();
+			Set<TreeAndFeatureVector> treeAsSet = new LinkedHashSet<TreeAndFeatureVector>();
 			TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(element.getTree(), element.getFeatureVector());
 			treeAsSet.add(treeAndFeatureVector);
 

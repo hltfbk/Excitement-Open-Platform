@@ -5,8 +5,8 @@ import java.util.Set;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.transformations.operations.operations.GenerationOperation;
 import eu.excitementproject.eop.transformations.operations.specifications.SubstituteNodeSpecification;
 //import eu.excitementproject.eop.transformations.operations.updater.FeatureVectorUpdater;
@@ -54,9 +54,9 @@ public class ChangeAnnotationFinder implements Finder<SubstituteNodeSpecificatio
 	{
 		specs = new LinkedHashSet<SubstituteNodeSpecification>();
 		ValueSetMap<ExtendedNode, ExtendedNode> matchIgnoreAnnotationHypothesisToText = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
-		for (ExtendedNode hypothesisNode : AbstractNodeUtils.treeToSet(hypothesis.getTree()))
+		for (ExtendedNode hypothesisNode : TreeIterator.iterableTree(hypothesis.getTree()))
 		{
-			for (ExtendedNode textNode : AbstractNodeUtils.treeToSet(text.getTree()))
+			for (ExtendedNode textNode : TreeIterator.iterableTree(text.getTree()))
 			{
 				if (AdvancedEqualities.nodesSimilarIgnoreAnnotations(textNode.getInfo(), hypothesisNode.getInfo()))
 				{

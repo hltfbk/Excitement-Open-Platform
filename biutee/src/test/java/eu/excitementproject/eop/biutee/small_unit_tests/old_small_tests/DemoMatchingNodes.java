@@ -60,7 +60,7 @@ public class DemoMatchingNodes
 		}
 		
 		System.out.println("--------------------------------------------------------------");
-		System.out.println("Total number of nodes in tree1: "+AbstractNodeUtils.treeToSet(tree1).size());
+		System.out.println("Total number of nodes in tree1: "+AbstractNodeUtils.treeToLinkedHashSet(tree1).size());
 		System.out.println(String.format("%f.2", TreeUtilities.missingNodesPortion(tree2AndParentMap, tree1AndParentMap)));
 		System.out.println(String.format("%f.2", TreeUtilities.missingRelationsPortion(tree2AndParentMap, tree1AndParentMap)));
 		

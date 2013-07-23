@@ -1,12 +1,10 @@
 package eu.excitementproject.eop.lap.biu.coreference;
 
-import java.util.Set;
-
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 
 public class TreeCoreferenceInformationUtils
 {
@@ -18,8 +16,7 @@ public class TreeCoreferenceInformationUtils
 			ImmutableSet<T> nodes = information.getGroup(id).getImmutableSetCopy();
 			for (T node : nodes)
 			{
-				Set<T> nodesAsSet = AbstractNodeUtils.treeToSet(node);
-				for (T nestedNode : nodesAsSet)
+				for (T nestedNode : TreeIterator.iterableTree(node))
 				{
 					if (nestedNode==node) ;
 					else

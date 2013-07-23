@@ -6,24 +6,23 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.SensedWord;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Synset;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetException;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetInitializationException;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetPartOfSpeech;
 
 import net.sf.extjwnl.JWNLException;
 import net.sf.extjwnl.data.IndexWord;
 import net.sf.extjwnl.data.IndexWordSet;
 import net.sf.extjwnl.data.POS;
 import net.sf.extjwnl.dictionary.Dictionary;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.SensedWord;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Synset;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetException;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetInitializationException;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetPartOfSpeech;
 
 
 /**
@@ -98,7 +97,7 @@ public class ExtJwnlDictionary implements eu.excitementproject.eop.core.utilitie
 	 */
 	public Map<WordNetPartOfSpeech, Set<Synset>> getSynsetOf(String lemma) throws WordNetException
 	{
-		Map<WordNetPartOfSpeech, Set<Synset>> ret = new HashMap<WordNetPartOfSpeech, Set<Synset>>();
+		Map<WordNetPartOfSpeech, Set<Synset>> ret = new LinkedHashMap<WordNetPartOfSpeech, Set<Synset>>();
 		if (doNotProcessThisWord(lemma)) ;
 		else
 		{
@@ -132,7 +131,7 @@ public class ExtJwnlDictionary implements eu.excitementproject.eop.core.utilitie
 	public Set<Synset> getSynsetsOf(String lemma, WordNetPartOfSpeech partOfSpeech)  throws WordNetException
 	{
 		if (doNotProcessThisWord(lemma))
-			return new HashSet<Synset>();
+			return new LinkedHashSet<Synset>();
 		else
 		{
 			try
@@ -153,7 +152,7 @@ public class ExtJwnlDictionary implements eu.excitementproject.eop.core.utilitie
 	 */
 	public Map<WordNetPartOfSpeech, List<Synset>> getSortedSynsetOf(String lemma) throws WordNetException
 	{
-		Map<WordNetPartOfSpeech, List<Synset>> ret = new HashMap<WordNetPartOfSpeech, List<Synset>>();
+		Map<WordNetPartOfSpeech, List<Synset>> ret = new LinkedHashMap<WordNetPartOfSpeech, List<Synset>>();
 		if (doNotProcessThisWord(lemma)) ;
 		else
 		{
@@ -234,7 +233,7 @@ public class ExtJwnlDictionary implements eu.excitementproject.eop.core.utilitie
 	
 	protected Set<Synset> indexWordToSet(IndexWord indexWord) throws JWNLException
 	{
-		Set<Synset> ret = new HashSet<Synset>();
+		Set<Synset> ret = new LinkedHashSet<Synset>();
 		if (indexWord!=null)
 		{
 			for (net.sf.extjwnl.data.Synset jwnlRealSynset : indexWord.getSenses())

@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.representation.parse.tree;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +24,7 @@ public class BottomUpComputer<T,S extends AbstractNode<T, S>>
 	private void compute()
 	{
 		parentMap = AbstractNodeUtils.parentMap(root);
-		Set<S> alreadyVisited = new HashSet<S>();
+		Set<S> alreadyVisited = new LinkedHashSet<S>();
 		Set<S> leaves = AbstractNodeUtils.getLeaves(root);
 		boolean leavesEmpty = true;
 		if (leaves != null) if (leaves.size()>0) leavesEmpty = false;
@@ -32,14 +32,14 @@ public class BottomUpComputer<T,S extends AbstractNode<T, S>>
 		{
 			leavesLevels.add(leaves);
 			alreadyVisited.addAll(leaves);
-			Set<S> parents = new HashSet<S>();
+			Set<S> parents = new LinkedHashSet<S>();
 			for (S leaf : leaves)
 			{
 				S parent = parentMap.get(leaf);
 				if (parent!=null)
 					parents.add(parent);
 			}
-			leaves = new HashSet<S>();
+			leaves = new LinkedHashSet<S>();
 			for (S parent : parents)
 			{
 				boolean parentIsLeaf = true;

@@ -2,18 +2,17 @@
  * 
  */
 package eu.excitementproject.eop.core.utilities.dictionary.wordnet.ext_jwnl;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import net.sf.extjwnl.data.Pointer;
+import net.sf.extjwnl.data.Word;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.SensedWord;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Synset;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetException;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetPartOfSpeech;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
-
-import net.sf.extjwnl.data.Pointer;
-import net.sf.extjwnl.data.Word;
 
 /**
  * this is the ExtJwnl implementation of {@link SensedWord}
@@ -132,7 +131,7 @@ public class ExtJwnlSensedWord implements SensedWord {
 	 */
 	public Set<SensedWord> getNeighborSensedWords(WordNetRelation relation) throws WordNetException {
 
-		Set<SensedWord> sensedWords = new HashSet<SensedWord>();
+		Set<SensedWord> sensedWords = new LinkedHashSet<SensedWord>();
 		if (relation.isLexical())
 		{
 			List<Pointer> pointers = wordObj.getPointers(ExtJwnlUtils.wordNetRelationToPointerType(relation));

@@ -89,7 +89,7 @@ public class SystemInitialization
 		configurationFile.setExpandingEnvironmentVariables(true);
 		configurationParams = configurationFile.getModuleConfiguration(configurationModuleName);
 		
-		RTESystemsUtils.setParserMode(configurationParams);
+		SystemUtils.setParserMode(configurationParams);
 		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
@@ -106,7 +106,7 @@ public class SystemInitialization
 		
 		
 		logger.info("Retrieving rule bases to retrieve multi words...");
-		ruleBasesToRetrieveMultiWords = RTESystemsUtils.getLexicalRuleBasesForMultiWords(configurationFile);
+		ruleBasesToRetrieveMultiWords = SystemUtils.getLexicalRuleBasesForMultiWords(configurationFile);
 		if (logger.isInfoEnabled())
 		{
 			logger.info("Rule bases retrieved:");
@@ -118,7 +118,7 @@ public class SystemInitialization
 		logger.info("done.");
 		
 		logger.info("Loading MLE estimation...");
-		mleEstimation = RTESystemsUtils.getUnigramProbabilityEstimation(configurationParams);
+		mleEstimation = SystemUtils.getUnigramProbabilityEstimation(configurationParams);
 		logger.info("done.");
 		
 		logger.info("Constructing tree annotator...");

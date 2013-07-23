@@ -223,7 +223,7 @@ public class AStarTextTreesProcessor extends AbstractTextTreesProcessor implemen
 			ScriptException, RuleBaseException
 	{
 		Set<String> hypothesisLemmasLowerCase = TreeUtilities.constructSetLemmasLowerCase(operationsEnvironment.getHypothesis());
-		int numberOfHypothesisNodes = AbstractNodeUtils.treeToSet(operationsEnvironment.getHypothesis().getTree()).size();
+		int numberOfHypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(operationsEnvironment.getHypothesis().getTree()).size();
 		Set<AStarElement> startStates = new LinkedHashSet<AStarElement>();
 		for (ExtendedNode textTree : originalTextTrees)
 		{

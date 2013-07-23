@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.transformations.operations.specifications;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
@@ -61,7 +61,7 @@ public class SubstitutionSubtreeSpecification extends Specification
 	@Override
 	public Set<ExtendedNode> getInvolvedNodesInTree()
 	{
-		Set<ExtendedNode> ret = new HashSet<ExtendedNode>();
+		Set<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
 		ret.add(getSubtreeToAdd());
 		ret.add(getSubtreeToRemove());
 		return ret;

@@ -3,7 +3,7 @@
  */
 package eu.excitementproject.eop.transformations.generic.truthteller.representation;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth;
@@ -33,7 +33,7 @@ public abstract class RuleAnnotationValue<A extends Enum<A>> implements Serializ
 	 */
 	public static final String FLIP_ANNOTATION_LBL = "FLIP";
 	
-	protected static final Set<String> permittedValues = new HashSet<String>();
+	protected static final Set<String> permittedValues = new LinkedHashSet<String>();
 	static
 	{
 		permittedValues.add(FLIP_ANNOTATION_LBL);

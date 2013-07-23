@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.utilities.linguistics.english.tense;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
@@ -25,7 +25,7 @@ public class IrregularTenseTable
 	private static final ImmutableMap<String, EnglishVerbFormsEntity> tenseMap;
 	static
 	{
-		Map<String, EnglishVerbFormsEntity> map = new HashMap<String, EnglishVerbFormsEntity>();
+		Map<String, EnglishVerbFormsEntity> map = new LinkedHashMap<String, EnglishVerbFormsEntity>();
 		
 		// Taken from http://indodic.com/IrregVerbTenseTable.htm
 		

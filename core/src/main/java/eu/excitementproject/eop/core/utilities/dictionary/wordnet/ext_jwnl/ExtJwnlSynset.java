@@ -2,11 +2,18 @@ package eu.excitementproject.eop.core.utilities.dictionary.wordnet.ext_jwnl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import net.sf.extjwnl.data.PointerType;
+import net.sf.extjwnl.data.PointerUtils;
+import net.sf.extjwnl.data.Word;
+import net.sf.extjwnl.data.list.PointerTargetNode;
+import net.sf.extjwnl.data.list.PointerTargetNodeList;
+import net.sf.extjwnl.data.list.PointerTargetTreeNode;
+import net.sf.extjwnl.data.list.PointerTargetTreeNodeList;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.EnglishWordnetLexicographerFileRetriever;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.LexicographerFileInformation;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.SensedWord;
@@ -16,14 +23,6 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetExcepti
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetMethodNotSupportedException;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetPartOfSpeech;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
-
-import net.sf.extjwnl.data.PointerType;
-import net.sf.extjwnl.data.PointerUtils;
-import net.sf.extjwnl.data.Word;
-import net.sf.extjwnl.data.list.PointerTargetNode;
-import net.sf.extjwnl.data.list.PointerTargetNodeList;
-import net.sf.extjwnl.data.list.PointerTargetTreeNode;
-import net.sf.extjwnl.data.list.PointerTargetTreeNodeList;
 
 
 /**
@@ -51,7 +50,7 @@ public class ExtJwnlSynset implements Synset
 	{
 		if (words == null)
 		{
-			words = new HashSet<String>();
+			words = new LinkedHashSet<String>();
 			for (Word word : this.realSynset.getWords())
 			{
 				String lemma = word.getLemma();
@@ -59,7 +58,7 @@ public class ExtJwnlSynset implements Synset
 				words.add(lemma);
 			}
 		}
-		return new HashSet<String>(words);	// return a copy
+		return new LinkedHashSet<String>(words);	// return a copy
 	}
 	
 	public String getGloss() throws WordNetException
@@ -201,7 +200,7 @@ public class ExtJwnlSynset implements Synset
 		if (pointerType == null)		
 			// some relations (inc. SYNONYM) have no neighbors, cos they have no matching JWNL relation
 			// other relations just don't exist in ext JWNL
-			return new HashSet<Synset>();
+			return new LinkedHashSet<Synset>();
 		else {
 			if (realSynset==null)
 				throw new WordNetException("Internal bug: realSynset is null!");
@@ -322,7 +321,7 @@ public class ExtJwnlSynset implements Synset
 	 * @return
 	 */
 	protected Set<Synset> getSetOfSynsets(PointerTargetTreeNodeList pointerTargetTreeList) {
-		Set<Synset> ret = new HashSet<Synset>();
+		Set<Synset> ret = new LinkedHashSet<Synset>();
 		for (PointerTargetTreeNode treeNode : pointerTargetTreeList)
 		{
 			ret.add(new ExtJwnlSynset(extJwnlDictionary, treeNode.getSynset()));
@@ -336,7 +335,7 @@ public class ExtJwnlSynset implements Synset
 	{
 		if (null==list)
 			return null;
-		Set<Synset> ret = new HashSet<Synset>();
+		Set<Synset> ret = new LinkedHashSet<Synset>();
 		for (Object nodeAsObject : list)
 		{
 			PointerTargetNode node = (PointerTargetNode) nodeAsObject;
