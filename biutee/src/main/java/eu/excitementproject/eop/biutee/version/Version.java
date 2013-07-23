@@ -166,11 +166,12 @@ public class Version implements AbstractVersion,Serializable
 	// 2.2.0 is RTE7
 	// 2.3.0 is search paper submitted to ACL 2012. Also includes annotation rules support.
 	// Plug-ins are introduced in 2.4.0
-	// 2.4.1 - a development version between ACL 2012 to the migration into Excitement 
+	// 2.4.1 - a development version between ACL 2012 to the migration into Excitement
+	// 2.5.0 - Release 1.0.0 of Excitement
 	private static final Version instance = new Version(
 			2, // product
 			5, 
-			0, // minor  
+			1, // minor  
 			BuildType.DEV);
 	
 	
