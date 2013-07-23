@@ -145,7 +145,7 @@ public class DefaultNodeInfo implements NodeInfo
 			return true;
 		if (obj == null)
 			return false;
-		if (obj instanceof NodeInfo)
+		if (!(obj instanceof NodeInfo))
 			return false;
 		NodeInfo other = (NodeInfo) obj;
 		if (getWordLemma() == null)
