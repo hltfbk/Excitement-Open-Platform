@@ -124,6 +124,7 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 		File xmlResultsFile = new File(BiuteeConstants.RTE_PAIRS_XML_RESULTS_FILE_NAME_PREFIX+BiuteeConstants.RTE_PAIRS_XML_RESULTS_FILE_NAME_POSTFIX);
 		logger.info("Saving results to an XML file: "+xmlResultsFile.getPath());
 		results.save(xmlResultsFile);
+		ExperimentManager.getInstance().register(xmlResultsFile);
 		logger.info("Results details:");
 		Iterator<String> detailsIterator = results.instanceDetailsIterator();
 		while (detailsIterator.hasNext())

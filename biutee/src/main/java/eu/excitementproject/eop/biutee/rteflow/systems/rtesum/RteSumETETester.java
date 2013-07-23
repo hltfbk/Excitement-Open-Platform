@@ -119,6 +119,7 @@ public class RteSumETETester extends EndToEndTester<RteSumInstance, RteSumProof>
 		File xmlResultsFile = new File(BiuteeConstants.RTE_SUM_OUTPUT_ANSWER_FILE_PREFIX+BiuteeConstants.RTE_SUM_OUTPUT_ANSWER_FILE_POSTFIX);
 		logger.info("Saving results to an XML file: "+xmlResultsFile.getPath());
 		results.save(xmlResultsFile);
+		ExperimentManager.getInstance().register(xmlResultsFile);
 		logger.info("Results details:");
 		Iterator<String> detailsIterator = results.instanceDetailsIterator();
 		while (detailsIterator.hasNext())
