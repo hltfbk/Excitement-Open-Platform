@@ -76,7 +76,7 @@ public class AbstractNodeUtils
 	 */
 	public static <T> HashSet<AbstractNode<T,?>> weakTreeToSet(AbstractNode<T,?> root)
 	{
-		return weakTreeToSet(root,new HashSet<AbstractNode<T,?>>());
+		return weakTreeToSet(root,new LinkedHashSet<AbstractNode<T,?>>());
 		
 	}
 
@@ -100,7 +100,8 @@ public class AbstractNodeUtils
 	 */
 	public static <T,S extends AbstractNode<T,S>> HashSet<S> treeToSet(S root)
 	{
-		return treeToSet(root,new HashSet<S>());
+		return treeToLinkedHashSet(root); // fortunately, LinkedHashSet extends HashSet.
+		//return treeToSet(root,new HashSet<S>());
 	}
 
 	/**
