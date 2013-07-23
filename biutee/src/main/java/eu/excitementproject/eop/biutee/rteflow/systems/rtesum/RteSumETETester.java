@@ -61,7 +61,7 @@ public class RteSumETETester extends EndToEndTester<RteSumInstance, RteSumProof>
 			
 			Date endDate = new Date();
 			long elapsedSeconds = (endDate.getTime()-startDate.getTime())/1000;
-			logger.info("className done. Time elapsed: "+elapsedSeconds/60+" minutes and "+elapsedSeconds%60+" seconds.");
+			logger.info(className+" done. Time elapsed: "+elapsedSeconds/60+" minutes and "+elapsedSeconds%60+" seconds.");
 			ExperimentManager.getInstance().save();
 		}
 		catch(Throwable e)
