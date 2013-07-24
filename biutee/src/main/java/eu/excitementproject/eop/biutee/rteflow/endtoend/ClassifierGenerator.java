@@ -7,6 +7,7 @@ import eu.excitementproject.eop.biutee.classifiers.TrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 
 /**
+ * Generates (creates) classifiers for training and for test.
  * 
  * @author Asher Stern
  * @since Jul 14, 2013

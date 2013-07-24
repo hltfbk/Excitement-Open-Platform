@@ -3,6 +3,7 @@ package eu.excitementproject.eop.biutee.rteflow.endtoend;
 import java.io.Serializable;
 
 /**
+ * An {@link Instance} with a {@link Proof}.
  * 
  * @author Asher Stern
  * @since Jul 14, 2013

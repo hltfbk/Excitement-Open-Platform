@@ -30,6 +30,9 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
 /**
+ * This class is given a (labeled) dataset of T-H pairs, and trains BIUTEE
+ * on this dataset. Then it stores the learned model in XML files in the working
+ * directory.
  * 
  * @author Asher Stern
  * @since July 15, 2013
