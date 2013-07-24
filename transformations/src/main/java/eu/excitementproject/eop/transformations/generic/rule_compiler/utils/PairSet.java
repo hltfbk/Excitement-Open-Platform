@@ -3,9 +3,9 @@
  */
 package eu.excitementproject.eop.transformations.generic.rule_compiler.utils;
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -146,7 +146,7 @@ public class PairSet<K> implements Serializable, Iterable<Pair<K>>
 	
 	//////////////////// PROTECTED & PRIVATE PART ///////////////////////
 	
-	protected Map<K,Set<Pair<K>>> mapKeyToPairContainingIt = new HashMap<K,Set<Pair<K>>>();
+	protected Map<K,Set<Pair<K>>> mapKeyToPairContainingIt = new LinkedHashMap<K,Set<Pair<K>>>();
 	protected Set<Pair<K>> pairsSet = new LinkedHashSet<Pair<K>>();
 
 }

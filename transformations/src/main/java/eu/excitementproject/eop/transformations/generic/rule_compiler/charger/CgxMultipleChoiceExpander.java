@@ -3,7 +3,7 @@
  */
 package eu.excitementproject.eop.transformations.generic.rule_compiler.charger;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -104,7 +104,7 @@ public class CgxMultipleChoiceExpander {
 		throws CompilationException
 	{
 		featuresToReplace.clear();
-		Map<String, Set<String>> multipleChoiceFeatures = new HashMap<String, Set<String>>();	
+		Map<String, Set<String>> multipleChoiceFeatures = new LinkedHashMap<String, Set<String>>();	
 		Pattern p = Pattern.compile(VARIED_FEATURE_PATTERN);
 		java.util.regex.Matcher m = p.matcher(text);
 		while ( m.find())

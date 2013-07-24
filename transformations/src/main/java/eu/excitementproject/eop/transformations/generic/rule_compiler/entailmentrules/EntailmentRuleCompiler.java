@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -96,7 +96,7 @@ public final class EntailmentRuleCompiler  {
 		
 		// now compile the files into rules
 		List<RuleWithConfidenceAndDescription<Info, BasicNode>> rulesWithCD = new Vector<RuleWithConfidenceAndDescription<Info, BasicNode>>();
-		new HashMap<SyntacticRule<Info, BasicNode>, String>();
+		new LinkedHashMap<SyntacticRule<Info, BasicNode>, String>();
 		for (File file : files)
 		{
 			String fileName = file.getName();

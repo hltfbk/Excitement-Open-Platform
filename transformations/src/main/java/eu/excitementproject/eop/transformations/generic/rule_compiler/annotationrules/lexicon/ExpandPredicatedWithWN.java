@@ -5,6 +5,7 @@ package eu.excitementproject.eop.transformations.generic.rule_compiler.annotatio
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
@@ -40,8 +41,8 @@ import eu.excitementproject.eop.transformations.representation.annotations.Predi
 public class ExpandPredicatedWithWN {
 
 	private static HashMap<String, PredicateSignature> mapPredToType;
-	private static HashMap<String, PredicateSignature> map2ndPredToType = new HashMap<String, PredicateSignature>();
-	private static HashMap<String, Set<PredicateSignature>> mapDuplicate2ndPreds = new HashMap<String, Set<PredicateSignature>>();
+	private static HashMap<String, PredicateSignature> map2ndPredToType = new LinkedHashMap<String, PredicateSignature>();
+	private static HashMap<String, Set<PredicateSignature>> mapDuplicate2ndPreds = new LinkedHashMap<String, Set<PredicateSignature>>();
 
 	/**
 	 * Load the predicate list properties file, and for each pred, output its WN synonyms and entailments
