@@ -2,7 +2,7 @@ package eu.excitementproject.eop.transformations.generic.rule_compiler.entailmen
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -51,7 +51,7 @@ public class RuleToConllCoverter {
 
 		// create an english node rule compliler
 		EntailmentRuleCompiler compiler = new EntailmentRuleCompiler(); 
-		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> rulesWithCD = new HashSet<RuleWithConfidenceAndDescription<Info,BasicNode>>(
+		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> rulesWithCD = new LinkedHashSet<RuleWithConfidenceAndDescription<Info,BasicNode>>(
 				compiler.compileFolder(dir, ruleFileSuffix));
 		File conllDir = new File(compilationParams.get(RuleCompilerParameterNames.CONLL_RULES_DIRECTORY));	
 		conllDir.mkdirs();

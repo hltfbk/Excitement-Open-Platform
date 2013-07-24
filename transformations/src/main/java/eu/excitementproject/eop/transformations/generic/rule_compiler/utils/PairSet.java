@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -64,7 +65,7 @@ public class PairSet<K> implements Serializable, Iterable<Pair<K>>
 		{
 			if (!mapKeyToPairContainingIt.containsKey(single))
 			{
-				mapKeyToPairContainingIt.put(single, new HashSet<Pair<K>>());
+				mapKeyToPairContainingIt.put(single, new LinkedHashSet<Pair<K>>());
 			}
 			Set<Pair<K>> itsSetOfPairsContainingIt = mapKeyToPairContainingIt.get(single);
 			itsSetOfPairsContainingIt.add(pair);
@@ -82,7 +83,7 @@ public class PairSet<K> implements Serializable, Iterable<Pair<K>>
 		boolean ret = pairsSet.removeAll(pairs);
 		
 		// search and remove all the pairs that contain this key and are mapped by other keys. 
-		Set<K> keysToRemove = new HashSet<K>();
+		Set<K> keysToRemove = new LinkedHashSet<K>();
 		for (Entry<K, Set<Pair<K>>> entry : mapKeyToPairContainingIt.entrySet())
 		{
 			Set<Pair<K>> pairs2 = entry.getValue();
@@ -146,6 +147,6 @@ public class PairSet<K> implements Serializable, Iterable<Pair<K>>
 	//////////////////// PROTECTED & PRIVATE PART ///////////////////////
 	
 	protected Map<K,Set<Pair<K>>> mapKeyToPairContainingIt = new HashMap<K,Set<Pair<K>>>();
-	protected Set<Pair<K>> pairsSet = new HashSet<Pair<K>>();
+	protected Set<Pair<K>> pairsSet = new LinkedHashSet<Pair<K>>();
 
 }

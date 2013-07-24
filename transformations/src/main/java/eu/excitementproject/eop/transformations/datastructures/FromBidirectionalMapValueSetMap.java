@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.transformations.datastructures;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
@@ -153,7 +153,7 @@ public class FromBidirectionalMapValueSetMap<K, V> implements ValueSetMap<K, V>
 		ImmutableSet<K> ret = null;
 		if (this.bidirectionalMap!=null)
 		{
-			HashSet<K> set = new HashSet<K>();
+			LinkedHashSet<K> set = new LinkedHashSet<K>();
 			if (this.bidirectionalMap.rightContains(value))
 			{
 				K key = this.bidirectionalMap.rightGet(value);

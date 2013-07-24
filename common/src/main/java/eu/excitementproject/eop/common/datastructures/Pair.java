@@ -3,6 +3,7 @@ package eu.excitementproject.eop.common.datastructures;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 
 /**
@@ -43,7 +44,7 @@ public class Pair<T> implements Serializable, Iterable<T>
 	
 	public HashSet<T> toSet()
 	{
-		HashSet<T> ret = new HashSet<T>();
+		HashSet<T> ret = new LinkedHashSet<T>();
 		ret.add(element1);
 		ret.add(element2);
 		return ret;

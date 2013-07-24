@@ -4,7 +4,7 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.charger;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -130,7 +130,7 @@ public class CgxMultipleChoiceExpander {
 	private  static Set<String> getOptions(String variedParam) 
 	{
 		return variedParam != null ? 
-				Utils.arrayToCollection(variedParam.split(OR_REGEX), new HashSet<String>()) : 
+				Utils.arrayToCollection(variedParam.split(OR_REGEX), new LinkedHashSet<String>()) : 
 				null;
 	}	
 }

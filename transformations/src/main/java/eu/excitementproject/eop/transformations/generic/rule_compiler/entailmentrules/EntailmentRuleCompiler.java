@@ -8,7 +8,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -118,7 +118,7 @@ public final class EntailmentRuleCompiler  {
 	public List<RuleWithConfidenceAndDescription<Info, BasicNode>> makeRules(File file ) throws EntailmentCompilationException
 	{
 		// first add all the rules into a set, to eliminate duplicates. Then put 'em in  a list
-		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> setOfRulesWithCD =  new HashSet<RuleWithConfidenceAndDescription<Info, BasicNode>>();
+		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> setOfRulesWithCD =  new LinkedHashSet<RuleWithConfidenceAndDescription<Info, BasicNode>>();
 		String description = RuleCompilerUtils.getDescription(file);
 		
 		String origText;
@@ -174,7 +174,7 @@ public final class EntailmentRuleCompiler  {
 		//rv.view();
 
 		// serialize rules to file
-		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> rules = new HashSet<RuleWithConfidenceAndDescription<Info, BasicNode>>(rulesWithCD);
+		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> rules = new LinkedHashSet<RuleWithConfidenceAndDescription<Info, BasicNode>>(rulesWithCD);
 
 		String outFile = applictionParams.get(TransformationsConfigurationParametersNames.SYNTACTIC_RULES_FILE);
 		try {
