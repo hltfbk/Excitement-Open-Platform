@@ -51,5 +51,10 @@
 			<artifactId>GermaNetAPI</artifactId>
 			<version>7.0.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+		<dependency>
+    		<groupId>eu.fbk.hlt</groupId>
+    		<artifactId>pso</artifactId>
+    		<version>0.0.1</version>
+		</dependency>
 	</dependencies>
 </project>
