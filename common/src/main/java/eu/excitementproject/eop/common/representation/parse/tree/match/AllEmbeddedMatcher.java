@@ -6,7 +6,7 @@ import java.util.Set;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultMatchCriteria;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 
 
 /**
@@ -75,8 +75,7 @@ public class AllEmbeddedMatcher<TM, TT, SM extends AbstractNode<TM, SM>, ST exte
 	public void findMatches() throws MatcherException
 	{
 		matches = new LinkedHashSet<BidirectionalMap<SM,ST>>();
-		Set<SM> mainTreeNodes = AbstractNodeUtils.treeToSet(mainTree);
-		for (SM mainTreeNode : mainTreeNodes)
+		for (SM mainTreeNode : TreeIterator.iterableTree(mainTree))
 		{
 			Matcher<TM, TT, SM, ST> matcher = new Matcher<TM, TT, SM, ST>(matchCriteria);
 			matcher.setTreeRoots(mainTreeNode, testedTree);

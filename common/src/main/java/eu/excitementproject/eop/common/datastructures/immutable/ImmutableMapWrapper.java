@@ -1,8 +1,9 @@
 package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -57,7 +58,7 @@ public class ImmutableMapWrapper<K,V> implements ImmutableMap<K,V>
 	public ImmutableSet<K> keySet()
 	{
 		if (null==this.realMap)
-			return new ImmutableSetWrapper<K>(new HashSet<K>());
+			return new ImmutableSetWrapper<K>(Collections.<K>emptySet());
 		else
 			return new ImmutableSetWrapper<K>(this.realMap.keySet());
 	}
@@ -92,7 +93,7 @@ public class ImmutableMapWrapper<K,V> implements ImmutableMap<K,V>
 	public Map<K, V> getMutableCopy()
 	{
 		if (null==this.realMap)
-			return new HashMap<K, V>();
+			return new LinkedHashMap<K, V>();
 		else
 		{
 			Map<K,V> copy = null;

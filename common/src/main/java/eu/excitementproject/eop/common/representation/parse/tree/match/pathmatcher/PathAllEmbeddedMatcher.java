@@ -39,7 +39,7 @@ public class PathAllEmbeddedMatcher<TM, SM extends AbstractNode<TM, SM>, TT, ST 
 	public void findMatches() throws MatcherException
 	{
 		matches = new ArrayList<BidirectionalMap<SM,ST>>();
-		Set<SM> mainTreeNodes = AbstractNodeUtils.treeToSet(mainTree);
+		Set<SM> mainTreeNodes = AbstractNodeUtils.treeToLinkedHashSet(mainTree);
 		PathMatcher<TM,SM,TT,ST> matcher = new PathMatcher<TM,SM,TT,ST>(matchCriteria);
 		for (SM mainTreeNode : mainTreeNodes)
 		{

@@ -3,7 +3,7 @@ package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -46,12 +46,12 @@ public class BiuteeMain {
 		
 		try {
 			CommonConfig config = init(configPath);
-			Set<String> flow = new HashSet<String>(Arrays.asList(flowList.split(",")));
+			Set<String> flow = new LinkedHashSet<String>(Arrays.asList(flowList.split(",")));
 			if (flow.size()==0) {
 				throw new BiuteeMainException("At least one flow step must be provided, got none.");
 			}
 			
-			Set<String> diff = new HashSet<String>(flow);
+			Set<String> diff = new LinkedHashSet<String>(flow);
 			diff.removeAll(ALLOWED_STEPS);
 			if (diff.size() != 0) {
 				throw new BiuteeMainException("Disallowed flow steps: " + StringUtil.join(diff, ","));
@@ -157,7 +157,7 @@ public class BiuteeMain {
 	}
 
 	private static final File lapOutputFolder = new File("./lap_output");
-	public static final Set<String> ALLOWED_STEPS = new HashSet<String>(Arrays.asList(new String[] {"full", "lap_train", "train", "lap_test", "test"}));
+	public static final Set<String> ALLOWED_STEPS = new LinkedHashSet<String>(Arrays.asList(new String[] {"full", "lap_train", "train", "lap_test", "test"}));
 	
 	private static final Logger logger = Logger.getLogger(BiuteeMain.class);
 

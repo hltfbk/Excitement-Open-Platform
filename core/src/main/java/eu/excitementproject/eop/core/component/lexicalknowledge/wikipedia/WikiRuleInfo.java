@@ -2,7 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
@@ -41,7 +41,7 @@ public class WikiRuleInfo implements RuleInfo {
 			throw new LexicalResourceException("got null extractionTypes");
 		if (extractionTypes.isEmpty())
 			throw new LexicalResourceException("got empty extractionTypes");
-		this.extractionTypes = new ImmutableSetWrapper<WikiExtractionType>( new HashSet<WikiExtractionType>(extractionTypes));
+		this.extractionTypes = new ImmutableSetWrapper<WikiExtractionType>( new LinkedHashSet<WikiExtractionType>(extractionTypes));
 		
 		this.coocurenceScore = coocurenceScore;
 		

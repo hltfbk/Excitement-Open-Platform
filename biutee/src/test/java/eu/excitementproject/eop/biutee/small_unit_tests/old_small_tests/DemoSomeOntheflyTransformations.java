@@ -8,6 +8,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
@@ -48,7 +49,7 @@ public class DemoSomeOntheflyTransformations
 			System.out.println(TreeUtilities.treeToString(copied));
 			
 			ExtendedNode dayNode = null;
-			for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+			for (ExtendedNode node : TreeIterator.iterableTree(tree))
 			{
 				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("day"))
 				{
@@ -82,7 +83,7 @@ public class DemoSomeOntheflyTransformations
 			
 			
 			ExtendedNode thisNode = null;
-			for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+			for (ExtendedNode node : TreeIterator.iterableTree(tree))
 			{
 				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("this"))
 				{
@@ -94,7 +95,7 @@ public class DemoSomeOntheflyTransformations
 
 			
 			ExtendedNode myNode = null;
-			for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+			for (ExtendedNode node : TreeIterator.iterableTree(tree))
 			{
 				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("my"))
 				{
@@ -169,7 +170,7 @@ public class DemoSomeOntheflyTransformations
 			BasicNode tree2Original = parser.getParseTree();
 			ExtendedNode tree2 = TreeUtilities.copyFromBasicNode(tree2Original);
 			ExtendedNode day2node = null;
-			for(ExtendedNode node : AbstractNodeUtils.treeToSet(tree2))
+			for(ExtendedNode node : TreeIterator.iterableTree(tree2))
 			{
 				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("day"))
 				{

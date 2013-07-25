@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.common.representation.parse.tree.match;
 
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -42,7 +42,7 @@ public class MatcherChoiceHandler<TM, TT, SM extends AbstractNode<TM, SM>, ST ex
 
 	public void handleChoice(List<SM> choice)
 	{
-		Set<SM> chosenNodes = new HashSet<SM>();
+		Set<SM> chosenNodes = new LinkedHashSet<SM>();
 		for (SM node : choice)
 			chosenNodes.add(node);
 		

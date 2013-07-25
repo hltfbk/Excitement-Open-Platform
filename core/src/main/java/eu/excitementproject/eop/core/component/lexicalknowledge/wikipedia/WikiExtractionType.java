@@ -2,8 +2,8 @@
  * 
  */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,8 +45,8 @@ public enum WikiExtractionType {
 	private final String stringRepresentation;
 	private final double rank;
 	private final double code;		// a numeric code that represents this enum value in the wiki db
-	private static final Map<String, WikiExtractionType> mapStringRepresentationToEnum = new HashMap<String, WikiExtractionType>();
-	private static final Map<Double, WikiExtractionType> mapCodeToEnum = new HashMap<Double, WikiExtractionType>();
+	private static final Map<String, WikiExtractionType> mapStringRepresentationToEnum = new LinkedHashMap<String, WikiExtractionType>();
+	private static final Map<Double, WikiExtractionType> mapCodeToEnum = new LinkedHashMap<Double, WikiExtractionType>();
 	static
 	{
 		for (WikiExtractionType  value: values())
@@ -90,7 +90,7 @@ public enum WikiExtractionType {
 	 * @throws LexicalResourceException 
 	 */
 	public static Set<WikiExtractionType> parseExtractionTypeDBEntry(String extractionTypesStr, double rulePrecision) throws LexicalResourceException {
-		Set<WikiExtractionType> toReturn = new HashSet<WikiExtractionType>();
+		Set<WikiExtractionType> toReturn = new LinkedHashSet<WikiExtractionType>();
 		WikiExtractionType currType;
 		String[] extractionTypeStrings = extractionTypesStr.split(SEPARATOR);
 		for (int i = 0; i < extractionTypeStrings.length; i++) {
@@ -173,7 +173,7 @@ public enum WikiExtractionType {
 	 */
 	public static Set<WikiExtractionType> parseExtractionTypeListOfStrings(	String extractionTypeListOfStrings) throws LexicalResourceException 
 	{
-		Set<WikiExtractionType> wikiExtractionTypes = new HashSet<WikiExtractionType>();
+		Set<WikiExtractionType> wikiExtractionTypes = new LinkedHashSet<WikiExtractionType>();
 		String[] tokens = extractionTypeListOfStrings.split(COMMA_REGEX);
 		for (String token : tokens)
 			if (mapStringRepresentationToEnum.containsKey(token))

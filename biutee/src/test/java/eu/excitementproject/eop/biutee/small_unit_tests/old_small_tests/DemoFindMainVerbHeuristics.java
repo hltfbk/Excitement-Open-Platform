@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.biutee.small_unit_tests.old_small_tests;
 import java.io.File;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,7 +33,7 @@ public class DemoFindMainVerbHeuristics
 			reader.setXmlFile(new File("/home/asher/main/temp/prototype1/RTE5_MainTask_DevSet.xml"));
 			reader.read();
 			Map<Integer,TextHypothesisPair> dataset = reader.getMapIdToPair();
-			Set<TextHypothesisPair> moreThanOneMainVerb = new HashSet<TextHypothesisPair>();
+			Set<TextHypothesisPair> moreThanOneMainVerb = new LinkedHashSet<TextHypothesisPair>();
 			
 
 			for (Map.Entry<Integer,TextHypothesisPair> pair : dataset.entrySet())

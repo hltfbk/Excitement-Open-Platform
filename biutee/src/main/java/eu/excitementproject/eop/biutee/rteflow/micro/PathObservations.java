@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.micro;
 import static eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.getParserMode;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.biutee.rteflow.macro.FeatureUpdate;
@@ -12,8 +12,8 @@ import eu.excitementproject.eop.transformations.operations.specifications.MoveNo
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.InfoObservations;
-import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.PARSER;
+import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.PathInTree;
 
 /**
@@ -46,11 +46,11 @@ public class PathObservations
 	public static final Set<String> EASY_FIRST_LOGICAL_OBJECT_RELATIONS;
 	static
 	{
-		EASY_FIRST_LOGICAL_SUBJECT_RELATIONS = new HashSet<String>();
+		EASY_FIRST_LOGICAL_SUBJECT_RELATIONS = new LinkedHashSet<String>();
 		EASY_FIRST_LOGICAL_SUBJECT_RELATIONS.add("csubj");
 		EASY_FIRST_LOGICAL_SUBJECT_RELATIONS.add("nsubj");
 		EASY_FIRST_LOGICAL_SUBJECT_RELATIONS.add("xsubj");
-		EASY_FIRST_LOGICAL_OBJECT_RELATIONS = new HashSet<String>();
+		EASY_FIRST_LOGICAL_OBJECT_RELATIONS = new LinkedHashSet<String>();
 		EASY_FIRST_LOGICAL_OBJECT_RELATIONS.add("csubjpass");
 		EASY_FIRST_LOGICAL_OBJECT_RELATIONS.add("nsubjpass");
 		EASY_FIRST_LOGICAL_OBJECT_RELATIONS.add("dobj");

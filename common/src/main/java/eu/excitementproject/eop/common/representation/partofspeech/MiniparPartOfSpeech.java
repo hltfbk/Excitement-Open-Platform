@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.representation.partofspeech;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -16,7 +16,7 @@ public class MiniparPartOfSpeech extends PartOfSpeech
 	public static final Map<String, CanonicalPosTag> MINIPAR_POS_TAGS;
 	static
 	{
-		MINIPAR_POS_TAGS = new HashMap<String, CanonicalPosTag>();
+		MINIPAR_POS_TAGS = new LinkedHashMap<String, CanonicalPosTag>();
 		MINIPAR_POS_TAGS.put("V",CanonicalPosTag.V);
 		MINIPAR_POS_TAGS.put("N",CanonicalPosTag.N);
 		MINIPAR_POS_TAGS.put("Aux",CanonicalPosTag.OTHER);

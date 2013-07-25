@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.generic.truthteller;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 
 /**
@@ -32,7 +32,7 @@ public class DummyTreeAnnotator implements SentenceAnnotator
 	public void annotate() throws AnnotatorException
 	{
 		mapOriginalToAnnotated = new SimpleBidirectionalMap<ExtendedNode, ExtendedNode>();
-		for (ExtendedNode node : AbstractNodeUtils.treeToSet(this.tree))
+		for (ExtendedNode node : TreeIterator.iterableTree(this.tree))
 		{
 			mapOriginalToAnnotated.put(node, node);
 		}

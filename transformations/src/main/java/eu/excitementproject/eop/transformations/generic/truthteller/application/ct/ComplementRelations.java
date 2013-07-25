@@ -2,7 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.truthteller.application.ct;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.codeannotations.LanguageDependent;
@@ -37,7 +37,7 @@ public class ComplementRelations {
 					StanfordDepedencyRelationType.infmod,
 					// FIXME use of 'dep' is sketchy and usually means some parser failure/error. It's good for many sentences, but may cause false positives
 					StanfordDepedencyRelationType.dep
-			},	new HashSet<StanfordDepedencyRelationType>(25)));
+			},	new LinkedHashSet<StanfordDepedencyRelationType>(25)));
 
 	
 	/**
@@ -54,7 +54,7 @@ public class ComplementRelations {
 					StanfordDepedencyRelationType.advcl ,
 					StanfordDepedencyRelationType.tmod,
 					StanfordDepedencyRelationType.npadvmod,
-			},	new HashSet<StanfordDepedencyRelationType>(25)));
+			},	new LinkedHashSet<StanfordDepedencyRelationType>(25)));
 
 	
 	/**
@@ -84,7 +84,7 @@ public class ComplementRelations {
 				
 				
 	
-			},		new HashSet<StanfordDepedencyRelationType>(25));
+			},		new LinkedHashSet<StanfordDepedencyRelationType>(25));
 		tmp_arg_relations.addAll(NON_FINITE_RELATIONS.getMutableCollectionCopy());
 
 		if (TruthTellerConstants.INCLUDE_NOMINAL_RELATIONS_IN_THE_COMPLEMENT_RELATIONS)
@@ -105,7 +105,7 @@ public class ComplementRelations {
 				StanfordDepedencyRelationType.dep, 
 				StanfordDepedencyRelationType.rcmod,
 				StanfordDepedencyRelationType.npadvmod},
-			new HashSet<StanfordDepedencyRelationType>()));
+			new LinkedHashSet<StanfordDepedencyRelationType>()));
 
 
 	/**
@@ -119,5 +119,5 @@ public class ComplementRelations {
 				StanfordDepedencyRelationType.aux,
 				StanfordDepedencyRelationType.auxpass,
 				StanfordDepedencyRelationType.cop},
-			new HashSet<StanfordDepedencyRelationType>()));
+			new LinkedHashSet<StanfordDepedencyRelationType>()));
 }
