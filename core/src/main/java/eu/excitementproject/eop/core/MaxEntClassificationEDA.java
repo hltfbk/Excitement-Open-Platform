@@ -390,6 +390,11 @@ public class MaxEntClassificationEDA implements
 		// if (null == goldAnswer) {
 		// goldAnswer = DecisionLabel.Abstain.toString();
 		// }
+		
+		// a quick answer "yes" for identical T-H pair as input
+		if (isIdenticalPair(aCas)) {
+			return new ClassificationTEDecision(DecisionLabel.Entailment, 1d, pairId);
+		}
 
 		String[] context = constructContext(aCas);
 		logger.info(Arrays.asList(context).toString());
@@ -567,6 +572,24 @@ public class MaxEntClassificationEDA implements
 				.getAllIndexedFS(Pair.type);
 		Pair p = (Pair) pairIter.next();
 		return p.getPairID();
+	}
+	
+	/**
+	 * @param aCas the <code>JCas</code> object
+	 * @return return whether it is an identical pair or not
+	 */
+	protected final boolean isIdenticalPair(JCas aCas) {
+		FSIterator<TOP> iter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
+		if (iter.hasNext()) {
+			Pair p = (Pair) iter.next();
+			String text = p.getText().getCoveredText();
+			String hypothesis = p.getHypothesis().getCoveredText();
+			if (text.trim().equals(hypothesis.trim())) {
+				return true;
+			}
+		}
+		// empty pair
+		return false;
 	}
 
 	/**
