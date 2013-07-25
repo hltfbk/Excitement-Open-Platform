@@ -89,7 +89,7 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 			posTagString = "O";
 		} else if (posTagString.equals("PTKNEG")) {
 			posTagString = "O"; 
-		} else if (posTagString.equals("TRUNC")) {
+		} else if (posTagString.equals("TRUNC") || posTagString.equals("PTKANT")) {
 			// Rui: quick fix for the "illegal" POS tag
 			posTagString = "O"; 
 		}
