@@ -92,12 +92,12 @@
 		<repository>
 	        <id>ukp-oss</id>
 	        <name>ukp-oss-releases</name>
-	        <url>https://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ukp-releases-local</url>
+	        <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ukp-releases-local</url>
 	    </repository>
 	    <repository>
 	        <id>ukp-oss-ext</id>
 	        <name>ukp-oss-releases-ext</name>
-	        <url>https://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ext-releases-local</url>
+	        <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ext-releases-local</url>
 	    </repository>	    
 	</repositories>
 </project>
