@@ -8,8 +8,8 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.SubstitutionSubtreeSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
@@ -51,8 +51,7 @@ public class SubstitutionCoreferenceFinder implements Finder<SubstitutionSubtree
 		try
 		{
 			specs = new LinkedHashSet<SubstitutionSubtreeSpecification>();
-			Set<ExtendedNode> nodes = AbstractNodeUtils.treeToSet(textTree.getTree());
-			for (ExtendedNode node : nodes)
+			for (ExtendedNode node : TreeIterator.iterableTree(textTree.getTree()))
 			{
 				if (node.getInfo().getAdditionalNodeInformation().getCorefGroupId()!=null)
 				{
@@ -103,7 +102,7 @@ public class SubstitutionCoreferenceFinder implements Finder<SubstitutionSubtree
 		}
 		sb.append("\n");
 		sb.append("Printing coref information in the nodes...\n");
-		for (ExtendedNode node : AbstractNodeUtils.treeToSet(textTree.getTree()))
+		for (ExtendedNode node : TreeIterator.iterableTree(textTree.getTree()))
 		{
 			sb.append('[').append(node.getInfo().getId()).append(']');
 			sb.append(InfoGetFields.getLemma(node.getInfo()));

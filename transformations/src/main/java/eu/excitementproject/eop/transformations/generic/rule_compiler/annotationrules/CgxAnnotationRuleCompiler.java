@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.annotationrules;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -54,7 +54,7 @@ public class CgxAnnotationRuleCompiler<I extends Info, N extends AbstractNode<I,
 	/**
 	 * A map used for calling the expandMultipleChoiceParameters method
 	 */
-	private final Map<String, Set<String>> extraMultipleChoiceParameters = new HashMap<String, Set<String>>();
+	private final Map<String, Set<String>> extraMultipleChoiceParameters = new LinkedHashMap<String, Set<String>>();
 
 	private final  String REGULAR_MAPPING_LABEL;
 
@@ -133,15 +133,15 @@ public class CgxAnnotationRuleCompiler<I extends Info, N extends AbstractNode<I,
 	  	// now that we know which nodes are in the trees, return the mappings (from some LHS nodes to RHS nodes)
 	  	List<GenericAlignment> alignments = cgxDomParser.parseMappings();
 	  	
-	  	Map<Long, CN> nodesMap = new HashMap<Long, CN>();
+	  	Map<Long, CN> nodesMap = new LinkedHashMap<Long, CN>();
 	  	CN lhsRoot = RuleBuildingUtils.buildTreeUnderLabel(Constants.LHS, nodeLabelsMap, undirectedEdges, nodesMap, compilationServices);
 	  	RuleBuildingUtils.sanityCheckRuleTree(lhsRoot);
 	  	RuleBuildingUtils.sanityCheckEdges(undirectedEdges, nodesMap.keySet());
 
-	  	Map<Long, A> mapIdtoAnnotations = new HashMap<Long, A>();
+	  	Map<Long, A> mapIdtoAnnotations = new LinkedHashMap<Long, A>();
 	  	Map<CN, A> annotationAlignments = buildRegularAlignmentsMap(alignments, nodeLabelsMap, nodesMap, mapIdtoAnnotations);
 	  	
-	  	new HashMap<PartialAlignment<CN, A>, String>();
+	  	new LinkedHashMap<PartialAlignment<CN, A>, String>();
 	  	List<PartialAlignment<CN, A>> partialAlignments = buildPartialMappingsMap(alignments, nodesMap, mapIdtoAnnotations);
 	  	
 		// map all the partial mappings
@@ -200,7 +200,7 @@ public class CgxAnnotationRuleCompiler<I extends Info, N extends AbstractNode<I,
 		if (mapIdtoAnnotations == null) throw new AnnotationCompilationException("Got null mapIdtoAnnotations");
 		
 		
-		Map<CN, A> annotationsMap = new HashMap<CN, A>();
+		Map<CN, A> annotationsMap = new LinkedHashMap<CN, A>();
 		Set<GenericAlignment> regularAlignmentsToRemove = new HashSet<GenericAlignment>();
 		for (GenericAlignment alignment : alignments)
 		{
@@ -247,7 +247,7 @@ public class CgxAnnotationRuleCompiler<I extends Info, N extends AbstractNode<I,
 		AnnotationRule<N, A> buildAnnotationRule(CN lhsRoot, Map<CN, A> annotationAlignments, AnnotationRuleCompileServices<I, N, CN, A> compilationServices, 
 				RuleType ruleType) throws AnnotationCompilationException {
 	
-		Map<N, A> newAnnotationAlignments = new HashMap<N, A>();
+		Map<N, A> newAnnotationAlignments = new LinkedHashMap<N, A>();
 		N newLhs = convertAnnotationTreeToRegularNodes(lhsRoot, annotationAlignments, newAnnotationAlignments, compilationServices);
 		
 		try {

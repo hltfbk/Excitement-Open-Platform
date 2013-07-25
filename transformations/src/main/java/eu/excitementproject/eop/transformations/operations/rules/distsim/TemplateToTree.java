@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.transformations.operations.rules.distsim;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,7 +14,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
@@ -46,9 +46,9 @@ public class TemplateToTree
 	public static Map<String, String> POS_MAP;
 	static
 	{
-		POS_MAP = new HashMap<String, String>();
+		POS_MAP = new LinkedHashMap<String, String>();
 		POS_MAP.put("p","Prep");
-		PREP_LIST = new HashSet<String>();
+		PREP_LIST = new LinkedHashSet<String>();
 		PREP_LIST.add("about");
 		PREP_LIST.add("above");
 		PREP_LIST.add("across");
@@ -345,7 +345,7 @@ public class TemplateToTree
 
 	private void setLeaves()
 	{
-		for (BasicNode node : AbstractNodeUtils.treeToSet(tree))
+		for (BasicNode node : TreeIterator.iterableTree(tree))
 		{
 			if (InfoGetFields.isVariable(node.getInfo()))
 			{
@@ -443,7 +443,7 @@ public class TemplateToTree
 	private BasicNode tree = null;
 	private BasicNode leftVariableNode = null;
 	private BasicNode rightVariableNode = null;
-	private Map<Integer, Boolean> mapVariableIdToLeftRight = new HashMap<Integer, Boolean>();
+	private Map<Integer, Boolean> mapVariableIdToLeftRight = new LinkedHashMap<Integer, Boolean>();
 	private int nextVariableId = 0;
 
 

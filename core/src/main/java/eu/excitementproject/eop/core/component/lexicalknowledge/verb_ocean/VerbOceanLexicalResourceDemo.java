@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean;
 
 import java.io.File;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -39,7 +39,7 @@ public class VerbOceanLexicalResourceDemo {
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		
 		Set<RelationType> allowedRelationTypes = Utils.arrayToCollection(new RelationType[]{RelationType.STRONGER_THAN, RelationType.HAPPENS_BEFORE
-				, RelationType.CAN_RESULT_IN}, new HashSet<RelationType>());
+				, RelationType.CAN_RESULT_IN}, new LinkedHashSet<RelationType>());
 		VerbOceanLexicalResource verbOceanLexR = new  VerbOceanLexicalResource(1, new File("//qa-srv/Data/RESOURCES/VerbOcean/verbocean.unrefined.2004-05-20.txt"), 
 				allowedRelationTypes);
 		verbOceanLexR = new VerbOceanLexicalResource(verbOceanLexR);

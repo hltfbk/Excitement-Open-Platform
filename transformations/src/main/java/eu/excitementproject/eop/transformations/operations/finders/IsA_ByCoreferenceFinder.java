@@ -7,8 +7,8 @@ import java.util.Set;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.transformations.operations.OperationException;
@@ -41,7 +41,7 @@ public class IsA_ByCoreferenceFinder implements Finder<IsASpecification>
 		specs = new LinkedHashSet<IsASpecification>();
 		try
 		{
-			for (ExtendedNode node : AbstractNodeUtils.treeToSet(textTree.getTree()))
+			for (ExtendedNode node : TreeIterator.iterableTree(textTree.getTree()))
 			{
 				Integer corefId = corefIdOfNode(node);
 				if (corefId!=null)

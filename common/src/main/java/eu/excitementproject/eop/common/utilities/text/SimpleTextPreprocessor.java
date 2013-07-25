@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.utilities.text;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SimpleTextPreprocessor implements TextPreprocessor
@@ -8,7 +8,7 @@ public class SimpleTextPreprocessor implements TextPreprocessor
 	protected final static Map<String, String> REPLACE_MAP;
 	static
 	{
-		REPLACE_MAP = new HashMap<String, String>();
+		REPLACE_MAP = new LinkedHashMap<String, String>();
 		REPLACE_MAP.put("gonna","going to");
 		REPLACE_MAP.put("wonna","want to");
 		REPLACE_MAP.put("don\'t","do not");

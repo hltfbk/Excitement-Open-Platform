@@ -2,8 +2,8 @@ package eu.excitementproject.eop.biutee.rteflow.macro;
 
 import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.USE_MLE_FOR_INSERTION_COST;
 
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,8 +17,8 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ConfidenceChainItem;
 import eu.excitementproject.eop.transformations.operations.specifications.InsertNodeSpecification;
@@ -408,7 +408,7 @@ public class FeatureUpdate
 		
 		spec.addDescription("Multi-Word");
 
-		Set<String> addedHypothesisWord = new HashSet<String>();
+		Set<String> addedHypothesisWord = new LinkedHashSet<String>();
 		for (String hypothesisWord : spec.getHypothesisWords())
 		{
 			if (!StringUtil.setContainsIgnoreCase(spec.getTextWords(), hypothesisWord))
@@ -442,9 +442,9 @@ public class FeatureUpdate
 		featureVector.putAll(originalFeatureVector);
 
 		boolean namedEntity = false;
-		Set<String> addedHypothesisWord = new HashSet<String>();
+		Set<String> addedHypothesisWord = new LinkedHashSet<String>();
 		String lhsLemma = InfoGetFields.getLemma(spec.getRule().getRule().getLeftHandSide().getInfo());
-		for (AbstractNode<? extends Info, ?> rhsNode : AbstractNodeUtils.treeToSet(spec.getRule().getRule().getRightHandSide()))
+		for (AbstractNode<? extends Info, ?> rhsNode : TreeIterator.iterableTree(spec.getRule().getRule().getRightHandSide()))
 		{
 			String rhsLemma = InfoGetFields.getLemma(rhsNode.getInfo());
 			if (!rhsLemma.equalsIgnoreCase(lhsLemma))

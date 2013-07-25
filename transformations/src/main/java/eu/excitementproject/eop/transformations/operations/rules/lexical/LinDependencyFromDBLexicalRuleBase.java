@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -132,7 +132,7 @@ public class LinDependencyFromDBLexicalRuleBase extends ByLemmaPosLexicalRuleBas
 	
 	private void initMapPosToTable() throws SQLException
 	{
-		MAP_POS_TO_TABLE = new HashMap<SimplerCanonicalPosTag, String>();
+		MAP_POS_TO_TABLE = new LinkedHashMap<SimplerCanonicalPosTag, String>();
 		
 		MAP_POS_TO_TABLE.put(SimplerCanonicalPosTag.ADJECTIVE, QUERY_A);
 		MAP_POS_TO_TABLE.put(SimplerCanonicalPosTag.ADVERB, QUERY_A);

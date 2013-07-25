@@ -82,7 +82,7 @@ public abstract class StanfordDependenciesParserAE<T extends BasicPipelinedParse
 				}
 				
 				// Get extra nodes
-				Set<BasicConstructionNode> extraNodes = AbstractNodeUtils.treeToSet(root);
+				Set<BasicConstructionNode> extraNodes = AbstractNodeUtils.treeToLinkedHashSet(root);
 				extraNodes.removeAll(orderedNodes);
 				
 				// Get parent map
