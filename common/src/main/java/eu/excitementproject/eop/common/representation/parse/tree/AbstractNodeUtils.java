@@ -12,6 +12,8 @@ import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.SimpleNodeString;
 
 
 /**
@@ -331,6 +333,40 @@ public class AbstractNodeUtils
 	}
 	
 
+	/**
+	 * Returns an multi-line indented string representation of the tree.
+	 * @param node
+	 * @param str used for printing each node
+	 * @param indent indentation string for each level
+	 * @return
+	 */
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node, NodeString<I> str, String indent) {
+		return getIndentedStringSubtree(node, str, indent, "").toString().trim();
+	}
+	
+	/**
+	 * Returns an multi-line indented string representation of the tree.
+	 * Uses "  " for indentation.
+	 * @param node
+	 * @param str used for printing each node
+	 * @return
+	 */
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node, NodeString<I> str) {
+		return getIndentedString(node, str, "  ");
+	}
+	
+	/**
+	 * Returns an multi-line indented string representation of the tree.
+	 * Uses "  " for indentation. Uses {@link SimpleNodeString) for printing each node.
+	 * @param node
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node) {
+		return getIndentedString(node, (NodeString<I>) new SimpleNodeString());
+	}
+	
+	
 	/////////////////////// PROTECTED & PRIVATE PART ///////////////////////////////
 
 	
@@ -649,6 +685,30 @@ public class AbstractNodeUtils
 			}
 		}
 		return map;
+	}
+	
+	protected static <I extends Info> StringBuffer getIndentedStringSubtree(AbstractNode<I,?> subtree, NodeString<I> str, String indent, String prefix) {
+		final String NULL_TREE_STR = "(null)";
+		StringBuffer result = new StringBuffer();
+		
+		if (subtree == null) {
+			result.append(NULL_TREE_STR);
+		}
+		else {
+			str.set(subtree);
+			result.append(prefix);
+			result.append(str.getStringRepresentation());
+			result.append("\r\n");
+			
+			if (subtree.getChildren() != null) {
+				for (AbstractNode<I,?> child : subtree.getChildren()) {
+					result.append(getIndentedStringSubtree(child, str, indent, prefix+indent));
+				}
+			}
+		}
+		
+		return result;
+
 	}
 	
 }
