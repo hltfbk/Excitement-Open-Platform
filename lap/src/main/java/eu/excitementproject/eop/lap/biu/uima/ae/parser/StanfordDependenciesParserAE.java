@@ -2,7 +2,7 @@ package eu.excitementproject.eop.lap.biu.uima.ae.parser;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -43,7 +43,7 @@ public abstract class StanfordDependenciesParserAE<T extends BasicPipelinedParse
 
 	private static final String DEPPACKAGE = Dependency.class.getPackage().getName()+".";
 
-	private static final Set<String> DEEP_DEPENDENCY_RELATIONS = new HashSet<String>(Arrays.asList(new String[] {
+	private static final Set<String> DEEP_DEPENDENCY_RELATIONS = new LinkedHashSet<String>(Arrays.asList(new String[] {
 			"xsubj",
 			"ref"
 	}));
@@ -103,7 +103,21 @@ public abstract class StanfordDependenciesParserAE<T extends BasicPipelinedParse
 					if (node != root) {
 						BasicConstructionNode parentNode = parentMap.get(node);
 						String relationName = node.getInfo().getEdgeInfo().getDependencyRelation().getStringRepresentation();
-						processDependency(jcas, tokenAnno, parentNode, relationName, tokenAnnotations, sentenceAnno);
+						
+						//TODO this is a hack due to issue: https://github.com/hltfbk/Excitement-Open-Platform/issues/220
+						// When the problem is solved, remove the try-catch, and just leave the plain call to processDependency()
+						try {
+							processDependency(jcas, tokenAnno, parentNode, relationName, tokenAnnotations, sentenceAnno);
+						}
+						catch (ParserRunException e) {
+							if (e.getMessage().contains("is not defined in type system")) {
+								System.err.println("\n\tDouble-root problem in sentence: " + taggedTokens);
+								continue;
+							}
+							else {
+								throw e;
+							}
+						}
 					}
 				}
 				
@@ -154,9 +168,7 @@ public abstract class StanfordDependenciesParserAE<T extends BasicPipelinedParse
         }
         
         Token parentTokenAnno = AbstractNodeCASUtils.nodeToToken(tokenAnnotations, parentNode);
-        
-        // TODO - fix comparing arrays of dependencies - now it fails becuase they are not the same instance. you can just do a loop on them and copare attrs or something.
-		
+        		
 		AnnotationFS anno = jcas.getCas().createAnnotation(type, sentenceAnno.getBegin(), sentenceAnno.getEnd());
 		anno.setStringValue(type.getFeatureByBaseName("DependencyType"), relationName);
 		anno.setFeatureValue(type.getFeatureByBaseName("Governor"), parentTokenAnno);
