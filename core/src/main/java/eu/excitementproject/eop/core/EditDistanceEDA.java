@@ -899,14 +899,17 @@ public class EditDistanceEDA<T extends TEDecision>
 	                   new InputStreamReader(new FileInputStream(modelFile), "UTF-8"));
 			
 			String line = reader.readLine();
-			String[] weights = line.split(" ");
-			this.mMatchWeight = Double.parseDouble(weights[0]);
-			this.mDeleteWeight = Double.parseDouble(weights[1]);
-			this.mInsertWeight = Double.parseDouble(weights[2]);
-			this.mSubstituteWeight = Double.parseDouble(weights[3]);
-			line = reader.readLine();
-			if (line != null)
-				this.threshold = Double.parseDouble(line);
+			
+			if (line != null) {
+				String[] weights = line.split(" ");
+				this.mMatchWeight = Double.parseDouble(weights[0]);
+				this.mDeleteWeight = Double.parseDouble(weights[1]);
+				this.mInsertWeight = Double.parseDouble(weights[2]);
+				this.mSubstituteWeight = Double.parseDouble(weights[3]);
+				line = reader.readLine();
+				if (line != null)
+					this.threshold = Double.parseDouble(line);
+			}
 			
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());

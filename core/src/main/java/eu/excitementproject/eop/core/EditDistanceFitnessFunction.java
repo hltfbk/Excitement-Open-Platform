@@ -20,13 +20,13 @@ public class EditDistanceFitnessFunction extends FitnessFunction {
 	/* 
 	 * the EDA configuration file that the EDA requires.
 	 */
-	protected static CommonConfig CONFIG;
+	static CommonConfig CONFIG;
 	
 	/* 
 	 * that is used to let the EditDistanceEDA read the configuration file
 	 * section of the EditDistancePSOEDA. 
 	 */
-	protected static String CANONICAL_NAME;
+	static String CANONICAL_NAME;
 	
 	@Override
 	public FitnessFunction call() throws Exception {
