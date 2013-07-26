@@ -20,21 +20,15 @@ public class EditDistanceFitnessFunction extends FitnessFunction {
 	/* 
 	 * the EDA configuration file that the EDA requires.
 	 */
-	public static CommonConfig CONFIG;
+	protected static CommonConfig CONFIG;
 	
 	/* 
 	 * that is used to let the EditDistanceEDA read the configuration file
 	 * section of the EditDistancePSOEDA. 
 	 */
-	public static String CANONICAL_NAME;
+	protected static String CANONICAL_NAME;
 	
-	/* 
-	 * This method is used by PSO to calculate the value of the quality measure
-	 * to be optimized. In this case the measure is: 1 - accuracy
-	 * The quality measure value has to be assigned to the variable value.
-	 * 
-	 * @return a reference to this object
-	 */
+	@Override
 	public FitnessFunction call() throws Exception {
 		
 		/*

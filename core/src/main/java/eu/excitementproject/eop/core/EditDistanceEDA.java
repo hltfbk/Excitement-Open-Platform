@@ -905,8 +905,9 @@ public class EditDistanceEDA<T extends TEDecision>
 			this.mInsertWeight = Double.parseDouble(weights[2]);
 			this.mSubstituteWeight = Double.parseDouble(weights[3]);
 			line = reader.readLine();
-			this.threshold = Double.parseDouble(line);
-		   
+			if (line != null)
+				this.threshold = Double.parseDouble(line);
+			
 		} catch (Exception e) {
 			throw new IOException(e.getMessage());
 		} finally { 
