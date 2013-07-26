@@ -53,6 +53,8 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * FixedWeightedEditDistance implements the simplest form of weighted edit distance that simply uses a 
  * constant cost for each of the edit operations: match, substitute, insert, delete.
  * 
+ * 
+ * 
  * <h4>Relation to Simple Edit Distance</h4>
  * Weighted edit distance agrees with edit distance as a distance assuming the following weights:
  * match weight is 0, substitute, insert and delete weights are <code>1</code>.
@@ -93,12 +95,12 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     /**
 	 * the activated instance
 	 */
-    private String instance;
+    private String instances;
     /**
 	 * the resource
 	 */
     @SuppressWarnings("rawtypes")
-	private LexicalResource lexR;
+	private List<LexicalResource> lexR;
     /**
 	 * stop word removal
 	 */
@@ -112,16 +114,20 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * weights for edits:
      * match weight is 0, substitute, insert and delete weights are
      */
-    public FixedWeightEditDistance() {
+    @SuppressWarnings("rawtypes")
+	public FixedWeightEditDistance() {
     	
-    	mMatchWeight = 0.0;
-        mDeleteWeight = 0.0;
-        mInsertWeight = 1.0;
-        mSubstituteWeight = 1.0;
-        lexR = null;
+    	logger.info("FixedWeightEditDistance()");
+    	
+    	this.mMatchWeight = 0.0;
+    	this.mDeleteWeight = 0.0;
+    	this.mInsertWeight = 1.0;
+    	this.mSubstituteWeight = 1.0;
+    	this.lexR = new ArrayList<LexicalResource>();
         
     }
 
+    
     
     /** 
 	 * Constructor used to create this object. 
@@ -131,96 +137,172 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 	 */
     public FixedWeightEditDistance(CommonConfig config) throws ConfigurationException, ComponentException {
     
-        logger.info(getComponentName());
+       // logger.info(getComponentName());
         
-        initializeWeights(config);
+        //initializeWeights(config);
+    	
+    	this();
         
         try {
-        
-	        //get the platform language value
+        	
+	        //get the platform name value table
 	        NameValueTable platformNameValueTable = config.getSection("PlatformConfiguration");
+	        
+	       //get the platform language value
+	        String language = platformNameValueTable.getString("language");
+	        
 	        //get the selected component instance
 	    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
-	    	instance = componentNameValueTable.getString("instances");
-	    	//get the parameters from the selected instance
-	    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
-    	
-    		String language = platformNameValueTable.getString("language");
-    		logger.info("language:" + language);
+	    	//get the selected instances
+	    	instances = componentNameValueTable.getString("instances");
+	    	
+    		String[] instancesList = instances.split(",");
     		
-    		if (instance.equals("wordnet")) {
+    		for (int i = 0; i < instancesList.length; i++) {
     			
-    			if (instanceNameValueTable.getString("stopWordRemoval") != null) {
-	    			stopWordRemoval = Boolean.parseBoolean(instanceNameValueTable.getString("stopWordRemoval"));
-	    			logger.info("stop word removal activated");
-	    		}
-	    		else {
-	    			stopWordRemoval = false;
-	        		logger.info("stop word removal deactivated");
-	    		}
+    			String instance = instancesList[i];
     			
-	    		String multiWordnet = instanceNameValueTable.getString("path");
+	    		if (instance.equals("wordnet")) {
+	    			
+	    	    	//get the parameters from the selected instance
+	    	    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
+	        	
+	    			if (instanceNameValueTable.getString("stopWordRemoval") != null) {
+		    			stopWordRemoval = Boolean.parseBoolean(instanceNameValueTable.getString("stopWordRemoval"));
+		    			//logger.info("stop word removal activated");
+		    		}
+		    		else {
+		    			stopWordRemoval = false;
+		        		//logger.info("stop word removal deactivated");
+		    		}
+	    			
+		    		String multiWordnet = instanceNameValueTable.getString("path");
+		    		
+		    		if (language.equals("IT") && multiWordnet != null && !multiWordnet.equals("")) {
+			    		try {
+			    			
+			    			initializeItalianWordnet(multiWordnet);
+			    			
+			    		} catch (LexicalResourceException e) {
+			    			throw new ComponentException(e.getMessage());
+			    		}
+		    		}
+			    	else if (language.equals("EN") && multiWordnet != null && !multiWordnet.equals("")) {
+			    		try {
+			    			initializeEnglishWordnet(multiWordnet);
+			    		} catch (LexicalResourceException e) {
+			    			throw new ComponentException(e.getMessage());
+			    		}
+			    	}
+			    	else if (language.equals("DE") && multiWordnet != null && !multiWordnet.equals("")) {
+			    		try {
+			    			initializeGermaNet(multiWordnet);
+			    		} catch (LexicalResourceException e) {
+			    			throw new ComponentException(e.getMessage());
+			    		}
+			    	}
 	    		
-	    		if (language.equals("IT") && multiWordnet != null && !multiWordnet.equals("")) {
-		    		try {
-		    			initializeItalianWordnet(multiWordnet);
-		    		} catch (LexicalResourceException e) {
-		    			throw new ComponentException(e.getMessage());
+	    		}
+	    		else if (instance.equals("wikipedia")) {
+	    			
+	    	    	//get the parameters from the selected instance
+	    	    	NameValueTable instanceNameValueTable = config.getSubSection(this.getClass().getCanonicalName(), instance);
+	        	
+	    			if (instanceNameValueTable.getString("stopWordRemoval") != null) {
+		    			stopWordRemoval = Boolean.parseBoolean(instanceNameValueTable.getString("stopWordRemoval"));
+		    			//logger.info("stop word removal activated");
+		    		}
+		    		else {
+		    			stopWordRemoval = false;
+		        		//logger.info("stop word removal deactivated");
+		    		}
+	    			
+	    			String dbConnection = instanceNameValueTable.getString("dbconnection");
+	    			String dbUser = instanceNameValueTable.getString("dbuser");
+	    			String dbPasswd = instanceNameValueTable.getString("dbpasswd");
+		    		
+		    		if (language.equals("IT")) {
+			    		try {
+			    			initializeItalianWikipedia(dbConnection, dbUser, dbPasswd);
+			    		} catch (LexicalResourceException e) {
+			    			throw new ComponentException(e.getMessage());
+			    		}
+		    		}
+		    		else if (language.equals("EN")) {
+			    		try {
+			    			initializeEnglishWikipedia(dbConnection, dbUser, dbPasswd);
+			    		} catch (LexicalResourceException e) {
+			    			throw new ComponentException(e.getMessage());
+			    		}
 		    		}
 	    		}
-		    	else if (language.equals("EN") && multiWordnet != null && !multiWordnet.equals("")) {
-		    		try {
-		    			initializeEnglishWordnet(multiWordnet);
-		    		} catch (LexicalResourceException e) {
-		    			throw new ComponentException(e.getMessage());
-		    		}
-		    	}
-		    	else if (language.equals("DE") && multiWordnet != null && !multiWordnet.equals("")) {
-		    		try {
-		    			initializeGermaNet(multiWordnet);
-		    		} catch (LexicalResourceException e) {
-		    			throw new ComponentException(e.getMessage());
-		    		}
-		    	}
+	    		
+    		}
+    			
+    		//logger.info("uscito da confifuration");
     		
-    		}
-    		else if (instance.equals("wikipedia")) {
-    			
-    			if (instanceNameValueTable.getString("stopWordRemoval") != null) {
-	    			stopWordRemoval = Boolean.parseBoolean(instanceNameValueTable.getString("stopWordRemoval"));
-	    			logger.info("stop word removal activated");
-	    		}
-	    		else {
-	    			stopWordRemoval = false;
-	        		logger.info("stop word removal deactivated");
-	    		}
-    			
-    			String dbConnection = instanceNameValueTable.getString("dbconnection");
-    			String dbUser = instanceNameValueTable.getString("dbuser");
-    			String dbPasswd = instanceNameValueTable.getString("dbpasswd");
-	    		
-	    		if (language.equals("IT")) {
-		    		try {
-		    			initializeItalianWikipedia(dbConnection, dbUser, dbPasswd);
-		    		} catch (LexicalResourceException e) {
-		    			throw new ComponentException(e.getMessage());
-		    		}
-	    		}
-	    		else if (language.equals("EN")) {
-		    		try {
-		    			initializeEnglishWikipedia(dbConnection, dbUser, dbPasswd);
-		    		} catch (LexicalResourceException e) {
-		    			throw new ComponentException(e.getMessage());
-		    		}
-	    		}
-    		}
-    			
     	} catch (ConfigurationException e) {
     		throw new ComponentException(e.getMessage());
     	}
     	
     }
     
+    
+    /**
+	 * set the weight of the match edit distant operation
+	 * 
+	 * @param mMatchWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+    public void setmMatchWeight(double mMatchWeight) {
+    	
+    	this.mMatchWeight = mMatchWeight;
+    	
+    }
+    
+    
+    /**
+	 * set the weight of the delete edit distant operation
+	 * 
+	 * @param mDeleteWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+    public void setmDeleteWeight(double mDeleteWeight) {
+    	
+    	this.mDeleteWeight = mDeleteWeight;
+    	
+    }
+    
+    
+    /**
+	 * set the weight of the insert edit distant operation
+	 * 
+	 * @param mInsertWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+    public void setmInsertWeight(double mInsertWeight ) {
+    	
+    	this.mInsertWeight = mInsertWeight;
+    	
+    }
+    
+    
+    /**
+	 * set the weight of the substitute edit distant operation
+	 * 
+	 * @param mSubstotuteWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+    public void setmSubstituteWeight(double mSubstituteWeight) {
+    	
+    	this.mSubstituteWeight = mSubstituteWeight;
+    	
+    }
+   
     
     @Override
     public abstract String getComponentName();
@@ -229,7 +311,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     @Override
     public String getInstanceName() {
     	
-    	return instance;
+    	return instances;
     	
     }
     
@@ -242,10 +324,10 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 		logger.info("shutdown()");
 		
 		try {
-			if (lexR != null)
-				lexR.close();
+			for (int i = 0; i < lexR.size(); i++)
+				lexR.get(i).close();
 		} catch (Exception e) {
-			logger.warning(e.getMessage());
+			//logger.warning(e.getMessage());
     	}
 		
 		
@@ -374,7 +456,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * @param tMatched token matched.
      * @return weight of matching token.
      */
-    public double matchWeight(Token tMatched) {
+    public double getmMatchWeight(Token tMatched) {
     	
         return mMatchWeight;
         
@@ -387,7 +469,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * @param tDeleted token deleted.
      * @return weight of deleting token.
      */
-    public double deleteWeight(Token tDeleted) {
+    public double getmDeleteWeight(Token tDeleted) {
     	
         return mDeleteWeight;
         
@@ -400,7 +482,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * @param tInserted token inserted.
      * @return weight of inserting token.
      */
-    public double insertWeight(Token tInserted) {
+    public double getmInsertWeight(Token tInserted) {
 
         return mInsertWeight;
         
@@ -416,7 +498,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * @return the weight of substituting the inserted token for
      * the deleted token.
      */
-    public double substituteWeight(Token tDeleted, Token tInserted) {
+    public double getmSubstituteWeight(Token tDeleted, Token tInserted) {
 
         return mSubstituteWeight;
         
@@ -438,14 +520,16 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      */
     public DistanceValue distance(List<Token> source, List<Token> target ) throws ArithmeticException {
         	
+    	//System.err.println(this.toString());
+    	
     	// distanceTable is a table with sizeSource+1 rows and sizeTarget+1 columns
     	double[][] distanceTable = new double[source.size() + 1][target.size() + 1];
     	
     	distanceTable[0][0] = 0;
     	for (int i = 1; i <= source.size(); i++)
-    		distanceTable[i][0] = distanceTable[i-1][0] + deleteWeight(source.get(i-1));
+    		distanceTable[i][0] = distanceTable[i-1][0] + getmDeleteWeight(source.get(i-1));
     	for (int j = 1; j <= target.size(); j++)
-    		distanceTable[0][j] = distanceTable[0][j-1] + insertWeight(target.get(j-1));
+    		distanceTable[0][j] = distanceTable[0][j-1] + getmInsertWeight(target.get(j-1));
  
     	
     	try {
@@ -464,19 +548,19 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
                 					 */
 
                                     // it uses the PoS to look for the relations in the lexical resource
-                					lexR != null && 
+                					lexR != null && lexR.size() > 0 &&
                 						source.get(i-1).getPos().getType().getName().equals(target.get(j-1).getPos().getType().getName()) && 
                 						getRulesFromResource(getTokenBaseForm(source.get(i-1)), new ByCanonicalPartOfSpeech(source.get(i-1).getPos().getType().getShortName()),
                 								getTokenBaseForm(target.get(j-1)), new ByCanonicalPartOfSpeech(target.get(j-1).getPos().getType().getShortName())))
         							
         
-                                        ? distanceTable[i - 1][j - 1] + matchWeight(source.get(i-1))
-                                    : distanceTable[i - 1][j - 1] + substituteWeight(source.get(i-1), target.get(j-1)),
-                                    distanceTable[i - 1][j] + deleteWeight(source.get(i-1)),
-                                    distanceTable[i][j - 1] + insertWeight(target.get(j-1)));
+                                        ? distanceTable[i - 1][j - 1] + getmMatchWeight(source.get(i-1))
+                                    : distanceTable[i - 1][j - 1] + getmSubstituteWeight(source.get(i-1), target.get(j-1)),
+                                    distanceTable[i - 1][j] + getmDeleteWeight(source.get(i-1)),
+                                    distanceTable[i][j - 1] + getmInsertWeight(target.get(j-1)));
                 }
 
-	    	
+    		
     	
     	} catch(Exception e) {
     		e.printStackTrace();
@@ -491,7 +575,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     	// the normalizedDistanceValue score has a range from 0 (when source is identical to target), to 1
     	// (when source is completely different form target).
     	double normalizedDistanceValue = distance/norm;
-    	    	
+    	
     	return new EditDistanceValue(normalizedDistanceValue, false, distance);
                 
      }
@@ -540,7 +624,10 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 			relations.add(WordNetRelation.SYNONYM);
 			relations.add(WordNetRelation.HYPERNYM);
 			
-			lexR = new WordnetLexicalResource(new File(path), false, false, relations, 3, WordnetDictionaryImplementationType.JMWN);
+			@SuppressWarnings("rawtypes")
+			LexicalResource resource = new WordnetLexicalResource(new File(path), false, false, relations, 3, WordnetDictionaryImplementationType.JMWN);
+			
+			lexR.add(resource);
 			
 		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());
@@ -565,7 +652,10 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 			relations.add(WordNetRelation.SYNONYM);
 			relations.add(WordNetRelation.HYPERNYM);
 			
-			lexR = new WordnetLexicalResource(new File(path), false, false, relations, 3);
+			@SuppressWarnings("rawtypes")
+			LexicalResource resource = new WordnetLexicalResource(new File(path), false, false, relations, 3);
+			
+			lexR.add(resource);
 			
 		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());
@@ -587,7 +677,9 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     	
 		try {
 			
-			lexR = new GermaNetWrapper(path);
+			@SuppressWarnings("rawtypes")
+			LexicalResource resource = new GermaNetWrapper(path);
+			lexR.add(resource);
 			
 		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());
@@ -616,7 +708,10 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 			//File stopWordsFile = new File("src/test/resources/stopwords.txt");
 			File stopWordsFile = File.createTempFile("emptystopwordfile", ".tmp"); 
 			stopWordsFile.deleteOnExit();
-			lexR = new WikiLexicalResource(stopWordsFile, extractionTypes, dbConnection, dbUser, dbPasswd, 0.01);
+			
+			@SuppressWarnings("rawtypes")
+			LexicalResource resource = new WikiLexicalResource(stopWordsFile, extractionTypes, dbConnection, dbUser, dbPasswd, 0.01);
+			lexR.add(resource);
 			
 		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());
@@ -639,7 +734,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     	logger.info("initializeWikipedia()");
     	
     	try {
-    	
+    		
     		Set<WikiExtractionType> extractionTypes = Utils.arrayToCollection(new WikiExtractionType[]{WikiExtractionType.REDIRECT,WikiExtractionType.CATEGORY,
     			WikiExtractionType.LEX_ALL_NOUNS,WikiExtractionType.SYNT_ALL_NOUNS}, new HashSet<WikiExtractionType>());
     		
@@ -648,7 +743,10 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     		//File stopWordsFile = new File("src/test/resources/stopwords.txt");
 			File stopWordsFile = File.createTempFile("emptystopwordfile", ".tmp"); 
 			stopWordsFile.deleteOnExit();
-			lexR = new WikiLexicalResourceIT(stopWordsFile, extractionTypes, dbConnection, dbUser, dbPasswd, 0.01);
+			
+			@SuppressWarnings("rawtypes")
+			LexicalResource resource =  new WikiLexicalResourceIT(stopWordsFile, extractionTypes, dbConnection, dbUser, dbPasswd, 0.01);
+			lexR.add(resource);
 			
 		} catch (Exception e) {
 			throw new LexicalResourceException(e.getMessage());
@@ -674,26 +772,28 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 	private boolean getRulesFromResource(String leftLemma, PartOfSpeech leftPos, 
     		String rightLemma, PartOfSpeech rightPos) throws LexicalResourceException {
     	
+    	//logger.info("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
+    	
     	List<LexicalRule<?>> rules = null;
     	
 		try {
 			
-			rules = lexR.getRules(leftLemma, leftPos, rightLemma, rightPos);
+			for (int i = 0; i < lexR.size(); i++) {
+				rules = lexR.get(i).getRules(leftLemma, leftPos, rightLemma, rightPos);
+				if (rules != null && rules.size() >0) {
+					return true;
+				}
+			}
 			
 		} catch (LexicalResourceException e) {
 		    logger.severe(e.getMessage());
-			logger.severe("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
+			//logger.severe("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
 			//throw new LexicalResourceException(e.getMessage());
     	} catch (Exception e) {
     		logger.severe(e.getMessage());
-    		logger.severe("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
+    		//logger.severe("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
     		//throw new LexicalResourceException(e.getMessage());
     	}
-		
-		if (rules != null && rules.size() >0) {
-			//logger.info("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
-			return true;
-		}
 		
 		return false;
     }
@@ -710,34 +810,6 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     		super(distance, simBased, rawValue); 
     	}
     	
-    }
-    
-    
-    /**
-     * Initialize the weights of the edit distance operations
-   
-     * @param config the configuration
-     * 
-     */
-    private void initializeWeights(CommonConfig config) {
-
-    	try{ 
-    		
-    		NameValueTable weightsTable = config.getSubSection(this.getClass().getCanonicalName(), "weights");
-    		mMatchWeight = weightsTable.getDouble("match");
-    		mDeleteWeight = weightsTable.getDouble("delete");
-    		mInsertWeight = weightsTable.getDouble("insert");
-    		mSubstituteWeight = weightsTable.getDouble("substitute");
-    		
-    	} catch (ConfigurationException e) {
-    		
-    		logger.info("Could not find weights section in configuration file, using defaults");
-    		mMatchWeight = 0.0;
-    		mDeleteWeight = 0.0;
-    		mInsertWeight = 1.0;
-    		mSubstituteWeight = 1.0;
-    		
-    	}
     }
     
 }
