@@ -206,8 +206,6 @@ public class EditDistanceEDA<T extends TEDecision>
     /**
 	 * get the weight of the insert edit distant operation
 	 * 
-	 * @param mInsertWeight the value of the edit distant operation
-	 *
 	 * @return
 	 */
     public double getmInsertWeight() {
@@ -232,8 +230,6 @@ public class EditDistanceEDA<T extends TEDecision>
     /**
 	 * get the weight of the insert edit distant operation
 	 * 
-	 * @param mInsertWeight the value of the edit distant operation
-	 *
 	 * @return
 	 */
     public double getmSubstituteWeight() {

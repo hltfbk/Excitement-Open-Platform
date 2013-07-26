@@ -47,8 +47,9 @@ public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T>
 	//the number of processors to be used for running PSO
 	private int processors = -1;
 	
-	/*
-	 * The constructor
+	
+	/**
+	 * Construct an edit distance EDA.
 	 */
 	public EditDistancePSOEDA() {
 		

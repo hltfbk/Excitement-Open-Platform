@@ -32,6 +32,8 @@ public class EditDistanceFitnessFunction extends FitnessFunction {
 	 * This method is used by PSO to calculate the value of the quality measure
 	 * to be optimized. In this case the measure is: 1 - accuracy
 	 * The quality measure value has to be assigned to the variable value.
+	 * 
+	 * @return a reference to this object
 	 */
 	public FitnessFunction call() throws Exception {
 		
