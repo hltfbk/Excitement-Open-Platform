@@ -2,6 +2,8 @@ package eu.excitementproject.eop.common.utilities.math;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -110,6 +112,14 @@ public class MathUtils {
 		
 		return a1*(Math.pow(q, n)-1) / (q-1); 
 	}
+	
+	public static Integer sum(Collection<Integer> collection) {
+		Integer result = 0;
+		for (Integer n : collection) {
+			result += n;
+		}
+		return result;
+	}
 
 	/**
 	 * 	
@@ -137,6 +147,19 @@ public class MathUtils {
 		for(Integer number: numbers)
 			sum+=number;
 		return sum/(double)numbers.size();
+	}
+	
+	/**
+	 * 	
+	 * @param iNumbers - integers
+	 * @return the standard deviation
+	 */
+	public static Double stdInt(List<Integer> elements) {
+		List<Double> doubles = new ArrayList<Double>(elements.size());
+		for (Integer n : elements) {
+			doubles.add(new Double(n));
+		}
+		return std(doubles);
 	}
 	
 	/**
@@ -428,5 +451,5 @@ public class MathUtils {
 	public static double sigmoid(double x) {
 		return (double) 1 / (1 + Math.exp(-x));
 	}
-	
+
 }
