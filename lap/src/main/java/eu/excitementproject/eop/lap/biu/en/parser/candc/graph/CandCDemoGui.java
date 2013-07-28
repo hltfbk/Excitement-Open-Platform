@@ -34,7 +34,7 @@ import eu.excitementproject.eop.lap.biu.en.tokenizer.TextToPennTreeBankConverter
  * @author Asher Stern
  *
  */
-@SuppressWarnings({ "serial"})
+@SuppressWarnings({ "serial", "deprecation"})
 @Deprecated
 public class CandCDemoGui extends JFrame implements ActionListener, WindowListener
 {
