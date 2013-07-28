@@ -91,6 +91,7 @@ public class RTEPairsPreProcessor
 			@Override
 			protected void run(String[] args) throws BiuteeException
 			{
+				logger = Logger.getLogger(RTEPairsPreProcessor.class);
 				String trainTestFlag = null;
 				if (args.length>=2)
 				{
@@ -191,6 +192,7 @@ public class RTEPairsPreProcessor
 	
 	private void readDatasetFile() throws RTEMainReaderException
 	{
+		logger.info("Processing dataset: "+datasetFile);
 		RTEMainReader reader = new DefaultRTEMainReader();
 		reader.setXmlFile(new File(datasetFile));
 		if (annotated)
@@ -275,5 +277,5 @@ public class RTEPairsPreProcessor
 	private List<TextHypothesisPair> pairs = null;
 	private List<PairData> pairsData;
 
-	private static Logger logger = Logger.getLogger(RTEPairsPreProcessor.class);
+	private static Logger logger = null;
 }

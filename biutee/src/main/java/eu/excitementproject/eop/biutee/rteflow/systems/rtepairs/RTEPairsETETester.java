@@ -43,6 +43,7 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 			@Override
 			protected void run(String[] args) throws BiuteeException
 			{
+				logger=Logger.getLogger(RTEPairsETETester.class);
 				try
 				{
 					RTEPairsETETester tester = new RTEPairsETETester(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);

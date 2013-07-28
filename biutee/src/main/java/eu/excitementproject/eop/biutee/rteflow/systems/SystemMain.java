@@ -40,6 +40,7 @@ public abstract class SystemMain
 			ExperimentManager.getInstance().setConfigurationFile(configurationFileName);
 
 			logger.info(cls.getSimpleName());
+			ExperimentManager.getInstance().addMessage(cls.getSimpleName());
 
 			Date startDate = new Date();
 			run(args);

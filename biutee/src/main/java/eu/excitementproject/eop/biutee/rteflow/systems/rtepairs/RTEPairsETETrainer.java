@@ -3,6 +3,8 @@ package eu.excitementproject.eop.biutee.rteflow.systems.rtepairs;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ClassifierGenerator;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Dataset;
@@ -37,6 +39,7 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 			@Override
 			protected void run(String[] args) throws BiuteeException
 			{
+				logger = Logger.getLogger(RTEPairsETETrainer.class);
 				RTEPairsETETrainer trainer = new RTEPairsETETrainer(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
 				try
 				{
@@ -97,4 +100,6 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 		return RTEPairsETEFactory.createResultsFactory();
 	}
 
+	@SuppressWarnings("unused")
+	private static Logger logger = null;
 }
