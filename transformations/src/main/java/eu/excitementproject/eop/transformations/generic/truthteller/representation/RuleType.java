@@ -2,7 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.truthteller.representation;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.transformations.generic.truthteller.application.AnnotationRuleApplierFactory;
@@ -57,6 +57,6 @@ public enum RuleType {
 		return null;
 	}
 	
-	public static final String PRINTED_VALUES = Utils.arrayToCollection(RuleType.values(), new HashSet<RuleType>()).toString();
+	public static final String PRINTED_VALUES = Utils.arrayToCollection(RuleType.values(), new LinkedHashSet<RuleType>()).toString();
 
 }

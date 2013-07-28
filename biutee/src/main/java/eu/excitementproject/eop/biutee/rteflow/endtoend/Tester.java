@@ -12,6 +12,11 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 /**
+ * This class is given a dataset of T-H pairs, and classifies each pair as
+ * entailing or not.
+ * The results are returned as a {@link Results} object by the method
+ * {@link #getResults()} (note that this results object is returned after its
+ * {@link Results#compute()} method was called).
  * 
  * @author Asher Stern
  * @since Jul 14, 2013

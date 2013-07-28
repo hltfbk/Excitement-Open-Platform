@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.annotationrules;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -201,7 +201,7 @@ public class CgxAnnotationRuleCompiler<I extends Info, N extends AbstractNode<I,
 		
 		
 		Map<CN, A> annotationsMap = new LinkedHashMap<CN, A>();
-		Set<GenericAlignment> regularAlignmentsToRemove = new HashSet<GenericAlignment>();
+		Set<GenericAlignment> regularAlignmentsToRemove = new LinkedHashSet<GenericAlignment>();
 		for (GenericAlignment alignment : alignments)
 		{
 			Long nodeId = alignment.getLeftId();
