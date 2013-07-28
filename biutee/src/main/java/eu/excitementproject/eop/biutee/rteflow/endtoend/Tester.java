@@ -44,6 +44,8 @@ public class Tester<I extends Instance, P extends Proof>
 	{
 		LinearClassifier classifierForSearch = classifierGenerator.loadClassifierForSearch();
 		Classifier classifierForPredictions = classifierGenerator.loadClassifierForPredictions();
+		logger.info("Classifier for search:\n"+classifierForSearch.descriptionOfTraining());
+		logger.info("Classifier for predictions:\n"+classifierForPredictions.descriptionOfTraining());
 		
 		DatasetProcessor<I,P> datasetProcessor = new DatasetProcessor<I,P>(dataset,scripts,classifierForSearch,prover,numberOfThreads);
 		datasetProcessor.process();
