@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -113,9 +113,9 @@ public class CgxEntailmentRuleCompiler<I extends Info, N extends AbstractNode<I,
 			List<GenericAlignment> idAlignments = cgxDomParser.parseMappings();
 
 			// build LHS and RHS trees
-			Map<Long, CN> lhsNodesMap = new HashMap<Long, CN>();
+			Map<Long, CN> lhsNodesMap = new LinkedHashMap<Long, CN>();
 			CN lhsRoot = RuleBuildingUtils.buildTreeUnderLabel(Constants.LHS, nodeLabelMap, undirectedEdges, lhsNodesMap, compilationServices);
-			Map<Long, CN> rhsNodesMap = new HashMap<Long, CN>();
+			Map<Long, CN> rhsNodesMap = new LinkedHashMap<Long, CN>();
 			CN rhsRoot = RuleBuildingUtils.buildTreeUnderLabel(Constants.RHS, nodeLabelMap, undirectedEdges, rhsNodesMap, compilationServices);
 			
 			// apply all alignments

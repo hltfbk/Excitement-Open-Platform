@@ -5,7 +5,8 @@ package eu.excitementproject.eop.transformations.generic.rule_compiler.annotatio
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -40,8 +41,8 @@ import eu.excitementproject.eop.transformations.representation.annotations.Predi
 public class ExpandPredicatedWithWN {
 
 	private static HashMap<String, PredicateSignature> mapPredToType;
-	private static HashMap<String, PredicateSignature> map2ndPredToType = new HashMap<String, PredicateSignature>();
-	private static HashMap<String, Set<PredicateSignature>> mapDuplicate2ndPreds = new HashMap<String, Set<PredicateSignature>>();
+	private static HashMap<String, PredicateSignature> map2ndPredToType = new LinkedHashMap<String, PredicateSignature>();
+	private static HashMap<String, Set<PredicateSignature>> mapDuplicate2ndPreds = new LinkedHashMap<String, Set<PredicateSignature>>();
 
 	/**
 	 * Load the predicate list properties file, and for each pred, output its WN synonyms and entailments
@@ -67,7 +68,7 @@ public class ExpandPredicatedWithWN {
 		File pathToDict = compilationParams.getDirectory(RuleCompilerParameterNames.WORDNET_DICT); 
 		Dictionary wn = new JwiDictionary(pathToDict);
 		
-		Set<String> predsBadForWN = Utils.arrayToCollection(new String[]{}, new HashSet<String>());
+		Set<String> predsBadForWN = Utils.arrayToCollection(new String[]{}, new LinkedHashSet<String>());
 		
 		File outFileName = new File("ExpandedPredicateList.txt");
 		String expandedPropertiesFileName = compilationParams.get(RuleCompilerParameterNames.SINGLE_WORD_PREDICATE_TYPE_LEXICON); 
@@ -188,7 +189,7 @@ public class ExpandPredicatedWithWN {
 							;
 						else
 						{
-							Set<PredicateSignature> predTypes = new HashSet<PredicateSignature>();
+							Set<PredicateSignature> predTypes = new LinkedHashSet<PredicateSignature>();
 							PredicateSignature prevPredType = map2ndPredToType.remove(word);
 							predTypes.add(prevPredType);
 							predTypes.add(predicateType);

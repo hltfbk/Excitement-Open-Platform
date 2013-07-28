@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.datastructures;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
@@ -142,7 +142,7 @@ public class FastIntegerKeyMap<V> implements Map<Integer, V>
 
 	public Set<Integer> keySet()
 	{
-		Set<Integer> ret = new HashSet<Integer>();
+		Set<Integer> ret = new LinkedHashSet<Integer>();
 		for (int index=0;index<values.length;++index)
 		{
 			if (values[index]!=null)
@@ -164,7 +164,7 @@ public class FastIntegerKeyMap<V> implements Map<Integer, V>
 
 	public Set<java.util.Map.Entry<Integer, V>> entrySet()
 	{
-		Set<java.util.Map.Entry<Integer, V>> ret = new HashSet<Map.Entry<Integer,V>>(); // will be NonModifiableHashSet
+		Set<java.util.Map.Entry<Integer, V>> ret = new LinkedHashSet<Map.Entry<Integer,V>>(); // will be NonModifiableHashSet
 		for (int index=0;index<values.length;++index)
 		{
 			if (values[index]!=null)

@@ -23,6 +23,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.transformations.utilities.StopFlag;
 
 /**
+ * Given a {@link Dataset} of T-H pairs, finds a proof for each pair.
  * 
  * @author Asher Stern
  * @since Jul 14, 2013

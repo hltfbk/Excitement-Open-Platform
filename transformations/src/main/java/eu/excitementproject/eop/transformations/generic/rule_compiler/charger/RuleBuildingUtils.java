@@ -2,7 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.rule_compiler.charger;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -205,7 +205,7 @@ public class RuleBuildingUtils {
 		ImmutableSet<Pair<Long>> edgesFromRoot = undirectedEdges.getPairContaining(rootId);
 		if (edgesFromRoot != null)
 		{
-			Set<Long> childrenIds = new HashSet<Long>();
+			Set<Long> childrenIds = new LinkedHashSet<Long>();
 			for (Pair<Long> edge : undirectedEdges.getPairContaining(rootId))
 			{
 				Long[] sides = edge.toSet().toArray(new Long[2]);

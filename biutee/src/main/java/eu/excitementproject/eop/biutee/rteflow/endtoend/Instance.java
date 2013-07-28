@@ -6,6 +6,7 @@ import eu.excitementproject.eop.biutee.script.HypothesisInformation;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 
 /**
+ * An instance contains a T-H pair, to be classified as entailing or not.
  * 
  * @author Asher Stern
  * @since Jul 14, 2013
