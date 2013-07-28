@@ -48,9 +48,9 @@ public class ExceptionUtil
 	 */
 	public static void outputException(Throwable throwable, PrintStream printStream)
 	{
-		printStream.println(ExceptionUtil.getMessages(throwable));
-		printStream.println();
 		throwable.printStackTrace(printStream);
+		printStream.println();
+		printStream.println(ExceptionUtil.getMessages(throwable));
 	}
 	
 	/**

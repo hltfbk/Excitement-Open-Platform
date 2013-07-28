@@ -6,6 +6,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
+import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.PredicateArgumentAprioriInformation;
 
 /**
  * Given a parse-tree, this class builds a set with all of the predicate-argument structures that exist in that tree. 
@@ -28,10 +29,18 @@ public abstract class PredicateArgumentStructureBuilder<I extends Info, S extend
 		this.tree = tree;
 	}
 	
+	public void setAprioriInformation(PredicateArgumentAprioriInformation<I, S> aprioriInformation)
+	{
+		this.aprioriInformation = aprioriInformation;
+	}
+
+	
 	public abstract void build() throws PredicateArgumentIdentificationException;
 	
 	public abstract Set<PredicateArgumentStructure<I, S>> getPredicateArgumentStructures() throws PredicateArgumentIdentificationException;
 
 
 	protected final TreeAndParentMap<I,S> tree;
+	protected PredicateArgumentAprioriInformation<I,S> aprioriInformation = null;
+
 }

@@ -44,6 +44,10 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 		super(tree);
 		this.nomlexMap = nomlexMap;
 	}
+	
+	
+
+
 
 	/**
 	 * Find all of the predicate argument structures in this tree.
@@ -99,6 +103,7 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 	private PredicateArgumentStructure<I,S> buildForVerbalPredicate(Predicate<I, S> predicate) throws PredicateArgumentIdentificationException
 	{
 		ArgumentsIdentifier<I, S> argumentsIdentifier = new ArgumentsIdentifier<I, S>(tree,predicate);
+		argumentsIdentifier.setAprioriInformation(aprioriInformation);
 		argumentsIdentifier.identifyArguments();
 		Set<TypedArgument<I, S>> arguments = argumentsIdentifier.getArguments();
 		
@@ -112,6 +117,7 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 		return predicateArgumentStructure;
 	}
 	
-	private Set<PredicateArgumentStructure<I,S>> predicateArgumentStructures = null;
 	protected final ImmutableMap<String, Nominalization> nomlexMap;
+	
+	private Set<PredicateArgumentStructure<I,S>> predicateArgumentStructures = null;
 }
