@@ -5,6 +5,13 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_DATASET_FILE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_ANNOTATED;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_DATASET_FILE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_SERIALIZATION_FILE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TEST_ANNOTATED;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TEST_DATASET_FILE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TEST_SERIALIZATION_FILE_NAME;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,12 +28,12 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
 import eu.excitementproject.eop.biutee.rteflow.preprocess.InstrumentsFactory;
-import eu.excitementproject.eop.biutee.utilities.LogInitializer;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemMain;
+import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -78,34 +85,59 @@ public class RTEPairsPreProcessor
 	 */
 	public static void main(String[] args)
 	{
-		try
+		new SystemMain()
 		{
-			if (args.length<1) throw new Exception("no arguments.");
-			String configurationFileName = args[0];
-			new LogInitializer(configurationFileName).init();
 			
-			logger.info("RTEPairsPreProcessor");
-			
-			RTEPairsPreProcessor application = new RTEPairsPreProcessor(configurationFileName);
-			application.preprocess();
-		}
-		catch(Exception e)
-		{
-			ExceptionUtil.outputException(e, System.out);
-			ExceptionUtil.logException(e, logger);
-		}
-
+			@Override
+			protected void run(String[] args) throws BiuteeException
+			{
+				String trainTestFlag = null;
+				if (args.length>=2)
+				{
+					trainTestFlag=args[1];
+				}
+				try
+				{
+					RTEPairsPreProcessor application = new RTEPairsPreProcessor(configurationFileName,trainTestFlag);
+					application.preprocess();
+				} catch (TeEngineMlException
+						| ConfigurationException | RTEMainReaderException
+						| ParserRunException | SentenceSplitterException
+						| CoreferenceResolutionException | IOException
+						| TreeCoreferenceInformationException
+						| TextPreprocessorException
+						| NamedEntityRecognizerException
+						| TreeStringGeneratorException e)
+				{
+					throw new BiuteeException("Failed to run",e);
+				}
+			}
+		}.main(RTEPairsPreProcessor.class, args);
 	}
 	
-	public RTEPairsPreProcessor(String configurationFileName)
+	public static enum TrainTestEnum{TRAIN,TEST}
+	
+	public RTEPairsPreProcessor(String configurationFileName,String trainTestEnum) throws TeEngineMlException
 	{
 		this.configurationFileName = configurationFileName;
+		
+		if (trainTestEnum!=null)
+		{
+			try{this.trainOrTest = TrainTestEnum.valueOf(trainTestEnum.toUpperCase());}
+			catch(IllegalArgumentException e){throw new TeEngineMlException("Second argument must be a train/test flag.");}
+		}
+		else
+		{
+			this.trainOrTest = null;
+		}
 	}
 	
 	public void preprocess() throws ConfigurationFileDuplicateKeyException, ConfigurationException, RTEMainReaderException, TeEngineMlException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, FileNotFoundException, IOException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException
 	{
 		logger.info("Starting RTEPairsPreprocessor.");
 		logger.info("Reading configuration file.");
+		if (null==trainOrTest){logger.info("No train/test flag is given. Using default parameters.");}
+		else {logger.info("Train/test flag = "+trainOrTest.name());}
 		readConfigurationFile();
 		logger.info("Reading dataset.");
 		readDatasetFile();
@@ -121,12 +153,15 @@ public class RTEPairsPreProcessor
 		configurationFile = new ConfigurationFile(this.configurationFileName);
 		configurationFile.setExpandingEnvironmentVariables(true);
 		ConfigurationParams params = configurationFile.getModuleConfiguration(RTE_PAIRS_PREPROCESS_MODULE_NAME);
-		datasetFile = params.get(RTE_PAIRS_PREPROCESS_DATASET_FILE_NAME);
+		
+		datasetFile = params.get(parameterName(RTE_PAIRS_PREPROCESS_DATASET_FILE_NAME, RTE_PAIRS_PREPROCESS_TRAIN_DATASET_FILE_NAME, RTE_PAIRS_PREPROCESS_TEST_DATASET_FILE_NAME));
+
+		annotated = params.getBoolean(parameterName(RTE_PAIRS_PREPROCESS_ANNOTATED, RTE_PAIRS_PREPROCESS_TRAIN_ANNOTATED, RTE_PAIRS_PREPROCESS_TEST_ANNOTATED));
 		
 		instruments = new InstrumentsFactory().getDefaultInstruments(params);
-		
-		annotated = params.getBoolean(RTE_PAIRS_PREPROCESS_ANNOTATED);
-		preprocessedPairsSerFileName = params.get(RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME);
+
+		preprocessedPairsSerFileName = params.get(parameterName(RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME, RTE_PAIRS_PREPROCESS_TRAIN_SERIALIZATION_FILE_NAME, RTE_PAIRS_PREPROCESS_TEST_SERIALIZATION_FILE_NAME));
+
 		
 		if (params.containsKey(PREPROCESS_DO_NER))
 			doNer = params.getBoolean(PREPROCESS_DO_NER);
@@ -137,6 +172,21 @@ public class RTEPairsPreProcessor
 			doTextNormalization = params.getBoolean(PREPROCESS_DO_TEXT_NORMALIZATION);
 		else 
 			doTextNormalization = true;
+	}
+	
+	private String parameterName(String defaultName, String trainName, String testName)
+	{
+		String parameter = defaultName;
+		if (TrainTestEnum.TRAIN.equals(trainOrTest))
+		{
+			parameter = trainName;
+		}
+		else if (TrainTestEnum.TEST.equals(trainOrTest))
+		{
+			parameter = testName;
+		}
+		return parameter;
+
 	}
 	
 	private void readDatasetFile() throws RTEMainReaderException
@@ -213,6 +263,7 @@ public class RTEPairsPreProcessor
 	
 	
 	private String configurationFileName;
+	private TrainTestEnum trainOrTest=null;
 	private ConfigurationFile configurationFile;
 	private Instruments<Info,BasicNode> instruments;
 	private String datasetFile;
