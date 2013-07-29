@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -390,5 +389,5 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 	protected static Map<String, Cache<LemmaAndPos,Map<BasicNode,Integer>>> staticCacheLHSMapId = new LinkedHashMap<String, Cache<LemmaAndPos,Map<BasicNode,Integer>>>();
 	protected static Map<String, Cache<BasicNode, ImmutableSet<RuleWithConfidenceAndDescription<Info, BasicNode>>>> staticCacheRules = new LinkedHashMap<String, Cache<BasicNode,ImmutableSet<RuleWithConfidenceAndDescription<Info,BasicNode>>>>();
 	
-	protected static final ImmutableSet<BasicNode> emptyLHS = new ImmutableSetWrapper<BasicNode>(new HashSet<BasicNode>());
+	protected static final ImmutableSet<BasicNode> emptyLHS = new ImmutableSetWrapper<BasicNode>(new LinkedHashSet<BasicNode>());
 }

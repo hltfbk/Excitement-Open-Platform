@@ -6,6 +6,7 @@ import java.util.List;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 
 /**
+ * Holds a dataset of T-H pairs (represented as {@link Instance}s).
  * 
  * @author Asher Stern
  * @since Jul 14, 2013

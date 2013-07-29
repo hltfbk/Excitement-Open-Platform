@@ -4,8 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileReader;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -86,7 +86,7 @@ public class AnnotationRuleLexiconUtils {
 	static Set<String> expandPhrasalVerbSignatureAnnotationRule(Collection<String> ruleTexts, Set<PhrasalVerbTemplate> phrasalVerbTemplates) 
 			throws AnnotationCompilationException 
 	{
-		Set<String> expandedRuleTexts = new HashSet<String>();
+		Set<String> expandedRuleTexts = new LinkedHashSet<String>();
 		
 		for (String ruleText : ruleTexts)
 		{
@@ -158,7 +158,7 @@ public class AnnotationRuleLexiconUtils {
 		{
 			String labelStr = verbFamilyLabel.toString();
 			String verbsStr = verbFamiliesProperties.getProperty(labelStr);
-			Set<String> verbs = Utils.arrayToCollection(splitAndCleanPredicateList(verbsStr), new HashSet<String>()); 
+			Set<String> verbs = Utils.arrayToCollection(splitAndCleanPredicateList(verbsStr), new LinkedHashSet<String>()); 
 			verbFamiliesMap.put(labelStr, verbs);
 		}
 		
@@ -167,13 +167,13 @@ public class AnnotationRuleLexiconUtils {
 		{
 			String labelStr = nounFamilyLabel.toString();
 			String nounsStr = nounFamiliesProperties.getProperty(labelStr);
-			Set<String> nouns = Utils.arrayToCollection(splitAndCleanPredicateList(nounsStr), new HashSet<String>()); 
+			Set<String> nouns = Utils.arrayToCollection(splitAndCleanPredicateList(nounsStr), new LinkedHashSet<String>()); 
 			nounFamiliesMap.put(labelStr, nouns);
 		}
 		
 		// cross ref
 		
-		Set<PhrasalVerbTemplate> phrasalVerbTemplates = new HashSet<PhrasalVerbTemplate>();
+		Set<PhrasalVerbTemplate> phrasalVerbTemplates = new LinkedHashSet<PhrasalVerbTemplate>();
 		for (Object tempalte : templatesProperties.keySet())
 		{
 			String labelStr = tempalte.toString();
@@ -205,7 +205,7 @@ public class AnnotationRuleLexiconUtils {
 			throw new AnnotationCompilationException("Bad phrasal verb template: " + templateStr);
 		Set<String> verbs = verbFamiliesMap.get(parts[0]);
 		String[] nounLabels = splitAndCleanPredicateList(parts[1], SLASH);
-		Set<String> nouns = new HashSet<String>();
+		Set<String> nouns = new LinkedHashSet<String>();
 		for (String nounLabel : nounLabels)
 			nouns.addAll(nounFamiliesMap.get(nounLabel));
 		PredicateSignature predicateType = PredicateSignature.valueOf(parts[2]);

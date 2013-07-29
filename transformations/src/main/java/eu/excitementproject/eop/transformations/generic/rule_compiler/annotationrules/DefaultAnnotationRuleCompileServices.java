@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.annotationrules;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -22,11 +22,11 @@ import eu.excitementproject.eop.transformations.generic.truthteller.representati
 import eu.excitementproject.eop.transformations.generic.truthteller.representation.PtRuleAnnotationValue;
 import eu.excitementproject.eop.transformations.representation.AdditionalInformationServices;
 import eu.excitementproject.eop.transformations.representation.AdditionalNodeInformation;
+import eu.excitementproject.eop.transformations.representation.AdditionalNodeInformation.Monotonicity;
 import eu.excitementproject.eop.transformations.representation.ExtendedConstructionNode;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfoGetFields;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.representation.AdditionalNodeInformation.Monotonicity;
 import eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth;
 import eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty;
 import eu.excitementproject.eop.transformations.representation.annotations.PredTruth;
@@ -61,7 +61,7 @@ public class DefaultAnnotationRuleCompileServices implements AnnotationRuleCompi
 		COPY_PT,	// insofar, this is never actually used in the (not special) CGX rules
 		;
 		
-		public static final String PRINTED_VALUES = Utils.arrayToCollection(MappingType.values(), new HashSet<MappingType>()).toString();
+		public static final String PRINTED_VALUES = Utils.arrayToCollection(MappingType.values(), new LinkedHashSet<MappingType>()).toString();
 	}
 	
 	/**
@@ -91,10 +91,10 @@ public class DefaultAnnotationRuleCompileServices implements AnnotationRuleCompi
 		private String strRepresentation;				// this is the string used in the CGX rule files. no spaces!
 		private ParamNames(String strRepresentation)	{		this.strRepresentation = strRepresentation;		}
 		public String toString()	{ return strRepresentation;	}
-		private final static Set<String> PARAM_NAMES_SET = new HashSet<String>();
+		private final static Set<String> PARAM_NAMES_SET = new LinkedHashSet<String>();
 		static	{ for (ParamNames paramName : ParamNames.values()) PARAM_NAMES_SET.add(paramName.toString());	}
 		private final static Set<String> ANNOTATION_PARAM_NAMES_SET = Utils.arrayToCollection(new String[]
-				{SIGNATURE.toString(), NU.toString(), CT.toString(), PT.toString(), MONOTONICITY.toString() }, new HashSet<String>());
+				{SIGNATURE.toString(), NU.toString(), CT.toString(), PT.toString(), MONOTONICITY.toString() }, new LinkedHashSet<String>());
 	}
 
 	////////////////////////////////////////////////// PRIVATE CONSTANTS ///////////////////////////////////////////////////////////////

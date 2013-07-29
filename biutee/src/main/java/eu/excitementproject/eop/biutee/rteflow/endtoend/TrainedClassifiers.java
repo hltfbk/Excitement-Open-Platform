@@ -4,7 +4,7 @@ import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassi
 import eu.excitementproject.eop.biutee.classifiers.TrainableStorableClassifier;
 
 /**
- * 
+ * Holds two classifiers: classifier for search and classifier for predictions.
  * @author Asher Stern
  * @since Jul 14, 2013
  *
