@@ -3,6 +3,7 @@ package eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
+import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
@@ -54,6 +55,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 					pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),
 					classifierForSearch, getLemmatizer(), script, teSystemEnvironment
 					);
+			processor.setGlobalPairInformation(new GlobalPairInformation(pairData.getPair().getAdditionalInfo()));
 			processor.process();
 			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory());
 			return proof;

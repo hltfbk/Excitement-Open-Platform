@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
@@ -26,8 +28,10 @@ public class AccuracyClassifierTrainer extends DefaultClassifierTrainer
 	protected Vector<LabeledSample> samplesForSearch(Vector<LabeledSample> samples,
 			List<Vector<LabeledSample>> olderSamples)
 	{
+		Vector<LabeledSample> samplesToReturn = null;
 		if (BiuteeConstants.USE_NEGATIVES_FROM_PREVIOUS_ITERATIONS_IN_ACCURACY_TRAINING)
 		{
+			logger.info("Adding negative samples from earlier iterations to samples-for-search.");
 			Vector<LabeledSample> allOldSamples = fromListVectors(olderSamples);
 			double currentNegatives = (double)negativesIn(samples);
 			double currentPositives = ((double)samples.size())-currentNegatives;
@@ -37,18 +41,19 @@ public class AccuracyClassifierTrainer extends DefaultClassifierTrainer
 			Vector<LabeledSample> positivesToAdd = takeSamples(extractByLabel(samples,true),numberOfPositivesToAdd);
 			Vector<LabeledSample> negativesToAdd = extractByLabel(allOldSamples, false);
 
-			Vector<LabeledSample> ret = new Vector<>();
-			ret.addAll(samples);
-			ret.addAll(positivesToAdd);
-			ret.addAll(negativesToAdd);
+			samplesToReturn = new Vector<>(samples.size()+positivesToAdd.size()+negativesToAdd.size());
+			samplesToReturn.addAll(samples);
+			samplesToReturn.addAll(positivesToAdd);
+			samplesToReturn.addAll(negativesToAdd);
 
-			Collections.shuffle(ret, new Random(0));
-			return ret;
+			Collections.shuffle(samplesToReturn, new Random(0));
+			
 		}
 		else
 		{
-			return super.samplesForSearch(samples,olderSamples);
+			samplesToReturn = super.samplesForSearch(samples,olderSamples);
 		}
+		return samplesToReturn;
 	}
 
 
@@ -107,4 +112,5 @@ public class AccuracyClassifierTrainer extends DefaultClassifierTrainer
 	}
 	
 
+	private static final Logger logger = Logger.getLogger(AccuracyClassifierTrainer.class);
 }
