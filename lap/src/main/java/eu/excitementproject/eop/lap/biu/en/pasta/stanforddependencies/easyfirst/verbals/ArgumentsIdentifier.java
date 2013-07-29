@@ -23,6 +23,7 @@ import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
 import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.RelationTypes;
 import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.ArgumentIdentificationUtilities;
 import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.ArgumentNodeAndPathFromPredicate;
+import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.PredicateArgumentAprioriInformation;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentIdentificationException;
 
 /**
@@ -48,6 +49,14 @@ public class ArgumentsIdentifier<I extends Info, S extends AbstractNode<I, S>>
 		this.tree = tree;
 		this.predicate = predicate;
 	}
+	
+	
+	public void setAprioriInformation(PredicateArgumentAprioriInformation<I, S> aprioriInformation)
+	{
+		this.aprioriInformation = aprioriInformation;
+	}
+
+
 
 
 
@@ -185,6 +194,15 @@ public class ArgumentsIdentifier<I extends Info, S extends AbstractNode<I, S>>
 	 */
 	private boolean checkSemanticPassiveSubject(Predicate<I, S> predicate, List<S> pathFromPredicateToArgument, S syntacticArgumentNode) throws PredicateArgumentIdentificationException
 	{
+		if (aprioriInformation!=null)
+		{
+			Boolean fromApriori = aprioriInformation.checkSemanticPassiveSubject(predicate, pathFromPredicateToArgument, syntacticArgumentNode);
+			if (fromApriori!=null)
+			{
+				return fromApriori;
+			}
+		}
+		
 		boolean itIsSemanticSubject = false;
 		if (pathFromPredicateToArgument!=null)
 		{
@@ -293,6 +311,8 @@ public class ArgumentsIdentifier<I extends Info, S extends AbstractNode<I, S>>
 	// input
 	private TreeAndParentMap<I,S> tree;
 	private Predicate<I, S> predicate;
+	
+	private PredicateArgumentAprioriInformation<I, S> aprioriInformation = null;
 	
 	// output
 	private Set<TypedArgument<I, S>> arguments;

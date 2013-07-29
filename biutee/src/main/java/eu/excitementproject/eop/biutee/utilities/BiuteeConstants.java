@@ -18,7 +18,7 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Important constants: constants that you might consider changing their values
 
-	public static final boolean USE_NEGATIVES_FROM_PREVIOUS_ITERATIONS_IN_ACCURACY_TRAINING = true;
+	public static final boolean USE_NEGATIVES_FROM_PREVIOUS_ITERATIONS_IN_ACCURACY_TRAINING = false;
 	
 	/**
 	 * The feature {@link Feature#INVERSE_HYPOTHESIS_LENGTH} is assigned

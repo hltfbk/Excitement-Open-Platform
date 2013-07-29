@@ -28,6 +28,20 @@ public class ConfigurationParametersNames
 	@ConfigurationParameterAnnotation(RTE_PAIRS_PREPROCESS_MODULE_NAME)
 	public static final String RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME = "serialization_filename";
 	
+	@ConfigurationParameterAnnotation(RTE_PAIRS_PREPROCESS_MODULE_NAME)
+	public static final String RTE_PAIRS_PREPROCESS_TRAIN_DATASET_FILE_NAME = "training_data";
+	@ConfigurationParameterAnnotation(RTE_PAIRS_PREPROCESS_MODULE_NAME)
+	public static final String RTE_PAIRS_PREPROCESS_TRAIN_ANNOTATED = "training_data_annotated";
+	@ConfigurationParameterAnnotation(RTE_PAIRS_PREPROCESS_MODULE_NAME)
+	public static final String RTE_PAIRS_PREPROCESS_TRAIN_SERIALIZATION_FILE_NAME = "training_serialization_filename";
+	
+	@ConfigurationParameterAnnotation(RTE_PAIRS_PREPROCESS_MODULE_NAME)
+	public static final String RTE_PAIRS_PREPROCESS_TEST_DATASET_FILE_NAME = "test_data";
+	@ConfigurationParameterAnnotation(RTE_PAIRS_PREPROCESS_MODULE_NAME)
+	public static final String RTE_PAIRS_PREPROCESS_TEST_ANNOTATED = "test_data_annotated";
+	@ConfigurationParameterAnnotation(RTE_PAIRS_PREPROCESS_MODULE_NAME)
+	public static final String RTE_PAIRS_PREPROCESS_TEST_SERIALIZATION_FILE_NAME = "test_serialization_filename";
+	
 	@ConfigurationModuleAnnotation
 	public static final String RTE_SUM_PREPROCESS_MODULE_NAME = "rte_sum_preprocess";
 	@ConfigurationParameterAnnotation(RTE_SUM_PREPROCESS_MODULE_NAME)

@@ -25,6 +25,7 @@ import eu.excitementproject.eop.common.representation.pasta.Argument;
 import eu.excitementproject.eop.common.representation.pasta.ClausalArgument;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
 import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
@@ -55,7 +56,7 @@ public class DemoParseAndDisplay
 		}
 		catch(Exception e)
 		{
-			e.printStackTrace(System.out);
+			ExceptionUtil.outputException(e, System.out);
 		}
 
 
