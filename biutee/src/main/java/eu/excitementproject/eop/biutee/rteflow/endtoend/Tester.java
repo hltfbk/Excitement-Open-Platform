@@ -1,5 +1,9 @@
 package eu.excitementproject.eop.biutee.rteflow.endtoend;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -7,6 +11,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -53,6 +58,7 @@ public class Tester<I extends Instance, P extends Proof>
 		
 		results = resultsFactory.createResults(proofs, classifierForPredictions);
 		results.compute();
+		saveLabeledSamples(results);
 		logger.info("Test done. Results:\n"+results.print());
 	}
 	
@@ -64,6 +70,20 @@ public class Tester<I extends Instance, P extends Proof>
 		return results;
 	}
 
+	
+	private void saveLabeledSamples(Results<I, P> results) throws BiuteeException
+	{
+		File file = new File(BiuteeConstants.LABELED_SAMPLES_FILE_PREFIX+"_test"+BiuteeConstants.LABELED_SAMPLES_FILE_POSTFIX);
+		try(ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file)))
+		{
+			stream.writeObject(results.getResultsAsLabeledSamples());
+		}
+		catch(IOException e)
+		{
+			throw new BiuteeException("Could not save labeled-samples.",e);
+		}
+	}
+	
 
 
 	// input

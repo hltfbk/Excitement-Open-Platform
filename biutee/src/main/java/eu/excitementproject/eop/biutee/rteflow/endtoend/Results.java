@@ -3,8 +3,10 @@ package eu.excitementproject.eop.biutee.rteflow.endtoend;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
+import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 
 /**
@@ -58,6 +60,43 @@ public abstract class Results<I extends Instance, P extends Proof>
 	 * @throws BiuteeException
 	 */
 	public abstract void save(File file) throws BiuteeException;
+	
+	/**
+	 * Creates a vector of {@link LabeledSample}s, such that in each sample
+	 * the feature vector is according to the given proofs, and the label is according
+	 * to the gold standard.
+	 * <BR>
+	 * If gold standard is not available, the label is <tt>false</tt>
+	 * 
+	 * 
+	 * @return
+	 * @throws BiuteeException
+	 */
+	public Vector<LabeledSample> getResultsAsLabeledSamples() throws BiuteeException
+	{
+		boolean unlabledFound = false;
+		for (InstanceAndProof<I, P> instance : proofs)
+		{
+			if (null==instance.getInstance().getBinaryLabel())
+			{
+				unlabledFound=true;
+				break;
+			}
+		}
+		
+		Vector<LabeledSample> samples = new Vector<>(proofs.size());
+		for (InstanceAndProof<I, P> instance : proofs)
+		{
+			boolean gs = false;
+			if (!unlabledFound)
+			{
+				gs = instance.getInstance().getBinaryLabel();
+			}
+			samples.add(new LabeledSample(instance.getProof().getFeatureVector(), gs));
+		}
+		return samples;
+	}
+
 	
 	protected final List<InstanceAndProof<I, P>> proofs;
 	protected final Classifier classifierForPredictions;
