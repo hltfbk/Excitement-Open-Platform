@@ -5,7 +5,7 @@ import org.junit.*;
 //test for English with MaxEnt (one pair)
 public class TestDemo_MaxEnt_EN_singlePair {
 
-//	@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_EN.xml",

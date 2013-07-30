@@ -47,7 +47,8 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 			<property name="stopWordRemoval">true</property>
 		</subsection>
 		
-		<!-- This configuration uses WordNet
+		<subsection name="wordnet">
+		<!-- This configuration uses WordNet -->
 		    <!-- stop words removal: [true|false] -->
 			<property name="stopWordRemoval">true</property>
 			<!-- path of the WordNet files -->
