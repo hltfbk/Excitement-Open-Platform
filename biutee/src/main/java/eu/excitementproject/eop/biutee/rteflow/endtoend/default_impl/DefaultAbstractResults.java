@@ -111,6 +111,8 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 		}
 	}
 	
+
+	
 	
 	
 	

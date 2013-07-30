@@ -1,8 +1,11 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtepairs;
 
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ClassifierGenerator;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Dataset;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
@@ -11,11 +14,11 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.AccuracyCla
 import eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs.THPairInstance;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs.THPairProof;
 import eu.excitementproject.eop.biutee.rteflow.systems.EndToEndTrainer;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemMain;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
-import eu.excitementproject.eop.biutee.utilities.LogInitializer;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -31,43 +34,33 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 	 */
 	public static void main(String[] args)
 	{
-		try
+		new SystemMain()
 		{
-			if (args.length<1)throw new TeEngineMlException("No arguments. Enter configuration file name as argument.");
-			
-			String configurationFileName = args[0];
-			new LogInitializer(configurationFileName).init();
-			logger = Logger.getLogger(RTEPairsETETrainer.class);
-			
-			ExperimentManager.getInstance().start();
-			ExperimentManager.getInstance().setConfigurationFile(configurationFileName);
-
-			logger.info("RTEPairsETETrainer");
-
-			
-			RTEPairsETETrainer trainer = new RTEPairsETETrainer(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
-			trainer.init();
-			try
+			@Override
+			protected void run(String[] args) throws BiuteeException
 			{
-				trainer.train();
+				logger = Logger.getLogger(RTEPairsETETrainer.class);
+				RTEPairsETETrainer trainer = new RTEPairsETETrainer(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
+				try
+				{
+					trainer.init();
+					try
+					{
+						trainer.train();
+					}
+					finally
+					{
+						trainer.cleanUp();
+					}
+				} catch (TeEngineMlException
+						| PluginAdministrationException
+						| ConfigurationException | LemmatizerException
+						| IOException e)
+				{
+					throw new BiuteeException("Failed to run",e);
+				}
 			}
-			finally
-			{
-				trainer.cleanUp();
-			}
-			
-			
-			boolean experimentManagedSucceeded = ExperimentManager.getInstance().save();
-			logger.info("ExperimentManager save "+(experimentManagedSucceeded?"succeeded":"failed")+".");
-		}
-		catch(Exception e)
-		{
-			ExceptionUtil.outputException(e, System.out);
-			if (logger!=null)
-			{
-				ExceptionUtil.logException(e, logger);
-			}
-		}
+		}.main(RTEPairsETETrainer.class, args);
 	}
 
 	public RTEPairsETETrainer(String configurationFileName, String configurationModuleName)
@@ -107,6 +100,6 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 		return RTEPairsETEFactory.createResultsFactory();
 	}
 
-
+	@SuppressWarnings("unused")
 	private static Logger logger = null;
 }
