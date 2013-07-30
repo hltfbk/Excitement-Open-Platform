@@ -17,6 +17,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
@@ -54,11 +55,11 @@ public class MultiWordNamedEntityUtils
 					{
 						BasicNode headOfNe = ListNodesToTree.findHead(hypothesisTree, neList);
 						BasicNode rhsTree = ListNodesToTree.createTree(headOfNe, neList);
-						if (AbstractNodeUtils.treeToSet(rhsTree).size()==neList.size())
+						if (AbstractNodeUtils.treeToLinkedHashSet(rhsTree).size()==neList.size())
 						{
 							BidirectionalMap<BasicNode, BasicNode> mapNodes = new SimpleBidirectionalMap<BasicNode, BasicNode>();
 							BasicNode mappedRhsNode = null;
-							for (BasicNode rhsNode : AbstractNodeUtils.treeToSet(rhsTree))
+							for (BasicNode rhsNode : TreeIterator.iterableTree(rhsTree))
 							{
 								// TODO I don't like this way. I would prefer avoiding
 								// the usage of the IDs. However, I guess that as long

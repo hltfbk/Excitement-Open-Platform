@@ -3,7 +3,7 @@
  */
 package eu.excitementproject.eop.transformations.generic.rule_compiler.utils;
 import java.io.Serializable;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.Pair;
@@ -31,7 +31,7 @@ public class DirectedPairSet<K> extends PairSet<K> implements Serializable {
 	
 	public ImmutableSet<DirectedPair<K>> getDirectedPairsContaining(K key) 
 	{	
-		Set<DirectedPair<K>> ret = new HashSet<DirectedPair<K>>();
+		Set<DirectedPair<K>> ret = new LinkedHashSet<DirectedPair<K>>();
 		for (Pair<K> pair : super.mapKeyToPairContainingIt.get(key))
 			ret.add((DirectedPair<K>) pair);
 		
@@ -41,7 +41,7 @@ public class DirectedPairSet<K> extends PairSet<K> implements Serializable {
 	
 	public ImmutableSet<DirectedPair<K>> getAll()
 	{
-		Set<DirectedPair<K>> ret = new HashSet<DirectedPair<K>>();
+		Set<DirectedPair<K>> ret = new LinkedHashSet<DirectedPair<K>>();
 		for (Pair<K> pair : super.pairsSet)
 			ret.add((DirectedPair<K>) pair);
 		

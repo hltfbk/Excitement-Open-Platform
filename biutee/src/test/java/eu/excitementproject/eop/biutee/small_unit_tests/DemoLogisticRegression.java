@@ -2,7 +2,7 @@ package eu.excitementproject.eop.biutee.small_unit_tests;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -59,7 +59,7 @@ public class DemoLogisticRegression
 		classifier.train(train);
 		
 		System.out.println("Making normalization...");
-		classifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
+		classifier.setToZeroNegativeParametersBut(new LinkedHashSet<Integer>());
 		//RTEPairsTrainerUtils.normalizeClassifierForSearch(classifier);
 		
 		System.out.println("testing...");

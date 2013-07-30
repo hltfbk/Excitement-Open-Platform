@@ -75,11 +75,11 @@ public class SubstitutionSubtreeFinder implements Finder<SubstitutionSubtreeSpec
 	public void find() {
 			specs = new LinkedHashSet<SubstitutionSubtreeSpecification>();
 
-			Set<ExtendedNode> textTreeNodes = AbstractNodeUtils.treeToSet(textTree.getTree());
+			Set<ExtendedNode> textTreeNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree.getTree());
 			CollectionUtils.filter(textTreeNodes, textNodePredicate);
 			if (textTreeNodes.isEmpty()) return;
 
-			Set<ExtendedNode> hypothesisTreeNodes = AbstractNodeUtils.treeToSet(hypothesisTree.getTree());
+			Set<ExtendedNode> hypothesisTreeNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree.getTree());
 			CollectionUtils.filter(hypothesisTreeNodes, hypothesisNodePredicate);
 			if (hypothesisTreeNodes.isEmpty()) return;
 

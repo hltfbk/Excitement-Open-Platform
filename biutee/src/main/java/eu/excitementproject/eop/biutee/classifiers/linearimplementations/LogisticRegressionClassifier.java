@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.biutee.classifiers.linearimplementations;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -299,7 +299,7 @@ public class LogisticRegressionClassifier extends LinearClassifierWithLeadingCon
 	protected Map<Integer,Double> generateInitialParameters(Vector<LabeledSample> samples)
 	{
 		Map<Integer,Double> ret = new LinkedHashMap<Integer, Double>();
-		Set<Integer> indices = new HashSet<Integer>();
+		Set<Integer> indices = new LinkedHashSet<Integer>();
 		for (LabeledSample sample : samples)
 		{
 			indices.addAll(sample.getFeatures().keySet());

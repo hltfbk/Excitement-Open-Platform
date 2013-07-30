@@ -2,7 +2,7 @@ package eu.excitementproject.eop.lap.biu.en.ner.stanford;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -104,7 +104,7 @@ public class StanfordNamedEntityRecognizer implements NamedEntityRecognizer
 			throw new NamedEntityRecognizerException("Wrong input to StanfordNamedEntityRecognizer. A null sentence was supplied.");
 		
 		listOfEntities = new ArrayList<NamedEntityWord>(this.sentence.size());
-		mapOfEntities = new HashMap<Integer, NamedEntityPhrase>();
+		mapOfEntities = new LinkedHashMap<Integer, NamedEntityPhrase>();
 		
 		ArrayList<Word> sentenceAsWords = new ArrayList<Word>(this.sentence.size());
 		for (String word : this.sentence)

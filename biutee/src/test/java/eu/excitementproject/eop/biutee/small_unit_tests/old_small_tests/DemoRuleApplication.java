@@ -12,6 +12,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
@@ -74,7 +75,7 @@ public class DemoRuleApplication
 			ExtendedNode loveNode = null;
 			ExtendedNode subjNode = null;
 			ExtendedNode objNode = null;
-			for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+			for (ExtendedNode node : TreeIterator.iterableTree(tree))
 			{
 				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("love"))
 					loveNode = node;
@@ -87,7 +88,7 @@ public class DemoRuleApplication
 			BasicNode lhsloveNode = null;
 			BasicNode lhssubjNode = null;
 			BasicNode lhsobjNode = null;
-			for (BasicNode node : AbstractNodeUtils.treeToSet(rule.getLeftHandSide()))
+			for (BasicNode node : AbstractNodeUtils.treeToLinkedHashSet(rule.getLeftHandSide()))
 			{
 				if (InfoGetFields.getLemma(node.getInfo()).equalsIgnoreCase("love"))
 					lhsloveNode = node;

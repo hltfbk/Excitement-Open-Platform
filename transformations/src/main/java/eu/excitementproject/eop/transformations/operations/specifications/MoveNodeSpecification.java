@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.transformations.operations.specifications;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
@@ -77,7 +77,7 @@ public class MoveNodeSpecification extends Specification
 	@Override
 	public Set<ExtendedNode> getInvolvedNodesInTree()
 	{
-		HashSet<ExtendedNode> ret = new HashSet<ExtendedNode>();
+		LinkedHashSet<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
 		ret.add(getTextNodeToBeParent());
 		ret.add(getTextNodeToMove());
 		return ret;

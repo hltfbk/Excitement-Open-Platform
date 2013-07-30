@@ -1,9 +1,9 @@
 package eu.excitementproject.eop.common.representation.parse.tree;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,6 +12,8 @@ import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.NodeString;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.SimpleNodeString;
 
 
 /**
@@ -59,6 +61,13 @@ public class AbstractNodeUtils
 	
 	/**
 	 * Gets a parse tree, and returns a set that contains all the nodes in that tree.
+	 * <BR>
+	 * <B>It is strongly recommended not to use this method, since it returns
+	 * a HashSet, which is non-deterministic.</B>
+	 * <BR>
+	 * However, this method must not be deleted or changed, since legacy binaries,
+	 * which cannot be changed (perhaps) use it, so changing this method would result it
+	 * a runtime error.
 	 * <P>
 	 * The difference between this function and {@link #treeToSet(AbstractNode)} is the
 	 * return value.<BR>
@@ -69,12 +78,19 @@ public class AbstractNodeUtils
 	 */
 	public static <T> HashSet<AbstractNode<T,?>> weakTreeToSet(AbstractNode<T,?> root)
 	{
-		return weakTreeToSet(root,new HashSet<AbstractNode<T,?>>());
+		return weakTreeToSet(root,new LinkedHashSet<AbstractNode<T,?>>());
 		
 	}
 
 	/**
 	 * Gets a parse tree, and returns a set that contains all the nodes in that tree.
+	 * <BR>
+	 * <B>It is strongly recommended not to use this method, since it returns
+	 * a HashSet, which is non-deterministic. Use {@link #treeToLinkedHashSet(AbstractNode)} instead.</B>
+	 * <BR>
+	 * However, this method must not be deleted or changed, since legacy binaries,
+	 * which cannot be changed use it, so changing this method would result it
+	 * a runtime error.
 	 * <P>
 	 * The difference between this function and {@link #weakTreeToSet(AbstractNode)} is the
 	 * return value.<BR>
@@ -86,8 +102,25 @@ public class AbstractNodeUtils
 	 */
 	public static <T,S extends AbstractNode<T,S>> HashSet<S> treeToSet(S root)
 	{
-		return treeToSet(root,new HashSet<S>());
+		return treeToLinkedHashSet(root); // fortunately, LinkedHashSet extends HashSet.
+		//return treeToSet(root,new HashSet<S>());
 	}
+
+	/**
+	 * Gets a parse tree and returns its nodes as a {@link LinkedHashSet}.
+	 * @param root
+	 * @return
+	 */
+	public static <T,S extends AbstractNode<T,S>> LinkedHashSet<S> treeToLinkedHashSet(S root)
+	{
+		LinkedHashSet<S> set = new LinkedHashSet<S>();
+		for (S node : TreeIterator.iterableTree(root))
+		{
+			set.add(node);
+		}
+		return set;
+	}
+
 	
 	/**
 	 * Gets a parse tree, and returns a topologically ordered list that contains all the nodes in that tree (where parents appears before their children)
@@ -111,7 +144,7 @@ public class AbstractNodeUtils
 	 */
 	public static <T,S extends AbstractNode<T,S>> Map<S,S> parentMap(S root)
 	{
-		HashMap<S,S> ret = new HashMap<S, S>();
+		LinkedHashMap<S,S> ret = new LinkedHashMap<S, S>();
 		HashSet<S> alreadyVisited = new HashSet<S>();
 		parentMap(root,ret,alreadyVisited);
 		return ret;
@@ -129,7 +162,7 @@ public class AbstractNodeUtils
 	 */
 	public static <T> Map<AbstractNode<T,?>,AbstractNode<T,?>> weakParentMap(AbstractNode<T,?> root)
 	{
-		HashMap<AbstractNode<T,?>,AbstractNode<T,?>> ret = new HashMap<AbstractNode<T,?>, AbstractNode<T,?>>();
+		LinkedHashMap<AbstractNode<T,?>,AbstractNode<T,?>> ret = new LinkedHashMap<AbstractNode<T,?>, AbstractNode<T,?>>();
 		HashSet<AbstractNode<T,?>> alreadyVisited = new HashSet<AbstractNode<T,?>>();
 		weakParentMap(root,ret,alreadyVisited);
 		return ret;
@@ -146,8 +179,8 @@ public class AbstractNodeUtils
 	 */
 	public static <T,S extends AbstractNode<T,S>> Set<S> getLeaves(S root)
 	{
-		Set<S> ret = new HashSet<S>();
-		getLeaves(root, ret,new HashSet<S>() );
+		Set<S> ret = new LinkedHashSet<S>();
+		getLeaves(root, ret,new LinkedHashSet<S>() );
 		return ret;
 		
 	}
@@ -300,6 +333,40 @@ public class AbstractNodeUtils
 	}
 	
 
+	/**
+	 * Returns an multi-line indented string representation of the tree.
+	 * @param node
+	 * @param str used for printing each node
+	 * @param indent indentation string for each level
+	 * @return
+	 */
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node, NodeString<I> str, String indent) {
+		return getIndentedStringSubtree(node, str, indent, "").toString().trim();
+	}
+	
+	/**
+	 * Returns an multi-line indented string representation of the tree.
+	 * Uses "  " for indentation.
+	 * @param node
+	 * @param str used for printing each node
+	 * @return
+	 */
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node, NodeString<I> str) {
+		return getIndentedString(node, str, "  ");
+	}
+	
+	/**
+	 * Returns an multi-line indented string representation of the tree.
+	 * Uses "  " for indentation. Uses {@link SimpleNodeString) for printing each node.
+	 * @param node
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node) {
+		return getIndentedString(node, (NodeString<I>) new SimpleNodeString());
+	}
+	
+	
 	/////////////////////// PROTECTED & PRIVATE PART ///////////////////////////////
 
 	
@@ -618,6 +685,30 @@ public class AbstractNodeUtils
 			}
 		}
 		return map;
+	}
+	
+	protected static <I extends Info> StringBuffer getIndentedStringSubtree(AbstractNode<I,?> subtree, NodeString<I> str, String indent, String prefix) {
+		final String NULL_TREE_STR = "(null)";
+		StringBuffer result = new StringBuffer();
+		
+		if (subtree == null) {
+			result.append(NULL_TREE_STR);
+		}
+		else {
+			str.set(subtree);
+			result.append(prefix);
+			result.append(str.getStringRepresentation());
+			result.append("\r\n");
+			
+			if (subtree.getChildren() != null) {
+				for (AbstractNode<I,?> child : subtree.getChildren()) {
+					result.append(getIndentedStringSubtree(child, str, indent, prefix+indent));
+				}
+			}
+		}
+		
+		return result;
+
 	}
 	
 }

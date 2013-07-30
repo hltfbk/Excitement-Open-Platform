@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.common.datastructures;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
@@ -199,7 +199,7 @@ public class SimpleBidirectionalMap<L,R> implements BidirectionalMap<L, R>
 	///////////////////// PROTECTED PART //////////////////////////
 
 	
-	protected Map<L,R> mapLeftToRight = new HashMap<L, R>();
-	protected Map<R,L> mapRightToLeft = new HashMap<R, L>();
+	protected Map<L,R> mapLeftToRight = new LinkedHashMap<L, R>();
+	protected Map<R,L> mapRightToLeft = new LinkedHashMap<R, L>();
 }
 

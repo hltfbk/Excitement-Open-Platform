@@ -3,13 +3,13 @@ package eu.excitementproject.eop.lap.biu.uima;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.match.Matcher;
@@ -111,8 +111,7 @@ public class BiuTreeBuilderSeparateTools {
 		matcher.makeMatchOperation();
 
 		// Handle extra nodes
-		Set<BasicConstructionNode> mutableNodes = AbstractNodeUtils.treeToSet(mutableParseTree);
-		for (BasicConstructionNode mutableNode : mutableNodes)
+		for (BasicConstructionNode mutableNode : TreeIterator.iterableTree(mutableParseTree))
 		{
 			if (mutableNode.getAntecedent()!=null)
 			{

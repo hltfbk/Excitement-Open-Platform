@@ -2,7 +2,7 @@ package eu.excitementproject.eop.common.datastructures;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -56,7 +56,7 @@ public class PairMap<K,V> implements Serializable
 		{
 			if (!mapKeyToPairContainingIt.containsKey(single))
 			{
-				mapKeyToPairContainingIt.put(single, new HashSet<Pair<K>>());
+				mapKeyToPairContainingIt.put(single, new LinkedHashSet<Pair<K>>());
 			}
 			Set<Pair<K>> itsSetOfPairsContainingIt = mapKeyToPairContainingIt.get(single);
 			itsSetOfPairsContainingIt.add(pair);

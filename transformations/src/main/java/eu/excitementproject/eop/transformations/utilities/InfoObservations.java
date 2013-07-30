@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.transformations.utilities;
 import static eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor.simplerPos;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,17 +35,17 @@ public class InfoObservations
 	public static final Set<String> NON_CONTENT_WORDS;
 	static
 	{
-		MINIPAR_NON_WORDS_LEMMAS = new HashSet<String>();
+		MINIPAR_NON_WORDS_LEMMAS = new LinkedHashSet<String>();
 		MINIPAR_NON_WORDS_LEMMAS.add("fin");
 		MINIPAR_NON_WORDS_LEMMAS.add("inf");
 		MINIPAR_NON_WORDS_LEMMAS.add("vpsc");
 		
-		NON_CONTENT_VERBS = new HashSet<String>();
+		NON_CONTENT_VERBS = new LinkedHashSet<String>();
 		NON_CONTENT_VERBS.add("be");
 		NON_CONTENT_VERBS.add("have");
 		
 		
-		CONTENT_CANONICAL_PART_OF_SPEECH = new HashSet<SimplerCanonicalPosTag>();
+		CONTENT_CANONICAL_PART_OF_SPEECH = new LinkedHashSet<SimplerCanonicalPosTag>();
 		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.NOUN);
 		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.ADJECTIVE);
 		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.ADVERB);
@@ -55,7 +55,7 @@ public class InfoObservations
 		
 		
 		
-		PRONOUNS = new HashSet<String>();
+		PRONOUNS = new LinkedHashSet<String>();
 		PRONOUNS.add("I");
 		PRONOUNS.add("You");
 		PRONOUNS.add("you");
@@ -70,7 +70,7 @@ public class InfoObservations
 		PRONOUNS.add("They");
 		PRONOUNS.add("they");
 		
-		NON_CONTENT_WORDS = new HashSet<String>();
+		NON_CONTENT_WORDS = new LinkedHashSet<String>();
 		NON_CONTENT_WORDS.addAll(PRONOUNS);
 		NON_CONTENT_WORDS.addAll(NON_CONTENT_VERBS);
 	}

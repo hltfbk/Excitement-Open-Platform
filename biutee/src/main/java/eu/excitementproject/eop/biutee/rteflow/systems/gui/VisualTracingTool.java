@@ -13,7 +13,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -1145,7 +1144,7 @@ public class VisualTracingTool
 	private JButton selectedTreeButtonLast;
 	private JButton buttonFirstRegularSearch;
 	private JButton buttonLastRegularSearch;
-	private Set<String> helpButtonCommands = new HashSet<String>();
+	private Set<String> helpButtonCommands = new LinkedHashSet<String>();
 	
 	/**
 	 * mutually exclusive with {@link #showShortNodeContentsMenuItem}
@@ -1160,9 +1159,9 @@ public class VisualTracingTool
 	private JLabel statusBarLabel;
 	private String statusBarSystemState = READY_STATUS_BAR_SYSTEM_STATE;
 	private String statusBarClassifierType = STATUS_BAR_CLASSIFIER_TYPE_ACCURACY_OPTIMIZED;
-	private Set<StatusBarState> statusBarStates = new HashSet<StatusBarState>();
+	private Set<StatusBarState> statusBarStates = new LinkedHashSet<StatusBarState>();
 	private JSplitPane currentTreeInformationPanel;
-	private Set<JButton> helpButtons = new HashSet<JButton>();
+	private Set<JButton> helpButtons = new LinkedHashSet<JButton>();
 	private JComboBox<String> origTreesComboBox;
 	private JCheckBoxMenuItem useBWTableColorsMenuItem;
 	// private JCheckBoxMenuItemWithEnableCounter useF1ClassifierMenuItem;
@@ -1170,7 +1169,7 @@ public class VisualTracingTool
 	/**
 	 * the set of all the synchronized image zoom spinners
 	 */
-	private Set<JSpinner> imageZoomSpinners = new HashSet<JSpinner>();
+	private Set<JSpinner> imageZoomSpinners = new LinkedHashSet<JSpinner>();
 	/**
 	 * the set of image components in which trees are painted (matching {@link #imageZoomSpinners})
 	 */
