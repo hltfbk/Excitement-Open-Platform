@@ -39,7 +39,7 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    
 	    <!-- The configuration to be used by the component: [basic|wordnet|wikipedia|wordnet,wikipedia] -->
-	    <property name="instances">basic</property>
+	    <property name="instances">wordnet</property>
 	    
 	     <!-- This configuration does not use any external resources -->
 		<subsection name="basic">
@@ -52,7 +52,8 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		    <!-- stop words removal: [true|false] -->
 			<property name="stopWordRemoval">true</property>
 			<!-- path of the WordNet files -->
-			<property name="path">../core/src/main/resources/configuration-file/</property>
+			<property name="path">/tmp/EOP_resources/IT/wnita</property>
+			<!-- for the DB version of itaWN: ../core/src/main/resources/configuration-file/ -->
 		</subsection>
 		
 		<!-- This configuration uses Wikipedia as an external resources -->
@@ -112,9 +113,9 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		
 		<!-- model file name -->
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_IT_Model</property>
-		<property name="trainDir">/tmp/</property>
+		<property name="trainDir">/tmp/ITA/dev/</property>
 		<!-- <property name="trainDir">/tmp/IT/dev/</property> -->
-		<property name="testDir">/tmp/</property>
+		<property name="testDir">/tmp/ITA/test/</property>
 		<!-- measure to be optimized: [accuracy|f1] -->
 		<property name="measure">accuracy</property>
 		<!-- component to be used by EDA: [FixedWeightTokenEditDistance|FixedWeightLemmaEditDistance] 
@@ -152,9 +153,9 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		
 		<!-- model file name -->
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_IT_Model</property>
-		<property name="trainDir">/tmp/</property>
+		<property name="trainDir">/tmp/ITA/dev/</property>
 		<!-- <property name="trainDir">/tmp/IT/dev/</property> -->
-		<property name="testDir">/tmp/</property>
+		<property name="testDir">/tmp/ITA/test/</property>
 		<!-- <property name="testDir">/tmp/IT/test</property> -->
 		<!-- measure to be optimized: accuracy, f1 -->
 		<property name="measure">accuracy</property>
