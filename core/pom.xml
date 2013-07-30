@@ -77,7 +77,7 @@
 		<dependency>
 			<groupId>weka</groupId>
 			<artifactId>weka</artifactId>
-			<version>3.7.5</version>
+			<version>3.6.3</version>
 
 		</dependency>
 	</dependencies>
