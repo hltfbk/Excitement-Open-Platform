@@ -90,31 +90,11 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 		{
 			throw new OperationException("Initialization failed. See nested exception.",e);
 		}
-		catch(RuleBaseException e)
+		catch(RuleBaseException|ClassNotFoundException|TeEngineMlException
+				|LexicalResourceException|IOException|SQLException e)
 		{
 			throw new OperationException("Could not create a rule base.",e);
 		}
-		catch (ClassNotFoundException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (TeEngineMlException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (LexicalResourceException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (IOException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (SQLException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-
 	}
 
 

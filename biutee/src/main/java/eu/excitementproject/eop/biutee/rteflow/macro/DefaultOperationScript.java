@@ -44,14 +44,16 @@ import eu.excitementproject.eop.transformations.utilities.Constants;
  * In order to put the relevant value into the <B>correct</B>
  * feature, it has to know the feature index. The feature index
  * is an integer, mapped to the rule base name.
- * Thus, a mapping of rule-bases to the corresponding feature-indexes
+ * A mapping of rule-bases to the corresponding feature-indexes
  * is maintained by {@link FeatureVectorStructureOrganizer}. An instance
  * of {@link FeatureVectorStructureOrganizer} is given to {@link FeatureUpdate}
  * as a parameter, providing this mapping.
  * {@link FeatureVectorStructureOrganizer} builds this mapping by getting a list
  * (actually it is a {@link LinkedHashSet}) of the rule-bases used by the system.
+ * This list, however, is stored in {@link OperationsScript}.
  * <BR>
- * Therefore there are some points to be aware of:
+ * To properly build and use the list of rule bases names, 
+ * there are some points to be aware of:
  * <UL>
  * <LI>When adding knowledge resources, their names
  * are added as well, as keys to one of the maps:

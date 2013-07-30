@@ -10,7 +10,7 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.Content
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.Equalities;
 
 /**
- * The actual {@link AlignmentCriteria} used by the system.
+ * The actual {@link AlignmentCriteria} used by the BIUTEE system.
  * <BR>
  * Roughly, it requires from two nodes to be aligned that their lemmas are
  * equal, their parts-of-speech are equal, their predicate-truth values are equal
