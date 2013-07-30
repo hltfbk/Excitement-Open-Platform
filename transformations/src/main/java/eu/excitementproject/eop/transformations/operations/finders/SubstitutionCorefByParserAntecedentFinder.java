@@ -30,10 +30,11 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 {
 	public static final String REF_RELATION = StanfordDepedencyRelationType.ref.name();
 	
-	public SubstitutionCorefByParserAntecedentFinder(TreeAndParentMap<ExtendedInfo,ExtendedNode> textTree)
+	public SubstitutionCorefByParserAntecedentFinder(TreeAndParentMap<ExtendedInfo,ExtendedNode> textTree, ParserSpecificConfigurations.PARSER parser) throws OperationException
 	{
 		super();
 		this.textTree = textTree;
+		this.parser = parser;
 	}
 
 
@@ -61,7 +62,7 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 			specs.add(new SubstitutionSubtreeSpecification(nodeThatHasAntecedent, nodesAndTheirAntecedent.get(nodeThatHasAntecedent)));
 		}
 		
-		if (ParserSpecificConfigurations.getParserMode().equals(ParserSpecificConfigurations.PARSER.EASYFIRST))
+		if (parser.equals(ParserSpecificConfigurations.PARSER.EASYFIRST))
 		{
 			addCopyForRefRelation();
 		}
@@ -154,6 +155,7 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 
 
 	private TreeAndParentMap<ExtendedInfo,ExtendedNode> textTree;
+	private final ParserSpecificConfigurations.PARSER parser;
 	
 	private Map<ExtendedNode, ExtendedNode> nodesAndTheirAntecedent;
 	private ValueSetMap<ExtendedNode, ExtendedNode> mapNodeToThoseWhoHaveItAsAntecedent;

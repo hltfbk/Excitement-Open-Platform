@@ -24,6 +24,7 @@ import eu.excitementproject.eop.transformations.operations.rules.DynamicRuleBase
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.distsim.DistSimRuleBaseManager;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;
 
@@ -56,7 +57,7 @@ public class DemoDynRuleBase
 		confFile.setExpandingEnvironmentVariables(true);
 		KnowledgeResource resource = KnowledgeResource.ORIG_DIRT;
 		ConfigurationParams params =  confFile.getModuleConfiguration(resource.getModuleName());
-		manager = new DistSimRuleBaseManager(resource.getDisplayName(), params);
+		manager = new DistSimRuleBaseManager(resource.getDisplayName(), params, ParserSpecificConfigurations.getParserMode());
 		manager.init();
 		this.ruleBase = manager.getRuleBase();
 		

@@ -90,10 +90,11 @@ public class TemplateToTree
 	}
 
 
-	public TemplateToTree(String template)
+	public TemplateToTree(String template, ParserSpecificConfigurations.PARSER parser)
 	{
 		super();
 		this.template = template;
+		this.parser = parser;
 	}
 
 	public void createTree() throws TemplateToTreeException
@@ -409,7 +410,7 @@ public class TemplateToTree
 		String lemma = components[1];
 		String[] lemmaComponents = lemma.split("\\s+");
 		BasicNode ret=null;
-		if (ParserSpecificConfigurations.getParserMode()==PARSER.MINIPAR) {
+		if (parser.equals(PARSER.MINIPAR)) {
 			NodeInfo nodeInfo = fromStringNonVariable(info);
 			ret = new BasicNode(new DefaultInfo(DEFAULT_ID, nodeInfo, relationToParent));
 		}
@@ -440,6 +441,8 @@ public class TemplateToTree
 	}
 
 	private String template;
+	private final ParserSpecificConfigurations.PARSER parser;
+	
 	private BasicNode tree = null;
 	private BasicNode leftVariableNode = null;
 	private BasicNode rightVariableNode = null;

@@ -15,10 +15,23 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelop
 import eu.excitementproject.eop.transformations.operations.specifications.SubstitutionSubtreeSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.PARSER;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
+/**
+ * 
+ * @author Asher Stern
+ * 
+ *
+ */
 public class SubstitutionParserAntecedentPerformFactory extends PerformFactory<SubstitutionSubtreeSpecification>
 {
+	public SubstitutionParserAntecedentPerformFactory(PARSER parser)
+	{
+		super();
+		this.parser = parser;
+	}
 
 	@Override
 	public Finder<SubstitutionSubtreeSpecification> getFinder(
@@ -26,7 +39,7 @@ public class SubstitutionParserAntecedentPerformFactory extends PerformFactory<S
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 			throws TeEngineMlException, OperationException
 	{
-		return new SubstitutionCorefByParserAntecedentFinder(text);
+		return new SubstitutionCorefByParserAntecedentFinder(text,parser);
 	}
 
 	@Override
@@ -77,6 +90,7 @@ public class SubstitutionParserAntecedentPerformFactory extends PerformFactory<S
 	{
 		return updaterForSubstitutionParserAntecedent;
 	}
-	
+
+	private final ParserSpecificConfigurations.PARSER parser;
 	private static UpdaterForSubstitutionParserAntecedent updaterForSubstitutionParserAntecedent = new UpdaterForSubstitutionParserAntecedent();
 }

@@ -16,6 +16,7 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelop
 import eu.excitementproject.eop.transformations.operations.specifications.IsASpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -27,10 +28,12 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecification>
 {
 	public IsA_ByCoreferencePerformFactory(
-			TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation)
+			TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation,
+			ParserSpecificConfigurations.PARSER parser)
 	{
 		super();
 		this.coreferenceExtendedInformation = coreferenceExtendedInformation;
+		this.parser = parser;
 	}
 
 	@Override
@@ -78,7 +81,7 @@ public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecifica
 			IsASpecification specification) throws TeEngineMlException,
 			OperationException
 	{
-		return new IsAConstructionOperation(text, hypothesis, specification);
+		return new IsAConstructionOperation(text, hypothesis, specification, parser);
 	}
 
 	@Override
@@ -91,6 +94,7 @@ public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecifica
 	}
 
 	private TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation;
+	private final ParserSpecificConfigurations.PARSER parser;
 	
 	private static UpdaterForIsAByCoreference updaterForIsAByCoreference = new UpdaterForIsAByCoreference();
 }

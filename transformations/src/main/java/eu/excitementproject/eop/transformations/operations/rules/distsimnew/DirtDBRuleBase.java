@@ -45,6 +45,7 @@ import eu.excitementproject.eop.transformations.operations.rules.distsim.Templat
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames;
 
@@ -69,7 +70,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 	 * @return
 	 * @throws RuleBaseException
 	 */
-	public static DirtDBRuleBase fromConfigurationParams(String ruleBaseName,ConfigurationParams params) throws RuleBaseException
+	public static DirtDBRuleBase fromConfigurationParams(String ruleBaseName,ConfigurationParams params, final ParserSpecificConfigurations.PARSER parser) throws RuleBaseException
 	{
 		try
 		{
@@ -81,7 +82,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 			if (loadFromSerFile)
 			{
 				File serFile = params.getFile(TransformationsConfigurationParametersNames.DIRT_LIKE_SER_FILE_PARAMETER_NAME);
-				return new DirtDBRuleBase(serFile,ruleBaseName);
+				return new DirtDBRuleBase(serFile,ruleBaseName,parser);
 			}
 			else
 			{
@@ -94,7 +95,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 				int limit = params.getInt(LIMIT_NUMBER_OF_RULES);
 				DistSimParameters distSimParameters = new DistSimParameters(templates, rules, limit, Constants.DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE, Constants.DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE);
 
-				return new DirtDBRuleBase(connection,ruleBaseName,distSimParameters);
+				return new DirtDBRuleBase(connection,ruleBaseName,distSimParameters,parser);
 			}
 		}
 		catch (ClassNotFoundException e)
@@ -114,14 +115,17 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 	}
 	
 	public DirtDBRuleBase(Connection connection, String ruleBaseName,
-			DistSimParameters dbParameters) throws RuleBaseException
+			DistSimParameters dbParameters, ParserSpecificConfigurations.PARSER parser) throws RuleBaseException
 	{
 		super();
+		this.parser = parser;
+		
 		if (!constantsOK()) throw new RuleBaseException("constants no OK");
 		
 		this.connection = connection;
 		this.ruleBaseName = ruleBaseName;
 		this.dbParameters = dbParameters;
+		
 
 		try
 		{
@@ -149,8 +153,10 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 	}
 	
 	@SuppressWarnings("unchecked")
-	public DirtDBRuleBase(File serFileWholeDB, String ruleBaseName) throws RuleBaseException
+	public DirtDBRuleBase(File serFileWholeDB, String ruleBaseName, ParserSpecificConfigurations.PARSER parser) throws RuleBaseException
 	{
+		this.parser = parser;
+		
 		if (!constantsOK()) throw new RuleBaseException("constants no OK");
 
 		try
@@ -419,11 +425,11 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 					
 					if (null==givenTemplateConverter) // Converting the left-hand-side can be done only once for all rules, since all of the rules have the same left-hand-side (which is the given template) 
 					{
-						givenTemplateConverter=new TemplateToTree(template);
+						givenTemplateConverter=new TemplateToTree(template,parser);
 						givenTemplateConverter.createTree();
 					}
 					// convert the right-hand-side template into a sub-parse-tree 
-					TemplateToTree entailedTemplateConverter = new TemplateToTree(templateAndScore.getTemplate());
+					TemplateToTree entailedTemplateConverter = new TemplateToTree(templateAndScore.getTemplate(),parser);
 					entailedTemplateConverter.createTree();
 					
 					// Based on the constant, we might want to filter the rules such that only rules which have root-of-right-hand-side
@@ -459,7 +465,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 			{
 				if (null==givenTemplateConverter)
 				{
-					givenTemplateConverter=new TemplateToTree(template);
+					givenTemplateConverter=new TemplateToTree(template,parser);
 					givenTemplateConverter.createTree();
 				}
 				setRules.addAll(getRulesByHypothesisTemplates(template, id, givenTemplateConverter, notYetHyothesisTemplates));
@@ -561,11 +567,11 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 				String rightHandSideTemplate = mapTemplateToId.rightGet(idAndScore.getId());
 				if (null==givenTemplateConverter)
 				{
-					givenTemplateConverter=new TemplateToTree(template);
+					givenTemplateConverter=new TemplateToTree(template,parser);
 					givenTemplateConverter.createTree();
 				}
 				if (logger.isDebugEnabled()){logger.debug("Found rule: "+template+" => "+rightHandSideTemplate);}
-				TemplateToTree entailedTemplateConverter = new TemplateToTree(rightHandSideTemplate);
+				TemplateToTree entailedTemplateConverter = new TemplateToTree(rightHandSideTemplate,parser);
 				entailedTemplateConverter.createTree();
 
 				boolean useThisTemplate2 = true;
@@ -712,7 +718,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 					{
 						if (null==hypothesisTemplateToTree)
 						{
-							hypothesisTemplateToTree  = new TemplateToTree(hypothesisTemplate);
+							hypothesisTemplateToTree  = new TemplateToTree(hypothesisTemplate,parser);
 							hypothesisTemplateToTree.createTree();
 						}
 						
@@ -805,6 +811,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 
 	/////////////////////// Fields //////////////////////////
 
+	protected final ParserSpecificConfigurations.PARSER parser;
 	protected PreparedStatement statementIdForTemplate = null;
 	protected PreparedStatement statementRuleForId = null;
 	protected PreparedStatement statementRightElementIdForGivenLeftElementId = null;

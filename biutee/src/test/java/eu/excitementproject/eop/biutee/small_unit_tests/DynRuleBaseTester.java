@@ -37,6 +37,7 @@ import eu.excitementproject.eop.transformations.operations.specifications.RuleSp
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
@@ -98,7 +99,8 @@ public class DynRuleBaseTester
 		DistSimParameters originalDirtParameters =
 			new DistSimParameters("original_dirt.od_templates", "original_dirt.od_rules", LIMIT_DISTSIM_RULES, 2*Constants.DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE, Constants.DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE);
 
-		ruleBase = new DistSimRuleBase(distSimConnection,originalDirtParameters,ruleBaseName);
+		
+		ruleBase = new DistSimRuleBase(distSimConnection,originalDirtParameters,ruleBaseName,ParserSpecificConfigurations.getParserMode());
 		
 		
 		parser = ParserFactory.getParser(miniparParameter);
@@ -121,7 +123,7 @@ public class DynRuleBaseTester
 		System.out.println("parse tree of sentence:");
 		System.out.println(TreeUtilities.treeToString(tree));
 		System.out.println(StringUtil.generateStringOfCharacter('-', 100));
-		TemplateToTree ttt = new TemplateToTree("n<p:up:p<v:say:v>subj>n");
+		TemplateToTree ttt = new TemplateToTree("n<p:up:p<v:say:v>subj>n",ParserSpecificConfigurations.getParserMode());
 		ttt.createTree();
 		BasicNode ruleTree = ttt.getTree();
 		System.out.println("tree of rule:");

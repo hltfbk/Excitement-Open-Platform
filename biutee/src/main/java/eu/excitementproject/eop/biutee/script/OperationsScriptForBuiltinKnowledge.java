@@ -54,6 +54,7 @@ import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.bu
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.graphbased.PlisRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.manual.DummyRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.manual.FromTextFileRuleBase;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames;
 
@@ -232,7 +233,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 			if (resource.isDirtLikeDb())
 			{
 				// Handle all DIRT-like resources (orig-dirt, binary, Unary, Binc, Framenet, etc.)
-				DirtDBRuleBase ruleBase = DirtDBRuleBase.fromConfigurationParams(resource.getDisplayName(), configurationFile.getModuleConfiguration(resource.getModuleName()));
+				DirtDBRuleBase ruleBase = DirtDBRuleBase.fromConfigurationParams(resource.getDisplayName(), configurationFile.getModuleConfiguration(resource.getModuleName()),ParserSpecificConfigurations.getParserMode());
 				listDirtDbRuleBases.add(ruleBase);
 				ruleBasesEnvelopes.put(resource.getDisplayName(),new RuleBaseEnvelope<Info, BasicNode>(ruleBase));
 				items.add(new ItemForKnowedgeResource(resource, new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName())));

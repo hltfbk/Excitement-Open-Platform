@@ -35,6 +35,7 @@ import eu.excitementproject.eop.transformations.generic.truthteller.SentenceAnno
 import eu.excitementproject.eop.transformations.generic.truthteller.SynchronizedAtomicAnnotator;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.LemmatizerFilterApostrophe;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.StopWordsFileLoader;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
@@ -163,7 +164,7 @@ public class SystemInitialization
 		}
 		
 		
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords);
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords,ParserSpecificConfigurations.getParserMode());
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException

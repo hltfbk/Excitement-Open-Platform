@@ -7,6 +7,7 @@ import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.generic.truthteller.SynchronizedAtomicAnnotator;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 
 
@@ -26,7 +27,8 @@ public class TESystemEnvironment
 			PluginRegistry pluginRegistry,
 			FeatureVectorStructureOrganizer featureVectorStructureOrganizer,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
-			ImmutableSet<String> stopWords)
+			ImmutableSet<String> stopWords,
+			ParserSpecificConfigurations.PARSER parser)
 	{
 		super();
 		this.ruleBasesToRetrieveMultiWords = ruleBasesToRetrieveMultiWords;
@@ -36,6 +38,7 @@ public class TESystemEnvironment
 		this.featureVectorStructureOrganizer = featureVectorStructureOrganizer;
 		this.alignmentCriteria = alignmentCriteria;
 		this.stopWords = stopWords;
+		this.parser = parser;
 	}
 	
 	
@@ -68,6 +71,11 @@ public class TESystemEnvironment
 	{
 		return stopWords;
 	}
+	public ParserSpecificConfigurations.PARSER getParser()
+	{
+		return parser;
+	}
+
 
 
 
@@ -82,4 +90,5 @@ public class TESystemEnvironment
 	private final FeatureVectorStructureOrganizer featureVectorStructureOrganizer;
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
+	private final ParserSpecificConfigurations.PARSER parser;
 }

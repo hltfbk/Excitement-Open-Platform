@@ -27,17 +27,20 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 	public IsAConstructionOperation(
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesisTree,
-			IsASpecification isASpecification)
+			IsASpecification isASpecification,
+			ParserSpecificConfigurations.PARSER parser)
 			throws OperationException
 	{
 		super(textTree, hypothesisTree);
 		this.isASpecification = isASpecification;
+		this.parser = parser;
+		if (null==this.parser) throw new OperationException("The given parser configuration is null.");
 	}
 
 	@Override
 	protected void generateTheTree() throws OperationException
 	{
-		if (!ParserSpecificConfigurations.getParserMode().equals(ParserSpecificConfigurations.PARSER.EASYFIRST))
+		if (!parser.equals(ParserSpecificConfigurations.PARSER.EASYFIRST))
 		{
 			throw new OperationException("IsAConstructionOperation is not implemented for minipar.");
 		}
@@ -65,4 +68,5 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 
 
 	private IsASpecification isASpecification;
+	private ParserSpecificConfigurations.PARSER parser;
 }
