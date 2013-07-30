@@ -181,7 +181,8 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 		    		if (language.equals("IT") && multiWordnet != null && !multiWordnet.equals("")) {
 			    		try {
 			    			
-			    			initializeItalianWordnet(multiWordnet);
+//			    			initializeItalianWordnet(multiWordnet);
+			    			initializeEnglishWordnet(multiWordnet);
 			    			
 			    		} catch (LexicalResourceException e) {
 			    			throw new ComponentException(e.getMessage());
