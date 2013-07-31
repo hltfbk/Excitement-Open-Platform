@@ -42,7 +42,6 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.it.Wik
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
 import eu.excitementproject.eop.common.utilities.Utils;
 
 
