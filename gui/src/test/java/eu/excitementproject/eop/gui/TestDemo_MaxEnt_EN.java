@@ -5,12 +5,12 @@ import org.junit.*;
 //test for English with MaxEnt
 public class TestDemo_MaxEnt_EN {
 
-//	@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_EN.xml",
-//				        "-train",
-//				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
+				        "-train",
+				        "-trainFile","./src/test/resources/data-set/en_demo_dev.xml",
 						"-lap","opennlp",
 				        "-test",
 				        "-testFile","./src/test/resources/data-set/en_demo_test.xml",
