@@ -71,7 +71,7 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
 	    
 	    <!-- The configuration to be used by the component: [basic,wordnet,wikipedia] -->
-	    <property name="instances">basic</property>
+	    <property name="instances">wordnet</property>
 	    
 	     <!-- This configuration does not use any external resources -->
 		<subsection name="basic">
@@ -153,7 +153,7 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		<!-- model file name -->
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_EN_Model</property>
 		<property name="trainDir">/tmp/</property>
-		<!-- <property name="trainDir">/tmp/ENG/dev/</property>  -->
+		<!-- <property name="trainDir">/tmp/ENG/dev/</property> -->
 		<property name="testDir">/tmp/</property>
 		<!-- <property name="testDir">/tmp/ENG/test</property> -->
 		<!-- measure to be optimized: accuracy, f1 -->
