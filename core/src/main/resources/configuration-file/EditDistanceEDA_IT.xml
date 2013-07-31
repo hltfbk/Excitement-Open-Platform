@@ -39,7 +39,7 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    
 	    <!-- The configuration to be used by the component: [basic|wordnet|wikipedia|wordnet,wikipedia] -->
-	    <property name="instances">wordnet</property>
+	    <property name="instances">basic</property>
 	    
 	     <!-- This configuration does not use any external resources -->
 		<subsection name="basic">
@@ -113,9 +113,10 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		
 		<!-- model file name -->
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_IT_Model</property>
-		<property name="trainDir">/tmp/ITA/dev/</property>
+		<property name="trainDir">/tmp/</property>
 		<!-- <property name="trainDir">/tmp/IT/dev/</property> -->
-		<property name="testDir">/tmp/ITA/test/</property>
+		<property name="testDir">/tmp/</property>
+		<!-- <property name="testDir">/tmp/IT/test/</property> -->
 		<!-- measure to be optimized: [accuracy|f1] -->
 		<property name="measure">accuracy</property>
 		<!-- component to be used by EDA: [FixedWeightTokenEditDistance|FixedWeightLemmaEditDistance] 
@@ -136,7 +137,7 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		<!-- minimum error criteria -->
 		<property name="errorTolerance">0.1</property>
 		<!-- max number of iterations without any changes in accuracy -->
-		<property name="maxIterationWithoutChanges">2</property>
+		<property name="maxIterationWithoutChanges">5</property>
 		
 		<!-- swarm size -->
 		<property name="swarmSize">20</property>
@@ -153,10 +154,10 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		
 		<!-- model file name -->
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_IT_Model</property>
-		<property name="trainDir">/tmp/ITA/dev/</property>
-		<!-- <property name="trainDir">/tmp/IT/dev/</property> -->
-		<property name="testDir">/tmp/ITA/test/</property>
-		<!-- <property name="testDir">/tmp/IT/test</property> -->
+		<!-- <property name="trainDir">/tmp/ITA/dev/</property>  -->
+		<property name="trainDir">/tmp/IT/dev/</property>
+		<!-- <property name="testDir">/tmp/ITA/test/</property>  -->
+		<property name="testDir">/tmp/IT/test</property>
 		<!-- measure to be optimized: accuracy, f1 -->
 		<property name="measure">accuracy</property>
 	    <!-- component to be used by EDA: [FixedWeightTokenEditDistance|FixedWeightLemmaEditDistance] 
