@@ -152,15 +152,15 @@ FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wik
 		
 		<!-- model file name -->
 	    <property name="modelFile">../core/src/main/resources/model/EditDistanceEDA_EN_Model</property>
-		<!-- <property name="trainDir">/tmp/</property> -->
-		<property name="trainDir">/tmp/ENG/dev/</property>
+		<property name="trainDir">/tmp/</property>
+		<!-- <property name="trainDir">/tmp/ENG/dev/</property> -->
 		<property name="testDir">/tmp/</property>
 		<!-- <property name="testDir">/tmp/ENG/test</property> -->
 		<!-- measure to be optimized: accuracy, f1 -->
 		<property name="measure">accuracy</property>
 	    <!-- component to be used by EDA: [FixedWeightTokenEditDistance|FixedWeightLemmaEditDistance] 
 		FixedWeightLemmaEditDistance can be used only when the preprocessing pipeline provides lemmas-->
-	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance</property>
+	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
 	
 	</section>
 	
