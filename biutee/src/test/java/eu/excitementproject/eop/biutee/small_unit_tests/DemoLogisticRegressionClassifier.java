@@ -3,8 +3,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -116,7 +116,7 @@ public class DemoLogisticRegressionClassifier
 		System.out.println(classifier.descriptionOfTraining());
 		
 		System.out.println(StringUtil.generateStringOfCharacter('-', 50));
-		Set<Integer> dontChange = new HashSet<Integer>();
+		Set<Integer> dontChange = new LinkedHashSet<Integer>();
 		dontChange.add(2);
 		classifier.setToZeroNegativeParametersBut(dontChange);
 		System.out.println(classifier.descriptionOfTraining());

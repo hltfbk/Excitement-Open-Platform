@@ -50,6 +50,7 @@ public class CasTreeConverterTest {
 
 	@Test
 	public void test1() throws Exception {
+		// Two sentences, some duplicate nodes.
 		CasTreeConverterTester.testConverter(BIU_LAP_Test.TEXT);
 	}
 
@@ -77,5 +78,13 @@ public class CasTreeConverterTest {
 		CasTreeConverterTester.testConverter("Another turning point, a fork stuck in the road.");
 	}
 	
-	private static Logger logger = Logger.getLogger(CasTreeConverter.class);
+	@Test
+	public void test6() throws Exception {
+		// Several sentences with duplicate words between them
+		CasTreeConverterTester.testConverter(
+				"So you think you can tell heaven from hell. Blue skies from pain." +
+				"Can you tell a green field from a cold steal rail. A smile from a veil. Do you think you can tell?");
+	}
+	
+	private static Logger logger = Logger.getLogger(CasTreeConverterTest.class);
 }

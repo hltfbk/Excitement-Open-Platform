@@ -2,7 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.truthteller.application;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -71,7 +71,7 @@ public class AnnotationRuleApplierUtils {
 		Set<BidirectionalMap<ExtendedConstructionNode, ExtendedNode>> reversedMatches = matcher.getMatches();
 		
 		Set<BidirectionalMap<ExtendedNode, ExtendedConstructionNode>> matchesOfLhsToTree = 
-				new HashSet<BidirectionalMap<ExtendedNode,ExtendedConstructionNode>>(reversedMatches.size());
+				new LinkedHashSet<BidirectionalMap<ExtendedNode,ExtendedConstructionNode>>(reversedMatches.size());
 		for (BidirectionalMap<ExtendedConstructionNode, ExtendedNode>  match : reversedMatches)
 			matchesOfLhsToTree.add(new FlippedBidirectionalMap<ExtendedNode, ExtendedConstructionNode>(match));
 

@@ -10,6 +10,7 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
 import eu.excitementproject.eop.common.utilities.StringUtil;
@@ -81,8 +82,8 @@ public class SubstitutionFlipPosFinder implements Finder<SubstituteNodeSpecifica
 	{
 		fillMapHypothesisNodesToLemmas();
 		this.mapTextNodesToHypothesisNodes = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToSet(textTree.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree.getTree());
+		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree.getTree());
+		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree.getTree());
 
 		for (ExtendedNode textNode : textNodes)
 		{
@@ -116,8 +117,7 @@ public class SubstitutionFlipPosFinder implements Finder<SubstituteNodeSpecifica
 	{
 		this.mapHypothesisNodesToLemmas = new LinkedHashMap<ExtendedNode, Set<String>>();
 		
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree.getTree());
-		for (ExtendedNode hypothesisNode : hypothesisNodes)
+		for (ExtendedNode hypothesisNode : TreeIterator.iterableTree(hypothesisTree.getTree()))
 		{
 			Set<String> lemmas = new LinkedHashSet<String>();
 			String hypothesisLemma = InfoGetFields.getLemma(hypothesisNode.getInfo());

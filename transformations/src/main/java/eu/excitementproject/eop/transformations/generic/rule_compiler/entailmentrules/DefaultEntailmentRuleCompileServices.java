@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
@@ -13,8 +13,8 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.SyntacticInfo;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
@@ -51,7 +51,7 @@ public class DefaultEntailmentRuleCompileServices implements EntailmentRuleCompi
 	private enum AlignmentType {
 		COPY, COPY_REL, COPY_TAG, COPY_LEMMA, DEL_LY_FROM_LEMMA
 		;
-		private final static Set<String> ALIGNMENT_TYPES_STRING = new HashSet<String>();
+		private final static Set<String> ALIGNMENT_TYPES_STRING = new LinkedHashSet<String>();
 		static	{ for (AlignmentType alignmentType : AlignmentType.values()) ALIGNMENT_TYPES_STRING.add(alignmentType.toString());	}
 	}
 
@@ -65,7 +65,7 @@ public class DefaultEntailmentRuleCompileServices implements EntailmentRuleCompi
 		private String strRepresentation;
 		private ParamNames(String strRepresentation)	{		this.strRepresentation = strRepresentation;		}
 		public String toString()	{ return strRepresentation;	}
-		private final static Set<String> PARAM_NAMES_SET = new HashSet<String>();
+		private final static Set<String> PARAM_NAMES_SET = new LinkedHashSet<String>();
 		static	{ for (ParamNames paramName : ParamNames.values()) PARAM_NAMES_SET.add(paramName.toString());	}
 	}
 	

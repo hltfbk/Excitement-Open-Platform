@@ -18,7 +18,7 @@ public class TransformationsConfigurationParametersNames
 	
 	public static enum MandatoryLevel
 	{
-		MANDATORY,OPTIONAL,IGNORE;
+		MANDATORY,OPTIONAL,IGNORE,DEPRECATED;
 	}
 	
 	@Retention(RetentionPolicy.RUNTIME)

@@ -80,10 +80,10 @@
 
 
 	<section name = "transformations">
-		<!--<property name = "knowledge_resources">WORDNET,WIKIPEIDA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
-		<!--<property name = "multiword_resources">WORDNET,WIKIPEIDA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
-		<property name = "knowledge_resources">WORDNET,CATVAR,VERB_OCEAN,SYNTACTIC</property>
-		<property name = "multiword_resources">WORDNET,CATVAR,VERB_OCEAN</property>
+		<!--<property name = "knowledge_resources">WORDNET,WIKIPEDIA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
+		<!--<property name = "multiword_resources">WORDNET,WIKIPEDIA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
+		<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC</property>
+		<property name = "multiword_resources">WORDNET,VERB_OCEAN</property>
 		<property name = "stop_words">stopwords-Eyal.txt</property>
 	</section>
 
@@ -222,6 +222,7 @@
 
 	<section name = "TruthTeller">
 		<property name = "annotation_rules_file">serializedAnnotationRules.ser</property>
+		<property name = "conll_format_output_directory">annotatedSentences</property>
 		<property name = "do_annotations">true</property>
 	</section>
 

@@ -89,7 +89,7 @@ public class LexicalRuleInTreeFinder
 	 */
 	public static <T extends Info, S extends AbstractNode<T,S>> List<S> treeToList(S tree)
 	{
-		Set<S> set = AbstractNodeUtils.treeToSet(tree);
+		Set<S> set = AbstractNodeUtils.treeToLinkedHashSet(tree);
 		List<S> list = new ArrayList<S>(set.size());
 		list.addAll(set);
 		Collections.sort(list, new BySerialComparator<T,S>());

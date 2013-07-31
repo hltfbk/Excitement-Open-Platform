@@ -99,7 +99,7 @@ public class SubstituteNodeOperation extends GenerationOperationForExtendedNode
 	
 	private void updateAntecedents()
 	{
-		Set<ExtendedNode> originalTreeNodes = AbstractNodeUtils.treeToSet(textTree.getTree());
+		Set<ExtendedNode> originalTreeNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree.getTree());
 		for (ExtendedNode originalTreeNode : originalTreeNodes)
 		{
 			if (originalTreeNode.getAntecedent()!=null)

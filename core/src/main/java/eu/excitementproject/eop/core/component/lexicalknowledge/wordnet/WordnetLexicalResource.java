@@ -3,7 +3,7 @@
  */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wordnet;
 import java.io.File;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -364,7 +364,7 @@ public class WordnetLexicalResource implements LexicalResource<WordnetRuleInfo>
 			throw new LexicalResourceException("Got null relation set");
 		if (defaultRelations.isEmpty())
 			throw new LexicalResourceException("The relations set cannot be empty");
-		this.defaultRelations = new HashSet<WordNetRelation>(defaultRelations);
+		this.defaultRelations = new LinkedHashSet<WordNetRelation>(defaultRelations);
 	}
 	
 	///////////////////////////////////////////////// PROTECTED + PRIVATE ////////////////////////////////////////////////////////////////////
