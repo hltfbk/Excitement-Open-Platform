@@ -57,8 +57,14 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
 public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor implements WithStatisticsTextTreesProcessor
 {
 	public static final int WARNING_IF_EXCEEDS_NUMBER_OF_GLOBAL_ITERATIONS = 20;
-	// if <=0 it means all.
+	
+	/**
+	 * How many trees of the given text trees to process.
+	 * If <=0 it means all.
+	 */
 	public static final int NUMBER_OF_TREES_TO_PROCESS = BiuteeConstants.LOCAL_CREATIVE_NUMBER_OF_TREES_TO_PROCESS;
+
+	
 	
 	public LocalCreativeTextTreesProcessor(
 			String textText, String hypothesisText,
@@ -128,6 +134,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	 * If the text contains several sentences, then each sentence is
 	 * processed by {@link #processTree(ExtendedNode, String)}. 
 	 */
+	@Override
 	protected void processPair() throws ClassifierException,
 			TreeAndParentMapException, TeEngineMlException, OperationException,
 			ScriptException, RuleBaseException
@@ -179,6 +186,13 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	{
 		if (!originalMapTreesToSentences.get(tree).equals(sentence)) throw new TeEngineMlException("BUG");
 		int debug_resultsSize = results.size();
+		
+		// In this function, there is a while loop - each iteration in this
+		// loop is considered as "global iteration".
+		//
+		// The "currentX" objects (currentTree, currentTreeAndParentMap, currentHistory, currentFeatureVector)
+		// represent the single tree which survives after the end of each global iteration.
+		
 		ExtendedNode currentTree = tree;
 		TreeAndParentMap<ExtendedInfo, ExtendedNode> currentTreeAndParentMap =
 			new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree);
@@ -275,6 +289,12 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 						);
 			}
 
+			
+			// How many local iterations will be performed in the next
+			// local-lookahead loop? Well, this.numberOfLocalIterations. Right?
+			// Well, right, usually. However, for efficiency, the number might
+			// be smaller. See description in the JavaDoc of the method
+			// updateActualNumberOfLocalIterations()
 			updateLocalHistory(localHistory, bestElement);
 			actualNumberOfLocalIterations = updateActualNumberOfLocalIterations(currentIteration,localHistory, actualNumberOfLocalIterations);
 			
@@ -353,7 +373,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 
 	}
 	
-//	// TODO REMOVE THIS METHOD - IT IS ONLY TEMPORARY FOR EXPERIMENT
+//	// TO_DO REMOVE THIS METHOD - IT IS ONLY TEMPORARY FOR EXPERIMENT
 //	protected LocalCreativeTreeElement findBest(Set<LocalCreativeTreeElement> elements, double originalCost, double originalGap) throws TeEngineMlException
 //	{
 //		if (elements.size()==0)throw new TeEngineMlException("BUG");
@@ -485,6 +505,20 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	}
 	
 	
+	/**
+	 * Returns a list of {@link TreeAndIndex} which contains the given trees, along
+	 * with running indexes (0,1,2,...).
+	 * <BR>
+	 * Also, filters out some trees, if the constant NUMBER_OF_TREES_TO_PROCESS is a
+	 * positive number. If so, the returned list contains only some of the given
+	 * trees, where trees with high gap between them and the hypothesis are filtered
+	 * out.
+	 * 
+	 * @param originalTrees
+	 * @return
+	 * @throws TreeAndParentMapException
+	 * @throws TeEngineMlException
+	 */
 	@SuppressWarnings("unused")
 	protected List<TreeAndIndex> filterTreesByGap(List<ExtendedNode> originalTrees) throws TreeAndParentMapException, TeEngineMlException
 	{
@@ -579,6 +613,32 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	}
 	
 	
+	/**
+	 * This method calculates how many "local iterations" will be performed in the
+	 * next local-lookahead (i.e., in the next "global iteration").<BR>
+	 * The number of local iterations is usually {@link #numberOfLocalIterations}.
+	 * However, for efficiency, the number might be smaller, as follows.
+	 * <P>
+	 * For the first {@link BiuteeConstants#LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY}
+	 * global iterations - the number will be {@link #numberOfLocalIterations}.
+	 * After {@link BiuteeConstants#LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY}
+	 * global-iterations were passed, the following heuristic is utilized:<BR>
+	 * The local iteration number in which the best tree has been found is
+	 * stored in an array, for the last {@link BiuteeConstants#LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY}
+	 * global iterations.
+	 * The minimum value stored in this array plus one is then returned, as
+	 * the number of local iterations to be performed.
+	 * 
+	 *  
+	 * @param currentIteration the iteration number of the current global iteration
+	 * @param localHistory an array which stores the local-iteration numbers
+	 * where the best tree has been found in the recent global-iterations. 
+	 * @param currentActualNumberOfLocalIterations the number of local iterations
+	 * that were performed in the last global iteration.
+	 * 
+	 * @return the number of local iterations to be performed in the next global
+	 * iteration.
+	 */
 	@SuppressWarnings("unused")
 	private final int updateActualNumberOfLocalIterations(int currentIteration, int[] localHistory, int currentActualNumberOfLocalIterations)
 	{

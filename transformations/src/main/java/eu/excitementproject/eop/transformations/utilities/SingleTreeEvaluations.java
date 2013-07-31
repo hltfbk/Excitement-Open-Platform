@@ -21,7 +21,7 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
  * function for exactly that purpose).
  * 
  * Used by {@link BeamSearchTextTreesProcessor}, by {@link GeneratedTreeStateCalculations},
- * be {@link LocalCreativeTextTreesProcessor},  and by other classes that are used in
+ * by {@link LocalCreativeTextTreesProcessor},  and by other classes that are used in
  * various search algorithms.
  * 
  * <P>

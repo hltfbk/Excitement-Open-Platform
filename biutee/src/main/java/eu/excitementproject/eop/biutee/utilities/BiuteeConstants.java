@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.utilities;
 
+import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.transformations.codeannotations.Workaround;
 import eu.excitementproject.eop.transformations.operations.finders.SubstitutionFlipPosFinder;
@@ -51,9 +52,15 @@ public class BiuteeConstants
 	 */
 	public static final boolean USE_MLE_FOR_INSERTION_COST = true;
 
+	
 	public static final int LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS = 3;
 	
-	// 0 means no heuristic
+	/**
+	 * See description in the method
+	 * {@link LocalCreativeTextTreesProcessor#updateActualNumberOfLocalIterations}.
+	 * 
+	 * 0 means no heuristic
+	 */
 	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 3;
 	
 	// if <=0 it means all.

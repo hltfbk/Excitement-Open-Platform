@@ -34,6 +34,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMa
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCalculator;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
@@ -461,29 +462,33 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 	
 	private SingleTreeEvaluations createEvaluationForTree(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree)
 	{
-		int missingNodes;
-		int missingRelations;
-		int missingLemmas;
-		if (AdvancedEqualities.USE_ADVANCED_EQUALITIES)
-		{
-			missingNodes = AdvancedEqualities.findMissingNodes(tree, operationsEnvironment.getHypothesis()).size();
-			missingRelations = AdvancedEqualities.findMissingRelations(tree, operationsEnvironment.getHypothesis()).size();			
-		}
-		else
-		{
-			missingNodes = TreeUtilities.findNodesNoMatch(tree, operationsEnvironment.getHypothesis()).size();
-			missingRelations = TreeUtilities.findRelationsNoMatch(tree, operationsEnvironment.getHypothesis()).size();
-		}
-		int coveredLemmas = TreeUtilities.findCoveredLemmasLowerCase(tree,hypothesisLemmasLowerCase).size();
-		missingLemmas = hypothesisLemmasLowerCase.size()-coveredLemmas;
+		AlignmentCalculator alignmentCalculator =
+				new AlignmentCalculator(operationsEnvironment.getAlignmentCriteria(), tree, operationsEnvironment.getHypothesis());
+		return alignmentCalculator.getEvaluations(hypothesisLemmasLowerCase,hypothesisNumberOfNodes);
 		
-		
-		
-		double missingNodesPortion = ((double)missingNodes) / ((double)numberOfHypothesisNodes);
-		double missingRelationsPortion = ((double)missingRelations) / ((double)(numberOfHypothesisNodes-1));
-		double missingLemmasPortion = ((double)missingLemmas) / ((double)(hypothesisLemmasLowerCase.size()));
-		
-		return new SingleTreeEvaluations(missingNodes, missingRelations, missingLemmas, missingNodesPortion, missingRelationsPortion, missingLemmasPortion);
+//		int missingNodes;
+//		int missingRelations;
+//		int missingLemmas;
+//		if (AdvancedEqualities.USE_ADVANCED_EQUALITIES)
+//		{
+//			missingNodes = AdvancedEqualities.findMissingNodes(tree, operationsEnvironment.getHypothesis()).size();
+//			missingRelations = AdvancedEqualities.findMissingRelations(tree, operationsEnvironment.getHypothesis()).size();			
+//		}
+//		else
+//		{
+//			missingNodes = TreeUtilities.findNodesNoMatch(tree, operationsEnvironment.getHypothesis()).size();
+//			missingRelations = TreeUtilities.findRelationsNoMatch(tree, operationsEnvironment.getHypothesis()).size();
+//		}
+//		int coveredLemmas = TreeUtilities.findCoveredLemmasLowerCase(tree,hypothesisLemmasLowerCase).size();
+//		missingLemmas = hypothesisLemmasLowerCase.size()-coveredLemmas;
+//		
+//		
+//		
+//		double missingNodesPortion = ((double)missingNodes) / ((double)numberOfHypothesisNodes);
+//		double missingRelationsPortion = ((double)missingRelations) / ((double)(numberOfHypothesisNodes-1));
+//		double missingLemmasPortion = ((double)missingLemmas) / ((double)(hypothesisLemmasLowerCase.size()));
+//		
+//		return new SingleTreeEvaluations(missingNodes, missingRelations, missingLemmas, missingNodesPortion, missingRelationsPortion, missingLemmasPortion);
 	}
 	
 
@@ -499,6 +504,7 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 
 	
 	private Set<String> hypothesisLemmasLowerCase;
+	@SuppressWarnings("unused")
 	private int numberOfHypothesisNodes;
 	
 	private Map<TreeAndFeatureVector, String> mapTreeToSentence;
