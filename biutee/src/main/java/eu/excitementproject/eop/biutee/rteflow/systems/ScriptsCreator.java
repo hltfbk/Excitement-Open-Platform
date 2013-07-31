@@ -28,11 +28,13 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 public class ScriptsCreator
 {
 	public ScriptsCreator(ConfigurationFile configurationFile,
-			PluginRegistry pluginRegistry, int numberOfScripts)
+			PluginRegistry pluginRegistry, TESystemEnvironment teSystemEnvironment, 
+			int numberOfScripts)
 	{
 		super();
 		this.configurationFile = configurationFile;
 		this.pluginRegistry = pluginRegistry;
+		this.teSystemEnvironment = teSystemEnvironment;
 		this.numberOfScripts = numberOfScripts;
 	}
 
@@ -115,7 +117,7 @@ public class ScriptsCreator
 			try
 			{
 				logger.debug("Constructing a script...");
-				OperationsScript<Info,BasicNode> script = new ScriptFactory(configurationFile, pluginRegistry).getDefaultScript();
+				OperationsScript<Info,BasicNode> script = new ScriptFactory(configurationFile, pluginRegistry,teSystemEnvironment).getDefaultScript();
 				script.init();
 				logger.info("a script has been constructed.");
 				queue.put(script);
@@ -133,6 +135,7 @@ public class ScriptsCreator
 	// input
 	private final ConfigurationFile configurationFile;
 	private final PluginRegistry pluginRegistry;
+	private final TESystemEnvironment teSystemEnvironment;
 	private final int numberOfScripts;
 
 	// internals

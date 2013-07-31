@@ -262,7 +262,7 @@ public class InitializationTextTreesProcessor
 		}
 		
 		// Create a FeatureUpdate object.
-		this.featureUpdate = new FeatureUpdate(this.wholeTextLemmas, teSystemEnvironment.getFeatureVectorStructureOrganizer(),teSystemEnvironment.getMleEstimation());
+		this.featureUpdate = new FeatureUpdate(this.wholeTextLemmas, teSystemEnvironment.getFeatureVectorStructureOrganizer(),teSystemEnvironment.getMleEstimation(), teSystemEnvironment.getParser());
 		
 		/// Creates a mechanism for handling named-entities that are represented by
 		// several nodes in the parse tree (e.g. "Microsoft Corporation" is represented

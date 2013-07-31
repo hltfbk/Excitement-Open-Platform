@@ -30,13 +30,14 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
  */
 public class SystemUtils
 {
-	public static void setParserMode(ConfigurationParams params) throws ConfigurationException, TeEngineMlException
+	public static ParserSpecificConfigurations.PARSER setParserMode(ConfigurationParams params) throws ConfigurationException, TeEngineMlException
 	{
 		if (params.containsKey(ConfigurationParametersNames.RTE_ENGINE_PARSER_PARAMETER_NAME))
 		{
 			ParserSpecificConfigurations.PARSER parser = params.getEnum(ParserSpecificConfigurations.PARSER.class, ConfigurationParametersNames.RTE_ENGINE_PARSER_PARAMETER_NAME);
 			logger.info("Setting parser to "+parser.name());
 			ParserSpecificConfigurations.changeParser(parser);
+			return parser;
 		}
 		else
 		{

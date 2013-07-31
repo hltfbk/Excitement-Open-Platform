@@ -111,7 +111,7 @@ public class MultiThreadTopicsProcessor implements AllTopicsProcessor
 		queueScripts = new ArrayBlockingQueue<ScriptAndHypothesisInformation>(numberOfThreads);
 		for (int index=0;index<numberOfThreads;++index)
 		{
-			OperationsScript<Info, BasicNode> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			OperationsScript<Info, BasicNode> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 			script.init();
 			queueScripts.put(new ScriptAndHypothesisInformation(script, null));
 		}

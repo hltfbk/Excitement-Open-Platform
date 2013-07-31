@@ -230,7 +230,7 @@ public class MultiThreadTopicsProcessorOld implements AllTopicsProcessor
 		{
 			try
 			{
-				OperationsScript<Info, BasicNode> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+				OperationsScript<Info, BasicNode> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 				script.init();
 				try
 				{

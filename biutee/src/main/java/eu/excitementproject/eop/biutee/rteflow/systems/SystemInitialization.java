@@ -90,7 +90,7 @@ public class SystemInitialization
 		configurationFile.setExpandingEnvironmentVariables(true);
 		configurationParams = configurationFile.getModuleConfiguration(configurationModuleName);
 		
-		SystemUtils.setParserMode(configurationParams);
+		ParserSpecificConfigurations.PARSER parserMode = SystemUtils.setParserMode(configurationParams);
 		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
@@ -164,7 +164,7 @@ public class SystemInitialization
 		}
 		
 		
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords,ParserSpecificConfigurations.getParserMode());
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords,parserMode);
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException

@@ -57,7 +57,7 @@ public class DemoDynRuleBase
 		confFile.setExpandingEnvironmentVariables(true);
 		KnowledgeResource resource = KnowledgeResource.ORIG_DIRT;
 		ConfigurationParams params =  confFile.getModuleConfiguration(resource.getModuleName());
-		manager = new DistSimRuleBaseManager(resource.getDisplayName(), params, ParserSpecificConfigurations.getParserMode());
+		manager = new DistSimRuleBaseManager(resource.getDisplayName(), params, this.parser);
 		manager.init();
 		this.ruleBase = manager.getRuleBase();
 		
@@ -84,6 +84,8 @@ public class DemoDynRuleBase
 	{
 		try
 		{
+			this.parser = ParserSpecificConfigurations.PARSER.valueOf(args[1]);
+			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			initRuleBase();
 			try
@@ -151,4 +153,5 @@ public class DemoDynRuleBase
 	private DistSimRuleBaseManager manager;
 	private DynamicRuleBase<Info, BasicNode> ruleBase;
 	private String[] args;
+	private ParserSpecificConfigurations.PARSER parser=null;
 }

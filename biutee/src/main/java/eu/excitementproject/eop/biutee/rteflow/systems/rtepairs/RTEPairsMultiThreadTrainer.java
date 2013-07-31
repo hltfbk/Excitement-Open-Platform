@@ -337,7 +337,7 @@ public class RTEPairsMultiThreadTrainer extends RTEPairsTrainer
 	private OperationsScript<Info, BasicNode> createAndInitializeScript() throws OperationException
 	{
 		OperationsScript<Info, BasicNode> ret = null;
-		ret = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+		ret = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 		ret.init();
 		return ret;
 	}

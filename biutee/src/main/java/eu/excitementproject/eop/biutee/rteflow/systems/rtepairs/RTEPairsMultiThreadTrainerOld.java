@@ -320,7 +320,7 @@ public class RTEPairsMultiThreadTrainerOld extends RTEPairsTrainer
 			{
 				try
 				{
-					ret = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+					ret = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 					ret.init();
 					initialized = true;
 				}

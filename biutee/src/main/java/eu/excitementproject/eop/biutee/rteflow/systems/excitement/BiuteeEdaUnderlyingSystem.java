@@ -79,7 +79,7 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	public void init() throws ConfigurationFileDuplicateKeyException, ConfigurationException, MalformedURLException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
 	{
 		super.init();
-		script = new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+		script = new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry(),this.teSystemEnvironment).getDefaultScript();
 		try
 		{
 			logger.info("Initializing operation sciprt...");
@@ -179,7 +179,7 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 		scriptStack = new SynchronizedStack<OperationsScriptGetter>();
 		for (int index=0;index<(numberOfThreads-1);++index)
 		{
-			scriptStack.push(new OperationsScriptGetter(new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry())));
+			scriptStack.push(new OperationsScriptGetter(new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry(),this.teSystemEnvironment)));
 		}
 		scriptStack.push(new OperationsScriptGetter(this.script));
 		

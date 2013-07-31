@@ -19,6 +19,7 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrap
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.transformations.operations.OperationException;
+import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 
 /**
  * Initializes all {@link Plugin}s, in addition to the initialization of all
@@ -31,9 +32,9 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 @NotThreadSafe
 public abstract class OperationsScriptForBuiltinKnowledgeAndPlugins extends OperationsScriptForBuiltinKnowledge
 {
-	public OperationsScriptForBuiltinKnowledgeAndPlugins(ConfigurationFile configurationFile,PluginRegistry pluginRegistry)
+	public OperationsScriptForBuiltinKnowledgeAndPlugins(ConfigurationFile configurationFile, ParserSpecificConfigurations.PARSER parser, PluginRegistry pluginRegistry)
 	{
-		super(configurationFile);
+		super(configurationFile,parser);
 		this.pluginRegistry = pluginRegistry;
 	}
 

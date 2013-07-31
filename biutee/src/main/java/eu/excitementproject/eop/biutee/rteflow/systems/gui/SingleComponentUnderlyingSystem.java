@@ -94,7 +94,7 @@ public class SingleComponentUnderlyingSystem extends RTEPairsBaseSystem
 			DatasetParameterValueParser parameterParser = constructDatasetParameterParser();
 			updateFeatureVectorStructure(parameterParser);
 
-			script = new ScriptFactory(configurationFile,this.teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			script = new ScriptFactory(configurationFile,this.teSystemEnvironment.getPluginRegistry(),this.teSystemEnvironment).getDefaultScript();
 			script.init();
 			scriptInitialized = true;
 			completeInitializationWithScript(script);

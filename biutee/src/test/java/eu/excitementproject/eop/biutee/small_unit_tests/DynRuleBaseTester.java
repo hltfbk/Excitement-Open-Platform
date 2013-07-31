@@ -62,6 +62,7 @@ public class DynRuleBaseTester
 	public DynRuleBaseTester(String[] args)
 	{
 		this.miniparParameter = args[0];
+		this.parserMode = ParserSpecificConfigurations.PARSER.valueOf(args[1]);
 	}
 	
 	public void run() throws SQLException, RuleBaseException, TeEngineMlException, ParserRunException, TreeStringGeneratorException, TemplateToTreeException, MatcherException, InterruptedException, TreeAndParentMapException, OperationException
@@ -100,7 +101,7 @@ public class DynRuleBaseTester
 			new DistSimParameters("original_dirt.od_templates", "original_dirt.od_rules", LIMIT_DISTSIM_RULES, 2*Constants.DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE, Constants.DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE);
 
 		
-		ruleBase = new DistSimRuleBase(distSimConnection,originalDirtParameters,ruleBaseName,ParserSpecificConfigurations.getParserMode());
+		ruleBase = new DistSimRuleBase(distSimConnection,originalDirtParameters,ruleBaseName,parserMode);
 		
 		
 		parser = ParserFactory.getParser(miniparParameter);
@@ -123,7 +124,7 @@ public class DynRuleBaseTester
 		System.out.println("parse tree of sentence:");
 		System.out.println(TreeUtilities.treeToString(tree));
 		System.out.println(StringUtil.generateStringOfCharacter('-', 100));
-		TemplateToTree ttt = new TemplateToTree("n<p:up:p<v:say:v>subj>n",ParserSpecificConfigurations.getParserMode());
+		TemplateToTree ttt = new TemplateToTree("n<p:up:p<v:say:v>subj>n",parserMode);
 		ttt.createTree();
 		BasicNode ruleTree = ttt.getTree();
 		System.out.println("tree of rule:");
@@ -181,6 +182,7 @@ public class DynRuleBaseTester
 	
 	
 
+	private final ParserSpecificConfigurations.PARSER parserMode;
 	private DynamicRuleBase<Info, BasicNode> ruleBase;
 	private String ruleBaseName;
 	private Set<RuleSpecification> specs;

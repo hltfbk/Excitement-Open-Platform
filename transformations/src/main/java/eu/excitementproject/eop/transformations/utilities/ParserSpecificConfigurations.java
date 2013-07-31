@@ -46,6 +46,8 @@ public class ParserSpecificConfigurations
 		
 		DO_NOT_APPLY_LEXICALLY_LEXICAL_MULTI_WORDS = (PARSER.EASYFIRST==MODE_PARSER?Constants.DO_NOT_APPLY_LEXICALLY_LEXICAL_MULTI_WORD_WHEN_EASYFIRST:false);
 	}
+	
+	@Deprecated
 	public static PARSER getParserMode()
 	{
 		return MODE_PARSER;
