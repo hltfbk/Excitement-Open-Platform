@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.coreference;
+package eu.excitementproject.eop.common.representation.coreference;
 
 public class DockedMention {
 
@@ -15,6 +15,22 @@ public class DockedMention {
 		this.groupTag = groupTag;
 	}
 	
+	public String getText() {
+		return text;
+	}
+
+	public int getCharOffsetStart() {
+		return charOffsetStart;
+	}
+
+	public int getCharOffsetEnd() {
+		return charOffsetEnd;
+	}
+
+	public String getGroupTag() {
+		return groupTag;
+	}
+
 	public String toString() {
 		return String.format("DockedMention(tag=%s, span=<%s..%s>, text=%s)", groupTag, charOffsetStart, charOffsetEnd, text);
 	}

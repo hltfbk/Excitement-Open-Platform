@@ -25,6 +25,7 @@ import arkref.data.Sentence;
 import arkref.data.Word;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.IntPair;
+import eu.excitementproject.eop.common.representation.coreference.DockedMention;
 import eu.excitementproject.eop.common.utilities.DockedToken;
 import eu.excitementproject.eop.common.utilities.DockedTokenFinder;
 import eu.excitementproject.eop.common.utilities.DockedTokenFinderException;
@@ -32,7 +33,6 @@ import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.StringUtilException;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.coreference.DockedMention;
 import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 
 
@@ -69,7 +69,6 @@ public class ArkrefClient
 	}
 
 	// CONSTRUCTOR & METHODS
-	
 	
 	/**
 	 * Constructs {@link ArkrefClient} with the text as string.
