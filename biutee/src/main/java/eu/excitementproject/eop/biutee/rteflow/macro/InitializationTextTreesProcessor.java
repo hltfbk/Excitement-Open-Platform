@@ -123,6 +123,7 @@ public class InitializationTextTreesProcessor
 		this.lemmatizer = lemmatizer;
 		this.script = script;
 		this.teSystemEnvironment = teSystemEnvironment;
+		this.gapMode = this.teSystemEnvironment.getGapToolBox().getGapMode();
 	}
 	
 	/**
@@ -755,6 +756,8 @@ public class InitializationTextTreesProcessor
 	protected Lemmatizer lemmatizer;
 	protected OperationsScript<Info, BasicNode> script;
 	protected TESystemEnvironment teSystemEnvironment;
+	protected final boolean gapMode;
+	
 	protected List<ExtendedNode> surroundingsContext = null;
 	protected boolean richInformationInTreeHistory = false;
 	

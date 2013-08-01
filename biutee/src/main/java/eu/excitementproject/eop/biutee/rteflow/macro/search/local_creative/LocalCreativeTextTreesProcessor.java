@@ -269,11 +269,13 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			{
 				logger.debug("End of global iteration, nubmer of generated elements = "+elements.size());
 			}
-			
+
+			// cost and gap of the tree at the beginning of the global iteration.
 			double currentTreeCost = getCost(currentFeatureVector);
 			double currentTreeGap = getHeuristicGap(currentTreeAndParentMap);
-			LocalCreativeTreeElement bestElement = findBest(elements, currentTreeCost, currentTreeGap);
 			
+			// Pick the best tree at the end of the iteration.
+			LocalCreativeTreeElement bestElement = findBest(elements, currentTreeCost, currentTreeGap);
 			currentTree = bestElement.getTree();
 			currentTreeAndParentMap = new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentTree);
 			currentHistory = bestElement.getHistory();
@@ -333,7 +335,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	 * @throws TreeAndParentMapException
 	 * @throws ClassifierException
 	 */
-	private void processElement(LocalCreativeTreeElement element, int globalBaseIteration, int maxLocalIteration) throws TeEngineMlException, OperationException, ScriptException, RuleBaseException, TreeAndParentMapException, ClassifierException
+	private void processElement(final LocalCreativeTreeElement element, final int globalBaseIteration, final int maxLocalIteration) throws TeEngineMlException, OperationException, ScriptException, RuleBaseException, TreeAndParentMapException, ClassifierException
 	{
 		if (element.getLocalIteration()<maxLocalIteration)
 		{
@@ -404,7 +406,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	
 	protected LocalCreativeTreeElement findBest(Set<LocalCreativeTreeElement> elements, double originalCost, double originalGap) throws TeEngineMlException
 	{
-		if (elements.size()==0)throw new TeEngineMlException("BUG");
+		if (elements.size()==0)throw new TeEngineMlException("An error occurred LLGS search. A \"global iteration\" ended with no new generated tree.");
 		Double bestProportion = null; // null is interpreted as infinity
 		LocalCreativeTreeElement bestElement = null;
 		for (LocalCreativeTreeElement element : elements)
@@ -608,7 +610,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	
 	
 	/**
-	 * see #updateActualNumberOfLocalIterations
+	 * See {@link #updateActualNumberOfLocalIterations(int, int[], int)}
 	 * @param localHistory
 	 * @param bestElement
 	 */
