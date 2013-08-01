@@ -21,6 +21,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.AbstractTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistoryComponent;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.WithStatisticsTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
@@ -198,9 +199,19 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree);
 		TreeHistory currentHistory = new TreeHistory(TreeHistoryComponent.onlyFeatureVector(initialFeatureVector()));
 		Map<Integer,Double> currentFeatureVector = initialFeatureVector();
-		// Handle cases in which the original tree is identical to the hypothesis.
-		if (0==getHeuristicGap(currentTreeAndParentMap))
-			addSingleGoalToResutls(new LocalCreativeTreeElement(currentTree, currentHistory, currentFeatureVector, 0, 0, null, getCost(currentFeatureVector), 0), sentence);
+		boolean gapMode_GapIsDecreasing = true;
+		LocalCreativeTreeElement lastBestAdded_inGapMode = null;
+		if (gapMode)
+		{
+			lastBestAdded_inGapMode = new LocalCreativeTreeElement(currentTree, currentHistory, currentFeatureVector, 0, 0, null, getCost(currentFeatureVector), 0);
+			addSingleGoalToResutls(lastBestAdded_inGapMode, sentence);			
+		}
+		else
+		{
+			// Handle cases in which the original tree is identical to the hypothesis.
+			if (0==getHeuristicGap(currentTreeAndParentMap))
+				addSingleGoalToResutls(new LocalCreativeTreeElement(currentTree, currentHistory, currentFeatureVector, 0, 0, null, getCost(currentFeatureVector), 0), sentence);
+		}
 		
 		// For GUI
 		double initialHeuristicGap = getHeuristicGap(currentTreeAndParentMap);
@@ -211,7 +222,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 		// How many local iterations will be performed
 		int actualNumberOfLocalIterations = this.numberOfLocalIterations;
 		int currentIteration = 0;
-		while (getHeuristicGap(currentTreeAndParentMap)>0)
+		while (continueGlobalIteration(currentTreeAndParentMap,gapMode_GapIsDecreasing))
 		{
 			// For GUI
 			if (this.progressFire!=null)
@@ -269,12 +280,28 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			{
 				logger.debug("End of global iteration, nubmer of generated elements = "+elements.size());
 			}
+			
+
 
 			// cost and gap of the tree at the beginning of the global iteration.
 			double currentTreeCost = getCost(currentFeatureVector);
 			double currentTreeGap = getHeuristicGap(currentTreeAndParentMap);
 			
-			// Pick the best tree at the end of the iteration.
+			if (gapMode)
+			{
+				LocalCreativeTreeElement elementWithSmallestGap = pickElementWithSmallestGapMeasure(elements);
+				if (elementWithSmallestGap.getGap()<currentTreeGap)
+				{
+					gapMode_GapIsDecreasing=true;
+				}
+				else
+				{
+					gapMode_GapIsDecreasing=false;
+				}
+			}
+
+			
+			// Pick the best tree at the end of the iteration - the element that will survive for the next global iteration.
 			LocalCreativeTreeElement bestElement = findBest(elements, currentTreeCost, currentTreeGap);
 			currentTree = bestElement.getTree();
 			currentTreeAndParentMap = new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentTree);
@@ -301,10 +328,21 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			updateLocalHistory(localHistory, bestElement);
 			actualNumberOfLocalIterations = updateActualNumberOfLocalIterations(currentIteration,localHistory, actualNumberOfLocalIterations);
 			
-			
-			addGoalsToResults(findGoals(elements), sentence);
+			if (gapMode)
+			{
+				lastBestAdded_inGapMode = calculateBestResultElement(elements);
+				if (lastBestAdded_inGapMode!=null)
+				{
+					addSingleGoalToResutls(lastBestAdded_inGapMode,sentence);
+				}
+			}
+			else
+			{
+				addGoalsToResults(findGoals(elements), sentence);
+			}
 		}
 		progressSoFar += progressSingleTree;
+		
 		
 		// Some explanation.
 		// In theory, the solution (i.e. the best proof) is found at the end of the 
@@ -319,6 +357,19 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 //						currentHistory));
 		
 		if (results.size()<=debug_resultsSize) throw new TeEngineMlException("BUG - Seems that no results were added for the given sentence.");
+	}
+	
+	
+	private boolean continueGlobalIteration(TreeAndParentMap<ExtendedInfo, ExtendedNode> currentTreeAndParentMap, boolean gapMode_GapIsDecreasing) throws GapException
+	{
+		if (gapMode)
+		{
+			return gapMode_GapIsDecreasing;
+		}
+		else
+		{
+			return (getHeuristicGap(currentTreeAndParentMap)>0);
+		}
 	}
 	
 	/**
@@ -499,12 +550,20 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	 * For more information see {@link SingleTreeEvaluations}.
 	 * @param tree
 	 * @return
+	 * @throws GapException 
 	 */
-	protected double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree)
+	protected double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree) throws GapException
 	{
-		// SingleTreeEvaluations evaluations = SingleTreeEvaluations.create(tree,operationsEnvironment.getHypothesis(),hypothesisLemmasLowerCase,hypothesisNumberOfNodes);
-		SingleTreeEvaluations evaluations = new AlignmentCalculator(this.teSystemEnvironment.getAlignmentCriteria(),tree,operationsEnvironment.getHypothesis()).getEvaluations(hypothesisLemmasLowerCase,hypothesisNumberOfNodes);
-		return (double)(evaluations.getMissingLemmas()+evaluations.getMissingNodes()+evaluations.getMissingRelations());
+		if (gapMode)
+		{
+			return gapTools.getGapHeuristicMeasure().measure(tree);
+		}
+		else
+		{
+			// SingleTreeEvaluations evaluations = SingleTreeEvaluations.create(tree,operationsEnvironment.getHypothesis(),hypothesisLemmasLowerCase,hypothesisNumberOfNodes);
+			SingleTreeEvaluations evaluations = new AlignmentCalculator(this.teSystemEnvironment.getAlignmentCriteria(),tree,operationsEnvironment.getHypothesis()).getEvaluations(hypothesisLemmasLowerCase,hypothesisNumberOfNodes);
+			return (double)(evaluations.getMissingLemmas()+evaluations.getMissingNodes()+evaluations.getMissingRelations());
+		}
 	}
 	
 	
@@ -654,6 +713,8 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	@SuppressWarnings("unused")
 	private final int updateActualNumberOfLocalIterations(int currentIteration, int[] localHistory, int currentActualNumberOfLocalIterations)
 	{
+		if (gapMode) return this.numberOfLocalIterations;
+		
 		if (LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY<=0)
 		{
 			return currentActualNumberOfLocalIterations;
@@ -670,6 +731,61 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			}
 		}
 	}
+	
+	/**
+	 * Used only in gapMode
+	 * @param setOfElements
+	 * @return
+	 */
+	private LocalCreativeTreeElement calculateBestResultElement(Set<LocalCreativeTreeElement> setOfElements)
+	{
+		LocalCreativeTreeElement best = null;
+		double lowestCost = 0.0; 
+		for (LocalCreativeTreeElement element : setOfElements)
+		{
+			double currentCost = element.getCost();
+			if (null==best)
+			{
+				best = element;
+				lowestCost = currentCost;
+			}
+			else
+			{
+				if (currentCost<lowestCost)
+				{
+					best = element;
+					lowestCost = currentCost;
+				}
+			}
+		}
+		return best;
+	}
+	
+	private LocalCreativeTreeElement pickElementWithSmallestGapMeasure(Set<LocalCreativeTreeElement> setOfElements)
+	{
+		LocalCreativeTreeElement smallestGapElement = null;
+		double smallestGap = 0.0;
+		for (LocalCreativeTreeElement element : setOfElements)
+		{
+			double currentGap = element.getGap();
+			if (null==smallestGapElement)
+			{
+				smallestGapElement=element;
+				smallestGap=currentGap;
+			}
+			else
+			{
+				if (currentGap<smallestGap)
+				{
+					smallestGapElement=element;
+					smallestGap=currentGap;
+				}
+			}
+		}
+		return smallestGapElement;
+	}
+	
+	
 
 	/**
 	 * Array like [a,b,c,d] becomes [n,a,b,c], where n is the <code>newValue</code>.

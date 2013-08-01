@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.macro.gap;
 
+import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
@@ -11,7 +12,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMa
  * @param <I>
  * @param <S>
  */
-public interface GapFeaturesUpdateFactory<I, S extends AbstractNode<I, S>>
+public interface GapToolsFactory<I, S extends AbstractNode<I, S>>
 {
-	public GapFeaturesUpdate<I, S> createForHypothesis(TreeAndParentMap<I, S> hypothesis) throws GapException;
+	public GapToolInstances<I, S> createInstances(TreeAndParentMap<I, S> hypothesis, LinearClassifier classifierForSearch) throws GapException;
 }

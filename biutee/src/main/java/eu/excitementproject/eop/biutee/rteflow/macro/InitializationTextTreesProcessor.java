@@ -17,6 +17,7 @@ import eu.excitementproject.eop.biutee.plugin.InstanceBasedPlugin;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.rteflow.document_sublayer.DocumentInitializer;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.macro.multiword_namedentity_utils.MultiWordNamedEntityUtils;
 import eu.excitementproject.eop.biutee.rteflow.micro.OperationsEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
@@ -292,6 +293,16 @@ public class InitializationTextTreesProcessor
 		// Stores the parse-trees that were created during the initialization,
 		// which will be used in the proof-construction. 
 		originalTreesAfterInitialization = new OriginalTreesAfterInitialization(originalTextTrees, hypothesisTree, originalMapTreesToSentences,this.coreferenceInformation);
+
+		if (teSystemEnvironment.getGapToolBox().getGapMode())
+		{
+			gapTools = teSystemEnvironment.getGapToolBox().getGapToolsFactory().createInstances(hypothesis,this.classifier);
+		}
+		else
+		{
+			gapTools = null;
+		}
+		
 		
 		// Stores many objects that were created during initialization.
 		operationsEnvironment = new OperationsEnvironment(this.featureUpdate,this.hypothesis,this.hypothesisLemmas,hypothesisLemmasAndCanonicalPos,this.hypothesisLemmasOnly,this.hypothesisLemmasLowerCase,this.hypothesisNumberOfNodes,this.substitutionMultiWordFinder,this.lemmatizer,this.coreferenceInformation,this.mapRuleBasesForLexicalMultiWord,this.hypothesisTemplates, this.multiWordNamedEntityRuleBase, this.richInformationInTreeHistory, teSystemEnvironment.getAlignmentCriteria(),teSystemEnvironment.getStopWords(),teSystemEnvironment.getParser());
@@ -781,6 +792,7 @@ public class InitializationTextTreesProcessor
 	
 	private BagOfRulesRuleBase<Info, BasicNode> multiWordNamedEntityRuleBase = null;
 	
+	protected GapToolInstances<ExtendedInfo, ExtendedNode> gapTools = null;
 	protected OperationsEnvironment operationsEnvironment;
 	protected OriginalTreesAfterInitialization originalTreesAfterInitialization = null;
 	
