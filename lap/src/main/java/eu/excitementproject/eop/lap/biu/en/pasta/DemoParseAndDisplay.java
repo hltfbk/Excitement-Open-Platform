@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -15,18 +13,13 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
-import eu.excitementproject.eop.common.representation.pasta.Argument;
-import eu.excitementproject.eop.common.representation.pasta.ClausalArgument;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
-import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
+import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructureBySerialComparator;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
@@ -121,7 +114,7 @@ public class DemoParseAndDisplay
 					Collections.sort(pasList, new PredicateArgumentStructureBySerialComparator<Info, BasicNode>());
 					for (PredicateArgumentStructure<Info, BasicNode> pas : pasList)
 					{
-						showPas(pas);
+						System.out.print(pas.toString());
 					}
 				}
 				else
@@ -140,140 +133,7 @@ public class DemoParseAndDisplay
 		}
 		
 	}
-	
-	private void showPas(PredicateArgumentStructure<Info, BasicNode> pas)
-	{
-		String predicateHead = InfoGetFields.getLemma(pas.getPredicate().getHead().getInfo());
-		System.out.print(predicateHead);
-		if (pas.getPredicate().getVerbsForNominal()!=null)
-		{
-			System.out.print(" ("+StringUtil.joinIterableToString(pas.getPredicate().getVerbsForNominal())+")");
-		}
-		System.out.println();
-		
-		for (TypedArgument<Info, BasicNode> typedArgument : pas.getArguments())
-		{
-			Argument<Info, BasicNode> argument = typedArgument.getArgument();
-			BasicNode semanticHead = argument.getSemanticHead();
-			String lemma = InfoGetFields.getLemma(semanticHead.getInfo());
-			
-			System.out.println("\t"+typedArgument.getArgumentType().name()+" "+lemma+" ("+strSetNodes(argument.getNodes())+")");
-		}
-		
-		for (ClausalArgument<Info, BasicNode> clausalArgument : pas.getClausalArguments())
-		{
-			String lemma = InfoGetFields.getLemma(clausalArgument.getClause().getInfo());
-			System.out.println("\t(c) "+clausalArgument.getArgumentType().name()+" "+lemma);
-		}
-		
-	}
-	
-	private String strSetNodes(Collection<BasicNode> nodes)
-	{
-		List<BasicNode> listNodes = getSortedBySerial(nodes);
-		StringBuilder sb = new StringBuilder();
-		boolean firstIteration = true;
-		for (BasicNode node : listNodes)
-		{
-			if (firstIteration){firstIteration=false;}else{sb.append(" ");}
-			
-			sb.append(
-					InfoGetFields.getWord(node.getInfo())
-					);
-		}
-		return sb.toString();
-	}
 
-	
-	
-	// copied from ac.biu.nlp.nlp.predarg.utilities.PredArgsUtilities
-
-	/**
-	 * Returns the given parse-tree-nodes, sorted by the their "serial" field.
-	 * @param nodes a collection of parse-tree-nodes.
-	 * @return the given parse-tree-nodes, sorted by the their "serial" field.
-	 */
-	private static <I extends Info, S extends AbstractNode<I, S>> List<S> getSortedBySerial(Collection<S> nodes)
-	{
-		ArrayList<S> list = new ArrayList<S>(nodes.size());
-		list.addAll(nodes);
-		Collections.sort(list,new BySerialComparator<I, S>());
-		return list;
-	}
-
-	
-	
-	// copied from ac.biu.nlp.nlp.predarg.utilities
-	
-	/**
-	 * 
-	 * @author Asher Stern
-	 * @since Oct 9, 2012
-	 *
-	 */
-	private static class BySerialComparator<I extends Info, S extends AbstractNode<I, S>> implements Comparator<S>
-	{
-		@Override
-		public int compare(S o1, S o2)
-		{
-			int serial1 = -1;
-			int serial2 = -1;
-			if (o1!=null){if(o1.getInfo()!=null){if (o1.getInfo().getNodeInfo()!=null)
-			{
-				serial1 = o1.getInfo().getNodeInfo().getSerial();
-			}}}
-			if (o2!=null){if(o2.getInfo()!=null){if (o2.getInfo().getNodeInfo()!=null)
-			{
-				serial2 = o2.getInfo().getNodeInfo().getSerial();
-			}}}
-			
-			if (serial1<serial2) return -1;
-			else if (serial1==serial2) return 0;
-			else return 1;
-		}
-		
-
-	}
-
-	
-
-	// copied from ac.biu.nlp.nlp.predarg.utilities
-	
-	/**
-	 * 
-	 * @author Asher Stern
-	 * @since Oct 15, 2012
-	 *
-	 * @param <I>
-	 * @param <S>
-	 */
-	private static class PredicateArgumentStructureBySerialComparator<I extends Info, S extends AbstractNode<I, S>> implements Comparator<PredicateArgumentStructure<I, S>>
-	{
-
-		@Override
-		public int compare(PredicateArgumentStructure<I, S> o1,
-				PredicateArgumentStructure<I, S> o2)
-		{
-			int serial1 = getSerial(o1);
-			int serial2 = getSerial(o2);
-			if (serial1<serial2)
-				return -1;
-			else if (serial1 == serial2)
-				return 0;
-			else
-				return 1;
-			
-		}
-		
-		private static <I extends Info, S extends AbstractNode<I, S>> int getSerial(PredicateArgumentStructure<I, S> pas)
-		{
-			return InfoGetFields.getSerial(pas.getPredicate().getHead().getInfo());
-		}
-
-	}
-
-	
-	
 	
 	private String posTaggerFileName;
 	private String host;
