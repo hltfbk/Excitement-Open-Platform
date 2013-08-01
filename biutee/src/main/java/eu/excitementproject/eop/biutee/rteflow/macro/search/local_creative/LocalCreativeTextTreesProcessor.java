@@ -198,19 +198,22 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree);
 		TreeHistory currentHistory = new TreeHistory(TreeHistoryComponent.onlyFeatureVector(initialFeatureVector()));
 		Map<Integer,Double> currentFeatureVector = initialFeatureVector();
-		// Handle cases in which the original tree is identical to the hypothesis
+		// Handle cases in which the original tree is identical to the hypothesis.
 		if (0==getHeuristicGap(currentTreeAndParentMap))
 			addSingleGoalToResutls(new LocalCreativeTreeElement(currentTree, currentHistory, currentFeatureVector, 0, 0, null, getCost(currentFeatureVector), 0), sentence);
 		
-		// for GUI
+		// For GUI
 		double initialHeuristicGap = getHeuristicGap(currentTreeAndParentMap);
 		
+		// See JavaDoc of updateActualNumberOfLocalIterations() about this array
 		int[] localHistory = createLocalHistoryArray();
+		
+		// How many local iterations will be performed
 		int actualNumberOfLocalIterations = this.numberOfLocalIterations;
 		int currentIteration = 0;
 		while (getHeuristicGap(currentTreeAndParentMap)>0)
 		{
-			// for GUI
+			// For GUI
 			if (this.progressFire!=null)
 			{
 				double currentProgress = progressSoFar+progressSingleTree*((initialHeuristicGap-getHeuristicGap(currentTreeAndParentMap))/initialHeuristicGap);
@@ -229,13 +232,13 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			
 			++numberOfExpandedElements;
 
-			TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(currentTree, currentFeatureVector);
-//			Set<TreeAndFeatureVector> treeAsSet = new HashSet<TreeAndFeatureVector>();
-//			treeAsSet.add(treeAndFeatureVector);
-			Set<TreeAndFeatureVector> treeAsSet = new SingleItemSet<TreeAndFeatureVector>(treeAndFeatureVector);
+			// element = all the trees that will be generated in this global iteration
 			elements = new LinkedHashSet<LocalCreativeTreeElement>();
+			
+			// Run TreesGeneratorByOperations. First create the input parameters, then run it.
+			TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(currentTree, currentFeatureVector);
+			Set<TreeAndFeatureVector> treeAsSet = new SingleItemSet<TreeAndFeatureVector>(treeAndFeatureVector);
 			ImmutableList<SingleOperationItem> operations = script.getItemListForLocalCreativeIteration(currentIteration, 0, treeAsSet);
-			//if (logger.isDebugEnabled()){logger.debug("operations: "+operations.toString());}
 			TreesGeneratorByOperations generator =
 				new TreesGeneratorByOperations(
 						treeAndFeatureVector,
@@ -291,10 +294,8 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 
 			
 			// How many local iterations will be performed in the next
-			// local-lookahead loop? Well, this.numberOfLocalIterations. Right?
-			// Well, right, usually. However, for efficiency, the number might
-			// be smaller. See description in the JavaDoc of the method
-			// updateActualNumberOfLocalIterations()
+			// local-lookahead loop.
+			// See description in the JavaDoc of the method updateActualNumberOfLocalIterations()
 			updateLocalHistory(localHistory, bestElement);
 			actualNumberOfLocalIterations = updateActualNumberOfLocalIterations(currentIteration,localHistory, actualNumberOfLocalIterations);
 			
@@ -581,6 +582,10 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 		return ret;
 	}
 	
+	/**
+	 * This class holds a tree, and a running index (0,1,2,...).<BR>
+	 * It is used for log printouts ("Processing sentence #"+tree.getIndex()").
+	 */
 	private static final class TreeAndIndex
 	{
 		public TreeAndIndex(ExtendedNode tree, int index)
@@ -602,6 +607,11 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	}
 	
 	
+	/**
+	 * see #updateActualNumberOfLocalIterations
+	 * @param localHistory
+	 * @param bestElement
+	 */
 	@SuppressWarnings("unused")
 	private final void updateLocalHistory(int[] localHistory, LocalCreativeTreeElement bestElement)
 	{
@@ -659,6 +669,11 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 		}
 	}
 
+	/**
+	 * Array like [a,b,c,d] becomes [n,a,b,c], where n is the <code>newValue</code>.
+	 * @param array
+	 * @param newValue
+	 */
 	private static final void roleToRightAndAddToLeft(int[] array, int newValue)
 	{
 		
@@ -681,6 +696,12 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	}
 	
 	
+	/**
+	 * See {@link #updateActualNumberOfLocalIterations(int, int[], int)}
+	 * 
+	 * @return an array that stores the local iteration number in which the best
+	 * tree has been found in the recent global iterations.
+	 */
 	@SuppressWarnings("unused")
 	private static final int[] createLocalHistoryArray()
 	{

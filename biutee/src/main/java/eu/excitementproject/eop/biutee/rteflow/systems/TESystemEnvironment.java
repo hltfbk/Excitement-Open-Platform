@@ -1,7 +1,8 @@
 package eu.excitementproject.eop.biutee.rteflow.systems;
-import java.util.Set;
 
+import java.util.Set;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.generic.truthteller.SynchronizedAtomicAnnotator;
@@ -75,6 +76,14 @@ public class TESystemEnvironment
 	{
 		return parser;
 	}
+	public GapToolBox<ExtendedInfo, ExtendedNode> getGapToolBox()
+	{
+		throw new RuntimeException("Not yet implemented");
+		//return gapToolBox;
+	}
+
+
+
 
 
 
@@ -91,4 +100,6 @@ public class TESystemEnvironment
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
 	private final ParserSpecificConfigurations.PARSER parser;
+	@SuppressWarnings("unused")
+	private final GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = null;
 }

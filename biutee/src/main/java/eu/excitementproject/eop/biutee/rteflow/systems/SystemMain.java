@@ -4,11 +4,11 @@ import java.util.Date;
 
 import org.apache.log4j.Logger;
 
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsETETrainer;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 
 /**
  * The code that runs in the
@@ -34,7 +34,6 @@ public abstract class SystemMain
 			configurationFileName = args[0];
 			new LogInitializer(configurationFileName).init();
 			logger = Logger.getLogger(cls);
-			logger = Logger.getLogger(RTEPairsETETrainer.class);
 			
 			ExperimentManager.getInstance().start();
 			ExperimentManager.getInstance().setConfigurationFile(configurationFileName);
@@ -44,6 +43,7 @@ public abstract class SystemMain
 
 			Date startDate = new Date();
 			run(args);
+			GlobalMessages.getInstance().addToLogAndExperimentManager(logger);
 			Date endDate = new Date();
 			long elapsedSeconds = (endDate.getTime()-startDate.getTime())/1000;
 			logger.info(cls.getSimpleName()+" done. Time elapsed: "+elapsedSeconds/60+" minutes and "+elapsedSeconds%60+" seconds.");
