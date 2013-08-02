@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><Result EDA_Configuration="EditDistanceEDA_EN_Model_FixedWeightLemmaEditDistance_basic_Result.txt">
+<Total_Pairs>800</Total_Pairs>
+<Accuracy>0.6</Accuracy>
+<Positive_Pairs Number="410">
+<Precision>0.6081731</Precision>
+<Recall>0.6170732</Recall>
+<F_Measure>0.61259085</F_Measure>
+<Classified_As_Positive>253</Classified_As_Positive>
+<Classified_As_Negative>157</Classified_As_Negative>
+</Positive_Pairs>
+<Negative_Pairs Number="390">
+<Precision>0.5911458</Precision>
+<Recall>0.5820513</Recall>
+<F_Measure>0.5865633</F_Measure>
+<Classified_As_Positive>163</Classified_As_Positive>
+<Classified_As_Negative>227</Classified_As_Negative>
+</Negative_Pairs>
+</Result>
