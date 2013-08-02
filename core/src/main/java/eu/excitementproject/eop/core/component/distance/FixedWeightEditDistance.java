@@ -42,7 +42,6 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.it.Wik
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
 import eu.excitementproject.eop.common.utilities.Utils;
 
 
@@ -52,8 +51,6 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * T and H is the minimum number of operations required to convert T to H. 
  * FixedWeightedEditDistance implements the simplest form of weighted edit distance that simply uses a 
  * constant cost for each of the edit operations: match, substitute, insert, delete.
- * 
- * 
  * 
  * <h4>Relation to Simple Edit Distance</h4>
  * Weighted edit distance agrees with edit distance as a distance assuming the following weights:
@@ -67,12 +64,8 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * If the match weight of all tokens is zero, then the distance between a token sequence
  * and itself will be zero.  
  * 
- * Some parts of this code have been pulled from the EDITS software: http://edits.fbk.eu/.
- *
- * <B>Not thread safe!</B>
+ * @author Roberto Zanoli
  * 
- * @author  Roberto Zanoli
- * @version 0.1
  */
 public abstract class FixedWeightEditDistance implements DistanceCalculation {
 
@@ -181,8 +174,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 		    		if (language.equals("IT") && multiWordnet != null && !multiWordnet.equals("")) {
 			    		try {
 			    			
-//			    			initializeItalianWordnet(multiWordnet);
-			    			initializeEnglishWordnet(multiWordnet);
+			    			initializeWordnet(multiWordnet);
 			    			
 			    		} catch (LexicalResourceException e) {
 			    			throw new ComponentException(e.getMessage());
@@ -190,14 +182,18 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 		    		}
 			    	else if (language.equals("EN") && multiWordnet != null && !multiWordnet.equals("")) {
 			    		try {
-			    			initializeEnglishWordnet(multiWordnet);
+			    			
+			    			initializeWordnet(multiWordnet);
+			    			
 			    		} catch (LexicalResourceException e) {
 			    			throw new ComponentException(e.getMessage());
 			    		}
 			    	}
 			    	else if (language.equals("DE") && multiWordnet != null && !multiWordnet.equals("")) {
 			    		try {
+			    			
 			    			initializeGermaNet(multiWordnet);
+			    			
 			    		} catch (LexicalResourceException e) {
 			    			throw new ComponentException(e.getMessage());
 			    		}
@@ -224,14 +220,18 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 		    		
 		    		if (language.equals("IT")) {
 			    		try {
+			    			
 			    			initializeItalianWikipedia(dbConnection, dbUser, dbPasswd);
+			    			
 			    		} catch (LexicalResourceException e) {
 			    			throw new ComponentException(e.getMessage());
 			    		}
 		    		}
 		    		else if (language.equals("EN")) {
 			    		try {
+			    			
 			    			initializeEnglishWikipedia(dbConnection, dbUser, dbPasswd);
+			    			
 			    		} catch (LexicalResourceException e) {
 			    			throw new ComponentException(e.getMessage());
 			    		}
@@ -239,8 +239,6 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 	    		}
 	    		
     		}
-    			
-    		//logger.info("uscito da confifuration");
     		
     	} catch (ConfigurationException e) {
     		throw new ComponentException(e.getMessage());
@@ -328,7 +326,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 			for (int i = 0; i < lexR.size(); i++)
 				lexR.get(i).close();
 		} catch (Exception e) {
-			//logger.warning(e.getMessage());
+			logger.warning(e.getMessage());
     	}
 		
 		
@@ -352,7 +350,6 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 	    	distanceValue = distance(tTokensSequence, hTokensSequence);
 	    	
     	} catch (Exception e) {
-    		e.printStackTrace();
     		throw new DistanceComponentException(e.getMessage());
     	}
     	
@@ -612,41 +609,15 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     
     
     /**
-     * Initialize Italian Wordnet
-     * 
-     * @throws LexicalResourceException
-     */
-    private void initializeItalianWordnet(String path) throws LexicalResourceException {
-		
-    	logger.info("initializeItalianWordnet");
-    	
-    	try {
-    	
-			relations.add(WordNetRelation.SYNONYM);
-			relations.add(WordNetRelation.HYPERNYM);
-			
-			@SuppressWarnings("rawtypes")
-			LexicalResource resource = new WordnetLexicalResource(new File(path), false, false, relations, 3, WordnetDictionaryImplementationType.JMWN);
-			
-			lexR.add(resource);
-			
-		} catch (Exception e) {
-			throw new LexicalResourceException(e.getMessage());
-		}
-		
-    }
-    
-    
-    /**
      * Initialize English Wordnet
      * 
      * @param path the path of the resource
      * 
      * @throws LexicalResourceException
      */
-    private void initializeEnglishWordnet(String path) throws LexicalResourceException {
+    private void initializeWordnet(String path) throws LexicalResourceException {
     	
-    	logger.info("initializeEnglishWordnet()");
+    	logger.info("initializeWordnet()");
     	
     	try {
     	
@@ -781,7 +752,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 			
 			for (int i = 0; i < lexR.size(); i++) {
 				rules = lexR.get(i).getRules(leftLemma, leftPos, rightLemma, rightPos);
-				if (rules != null && rules.size() >0) {
+				if (rules != null && rules.size() > 0) {
 					return true;
 				}
 			}
