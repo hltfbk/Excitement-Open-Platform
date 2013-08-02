@@ -11,9 +11,8 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
  * The accuracy is calculated by running EditDistanceEDA with different weights of the edit
  * distance operations as calculated by PSO.
  * 
- * @author  Roberto Zanoli
+ * @author Roberto Zanoli
  * 
- * @version 0.1
  */
 public class EditDistanceFitnessFunction extends FitnessFunction {
 	
@@ -75,7 +74,7 @@ public class EditDistanceFitnessFunction extends FitnessFunction {
 		
 		/*
 		 * this is the measure to be optimized by PSO; the smaller the value the better
-		 * the result.
+		 * the result. Basically it is the error done by the EDA on the training data set.
 		 */
 		this.value = 1 - editDistanceEDA.getTrainingAccuracy();
 		

@@ -52,7 +52,6 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * FixedWeightedEditDistance implements the simplest form of weighted edit distance that simply uses a 
  * constant cost for each of the edit operations: match, substitute, insert, delete.
  * 
- * 
  * <h4>Relation to Simple Edit Distance</h4>
  * Weighted edit distance agrees with edit distance as a distance assuming the following weights:
  * match weight is 0, substitute, insert and delete weights are <code>1</code>.
@@ -65,8 +64,8 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * If the match weight of all tokens is zero, then the distance between a token sequence
  * and itself will be zero.  
  * 
- * @author  Roberto Zanoli
- * @version 0.1
+ * @author Roberto Zanoli
+ * 
  */
 public abstract class FixedWeightEditDistance implements DistanceCalculation {
 
