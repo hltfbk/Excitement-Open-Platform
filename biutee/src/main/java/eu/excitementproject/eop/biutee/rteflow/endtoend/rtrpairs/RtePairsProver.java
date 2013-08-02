@@ -4,6 +4,7 @@ import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
+import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
@@ -48,14 +49,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 				script.setHypothesisInformation(hypothesisInformation);
 			}
 			
-			ExtendedPairData pairData = instance.getPairData();
-			LocalCreativeTextTreesProcessor processor = new LocalCreativeTextTreesProcessor(
-					pairData.getPair().getText(), pairData.getPair().getHypothesis(),
-					pairData.getTextTrees(), pairData.getHypothesisTree(),
-					pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),
-					classifierForSearch, getLemmatizer(), script, teSystemEnvironment
-					);
-			processor.setGlobalPairInformation(new GlobalPairInformation(pairData.getPair().getAdditionalInfo()));
+			TextTreesProcessor processor = createProcessor(instance,script,classifierForSearch);
 			processor.process();
 			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory());
 			return proof;
@@ -64,6 +58,37 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 		{
 			throw new BiuteeException("Prover failed. Please see nested exception.",e);
 		}
+	}
+	
+	
+	protected TextTreesProcessor createProcessor(THPairInstance instance,
+			OperationsScript<Info, BasicNode> script,
+			LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
+	{
+		ExtendedPairData pairData = instance.getPairData();
+		LocalCreativeTextTreesProcessor processor = new LocalCreativeTextTreesProcessor(
+				pairData.getPair().getText(), pairData.getPair().getHypothesis(),
+				pairData.getTextTrees(), pairData.getHypothesisTree(),
+				pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),
+				classifierForSearch, getLemmatizer(), script, teSystemEnvironment
+				);
+		processor.setGlobalPairInformation(createGlobalPairInformation(pairData));
+		return processor;
+	}
+	
+	protected GlobalPairInformation createGlobalPairInformation(ExtendedPairData pairData) throws BiuteeException
+	{
+		String datasetName = pairData.getDatasetName();
+		GlobalPairInformation globalPairInformation = null;
+		if  (null==datasetName)
+		{
+			globalPairInformation = new GlobalPairInformation(pairData.getPair().getAdditionalInfo(),null);
+		}
+		else
+		{
+			globalPairInformation = new GlobalPairInformation(pairData.getPair().getAdditionalInfo(),datasetName);
+		}
+		return globalPairInformation;
 	}
 
 
