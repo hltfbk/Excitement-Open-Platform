@@ -18,6 +18,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRu
  * Demo for LexResource
  * 
  * @author Amnon Lotan
+ * @author Vivi Nastase (FBK)
+ * 
  * @since 06/05/2011
  * 
  */

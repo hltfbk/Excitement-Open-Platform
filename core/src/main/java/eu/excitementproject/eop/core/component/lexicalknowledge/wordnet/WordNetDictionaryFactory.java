@@ -8,7 +8,6 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Dictionary;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetInitializationException;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordnetDictionaryImplementationType;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.ext_jwnl.ExtJwnlDictionary;
-import eu.excitementproject.eop.core.utilities.dictionary.wordnet.jmwn.JmwnDictionaryManager;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.jwi.JwiDictionary;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.jwnl.JwnlDictionaryManager;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.jwnl.JwnlDictionaryManager.JwnlDictionaryManagementType;
@@ -42,9 +41,6 @@ public class WordNetDictionaryFactory {
 				return new JwnlDictionaryManager(JwnlDictionaryManagementType.DISK, JwnlDictionarySupportedVersion.VER_30, wnDictionaryDir).newDictionary();
 			case EXT_JWNL:
 				return new ExtJwnlDictionary(wnDictionaryDir);
-			case JMWN:
-				// wnDictionaryDir should be here the jMultiWordNet config file
-				return new JmwnDictionaryManager(wnDictionaryDir).newDictionary();
 			default:
 				throw new WordNetInitializationException("Unsupported WordnetDictionaryImplementationType: " + wordnetDictionaryImplementation + 
 						". Add code here to supprt it.");
