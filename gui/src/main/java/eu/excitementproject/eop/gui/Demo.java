@@ -42,7 +42,7 @@ import static java.nio.file.StandardCopyOption.*;
 
 /**
  * 
- * @author vivi@fbk
+ * @author Vivi Nastase (FBK)
  *
  * Class for processing data with the EOP. 
  * 

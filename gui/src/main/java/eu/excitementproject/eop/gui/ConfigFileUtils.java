@@ -18,6 +18,15 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
+/**
+ * Utils class for the configuration file, specifically for the Demo.
+ * Used to obtain the value of specific attributes, needed for running the EOP platform:
+ *    - the class name of the activatedEDA
+ *    - the class name of the activatedLAP
+ * 
+ * @author Vivi Nastase (FBK)
+ *
+ */
 public class ConfigFileUtils {
 	
 	public static String configTag = "PlatformConfiguration";
@@ -190,7 +199,7 @@ public class ConfigFileUtils {
 	
 	/*
 	 * parse the xml configuration file
-	 * @param f
+	 * @param file
 	 * @throws ConfigurationException
 	 */
 	public static Document parse(File file) {

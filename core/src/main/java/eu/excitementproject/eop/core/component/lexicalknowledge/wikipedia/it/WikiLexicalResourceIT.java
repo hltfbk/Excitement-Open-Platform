@@ -35,6 +35,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRu
  * Retrieved rules are sorted according to their rank, in a descending order.
  * 
  * @author Amnon Lotan
+ * @author Vivi Nastase (FBK)
  *
  * @since Dec 4, 2011
  */

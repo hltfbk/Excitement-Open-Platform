@@ -5,6 +5,13 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * TextProAnnotation object -- an intermediary step between TextPro's textual output 
+ * and the Annotation types added to the CAS
+ * 
+ * @author Vivi Nastase (FBK)
+ *
+ */
 public class TextProAnnotation {
 
 	// the index of each annotation type (sentence, token, lemma, ...)
@@ -27,6 +34,12 @@ public class TextProAnnotation {
 		
 	String originalText = "";
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param originalText -- the text to be annotated
+	 * @param textProResult -- the textual output produced by TextPro 
+	 */
 	public TextProAnnotation(String originalText, String textProResult){
 		
 		this.textProResult = textProResult.split("\n");
@@ -37,10 +50,18 @@ public class TextProAnnotation {
 	}
 	
 	
+	/**
+	 * 
+	 * @return the types of annotations (as strings) produced by TextPro
+	 */
 	public Set<String> getAnnotationTypes(){
 		return annType.keySet();
 	}
 	
+	/**
+	 * Sets the annotation types produced by TextPro, based on the line in 
+	 * the TextPro output that contains this information
+	 */
 	public void setAnnotationTypes(){
 		Boolean found = false;
 		int i = 0;
@@ -61,6 +82,11 @@ public class TextProAnnotation {
 		}
 	}
 	
+	/**
+	 * @param type -- the name of the desired annotation
+	 * @return the set of span-indexed tags (the begin and end positions represented as integer arrays) 
+	 * 			for the desired annotation
+	 */
 	public HashMap<Integer[],String> getAnnotation(String type) {
 		if (annotations.containsKey(type)) 
 			return annotations.get(type);
@@ -69,6 +95,11 @@ public class TextProAnnotation {
 	}
 
 	
+	/**
+	 * 
+	 * @param value -- a row of TextPro annotation
+	 * @return the named entity type value
+	 */
 	public String getNEtype(String value){
 		
 		if (value.matches(".*?\\t.*")) 
@@ -77,6 +108,11 @@ public class TextProAnnotation {
 		return "UNKNOWN";
 	}
 	
+	/**
+	 * 
+	 * @param index -- an integer array that contains a span (begin and end) 
+	 * @return the named entity annotation associated with the given span, if it exists, "UNKNOWN" otherwise
+	 */
 	public String getNEtype(Integer[] index){
 		if (annotations.get(ne).containsKey(index))
 			return getNEtype(annotations.get(ne).get(index));
@@ -85,6 +121,11 @@ public class TextProAnnotation {
 	}
 	
 	
+	/**
+	 * 
+	 * @param index -- an integer array that contains a span (begin and end)
+	 * @return the token associated with the given span, if it exists, null otherwise
+	 */
 	public String getToken(Integer[] index) {
 		if (annotations.get(token).containsKey(index)) 
 			return annotations.get(token).get(index);
@@ -93,6 +134,11 @@ public class TextProAnnotation {
 	}
 	
 	
+	/**
+	 * 
+	 * @param index -- the position of a token
+	 * @return the length of a token
+	 */
 	public Integer getTokenLength(Integer index) {
 		if (annotations.get(token).containsKey(index)) {
 			return annotations.get(token).get(index).length();
@@ -100,7 +146,15 @@ public class TextProAnnotation {
 		return 0;
 	}
 	
-	
+	/**
+	 * Return the string associated with a given span, and of the required type. 
+	 * If the type is "token", "lemma" or "pos", the token is returned. 
+	 * Otherwise return the value of the annotation associated with the given span.
+	 * 
+	 * @param index -- the span of the desired annotation
+	 * @param type -- the annotation type
+	 * @return the value associated with the given span, for the desired annotation
+	 */
 	public String getString(Integer[] index, String type) {
 
 		if (type.matches(token) || type.matches(lemma) || type.matches(pos)) 
@@ -114,11 +168,18 @@ public class TextProAnnotation {
 		return str;
 	}
 	
-	
+	/**
+	 * 
+	 * @param type -- the annotation type
+	 * @return true if the annotation type exists, false otherwise
+	 */
 	public Boolean hasAnnotation(String type) {
 		return annotations.containsKey(type);
 	}
 
+	/**
+	 * Loads TextPro's column annotations into a HashMap
+	 */
 	public void loadAnnotations(){
 		annotations = new HashMap<String,HashMap<Integer[],String>>();
 		for (String at: annType.keySet()) {
@@ -126,6 +187,10 @@ public class TextProAnnotation {
 		}
 	}
 	
+	/**
+	 * Loads the annotations of the given type into the annotations HashMap 
+	 * @param type -- the desired annotation type
+	 */
 	public void loadAnnotations(String type) {
 		HashMap<Integer[],String> ann = new HashMap<Integer[],String>();
 		String neType = "";

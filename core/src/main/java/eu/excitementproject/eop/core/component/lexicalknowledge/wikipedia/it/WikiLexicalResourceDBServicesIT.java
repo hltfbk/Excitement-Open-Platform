@@ -21,7 +21,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRu
  * <b>NOTE</b> Wiki supports only nouns. In case the user gives a POS that is not a noun nor null, the class returns a an empty list (not null).<br> 
  * <b>NOTE 2</b> This class is not thread safe, if you need multi-threaded code consider using {@link WikiLexicalResourceDBServicesThreadSafeIT}.
  * @author Amnon Lotan
- *
+ * @author Vivi Nastase (FBK)
+ * 
  * @since Jan 11, 2012
  */
 public class WikiLexicalResourceDBServicesIT extends WikiLexicalResourceDBServices{
