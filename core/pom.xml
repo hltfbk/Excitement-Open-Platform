@@ -75,9 +75,9 @@
 			</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>weka</groupId>
-			<artifactId>weka</artifactId>
-			<version>3.6.3</version>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>weka-stable</artifactId>
+			<version>3.6.9</version>
 
 		</dependency>
 	</dependencies>
