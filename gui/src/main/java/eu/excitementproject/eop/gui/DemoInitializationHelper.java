@@ -14,6 +14,15 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.helpers.InitializationHelper;
 
+/**
+ * 
+ * Initialization helper for EDAs, used by the Demo class (@link eu.excitementproject.eop.gui.Demo) 
+ * It extends the InitializationHelper class (@link eu.excitementproject.eop.core.helpers.InitializationHelper)
+ * 
+ * @author Vivi Nastase (FBK)
+ *
+ * @param <T> the decision type returned by the EDA
+ */
 public class DemoInitializationHelper<T extends TEDecision> extends InitializationHelper<T>{
 
 	String configTag = "PlatformConfiguration";

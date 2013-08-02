@@ -2,6 +2,12 @@ package eu.excitementproject.eop.gui;
 
 import org.kohsuke.args4j.*;
 
+/**
+ * Command line options for running the Demo class (@link eu.excitementproject.eop.gui.Demo)
+ * 
+ * @author Vivi Nastase (FBK)
+ *
+ */
 public class DemoCmdOptions {
 
 	@Option(name="-config", usage="Configuration file for the EDA")
