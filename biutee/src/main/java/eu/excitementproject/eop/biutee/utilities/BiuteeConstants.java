@@ -52,6 +52,9 @@ public class BiuteeConstants
 	 */
 	public static final boolean USE_MLE_FOR_INSERTION_COST = true;
 
+	// if <=0 it means all.
+	public static final int FILTER_ENABELED_NUMBER_OF_TREES_TO_PROCESS = -1;
+
 	
 	public static final int LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS = 3;
 	
@@ -63,8 +66,6 @@ public class BiuteeConstants
 	 */
 	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 3;
 	
-	// if <=0 it means all.
-	public static final int LOCAL_CREATIVE_NUMBER_OF_TREES_TO_PROCESS = -1;
 
 
 	public static final int FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT = 3;
