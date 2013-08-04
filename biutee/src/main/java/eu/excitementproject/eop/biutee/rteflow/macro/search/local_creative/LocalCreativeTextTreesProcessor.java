@@ -201,7 +201,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 		Map<Integer,Double> currentFeatureVector = initialFeatureVector();
 		boolean gapMode_GapIsDecreasing = true;
 		LocalCreativeTreeElement lastBestAdded_inGapMode = null;
-		if (gapMode)
+		if (hybridGapMode)
 		{
 			lastBestAdded_inGapMode = new LocalCreativeTreeElement(currentTree, currentHistory, currentFeatureVector, 0, 0, null, getCost(currentFeatureVector), 0);
 			addSingleGoalToResutls(lastBestAdded_inGapMode, sentence);			
@@ -287,7 +287,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			double currentTreeCost = getCost(currentFeatureVector);
 			double currentTreeGap = getHeuristicGap(currentTreeAndParentMap);
 			
-			if (gapMode)
+			if (hybridGapMode)
 			{
 				LocalCreativeTreeElement elementWithSmallestGap = pickElementWithSmallestGapMeasure(elements);
 				if (elementWithSmallestGap.getGap()<currentTreeGap)
@@ -328,7 +328,8 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 			updateLocalHistory(localHistory, bestElement);
 			actualNumberOfLocalIterations = updateActualNumberOfLocalIterations(currentIteration,localHistory, actualNumberOfLocalIterations);
 			
-			if (gapMode)
+			// Add every element that can be the final result - to the field "results".
+			if (hybridGapMode)
 			{
 				lastBestAdded_inGapMode = calculateBestResultElement(elements);
 				if (lastBestAdded_inGapMode!=null)
@@ -362,7 +363,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	
 	private boolean continueGlobalIteration(TreeAndParentMap<ExtendedInfo, ExtendedNode> currentTreeAndParentMap, boolean gapMode_GapIsDecreasing) throws GapException
 	{
-		if (gapMode)
+		if (hybridGapMode)
 		{
 			return gapMode_GapIsDecreasing;
 		}
@@ -500,7 +501,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 		return ret;
 	}
 	
-	private void addGoalsToResults(Set<LocalCreativeTreeElement> goalElements, String origianlSentence) throws TeEngineMlException
+	private void addGoalsToResults(Set<LocalCreativeTreeElement> goalElements, String origianlSentence) throws TeEngineMlException, TreeAndParentMapException
 	{
 		for (LocalCreativeTreeElement element : goalElements)
 		{
@@ -508,11 +509,20 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 		}
 	}
 	
-	private void addSingleGoalToResutls(LocalCreativeTreeElement element, String origianlSentence) throws TeEngineMlException
+	private void addSingleGoalToResutls(LocalCreativeTreeElement element, String origianlSentence) throws TeEngineMlException, TreeAndParentMapException
 	{
+		Map<Integer, Double> featureVector = null;
+		if (hybridGapMode)
+		{
+			featureVector = getFeatureVectorOfTransformationsPlusGap(element);
+		}
+		else
+		{
+			featureVector=element.getFeatureVector();
+		}
 		this.results.add(
 				new LocalCreativeSearchResult(
-						new TreeAndFeatureVector(element.getTree(), element.getFeatureVector()),
+						new TreeAndFeatureVector(element.getTree(), featureVector),
 						origianlSentence,
 						element.getHistory()
 						)
@@ -554,7 +564,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	 */
 	protected double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree) throws GapException
 	{
-		if (gapMode)
+		if (hybridGapMode)
 		{
 			return gapTools.getGapHeuristicMeasure().measure(tree);
 		}
@@ -713,7 +723,7 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	@SuppressWarnings("unused")
 	private final int updateActualNumberOfLocalIterations(int currentIteration, int[] localHistory, int currentActualNumberOfLocalIterations)
 	{
-		if (gapMode) return this.numberOfLocalIterations;
+		if (hybridGapMode) return this.numberOfLocalIterations;
 		
 		if (LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY<=0)
 		{
@@ -736,29 +746,40 @@ public class LocalCreativeTextTreesProcessor extends AbstractTextTreesProcessor 
 	 * Used only in gapMode
 	 * @param setOfElements
 	 * @return
+	 * @throws TreeAndParentMapException 
+	 * @throws ClassifierException 
+	 * @throws TeEngineMlException 
 	 */
-	private LocalCreativeTreeElement calculateBestResultElement(Set<LocalCreativeTreeElement> setOfElements)
+	private LocalCreativeTreeElement calculateBestResultElement(Set<LocalCreativeTreeElement> setOfElements) throws ClassifierException, TreeAndParentMapException, TeEngineMlException
 	{
 		LocalCreativeTreeElement best = null;
-		double lowestCost = 0.0; 
+		double highestConfidence = 0.0;
+		 
 		for (LocalCreativeTreeElement element : setOfElements)
 		{
-			double currentCost = element.getCost();
+			double currentConfidence = this.classifier.classify(getFeatureVectorOfTransformationsPlusGap(element));
 			if (null==best)
 			{
 				best = element;
-				lowestCost = currentCost;
+				highestConfidence = currentConfidence;
 			}
 			else
 			{
-				if (currentCost<lowestCost)
+				if (highestConfidence<currentConfidence)
 				{
 					best = element;
-					lowestCost = currentCost;
+					highestConfidence = currentConfidence;
 				}
 			}
 		}
 		return best;
+	}
+	
+	private Map<Integer, Double> getFeatureVectorOfTransformationsPlusGap(LocalCreativeTreeElement element) throws TreeAndParentMapException, TeEngineMlException
+	{
+		if (!hybridGapMode) throw new TeEngineMlException("Internal bug! This method should be called only in hybrid-gap mode.");
+		TreeAndParentMap<ExtendedInfo, ExtendedNode> tapm = new TreeAndParentMap<ExtendedInfo, ExtendedNode>(element.getTree());
+		return gapTools.getGapFeaturesUpdate().updateForGap(tapm, element.getFeatureVector());
 	}
 	
 	private LocalCreativeTreeElement pickElementWithSmallestGapMeasure(Set<LocalCreativeTreeElement> setOfElements)

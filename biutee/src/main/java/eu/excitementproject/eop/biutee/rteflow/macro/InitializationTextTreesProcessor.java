@@ -124,7 +124,7 @@ public class InitializationTextTreesProcessor
 		this.lemmatizer = lemmatizer;
 		this.script = script;
 		this.teSystemEnvironment = teSystemEnvironment;
-		this.gapMode = this.teSystemEnvironment.getGapToolBox().getGapMode();
+		this.hybridGapMode = this.teSystemEnvironment.getGapToolBox().isHybridMode();
 	}
 	
 	/**
@@ -294,7 +294,7 @@ public class InitializationTextTreesProcessor
 		// which will be used in the proof-construction. 
 		originalTreesAfterInitialization = new OriginalTreesAfterInitialization(originalTextTrees, hypothesisTree, originalMapTreesToSentences,this.coreferenceInformation);
 
-		if (teSystemEnvironment.getGapToolBox().getGapMode())
+		if (teSystemEnvironment.getGapToolBox().isHybridMode())
 		{
 			gapTools = teSystemEnvironment.getGapToolBox().getGapToolsFactory().createInstances(hypothesis,this.classifier);
 		}
@@ -767,7 +767,7 @@ public class InitializationTextTreesProcessor
 	protected Lemmatizer lemmatizer;
 	protected OperationsScript<Info, BasicNode> script;
 	protected TESystemEnvironment teSystemEnvironment;
-	protected final boolean gapMode;
+	protected final boolean hybridGapMode;
 	
 	protected List<ExtendedNode> surroundingsContext = null;
 	protected boolean richInformationInTreeHistory = false;

@@ -14,6 +14,6 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 @ThreadSafe
 public interface GapToolBox<I, S extends AbstractNode<I, S>>
 {
-	public boolean getGapMode() throws GapException;
+	public boolean isHybridMode() throws GapException;
 	public GapToolsFactory<I, S> getGapToolsFactory() throws GapException;
 }
