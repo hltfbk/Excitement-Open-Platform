@@ -258,12 +258,12 @@ public class ArkrefClient
 				// Build docked output
 				Tree docTree = arkrefDocument.getTree();
 				List<Word> words = arkrefDocument.allWords();
-				//IntPair intpair = words.get(0).node().getSpan();
 				Map<Integer, Integer> leafNumToOrdinal = new HashMap<Integer, Integer>(words.size());
 				List<String> tokens = new ArrayList<String>();
 				int i=0;
 				for (Word word : words) {
 					String token = word.token;
+					// Perform some needed arkref-specific conversions
 					if (CONVERSIONS.containsKey(token)) {
 						token = CONVERSIONS.get(token);
 					}
@@ -279,14 +279,6 @@ public class ArkrefClient
 					Tree node = mention.node();
 					List<Tree> leaves = node.getLeaves();
 					
-//					List<String> tokens = new ArrayList<String>(leaves.size());
-//					for (Tree leaf : leaves) {
-//						String token = leaf.nodeString();
-//						if (CONVERSIONS.containsKey(token)) {
-//							token = CONVERSIONS.get(token);
-//						}
-//						tokens.add(token);
-//					}
 					int startNodeNum = leaves.get(0).nodeNumber(docTree);
 					int startOffset = offsets.get(leafNumToOrdinal.get(startNodeNum)).getCharOffsetStart();
 					int endNodeNum = leaves.get(leaves.size()-1).nodeNumber(docTree);
@@ -306,6 +298,7 @@ public class ArkrefClient
 					DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
 					mentionsInGroup.add(dockedMention);
 				}
+				
 				// Remove groups with only a single mention
 				Iterator<Entry<String, List<DockedMention>>> iter = arkrefDockedOutput.entrySet().iterator();
 				while (iter.hasNext()) {
@@ -318,7 +311,6 @@ public class ArkrefClient
 			}
 			catch(DockedTokenFinderException e) {
 				throw new ArkrefClientException("ArkRef client failed. See nested exception.", e);
-////////////////////////////				
 			}
 			catch(RuntimeException e) // if run-time exception has been thrown - throw a new exception with very detailed information.
 			{
