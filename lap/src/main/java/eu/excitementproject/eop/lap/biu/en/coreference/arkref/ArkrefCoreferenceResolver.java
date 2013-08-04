@@ -2,13 +2,10 @@ package eu.excitementproject.eop.lap.biu.en.coreference.arkref;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
 import java.util.List;
-import java.util.UUID;
 
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.coreference.TreeCoreferenceInformationUtils;
@@ -36,12 +33,22 @@ public class ArkrefCoreferenceResolver extends CoreferenceResolver<BasicNode>
 	
 	/////////////////////////////////// PUBLIC //////////////////////////////////////
 	
-	public ArkrefCoreferenceResolver() throws ArkrefInputFileManagerException, IOException {
-		fileManager = new ArkrefInputFileManager();
+	public ArkrefCoreferenceResolver() throws ArkrefClientException, IOException {
+		try {
+			fileManager = new ArkrefInputFileManager();
+		}
+		catch (ArkrefInputFileManagerException e) {
+			throw new ArkrefClientException("Problem with input file, see inner exception.", e);
+		}
 	}
 	
-	public ArkrefCoreferenceResolver(File workDirectory) throws ArkrefInputFileManagerException, IOException{
-		fileManager = new ArkrefInputFileManager(workDirectory);
+	public ArkrefCoreferenceResolver(File workDirectory) throws ArkrefClientException, IOException{
+		try {
+			fileManager = new ArkrefInputFileManager(workDirectory);
+		}
+		catch (ArkrefInputFileManagerException e) {
+			throw new ArkrefClientException("Problem with input file, see inner exception.", e);
+		}
 	}
 	
 	@Override

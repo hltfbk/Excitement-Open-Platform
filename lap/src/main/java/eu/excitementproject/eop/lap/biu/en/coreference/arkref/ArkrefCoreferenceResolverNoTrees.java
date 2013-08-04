@@ -28,8 +28,13 @@ public class ArkrefCoreferenceResolverNoTrees extends CoreferenceResolverNoTrees
 
 	ArkrefInputFileManager fileManager;
 	
-	public ArkrefCoreferenceResolverNoTrees() throws ArkrefInputFileManagerException, IOException {
-		fileManager = new ArkrefInputFileManager();
+	public ArkrefCoreferenceResolverNoTrees() throws ArkrefClientException, IOException {
+		try {
+			fileManager = new ArkrefInputFileManager();
+		}
+		catch (ArkrefInputFileManagerException e) {
+			throw new ArkrefClientException("Problem with input file, see inner exception.", e);
+		}
 	}
 	
 	@Override
