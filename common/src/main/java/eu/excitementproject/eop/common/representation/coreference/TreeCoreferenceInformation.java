@@ -11,6 +11,9 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
@@ -274,6 +277,16 @@ public class TreeCoreferenceInformation<T> implements Serializable
 	 */
 	@Override
 	public String toString() {
+		return toStringOptionalWriteSubtrees(false);
+	}	
+	
+	public String toStringWriteSubtrees() {
+		return toStringOptionalWriteSubtrees(true);
+	}
+	
+	//////////////////// PROTECTED PART ////////////////////////////
+	
+	protected <I extends Info, S extends AbstractNode<I,?>> String toStringOptionalWriteSubtrees(boolean writeSubtrees) {
 		StringWriter writer = new StringWriter();
 		writer.write("TreeCoreferenceInformation - coref groups and their members:\n");
 		
@@ -289,14 +302,26 @@ public class TreeCoreferenceInformation<T> implements Serializable
 				return // instead of throwing an exception
 				"Cannot print coreference information due to an exception:\n"+ExceptionUtil.getStackTrace(e);
 			}
-			for (T node :  group)
-				writer.write("\t\t"+node+"\n");
+			for (T node :  group) {
+				String nodeStr = null;
+				if (writeSubtrees) {
+					
+					// If "node" is indeed not of a proper type S, we want
+					// there to be a ClassCastException, as we cannot print
+					// it's subtree (it doesn't make any sense)
+					@SuppressWarnings("unchecked")
+					S sNode = (S) node;
+					
+					nodeStr = "* " + AbstractNodeUtils.getIndentedString(sNode, "  ", "\t\t  ");
+				}
+				else {
+					nodeStr = node.toString();
+				}
+				writer.write("\t\t"+nodeStr+"\n");
+			}
 		}
 		return writer.toString();
 	}	
-
-	//////////////////// PROTECTED PART ////////////////////////////
-	
 	protected Map<T, Integer> mapNodeToId = new LinkedHashMap<T, Integer>();
 	protected Map<Integer,Set<T>> mapIdToCorefGroups = new LinkedHashMap<Integer, Set<T>>();
 	
