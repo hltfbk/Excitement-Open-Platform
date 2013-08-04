@@ -21,6 +21,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.lap.LAPAccess;
+import eu.excitementproject.eop.lap.biu.test.BIUFullLAPConfigured;
 import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 
 /**

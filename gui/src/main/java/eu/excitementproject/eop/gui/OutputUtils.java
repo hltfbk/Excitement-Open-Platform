@@ -22,6 +22,12 @@ import org.apache.uima.jcas.cas.TOP;
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.TEDecision;
 
+/**
+ * Some utils for generating the results XML for display for the online demo
+ * 
+ * @author Vivi Nastase (FBK)
+ *
+ */
 public class OutputUtils {
 	
 	

@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.uima;
+package eu.excitementproject.eop.lap.biu.test;
 
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.biu.uima.BIUFullLAP;
