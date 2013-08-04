@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.biu.uima;
+package eu.excitementproject.eop.lap.biu.test;
 
 import java.io.File;
 import java.util.ArrayList;
