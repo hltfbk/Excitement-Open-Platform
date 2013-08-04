@@ -19,6 +19,7 @@ import org.uimafit.util.JCasUtil;
 import weka.classifiers.Classifier;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.core.Attribute;
+import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.SparseInstance;
@@ -127,9 +128,14 @@ public class DKProSimilarityClassificationEDA
 		
 		// Read gold answers
 		File goldAnswersFile = new File(modelDir + "/" + this.getClass().getSimpleName() + "_goldAnswers.txt");
-		List<String> goldAnswers;
+		FastVector goldAnswers;
 		try {
-			goldAnswers = FileUtils.readLines(goldAnswersFile);
+			List<String> lines = FileUtils.readLines(goldAnswersFile);
+			goldAnswers = new FastVector(lines.size());
+			
+			for (String line : lines)
+				goldAnswers.addElement(line);
+			
 		} catch (IOException e) {
 			throw new EDAException(e);
 		}
@@ -138,14 +144,14 @@ public class DKProSimilarityClassificationEDA
 		List<Double> scores = getFeatures(jcas);
 		
 		// Define the attributes
-		ArrayList<Attribute> attrs = new ArrayList<Attribute>();
+		FastVector attrs = new FastVector();
 
 		for (int i = 0; i < getComponents().size(); i++)
 		{
 			ScoringComponent component = getComponents().get(i);
-			attrs.add(new Attribute(component.getComponentName()));
+			attrs.addElement(new Attribute(component.getComponentName()));
 		}
-		attrs.add(new Attribute("gold", goldAnswers));
+		attrs.addElement(new Attribute("gold", goldAnswers));
 		
 		// Build up the "dataset" which contains a single instance
 		Instances instances = new Instances("EOP", attrs, 1);
@@ -155,15 +161,15 @@ public class DKProSimilarityClassificationEDA
 		for (int i = 0; i < scores.size(); i++)
 		{
 			Double score = scores.get(i);
-			instance.setValue(attrs.get(i), score);
+			instance.setValue((Attribute) attrs.elementAt(i), score);
 		}
-		instance.setValue(attrs.get(attrs.size() - 1), 0);	// gold
+		instance.setValue((Attribute) attrs.elementAt(attrs.size() - 1), 0);	// gold
 		instances.add(instance);
 
 		// Classify the unlabeled instance (i.e. the given text pair)
 		double result;
 		try {
-			result = classifier.classifyInstance(instances.get(0));
+			result = classifier.classifyInstance(instances.firstInstance());
 		} catch (Exception e) {
 			throw new EDAException(e);
 		}
@@ -172,14 +178,14 @@ public class DKProSimilarityClassificationEDA
 		Double confidence = -1.0;
 		try {
 			confidence = Math.max(
-					classifier.distributionForInstance(instances.get(0))[0],
-					classifier.distributionForInstance(instances.get(0))[1]);
+					classifier.distributionForInstance(instances.firstInstance())[0],
+					classifier.distributionForInstance(instances.firstInstance())[1]);
 		} catch (Exception e) {
 			throw new EDAException(e);
 		}
 		
 		// Determine the result label
-		String label = instances.get(0).classAttribute().value(new Double(result).intValue()).toLowerCase();
+		String label = instances.firstInstance().classAttribute().value(new Double(result).intValue()).toLowerCase();
 		
 		// Convert to a DecisionLabel instance
 		DecisionLabel dLabel;

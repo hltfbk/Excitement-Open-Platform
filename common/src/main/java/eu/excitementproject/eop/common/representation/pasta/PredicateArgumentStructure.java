@@ -47,6 +47,10 @@ public class PredicateArgumentStructure<I extends Info, S extends AbstractNode<I
 		return clausalArguments;
 	}
 
+	@Override
+	public String toString() {
+		return PredicateArgumentStructurePrinter.getString(this);
+	}
 
 
 	private final TreeAndParentMap<I, S> tree;
