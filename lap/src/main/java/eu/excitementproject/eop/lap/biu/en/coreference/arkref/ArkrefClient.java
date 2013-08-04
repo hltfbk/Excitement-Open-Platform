@@ -6,9 +6,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.SortedMap;
 import java.util.Stack;
 
 import arkref.analysis.FindMentions;
@@ -18,7 +22,15 @@ import arkref.data.Document;
 import arkref.data.EntityGraph;
 import arkref.data.Mention;
 import arkref.data.Sentence;
+import arkref.data.Word;
 import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.util.IntPair;
+import eu.excitementproject.eop.common.representation.coreference.DockedMention;
+import eu.excitementproject.eop.common.utilities.DockedToken;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinder;
+import eu.excitementproject.eop.common.utilities.DockedTokenFinderException;
+import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.common.utilities.StringUtilException;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
@@ -57,7 +69,6 @@ public class ArkrefClient
 	}
 
 	// CONSTRUCTOR & METHODS
-	
 	
 	/**
 	 * Constructs {@link ArkrefClient} with the text as string.
@@ -124,6 +135,22 @@ public class ArkrefClient
 	{
 		return arkrefStackOutput;
 	}
+	
+	/**
+	 * Returns the Arkref's output, as map from a coreference group tag (<code>String</code>)
+	 * to a list of all of {@link DockedMention} instances in the group.
+	 * First call {@link #process()} method. Then call this method.
+	 * @return
+	 * @throws ArkrefClientException
+	 */
+	public  Map<String,List<DockedMention>> getArkrefDockedOutput() throws ArkrefClientException
+	{
+		if (processDone)
+			return this.arkrefDockedOutput;
+		else
+			throw new ArkrefClientException("process() was not called.");
+	}
+
 	
 		
 	////////////////// PROTECTED & PRIVATE PART //////////////////////
@@ -226,6 +253,64 @@ public class ArkrefClient
 						arkrefStackOutput.add(mapLeavesToWords.get(leaf));
 					}
 				}
+				
+// TODO: Ofer - finish implementing coref
+				// Build docked output
+				Tree docTree = arkrefDocument.getTree();
+				List<Word> words = arkrefDocument.allWords();
+				Map<Integer, Integer> leafNumToOrdinal = new HashMap<Integer, Integer>(words.size());
+				List<String> tokens = new ArrayList<String>();
+				int i=0;
+				for (Word word : words) {
+					String token = word.token;
+					// Perform some needed arkref-specific conversions
+					if (CONVERSIONS.containsKey(token)) {
+						token = CONVERSIONS.get(token);
+					}
+					tokens.add(token);
+					leafNumToOrdinal.put(word.node().nodeNumber(docTree), i);
+					i++;
+				}
+				SortedMap<Integer, DockedToken> offsets = DockedTokenFinder.find(text, tokens, true, true);
+				
+				
+				arkrefDockedOutput = new HashMap<String, List<DockedMention>>();
+				for (Mention mention : arkrefDocument.mentions()) {
+					Tree node = mention.node();
+					List<Tree> leaves = node.getLeaves();
+					
+					int startNodeNum = leaves.get(0).nodeNumber(docTree);
+					int startOffset = offsets.get(leafNumToOrdinal.get(startNodeNum)).getCharOffsetStart();
+					int endNodeNum = leaves.get(leaves.size()-1).nodeNumber(docTree);
+					int endOffset = offsets.get(leafNumToOrdinal.get(endNodeNum)).getCharOffsetEnd();
+					String mentionString = text.substring(startOffset, endOffset);
+					
+					String tag = entityGraph.entName(mention);
+					List<DockedMention> mentionsInGroup = null;
+					if (arkrefDockedOutput.containsKey(tag)) {
+						mentionsInGroup = arkrefDockedOutput.get(tag);
+					}
+					else {
+						mentionsInGroup = new ArrayList<DockedMention>();
+						arkrefDockedOutput.put(tag, mentionsInGroup);
+					}
+					
+					DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
+					mentionsInGroup.add(dockedMention);
+				}
+				
+				// Remove groups with only a single mention
+				Iterator<Entry<String, List<DockedMention>>> iter = arkrefDockedOutput.entrySet().iterator();
+				while (iter.hasNext()) {
+					Entry<String, List<DockedMention>> entry = iter.next();
+					if (entry.getValue().size() <= 1) {
+						iter.remove();
+					}
+				}
+				
+			}
+			catch(DockedTokenFinderException e) {
+				throw new ArkrefClientException("ArkRef client failed. See nested exception.", e);
 			}
 			catch(RuntimeException e) // if run-time exception has been thrown - throw a new exception with very detailed information.
 			{
@@ -257,6 +342,7 @@ public class ArkrefClient
 				throw new ArkrefClientException(sb.toString(),e);
 			} // end of catch block
 		} // end of synchronized(ArkrefClient.class)
+		int x = 9;
 	}
 	
 	/**
@@ -442,6 +528,13 @@ public class ArkrefClient
 	
 	protected List<WordWithCoreferenceTag> arkrefOutput = null;
 	protected List<WordAndStackTags> arkrefStackOutput = null;	
+	protected Map<String, List<DockedMention>> arkrefDockedOutput = null;	
 	protected boolean processDone = false;
+	
+	protected static final Map<String, String> CONVERSIONS = new HashMap<String, String>();
+	static {
+		CONVERSIONS.put("-LRB-", "(");
+		CONVERSIONS.put("-RRB-", ")");
+	}
 	
 }
