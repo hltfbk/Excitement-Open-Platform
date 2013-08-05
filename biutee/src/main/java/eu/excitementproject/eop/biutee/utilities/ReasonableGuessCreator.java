@@ -77,6 +77,12 @@ public class ReasonableGuessCreator
 		priorPositive.put(Feature.SUBSTITUTION_PARSER_ANTECEDENT.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.SUBSTITUTION_COREFERENCE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 
+		for (Feature gapFeture : Feature.getGapFeatures())
+		{
+			priorNegative.put(gapFeture.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
+			priorPositive.put(gapFeture.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		}
+		
 		ReasonableGuessGenerator generator = 
 			new ReasonableGuessGenerator(priorNegative,priorPositive,featureVectorStructure,
 					BiuteeConstants.NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED/(1+1),

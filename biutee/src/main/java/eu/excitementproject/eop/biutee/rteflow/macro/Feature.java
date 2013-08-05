@@ -64,14 +64,27 @@ public enum Feature
 	 */
 	private Feature(boolean global)
 	{
-		this(global,null);
+		this(global,null,false);
+	}
+
+	private Feature(boolean global, boolean gapFeature)
+	{
+		this(global,null,gapFeature);
 	}
 	
 	private Feature(boolean global, String taskName)
 	{
+		this(global,taskName,false);
+	}
+	
+	private Feature(boolean global, String taskName, boolean gapFeature)
+	{
 		this.global=global;
 		this.taskName=taskName;
+		this.gapFeature = gapFeature;
 	}
+	
+
 
 	/**
 	 * Global indicates that the feature is not a feature of a generation-operation,
@@ -88,8 +101,11 @@ public enum Feature
 	{
 		return this.taskName;
 	}
-	
-	
+
+	public boolean isGapFeature()
+	{
+		return gapFeature;
+	}
 
 	public static Set<Feature> getGlobalFeatures()
 	{
@@ -133,6 +149,20 @@ public enum Feature
 		}
 		return ret;
 	}
+
+	public static Set<Feature> getGapFeatures()
+	{
+		Set<Feature> ret = new LinkedHashSet<Feature>();
+		for (Feature feature : Feature.values())
+		{
+			if (feature.isGapFeature())
+			{
+				ret.add(feature);
+			}
+		}
+		return ret;
+	}
+
 	
 	///////////////////////////////// PRIVATE //////////////////////////////////////////////
 
@@ -149,4 +179,5 @@ public enum Feature
 
 	private final boolean global;
 	private final String taskName;
+	private final boolean gapFeature;
 }
