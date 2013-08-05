@@ -16,6 +16,7 @@ import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
@@ -173,7 +174,7 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	}
 	
 	
-	private void initScriptsAndThreadPool() throws ConfigurationException
+	private void initScriptsAndThreadPool() throws ConfigurationException, GapException
 	{
 		int numberOfThreads = this.configurationParams.getInt(ConfigurationParametersNames.RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME);
 		scriptStack = new SynchronizedStack<OperationsScriptGetter>();

@@ -53,7 +53,9 @@ public enum Feature
 	SUBSTITUTION_PARSER_ANTECEDENT(false),
 	SUBSTITUTION_COREFERENCE(false),
 	IS_A_COREFERENCE(false),
-	CHANGE_PREDICATE_TRUTH(false)
+	CHANGE_PREDICATE_TRUTH(false),
+	
+	GAP_COUNT_MISSING_NODES(false,true)
 	;
 
 	//////////////////// PUBLIC METHODS AND PRIVATE CONSTRUCTORS //////////////////////////

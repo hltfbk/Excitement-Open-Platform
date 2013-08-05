@@ -12,6 +12,7 @@ import java.util.concurrent.Future;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -112,7 +113,7 @@ public class ScriptsCreator
 	private class ScriptCreatorCallable implements Callable<Boolean>
 	{
 		@Override
-		public Boolean call() throws OperationException, InterruptedException
+		public Boolean call() throws OperationException, InterruptedException, GapException
 		{
 			try
 			{

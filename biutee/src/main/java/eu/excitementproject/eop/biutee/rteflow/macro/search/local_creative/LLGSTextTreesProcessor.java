@@ -176,6 +176,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 		int actualNumberOfLocalIterations = calculateNumberOfLocalIterations(currentIteration,this.numberOfLocalIterations);
 		while (continueGlobalIteration(currentInProcess,previousIterationTree))
 		{
+			if (null==currentInProcess) throw new TeEngineMlException("Internal bug. Starting a global iteration with no element to process.");
 			++numberOfExpandedElements;
 
 			// element = all the trees that will be generated in this global iteration
@@ -214,8 +215,16 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			previousIterationTree = currentInProcess;
 			// Pick the best tree at the end of the iteration - the element that will survive for the next global iteration.
 			LocalCreativeTreeElement bestElement = findBest(elements, currentTreeCost, currentTreeGap);
-			currentInProcess = new TreeInProcess(new TreeAndFeatureVector(bestElement.getTree(), bestElement.getFeatureVector()),
-					AbstractNodeUtils.parentMap(bestElement.getTree()), sentence, bestElement.getHistory());
+			if (bestElement!=null)
+			{
+				currentInProcess = new TreeInProcess(new TreeAndFeatureVector(bestElement.getTree(), bestElement.getFeatureVector()),
+						AbstractNodeUtils.parentMap(bestElement.getTree()), sentence, bestElement.getHistory());
+			}
+			else
+			{
+				if (!hybridGapMode) throw new TeEngineMlException("Internal bug in "+LLGSTextTreesProcessor.class.getSimpleName()+". No element has been generated in a global-loop iteraion, though in pure-transformation mode there must be at least one generated in each iteraion.");
+				currentInProcess=null;
+			}
 			
 			currentIteration++;
 			
@@ -309,7 +318,11 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 	 */
 	protected LocalCreativeTreeElement findBest(Set<LocalCreativeTreeElement> elements, double originalCost, double originalGap) throws TeEngineMlException
 	{
-		if (elements.size()==0)throw new TeEngineMlException("An error occurred LLGS search. A \"global iteration\" ended with no new generated tree.");
+		if (elements.size()==0)
+		{
+			if (hybridGapMode) {return null;}
+			else {throw new TeEngineMlException("An error occurred LLGS search. A \"global iteration\" ended with no new generated tree, in pure-transformation mode.");}
+		}
 		Double bestProportion = null; // null is interpreted as infinity
 		LocalCreativeTreeElement bestElement = null;
 		for (LocalCreativeTreeElement element : elements)

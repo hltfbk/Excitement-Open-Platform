@@ -94,9 +94,10 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 {
 	public static final int NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE = BiuteeConstants.NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE_IN_DEFAULT_OPERATION_SCRIPT;
 
-	public DefaultOperationScript(ConfigurationFile configurationFile, ParserSpecificConfigurations.PARSER parser, PluginRegistry pluginRegistry)
+	public DefaultOperationScript(ConfigurationFile configurationFile, ParserSpecificConfigurations.PARSER parser, PluginRegistry pluginRegistry, boolean hybridGapMode)
 	{
 		super(configurationFile,parser,pluginRegistry);
+		this.hybridGapMode = hybridGapMode;
 	}
 
 
@@ -114,15 +115,21 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 
 		List<SingleOperationItem> otherIterationsList = new ArrayList<SingleOperationItem>();
 		// Add the on-the-fly operations.
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
+		if (!hybridGapMode)
+		{
+			otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
+			otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
+		}
 		otherIterationsList.add(new SingleOperationItem(SingleOperationType.MULTIWORD_SUBSTITUTION));
 		otherIterationsList.add(new SingleOperationItem(SingleOperationType.FLIP_POS_SUBSTITUTION));
 
 		// Add an operation that flips the predicate-truth annotation.
-		if (Constants.APPLY_CHANGE_ANNOTATION)
+		if (!hybridGapMode)
 		{
-			otherIterationsList.add(new SingleOperationItem(SingleOperationType.CHANGE_PREDICATE_TRUTH));
+			if (Constants.APPLY_CHANGE_ANNOTATION)
+			{
+				otherIterationsList.add(new SingleOperationItem(SingleOperationType.CHANGE_PREDICATE_TRUTH));
+			}
 		}
 
 		// Add all knowledge resources
@@ -199,6 +206,8 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 
 	protected ImmutableList<SingleOperationItem> otherIterationsImList;
 	protected ImmutableList<SingleOperationItem> firstIterationsImList;
+	
+	protected final boolean hybridGapMode;
 
 
 	@SuppressWarnings("unused")

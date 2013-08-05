@@ -31,6 +31,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.alignment.DefaultAlignmentCriteria;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorFactory;
 import eu.excitementproject.eop.transformations.generic.truthteller.SentenceAnnotator;
@@ -167,10 +168,12 @@ public class SystemInitialization
 			}
 		}
 		
-		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams).createGapToolBox();
+		AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria = new DefaultAlignmentCriteria();
+		
+		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria).createGapToolBox();
 		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
 		else{logger.info("System in pure transformations mode.");}
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords,parserMode,gapToolBox);
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode,gapToolBox);
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException

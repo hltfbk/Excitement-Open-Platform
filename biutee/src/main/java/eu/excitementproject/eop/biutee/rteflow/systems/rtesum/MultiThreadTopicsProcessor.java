@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.WithStatisticsTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
@@ -105,7 +106,7 @@ public class MultiThreadTopicsProcessor implements AllTopicsProcessor
 	
 	
 	
-	private void initScripts() throws OperationException, InterruptedException
+	private void initScripts() throws OperationException, InterruptedException, GapException
 	{
 		logger.info("Initializing scripts...");
 		queueScripts = new ArrayBlockingQueue<ScriptAndHypothesisInformation>(numberOfThreads);

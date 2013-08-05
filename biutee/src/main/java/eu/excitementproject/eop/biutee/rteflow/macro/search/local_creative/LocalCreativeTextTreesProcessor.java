@@ -79,13 +79,16 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	@Override
 	protected void postGlobalLoop(LocalCreativeTreeElement bestElement) throws TeEngineMlException, TreeAndParentMapException
 	{
-		updateLocalHistory(this.localIterationsArray, bestElement);
-		
-		// For GUI
-		if (this.progressFire!=null)
+		if (bestElement!=null)
 		{
-			double currentProgress = progressSoFar+progressSingleTree*((initialHeuristicGap-getHeuristicGap(new TreeAndParentMap<ExtendedInfo,ExtendedNode>(bestElement.getTree()),bestElement.getFeatureVector()))/initialHeuristicGap);
-			progressFire.fire(currentProgress);
+			updateLocalHistory(this.localIterationsArray, bestElement);
+
+			// For GUI
+			if (this.progressFire!=null)
+			{
+				double currentProgress = progressSoFar+progressSingleTree*((initialHeuristicGap-getHeuristicGap(new TreeAndParentMap<ExtendedInfo,ExtendedNode>(bestElement.getTree()),bestElement.getFeatureVector()))/initialHeuristicGap);
+				progressFire.fire(currentProgress);
+			}
 		}
 	}
 	
@@ -94,7 +97,11 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	{
 		if (hybridGapMode)
 		{
-			if (null==previousIterationTree)
+			if (null==currentInProcess) // It's OK in hybrid mode. It means that in the previous global iteration no element was generated.
+			{
+				return false;
+			}
+			else if (null==previousIterationTree)
 			{
 				return true;
 			}
@@ -116,6 +123,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 		}
 		else
 		{
+			if (null==currentInProcess) throw new TeEngineMlException("Internal bug. No element to process at the beginning of a global iteration. It is a bug in pure-transformation mode.");
 			double currentTreeGap = getHeuristicGap(currentInProcess);
 			return (currentTreeGap>0.0);
 		}
