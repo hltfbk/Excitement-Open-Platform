@@ -44,7 +44,8 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * The testing calculates the distance between the input instance and the model
  * scores and select the closest label.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since November 2012
  */
 public class ClassificationEDA implements EDABasic<ClassificationTEDecision> {
 

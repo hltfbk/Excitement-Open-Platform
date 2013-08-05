@@ -33,8 +33,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
  * 
  * It adds POS tags into the queries to the lexical resources.
  * 
- * @author Rui
- * 
+ * @author Rui Wang
+ * @since January 2013
  */
 public class BagOfLexesPosScoring extends BagOfLexesScoring {
 	
