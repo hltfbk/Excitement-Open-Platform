@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -24,13 +23,10 @@ import arkref.data.Mention;
 import arkref.data.Sentence;
 import arkref.data.Word;
 import edu.stanford.nlp.trees.Tree;
-import edu.stanford.nlp.util.IntPair;
 import eu.excitementproject.eop.common.representation.coreference.DockedMention;
 import eu.excitementproject.eop.common.utilities.DockedToken;
 import eu.excitementproject.eop.common.utilities.DockedTokenFinder;
 import eu.excitementproject.eop.common.utilities.DockedTokenFinderException;
-import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.StringUtilException;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
@@ -254,11 +250,10 @@ public class ArkrefClient
 					}
 				}
 				
-// TODO: Ofer - finish implementing coref
 				// Build docked output
 				Tree docTree = arkrefDocument.getTree();
 				List<Word> words = arkrefDocument.allWords();
-				Map<Integer, Integer> leafNumToOrdinal = new HashMap<Integer, Integer>(words.size());
+				Map<Integer, Integer> leafNumToOrdinal = new LinkedHashMap<Integer, Integer>(words.size());
 				List<String> tokens = new ArrayList<String>();
 				int i=0;
 				for (Word word : words) {
@@ -274,7 +269,7 @@ public class ArkrefClient
 				SortedMap<Integer, DockedToken> offsets = DockedTokenFinder.find(text, tokens, true, true);
 				
 				
-				arkrefDockedOutput = new HashMap<String, List<DockedMention>>();
+				arkrefDockedOutput = new LinkedHashMap<String, List<DockedMention>>();
 				for (Mention mention : arkrefDocument.mentions()) {
 					Tree node = mention.node();
 					List<Tree> leaves = node.getLeaves();
@@ -342,7 +337,6 @@ public class ArkrefClient
 				throw new ArkrefClientException(sb.toString(),e);
 			} // end of catch block
 		} // end of synchronized(ArkrefClient.class)
-		int x = 9;
 	}
 	
 	/**
@@ -531,7 +525,7 @@ public class ArkrefClient
 	protected Map<String, List<DockedMention>> arkrefDockedOutput = null;	
 	protected boolean processDone = false;
 	
-	protected static final Map<String, String> CONVERSIONS = new HashMap<String, String>();
+	protected static final Map<String, String> CONVERSIONS = new LinkedHashMap<String, String>();
 	static {
 		CONVERSIONS.put("-LRB-", "(");
 		CONVERSIONS.put("-RRB-", ")");
