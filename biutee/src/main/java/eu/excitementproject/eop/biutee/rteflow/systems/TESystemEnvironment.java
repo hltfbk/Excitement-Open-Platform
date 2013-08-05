@@ -29,7 +29,8 @@ public class TESystemEnvironment
 			FeatureVectorStructureOrganizer featureVectorStructureOrganizer,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
 			ImmutableSet<String> stopWords,
-			ParserSpecificConfigurations.PARSER parser)
+			ParserSpecificConfigurations.PARSER parser,
+			GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox)
 	{
 		super();
 		this.ruleBasesToRetrieveMultiWords = ruleBasesToRetrieveMultiWords;
@@ -40,6 +41,7 @@ public class TESystemEnvironment
 		this.alignmentCriteria = alignmentCriteria;
 		this.stopWords = stopWords;
 		this.parser = parser;
+		this.gapToolBox = gapToolBox;
 	}
 	
 	
@@ -78,8 +80,7 @@ public class TESystemEnvironment
 	}
 	public GapToolBox<ExtendedInfo, ExtendedNode> getGapToolBox()
 	{
-		throw new RuntimeException("Not yet implemented");
-		//return gapToolBox;
+		return gapToolBox;
 	}
 
 
@@ -100,6 +101,5 @@ public class TESystemEnvironment
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
 	private final ParserSpecificConfigurations.PARSER parser;
-	@SuppressWarnings("unused")
-	private final GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = null;
+	private final GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox;
 }
