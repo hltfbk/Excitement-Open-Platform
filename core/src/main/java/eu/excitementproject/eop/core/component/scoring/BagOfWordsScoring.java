@@ -32,7 +32,8 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
  * overlapping tokens and the number of tokens in T; 3) the product of the above
  * two
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since November 2012
  */
 public class BagOfWordsScoring implements ScoringComponent {
 	
