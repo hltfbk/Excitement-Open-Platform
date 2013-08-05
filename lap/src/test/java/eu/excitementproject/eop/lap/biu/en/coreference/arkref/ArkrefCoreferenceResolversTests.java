@@ -21,10 +21,15 @@ import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 import eu.excitementproject.eop.lap.biu.test.BiuTreeBuilder;
+import eu.excitementproject.eop.lap.biu.uima.BIU_LAP_Test;
 
 /**
  * Test both arkref coreference resolvers: {@link ArkrefCoreferenceResolver}
  * and {@link ArkrefCoreferenceResolverNoTrees}.
+ * 
+ * Actually this test doesn't really test anything and never fails -
+ * it merely prints the outputs of both resolvers in a convenient way.
+ * With this class it's eash to debug them both.
  * 
  * @author Ofer Bronstein
  * @since August 2013
@@ -74,16 +79,21 @@ public class ArkrefCoreferenceResolversTests {
 		
 		System.out.printf("\n==================================\n");
 
-		int x=8;
-		throw new CoreferenceResolutionException("Test no complete yet");
+		//throw new CoreferenceResolutionException("Test no complete yet");
 	}
 	
 	@Test
 	public void test1() throws Exception {
+		// This is a good example, has a lot of coreference
 		assertBothCorefsAgree("Prince George of Cambridge (George Alexander Louis, born 22 July 2013) " +
 				"is the only child of Prince William, Duke of Cambridge, and his wife Catherine, " +
 				"Duchess of Cambridge. He is the only grandchild of Charles, Prince of Wales, " +
 				"and is third in line to succeed his great-grandmother, Queen Elizabeth II, " +
 				"after his grandfather and father.");
+	}
+
+	@Test
+	public void test2() throws Exception {
+		assertBothCorefsAgree(BIU_LAP_Test.TEXT);
 	}
 }
