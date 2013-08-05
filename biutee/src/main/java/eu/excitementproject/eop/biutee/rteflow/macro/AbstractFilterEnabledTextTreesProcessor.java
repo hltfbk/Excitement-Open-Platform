@@ -109,7 +109,7 @@ public abstract class AbstractFilterEnabledTextTreesProcessor extends AbstractTe
 	
 	protected abstract TextTreesProcessingResult processSingleTree(TreeAndIndex tree) throws ClassifierException, TreeAndParentMapException, TeEngineMlException, OperationException, ScriptException, RuleBaseException;
 	
-	protected abstract double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree) throws GapException;
+	protected abstract double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree, Map<Integer, Double> featureVector) throws GapException;
 	
 	
 	protected TextTreesProcessingResult findResultWithHighestConfidence(List<TextTreesProcessingResult> results) throws ClassifierException
@@ -174,13 +174,14 @@ public abstract class AbstractFilterEnabledTextTreesProcessor extends AbstractTe
 		}
 		else
 		{
+			Map<Integer,Double> initialFeatureVector = initialFeatureVector();			
 			Map<TreeAndIndex, Double> mapTreesToGap = new LinkedHashMap<TreeAndIndex, Double>();
 			int treeIndex=0;
 			for (ExtendedNode tree : originalTrees)
 			{
 				TreeAndParentMap<ExtendedInfo, ExtendedNode> treeAndParentMap =
 					new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree);
-				mapTreesToGap.put(new TreeAndIndex(tree, treeIndex), getHeuristicGap(treeAndParentMap));
+				mapTreesToGap.put(new TreeAndIndex(tree, treeIndex), getHeuristicGap(treeAndParentMap,initialFeatureVector));
 				++treeIndex;
 			}
 			List<TreeAndIndex> sortedByGapTrees = Utils.getSortedByValue(mapTreesToGap);

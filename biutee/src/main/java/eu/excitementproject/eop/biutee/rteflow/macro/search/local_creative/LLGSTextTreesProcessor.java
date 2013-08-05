@@ -16,7 +16,6 @@ import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndIndex;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistoryComponent;
-import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.WithStatisticsTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
@@ -133,7 +132,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 	}
 	
 	
-	protected abstract double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree) throws GapException;
+	//protected abstract double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree, Map<Integer, Double> featureVector) throws GapException;
 	protected abstract int calculateNumberOfLocalIterations(int globalIteraion, int actualNumberOfLocalIterations) throws TeEngineMlException;
 	protected abstract void prepareGlobalLoop(TreeInProcess currentInProcess) throws TeEngineMlException , TreeAndParentMapException;
 	protected abstract void postGlobalLoop(LocalCreativeTreeElement bestElement) throws TeEngineMlException, TreeAndParentMapException;
@@ -201,7 +200,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			for (TreeAndFeatureVector generatedTree : generator.getGeneratedTrees())
 			{
 				double cost = getCost(generatedTree.getFeatureVector());
-				double gap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(generatedTree.getTree()));
+				double gap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(generatedTree.getTree()),generatedTree.getFeatureVector());
 				LocalCreativeTreeElement generatedElement =
 					new LocalCreativeTreeElement(generatedTree.getTree(), historyMap.get(generatedTree), generatedTree.getFeatureVector(), 1, currentIteration, mapAffectedNodes.get(generatedTree.getTree()),cost,gap);
 				elements.add(generatedElement);
@@ -210,7 +209,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 
 			// cost and gap of the tree at the beginning of the global iteration.
 			double currentTreeCost = getCost(currentInProcess.getTree().getFeatureVector());
-			double currentTreeGap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentInProcess.getTree().getTree(),currentInProcess.getParentMap()));
+			double currentTreeGap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentInProcess.getTree().getTree(),currentInProcess.getParentMap()),currentInProcess.getTree().getFeatureVector());
 			
 			previousIterationTree = currentInProcess;
 			// Pick the best tree at the end of the iteration - the element that will survive for the next global iteration.
@@ -286,7 +285,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			for (TreeAndFeatureVector generatedTree : generator.getGeneratedTrees())
 			{
 				double cost = getCost(generatedTree.getFeatureVector());
-				double gap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(generatedTree.getTree()));
+				double gap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(generatedTree.getTree()),generatedTree.getFeatureVector());
 
 				LocalCreativeTreeElement generatedElement = 
 					new LocalCreativeTreeElement(generatedTree.getTree(), historyMap.get(generatedTree), generatedTree.getFeatureVector(), element.getLocalIteration()+1, globalBaseIteration, mapAffectedNodes.get(generatedTree.getTree()),cost,gap);

@@ -168,6 +168,8 @@ public class SystemInitialization
 		}
 		
 		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams).createGapToolBox();
+		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
+		else{logger.info("System in pure transformations mode.");}
 		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords,parserMode,gapToolBox);
 	}
 	

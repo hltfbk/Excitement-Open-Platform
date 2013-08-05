@@ -63,7 +63,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	{
 		this.localIterationsArray = createLocalHistoryArray();
 		// For GUI
-		initialHeuristicGap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentInProcess.getTree().getTree(),currentInProcess.getParentMap()));
+		initialHeuristicGap = getHeuristicGap(currentInProcess);
 	}
 	
 	
@@ -84,7 +84,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 		// For GUI
 		if (this.progressFire!=null)
 		{
-			double currentProgress = progressSoFar+progressSingleTree*((initialHeuristicGap-getHeuristicGap(new TreeAndParentMap<ExtendedInfo,ExtendedNode>(bestElement.getTree())))/initialHeuristicGap);
+			double currentProgress = progressSoFar+progressSingleTree*((initialHeuristicGap-getHeuristicGap(new TreeAndParentMap<ExtendedInfo,ExtendedNode>(bestElement.getTree()),bestElement.getFeatureVector()))/initialHeuristicGap);
 			progressFire.fire(currentProgress);
 		}
 	}
@@ -100,7 +100,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 			}
 			else
 			{
-				double previousTreeGap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(previousIterationTree.getTree().getTree(),previousIterationTree.getParentMap()));
+				double previousTreeGap = getHeuristicGap(previousIterationTree);
 				LocalCreativeTreeElement elementWithSmallestGap = pickElementWithSmallestGapMeasure(elements);
 				boolean gapMode_GapIsDecreasing = true;
 				if (elementWithSmallestGap.getGap()<previousTreeGap)
@@ -116,7 +116,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 		}
 		else
 		{
-			double currentTreeGap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentInProcess.getTree().getTree(),currentInProcess.getParentMap()));
+			double currentTreeGap = getHeuristicGap(currentInProcess);
 			return (currentTreeGap>0.0);
 		}
 	}
@@ -125,7 +125,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	@Override
 	protected void conditionallyInsertInitialElementToResults(TreeInProcess currentInProcess) throws TeEngineMlException, ClassifierException, TreeAndParentMapException
 	{
-		double gap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentInProcess.getTree().getTree(),currentInProcess.getParentMap()));
+		double gap = getHeuristicGap(currentInProcess);
 		if (hybridGapMode || (0==gap))
 		{
 			addSingleGoalToResutls(
@@ -178,7 +178,11 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 				addSingleGoalToResutls(goal,sentence);
 			}
 		}
-		
+	}
+	
+	private double getHeuristicGap(TreeInProcess treeInProcess) throws GapException, TreeAndParentMapException
+	{
+		return getHeuristicGap(new TreeAndParentMap<ExtendedInfo,ExtendedNode>(treeInProcess.getTree().getTree(),treeInProcess.getParentMap()),treeInProcess.getTree().getFeatureVector());
 	}
 
 	/**
@@ -219,11 +223,11 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	 * @throws GapException 
 	 */
 	@Override
-	protected double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree) throws GapException
+	protected double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree, Map<Integer, Double> featureVector) throws GapException
 	{
 		if (hybridGapMode)
 		{
-			return gapTools.getGapHeuristicMeasure().measure(tree);
+			return gapTools.getGapHeuristicMeasure().measure(tree,featureVector);
 		}
 		else
 		{
