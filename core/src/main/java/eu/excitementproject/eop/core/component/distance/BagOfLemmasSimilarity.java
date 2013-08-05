@@ -17,7 +17,8 @@ import eu.excitementproject.eop.core.component.scoring.BagOfLemmasScoring;
  * <code>BagOfWordsScoring</code>, except it uses lemmas instead of word forms
  * to calculate the scores.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since November 2012
  */
 public class BagOfLemmasSimilarity extends BagOfLemmasScoring implements
 		DistanceCalculation {

@@ -64,7 +64,8 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * 5) (optional) settings for the classifier, the maximum number of iterations
  * and the cut-off threshold.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since December 2012
  */
 public class MaxEntClassificationEDA implements
 		EDABasic<ClassificationTEDecision> {

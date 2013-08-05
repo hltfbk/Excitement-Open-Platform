@@ -27,8 +27,8 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
  * 
  * The implementation is <b>NOT</b> complete yet.
  * 
- * @author Rui
- * 
+ * @author Rui Wang
+ * @since April 2013
  */
 public class TreeSkeletonScoring extends BagOfDepsScoring {
 

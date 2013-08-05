@@ -19,7 +19,8 @@ import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
  * <code>DistanceValue</code>) will be the first score in the vector after
  * normalization.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since November 2012
  */
 public class BagOfWordsSimilarity extends BagOfWordsScoring implements
 		DistanceCalculation {
