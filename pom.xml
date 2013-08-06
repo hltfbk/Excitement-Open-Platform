@@ -322,13 +322,6 @@
 					<tagNameFormat>v@{project.version}</tagNameFormat>
 					<pushChanges>false</pushChanges>
 					<localCheckout>true</localCheckout>
-    <checkModificationExcludes>
-<checkModificationExclude>pom.xml</checkModificationExclude> 
-<checkModificationExclude>core/src/main/java/eu/excitementproject/eop/core/DKProSimilarityClassificationEDA.java</checkModificationExclude>
- <checkModificationExclude>core/src/main/java/eu/excitementproject/eop/core/DKProSimilarityEDA_ImplBase.java</checkModificationExclude>
- <checkModificationExclude>core/src/main/java/eu/excitementproject/eop/core/DKProSimilaritySimpleEDA.java</checkModificationExclude>
- <checkModificationExclude>core/src/main/java/eu/excitementproject/eop/core/component/scoring/DKProSimilarityScoring.java</checkModificationExclude>
-    </checkModificationExcludes>
 				</configuration>
 			</plugin>
 
