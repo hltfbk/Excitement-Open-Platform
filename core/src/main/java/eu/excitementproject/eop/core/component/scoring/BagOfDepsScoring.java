@@ -26,7 +26,8 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
  * parent: dep_rel, parent 3) only child: child, dep_rel 4) parent and child:
  * child, parent
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since March 2013
  */
 public class BagOfDepsScoring extends BagOfWordsScoring {
 

@@ -232,6 +232,7 @@ public class DocumentInitializer
 	@Workaround
 	protected TreeAndMapping annotateTextAndHypothesis(ExtendedNode tree, BidirectionalMap<BasicNode, ExtendedNode> mapping) throws AnnotatorException, TeEngineMlException
 	{
+		logger.debug("Annotating tree using TruthTeller...");
 		SynchronizedAtomicAnnotator annotator = this.teSystemEnvironment.getTreeAnnotator();
 		boolean annotatorSucceeded = true;
 		AnnotatedTreeAndMap annotated = null;
@@ -251,6 +252,7 @@ public class DocumentInitializer
 				logger.error("Sentence Annotator FAILED!!! However, since ANNOTATOR_FAILURE_IS_BLOCKING is set to false, the processing continues. Exception is: ",e);
 			}
 		}
+		logger.debug("Annotating tree using TruthTeller - done.");
 		if (annotatorSucceeded)
 		{
 			return new TreeAndMapping(

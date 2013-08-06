@@ -3,13 +3,12 @@ import static eu.excitementproject.eop.common.representation.partofspeech.Simple
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceNothingToClose;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
@@ -19,6 +18,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanoni
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
+import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceNothingToClose;
 
 
 /**
@@ -87,7 +87,7 @@ public class WikiLexicalResource extends LexicalResourceNothingToClose<WikiRuleI
 		if (!stopWordsFile.exists())
 			throw new LexicalResourceException(stopWordsFile + " doesn't exist");
 		
-		try {	STOP_WORDS = new HashSet<String>(FileUtils.loadFileToList(stopWordsFile));	}
+		try {	STOP_WORDS = new LinkedHashSet<String>(FileUtils.loadFileToList(stopWordsFile));	}
 		catch (IOException e) {	throw new LexicalResourceException("error reading " + stopWordsFile);	}
 
 		if (permittedExtractionTypes == null)

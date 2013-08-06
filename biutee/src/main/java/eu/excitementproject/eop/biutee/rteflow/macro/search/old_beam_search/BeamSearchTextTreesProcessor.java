@@ -121,7 +121,7 @@ public class BeamSearchTextTreesProcessor extends AbstractTextTreesProcessor imp
 	{
 		logger.debug("Starting BeamSearchTextTreesProcessor.processPair()");
 		this.hypothesisLemmasLowerCase = TreeUtilities.constructSetLemmasLowerCase(operationsEnvironment.getHypothesis());
-		this.numberOfHypothesisNodes = AbstractNodeUtils.treeToSet(operationsEnvironment.getHypothesis().getTree()).size();
+		this.numberOfHypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(operationsEnvironment.getHypothesis().getTree()).size();
 		Set<TreeAndFeatureVector> treesSet = new LinkedHashSet<TreeAndFeatureVector>();
 		this.mapTreeToSentence = new LinkedHashMap<TreeAndFeatureVector, String>();
 		this.historyMap = new LinkedHashMap<TreeAndFeatureVector, TreeHistory>();

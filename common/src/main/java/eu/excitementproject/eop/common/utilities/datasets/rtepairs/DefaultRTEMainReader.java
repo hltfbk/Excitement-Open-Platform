@@ -2,9 +2,8 @@ package eu.excitementproject.eop.common.utilities.datasets.rtepairs;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -39,12 +38,12 @@ public class DefaultRTEMainReader implements RTEMainReader
 	public static Map<String,Boolean> booleanClassificationMap;
 	static
 	{
-		classificationMap = new HashMap<String, RTEClassificationType>();
+		classificationMap = new LinkedHashMap<String, RTEClassificationType>();
 		classificationMap.put("ENTAILMENT",RTEClassificationType.ENTAILMENT);
 		classificationMap.put("UNKNOWN",RTEClassificationType.UNKNOWN);
 		classificationMap.put("CONTRADICTION",RTEClassificationType.CONTRADICTION);
 		
-		booleanClassificationMap = new HashMap<String, Boolean>();
+		booleanClassificationMap = new LinkedHashMap<String, Boolean>();
 		booleanClassificationMap.put("FALSE", new Boolean(false));
 		booleanClassificationMap.put("TRUE", new Boolean(true));
 		booleanClassificationMap.put("NO", new Boolean(false));
@@ -212,7 +211,7 @@ public class DefaultRTEMainReader implements RTEMainReader
 	protected void fillMapPairs() throws RTEMainReaderException
 	{
 		mapPairs = new LinkedHashMap<Integer, TextHypothesisPair>();
-		HashSet<Integer> alreadyReadIds = new HashSet<Integer>();
+		LinkedHashSet<Integer> alreadyReadIds = new LinkedHashSet<Integer>();
 		for (int index=0;index<listAllPairsElements.getLength();++index)
 		{
 			try

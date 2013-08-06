@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entailment-corpus lang="EN">
-	<pair id="1" entailment="NonEntailment" benchmark="ENTAILMENT" score="0.6952427893922994" confidence="1" task="IE" >
+	<pair id="1" entailment="NonEntailment" benchmark="ENTAILMENT" score="0.9991602139172902" confidence="1" task="IE" >
 		<t>Claude Chabrol (born June 24, 1930) is a French movie director and has become well-known in the 40 years since his first film, Le Beau Serge , for his chilling tales of murder, including Le Boucher .</t>
 		<h>Le Beau Serge was directed by Chabrol.</h>
 	</pair>
-	<pair id="2" entailment="NonEntailment" benchmark="ENTAILMENT" score="0.7754970956321183" confidence="1" task="IE" >
+	<pair id="2" entailment="NonEntailment" benchmark="ENTAILMENT" score="0.9995912706942617" confidence="1" task="IE" >
 		<t>Claude Chabrol (born June 24, 1930) is a French movie director and has become well-known in the 40 years since his first film, Le Beau Serge , for his chilling tales of murder, including Le Boucher .</t>
 		<h>Le Boucher was made by a French movie director.</h>
 	</pair>
-	<pair id="3" entailment="NonEntailment" benchmark="ENTAILMENT" score="0.7482928652782977" confidence="1" task="IE" >
+	<pair id="3" entailment="NonEntailment" benchmark="ENTAILMENT" score="0.995649640508446" confidence="1" task="IE" >
 		<t>Claude Chabrol divorced Agnes, his first wife, to marry the actress Stéphane Audran. His third wife is Aurore Paquiss.</t>
 		<h>Aurore Paquiss married Chabrol.</h>
 	</pair>

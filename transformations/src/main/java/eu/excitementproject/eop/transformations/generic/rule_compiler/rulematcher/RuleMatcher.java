@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -114,7 +114,7 @@ public class RuleMatcher
 	 */
 	private Set<BidirectionalMap<BasicNode, ExtendedNode>> mapRuleToTree(ExtendedNode tree, SyntacticRule<Info, BasicNode> rule) throws MatcherException
 	{
-		Set<BidirectionalMap<BasicNode, ExtendedNode>> mapsOfLhsToTree = new HashSet<BidirectionalMap<BasicNode,ExtendedNode>>();
+		Set<BidirectionalMap<BasicNode, ExtendedNode>> mapsOfLhsToTree = new LinkedHashSet<BidirectionalMap<BasicNode,ExtendedNode>>();
 		
 		AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode> matcher =
 			new AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode>(new ExtendedMatchCriteria());

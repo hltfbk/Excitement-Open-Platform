@@ -17,7 +17,8 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
  * <code>BagOfWordsScoring</code>, except it uses lemmas instead of word forms
  * to calculate the scores.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since November 2012
  */
 public class BagOfLemmasScoring extends BagOfWordsScoring {
 

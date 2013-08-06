@@ -68,7 +68,7 @@ public class CasPairDataConverter {
 		Map<BasicNode, String> mapTreesToSentences = converter.getTreesToSentences();
 		
 		Sentence hypothesisSentence = JCasUtil.selectSingle(hypothesisView, Sentence.class);
-		BasicNode hypothesisTree = converter.convertSentenceToTree(hypothesisView, hypothesisSentence);
+		BasicNode hypothesisTree = converter.convertSingleSentenceToTree(hypothesisView, hypothesisSentence);
 		
 		// Currently not supporting coreference information - using empty map
 		TreeCoreferenceInformation<BasicNode> coreferenceInformation = new TreeCoreferenceInformation<BasicNode>();

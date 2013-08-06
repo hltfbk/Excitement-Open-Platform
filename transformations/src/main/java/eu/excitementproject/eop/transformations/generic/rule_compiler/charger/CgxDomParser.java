@@ -4,7 +4,7 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.charger;
 import java.io.StringReader;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -62,7 +62,7 @@ public class CgxDomParser
 	 */
 	public Map<Long, String> parseNodes() throws CompilationException 
 	{
-		Map<Long, String> nodesMap = new HashMap<Long, String>();
+		Map<Long, String> nodesMap = new LinkedHashMap<Long, String>();
 		
 		// read all "concepts" in the CGX
 		  NodeList nodeLst = doc.getElementsByTagName("concept");
@@ -157,7 +157,7 @@ public class CgxDomParser
 		}
 		
 		// read all Actor nodes
-		Map<Long, String> actorsMap = new HashMap<Long, String>();
+		Map<Long, String> actorsMap = new LinkedHashMap<Long, String>();
 		NodeList actorList = doc.getElementsByTagName("actor");
 		//		System.out.println("AnnotatedInformation of all actors");
 

@@ -10,14 +10,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceNothingToClose;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
@@ -29,6 +28,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanoni
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceNothingToClose;
 
 
 /**
@@ -85,9 +85,9 @@ public class VerbOceanLexicalResource extends LexicalResourceNothingToClose<Verb
 	private final PartOfSpeech VERB; 
 
 	// state fields
-	private final Map<EntailmentPair, LexicalRule<? extends VerbOceanRuleInfo>> mapRulesByEntailmentPair = new HashMap<EntailmentPair, LexicalRule<? extends VerbOceanRuleInfo>>();
-	private final Map<String, List<LexicalRule<? extends VerbOceanRuleInfo>>> mapRulesByEntailingVerb = new HashMap<String, List<LexicalRule<? extends VerbOceanRuleInfo>>>();
-	private final Map<String, List<LexicalRule<? extends VerbOceanRuleInfo>>> mapRulesByEntailedVerb = new HashMap<String, List<LexicalRule<? extends VerbOceanRuleInfo>>>();
+	private final Map<EntailmentPair, LexicalRule<? extends VerbOceanRuleInfo>> mapRulesByEntailmentPair = new LinkedHashMap<EntailmentPair, LexicalRule<? extends VerbOceanRuleInfo>>();
+	private final Map<String, List<LexicalRule<? extends VerbOceanRuleInfo>>> mapRulesByEntailingVerb = new LinkedHashMap<String, List<LexicalRule<? extends VerbOceanRuleInfo>>>();
+	private final Map<String, List<LexicalRule<? extends VerbOceanRuleInfo>>> mapRulesByEntailedVerb = new LinkedHashMap<String, List<LexicalRule<? extends VerbOceanRuleInfo>>>();
 
 	double maxScore = 0;
 	
@@ -118,7 +118,7 @@ public class VerbOceanLexicalResource extends LexicalResourceNothingToClose<Verb
 		catch (UnsupportedPosTagStringException e) {	throw new LexicalResourceException("Internal error", e);	}
 		
 		PairMap<String, LexicalRule<? extends VerbOceanRuleInfo>> mapRulesByUnorderedPair = new PairMap<String, LexicalRule<? extends VerbOceanRuleInfo>>();
-		Set<Pair<String>> verbPairs = new HashSet<Pair<String>>();
+		Set<Pair<String>> verbPairs = new LinkedHashSet<Pair<String>>();
 		
 		// read and map all rules, but, keep only rules with allowed relation types, and, for each verb pair, keep only the highest scoring rule 
 		try {

@@ -1,17 +1,21 @@
 package eu.excitementproject.eop.lap.biu.uima;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.collections15.BidiMap;
+import org.apache.commons.collections15.bidimap.DualHashBidiMap;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
@@ -20,6 +24,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
+import eu.excitementproject.eop.common.datastructures.OneToManyBidiMultiHashMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
@@ -53,38 +58,20 @@ public class CasTreeConverter {
 	public List<BasicNode> convertCasToTrees(JCas jcas) throws CasTreeConverterException, UnsupportedPosTagStringException {
 		Collection<Sentence> sentenceAnnotations = JCasUtil.select(jcas, Sentence.class);
 		lastSentenceList = new ArrayList<Sentence>(sentenceAnnotations);
-		List<BasicNode> roots = new ArrayList<BasicNode>(sentenceAnnotations.size());
+		lastTokenToNodeBySentence = new LinkedHashMap<Sentence, OneToManyBidiMultiHashMap<Token,BasicNode>>();
+		lastRootList = new ArrayList<BasicNode>(sentenceAnnotations.size());
+		lastSentenceToRoot = new DualHashBidiMap<>();
 		
 		for (Sentence sentenceAnno : lastSentenceList) {
-			roots.add(convertSentenceToTree(jcas, sentenceAnno));
+			BasicNode root = convertSentenceToTree(jcas, sentenceAnno);
+			lastSentenceToRoot.put(sentenceAnno, root);
+			lastRootList.add(root);
+			
+			OneToManyBidiMultiHashMap<Token,BasicNode> tokenToNodeCopy = new OneToManyBidiMultiHashMap<Token,BasicNode>(tokenToNode);
+			lastTokenToNodeBySentence.put(sentenceAnno, tokenToNodeCopy);
 		}
 		
-		lastRootList = roots;
-		return roots;
-	}
-	
-	/**
-	 * <B>NOTE:</B> Must be called only after {@link #convertCasToTrees(JCas)} was called.
-	 * @return a mapping between a root, and the text of the tree's sentence.
-	 * @throws CasTreeConverterException
-	 */
-	public Map<BasicNode, String> getTreesToSentences() throws CasTreeConverterException {
-		if (lastRootList == null || lastSentenceList == null) {
-			throw new CasTreeConverterException("getTreesToSentences() called before convertCasToTrees().");
-		}
-		if (lastRootList.size() != lastSentenceList.size()) {
-			throw new CasTreeConverterException("Internal error - lastRootList(size=" + lastRootList.size() + ") and lastSentenceList(size=" +
-												lastSentenceList.size() + ") are in different sizes.");
-		}
-		
-		Map<BasicNode, String> result = new HashMap<BasicNode, String>(lastRootList.size());
-		Iterator<Sentence> iterSentences = lastSentenceList.iterator();
-		for (BasicNode node : lastRootList) {
-			Sentence sentence = iterSentences.next();
-			result.put(node, sentence.getCoveredText());
-		}
-		
-		return result;
+		return lastRootList;
 	}
 	
 	/**
@@ -95,20 +82,104 @@ public class CasTreeConverter {
 	 * @throws CasTreeConverterException
 	 * @throws UnsupportedPosTagStringException
 	 */
-	public BasicNode convertSentenceToTree(JCas jcas, Sentence sentenceAnno) throws CasTreeConverterException, UnsupportedPosTagStringException {
+	public BasicNode convertSingleSentenceToTree(JCas jcas, Sentence sentenceAnno) throws CasTreeConverterException, UnsupportedPosTagStringException {
+		BasicNode root = convertSentenceToTree(jcas, sentenceAnno);
+		
+		lastRootList = Arrays.asList(new BasicNode[] {root});
+		lastSentenceList = Arrays.asList(new Sentence[] {sentenceAnno});
+		
+		lastTokenToNodeBySentence = new LinkedHashMap<Sentence, OneToManyBidiMultiHashMap<Token,BasicNode>>();
+		OneToManyBidiMultiHashMap<Token,BasicNode> tokenToNodeCopy = new OneToManyBidiMultiHashMap<Token,BasicNode>(tokenToNode);
+		lastTokenToNodeBySentence.put(sentenceAnno, tokenToNodeCopy);
+		
+		return root;
+	}
+	
+	/**
+	 * <B>NOTE:</B> Must be called only after one of the conversion methods was called.
+	 * @return a mapping between a root, and the text of the tree's sentence. This is an ordered map,
+	 * ordered by the order of sentences in the text.
+	 * @throws CasTreeConverterException
+	 */
+	public LinkedHashMap<BasicNode, String> getTreesToSentences() throws CasTreeConverterException {
+		if (lastRootList == null || lastSentenceList == null) {
+			throw new CasTreeConverterException("getTreesToSentences() called before a conversion method was called.");
+		}
+		if (lastRootList.size() != lastSentenceList.size()) {
+			throw new CasTreeConverterException("Internal error - lastRootList(size=" + lastRootList.size() + ") and lastSentenceList(size=" +
+												lastSentenceList.size() + ") are in different sizes.");
+		}
+		
+		LinkedHashMap<BasicNode, String> result = new LinkedHashMap<BasicNode, String>(lastRootList.size());
+		Iterator<Sentence> iterSentences = lastSentenceList.iterator();
+		for (BasicNode node : lastRootList) {
+			Sentence sentence = iterSentences.next();
+			result.put(node, sentence.getCoveredText());
+		}
+		
+		return result;
+	}
+	
+	/**
+	 * <B>NOTE:</B> Must be called only after one of the conversion methods was called.
+	 * @return a mapping between each sentence and an internal map, that maps between any Token annotation
+	 * and all its tree nodes. This is an ordered map, ordered by the order of sentences in the text.<BR>
+	 * for each token, the first node is always the (single) non-deep node. Any subsequent nodes,
+	 * if any, are deep nodes.
+	 * @throws CasTreeConverterException
+	 */
+	public LinkedHashMap<Sentence, OneToManyBidiMultiHashMap<Token,BasicNode>> getTokenToNodesBySentence() throws CasTreeConverterException {
+		if (lastTokenToNodeBySentence == null) {
+			throw new CasTreeConverterException("getTokenToNodesBySentence() called before a conversion method was called.");
+		}
+		return lastTokenToNodeBySentence;
+	}
+	
+	/**
+	 * <B>NOTE:</B> Must be called only after one of the conversion methods was called.
+	 * @return a mapping between any Token annotation and all its tree nodes. If the last conversion
+	 * had several sentences, they are all return without any division to sentences. If you wish
+	 * to have a division by sentence, use {@link #getTokenToNodesBySentence()}.<BR>
+	 * for each token, the first node is always the (single) non-deep node. Any subsequent nodes,
+	 * if any, are deep nodes.
+	 * @throws CasTreeConverterException
+	 */
+	public OneToManyBidiMultiHashMap<Token,BasicNode> getAllTokensToNodes() throws CasTreeConverterException {
+		if (lastTokenToNodeBySentence == null) {
+			throw new CasTreeConverterException("getAllTokensToNodes() called before a conversion method was called.");
+		}
+		
+		OneToManyBidiMultiHashMap<Token,BasicNode> result = new OneToManyBidiMultiHashMap<Token,BasicNode>();
+		for (OneToManyBidiMultiHashMap<Token,BasicNode> map : lastTokenToNodeBySentence.values()) {
+			OneToManyBidiMultiHashMap<Token,BasicNode> mapCopy = new OneToManyBidiMultiHashMap<Token,BasicNode>(map);
+			result.putAll(mapCopy);
+		}
+		return result;
+	}
+
+	public BidiMap<Sentence, BasicNode> getSentenceToRootMap() throws CasTreeConverterException {
+		if (lastSentenceToRoot == null) {
+			throw new CasTreeConverterException("getSentenceToRootMap() called before a conversion method was called.");
+		}
+		return lastSentenceToRoot;
+	}
+
+	//////////////// PRIVATE ZONE /////////////////////////
+	
+	private BasicNode convertSentenceToTree(JCas jcas, Sentence sentenceAnno) throws CasTreeConverterException, UnsupportedPosTagStringException {
 		tokenAnnotations = JCasUtil.selectCovered(Token.class, sentenceAnno);
-		tokenToNode.clear();
-		nodes = new HashSet<BasicNode>();
-		childrenByParent = new HashMap<Token, Set<BasicNode>>(tokenAnnotations.size());
-		children = new HashSet<Token>(tokenAnnotations.size()-1);
+		tokenToNode = new OneToManyBidiMultiHashMap<Token, BasicNode>();
+		nodes = new LinkedHashSet<BasicNode>();
+		childrenByParent = new LinkedHashMap<Token, Set<BasicNode>>(tokenAnnotations.size());
+		children = new LinkedHashSet<Token>(tokenAnnotations.size()-1);
 		dependencyAnnotations = JCasUtil.selectCovered(Dependency.class, sentenceAnno);
 		deepDependencies = new ArrayList<Dependency>();
-		extraNodes = new HashSet<BasicNode>();
+		extraNodes = new LinkedHashSet<BasicNode>();
 		
 		logger.trace(String.format("\n***************\n***************\n%s\n***************\n", sentenceAnno.getCoveredText()));
 		
 		// Get token positions in sentence (1-based)
-		Map<Token, Integer> tokenPositions = new HashMap<Token, Integer>(tokenAnnotations.size());
+		Map<Token, Integer> tokenPositions = new LinkedHashMap<Token, Integer>(tokenAnnotations.size());
 		int i=1;
 		for (Token token : tokenAnnotations) {
 			tokenPositions.put(token, i);
@@ -127,6 +198,7 @@ public class CasTreeConverter {
 			}
 			
 			// Make sure the same token is not created twice
+			// NOTE that LATER (after deep dependencies) a token actually may have a few nodes. But not here. 
 			else if (tokenToNode.containsKey(dependent)) {
 				throw new CasTreeConverterException(String.format(
 						"Got dependent in more than one non-deep dependency. Dependent:%s, current governor:%s",
@@ -149,7 +221,14 @@ public class CasTreeConverter {
 			Token governor = depAnno.getGovernor();
 			Token dependent = depAnno.getDependent();
 			
-			BasicNode dependentNode = tokenToNode.get(dependent);
+			Collection<BasicNode> dependentNodes = tokenToNode.get(dependent);
+			// Actually, dependentNodes may have more than one node in it - if we already had some
+			// deep-dependency iterations, and this dependent Token has a few deep-dependency nodes
+//			if (dependentNodes.size()!=1) {
+//				throw new CasTreeConverterException("While handling deep dependencies, found a token ( " + dependent + 
+//						" ) that is not mapped to exactly one node, it is mapped to " + dependentNodes.size() + " nodes");
+//			}			
+			BasicNode dependentNode = dependentNodes.iterator().next(); // get first element - that is the non-deep node!
 			BasicNode node = buildNode(jcas, dependentNode.getInfo().getNodeInfo().getSerial(), id, dependent, depType, governor);
 			extraNodes.add(node);
 			node.setAntecedent(dependentNode);
@@ -163,22 +242,35 @@ public class CasTreeConverter {
 		
 		// Link all nodes to a tree
 		for (Entry<Token, Set<BasicNode>> entry : childrenByParent.entrySet()) {
-			BasicNode parent = tokenToNode.get(entry.getKey());
-			if (parent != null) {
+			Collection<BasicNode> parentNodes = tokenToNode.get(entry.getKey());
+			if (parentNodes != null && parentNodes.size()!=0) {
+				
+				// Take only the first node - this is always the non-deep node
+				BasicNode parent = parentNodes.iterator().next();
+				
 				addChildren(parent, entry.getValue());
 			}
 		}
 		
 		// Verify exactly one root
-		Set<Token> tokensThatAreNotchildren = new HashSet<Token>(tokenAnnotations);
+		Set<Token> tokensThatAreNotchildren = new LinkedHashSet<Token>(tokenAnnotations);
 		tokensThatAreNotchildren.removeAll(children);
 		if (tokensThatAreNotchildren.size() == 0) {
 			throw new CasTreeConverterException("All nodes are children - no node to be root!");
 		}
 		else if (tokensThatAreNotchildren.size() > 1) {
-			throw new CasTreeConverterException(String.format(
+			//TODO hack due to issue: https://github.com/hltfbk/Excitement-Open-Platform/issues/220
+			// When it is resolved, remove all content of this if body, and uncomment and leave in only this exception-throwing
+//			throw new CasTreeConverterException(String.format(
+//					"Got %d nodes that are tokens and not children and thus should be root - there should be exactly one: %s",
+//					tokensThatAreNotchildren.size(), tokensThatAreNotchildren));
+			logger.error(String.format(
 					"Got %d nodes that are tokens and not children and thus should be root - there should be exactly one: %s",
 					tokensThatAreNotchildren.size(), tokensThatAreNotchildren));
+			Token root = tokensThatAreNotchildren.iterator().next();
+			tokensThatAreNotchildren = new LinkedHashSet<Token>();
+			tokensThatAreNotchildren.add(root);
+			//TODO finish temp solution
 		}
 		
 		// Build root
@@ -188,9 +280,15 @@ public class CasTreeConverter {
 		addChildren(root, childrenByParent.get(rootToken));
 				
 		if (nodes.size() != tokenAnnotations.size() + extraNodes.size()) {
-			throw new CasTreeConverterException(String.format(
+			//TODO hack due to issue: https://github.com/hltfbk/Excitement-Open-Platform/issues/220
+			// When it is resolved, remove all content of this if body, and uncomment and leave in only this exception-throwing
+//			throw new CasTreeConverterException(String.format(
+//					"Built %d nodes, but there are %d tokens and %d extra nodes in the sentence",
+//					nodes.size(), tokenAnnotations.size(), extraNodes.size()));
+			logger.error(String.format(
 					"Built %d nodes, but there are %d tokens and %d extra nodes in the sentence",
 					nodes.size(), tokenAnnotations.size(), extraNodes.size()));
+			//TODO finish temp solution
 		}
 		
 		// Add artificial root on top (this is mandatory in BIU parse trees) 
@@ -199,8 +297,6 @@ public class CasTreeConverter {
 		return artificialRoot;
 	}
 	
-	
-	//////////////// PRIVATE ZONE /////////////////////////
 	
 	private static NodeInfo buildNodeInfo(JCas jcas, Token tokenAnno, int serial) throws CasTreeConverterException, UnsupportedPosTagStringException {
 		String word = tokenAnno.getCoveredText();
@@ -233,7 +329,7 @@ public class CasTreeConverter {
 		
 		children.add(child);
 		if (!childrenByParent.containsKey(parent)) {
-			childrenByParent.put(parent, new HashSet<BasicNode>());
+			childrenByParent.put(parent, new LinkedHashSet<BasicNode>());
 		}
 		childrenByParent.get(parent).add(childNode);
 	}
@@ -287,24 +383,28 @@ public class CasTreeConverter {
 		if (parent != null) {
 			registerChild(parent, token, node);
 		}
-		if (!tokenToNode.containsKey(token)) {
-			tokenToNode.put(token, node);
-		}
+		
+		// Note that the first this method is called for each token, we build its non-deep node.
+		// So for every token, the first node is always the non-deep one. All subsequent nodes
+		// may be deep (if any). Note that the value collection in this MultiMap is a List.
+		tokenToNode.put(token, node);
+		
 		return node;
 	}
 	
 	private void addChildren(BasicNode parent, Set<BasicNode> children) {
-		List<BasicNode> childrenList= new ArrayList<BasicNode>(children);
-		Collections.sort(childrenList, CHILDREN_ORDER);
-		
-		logger.trace(String.format("\n$%s", outNode(parent)));
-
-		// Add all children to node
-		for (BasicNode child : childrenList) {
-			parent.addChild(child);
-			logger.trace(String.format("$\t%s", outNode(child)));
-		}				
-		
+		if (children != null) {
+			List<BasicNode> childrenList= new ArrayList<BasicNode>(children);
+			Collections.sort(childrenList, CHILDREN_ORDER);
+			
+			logger.trace(String.format("\n$%s", outNode(parent)));
+	
+			// Add all children to node
+			for (BasicNode child : childrenList) {
+				parent.addChild(child);
+				logger.trace(String.format("$\t%s", outNode(child)));
+			}				
+		}
 	}
 	
 	private static String tokenString(Token token) {
@@ -337,7 +437,13 @@ public class CasTreeConverter {
 
 	private final Comparator<BasicNode> CHILDREN_ORDER = new ChildrenOrder();
 	private List<Token> tokenAnnotations;
-	private final Map<Token, BasicNode> tokenToNode = new HashMap<Token, BasicNode>();
+	
+	// We need the BasicNodes in the value collections to be ordered, as the first one will always
+	// be a non-deep node, and all subsequent nodes will be deep nodes (if any)
+	// The default collection used for values collection is ArrayList, which suits our needs.
+	// Anyway, the value collection has to be a list!
+	private OneToManyBidiMultiHashMap<Token, BasicNode> tokenToNode = null;
+	
 	private Set<BasicNode> nodes;
 	private Map<Token, Set<BasicNode>> childrenByParent;
 	private Set<Token> children;
@@ -347,6 +453,8 @@ public class CasTreeConverter {
 	
 	private List<BasicNode> lastRootList = null;
 	private List<Sentence> lastSentenceList = null;
+	private LinkedHashMap<Sentence, OneToManyBidiMultiHashMap<Token, BasicNode>> lastTokenToNodeBySentence = null;
+	private BidiMap<Sentence, BasicNode> lastSentenceToRoot = null;
 	
 	private static final Logger logger = Logger.getLogger(CasTreeConverter.class);
 }

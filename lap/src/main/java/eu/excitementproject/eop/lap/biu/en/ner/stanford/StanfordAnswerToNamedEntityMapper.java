@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.lap.biu.en.ner.stanford;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
 
@@ -17,10 +17,10 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
  */
 public class StanfordAnswerToNamedEntityMapper
 {
-	private static HashMap<String,NamedEntity> map;
+	private static LinkedHashMap<String,NamedEntity> map;
 	static
 	{
-		map = new HashMap<String, NamedEntity>();
+		map = new LinkedHashMap<String, NamedEntity>();
 		map.put("PERSON", NamedEntity.PERSON);
 		map.put("LOCATION", NamedEntity.LOCATION);
 		map.put("ORGANIZATION", NamedEntity.ORGANIZATION);

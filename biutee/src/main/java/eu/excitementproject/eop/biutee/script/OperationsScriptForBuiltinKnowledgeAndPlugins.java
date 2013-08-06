@@ -1,5 +1,4 @@
 package eu.excitementproject.eop.biutee.script;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -86,7 +85,7 @@ public abstract class OperationsScriptForBuiltinKnowledgeAndPlugins extends Oper
 	private void initPlugins(String[] pluginsToApply) throws PluginAdministrationException, PluginException, OperationException
 	{
 		Set<String> initializedPlugins = new LinkedHashSet<String>();
-		Set<String> pluginsToApplySet = new HashSet<String>();
+		Set<String> pluginsToApplySet = new LinkedHashSet<String>();
 		for (String pluginToApply : pluginsToApply) pluginsToApplySet.add(pluginToApply);
 		Map<String, Plugin> mapOfPlugins = new LinkedHashMap<String, Plugin>();
 		Set<InstanceBasedPlugin> setOfInstanceBasedPlugins = new LinkedHashSet<InstanceBasedPlugin>();

@@ -1,8 +1,8 @@
 package eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules.conll;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -51,7 +51,7 @@ public class RuleToConllCoverter {
 
 		// create an english node rule compliler
 		EntailmentRuleCompiler compiler = new EntailmentRuleCompiler(); 
-		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> rulesWithCD = new HashSet<RuleWithConfidenceAndDescription<Info,BasicNode>>(
+		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> rulesWithCD = new LinkedHashSet<RuleWithConfidenceAndDescription<Info,BasicNode>>(
 				compiler.compileFolder(dir, ruleFileSuffix));
 		File conllDir = new File(compilationParams.get(RuleCompilerParameterNames.CONLL_RULES_DIRECTORY));	
 		conllDir.mkdirs();
@@ -91,7 +91,7 @@ public class RuleToConllCoverter {
 		final String formatString = "%0" + digits + "d"; 
 		
 		// for each distinct description, keep track of how many times we've seen it
-		Map<String, Integer> mapDescriptionToIndex = new HashMap<String, Integer>();
+		Map<String, Integer> mapDescriptionToIndex = new LinkedHashMap<String, Integer>();
 		for (RuleWithConfidenceAndDescription<I, N> ruleWithDesc : rulesWithDescription)
 		{
 			String description = ruleWithDesc.getDescription();
@@ -203,7 +203,7 @@ public class RuleToConllCoverter {
 	
 	private static <I extends Info, N extends AbstractNode<I, N>> Map<N, Integer> mapNodesOfTreeToIds(N root )
 	{
-		Map<N, Integer> mapNodesToIds = new HashMap<N, Integer>();
+		Map<N, Integer> mapNodesToIds = new LinkedHashMap<N, Integer>();
 		Integer id = 1;
 		
 		// fill up the queue with nodes

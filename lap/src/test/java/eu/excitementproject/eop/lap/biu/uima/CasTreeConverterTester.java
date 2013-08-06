@@ -1,17 +1,36 @@
 package eu.excitementproject.eop.lap.biu.uima;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.TOP;
+import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+
+import eu.excitementproject.eop.common.datastructures.OneToManyBidiMultiHashMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.lap.LAPAccess;
+import eu.excitementproject.eop.lap.biu.test.BIUFullLAPConfigured;
+import eu.excitementproject.eop.lap.biu.test.BiuTreeBuilder;
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
@@ -19,20 +38,30 @@ public class CasTreeConverterTester {
 
 	public static void testConverter(String text) throws Exception {
 		
-		// Run LAP, get CAS
-		LAPAccess lap = new BIUFullLAPConfigured(); 
-		JCas mainJcas = lap.generateSingleTHPairCAS(text, "");
-		JCas jcas = mainJcas.getView(LAP_ImplBase.TEXTVIEW);
-		
-		// Run Converter, get trees
-		CasTreeConverter converter = new CasTreeConverter();
-		List<BasicNode> testedTrees = converter.convertCasToTrees(jcas);
-		
-		// Build reference trees
-		BiuTreeBuilder builder = new BiuTreeBuilder();
-		List<BasicNode> referenceTrees = builder.buildTrees(text);
-		
-		assertTreesEqual(referenceTrees, testedTrees);
+		try {
+			// Run LAP, get CAS
+			LAPAccess lap = new BIUFullLAPConfigured(); 
+			JCas mainJcas = lap.generateSingleTHPairCAS(text, "");
+			JCas jcas = mainJcas.getView(LAP_ImplBase.TEXTVIEW);
+			
+			// Run Converter, get trees
+			CasTreeConverter converter = new CasTreeConverter();
+			List<BasicNode> testedTrees = converter.convertCasToTrees(jcas);
+			
+			// Build reference trees
+			BiuTreeBuilder builder = new BiuTreeBuilder();
+			List<BasicNode> referenceTrees = builder.buildTrees(text);
+			
+			assertTreesEqual(referenceTrees, testedTrees);
+			
+			// Get token-node mapping
+			Map<Sentence, OneToManyBidiMultiHashMap<Token, BasicNode>> tokenToNodesBySentence = converter.getTokenToNodesBySentence();
+			assertTokenToNodes(jcas, testedTrees, tokenToNodesBySentence);
+		}
+		catch (Throwable e) {
+			ExceptionUtil.logException(e, logger);
+			throw e;
+		}
 	}
 	
 	/**
@@ -105,4 +134,58 @@ public class CasTreeConverterTester {
 		assertEquals(refInfo.getDependencyRelation(), testInfo.getDependencyRelation());
 
 	}
+	
+	private static void assertTokenToNodes(JCas jcas, List<BasicNode> testedTrees, Map<Sentence, OneToManyBidiMultiHashMap<Token, BasicNode>> tokenToNodesBySentence) {
+		Collection<Sentence> sentences = JCasUtil.select(jcas, Sentence.class);
+		assertOrderedFeatureStructureCollectionsEqual(sentences, tokenToNodesBySentence.keySet());
+		
+		assertEquals(testedTrees.size(), tokenToNodesBySentence.size());
+		
+		Iterator<BasicNode> rootIter = testedTrees.iterator();
+		for (Entry<Sentence, OneToManyBidiMultiHashMap<Token, BasicNode>> entry : tokenToNodesBySentence.entrySet()) {
+			OneToManyBidiMultiHashMap<Token, BasicNode> tokenToNodes = entry.getValue();
+			
+			List<Token> tokens = JCasUtil.selectCovered(jcas, Token.class, entry.getKey());
+			assertUnorderedFeatureStructureCollectionsEqual(tokens, tokenToNodes.keySet());
+			
+			BasicNode root = rootIter.next();
+			Set<BasicNode> nodes = AbstractNodeUtils.treeToSet(root);
+			
+			// Remove null-word nodes, since this is the "fake" root node, and we don't need it
+			// for the comparison (it is not present in the tokenToNodes map)
+			for (Iterator<BasicNode> iterNodes = nodes.iterator(); iterNodes.hasNext();) {
+				if (iterNodes.next().getInfo().getNodeInfo().getWord()==null) {
+					iterNodes.remove();
+				}
+			}
+			assertEquals(nodes, new HashSet<BasicNode>(tokenToNodes.values()));
+			
+			for (Entry<Token, Collection<BasicNode>> tokenNodesEntry : tokenToNodes.entrySet()) {
+				List<BasicNode> nodeList = (List<BasicNode>) tokenNodesEntry.getValue();
+				for (int i=0; i<nodeList.size(); i++) {
+					assertEquals(tokenNodesEntry.getKey().getLemma().getValue(), nodeList.get(i).getInfo().getNodeInfo().getWordLemma());
+					if (i==0) {
+						assertNull(nodeList.get(i).getAntecedent()); // only first element is non-deep node (no antecedent)
+					}
+					else {
+						assertNotNull(nodeList.get(i).getAntecedent()); // all other element are deep (have antecedent)
+					}
+				}
+			}
+		}
+	}
+	
+	private static <T extends TOP, S extends TOP> void assertOrderedFeatureStructureCollectionsEqual(Collection<T> c1, Collection<S> c2) {
+		List<T> list1 = new ArrayList<T>(c1);
+		List<S> list2 = new ArrayList<S>(c2);
+		assertEquals("Non-equals ordered feature-structure collections, c1 has " + c1.size() + " elements, c2 has " + c2.size() + " elements", list1, list2);
+	}
+	
+	private static <T extends TOP, S extends TOP> void assertUnorderedFeatureStructureCollectionsEqual(Collection<T> c1, Collection<S> c2) {
+		Set<T> list1 = new HashSet<T>(c1);
+		Set<S> list2 = new HashSet<S>(c2);
+		assertEquals("Non-equals unordered feature-structure collections, c1 has " + c1.size() + " elements, c2 has " + c2.size() + " elements", list1, list2);
+	}
+	
+	private static Logger logger = Logger.getLogger(CasTreeConverterTester.class);
 }

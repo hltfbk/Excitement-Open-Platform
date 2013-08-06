@@ -110,7 +110,7 @@ public class DemoAlignmentCalculator
 				TreeAndParentMap<ExtendedInfo, ExtendedNode> emtree2 = new TreeAndParentMap<ExtendedInfo, ExtendedNode>(etree2);
 		
 				Set<String> hypothesisLemmasLowerCase = TreeUtilities.constructSetLemmasLowerCase(emtree2);
-				int hypothesisNumberOfNodes = AbstractNodeUtils.treeToSet(tree2).size();
+				int hypothesisNumberOfNodes = AbstractNodeUtils.treeToLinkedHashSet(tree2).size();
 				
 				AlignmentCalculator alignmentCalculator = new AlignmentCalculator(alignmentCriteria, emtree1, emtree2);
 				

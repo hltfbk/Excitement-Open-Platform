@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>eu.excitementproject</groupId>
 		<artifactId>eop</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</parent>
 	<artifactId>core</artifactId>
 	<name>core</name>
@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp</groupId>
@@ -44,12 +44,66 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>lap</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>unituebingen</groupId>
 			<artifactId>GermaNetAPI</artifactId>
 			<version>7.0.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+		<dependency>
+    			<groupId>eu.fbk.hlt</groupId>
+    			<artifactId>pso</artifactId>
+    			<version>0.0.1</version>
+                </dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.style-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.structure-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.lexical-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>weka-stable</artifactId>
+			<version>3.6.9</version>
+
+		</dependency>
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.similarity</groupId>
+				<artifactId>
+					de.tudarmstadt.ukp.similarity-asl
+				</artifactId>
+				<version>1.0.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<repositories>
+		<repository>
+	        <id>ukp-oss</id>
+	        <name>ukp-oss-releases</name>
+	        <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ukp-releases-local</url>
+	    </repository>
+	    <repository>
+	        <id>ukp-oss-ext</id>
+	        <name>ukp-oss-releases-ext</name>
+	        <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ext-releases-local</url>
+	    </repository>	    
+	</repositories>
 </project>

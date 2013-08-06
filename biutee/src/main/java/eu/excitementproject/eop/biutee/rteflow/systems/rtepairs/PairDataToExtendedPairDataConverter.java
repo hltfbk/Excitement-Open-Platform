@@ -3,6 +3,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.rteflow.document_sublayer.DocumentInitializer;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
@@ -34,6 +36,7 @@ public class PairDataToExtendedPairDataConverter
 
 	public void convert() throws TreeCoreferenceInformationException, TeEngineMlException, AnnotatorException
 	{
+		logger.debug("Convert text...");
 		DocumentInitializer documentInitializerForText =
 				new DocumentInitializer(pairData.getCoreferenceInformation(),teSystemEnvironment,pairData.getTextTrees());
 		documentInitializerForText.initialize();
@@ -48,11 +51,14 @@ public class PairDataToExtendedPairDataConverter
 					pairData.getMapTreesToSentences().get(originalTree)
 					);
 		}
-		
+		logger.debug("Convert text - done.");
+
+		logger.debug("Convert hypothesis...");
 		DocumentInitializer documentInitializerForHypothesis =
 				new DocumentInitializer(null,teSystemEnvironment,pairData.getHypothesisTree());
 		documentInitializerForHypothesis.initialize();
 		ExtendedNode convertedHypothesisTree = documentInitializerForHypothesis.getDocumentAsTree();
+		logger.debug("Convert hypothesis - done.");
 		
 		extendedPairData = new ExtendedPairData(pairData.getPair(),textTrees,convertedHypothesisTree,convertedMapTreesToSentences,coreferenceInformation,pairData.getDatasetName());
 	}
@@ -73,4 +79,6 @@ public class PairDataToExtendedPairDataConverter
 	private PairData pairData;
 	private TESystemEnvironment teSystemEnvironment;
 	private ExtendedPairData extendedPairData = null;
+	
+	private static final Logger logger = Logger.getLogger(PairDataToExtendedPairDataConverter.class);
 }

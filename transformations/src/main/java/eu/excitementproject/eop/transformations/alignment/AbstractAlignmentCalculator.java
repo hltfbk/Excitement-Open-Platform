@@ -96,8 +96,8 @@ public abstract class AbstractAlignmentCalculator<T, S extends AbstractNode<T, S
 		mapAlignedTriplesFromHypothesisToText = new SimpleValueSetMap<S, S>();
 		missingTriples = new LinkedHashSet<S>();
 
-		Set<S> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree.getTree());
-		Set<S> textNodes = AbstractNodeUtils.treeToSet(textTree.getTree());
+		Set<S> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree.getTree());
+		Set<S> textNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree.getTree());
 		
 		for (S hypothesisNode : hypothesisNodes)
 		{
@@ -126,8 +126,8 @@ public abstract class AbstractAlignmentCalculator<T, S extends AbstractNode<T, S
 		mapSimilarNodesFromHypothesisToText = new SimpleValueSetMap<S, S>();
 		missingSimilarNodes = new LinkedHashSet<S>();
 
-		Set<S> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree.getTree());
-		Set<S> textNodes = AbstractNodeUtils.treeToSet(textTree.getTree());
+		Set<S> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree.getTree());
+		Set<S> textNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree.getTree());
 		
 		for (S hypothesisNode : hypothesisNodes)
 		{
@@ -153,8 +153,8 @@ public abstract class AbstractAlignmentCalculator<T, S extends AbstractNode<T, S
 		mapAlignedNodesFromHypothesisToText = new SimpleValueSetMap<S, S>();
 		missingAlignedNodes = new LinkedHashSet<S>();
 
-		Set<S> hypothesisNodes = AbstractNodeUtils.treeToSet(hypothesisTree.getTree());
-		Set<S> textNodes = AbstractNodeUtils.treeToSet(textTree.getTree());
+		Set<S> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesisTree.getTree());
+		Set<S> textNodes = AbstractNodeUtils.treeToLinkedHashSet(textTree.getTree());
 		
 		for (S hypothesisNode : hypothesisNodes)
 		{

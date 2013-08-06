@@ -2,7 +2,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.wordnet;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -295,7 +295,7 @@ public class WordnetLexicalResourceServices {
 		}
 		else
 		{
-			relatedSensedWords = new HashSet<SensedWord>();
+			relatedSensedWords = new LinkedHashSet<SensedWord>();
 			Set<Synset> relatedSynsets = synset.getRelatedSynsets(relation, chainingLength);	//getNeighbors(relation);
 			for (Synset relatedSynset : relatedSynsets)
 				relatedSensedWords.addAll(relatedSynset.getAllSensedWords());
@@ -322,7 +322,7 @@ public class WordnetLexicalResourceServices {
 		if (relation.isLexical())
 		{
 			SensedWord sensedWord = dictionary.getSensedWord(lemma, synset);
-			synsets = new HashSet<Synset>();
+			synsets = new LinkedHashSet<Synset>();
 			for (SensedWord aSensedWord : sensedWord.getNeighborSensedWords(relation)) {
 				synsets.add(aSensedWord.getSynset());
 			}
@@ -372,7 +372,7 @@ public class WordnetLexicalResourceServices {
 	private Set<LexicalRule<WordnetRuleInfo>> getSynonymRules(Synset synset, int synsetNo, String baseLemma, boolean isNotCrossed, int targetSenseNum)
 			throws LexicalResourceException 
 	{
-		Set<LexicalRule<WordnetRuleInfo>> rules = new HashSet<LexicalRule<WordnetRuleInfo>>();
+		Set<LexicalRule<WordnetRuleInfo>> rules = new LinkedHashSet<LexicalRule<WordnetRuleInfo>>();
 		try {
 			for (String lemma : synset.getWords())
 				if (!lemma.equalsIgnoreCase(baseLemma))		// filter out the one rule from the baseLemma to itself

@@ -11,6 +11,7 @@ import eu.excitementproject.eop.common.DecisionLabel;
  * without.
  * 
  * @author Roberto Zanoli
+ * 
  */
 public class EditDistanceTEDecision implements TEDecision {
 

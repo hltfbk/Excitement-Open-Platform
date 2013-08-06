@@ -3,11 +3,11 @@ package eu.excitementproject.eop.common.representation.parse.tree.dependency.bas
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 
 /**
@@ -102,7 +102,7 @@ public class TreeToElement
 	{
 		mapNodeToUniqueId = new SimpleBidirectionalMap<BasicNode, String>();
 		int uniqueId = 1;
-		for (BasicNode node : AbstractNodeUtils.treeToSet(tree))
+		for (BasicNode node : TreeIterator.iterableTree(tree))
 		{
 			mapNodeToUniqueId.put(node,String.valueOf(uniqueId));
 			++uniqueId;

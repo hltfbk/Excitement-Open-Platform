@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
@@ -51,16 +51,16 @@ public abstract class AbstractDirectLexicalResource extends AbstractSimilarityLe
 //	private Connection con;
 	protected Connection con;
 	
-	private final Set<PreparedStatementAndPos> ALL_SCORES_STMTS = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> NOUN_SCORE_STMT_SET = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> VERB_SCORE_STMT_SET = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> EMPTY_SET = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> ALL_RULES_FOR_RIGHT_STMTS = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> RULES_FOR_RIGHT_STMT_NOUN = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> RULES_FOR_RIGHT_STMT_VERB = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> ALL_RULES_FOR_LEFT_STMTS = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> RULES_FOR_LEFT_STMT_NOUN = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> RULES_FOR_LEFT_STMT_VERB = new HashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> ALL_SCORES_STMTS = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> NOUN_SCORE_STMT_SET = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> VERB_SCORE_STMT_SET = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> EMPTY_SET = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> ALL_RULES_FOR_RIGHT_STMTS = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> RULES_FOR_RIGHT_STMT_NOUN = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> RULES_FOR_RIGHT_STMT_VERB = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> ALL_RULES_FOR_LEFT_STMTS = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> RULES_FOR_LEFT_STMT_NOUN = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> RULES_FOR_LEFT_STMT_VERB = new LinkedHashSet<PreparedStatementAndPos>();
 	
 
 	///////////////////////////////////////////////// PUBLIC /////////////////////////////////////////////////////////////////////

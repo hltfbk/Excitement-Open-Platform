@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.biutee.classifiers.linearimplementations;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
@@ -188,7 +188,7 @@ public class ParametersExpanderClassifier implements TrainableClassifier
 	
 	protected Set<Integer> allExpandings()
 	{
-		Set<Integer> ret = new HashSet<Integer>();
+		Set<Integer> ret = new LinkedHashSet<Integer>();
 		for (Set<Integer> set : expandScheme)
 		{
 			for (Integer i : set)
