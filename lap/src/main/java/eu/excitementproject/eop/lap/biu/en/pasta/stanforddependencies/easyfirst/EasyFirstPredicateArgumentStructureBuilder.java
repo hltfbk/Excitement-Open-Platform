@@ -71,7 +71,7 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 		// For each verb-predicate, find its arguments.
 		for (Predicate<I, S> predicate : predicates)
 		{
-			PredicateArgumentStructure<I,S> predicateArgumentStructure = buildForVerbalPredicate(predicate);
+			PredicateArgumentStructure<I,S> predicateArgumentStructure = buildForVerbalPredicate(predicate,true);
 			predicateArgumentStructures.add(predicateArgumentStructure);
 		}
 		
@@ -106,9 +106,9 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 
 
 
-	private PredicateArgumentStructure<I,S> buildForVerbalPredicate(Predicate<I, S> predicate) throws PredicateArgumentIdentificationException
+	private PredicateArgumentStructure<I,S> buildForVerbalPredicate(Predicate<I, S> predicate, boolean itIsVerb) throws PredicateArgumentIdentificationException
 	{
-		ArgumentsIdentifier<I, S> argumentsIdentifier = new ArgumentsIdentifier<I, S>(tree,predicate);
+		ArgumentsIdentifier<I, S> argumentsIdentifier = new ArgumentsIdentifier<I, S>(tree,predicate,itIsVerb);
 		argumentsIdentifier.setAprioriInformation(aprioriInformation);
 		argumentsIdentifier.identifyArguments();
 		Set<TypedArgument<I, S>> arguments = argumentsIdentifier.getArguments();

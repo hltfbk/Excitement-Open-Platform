@@ -43,11 +43,12 @@ public class ArgumentsIdentifier<I extends Info, S extends AbstractNode<I, S>>
 	 * @param tree
 	 * @param predicate
 	 */
-	public ArgumentsIdentifier(TreeAndParentMap<I, S> tree, Predicate<I, S> predicate)
+	public ArgumentsIdentifier(TreeAndParentMap<I, S> tree, Predicate<I, S> predicate, boolean itIsVerb)
 	{
 		super();
 		this.tree = tree;
 		this.predicate = predicate;
+		this.itIsVerb = itIsVerb;
 	}
 	
 	
@@ -194,6 +195,8 @@ public class ArgumentsIdentifier<I extends Info, S extends AbstractNode<I, S>>
 	 */
 	private boolean checkSemanticPassiveSubject(Predicate<I, S> predicate, List<S> pathFromPredicateToArgument, S syntacticArgumentNode) throws PredicateArgumentIdentificationException
 	{
+		if (!itIsVerb) {return false;}
+		
 		if (aprioriInformation!=null)
 		{
 			Boolean fromApriori = aprioriInformation.checkSemanticPassiveSubject(predicate, pathFromPredicateToArgument, syntacticArgumentNode);
@@ -309,8 +312,9 @@ public class ArgumentsIdentifier<I extends Info, S extends AbstractNode<I, S>>
 	
 	
 	// input
-	private TreeAndParentMap<I,S> tree;
-	private Predicate<I, S> predicate;
+	private final TreeAndParentMap<I,S> tree;
+	private final Predicate<I, S> predicate;
+	private final boolean itIsVerb;
 	
 	private PredicateArgumentAprioriInformation<I, S> aprioriInformation = null;
 	
