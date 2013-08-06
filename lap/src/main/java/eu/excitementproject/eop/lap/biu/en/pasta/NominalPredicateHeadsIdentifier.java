@@ -13,6 +13,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.Nominalization;
+import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.NomlexMapBuilder;
 
 /**
  * Finds all the nominal-predicates in a given parse tree.

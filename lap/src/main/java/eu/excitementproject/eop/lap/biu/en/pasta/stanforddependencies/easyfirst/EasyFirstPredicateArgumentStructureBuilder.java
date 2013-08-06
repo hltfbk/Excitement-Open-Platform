@@ -39,13 +39,19 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 	 * @param tree
 	 * @param nomlexMap
 	 */
-	public EasyFirstPredicateArgumentStructureBuilder(TreeAndParentMap<I, S> tree, ImmutableMap<String, Nominalization> nomlexMap)
+	public EasyFirstPredicateArgumentStructureBuilder(TreeAndParentMap<I, S> tree, ImmutableMap<String, Nominalization> nomlexMap, PastaMode mode)
 	{
 		super(tree);
 		this.nomlexMap = nomlexMap;
+		this.mode = mode;
 	}
 	
-	
+
+	@Deprecated
+	public EasyFirstPredicateArgumentStructureBuilder(TreeAndParentMap<I, S> tree, ImmutableMap<String, Nominalization> nomlexMap)
+	{
+		this(tree,nomlexMap,PastaMode.BASIC);
+	}
 
 
 
@@ -78,7 +84,7 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 		for (S nominalPredicateHead : nominalPredicateHeads)
 		{
 			NominalPredicateArgumentStructureIdentifier<I, S> nominalPredicateArgumentStructureIdentifier =
-					new NominalPredicateArgumentStructureIdentifier<I, S>(tree,nomlexMap,nominalPredicateHead);
+					new NominalPredicateArgumentStructureIdentifier<I, S>(tree,nomlexMap,nominalPredicateHead,mode);
 			
 			nominalPredicateArgumentStructureIdentifier.identify();
 			PredicateArgumentStructure<I, S> predicateArgumentStructure = nominalPredicateArgumentStructureIdentifier.getPredicateArgumentStructure();
@@ -120,4 +126,5 @@ public class EasyFirstPredicateArgumentStructureBuilder<I extends Info, S extend
 	protected final ImmutableMap<String, Nominalization> nomlexMap;
 	
 	private Set<PredicateArgumentStructure<I,S>> predicateArgumentStructures = null;
+	private final PastaMode mode;
 }

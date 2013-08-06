@@ -27,6 +27,7 @@ import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.NomlexArgument;
 import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.NomlexMapBuilder;
 import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.RelationTypes;
 import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.ArgumentIdentificationUtilities;
+import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.PastaMode;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentIdentificationException;
 
 /**
@@ -53,12 +54,14 @@ public class NominalPredicateArgumentStructureIdentifier<I extends Info, S exten
 	 */
 	public NominalPredicateArgumentStructureIdentifier(
 			TreeAndParentMap<I, S> tree,
-			ImmutableMap<String, Nominalization> nomlexMap, S predicateHead)
+			ImmutableMap<String, Nominalization> nomlexMap, S predicateHead,
+			PastaMode mode)
 	{
 		super();
 		this.tree = tree;
 		this.nomlexMap = nomlexMap;
 		this.predicateHead = predicateHead;
+		this.mode = mode;
 	}
 
 	public void identify() throws PredicateArgumentIdentificationException
@@ -259,6 +262,23 @@ public class NominalPredicateArgumentStructureIdentifier<I extends Info, S exten
 				
 			}
 		}
+		
+		if (mode.isEqualOrGreater(PastaMode.BASIC))
+		{
+			if (null==ret)
+			{
+				ArgumentType typeFromRelation = RelationTypes.fromRelation(relation);
+				if( 
+						(ArgumentType.MODIFIER.equals(typeFromRelation))||
+						(ArgumentType.SUBJECT.equals(typeFromRelation))||
+						(ArgumentType.OBJECT.equals(typeFromRelation))
+						)
+				{
+					ret = typeFromRelation;
+				}
+			}
+		}
+		
 		return ret;
 	}
 	
@@ -357,6 +377,7 @@ public class NominalPredicateArgumentStructureIdentifier<I extends Info, S exten
 	private final TreeAndParentMap<I, S> tree;
 	private final ImmutableMap<String, Nominalization> nomlexMap;
 	private final S predicateHead;
+	private final PastaMode mode;
 	
 	
 	// internals
