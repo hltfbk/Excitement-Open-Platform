@@ -44,7 +44,7 @@ public class CopularPredicatesIdentifier<I extends Info, S extends AbstractNode<
 		this.tree = tree;
 	}
 	
-	public void identify()
+	public void identify() throws PredicateArgumentIdentificationException
 	{
 		Set<S> predicateHeads = new LinkedHashSet<>();
 		for (S node : TreeIterator.iterableTree(tree.getTree()))
