@@ -2,6 +2,7 @@
 package eu.excitementproject.eop.common.representation.partofspeech;
 
 import java.util.HashSet;
+
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
