@@ -55,6 +55,7 @@ public class CopularPredicatesIdentifier<I extends Info, S extends AbstractNode<
 			}
 		}
 		
+		copularPredicates = new LinkedHashSet<>();
 		for (S head : predicateHeads)
 		{
 			copularPredicates.add(new Predicate<I, S>(getInternalNodes(head), head));
