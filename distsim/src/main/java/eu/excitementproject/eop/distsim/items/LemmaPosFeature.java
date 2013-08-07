@@ -3,7 +3,6 @@
  */
 package eu.excitementproject.eop.distsim.items;
 
-import java.util.HashSet;
 import java.util.Set;
 
 

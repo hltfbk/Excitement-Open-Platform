@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.distsim.items;
 
 import java.io.Serializable;
-
 import java.util.Set;
 
 /**

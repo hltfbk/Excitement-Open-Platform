@@ -12,8 +12,8 @@ import eu.excitementproject.eop.distsim.items.TextUnit;
 import eu.excitementproject.eop.distsim.storage.BasicMap;
 import eu.excitementproject.eop.distsim.storage.BasicSet;
 import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
-import eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage;
 import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage;
 import eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.CreationException;
 

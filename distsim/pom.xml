@@ -39,14 +39,18 @@
   		<artifactId>common</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
-     
+      
     <dependency>
 		<groupId>eu.excitementproject</groupId>
   		<artifactId>lap</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
-  	
-    
 
+    <dependency>
+		<groupId>ac.biu.nlp</groupId>
+  		<artifactId>parse-utils</artifactId>
+  		<version>001</version>
+  	</dependency>
+    	
   	</dependencies>
 </project>

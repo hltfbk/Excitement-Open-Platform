@@ -4,7 +4,6 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
 import java.io.BufferedReader;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

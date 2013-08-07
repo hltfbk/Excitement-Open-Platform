@@ -4,11 +4,9 @@
 package eu.excitementproject.eop.distsim.builders.similarity;
 
 import java.io.File;
-
 import java.util.LinkedList;
 import java.util.List;
 
-//import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.common.utilities.OS;
@@ -19,6 +17,7 @@ import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.SortUtil;
+//import org.apache.log4j.Logger;
 
 /**
  * A program which combines a given set of similarity measure storages into one unified similarity storage.

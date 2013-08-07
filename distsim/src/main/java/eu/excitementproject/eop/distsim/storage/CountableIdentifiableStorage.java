@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.io.Serializable;
-
 import java.util.concurrent.ExecutionException;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;

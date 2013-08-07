@@ -2,20 +2,9 @@ package eu.excitementproject.eop.distsim.application.converter.db;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
 
 import eu.excitementproject.eop.distsim.storage.Redis;
-import eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
-import eu.excitementproject.eop.distsim.util.SortUtil;
-import gnu.trove.iterator.TIntDoubleIterator;
-import gnu.trove.iterator.TIntObjectIterator;
-import gnu.trove.map.TIntDoubleMap;
-import gnu.trove.map.TIntObjectMap;
-import gnu.trove.map.hash.TIntDoubleHashMap;
-import gnu.trove.map.hash.TIntObjectHashMap;
 
 /**
  * @author Meni Adler

@@ -16,7 +16,6 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.SerializationException;
-import eu.excitementproject.eop.distsim.util.SortUtil;
 
 
 /**
@@ -75,6 +74,7 @@ public class SimilarityFile2Redis {
 						break;
 					else {
 						int element1Id = pair.getFirst();
+						@SuppressWarnings("unchecked")
 						LinkedHashMap<Integer, Double> sortedElementScores = (LinkedHashMap<Integer, Double>) pair.getSecond();
 						for (Entry<Integer,Double> elementScore : sortedElementScores.entrySet()) {
 							int element2Id = elementScore.getKey();

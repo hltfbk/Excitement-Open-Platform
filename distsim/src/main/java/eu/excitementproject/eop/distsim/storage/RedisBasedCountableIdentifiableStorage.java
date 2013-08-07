@@ -1,11 +1,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.util.HashSet;
-
-
 import java.util.Set;
-
-//import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -18,6 +14,7 @@ import eu.excitementproject.eop.distsim.items.Countable;
 import eu.excitementproject.eop.distsim.items.Externalizable;
 import eu.excitementproject.eop.distsim.items.Identifiable;
 import eu.excitementproject.eop.distsim.items.InvalidCountException;
+import eu.excitementproject.eop.distsim.items.LemmaPos;
 import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.storage.iterators.RedisBasedIterator;
@@ -25,7 +22,7 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Resetable;
 import eu.excitementproject.eop.distsim.util.Serialization;
 import eu.excitementproject.eop.distsim.util.SerializationException;
-import eu.excitementproject.eop.distsim.items.LemmaPos;
+//import org.apache.log4j.Logger;
 /**
  * An implementation of the {@link CountableIdentifiableStorage} interface, which stored objects with id, based on Redis DB
  * 
@@ -68,6 +65,7 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.CountableIdentifiableStorage#getData(int)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public T getData(int id) throws ItemNotFoundException, SerializationException {
 		String val = jedis.get(Integer.toString(id));

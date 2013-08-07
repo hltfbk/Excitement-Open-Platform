@@ -5,9 +5,7 @@ import java.util.List;
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.Element;
-import eu.excitementproject.eop.distsim.scoring.ElementSimilarityMeasure;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
-import eu.excitementproject.eop.distsim.scoring.SimilarityMeasure;
 import eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScoring;
 
 /**

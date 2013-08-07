@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
 import java.io.File;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;

@@ -1,7 +1,5 @@
 package eu.excitementproject.eop.distsim.application.converter.db;
 
-import gate.util.Out;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

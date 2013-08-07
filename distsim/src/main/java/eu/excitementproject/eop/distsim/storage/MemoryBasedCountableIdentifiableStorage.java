@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.distsim.storage;
 
 
-import redis.clients.jedis.Jedis;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Countable;

@@ -31,9 +31,9 @@ import eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScor
 import eu.excitementproject.eop.distsim.storage.BasicSet;
 import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureScoreStorage;
 import eu.excitementproject.eop.distsim.storage.ElementFeatureScoreStorage;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.NoScoreFoundException;
 import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
-import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;

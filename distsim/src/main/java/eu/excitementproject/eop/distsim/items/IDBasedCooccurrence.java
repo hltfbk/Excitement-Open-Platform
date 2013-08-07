@@ -11,6 +11,7 @@ import java.util.Set;
  * @since 19/07/2012
  *
  */
+@SuppressWarnings("serial")
 public class IDBasedCooccurrence<R> extends DefaultIdentifiableCountable implements Externalizable {
 	
 	protected final String DELIMITER = "#";
@@ -45,6 +46,7 @@ public class IDBasedCooccurrence<R> extends DefaultIdentifiableCountable impleme
 		return ret;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void fromKey(String key) throws UndefinedKeyException {
 		String[] props = key.split(DELIMITER);

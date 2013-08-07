@@ -1,6 +1,5 @@
 package eu.excitementproject.eop.distsim.items;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +19,11 @@ import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosT
  */
 public class LemmaPos implements Externalizable {
 
-	//protected final String DELIMITER = "###LemmaPos###";
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public final String DELIMITER = "#";
 
 	public LemmaPos(String lemma, CanonicalPosTag pos) {

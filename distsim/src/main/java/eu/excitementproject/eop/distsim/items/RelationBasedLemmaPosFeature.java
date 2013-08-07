@@ -6,8 +6,6 @@ package eu.excitementproject.eop.distsim.items;
 import java.util.HashSet;
 import java.util.Set;
 
-import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
-
 
 
 

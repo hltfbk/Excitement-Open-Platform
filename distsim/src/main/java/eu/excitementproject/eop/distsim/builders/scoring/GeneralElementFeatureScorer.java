@@ -33,8 +33,8 @@ import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureCountStorag
 import eu.excitementproject.eop.distsim.storage.ElementFeatureCountStorage;
 import eu.excitementproject.eop.distsim.storage.ElementFeatureJointCounts;
 import eu.excitementproject.eop.distsim.storage.FeatureCount;
-import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
 import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.SortUtil;
