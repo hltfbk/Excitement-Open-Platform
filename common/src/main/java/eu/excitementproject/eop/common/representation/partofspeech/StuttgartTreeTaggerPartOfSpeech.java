@@ -1,10 +1,7 @@
-package eu.excitementproject.eop.distsim.parsing;
+package eu.excitementproject.eop.common.representation.partofspeech;
 
 import java.util.HashMap;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 
 public class StuttgartTreeTaggerPartOfSpeech extends PartOfSpeech{
 	/**
@@ -73,6 +70,9 @@ public class StuttgartTreeTaggerPartOfSpeech extends PartOfSpeech{
 		return CanonicalPosTag.OTHER;
 	}
 	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech#setCanonicalPosTag()
+	 */
 	@Override
 	protected void setCanonicalPosTag()
 	{
@@ -88,6 +88,9 @@ public class StuttgartTreeTaggerPartOfSpeech extends PartOfSpeech{
 	
 	///////////////////// PROTECTED ////////////////////////////
 	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech#validatePosTagString(java.lang.String)
+	 */
 	@Override
 	protected void validatePosTagString(String posTagString) throws UnsupportedPosTagStringException
 	{
@@ -101,10 +104,12 @@ public class StuttgartTreeTaggerPartOfSpeech extends PartOfSpeech{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech#createNewPartOfSpeech(java.lang.String)
+	 */
 	@Override
 	public PartOfSpeech createNewPartOfSpeech(String posTagString)
 			throws UnsupportedPosTagStringException {
-		// TODO Auto-generated method stub
 		return new StuttgartTreeTaggerPartOfSpeech(posTagString);
 	}
 
