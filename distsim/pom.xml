@@ -39,13 +39,14 @@
   		<artifactId>common</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
-  	
-        <dependency>
+     
+    <dependency>
 		<groupId>eu.excitementproject</groupId>
   		<artifactId>lap</artifactId>
   		<version>0.1-SNAPSHOT</version>
   	</dependency>
+  	
     
-        
+
   	</dependencies>
 </project>

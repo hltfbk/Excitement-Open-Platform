@@ -26,7 +26,7 @@ import eu.excitementproject.eop.distsim.util.SerializationException;
  * @since 12/08/2012
  *
  */
-public class RedisBasedIDKeyPersistentBasicMap<V extends Serializable> extends DefaultPersistentBasicMap<V> implements PersistentBasicMap<V> {
+public class RedisBasedIDKeyPersistentBasicMap<V extends Serializable> extends DefaultIDKeyPersistentBasicMap<V> implements IDKeyPersistentBasicMap<V> {
 
 	
 	private static final long serialVersionUID = 1L;

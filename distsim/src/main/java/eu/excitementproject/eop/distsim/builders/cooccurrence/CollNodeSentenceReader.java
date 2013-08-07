@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
-import java.io.FileInputStream;
+import java.io.File;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -33,16 +34,18 @@ import eu.excitementproject.eop.distsim.util.Pair;
  *
  */
 
-public class CollNodeSentenceReader extends StreamBasedSentenceReader<BasicNode>{
+public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>{
 
 	public CollNodeSentenceReader(PartOfSpeech pos) {
 		super();
 		this.pos = pos;
+		this.position = 0;
 	}
 
 	public CollNodeSentenceReader(ConfigurationParams params) throws ConfigurationException, CreationException {
 		super(params);
 		this.pos = (PartOfSpeech)Factory.create(params.get(Configuration.PART_OF_SPEECH_CLASS),"");
+		this.position = 0;
 	}
 
 	/* (non-Javadoc)
@@ -59,22 +62,25 @@ public class CollNodeSentenceReader extends StreamBasedSentenceReader<BasicNode>
 			
 			String sProblem = null;
 			
-			while ((line=reader.readLine()) != null) {
-				if (line.isEmpty()) 
-					break;
-				else {
-					String[] toks = line.split("\t");
-					int nodeId = Integer.parseInt(toks[0]);
-					int parentId = Integer.parseInt(toks[6]);
-					BasicNode node = getBasicNodeFromConll(toks);
-					id2node.put(nodeId,node);
-					child2parent.put(nodeId,parentId);
-					if (parentId == 0) {
-						if (rootId != -1)
-							sProblem = "More than one root was identified!";
-						else 
-							rootId = nodeId;
-					}
+			while (true) {
+				synchronized(this) {
+					line=reader.readLine();
+					if (line == null || line.isEmpty()) 
+						break;
+					else 
+						position += line.getBytes(charset).length;
+				}
+				String[] toks = line.split("\t");
+				int nodeId = Integer.parseInt(toks[0]);
+				int parentId = Integer.parseInt(toks[6]);
+				BasicNode node = getBasicNodeFromConll(toks);
+				id2node.put(nodeId,node);
+				child2parent.put(nodeId,parentId);
+				if (parentId == 0) {
+					if (rootId != -1)
+						sProblem = "More than one root was identified!";
+					else 
+						rootId = nodeId;
 				}
 			}
 
@@ -136,7 +142,7 @@ public class CollNodeSentenceReader extends StreamBasedSentenceReader<BasicNode>
 	
 	public static void main(String[] args) throws Exception {
 		CollNodeSentenceReader reader = new CollNodeSentenceReader(new GermanPartOfSpeech(""));
-		reader.setSource(new FileInputStream(args[0]));
+		reader.setSource(new File(args[0]));
 		Pair<BasicNode,Long> pair = null;
 		while ((pair=reader.nextSentence())!=null) {
 			System.out.println(AbstractNodeStringUtils.toIndentedString(pair.getFirst()));
@@ -144,7 +150,7 @@ public class CollNodeSentenceReader extends StreamBasedSentenceReader<BasicNode>
 		}
 	}
 	
-	protected PartOfSpeech pos;
+	protected final PartOfSpeech pos;
 	protected static final String UNKNOWN = "<unknown>";
 }
 

@@ -13,7 +13,7 @@ import eu.excitementproject.eop.distsim.storage.BasicMap;
 import eu.excitementproject.eop.distsim.storage.BasicSet;
 import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
 import eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.CreationException;
 
@@ -64,7 +64,7 @@ public class DefaultDataStructureFactory implements DataStructureFactory {
 	 * @see org.excitement.distsim.builders.DataStructureFactory#createElementFeatureCountsDataStructure()
 	 */
 	@Override
-	public PersistentBasicMap<BasicMap<Integer, Double>> createElementFeatureCountsDataStructure() throws CreationException {
+	public IDKeyPersistentBasicMap<BasicMap<Integer, Double>> createElementFeatureCountsDataStructure() throws CreationException {
 		return new TroveBasedIDKeyPersistentBasicMap<BasicMap<Integer, Double>>();
 	}
 
@@ -75,7 +75,7 @@ public class DefaultDataStructureFactory implements DataStructureFactory {
 	 * @see org.excitement.distsim.builders.DataStructureFactory#createFeatureElementsDataStructure()
 	 */
 	@Override
-	public PersistentBasicMap<BasicSet<Integer>> createFeatureElementsDataStructure() throws CreationException {
+	public IDKeyPersistentBasicMap<BasicSet<Integer>> createFeatureElementsDataStructure() throws CreationException {
 		return new TroveBasedIDKeyPersistentBasicMap<BasicSet<Integer>>();
 	}
 
@@ -83,7 +83,7 @@ public class DefaultDataStructureFactory implements DataStructureFactory {
 	 * @see org.excitement.distsim.builders.DataStructureFactory#createElementFeatureScoresDataStructure()
 	 */
 	@Override
-	public PersistentBasicMap<LinkedHashMap<Integer,Double>> createElementFeatureScoresDataStructure() throws CreationException {
+	public IDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> createElementFeatureScoresDataStructure() throws CreationException {
 		return new TroveBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>();
 	}
 
@@ -91,7 +91,7 @@ public class DefaultDataStructureFactory implements DataStructureFactory {
 	 * @see org.excitement.distsim.builders.DataStructureFactory#createElementScoresDataStructure()
 	 */
 	@Override
-	public PersistentBasicMap<Double> createElementScoresDataStructure() throws CreationException {
+	public IDKeyPersistentBasicMap<Double> createElementScoresDataStructure() throws CreationException {
 		return new TroveBasedIDKeyPersistentBasicMap<Double>();
 	}
 

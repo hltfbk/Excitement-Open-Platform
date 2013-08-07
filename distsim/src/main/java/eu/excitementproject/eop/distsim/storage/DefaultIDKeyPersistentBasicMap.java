@@ -16,7 +16,7 @@ import eu.excitementproject.eop.distsim.util.Pair;
  * 
  *
  */
-public abstract class DefaultPersistentBasicMap<V extends Serializable> implements PersistentBasicMap<V> {
+public abstract class DefaultIDKeyPersistentBasicMap<V extends Serializable> implements IDKeyPersistentBasicMap<V> {
 	
 
 	private static final long serialVersionUID = 1L;

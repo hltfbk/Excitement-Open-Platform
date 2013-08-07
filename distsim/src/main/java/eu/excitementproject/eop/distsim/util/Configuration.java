@@ -67,6 +67,8 @@ public class Configuration {
 	public static final String FILE_TO_REDIS = "file-to-redis";
 	public static final String INFILE = "infile";
 	public static final String OUTFILE = "outfile";
+	public static final String TEXTUNITS_OUTFILE = "textunits-outfile";
+	public static final String COOCCURRENCES_OUTFILE = "cooccurrences-outfile";
 	public static final String RIGHT_TO_LEFT_SIMILARITIES = "right-to-left-similarities";
 	public static final String INCLUDE_DEPENDENCY_RELATION = "include-dependency-relation";
 	public static final String STORAGE_DEVICE_CLASS = "storage-device-class";
@@ -78,5 +80,15 @@ public class Configuration {
 	public static final String ENCODING = "encoding";
 	public static final String DELIMITER = "delimiter";
 	public static final String PART_OF_SPEECH_CLASS = "part-of-speech-class";
+	public static final String PART_OF_SPEECH_FACTORY_CLASS = "part-of-speech-factory-class";
+	public static final String IGNORE_SAVED_CANONICAL_POS_TAG = "ignore-saved-canonical-pos-tag";
+	public static final String FILTERED_TEXTUNITS_FILE = "filtered-textunits-file";
+	public static final String TMP_CONTENT_DIR = "tmp-content-dir";
+	public static final String IS_CORPUS_INDEX = "is-index-corpus";
+	public static final String CO_OCCURENCE_CLASS = "cooccurrence-class";
+	public static final String ELEMENT_CLASS = "element-class";
+	public static final String FEATURE_CLASS = "feature-class";
+	public static final String SIMILARITY_FILE = "similarity-file";
+	public static final String ELEMENTS_FILE = "elements-file";
 }
 

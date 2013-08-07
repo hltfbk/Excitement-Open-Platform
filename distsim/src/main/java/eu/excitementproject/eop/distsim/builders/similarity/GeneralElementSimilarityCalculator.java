@@ -33,7 +33,7 @@ import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureScoreStorag
 import eu.excitementproject.eop.distsim.storage.ElementFeatureScoreStorage;
 import eu.excitementproject.eop.distsim.storage.NoScoreFoundException;
 import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;
@@ -375,11 +375,11 @@ public class GeneralElementSimilarityCalculator implements ElementSimilarityCalc
 			elementScoresDevice.open();
 			featureElementsDevice.open();
 
-			PersistentBasicMap<LinkedHashMap<Integer, Double>> elementFeatureScores = dataStructureFactory.createElementFeatureScoresDataStructure();
+			IDKeyPersistentBasicMap<LinkedHashMap<Integer, Double>> elementFeatureScores = dataStructureFactory.createElementFeatureScoresDataStructure();
 			elementFeatureScores.loadState(elemntFeaturesScoresDevice);
-			PersistentBasicMap<Double> elementScores = dataStructureFactory.createElementScoresDataStructure();
+			IDKeyPersistentBasicMap<Double> elementScores = dataStructureFactory.createElementScoresDataStructure();
 			elementScores.loadState(elementScoresDevice);
-			PersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
+			IDKeyPersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
 			featureElements.loadState(featureElementsDevice);
 			ElementFeatureScoreStorage elementFeatureScoreStorage = new DefaultElementFeatureScoreStorage (
 					elementFeatureScores,elementScores,featureElements);

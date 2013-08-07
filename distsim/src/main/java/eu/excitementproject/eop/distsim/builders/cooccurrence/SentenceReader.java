@@ -2,6 +2,7 @@ package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
 import eu.excitementproject.eop.distsim.util.Pair;
 
+
 /**
  * An interface for reading sentences, of general type of representation T, from some general type of source S
  * 
@@ -19,6 +20,13 @@ public interface SentenceReader<S,T> {
 	 * @param source a given source of sentences
 	 */
 	void setSource(S source) throws SentenceReaderException;
+	
+	/**
+	 * Closes the current source
+	 * 
+	 * @throws Exception
+	 */
+	void closeSource() throws SentenceReaderException;
 	
 	/**
 	 * Reads the next sentence from some source

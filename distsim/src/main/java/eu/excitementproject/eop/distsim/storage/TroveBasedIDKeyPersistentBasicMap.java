@@ -21,7 +21,7 @@ import gnu.trove.map.hash.TIntObjectHashMap;
  * @since 12/08/2012
  *
  */
-public class TroveBasedIDKeyPersistentBasicMap<V extends Serializable> extends DefaultPersistentBasicMap<V> implements PersistentBasicMap<V> {
+public class TroveBasedIDKeyPersistentBasicMap<V extends Serializable> extends DefaultIDKeyPersistentBasicMap<V> implements IDKeyPersistentBasicMap<V> {
 
 	
 	private static final long serialVersionUID = 1L;

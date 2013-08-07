@@ -3,7 +3,6 @@ package eu.excitementproject.eop.distsim.application;
 import java.io.File;
 
 
-import java.io.FileInputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -67,7 +66,7 @@ public class PredicateSimilarity {
 			
 			
 			CollNodeSentenceReader sentenceReader = new CollNodeSentenceReader((PartOfSpeech)Factory.create(posClassName,""));
-			sentenceReader.setSource(new FileInputStream(new File(corpus)));
+			sentenceReader.setSource(new File(corpus));
 			Pair<BasicNode,Long> sent = null;
 			while((sent  = sentenceReader.nextSentence()) != null) {
 				for (String dependencyPath : extractor.stringDependencyPaths(sent.getFirst())) {

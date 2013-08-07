@@ -3,6 +3,11 @@
  */
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
+
 
 
 
@@ -20,7 +25,7 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 
 	private static final long serialVersionUID = 1L;
 	
-	protected final String DELIMITER = "###RelationBasedLemmaPosFeature###";
+	protected final String DELIMITER = "#";
 	
 	public RelationBasedLemmaPosFeature(String relation, LemmaPos data) {
 		super(relation,data);
@@ -42,10 +47,25 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 	 * @see org.excitement.distsim.items.KeyExternalizable#toKey()
 	 */
 	@Override
-	public String toKey()  {
-		return data.getFirst() + DELIMITER + data.getSecond().toKey();
+	public String toKey() throws UndefinedKeyException  {
+		String key1 = data.getFirst();
+		String key2 = data.getSecond().toKey();
+		if (key1.equals(DELIMITER) || key2.equals(DELIMITER))
+			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
+		return key1 + DELIMITER + key2;
 	}
 
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -69,7 +89,11 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 	 */
 	@Override
 	public int hashCode() {
-		return toKey().hashCode();
+		try {
+			return toKey().hashCode();
+		} catch (UndefinedKeyException e) {
+			return 0;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -90,4 +114,20 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 			return false;
 		}
 	}
+	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		String[] props = key.split(DELIMITER);
+		if (props.length != 2)
+			throw new UndefinedKeyException("Cannot decode " + key + " to ArgumentFeature");
+		data.setFirst(props[0]);
+		LemmaPos lemmapos = new LemmaPos();
+		lemmapos.fromKey(props[1]);
+		data.setSecond(lemmapos);
+		
+	}
+
 }

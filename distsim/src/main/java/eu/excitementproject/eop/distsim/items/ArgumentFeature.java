@@ -5,6 +5,9 @@ package eu.excitementproject.eop.distsim.items;
 
 
 
+import java.util.HashSet;
+import java.util.Set;
+
 import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
 
 /**
@@ -21,7 +24,7 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 
 	private static final long serialVersionUID = 1L;
 	
-	protected final String DELIMITER = "###ArgumentFeature###";
+	protected final String DELIMITER = "#";
 	
 	public ArgumentFeature(PredicateArgumentSlots relation, String data) {
 		super(relation,data);
@@ -43,10 +46,24 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 	 * @see org.excitement.distsim.items.KeyExternalizable#toKey()
 	 */
 	@Override
-	public String toKey()  {
-		return data.getFirst().name() + DELIMITER + data.getSecond();
+	public String toKey() throws UndefinedKeyException  {
+		String key1 = data.getFirst().name();
+		String key2 = data.getSecond();
+		if (key1.equals(DELIMITER) || key2.equals(DELIMITER))
+			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
+		return key1 + DELIMITER + key2;
 	}
 
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -70,7 +87,11 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 	 */
 	@Override
 	public int hashCode() {
-		return toKey().hashCode();
+		try {
+			return toKey().hashCode();
+		} catch (UndefinedKeyException e) {
+			return 0;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -90,5 +111,18 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 		} catch (UndefinedKeyException e) {
 			return false;
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		String[] props = key.split(DELIMITER);
+		if (props.length != 2)
+			throw new UndefinedKeyException("Cannot decode " + key + " to ArgumentFeature");
+		data.setFirst(PredicateArgumentSlots.valueOf(props[0]));
+		data.setSecond(props[1]);
+		
 	}
 }

@@ -59,7 +59,7 @@ public abstract class DeafaultFeature<T extends Serializable> extends DefaultIde
 		return context;
 	}
 	
-	protected final T data;
+	protected T data;
 	protected final AggregatedContext context;
 
 }

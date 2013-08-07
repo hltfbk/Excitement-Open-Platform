@@ -10,6 +10,6 @@ import java.io.Serializable;
  *
  * @param <V> the type of the values in the map
  */
-public interface PersistentBasicMap<V extends Serializable> extends BasicMap<Integer,V>, Persistence {
+public interface IDKeyPersistentBasicMap<V extends Serializable> extends BasicMap<Integer,V>, Persistence {
 
 }

@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.distsim.application;
 
 import java.util.LinkedHashMap;
+
 import java.util.List;
 
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
@@ -10,9 +11,11 @@ import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.LemmaPos;
 import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
 import eu.excitementproject.eop.distsim.scoring.ElementSimilarityMeasure;
+import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 
@@ -43,19 +46,17 @@ public class TestLemmaPosSimilarity1 {
 		int r2lRredisPort = Integer.parseInt(args[5]);
 		
 		SimilarityStorage similarityStorage = new DefaultSimilarityStorage(
-				new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(l2rRedisHost,l2rRedisPort),
-				new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(r2lRedisHost,r2lRredisPort),
-				new RedisBasedCountableIdentifiableStorage<Element>(elementRedisHost,elementRedisPort),
-				"lin-dist-sim");
+				new RedisBasedStringListBasicMap(l2rRedisHost,l2rRedisPort),
+				new RedisBasedStringListBasicMap(r2lRedisHost,r2lRredisPort),
+				"lin-dist-sim", "eu.excitementproject.eop.distsim.items.LemmaPosBasedElement");
 		
 		
-		List<ElementSimilarityMeasure> similarities = similarityStorage.getSimilarityMeasure(
+		List<ElementsSimilarityMeasure> similarities = similarityStorage.getSimilarityMeasure(
 				new LemmaPosBasedElement(new LemmaPos("affect", CanonicalPosTag.V)), 
 				RuleDirection.RIGHT_TO_LEFT,
 				FilterType.TOP_N, 10);
 		
-		System.out.println("affect");
-		for (ElementSimilarityMeasure similarity : similarities)
-			System.out.println("\t" + similarity.getElement().getData() + ": " + similarity.getSimilarityMeasure());
+		for (ElementsSimilarityMeasure similarity : similarities)
+			System.out.println(similarity.getRightElement().getData() + "\t" + similarity.getRightElement().getData() + ": " + similarity.getSimilarityMeasure());
 	}
 }

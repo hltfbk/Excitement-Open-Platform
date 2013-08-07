@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
+
+import redis.clients.jedis.Jedis;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Countable;
@@ -39,7 +41,7 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 
 	public MemoryBasedCountableIdentifiableStorage() {
 		itemkey2id = new TObjectIntHashMap<String>();
-		id2item = new TIntObjectHashMap<T>();		
+		id2item = new TIntObjectHashMap<T>();
 	}
 	
 	public MemoryBasedCountableIdentifiableStorage(PersistenceDevice persistenceDevice) throws LoadingStateException {
@@ -84,6 +86,7 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 	 */
 	@Override
 	public synchronized T addData(T data, double count) throws UndefinedKeyException, InvalidCountException, SerializationException, InvalidIDException {
+		
 		String key = data.toKey();
 		if (!itemkey2id.containsKey(key)) {
 			int id = getNextId();
@@ -106,6 +109,7 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 	 */
 	@Override
 	public synchronized void add(int id, T data) throws UndefinedKeyException, SerializationException {
+		
 		String key = data.toKey();
 		itemkey2id.put(key, id);
 		data.setID(id);
@@ -127,6 +131,7 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 			return true;
 		}
 	}*/
+
 
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.CountableIdentifiableStorage#size()
@@ -185,4 +190,5 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 	
 	protected TObjectIntHashMap<String> itemkey2id;
 	protected TIntObjectHashMap<T> id2item;
+
 }

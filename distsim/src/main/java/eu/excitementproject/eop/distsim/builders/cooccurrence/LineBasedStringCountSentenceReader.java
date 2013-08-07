@@ -49,13 +49,16 @@ public class LineBasedStringCountSentenceReader extends LineBasedStringSentenceR
 	@Override
 	public Pair<String,Long> nextSentence() throws SentenceReaderException {
 		try {
-			String line = reader.readLine();
-			if (line == null)
-				return null;
-			else {
-				int pos = line.lastIndexOf(delimiter);
-				return new Pair<String,Long>(line.substring(0,pos),Long.parseLong(line.substring(pos+1)));
+			String line = null;
+			synchronized(this) {
+				line=reader.readLine();
+				if (line == null) 
+					return null;
+				else 
+					position += line.getBytes(charset).length;
 			}
+			int pos = line.lastIndexOf(delimiter);
+			return new Pair<String,Long>(line.substring(0,pos),Long.parseLong(line.substring(pos+1)));
 		} catch (IOException e) {
 			throw new SentenceReaderException(e);
 		}

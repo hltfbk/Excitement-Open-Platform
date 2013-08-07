@@ -1,7 +1,11 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +14,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -31,6 +36,7 @@ import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.FileUtils;
 import eu.excitementproject.eop.distsim.util.Pair;
+import gnu.trove.set.hash.THashSet;
 
 /**
  * A general implementation of the {@link CooccurrencesExtractor} interface,
@@ -44,19 +50,18 @@ import eu.excitementproject.eop.distsim.util.Pair;
 public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 	
 	//private static Logger logger = Logger.getLogger(GeneralCooccurrenceExtractor.class);
-	
-	public GeneralCooccurrenceExtractor(int iThreadNum, CooccurrenceExtraction cooccurrenceExtraction,StreamBasedSentenceReader sentenceReader, DataStructureFactory dataStructureFactory) {
+	/*
+	public GeneralCooccurrenceExtractor(int iThreadNum, CooccurrenceExtraction cooccurrenceExtraction,FileBasedSentenceReader sentenceReader, DataStructureFactory dataStructureFactory) {
 		this.iThreadNum = iThreadNum;
 		this.cooccurrenceExtraction = cooccurrenceExtraction;
-		this.sentenceReader = sentenceReader;
 		this.dataStructureFactory = dataStructureFactory;
-	}
+	}*/
 
 	public GeneralCooccurrenceExtractor(ConfigurationParams params,DataStructureFactory dataStructureFactory) throws ConfigurationException, CreationException {
 		this.iThreadNum = params.getInt(Configuration.THREAD_NUM);
-		this.cooccurrenceExtraction = (CooccurrenceExtraction) Factory.create(params.get(Configuration.EXTRACTION_CLASS), params);
-		this.sentenceReader = (StreamBasedSentenceReader) Factory.create(params.get(Configuration.SENTENCE_READER_CLASS), params);
+		this.cooccurrenceExtraction = (CooccurrenceExtraction) Factory.create(params.get(Configuration.EXTRACTION_CLASS), params);		
 		this.dataStructureFactory = dataStructureFactory;
+		this.confParams = params;
 	}
 	
 	/* (non-Javadoc)
@@ -105,29 +110,30 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 	
 	protected final int iThreadNum;
 	protected final CooccurrenceExtraction cooccurrenceExtraction;
-	protected final StreamBasedSentenceReader sentenceReader;
 	protected final DataStructureFactory dataStructureFactory;
+	protected final ConfigurationParams confParams;
 	
 	class CooccurrenceCollector implements Runnable {
 			
 		private final Logger logger = Logger.getLogger(CooccurrenceCollector.class);
 		
-		CooccurrenceCollector(CountableIdentifiableStorage<TextUnit> textUnitStorage, CountableIdentifiableStorage<IDBasedCooccurrence> cooccurrenceStorage,Set<File> files, int id) {
+		CooccurrenceCollector(CountableIdentifiableStorage<TextUnit> textUnitStorage, CountableIdentifiableStorage<IDBasedCooccurrence> cooccurrenceStorage,Set<File> files, int id) throws CreationException, ConfigurationException {
 			this.textUnitStorage = textUnitStorage;
 			this.cooccurrenceStorage = cooccurrenceStorage;
 			this.files = files;
 			this.id = id;
+			this.sentenceReader = (FileBasedSentenceReader) Factory.create(confParams.get(Configuration.SENTENCE_READER_CLASS), confParams);
 		}
 		
 		@SuppressWarnings("unchecked")
 		public void run() {
 			logger.info("Thread: " + id);
 			//System.out.println(files);
+			int iSent = 0;
 			for (File file : files) {				
 				//logger.info("Thread: " + id + ", file: " + file.getName());
 				try {
-					sentenceReader.setSource(new FileInputStream(file));
-					int i = 0;
+					sentenceReader.setSource(file);
 					Pair<?,Long> sentenceAndCount;
 					while(true) {
 						try {
@@ -135,34 +141,48 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 							if (sentenceAndCount == null)
 								break;
 						} catch (SentenceReaderException e){
+							//logger.error(ExceptionUtil.getStackTrace(e));
 							logger.error(e.toString());
 							continue;
 						}
+						iSent++;
 						try {
 							Pair<? extends List<? extends TextUnit>, ? extends List<? extends Cooccurrence>> pair = cooccurrenceExtraction.extractCooccurrences(sentenceAndCount.getFirst());
 							List<? extends TextUnit> textUnits = pair.getFirst();
 							List<? extends Cooccurrence> coOccurrences = pair.getSecond();
-							long count = sentenceAndCount.getSecond();
-							for (TextUnit textUnit : textUnits) {
-								TextUnit inserted = textUnitStorage.addData(textUnit,count);
-								textUnit.setID(inserted.getID());
+							
+							//check if all text units fit the given set of
+							boolean bLegalTextUnits = true;
+							if (filteredTextUnits != null) {
+								for (TextUnit textUnit : textUnits)
+									if (!filteredTextUnits.contains(textUnit.toKey())) {
+										bLegalTextUnits = false;
+										break;
+									}
 							}
-							for (Cooccurrence coOccurrence : coOccurrences) {
-								cooccurrenceStorage.addData(new IDBasedCooccurrence(coOccurrence.getTextItem1().getID(), coOccurrence.getTextItem2().getID(), coOccurrence.getRelation().getValue()),count);
+								
+							if (bLegalTextUnits) {
+								long count = sentenceAndCount.getSecond();
+								for (TextUnit textUnit : textUnits) {
+									TextUnit inserted = textUnitStorage.addData(textUnit,count);
+									textUnit.setID(inserted.getID());
+								}
+								for (Cooccurrence coOccurrence : coOccurrences) {
+									cooccurrenceStorage.addData(new IDBasedCooccurrence(coOccurrence.getTextItem1().getID(), coOccurrence.getTextItem2().getID(), coOccurrence.getRelation().getValue()),count);
+								}
 							}
 						} catch (Exception e) {
-							logger.error(ExceptionUtil.getStackTrace(e));
+							//logger.error(ExceptionUtil.getStackTrace(e));
+							//logger.error(e.toString());
 						}
 							
 						
-						if(i % 1000000 == 0)
-							logger.info("File: " + file.getName() + ", line: " + i + " size of text units: "  + textUnitStorage.size());
-						i++;
+						if(iSent % 10000 == 0)
+							logger.info("Sentence: " + iSent + " size of text units: "  + textUnitStorage.size());						
 					}
-					logger.info("File: " + file.getName() + ", total number of lines: " + i + " total number of text units: "  + textUnitStorage.size());
-					sentenceReader.close();
+					sentenceReader.closeSource();
 				} catch (Exception e) {
-					logger.error(e.toString());
+					logger.error(ExceptionUtils.getStackTrace(e));
 				}
 			}
 		}
@@ -171,8 +191,11 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 		protected CountableIdentifiableStorage<IDBasedCooccurrence> cooccurrenceStorage;
 		protected Set<File> files;
 		protected int id;		
+		protected final FileBasedSentenceReader sentenceReader;
 	}
 	
+	protected static THashSet<String> filteredTextUnits = null;
+
 	public static void main(String[] args) {
 		try {
 			
@@ -188,8 +211,16 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 			
 			ConfigurationParams extractorParams = confFile.getModuleConfiguration(Configuration.CO_OCCURRENCE_EXTRACTOR);			
 			
-			CooccurrencesExtractor<?> extractor = (CooccurrencesExtractor<?>)Factory.create(extractorParams.get("extractor-class"), extractorParams, new ConfigurationBasedDataStructureFactory(confFile));
-			
+			CooccurrencesExtractor<?> extractor = (CooccurrencesExtractor<?>)Factory.create(extractorParams.get(Configuration.EXTRACTOR_CLASS), extractorParams, new ConfigurationBasedDataStructureFactory(confFile));
+						
+			try {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(extractorParams.get(Configuration.FILTERED_TEXTUNITS_FILE)),extractorParams.get(Configuration.ENCODING)));
+				String line = null;
+				while ((line=reader.readLine())!=null)
+					filteredTextUnits.add(line);
+				reader.close();
+			} catch (ConfigurationException e) {
+			}
 			CooccurrenceStorage<?> db = extractor.constructCooccurrenceDB(new File(extractorParams.get(Configuration.CORPUS)));
 			
 			ConfigurationParams textUnitParams = confFile.getModuleConfiguration(Configuration.TEXT_UNITS_STORAGE_DEVICE);

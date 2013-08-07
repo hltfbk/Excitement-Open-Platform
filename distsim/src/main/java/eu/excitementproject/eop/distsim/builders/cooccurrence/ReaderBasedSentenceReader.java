@@ -4,9 +4,11 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
 import java.io.BufferedReader;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
@@ -22,14 +24,14 @@ import eu.excitementproject.eop.distsim.util.Configuration;
  * @since 08/01/2013
  *
  */
-public abstract class StreamBasedSentenceReader<T> implements SentenceReader<InputStream,T> {
+public abstract class ReaderBasedSentenceReader<T> extends FileBasedSentenceReader<T> {
 
 	
-	public StreamBasedSentenceReader() {
+	public ReaderBasedSentenceReader() {
 		charset = null;
 	}
 
-	public StreamBasedSentenceReader(ConfigurationParams params) {
+	public ReaderBasedSentenceReader(ConfigurationParams params) {
 		try {
 			charset = Charset.forName(params.get(Configuration.ENCODING));
 		} catch (ConfigurationException e) {
@@ -37,7 +39,7 @@ public abstract class StreamBasedSentenceReader<T> implements SentenceReader<Inp
 		}
 	}
 
-	public StreamBasedSentenceReader(String encoding)  {
+	public ReaderBasedSentenceReader(String encoding)  {
 		charset = Charset.forName(encoding);
 	}
 	
@@ -45,26 +47,27 @@ public abstract class StreamBasedSentenceReader<T> implements SentenceReader<Inp
 	 * @see eu.excitementproject.eop.distsim.builders.cooccurrence.SentenceReader#setSource(java.lang.Object)
 	 */
 	@Override
-	public void setSource(InputStream in) throws SentenceReaderException {
+	public synchronized void setSource(File source) throws SentenceReaderException {
+		closeSource();		
 		try {
-			close();		
-			reader = new BufferedReader(new InputStreamReader(in));
+			reader = new BufferedReader(new FileReader(source));
+		} catch (FileNotFoundException e) {
+			throw new SentenceReaderException(e);
+		}	
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.builders.cooccurrence.SentenceReader#closeSource()
+	 */
+	@Override
+	public synchronized void closeSource() throws SentenceReaderException {
+		try {
+			reader.close();
 		} catch (IOException e) {
 			throw new SentenceReaderException(e);
 		}
-		
 	}
-	
-	/**
-	 * Closes the current stream
-	 * 
-	 * @throws IOException
-	 */
-	public void close() throws IOException {
-		if (reader != null)
-			reader.close();
-	}
-	
+
 	protected static final String DEFAULT_ENCODING = "UTF-8";
 	protected BufferedReader reader;
 	protected Charset charset;

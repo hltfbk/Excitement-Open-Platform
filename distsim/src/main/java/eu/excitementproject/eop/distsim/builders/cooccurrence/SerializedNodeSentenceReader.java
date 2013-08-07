@@ -13,7 +13,7 @@ import eu.excitementproject.eop.distsim.util.Serialization;
  * @since 08/01/2013
  *
  */
-public class SerializedNodeSentenceReader extends StreamBasedSentenceReader<BasicNode>{
+public class SerializedNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>{
 
 	public SerializedNodeSentenceReader() {
 		super();
@@ -29,11 +29,15 @@ public class SerializedNodeSentenceReader extends StreamBasedSentenceReader<Basi
 	@Override
 	public Pair<BasicNode,Long> nextSentence() throws SentenceReaderException {
 		try {
-			String line = reader.readLine();
-			if (line == null)
-				return null;
-			else
-				return new Pair<BasicNode,Long>((BasicNode)Serialization.deserialize(line),1L);
+			String line = null;
+			synchronized(this) {
+				line=reader.readLine();
+				if (line == null) 
+					return null;
+				else 
+					position += line.getBytes(charset).length;
+			}
+			return new Pair<BasicNode,Long>((BasicNode)Serialization.deserialize(line),1L);
 		} catch (Exception e) {
 			throw new SentenceReaderException(e);
 		}

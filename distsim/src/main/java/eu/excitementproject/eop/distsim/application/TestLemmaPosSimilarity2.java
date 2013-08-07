@@ -2,20 +2,26 @@ package eu.excitementproject.eop.distsim.application;
 
 import java.util.LinkedHashMap;
 
+
 import java.util.List;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
+import eu.excitementproject.eop.distsim.storage.RedisBasedBasicMap;
 import eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
-import eu.excitementproject.eop.distsim.storage.SimilarityStorageBasedLexicalResource;
 
 /**
  * A program which demonstrates how to access a given distributional similarity model via Lexical interface, 
@@ -37,22 +43,19 @@ public class TestLemmaPosSimilarity2 {
 			System.exit(0);
 		}
 		
-		String elementRedisHost = args[0];
-		int elementRedisPort = Integer.parseInt(args[1]);
 		String l2rRedisHost = args[2];
 		int l2rRedisPort = Integer.parseInt(args[3]);
 		String r2lRedisHost = args[4];
 		int r2lRredisPort = Integer.parseInt(args[5]);
 		
 		SimilarityStorage similarityStorage = new DefaultSimilarityStorage(
-				new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(l2rRedisHost,l2rRedisPort),
-				new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(r2lRedisHost,r2lRredisPort),
-				new RedisBasedCountableIdentifiableStorage<Element>(elementRedisHost,elementRedisPort),
-				"lin-dist-sim");
+				new RedisBasedStringListBasicMap(l2rRedisHost,l2rRedisPort),
+				new RedisBasedStringListBasicMap(r2lRedisHost,r2lRredisPort),				
+				"lin-dist-sim","eu.excitementproject.eop.distsim.items.LemmaPosBasedElement");
 		
-		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(similarityStorage);
-		List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForLeft(
-				"affect",null);
+		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(similarityStorage,20);
+		List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForRight(
+				"affect",null/*new ByCanonicalPartOfSpeech(CanonicalPosTag.V.name())*/);
 		
 		for (LexicalRule<? extends RuleInfo> similarity : similarities)
 			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());

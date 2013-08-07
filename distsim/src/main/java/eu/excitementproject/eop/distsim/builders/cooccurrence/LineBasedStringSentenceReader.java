@@ -12,7 +12,7 @@ import eu.excitementproject.eop.distsim.util.Pair;
  * @since 08/01/2013
  *
  */
-public class LineBasedStringSentenceReader extends StreamBasedSentenceReader<String>{
+public class LineBasedStringSentenceReader extends ReaderBasedSentenceReader<String>{
 
 	public LineBasedStringSentenceReader() {
 		super();
@@ -31,13 +31,15 @@ public class LineBasedStringSentenceReader extends StreamBasedSentenceReader<Str
 	 * @see eu.excitementproject.eop.distsim.builders.cooccurrence.SentenceReader#nextSentence()
 	 */
 	@Override
-	public Pair<String,Long> nextSentence() throws SentenceReaderException {
+	public synchronized Pair<String,Long> nextSentence() throws SentenceReaderException {
 		try {
 			String line = reader.readLine();
 			if (line == null)
 				return null;
-			else
+			else {
+				position += line.getBytes(charset).length;
 				return new Pair<String,Long>(line,1L);
+			}
 		} catch (IOException e) {
 			throw new SentenceReaderException(e);
 		}
