@@ -2,6 +2,7 @@ package eu.excitementproject.eop.common.representation.parse.tree;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -59,6 +60,18 @@ public class AbstractNodeUtils
 		return ret;
 	}
 	
+	public static <T,S extends AbstractNode<T,S>> int treeSize(S tree)
+	{
+		int size = 0;
+		Iterator<S> iterator = new TreeIterator<>(tree);
+		while (iterator.hasNext())
+		{
+			iterator.next();
+			++size;
+		}
+		return size;
+	}
+	
 	/**
 	 * Gets a parse tree, and returns a set that contains all the nodes in that tree.
 	 * <BR>
@@ -79,7 +92,6 @@ public class AbstractNodeUtils
 	public static <T> HashSet<AbstractNode<T,?>> weakTreeToSet(AbstractNode<T,?> root)
 	{
 		return weakTreeToSet(root,new LinkedHashSet<AbstractNode<T,?>>());
-		
 	}
 
 	/**
