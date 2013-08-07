@@ -5,6 +5,9 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
 /**
+ * A factory of {@link GapToolInstances}
+ * 
+ * @see GapToolBoxFactory
  * 
  * @author Asher Stern
  * @since Aug 1, 2013
@@ -14,5 +17,5 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMa
  */
 public interface GapToolsFactory<I, S extends AbstractNode<I, S>>
 {
-	public GapToolInstances<I, S> createInstances(TreeAndParentMap<I, S> hypothesis, LinearClassifier classifierForSearch) throws GapException;
+	public GapToolInstances<I, S> createInstances(final TreeAndParentMap<I, S> hypothesis, final LinearClassifier classifierForSearch) throws GapException;
 }

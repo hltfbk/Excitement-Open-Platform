@@ -12,6 +12,8 @@ import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 
 /**
+ * This class "translates" gap between parse trees into features.
+ * This class is the real place where the gap features are determined and calculated.
  * 
  * @author Asher Stern
  * @since Aug 5, 2013

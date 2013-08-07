@@ -3,6 +3,8 @@ package eu.excitementproject.eop.biutee.rteflow.macro.gap;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * An exception thrown for problems in the mechanisms which calculate gap
+ * between two parse trees in "hybrid gap mode".
  * 
  * @author Asher Stern
  * @since Aug 1, 2013

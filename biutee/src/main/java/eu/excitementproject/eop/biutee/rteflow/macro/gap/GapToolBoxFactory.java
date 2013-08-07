@@ -10,13 +10,15 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_ENGINE_GAP_HYBRID_MODE;
 /**
+ * A factory of {@link GapToolBox}.
  * 
  * @author Asher Stern
  * @since Aug 5, 2013
@@ -36,7 +38,50 @@ public class GapToolBoxFactory
 	
 	public GapToolBox<ExtendedInfo, ExtendedNode> createGapToolBox() throws GapException
 	{
-		logger.info("Create a dummy gap tool box.");
+		try
+		{
+			boolean hybridMode = false;
+			if (configurationParams.containsKey(RTE_ENGINE_GAP_HYBRID_MODE))
+			{
+				hybridMode = configurationParams.getBoolean(RTE_ENGINE_GAP_HYBRID_MODE);
+			}
+			
+			if (hybridMode)
+			{
+				logger.info("In hybrid gap mode.");
+				return createGapToolBoxForHybridMode();
+			}
+			else
+			{
+				logger.info("In pure transformation mode.");
+				return new GapToolBox<ExtendedInfo, ExtendedNode>()
+				{
+					@Override
+					public boolean isHybridMode() throws GapException
+					{
+						return false;
+					}
+					
+					@Override
+					public GapToolsFactory<ExtendedInfo, ExtendedNode> getGapToolsFactory() throws GapException
+					{
+						return null;
+					}
+				};
+			}
+		}
+		catch(ConfigurationException e)
+		{
+			throw new GapException("Failed to read configuration file parameter \""+RTE_ENGINE_GAP_HYBRID_MODE+"\"",e);
+		}
+
+	}
+	
+	
+	private GapToolBox<ExtendedInfo, ExtendedNode> createGapToolBoxForHybridMode() throws GapException
+	{
+		// create a GapToolBox. This tool box is global to the system, and is able to
+		// construct tools for specific hypotheses.
 		return new GapToolBox<ExtendedInfo, ExtendedNode>()
 		{
 			@Override
@@ -48,16 +93,17 @@ public class GapToolBoxFactory
 			@Override
 			public GapToolsFactory<ExtendedInfo, ExtendedNode> getGapToolsFactory() throws GapException
 			{
+				// The GapToolsFactory constructs tools for specific hypotheses.
 				return new GapToolsFactory<ExtendedInfo, ExtendedNode>()
 				{
 					@Override
 					public GapToolInstances<ExtendedInfo, ExtendedNode> createInstances(
-							TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis,
-							LinearClassifier classifierForSearch) throws GapException
+							final TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis,
+							final LinearClassifier classifierForSearch) throws GapException
 					{
-						final TreeAndParentMap<ExtendedInfo, ExtendedNode> finalHypothesis = hypothesis;
-						final LinearClassifier finalClassifierForSearch = classifierForSearch;
-						
+						// Create a GapFeatureVectorGenerator - the one that really does
+						// the job. It returns the feature vector which resembels the
+						// gap between the parse trees.
 						final GapFeatureVectorGenerator gapFeatureVectorGenerator = new GapFeatureVectorGenerator(alignmentCriteria);
 						
 						final GapFeaturesUpdate<ExtendedInfo, ExtendedNode> gapFeaturesUpdate = new GapFeaturesUpdate<ExtendedInfo, ExtendedNode>()
@@ -68,7 +114,7 @@ public class GapToolBoxFactory
 									Map<Integer, Double> featureVector) throws GapException
 							{
 								Map<Integer, Double> ret = new LinkedHashMap<>();
-								Map<Integer, Double> gapVector = gapFeatureVectorGenerator.createFeatureVector(tree, finalHypothesis);
+								Map<Integer, Double> gapVector = gapFeatureVectorGenerator.createFeatureVector(tree, hypothesis);
 								Set<Integer> features = new LinkedHashSet<>();
 								features.addAll(featureVector.keySet());
 								features.addAll(gapVector.keySet());
@@ -89,7 +135,7 @@ public class GapToolBoxFactory
 							public double measure(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree, Map<Integer, Double> featureVector) throws GapException
 							{
 								Map<Integer, Double> featureVectorWithGap = gapFeaturesUpdate.updateForGap(tree,featureVector);
-								try{return (-finalClassifierForSearch.getProduct(featureVectorWithGap));}
+								try{return (-classifierForSearch.getProduct(featureVectorWithGap));}
 								catch(ClassifierException e){throw new GapException("Failed to calculate gap measure, due to a problem in the classifier.",e);}
 							}
 						};
@@ -106,7 +152,6 @@ public class GapToolBoxFactory
 	
 	@SuppressWarnings("unused")
 	private final ConfigurationFile configurationFile;
-	@SuppressWarnings("unused")
 	private final ConfigurationParams configurationParams;
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	
