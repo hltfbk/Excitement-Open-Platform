@@ -12,13 +12,19 @@ import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 
 /**
- * This class "translates" gap between parse trees into features.
- * This class is the real place where the gap features are determined and calculated.
+ * Measures the gap between the text and the hypothesis parse trees as the
+ * number of nodes in the hypothesis tree that are missing in the text parse tree.
+ * This measure is set to the feature {@link Feature#GAP_COUNT_MISSING_NODES}.
+ * 
+ * @deprecated This gap measure is not used. The actual gap measure is
+ * PASTA based.
+ * 
  * 
  * @author Asher Stern
  * @since Aug 5, 2013
  *
  */
+@Deprecated
 public class GapFeatureVectorGenerator
 {
 	public GapFeatureVectorGenerator(AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria)
