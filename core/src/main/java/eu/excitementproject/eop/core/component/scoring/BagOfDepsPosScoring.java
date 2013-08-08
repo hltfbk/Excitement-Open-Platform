@@ -17,7 +17,8 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
  * containing lemma+POS(coarse-grained) instead of word forms to calculate the
  * scores.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since March 2013
  */
 public class BagOfDepsPosScoring extends BagOfDepsScoring {
 
