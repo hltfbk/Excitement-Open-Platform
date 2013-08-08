@@ -25,7 +25,7 @@
 		
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
-			<property name="path">eop-resources-1.0.0/configuration-file/</property>
+			<property name="path">eop-resources-1.0.2/configuration-file/</property>
 		</subsection>
 		
 	</section>	
@@ -47,13 +47,13 @@
 		
 		<subsection name="wordnet">
 			<property name="stopWordRemoval">true</property>
-			<property name="path">eop-resources-1.0.0/configuration-file/</property>
+			<property name="path">eop-resources-1.0.2/configuration-file/</property>
 		</subsection>
 		
 	</section>	
 		
 	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
-	    <property name="modelFile">eop-resources-1.0.0/model/EditDistanceEDA_IT_Model</property>
+	    <property name="modelFile">eop-resources-1.0.2/model/EditDistanceEDA_IT_Model</property>
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>

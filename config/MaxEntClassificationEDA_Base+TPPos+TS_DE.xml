@@ -25,7 +25,7 @@
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">eop-resources-1.0.0/model/MaxEntClassificationEDAModel_Base+TPPos+TS_DE</property>
+		<property name="modelFile">eop-resources-1.0.2/model/MaxEntClassificationEDAModel_Base+TPPos+TS_DE</property>
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 		<property name="classifier">10000,1</property>
