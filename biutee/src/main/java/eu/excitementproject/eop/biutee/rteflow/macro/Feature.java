@@ -55,6 +55,11 @@ public enum Feature
 	IS_A_COREFERENCE(false),
 	CHANGE_PREDICATE_TRUTH(false),
 	
+	GAP_MISSING_PREDICATES(false,true),
+	GAP_ARGUMENT_HEAD_NOT_CONNECTED(false,true),
+	GAP_ARGUMENT_HEAD_MISSING(false,true),
+	GAP_ARGUMENT_NODE_NOT_CONNECTED(false,true),
+	GAP_ARGUMENT_NODE_MISSING(false,true),
 	GAP_COUNT_MISSING_NODES(false,true)
 	;
 

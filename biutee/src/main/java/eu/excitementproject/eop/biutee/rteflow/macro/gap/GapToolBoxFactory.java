@@ -148,6 +148,20 @@ public class GapToolBoxFactory
 		};
 	}
 	
+//	private PredicateArgumentStructureBuilderFactory<ExtendedInfo, ExtendedNode> createPredArgsFactory() throws GapException
+//	{
+//		try
+//		{
+//			PredicateArgumentStructureBuilderFactoryFactory<ExtendedInfo, ExtendedNode> factoryFactory =
+//					new PredicateArgumentStructureBuilderFactoryFactory<ExtendedInfo, ExtendedNode>(configurationFile);
+//			return factoryFactory.createBuilderFactory();
+//		}
+//		catch (ConfigurationException | PredicateArgumentIdentificationException e)
+//		{
+//			throw new GapException("Failed to build predicate argument structure builder factory.");
+//		}
+//	}
+	
 	
 	
 	@SuppressWarnings("unused")
