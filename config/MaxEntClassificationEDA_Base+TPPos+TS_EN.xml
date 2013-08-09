@@ -8,7 +8,7 @@
 
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
-		<property name="language">DE</property>
+		<property name="language">EN</property>
 	</section>
 	
 	<section name="BagOfWordsScoring">
@@ -20,12 +20,15 @@
 	<section name="BagOfDepsPosScoring">
 	</section>
 	
+	<section name="TreeSkeletonScoring">
+	</section>
+	
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
-		<property name="modelFile">eop-resources-1.0.2/model/MaxEntClassificationEDAModel_Base+TPPos_DE</property>
+		<property name="modelFile">eop-resources-1.0.2/model/MaxEntClassificationEDAModel_Base+TPPos+TS_EN</property>
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 		<property name="classifier">10000,1</property>
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfDepsPosScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfDepsPosScoring,TreeSkeletonScoring</property>
 	</section>
 
 </configuration>

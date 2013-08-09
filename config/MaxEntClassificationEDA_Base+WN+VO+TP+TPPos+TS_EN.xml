@@ -9,7 +9,6 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">EN</property>
-		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserEN</property>
 	</section>
 	
 	<section name="BagOfWordsScoring">
@@ -27,14 +26,10 @@
 			<property name="isCollapsed">true</property>
 			<property name="useFirstSenseOnlyLeft">false</property>
 			<property name="useFirstSenseOnlyRight">false</property>
-			<!-- Please update the file path to WordNet -->
-			<property name="wordNetFilesPath">eop-resources-1.0.2/ontologies/EnglishWordNet-dict/</property>
 	</section>
 	
 	<section name="VerbOceanLexicalResource">
 			<property name="isCollapsed">true</property>
-			<!-- Please update the file path to VerbOcean -->
-			<property name="verbOceanFilePath">eop-resources-1.0.2/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 	</section>
 	
 	<section name="BagOfDepsScoring">

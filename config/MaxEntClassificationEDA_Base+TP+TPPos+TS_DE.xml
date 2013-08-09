@@ -9,7 +9,6 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
 		<property name="language">DE</property>
-		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserDE</property>
 	</section>
 	
 	<section name="BagOfWordsScoring">
