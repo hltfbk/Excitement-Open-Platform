@@ -67,14 +67,19 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 	
 
 	@Override
-	public synchronized double measure(TreeAndParentMap<I, S> tree,
-			Map<Integer, Double> featureVector) throws GapException
+	public synchronized double measure(TreeAndParentMap<I, S> tree, Map<Integer, Double> featureVector) throws GapException
 	{
-		Map<Integer, Double> featureVectorWithGap = updateForGap(tree,featureVector);
-		try{return (-classifierForSearch.getProduct(featureVectorWithGap));}
+		try
+		{
+			double costWithoutGap = -classifierForSearch.getProduct(featureVector);
+			Map<Integer, Double> featureVectorWithGap = updateForGap(tree,featureVector);
+			double costWithGap = -classifierForSearch.getProduct(featureVectorWithGap);
+			
+			double ret = costWithGap-costWithoutGap;
+			if (ret<0) throw new GapException("gap measure is negative: "+String.format("%-4.4f", ret));
+			return ret;
+		}
 		catch(ClassifierException e){throw new GapException("Failed to calculate gap measure, due to a problem in the classifier.",e);}
-
-		
 	}
 	
 	private synchronized PastaGapFeaturesCalculator<I, S> createAndGetCalculator(TreeAndParentMap<I, S> tree) throws GapException
