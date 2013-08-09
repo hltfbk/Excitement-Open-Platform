@@ -10,6 +10,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.lap.biu.en.pasta.PredicateArgumentStructureBuilderFactory;
 import eu.excitementproject.eop.lap.biu.en.pasta.PredicateArgumentStructureBuilderFactoryFactory;
+import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.PastaMode;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentIdentificationException;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
@@ -117,7 +118,9 @@ public class GapToolBoxFactory
 		{
 			PredicateArgumentStructureBuilderFactoryFactory<ExtendedInfo, ExtendedNode> factoryFactory =
 					new PredicateArgumentStructureBuilderFactoryFactory<ExtendedInfo, ExtendedNode>(configurationFile);
-			return factoryFactory.createBuilderFactory();
+			PredicateArgumentStructureBuilderFactory<ExtendedInfo, ExtendedNode> builderFactory = factoryFactory.createBuilderFactory();
+			if (!(builderFactory.getMode().isEqualOrGreater(PastaMode.EXPANDED))) throw new GapException("Wrong mode of PredicateArgumentStructureBuilderFactory. Must be "+PastaMode.EXPANDED.name()+" or higher.");
+			return builderFactory;
 		}
 		catch (ConfigurationException | PredicateArgumentIdentificationException e)
 		{

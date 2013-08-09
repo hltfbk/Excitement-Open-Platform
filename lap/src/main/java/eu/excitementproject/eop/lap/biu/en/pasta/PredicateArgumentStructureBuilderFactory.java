@@ -36,8 +36,12 @@ public class PredicateArgumentStructureBuilderFactory<I extends Info, S extends 
 	{
 		this(nomlexMap,PastaMode.BASIC);
 	}
-
 	
+	public PastaMode getMode()
+	{
+		return mode;
+	}
+
 	public PredicateArgumentStructureBuilder<I,S> createBuilder(TreeAndParentMap<I, S> tree)
 	{
 		return new EasyFirstPredicateArgumentStructureBuilder<I, S>(tree, nomlexMap,mode);
