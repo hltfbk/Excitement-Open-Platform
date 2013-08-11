@@ -62,6 +62,7 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.utilities.StringUtil;
@@ -1481,7 +1482,8 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 		if (cpe.getShowSearchDetailsMenuItem().isSelected())	// menu item checkbox
 		{
 			sb.append("Classification Score for Search = ");
-			sb.append(strDouble(classificationScoreForSearch));
+			sb.append(String.format("%-8.10f", classificationScoreForSearch));
+			//sb.append(strDouble(classificationScoreForSearch));
 			sb.append("<BR>\n");
 		}
 
@@ -1647,7 +1649,13 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 		{
 			GapToolInstances<ExtendedInfo, ExtendedNode> gapTools = underLyingSystem.getGapToolInstances();
 			if (null==gapTools) throw new VisualTracingToolException("Null gap tools.");
-			//gapTools.getGapDescription().describeGap(tree, featureVector, underLyingSystem.getGapEnvironment())
+			try
+			{
+				sb.append("<P>\n").append("Gap features:<BR>\n").append(
+				gapTools.getGapDescription().describeGap(
+						new TreeAndParentMap<ExtendedInfo, ExtendedNode>(treeAndFeatureVector.getTree()), underLyingSystem.getGapEnvironment()));
+				sb.append("<BR>\n");
+			} catch (TreeAndParentMapException e){throw new VisualTracingToolException("Failed to build parent map.",e);}
 			
 		}
 		

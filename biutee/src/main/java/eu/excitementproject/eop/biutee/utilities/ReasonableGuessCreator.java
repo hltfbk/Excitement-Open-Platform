@@ -80,7 +80,7 @@ public class ReasonableGuessCreator
 		for (Feature gapFeture : Feature.getGapFeatures())
 		{
 			priorNegative.put(gapFeture.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
-			priorPositive.put(gapFeture.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+			priorPositive.put(gapFeture.getFeatureIndex(), new MeanAndStandardDeviation(0, standardDeviation));
 		}
 		
 		ReasonableGuessGenerator generator = 

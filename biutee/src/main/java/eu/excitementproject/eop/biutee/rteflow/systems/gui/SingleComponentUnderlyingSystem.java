@@ -96,9 +96,12 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 			WhichClassifier whichClassifierForSearch = inferWhichClassifierForSearch();
 			WhichClassifier whichClassifierForPredictions = inferWhichClassifierForPredictions();
 			
+			logger.info("Classifier for search is "+whichClassifierForSearch.name());
+			logger.info("Classifier for predicsions is "+whichClassifierForPredictions.name());
+			
 			switch(whichClassifierForSearch)
 			{
-			case REASONABLE_GUESS:
+			case REASONABLE_GUESS_OR_DUMMY:
 				ReasonableGuessCreator rgCreator = new ReasonableGuessCreator(teSystemEnvironment.getFeatureVectorStructureOrganizer());
 				rgCreator.create();
 				this.classifier = rgCreator.getClassifier();
@@ -115,7 +118,7 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 
 			switch(whichClassifierForPredictions)
 			{
-			case REASONABLE_GUESS:
+			case REASONABLE_GUESS_OR_DUMMY:
 				this.classifierForPredictions = new DummyAllTrueClassifier();
 				break;
 			case XML_MODEL:
@@ -307,7 +310,7 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 	
 	private static enum WhichClassifier
 	{
-		REASONABLE_GUESS,
+		REASONABLE_GUESS_OR_DUMMY,
 		XML_MODEL,
 		FROM_SAMPLES_F1,
 		FROM_SAMPLES_ACCURACY;
@@ -329,7 +332,7 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 		WhichClassifier which = null;
 		if (configurationParams.containsKey(rGuess_orDummy_parameter))
 		{
-			which=configurationParams.getBoolean(rGuess_orDummy_parameter)?WhichClassifier.REASONABLE_GUESS:null;
+			which=configurationParams.getBoolean(rGuess_orDummy_parameter)?WhichClassifier.REASONABLE_GUESS_OR_DUMMY:null;
 		}
 		if (null==which)
 		{

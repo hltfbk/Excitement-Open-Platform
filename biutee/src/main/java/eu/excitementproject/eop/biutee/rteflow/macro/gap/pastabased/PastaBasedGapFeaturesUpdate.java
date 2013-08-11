@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
@@ -57,11 +59,11 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 		ret.putAll(featureVector);
 		
 		PastaGapFeaturesCalculator<I, S> theCalculator = createAndGetCalculator(tree);
-		ret.put(Feature.GAP_MISSING_PREDICATES.getFeatureIndex(), (double)theCalculator.getMissingPredicates().size());
-		ret.put(Feature.GAP_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), (double)theCalculator.getArgumentHeadNotConnected().size());
-		ret.put(Feature.GAP_ARGUMENT_HEAD_MISSING.getFeatureIndex(), (double)theCalculator.getMissingArgument().size());
-		ret.put(Feature.GAP_ARGUMENT_NODE_NOT_CONNECTED.getFeatureIndex(), (double)theCalculator.getLemmaNotInArgument().size());
-		ret.put(Feature.GAP_ARGUMENT_NODE_MISSING.getFeatureIndex(), (double)theCalculator.getMissingLemmaOfArgument().size());
+		ret.put(Feature.GAP_MISSING_PREDICATES.getFeatureIndex(), (double)(-theCalculator.getMissingPredicates().size()));
+		ret.put(Feature.GAP_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), (double)(-theCalculator.getArgumentHeadNotConnected().size()));
+		ret.put(Feature.GAP_ARGUMENT_HEAD_MISSING.getFeatureIndex(), (double)(-theCalculator.getMissingArgument().size()));
+		ret.put(Feature.GAP_ARGUMENT_NODE_NOT_CONNECTED.getFeatureIndex(), (double)(-theCalculator.getLemmaNotInArgument().size()));
+		ret.put(Feature.GAP_ARGUMENT_NODE_MISSING.getFeatureIndex(), (double)(-theCalculator.getMissingLemmaOfArgument().size()));
 		
 		return ret;
 	}
@@ -79,15 +81,14 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 			
 			double ret = costWithGap-costWithoutGap;
 			if (ret<0) throw new GapException("gap measure is negative: "+String.format("%-4.4f", ret));
+			//logger.info("gap measure = "+String.format("%-6.6f", ret));
 			return ret;
 		}
 		catch(ClassifierException e){throw new GapException("Failed to calculate gap measure, due to a problem in the classifier.",e);}
 	}
 	
 	@Override
-	public synchronized String describeGap(TreeAndParentMap<I, S> tree,
-			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment)
-			throws GapException
+	public synchronized String describeGap(TreeAndParentMap<I, S> tree, GapEnvironment<I, S> environment) throws GapException
 	{
 		PastaGapFeaturesCalculator<I, S> theCalculator = createAndGetCalculator(tree);
 		StringBuilder sb = new StringBuilder();
@@ -146,4 +147,7 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 	// internals
 	private S lastTree = null;
 	private PastaGapFeaturesCalculator<I, S> calculator = null;
+	
+	@SuppressWarnings("unused")
+	private static final Logger logger = Logger.getLogger(PastaBasedGapFeaturesUpdate.class);
 }
