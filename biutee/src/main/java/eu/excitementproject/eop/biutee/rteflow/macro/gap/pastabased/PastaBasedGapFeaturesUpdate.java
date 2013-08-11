@@ -8,6 +8,7 @@ import java.util.Set;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapFeaturesUpdate;
@@ -31,7 +32,7 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentSt
  * @param <S>
  */
 @NotThreadSafe
-public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<I, S>> implements GapFeaturesUpdate<I, S>, GapHeuristicMeasure<I,S>
+public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<I, S>> implements GapFeaturesUpdate<I, S>, GapHeuristicMeasure<I,S>, GapDescription<I,S>
 {
 	public PastaBasedGapFeaturesUpdate(
 			PredicateArgumentStructureBuilderFactory<I, S> builderFactory,
@@ -83,6 +84,19 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 		catch(ClassifierException e){throw new GapException("Failed to calculate gap measure, due to a problem in the classifier.",e);}
 	}
 	
+	@Override
+	public synchronized String describeGap(TreeAndParentMap<I, S> tree,
+			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment)
+			throws GapException
+	{
+		PastaGapFeaturesCalculator<I, S> theCalculator = createAndGetCalculator(tree);
+		StringBuilder sb = new StringBuilder();
+		sb.append("Missing predicates = ").append(theCalculator.getMissingPredicates().size());
+		// TODO complete description
+		return sb.toString();
+	}
+
+	
 	private synchronized PastaGapFeaturesCalculator<I, S> createAndGetCalculator(TreeAndParentMap<I, S> tree) throws GapException
 	{
 		if (calculator!=null)
@@ -132,5 +146,4 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 	// internals
 	private S lastTree = null;
 	private PastaGapFeaturesCalculator<I, S> calculator = null;
-	
 }

@@ -21,6 +21,8 @@ import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.OriginalTreesAfterInitialization;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistoryComponent;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
@@ -288,6 +290,18 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 	{
 		if (!initialized)throw new VisualTracingToolException("Not initialized");
 		return classifierForPredictions;
+	}
+	
+	public GapToolInstances<ExtendedInfo, ExtendedNode> getGapToolInstances() throws VisualTracingToolException
+	{
+		if (!initialized)throw new VisualTracingToolException("Not initialized");
+		return generator.getGapToolInstances();
+	}
+	
+	public GapEnvironment<ExtendedInfo, ExtendedNode> getGapEnvironment() throws VisualTracingToolException
+	{
+		if (!initialized)throw new VisualTracingToolException("Not initialized");
+		return generator.getGapEnvironment();
 	}
 	
 	

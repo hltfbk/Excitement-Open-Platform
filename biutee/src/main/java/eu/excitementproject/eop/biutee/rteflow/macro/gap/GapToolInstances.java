@@ -24,11 +24,13 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 public class GapToolInstances<I, S extends AbstractNode<I, S>>
 {
 	public GapToolInstances(GapFeaturesUpdate<I, S> gapFeaturesUpdate,
-			GapHeuristicMeasure<I, S> gapHeuristicMeasure)
+			GapHeuristicMeasure<I, S> gapHeuristicMeasure,
+			GapDescription<I, S> gapDescription)
 	{
 		super();
 		this.gapFeaturesUpdate = gapFeaturesUpdate;
 		this.gapHeuristicMeasure = gapHeuristicMeasure;
+		this.gapDescription = gapDescription;
 	}
 	
 	
@@ -41,9 +43,15 @@ public class GapToolInstances<I, S extends AbstractNode<I, S>>
 	{
 		return gapHeuristicMeasure;
 	}
+	public GapDescription<I, S> getGapDescription()
+	{
+		return gapDescription;
+	}
+
 
 
 
 	private final GapFeaturesUpdate<I, S> gapFeaturesUpdate;
 	private final GapHeuristicMeasure<I, S> gapHeuristicMeasure;
+	private final GapDescription<I, S> gapDescription;
 }

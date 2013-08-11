@@ -124,7 +124,7 @@ public class GapToolBoxFactory
 		}
 		catch (ConfigurationException | PredicateArgumentIdentificationException e)
 		{
-			throw new GapException("Failed to build predicate argument structure builder factory.");
+			throw new GapException("Failed to build predicate argument structure builder factory.",e);
 		}
 	}
 

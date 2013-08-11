@@ -50,6 +50,8 @@ import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistoryComponent;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.ExtendedPreprocessedTopicDataSet;
@@ -80,6 +82,7 @@ import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorExc
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
+import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -746,9 +749,10 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @throws VisualTracingToolException 
 	 * @throws ClassifierException 
 	 * @throws BadLocationException 
+	 * @throws TeEngineMlException 
 	 * 
 	 */
-	private void redrawAllSearchTextBoxes() throws ClassifierException, VisualTracingToolException, BadLocationException {
+	private void redrawAllSearchTextBoxes() throws ClassifierException, VisualTracingToolException, BadLocationException, TeEngineMlException {
 		redrawRegularSearchTextArea();
 		redrawCurrentSingleTreePane();
 	}
@@ -757,8 +761,9 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * redraw the tree and text in the "Selected Tree" pane
 	 * @throws ClassifierException
 	 * @throws VisualTracingToolException
+	 * @throws TeEngineMlException 
 	 */
-	private void redrawCurrentSingleTreePane() throws ClassifierException, VisualTracingToolException {
+	private void redrawCurrentSingleTreePane() throws ClassifierException, VisualTracingToolException, TeEngineMlException {
 		// double check
 		if ((underLyingSystem != null) && (currentDisplayedTreeComponent != null) && (selectedTreeNextStack != null))
 		{
@@ -806,11 +811,13 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @throws VisualTracingToolException 
 	 * @throws ClassifierException 
 	 * @throws BadLocationException 
+	 * @throws GapException 
 	 * 
 	 */
-	private void redrawRegularSearchTextArea() throws ClassifierException, VisualTracingToolException, BadLocationException {
+	private void redrawRegularSearchTextArea() throws ClassifierException, VisualTracingToolException, BadLocationException, GapException {
 		if (historyComponents != null) {
-			String textAreaText = buildRegularSearchTextAreaText(classificationScoreForPredictions, classificationScoreForSearch, this.bestTreeHistory.getInitialComponent(), historyComponents, 
+			String textAreaText = buildRegularSearchTextAreaText(this.bestTreeOfRegularSearch,
+					classificationScoreForPredictions, classificationScoreForSearch, this.bestTreeHistory.getInitialComponent(), historyComponents, 
 					historyComponentsIndex, sortedHistory, originalTreeSentence, true,null);
 			int caretPositionBeforeUpdate = cpe.getRegularSearchTextArea().getCaretPosition();
 			cpe.getRegularSearchTextArea().setContentType("text/html");
@@ -1012,9 +1019,10 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @param currentTreeComponent
 	 * @throws VisualTracingToolException
 	 * @throws ClassifierException
+	 * @throws TeEngineMlException 
 	 */
 	private void displaySingleTree(SingleTreeComponent lastSingleTreeComponent, SingleTreeComponent currentTreeComponent, int currentComponentIndex)
-			throws VisualTracingToolException, ClassifierException {
+			throws VisualTracingToolException, ClassifierException, TeEngineMlException {
 		
 		String imageTitle = (currentTreeComponent != null && currentTreeComponent.getLastSpec() != null) ? 
 				makeTreeImageTitle(currentComponentIndex, currentTreeComponent.getLastSpec().toString()) : ORIGINAL_TREE_TITLE;	
@@ -1029,7 +1037,9 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 		// prepare stuff for displaying the specifications/operations of this tree history
 		SorterOfTreeHistory sortedHistory = new SorterOfTreeHistory(lastSingleTreeComponent.getHistory(), underLyingSystem.getClassifier(),
 				lastSingleTreeComponent.getFeatureVector());
-		String selectedTreeTextAreaText = buildRegularSearchTextAreaText(classificationScoreForPredictions, classificationScoreForSearch,
+		TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(lastSingleTreeComponent.getTree(), lastSingleTreeComponent.getFeatureVector());
+		String selectedTreeTextAreaText = buildRegularSearchTextAreaText(treeAndFeatureVector,
+				classificationScoreForPredictions, classificationScoreForSearch,
 				lastSingleTreeComponent.getHistory().getInitialComponent(),
 				lastSingleTreeComponent.getHistory().getComponents(), currentComponentIndex, sortedHistory, 
 				underLyingSystem.getMapTreeToSentence().get(lastSingleTreeComponent.getTree()),false,currentTreeComponent.getMissingRelations());
@@ -1051,8 +1061,9 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * 
 	 * @throws VisualTracingToolException
 	 * @throws ClassifierException
+	 * @throws TeEngineMlException 
 	 */
-	private void displaySelectedTree() throws VisualTracingToolException, ClassifierException {
+	private void displaySelectedTree() throws VisualTracingToolException, ClassifierException, TeEngineMlException {
 		if (underLyingSystem != null) { 
 			this.selectedTreeNextStack = new Stack<SingleTreeComponent>();
 			int selectedRow = cpe.getExistingTreesTable().getSelectedRow();
@@ -1439,15 +1450,17 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @return
 	 * @throws ClassifierException
 	 * @throws VisualTracingToolException
+	 * @throws GapException 
 	 */
 	private String buildRegularSearchTextAreaText(
+			TreeAndFeatureVector treeAndFeatureVector,
 			double classificationScoreForPredictions,  double classificationScoreForSearch, 
 			TreeHistoryComponent initialTreeHistoryComponent,
 			ImmutableList<TreeHistoryComponent> historyComponents,
 			int historyComponentsIndex, SorterOfTreeHistory sortedHistory,
 			String originalTreeSentence, boolean displayWholeProofFeatures,
 			Set<ExtendedNode> missingRelations) 
-					throws ClassifierException, VisualTracingToolException {
+					throws ClassifierException, VisualTracingToolException, GapException {
 //		if (classificationScoreForPredictions == 0)
 //			throw new VisualTracingToolException("Bug. classificationScoreForPredictions is 0. You must first initialize it through regularSearch() or displaySingleTree() and then call this method.");
 //		if (historyComponents == null || historyComponents.isEmpty())
@@ -1629,6 +1642,14 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 			sb.append("<BR>\n").append("Whole proof feature-vector:<BR>\n");
 			GuiUtils.printFeatures(this.underLyingSystem.getClassifier().getFeatureNames(), this.bestTreeOfRegularSearch.getFeatureVector(), null, sb);
 		}}
+		
+		if (this.underLyingSystem.getTeSystemEnvironment().getGapToolBox().isHybridMode())
+		{
+			GapToolInstances<ExtendedInfo, ExtendedNode> gapTools = underLyingSystem.getGapToolInstances();
+			if (null==gapTools) throw new VisualTracingToolException("Null gap tools.");
+			//gapTools.getGapDescription().describeGap(tree, featureVector, underLyingSystem.getGapEnvironment())
+			
+		}
 		
 		
 		sb.append("</BODY></HTML>\n");

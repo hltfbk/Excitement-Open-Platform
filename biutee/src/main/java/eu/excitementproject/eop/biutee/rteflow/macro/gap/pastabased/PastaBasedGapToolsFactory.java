@@ -42,7 +42,7 @@ public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I,
 			PastaBasedGapFeaturesUpdate<I,S> pastaBasedUpdate = new PastaBasedGapFeaturesUpdate<I,S>(
 					builderFactory,hypothesisStructures,hypothesis,classifierForSearch);
 
-			return new GapToolInstances<>(pastaBasedUpdate, pastaBasedUpdate);
+			return new GapToolInstances<>(pastaBasedUpdate, pastaBasedUpdate, pastaBasedUpdate);
 		}
 		catch (PredicateArgumentIdentificationException e)
 		{
