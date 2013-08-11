@@ -6,7 +6,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
@@ -17,6 +16,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapFeaturesUpdate;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapHeuristicMeasure;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
@@ -92,9 +92,47 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 	{
 		PastaGapFeaturesCalculator<I, S> theCalculator = createAndGetCalculator(tree);
 		StringBuilder sb = new StringBuilder();
-		sb.append("Missing predicates = ").append(theCalculator.getMissingPredicates().size());
-		// TODO complete description
+		sb.append("Missing predicates:\n");
+		for (PredicateArgumentStructure<I, S> predicate : theCalculator.getMissingPredicates())
+		{
+			sb.append(" ").append(lemma(predicate.getPredicate().getHead())).append(",");
+		}
+		sb.append("\n");
+		sb.append("Arguments not connected:\n");
+		for (PredicateAndArgument<I, S> argument : theCalculator.getArgumentHeadNotConnected())
+		{
+			sb.append(" ").append(lemma(argument.getArgument().getArgument().getSemanticHead())).append(",");
+		}
+		sb.append("\n");
+		sb.append("Missing arguments:\n");
+		for (PredicateAndArgument<I, S> argument : theCalculator.getMissingArgument())
+		{
+			sb.append(" ").append(lemma(argument.getArgument().getArgument().getSemanticHead())).append(",");
+		}
+		sb.append("\n");
+		sb.append("Lemmas not in argument:\n");
+		for (PredicateAndArgumentAndNode<I, S> node : theCalculator.getLemmaNotInArgument())
+		{
+			sb.append(" ").append(lemma(node.getNode()));
+			sb.append(" For argument ").append(lemma(node.getArgument().getArgument().getSemanticHead()));
+			sb.append(",");
+		}
+		sb.append("\n");
+		sb.append("Missing lemmas:\n");
+		for (PredicateAndArgumentAndNode<I, S> node : theCalculator.getMissingLemmaOfArgument())
+		{
+			sb.append(" ").append(lemma(node.getNode()));
+			sb.append(" For argument ").append(lemma(node.getArgument().getArgument().getSemanticHead()));
+			sb.append(",");
+		}
+		sb.append("\n");
+		
 		return sb.toString();
+	}
+	
+	private String lemma(S node)
+	{
+		return InfoGetFields.getLemma(node.getInfo());
 	}
 
 	

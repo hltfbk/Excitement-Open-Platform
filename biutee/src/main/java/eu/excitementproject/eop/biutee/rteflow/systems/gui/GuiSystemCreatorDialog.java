@@ -197,7 +197,7 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 					underlyingSystem.init();
 					if (underlyingSystem.getTeSystemEnvironment().getGapToolBox().isHybridMode())
 					{
-						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! the GUI support of hybrid gap mode is partial and might be inaccurate.", "Hybrid gap mode", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! The GUI support of hybrid gap mode is partial and might be inaccurate.", "Hybrid gap mode", JOptionPane.WARNING_MESSAGE);
 					}
 					built = true;
 				}
