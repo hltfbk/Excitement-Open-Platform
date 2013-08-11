@@ -1,8 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.gui;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_GUI_CLASSIFIER_FOR_PREDICTIONS_IS_DUMMY;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SAMPLES_FOR_SEARCH_CLASSIFIER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SERIALIZED_SAMPLES_NAME;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,31 +14,24 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
-import eu.excitementproject.eop.biutee.classifiers.ClassifierFactory;
-import eu.excitementproject.eop.biutee.classifiers.ClassifierUtils;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
-import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
-import eu.excitementproject.eop.biutee.classifiers.TrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.classifiers.dummy.DummyAllTrueClassifier;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
-import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.OriginalTreesAfterInitialization;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistoryComponent;
-import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsBaseSystem;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.RTESumSurroundingSentencesUtility;
 import eu.excitementproject.eop.biutee.script.HypothesisInformation;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.biutee.script.ScriptFactory;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
-import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamples;
-import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamplesUtils;
+import eu.excitementproject.eop.biutee.utilities.ReasonableGuessCreator;
 import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeClassifiersIO;
 import eu.excitementproject.eop.common.datastructures.DummySet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
@@ -60,7 +51,6 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.DatasetParameterValueParser;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 /**
  * 
@@ -72,7 +62,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  * @since May 25, 2011
  *
  */
-public class SingleComponentUnderlyingSystem extends RTEPairsBaseSystem
+public class SingleComponentUnderlyingSystem extends SystemInitialization
 {
 	public SingleComponentUnderlyingSystem(GuiRteSumUtilities sumUtilities,
 			String configurationFileName,
@@ -81,7 +71,7 @@ public class SingleComponentUnderlyingSystem extends RTEPairsBaseSystem
 		super(configurationFileName,ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
 		this.pairData = null;
 		this.sumUtilitis = sumUtilities;
-		this.useF1ClassifierFalseForAccuracyNullForXMLModelFile = useF1Classifier;
+		this.useF1Classifier_FalseForAccuracy_NullForXMLModelFile = useF1Classifier;
 	}
 
 	public void init() throws ConfigurationFileDuplicateKeyException, ConfigurationException, MalformedURLException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
@@ -91,110 +81,58 @@ public class SingleComponentUnderlyingSystem extends RTEPairsBaseSystem
 		
 		try
 		{
-			DatasetParameterValueParser parameterParser = constructDatasetParameterParser();
-			updateFeatureVectorStructure(parameterParser);
+//			DatasetParameterValueParser parameterParser = constructDatasetParameterParser();
+//			updateFeatureVectorStructure(parameterParser);
 
 			script = new ScriptFactory(configurationFile,this.teSystemEnvironment.getPluginRegistry(),this.teSystemEnvironment).getDefaultScript();
 			script.init();
 			scriptInitialized = true;
 			completeInitializationWithScript(script);
 			
-			// TODO (comment by Asher Stern): Ugly Ugly code
-			if (useF1ClassifierFalseForAccuracyNullForXMLModelFile!=null)
-			{
-				initClassifierByLabeledSamples();
-			}
-			else
-			{
-				boolean useReasonableGuess = false;
-				if (configurationParams.containsKey(RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS))
-				{
-					useReasonableGuess = configurationParams.getBoolean(RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS);
-				}
-
-				if (useReasonableGuess)
-				{
-					this.classifier = RTESystemsUtils.reasonableGuessClassifier(teSystemEnvironment.getFeatureVectorStructureOrganizer());
-				}
-				else if (configurationParams.containsKey(ConfigurationParametersNames.RTE_TEST_SEARCH_MODEL))
-				{
-					File modelFile = configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_SEARCH_MODEL);
-					logger.info("Loading classifier for search for test from file: "+modelFile.getPath());
-					LinearClassifier ret =  SafeClassifiersIO.loadLinearClassifier(teSystemEnvironment.getFeatureVectorStructureOrganizer(), modelFile);
-					ret.setFeaturesNames(teSystemEnvironment.getFeatureVectorStructureOrganizer().createMapOfFeatureNames());
-					this.classifier = ret;
-				}
-				else
-				{
-					throw new TeEngineMlException("Cannot locate the model file parameter in the configuration file, for classifier-for-search.");
-				}
-			}
 			
 			
+			WhichClassifier whichClassifierForSearch = inferWhichClassifierForSearch();
+			WhichClassifier whichClassifierForPredictions = inferWhichClassifierForPredictions();
+			
+			switch(whichClassifierForSearch)
+			{
+			case REASONABLE_GUESS:
+				ReasonableGuessCreator rgCreator = new ReasonableGuessCreator(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+				rgCreator.create();
+				this.classifier = rgCreator.getClassifier();
+				break;
+			case XML_MODEL:
+				this.classifier = SafeClassifiersIO.loadLinearClassifier(teSystemEnvironment.getFeatureVectorStructureOrganizer(), configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_SEARCH_MODEL));
+				break;
+			default: throw new TeEngineMlException("Loading from labeled-samples is no longer supported.");
+			}
+			
+			this.classifier.setFeaturesNames(teSystemEnvironment.getFeatureVectorStructureOrganizer().createMapOfFeatureNames());
 			logger.info("Classifier for search description:\n"+classifier.descriptionOfTraining());
+			
 
-			boolean dummyClassifierForPredictions = false;
-			if (configurationParams.containsKey(RTE_PAIRS_GUI_CLASSIFIER_FOR_PREDICTIONS_IS_DUMMY))
+			switch(whichClassifierForPredictions)
 			{
-				dummyClassifierForPredictions = configurationParams.getBoolean(RTE_PAIRS_GUI_CLASSIFIER_FOR_PREDICTIONS_IS_DUMMY);
-			}
-			if (dummyClassifierForPredictions)
-			{
+			case REASONABLE_GUESS:
 				this.classifierForPredictions = new DummyAllTrueClassifier();
+				break;
+			case XML_MODEL:
+				File modelFile = configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_PREDICTIONS_MODEL);
+				this.classifierForPredictions =  SafeClassifiersIO.load(teSystemEnvironment.getFeatureVectorStructureOrganizer(), modelFile);
+				break;
+			default: throw new TeEngineMlException("Loading from labeled-samples is no longer supported.");
 			}
-			else
-			{
-				// TODO (comment by Asher Stern): Ugly Ugly code
-				if (null==useF1ClassifierFalseForAccuracyNullForXMLModelFile)
-				{
-					if (configurationParams.containsKey(ConfigurationParametersNames.RTE_TEST_PREDICTIONS_MODEL))
-					{
-						File modelFile = configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_PREDICTIONS_MODEL);
-						logger.info("Loading classifier for predictions for test from file: "+modelFile.getPath());
-						Classifier ret =  SafeClassifiersIO.load(teSystemEnvironment.getFeatureVectorStructureOrganizer(), modelFile);
-						ret.setFeaturesNames(teSystemEnvironment.getFeatureVectorStructureOrganizer().createMapOfFeatureNames());
-						this.classifierForPredictions = ret;
-					}
-					else
-					{
-						throw new TeEngineMlException("Could not locate the model file parameter for classifier-for-prediction, in the configuration file.");
-					}
-				}
-				else
-				{
-					TrainableStorableClassifier tscClassifierForPredictions;
-					// TODO (Comment by Asher Stern:) Ugly code. Should arrange the code here and in RTESYstemUtils.
-					if (useF1ClassifierFalseForAccuracyNullForXMLModelFile)
-					{
-						tscClassifierForPredictions = new ClassifierFactory().getF1Classifier();
-					}
-					else
-					{
-						tscClassifierForPredictions = new ClassifierFactory().getDefaultClassifier();
-					}
-					File samplesSerFile = configurationParams.getFile(RTE_TEST_SERIALIZED_SAMPLES_NAME);
-					SafeSamples safeSamples = SafeSamplesUtils.load(samplesSerFile, teSystemEnvironment.getFeatureVectorStructureOrganizer());
-					tscClassifierForPredictions.train(safeSamples.getSamples());
-					tscClassifierForPredictions.setFeaturesNames(teSystemEnvironment.getFeatureVectorStructureOrganizer().createMapOfFeatureNames());
-					this.classifierForPredictions = tscClassifierForPredictions;
-				}
-			}
+			
+			this.classifierForPredictions.setFeaturesNames(teSystemEnvironment.getFeatureVectorStructureOrganizer().createMapOfFeatureNames());
 			logger.info("classifierForPredictions:\n"+this.classifierForPredictions.descriptionOfTraining());
+			
 
 			// We need only one instance of lemmatizer.
 			this.lemmatizer = this.getLemmatizer();
 
 			// setPair(pairData,taskName);
 		}
-		catch (OperationException e)
-		{
-			throw new TeEngineMlException("init failed",e);
-		}
-		catch (ClassifierException e)
-		{
-			throw new TeEngineMlException("init failed",e);
-		}
-		catch (ClassNotFoundException e)
+		catch (OperationException | ClassifierException e)
 		{
 			throw new TeEngineMlException("init failed",e);
 		}
@@ -352,40 +290,89 @@ public class SingleComponentUnderlyingSystem extends RTEPairsBaseSystem
 		return classifierForPredictions;
 	}
 	
-	 
-
-	private void initClassifierByLabeledSamples() throws OperationException, ClassifierException, TeEngineMlException, ConfigurationException, IOException, ClassNotFoundException
+	
+	private static enum WhichClassifier
 	{
-		if (useF1ClassifierFalseForAccuracyNullForXMLModelFile)
-		{
-			// TODO (comment by Asher Stern): Ugly code. Should somehow make things clear in RTESystemUtils and here.
-			boolean useReasonableGuess = false;
-			if (configurationParams.containsKey(RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS))
-			{
-				useReasonableGuess = configurationParams.getBoolean(RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS);
-			}
+		REASONABLE_GUESS,
+		XML_MODEL,
+		FROM_SAMPLES_F1,
+		FROM_SAMPLES_ACCURACY;
+	}
+	
+	private WhichClassifier inferWhichClassifierForSearch() throws ConfigurationException, TeEngineMlException
+	{
+		return inferWhichClassifier(RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS,ConfigurationParametersNames.RTE_TEST_SEARCH_MODEL);
+	}
 
-			if (useReasonableGuess)
+	private WhichClassifier inferWhichClassifierForPredictions() throws ConfigurationException, TeEngineMlException
+	{
+		return inferWhichClassifier(RTE_PAIRS_GUI_CLASSIFIER_FOR_PREDICTIONS_IS_DUMMY,ConfigurationParametersNames.RTE_TEST_PREDICTIONS_MODEL);
+	}
+
+	
+	private WhichClassifier inferWhichClassifier(String rGuess_orDummy_parameter, String modelParameter) throws ConfigurationException, TeEngineMlException
+	{
+		WhichClassifier which = null;
+		if (configurationParams.containsKey(rGuess_orDummy_parameter))
+		{
+			which=configurationParams.getBoolean(rGuess_orDummy_parameter)?WhichClassifier.REASONABLE_GUESS:null;
+		}
+		if (null==which)
+		{
+			if (configurationParams.containsKey(modelParameter))
 			{
-				this.classifier = RTESystemsUtils.reasonableGuessClassifier(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+				which=WhichClassifier.XML_MODEL;
+			}
+		}
+		if (null==which)
+		{
+			if (null==useF1Classifier_FalseForAccuracy_NullForXMLModelFile) throw new TeEngineMlException("Cannot infer which classifier to use. Please fix the configuration file.");
+			if (useF1Classifier_FalseForAccuracy_NullForXMLModelFile)
+			{
+				which = WhichClassifier.FROM_SAMPLES_F1;
 			}
 			else
 			{
-				LinearTrainableStorableClassifier ltscClassifier;
-				ltscClassifier = new ClassifierFactory().getF1Classifier();
-				File fileSerializedSamples = configurationParams.getFile(RTE_TEST_SAMPLES_FOR_SEARCH_CLASSIFIER);
-				SafeSamples safeSamples = SafeSamplesUtils.load(fileSerializedSamples, this.teSystemEnvironment.getFeatureVectorStructureOrganizer());
-				ltscClassifier.train(safeSamples.getSamples());
-				RTESystemsUtils.normalizeClassifierForSearch(ltscClassifier);
-				this.classifier = ltscClassifier;
+				which = WhichClassifier.FROM_SAMPLES_ACCURACY;
 			}
-			this.classifier.setFeaturesNames( ClassifierUtils.extendFeatureNames(Feature.toMapOfNames(), script.getRuleBasesNames()));
 		}
-		else
-		{
-			this.classifier = RTESystemsUtils.searchClassifierForTest(configurationParams, teSystemEnvironment.getFeatureVectorStructureOrganizer());	
-		}
+		return which;
 	}
+	
+	 
+
+//	private void initClassifierByLabeledSamples() throws OperationException, ClassifierException, TeEngineMlException, ConfigurationException, IOException, ClassNotFoundException
+//	{
+//		if (useF1Classifier_FalseForAccuracy_NullForXMLModelFile)
+//		{
+//			// TODO (comment by Asher Stern): Ugly code. Should somehow make things clear in RTESystemUtils and here.
+//			boolean useReasonableGuess = false;
+//			if (configurationParams.containsKey(RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS))
+//			{
+//				useReasonableGuess = configurationParams.getBoolean(RTE_TEST_SEARCH_CLASSIFIER_REASONABLE_GUESS);
+//			}
+//
+//			if (useReasonableGuess)
+//			{
+//				this.classifier = RTESystemsUtils.reasonableGuessClassifier(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+//			}
+//			else
+//			{
+//				LinearTrainableStorableClassifier ltscClassifier;
+//				ltscClassifier = new ClassifierFactory().getF1Classifier();
+//				File fileSerializedSamples = configurationParams.getFile(RTE_TEST_SAMPLES_FOR_SEARCH_CLASSIFIER);
+//				SafeSamples safeSamples = SafeSamplesUtils.load(fileSerializedSamples, this.teSystemEnvironment.getFeatureVectorStructureOrganizer());
+//				ltscClassifier.train(safeSamples.getSamples());
+//				RTESystemsUtils.normalizeClassifierForSearch(ltscClassifier);
+//				this.classifier = ltscClassifier;
+//			}
+//			this.classifier.setFeaturesNames( ClassifierUtils.extendFeatureNames(Feature.toMapOfNames(), script.getRuleBasesNames()));
+//		}
+//		else
+//		{
+//			this.classifier = RTESystemsUtils.searchClassifierForTest(configurationParams, teSystemEnvironment.getFeatureVectorStructureOrganizer());	
+//		}
+//	}
 	
 	
 	private void initTreesComponents() throws ClassifierException, TreeAndParentMapException, VisualTracingToolException, TeEngineMlException, PluginAdministrationException
@@ -439,7 +426,7 @@ public class SingleComponentUnderlyingSystem extends RTEPairsBaseSystem
 
 
 	// input
-	protected Boolean useF1ClassifierFalseForAccuracyNullForXMLModelFile = null;
+	protected Boolean useF1Classifier_FalseForAccuracy_NullForXMLModelFile = null;
 	protected ExtendedPairData pairData;
 	protected GuiRteSumUtilities sumUtilitis;
 	protected String taskName = null;

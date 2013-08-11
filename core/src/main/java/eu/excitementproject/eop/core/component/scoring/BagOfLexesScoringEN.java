@@ -31,7 +31,8 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelatio
  * <code>BagOfLemmasScoring</code>. It supports (currently) <code>WordNet</code>
  * and <code>VerbOcean</code> two lexical resources.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since January 2013
  */
 public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 
