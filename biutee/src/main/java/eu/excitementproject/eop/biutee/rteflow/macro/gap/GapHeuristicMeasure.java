@@ -24,6 +24,6 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMa
 @NotThreadSafe
 public interface GapHeuristicMeasure<I, S extends AbstractNode<I, S>>
 {
-	public double measure(TreeAndParentMap<I, S> tree, Map<Integer, Double> featureVector) throws GapException;
+	public double measure(TreeAndParentMap<I, S> tree, Map<Integer, Double> featureVector, GapEnvironment<I, S> environment) throws GapException;
 
 }

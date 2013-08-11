@@ -17,6 +17,7 @@ import eu.excitementproject.eop.biutee.plugin.InstanceBasedPlugin;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.rteflow.document_sublayer.DocumentInitializer;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.macro.multiword_namedentity_utils.MultiWordNamedEntityUtils;
 import eu.excitementproject.eop.biutee.rteflow.micro.OperationsEnvironment;
@@ -297,10 +298,12 @@ public class InitializationTextTreesProcessor
 		if (teSystemEnvironment.getGapToolBox().isHybridMode())
 		{
 			gapTools = teSystemEnvironment.getGapToolBox().getGapToolsFactory().createInstances(hypothesis,this.classifier);
+			gapEnvironment = new GapEnvironment<>();
 		}
 		else
 		{
 			gapTools = null;
+			gapEnvironment = null;
 		}
 		
 		
@@ -794,6 +797,7 @@ public class InitializationTextTreesProcessor
 	
 	protected GapToolInstances<ExtendedInfo, ExtendedNode> gapTools = null;
 	protected OperationsEnvironment operationsEnvironment;
+	protected GapEnvironment<ExtendedInfo, ExtendedNode> gapEnvironment;
 	protected OriginalTreesAfterInitialization originalTreesAfterInitialization = null;
 	
 	private static final Cache<SealedObject<ExtendedNode>, ImmutableSet<String>> cacheHypothesisToTemplates =

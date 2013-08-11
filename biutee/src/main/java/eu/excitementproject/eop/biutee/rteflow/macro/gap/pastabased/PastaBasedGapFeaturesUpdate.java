@@ -8,6 +8,7 @@ import java.util.Set;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapFeaturesUpdate;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapHeuristicMeasure;
@@ -49,7 +50,7 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 
 	@Override
 	public synchronized Map<Integer, Double> updateForGap(TreeAndParentMap<I, S> tree,
-			Map<Integer, Double> featureVector) throws GapException
+			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment) throws GapException
 	{
 		Map<Integer, Double> ret = new LinkedHashMap<>();
 		ret.putAll(featureVector);
@@ -67,12 +68,12 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 	
 
 	@Override
-	public synchronized double measure(TreeAndParentMap<I, S> tree, Map<Integer, Double> featureVector) throws GapException
+	public synchronized double measure(TreeAndParentMap<I, S> tree, Map<Integer, Double> featureVector, GapEnvironment<I, S> environment) throws GapException
 	{
 		try
 		{
 			double costWithoutGap = -classifierForSearch.getProduct(featureVector);
-			Map<Integer, Double> featureVectorWithGap = updateForGap(tree,featureVector);
+			Map<Integer, Double> featureVectorWithGap = updateForGap(tree,featureVector,environment);
 			double costWithGap = -classifierForSearch.getProduct(featureVectorWithGap);
 			
 			double ret = costWithGap-costWithoutGap;

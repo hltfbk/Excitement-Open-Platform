@@ -235,7 +235,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	{
 		if (hybridGapMode)
 		{
-			return gapTools.getGapHeuristicMeasure().measure(tree,featureVector);
+			return gapTools.getGapHeuristicMeasure().measure(tree,featureVector,gapEnvironment);
 		}
 		else
 		{
@@ -299,7 +299,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	{
 		if (!hybridGapMode) throw new TeEngineMlException("Internal bug! This method should be called only in hybrid-gap mode.");
 		TreeAndParentMap<ExtendedInfo, ExtendedNode> tapm = new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree);
-		return gapTools.getGapFeaturesUpdate().updateForGap(tapm, featureVector);
+		return gapTools.getGapFeaturesUpdate().updateForGap(tapm, featureVector,gapEnvironment);
 	}
 
 	

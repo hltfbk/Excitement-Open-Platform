@@ -28,5 +28,5 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMa
 @NotThreadSafe
 public interface GapFeaturesUpdate<I, S extends AbstractNode<I, S>>
 {
-	public Map<Integer, Double> updateForGap(TreeAndParentMap<I, S> tree, Map<Integer,Double> featureVector) throws GapException;
+	public Map<Integer, Double> updateForGap(TreeAndParentMap<I, S> tree, Map<Integer,Double> featureVector, GapEnvironment<I, S> environment) throws GapException;
 }
