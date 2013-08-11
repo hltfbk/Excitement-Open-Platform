@@ -131,14 +131,45 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 		progressSingleTree = 1.0/((double)numberOfTreesToBeProcessed);
 	}
 	
+
+	// Abstract methods, called by the LLGS algorithm.
 	
-	//protected abstract double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree, Map<Integer, Double> featureVector) throws GapException;
+	/**
+	 * Calculates how many local iterations will be performed in the next iteration of the global loop.
+	 */
 	protected abstract int calculateNumberOfLocalIterations(int globalIteraion, int actualNumberOfLocalIterations) throws TeEngineMlException;
+	
+	/**
+	 * Called before starting the global loop (before the loop itself - before entering the loop).
+	 */
 	protected abstract void prepareGlobalLoop(TreeInProcess currentInProcess) throws TeEngineMlException , TreeAndParentMapException;
+	
+	/**
+	 * Called after the global loop has been finished.
+	 */
 	protected abstract void postGlobalLoop(LocalCreativeTreeElement bestElement) throws TeEngineMlException, TreeAndParentMapException;
+	
+	/**
+	 * The stop condition of the global loop. Returns true if the global loop
+	 * is not yet done.
+	 */
 	protected abstract boolean continueGlobalIteration(TreeInProcess currentInProcess, TreeInProcess previousIterationTree) throws TeEngineMlException, TreeAndParentMapException;
+	
+	/**
+	 * Under some conditions, inserts the given text tree - "as it is" with no
+	 * transformations - to the list of the final results.
+	 */
 	protected abstract void conditionallyInsertInitialElementToResults(TreeInProcess currentInProcess) throws TeEngineMlException , ClassifierException, TreeAndParentMapException;
+	
+	/**
+	 * Inserts a single element into the list of final results.
+	 */
 	protected abstract void addSingleGoalToResutls(LocalCreativeTreeElement element, String origianlSentence) throws TeEngineMlException, TreeAndParentMapException;
+	
+	/**
+	 * Add some of the elements in the field {@link #elements}, into the list
+	 * of final results.
+	 */
 	protected abstract void addResultsFromElements(final String sentence) throws TeEngineMlException, ClassifierException, TreeAndParentMapException;
 
 	/**
@@ -166,14 +197,19 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 		
 		TreeInProcess previousIterationTree = null;
 		
+		// The given text tree, "as it is", might be a final result (or a candidate
+		// to be a final result). If so - insert it into the list of final results.
 		conditionallyInsertInitialElementToResults(currentInProcess);
 		
+		// Make some stuff before entering the global loop.
 		prepareGlobalLoop(currentInProcess);
 		
 		int currentIteration = 0;
 
 		// How many local iterations will be performed
 		int actualNumberOfLocalIterations = calculateNumberOfLocalIterations(currentIteration,this.numberOfLocalIterations);
+		
+		// This is the global loop.
 		while (continueGlobalIteration(currentInProcess,previousIterationTree))
 		{
 			if (null==currentInProcess) throw new TeEngineMlException("Internal bug. Starting a global iteration with no element to process.");
@@ -205,6 +241,8 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 				LocalCreativeTreeElement generatedElement =
 					new LocalCreativeTreeElement(generatedTree.getTree(), historyMap.get(generatedTree), generatedTree.getFeatureVector(), 1, currentIteration, mapAffectedNodes.get(generatedTree.getTree()),cost,gap);
 				elements.add(generatedElement);
+				
+				// This is the local loop (the loop is actually a recursion).
 				processElement(generatedElement,currentIteration,actualNumberOfLocalIterations);
 			}
 
@@ -245,7 +283,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			actualNumberOfLocalIterations = calculateNumberOfLocalIterations(currentIteration,actualNumberOfLocalIterations);
 			
 			addResultsFromElements(sentence);
-		} // end of while loop.
+		} // end of while loop (end of global loop).
 		
 		// for GUI
 		progressSoFar += progressSingleTree;
@@ -258,7 +296,9 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 	/**
 	 * The goal of this method is to add more elements to {@link #elements}.
 	 * Remember that {@link #elements} is deleted in each iteration in the "while"
-	 * loop of {@link #processTree(ExtendedNode, String)}.
+	 * loop of {@link #processTree(ExtendedNode, String)} (the global loop).
+	 * <BR>
+	 * This method is a recursive method - it is actually the "local loop".
 	 * @param element
 	 * @param globalBaseIteration
 	 * @param maxLocalIteration
@@ -310,6 +350,10 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 	
 	/**
 	 * Returns the element for which \delta(g)/\delta(h) is the smallest.
+	 * <BR>
+	 * This "best" element is the one that survives for the next iteration
+	 * of the "global loop".
+	 * 
 	 * @param elements
 	 * @param originalCost
 	 * @param originalGap
@@ -359,7 +403,10 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 	}
 	
 	
-	
+	// Nested class
+	/**
+	 * Stores a tree that was derived from the original text tree.
+	 */
 	protected static class TreeInProcess extends TextTreesProcessingResult
 	{
 		public TreeInProcess(TreeAndFeatureVector tree, Map<ExtendedNode,ExtendedNode> parentMap,
