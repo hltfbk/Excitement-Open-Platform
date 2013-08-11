@@ -23,7 +23,7 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentId
  */
 public class PredicateArgumentStructureBuilderFactoryFactory<I extends Info, S extends AbstractNode<I, S>>
 {
-	public static final String BUILDER_MODULE_NAME = "builder";
+	public static final String BUILDER_MODULE_NAME = "pasta-builder";
 	public static final String NOMLEX_FILE_PARAMETER_NAME = "nomlex-file";
 	public static final String CLASS_ROLE_TABLE_PARAMETER_NAME = "nomlex-class-role-table";
 	
