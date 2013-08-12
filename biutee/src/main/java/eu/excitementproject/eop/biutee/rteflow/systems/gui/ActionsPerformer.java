@@ -1660,8 +1660,6 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 			if (null==currentComponent) throw new VisualTracingToolException("Current history component is null. Cannot print details of feature vector.");
 			boolean hasTheTree = true;
 			if (null==currentComponent.getTree()){hasTheTree=false;}
-			if (null==previousComponent){hasTheTree=false;}
-			else if (null==previousComponent.getTree()){hasTheTree=false;}
 			if (gapMode&&(!hasTheTree))
 			{
 				sb.append("<BR>\n<B>Vectors do not include gap features!</B><BR>\n");
@@ -1676,12 +1674,11 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 			
 			Map<Integer, Double> previousOperationFeatureVector = null;
 			if (previousComponent!=null) previousOperationFeatureVector = previousComponent.getFeatureVector();
-			if (gapMode&&hasTheTree&&(previousOperationFeatureVector!=null))
+			if (gapMode&&hasTheTree&&(previousOperationFeatureVector!=null)&&(previousComponent.getTree()!=null))
 			{
 				previousOperationFeatureVector = underLyingSystem.getGapToolInstances().getGapFeaturesUpdate().updateForGap(
 						new TreeAndParentMap<ExtendedInfo, ExtendedNode>(previousComponent.getTree()),
 						previousOperationFeatureVector, underLyingSystem.getGapEnvironment());
-				
 			}
 			GuiUtils.printFeatures(this.underLyingSystem.getClassifier().getFeatureNames(), currentComponentFeatureVector, previousOperationFeatureVector, sb);
 		}

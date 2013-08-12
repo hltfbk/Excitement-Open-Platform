@@ -101,29 +101,33 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 		sb.append("Arguments not connected:\n");
 		for (PredicateAndArgument<I, S> argument : theCalculator.getArgumentHeadNotConnected())
 		{
-			sb.append(" ").append(lemma(argument.getArgument().getArgument().getSemanticHead())).append(",");
+			sb.append(" ").append(lemma(argument.getArgument().getArgument().getSemanticHead()));
+			sb.append(" (for argument ").append(lemma(argument.getPredicate().getPredicate().getHead()));
+			sb.append("),");
 		}
 		sb.append("\n");
 		sb.append("Missing arguments:\n");
 		for (PredicateAndArgument<I, S> argument : theCalculator.getMissingArgument())
 		{
-			sb.append(" ").append(lemma(argument.getArgument().getArgument().getSemanticHead())).append(",");
+			sb.append(" ").append(lemma(argument.getArgument().getArgument().getSemanticHead()));
+			sb.append(" (for argument ").append(lemma(argument.getPredicate().getPredicate().getHead()));
+			sb.append("),");
 		}
 		sb.append("\n");
 		sb.append("Lemmas not in argument:\n");
 		for (PredicateAndArgumentAndNode<I, S> node : theCalculator.getLemmaNotInArgument())
 		{
 			sb.append(" ").append(lemma(node.getNode()));
-			sb.append(" For argument ").append(lemma(node.getArgument().getArgument().getSemanticHead()));
-			sb.append(",");
+			sb.append(" (for argument ").append(lemma(node.getArgument().getArgument().getSemanticHead()));
+			sb.append("),");
 		}
 		sb.append("\n");
 		sb.append("Missing lemmas:\n");
 		for (PredicateAndArgumentAndNode<I, S> node : theCalculator.getMissingLemmaOfArgument())
 		{
 			sb.append(" ").append(lemma(node.getNode()));
-			sb.append(" For argument ").append(lemma(node.getArgument().getArgument().getSemanticHead()));
-			sb.append(",");
+			sb.append(" (for argument ").append(lemma(node.getArgument().getArgument().getSemanticHead()));
+			sb.append("),");
 		}
 		sb.append("\n");
 		

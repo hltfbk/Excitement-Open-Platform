@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -16,6 +19,8 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
 import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
 
@@ -31,6 +36,8 @@ import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
 public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I, S>>
 {
 	///////////// PUBLIC /////////////
+	
+	public static final boolean STRICT_ARGUMENT_HEAD_MODE = BiuteeConstants.PASTA_GAP_STRICT_ARGUMENT_HEAD_MODE;
 
 	
 	public PastaGapFeaturesCalculator(TreeAndParentMap<I, S> hypothesisTree,
@@ -109,14 +116,18 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 						Set<String> lemmasInHypothesisArgumentButNotInTextArgument = setMinus(lemmasInHypothesis.keySet(), lemmasInText);
 						for (String missingLemma : lemmasInHypothesisArgumentButNotInTextArgument)
 						{
-							PredicateAndArgumentAndNode<I, S> missingLemmaAsPAAAN = new PredicateAndArgumentAndNode<I, S>(hypothesisStructure, hypothesisArgument, lemmasInHypothesis.get(missingLemma));
-							if (!(missingLemmasInText.contains(missingLemma)))
+							S nodeOfMissingLemma = lemmasInHypothesis.get(missingLemma);
+							if (isContentNode(nodeOfMissingLemma))
 							{
-								lemmaNotInArgument.add(missingLemmaAsPAAAN);
-							}
-							else
-							{
-								missingLemmaOfArgument.add(missingLemmaAsPAAAN);
+								PredicateAndArgumentAndNode<I, S> missingLemmaAsPAAAN = new PredicateAndArgumentAndNode<I, S>(hypothesisStructure, hypothesisArgument, nodeOfMissingLemma);
+								if (!(missingLemmasInText.contains(missingLemma)))
+								{
+									lemmaNotInArgument.add(missingLemmaAsPAAAN);
+								}
+								else
+								{
+									missingLemmaOfArgument.add(missingLemmaAsPAAAN);
+								}
 							}
 						}
 					}
@@ -126,11 +137,12 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 						String hypothesisArgumentLemma = InfoGetFields.getLemma(hypothesisArgument.getArgument().getSemanticHead().getInfo());
 						if (missingLemmasInText.contains(hypothesisArgumentLemma))
 						{
-							argumentHeadNotConnected.add(missingHypothesisArgument);
+							missingArgument.add(missingHypothesisArgument);
 						}
 						else
 						{
-							missingArgument.add(missingHypothesisArgument);
+							argumentHeadNotConnected.add(missingHypothesisArgument);
+							
 						}
 					}
 				}
@@ -186,9 +198,25 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 	private Set<TypedArgument<I, S>> structureHasArgument(PredicateArgumentStructure<I, S> textStructure, TypedArgument<I, S> hypothesisArgument)
 	{
 		Set<TypedArgument<I, S>> ret = new LinkedHashSet<>();
+		String hypothesisArgumentHeadLowerCase = InfoGetFields.getLemma(hypothesisArgument.getArgument().getSemanticHead().getInfo()).toLowerCase();
 		for (TypedArgument<I, S> argument : textStructure.getArguments())
 		{
-			if (argumentsSameHead(hypothesisArgument,argument))
+			boolean add = false;
+			if (STRICT_ARGUMENT_HEAD_MODE)
+			{
+				if (argumentsSameHead(hypothesisArgument,argument))
+				{
+					add = true;
+				}
+			}
+			else // !STRICT_ARGUMENT_HEAD_MODE
+			{
+				if (lemmasLowerCaseOfNodes(argument.getArgument().getNodes()).contains(hypothesisArgumentHeadLowerCase))
+				{
+					add = true;
+				}
+			}
+			if (add)
 			{
 				ret.add(argument);
 			}
@@ -211,13 +239,22 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 		Set<String> hypothesisLemmas = hypothesisLemmasAndNodes.keySet();
 		Set<String> textLemmas = getLemmasOfTree(textTree.getTree()).keySet();
 		missingLemmasInText = setMinus(hypothesisLemmas,textLemmas);
-		missingNodes = new ArrayList<>(missingLemmasInText.size());
+		missingNodes = new ArrayList<S>(missingLemmasInText.size());
 		{
 			for (String lemma : missingLemmasInText)
 			{
 				missingNodes.add(hypothesisLemmasAndNodes.get(lemma));
 			}
 		}
+
+		
+		// TODO REMOVE
+		StringBuilder sb = new StringBuilder();
+		for (String l : missingLemmasInText)
+		{
+			sb.append(l).append(", ");
+		}
+		logger.info("missingLemmasInText = "+sb.toString());
 	}
 	
 	private Map<String,S> getLemmasOfTree(S tree)
@@ -267,6 +304,36 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 		return map;
 	}
 	
+	private Set<String> lemmasLowerCaseOfNodes(Iterable<S> nodes)
+	{
+		Set<String> ret = new LinkedHashSet<>();
+		for (S node : nodes)
+		{
+			ret.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+		}
+		return ret;
+	}
+	
+	private boolean isContentNode(S node)
+	{
+		boolean ret = false;
+		SimplerCanonicalPosTag pos = SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(node.getInfo()));
+		switch (pos)
+		{
+		case NOUN:
+		case VERB:
+		case ADJECTIVE:
+		case ADVERB:
+			ret=true;
+			break;
+		default:
+			ret = false;
+			break;
+		}
+		return ret;
+
+	}
+	
 	private static <T> Set<T> setMinus(Set<T> set, Set<T> toBeRemoved)
 	{
 		Set<T> ret = new LinkedHashSet<>();
@@ -301,5 +368,6 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 	private List<PredicateAndArgumentAndNode<I, S>> lemmaNotInArgument;
 	private List<PredicateAndArgumentAndNode<I, S>> missingLemmaOfArgument;
 	private List<S> missingNodes;
-	
+
+	private static final Logger logger = Logger.getLogger(PastaGapFeaturesCalculator.class);
 }
