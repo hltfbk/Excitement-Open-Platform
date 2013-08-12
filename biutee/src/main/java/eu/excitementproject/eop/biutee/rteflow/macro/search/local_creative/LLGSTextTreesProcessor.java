@@ -109,6 +109,12 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 		numberOfExpandedElements = 0;
 		numberOfGeneratedElements = 0;
 	}
+	
+	@Override
+	protected boolean capableForHybridGapMode()
+	{
+		return true;
+	}
 
 	
 	/*

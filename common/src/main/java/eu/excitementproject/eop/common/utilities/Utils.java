@@ -230,11 +230,13 @@ public class Utils
 	}
 	
 	/**
-	 * return a new Collection with the elements which appear both in a and b 
+	 * return a new Collection with the elements which appear both in a and b.<BR>
+	 * <B>Complexity:</B> for sets - linear, for lists - quadratic.
+	 * 
 	 * @param <T>
 	 * @param collA
 	 * @param collB
-	 * @param target a collection that will be returned by this method. I will be cleared by this method before inserting the required elements. 
+	 * @param target a collection that will be returned by this method. It will be cleared by this method before inserting the required elements. 
 	 * @return a new Collection with the elements which appear both in a and b 
 	 */
 	public static <T> Collection<T> intersect(Collection<T> collA, Collection<T> collB, Collection<T> target)

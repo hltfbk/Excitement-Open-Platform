@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.macro.gap.pastabased;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
@@ -23,6 +25,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanoni
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
 import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
+import eu.excitementproject.eop.common.utilities.Utils;
 
 
 /**
@@ -246,15 +249,6 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 				missingNodes.add(hypothesisLemmasAndNodes.get(lemma));
 			}
 		}
-
-		
-		// TODO REMOVE
-		StringBuilder sb = new StringBuilder();
-		for (String l : missingLemmasInText)
-		{
-			sb.append(l).append(", ");
-		}
-		logger.info("missingLemmasInText = "+sb.toString());
 	}
 	
 	private Map<String,S> getLemmasOfTree(S tree)
@@ -271,38 +265,81 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 		return ret;
 	}
 	
+	private Set<String> extractLemmasOfPredicateLowerCase(PredicateArgumentStructure<I, S> structure)
+	{
+		Set<String> ret = null;
+		String lemma = InfoGetFields.getLemma(structure.getPredicate().getHead().getInfo()).toLowerCase();
+		ImmutableList<String> verbalForms = structure.getPredicate().getVerbsForNominal();
+		if (verbalForms!=null)
+		{
+			ret = new LinkedHashSet<>();
+			ret.add(lemma);
+			for (String verbalForm : verbalForms)
+			{
+				ret.add(verbalForm);
+			}
+		}
+		else
+		{
+			ret = Collections.singleton(lemma);
+		}
+		return ret;
+	}
+	
+	private boolean structuresAreMatch(PredicateArgumentStructure<I, S> hypothesisStructure, PredicateArgumentStructure<I, S> textStructure)
+	{
+		return (Utils.intersect(extractLemmasOfPredicateLowerCase(hypothesisStructure),
+				extractLemmasOfPredicateLowerCase(textStructure),
+				new LinkedHashSet<String>()).size()>0);
+	}
+	
 	private void buildMatchingMap()
 	{
-		matchingPredicates = new SimpleValueSetMap<>();
-				
-		ValueSetMap<String, PredicateArgumentStructure<I, S>> hypothesisPredicateHeads = extractHeadLemmasOfStructures(hypothesisStructures);
-		ValueSetMap<String, PredicateArgumentStructure<I, S>> textPredicateHeads = extractHeadLemmasOfStructures(textStructures);
-		
-		for (String hypothesisHead : hypothesisPredicateHeads.keySet())
+		matchingPredicates = new SimpleValueSetMap<PredicateArgumentStructure<I, S>, PredicateArgumentStructure<I, S>>();
+		for (PredicateArgumentStructure<I, S> hypothesisStructure : hypothesisStructures)
 		{
-			if (textPredicateHeads.containsKey(hypothesisHead))
+			for (PredicateArgumentStructure<I, S> textStructure : textStructures)
 			{
-				for (PredicateArgumentStructure<I, S> hypothesisStructure : hypothesisPredicateHeads.get(hypothesisHead))
+				if (structuresAreMatch(hypothesisStructure,textStructure))
 				{
-					for (PredicateArgumentStructure<I, S> textStructure : textPredicateHeads.get(hypothesisHead))
-					{
-						matchingPredicates.put(hypothesisStructure,textStructure);
-					}
+					matchingPredicates.put(hypothesisStructure, textStructure);
 				}
 			}
 		}
+		
+		
+		
+		
+		
+				
+//		ValueSetMap<String, PredicateArgumentStructure<I, S>> hypothesisPredicateHeads = extractHeadLemmasOfStructures(hypothesisStructures);
+//		ValueSetMap<String, PredicateArgumentStructure<I, S>> textPredicateHeads = extractHeadLemmasOfStructures(textStructures);
+//		
+//		for (String hypothesisHead : hypothesisPredicateHeads.keySet())
+//		{
+//			if (textPredicateHeads.containsKey(hypothesisHead))
+//			{
+//				for (PredicateArgumentStructure<I, S> hypothesisStructure : hypothesisPredicateHeads.get(hypothesisHead))
+//				{
+//					for (PredicateArgumentStructure<I, S> textStructure : textPredicateHeads.get(hypothesisHead))
+//					{
+//						matchingPredicates.put(hypothesisStructure,textStructure);
+//					}
+//				}
+//			}
+//		}
 	}
 	
-	private ValueSetMap<String, PredicateArgumentStructure<I, S>> extractHeadLemmasOfStructures(Set<PredicateArgumentStructure<I, S>> structures)
-	{
-		ValueSetMap<String, PredicateArgumentStructure<I, S>> map = new SimpleValueSetMap<>();
-		for (PredicateArgumentStructure<I, S> structure : structures)
-		{
-			String lemma = InfoGetFields.getLemma(structure.getPredicate().getHead().getInfo());
-			map.put(lemma, structure);
-		}
-		return map;
-	}
+//	private ValueSetMap<String, PredicateArgumentStructure<I, S>> extractHeadLemmasOfStructures(Set<PredicateArgumentStructure<I, S>> structures)
+//	{
+//		ValueSetMap<String, PredicateArgumentStructure<I, S>> map = new SimpleValueSetMap<>();
+//		for (PredicateArgumentStructure<I, S> structure : structures)
+//		{
+//			String lemma = InfoGetFields.getLemma(structure.getPredicate().getHead().getInfo());
+//			map.put(lemma, structure);
+//		}
+//		return map;
+//	}
 	
 	private Set<String> lemmasLowerCaseOfNodes(Iterable<S> nodes)
 	{
@@ -369,5 +406,6 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 	private List<PredicateAndArgumentAndNode<I, S>> missingLemmaOfArgument;
 	private List<S> missingNodes;
 
+	@SuppressWarnings("unused")
 	private static final Logger logger = Logger.getLogger(PastaGapFeaturesCalculator.class);
 }

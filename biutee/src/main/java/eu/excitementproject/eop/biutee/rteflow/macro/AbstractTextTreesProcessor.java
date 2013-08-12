@@ -62,8 +62,7 @@ public abstract class AbstractTextTreesProcessor extends InitializationTextTrees
 	{
 		this.progressFire = percentageFire;
 	}
-
-
+	
 
 	public void process() throws TeEngineMlException, OperationException, ClassifierException, ScriptException, RuleBaseException, TreeAndParentMapException, AnnotatorException
 	{
@@ -78,7 +77,30 @@ public abstract class AbstractTextTreesProcessor extends InitializationTextTrees
 		}
 	}
 	
+	@Override
+	protected void init() throws TeEngineMlException, OperationException, TreeAndParentMapException, AnnotatorException
+	{
+		super.init();
+		if (teSystemEnvironment.getGapToolBox().isHybridMode())
+		{
+			if (!capableForHybridGapMode())
+			{
+				throw new TeEngineMlException("This processor cannot work in hybrid gap mode.\n"
+						+ "Either change the configuration file to use pure transformation mode, or use another processor.");
+			}
+		}
+	}
 
+	
+
+	/**
+	 * This method must be overridden by a processor that is capable of working in hybrid gap mode.
+	 * @return
+	 */
+	protected boolean capableForHybridGapMode()
+	{
+		return false;
+	}
 	
 	/**
 	 * The actual work is done here.
