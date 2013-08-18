@@ -190,7 +190,7 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 	// internals
 	private S lastTree = null;
 	private PastaGapFeaturesCalculator<I, S> calculator = null;
-	
+
 	@SuppressWarnings("unused")
 	private static final Logger logger = Logger.getLogger(PastaBasedGapFeaturesUpdate.class);
 }
