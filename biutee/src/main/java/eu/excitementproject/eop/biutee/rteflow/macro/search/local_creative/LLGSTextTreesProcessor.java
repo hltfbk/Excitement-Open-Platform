@@ -255,6 +255,8 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			// cost and gap of the tree at the beginning of the global iteration.
 			double currentTreeCost = getCost(currentInProcess.getTree().getFeatureVector());
 			double currentTreeGap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentInProcess.getTree().getTree(),currentInProcess.getParentMap()),currentInProcess.getTree().getFeatureVector());
+			if (currentTreeCost<0.0) throw new TeEngineMlException("Wrong cost (cost<0)");
+			if (currentTreeGap<0.0) throw new TeEngineMlException("Wrong gap (gap<0)");
 			
 			previousIterationTree = currentInProcess;
 			// Pick the best tree at the end of the iteration - the element that will survive for the next global iteration.
@@ -304,7 +306,8 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 	 * Remember that {@link #elements} is deleted in each iteration in the "while"
 	 * loop of {@link #processTree(ExtendedNode, String)} (the global loop).
 	 * <BR>
-	 * This method is a recursive method - it is actually the "local loop".
+	 * <B>This method is a recursive method - it is actually the "local loop".</B>
+	 * 
 	 * @param element
 	 * @param globalBaseIteration
 	 * @param maxLocalIteration
