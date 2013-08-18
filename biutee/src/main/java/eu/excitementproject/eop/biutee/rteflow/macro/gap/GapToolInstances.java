@@ -25,7 +25,7 @@ public class GapToolInstances<I, S extends AbstractNode<I, S>>
 {
 	public GapToolInstances(GapFeaturesUpdate<I, S> gapFeaturesUpdate,
 			GapHeuristicMeasure<I, S> gapHeuristicMeasure,
-			GapDescription<I, S> gapDescription)
+			GapDescriptionGenerator<I, S> gapDescription)
 	{
 		super();
 		this.gapFeaturesUpdate = gapFeaturesUpdate;
@@ -43,7 +43,7 @@ public class GapToolInstances<I, S extends AbstractNode<I, S>>
 	{
 		return gapHeuristicMeasure;
 	}
-	public GapDescription<I, S> getGapDescription()
+	public GapDescriptionGenerator<I, S> getGapDescriptionGenerator()
 	{
 		return gapDescription;
 	}
@@ -53,5 +53,5 @@ public class GapToolInstances<I, S extends AbstractNode<I, S>>
 
 	private final GapFeaturesUpdate<I, S> gapFeaturesUpdate;
 	private final GapHeuristicMeasure<I, S> gapHeuristicMeasure;
-	private final GapDescription<I, S> gapDescription;
+	private final GapDescriptionGenerator<I, S> gapDescription;
 }

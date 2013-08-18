@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
@@ -58,17 +59,38 @@ public abstract class AbstractFilterEnabledTextTreesProcessor extends AbstractTe
 				lemmatizer, script, teSystemEnvironment);
 	}
 
+	@Override
 	public TreeAndFeatureVector getBestTree() throws TeEngineMlException
 	{
 		return bestResult.getTree();
 	}
+	@Override
 	public String getBestTreeSentence() throws TeEngineMlException
 	{
 		return bestResult.getSentence();
 	}
+	@Override
 	public TreeHistory getBestTreeHistory() throws TeEngineMlException
 	{
 		return bestResult.getHistory();
+	}
+	@Override
+	public GapDescription getGapDescription() throws TeEngineMlException
+	{
+		if (hybridGapMode)
+		{
+			try
+			{
+				return gapTools.getGapDescriptionGenerator().describeGap(
+						new TreeAndParentMap<ExtendedInfo, ExtendedNode>(getBestTree().getTree())
+						, gapEnvironment);
+			}
+			catch(TreeAndParentMapException e){throw new TeEngineMlException("Failed to describe gap.",e);}
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 

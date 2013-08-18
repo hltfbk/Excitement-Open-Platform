@@ -3,6 +3,7 @@ import java.util.List;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.rteflow.document_sublayer.DocumentInitializer;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
 import eu.excitementproject.eop.biutee.script.ScriptException;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
@@ -49,7 +50,7 @@ public interface TextTreesProcessor
 	public TreeAndFeatureVector getBestTree() throws TeEngineMlException;
 	public String getBestTreeSentence() throws TeEngineMlException;
 	public TreeHistory getBestTreeHistory() throws TeEngineMlException;
-	
+	public GapDescription getGapDescription() throws TeEngineMlException;
 	
 	/**
 	 * This method can be called before calling {@link #process()}, if the

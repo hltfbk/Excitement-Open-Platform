@@ -1697,7 +1697,7 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 			{
 				sb.append("<P>\n").append("Gap description:<BR><PRE>\n");
 				sb.append(
-				gapTools.getGapDescription().describeGap(
+				gapTools.getGapDescriptionGenerator().describeGap(
 						new TreeAndParentMap<ExtendedInfo, ExtendedNode>(treeAndFeatureVector.getTree()), underLyingSystem.getGapEnvironment()));
 				sb.append("</PRE><BR>\n");
 			} catch (TreeAndParentMapException e){throw new VisualTracingToolException("Failed to build parent map.",e);}

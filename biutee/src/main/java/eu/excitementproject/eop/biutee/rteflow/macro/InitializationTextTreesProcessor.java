@@ -315,6 +315,7 @@ public class InitializationTextTreesProcessor
 	{
 		return originalTreesAfterInitialization;
 	}
+	
 
 	protected void cleanUp()
 	{

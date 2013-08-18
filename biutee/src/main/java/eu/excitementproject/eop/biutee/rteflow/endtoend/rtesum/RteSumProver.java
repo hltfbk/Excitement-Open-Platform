@@ -63,7 +63,7 @@ public class RteSumProver extends DefaultProver<RteSumInstance, RteSumProof>
 			processor.setSurroundingsContext(instance.getSurroundingTextTrees());
 			
 			processor.process();
-			RteSumProof proof = new RteSumProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory());
+			RteSumProof proof = new RteSumProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());
 			return proof;
 		}
 		catch (TeEngineMlException | OperationException | ClassifierException | AnnotatorException | ScriptException | RuleBaseException | TreeAndParentMapException e)

@@ -21,6 +21,7 @@ public abstract class DefaultProver<I extends Instance, P extends Proof> extends
 	{
 		this.lemmatizerProvider = lemmatizerProvider;
 	}
+	
 	protected Lemmatizer getLemmatizer() throws BiuteeException
 	{
 		return lemmatizerProvider.get();

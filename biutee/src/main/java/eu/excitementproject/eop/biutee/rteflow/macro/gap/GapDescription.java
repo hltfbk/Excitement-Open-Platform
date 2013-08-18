@@ -1,9 +1,27 @@
 package eu.excitementproject.eop.biutee.rteflow.macro.gap;
 
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import java.io.Serializable;
 
-public interface GapDescription<I, S extends AbstractNode<I, S>>
+/**
+ * 
+ * @author Asher Stern
+ * @since Aug 18, 2013
+ *
+ */
+public class GapDescription implements Serializable
 {
-	public String describeGap(TreeAndParentMap<I, S> tree, GapEnvironment<I, S> environment) throws GapException;
+	private static final long serialVersionUID = -8684455904716609300L;
+
+	public GapDescription(String description)
+	{
+		super();
+		this.description = description;
+	}
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+	protected final String description;
 }

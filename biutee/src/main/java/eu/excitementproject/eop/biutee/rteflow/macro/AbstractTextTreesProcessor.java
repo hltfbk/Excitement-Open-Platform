@@ -4,6 +4,7 @@ import java.util.Map;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
@@ -76,6 +77,20 @@ public abstract class AbstractTextTreesProcessor extends InitializationTextTrees
 			cleanUp();
 		}
 	}
+	
+	@Override
+	public GapDescription getGapDescription() throws TeEngineMlException
+	{
+		if (teSystemEnvironment.getGapToolBox().isHybridMode())
+		{
+			throw new TeEngineMlException("getGapDescription() is not implemented for this processor.");
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
 	
 	@Override
 	protected void init() throws TeEngineMlException, OperationException, TreeAndParentMapException, AnnotatorException

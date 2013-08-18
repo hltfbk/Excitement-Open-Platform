@@ -10,6 +10,7 @@ import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescriptionGenerator;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapFeaturesUpdate;
@@ -34,7 +35,7 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentSt
  * @param <S>
  */
 @NotThreadSafe
-public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<I, S>> implements GapFeaturesUpdate<I, S>, GapHeuristicMeasure<I,S>, GapDescription<I,S>
+public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<I, S>> implements GapFeaturesUpdate<I, S>, GapHeuristicMeasure<I,S>, GapDescriptionGenerator<I,S>
 {
 	public PastaBasedGapFeaturesUpdate(
 			PredicateArgumentStructureBuilderFactory<I, S> builderFactory,
@@ -88,7 +89,7 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 	}
 	
 	@Override
-	public synchronized String describeGap(TreeAndParentMap<I, S> tree, GapEnvironment<I, S> environment) throws GapException
+	public synchronized GapDescription describeGap(TreeAndParentMap<I, S> tree, GapEnvironment<I, S> environment) throws GapException
 	{
 		PastaGapFeaturesCalculator<I, S> theCalculator = createAndGetCalculator(tree);
 		StringBuilder sb = new StringBuilder();
@@ -131,7 +132,7 @@ public class PastaBasedGapFeaturesUpdate<I extends Info, S extends AbstractNode<
 		}
 		sb.append("\n");
 		
-		return sb.toString();
+		return new GapDescription(sb.toString());
 	}
 	
 	private String lemma(S node)

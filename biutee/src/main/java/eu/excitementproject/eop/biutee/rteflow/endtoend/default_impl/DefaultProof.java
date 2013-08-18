@@ -5,6 +5,7 @@ import java.util.Map;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Proof;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
 import eu.excitementproject.eop.biutee.utilities.TreeHistoryUtilities;
 
 /**
@@ -27,18 +28,29 @@ public class DefaultProof extends Proof
 	private static final long serialVersionUID = 9207238880430224481L;
 	
 	public DefaultProof(TreeAndFeatureVector treeAndFeatureVector,
-			String bestSentence, TreeHistory history)
+			String bestSentence, TreeHistory history,
+			GapDescription gapDescription)
 	{
 		super();
 		this.treeAndFeatureVector = treeAndFeatureVector;
 		this.bestSentence = bestSentence;
 		this.history = history;
+		this.gapDescription = gapDescription;
 	}
 
 	@Override
 	public String toString()
 	{
-		return TreeHistoryUtilities.historyToString(history);
+		if (null==gapDescription)
+		{
+			return TreeHistoryUtilities.historyToString(history);
+		}
+		else
+		{
+			return TreeHistoryUtilities.historyToString(history)
+					+"\nGap:\n"
+					+gapDescription.getDescription();	
+		}
 	}
 
 	@Override
@@ -64,6 +76,13 @@ public class DefaultProof extends Proof
 	{
 		return history;
 	}
+	
+	public GapDescription getGapDescription()
+	{
+		return gapDescription;
+	}
+
+
 
 
 
@@ -71,4 +90,5 @@ public class DefaultProof extends Proof
 	private final TreeAndFeatureVector treeAndFeatureVector;
 	private final String bestSentence;
 	private final TreeHistory history;
+	private final GapDescription gapDescription;
 }

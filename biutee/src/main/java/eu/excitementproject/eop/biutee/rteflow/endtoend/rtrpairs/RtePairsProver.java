@@ -51,7 +51,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			
 			TextTreesProcessor processor = createProcessor(instance,script,classifierForSearch);
 			processor.process();
-			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory());
+			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());
 			return proof;
 		}
 		catch (TeEngineMlException | OperationException | ClassifierException | AnnotatorException | ScriptException | RuleBaseException | TreeAndParentMapException e)
