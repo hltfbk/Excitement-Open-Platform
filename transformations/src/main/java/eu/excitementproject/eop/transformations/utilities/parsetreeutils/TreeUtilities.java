@@ -374,9 +374,26 @@ public class TreeUtilities
 			}
 		}
 		return ret;
-		
-		
-		
+	}
+	
+	
+	public static <T, S extends AbstractNode<T,S>> void addItself(S tree, ValueSetMap<S, S> mapOriginalToGenerated)
+	{
+		for (S node : TreeIterator.iterableTree(tree))
+		{
+			mapOriginalToGenerated.put(node, node);
+		}
+	}
+	
+	public static <T, S extends AbstractNode<T,S>> void addThemselves(Iterable<S> trees, S butNot, ValueSetMap<S, S> mapOriginalToGenerated)
+	{
+		for (S tree : trees)
+		{
+			if (tree!=butNot)
+			{
+				addItself(tree,mapOriginalToGenerated);
+			}
+		}
 	}
 	
 //	@Deprecated
