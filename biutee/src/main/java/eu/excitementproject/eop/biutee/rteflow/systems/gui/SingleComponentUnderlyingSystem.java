@@ -26,6 +26,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairDataCollapseToSingleTree;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.RTESumSurroundingSentencesUtility;
 import eu.excitementproject.eop.biutee.script.HypothesisInformation;
@@ -53,6 +54,7 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 /**
  * 
@@ -160,7 +162,14 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 	
 	public void setPair(ExtendedPairData pairData, String taskName) throws TeEngineMlException, OperationException, TreeAndParentMapException, ClassifierException, VisualTracingToolException, AnnotatorException, TreeStringGeneratorException, TreeCoreferenceInformationException, PluginAdministrationException
 	{
-		this.pairData = pairData;
+		if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
+		{
+			this.pairData = new PairDataCollapseToSingleTree(pairData).collapse();
+		}
+		else
+		{
+			this.pairData = pairData;
+		}
 		this.taskName = taskName;
 		this.script.setHypothesisInformation(new HypothesisInformation(this.pairData.getPair().getHypothesis(), this.pairData.getHypothesisTree()));
 		SingleTreeComponent.resetIds();

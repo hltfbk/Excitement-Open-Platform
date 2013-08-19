@@ -29,6 +29,12 @@ public class PairDataCollapseToSingleTree
 
 	public ExtendedPairData collapse()
 	{
+		if (1==originalPairData.getTextTrees().size())
+		{
+			return originalPairData;
+		}
+		logger.info("Collapsing multiple trees into a single tree.");
+		
 		ExtendedNode collapsedTree = collapseTrees(originalPairData.getTextTrees());
 		List<String> allSentences = new LinkedList<>();
 		for (Map.Entry<ExtendedNode, String> entry : originalPairData.getMapTreesToSentences().entrySet())

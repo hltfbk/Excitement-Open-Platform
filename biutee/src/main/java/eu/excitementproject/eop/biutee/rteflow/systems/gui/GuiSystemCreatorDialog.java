@@ -22,6 +22,7 @@ import javax.swing.JTextArea;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.utilities.log4j.GuiAppender;
+import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 /**
  * 
@@ -199,6 +200,10 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 					{
 						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! The GUI support of hybrid gap mode is partial and might be inaccurate.", "Hybrid gap mode", JOptionPane.WARNING_MESSAGE);
 					}
+					if (is(Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE))
+					{
+						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! GUI in COLLAPSE mode is incomplete.\nYou can change the COLLAPSE constant to switch into non-COLLAPSE mode, in which the GUI is fine.", "COLLAPSE mode", JOptionPane.WARNING_MESSAGE);
+					}
 					built = true;
 				}
 				catch(Exception e)
@@ -209,6 +214,13 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 			dispose();
 		}
 	}
+	
+	// to prevent compilation warnings regarding constants
+	private static final boolean is(final boolean b)
+	{
+		return b;
+	}
+	
 	
 
 

@@ -258,21 +258,21 @@ public class PairProcessor
 	 * @return the {@link TextTreesProcessor} which will process the given T-H pair.
 	 * @throws TeEngineMlException
 	 */
-	protected TextTreesProcessor createProcessor() throws TeEngineMlException
+	protected TextTreesProcessor createProcessor(ExtendedPairData _pairData) throws TeEngineMlException
 	{
-		if (pairData.getTextTrees().isEmpty())
+		if (_pairData.getTextTrees().isEmpty())
 			throw new TeEngineMlException("Empty text");
 
 
 		LocalCreativeTextTreesProcessor lcTextTreesProcessor = null;
 		if (!useOldBeam)
 		{
-			lcTextTreesProcessor = new LocalCreativeTextTreesProcessor(pairData.getPair().getText(), pairData.getPair().getHypothesis(), pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, this.teSystemEnvironment);
+			lcTextTreesProcessor = new LocalCreativeTextTreesProcessor(_pairData.getPair().getText(), _pairData.getPair().getHypothesis(), _pairData.getTextTrees(), _pairData.getHypothesisTree(), _pairData.getMapTreesToSentences(), _pairData.getCoreferenceInformation(), classifier, lemmatizer, script, this.teSystemEnvironment);
 		}
 		BeamSearchTextTreesProcessor beamSearchTextTreesProcessor = null;
 		if (useOldBeam)
 		{
-			beamSearchTextTreesProcessor = new BeamSearchTextTreesProcessor(pairData.getPair().getText(), pairData.getPair().getHypothesis(), pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,this.teSystemEnvironment);
+			beamSearchTextTreesProcessor = new BeamSearchTextTreesProcessor(_pairData.getPair().getText(), _pairData.getPair().getHypothesis(), _pairData.getTextTrees(), _pairData.getHypothesisTree(), _pairData.getMapTreesToSentences(), _pairData.getCoreferenceInformation(),classifier, lemmatizer, script,this.teSystemEnvironment);
 		}
 		
 		if (!useOldBeam)
@@ -327,12 +327,12 @@ public class PairProcessor
 		}
 		
 		@Override
-		protected TextTreesProcessor createProcessor(THPairInstance instance,
+		protected TextTreesProcessor createProcessor(ExtendedPairData pairData,
 				OperationsScript<Info, BasicNode> script,
 				LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
 		{
-			TextTreesProcessor processor = PairProcessor.this.createProcessor();
-			processor.setGlobalPairInformation(createGlobalPairInformation(instance.getPairData()));
+			TextTreesProcessor processor = PairProcessor.this.createProcessor(pairData);
+			processor.setGlobalPairInformation(createGlobalPairInformation(pairData));
 			return processor;
 		}
 		

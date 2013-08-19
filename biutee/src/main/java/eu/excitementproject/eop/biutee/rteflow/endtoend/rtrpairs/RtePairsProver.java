@@ -9,6 +9,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairDataCollapseToSingleTree;
 import eu.excitementproject.eop.biutee.script.HypothesisInformation;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
@@ -21,6 +22,7 @@ import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
+import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -50,8 +52,13 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			{
 				script.setHypothesisInformation(hypothesisInformation);
 			}
+			ExtendedPairData pairData = instance.getPairData();
+			if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
+			{
+				pairData = new PairDataCollapseToSingleTree(pairData).collapse();
+			}
 			
-			TextTreesProcessor processor = createProcessor(instance,script,classifierForSearch);
+			TextTreesProcessor processor = createProcessor(pairData,script,classifierForSearch);
 			processor.process();
 			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());
 			return proof;
@@ -63,11 +70,10 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 	}
 	
 	
-	protected TextTreesProcessor createProcessor(THPairInstance instance,
+	protected TextTreesProcessor createProcessor(ExtendedPairData pairData,
 			OperationsScript<Info, BasicNode> script,
 			LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
 	{
-		ExtendedPairData pairData = instance.getPairData();
 		LocalCreativeTextTreesProcessor processor = new LocalCreativeTextTreesProcessor(
 				pairData.getPair().getText(), pairData.getPair().getHypothesis(),
 				pairData.getTextTrees(), pairData.getHypothesisTree(),
