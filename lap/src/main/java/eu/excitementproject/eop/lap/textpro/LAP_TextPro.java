@@ -22,18 +22,42 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.*;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
+/**
+ * LAP using TextPro
+ * 
+ * TextPro must be installed, which means there is an environment variable
+ * that has as value the location of the TextPro installation. The system reads 
+ * this environment variables, and makes the system call to TextPro, and then
+ * uploads the annotation from the text file TextPro produces into the CAS
+ * 
+ * 
+ * @author Vivi Nastase (FBK)
+ *
+ */
 public class LAP_TextPro extends LAP_ImplBase {
 
+	/**
+	 * Command line option that specifies the annotations we want from TextPro 
+	 */
 	protected String CMD = "-y -no_abstract_lemma -c token+tokenstart+sentence+pos+entity+lemma"; 
 	protected String TXP_LANGUAGE = "ita";
 
 	protected TextProHandler txp = null;
 	protected TextProAnnotation txpAnn = null;
 	
+	/**
+	 * Part-of-speech mapping from the TextPro set to the DKPro set
+	 */
 	private String TXPAnnotMapFile = "/TextPro/it-tagger.map";
 			
 	protected HashMap<String,String> AnnotMap = null; 
 	
+	/**
+	 * Constructor
+	 * Default language is Italian
+	 * 
+	 * @throws LAPException
+	 */
 	public LAP_TextPro() throws LAPException {
 
 		super();
@@ -41,7 +65,12 @@ public class LAP_TextPro extends LAP_ImplBase {
 		initializeTXP();
 	}
 	
-
+	/**
+	 * Constructor
+	 * 
+	 * @param language -- sets the language for TextPro (it can process Italian and English)
+	 * @throws LAPException
+	 */
 	public LAP_TextPro(String language) throws LAPException {
 		super();
 		setLanguage(language);

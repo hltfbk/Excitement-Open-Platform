@@ -31,6 +31,7 @@ import eu.excitementproject.eop.lap.biu.postagger.PosTagger;
 import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.test.BiuTreeBuilder;
 
 /***
  * Uses BIU LAP tools to build parse trees of a given text.<BR>
