@@ -8,6 +8,7 @@ import eu.excitementproject.eop.biutee.utilities.Provider;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 
 /**
+ * Extends {@link Prover} with a {@link Provider} of {@link Lemmatizer}.
  * 
  * @author Asher Stern
  * @since Jul 15, 2013

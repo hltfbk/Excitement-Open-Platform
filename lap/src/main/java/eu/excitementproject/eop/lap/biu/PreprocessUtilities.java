@@ -17,9 +17,9 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.match.Matcher;
+import eu.excitementproject.eop.lap.biu.en.parser.AbstractBasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
-import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityMergeServices;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
@@ -134,10 +134,11 @@ public class PreprocessUtilities
 	
 	public static boolean isArtificialRoot(AbstractNode<? extends Info, ?> node)
 	{
+		
 		boolean ret = false;
 		try
 		{
-			if (node.getInfo().getId().equals(AbstractMiniparParser.ROOT_NODE_ID))
+			if (node.getInfo().getId().equals(AbstractBasicParser.ROOT_NODE_ID))
 				if (node.getInfo().getNodeInfo().getWordLemma()==null)
 					ret = true;
 		}
@@ -148,7 +149,7 @@ public class PreprocessUtilities
 	
 	public static BasicNode addArtificialRoot(BasicNode tree)
 	{
-		DefaultInfo rootInfo = new DefaultInfo(AbstractMiniparParser.ROOT_NODE_ID,new DefaultNodeInfo(null,null,0,null,new DefaultSyntacticInfo(null)),new DefaultEdgeInfo(null));
+		DefaultInfo rootInfo = new DefaultInfo(AbstractBasicParser.ROOT_NODE_ID,new DefaultNodeInfo(null,null,0,null,new DefaultSyntacticInfo(null)),new DefaultEdgeInfo(null));
 		BasicNode root = new BasicNode(rootInfo);
 		root.addChild(tree);
 		return root;

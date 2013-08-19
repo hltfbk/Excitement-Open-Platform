@@ -2,6 +2,7 @@ package eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
@@ -23,6 +24,7 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseExcepti
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * Implementation of {@link Prover} for T-H pairs of RTE:1-5.
  * 
  * @author Asher Stern
  * @since Jul 15, 2013

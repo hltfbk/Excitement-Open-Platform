@@ -36,7 +36,7 @@ public class ExceptionUtil
 		{
 			if (throwable.getMessage()!=null)
 			{
-				buffer.append(throwable.getClass().getSimpleName() + ": " + throwable.getMessage()+"\n");
+				buffer.append(throwable.getClass().getSimpleName()).append(": ").append(throwable.getMessage()).append("\n");
 			}
 			throwable = throwable.getCause();
 		}

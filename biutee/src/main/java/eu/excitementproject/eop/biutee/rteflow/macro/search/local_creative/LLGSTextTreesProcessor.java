@@ -195,10 +195,13 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 		if (results.size()!=0) throw new TeEngineMlException("Internal bug in "+LLGSTextTreesProcessor.class.getSimpleName()+". results must not contain any element at the beginning of tree processing.");
 		int debug_resultsSize = results.size();
 		
+		Map<Integer,Double> noTransformationFeatureVector = initialFeatureVector();
+		debug_cost_noTransformations = getCost(noTransformationFeatureVector);
+		
 		TreeInProcess currentInProcess = new TreeInProcess(
-				new TreeAndFeatureVector(tree, initialFeatureVector()),
+				new TreeAndFeatureVector(tree, noTransformationFeatureVector),
 				AbstractNodeUtils.parentMap(tree),sentence,
-				new TreeHistory(TreeHistoryComponent.onlyFeatureVector(initialFeatureVector()))
+				new TreeHistory(TreeHistoryComponent.onlyFeatureVector(noTransformationFeatureVector))
 				);
 		
 		TreeInProcess previousIterationTree = null;
@@ -244,6 +247,8 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			{
 				double cost = getCost(generatedTree.getFeatureVector());
 				double gap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(generatedTree.getTree()),generatedTree.getFeatureVector());
+				verifyCostAndGap(cost,gap);
+
 				LocalCreativeTreeElement generatedElement =
 					new LocalCreativeTreeElement(generatedTree.getTree(), historyMap.get(generatedTree), generatedTree.getFeatureVector(), 1, currentIteration, mapAffectedNodes.get(generatedTree.getTree()),cost,gap);
 				elements.add(generatedElement);
@@ -255,8 +260,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			// cost and gap of the tree at the beginning of the global iteration.
 			double currentTreeCost = getCost(currentInProcess.getTree().getFeatureVector());
 			double currentTreeGap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentInProcess.getTree().getTree(),currentInProcess.getParentMap()),currentInProcess.getTree().getFeatureVector());
-			if (currentTreeCost<0.0) throw new TeEngineMlException("Wrong cost (cost<0)");
-			if (currentTreeGap<0.0) throw new TeEngineMlException("Wrong gap (gap<0)");
+			verifyCostAndGap(currentTreeCost,currentTreeGap);
 			
 			previousIterationTree = currentInProcess;
 			// Pick the best tree at the end of the iteration - the element that will survive for the next global iteration.
@@ -344,6 +348,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			{
 				double cost = getCost(generatedTree.getFeatureVector());
 				double gap = getHeuristicGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(generatedTree.getTree()),generatedTree.getFeatureVector());
+				verifyCostAndGap(cost, gap);
 
 				LocalCreativeTreeElement generatedElement = 
 					new LocalCreativeTreeElement(generatedTree.getTree(), historyMap.get(generatedTree), generatedTree.getFeatureVector(), element.getLocalIteration()+1, globalBaseIteration, mapAffectedNodes.get(generatedTree.getTree()),cost,gap);
@@ -353,7 +358,6 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 				processElement(generatedElement,globalBaseIteration,maxLocalIteration);
 			}
 		}
-
 	}
 	
 	
@@ -404,6 +408,12 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 		return bestElement;
 	}
 	
+	private void verifyCostAndGap(final double cost, final double gap) throws TeEngineMlException
+	{
+		if (cost<debug_cost_noTransformations) throw new TeEngineMlException("Wrong cost: the cost is smaller than cost for no-transformations.");
+		if (gap<0.0) throw new TeEngineMlException("Wrong gap (gap<0)");
+	}
+	
 	
 	
 	protected double getCost(Map<Integer,Double> featureVector) throws ClassifierException
@@ -443,6 +453,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 
 	// internals
 	protected Vector<TextTreesProcessingResult> results; // initializes for each (tree) sentence.
+	private double debug_cost_noTransformations = 0.0; // initializes for each (tree) sentence.
 	protected Set<String> hypothesisLemmasLowerCase; //= TreeUtilities.constructSetLemmasLowerCase(hypothesis);
 	protected Set<LocalCreativeTreeElement> elements; // initializes for each global iteration.
 	

@@ -23,6 +23,13 @@ public class GlobalMessages
 		return instance;
 	}
 	
+	public static void globalWarn(String message, Logger logger)
+	{
+		logger.warn(message);
+		getInstance().warn(message);
+	}
+	
+	
 	public void log(Level level, String message)
 	{
 		if (!maximumAccumulatedLengthExceeded)
