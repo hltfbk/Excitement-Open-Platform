@@ -39,7 +39,7 @@ public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I,
 			builder.build();
 			Set<PredicateArgumentStructure<I, S>> hypothesisStructures = builder.getPredicateArgumentStructures();
 
-			PastaBasedGapFeaturesUpdate<I,S> pastaBasedUpdate = new PastaBasedGapFeaturesUpdate<I,S>(
+			PastaBasedV2GapTools<I,S> pastaBasedUpdate = new PastaBasedV2GapTools<I,S>(
 					builderFactory,hypothesisStructures,hypothesis,classifierForSearch);
 
 			return new GapToolInstances<>(pastaBasedUpdate, pastaBasedUpdate, pastaBasedUpdate);

@@ -14,7 +14,7 @@ import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 /**
  * Measures the gap between the text and the hypothesis parse trees as the
  * number of nodes in the hypothesis tree that are missing in the text parse tree.
- * This measure is set to the feature {@link Feature#GAP_COUNT_MISSING_NODES}.
+ * This measure is set to the feature {@link Feature#GAP_V1_COUNT_MISSING_NODES}.
  * 
  * @deprecated This gap measure is not used. The actual gap measure is
  * PASTA based.
@@ -39,7 +39,7 @@ public class GapFeatureVectorGenerator
 			) throws GapException
 	{
 		LinkedHashMap<Integer, Double> ret = new LinkedHashMap<Integer, Double>();
-		ret.put(Feature.GAP_COUNT_MISSING_NODES.getFeatureIndex(),
+		ret.put(Feature.GAP_V1_COUNT_MISSING_NODES.getFeatureIndex(),
 				(double)(-countMissingNodes(text,hypothesis)));
 		return ret;
 	}

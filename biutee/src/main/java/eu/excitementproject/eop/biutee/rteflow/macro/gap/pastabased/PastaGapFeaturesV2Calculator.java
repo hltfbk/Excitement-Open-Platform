@@ -36,14 +36,14 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * @param <I>
  * @param <S>
  */
-public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I, S>>
+public class PastaGapFeaturesV2Calculator<I extends Info, S extends AbstractNode<I, S>>
 {
 	///////////// PUBLIC /////////////
 	
 	public static final boolean STRICT_ARGUMENT_HEAD_MODE = BiuteeConstants.PASTA_GAP_STRICT_ARGUMENT_HEAD_MODE;
 
 	
-	public PastaGapFeaturesCalculator(TreeAndParentMap<I, S> hypothesisTree,
+	public PastaGapFeaturesV2Calculator(TreeAndParentMap<I, S> hypothesisTree,
 			Set<PredicateArgumentStructure<I, S>> hypothesisStructures,
 			TreeAndParentMap<I, S> textTree,
 			Set<PredicateArgumentStructure<I, S>> textStructures)
@@ -407,5 +407,5 @@ public class PastaGapFeaturesCalculator<I extends Info, S extends AbstractNode<I
 	private List<S> missingNodes;
 
 	@SuppressWarnings("unused")
-	private static final Logger logger = Logger.getLogger(PastaGapFeaturesCalculator.class);
+	private static final Logger logger = Logger.getLogger(PastaGapFeaturesV2Calculator.class);
 }

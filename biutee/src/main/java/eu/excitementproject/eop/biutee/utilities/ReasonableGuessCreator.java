@@ -56,12 +56,12 @@ public class ReasonableGuessCreator
 		priorNegative.put(Feature.SUBSTITUTION_PARSER_ANTECEDENT.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorNegative.put(Feature.SUBSTITUTION_COREFERENCE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		
-		priorNegative.put(Feature.GAP_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-14, standardDeviation));
-		priorNegative.put(Feature.GAP_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
-		priorNegative.put(Feature.GAP_ARGUMENT_HEAD_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
-		priorNegative.put(Feature.GAP_ARGUMENT_NODE_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorNegative.put(Feature.GAP_ARGUMENT_NODE_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-3, standardDeviation));
-		priorNegative.put(Feature.GAP_COUNT_MISSING_NODES.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
+		priorNegative.put(Feature.GAP_V2_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-14, standardDeviation));
+		priorNegative.put(Feature.GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
+		priorNegative.put(Feature.GAP_V2_ARGUMENT_HEAD_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
+		priorNegative.put(Feature.GAP_V2_ARGUMENT_NODE_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
+		priorNegative.put(Feature.GAP_V2_ARGUMENT_NODE_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-3, standardDeviation));
+		priorNegative.put(Feature.GAP_V1_COUNT_MISSING_NODES.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
 		
 
 		Map<Integer, MeanAndStandardDeviation> priorPositive = new LinkedHashMap<Integer, MeanAndStandardDeviation>();
@@ -84,12 +84,12 @@ public class ReasonableGuessCreator
 		priorPositive.put(Feature.SUBSTITUTION_PARSER_ANTECEDENT.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.SUBSTITUTION_COREFERENCE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		
-		priorPositive.put(Feature.GAP_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_ARGUMENT_HEAD_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_ARGUMENT_NODE_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_ARGUMENT_NODE_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_COUNT_MISSING_NODES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V2_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V2_ARGUMENT_HEAD_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V2_ARGUMENT_NODE_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V2_ARGUMENT_NODE_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V1_COUNT_MISSING_NODES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 
 		
 		
