@@ -75,15 +75,21 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	
 	private String stringOfListPaa(String prefix, Iterable<PredicateAndArgument<I, S>> paas)
 	{
-		StringBuilder sb = new StringBuilder();
-		sb.append(prefix).append(": ");
-		for (PredicateAndArgument<I, S> paa : paas)
+		if (paas.iterator().hasNext())
 		{
-			sb.append(paaString(paa)).append(", ");
+			StringBuilder sb = new StringBuilder();
+			sb.append(prefix).append(": ");
+			for (PredicateAndArgument<I, S> paa : paas)
+			{
+				sb.append(paaString(paa)).append(", ");
+			}
+			sb.append("\n");
+			return sb.toString();
 		}
-		sb.append("\n");
-		return sb.toString();
-		
+		else
+		{
+			return "";
+		}
 	}
 	
 	private String paaString(PredicateAndArgument<I, S> paa)

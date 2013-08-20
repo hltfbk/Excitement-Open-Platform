@@ -13,6 +13,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.pasta.Predicate;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
 import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
@@ -44,6 +45,7 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	
 	public void calculate() throws GapException
 	{
+		buildLemmasOfText();
 		buildArgumentMap();
 		calculateLists();
 	}
@@ -83,6 +85,15 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	
 	
 	//////////////////// PRIVATE ////////////////////
+	
+	private void buildLemmasOfText()
+	{
+		lemmasOfText_lowerCase = new LinkedHashSet<>();
+		for (S node : TreeIterator.iterableTree(textTree.getTree()))
+		{
+			lemmasOfText_lowerCase.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+		}
+	}
 	
 	private void buildArgumentMap()
 	{
@@ -134,7 +145,10 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 
 		for (PredicateAndArgument<I, S> hypothesisArgument : hypothesisArguments)
 		{
-			if (!mapArgumentsHypothesisToText.containsKey(hypothesisArgument))
+			//if (!mapArgumentsHypothesisToText.containsKey(hypothesisArgument))
+
+			String hypothesisArgumentLemma_lowerCase = InfoGetFields.getLemma(hypothesisArgument.getArgument().getArgument().getSemanticHead().getInfo()).toLowerCase();
+			if (!lemmasOfText_lowerCase.contains(hypothesisArgumentLemma_lowerCase))
 			{
 				calculatedNoMatch.add(hypothesisArgument);
 			}
@@ -145,16 +159,19 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 				
 				Set<String> hypothesisArgumentContentLemmas_lowerCase = contentLemmasOfArgument_lowerCase(hypothesisArgument.getArgument());
 				
-				for (PredicateAndArgument<I, S> textArgument : mapArgumentsHypothesisToText.get(hypothesisArgument))
+				if (mapArgumentsHypothesisToText.containsKey(hypothesisArgument))
 				{
-					if (!predicateOK) {if (samePredicate(hypothesisArgument, textArgument))
+					for (PredicateAndArgument<I, S> textArgument : mapArgumentsHypothesisToText.get(hypothesisArgument))
 					{
-						predicateOK=true;
-					}}
-					if (!wordsOK) { if(  allLemmasOfArgument_lowerCase(textArgument.getArgument()).containsAll(hypothesisArgumentContentLemmas_lowerCase)  )
-					{
-						wordsOK=true;
-					}}
+						if (!predicateOK) {if (samePredicate(hypothesisArgument, textArgument))
+						{
+							predicateOK=true;
+						}}
+						if (!wordsOK) { if(  allLemmasOfArgument_lowerCase(textArgument.getArgument()).containsAll(hypothesisArgumentContentLemmas_lowerCase)  )
+						{
+							wordsOK=true;
+						}}
+					}
 				}
 				
 				if (predicateOK&&wordsOK) {calculatedMatch.add(hypothesisArgument);}
@@ -226,12 +243,12 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	@SuppressWarnings("unused")
 	private final TreeAndParentMap<I, S> hypothesisTree;
 	private final Set<PredicateArgumentStructure<I, S>> hypothesisStructures;
-	@SuppressWarnings("unused")
 	private final TreeAndParentMap<I, S> textTree;
 	private final Set<PredicateArgumentStructure<I, S>> textStructures;
 	
 	
 	// internals
+	private Set<String> lemmasOfText_lowerCase;
 	private ValueSetMap<PredicateAndArgument<I, S>, PredicateAndArgument<I, S>> mapArgumentsHypothesisToText;
 	private List<PredicateAndArgument<I, S>> hypothesisArguments;
 	private List<PredicateAndArgument<I, S>> textArguments;

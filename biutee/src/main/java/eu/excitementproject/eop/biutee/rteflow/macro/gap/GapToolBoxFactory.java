@@ -15,6 +15,7 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentId
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+
 /**
  * A factory of {@link GapToolBox}.
  * 
