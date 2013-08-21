@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -66,7 +67,7 @@ public class NominalPredicateArgumentStructureIdentifier<I extends Info, S exten
 
 	public void identify() throws PredicateArgumentIdentificationException
 	{
-		String lemma = InfoGetFields.getLemma(predicateHead.getInfo());
+		String lemma = InfoGetFields.getLemma(predicateHead.getInfo()).trim().toLowerCase(Locale.ENGLISH);
 		if (nomlexMap.containsKey(lemma))
 		{
 			this.nominalization = nomlexMap.get(lemma);

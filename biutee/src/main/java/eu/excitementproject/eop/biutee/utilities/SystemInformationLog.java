@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.biutee.utilities;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -100,6 +101,11 @@ public class SystemInformationLog
 			{
 				logger.warn("Failed to print environment variables due to the following exception:",e);
 			}
+		}
+		
+		if (logger.isInfoEnabled())
+		{
+			logger.info("Default locale is: "+Locale.getDefault());
 		}
 
 

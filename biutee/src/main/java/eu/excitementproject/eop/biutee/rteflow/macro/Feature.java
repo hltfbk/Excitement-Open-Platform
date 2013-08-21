@@ -64,10 +64,11 @@ public enum Feature
 	GAP_V2_ARGUMENT_NODE_MISSING(false,true),
 	
 	GAP_V3_MISSING_ARGUMENT(false,true),
+	GAP_V3_MISSING_NAMED_ENTITIES(false,true),
 	GAP_V3_WRONG_PREDICATE_MISSING_WORDS(false,true),
 	GAP_V3_WRONG_PREDICATE(false,true),
-	GAP_V3_MISSING_NAMED_ENTITIES(false,true),
-	GAP_V3_MISSING_WORDS(false,true)
+	GAP_V3_MISSING_WORDS(false,true),
+	GAP_V3_MISSING_WORDS_TOTALLY(false,true)
 	
 	;
 

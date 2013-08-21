@@ -53,11 +53,11 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		
 		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree);
 		
-		updateFeature(ret, Feature.GAP_V3_MISSING_ARGUMENT, theCalculator.getCalculatedNoMatch());
-		updateFeature(ret, Feature.GAP_V3_MISSING_NAMED_ENTITIES, theCalculator.getCalculatedNoMatchNamedEntities());
-		updateFeature(ret, Feature.GAP_V3_WRONG_PREDICATE_MISSING_WORDS, theCalculator.getCalculatedMatchWrongPredicateMissingWords());
-		updateFeature(ret, Feature.GAP_V3_WRONG_PREDICATE, theCalculator.getCalculatedMatchWrongPredicate());
-		updateFeature(ret, Feature.GAP_V3_MISSING_WORDS, theCalculator.getCalculatedMatchMissingWords());
+		updateFeature(ret, Feature.GAP_V3_MISSING_ARGUMENT, theCalculator.getCalculatedNoMatch(),false);
+		updateFeature(ret, Feature.GAP_V3_MISSING_NAMED_ENTITIES, theCalculator.getCalculatedNoMatchNamedEntities(),false);
+		updateFeature(ret, Feature.GAP_V3_WRONG_PREDICATE_MISSING_WORDS, theCalculator.getCalculatedMatchWrongPredicateMissingWords(),true);
+		updateFeature(ret, Feature.GAP_V3_WRONG_PREDICATE, theCalculator.getCalculatedMatchWrongPredicate(),true);
+		updateFeature(ret, Feature.GAP_V3_MISSING_WORDS, theCalculator.getCalculatedMatchMissingWords(),true);
 		
 //		ret.put(Feature.GAP_V3_MISSING_ARGUMENT.getFeatureIndex(), (double)(-theCalculator.getCalculatedNoMatch().size()) );
 //		ret.put(Feature.GAP_V3_WRONG_PREDICATE_MISSING_WORDS.getFeatureIndex(), (double)(-theCalculator.getCalculatedMatchWrongPredicateMissingWords().size()) );
@@ -65,13 +65,38 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 //		ret.put(Feature.GAP_V3_MISSING_NAMED_ENTITIES.getFeatureIndex(), (double)(-theCalculator.getCalculatedNoMatchNamedEntities().size()) );
 //		ret.put(Feature.GAP_V3_MISSING_WORDS.getFeatureIndex(), (double)(-theCalculator.getCalculatedMatchMissingWords().size()) );
 		
+		updateTotallyOmittedValue(ret,theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmas());
+		
 		return ret;
 	}
 	
-	private void updateFeature(Map<Integer, Double> featureVector, Feature feature, List<PredicateAndArgument<I, S>> listMismatch) throws GapException
+
+	
+
+
+	@Override
+	public synchronized GapDescription describeGap(TreeAndParentMap<I, S> tree,
+			GapEnvironment<I, S> environment) throws GapException
+	{
+		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree);
+		StringBuilder sb = new StringBuilder();
+		sb.append(stringOfListPaa("named-entities no match",theCalculator.getCalculatedNoMatchNamedEntities()));
+		sb.append(stringOfListPaa("no match",theCalculator.getCalculatedNoMatch()));
+		sb.append(stringOfListPaa("wrong-predicate & missing-words",theCalculator.getCalculatedMatchWrongPredicateMissingWords()));
+		sb.append(stringOfListPaa("wrong-predicate",theCalculator.getCalculatedMatchWrongPredicate()));
+		sb.append(stringOfListPaa("missing-words",theCalculator.getCalculatedMatchMissingWords()));
+		
+		return new GapDescription(sb.toString());
+	}
+	
+	
+	//////////////// PRIVATE ////////////////
+	
+	
+	private void updateFeature(Map<Integer, Double> featureVector, Feature feature, List<PredicateAndArgument<I, S>> listMismatch, boolean contantValue) throws GapException
 	{
 		double addValue = 0.0;
-		if (BiuteeConstants.USE_MLE_FOR_INSERTION_COST_AND_GAP)
+		if ((!contantValue)&&(BiuteeConstants.USE_MLE_FOR_INSERTION_COST_AND_GAP))
 		{
 			addValue = 0.0;
 			for (PredicateAndArgument<I, S> mismatch : listMismatch)
@@ -96,24 +121,27 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		
 		featureVector.put(feature.getFeatureIndex(), currentValue+addValue);
 	}
-
-	@Override
-	public synchronized GapDescription describeGap(TreeAndParentMap<I, S> tree,
-			GapEnvironment<I, S> environment) throws GapException
+	
+	
+	private void updateTotallyOmittedValue(Map<Integer, Double> featureVector, Set<String> totallyOmittedLemmas) throws GapException
 	{
-		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree);
-		StringBuilder sb = new StringBuilder();
-		sb.append(stringOfListPaa("named-entities no match",theCalculator.getCalculatedNoMatchNamedEntities()));
-		sb.append(stringOfListPaa("no match",theCalculator.getCalculatedNoMatch()));
-		sb.append(stringOfListPaa("wrong-predicate & missing-words",theCalculator.getCalculatedMatchWrongPredicateMissingWords()));
-		sb.append(stringOfListPaa("wrong-predicate",theCalculator.getCalculatedMatchWrongPredicate()));
-		sb.append(stringOfListPaa("missing-words",theCalculator.getCalculatedMatchMissingWords()));
-		
-		return new GapDescription(sb.toString());
+		double totallyOmittedValue = 0.0;
+		for (String omitted : totallyOmittedLemmas)
+		{
+			if (BiuteeConstants.USE_MLE_FOR_INSERTION_COST_AND_GAP)
+			{
+				totallyOmittedValue += Math.log(mleEstimation.getEstimationFor(omitted));
+			}
+			else
+			{
+				totallyOmittedValue += (-1);
+			}
+		}
+		if (totallyOmittedValue>0.0){throw new GapException("Bug: feature-value > 0 for feature "+Feature.GAP_V3_MISSING_WORDS_TOTALLY.name());}
+		Double totallyOmittedOldValueObj = featureVector.get(Feature.GAP_V3_MISSING_WORDS_TOTALLY.getFeatureIndex());
+		double totallyOmittedOldValue = ( (totallyOmittedOldValueObj!=null)?totallyOmittedOldValueObj.doubleValue():0.0 );
+		featureVector.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY.getFeatureIndex(), totallyOmittedOldValue+totallyOmittedValue);
 	}
-	
-	
-	//////////////// PRIVATE ////////////////
 	
 	private String stringOfListPaa(String prefix, Iterable<PredicateAndArgument<I, S>> paas)
 	{
