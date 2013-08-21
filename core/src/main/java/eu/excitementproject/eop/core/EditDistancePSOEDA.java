@@ -3,14 +3,14 @@ package eu.excitementproject.eop.core;
 import java.util.List;
 import java.util.ArrayList;
 
+import eu.fbk.hlt.pso.*;
+
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-
-import eu.fbk.hlt.pso.*;
 
 
 /**
@@ -28,9 +28,8 @@ import eu.fbk.hlt.pso.*;
  * <code>EditDistanceEDA</code> uses <code>FixedWeightEditDistance</code> for calculating edit distance
  * between each pair of T and H. 
  * 
- * @author  Roberto Zanoli
+ * @author Roberto Zanoli
  * 
- * @version 0.2
  */
 public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T> {
 	

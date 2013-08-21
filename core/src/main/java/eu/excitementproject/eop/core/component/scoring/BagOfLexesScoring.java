@@ -31,7 +31,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
  * <code>GermanDistSim</code> and <code>GermaNetWrapper</code> two lexical
  * resources.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since November 2012
  */
 public class BagOfLexesScoring extends BagOfLemmasScoring {
 

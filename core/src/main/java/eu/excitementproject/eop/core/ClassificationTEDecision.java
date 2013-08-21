@@ -10,7 +10,8 @@ import eu.excitementproject.eop.common.TEDecision;
  * It supports two kinds of constructors, with <code>confidence</code> value or
  * without.
  * 
- * @author Rui
+ * @author Rui Wang
+ * @since November 2012
  */
 
 public class ClassificationTEDecision implements TEDecision {

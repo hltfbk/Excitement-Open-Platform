@@ -38,9 +38,8 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * <code>EditDistanceEDA</code> uses <code>FixedWeightEditDistance</code> for calculating edit distance
  * between each pair of T and H. 
  * 
- * @author  Roberto Zanoli
+ * @author Roberto Zanoli
  * 
- * @version 0.1
  */
 public class EditDistanceEDA<T extends TEDecision>
 		implements EDABasic<EditDistanceTEDecision> {
