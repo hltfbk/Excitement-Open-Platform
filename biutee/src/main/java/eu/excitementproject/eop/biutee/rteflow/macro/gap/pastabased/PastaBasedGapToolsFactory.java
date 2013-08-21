@@ -13,6 +13,7 @@ import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStr
 import eu.excitementproject.eop.lap.biu.en.pasta.PredicateArgumentStructureBuilderFactory;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentIdentificationException;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentStructureBuilder;
+import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 
 /**
  * 
@@ -24,11 +25,13 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentSt
  */
 public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I, S>> implements GapToolsFactory<I, S> 
 {
-	public PastaBasedGapToolsFactory(
-			PredicateArgumentStructureBuilderFactory<I, S> builderFactory)
+	public PastaBasedGapToolsFactory(PredicateArgumentStructureBuilderFactory<I, S> builderFactory,
+			UnigramProbabilityEstimation mleEstimation)
 	{
 		super();
 		this.builderFactory = builderFactory;
+		this.mleEstimation = mleEstimation;
+		
 	}
 
 	@Override
@@ -41,7 +44,7 @@ public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I,
 
 			//PastaBasedV2GapTools<I,S> pastaBasedTools = new PastaBasedV2GapTools<I,S>(
 			PastaBasedV3GapTools<I,S> pastaBasedTools = new PastaBasedV3GapTools<I,S>(
-					builderFactory,hypothesisStructures,hypothesis,classifierForSearch);
+					builderFactory,hypothesisStructures,hypothesis,classifierForSearch, mleEstimation);
 
 			return new GapToolInstances<>(pastaBasedTools, pastaBasedTools, pastaBasedTools);
 		}
@@ -53,5 +56,5 @@ public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I,
 	}
 	
 	private final PredicateArgumentStructureBuilderFactory<I, S> builderFactory;
-
+	private final UnigramProbabilityEstimation mleEstimation;
 }

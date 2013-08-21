@@ -396,6 +396,17 @@ public class TreeUtilities
 		}
 	}
 	
+	public static <I extends Info, S extends AbstractNode<I,S>> Set<String> lemmasLowerCaseOfNodes(Iterable<S> nodes)
+	{
+		Set<String> ret = new LinkedHashSet<>();
+		for (S node : nodes)
+		{
+			ret.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+		}
+		return ret;
+	}
+
+	
 //	@Deprecated
 //	public static double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree, OperationsEnvironment operationsEnvironment)
 //	{

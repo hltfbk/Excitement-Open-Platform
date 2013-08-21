@@ -170,7 +170,7 @@ public class SystemInitialization
 		
 		AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria = new DefaultAlignmentCriteria();
 		
-		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria).createGapToolBox();
+		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria,mleEstimation).createGapToolBox();
 		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
 		else{logger.info("System in pure transformations mode.");}
 		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode,gapToolBox);

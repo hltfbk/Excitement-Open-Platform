@@ -269,7 +269,6 @@ public class NominalPredicateArgumentStructureIdentifier<I extends Info, S exten
 			{
 				ArgumentType typeFromRelation = RelationTypes.fromRelation(relation);
 				if( 
-						(ArgumentType.MODIFIER.equals(typeFromRelation))||
 						(ArgumentType.SUBJECT.equals(typeFromRelation))||
 						(ArgumentType.OBJECT.equals(typeFromRelation))
 						)

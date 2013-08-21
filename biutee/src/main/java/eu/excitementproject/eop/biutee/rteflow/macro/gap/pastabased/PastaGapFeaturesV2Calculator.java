@@ -26,6 +26,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTag
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
 import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
 import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
 
 /**
@@ -214,7 +215,7 @@ public class PastaGapFeaturesV2Calculator<I extends Info, S extends AbstractNode
 			}
 			else // !STRICT_ARGUMENT_HEAD_MODE
 			{
-				if (lemmasLowerCaseOfNodes(argument.getArgument().getNodes()).contains(hypothesisArgumentHeadLowerCase))
+				if (TreeUtilities.lemmasLowerCaseOfNodes(argument.getArgument().getNodes()).contains(hypothesisArgumentHeadLowerCase))
 				{
 					add = true;
 				}
@@ -341,15 +342,6 @@ public class PastaGapFeaturesV2Calculator<I extends Info, S extends AbstractNode
 //		return map;
 //	}
 	
-	private Set<String> lemmasLowerCaseOfNodes(Iterable<S> nodes)
-	{
-		Set<String> ret = new LinkedHashSet<>();
-		for (S node : nodes)
-		{
-			ret.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
-		}
-		return ret;
-	}
 	
 	private boolean isContentNode(S node)
 	{

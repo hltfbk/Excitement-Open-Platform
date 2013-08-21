@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -19,6 +20,7 @@ import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStr
 import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.transformations.utilities.InfoObservations;
+import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
 /**
  * 
@@ -52,6 +54,13 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	
 	
 	
+	
+	public List<PredicateAndArgument<I, S>> getCalculatedNoMatchNamedEntities()
+	{
+		return calculatedNoMatchNamedEntities;
+	}
+
+
 	public List<PredicateAndArgument<I, S>> getCalculatedNoMatch()
 	{
 		return calculatedNoMatch;
@@ -115,9 +124,16 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	
 	private boolean argumentsMatch(PredicateAndArgument<I, S> textArgument, PredicateAndArgument<I, S> hypothesisArgument)
 	{
-		String textLemma = InfoGetFields.getLemma(textArgument.getArgument().getArgument().getSemanticHead().getInfo()).toLowerCase();
 		String hypothesisLemma = InfoGetFields.getLemma(hypothesisArgument.getArgument().getArgument().getSemanticHead().getInfo()).toLowerCase();
-		return textLemma.equals(hypothesisLemma);
+		if (BiuteeConstants.PASTA_GAP_STRICT_ARGUMENT_HEAD_MODE)
+		{
+			String textLemma = InfoGetFields.getLemma(textArgument.getArgument().getArgument().getSemanticHead().getInfo()).toLowerCase();
+			return textLemma.equals(hypothesisLemma);
+		}
+		else
+		{
+			return (TreeUtilities.lemmasLowerCaseOfNodes(textArgument.getArgument().getArgument().getNodes()).contains(hypothesisLemma));
+		}
 	}
 	
 	private List<PredicateAndArgument<I, S>> listOfArguments(Set<PredicateArgumentStructure<I, S>> structures)
@@ -137,6 +153,7 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	
 	private void calculateLists()
 	{
+		calculatedNoMatchNamedEntities = new LinkedList<>();
 		calculatedNoMatch = new LinkedList<>();
 		calculatedMatchWrongPredicateMissingWords = new LinkedList<>();
 		calculatedMatchWrongPredicate = new LinkedList<>();
@@ -150,7 +167,15 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 			String hypothesisArgumentLemma_lowerCase = InfoGetFields.getLemma(hypothesisArgument.getArgument().getArgument().getSemanticHead().getInfo()).toLowerCase();
 			if (!lemmasOfText_lowerCase.contains(hypothesisArgumentLemma_lowerCase))
 			{
-				calculatedNoMatch.add(hypothesisArgument);
+				boolean namedEntity = (InfoGetFields.getNamedEntityAnnotation(hypothesisArgument.getArgument().getArgument().getSemanticHead().getInfo())!=null);
+				if (namedEntity)
+				{
+					calculatedNoMatchNamedEntities.add(hypothesisArgument);
+				}
+				else
+				{
+					calculatedNoMatch.add(hypothesisArgument);
+				}
 			}
 			else
 			{
@@ -254,6 +279,7 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private List<PredicateAndArgument<I, S>> textArguments;
 	
 	// output
+	private List<PredicateAndArgument<I, S>> calculatedNoMatchNamedEntities;
 	private List<PredicateAndArgument<I, S>> calculatedNoMatch;
 	private List<PredicateAndArgument<I, S>> calculatedMatchWrongPredicateMissingWords;
 	private List<PredicateAndArgument<I, S>> calculatedMatchWrongPredicate;

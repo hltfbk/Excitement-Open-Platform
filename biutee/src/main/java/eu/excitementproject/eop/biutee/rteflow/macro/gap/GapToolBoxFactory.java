@@ -15,6 +15,7 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentId
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 
 /**
  * A factory of {@link GapToolBox}.
@@ -30,12 +31,14 @@ public class GapToolBoxFactory
 	
 	public GapToolBoxFactory(ConfigurationFile configurationFile,
 			ConfigurationParams configurationParams,
-			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria)
+			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
+			UnigramProbabilityEstimation mleEstimation)
 	{
 		super();
 		this.configurationFile = configurationFile;
 		this.configurationParams = configurationParams;
 		this.alignmentCriteria = alignmentCriteria;
+		this.mleEstimation = mleEstimation;
 	}
 	
 	public GapToolBox<ExtendedInfo, ExtendedNode> createGapToolBox() throws GapException
@@ -94,7 +97,7 @@ public class GapToolBoxFactory
 	private GapToolBox<ExtendedInfo, ExtendedNode> createGapToolBoxForHybridMode() throws GapException
 	{
 		final PredicateArgumentStructureBuilderFactory<ExtendedInfo, ExtendedNode> builderFactory = createPredArgsFactory();
-		final GapToolsFactory<ExtendedInfo, ExtendedNode> gapToolsFactory = new PastaBasedGapToolsFactory<ExtendedInfo, ExtendedNode>(builderFactory);
+		final GapToolsFactory<ExtendedInfo, ExtendedNode> gapToolsFactory = new PastaBasedGapToolsFactory<ExtendedInfo, ExtendedNode>(builderFactory,mleEstimation);
 		
 		return new GapToolBox<ExtendedInfo, ExtendedNode>()
 		{
@@ -213,6 +216,7 @@ public class GapToolBoxFactory
 	private final ConfigurationParams configurationParams;
 	@SuppressWarnings("unused")
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
+	private final UnigramProbabilityEstimation mleEstimation;
 	
 	
 	private static final Logger logger = Logger.getLogger(GapToolBoxFactory.class);
