@@ -2,6 +2,9 @@ package eu.excitementproject.eop.lap.lappoc;
 
 import java.io.InputStream;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.uima.UIMAFramework;
 //import org.apache.uima.collection.CollectionReader;
 import org.apache.uima.jcas.JCas;
@@ -17,7 +20,7 @@ import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import static org.uimafit.factory.AnalysisEngineFactory.*;
-//import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import org.uimafit.component.xwriter.CASDumpWriter;
 import org.uimafit.factory.AggregateBuilder;
 import de.tudarmstadt.ukp.dkpro.core.treetagger.*; 
@@ -36,6 +39,12 @@ public class DKProTest {
 	public static void main(String[] args) throws Exception {
 		System.out.println("Hello, sir.");
 		
+		BasicConfigurator.resetConfiguration(); 
+		BasicConfigurator.configure(); 
+		Logger.getRootLogger().setLevel(Level.TRACE);  // for UIMA (hiding < INFO) 
+		//Logger logger = Logger.getLogger("eu.excitementproject.eop.lap.lappoc"); 
+
+		
 //		CollectionReader cr = createCollectionReader(
 //				TextReader.class, 
 //				TextReader.PARAM_PATH, "src/test/resources",
@@ -43,8 +52,8 @@ public class DKProTest {
 //				TextReader.PARAM_PATTERNS, new String[] {"[+]*.txt"});
 		
 		AnalysisEngineDescription seg = createPrimitiveDescription(BreakIteratorSegmenter.class);
-		//AnalysisEngineDescription tagger = createPrimitiveDescription(OpenNlpPosTagger.class);
-		AnalysisEngineDescription lemma = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
+		AnalysisEngineDescription tagger = createPrimitiveDescription(OpenNlpPosTagger.class);
+		//AnalysisEngineDescription lemma = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
 		//AnalysisEngineDescription parse = createPrimitiveDescription(MSTParser.class); 
 		AnalysisEngineDescription cc = createPrimitiveDescription(
 			         CASDumpWriter.class,
@@ -65,24 +74,25 @@ public class DKProTest {
 		//JCas aJCas = createJCas(typeSystemDescription);
 		
 		JCas tView = aJCas.createView("TextView"); 
-		tView.setDocumentText("Bei der Lufthansa hat das Bodenpersonal mit einem Warnstreik den Flugverkehr nahezu lahmgelegt."); 
-		tView.setDocumentLanguage("DE"); 
+//		tView.setDocumentText("Bei der Lufthansa hat das Bodenpersonal mit einem Warnstreik den Flugverkehr nahezu lahmgelegt."); 
+//		tView.setDocumentLanguage("DE"); 
 //		tView.setDocumentText("When I was young, I wanted to become a sailor."); 		
-//		tView.setDocumentLanguage("EN"); 
-//		aJCas.setDocumentText("When I was young, I wanted to become a sailor."); 
-//		aJCas.setDocumentLanguage("EN"); 
+//		tView.setDocumentLanguage("EN"); 		
+		tView.setDocumentText("Quando ero giovane, volevo diventare un marinaio."); 
+		tView.setDocumentLanguage("IT"); 
 
 		// Using AggregateBuilder to assign views 
 		AggregateBuilder builder = new AggregateBuilder();
 		builder.add(seg, "_InitialView", "TextView");
-		//builder.add(tagger, "_InitialView", "TextView"); 
-		builder.add(lemma, "_InitialView", "TextView");
+		builder.add(tagger, "_InitialView", "TextView"); 
+		//builder.add(lemma, "_InitialView", "TextView");
 		//builder.add(parse, "_InitialView", "TextView");  
 		builder.add(cc); 
 		
 		AnalysisEngine textViewAE = builder.createAggregate(); 
 		textViewAE.process(aJCas); 
 
+		System.exit(0); 
 		// DONE build "large" German MST parser model 
 		// TODO (on 8G sys) pass the argument to MST parser, and make sure it works okay. 
 		// TODO upload it to FBK repository 
@@ -98,7 +108,7 @@ public class DKProTest {
 	
 		AggregateBuilder b = new AggregateBuilder(); 
 		b.add(seg); 
-		b.add(lemma); 
+		//b.add(lemma); 
 		//b.add(parse2); 
 		b.add(cc); 
 
