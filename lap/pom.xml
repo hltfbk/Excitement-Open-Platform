@@ -115,6 +115,22 @@
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-it-maxent</artifactId>
+     		<version>20130823.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-it-maxent</artifactId>
+     		<version>20130823.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-it-maxent</artifactId>
+     		<version>20130823.0</version>
+    	</dependency>
+    	
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
     	</dependency>
 	
