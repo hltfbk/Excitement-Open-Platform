@@ -103,6 +103,8 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
     	</dependency>
+    	
+    	<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent</artifactId>
@@ -110,9 +112,30 @@
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent</artifactId>
+     		<version>20120616.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent</artifactId>
+     		<version>20120616.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-de-maxent</artifactId>
      		<version>20120616.0</version>
     	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-de-maxent</artifactId>
+     		<version>20120616.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-de-maxent</artifactId>
+     		<version>20120616.0</version>
+    	</dependency>
+    	<!--  the following 3 models are Italian models, trained by FBK; they exists only on project repository -->
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-it-maxent</artifactId>
@@ -128,6 +151,7 @@
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-it-maxent</artifactId>
      		<version>20130823.0</version>
     	</dependency>
+    	<!--  end of openNLP models -->
     	
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
