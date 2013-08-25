@@ -152,7 +152,7 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	{
 		if (null==words) return "";
 		if (words.size()==0) return "";
-		return prefix+StringUtil.joinIterableToString(words, ", ");
+		return prefix+StringUtil.joinIterableToString(words, ", ")+"\n";
 	}
 	
 	private String stringOfListPaa(String prefix, Iterable<PredicateAndArgument<I, S>> paas)

@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
@@ -45,6 +47,7 @@ public class RteSumProver extends DefaultProver<RteSumInstance, RteSumProof>
 	{
 		try
 		{
+			if (logger.isInfoEnabled()){logger.info("Processing "+instance.getCandidateIdentifier().toString());}
 			HypothesisInformation hypothesisInformation = instance.getHypothesisInformation();
 			if (!hypothesisInformation.equals(script.getHypothesisInformation()))
 			{
@@ -73,4 +76,6 @@ public class RteSumProver extends DefaultProver<RteSumInstance, RteSumProof>
 	}
 
 	private final TESystemEnvironment teSystemEnvironment;
+	
+	private static final Logger logger = Logger.getLogger(RteSumProver.class);
 }

@@ -100,7 +100,7 @@ public abstract class AbstractFilterEnabledTextTreesProcessor extends AbstractTe
 			ScriptException, RuleBaseException
 	{
 		
-		logger.info("Processing T-H pair...");
+		logger.debug("Processing T-H pair...");
 		
 		List<TreeAndIndex> treesToProcess = filterTreesByGap(originalTextTrees);
 		numberOfTreesToBeProcessed = treesToProcess.size();
@@ -111,7 +111,7 @@ public abstract class AbstractFilterEnabledTextTreesProcessor extends AbstractTe
 		ArrayList<TextTreesProcessingResult> results = new ArrayList<TextTreesProcessingResult>(treesToProcess.size());
 		for (TreeAndIndex tree : treesToProcess)
 		{
-			logger.info("Processing sentence #"+tree.getIndex());
+			if (logger.isDebugEnabled()){logger.debug("Processing sentence #"+tree.getIndex());}
 			//processTree(tree.getTree(),originalMapTreesToSentences.get(tree.getTree()));
 			results.add(processSingleTree(tree));
 		}
@@ -124,7 +124,7 @@ public abstract class AbstractFilterEnabledTextTreesProcessor extends AbstractTe
 					"\nHistory = \n"+
 					TreeHistoryUtilities.historyToString(bestResult.getHistory()));
 		}
-		logger.info("Processing T-H pair done.");
+		logger.debug("Processing T-H pair done.");
 	}
 	
 	protected abstract void prepareComputation() throws TeEngineMlException;

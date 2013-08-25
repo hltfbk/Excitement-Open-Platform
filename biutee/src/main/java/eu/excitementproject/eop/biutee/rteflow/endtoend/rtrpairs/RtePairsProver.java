@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
@@ -47,6 +49,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			{
 		try
 		{
+			if (logger.isInfoEnabled()){logger.info("Processing pair #"+instance.getPairData().getPair().getId());}
 			HypothesisInformation hypothesisInformation = instance.getHypothesisInformation();
 			if (!hypothesisInformation.equals(script.getHypothesisInformation()))
 			{
@@ -101,5 +104,6 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 
 
 	private final TESystemEnvironment teSystemEnvironment;
-
+	
+	private static final Logger logger = Logger.getLogger(RtePairsProver.class);
 }
