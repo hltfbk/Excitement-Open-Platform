@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.macro;
 
-import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.USE_MLE_FOR_INSERTION_COST_AND_GAP;
+import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.USE_MLE_FOR_INSERTION_COST;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -204,7 +204,7 @@ public class FeatureUpdate
 				String lemmaToInsert = InfoGetFields.getLemma(insertSpec.getHypothesisNodeToInsert().getInfo());
 				double featureValue = -1.0;
 
-				if (USE_MLE_FOR_INSERTION_COST_AND_GAP)
+				if (USE_MLE_FOR_INSERTION_COST)
 				{
 					List<String> wordsInLemma = StringUtil.stringToWords(lemmaToInsert);
 					double logEstimation = 0.0;
@@ -536,7 +536,7 @@ public class FeatureUpdate
 		else
 		{
 			double featureValue = -1.0;
-			if (USE_MLE_FOR_INSERTION_COST_AND_GAP)
+			if (USE_MLE_FOR_INSERTION_COST)
 			{
 				double logEstimationAllWords = 0;
 				for (String hypothesisWord : addedHypothesisWord)

@@ -63,13 +63,52 @@ public enum Feature
 	GAP_V2_ARGUMENT_NODE_NOT_CONNECTED(false,true),
 	GAP_V2_ARGUMENT_NODE_MISSING(false,true),
 	
+	/**
+	 * Arguments in the hypothesis that have no matching argument in the text.
+	 */
 	GAP_V3_MISSING_ARGUMENT(false,true),
-	GAP_V3_MISSING_NAMED_ENTITIES(false,true),
-	GAP_V3_WRONG_PREDICATE_MISSING_WORDS(false,true),
-	GAP_V3_WRONG_PREDICATE(false,true),
-	GAP_V3_MISSING_WORDS(false,true),
-	GAP_V3_MISSING_WORDS_TOTALLY(false,true)
 	
+	/**
+	 * Like GAP_V3_MISSING_ARGUMENT, but the argument is a named-entity.
+	 */
+	GAP_V3_MISSING_NAMED_ENTITIES(false,true),
+	
+	/**
+	 * Hypothesis arguments which have corresponding arguments in the text, but:
+	 * <UL>
+	 * <LI>the text's corresponding arguments are connected to other predicates than
+	 * the corresponding predicates in the hypothesis</LI>
+	 * <LI>the hypothesis arguments have some content words that do not
+	 * exist in the text arguments</LI>
+	 * </UL>
+	 * 
+	 */
+	GAP_V3_WRONG_PREDICATE_MISSING_WORDS(false,true),
+
+	/**
+	 * Hypothesis arguments which have corresponding arguments in the text, but
+	 * the text's corresponding arguments are connected to other predicates than
+	 * the corresponding predicates in the hypothesis.
+	 */
+	GAP_V3_WRONG_PREDICATE(false,true),
+	
+	/**
+	 * Hypothesis arguments which have corresponding arguments in the text, but
+	 * the hypothesis arguments have some content words that do not
+	 * exist in the text arguments.
+	 */
+	GAP_V3_MISSING_WORDS(false,true),
+	
+	/**
+	 * Content words in the hypothesis, which are not predicates, and do not exist in the text at all
+	 */
+	GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES(false,true),
+
+	/**
+	 * Content words in the hypothesis, which are also predicates, and do not exist in the text at all
+	 */
+	GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES(false,true)
+
 	;
 
 	//////////////////// PUBLIC METHODS AND PRIVATE CONSTRUCTORS //////////////////////////

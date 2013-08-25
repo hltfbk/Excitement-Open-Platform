@@ -52,7 +52,11 @@ public class BiuteeConstants
 	 * for an inserted-on-the-fly node. If false - than a constant value is
 	 * used, regardless whether the inserted word is common or rare.
 	 */
-	public static final boolean USE_MLE_FOR_INSERTION_COST_AND_GAP = true;
+	public static final boolean USE_MLE_FOR_INSERTION_COST = true;
+	
+	public static final boolean USE_MLE_FOR_GAP = true;
+	
+	public static final boolean USE_MLE_FOR_ARGUMENTS_GAP = false;
 
 	// if <=0 it means all.
 	public static final int FILTER_ENABELED_NUMBER_OF_TREES_TO_PROCESS = -1;

@@ -12,6 +12,7 @@ import eu.excitementproject.eop.biutee.version.Version;
 import eu.excitementproject.eop.common.utilities.ConstantsSummary;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.transformations.utilities.Constants;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.Constants.Workarounds;
 
 /**
@@ -107,6 +108,10 @@ public class SystemInformationLog
 		{
 			logger.info("Default locale is: "+Locale.getDefault());
 		}
+		try{ if (!(Locale.ENGLISH.getLanguage().equals(Locale.getDefault().getLanguage())))
+		{
+			GlobalMessages.globalWarn("Default locale is not English.", logger);
+		}} catch(Exception e){GlobalMessages.globalWarn("Could not find out default locale.", logger);}
 
 
 		// Print the contents of the configuration file

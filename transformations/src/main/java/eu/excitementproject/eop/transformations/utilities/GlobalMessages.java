@@ -6,6 +6,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 
 /**
  * 
@@ -96,6 +97,7 @@ public class GlobalMessages
 			if (message.getLevel().isGreaterOrEqual(level))
 			{
 				ret = true;
+				break;
 			}
 		}
 		return ret;
@@ -109,9 +111,12 @@ public class GlobalMessages
 	public String getMessages(Level level)
 	{
 		StringBuilder sb = new StringBuilder();
+		sb.append("\n");
 		LinkedHashSet<Message> theMessages = new LinkedHashSet<Message>();
 		theMessages.addAll(messages);
-		sb.append("Global messages of level ").append(level.toString()).append(" and above:\n");
+		final String header = "Global messages of level "+level.toString()+ " and above:";
+		final String headerStars = StringUtil.generateStringOfCharacter('*', 8);
+		sb.append(headerStars).append(header).append(headerStars).append("\n");
 		for (Message message : theMessages)
 		{
 			if (level.isGreaterOrEqual(message.getLevel()))
@@ -120,6 +125,7 @@ public class GlobalMessages
 				sb.append(message.getMessage()).append("\n");
 			}
 		}
+		sb.append(StringUtil.generateStringOfCharacter('*', headerStars.length()*2+header.length())).append("\n");
 		return sb.toString();
 	}
 	

@@ -15,6 +15,7 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.ExperimentManager;
 
 /**
  * This class is given a dataset of T-H pairs, and classifies each pair as
@@ -77,6 +78,7 @@ public class Tester<I extends Instance, P extends Proof>
 		try(ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(file)))
 		{
 			stream.writeObject(results.getResultsAsLabeledSamples());
+			ExperimentManager.getInstance().register(file);
 		}
 		catch(IOException e)
 		{

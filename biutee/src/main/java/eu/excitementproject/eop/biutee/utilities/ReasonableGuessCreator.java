@@ -72,7 +72,8 @@ public class ReasonableGuessCreator
 		priorNegative.put(Feature.GAP_V3_WRONG_PREDICATE_MISSING_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
 		priorNegative.put(Feature.GAP_V3_WRONG_PREDICATE.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
 		priorNegative.put(Feature.GAP_V3_MISSING_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
-		priorNegative.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
+		priorNegative.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
+		priorNegative.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
 		
 		priorNegative.put(Feature.GAP_V2_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-14, standardDeviation));
 		priorNegative.put(Feature.GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
@@ -112,7 +113,8 @@ public class ReasonableGuessCreator
 		priorPositive.put(Feature.GAP_V3_WRONG_PREDICATE_MISSING_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.GAP_V3_WRONG_PREDICATE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.GAP_V3_MISSING_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 
 		priorPositive.put(Feature.GAP_V2_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));

@@ -90,18 +90,29 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	{
 		return calculatedMatch;
 	}
-	
-	public Set<String> getCalculatedTotallyOmittedHypothesisContentLemmas()
+
+	public Set<String> getCalculatedTotallyOmittedHypothesisContentLemmasNonPredicates()
 	{
-		return calculatedTotallyOmittedHypothesisContentLemmas;
+		return calculatedTotallyOmittedHypothesisContentLemmasNonPredicates;
 	}
+
+
+	public Set<String> getCalculatedTotallyOmittedHypothesisContentLemmasPredicates()
+	{
+		return calculatedTotallyOmittedHypothesisContentLemmasPredicates;
+	}
+	
 
 	
 	//////////////////// PRIVATE ////////////////////
 
+
+
 	private void buildContentLemmasOfHypothesis()
 	{
-		contentLemmasOfHypothesis_lowerCase = contentLemmasOfNodes_lowerCase(TreeIterator.iterableTree(hypothesisTree.getTree()));
+		Set<S> hypothesisPredicateNodes = getPredicateNodes(hypothesisStructures);
+		contentLemmasOfHypothesisNonPredicates_lowerCase = contentLemmasOfNodes_lowerCase(TreeIterator.iterableTree(hypothesisTree.getTree()),hypothesisPredicateNodes);
+		contentLemmasOfHypothesisPredicates_lowerCase = contentLemmasOfNodes_lowerCase(hypothesisPredicateNodes);
 	}
 	
 	private void buildLemmasOfText()
@@ -215,14 +226,24 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 			}
 		}
 		
-		calculatedTotallyOmittedHypothesisContentLemmas = new LinkedHashSet<>();
-		for (String contentLemma : contentLemmasOfHypothesis_lowerCase)
+//		private Set<String> calculatedTotallyOmittedHypothesisContentLemmasNonPredicates;
+//		private Set<String> calculatedTotallyOmittedHypothesisContentLemmasPredicates;
+
+		calculatedTotallyOmittedHypothesisContentLemmasNonPredicates = notIncludedInText(contentLemmasOfHypothesisNonPredicates_lowerCase);
+		calculatedTotallyOmittedHypothesisContentLemmasPredicates = notIncludedInText(contentLemmasOfHypothesisPredicates_lowerCase);
+	}
+	
+	private Set<String> notIncludedInText(Set<String> _hypothesisLemmas_lowerCase)
+	{
+		Set<String> ret = new LinkedHashSet<>();
+		for (String contentLemma : _hypothesisLemmas_lowerCase)
 		{
 			if (!lemmasOfText_lowerCase.contains(contentLemma))
 			{
-				calculatedTotallyOmittedHypothesisContentLemmas.add(contentLemma);
+				ret.add(contentLemma);
 			}
 		}
+		return ret;
 	}
 	
 	
@@ -263,16 +284,61 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 
 	private Set<String> contentLemmasOfNodes_lowerCase(Iterable<S> nodes)
 	{
+		return contentLemmasOfNodes_lowerCase(nodes,null);
+	}
+
+	private Set<String> contentLemmasOfNodes_lowerCase(Iterable<S> nodes, Set<S> exclude)
+	{
 		Set<String> ret = new LinkedHashSet<>();
 		for (S node : nodes)
 		{
-			if (InfoObservations.infoIsContentWord(node.getInfo()))
+			if (!setContains(exclude,node))
 			{
-				ret.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+				if (InfoObservations.infoIsContentWord(node.getInfo()))
+				{
+					ret.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+				}
 			}
 		}
 		return ret;
 	}
+	
+	private static final <T> boolean setContains(Set<T> set, T t)
+	{
+		if (null==set) return false;
+		else return (set.contains(t));
+	}
+	
+	
+	private Set<S> getPredicateNodes(Set<PredicateArgumentStructure<I, S>> structures)
+	{
+		Set<S> ret = new LinkedHashSet<>();
+		for (PredicateArgumentStructure<I, S> structure : structures)
+		{
+			ret.addAll(structure.getPredicate().getNodes());
+		}
+		return ret;
+	}
+	
+
+	
+	
+//	private void fillContentWordSets(Iterable<S> nodes, Set<String> lemmas, Set<CanonicalLemmaAndPos> lemmaAndPoses) throws TeEngineMlException
+//	{
+//		if (lemmas!=null){lemmas.clear();}
+//		if (lemmaAndPoses!=null){lemmaAndPoses.clear();}
+//		for (S node : nodes)
+//		{
+//			if (InfoObservations.infoIsContentWord(node.getInfo()))
+//			{
+//				if (lemmas!=null){lemmas.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());}
+//				if (lemmaAndPoses!=null){lemmaAndPoses.add(
+//						new CanonicalLemmaAndPos( InfoGetFields.getLemma(node.getInfo()).toLowerCase(),InfoGetFields.getPartOfSpeechObject(node.getInfo()) )
+//						);}
+//			}
+//		}
+//
+//	}
 
 	
 	private Set<String> allLemmasOfArgument_lowerCase(TypedArgument<I, S> argument)
@@ -296,7 +362,8 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	
 	
 	// internals
-	private Set<String> contentLemmasOfHypothesis_lowerCase;
+	private Set<String> contentLemmasOfHypothesisNonPredicates_lowerCase;
+	private Set<String> contentLemmasOfHypothesisPredicates_lowerCase;
 	private Set<String> lemmasOfText_lowerCase;
 	private ValueSetMap<PredicateAndArgument<I, S>, PredicateAndArgument<I, S>> mapArgumentsHypothesisToText;
 	private List<PredicateAndArgument<I, S>> hypothesisArguments;
@@ -309,5 +376,6 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private List<PredicateAndArgument<I, S>> calculatedMatchWrongPredicate;
 	private List<PredicateAndArgument<I, S>> calculatedMatchMissingWords;
 	private List<PredicateAndArgument<I, S>> calculatedMatch;
-	private Set<String> calculatedTotallyOmittedHypothesisContentLemmas;
+	private Set<String> calculatedTotallyOmittedHypothesisContentLemmasNonPredicates;
+	private Set<String> calculatedTotallyOmittedHypothesisContentLemmasPredicates;
 }

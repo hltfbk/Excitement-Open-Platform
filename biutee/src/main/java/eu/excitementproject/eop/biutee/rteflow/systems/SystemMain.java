@@ -43,11 +43,11 @@ public abstract class SystemMain
 
 			Date startDate = new Date();
 			run(args);
-			GlobalMessages.getInstance().addToLogAndExperimentManager(logger);
 			Date endDate = new Date();
 			long elapsedSeconds = (endDate.getTime()-startDate.getTime())/1000;
 			logger.info(cls.getSimpleName()+" done. Time elapsed: "+elapsedSeconds/60+" minutes and "+elapsedSeconds%60+" seconds.");
 			
+			GlobalMessages.getInstance().addToLogAndExperimentManager(logger);
 			boolean experimentManagedSucceeded = ExperimentManager.getInstance().save();
 			logger.info("ExperimentManager save "+(experimentManagedSucceeded?"succeeded":"failed")+".");
 		}
