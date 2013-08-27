@@ -38,7 +38,7 @@ public class BagOfWordsScoringTest {
 	@Test
 	public void test() throws LexicalResourceException {
 		testDE();
-		// testEN();
+//		 testEN();
 	}
 
 	public void testDE() throws LexicalResourceException {
@@ -158,14 +158,14 @@ public class BagOfWordsScoringTest {
 	}
 
 	public void testEN() throws LexicalResourceException {
-		File wnPath = new File("./target/WordNet/dict/");
+		File wnPath = new File("./src/main/resources/ontologies/EnglishWordNet-dict/");
 		if (!wnPath.exists()) {
 			logger.warning("WARNING: English WordNet is not found. Please install it properly, and pass its location correctly to the component.");
 		}
 		Assume.assumeTrue(wnPath.exists());
 
 		File voPath = new File(
-				"./target/VerbOcean/verbocean.unrefined.2004-05-20.txt");
+				"./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt");
 		if (!voPath.exists()) {
 			logger.warning("WARNING: VerbOcean is not found. Please install it properly, and pass its location correctly to the component.");
 		}
@@ -198,7 +198,8 @@ public class BagOfWordsScoringTest {
 
 		BagOfLexesScoringEN bolexs = null;
 		try {
-			bolexs = new BagOfLexesScoringEN(config);
+//			bolexs = new BagOfLexesScoringEN(config);
+			bolexs = new BagOfLexesScoringEN(true, new String[]{"HYPERNYM", "SYNONYM", "PART_HOLONYM"}, true, false, false, "./src/main/resources/ontologies/EnglishWordNet-dict/", true, new String[]{"StrongerThan", "CanResultIn", "Similar"}, true, "./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt");
 		} catch (ConfigurationException e) {
 			logger.warning(e.getMessage());
 		}

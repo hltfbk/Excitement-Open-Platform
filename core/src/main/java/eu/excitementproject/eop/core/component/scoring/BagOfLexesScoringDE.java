@@ -56,6 +56,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 
 	/**
 	 * the constructor using parameters
+	 * 
 	 * @param isDS whether to use <code>GermanDistSim</code>
 	 * @param isGN whether to use <code>GermaNetWrapper</code>
 	 * @param germaNetRelations the array of GermaNet relations

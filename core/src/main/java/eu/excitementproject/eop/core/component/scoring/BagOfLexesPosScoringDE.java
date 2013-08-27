@@ -54,6 +54,19 @@ public class BagOfLexesPosScoringDE extends BagOfLexesScoringDE {
 	
 	protected DerivBaseResource dbr = null;
 
+	/**
+	 * the constructor using parameters
+	 * 
+	 * @param isDS whether to use <code>GermanDistSim</code>
+	 * @param isGN whether to use <code>GermaNetWrapper</code>
+	 * @param germaNetRelations the array of GermaNet relations
+	 * @param germaNetFilePath the file path to GermaNet
+	 * @param isDB whether to use <code>DerivBaseResource</code>
+	 * @param useScores cf. <code>DerivBaseResource</code>
+	 * @param derivSteps cf. <code>DerivBaseResource</code>
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
 	public BagOfLexesPosScoringDE(boolean isDS, boolean isGN, String[] germaNetRelations, String germaNetFilePath, boolean isDB, boolean useScores, Integer derivSteps) throws ConfigurationException, LexicalResourceException{
 		super(isDS, isGN, germaNetRelations, germaNetFilePath, isDB);
 		numOfFeats = super.getNumOfFeats();
