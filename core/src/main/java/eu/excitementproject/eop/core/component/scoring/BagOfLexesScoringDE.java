@@ -26,7 +26,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 
 /**
- * The <code>BagOfLexesScoring</code> class extends
+ * The <code>BagOfLexesScoringDE</code> class extends
  * <code>BagOfLemmasScoring</code>. It supports (currently)
  * <code>GermanDistSim</code> and <code>GermaNetWrapper</code> two lexical
  * resources.
@@ -34,9 +34,9 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
  * @author Rui Wang
  * @since November 2012
  */
-public class BagOfLexesScoring extends BagOfLemmasScoring {
+public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 
-	static Logger logger = Logger.getLogger(BagOfLexesScoring.class.getName());
+	static Logger logger = Logger.getLogger(BagOfLexesScoringDE.class.getName());
 
 	/**
 	 * the number of features
@@ -55,6 +55,62 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	protected GermaNetWrapper gnw = null;
 
 	/**
+	 * the constructor using parameters
+	 * 
+	 * @param isDS whether to use <code>GermanDistSim</code>
+	 * @param isGN whether to use <code>GermaNetWrapper</code>
+	 * @param germaNetRelations the array of GermaNet relations
+	 * @param germaNetFilePath the file path to GermaNet
+	 * @param isDB whether to use <code>DerivBaseResource</code>
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
+	public BagOfLexesScoringDE(boolean isDS, boolean isGN, String[] germaNetRelations, String germaNetFilePath, boolean isDB) throws ConfigurationException, LexicalResourceException{
+		for (int i = 0; i < moduleFlags.length; i++) {
+			moduleFlags[i] = false;
+		}
+		
+		if (!isDS && !isGN && !isDB) {
+			throw new ConfigurationException(
+					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoringDE component");
+		}
+		
+		// initialize GermanDistSim
+		if (isDS) {
+			try {
+				gds = new GermanDistSim();
+				numOfFeats++;
+				moduleFlags[0] = true;
+			} catch (GermanDistSimNotInstalledException e) {
+				logger.warning("WARNING: GermanDistSim files are not found. Please install them properly, and pass its location correctly to the component.");
+				throw new LexicalResourceException(e.getMessage());
+			} catch (BaseException e) {
+				throw new LexicalResourceException(e.getMessage());
+			}
+			logger.info("Load GermanDistSim done.");
+		}
+
+		// initialize GermaNet
+		if (isGN) {
+			if (null == germaNetRelations || 0 == germaNetRelations.length) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the GermaNet");
+			}
+			try {
+				gnw = new GermaNetWrapper(germaNetFilePath);
+				numOfFeats++;
+				moduleFlags[1] = true;
+			} catch (GermaNetNotInstalledException e) {
+				logger.warning("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
+				throw new LexicalResourceException(e.getMessage());
+			} catch (BaseException e) {
+				throw new LexicalResourceException(e.getMessage());
+			}
+			logger.info("Load GermaNet done.");
+		}
+	}
+	
+	/**
 	 * the constructor using the configuration
 	 * 
 	 * @param config
@@ -62,7 +118,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
-	public BagOfLexesScoring(CommonConfig config)
+	public BagOfLexesScoringDE(CommonConfig config)
 			throws ConfigurationException, LexicalResourceException {
 		for (int i = 0; i < moduleFlags.length; i++) {
 			moduleFlags[i] = false;
@@ -70,13 +126,14 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 
 		NameValueTable comp = config.getSection("BagOfLexesScoring");
 
-		// initialize GermanDistSim
 		if (null == comp.getString("GermanDistSim")
 				&& null == comp.getString("GermaNetWrapper")
 				&& null == comp.getString("DerivBaseResource")) {
 			throw new ConfigurationException(
 					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
 		}
+		
+		// initialize GermanDistSim
 		if (null != comp.getString("GermanDistSim")) {
 			try {
 				gds = new GermanDistSim(config);
@@ -112,7 +169,7 @@ public class BagOfLexesScoring extends BagOfLemmasScoring {
 			logger.info("Load GermaNet done.");
 		}
 	}
-
+	
 	@Override
 	public String getComponentName() {
 		return "BagOfLexesScoring";
