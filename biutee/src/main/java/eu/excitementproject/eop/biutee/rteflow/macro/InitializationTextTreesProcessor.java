@@ -241,9 +241,9 @@ public class InitializationTextTreesProcessor
 		this.hypothesisLemmasOnly = new ImmutableSetWrapper<String>(extractOnlyLemmas(this.hypothesisLemmas));
 		this.hypothesisLemmasLowerCase = TreeUtilities.constructSetLemmasLowerCase(hypothesis);
 		
-		logger.info("creating hypothesis templates for DIRT-like resources...");
+		logger.debug("creating hypothesis templates for DIRT-like resources...");
 		hypothesisTemplates = getHypothesisTemplates();
-		logger.info("creating hypothesis templates for DIRT-like resources done.");
+		logger.debug("creating hypothesis templates for DIRT-like resources done.");
 		
 		
 		// Initialize this finder with the hypothesis
@@ -255,9 +255,9 @@ public class InitializationTextTreesProcessor
 		// SEE THE COMMENT OF THE FUNCTION createMapLexicalMultiWord()
 		if (HANDLE_LEXICAL_MULTI_WORD)
 		{
-			logger.info("creating mapRuleBasesForLexicalMultiWord...");
+			logger.debug("creating mapRuleBasesForLexicalMultiWord...");
 			createMapLexicalMultiWord();
-			logger.info("creating mapRuleBasesForLexicalMultiWord - done.");
+			logger.debug("creating mapRuleBasesForLexicalMultiWord - done.");
 		}
 		else
 		{

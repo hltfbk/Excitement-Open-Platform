@@ -151,12 +151,8 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	@Override
 	public void setHypothesisInformation(HypothesisInformation hypothesisInformation) throws TeEngineMlException 
 	{
-		// !!!!! NOTE !!!!!
-		// If you are working on RTE-Sum (RTE 6,7) and it looks like that this method is called too many times,
-		// then consider changing the value of Constants.USE_OLD_CONCURRENCY_IN_RTE_SUM to true.
-
 		super.setHypothesisInformation(hypothesisInformation);	// this.hypothesisInformation = hypothesisInformation;
-		logger.info("DefaultOperationScript.setHypothesisInformation()...");
+		if (logger.isDebugEnabled()){logger.debug(CLASS_NAME+".setHypothesisInformation()...");} 
 		if (graphBasedLexicalChainRuleBase != null)
 		{
 			// Creates a set of "LemmaAndPos" of all hypothesis tree's nodes
@@ -185,17 +181,13 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 				}
 				simpleLexicalChainRuleBase.setRules(createdRules, this);
 			}
-			catch (LexicalResourceException e)
-			{
-				throw new TeEngineMlException("Failed to create chain of lexical rules",e);
-			}
-			catch (RuleBaseException e)
+			catch (LexicalResourceException | RuleBaseException e)
 			{
 				throw new TeEngineMlException("Failed to create chain of lexical rules",e);
 			}
 		}
 
-		logger.info("DefaultOperationScript.setHypothesisInformation() DONE");
+		if (logger.isDebugEnabled()){logger.debug(CLASS_NAME+".setHypothesisInformation() DONE");}
 	}
 	
 	
@@ -381,5 +373,6 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	protected BuilderSetOfWords simpleLexicalChainBuilder = null;
 	protected SimpleLexicalChainRuleBase simpleLexicalChainRuleBase = null;
 
+	private static final String CLASS_NAME = OperationsScriptForBuiltinKnowledge.class.getSimpleName();
 	private static final Logger logger = Logger.getLogger(OperationsScriptForBuiltinKnowledge.class);
 }

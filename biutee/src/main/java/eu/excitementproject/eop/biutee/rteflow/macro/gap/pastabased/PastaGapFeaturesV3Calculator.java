@@ -10,6 +10,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
@@ -121,6 +122,18 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		for (S node : TreeIterator.iterableTree(textTree.getTree()))
 		{
 			lemmasOfText_lowerCase.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+		}
+		
+		for (PredicateArgumentStructure<I, S> textStructure : textStructures)
+		{
+			ImmutableList<String> verbalForms = textStructure.getPredicate().getVerbsForNominal();
+			if (verbalForms!=null)
+			{
+				for (String verbal : verbalForms)
+				{
+					lemmasOfText_lowerCase.add(verbal);
+				}
+			}
 		}
 	}
 	
@@ -315,7 +328,8 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		Set<S> ret = new LinkedHashSet<>();
 		for (PredicateArgumentStructure<I, S> structure : structures)
 		{
-			ret.addAll(structure.getPredicate().getNodes());
+			ret.add(structure.getPredicate().getHead());
+			//ret.addAll(structure.getPredicate().getNodes()); - wrong. "not sell" makes "not" as a predicate node.
 		}
 		return ret;
 	}

@@ -33,7 +33,7 @@ public class PairDataCollapseToSingleTree
 		{
 			return originalPairData;
 		}
-		logger.info("Collapsing multiple trees into a single tree.");
+		logger.debug("Collapsing multiple trees into a single tree.");
 		
 		ExtendedNode collapsedTree = collapseTrees(originalPairData.getTextTrees());
 		List<String> allSentences = new LinkedList<>();
@@ -41,7 +41,7 @@ public class PairDataCollapseToSingleTree
 		{
 			allSentences.add(entry.getValue());
 		}
-		String allSentencesString = StringUtil.joinIterableToString(allSentences, " ");
+		String allSentencesString = StringUtil.joinIterableToString(allSentences, " ", true);
 
 		return new ExtendedPairData(
 				originalPairData.getPair(),
