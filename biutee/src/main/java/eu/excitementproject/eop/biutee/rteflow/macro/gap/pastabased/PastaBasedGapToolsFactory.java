@@ -6,6 +6,7 @@ import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolsFactory;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
@@ -26,11 +27,12 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
 public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I, S>> implements GapToolsFactory<I, S> 
 {
 	public PastaBasedGapToolsFactory(PredicateArgumentStructureBuilderFactory<I, S> builderFactory,
-			UnigramProbabilityEstimation mleEstimation)
+			UnigramProbabilityEstimation mleEstimation, ImmutableSet<String> stopWords)
 	{
 		super();
 		this.builderFactory = builderFactory;
 		this.mleEstimation = mleEstimation;
+		this.stopWords = stopWords;
 		
 	}
 
@@ -44,7 +46,7 @@ public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I,
 
 			//PastaBasedV2GapTools<I,S> pastaBasedTools = new PastaBasedV2GapTools<I,S>(
 			PastaBasedV3GapTools<I,S> pastaBasedTools = new PastaBasedV3GapTools<I,S>(
-					builderFactory,hypothesisStructures,hypothesis,classifierForSearch, mleEstimation);
+					builderFactory,hypothesisStructures,hypothesis,classifierForSearch, mleEstimation, stopWords);
 
 			return new GapToolInstances<>(pastaBasedTools, pastaBasedTools, pastaBasedTools);
 		}
@@ -57,4 +59,5 @@ public class PastaBasedGapToolsFactory<I extends Info, S extends AbstractNode<I,
 	
 	private final PredicateArgumentStructureBuilderFactory<I, S> builderFactory;
 	private final UnigramProbabilityEstimation mleEstimation;
+	private final ImmutableSet<String> stopWords;
 }

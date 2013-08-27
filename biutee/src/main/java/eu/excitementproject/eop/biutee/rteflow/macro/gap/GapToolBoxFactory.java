@@ -5,6 +5,7 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.pastabased.PastaBasedGapToolsFactory;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -32,13 +33,15 @@ public class GapToolBoxFactory
 	public GapToolBoxFactory(ConfigurationFile configurationFile,
 			ConfigurationParams configurationParams,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
-			UnigramProbabilityEstimation mleEstimation)
+			UnigramProbabilityEstimation mleEstimation,
+			ImmutableSet<String> stopWords)
 	{
 		super();
 		this.configurationFile = configurationFile;
 		this.configurationParams = configurationParams;
 		this.alignmentCriteria = alignmentCriteria;
 		this.mleEstimation = mleEstimation;
+		this.stopWords = stopWords;
 	}
 	
 	public GapToolBox<ExtendedInfo, ExtendedNode> createGapToolBox() throws GapException
@@ -97,7 +100,7 @@ public class GapToolBoxFactory
 	private GapToolBox<ExtendedInfo, ExtendedNode> createGapToolBoxForHybridMode() throws GapException
 	{
 		final PredicateArgumentStructureBuilderFactory<ExtendedInfo, ExtendedNode> builderFactory = createPredArgsFactory();
-		final GapToolsFactory<ExtendedInfo, ExtendedNode> gapToolsFactory = new PastaBasedGapToolsFactory<ExtendedInfo, ExtendedNode>(builderFactory,mleEstimation);
+		final GapToolsFactory<ExtendedInfo, ExtendedNode> gapToolsFactory = new PastaBasedGapToolsFactory<ExtendedInfo, ExtendedNode>(builderFactory,mleEstimation,stopWords);
 		
 		return new GapToolBox<ExtendedInfo, ExtendedNode>()
 		{
@@ -217,6 +220,7 @@ public class GapToolBoxFactory
 	@SuppressWarnings("unused")
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final UnigramProbabilityEstimation mleEstimation;
+	private final ImmutableSet<String> stopWords;
 	
 	
 	private static final Logger logger = Logger.getLogger(GapToolBoxFactory.class);

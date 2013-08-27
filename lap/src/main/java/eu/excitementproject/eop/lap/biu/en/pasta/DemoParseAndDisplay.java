@@ -76,6 +76,7 @@ public class DemoParseAndDisplay
 		nomlexBuilder.build();
 		
 		System.out.println();
+		System.out.println("Type \"exit\" to exit.");
 		System.out.println("Ready.");
 		
 		BasicParser parser = new EasyFirstParser(host,port,posTaggerFileName);

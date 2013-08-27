@@ -12,6 +12,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
@@ -37,10 +38,12 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 			Set<PredicateArgumentStructure<I, S>> hypothesisStructures,
 			TreeAndParentMap<I, S> hypothesisTree,
 			LinearClassifier classifierForSearch,
-			UnigramProbabilityEstimation mleEstimation)
+			UnigramProbabilityEstimation mleEstimation,
+			ImmutableSet<String> stopWords)
 	{
 		super(builderFactory, hypothesisStructures, hypothesisTree, classifierForSearch);
 		this.mleEstimation = mleEstimation;
+		this.stopWords = stopWords;
 	}
 
 	
@@ -95,8 +98,15 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	}
 	
 	
-	//////////////// PRIVATE ////////////////
+	//////////////// PROTECTED & PRIVATE ////////////////
 	
+	protected PastaGapFeaturesV3Calculator<I,S> constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures) throws GapException
+	{
+		PastaGapFeaturesV3Calculator<I,S> ret = new PastaGapFeaturesV3Calculator<I,S>(hypothesisTree,hypothesisStructures,tree,textStructures, stopWords);
+		ret.calculate();
+		return ret;
+	}
+
 	
 	private void updateFeature(Map<Integer, Double> featureVector, Feature feature, List<PredicateAndArgument<I, S>> listMismatch, boolean contantValue) throws GapException
 	{
@@ -192,12 +202,7 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	}
 	
 
-	protected PastaGapFeaturesV3Calculator<I,S> constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures) throws GapException
-	{
-		PastaGapFeaturesV3Calculator<I,S> ret = new PastaGapFeaturesV3Calculator<I,S>(hypothesisTree,hypothesisStructures,tree,textStructures);
-		ret.calculate();
-		return ret;
-	}
 
 	protected final UnigramProbabilityEstimation mleEstimation;
+	private final ImmutableSet<String> stopWords;
 }

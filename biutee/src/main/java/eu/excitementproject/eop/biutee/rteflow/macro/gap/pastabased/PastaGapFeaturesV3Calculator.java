@@ -11,6 +11,7 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
@@ -36,13 +37,15 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	public PastaGapFeaturesV3Calculator(TreeAndParentMap<I, S> hypothesisTree,
 			Set<PredicateArgumentStructure<I, S>> hypothesisStructures,
 			TreeAndParentMap<I, S> textTree,
-			Set<PredicateArgumentStructure<I, S>> textStructures)
+			Set<PredicateArgumentStructure<I, S>> textStructures,
+			ImmutableSet<String> stopWords)
 	{
 		super();
 		this.hypothesisTree = hypothesisTree;
 		this.hypothesisStructures = hypothesisStructures;
 		this.textTree = textTree;
 		this.textStructures = textStructures;
+		this.stopWords = stopWords;
 	}
 	
 	
@@ -309,7 +312,11 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 			{
 				if (InfoObservations.infoIsContentWord(node.getInfo()))
 				{
-					ret.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+					String lemma = InfoGetFields.getLemma(node.getInfo()).toLowerCase();
+					if (!(stopWords.contains(lemma)))
+					{
+						ret.add(lemma);
+					}
 				}
 			}
 		}
@@ -373,6 +380,7 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private final Set<PredicateArgumentStructure<I, S>> hypothesisStructures;
 	private final TreeAndParentMap<I, S> textTree;
 	private final Set<PredicateArgumentStructure<I, S>> textStructures;
+	private final ImmutableSet<String> stopWords;
 	
 	
 	// internals
