@@ -76,7 +76,17 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	}
 	
 
-	
+	@Override
+	public Map<Integer, Double> updateForFinalGap(TreeAndParentMap<I, S> tree,
+			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment) throws GapException
+	{
+		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree);
+		Map<Integer, Double> ret = updateForGap(tree,featureVector,environment);
+		double mismatchTruthValue_featureValue = (double)(-theCalculator.getCalculatedMismatchTruthValueForPredicates().size());
+		ret.put(Feature.GAP_V3_PREDICATE_TRUTH_VALUE_MISMATCH.getFeatureIndex(),mismatchTruthValue_featureValue);
+		return ret;
+	}
+
 
 
 	@Override
@@ -93,6 +103,11 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		
 		sb.append(totallyOmittedString("Totally omitted lemmas (non-predicates): ",theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasNonPredicates()));
 		sb.append(totallyOmittedString("Totally omitted lemmas (predicates): ",theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasPredicates()));
+		
+		if(theCalculator.getCalculatedMismatchTruthValueForPredicates().size()>0)
+		{
+			sb.append("Truth-value mismatch predicates: ").append(listOfPredicates(theCalculator.getCalculatedMismatchTruthValueForPredicates()));
+		}
 		
 		return new GapDescription(sb.toString());
 	}
@@ -189,6 +204,20 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		return InfoGetFields.getLemma(paa.getArgument().getArgument().getSemanticHead().getInfo())+
 				"/["+
 				InfoGetFields.getLemma(paa.getPredicate().getPredicate().getHead().getInfo())+"]";
+	}
+	
+	private String listOfPredicates(List<PredicateArgumentStructure<I, S>> predicates)
+	{
+		StringBuilder sb = new StringBuilder();
+		boolean firstIteration = true;
+		for (PredicateArgumentStructure<I, S> predicate : predicates)
+		{
+			if (firstIteration){firstIteration=false;}
+			else {sb.append(", ");}
+			sb.append(InfoGetFields.getLemma(predicate.getPredicate().getHead().getInfo()));
+		}
+		sb.append("\n");
+		return sb.toString();
 	}
 	
 	/**

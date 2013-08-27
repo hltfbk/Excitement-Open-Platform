@@ -107,7 +107,9 @@ public enum Feature
 	/**
 	 * Content words in the hypothesis, which are also predicates, and do not exist in the text at all
 	 */
-	GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES(false,true)
+	GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES(false,true),
+	
+	GAP_V3_PREDICATE_TRUTH_VALUE_MISMATCH(false,true)
 
 	;
 

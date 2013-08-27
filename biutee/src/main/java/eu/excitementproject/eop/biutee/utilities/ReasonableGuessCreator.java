@@ -9,7 +9,6 @@ import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
-import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
 import eu.excitementproject.eop.transformations.utilities.MeanAndStandardDeviation;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -74,6 +73,7 @@ public class ReasonableGuessCreator
 		priorNegative.put(Feature.GAP_V3_MISSING_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
 		priorNegative.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
 		priorNegative.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
+		priorNegative.put(Feature.GAP_V3_PREDICATE_TRUTH_VALUE_MISMATCH.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
 		
 		priorNegative.put(Feature.GAP_V2_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-14, standardDeviation));
 		priorNegative.put(Feature.GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
@@ -115,7 +115,8 @@ public class ReasonableGuessCreator
 		priorPositive.put(Feature.GAP_V3_MISSING_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-
+		priorPositive.put(Feature.GAP_V3_PREDICATE_TRUTH_VALUE_MISMATCH.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		
 		priorPositive.put(Feature.GAP_V2_MISSING_PREDICATES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		priorPositive.put(Feature.GAP_V2_ARGUMENT_HEAD_MISSING.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
@@ -157,7 +158,7 @@ public class ReasonableGuessCreator
 		
 		if (logger.isInfoEnabled())
 		{
-			logger.info(RTESystemsUtils.class.getSimpleName()+": Reasonable-guess classifier description:\n"+classifier.descriptionOfTraining());
+			logger.info("Reasonable-guess classifier description:\n"+classifier.descriptionOfTraining());
 		}
 	}
 	

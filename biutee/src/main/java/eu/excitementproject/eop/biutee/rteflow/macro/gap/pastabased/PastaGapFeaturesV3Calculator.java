@@ -21,7 +21,9 @@ import eu.excitementproject.eop.common.representation.pasta.Predicate;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
 import eu.excitementproject.eop.common.representation.pasta.TypedArgument;
 import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.InfoObservations;
+import eu.excitementproject.eop.transformations.utilities.parsetreeutils.AdvancedEqualities;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
 /**
@@ -54,6 +56,7 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		buildContentLemmasOfHypothesis();
 		buildLemmasOfText();
 		buildArgumentMap();
+		buildMapPredicatesHypothesisToText();
 		calculateLists();
 	}
 	
@@ -106,10 +109,13 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		return calculatedTotallyOmittedHypothesisContentLemmasPredicates;
 	}
 	
+	public List<PredicateArgumentStructure<I, S>> getCalculatedMismatchTruthValueForPredicates()
+	{
+		return calculatedMismatchTruthValueForPredicates;
+	}
 
 	
 	//////////////////// PRIVATE ////////////////////
-
 
 
 	private void buildContentLemmasOfHypothesis()
@@ -185,6 +191,21 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		return ret;
 	}
 	
+	private void buildMapPredicatesHypothesisToText()
+	{
+		mapPredicatesHypothesisToText = new SimpleValueSetMap<>();
+		for (PredicateArgumentStructure<I, S> hypothesisStructure : hypothesisStructures)
+		{
+			for(PredicateArgumentStructure<I, S> textStructure : textStructures)
+			{
+				if (samePredicate(hypothesisStructure.getPredicate(), textStructure.getPredicate()))
+				{
+					mapPredicatesHypothesisToText.put(hypothesisStructure,textStructure);
+				}
+			}
+		}
+	}
+	
 	
 	
 	private void calculateLists()
@@ -247,6 +268,40 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 
 		calculatedTotallyOmittedHypothesisContentLemmasNonPredicates = notIncludedInText(contentLemmasOfHypothesisNonPredicates_lowerCase);
 		calculatedTotallyOmittedHypothesisContentLemmasPredicates = notIncludedInText(contentLemmasOfHypothesisPredicates_lowerCase);
+		
+		calculateTruthValueMisMatch();
+	}
+	
+	private void calculateTruthValueMisMatch()
+	{
+		calculatedMismatchTruthValueForPredicates = new LinkedList<PredicateArgumentStructure<I, S>>();
+		for (PredicateArgumentStructure<I, S> hypothesisPredicate : mapPredicatesHypothesisToText.keySet())
+		{
+			if (mapPredicatesHypothesisToText.get(hypothesisPredicate).size()>0)
+			{
+				boolean matchFound = false;
+				for (PredicateArgumentStructure<I, S> textPredicate : mapPredicatesHypothesisToText.get(hypothesisPredicate))
+				{
+					if (predicateTruthValueMatch(hypothesisPredicate,textPredicate))
+					{
+						matchFound=true;
+					}
+				}
+				if (!matchFound)
+				{
+					calculatedMismatchTruthValueForPredicates.add(hypothesisPredicate);
+				}
+			}
+		}
+	}
+	
+	private boolean predicateTruthValueMatch(PredicateArgumentStructure<I, S> hypothesisPredicate, PredicateArgumentStructure<I, S> textPredicate)
+	{
+		// TODO get rid of this RTTI
+		
+		ExtendedNode textNode = (ExtendedNode) textPredicate.getPredicate().getHead();
+		ExtendedNode hypothesisNode = (ExtendedNode) hypothesisPredicate.getPredicate().getHead();
+		return AdvancedEqualities.nodesAnnotationMatch(textNode.getInfo(),hypothesisNode.getInfo());
 	}
 	
 	private Set<String> notIncludedInText(Set<String> _hypothesisLemmas_lowerCase)
@@ -266,9 +321,14 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	
 	private boolean samePredicate(PredicateAndArgument<I, S> hypothesisArgument, PredicateAndArgument<I, S> textArgument)
 	{
+		return samePredicate(hypothesisArgument.getPredicate().getPredicate(),textArgument.getPredicate().getPredicate());
+	}
+	
+	private boolean samePredicate(Predicate<I, S> hypothesisPredicate, Predicate<I, S> textPredicate)
+	{
 		return (Utils.intersect(
-				predicateLemmasLowerCase(hypothesisArgument.getPredicate().getPredicate()), 
-				predicateLemmasLowerCase(textArgument.getPredicate().getPredicate()),
+				predicateLemmasLowerCase(hypothesisPredicate), 
+				predicateLemmasLowerCase(textPredicate),
 				new LinkedHashSet<String>()
 				).size()>0);
 	}
@@ -390,6 +450,7 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private ValueSetMap<PredicateAndArgument<I, S>, PredicateAndArgument<I, S>> mapArgumentsHypothesisToText;
 	private List<PredicateAndArgument<I, S>> hypothesisArguments;
 	private List<PredicateAndArgument<I, S>> textArguments;
+	private ValueSetMap<PredicateArgumentStructure<I, S>, PredicateArgumentStructure<I, S>> mapPredicatesHypothesisToText;
 	
 	// output
 	private List<PredicateAndArgument<I, S>> calculatedNoMatchNamedEntities;
@@ -400,4 +461,5 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private List<PredicateAndArgument<I, S>> calculatedMatch;
 	private Set<String> calculatedTotallyOmittedHypothesisContentLemmasNonPredicates;
 	private Set<String> calculatedTotallyOmittedHypothesisContentLemmasPredicates;
+	private List<PredicateArgumentStructure<I, S>> calculatedMismatchTruthValueForPredicates;
 }

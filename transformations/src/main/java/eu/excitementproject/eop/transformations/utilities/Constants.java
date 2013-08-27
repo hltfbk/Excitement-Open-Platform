@@ -27,7 +27,7 @@ public class Constants
 	 * either of them.<BR>
 	 * If {@link #REQUIRE_PREDICATE_TRUTH_EQUALITY} is <tt>false</tt>, then this constant has no effect.
 	 */
-	public static final boolean REQUIRE_PREDICATE_TRUTH_MATCH_FOR_UNKNOWN = true;
+	public static final boolean REQUIRE_PREDICATE_TRUTH_MATCH_FOR_UNKNOWN = false;
 	
 	public static final boolean TRACE_ORIGINAL_NODES = false;
 
