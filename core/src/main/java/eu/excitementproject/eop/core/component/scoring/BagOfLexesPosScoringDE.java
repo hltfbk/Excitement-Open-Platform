@@ -36,9 +36,9 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
  * @author Rui Wang
  * @since January 2013
  */
-public class BagOfLexesPosScoring extends BagOfLexesScoring {
+public class BagOfLexesPosScoringDE extends BagOfLexesScoringDE {
 	
-	static Logger logger = Logger.getLogger(BagOfLexesPosScoring.class.getName());
+	static Logger logger = Logger.getLogger(BagOfLexesPosScoringDE.class.getName());
 	
 	/**
 	 * the number of features
@@ -54,6 +54,30 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 	
 	protected DerivBaseResource dbr = null;
 
+	public BagOfLexesPosScoringDE(boolean isDS, boolean isGN, String[] germaNetRelations, String germaNetFilePath, boolean isDB, boolean useScores, Integer derivSteps) throws ConfigurationException, LexicalResourceException{
+		super(isDS, isGN, germaNetRelations, germaNetFilePath, isDB);
+		numOfFeats = super.getNumOfFeats();
+		
+		for (int i = 0; i < moduleFlags.length; i++) {
+			moduleFlags[i] = false;
+		}
+		
+		// initialize DerivBaseResource
+		if (isDB) {
+			try {
+				dbr = new DerivBaseResource(useScores, derivSteps);
+				numOfFeats++;
+				moduleFlags[0] = true;
+			} catch (DerivBaseNotInstalledException e) {
+				logger.warning("WARNING: DErivBase file was not found in the given path.");
+				throw new LexicalResourceException(e.getMessage());
+			} catch (BaseException e) {
+				throw new LexicalResourceException(e.getMessage());
+			}
+			logger.info("Load DerivBaseResource done.");
+		}
+	}
+	
 	/**
 	 * the constructor
 	 * 
@@ -62,7 +86,7 @@ public class BagOfLexesPosScoring extends BagOfLexesScoring {
 	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
-	public BagOfLexesPosScoring(CommonConfig config)
+	public BagOfLexesPosScoringDE(CommonConfig config)
 			throws ConfigurationException, LexicalResourceException {
 		super(config);
 		numOfFeats = super.getNumOfFeats();
