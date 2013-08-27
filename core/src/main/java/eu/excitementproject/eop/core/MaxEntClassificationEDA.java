@@ -36,8 +36,8 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoring;
-import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoring;
+import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoringDE;
+import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringDE;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
 import eu.excitementproject.eop.lap.LAPException;
@@ -272,13 +272,13 @@ public class MaxEntClassificationEDA implements
 		try {
 			ScoringComponent comp3 = null;
 			if (withPOS) {
-				comp3 = new BagOfLexesPosScoring(config);
+				comp3 = new BagOfLexesPosScoringDE(config);
 			} else {
-				comp3 = new BagOfLexesScoring(config);
+				comp3 = new BagOfLexesScoringDE(config);
 			}
 			// check the number of features. if it's 0, no instantiation of the
 			// component.
-			if (((BagOfLexesScoring) comp3).getNumOfFeats() > 0) {
+			if (((BagOfLexesScoringDE) comp3).getNumOfFeats() > 0) {
 				components.add(comp3);
 			}
 		} catch (LexicalResourceException e) {
