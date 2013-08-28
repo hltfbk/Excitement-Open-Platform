@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.util.eval;
 
 import java.io.BufferedReader;
 import java.io.File;
