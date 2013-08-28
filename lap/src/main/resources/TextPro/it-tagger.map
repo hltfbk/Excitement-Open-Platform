@@ -28,7 +28,7 @@ AN=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ
 # 4.	B	Adverb
 B=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADV
 
-# 4.	C	Conjunction
+# 5.	C	Conjunction
 C=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CONJ
 
 # 6.	CADV	Adverbial connective
@@ -128,3 +128,17 @@ YA=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O
 
 # 46.	YF	Foreign term
 YF=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O
+
+# 47.	VF+E	Verb, main, inf. +clitic
+VF+E=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V
+# 48.	VFY+E	Verb, aux., inf. +clitic
+VFY+E=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V
+# 49.	VG+E	Verb, main, gerund. +clitic
+VG+E=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V
+# 50.	VM+E	Verb, main, imperative. +clitic
+VM+E=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V
+# 51.	VPP+E	Verb, main, past part., singular. +clitic
+VPP+E=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V
+# 52.	VSP+E	Verb, main, past part., singular. +clitic
+VSP+E=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V
+
