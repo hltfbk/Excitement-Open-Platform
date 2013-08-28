@@ -109,9 +109,9 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		return calculatedTotallyOmittedHypothesisContentLemmasPredicates;
 	}
 	
-	public List<PredicateArgumentStructure<I, S>> getCalculatedMismatchTruthValueForPredicates()
+	public List<FlaggedPredicateArgumentStructure<I, S>> getCalculatedPredicatesNoMatch()
 	{
-		return calculatedMismatchTruthValueForPredicates;
+		return calculatedPredicatesNoMatch;
 	}
 
 	
@@ -200,7 +200,12 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 			{
 				if (samePredicate(hypothesisStructure.getPredicate(), textStructure.getPredicate()))
 				{
-					mapPredicatesHypothesisToText.put(hypothesisStructure,textStructure);
+					mapPredicatesHypothesisToText.put(
+							hypothesisStructure,
+							new FlaggedPredicateArgumentStructure<>(
+									predicateTruthValueMatch(hypothesisStructure,textStructure),
+									textStructure)
+							);
 				}
 			}
 		}
@@ -269,27 +274,32 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		calculatedTotallyOmittedHypothesisContentLemmasNonPredicates = notIncludedInText(contentLemmasOfHypothesisNonPredicates_lowerCase);
 		calculatedTotallyOmittedHypothesisContentLemmasPredicates = notIncludedInText(contentLemmasOfHypothesisPredicates_lowerCase);
 		
-		calculateTruthValueMisMatch();
+		calculatePredicateNoMatch();
 	}
 	
-	private void calculateTruthValueMisMatch()
+	private void calculatePredicateNoMatch()
 	{
-		calculatedMismatchTruthValueForPredicates = new LinkedList<PredicateArgumentStructure<I, S>>();
-		for (PredicateArgumentStructure<I, S> hypothesisPredicate : mapPredicatesHypothesisToText.keySet())
+		calculatedPredicatesNoMatch = new LinkedList<FlaggedPredicateArgumentStructure<I, S>>();
+		for (PredicateArgumentStructure<I, S> hypothesisStructure : hypothesisStructures)
 		{
-			if (mapPredicatesHypothesisToText.get(hypothesisPredicate).size()>0)
+			if (!(keyHasValue(mapPredicatesHypothesisToText, hypothesisStructure)))
+			{
+				calculatedPredicatesNoMatch.add(new FlaggedPredicateArgumentStructure<>(false, hypothesisStructure));
+			}
+			else
 			{
 				boolean matchFound = false;
-				for (PredicateArgumentStructure<I, S> textPredicate : mapPredicatesHypothesisToText.get(hypothesisPredicate))
+				for (FlaggedPredicateArgumentStructure<I, S> textStructure : mapPredicatesHypothesisToText.get(hypothesisStructure))
 				{
-					if (predicateTruthValueMatch(hypothesisPredicate,textPredicate))
+					if (textStructure.isFlag())
 					{
 						matchFound=true;
+						break;
 					}
 				}
 				if (!matchFound)
 				{
-					calculatedMismatchTruthValueForPredicates.add(hypothesisPredicate);
+					calculatedPredicatesNoMatch.add(new FlaggedPredicateArgumentStructure<>(true, hypothesisStructure));
 				}
 			}
 		}
@@ -432,6 +442,23 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		return ret;
 	}
 	
+	private static <T> boolean keyHasValue(ValueSetMap<T, ?> map, T key)
+	{
+		boolean ret = false;
+		if (map.containsKey(key))
+		{
+			ImmutableSet<?> values = map.get(key);
+			if (values!=null)
+			{
+				if (values.size()>0)
+				{
+					ret = true;
+				}
+			}
+		}
+		return ret;
+	}
+	
 	
 	
 	
@@ -450,7 +477,12 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private ValueSetMap<PredicateAndArgument<I, S>, PredicateAndArgument<I, S>> mapArgumentsHypothesisToText;
 	private List<PredicateAndArgument<I, S>> hypothesisArguments;
 	private List<PredicateAndArgument<I, S>> textArguments;
-	private ValueSetMap<PredicateArgumentStructure<I, S>, PredicateArgumentStructure<I, S>> mapPredicatesHypothesisToText;
+	/**
+	 * Map from hypothesis predicates to matching text predicates.
+	 * If the matching text predicate has matching truth-value, than its flag is true.
+	 * Otherwise, its flag is false.
+	 */
+	private ValueSetMap<PredicateArgumentStructure<I, S>, FlaggedPredicateArgumentStructure<I, S>> mapPredicatesHypothesisToText;
 	
 	// output
 	private List<PredicateAndArgument<I, S>> calculatedNoMatchNamedEntities;
@@ -461,5 +493,12 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private List<PredicateAndArgument<I, S>> calculatedMatch;
 	private Set<String> calculatedTotallyOmittedHypothesisContentLemmasNonPredicates;
 	private Set<String> calculatedTotallyOmittedHypothesisContentLemmasPredicates;
-	private List<PredicateArgumentStructure<I, S>> calculatedMismatchTruthValueForPredicates;
+	/**
+	 * List of predicates in the hypothesis that have no matching predicate in the text.
+	 * Each predicate has a flag. If the flag is true, it means that there exist a
+	 * corresponding predicate in the text, but its truth-value does not match.
+	 * If the flag is false, it means that there does not exist a matching predicate
+	 * in the text at all.
+	 */
+	private List<FlaggedPredicateArgumentStructure<I, S>> calculatedPredicatesNoMatch;
 }

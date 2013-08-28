@@ -66,6 +66,9 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		updateTotallyOmittedValue(ret,theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasNonPredicates(),Feature.GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES);
 		updateTotallyOmittedValue(ret,theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasPredicates(),Feature.GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES);
 
+		double predicateNoMatchValue = (double)(-theCalculator.getCalculatedPredicatesNoMatch().size());
+		ret.put(Feature.GAP_V3_PREDICATE_NO_MATCH.getFeatureIndex(),predicateNoMatchValue);
+		
 //		ret.put(Feature.GAP_V3_MISSING_ARGUMENT.getFeatureIndex(), (double)(-theCalculator.getCalculatedNoMatch().size()) );
 //		ret.put(Feature.GAP_V3_WRONG_PREDICATE_MISSING_WORDS.getFeatureIndex(), (double)(-theCalculator.getCalculatedMatchWrongPredicateMissingWords().size()) );
 //		ret.put(Feature.GAP_V3_WRONG_PREDICATE.getFeatureIndex(), (double)(-theCalculator.getCalculatedMatchWrongPredicate().size()) );
@@ -75,18 +78,6 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		return ret;
 	}
 	
-
-	@Override
-	public Map<Integer, Double> updateForFinalGap(TreeAndParentMap<I, S> tree,
-			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment) throws GapException
-	{
-		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree);
-		Map<Integer, Double> ret = updateForGap(tree,featureVector,environment);
-		double mismatchTruthValue_featureValue = (double)(-theCalculator.getCalculatedMismatchTruthValueForPredicates().size());
-		ret.put(Feature.GAP_V3_PREDICATE_TRUTH_VALUE_MISMATCH.getFeatureIndex(),mismatchTruthValue_featureValue);
-		return ret;
-	}
-
 
 
 	@Override
@@ -104,10 +95,7 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		sb.append(totallyOmittedString("Totally omitted lemmas (non-predicates): ",theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasNonPredicates()));
 		sb.append(totallyOmittedString("Totally omitted lemmas (predicates): ",theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasPredicates()));
 		
-		if(theCalculator.getCalculatedMismatchTruthValueForPredicates().size()>0)
-		{
-			sb.append("Truth-value mismatch predicates: ").append(listOfPredicates(theCalculator.getCalculatedMismatchTruthValueForPredicates()));
-		}
+		printNoMatchPredicates(theCalculator.getCalculatedPredicatesNoMatch());
 		
 		return new GapDescription(sb.toString());
 	}
@@ -206,17 +194,35 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 				InfoGetFields.getLemma(paa.getPredicate().getPredicate().getHead().getInfo())+"]";
 	}
 	
-	private String listOfPredicates(List<PredicateArgumentStructure<I, S>> predicates)
+	private String printNoMatchPredicates(List<FlaggedPredicateArgumentStructure<I, S>> predicates)
+	{
+		String truthValueMisMatch = listOfPredicates(predicates,true);
+		String notExistMisMatch = listOfPredicates(predicates,false);
+		StringBuilder sb = new StringBuilder();
+		if (truthValueMisMatch.length()>0)
+		{
+			sb.append("Truth-value mismatch predicates: ").append(truthValueMisMatch).append("\n");
+		}
+		if (notExistMisMatch.length()>0)
+		{
+			sb.append("No match (not exist) predicates: ").append(notExistMisMatch).append("\n");
+		}
+		return sb.toString();
+	}
+	
+	private String listOfPredicates(List<FlaggedPredicateArgumentStructure<I, S>> predicates, boolean onlyFor)
 	{
 		StringBuilder sb = new StringBuilder();
 		boolean firstIteration = true;
-		for (PredicateArgumentStructure<I, S> predicate : predicates)
+		for (FlaggedPredicateArgumentStructure<I, S> predicate : predicates)
 		{
-			if (firstIteration){firstIteration=false;}
-			else {sb.append(", ");}
-			sb.append(InfoGetFields.getLemma(predicate.getPredicate().getHead().getInfo()));
+			if (predicate.isFlag()==onlyFor)
+			{
+				if (firstIteration){firstIteration=false;}
+				else {sb.append(", ");}
+				sb.append(InfoGetFields.getLemma(predicate.getPredicateArgumentStructure().getPredicate().getHead().getInfo()));
+			}
 		}
-		sb.append("\n");
 		return sb.toString();
 	}
 	

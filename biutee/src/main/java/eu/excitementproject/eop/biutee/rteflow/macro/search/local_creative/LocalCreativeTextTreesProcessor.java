@@ -299,7 +299,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 	{
 		if (!hybridGapMode) throw new TeEngineMlException("Internal bug! This method should be called only in hybrid-gap mode.");
 		TreeAndParentMap<ExtendedInfo, ExtendedNode> tapm = new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree);
-		return gapTools.getGapFeaturesUpdate().updateForFinalGap(tapm, featureVector,gapEnvironment);
+		return gapTools.getGapFeaturesUpdate().updateForGap(tapm, featureVector,gapEnvironment);
 	}
 
 	

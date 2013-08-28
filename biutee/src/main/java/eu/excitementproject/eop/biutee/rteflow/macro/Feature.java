@@ -109,7 +109,7 @@ public enum Feature
 	 */
 	GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES(false,true),
 	
-	GAP_V3_PREDICATE_TRUTH_VALUE_MISMATCH(false,true)
+	GAP_V3_PREDICATE_NO_MATCH(false,true)
 
 	;
 

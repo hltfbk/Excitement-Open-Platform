@@ -58,13 +58,6 @@ public class PastaBasedV2GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		return ret;
 	}
 	
-	@Override
-	public Map<Integer, Double> updateForFinalGap(TreeAndParentMap<I, S> tree,
-			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment)
-			throws GapException
-	{
-		return updateForGap(tree,featureVector,environment);
-	}
 
 	
 	@Override

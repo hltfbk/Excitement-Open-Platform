@@ -46,21 +46,21 @@ public interface GapFeaturesUpdate<I, S extends AbstractNode<I, S>>
 	 */
 	public Map<Integer, Double> updateForGap(TreeAndParentMap<I, S> tree, Map<Integer,Double> featureVector, GapEnvironment<I, S> environment) throws GapException;
 	
-	/**
-	 * Assigns feature-values to gap-features in the given feature-vector, including
-	 * gap estimations for final proof.
-	 * This method is similar to {@link #updateForFinalGap(TreeAndParentMap, Map, GapEnvironment)},
-	 * but it also updates additional gap-features which should not be used in the
-	 * intermediate steps of proof constructions, but only for the complete proof.
-	 * <BR>
-	 * Such features are, for example (and, I guess, the only example) Truth-Value
-	 * matching, under some configuration.
-	 * 
-	 * @param tree
-	 * @param featureVector
-	 * @param environment
-	 * @return
-	 * @throws GapException
-	 */
-	public Map<Integer, Double> updateForFinalGap(TreeAndParentMap<I, S> tree, Map<Integer,Double> featureVector, GapEnvironment<I, S> environment) throws GapException;
+//	/**
+//	 * Assigns feature-values to gap-features in the given feature-vector, including
+//	 * gap estimations for final proof.
+//	 * This method is similar to {@link #updateForFinalGap(TreeAndParentMap, Map, GapEnvironment)},
+//	 * but it also updates additional gap-features which should not be used in the
+//	 * intermediate steps of proof constructions, but only for the complete proof.
+//	 * <BR>
+//	 * Such features are, for example (and, I guess, the only example) Truth-Value
+//	 * matching, under some configuration.
+//	 * 
+//	 * @param tree
+//	 * @param featureVector
+//	 * @param environment
+//	 * @return
+//	 * @throws GapException
+//	 */
+//	public Map<Integer, Double> updateForFinalGap(TreeAndParentMap<I, S> tree, Map<Integer,Double> featureVector, GapEnvironment<I, S> environment) throws GapException;
 }
