@@ -24,7 +24,6 @@ import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
-import eu.excitementproject.eop.core.EDAScorer;
 import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
