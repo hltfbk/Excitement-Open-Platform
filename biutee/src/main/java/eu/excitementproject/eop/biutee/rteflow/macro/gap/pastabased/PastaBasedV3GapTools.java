@@ -65,15 +65,9 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 
 		updateTotallyOmittedValue(ret,theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasNonPredicates(),Feature.GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES);
 		updateTotallyOmittedValue(ret,theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasPredicates(),Feature.GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES);
-
-		double predicateNoMatchValue = (double)(-theCalculator.getCalculatedPredicatesNoMatch().size());
-		ret.put(Feature.GAP_V3_PREDICATE_NO_MATCH.getFeatureIndex(),predicateNoMatchValue);
 		
-//		ret.put(Feature.GAP_V3_MISSING_ARGUMENT.getFeatureIndex(), (double)(-theCalculator.getCalculatedNoMatch().size()) );
-//		ret.put(Feature.GAP_V3_WRONG_PREDICATE_MISSING_WORDS.getFeatureIndex(), (double)(-theCalculator.getCalculatedMatchWrongPredicateMissingWords().size()) );
-//		ret.put(Feature.GAP_V3_WRONG_PREDICATE.getFeatureIndex(), (double)(-theCalculator.getCalculatedMatchWrongPredicate().size()) );
-//		ret.put(Feature.GAP_V3_MISSING_NAMED_ENTITIES.getFeatureIndex(), (double)(-theCalculator.getCalculatedNoMatchNamedEntities().size()) );
-//		ret.put(Feature.GAP_V3_MISSING_WORDS.getFeatureIndex(), (double)(-theCalculator.getCalculatedMatchMissingWords().size()) );
+		double predicateNoMatchValue = valueForPredicateNoMatch(theCalculator.getCalculatedPredicatesNoMatch());
+		ret.put(Feature.GAP_V3_PREDICATE_NO_MATCH.getFeatureIndex(),predicateNoMatchValue);
 		
 		return ret;
 	}
@@ -95,7 +89,7 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		sb.append(totallyOmittedString("Totally omitted lemmas (non-predicates): ",theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasNonPredicates()));
 		sb.append(totallyOmittedString("Totally omitted lemmas (predicates): ",theCalculator.getCalculatedTotallyOmittedHypothesisContentLemmasPredicates()));
 		
-		printNoMatchPredicates(theCalculator.getCalculatedPredicatesNoMatch());
+		sb.append(printNoMatchPredicates(theCalculator.getCalculatedPredicatesNoMatch()));
 		
 		return new GapDescription(sb.toString());
 	}
@@ -159,6 +153,27 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		Double totallyOmittedOldValueObj = featureVector.get(feature.getFeatureIndex());
 		double totallyOmittedOldValue = ( (totallyOmittedOldValueObj!=null)?totallyOmittedOldValueObj.doubleValue():0.0 );
 		featureVector.put(feature.getFeatureIndex(), totallyOmittedOldValue+totallyOmittedValue);
+	}
+	
+	private double valueForPredicateNoMatch(List<FlaggedPredicateArgumentStructure<I, S>> predicates) throws GapException
+	{
+		double value = 0.0; 
+		if (BiuteeConstants.USE_MLE_FOR_GAP)
+		{
+			for (FlaggedPredicateArgumentStructure<I,S> predicate : predicates)
+			{
+				String lemma = InfoGetFields.getLemma(predicate.getPredicateArgumentStructure().getPredicate().getHead().getInfo());
+				value += Math.log(mleEstimation.getEstimationFor(lemma));
+			}
+		}
+		else
+		{
+			value = (double)(-predicates.size());
+		}
+		
+		if (value>0.0) throw new GapException("Bug: feature-value for no-match predicate was calculated to a positive value.");
+		
+		return value;
 	}
 	
 	private String totallyOmittedString(String prefix, Set<String> words)
