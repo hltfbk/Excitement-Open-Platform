@@ -40,7 +40,7 @@ public class EditDistanceEDATest {
 	static Logger logger = Logger.getLogger(EditDistanceEDATest.class
 			.getName());
 	
-	//@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		
