@@ -30,7 +30,8 @@
 		<module>transformations</module>
 		<module>biutee</module>
 		<module>gui</module>
-	</modules>
+    <module>util</module>
+  </modules>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -533,7 +534,7 @@
 			</roles>
 			<timezone>+1</timezone>
 			<properties>
-				<picUrl />
+				<picUrl/>
 			</properties>
 		</developer>
 
