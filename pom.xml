@@ -30,8 +30,8 @@
 		<module>transformations</module>
 		<module>biutee</module>
 		<module>gui</module>
-    <module>util</module>
-  </modules>
+		<module>util</module>
+	</modules>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -299,7 +299,7 @@
 				<version>2.5.2</version>
 				<configuration>
 					<xmlOutput>true</xmlOutput>
-					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.distsim.*</onlyAnalyze>
+					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.distsim.*,eop.util.*</onlyAnalyze>
 				</configuration>
 			</plugin>
 
@@ -534,7 +534,7 @@
 			</roles>
 			<timezone>+1</timezone>
 			<properties>
-				<picUrl/>
+				<picUrl />
 			</properties>
 		</developer>
 
