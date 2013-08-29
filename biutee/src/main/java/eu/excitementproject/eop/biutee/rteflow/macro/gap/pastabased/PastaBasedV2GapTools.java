@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.macro.gap.pastabased;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -48,7 +49,7 @@ public class PastaBasedV2GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		Map<Integer, Double> ret = new LinkedHashMap<>();
 		ret.putAll(featureVector);
 		
-		PastaGapFeaturesV2Calculator<I, S> theCalculator = createAndGetCalculator(tree);
+		PastaGapFeaturesV2Calculator<I, S> theCalculator = createAndGetCalculator(tree,environment);
 		ret.put(Feature.GAP_V2_MISSING_PREDICATES.getFeatureIndex(), (double)(-theCalculator.getMissingPredicates().size()));
 		ret.put(Feature.GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED.getFeatureIndex(), (double)(-theCalculator.getArgumentHeadNotConnected().size()));
 		ret.put(Feature.GAP_V2_ARGUMENT_HEAD_MISSING.getFeatureIndex(), (double)(-theCalculator.getMissingArgument().size()));
@@ -63,7 +64,7 @@ public class PastaBasedV2GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	@Override
 	public synchronized GapDescription describeGap(TreeAndParentMap<I, S> tree, GapEnvironment<I, S> environment) throws GapException
 	{
-		PastaGapFeaturesV2Calculator<I, S> theCalculator = createAndGetCalculator(tree);
+		PastaGapFeaturesV2Calculator<I, S> theCalculator = createAndGetCalculator(tree,environment);
 		StringBuilder sb = new StringBuilder();
 		sb.append("Missing predicates:\n");
 		for (PredicateArgumentStructure<I, S> predicate : theCalculator.getMissingPredicates())
@@ -112,8 +113,9 @@ public class PastaBasedV2GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		return InfoGetFields.getLemma(node.getInfo());
 	}
 	
-	
-	protected PastaGapFeaturesV2Calculator<I, S> constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures) throws GapException
+
+	@Override
+	protected PastaGapFeaturesV2Calculator<I, S> constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures, List<Set<PredicateArgumentStructure<I, S>>> surroundingStructures, Set<String> wholeTextLemmas ) throws GapException
 	{
 		PastaGapFeaturesV2Calculator<I, S> ret = new PastaGapFeaturesV2Calculator<I,S>(hypothesisTree,hypothesisStructures,tree,textStructures);
 		ret.calculate();

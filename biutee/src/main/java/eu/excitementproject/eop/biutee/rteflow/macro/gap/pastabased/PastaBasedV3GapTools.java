@@ -55,7 +55,7 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 		Map<Integer, Double> ret = new LinkedHashMap<>();
 		ret.putAll(featureVector);
 		
-		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree);
+		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree,environment);
 		
 		updateFeature(ret, Feature.GAP_V3_MISSING_ARGUMENT, theCalculator.getCalculatedNoMatch(),false);
 		updateFeature(ret, Feature.GAP_V3_MISSING_NAMED_ENTITIES, theCalculator.getCalculatedNoMatchNamedEntities(),false);
@@ -78,7 +78,7 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	public synchronized GapDescription describeGap(TreeAndParentMap<I, S> tree,
 			GapEnvironment<I, S> environment) throws GapException
 	{
-		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree);
+		PastaGapFeaturesV3Calculator<I, S> theCalculator = createAndGetCalculator(tree,environment);
 		StringBuilder sb = new StringBuilder();
 		sb.append(stringOfListPaa("named-entities no match",theCalculator.getCalculatedNoMatchNamedEntities()));
 		sb.append(stringOfListPaa("no match",theCalculator.getCalculatedNoMatch()));
@@ -97,9 +97,10 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	
 	//////////////// PROTECTED & PRIVATE ////////////////
 	
-	protected PastaGapFeaturesV3Calculator<I,S> constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures) throws GapException
+	@Override
+	protected PastaGapFeaturesV3Calculator<I,S> constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures, List<Set<PredicateArgumentStructure<I, S>>> surroundingStructures, Set<String> wholeTextLemmas) throws GapException
 	{
-		PastaGapFeaturesV3Calculator<I,S> ret = new PastaGapFeaturesV3Calculator<I,S>(hypothesisTree,hypothesisStructures,tree,textStructures, stopWords);
+		PastaGapFeaturesV3Calculator<I,S> ret = new PastaGapFeaturesV3Calculator<I,S>(hypothesisTree,hypothesisStructures,tree,textStructures, stopWords, surroundingStructures, wholeTextLemmas);
 		ret.calculate();
 		return ret;
 	}

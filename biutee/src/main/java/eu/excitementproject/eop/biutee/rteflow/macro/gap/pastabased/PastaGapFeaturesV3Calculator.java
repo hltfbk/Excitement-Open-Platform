@@ -27,6 +27,9 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.Advance
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
 /**
+ * Calculates data-structures from which gap features are retrieved.
+ * 
+ * @see PastaBasedV3GapTools
  * 
  * @author Asher Stern
  * @since Aug 20, 2013
@@ -40,7 +43,9 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 			Set<PredicateArgumentStructure<I, S>> hypothesisStructures,
 			TreeAndParentMap<I, S> textTree,
 			Set<PredicateArgumentStructure<I, S>> textStructures,
-			ImmutableSet<String> stopWords)
+			ImmutableSet<String> stopWords,
+			List<Set<PredicateArgumentStructure<I, S>>> surroundingStructures,
+			Set<String> wholeTextLemmas)
 	{
 		super();
 		this.hypothesisTree = hypothesisTree;
@@ -48,6 +53,8 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		this.textTree = textTree;
 		this.textStructures = textStructures;
 		this.stopWords = stopWords;
+		this.surroundingStructures = surroundingStructures;
+		this.wholeTextLemmas = wholeTextLemmas;
 	}
 	
 	
@@ -468,6 +475,8 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private final TreeAndParentMap<I, S> textTree;
 	private final Set<PredicateArgumentStructure<I, S>> textStructures;
 	private final ImmutableSet<String> stopWords;
+	private final List<Set<PredicateArgumentStructure<I, S>>> surroundingStructures;
+	private final Set<String> wholeTextLemmas;
 	
 	
 	// internals

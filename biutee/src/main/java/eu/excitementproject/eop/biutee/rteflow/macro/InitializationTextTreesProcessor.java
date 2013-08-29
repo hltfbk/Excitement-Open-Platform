@@ -298,7 +298,7 @@ public class InitializationTextTreesProcessor
 		if (teSystemEnvironment.getGapToolBox().isHybridMode())
 		{
 			gapTools = teSystemEnvironment.getGapToolBox().getGapToolsFactory().createInstances(hypothesis,this.classifier);
-			gapEnvironment = new GapEnvironment<>();
+			gapEnvironment = new GapEnvironment<>(surroundingsContext,wholeTextLemmas);
 		}
 		else
 		{

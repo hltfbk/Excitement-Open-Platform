@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.macro.gap.pastabased;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.pasta.PredicateArgumentStructure;
 import eu.excitementproject.eop.lap.biu.en.pasta.PredicateArgumentStructureBuilderFactory;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentIdentificationException;
@@ -61,7 +64,7 @@ public abstract class AbstractPastaBasedGapTools<I extends Info, S extends Abstr
 	}
 	
 	
-	protected abstract C constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures) throws GapException;
+	protected abstract C constructCalculator(TreeAndParentMap<I, S> tree, Set<PredicateArgumentStructure<I, S>> textStructures, List<Set<PredicateArgumentStructure<I, S>>> surroundingStructures, Set<String> wholeTextLemmas) throws GapException;
 
 	
 	protected synchronized boolean lastTreeIsTheGivenOne(TreeAndParentMap<I, S> tree)
@@ -77,7 +80,7 @@ public abstract class AbstractPastaBasedGapTools<I extends Info, S extends Abstr
 		return false;
 	}
 	
-	protected synchronized C createAndGetCalculator(TreeAndParentMap<I, S> tree) throws GapException
+	protected synchronized C createAndGetCalculator(TreeAndParentMap<I, S> tree, GapEnvironment<I, S> gapEnvironment) throws GapException
 	{
 		if (calculator!=null)
 		{
@@ -90,20 +93,43 @@ public abstract class AbstractPastaBasedGapTools<I extends Info, S extends Abstr
 		try
 		{
 			lastTree = null;
-			PredicateArgumentStructureBuilder<I, S> builder = builderFactory.createBuilder(tree);
-			builder.build();
-			calculator = constructCalculator(tree,builder.getPredicateArgumentStructures());
+			lastGapEnvironment = null;
+//			PredicateArgumentStructureBuilder<I, S> builder = builderFactory.createBuilder(tree);
+//			builder.build();
+			calculator = constructCalculator(tree,buildStructuresForTree(tree),
+					buildStructuresForSurrounding(gapEnvironment.getSurroundingsContext(),tree),
+					gapEnvironment.getWholeTextLemmas());
 			//calculator.calculate(); -- called in constructCalculator
 			lastTree = tree.getTree();
 			return calculator;
 		}
-		catch (PredicateArgumentIdentificationException e)
+		catch (PredicateArgumentIdentificationException | TreeAndParentMapException e)
 		{
 			throw new GapException("Failed to build predicate argument structure for the given tree.",e);
 		}
 	}
 	
+	private Set<PredicateArgumentStructure<I, S>> buildStructuresForTree(TreeAndParentMap<I, S> treeAndParentMap) throws PredicateArgumentIdentificationException
+	{
+		PredicateArgumentStructureBuilder<I, S> builder = builderFactory.createBuilder(treeAndParentMap);
+		builder.build();
+		return builder.getPredicateArgumentStructures();
+	}
 
+	private List<Set<PredicateArgumentStructure<I, S>>> buildStructuresForSurrounding(List<S> surrounding, TreeAndParentMap<I, S> exclude) throws PredicateArgumentIdentificationException, TreeAndParentMapException
+	{
+		if (null==surrounding) return null;
+		if (surrounding.size()==0) return null;
+		List<Set<PredicateArgumentStructure<I, S>>> ret = new ArrayList<>(surrounding.size()-1);
+		for (S surroundingTree : surrounding)
+		{
+			if (exclude.getTree()!=surroundingTree)
+			{
+				ret.add(buildStructuresForTree(new TreeAndParentMap<I, S>(surroundingTree)));
+			}
+		}
+		return ret;
+	}
 
 
 	
@@ -115,6 +141,7 @@ public abstract class AbstractPastaBasedGapTools<I extends Info, S extends Abstr
 	
 	// internals
 	protected S lastTree = null;
+	protected GapEnvironment<I, S> lastGapEnvironment = null;
 	private C calculator = null;
 
 }
