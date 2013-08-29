@@ -1,7 +1,4 @@
 package eu.excitementproject.eop.biutee.rteflow.systems;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.LEXICAL_RESOURCES_RETRIEVE_MULTIWORDS_PARAMETER_NAME;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_ENGINE_UNIGRAM_LIDSTON_SER_FILE;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_TEST_SAMPLES_FOR_SEARCH_CLASSIFIER;
@@ -17,7 +14,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -51,22 +47,17 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ResultWithScores
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
-import eu.excitementproject.eop.biutee.utilities.ReasonableGuessGenerator;
+import eu.excitementproject.eop.biutee.utilities.ReasonableGuessCreator;
 import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamples;
 import eu.excitementproject.eop.biutee.utilities.safemodel.SafeSamplesUtils;
 import eu.excitementproject.eop.biutee.utilities.safemodel.classifiers_io.SafeClassifiersIO;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.StringUtil;
-import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
-import eu.excitementproject.eop.transformations.utilities.MLELidstonSmoothedUnigramProbabilityEstimation;
-import eu.excitementproject.eop.transformations.utilities.MeanAndStandardDeviation;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 
@@ -125,8 +116,8 @@ public class RTESystemsUtils
 			if (innerClassifier instanceof LogisticRegressionClassifier)
 			{
 				LogisticRegressionClassifier lrClassifier = (LogisticRegressionClassifier) innerClassifier;
-				lrClassifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
-				lrClassifier.increaseAllButConstantByBut(BiuteeConstants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, new HashSet<Integer>());
+				lrClassifier.setToZeroNegativeParametersBut(new LinkedHashSet<Integer>());
+				lrClassifier.increaseAllButConstantByBut(BiuteeConstants.INCREASE_PARAMETERS_VALUE_IN_SEARCH_CLASSIFIER, new LinkedHashSet<Integer>());
 
 
 				// These features do not represent operations
@@ -154,77 +145,9 @@ public class RTESystemsUtils
 
 	public static LinearTrainableStorableClassifier reasonableGuessClassifier(FeatureVectorStructureOrganizer featureVectorStructure) throws ClassifierException, OperationException, TeEngineMlException
 	{
-		if (featureVectorStructure==null)
-			throw new TeEngineMlException("Null featureVectorStructure");
-		// TODO
-		// This function contains many hard-coded values.
-		
-		
-		LinearTrainableStorableClassifier ret = null;
-		double standardDeviation=0.1;
-		
-		Map<Integer, MeanAndStandardDeviation> priorNegative = new LinkedHashMap<Integer, MeanAndStandardDeviation>();
-		priorNegative.put(Feature.INSERT_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
-		priorNegative.put(Feature.INSERT_CONTENT_VERB.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
-		priorNegative.put(Feature.INSERT_CONTENT_WORD.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
-		priorNegative.put(Feature.INSERT_NON_CONTENT_NON_EMPTY_WORD.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
-		priorNegative.put(Feature.INSERT_EMPTY_WORD.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
-		priorNegative.put(Feature.INSERT_NAMED_ENTITY_EXIST_IN_PAIR.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
-		priorNegative.put(Feature.INSERT_CONTENT_VERB_EXIST_IN_PAIR.getFeatureIndex(), new MeanAndStandardDeviation(-6, standardDeviation));
-		priorNegative.put(Feature.INSERT_CONTENT_WORD_EXIST_IN_PAIR.getFeatureIndex(), new MeanAndStandardDeviation(-6, standardDeviation));
-		priorNegative.put(Feature.MOVE_ONLY_CHANGE_RELATION_STRONG.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorNegative.put(Feature.MOVE_INTRODUCE_SURFACE_RELATION.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorNegative.put(Feature.MOVE_NODE_CHANGE_CONTEXT.getFeatureIndex(), new MeanAndStandardDeviation(-4, standardDeviation));
-		priorNegative.put(Feature.MOVE_NODE_SAME_CONTEXT.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorNegative.put(Feature.SUBSTITUTION_MULTI_WORD_ADD_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-3, standardDeviation));
-		priorNegative.put(Feature.SUBSTITUTION_MULTI_WORD_ADD_WORDS_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-3, standardDeviation));
-		priorNegative.put(Feature.SUBSTITUTION_MULTI_WORD_REMOVE_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-3, standardDeviation));
-		priorNegative.put(Feature.SUBSTITUTION_FLIP_POS.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
-		priorNegative.put(Feature.SUBSTITUTION_PARSER_ANTECEDENT.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorNegative.put(Feature.SUBSTITUTION_COREFERENCE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		
-
-		Map<Integer, MeanAndStandardDeviation> priorPositive = new LinkedHashMap<Integer, MeanAndStandardDeviation>();
-		priorPositive.put(Feature.INSERT_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.INSERT_CONTENT_VERB.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.INSERT_CONTENT_WORD.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.INSERT_NON_CONTENT_NON_EMPTY_WORD.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorPositive.put(Feature.INSERT_EMPTY_WORD.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorPositive.put(Feature.INSERT_NAMED_ENTITY_EXIST_IN_PAIR.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorPositive.put(Feature.INSERT_CONTENT_VERB_EXIST_IN_PAIR.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.INSERT_CONTENT_WORD_EXIST_IN_PAIR.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorPositive.put(Feature.MOVE_ONLY_CHANGE_RELATION_STRONG.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.MOVE_INTRODUCE_SURFACE_RELATION.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.MOVE_NODE_CHANGE_CONTEXT.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.MOVE_NODE_SAME_CONTEXT.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorPositive.put(Feature.SUBSTITUTION_MULTI_WORD_ADD_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.SUBSTITUTION_MULTI_WORD_ADD_WORDS_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.SUBSTITUTION_MULTI_WORD_REMOVE_WORDS.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.SUBSTITUTION_FLIP_POS.getFeatureIndex(), new MeanAndStandardDeviation(-2, standardDeviation));
-		priorPositive.put(Feature.SUBSTITUTION_PARSER_ANTECEDENT.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.SUBSTITUTION_COREFERENCE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-
-		ReasonableGuessGenerator generator = 
-			new ReasonableGuessGenerator(priorNegative,priorPositive,featureVectorStructure,100,100);
-		ret = generator.createClassifierByPrior();
-		
-		List<String> listRuleBasesNames = Utils.getSortedByValue(featureVectorStructure.getRuleBasesFeatures().getMutableCopy());
-		LinkedHashSet<String> ruleBasesNames = new LinkedHashSet<String>();
-		for (String ruleBaseName : listRuleBasesNames)
-		{
-			ruleBasesNames.add(ruleBaseName);
-		}
-		
-		// ret.setFeaturesNames( ClassifierUtils.extendFeatureNames(Feature.toMapOfNames(), ruleBasesNames));
-		
-		ret.setFeaturesNames(featureVectorStructure.createMapOfFeatureNames());
-		
-		normalizeClassifierForSearch(ret);
-		
-		if (logger.isInfoEnabled())
-			logger.info("RTEPairsTrainerUtils: Initial classifier description:\n"+ret.descriptionOfTraining());
-		
-		return ret;
+		ReasonableGuessCreator reasonableGuessCreator = new ReasonableGuessCreator(featureVectorStructure);
+		reasonableGuessCreator.create();
+		return reasonableGuessCreator.getClassifier();
 	}
 	
 	@Deprecated
@@ -714,28 +637,7 @@ public class RTESystemsUtils
 	
 	public static UnigramProbabilityEstimation getUnigramProbabilityEstimation(ConfigurationParams enginemlParams) throws TeEngineMlException
 	{
-		UnigramProbabilityEstimation ret = null;
-
-		try
-		{
-			File unigramModelSerFile = enginemlParams.getFile(RTE_ENGINE_UNIGRAM_LIDSTON_SER_FILE);
-			logger.info("Loading unigram model from file: "+unigramModelSerFile.getPath());
-			ret = MLELidstonSmoothedUnigramProbabilityEstimation.fromSerializedFile(unigramModelSerFile);
-		} catch (FileNotFoundException e)
-		{
-			throw new TeEngineMlException("Could not load UnigramProbabilityEstimation",e);
-		} catch (IOException e)
-		{
-			throw new TeEngineMlException("Could not load UnigramProbabilityEstimation",e);
-		} catch (ClassNotFoundException e)
-		{
-			throw new TeEngineMlException("Could not load UnigramProbabilityEstimation",e);
-		} catch (ConfigurationException e)
-		{
-			throw new TeEngineMlException("Could not load UnigramProbabilityEstimation",e);
-		}
-		
-		return ret;
+		return SystemUtils.getUnigramProbabilityEstimation(enginemlParams);
 	}
 
 	
@@ -758,7 +660,7 @@ public class RTESystemsUtils
 		logger.info("LogisticRegressionClassifier with set to zero negative weights...");
 		lrClassifier = new LogisticRegressionClassifier(ClassifierFactory.LOGISTIC_REGRESSION_LEARNING_RATE, 0.0);
 		lrClassifier.train(trainingSamples);
-		lrClassifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
+		lrClassifier.setToZeroNegativeParametersBut(new LinkedHashSet<Integer>());
 		logger.info(String.format("Accuracy = %.5f",ClassifierUtils.accuracyOf(lrClassifier, samples)));
 
 		logger.info("ScalingClassifier wrapping LogisticRegressionClassifier...");
@@ -771,7 +673,7 @@ public class RTESystemsUtils
 		lrClassifier = new LogisticRegressionClassifier(ClassifierFactory.LOGISTIC_REGRESSION_LEARNING_RATE, 0.0);
 		scClassifier = new LinearScalingTrainableStorableClassifier(lrClassifier);
 		scClassifier.train(trainingSamples);
-		lrClassifier.setToZeroNegativeParametersBut(new HashSet<Integer>());
+		lrClassifier.setToZeroNegativeParametersBut(new LinkedHashSet<Integer>());
 		logger.info(String.format("Accuracy = %.5f",ClassifierUtils.accuracyOf(scClassifier, samples)));
 
 		logger.info("ScalingClassifier wrapping LogisticRegressionClassifier with searhc normalization...");
@@ -795,17 +697,7 @@ public class RTESystemsUtils
 	
 	public static void setParserMode(ConfigurationParams params) throws ConfigurationException, TeEngineMlException
 	{
-		if (params.containsKey(ConfigurationParametersNames.RTE_ENGINE_PARSER_PARAMETER_NAME))
-		{
-			ParserSpecificConfigurations.PARSER parser = params.getEnum(ParserSpecificConfigurations.PARSER.class, ConfigurationParametersNames.RTE_ENGINE_PARSER_PARAMETER_NAME);
-			logger.info("Setting parser to "+parser.name());
-			ParserSpecificConfigurations.changeParser(parser);
-		}
-		else
-		{
-			throw new TeEngineMlException("Parser mode parameters missing.");
-			//logger.warn("Parser mode not set. Using default: "+ParserSpecificConfigurations.getParserMode().name());
-		}
+		SystemUtils.setParserMode(params);
 	}
 	
 
@@ -816,30 +708,9 @@ public class RTESystemsUtils
 	
 	public static Set<String> getLexicalRuleBasesForMultiWords(ConfigurationFile configurationFile) throws ConfigurationException
 	{
-		Set<String> ret = new LinkedHashSet<String>();
-		ConfigurationParams knowledgeResourcesParams = configurationFile.getModuleConfiguration(KNOWLEDGE_RESOURCES_MODULE_NAME);
-		String valueAsString = knowledgeResourcesParams.get(LEXICAL_RESOURCES_RETRIEVE_MULTIWORDS_PARAMETER_NAME);
-		if (valueAsString.trim().length()>0)
-		{
-			Set<KnowledgeResource> resources = knowledgeResourcesParams.getEnumSet(KnowledgeResource.class, LEXICAL_RESOURCES_RETRIEVE_MULTIWORDS_PARAMETER_NAME);
-			for (KnowledgeResource resource : resources)
-			{
-				ret.add(resource.getDisplayName());
-			}
-		}
-		return ret;
+		return SystemUtils.getLexicalRuleBasesForMultiWords(configurationFile);
 	}
 	
-	public static Set<Integer> getGlobalFeatureIndexes()
-	{
-		Set<Feature> globalFeatures = Feature.getGlobalFeatures();
-		Set<Integer> globalFeaturesIndexes = new LinkedHashSet<Integer>();
-		for (Feature globalFeature : globalFeatures)
-		{
-			globalFeaturesIndexes.add(globalFeature.getFeatureIndex());
-		}
-		return globalFeaturesIndexes;
-	}
 	
 	public static <T> void saveInSerFile(String filename, T object) throws FileNotFoundException, IOException
 	{

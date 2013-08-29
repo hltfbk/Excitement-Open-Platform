@@ -12,8 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -60,9 +60,9 @@ public class LinDistsimLexicalResource extends AbstractSinglePosLexicalResource
 
 	private static final String PARAM_CONNECTION_STRING = "database_url";
 	
-	final private Set<PreparedStatementAndPos> setOfGetRulesForLeftStmt = new HashSet<PreparedStatementAndPos>();
-	final private Set<PreparedStatementAndPos> setOfGetRulesForRightStmt = new HashSet<PreparedStatementAndPos>();
-	final private Set<PreparedStatementAndPos> setOfGetScoresStmt = new HashSet<PreparedStatementAndPos>();
+	final private Set<PreparedStatementAndPos> setOfGetRulesForLeftStmt = new LinkedHashSet<PreparedStatementAndPos>();
+	final private Set<PreparedStatementAndPos> setOfGetRulesForRightStmt = new LinkedHashSet<PreparedStatementAndPos>();
+	final private Set<PreparedStatementAndPos> setOfGetScoresStmt = new LinkedHashSet<PreparedStatementAndPos>();
 	
 	private PartOfSpeech DEFAULT_POS = null;
 	
@@ -201,7 +201,7 @@ public class LinDistsimLexicalResource extends AbstractSinglePosLexicalResource
 			rs = templateQuery.executeQuery();	
 		} 
 		catch (SQLException e) 	{	throw new LexicalResourceException("Error executing the query " + templateQuery,e);	}
-		Map<Integer, String> idToLemma = new HashMap<Integer, String>();
+		Map<Integer, String> idToLemma = new LinkedHashMap<Integer, String>();
 		int i = 0;
 		try 					
 		{

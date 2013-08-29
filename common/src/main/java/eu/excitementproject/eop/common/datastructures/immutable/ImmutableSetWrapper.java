@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.common.datastructures.immutable;
 
 import java.util.Collection;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 
@@ -48,14 +48,13 @@ implements ImmutableSet<T>
 	public ImmutableSet<T> getImmutableSetCopy()
 	{
 		if (this.realSet==null) return new ImmutableSetWrapper<T>(null);
-		else return new ImmutableSetWrapper<T>(new HashSet<T>(this.realSet));
+		else return new ImmutableSetWrapper<T>(new LinkedHashSet<T>(this.realSet));
 	}
 
-	public HashSet<T> getMutableSetCopy()
+	public LinkedHashSet<T> getMutableSetCopy()
 	{
-		if (null==this.realSet) return new HashSet<T>();
-		else return new HashSet<T>(this.realSet);
-		 
+		if (null==this.realSet) return new LinkedHashSet<T>();
+		else return new LinkedHashSet<T>(this.realSet);
 	}
 	
 	

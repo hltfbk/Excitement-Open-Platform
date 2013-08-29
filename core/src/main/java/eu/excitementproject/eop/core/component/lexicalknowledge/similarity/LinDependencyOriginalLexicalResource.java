@@ -7,7 +7,7 @@ import static eu.excitementproject.eop.common.representation.partofspeech.Simple
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
@@ -55,19 +55,19 @@ public class LinDependencyOriginalLexicalResource extends AbstractSimilarityLexi
 	private static final String VERB_TABLE = 	"lin_dep_v";
 	private static final String ADJECTIVE_TABLE = "lin_dep_a";
 
-	private final Set<PreparedStatementAndPos> SET_OF_ALL_SCORES_STMTS = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_SCORES_STMT_NOUN  = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_SCORES_STMT_VERB  = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_SCORES_STMT_ADJECTIVE  = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> EMPTY_SET = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_ALL_RIGHT_STMTS = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_RIGHT_STMT_NOUN = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_RIGHT_STMT_VERB = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_RIGHT_STMT_ADJECTIVE = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_ALL_LEFT_STMTS = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_LEFT_STMT_NOUN = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_LEFT_STMT_VERB = new HashSet<PreparedStatementAndPos>();
-	private final Set<PreparedStatementAndPos> SET_OF_LEFT_STMT_ADJECTIVE = new HashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_ALL_SCORES_STMTS = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_SCORES_STMT_NOUN  = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_SCORES_STMT_VERB  = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_SCORES_STMT_ADJECTIVE  = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> EMPTY_SET = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_ALL_RIGHT_STMTS = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_RIGHT_STMT_NOUN = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_RIGHT_STMT_VERB = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_RIGHT_STMT_ADJECTIVE = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_ALL_LEFT_STMTS = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_LEFT_STMT_NOUN = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_LEFT_STMT_VERB = new LinkedHashSet<PreparedStatementAndPos>();
+	private final Set<PreparedStatementAndPos> SET_OF_LEFT_STMT_ADJECTIVE = new LinkedHashSet<PreparedStatementAndPos>();
 	
 	@Override
 	protected String L_COL() {	return "word1";	}

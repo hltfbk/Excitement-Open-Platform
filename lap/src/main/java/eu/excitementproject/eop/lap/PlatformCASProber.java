@@ -37,10 +37,8 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
-
 import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitement.type.entailment.Pair;
-import eu.excitementproject.eop.lap.LAPException;
 
 /**
  * A utility class that provides a set of static methods for EXCITEMENT CAS (input for EDA and other components) 

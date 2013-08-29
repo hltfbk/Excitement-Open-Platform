@@ -1,14 +1,12 @@
-
 package eu.excitementproject.eop.core;
 
-//import java.util.Iterator;
 import java.util.List;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.logging.Logger;
 import java.io.*;
+import java.lang.reflect.Constructor;
 
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.cas.TOP;
@@ -17,9 +15,7 @@ import org.apache.uima.jcas.JCas;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
-import eu.excitementproject.eop.common.IEditDistanceTEDecision;
 import eu.excitementproject.eop.common.TEDecision;
-import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
 import eu.excitementproject.eop.common.component.distance.DistanceValue;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -28,231 +24,563 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.distance.*;
 import eu.excitement.type.entailment.Pair;
-//import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
-//import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
 
 
 /**
  * The <code>EditDistanceEDA</code> class implements the <code>EDABasic</code> interface.
- * Given a certain conﬁguration, it can be trained over a speciﬁc dataset in order to optimize its
- * performance. In the training phase this class produces a distance model for the dataset, which
+ * Given a certain configuration, it can be trained over a specific data set in order to optimize its
+ * performance. In the training phase this class produces a distance model for the data set, which
  * includes a distance threshold that best separates the positive and negative examples in the training data.
  * During the test phase it applies the calculated threshold, so that pairs resulting in a distance below the
- * threshold are classiﬁed as ENTAILMENT, while pairs above the threshold are classiﬁed as NONENTAILMENT.
- * <code>EditDistanceEDA</code> uses <code>FixedWeightTokenEditDistance</code> for calculating edit distance
+ * threshold are classified as ENTAILMENT, while pairs above the threshold are classified as NONENTAILMENT.
+ * <code>EditDistanceEDA</code> uses <code>FixedWeightEditDistance</code> for calculating edit distance
  * between each pair of T and H. 
  * 
- * Some parts of this code have been pulled from the EDITS software: http://edits.fbk.eu/.
- *
- * <B>Not thread safe!</B>
+ * @author Roberto Zanoli
  * 
- * @author  Roberto Zanoli
- * @version 0.1
  */
 public class EditDistanceEDA<T extends TEDecision>
-		implements EDABasic<IEditDistanceTEDecision> {
+		implements EDABasic<EditDistanceTEDecision> {
 	
-	// the threshold that has to be learnt on a training set and then used
-	// to annotate examples in the test set
+	/**
+	 * the threshold that has to be learnt on a training set and then used
+	 * to annotate examples in the test set
+	 */
 	private double threshold;
-	// the edit distance component to be used
-	private DistanceCalculation component;
 	
-	static Logger logger = Logger.getLogger(EditDistanceEDA.class
-			.getName());
-
-	// whether it's training or testing
-	protected boolean isTrain;
-	// language flag
+	/**
+	 * this is the minimal increment that has to be used for finding the threshold value;
+	 * smaller values allows for a more precise threshold whereas the training phase could
+	 * take much more time. 
+	 */
+	private double minIncrement = 0.001;
 	
-	protected String language;
+	/**
+	 * the accuracy obtained on the training data set
+	 */
+	private double trainingAccuracy;
+	
+	/**
+	 * the edit distance component to be used
+	 */
+	private FixedWeightEditDistance component;
+	
+	/**
+	* the canonical name of the underlying class as defined by the Java Language Specification. 
+	*/
+	protected String canonicalName;
+	
+	/**
+	 * the logger
+	 */
+	static Logger logger = Logger.getLogger(EditDistanceEDA.class.getName());
 
-	// the model file, consisting of parameter name and value pairs
-	protected String modelFile;
+	/**
+	 * the language
+	 */
+	private String language;
 
-	// training data directory
-	protected String trainDIR;
+	/**
+	 * the model file
+	 */
+	private String modelFile;
 
-	// testing data directory
-	protected String testDIR;
+	/**
+	 * the training data directory
+	 */
+	private String trainDIR;
 
-	public boolean isTrain() {
-		return this.isTrain;
+	/**
+	 * the test data directory
+	 */
+	private String testDIR;
+
+	/**
+	 * if the model has to be saved
+	 */
+	private boolean writeModel;
+	
+	/**
+	 * weight for match
+	 */
+    private double mMatchWeight;
+    
+    /**
+	 * weight for delete
+	 */
+    private double mDeleteWeight;
+    
+    /**
+	 * weight for insert
+	 */
+    private double mInsertWeight;
+    
+    /**
+	 * weight for substitute
+	 */
+    private double mSubstituteWeight;
+    
+    /**
+	 * measure to optimize: accuracy or f1 measure
+	 */
+    private String measureToOptimize;
+	
+    
+	/**
+	 * if the EDA has to write the model at the end of the training phase
+	 * 
+	 * @param write true for saving the model
+	 *
+	 * @return
+	 */
+	public void setWriteModel(boolean write) {
+		
+		this.writeModel = write;
+		
 	}
-
-	public void setTrain(boolean isTrain) {
-		this.isTrain = isTrain;
-	}
 	
+	/**
+	 * set the weight of the match edit distant operation
+	 * 
+	 * @param mMatchWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+	public void setmMatchWeight(double mMatchWeight) {
+    	
+    	this.mMatchWeight = mMatchWeight;
+    	
+    }
+	
+	/**
+	 * get the weight of the match edit distant operation
+	 * 
+	 * @return the weight
+	 */
+	public double getmMatchWeight() {
+    	
+    	return this.mMatchWeight;
+    	
+    }
+    
+	/**
+	 * set the weight of the delete edit distant operation
+	 * 
+	 * @param mDeleteWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+    public void setmDeleteWeight(double mDeleteWeight) {
+    	
+    	this.mDeleteWeight = mDeleteWeight;
+    	
+    }
+    
+    /**
+	 * get the weight of the delete edit distant operation
+	 * 
+	 * @return the weight
+	 */
+	public double getmDeleteWeight() {
+    	
+    	return this.mDeleteWeight;
+    	
+    }
+    
+    /**
+	 * set the weight of the insert edit distant operation
+	 * 
+	 * @param mInsertWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+    public void setmInsertWeight(double mInsertWeight) {
+    	
+    	this.mInsertWeight = mInsertWeight;
+    	
+    }
+    
+    /**
+	 * get the weight of the insert edit distant operation
+	 * 
+	 * @return
+	 */
+    public double getmInsertWeight() {
+    	
+    	return this.mInsertWeight;
+    	
+    }
+    
+    /**
+	 * set the weight of the substitute edit distant operation
+	 * 
+	 * @param mSubstituteWeight the value of the edit distant operation
+	 *
+	 * @return
+	 */
+    public void setmSubstituteWeight(double mSubstituteWeight) {
+    	
+    	this.mSubstituteWeight = mSubstituteWeight;
+    	
+    }
+    
+    /**
+	 * get the weight of the insert edit distant operation
+	 * 
+	 * @return
+	 */
+    public double getmSubstituteWeight() {
+    	
+    	return this.mSubstituteWeight;
+    	
+    }
+    
+    /**
+	 * set the measure to be optimize during the training phase
+	 * 
+	 * @param measureToOptimize the measure to be optimized
+	 * 
+	 * @return
+	 */
+    public void setMeasureToOptimize(String measureToOptimize) {
+    	
+    	this.measureToOptimize = measureToOptimize;
+    	
+    }
+    
+    /**
+	 * get the measure to be optimize during the training phase
+	 * 
+	 * @return the name of the measure
+	 */
+    public String getMeasureToOptimize() {
+    	
+    	return this.measureToOptimize;
+    	
+    }
+    
+    /**
+	 * set the canonical name of the underlying class 
+	 * 
+	 * @param canonicalName the name
+	 *
+	 * @return
+	 */
+    protected void setCanonicalName(String canonicalName) {
+    	
+    	this.canonicalName = canonicalName;
+    	
+    }
+    
+    /**
+	 * get the canonical name of the underlying class 
+	 * 
+	 * @return the canonical name
+	 */
+    public String getCanonicalName() {
+    	
+    	return this.canonicalName;
+    	
+    }
+    
+	/**
+	 * get the language the EDA has to work with
+	 * 
+	 * @return the language
+	 */
 	public String getLanguage() {
+		
 		return this.language;
+		
 	}
 
+	/**
+	 * get the component used by the EDA
+	 * 
+	 * @return the component
+	 */
+	public FixedWeightEditDistance getComponent() {
+		
+		return this.component;
+		
+	}
+
+	/**
+	 * set the language the EDA has to work with
+	 * 
+	 * @param language the language
+	 * 
+	 * @return
+	 */
 	public void setLanguage(String language) {
+		
 		this.language = language;
+		
 	}
 
+	/**
+	 * get the model file
+	 * 
+	 * @return
+	 */
 	public String getModelFile() {
+		
 		return this.modelFile;
+		
 	}
 
+	/**
+	 * get the training data directory
+	 * 
+	 * @return the training directory
+	 */
 	public String getTrainDIR() {
+		
 		return this.trainDIR;
-	}
-
-	public String getTestDIR() {
-		return this.testDIR;
-	}
-
-	public double getThreshold() {
-		return this.threshold;
+		
 	}
 	
+	/**
+	 * get the test data directory
+	 * 
+	 * @return the test directory
+	 */
+	public String getTestDIR() {
+		
+		return this.testDIR;
+		
+	}
+	
+	/**
+	 * get the threshold value
+	 * 
+	 * @return the threshold
+	 */
+	public double getThreshold() {
+		
+		return this.threshold;
+		
+	}
+	
+	/**
+	 * get the accuracy obtained on the training data set
+	 * 
+	 * @return the accuracy
+	 */
+	protected double getTrainingAccuracy() {
+		
+		return this.trainingAccuracy;
+		
+	}
 	
 	/**
 	 * Construct an edit distance EDA.
 	 */
 	public EditDistanceEDA() {
     	
-		this.threshold = -1.0;
+		logger.info("EditDistanceEDA()");
+		
+		this.threshold = Double.NaN;
 		this.component = null;
-		
+        this.writeModel = true;
+        this.mMatchWeight = Double.NaN;
+        this.mDeleteWeight = Double.NaN;
+        this.mInsertWeight = Double.NaN;
+        this.mSubstituteWeight = Double.NaN;
+        this.trainDIR = null;
+        this.trainDIR = null;
+        this.modelFile = null;
+        this.language = null;
+        this.measureToOptimize = null;
+        this.canonicalName = null;
+        
     }
-
 	
-	/* 
-	 * @see EDABasic#initialize()
+	/**
+	 * Construct an edit distance EDA with the weights of the edit distance operations set
+	 * 
+	 * @param mMatchWeight weight for match
+	 * @param mDeleteWeight weight for delete
+	 * @param mInsertWeight weight for insert
+	 * @param mSubstituteWeight weight for substitute
+	 * 
 	 */
-	public void initialize (CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
+	public EditDistanceEDA(double mMatchWeight, double mDeleteWeight, double mInsertWeight, double mSubstituteWeight) {
 		
-		//ExampleLAP lap = null; 
+		this();
+		this.mMatchWeight = mMatchWeight;
+	    this.mDeleteWeight = mDeleteWeight;
+	    this.mInsertWeight = mInsertWeight;
+	    this.mSubstituteWeight = mSubstituteWeight;
 		
-        try {
+	}
+
+	@Override
+	public void initialize(CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
+		
+		try {
         	
-        	//modelFile = "./src/test/resources/EditDistanceEDA"
-    			//+ language;
-
-    		//trainDIR = "./target/" + language + "/dev/";
-    		//testDIR = "./target/" + language + "/test/";
-
-    		// initialize the model: if it's training, check the model file exsits;
-    		// if it's testing, read in the model
-    		
-        	// add 2 examples in the training set; it is a temporary solution to have a training set
-        	// for training the algorithm.
-    		/*
-        	lap = new ExampleLAP();
-			JCas jcas1 = lap.generateSingleTHPairCAS("The person is hired as a postdoc.","The person is hired as a postdoc.", "ENTAILMENT"); 
-			JCas jcas2 = lap.generateSingleTHPairCAS("The train was uncomfortable", "The train was comfortable", "NONENTAILMENT"); 
-			trainingSet = new ArrayList<JCas>(2);
-			trainingSet.add(jcas1); 
-			trainingSet.add(jcas2);
-			*/
-    		
+        	logger.info("initialize()");
+        	
+        	//checking the configuration file
 			checkConfiguration(config);
 			
-			//File f = new File("./src/test/resources/example_of_configuration_file.xml");
-			//ImplCommonConfig commonConfig = new ImplCommonConfig(f);
+			//setting the canonical name
+			if (this.canonicalName == null)
+				setCanonicalName(this.getClass().getCanonicalName());
 			
-			NameValueTable nameValueTable = config.getSection(this.getClass().getCanonicalName());
+			//getting the name value table of the EDA
+			NameValueTable nameValueTable = config.getSection(getCanonicalName());
 			
-			modelFile = nameValueTable.getString("modelFile");
-			//training or test
+			//setting the training directory
+			if (this.trainDIR == null)
+				this.trainDIR = nameValueTable.getString("trainDir");
 			
-			trainDIR = nameValueTable.getString("trainDir");
+			//setting the test directory
+			if (this.testDIR == null)
+				this.testDIR = nameValueTable.getString("testDir");
 			
-			testDIR = nameValueTable.getString("testDir");
+			//initializing the weight of the edit distant operations
+			initializeWeights(config);
 			
-			//nameValueTable = config.getSection("FixedWeightTokenEditDistance");
-			component = new FixedWeightTokenEditDistance(config);
+			//component initialization
+			String componentName  = nameValueTable.getString("components");
+			if (component == null) {
+				
+				try {
+					
+					Class<?> componentClass = Class.forName(componentName);
+					logger.info("Using:" + componentClass.getCanonicalName());
+					Constructor<?> componentClassConstructor = componentClass.getConstructor(CommonConfig.class);
+					this.component = (FixedWeightEditDistance) componentClassConstructor.newInstance(config);
+					this.component.setmMatchWeight(mMatchWeight);
+					this.component.setmDeleteWeight(mDeleteWeight);
+					this.component.setmInsertWeight(mInsertWeight);
+					this.component.setmSubstituteWeight(mSubstituteWeight);
+					
+				} catch (Exception e) {
+					throw new ComponentException(e.getMessage());
+				}
+				
+			}
+			
+			//setting the model file
+			if (this.modelFile == null)
+				this.modelFile = nameValueTable.getString("modelFile") + "_" + component.getComponentName() + "_" + component.getInstanceName();
+			
+			//setting the measure to be optimized
+			if (this.measureToOptimize == null)
+				this.measureToOptimize = nameValueTable.getString("measure");
 			
 		} catch (ConfigurationException e) {
-			throw e;
-		} catch (ComponentException e) {
 			throw e;
 		} catch (Exception e) {
 			throw new EDAException(e.getMessage());
 		}
-		
+	
 	}
 	
-	
-	/* 
-	 * @see EDABasic#process()
-	 */
-	public IEditDistanceTEDecision process(JCas jcas) throws EDAException, ComponentException {
+	@Override
+	public EditDistanceTEDecision process(JCas jcas) throws EDAException, ComponentException {
+		
+		//logger.info("process()");
 		
 		try {
-			if (threshold == -1.0) {
-				//System.err.println("loading model ...");
-				threshold = loadModel(new File(modelFile));
-				//System.err.println("done.");
+			
+			if (Double.isNaN(this.threshold) == true) {
+				
+				//loading the model produced during the training phase
+				//it contains the thresholds as well as the weight of the 
+				//edit distance operations 
+				loadModel();
+				this.component.setmMatchWeight(this.mMatchWeight);
+				this.component.setmDeleteWeight(this.mDeleteWeight);
+				this.component.setmInsertWeight(this.mInsertWeight);
+				this.component.setmSubstituteWeight(this.mSubstituteWeight);
+				
 			}
+			
 		} catch(IOException e) {
 			throw new EDAException(e.getMessage());
 		}
 			
 		String pairId = getPairId(jcas);
 		
-		DistanceValue distanceValue =  component.calculation(jcas);
+		//the distance between the T-H pair
+		DistanceValue distanceValue = component.calculation(jcas);
 		double distance = distanceValue.getDistance();
-		
-		// System.err.println("distance:" + distance);
 		
 		// During the test phase the method applies the threshold, so that
 		// pairs resulting in a distance below the threshold are classiﬁed as ENTAILMENT, while pairs 
 		// above the threshold are classiﬁed as NONENTAILMENT.
-		if (distance <= threshold)
+		if (distance <= this.threshold)
 			return new EditDistanceTEDecision(DecisionLabel.Entailment, pairId, threshold - distance);
 		
 		return new EditDistanceTEDecision(DecisionLabel.NonEntailment, pairId, distance - threshold);
 		
 	}
 	
-	
-	/* 
-	 * @see EDABasic#shutdown()
-	 */
+	@Override
 	public void shutdown() {
 		
-		if (component.getComponentName().equals("FixedWeightTokenEditDistance"))
-			((FixedWeightTokenEditDistance)component).shutdown();
+		logger.info("shutdown()");
+		
+	    ((FixedWeightEditDistance)component).shutdown();
+		
+		this.threshold = Double.NaN;
+		this.component = null;
+        this.writeModel = true;
+        this.mMatchWeight = Double.NaN;
+        this.mDeleteWeight = Double.NaN;
+        this.mInsertWeight = Double.NaN;
+        this.mSubstituteWeight = Double.NaN;
+        this.trainDIR = null;
+        this.trainDIR = null;
+        this.modelFile = null;
+        this.language = null;
+        this.measureToOptimize = null;
+        this.canonicalName = null;
 		
 	}
 	
-	
-	/* 
-	 * @see EDABasic#startTraining()
-	 */
-	public void startTraining(CommonConfig c) throws ConfigurationException, EDAException, ComponentException {
+	@Override
+	public void startTraining(CommonConfig config) throws ConfigurationException, EDAException, ComponentException {
+		
+		logger.info("startTraining()");
 		
 		try {
-			logger.info("The trained model will be stored in "
-					+ modelFile);
-			logger.info("Start training ...");
-			//threshold = loadModel(new File(modelFile));
+			
+			initialize(config);
+			
+			//contains the distance between each pair of T-H
 			List<DistanceValue> distanceValueList = new ArrayList<DistanceValue>();
+			//contains the entailment annotation between each pair of T-H
 			List<String> entailmentValueList = new ArrayList<String>();
 			
-			for (File xmi : (new File(trainDIR)).listFiles()) {
+			for (File xmi : new File(trainDIR).listFiles()) {
 				if (!xmi.getName().endsWith(".xmi")) {
 					continue;
 				}
 				
 				JCas cas = PlatformCASProber.probeXmi(xmi, null);
+					
 				getDistanceValues(cas, distanceValueList);
 				getEntailmentAnnotation(cas, entailmentValueList);
-				//System.err.println(distanceValueList.size());
+				
 			}
+		
+			//array of two elements; the first element is the calculated threshold whereas the
+			//second one is the obtained accuracy
+			double[] thresholdAndAccuracy = 
+					sequentialSearch(distanceValueList, entailmentValueList, measureToOptimize);
 			
-			threshold = sequentialSearch(distanceValueList, entailmentValueList);
+			this.threshold = thresholdAndAccuracy[0];
+			this.trainingAccuracy = thresholdAndAccuracy[1];
 			
-			saveModel(new File(modelFile), threshold);
-			// System.err.println("threshold:" + threshold);
-			
-			logger.info("done.");
+			if (this.writeModel == true)
+				saveModel();
 			
 		} catch (ConfigurationException e) {
 			throw e;
@@ -261,64 +589,72 @@ public class EditDistanceEDA<T extends TEDecision>
 		} catch (ComponentException e) {
 			throw e;
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new EDAException(e.getMessage());
 		}
 		
 	}
 	
-	
 	/**
      * Checks the configuration and raise exceptions if the provided
-     * configuration is not compatible with this class.
+     * configuration is not compatible with this class
+     * 
+     * param config the configuration
      *
-     * @throws ConfigurationException If an input or output exception occurred.
+     * @throws ConfigurationException
      */
 	private void checkConfiguration(CommonConfig config) 
 			throws ConfigurationException {
 		
+		//logger.info("checkConfiguration()");
+		
+		if (config == null)
+			throw new ConfigurationException("Configuration file not available.");
+		
 	}
 	
-	
 	/**
-     * Returns the threshold that best separates the positive and negative examples in the training data.
+     * Returns the threshold that best separates the positive and negative examples in the training data
      * 
-     * @return The threshold
+     * @return the threshold and the accuracy
+     * 
      * @throws ComponentException, EDAException, Exception
      */
-	private double sequentialSearch(List<DistanceValue> distanceValueList, List<String> entailmentValueList) 
+	private double[] sequentialSearch(List<DistanceValue> distanceValueList, List<String> entailmentValueList, String measureToOptimize) 
 			throws ComponentException, EDAException, Exception {
 		
-		//System.err.println("sequential search ...");
+		//double[0] is the calculated threshold
+		//double[1] is the accuracy or the f1 measure
+		double[] results = new double[2];
 		
-		double threshold = 0.0;
+		double accuracy = 0.0; //accuracy = (tp+tn)/(tp + fp + fn + tn);
+		double accuracyThreshold = -1.0; //the threshold used to obtain the calculated accuracy
+		double maxAccuracy = 0.0; //the max value of accuracy
+		double f1 = 0.0; //f1 measure = (2 * precision * recall)/(precision + recall);
+		double f1Threshold = -1.0; //the threshold used to obtain the calculated f1
+		double maxF1 = 0.0; //the max value of f1
+		double recall = 0.0;
+		double precision = 0.0;
+		
+		if ( (distanceValueList != null && entailmentValueList != null) &&
+				(distanceValueList.size() == 0 || entailmentValueList.size() == 0) ||
+				distanceValueList == null || entailmentValueList == null) {
+			results[0] = 0.0;
+			results[1] = 0.0;
+			
+			return results;
+		}
 		
 		try {
-		
-			//List<DistanceValue> distanceValueList = getDistanceValues(jcasList);
-			//List<String> entailmentValueList = getEntailmentAnnotation(jcasList);
 			
-			// the distanceValueList sorted in increasing order
 			List<DistanceValue> sortedDistanceValueList = sortDistanceValues(distanceValueList);
-			
-			//System.err.println(sortedDistanceValueList.get(0).getDistance());
-			//System.err.println(sortedDistanceValueList.get(1).getDistance());
-			//System.err.println(sortedDistanceValueList.get(2).getDistance());
-			//System.err.println(sortedDistanceValueList.get(3).getDistance());
-			//System.exit(0);
 			
 			// get the smallest distance value. It is the first element of the array.
 			double min = getMinimum(sortedDistanceValueList);
-			// System.err.println("min:" + min);
 			// get the largest distance value. It is the last element of the array.
 			double max = getMaximum(sortedDistanceValueList);
-			// System.err.println("max:" + max);
 			// get the increment
-			double increment = getIncrement(sortedDistanceValueList)/2;
-			// System.out.println("increment:" + increment);
+			double increment = getIncrement(sortedDistanceValueList);
 			
-			double accuracy = 0.0;
-			double maxAccuracy = 0.0;
 			// true positive
 			double tp = 0; 
 			// false positive
@@ -329,8 +665,7 @@ public class EditDistanceEDA<T extends TEDecision>
 			double fn = 0;
 
 			// Searching the threshold begins at a lower bound (i.e. min) and
-			// increments by a step size up to an upper bound (i.e. max). 
-			//System.err.println("min:" + min + "\t" + "max:" +max + "\t" + "increment:" + increment);
+			// increments by a step size up to an upper bound (i.e. max).
 			for (double i = min; i <= max; i = i + increment) {
 				for (int j = 0; j < distanceValueList.size(); j++) {
 					double distanceValue = distanceValueList.get(j).getDistance();
@@ -346,41 +681,51 @@ public class EditDistanceEDA<T extends TEDecision>
 						else
 							tn = tn + 1;
 				}
-				accuracy = (tp+tn)/(tp + fp + fn + tn);
-				if (accuracy >= maxAccuracy) {
+				
+				accuracy = (tp + fp + fn + tn == 0) ? 0 : (tp+tn)/(tp + fp + fn + tn);
+				precision = (tp + fp == 0) ? 0 : tp / (tp + fp);
+				recall = (tp + fn == 0) ? 0 : tp / (tp + fn);
+				f1 = (precision + recall == 0) ? 0: (2 * precision * recall)/(precision + recall);
+				
+				if (accuracy > maxAccuracy) {
 					maxAccuracy = accuracy;
-					threshold = i;
+					accuracyThreshold = i;
+				}
+				if (f1 > maxF1) {
+					maxF1 = f1;
+					f1Threshold = i;
 				}
 				
 			    tp = 0; 
 				fp = 0; 
 				tn = 0; 
 				fn = 0;
-						 	
+				
 			}
 			
-			//System.err.println(maxAccuracy);
-			//System.err.println(threshold);
-			
-		//} catch(EDAException e) {
-			//throw e;
-		//} catch(ComponentException e) {
-			//throw e;
 		} catch(Exception e) {
 			throw e;
 		}
 		
-		//System.err.println("done.");
-		return threshold;
+		if (measureToOptimize.equals("f1")) {
+			results[0] = f1Threshold;
+			results[1] = maxF1;
+		}
+		else {
+			results[0] = accuracyThreshold;
+			results[1] = maxAccuracy;
+		}
+		
+		return results;
 		
 	}
 	
-	
 	/**
-     * Returns the distance between the two closest elements in the specified sorted list.
+     * Returns the distance between the two closest elements in the specified sorted list
      *
-     * @param sortedDistanceValueList The sorted list
-     * @return The distance.
+     * @param sortedDistanceValueList the sorted list
+     * 
+     * @return the distance
      */
 	private double getIncrement(List<DistanceValue> sortedDistanceValueList) {
 		
@@ -393,16 +738,23 @@ public class EditDistanceEDA<T extends TEDecision>
 				result = diff;
 		}
 		
+		result = result/2;
+		
+		if (result < minIncrement) {
+			result = minIncrement;
+			logger.info("the increment to find the threshold is below the default value; using default");
+		}
+		
 		return result;
 		
 	}
 	
-	
 	/**
-     * Returns the minimum value in the specified sorted list.
+     * Returns the minimum value in the specified sorted list
      *
-     * @param sortedDistanceValueList The sorted list.
-     * @return The minimum.
+     * @param sortedDistanceValueList the sorted list
+     * 
+     * @return the minimum
      */
 	private double getMinimum(List<DistanceValue> sortedDistanceValueList) {
 		
@@ -410,12 +762,12 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 	}
 	
-	
 	/**
-     * Returns the maximum value in the specified sorted list.
+     * Returns the maximum value in the specified sorted list
      *
-     * @param sortedDistanceValueList The sorted list.
-     * @return The maximum.
+     * @param sortedDistanceValueList the sorted list
+     * 
+     * @return the maximum
      */
 	private double getMaximum(List<DistanceValue> sortedDistanceValueList) {
 		
@@ -423,33 +775,35 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 	}
 	
-	
 	/**
      * Returns the pair identifier of the pair contained in the specified CAS
      *
-     * @param aCas The CAS
-     * @return The pair identifier
+     * @param jcas the CAS
+     * 
+     * @return the pair identifier
      */
 	private String getPairId(JCas jcas) {
 		
-		Pair p = null;
-		
 		FSIterator<TOP> pairIter = jcas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		
+		Pair p = null;
 		if (pairIter.hasNext())
 			p = (Pair)pairIter.next();
 		
-		return p.getPairID();
+		if (p != null)
+			return p.getPairID();
 	
+		return null;
+		
 	}
-	
 	
 	/**
      * Returns a copy of the specified list sorted in increasing order from smallest
-     * to largest.
+     * to largest
      *
-     * @param distanceValues The list of distance values.
-     * @return A copy of the specified list sorted in increasing order.
+     * @param distanceValues the list of distance values
+     * 
+     * @return a copy of the specified list sorted in increasing order
      */
 	private List<DistanceValue> sortDistanceValues(List<DistanceValue> distanceValues) {
 		
@@ -460,8 +814,8 @@ public class EditDistanceEDA<T extends TEDecision>
 		Collections.sort(newDistanceValues, new Comparator<DistanceValue>(){
 			 
             public int compare(DistanceValue d1,  DistanceValue d2) {
-                return (d1.getDistance() > d2.getDistance() ? 1 :
-                	(d1.getDistance() == d2.getDistance() ? 0 : -1));
+                return d1.getDistance() > d2.getDistance() ? 1 :
+                	d1.getDistance() == d2.getDistance() ? 0 : -1;
             }
   
         });
@@ -470,37 +824,38 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 	}
 	
-	
 	/**
-     * Returns the list of distance values calculating for each of the pair T and H
-     * of the specified list of Cas. Each of the Cas of the list contains a single pair T-H.
+     * Puts distance values calculating for each of the pair T and H
+     * of the specified list of Cas into the distanceValues list. 
+     * Each of the Cas of the list contains a single pair T-H
      *
-     * @param aCasList The specified list of Cas.
-     * @return The list of distance values.
+     * @param jcas the list of CAS
+     * @param distanceValues the list of the distance values
+     * 
      * @throws DistanceComponentException
      */
 	private void getDistanceValues(JCas jcas, List<DistanceValue> distanceValues)
 			throws DistanceComponentException {
 	
 		try {
-			
+
 				DistanceValue distanceValue = component.calculation(jcas);
-				//System.err.println(distanceValue.getDistance());
 				distanceValues.add(distanceValue);
-			
+
 		} catch(DistanceComponentException e) {
 			throw e;
 		}
 			
 	}
 		
-	
 	/**
-     * Returns the list of entailment annotations calculating of each of the pair T and H
-     * of the specified list of Cas. Each of the Cas of the list contains a single pair T-H.
+     * Puts the entailment annotations calculating of each of the pair T and H
+     * of the specified list of Cas into the entailmentValueList list. 
+     * Each of the Cas of the list contains a single pair T-H.
      *
-     * @param aCasList The specified list of Cas.
-     * @return The list of the annotations.
+     * @param jcas the list of CAS
+     * @aram entailmentValueList the list of the entailment annotations
+     * 
      * @throws Exception
      */
 	private void getEntailmentAnnotation(JCas jcas, List<String> entailmentValueList) 
@@ -520,140 +875,71 @@ public class EditDistanceEDA<T extends TEDecision>
 		}
 			
 				
-	}
-			
+	}	
 	
 	/**
-	 * The pocket algorithm ia a variant of the perceptron algorithm that can be used also for non-separable data sets.
-	 * It keeps the best solution seen so far "in its pocket". The pocket algorithm then returns the solution in the pocket, 
-	 * rather than the last solution.
-	 *
-	 * @param tDeleted Token deleted.
-	 * @return Weight of deleting token.
-	 */
-	public double[] pocketAlgortihm(List<JCas> jcasList) 
-			throws ComponentException, EDAException, Exception {
-		
-		double threshold = 0.5;
-		int maxNumberOfIterations = 1000;
-		double learning_rate = 0.01;
-		
-		double[][] training = {{1, 0}, {2, 0}, {3, 0}, {4, 0}, {5, 0}};
-		int[] annotation = {0, 0, 0, 1, 1};
-		
-		int bestRunLength = 0;
-        int currentRunLength = 0;
-		double[] bestWeights = {0, 0};
-		double[] weights = {0, 0};
-		int k = 0;
-		double error = 0.0;
-		double result;
-		
-		while (true) {
-			k = k + 1;
-			int errorCount = 0;
-			for (int i = 0; i < training.length; i++) {
-				if (sum(training[i], weights) > threshold)
-					result = 1.0;
-				else
-					result = 0.0;
-				error = annotation[i] - result;
-				if (error != 0.0) {
-					errorCount = errorCount + 1;
-					for (int j = 0; j < training[i].length; j++) {
-						double value = training[i][j];
-						weights[j] = weights[j] + learning_rate * error * value;
-					}
-				}           
-				else {
-					currentRunLength = currentRunLength + 1;
-					if (bestRunLength < currentRunLength) {
-						bestRunLength = currentRunLength;
-						currentRunLength = 0;
-						bestWeights = Arrays.copyOf(weights, weights.length);
-					}
-				}
-				
-			}
-						
-			if (errorCount == 0 || k > maxNumberOfIterations)
-				break;
-			
-		}
-		
-		return bestWeights;
-		
-	}
-	
-	
-	/**
-     * Returns the constant weight of deleting the specified token.
-     *
-     * @param tDeleted Token deleted.
-     * @return Weight of deleting token.
+     * Load the model file; it is in the form:
+     * mMatchWeight mDeleteWeight mInsertWeight mSubstituteWeight
+     * threshold
+     * 
+     * e.g.
+     * 
+     * 0.0 0.0 1.5566075332293894 2.253013704847971
+	 * 0.4000000000000003
      */
-	private double sum(double[] trainingExample, double[] weights) {
+	private void loadModel() throws IOException {
 		
-		double sum = 0;
-		
-		for (int i = 0; i < trainingExample.length; i++) {
-			
-			sum = sum + trainingExample[i] * weights[i];
-			
-		}
-		
-		return sum;
-		
-	}
-	
-	
-	private double loadModel(File modelFile) throws IOException {
-		
-		double result = -1.0;
-		
+		//logger.info("loadModel()");
 		BufferedReader reader = null; 
 		
 		try {
 			
-			reader = new BufferedReader(new FileReader(modelFile));
+			reader = new BufferedReader(
+	                   new InputStreamReader(new FileInputStream(modelFile), "UTF-8"));
+			
 			String line = reader.readLine();
-			//lettura delle linee del file
-			while (line != null) {
-				result = Double.parseDouble(line);
-				break;
+			
+			if (line != null) {
+				String[] weights = line.split(" ");
+				this.mMatchWeight = Double.parseDouble(weights[0]);
+				this.mDeleteWeight = Double.parseDouble(weights[1]);
+				this.mInsertWeight = Double.parseDouble(weights[2]);
+				this.mSubstituteWeight = Double.parseDouble(weights[3]);
+				line = reader.readLine();
+				if (line != null)
+					this.threshold = Double.parseDouble(line);
 			}
-		
+			
 		} catch (Exception e) {
-			//System.err.println(e.getMessage());
 			throw new IOException(e.getMessage());
 		} finally { 
 			if (reader != null)
 				reader.close();
 		}
 	
-		return result;
-		
 	}
 	
 	
-	public void saveModel(File modelFile, double threshold) throws IOException {
+	/**
+     * Save the model file containing the threshold value
+     */
+	private void saveModel() throws IOException {
     	
-		//System.err.println("save model:" + modelFile.getCanonicalPath());
+		//logger.info("saveModel()");
 		
     	BufferedWriter writer = null;
     	
     	try {
     		
-    		//creo un oggetto FileWriter...
-	    	// ... che incapsulo in un BufferedWriter...
-	    	writer = new BufferedWriter(new FileWriter(modelFile));
-	    	// ... che incapsulo in un PrintWriter
+	    	writer = new BufferedWriter(new OutputStreamWriter(
+	                  new FileOutputStream(modelFile), "UTF-8"));
+
 	    	PrintWriter printout = new PrintWriter(writer);
-	    	printout.print(threshold);
+	    	printout.println(this.mMatchWeight + " " + this.mDeleteWeight + " " + this.mInsertWeight + " " + this.mSubstituteWeight);
+	    	printout.println(this.threshold);
 	    	printout.close();
 	    	
     	} catch (Exception e) {
-    		//System.err.println(e.getMessage());
     		throw new IOException(e.getMessage());
     	} finally {
     		if (writer != null)
@@ -663,37 +949,41 @@ public class EditDistanceEDA<T extends TEDecision>
     }
 	
 	
-    // public static void main(String[] args) {
-		
-		
-		// EditDistanceEDA edit = new EditDistanceEDA();
-		// double[] result = edit.pocketAlgortihm();
-		// System.err.println(result[0] + " " + result[1]);
-		
-		
-	// 	CommonConfig config = null;
-		
-	// 	try {
-			
-	// 		edit.initialize(config);
-	// 		System.out.println("training ...");
-	// 		edit.startTraining(config);
-	// 		System.out.println("calculated threshold:" + edit.threshold);
-	
-	// 		String t = "The train was unconfortable.";
-	// 		String h = "The train was expensive.";
-		
-	// 		CasCreation cas1 = new CasCreation(t, h, "NONENTAILMENT");
-			
-	// 		System.out.println("annotating:");
-	// 		System.out.println("T:" + t);
-	// 		System.out.println("H:" + h);
-	// 		System.out.println("decision:" + edit.process(cas1.create()).getDecision());
-		
-	// 	}catch(Exception e) {
-	// 		e.printStackTrace();
-	// 	}
-		
-	//}
+	/**
+     * Initialize the weights of the edit distance operations
+     * 
+     * If all the values of the 4 edit distance operation are defined they are used
+     * to calculate edit distance. Otherwise the weights are read from the configuration file.  
+     * 
+     * @param config the configuration
+     * 
+     */
+    private void initializeWeights(CommonConfig config) {
+
+    	//if they weights have already been set use those weights 
+    	if (Double.isNaN(this.mMatchWeight) == false && Double.isNaN(this.mDeleteWeight) == false &&
+    			Double.isNaN(this.mInsertWeight) == false && Double.isNaN(this.mSubstituteWeight) == false)
+    		return;
+    	
+    	//otherwise read the weights from the configuration file
+    	try{ 
+    		
+    		NameValueTable weightsTable = config.getSection(this.getClass().getCanonicalName());
+    		
+    		this.mMatchWeight = weightsTable.getDouble("match");
+    		this.mDeleteWeight = weightsTable.getDouble("delete");
+    		this.mInsertWeight = weightsTable.getDouble("insert");
+    		this.mSubstituteWeight = weightsTable.getDouble("substitute");
+    		
+    	} catch (Exception e) {
+    		
+    		logger.info("Could not find weights section in configuration file, using defaults");
+    		this.mMatchWeight = 0.0;
+    		this.mDeleteWeight = 0.0;
+    		this.mInsertWeight = 1.0;
+    		this.mSubstituteWeight = 1.0;
+    		
+    	}
+    }
 	
 }

@@ -70,7 +70,7 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			underlyingSystem.init();
 			logger.info("Initializing BIUTEE underlying system - done.");
 		}
-		catch (IOException | TeEngineMlException | PluginAdministrationException | eu.excitementproject.eop.common.utilities.configuration.ConfigurationException | LemmatizerException | ExcitementToBiuConfigurationFileConverterException e)
+		catch (Exception e)
 		{
 			throw new EDAException("Initialization failure. See nested exception.",e);
 		}
@@ -168,7 +168,6 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 				{
 					try{biuConfigurationFile.delete();}catch(RuntimeException e){}
 				}}
-
 			}
 
 

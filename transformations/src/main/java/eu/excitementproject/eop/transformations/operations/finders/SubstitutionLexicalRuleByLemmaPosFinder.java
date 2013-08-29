@@ -7,8 +7,8 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultSyntacticInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.ByLemmaPosLexicalRuleBase;
@@ -208,7 +208,7 @@ public class SubstitutionLexicalRuleByLemmaPosFinder<T extends LexicalRule> impl
 	private void findSpecs() throws TeEngineMlException, RuleBaseException
 	{
 		this.specs = new LinkedHashSet<RuleSubstituteNodeSpecification<T>>();
-		for (ExtendedNode node : AbstractNodeUtils.treeToSet(treeAndParentMap.getTree()))
+		for (ExtendedNode node : TreeIterator.iterableTree(treeAndParentMap.getTree()))
 		{
 			if (isRelevantNode(node))
 			{

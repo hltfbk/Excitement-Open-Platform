@@ -17,7 +17,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.UUID;
@@ -89,6 +89,7 @@ public class ParserGui extends JFrame implements ActionListener
 	private final static Class<? extends NodeString<Info>> nodeStringClass = null;
 	//private final static Class<? extends NodeAndEdgeString> nodeAndEdgeStringClass = LemmaPosRelNodeAndEdgeString.class;
 	private final static Class<? extends NodeAndEdgeString<Info>> nodeAndEdgeStringClass = IdLemmaPosRelNodeAndEdgeString.class;
+	//private final static Class<? extends NodeAndEdgeString<Info>> nodeAndEdgeStringClass = NoAntLemmaPosRelNodeAndEdgeString.NoAntLemmaCanonicalPosRelNodeAndEdgeString.class;
 	//private final static Class<? extends NodeAndEdgeString<Info>> nodeAndEdgeStringClass = IdLemmaPosCanonicalRelNodeAndEdgeString.class;
 
 	///////////////// nested classes //////////////////////
@@ -396,7 +397,7 @@ public class ParserGui extends JFrame implements ActionListener
 			}
 			
 			EnvironmentVerifier verifier = new EnvironmentVerifier();
-			Set<String> items = new HashSet<String>();
+			Set<String> items = new LinkedHashSet<String>();
 			items.add(GRAPH_VIZ_PROGRAM_NAME);
 			verifier.setItemsToVerify(items);
 			if (!verifier.verifyExecutables())

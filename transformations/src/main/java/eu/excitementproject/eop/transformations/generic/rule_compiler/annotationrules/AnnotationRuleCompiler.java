@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -140,7 +140,7 @@ public final class AnnotationRuleCompiler
 	{
 		// first add all the rules into a set, to eliminate duplicates. Then put 'em in  a list
 		Set<AnnotationRuleWithDescription<ExtendedNode, BasicRuleAnnotations>> setOfRulesWithCD = 
-				new HashSet<AnnotationRuleWithDescription<ExtendedNode, BasicRuleAnnotations>>();
+				new LinkedHashSet<AnnotationRuleWithDescription<ExtendedNode, BasicRuleAnnotations>>();
 		String description = RuleCompilerUtils.getDescription(file);
 		
 		String origText;

@@ -98,8 +98,8 @@ public class SamplingUtils {
 	public static <T> Set<T> pickRandomSample(List<T> items, int sampleSize) {   
 		int n = items.size();
 		if (sampleSize>=n)
-			return new HashSet<T>(items);  // return all items as sample
-		HashSet<T> res = new HashSet<T>(sampleSize); 
+			return new LinkedHashSet<T>(items);  // return all items as sample
+		LinkedHashSet<T> res = new LinkedHashSet<T>(sampleSize); 
 		for(int i=n-sampleSize;i<n;i++) {
 			int pos = random.nextInt(i+1);
 			T item = items.get(pos);

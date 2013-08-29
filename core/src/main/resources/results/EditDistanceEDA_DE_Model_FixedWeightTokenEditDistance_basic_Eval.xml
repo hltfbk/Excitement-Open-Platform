@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><Result EDA_Configuration="EditDistanceEDA_DE_Model_FixedWeightTokenEditDistance_basic_Result.txt">
+<Total_Pairs>800</Total_Pairs>
+<Accuracy>0.59875</Accuracy>
+<Positive_Pairs Number="409">
+<Precision>0.58870965</Precision>
+<Recall>0.71393645</Recall>
+<F_Measure>0.64530385</F_Measure>
+<Classified_As_Positive>292</Classified_As_Positive>
+<Classified_As_Negative>117</Classified_As_Negative>
+</Positive_Pairs>
+<Negative_Pairs Number="391">
+<Precision>0.61513156</Precision>
+<Recall>0.47826087</Recall>
+<F_Measure>0.5381295</F_Measure>
+<Classified_As_Positive>204</Classified_As_Positive>
+<Classified_As_Negative>187</Classified_As_Negative>
+</Negative_Pairs>
+</Result>

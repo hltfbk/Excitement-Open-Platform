@@ -6,9 +6,9 @@ import java.io.IOException;
 
 /** La classe TextProHandler fornisce dei metodi di utilita`
  * per la gestione di TextPro.
- *
- * @author
- * @author
+ * 
+ * @author Roberto Zanoli (FBK)
+ * @author Vivi Nastase (FBK)
  * @version 0.1, 2005
  */
 public class TextProHandler {
@@ -31,15 +31,13 @@ public class TextProHandler {
     private static final String TEMP_FILENAME_OUT = TEMP_FILENAME + ".txp";
     
     //.log file
-//    private static final String TEMP_FILENAME_LOG = TEMP_FILENAME + ".log";
+    //    private static final String TEMP_FILENAME_LOG = TEMP_FILENAME + ".log";
     
     //directory dei file temporanei
-    private static final String TEMP_PATH = "../lap/src/main/resources/TextPro/";
-    //private static final String TEMP_PATH = "/home/k9/Desktop/TextProLinux1.4.3/tmp/";
+    private static final String TEMP_PATH = "/tmp/";
     
     //Variabili Globali: TEXTPRO, YAMCHA_HOME e PATH
     private static String[] CONFIG = {"TEXTPRO=" + ""};
-    //private static final String[] CONFIG = {"TEXTPRO=" + "/home/k9/Desktop/TextProLinux1.4.3/", "YAMCHA_HOME=" + "/home/k9/Desktop/TextProLinux1.4.3/yamChaM1-0.33/yamcha-0.33/", "PATH=" + "/usr/bin/" + ":."};
 
     
     
@@ -113,17 +111,14 @@ public class TextProHandler {
         
         //Chiamata di TextPro
         String[] textpro = {"/bin/tcsh", "-c", TEXTPRO + "/textpro.pl" + " " + parameters + " -o " + TEMP_PATH + " " + TEMP_PATH + "/" + TEMP_FILENAME };
-        //getStatistic(text, parameters);
         
         //rimuove eventuali analisi precedenti
         remove(TEMP_PATH +  TEMP_FILENAME_OUT);
 
         //salva il testo da analizzare su file
-//        System.out.println("Text saved to " + TEMP_PATH + TEMP_FILENAME);
         save(TEMP_PATH + TEMP_FILENAME, text);
 
         //analizza il testo chiamando TextPro
- //       System.out.println("Running configuration: \n\t" + textpro[0] + " " + textpro[1] + " " + textpro[2] + "\n\n\t" + CONFIG[0]);
         run(textpro, CONFIG);
         
         //legge il testo analizzato da TextPro
@@ -162,7 +157,6 @@ public class TextProHandler {
     	String[] command = {"-a", "-c", "-d", "-eos", "-h", "-html", "-l", "-n", "-nk", "-no_abstract_lemma", "-o", "-r", "-s", "-tmp", "-u", "-v", "-y", "ym", "tnt", "ita", "eng", "token", "tokenid", "tokenstart", "tokenend", "sentence", "pos", "morpho", "lemma", "chunk", "entity", "wnpos", "comp_morpho", "full_morpho"};
     	
     	String[] parameterList = (parameters.replaceAll("\\s", "\\+")).split("\\+");
-//    	System.err.println(parameters.replaceAll("\\s", "\\+"));
     	for (int j = 0; j < parameterList.length; j++) {
     		check = false;
     		for (int i = 0; i < command.length; i++) {
@@ -268,12 +262,8 @@ public class TextProHandler {
  	   
        try {
     	   TextProHandler txp = new TextProHandler();
-    	   //System.out.println("check parameters:" + txp.checkParameters(par));
-           //analizza con TextPro la seguente frase: Harry Redknapp tells BBC Sport he is close to becoming the new manager of Queens Park Rangers.
     	   System.err.println(txp.getAnalysis("Harry Redknapp tells BBC Sport he is close to becoming the new manager of Queens Park Rangers.\n", "-l eng -y -c token+sentence+pos+entity"));
-           //legge un documento da file e lo analizza con textpro
            System.err.println(txp.getAnalysis(LOADER.loadText("/destromath0/tcc/TextProLinux1.4.3/tmp/esempio"), "-l ita -y -c token+sentence+pos+entity"));
-           //System.err.println(txp.getAnalysis(LOADER.loadText("/home/k9/Desktop/TextProLinux1.4.3/tmp/esempio"), "-l ita -y -c token+sentence+pos+entity"));
            
        } catch (Exception e) { 
     	   System.err.println(e.getMessage()); 

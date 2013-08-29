@@ -13,13 +13,14 @@ import eu.excitement.type.entailment.Pair;
 import eu.excitement.type.entailment.Text;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassificationType;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
-import eu.excitementproject.eop.lap.biu.ae.CasTreeConverter;
-import eu.excitementproject.eop.lap.biu.ae.CasTreeConverterException;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
 import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
 
 /**
@@ -37,8 +38,9 @@ public class CasPairDataConverter {
 	 * @throws CasTreeConverterException
 	 * @throws UnsupportedPosTagStringException
 	 * @throws CASException
+	 * @throws EDAException 
 	 */
-	public static PairData convertCasToPairData(JCas jcas) throws CasTreeConverterException, UnsupportedPosTagStringException, CASException {
+	public static PairData convertCasToPairData(JCas jcas) throws CasTreeConverterException, UnsupportedPosTagStringException, CASException, EDAException {
 		Pair pairAnno = JCasUtil.selectSingle(jcas, Pair.class);
 		Text textAnno = pairAnno.getText();
 		Hypothesis hypothesisAnno = pairAnno.getHypothesis();
@@ -57,7 +59,7 @@ public class CasPairDataConverter {
 		RTEClassificationType gold = null;
 		String goldString = pairAnno.getGoldAnswer();
 		if (goldString != null) {
-			DecisionLabel goldDecision = DecisionLabel.valueOf(goldString);
+			DecisionLabel goldDecision = DecisionLabel.getLabelFor(goldString);
 			gold = DecisionTypeMap.toRTEClassificationType(goldDecision);
 		}
 		
@@ -66,7 +68,7 @@ public class CasPairDataConverter {
 		Map<BasicNode, String> mapTreesToSentences = converter.getTreesToSentences();
 		
 		Sentence hypothesisSentence = JCasUtil.selectSingle(hypothesisView, Sentence.class);
-		BasicNode hypothesisTree = converter.convertSentenceToTree(hypothesisView, hypothesisSentence);
+		BasicNode hypothesisTree = converter.convertSingleSentenceToTree(hypothesisView, hypothesisSentence);
 		
 		// Currently not supporting coreference information - using empty map
 		TreeCoreferenceInformation<BasicNode> coreferenceInformation = new TreeCoreferenceInformation<BasicNode>();

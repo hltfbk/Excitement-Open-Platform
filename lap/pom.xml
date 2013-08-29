@@ -5,7 +5,7 @@
   	<parent>
 		<groupId>eu.excitementproject</groupId>
 	  	<artifactId>eop</artifactId>
-	    <version>0.1-SNAPSHOT</version>
+	    <version>1.0.3-SNAPSHOT</version>
 	</parent>
   
   	<artifactId>lap</artifactId>
@@ -18,6 +18,13 @@
 			<name>DKPro repository</name>
           	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
      	</repository>
+     <!--  
+     	<repository>
+     		<id>ukp-oss-snapshot</id>
+     		<name>DKPro snapshot repository (for 1.5.0 access)</name>
+     		<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots</url> 
+     	</repository>
+     --> 
   	</repositories>
   	
    	<pluginRepositories>
@@ -36,43 +43,7 @@
       	</pluginRepository>
    	</pluginRepositories>
 
- 	<dependencies>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-adapter-soap</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-adapter-vinci</artifactId>
-   			</dependency>
-   		<dependency>
-			<groupId>org.apache.uima</groupId>
-			<artifactId>uimaj-bootstrap</artifactId>
-			</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-core</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-cpe</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-document-annotation</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-examples</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>uimaj-tools</artifactId>
-   		</dependency>
-   		<dependency>
-   			<groupId>org.apache.uima</groupId>
-   			<artifactId>jVinci</artifactId>
-   		</dependency>
+ 	<dependencies> 	
    		<dependency>
    			<groupId>junit</groupId>
    			<artifactId>junit</artifactId>
@@ -118,7 +89,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<version>1.0.3-SNAPSHOT</version>
 		</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -132,9 +103,21 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
     	</dependency>
+    	
+    	<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent</artifactId>
+     		<version>20120616.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent</artifactId>
+     		<version>20120616.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent</artifactId>
      		<version>20120616.0</version>
     	</dependency>
     	<dependency>
@@ -144,17 +127,49 @@
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-de-maxent</artifactId>
+     		<version>20120616.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-de-maxent</artifactId>
+     		<version>20120616.0</version>
+    	</dependency>
+    	<!--  the following 3 models are Italian models, trained by FBK; they exists only on project repository -->
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-it-maxent</artifactId>
+     		<version>20130823.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-it-maxent</artifactId>
+     		<version>20130823.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-it-maxent</artifactId>
+     		<version>20130823.0</version>
+    	</dependency>
+    	<!--  end of openNLP models -->
+    	
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
+    	</dependency>
+	
+	<!-- TreeTagger related dependencies --> 
+	<!-- if you want to use TreeTagger, and related LAPs, please read /lap/src/scripts/treetagger/README.txt, and follow the instructions --> 
+	<!-- 
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
-     		<version>20120912.0</version>
+     		<version>20130228.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-de</artifactId>
-     		<version>20120417.0</version>
+     		<version>20121207.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -166,13 +181,9 @@
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
      		<version>20101115.0</version>
     	</dependency>
-    	<dependency>
-    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    		<artifactId>
-    			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
-    		</artifactId>
-    		<version>1.4.0</version>
-    	</dependency>
+	--> 
+	<!-- end of TreeTagger related dependencies --> 
+
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
@@ -193,6 +204,67 @@
     			de.tudarmstadt.ukp.dkpro.core.maltparser-asl
     		</artifactId>
     	</dependency>
+    	<dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>
+                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear
+            </artifactId>
+            <version>20130511.0</version>
+        </dependency>
+    	<!-- We are not using MST parser for 1.0 release.  -->
+    	<!--  
+    	
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-asl
+    		</artifactId>
+    		<version>1.5.0-SNAPSHOT</version>
+    	</dependency>
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-en-default
+    		</artifactId>
+    		<version>20121910.0</version>
+    	</dependency>
+    	
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-de-default
+    		</artifactId>
+    		<version>20130304.0</version>
+    	</dependency>
+    	--> 
+    	<!--  1G big model for German MST parser: commented out for prevent unneeded downloads -->
+    	<!--  Include them if you need  DE-LONG variant model for MSTParserDE -->
+    	<!-- 
+    	<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.mstparser-model-parser-de-long
+    		</artifactId>
+    		<version>20130301.0</version>
+    	</dependency>
+    	-->
+
+		<!-- MUST BE THE LAST DEPENDENCY, to avoid jar hell with another version of stanfordnlp.
+		     Used only for the file ner-en-all.3class.distsim.crf.map, by the class StanfordNamedEntityRecognizerAE -->
+		<dependency>
+    		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+    		<artifactId>
+    			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
+    		</artifactId>
+    		<version>1.4.0</version>
+    	</dependency>
+
+		<dependency>
+			<groupId>org.biu.nlp</groupId>
+			<artifactId>biu_legacy</artifactId>
+		</dependency>
+
+
  	</dependencies>
 
     <dependencyManagement>

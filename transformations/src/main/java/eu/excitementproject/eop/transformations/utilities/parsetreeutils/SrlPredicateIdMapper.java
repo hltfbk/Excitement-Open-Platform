@@ -3,7 +3,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfoGetFields;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.srl_informations.SrlPredicateId;
@@ -26,7 +26,7 @@ public class SrlPredicateIdMapper
 	public void map()
 	{
 		mapIdToLemma = new LinkedHashMap<SrlPredicateId, String>();
-		for (ExtendedNode node : AbstractNodeUtils.treeToSet(tree))
+		for (ExtendedNode node : TreeIterator.iterableTree(tree))
 		{
 			SrlPredicateId id = ExtendedInfoGetFields.getSrlPredicateId(node.getInfo());
 			if (id != null)

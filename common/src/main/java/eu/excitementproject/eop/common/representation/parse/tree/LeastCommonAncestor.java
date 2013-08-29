@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.common.representation.parse.tree;
 
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -118,7 +118,7 @@ public class LeastCommonAncestor<T,S extends AbstractNode<T,S>>
 				buildMapToDescendants(child);
 			}
 		}
-		Set<S> set = new HashSet<S>();
+		Set<S> set = new LinkedHashSet<S>();
 		if (!AbstractNodeUtils.isLeaf(root))
 		{
 			for (S child : root.getChildren())
@@ -132,7 +132,7 @@ public class LeastCommonAncestor<T,S extends AbstractNode<T,S>>
 	
 	protected void compute(Set<S> currentLevel) throws LeastCommonAncestorException
 	{
-		Set<S> nextLevel = new HashSet<S>(); 
+		Set<S> nextLevel = new LinkedHashSet<S>(); 
 		
 		for (S node : currentLevel)
 		{
@@ -197,7 +197,7 @@ public class LeastCommonAncestor<T,S extends AbstractNode<T,S>>
 	protected void init()
 	{
 		mapNodeToIndex = new SimpleBidirectionalMap<Integer, S>();
-		Set<S> setNodes = AbstractNodeUtils.treeToSet(root);
+		Set<S> setNodes = AbstractNodeUtils.treeToLinkedHashSet(root);
 		int index = 0;
 		for (S node : setNodes)
 		{
@@ -219,7 +219,7 @@ public class LeastCommonAncestor<T,S extends AbstractNode<T,S>>
 	
 	
 	protected S root;
-	protected Map<S,Set<S>> mapToDescendants = new HashMap<S, Set<S>>();
+	protected Map<S,Set<S>> mapToDescendants = new LinkedHashMap<S, Set<S>>();
 	protected BidirectionalMap<Integer, S> mapNodeToIndex;
 	protected S[][] lcaMatrix;
 	protected Map<S,S> parentMap;

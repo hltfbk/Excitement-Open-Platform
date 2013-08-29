@@ -2,11 +2,20 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.truthteller.conll;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -32,28 +41,35 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
  */
 public class AnnotateSentenceToConll {
 
+	public static final String INPUT_FILE_INDICATOR = "-f";
+	
+	private static Logger logger = null;
+	
 	private static AnnotatedConllStringConverter CONLL_CONVERTER  = new AnnotatedConllStringConverter();
 	private static SentenceSplitter SENTENCE_SPLITTER = new LingPipeSentenceSplitter();
 	private EasyFirstParser parser;
 	private DefaultSentenceAnnotator annotator;
 	private final File conllOutputFolder;
+	
+	private ConfigurationParams annotationParams = null;
 
 	/**
 	 * Ctor
 	 * @throws ConfigurationException 
 	 * @throws ConllConverterException 
 	 */
-	public AnnotateSentenceToConll(ConfigurationFile confFile, String posTaggerString) throws ConfigurationException, ConllConverterException {
+	public AnnotateSentenceToConll(ConfigurationFile confFile) throws ConfigurationException, ConllConverterException {
 		
 		confFile.setExpandingEnvironmentVariables(true);
-		ConfigurationParams annotationParams = confFile.getModuleConfiguration(TransformationsConfigurationParametersNames.TRUTH_TELLER_MODULE_NAME); 
+		annotationParams = confFile.getModuleConfiguration(TransformationsConfigurationParametersNames.TRUTH_TELLER_MODULE_NAME); 
 
 		try {
 			annotator = new DefaultSentenceAnnotator(annotationParams);
 			
-//			String posTaggerString = 
-//				confFile.getModuleConfiguration(ConfigurationParametersNames.RTE_SUM_PREPROCESS_MODULE_NAME).get(ConfigurationParametersNames.PREPROCESS_EASYFIRST);
-			parser = new EasyFirstParser(posTaggerString);
+			String posTaggerString = annotationParams.get(TransformationsConfigurationParametersNames.PREPROCESS_EASYFIRST);
+			String easyFirstHost = annotationParams.get(TransformationsConfigurationParametersNames.PREPROCESS_EASYFIRST_HOST);
+			int easyFirstPort = annotationParams.getInt(TransformationsConfigurationParametersNames.PREPROCESS_EASYFIRST_PORT);
+			parser = new EasyFirstParser(easyFirstHost, easyFirstPort, posTaggerString);
 			parser.init();
 		} catch (Exception e) {
 			throw new ConllConverterException("see nested", e);
@@ -91,6 +107,23 @@ public class AnnotateSentenceToConll {
 		return conllString;
 	}
 	
+	
+	public List<String> getSentencesToAnnotate(String inputFileName) throws ConfigurationException, FileNotFoundException, IOException
+	{
+		List<String> sentences = new LinkedList<String>();
+		File inputFile = new File(inputFileName);
+		try(BufferedReader reader = new BufferedReader(new FileReader(inputFile)))
+		{
+			String line = reader.readLine();
+			while (line !=null)
+			{
+				sentences.add(line);
+				line = reader.readLine();
+			}
+		}
+		return sentences;
+	}
+	
 	private ExtendedNode annotateSentece(String sentence) throws ConllConverterException
 	{
 			parser.setSentence(sentence);
@@ -118,43 +151,96 @@ public class AnnotateSentenceToConll {
 	 * @throws ParserRunException 
 	 * @throws ConllConverterException 
 	 * @throws SentenceSplitterException 
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) throws AnnotatorException, ConfigurationFileDuplicateKeyException, ConfigurationException, ParserRunException, ConllConverterException, SentenceSplitterException {
-
-		if (args.length < (1+1))
-			throw new AnnotatorException("usage: EntailmentRuleCompiler configurationFile.xml <pos-tagger-module-filename> sentence(s)");
+	public static void main(String[] args)
+	{
+		BasicConfigurator.configure();
+		Logger.getRootLogger().setLevel(Level.INFO);
+		logger = Logger.getLogger(AnnotateSentenceToConll.class);
+		try
+		{
+			annotateByCommandLineArguments(args);
+		}
+		catch(Throwable t)
+		{
+			t.printStackTrace(System.out);
+			logger.error("TruthTeller failed.",t);
+		}
+	}
+	
+	private static Iterable<String> getSentencesIterable(Iterator<String> argsIterator, AnnotateSentenceToConll app) throws FileNotFoundException, ConfigurationException, IOException, SentenceSplitterException
+	{
+		List<String> sentencesToAnnotate = null;
+		
+		
+		String firstArgumentAfterConfigurationFile = null;
+		if (argsIterator.hasNext())
+		{
+			firstArgumentAfterConfigurationFile = argsIterator.next();
+		}
+		
+		
+		if (INPUT_FILE_INDICATOR.equalsIgnoreCase(firstArgumentAfterConfigurationFile))
+		{
+			if (argsIterator.hasNext())
+			{
+				sentencesToAnnotate = app.getSentencesToAnnotate(argsIterator.next());
+			}
+			else
+			{
+				throw new RuntimeException("No input file is given, though \""+INPUT_FILE_INDICATOR+"\" has been encountered as a command line argument.");
+			}
+		}
+		else
+		{
+			// Read the text from command line
+			StringBuffer sbInputWords = new StringBuffer();
+			
+			if (firstArgumentAfterConfigurationFile!=null)
+			{
+				sbInputWords.append(firstArgumentAfterConfigurationFile);
+				while (argsIterator.hasNext())
+				{
+					sbInputWords.append(" ");
+					sbInputWords.append(argsIterator.next());
+				}
+			}
+			
+//			List<String> listOfWords = Utils.arrayToCollection(args, new Vector<String>());
+//			listOfWords.remove(0);	// remove the confFile parameter
+//			listOfWords.remove(1); // remove the pos-tagger-file-name
+//			String text = StringUtil.joinIterableToString(listOfWords, " ");
+			
+			String text = sbInputWords.toString();
+			
+			SENTENCE_SPLITTER.setDocument(text);
+			SENTENCE_SPLITTER.split();
+			sentencesToAnnotate = SENTENCE_SPLITTER.getSentences();
+		}
+		
+		return sentencesToAnnotate;
+	}
+		
+		
+	private static void annotateByCommandLineArguments(String[] args) throws AnnotatorException, ConfigurationFileDuplicateKeyException, ConfigurationException, ParserRunException, ConllConverterException, SentenceSplitterException, FileNotFoundException, IOException
+	{
+		if (args.length < (1))
+			throw new AnnotatorException(String.format("usage: %s configurationFile.xml sentence(s)", AnnotateSentenceToConll.class.getSimpleName()));
 		
 		List<String> argsList = Utils.arrayToCollection(args, new Vector<String>());
 		Iterator<String> argsIterator = argsList.iterator();
 		
 		ConfigurationFile confFile = new ConfigurationFile(new File(argsIterator.next()));
 		confFile.setExpandingEnvironmentVariables(true);
-		String posTaggerModuleFileName = argsIterator.next();
+		AnnotateSentenceToConll app = new AnnotateSentenceToConll(confFile);
 		
-		AnnotateSentenceToConll app = new AnnotateSentenceToConll(confFile,posTaggerModuleFileName);
-		
-		// Read the text from command line
-		StringBuffer sbInputWords = new StringBuffer();
-		boolean firstIteration = true;
-		while (argsIterator.hasNext())
-		{
-			if (firstIteration) firstIteration=false;
-			else sbInputWords.append(" ");
-			
-			sbInputWords.append(argsIterator.next());
-		}
-		
-//		List<String> listOfWords = Utils.arrayToCollection(args, new Vector<String>());
-//		listOfWords.remove(0);	// remove the confFile parameter
-//		listOfWords.remove(1); // remove the pos-tagger-file-name
-//		String text = StringUtil.joinIterableToString(listOfWords, " ");
-		
-		String text = sbInputWords.toString();
-		
-		SENTENCE_SPLITTER.setDocument(text);
-		SENTENCE_SPLITTER.split();
+
+		Iterable<String> sentencesToAnnotate = getSentencesIterable(argsIterator,app);
+
 		List<ExtendedNode> list = new ArrayList<ExtendedNode>();
-		for (String sentence : SENTENCE_SPLITTER.getSentences())
+		for (String sentence : sentencesToAnnotate)
 		{
 			ExtendedNode annotatedSentece =  app.annotateSentece(sentence);
 			list.add(annotatedSentece);

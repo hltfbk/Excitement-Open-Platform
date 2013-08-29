@@ -12,9 +12,10 @@ import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBi
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
 import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.lap.biu.ae.CasTreeConverterException;
+import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -34,7 +35,14 @@ public class BiuteeEdaUtilities
 	 */
 	public static void convertExcitementConfigurationFileToBiuConfigurationFile(File excitementConfigurationFile, File biuConfigurationFile) throws ExcitementToBiuConfigurationFileConverterException
 	{
-		new ExcitementToBiuConfigurationFileConverter(excitementConfigurationFile, biuConfigurationFile).convert();
+		try
+		{
+			new ExcitementToBiuConfigurationFileConverter(excitementConfigurationFile, biuConfigurationFile).convert();
+		}
+		catch(RuntimeException e)
+		{
+			throw new ExcitementToBiuConfigurationFileConverterException("Failed to convert "+excitementConfigurationFile.getPath()+" to "+biuConfigurationFile.getPath(),e);
+		}
 	}
 	
 	public static PairData convertJCasToPairData(JCas aCas) throws TeEngineMlException
@@ -42,7 +50,7 @@ public class BiuteeEdaUtilities
 		try {
 			return CasPairDataConverter.convertCasToPairData(aCas);
 		}
-		catch (CASException | CasTreeConverterException | UnsupportedPosTagStringException e) {
+		catch (CASException | CasTreeConverterException | UnsupportedPosTagStringException | EDAException e) {
 			throw new TeEngineMlException("Error while creating a PairData from a JCas.", e);
 		}
 	}

@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.transformations.utilities.parsetreeutils;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -43,7 +43,7 @@ public class PathFinder
 	{
 		ExtendedNode ret = null;
 		
-		Set<ExtendedNode> nodes_from_root = new HashSet<ExtendedNode>();
+		Set<ExtendedNode> nodes_from_root = new LinkedHashSet<ExtendedNode>();
 		ExtendedNode current = textNodeToMove;
 		nodes_from_root.add(current);
 		while(tree.getParentMap().containsKey(current))

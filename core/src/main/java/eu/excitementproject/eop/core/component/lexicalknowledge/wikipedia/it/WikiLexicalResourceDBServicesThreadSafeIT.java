@@ -25,6 +25,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRu
  * A thread safe version of {@link WikiLexicalResourceDBServicesIT}.<br> 
  * Basically, it avoids using {@link PreparedStatement}.
  * @author Eyal Shnarch
+ * @author Vivi Nastase
  *
  * @since 18/10/2012
  */

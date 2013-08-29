@@ -2,7 +2,7 @@
  * 
  */
 package eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -82,9 +82,9 @@ public class EntailmentRuleBuildingUtils {
 		Set<S> rhsNodesSet = null;
 		Set<S> nodesSet = null;
 		try {
-			rhsNodesSet = AbstractNodeUtils.treeToSet(rhs);
-			nodesSet = new HashSet<S>(rhsNodesSet);
-			lhsNodesSet = AbstractNodeUtils.treeToSet(lhs);
+			rhsNodesSet = AbstractNodeUtils.treeToLinkedHashSet(rhs);
+			nodesSet = new LinkedHashSet<S>(rhsNodesSet);
+			lhsNodesSet = AbstractNodeUtils.treeToLinkedHashSet(lhs);
 			nodesSet.addAll(lhsNodesSet);
 		} catch (Exception e) {	}	// ignore errors. they're probably because of null lhs's in special function rules
 		

@@ -1,7 +1,7 @@
 package eu.excitementproject.eop.common.datastructures;
 
-import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -140,7 +140,7 @@ public class SimpleIncrementalMap<K, V> implements IncrementalMap<K, V>
 
 
 	protected Map<K, V> realMap = new LinkedHashMap<K, V>();
-	protected Set<K> closedKeys = new HashSet<K>();
+	protected Set<K> closedKeys = new LinkedHashSet<K>();
 
 
 

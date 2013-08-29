@@ -57,7 +57,7 @@ public class DefaultInfo implements Info
 			return true;
 		if (obj == null)
 			return false;
-		if (obj instanceof Info)
+		if (!(obj instanceof Info))
 			return false;
 		Info other = (Info) obj;
 		if (getEdgeInfo() == null)

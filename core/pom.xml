@@ -1,93 +1,109 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>eu.excitementproject</groupId>
-    <artifactId>eop</artifactId>
-    <version>0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>core</artifactId>
-  <name>core</name>
-  <description>core</description>
-  <dependencies>
-  	    <dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-core</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-examples</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-bootstrap</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-adapter-soap</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-tools</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-document-annotation</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-cpe</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>uimaj-adapter-vinci</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>org.apache.uima</groupId>
-  			<artifactId>jVinci</artifactId>
-  		</dependency>
-  		<dependency>
-  			<groupId>junit</groupId>
-  			<artifactId>junit</artifactId>
-  		</dependency>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>eop</artifactId>
+		<version>1.0.3-SNAPSHOT</version>
+	</parent>
+	<artifactId>core</artifactId>
+	<name>core</name>
+	<description>core</description>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-    		<groupId>de.tudarmstadt.ukp</groupId>
-    		<artifactId>jwktl</artifactId>
+			<version>1.0.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-    		<groupId>net.sf.extjwnl</groupId>
-    		<artifactId>extjwnl</artifactId>
+			<groupId>de.tudarmstadt.ukp</groupId>
+			<artifactId>jwktl</artifactId>
 		</dependency>
 		<dependency>
-    		<groupId>edu.mit</groupId>
-    		<artifactId>jwi</artifactId>
+			<groupId>net.sf.extjwnl</groupId>
+			<artifactId>extjwnl</artifactId>
 		</dependency>
 		<dependency>
-    		<groupId>net.sf.jwordnet</groupId>
-    		<artifactId>jwnl</artifactId>
+			<groupId>edu.mit</groupId>
+			<artifactId>jwi</artifactId>
 		</dependency>
-		
-        <dependency>
-		    <groupId>eu.excitementproject</groupId>
-		    <artifactId>JMWN</artifactId>
-		    <version>0.0.1-20130129.144837-1</version>
+		<dependency>
+			<groupId>net.sf.jwordnet</groupId>
+			<artifactId>jwnl</artifactId>
 		</dependency>
-		
+
+                <dependency>
+   			<groupId>eu.excitementproject</groupId>
+   			<artifactId>JMWN-0.1</artifactId>
+  			 <version>0.1</version>
+		</dependency> 
+
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>lap</artifactId>
-			<version>0.1-SNAPSHOT</version>
+			<version>1.0.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-            <groupId>unituebingen</groupId>
-            <artifactId>GermaNetAPI</artifactId>
-            <version>7.0.1</version><!--$NO-MVN-MAN-VER$-->
-    	</dependency>
+			<groupId>unituebingen</groupId>
+			<artifactId>GermaNetAPI</artifactId>
+			<version>7.0.1</version><!--$NO-MVN-MAN-VER$ -->
+		</dependency>
+		<dependency>
+    			<groupId>eu.fbk.hlt</groupId>
+    			<artifactId>pso</artifactId>
+    			<version>0.0.1</version>
+                </dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.style-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.structure-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
+			<artifactId>
+				de.tudarmstadt.ukp.similarity.algorithms.lexical-asl
+			</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>weka-stable</artifactId>
+			<version>3.6.9</version>
 
-  </dependencies>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.similarity</groupId>
+				<artifactId>
+					de.tudarmstadt.ukp.similarity-asl
+				</artifactId>
+				<version>1.0.0</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<repositories>
+		<repository>
+	        <id>ukp-oss</id>
+	        <name>ukp-oss-releases</name>
+	        <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ukp-releases-local</url>
+	    </repository>
+	    <repository>
+	        <id>ukp-oss-ext</id>
+	        <name>ukp-oss-releases-ext</name>
+	        <url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ext-releases-local</url>
+	    </repository>	    
+	</repositories>
 </project>

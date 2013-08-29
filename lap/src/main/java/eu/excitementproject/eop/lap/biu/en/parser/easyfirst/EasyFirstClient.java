@@ -9,8 +9,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -72,9 +72,9 @@ public class EasyFirstClient
 	
 	// list all pronoun words that must be tagged as PRONOUN. notice that postfix genitives like mine, yours, ours, theirs, may also be tagged as JJ adjectives. so they're excluded. 
 	private static final Set<String> NOMINATIVE_ACCUSATIVE_PRONOUNS = Utils.arrayToCollection(new String[]{
-		"i", "me", "myself","you","yourself","he","him","himself","she","her","herself","it","itself","we","us","ourselves","they","them","themselves"}, new HashSet<String>(20));
+		"i", "me", "myself","you","yourself","he","him","himself","she","her","herself","it","itself","we","us","ourselves","they","them","themselves"}, new LinkedHashSet<String>(20));
 	// 'her' is both accusative and genitive, so it's excluded here
-	private static final Set<String> GENITIVE_PRONOUNS = Utils.arrayToCollection(new String[]{"my","your","his","its","our","their"}, new HashSet<String>(6));
+	private static final Set<String> GENITIVE_PRONOUNS = Utils.arrayToCollection(new String[]{"my","your","his","its","our","their"}, new LinkedHashSet<String>(6));
 	private static PartOfSpeech PRP_POS;
 	private static PartOfSpeech PRP$_POS;
 	{
@@ -189,20 +189,21 @@ public class EasyFirstClient
 		for (ListIterator<PosTaggedToken> iter = posTaggedTokens.listIterator(); iter.hasNext() ; )
 		{
 			PosTaggedToken posTaggedToken = iter.next();
-			String token = posTaggedToken.getToken().toLowerCase();
+			String origToken = posTaggedToken.getToken();
+			String token = origToken.toLowerCase();
 			PartOfSpeech pos = posTaggedToken.getPartOfSpeech();
 			if (NOMINATIVE_ACCUSATIVE_PRONOUNS.contains(token) && !simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 			// replace this postaggedToken
 			{
 				iter.remove();
-				iter.add(new PosTaggedToken(token, PRP_POS));
+				iter.add(new PosTaggedToken(origToken, PRP_POS));
 			}
 			else if (GENITIVE_PRONOUNS.contains(token) && !simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 			// replace this postaggedToken with PRP$
 			{
 				iter.remove();
-				iter.add(new PosTaggedToken(token, PRP$_POS));
-			}				
+				iter.add(new PosTaggedToken(origToken, PRP$_POS));
+			}
 		}
 		
 		return posTaggedTokens;
@@ -318,8 +319,8 @@ public class EasyFirstClient
 		tree = null;
 		nodesAsList = new ArrayList<BasicConstructionNode>();
 		wordsNodesList = new ArrayList<BasicConstructionNode>();
-		mapIdToNode = new HashMap<Integer, BasicConstructionNode>();
-		mapNodeIdToParentId = new HashMap<Integer, Integer>();
+		mapIdToNode = new LinkedHashMap<Integer, BasicConstructionNode>();
+		mapNodeIdToParentId = new LinkedHashMap<Integer, Integer>();
 		
 		if (parserOutput==null)throw new ParserRunException("null output");
 		if (parserOutput.size()==0)throw new ParserRunException("empty output");
