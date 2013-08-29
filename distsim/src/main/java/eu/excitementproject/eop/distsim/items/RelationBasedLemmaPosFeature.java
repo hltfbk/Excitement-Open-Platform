@@ -6,6 +6,8 @@ package eu.excitementproject.eop.distsim.items;
 import java.util.HashSet;
 import java.util.Set;
 
+import eu.excitementproject.eop.distsim.util.Pair;
+
 
 
 
@@ -23,7 +25,11 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 
 	private static final long serialVersionUID = 1L;
 	
-	protected final String DELIMITER = "#";
+	protected final String DELIMITER = "~";
+	
+	public RelationBasedLemmaPosFeature() {
+		super();
+	}
 	
 	public RelationBasedLemmaPosFeature(String relation, LemmaPos data) {
 		super(relation,data);
@@ -48,7 +54,7 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 	public String toKey() throws UndefinedKeyException  {
 		String key1 = data.getFirst();
 		String key2 = data.getSecond().toKey();
-		if (key1.equals(DELIMITER) || key2.equals(DELIMITER))
+		if (key1.contains(DELIMITER) || key2.contains(DELIMITER))
 			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
 		return key1 + DELIMITER + key2;
 	}
@@ -120,11 +126,10 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 	public void fromKey(String key) throws UndefinedKeyException {
 		String[] props = key.split(DELIMITER);
 		if (props.length != 2)
-			throw new UndefinedKeyException("Cannot decode " + key + " to ArgumentFeature");
-		data.setFirst(props[0]);
+			throw new UndefinedKeyException("Cannot decode " + key + " to RelationBasedLemmaPosFeature");
 		LemmaPos lemmapos = new LemmaPos();
 		lemmapos.fromKey(props[1]);
-		data.setSecond(lemmapos);
+		data = new Pair<String,LemmaPos>(props[0],lemmapos);
 		
 	}
 

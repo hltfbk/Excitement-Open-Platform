@@ -151,6 +151,7 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 
 				//compute element-feature scores
 				try {
+					
 					Element element = elementFeaturecounts.getElement(elementFeatureJointCount.getElementId());
 
 					ImmutableIterator<FeatureCount> featureCounts = elementFeatureJointCount.getFeatureCounts();

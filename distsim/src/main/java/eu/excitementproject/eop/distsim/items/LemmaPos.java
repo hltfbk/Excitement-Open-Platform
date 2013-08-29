@@ -67,7 +67,7 @@ public class LemmaPos implements Externalizable {
 	 */
 	@Override
 	public String toKey() throws UndefinedKeyException  {
-		if (lemma.equals(DELIMITER))
+		if (lemma.contains(DELIMITER))
 			throw new UndefinedKeyException("Cannot encode lemma " + lemma);
 		StringBuilder sb = new StringBuilder();
 		sb.append(lemma);

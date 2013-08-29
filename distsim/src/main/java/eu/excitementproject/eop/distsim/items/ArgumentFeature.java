@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
+import eu.excitementproject.eop.distsim.util.Pair;
 
 /**
  * The ArgumentFeature defines a feature which is based on a string with a PredicateArgumentSlots relation
@@ -25,6 +26,11 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 	private static final long serialVersionUID = 1L;
 	
 	protected final String DELIMITER = "#";
+	
+	public ArgumentFeature() {
+		super();
+	}
+
 	
 	public ArgumentFeature(PredicateArgumentSlots relation, String data) {
 		super(relation,data);
@@ -49,7 +55,7 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 	public String toKey() throws UndefinedKeyException  {
 		String key1 = data.getFirst().name();
 		String key2 = data.getSecond();
-		if (key1.equals(DELIMITER) || key2.equals(DELIMITER))
+		if (key1.contains(DELIMITER) || key2.contains(DELIMITER))
 			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
 		return key1 + DELIMITER + key2;
 	}
@@ -121,8 +127,6 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 		String[] props = key.split(DELIMITER);
 		if (props.length != 2)
 			throw new UndefinedKeyException("Cannot decode " + key + " to ArgumentFeature");
-		data.setFirst(PredicateArgumentSlots.valueOf(props[0]));
-		data.setSecond(props[1]);
-		
+		data = new Pair<PredicateArgumentSlots,String>(PredicateArgumentSlots.valueOf(props[0]),props[1]);		
 	}
 }

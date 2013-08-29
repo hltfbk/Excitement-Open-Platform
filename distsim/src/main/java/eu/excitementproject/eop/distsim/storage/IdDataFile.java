@@ -33,6 +33,10 @@ public abstract class IdDataFile extends File {
 		super(file,bRead);
 	}
 
+	public IdDataFile(java.io.File file, boolean bRead, String encoding) {
+		super(file,bRead, encoding);
+	}
+	
 	public IdDataFile(ConfigurationParams params) throws ConfigurationException {
 		super(params);
 	}

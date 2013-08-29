@@ -97,7 +97,7 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 							left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()),
 							right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()),
 							elemenstSimilarityMeasure.getSimilarityMeasure(), 
-							null, similarityStorage.getResourceName(), DistSimRuleInfo.getInstance());
+							null, similarityStorage.getComponentName(), DistSimRuleInfo.getInstance());
 				ret.add(rule);
 			}
 			
@@ -124,7 +124,7 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 			for (ElementsSimilarityMeasure similarityRule : similarityStorage.getSimilarityMeasure(leftElement, rightElement)) {
 				LemmaPosBasedElement left = (LemmaPosBasedElement)similarityRule.getLeftElement();
 				LemmaPosBasedElement right = (LemmaPosBasedElement)similarityRule.getRightElement();
-				ret.add(new LexicalRule<RuleInfo>(left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()), right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()), similarityRule.getSimilarityMeasure(), null, similarityStorage.getResourceName(), null));
+				ret.add(new LexicalRule<RuleInfo>(left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()), right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()), similarityRule.getSimilarityMeasure(), null, similarityStorage.getComponentName(), null));
 			}
 			return ret;
 		} catch (Exception e) {

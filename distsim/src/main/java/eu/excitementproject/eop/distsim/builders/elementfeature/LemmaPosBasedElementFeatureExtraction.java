@@ -65,7 +65,7 @@ public class LemmaPosBasedElementFeatureExtraction extends IrelevantListBasedEle
 		try {
 			this.minCount = params.getInt(Configuration.MIN_COUNT);
 		} catch (ConfigurationException e) {
-			this.minCount = 1;
+			this.minCount = 0;
 		}
 		this.posFilter = new SetBasedPOSFilter(params);
 	}

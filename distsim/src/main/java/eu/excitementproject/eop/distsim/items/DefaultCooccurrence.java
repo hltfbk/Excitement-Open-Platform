@@ -63,7 +63,7 @@ public class DefaultCooccurrence<R> extends DefaultIdentifiableCountable impleme
 	public String toKey() throws UndefinedKeyException {
 		String key1 = textItem1.toKey();
 		String key2 = textItem2.toKey();
-		if (key1.equals(DELIMITER) || key2.equals(DELIMITER))
+		if (key1.contains(DELIMITER) || key2.contains(DELIMITER))
 			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
 
 		StringBuilder sb = new StringBuilder();

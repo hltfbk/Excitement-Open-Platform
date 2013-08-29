@@ -21,7 +21,10 @@ public class StringBasedElement extends DeafaultElement<String> {
 
 	private static final long serialVersionUID = 1L;
 
-
+	public StringBasedElement() {
+		super();
+	}
+	
 	public StringBasedElement(String data) {
 		super(data);
 	}

@@ -90,5 +90,21 @@ public class Configuration {
 	public static final String FEATURE_CLASS = "feature-class";
 	public static final String SIMILARITY_FILE = "similarity-file";
 	public static final String ELEMENTS_FILE = "elements-file";
+	public static final String CONFIGURATION_FILE = "configuration-file";
+	public static final String CONFIGURATION_MODULE = "configuration-module";
+	public static final String MAPRED_COOCCURRENCE_COUNTING = "mapred-cooccurrence-counting";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1 = "separate-filter-and-index-elements-features-1";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2 = "separate-filter-and-index-elements-features-2";
+	public static final String INDIR = "in-dir";
+	public static final String OUTDIR = "out-dir";
+	public static final String COOCCURENCE_EXTRACTION_CLASS = "cooccurrence-extraction-class";
+	public static final String FEATURES_FILE = "features-file";
+	public static final String ELEMENT_FEATURE_COUNTS_FILE = "element-feature-counts-file";
+	public static final String FEATURE_ELEMENTS_FILE = "feature-elements-file";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1_X = "separate-filter-and-index-elements-features-1-x";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2_X = "separate-filter-and-index-elements-features-2-x";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1_Y = "separate-filter-and-index-elements-features-1-y";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2_Y = "separate-filter-and-index-elements-features-2-y";
+
 }
 

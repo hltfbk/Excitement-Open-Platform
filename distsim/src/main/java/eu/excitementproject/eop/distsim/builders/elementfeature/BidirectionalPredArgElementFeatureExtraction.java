@@ -65,7 +65,7 @@ public class BidirectionalPredArgElementFeatureExtraction extends IrelevantListB
 		try {
 			this.minCount = params.getInt(Configuration.MIN_COUNT);
 		} catch (ConfigurationException e) {
-			this.minCount = 1;
+			this.minCount = 0;
 		}
 		initElementStorage(params);
 	}
@@ -134,7 +134,7 @@ public class BidirectionalPredArgElementFeatureExtraction extends IrelevantListB
 	}
 
 	public boolean isRelevantSlot(Cooccurrence<?> cooccurrence) {
-		return cooccurrence.getRelation().getValue() == relevantSlot;
+		return relevantSlot == PredicateArgumentSlots.ALL || cooccurrence.getRelation().getValue() == relevantSlot;
 	}
 	
 	protected boolean isStopWordFeature(TextUnit textUnitFeature, Relation<?> rel) {

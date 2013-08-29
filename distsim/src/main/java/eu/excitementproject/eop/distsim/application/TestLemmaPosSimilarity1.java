@@ -39,7 +39,7 @@ public class TestLemmaPosSimilarity1 {
 		SimilarityStorage similarityStorage = new DefaultSimilarityStorage(
 				new RedisBasedStringListBasicMap(l2rRedisHost,l2rRedisPort),
 				new RedisBasedStringListBasicMap(r2lRedisHost,r2lRredisPort),
-				"lin-dist-sim", "eu.excitementproject.eop.distsim.items.LemmaPosBasedElement");
+				"lin-dist-sim", null, "eu.excitementproject.eop.distsim.items.LemmaPosBasedElement");
 		
 		
 		List<ElementsSimilarityMeasure> similarities = similarityStorage.getSimilarityMeasure(

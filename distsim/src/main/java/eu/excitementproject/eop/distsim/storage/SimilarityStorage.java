@@ -2,6 +2,7 @@ package eu.excitementproject.eop.distsim.storage;
 
 import java.util.List;
 
+import eu.excitementproject.eop.common.component.Component;
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.Element;
@@ -16,7 +17,7 @@ import eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScor
  *
  *  
  */
-public interface SimilarityStorage   {
+public interface SimilarityStorage extends Component  {
 	
 	/**
 	 * Get all relevant similarity scores for the given pair of elements
@@ -133,12 +134,5 @@ public interface SimilarityStorage   {
 	 * @throws SimilarityNotFoundException in case the given element is absent form both similarity and score dbs. 
 	 */
 	List<ElementsSimilarityMeasure> getSimilarityMeasure(Element element, RuleDirection ruleDirection, ElementFeatureScoreStorage elementFeatureScores, ElementSimilarityScoring elementSimilarityScoring, FilterType filterType, double filterVal) throws SimilarityNotFoundException;
-	
 
-	/**
-	 * Gets the name assigned to this knowledge (for identification and/or description)
-	 * 
-	 * @return the name of the knowledge resource
-	 */
-	String getResourceName(); 
 }

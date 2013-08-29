@@ -36,10 +36,12 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 			RedisBasedStringListBasicMap leftElemntSimilarities,
 			RedisBasedStringListBasicMap rightElemntSimilarities,
 			String resourceName,
+			String instanceName,
 			String elementClassName) {
 		this.leftElemntSimilarities = leftElemntSimilarities;
 		this.rightElemntSimilarities = rightElemntSimilarities;
 		this.resourceName = resourceName;
+		this.instanceName = instanceName;
 		this.elementClassName = elementClassName;
 	}
 
@@ -57,6 +59,7 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(params.getString("l2rRulesStorageHost"), params.getInt("l2rRulesStoragePort"));
 		this.rightElemntSimilarities = new RedisBasedStringListBasicMap(params.getString("r2lRulesStorageHost"), params.getInt("r2lRulesStoragePort"));
 		this.resourceName = params.getModuleName();
+		this.instanceName = params.getConfigurationFile().toString();
 		this.elementClassName = params.get(Configuration.ELEMENT_CLASS);
 	}
 	
@@ -193,15 +196,6 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		}			
 	}
 
-	/* (non-Javadoc)
-	 * @see eu.excitementproject.eop.distsim.storage.SimilarityStorage#getResourceName()
-	 */
-	@Override
-	public String getResourceName() {
-		return resourceName;
-	}
-
-
 
 
 	protected boolean filtered(final FilterType type, final double filterVal, final double val, final int size, final int i) {
@@ -217,11 +211,29 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		}
 	}
 	
+	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.component.Component#getComponentName()
+	 */
+	@Override
+	public String getComponentName() {		
+		return resourceName;
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.common.component.Component#getInstanceName()
+	 */
+	@Override
+	public String getInstanceName() {
+		return instanceName;
+	}
+
+	
 	// Assumption: The similar elements each left-element are ordered descendingly by their similarity measures
 	protected RedisBasedStringListBasicMap leftElemntSimilarities;	
 	// Assumption: The similar elements of each right-element are ordered descendingly by their similarity measures	
 	protected RedisBasedStringListBasicMap rightElemntSimilarities;
 	protected String elementClassName;
 	protected final String resourceName;
-
+	protected final String instanceName;
 }
