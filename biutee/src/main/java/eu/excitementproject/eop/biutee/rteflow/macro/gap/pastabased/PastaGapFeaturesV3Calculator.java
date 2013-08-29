@@ -135,12 +135,29 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private void buildLemmasOfText()
 	{
 		lemmasOfText_lowerCase = new LinkedHashSet<>();
-		for (S node : TreeIterator.iterableTree(textTree.getTree()))
+		
+		addLemmasOfTextFromTree(textTree.getTree());
+		addLemmasOfTextFromStructures(textStructures);
+		
+		for (Set<PredicateArgumentStructure<I, S>> structures : surroundingStructures)
+		{
+			addLemmasOfTextFromStructures(structures);
+		}
+		
+		lemmasOfText_lowerCase.addAll(wholeTextLemmas);
+	}
+	
+	private void addLemmasOfTextFromTree(S tree)
+	{
+		for (S node : TreeIterator.iterableTree(tree))
 		{
 			lemmasOfText_lowerCase.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
 		}
-		
-		for (PredicateArgumentStructure<I, S> textStructure : textStructures)
+	}
+	
+	private void addLemmasOfTextFromStructures(Set<PredicateArgumentStructure<I, S>> structures)
+	{
+		for (PredicateArgumentStructure<I, S> textStructure : structures)
 		{
 			ImmutableList<String> verbalForms = textStructure.getPredicate().getVerbsForNominal();
 			if (verbalForms!=null)
@@ -156,8 +173,14 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 	private void buildArgumentMap()
 	{
 		mapArgumentsHypothesisToText = new SimpleValueSetMap<>();
+		
 		hypothesisArguments = listOfArguments(hypothesisStructures);
+		
 		textArguments = listOfArguments(textStructures);
+		for (Set<PredicateArgumentStructure<I, S>> structures : surroundingStructures)
+		{
+			textArguments.addAll(listOfArguments(structures));
+		}
 		
 		for (PredicateAndArgument<I, S> hypothesisArgument : hypothesisArguments)
 		{
