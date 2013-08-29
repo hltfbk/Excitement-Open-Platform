@@ -366,6 +366,7 @@ public class EDAStatisticalSignificance {
 	/*
 	 * Calculate the confidential interval.
 	 * 
+	 * @throws IOException
 	 * @return the interval 
 	 */
 	public double[] computeModelError() throws IOException {
@@ -710,7 +711,8 @@ public class EDAStatisticalSignificance {
 	 * To test MaxEntClassification
 	 * EDAStatisticSignificance eu.excitementproject.eop.core.MaxEntClassificationEDA ./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_EN.xml /tmp/IT/dev/ /tmp/IT/dev2/ 200
 	 * 
-	 */
+	 * @param args array of command-line arguments passed to this method 
+	 */ 
     public static void main(String[] args) {
     	
     	try {
