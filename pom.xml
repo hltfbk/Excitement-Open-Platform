@@ -29,7 +29,6 @@
 		<!-- <module>engineml</module> -->
 		<module>transformations</module>
 		<module>biutee</module>
-		<module>gui</module>
 		<module>util</module>
 	</modules>
 	<dependencyManagement>
@@ -277,7 +276,6 @@
 				<version>2.10</version>
 				<configuration>
 					<configLocation>./config/code-quality-metrics/checkstyle.xml</configLocation>
-					<excludes>**/gui/**/*</excludes>
 				</configuration>
 			</plugin>
 
@@ -287,9 +285,6 @@
 				<version>3.0.1</version>
 				<configuration>
 					<targetJdk>1.7</targetJdk>
-					<excludes>
-						<exclude>**/gui/**/*</exclude>
-					</excludes>
 				</configuration>
 			</plugin>
 
@@ -308,9 +303,6 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9</version>
 				<configuration>
-					<sourceFileExcludes>
-						<exclude>eop/gui/*</exclude>
-					</sourceFileExcludes>
 					<aggregate>true</aggregate>
 				</configuration>
 			</plugin>
