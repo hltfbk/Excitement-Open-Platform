@@ -11,9 +11,6 @@ import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
@@ -272,21 +269,21 @@ public class TreeCoreferenceInformation<T> implements Serializable
 	}
 	
 
+	/**
+	 * TODO ofer bronstein August 2013
+	 * This implementation should somehow be common with a method
+	 * that can assume that T inherits from AbstractNode, so that
+	 * for each node we can call:
+	 * 
+	 *   "* " + AbstractNodeUtils.getIndentedString(node, "  ", "\t\t  ");
+	 *   
+	 * and get relevant info on the tree.
+	 */
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return toStringOptionalWriteSubtrees(false);
-	}	
-	
-	public String toStringWriteSubtrees() {
-		return toStringOptionalWriteSubtrees(true);
-	}
-	
-	//////////////////// PROTECTED PART ////////////////////////////
-	
-	protected <I extends Info, S extends AbstractNode<I,?>> String toStringOptionalWriteSubtrees(boolean writeSubtrees) {
 		StringWriter writer = new StringWriter();
 		writer.write("TreeCoreferenceInformation - coref groups and their members:\n");
 		
@@ -302,26 +299,14 @@ public class TreeCoreferenceInformation<T> implements Serializable
 				return // instead of throwing an exception
 				"Cannot print coreference information due to an exception:\n"+ExceptionUtil.getStackTrace(e);
 			}
-			for (T node :  group) {
-				String nodeStr = null;
-				if (writeSubtrees) {
-					
-					// If "node" is indeed not of a proper type S, we want
-					// there to be a ClassCastException, as we cannot print
-					// it's subtree (it doesn't make any sense)
-					@SuppressWarnings("unchecked")
-					S sNode = (S) node;
-					
-					nodeStr = "* " + AbstractNodeUtils.getIndentedString(sNode, "  ", "\t\t  ");
-				}
-				else {
-					nodeStr = node.toString();
-				}
-				writer.write("\t\t"+nodeStr+"\n");
-			}
+			for (T node :  group)
+				writer.write("\t\t"+node+"\n");
 		}
 		return writer.toString();
 	}	
+
+	//////////////////// PROTECTED PART ////////////////////////////
+	
 	protected Map<T, Integer> mapNodeToId = new LinkedHashMap<T, Integer>();
 	protected Map<Integer,Set<T>> mapIdToCorefGroups = new LinkedHashMap<Integer, Set<T>>();
 	

@@ -28,8 +28,9 @@ import eu.excitementproject.eop.lap.biu.uima.BIU_LAP_Test;
  * and {@link ArkrefCoreferenceResolverNoTrees}.
  * 
  * Actually this test doesn't really test anything and never fails -
- * it merely prints the outputs of both resolvers in a convenient way.
- * With this class it's eash to debug them both.
+ * it merely prints the outputs of both resolvers in a convenient way
+ * (actually not quite, see @TODO below).
+ * With this class it's easy to debug them both.
  * 
  * @author Ofer Bronstein
  * @since August 2013
@@ -70,7 +71,19 @@ public class ArkrefCoreferenceResolversTests {
 		}
 		System.out.printf("\n\n");
 
-		System.out.printf("TREE COREFERENCE INFORMATION:\n%s\n\n", treeCorefInfo.toStringWriteSubtrees());
+		/**
+		 * TODO ofer bronstein, August 2013
+		 * treeCorefInfo should not be just printed with toString(), yet with some printer
+		 * method that for each node, calls:
+		 * 
+		 *   "* " + AbstractNodeUtils.getIndentedString(node, "  ", "\t\t  ");
+		 * 
+		 * otherwise, we don't get any relevant info here.
+		 * The problem is that TreeCoreferenceInformation holds objects of type T
+		 * that are not bound to inherit from AbstractNode, so we cannot call this line.
+		 * Somehow, we must be able to call this on BasicNode. To be solved.
+		 */
+		System.out.printf("TREE COREFERENCE INFORMATION:\n%s\n\n", treeCorefInfo.toString());
 
 		System.out.printf("DOCKED COREFERENCE INFORMATION:\n");
 		for (List<DockedMention> dockedMentions: dockedCorefInfo) {
