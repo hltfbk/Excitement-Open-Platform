@@ -14,7 +14,6 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityPhrase;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
 import eu.excitementproject.eop.lap.biu.test.BiuTestParams;
