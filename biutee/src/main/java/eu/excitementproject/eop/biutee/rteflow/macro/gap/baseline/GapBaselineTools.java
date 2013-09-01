@@ -1,0 +1,184 @@
+package eu.excitementproject.eop.biutee.rteflow.macro.gap.baseline;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+
+import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
+import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescriptionGenerator;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapFeaturesUpdate;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapHeuristicMeasure;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
+
+/**
+ * 
+ * @author Asher Stern
+ * @since Sep 1, 2013
+ *
+ * @param <I>
+ * @param <S>
+ */
+@NotThreadSafe
+public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> implements GapFeaturesUpdate<I, S>, GapHeuristicMeasure<I, S>, GapDescriptionGenerator<I, S>
+{
+	public GapBaselineTools(TreeAndParentMap<I, S> hypothesisTree,
+			LinearClassifier classifierForSearch,
+			UnigramProbabilityEstimation mleEstimation,
+			ImmutableSet<String> stopWords)
+	{
+		super();
+		this.hypothesisTree = hypothesisTree;
+		this.classifierForSearch = classifierForSearch;
+		this.mleEstimation = mleEstimation;
+		this.stopWords = stopWords;
+	}
+
+	@Override
+	public GapDescription describeGap(TreeAndParentMap<I, S> tree,
+			GapEnvironment<I, S> environment) throws GapException
+	{
+		GapBaselineCalculator<I, S> calculator = getCalculator(tree,environment);
+		String description =
+				strListNodes("missing named entities: ",calculator.getUncoveredNodesNamedEntities(),false)+
+				strListNodes("missing nodes: ",calculator.getUncoveredNodesNotNamedEntities(),false)+
+				strListNodes("missing non-content words: ",calculator.getUncoveredNodesNonContentWords(),false)+
+				strListNodes("missing edges: ",calculator.getUncoveredEdges(),true);
+		
+		return new GapDescription(description);
+	}
+
+	@Override
+	public double measure(TreeAndParentMap<I, S> tree,
+			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment)
+			throws GapException
+	{
+		try
+		{
+			double costWithoutGap = -classifierForSearch.getProduct(featureVector);
+			Map<Integer, Double> featureVectorWithGap = updateForGap(tree,featureVector,environment);
+			double costWithGap = -classifierForSearch.getProduct(featureVectorWithGap);
+			
+			double ret = costWithGap-costWithoutGap;
+			if (ret<0) throw new GapException("gap measure is negative: "+String.format("%-4.4f", ret));
+			//logger.info("gap measure = "+String.format("%-6.6f", ret));
+			return ret;
+		}
+		catch(ClassifierException e){throw new GapException("Failed to calculate gap measure, due to a problem in the classifier.",e);}
+	}
+
+	@Override
+	public Map<Integer, Double> updateForGap(TreeAndParentMap<I, S> tree,
+			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment)
+			throws GapException
+	{
+		GapBaselineCalculator<I, S> calculator = getCalculator(tree,environment);
+		Map<Integer, Double> newFeatureVector = new LinkedHashMap<>();
+		newFeatureVector.putAll(featureVector);
+		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_NODE.getFeatureIndex(),
+				featureValueMissingNodes(calculator.getUncoveredNodesNotNamedEntities()));
+		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_NODE_NON_CONTENT_WORD.getFeatureIndex(),
+				featureValueMissingNodes(calculator.getUncoveredNodesNonContentWords()));
+		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_NODE_NAMED_ENTITY.getFeatureIndex(),
+				featureValueMissingNodes(calculator.getUncoveredNodesNamedEntities()));
+		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_EDGE.getFeatureIndex(),
+				(double)(-calculator.getUncoveredEdges().size()) );
+		
+		return newFeatureVector;
+	}
+	
+	private double featureValueMissingNodes(List<S> nodes) throws GapException
+	{
+		double ret = 0.0;
+		if (BiuteeConstants.USE_MLE_FOR_GAP)
+		{
+			for (S node : nodes)
+			{
+				String lemma = InfoGetFields.getLemma(node.getInfo());
+				ret += Math.log(mleEstimation.getEstimationFor(lemma));
+			}
+		}
+		else
+		{
+			ret = (double)(-nodes.size());
+		}
+		if (ret>0.0) {throw new GapException("Bug or corrupted Unigram-MLE: invalid feature value. Feature value is higher than zero.");}
+		return ret;
+	}
+	
+	
+	private synchronized GapBaselineCalculator<I, S> getCalculator(TreeAndParentMap<I, S> givenTree, GapEnvironment<I, S> environment)
+	{
+		S tree = givenTree.getTree();
+		if ( (lastTree==tree) && (lastCalculator!=null) )
+		{
+			return lastCalculator;
+		}
+		else
+		{
+			lastTree = null;
+			lastCalculator = null;
+			
+			lastCalculator = new GapBaselineCalculator<>(givenTree, hypothesisTree, environment);
+			lastCalculator.calculate();
+			lastTree = tree;
+			
+			return lastCalculator;
+		}
+	}
+	
+	private String strListNodes(String prefix, List<S> nodes, boolean edge)
+	{
+		String strOfNodes = strListNodes(nodes,edge);
+		if (strOfNodes.length()>0)
+		{
+			return prefix+strOfNodes+"\n";
+		}
+		else return "";
+	}
+	
+	private String strListNodes(List<S> nodes, boolean edge)
+	{
+		StringBuilder sb = new StringBuilder();
+		boolean firstIteration = true;
+		for (S node : nodes)
+		{
+			if (firstIteration){firstIteration=false;}
+			else {sb.append(", ");}
+			sb.append(InfoGetFields.getLemma(node.getInfo()));
+			if (edge)
+			{
+				S parent = hypothesisTree.getParentMap().get(node);
+				if (parent!=null)
+				{
+					sb.append("<").append(InfoGetFields.getLemma(parent.getInfo()));
+				}
+			}
+		}
+		return sb.toString();
+	}
+
+	
+	private final TreeAndParentMap<I, S> hypothesisTree;
+	private final LinearClassifier classifierForSearch;
+	private final UnigramProbabilityEstimation mleEstimation;
+	@SuppressWarnings("unused")
+	private final ImmutableSet<String> stopWords;
+	
+	
+	private S lastTree = null;
+	private GapBaselineCalculator<I, S> lastCalculator = null;
+
+}

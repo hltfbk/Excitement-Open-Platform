@@ -4,7 +4,9 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.baseline.BaselineGapToolbox;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.pastabased.PastaBasedGapToolsFactory;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -16,6 +18,7 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentId
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 
 /**
@@ -99,6 +102,20 @@ public class GapToolBoxFactory
 	
 	private GapToolBox<ExtendedInfo, ExtendedNode> createGapToolBoxForHybridMode() throws GapException
 	{
+		if (BiuteeConstants.GAP_BASELINE)
+		{
+			GlobalMessages.globalWarn("Using baseline gap tools", logger);
+			return new BaselineGapToolbox<ExtendedInfo, ExtendedNode>(mleEstimation,stopWords);
+		}
+		else
+		{
+			return createPastaBasedGapToolBox();
+		}
+	}
+
+	
+	private GapToolBox<ExtendedInfo, ExtendedNode> createPastaBasedGapToolBox() throws GapException
+	{
 		final PredicateArgumentStructureBuilderFactory<ExtendedInfo, ExtendedNode> builderFactory = createPredArgsFactory();
 		final GapToolsFactory<ExtendedInfo, ExtendedNode> gapToolsFactory = new PastaBasedGapToolsFactory<ExtendedInfo, ExtendedNode>(builderFactory,mleEstimation,stopWords);
 		
@@ -117,7 +134,6 @@ public class GapToolBoxFactory
 			}
 		};
 	}
-
 	
 	private PredicateArgumentStructureBuilderFactory<ExtendedInfo, ExtendedNode> createPredArgsFactory() throws GapException
 	{

@@ -107,6 +107,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that are less likely to be changed.
 
+	public static final boolean GAP_BASELINE = false;
+	
 	public static final long RANDOM_SEED_FOR_GAUSSIAN_GENERATOR_FOR_REASONABLE_GUESS_TRAINING = 0L;
 	
 	public static final boolean USE_NUMBER_NORMALIZER = true;

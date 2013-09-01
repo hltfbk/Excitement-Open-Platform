@@ -109,8 +109,12 @@ public enum Feature
 	 */
 	GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES(false,true),
 	
-	GAP_V3_PREDICATE_NO_MATCH(false,true)
-
+	GAP_V3_PREDICATE_NO_MATCH(false,true),
+	
+	GAP_BASELINE_MISSING_NODE(false,true),
+	GAP_BASELINE_MISSING_NODE_NON_CONTENT_WORD(false,true),
+	GAP_BASELINE_MISSING_NODE_NAMED_ENTITY(false,true),
+	GAP_BASELINE_MISSING_EDGE(false,true)
 	;
 
 	//////////////////// PUBLIC METHODS AND PRIVATE CONSTRUCTORS //////////////////////////
