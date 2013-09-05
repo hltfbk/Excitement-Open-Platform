@@ -1,25 +1,19 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>EXCITEMENT open platform: Architecture and Interfaces</title><link rel="stylesheet" href="css/oasis-spec.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.1"><meta name="description" content="This specification defines various parts of the EXCITEMENT
-platform."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><p class="logo"><a href="http://www.oasis-open.org/"><img src="logo.png" alt="OASIS" border="0"></a></p><div><h1 class="title"><a name="idp7929984"></a>EXCITEMENT open platform: Architecture and Interfaces</h1></div><div><h2>Specification V1.1.3 DRAFT</h2><h2>06 December 2012</h2></div><div></div><div><dl><dt><span class="loc-heading">
-          Specification URIs:
-        </span></dt></dl><dl><dt><span class="loc-heading">This Version:</span></dt><dd><a href="http://www.excitement-project.eu/openspec/DocBook/spec-1.1.3/template/Open%20Platform%20Specification-draft.html">http://www.excitement-project.eu/openspec/DocBook/spec-1.1.3/template/Open Platform Specification-draft.html</a>
-                  (Authoritative)
-                <br><a href="http://www.excitement-project.eu/openspec/DocBook/spec-1.1.3/template/Open%20Platform%20Specification-draft.pdf">http://www.excitement-project.eu/openspec/DocBook/spec-1.1.3/template/Open Platform Specification-draft.pdf</a><br><a href="http://www.excitement-project.eu/openspec/DocBook/spec-1.1.3/template/Open%20Platform%20Specification-draft.xml">http://www.excitement-project.eu/openspec/DocBook/spec-1.1.3/template/Open Platform Specification-draft.xml</a><br></dd></dl><dl><dt><span class="loc-heading">Previous Version:</span></dt><dd><a href="http://www.excitement-project.eu/openspec/DocBook/spec-1.1/template/Open%20Platform%20Specification.html">http://www.excitement-project.eu/openspec/DocBook/spec-1.1/template/Open Platform Specification.html</a><br><a href="http://www.excitement-project.eu/openspec/DocBook/spec-1.1/template/Open%20Platform%20Specification.pdf">http://www.excitement-project.eu/openspec/DocBook/spec-1.1/template/Open Platform Specification.pdf</a><br><a href="http://www.excitement-project.eu/openspec/DocBook/spec-1.1/template/Open%20Platform%20Specification.xml">http://www.excitement-project.eu/openspec/DocBook/spec-1.1/template/Open Platform Specification.xml</a><br></dd></dl><dl><dt><span class="loc-heading">Latest Version:</span></dt><dd><a href="http://www.excitement-project.eu/openspec/DocBook/spec/template/Open%20Platform%20Specification.html">http://www.excitement-project.eu/openspec/DocBook/spec/template/Open Platform Specification.html</a>
-                  (Authoritative)
-                <br><a href="http://www.excitement-project.eu/openspec/DocBook/spec/template/Open%20Platform%20Specification.pdf">http://www.excitement-project.eu/openspec/DocBook/spec/template/Open Platform Specification.pdf</a><br><a href="http://www.excitement-project.eu/openspec/DocBook/spec/template/Open%20Platform%20Specification.xml">http://www.excitement-project.eu/openspec/DocBook/spec/template/Open Platform Specification.xml</a><br></dd></dl></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div><dl><dt><span class="author-heading">Authors:</span></dt><dd><span class="firstname">Tae-Gil</span> <span class="surname">Noh</span>, Heidelberg University &lt;<a href="mailto:noh@cl.uni-heidelberg.de">noh@cl.uni-heidelberg.de</a>&gt;<br><span class="firstname">Sebastian</span> <span class="surname">Pado</span>, Heidelberg University &lt;<a href="mailto:pado@cl.uni-heidelberg.de">pado@cl.uni-heidelberg.de</a>&gt;<br><span class="firstname">Asher</span> <span class="surname">Stern</span>, Bar Ilan University &lt;<a href="mailto:astern7@gmail.com">astern7@gmail.com</a>&gt;<br><span class="firstname">Ofer</span> <span class="surname">Bronstein</span>, Bar Ilan University &lt;<a href="mailto:oferbr@gmail.com">oferbr@gmail.com</a>&gt;<br><span class="firstname">Rui</span> <span class="surname">Wang</span>, DFKI &lt;<a href="mailto:wang.rui@dfki.de">wang.rui@dfki.de</a>&gt;<br><span class="firstname">Roberto</span> <span class="surname">Zanoli</span>, FBK &lt;<a href="mailto:zanoli@fbk.eu">zanoli@fbk.eu</a>&gt;</dd></dl></div><div><dl><dt><a name="idp12776544"></a><span class="abstract-heading">Abstract:</span></dt><dd><p>This specification defines various parts of the EXCITEMENT
-platform.</p></dd></dl></div></div><hr></div><div class="toc"><h2>Table of Contents</h2><dl><dt><span class="section"><a href="#idp11214192">1. Introduction</a></span></dt><dt><span class="section"><a href="#idp11723920">2. Elements of the EXCITEMENT platform</a></span></dt><dd><dl><dt><span class="section"><a href="#idp12880176">2.1. The Platform</a></span></dt><dt><span class="section"><a href="#idp12043952">2.2. Engines: Instantiations of the Platform</a></span></dt><dt><span class="section"><a href="#idp12956496">2.3. Concepts and Terminology</a></span></dt><dd><dl><dt><span class="section"><a href="#idp13468512">2.3.1. Key words</a></span></dt><dt><span class="section"><a href="#idp13483056">2.3.2. Key Terms (Content)</a></span></dt><dt><span class="section"><a href="#idp11079952">2.3.3. Key Terms (Methodology)</a></span></dt></dl></dd><dt><span class="section"><a href="#idp7966256">2.4. Licensing considerations
-</a></span></dt></dl></dd><dt><span class="section"><a href="#idp7972720">3. Linguistic Analysis Pipeline (LAP) </a></span></dt><dd><dl><dt><span class="section"><a href="#idp7973936">3.1. Requirements</a></span></dt><dd><dl><dt><span class="section"><a href="#idp7975232">3.1.1. Requirements for the linguistic analysis pipeline</a></span></dt><dt><span class="section"><a href="#idp7980400">3.1.2. Requirements for the interface between LAP and entailment core</a></span></dt><dt><span class="section"><a href="#sec-3.1.3">3.1.3. A rejected option: CoNLL</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-3.2">3.2. UIMA as linguistic analysis pipeline of EXCITEMENT</a></span></dt><dd><dl><dt><span class="section"><a href="#idp7989952">3.2.1. UIMA</a></span></dt><dt><span class="section"><a href="#sec-3.3.2">3.2.2. The EXCITEMENT linguistic analysis pipeline</a></span></dt><dt><span class="section"><a href="#LAP-conformance">3.2.3. Adoption of UIMA in EXCITEMENT</a></span></dt></dl></dd><dt><span class="section"><a href="#TypeSystem">3.3. Type Systems</a></span></dt><dd><dl><dt><span class="section"><a href="#UIMA_concepts">3.3.1. Relevant UIMA concepts: Artifact, View, SOFA</a></span></dt><dt><span class="section"><a href="#idp13613040">3.3.2. Relevant UIMA default types </a></span></dt><dt><span class="section"><a href="#genericTypes">3.3.3. Types for generic NLP analysis results</a></span></dt><dt><span class="section"><a href="#TETypes">3.3.4. Additional Types for Textual Entailment</a></span></dt><dt><span class="section"><a href="#sec-3.3.3">3.3.5. Extending existing types</a></span></dt></dl></dd><dt><span class="section"><a href="#idp13841488">3.4. Providing analysis components for LAP </a></span></dt><dd><dl><dt><span class="section"><a href="#AEs">3.4.1. Providing individual analysis engines (AEs)</a></span></dt><dt><span class="section"><a href="#AAEs">3.4.2. Providing an analysis pipeline</a></span></dt><dt><span class="section"><a href="#FileOut">3.4.3. Providing serialized outputs for a set of documents</a></span></dt><dt><span class="section"><a href="#alternativeAAE">3.4.4. An alternative: Independent pipelines with CAS output</a></span></dt></dl></dd></dl></dd><dt><span class="section"><a href="#sec-4">4. Common Interfaces of the Entailment Core </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.1">4.1. Requirements for the Entailment Core </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.1.1">4.1.1. Requirements for the EDA</a></span></dt><dt><span class="section"><a href="#sec-4.1.2">4.1.2. Requirements for the Components</a></span></dt><dt><span class="section"><a href="#sec-4.1.3">4.1.3. Identifying common components and interfaces </a></span></dt><dt><span class="section"><a href="#sec-4.1.4">4.1.4. Using CAS or independent types in the Entailment Core?
+platform."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><p class="logo"><a href="http://www.oasis-open.org/"><img src="logo.png" alt="OASIS" border="0"></a></p><div><h1 class="title"><a name="idp7928000"></a>EXCITEMENT open platform: Architecture and Interfaces</h1></div><div><h2>Specification V1.1.3</h2><h2>06 December 2012</h2></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div><dl><dt><span class="author-heading">Authors:</span></dt><dd><span class="firstname">Tae-Gil</span> <span class="surname">Noh</span>, Heidelberg University &lt;<a href="mailto:noh@cl.uni-heidelberg.de">noh@cl.uni-heidelberg.de</a>&gt;<br><span class="firstname">Sebastian</span> <span class="surname">Pado</span>, Heidelberg University &lt;<a href="mailto:pado@cl.uni-heidelberg.de">pado@cl.uni-heidelberg.de</a>&gt;<br><span class="firstname">Asher</span> <span class="surname">Stern</span>, Bar Ilan University &lt;<a href="mailto:astern7@gmail.com">astern7@gmail.com</a>&gt;<br><span class="firstname">Ofer</span> <span class="surname">Bronstein</span>, Bar Ilan University &lt;<a href="mailto:oferbr@gmail.com">oferbr@gmail.com</a>&gt;<br><span class="firstname">Rui</span> <span class="surname">Wang</span>, DFKI &lt;<a href="mailto:wang.rui@dfki.de">wang.rui@dfki.de</a>&gt;<br><span class="firstname">Roberto</span> <span class="surname">Zanoli</span>, FBK &lt;<a href="mailto:zanoli@fbk.eu">zanoli@fbk.eu</a>&gt;</dd></dl></div><div><dl><dt><a name="idp13913104"></a><span class="abstract-heading">Abstract:</span></dt><dd><p>This specification defines various parts of the EXCITEMENT
+platform.</p></dd></dl></div></div><hr></div><div class="toc"><h2>Table of Contents</h2><dl><dt><span class="section"><a href="#idp10173584">1. Introduction</a></span></dt><dt><span class="section"><a href="#idp13096656">2. Elements of the EXCITEMENT platform</a></span></dt><dd><dl><dt><span class="section"><a href="#idp9035328">2.1. The Platform</a></span></dt><dt><span class="section"><a href="#idp9045280">2.2. Engines: Instantiations of the Platform</a></span></dt><dt><span class="section"><a href="#idp7986848">2.3. Concepts and Terminology</a></span></dt><dd><dl><dt><span class="section"><a href="#idp7987408">2.3.1. Key words</a></span></dt><dt><span class="section"><a href="#idp7993840">2.3.2. Key Terms (Content)</a></span></dt><dt><span class="section"><a href="#idp13952704">2.3.3. Key Terms (Methodology)</a></span></dt></dl></dd><dt><span class="section"><a href="#idp13957968">2.4. Licensing considerations
+</a></span></dt></dl></dd><dt><span class="section"><a href="#idp13964288">3. Linguistic Analysis Pipeline (LAP) </a></span></dt><dd><dl><dt><span class="section"><a href="#idp13965456">3.1. Requirements</a></span></dt><dd><dl><dt><span class="section"><a href="#idp13966720">3.1.1. Requirements for the linguistic analysis pipeline</a></span></dt><dt><span class="section"><a href="#idp13971712">3.1.2. Requirements for the interface between LAP and entailment core</a></span></dt><dt><span class="section"><a href="#sec-3.1.3">3.1.3. A rejected option: CoNLL</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-3.2">3.2. UIMA as linguistic analysis pipeline of EXCITEMENT</a></span></dt><dd><dl><dt><span class="section"><a href="#idp13981040">3.2.1. UIMA</a></span></dt><dt><span class="section"><a href="#sec-3.3.2">3.2.2. The EXCITEMENT linguistic analysis pipeline</a></span></dt><dt><span class="section"><a href="#LAP-conformance">3.2.3. Adoption of UIMA in EXCITEMENT</a></span></dt></dl></dd><dt><span class="section"><a href="#TypeSystem">3.3. Type Systems</a></span></dt><dd><dl><dt><span class="section"><a href="#UIMA_concepts">3.3.1. Relevant UIMA concepts: Artifact, View, SOFA</a></span></dt><dt><span class="section"><a href="#idp14053328">3.3.2. Relevant UIMA default types </a></span></dt><dt><span class="section"><a href="#genericTypes">3.3.3. Types for generic NLP analysis results</a></span></dt><dt><span class="section"><a href="#TETypes">3.3.4. Additional Types for Textual Entailment</a></span></dt><dt><span class="section"><a href="#sec-3.3.3">3.3.5. Extending existing types</a></span></dt></dl></dd><dt><span class="section"><a href="#idp14281776">3.4. Providing analysis components for LAP </a></span></dt><dd><dl><dt><span class="section"><a href="#AEs">3.4.1. Providing individual analysis engines (AEs)</a></span></dt><dt><span class="section"><a href="#AAEs">3.4.2. Providing an analysis pipeline</a></span></dt><dt><span class="section"><a href="#FileOut">3.4.3. Providing serialized outputs for a set of documents</a></span></dt><dt><span class="section"><a href="#alternativeAAE">3.4.4. An alternative: Independent pipelines with CAS output</a></span></dt></dl></dd></dl></dd><dt><span class="section"><a href="#sec-4">4. Common Interfaces of the Entailment Core </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.1">4.1. Requirements for the Entailment Core </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.1.1">4.1.1. Requirements for the EDA</a></span></dt><dt><span class="section"><a href="#sec-4.1.2">4.1.2. Requirements for the Components</a></span></dt><dt><span class="section"><a href="#sec-4.1.3">4.1.3. Identifying common components and interfaces </a></span></dt><dt><span class="section"><a href="#sec-4.1.4">4.1.4. Using CAS or independent types in the Entailment Core?
 </a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.2">4.2. EDA Interface </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.2.1">4.2.1. EDA Basic interface: interface <code class="code">EDABasic</code> </a></span></dt><dt><span class="section"><a href="#sec-4.2.2">4.2.2. EDA multiple text/hypothesis interface: interface
 <code class="code">EDAMultiT</code>, <code class="code">EDAMultiH</code>,
 <code class="code">EDAMultiTH</code> </a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.3">4.3. Auxiliary Layer for EDAs</a></span></dt><dd><dl><dt><span class="section"><a href="#InitializationHelper">4.3.1. Initialization Helper</a></span></dt><dt><span class="section"><a href="#MultipleTHModeHelper">4.3.2. Processing multiple T-H problems with
 EDABasic:<code class="code">MultipleTHModeHelper</code></a></span></dt><dt><span class="section"><a href="#SinglePairProcessHelper">4.3.3. Produce entailment decision for raw-text input:
 <code class="code">SinglePairProcessHelper</code></a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.3a">4.4. Common functionality of components: The
-<code class="code">Component</code> interface</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.3a.2">4.4.1. method <code class="code">getComponentName</code> </a></span></dt><dt><span class="section"><a href="#sec-4.3a.3">4.4.2. method <code class="code">getInstanceName</code></a></span></dt><dt><span class="section"><a href="#componentInit">4.4.3. Initialization of a Component</a></span></dt><dt><span class="section"><a href="#sec-4.3a.4">4.4.4. Storage of names</a></span></dt></dl></dd><dt><span class="section"><a href="#ScoringComponent">4.5. Interface for Scoring Components</a></span></dt><dd><dl><dt><span class="section"><a href="#idp14108640">4.5.1. <code class="code">interface ScoringComponent</code></a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.4">4.6. Interface of distance calculation components</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.4.1">4.6.1. interface <code class="code">DistanceCalculation</code> </a></span></dt><dt><span class="section"><a href="#sec-4.4.2">4.6.2. Type <code class="code">DistanceValue</code> </a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.5">4.7. Interface of lexical knowledge components </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.5.1">4.7.1. Type <code class="code">LexicalRule</code> </a></span></dt><dt><span class="section"><a href="#sec-4.5.2">4.7.2. Interface <code class="code">LexicalResource</code></a></span></dt><dt><span class="section"><a href="#LexicalResourceWithRelation">4.7.3. interface <code class="code">LexicalResourceWithRelation</code> </a></span></dt><dt><span class="section"><a href="#idp14219136">4.7.4. Interface <code class="code">RelationSpecifier</code> and its hierarchy </a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.6">4.8. Interface of syntactic knowledge components </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.6.1">4.8.1. Type <code class="code">SyntacticRule</code> </a></span></dt><dt><span class="section"><a href="#sec-4.6.2">4.8.2. interface <code class="code">SyntacticResource</code> </a></span></dt></dl></dd><dt><span class="section"><a href="#idp14358368">4.9. Concurrent Processing </a></span></dt><dd><dl><dt><span class="section"><a href="#idp14359008">4.9.1. The issue of concurrent processing </a></span></dt><dt><span class="section"><a href="#idp14366944">4.9.2. Our approach on concurrent processing </a></span></dt><dt><span class="section"><a href="#EDAConcurrentProcessing">4.9.3. <code class="code">interface EDAConcurrentProcessing</code> </a></span></dt><dt><span class="section"><a href="#idp14385088">4.9.4. Future enhancements </a></span></dt></dl></dd><dt><span class="section"><a href="#idp14390176">4.10. Initialization and metadata check</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.7.1">4.10.1. Recommended policy on metadata check</a></span></dt><dt><span class="section"><a href="#reconfigurable">4.10.2. Interface <code class="code">Reconfigurable</code></a></span></dt><dt><span class="section"><a href="#sec-4.7.3">4.10.3. Component name and instance name</a></span></dt></dl></dd></dl></dd><dt><span class="section"><a href="#idp14424848">5. Common Data Formats </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-5.1">5.1. Common Configuration </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-5.1.1">5.1.1. Requirements of Entailment Core Common Configuration </a></span></dt><dt><span class="section"><a href="#sec-5.1.2">5.1.2. Overview of the common configuration </a></span></dt><dt><span class="section"><a href="#sec-5.1.3">5.1.3. Interfaces related to Common Configuration </a></span></dt><dt><span class="section"><a href="#ConfigurationXMLFileFormat">5.1.4. Common Configuration XML file format </a></span></dt><dt><span class="section"><a href="#sec-5.1.4">5.1.5. Extending the common configuration features </a></span></dt><dt><span class="section"><a href="#sec-5.1.5">5.1.6. Component selection</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-5.2">5.2. Input file format </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-5.2.1">5.2.1. Role of input data </a></span></dt><dt><span class="section"><a href="#sec-5.2.2">5.2.2. RTE challenge data formats and the supported data
-format. </a></span></dt></dl></dd></dl></dd><dt><span class="section"><a href="#idp14539744">6. Linguistic Analysis Pipeline</a></span></dt><dd><dl><dt><span class="section"><a href="#LAP-goal">6.1. The goals of the LAP interface</a></span></dt><dt><span class="section"><a href="#LAP-interface">6.2. Interface <code class="code">LAPAccess</code></a></span></dt><dd><dl><dt><span class="section"><a href="#idp14548752">6.2.1. method <code class="code">generateSingleTHPairCAS</code> </a></span></dt><dt><span class="section"><a href="#idp14557088">6.2.2. method <code class="code">processRawInputFormat</code></a></span></dt><dt><span class="section"><a href="#idp14564560">6.2.3. method <code class="code">addAnnotationsToCAS</code> </a></span></dt></dl></dd><dt><span class="section"><a href="#LAP-future">6.3. Room for improvements with UIMA adoption</a></span></dt></dl></dd><dt><span class="section"><a href="#idp14588000">7. Further Recommended Platform Policies </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-6.1">7.1. Coding Standard </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-6.1.1">7.1.1. Documentation </a></span></dt><dt><span class="section"><a href="#sec-6.1.2">7.1.2. Error Handling </a></span></dt><dt><span class="section"><a href="#sec-6.1.3">7.1.3. Naming Conventions </a></span></dt><dt><span class="section"><a href="#sec-6.1.4">7.1.4. Writing Good Code </a></span></dt><dt><span class="section"><a href="#code_annotations">7.1.5. Code annotations</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-6.2">7.2. List of Exceptions </a></span></dt><dt><span class="section"><a href="#sec-6.3">7.3. Common Logging for Entailment Core </a></span></dt><dt><span class="section"><a href="#sec-6.4">7.4. Conventions for Additional Names</a></span></dt><dt><span class="section"><a href="#idp14689344">7.5. Boundary of LAP and Entailment Core: Where should my new component go? </a></span></dt></dl></dd><dt><span class="section"><a href="#RefSec">8. References</a></span></dt></dl><h3>Appendixes</h3><dl><dt><span class="appendix"><a href="#genericTypesXML">A. Type Definition: types for general linguistic analysis</a></span></dt><dd><dl><dt><span class="section"><a href="#idp14756176">A.1. Segmentation types</a></span></dt><dt><span class="section"><a href="#idp14782608">A.2. POS types</a></span></dt><dd><dl><dt><span class="section"><a href="#idp14845008">A.2.1. Extension of basic POS types</a></span></dt><dt><span class="section"><a href="#idp14855632">A.2.2. Mapping of tagger tagsets to the types</a></span></dt></dl></dd><dt><span class="section"><a href="#idp14966976">A.3. NER types</a></span></dt><dt><span class="section"><a href="#idp15100736">A.4. Types for Constituency Parsing </a></span></dt><dt><span class="section"><a href="#idp15356080">A.5. Types for Dependency Parsing</a></span></dt><dt><span class="section"><a href="#idp15618208">A.6. Types for Coreference Resolution</a></span></dt><dt><span class="section"><a href="#idp15638560">A.7. Types for Semantic Role Labels</a></span></dt><dt><span class="section"><a href="#idp15655920">A.8. Types for Temporal/NER events</a></span></dt><dt><span class="section"><a href="#idp15687488">A.9. Types for Text Alignment</a></span></dt></dl></dd><dt><span class="appendix"><a href="#TETypesXML">B. Type Definition: types related to TE tasks </a></span></dt><dd><dl><dt><span class="section"><a href="#idp15701216">B.1. Types related to entailment problems</a></span></dt><dt><span class="section"><a href="#idp15744576">B.2. Types for Predicate Truth</a></span></dt></dl></dd><dt><span class="appendix"><a href="#idp15788800">C. Entailment Core Interfaces</a></span></dt><dd><dl><dt><span class="section"><a href="#c-1">C.1. <code class="code">interface EDABasic</code> and related objects</a></span></dt><dd><dl><dt><span class="section"><a href="#idp15792432">C.1.1. <code class="code">interface EDABasic</code></a></span></dt><dt><span class="section"><a href="#idp15794480">C.1.2. <code class="code">interface TEDecision</code></a></span></dt><dt><span class="section"><a href="#c-1-DecisionLabel">C.1.3. <code class="code">enum
+<code class="code">Component</code> interface</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.3a.2">4.4.1. method <code class="code">getComponentName</code> </a></span></dt><dt><span class="section"><a href="#sec-4.3a.3">4.4.2. method <code class="code">getInstanceName</code></a></span></dt><dt><span class="section"><a href="#componentInit">4.4.3. Initialization of a Component</a></span></dt><dt><span class="section"><a href="#sec-4.3a.4">4.4.4. Storage of names</a></span></dt></dl></dd><dt><span class="section"><a href="#ScoringComponent">4.5. Interface for Scoring Components</a></span></dt><dd><dl><dt><span class="section"><a href="#idp14550048">4.5.1. <code class="code">interface ScoringComponent</code></a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.4">4.6. Interface of distance calculation components</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.4.1">4.6.1. interface <code class="code">DistanceCalculation</code> </a></span></dt><dt><span class="section"><a href="#sec-4.4.2">4.6.2. Type <code class="code">DistanceValue</code> </a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.5">4.7. Interface of lexical knowledge components </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.5.1">4.7.1. Type <code class="code">LexicalRule</code> </a></span></dt><dt><span class="section"><a href="#sec-4.5.2">4.7.2. Interface <code class="code">LexicalResource</code></a></span></dt><dt><span class="section"><a href="#LexicalResourceWithRelation">4.7.3. interface <code class="code">LexicalResourceWithRelation</code> </a></span></dt><dt><span class="section"><a href="#idp15451184">4.7.4. Interface <code class="code">RelationSpecifier</code> and its hierarchy </a></span></dt></dl></dd><dt><span class="section"><a href="#sec-4.6">4.8. Interface of syntactic knowledge components </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.6.1">4.8.1. Type <code class="code">SyntacticRule</code> </a></span></dt><dt><span class="section"><a href="#sec-4.6.2">4.8.2. interface <code class="code">SyntacticResource</code> </a></span></dt></dl></dd><dt><span class="section"><a href="#idp15590432">4.9. Concurrent Processing </a></span></dt><dd><dl><dt><span class="section"><a href="#idp15591072">4.9.1. The issue of concurrent processing </a></span></dt><dt><span class="section"><a href="#idp15598704">4.9.2. Our approach on concurrent processing </a></span></dt><dt><span class="section"><a href="#EDAConcurrentProcessing">4.9.3. <code class="code">interface EDAConcurrentProcessing</code> </a></span></dt><dt><span class="section"><a href="#idp15616848">4.9.4. Future enhancements </a></span></dt></dl></dd><dt><span class="section"><a href="#idp15621936">4.10. Initialization and metadata check</a></span></dt><dd><dl><dt><span class="section"><a href="#sec-4.7.1">4.10.1. Recommended policy on metadata check</a></span></dt><dt><span class="section"><a href="#reconfigurable">4.10.2. Interface <code class="code">Reconfigurable</code></a></span></dt><dt><span class="section"><a href="#sec-4.7.3">4.10.3. Component name and instance name</a></span></dt></dl></dd></dl></dd><dt><span class="section"><a href="#idp15656208">5. Common Data Formats </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-5.1">5.1. Common Configuration </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-5.1.1">5.1.1. Requirements of Entailment Core Common Configuration </a></span></dt><dt><span class="section"><a href="#sec-5.1.2">5.1.2. Overview of the common configuration </a></span></dt><dt><span class="section"><a href="#sec-5.1.3">5.1.3. Interfaces related to Common Configuration </a></span></dt><dt><span class="section"><a href="#ConfigurationXMLFileFormat">5.1.4. Common Configuration XML file format </a></span></dt><dt><span class="section"><a href="#sec-5.1.4">5.1.5. Extending the common configuration features </a></span></dt><dt><span class="section"><a href="#sec-5.1.5">5.1.6. Component selection</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-5.2">5.2. Input file format </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-5.2.1">5.2.1. Role of input data </a></span></dt><dt><span class="section"><a href="#sec-5.2.2">5.2.2. RTE challenge data formats and the supported data
+format. </a></span></dt></dl></dd></dl></dd><dt><span class="section"><a href="#idp15771104">6. Linguistic Analysis Pipeline</a></span></dt><dd><dl><dt><span class="section"><a href="#LAP-goal">6.1. The goals of the LAP interface</a></span></dt><dt><span class="section"><a href="#LAP-interface">6.2. Interface <code class="code">LAPAccess</code></a></span></dt><dd><dl><dt><span class="section"><a href="#idp15780112">6.2.1. method <code class="code">generateSingleTHPairCAS</code> </a></span></dt><dt><span class="section"><a href="#idp15788448">6.2.2. method <code class="code">processRawInputFormat</code></a></span></dt><dt><span class="section"><a href="#idp15795920">6.2.3. method <code class="code">addAnnotationsToCAS</code> </a></span></dt></dl></dd><dt><span class="section"><a href="#LAP-future">6.3. Room for improvements with UIMA adoption</a></span></dt></dl></dd><dt><span class="section"><a href="#idp15819360">7. Further Recommended Platform Policies </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-6.1">7.1. Coding Standard </a></span></dt><dd><dl><dt><span class="section"><a href="#sec-6.1.1">7.1.1. Documentation </a></span></dt><dt><span class="section"><a href="#sec-6.1.2">7.1.2. Error Handling </a></span></dt><dt><span class="section"><a href="#sec-6.1.3">7.1.3. Naming Conventions </a></span></dt><dt><span class="section"><a href="#sec-6.1.4">7.1.4. Writing Good Code </a></span></dt><dt><span class="section"><a href="#code_annotations">7.1.5. Code annotations</a></span></dt></dl></dd><dt><span class="section"><a href="#sec-6.2">7.2. List of Exceptions </a></span></dt><dt><span class="section"><a href="#sec-6.3">7.3. Common Logging for Entailment Core </a></span></dt><dt><span class="section"><a href="#sec-6.4">7.4. Conventions for Additional Names</a></span></dt><dt><span class="section"><a href="#idp15920704">7.5. Boundary of LAP and Entailment Core: Where should my new component go? </a></span></dt></dl></dd><dt><span class="section"><a href="#RefSec">8. References</a></span></dt></dl><h3>Appendixes</h3><dl><dt><span class="appendix"><a href="#genericTypesXML">A. Type Definition: types for general linguistic analysis</a></span></dt><dd><dl><dt><span class="section"><a href="#idp15987536">A.1. Segmentation types</a></span></dt><dt><span class="section"><a href="#idp16013968">A.2. POS types</a></span></dt><dd><dl><dt><span class="section"><a href="#idp16076368">A.2.1. Extension of basic POS types</a></span></dt><dt><span class="section"><a href="#idp16087472">A.2.2. Mapping of tagger tagsets to the types</a></span></dt></dl></dd><dt><span class="section"><a href="#idp16198816">A.3. NER types</a></span></dt><dt><span class="section"><a href="#idp16332656">A.4. Types for Constituency Parsing </a></span></dt><dt><span class="section"><a href="#idp16588016">A.5. Types for Dependency Parsing</a></span></dt><dt><span class="section"><a href="#idp16850144">A.6. Types for Coreference Resolution</a></span></dt><dt><span class="section"><a href="#idp16870496">A.7. Types for Semantic Role Labels</a></span></dt><dt><span class="section"><a href="#idp16887856">A.8. Types for Temporal/NER events</a></span></dt><dt><span class="section"><a href="#idp16919424">A.9. Types for Text Alignment</a></span></dt></dl></dd><dt><span class="appendix"><a href="#TETypesXML">B. Type Definition: types related to TE tasks </a></span></dt><dd><dl><dt><span class="section"><a href="#idp16933152">B.1. Types related to entailment problems</a></span></dt><dt><span class="section"><a href="#idp16976512">B.2. Types for Predicate Truth</a></span></dt></dl></dd><dt><span class="appendix"><a href="#idp17020736">C. Entailment Core Interfaces</a></span></dt><dd><dl><dt><span class="section"><a href="#c-1">C.1. <code class="code">interface EDABasic</code> and related objects</a></span></dt><dd><dl><dt><span class="section"><a href="#idp17024368">C.1.1. <code class="code">interface EDABasic</code></a></span></dt><dt><span class="section"><a href="#idp17026416">C.1.2. <code class="code">interface TEDecision</code></a></span></dt><dt><span class="section"><a href="#c-1-DecisionLabel">C.1.3. <code class="code">enum
 DecisionLabel</code></a></span></dt></dl></dd><dt><span class="section"><a href="#c-1.5">C.2. <code class="code">interface
-SinglePairProcessHelper</code></a></span></dt><dt><span class="section"><a href="#c-2">C.3. <code class="code">interface EDAMulti*</code></a></span></dt><dd><dl><dt><span class="section"><a href="#idp15801856">C.3.1. <code class="code">interface EDAMultiT</code></a></span></dt><dt><span class="section"><a href="#idp15803776">C.3.2. <code class="code">interface EDAMultiH</code></a></span></dt><dt><span class="section"><a href="#idp15805696">C.3.3. <code class="code">interface EDAMultiTH</code></a></span></dt></dl></dd><dt><span class="section"><a href="#c-3">C.4. <code class="code">class MultipleTHModeHelper</code></a></span></dt><dt><span class="section"><a href="#c-4.0">C.5. <code class="code">interface Components</code></a></span></dt><dt><span class="section"><a href="#c-4">C.6. <code class="code">interface DistanceCalculation</code>
-and related objects</a></span></dt><dd><dl><dt><span class="section"><a href="#idp15813200">C.6.1. <code class="code">interface DistanceCalculation</code></a></span></dt><dt><span class="section"><a href="#idp15815120">C.6.2. <code class="code">class DistanceValue</code></a></span></dt></dl></dd><dt><span class="section"><a href="#c-5">C.7. <code class="code">class LexicalResource</code> and
-related objects</a></span></dt><dd><dl><dt><span class="section"><a href="#idp15818176">C.7.1. <code class="code">class LexicalRule</code></a></span></dt><dt><span class="section"><a href="#idp15820176">C.7.2. <code class="code">class PartOfSpeech</code></a></span></dt><dt><span class="section"><a href="#idp15822096">C.7.3. <code class="code">interface RuleInfo</code></a></span></dt><dt><span class="section"><a href="#idp15824096">C.7.4. <code class="code">interface LexicalResource</code></a></span></dt></dl></dd><dt><span class="section"><a href="#c-6">C.8. <code class="code">interface SyntacticResource</code> and
-related objects </a></span></dt><dd><dl><dt><span class="section"><a href="#idp15827232">C.8.1. <code class="code">class SyntacticRule</code></a></span></dt><dt><span class="section"><a href="#c-6-BasicNode">C.8.2. class <code class="code">BasicNode</code> and related classes</a></span></dt><dt><span class="section"><a href="#idp15831744">C.8.3. <code class="code">interface SyntacticResource</code></a></span></dt></dl></dd></dl></dd><dt><span class="appendix"><a href="#appendix_input_format">D. Supported Raw Input Formats</a></span></dt></dl></div><hr><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp11214192"></a>1. Introduction</h2></div></div></div><p>
+SinglePairProcessHelper</code></a></span></dt><dt><span class="section"><a href="#c-2">C.3. <code class="code">interface EDAMulti*</code></a></span></dt><dd><dl><dt><span class="section"><a href="#idp17033792">C.3.1. <code class="code">interface EDAMultiT</code></a></span></dt><dt><span class="section"><a href="#idp17035712">C.3.2. <code class="code">interface EDAMultiH</code></a></span></dt><dt><span class="section"><a href="#idp17037632">C.3.3. <code class="code">interface EDAMultiTH</code></a></span></dt></dl></dd><dt><span class="section"><a href="#c-3">C.4. <code class="code">class MultipleTHModeHelper</code></a></span></dt><dt><span class="section"><a href="#c-4.0">C.5. <code class="code">interface Components</code></a></span></dt><dt><span class="section"><a href="#c-4">C.6. <code class="code">interface DistanceCalculation</code>
+and related objects</a></span></dt><dd><dl><dt><span class="section"><a href="#idp17045136">C.6.1. <code class="code">interface DistanceCalculation</code></a></span></dt><dt><span class="section"><a href="#idp17047056">C.6.2. <code class="code">class DistanceValue</code></a></span></dt></dl></dd><dt><span class="section"><a href="#c-5">C.7. <code class="code">class LexicalResource</code> and
+related objects</a></span></dt><dd><dl><dt><span class="section"><a href="#idp17050112">C.7.1. <code class="code">class LexicalRule</code></a></span></dt><dt><span class="section"><a href="#idp17052112">C.7.2. <code class="code">class PartOfSpeech</code></a></span></dt><dt><span class="section"><a href="#idp17054032">C.7.3. <code class="code">interface RuleInfo</code></a></span></dt><dt><span class="section"><a href="#idp17056032">C.7.4. <code class="code">interface LexicalResource</code></a></span></dt></dl></dd><dt><span class="section"><a href="#c-6">C.8. <code class="code">interface SyntacticResource</code> and
+related objects </a></span></dt><dd><dl><dt><span class="section"><a href="#idp17059168">C.8.1. <code class="code">class SyntacticRule</code></a></span></dt><dt><span class="section"><a href="#c-6-BasicNode">C.8.2. class <code class="code">BasicNode</code> and related classes</a></span></dt><dt><span class="section"><a href="#idp17063680">C.8.3. <code class="code">interface SyntacticResource</code></a></span></dt></dl></dd></dl></dd><dt><span class="appendix"><a href="#appendix_input_format">D. Supported Raw Input Formats</a></span></dt></dl></div><hr><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp10173584"></a>1. Introduction</h2></div></div></div><p>
 Identifying semantic inference relations between texts is a major
 underlying language processing task, needed in practically all text
 understanding applications. For example, Question Answering and
@@ -111,7 +105,7 @@ B. It translates between the queries posed by the industrial partners'
 use cases and entailment queries that can be answered by the open
 platform developed for Goal A. The transduction layer will be
 described in a separate document, to be released as Deliverable 3.1b.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp11723920"></a>2. Elements of the EXCITEMENT platform</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp12880176"></a>2.1. The Platform</h3></div></div></div><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp13096656"></a>2. Elements of the EXCITEMENT platform</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9035328"></a>2.1. The Platform</h3></div></div></div><p>
 As sketched, we assume that it is beneficial to decompose the
 recognition of textual entailment into individual components which are
 best developed and independent of each other. This approach gives rise
@@ -145,7 +139,7 @@ strong candidates for Components are WordNet (on the knowledge side)
 and distance computations between text and hypothesis (on the
 algorithmic side). Both of these can be combined with EDAs of
 different natures, and should therefore be encapsulated in Components.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp12043952"></a>2.2. Engines: Instantiations of the Platform</h3></div></div></div><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp9045280"></a>2.2. Engines: Instantiations of the Platform</h3></div></div></div><p>
 In order to use the EXCITEMENT infrastructure, a user will have to
 configure the platform for his application setting, that is, for his
 language and his analysis tools (on the pipeline side) and for his
@@ -174,7 +168,7 @@ knowledge. For this reason, the LAP must enrich the input with meta
 data that describes its language, as well as the performed
 preprocessing steps so that the Entailment Core can verify the
 applicability of the current Engine configuration to the input data.
-</p><div class="figure"><a name="edits_engine"></a><p class="title"><b>Figure 2. An EDITS-style EXCITEMENT engine</b></p><div class="mediaobject" align="center"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="90%"><tr><td align="center"><img src="./figures/edits-engine.jpg" align="middle" width="100%" alt="An EDITS-style EXCITEMENT engine"></td></tr></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp12956496"></a>2.3. Concepts and Terminology</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp13468512"></a>2.3.1. Key words</h4></div></div></div><p>The key words <em class="glossterm">must</em>, <em class="glossterm">must
+</p><div class="figure"><a name="edits_engine"></a><p class="title"><b>Figure 2. An EDITS-style EXCITEMENT engine</b></p><div class="mediaobject" align="center"><table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0" width="90%"><tr><td align="center"><img src="./figures/edits-engine.jpg" align="middle" width="100%" alt="An EDITS-style EXCITEMENT engine"></td></tr></table></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp7986848"></a>2.3. Concepts and Terminology</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp7987408"></a>2.3.1. Key words</h4></div></div></div><p>The key words <em class="glossterm">must</em>, <em class="glossterm">must
 	  not</em>, <em class="glossterm">required</em>,
 	  <em class="glossterm">shall</em>, <em class="glossterm">shall not</em>,
 	  <em class="glossterm">should</em>, <em class="glossterm">should not</em>,
@@ -182,7 +176,7 @@ applicability of the current Engine configuration to the input data.
 	  <em class="glossterm">optional</em> are to be
 	  interpreted as described in [<a href="#rfc2119" title="[RFC 2119]"><span class="abbrev">RFC 2119</span></a>]. Note that for
 	  reasons of style, these words are not capitalized in this
-	  document.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp13483056"></a>2.3.2. Key Terms (Content)</h4></div></div></div><div class="variablelist"><dl><dt><span class="term">
+	  document.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp7993840"></a>2.3.2. Key Terms (Content)</h4></div></div></div><div class="variablelist"><dl><dt><span class="term">
 	   Entailment Platform</span></dt><dd><p> The totality of the infrastructure
 	   provided by the EXCITEMENT project for all languages and
 	   entailment paradigms. The Platform can be configured
@@ -218,7 +212,7 @@ applicability of the current Engine configuration to the input data.
 	   utilizes the types defined in this specification. This
 	   includes the "top level" entailment code that calls the LAP
 	   and the EDA to apply an engine to an actual
-	   data-set.</p></dd></dl></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp11079952"></a>2.3.3. Key Terms (Methodology)</h4></div></div></div><div class="variablelist"><dl><dt><span class="term">
+	   data-set.</p></dd></dl></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp13952704"></a>2.3.3. Key Terms (Methodology)</h4></div></div></div><div class="variablelist"><dl><dt><span class="term">
 	   Interface</span></dt><dd><p> A set of methods and their signatures for
 	   a class that define how the class is supposed
 	   to interact with the outside world</p></dd><dt><span class="term">
@@ -229,7 +223,7 @@ applicability of the current Engine configuration to the input data.
 	   particular interfaces and types that goes beyond
 	   signatures. For example, rules on initialization of
 	   objects or pre/postconditions for method calls. 
-	   </p></dd></dl></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp7966256"></a>2.4. Licensing considerations
+	   </p></dd></dl></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp13957968"></a>2.4. Licensing considerations
 </h3></div></div></div><p>The goal of this document is to define interfaces that allow the
 use of a wide range of externally developed linguistic analysis
 modules and inference components within the EXCITEMENT platform. An
@@ -260,21 +254,21 @@ assumption that the resulting systems will be used only in-house at
 the industrial partners, at least for the time being, the question of
 whether redistribution is permissible does not arise here.
 </p></li></ol></div><p>
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp7972720"></a>3. Linguistic Analysis Pipeline (LAP) </h2></div></div></div><p> This section describes the specification (interfaces and
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp13964288"></a>3. Linguistic Analysis Pipeline (LAP) </h2></div></div></div><p> This section describes the specification (interfaces and
 exchange data structure) of the Linguistic Analysis Pipeline.
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp7973936"></a>3.1. Requirements</h3></div></div></div><p>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp13965456"></a>3.1. Requirements</h3></div></div></div><p>
 This subsection describes the requirements for two aspects of the LAP:
 First, the user interface of the LAP. Second, the type (i.e., data
 structure) that is used to exchange data between the LAP and the
 Entailment Core.
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp7975232"></a>3.1.1. Requirements for the linguistic analysis pipeline</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>Separation between LAP and entailment
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp13966720"></a>3.1.1. Requirements for the linguistic analysis pipeline</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>Separation between LAP and entailment
 core.</em></span> (This is a global requirement.) </p></li><li><p><span class="emphasis"><em>Language independence.</em></span> The
 pipeline should not be tied to properties of individual
 languages.</p></li><li><p><span class="emphasis"><em>"One-click analysis".</em></span> The
 pipeline should be easy to use, ideally runnable with one command or
 click.</p></li><li><p><span class="emphasis"><em>Customizability.</em></span> The pipeline
 should be easily extensible with new modules.</p></li><li><p><span class="emphasis"><em>Easy configuration.</em></span> The pipeline
-should be easy to (re)configure.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp7980400"></a>3.1.2. Requirements for the interface between LAP and entailment core</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>Language independence.</em></span> The data
+should be easy to (re)configure.</p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp13971712"></a>3.1.2. Requirements for the interface between LAP and entailment core</h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><span class="emphasis"><em>Language independence.</em></span> The data
 structure should be able to accommodate analyses of individual languages.</p></li><li><p><span class="emphasis"><em>Linguistic formalism independence.</em></span> The data
 structure should be independent of specific linguistic theories and
 formalisms.</p></li><li><p><span class="emphasis"><em>Extensible multi-level
@@ -296,7 +290,7 @@ unwieldy for more complex annotations (cf. the handling of semantic
 roles in CoNLL 2009 which requires a flexible number of columns). (3),
 it only specifies an on-disk file format but no in-memory data
 structure. (4), no support for metadata.
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-3.2"></a>3.2. UIMA as linguistic analysis pipeline of EXCITEMENT</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp7989952"></a>3.2.1. UIMA</h4></div></div></div><p><a href="#ref-Apache_UIMA">UIMA</a> (Unstructured
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-3.2"></a>3.2. UIMA as linguistic analysis pipeline of EXCITEMENT</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp13981040"></a>3.2.1. UIMA</h4></div></div></div><p><a href="#ref-Apache_UIMA">UIMA</a> (Unstructured
 Information Management Applications) is a framework that started as a
 common platform for IBM NLP components. It evolved into a
 well-developed unstructured information processing platform, which is
@@ -551,7 +545,7 @@ beginning position and the end positing of the annotated text. Such
 spans are expressed as offset of each SOFA. Thus, annotators
 (individual analysis engines) are annotating SOFAs, instead of
 artifacts directly. </p><p>A pictorial example of CAS, views and annotations are given
-after introduction of the types for textual entailments, in <a href="#CAS_example" title="Figure 4. Example of an entailment problem in CAS">Figure 4, &#8220;Example of an entailment problem in CAS&#8221;</a>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp13613040"></a>3.3.2. Relevant UIMA default types </h4></div></div></div><p>The UIMA framework itself defines only a handful of default
+after introduction of the types for textual entailments, in <a href="#CAS_example" title="Figure 4. Example of an entailment problem in CAS">Figure 4, &#8220;Example of an entailment problem in CAS&#8221;</a>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14053328"></a>3.3.2. Relevant UIMA default types </h4></div></div></div><p>The UIMA framework itself defines only a handful of default
 types. They are including primitive types (like string, numerical
 values), and basic annotation types.
 </p><p> 
@@ -594,16 +588,16 @@ This section outlines adopted and proposed UIMA types for generic NLP
 analysis results. The full list of the types are given in the <a href="#genericTypesXML" title="Appendix A. Type Definition: types for general linguistic analysis">Appendix A, <i>Type Definition: types for general linguistic analysis</i></a>.   
 </p><p>
 In this section, the string <code class="code">DKPRO</code> is used as a short-form of <code class="code">de.tudarmstadt.ukp.dkpro.core.api</code>.  
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13627824"></a>3.3.3.1. Segmentation types</h5></div></div></div><p>Segmentation represents general segments of document, paragraphs, sentences and tokens. They are defined as extension of UIMA annotation types. Paragraphs and sentences are simple UIMA annotations (<code class="code">uima.tcas.Annotation</code>) that mark begin and end. Token annotation holds additional information, including the lemma (string), stem (string) and POS (POS type). 
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14068112"></a>3.3.3.1. Segmentation types</h5></div></div></div><p>Segmentation represents general segments of document, paragraphs, sentences and tokens. They are defined as extension of UIMA annotation types. Paragraphs and sentences are simple UIMA annotations (<code class="code">uima.tcas.Annotation</code>) that mark begin and end. Token annotation holds additional information, including the lemma (string), stem (string) and POS (POS type). 
 </p><p>
 See <code class="code">DKPRO.segmentation.*</code> types. 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13630496"></a>3.3.3.2. POS types</h5></div></div></div><p>POS types are defined as extension of UIMA annotation type (<code class="code">uima.tcas.Annotation</code>). It has feature of PosValue (string). This string value holds the unmapped (original) value that is generated by the POS tagger. Common POS types are defined as inherited types of this POS type. They are including PP, PR, PUNK, V, N, etc. To see all common POS types, see <code class="code">DKPRO.lexmorpth.types.pos</code> and the inherited types (<code class="code">DKPRO.lexmorph.types.pos.*</code>). 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14070784"></a>3.3.3.2. POS types</h5></div></div></div><p>POS types are defined as extension of UIMA annotation type (<code class="code">uima.tcas.Annotation</code>). It has feature of PosValue (string). This string value holds the unmapped (original) value that is generated by the POS tagger. Common POS types are defined as inherited types of this POS type. They are including PP, PR, PUNK, V, N, etc. To see all common POS types, see <code class="code">DKPRO.lexmorpth.types.pos</code> and the inherited types (<code class="code">DKPRO.lexmorph.types.pos.*</code>). 
 </p><p>Note that POS types have inherited structures --- like NN and NP
 are subtype of N, etc. Thus, if you access all type.N, you will 
 also get all inherited annotations (like NN, NP), too. </p><p>Also note that the POS type can be extended to cover other (more
-detailed, or domain-specific) tagsets. See also <a href="#sec-3.3.3" title="3.3.5. Extending existing types">Section 3.3.5, &#8220;Extending existing types&#8221;</a>.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13634768"></a>3.3.3.3. Document Metadata</h5></div></div></div><p>DocumentMetadata holds meta data of the document, including document ID and collection ID. It is a sub type of UIMA Document annotation, which holds language and encoding of the document. See <code class="code">DKPRO.metadata.type.DocumentMetaData</code>. 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13636512"></a>3.3.3.4. Named Entity Recognition</h5></div></div></div><p>Types related to NER data are defined as subtype of UIMA annotation type. It has string feature named "value" that holds output string of NER annotator. Actual entity types are mapped into subtypes that represents organizations, nationality, person, product, etc. See <code class="code">DKPRO.ner.type.NamedEntity</code> and its sub types (<code class="code">DKPRO.ner.type.NamedEntity.*</code>). 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13638720"></a>3.3.3.5. Constituency parse result</h5></div></div></div><p>Constituency parsing results can be represented with
+detailed, or domain-specific) tagsets. See also <a href="#sec-3.3.3" title="3.3.5. Extending existing types">Section 3.3.5, &#8220;Extending existing types&#8221;</a>.</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14075056"></a>3.3.3.3. Document Metadata</h5></div></div></div><p>DocumentMetadata holds meta data of the document, including document ID and collection ID. It is a sub type of UIMA Document annotation, which holds language and encoding of the document. See <code class="code">DKPRO.metadata.type.DocumentMetaData</code>. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14076800"></a>3.3.3.4. Named Entity Recognition</h5></div></div></div><p>Types related to NER data are defined as subtype of UIMA annotation type. It has string feature named "value" that holds output string of NER annotator. Actual entity types are mapped into subtypes that represents organizations, nationality, person, product, etc. See <code class="code">DKPRO.ner.type.NamedEntity</code> and its sub types (<code class="code">DKPRO.ner.type.NamedEntity.*</code>). 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14079008"></a>3.3.3.5. Constituency parse result</h5></div></div></div><p>Constituency parsing results can be represented with
 <code class="code">DKPRO.syntax.type.constituent</code>. It has a set of types
 related to constituency parsing. <code class="code">constituent</code> type
 represent a parse node, and holds required information such as
@@ -621,9 +615,9 @@ in <a href="#sec-4.6" title="4.8. Interface of syntactic knowledge components ">
 parsers and their results within their code, but constituency parse
 trees cannot be used together with EXCITEMENT syntactic rule-bases,
 unless they are converted to dependency parse trees.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13644912"></a>3.3.3.6. Dependency parse result</h5></div></div></div><p>Dependency parse results are represented with type <code class="code">DKPRO.syntax.type.dependency.Dependency</code> and its subtypes. The main type has three features: <code class="code">Governor</code> (points a <code class="code">segmentation.type.Token</code>), <code class="code">Dependent</code> (points a <code class="code">segmentation.type.Token</code>), and <code class="code">DependencyType</code> (string, holds an unmapped dependency type). Common representation of dependency parse tree are built by subtypes that inherit the type. Each subtype represents mapped dependency, like <code class="code">type.dependency.INFMOD</code>, <code class="code">type.dependency.IOBJ</code>, etc. To see all mapped common dependency types, see <code class="code">DKPRO.syntax.type.dependency.*</code>.  
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13649728"></a>3.3.3.7. Coreference Resolution</h5></div></div></div><p>Coreferences are represented with <code class="code">DKPRO.coref.type.CoreferenceLink</code>. It is a UIMA annotation type, and represents link between two annotations. The type holds <code class="code">next</code> feature that points another <code class="code">type.CoreferenceLink</code>, and a string feature that holds the <code class="code">referenceType</code> (unmapped output). Currently it does not provide common type on coreference type. <code class="code">CoreferenceLink</code> represent single link between nodes. They will naturally form a chain, and the start point of such chain is represented by <code class="code">DKPRO.coref.type.CoreferenceChain</code>. 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13653536"></a>3.3.3.8. Semantic Role Labels</h5></div></div></div><p>This subsection describes types related to represent semantic role labels. It consists of two types, <code class="code">EXCITEMENT.semanticrole.Predicate</code> and <code class="code">EXCITEMENT.semanticrole.Argument</code>. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14085200"></a>3.3.3.6. Dependency parse result</h5></div></div></div><p>Dependency parse results are represented with type <code class="code">DKPRO.syntax.type.dependency.Dependency</code> and its subtypes. The main type has three features: <code class="code">Governor</code> (points a <code class="code">segmentation.type.Token</code>), <code class="code">Dependent</code> (points a <code class="code">segmentation.type.Token</code>), and <code class="code">DependencyType</code> (string, holds an unmapped dependency type). Common representation of dependency parse tree are built by subtypes that inherit the type. Each subtype represents mapped dependency, like <code class="code">type.dependency.INFMOD</code>, <code class="code">type.dependency.IOBJ</code>, etc. To see all mapped common dependency types, see <code class="code">DKPRO.syntax.type.dependency.*</code>.  
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14090016"></a>3.3.3.7. Coreference Resolution</h5></div></div></div><p>Coreferences are represented with <code class="code">DKPRO.coref.type.CoreferenceLink</code>. It is a UIMA annotation type, and represents link between two annotations. The type holds <code class="code">next</code> feature that points another <code class="code">type.CoreferenceLink</code>, and a string feature that holds the <code class="code">referenceType</code> (unmapped output). Currently it does not provide common type on coreference type. <code class="code">CoreferenceLink</code> represent single link between nodes. They will naturally form a chain, and the start point of such chain is represented by <code class="code">DKPRO.coref.type.CoreferenceChain</code>. 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14093824"></a>3.3.3.8. Semantic Role Labels</h5></div></div></div><p>This subsection describes types related to represent semantic role labels. It consists of two types, <code class="code">EXCITEMENT.semanticrole.Predicate</code> and <code class="code">EXCITEMENT.semanticrole.Argument</code>. 
 </p><p>
 <code class="code">Predicate</code> is a <code class="code">uima.tcas.Annotation</code>. It represents a predicate. It holds the predicate sense as string and links to its arguments (An array of <code class="code">Argument</code>). It has the following features: 
 </p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">predicateName</code> (<code class="code">uima.cas.String</code>): This feature represents the name of this predicate. It actually refers to the sense of the predicate in PropBank or FrameNet. </p></li><li><p><code class="code">arguments</code> (<code class="code">uima.cas.FSArray</code>): This feature is an array of <code class="code">EXCITEMENT.semanticrole.Argument</code>. It holds the predicate's arguments. </p></li></ul></div><p>
@@ -634,7 +628,7 @@ that this feature is a String means that arbitrary role labels can be
 adopted, such as the PropBank argument set (A0, A1, AM-LOC, etc.), the
 FrameNet role set (Communication.Communicator, Communication.Message,
 etc.), or any other. 
- </p></li><li><p><code class="code">predicates</code> (<code class="code">uima.cas.FSArray</code>): This feature is an array of <code class="code">EXCITEMENT.semanticrole.Predicate</code>. (Backward) references to the predicates which governs it. </p></li></ul></div><p> Both annotations are applied to tokens (same span to tokens), and the semantic dependencies are implicitly recorded in the FSArrays. The reason to keep the FSArray for both side is that the redundancy makes the later processing easier (e.g. it is easier to find the corresponding predicates from each argument). </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13667008"></a>3.3.3.9. Types for Temporal Expression</h5></div></div></div><p>The temporal expression types are needed for event models, and
+ </p></li><li><p><code class="code">predicates</code> (<code class="code">uima.cas.FSArray</code>): This feature is an array of <code class="code">EXCITEMENT.semanticrole.Predicate</code>. (Backward) references to the predicates which governs it. </p></li></ul></div><p> Both annotations are applied to tokens (same span to tokens), and the semantic dependencies are implicitly recorded in the FSArrays. The reason to keep the FSArray for both side is that the redundancy makes the later processing easier (e.g. it is easier to find the corresponding predicates from each argument). </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14107296"></a>3.3.3.9. Types for Temporal Expression</h5></div></div></div><p>The temporal expression types are needed for event models, and
 they are used in event-based EDAs. This section defines the related
 types. One is <code class="code">TemporalExpression</code> and the other is
 <code class="code">DefaultTimeOfText</code> and its subtypes. </p><p>
@@ -667,7 +661,7 @@ DefaultTimeOfText for details.
 which closely reflects TIMEX3 classification [<a href="#TIMEX3" title="[TIMEX3]"><span class="abbrev">TIMEX3</span></a>] of temporal expression. They are:
 <code class="code">temporal.Date</code>, <code class="code">temporal.Time</code>,
 <code class="code">temporal.Duration</code>, and <code class="code">temporal.Set</code>.  
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13680368"></a>3.3.3.10. Types for Text Alignment</h5></div></div></div><p> A simple annotation type is provided for text
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14120656"></a>3.3.3.10. Types for Text Alignment</h5></div></div></div><p> A simple annotation type is provided for text
 alignment. <code class="code">EXCITEMENT.alignment.AlignedText</code> represent an
 aligned textual unit. It is a <code class="code">uima.tcas.Annotation</code>. Its
 span refers to the "source" linguistic entity. This can be a token
@@ -692,7 +686,7 @@ recipient, but it does not align itself to other text.
 </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="TETypes"></a>3.3.4. Additional Types for Textual Entailment</h4></div></div></div><p>This section outlines the types proposed for textual entailments
 and related sub-tasks. Full listing of the mentioned types are
 listed in <a href="#TETypesXML" title="Appendix B. Type Definition: types related to TE tasks ">Appendix B, <i>Type Definition: types related to TE tasks </i></a>. 
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13691168"></a>3.3.4.1. Representation of Text and Hypothesis</h5></div></div></div><p> 
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14131456"></a>3.3.4.1. Representation of Text and Hypothesis</h5></div></div></div><p> 
 The basic approach of the platform is to use a single CAS to represent
 a single entailment problem. The CAS holds text, hypothesis and
 associated linguistic analysis annotations. 
@@ -768,7 +762,7 @@ of the <code class="code">HypothesisView</code> belongs to.
 The values of these fields are unrestricted Strings. Pipeline users
 are responsible for documenting the semantics of the values if they
 want to ensure interoperability.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp13724112"></a>3.3.4.1.2. Type <code class="code">entailment.Pair</code> </h6></div></div></div><p> Text-Hypothesis pairs are represented by the type <code class="code">
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14164400"></a>3.3.4.1.2. Type <code class="code">entailment.Pair</code> </h6></div></div></div><p> Text-Hypothesis pairs are represented by the type <code class="code">
 EXCITEMENT.entailment.Pair</code>. The type is a subtype of
 <code class="code">uima.cas.TOP</code>.  An instance of <code class="code">Pair</code> should be
 indexed directly on the CAS (not on <code class="code">TextView</code> or
@@ -839,7 +833,7 @@ values. <code class="code">entailment.Decision</code> type can only haves one of
 "UNKNOWN" (The type can be further expanded in the future). This UIMA
 type has a corresponding Java enum type within the entailment core
 (see <a href="#sec-4.2.1.6" title="4.2.1.6. enum DecisionLabel">Section 4.2.1.6, &#8220;enum <code class="code">DecisionLabel</code>&#8221;</a>). 
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13751616"></a>3.3.4.2. Generalization to multiple pairs</h5></div></div></div><p>
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14191904"></a>3.3.4.2. Generalization to multiple pairs</h5></div></div></div><p>
 <a href="#CAS_example2" title="Figure 5. Example of an entailment problem with multiple pairs">Figure 5, &#8220;Example of an entailment problem with multiple pairs&#8221;</a> shows another example of a CAS with
 entailment types. In this figure, the CAS has multiple pairs. The
 TextView holds a document with six sentences. All six sentences are
@@ -914,7 +908,7 @@ of different processing pipelines can be designed. For example, to
 process a big set of short texts, we can imagine a pipeline that first
 call taggers for all problems as a single document and then generate
 multiple CASes for efficiency reasons, etc. 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13775904"></a>3.3.4.4. Other cases: T-H from multiple documents, T-H on a same document</h5></div></div></div><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14216192"></a>3.3.4.4. Other cases: T-H from multiple documents, T-H on a same document</h5></div></div></div><p>
  
 
 
@@ -937,7 +931,7 @@ One problem of this setup is that we have to process other cases like:
 </p></li><li><p>Text and Hypothesis on the same document. 
 </p></li></ul></div><p>The following subsections describe how we will represent such cases
 with the proposed types and CAS. 
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp13784752"></a>3.3.4.4.1. Multiple document problem: decomposition to multiple CASes</h6></div></div></div><p>Some problems involve multiple documents. Examples are the main
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14225040"></a>3.3.4.4.1. Multiple document problem: decomposition to multiple CASes</h6></div></div></div><p>Some problems involve multiple documents. Examples are the main
 task of RTE6 and RTE7. They have TE problem that consists of multiple
 texts (T) and a single hypothesis. The texts are scattered over a set
 of documents (collection). Additionally, there are global
@@ -971,7 +965,7 @@ for more complex cases of multiple text/hypothesis.
 
  
 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp13796160"></a>3.3.4.4.2. T and H on same document : Two views hold the same document </h6></div></div></div><p>Since we have two separate views for text and hypothesis, it can be
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14236448"></a>3.3.4.4.2. T and H on same document : Two views hold the same document </h6></div></div></div><p>Since we have two separate views for text and hypothesis, it can be
 problematic when we have the text and the hypothesis from the same
 document. 
 </p><p>
@@ -1004,7 +998,7 @@ side, also with new problem descriptions. However, this version of
 specification only deals with existing, well-known RTE problem
 sets. The WP3 members have agreed that additional use-cases will only be 
 discussed in a future version of the specification. 
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13805504"></a>3.3.4.5. Types for Predicate Truth</h5></div></div></div><p>This subsection describes types related to the representation of
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14245792"></a>3.3.4.5. Types for Predicate Truth</h5></div></div></div><p>This subsection describes types related to the representation of
 predicate truth values. Predicate truth annotation is an annotation
 that provides truth values for all predicates and clauses by
 traversing the parse tree and taking into account implications,
@@ -1067,7 +1061,7 @@ of myNN) and can use the additional data that is only available in the
 extended type. Other modules that do not recognize the extended types
 are still able to use the super-types in the output (in the example,
 myNN will map onto NN).
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp13841488"></a>3.4. Providing analysis components for LAP </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="AEs"></a>3.4.1. Providing individual analysis engines (AEs)</h4></div></div></div><p>It would be ideal if each linguistic analysis module (like POS
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp14281776"></a>3.4. Providing analysis components for LAP </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="AEs"></a>3.4.1. Providing individual analysis engines (AEs)</h4></div></div></div><p>It would be ideal if each linguistic analysis module (like POS
 taggers, parsers or coreference resolvers) were provided as a generic
 individual UIMA analysis engine (AE). With individual AEs, user code
 would be able to call these modules as UIMA components, as described
@@ -1382,7 +1376,7 @@ like filtering type EDAs of TIE. Note that the
 <code class="code">DecisionLabel</code> is not used in the lexical knowledge
 resources. It is only used on describing entailment decisions (output
 of EDAs). 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13975504"></a>4.2.1.7. Room for improvements: common training and common models </h5></div></div></div><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14416160"></a>4.2.1.7. Room for improvements: common training and common models </h5></div></div></div><p>
 For the moment, we have a very simple <code class="code">start_training()</code>
 interface within the specification. It only signals the EDA to
 initiate its training procedure. It does not specify where training
@@ -1411,7 +1405,7 @@ etc. The WP3 members have agreed that we will postpone the issue of
 "common training and model" to later versions of the specification,
 after delivery of the platform version 0.2 (the first "non-toy"
 version).
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp13979536"></a>4.2.1.8. Additional interfaces for EDAs</h5></div></div></div><p> <code class="code">EDABasic</code> is the mandatory interface for all EDAs.
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14420944"></a>4.2.1.8. Additional interfaces for EDAs</h5></div></div></div><p> <code class="code">EDABasic</code> is the mandatory interface for all EDAs.
 EDA implementers can choose to provide additional capabilities with
 optional interfaces. The following is the list of the interfaces
 currently specified in EXCITEMENT: 
@@ -1496,7 +1490,7 @@ providing a common initialization capability. The helper code accepts a
 configuration file, and then it reads the configuration file to
 determine the main EDA class. Then, the helper instantiate and
 initialize the EDA, and returns a ready-to-use EDA instance.
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14025904"></a>4.3.1.1. Methods of Initialization Helper</h5></div></div></div><p><code class="code">public EDABasic&lt;T&gt; startEngineBasic(File f)</code></p><p><code class="code">public EDAMultiT&lt;T&gt; startEngineMultiT(File f)</code></p><p><code class="code">public EDAMultiH&lt;T&gt; startEngineMultiH(File f)</code></p><p><code class="code">public EDAMultiTH&lt;T&gt; startEngineMultiTH(File f)</code></p><p>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14467312"></a>4.3.1.1. Methods of Initialization Helper</h5></div></div></div><p><code class="code">public EDABasic&lt;T&gt; startEngineBasic(File f)</code></p><p><code class="code">public EDAMultiT&lt;T&gt; startEngineMultiT(File f)</code></p><p><code class="code">public EDAMultiH&lt;T&gt; startEngineMultiH(File f)</code></p><p><code class="code">public EDAMultiTH&lt;T&gt; startEngineMultiTH(File f)</code></p><p>
 <code class="code">InitializeHelper</code> has a set of public methods. They all
 start the EDA initialization sequence with a File object (that has an
 opened XML configuration file). If the initialization was successful,
@@ -1570,7 +1564,7 @@ LAP for just one sentence pair is presumably quite inefficient.
 </p><p>Note that, unlike <code class="code">MultipleTHModeHelper</code>, the
 platform cannot share a single ProcessHelper implementation for all
 EDAs. Each EDA needs to run a different LAP, thus each EDA is expected to have its own ProcessHelper.  
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14064240"></a>4.3.3.1. method <code class="code">processRawInput</code></h5></div></div></div><p><code class="code">public T processRawInput(String text, String
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14505648"></a>4.3.3.1. method <code class="code">processRawInput</code></h5></div></div></div><p><code class="code">public T processRawInput(String text, String
 hypothesis)</code></p><p>The method first calls needed LAP pipeline to analyze the given
 raw text and hypothesis. Then, it uses <code class="code">EDABasic</code> 
 <code class="code">process()</code> method to deliver the result (<code class="code">TEDecision</code> or its extension).   
@@ -1659,7 +1653,7 @@ for various entailment methods, we define it as a separate interface
 that extends the scoring component interface. See <code class="code">interface
 DistanceCalculation</code> (<a href="#sec-4.4" title="4.6. Interface of distance calculation components">Section 4.6, &#8220;Interface of distance calculation components&#8221;</a>) for that
 interface. 
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14108640"></a>4.5.1. <code class="code">interface ScoringComponent</code></h4></div></div></div><p>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14550048"></a>4.5.1. <code class="code">interface ScoringComponent</code></h4></div></div></div><p>
 Like all other components, the interface extends <code class="code">interface
 Component</code>. The interface adds a single method
 <code class="code">calculateScores()</code>, which gets a <code class="code">JCas</code> as the
@@ -1726,7 +1720,7 @@ calculations (e.g. if the parse tree is missing for a tree edit
 distance component), it can raise an exception accordingly. However,
 unlike in the case of the EDA <code class="code">process()</code> method, this
 check is not mandatory.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14133584"></a>4.6.1.2. Inherited method <code class="code">calculateScores()</code> </h5></div></div></div><p>The main data structure that is returned from a distance
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15365616"></a>4.6.1.2. Inherited method <code class="code">calculateScores()</code> </h5></div></div></div><p>The main data structure that is returned from a distance
 component is <code class="code">DistanceValue</code>, of method
 <code class="code">calculation()</code>. 
 However, an implementation should report back a vector correctly when
@@ -1923,7 +1917,7 @@ Note that the relation is represented by a generic parameter
 tailored for each resource. We adopt a simple hierarchy for this
 <code class="code">R</code>. The interface <code class="code">RelationSpecifier</code> and
 related objects are described in the following subsections.    
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14219136"></a>4.7.4. Interface <code class="code">RelationSpecifier</code> and its hierarchy </h4></div></div></div><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15451184"></a>4.7.4. Interface <code class="code">RelationSpecifier</code> and its hierarchy </h4></div></div></div><p>
 The following figure shows the simple hierarchy of
 <code class="code">RelationSpecifier</code>. The interface <code class="code">RelationSpecifier</code> stays in the top, and two interfaces (<code class="code">CanonicalRelationSpecifier</code> and <code class="code">OwnRelationSpecifier&lt;E&gt;</code>) extends this top interface. 
 </p><pre class="programlisting">
@@ -1942,7 +1936,7 @@ support resource-specific relations (<code class="code">R</code> as <code class=
 extends OwnRelationSpecifier&lt;E&gt;&gt;</code>).      
 </p><p>
 Let's check each of the interfaces. 
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14226272"></a>4.7.4.1. <code class="code">interface RelationSpecifier</code></h5></div></div></div><p><code class="code">public interface RelationSpecifier</code> 
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15458320"></a>4.7.4.1. <code class="code">interface RelationSpecifier</code></h5></div></div></div><p><code class="code">public interface RelationSpecifier</code> 
 </p><p>
 This is an empty interface where it defines no methods. Extending or
 implementing this interface means that the class is to be used as the
@@ -1952,7 +1946,7 @@ empty. This means that you can design a speical RelationSpecifier
 that can be used in <code class="code">LexicalResourceWithRelation</code> if needed. 
 However, in most cases, you will implement one or both of the
 following sub-interfaces. 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14229808"></a>4.7.4.2. CanonicalRelationSpecifier</h5></div></div></div><p><code class="code">public interface CanonicalRelationSpecifier extends RelationSpecifier</code>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15461856"></a>4.7.4.2. CanonicalRelationSpecifier</h5></div></div></div><p><code class="code">public interface CanonicalRelationSpecifier extends RelationSpecifier</code>
 </p><p>
 This interface defines a single method: 
 </p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public TERuleRelation getCanonicalRelation();</code> 
@@ -1978,7 +1972,7 @@ confident that the relationship is not entailment (e.g. contradiction,
 etc). Also note that this enum only describes the lexical relation,
 not entailment decision. For entailment decisions, there is a separate 
 enum <code class="code">DecisionLabel</code> (<a href="#sec-4.2.1.6" title="4.2.1.6. enum DecisionLabel">Section 4.2.1.6, &#8220;enum <code class="code">DecisionLabel</code>&#8221;</a>). 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14241712"></a>4.7.4.4. <code class="code">interface OwnRelationSpecifier</code></h5></div></div></div><p><code class="code">public interface OwnRelationSpecifier&lt;E&gt; extends RelationSpecifier</code> 
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15473760"></a>4.7.4.4. <code class="code">interface OwnRelationSpecifier</code></h5></div></div></div><p><code class="code">public interface OwnRelationSpecifier&lt;E&gt; extends RelationSpecifier</code> 
 </p><p>
 The interface defines a single method: 
 </p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public E getOwnRelation();</code> 
@@ -1989,7 +1983,7 @@ value can be <code class="code">null</code>, which also means "don't care".
 </p><p>
 The paramter <code class="code">E</code> is to be defined by each resource implementer to
 represent resource specific relations. 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14247744"></a>4.7.4.5. Conformance on LexicalResource and LexicalResourceWithRelation </h5></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>All lexical resources must support the minimal interface
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15479792"></a>4.7.4.5. Conformance on LexicalResource and LexicalResourceWithRelation </h5></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>All lexical resources must support the minimal interface
 <code class="code">LexicalResource</code>. This interface only returns lexical rules of
 LHS-&gt;RHS entailment relation.  
 </p></li><li><p>If the lexical resource supports canonical relation (TERuleRelation),
@@ -2008,7 +2002,7 @@ NonEntailment AND meronym, etc)
 </p></li></ul></div><p>The following is a small code example that shows an implementation of
 <code class="code">LexicalResourceWithRelation</code>, which supports both canonical relation
 and resource specific relation.  
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14256496"></a>4.7.4.6. An Example of <code class="code">LexicalResourceWithRelation</code> and <code class="code">RelationSpecifier</code></h5></div></div></div><p>Let's see an example for a clearer explanation. The following is a
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15488544"></a>4.7.4.6. An Example of <code class="code">LexicalResourceWithRelation</code> and <code class="code">RelationSpecifier</code></h5></div></div></div><p>Let's see an example for a clearer explanation. The following is a
 partial (and artificial) implementation example of
 <code class="code">LexicalResourceWithRelation</code> where its <code class="code">R</code> supports both
 <code class="code">CanonicalRelationSpecifier</code>, and <code class="code">OwnRelationSpecifier</code>.   
@@ -2274,7 +2268,7 @@ bidirectional mapping of <code class="code">BasicNode</code>. The variable holds
 mapping info between each LHS node of the <code class="code">rule</code> and the
 corresponding node of the input parse tree. 
 </p></li></ul></div><p> 
-</p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp14358368"></a>4.9. Concurrent Processing </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14359008"></a>4.9.1. The issue of concurrent processing </h4></div></div></div><p>
+</p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15590432"></a>4.9. Concurrent Processing </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15591072"></a>4.9.1. The issue of concurrent processing </h4></div></div></div><p>
 Modern computer hardware is very well prepared for concurrent and
 parallel processing. Even modest PCs now have multiple cores with
 multithreading capability. Given users' requirements of quick or even
@@ -2303,7 +2297,7 @@ processing of the selected EDA.
  
  
  
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14366944"></a>4.9.2. Our approach on concurrent processing </h4></div></div></div><p>We have decided on the following contract for concurrent
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15598704"></a>4.9.2. Our approach on concurrent processing </h4></div></div></div><p>We have decided on the following contract for concurrent
 processing.
 </p><div class="itemizedlist"><ul type="disc"><li><p>All components must declare clearly whether they are
 <span class="emphasis"><em>thread-safe</em></span>: If a module is thread-safe,
@@ -2375,7 +2369,7 @@ that already implements EDABasic and/or other interfaces). It can be
 also implemented by a concurrent running wrapper (a "runner") for the
 EDA, if the implementation of this interface does not lend itself
 naturally to the internal structure of the EDA.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14385088"></a>4.9.4. Future enhancements </h4></div></div></div><p>The WP3 members have agreed that we will approach this issue
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15616848"></a>4.9.4. Future enhancements </h4></div></div></div><p>The WP3 members have agreed that we will approach this issue
 with incremental steps. We can imagine a set of future improvements
 including:
 </p><div class="itemizedlist"><ul type="disc"><li><p>Asynchronous interfaces 
@@ -2385,7 +2379,7 @@ including:
 hypothesis cases. 
 </p></li></ul></div><p>Additional concurrent processing supports will be realized as the
 platform matures. 
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp14390176"></a>4.10. Initialization and metadata check</h3></div></div></div><p>
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15621936"></a>4.10. Initialization and metadata check</h3></div></div></div><p>
 </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sec-4.7.1"></a>4.10.1. Recommended policy on metadata check</h4></div></div></div><p> Recall that a central goal of the EXCITEMENT platform is to
 provide a testing ground for various pluggable components that decide
 textual entailment. This is done by providing a set of common
@@ -2453,7 +2447,7 @@ changes are handed through to sub-components, if applicable. This may
 mean simply reconfiguring some sub-components (which support this) and
 re-initializing others (which do not). 
  
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14405376"></a>4.10.2.1. Methods of Interface Reconfigurable</h5></div></div></div><p><code class="code">public void reconfigure(CommonConfig config)</code>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15636736"></a>4.10.2.1. Methods of Interface Reconfigurable</h5></div></div></div><p><code class="code">public void reconfigure(CommonConfig config)</code>
 </p><p>The interface provides a single method,
 <code class="code">reconfigure()</code>. The method gets the same single argument
 (an instance of <code class="code">CommonConfiguration</code>), but the contract is
@@ -2499,7 +2493,7 @@ The specification do not describe how the name are stored internally
 in the component implementations. It is expected that the platform
 implementation efforts will come up with a common best practice to
 keep the names in component implementations.
-</p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp14424848"></a>5. Common Data Formats </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-5.1"></a>5.1. Common Configuration </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sec-5.1.1"></a>5.1.1. Requirements of Entailment Core Common Configuration </h4></div></div></div><p>In order to make an easy combination of EDAs and components
+</p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp15656208"></a>5. Common Data Formats </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-5.1"></a>5.1. Common Configuration </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sec-5.1.1"></a>5.1.1. Requirements of Entailment Core Common Configuration </h4></div></div></div><p>In order to make an easy combination of EDAs and components
 possible, the configurations of all entailment core components should
 be stored and accessed in a uniform manner. A framework for the
 EXCITEMENT common configuration must meet the following requirements:
@@ -2680,28 +2674,28 @@ typically have to query both the section level for component-wide
 configuration and the subsection level for their own instance
 configuration. (In the above example, parameter <code class="code">path</code> is
 not visible to the name-value table of the instance subsection.) 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sec-5.1.3"></a>5.1.3. Interfaces related to Common Configuration </h4></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14472080"></a>5.1.3.1. Class <code class="code">CommonConfiguration</code> </h5></div></div></div><p>The section describes the public interfaces that need to be
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sec-5.1.3"></a>5.1.3. Interfaces related to Common Configuration </h4></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15703440"></a>5.1.3.1. Class <code class="code">CommonConfiguration</code> </h5></div></div></div><p>The section describes the public interfaces that need to be
 exposed to component authors. (Note that for the moment, the
 specification does not provide any method that can iterate over
 sections. For example, one cannot query a common configuration object
 to get all section names. This was intentional in the current
 version.)
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14478640"></a>5.1.3.1.1. constructor <code class="code">CommonConfiguration()</code> </h6></div></div></div><p><code class="code">CommonConfiguration(File)</code>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp15710000"></a>5.1.3.1.1. constructor <code class="code">CommonConfiguration()</code> </h6></div></div></div><p><code class="code">CommonConfiguration(File)</code>
 Common configuration provides a constructor that loads a configuration
 from an XML File. If the target file is not valid (invalid XML or
 missing mandatory section), the call will raise an
 exception. CommonConfiguration will also provide a constructor with
 empty arguments, which can be used to generate a new configuration
 file. 
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14480784"></a>5.1.3.1.2. method <code class="code">getSection()</code> </h6></div></div></div><p><code class="code">public NameValueTable getSection(String component
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp15712144"></a>5.1.3.1.2. method <code class="code">getSection()</code> </h6></div></div></div><p><code class="code">public NameValueTable getSection(String component
 Name)</code> This method returns the name-value table that is
 associated with the <code class="code">componentName</code>. If there is no such
 section, the method will raise an exception.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14483040"></a>5.1.3.1.3. method <code class="code">getSubsection()</code> </h6></div></div></div><p><code class="code">NameValueTable getSubSection(String componentName, String
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp15714400"></a>5.1.3.1.3. method <code class="code">getSubsection()</code> </h6></div></div></div><p><code class="code">NameValueTable getSubSection(String componentName, String
 instanceName)</code> This method returns the name-value table that
 is associated with the <code class="code">componentName</code> and
 <code class="code">instanceName</code>.  
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14485760"></a>5.1.3.1.4. method <code class="code">saveConfiguration()</code> </h6></div></div></div><p><code class="code">void saveConfiguration(File)</code> This method saves
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp15717120"></a>5.1.3.1.4. method <code class="code">saveConfiguration()</code> </h6></div></div></div><p><code class="code">void saveConfiguration(File)</code> This method saves
 current configuration to an XML file. It will save whole values as a
 single XML file. Note that this save method should provide a safety
 mechanism that will prevent overwriting existing XML
@@ -2711,15 +2705,15 @@ files, etc).
 Note that <code class="code">saveConfiguration()</code> method is provided mainly
 for user level or transduction layer level access. The methods are not
 expected to be called from a entailment core component.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14488800"></a>5.1.3.1.5. method <code class="code">getConfigurationFileName()</code> </h6></div></div></div><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp15720160"></a>5.1.3.1.5. method <code class="code">getConfigurationFileName()</code> </h6></div></div></div><p>
 <code class="code">String getConfigurationFileName() </code> This method is a
 convenience method that returns the full path name of the current
 configuration file. Will return null, if the configuration is not
 originated from a file and never saved before. 
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp14491056"></a>5.1.3.2. class <code class="code">NameValueTable</code> </h5></div></div></div><p>All configuration parameters are stored as name-value pairs in a
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h5 class="title"><a name="idp15722416"></a>5.1.3.2. class <code class="code">NameValueTable</code> </h5></div></div></div><p>All configuration parameters are stored as name-value pairs in a
 table of class <code class="code">NameValueTable</code>. The table can be read by a
 set of access functions.
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14492848"></a>5.1.3.2.1. get methods </h6></div></div></div><p><code class="code">public String getString(String name)</code></p><p><code class="code">public Integer getInteger(String name)</code></p><p><code class="code">public Double getDouble(String name)</code> </p><p><code class="code">public File getFile(String name)</code></p><p><code class="code">public File getDirectory(String name)</code></p><p><code class="code">...</code></p><p>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp15724208"></a>5.1.3.2.1. get methods </h6></div></div></div><p><code class="code">public String getString(String name)</code></p><p><code class="code">public Integer getInteger(String name)</code></p><p><code class="code">public Double getDouble(String name)</code> </p><p><code class="code">public File getFile(String name)</code></p><p><code class="code">public File getDirectory(String name)</code></p><p><code class="code">...</code></p><p>
 Configuration data is stored as text strings in the XML files. XML
 parsers can recognize XML primitive types like string, boolean,
 decimal, double, etc. In this specification, we only show get methods
@@ -2733,7 +2727,7 @@ name-value pair. A get method returns the corresponding value from the
 name-value pair. Each get method will try to convert the XML value
 into the requested type. If the conversion fails, the get method will
 raise a conversion exception (one of ConfigurationException).
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp14498400"></a>5.1.3.2.2. Set methods </h6></div></div></div><p><code class="code">public setString(String name, String value)</code></p><p><code class="code">public setInteger(String name, Integer value)</code></p><p><code class="code">public setDouble(String name, Double value)</code></p><p><code class="code">public setFile(String name, File value)</code></p><p><code class="code">public setDirectory(String name, File value)</code></p><p><code class="code">...</code></p><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h6 class="title"><a name="idp15729760"></a>5.1.3.2.2. Set methods </h6></div></div></div><p><code class="code">public setString(String name, String value)</code></p><p><code class="code">public setInteger(String name, Integer value)</code></p><p><code class="code">public setDouble(String name, Double value)</code></p><p><code class="code">public setFile(String name, File value)</code></p><p><code class="code">public setDirectory(String name, File value)</code></p><p><code class="code">...</code></p><p>
 Set methods are provided for editing existing values or writing new
 values. The values added/modified by set methods will only affect the
 XML file by <code class="code">saveConfiguration()</code>.
@@ -2906,7 +2900,7 @@ the formats.) In the future, we foresee that RTE1-5 readers will be
 provided as a "collection reader" component of UIMA component, and it
 is expected that such components will be implemented only once and
 shared among all EDAs and EDA implementers.
-</p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp14539744"></a>6. Linguistic Analysis Pipeline</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="LAP-goal"></a>6.1. The goals of the LAP interface</h3></div></div></div><p>
+</p></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp15771104"></a>6. Linguistic Analysis Pipeline</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="LAP-goal"></a>6.1. The goals of the LAP interface</h3></div></div></div><p>
 LAP (Linguistic Analysis Pipelines) is an important part of the
 platform that provides all linguistic analysis capabilities for the
 EXCITEMENT platform and its users. It provides not only normal NLP
@@ -2950,7 +2944,7 @@ LAP pipeline should provide for EXCITEMENT platform. It defines three
 types of methods. One for generic annotation, one for single pair
 online-generation, and one for collection processing of single-pair
 input files. 
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14548752"></a>6.2.1. method <code class="code">generateSingleTHPairCAS</code> </h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public JCas generateSingleTHPairCAS(String text, String
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15780112"></a>6.2.1. method <code class="code">generateSingleTHPairCAS</code> </h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public JCas generateSingleTHPairCAS(String text, String
 hypothesis) throws LAPException</code>   
 </p><div class="itemizedlist"><ul type="circle"><li><p>Arguments: <code class="code">text</code> holds the text string of the single
 pair TE problem. <code class="code">hypothesis</code> holds the hypothesis string of the
@@ -2967,7 +2961,7 @@ The amount of linguistic annotation can differ among implementations
 (say, EnglishTokenizationOnly(t,h) only returns token with TE
 annotations, while GermanParsingAndNER(t,h) returns tagging, parsing,
 POS and NER, etc).
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14557088"></a>6.2.2. method <code class="code">processRawInputFormat</code></h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public void processRawInputFormat(File inputFile, File outputDir) throws LAPException</code>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15788448"></a>6.2.2. method <code class="code">processRawInputFormat</code></h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public void processRawInputFormat(File inputFile, File outputDir) throws LAPException</code>
 </p><div class="itemizedlist"><ul type="circle"><li><p>Arguments: <code class="code">File inputFile</code> holds the raw input XML file. <code class="code">File     outputDir</code> holds the output directory where the resulting CAS XMI
 should be stored.  
 </p></li></ul></div></li></ul></div><p>This method gets two <code class="code">File</code> as arguments. First argument is a single
@@ -2980,7 +2974,7 @@ directory. (standard XMI serialization of UIMA CAS).
 Again, the generated CASes should be well-formed and must contain all
 types can are necessary for a complete description of the entailment
 problem (i.e. all types from the <code class="code">EXCITEMENT.entailment</code> namespace).
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14564560"></a>6.2.3. method <code class="code">addAnnotationsToCAS</code> </h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public void addAnnotationOn(JCas aJCas) throws LAPException</code>  
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15795920"></a>6.2.3. method <code class="code">addAnnotationsToCAS</code> </h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p><code class="code">public void addAnnotationOn(JCas aJCas) throws LAPException</code>  
 </p><div class="itemizedlist"><ul type="circle"><li><p>Arguments: <code class="code">aJCas</code> holds the CAS object that will be annotated by
 the analysis pipeline. 
 </p></li><li><p>Returns: Nothing. The JCas argument is enriched by the
@@ -3041,7 +3035,7 @@ components. Such improvements (such as using UIMA AE, AAE, and runtime
 to share and standardize LAP components) will be considered fully,
 after the project members have decided UIMA adoption as scheduled in
 <a href="#LAP-conformance" title="3.2.3. Adoption of UIMA in EXCITEMENT">Section 3.2.3, &#8220;Adoption of UIMA in EXCITEMENT&#8221;</a>.  
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp14588000"></a>7. Further Recommended Platform Policies </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-6.1"></a>7.1. Coding Standard </h3></div></div></div><p>This section describes the coding standard for the EXCITEMENT
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="idp15819360"></a>7. Further Recommended Platform Policies </h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="sec-6.1"></a>7.1. Coding Standard </h3></div></div></div><p>This section describes the coding standard for the EXCITEMENT
 platform. The coding conventions are adopted from the coding guideline
 of the BIU NLP lab.
 </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="sec-6.1.1"></a>7.1.1. Documentation </h4></div></div></div><div class="itemizedlist"><ul type="disc"><li><p>Every class / interface / enum should include a main comment in its
@@ -3269,7 +3263,7 @@ features names should start with a lowercase letter, etc. Also, treat
 name-value pairs of common configuration as member items within a
 category. Thus, all property names of name-value pairs should start
 with a lowercase letter.
-</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp14689344"></a>7.5. Boundary of LAP and Entailment Core: Where should my new component go? </h3></div></div></div><p>
+</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15920704"></a>7.5. Boundary of LAP and Entailment Core: Where should my new component go? </h3></div></div></div><p>
 Another issue that is related to UIMA and the platform concerns the
 boundary between the LAP (which uses CAS to represent its outputs) and
 the Entailment Core (which uses proprietary Java data structures).
@@ -3322,7 +3316,7 @@ Thus, developers have a certain level of freedom in their choice
 between implementing components with the LAP or the EC. As we grow
 more confident on UIMA and common platform, we may be able to provide
 more concrete best practices on this issue.
-</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="RefSec"></a>8. References</h2></div></div></div><p></p><div class="bibliography"><div class="titlepage"><div><div><h3 class="title"><a name="idp14712048"></a>Bibliography</h3></div></div></div><div class="bibliomixed"><a name="apachecommonsconf"></a><p class="bibliomixed">[<span class="abbrev">Apache Configuration</span>] <span class="title">Apache Commons Configuration homepage</span>.
+</p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="RefSec"></a>8. References</h2></div></div></div><p></p><div class="bibliography"><div class="titlepage"><div><div><h3 class="title"><a name="idp15943408"></a>Bibliography</h3></div></div></div><div class="bibliomixed"><a name="apachecommonsconf"></a><p class="bibliomixed">[<span class="abbrev">Apache Configuration</span>] <span class="title">Apache Commons Configuration homepage</span>.
 <span class="citetitle"><em class="citetitle"><a href="http://commons.apache.org/configuration/%20" target="_top">http://commons.apache.org/configuration/</a></em></span></p></div><div class="bibliomixed"><a name="report_BIUTEE"></a><p class="bibliomixed">[<span class="abbrev">BIUTEE</span>] EXCITEMENT WP3 ITD subgroup,
 <span class="title">Major Components of BIUTEE - Bar Ilan University Textual Entailment Engine</span>,
 2012. <span class="citetitle"><em class="citetitle"><a href="https://dl.dropbox.com/u/13718630/reports/BIUTEE_component_overview.pdf" target="_top">https://dl.dropbox.com/u/13718630/reports/BIUTEE_component_overview.pdf</a></em></span> 
@@ -3369,7 +3363,7 @@ http://uima.apache.org/d/uimaj-2.4.0/references.html#ugr.ref.xmi</a></em></span>
 java project to the specification. You can download the
 attachement that holds all the interface codes and the type system <a href="https://dl.dropbox.com/u/13718630/codes/excitement_interface_codes_aug29.zip" target="_top"><em class="citetitle">EXCITEMENT
 SPEC 1.1 interfaces and type systems</em></a> 
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp14756176"></a>A.1. Segmentation types</h3></div></div></div><p>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15987536"></a>A.1. Segmentation types</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">LexicalUnits.xml</code> among the attached project files. 
 </p><p>Segmentations types are types that denotes various textual units,
@@ -3396,7 +3390,7 @@ lemma, heading, paragraphs, sentence, etc.
 </p><div class="itemizedlist"><ul type="square"><li><p><code class="code">lemma</code> (<code class="code">de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma</code>) 
 </p></li><li><p><code class="code">stem</code> (<code class="code">de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Stem</code>)   
 </p></li><li><p><code class="code">pos</code> (<code class="code">de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</code>)     
-</p></li></ul></div></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp14782608"></a>A.2. POS types</h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16013968"></a>A.2. POS types</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">POS.xml</code> among the attached project files.   
 </p><p>Annotations that are used to mark part-of-speech are defined by these
@@ -3475,7 +3469,7 @@ types. They are aligned with some simple hierarchy.
 </p></li><li><p>Supertype:
     <code class="code">de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</code>
 </p></li><li><p>Features: (no features) 
-</p></li></ul></div></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14845008"></a>A.2.1. Extension of basic POS types</h4></div></div></div><p>In DKPro, there are also some extended POS tags designed to work for
+</p></li></ul></div></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp16076368"></a>A.2.1. Extension of basic POS types</h4></div></div></div><p>In DKPro, there are also some extended POS tags designed to work for
 specific text domains. We will generally not adopt them in
 EXCITEMENTS. However, two examples are shown here as an example of a
 type extension. They are designed for tweet texts, and the modules
@@ -3495,7 +3489,7 @@ types O and NP.
 </p></li><li><p>Supertype:
     <code class="code">de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NP</code>
 </p></li><li><p>Features: (no features) 
-</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp14855632"></a>A.2.2. Mapping of tagger tagsets to the types</h4></div></div></div><p>The following two lists show the mapping of English and German tags of
+</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp16087472"></a>A.2.2. Mapping of tagger tagsets to the types</h4></div></div></div><p>The following two lists show the mapping of English and German tags of
 Tree Tagger, to the DKPro POS tags. This type of mapping (what
 actually means, say, NN in German), should be provided by the pipeline
 implementers.  
@@ -3602,7 +3596,7 @@ German Tags (STTS)
 </p></li><li><p>$.: de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PUNC 
 </p></li><li><p>$(: de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PUNC 
 </p></li><li><p>* : de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O    
-</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp14966976"></a>A.3. NER types</h3></div></div></div><p>
+</p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16198816"></a>A.3. NER types</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">NamedEntity.xml</code> among the attached project files.   
 </p><p>These types are related to named entity recognition. It uses a top
@@ -3768,7 +3762,7 @@ nationality, while America and US are geographical entities.
 </p></li><li><p>Supertype:
     <code class="code">de.tudarmstadt.ukp.dkpro.core.api.ner.type.Money</code>
 </p></li><li><p>Features: (no features) 
-</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15100736"></a>A.4. Types for Constituency Parsing </h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16332656"></a>A.4. Types for Constituency Parsing </h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">Constituent.xml</code> among the attached project files.   
 </p><p>These types are related to constituency parse results. There is a top
@@ -4093,7 +4087,7 @@ node.
 </p></li><li><p>Supertype:
 <code class="code">de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent</code> 
 </p></li><li><p>Features: (no features) 
-</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15356080"></a>A.5. Types for Dependency Parsing</h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16588016"></a>A.5. Types for Dependency Parsing</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">Dependency.xml</code> among the attached project files.   
 </p><p>These types are related to dependency parse results. There is a top
@@ -4404,7 +4398,7 @@ Dependent. Each dependent points its Governor, and the dependency relation.
 </p></li><li><p>Supertype:
     <code class="code">de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency</code>
 </p></li><li><p>Features: (no features) 
-</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15618208"></a>A.6. Types for Coreference Resolution</h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16850144"></a>A.6. Types for Coreference Resolution</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">Coref.xml</code> among the attached project files.   
 </p><p>Coreference resolution is annotated with <code class="code">CoreferenceLink</code> type. An
@@ -4434,7 +4428,7 @@ this chain is pointed by <code class="code">CoreferenceChain</code> type.
 </p></li><li><p>Features
 </p><div class="itemizedlist"><ul type="square"><li><p><code class="code">first</code> 
       (<code class="code">de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink</code>)
-</p></li></ul></div></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15638560"></a>A.7. Types for Semantic Role Labels</h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16870496"></a>A.7. Types for Semantic Role Labels</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">SemanticRole.xml</code> among the attached project files.   
 </p><div class="itemizedlist"><ul type="disc"><li><p>EXCITEMENT.semanticrole.Predicate
@@ -4460,7 +4454,7 @@ etc.
 </p></li><li><p><code class="code">predicates</code> (<code class="code">uima.cas.FSArray</code>): This
 feature is an array of <code class="code">semanticrole.Predicate</code>. This is a
 backward references to predicates that governs this argument.  
-</p></li></ul></div></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15655920"></a>A.8. Types for Temporal/NER events</h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16887856"></a>A.8. Types for Temporal/NER events</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">TemporalExpression.xml</code> among the attached project files.   
 </p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">EXCITEMENT.temporal.DefaultTimeOfText</code>
@@ -4513,7 +4507,7 @@ Set. For example, every winter, each Monday, etc. It indicates a
 recurrence pattern. 
 </p></li><li><p>Supertype: EXCITEMENT.temporal.TemporalExpression 
 </p></li><li><p>Features: (no features) 
-</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15687488"></a>A.9. Types for Text Alignment</h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16919424"></a>A.9. Types for Text Alignment</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">TextAlignment.xml</code> among the attached project files.   
 </p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">EXCITEMENT.alignment.AlignedText</code>
@@ -4541,7 +4535,7 @@ an actual package name in the implementation.
 java project to the specification. You can download the
 attachement that holds all the interface codes and the type system <a href="https://dl.dropbox.com/u/13718630/codes/excitement_interface_codes_aug29.zip" target="_top"><em class="citetitle">EXCITEMENT
 SPEC 1.1 interfaces and type systems</em></a> 
-</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15701216"></a>B.1. Types related to entailment problems</h3></div></div></div><p>
+</p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16933152"></a>B.1. Types related to entailment problems</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">EntailmentTypes.xml</code> among the attached project files.   
 </p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">EXCITEMENT.entailment.EntailmentMetadata</code>
@@ -4601,7 +4595,7 @@ a string subtype. The type can only have one of "ENTAILMENT",
 The type can be further expanded in the future. 
 </p></li><li><p>Supertype: <code class="code">uima.cas.String</code>
 </p></li><li><p>Features: (no features)
-</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp15744576"></a>B.2. Types for Predicate Truth</h3></div></div></div><p>
+</p></li></ul></div></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="idp16976512"></a>B.2. Types for Predicate Truth</h3></div></div></div><p>
 You can find the type definition in XML at
 <code class="code">PredicateTruth.xml</code> among the attached project files.   
 </p><div class="itemizedlist"><ul type="disc"><li><p><code class="code">EXCITEMENT.predicatetruth.PredicateTruth</code>
@@ -4657,37 +4651,37 @@ only permits one of the following strings: "+ / -", "+ / ?", "?
 / -", "- \ +", "- / ?",      "? / +", "+ / +", "- / -", "? / ?".  
 </p></li><li><p>Supertype: <code class="code">uima.cas.String</code> 
 </p></li><li><p>Features: (no features) 
-</p></li></ul></div></li></ul></div></div></div><div class="appendix" lang="en"><h2 class="title" style="clear: both"><a name="idp15788800"></a>Appendix C. Entailment Core Interfaces</h2><p> Starting from the specification version 1.1, we have attached a
+</p></li></ul></div></li></ul></div></div></div><div class="appendix" lang="en"><h2 class="title" style="clear: both"><a name="idp17020736"></a>Appendix C. Entailment Core Interfaces</h2><p> Starting from the specification version 1.1, we have attached a
 java source code project to the specification. You can download the
 attachement that holds all the interface codes and the type system <a href="https://dl.dropbox.com/u/13718630/codes/excitement_interface_codes_aug29.zip" target="_top"><em class="citetitle">EXCITEMENT
 SPEC 1.1 interfaces and type systems</em></a> 
 </p><p>
 Instead of listing the source codes, Appendix C now points the
 source code file names within the attached Java
-project. </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-1"></a>C.1. <code class="code">interface EDABasic</code> and related objects</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15792432"></a>C.1.1. <code class="code">interface EDABasic</code></h4></div></div></div><p> See <code class="code">EDABasic.java</code> in
-<code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15794480"></a>C.1.2. <code class="code">interface TEDecision</code></h4></div></div></div><p> See <code class="code">TEDecision.java</code> in
+project. </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-1"></a>C.1. <code class="code">interface EDABasic</code> and related objects</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17024368"></a>C.1.1. <code class="code">interface EDABasic</code></h4></div></div></div><p> See <code class="code">EDABasic.java</code> in
+<code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17026416"></a>C.1.2. <code class="code">interface TEDecision</code></h4></div></div></div><p> See <code class="code">TEDecision.java</code> in
 <code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="c-1-DecisionLabel"></a>C.1.3. <code class="code">enum
 DecisionLabel</code></h4></div></div></div><p> See <code class="code">DecisionLabel.java</code> in
 <code class="code">eu.excitement.entailment.core</code>. </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-1.5"></a>C.2. <code class="code">interface
 SinglePairProcessHelper</code></h3></div></div></div><p> See <code class="code">SinglePairProcessHelper.java</code> in
-<code class="code">eu.excitement.entailment.core.helpers</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-2"></a>C.3. <code class="code">interface EDAMulti*</code></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15801856"></a>C.3.1. <code class="code">interface EDAMultiT</code></h4></div></div></div><p> See <code class="code">EDAMultiT.java</code> in
-<code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15803776"></a>C.3.2. <code class="code">interface EDAMultiH</code></h4></div></div></div><p> See <code class="code">EDAMultiH.java</code> in
-<code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15805696"></a>C.3.3. <code class="code">interface EDAMultiTH</code></h4></div></div></div><p> See <code class="code">EDAMultiTH.java</code> in
+<code class="code">eu.excitement.entailment.core.helpers</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-2"></a>C.3. <code class="code">interface EDAMulti*</code></h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17033792"></a>C.3.1. <code class="code">interface EDAMultiT</code></h4></div></div></div><p> See <code class="code">EDAMultiT.java</code> in
+<code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17035712"></a>C.3.2. <code class="code">interface EDAMultiH</code></h4></div></div></div><p> See <code class="code">EDAMultiH.java</code> in
+<code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17037632"></a>C.3.3. <code class="code">interface EDAMultiTH</code></h4></div></div></div><p> See <code class="code">EDAMultiTH.java</code> in
 <code class="code">eu.excitement.entailment.core</code>. </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-3"></a>C.4. <code class="code">class MultipleTHModeHelper</code></h3></div></div></div><p> See <code class="code">MultipleTHModeHelper.java</code> in
 <code class="code">eu.excitement.entailment.core.helpers</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-4.0"></a>C.5. <code class="code">interface Components</code></h3></div></div></div><p> See <code class="code">Components.java</code> in
 <code class="code">eu.excitement.entailment.core</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-4"></a>C.6. <code class="code">interface DistanceCalculation</code>
-and related objects</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15813200"></a>C.6.1. <code class="code">interface DistanceCalculation</code></h4></div></div></div><p> See <code class="code">DistanceCalculation.java</code> in
-<code class="code">eu.excitement.entailment.core.component.distance</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15815120"></a>C.6.2. <code class="code">class DistanceValue</code></h4></div></div></div><p> See <code class="code">DistanceValue.java</code> in
+and related objects</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17045136"></a>C.6.1. <code class="code">interface DistanceCalculation</code></h4></div></div></div><p> See <code class="code">DistanceCalculation.java</code> in
+<code class="code">eu.excitement.entailment.core.component.distance</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17047056"></a>C.6.2. <code class="code">class DistanceValue</code></h4></div></div></div><p> See <code class="code">DistanceValue.java</code> in
 <code class="code">eu.excitement.entailment.core.component.distance</code>. </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-5"></a>C.7. <code class="code">class LexicalResource</code> and
-related objects</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15818176"></a>C.7.1. <code class="code">class LexicalRule</code></h4></div></div></div><p> See <code class="code">LexicalRule.java</code> in
-<code class="code">eu.excitement.entailment.core.component.lexicalknowledge</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15820176"></a>C.7.2. <code class="code">class PartOfSpeech</code></h4></div></div></div><p> See <code class="code">PartOfSpeech.java</code> in
-<code class="code">eu.excitement.entailment.core.representation.parsetree</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15822096"></a>C.7.3. <code class="code">interface RuleInfo</code></h4></div></div></div><p> See <code class="code">RuleInfo.java</code> in
-<code class="code">eu.excitement.entailment.core.component.lexicalknowledge</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15824096"></a>C.7.4. <code class="code">interface LexicalResource</code></h4></div></div></div><p> See <code class="code">LexicalResource.java</code> in
+related objects</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17050112"></a>C.7.1. <code class="code">class LexicalRule</code></h4></div></div></div><p> See <code class="code">LexicalRule.java</code> in
+<code class="code">eu.excitement.entailment.core.component.lexicalknowledge</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17052112"></a>C.7.2. <code class="code">class PartOfSpeech</code></h4></div></div></div><p> See <code class="code">PartOfSpeech.java</code> in
+<code class="code">eu.excitement.entailment.core.representation.parsetree</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17054032"></a>C.7.3. <code class="code">interface RuleInfo</code></h4></div></div></div><p> See <code class="code">RuleInfo.java</code> in
+<code class="code">eu.excitement.entailment.core.component.lexicalknowledge</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17056032"></a>C.7.4. <code class="code">interface LexicalResource</code></h4></div></div></div><p> See <code class="code">LexicalResource.java</code> in
 <code class="code">eu.excitement.entailment.core.component.lexicalknowledge</code>. </p></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="c-6"></a>C.8. <code class="code">interface SyntacticResource</code> and
-related objects </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15827232"></a>C.8.1. <code class="code">class SyntacticRule</code></h4></div></div></div><p> See <code class="code">SyntacticRule.java</code> in
+related objects </h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17059168"></a>C.8.1. <code class="code">class SyntacticRule</code></h4></div></div></div><p> See <code class="code">SyntacticRule.java</code> in
 <code class="code">eu.excitement.entailment.core.component.syntacticknowledge</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="c-6-BasicNode"></a>C.8.2. class <code class="code">BasicNode</code> and related classes</h4></div></div></div><p> See <code class="code">AbstractNode.java, BasicNode.java, NodeInfo.java,
 EdgeInfo.java, Info.java</code>, and other codes in
-<code class="code">eu.excitement.entailment.core.representation.parsetree</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp15831744"></a>C.8.3. <code class="code">interface SyntacticResource</code></h4></div></div></div><p> See <code class="code">SyntacticResource.java</code> in
+<code class="code">eu.excitement.entailment.core.representation.parsetree</code>. </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="idp17063680"></a>C.8.3. <code class="code">interface SyntacticResource</code></h4></div></div></div><p> See <code class="code">SyntacticResource.java</code> in
 <code class="code">eu.excitement.entailment.core.component.syntacticknowledge</code>. </p></div></div></div><div class="appendix" lang="en"><h2 class="title" style="clear: both"><a name="appendix_input_format"></a>Appendix D. Supported Raw Input Formats</h2><p>  Note that only the following extended RTE-5 format is mandatory (EDAs should support them), and other formats are optional (EDAs may support them). See <a href="#sec-5.2" title="5.2. Input file format ">Section 5.2, &#8220;Input file format &#8221;</a>. </p><pre class="programlisting">&lt;!ELEMENT entailment-corpus (pair+)&gt;
 &lt;!ATTLIST entailment-corpus
           lang CDATA #IMPLIED 
