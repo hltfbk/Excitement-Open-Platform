@@ -56,7 +56,7 @@ public class GermaNetWrapperMiniTest {
 				assertTrue(rule.getLLemma().equals("Hitze"));
 				assertTrue(rule.getRLemma().equals("Kälte"));
 				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() > 0);
+				assertTrue(rule.getConfidence() == 0);
 			}
 		}
 		catch (LexicalResourceException e)
@@ -90,7 +90,7 @@ public class GermaNetWrapperMiniTest {
 				assertTrue(rule.getLLemma().equals("Hitze"));
 				assertTrue(rule.getRLemma().equals("Kälte"));
 				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() > 0);
+				assertTrue(rule.getConfidence() == 0);
 			}
 		}
 		catch (LexicalResourceException e)
@@ -105,7 +105,7 @@ public class GermaNetWrapperMiniTest {
 		GermaNetWrapper gnw3 = null;
 		// check that no 0 confidence value returns 
 		try {// Initiating with "no hypernym" (0 confidence on hypernym)  
-			gnw3 = new GermaNetWrapper("path/to/GermaNetFiles/GN_V70/GN_V70_XML", 1.0, 1.0, 0.0, 1.0, 1.0);
+			gnw3 = new GermaNetWrapper("/path/to/GermaNetFiles/GN_V70/GN_V70_XML", 1.0, 1.0, 0.0, 1.0, 1.0);
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");

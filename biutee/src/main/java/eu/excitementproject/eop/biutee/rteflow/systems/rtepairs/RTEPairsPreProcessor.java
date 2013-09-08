@@ -91,7 +91,6 @@ public class RTEPairsPreProcessor
 			@Override
 			protected void run(String[] args) throws BiuteeException
 			{
-				logger = Logger.getLogger(RTEPairsPreProcessor.class);
 				String trainTestFlag = null;
 				if (args.length>=2)
 				{
@@ -120,6 +119,7 @@ public class RTEPairsPreProcessor
 	
 	public RTEPairsPreProcessor(String configurationFileName,String trainTestEnum) throws TeEngineMlException
 	{
+		logger = Logger.getLogger(RTEPairsPreProcessor.class);
 		this.configurationFileName = configurationFileName;
 		
 		if (trainTestEnum!=null)

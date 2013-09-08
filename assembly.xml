@@ -12,9 +12,8 @@
                 <include>eu.excitementproject:common</include>
                 <include>eu.excitementproject:biutee</include>
                 <include>eu.excitementproject:lap</include>
-                
+                <include>eu.excitementproject:util</include>
                 <include>eu.excitementproject:gui</include>
-                
                 <include>eu.excitementproject:transformations</include>
             </includes>
             <binaries>

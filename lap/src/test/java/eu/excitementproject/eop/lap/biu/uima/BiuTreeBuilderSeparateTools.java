@@ -31,6 +31,7 @@ import eu.excitementproject.eop.lap.biu.postagger.PosTagger;
 import eu.excitementproject.eop.lap.biu.postagger.PosTaggerException;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.lap.biu.test.BiuTestParams;
 import eu.excitementproject.eop.lap.biu.test.BiuTreeBuilder;
 
 /***
@@ -51,8 +52,8 @@ public class BiuTreeBuilderSeparateTools {
 	public BiuTreeBuilderSeparateTools() throws TokenizerException, PosTaggerException, NamedEntityRecognizerException, ParserRunException {
 		splitter = new LingPipeSentenceSplitter();
 		tokenizer = new MaxentTokenizer();
-		tagger = new MaxentPosTagger("D:\\java\\jars\\stanford-postagger-full-2008-09-28\\models\\left3words-wsj-0-18.tagger");
-		ner = new StanfordNamedEntityRecognizer(new File("D:\\java\\jars\\stanford-ner-2009-01-16\\classifiers\\ner-eng-ie.crf-3-all2008-distsim.ser.gz"));
+		tagger = new MaxentPosTagger(BiuTestParams.MAXENT_POS_TAGGER_MODEL_FILE);
+		ner = new StanfordNamedEntityRecognizer(new File(BiuTestParams.STANFORD_NER_CLASSIFIER_PATH));
 		parser = new EasyFirstParser(
 				//"132.70.6.156", 8081 //te-srv1				
 				);
