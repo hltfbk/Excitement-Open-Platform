@@ -138,10 +138,13 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		
 		addLemmasOfTextFromTree(textTree.getTree());
 		addLemmasOfTextFromStructures(textStructures);
-		
-		for (Set<PredicateArgumentStructure<I, S>> structures : surroundingStructures)
+
+		if (surroundingStructures!=null)
 		{
-			addLemmasOfTextFromStructures(structures);
+			for (Set<PredicateArgumentStructure<I, S>> structures : surroundingStructures)
+			{
+				addLemmasOfTextFromStructures(structures);
+			}
 		}
 		
 		lemmasOfText_lowerCase.addAll(wholeTextLemmas);
@@ -177,9 +180,13 @@ public class PastaGapFeaturesV3Calculator<I extends Info, S extends AbstractNode
 		hypothesisArguments = listOfArguments(hypothesisStructures);
 		
 		textArguments = listOfArguments(textStructures);
-		for (Set<PredicateArgumentStructure<I, S>> structures : surroundingStructures)
+		
+		if (surroundingStructures!=null)
 		{
-			textArguments.addAll(listOfArguments(structures));
+			for (Set<PredicateArgumentStructure<I, S>> structures : surroundingStructures)
+			{
+				textArguments.addAll(listOfArguments(structures));
+			}
 		}
 		
 		for (PredicateAndArgument<I, S> hypothesisArgument : hypothesisArguments)
