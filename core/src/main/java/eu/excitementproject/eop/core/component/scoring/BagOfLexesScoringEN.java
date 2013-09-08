@@ -52,6 +52,114 @@ public class BagOfLexesScoringEN extends BagOfLemmasScoring {
 	private Set<WordnetLexicalResource> wnlrSet;
 
 	private Set<VerbOceanLexicalResource> volrSet;
+	
+	/**
+	 * the constructor using parameters
+	 * 
+	 * @param isWN whether to use <code>WordnetLexicalResource</code>
+	 * @param WNRelations the array of WordNet relations
+	 * @param isWNCollapsed whether to collapse the WordNet relations into one score
+	 * @param useFirstSenseOnlyLeft whether to use the first sense only for the left-hand side
+	 * @param useFirstSenseOnlyRight whether to use the first sense only for the right-hand side
+	 * @param wnPath the file path to WordNet
+	 * @param isVO whether to use <code>VerbOceanLexicalResource</code>
+	 * @param VORelations the array of VerbOcean relations
+	 * @param isVOCollapsed whether to collapse the VerbOcean relations into one score
+	 * @param voPath the file path to VerbOcean
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
+	public BagOfLexesScoringEN(boolean isWN, String[] WNRelations, boolean isWNCollapsed, boolean useFirstSenseOnlyLeft, boolean useFirstSenseOnlyRight, String wnPath, boolean isVO, String[] VORelations, boolean isVOCollapsed, String voPath) throws ConfigurationException, LexicalResourceException {
+		if (!isWN && !isVO) {
+			throw new ConfigurationException(
+					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
+		}
+		
+		if (isWN) {
+			if (null == WNRelations || 0 == WNRelations.length) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the WordNet");
+			}
+			Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+			for (String relation : WNRelations) {
+				if (relation.equalsIgnoreCase("HYPERNYM")) {
+					wnRelSet.add(WordNetRelation.HYPERNYM);
+				} else if (relation.equalsIgnoreCase("SYNONYM")) {
+					wnRelSet.add(WordNetRelation.SYNONYM);
+				} else if (relation.equalsIgnoreCase("PART_HOLONYM")) {
+					wnRelSet.add(WordNetRelation.PART_HOLONYM);
+				} else {
+					logger.warning("Warning: wrong relation names for the WordNet");
+				}
+			}
+			if (wnRelSet.isEmpty()) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any (correct) relations for the WordNet");
+			}
+			wnlrSet = new HashSet<WordnetLexicalResource>();
+			File wnFile = new File(wnPath);			
+			if (!wnFile.exists()) {
+				throw new ConfigurationException("cannot find WordNet at: " + wnPath);
+			}
+			if (isWNCollapsed) {
+				WordnetLexicalResource wnlr = new WordnetLexicalResource(wnFile, useFirstSenseOnlyLeft,
+						useFirstSenseOnlyRight, wnRelSet);
+				wnlrSet.add(wnlr);
+				numOfFeats++;
+			} else {
+				for (WordNetRelation wnr : wnRelSet) {
+					WordnetLexicalResource wnlr = new WordnetLexicalResource(
+							wnFile, useFirstSenseOnlyLeft,
+							useFirstSenseOnlyRight, Collections.singleton(wnr));
+					wnlrSet.add(wnlr);
+					numOfFeats++;
+				}
+			}
+			logger.info("Load WordNet done.");
+		}
+		
+		if (isVO) {
+			if (null == VORelations || 0 == VORelations.length) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the VerbOcean");
+			}
+			Set<RelationType> voRelSet = new HashSet<RelationType>();
+			for (String relation : VORelations) {
+				if (relation.equalsIgnoreCase("strongerthan")) {
+					voRelSet.add(RelationType.STRONGER_THAN);
+				} else if (relation.equalsIgnoreCase("canresultin")) {
+					voRelSet.add(RelationType.CAN_RESULT_IN);
+				} else if (relation.equalsIgnoreCase("similar")) {
+					voRelSet.add(RelationType.SIMILAR);
+				} else {
+					logger.warning("Warning: wrong relation names for the VerbOcean");
+				}
+			}
+			if (voRelSet.isEmpty()) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any (correct) relations for the VerbOcean");
+			}
+			volrSet = new HashSet<VerbOceanLexicalResource>();
+			File voFile = new File(voPath);
+			if (!voFile.exists()) {
+				throw new ConfigurationException("cannot find VerbOcean at: " + voPath);
+			}
+			if (isVOCollapsed) {
+				VerbOceanLexicalResource volr = new VerbOceanLexicalResource(1,
+						voFile, voRelSet);
+				volrSet.add(volr);
+				numOfFeats++;
+			} else {
+				for (RelationType vor : voRelSet) {
+					VerbOceanLexicalResource volr = new VerbOceanLexicalResource(
+							1, voFile, Collections.singleton(vor));
+					volrSet.add(volr);
+					numOfFeats++;
+				}
+			}
+			logger.info("Load VerbOcean done.");
+		}
+	}
 
 	/**
 	 * the constructor using <code>CommonConfig</code>

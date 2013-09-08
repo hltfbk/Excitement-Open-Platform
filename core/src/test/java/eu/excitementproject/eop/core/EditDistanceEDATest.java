@@ -29,6 +29,7 @@ import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
 import eu.excitementproject.eop.lap.LAPAccess;
 //import eu.excitementproject.eop.lap.LAPException;
+//import eu.excitementproject.eop.util.eval.EDAScorer;
 
 /** This class tests EDADistanceEDA training and testing it 
  * on the 3 different languages
@@ -40,11 +41,11 @@ public class EditDistanceEDATest {
 			.getName());
 	
 	@Ignore
-	//@Test
+	@Test
 	public void test() {
 		
 		//testEditDistance();
-		//testItalian();
+		testItalian();
 		//testEnglish();
 		//testGerman();
 	}
@@ -136,11 +137,11 @@ public class EditDistanceEDATest {
 			
 			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
 			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
-			String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
+			//String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
 
 			save(annotatedFileName, list, false);
 			list.clear();
-			EDAScorer.score(annotatedFileName, evaluationFileName);
+			//EDAScorer.score(annotatedFileName, evaluationFileName);
 			editDistanceEDA.shutdown();
 		
 		} catch(Exception e) {
@@ -196,11 +197,11 @@ public class EditDistanceEDATest {
 			
 			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
 			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
-			String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
+			//String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
 			
 			save(annotatedFileName, list, false);
 			list.clear();
-			EDAScorer.score(annotatedFileName, evaluationFileName);
+			//EDAScorer.score(annotatedFileName, evaluationFileName);
 			editDistanceEDA.shutdown();
 			
 		} catch(Exception e) {
@@ -256,11 +257,11 @@ public class EditDistanceEDATest {
 			
 			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
 			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
-			String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
+			//String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
 			
 			save(annotatedFileName, list, false);
 			list.clear();
-			EDAScorer.score(annotatedFileName, evaluationFileName);
+			//EDAScorer.score(annotatedFileName, evaluationFileName);
 
 			editDistanceEDA.shutdown();
 			

@@ -43,8 +43,8 @@ public class TestBiuteeUsage {
 	 */
 	@Test
 	public void runFullBiutee() throws EDAException, ComponentException, ConfigurationException, ConfigurationFileDuplicateKeyException, TeEngineMlException, BiuteeMainException, IOException, ExcitementToBiuConfigurationFileConverterException, eu.excitementproject.eop.common.utilities.configuration.ConfigurationException, RTEMainReaderException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException{
-		BiuteeMain.runBiuteeCustomFlow(System.getProperty(CONFIG_PROP_NAME), "full");
+		BiuteeMain.runBiuteeCustomFlow(CONFIG_FILE_PATH, "full");
 	}
 	
-	public static final String CONFIG_PROP_NAME = "config";
+	public static final String CONFIG_FILE_PATH = "./biutee.xml";
 }

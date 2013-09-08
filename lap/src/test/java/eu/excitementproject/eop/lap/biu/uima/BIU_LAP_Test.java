@@ -9,12 +9,16 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
+import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
@@ -30,12 +34,13 @@ import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 public class BIU_LAP_Test {
 	
 	// We check only TEXT, not HYPOTHESIS
-	public static final String TEXT = "Ken likes to eat apples in Rome. Julie Andrews likes to drink juice.";
+	//public static final String TEXT = "Ken likes to eat apples in Rome. Julie Andrews likes to drink juice.";
+	public static final String TEXT = "Ken likes to eat his apples in Rome. Julie Andrews likes to drink her juice when she travels with Ken.";
 	public static final String HYPOTHESIS = "";
 	
 	private static final TestSentenceInfo[] EXPECTED_SENTENCES = new TestSentenceInfo[] {
-		new TestSentenceInfo(0,  32, "Ken likes to eat apples in Rome."),
-		new TestSentenceInfo(33, 68, "Julie Andrews likes to drink juice.")
+		new TestSentenceInfo(0,  36,  "Ken likes to eat his apples in Rome."),
+		new TestSentenceInfo(37, 102, "Julie Andrews likes to drink her juice when she travels with Ken.")
 	};
 	
 	private static final TestTokenInfo[] EXPECTED_TOKENS = new TestTokenInfo[] {
@@ -43,22 +48,36 @@ public class BIU_LAP_Test {
 		new TestTokenInfo(2,  4,  9,  "likes",   "like",   "V",     "VBZ", null,       new TestDependencyInfo[]{}),
 		new TestTokenInfo(3,  10, 12, "to",      "to",     "O",     "TO",  null,       new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 4)}),
 		new TestTokenInfo(4,  13, 16, "eat",     "eat",    "V",     "VB",  null,       new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 2)}),
-		new TestTokenInfo(5,  17, 23, "apples",  "apple",  "NN",    "NNS", null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 4)}),
-		new TestTokenInfo(6,  24, 26, "in",      "in",     "PP",    "IN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("prep", 4)}),
-		new TestTokenInfo(7,  27, 31, "Rome",    "rome",   "NP",    "NNP", "Location", new TestDependencyInfo[]{new TestDependencyInfo("pobj", 6)}),
-		new TestTokenInfo(8,  31, 32, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 2)}),
-		new TestTokenInfo(9,  33, 38, "Julie",   "julie",  "NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nn", 10)}),
-		new TestTokenInfo(10, 39, 46, "Andrews", "andrews","NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 11), new TestDependencyInfo("xsubj", 13)}),
-		new TestTokenInfo(11, 47, 52, "likes",   "like",   "V",     "VBZ", null,       new TestDependencyInfo[]{}),
-		new TestTokenInfo(12, 53, 55, "to",      "to",     "O",     "TO",  null,       new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 13)}),
-		new TestTokenInfo(13, 56, 61, "drink",   "drink",  "V",     "VB",  null,       new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 11)}),
-		new TestTokenInfo(14, 62, 67, "juice",   "juice",  "NN",    "NN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 13)}),
-		new TestTokenInfo(15, 67, 68, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 11)}),
+		new TestTokenInfo(5,  17, 20, "his",     "his",    "PR",    "PRP$",null,       new TestDependencyInfo[]{new TestDependencyInfo("poss", 6)}),
+		new TestTokenInfo(6,  21, 27, "apples",  "apple",  "NN",    "NNS", null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 4)}),
+		new TestTokenInfo(7,  28, 30, "in",      "in",     "PP",    "IN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("prep", 6)}),
+		new TestTokenInfo(8,  31, 35, "Rome",    "rome",   "NP",    "NNP", "Location", new TestDependencyInfo[]{new TestDependencyInfo("pobj", 7)}),
+		new TestTokenInfo(9,  35, 36, ".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 2)}),
+		
+		new TestTokenInfo(10, 37, 42, "Julie",   "julie",  "NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nn", 11)}),
+		new TestTokenInfo(11, 43, 50, "Andrews", "andrews","NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 12), new TestDependencyInfo("xsubj", 14)}),
+		new TestTokenInfo(12, 51, 56, "likes",   "like",   "V",     "VBZ", null,       new TestDependencyInfo[]{}),
+		new TestTokenInfo(13, 57, 59, "to",      "to",     "O",     "TO",  null,       new TestDependencyInfo[]{new TestDependencyInfo("AUX0", 14)}),
+		new TestTokenInfo(14, 60, 65, "drink",   "drink",  "V",     "VB",  null,       new TestDependencyInfo[]{new TestDependencyInfo("xcomp", 12)}),
+		new TestTokenInfo(15, 66, 69, "her",     "her",    "PR",    "PRP$",null,       new TestDependencyInfo[]{new TestDependencyInfo("poss", 16)}),
+		new TestTokenInfo(16, 70, 75, "juice",   "juice",  "NN",    "NN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("dobj", 14)}),
+		new TestTokenInfo(17, 76, 80, "when",    "when",   "ADV",   "WRB", null,       new TestDependencyInfo[]{new TestDependencyInfo("advmod", 19)}),
+		new TestTokenInfo(18, 81, 84, "she",     "she",    "PR",    "PRP", null,       new TestDependencyInfo[]{new TestDependencyInfo("nsubj", 19)}),
+		new TestTokenInfo(19, 85, 92, "travels", "travel", "V",     "VBZ", null,       new TestDependencyInfo[]{new TestDependencyInfo("advcl", 14)}),
+		new TestTokenInfo(20, 93, 97, "with",    "with",   "PP",    "IN",  null,       new TestDependencyInfo[]{new TestDependencyInfo("prep", 19)}),
+		new TestTokenInfo(21, 98, 101,"Ken",     "ken",    "NP",    "NNP", "Person",   new TestDependencyInfo[]{new TestDependencyInfo("pobj", 20)}),
+		new TestTokenInfo(22, 101,102,".",       ".",      "PUNC",  ".",   null,       new TestDependencyInfo[]{new TestDependencyInfo("punct", 12)}),
+	};
+	
+	private static final TestCorefMentionInfo[][] EXPECTED_COREF = new TestCorefMentionInfo[][] {
+		new TestCorefMentionInfo[] {new TestCorefMentionInfo(0,3), new TestCorefMentionInfo(17,20), new TestCorefMentionInfo(98,101)},
+		new TestCorefMentionInfo[] {new TestCorefMentionInfo(37,50), new TestCorefMentionInfo(66,69), new TestCorefMentionInfo(81,84)},
 	};
 	
 	private LinkedHashMap<Integer, TestTokenInfo> tokensById;
 	private LinkedHashMap<Token, TestTokenInfo> expectedByGeneratedToken;
 	private LinkedHashMap<Token, Set<TestDependencyInfo>> governors;
+	private SortedMap<Integer, CoreferenceChain> corefChainsByFirstMentionStart;
 	
 
 	@BeforeClass
@@ -109,6 +128,23 @@ public class BIU_LAP_Test {
 			for (Entry<Token, TestTokenInfo> entry : expectedByGeneratedToken.entrySet()) {
 				verifyToken(entry.getKey(), entry.getValue());
 			}
+			
+			// Verify coref groups
+			corefChainsByFirstMentionStart = new TreeMap<Integer, CoreferenceChain>();
+			for (CoreferenceChain chain : JCasUtil.select(jcas, CoreferenceChain.class)) {
+				// use this map in order to order chain by a predefined order - the start offset of its first CoreferenceLink
+				corefChainsByFirstMentionStart.put(chain.getFirst().getBegin(), chain);
+			}
+			if (corefChainsByFirstMentionStart.size() != EXPECTED_COREF.length) {
+				throw new LAPVerificationException("Bad amount of coreference chains, expected " + EXPECTED_COREF.length + ", got " + corefChainsByFirstMentionStart.size());
+			}
+			Iterator<TestCorefMentionInfo[]> iterCorefGroups = Arrays.asList(EXPECTED_COREF).iterator();
+			for (CoreferenceChain chain : corefChainsByFirstMentionStart.values()) {
+				Iterator<TestCorefMentionInfo> iterCoref = Arrays.asList(iterCorefGroups.next()).iterator();
+				for (CoreferenceLink link = chain.getFirst(); link!=null; link = link.getNext()) {
+					verifyCorefLink(link, iterCoref.next());
+				}
+			}
 		}
 		catch (Exception e) {
 			ExceptionUtil.outputException(e, System.out);
@@ -158,4 +194,14 @@ public class BIU_LAP_Test {
 		
 		System.out.println("Verified token: " + info);
 	}
+
+	private void verifyCorefLink(CoreferenceLink link, TestCorefMentionInfo info) throws LAPVerificationException {
+		if (info.begin!=link.getBegin())
+			throw new LAPVerificationException("Bad coref link begin index, expected " + info.begin + ", got " + link.getBegin());
+		if (info.end!=link.getEnd())
+			throw new LAPVerificationException("Bad coref link end index, expected " + info.end + ", got " + link.getEnd());
+
+		System.out.println("Verified coref: " + info);
+	}
+
 }

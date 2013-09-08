@@ -358,6 +358,19 @@ public class AbstractNodeUtils
 	
 	/**
 	 * Returns an multi-line indented string representation of the tree.
+	 * Uses {@link SimpleNodeString) for printing each node.
+	 * @param node
+	 * @param indent indentation string for each level
+	 * @param prefix indentation string for top level
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node, String indent, String prefix) {
+		return getIndentedStringSubtree(node, (NodeString<I>) new SimpleNodeString(), indent, prefix).toString().trim();
+	}
+	
+	/**
+	 * Returns an multi-line indented string representation of the tree.
 	 * Uses "  " for indentation.
 	 * @param node
 	 * @param str used for printing each node
