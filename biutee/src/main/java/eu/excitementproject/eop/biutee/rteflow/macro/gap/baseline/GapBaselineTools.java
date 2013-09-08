@@ -21,6 +21,9 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
+import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 
 /**
@@ -37,13 +40,15 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	public GapBaselineTools(TreeAndParentMap<I, S> hypothesisTree,
 			LinearClassifier classifierForSearch,
 			UnigramProbabilityEstimation mleEstimation,
-			ImmutableSet<String> stopWords)
+			ImmutableSet<String> stopWords,
+			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria)
 	{
 		super();
 		this.hypothesisTree = hypothesisTree;
 		this.classifierForSearch = classifierForSearch;
 		this.mleEstimation = mleEstimation;
 		this.stopWords = stopWords;
+		this.alignmentCriteria = alignmentCriteria;
 	}
 
 	@Override
@@ -131,7 +136,7 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 			lastTree = null;
 			lastCalculator = null;
 			
-			lastCalculator = new GapBaselineCalculator<>(givenTree, hypothesisTree, environment);
+			lastCalculator = new GapBaselineCalculator<>(givenTree, hypothesisTree, environment, alignmentCriteria);
 			lastCalculator.calculate();
 			lastTree = tree;
 			
@@ -176,6 +181,7 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	private final UnigramProbabilityEstimation mleEstimation;
 	@SuppressWarnings("unused")
 	private final ImmutableSet<String> stopWords;
+	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	
 	
 	private S lastTree = null;

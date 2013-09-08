@@ -105,7 +105,7 @@ public class GapToolBoxFactory
 		if (BiuteeConstants.GAP_BASELINE)
 		{
 			GlobalMessages.globalWarn("Using baseline gap tools", logger);
-			return new BaselineGapToolbox<ExtendedInfo, ExtendedNode>(mleEstimation,stopWords);
+			return new BaselineGapToolbox<ExtendedInfo, ExtendedNode>(mleEstimation,stopWords,alignmentCriteria);
 		}
 		else
 		{
@@ -233,7 +233,6 @@ public class GapToolBoxFactory
 	
 	private final ConfigurationFile configurationFile;
 	private final ConfigurationParams configurationParams;
-	@SuppressWarnings("unused")
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final UnigramProbabilityEstimation mleEstimation;
 	private final ImmutableSet<String> stopWords;

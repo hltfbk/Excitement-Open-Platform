@@ -12,6 +12,9 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
+import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.InfoObservations;
 
 /**
@@ -26,12 +29,14 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 {
 	public GapBaselineCalculator(TreeAndParentMap<I, S> textTree,
 			TreeAndParentMap<I, S> hypothesisTree,
-			GapEnvironment<I, S> environment)
+			GapEnvironment<I, S> environment,
+			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria)
 	{
 		super();
 		this.textTree = textTree;
 		HypothesisTree = hypothesisTree;
 		this.environment = environment;
+		this.alignmentCriteria = alignmentCriteria;
 	}
 
 	public void calculate()
@@ -192,6 +197,8 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 	protected final TreeAndParentMap<I, S> textTree;
 	protected final TreeAndParentMap<I, S> HypothesisTree;
 	protected final GapEnvironment<I, S> environment;
+	protected final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
+
 	
 	// internals
 	private ValueSetMap<S, S> mapHypothesisNodesToText;

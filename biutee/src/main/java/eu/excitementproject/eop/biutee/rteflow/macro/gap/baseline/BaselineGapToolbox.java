@@ -9,6 +9,9 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
+import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 
 /**
@@ -22,11 +25,13 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
 public class BaselineGapToolbox<I extends Info, S extends AbstractNode<I, S>> implements GapToolBox<I, S>
 {
 	public BaselineGapToolbox(UnigramProbabilityEstimation mleEstimation,
-			ImmutableSet<String> stopWords)
+			ImmutableSet<String> stopWords,
+			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria)
 	{
 		super();
 		this.mleEstimation = mleEstimation;
 		this.stopWords = stopWords;
+		this.alignmentCriteria = alignmentCriteria;
 	}
 
 	@Override
@@ -45,7 +50,7 @@ public class BaselineGapToolbox<I extends Info, S extends AbstractNode<I, S>> im
 					TreeAndParentMap<I, S> hypothesis,
 					LinearClassifier classifierForSearch) throws GapException
 			{
-				GapBaselineTools<I, S> tools = new  GapBaselineTools<>(hypothesis, classifierForSearch, mleEstimation, stopWords);
+				GapBaselineTools<I, S> tools = new  GapBaselineTools<>(hypothesis, classifierForSearch, mleEstimation, stopWords, alignmentCriteria);
 				return new GapToolInstances<>(tools, tools, tools);
 			}
 		};
@@ -54,4 +59,6 @@ public class BaselineGapToolbox<I extends Info, S extends AbstractNode<I, S>> im
 
 	private final UnigramProbabilityEstimation mleEstimation;
 	private final ImmutableSet<String> stopWords;
+	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
+
 }
