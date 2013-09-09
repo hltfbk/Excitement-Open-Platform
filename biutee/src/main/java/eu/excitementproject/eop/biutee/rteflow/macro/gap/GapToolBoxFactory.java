@@ -105,7 +105,7 @@ public class GapToolBoxFactory
 		if (BiuteeConstants.GAP_BASELINE)
 		{
 			GlobalMessages.globalWarn("Using baseline gap tools", logger);
-			return new BaselineGapToolbox<ExtendedInfo, ExtendedNode>(mleEstimation,stopWords,alignmentCriteria);
+			return new BaselineGapToolbox(mleEstimation,stopWords,alignmentCriteria);
 		}
 		else
 		{

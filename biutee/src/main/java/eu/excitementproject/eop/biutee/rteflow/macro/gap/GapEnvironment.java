@@ -24,11 +24,13 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
  */
 public class GapEnvironment<I, S extends AbstractNode<I, S>>
 {
-	public GapEnvironment(List<S> surroundingsContext, Set<String> wholeTextLemmas)
+	public GapEnvironment(List<S> surroundingsContext, Set<String> wholeTextLemmas,
+			Set<String> hypothesisLemmasLowerCase)
 	{
 		super();
 		this.surroundingsContext = surroundingsContext;
 		this.wholeTextLemmas = wholeTextLemmas;
+		this.hypothesisLemmasLowerCase = hypothesisLemmasLowerCase;
 	}
 
 	
@@ -44,13 +46,22 @@ public class GapEnvironment<I, S extends AbstractNode<I, S>>
 	}
 	
 	
+	public Set<String> getHypothesisLemmasLowerCase()
+	{
+		return hypothesisLemmasLowerCase;
+	}
+
+
 	public boolean identical(GapEnvironment<I,S> other)
 	{
 		if (getWholeTextLemmas().equals(other.getWholeTextLemmas()))
 		{
 			if (listTreesIdentical(getSurroundingsContext(),other.getSurroundingsContext()))
 			{
-				return true;
+				if (hypothesisLemmasLowerCase.equals(other.getHypothesisLemmasLowerCase()))
+				{
+					return true;
+				}
 			}
 		}
 		return false;
@@ -91,4 +102,5 @@ public class GapEnvironment<I, S extends AbstractNode<I, S>>
 	private final List<S> surroundingsContext;
 	
 	private final Set<String> wholeTextLemmas;
+	private final Set<String> hypothesisLemmasLowerCase;
 }

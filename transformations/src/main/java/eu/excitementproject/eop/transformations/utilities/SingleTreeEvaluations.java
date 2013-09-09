@@ -2,6 +2,7 @@ package eu.excitementproject.eop.transformations.utilities;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCalculator;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 //import eu.excitementproject.eop.transformations.rteflow.macro.search.astar.GeneratedTreeStateCalculations;
@@ -43,6 +44,15 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
  */
 public class SingleTreeEvaluations
 {
+	/**
+	 * @deprecated Use {@link AlignmentCalculator#getEvaluations(Set, int)} instead.
+	 * 
+	 * @param textTree
+	 * @param hypothesis
+	 * @param hypothesisLemmasLowerCase
+	 * @param numberOfHypothesisNodes
+	 * @return
+	 */
 	@Deprecated
 	public static SingleTreeEvaluations create(TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis,

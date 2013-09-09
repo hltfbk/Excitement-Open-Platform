@@ -7,9 +7,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
 import eu.excitementproject.eop.common.datastructures.SimpleValueSetMap;
 import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
@@ -25,11 +23,11 @@ import eu.excitementproject.eop.transformations.utilities.InfoObservations;
  * @param <I>
  * @param <S>
  */
-public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
+public class GapBaselineV1Calculator
 {
-	public GapBaselineCalculator(TreeAndParentMap<I, S> textTree,
-			TreeAndParentMap<I, S> hypothesisTree,
-			GapEnvironment<I, S> environment,
+	public GapBaselineV1Calculator(TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
+			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesisTree,
+			GapEnvironment<ExtendedInfo, ExtendedNode> environment,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria)
 	{
 		super();
@@ -47,7 +45,7 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 		uncoveredEdges = new LinkedList<>();
 		buildMap();
 		
-		for (S hypothesisNode : TreeIterator.iterableTree(HypothesisTree.getTree()))
+		for (ExtendedNode hypothesisNode : TreeIterator.iterableTree(HypothesisTree.getTree()))
 		{
 			if (InfoObservations.infoHasLemma(hypothesisNode.getInfo()))
 			{
@@ -88,22 +86,22 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 	
 	
 	
-	public List<S> getUncoveredNodesNamedEntities()
+	public List<ExtendedNode> getUncoveredNodesNamedEntities()
 	{
 		return uncoveredNodesNamedEntities;
 	}
 
-	public List<S> getUncoveredNodesNotNamedEntities()
+	public List<ExtendedNode> getUncoveredNodesNotNamedEntities()
 	{
 		return uncoveredNodesNotNamedEntities;
 	}
 
-	public List<S> getUncoveredEdges()
+	public List<ExtendedNode> getUncoveredEdges()
 	{
 		return uncoveredEdges;
 	}
 	
-	public List<S> getUncoveredNodesNonContentWords()
+	public List<ExtendedNode> getUncoveredNodesNonContentWords()
 	{
 		return uncoveredNodesNonContentWords;
 	}
@@ -115,9 +113,9 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 	private void buildMap()
 	{
 		mapHypothesisNodesToText = new SimpleValueSetMap<>();
-		for (S hypothesisNode : TreeIterator.iterableTree(HypothesisTree.getTree()))
+		for (ExtendedNode hypothesisNode : TreeIterator.iterableTree(HypothesisTree.getTree()))
 		{
-			for (S textNode : TreeIterator.iterableTree(textTree.getTree()))
+			for (ExtendedNode textNode : TreeIterator.iterableTree(textTree.getTree()))
 			{
 				if (lemmaOfNode_lowerCase(hypothesisNode).equals(lemmaOfNode_lowerCase(textNode)))
 				{
@@ -127,18 +125,18 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 		}
 	}
 	
-	private boolean parentMapped(S hypothesisNode)
+	private boolean parentMapped(ExtendedNode hypothesisNode)
 	{
 		boolean ret = false;
-		S hypothesisParent = HypothesisTree.getParentMap().get(hypothesisNode);
+		ExtendedNode hypothesisParent = HypothesisTree.getParentMap().get(hypothesisNode);
 		if (hypothesisParent!=null)
 		{
 			if (hasMapped(hypothesisParent))
 			{
-				ImmutableSet<S> mappedToHypothesisParent = mapHypothesisNodesToText.get(hypothesisParent);
-				for (S textNode : mapHypothesisNodesToText.get(hypothesisNode))
+				ImmutableSet<ExtendedNode> mappedToHypothesisParent = mapHypothesisNodesToText.get(hypothesisParent);
+				for (ExtendedNode textNode : mapHypothesisNodesToText.get(hypothesisNode))
 				{
-					S textParent = textTree.getParentMap().get(textNode);
+					ExtendedNode textParent = textTree.getParentMap().get(textNode);
 					if ( (textParent!=null) && (mappedToHypothesisParent.contains(textParent)) )
 					{
 						ret = true;
@@ -161,27 +159,27 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 		return ret;
 	}
 	
-	private String lemmaOfNode_lowerCase(S node)
+	private String lemmaOfNode_lowerCase(ExtendedNode node)
 	{
 		return InfoGetFields.getLemma(node.getInfo()).toLowerCase();
 	}
 	
-	private boolean nodeIsNamedEntity(S node)
+	private boolean nodeIsNamedEntity(ExtendedNode node)
 	{
 		return (InfoGetFields.getNamedEntityAnnotation(node.getInfo())!=null);
 	}
 	
-	private boolean nodeIsContentWord(S node)
+	private boolean nodeIsContentWord(ExtendedNode node)
 	{
 		return InfoObservations.infoIsContentWord(node.getInfo());
 	}
 	
-	private boolean hasMapped(S hypothesisNode)
+	private boolean hasMapped(ExtendedNode hypothesisNode)
 	{
 		boolean ret = false;
 		if (mapHypothesisNodesToText.containsKey(hypothesisNode))
 		{
-			ImmutableSet<S> mapped = mapHypothesisNodesToText.get(hypothesisNode);
+			ImmutableSet<ExtendedNode> mapped = mapHypothesisNodesToText.get(hypothesisNode);
 			if (mapped!=null)
 			{
 				if (mapped.size()>0)
@@ -194,18 +192,18 @@ public class GapBaselineCalculator<I extends Info, S extends AbstractNode<I, S>>
 	}
 
 	// input
-	protected final TreeAndParentMap<I, S> textTree;
-	protected final TreeAndParentMap<I, S> HypothesisTree;
-	protected final GapEnvironment<I, S> environment;
+	protected final TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree;
+	protected final TreeAndParentMap<ExtendedInfo, ExtendedNode> HypothesisTree;
+	protected final GapEnvironment<ExtendedInfo, ExtendedNode> environment;
 	protected final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 
 	
 	// internals
-	private ValueSetMap<S, S> mapHypothesisNodesToText;
+	private ValueSetMap<ExtendedNode, ExtendedNode> mapHypothesisNodesToText;
 	
 	// output
-	private List<S> uncoveredNodesNamedEntities;
-	private List<S> uncoveredNodesNotNamedEntities;
-	private List<S> uncoveredNodesNonContentWords;
-	private List<S> uncoveredEdges;
+	private List<ExtendedNode> uncoveredNodesNamedEntities;
+	private List<ExtendedNode> uncoveredNodesNotNamedEntities;
+	private List<ExtendedNode> uncoveredNodesNonContentWords;
+	private List<ExtendedNode> uncoveredEdges;
 }

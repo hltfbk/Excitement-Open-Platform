@@ -17,9 +17,7 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapHeuristicMeasure;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
@@ -32,12 +30,12 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
  * @since Sep 1, 2013
  *
  * @param <I>
- * @param <S>
+ * @param <ExtendedNode>
  */
 @NotThreadSafe
-public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> implements GapFeaturesUpdate<I, S>, GapHeuristicMeasure<I, S>, GapDescriptionGenerator<I, S>
+public class GapBaselineV1Tools implements GapFeaturesUpdate<ExtendedInfo, ExtendedNode>, GapHeuristicMeasure<ExtendedInfo, ExtendedNode>, GapDescriptionGenerator<ExtendedInfo, ExtendedNode>
 {
-	public GapBaselineTools(TreeAndParentMap<I, S> hypothesisTree,
+	public GapBaselineV1Tools(TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesisTree,
 			LinearClassifier classifierForSearch,
 			UnigramProbabilityEstimation mleEstimation,
 			ImmutableSet<String> stopWords,
@@ -52,10 +50,10 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	}
 
 	@Override
-	public GapDescription describeGap(TreeAndParentMap<I, S> tree,
-			GapEnvironment<I, S> environment) throws GapException
+	public GapDescription describeGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree,
+			GapEnvironment<ExtendedInfo, ExtendedNode> environment) throws GapException
 	{
-		GapBaselineCalculator<I, S> calculator = getCalculator(tree,environment);
+		GapBaselineV1Calculator calculator = getCalculator(tree,environment);
 		String description =
 				strListNodes("missing named entities: ",calculator.getUncoveredNodesNamedEntities(),false)+
 				strListNodes("missing nodes: ",calculator.getUncoveredNodesNotNamedEntities(),false)+
@@ -66,8 +64,8 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	}
 
 	@Override
-	public double measure(TreeAndParentMap<I, S> tree,
-			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment)
+	public double measure(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree,
+			Map<Integer, Double> featureVector, GapEnvironment<ExtendedInfo, ExtendedNode> environment)
 			throws GapException
 	{
 		try
@@ -85,31 +83,31 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	}
 
 	@Override
-	public Map<Integer, Double> updateForGap(TreeAndParentMap<I, S> tree,
-			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment)
+	public Map<Integer, Double> updateForGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> tree,
+			Map<Integer, Double> featureVector, GapEnvironment<ExtendedInfo, ExtendedNode> environment)
 			throws GapException
 	{
-		GapBaselineCalculator<I, S> calculator = getCalculator(tree,environment);
+		GapBaselineV1Calculator calculator = getCalculator(tree,environment);
 		Map<Integer, Double> newFeatureVector = new LinkedHashMap<>();
 		newFeatureVector.putAll(featureVector);
-		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_NODE.getFeatureIndex(),
+		newFeatureVector.put(Feature.GAP_BASELINE_V1_MISSING_NODE.getFeatureIndex(),
 				featureValueMissingNodes(calculator.getUncoveredNodesNotNamedEntities()));
-		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_NODE_NON_CONTENT_WORD.getFeatureIndex(),
+		newFeatureVector.put(Feature.GAP_BASELINE_V1_MISSING_NODE_NON_CONTENT_WORD.getFeatureIndex(),
 				featureValueMissingNodes(calculator.getUncoveredNodesNonContentWords()));
-		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_NODE_NAMED_ENTITY.getFeatureIndex(),
+		newFeatureVector.put(Feature.GAP_BASELINE_V1_MISSING_NODE_NAMED_ENTITY.getFeatureIndex(),
 				featureValueMissingNodes(calculator.getUncoveredNodesNamedEntities()));
-		newFeatureVector.put(Feature.GAP_BASELINE_MISSING_EDGE.getFeatureIndex(),
+		newFeatureVector.put(Feature.GAP_BASELINE_V1_MISSING_EDGE.getFeatureIndex(),
 				(double)(-calculator.getUncoveredEdges().size()) );
 		
 		return newFeatureVector;
 	}
 	
-	private double featureValueMissingNodes(List<S> nodes) throws GapException
+	private double featureValueMissingNodes(List<ExtendedNode> nodes) throws GapException
 	{
 		double ret = 0.0;
 		if (BiuteeConstants.USE_MLE_FOR_GAP)
 		{
-			for (S node : nodes)
+			for (ExtendedNode node : nodes)
 			{
 				String lemma = InfoGetFields.getLemma(node.getInfo());
 				ret += Math.log(mleEstimation.getEstimationFor(lemma));
@@ -124,9 +122,9 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	}
 	
 	
-	private synchronized GapBaselineCalculator<I, S> getCalculator(TreeAndParentMap<I, S> givenTree, GapEnvironment<I, S> environment)
+	private synchronized GapBaselineV1Calculator getCalculator(TreeAndParentMap<ExtendedInfo, ExtendedNode> givenTree, GapEnvironment<ExtendedInfo, ExtendedNode> environment)
 	{
-		S tree = givenTree.getTree();
+		ExtendedNode tree = givenTree.getTree();
 		if ( (lastTree==tree) && (lastCalculator!=null) )
 		{
 			return lastCalculator;
@@ -136,7 +134,7 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 			lastTree = null;
 			lastCalculator = null;
 			
-			lastCalculator = new GapBaselineCalculator<>(givenTree, hypothesisTree, environment, alignmentCriteria);
+			lastCalculator = new GapBaselineV1Calculator(givenTree, hypothesisTree, environment, alignmentCriteria);
 			lastCalculator.calculate();
 			lastTree = tree;
 			
@@ -144,7 +142,7 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 		}
 	}
 	
-	private String strListNodes(String prefix, List<S> nodes, boolean edge)
+	private String strListNodes(String prefix, List<ExtendedNode> nodes, boolean edge)
 	{
 		String strOfNodes = strListNodes(nodes,edge);
 		if (strOfNodes.length()>0)
@@ -154,18 +152,18 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 		else return "";
 	}
 	
-	private String strListNodes(List<S> nodes, boolean edge)
+	private String strListNodes(List<ExtendedNode> nodes, boolean edge)
 	{
 		StringBuilder sb = new StringBuilder();
 		boolean firstIteration = true;
-		for (S node : nodes)
+		for (ExtendedNode node : nodes)
 		{
 			if (firstIteration){firstIteration=false;}
 			else {sb.append(", ");}
 			sb.append(InfoGetFields.getLemma(node.getInfo()));
 			if (edge)
 			{
-				S parent = hypothesisTree.getParentMap().get(node);
+				ExtendedNode parent = hypothesisTree.getParentMap().get(node);
 				if (parent!=null)
 				{
 					sb.append("<").append(InfoGetFields.getLemma(parent.getInfo()));
@@ -176,7 +174,7 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	}
 
 	
-	private final TreeAndParentMap<I, S> hypothesisTree;
+	private final TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesisTree;
 	private final LinearClassifier classifierForSearch;
 	private final UnigramProbabilityEstimation mleEstimation;
 	@SuppressWarnings("unused")
@@ -184,7 +182,7 @@ public class GapBaselineTools<I extends Info, S extends AbstractNode<I, S>> impl
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	
 	
-	private S lastTree = null;
-	private GapBaselineCalculator<I, S> lastCalculator = null;
+	private ExtendedNode lastTree = null;
+	private GapBaselineV1Calculator lastCalculator = null;
 
 }

@@ -83,11 +83,15 @@ public class ReasonableGuessCreator
 		
 		priorNegative.put(Feature.GAP_V1_COUNT_MISSING_NODES.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
 		
-		priorNegative.put(Feature.GAP_BASELINE_MISSING_NODE_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
-		priorNegative.put(Feature.GAP_BASELINE_MISSING_NODE .getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
-		priorNegative.put(Feature.GAP_BASELINE_MISSING_NODE_NON_CONTENT_WORD .getFeatureIndex(), new MeanAndStandardDeviation(-3, standardDeviation));
-		priorNegative.put(Feature.GAP_BASELINE_MISSING_EDGE.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
+		priorNegative.put(Feature.GAP_BASELINE_V1_MISSING_NODE_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
+		priorNegative.put(Feature.GAP_BASELINE_V1_MISSING_NODE .getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
+		priorNegative.put(Feature.GAP_BASELINE_V1_MISSING_NODE_NON_CONTENT_WORD .getFeatureIndex(), new MeanAndStandardDeviation(-3, standardDeviation));
+		priorNegative.put(Feature.GAP_BASELINE_V1_MISSING_EDGE.getFeatureIndex(), new MeanAndStandardDeviation(-5, standardDeviation));
 		
+		priorNegative.put(Feature.GAP_BASELINE_V2_MISSING_LEMMA.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
+		priorNegative.put(Feature.GAP_BASELINE_V2_MISSING_NODE.getFeatureIndex(), new MeanAndStandardDeviation(-7, standardDeviation));
+		priorNegative.put(Feature.GAP_BASELINE_V2_MISSING_RELATION.getFeatureIndex(), new MeanAndStandardDeviation(-10, standardDeviation));
+
 
 		Map<Integer, MeanAndStandardDeviation> priorPositive = new LinkedHashMap<Integer, MeanAndStandardDeviation>();
 		priorPositive.put(Feature.INSERT_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
@@ -130,10 +134,14 @@ public class ReasonableGuessCreator
 		
 		priorPositive.put(Feature.GAP_V1_COUNT_MISSING_NODES.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 
-		priorPositive.put(Feature.GAP_BASELINE_MISSING_NODE_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_BASELINE_MISSING_NODE .getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_BASELINE_MISSING_NODE_NON_CONTENT_WORD .getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
-		priorPositive.put(Feature.GAP_BASELINE_MISSING_EDGE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_BASELINE_V1_MISSING_NODE_NAMED_ENTITY.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_BASELINE_V1_MISSING_NODE .getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_BASELINE_V1_MISSING_NODE_NON_CONTENT_WORD .getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_BASELINE_V1_MISSING_EDGE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		
+		priorPositive.put(Feature.GAP_BASELINE_V2_MISSING_LEMMA.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_BASELINE_V2_MISSING_NODE.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
+		priorPositive.put(Feature.GAP_BASELINE_V2_MISSING_RELATION.getFeatureIndex(), new MeanAndStandardDeviation(-1, standardDeviation));
 		
 		
 		

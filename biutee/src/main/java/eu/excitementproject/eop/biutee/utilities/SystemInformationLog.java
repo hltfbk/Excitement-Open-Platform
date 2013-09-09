@@ -1,6 +1,9 @@
 package eu.excitementproject.eop.biutee.utilities;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -90,11 +93,14 @@ public class SystemInformationLog
 			try
 			{
 				StringBuilder sbEnvVars = new StringBuilder();
-				sbEnvVars.append("OS environment variables: \n");
+				sbEnvVars.append("OS environment variables (sorted alphabetically): \n");
 				Map<String, String> mapEnvironmentVariables = System.getenv();
-				for (Map.Entry<String, String> environmentVariable : mapEnvironmentVariables.entrySet())
+				List<String> environmentVariableNames = new ArrayList<String>(mapEnvironmentVariables.keySet().size());
+				environmentVariableNames.addAll(mapEnvironmentVariables.keySet());
+				Collections.sort(environmentVariableNames);
+				for (String environmentVariableName : environmentVariableNames)
 				{
-					sbEnvVars.append(environmentVariable.getKey()).append(" = ").append(environmentVariable.getValue()).append("\n");
+					sbEnvVars.append(environmentVariableName).append(" = ").append( mapEnvironmentVariables.get(environmentVariableName) ).append("\n");
 				}
 				logger.info(sbEnvVars.toString());
 			}

@@ -6,8 +6,6 @@ import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolsFactory;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
-import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
@@ -19,10 +17,8 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
  * @author Asher Stern
  * @since Sep 1, 2013
  *
- * @param <I>
- * @param <S>
  */
-public class BaselineGapToolbox<I extends Info, S extends AbstractNode<I, S>> implements GapToolBox<I, S>
+public class BaselineGapToolbox implements GapToolBox<ExtendedInfo, ExtendedNode>
 {
 	public BaselineGapToolbox(UnigramProbabilityEstimation mleEstimation,
 			ImmutableSet<String> stopWords,
@@ -41,16 +37,17 @@ public class BaselineGapToolbox<I extends Info, S extends AbstractNode<I, S>> im
 	}
 
 	@Override
-	public GapToolsFactory<I, S> getGapToolsFactory() throws GapException
+	public GapToolsFactory<ExtendedInfo, ExtendedNode> getGapToolsFactory() throws GapException
 	{
-		return new GapToolsFactory<I, S>()
+		return new GapToolsFactory<ExtendedInfo, ExtendedNode>()
 		{
 			@Override
-			public GapToolInstances<I, S> createInstances(
-					TreeAndParentMap<I, S> hypothesis,
+			public GapToolInstances<ExtendedInfo, ExtendedNode> createInstances(
+					TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis,
 					LinearClassifier classifierForSearch) throws GapException
 			{
-				GapBaselineTools<I, S> tools = new  GapBaselineTools<>(hypothesis, classifierForSearch, mleEstimation, stopWords, alignmentCriteria);
+				//GapBaselineV1Tools tools = new  GapBaselineV1Tools(hypothesis, classifierForSearch, mleEstimation, stopWords, alignmentCriteria);
+				GapBaselineV2Tools tools = new  GapBaselineV2Tools(hypothesis, classifierForSearch, mleEstimation, alignmentCriteria);
 				return new GapToolInstances<>(tools, tools, tools);
 			}
 		};
@@ -58,7 +55,7 @@ public class BaselineGapToolbox<I extends Info, S extends AbstractNode<I, S>> im
 	}
 
 	private final UnigramProbabilityEstimation mleEstimation;
+	@SuppressWarnings("unused")
 	private final ImmutableSet<String> stopWords;
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
-
 }
