@@ -107,7 +107,11 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that are less likely to be changed.
 
-	public static final boolean GAP_BASELINE = true;
+	/**
+	 * Use the baseline gap measure (true), or the pasta-based gap measure (false).
+	 * Should be false, except for specific experiments.
+	 */
+	public static final boolean GAP_BASELINE = false;
 	
 	public static final long RANDOM_SEED_FOR_GAUSSIAN_GENERATOR_FOR_REASONABLE_GUESS_TRAINING = 0L;
 	
