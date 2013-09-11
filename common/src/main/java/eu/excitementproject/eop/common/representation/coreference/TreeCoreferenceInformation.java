@@ -269,6 +269,16 @@ public class TreeCoreferenceInformation<T> implements Serializable
 	}
 	
 
+	/**
+	 * TODO ofer bronstein August 2013
+	 * This implementation should somehow be common with a method
+	 * that can assume that T inherits from AbstractNode, so that
+	 * for each node we can call:
+	 * 
+	 *   "* " + AbstractNodeUtils.getIndentedString(node, "  ", "\t\t  ");
+	 *   
+	 * and get relevant info on the tree.
+	 */
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */

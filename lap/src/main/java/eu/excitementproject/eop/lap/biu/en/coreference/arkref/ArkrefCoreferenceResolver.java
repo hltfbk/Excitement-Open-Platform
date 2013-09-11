@@ -2,19 +2,17 @@ package eu.excitementproject.eop.lap.biu.en.coreference.arkref;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.management.ManagementFactory;
 import java.util.List;
-import java.util.UUID;
 
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.coreference.TreeCoreferenceInformationUtils;
 import eu.excitementproject.eop.lap.biu.coreference.merge.CorefMergeException;
 import eu.excitementproject.eop.lap.biu.coreference.merge.WordWithCoreferenceTag;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient.ArkrefClientException;
+import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefInputFileManager.ArkrefInputFileManagerException;
 import eu.excitementproject.eop.lap.biu.en.coreference.merge.english.EnglishCorefMerger;
 
 /**
@@ -25,41 +23,32 @@ import eu.excitementproject.eop.lap.biu.en.coreference.merge.english.EnglishCore
  * <b>NOTE!</b> for arkref to work, you must have <code>JARS\arkref\lib</code> and <code>JARS\arkref\config</code> in the
  * work dir.
  * 
- * @author Lili Kotlerman
+ * @author Lili Kotlerman, Ofer Bronstein
  *
  */
 public class ArkrefCoreferenceResolver extends CoreferenceResolver<BasicNode>
 {
 	////////////////////////////////// PRIVATE /////////////////////////////////////
-	
-	// constants
-	private static final String TXT = ".txt";
-	private static final String ARKREF_TEMP = "arkrefTemp";
-	private static final String ARKREF_TEMP_FILE_PREFIX = "arkref_temp_file_";
-	private static final String PROCESS_ID = ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
-	
-	// member fields
-	 
-	protected File workDirectory;
-	
+	ArkrefInputFileManager fileManager;
 	
 	/////////////////////////////////// PUBLIC //////////////////////////////////////
 	
-	public ArkrefCoreferenceResolver() throws ArkrefClientException, IOException{
-		this(new File(System.getProperty("java.io.tmpdir") + File.separator + ARKREF_TEMP + PROCESS_ID + "__" + UUID.randomUUID().toString()));   
+	public ArkrefCoreferenceResolver() throws ArkrefClientException, IOException {
+		try {
+			fileManager = new ArkrefInputFileManager();
+		}
+		catch (ArkrefInputFileManagerException e) {
+			throw new ArkrefClientException("Problem with input file, see inner exception.", e);
+		}
 	}
 	
 	public ArkrefCoreferenceResolver(File workDirectory) throws ArkrefClientException, IOException{
-		this.workDirectory = workDirectory;
-		if(workDirectory.exists())
-			if (!FileUtils.deleteDirectory(workDirectory)) {
-				throw new ArkrefClientException("Could not delete directory " + workDirectory);
-			}
-		if (workDirectory.mkdir()==false) 
-			throw new ArkrefClientException("Could not make new directory " + workDirectory); 
-		
-		
-		// filename = workDirectory+File.separator+String.valueOf(RANDOM_GENERATOR.nextInt(1000000))+TXT;
+		try {
+			fileManager = new ArkrefInputFileManager(workDirectory);
+		}
+		catch (ArkrefInputFileManagerException e) {
+			throw new ArkrefClientException("Problem with input file, see inner exception.", e);
+		}
 	}
 	
 	@Override
@@ -69,7 +58,7 @@ public class ArkrefCoreferenceResolver extends CoreferenceResolver<BasicNode>
 	@Override
 	public void cleanUp()
 	{
-		FileUtils.deleteDirectory(workDirectory);
+		fileManager.cleanUp();
 	}
 
 	
@@ -102,7 +91,7 @@ public class ArkrefCoreferenceResolver extends CoreferenceResolver<BasicNode>
 	{
 		try
 		{
-			String filename = File.createTempFile(ARKREF_TEMP_FILE_PREFIX, TXT, workDirectory).getPath();
+			String filename = fileManager.createTempInputFile().getPath();
 			ArkrefClient arkrefClient = null;
 			arkrefClient = new ArkrefClient(originalText, filename);
 		

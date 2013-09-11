@@ -35,11 +35,11 @@ public class BiuTreeBuilder {
 	public BiuTreeBuilder() throws TokenizerException, PosTaggerException, NamedEntityRecognizerException, ParserRunException {
 		splitter = new LingPipeSentenceSplitter();
 		tokenizer = new MaxentTokenizer();
-		tagger = new MaxentPosTagger("..\\third-party\\stanford-postagger-full-2008-09-28\\models\\left3words-wsj-0-18.tagger");
-		ner = new StanfordNamedEntityRecognizer(new File("..\\third-party\\stanford-ner-2009-01-16\\classifiers\\ner-eng-ie.crf-3-all2008-distsim.ser.gz"));
+		tagger = new MaxentPosTagger(BiuTestParams.MAXENT_POS_TAGGER_MODEL_FILE);
+		ner = new StanfordNamedEntityRecognizer(new File(BiuTestParams.STANFORD_NER_CLASSIFIER_PATH));
 		parser = new EasyFirstParser(
-				"localhost",
-				8080,
+				BiuTestParams.EASYFIRST_HOST,
+				BiuTestParams.EASYFIRST_PORT,
 				tokenizer,
 				tagger
 				);

@@ -14,9 +14,9 @@ import org.junit.Test;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NamedEntity;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
-import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityPhrase;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
+import eu.excitementproject.eop.lap.biu.test.BiuTestParams;
 import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 
 public class StanfordNamedEntityRecognizerTest {
@@ -94,8 +94,7 @@ public class StanfordNamedEntityRecognizerTest {
 
 	@Test
 	public void test() throws Exception {
-		String stanfordNerClassifier = StringUtil.expandEnvironmentVariables("./stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz");
-		StanfordNamedEntityRecognizer ner = new StanfordNamedEntityRecognizer(new File(stanfordNerClassifier));
+		StanfordNamedEntityRecognizer ner = new StanfordNamedEntityRecognizer(new File(BiuTestParams.STANFORD_NER_CLASSIFIER_PATH));
 		ner.init();
 		
 		for (int i=0; i<SENTENCES.size(); i++) {

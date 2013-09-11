@@ -94,7 +94,7 @@ public class BiuteeMain {
 		BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
 
 		logger.trace("Initializing preprocessor RTEPairsPreProcessor...");
-		RTEPairsPreProcessor processor = new RTEPairsPreProcessor(biuConfigurationFile.getAbsolutePath(),null);
+		RTEPairsPreProcessor processor = new RTEPairsPreProcessor(biuConfigurationFile.getAbsolutePath(), RTEPairsPreProcessor.TrainTestEnum.TRAIN.name());
 		//RTEPairsPreProcessor processor = new RTEPairsPreProcessor(config.getConfigurationFileName());
 		logger.trace("Preprocessing using preprocessor...");
 		processor.preprocess();
