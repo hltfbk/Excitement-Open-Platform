@@ -3,7 +3,7 @@
    <parent>
     <groupId>eu.excitementproject</groupId>
     <artifactId>eop</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
   </parent>
   <artifactId>distsim</artifactId>
   <name>distsim</name>
@@ -37,13 +37,13 @@
     <dependency>
 		<groupId>eu.excitementproject</groupId>
   		<artifactId>common</artifactId>
-  		<version>0.1-SNAPSHOT</version>
+  		<version>1.0.3-SNAPSHOT</version>
   	</dependency>
       
     <dependency>
 		<groupId>eu.excitementproject</groupId>
   		<artifactId>lap</artifactId>
-  		<version>0.1-SNAPSHOT</version>
+  		<version>1.0.3-SNAPSHOT</version>
   	</dependency>
  
     <dependency>
@@ -51,7 +51,11 @@
   		<artifactId>parse-utils</artifactId>
   		<version>001</version>
   	</dependency>
-  	
       	
+     <dependency>
+    		<groupId>eu.excitementproject</groupId>
+    		<artifactId>transformations</artifactId>
+    		<version>1.0.3-SNAPSHOT</version>
+    	</dependency>
   	</dependencies>
 </project>

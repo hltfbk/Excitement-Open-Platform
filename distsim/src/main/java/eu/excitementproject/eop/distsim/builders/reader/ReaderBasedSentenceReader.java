@@ -1,7 +1,7 @@
 /**
  * 
  */
-package eu.excitementproject.eop.distsim.builders.cooccurrence;
+package eu.excitementproject.eop.distsim.builders.reader;
 
 import java.io.BufferedReader;
 import java.io.File;

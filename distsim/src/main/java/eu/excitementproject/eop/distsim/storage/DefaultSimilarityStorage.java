@@ -56,9 +56,13 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	 * 
 	 */
 	public DefaultSimilarityStorage(ConfigurationParams params) throws ConfigurationException {
-		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(params.getString("l2rRulesStorageHost"), params.getInt("l2rRulesStoragePort"));
-		this.rightElemntSimilarities = new RedisBasedStringListBasicMap(params.getString("r2lRulesStorageHost"), params.getInt("r2lRulesStoragePort"));
-		this.resourceName = params.getModuleName();
+		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(params.getString(Configuration.L2R_REDIS_HOST), params.getInt(Configuration.L2R_REDIS_PORT));
+		try {
+			this.rightElemntSimilarities = new RedisBasedStringListBasicMap(params.getString(Configuration.R2L_REDIS_HOST), params.getInt(Configuration.R2L_REDIS_PORT));
+		} catch (ConfigurationException e) {
+			this.rightElemntSimilarities = null;
+		}
+		this.resourceName = params.getString(Configuration.RESOURCE_NAME);
 		this.instanceName = params.getConfigurationFile().toString();
 		this.elementClassName = params.get(Configuration.ELEMENT_CLASS);
 	}
@@ -159,6 +163,9 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 				} else {
 					int i=0;
 					for (String elementSimilarity : elementSimilarities) {
+						
+						//tmp
+						//System.out.println(elementSimilarity);
 						
 						String[] toks = elementSimilarity.split(RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER);
 						String element2Key = toks[0];

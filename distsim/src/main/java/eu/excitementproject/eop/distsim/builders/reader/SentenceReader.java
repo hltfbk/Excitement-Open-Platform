@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.distsim.builders.cooccurrence;
+package eu.excitementproject.eop.distsim.builders.reader;
 
 import eu.excitementproject.eop.distsim.util.Pair;
 

@@ -57,7 +57,7 @@ public abstract class IdDataFile extends File {
 	@Override
 	public synchronized Pair<Integer, Serializable> read() throws SerializationException, IOException {
 		if (reader == null)
-			throw new IOException("Writing device is not opened");
+			throw new IOException("Reading device is not opened");
 
 		String line = reader.readLine();
 		if (line == null)

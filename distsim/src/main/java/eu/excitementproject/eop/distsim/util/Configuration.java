@@ -105,6 +105,16 @@ public class Configuration {
 	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2_X = "separate-filter-and-index-elements-features-2-x";
 	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1_Y = "separate-filter-and-index-elements-features-1-y";
 	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2_Y = "separate-filter-and-index-elements-features-2-y";
+	public static final String AE_TEMPLATE_FILE = "ae-template-file";
+	public static final String IS_SORTED = "is-sorted";
+	public static final String TMP_DIR = "tmp-dir";
+	public static final String TOP_N_RULES = "top-n-rules";
+	public static final String L2R_REDIS_HOST = "l2r-redis-host";
+	public static final String L2R_REDIS_PORT = "l2r-redis-port"; 
+	public static final String R2L_REDIS_HOST = "r2l-redis-host";
+	public static final String R2L_REDIS_PORT = "r2l-redis-port";
+	public static final String RESOURCE_NAME = "resource-name";
+	public static final String KNOWLEDGE_RESOURCE = "knowledge-resource"; 
 
 }
 

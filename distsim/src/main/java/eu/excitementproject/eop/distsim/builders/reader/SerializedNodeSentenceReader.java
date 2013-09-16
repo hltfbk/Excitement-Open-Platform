@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.distsim.builders.cooccurrence;
+package eu.excitementproject.eop.distsim.builders.reader;
 
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;

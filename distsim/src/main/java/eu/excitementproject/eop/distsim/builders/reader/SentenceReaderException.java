@@ -1,7 +1,7 @@
 /**
  * 
  */
-package eu.excitementproject.eop.distsim.builders.cooccurrence;
+package eu.excitementproject.eop.distsim.builders.reader;
 
 /**
  * @author Meni Adler

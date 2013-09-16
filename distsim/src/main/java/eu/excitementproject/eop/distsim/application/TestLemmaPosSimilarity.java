@@ -21,7 +21,7 @@ import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
  * @since 07/01/2013
  *
  */
-public class TestLemmaPosSimilarity1 {
+public class TestLemmaPosSimilarity {
 	public static void main(String[] args) throws SimilarityNotFoundException {
 		
 		if (args.length != 4) {

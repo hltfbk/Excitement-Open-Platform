@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.scoring.combine.SimilarityCombination;
@@ -57,7 +58,17 @@ public class GeneralElementSimilarityCombiner  {
 
 			String storageClass = similarityCombinerParams.get(Configuration.STORAGE_DEVICE_CLASS);
 			
-			boolean bSort = combiner instanceof OrderedBasedElementSimilarityCombiner;
+			boolean bSort = false;
+			try {
+				bSort = !similarityCombinerParams.getBoolean(Configuration.IS_SORTED);
+			} catch (ConfigurationException e) {				
+			}
+			
+			String tmpSortDir = "";
+			try {
+				tmpSortDir = similarityCombinerParams.get(Configuration.TMP_DIR);
+			} catch (ConfigurationException e) {				
+			}
 			
 			PersistenceDevice combinedDevice = (PersistenceDevice)Factory.create(storageClass,new java.io.File(similarityCombinerParams.getString(Configuration.OUT_COMBINED_FILE)),false);
 			combinedDevice.open();
@@ -73,7 +84,7 @@ public class GeneralElementSimilarityCombiner  {
 					if (OS.isWindows())
 						throw new Exception("numeric sort of files is not supported at Windows");
 					file = new java.io.File(infiles[i] + ".sorted");
-					SortUtil.sortFile(new File(infiles[i]),file,true);
+					SortUtil.sortFile(new File(infiles[i]),file,true,tmpSortDir);
 				} else
 					file = new java.io.File(infiles[i]);
 				similarityStorageDevices.add((PersistenceDevice)Factory.create(storageClass,file,true));

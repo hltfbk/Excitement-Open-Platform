@@ -12,6 +12,8 @@ import org.apache.log4j.PropertyConfigurator;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.builders.reader.FileBasedSentenceReader;
+import eu.excitementproject.eop.distsim.builders.reader.SentenceReaderException;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.TextUnit;
 import eu.excitementproject.eop.distsim.util.Configuration;

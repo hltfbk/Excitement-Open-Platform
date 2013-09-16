@@ -21,6 +21,8 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
+import eu.excitementproject.eop.distsim.builders.reader.FileBasedSentenceReader;
+import eu.excitementproject.eop.distsim.builders.reader.SentenceReaderException;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.IDBasedCooccurrence;
 import eu.excitementproject.eop.distsim.items.TextUnit;

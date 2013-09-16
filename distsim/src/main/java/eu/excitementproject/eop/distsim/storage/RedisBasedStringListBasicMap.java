@@ -24,7 +24,7 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 public class RedisBasedStringListBasicMap {
 
 	
-	public static final String ELEMENT_SCORE_DELIMITER = ":";
+	public static final String ELEMENT_SCORE_DELIMITER = "%";
 	
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
