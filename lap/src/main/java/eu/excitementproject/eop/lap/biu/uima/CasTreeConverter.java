@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -335,7 +335,7 @@ public class CasTreeConverter {
 	}
 	
 	private static String getDependency(Dependency depAnno) {
-		String dep = depAnno.getClass().getSimpleName().toLowerCase();
+		String dep = depAnno.getClass().getSimpleName().toLowerCase(Locale.ENGLISH);
 		if (dep.equals("aux0")) {
 			dep = "aux";
 		}

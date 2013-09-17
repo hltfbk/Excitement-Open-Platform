@@ -18,6 +18,7 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrap
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 
 /**
@@ -31,9 +32,9 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 @NotThreadSafe
 public abstract class OperationsScriptForBuiltinKnowledgeAndPlugins extends OperationsScriptForBuiltinKnowledge
 {
-	public OperationsScriptForBuiltinKnowledgeAndPlugins(ConfigurationFile configurationFile,PluginRegistry pluginRegistry)
+	public OperationsScriptForBuiltinKnowledgeAndPlugins(ConfigurationFile configurationFile, PARSER parser, PluginRegistry pluginRegistry)
 	{
-		super(configurationFile);
+		super(configurationFile,parser);
 		this.pluginRegistry = pluginRegistry;
 	}
 

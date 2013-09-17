@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.biutee.utilities;
 
+import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.transformations.codeannotations.Workaround;
 import eu.excitementproject.eop.transformations.operations.finders.SubstitutionFlipPosFinder;
@@ -18,6 +19,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Important constants: constants that you might consider changing their values
 
+	public static final boolean PASTA_GAP_STRICT_ARGUMENT_HEAD_MODE = false;
+	
 	public static final boolean USE_NEGATIVES_FROM_PREVIOUS_ITERATIONS_IN_ACCURACY_TRAINING = false;
 	
 	/**
@@ -50,14 +53,25 @@ public class BiuteeConstants
 	 * used, regardless whether the inserted word is common or rare.
 	 */
 	public static final boolean USE_MLE_FOR_INSERTION_COST = true;
+	
+	public static final boolean USE_MLE_FOR_GAP = true;
+	
+	public static final boolean USE_MLE_FOR_ARGUMENTS_GAP = false;
 
+	// if <=0 it means all.
+	public static final int FILTER_ENABELED_NUMBER_OF_TREES_TO_PROCESS = -1;
+
+	
 	public static final int LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS = 3;
 	
-	// 0 means no heuristic
+	/**
+	 * See description in the method
+	 * {@link LocalCreativeTextTreesProcessor#updateActualNumberOfLocalIterations}.
+	 * 
+	 * 0 means no heuristic
+	 */
 	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 3;
 	
-	// if <=0 it means all.
-	public static final int LOCAL_CREATIVE_NUMBER_OF_TREES_TO_PROCESS = -1;
 
 
 	public static final int FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT = 3;
@@ -93,6 +107,12 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that are less likely to be changed.
 
+	/**
+	 * Use the baseline gap measure (true), or the pasta-based gap measure (false).
+	 * Should be false, except for specific experiments.
+	 */
+	public static final boolean GAP_BASELINE = false;
+	
 	public static final long RANDOM_SEED_FOR_GAUSSIAN_GENERATOR_FOR_REASONABLE_GUESS_TRAINING = 0L;
 	
 	public static final boolean USE_NUMBER_NORMALIZER = true;

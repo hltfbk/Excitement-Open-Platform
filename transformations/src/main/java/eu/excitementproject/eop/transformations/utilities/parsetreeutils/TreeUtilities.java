@@ -22,7 +22,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.view
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.lap.biu.PreprocessUtilities;
-import eu.excitementproject.eop.lap.biu.en.parser.minipar.AbstractMiniparParser;
+import eu.excitementproject.eop.lap.biu.en.parser.AbstractBasicParser;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.ExtendedNodeConstructor;
@@ -291,10 +291,16 @@ public class TreeUtilities
 	
 	public static ExtendedNode addArtificialRoot(ExtendedNode tree)
 	{
-		ExtendedInfo rootInfo = new ExtendedInfo(AbstractMiniparParser.ROOT_NODE_ID,new DefaultNodeInfo(null,null,0,null,new DefaultSyntacticInfo(null)),new DefaultEdgeInfo(null),ExtendedNodeConstructor.EMPTY_ADDITIONAL_NODE_INFORMATION);
-		ExtendedNode root = new ExtendedNode(rootInfo);
+		ExtendedNode root = createNodeOfArtificialRoot();
 		root.addChild(tree);
 		return root;
+	}
+	
+	public static ExtendedNode createNodeOfArtificialRoot()
+	{
+		ExtendedInfo rootInfo = new ExtendedInfo(AbstractBasicParser.ROOT_NODE_ID,new DefaultNodeInfo(null,null,0,null,new DefaultSyntacticInfo(null)),new DefaultEdgeInfo(null),ExtendedNodeConstructor.EMPTY_ADDITIONAL_NODE_INFORMATION);
+		ExtendedNode root = new ExtendedNode(rootInfo);
+		return root;		
 	}
 	
 	
@@ -368,10 +374,38 @@ public class TreeUtilities
 			}
 		}
 		return ret;
-		
-		
-		
 	}
+	
+	
+	public static <T, S extends AbstractNode<T,S>> void addItself(S tree, ValueSetMap<S, S> mapOriginalToGenerated)
+	{
+		for (S node : TreeIterator.iterableTree(tree))
+		{
+			mapOriginalToGenerated.put(node, node);
+		}
+	}
+	
+	public static <T, S extends AbstractNode<T,S>> void addThemselves(Iterable<S> trees, S butNot, ValueSetMap<S, S> mapOriginalToGenerated)
+	{
+		for (S tree : trees)
+		{
+			if (tree!=butNot)
+			{
+				addItself(tree,mapOriginalToGenerated);
+			}
+		}
+	}
+	
+	public static <I extends Info, S extends AbstractNode<I,S>> Set<String> lemmasLowerCaseOfNodes(Iterable<S> nodes)
+	{
+		Set<String> ret = new LinkedHashSet<>();
+		for (S node : nodes)
+		{
+			ret.add(InfoGetFields.getLemma(node.getInfo()).toLowerCase());
+		}
+		return ret;
+	}
+
 	
 //	@Deprecated
 //	public static double getHeuristicGap(TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree, OperationsEnvironment operationsEnvironment)

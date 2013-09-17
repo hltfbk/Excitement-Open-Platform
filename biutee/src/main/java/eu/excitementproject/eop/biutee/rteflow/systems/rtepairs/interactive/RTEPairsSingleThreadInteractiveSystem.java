@@ -115,7 +115,7 @@ public class RTEPairsSingleThreadInteractiveSystem extends RTEPairsBaseSystem
 		updateFeatureVectorStructure(parameterParser);
 		
 		logger.info("creating OperationsScript");
-		script = new ScriptFactory(this.configurationFile,this.teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+		script = new ScriptFactory(this.configurationFile,this.teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 		try
 		{
 			script.init();

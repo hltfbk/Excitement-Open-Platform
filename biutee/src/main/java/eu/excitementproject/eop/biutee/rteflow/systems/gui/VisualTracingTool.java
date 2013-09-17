@@ -497,8 +497,8 @@ public class VisualTracingTool
 				Exception exception = systemCreator.getException();
 				if (exception != null)
 				{
-					ExceptionUtil.logException(exception, logger);
 					exception.printStackTrace(System.out);
+					ExceptionUtil.logException(exception, logger);
 				}
 				System.exit(0);
 			}

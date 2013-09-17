@@ -57,55 +57,55 @@ public class PennPartOfSpeech extends PartOfSpeech
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.CARD, PennPosTag.CD);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.DT);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.EX);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.FW);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.OTHER, PennPosTag.FW);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.IN);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, PennPosTag.JJ);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, PennPosTag.JJR);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, PennPosTag.JJS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.LS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.MD);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NN, PennPosTag.NN);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NNP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NNPS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NN, PennPosTag.NNS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NPS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.PDT);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.POS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP$);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PRP$);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PRP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RB);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RBR);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.OTHER, PennPosTag.LS); // letters and numbers when they are used to identify items in a list.
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.MD); // All verbs that do not take an "s" in third person singular present: can, could, (dare), may, might, must, ought, shall, should, will, would
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NN, PennPosTag.NN); // Noun, singular or mass
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NNP); // Proper noun, singular
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NNPS); // Proper noun, plural
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NN, PennPosTag.NNS); // Noun, plural
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NP); // TreeTagger NP==>NNP
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.NP, PennPosTag.NPS); // TreeTagger NPS==>NNPS
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.PDT); // *such* a good time. *all* the girls.
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.OTHER, PennPosTag.POS); // Possessive ending: John/NNP 's/POS idea.
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP$); // TreeTagger PP$==>PRP$
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PP); // TreeTagger PP==>PRP
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PRP$); // Possessive pronoun. my, your, one's. Note that "mine", "ours" etc. are tagged as personal pronoun (PRP).
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.PRP); // Personal pronoun. I, you, etc.
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RB); // Adverb
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RBR); // Adverb comparative. We are farther/RBR from home.
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.RBS);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.RP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.SENT);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.RP); // RP is particle. Bring the girls right up/RP. "off" in "badly off", "better off", etc. "to run it up/RP".
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.SENT); // TreeTagger. No parallel tag in Penn tags. In Penn, the end of sentence is given "as is" (the tag of "." is ".").
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.SYM);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.TO);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.UH);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PP, PennPosTag.TO); // From Penn tag guide: "To is tagged TO, regardless of whether it is a preposition or an infinitival marker"
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.O, PennPosTag.UH); // Oh, Please, uh, well, yes. "My" in "My, what a gorgeous day."
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VB);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBD);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBG);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBN);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBP);
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VBZ);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VH);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHD);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHG);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHN);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHZ);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VV);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVD);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVG);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVN);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVZ);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.WDT);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.WP$);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.WP);
-		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.WRB);
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VH); // TreeTagger VH==>VB
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHD); // TreeTagger VHD==>VBD
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHG); // TreeTagger VHG==>VBG
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHN); // TreeTagger VHN==>VBN
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHP); // TreeTagger VHP==>VBP
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VHZ); // TreeTagger VHZ==>VBZ
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VV); // TreeTagger VV==>VB
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVD); // TreeTagger VVD==>VBD
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVG); // TreeTagger VVG==>VBG
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVN); // TreeTagger VVN==>VBN
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVP); // TreeTagger VVP==>VBP
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.V, PennPosTag.VVZ); // TreeTagger VVZ==>VBZ
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, PennPosTag.WDT); // "Which" and "that" when used as a relative pronoun. "What/WDT kind do you want?", "Which one do you like better?" 
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.WP$); // "whose"
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, PennPosTag.WP); // "what", "who", "whom". "Tell me what/WP you like to eat."
+		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.ADV, PennPosTag.WRB); // "how", "where", "why". "when" if it is used as termporal sense. In the sense of "if" it is "IN".
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, PennPosTag.PUNC);	// not a Penn Treebank pos-tag
 		PENN_TO_CANONICAL_MAP.put(CanonicalPosTag.OTHER, PennPosTag.SYM1);	// symbols not included in Penn Treebank SYM
 

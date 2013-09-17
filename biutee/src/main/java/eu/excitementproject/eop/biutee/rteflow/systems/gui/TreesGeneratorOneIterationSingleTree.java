@@ -10,6 +10,8 @@ import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.InitializationTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.old_beam_search.EvaluationFunction;
 import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
@@ -164,6 +166,16 @@ public class TreesGeneratorOneIterationSingleTree extends InitializationTextTree
 	public TreeAndParentMap<ExtendedInfo, ExtendedNode> getHypothesis()
 	{
 		return this.operationsEnvironment.getHypothesis();
+	}
+	
+	public GapToolInstances<ExtendedInfo, ExtendedNode> getGapToolInstances()
+	{
+		return this.gapTools;
+	}
+	
+	public GapEnvironment<ExtendedInfo, ExtendedNode> getGapEnvironment()
+	{
+		return this.gapEnvironment;
 	}
 	
 	

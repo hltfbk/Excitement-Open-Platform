@@ -76,6 +76,7 @@ public class DemoParseAndDisplay
 		nomlexBuilder.build();
 		
 		System.out.println();
+		System.out.println("Type \"exit\" to exit.");
 		System.out.println("Ready.");
 		
 		BasicParser parser = new EasyFirstParser(host,port,posTaggerFileName);
@@ -83,7 +84,9 @@ public class DemoParseAndDisplay
 		try
 		{
 			PredicateArgumentStructureBuilderFactory<Info, BasicNode> builderFactory =
-					new PredicateArgumentStructureBuilderFactory<Info, BasicNode>(nomlexBuilder.getNomlexMap()); 
+					new PredicateArgumentStructureBuilderFactory<Info, BasicNode>(nomlexBuilder.getNomlexMap()
+							//,PastaMode.EXPANDED
+							); 
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			System.out.println("Please enter a sentence:");

@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.transformations.operations.rules.distsim;
+package eu.excitementproject.eop.core.component.syntacticknowledge.utilities;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -18,8 +18,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.PARSER;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
 
 
 /**
@@ -90,10 +90,11 @@ public class TemplateToTree
 	}
 
 
-	public TemplateToTree(String template)
+	public TemplateToTree(String template, PARSER parser)
 	{
 		super();
 		this.template = template;
+		this.parser = parser;
 	}
 
 	public void createTree() throws TemplateToTreeException
@@ -409,7 +410,7 @@ public class TemplateToTree
 		String lemma = components[1];
 		String[] lemmaComponents = lemma.split("\\s+");
 		BasicNode ret=null;
-		if (ParserSpecificConfigurations.getParserMode()==PARSER.MINIPAR) {
+		if (parser.equals(PARSER.MINIPAR)) {
 			NodeInfo nodeInfo = fromStringNonVariable(info);
 			ret = new BasicNode(new DefaultInfo(DEFAULT_ID, nodeInfo, relationToParent));
 		}
@@ -440,6 +441,8 @@ public class TemplateToTree
 	}
 
 	private String template;
+	private final PARSER parser;
+	
 	private BasicNode tree = null;
 	private BasicNode leftVariableNode = null;
 	private BasicNode rightVariableNode = null;

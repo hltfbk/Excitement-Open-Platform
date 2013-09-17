@@ -82,7 +82,7 @@ public class PerformFactoryFactory
 		}
 		case PARSER_ANTECEDENT_SUBSTITUTION:
 		{
-			return new SingleItemList<PerformFactory<? extends Specification>>(new SubstitutionParserAntecedentPerformFactory());
+			return new SingleItemList<PerformFactory<? extends Specification>>(new SubstitutionParserAntecedentPerformFactory(operationsEnvironment.getParser()));
 		}
 		case COREFERENCE_SUBSTITUTION:
 		{
@@ -90,7 +90,7 @@ public class PerformFactoryFactory
 		}
 		case IS_A_COREFERENCE_CONSTRUCTION:
 		{
-			return new SingleItemList<PerformFactory<? extends Specification>>(new IsA_ByCoreferencePerformFactory(operationsEnvironment.getCoreferenceInformation()));
+			return new SingleItemList<PerformFactory<? extends Specification>>(new IsA_ByCoreferencePerformFactory(operationsEnvironment.getCoreferenceInformation(),operationsEnvironment.getParser()));
 		}
 		case LEXICAL_RULE_BY_LEMMA_AND_POS_APPLICATION:
 		{

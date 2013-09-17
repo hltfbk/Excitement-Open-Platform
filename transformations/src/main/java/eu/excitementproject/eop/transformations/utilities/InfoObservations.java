@@ -30,6 +30,7 @@ public class InfoObservations
 	public static final String MINIPAR_LEX_MOD_RELATION = "lex-mod";
 	public static final Set<String> MINIPAR_NON_WORDS_LEMMAS;
 	public static final Set<String> NON_CONTENT_VERBS;
+	public static final Set<String> NON_CONTENT_VERBS_VERBS_ONLY;
 	public static final Set<SimplerCanonicalPosTag> CONTENT_CANONICAL_PART_OF_SPEECH;
 	public static final Set<String> PRONOUNS;
 	public static final Set<String> NON_CONTENT_WORDS;
@@ -44,6 +45,9 @@ public class InfoObservations
 		NON_CONTENT_VERBS.add("be");
 		NON_CONTENT_VERBS.add("have");
 		
+		NON_CONTENT_VERBS_VERBS_ONLY = new LinkedHashSet<String>();
+		NON_CONTENT_VERBS_VERBS_ONLY.add("will");
+		NON_CONTENT_VERBS_VERBS_ONLY.add("shall");
 		
 		CONTENT_CANONICAL_PART_OF_SPEECH = new LinkedHashSet<SimplerCanonicalPosTag>();
 		CONTENT_CANONICAL_PART_OF_SPEECH.add(SimplerCanonicalPosTag.NOUN);
@@ -116,7 +120,10 @@ public class InfoObservations
 				String lemma = InfoGetFields.getLemma(info);
 				if (!StringUtil.setContainsIgnoreCase(NON_CONTENT_VERBS, lemma))
 				{
-					ret = true;
+					if (!StringUtil.setContainsIgnoreCase(NON_CONTENT_VERBS_VERBS_ONLY, lemma))
+					{
+						ret = true;
+					}
 				}
 			}
 		}
@@ -135,7 +142,11 @@ public class InfoObservations
 				SimplerCanonicalPosTag canonicalPos = SimplerCanonicalPosTag.OTHER;
 				if (posObject!=null)
 					canonicalPos=simplerPos(posObject.getCanonicalPosTag());
-				if (CONTENT_CANONICAL_PART_OF_SPEECH.contains(canonicalPos))
+				if (SimplerCanonicalPosTag.VERB.equals(canonicalPos))
+				{
+					return infoIsContentVerb(info);
+				}
+				else if (CONTENT_CANONICAL_PART_OF_SPEECH.contains(canonicalPos))
 				{
 					ret = true;
 				}

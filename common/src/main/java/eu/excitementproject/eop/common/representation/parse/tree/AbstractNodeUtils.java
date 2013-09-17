@@ -2,6 +2,7 @@ package eu.excitementproject.eop.common.representation.parse.tree;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -59,6 +60,18 @@ public class AbstractNodeUtils
 		return ret;
 	}
 	
+	public static <T,S extends AbstractNode<T,S>> int treeSize(S tree)
+	{
+		int size = 0;
+		Iterator<S> iterator = new TreeIterator<>(tree);
+		while (iterator.hasNext())
+		{
+			iterator.next();
+			++size;
+		}
+		return size;
+	}
+	
 	/**
 	 * Gets a parse tree, and returns a set that contains all the nodes in that tree.
 	 * <BR>
@@ -79,7 +92,6 @@ public class AbstractNodeUtils
 	public static <T> HashSet<AbstractNode<T,?>> weakTreeToSet(AbstractNode<T,?> root)
 	{
 		return weakTreeToSet(root,new LinkedHashSet<AbstractNode<T,?>>());
-		
 	}
 
 	/**
@@ -342,6 +354,19 @@ public class AbstractNodeUtils
 	 */
 	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node, NodeString<I> str, String indent) {
 		return getIndentedStringSubtree(node, str, indent, "").toString().trim();
+	}
+	
+	/**
+	 * Returns an multi-line indented string representation of the tree.
+	 * Uses {@link SimpleNodeString) for printing each node.
+	 * @param node
+	 * @param indent indentation string for each level
+	 * @param prefix indentation string for top level
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static <I extends Info> String getIndentedString(AbstractNode<I,?> node, String indent, String prefix) {
+		return getIndentedStringSubtree(node, (NodeString<I>) new SimpleNodeString(), indent, prefix).toString().trim();
 	}
 	
 	/**

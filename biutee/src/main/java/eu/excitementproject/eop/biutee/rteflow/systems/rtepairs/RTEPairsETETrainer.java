@@ -66,6 +66,7 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 	public RTEPairsETETrainer(String configurationFileName, String configurationModuleName)
 	{
 		super(configurationFileName, configurationModuleName);
+		if (null==logger){logger = Logger.getLogger(RTEPairsETETrainer.class);}
 	}
 	
 
@@ -100,6 +101,5 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 		return RTEPairsETEFactory.createResultsFactory();
 	}
 
-	@SuppressWarnings("unused")
 	private static Logger logger = null;
 }

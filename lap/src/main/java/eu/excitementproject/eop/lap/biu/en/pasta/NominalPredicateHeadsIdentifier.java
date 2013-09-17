@@ -2,6 +2,7 @@ package eu.excitementproject.eop.lap.biu.en.pasta;
 
 
 import java.util.LinkedHashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
@@ -13,6 +14,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
 import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.Nominalization;
+import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.NomlexMapBuilder;
 
 /**
  * Finds all the nominal-predicates in a given parse tree.
@@ -49,7 +51,7 @@ public class NominalPredicateHeadsIdentifier<I extends Info, S extends AbstractN
 		{
 			if (SimplerCanonicalPosTag.NOUN.equals(SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(node.getInfo()))))
 			{
-				if (nomlexMap.keySet().contains(InfoGetFields.getLemma(node.getInfo()).trim().toLowerCase()))
+				if (nomlexMap.keySet().contains(InfoGetFields.getLemma(node.getInfo()).trim().toLowerCase(Locale.ENGLISH)))
 				{
 					predicateHeads.add(node);
 				}

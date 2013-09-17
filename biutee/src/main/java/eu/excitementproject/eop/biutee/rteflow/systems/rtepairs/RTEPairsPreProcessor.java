@@ -48,6 +48,7 @@ import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionExcepti
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -87,7 +88,6 @@ public class RTEPairsPreProcessor
 	{
 		new SystemMain()
 		{
-			
 			@Override
 			protected void run(String[] args) throws BiuteeException
 			{
@@ -120,6 +120,7 @@ public class RTEPairsPreProcessor
 	
 	public RTEPairsPreProcessor(String configurationFileName,String trainTestEnum) throws TeEngineMlException
 	{
+		if (null==logger){logger = Logger.getLogger(RTEPairsPreProcessor.class);}
 		this.configurationFileName = configurationFileName;
 		
 		if (trainTestEnum!=null)
@@ -129,9 +130,12 @@ public class RTEPairsPreProcessor
 		}
 		else
 		{
+			GlobalMessages.globalWarn("No train/test flag is provided (in command line). The correct method to run this class is by providing this flag (in addition to the configuration file).\n" +
+					"The flag's value should be: {"+Utils.getEnumValues(TrainTestEnum.class)+"}", logger);
 			this.trainOrTest = null;
 		}
 	}
+	
 	
 	public void preprocess() throws ConfigurationFileDuplicateKeyException, ConfigurationException, RTEMainReaderException, TeEngineMlException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, FileNotFoundException, IOException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException
 	{

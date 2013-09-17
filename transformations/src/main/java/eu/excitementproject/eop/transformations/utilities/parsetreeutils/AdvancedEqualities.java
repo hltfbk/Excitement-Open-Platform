@@ -10,6 +10,7 @@ import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.Utils;
@@ -49,6 +50,12 @@ public class AdvancedEqualities
 {
 	public static boolean USE_ADVANCED_EQUALITIES = Constants.USE_ADVANCED_EQUALITIES;
 	
+	/**
+	 * Returns <tt>true</tt> if lemma and pos are equal.
+	 * @param textNode
+	 * @param hypothesisNode
+	 * @return
+	 */
 	public static boolean nodesSimilarIgnoreAnnotations(ExtendedInfo textNode, ExtendedInfo hypothesisNode)
 	{
 		boolean ret = false;
@@ -95,6 +102,14 @@ public class AdvancedEqualities
 		return ret;
 	}
 	
+	/**
+	 * Returns true if lemma, pos and truth-value are equal.<BR>
+	 * If Constants.REQUIRE_PREDICATE_TRUTH_EQUALITY is false - then only requires
+	 * lemma and pos to be equal.
+	 * @param textNode
+	 * @param hypothesisNode
+	 * @return
+	 */
 	public static boolean nodesSimilarContents(ExtendedInfo textNode, ExtendedInfo hypothesisNode)
 	{
 		boolean ret = false;
@@ -113,9 +128,7 @@ public class AdvancedEqualities
 			}
 		}
 		
-
 		return ret;
-
 	}
 	
 
@@ -124,7 +137,7 @@ public class AdvancedEqualities
 	/**
 	 * Nodes are equal if:
 	 * <OL>
-	 * <LI>They have the same lemma and part-of-speech</LI>
+	 * <LI>They have the same lemma, part-of-speech and truth-value</LI>
 	 * <LI>They have the same lemma of "content ancestor".</LI>
 	 * </OL>
 	 * "content ancestor" of a node <tt>n</tt> is a node <tt>m</tt> that:
@@ -148,7 +161,7 @@ public class AdvancedEqualities
 	public static boolean nodesEqual(ExtendedInfo textNode, ExtendedInfo hypothesisNode)
 	{
 		boolean ret = false;
-		if (nodesSimilarContents(textNode, hypothesisNode))
+		if (nodesSimilarContents(textNode, hypothesisNode)) // i.e., have the same lemma,pos and truth-value
 		{
 			ExtendedInfo hypothesisContentAncestor = ExtendedInfoGetFields.getContentAncestor(hypothesisNode);
 			ExtendedInfo textContentAncestor = ExtendedInfoGetFields.getContentAncestor(textNode);
@@ -164,11 +177,11 @@ public class AdvancedEqualities
 			{
 				String textAncestorLemma = InfoGetFields.getLemma(textContentAncestor);
 				String hypothesisAncestorLemma = InfoGetFields.getLemma(hypothesisContentAncestor);
-				if (lemmasEqual(textAncestorLemma, hypothesisAncestorLemma))
+				if (lemmasEqual(textAncestorLemma, hypothesisAncestorLemma)) // content ancestors have equal lemmas
 				{
 					if (Constants.REQUIRE_PREDICATE_TRUTH_EQUALITY)
 					{
-						if (nodesAnnotationMatch(textContentAncestor,hypothesisContentAncestor))
+						if (nodesAnnotationMatch(textContentAncestor,hypothesisContentAncestor)) // and equal truth-values
 						{
 							ret = true;
 						}
@@ -199,13 +212,11 @@ public class AdvancedEqualities
 	public static Set<ExtendedNode> findMissingNodes(TreeAndParentMap<ExtendedInfo, ExtendedNode> text,TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 	{
 		Set<ExtendedNode> ret = new LinkedHashSet<ExtendedNode>();
-		Set<ExtendedNode> textNodes = AbstractNodeUtils.treeToLinkedHashSet(text.getTree());
-		Set<ExtendedNode> hypothesisNodes = AbstractNodeUtils.treeToLinkedHashSet(hypothesis.getTree());
 		
-		for (ExtendedNode hypothesisNode : hypothesisNodes)
+		for (ExtendedNode hypothesisNode : TreeIterator.iterableTree(hypothesis.getTree()))
 		{
 			boolean found = false;
-			for (ExtendedNode textNode : textNodes)
+			for (ExtendedNode textNode : TreeIterator.iterableTree(text.getTree()))
 			{
 				if (nodesEqual(textNode.getInfo(),hypothesisNode.getInfo()))
 				{
@@ -295,6 +306,7 @@ public class AdvancedEqualities
 		return ret;
 	}
 	
+	@Deprecated
 	public static ValueSetMap<ExtendedNode, ExtendedNode> findMatchingNodes(ExtendedNode textTree, ExtendedNode hypothesisTree)
 	{
 		ValueSetMap<ExtendedNode, ExtendedNode> ret = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
@@ -314,6 +326,7 @@ public class AdvancedEqualities
 		return ret;
 	}
 
+	@Deprecated
 	public static ValueSetMap<ExtendedNode, ExtendedNode> findSimilarContentNodes(ExtendedNode textTree, ExtendedNode hypothesisTree)
 	{
 		ValueSetMap<ExtendedNode, ExtendedNode> ret = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();
@@ -334,6 +347,7 @@ public class AdvancedEqualities
 	}
 
 	
+	@Deprecated
 	public static boolean treesMatch(TreeAndParentMap<ExtendedInfo, ExtendedNode> text, TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 	{
 		return (findMissingRelations(text,hypothesis).size()==0);
@@ -349,6 +363,7 @@ public class AdvancedEqualities
 	 * @param hypothesis
 	 * @return Matching from the hypothesis to the text
 	 */
+	@Deprecated
 	public static ValueSetMap<ExtendedNode, ExtendedNode> findMatchingRelations(TreeAndParentMap<ExtendedInfo, ExtendedNode> text, TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 	{
 		ValueSetMap<ExtendedNode, ExtendedNode> matching = new SimpleValueSetMap<ExtendedNode, ExtendedNode>();

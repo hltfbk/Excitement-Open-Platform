@@ -14,6 +14,7 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.biu.uima.ae.coreference.ArkrefCoreferenceResolverAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.ner.StanfordNamedEntityRecognizerAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.parser.EasyFirstParserAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
@@ -68,6 +69,7 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 					EasyFirstParserAE.PARAM_HOST , parserHost,
 					EasyFirstParserAE.PARAM_PORT , parserPort
 					);
+			AnalysisEngineDescription coref =      createPrimitiveDescription(ArkrefCoreferenceResolverAE.class);
 
 
 			// Using AggregateBuilder to assign views 
@@ -77,6 +79,7 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 			builder.add(tagger,     "_InitialView", viewName); 
 			builder.add(ner,        "_InitialView", viewName); 
 			builder.add(parser,     "_InitialView", viewName); 
+			builder.add(coref,      "_InitialView", viewName); 
 			
 			// Create and run aggregate engine
 			AnalysisEngine ae = builder.createAggregate(); 

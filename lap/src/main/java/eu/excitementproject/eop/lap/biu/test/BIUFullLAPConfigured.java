@@ -13,9 +13,9 @@ import eu.excitementproject.eop.lap.biu.uima.BIUFullLAP;
 public class BIUFullLAPConfigured extends BIUFullLAP {
 
 	public BIUFullLAPConfigured() throws LAPException {
-		super(	"../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger",
-				"../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz",
-				"localhost",
-				8080);
+		super(	BiuTestParams.MAXENT_POS_TAGGER_MODEL_FILE,
+				BiuTestParams.STANFORD_NER_CLASSIFIER_PATH,
+				BiuTestParams.EASYFIRST_HOST,
+				BiuTestParams.EASYFIRST_PORT);
 	}
 }

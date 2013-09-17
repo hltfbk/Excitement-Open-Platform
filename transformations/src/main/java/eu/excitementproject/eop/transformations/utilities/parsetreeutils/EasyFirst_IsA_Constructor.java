@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.transformations.utilities.parsetreeutils;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -59,14 +60,8 @@ public class EasyFirst_IsA_Constructor
 						AdditionalInformationServices.emptyInformation()));
 		entity2.addChild(punctNode);
 		
-		if (TreeUtilities.isArtificialRoot(entity2))
-		{
-			generatedTree = entity2;
-		}
-		else
-		{
-			generatedTree = TreeUtilities.addArtificialRoot(entity2);
-		}
+		generatedTree = entity2;
+		
 		affectedNodes.add(beNode);
 		affectedNodes.add(punctNode);
 		affectedNodes.add(entity1);
