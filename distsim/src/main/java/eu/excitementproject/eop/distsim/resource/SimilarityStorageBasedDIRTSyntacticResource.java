@@ -19,7 +19,6 @@ import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTree;
 import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.BasicMatchCriteria;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultMatchCriteria;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -28,6 +27,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherEx
 import eu.excitementproject.eop.common.representation.parse.tree.match.pathmatcher.PathAllEmbeddedMatcher;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.BasicMatchCriteria;
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.LexicalUnit;
