@@ -11,6 +11,7 @@ import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenc
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.datastructures.CanonicalLemmaAndPos;
@@ -21,7 +22,6 @@ import eu.excitementproject.eop.transformations.operations.rules.BagOfRulesRuleB
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 
 /**
  * A collection of several objects required to generate new trees from
@@ -92,7 +92,7 @@ public class OperationsEnvironment
 			boolean richInformationInTreeHistory,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
 			ImmutableSet<String> stopWords,
-			ParserSpecificConfigurations.PARSER parser)
+			PARSER parser)
 	{
 		super();
 		this.featureUpdate = featureUpdate;
@@ -181,7 +181,7 @@ public class OperationsEnvironment
 	{
 		return stopWords;
 	}
-	public ParserSpecificConfigurations.PARSER getParser()
+	public PARSER getParser()
 	{
 		return parser;
 	}
@@ -212,5 +212,5 @@ public class OperationsEnvironment
 	private final boolean richInformationInTreeHistory;
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
-	private final ParserSpecificConfigurations.PARSER parser;
+	private final PARSER parser;
 }

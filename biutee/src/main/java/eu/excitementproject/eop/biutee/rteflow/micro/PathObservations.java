@@ -8,11 +8,11 @@ import eu.excitementproject.eop.biutee.rteflow.macro.FeatureUpdate;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.specifications.MoveNodeSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.InfoObservations;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.PARSER;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.PathInTree;
 

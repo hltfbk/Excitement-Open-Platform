@@ -23,6 +23,9 @@ import eu.excitementproject.eop.common.representation.parse.tree.match.Matcher;
 import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTree;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
 import eu.excitementproject.eop.lap.biu.en.parser.EnglishSingleTreeParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
@@ -31,13 +34,10 @@ import eu.excitementproject.eop.transformations.operations.rules.DynamicRuleBase
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.rules.distsim.DistSimParameters;
 import eu.excitementproject.eop.transformations.operations.rules.distsim.DistSimRuleBase;
-import eu.excitementproject.eop.transformations.operations.rules.distsim.TemplateToTree;
-import eu.excitementproject.eop.transformations.operations.rules.distsim.TemplateToTreeException;
 import eu.excitementproject.eop.transformations.operations.specifications.RuleSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
@@ -62,7 +62,7 @@ public class DynRuleBaseTester
 	public DynRuleBaseTester(String[] args)
 	{
 		this.miniparParameter = args[0];
-		this.parserMode = ParserSpecificConfigurations.PARSER.valueOf(args[1]);
+		this.parserMode = PARSER.valueOf(args[1]);
 	}
 	
 	public void run() throws SQLException, RuleBaseException, TeEngineMlException, ParserRunException, TreeStringGeneratorException, TemplateToTreeException, MatcherException, InterruptedException, TreeAndParentMapException, OperationException
@@ -182,7 +182,7 @@ public class DynRuleBaseTester
 	
 	
 
-	private final ParserSpecificConfigurations.PARSER parserMode;
+	private final PARSER parserMode;
 	private DynamicRuleBase<Info, BasicNode> ruleBase;
 	private String ruleBaseName;
 	private Set<RuleSpecification> specs;

@@ -36,16 +36,16 @@ import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTree;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.distsim.DistSimParameters;
-import eu.excitementproject.eop.transformations.operations.rules.distsim.TemplateToTree;
-import eu.excitementproject.eop.transformations.operations.rules.distsim.TemplateToTreeException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames;
 
@@ -70,7 +70,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 	 * @return
 	 * @throws RuleBaseException
 	 */
-	public static DirtDBRuleBase fromConfigurationParams(String ruleBaseName,ConfigurationParams params, final ParserSpecificConfigurations.PARSER parser) throws RuleBaseException
+	public static DirtDBRuleBase fromConfigurationParams(String ruleBaseName,ConfigurationParams params, final PARSER parser) throws RuleBaseException
 	{
 		try
 		{
@@ -115,7 +115,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 	}
 	
 	public DirtDBRuleBase(Connection connection, String ruleBaseName,
-			DistSimParameters dbParameters, ParserSpecificConfigurations.PARSER parser) throws RuleBaseException
+			DistSimParameters dbParameters, PARSER parser) throws RuleBaseException
 	{
 		super();
 		this.parser = parser;
@@ -153,7 +153,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 	}
 	
 	@SuppressWarnings("unchecked")
-	public DirtDBRuleBase(File serFileWholeDB, String ruleBaseName, ParserSpecificConfigurations.PARSER parser) throws RuleBaseException
+	public DirtDBRuleBase(File serFileWholeDB, String ruleBaseName, PARSER parser) throws RuleBaseException
 	{
 		this.parser = parser;
 		
@@ -811,7 +811,7 @@ public class DirtDBRuleBase implements RuleBase<Info,BasicNode>
 
 	/////////////////////// Fields //////////////////////////
 
-	protected final ParserSpecificConfigurations.PARSER parser;
+	protected final PARSER parser;
 	protected PreparedStatement statementIdForTemplate = null;
 	protected PreparedStatement statementRuleForId = null;
 	protected PreparedStatement statementRightElementIdForGivenLeftElementId = null;

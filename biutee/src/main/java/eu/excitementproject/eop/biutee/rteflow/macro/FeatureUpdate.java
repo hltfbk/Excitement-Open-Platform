@@ -20,6 +20,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ConfidenceChainItem;
 import eu.excitementproject.eop.transformations.operations.specifications.InsertNodeSpecification;
 import eu.excitementproject.eop.transformations.operations.specifications.MoveNodeSpecification;
@@ -32,7 +33,6 @@ import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.annotations.PredTruth;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.InfoObservations;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.AdvancedEqualities;
@@ -66,7 +66,7 @@ public class FeatureUpdate
 {
 	///////////////// PUBLIC /////////////////
 	
-	public FeatureUpdate(Set<String> pairLemmas, FeatureVectorStructureOrganizer featureVectorStructure, UnigramProbabilityEstimation unigramProbabilityEstimation, ParserSpecificConfigurations.PARSER parser) throws TeEngineMlException //  LinkedHashSet<String> ruleBasesNames, ImmutableList<String> customFeatures
+	public FeatureUpdate(Set<String> pairLemmas, FeatureVectorStructureOrganizer featureVectorStructure, UnigramProbabilityEstimation unigramProbabilityEstimation, PARSER parser) throws TeEngineMlException //  LinkedHashSet<String> ruleBasesNames, ImmutableList<String> customFeatures
 	{
 		this.pairLemmas = pairLemmas;
 		
@@ -612,6 +612,6 @@ public class FeatureUpdate
 	private ImmutableMap<String, Integer> imMapRuleBaseNameToFeatureIndex = null;
 	private ImmutableMap<String, Integer> imMapCustomFeatureToFeatureIndex;
 	private UnigramProbabilityEstimation unigramProbabilityEstimation = null;
-	private final ParserSpecificConfigurations.PARSER parser;
+	private final PARSER parser;
 	
 }

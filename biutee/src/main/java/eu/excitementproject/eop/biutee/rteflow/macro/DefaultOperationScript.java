@@ -22,10 +22,10 @@ import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelope;
 import eu.excitementproject.eop.transformations.utilities.Constants;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 
 
 /**
@@ -94,7 +94,7 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 {
 	public static final int NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE = BiuteeConstants.NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE_IN_DEFAULT_OPERATION_SCRIPT;
 
-	public DefaultOperationScript(ConfigurationFile configurationFile, ParserSpecificConfigurations.PARSER parser, PluginRegistry pluginRegistry, boolean hybridGapMode)
+	public DefaultOperationScript(ConfigurationFile configurationFile, PARSER parser, PluginRegistry pluginRegistry, boolean hybridGapMode)
 	{
 		super(configurationFile,parser,pluginRegistry);
 		this.hybridGapMode = hybridGapMode;

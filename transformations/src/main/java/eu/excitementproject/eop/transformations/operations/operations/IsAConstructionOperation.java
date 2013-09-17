@@ -4,6 +4,7 @@ import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.datastructures.FromBidirectionalMapValueSetMap;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.IsASpecification;
@@ -11,7 +12,6 @@ import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.ExtendedNodeConstructor;
 import eu.excitementproject.eop.transformations.utilities.Constants;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.EasyFirst_IsA_Constructor;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreePatcher;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
@@ -33,7 +33,7 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesisTree,
 			IsASpecification isASpecification,
-			ParserSpecificConfigurations.PARSER parser)
+			PARSER parser)
 			throws OperationException
 	{
 		super(textTree, hypothesisTree);
@@ -45,7 +45,7 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 	@Override
 	protected void generateTheTree() throws OperationException
 	{
-		if (!parser.equals(ParserSpecificConfigurations.PARSER.EASYFIRST))
+		if (!parser.equals(PARSER.EASYFIRST))
 		{
 			throw new OperationException("IsAConstructionOperation is not implemented for minipar.");
 		}
@@ -100,5 +100,5 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 
 
 	private IsASpecification isASpecification;
-	private ParserSpecificConfigurations.PARSER parser;
+	private PARSER parser;
 }

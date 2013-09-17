@@ -4,6 +4,7 @@ import eu.excitementproject.eop.biutee.operations.updater.UpdaterForSubstitution
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.finders.Finder;
 import eu.excitementproject.eop.transformations.operations.finders.SubstitutionCorefByParserAntecedentFinder;
@@ -15,8 +16,6 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelop
 import eu.excitementproject.eop.transformations.operations.specifications.SubstitutionSubtreeSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.PARSER;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -91,6 +90,6 @@ public class SubstitutionParserAntecedentPerformFactory extends PerformFactory<S
 		return updaterForSubstitutionParserAntecedent;
 	}
 
-	private final ParserSpecificConfigurations.PARSER parser;
+	private final PARSER parser;
 	private static UpdaterForSubstitutionParserAntecedent updaterForSubstitutionParserAntecedent = new UpdaterForSubstitutionParserAntecedent();
 }

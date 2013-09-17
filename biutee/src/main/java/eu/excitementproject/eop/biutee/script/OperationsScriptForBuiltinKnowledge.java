@@ -33,6 +33,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.builtin_knowledge.LexicalResourcesFactory;
@@ -57,7 +58,6 @@ import eu.excitementproject.eop.transformations.operations.rules.manual.FromText
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames;
 
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.PARSER;
 
 /**
  * Creates and initializes all the built-in knowledge resources.

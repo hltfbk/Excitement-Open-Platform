@@ -16,6 +16,7 @@ import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.utilities.MLELidstonSmoothedUnigramProbabilityEstimation;
 import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
@@ -30,11 +31,11 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
  */
 public class SystemUtils
 {
-	public static ParserSpecificConfigurations.PARSER setParserMode(ConfigurationParams params) throws ConfigurationException, TeEngineMlException
+	public static PARSER setParserMode(ConfigurationParams params) throws ConfigurationException, TeEngineMlException
 	{
 		if (params.containsKey(ConfigurationParametersNames.RTE_ENGINE_PARSER_PARAMETER_NAME))
 		{
-			ParserSpecificConfigurations.PARSER parser = params.getEnum(ParserSpecificConfigurations.PARSER.class, ConfigurationParametersNames.RTE_ENGINE_PARSER_PARAMETER_NAME);
+			PARSER parser = params.getEnum(PARSER.class, ConfigurationParametersNames.RTE_ENGINE_PARSER_PARAMETER_NAME);
 			logger.info("Setting parser to "+parser.name());
 			ParserSpecificConfigurations.changeParser(parser);
 			return parser;

@@ -18,13 +18,13 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;
 import eu.excitementproject.eop.transformations.operations.rules.DynamicRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.distsim.DistSimRuleBaseManager;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;
 
@@ -84,7 +84,7 @@ public class DemoDynRuleBase
 	{
 		try
 		{
-			this.parser = ParserSpecificConfigurations.PARSER.valueOf(args[1]);
+			this.parser = PARSER.valueOf(args[1]);
 			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			initRuleBase();
@@ -153,5 +153,5 @@ public class DemoDynRuleBase
 	private DistSimRuleBaseManager manager;
 	private DynamicRuleBase<Info, BasicNode> ruleBase;
 	private String[] args;
-	private ParserSpecificConfigurations.PARSER parser=null;
+	private PARSER parser=null;
 }

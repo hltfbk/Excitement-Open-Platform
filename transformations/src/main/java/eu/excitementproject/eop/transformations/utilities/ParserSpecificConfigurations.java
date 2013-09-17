@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.transformations.utilities;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 //import eu.excitementproject.eop.transformations.rteflow.systems.SystemInitialization;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 
 /**
  * 
@@ -27,14 +28,12 @@ import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 @ParserSpecific({"minipar","easyfirst"})
 public class ParserSpecificConfigurations
 {
-	
 	// TODO (comment by Asher Stern):
-	/// This enum, the flag and the static function changeParser
+	/// The enum PARSER, the flag and the static function changeParser
 	// are far away from good software engineering standards.
 	// They are here as an ad-hoc solution, but should be replaced
 	// by a better mechanism.
-	public static enum PARSER{MINIPAR,EASYFIRST}
-	
+
 	private static PARSER MODE_PARSER=PARSER.EASYFIRST;
 	private static boolean DO_NOT_APPLY_LEXICALLY_LEXICAL_MULTI_WORDS = (PARSER.EASYFIRST==MODE_PARSER?Constants.DO_NOT_APPLY_LEXICALLY_LEXICAL_MULTI_WORD_WHEN_EASYFIRST:false);
 	

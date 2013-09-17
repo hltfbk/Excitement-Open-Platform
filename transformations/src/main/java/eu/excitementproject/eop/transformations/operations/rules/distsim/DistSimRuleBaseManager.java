@@ -11,9 +11,9 @@ import java.sql.SQLException;
 
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.utilities.Constants;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
@@ -28,7 +28,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 @Deprecated
 public class DistSimRuleBaseManager
 {
-	public DistSimRuleBaseManager(String name, ConfigurationParams params, ParserSpecificConfigurations.PARSER parser)
+	public DistSimRuleBaseManager(String name, ConfigurationParams params, PARSER parser)
 	{
 		super();
 		this.name = name;
@@ -79,7 +79,7 @@ public class DistSimRuleBaseManager
 		
 	}
 
-	protected final ParserSpecificConfigurations.PARSER parser;
+	protected final PARSER parser;
 	protected String name;
 	protected ConfigurationParams params;
 	

@@ -20,11 +20,13 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTree;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;
 import eu.excitementproject.eop.transformations.operations.rules.DynamicRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 
 /**
  * Represents a distributional similarity rule base that is stored in a DIRT-style data-base.
@@ -47,7 +49,7 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 	////////////////////////////// PUBLIC /////////////////////////////////////
 	
 	
-	public DistSimRuleBase(Connection connection, DistSimParameters distSimParameters, String ruleBaseName, ParserSpecificConfigurations.PARSER parser) throws RuleBaseException
+	public DistSimRuleBase(Connection connection, DistSimParameters distSimParameters, String ruleBaseName, PARSER parser) throws RuleBaseException
 	{
 		super();
 		this.parser = parser;
@@ -364,7 +366,7 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 	
 	
 	
-	protected final ParserSpecificConfigurations.PARSER parser;
+	protected final PARSER parser;
 	protected Connection connection;
 	protected DistSimParameters distSimParameters;
 	protected String ruleBaseName;

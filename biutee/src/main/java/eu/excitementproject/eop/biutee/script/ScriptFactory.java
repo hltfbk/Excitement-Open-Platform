@@ -8,6 +8,7 @@ import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 
 /**
@@ -45,7 +46,7 @@ public class ScriptFactory
 	
 	private ConfigurationFile configurationFile;
 	private PluginRegistry pluginRegistry;
-	private final ParserSpecificConfigurations.PARSER parser;
+	private final PARSER parser;
 	private final boolean hybridGapMode;
 	
 	@SuppressWarnings("unused")

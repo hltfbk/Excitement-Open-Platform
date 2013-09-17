@@ -28,6 +28,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
@@ -40,7 +41,6 @@ import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.LemmatizerFilterApostrophe;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 import eu.excitementproject.eop.transformations.utilities.StopWordsFileLoader;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEstimation;
@@ -95,7 +95,7 @@ public class SystemInitialization
 		configurationFile.setExpandingEnvironmentVariables(true);
 		configurationParams = configurationFile.getModuleConfiguration(configurationModuleName);
 		
-		ParserSpecificConfigurations.PARSER parserMode = SystemUtils.setParserMode(configurationParams);
+		PARSER parserMode = SystemUtils.setParserMode(configurationParams);
 		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
