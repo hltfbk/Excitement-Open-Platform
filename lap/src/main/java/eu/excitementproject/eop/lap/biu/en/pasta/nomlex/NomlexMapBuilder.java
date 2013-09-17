@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -123,11 +124,11 @@ public class NomlexMapBuilder
             //retrieve attributes of the nomlex class
         	if (null==noun)
         	{
-        		noun = nomlexClass.noun.trim().toLowerCase();
+        		noun = nomlexClass.noun.trim().toLowerCase(Locale.ENGLISH);
         	}
         	else
         	{
-        		if (!noun.equals(nomlexClass.noun.trim().toLowerCase())) throw new NomlexException("Error! Two different nouns in the same entry: "+noun+", "+nomlexClass.noun);
+        		if (!noun.equals(nomlexClass.noun.trim().toLowerCase(Locale.ENGLISH))) throw new NomlexException("Error! Two different nouns in the same entry: "+noun+", "+nomlexClass.noun);
         	}
         	if (null==noun) throw new NomlexException("No noun! noun is null.");
         	for (String verb : nomlexClass.verbList)

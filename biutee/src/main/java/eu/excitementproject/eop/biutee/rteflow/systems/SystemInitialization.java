@@ -16,6 +16,8 @@ import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.plugin.PluginRegisterer;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBoxFactory;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
@@ -26,13 +28,17 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.alignment.DefaultAlignmentCriteria;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorFactory;
 import eu.excitementproject.eop.transformations.generic.truthteller.SentenceAnnotator;
 import eu.excitementproject.eop.transformations.generic.truthteller.SynchronizedAtomicAnnotator;
+import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.LemmatizerFilterApostrophe;
 import eu.excitementproject.eop.transformations.utilities.StopWordsFileLoader;
@@ -89,7 +95,7 @@ public class SystemInitialization
 		configurationFile.setExpandingEnvironmentVariables(true);
 		configurationParams = configurationFile.getModuleConfiguration(configurationModuleName);
 		
-		SystemUtils.setParserMode(configurationParams);
+		PARSER parserMode = SystemUtils.setParserMode(configurationParams);
 		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
@@ -162,8 +168,12 @@ public class SystemInitialization
 			}
 		}
 		
+		AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria = new DefaultAlignmentCriteria();
 		
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords);
+		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria,mleEstimation, stopWords).createGapToolBox();
+		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
+		else{logger.info("System in pure transformations mode.");}
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode,gapToolBox);
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException

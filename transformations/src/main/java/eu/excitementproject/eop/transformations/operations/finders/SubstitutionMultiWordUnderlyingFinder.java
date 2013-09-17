@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
@@ -33,11 +34,17 @@ import eu.excitementproject.eop.transformations.utilities.InfoObservations;
  * 
  * All those specifications are found by the {@link #find(TreeAndParentMap)} method, and
  * returned by the {@link #getSpecs()} method.
+ * <P>
+ * An instance of this class is created for each text-hypothesis pair in
+ * biutee project class <code>InitializationTextTreesProcessor</code>
+ * 
+ * @see SubstitutionMultiWordFinder
  * 
  * @author Asher Stern
  * @since Jan 30, 2011
  *
  */
+@NotThreadSafe
 public class SubstitutionMultiWordUnderlyingFinder
 {
 	public SubstitutionMultiWordUnderlyingFinder(TreeAndParentMap<ExtendedInfo,ExtendedNode> hypothesisTree)
@@ -108,10 +115,5 @@ public class SubstitutionMultiWordUnderlyingFinder
 	private Map<ExtendedNode, List<String>> hypothesisNodesToMultiWord;
 	private Map<ExtendedNode, List<String>> textNodesToMultiWord;
 	
-	
-	
 	private Set<SubstituteNodeSpecificationMultiWord> specs = null;
-
-
-
 }

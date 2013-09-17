@@ -71,6 +71,7 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 	public RTEPairsETETester(String configurationFileName, String configurationModuleName)
 	{
 		super(configurationFileName, configurationModuleName);
+		if (logger==null){logger=Logger.getLogger(RTEPairsETETester.class);}
 	}
 
 

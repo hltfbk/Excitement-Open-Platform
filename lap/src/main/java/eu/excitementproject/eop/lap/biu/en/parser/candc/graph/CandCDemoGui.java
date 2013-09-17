@@ -25,7 +25,6 @@ import eu.excitementproject.eop.common.utilities.LiveIOProgramExecution;
 import eu.excitementproject.eop.common.utilities.LiveIOProgramExecutionException;
 import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.TimeOutLiveIOProgramExecutionException;
-import eu.excitementproject.eop.lap.biu.en.tokenizer.TextToPennTreeBankConverter;
 
 
 
@@ -34,7 +33,7 @@ import eu.excitementproject.eop.lap.biu.en.tokenizer.TextToPennTreeBankConverter
  * @author Asher Stern
  *
  */
-@SuppressWarnings({ "serial", "deprecation"})
+@SuppressWarnings({ "serial"})
 @Deprecated
 public class CandCDemoGui extends JFrame implements ActionListener, WindowListener
 {

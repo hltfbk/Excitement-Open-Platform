@@ -15,6 +15,7 @@ import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
@@ -311,7 +312,7 @@ public class RTEPairsMultiThreadTrainerOld extends RTEPairsTrainer
 			}
 		}
 		
-		private OperationsScript<Info, BasicNode> createAndInitializeScript() throws OperationException
+		private OperationsScript<Info, BasicNode> createAndInitializeScript() throws OperationException, GapException
 		{
 			OperationsScript<Info, BasicNode> ret = null;
 			boolean initialized = false;
@@ -320,7 +321,7 @@ public class RTEPairsMultiThreadTrainerOld extends RTEPairsTrainer
 			{
 				try
 				{
-					ret = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+					ret = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 					ret.init();
 					initialized = true;
 				}

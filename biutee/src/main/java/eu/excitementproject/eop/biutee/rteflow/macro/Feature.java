@@ -53,7 +53,72 @@ public enum Feature
 	SUBSTITUTION_PARSER_ANTECEDENT(false),
 	SUBSTITUTION_COREFERENCE(false),
 	IS_A_COREFERENCE(false),
-	CHANGE_PREDICATE_TRUTH(false)
+	CHANGE_PREDICATE_TRUTH(false),
+	
+	GAP_V1_COUNT_MISSING_NODES(false,true),
+	
+	GAP_V2_MISSING_PREDICATES(false,true),
+	GAP_V2_ARGUMENT_HEAD_NOT_CONNECTED(false,true),
+	GAP_V2_ARGUMENT_HEAD_MISSING(false,true),
+	GAP_V2_ARGUMENT_NODE_NOT_CONNECTED(false,true),
+	GAP_V2_ARGUMENT_NODE_MISSING(false,true),
+	
+	/**
+	 * Arguments in the hypothesis that have no matching argument in the text.
+	 */
+	GAP_V3_MISSING_ARGUMENT(false,true),
+	
+	/**
+	 * Like GAP_V3_MISSING_ARGUMENT, but the argument is a named-entity.
+	 */
+	GAP_V3_MISSING_NAMED_ENTITIES(false,true),
+	
+	/**
+	 * Hypothesis arguments which have corresponding arguments in the text, but:
+	 * <UL>
+	 * <LI>the text's corresponding arguments are connected to other predicates than
+	 * the corresponding predicates in the hypothesis</LI>
+	 * <LI>the hypothesis arguments have some content words that do not
+	 * exist in the text arguments</LI>
+	 * </UL>
+	 * 
+	 */
+	GAP_V3_WRONG_PREDICATE_MISSING_WORDS(false,true),
+
+	/**
+	 * Hypothesis arguments which have corresponding arguments in the text, but
+	 * the text's corresponding arguments are connected to other predicates than
+	 * the corresponding predicates in the hypothesis.
+	 */
+	GAP_V3_WRONG_PREDICATE(false,true),
+	
+	/**
+	 * Hypothesis arguments which have corresponding arguments in the text, but
+	 * the hypothesis arguments have some content words that do not
+	 * exist in the text arguments.
+	 */
+	GAP_V3_MISSING_WORDS(false,true),
+	
+	/**
+	 * Content words in the hypothesis, which are not predicates, and do not exist in the text at all
+	 */
+	GAP_V3_MISSING_WORDS_TOTALLY_NON_PREDICATES(false,true),
+
+	/**
+	 * Content words in the hypothesis, which are also predicates, and do not exist in the text at all
+	 */
+	GAP_V3_MISSING_WORDS_TOTALLY_PREDICATES(false,true),
+	
+	GAP_V3_PREDICATE_NO_MATCH(false,true),
+	
+	GAP_BASELINE_V1_MISSING_NODE(false,true),
+	GAP_BASELINE_V1_MISSING_NODE_NON_CONTENT_WORD(false,true),
+	GAP_BASELINE_V1_MISSING_NODE_NAMED_ENTITY(false,true),
+	GAP_BASELINE_V1_MISSING_EDGE(false,true),
+	
+	GAP_BASELINE_V2_MISSING_LEMMA(false,true),
+	GAP_BASELINE_V2_MISSING_NODE(false,true),
+	GAP_BASELINE_V2_MISSING_RELATION(false,true)
 	;
 
 	//////////////////// PUBLIC METHODS AND PRIVATE CONSTRUCTORS //////////////////////////
@@ -64,14 +129,27 @@ public enum Feature
 	 */
 	private Feature(boolean global)
 	{
-		this(global,null);
+		this(global,null,false);
+	}
+
+	private Feature(boolean global, boolean gapFeature)
+	{
+		this(global,null,gapFeature);
 	}
 	
 	private Feature(boolean global, String taskName)
 	{
+		this(global,taskName,false);
+	}
+	
+	private Feature(boolean global, String taskName, boolean gapFeature)
+	{
 		this.global=global;
 		this.taskName=taskName;
+		this.gapFeature = gapFeature;
 	}
+	
+
 
 	/**
 	 * Global indicates that the feature is not a feature of a generation-operation,
@@ -88,8 +166,11 @@ public enum Feature
 	{
 		return this.taskName;
 	}
-	
-	
+
+	public boolean isGapFeature()
+	{
+		return gapFeature;
+	}
 
 	public static Set<Feature> getGlobalFeatures()
 	{
@@ -133,6 +214,20 @@ public enum Feature
 		}
 		return ret;
 	}
+
+	public static Set<Feature> getGapFeatures()
+	{
+		Set<Feature> ret = new LinkedHashSet<Feature>();
+		for (Feature feature : Feature.values())
+		{
+			if (feature.isGapFeature())
+			{
+				ret.add(feature);
+			}
+		}
+		return ret;
+	}
+
 	
 	///////////////////////////////// PRIVATE //////////////////////////////////////////////
 
@@ -149,4 +244,5 @@ public enum Feature
 
 	private final boolean global;
 	private final String taskName;
+	private final boolean gapFeature;
 }

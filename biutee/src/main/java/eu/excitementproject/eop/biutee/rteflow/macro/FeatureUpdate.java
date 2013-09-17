@@ -20,6 +20,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.utilities.StringUtil;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ConfidenceChainItem;
 import eu.excitementproject.eop.transformations.operations.specifications.InsertNodeSpecification;
 import eu.excitementproject.eop.transformations.operations.specifications.MoveNodeSpecification;
@@ -65,7 +66,7 @@ public class FeatureUpdate
 {
 	///////////////// PUBLIC /////////////////
 	
-	public FeatureUpdate(Set<String> pairLemmas, FeatureVectorStructureOrganizer featureVectorStructure, UnigramProbabilityEstimation unigramProbabilityEstimation) throws TeEngineMlException //  LinkedHashSet<String> ruleBasesNames, ImmutableList<String> customFeatures
+	public FeatureUpdate(Set<String> pairLemmas, FeatureVectorStructureOrganizer featureVectorStructure, UnigramProbabilityEstimation unigramProbabilityEstimation, PARSER parser) throws TeEngineMlException //  LinkedHashSet<String> ruleBasesNames, ImmutableList<String> customFeatures
 	{
 		this.pairLemmas = pairLemmas;
 		
@@ -89,6 +90,7 @@ public class FeatureUpdate
 		this.imMapCustomFeatureToFeatureIndex = featureVectorStructure.getPluginFeatures();
 		
 		this.unigramProbabilityEstimation = unigramProbabilityEstimation;
+		this.parser = parser;
 	}
 	
 	////////// Methods returning maps from feature-names to feature-indexes //////////
@@ -346,11 +348,11 @@ public class FeatureUpdate
 		{
 			// it is done
 		}
-		else if (PathObservations.moveChangeRelationStrong(moveSpec, path, textTreeAndParentMap))
+		else if (PathObservations.moveChangeRelationStrong(moveSpec, path, textTreeAndParentMap, parser))
 		{
 			updateFeatureVector(featureVector, Feature.MOVE_ONLY_CHANGE_RELATION_STRONG ,featureValue);
 		}
-		else if (PathObservations.introduceOnlySurfaceRelation(moveSpec))
+		else if (PathObservations.introduceOnlySurfaceRelation(moveSpec,parser))
 		{
 			updateFeatureVector(featureVector, Feature.MOVE_INTRODUCE_SURFACE_RELATION, featureValue);
 		}
@@ -610,5 +612,6 @@ public class FeatureUpdate
 	private ImmutableMap<String, Integer> imMapRuleBaseNameToFeatureIndex = null;
 	private ImmutableMap<String, Integer> imMapCustomFeatureToFeatureIndex;
 	private UnigramProbabilityEstimation unigramProbabilityEstimation = null;
+	private final PARSER parser;
 	
 }

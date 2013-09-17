@@ -26,7 +26,7 @@ public class PredicateArgumentStructurePrinter
 		out.append(predicateHead);
 		if (pas.getPredicate().getVerbsForNominal()!=null)
 		{
-			out.append(" ("+StringUtil.joinIterableToString(pas.getPredicate().getVerbsForNominal())+")");
+			out.append(" ("+StringUtil.joinIterableToString(pas.getPredicate().getVerbsForNominal(),", ",true)+")");
 		}
 		out.append("\n");
 		

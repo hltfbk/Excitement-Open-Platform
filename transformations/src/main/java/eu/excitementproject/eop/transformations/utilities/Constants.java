@@ -18,6 +18,8 @@ public class Constants
 	//////////////////////////////////////////////////////////////////////////
 	// Important constants: constants that you might consider changing their values
 	
+	public static final boolean COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE = true;
+	
 	/**
 	 * If <tt>true</tt> then if {@link #REQUIRE_PREDICATE_TRUTH_EQUALITY} is <tt>true</tt>, then
 	 * a predicate-truth of value "unknown" is counted as "not match" a predicate-truth of "positive" or "negative".
@@ -25,7 +27,7 @@ public class Constants
 	 * either of them.<BR>
 	 * If {@link #REQUIRE_PREDICATE_TRUTH_EQUALITY} is <tt>false</tt>, then this constant has no effect.
 	 */
-	public static final boolean REQUIRE_PREDICATE_TRUTH_MATCH_FOR_UNKNOWN = true;
+	public static final boolean REQUIRE_PREDICATE_TRUTH_MATCH_FOR_UNKNOWN = false;
 	
 	public static final boolean TRACE_ORIGINAL_NODES = false;
 

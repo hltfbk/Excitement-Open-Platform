@@ -99,7 +99,10 @@ public class ConfigurationParametersNames
 	public static final String RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME = "threads";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_ENGINE_UNIGRAM_LIDSTON_SER_FILE = "unigram_lidston_ser_file";
+	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTE_ENGINE_GAP_HYBRID_MODE = "gap_hybrid_mode";
 
+	
 	@ConfigurationParameterAnnotation(value={RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME},mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String RTE_TRAIN_SERIALIZED_SAMPLES_BASE_PATH = "save_serialized_samples";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
