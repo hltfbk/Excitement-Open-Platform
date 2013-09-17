@@ -557,5 +557,25 @@ public class Utils
 		
 		return returnList;
 	}
+	
+	
+	
+	public static <T extends Enum<?>> String getEnumValues(Class<T> cls)
+	{
+		StringBuilder sb = new StringBuilder();
+		T[] values = cls.getEnumConstants();
+		if (values!=null)
+		{
+			boolean firstIteration = true;
+			for (T t : values)
+			{
+				if (firstIteration){firstIteration=false;}
+				else {sb.append(", ");}
+				sb.append(t.name());
+			}
+		}
+		return sb.toString();
+	}
+
 
 }
