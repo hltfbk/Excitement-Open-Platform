@@ -39,6 +39,11 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 public interface AbstractBasicParser
 {
 	/**
+	 * A constant string, sometimes used to assign node-id to tree-root.
+	 */
+	public static final String ROOT_NODE_ID = "ROOT";
+	
+	/**
 	 * Call this method once, and only once, before starting
 	 * parsing any sentence.
 	 * After calling this method, any number of sentences can be parsed.

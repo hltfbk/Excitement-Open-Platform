@@ -3,6 +3,8 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 
 /**
+ * An abstract class that provides a default implementation of {@link AlignmentCriteria#triplesAligned(TreeAndParentMap, TreeAndParentMap, AbstractNode, AbstractNode)},
+ * using the rest of {@link AlignmentCriteria}'s methods.
  * 
  * @author Asher Stern
  * @since May 31, 2012
@@ -19,7 +21,7 @@ public abstract class AbstractAlignmentCriteria<T, S extends AbstractNode<T, S>>
 	public boolean triplesAligned(TreeAndParentMap<T, S> textTree, TreeAndParentMap<T, S> hypothesisTree, S textTriple, S hypothesisTriple)
 	{
 		boolean ret = false;
-		if (
+		if ( // both are root node
 				(null==textTree.getParentMap().get(textTriple))
 				&&
 				(null==hypothesisTree.getParentMap().get(hypothesisTriple))
@@ -27,7 +29,7 @@ public abstract class AbstractAlignmentCriteria<T, S extends AbstractNode<T, S>>
 		{
 			ret = nodesAligned(textTree,hypothesisTree,textTriple,hypothesisTriple);
 		}
-		else if (
+		else if ( // one is root, the other is not.
 				(null==textTree.getParentMap().get(textTriple))
 				||
 				(null==hypothesisTree.getParentMap().get(hypothesisTriple))

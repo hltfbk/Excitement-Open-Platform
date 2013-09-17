@@ -4,6 +4,7 @@ import eu.excitementproject.eop.biutee.operations.updater.UpdaterForSubstitution
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.finders.Finder;
 import eu.excitementproject.eop.transformations.operations.finders.SubstitutionCorefByParserAntecedentFinder;
@@ -17,8 +18,19 @@ import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
+/**
+ * 
+ * @author Asher Stern
+ * 
+ *
+ */
 public class SubstitutionParserAntecedentPerformFactory extends PerformFactory<SubstitutionSubtreeSpecification>
 {
+	public SubstitutionParserAntecedentPerformFactory(PARSER parser)
+	{
+		super();
+		this.parser = parser;
+	}
 
 	@Override
 	public Finder<SubstitutionSubtreeSpecification> getFinder(
@@ -26,7 +38,7 @@ public class SubstitutionParserAntecedentPerformFactory extends PerformFactory<S
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesis)
 			throws TeEngineMlException, OperationException
 	{
-		return new SubstitutionCorefByParserAntecedentFinder(text);
+		return new SubstitutionCorefByParserAntecedentFinder(text,parser);
 	}
 
 	@Override
@@ -77,6 +89,7 @@ public class SubstitutionParserAntecedentPerformFactory extends PerformFactory<S
 	{
 		return updaterForSubstitutionParserAntecedent;
 	}
-	
+
+	private final PARSER parser;
 	private static UpdaterForSubstitutionParserAntecedent updaterForSubstitutionParserAntecedent = new UpdaterForSubstitutionParserAntecedent();
 }

@@ -11,6 +11,7 @@ import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenc
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.datastructures.CanonicalLemmaAndPos;
@@ -90,7 +91,8 @@ public class OperationsEnvironment
 			BagOfRulesRuleBase<Info, BasicNode> multiWordNamedEntityRuleBase,
 			boolean richInformationInTreeHistory,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
-			ImmutableSet<String> stopWords)
+			ImmutableSet<String> stopWords,
+			PARSER parser)
 	{
 		super();
 		this.featureUpdate = featureUpdate;
@@ -109,6 +111,7 @@ public class OperationsEnvironment
 		this.richInformationInTreeHistory = richInformationInTreeHistory;
 		this.alignmentCriteria = alignmentCriteria;
 		this.stopWords = stopWords;
+		this.parser = parser;
 	}
 
 	
@@ -178,6 +181,11 @@ public class OperationsEnvironment
 	{
 		return stopWords;
 	}
+	public PARSER getParser()
+	{
+		return parser;
+	}
+
 
 
 
@@ -204,4 +212,5 @@ public class OperationsEnvironment
 	private final boolean richInformationInTreeHistory;
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
+	private final PARSER parser;
 }

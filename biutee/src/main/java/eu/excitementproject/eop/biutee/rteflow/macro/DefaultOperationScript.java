@@ -22,6 +22,7 @@ import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelope;
 import eu.excitementproject.eop.transformations.utilities.Constants;
@@ -44,14 +45,16 @@ import eu.excitementproject.eop.transformations.utilities.Constants;
  * In order to put the relevant value into the <B>correct</B>
  * feature, it has to know the feature index. The feature index
  * is an integer, mapped to the rule base name.
- * Thus, a mapping of rule-bases to the corresponding feature-indexes
+ * A mapping of rule-bases to the corresponding feature-indexes
  * is maintained by {@link FeatureVectorStructureOrganizer}. An instance
  * of {@link FeatureVectorStructureOrganizer} is given to {@link FeatureUpdate}
  * as a parameter, providing this mapping.
  * {@link FeatureVectorStructureOrganizer} builds this mapping by getting a list
  * (actually it is a {@link LinkedHashSet}) of the rule-bases used by the system.
+ * This list, however, is stored in {@link OperationsScript}.
  * <BR>
- * Therefore there are some points to be aware of:
+ * To properly build and use the list of rule bases names, 
+ * there are some points to be aware of:
  * <UL>
  * <LI>When adding knowledge resources, their names
  * are added as well, as keys to one of the maps:
@@ -91,9 +94,10 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 {
 	public static final int NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE = BiuteeConstants.NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE_IN_DEFAULT_OPERATION_SCRIPT;
 
-	public DefaultOperationScript(ConfigurationFile configurationFile,PluginRegistry pluginRegistry)
+	public DefaultOperationScript(ConfigurationFile configurationFile, PARSER parser, PluginRegistry pluginRegistry, boolean hybridGapMode)
 	{
-		super(configurationFile,pluginRegistry);
+		super(configurationFile,parser,pluginRegistry);
+		this.hybridGapMode = hybridGapMode;
 	}
 
 
@@ -111,15 +115,21 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 
 		List<SingleOperationItem> otherIterationsList = new ArrayList<SingleOperationItem>();
 		// Add the on-the-fly operations.
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
+		if (!hybridGapMode)
+		{
+			otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
+			otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
+		}
 		otherIterationsList.add(new SingleOperationItem(SingleOperationType.MULTIWORD_SUBSTITUTION));
 		otherIterationsList.add(new SingleOperationItem(SingleOperationType.FLIP_POS_SUBSTITUTION));
 
 		// Add an operation that flips the predicate-truth annotation.
-		if (Constants.APPLY_CHANGE_ANNOTATION)
+		if (!hybridGapMode)
 		{
-			otherIterationsList.add(new SingleOperationItem(SingleOperationType.CHANGE_PREDICATE_TRUTH));
+			if (Constants.APPLY_CHANGE_ANNOTATION)
+			{
+				otherIterationsList.add(new SingleOperationItem(SingleOperationType.CHANGE_PREDICATE_TRUTH));
+			}
 		}
 
 		// Add all knowledge resources
@@ -196,6 +206,8 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 
 	protected ImmutableList<SingleOperationItem> otherIterationsImList;
 	protected ImmutableList<SingleOperationItem> firstIterationsImList;
+	
+	protected final boolean hybridGapMode;
 
 
 	@SuppressWarnings("unused")

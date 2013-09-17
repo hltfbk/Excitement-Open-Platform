@@ -81,7 +81,7 @@ public class DemoF1Classifier
 		logger.info("Init done.");
 		
 		logger.info("Init Script...");
-		ScriptFactory scriptFactory = new ScriptFactory(sys.getConfigurationFile(),sys.getTESystemEnvironment().getPluginRegistry());
+		ScriptFactory scriptFactory = new ScriptFactory(sys.getConfigurationFile(),sys.getTESystemEnvironment().getPluginRegistry(),sys.getTESystemEnvironment());
 		OperationsScript<Info, BasicNode> script = scriptFactory.getDefaultScript();
 		script.init();
 		logger.info("Init Script done.");

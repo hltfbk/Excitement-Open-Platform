@@ -18,6 +18,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;
 import eu.excitementproject.eop.transformations.operations.rules.DynamicRuleBase;
@@ -56,7 +57,7 @@ public class DemoDynRuleBase
 		confFile.setExpandingEnvironmentVariables(true);
 		KnowledgeResource resource = KnowledgeResource.ORIG_DIRT;
 		ConfigurationParams params =  confFile.getModuleConfiguration(resource.getModuleName());
-		manager = new DistSimRuleBaseManager(resource.getDisplayName(), params);
+		manager = new DistSimRuleBaseManager(resource.getDisplayName(), params, this.parser);
 		manager.init();
 		this.ruleBase = manager.getRuleBase();
 		
@@ -83,6 +84,8 @@ public class DemoDynRuleBase
 	{
 		try
 		{
+			this.parser = PARSER.valueOf(args[1]);
+			
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			initRuleBase();
 			try
@@ -150,4 +153,5 @@ public class DemoDynRuleBase
 	private DistSimRuleBaseManager manager;
 	private DynamicRuleBase<Info, BasicNode> ruleBase;
 	private String[] args;
+	private PARSER parser=null;
 }

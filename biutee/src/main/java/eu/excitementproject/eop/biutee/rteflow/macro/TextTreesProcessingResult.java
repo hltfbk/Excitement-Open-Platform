@@ -1,10 +1,14 @@
-package eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative;
-import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
-import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
+package eu.excitementproject.eop.biutee.rteflow.macro;
 
-public class LocalCreativeSearchResult
+/**
+ * 
+ * @author Asher Stern
+ * @since Aug 4, 2013
+ *
+ */
+public class TextTreesProcessingResult
 {
-	public LocalCreativeSearchResult(TreeAndFeatureVector tree,
+	public TextTreesProcessingResult(TreeAndFeatureVector tree,
 			String sentence, TreeHistory history)
 	{
 		super();
@@ -12,7 +16,8 @@ public class LocalCreativeSearchResult
 		this.sentence = sentence;
 		this.history = history;
 	}
-
+	
+	
 	
 	public TreeAndFeatureVector getTree()
 	{
@@ -26,6 +31,7 @@ public class LocalCreativeSearchResult
 	{
 		return history;
 	}
+
 
 
 	private final TreeAndFeatureVector tree;

@@ -16,6 +16,7 @@ import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
@@ -79,7 +80,7 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	public void init() throws ConfigurationFileDuplicateKeyException, ConfigurationException, MalformedURLException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
 	{
 		super.init();
-		script = new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+		script = new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry(),this.teSystemEnvironment).getDefaultScript();
 		try
 		{
 			logger.info("Initializing operation sciprt...");
@@ -173,13 +174,13 @@ public class BiuteeEdaUnderlyingSystem extends SystemInitialization
 	}
 	
 	
-	private void initScriptsAndThreadPool() throws ConfigurationException
+	private void initScriptsAndThreadPool() throws ConfigurationException, GapException
 	{
 		int numberOfThreads = this.configurationParams.getInt(ConfigurationParametersNames.RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME);
 		scriptStack = new SynchronizedStack<OperationsScriptGetter>();
 		for (int index=0;index<(numberOfThreads-1);++index)
 		{
-			scriptStack.push(new OperationsScriptGetter(new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry())));
+			scriptStack.push(new OperationsScriptGetter(new ScriptFactory(this.configurationFile, this.teSystemEnvironment.getPluginRegistry(),this.teSystemEnvironment)));
 		}
 		scriptStack.push(new OperationsScriptGetter(this.script));
 		

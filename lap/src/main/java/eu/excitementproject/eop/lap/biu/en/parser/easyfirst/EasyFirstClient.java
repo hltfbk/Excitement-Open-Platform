@@ -14,6 +14,7 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -190,7 +191,7 @@ public class EasyFirstClient
 		{
 			PosTaggedToken posTaggedToken = iter.next();
 			String origToken = posTaggedToken.getToken();
-			String token = origToken.toLowerCase();
+			String token = origToken.toLowerCase(Locale.ENGLISH);
 			PartOfSpeech pos = posTaggedToken.getPartOfSpeech();
 			if (NOMINATIVE_ACCUSATIVE_PRONOUNS.contains(token) && !simplerPos(pos.getCanonicalPosTag()).equals(SimplerCanonicalPosTag.PRONOUN))
 			// replace this postaggedToken

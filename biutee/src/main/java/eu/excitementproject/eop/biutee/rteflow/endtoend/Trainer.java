@@ -155,6 +155,8 @@ public class Trainer<I extends Instance, P extends Proof>
 		TrainedClassifiers trainedClassifiers = classifierTrainer.train(samplesLastIteration, samplesOfOlderIterations, classifierGenerator);
 		classifierForSearch = trainedClassifiers.getClassifierForSearch();
 		classifierForPredictions = trainedClassifiers.getClassifierForPredictions();
+		logger.info("Classifier for search:\n"+classifierForSearch.descriptionOfTraining());
+		logger.info("Classifier for predictions:\n"+classifierForPredictions.descriptionOfTraining());
 		
 		resultsLastIteration = resultsFactory.createResults(proofs, classifierForPredictions);
 		resultsLastIteration.compute();

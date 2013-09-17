@@ -182,6 +182,9 @@ public class ArkrefClient
 			Stack<String> currentTags = null;
 			try
 			{
+				// For debugging
+				arkrefStackOutput = new ArrayList<WordAndStackTags>();
+
 				EntityGraph entityGraph = arkrefDocument.entGraph();
 				for(Sentence sentence : arkrefDocument.sentences()) // for each sentence
 				{
@@ -243,7 +246,7 @@ public class ArkrefClient
 					}
 
 					// For debugging
-					arkrefStackOutput = new ArrayList<WordAndStackTags>(mapLeavesToWords.keySet().size());
+					//arkrefStackOutput = new ArrayList<WordAndStackTags>(mapLeavesToWords.keySet().size());
 					for (Tree leaf : mapLeavesToWords.keySet())
 					{
 						arkrefStackOutput.add(mapLeavesToWords.get(leaf));

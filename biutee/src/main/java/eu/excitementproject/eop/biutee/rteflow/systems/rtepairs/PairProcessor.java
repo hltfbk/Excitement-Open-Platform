@@ -1,26 +1,31 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtepairs;
+
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs.RtePairsProver;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs.THPairInstance;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.rtrpairs.THPairProof;
 import eu.excitementproject.eop.biutee.rteflow.macro.AbstractTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.OriginalTreesAfterInitialization;
+import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.WithStatisticsTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.old_beam_search.BeamSearchTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
-import eu.excitementproject.eop.biutee.script.HypothesisInformation;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.biutee.utilities.ProgressFire;
-import eu.excitementproject.eop.biutee.utilities.TreeHistoryUtilities;
+import eu.excitementproject.eop.biutee.utilities.Provider;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
-import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
@@ -34,7 +39,7 @@ import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;
 
 
 /**
- * Given an (already pre-processed) Text-Hypothesis pair, represented as {@link PairData},
+ * Given an (already pre-processed) Text-Hypothesis pair, represented as {@link ExtendedPairData},
  * this class finds the best entailment proof, and returns a feature-vector that represents that
  * proof.
  * 
@@ -48,7 +53,7 @@ public class PairProcessor
 
 	// constructor and methods
 	/**
-	 * Constructor that gets a {@link PairData} and other utilities.
+	 * Constructor that gets a {@link ExtendedPairData} and other utilities.
 	 * 
 	 * @param pairData The text-hypothesis pair to be processed
 	 * @param classifier The classifier, by which the "best" proof is chosen, and being searched for.
@@ -153,167 +158,39 @@ public class PairProcessor
 	{
 		try
 		{
-			if (pairData.getTextTrees().isEmpty())
-				throw new TeEngineMlException("Empty text");
-
-			this.script.setHypothesisInformation(new HypothesisInformation(pairData.getPair().getHypothesis(), pairData.getHypothesisTree()));
-			//			textTreesProcessor = new BeamSearchTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, unigramProbabilityEstimation, this.ruleBasesToRetrieveMultiWords);
-			//			textTreesProcessor = new Rte7TextTreesProcessor(pairData.getTextTrees(),pairData.getHypothesisTree(),pairData.getMapTreesToSentences(),pairData.getCoreferenceInformation(),classifier, lemmatizer,script, unigramProbabilityEstimation,this.ruleBasesToRetrieveMultiWords);
-
-			//			AStarTextTreesProcessor astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, unigramProbabilityEstimation);
-			//			astarTextTreesProcessor.setWeightOfCost(1);
-			//			astarTextTreesProcessor.setWeightOfFuture(1000);
-			//			astarTextTreesProcessor.setK_expandInEachIteration(10);
-			//			astarTextTreesProcessor.useAnyTimeMode(10000, 0.1);
-			//			textTreesProcessor = astarTextTreesProcessor;
-
-			LocalCreativeTextTreesProcessor lcTextTreesProcessor = null;
-			if (!useOldBeam)
-			{
-				lcTextTreesProcessor = new LocalCreativeTextTreesProcessor(pairData.getPair().getText(), pairData.getPair().getHypothesis(), pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, this.teSystemEnvironment);
-			}
-			// lcTextTreesProcessor.setNumberOfLocalIterations(4);
-			BeamSearchTextTreesProcessor beamSearchTextTreesProcessor = null;
-			if (useOldBeam)
-			{
-				beamSearchTextTreesProcessor = new BeamSearchTextTreesProcessor(pairData.getPair().getText(), pairData.getPair().getHypothesis(), pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,this.teSystemEnvironment);
-			}
-			// AStarTextTreesProcessor aStarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, this.teSystemEnvironment);
-			// aStarTextTreesProcessor.setWeightOfFuture(30.0);
-			// aStarTextTreesProcessor.useAnyTimeMode(10000, 0.5);
-			// aStarTextTreesProcessor.setK_expandInEachIteration(30);
-			// KStagedTextTreesProcessor kStagedTextTreesProcessor = new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, this.teSystemEnvironment,1,1,0,0.0,1.0);
-			// kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
-			// kStagedTextTreesProcessor.setSeparatelyProcessTextSentencesMode(true);
+			// Create "Prover"
+			PairProcessorProver prover = new PairProcessorProver(teSystemEnvironment,
+					new Provider<Lemmatizer>(){public Lemmatizer get() throws BiuteeException{return lemmatizer;}}
+					);
 			
-			// beam search
-			// KStagedTextTreesProcessor kStagedTextTreesProcessor = new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, this.teSystemEnvironment,150,150,5,1.0,5.0);
-			// kStagedTextTreesProcessor.setkStagedDiscardExpandedStates(true);
-			// kStagedTextTreesProcessor.setSeparatelyProcessTextSentencesMode(true);
-			
-			
-			// this is greedy with f=h
-			// KStagedTextTreesProcessor kStagedTextTreesProcessor = new KStagedTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,this.teSystemEnvironment,1,1,0,0,1);
-			
-			if (!useOldBeam)
-			{
-				textTreesProcessor = lcTextTreesProcessor;
-			}
-			AbstractTextTreesProcessor abstractTextTreesProcessor = null;
-			if (!useOldBeam)
-			{
-				abstractTextTreesProcessor = lcTextTreesProcessor;
-			}
-			else
-			{
-				abstractTextTreesProcessor = beamSearchTextTreesProcessor;
-			}
-			
-			if (true==this.richInformationInTreeHistory)
-			{
-				abstractTextTreesProcessor.setRichInformationInTreeHistory(this.richInformationInTreeHistory);
-			}
-			if (surroundingsContext!=null) // only by GUI!
-			{
-				abstractTextTreesProcessor.setSurroundingsContext(surroundingsContext);
-			}
-			if (this.progressFire!=null)
-			{
-				abstractTextTreesProcessor.setProgressFire(this.progressFire);
-			}
-			
-			
-			
-			
-//			AStarLocalCreativeTextTreesProcessor aStarLocalCreativeTextTreesProcessor = new AStarLocalCreativeTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, unigramProbabilityEstimation, this.ruleBasesToRetrieveMultiWords);
-//			// TODO hard coded
-//			aStarLocalCreativeTextTreesProcessor.setLimitNumberOfChildren(2);
-//			textTreesProcessor = aStarLocalCreativeTextTreesProcessor;
-
-			// Just logging
-			if (ignoreTaskName)
-			{
-				logger.info("Ignoring task name");
-			}
-			
-			String datasetName = this.pairData.getDatasetName();
-			// Set the global pair information
-			if ( (ignoreTaskName) && (null==datasetName) ) // If you don't have to set anything, then don't
-			{}
-			else
-			{
-				GlobalPairInformation globalPairInformation = null;
-				if (ignoreTaskName)
-				{
-					globalPairInformation = new GlobalPairInformation(null,datasetName);
-				}
-				else if  (null==datasetName)
-				{
-					globalPairInformation = new GlobalPairInformation(pairData.getPair().getAdditionalInfo(),null);
-				}
-				else
-				{
-					globalPairInformation = new GlobalPairInformation(pairData.getPair().getAdditionalInfo(),datasetName);
-				}
-				logger.info("Setting GlobalPairInformation: "+globalPairInformation.toString());
-				abstractTextTreesProcessor.setGlobalPairInformation(globalPairInformation);
-			}
-
-			logger.info("PairProcessor.process: Using TextTreesProcessor: "+abstractTextTreesProcessor.getClass().getName());
-
+			// Run the prover
 			TimeElapsedTracker tracker = new TimeElapsedTracker();
 			tracker.start();
-
-
-			//textTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(), pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(), classifier, lemmatizer, script, unigramProbabilityEstimation);
-			//			AStarTextTreesProcessor astarTextTreesProcessor = new AStarTextTreesProcessor(pairData.getTextTrees(), pairData.getHypothesisTree(),pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),classifier, lemmatizer, script,unigramProbabilityEstimation);
-			//			textTreesProcessor = astarTextTreesProcessor;
-			abstractTextTreesProcessor.process();
-
+			THPairProof proof = prover.prove(new THPairInstance(pairData), script, classifier);
 			tracker.end();
 			logger.info("PairProcessor.process Time: "+tracker.toString());
-			
-			if (!useOldBeam)
+
+			// Collect the results
+			this.bestTree = proof.getTreeAndFeatureVector();
+			this.bestTreeHistory = proof.getHistory();
+			this.bestTreeSentence = proof.getBestSentence();
+			this.originalTreesAfterInitialization = abstractTextTreesProcessor.getOriginalTreesAfterInitialization();
+
+			// Collect time-statistics
+			this.cpuTime = tracker.getCpuTimeElapsed();
+			this.worldClockTime = tracker.getWorldClockElapsed();
+			if (textTreesProcessor!=null)
 			{
-				this.cpuTime = tracker.getCpuTimeElapsed();
-				this.worldClockTime = tracker.getWorldClockElapsed();
 				this.numberOfExpandedElements = textTreesProcessor.getNumberOfExpandedElements();
 				this.numberOfGeneratedElements = textTreesProcessor.getNumberOfGeneratedElements();
 			}
-			
-
-			//			if (logger.isDebugEnabled())
-			//			{
-			//				logger.debug("Lin average query time: "+LinDependencyFromDBLexicalRuleBase.linQueryTracker.getAverages());
-			//			}
-			
-			this.originalTreesAfterInitialization = abstractTextTreesProcessor.getOriginalTreesAfterInitialization();
-
-			this.bestTree = abstractTextTreesProcessor.getBestTree();
-			this.bestTreeHistory = abstractTextTreesProcessor.getBestTreeHistory();
-			this.bestTreeSentence = abstractTextTreesProcessor.getBestTreeSentence();
-
-			if (logger.isDebugEnabled())
-			{
-				StringBuffer sb = new StringBuffer();
-				sb.append("Done with sentence: ");
-				sb.append(bestTreeSentence);
-				sb.append("\nHistory:\n");
-				sb.append(TreeHistoryUtilities.historyToString(bestTreeHistory));
-				logger.debug(sb.toString());
-			}
-
 		}
-		catch(TreeAndParentMapException e)
+		catch (BiuteeException e)
 		{
-			throw new TeEngineMlException("Processing failed. See nested exception",e);
+			throw new TeEngineMlException("Pair process failed.",e);
 		}
 	}
 	
-	public OriginalTreesAfterInitialization getOriginalTreesAfterInitialization()
-	{
-		return originalTreesAfterInitialization;
-	}
 
 
 	/**
@@ -346,6 +223,11 @@ public class PairProcessor
 		return this.bestTreeHistory;
 	}
 	
+	public OriginalTreesAfterInitialization getOriginalTreesAfterInitialization()
+	{
+		return originalTreesAfterInitialization;
+	}
+
 
 	public long getCpuTime()
 	{
@@ -367,28 +249,153 @@ public class PairProcessor
 		return numberOfGeneratedElements;
 	}
 
-
-
-
-
-
-	protected ExtendedPairData pairData;
-	protected LinearClassifier classifier;
-	protected Lemmatizer lemmatizer;
-	protected OperationsScript<Info, BasicNode> script;
-	protected TESystemEnvironment teSystemEnvironment;
-	protected boolean richInformationInTreeHistory = false;
 	
+	/**
+	 * Creates a {@link TextTreesProcessor} which will process the given T-H pair.<BR>
+	 * <B>Note: this methods also assigns values to the fields
+	 * {@link #textTreesProcessor} and {@link #abstractTextTreesProcessor}</B>.
+	 * 
+	 * @return the {@link TextTreesProcessor} which will process the given T-H pair.
+	 * @throws TeEngineMlException
+	 */
+	protected TextTreesProcessor createProcessor(ExtendedPairData _pairData) throws TeEngineMlException
+	{
+		if (_pairData.getTextTrees().isEmpty())
+			throw new TeEngineMlException("Empty text");
+
+
+		LocalCreativeTextTreesProcessor lcTextTreesProcessor = null;
+		if (!useOldBeam)
+		{
+			lcTextTreesProcessor = new LocalCreativeTextTreesProcessor(_pairData.getPair().getText(), _pairData.getPair().getHypothesis(), _pairData.getTextTrees(), _pairData.getHypothesisTree(), _pairData.getMapTreesToSentences(), _pairData.getCoreferenceInformation(), classifier, lemmatizer, script, this.teSystemEnvironment);
+		}
+		BeamSearchTextTreesProcessor beamSearchTextTreesProcessor = null;
+		if (useOldBeam)
+		{
+			beamSearchTextTreesProcessor = new BeamSearchTextTreesProcessor(_pairData.getPair().getText(), _pairData.getPair().getHypothesis(), _pairData.getTextTrees(), _pairData.getHypothesisTree(), _pairData.getMapTreesToSentences(), _pairData.getCoreferenceInformation(),classifier, lemmatizer, script,this.teSystemEnvironment);
+		}
+		
+		if (!useOldBeam)
+		{
+			textTreesProcessor = lcTextTreesProcessor;
+		}
+		abstractTextTreesProcessor = null;
+		if (!useOldBeam)
+		{
+			abstractTextTreesProcessor = lcTextTreesProcessor;
+		}
+		else
+		{
+			abstractTextTreesProcessor = beamSearchTextTreesProcessor;
+		}
+		
+		if (true==this.richInformationInTreeHistory)
+		{
+			abstractTextTreesProcessor.setRichInformationInTreeHistory(this.richInformationInTreeHistory);
+		}
+		if (surroundingsContext!=null) // only by GUI!
+		{
+			abstractTextTreesProcessor.setSurroundingsContext(surroundingsContext);
+		}
+		if (this.progressFire!=null)
+		{
+			abstractTextTreesProcessor.setProgressFire(this.progressFire);
+		}
+
+		logger.info("PairProcessor.process: Using TextTreesProcessor: "+abstractTextTreesProcessor.getClass().getName());
+
+		return abstractTextTreesProcessor;
+	}
+	
+	
+
+	
+
+	/**
+	 * A {@link Prover}, subclass of {@link RtePairsProver}, which uses the
+	 * {@link TextTreesProcessor} created by {@link PairProcessor#createProcessor()}.
+	 * 
+	 * @author Asher Stern
+	 * @since Aug 2, 2013
+	 *
+	 */
+	private class PairProcessorProver extends RtePairsProver
+	{
+		public PairProcessorProver(TESystemEnvironment teSystemEnvironment, Provider<Lemmatizer> lemmatizerProvider)
+		{
+			super(teSystemEnvironment, lemmatizerProvider);
+		}
+		
+		@Override
+		protected TextTreesProcessor createProcessor(ExtendedPairData pairData,
+				OperationsScript<Info, BasicNode> script,
+				LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
+		{
+			TextTreesProcessor processor = PairProcessor.this.createProcessor(pairData);
+			processor.setGlobalPairInformation(createGlobalPairInformation(pairData));
+			return processor;
+		}
+		
+	
+		@Override
+		protected GlobalPairInformation createGlobalPairInformation(ExtendedPairData pairData) throws BiuteeException
+		{
+			GlobalPairInformation globalPairInformation = null;
+			
+			// Just logging
+			if (ignoreTaskName){logger.info("Ignoring task name");}
+
+			
+			String datasetName = pairData.getDatasetName();
+			// Set the global pair information
+			if ( (ignoreTaskName) && (null==datasetName) ) // If you don't have to set anything, then don't
+			{
+				globalPairInformation = null;
+			}
+			else
+			{
+				if (ignoreTaskName)
+				{
+					globalPairInformation = new GlobalPairInformation(null,datasetName);
+				}
+				else if  (null==datasetName)
+				{
+					globalPairInformation = new GlobalPairInformation(pairData.getPair().getAdditionalInfo(),null);
+				}
+				else
+				{
+					globalPairInformation = new GlobalPairInformation(pairData.getPair().getAdditionalInfo(),datasetName);
+				}
+				logger.info("Setting GlobalPairInformation: "+globalPairInformation.toString());
+			}
+			return globalPairInformation;
+		}
+	}
+	
+
+
+
+	// input
+	protected final ExtendedPairData pairData;
+	protected final LinearClassifier classifier;
+	protected final Lemmatizer lemmatizer;
+	protected final OperationsScript<Info, BasicNode> script;
+	protected final TESystemEnvironment teSystemEnvironment;
+	
+	protected boolean richInformationInTreeHistory = false;
 	protected List<ExtendedNode> surroundingsContext = null;
-
-
 	protected boolean ignoreTaskName = false;
+	
+	// for GUI only
+	protected ProgressFire progressFire = null;
+	protected boolean useOldBeam = false;
 
 	
 	protected WithStatisticsTextTreesProcessor textTreesProcessor = null;
-
+	protected AbstractTextTreesProcessor abstractTextTreesProcessor = null; 
 	protected OriginalTreesAfterInitialization originalTreesAfterInitialization;
 	
+	// output
 	protected TreeAndFeatureVector bestTree;
 	protected String bestTreeSentence;
 	protected TreeHistory bestTreeHistory;
@@ -399,10 +406,6 @@ public class PairProcessor
 	protected Long numberOfGeneratedElements;
 
 
-	// for GUI only
-	protected ProgressFire progressFire = null;
-	
-	protected boolean useOldBeam = false;
 	
 	private static Logger logger = Logger.getLogger(PairProcessor.class);
 }

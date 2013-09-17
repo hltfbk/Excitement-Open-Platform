@@ -117,7 +117,7 @@ public class RTESumBaseEngine extends SystemInitialization
 			logger.info("Number of threads = "+numberOfThreads);
 			
 			logger.info("Retrieving rules bases names.");
-			OperationsScript<Info, BasicNode> scriptOnlyForNames = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			OperationsScript<Info, BasicNode> scriptOnlyForNames = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 			scriptOnlyForNames.init();
 			ruleBasesNamesInitialized = true;
 			this.ruleBasesNames = scriptOnlyForNames;

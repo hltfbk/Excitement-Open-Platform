@@ -79,7 +79,7 @@ public class DemoLexicalResources extends SystemInitialization
 	public void init() throws ConfigurationFileDuplicateKeyException, MalformedURLException, TeEngineMlException, PluginAdministrationException, ConfigurationException, LemmatizerException, IOException
 	{
 		super.init();
-		script = new ScriptFactory(this.configurationFile,this.teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+		script = new ScriptFactory(this.configurationFile,this.teSystemEnvironment.getPluginRegistry(),this.teSystemEnvironment).getDefaultScript();
 		try
 		{
 			script.init();
