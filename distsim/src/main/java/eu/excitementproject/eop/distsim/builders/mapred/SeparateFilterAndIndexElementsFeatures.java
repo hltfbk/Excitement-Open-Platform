@@ -3,18 +3,11 @@ package eu.excitementproject.eop.distsim.builders.mapred;
 import java.io.BufferedReader;
 
 
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintStream;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-
-import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -28,7 +21,6 @@ import eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMa
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
-import eu.excitementproject.eop.distsim.util.Serialization;
 import gnu.trove.map.TObjectIntMap;
 import gnu.trove.map.hash.TObjectIntHashMap;
 
@@ -108,6 +100,7 @@ public class SeparateFilterAndIndexElementsFeatures  {
 						}
 					}
 				}
+				reader.close();
 			}
 		}
 		if (outElements != null)

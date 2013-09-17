@@ -30,8 +30,10 @@ import eu.excitementproject.eop.distsim.util.Pair;
 
 public class ExtractAndCountBasicNodeBasedElementsFeatures { 
 
+	@SuppressWarnings("rawtypes")
 	public static class MapClass extends Mapper<BasicNode, LongWritable, Text, LongWritable> {
     
+		
 		protected CooccurrenceExtraction cooccurrenceExtraction;
 		protected ElementFeatureExtraction elementFeatureExtraction;
 		
@@ -51,7 +53,8 @@ public class ExtractAndCountBasicNodeBasedElementsFeatures {
 			}
 		}
 		
-	    @Override
+	    @SuppressWarnings("unchecked")
+		@Override
 	    public void map(BasicNode root, LongWritable count, Context context) throws IOException,  InterruptedException {
     		try {
 	    		Pair<? extends List<? extends TextUnit>, ? extends List<? extends Cooccurrence>> cooccurrences = cooccurrenceExtraction.extractCooccurrences(root);	    		
@@ -108,11 +111,11 @@ public class ExtractAndCountBasicNodeBasedElementsFeatures {
 	    Configuration conf = new Configuration();
 	    
 	    // tmp for my linux account
-	    conf.set("hadoop.tmp.dir","/home/ir/adlerm6/tmp");
+	    /*conf.set("hadoop.tmp.dir","/home/ir/adlerm6/tmp");
 	    conf.set("dfs.name.dir", "/home/ir/adlerm6/tmp");
 	    conf.set("dfs.data.dir", "/home/ir/adlerm6/tmp");
 	    conf.set("dfs.client.buffer.dir", "/home/ir/adlerm6/tmp");
-	    conf.set("mapred.local.dir", "/home/ir/adlerm6/tmp");
+	    conf.set("mapred.local.dir", "/home/ir/adlerm6/tmp");*/
 	    
 	    conf.set(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_FILE, args[0]);
 	    conf.set(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_MODULE,eu.excitementproject.eop.distsim.util.Configuration.MAPRED_COOCCURRENCE_COUNTING);

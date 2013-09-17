@@ -4,34 +4,24 @@
 package eu.excitementproject.eop.distsim.resource;
 
 import java.io.File;
+
 import java.util.List;
 
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
-import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleMatch;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
-import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTree;
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.builders.reader.FileBasedSentenceReader;
-import eu.excitementproject.eop.distsim.builders.reader.SentenceReader;
 import eu.excitementproject.eop.distsim.builders.reader.SentenceReaderException;
 import eu.excitementproject.eop.distsim.builders.reader.XMLNodeSentenceReader;
-import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
-import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
-import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.FileUtils;
 import eu.excitementproject.eop.distsim.util.Pair;

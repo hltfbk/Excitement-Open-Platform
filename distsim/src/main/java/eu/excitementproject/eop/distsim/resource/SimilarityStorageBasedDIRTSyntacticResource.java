@@ -5,12 +5,14 @@ package eu.excitementproject.eop.distsim.resource;
 
 import java.util.Collection;
 
+
 import java.util.LinkedList;
 
 import java.util.List;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 
+import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleMatch;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
@@ -19,26 +21,23 @@ import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTree;
 import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
-import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultMatchCriteria;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
-import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.representation.parse.tree.match.pathmatcher.PathAllEmbeddedMatcher;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.core.component.syntacticknowledge.BasicMatchCriteria;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTree;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
-import eu.excitementproject.eop.distsim.items.LexicalUnit;
 import eu.excitementproject.eop.distsim.items.StringBasedElement;
-import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 import eu.excitementproject.eop.distsim.util.Configuration;
-import eu.excitementproject.eop.transformations.operations.rules.distsim.TemplateToTree;
-import eu.excitementproject.eop.transformations.operations.rules.distsim.TemplateToTreeException;
 
 /**
  * @author Meni Adler
@@ -64,7 +63,7 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 		this.similarityStorage = similarityStorage;
 		this.extractor = extractor ;
 		this.maxNumOfRetrievedRules = maxNumOfRetrievedRules;
-		this.matchCriteria = new BasicMatchCriteria();
+		this.matchCriteria = new BasicMatchCriteria<Info,Info,BasicNode,BasicNode>();
 		//matchCriteria.setUseCanonicalPosTag(true);
 	}
 	
@@ -85,6 +84,7 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 	}
 
 	@Override
+	@ParserSpecific({"easyfirst"})
 	public List<RuleMatch<Info, BasicNode>> findMatches(BasicNode currentTree) throws SyntacticResourceException {
 		
 		try {
@@ -109,10 +109,10 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 					//System.out.println("left: " + leftSimilarity.getLeftElement().toKey());
 					//System.out.println("right: " + leftSimilarity.getRightElement().toKey());
 
-					TemplateToTree leftTemplateConverter=new TemplateToTree(leftSimilarity.getLeftElement().toKey());
+					TemplateToTree leftTemplateConverter=new TemplateToTree(leftSimilarity.getLeftElement().toKey(),PARSER.EASYFIRST);
 					leftTemplateConverter.createTree();
 					
-					TemplateToTree rightTemplateConverter=new TemplateToTree(leftSimilarity.getRightElement().toKey());
+					TemplateToTree rightTemplateConverter=new TemplateToTree(leftSimilarity.getRightElement().toKey(),PARSER.EASYFIRST);
 					rightTemplateConverter.createTree();
 					double score = leftSimilarity.getSimilarityMeasure();
 					
@@ -163,6 +163,6 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 	SimilarityStorage similarityStorage;
 	DependencyPathsFromTreeBinary<Info, BasicNode> extractor;
 	Integer maxNumOfRetrievedRules;
-	BasicMatchCriteria matchCriteria;
+	BasicMatchCriteria<Info,Info,BasicNode,BasicNode> matchCriteria;
 
 }

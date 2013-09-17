@@ -20,7 +20,7 @@ import eu.excitementproject.eop.distsim.util.Pair;
 
 public class SentenceCountingRecordReader<T> extends RecordReader<T,LongWritable> {
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@SuppressWarnings({ "unchecked"})
 	public SentenceCountingRecordReader(ConfigurationParams confParams) throws CreationException, ConfigurationException {
 		this.sentenceReader = (FileBasedSentenceReader<T>)Factory.create(confParams.get(Configuration.SENTENCE_READER_CLASS), confParams);		
 	}

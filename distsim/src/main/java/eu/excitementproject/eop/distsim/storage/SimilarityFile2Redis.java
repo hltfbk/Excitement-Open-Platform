@@ -1,13 +1,13 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.io.Serializable;
+
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Element;

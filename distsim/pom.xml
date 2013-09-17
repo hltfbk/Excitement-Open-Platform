@@ -54,7 +54,7 @@
       	
      <dependency>
     		<groupId>eu.excitementproject</groupId>
-    		<artifactId>transformations</artifactId>
+    		<artifactId>core</artifactId>
     		<version>1.0.3-SNAPSHOT</version>
     	</dependency>
   	</dependencies>
