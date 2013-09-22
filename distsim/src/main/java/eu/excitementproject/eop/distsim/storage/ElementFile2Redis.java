@@ -1,10 +1,8 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.io.IOException;
-
 import java.io.Serializable;
 
-//import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
@@ -16,6 +14,7 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.SerializationException;
+//import org.apache.log4j.Logger;
 
 
 /**

@@ -40,6 +40,6 @@ public abstract class DeafaultTextUnit<T extends Serializable> extends DefaultId
 		return data;
 	}
 	
-	protected final T data;
+	protected T data;
 }
 

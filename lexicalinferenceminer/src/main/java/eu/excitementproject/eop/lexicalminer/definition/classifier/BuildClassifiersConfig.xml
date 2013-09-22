@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<configuration>
+
+<module name="ClassidiersToRunOffline">
+	<param name="SyntacticOfflinePosCountClassifier">true</param>
+	<param name="SyntacticOfflineRelationCountClassifier">false</param>
+	<param name="SyntacticOfflinePosRelationCountClassifier">false</param>
+	
+	<param name="SyntacticOfflinePosCountRootClassifier">true</param>
+	<param name="SyntacticOfflineRelationCountRootClassifier">false</param>
+	<param name="SyntacticOfflinePosRelationCountRootClassifier">false</param>
+	
+	<param name="SyntacticOfflinePosLocationClassifier">false</param>
+	<param name="SyntacticOfflineRelationLocationClassifier">false</param>
+	<param name="SyntacticOfflinePosRelationLocationClassifier">true</param>
+	
+	<param name="SyntacticOfflinePosLocationSquareClassifier">false</param>
+	<param name="SyntacticOfflineRelationLocationSquareClassifier">true</param>
+	<param name="SyntacticOfflinePosRelationLocationSquareClassifier">false</param>
+</module>
+
+<module name="Database">
+	<param name="driver">org.gjt.mm.mysql.Driver</param>
+	<param name="url">jdbc:mysql://localhost:3306/wikipedialexicalrule</param>
+	<param name="username">root</param>
+	<param name="password">omahgc</param>
+</module>
+
+</configuration>

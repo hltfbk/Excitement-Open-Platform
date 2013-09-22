@@ -20,7 +20,7 @@ public class LexicalCooccurrence extends DefaultCooccurrence<TreeDependency> {
 		super(textItem1, textItem2, relation);
 	}
 	
-	/* (non-Javadoc)
+	/* (non-Javadoc) 
 	 * @see org.excitement.distsim.items.Cooccurrence#getRelation()
 	 */
 	@Override
