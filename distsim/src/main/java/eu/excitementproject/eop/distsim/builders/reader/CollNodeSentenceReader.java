@@ -43,7 +43,7 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 
 	public CollNodeSentenceReader(ConfigurationParams params) throws ConfigurationException, CreationException {
 		super(params);
-		this.pos = (PartOfSpeech)Factory.create(params.get(Configuration.PART_OF_SPEECH_CLASS),"");
+		this.pos = (PartOfSpeech)Factory.create(params.get(Configuration.PART_OF_SPEECH_CLASS),"other");
 		this.position = 0;
 	}
 

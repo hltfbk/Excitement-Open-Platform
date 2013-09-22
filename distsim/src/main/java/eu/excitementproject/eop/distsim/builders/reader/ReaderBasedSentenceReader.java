@@ -28,6 +28,7 @@ public abstract class ReaderBasedSentenceReader<T> extends FileBasedSentenceRead
 	
 	public ReaderBasedSentenceReader() {
 		charset = null;
+		reader = null;
 	}
 
 	public ReaderBasedSentenceReader(ConfigurationParams params) {
@@ -36,10 +37,12 @@ public abstract class ReaderBasedSentenceReader<T> extends FileBasedSentenceRead
 		} catch (ConfigurationException e) {
 			charset = Charset.forName(DEFAULT_ENCODING);	
 		}
+		reader = null;
 	}
 
 	public ReaderBasedSentenceReader(String encoding)  {
 		charset = Charset.forName(encoding);
+		reader = null;
 	}
 	
 	/* (non-Javadoc)
@@ -61,7 +64,8 @@ public abstract class ReaderBasedSentenceReader<T> extends FileBasedSentenceRead
 	@Override
 	public synchronized void closeSource() throws SentenceReaderException {
 		try {
-			reader.close();
+			if (reader != null)
+				reader.close();
 		} catch (IOException e) {
 			throw new SentenceReaderException(e);
 		}
