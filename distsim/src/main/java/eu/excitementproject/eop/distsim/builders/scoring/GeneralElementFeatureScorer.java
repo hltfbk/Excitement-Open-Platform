@@ -33,8 +33,8 @@ import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureCountStorag
 import eu.excitementproject.eop.distsim.storage.ElementFeatureCountStorage;
 import eu.excitementproject.eop.distsim.storage.ElementFeatureJointCounts;
 import eu.excitementproject.eop.distsim.storage.FeatureCount;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.SortUtil;
@@ -151,6 +151,7 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 
 				//compute element-feature scores
 				try {
+					
 					Element element = elementFeaturecounts.getElement(elementFeatureJointCount.getElementId());
 
 					ImmutableIterator<FeatureCount> featureCounts = elementFeatureJointCount.getFeatureCounts();
@@ -303,9 +304,9 @@ public static void main(String[] args) {
 		elements.loadState(elementsDevice); 
 		CountableIdentifiableStorage<Feature> features = dataStructureFactory.createFeaturesDataStucture();
 		features.loadState(featuresDevice);
-		PersistentBasicMap<BasicMap<Integer,Double>> elementFeatureCounts =  dataStructureFactory.createElementFeatureCountsDataStructure();
+		IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elementFeatureCounts =  dataStructureFactory.createElementFeatureCountsDataStructure();
 		elementFeatureCounts.loadState(elementFeatureCountsDevice);
-		PersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
+		IDKeyPersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
 		featureElements.loadState(featureElementsDevice);
 		ElementFeatureCountStorage elementFeatureCountStorage =  			
 			new DefaultElementFeatureCountStorage (elements,features,elementFeatureCounts,featureElements);

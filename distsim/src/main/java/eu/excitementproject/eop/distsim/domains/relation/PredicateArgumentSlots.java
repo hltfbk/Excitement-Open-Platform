@@ -11,7 +11,8 @@ import java.io.Serializable;
  */
 public enum PredicateArgumentSlots implements Serializable {
 	X,
-	Y;
+	Y,
+	ALL;
 	
 	public static PredicateArgumentSlots getOpposite(PredicateArgumentSlots item) {
 		return (item == X ? Y : X);

@@ -64,9 +64,9 @@ public class OsSort implements DiskSort
 	 */
 	public static void sortStatic(File inFile, File outFile, boolean deleteInFile) throws DiskSortIOException
 	{
-		sortStatic(inFile, outFile,deleteInFile,false);
+		sortStatic(inFile, outFile,deleteInFile,false,"");
 	}
-
+	
 	/**
 	 * Same as sort(), only static
 	 * @param inFile
@@ -75,7 +75,7 @@ public class OsSort implements DiskSort
 	 * @param bNumeric indicates whether a numeric sort is required (true)
 	 * @throws DiskSortIOException
 	 */
-	public static void sortStatic(File inFile, File outFile, boolean deleteInFile, boolean bNumeric) throws DiskSortIOException
+	public static void sortStatic(File inFile, File outFile, boolean deleteInFile, boolean bNumeric, String additionalArguments) throws DiskSortIOException
 	{
 		if (inFile == null)
 			throw new DiskSortIOException("no in file!");

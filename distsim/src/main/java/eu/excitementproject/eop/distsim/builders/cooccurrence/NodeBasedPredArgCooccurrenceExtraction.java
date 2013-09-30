@@ -31,11 +31,11 @@ public class NodeBasedPredArgCooccurrenceExtraction extends PredArgCooccurrenceE
 
 	public NodeBasedPredArgCooccurrenceExtraction(ConfigurationParams confParams) /*throws ConfigurationException*/ {
 		this();
-	}
+	} 
 
 	public NodeBasedPredArgCooccurrenceExtraction() {
-		this.extractor =  new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), true, true);
-	}
+		this.extractor =  new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true);
+	} 
 	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.builders.cooccurrence.CooccurrenceExtraction#extractCooccurrences(java.lang.Object)

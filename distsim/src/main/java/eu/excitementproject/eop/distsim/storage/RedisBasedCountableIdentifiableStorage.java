@@ -1,28 +1,28 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.util.HashSet;
-
 import java.util.Set;
-
-//import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Countable;
 import eu.excitementproject.eop.distsim.items.Externalizable;
 import eu.excitementproject.eop.distsim.items.Identifiable;
 import eu.excitementproject.eop.distsim.items.InvalidCountException;
+import eu.excitementproject.eop.distsim.items.LemmaPos;
+import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.storage.iterators.RedisBasedIterator;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Resetable;
 import eu.excitementproject.eop.distsim.util.Serialization;
 import eu.excitementproject.eop.distsim.util.SerializationException;
-
+//import org.apache.log4j.Logger;
 /**
  * An implementation of the {@link CountableIdentifiableStorage} interface, which stored objects with id, based on Redis DB
  * 
@@ -65,12 +65,15 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.CountableIdentifiableStorage#getData(int)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public T getData(int id) throws ItemNotFoundException, SerializationException {
 		String val = jedis.get(Integer.toString(id));
 		if (val == null)
 			throw new ItemNotFoundException("No item, assigned to id " + id + ", was found");
-		return Serialization.deserialize(val);
+		//tmp
+		return (T) new LemmaPosBasedElement(new LemmaPos("tmplemma",CanonicalPosTag.V));
+		//return Serialization.deserialize(val);
 	}
 
 	/* (non-Javadoc)
@@ -185,8 +188,14 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 	public Set<Integer> getItemIds(String regularExpr) {
 		Set<Integer> ret = new HashSet<Integer>();
 		
-		for (String key : jedis.keys(regularExpr)) 
-			ret.add(Integer.parseInt(jedis.get(key)));
+		//for (String key : jedis.keys(regularExpr)) 
+			//ret.add(Integer.parseInt(jedis.get(key)));
+			
+		
+		//@@tmp
+		//System.out.println("regularExpr: " + regularExpr);
+		ret.add(Integer.parseInt(jedis.get(regularExpr)));
+		
 		return ret;
 	}
 
