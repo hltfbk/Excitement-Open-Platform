@@ -35,8 +35,8 @@ public class DefaultElementFeatureCountStorage implements ElementFeatureCountSto
 	public DefaultElementFeatureCountStorage(
 			CountableIdentifiableStorage<Element> elementStorage,
 			CountableIdentifiableStorage<Feature> featureStorage,
-			PersistentBasicMap<BasicMap<Integer,Double>> elemntFeaturesStorage,
-			PersistentBasicMap<BasicSet<Integer>> fesatureElementsStorage) {
+			IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeaturesStorage,
+			IDKeyPersistentBasicMap<BasicSet<Integer>> fesatureElementsStorage) {
 		
 		this.elementStorage = elementStorage;
 		this.featureStorage = featureStorage;
@@ -146,7 +146,7 @@ public class DefaultElementFeatureCountStorage implements ElementFeatureCountSto
 	 * @see org.excitement.distsim.storage.ElementFeatureCountStorage#getAllFesatureElements()
 	 */
 	@Override
-	public PersistentBasicMap<BasicSet<Integer>> getFeatureElementsMapping() {
+	public IDKeyPersistentBasicMap<BasicSet<Integer>> getFeatureElementsMapping() {
 		return fesatureElements;
 	}
 
@@ -253,8 +253,8 @@ public class DefaultElementFeatureCountStorage implements ElementFeatureCountSto
 
 	protected final CountableIdentifiableStorage<Element> elementStorage;
 	protected final CountableIdentifiableStorage<Feature> featureStorage;
-	protected final PersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts;
-	protected final PersistentBasicMap<BasicSet<Integer>> fesatureElements;	
+	protected final IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts;
+	protected final IDKeyPersistentBasicMap<BasicSet<Integer>> fesatureElements;	
 	protected final double totalElementCount;
 
 

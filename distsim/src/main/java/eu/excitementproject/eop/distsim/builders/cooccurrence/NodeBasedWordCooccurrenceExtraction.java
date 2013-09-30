@@ -72,6 +72,17 @@ public class NodeBasedWordCooccurrenceExtraction extends WordCooccurrenceExtract
 					Relation<String> rel = new DefaultRelation<String>(childNode.getInfo().getEdgeInfo().getDependencyRelation().getStringRepresentation());
 					textUnints.add(parent);
 					textUnints.add(child);
+					
+					//debug
+					/*if (childNode.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag() == CanonicalPosTag.V ||
+						parentNode.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag() == CanonicalPosTag.V) {					
+							System.out.println();
+							System.out.println(parent);
+							System.out.println(rel);
+							System.out.println(child);
+							System.out.println();
+						}*/
+						
 					coOccurrences.add(new DefaultCooccurrence<String>(child, parent,rel));
 				}
 			}

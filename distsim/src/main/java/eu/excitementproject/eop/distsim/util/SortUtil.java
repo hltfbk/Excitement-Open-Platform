@@ -159,9 +159,9 @@ public class SortUtil {
 	 * @param parameters extra parameters for 'sort' OS command line 
 	 * @throws DiskSortIOException
 	 */
-	public static void sortFile(File infile, File outfile, boolean bNumeric) throws DiskSortIOException {
+	public static void sortFile(File infile, File outfile, boolean bNumeric, String additionalArgs) throws DiskSortIOException {
 		logger.info("Start soring " + infile + " file");
-		OsSort.sortStatic(infile,outfile, false, bNumeric);
+		OsSort.sortStatic(infile,outfile, false, bNumeric, additionalArgs);
 		logger.info("Finish soring " + infile + " file");
 	}
 	
@@ -173,10 +173,10 @@ public class SortUtil {
 	 * @throws DiskSortIOException
 	 */
 
-	public static void sortFile(String file, boolean bNumeric) throws DiskSortIOException {
+	public static void sortFile(String file, boolean bNumeric, String additionalArgs) throws DiskSortIOException {
 		File infile = new File(file);
 		File sortedfile = new File(file + ".sorted.tmp");
-		sortFile(infile,sortedfile,bNumeric);
+		sortFile(infile,sortedfile,bNumeric,additionalArgs);
 		infile.delete();
 		sortedfile.renameTo(infile);
 	}

@@ -26,6 +26,10 @@ public class IdTroveBasicIntSetFile extends IdDataFile {
 		super(file,bRead);
 	}
 
+	public IdTroveBasicIntSetFile(java.io.File file, Boolean bRead, String encoding) {
+		super(file,bRead, encoding);
+	}
+	
 	public IdTroveBasicIntSetFile(ConfigurationParams params) throws ConfigurationException {
 		super(params);
 	}

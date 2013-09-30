@@ -1,12 +1,5 @@
 package eu.excitementproject.eop.distsim.application.converter;
 
-import java.io.BufferedReader;
-
-
-import java.io.File;
-import java.io.FileReader;
-import java.util.LinkedHashMap;
-
 import eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.SortUtil;
 import gnu.trove.iterator.TIntObjectIterator;
@@ -14,6 +7,11 @@ import gnu.trove.map.TIntDoubleMap;
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntDoubleHashMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.LinkedHashMap;
 
 public class MemoryBasedScoreAggregator {
 	public static void main(String[] args) {

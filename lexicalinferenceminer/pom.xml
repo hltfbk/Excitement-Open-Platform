@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+   	<parent>
+		<groupId>eu.excitementproject</groupId>
+	  	<artifactId>eop</artifactId>
+	    <version>1.0.3-SNAPSHOT</version>
+	</parent>
+            
+   	
+  <artifactId>lexicalminer</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>lexicalminer</description>
+
+  <name>lexicalminer</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+      
+      <dependency>
+	<groupId>xerces</groupId>
+	<artifactId>xercesImpl</artifactId>
+	<version>2.9.1</version>
+</dependency>
+            
+      
+    <dependency>
+		<groupId>eu.excitementproject</groupId>
+  		<artifactId>common</artifactId>
+  		<version>1.0.3-SNAPSHOT</version>
+  	</dependency>
+      
+          
+     <dependency>
+		<groupId>ac.biu.nlp</groupId>
+  		<artifactId>parse-utils</artifactId>
+  		<version>001</version>
+  	</dependency>
+  	
+     <dependency>
+	    	<groupId>eu.excitementproject</groupId>
+    		<artifactId>lap</artifactId>
+    		<version>1.0.3-SNAPSHOT</version>
+    	</dependency>
+    	
+         	
+    	<dependency>
+  <groupId>de.tudarmstadt.ukp.wikipedia</groupId>
+  <artifactId>de.tudarmstadt.ukp.wikipedia.api</artifactId>
+  <version>0.9.2</version>
+</dependency>
+
+    	<dependency>
+  <groupId>de.tudarmstadt.ukp.wikipedia</groupId>
+  <artifactId>de.tudarmstadt.ukp.wikipedia.revisionmachine</artifactId>
+  <version>0.9.2</version>
+</dependency>
+<dependency>
+  <groupId>de.tudarmstadt.ukp.wikipedia</groupId>
+  <artifactId>de.tudarmstadt.ukp.wikipedia.timemachine</artifactId>
+  <version>0.9.2</version>
+</dependency>
+<dependency>
+  <groupId>de.tudarmstadt.ukp.wikipedia</groupId>
+  <artifactId>de.tudarmstadt.ukp.wikipedia.util</artifactId>
+  <version>0.9.2</version>
+</dependency>
+<dependency>
+  <groupId>de.tudarmstadt.ukp.wikipedia</groupId>
+  <artifactId>de.tudarmstadt.ukp.wikipedia.parser</artifactId>
+  <version>0.9.2</version>
+</dependency>
+    	
+<dependency>
+  <groupId>de.tudarmstadt.ukp.wikipedia</groupId>
+  <artifactId>de.tudarmstadt.ukp.wikipedia.datamachine</artifactId>
+  <version>0.9.2</version>
+</dependency>
+    	
+    	
+     
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

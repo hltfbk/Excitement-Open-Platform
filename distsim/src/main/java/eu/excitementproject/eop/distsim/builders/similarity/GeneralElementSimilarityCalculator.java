@@ -31,9 +31,9 @@ import eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScor
 import eu.excitementproject.eop.distsim.storage.BasicSet;
 import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureScoreStorage;
 import eu.excitementproject.eop.distsim.storage.ElementFeatureScoreStorage;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.NoScoreFoundException;
 import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;
@@ -226,12 +226,15 @@ public class GeneralElementSimilarityCalculator implements ElementSimilarityCalc
 												//logger.error("score 0 for featureId " + featureId + ", entailingElementId " + entailingElementId);
 											}
 											if (score2 > 0) {
-												ElementSimilarityScoring entailingSimilarityScoring = entailingElementID2SimilarityScoring.get(element2Id);
-												if (entailingSimilarityScoring == null) {
-													entailingSimilarityScoring = elementSimilarityScoringFactory.create();
-													entailingElementID2SimilarityScoring.put(element2Id,entailingSimilarityScoring);
+												
+												if (outR2LDevice != null) {
+													ElementSimilarityScoring entailingSimilarityScoring = entailingElementID2SimilarityScoring.get(element2Id);
+													if (entailingSimilarityScoring == null) {
+														entailingSimilarityScoring = elementSimilarityScoringFactory.create();
+														entailingElementID2SimilarityScoring.put(element2Id,entailingSimilarityScoring);
+													}
+													entailingSimilarityScoring.addElementFeatureScore(score2, score1);
 												}
-												entailingSimilarityScoring.addElementFeatureScore(score2, score1);
 												
 												ElementSimilarityScoring entailedSimilarityScoring = entailedElementID2SimilarityScoring.get(element2Id);
 												if (entailedSimilarityScoring == null) {
@@ -247,7 +250,8 @@ public class GeneralElementSimilarityCalculator implements ElementSimilarityCalc
 								}
 							}
 							
-							writeSimnilarity(element1Id,element1Score,entailingElementID2SimilarityScoring.iterator(),true);
+							if (outR2LDevice !=  null)
+								writeSimnilarity(element1Id,element1Score,entailingElementID2SimilarityScoring.iterator(),true);
 							writeSimnilarity(element1Id,element1Score,entailedElementID2SimilarityScoring.iterator(),false);
 						}
 					}
@@ -375,11 +379,11 @@ public class GeneralElementSimilarityCalculator implements ElementSimilarityCalc
 			elementScoresDevice.open();
 			featureElementsDevice.open();
 
-			PersistentBasicMap<LinkedHashMap<Integer, Double>> elementFeatureScores = dataStructureFactory.createElementFeatureScoresDataStructure();
+			IDKeyPersistentBasicMap<LinkedHashMap<Integer, Double>> elementFeatureScores = dataStructureFactory.createElementFeatureScoresDataStructure();
 			elementFeatureScores.loadState(elemntFeaturesScoresDevice);
-			PersistentBasicMap<Double> elementScores = dataStructureFactory.createElementScoresDataStructure();
+			IDKeyPersistentBasicMap<Double> elementScores = dataStructureFactory.createElementScoresDataStructure();
 			elementScores.loadState(elementScoresDevice);
-			PersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
+			IDKeyPersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
 			featureElements.loadState(featureElementsDevice);
 			ElementFeatureScoreStorage elementFeatureScoreStorage = new DefaultElementFeatureScoreStorage (
 					elementFeatureScores,elementScores,featureElements);
@@ -394,14 +398,20 @@ public class GeneralElementSimilarityCalculator implements ElementSimilarityCalc
 			//new GeneralElementSimilarityCalculator(iThreadNum,elementSimilarityScoringFactory);
 					
 			// claculate similarities
-			ConfigurationParams storageR2LDeviceParams = confFile.getModuleConfiguration(Configuration.ELEMENTS_SIMILARITIES_R2L_STORAGE_DEVICE);			
-			PersistenceDevice similaritiesOutR2LDevice = (PersistenceDevice)Factory.create(storageR2LDeviceParams.get(Configuration.CLASS), storageR2LDeviceParams);
-			similaritiesOutR2LDevice.open();
+			PersistenceDevice similaritiesOutR2LDevice = null;
+			try {
+				ConfigurationParams storageR2LDeviceParams = confFile.getModuleConfiguration(Configuration.ELEMENTS_SIMILARITIES_R2L_STORAGE_DEVICE);			
+				similaritiesOutR2LDevice = (PersistenceDevice)Factory.create(storageR2LDeviceParams.get(Configuration.CLASS), storageR2LDeviceParams);
+				similaritiesOutR2LDevice.open();
+			} catch (ConfigurationException e) {
+				logger.info("L2R device is not defined");
+			}
 			ConfigurationParams storageL2RDeviceParams = confFile.getModuleConfiguration(Configuration.ELEMENTS_SIMILARITIES_L2R_STORAGE_DEVICE);			
 			PersistenceDevice similaritiesOutL2RDevice = (PersistenceDevice)Factory.create(storageL2RDeviceParams.get(Configuration.CLASS), storageL2RDeviceParams);
 			similaritiesOutL2RDevice.open();
 			similator.measureElementSimilarity(elementFeatureScoreStorage,similaritiesOutR2LDevice,similaritiesOutL2RDevice);
-			similaritiesOutR2LDevice.close();
+			if (similaritiesOutR2LDevice != null)
+				similaritiesOutR2LDevice.close();
 			similaritiesOutL2RDevice.close();			
 			
 		} catch (Exception e) {

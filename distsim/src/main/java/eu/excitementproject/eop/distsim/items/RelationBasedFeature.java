@@ -22,6 +22,10 @@ public abstract class RelationBasedFeature<R,T   extends Serializable> extends D
  
 	private static final long serialVersionUID = 1L;
 
+	public RelationBasedFeature() {
+		super();
+	}
+	
 	public RelationBasedFeature(R relation, T data) {
 		super(new Pair<R,T>(relation,data));
 	}

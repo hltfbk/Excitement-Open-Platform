@@ -3,6 +3,9 @@
  */
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Instantiation of {@link eu.excitementproject.eop.distsim.items.DefaultElement} with a state of type string
@@ -18,7 +21,10 @@ public class StringBasedElement extends DeafaultElement<String> {
 
 	private static final long serialVersionUID = 1L;
 
-
+	public StringBasedElement() {
+		super();
+	}
+	
 	public StringBasedElement(String data) {
 		super(data);
 	}
@@ -85,6 +91,18 @@ public class StringBasedElement extends DeafaultElement<String> {
 		} catch (UndefinedKeyException e) {
 			return false;
 		}
+	}
+
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(data);
+		return ret;
+	}
+
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		data = key;		
 	}
 
 }

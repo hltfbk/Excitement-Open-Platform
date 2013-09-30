@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.io.Serializable;
+import java.util.concurrent.ExecutionException;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.distsim.items.Countable;
@@ -63,8 +64,9 @@ public interface CountableIdentifiableStorage<T extends Serializable & Countable
 	 * @param count the number of times the given data was seen
 	 * @return the stored data
 	 * @throws UndefinedKeyException in a case where the key serialization of the given data object is not defined
+	 * @throws ExecutionException 
 	 */	
-	T addData(T data, double count) throws UndefinedKeyException, InvalidCountException,SerializationException, InvalidIDException;
+	T addData(T data, double count) throws UndefinedKeyException, InvalidCountException,SerializationException, InvalidIDException, ExecutionException;
 
 	/**
 	 * Add a given object to the storage under the given id.

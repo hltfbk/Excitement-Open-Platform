@@ -12,6 +12,10 @@ public class PredicateElement extends StringBasedElement {
 	
 	private static final long serialVersionUID = 1L;
 
+	public PredicateElement() {
+		super();
+	}
+	
 	public PredicateElement(String predicate) {
 		super(predicate);
 	}

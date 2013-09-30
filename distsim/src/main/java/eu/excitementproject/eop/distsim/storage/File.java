@@ -30,18 +30,27 @@ import eu.excitementproject.eop.distsim.util.SerializationException;
  */
 public class File implements PersistenceDevice {
 
-	/**
-	 * @throws IOException 
-	 * 
-	 */
+	protected static final String DEFAULT_ENCODING = "UTF-8";
+	
+	
 	public File(java.io.File file, boolean bRead) {
+		this(file,bRead, DEFAULT_ENCODING);
+	}
+	
+	public File(java.io.File file, boolean bRead, String encoding) {
 		this.file = file;
 		this.bRead = bRead;
+		this.encoding = encoding;
 	}
 
 	public File(ConfigurationParams params) throws ConfigurationException {
 		this.file = new java.io.File(params.get(Configuration.FILE));
 		this.bRead = params.get(Configuration.READ_WRITE).equals("read");
+		try {
+			this.encoding = params.get(Configuration.ENCODING);
+		} catch (ConfigurationException e) {
+			this.encoding = DEFAULT_ENCODING;
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -50,11 +59,11 @@ public class File implements PersistenceDevice {
 	@Override
 	public void open()  throws IOException {
 		if (bRead) {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF-8"));
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),encoding));
 			writer = null;
 		} else {
 			reader = null;
-			writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF-8"));
+			writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),encoding));
 		}		
 	}
 
@@ -78,7 +87,7 @@ public class File implements PersistenceDevice {
 	@Override
 	public synchronized Pair<Integer, Serializable> read() throws SerializationException, IOException {
 		if (reader == null)
-			throw new IOException("Writing device is not opened");
+			throw new IOException("Reading device is not opened");
 		String line = reader.readLine();
 		if (line == null)
 			return null;
@@ -109,6 +118,7 @@ public class File implements PersistenceDevice {
 
 	protected java.io.File file;
 	protected boolean bRead;
+	protected String encoding;
 	protected BufferedReader reader;
 	protected PrintWriter writer;
 }
