@@ -1,5 +1,8 @@
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
   * A generic implementation of the {@link Relation} interface
@@ -74,5 +77,21 @@ public class DefaultRelation<T> implements Relation<T> {
 	}
 	
 	protected final T value;
+
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+	
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		throw new UnsupportedOperationException();		
+	}
 	
 }

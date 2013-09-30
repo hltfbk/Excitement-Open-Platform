@@ -3,6 +3,9 @@
  */
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Represents a predicate of some proposition (composed of a predicate and some arguments).
@@ -88,4 +91,23 @@ public class Predicate extends DefaultIdentifiableCountable implements TextUnit 
 	}
 	
 	protected String predicate;
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		predicate = key;
+		
+	}
 }

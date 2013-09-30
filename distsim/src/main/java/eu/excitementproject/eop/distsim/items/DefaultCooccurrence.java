@@ -1,5 +1,8 @@
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * A default implementation of the {@link Cooccurrence} interface for lexical composed of two text units 
@@ -58,19 +61,39 @@ public class DefaultCooccurrence<R> extends DefaultIdentifiableCountable impleme
 	 */
 	@Override
 	public String toKey() throws UndefinedKeyException {
+		String key1 = textItem1.toKey();
+		String key2 = textItem2.toKey();
+		if (key1.contains(DELIMITER) || key2.contains(DELIMITER))
+			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
+
 		StringBuilder sb = new StringBuilder();
-		try {
-			sb.append(textItem1.getID());
-			sb.append(DELIMITER);
-			sb.append(relation.toKey());
-			sb.append(DELIMITER);
-			sb.append(textItem2.getID());
-		} catch (InvalidIDException e) {
-			throw new UndefinedKeyException();
-		}
+		sb.append(key1);
+		sb.append(DELIMITER);
+		sb.append(relation.toKey());
+		sb.append(DELIMITER);
+		sb.append(key1);
 		return sb.toString(); 
 	}
-	
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		throw new UnsupportedOperationException();
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
@@ -122,7 +145,7 @@ public class DefaultCooccurrence<R> extends DefaultIdentifiableCountable impleme
 		}
 	}
 	
-	protected static final String DELIMITER = "###DefaultCooccurrence###";
+	protected static final String DELIMITER = "#";
 	
 	protected TextUnit textItem1;
 	protected TextUnit textItem2;

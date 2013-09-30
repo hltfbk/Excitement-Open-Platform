@@ -3,6 +3,8 @@
  */
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.Set;
+
 
 
 
@@ -21,8 +23,10 @@ public class LemmaPosFeature extends DeafaultFeature<LemmaPos>  {
 
 	private static final long serialVersionUID = 1L;
 	
-	protected final String DELIMITER = ":";
-	
+	public LemmaPosFeature() {
+		super(new LemmaPos());
+	}
+			
 	public LemmaPosFeature(LemmaPos data) {
 		super(data);
 	}
@@ -43,7 +47,7 @@ public class LemmaPosFeature extends DeafaultFeature<LemmaPos>  {
 	 * @see org.excitement.distsim.items.KeyExternalizable#toKey()
 	 */
 	@Override
-	public String toKey()  {
+	public String toKey() throws UndefinedKeyException  {
 		return data.toKey();
 	}
 
@@ -68,7 +72,11 @@ public class LemmaPosFeature extends DeafaultFeature<LemmaPos>  {
 	 */
 	@Override
 	public int hashCode() {
-		return toKey().hashCode();
+		try {
+			return toKey().hashCode();
+		} catch (UndefinedKeyException e) {
+			return 0;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -85,4 +93,22 @@ public class LemmaPosFeature extends DeafaultFeature<LemmaPos>  {
 		LemmaPosFeature other = (LemmaPosFeature) obj;
 		return data.equals(other.data);
 	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		data.fromKey(key);
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		return data.toKeys();
+	}
+
 }

@@ -2,15 +2,13 @@ package eu.excitementproject.eop.distsim.storage;
 
 import java.util.NoSuchElementException;
 
-
-//import org.apache.log4j.Logger;
-
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultRelation;
 import eu.excitementproject.eop.distsim.items.IDBasedCooccurrence;
 import eu.excitementproject.eop.distsim.items.TextUnit;
+//import org.apache.log4j.Logger;
 
 /**
  * Implements the BasicCooccurrenceStorage interface, based on a given PersistenceDevice of the co-occurrences and TextUnit storage

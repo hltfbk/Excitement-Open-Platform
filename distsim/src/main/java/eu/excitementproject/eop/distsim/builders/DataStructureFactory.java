@@ -9,7 +9,7 @@ import eu.excitementproject.eop.distsim.items.TextUnit;
 import eu.excitementproject.eop.distsim.storage.BasicMap;
 import eu.excitementproject.eop.distsim.storage.BasicSet;
 import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.CreationException;
 
 /**
@@ -26,8 +26,8 @@ public interface DataStructureFactory {
 	CountableIdentifiableStorage<IDBasedCooccurrence> createCooccurrencesDataStucture()  throws CreationException;
 	CountableIdentifiableStorage<Element> createElementsDataStucture() throws CreationException;
 	CountableIdentifiableStorage<Feature> createFeaturesDataStucture() throws CreationException;
-	PersistentBasicMap<BasicMap<Integer,Double>> createElementFeatureCountsDataStructure() throws CreationException;
-	PersistentBasicMap<BasicSet<Integer>> createFeatureElementsDataStructure() throws CreationException;	
-	PersistentBasicMap<LinkedHashMap<Integer,Double>> createElementFeatureScoresDataStructure() throws CreationException;
-	PersistentBasicMap<Double> createElementScoresDataStructure() throws CreationException;
+	IDKeyPersistentBasicMap<BasicMap<Integer,Double>> createElementFeatureCountsDataStructure() throws CreationException;
+	IDKeyPersistentBasicMap<BasicSet<Integer>> createFeatureElementsDataStructure() throws CreationException;	
+	IDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> createElementFeatureScoresDataStructure() throws CreationException;
+	IDKeyPersistentBasicMap<Double> createElementScoresDataStructure() throws CreationException;
 }

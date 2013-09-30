@@ -88,7 +88,7 @@ public interface ElementFeatureCountStorage  extends Persistence {
 	 * 
 	 * @return a mapping of fearure-ids to their element lists
 	 */
-	PersistentBasicMap<BasicSet<Integer>> getFeatureElementsMapping();	
+	IDKeyPersistentBasicMap<BasicSet<Integer>> getFeatureElementsMapping();	
 
 	/**
 	 * 

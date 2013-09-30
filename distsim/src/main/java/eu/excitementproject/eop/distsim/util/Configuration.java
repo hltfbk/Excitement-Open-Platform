@@ -67,6 +67,8 @@ public class Configuration {
 	public static final String FILE_TO_REDIS = "file-to-redis";
 	public static final String INFILE = "infile";
 	public static final String OUTFILE = "outfile";
+	public static final String TEXTUNITS_OUTFILE = "textunits-outfile";
+	public static final String COOCCURRENCES_OUTFILE = "cooccurrences-outfile";
 	public static final String RIGHT_TO_LEFT_SIMILARITIES = "right-to-left-similarities";
 	public static final String INCLUDE_DEPENDENCY_RELATION = "include-dependency-relation";
 	public static final String STORAGE_DEVICE_CLASS = "storage-device-class";
@@ -78,5 +80,41 @@ public class Configuration {
 	public static final String ENCODING = "encoding";
 	public static final String DELIMITER = "delimiter";
 	public static final String PART_OF_SPEECH_CLASS = "part-of-speech-class";
+	public static final String PART_OF_SPEECH_FACTORY_CLASS = "part-of-speech-factory-class";
+	public static final String IGNORE_SAVED_CANONICAL_POS_TAG = "ignore-saved-canonical-pos-tag";
+	public static final String FILTERED_TEXTUNITS_FILE = "filtered-textunits-file";
+	public static final String TMP_CONTENT_DIR = "tmp-content-dir";
+	public static final String IS_CORPUS_INDEX = "is-index-corpus";
+	public static final String CO_OCCURENCE_CLASS = "cooccurrence-class";
+	public static final String ELEMENT_CLASS = "element-class";
+	public static final String FEATURE_CLASS = "feature-class";
+	public static final String SIMILARITY_FILE = "similarity-file";
+	public static final String ELEMENTS_FILE = "elements-file";
+	public static final String CONFIGURATION_FILE = "configuration-file";
+	public static final String CONFIGURATION_MODULE = "configuration-module";
+	public static final String MAPRED_COOCCURRENCE_COUNTING = "mapred-cooccurrence-counting";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1 = "separate-filter-and-index-elements-features-1";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2 = "separate-filter-and-index-elements-features-2";
+	public static final String INDIR = "in-dir";
+	public static final String OUTDIR = "out-dir";
+	public static final String COOCCURENCE_EXTRACTION_CLASS = "cooccurrence-extraction-class";
+	public static final String FEATURES_FILE = "features-file";
+	public static final String ELEMENT_FEATURE_COUNTS_FILE = "element-feature-counts-file";
+	public static final String FEATURE_ELEMENTS_FILE = "feature-elements-file";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1_X = "separate-filter-and-index-elements-features-1-x";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2_X = "separate-filter-and-index-elements-features-2-x";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1_Y = "separate-filter-and-index-elements-features-1-y";
+	public static final String MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2_Y = "separate-filter-and-index-elements-features-2-y";
+	public static final String AE_TEMPLATE_FILE = "ae-template-file";
+	public static final String IS_SORTED = "is-sorted";
+	public static final String TMP_DIR = "tmp-dir";
+	public static final String TOP_N_RULES = "top-n-rules";
+	public static final String L2R_REDIS_HOST = "l2r-redis-host";
+	public static final String L2R_REDIS_PORT = "l2r-redis-port"; 
+	public static final String R2L_REDIS_HOST = "r2l-redis-host";
+	public static final String R2L_REDIS_PORT = "r2l-redis-port";
+	public static final String RESOURCE_NAME = "resource-name";
+	public static final String KNOWLEDGE_RESOURCE = "knowledge-resource"; 
+
 }
 

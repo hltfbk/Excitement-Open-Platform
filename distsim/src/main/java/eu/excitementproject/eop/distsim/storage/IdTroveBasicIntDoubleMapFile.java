@@ -30,6 +30,10 @@ public class IdTroveBasicIntDoubleMapFile extends IdDataFile {
 		super(file,bRead);
 	}
 
+	public IdTroveBasicIntDoubleMapFile(java.io.File file, Boolean bRead, String encoding) {
+		super(file,bRead,encoding);
+	}
+
 	public IdTroveBasicIntDoubleMapFile(ConfigurationParams params) throws ConfigurationException {
 		super(params);
 	}

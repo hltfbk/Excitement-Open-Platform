@@ -104,6 +104,10 @@ public class Redis implements PersistenceDevice {
 			jedis.flushAll();
 	}
 	
+	public void rpush(String id, String data) {
+		jedis.rpush(id, data);
+	}
+	
 	protected Jedis jedis;
 	protected int currID;
 	

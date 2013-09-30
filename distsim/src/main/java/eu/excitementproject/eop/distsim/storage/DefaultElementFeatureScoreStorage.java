@@ -30,9 +30,9 @@ public class DefaultElementFeatureScoreStorage implements ElementFeatureScoreSto
 		//Assumptions: 
 		// - The features for each element in the given elemntFeaturesScores are ordered descendingly by their scores
 		// - The elements in the given elemntScores are ordered descendingly by their scores			
-		PersistentBasicMap<LinkedHashMap<Integer,Double>> elemntFeaturesScores,
-		PersistentBasicMap<Double> elemntScores,
-		PersistentBasicMap<BasicSet<Integer>> featureElements) {
+		IDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> elemntFeaturesScores,
+		IDKeyPersistentBasicMap<Double> elemntScores,
+		IDKeyPersistentBasicMap<BasicSet<Integer>> featureElements) {
 		this.elemntFeaturesScores = elemntFeaturesScores;
 		this.elementScores = elemntScores;
 		this.fesatureElements = featureElements;
@@ -204,7 +204,7 @@ public class DefaultElementFeatureScoreStorage implements ElementFeatureScoreSto
 	}
 	
 	// Assumption: The features of each element are ordered descendingly by their scores
-	protected final PersistentBasicMap<LinkedHashMap<Integer,Double>> elemntFeaturesScores;
-	protected final PersistentBasicMap<BasicSet<Integer>> fesatureElements;
-	protected final PersistentBasicMap<Double> elementScores;
+	protected final IDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> elemntFeaturesScores;
+	protected final IDKeyPersistentBasicMap<BasicSet<Integer>> fesatureElements;
+	protected final IDKeyPersistentBasicMap<Double> elementScores;
 }

@@ -60,7 +60,7 @@ public class JointCountIterator extends ImmutableIterator<ElementFeatureJointCou
 		if (iterator.hasNext()) {
 			Pair<Integer, BasicMap<Integer, Double>> pair = iterator.next();
 			next = new DefaultElementFeatureJointCounts(pair.getFirst(), pair.getSecond().iterator());
-		} else
+		} else 
 			next = null;
 	}
 

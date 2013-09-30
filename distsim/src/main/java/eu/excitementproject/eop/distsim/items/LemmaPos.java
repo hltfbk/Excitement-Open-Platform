@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.distsim.items;
 
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 
@@ -16,17 +17,37 @@ import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosT
  *
  * 
  */
-public class LemmaPos implements Serializable, Externalizable {
+public class LemmaPos implements Externalizable {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
-	protected final String DELIMITER = "###LemmaPos###";
+	
+	public final String DELIMITER = "#";
 
 	public LemmaPos(String lemma, CanonicalPosTag pos) {
 		this.lemma = lemma;
 		this.pos = pos;
 	}
 	
+	public LemmaPos() {
+		this.lemma = null;;
+		this.pos = null;
+	}
+	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		String[] toks = key.split(DELIMITER);
+		if (toks.length != 2)
+			throw new UndefinedKeyException("Cannot decode key " + key + " to a LemmaPos object");
+		this.lemma = toks[0];
+		this.pos = CanonicalPosTag.valueOf(toks[1]);			
+	}
+
 	/**
 	 * @return the lemma
 	 */
@@ -45,13 +66,33 @@ public class LemmaPos implements Serializable, Externalizable {
 	 * @see org.excitement.distsim.items.Externalizable#toKey()
 	 */
 	@Override
-	public String toKey()  {
+	public String toKey() throws UndefinedKeyException  {
+		if (lemma.contains(DELIMITER))
+			throw new UndefinedKeyException("Cannot encode lemma " + lemma);
 		StringBuilder sb = new StringBuilder();
 		sb.append(lemma);
 		sb.append(DELIMITER);
 		sb.append(pos == null ? "*" : pos.name());
 		return sb.toString();
 	}
+
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.items.Externalizable#toKey()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException  {
+		if (lemma.equals(DELIMITER))
+			throw new UndefinedKeyException("Cannot encode lemme " + lemma);
+		Set<String> ret = new HashSet<String>();
+		if (pos == null) {
+			for (CanonicalPosTag relpos : relevantPos)
+				ret.add(lemma + DELIMITER + relpos);
+		} else
+			ret.add(lemma + DELIMITER + pos.name());
+		
+		return ret;
+	}
+
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -101,5 +142,15 @@ public class LemmaPos implements Serializable, Externalizable {
 	
 	protected String lemma;
 	protected CanonicalPosTag pos;
+	
+	protected final static Set<CanonicalPosTag> relevantPos;
+	
+	static {
+		relevantPos = new HashSet<CanonicalPosTag>();
+		relevantPos.add(CanonicalPosTag.V);
+		relevantPos.add(CanonicalPosTag.N);
+		relevantPos.add(CanonicalPosTag.ADJ);
+		relevantPos.add(CanonicalPosTag.ADV);
+	}
 
 }
