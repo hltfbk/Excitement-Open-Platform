@@ -202,7 +202,7 @@ public class TextProITPartOfSpeech extends PartOfSpeech
 	
 	protected void setTextProITPos(String posTagString)
 	{
-		System.out.println("POS: " + posTagString);
+//		System.out.println("POS: " + posTagString);
 		if (_textproITPos==null)
 		{
 			if (PUNCTUATION.contains(posTagString)){

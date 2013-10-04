@@ -69,6 +69,7 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 					else 
 						position += line.getBytes(charset).length;
 				}
+				System.out.println("LINE: " + line);
 				String[] toks = line.split("\t");
 				int nodeId = Integer.parseInt(toks[0]);
 				int parentId = Integer.parseInt(toks[6]);
@@ -76,7 +77,7 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 				id2node.put(nodeId,node);
 				child2parent.put(nodeId,parentId);
 				if (parentId == 0) {
-					if (rootId != -1)
+					if (rootId != -1) 
 						sProblem = "More than one root was identified!";
 					else 
 						rootId = nodeId;
