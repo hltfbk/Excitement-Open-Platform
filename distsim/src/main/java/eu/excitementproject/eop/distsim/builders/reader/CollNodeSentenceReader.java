@@ -69,7 +69,6 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 					else 
 						position += line.getBytes(charset).length;
 				}
-				System.out.println("LINE: " + line);
 				String[] toks = line.split("\t");
 				int nodeId = Integer.parseInt(toks[0]);
 				int parentId = Integer.parseInt(toks[6]);
