@@ -14,6 +14,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.util.Configuration;
 
@@ -28,7 +29,7 @@ import eu.excitementproject.eop.distsim.util.Configuration;
  */
 public class TestLemmaPosSimilarity {
 	
-	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ConfigurationFileDuplicateKeyException, ConfigurationException {
+	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ConfigurationFileDuplicateKeyException, ConfigurationException, ElementTypeException {
 		
 		if (args.length != 1) {
 			System.out.println("Usage: eu.excitementproject.eop.distsim.application.TestLemmaPosSimilarity <configuration file>");

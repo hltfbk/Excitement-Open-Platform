@@ -28,6 +28,8 @@ public class RedisBasedStringListBasicMap {
 	
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
+
+	public static final String ELEMENT_CLASS_NAME_KEY = "element-class-name";
 	
 	public RedisBasedStringListBasicMap(String host, int port) {
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), host,port);
@@ -62,6 +64,24 @@ public class RedisBasedStringListBasicMap {
 	//	System.out.println("getTopN time: " + (t2-t1) + " ms");
 		return ret;
 	}
+	
+	/**
+	 * Gets the name of the type of the elements in the database, based on the assumption that the type name is stored in the database under a well-defined key. 
+	 * 
+	 * @return the name of the element type. in case the name is not stored in the database, null value will be returned
+	 */
+	public String getElementClassName() {
+		return  jedis.get(ELEMENT_CLASS_NAME_KEY);
+	}
 
+	/**
+	 * Sets the name of the element types in the database, to the database under a well-defined key
+	 * 
+	 * @param elementClass The type of the elements in the database
+	 */
+	public void setElementClassName(String elementClassName) {
+		jedis.set(ELEMENT_CLASS_NAME_KEY, elementClassName);
+	}
+	
 	protected Jedis jedis;
 }
