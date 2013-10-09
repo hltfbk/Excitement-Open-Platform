@@ -63,6 +63,7 @@ public abstract class IdDataFile extends File {
 		if (line == null)
 			return null;
 		String[] toks = line.split("\t");
+		
 		if (toks.length < 1)
 			throw new SerializationException("wrong line format: " + line);		
 		int id = Integer.parseInt(toks[0]);		

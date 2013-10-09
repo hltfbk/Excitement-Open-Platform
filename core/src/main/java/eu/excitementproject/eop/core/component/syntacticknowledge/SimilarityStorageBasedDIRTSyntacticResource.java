@@ -1,9 +1,10 @@
 /**
  * 
  */
-package eu.excitementproject.eop.distsim.resource;
+package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.util.Collection;
+
 
 
 import java.util.LinkedList;
@@ -27,7 +28,6 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.parse.tree.match.pathmatcher.PathAllEmbeddedMatcher;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.core.component.syntacticknowledge.BasicMatchCriteria;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTree;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
@@ -36,10 +36,13 @@ import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.StringBasedElement;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
+import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 import eu.excitementproject.eop.distsim.util.Configuration;
 
 /**
+ * Implements the SyntacticResource for DIRT rules stored in a {@link eu.excitementproject.eop.distsim.storage.SimilarityStorage}
+ * 
  * @author Meni Adler
  * @since Aug 28 2013
  *
@@ -47,7 +50,14 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticResource<Info, BasicNode> {
 
 	
-	public SimilarityStorageBasedDIRTSyntacticResource(ConfigurationParams params) throws ConfigurationException {
+	/**
+	 * Constructs a syntactic resource from configuration params, by constructing a new similarity storage from these params.
+	 * @see DefaultSimilarityStorage#DefaultSimilarityStorage(ConfigurationParams)
+	 * <p>Additionally, uses the param "top-n-rules" to limit the number of retrieved rules.
+	 * 
+	 * 	@throws ElementTypeException 
+	 */
+	public SimilarityStorageBasedDIRTSyntacticResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException {
 		this(
 				new DefaultSimilarityStorage(params),
 				new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true),
@@ -55,16 +65,28 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 		);
 	}
 	
+	/**
+	 * Constructs a syntactic resource from an existing, initialized similarity storage, with a rule-count limit.
+	 * 
+	 * @param similarityStorage The storage of element similarities, which stands at the base of the rule retrieval, with a rule-count limit
+	 * @param extractor For extracting dependency paths from a given BasicNode
+	 */
 	public SimilarityStorageBasedDIRTSyntacticResource(SimilarityStorage similarityStorage, DependencyPathsFromTreeBinary<Info, BasicNode> extractor) {
 		this(similarityStorage, extractor, null);
 	}
 
+	/**
+	 * Constructs a syntactic resource from an existing, initialized similarity storage, with a rule-count limit.
+	 * 
+	 * @param similarityStorage The storage of element similarities, which stands at the base of the rule retrieval, with a rule-count limit
+	 * @param extractor For extracting dependency paths from a given BasicNode
+	 * @param maxNumOfRetrievedRules The maximal number of retrieved rules, where the retrieved rules are those with the highest scores.
+	 */
 	public SimilarityStorageBasedDIRTSyntacticResource(SimilarityStorage similarityStorage, DependencyPathsFromTreeBinary<Info, BasicNode> extractor, Integer maxNumOfRetrievedRules) {
 		this.similarityStorage = similarityStorage;
 		this.extractor = extractor ;
 		this.maxNumOfRetrievedRules = maxNumOfRetrievedRules;
 		this.matchCriteria = new BasicMatchCriteria<Info,Info,BasicNode,BasicNode>();
-		//matchCriteria.setUseCanonicalPosTag(true);
 	}
 	
 	/* (non-Javadoc)
