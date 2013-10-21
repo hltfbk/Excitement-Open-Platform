@@ -49,18 +49,22 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			{
 		try
 		{
+			// Make preparations.
 			if (logger.isInfoEnabled()){logger.info("Processing pair #"+instance.getPairData().getPair().getId());}
 			HypothesisInformation hypothesisInformation = instance.getHypothesisInformation();
 			if (!hypothesisInformation.equals(script.getHypothesisInformation()))
 			{
 				script.setHypothesisInformation(hypothesisInformation);
 			}
+			
+			// Get the pair. 
 			ExtendedPairData pairData = instance.getPairData();
 			if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
 			{
 				pairData = new PairDataCollapseToSingleTree(pairData).collapse();
 			}
 			
+			// Process the pair (This is "macro" stage, Search algorithm).
 			TextTreesProcessor processor = createProcessor(pairData,script,classifierForSearch);
 			processor.process();
 			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());

@@ -51,10 +51,10 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
  * <P>
  * It is recommended that the flow itself (i.e. the class that is an entry point
  * to the system (e.g. {@link RTEPairsMultiThreadTrainer}) will be a subclass
- * of this class).
+ * of this class.
  * <P>
  * Note that this class does not initialize log4j. That initialization is
- * expected to be in the main() method of each entry point (using {@link LogInitializer}).
+ * expected to be in the main() method of each entry point (using {@link LogInitializer}, see also {@link SystemMain}).
  * 
  * @author Asher Stern
  * @since Sep 19, 2011

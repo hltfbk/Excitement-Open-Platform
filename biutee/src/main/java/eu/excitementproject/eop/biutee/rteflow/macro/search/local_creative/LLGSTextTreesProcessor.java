@@ -291,7 +291,7 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			
 			// How many local iterations will be performed in the next
 			// local-lookahead loop.
-			// See description in the JavaDoc of the method updateActualNumberOfLocalIterations()
+			// See description in the JavaDoc of the method LocalCreativeTextTreesProcessor.updateActualNumberOfLocalIterations()
 			actualNumberOfLocalIterations = calculateNumberOfLocalIterations(currentIteration,actualNumberOfLocalIterations);
 			
 			addResultsFromElements(sentence);
