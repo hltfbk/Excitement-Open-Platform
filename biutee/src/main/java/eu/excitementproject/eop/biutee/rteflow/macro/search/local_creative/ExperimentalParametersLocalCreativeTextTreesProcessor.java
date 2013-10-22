@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
@@ -12,6 +14,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -21,7 +24,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class ExperimentalParametersLocalCreativeTextTreesProcessor extends LocalCreativeTextTreesProcessor
 {
-	public static final boolean NEXT_ITERATION_G_PLUS_H = true;
+	public static final boolean NEXT_ITERATION_G_PLUS_H = false;
 	public static final boolean NEXT_ITERATION_H_ONLY = false;
 
 	/**
@@ -42,6 +45,11 @@ public class ExperimentalParametersLocalCreativeTextTreesProcessor extends Local
 		
 		if (!hybridGapMode) throw new TeEngineMlException("This class is designed only for hybrid mode experiments.");
 		verifyConstants();
+		if (!warningLogged)
+		{
+			GlobalMessages.globalWarn("Using experimental parameters in search algorithm.", logger);
+			warningLogged=true;
+		}
 	}
 	
 	@SuppressWarnings("unused")
@@ -66,6 +74,20 @@ public class ExperimentalParametersLocalCreativeTextTreesProcessor extends Local
 		}
 		else
 		{
+			double stopValue;
+			if (NEXT_ITERATION_G_PLUS_H)
+			{
+				stopValue=originalCost+originalGap;
+			}
+			else if (NEXT_ITERATION_H_ONLY)
+			{
+				stopValue=originalGap;
+			}
+			else
+			{
+				throw new TeEngineMlException("Bug");
+			}
+			
 			LocalCreativeTreeElement bestElement = null;
 			Double bestValue = null;
 			for (LocalCreativeTreeElement element : elements)
@@ -98,18 +120,32 @@ public class ExperimentalParametersLocalCreativeTextTreesProcessor extends Local
 					}
 				}
 			} // end of for
+			
+			if (bestValue!=null)
+			{
+				if (stopValue<=bestValue) // what we already have is not worse than what we return.
+				{
+					return null;
+				}
+			}
 			return bestElement;
 		}
 	}
 	
 	
-	
+	/**
+	 * Returns the input. Used to prevent compilation warnings when
+	 * constants are involved.
+	 * @param b
+	 * @return
+	 */
 	private final boolean is(final boolean b)
 	{
 		return b;
 	}
 	
 	
-	
 
+	private static boolean warningLogged=false;
+	private static final Logger logger = Logger.getLogger(ExperimentalParametersLocalCreativeTextTreesProcessor.class);
 }

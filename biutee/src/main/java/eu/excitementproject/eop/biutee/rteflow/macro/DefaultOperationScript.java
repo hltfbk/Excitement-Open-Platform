@@ -114,12 +114,19 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 		// additional few time-consuming operations).
 
 		List<SingleOperationItem> otherIterationsList = new ArrayList<SingleOperationItem>();
+		
 		// Add the on-the-fly operations.
+		
+//		GlobalMessages.globalWarn("Use on-the-fly in Hybrid mode. This is an experimental setting.", logger);
+//		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
+//		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
+
 		if (!hybridGapMode)
 		{
 			otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
 			otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
 		}
+		
 		otherIterationsList.add(new SingleOperationItem(SingleOperationType.MULTIWORD_SUBSTITUTION));
 		otherIterationsList.add(new SingleOperationItem(SingleOperationType.FLIP_POS_SUBSTITUTION));
 
