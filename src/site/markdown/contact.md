@@ -12,9 +12,9 @@ Concerning the EU project [EXCITEMENT][excitement], please contact the project c
 
 Ra'anana 43107, Israel
 
-Email: Moshe.wasserblat@nice.com
+Email: nir.raz@nice.com
 
-Fax/Tel: +972-9-7753702
+Fax/Tel:
 
 [nice]: http://www.nice.com/
 [excitement]: http://www.excitement-project.eu/
