@@ -4,7 +4,7 @@
 
 Concerning the EU project [EXCITEMENT][excitement], please contact the project coordinator:
 
-<strong>Moshe Wasserblat</strong>
+<strong>Nir Raz</strong>
 
 [NICE Systems Ltd.][nice]
 
