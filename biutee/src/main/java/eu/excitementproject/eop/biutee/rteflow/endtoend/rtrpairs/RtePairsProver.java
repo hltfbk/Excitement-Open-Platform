@@ -8,7 +8,6 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
-import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.ExperimentalParametersLocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
@@ -82,7 +81,8 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			OperationsScript<Info, BasicNode> script,
 			LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
 	{
-		LocalCreativeTextTreesProcessor processor = new ExperimentalParametersLocalCreativeTextTreesProcessor(
+		//LocalCreativeTextTreesProcessor processor = new ExperimentalParametersLocalCreativeTextTreesProcessor(
+		LocalCreativeTextTreesProcessor processor = new LocalCreativeTextTreesProcessor(
 				pairData.getPair().getText(), pairData.getPair().getHypothesis(),
 				pairData.getTextTrees(), pairData.getHypothesisTree(),
 				pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),
