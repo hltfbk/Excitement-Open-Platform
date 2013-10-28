@@ -24,7 +24,6 @@ import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -59,7 +58,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			
 			// Get the pair. 
 			ExtendedPairData pairData = instance.getPairData();
-			if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
+			if (teSystemEnvironment.isCollapseMode())
 			{
 				pairData = new PairDataCollapseToSingleTree(pairData).collapse();
 			}

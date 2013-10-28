@@ -90,7 +90,7 @@ public class PerformFactoryFactory
 		}
 		case IS_A_COREFERENCE_CONSTRUCTION:
 		{
-			return new SingleItemList<PerformFactory<? extends Specification>>(new IsA_ByCoreferencePerformFactory(operationsEnvironment.getCoreferenceInformation(),operationsEnvironment.getParser()));
+			return new SingleItemList<PerformFactory<? extends Specification>>(new IsA_ByCoreferencePerformFactory(operationsEnvironment.getCoreferenceInformation(),operationsEnvironment.getParser(),operationsEnvironment.isCollapseMode()));
 		}
 		case LEXICAL_RULE_BY_LEMMA_AND_POS_APPLICATION:
 		{
@@ -142,7 +142,7 @@ public class PerformFactoryFactory
 		}
 		case RULE_APPLICATION:
 		{
-			return new SingleItemList<PerformFactory<? extends Specification>>(new RulePerformFactory(operationsEnvironment.getHypothesisTemplates(), operationsEnvironment.getHypothesisLemmasOnly()));
+			return new SingleItemList<PerformFactory<? extends Specification>>(new RulePerformFactory(operationsEnvironment.getHypothesisTemplates(), operationsEnvironment.getHypothesisLemmasOnly(),operationsEnvironment.isCollapseMode()));
 		}
 		case META_RULE_APPLICATION:
 		{

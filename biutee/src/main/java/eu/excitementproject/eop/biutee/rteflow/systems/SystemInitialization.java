@@ -96,6 +96,7 @@ public class SystemInitialization
 		configurationParams = configurationFile.getModuleConfiguration(configurationModuleName);
 		
 		PARSER parserMode = SystemUtils.setParserMode(configurationParams);
+		boolean collapseMode = configurationParams.getBoolean(ConfigurationParametersNames.RTE_ENGINE_COLLAPSE_MODE);
 		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
@@ -173,7 +174,7 @@ public class SystemInitialization
 		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria,mleEstimation, stopWords).createGapToolBox();
 		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
 		else{logger.info("System in pure transformations mode.");}
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode,gapToolBox);
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode, collapseMode, gapToolBox);
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException

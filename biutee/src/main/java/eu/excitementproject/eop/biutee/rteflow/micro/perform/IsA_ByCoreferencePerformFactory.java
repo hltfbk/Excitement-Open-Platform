@@ -29,11 +29,12 @@ public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecifica
 {
 	public IsA_ByCoreferencePerformFactory(
 			TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation,
-			PARSER parser)
+			PARSER parser, boolean collapseMode)
 	{
 		super();
 		this.coreferenceExtendedInformation = coreferenceExtendedInformation;
 		this.parser = parser;
+		this.collapseMode = collapseMode;
 	}
 
 	@Override
@@ -81,7 +82,7 @@ public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecifica
 			IsASpecification specification) throws TeEngineMlException,
 			OperationException
 	{
-		return new IsAConstructionOperation(text, hypothesis, specification, parser);
+		return new IsAConstructionOperation(text, hypothesis, specification, parser, collapseMode);
 	}
 
 	@Override
@@ -95,6 +96,7 @@ public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecifica
 
 	private TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation;
 	private final PARSER parser;
+	private final boolean collapseMode;
 	
 	private static UpdaterForIsAByCoreference updaterForIsAByCoreference = new UpdaterForIsAByCoreference();
 }

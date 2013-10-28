@@ -18,7 +18,7 @@ public class Constants
 	//////////////////////////////////////////////////////////////////////////
 	// Important constants: constants that you might consider changing their values
 	
-	public static final boolean COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE = false;
+	//public static final boolean COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE = false;
 	
 	/**
 	 * If <tt>true</tt> then if {@link #REQUIRE_PREDICATE_TRUTH_EQUALITY} is <tt>true</tt>, then

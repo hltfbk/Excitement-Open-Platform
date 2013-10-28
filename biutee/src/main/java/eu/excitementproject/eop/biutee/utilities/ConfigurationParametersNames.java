@@ -93,6 +93,8 @@ public class ConfigurationParametersNames
 	public static final String RTESUM_DATASET_FOR_TEST = "test_data";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE = "lemmatizer_rule_file";
+	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTE_ENGINE_COLLAPSE_MODE = "collapse-mode";
 	@ConfigurationParameterAnnotation(value={RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME},mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String RTE_ENGINE_PARSER_PARAMETER_NAME = "parser";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})

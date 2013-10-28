@@ -92,7 +92,8 @@ public class OperationsEnvironment
 			boolean richInformationInTreeHistory,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
 			ImmutableSet<String> stopWords,
-			PARSER parser)
+			PARSER parser,
+			boolean collapseMode)
 	{
 		super();
 		this.featureUpdate = featureUpdate;
@@ -112,6 +113,7 @@ public class OperationsEnvironment
 		this.alignmentCriteria = alignmentCriteria;
 		this.stopWords = stopWords;
 		this.parser = parser;
+		this.collapseMode = collapseMode;
 	}
 
 	
@@ -185,6 +187,11 @@ public class OperationsEnvironment
 	{
 		return parser;
 	}
+	public boolean isCollapseMode()
+	{
+		return collapseMode;
+	}
+
 
 
 
@@ -213,4 +220,5 @@ public class OperationsEnvironment
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
 	private final PARSER parser;
+	private final boolean collapseMode;
 }
