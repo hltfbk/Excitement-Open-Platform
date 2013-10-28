@@ -2,11 +2,10 @@ package eu.excitementproject.eop.distsim.application;
 
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
+
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
-import eu.excitementproject.eop.distsim.items.LemmaPos;
-import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
+import eu.excitementproject.eop.distsim.items.StringBasedElement;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
@@ -14,14 +13,14 @@ import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 
 /**
- * A program which demonstrates how to access a given distributional similarity model, with a given lemma and part-of-speech, via SimilarityStorage interface, 
+ * A program which demonstrates how to access a given distributional similarity model, with a given word, via SimilarityStorage interface, 
  * stored in Redis dbs, given by the hosts and the ports of the element db, and the l2r and r-2l similarity dbs
  * 
  * @author Meni Adler
  * @since 07/01/2013
  *
  */
-public class TestLemmaPosSimilarity {
+public class TestWordSimilarity {
 	public static void main(String[] args) throws SimilarityNotFoundException {
 		
 		if (args.length != 4) {
@@ -43,7 +42,7 @@ public class TestLemmaPosSimilarity {
 		
 		
 		List<ElementsSimilarityMeasure> similarities = similarityStorage.getSimilarityMeasure(
-				new LemmaPosBasedElement(new LemmaPos("affect", CanonicalPosTag.V)), 
+				new StringBasedElement("affect"), 
 				RuleDirection.RIGHT_TO_LEFT,
 				FilterType.TOP_N, 10);
 		

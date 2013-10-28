@@ -7,7 +7,7 @@
   </parent>
   <artifactId>distsim</artifactId>
   <name>distsim</name>
-  <description>distsim</description>
+  <description>Distributional similarity tool</description>
   
    <dependencies>
    

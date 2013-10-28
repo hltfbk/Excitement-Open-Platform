@@ -114,7 +114,8 @@ public class Configuration {
 	public static final String R2L_REDIS_HOST = "r2l-redis-host";
 	public static final String R2L_REDIS_PORT = "r2l-redis-port";
 	public static final String RESOURCE_NAME = "resource-name";
-	public static final String KNOWLEDGE_RESOURCE = "knowledge-resource"; 
+	public static final String KNOWLEDGE_RESOURCE = "knowledge-resource";
+	public static final String WINDOW_SIZE = "window-size"; 
 
 }
 

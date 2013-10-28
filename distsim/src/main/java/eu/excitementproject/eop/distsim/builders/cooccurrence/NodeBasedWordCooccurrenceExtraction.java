@@ -28,7 +28,7 @@ import eu.excitementproject.eop.distsim.util.SetBasedPOSFilter;
 
 
 /**
-  * Extraction of co-occurrences, composed of word pairs and their dependency relation, from a given parsed sentence, represented by a BasicNode object
+  * Extraction of co-occurrences, composed of lemma-pos pairs and their dependency relation, from a given parsed sentence, represented by a BasicNode object
   * 
  * @author Meni Adler
  * @since 04/09/2012
