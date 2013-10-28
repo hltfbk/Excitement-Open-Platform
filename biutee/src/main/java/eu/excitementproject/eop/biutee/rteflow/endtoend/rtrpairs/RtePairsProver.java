@@ -25,6 +25,7 @@ import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorExc
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
+import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;
 
 /**
  * Implementation of {@link Prover} for T-H pairs of RTE:1-5.
@@ -65,7 +66,19 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			
 			// Process the pair (This is "macro" stage, Search algorithm).
 			TextTreesProcessor processor = createProcessor(pairData,script,classifierForSearch);
+			TimeElapsedTracker timeTracker = null;
+			if (logger.isDebugEnabled())
+			{
+				timeTracker = new TimeElapsedTracker();
+				timeTracker.start();
+			}
 			processor.process();
+			if (logger.isDebugEnabled())
+			{
+				timeTracker.end();
+				logger.debug(""+pairData.getPair().getId()+": "+timeTracker.toString());
+			}
+			
 			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());
 			return proof;
 		}
