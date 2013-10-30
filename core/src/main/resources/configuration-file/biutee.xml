@@ -1,9 +1,20 @@
 <configuration>
 
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeEDA</property>
+		<property name="language">EN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.biu.uima.BIUFullLAP</property>
+	</section>
+
 	<section name = "rte_pairs_preprocess">
-		<property name = "dataset">dummy.xml</property>
-		<property name = "annotated">true</property>
-		<property name = "serialization_filename">dummy.ser</property>
+		<property name = "training_data">dummy_train.xml</property>
+		<property name = "training_data_annotated">true</property>
+		<property name = "training_serialization_filename">dummy_train.ser</property>
+
+		<property name = "test_data">dummy_test.xml</property>
+		<property name = "test_data_annotated">true</property>
+		<property name = "test_serialization_filename">dummy_test.ser</property>
+		
 		<property name = "easyfirst_stanford_pos_tagger">../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger</property>
 		<property name = "stanford_ner_classifier_path">../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</property>
 		<property name = "new_normalizer">../third-party/BiuNormalizer/string_rules.txt</property>
@@ -47,7 +58,9 @@
 	</section>
 
 	<section name = "rte_pairs_train_and_test">
-		<property name = "serialization_filename">dummy.ser</property>
+		<property name = "serialized_training_data">dummy_train.ser</property>
+		<property name = "serialized_test_data">dummy_test.ser</property>
+		
 		<property name = "lemmatizer_rule_file">../third-party/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
 		<property name = "parser">EASYFIRST</property>
 		<property name = "threads">1</property>
@@ -62,7 +75,11 @@
 	</section>
 
 	<section name = "rte_sum_train_and_test">
-		<property name = "serialization_filename">RTE6_DEVSET.ser</property>
+		<property name = "training_data">RTE6#DEV#RTE6_DEVSET</property>
+		<property name = "serialized_training_data">RTE6_DEVSET.ser</property>
+		<property name = "test_data">RTE6#TEST#RTE6_Main_Novelty_TESTSET</property>
+		<property name = "serialized_test_data">RTE6_Main_Novelty_TESTSET.ser</property>
+		
 		<property name = "lemmatizer_rule_file">../third-party/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
 		<property name = "parser">EASYFIRST</property>
 		<property name = "threads">1</property>
@@ -80,10 +97,10 @@
 
 
 	<section name = "transformations">
-		<!--<property name = "knowledge_resources">WORDNET,WIKIPEIDA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
-		<!--<property name = "multiword_resources">WORDNET,WIKIPEIDA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
-		<property name = "knowledge_resources">WORDNET,CATVAR,VERB_OCEAN,SYNTACTIC</property>
-		<property name = "multiword_resources">WORDNET,CATVAR,VERB_OCEAN</property>
+		<!--<property name = "knowledge_resources">WORDNET,WIKIPEDIA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
+		<!--<property name = "multiword_resources">WORDNET,WIKIPEDIA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
+		<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC</property>
+		<property name = "multiword_resources">WORDNET,VERB_OCEAN</property>
 		<property name = "stop_words">stopwords-Eyal.txt</property>
 	</section>
 
@@ -222,6 +239,7 @@
 
 	<section name = "TruthTeller">
 		<property name = "annotation_rules_file">serializedAnnotationRules.ser</property>
+		<property name = "conll_format_output_directory">annotatedSentences</property>
 		<property name = "do_annotations">true</property>
 	</section>
 
