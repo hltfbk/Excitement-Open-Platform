@@ -31,6 +31,24 @@ import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * Finds a proof of a given hypothesis from a given text, by processing each text sentence in isolation (but
+ * does take co-reference and other interdependencies into consideration), and such that under some configuration not
+ * all the sentences are processed, but only those which will likely yield the best proof.
+ * <P>
+ * This implementation of {@link AbstractTextTreesProcessor} processes each parse-tree (which corresponds to a
+ * single sentence) separately.<BR>
+ * First, an ordered list of the trees is created, such that it is ordered from the smallest gap to largest gap.
+ * The gap is the gap between a text-parse-tree and the hypothesis parse-tree.<BR>
+ * Then, depending on the value of {@link BiuteeConstants#FILTER_ENABELED_NUMBER_OF_TREES_TO_PROCESS}, trees are
+ * processed from that list, one by one.
+ * <P>
+ * Subclasses of this class should implement the abstract methods:<BR>
+ * {@link #prepareComputation()} - called before starting to process the trees.<BR>
+ * {@link #processSingleTree(TreeAndIndex)} - finds the proof from the given single tree.<BR>
+ * {@link #getHeuristicGap(TreeAndParentMap, Map)} - returns an estimation of the gap between the given tree
+ * to the hypothesis tree. 
+ * 
+ *   
  * 
  * @author Asher Stern
  * @since Aug 4, 2013
