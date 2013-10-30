@@ -14,7 +14,7 @@ import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 
 /**
- * A program which demonstrates how to access a given distributional similarity model via SimilarityStorage interface, 
+ * A program which demonstrates how to access a given distributional similarity model, with a given lemma and part-of-speech, via SimilarityStorage interface, 
  * stored in Redis dbs, given by the hosts and the ports of the element db, and the l2r and r-2l similarity dbs
  * 
  * @author Meni Adler

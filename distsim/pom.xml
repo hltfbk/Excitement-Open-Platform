@@ -7,7 +7,7 @@
   </parent>
   <artifactId>distsim</artifactId>
   <name>distsim</name>
-  <description>distsim</description>
+  <description>Distributional similarity tool</description>
   
    <dependencies>
    
@@ -51,11 +51,5 @@
   		<artifactId>parse-utils</artifactId>
   		<version>001</version>
   	</dependency>
-      	
-     <dependency>
-    		<groupId>eu.excitementproject</groupId>
-    		<artifactId>core</artifactId>
-    		<version>1.0.3-SNAPSHOT</version>
-    	</dependency>
   	</dependencies>
 </project>

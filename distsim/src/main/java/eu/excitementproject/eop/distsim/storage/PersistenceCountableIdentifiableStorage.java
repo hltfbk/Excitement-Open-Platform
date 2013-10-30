@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.io.Serializable;
+
 import java.util.Iterator;
 
 import eu.excitementproject.eop.distsim.items.Countable;
@@ -55,6 +56,11 @@ public abstract class PersistenceCountableIdentifiableStorage<T extends External
 				} catch (ClassCastException e) {
 					throw new LoadingStateException(e);
 				}
+				//tmp
+				/*catch (UndefinedKeyException e2) {
+					System.out.println(e2.toString());
+				}*/
+				
 		} catch (Exception e) {
 			throw new LoadingStateException(e);
 		}
