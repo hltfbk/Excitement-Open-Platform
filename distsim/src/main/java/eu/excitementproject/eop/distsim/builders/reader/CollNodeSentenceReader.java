@@ -76,7 +76,7 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 				id2node.put(nodeId,node);
 				child2parent.put(nodeId,parentId);
 				if (parentId == 0) {
-					if (rootId != -1)
+					if (rootId != -1) 
 						sProblem = "More than one root was identified!";
 					else 
 						rootId = nodeId;
