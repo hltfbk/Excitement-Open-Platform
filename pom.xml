@@ -32,7 +32,7 @@
 		<module>util</module>
 		<module>distsim</module>
 		<module>globalgraphoptimizer</module>
-		<!--<module>lexicalinferenceminer</module>-->
+		<module>lexicalinferenceminer</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
