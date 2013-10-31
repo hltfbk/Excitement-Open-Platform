@@ -30,6 +30,7 @@
 		<module>transformations</module>
 		<module>biutee</module>
 		<module>util</module>
+		<module>distsim</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
