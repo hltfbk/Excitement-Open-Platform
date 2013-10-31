@@ -31,6 +31,8 @@
 		<module>biutee</module>
 		<module>util</module>
 		<module>distsim</module>
+		<module>globalgraphoptimizer</module>
+		<module>lexicalminer</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
