@@ -23,14 +23,14 @@ public class RedisRunnerTest {
 	@Test
 	public void test() {
 		
-        Logger.getRootLogger().setLevel(Level.DEBUG); // (hiding < INFO)
+        Logger.getRootLogger().setLevel(Level.INFO); // (hiding < INFO)
 
-		// Simple running itself. 
+		// Simple running itself. Without specifying rdb file. (won't create/load any) 
 		RedisServer rs = null; 		
 		try {
-			rs = new RedisServer(6379); 
+			rs = new RedisServer(6371); 
 			rs.start();
-			Thread.sleep(5000); 
+			// no need // Thread.sleep(5000); 
 		} catch (Exception e)
 		{
 			System.out.println("Redis Server runner raised an exception: " + e.getMessage()); 
@@ -42,46 +42,54 @@ public class RedisRunnerTest {
 		
 		// Running with a specific RDB file. 
 		// TODO (update: those files need to be provided by Jar resources!) 
-//		RedisServer rs_l = null; 
-//		RedisServer rs_r = null; 
-//		try {
-//			rs_l = new RedisServer(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
-//			rs_r = new RedisServer(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
-//			rs_l.start();
-//			rs_r.start(); 
-//			Thread.sleep(5000); 
-//
-//		} catch (Exception e)
-//		{
-//			System.out.println("Redis Server runner raised an exception: " + e.getMessage()); 
-//			e.printStackTrace(); 
-//			fail("Redis server runner test failed."); 
-//		}
-//		assertNotNull(rs_l); 
-//		assertNotNull(rs_r); 
+		RedisServer rs_l = null; 
+		RedisServer rs_r = null; 
+		try {
+			rs_l = new RedisServer(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
+			rs_r = new RedisServer(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
+			rs_l.start();
+			//Thread.sleep(1000); // do we need this? no. 
+			rs_r.start(); 
+			//Thread.sleep(5000); 
+
+		} catch (Exception e)
+		{
+			System.out.println("Redis Server runner raised an exception: " + e.getMessage()); 
+			e.printStackTrace(); 
+			fail("Redis server runner test failed."); 
+		}
+		assertNotNull(rs_l); 
+		assertNotNull(rs_r); 
 
 
-//		// Reading testing sequence 
-//		RedisBasedStringListBasicMap l2r = new RedisBasedStringListBasicMap("localhost", 6379);
-//		RedisBasedStringListBasicMap r2l = new RedisBasedStringListBasicMap("localhost", 6380); 
-//		
-//		SimilarityStorage ss = new DefaultSimilarityStorage(l2r, r2l, "GermanLin", "inst1", "eu.excitementproject.eop.distsim.items.LemmaPosBasedElement"); 
-//		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(ss);
-//
-//		try {
-//			List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForLeft("ewig", null); 
-//		
-//		System.out.println("left-2-right rules: ");
-//		for (LexicalRule<? extends RuleInfo> similarity : similarities)
-//			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
-//
-//		} catch (Exception e)
-//		{
-//			System.out.println("Lexical resource access via Redis Server runner raised an exception: " + e.getMessage()); 
-//			e.printStackTrace(); 
-//			fail("Redis server runner test failed."); 			
-//		}
+		// Reading testing sequence 
+		RedisBasedStringListBasicMap l2r = new RedisBasedStringListBasicMap("127.0.0.1", 6379);
+		RedisBasedStringListBasicMap r2l = new RedisBasedStringListBasicMap("127.0.0.1", 6380); 
 		
+		SimilarityStorage ss = new DefaultSimilarityStorage(l2r, r2l, "GermanLin", "inst1", "eu.excitementproject.eop.distsim.items.LemmaPosBasedElement"); 
+		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(ss, 10);
+
+		try {
+			List<? extends LexicalRule<? extends RuleInfo>> similarities_l = resource.getRulesForLeft("ewig", null); 
+			System.out.println("left-2-right rules: ");
+			for (LexicalRule<? extends RuleInfo> similarity : similarities_l)
+				System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
+
+			List<? extends LexicalRule<? extends RuleInfo>> similarities_r = resource.getRulesForRight("ewig", null); 
+			System.out.println("right-2-left rules: ");
+			for (LexicalRule<? extends RuleInfo> similarity : similarities_r)
+				System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
+		
+		
+		} catch (Exception e)
+		{
+			System.out.println("Lexical resource access via Redis Server runner raised an exception: " + e.getMessage()); 
+			e.printStackTrace(); 
+			fail("Redis server runner test failed."); 			
+		}
+		
+		rs_l.stop();
+		rs_r.stop(); 
 		
 	}
 }

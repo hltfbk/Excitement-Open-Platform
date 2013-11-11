@@ -21,7 +21,11 @@ import com.google.common.io.Resources;
  * 
  * The class first invokes redis-server binary from Jar (via getResource), and makes one 
  * copy in a temporary disc location (via Google coreIO library), and runs it as a native process. 
- * The copy is automatically destroyed when the JVM closes down. 
+ * This copy (of file) is automatically destroyed when the JVM closes down. 
+ * 
+ * Usage is simple: init a Redis-server process by using the constructor, start running by calling start(), stop its running by calling stop(). 
+ * See the unit test class for the code usage in action.   
+ * The progress will be reported via log4j INFO level. You can see redis-server output (STDOUT & STDERR) by enabling level.DEBUG of log4j.  
  * 
  * DISCLAIMER: I have borrowed a lot of codes (e.g. all of run script enum, and binaries 
  * tested before) from the following Apache licensed library. 
@@ -33,9 +37,9 @@ import com.google.common.io.Resources;
  * 
  * @author Tae-Gil Noh 
  * 
+ * TODO put "redis-server" binaries in a Jar and make it artifact, then, remove binaries from the "resources", and test it works.  
  * 
  * 
- * TODO extend constructor 
  *
  */
 public class RedisServer {
@@ -87,13 +91,15 @@ public class RedisServer {
 		if (active) {
 			throw new RuntimeException("This redis server instance is already running...");
 		}
+		
+		logger.info("starting up redis server on port " + port.toString() + " (--dir:" + rdbDir + ", --dbfilename:" + rdbName + ")"); 
 
 		redisProcess = createRedisProcessBuilder().start();
 		portReady = awaitRedisServerReady(); // returns true, if it catches "server is now ready" comment. 
 		active = true;
 		
 		if (portReady)
-			logger.info("redis server running on port " + port.toString() + " (--dir:" + rdbDir + ", --dbfilename:" + rdbName + ")"); 
+			logger.info("redis server up and running on port " + port.toString() + " (--dir:" + rdbDir + ", --dbfilename:" + rdbName + ")"); 
 		else
 		{
 			logger.warn("redis server executed, but could not check its running on the designated port! (" + port.toString() + ", --dir:" + rdbDir + ", --dbfilename:" + rdbName + ")."); 
