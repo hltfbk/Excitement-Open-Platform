@@ -33,6 +33,12 @@
 	<artifactId>hadoop-core</artifactId>
 	<version>0.20.2</version>
    </dependency>
+   
+   <dependency>
+	<groupId> com.google.guava</groupId>
+	<artifactId>guava</artifactId>
+	<version>15.0</version>
+   </dependency>
      
     <dependency>
 		<groupId>eu.excitementproject</groupId>

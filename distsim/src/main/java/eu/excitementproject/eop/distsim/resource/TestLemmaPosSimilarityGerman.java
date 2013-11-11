@@ -35,6 +35,8 @@ public class TestLemmaPosSimilarityGerman {
 	
 	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ConfigurationFileDuplicateKeyException, ConfigurationException, ElementTypeException {
 		
+		
+		
 //		if (args.length != 1) {
 //			System.out.println("Usage: eu.excitementproject.eop.distsim.application.TestLemmaPosSimilarity <configuration file>");
 //			System.exit(0);
