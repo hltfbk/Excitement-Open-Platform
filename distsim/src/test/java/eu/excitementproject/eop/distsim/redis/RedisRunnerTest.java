@@ -23,7 +23,7 @@ public class RedisRunnerTest {
 	@Test
 	public void test() {
 		
-        Logger.getRootLogger().setLevel(Level.INFO); // (hiding < INFO)
+        Logger.getRootLogger().setLevel(Level.DEBUG); // (hiding < INFO)
 
 		// Simple running itself. 
 		RedisServer rs = null; 		

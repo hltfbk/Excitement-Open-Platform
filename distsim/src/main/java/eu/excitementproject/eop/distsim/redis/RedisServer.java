@@ -157,7 +157,7 @@ public class RedisServer {
 		WINDOWS_32("embedded-redis/redis-server.exe"),
 		WINDOWS_64("embedded-redis/redis-server-64.exe"),
 		LINUX_32("embedded-redis/redis-server"),
-		LINUX_64("embedded-redis/redis-server"), 
+		LINUX_64("embedded-redis/redis-server-64"), 
 		MACOSX("embedded-redis/redis-server.app");
 		
 		private final String runScript;
