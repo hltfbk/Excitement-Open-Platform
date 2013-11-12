@@ -45,8 +45,8 @@ public class RedisRunnerTest {
 		RedisServer rs_l = null; 
 		RedisServer rs_r = null; 
 		try {
-			rs_l = new RedisServer(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
-			rs_r = new RedisServer(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
+			rs_l = new RedisServer(6379, "/Users/tailblues/temp/", "similarity-l2r.rdb"); 
+			rs_r = new RedisServer(6380, "/Users/tailblues/temp/", "similarity-r2l.rdb"); 
 			rs_l.start();
 			//Thread.sleep(1000); // do we need this? no. 
 			rs_r.start(); 
