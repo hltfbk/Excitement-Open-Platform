@@ -55,7 +55,7 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 		String key1 = data.getFirst();
 		String key2 = data.getSecond().toKey();
 		if (key1.contains(DELIMITER) || key2.contains(DELIMITER))
-			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
+			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2 +", since they contain  one or more serialization delimiters");
 		return key1 + DELIMITER + key2;
 	}
 
@@ -126,7 +126,7 @@ public class RelationBasedLemmaPosFeature extends RelationBasedFeature<String,Le
 	public void fromKey(String key) throws UndefinedKeyException {
 		String[] props = key.split(DELIMITER);
 		if (props.length != 2)
-			throw new UndefinedKeyException("Cannot decode " + key + " to RelationBasedLemmaPosFeature");
+			throw new UndefinedKeyException("Cannot decode " + key + " to RelationBasedLemmaPosFeature, since it contains  one or more serialization delimiters");
 		LemmaPos lemmapos = new LemmaPos();
 		lemmapos.fromKey(props[1]);
 		data = new Pair<String,LemmaPos>(props[0],lemmapos);

@@ -51,5 +51,18 @@
   		<artifactId>parse-utils</artifactId>
   		<version>001</version>
   	</dependency>
+  	
+    <dependency>
+  		<groupId>nz.ac.waikato.cms.weka</groupId>
+  		<artifactId>weka-stable</artifactId>
+  		<version>3.6.9</version>
+  	</dependency>
+  	
+    <!-- <dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-exec</artifactId>
+		<version>1.1</version>
+	</dependency>-->
+ 
   	</dependencies>
 </project>

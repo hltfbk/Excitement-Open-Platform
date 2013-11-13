@@ -12,6 +12,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
@@ -59,9 +60,11 @@ public class SimilarityFile2Redis {
 				//file = new File(new java.io.File(confParams.get(Configuration.SIMILARITY_FILE)),true);
 			//}
 			file.open();
-			String host = confParams.getString(Configuration.REDIS_HOST);
-			int port = confParams.getInt(Configuration.REDIS_PORT);
-			redis = new Redis(host,port);
+			
+			int port = BasicRedisRunner.getInstance().run(confParams.getString(Configuration.REDIS_FILE));
+			//String host = confParams.getString(Configuration.REDIS_HOST);
+			//int port = confParams.getInt(Configuration.REDIS_PORT);
+			redis = new Redis("localhost",port);
 			redis.open();
 			redis.clear();			
 			Pair<Integer,Serializable> pair = null;
@@ -97,7 +100,7 @@ public class SimilarityFile2Redis {
 							}*/
 							
 							if (element2key.contains(RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER))
-								logger.warn("Delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER +"' already exists in element " + element2key);
+								logger.info("Element " + element2key + " contains the delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + "', and considered insignificant. The element is filtered from the model");
 							else 
 								redis.rpush(element1key, element2key + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + score);
 							//redis.write(pair.getFirst(),pair.getSecond());

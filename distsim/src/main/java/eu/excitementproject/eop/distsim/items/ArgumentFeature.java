@@ -56,7 +56,7 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 		String key1 = data.getFirst().name();
 		String key2 = data.getSecond();
 		if (key1.contains(DELIMITER) || key2.contains(DELIMITER))
-			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2);
+			throw new UndefinedKeyException("Cannot encode " + key1 + " and " + key2 + ", since they contain one or more serialization delimiters");
 		return key1 + DELIMITER + key2;
 	}
 
@@ -126,7 +126,7 @@ public class ArgumentFeature extends RelationBasedFeature<PredicateArgumentSlots
 	public void fromKey(String key) throws UndefinedKeyException {
 		String[] props = key.split(DELIMITER);
 		if (props.length != 2)
-			throw new UndefinedKeyException("Cannot decode " + key + " to ArgumentFeature");
+			throw new UndefinedKeyException("Cannot decode " + key + " to ArgumentFeature, since it contains  one or more serialization delimiters");
 		data = new Pair<PredicateArgumentSlots,String>(PredicateArgumentSlots.valueOf(props[0]),props[1]);		
 	}
 }
