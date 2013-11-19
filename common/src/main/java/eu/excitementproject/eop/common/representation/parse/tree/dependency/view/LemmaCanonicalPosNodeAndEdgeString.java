@@ -11,7 +11,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTag
  * @since Nov 18, 2013
  *
  */
-public class LemmaCanonicalNodeAndEdgeString implements NodeAndEdgeString<Info>
+public class LemmaCanonicalPosNodeAndEdgeString implements NodeAndEdgeString<Info>
 {
 
 	@Override
