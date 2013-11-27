@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Level;
+//import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import com.google.common.io.Files;
