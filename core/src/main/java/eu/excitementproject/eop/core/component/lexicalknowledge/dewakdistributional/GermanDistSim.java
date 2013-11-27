@@ -178,7 +178,7 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	 */
 	public String getComponentName()
 	{
-		return "GermanDistSim"; 
+		return "GermanDistSim"; // TODO: change to some official name
 	}
 	
 	
@@ -189,7 +189,7 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	 * and only if all instances of the component shares the same configuration.
 	 */
 	public String getInstanceName() {
-		return null; 
+		return null; // TODO: change 
         }
   
 	/** Returns all rules that can be derived from a given lemma. Depending on the kind of map

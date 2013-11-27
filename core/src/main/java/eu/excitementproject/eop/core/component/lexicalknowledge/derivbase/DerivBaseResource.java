@@ -227,10 +227,10 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		// System.out.println("which one is empty? related: " + related.isEmpty() + ", or relatedScores: " + relatedScores.isEmpty());
 		
 		
-		if (relatedScores.isEmpty()) { // if scores are not available
+		if (relatedScores.isEmpty()) { // if scores are available
 			result = proceedWithoutScores(related, result, lemma, pos);
 			
-		} else { // if scores are available
+		} else { // if no scores are available
 			result = proceedWithScores(relatedScores, result, lemma, pos);
 		}		
 

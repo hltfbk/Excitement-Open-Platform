@@ -6,20 +6,6 @@
 
 <configuration>
 
-        
-   <section name="GermanTransDm">
-      	<!-- This section specifies the German distributional similarity resource based
-        	 on 1) a translation of a distributional space built on an English corpus, 
-        	 and 2) a German corpus. -->
-        	 
-   		<!-- Specifies, which kind of similarity measure should be used.
-   		     Possible values: cosine, balapinc, all (= both cosine and balapinc).
-   		     DEFAULT: all. -->
-   		<property name="simMeasure">all</property>   		
-   </section>
-   
-   
-
 	<section name="GermaNetWrapper">
 		<!-- GermaNetWrapper options: path to GermanNet top directory, and relations to be 
 		     used for LHS->RHS or RHS->LHS, as a value of confidence [0.0 - 1.0] --> 
