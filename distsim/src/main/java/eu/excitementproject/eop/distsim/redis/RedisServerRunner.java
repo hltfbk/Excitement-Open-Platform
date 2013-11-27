@@ -1,8 +1,5 @@
 package eu.excitementproject.eop.distsim.redis;
 
-
-
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -27,22 +24,21 @@ import com.google.common.io.Resources;
  * See the unit test class for the code usage in action.   
  * The progress will be reported via log4j INFO level. You can see redis-server output (STDOUT & STDERR) by enabling level.DEBUG of log4j.  
  * 
- * DISCLAIMER: I have borrowed a lot of codes (e.g. all of run script enum, and binaries 
- * tested before) from the following Apache licensed library. 
+ * DISCLAIMER: I have borrowed a lot of codes (e.g. the idea of using script enum, or using google IO to get file from resource) 
+ * from the following Apache 2.0 licensed library. 
  * 
- * The code itself didn't meet our needs (e.g. the need of passing 
- * arguments, configuration, and rdb file); so I extended it for our usage. But still, 
- * this file contains lots of the original code. See the following page for original code. 
+ * The code itself didn't meet our needs (e.g. it does not support passing of 
+ * arguments, configuration, and rdb file); so I extended it fairly for our usage. But still, 
+ * this file contains some of the original code. See the following page for original code. 
  * https://github.com/kstyrc/embedded-redis
  * 
  * @author Tae-Gil Noh 
  * 
  * TODO put "redis-server" binaries in a Jar and make it artifact, then, remove binaries from the "resources", and test it works.  
+ * TODO put "redis-model" (Those that are read from RedisServerRunnerTest) 
  * 
- * 
- *
  */
-public class RedisServer {
+public class RedisServerRunner {
 	
 	/* We won't need this. 
 	public RedisServer(File command, Integer port) {
@@ -58,7 +54,7 @@ public class RedisServer {
 	 * @param argRDBName filename of the rdb file to be served (without path, just the file name. passed as argument --dbfilename ) 
 	 * @throws IOException
 	 */
-	public RedisServer(Integer port, String argRDBDir, String argRDBName) throws IOException {
+	public RedisServerRunner(Integer port, String argRDBDir, String argRDBName) throws IOException {
 		this.port = port;
 		this.rdbDir = argRDBDir; 
 		this.rdbName = argRDBName; 
@@ -67,7 +63,7 @@ public class RedisServer {
         logger.debug("redis server constructed with " + port.toString() + ", " + rdbDir + ", " + rdbName); 
 	}
 
-	public RedisServer(Integer port) throws IOException {
+	public RedisServerRunner(Integer port) throws IOException {
 		this(port, null, null); 
 	}
 	

@@ -18,7 +18,7 @@ import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 
-public class RedisRunnerTest {
+public class RedisServerRunnerTest {
 
 	@Test
 	public void test() {
@@ -26,9 +26,9 @@ public class RedisRunnerTest {
         Logger.getRootLogger().setLevel(Level.INFO); // (hiding < INFO)
 
 		// Simple running itself. Without specifying rdb file. (won't create/load any) 
-		RedisServer rs = null; 		
+		RedisServerRunner rs = null; 		
 		try {
-			rs = new RedisServer(6371); 
+			rs = new RedisServerRunner(6371); 
 			rs.start();
 			// no need // Thread.sleep(5000); 
 		} catch (Exception e)
@@ -42,11 +42,11 @@ public class RedisRunnerTest {
 		
 		// Running with a specific RDB file. 
 		// TODO (update: those files need to be provided by Jar resources!) 
-		RedisServer rs_l = null; 
-		RedisServer rs_r = null; 
+		RedisServerRunner rs_l = null; 
+		RedisServerRunner rs_r = null; 
 		try {
-			rs_l = new RedisServer(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
-			rs_r = new RedisServer(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
+			rs_l = new RedisServerRunner(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
+			rs_r = new RedisServerRunner(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
 			rs_l.start();
 			//Thread.sleep(1000); // do we need this? no. 
 			rs_r.start(); 
