@@ -30,7 +30,7 @@ public class GermanDistSimTest {
 	//"sie", "werden", "und" - for failed test runs (words found in both or only 1k data)
 	//"Fauna", "Forschungsreaktor", "sonderpädagogisch" - for a successful test run
 	
-	private String testword = "sonderpädagogisch"; //word to be tested - found in distributional data?
+	private String testword = "probeweise"; //word to be tested - found in distributional data?
 	
 	
 	// Gil: Note that we no longer support 1k data loading. (See constructor) 
@@ -107,12 +107,23 @@ public class GermanDistSimTest {
 			} catch (LexicalResourceException e1) {
 				e1.printStackTrace();
 			}
+			System.out.println("here should come nothing;");
 			for (LexicalRule<? extends GermanDistSimInfo> rule : gds10.getRulesForLeft(testword, null)) {
+				System.out.println("bla; lLemma " + rule.getLLemma() + ", rLemma " + rule.getRLemma());
 				assertTrue(rule.getLLemma().equals(testword));
 				assertFalse(rule.getRLemma().equals(""));
 				assertFalse(rule.getRelation().equals(""));
 				assertTrue(rule.getConfidence() > 0);
 			}
+			/*TODO 
+			System.out.println("here should come something;");
+			for (LexicalRule<? extends GermanDistSimInfo> rule : gds10.getRulesForRight(testword, null)) {
+				System.out.println("bla; lLemma " + rule.getLLemma() + ", rLemma " + rule.getRLemma());
+				assertTrue(rule.getRLemma().equals(testword));
+				assertFalse(rule.getRLemma().equals(""));
+				assertFalse(rule.getRelation().equals(""));
+				assertTrue(rule.getConfidence() > 0);
+			}			*/
 		}
 		catch (LexicalResourceException e)
 		{
