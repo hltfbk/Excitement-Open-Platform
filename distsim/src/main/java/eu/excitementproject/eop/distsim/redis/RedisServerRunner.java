@@ -34,8 +34,11 @@ import com.google.common.io.Resources;
  * 
  * @author Tae-Gil Noh 
  * 
- * TODO put "redis-server" binaries in a Jar and make it artifact, then, remove binaries from the "resources", and test it works.  
- * TODO put "redis-model" (Those that are read from RedisServerRunnerTest) 
+ * TODO test "redis-server" binaries in a Jar and make it artifact, then, remove binaries from the "resources", and test it works.  
+ * TODO test "redis-model" (Those that are read from RedisServerRunnerTest) 
+ * TODO write "redis-based lexical resource implementation base". This can work also 
+ * with "already existing server (by getting server & port), or just getting the resource
+ * (or class path? or URL? let's see) 
  * 
  */
 public class RedisServerRunner {
