@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.distsim.resource;
 
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 import java.util.List;
@@ -21,6 +22,8 @@ import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.LemmaPos;
 import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.DistSimRuleInfo;
@@ -61,18 +64,22 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 	
 	/**
 	 * Constructs a lexical resource from configuration params, by constructing a new similarity storage from these params.
+	 * 
 	 * @throws ElementTypeException 
+	 * @throws RedisRunException 
+	 * @throws FileNotFoundException 
 	 * @see DefaultSimilarityStorage#DefaultSimilarityStorage(ConfigurationParams)
 	 * <p>Additionally, uses the param "top-n-rules" to limit the number of retrieved rules.
 	 */
-	public SimilarityStorageBasedLexicalResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException {
+	public SimilarityStorageBasedLexicalResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
 		this(
-				new DefaultSimilarityStorage(params),
-				params.getInt(Configuration.TOP_N_RULES));
+				new DefaultSimilarityStorage(params),params.getInt(Configuration.TOP_N_RULES));
 	}
 
 
-	
+	public SimilarityStorageBasedLexicalResource(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, FileNotFoundException, RedisRunException {
+		this(new DefaultSimilarityStorage(l2rRedisFile, r2lRedisFile, resourceName, instanceName),maxNumOfRetrievedRules);
+	}
 	
 	/* (non-Javadoc)
 	 * @see ac.biu.nlp.nlp.lexical_resource.LexicalResource#getRulesForLeft(java.lang.String, ac.biu.nlp.nlp.representation.PartOfSpeech)

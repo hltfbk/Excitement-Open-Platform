@@ -51,7 +51,7 @@ public class IDBasedCooccurrence<R> extends DefaultIdentifiableCountable impleme
 	public void fromKey(String key) throws UndefinedKeyException {
 		String[] props = key.split(DELIMITER);
 		if (props.length != 3)
-			throw new UndefinedKeyException("Cannot decode key " + key + " to a LemmaPos object");
+			throw new UndefinedKeyException("Cannot decode key " + key + " to a LemmaPos object, since it contains  one or more serialization delimiters");
 		try {
 			textUnitID1 = Integer.parseInt(props[0]);
 			relation = (R) props[1];

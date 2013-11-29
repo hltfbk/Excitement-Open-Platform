@@ -43,7 +43,7 @@ public class LemmaPos implements Externalizable {
 	public void fromKey(String key) throws UndefinedKeyException {
 		String[] toks = key.split(DELIMITER);
 		if (toks.length != 2)
-			throw new UndefinedKeyException("Cannot decode key " + key + " to a LemmaPos object");
+			throw new UndefinedKeyException("Cannot decode key " + key + " to a LemmaPos object, since it contains  one or more serialization delimiters");
 		this.lemma = toks[0];
 		this.pos = CanonicalPosTag.valueOf(toks[1]);			
 	}
@@ -68,7 +68,7 @@ public class LemmaPos implements Externalizable {
 	@Override
 	public String toKey() throws UndefinedKeyException  {
 		if (lemma.contains(DELIMITER))
-			throw new UndefinedKeyException("Cannot encode lemma " + lemma);
+			throw new UndefinedKeyException("Cannot encode lemma " + lemma + ", since it contains  one or more serialization delimiters");
 		StringBuilder sb = new StringBuilder();
 		sb.append(lemma);
 		sb.append(DELIMITER);
@@ -82,7 +82,7 @@ public class LemmaPos implements Externalizable {
 	@Override
 	public Set<String> toKeys() throws UndefinedKeyException  {
 		if (lemma.equals(DELIMITER))
-			throw new UndefinedKeyException("Cannot encode lemme " + lemma);
+			throw new UndefinedKeyException("Cannot encode lemme " + lemma + ", since it contains  one or more serialization delimiters");
 		Set<String> ret = new HashSet<String>();
 		if (pos == null) {
 			for (CanonicalPosTag relpos : relevantPos)

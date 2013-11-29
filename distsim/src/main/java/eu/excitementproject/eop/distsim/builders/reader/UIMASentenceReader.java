@@ -32,7 +32,7 @@ import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
  */
 public abstract class UIMASentenceReader<T> extends FileBasedSentenceReader<T> {
 
-	protected static final String DEFAULT_AE_TEMPLATE_FILE ="/desc/DummyAE.xml";
+	protected static final String DEFAULT_AE_TEMPLATE_FILE ="desc/DummyAE.xml";
 	
 	public UIMASentenceReader(ConfigurationParams params)  {
 		converter = new CasTreeConverter();
