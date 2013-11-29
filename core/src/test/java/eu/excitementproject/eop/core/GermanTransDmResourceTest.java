@@ -15,7 +15,7 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm.GermanTransDmInfo;
-import eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm.GermanTransDmNotInstalledException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm.GermanTransDmException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm.GermanTransDmResource;
 
 
@@ -37,7 +37,7 @@ public class GermanTransDmResourceTest {
 		try {
 			transDm = new GermanTransDmResource(new 
 					ImplCommonConfig(new File("./src/test/resources/german_resource_test_configuration.xml")));
-		} catch (GermanTransDmNotInstalledException e) {
+		} catch (GermanTransDmException e) {
 			System.err.println("WARNING: GermanTransDm file was not found in the given path.");
 		
 		} catch (ConfigurationException | ComponentException e) {
@@ -124,11 +124,11 @@ public class GermanTransDmResourceTest {
 		}
 		
 		
-		// RESULT getRules for a J adjective + N noun
+		// RESULT getRules for a J adjective + V verb
 		System.out.println("rTest for witzig");
 		List<LexicalRule<? extends GermanTransDmInfo>> list3a = null; 
 		try {
-			list3a = transDm.getRules("witzig", new GermanPartOfSpeech("ADJ"), "Einkommen", new GermanPartOfSpeech("N")); 
+			list3a = transDm.getRules("witzig", new GermanPartOfSpeech("ADJ"), "machen", new GermanPartOfSpeech("V")); 
 			assertTrue(list3a.size() > 0);
 			System.out.println("Rule list size is " + list3a.size());
 			for (LexicalRule<? extends GermanTransDmInfo> rule : list3a) {
@@ -174,7 +174,7 @@ public class GermanTransDmResourceTest {
 
 		try {
 			transDmDirect1 = new GermanTransDmResource("all");
-		} catch (GermanTransDmNotInstalledException e) {
+		} catch (GermanTransDmException e) {
 			System.err.println("WARNING: GermanTransDm file was not found in the given path.");
 		
 		} catch (ConfigurationException e) {
@@ -185,11 +185,11 @@ public class GermanTransDmResourceTest {
 		
 		
 		System.out.println("THIS SHOULD OUTPUT THE SAME AS THE TEST BEFORE: ");
-		// RESULT getRules for a J adjective + N noun
+		// RESULT getRules for a J adjective + V verb
 		System.out.println("rTest for witzig");
 		List<LexicalRule<? extends GermanTransDmInfo>> list5 = null; 
 		try {
-			list5 = transDmDirect1.getRules("witzig", new GermanPartOfSpeech("ADJ"), "Einkommen", new GermanPartOfSpeech("N")); 
+			list5 = transDmDirect1.getRules("witzig", new GermanPartOfSpeech("ADJ"), "machen", new GermanPartOfSpeech("V")); 
 			assertTrue(list5.size() > 0);
 			System.out.println("Rule list size is " + list5.size());
 			for (LexicalRule<? extends GermanTransDmInfo> rule : list5) {
@@ -216,7 +216,7 @@ public class GermanTransDmResourceTest {
 
 		try {
 			transDmDirect2 = new GermanTransDmResource("balapinc");
-		} catch (GermanTransDmNotInstalledException e) {
+		} catch (GermanTransDmException e) {
 			System.err.println("WARNING: GermanTransDm file was not found in the given path.");
 		
 		} catch (ConfigurationException e) {
@@ -231,7 +231,7 @@ public class GermanTransDmResourceTest {
 		System.out.println("rTest for witzig");
 		List<LexicalRule<? extends GermanTransDmInfo>> list6 = null; 
 		try {
-			list6 = transDmDirect2.getRules("witzig", new GermanPartOfSpeech("ADJ"), "Einkommen", new GermanPartOfSpeech("N")); 
+			list6 = transDmDirect2.getRules("witzig", new GermanPartOfSpeech("ADJ"), "machen", new GermanPartOfSpeech("V")); 
 			assertTrue(list6.size() > 0);
 			System.out.println("Rule list size is " + list6.size());
 			for (LexicalRule<? extends GermanTransDmInfo> rule : list6) {
@@ -257,7 +257,7 @@ public class GermanTransDmResourceTest {
 
 		try {
 			transDmDirect3 = new GermanTransDmResource("abcdefg");
-		} catch (GermanTransDmNotInstalledException e) {
+		} catch (GermanTransDmException e) {
 			System.err.println("WARNING: GermanTransDm file was not found in the given path.");
 			e.printStackTrace();
 		} catch (ConfigurationException e) {

@@ -4,6 +4,7 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm;
 //import eu.excitementproject.eop.common.component.Component;
 //import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 //import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
+
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
@@ -14,9 +15,6 @@ import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfS
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceNothingToClose;
-
-
-
 
 
 
@@ -62,6 +60,9 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 	 *  in which way the resulting List of Rules should be filled. */
 	boolean isReverseMap = false;
 	
+	/** per-relation output confidences */
+	private final List<Enum<SimMeasure>> simMeasures= new ArrayList<Enum<SimMeasure>>();	
+	
 	/** Stores similarity values: measurename -&gt; LHS word-pos -&gt; RHS word-pos -&gt; similarityvalue */
 	private Map<String, Map<String, Map<String, Float>>> sims = new HashMap<String, Map<String, Map<String, Float>>>();
 
@@ -90,7 +91,7 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 	 * are used.
 	 * 
 	 * @param simMeasure the similarity measure to be used. Choices: cosine, balapinc, 
-	 *        all (= both cos and balapinc)
+	 *        all (= both cosine and balapinc)
 	 * @throws ConfigurationException
 	 */
 	public GermanTransDmResource(String simMeasure) throws ConfigurationException
@@ -99,16 +100,21 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 		ArrayList<String> listResource = new ArrayList<String>();
 		
 		if (simMeasure.equals("all")) {
-			listResource.add("/dewacTransDm-data/sdewac.synt.transdm.cosine");
-			listResource.add("/dewacTransDm-data/sdewac.synt.transdm.balapinc");
-		} else if (simMeasure.equals("cos")) {
-			listResource.add("/dewacTransDm-data/sdewac.synt.transdm.cosine");
+			simMeasures.add(SimMeasure.BALAPINC);
+			simMeasures.add(SimMeasure.COSINE);			
+			
+		} else if (simMeasure.equals("cosine")) {
+			simMeasures.add(SimMeasure.COSINE);
 			
 		} else if (simMeasure.equals("balapinc")) {
-			listResource.add("/dewacTransDm-data/sdewac.synt.transdm.balapinc");
+			simMeasures.add(SimMeasure.BALAPINC);
 			
 		} else {
-			throw new GermanTransDmNotInstalledException("'" + simMeasure + "' is no valid similarity measure name.");
+			throw new GermanTransDmException("'" + simMeasure + "' is no valid similarity measure name.");
+		}
+		
+		for (Enum<SimMeasure> sim : simMeasures) {
+			listResource.add("/dewacTransDm-data/sdewac.synt.transdm.10k." + sim.toString());
 		}
 		
 		try {
@@ -142,7 +148,7 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 			}
 		}
 		catch (java.lang.Exception e) {
-			throw new GermanTransDmNotInstalledException("Cannot load similarity file: " + e.getMessage(), e);
+			throw new GermanTransDmException("Cannot load similarity file: " + e.getMessage(), e);
 		}
 	}
 	
@@ -397,30 +403,14 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
         }
                 
 		List<LexicalRule<? extends GermanTransDmInfo>> result = new ArrayList<LexicalRule<? extends GermanTransDmInfo>>();
-		// since we might have different values for lhs=x + rhs=y and lhs=y + rhs=y, 
-		// we need both getRulesForLeft and getRulesForRight! 
-		// Thus, two for loops.
 		for (LexicalRule<? extends GermanTransDmInfo> rule : getRulesForLeft(leftLemma, leftPos, relation)) {
 			// if rightPos is null, any lemma-matching result is accepted.
 			// if rightPos is not null, the GermanPartOfSpeech-converted POS from the resource must match the
 			//   short version of the rightPos type.
-			System.out.println("rightPos: " + rightPos.toString() + ", rightPosShort: " + rightPosShort.toString()
-					+ ", rule.getRPos: " + rule.getRPos().toString());
 			if (rule.getRLemma().equals(rightLemma) && (rightPos == null || rule.getRPos().equals(rightPosShort))) {
 				result.add(rule);
 			}
-		}
-		// for this loop the right* variables should be read as left* and vice versa
-		for (LexicalRule<? extends GermanTransDmInfo> rule : getRulesForRight(leftLemma, leftPos, relation)) {
-			// if rightPos is null, any lemma-matching result is accepted.
-			// if rightPos is not null, the GermanPartOfSpeech-converted POS from the resource must match the
-			//   short version of the rightPos type.
-			System.out.println("rightPos: " + rightPos.toString() + ", rightPosShort: " + rightPosShort.toString()
-					+ ", rule.getRPos: " + rule.getRPos().toString());
-			if (rule.getLLemma().equals(rightLemma) && (leftPos == null || rule.getLPos().equals(rightPosShort))) {
-				result.add(rule);
-			}
-		}		
+		}	
 		return result;
 	}
 

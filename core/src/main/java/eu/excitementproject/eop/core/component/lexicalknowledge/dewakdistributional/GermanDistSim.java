@@ -41,6 +41,10 @@ import java.util.Scanner;
  */
 public class GermanDistSim implements Component, LexicalResource<GermanDistSimInfo> {
 
+	/** Stores information if the call is made for normal or reverse sims, thus: 
+	 *  in which way the resulting List of Rules should be filled. */
+	boolean isReverseMap = false;	
+
 	/** Stores similarity values: measurename -&gt; LHS word -&gt; RHS word -&gt; similarityvalue */
 	private Map<String, Map<String, Map<String, Float>>> sims = new HashMap<String, Map<String, Map<String, Float>>>();
 
@@ -226,8 +230,16 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 						// pos stay null
 					}
 
-					LexicalRule<? extends GermanDistSimInfo> lexrule = new LexicalRule<GermanDistSimInfo>(lemma, pos1, rhs, pos2, score, measure, "GermanDistSim", new GermanDistSimInfo());
+					LexicalRule<? extends GermanDistSimInfo> lexrule;
+					if (isReverseMap) { // turn lhs and rhs around.
+						lexrule = new LexicalRule<GermanDistSimInfo>(rhs, pos2, 
+								lemma, pos1, score, measure, "GermanDistSim", new GermanDistSimInfo());						
+					} else { // keep lhs and rhs as it is in this method.
+						lexrule = new LexicalRule<GermanDistSimInfo>(lemma, pos1, 
+								rhs, pos2, score, measure, "GermanDistSim", new GermanDistSimInfo());						
+					}
 					result.add(lexrule);
+					
                                 }
                         }
                 }
@@ -245,6 +257,7 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	 */
 	public List<LexicalRule<? extends GermanDistSimInfo>> getRulesForLeft(String lemma, PartOfSpeech pos) throws LexicalResourceException
 	{
+		isReverseMap = false;
 		return getFromMap(lemma, sims);
 	}
 	
@@ -261,6 +274,7 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 		// DistSim can only return Entailment
 		if (relation == TERuleRelation.NonEntailment) return new ArrayList<LexicalRule<? extends GermanDistSimInfo>>();
 
+		isReverseMap = false;
 		return getFromMap(lemma, sims);
 	}
 	
@@ -273,6 +287,7 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	 */
 	public List<LexicalRule<? extends GermanDistSimInfo>> getRulesForRight(String lemma, PartOfSpeech pos) throws LexicalResourceException
 	{
+		isReverseMap = true;		
 		return getFromMap(lemma, reverse_sims);
 	}
 	
@@ -284,10 +299,11 @@ public class GermanDistSim implements Component, LexicalResource<GermanDistSimIn
 	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
 	 */	
 	public List<LexicalRule<? extends GermanDistSimInfo>> getRulesForRight(String lemma, PartOfSpeech pos, TERuleRelation relation) throws LexicalResourceException
-        {
+	{
 		if (relation == TERuleRelation.NonEntailment) return new ArrayList<LexicalRule<? extends GermanDistSimInfo>>();
+		isReverseMap = true;
 		return getFromMap(lemma, reverse_sims);
-        }
+	}
 	
 	
 	/** This method returns a list of lexical rules whose left and right sides match the two given pairs of lemma and POS.
