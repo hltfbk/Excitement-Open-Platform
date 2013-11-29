@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.core.component.syntacticknowledge;
 
+import java.io.FileNotFoundException;
 import java.util.Collection;
 
 
@@ -34,6 +35,7 @@ import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.Temp
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.StringBasedElement;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
@@ -56,8 +58,10 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 	 * <p>Additionally, uses the param "top-n-rules" to limit the number of retrieved rules.
 	 * 
 	 * 	@throws ElementTypeException 
+	 * @throws RedisRunException 
+	 * @throws FileNotFoundException 
 	 */
-	public SimilarityStorageBasedDIRTSyntacticResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException {
+	public SimilarityStorageBasedDIRTSyntacticResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
 		this(
 				new DefaultSimilarityStorage(params),
 				new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true),

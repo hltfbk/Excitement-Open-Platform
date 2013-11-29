@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.distsim.builders.reader.FileBasedSentenceReader;
 import eu.excitementproject.eop.distsim.builders.reader.SentenceReaderException;
 import eu.excitementproject.eop.distsim.builders.reader.XMLNodeSentenceReader;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.util.Configuration;
@@ -37,7 +39,7 @@ import eu.excitementproject.eop.distsim.util.Pair;
  */
 public class TestDIRTSimilarity {
 	
-	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, SyntacticResourceException, SentenceReaderException, ConfigurationFileDuplicateKeyException, ConfigurationException, ElementTypeException {
+	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, SyntacticResourceException, SentenceReaderException, ConfigurationFileDuplicateKeyException, ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
 
 		if (args.length != 2) {
 			System.out.println("Usage: eu.excitementproject.eop.distsim.application.TestLemmaPosSimilarity " +

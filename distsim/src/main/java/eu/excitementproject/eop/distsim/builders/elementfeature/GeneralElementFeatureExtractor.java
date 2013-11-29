@@ -23,6 +23,7 @@ import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.Feature;
 import eu.excitementproject.eop.distsim.items.TextUnit;
+import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.storage.BasicCooccurrenceStorage;
 import eu.excitementproject.eop.distsim.storage.BasicMap;
 import eu.excitementproject.eop.distsim.storage.BasicSet;
@@ -203,6 +204,8 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 						}
 					}
 				} catch (ElementFeatureExtractionException e) {
+				} catch (UndefinedKeyException e) {
+					logger.info(e.toString() + ". The element/feature is considered insignificant and will be filtered.");
 				} catch (Exception e) {
 					logger.error(ExceptionUtil.getStackTrace(e));
 				}				

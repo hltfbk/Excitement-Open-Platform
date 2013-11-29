@@ -2,8 +2,11 @@ package eu.excitementproject.eop.distsim.builders.reader;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.AbstractNodeStringUtils;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
@@ -36,14 +39,25 @@ import eu.excitementproject.eop.distsim.util.Pair;
 public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>{
 
 	public CollNodeSentenceReader(PartOfSpeech pos) {
+		this(pos,true);
+	}
+
+	public CollNodeSentenceReader(PartOfSpeech pos, boolean bAutoGenerationOfArtificialRoot) {
 		super();
 		this.pos = pos;
 		this.position = 0;
+		this.bAutoGenerationOfArtificialRoot = bAutoGenerationOfArtificialRoot;
 	}
-
+	
 	public CollNodeSentenceReader(ConfigurationParams params) throws ConfigurationException, CreationException {
 		super(params);
 		this.pos = (PartOfSpeech)Factory.create(params.get(Configuration.PART_OF_SPEECH_CLASS),"other");
+		
+		try {
+			this.bAutoGenerationOfArtificialRoot = params.getBoolean(Configuration.GENERATE_ARTIFICIAL_ROOT);
+		} catch (ConfigurationException e) {
+			this.bAutoGenerationOfArtificialRoot = true;	
+		}
 		this.position = 0;
 	}
 
@@ -57,9 +71,9 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 			Map<Integer,Integer> child2parent = new HashMap<Integer,Integer>();
 			
 			String line;
-			int rootId = -1;
-			
-			String sProblem = null;
+			Set<Integer> roots = new HashSet<Integer>();
+			//int rootId = -1;			
+			//String sProblem = null;
 			
 			while (true) {
 				synchronized(this) {
@@ -75,22 +89,29 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 				BasicNode node = getBasicNodeFromConll(toks);
 				id2node.put(nodeId,node);
 				child2parent.put(nodeId,parentId);
-				if (parentId == 0) {
-					if (rootId != -1) 
+				if (parentId == 0) 
+					roots.add(nodeId);
+				/*{
+					if (rootId != -1) {
 						sProblem = "More than one root was identified!";
-					else 
+					} else 
 						rootId = nodeId;
-				}
+				}*/
 			}
-
-			if (sProblem != null) 
-				throw new SentenceReaderException(sProblem);
 
 			if (id2node.isEmpty())
 				return null;
-			
-			if (rootId == -1)
+
+			if (roots.isEmpty())
 				throw new SentenceReaderException("Root node was not identified!");
+
+			if (roots.size() > 1) {
+				if (bAutoGenerationOfArtificialRoot)
+					createArtificialRoot(roots,id2node,child2parent);
+				else
+					throw new SentenceReaderException("More than one root was identified!");
+			}
+			
 			
 			//debug
 			/*for (Entry<Integer,BasicNode> entry : id2node.entrySet()) 
@@ -108,6 +129,7 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 				}
 			}
 
+			int rootId = roots.iterator().next();
 			return new Pair<BasicNode,Long>(id2node.get(rootId),1L);
 			
 		} catch (Exception e) {
@@ -115,6 +137,18 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 		}
 	}
 	
+	protected static void createArtificialRoot(Set<Integer> roots,Map<Integer, BasicNode> id2node, Map<Integer, Integer> child2parent) {
+		BasicNode root = new BasicNode(new DefaultInfo("EMPTY", new DefaultNodeInfo(null, null, 0, null, new DefaultSyntacticInfo(null)), new DefaultEdgeInfo(null)));
+		int rootId = ARTIFICIAL_ROOT_ID;
+		id2node.put(rootId,root);	
+		Iterator<Integer> it = roots.iterator();
+		while (it.hasNext()) {
+			child2parent.put(it.next(),rootId);
+			it.remove();
+		}
+		roots.add(rootId);
+	}
+
 	protected BasicNode getBasicNodeFromConll(String[] toks) throws Exception {
 		/*
 		 * items[0]: ID
@@ -149,7 +183,10 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 		}
 	}
 	
+	protected boolean bAutoGenerationOfArtificialRoot;
 	protected final PartOfSpeech pos;
 	protected static final String UNKNOWN = "<unknown>";
+	protected static final int ARTIFICIAL_ROOT_ID = -1;
+
 }
 
