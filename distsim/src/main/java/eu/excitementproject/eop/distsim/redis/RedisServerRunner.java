@@ -36,9 +36,8 @@ import com.google.common.io.Resources;
  * 
  * NOTE: designed with REDIS server binary 2.6.16! 
  * NOTE: tested with Linux-64 and OSX 10.9 
- * 
- * TODO put "redis-server" binaries in a Jar and make it artifact, then, remove binaries from the "resources", and test it works.  
- * TODO put "redis-model" (Those that are read from RedisServerRunnerTest) 
+ * TODO write "redis-based lexical resource implementation base". This can work also 
+ * with "already existing server (by getting server & port)
  * 
  */
 public class RedisServerRunner {
