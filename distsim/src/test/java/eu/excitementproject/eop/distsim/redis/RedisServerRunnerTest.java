@@ -2,17 +2,21 @@ package eu.excitementproject.eop.distsim.redis;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.junit.Assume;
 import org.junit.Test;
+
+import com.google.common.io.Files;
+import com.google.common.io.Resources;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
-import eu.excitementproject.eop.common.exception.BaseException;
 import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
@@ -45,11 +49,20 @@ public class RedisServerRunnerTest {
 		RedisServerRunner rs_l = null; 
 		RedisServerRunner rs_r = null; 
 		try {
-			rs_l = new RedisServerRunner(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
-			rs_r = new RedisServerRunner(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
-
-//			rs_l = new RedisServer(6379, "/Users/tailblues/temp/", "similarity-l2r.rdb"); 
-//			rs_r = new RedisServer(6380, "/Users/tailblues/temp/", "similarity-r2l.rdb"); 
+//			rs_l = new RedisServerRunner(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
+//			rs_r = new RedisServerRunner(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
+			System.out.println("extracting l2r file");
+			File l2rRdb = extractDataFileFromJar("redis-german-lin/similarity-l2r.rdb");
+			System.out.println("extracted in: " + l2rRdb.getParent() + "//" + l2rRdb.getName()); 
+			System.out.println("extracting r2l file");
+			File r2lRdb = extractDataFileFromJar("redis-german-lin/similarity-r2l.rdb"); 
+			System.out.println("extracted in: " + r2lRdb.getParent() + "//" + r2lRdb.getName()); 
+//			rs_l = new RedisServerRunner(6379, "/Users/tailblues/temp", "similarity-l2r.rdb"); 
+//			rs_r = new RedisServerRunner(6380, "/Users/tailblues/temp", "similarity-r2l.rdb"); 
+			rs_l = new RedisServerRunner(6379, l2rRdb.getParent(), l2rRdb.getName()); 
+			rs_r = new RedisServerRunner(6380, r2lRdb.getParent(), r2lRdb.getName()); 
+			
+			// run 
 			rs_l.start();
 			//Thread.sleep(1000); // do we need this? no. 
 			rs_r.start(); 
@@ -95,4 +108,17 @@ public class RedisServerRunnerTest {
 		rs_r.stop(); 
 		
 	}
+	
+	private static File extractDataFileFromJar(String resourceName) throws IOException {
+		File tmpDir = Files.createTempDir();
+		tmpDir.deleteOnExit();
+
+		File rdb = new File(tmpDir, resourceName);
+		FileUtils.copyURLToFile(Resources.getResource(resourceName), rdb);
+		rdb.deleteOnExit();
+		//rdb.setExecutable(true);
+		
+		return rdb;
+	}
+
 }
