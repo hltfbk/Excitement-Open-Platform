@@ -113,10 +113,10 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	}
 
 	
-	private void updateFeature(Map<Integer, Double> featureVector, Feature feature, List<PredicateAndArgument<I, S>> listMismatch, boolean contantValue) throws GapException
+	private void updateFeature(Map<Integer, Double> featureVector, Feature feature, List<PredicateAndArgument<I, S>> listMismatch, boolean constantValue) throws GapException
 	{
 		double addValue = 0.0;
-		if (is((!contantValue)&&(BiuteeConstants.USE_MLE_FOR_ARGUMENTS_GAP)))
+		if (is((!constantValue)&&(BiuteeConstants.USE_MLE_FOR_ARGUMENTS_GAP)))
 		{
 			addValue = 0.0;
 			for (PredicateAndArgument<I, S> mismatch : listMismatch)
