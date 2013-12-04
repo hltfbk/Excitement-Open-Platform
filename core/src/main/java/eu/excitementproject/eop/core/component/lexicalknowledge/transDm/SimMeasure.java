@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm;
+package eu.excitementproject.eop.core.component.lexicalknowledge.transDm;
 
 /**
  * An ENUM type to hold the different similarity measures which are 

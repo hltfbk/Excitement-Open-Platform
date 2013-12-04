@@ -1,5 +1,5 @@
 
-package eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm;
+package eu.excitementproject.eop.core.component.lexicalknowledge.transDm;
 
 //import eu.excitementproject.eop.common.component.Component;
 //import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
@@ -29,25 +29,26 @@ import java.util.Scanner;
 
 
 /**
- * This class implements a German lexical resource based on corpus term distribution.
+ * This class implements a German lexical resource based on cross- and multilingual 
+ * corpus term distribution. It takes advantage of huge available corpara in English
+ * by mapping them into another language.
+ * 
+ * The resource is based on a standard English syntax-based distributional resource,
+ * Baroni and Lenci’s Distributional Memory, which is "translated" into German using
+ * a simple translation lexicon, and complements it with co-occurrence information 
+ * gathered from a German corpus.
  *   
- * It uses the distance vectors of a syntactic distributional vector space. More specifically,
- * it uses the WxLW matrix of a three-dimensional vector space in the style of Baroni and 
- * Lenci's "Distributional Memory".  
- * However, the vector space is not simply based on a German corpus, but on two different 
- * spaces:
- * 1. a translation of Baroni and Lenci's English typeDM model on a WxLW space based on a 
- *    bilingual dictionary
- * 2. a space of a German corpus (sdeWaC)  
- * For each word pair, the similarity table contains the maximum of the similarities in 1. and 2.
+ * More specifically, the resource uses 
+ * 1. the WxLW matrix of Baroni and Lenci's three-dimensional Distributional Memory
+ * 2. the co-occurrence information from the German sdeWaC corpus
+ * For each word pair, the similarity table contains the maximum of the similarities 
+ * in 1. and 2.
  *   
  * We consider only the 10k most frequent German words observed in the similarity table.
  * Implemented similarity measures are:
  * <li>cosine</li>
  * <li>balAPinc</li>
  * They can be used in combination or individually (cosine, balapinc, all).
- * 
- * TODO: check if every info is correct after having got Jason's space
  * 
  * 
  * @author Britta Zeller <zeller@cl.uni-heidelberg.de> 
@@ -88,7 +89,7 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 	/**
 	 * Creates a new GermanTransDM instance according to the similarity measure(s) parameter
 	 * handed in. Depending on this parameter, either one or two lists of pair similarities
-	 * are used.
+	 * are loaded.
 	 * 
 	 * @param simMeasure the similarity measure to be used. Choices: cosine, balapinc, 
 	 *        all (= both cosine and balapinc)
@@ -134,8 +135,6 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 
 							if (!reverse_maps.containsKey(rhs)) reverse_maps.put(rhs, new HashMap<String, Float>());
 							reverse_maps.get(rhs).put(lhs, similarity);
-						//}
-					//}
 				}
 				/** 
 				 * IMPORTANT !!! 

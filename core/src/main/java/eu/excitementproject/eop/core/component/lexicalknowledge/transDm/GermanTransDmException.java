@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.component.lexicalknowledge.dewacTransDm;
+package eu.excitementproject.eop.core.component.lexicalknowledge.transDm;
 
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 
