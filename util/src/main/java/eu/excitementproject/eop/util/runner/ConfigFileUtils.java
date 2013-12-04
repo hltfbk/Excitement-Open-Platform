@@ -2,8 +2,14 @@ package eu.excitementproject.eop.util.runner;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -220,6 +226,29 @@ public class ConfigFileUtils {
 		return configDoc;
 	}
 	
+	/**
+	 * Replace a value of a given attribute in the given configuration file, with the given value 
+	 * 
+	 * @param file -- configuration file
+	 * @param attribute -- configuration attribute (e.f. model, trainDir, ...)
+	 * @param newValue -- new value of the given attribute
+	 */
+	public static void editConfigFile(String file, String attribute, String newValue) {
+		
+		Path path = Paths.get(file);
+		Charset charset = StandardCharsets.UTF_8;
+
+		String content;
+		try {
+			content = new String(Files.readAllBytes(path), charset);
+			content = content.replaceAll("<" + attribute + ">.*?<\\/" + attribute + ">", "<" + attribute + ">" + newValue + "<\\/" + attribute + ">");
+			Files.write(path, content.getBytes(charset));
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 }

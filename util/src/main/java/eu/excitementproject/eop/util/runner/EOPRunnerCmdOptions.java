@@ -34,6 +34,9 @@ public class EOPRunnerCmdOptions {
 	@Option(name="-hypothesis", usage="The hypothesis (for providing a test/hypothesis pair)")
 	public String hypothesis = "";
 	
+	@Option(name="-results", usage="The name of the (xml formatted) results file")
+	public String results = null;
+	
 	@Option(name="-train", usage="Do the training or not")
 	public boolean train = false;
 	

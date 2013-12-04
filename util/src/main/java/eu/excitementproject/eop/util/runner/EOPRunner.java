@@ -18,6 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.nio.charset.StandardCharsets;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.kohsuke.args4j.CmdLineException;
@@ -65,6 +66,9 @@ public class EOPRunner {
 	private String configFileDir = "";
 	private String configFileName;
 	private File configFile;
+	private String hasGoldLabel = null;
+
+	private String xmlResultsFile = null;
 	
 	private CommonConfig config;
 	
@@ -73,6 +77,9 @@ public class EOPRunner {
 	private EDABasic<?> eda;
 	
 	private String configSection = "PlatformConfiguration";
+
+	private Logger logger;
+
 	
 	/**
 	 * @param args
@@ -95,6 +102,8 @@ public class EOPRunner {
 
 		dih = new EOPRunnerInitializationHelper();
 		
+		logger = Logger.getLogger("eu.excitementproject.eop.util.runner.EOPRunner");
+		
 		if (args.length == 0){
 			showHelp(parser);
 		}
@@ -106,8 +115,8 @@ public class EOPRunner {
 			}
 			
 //			editConfigFile(option);
-			chooseConfigFile(option);
-			initializeLAP(option);
+			chooseConfigFile();
+			initializeLAP();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,7 +127,7 @@ public class EOPRunner {
 	 * 
 	 * @param option -- (parsed) command arguments
 	 */
-	private void initializeLAP(EOPRunnerCmdOptions option) {
+	public void initializeLAP() {
 		if (option.language != null) {
 			language = option.language.toUpperCase();
 		} else {
@@ -127,14 +136,14 @@ public class EOPRunner {
 		
 		String lapClassName = getLAPClass(option, configFile, language);	
 		
-		System.out.println("LAP initialized from class " + lapClassName);
+		logger.info("LAP initialized from class " + lapClassName);
 		
 		try {
 				Class<?> lapClass = Class.forName(lapClassName);
 				Constructor<?> lapClassConstructor = lapClass.getConstructor();
 				lap = (LAPAccess) lapClassConstructor.newInstance();
 		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			System.err.println("Error initializing LAP : " + e.getClass());
+			logger.error("Error initializing LAP : " + e.getClass());
 			e.printStackTrace();
 			System.exit(1);
 		} 
@@ -188,9 +197,9 @@ public class EOPRunner {
 	 * @param inputFile -- input (RTE formatted) file
 	 * @param outDir -- directory for writing the serialized CAS objects produced from the test/hypothesis pairs in the input data
 	 */
-	private void runLAPOnFile(String inputFile, String outDir) {
+	public void runLAPOnFile(String inputFile, String outDir) {
 		
-		System.out.println("Running lap on file: " + inputFile + " // writing output to directory " + outDir);
+		logger.info("Running lap on file: " + inputFile + " // writing output to directory " + outDir);
 		
 		try {
 			lap.processRawInputFormat(new File(inputFile), new File(outDir));
@@ -209,13 +218,13 @@ public class EOPRunner {
 	 * @param hypothesis -- hypothesis portion of the entailment pair
 	 * @return -- a CAS object for the given text/hypothesis pair
 	 */
-	private JCas runLAP(String text, String hypothesis) {
+	public JCas runLAP(String text, String hypothesis) {
 		JCas aJCas = null;
 		try {
 			aJCas = lap.generateSingleTHPairCAS(text, hypothesis);
 			PlatformCASProber.probeCasAndPrintContent(aJCas, System.out);
 		} catch (LAPException e) {
-			System.err.println("Error running the LAP");
+			logger.error("Error running the LAP");
 			e.printStackTrace();
 			System.exit(1);			
 		}
@@ -234,7 +243,7 @@ public class EOPRunner {
 			configFile = new File(configFileName);
 			config = new ImplCommonConfig(ConfigFileUtils.editConfigFile(baseConfigFile, configFile, option));
 		} catch (Exception e) {
-			System.err.println("Could not generate a configuration file object");
+			logger.error("Could not generate a configuration file object");
 			e.printStackTrace();
 		}
 	}
@@ -244,7 +253,7 @@ public class EOPRunner {
 	 * 
 	 * @param option -- (parsed) command line arguments
 	 */
-	private void chooseConfigFile(EOPRunnerCmdOptions option) {
+	private void chooseConfigFile() {
 		
 		configFileName = option.config;
 		configFile = new File(configFileName);
@@ -281,7 +290,7 @@ public class EOPRunner {
 	 * @param trainFile -- training data (RTE formatted)
 	 * @param trainDir -- directory for storing the processed training data (e.g. CAS-es produced by the LAP)
 	 */
-	private void runEOPTrain(String trainFile, String trainDir) {
+	public void runEOPTrain(String trainFile, String trainDir) {
 		try {
 			runLAPOnFile(trainFile, trainDir);
 			eda.startTraining(config);
@@ -306,12 +315,18 @@ public class EOPRunner {
 	 * @param testDirStr -- directory for storing testing decisions
 	 * @param outDir -- directory for storing the results in the web-demo-friendly format
 	 */
-	private void runEOPTest(String testFile, String testDirStr, String outDir) {
+	public void runEOPTest(String testFile, String testDirStr, String outDir) {
+		
 		String resultsFile = outDir + "/" + configFile.getName() + "_results.txt";
-		String xmlResultsFile = outDir + "/" + configFile.getName() + "_results.xml";
+		
+		if (option.results != null) {
+			xmlResultsFile = option.results;
+		} else { 
+			xmlResultsFile = outDir + "/" + configFile.getName() + "_results.xml";
+		}
+		
 		Path source;
-		Path target = Paths.get(outDir + "/" + configFile.getName() + "_report.xml");
-		String hasGoldLabel = null;		
+//		Path target = Paths.get(outDir + "/" + configFile.getName() + "_report.xml");
 		
 		try {
 //			source = Paths.get(resultsFile);
@@ -339,39 +354,44 @@ public class EOPRunner {
 			
 			OutputUtils.generateXMLResults(testFile, resultsFile, xmlResultsFile);
 			
-			System.out.println("Results file -- XML format: " + xmlResultsFile);
-			System.out.println("Results file -- txt format: " + resultsFile);
-			
-			if (option.score && hasGoldLabel != null) {
-				EDAScorer.score(new File(resultsFile), target.toString());
-				System.out.println("Evaluation file: " + target.toString());
-			} else {
-				if (option.score) {
-					System.err.println("Results file cannot be scored -- no gold standard");
-				}
-			}
-			
+			logger.info("Results file -- XML format: " + xmlResultsFile);
+			logger.info("Results file -- txt format: " + resultsFile);			
 			
 		} catch (Exception e) {
-			System.out.println("Error copying run output files " + resultsFile + " to directory " + outDir);
+			logger.error("Error copying run output files " + resultsFile + " to directory " + outDir);
 			e.printStackTrace();
 		}
 		
 	}
+
 	
+	public void scoreResults(String resultsFile) {
+		scoreResults(resultsFile,Paths.get(resultsFile + "_report.xml"));
+	}
+	
+	
+	public void scoreResults(String resultsFile, Path target) {
+		EDAScorer.score(new File(resultsFile), target.toString());
+		logger.info("Results file: " + resultsFile);
+		logger.info("Evaluation file: " + target.toString());
+	}
+	
+	
+
 	/**
 	 * Run the platform on a single test/hypothesis pair
 	 * 	 	
 	 * @param option -- command line arguments
 	 */
-	private void runEOPSinglePair(EOPRunnerCmdOptions option) {
-		System.out.println("Text: " + option.text);
-		System.out.println("Hypothesis: " + option.hypothesis);
+	public void runEOPSinglePair() {
+		
+		logger.info("Text: " + option.text);
+		logger.info("Hypothesis: " + option.hypothesis);
 		
 		JCas aJCas = runLAP(option.text, option.hypothesis);
 		try {
 			TEDecision te = eda.process(aJCas);
-			System.out.println("T/H pair processing result: " + te.getDecision() + " with confidence " + te.getConfidence());
+			logger.info("T/H pair processing result: " + te.getDecision() + " with confidence " + te.getConfidence());
 			OutputUtils.makeSinglePairXML(te, aJCas, option.output, option.language);
 		} catch (EDAException e) {
 			// TODO Auto-generated catch block
@@ -400,10 +420,10 @@ public class EOPRunner {
 	public void run() {
 		
 		try{	
-			System.out.println("Initializing EDA from file " + config.getConfigurationFileName());	
+			logger.info("Initializing EDA from file " + config.getConfigurationFileName());	
 
 			eda = dih.startEngineBasic(configFile);
-			System.out.println("EDA object created from class " + eda.getClass());
+			logger.info("EDA object created from class " + eda.getClass());
 			
 			
 			if (option.train) {
@@ -426,9 +446,14 @@ public class EOPRunner {
 						runEOPTest(testFile, testDir, option.output);
 					}
 				} else {
-					runEOPSinglePair(option);
+					runEOPSinglePair();
 				}
 			}
+			
+			if (option.score || hasGoldLabel != null) {
+				scoreResults(xmlResultsFile);
+			} 
+
 			eda.shutdown();
 
 		} catch(ConfigurationException | EDAException | ComponentException e) {
