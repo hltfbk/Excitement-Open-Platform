@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.distsim.redis;
+package eu.excitementproject.eop.distsim.redisinjar;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -61,7 +61,7 @@ public class RedisServerRunner {
 		this.rdbDir = argRDBDir; 
 		this.rdbName = argRDBName; 
 		this.command = extractExecutableFromJar(RedisRunScriptEnum.getRedisRunScript());		
-        logger = Logger.getLogger("eu.excitementproject.eop.distsim.redis"); 
+        logger = Logger.getLogger(getClass().getName()); 
         logger.debug("redis server constructed with " + port.toString() + ", " + rdbDir + ", " + rdbName); 
 	}
 

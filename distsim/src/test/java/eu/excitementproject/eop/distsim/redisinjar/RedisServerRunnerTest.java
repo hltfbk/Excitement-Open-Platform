@@ -1,9 +1,10 @@
-package eu.excitementproject.eop.distsim.redis;
+package eu.excitementproject.eop.distsim.redisinjar;
 
 import static org.junit.Assert.*;
-
+import static org.junit.Assume.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -12,11 +13,11 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.google.common.io.Files;
-import com.google.common.io.Resources;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.distsim.redisinjar.RedisServerRunner;
 import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
@@ -45,17 +46,29 @@ public class RedisServerRunnerTest {
 		rs.stop(); 
 		
 		// Running with a specific RDB file. 
-		// TODO (update: those files need to be provided by Jar resources!) 
+		// first check that the files are in classpath. If not, just ignore 
+		// the rest of the test. 
+		URL l2rResource = RedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-l2r.rdb"); 
+		URL r2lResource = RedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-r2l.rdb"); 
+
+		assumeNotNull(l2rResource); 
+		assumeNotNull(r2lResource); 
+		
+		// The following test will be done only when there is 
+		// redis-german-lin/  rdb files are in classpath (artifact/Jar). 
+		
 		RedisServerRunner rs_l = null; 
 		RedisServerRunner rs_r = null; 
 		try {
 //			rs_l = new RedisServerRunner(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
 //			rs_r = new RedisServerRunner(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
 			System.out.println("extracting l2r file");
-			File l2rRdb = extractDataFileFromJar("redis-german-lin/similarity-l2r.rdb");
+			//File l2rRdb = extractDataFileFromJar("redis-german-lin/similarity-l2r.rdb");
+			File l2rRdb = extractDataFileFromResource(l2rResource); 
 			System.out.println("extracted in: " + l2rRdb.getParent() + "//" + l2rRdb.getName()); 
 			System.out.println("extracting r2l file");
-			File r2lRdb = extractDataFileFromJar("redis-german-lin/similarity-r2l.rdb"); 
+			//File r2lRdb = extractDataFileFromJar("redis-german-lin/similarity-r2l.rdb"); 
+			File r2lRdb = extractDataFileFromResource(r2lResource); 
 			System.out.println("extracted in: " + r2lRdb.getParent() + "//" + r2lRdb.getName()); 
 //			rs_l = new RedisServerRunner(6379, "/Users/tailblues/temp", "similarity-l2r.rdb"); 
 //			rs_r = new RedisServerRunner(6380, "/Users/tailblues/temp", "similarity-r2l.rdb"); 
@@ -109,16 +122,27 @@ public class RedisServerRunnerTest {
 		
 	}
 	
-	private static File extractDataFileFromJar(String resourceName) throws IOException {
+	private static File extractDataFileFromResource(URL resource) throws IOException
+	{
 		File tmpDir = Files.createTempDir();
 		tmpDir.deleteOnExit();
-
-		File rdb = new File(tmpDir, resourceName);
-		FileUtils.copyURLToFile(Resources.getResource(resourceName), rdb);
-		rdb.deleteOnExit();
-		//rdb.setExecutable(true);
 		
-		return rdb;
+		File rdb = new File(tmpDir, resource.getFile());
+		FileUtils.copyURLToFile(resource, rdb);
+		rdb.deleteOnExit();
+				
+		return rdb; 
 	}
+	
+//	private static File extractDataFileFromJar(String resourceName) throws IOException {
+//		File tmpDir = Files.createTempDir();
+//		tmpDir.deleteOnExit();
+//
+//		File rdb = new File(tmpDir, resourceName);
+//		FileUtils.copyURLToFile(Resources.getResource(resourceName), rdb);
+//		rdb.deleteOnExit();
+//		
+//		return rdb;
+//	}
 
 }

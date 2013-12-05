@@ -70,18 +70,20 @@
 		<version>1.1</version>
 	</dependency>-->
  
- 	<!--  test, local artifact  -->
+  	<dependency>
+  		<groupId>de.uni-heidelberg.cl</groupId>
+  		<artifactId>embedded-redis</artifactId>
+  		<version>20131205</version>
+  	</dependency>
+
+    <!-- uncomment the following to include the German model -->
+     
 	<dependency>
-  		<groupId>hei</groupId>
-  		<artifactId>german-lin</artifactId>
+  		<groupId>de.uni-heidelberg.cl</groupId>
+  		<artifactId>redis-german-lin-prox</artifactId>
   		<version>0.1</version>
   	</dependency>
-  	
-  	<dependency>
-  		<groupId>hei</groupId>
-  		<artifactId>embedded-redis</artifactId>
-  		<version>0.5</version>
-  	</dependency>
+  	 
  	
   	</dependencies>
 </project>
