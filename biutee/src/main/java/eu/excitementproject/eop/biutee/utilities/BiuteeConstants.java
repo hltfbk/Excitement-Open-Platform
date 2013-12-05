@@ -70,7 +70,7 @@ public class BiuteeConstants
 	 * 
 	 * 0 means no heuristic
 	 */
-	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 3;
+	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 0;
 	
 
 
