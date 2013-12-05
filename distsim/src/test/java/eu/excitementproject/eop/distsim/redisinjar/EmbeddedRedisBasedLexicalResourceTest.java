@@ -12,7 +12,7 @@ import org.junit.Test;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 
-public class RedisBasedLexicalResourceTest {
+public class EmbeddedRedisBasedLexicalResourceTest {
 
 	@Test
 	public void test() {
@@ -25,14 +25,13 @@ public class RedisBasedLexicalResourceTest {
         // Note that, the artifact (it's Jar file) holds redis model file in 
         // classpath "redis-german-lin/similarity-l2r.rdb" and "redis-german-lin/similarity-r2l.rdb"
         // You can also pack RDB files in a Jar and make an artifact by deploying it. 
-		URL l2rResource = RedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-l2r.rdb"); 
-		URL r2lResource = RedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-r2l.rdb"); 
+		URL l2rResource = EmbeddedRedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-l2r.rdb"); 
+		URL r2lResource = EmbeddedRedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-r2l.rdb"); 
 
 		// We have the file resource URL. Time to initiate RedisBasedLexicalResource. 
-		RedisBasedLexicalResource testResource=null; 
+		EmbeddedRedisBasedLexicalResource testResource=null; 
 		try {
-			 testResource = new RedisBasedLexicalResource(l2rResource, r2lResource, 6379, 6380, 20); 
-	
+			 testResource = new EmbeddedRedisBasedLexicalResource(l2rResource, r2lResource, 6379, 6380, 20); 
 		}
 		catch (Exception e)
 		{
@@ -69,10 +68,6 @@ public class RedisBasedLexicalResourceTest {
 			e.printStackTrace(); 
 			fail(e.getMessage());  						
 		}
-		
-		
-
-		
 	}
 
 }

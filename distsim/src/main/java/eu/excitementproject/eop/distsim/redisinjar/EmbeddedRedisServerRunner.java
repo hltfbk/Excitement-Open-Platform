@@ -40,7 +40,7 @@ import com.google.common.io.Resources;
  * with "already existing server (by getting server & port)
  * 
  */
-public class RedisServerRunner {
+public class EmbeddedRedisServerRunner {
 	
 	/* We won't need this. 
 	public RedisServer(File command, Integer port) {
@@ -56,7 +56,7 @@ public class RedisServerRunner {
 	 * @param argRDBName filename of the rdb file to be served (without path, just the file name. passed as argument --dbfilename ) 
 	 * @throws IOException
 	 */
-	public RedisServerRunner(Integer port, String argRDBDir, String argRDBName) throws IOException {
+	public EmbeddedRedisServerRunner(Integer port, String argRDBDir, String argRDBName) throws IOException {
 		this.port = port;
 		this.rdbDir = argRDBDir; 
 		this.rdbName = argRDBName; 
@@ -65,7 +65,7 @@ public class RedisServerRunner {
         logger.debug("redis server constructed with " + port.toString() + ", " + rdbDir + ", " + rdbName); 
 	}
 
-	public RedisServerRunner(Integer port) throws IOException {
+	public EmbeddedRedisServerRunner(Integer port) throws IOException {
 		this(port, null, null); 
 	}
 	

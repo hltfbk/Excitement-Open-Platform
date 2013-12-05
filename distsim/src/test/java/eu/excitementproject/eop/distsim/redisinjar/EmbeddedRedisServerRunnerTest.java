@@ -17,13 +17,12 @@ import com.google.common.io.Files;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
-import eu.excitementproject.eop.distsim.redisinjar.RedisServerRunner;
 import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 
-public class RedisServerRunnerTest {
+public class EmbeddedRedisServerRunnerTest {
 
 	@Test
 	public void test() {
@@ -31,9 +30,9 @@ public class RedisServerRunnerTest {
         Logger.getRootLogger().setLevel(Level.INFO); // (hiding < INFO)
 
 		// Simple running itself. Without specifying rdb file. (won't create/load any) 
-		RedisServerRunner rs = null; 		
+		EmbeddedRedisServerRunner rs = null; 		
 		try {
-			rs = new RedisServerRunner(6371); 
+			rs = new EmbeddedRedisServerRunner(6371); 
 			rs.start();
 			// no need // Thread.sleep(5000); 
 		} catch (Exception e)
@@ -48,8 +47,8 @@ public class RedisServerRunnerTest {
 		// Running with a specific RDB file. 
 		// first check that the files are in classpath. If not, just ignore 
 		// the rest of the test. 
-		URL l2rResource = RedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-l2r.rdb"); 
-		URL r2lResource = RedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-r2l.rdb"); 
+		URL l2rResource = EmbeddedRedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-l2r.rdb"); 
+		URL r2lResource = EmbeddedRedisServerRunnerTest.class.getClassLoader().getResource("redis-german-lin/similarity-r2l.rdb"); 
 
 		assumeNotNull(l2rResource); 
 		assumeNotNull(r2lResource); 
@@ -57,8 +56,8 @@ public class RedisServerRunnerTest {
 		// The following test will be done only when there is 
 		// redis-german-lin/  rdb files are in classpath (artifact/Jar). 
 		
-		RedisServerRunner rs_l = null; 
-		RedisServerRunner rs_r = null; 
+		EmbeddedRedisServerRunner rs_l = null; 
+		EmbeddedRedisServerRunner rs_r = null; 
 		try {
 //			rs_l = new RedisServerRunner(6379, "/home/tailblues/temp/", "similarity-l2r.rdb"); 
 //			rs_r = new RedisServerRunner(6380, "/home/tailblues/temp/", "similarity-r2l.rdb"); 
@@ -72,8 +71,8 @@ public class RedisServerRunnerTest {
 			System.out.println("extracted in: " + r2lRdb.getParent() + "//" + r2lRdb.getName()); 
 //			rs_l = new RedisServerRunner(6379, "/Users/tailblues/temp", "similarity-l2r.rdb"); 
 //			rs_r = new RedisServerRunner(6380, "/Users/tailblues/temp", "similarity-r2l.rdb"); 
-			rs_l = new RedisServerRunner(6379, l2rRdb.getParent(), l2rRdb.getName()); 
-			rs_r = new RedisServerRunner(6380, r2lRdb.getParent(), r2lRdb.getName()); 
+			rs_l = new EmbeddedRedisServerRunner(6379, l2rRdb.getParent(), l2rRdb.getName()); 
+			rs_r = new EmbeddedRedisServerRunner(6380, r2lRdb.getParent(), r2lRdb.getName()); 
 			
 			// run 
 			rs_l.start();

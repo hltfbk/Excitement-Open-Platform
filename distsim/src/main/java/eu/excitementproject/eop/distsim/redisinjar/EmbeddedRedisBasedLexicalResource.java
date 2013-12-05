@@ -40,7 +40,7 @@ import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
  * @author Tae-Gil Noh
  *
  */
-public class RedisBasedLexicalResource implements LexicalResource<RuleInfo> {
+public class EmbeddedRedisBasedLexicalResource implements LexicalResource<RuleInfo> {
 	
 	/**
 	 * 
@@ -54,7 +54,7 @@ public class RedisBasedLexicalResource implements LexicalResource<RuleInfo> {
 	 * @param r2lPort port number of the server to connect, R->L sim redis server 
 	 * @param maxNumOfRetrievedRules Maximum number of rules that will be returned. They are ordered. If null, return all. 
 	 */
-	public RedisBasedLexicalResource(String l2rServer, int l2rPort, String r2lServer, int r2lPort, int maxNumOfRetrievedRules)
+	public EmbeddedRedisBasedLexicalResource(String l2rServer, int l2rPort, String r2lServer, int r2lPort, int maxNumOfRetrievedRules)
 	{
 		// set logger 
         logger = Logger.getLogger(this.getClass().getName()); 
@@ -88,7 +88,7 @@ public class RedisBasedLexicalResource implements LexicalResource<RuleInfo> {
 	 * @param r2lPort port number in string; to be opened on local host for redis-server R->L sim 
 	 * @param maxNumOfRetrievedRules Maximum number of rules that will be returned. They are ordered. If null, return all.
 	 */
-	public RedisBasedLexicalResource(URL l2rResource, URL r2lResource, int l2rPort, int r2lPort, int maxNumOfRetrievedRules) throws LexicalResourceException
+	public EmbeddedRedisBasedLexicalResource(URL l2rResource, URL r2lResource, int l2rPort, int r2lPort, int maxNumOfRetrievedRules) throws LexicalResourceException
 	{
 
 		// set logger 
@@ -103,8 +103,8 @@ public class RedisBasedLexicalResource implements LexicalResource<RuleInfo> {
 			File r2lRdb = extractDataFileFromResource(r2lResource); 
 			logger.info("extracted in: " + r2lRdb.getParent() + "//" + r2lRdb.getName()); 
 			
-			rs_l = new RedisServerRunner(l2rPort, l2rRdb.getParent(), l2rRdb.getName()); 
-			rs_r = new RedisServerRunner(r2lPort, r2lRdb.getParent(), r2lRdb.getName()); 
+			rs_l = new EmbeddedRedisServerRunner(l2rPort, l2rRdb.getParent(), l2rRdb.getName()); 
+			rs_r = new EmbeddedRedisServerRunner(r2lPort, r2lRdb.getParent(), r2lRdb.getName()); 
 			
 			// run the redis server ... 
 			rs_l.start();
@@ -178,8 +178,8 @@ public class RedisBasedLexicalResource implements LexicalResource<RuleInfo> {
 	
 	private SimilarityStorageBasedLexicalResource theLexicalResource;
 	private Logger logger; 
-	private RedisServerRunner rs_l = null; 
-	private RedisServerRunner rs_r = null; 
+	private EmbeddedRedisServerRunner rs_l = null; 
+	private EmbeddedRedisServerRunner rs_r = null; 
 
 
 	//
