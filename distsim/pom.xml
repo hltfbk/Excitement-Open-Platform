@@ -76,14 +76,14 @@
   		<version>20131205</version>
   	</dependency>
 
-    <!-- uncomment the following to include the German model -->
-     
+    <!-- uncomment the following to include the German redis rdb file for test-->
+	<!--     
 	<dependency>
   		<groupId>de.uni-heidelberg.cl</groupId>
   		<artifactId>redis-german-lin-prox</artifactId>
   		<version>0.1</version>
   	</dependency>
-  	 
+  	 --> 
  	
   	</dependencies>
 </project>
