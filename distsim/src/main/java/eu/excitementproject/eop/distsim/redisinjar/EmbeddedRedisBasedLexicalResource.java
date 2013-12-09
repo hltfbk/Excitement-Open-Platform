@@ -95,6 +95,12 @@ public class EmbeddedRedisBasedLexicalResource implements LexicalResource<RuleIn
         logger = Logger.getLogger(this.getClass().getName()); 
 
 		try {
+			// URL actually exist? 
+			if (l2rResource == null || r2lResource == null)
+			{
+				throw new LexicalResourceException("Distsim rdb files (as URL) are not found on the designated path. (Probably missing the artifact? or Jar?) Cannot proceed further\n"); 
+			}
+			
 			logger.info("extracting l2r redis db file");
 			File l2rRdb = extractDataFileFromResource(l2rResource); 
 			logger.info("extracted in: " + l2rRdb.getParent() + "//" + l2rRdb.getName()); 
