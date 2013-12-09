@@ -7,15 +7,15 @@ import eu.excitementproject.eop.distsim.redisinjar.EmbeddedRedisBasedLexicalReso
  * A lexical resource based on EXCITEMENT project DistSim distributional 
  * similarity-based lexical relation miner. 
  * 
- * This class holds data mined from SDEWAC corpus, with LIN-PROXIMITY measure. 
+ * This class holds data mined from SDEWAC corpus, with BAP measure. 
  * 
  * The class can be initialized in two ways. 
- *  - Without server-name and port: The resource will run redis-server on local
- * 
+ *  - Without server-name and port: The resource will run redis-server on local. 
+ *  - With server-name and port: the resource will just tap to that redis-server. 
  * @author Tae-Gil Noh 
  *
  */
-public class GermanLinProx extends EmbeddedRedisBasedLexicalResource {
+public class GermanBap extends EmbeddedRedisBasedLexicalResource {
 
 	/**
 	 * This constructor is for those cases where the redis server is already up and 
@@ -28,7 +28,7 @@ public class GermanLinProx extends EmbeddedRedisBasedLexicalResource {
 	 * @param r2lPort port number of the server to connect, R->L sim redis server 
 	 * @param maxNumOfRetrievedRules Maximum number of rules that will be returned. They are ordered. If null, return all. 
 	 */
-	public GermanLinProx(String l2rServer, int l2rPort, String r2lServer, int r2lPort, int maxNumOfRetrievedRules)
+	public GermanBap(String l2rServer, int l2rPort, String r2lServer, int r2lPort, int maxNumOfRetrievedRules)
 	{
 		super(l2rServer, l2rPort, r2lServer, r2lPort, maxNumOfRetrievedRules); 
 	}
@@ -44,7 +44,7 @@ public class GermanLinProx extends EmbeddedRedisBasedLexicalResource {
 	 * @param r2lPort port number in integer; to be opened on local host for redis-server R->L sim 
 	 * @param maxNumOfRetrievedRules Maximum number of rules that will be returned. They are ordered. If null, return all.
 	 */	
-	public GermanLinProx(int l2rPort, int r2lPort, int maxNumOfRetrievedRules) throws LexicalResourceException
+	public GermanBap(int l2rPort, int r2lPort, int maxNumOfRetrievedRules) throws LexicalResourceException
 	{
 		super(GermanLinProx.class.getClassLoader().getResource(resourcePathL2R), GermanLinProx.class.getClassLoader().getResource(resourcePathR2L), l2rPort, r2lPort, maxNumOfRetrievedRules); 
 	}
@@ -58,7 +58,7 @@ public class GermanLinProx extends EmbeddedRedisBasedLexicalResource {
 	 * 
 	 * @param maxNumOfRetrievedRules Maximum number of rules that will be returned. They are ordered. If null, return all.
 	 */	
-	public GermanLinProx(int maxNumOfRetrievedRules) throws LexicalResourceException
+	public GermanBap(int maxNumOfRetrievedRules) throws LexicalResourceException
 	{
 		this(redisPortL2RDefault, redisPortR2LDefault, maxNumOfRetrievedRules); 
 	}
@@ -71,7 +71,7 @@ public class GermanLinProx extends EmbeddedRedisBasedLexicalResource {
 	 * This constructor will use its assigned default port number, with default number of maximum rules.
 	 * 
 	 */	
-	public GermanLinProx() throws LexicalResourceException
+	public GermanBap() throws LexicalResourceException
 	{
 		this(redisPortL2RDefault, redisPortR2LDefault, maxRuleNumDefault); 
 	}
@@ -79,15 +79,14 @@ public class GermanLinProx extends EmbeddedRedisBasedLexicalResource {
 	// private variables
 	//
 	// path to the rdb files in Jar. 
-	// TODO update this for each. 
-	// The artifact related to this resource is "de.uni-heidelberg.cl:redis-german-lin-prox"
+	// TODO update this for German BAP artifact. 
+	// The artifact related to this resource is "de.uni-heidelberg.cl: TODO fill here"
 	private static final String resourcePathL2R = "redis-german-lin/similarity-l2r.rdb"; 
 	private static final String resourcePathR2L = "redis-german-lin/similarity-r2l.rdb"; 
 	
 	// the values to be used if not given in the constructor. 
-	// TODO Make sure each resource has different defaults. 
-	private static final int redisPortL2RDefault = 9501; // if not given in the constructor 
-	private static final int redisPortR2LDefault = 9502; // if not given in the constructor. 
+	private static final int redisPortL2RDefault = 9521; // if not given in the constructor 
+	private static final int redisPortR2LDefault = 9522; // if not given in the constructor. 
 
 	// maximum number of rules returned by the resource 
 	private static final int maxRuleNumDefault = 20; 
