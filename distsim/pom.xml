@@ -83,7 +83,7 @@
   		<artifactId>redis-german-lin-prox</artifactId>
   		<version>0.1</version>
   	</dependency>
-  	 --> 
- 	
-  	</dependencies>
+  	 -->
+
+   </dependencies>
 </project>

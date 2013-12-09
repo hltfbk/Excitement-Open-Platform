@@ -16,7 +16,7 @@ public class LAPRunner {
 	private LAPAccess lap = null;
 	
 	private String language;
-	private String lapAnnotDir = "/tmp/";
+//	private String lapAnnotDir = "/tmp/";
 	
 	private Logger logger;
 	

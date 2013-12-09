@@ -136,16 +136,10 @@ public class ConfigFileUtils {
 	
 	private static String getOptionValue(String tagName, EOPRunnerCmdOptions option) {
 		if (tagName.equals("activatedEDA"))
-			return option.activatedEDA;
+			return option.eda;
 		
 		if(tagName.equals("language"))
 			return option.language;
-		
-		if(tagName.equals("resource"))
-			return option.resource;
-		
-		if (tagName.equals("distance"))
-			return option.distance;
 		
 		System.out.println("Unknown user option: " + tagName);
 		return "";

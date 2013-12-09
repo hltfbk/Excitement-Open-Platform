@@ -9,15 +9,16 @@ public class TestRunner_EditDistance_DE {
 	@Test
 	public void test() {
 		String[] cmd = {
-						"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_DE.xml",
+//						"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_DE.xml",
 //				        "-train",
 //				        "-trainFile","./src/test/resources/data-set/de_demo_dev.xml",
-//				        "-test",
+//				        "-test"
 				        //"-testFile","./src/test/resources/data-set/de_demo_test.xml",
 //				        "-testFile","./src/test/resources/data-set/de_demo_test.xml",
 //				        "-output","./src/test/resources/results/",
 						"-results","./src/test/resources/results/EditDistanceEDA_DE.xml_results.xml",
-				        "-score"};
+				        "-score"
+				        };
 		try {
 			EOPRunner runner = new EOPRunner(cmd);
 			runner.run();
