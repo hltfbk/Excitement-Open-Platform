@@ -7,7 +7,7 @@
   </parent>
   <artifactId>distsim</artifactId>
   <name>distsim</name>
-  <description>distsim</description>
+  <description>Distributional similarity tool</description>
   
    <dependencies>
    
@@ -33,6 +33,12 @@
 	<artifactId>hadoop-core</artifactId>
 	<version>0.20.2</version>
    </dependency>
+   
+   <dependency>
+	<groupId> com.google.guava</groupId>
+	<artifactId>guava</artifactId>
+	<version>15.0</version>
+   </dependency>
      
     <dependency>
 		<groupId>eu.excitementproject</groupId>
@@ -51,11 +57,33 @@
   		<artifactId>parse-utils</artifactId>
   		<version>001</version>
   	</dependency>
-      	
-     <dependency>
-    		<groupId>eu.excitementproject</groupId>
-    		<artifactId>core</artifactId>
-    		<version>1.0.3-SNAPSHOT</version>
-    	</dependency>
+  	
+    <dependency>
+  		<groupId>nz.ac.waikato.cms.weka</groupId>
+  		<artifactId>weka-stable</artifactId>
+  		<version>3.6.9</version>
+  	</dependency>
+  	
+    <!-- <dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-exec</artifactId>
+		<version>1.1</version>
+	</dependency>-->
+ 
+  	<dependency>
+  		<groupId>de.uni-heidelberg.cl</groupId>
+  		<artifactId>embedded-redis</artifactId>
+  		<version>20131205</version>
+  	</dependency>
+
+    <!-- uncomment the following to include the German redis rdb file for test-->
+	<!--     
+	<dependency>
+  		<groupId>de.uni-heidelberg.cl</groupId>
+  		<artifactId>redis-german-lin-prox</artifactId>
+  		<version>0.1</version>
+  	</dependency>
+  	 --> 
+ 	
   	</dependencies>
 </project>

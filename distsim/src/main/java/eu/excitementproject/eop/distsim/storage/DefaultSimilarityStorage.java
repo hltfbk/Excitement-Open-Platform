@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.distsim.storage;
 
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -14,6 +15,10 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.Element;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
+import eu.excitementproject.eop.distsim.redis.RedisCloseException;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
+import eu.excitementproject.eop.distsim.redis.RedisRunner;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScoring;
 import eu.excitementproject.eop.distsim.util.Configuration;
@@ -30,32 +35,74 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	
 	private static final Logger logger = Logger.getLogger(DefaultSimilarityStorage.class);
 
-	// Assumption: The similar elements for each element, of leftElemntSimilarities and rightElemntSimilarities parameters, 
-    //             are ordered descendingly by their similarity measures
+	/**
+	 * Constructs a SimilarityStorage, which is based on two Redis databases, one for left-to-right similarities and the second for right-to-left similarities.
+	 *
+	 * Assumption: The type of the elements is internally stored in the databases
+	 * 
+	 * @param leftElemntSimilarities A Redis database which maps LHS elements to their RHS similar elements, the RHS elements are assumed to be ordered descendingly by their similarity measures
+	 * @param rightElemntSimilarities A Redis database which maps RHS elements to their LHS similar elements, the LHS elements are assumed to be ordered descendingly by their similarity measures
+	 * @param resourceName The name of the resource (see eu.excitementproject.eop.common.component.Component#getComponentName()) 
+	 * @param instanceName The name of the specific instance of this resource (@see eu.excitementproject.eop.common.component.Component#getInstanceName())
+	 * @param elementClassName The name of type of the elements in the databases, e.g.: eu.excitementproject.eop.distsim.items.LemmaPosBasedElement, eu.excitementproject.eop.distsim.items.PredicateElement. 
+	 * @throws ElementTypeException for any problem with the stored element type name in the databases 
+	 */
+	public DefaultSimilarityStorage(
+			RedisBasedStringListBasicMap leftElemntSimilarities,
+			RedisBasedStringListBasicMap rightElemntSimilarities,
+			String resourceName,
+			String instanceName) throws ElementTypeException {
+		this.leftElemntSimilarities = leftElemntSimilarities;
+		this.rightElemntSimilarities = rightElemntSimilarities;
+		this.resourceName = resourceName;
+		this.instanceName = instanceName;
+		setElementClassName();
+	}
+
+	
+	/**
+	 * Constructs a SimilarityStorage, which is based on two Redis databases, one for left-to-right similarities and the second for right-to-left similarities.
+	 *
+	 * @param leftElemntSimilarities A Redis database which maps LHS elements to their RHS similar elements, the RHS elements are assumed to be ordered descendingly by their similarity measures
+	 * @param rightElemntSimilarities A Redis database which maps RHS elements to their LHS similar elements, the LHS elements are assumed to be ordered descendingly by their similarity measures
+	 * @param resourceName The name of the resource (see eu.excitementproject.eop.common.component.Component#getComponentName()) 
+	 * @param instanceName The name of the specific instance of this resource (@see eu.excitementproject.eop.common.component.Component#getInstanceName())
+	 * @param elementClassName The name of type of the elements in the databases, e.g.: eu.excitementproject.eop.distsim.items.LemmaPosBasedElement, eu.excitementproject.eop.distsim.items.PredicateElement. 
+	 * @throws ElementTypeException 
+	 */
 	public DefaultSimilarityStorage(
 			RedisBasedStringListBasicMap leftElemntSimilarities,
 			RedisBasedStringListBasicMap rightElemntSimilarities,
 			String resourceName,
 			String instanceName,
-			String elementClassName) {
+			String elementClassName)  {
 		this.leftElemntSimilarities = leftElemntSimilarities;
 		this.rightElemntSimilarities = rightElemntSimilarities;
 		this.resourceName = resourceName;
 		this.instanceName = instanceName;
 		this.elementClassName = elementClassName;
+		
+		
 	}
 
-	/**
-	 * Construct from configuration params.
-	 * @param params contain at least the following: <ul>
-	 * <li>elementStorageHost, elementStoragePort
-	 * <li>l2rRulesStorageHost, l2rRulesStoragePort
-	 * <li>r2lRulesStorageHost, r2lRulesStoragePort
-	 * </ul>
-	 * @throws ConfigurationException 
-	 * 
-	 */
-	public DefaultSimilarityStorage(ConfigurationParams params) throws ConfigurationException {
+	public DefaultSimilarityStorage(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName) throws ElementTypeException, RedisRunException, FileNotFoundException {
+		RedisRunner runner = BasicRedisRunner.getInstance();
+		this.l2rRedisFile = l2rRedisFile;
+		this.r2lRedisFile= r2lRedisFile;
+		int l2rPort = runner.run(l2rRedisFile);
+		this.leftElemntSimilarities = new RedisBasedStringListBasicMap("localhost",l2rPort);
+		if (r2lRedisFile != null) {
+			int r2lPort = runner.run(r2lRedisFile);
+			this.rightElemntSimilarities = new RedisBasedStringListBasicMap("localhost",r2lPort);
+		} else
+			this.rightElemntSimilarities = null;
+		this.resourceName = resourceName;
+		this.instanceName = resourceName;
+		setElementClassName();
+	}
+
+	
+	/*public DefaultSimilarityStorage(ConfigurationParams params) throws ConfigurationException, ElementTypeException {
 		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(params.getString(Configuration.L2R_REDIS_HOST), params.getInt(Configuration.L2R_REDIS_PORT));
 		try {
 			this.rightElemntSimilarities = new RedisBasedStringListBasicMap(params.getString(Configuration.R2L_REDIS_HOST), params.getInt(Configuration.R2L_REDIS_PORT));
@@ -63,8 +110,76 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 			this.rightElemntSimilarities = null;
 		}
 		this.resourceName = params.getString(Configuration.RESOURCE_NAME);
-		this.instanceName = params.getConfigurationFile().toString();
-		this.elementClassName = params.get(Configuration.ELEMENT_CLASS);
+		try {
+			this.instanceName = params.get(Configuration.INSTANCE_NAME);
+		} catch (ConfigurationException e) {
+			params.getConfigurationFile().toString();
+		}
+		try {
+			setElementClassName();
+		} catch (ElementTypeException e) {
+			this.elementClassName = params.get(Configuration.ELEMENT_CLASS);
+		}
+	}*/
+
+	/**
+	 * Construct from configuration params.
+	 * @param params contain at least the following: <ul>
+	 * <li> l2r-redis-db-file
+	 * <li> r2l-redis-db-file (optional)
+	 * <li> resource-name
+	 * <li> instance-name (optional)
+	 * </ul>
+	 * @throws ConfigurationException 
+	 * @throws FileNotFoundException 
+	 * @throws RedisRunException 
+	 * @throws UnMatchElementTypeException for a case where the type of elements in one of the databases does not match the other
+	 * 
+	 */
+	public DefaultSimilarityStorage(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
+		RedisRunner runner = BasicRedisRunner.getInstance();
+		
+		this.l2rRedisFile = params.get(Configuration.L2R_REDIS_DB_FILE);
+		int l2rPort = runner.run(l2rRedisFile);
+		this.leftElemntSimilarities = new RedisBasedStringListBasicMap("localhost",l2rPort);
+		try {
+			this.r2lRedisFile= params.get(Configuration.R2L_REDIS_DB_FILE);
+			int r2lPort = runner.run(r2lRedisFile);
+			this.rightElemntSimilarities = new RedisBasedStringListBasicMap("localhost",r2lPort);
+		} catch (ConfigurationException e) {
+			this.l2rRedisFile = null;
+			this.rightElemntSimilarities = null;
+		}
+		this.resourceName = params.get(Configuration.RESOURCE_NAME);
+		try {
+			this.instanceName = params.get(Configuration.INSTANCE_NAME);
+		} catch (ConfigurationException e) {
+			this.instanceName = params.getConfigurationFile().toString();
+		}
+		try {
+			setElementClassName();
+		} catch (ElementTypeException e) {
+			this.elementClassName = params.get(Configuration.ELEMENT_CLASS);
+		}
+
+	}
+
+	/**
+	 * Resolves the class type of the elements in the left-to-right and right-to-left databases, as internally defined in each database
+	 * 
+	 * @throws Exception In case 
+	 */
+	protected void setElementClassName() throws ElementTypeException {
+		String leftElementClassName = leftElemntSimilarities.getElementClassName();
+		String rightElementClassName = rightElemntSimilarities.getElementClassName();
+		
+		if (leftElementClassName == null && rightElementClassName == null) {
+			throw new ElementTypeException("No element type was defined in the databases");
+		}
+		if (!(leftElementClassName != null && leftElementClassName.equals(rightElementClassName)) || 
+			!(rightElementClassName != null && rightElementClassName.equals(leftElementClassName)))				
+			throw new ElementTypeException("Different types of elements were found in the given left-2-right and right-2-left databases");
+		this.elementClassName = leftElementClassName;		
 	}
 	
 	/* (non-Javadoc)
@@ -235,12 +350,30 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		return instanceName;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() {
+		try {
+			BasicRedisRunner.getInstance().close(l2rRedisFile);
+			if (r2lRedisFile != null)
+				BasicRedisRunner.getInstance().close(r2lRedisFile);
+		} catch (Exception e) {
+			logger.info(e.toString());
+		}
+	}
 	
+	// the name of the l2r redis file (for closing)
+	protected String l2rRedisFile;
+	// the name of the r2l redis file (for closing)
+	protected String r2lRedisFile;
+
 	// Assumption: The similar elements each left-element are ordered descendingly by their similarity measures
 	protected RedisBasedStringListBasicMap leftElemntSimilarities;	
 	// Assumption: The similar elements of each right-element are ordered descendingly by their similarity measures	
 	protected RedisBasedStringListBasicMap rightElemntSimilarities;
 	protected String elementClassName;
 	protected final String resourceName;
-	protected final String instanceName;
+	protected String instanceName;
 }

@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.distsim.resource;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 
@@ -14,6 +15,8 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
+import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.util.Configuration;
 
@@ -28,8 +31,9 @@ import eu.excitementproject.eop.distsim.util.Configuration;
  */
 public class TestLemmaPosSimilarity {
 	
-	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ConfigurationFileDuplicateKeyException, ConfigurationException {
+	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ConfigurationFileDuplicateKeyException, ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
 		
+		//Assumption: the running directory contains a subdirectory 'redis' with two file: redis-rever and redis.cof
 		if (args.length != 1) {
 			System.out.println("Usage: eu.excitementproject.eop.distsim.application.TestLemmaPosSimilarity <configuration file>");
 			System.exit(0);

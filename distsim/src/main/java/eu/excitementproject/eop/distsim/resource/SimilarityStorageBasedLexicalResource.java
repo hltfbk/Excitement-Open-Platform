@@ -3,7 +3,9 @@
  */
 package eu.excitementproject.eop.distsim.resource;
 
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
+
 import java.util.List;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
@@ -20,10 +22,13 @@ import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.LemmaPos;
 import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.DistSimRuleInfo;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
+import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.util.Configuration;
 
 /**
@@ -37,28 +42,43 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 public class SimilarityStorageBasedLexicalResource implements LexicalResource<RuleInfo> {
 	
 	/**
-	 * Construct a lexical resource from an existing, initialized similarity storage, without a rule-count limit.
+	 * Constructs a lexical resource from an existing, initialized similarity storage, without a rule-count limit.
+	 * 
+	 * @param similarityStorage The storage of element similarities, which stands at the base of the rule retrieval 
 	 */
 	public SimilarityStorageBasedLexicalResource(SimilarityStorage similarityStorage) {
 		this(similarityStorage,null);
 	}
 
 
-	
 	/**
-	 * Construct a lexical resource from configuration params, by constructing a new similarity storage from these params.
-	 * <p>Additionally, uses the param "limit on retrieved rules" to limit the number of retrieved rules.
-	 * @see DefaultSimilarityStorage#DefaultSimilarityStorage(ConfigurationParams)
+	 * Constructs a lexical resource from an existing, initialized similarity storage, with a rule-count limit.
+	 * 
+	 * @param similarityStorage The storage of element similarities, which stands at the base of the rule retrieval 
+	 * @param maxNumOfRetrievedRules The maximal number of retrieved rules, where the retrieved rules are those with the highest scores.
 	 */
-	public SimilarityStorageBasedLexicalResource(ConfigurationParams params) throws ConfigurationException {
-		this(
-				new DefaultSimilarityStorage(params),
-				params.getInt(Configuration.TOP_N_RULES));
-	}
-	
 	public SimilarityStorageBasedLexicalResource(SimilarityStorage similarityStorage, Integer maxNumOfRetrievedRules) {
 		this.similarityStorage = similarityStorage;
 		this.maxNumOfRetrievedRules = maxNumOfRetrievedRules;
+	}
+	
+	/**
+	 * Constructs a lexical resource from configuration params, by constructing a new similarity storage from these params.
+	 * 
+	 * @throws ElementTypeException 
+	 * @throws RedisRunException 
+	 * @throws FileNotFoundException 
+	 * @see DefaultSimilarityStorage#DefaultSimilarityStorage(ConfigurationParams)
+	 * <p>Additionally, uses the param "top-n-rules" to limit the number of retrieved rules.
+	 */
+	public SimilarityStorageBasedLexicalResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
+		this(
+				new DefaultSimilarityStorage(params),params.getInt(Configuration.TOP_N_RULES));
+	}
+
+
+	public SimilarityStorageBasedLexicalResource(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, FileNotFoundException, RedisRunException {
+		this(new DefaultSimilarityStorage(l2rRedisFile, r2lRedisFile, resourceName, instanceName),maxNumOfRetrievedRules);
 	}
 	
 	/* (non-Javadoc)
@@ -145,5 +165,4 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 
 	SimilarityStorage similarityStorage;
 	Integer maxNumOfRetrievedRules;
-
 }

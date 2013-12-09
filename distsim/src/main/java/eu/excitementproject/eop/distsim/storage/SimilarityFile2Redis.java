@@ -12,6 +12,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
@@ -27,7 +28,9 @@ import eu.excitementproject.eop.distsim.util.SerializationException;
  */
 public class SimilarityFile2Redis {
 	
-	private static  CountableIdentifiableStorage<Element> elementStorage;
+	private static CountableIdentifiableStorage<Element> elementStorage = null;
+	private static boolean bElementTypeFound = false;
+	private static Redis redis = null;
 
 	public static void main(String[] args) {
 		
@@ -57,11 +60,13 @@ public class SimilarityFile2Redis {
 				//file = new File(new java.io.File(confParams.get(Configuration.SIMILARITY_FILE)),true);
 			//}
 			file.open();
-			String host = confParams.getString(Configuration.REDIS_HOST);
-			int port = confParams.getInt(Configuration.REDIS_PORT);
-			Redis redis = new Redis(host,port);
+			
+			int port = BasicRedisRunner.getInstance().run(confParams.getString(Configuration.REDIS_FILE));
+			//String host = confParams.getString(Configuration.REDIS_HOST);
+			//int port = confParams.getInt(Configuration.REDIS_PORT);
+			redis = new Redis("localhost",port);
 			redis.open();
-			redis.clear();
+			redis.clear();			
 			Pair<Integer,Serializable> pair = null;
 			while (true) {
 				try {
@@ -70,11 +75,15 @@ public class SimilarityFile2Redis {
 						break;
 					else {
 						int element1Id = pair.getFirst();
-						String element1key = getElementKey(element1Id);
-
-						//debug
-						//System.out.println(element1key);
 						
+						String element1key = getElementKey(element1Id);						
+						//tmp
+						/*String element1key = null;						
+						try {
+							element1key = getElementKey(element1Id);
+						} catch (ItemNotFoundException e) {
+							continue;
+						}*/
 
 						@SuppressWarnings("unchecked")
 						LinkedHashMap<Integer, Double> sortedElementScores = (LinkedHashMap<Integer, Double>) pair.getSecond();
@@ -82,8 +91,16 @@ public class SimilarityFile2Redis {
 							int element2Id = elementScore.getKey();
 							double score = elementScore.getValue();		
 							String element2key = getElementKey(element2Id);
+							//tmp
+							/*String element2key = null;						
+							try {
+								element2key = getElementKey(element2Id);
+							} catch (ItemNotFoundException e) {
+								continue;
+							}*/
+							
 							if (element2key.contains(RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER))
-								logger.warn("Delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER +"' already exists in element " + element2key);
+								logger.info("Element " + element2key + " contains the delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + "', and considered insignificant. The element is filtered from the model");
 							else 
 								redis.rpush(element1key, element2key + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + score);
 							//redis.write(pair.getFirst(),pair.getSecond());
@@ -100,7 +117,12 @@ public class SimilarityFile2Redis {
 		}
 	}
 
-	protected static String getElementKey(int element1Id) throws ItemNotFoundException, SerializationException, UndefinedKeyException {		
-		return elementStorage.getData(element1Id).toKey();
+	protected static String getElementKey(int element1Id) throws ItemNotFoundException, SerializationException, UndefinedKeyException {
+		Element element = elementStorage.getData(element1Id);
+		if (!bElementTypeFound && redis != null) {
+			redis.write(RedisBasedStringListBasicMap.ELEMENT_CLASS_NAME_KEY,element.getClass().getName());
+			bElementTypeFound = true;
+		}
+		return element.toKey();
 	}
 }

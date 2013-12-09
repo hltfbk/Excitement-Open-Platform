@@ -40,8 +40,17 @@ public class IdLinkedIntDoubleMapFile extends IdDataFile {
 	 * @see eu.excitementproject.eop.distsim.storage.IdDataFile#getData(java.lang.String[])
 	 */
 	public Serializable getData(String[] toks) throws SerializationException {
-		if (toks.length % 2 != 1)
-			throw new SerializationException("wrong line format: " + toks);		
+		if (toks.length % 2 != 1) {
+			throw new SerializationException("wrong line format: " + toks);
+			//tmp
+			/*System.out.println("IdLinkedIntDoubleMapFile: double value is missing for int key");
+			LinkedHashMap<Integer,Double> map = new LinkedHashMap<Integer,Double>();
+			for (int i=1; i< toks.length; i+=2) {
+				if (i+1 < toks.length)
+					map.put(Integer.parseInt(toks[i]),Double.parseDouble(toks[i+1]));
+			}
+			return map;*/ 
+		} 
 		LinkedHashMap<Integer,Double> map = new LinkedHashMap<Integer,Double>();
 		for (int i=1; i< toks.length; i+=2)
 			map.put(Integer.parseInt(toks[i]),Double.parseDouble(toks[i+1]));
