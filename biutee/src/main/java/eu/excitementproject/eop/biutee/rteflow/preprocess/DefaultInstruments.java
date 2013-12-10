@@ -33,6 +33,7 @@ import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefClient.ArkrefClientException;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkref.ArkrefCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.coreference.arkrefbart.ArkrefAndBartCoreferenceResolver;
+import eu.excitementproject.eop.lap.biu.en.coreference.arkreffiles.ArkrefFilesCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.coreference.bart.BartCoreferenceResolver;
 import eu.excitementproject.eop.lap.biu.en.ner.stanford.StanfordNamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
@@ -46,6 +47,7 @@ import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityWord;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitter;
 import eu.excitementproject.eop.transformations.codeannotations.Workaround;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -176,6 +178,7 @@ public class DefaultInstruments implements Instruments<Info, BasicNode>
 			break;
 		case ARKREF:
 			logger.info("Using ArkRef coreference resolver");
+			GlobalMessages.globalWarn("Using an old wrapper for ArkRef. This wrapper might be buggy. It is recommended to use a newer wrapper, by setting the enum-constant "+CoreferenceEngineChoice.ARKREF_FILES.name()+" in the configuration file.", logger);
 			try {this.coreferenceResolver = new ArkrefCoreferenceResolver();} 
 			catch (ArkrefClientException e) {	throw new TeEngineMlException("Could not construct a new ArkrefCoreferenceResolver", e); }
 			catch (IOException e) {	throw new TeEngineMlException("Could not construct a new ArkrefCoreferenceResolver", e); }
@@ -185,6 +188,10 @@ public class DefaultInstruments implements Instruments<Info, BasicNode>
 			try {	this.coreferenceResolver = new ArkrefAndBartCoreferenceResolver(bartServer, bartPort != null ? String.valueOf(bartPort) : null); }
 			catch (ArkrefClientException e) {	throw new TeEngineMlException("Could not construct a new ArkrefCoreferenceResolver", e); }
 			catch (IOException e) {	throw new TeEngineMlException("Could not construct a new ArkrefCoreferenceResolver", e); }
+			break;
+		case ARKREF_FILES:
+			logger.info("Using ArkRef coreference resolver by running it as a separate process.");
+			this.coreferenceResolver = new ArkrefFilesCoreferenceResolver(); 
 			break;
 		case NONE:
 		default:

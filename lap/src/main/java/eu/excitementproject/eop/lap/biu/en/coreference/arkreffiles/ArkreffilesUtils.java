@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
@@ -126,6 +127,26 @@ public class ArkreffilesUtils
 		String text = sb.toString();
 		return text;
 	}
+	
+	public static String extractJarFromClassPath(String jarname)
+	{
+		final Pattern jarPattern = Pattern.compile(".*"+jarname+"[^"+File.separatorChar+"]*\\.jar");
+		String classpath = System.getProperty("java.class.path");
+		String[] classpathComponents = classpath.split(File.pathSeparator);
+		String jarComponent = null;
+		for (String component : classpathComponents)
+		{
+			if (jarPattern.matcher(component).matches())
+			{
+				if (null==jarComponent)
+				{
+					jarComponent = component;
+					break;
+				}
+			}
+		}
+		return jarComponent;
+	}
 
 	
 	
@@ -140,11 +161,17 @@ public class ArkreffilesUtils
 	private static String buildArkrefClassPathString() throws CoreferenceResolutionException
 	{
 		// TODO too many hard-coded strings
+		final String LIB_DIR = "lib";
+		final String ARKREF_JAR = "arkref";
+		
+		String arkrefJarComponent = extractJarFromClassPath(ARKREF_JAR);
+		if (null==arkrefJarComponent) {throw new CoreferenceResolutionException(ARKREF_JAR+" could not be found in the classpath.");}
+		
 		String pathSeparator = System.getProperty("path.separator");
 		StringBuilder sb = new StringBuilder();
-		if (!(new File("arkref.jar").exists())){throw new CoreferenceResolutionException("Cannot run ArkRef. The jar file arkref.jar does not exist in the current working directory.");}
-		sb.append("arkref.jar");
-		File libDir = new File("lib");
+		if (!(new File(arkrefJarComponent).exists())) {throw new CoreferenceResolutionException(ARKREF_JAR+" could not be found in the file system. Tried to detect "+arkrefJarComponent);}
+		sb.append(arkrefJarComponent);
+		File libDir = new File(LIB_DIR);
 		if (!libDir.exists()){throw new CoreferenceResolutionException("Cannot run ArkRef! Directory \"lib\" does not exist in the current working directory.");}
 		if (!libDir.isDirectory()){throw new CoreferenceResolutionException("Cannot run ArkRef! Directory \"lib\" does not exist in the current working directory.");}
 		
