@@ -1,14 +1,19 @@
 package eu.excitementproject.eop.lap.biu.en.coreference.arkreffiles;
 
 /**
+ * Encapsulates mention-id and entity-id.
+ * This class implements {@link #equals(Object)} and {@link #hashCode()}.
+ * The mention-id is an ID of a single mention. It should be just a number (1,2,3...).
+ * the entity-id is an ID of a collections of mentions, all refer to the same
+ * entity in the real world.
  * 
  * @author Asher Stern
  * @since Dec 9, 2013
  *
  */
-public class ArkrefEntity
+public class ArkrefMention
 {
-	public ArkrefEntity(String mentionId, String entityId)
+	public ArkrefMention(String mentionId, String entityId)
 	{
 		super();
 		this.mentionId = mentionId;
@@ -53,7 +58,7 @@ public class ArkrefEntity
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ArkrefEntity other = (ArkrefEntity) obj;
+		ArkrefMention other = (ArkrefMention) obj;
 		if (entityId == null)
 		{
 			if (other.entityId != null)

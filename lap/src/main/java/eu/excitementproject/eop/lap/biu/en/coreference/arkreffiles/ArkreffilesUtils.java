@@ -20,6 +20,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 
 /**
+ * A collections of utilities used by classes in this package.
  * 
  * @author Asher Stern
  * @since Dec 9, 2013

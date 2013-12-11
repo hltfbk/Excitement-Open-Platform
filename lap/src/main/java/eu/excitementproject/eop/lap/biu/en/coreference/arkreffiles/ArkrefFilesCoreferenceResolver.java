@@ -17,6 +17,8 @@ import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionExcepti
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 
 /**
+ * Runs ArkRef as a separate process to resolve co-references in text, and
+ * integrate them with the parse-trees of the text.
  * 
  * @author Asher Stern
  * @since Dec 10, 2013
@@ -84,10 +86,10 @@ public class ArkrefFilesCoreferenceResolver extends CoreferenceResolver<BasicNod
 		
 		ArkrefMergeWithTrees<Info,BasicNode> merger = new ArkrefMergeWithTrees<Info,BasicNode>(this.trees,arkrefOutput);
 		merger.merge();
-		BidirectionalMap<BasicNode, ArkrefEntity> map = merger.getMergedOutput();
+		BidirectionalMap<BasicNode, ArkrefMention> map = merger.getMergedOutput();
 		
 		Set<String> entities = new LinkedHashSet<>();
-		for (ArkrefEntity entity : map.rightSet())
+		for (ArkrefMention entity : map.rightSet())
 		{
 			String entityId = entity.getEntityId();
 			if (!entities.contains(entityId))

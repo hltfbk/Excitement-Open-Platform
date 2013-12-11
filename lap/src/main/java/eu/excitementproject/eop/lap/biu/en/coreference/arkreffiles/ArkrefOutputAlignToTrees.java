@@ -17,6 +17,9 @@ import eu.excitementproject.eop.common.utilities.match.Operator;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 
 /**
+ * Aligns every word in ArkRef output to a parse-tree node.
+ * More or less, every word should correspond to a parse-tree node.
+ * This is a typical list-matching task, so it is performed using {@link Matcher}.
  * 
  * @author Asher Stern
  * @since Dec 9, 2013

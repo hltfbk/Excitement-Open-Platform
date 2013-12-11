@@ -8,12 +8,17 @@ import java.util.Map;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
+import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 
 /**
+ * Merges ArkRef output with parse-trees, such that each mention is mapped to
+ * a parse-tree node.
+ * The mapping is given as a {@link BidirectionalMap}. A {@link TreeCoreferenceInformation}
+ * can be built based on this map, as done in {@link ArkrefFilesCoreferenceResolver}.
  * 
  * @author Asher Stern
  * @since Dec 9, 2013
@@ -69,7 +74,7 @@ public class ArkrefMergeWithTrees<I extends Info, S extends AbstractNode<I, S>>
 					{
 						if (!mergedOutput.leftContains(foundNode))
 						{
-							mergedOutput.put(foundNode, new ArkrefEntity(beginMarker.getMentionId(), beginMarker.getEntityId()));
+							mergedOutput.put(foundNode, new ArkrefMention(beginMarker.getMentionId(), beginMarker.getEntityId()));
 						}
 						else
 						{
@@ -82,7 +87,7 @@ public class ArkrefMergeWithTrees<I extends Info, S extends AbstractNode<I, S>>
 	}
 
 	
-	public BidirectionalMap<S, ArkrefEntity> getMergedOutput()
+	public BidirectionalMap<S, ArkrefMention> getMergedOutput()
 	{
 		return mergedOutput;
 	}
@@ -119,5 +124,5 @@ public class ArkrefMergeWithTrees<I extends Info, S extends AbstractNode<I, S>>
 	private Map<S, Map<S, Integer>> depthMaps;
 	
 	// output
-	private BidirectionalMap<S, ArkrefEntity> mergedOutput;
+	private BidirectionalMap<S, ArkrefMention> mergedOutput;
 }

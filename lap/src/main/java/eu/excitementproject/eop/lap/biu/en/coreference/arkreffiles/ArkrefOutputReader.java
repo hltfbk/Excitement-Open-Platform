@@ -14,6 +14,9 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 
 /**
+ * Reads the contents of ArkRef output file (the ".tagged" file), and generates
+ * Java objects which represent it.
+ * The Java object representing ArkRef output is an ArrayList of {@link ArkrefOutputWord}.
  * 
  * @author Asher Stern
  * @since Dec 10, 2013
@@ -36,7 +39,7 @@ public class ArkrefOutputReader<I extends Info, S extends AbstractNode<I, S>>
 	{
 		arkrefOutput = new ArrayList<>();
 		String remainingString = arkrefOutputString;
-		Stack<ArkrefEntity> entitiesStack = new Stack<>();
+		Stack<ArkrefMention> entitiesStack = new Stack<>();
 		List<ArkrefMarker> beginMarkers = new LinkedList<>();
 		List<ArkrefMarker> endMarkers = new LinkedList<>();
 		boolean stop = false;
@@ -81,11 +84,11 @@ public class ArkrefOutputReader<I extends Info, S extends AbstractNode<I, S>>
 					String mentionId = matcherBegin.group(1);
 					String entityId = matcherBegin.group(2);
 					beginMarkers.add(new ArkrefMarker(entityId,mentionId,true));
-					entitiesStack.push(new ArkrefEntity(mentionId, entityId));
+					entitiesStack.push(new ArkrefMention(mentionId, entityId));
 				}
 				else
 				{
-					ArkrefEntity lastBegin = null;
+					ArkrefMention lastBegin = null;
 					try {lastBegin = entitiesStack.pop();}
 					catch(EmptyStackException e){throw new CoreferenceResolutionException("Bug or malformed Arkref output. end-tag has been encountered, but no begin-tag has been encountered earlier.",e);}
 					String mentionId = lastBegin.getMentionId();

@@ -6,6 +6,10 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 
 /**
+ * Represents a single word in ArkRef output. Each word might belong to a mention,
+ * or mentions, or not.
+ * This class contains not only the word, but also the begin markers that appear
+ * before the word, and the end markers that appear immediately after the word.
  * 
  * @author Asher Stern
  * @since Dec 9, 2013
