@@ -45,19 +45,25 @@ public class MarkerToNode<I extends Info, S extends AbstractNode<I, S>>
 			if (node==null)
 			{
 				node = word.getAlignedNode();
-				depth = depthMap.get(node);
-				if (null==depth) {throw new CoreferenceResolutionException("Bug");}
+				if (node!=null)
+				{
+					depth = depthMap.get(node);
+					if (null==depth) {throw new CoreferenceResolutionException("Bug");}
+				}
 			}
 			else
 			{
 				S currentNode = word.getAlignedNode();
-				Integer currentDepth = depthMap.get(currentNode);
-				if (null==currentDepth) {throw new CoreferenceResolutionException("Bug");}
-				if (depth==null) {throw new CoreferenceResolutionException("Bug");}
-				if (currentDepth.intValue()<depth.intValue())
+				if (currentNode != null)
 				{
-					node = currentNode;
-					depth = currentDepth;
+					Integer currentDepth = depthMap.get(currentNode);
+					if (null==currentDepth) {throw new CoreferenceResolutionException("Bug");}
+					if (depth==null) {throw new CoreferenceResolutionException("Bug");}
+					if (currentDepth.intValue()<depth.intValue())
+					{
+						node = currentNode;
+						depth = currentDepth;
+					}
 				}
 			}
 			
@@ -68,7 +74,8 @@ public class MarkerToNode<I extends Info, S extends AbstractNode<I, S>>
 				{
 					endEncountered = true;
 				}
-				else if (endMarker.getEntityId().equals(entityId)) {throw new CoreferenceResolutionException("Malformed ArkRef output. Entity mentions of entity "+entityId+" overlap.");}
+				//else if (endMarker.getEntityId().equals(entityId)) {throw new CoreferenceResolutionException("Malformed ArkRef output. Entity mentions of entity "+entityId+" overlap.");}
+				//It is OK that mentions of the same entity overlap. For example: <mention mentionid="1" entityid="1_2">ECB spokeswoman , <mention mentionid="2" entityid="1_2">Regina Schueller</mention> ,</mention>
 			}
 		}
 		if (!endEncountered) {throw new CoreferenceResolutionException("Malformed Arkref output. Marker "+mentionId+"/"+entityId+" has no closing tag.");}

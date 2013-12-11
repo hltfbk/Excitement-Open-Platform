@@ -13,6 +13,7 @@ import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenc
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolver;
 
@@ -50,29 +51,48 @@ public class ArkrefFilesCoreferenceResolver extends CoreferenceResolver<BasicNod
 			String arkrefOutputString = runArkref();
 			this.coreferenceInformation = createWithArkrefOutput(arkrefOutputString);
 		}
-		catch (IOException | TreeCoreferenceInformationException e)
+		catch (IOException | TreeCoreferenceInformationException | CoreferenceResolutionException | RuntimeException | TextPreprocessorException e)
 		{
-			throw new CoreferenceResolutionException("Failed to resolve co-references using ArkRef. See nested exception.",e);
+			throw new CoreferenceResolutionException("Failed to resolve co-references using ArkRef. See nested exception.\n"+
+					"The text was:\n" +
+					this.originalText+"\n",e);
+		}
+
+	}
+	
+	private String runArkref() throws CoreferenceResolutionException, IOException, TextPreprocessorException
+	{
+		File tempDir = ArkreffilesUtils.createTempDirectory(TEMP_DIR_PREFIX);
+		try
+		{
+			File textFile = new File(tempDir,TEXT_FILE_NAME);
+			ArkreffilesUtils.writeTextToFile(normalizeText(), textFile);
+			ArkreffilesUtils.runArkref(textFile);
+			File taggedFile = new File(tempDir,TAGGED_FILE_NAME);
+			String arkrefOutputString = ArkreffilesUtils.readTextFile(taggedFile.getPath());
+			return arkrefOutputString;
+		}
+		finally
+		{
+			try
+			{
+				for (File fileInTempDir : tempDir.listFiles())
+				{
+					fileInTempDir.delete();
+				}
+				tempDir.delete();
+			}
+			catch(RuntimeException re){}
 		}
 		
 	}
 	
-	private String runArkref() throws CoreferenceResolutionException, IOException
+	private String normalizeText() throws TextPreprocessorException
 	{
-		File tempDir = ArkreffilesUtils.createTempDirectory(TEMP_DIR_PREFIX);
-		File textFile = new File(tempDir,TEXT_FILE_NAME);
-		ArkreffilesUtils.writeTextToFile(this.originalText, textFile);
-		ArkreffilesUtils.runArkref(textFile);
-		File taggedFile = new File(tempDir,TAGGED_FILE_NAME);
-		String arkrefOutputString = ArkreffilesUtils.readTextFile(taggedFile.getPath());
-		
-		for (File fileInTempDir : tempDir.listFiles())
-		{
-			fileInTempDir.delete();
-		}
-		tempDir.delete();
-		
-		return arkrefOutputString;
+		ArkrefFilesWorkaroundTextPreprocessor processor = new ArkrefFilesWorkaroundTextPreprocessor();
+		processor.setText(this.originalText);
+		processor.preprocess();
+		return processor.getPreprocessedText();
 	}
 	
 	private TreeCoreferenceInformation<BasicNode> createWithArkrefOutput(final String arkrefOutputString) throws CoreferenceResolutionException, TreeCoreferenceInformationException

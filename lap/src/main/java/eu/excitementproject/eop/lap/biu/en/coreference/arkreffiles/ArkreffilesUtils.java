@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.utilities.OS;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 
 /**
@@ -102,7 +104,11 @@ public class ArkreffilesUtils
 			Process process = builder.start();
 			process.waitFor();
 			int exitValue = process.exitValue();
-			if (exitValue!=0) {throw new CoreferenceResolutionException("ArkRef exited with non zero exit code: "+exitValue);}
+			if (exitValue!=0)
+			{
+				String command = StringUtil.joinIterableToString(builder.command(), " ", true);
+				throw new CoreferenceResolutionException("ArkRef exited with non zero exit code: "+exitValue+". Command was: "+command);
+			}
 		}
 		catch (IOException | InterruptedException e)
 		{
@@ -156,7 +162,7 @@ public class ArkreffilesUtils
 	{
 		String javaHome = System.getProperty("java.home");
 		File javaHomeDir = new File(javaHome);
-		return new File(new File(javaHomeDir,"bin"),"java");
+		return new File(new File(javaHomeDir,"bin"),OS.programName("java"));
 	}
 	
 	private static String buildArkrefClassPathString() throws CoreferenceResolutionException
