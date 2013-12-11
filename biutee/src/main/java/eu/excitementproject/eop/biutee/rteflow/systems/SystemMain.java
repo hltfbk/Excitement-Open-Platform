@@ -10,6 +10,8 @@ import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 
+import static eu.excitementproject.eop.biutee.utilities.SuccessFileIndicatorUtility.*;
+
 /**
  * The code that runs in the
  * <code>public static void main(String[] args)</code> methods of BIUTEE
@@ -29,6 +31,7 @@ public abstract class SystemMain
 		Logger logger = null;
 		try
 		{
+			markWorking();
 			if (args.length<1)throw new BiuteeException("No arguments. Enter configuration file name as argument.");
 			
 			configurationFileName = args[0];
@@ -50,6 +53,7 @@ public abstract class SystemMain
 			GlobalMessages.getInstance().addToLogAndExperimentManager(logger);
 			boolean experimentManagedSucceeded = ExperimentManager.getInstance().save();
 			logger.info("ExperimentManager save "+(experimentManagedSucceeded?"succeeded":"failed")+".");
+			markSuccess();
 		}
 		catch(Throwable e)
 		{
@@ -58,6 +62,7 @@ public abstract class SystemMain
 			{
 				ExceptionUtil.logException(e, logger);
 			}
+			markFailure();
 		}
 	}
 	

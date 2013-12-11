@@ -48,7 +48,11 @@ public class MarkerToNode<I extends Info, S extends AbstractNode<I, S>>
 				if (node!=null)
 				{
 					depth = depthMap.get(node);
-					if (null==depth) {throw new CoreferenceResolutionException("Bug");}
+					if (null==depth)
+					{
+						node = null;
+						depth = null;
+					}
 				}
 			}
 			else
@@ -57,12 +61,14 @@ public class MarkerToNode<I extends Info, S extends AbstractNode<I, S>>
 				if (currentNode != null)
 				{
 					Integer currentDepth = depthMap.get(currentNode);
-					if (null==currentDepth) {throw new CoreferenceResolutionException("Bug");}
-					if (depth==null) {throw new CoreferenceResolutionException("Bug");}
-					if (currentDepth.intValue()<depth.intValue())
+					if (currentDepth!=null)
 					{
-						node = currentNode;
-						depth = currentDepth;
+						if (depth==null) {throw new CoreferenceResolutionException("Bug");}
+						if (currentDepth.intValue()<depth.intValue())
+						{
+							node = currentNode;
+							depth = currentDepth;
+						}
 					}
 				}
 			}

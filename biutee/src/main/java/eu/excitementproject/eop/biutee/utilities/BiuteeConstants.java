@@ -211,6 +211,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that there is no reason to change, now and ever.
 
+	
+	public static final String ENVIRONMENT_VARIABLE_SUCCESS_FILE_NAME = "BIUTEE_SUCCESS";
 
 	/**
 	 * A delimiter in the value of "dataset" parameter, for RTE-sum.
