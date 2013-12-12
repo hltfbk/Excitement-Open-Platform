@@ -21,6 +21,7 @@ public class ArkrefFilesWorkaroundTextPreprocessor implements TextPreprocessor
 		WORKAROUND_SEQUENCES.put("%", new ExpressionAndReplacement("%"," percent "));
 		WORKAROUND_SEQUENCES.put("(", new ExpressionAndReplacement("\\(","["));
 		WORKAROUND_SEQUENCES.put(")", new ExpressionAndReplacement("\\)","]"));
+		WORKAROUND_SEQUENCES.put("/", new ExpressionAndReplacement("/","-"));
 		
 	}
 
