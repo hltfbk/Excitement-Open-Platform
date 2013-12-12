@@ -137,7 +137,7 @@ public class ArkreffilesUtils
 	
 	public static String extractJarFromClassPath(String jarname)
 	{
-		final Pattern jarPattern = Pattern.compile(".*"+jarname+"[^"+File.separatorChar+"]*\\.jar");
+		final Pattern jarPattern = Pattern.compile(".*"+jarname+"[^"+fileSeparatorForRegExp()+"]*\\.jar");
 		String classpath = System.getProperty("java.class.path");
 		String[] classpathComponents = classpath.split(File.pathSeparator);
 		String jarComponent = null;
@@ -196,4 +196,18 @@ public class ArkreffilesUtils
 		}
 		return sb.toString();
 	}
+	
+	private static final String fileSeparatorForRegExp()
+	{
+		if (File.separatorChar=='\\')
+		{
+			return "\\\\";
+			
+		}
+		else
+		{
+			return File.separator;
+		}
+	}
+
 }
