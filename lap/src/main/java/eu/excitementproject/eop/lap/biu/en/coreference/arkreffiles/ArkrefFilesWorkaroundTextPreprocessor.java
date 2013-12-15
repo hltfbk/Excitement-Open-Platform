@@ -2,6 +2,8 @@ package eu.excitementproject.eop.lap.biu.en.coreference.arkreffiles;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
@@ -35,7 +37,19 @@ public class ArkrefFilesWorkaroundTextPreprocessor implements TextPreprocessor
 	@Override
 	public void preprocess() throws TextPreprocessorException
 	{
-		
+		replaceProblematicSequences();
+		handleDanglingNonLetterDigitSequence();
+	}
+
+	@Override
+	public String getPreprocessedText() throws TextPreprocessorException
+	{
+		return this.sentence;
+	}
+	
+	
+	private void replaceProblematicSequences()
+	{
 		for (String problematicSequence : WORKAROUND_SEQUENCES.keySet())
 		{
 			if (this.sentence.contains(problematicSequence))
@@ -52,11 +66,23 @@ public class ArkrefFilesWorkaroundTextPreprocessor implements TextPreprocessor
 			}
 		}
 	}
-
-	@Override
-	public String getPreprocessedText() throws TextPreprocessorException
+	
+	private void handleDanglingNonLetterDigitSequence()
 	{
-		return this.sentence;
+		final String str = " "+this.sentence+" ";
+		final Pattern pattern = Pattern.compile("\\s+([^0-9a-zA-Z]+)\\s+");
+		Matcher matcher = pattern.matcher(str);
+		
+		int index=0;
+		StringBuilder sb = new StringBuilder();
+		while (matcher.find())
+		{
+			sb.append( str.substring(index, matcher.start()) );
+			index = matcher.start(1);
+		}
+		sb.append(str.substring(index, str.length()));
+
+		this.sentence = sb.toString().trim();
 	}
 	
 	
