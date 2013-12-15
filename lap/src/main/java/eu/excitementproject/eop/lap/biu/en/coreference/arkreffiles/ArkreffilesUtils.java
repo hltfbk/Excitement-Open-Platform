@@ -13,7 +13,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
@@ -137,22 +136,25 @@ public class ArkreffilesUtils
 	
 	public static String extractJarFromClassPath(String jarname)
 	{
-		final Pattern jarPattern = Pattern.compile(".*"+jarname+"[^"+fileSeparatorForRegExp()+"]*\\.jar");
-		String classpath = System.getProperty("java.class.path");
-		String[] classpathComponents = classpath.split(File.pathSeparator);
-		String jarComponent = null;
-		for (String component : classpathComponents)
-		{
-			if (jarPattern.matcher(component).matches())
-			{
-				if (null==jarComponent)
-				{
-					jarComponent = component;
-					break;
-				}
-			}
-		}
-		return jarComponent;
+		return arkref.analysis.ARKref.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+//		
+//		
+//		final Pattern jarPattern = Pattern.compile(".*"+jarname+"[^"+fileSeparatorForRegExp()+"]*\\.jar");
+//		String classpath = System.getProperty("java.class.path");
+//		String[] classpathComponents = classpath.split(File.pathSeparator);
+//		String jarComponent = null;
+//		for (String component : classpathComponents)
+//		{
+//			if (jarPattern.matcher(component).matches())
+//			{
+//				if (null==jarComponent)
+//				{
+//					jarComponent = component;
+//					break;
+//				}
+//			}
+//		}
+//		return jarComponent;
 	}
 
 	
@@ -197,17 +199,17 @@ public class ArkreffilesUtils
 		return sb.toString();
 	}
 	
-	private static final String fileSeparatorForRegExp()
-	{
-		if (File.separatorChar=='\\')
-		{
-			return "\\\\";
-			
-		}
-		else
-		{
-			return File.separator;
-		}
-	}
+//	private static final String fileSeparatorForRegExp()
+//	{
+//		if (File.separatorChar=='\\')
+//		{
+//			return "\\\\";
+//			
+//		}
+//		else
+//		{
+//			return File.separator;
+//		}
+//	}
 
 }
