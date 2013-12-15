@@ -185,6 +185,7 @@ public class DefaultInstruments implements Instruments<Info, BasicNode>
 			break;
 		case ARKREF_AND_BART:
 			logger.info("Using ArkRef_and_Bart coreference resolver");
+			GlobalMessages.globalWarn("Co-reference resolver is configured as "+CoreferenceEngineChoice.ARKREF_AND_BART.name()+". Note that this configuration uses an older wrapper for ArkRef, which is known to be buggy. It is recommended to use the "+CoreferenceEngineChoice.ARKREF_FILES.name()+" configuration.",logger);
 			try {	this.coreferenceResolver = new ArkrefAndBartCoreferenceResolver(bartServer, bartPort != null ? String.valueOf(bartPort) : null); }
 			catch (ArkrefClientException e) {	throw new TeEngineMlException("Could not construct a new ArkrefCoreferenceResolver", e); }
 			catch (IOException e) {	throw new TeEngineMlException("Could not construct a new ArkrefCoreferenceResolver", e); }
@@ -195,7 +196,7 @@ public class DefaultInstruments implements Instruments<Info, BasicNode>
 			break;
 		case NONE:
 		default:
-			logger.warn("Not using coreference resolver!");
+			GlobalMessages.globalWarn("Not using coreference resolver!",logger);
 			this.coreferenceResolver = new DummyCoreferenceResolver();
 			break;
 		}
