@@ -9,7 +9,9 @@ import eu.excitementproject.eop.common.utilities.text.TextPreprocessor;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
 
 /**
- * 
+ * Modifies the input text for ArkRef, such that it would bypass ArkRef bugs.
+ * Since ArkRef tool is somewhat buggy, and crashes on some texts, this workaround
+ * processor modifies the text to avoid ArkRef's bugs.
  * @author Asher Stern
  * @since Dec 11, 2013
  *

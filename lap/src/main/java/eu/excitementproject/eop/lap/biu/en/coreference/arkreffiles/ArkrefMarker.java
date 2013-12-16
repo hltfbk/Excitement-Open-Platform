@@ -3,7 +3,7 @@ package eu.excitementproject.eop.lap.biu.en.coreference.arkreffiles;
 /**
  * Represents an XML-like tag which indicates beginning or ending of a mention span
  * in ArkRef output file.
- * Each being-tag contains the entity-id and mention-id of this mention.
+ * Each begin-tag contains the entity-id and mention-id of this mention.
  * End-tag merely closes the last begin-tag, and indicates the end of the span. 
  * 
  * @author Asher Stern

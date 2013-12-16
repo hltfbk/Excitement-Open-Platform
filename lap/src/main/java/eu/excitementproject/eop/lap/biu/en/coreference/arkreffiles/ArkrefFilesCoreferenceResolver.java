@@ -51,7 +51,7 @@ public class ArkrefFilesCoreferenceResolver extends CoreferenceResolver<BasicNod
 			String arkrefOutputString = runArkref();
 			this.coreferenceInformation = createWithArkrefOutput(arkrefOutputString);
 		}
-		catch (IOException | TreeCoreferenceInformationException | CoreferenceResolutionException | RuntimeException | TextPreprocessorException e)
+		catch (IOException | TreeCoreferenceInformationException | CoreferenceResolutionException | TextPreprocessorException | RuntimeException e)
 		{
 			throw new CoreferenceResolutionException("Failed to resolve co-references using ArkRef. See nested exception.\n"+
 					"The text was:\n" +

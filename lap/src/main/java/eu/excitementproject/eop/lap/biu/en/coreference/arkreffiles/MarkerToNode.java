@@ -10,6 +10,17 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
 
 /**
+ * Finds the parse-tree node which corresponds to the given mention, which is
+ * given as by the ArkRef-marker.
+ * <P>
+ * Explanation: The mention in ArkRef output is surrounded by a begin-marker
+ * and an end-marker.
+ * These two markers wrap several words, each corresponds to a parse-tree node.
+ * Now, the task is to choose <B>one</B> parse-tree-node for the mention (one from
+ * all nodes aligned to the wrapped words).
+ * This class performs this task. It chooses one parse-tree-node.
+ * This is done by taking the parse-tree-node which has the lowest depth (i.e.,
+ * closest to the parse-tree-root).
  * 
  * @author Asher Stern
  * @since Dec 9, 2013
@@ -19,21 +30,21 @@ public class MarkerToNode<I extends Info, S extends AbstractNode<I, S>>
 {
 	public MarkerToNode(String entityId, String mentionId,
 			Map<S, Integer> depthMap,
-			ArrayList<ArkrefOutputWord<I, S>> arkrefOutput, int makerIndexInList)
+			ArrayList<ArkrefOutputWord<I, S>> arkrefOutput, int markerIndexInList)
 	{
 		super();
 		this.entityId = entityId;
 		this.mentionId = mentionId;
 		this.depthMap = depthMap;
 		this.arkrefOutput = arkrefOutput;
-		this.makerIndexInList = makerIndexInList;
+		this.markerIndexInList = markerIndexInList;
 	}
 
 
 	public void findNode() throws CoreferenceResolutionException
 	{
 		validateInput();
-		ListIterator<ArkrefOutputWord<I, S>> iterator = arkrefOutput.listIterator(makerIndexInList);
+		ListIterator<ArkrefOutputWord<I, S>> iterator = arkrefOutput.listIterator(markerIndexInList);
 		
 		node = null;
 		Integer depth = null; // infinity
@@ -103,8 +114,8 @@ public class MarkerToNode<I extends Info, S extends AbstractNode<I, S>>
 
 	private void validateInput() throws CoreferenceResolutionException
 	{
-		ArkrefOutputWord<I, S> word = arkrefOutput.get(makerIndexInList);
-		ListIterator<ArkrefOutputWord<I, S>> iterator = arkrefOutput.listIterator(makerIndexInList);
+		ArkrefOutputWord<I, S> word = arkrefOutput.get(markerIndexInList);
+		ListIterator<ArkrefOutputWord<I, S>> iterator = arkrefOutput.listIterator(markerIndexInList);
 		if (iterator.next()!=word) {throw new CoreferenceResolutionException("Bug");}
 		
 		List<ArkrefMarker> beginMarkers = word.getBeginMarkers();
@@ -127,7 +138,7 @@ public class MarkerToNode<I extends Info, S extends AbstractNode<I, S>>
 	private final String mentionId;
 	private final Map<S, Integer> depthMap;
 	private final ArrayList<ArkrefOutputWord<I, S>> arkrefOutput;
-	private final int makerIndexInList;
+	private final int markerIndexInList;
 	
 	private S node = null;
 	private boolean findHasBeenCalled = false;

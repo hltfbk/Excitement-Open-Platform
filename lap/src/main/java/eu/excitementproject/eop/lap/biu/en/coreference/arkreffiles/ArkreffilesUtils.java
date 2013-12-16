@@ -30,6 +30,15 @@ import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionExcepti
 public class ArkreffilesUtils
 {
 
+	/**
+	 * Creates a map from every parse-tree-node to an integer value which indicates
+	 * its depth in the parse-tree.
+	 * The root is of depth 0. Direct children of root are of depth 1. Their direct
+	 * children are depth 2. etc.
+	 * 
+	 * @param tree A parse-tree
+	 * @return A map from each node to its depth, where the root is depth 0.
+	 */
 	public static <I extends Info, S extends AbstractNode<I, S>>
 	Map<S, Integer> mapNodesToDepth(S tree)
 	{
@@ -58,6 +67,15 @@ public class ArkreffilesUtils
 		return ret;
 	}
 	
+	/**
+	 * Creates a temporary directory, which would be a sub-directory of
+	 * the system "temp" directory.
+	 * 
+	 * @param prefix A prefix string of name of the to-be created directory.  
+	 * @return The directory.
+	 * @throws CoreferenceResolutionException
+	 * @throws IOException
+	 */
 	public static File createTempDirectory(String prefix) throws CoreferenceResolutionException, IOException
 	{
 		final File temp = File.createTempFile(prefix+"_"+UUID.randomUUID().toString(),"");
@@ -75,6 +93,14 @@ public class ArkreffilesUtils
 		return (temp);
 	}
 	
+	/**
+	 * Writes the given text into the given file. Overrides the file contents if
+	 * it is already exists.
+	 * @param text A given text.
+	 * @param file A given file.
+	 * @throws FileNotFoundException If writing into the file is not
+	 * possible, due to any reason.
+	 */
 	public static void writeTextToFile(String text, File file) throws FileNotFoundException
 	{
 		try(PrintWriter writer = new PrintWriter(file))
@@ -84,7 +110,12 @@ public class ArkreffilesUtils
 	}
 	
 
-	
+	/**
+	 * Run the ArkRef co-reference resolver as a separate process, where the
+	 * input is the given file.
+	 * @param textFile
+	 * @throws CoreferenceResolutionException
+	 */
 	public static void runArkref(File textFile) throws CoreferenceResolutionException
 	{
 		File javaExec = getJavaExecutable();
@@ -116,7 +147,13 @@ public class ArkreffilesUtils
 	}
 	
 	
-	
+	/**
+	 * Reads the contents of the given file.
+	 * @param filename The name of the given file.
+	 * @return The file's contents.
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public static String readTextFile(String filename) throws FileNotFoundException, IOException
 	{
 		StringBuilder sb = new StringBuilder();
@@ -134,9 +171,31 @@ public class ArkreffilesUtils
 		return text;
 	}
 	
-	public static String extractJarFromClassPath(String jarname)
+	
+	/**
+	 * Returns the "java" program, which is currently running.
+	 * It should be $JAVA_HOME/bin/java (or %JAVA_HOME%\bin\java.exe), where
+	 * the JAVA_HOME is the home of the JDK or JRE.
+	 * @return
+	 */
+	private static File getJavaExecutable()
 	{
-		return arkref.analysis.ARKref.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		String javaHome = System.getProperty("java.home");
+		File javaHomeDir = new File(javaHome);
+		return new File(new File(javaHomeDir,"bin"),OS.programName("java"));
+	}
+
+
+	
+	/**
+	 * Returns the path+name of a JAR file which should be in the current
+	 * process class-path.
+	 * @param clazz A class which should be contained in jar in the class-path.
+	 * @return
+	 */
+	private static String extractJarFromClassPath(Class<?> clazz)
+	{
+		return clazz.getProtectionDomain().getCodeSource().getLocation().getPath();
 //		
 //		
 //		final Pattern jarPattern = Pattern.compile(".*"+jarname+"[^"+fileSeparatorForRegExp()+"]*\\.jar");
@@ -156,29 +215,20 @@ public class ArkreffilesUtils
 //		}
 //		return jarComponent;
 	}
-
 	
-	
-	
-	private static File getJavaExecutable()
-	{
-		String javaHome = System.getProperty("java.home");
-		File javaHomeDir = new File(javaHome);
-		return new File(new File(javaHomeDir,"bin"),OS.programName("java"));
-	}
 	
 	private static String buildArkrefClassPathString() throws CoreferenceResolutionException
 	{
 		// TODO too many hard-coded strings
 		final String LIB_DIR = "lib";
-		final String ARKREF_JAR = "arkref";
+		final Class<?> arkrefClass = arkref.analysis.ARKref.class;
 		
-		String arkrefJarComponent = extractJarFromClassPath(ARKREF_JAR);
-		if (null==arkrefJarComponent) {throw new CoreferenceResolutionException(ARKREF_JAR+" could not be found in the classpath.");}
+		String arkrefJarComponent = extractJarFromClassPath(arkrefClass);
+		if (null==arkrefJarComponent) {throw new CoreferenceResolutionException("arkref jar-file could not be found in the classpath.");}
 		
 		String pathSeparator = System.getProperty("path.separator");
 		StringBuilder sb = new StringBuilder();
-		if (!(new File(arkrefJarComponent).exists())) {throw new CoreferenceResolutionException(ARKREF_JAR+" could not be found in the file system. Tried to detect "+arkrefJarComponent);}
+		if (!(new File(arkrefJarComponent).exists())) {throw new CoreferenceResolutionException("arkref jar-file could not be found in the file system. Tried to detect "+arkrefJarComponent);}
 		sb.append(arkrefJarComponent);
 		File libDir = new File(LIB_DIR);
 		if (!libDir.exists()){throw new CoreferenceResolutionException("Cannot run ArkRef! Directory \"lib\" does not exist in the current working directory.");}
