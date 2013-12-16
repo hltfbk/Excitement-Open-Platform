@@ -209,7 +209,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 		LexicalResourcesFactory lexicalFactory = new LexicalResourcesFactory(configurationFile);
 		for (KnowledgeResource resource : knowledgeResources)
 		{
-			logger.debug("Initializing resource: "+resource.getDisplayName());
+			logger.info("Initializing resource: "+resource.getDisplayName());
 
 			// get the module name for the configuration file
 			String moduleName = resource.getInfrastructureModuleName();
