@@ -42,6 +42,12 @@ import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.uima.BIUFullLAP;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
+/**
+ * 
+ * @author Ofer Bronstein
+ * 
+ *
+ */
 public class BiuteeMain {
 
 	/**

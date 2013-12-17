@@ -31,26 +31,31 @@ public abstract class SystemMain
 		Logger logger = null;
 		try
 		{
-			markWorking();
-			if (args.length<1)throw new BiuteeException("No arguments. Enter configuration file name as argument.");
-			
-			configurationFileName = args[0];
-			new LogInitializer(configurationFileName).init();
-			logger = Logger.getLogger(cls);
-			
-			ExperimentManager.getInstance().start();
-			ExperimentManager.getInstance().setConfigurationFile(configurationFileName);
+			try
+			{
+				markWorking();
+				if (args.length<1)throw new BiuteeException("No arguments. Enter configuration file name as argument.");
 
-			logger.info(cls.getSimpleName());
-			ExperimentManager.getInstance().addMessage(cls.getSimpleName());
+				configurationFileName = args[0];
+				new LogInitializer(configurationFileName).init();
+				logger = Logger.getLogger(cls);
 
-			Date startDate = new Date();
-			run(args);
-			Date endDate = new Date();
-			long elapsedSeconds = (endDate.getTime()-startDate.getTime())/1000;
-			logger.info(cls.getSimpleName()+" done. Time elapsed: "+elapsedSeconds/60+" minutes and "+elapsedSeconds%60+" seconds.");
-			
-			GlobalMessages.getInstance().addToLogAndExperimentManager(logger);
+				ExperimentManager.getInstance().start();
+				ExperimentManager.getInstance().setConfigurationFile(configurationFileName);
+
+				logger.info(cls.getSimpleName());
+				ExperimentManager.getInstance().addMessage(cls.getSimpleName());
+
+				Date startDate = new Date();
+				run(args);
+				Date endDate = new Date();
+				long elapsedSeconds = (endDate.getTime()-startDate.getTime())/1000;
+				logger.info(cls.getSimpleName()+" done. Time elapsed: "+elapsedSeconds/60+" minutes and "+elapsedSeconds%60+" seconds.");
+			}
+			finally
+			{
+				GlobalMessages.getInstance().addToLogAndExperimentManager(logger);
+			}
 			boolean experimentManagedSucceeded = ExperimentManager.getInstance().save();
 			logger.info("ExperimentManager save "+(experimentManagedSucceeded?"succeeded":"failed")+".");
 			markSuccess();

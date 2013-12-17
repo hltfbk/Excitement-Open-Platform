@@ -49,14 +49,7 @@ public class Constants
 	public static final int DEFAULT_LEXICAL_RESOURCES_CACHE_SIZE = 100000;
 	public static final int DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE = 100000;
 
-	/**
-	 * This feature adds periods to sentences that do not terminate with punctuation, as they are read from the dataset. 
-	 */
-	public static final boolean COMPLETE_PERIODS = true;
-	/**
-	 * apply {@link TextualNoiseReducer#reduceNoise(String)} to correct small errors in the text before preprocess
-	 */
-	public static final boolean REDUCE_NOISE_IN_DATASET = true;
+	
 
 
 	/**
@@ -65,6 +58,11 @@ public class Constants
 	 */
 	public static final boolean DIRT_LIKE_USE_CONSTANT_SCORE_FOR_ALL_RULES = true;
 
+	/**
+	 * If <tt>true</tt> than all lexical rules get the same score, regardless their
+	 * score in the resource itself. The score is {@link #LEXICAL_RESOURCE_CONSTANT_SCORE_WHEN_USING_CONSTANT_SCORE}.
+	 */
+	public static final boolean LEXICAL_RESOURCES_USE_CONSTANT_SCORE_FOR_ALL_RULES = true;
 
 	public static final boolean FILTER_STOP_WORDS_IN_LEFT_IN_LEXICAL_RESOURCES = true;
 	public static final boolean FILTER_STOP_WORDS_IN_RIGHT_IN_LEXICAL_RESOURCES = true;
@@ -124,8 +122,10 @@ public class Constants
 	 */
 	public static final boolean WHEN_PRINT_SENTENCE_PART_IN_RULE_SPECIFICATION_INCLUDE_NON_RULE_MODIFIERS = false;
 
-
-
+	/**
+	 * See {@link #LEXICAL_RESOURCES_USE_CONSTANT_SCORE_FOR_ALL_RULES}.
+	 */
+	public static final double LEXICAL_RESOURCE_CONSTANT_SCORE_WHEN_USING_CONSTANT_SCORE = Math.exp(-1.0);
 	
 	
 	//////////////////////////////////////////////////////////////////////////
