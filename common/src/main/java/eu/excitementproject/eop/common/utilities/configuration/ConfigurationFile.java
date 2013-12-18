@@ -2,112 +2,34 @@ package eu.excitementproject.eop.common.utilities.configuration;
 
 
 import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import eu.excitementproject.eop.common.datastructures.KeyCaseInsensitiveHashTable;
-import eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated.ConfigurationType;
-import eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated.ModuleType;
-import eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated.ParameterType;
-import eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated.SubModuleType;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 
 
 
 
 /**
- * <B>This class has to be removed, since Excitement uses another type of
- * configuration files.</B>
  * 
- * 
- * The classes {@link ConfigurationFile} and {@link ConfigurationParams} use the JaxB jars {@link https://jaxb.dev.java.net/}
- * to provide a comprehensive and more user friendly Java interface to XML files.
- * They depend on the JaxB jar files in JARS.
- * 
- * <p>See examples in Demo.xml, Demo.java</p>
- * 
- * <p>
- * A good xml file for these classes would look like this:
- * <pre>
- * {@code
-	   	<?xml version="1.0"?>
-	
-		<!DOCTYPE page [
-		<!ENTITY jars "\\nlp-srv\jars\">		<!-- SOME COMMENT -->
-		<!ENTITY stopwords "\\nlp-srv\Data\RESOURCES\stopwords-Eyal.txt">
-		]>
-		
-		<configuration>
-		
-			<module name="logging">
-				<param name="main-output-dir">\\nlp-srv\amnon\temp</param>
-				<param name="experiment-name">rank dev</param>
-				<param name="__COMMENTED-OUT-MODULE">mailer</param>
-				<param name="log-file-max-size">500MB</param>
-			</module>
-			
-			<!-- main module for LexicalGraph-->
-			<module name="lexical inference">
-				<param name="num of expansions">2</param>		<!-- number of steps when building the graph -->
-				<param name="senses to use">1</param>			<!-- wn senses of seeds will be set to those sense numbers -->  
-			</module>
-		
-		</configuration>
-	}
- * </pre>
- * <p>
- * Here's an example client code snippet:
- * <pre>
- * {@code	
-            ConfigurationFile conf = new ConfigurationFile(new File(fileName));
-			EL.init(conf.getModuleConfiguration("logging"));
-			ConfigurationParams params = conf.getModuleConfiguration("data set");
-			File topDir = params.getFile("top-dir");
-			File gsFile = params.getFile("gold-standard-file");
-			List<String> topics = null;
-			if(params.containsKey("topics")){
-				topics = params.getStringList("topics");
-			}
-	} 
- * </pre>
- * @see ConfigurationParams
- * @author BIU NLP legacy-code
+ * @author Asher Stern
+ * @since Dec 18, 2013
+ *
  */
-public class ConfigurationFile implements Serializable {
+public class ConfigurationFile implements Serializable
+{
+	private static final long serialVersionUID = -160667366987997027L;
+
+	///////////////////////////////////////////////////////// public section /////////////////////////////////////////////////
 
 	public static final String MODULE_ATTRIBUTE_NAME = "name";
 	public static final String MODULE_ELEMENT_NAME = "module";
-	
-	///////////////////////////////// package constants /////////////////////////////
-	
-	static final String MODULE_NAME_SEPARATOR = "::";
-	static final String MODULE_PRE = "Module" + MODULE_NAME_SEPARATOR;
-	static final String XML_COMMENT_PREFIX = "_";
 
-	//////////////////////////////////// private constants //////////////////////////////////////////// 
-
-	private static final long serialVersionUID = -1138823445156480837L;	// required for implementing Serializable
-	//private static final String GENERATED_JAXB_FILES_PACKAGE = "ac.biu.nlp.nlp.general.configuration.configuration_file.generated";
-	private static final String GENERATED_JAXB_FILES_PACKAGE = eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated.ObjectFactory.class.getPackage().getName();
-//			"eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated";
 	
 	
-	///////////////////////////////////////////////////////// public section /////////////////////////////////////////////////
+	public ConfigurationFile(CommonConfig commonConfig)
+	{
+		this.underlyingConfigurationFile = new CommonConfigWrapperConfigurationFile(commonConfig,this);
+	}
 	
 	/**
 	 * Constructor
@@ -115,67 +37,9 @@ public class ConfigurationFile implements Serializable {
 	 * @throws ConfigurationFileDuplicateKeyException if the iConfigurationXmlFile has duplicate keys 
 	 * @throws ConfigurationException If any unexpected JAXBException errors occur while Unmarshaller unmarshalls 
 	 */
-	@SuppressWarnings("unchecked") // for unsafe casting of unmarshal()
 	public ConfigurationFile(File iConfigurationXmlFile) throws ConfigurationFileDuplicateKeyException, ConfigurationException
 	{
-		// check input
-		if (iConfigurationXmlFile == null)
-			throw new ConfigurationException("ConfigurationFile constructor was called with null parameter for the xml-file");
-		if (!iConfigurationXmlFile.exists())
-			throw new ConfigurationException("ConfigurationFile constructor: File does not exist: \'" 
-					+ iConfigurationXmlFile.getPath() + "\'");			
-		
-		ConfigurationType confE = null;
-		m_confFile = iConfigurationXmlFile;
-
-		// marshal the input iConfigurationXmlFile with parameters from our GENERATED_JAXB_FILES_PACKAGE, into confE
-		try {
-			JAXBContext jc = JAXBContext.newInstance(GENERATED_JAXB_FILES_PACKAGE);
-			Unmarshaller unmarshaller = jc.createUnmarshaller();
-			confE = ((JAXBElement<ConfigurationType>) unmarshaller.unmarshal(iConfigurationXmlFile)).getValue();
-		} catch (JAXBException e) {
-			throw new ConfigurationException("a JAXBException was raised in ConfigurationFile.java, saying: " + e, e);
-		}
-		
-		enforceNoDuplicates(iConfigurationXmlFile);
-		
-		// insert the parameters from confE into our ConfigurationParams
-		KeyCaseInsensitiveHashTable<String> mainParametersHashTable = new KeyCaseInsensitiveHashTable<String>();
-		for (ParameterType paramE : confE.getParam())
-		{
-			mainParametersHashTable.put(paramE.getName(), paramE.getValue());
-		}
-		m_params = new LegacyConfigurationParams(mainParametersHashTable, this, null);
-		
-		m_conf = new KeyCaseInsensitiveHashTable<ConfigurationParams>();
-		
-		// for each module in the xml, put its contents in a new ConfigurationParams, and add it to our table m_conf
-		for (ModuleType module : confE.getModule()) {
-			String moduleName = module.getName();
-			KeyCaseInsensitiveHashTable<String> moduleParameters = new KeyCaseInsensitiveHashTable<String>();
-
-			// put each of the modul's parameters in its new ConfigurationParams
-			for (ParameterType param : module.getParam())
-			{
-				putParamInParams(param, moduleParameters, moduleName);
-			}
-			String strModuleName = moduleName(moduleName);
-			m_conf.put(strModuleName, new LegacyConfigurationParams(moduleParameters, this, strModuleName));
-			
-			// put each of the module's submodules as an independent ConfigurationParams modules in m_conf 
-			for (SubModuleType submodule : module.getSubmodule()) 
-			{
-				KeyCaseInsensitiveHashTable<String> subModulesParameters = new KeyCaseInsensitiveHashTable<String>();
-	
-				// put each of the modul's parameters in its new ConfigurationParams
-				for (ParameterType param : submodule.getParam())
-				{
-					putParamInParams(param,subModulesParameters, moduleName);
-				}
-				String strSubmoduleName = moduleName(submodule.getName());
-				m_conf.put(strSubmoduleName, new LegacyConfigurationParams(subModulesParameters, this, strSubmoduleName));
-			}
-		}
+		this.underlyingConfigurationFile = new LegacyConfigurationFile(iConfigurationXmlFile,this);
 	}
 		
 	/**
@@ -203,7 +67,7 @@ public class ConfigurationFile implements Serializable {
 	 */
 	public boolean isExpandingEnvironmentVariables()
 	{
-		return expandingEnvironmentVariables;
+		return underlyingConfigurationFile.isExpandingEnvironmentVariables();
 	}
 
 	/**
@@ -215,7 +79,7 @@ public class ConfigurationFile implements Serializable {
 	 */
 	public void setExpandingEnvironmentVariables(boolean expandingEnvironmentVariables)
 	{
-		this.expandingEnvironmentVariables = expandingEnvironmentVariables;
+		underlyingConfigurationFile.setExpandingEnvironmentVariables(expandingEnvironmentVariables);
 	}
 	
 	/**
@@ -224,8 +88,7 @@ public class ConfigurationFile implements Serializable {
 	 */
 	public ConfigurationParams getParams()
 	{
-		m_params.setExpandingEnvironmentVariables(this.expandingEnvironmentVariables);
-		return m_params;
+		return underlyingConfigurationFile.getParams();
 	}
 
 
@@ -237,21 +100,12 @@ public class ConfigurationFile implements Serializable {
 	 */
 	public ConfigurationParams getModuleConfiguration(String iModuleName) throws ConfigurationException
 	{
-		if (!m_conf.containsKey(moduleName(iModuleName)))
-			throw new ConfigurationException("Tried to retrieve a module that doesn't exist: " + moduleName(iModuleName) );
-		
-		ConfigurationParams ret = m_conf.get(moduleName(iModuleName));
-		if(ret == null)
-			throw new ConfigurationException("Module name " + moduleName(iModuleName) + " has no module to match");
-		
-		if (expandingEnvironmentVariables)
-			ret.setExpandingEnvironmentVariables(true);
-		return ret;
+		return underlyingConfigurationFile.getModuleConfiguration(iModuleName);
 	}
 	
 	public boolean isModuleExist(String moduleName) throws ConfigurationException
 	{
-		return m_conf.containsKey(moduleName(moduleName));
+		return underlyingConfigurationFile.isModuleExist(moduleName);
 	}
 
 	/**
@@ -261,16 +115,7 @@ public class ConfigurationFile implements Serializable {
 	 */
 	public void addModuleConfiguration(String iModuleName) throws ConfigurationException
 	{
-		if (iModuleName == null || "".equals(iModuleName))
-			throw new ConfigurationException("Empty/Null module name was given");
-		
-		if (!m_conf.containsKey(moduleName(iModuleName)))
-		{
-			String strModuleName = moduleName(iModuleName);
-			m_conf.put(strModuleName, new LegacyConfigurationParams(new KeyCaseInsensitiveHashTable<String>(),this,strModuleName));
-		}
-		else
-			throw new ConfigurationException("Can't create a module by the name " + iModuleName + ", because it already exists");
+		underlyingConfigurationFile.addModuleConfiguration(iModuleName);
 	}
 
 	/**
@@ -280,7 +125,7 @@ public class ConfigurationFile implements Serializable {
 	 */
 	public void removeModuleConfiguration(String iModuleName) throws ConfigurationException
 	{			
-		m_conf.remove(moduleName(iModuleName));
+		underlyingConfigurationFile.removeModuleConfiguration(iModuleName);
 	}
 
 	/**
@@ -289,112 +134,12 @@ public class ConfigurationFile implements Serializable {
 	 */
 	public File getConfFile()
 	{
-		return m_confFile;
+		return underlyingConfigurationFile.getConfFile();
 	}
 		
 	///////////////////////////////// private methods ///////////////////////////////////////////////
-
-	/**
-	 * This method throws {@link ConfigurationException} if the given configuration file
-	 * contains two modules with the same name.
-	 * @param xmlFile
-	 * @throws ConfigurationException
-	 */
-	private static void enforceNoDuplicates(File xmlFile) throws ConfigurationException
-	{
-		try
-		{
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-			// ASHER: work around, see: http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6181020
-			documentBuilderFactory.setFeature("http://apache.org/xml/features/dom/defer-node-expansion", false);
-			DocumentBuilder documentBuilder = 
-				documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(xmlFile);
-			Element rootElement = document.getDocumentElement();
-			NodeList moduleElements = rootElement.getChildNodes();
-			Set<String> moduleNames = new HashSet<String>();
-			for (int index=0;index<moduleElements.getLength();++index)
-			{
-				Node node = moduleElements.item(index);
-				if (node instanceof Element)
-				{
-					Element moduleElement = (Element)node;
-					if (MODULE_ELEMENT_NAME.equalsIgnoreCase(moduleElement.getNodeName()))
-					{
-						String moduleName = moduleElement.getAttribute(MODULE_ATTRIBUTE_NAME);
-						if (null==moduleName)
-							throw new ConfigurationException("Could not identify a module name for a given module");
-						if (moduleNames.contains(moduleName.toLowerCase()))
-							throw new ConfigurationException("a duplicate module has been detected: "+moduleName);
-						moduleNames.add(moduleName.toLowerCase());
-					}
-				}
-			}
-		}
-		catch(ParserConfigurationException e)
-		{
-			throw new ConfigurationException("Could not parse the given xml file: "+xmlFile.getPath(),e);
-		}
-		catch(SAXException e)
-		{
-			throw new ConfigurationException("Could not parse the given xml file: "+xmlFile.getPath(),e);
-		}
-		catch(IOException e)
-		{
-			throw new ConfigurationException("Could not parse the given xml file: "+xmlFile.getPath(),e);
-		}
-	}
 	
-	/**
-	 * put the parameter in its ConfigurationParams
-	 * @param param
-	 * @param params
-	 * @param moduleName
-	 * @throws ConfigurationFileDuplicateKeyException if the iConfigurationXmlFile has duplicate keys
-	 */
-	private void putParamInParams(ParameterType param, KeyCaseInsensitiveHashTable<String> params, String moduleName) throws ConfigurationFileDuplicateKeyException {
-		
-		String paramName = param.getName();
-
-		// ignore parameters that start with "_"
-		if (!paramName.startsWith(XML_COMMENT_PREFIX))
-		{	
-			// prevent duplicate parameters
-			if (params.containsKey(paramName)) {
-				throw new ConfigurationFileDuplicateKeyException("Duplicate parameter '"
-						+ paramName + "' in configuration module: '"
-						+ moduleName + "'");
-			}
-			params.put(paramName, param.getValue());
-		}
-	}
 	
-	/**
-	 * return the module's fully qualified xml name
-	 * @param iModuleName
-	 * @return the module's fully qualified xml name
-	 * @throws ConfigurationException if any parameter is null
-	 */
-	private String moduleName(String iModuleName) throws ConfigurationException
-	{
-		checkForNullModuleName(iModuleName);
-
-		return MODULE_PRE + iModuleName;
-	}
 	
-	private void checkForNullModuleName(String iModuleName) throws ConfigurationException
-	{
-		if (iModuleName == null || "".equals(iModuleName))
-			throw new ConfigurationException("Empty/Null module name given");		
-	}
-	
-	/*
-	 * 
-	 * private fields
-	 * 
-	 */	
-	private KeyCaseInsensitiveHashTable<ConfigurationParams> m_conf = null;
-	private ConfigurationParams m_params = null;
-	private File m_confFile;
-	private boolean expandingEnvironmentVariables = false;
+	protected final UnderlyingConfigurationFile underlyingConfigurationFile;
 }

@@ -237,6 +237,10 @@ public interface ConfigurationParams extends NameValueTable
 	 */
 	public ConfigurationParams getSisterModuleConfiguration(String iModuleName) throws ConfigurationException;
 
+	
+	public ConfigurationFile getConfigurationFile();
+
+	
 //	Methods of NameValueTable
 //	
 //	public Integer getInteger(String name) throws ConfigurationException;

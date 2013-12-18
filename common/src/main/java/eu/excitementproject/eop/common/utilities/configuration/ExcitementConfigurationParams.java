@@ -13,15 +13,16 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
  */
 public class ExcitementConfigurationParams extends AbstractConfigurationParams
 {
-	public ExcitementConfigurationParams(CommonConfig commonConfig, NameValueTable nameValueTable, String sectionName) throws ConfigurationException
+	public ExcitementConfigurationParams(CommonConfig commonConfig, NameValueTable nameValueTable, String sectionName, boolean expandingEnvironmentVariables, ConfigurationFile configurationFileReference) throws ConfigurationException
 	{
 		super();
 		this.commonConfig = commonConfig;
 		this.nameValueTable = nameValueTable;
 		this.sectionName = sectionName;
+		this.configurationFileReference = configurationFileReference;
 		if (null==this.nameValueTable) throw new ConfigurationException("Null NameValueTable was provided.");
 		
-		this.setExpandingEnvironmentVariables(true);
+		this.setExpandingEnvironmentVariables(expandingEnvironmentVariables);
 	}
 	
 	
@@ -39,13 +40,17 @@ public class ExcitementConfigurationParams extends AbstractConfigurationParams
 		try
 		{
 			NameValueTable sisterTable = this.commonConfig.getSection(iModuleName);
-			return new ExcitementConfigurationParams(this.commonConfig, sisterTable, iModuleName);
+			return new ExcitementConfigurationParams(this.commonConfig, sisterTable, iModuleName, isExpandingEnvironmentVariables(), this.configurationFileReference);
 		}
 		catch (eu.excitementproject.eop.common.exception.ConfigurationException e)
 		{
 			throw new ConfigurationException("Failed to get the require module \""+iModuleName+"\". See nested exception.",e);
 		}
-		
+	}
+	
+	public ConfigurationFile getConfigurationFile()
+	{
+		return this.configurationFileReference;
 	}
 	
 	
@@ -112,4 +117,5 @@ public class ExcitementConfigurationParams extends AbstractConfigurationParams
 	protected final CommonConfig commonConfig;
 	protected final NameValueTable nameValueTable;
 	protected final String sectionName;
+	protected final ConfigurationFile configurationFileReference;
 }

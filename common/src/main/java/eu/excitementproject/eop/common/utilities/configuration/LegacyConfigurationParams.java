@@ -38,6 +38,12 @@ public class LegacyConfigurationParams extends AbstractConfigurationParams
 		if (null==configurationFile) {throw new ConfigurationException("Cannot provide sister module, since configuration file is unavailable.");}
 		return this.configurationFile.getModuleConfiguration(iModuleName);
 	}
+	
+	@Override
+	public ConfigurationFile getConfigurationFile()
+	{
+		return this.configurationFile;
+	}
 
 
 	@Override
@@ -61,6 +67,8 @@ public class LegacyConfigurationParams extends AbstractConfigurationParams
 	{
 		return this.parametersHashTable.put(key, value);
 	}
+	
+	
 
 	
 	
