@@ -128,7 +128,7 @@ public class LexicalResourcesFactory
 		{
 			if (Workarounds.LIN_REUTERS_USE_CONSTANT_SCORE)
 			{
-				logger.warn("Using Lin-Reuters with constant score.");
+				logger.warn("Using workaround-wrapper for Lin-Reuters. Note that scores are ignored in this wrapper (all rules have the same constant score).");
 				ConfigurationParams resourceParams = getParamsOfKnowledgeResource(knowledgeResource);
 				LinReutersFromDBLexicalResource linReutersFromDB =
 						LinReutersFromDBLexicalResource.fromParams(resourceParams);
