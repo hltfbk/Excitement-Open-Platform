@@ -140,31 +140,40 @@ public class ConfigurationFile implements Serializable {
 		enforceNoDuplicates(iConfigurationXmlFile);
 		
 		// insert the parameters from confE into our ConfigurationParams
-		m_params = new ConfigurationParams(this);
-		for (ParameterType paramE : confE.getParam()) 
-			m_params.put(paramE.getName(), paramE.getValue());
+		KeyCaseInsensitiveHashTable<String> mainParametersHashTable = new KeyCaseInsensitiveHashTable<String>();
+		for (ParameterType paramE : confE.getParam())
+		{
+			mainParametersHashTable.put(paramE.getName(), paramE.getValue());
+		}
+		m_params = new LegacyConfigurationParams(mainParametersHashTable, this, null);
 		
 		m_conf = new KeyCaseInsensitiveHashTable<ConfigurationParams>();
 		
 		// for each module in the xml, put its contents in a new ConfigurationParams, and add it to our table m_conf
 		for (ModuleType module : confE.getModule()) {
 			String moduleName = module.getName();
-			ConfigurationParams params = new ConfigurationParams(this, moduleName);
-			m_conf.put(moduleName(moduleName), params);
+			KeyCaseInsensitiveHashTable<String> moduleParameters = new KeyCaseInsensitiveHashTable<String>();
 
 			// put each of the modul's parameters in its new ConfigurationParams
-			for (ParameterType param : module.getParam()) 
-				putParamInParams(param, params, moduleName);
+			for (ParameterType param : module.getParam())
+			{
+				putParamInParams(param, moduleParameters, moduleName);
+			}
+			String strModuleName = moduleName(moduleName);
+			m_conf.put(strModuleName, new LegacyConfigurationParams(moduleParameters, this, strModuleName));
 			
 			// put each of the module's submodules as an independent ConfigurationParams modules in m_conf 
 			for (SubModuleType submodule : module.getSubmodule()) 
 			{
-				ConfigurationParams subModuleParams = new ConfigurationParams(this, moduleName);
-				m_conf.put(moduleName(submodule.getName()), subModuleParams);
+				KeyCaseInsensitiveHashTable<String> subModulesParameters = new KeyCaseInsensitiveHashTable<String>();
 	
 				// put each of the modul's parameters in its new ConfigurationParams
-				for (ParameterType param : submodule.getParam()) 
-					putParamInParams(param,subModuleParams, moduleName);
+				for (ParameterType param : submodule.getParam())
+				{
+					putParamInParams(param,subModulesParameters, moduleName);
+				}
+				String strSubmoduleName = moduleName(submodule.getName());
+				m_conf.put(strSubmoduleName, new LegacyConfigurationParams(subModulesParameters, this, strSubmoduleName));
 			}
 		}
 	}
@@ -256,7 +265,10 @@ public class ConfigurationFile implements Serializable {
 			throw new ConfigurationException("Empty/Null module name was given");
 		
 		if (!m_conf.containsKey(moduleName(iModuleName)))
-			m_conf.put(moduleName(iModuleName), new ConfigurationParams(this));
+		{
+			String strModuleName = moduleName(iModuleName);
+			m_conf.put(strModuleName, new LegacyConfigurationParams(new KeyCaseInsensitiveHashTable<String>(),this,strModuleName));
+		}
 		else
 			throw new ConfigurationException("Can't create a module by the name " + iModuleName + ", because it already exists");
 	}
@@ -340,7 +352,7 @@ public class ConfigurationFile implements Serializable {
 	 * @param moduleName
 	 * @throws ConfigurationFileDuplicateKeyException if the iConfigurationXmlFile has duplicate keys
 	 */
-	private void putParamInParams(ParameterType param, ConfigurationParams params, String moduleName) throws ConfigurationFileDuplicateKeyException {
+	private void putParamInParams(ParameterType param, KeyCaseInsensitiveHashTable<String> params, String moduleName) throws ConfigurationFileDuplicateKeyException {
 		
 		String paramName = param.getName();
 

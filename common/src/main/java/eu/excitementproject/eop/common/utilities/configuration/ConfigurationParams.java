@@ -5,9 +5,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 
+
+import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 
-public interface ConfigurationParams
+/**
+ * 
+ * @author BIU legacy code, modified by Amnon Lotan, and finally made an interface by Asher Stern.
+ *
+ */
+public interface ConfigurationParams extends NameValueTable
 {
 	/**
 	 * get a String value from the map, assuring both key and value aren't null. <BR>
@@ -98,7 +105,7 @@ public interface ConfigurationParams
 	 * @throws ConfigurationException
 	 *             if the parameter value is invalid
 	 */
-	public double getDouble(String paramName) throws ConfigurationException;
+	public Double getDouble(String paramName) throws ConfigurationException;
 	
 	/**
 	 * @param paramName
@@ -213,7 +220,49 @@ public interface ConfigurationParams
 	 * @throws ConfigurationException any error
 	 */
 	public LinkedHashMap<String, String> getDictionary(String key) throws ConfigurationException;
+	
+	/**
+	 * @return name of current module
+	 */
 	public String getModuleName();
 	
+	
+	/**
+	 * @param iModuleName
+	 *            the requested module's name
+	 * @return the ConfigurationParams for the given module in this object's
+	 *         ConfigurationFile
+	 * @throws ConfigurationException
+	 *             if iModuleName doesn't exist in this map
+	 */
+	public ConfigurationParams getSisterModuleConfiguration(String iModuleName) throws ConfigurationException;
 
+//	Methods of NameValueTable
+//	
+//	public Integer getInteger(String name) throws ConfigurationException;
+//	public void setString(String name, String value);
+
+	
+	
+//	////////// Methods of KeyCaseInsensitiveHashTable //////////
+	
+	public Set<String> keySet();
+	public boolean containsKey(Object key);
+	public String put(String key, String value);
+	
+//	int size();
+//	boolean isEmpty();
+//	boolean containsKey(Object key);
+//	boolean containsValue(Object value);
+//	//String get(Object key);
+//	String put(String key, String value);
+//	String remove(Object key);
+//	void putAll(Map<? extends String, ? extends String> m);
+//	void clear();
+//	Set<String> keySet();
+//	Collection<String> values();
+//	Set<Map.Entry<String, String>> entrySet();
+//	and more ...
+	
+	
 }

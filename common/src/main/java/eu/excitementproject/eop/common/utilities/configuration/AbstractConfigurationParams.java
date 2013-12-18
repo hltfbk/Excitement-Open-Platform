@@ -14,6 +14,13 @@ import eu.excitementproject.eop.common.utilities.DictionaryRegExp.DictionaryRegE
 //import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams.NumberClass;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
+
+/**
+ * 
+ * @author Asher Stern
+ * @since Dec 18, 2013
+ *
+ */
 public abstract class AbstractConfigurationParams implements ConfigurationParams
 {
 	public String get(String paramName) throws ConfigurationException
@@ -98,7 +105,7 @@ public abstract class AbstractConfigurationParams implements ConfigurationParams
 	}
 
 	
-	public double getDouble(String paramName) throws ConfigurationException
+	public Double getDouble(String paramName) throws ConfigurationException
 	{
 		return (Double) checkNumericValue(paramName, NumberClass.DOUBLE);
 	}
@@ -342,6 +349,12 @@ public abstract class AbstractConfigurationParams implements ConfigurationParams
 			throw new ConfigurationException("Failed to extract the dictionary for parameter: "+key);
 		}
 	}
+	
+	public Integer getInteger(String name) throws ConfigurationException
+	{
+		return getInt(name);
+	}
+	
 
 	
 	protected abstract String rawGet (String paramName) throws ConfigurationException;

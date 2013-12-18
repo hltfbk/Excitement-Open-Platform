@@ -24,7 +24,9 @@ import org.BURST.v2bridge.GenericTreeToBurstSentence;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.LegacyConfigurationParams;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 
@@ -86,10 +88,11 @@ public class TemplatesFromTree<T extends Info, S extends AbstractNode<T,S>> exte
 	/**
 	 * Ugly legacy solution.
 	 * @return
+	 * @throws ConfigurationException 
 	 */
-	protected static ConfigurationParams createLegacyConfigurationParams()
+	protected static ConfigurationParams createLegacyConfigurationParams() throws ConfigurationException
 	{
-		ConfigurationParams ret = new ConfigurationParams();
+		ConfigurationParams ret = new LegacyConfigurationParams();
 		ret.put("verbose-level","1");
 		ret.put("lexical-extractor-class","org.BIU.NLP.DIRT.lexical.NounPhraseElementExtractor");
 		ret.put("element-type","NOUN_TO_NOUN");
