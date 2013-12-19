@@ -6,6 +6,7 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 
 /**
+ * Wraps Excitement {@link NameValueTable} as a {@link ConfigurationParams}.
  * 
  * @author Asher Stern
  * @since Dec 18, 2013
@@ -72,7 +73,7 @@ public class ExcitementConfigurationParams extends AbstractConfigurationParams
 	{
 		String ret = null;
 		try {ret = nameValueTable.getString(key);}
-		catch(eu.excitementproject.eop.common.exception.ConfigurationException e){}
+		catch(eu.excitementproject.eop.common.exception.ConfigurationException e){} // the return value would be null. No need to throw an exception.
 		nameValueTable.setString(key, value);
 		return ret;
 	}

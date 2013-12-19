@@ -10,6 +10,10 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 
 
 /**
+ * A class for accessing a configuration file.
+ * The configuration file has sections (modules), where each section contains key-value parameters.
+ * The actual configuration file might be either Excitement configuration file ({@link CommonConfig}) or BIU
+ * legacy configuration file.
  * 
  * @author Asher Stern
  * @since Dec 18, 2013
@@ -21,18 +25,23 @@ public class ConfigurationFile implements Serializable
 
 	///////////////////////////////////////////////////////// public section /////////////////////////////////////////////////
 
-	public static final String MODULE_ATTRIBUTE_NAME = "name";
-	public static final String MODULE_ELEMENT_NAME = "module";
+	// Constants here for backward compatibility
+	public static final String MODULE_ATTRIBUTE_NAME = LegacyConfigurationFile.MODULE_ATTRIBUTE_NAME;
+	public static final String MODULE_ELEMENT_NAME = LegacyConfigurationFile.MODULE_ELEMENT_NAME;
 
 	
-	
+	/**
+	 * Constructor for Excitement configuration file.
+	 * @param commonConfig
+	 */
 	public ConfigurationFile(CommonConfig commonConfig)
 	{
 		this.underlyingConfigurationFile = new CommonConfigWrapperConfigurationFile(commonConfig,this);
 	}
 	
 	/**
-	 * Constructor
+	 * Constructor for BIU legacy configuration file
+	 * 
 	 * @param iConfigurationXmlFile the input xml file
 	 * @throws ConfigurationFileDuplicateKeyException if the iConfigurationXmlFile has duplicate keys 
 	 * @throws ConfigurationException If any unexpected JAXBException errors occur while Unmarshaller unmarshalls 
@@ -43,7 +52,8 @@ public class ConfigurationFile implements Serializable
 	}
 		
 	/**
-	 * Constructor
+	 * Constructor for BIU legacy configuration file
+	 * 
 	 * @param iFileName the xml file name
 	 * @throws ConfigurationFileDuplicateKeyException if the iConfigurationXmlFile has duplicate keys 
 	 * @throws ConfigurationException If any unexpected JAXBException errors occur while Unmarshaller unmarshalls 

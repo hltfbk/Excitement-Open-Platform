@@ -5,9 +5,10 @@ import java.util.Set;
 import eu.excitementproject.eop.common.datastructures.KeyCaseInsensitiveHashTable;
 
 /**
+ * Accesses key-value parameters from a module in a configuration file.
+ * Used for BIU legacy configuration file.
  * 
  * @author Copy of BIU legacy code, and Amnon Lotan code + reorganizations by Asher Stern
- * @since Dec 18, 2013
  *
  */
 public class LegacyConfigurationParams extends AbstractConfigurationParams

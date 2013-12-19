@@ -10,6 +10,8 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 
 /**
+ * Represents a section, or module, in a configuration file.
+ * This class provides a set of methods to retrieve formatted values for given parameter-names.
  * 
  * @author BIU legacy code, modified by Amnon Lotan, and finally made an interface by Asher Stern.
  *
@@ -17,7 +19,7 @@ import eu.excitementproject.eop.common.utilities.StringUtil;
 public interface ConfigurationParams extends NameValueTable
 {
 	/**
-	 * get a String value from the map, assuring both key and value aren't null. <BR>
+	 * get a String value from the section/module, assuring both key and value aren't null. <BR>
 	 * If working in a mode of expanding environment variables (default: not),
 	 * then it also expands the environment variables before continuing. (see
 	 * {@link #setExpandingEnvironmentVariables(boolean)})
@@ -50,10 +52,10 @@ public interface ConfigurationParams extends NameValueTable
 	public void setExpandingEnvironmentVariables(boolean expandingEnvironmentVariables);
 	
 	/**
-	 * get a boolean param
+	 * get a boolean parameter
 	 * 
 	 * @param paramName
-	 * @return param value
+	 * @return parameter value
 	 * @throws ConfigurationException
 	 *             if the parameter value is missing or invalid, 'cos if its
 	 *             missing, then parseBoolean() returns "false", which is
@@ -81,9 +83,16 @@ public interface ConfigurationParams extends NameValueTable
 	 *             if file doesn't exist, or if the parameter value is missing
 	 */
 	public File getFile(String paramName, File iDir) throws ConfigurationException;
+
+	/**
+	 * Returns a file-system directory, represented as {@link File}, specified by the given parameter.
+	 * @param paramName the parameter name 
+	 */
 	public File getDirectory(String paramName) throws ConfigurationException;
 	
 	/**
+	 * Returns long value specified by the parameter.
+	 * 
 	 * @param paramName
 	 * @return param value
 	 * @throws ConfigurationException
@@ -228,6 +237,8 @@ public interface ConfigurationParams extends NameValueTable
 	
 	
 	/**
+	 * Returns another {@link ConfigurationParams} for another section in the current configuration file.
+	 * 
 	 * @param iModuleName
 	 *            the requested module's name
 	 * @return the ConfigurationParams for the given module in this object's
@@ -237,7 +248,10 @@ public interface ConfigurationParams extends NameValueTable
 	 */
 	public ConfigurationParams getSisterModuleConfiguration(String iModuleName) throws ConfigurationException;
 
-	
+	/**
+	 * Returns the configuration file of this module/section.
+	 * @return the configuration file.
+	 */
 	public ConfigurationFile getConfigurationFile();
 
 	

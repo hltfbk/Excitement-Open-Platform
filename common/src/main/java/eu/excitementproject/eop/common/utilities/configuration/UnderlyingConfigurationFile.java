@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.Serializable;
 
 /**
+ * Interface of configuration file wrapper, used for both Excitement configuration file and
+ * BIU legacy configuration file.
  * 
  * @author Asher Stern
  * @since Dec 18, 2013
@@ -69,12 +71,4 @@ public interface UnderlyingConfigurationFile extends Serializable
 	public File getConfFile();
 	
 	
-
-
-
-
-
-
-
-
 }

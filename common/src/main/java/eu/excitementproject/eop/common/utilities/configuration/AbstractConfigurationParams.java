@@ -16,6 +16,8 @@ import eu.excitementproject.eop.common.utilities.file.FileUtils;
 
 
 /**
+ * Implementation of {@link ConfigurationParams} which implements most of the methods, while
+ * leaving the actual method for retrieving value for a given key not-implemented.
  * 
  * @author Asher Stern
  * @since Dec 18, 2013
@@ -51,8 +53,7 @@ public abstract class AbstractConfigurationParams implements ConfigurationParams
 		return expandingEnvironmentVariables;
 	}
 
-	public void setExpandingEnvironmentVariables(
-			boolean expandingEnvironmentVariables)
+	public void setExpandingEnvironmentVariables(boolean expandingEnvironmentVariables)
 	{
 		this.expandingEnvironmentVariables = expandingEnvironmentVariables;
 	}

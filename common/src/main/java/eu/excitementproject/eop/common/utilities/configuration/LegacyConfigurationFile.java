@@ -27,8 +27,7 @@ import eu.excitementproject.eop.common.utilities.configuration.configuration_fil
 
 
 /**
- * <B>This class has to be removed, since Excitement uses another type of
- * configuration files.</B>
+ * Accesses BIU legacy configuration file.
  * 
  * 
  * The classes {@link ConfigurationFile} and {@link ConfigurationParams} use the JaxB jars {@link https://jaxb.dev.java.net/}
@@ -71,7 +70,6 @@ import eu.excitementproject.eop.common.utilities.configuration.configuration_fil
  * <pre>
  * {@code	
             ConfigurationFile conf = new ConfigurationFile(new File(fileName));
-			EL.init(conf.getModuleConfiguration("logging"));
 			ConfigurationParams params = conf.getModuleConfiguration("data set");
 			File topDir = params.getFile("top-dir");
 			File gsFile = params.getFile("gold-standard-file");
@@ -86,8 +84,9 @@ import eu.excitementproject.eop.common.utilities.configuration.configuration_fil
  */
 public class LegacyConfigurationFile implements UnderlyingConfigurationFile
 {
-	public static final String MODULE_ATTRIBUTE_NAME = ConfigurationFile.MODULE_ATTRIBUTE_NAME;
-	public static final String MODULE_ELEMENT_NAME = ConfigurationFile.MODULE_ELEMENT_NAME;
+	public static final String MODULE_ATTRIBUTE_NAME = "name";
+	public static final String MODULE_ELEMENT_NAME = "module";
+
 	
 	///////////////////////////////// package constants /////////////////////////////
 	
