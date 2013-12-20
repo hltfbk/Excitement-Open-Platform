@@ -1,6 +1,10 @@
 package eu.excitementproject.eop.common.utilities.configuration;
 
 import java.io.File;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
@@ -15,10 +19,21 @@ public class CommonConfigWrapperConfigurationFile implements UnderlyingConfigura
 {
 	private static final long serialVersionUID = 1632860238502900978L;
 	
-	public CommonConfigWrapperConfigurationFile(CommonConfig commonConfig, ConfigurationFile configurationFileReference)
+	public CommonConfigWrapperConfigurationFile(CommonConfig commonConfig, ConfigurationFile configurationFileReference) throws ConfigurationException
 	{
 		this.commonConfig = commonConfig;
 		this.configurationFileReference = configurationFileReference;
+		
+		// Make sure there are no duplicate sections
+		List<String> listSectionNames = this.commonConfig.getSectionNames();
+		if (null==listSectionNames) {throw new ConfigurationException("The given CommonConfig has no contents (null list of sections).");}
+		sectionNames = new LinkedHashSet<>();
+		for (String sectionName : listSectionNames)
+		{
+			if (sectionNames.contains(sectionName)) {throw new ConfigurationException("Duplicate section has been detected: "+sectionName);}
+			sectionNames.add(sectionName);
+		}
+		sectionNames = Collections.unmodifiableSet(sectionNames);
 	}
 
 	@Override
@@ -88,4 +103,5 @@ public class CommonConfigWrapperConfigurationFile implements UnderlyingConfigura
 	protected final CommonConfig commonConfig;
 	protected final ConfigurationFile configurationFileReference;
 	protected boolean expandingEnvironmentVariables = false;
+	protected Set<String> sectionNames = null; 
 }

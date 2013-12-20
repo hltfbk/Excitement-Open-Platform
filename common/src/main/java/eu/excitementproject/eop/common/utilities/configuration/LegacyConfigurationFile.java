@@ -1,23 +1,11 @@
 package eu.excitementproject.eop.common.utilities.configuration;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import eu.excitementproject.eop.common.datastructures.KeyCaseInsensitiveHashTable;
 import eu.excitementproject.eop.common.utilities.configuration.configuration_file.generated.ConfigurationType;
@@ -133,7 +121,6 @@ public class LegacyConfigurationFile implements UnderlyingConfigurationFile
 			throw new ConfigurationException("a JAXBException was raised in ConfigurationFile.java, saying: " + e, e);
 		}
 		
-		enforceNoDuplicates(iConfigurationXmlFile);
 		
 		// insert the parameters from confE into our ConfigurationParams
 		KeyCaseInsensitiveHashTable<String> mainParametersHashTable = new KeyCaseInsensitiveHashTable<String>();
@@ -156,6 +143,7 @@ public class LegacyConfigurationFile implements UnderlyingConfigurationFile
 				putParamInParams(param, moduleParameters, moduleName);
 			}
 			String strModuleName = moduleName(moduleName);
+			if (m_conf.containsKey(strModuleName)) {throw new ConfigurationException("A duplicate module has been detected: "+moduleName);}
 			m_conf.put(strModuleName, new LegacyConfigurationParams(moduleParameters, configurationFileReference, strModuleName));
 			
 			// put each of the module's submodules as an independent ConfigurationParams modules in m_conf 
@@ -305,56 +293,7 @@ public class LegacyConfigurationFile implements UnderlyingConfigurationFile
 	
 	///////////////////////////////// private methods ///////////////////////////////////////////////
 
-	/**
-	 * This method throws {@link ConfigurationException} if the given configuration file
-	 * contains two modules with the same name.
-	 * @param xmlFile
-	 * @throws ConfigurationException
-	 */
-	private static void enforceNoDuplicates(File xmlFile) throws ConfigurationException
-	{
-		try
-		{
-			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-			// ASHER: work around, see: http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6181020
-			documentBuilderFactory.setFeature("http://apache.org/xml/features/dom/defer-node-expansion", false);
-			DocumentBuilder documentBuilder = 
-				documentBuilderFactory.newDocumentBuilder();
-			Document document = documentBuilder.parse(xmlFile);
-			Element rootElement = document.getDocumentElement();
-			NodeList moduleElements = rootElement.getChildNodes();
-			Set<String> moduleNames = new HashSet<String>();
-			for (int index=0;index<moduleElements.getLength();++index)
-			{
-				Node node = moduleElements.item(index);
-				if (node instanceof Element)
-				{
-					Element moduleElement = (Element)node;
-					if (MODULE_ELEMENT_NAME.equalsIgnoreCase(moduleElement.getNodeName()))
-					{
-						String moduleName = moduleElement.getAttribute(MODULE_ATTRIBUTE_NAME);
-						if (null==moduleName)
-							throw new ConfigurationException("Could not identify a module name for a given module");
-						if (moduleNames.contains(moduleName.toLowerCase()))
-							throw new ConfigurationException("a duplicate module has been detected: "+moduleName);
-						moduleNames.add(moduleName.toLowerCase());
-					}
-				}
-			}
-		}
-		catch(ParserConfigurationException e)
-		{
-			throw new ConfigurationException("Could not parse the given xml file: "+xmlFile.getPath(),e);
-		}
-		catch(SAXException e)
-		{
-			throw new ConfigurationException("Could not parse the given xml file: "+xmlFile.getPath(),e);
-		}
-		catch(IOException e)
-		{
-			throw new ConfigurationException("Could not parse the given xml file: "+xmlFile.getPath(),e);
-		}
-	}
+
 	
 	/**
 	 * put the parameter in its ConfigurationParams

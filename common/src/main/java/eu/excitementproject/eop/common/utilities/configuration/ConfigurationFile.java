@@ -33,8 +33,9 @@ public class ConfigurationFile implements Serializable
 	/**
 	 * Constructor for Excitement configuration file.
 	 * @param commonConfig
+	 * @throws ConfigurationException 
 	 */
-	public ConfigurationFile(CommonConfig commonConfig)
+	public ConfigurationFile(CommonConfig commonConfig) throws ConfigurationException
 	{
 		this.underlyingConfigurationFile = new CommonConfigWrapperConfigurationFile(commonConfig,this);
 	}
