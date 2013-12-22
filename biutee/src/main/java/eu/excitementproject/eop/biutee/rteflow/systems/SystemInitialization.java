@@ -28,6 +28,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
@@ -80,6 +81,19 @@ public class SystemInitialization
 		this.configurationFileName = configurationFileName;
 		this.configurationModuleName = configurationModuleName;
 	}
+	
+	public static ConfigurationFile loadConfigurationFile(String configurationFileName) throws ConfigurationException
+	{
+		try
+		{
+			return new ConfigurationFile(new ImplCommonConfig(new File(configurationFileName)));
+		}
+		catch (eu.excitementproject.eop.common.exception.ConfigurationException e)
+		{
+			throw new ConfigurationException("Failed to load configuration file. Please see nested exception.",e);
+		}
+
+	}
 
 	protected void init() throws ConfigurationFileDuplicateKeyException, ConfigurationException, MalformedURLException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
 	{
@@ -91,7 +105,7 @@ public class SystemInitialization
 		if (badConstants!=null)throw badConstants;
 		
 		logger.info("Using configuration file: "+configurationFileName+", and module: "+configurationModuleName);
-		configurationFile = new ConfigurationFile(configurationFileName);
+		configurationFile = loadConfigurationFile(configurationFileName);
 		configurationFile.setExpandingEnvironmentVariables(true);
 		configurationParams = configurationFile.getModuleConfiguration(configurationModuleName);
 		
