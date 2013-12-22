@@ -11,7 +11,7 @@ package eu.excitementproject.eop.common.utilities.configuration;
  * @since Dec 7, 2010
  *
  */
-public class ConfigurationException extends Exception {
+public class ConfigurationException extends eu.excitementproject.eop.common.exception.ConfigurationException {
 	public ConfigurationException(String iDesc)
 	{
 		super(iDesc);
