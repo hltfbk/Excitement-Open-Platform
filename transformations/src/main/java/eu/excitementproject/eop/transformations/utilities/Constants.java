@@ -62,7 +62,7 @@ public class Constants
 	 * If <tt>true</tt> than all lexical rules get the same score, regardless their
 	 * score in the resource itself. The score is {@link #LEXICAL_RESOURCE_CONSTANT_SCORE_WHEN_USING_CONSTANT_SCORE}.
 	 */
-	public static final boolean LEXICAL_RESOURCES_USE_CONSTANT_SCORE_FOR_ALL_RULES = true;
+	public static final boolean LEXICAL_RESOURCES_USE_CONSTANT_SCORE_FOR_ALL_RULES = false;
 
 	public static final boolean FILTER_STOP_WORDS_IN_LEFT_IN_LEXICAL_RESOURCES = true;
 	public static final boolean FILTER_STOP_WORDS_IN_RIGHT_IN_LEXICAL_RESOURCES = true;
