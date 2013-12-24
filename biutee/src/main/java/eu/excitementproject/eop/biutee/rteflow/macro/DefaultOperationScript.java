@@ -225,7 +225,7 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 			}
 			else
 			{
-				Collections.unmodifiableSet(Collections.emptySet());
+				excludeTransformations = Collections.<SingleOperationType>unmodifiableSet(Collections.<SingleOperationType>emptySet());
 			}
 		}
 		catch(ConfigurationException e)
