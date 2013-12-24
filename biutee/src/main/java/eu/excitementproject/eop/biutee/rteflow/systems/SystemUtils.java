@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.systems;
 
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.LEXICAL_RESOURCES_RETRIEVE_MULTIWORDS_PARAMETER_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_ENGINE_UNIGRAM_LIDSTON_SER_FILE;
 
@@ -65,7 +65,7 @@ public class SystemUtils
 	public static Set<String> getLexicalRuleBasesForMultiWords(ConfigurationFile configurationFile) throws ConfigurationException
 	{
 		Set<String> ret = new LinkedHashSet<String>();
-		ConfigurationParams knowledgeResourcesParams = configurationFile.getModuleConfiguration(KNOWLEDGE_RESOURCES_MODULE_NAME);
+		ConfigurationParams knowledgeResourcesParams = configurationFile.getModuleConfiguration(TRANSFORMATIONS_MODULE_NAME);
 		String valueAsString = knowledgeResourcesParams.get(LEXICAL_RESOURCES_RETRIEVE_MULTIWORDS_PARAMETER_NAME);
 		if (valueAsString.trim().length()>0)
 		{
