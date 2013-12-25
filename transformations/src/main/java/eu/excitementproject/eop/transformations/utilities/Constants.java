@@ -128,6 +128,8 @@ public class Constants
 	public static final double LEXICAL_RESOURCE_CONSTANT_SCORE_WHEN_USING_CONSTANT_SCORE = Math.exp(-1.0);
 	
 	
+	public static final int CACHE_SIZE_BAG_OF_RULES = 1000;
+	
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that there is no reason to change, now and ever.
 	
