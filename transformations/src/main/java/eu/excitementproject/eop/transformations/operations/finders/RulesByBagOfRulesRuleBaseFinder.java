@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbeddedMatcher;
 import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
@@ -18,6 +19,7 @@ import eu.excitementproject.eop.transformations.operations.finders.auxiliary.Lem
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.ParseTreeCharacteristics;
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.ParseTreeCharacteristicsCollector;
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.PosRelPos;
+import eu.excitementproject.eop.transformations.operations.finders.auxiliary.SingleItemBidirectionalMap;
 import eu.excitementproject.eop.transformations.operations.rules.BagOfRulesRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
@@ -59,6 +61,7 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 	{
 		try
 		{
+			matchCriteria = new ExtendedMatchCriteria();
 			extractGivenTreeCharacteristics();
 			specs = new LinkedHashSet<RuleSpecification>();
 			debug_numberOfFilteredRules=0;
@@ -66,23 +69,30 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 			{
 				if (mightMatch(rule))
 				{
-					AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode> matcher = 
-							new AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode>(new ExtendedMatchCriteria());
-
-					matcher.setTrees(this.textTree.getTree(), rule.getRule().getLeftHandSide());
-					matcher.findMatches();
-					Set<BidirectionalMap<ExtendedNode, BasicNode>> matches = matcher.getMatches();
-
-					for (BidirectionalMap<ExtendedNode, BasicNode> singleLhsMatch : matches)
+					if (!(rule.getRule().getLeftHandSide().hasChildren()))
 					{
-						BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree = new FlippedBidirectionalMap<BasicNode, ExtendedNode>(singleLhsMatch);
-						boolean introduction = false;
-						if (rule.getRule().isExtraction()!=null)
-						{
-							introduction = rule.getRule().isExtraction().booleanValue();
-						}
+						findForSingleNodeRule(rule);
+					}
+					else
+					{
+						AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode> matcher = 
+								new AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode>(matchCriteria);
 
-						specs.add(new RuleSpecification(this.ruleBaseName,rule,mapLhsToTree,introduction));
+						matcher.setTrees(this.textTree.getTree(), rule.getRule().getLeftHandSide());
+						matcher.findMatches();
+						Set<BidirectionalMap<ExtendedNode, BasicNode>> matches = matcher.getMatches();
+
+						for (BidirectionalMap<ExtendedNode, BasicNode> singleLhsMatch : matches)
+						{
+							BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree = new FlippedBidirectionalMap<BasicNode, ExtendedNode>(singleLhsMatch);
+							boolean introduction = false;
+							if (rule.getRule().isExtraction()!=null)
+							{
+								introduction = rule.getRule().isExtraction().booleanValue();
+							}
+
+							specs.add(new RuleSpecification(this.ruleBaseName,rule,mapLhsToTree,introduction));
+						}
 					}
 				}
 			}
@@ -113,6 +123,21 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 	}
 	
 	
+	
+	
+	private void findForSingleNodeRule(RuleWithConfidenceAndDescription<Info, BasicNode> rule)
+	{
+		BasicNode lhs = rule.getRule().getLeftHandSide();
+		for (ExtendedNode node : TreeIterator.iterableTree(textTree.getTree()))
+		{
+			if (matchCriteria.nodesMatch(node, lhs))
+			{
+				specs.add(new RuleSpecification(this.ruleBaseName,rule,
+						new SingleItemBidirectionalMap<BasicNode, ExtendedNode>(lhs, node)
+						,false));
+			}
+		}
+	}
 	
 	private ParseTreeCharacteristics<Info, BasicNode> getCharacteristicsOfRule(RuleWithConfidenceAndDescription<Info, BasicNode> rule)
 	{
@@ -191,6 +216,8 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 	
 	
 	// internals
+	private ExtendedMatchCriteria matchCriteria = null;
+	
 	private Set<PosRelPos> posRelPosTree;
 	private Set<LemmaAndSimplerCanonicalPos> lemmaAndPosTree;
 	
