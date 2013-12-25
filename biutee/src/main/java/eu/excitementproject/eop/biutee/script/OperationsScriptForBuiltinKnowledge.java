@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.biutee.script;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_DYNAMIC_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_FILE_PARAMETER_NAME;
@@ -85,7 +85,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 		
 		try
 		{
-			knowledgeResourcesParams = configurationFile.getModuleConfiguration(KNOWLEDGE_RESOURCES_MODULE_NAME);
+			knowledgeResourcesParams = configurationFile.getModuleConfiguration(TRANSFORMATIONS_MODULE_NAME);
 			List<KnowledgeResource> knowledgeResources = knowledgeResourcesParams.getEnumList(KnowledgeResource.class, KNOWLEDGE_RESOURCES_PARAMETER_NAME);
 			createItemsForKnowledgeResources(knowledgeResources);
 		}

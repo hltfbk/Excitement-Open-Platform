@@ -158,7 +158,7 @@ public class SystemInitialization
 		if (FILTER_STOP_WORDS_IN_LEXICAL_RESOURCES)
 		{
 			logger.info("Loading stop words");
-			ConfigurationParams transformationsParams = this.configurationFile.getModuleConfiguration(ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME);
+			ConfigurationParams transformationsParams = this.configurationFile.getModuleConfiguration(ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME);
 			File stopWordsFile = transformationsParams.getFile(RTE_TRAIN_AND_TEST_STOP_WORDS);
 			StopWordsFileLoader stopWordsLoader = new StopWordsFileLoader(stopWordsFile.getPath());
 			stopWordsLoader.load();
@@ -209,7 +209,7 @@ public class SystemInitialization
 	{
 		try
 		{
-			ConfigurationParams params = configurationFile.getModuleConfiguration(ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME);
+			ConfigurationParams params = configurationFile.getModuleConfiguration(ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME);
 			if (params.containsKey(ConfigurationParametersNames.PLUGIN_REGISTERER_PARAMETER_NAME))
 			{
 				String pluginRegistererClassName = params.get(ConfigurationParametersNames.PLUGIN_REGISTERER_PARAMETER_NAME);

@@ -11,6 +11,7 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.Instance;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.InstanceAndProof;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Proof;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Results;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.TimeStatistics;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 
@@ -71,11 +72,15 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 		if (!computeHasBeenCalled) throw new BiuteeException("Caller\'s bug: compute() has not been called yet.");
 		if (!this.computable) return "Results cannot be computed. It seems that the given dataset was unannotated.";
 
-		return "Results: " +
+		String resultsLine = "Results: " +
 				"Accuracy = "+strDouble(accuracy)+
 				", Recall = "+strDouble(recall)+
 				", Precision = "+strDouble(precision)+
 				", F1 = "+strDouble(f1);
+		
+		String timeLine = calculateAverageTimes().toString();
+		
+		return resultsLine+"\nAverage times: "+timeLine;
 	}
 	
 	@Override
@@ -262,7 +267,21 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 	}
 	
 	
-	
+	private TimeStatistics calculateAverageTimes()
+	{
+		long sumCpuTime = 0;
+		long sumWorldTime = 0;
+		for (InstanceAndProof<I, P> proof : proofs)
+		{
+			TimeStatistics ts = proof.getProof().getTimeStatistics();
+			sumCpuTime += ts.getCpuTimeNanoSeconds();
+			sumWorldTime += ts.getWorldClockTimeMilliSeconds();
+		}
+		int amount = proofs.size();
+		return new TimeStatistics(
+				sumCpuTime/amount,
+				sumWorldTime/amount);
+	}
 
 	protected final boolean f1_optimized;
 	private boolean computeHasBeenCalled = false;

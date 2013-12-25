@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.TimeStatistics;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.ExperimentalParametersLocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
@@ -26,6 +27,7 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
+import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;
 
 
 /**
@@ -67,8 +69,14 @@ public class RteSumProver extends DefaultProver<RteSumInstance, RteSumProof>
 
 			processor.setSurroundingsContext(instance.getSurroundingTextTrees());
 			
+			TimeElapsedTracker timeTracker = new TimeElapsedTracker();
+			timeTracker.start();
+			
 			processor.process();
-			RteSumProof proof = new RteSumProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());
+			
+			timeTracker.end();
+			
+			RteSumProof proof = new RteSumProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription(),TimeStatistics.fromTimeElapsedTracker(timeTracker));
 			return proof;
 		}
 		catch (TeEngineMlException | OperationException | ClassifierException | AnnotatorException | ScriptException | RuleBaseException | TreeAndParentMapException e)

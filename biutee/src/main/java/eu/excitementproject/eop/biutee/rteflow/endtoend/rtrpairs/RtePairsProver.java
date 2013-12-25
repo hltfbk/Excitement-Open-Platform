@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.TimeStatistics;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
@@ -66,20 +67,15 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			
 			// Process the pair (This is "macro" stage, Search algorithm).
 			TextTreesProcessor processor = createProcessor(pairData,script,classifierForSearch);
-			TimeElapsedTracker timeTracker = null;
-			if (logger.isDebugEnabled())
-			{
-				timeTracker = new TimeElapsedTracker();
-				timeTracker.start();
-			}
-			processor.process();
-			if (logger.isDebugEnabled())
-			{
-				timeTracker.end();
-				logger.debug(""+pairData.getPair().getId()+": "+timeTracker.toString());
-			}
+			TimeElapsedTracker timeTracker = new TimeElapsedTracker();
+			timeTracker.start();
 			
-			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());
+			// process
+			processor.process();
+			
+			timeTracker.end();
+			
+			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription(), TimeStatistics.fromTimeElapsedTracker(timeTracker));
 			return proof;
 		}
 		catch (TeEngineMlException | OperationException | ClassifierException | AnnotatorException | ScriptException | RuleBaseException | TreeAndParentMapException e)
