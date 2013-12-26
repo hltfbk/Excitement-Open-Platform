@@ -35,25 +35,32 @@ public class SuccessFileIndicatorUtility
 	
 	private static boolean mark(SuccessStatus status)
 	{
-		String filename = System.getenv().get(BiuteeConstants.ENVIRONMENT_VARIABLE_SUCCESS_FILE_NAME);
-		if (filename!=null)
+		try
 		{
-			File file = new File(filename);
-			if (file.exists())
+			String filename = System.getenv().get(BiuteeConstants.ENVIRONMENT_VARIABLE_SUCCESS_FILE_NAME);
+			if (filename!=null)
 			{
-				if (!file.delete()){return false;}
-			}
-			try(PrintWriter writer = new PrintWriter(file))
-			{
-				writer.println(status.name());
-				
-			}
-			catch (FileNotFoundException e)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
+				File file = new File(filename);
+				if (file.exists())
+				{
+					if (!file.delete()){return false;}
+				}
+				try(PrintWriter writer = new PrintWriter(file))
+				{
+					writer.println(status.name());
 
+				}
+				catch (FileNotFoundException e)
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+		catch(Throwable t)
+		{
+			return false;
+		}
+
+	}
 }

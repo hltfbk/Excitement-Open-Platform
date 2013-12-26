@@ -75,7 +75,12 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			
 			timeTracker.end();
 			
-			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription(), TimeStatistics.fromTimeElapsedTracker(timeTracker));
+			TimeStatistics timeStatistics = TimeStatistics.fromTimeElapsedTracker(timeTracker);
+			if (logger.isDebugEnabled())
+			{
+				logger.debug("Pair #"+instance.getPairData().getPair().getId()+" done. Time: "+timeStatistics.toString());
+			}
+			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription(), timeStatistics);
 			return proof;
 		}
 		catch (TeEngineMlException | OperationException | ClassifierException | AnnotatorException | ScriptException | RuleBaseException | TreeAndParentMapException e)
