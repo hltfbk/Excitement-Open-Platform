@@ -50,6 +50,7 @@ public class Constants
 	public static final int DEFAULT_DIRT_LIKE_RESOURCES_CACHE_SIZE = 100000;
 
 	
+	public static final int TEMPLATES_FROM_TREE_CACHE_SIZE = 1000;
 
 
 	/**

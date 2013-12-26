@@ -18,8 +18,12 @@ import eu.excitementproject.eop.common.representation.parse.tree.LeastCommonAnce
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
+
+import static eu.excitementproject.eop.transformations.utilities.Constants.TEMPLATES_FROM_TREE_CACHE_SIZE;
 
 /**
  * Extracts DIRT-templates from a given parse-tree.
@@ -40,6 +44,54 @@ public class TemplatesFromTree<I extends Info, S extends AbstractNode<I, S>>
 	public void createTemplate() throws TeEngineMlException
 	{
 		templates = null;
+		Set<String> theTemplates = null;
+		if (cache.containsKey(tree))
+		{
+			synchronized(cache)
+			{
+				if (cache.containsKey(tree)) // the if condition appears twice, for efficiency (avoiding synchronized if possible).
+				{
+					theTemplates = cache.get(tree);
+				}
+			}
+		}
+		if (null==theTemplates)
+		{
+			theTemplates = createTemplateNotInCache();
+			cache.put(tree, theTemplates);
+		}
+		templates = sortAndSeal(theTemplates);
+	}
+	
+
+	
+	
+	
+	public Set<String> getTemplates() throws TeEngineMlException
+	{
+		if (null==templates) throw new TeEngineMlException("Templates were not created.");
+		return templates;
+	}
+	
+	////////// PRIVATE //////////
+	
+	private void init() throws TeEngineMlException
+	{
+		this.parentMap = AbstractNodeUtils.parentMap(tree);
+		lca = new LeastCommonAncestor<I, S>(tree);
+		try
+		{
+			lca.compute();
+		}
+		catch (LeastCommonAncestorException e)
+		{
+			throw new TeEngineMlException("Failed to initialize TemplatesFromTree. See nested exception",e);
+		}
+	}
+	
+	
+	private Set<String> createTemplateNotInCache() throws TeEngineMlException
+	{
 		init();
 		Set<String> theTemplates = new LinkedHashSet<>();
 		List<S> endpoints = findEndpoints();
@@ -70,32 +122,9 @@ public class TemplatesFromTree<I extends Info, S extends AbstractNode<I, S>>
 				}
 			}
 		}
-		templates = sortAndSeal(theTemplates);
+		return theTemplates;
 	}
 	
-	
-	
-	public Set<String> getTemplates() throws TeEngineMlException
-	{
-		if (null==templates) throw new TeEngineMlException("Templates were not created.");
-		return templates;
-	}
-	
-	////////// PRIVATE //////////
-	
-	private void init() throws TeEngineMlException
-	{
-		this.parentMap = AbstractNodeUtils.parentMap(tree);
-		lca = new LeastCommonAncestor<I, S>(tree);
-		try
-		{
-			lca.compute();
-		}
-		catch (LeastCommonAncestorException e)
-		{
-			throw new TeEngineMlException("Failed to initialize TemplatesFromTree. See nested exception",e);
-		}
-	}
 	
 	private static <T extends Comparable<T>> Set<T> sortAndSeal(Set<T> set)
 	{
@@ -543,4 +572,6 @@ public class TemplatesFromTree<I extends Info, S extends AbstractNode<I, S>>
 	private LeastCommonAncestor<I, S> lca;
 	
 	private Set<String> templates = null;
+
+	private static Cache<AbstractNode<?,?>, Set<String>> cache = new CacheFactory<AbstractNode<?,?>, Set<String>>().getCache(TEMPLATES_FROM_TREE_CACHE_SIZE);
 }
