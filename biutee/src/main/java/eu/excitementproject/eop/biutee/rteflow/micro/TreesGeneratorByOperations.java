@@ -413,12 +413,15 @@ public class TreesGeneratorByOperations
 			Finder<T> finder = getFinder(item, performFactory, textTree, textTreeAndParentMap);
 			if (null==finder) throw new TeEngineMlException("Could not get a finder.");
 
-			// Find all the operations that can be applied.
-			finder.find();
-			if (this.affectedNodes!=null)
+			// Try to improve run-time: Let the finder know what is going to be filtered -
+			// so the finder will not even try to find operations that will be anyhow filtered.
+			if ( (filterSpecifications!=null) && (this.affectedNodes!=null) )
 			{
 				finder.optionallyOptimizeRuntimeByAffectedNodes(this.affectedNodes);
 			}
+
+			// Find all the operations that can be applied.
+			finder.find();
 			Set<T> specs = finder.getSpecs();
 
 			// If we are in local-lookahead mode, filter the operations that can be applied
