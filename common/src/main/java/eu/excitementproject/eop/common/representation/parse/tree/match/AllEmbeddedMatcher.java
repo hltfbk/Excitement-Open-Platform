@@ -67,6 +67,11 @@ public class AllEmbeddedMatcher<TM, TT, SM extends AbstractNode<TM, SM>, ST exte
 		this.matches = null;
 	}
 	
+	public void setAllowedRoots(Set<SM> allowedRoots)
+	{
+		this.allowedRoots = allowedRoots;
+	}
+	
 	/**
 	 * Finds the matches. This method must be called after {@link #setTrees(AbstractNode, AbstractNode)}
 	 * and before {@link #getMatches()}.
@@ -77,11 +82,16 @@ public class AllEmbeddedMatcher<TM, TT, SM extends AbstractNode<TM, SM>, ST exte
 		matches = new LinkedHashSet<BidirectionalMap<SM,ST>>();
 		for (SM mainTreeNode : TreeIterator.iterableTree(mainTree))
 		{
-			Matcher<TM, TT, SM, ST> matcher = new Matcher<TM, TT, SM, ST>(matchCriteria);
-			matcher.setTreeRoots(mainTreeNode, testedTree);
-			matcher.findMathces();
-			Set<BidirectionalMap<SM, ST>> currentMatches = matcher.getMatches();
-			matches.addAll(currentMatches);
+			boolean allowed = true;
+			if (allowedRoots!=null){if (!(allowedRoots.contains(mainTreeNode))) {allowed = false;} }
+			if (allowed)
+			{
+				Matcher<TM, TT, SM, ST> matcher = new Matcher<TM, TT, SM, ST>(matchCriteria);
+				matcher.setTreeRoots(mainTreeNode, testedTree);
+				matcher.findMathces();
+				Set<BidirectionalMap<SM, ST>> currentMatches = matcher.getMatches();
+				matches.addAll(currentMatches);
+			}
 		}
 	}
 	
@@ -104,6 +114,8 @@ public class AllEmbeddedMatcher<TM, TT, SM extends AbstractNode<TM, SM>, ST exte
 	protected MatchCriteria<TM,TT, SM, ST> matchCriteria;
 	protected SM mainTree;
 	protected ST testedTree;
+	protected Set<SM> allowedRoots = null;
+	
 	protected Set<BidirectionalMap<SM, ST>> matches = null;
 
 

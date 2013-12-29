@@ -37,6 +37,8 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 		this.parser = parser;
 	}
 
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
 
 
 	@Override

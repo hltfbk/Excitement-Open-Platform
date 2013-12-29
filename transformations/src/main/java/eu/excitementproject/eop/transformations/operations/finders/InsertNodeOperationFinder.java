@@ -37,6 +37,9 @@ public class InsertNodeOperationFinder implements Finder<InsertNodeSpecification
 		this.alignmentCriteria = alignmentCriteria;
 	}
 	
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	@Override
 	public void find() throws OperationException
 	{

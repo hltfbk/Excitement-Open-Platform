@@ -15,6 +15,7 @@ import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
 import eu.excitementproject.eop.transformations.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.transformations.operations.OperationException;
+import eu.excitementproject.eop.transformations.operations.finders.auxiliary.AllowedRootsByAffectedNodesUtility;
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.LemmaAndSimplerCanonicalPos;
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.ParseTreeCharacteristics;
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.ParseTreeCharacteristicsCollector;
@@ -27,7 +28,6 @@ import eu.excitementproject.eop.transformations.operations.specifications.RuleSp
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedMatchCriteria;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-
 import static eu.excitementproject.eop.transformations.utilities.Constants.CACHE_SIZE_BAG_OF_RULES;
 
 /**
@@ -55,6 +55,12 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 		this.ruleBase = ruleBase;
 		this.ruleBaseName = ruleBaseName;
 	}
+	
+	@Override
+	public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{
+		this.affectedNodes = affectedNodes;
+	}
 
 	@Override
 	public void find() throws OperationException
@@ -63,6 +69,8 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 		{
 			matchCriteria = new ExtendedMatchCriteria();
 			extractGivenTreeCharacteristics();
+			Set<ExtendedNode> allowedRoots = null;
+			if (affectedNodes!=null) {allowedRoots = AllowedRootsByAffectedNodesUtility.findAllowedRootsByAffectedNodes(textTree, affectedNodes);}
 			specs = new LinkedHashSet<RuleSpecification>();
 			debug_numberOfFilteredRules=0;
 			for (RuleWithConfidenceAndDescription<Info, BasicNode> rule : ruleBase.getRules())
@@ -77,6 +85,10 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 					{
 						AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode> matcher = 
 								new AllEmbeddedMatcher<ExtendedInfo, Info, ExtendedNode, BasicNode>(matchCriteria);
+						if (allowedRoots!=null)
+						{
+							matcher.setAllowedRoots(allowedRoots);
+						}
 
 						matcher.setTrees(this.textTree.getTree(), rule.getRule().getLeftHandSide());
 						matcher.findMatches();
@@ -213,6 +225,8 @@ public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification
 	private final TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree;
 	private final BagOfRulesRuleBase<Info, BasicNode> ruleBase;
 	private final String ruleBaseName;
+	
+	private Set<ExtendedNode> affectedNodes = null;
 	
 	
 	// internals

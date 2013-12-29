@@ -415,6 +415,10 @@ public class TreesGeneratorByOperations
 
 			// Find all the operations that can be applied.
 			finder.find();
+			if (this.affectedNodes!=null)
+			{
+				finder.optionallyOptimizeRuntimeByAffectedNodes(this.affectedNodes);
+			}
 			Set<T> specs = finder.getSpecs();
 
 			// If we are in local-lookahead mode, filter the operations that can be applied
