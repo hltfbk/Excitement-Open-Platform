@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.distsim.resource;
 
 import java.io.FileNotFoundException;
+
 import java.util.LinkedList;
 
 import java.util.List;
@@ -22,7 +23,6 @@ import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.LemmaPos;
 import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
-import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
 import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;

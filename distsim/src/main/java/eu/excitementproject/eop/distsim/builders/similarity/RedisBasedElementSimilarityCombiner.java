@@ -37,17 +37,12 @@ public class RedisBasedElementSimilarityCombiner implements ElementSimilarityCom
 	private final static Logger logger = Logger.getLogger(MemoryBasedElementSimilarityCombiner.class);
 	
 	public RedisBasedElementSimilarityCombiner() {
-		hosts = null;
-		ports = null;
-		
-		logger.warn("no hosts nor ports were provided");
+		dbs = null;
+		logger.warn("no dbs were provided");
 	}
 
 	public RedisBasedElementSimilarityCombiner(ConfigurationParams params) throws ConfigurationException {
-		hosts = params.getStringList(Configuration.REDIS_HOST);
-		ports = params.getIntArray(Configuration.REDIS_PORT);
-		if (hosts.size() != ports.length)
-			throw new ConfigurationException("Different number of provided hosts and ports");		
+		dbs = params.getStringList(Configuration.REDIS_FILE);
 	}
 	
 	/* (non-Javadoc)
@@ -57,7 +52,7 @@ public class RedisBasedElementSimilarityCombiner implements ElementSimilarityCom
 	@Override
 	public void combinedScores(List<PersistenceDevice> similarityStorageDevices, SimilarityCombination combiner, PersistenceDevice combinedStorage) throws SimilarityCombinationException {
 
-		if (similarityStorageDevices.size()-1 > hosts.size())
+		if (similarityStorageDevices.size()-1 > dbs.size())
 			throw new SimilarityCombinationException("the number of provided devices is grater than existed redis servers");
 		try {
 			List<RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>> similarities = new LinkedList<RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>>();
@@ -65,8 +60,7 @@ public class RedisBasedElementSimilarityCombiner implements ElementSimilarityCom
 				for (int i=1;i<similarityStorageDevices.size();i++) { 
 					RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> redis = 
 						new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(
-								hosts.get(i-1), 
-								ports[i-1], 
+								dbs.get(i-1), 
 								similarityStorageDevices.get(i));
 					similarities.add(redis);
 				}
@@ -107,6 +101,5 @@ public class RedisBasedElementSimilarityCombiner implements ElementSimilarityCom
 	}
 	
 	
-	protected List<String> hosts;
-	protected int[] ports;
+	protected List<String> dbs;
 }

@@ -16,15 +16,14 @@ import java.util.LinkedHashMap;
 public class MemoryBasedScoreAggregator {
 	public static void main(String[] args) {
 				
-		if (args.length != 3) {
-			System.err.println("Usage: MemoryBasedLeft2Right <in score file> <out aggregated scores redis host> <out aggregated scores redis port>");
+		if (args.length != 2) {
+			System.err.println("Usage: MemoryBasedLeft2Right <in score file> <out aggregated scores redis file>");
 			System.exit(0);
 		}
 
 
 		String infile = args[0];
-		String redisSimilarityHost = args[1];
-		int redisSimilarityPort = Integer.parseInt(args[2]);
+		String redisSimilarityFile = args[1];
 		
 		try {			
 			
@@ -47,7 +46,7 @@ public class MemoryBasedScoreAggregator {
 			}
 			reader.close();
 
-			RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> redis = new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(redisSimilarityHost,redisSimilarityPort);
+			RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> redis = new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(redisSimilarityFile);
 			redis.clear();			
 			TIntObjectIterator<TIntDoubleMap> it = scoresMap.iterator();
 			while (it.hasNext()) {				

@@ -3,7 +3,8 @@
  */
 package eu.excitementproject.eop.distsim.scoring.similarity;
 
-import java.util.Hashtable;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
@@ -20,8 +21,10 @@ import eu.excitementproject.eop.distsim.util.Configuration;
  * @since 31/10/2012
  *
  */
-public class APinc implements ElementSimilarityScoring {
+public class APinc extends AbstractElementSimilarityScoring {
 
+	// add the size of the left fector (instead of maxRank)
+	
 	public APinc(ConfigurationParams params)  {
 		try {
 			init(params.getDouble(Configuration.TOP_PERCENT));
@@ -41,8 +44,7 @@ public class APinc implements ElementSimilarityScoring {
 
 	public void init(double topPercent) {
 		this.topPercent = topPercent;
-		this.included = new Hashtable<Double,Double>();
-		this.maxRank = 0;		
+		this.included = new TreeMap<Double,Double>();
 	}
 
 	/* (non-Javadoc)
@@ -56,9 +58,9 @@ public class APinc implements ElementSimilarityScoring {
 		//System.out.println("iRightRankedRel: " + iRightRankedRel);
 		
 		included.put(iLeftRank, iRightRankedRel) ;
-		if (maxRank < iLeftRank){
-			maxRank = iLeftRank;
-		}
+		//if (maxRank < iLeftRank){
+			//maxRank = iLeftRank;
+		//}
 	}
 
 	/* (non-Javadoc)
@@ -67,13 +69,14 @@ public class APinc implements ElementSimilarityScoring {
 	@Override
 	public double getSimilarityScore(double leftDenominator, double rightDenominator) {
 		
-		double topFeatures = Math.floor(topPercent*maxRank);
+		double topFeatures = Math.floor(topPercent*totalLeftFeaturesNum);
 
 		//debug
-		//System.out.println("topPercent: " + topPercent);
+		//System.out.println("topFeatures: " + topFeatures);
 		
 		double score = 0, correct = 0, precision = 0;
-		if (topFeatures>0){
+		if (topFeatures>0) {
+			/*
 			for (double i=1; i<topFeatures+1; i++ ){
 				if(included.containsKey(i)){
 					correct++;
@@ -81,6 +84,29 @@ public class APinc implements ElementSimilarityScoring {
 					score += (precision*included.get(i));
 				}
 			}
+			*/
+			for (Entry<Double,Double> entry : included.entrySet()) {
+				if (entry.getKey() > topFeatures)
+					break;
+
+				correct++;
+				precision = correct / entry.getKey();
+				score += (precision*entry.getValue());
+				
+			/*	System.out.println("correct: " + correct);
+				System.out.println("left rank: " + entry.getKey());
+				System.out.println("precision: " + precision);
+				System.out.println("right rel: " + entry.getValue());
+				System.out.println("score: " + precision*entry.getValue());
+				System.out.println("total score: " + score);*/
+
+			}	
+			
+		/*	System.out.println();
+			System.out.println("score: " + score);
+			System.out.println("topFeatures: " + topFeatures);
+			System.out.println("ret: " + (score / topFeatures));
+			System.out.println();*/
 			
 			score /= topFeatures;
 		}
@@ -98,6 +124,5 @@ public class APinc implements ElementSimilarityScoring {
 	}
 	
 	protected double topPercent;
-	protected Hashtable<Double, Double> included;
-	protected double maxRank;
+	protected TreeMap<Double, Double> included;
 }

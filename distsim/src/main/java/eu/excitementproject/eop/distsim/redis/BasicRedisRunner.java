@@ -311,7 +311,7 @@ public class BasicRedisRunner implements RedisRunner {
 			Process process = Runtime.getRuntime().exec(new String[]{redisBinDir + "/" + REDIS_SERVER_CMD,confFile});
 			waitForRedisInitializing(process);
 			
-			logger.info("The redis server is on port " + port + " according to " + confFile + " configuration, is ready now");
+			logger.info("The redis server on port " + port + ", based on " + confFile + " configuration, is ready now");
 			
 			usedPorts.add(port);				
 			mapDir2FileInstanceInfo.put(dbFile,new RedisInstanceInfo(port, process));
@@ -509,7 +509,7 @@ public class BasicRedisRunner implements RedisRunner {
 		}
 		
 	}
-	
+
 	static {
 		redisBinDir = DEFAULT_REDIS_BIN_DIR;
 	}

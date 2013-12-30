@@ -17,19 +17,17 @@ public class File2Redis {
 	
 	public static void main(String[] args) throws Exception {
 		
-		if (args.length != 3) {
+		if (args.length != 2) {
 			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.converter.db.File2Redis" +
 					"<in tupple file> " +
-					"<out redis host>" +
-					"<out redis port");
+					"<out redis file>");
 			System.exit(0);
 		}
 		
 
 		String infile = args[0];
-		String redisHost = args[1];
-		int redisPort = Integer.parseInt(args[2]);
-		Redis redis = new Redis(redisHost,redisPort);
+		String redisFile = args[1];
+		Redis redis = new Redis(redisFile);
 		redis.open();
 		redis.clear();
 		
@@ -42,7 +40,10 @@ public class File2Redis {
 				String item2 = toks[i];
 				double score = Double.parseDouble(toks[i+1]);
 				//tmp #V
-				redis.rpush(item1, item2 + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + score);
+				if (item2.contains(RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER))
+					System.out.println("Element " + item2 + " contains the delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + "', and considered insignificant. The element is filtered from the model");
+				else 
+					redis.rpush(item1, item2 + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + score);
 			}
 		}
 		reader.close();

@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
+import java.io.FileNotFoundException;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,22 +9,21 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Countable;
 import eu.excitementproject.eop.distsim.items.Externalizable;
 import eu.excitementproject.eop.distsim.items.Identifiable;
 import eu.excitementproject.eop.distsim.items.InvalidCountException;
-import eu.excitementproject.eop.distsim.items.LemmaPos;
-import eu.excitementproject.eop.distsim.items.LemmaPosBasedElement;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.iterators.RedisBasedIterator;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Resetable;
 import eu.excitementproject.eop.distsim.util.Serialization;
 import eu.excitementproject.eop.distsim.util.SerializationException;
-//import org.apache.log4j.Logger;
+import org.apache.log4j.Logger;
 /**
  * An implementation of the {@link CountableIdentifiableStorage} interface, which stored objects with id, based on Redis DB
  * 
@@ -38,26 +39,35 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 	extends PersistenceCountableIdentifiableStorage<T>
 	implements PatternBasedCountableIdentifiableStorage<T>, Resetable {
 	
-	//private static final Logger logger = Logger.getLogger(RedisBasedCountableIdentifiableStorage.class);
+	private static final Logger logger = Logger.getLogger(RedisBasedCountableIdentifiableStorage.class);
 
 	
-	public RedisBasedCountableIdentifiableStorage(String host, int port) {
+	/*public RedisBasedCountableIdentifiableStorage(String host, int port) {
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), host,port);
 		jedis = pool.getResource();
 		jedis.connect();
 		jedis.getClient().setTimeoutInfinite();
+	}*/
+
+	public RedisBasedCountableIdentifiableStorage(String dbFile) throws FileNotFoundException, RedisRunException {
+		this.dbFile = dbFile;
+		int port = BasicRedisRunner.getInstance().run(dbFile);
+		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
+		jedis = pool.getResource();
+		jedis.connect();
+		jedis.getClient().setTimeoutInfinite();
+	}
+	
+	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
+		this(params.getString(Configuration.REDIS_FILE));
 	}
 
-	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params) throws ConfigurationException {
-		this(params.get(Configuration.REDIS_HOST),params.getInt(Configuration.REDIS_PORT));
-	}
-
-	public RedisBasedCountableIdentifiableStorage(String host, int port, PersistenceDevice device) throws LoadingStateException {
-		this(host,port);
+	public RedisBasedCountableIdentifiableStorage(String dbFile, PersistenceDevice device) throws LoadingStateException, FileNotFoundException, RedisRunException {
+		this(dbFile);
 		loadState(device);
 	}
 	
-	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params, PersistenceDevice device) throws ConfigurationException, LoadingStateException {
+	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params, PersistenceDevice device) throws ConfigurationException, LoadingStateException, FileNotFoundException, RedisRunException {
 		this(params);
 		loadState(device);
 	}
@@ -65,15 +75,14 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.CountableIdentifiableStorage#getData(int)
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public T getData(int id) throws ItemNotFoundException, SerializationException {
 		String val = jedis.get(Integer.toString(id));
 		if (val == null)
 			throw new ItemNotFoundException("No item, assigned to id " + id + ", was found");
 		//tmp
-		return (T) new LemmaPosBasedElement(new LemmaPos("tmplemma",CanonicalPosTag.V));
-		//return Serialization.deserialize(val);
+		//return (T) new LemmaPosBasedElement(new LemmaPos("tmplemma",CanonicalPosTag.V));
+		return Serialization.deserialize(val);
 	}
 
 	/* (non-Javadoc)
@@ -246,7 +255,20 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 		return false;
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() {
+		try {
+			BasicRedisRunner.getInstance().close(dbFile);
+		} catch (Exception e) {
+			logger.info(e.toString());
+		}
+	}
+	
 	protected Jedis jedis;
+	protected final String dbFile;
 
 
 }

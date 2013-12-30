@@ -50,6 +50,13 @@ public class TroveBasedBasicIntSet implements BasicSet<Integer> {
 		return set.size();
 	}
 
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.storage.BasicSet#contains(java.io.Serializable)
+	 */
+	@Override
+	public boolean contains(Integer i) {
+		return set.contains(i);
+	}
 	
 	TIntSet set;
 }

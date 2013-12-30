@@ -24,6 +24,14 @@ import eu.excitementproject.eop.distsim.util.Pair;
 import gnu.trove.map.TObjectIntMap;
 import gnu.trove.map.hash.TObjectIntHashMap;
 
+/**
+ * @author Meni Adler
+ * @since May 26, 2013
+ * 
+ * Post-processing of the map-reduce process (which extracts, counts and filters elements and features, from a given corpus).
+ * The extracted elements and features are organized, in this class, into the 'traditional' distsim format, the output files: elements,features, element-feature-counts, feature-elements  
+ *
+ */
 public class SeparateFilterAndIndexElementsFeatures  {
 	
 	public static final String DEFAULT_ENCODING = "UTF-8";
@@ -34,10 +42,23 @@ public class SeparateFilterAndIndexElementsFeatures  {
 	    separateFilterAndIndexElementsFeatures2(confFile.getModuleConfiguration(Configuration.MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2));
 	}
 	
+	/**
+	 * Generates the 'elements' and the 'features' output files, from the given output of the map-reduce process, composed of elements and features counts
+	 * 
+	 * @param confParams
+	 * @throws Exception
+	 */
 	public static void separateFilterAndIndexElementsFeatures1(ConfigurationParams confParams) throws Exception {
 		separateFilterAndIndexElementsFeatures1(confParams,null);
 	}
-	
+
+	/**
+	 * Generates the 'elements' and the 'features' output files, from the given output of the map-reduce process, composed of elements and features counts
+	 * 
+	 * @param confParams
+	 * @param selectedSlot - for DIRT models, the slot of the feature argument (X or Y). Default, null
+	 * @throws Exception
+	 */
 	public static void separateFilterAndIndexElementsFeatures1(ConfigurationParams confParams, PredicateArgumentSlots selectedSlot) throws Exception {
 	    
 		String encoding = DEFAULT_ENCODING;
@@ -108,6 +129,12 @@ public class SeparateFilterAndIndexElementsFeatures  {
 		outFeatures.close();
 	}
 	
+	/**
+	 * Generates the 'element-feature-counts' and the 'features-elements' output files, from the given output of the map-reduce process, composed of elements and features counts
+	 * 
+	 * @param confParams
+	 * @throws Exception
+	 */
 	public static void separateFilterAndIndexElementsFeatures2(ConfigurationParams confParams) throws Exception {
 		
 		TObjectIntMap<String> elements = new TObjectIntHashMap<String>();

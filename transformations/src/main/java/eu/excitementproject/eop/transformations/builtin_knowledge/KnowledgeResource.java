@@ -45,7 +45,10 @@ public enum KnowledgeResource
 	SYNTACTIC("Syntactic",false,false),
 	LEXICAL_CHAIN_BY_GRAPH("lexical inference",false,true),
 	PLIS_GRAPH("lexical inference",false,true), // like LEXICAL_CHAIN_BY_GRAPH, but uses its own probabilities, and looks like a regular lexical resource, not a chaining (though it is a chaining, internally).
-	SIMPLE_LEXICAL_CHAIN("simpleLexicalChain",false,true);
+	SIMPLE_LEXICAL_CHAIN("simpleLexicalChain",false,true),
+	REDIS_LIN_PROXIMITY("redis-lin-proximity",false,"redis-lin-proximity",true),
+	REDIS_LIN_DEPENDENCY("redis-lin-dependency",false,"redis-lin-dependency",true),
+	REDIS_BAP("redis-bap",false,"redis-bap",true);
 	;
 
 	public String getModuleName()

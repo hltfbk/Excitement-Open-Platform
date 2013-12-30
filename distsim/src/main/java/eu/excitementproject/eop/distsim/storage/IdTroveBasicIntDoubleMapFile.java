@@ -41,7 +41,7 @@ public class IdTroveBasicIntDoubleMapFile extends IdDataFile {
 	/* (non-Javadoc)
 	 * @see eu.excitementproject.eop.distsim.storage.IdDataFile#getData(java.lang.String[])
 	 */
-	public Serializable getData(String[] toks) throws SerializationException {
+	public synchronized Serializable getData(String[] toks) throws SerializationException {
 		if (toks.length % 2 != 1)
 			throw new SerializationException("wrong line format: " + toks);		
 		TroveBasedIDKeyBasicMap<Double> map = new TroveBasedIDKeyBasicMap<Double>();
@@ -53,7 +53,7 @@ public class IdTroveBasicIntDoubleMapFile extends IdDataFile {
 	/* (non-Javadoc)
 	 * @see eu.excitementproject.eop.distsim.storage.IdDataFile#writeData(int, java.io.Serializable)
 	 */
-	public void writeData(int id, Serializable data) {
+	public synchronized void writeData(int id, Serializable data) {
 		@SuppressWarnings("unchecked")
 		BasicMap<Integer,Double> map = (BasicMap<Integer, Double>) data;
 		if (map.size() > 0) {

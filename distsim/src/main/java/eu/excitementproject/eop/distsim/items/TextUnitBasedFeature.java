@@ -15,7 +15,7 @@ import java.util.Set;
  * @since 28/06/2012
  *
  */
-public class TextUnitBasedFeature extends DeafaultElement<Integer> {
+public class TextUnitBasedFeature extends DeafaultFeature<Integer> {
 
 
 	private static final long serialVersionUID = 1L;
