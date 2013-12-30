@@ -18,6 +18,7 @@ import eu.excitementproject.eop.distsim.items.IDBasedCooccurrence;
 import eu.excitementproject.eop.distsim.items.InvalidCountException;
 import eu.excitementproject.eop.distsim.items.InvalidIDException;
 import eu.excitementproject.eop.distsim.items.TextUnit;
+import eu.excitementproject.eop.distsim.redisinjar.EmbeddedRedisBasedLexicalResource;
 import eu.excitementproject.eop.distsim.storage.BasicSet;
 import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
 import eu.excitementproject.eop.distsim.storage.IdTroveBasicIntDoubleMapFile;
@@ -41,6 +42,7 @@ public class CountRules {
 		 * Usage: java eu.excitementproject.eop.distsim.application.CountRules <in id-based similarity file>
 		 * 
 		 */
+		
 		
 		if (args.length != 1) {
 			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CountRules <in id-based similarity file>");

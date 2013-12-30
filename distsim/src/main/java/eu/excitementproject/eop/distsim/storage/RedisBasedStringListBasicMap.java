@@ -47,6 +47,13 @@ public class RedisBasedStringListBasicMap {
 		jedis.getClient().setTimeoutInfinite();
 	}
 
+	public RedisBasedStringListBasicMap(String host, int port) {
+		JedisPool pool = new JedisPool(new JedisPoolConfig(), host,port);
+		jedis = pool.getResource();
+		jedis.connect();
+		jedis.getClient().setTimeoutInfinite();
+	}
+	
 	public RedisBasedStringListBasicMap(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
 		this(params.get(Configuration.REDIS_FILE));
 	}
