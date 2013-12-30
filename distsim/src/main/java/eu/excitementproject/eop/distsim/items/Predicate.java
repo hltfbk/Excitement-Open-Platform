@@ -29,7 +29,16 @@ public class Predicate extends DefaultIdentifiableCountable implements TextUnit 
 		super(id,1);
 		this.predicate = predicate;
 	}
-
+	
+	public Predicate(String predicate, int id, long count) {
+		super(id,count);
+		this.predicate = predicate;
+	}
+	
+	public TextUnit copy() {
+		return new Predicate(predicate, id,(long)count);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.items.TextUnit#getData()
 	 */

@@ -18,9 +18,10 @@ import eu.excitementproject.eop.distsim.util.Pair;
  */
 public class DefaultElementFeatureJointCounts implements ElementFeatureJointCounts {
 
-	public DefaultElementFeatureJointCounts(int elementId, ImmutableIterator<Pair<Integer, Double>> featureCounts) {
+	public DefaultElementFeatureJointCounts(int elementId, ImmutableIterator<Pair<Integer, Double>> featureCounts, int featureSize) {
 		this.elementId = elementId;
 		this.featureCounts = new FeatureCountIterator(featureCounts);
+		this.featureSize = featureSize;
 	}
 	
 	/* (non-Javadoc)
@@ -39,7 +40,18 @@ public class DefaultElementFeatureJointCounts implements ElementFeatureJointCoun
 		return featureCounts;
 	}
 	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.storage.ElementFeatureJointCounts#getFeaturesSize()
+	 */
+	@Override
+	public int getFeaturesSize() {
+		return featureSize;
+	}
+
+	
 	protected final int elementId;
+	protected final int featureSize;
+	
 	protected final ImmutableIterator<FeatureCount> featureCounts;
 
 }

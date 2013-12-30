@@ -3,13 +3,18 @@
  */
 package eu.excitementproject.eop.distsim.storage;
 
+import java.io.IOException;
 import java.io.Serializable;
+
+import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
+import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.Serialization;
 import eu.excitementproject.eop.distsim.util.SerializationException;
@@ -23,17 +28,17 @@ import eu.excitementproject.eop.distsim.util.SerializationException;
  */
 public class Redis implements PersistenceDevice {
 
-	public Redis(String host, int port) {
-		this.host = host;
-		this.port = port;
+	private static Logger logger = Logger.getLogger(Redis.class);
+	
+	public Redis(String dbFile) {
+		this.dbFile = dbFile;
 		this.jedis = null;
 		this.currID = -1;
 		
 	}
 	
 	public Redis(ConfigurationParams params) throws ConfigurationException {
-		this.host = params.get("redis-host");
-		this.port = params.getInt("redis-port");
+		this.dbFile = params.get(Configuration.REDIS_FILE);
 		this.jedis = null;
 		this.currID = -1;
 	}
@@ -42,14 +47,19 @@ public class Redis implements PersistenceDevice {
 	 * @see org.excitement.distsim.storage.PersistenceDevice#open()
 	 */
 	@Override
-	public void open() {
-		JedisPoolConfig config = new JedisPoolConfig();
-		JedisPool pool = new JedisPool(config, host,port,10000);
-		jedis = pool.getResource();
-		jedis.connect();
-		jedis.getClient().setTimeoutInfinite();
-		//jedis = new Jedis(host,port,10000);
-		currID = 0;
+	public void open() throws IOException {
+		try {
+			int port = BasicRedisRunner.getInstance().run(dbFile);
+			JedisPoolConfig config = new JedisPoolConfig();
+			JedisPool pool = new JedisPool(config, "localhost",port,10000);
+			jedis = pool.getResource();
+			jedis.connect();
+			jedis.getClient().setTimeoutInfinite();
+			//jedis = new Jedis(host,port,10000);
+			currID = 0;
+		} catch (Exception e) {
+			throw new IOException(e);
+		}
 		
 	}
 
@@ -97,8 +107,25 @@ public class Redis implements PersistenceDevice {
 	public void close() {
 		jedis = null;;
 		this.currID = -1;
+		try {
+			BasicRedisRunner.getInstance().close(dbFile);
+		} catch (Exception e) {
+			logger.info(e.toString());
+		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() {
+		try {
+			BasicRedisRunner.getInstance().close(dbFile);
+		} catch (Exception e) {
+			logger.info(e.toString());
+		}
+	}
+	
 	public void clear() {
 		if (jedis != null)
 			jedis.flushAll();
@@ -111,6 +138,5 @@ public class Redis implements PersistenceDevice {
 	protected Jedis jedis;
 	protected int currID;
 	
-	protected final String host;
-	protected final int port;
+	protected final String dbFile;
 }

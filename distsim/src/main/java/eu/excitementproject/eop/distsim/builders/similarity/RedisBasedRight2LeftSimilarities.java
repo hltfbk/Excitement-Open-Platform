@@ -45,7 +45,7 @@ public class RedisBasedRight2LeftSimilarities {
 			eu.excitementproject.eop.distsim.storage.File rightSimilaritiesFile = new eu.excitementproject.eop.distsim.storage.File(new File(confParams.get(Configuration.INFILE)),true);
 			rightSimilaritiesFile.open();
 
-			RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>> leftSimilarities = new RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>>(confParams.getString(Configuration.REDIS_HOST),confParams.getInt(Configuration.REDIS_PORT));
+			RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>> leftSimilarities = new RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>>(confParams.getString(Configuration.REDIS_FILE));
 			leftSimilarities.clear();
 			
 			// set the right similarities at the left similarities map

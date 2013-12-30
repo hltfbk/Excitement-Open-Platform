@@ -35,4 +35,12 @@ public interface BasicSet<V extends Serializable> extends Serializable {
 	 * @return the size of the set
 	 */
 	int size();
+	
+	/**
+	 * Checks if the given item is included in the set
+	 * 
+	 * @param item some item
+	 * @return true if the set contains the given item
+	 */
+	boolean contains(V item);
 }

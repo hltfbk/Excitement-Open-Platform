@@ -63,7 +63,7 @@ public class TroveBasedIDKeyPersistentBasicMap<V extends Serializable> extends D
 	 * @see org.excitement.distsim.storage.BasicMap#keys()
 	 */
 	@Override
-	public ImmutableIterator<Pair<Integer,V>> iterator() {
+	public synchronized ImmutableIterator<Pair<Integer,V>> iterator() {
 		return new TroveBasedIntObjImmutableIterator<V>(map.iterator());
 	}
 	
@@ -71,7 +71,7 @@ public class TroveBasedIDKeyPersistentBasicMap<V extends Serializable> extends D
 	 * @see org.excitement.distsim.storage.BasicMap#size()
 	 */
 	@Override
-	public int size() {
+	public synchronized int size() {
 		return map.size();
 	}
 

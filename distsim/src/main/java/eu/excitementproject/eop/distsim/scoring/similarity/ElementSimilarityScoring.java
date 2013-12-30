@@ -32,6 +32,15 @@ public interface ElementSimilarityScoring {
 	double getSimilarityScore(double leftDenominator, double rightDenominator);
 	
 	/**
+	 * Set the total number of features for the elements (in contrast to the features added by the addElementFeatureScore, which may refer only to common left-right features) 
+	 * 
+	 * @param totalLeftFeaturesNum the total number of features in the left element
+	 * @param totalRightFeaturesNum the total number of features in the right element
+	 * 
+	 */
+	void setTotalFeaturesNum(int totalLeftFeaturesNum, int totalRightFeaturesNum);
+	
+	/**
 	 * Get the similarity score for a given element pair, based on their feature scores
 	 * 
 	 * @param leftFeatures features of left element

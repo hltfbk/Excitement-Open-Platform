@@ -34,6 +34,10 @@ public class LemmaPosTextUnit extends DeafaultTextUnit<LemmaPos> {
 		super(data, id,count);
 	}
 	
+	public TextUnit copy() {
+		return new LemmaPosTextUnit(data, id,(long)count);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.items.KeyExternalizable#toKey()
 	 */
