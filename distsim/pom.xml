@@ -33,6 +33,12 @@
 	<artifactId>hadoop-core</artifactId>
 	<version>0.20.2</version>
    </dependency>
+   
+   <dependency>
+	<groupId> com.google.guava</groupId>
+	<artifactId>guava</artifactId>
+	<version>15.0</version>
+   </dependency>
      
     <dependency>
 		<groupId>eu.excitementproject</groupId>
@@ -70,5 +76,21 @@
 		<version>1.1</version>
 	</dependency>-->
  
+  	<dependency>
+  		<groupId>de.uni-heidelberg.cl</groupId>
+  		<artifactId>embedded-redis</artifactId>
+  		<version>20131205</version>
+  	</dependency>
+
+    <!-- uncomment the following to include the German redis rdb file for test-->
+	<!--
+	<dependency>
+  		<groupId>de.uni-heidelberg.cl</groupId>
+  		<artifactId>redis-german-lin-prox</artifactId>
+  		<version>0.1</version>
+  	</dependency>
+  	-->
+ 	
   	</dependencies>
+
 </project>

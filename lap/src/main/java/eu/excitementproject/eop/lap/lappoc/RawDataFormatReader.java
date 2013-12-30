@@ -110,9 +110,10 @@ public class RawDataFormatReader {
 		String goldAnswer = pair.getAttribute("entailment"); 
 		String task = pair.getAttribute("task"); 
 		
-		// throw exception if missing task or id 
-		if (task.length() == 0 || id.length() == 0)
-			throw new RawFormatReaderException("A pair with missing task or id"); 
+		// throw exception if missing pair id 
+		//if (task.length() == 0 || id.length() == 0) // note that task can actually be empty. 
+		if (id.length() ==0)
+			throw new RawFormatReaderException("A pair with missing pair id. Wrong format."); 
 		
 		// generate return data structure and return it 
 		PairXMLData pairData = new PairXMLData(text, hypothesis, id, goldAnswer, task); 
