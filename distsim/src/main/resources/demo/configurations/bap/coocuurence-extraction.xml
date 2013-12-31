@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+
+<!--A configuration file for the program eu.excitementproject.eop.distsim.builders.cooccurrence.GeneralCooccurrenceExtractor, which extracts co-occurrences from a given corpus-->
+
+<configuration>
+
+
+<module name="logging"> <!--Defines the log4j properties -->
+	<!--the path of the log4j properties file-->
+	<param name="properties-file">configurations/log4j.properties</param> 
+</module>
+
+<module name="cooccurence-extractor"> <!--Defines the extraction process of co-occurrences from a given corpus-->
+          <!-- the number of concurrent threads for the extraction process -->
+	<param name="thread-num">1</param> 
+	
+	<!-- the name of the extractor class, which implements the eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrencesExtractor interface
+	       Current options:
+	       * eu.excitementproject.eop.distsim.builders.cooccurrence.GeneralCooccurrencesExtractor-->
+	<param name="extractor-class">eu.excitementproject.eop.distsim.builders.cooccurrence.GeneralCooccurrenceExtractor</param> 
+	
+	<!--The name of the extraction class, which implements the eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrencesExtraction interface. 
+	     Current options:
+		* eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedWordCooccurrenceExtraction
+		   Extracts co-occurrences, each composed of two words with their dependency relation, from a given parsed sentences, represented a BasicNode. 
+		   Required features:
+			* relevant-pos-list: a list of selected part-of-speech for the extracted words. If this feature is not defined, all part-of-speeches will be accepted. The name of the pos should be defined in capital letters, according to the enum strings of CanonicalPosTag.
+		* eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedPredArgCooccurrenceExtraction
+		   Extracts co-occurrences, each composed of a binary predicate and one of its arguments with a relation which indicates the position of the argument (X, Y), from a given parsed sentences, represented a BasicNode.
+		* eu.excitementproject.eop.distsim.builders.cooccurrence.TupleBasedPredArgCooccurrenceExtraction
+		   Extracts co-occurrences, each composed of a binary predicate and one of its arguments with a relation which indicates the position of the argument (X, Y), from a given string representation of a tuple of binary predicate and its two arguments.
+         -->
+	<param name="extraction-class">eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedWordCooccurrenceExtraction</param>
+	
+	<!--the path of the input corpus-->
+	<param name="corpus">corpora/eng</param>
+	
+	<!--The name of the eu.excitementproject.eop.distsim.builders.reader.StreamBasedSentenceReader class, which extracts sentences from a given InputStream, with their frequencies
+	      Current options:
+	          * eu.excitementproject.eop.distsim.builders.reader.LineBasedStringSentenceReader
+		     Returns the next line of the stream as a textual sentence, of frequency 1.
+	          * eu.excitementproject.eop.distsim.builders.reader.LineBasedStringCountSentenceReader
+		     Returns the next line of the stream as a textual sentence, where the last tab-separated string in the line indicates its frequency.
+		  * eu.excitementproject.eop.distsim.builders.reader.SerializedNodeSentenceReader
+		     Returns a BasicNode representation of the next parsed sentence, by deserializating the next line of the stream.
+		  * eu.excitementproject.eop.distsim.reader.cooccurrence.CollNodeSentenceReader
+		     Returns a BasicNode representation of the next parsed sentence, by the converting the next lines from Conll representation of a sentence to a BasicNode. 
+		     Required property:
+		         * part-of-speech-class: a class which extends the eu.excitementproject.eop.common.representation.PartOfSpeech class, by mapping a specific set of part-of-speeches into the canonical representation, defined by the eu.excitementproject.eop.common.representation.CanonicalPosTag enum type.
+		  * eu.excitementproject.eop.distsim.builders.reader.UIMANodeSentenceReader
+		     Returns a BasicNode represention of the next parsed sentence, given a UIMA Cas representation of parsed corpus. 
+		     Required property:
+		         * ae-template-file: a path for the analysis engine template file of the given UIMA Cas (otherwise, a default one will be selected).
+		  * eu.excitementproject.eop.distsim.builders.reader.UKwacNodeSentenceReader
+		     Returns a BasicNode representation of the next parsed sentence, given a UkWAC corpus. 
+		     Required property:
+                         * is-corpus-index: true for a case of index UkWac representation
+                  * eu.excitementproject.eop.distsim.builders.reader. XMLNodeSentenceReader
+		     Returns a BasicNode representation of the next parsed sentence, given EOP's serialization of parsed corpus (as defined in the eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.xmldom.XmlTreePartOfSpeechFactory class).
+		     Required property:
+                         * ignore-saved-canonical-pos-tag: does the representation ignore saved canonical pos tag (default, true).
+	 -->
+	<param name="sentence-reader-class">eu.excitementproject.eop.distsim.builders.reader.XMLNodeSentenceReader</param>
+	
+	<!--encoding: the encoding of the corpus. In case this property is not defined, the default encoding is UTF-8-->
+	<param name="encoding">utf-8</param>
+	
+</module>
+
+
+<module name="text-units-data-structure"> <!--Defines the type data structure to store the extracted text units during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
+</module>
+
+<module name="co-occurrences-data-structure"> <!--Defines the type data structure to store the extracted co-occurences during the computation.-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
+</module>
+
+<module name="elements-data-structure"> <!--Defines the type data structure to store the extracted elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
+</module>
+
+<module name="features-data-structure"> <!--Defines the type data structure to store the extracted features during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
+</module>
+
+<module name="element-feature-counts-data-structure"> <!--Defines the type data structure to store the counts of elements and features during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
+</module>
+
+<module name="feature-elements-data-structure"> <!-- Defines the type data structure to store the elements for each during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
+</module>
+
+<module name="element-feature-scores-data-structure"> <!--Defines the type data structure to store the scoring of features in elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
+</module>
+
+<module name="element-scores-data-structure"> <!--Defines the type data structure to store the scoring of the elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
+</module>
+
+<module name="text-units-storage-device">  <!--Defines the persistent storage device for the extracted text-units-->
+
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File: file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+		         * redis-file: a path to the Redis file to store the text units
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.File</param>
+	<param name="file">models/bap/textunits</param>
+	<param name="read-write">write</param>
+</module>
+
+<module name="co-occurrences-storage-device"> <!--Defines the persistent storage device for the extracted co-occurrences-->
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File: file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+		         * redis-file: a path to the Redis file to store the co-occurrences
+	-->
+	<param name="class">eu.excitementproject.eop.distsim.storage.File</param>
+	<param name="file">models/bap/cooccurrences</param>	
+	<param name="read-write">write</param>
+</module>
+
+</configuration>

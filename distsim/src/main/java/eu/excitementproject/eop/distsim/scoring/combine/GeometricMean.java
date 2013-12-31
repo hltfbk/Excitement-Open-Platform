@@ -9,7 +9,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 
 
 /**
- * Combines two given scores by their geometric mean
+ * Combines given scores by their geometric mean
  * 
  * @author Meni Adler
  * @since 18/04/2012
