@@ -1,0 +1,2499 @@
+<xml>
+<corpus-information>CD1/19961009/104238newsML.xml</corpus-information>
+<single-tree>
+<original-sentence>MobileMedia Corp was named in a class action shareholder lawsuit over alleged violations of securities laws, attorneys for the plaintiff said.</original-sentence>
+<BasicNode xml-unique-id="3">
+<Info exists="true">
+<id exists="true">22</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>22</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">said</word>
+<lemma exists="true">say</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="false"/>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="6">
+<Info exists="true">
+<id exists="true">4</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>4</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">named</word>
+<lemma exists="true">name</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">ccomp</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="1" xml-unique-id="4">
+<Info exists="true">
+<id exists="true">2</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>2</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">Corp</word>
+<lemma exists="true">corp</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubjpass</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="17">
+<Info exists="true">
+<id exists="true">1</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>1</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">MobileMedia</word>
+<lemma exists="true">mobilemedia</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="22">
+<Info exists="true">
+<id exists="true">3</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>3</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">was</word>
+<lemma exists="true">be</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">auxpass</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="19">
+<Info exists="true">
+<id exists="true">5</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>5</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">in</word>
+<lemma exists="true">in</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="2" xml-unique-id="7">
+<Info exists="true">
+<id exists="true">10</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>10</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">lawsuit</word>
+<lemma exists="true">lawsuit</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="8">
+<Info exists="true">
+<id exists="true">6</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>6</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">a</word>
+<lemma exists="true">a</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="13">
+<Info exists="true">
+<id exists="true">8</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>8</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">action</word>
+<lemma exists="true">action</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="11">
+<Info exists="true">
+<id exists="true">7</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>7</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">class</word>
+<lemma exists="true">class</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="1">
+<Info exists="true">
+<id exists="true">9</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>9</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">shareholder</word>
+<lemma exists="true">shareholder</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="5">
+<Info exists="true">
+<id exists="true">11</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>11</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">over</word>
+<lemma exists="true">over</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="3" xml-unique-id="16">
+<Info exists="true">
+<id exists="true">13</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>13</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">violations</word>
+<lemma exists="true">violation</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="21">
+<Info exists="true">
+<id exists="true">12</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>12</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>ADJECTIVE</CanonicalPosTag>
+<PartOfSpeechString>JJ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">alleged</word>
+<lemma exists="true">alleged</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">amod</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="10">
+<Info exists="true">
+<id exists="true">14</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>14</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">of</word>
+<lemma exists="true">of</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="4" xml-unique-id="14">
+<Info exists="true">
+<id exists="true">16</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>16</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">laws</word>
+<lemma exists="true">laws</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="2">
+<Info exists="true">
+<id exists="true">15</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>15</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">securities</word>
+<lemma exists="true">security</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="23">
+<Info exists="true">
+<id exists="true">17</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>17</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>,</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">,</word>
+<lemma exists="true">,</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode coreference-group="5" xml-unique-id="15">
+<Info exists="true">
+<id exists="true">18</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>18</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">attorneys</word>
+<lemma exists="true">attorney</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="12">
+<Info exists="true">
+<id exists="true">19</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>19</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">for</word>
+<lemma exists="true">for</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="6" xml-unique-id="9">
+<Info exists="true">
+<id exists="true">21</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>21</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">plaintiff</word>
+<lemma exists="true">plaintiff</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="18">
+<Info exists="true">
+<id exists="true">20</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>20</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">the</word>
+<lemma exists="true">the</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="20">
+<Info exists="true">
+<id exists="true">23</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>23</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>.</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">.</word>
+<lemma exists="true">.</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</single-tree>
+<single-tree>
+<original-sentence>MobileMedia was not immediately available for comment.</original-sentence>
+<BasicNode xml-unique-id="7">
+<Info exists="true">
+<id exists="true">5</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>5</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>ADJECTIVE</CanonicalPosTag>
+<PartOfSpeechString>JJ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">available</word>
+<lemma exists="true">available</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="false"/>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="7" xml-unique-id="1">
+<Info exists="true">
+<id exists="true">1</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>1</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">MobileMedia</word>
+<lemma exists="true">mobilemedia</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="2">
+<Info exists="true">
+<id exists="true">2</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>2</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">was</word>
+<lemma exists="true">be</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">cop</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="3">
+<Info exists="true">
+<id exists="true">3</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>3</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>ADVERB</CanonicalPosTag>
+<PartOfSpeechString>RB</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">not</word>
+<lemma exists="true">not</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">neg</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="6">
+<Info exists="true">
+<id exists="true">4</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>4</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>ADVERB</CanonicalPosTag>
+<PartOfSpeechString>RB</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">immediately</word>
+<lemma exists="true">immediately</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">advmod</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="4">
+<Info exists="true">
+<id exists="true">6</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>6</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">for</word>
+<lemma exists="true">for</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="8" xml-unique-id="8">
+<Info exists="true">
+<id exists="true">7</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>7</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">comment</word>
+<lemma exists="true">comment</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="5">
+<Info exists="true">
+<id exists="true">8</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>8</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>.</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">.</word>
+<lemma exists="true">.</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</single-tree>
+<single-tree>
+<original-sentence>The complaint, filed in the U.S. District Court of New Jersey, is on behalf of purchasers of the company's common stock between August 2, 1995 (corrects from 1996) and September 27, 1996, the plaintiff's lawyers said in a statement.</original-sentence>
+<BasicNode xml-unique-id="29">
+<Info exists="true">
+<id exists="true">45</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>45</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">said</word>
+<lemma exists="true">say</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="false"/>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="36">
+<Info exists="true">
+<id exists="true">14</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>14</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBZ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">is</word>
+<lemma exists="true">be</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">ccomp</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="9" xml-unique-id="41">
+<Info exists="true">
+<id exists="true">2</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>2</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">complaint</word>
+<lemma exists="true">complaint</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="16">
+<Info exists="true">
+<id exists="true">1</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>1</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">The</word>
+<lemma exists="true">the</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode coreference-group="10" xml-unique-id="34">
+<Info exists="true">
+<id exists="true">3</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>3</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>,</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">,</word>
+<lemma exists="true">,</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="45">
+<Info exists="true">
+<id exists="true">4</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>4</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">filed</word>
+<lemma exists="true">file</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">partmod</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="4">
+<Info exists="true">
+<id exists="true">5</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>5</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">in</word>
+<lemma exists="true">in</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="11" xml-unique-id="2">
+<Info exists="true">
+<id exists="true">9</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>9</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">Court</word>
+<lemma exists="true">court</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="6" xml-unique-id="11">
+<Info exists="true">
+<id exists="true">6</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>6</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">the</word>
+<lemma exists="true">the</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="27">
+<Info exists="true">
+<id exists="true">7</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>7</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">U.S.</word>
+<lemma exists="true">u.s.</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="30">
+<Info exists="true">
+<id exists="true">8</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>8</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">District</word>
+<lemma exists="true">district</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode coreference-group="12" xml-unique-id="49">
+<Info exists="true">
+<id exists="true">10</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>10</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">of</word>
+<lemma exists="true">of</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="13" xml-unique-id="44">
+<Info exists="true">
+<id exists="true">12</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>12</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">Jersey</word>
+<lemma exists="true">jersey</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="22">
+<Info exists="true">
+<id exists="true">11</id>
+<NodeInfo exists="true">
+<NamedEntity exists="true">ORGANIZATION</NamedEntity>
+<serial>11</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">New</word>
+<lemma exists="true">new</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="10">
+<Info exists="true">
+<id exists="true">13</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>13</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>,</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">,</word>
+<lemma exists="true">,</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="9">
+<Info exists="true">
+<id exists="true">15</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>15</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">on</word>
+<lemma exists="true">on</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="14" xml-unique-id="12">
+<Info exists="true">
+<id exists="true">16</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>16</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">behalf</word>
+<lemma exists="true">behalf</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="37">
+<Info exists="true">
+<id exists="true">17</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>17</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">of</word>
+<lemma exists="true">of</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="12" xml-unique-id="32">
+<Info exists="true">
+<id exists="true">18</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>18</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">purchasers</word>
+<lemma exists="true">purchaser</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="18">
+<Info exists="true">
+<id exists="true">19</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>19</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">of</word>
+<lemma exists="true">of</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="16" xml-unique-id="8">
+<Info exists="true">
+<id exists="true">24</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>24</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">stock</word>
+<lemma exists="true">stock</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="15" xml-unique-id="40">
+<Info exists="true">
+<id exists="true">21</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>21</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">company</word>
+<lemma exists="true">company</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">poss</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="1">
+<Info exists="true">
+<id exists="true">20</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>20</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">the</word>
+<lemma exists="true">the</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode coreference-group="6" xml-unique-id="26">
+<Info exists="true">
+<id exists="true">22</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>22</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>OTHER</CanonicalPosTag>
+<PartOfSpeechString>POS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">'s</word>
+<lemma exists="true">'s</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">possessive</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="19">
+<Info exists="true">
+<id exists="true">23</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>23</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>ADJECTIVE</CanonicalPosTag>
+<PartOfSpeechString>JJ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">common</word>
+<lemma exists="true">common</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">amod</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="20">
+<Info exists="true">
+<id exists="true">25</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>25</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">between</word>
+<lemma exists="true">between</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="17" xml-unique-id="28">
+<Info exists="true">
+<id exists="true">29</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>29</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>OTHER</CanonicalPosTag>
+<PartOfSpeechString>CD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">1995</word>
+<lemma exists="true">1995</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="13">
+<Info exists="true">
+<id exists="true">26</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>26</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">August</word>
+<lemma exists="true">august</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="39">
+<Info exists="true">
+<id exists="true">27</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>27</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>OTHER</CanonicalPosTag>
+<PartOfSpeechString>CD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">2</word>
+<lemma exists="true">2</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">num</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="47">
+<Info exists="true">
+<id exists="true">28</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>28</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>,</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">,</word>
+<lemma exists="true">,</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="35">
+<Info exists="true">
+<id exists="true">31</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>31</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBZ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">corrects</word>
+<lemma exists="true">correct</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">parataxis</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="5">
+<Info exists="true">
+<id exists="true">30</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>30</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>-LRB-</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">-LRB-</word>
+<lemma exists="true">-lrb-</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="33">
+<Info exists="true">
+<id exists="true">34</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>34</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>-RRB-</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">-RRB-</word>
+<lemma exists="true">-rrb-</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="48">
+<Info exists="true">
+<id exists="true">35</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>35</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>CC</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">and</word>
+<lemma exists="true">and</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">cc</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="6">
+<Info exists="true">
+<id exists="true">32</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>32</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">from</word>
+<lemma exists="true">from</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="10" xml-unique-id="15">
+<Info exists="true">
+<id exists="true">33</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>33</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>OTHER</CanonicalPosTag>
+<PartOfSpeechString>CD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">1996</word>
+<lemma exists="true">1996</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="14">
+<Info exists="true">
+<id exists="true">39</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>39</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>OTHER</CanonicalPosTag>
+<PartOfSpeechString>CD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">1996</word>
+<lemma exists="true">1996</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">conj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="43">
+<Info exists="true">
+<id exists="true">38</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>38</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>,</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">,</word>
+<lemma exists="true">,</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode coreference-group="10" xml-unique-id="25">
+<Info exists="true">
+<id exists="true">36</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>36</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">September</word>
+<lemma exists="true">september</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="23">
+<Info exists="true">
+<id exists="true">37</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>37</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>OTHER</CanonicalPosTag>
+<PartOfSpeechString>CD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">27</word>
+<lemma exists="true">27</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">num</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="24">
+<Info exists="true">
+<id exists="true">40</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>40</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>,</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">,</word>
+<lemma exists="true">,</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="3">
+<Info exists="true">
+<id exists="true">46</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>46</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">in</word>
+<lemma exists="true">in</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="18" xml-unique-id="17">
+<Info exists="true">
+<id exists="true">48</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>48</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">statement</word>
+<lemma exists="true">statement</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="46">
+<Info exists="true">
+<id exists="true">47</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>47</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">a</word>
+<lemma exists="true">a</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode coreference-group="10" xml-unique-id="42">
+<Info exists="true">
+<id exists="true">44</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>44</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">lawyers</word>
+<lemma exists="true">lawyer</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="6" xml-unique-id="38">
+<Info exists="true">
+<id exists="true">42</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>42</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">plaintiff</word>
+<lemma exists="true">plaintiff</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">poss</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="21">
+<Info exists="true">
+<id exists="true">43</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>43</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>OTHER</CanonicalPosTag>
+<PartOfSpeechString>POS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">'s</word>
+<lemma exists="true">'s</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">possessive</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="7">
+<Info exists="true">
+<id exists="true">41</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>41</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">the</word>
+<lemma exists="true">the</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="31">
+<Info exists="true">
+<id exists="true">49</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>49</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>.</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">.</word>
+<lemma exists="true">.</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</single-tree>
+<single-tree>
+<original-sentence>The complaint alleges that company executives failed to disclose the integration problems it has had with recent acquisitions, among other things. </original-sentence>
+<BasicNode xml-unique-id="19">
+<Info exists="true">
+<id exists="true">3</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>3</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBZ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">alleges</word>
+<lemma exists="true">allege</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="false"/>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="9" xml-unique-id="6">
+<Info exists="true">
+<id exists="true">2</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>2</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">complaint</word>
+<lemma exists="true">complaint</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="23">
+<Info exists="true">
+<id exists="true">1</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>1</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">The</word>
+<lemma exists="true">the</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="3">
+<Info exists="true">
+<id exists="true">7</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>7</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBD</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">failed</word>
+<lemma exists="true">fail</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">ccomp</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="9">
+<Info exists="true">
+<id exists="true">4</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>4</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">that</word>
+<lemma exists="true">that</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">complm</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode coreference-group="19" xml-unique-id="20">
+<Info exists="true">
+<id exists="true">6</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>6</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">executives</word>
+<lemma exists="true">executive</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="1">
+<Info exists="true">
+<id exists="true">5</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>5</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">company</word>
+<lemma exists="true">company</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="2">
+<Info exists="true">
+<id exists="true">9</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>9</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VB</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">disclose</word>
+<lemma exists="true">disclose</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">xcomp</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="24">
+<Info exists="true">
+<id exists="true">8</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>8</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>TO</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">to</word>
+<lemma exists="true">to</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">aux</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode coreference-group="20" xml-unique-id="13">
+<Info exists="true">
+<id exists="true">12</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>12</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">problems</word>
+<lemma exists="true">problem</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">dobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="16">
+<Info exists="true">
+<id exists="true">10</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>10</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>DETERMINER</CanonicalPosTag>
+<PartOfSpeechString>DT</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">the</word>
+<lemma exists="true">the</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">det</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="17">
+<Info exists="true">
+<id exists="true">11</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>11</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">integration</word>
+<lemma exists="true">integration</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nn</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="11">
+<Info exists="true">
+<id exists="true">15</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>15</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">had</word>
+<lemma exists="true">have</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">rcmod</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="9" xml-unique-id="5">
+<Info exists="true">
+<id exists="true">13</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>13</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PRONOUN</CanonicalPosTag>
+<PartOfSpeechString>PRP</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">it</word>
+<lemma exists="true">it</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">nsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="10">
+<Info exists="true">
+<id exists="true">14</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>14</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>VERB</CanonicalPosTag>
+<PartOfSpeechString>VBZ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">has</word>
+<lemma exists="true">have</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">aux</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="12">
+<Info exists="true">
+<id exists="true">16</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>16</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">with</word>
+<lemma exists="true">with</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="21" xml-unique-id="4">
+<Info exists="true">
+<id exists="true">18</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>18</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">acquisitions</word>
+<lemma exists="true">acquisition</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="21">
+<Info exists="true">
+<id exists="true">17</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>17</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>ADJECTIVE</CanonicalPosTag>
+<PartOfSpeechString>JJ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">recent</word>
+<lemma exists="true">recent</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">amod</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="15">
+<Info exists="true">
+<id exists="true">19</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>19</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>,</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">,</word>
+<lemma exists="true">,</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+<BasicNode xml-unique-id="22">
+<Info exists="true">
+<id exists="true">20</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>20</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PREPOSITION</CanonicalPosTag>
+<PartOfSpeechString>IN</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">among</word>
+<lemma exists="true">among</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">prep</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode coreference-group="22" xml-unique-id="8">
+<Info exists="true">
+<id exists="true">22</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>22</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">things</word>
+<lemma exists="true">things</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">pobj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+<children>
+<BasicNode xml-unique-id="18">
+<Info exists="true">
+<id exists="true">21</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>21</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>ADJECTIVE</CanonicalPosTag>
+<PartOfSpeechString>JJ</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">other</word>
+<lemma exists="true">other</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">amod</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode antecedent="20" xml-unique-id="7">
+<Info exists="true">
+<id exists="true">24</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>6</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>NOUN</CanonicalPosTag>
+<PartOfSpeechString>NNS</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">executives</word>
+<lemma exists="true">executive</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">xsubj</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</children>
+</BasicNode>
+<BasicNode xml-unique-id="14">
+<Info exists="true">
+<id exists="true">23</id>
+<NodeInfo exists="true">
+<NamedEntity exists="false"/>
+<serial>23</serial>
+<SyntacticInfo exists="true">
+<PartOfSpeech exists="true">
+<CanonicalPosTag>PUNCTUATION</CanonicalPosTag>
+<PartOfSpeechString>.</PartOfSpeechString>
+</PartOfSpeech>
+</SyntacticInfo>
+<word exists="true">.</word>
+<lemma exists="true">.</lemma>
+</NodeInfo>
+<EdgeInfo exists="true">
+<DependencyRelation exists="true">
+<dependencyRelationString exists="true">punct</dependencyRelationString>
+<DependencyRelationType exists="false"/>
+</DependencyRelation>
+</EdgeInfo>
+</Info>
+</BasicNode>
+</children>
+</BasicNode>
+</single-tree>
+</xml>

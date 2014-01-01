@@ -1,0 +1,10 @@
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.cooccurrence.GeneralCooccurrenceExtractor $1/coocuurence-extraction.xml
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.elementfeature.GeneralElementFeatureExtractor $1/element-feature-counting-x.xml 
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.elementfeature.GeneralElementFeatureExtractor $1/element-feature-counting-y.xml 
+#java -cp distsim.jar -Xmx32G eu.excitementproject.eop.distsim.builders.mapred.ExtractAndCountBasicNodeBasedDirtElementsFeatures $1/extract-and-count-basic-node-based-elements-features.xml
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.scoring.GeneralElementFeatureScorer $1/element-feature-scoring-x.xml    
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.scoring.GeneralElementFeatureScorer $1/element-feature-scoring-y.xml    
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.similarity.GeneralElementSimilarityCalculator $1/element-similarity-calculation-x.xml 
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.similarity.GeneralElementSimilarityCalculator $1/element-similarity-calculation-y.xml 
+java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.similarity.GeneralElementSimilarityCombiner $1/element-similarity-combination-left-xy.xml 
+java -cp distsim.jar -Xmx32G eu.excitementproject.eop.distsim.storage.SimilarityFile2Redis $1/elements-similarities-left-to-redis.xml
