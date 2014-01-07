@@ -35,15 +35,15 @@ import java.util.logging.Logger;
 /** This class tests Edit Distance EDA training and testing it 
  * on a small portion of the RTE-3 data set for English, German and Italian language.
  */
-public class EditDistanceEDATest {
+public class EditDistancePSOEDATest {
 
-	static Logger logger = Logger.getLogger(EditDistanceEDATest.class
+	static Logger logger = Logger.getLogger(EditDistancePSOEDATest.class
 			.getName());
 	
 	@Test
 	public void test() {
 		
-		logger.info("testing EditDistanceEDA ...");
+		logger.info("testing EditDistancePSOEDA ...");
 		testItalian();
 		testEnglish();
 		testGerman();
@@ -59,8 +59,8 @@ public class EditDistanceEDATest {
 	
 		ArrayList<String> list = new ArrayList<String>();
 		
-		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<EditDistanceTEDecision>();
+		EditDistancePSOEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistancePSOEDA<EditDistanceTEDecision>();
 		
 		try {
 		
@@ -69,7 +69,7 @@ public class EditDistanceEDATest {
 			//File testDir = new File("./src/test/resources/data-set/ITA/test/");
 			//File testDir = new File("/tmp/ITA/test/");
 			
-			File configFile = new File("./src/test/resources/configuration-file/EditDistanceEDA_IT.xml");
+			File configFile = new File("./src/test/resources/configuration-file/EditDistancePSOEDA_IT.xml");
 			File testDir = new File("./src/test/resources/data-set/ITA/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
@@ -85,7 +85,7 @@ public class EditDistanceEDATest {
 			
 			//testing
 			editDistanceEDA = 
-					new EditDistanceEDA<EditDistanceTEDecision>();
+					new EditDistancePSOEDA<EditDistanceTEDecision>();
 			editDistanceEDA.initialize(config);
 			
 			startTime = System.currentTimeMillis(); 
@@ -127,8 +127,8 @@ public class EditDistanceEDATest {
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<EditDistanceTEDecision>();
+		EditDistancePSOEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistancePSOEDA<EditDistanceTEDecision>();
 		
 		try {
 			
@@ -138,7 +138,7 @@ public class EditDistanceEDATest {
 		    //File testDir = new File("./src/test/resources/data-set/ENG/test/");
 		    //File testDir = new File("/tmp/ENG/test/");
 		    
-		    File configFile = new File("./src/test/resources/configuration-file/EditDistanceEDA_EN.xml");
+		    File configFile = new File("./src/test/resources/configuration-file/EditDistancePSOEDA_EN.xml");
 			File testDir = new File("./src/test/resources/data-set/ENG/test/");
 			
 		    CommonConfig config = new ImplCommonConfig(configFile);
@@ -154,7 +154,7 @@ public class EditDistanceEDATest {
 			
 		    //testing
 			editDistanceEDA = 
-					new EditDistanceEDA<EditDistanceTEDecision>();
+					new EditDistancePSOEDA<EditDistanceTEDecision>();
 			editDistanceEDA.initialize(config);
 		    
 			startTime = System.currentTimeMillis(); 
@@ -195,8 +195,8 @@ public class EditDistanceEDATest {
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<EditDistanceTEDecision>();
+		EditDistancePSOEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistancePSOEDA<EditDistanceTEDecision>();
 		
 		try {
 			
@@ -206,7 +206,7 @@ public class EditDistanceEDATest {
 			//File testDir = new File("./src/test/resources/data-set/GER/test/");
 			//File testDir = new File("/tmp/GER/test/");
 			
-			File configFile = new File("./src/test/resources/configuration-file/EditDistanceEDA_DE.xml");
+			File configFile = new File("./src/test/resources/configuration-file/EditDistancePSOEDA_DE.xml");
 			File testDir = new File("./src/test/resources/data-set/GER/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
@@ -222,7 +222,7 @@ public class EditDistanceEDATest {
 			
 			//testing
 			editDistanceEDA = 
-					new EditDistanceEDA<EditDistanceTEDecision>();
+					new EditDistancePSOEDA<EditDistanceTEDecision>();
 			editDistanceEDA.initialize(config);
 			
 			startTime = System.currentTimeMillis(); 
