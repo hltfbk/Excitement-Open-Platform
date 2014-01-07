@@ -47,6 +47,9 @@ public class SubstitutionFlipPosFinder implements Finder<SubstituteNodeSpecifica
 		this.lemmatizer = lemmatizer;
 	}
 	
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	@Override
 	public void find() throws OperationException
 	{

@@ -61,7 +61,9 @@ public class RuleByDynamicRuleBaseFinder implements Finder<RuleSpecification>
 		this.ruleBaseName = ruleBaseName;
 	}
 	
-	
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	@Override
 	public void find() throws OperationException
 	{

@@ -147,7 +147,8 @@ public class SinglePairPreProcessor
 
 		messageFire.fire("Resolving coreference");
 		CoreferenceResolver<BasicNode> coreferenceResolver = initializedInstruments.getCoreferenceResolver();
-		coreferenceResolver.setInput(textTrees, pair.getText());
+		String textAfterNormalization = StringUtil.joinIterableToString(sentences, " ", true);
+		coreferenceResolver.setInput(textTrees, textAfterNormalization);
 		coreferenceResolver.resolve();
 		coreferenceInformation = coreferenceResolver.getCoreferenceInformation();
 		
@@ -158,6 +159,21 @@ public class SinglePairPreProcessor
 		// the "virtual" node created by the parser.
 		PreprocessUtilities.integrateParserAntecedentToCoreference(textTrees, coreferenceInformation);
 
+		if (logger.isDebugEnabled())
+		{
+			StringBuilder sb = new StringBuilder();
+			for (Integer groupId : coreferenceInformation.getAllExistingGroupIds())
+			{
+				sb.append(groupId+": ");
+				for (BasicNode node : coreferenceInformation.getGroup(groupId))
+				{
+					sb.append(InfoGetFields.getLemma(node.getInfo())+", ");
+				}
+				sb.append("\n");
+			}
+
+		}
+		
 		messageFire.fire("Parsing hypothesis");
 		hypothesisTree = PreprocessUtilities.generateParseTree(normalizedHypothesis, initializedInstruments.getParser(), initializedInstruments.getNamedEntityRecognizer(), processingNamedEntities);
 		

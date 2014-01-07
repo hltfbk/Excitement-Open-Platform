@@ -10,7 +10,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
  * Represents a parse tree node in which each node has {@link ExtendedInfo}, which
  * is like {@link Info} plus {@link AdditionalNodeInformation}.
  * <P>
- * This node is used in the system. All the parse-trees are represented using
+ * This is the node used throughout the BIUTEE system. All the parse-trees are represented using
  * {@link ExtendedNode}.
  * <P>
  * Note that all of the algorithms for parse-trees are available for this node: see

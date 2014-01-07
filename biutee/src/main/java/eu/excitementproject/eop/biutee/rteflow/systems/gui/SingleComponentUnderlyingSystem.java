@@ -54,7 +54,6 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 /**
  * 
@@ -162,7 +161,7 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 	
 	public void setPair(ExtendedPairData pairData, String taskName) throws TeEngineMlException, OperationException, TreeAndParentMapException, ClassifierException, VisualTracingToolException, AnnotatorException, TreeStringGeneratorException, TreeCoreferenceInformationException, PluginAdministrationException
 	{
-		if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
+		if (teSystemEnvironment.isCollapseMode())
 		{
 			this.pairData = new PairDataCollapseToSingleTree(pairData).collapse();
 		}
@@ -314,6 +313,11 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 	{
 		if (!initialized)throw new VisualTracingToolException("Not initialized");
 		return generator.getGapEnvironment();
+	}
+	
+	public boolean isCollapseMode()
+	{
+		return this.teSystemEnvironment.isCollapseMode();
 	}
 	
 	

@@ -31,11 +31,12 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 public class RulePerformFactory extends PerformFactory<RuleSpecification>
 {
 	public RulePerformFactory(ImmutableSet<String> hypothesisTemplates,
-			ImmutableSet<String> hypothesisLemmasOnly)
+			ImmutableSet<String> hypothesisLemmasOnly, boolean collapseMode)
 	{
 		super();
 		this.hypothesisTemplates = hypothesisTemplates;
 		this.hypothesisLemmasOnly = hypothesisLemmasOnly;
+		this.collapseMode = collapseMode;
 	}
 
 	@Override
@@ -104,7 +105,7 @@ public class RulePerformFactory extends PerformFactory<RuleSpecification>
 	{
 		if (specification.isExtraction())
 		{
-			return new IntroductionRuleApplicationOperation(text, hypothesis, specification.getRule().getRule(), specification.getMapLhsToTree());
+			return new IntroductionRuleApplicationOperation(text, hypothesis, specification.getRule().getRule(), specification.getMapLhsToTree(),collapseMode);
 		}
 		else
 		{
@@ -129,6 +130,7 @@ public class RulePerformFactory extends PerformFactory<RuleSpecification>
 	
 	private ImmutableSet<String> hypothesisTemplates;
 	private ImmutableSet<String> hypothesisLemmasOnly;
+	private final boolean collapseMode;
 	private static UpdaterForRule updaterForRule = new UpdaterForRule();
 
 }

@@ -12,5 +12,5 @@ package eu.excitementproject.eop.biutee.rteflow.preprocess;
  * 
  */
 public enum CoreferenceEngineChoice {
-	ARKREF, BART, ARKREF_AND_BART, NONE
+	ARKREF, BART, ARKREF_AND_BART, ARKREF_FILES, NONE
 }

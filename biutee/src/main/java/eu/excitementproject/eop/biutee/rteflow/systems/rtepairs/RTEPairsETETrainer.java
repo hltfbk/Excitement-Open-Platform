@@ -40,7 +40,7 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 			protected void run(String[] args) throws BiuteeException
 			{
 				logger = Logger.getLogger(RTEPairsETETrainer.class);
-				RTEPairsETETrainer trainer = new RTEPairsETETrainer(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
+				RTEPairsETETrainer trainer = new RTEPairsETETrainer(configurationFileName);
 				try
 				{
 					trainer.init();
@@ -63,9 +63,9 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 		}.main(RTEPairsETETrainer.class, args);
 	}
 
-	public RTEPairsETETrainer(String configurationFileName, String configurationModuleName)
+	public RTEPairsETETrainer(String configurationFileName)
 	{
-		super(configurationFileName, configurationModuleName);
+		super(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
 		if (null==logger){logger = Logger.getLogger(RTEPairsETETrainer.class);}
 	}
 	

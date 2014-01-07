@@ -4,6 +4,7 @@ import java.util.Set;
 import eu.excitementproject.eop.common.datastructures.DummySet;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.finders.Finder;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 
 
 /**
@@ -15,6 +16,9 @@ import eu.excitementproject.eop.transformations.operations.finders.Finder;
  */
 public final class DummyFinder<T> implements Finder<T>
 {
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	public void find() throws OperationException
 	{
 	}

@@ -29,7 +29,7 @@ public class TESystemEnvironment
 			FeatureVectorStructureOrganizer featureVectorStructureOrganizer,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
 			ImmutableSet<String> stopWords,
-			PARSER parser,
+			PARSER parser, boolean collapseMode,
 			GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox)
 	{
 		super();
@@ -41,6 +41,7 @@ public class TESystemEnvironment
 		this.alignmentCriteria = alignmentCriteria;
 		this.stopWords = stopWords;
 		this.parser = parser;
+		this.collapseMode = collapseMode;
 		this.gapToolBox = gapToolBox;
 	}
 	
@@ -78,6 +79,10 @@ public class TESystemEnvironment
 	{
 		return parser;
 	}
+	public boolean isCollapseMode()
+	{
+		return collapseMode;
+	}
 	public GapToolBox<ExtendedInfo, ExtendedNode> getGapToolBox()
 	{
 		return gapToolBox;
@@ -101,5 +106,6 @@ public class TESystemEnvironment
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
 	private final PARSER parser;
+	private final boolean collapseMode;
 	private final GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox;
 }

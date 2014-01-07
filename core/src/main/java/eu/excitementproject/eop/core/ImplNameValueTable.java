@@ -1,7 +1,9 @@
 package eu.excitementproject.eop.core;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Set;
 
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
@@ -13,12 +15,12 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
  * @author Roberto Zanoli
  *
 */
-public class ImplNameValueTable extends NameValueTable {
+public class ImplNameValueTable implements NameValueTable {
 	
 	/*
 	* this table contains key, value pairs
 	*/
-	private HashMap<String, String> table = null;
+	protected HashMap<String, String> table = null;
 	
 	
 	/**
@@ -127,6 +129,12 @@ public class ImplNameValueTable extends NameValueTable {
 		
 		this.table.put(name, value);
 		
+	}
+	
+	@Override
+	public Set<String> keySet()
+	{
+		return Collections.unmodifiableSet(this.table.keySet());
 	}
 	
 	

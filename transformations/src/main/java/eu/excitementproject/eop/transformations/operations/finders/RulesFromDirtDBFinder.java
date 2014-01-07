@@ -48,6 +48,9 @@ public class RulesFromDirtDBFinder implements Finder<RuleSpecification>
 		this.hypothesisLemmas = hypothesisLemmas;
 	}
 
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	@Override
 	public void find() throws OperationException
 	{

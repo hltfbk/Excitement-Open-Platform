@@ -3,6 +3,7 @@ package eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl;
 import java.util.Map;
 
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Proof;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.TimeStatistics;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
@@ -29,13 +30,14 @@ public class DefaultProof extends Proof
 	
 	public DefaultProof(TreeAndFeatureVector treeAndFeatureVector,
 			String bestSentence, TreeHistory history,
-			GapDescription gapDescription)
+			GapDescription gapDescription, TimeStatistics timeStatistics)
 	{
 		super();
 		this.treeAndFeatureVector = treeAndFeatureVector;
 		this.bestSentence = bestSentence;
 		this.history = history;
 		this.gapDescription = gapDescription;
+		this.timeStatistics = timeStatistics;
 	}
 
 	@Override
@@ -58,6 +60,13 @@ public class DefaultProof extends Proof
 	{
 		return treeAndFeatureVector.getFeatureVector();
 	}
+	
+	@Override
+	public TimeStatistics getTimeStatistics()
+	{
+		return this.timeStatistics;
+	}
+
 	
 	
 	
@@ -91,4 +100,5 @@ public class DefaultProof extends Proof
 	private final String bestSentence;
 	private final TreeHistory history;
 	private final GapDescription gapDescription;
+	private final TimeStatistics timeStatistics;
 }
