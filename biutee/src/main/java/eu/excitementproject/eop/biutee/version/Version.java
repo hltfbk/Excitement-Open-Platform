@@ -168,11 +168,12 @@ public class Version implements AbstractVersion,Serializable
 	// Plug-ins are introduced in 2.4.0
 	// 2.4.1 - a development version between ACL 2012 to the migration into Excitement
 	// 2.5.0 - Release 1.0.0 of Excitement
+	// 2.6.0 - (planned) Excitement release of January 2014 
 	private static final Version instance = new Version(
 			2, // product
-			5, 
-			1, // minor  
-			BuildType.DEV);
+			6, 
+			0, // minor  
+			BuildType.RELEASE);
 	
 	
 	private final int product;
