@@ -146,7 +146,7 @@ public class ImplCommonConfig extends CommonConfig
 			}
 			
 	    } catch (Exception e) {
-	    	throw new ConfigurationException(e.getMessage());
+	    	throw new ConfigurationException("Failed to read the configuration file contents. Please see nested exception.",e);
 	    }
 		
 		if (componentNameSection == false)
@@ -236,7 +236,7 @@ public class ImplCommonConfig extends CommonConfig
 			}
 			
 	    } catch (Exception e) {
-	    	throw new ConfigurationException(e.getMessage());
+	    	throw new ConfigurationException("Failed to read the configuration file contents. Please see nested exception.",e);
 	    }
 		
 		if (componentNameSection == false)
@@ -292,7 +292,8 @@ a file and never saved before.
 			doc.getDocumentElement().normalize();
 		 
 		} catch (Exception e) {
-			throw new ConfigurationException(e.getMessage());
+			throw new ConfigurationException("Failed to read the XML configuration file.\n" +
+					"It is recommended to try to open the XML file in a web browser, and inspect the error.",e);
 		}
 		
 		return doc;

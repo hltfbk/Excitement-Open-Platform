@@ -1,8 +1,6 @@
 package eu.excitementproject.eop.common.utilities.configuration;
 
 /**
- * <B>This class has to be removed, since Excitement uses another type of
- * configuration files.</B>
  * 
  * An Exception for errors raised in ConfigurationParams or ConfigurationFile.
  * Generally, these errors are limited to problems with the given xml
