@@ -40,9 +40,11 @@ import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.uima.BIUFullLAP;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
+ * Runs BIUTEE via EOP interfaces.
  * 
  * @author Ofer Bronstein
  * 
@@ -55,37 +57,33 @@ public class BiuteeMain {
 	 * <tt>lap_train, train, lap_test, test</tt>, or <tt>full</tt> for all steps.<BR> 
 	 */
 	public static void runBiuteeCustomFlow(String configPath, String flowList) throws BiuteeMainException, EDAException, ComponentException, ConfigurationException, IOException, ExcitementToBiuConfigurationFileConverterException, ConfigurationFileDuplicateKeyException, TeEngineMlException, eu.excitementproject.eop.common.utilities.configuration.ConfigurationException, RTEMainReaderException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException  {
-		
-		try {
-			CommonConfig config = init(configPath);
-			Set<String> flow = new LinkedHashSet<String>(Arrays.asList(flowList.split(",")));
-			if (flow.size()==0) {
-				throw new BiuteeMainException("At least one flow step must be provided, got none.");
-			}
-			
-			Set<String> diff = new LinkedHashSet<String>(flow);
-			diff.removeAll(ALLOWED_STEPS);
-			if (diff.size() != 0) {
-				throw new BiuteeMainException("Disallowed flow steps: " + StringUtil.join(diff, ","));
-			}
-			
-			if (flow.contains("full") && flow.size()!=1) {
-				throw new BiuteeMainException("Flow step \"full\" must not be provided with other steps.");
-			}
-			boolean hasFull = flow.contains("full");
-			
-			if (hasFull || flow.contains("lap_train"))	doLAPforTraining(config);
-			if (hasFull || flow.contains("train"))		doTraining(config);
-			if (hasFull || flow.contains("lap_test"))	doLAPforTesting(config);
-			if (hasFull || flow.contains("test"))		doTesting(config);
-		}
-		catch(Throwable t)
-		{
-			ExceptionUtil.logException(t, logger);
-			throw t;
+		// (Reminder: the first command-line parameter is the configuration file name).
+		// Read the second command-line parameter. This might be something like "lap_train,train"
+		CommonConfig config = init(configPath);
+		Set<String> flow = new LinkedHashSet<String>(Arrays.asList(flowList.split(",")));
+		if (flow.size()==0) {
+			throw new BiuteeMainException("At least one flow step must be provided, got none.");
 		}
 
+		// Validate correctness of second command-line parameter
+		Set<String> diff = new LinkedHashSet<String>(flow);
+		diff.removeAll(ALLOWED_STEPS);
+		if (diff.size() != 0) {
+			throw new BiuteeMainException("Disallowed flow steps: " + StringUtil.join(diff, ","));
+		}
+
+		if (flow.contains("full") && flow.size()!=1) {
+			throw new BiuteeMainException("Flow step \"full\" must not be provided with other steps.");
+		}
+		boolean hasFull = flow.contains("full");
+
+		// Run the appropriate action, according to the second command-line parameter
+		if (hasFull || flow.contains("lap_train"))	doLAPforTraining(config);
+		if (hasFull || flow.contains("train"))		doTraining(config);
+		if (hasFull || flow.contains("lap_test"))	doLAPforTesting(config);
+		if (hasFull || flow.contains("test"))		doTesting(config);
 	}
+
 	
 
 	public static CommonConfig init(String configPath) throws TeEngineMlException, IOException, ConfigurationException {
@@ -95,12 +93,8 @@ public class BiuteeMain {
 	}
 	
 	private static void doLAPforTraining(CommonConfig config) throws IOException, ExcitementToBiuConfigurationFileConverterException, ConfigurationFileDuplicateKeyException, TeEngineMlException, eu.excitementproject.eop.common.utilities.configuration.ConfigurationException, RTEMainReaderException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException {
-		File biuConfigurationFile = File.createTempFile(BiuteeEDA.TEMPORARY_CONFIGURATION_FILE_PREFIX, BiuteeEDA.TEMPORARY_CONFIGURATION_FILE_SUFFIX);
-		logger.trace("Converting EOP-format configuration file to BIU-format in temporary file: " + biuConfigurationFile.getAbsolutePath());
-		BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
-
 		logger.trace("Initializing preprocessor RTEPairsPreProcessor...");
-		RTEPairsPreProcessor processor = new RTEPairsPreProcessor(biuConfigurationFile.getAbsolutePath(), RTEPairsPreProcessor.TrainTestEnum.TRAIN.name());
+		RTEPairsPreProcessor processor = new RTEPairsPreProcessor(config.getConfigurationFileName(), RTEPairsPreProcessor.TrainTestEnum.TRAIN.name());
 		//RTEPairsPreProcessor processor = new RTEPairsPreProcessor(config.getConfigurationFileName());
 		logger.trace("Preprocessing using preprocessor...");
 		processor.preprocess();
@@ -110,7 +104,7 @@ public class BiuteeMain {
 	private static void doLAPforTesting(CommonConfig config) throws LAPException, ConfigurationException, IOException {
 		// Set up environment
 		clearDirectory(lapOutputFolder);
-		File testData = config.getSection("rte_pairs_preprocess").getFile("dataset");
+		File testData = config.getSection("rte_pairs_preprocess").getFile("test_data");
 		
 		logger.trace("Initializing BIUFullLAP...");
 		BIUFullLAP lap = new BIUFullLAP(config);
@@ -190,11 +184,35 @@ public class BiuteeMain {
 		path.mkdirs();
 	}
 	
-	public static void main(String[] args) throws EDAException, ComponentException, ConfigurationException, ConfigurationFileDuplicateKeyException, TeEngineMlException, BiuteeMainException, IOException, ExcitementToBiuConfigurationFileConverterException, eu.excitementproject.eop.common.utilities.configuration.ConfigurationException, RTEMainReaderException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException {
-		if (args.length != 2) {
-			throw new BiuteeMainException("Exactly 2 arguments must be provided: <configuration path> <flow list>");
+	public static void main(String[] args)
+	{
+		// The only important line in this function is
+		// runBiuteeCustomFlow(args[0], args[1]);
+		try
+		{
+			try
+			{
+				if (args.length != 2) {
+					throw new BiuteeMainException("Exactly 2 arguments must be provided: <configuration path> <flow list>");
+				}
+				runBiuteeCustomFlow(args[0], args[1]);
+			}
+			finally
+			{
+				if (logger!=null)
+				{
+					GlobalMessages.getInstance().addToLogAndExperimentManager(logger);
+				}
+			}
 		}
-		runBiuteeCustomFlow(args[0], args[1]);
+		catch(Throwable t)
+		{
+			ExceptionUtil.outputException(t, System.out);
+			if (logger!=null)
+			{
+				try{ExceptionUtil.logException(t, logger);}catch(Throwable tt){}
+			}
+		}
 	}
 
 	private static final File lapOutputFolder = new File("./lap_output");
