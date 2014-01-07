@@ -10,7 +10,7 @@ public class BasicRedisRunnerTest {
 	@Test
 	public void test() {
 		try {
-			RedisRunner runner = BasicRedisRunner.getInstance();
+			//RedisRunner runner = BasicRedisRunner.getInstance();
 			//runner.run(dbDir);
 		} catch (Exception e) {
 			e.printStackTrace(); 

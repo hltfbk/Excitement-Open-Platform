@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -16,6 +15,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultRelation;
@@ -92,8 +92,8 @@ public class NodeBasedWordCooccurrenceExtraction extends WordCooccurrenceExtract
 		return new Pair<List<LemmaPosTextUnit>,List<DefaultCooccurrence<String>>>(textUnints,coOccurrences);
 	}
 
-	protected boolean relevantNode(BasicNode node) {
-		return node != null && posFilter.isRelevant(node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag());
+	protected boolean relevantNode(BasicNode node) {		
+		return node != null && node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech() != null &&  posFilter.isRelevant(node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag());
 	}
 
 	DependencyPathsFromTreeBinary<Info, BasicNode> extractor;

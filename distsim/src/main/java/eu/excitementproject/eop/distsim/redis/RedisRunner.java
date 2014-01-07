@@ -3,8 +3,6 @@
  */
 package eu.excitementproject.eop.distsim.redis;
 
-import java.util.Set;
-
 /**
  * Management of Redis running, given a directory of Redis databases
  * 

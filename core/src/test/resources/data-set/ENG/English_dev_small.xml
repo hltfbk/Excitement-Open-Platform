@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="1" entailment="ENTAILMENT" task="IE" >
+		<t>The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$ 9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .</t>
+		<h>Baikalfinansgroup was sold to Rosneft.</h>
+	</pair>
+	<pair id="2" entailment="NONENTAILMENT" task="IE" >
+		<t>The sale was made to pay Yukos' US$ 27.5 billion tax bill, Yuganskneftegaz was originally sold for US$9.4 billion to a little known company Baikalfinansgroup which was later bought by the Russian state-owned oil company Rosneft .</t>
+		<h>Yuganskneftegaz cost US$ 27.5 billion.</h>
+	</pair>
+	<pair id="3" entailment="NONENTAILMENT" task="IE" >
+		<t>Loraine besides participating in Broadway's Dreamgirls, also participated in the Off-Broadway production of "Does A Tiger Have A Necktie". In 1999, Loraine went to London, United Kingdom. There she participated in the production of "RENT" where she was cast as "Mimi" the understudy.</t>
+		<h>"Does A Tiger Have A Necktie" was produced in London.</h>
+	</pair>
+	<pair id="4" entailment="ENTAILMENT" task="IE" >
+		<t>"The Extra Girl" (1923) is a story of a small-town girl, Sue Graham (played by Mabel Normand) who comes to Hollywood to be in the pictures. This Mabel Normand vehicle, produced by Mack Sennett, followed earlier films about the film industry and also paved the way for later films about Hollywood, such as King Vidor's "Show People" (1928).</t>
+		<h>"The Extra Girl" was produced by Sennett.</h>
+	</pair>
+	<pair id="5" entailment="ENTAILMENT" task="IE" >
+		<t>A bus collision with a truck in Uganda has resulted in at least 30 fatalities and has left a further 21 injured.</t>
+		<h>30 die in a bus collision in Uganda.</h>
+	</pair>
+	<pair id="6" entailment="NONENTAILMENT" task="IE" >
+		<t>Take consumer products giant Procter and Gamble. Even with a $1.8 billion Research and Development budget, it still manages 500 active partnerships each year, many of them with small companies.</t>
+		<h>500 small companies are partners of Procter and Gamble.</h>
+	</pair>
+	<pair id="7" entailment="ENTAILMENT" task="IE" >
+		<t>After his release, the clean-shaven Magdy el-Nashar told reporters outside his home that he had nothing to do with the July 7 transit attacks, which killed 52 people and the four bombers.</t>
+		<h>52 people and four bombers were killed on July 7.</h>
+	</pair>
+	<pair id="8" entailment="NONENTAILMENT" task="IE" >
+		<t>Mrs. Bush's approval ratings have remained very high, above 80%, even as her husband's have recently dropped below 50%.</t>
+		<h>80% approve of Mr. Bush.</h>
+	</pair>
+	<pair id="9" entailment="NONENTAILMENT" task="IE" >
+		<t>Recent Dakosaurus research comes from a complete skull found in Argentina in 1996, studied by Diego Pol of Ohio State University, Zulma Gasparini of Argentinas National University of La Plata, and their colleagues.</t>
+		<h>A complete Dakosaurus was discovered by Diego Pol.</h>
+	</pair>
+	<pair id="10" entailment="NONENTAILMENT" task="IE" >
+		<t>On May 17, 2005, the National Assembly of Kuwait passed, by a majority of 35 to 23 (with 1 abstention), an amendment to its electoral law that would allow women to vote and to stand as parliamentary candidates.</t>
+		<h>A pro-women amendment was rejected by the National Assembly of Kuwait.</h>
+	</pair>
+</entailment-corpus>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="DE">
+	<pair id="1" entailment="ENTAILMENT" task="IE">
+		<t>Claude Chabrol (geboren am 24. Juni 1930) ist ein französischer Regisseur und wurde in den 40er Jahren nach seinem ersten Film, 'Le Beau Serge', berühmt für seine schaurigen Mordgeschichten, wie 'Le Boucher'.</t>
+		<h>Le Beau Serge wurde von Chabrol geleitet.</h>
+	</pair>
+	<pair id="2" entailment="ENTAILMENT" task="IE">
+		<t>Claude Chabrol (geboren am 24. Juni 1930) ist ein französischer Regisseur und wurde in den 40er Jahren nach seinem ersten Film, 'Le Beau Serge', berühmt für seine schaurigen Mordgeschichten, wie 'Le Boucher'.</t>
+		<h>Le Boucher wurde von einem französischen Regisseur geleitet.</h>
+	</pair>
+	<pair id="3" entailment="ENTAILMENT" task="IE">
+		<t>Claude Chabrol ließ sich von seiner ersten Frau Agnes scheiden, um die Schauspielerin Stéphane Audran zu heiraten. Seine dritte Frau ist Aurore Paquiss.</t>
+		<h>Aurore Paquiss heiratete Chabrol.</h>
+	</pair>
+	<pair id="4" entailment="ENTAILMENT" task="IE">
+		<t>Die Kommunistische Partei der USA war eine kleine maoistische Partei, im Jahre 1965 von Mitgliedern der Kommunistischen Partei um Michael Laski gegründet, der sich im chinesisch-sowjetischen Konflikt auf die Seite Chinas schlug.</t>
+		<h>Michael Laski war Mitglied einer maoistischen Partei.</h>
+	</pair>
+	<pair id="5" entailment="NONENTAILMENT" task="IE">
+		<t>Die Kommunistische Partei der USA war eine kleine maoistische Partei, im Jahre 1965 von Mitgliedern der Kommunistischen Partei um Michael Laski gegründet, der sich im chinesisch-sowjetischen Konflikt auf die Seite Chinas schlug.</t>
+		<h>Michael Laski war ein Gegner Chinas.</h>
+	</pair>
+	<pair id="6" entailment="ENTAILMENT" task="IE">
+		<t>Nähe Yirrkala in den Nord-Territorien geboren, gehört Yunupingu zum Clan Gumatj des Yolngu-Volks.</t>
+		<h>Yunupingu ist ein Mitglied des Yolngu-Volks.</h>
+	</pair>
+	<pair id="7" entailment="NONENTAILMENT" task="IE">
+		<t>Sandra Goudie wurde erstmals bei den Wahlen von 2002 ins Parlament gewählt, gewann knapp den Coromandel-Sitz gegen den Labour-Kandidat Max Purnell und verdrängte die amtierende Ministerpräsidentin Jeanette Fitzsimons auf den dritten Platz.</t>
+		<h>Sandra Goudie wurde von Max Purnell besiegt.</h>
+	</pair>
+	<pair id="8" entailment="NONENTAILMENT" task="IE">
+		<t>Frau Minton verließ Australien im Jahre 1961, um ihr Studium in London aufzunehmen.</t>
+		<h>Frau Minton wurde in Australien geboren.</h>
+	</pair>
+	<pair id="9" entailment="NONENTAILMENT" task="IE">
+		<t>Mintons erste große Rolle in England war als Maggie Dempster in der Uraufführung von Nicholas Maws 'One Man Show'. Kurz danach wurde sie ein festes Ensemblemitglied des Royal Opera House Covent Garden.</t>
+		<h>Maggie Dempster war ein Ensemblemitglied des Royal Opera House Covent Garden.</h>
+	</pair>
+	<pair id="10" entailment="NONENTAILMENT" task="IE">
+		<t>Marcel Beaubien versuchte 2004 erfolglos, als Kandidat der Konservativen im Bundesbezirk Sarnia-Lambton ins kanadische Abgeordnetenhaus gewählt zu werden.</t>
+		<h>Marcel Beaubien wurde ins kanadische Abgeordnetenhaus gewählt.</h>
+	</pair>
+</entailment-corpus>

@@ -28,6 +28,15 @@ import eu.excitementproject.eop.distsim.items.TextUnit;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
 
+/**
+ * @author Meni Adler
+ * @since May 26, 2013
+ * 
+ * Extracts elements and features from a given corpus, based on map-reduce scheme.
+ * At the first stage, the map-reduce procedure extracts counts (and filters by minimal count)the elements and the features.
+ * At the second stage the extracted elements and features, are organized into the 'traditional' distsim format, the output files: elements,features, element-feature-counts, feature-elements  
+ *
+ */
 public class ExtractAndCountBasicNodeBasedElementsFeatures { 
 
 	@SuppressWarnings("rawtypes")
@@ -45,8 +54,7 @@ public class ExtractAndCountBasicNodeBasedElementsFeatures {
 	
 			    this.cooccurrenceExtraction = (CooccurrenceExtraction)Factory.create(confParams.get(eu.excitementproject.eop.distsim.util.Configuration.COOCCURENCE_EXTRACTION_CLASS), confParams);
 	
-				ConfigurationParams elementfeatureExtractionParams = confFile.getModuleConfiguration(confParams.get(eu.excitementproject.eop.distsim.util.Configuration.ELEMENT_FEATURE_EXTRACTION_MODULE));
-				this.elementFeatureExtraction = (ElementFeatureExtraction)Factory.create(elementfeatureExtractionParams.get(eu.excitementproject.eop.distsim.util.Configuration.CLASS),elementfeatureExtractionParams);
+				this.elementFeatureExtraction = (ElementFeatureExtraction)Factory.create(confParams.get(eu.excitementproject.eop.distsim.util.Configuration.ELEMENT_FEATURE_EXTRACTION_CLASS),confParams);
 				
 			} catch (Exception e) {
 				throw new RuntimeException(e);
@@ -132,21 +140,29 @@ public class ExtractAndCountBasicNodeBasedElementsFeatures {
 	    job.setOutputKeyClass(Text.class);    
 	    job.setOutputValueClass(LongWritable.class);
 	    job.setInputFormatClass(BasicNodeInputFormat.class);
-	    for (File f : eu.excitementproject.eop.distsim.util.FileUtils.getFiles(new File(confParams.get(eu.excitementproject.eop.distsim.util.Configuration.INDIR))))
+	    for (File f : eu.excitementproject.eop.distsim.util.FileUtils.getFiles(new File(confParams.get(eu.excitementproject.eop.distsim.util.Configuration.INDIR))))	    	
 	    	FileInputFormat.addInputPath(job, new Path(f.getPath()));
+	    
 	    String sOutdir = confParams.get(eu.excitementproject.eop.distsim.util.Configuration.OUTDIR);
 	    File outdir = new File(sOutdir);
 	    
 	    if (outdir.exists()) {
+		    if (outdir.isFile())
+		    	throw new ConfigurationException("The " + eu.excitementproject.eop.distsim.util.Configuration.OUTDIR + " configuration property must be a directory");
 	    	for (File f : outdir.listFiles())
 	    		f.delete();
-	    	outdir.delete();
+	    	outdir.delete();	    	
 	    }
 	    
 	    FileOutputFormat.setOutputPath(job, new Path(sOutdir));
+	    
+	    // Apply the first map-reduce stage, which extracts counts (and filters by minimal count)the elements and features 
 	    job.waitForCompletion(true);
 	    
+	    // Apply the second stage, in order to organize the extracted elements and the features into the 'traditional' distsim format.
+	    // 1. Generate 'elements' and 'features' output files
 	    SeparateFilterAndIndexElementsFeatures.separateFilterAndIndexElementsFeatures1(confFile.getModuleConfiguration(eu.excitementproject.eop.distsim.util.Configuration.MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1));
+	    // 2. Generate the 'element-feature-counts' and 'feature-elements' output files
 	    SeparateFilterAndIndexElementsFeatures.separateFilterAndIndexElementsFeatures2(confFile.getModuleConfiguration(eu.excitementproject.eop.distsim.util.Configuration.MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2));
 
 	 }

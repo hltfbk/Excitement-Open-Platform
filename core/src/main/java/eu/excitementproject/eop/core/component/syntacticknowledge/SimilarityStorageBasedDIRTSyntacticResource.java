@@ -21,8 +21,6 @@ import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRes
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTree;
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
@@ -32,6 +30,8 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTree;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
+import eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTree;
+import eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.StringBasedElement;
@@ -57,7 +57,7 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 	 * @see DefaultSimilarityStorage#DefaultSimilarityStorage(ConfigurationParams)
 	 * <p>Additionally, uses the param "top-n-rules" to limit the number of retrieved rules.
 	 * 
-	 * 	@throws ElementTypeException 
+	 * @throws ElementTypeException 
 	 * @throws RedisRunException 
 	 * @throws FileNotFoundException 
 	 */

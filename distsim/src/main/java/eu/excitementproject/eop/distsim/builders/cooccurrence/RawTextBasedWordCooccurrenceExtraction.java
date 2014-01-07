@@ -53,7 +53,11 @@ public class RawTextBasedWordCooccurrenceExtraction extends WordCooccurrenceExtr
 	}
 
 	public RawTextBasedWordCooccurrenceExtraction(ConfigurationParams confParams) throws ConfigurationException, IOException {
-		this.windowSize = confParams.getInt(Configuration.WINDOW_SIZE);
+		try {
+			this.windowSize = confParams.getInt(Configuration.WINDOW_SIZE);
+		} catch (ConfigurationException e) {
+			this.windowSize = DEFAULT_WINDOW_SIZE;
+		}
 		this.stopWords =  new HashSet<String>();
 		try {
 			initStopWords(new File(confParams.get(Configuration.STOP_WORDS_FILE)));			

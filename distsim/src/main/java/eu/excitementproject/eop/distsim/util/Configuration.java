@@ -18,7 +18,6 @@ public class Configuration {
 	public static final String EXTRACTOR_CLASS = "extractor-class";
 	public static final String EXTRACTION_CLASS = "extraction-class";
 	public static final String CORPUS = "corpus";
-	public static final String ELEMENT_FEATURE_EXTRACTION_MODULE = "element-feature-extraction-module";
 	public static final String TEXT_UNITS_DATA_STRUCTURE = "text-units-data-structure";
 	public static final String CO_OCCURRENCES_DATA_STRUCTURE = "co-occurrences-data-structure";
 	public static final String ELEMENTS_DATA_STRUCTURE = "elements-data-structure";
@@ -40,6 +39,7 @@ public class Configuration {
 	public static final String FEATURES_STORAGE_DEVICE = "features-storage-device";
 	public static final String ELEMENT_FEATURE_COUNTS_STORAGE_DEVICE = "element-feature-counts-storage-device";
 	public static final String FEATURE_ELEMENTS_STORAGE_DEVICE = "feature-elements-storage-device";
+	public static final String TRUNCATED_FEATURE_ELEMENTS_STORAGE_DEVICE = "truncated-feature-elements-storage-device";
 	public static final String ELEMENT_FEATURE_SCORES_STORAGE_DEVICE = "element-feature-scores-storage-device";
 	public static final String ELEMENT_SCORES_STORAGE_DEVICE = "element-scores-storage-device";
 	public static final String ELEMENTS_SIMILARITIES_R2L_STORAGE_DEVICE = "elements-similarities-r2l-storage-device";
@@ -98,6 +98,7 @@ public class Configuration {
 	public static final String INDIR = "in-dir";
 	public static final String OUTDIR = "out-dir";
 	public static final String COOCCURENCE_EXTRACTION_CLASS = "cooccurrence-extraction-class";
+	public static final String ELEMENT_FEATURE_EXTRACTION_CLASS = "element-feature-extraction-class";
 	public static final String FEATURES_FILE = "features-file";
 	public static final String ELEMENT_FEATURE_COUNTS_FILE = "element-feature-counts-file";
 	public static final String FEATURE_ELEMENTS_FILE = "feature-elements-file";
@@ -122,7 +123,9 @@ public class Configuration {
 	public static final String REDIS_CONFIGURATION_TEMPLATE_FILE = "redis-configuration-template-file";
 	public static final String REDIS_BIN_DIR = "redis-binary-dir";
 	public static final String GENERATE_ARTIFICIAL_ROOT = "generate-artificial-root";
-	public static final String REDIS_FILE = "redis-file"; 
+	public static final String REDIS_FILE = "redis-file";
+	public static final String START_ELEMENT_ID = "stasrt-element-id";
+	public static final String MIN_FEATURES_SIZE = "min-features-size"; 
 
 }
 

@@ -2,6 +2,7 @@ package eu.excitementproject.eop.distsim.storage;
 
 import java.io.Serializable;
 
+
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
@@ -12,7 +13,6 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
-import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
@@ -61,10 +61,7 @@ public class SimilarityFile2Redis {
 			//}
 			file.open();
 			
-			int port = BasicRedisRunner.getInstance().run(confParams.getString(Configuration.REDIS_FILE));
-			//String host = confParams.getString(Configuration.REDIS_HOST);
-			//int port = confParams.getInt(Configuration.REDIS_PORT);
-			redis = new Redis("localhost",port);
+			redis = new Redis(confParams.getString(Configuration.REDIS_FILE));
 			redis.open();
 			redis.clear();			
 			Pair<Integer,Serializable> pair = null;
