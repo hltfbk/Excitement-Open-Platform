@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+  <pair id="1" entailment="ENTAILMENT" task="IE">
+    <t>
+     Claude Chabrol (nato il 24 giugno 1930) è un regista francese diventato famoso negli ultimi 40 anni sin dal suo primo film, Le Beau Serge, per le sue agghiaccianti storie di omicidi, tra cui Le Boucher .
+    </t>
+    <h>
+     Le Beau Serge è stato diretto da Chabrol.
+    </h>
+  </pair>
+  <pair id="2" entailment="ENTAILMENT" task="IE">
+    <t>
+     Claude Chabrol (nato il 24 giugno 1930) è un regista francese diventato famoso negli ultimi 40 anni sin dal suo primo film, Le Beau Serge, per le sue agghiaccianti storie di omicidi, tra cui Le Boucher .
+    </t>
+    <h>
+     Le Boucher è stato girato da un regista francese.
+    </h>
+  </pair>
+  <pair id="3" entailment="ENTAILMENT" task="IE">
+    <t>
+     Claude Chabrol divorziò da Agnes, la sua prima moglie, per sposare l'attrice Stéphane Audran. La sua terza moglie è Aurore Paquiss.
+    </t>
+    <h>
+     Aurore Paquiss ha sposato Chabrol.
+    </h>
+  </pair>
+  <pair id="4" entailment="ENTAILMENT" task="IE">
+    <t>
+     Il partito comunista statunitense fu un piccolo partito politico maoista che venne fondato nel 1965 dai membri del partito comunista attorno a Michael Laski che si schierò della parte della Cina nella crisi sino-sovietica.
+    </t>
+    <h>
+     Michael Laski fu un membro di un partito politico maoista.
+    </h>
+  </pair>
+  <pair id="5" entailment="NONENTAILMENT" task="IE">
+    <t>
+     Il partito comunista statunitense fu un piccolo partito politico maoista che venne fondato nel 1965 dai membri del partito comunista attorno a Michael Laski che si schierò della parte della Cina nella crisi sino-sovietica.
+    </t>
+    <h>
+     Michael Laski era un oppositore della Cina.
+    </h>
+  </pair>
+  <pair id="6" entailment="ENTAILMENT" task="IE">
+    <t>
+     Nato vicino a Yirrkala nei Territori del Nord, Yunupingu è uno del clan Gumatj della tribù Yolngu.
+    </t>
+    <h>
+     Yunupingu è membro della tribù Yolngu.
+    </h>
+  </pair>
+  <pair id="7" entailment="NONENTAILMENT" task="IE">
+    <t>
+     Sandra Goudie fu eletta per la prima volta al parlamento nelle elezioni del 2002, a malapena vincendo il seggio di Coromandel sconfiggendo il candidato laburista Max Purnell e relegando la deputa in carica Jeanette Fitzsimons, dei Verdi, al terzo posto.
+    </t>
+    <h>
+     Sandra Goudie fu sconfitta da Max Purnell.
+    </h>
+  </pair>
+  <pair id="8" entailment="NONENTAILMENT" task="IE">
+    <t>
+     La signora Minton lasciò l'Australia nel 1961 per proseguire i suoi studi a Londra.
+    </t>
+    <h>
+     La signora Minton è nata in Australia.
+    </h>
+  </pair>
+  <pair id="9" entailment="NONENTAILMENT" task="IE">
+    <t>
+     La prima parte importante della Minton in Inghilterra fu come Maggie Dempster alla prima dell'opera One Man Show di Nicholas Maw. Subito dopo, diventò un membro permanente della compagnia della Royal Opera House di Covent Garden.
+    </t>
+    <h>
+     Maggie Dempster fu un membro della compagnia della Royal Opera House di Covent Garden.
+    </h>
+  </pair>
+  <pair id="10" entailment="NONENTAILMENT" task="IE">
+    <t>
+     Marcel Beaubien aspirò senza successo all'elezione alla House of Commons canadese come candidato conservatore nel distretto federale di Sarnia-Lambton nel 2004.
+    </t>
+    <h>
+     Marcel Beaubien fu eletto alla House of Commons canadese.
+    </h>
+  </pair>
+</entailment-corpus>

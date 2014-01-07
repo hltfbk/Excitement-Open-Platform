@@ -12,7 +12,7 @@ import eu.excitementproject.eop.distsim.scoring.FeatureScore;
  * @since 17/04/2012
  *
  */
-public class Cosine implements ElementSimilarityScoring {
+public class Cosine extends AbstractElementSimilarityScoring {
 
 	public Cosine(ConfigurationParams params) {
 		this();

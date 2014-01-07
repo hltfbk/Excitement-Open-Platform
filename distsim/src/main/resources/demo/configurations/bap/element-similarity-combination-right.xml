@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<!--A configuration file for the program eu.excitementproject.eop.distsim.builders.cooccurrence.GeneralElementSimilarityCombiner, which combines several similarity models into one unfied model-->
+
+<configuration>
+
+<module name="logging"> <!--Defines the log4j properties -->
+	<param name="properties-file">configurations/log4j.properties</param> <!--the path of the log4j properties file-->
+</module>
+
+<module name="element-similarity-combiner"> <!--Defines the combination method -->
+
+	<!-- Defines the combination class which implements the eu.excitementproject.eop.distsim.builders.similarity.ElementSimilarityCombiner interface
+	       Options:
+	       * eu.excitementproject.eop.distsim.builders.similarity.MemoryBasedElementSimilarityCombiner stores in the memory the given set of similarity storages
+	       * eu.excitementproject.eop.distsim.builders.similarity.OrderedBasedElementSimilarityCombiner assumes that the elements of the given similarity storages are ascending sorted. No memory is used the storages
+	       * eu.excitementproject.eop.distsim.builders.similarity.RedisBasedElementSimilarityCombiner stores in a Redis server the given set of similarity storages
+	-->
+            <param name="class">eu.excitementproject.eop.distsim.builders.similarity.OrderedBasedElementSimilarityCombiner</param>
+	     <!-- Are the elements in the given similarity files sorted? (descending) -->
+	    <param name="is-sorted">false</param>
+	    
+	  <!-- The list of similarity files top be combined-->
+	  <param name="in-files">models/bap/elements-similarities-right-lin, models/bap/elements-similarities-right-apinc</param>
+
+	<!-- The name of the out combined similarity file -->
+	  <param name="out-combined-file">models/bap/elements-similarities-right-bap</param>
+	  
+	  <!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+	           * eu.excitementproject.eop.distsim.storage.File (or one of its subclasses): file device.
+		      Required features:
+	                  * file: the path of the file
+			  * read-write: 'read' for read-only mode, 'write' for write-only mode
+	           * eu.excitementproject.eop.distsim.storage.Redis: Redis device, required features:
+	               * redis-file: a path to the Redis file to store the element-feature scorings
+	-->
+	  <param name="storage-device-class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</param>
+	  
+	  <!-- The method of combination, defined by the eu.excitementproject.eop.distsim.scoring.combine.SimilarityCombination interface
+		Options:
+		* eu.excitementproject.eop.distsim.scoring.combine.GeometricMean Combines given scores by their geometric mean
+	  -->
+	 <param name="similarity-combination-class">eu.excitementproject.eop.distsim.scoring.combine.GeometricMean</param>	 
+</module>
+</configuration>
+

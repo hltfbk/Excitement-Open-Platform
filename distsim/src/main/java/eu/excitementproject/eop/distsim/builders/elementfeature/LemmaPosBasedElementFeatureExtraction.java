@@ -79,8 +79,8 @@ public class LemmaPosBasedElementFeatureExtraction extends IrelevantListBasedEle
 		List<Pair<Element, Feature>> ret = new LinkedList<Pair<Element, Feature>>();		
 		
 		try {
-			LemmaPosTextUnit word1 = (LemmaPosTextUnit)cooccurrence.getTextItem1();
-			LemmaPosTextUnit word2 = (LemmaPosTextUnit)cooccurrence.getTextItem2();
+			LemmaPosTextUnit word1 = (LemmaPosTextUnit)cooccurrence.getTextItem1(); //.copy();
+			LemmaPosTextUnit word2 = (LemmaPosTextUnit)cooccurrence.getTextItem2(); //.copy();
 			String rel = (String)cooccurrence.getRelation().getValue();
 
 			if (posFilter.isRelevant(word1.getData().getPOS()) && word1.getCount() >= minCount && !isStopWordFeature(cooccurrence.getTextItem2())) {

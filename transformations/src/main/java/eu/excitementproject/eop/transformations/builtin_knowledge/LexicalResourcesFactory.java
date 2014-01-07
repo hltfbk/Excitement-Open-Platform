@@ -17,6 +17,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.LinPr
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.transformations.operations.rules.ByLemmaPosLexicalRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.ByLemmaPosLexicalRuleBaseWrapper;
 import eu.excitementproject.eop.transformations.operations.rules.LexicalRule;
@@ -62,10 +63,13 @@ public class LexicalResourcesFactory
 	{
 		LexicalResource<? extends RuleInfo> ret = null;
 		String moduleName = knowledgeResource.getInfrastructureModuleName();
+		
 		if (moduleName!=null)
 		{
 			ConfigurationParams params = configurationFile.getModuleConfiguration(moduleName);
 
+			logger.info("looking for " + knowledgeResource);
+			
 			switch(knowledgeResource)
 			{
 			case BAP:
@@ -91,6 +95,15 @@ public class LexicalResourcesFactory
 				break;
 			case LIN_DEPENDENCY_REUTERS:
 				ret = new LinDistsimLexicalResource(params);
+				break;
+			case REDIS_LIN_PROXIMITY:
+			case REDIS_LIN_DEPENDENCY:
+			case REDIS_BAP:
+				try {
+					ret = new SimilarityStorageBasedLexicalResource(params);
+				} catch (Exception e) {
+					throw new LexicalResourceException(e.toString(),e);
+				}
 				break;
 			default:
 				ret = null; // leave ret as null

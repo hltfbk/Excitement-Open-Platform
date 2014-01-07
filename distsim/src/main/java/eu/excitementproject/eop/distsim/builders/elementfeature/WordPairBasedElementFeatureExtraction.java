@@ -63,8 +63,8 @@ public class WordPairBasedElementFeatureExtraction extends IrelevantListBasedEle
 		List<Pair<Element, Feature>> ret = new LinkedList<Pair<Element, Feature>>();		
 		
 		try {
-			StringBasedTextUnit word1 = (StringBasedTextUnit)cooccurrence.getTextItem1();
-			StringBasedTextUnit word2 = (StringBasedTextUnit)cooccurrence.getTextItem2();
+			StringBasedTextUnit word1 = (StringBasedTextUnit)cooccurrence.getTextItem1();//.copy();
+			StringBasedTextUnit word2 = (StringBasedTextUnit)cooccurrence.getTextItem2();//.copy();
 
 			if (word1.getCount() >= minCount && !isStopWordFeature(cooccurrence.getTextItem2())) {
 				ret.add(new Pair<Element, Feature>(					

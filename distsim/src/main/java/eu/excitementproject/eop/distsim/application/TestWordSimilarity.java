@@ -3,13 +3,13 @@ package eu.excitementproject.eop.distsim.application;
 import java.util.List;
 
 
+
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.StringBasedElement;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
-import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 
 /**
@@ -21,23 +21,21 @@ import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
  *
  */
 public class TestWordSimilarity {
-	public static void main(String[] args) throws SimilarityNotFoundException {
+	public static void main(String[] args) throws Exception {
 		
-		if (args.length != 4) {
+		if (args.length != 2) {
 			System.out.println("Usage: eu.excitementproject.eop.distsim.application.TestLemmaPosSimilarity " +
-					" <l2r similarity redis host> <l2r similarity redis port>" + 
-			        " <r2l similarity redis host> <r2l similarity redis port>");
+					" <l2r similarity redis file>" + 
+			        " <r2l similarity redis file>");
 			System.exit(0);
 		}
 		
-		String l2rRedisHost = args[0];
-		int l2rRedisPort = Integer.parseInt(args[1]);
-		String r2lRedisHost = args[2];
-		int r2lRredisPort = Integer.parseInt(args[3]);
+		String l2rRedisFile = args[0];
+		String r2lRedisFile = args[1];
 		
 		SimilarityStorage similarityStorage = new DefaultSimilarityStorage(
-				new RedisBasedStringListBasicMap(l2rRedisHost,l2rRedisPort),
-				new RedisBasedStringListBasicMap(r2lRedisHost,r2lRredisPort),
+				new RedisBasedStringListBasicMap(l2rRedisFile),
+				new RedisBasedStringListBasicMap(r2lRedisFile),
 				"lin-dist-sim", null, "eu.excitementproject.eop.distsim.items.LemmaPosBasedElement");
 		
 		

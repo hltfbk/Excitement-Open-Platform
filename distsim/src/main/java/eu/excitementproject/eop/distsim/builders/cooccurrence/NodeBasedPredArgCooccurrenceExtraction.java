@@ -6,11 +6,11 @@ package eu.excitementproject.eop.distsim.builders.cooccurrence;
 import java.util.LinkedList;
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
@@ -34,7 +34,7 @@ public class NodeBasedPredArgCooccurrenceExtraction extends PredArgCooccurrenceE
 	} 
 
 	public NodeBasedPredArgCooccurrenceExtraction() {
-		this.extractor =  new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true);
+		this.extractor =  new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true);
 	} 
 	
 	/* (non-Javadoc)

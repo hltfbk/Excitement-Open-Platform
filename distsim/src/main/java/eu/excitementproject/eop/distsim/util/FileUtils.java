@@ -40,6 +40,31 @@ public class FileUtils {
 	}
 	
 	/**
+	 * Gets all directories for a given root (including nested sub-directories)
+	 * In case, the given root is a file, returns the root
+	 * 
+	 * @param root a root directory/file
+	 * @return all files under the given root
+	 */
+	public static Set<File> getDirs(File root) {
+		Set<File> ret = new HashSet<File>();
+		
+		if (root.isFile())
+			ret.add(root);
+		else
+			getDirs(root,ret);
+		return ret;
+	}
+	
+	private static void getDirs(File file, Collection<File> ret) {
+		if (file.isDirectory()) {
+			ret.add(file);
+			for (File f : file.listFiles())
+				getDirs(f,ret);
+		} 
+	}
+	
+	/**
 	 * Splits a given file to a given number of files
 	 * 
 	 * @param file a given file to be splitted

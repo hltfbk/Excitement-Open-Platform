@@ -57,7 +57,7 @@ public class File implements PersistenceDevice {
 	 * @see org.excitement.distsim.storage.PersistenceDevice#open()
 	 */
 	@Override
-	public void open()  throws IOException {
+	public synchronized void open()  throws IOException {
 		if (bRead) {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),encoding));
 			writer = null;
@@ -109,7 +109,7 @@ public class File implements PersistenceDevice {
 	 * @see org.excitement.distsim.storage.PersistenceDevice#close()
 	 */
 	@Override
-	public void close() throws IOException {
+	public synchronized void close() throws IOException {
 		if (reader != null) 
 			reader.close();
 		if (writer != null) 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="1" entailment="ENTAILMENT" task="IE" >
+		<t>Claude Chabrol (born June 24, 1930) is a French movie director and has become well-known in the 40 years since his first film, Le Beau Serge , for his chilling tales of murder, including Le Boucher .</t>
+		<h>Le Beau Serge was directed by Chabrol.</h>
+	</pair>
+	<pair id="2" entailment="ENTAILMENT" task="IE" >
+		<t>Claude Chabrol (born June 24, 1930) is a French movie director and has become well-known in the 40 years since his first film, Le Beau Serge , for his chilling tales of murder, including Le Boucher .</t>
+		<h>Le Boucher was made by a French movie director.</h>
+	</pair>
+	<pair id="3" entailment="ENTAILMENT" task="IE" >
+		<t>Claude Chabrol divorced Agnes, his first wife, to marry the actress Stéphane Audran. His third wife is Aurore Paquiss.</t>
+		<h>Aurore Paquiss married Chabrol.</h>
+	</pair>
+	<pair id="4" entailment="ENTAILMENT" task="IE" >
+		<t>The Communist Party USA was a small Maoist political party which was founded in 1965 by members of the Communist Party around Michael Laski who took the side of China in the Sino-Soviet split.</t>
+		<h>Michael Laski was a member of a Maoist political party.</h>
+	</pair>
+	<pair id="5" entailment="NONENTAILMENT" task="IE" >
+		<t>The Communist Party USA was a small Maoist political party which was founded in 1965 by members of the Communist Party around Michael Laski who took the side of China in the Sino-Soviet split.</t>
+		<h>Michael Laski was an opponent of China.</h>
+	</pair>
+	<pair id="6" entailment="ENTAILMENT" task="IE" >
+		<t>Born near Yirrkala in the Northern Territory, Yunupingu is one of the Gumatj clan of the Yolngu people.</t>
+		<h>Yunupingu is a member of the Yolngu people.</h>
+	</pair>
+	<pair id="7" entailment="NONENTAILMENT" task="IE" >
+		<t>Sandra Goudie was first elected to Parliament in the 2002 elections, narrowly winning the seat of Coromandel by defeating Labour candidate Max Purnell and pushing incumbent Green MP Jeanette Fitzsimons into third place.</t>
+		<h>Sandra Goudie was defeated by Max Purnell.</h>
+	</pair>
+	<pair id="8" entailment="NONENTAILMENT" task="IE" >
+		<t>Ms. Minton left Australia in 1961 to pursue her studies in London.</t>
+		<h>Ms. Minton was born in Australia.</h>
+	</pair>
+	<pair id="9" entailment="NONENTAILMENT" task="IE" >
+		<t>Minton's first major part in England was as Maggie Dempster in the premiere of Nicholas Maw's One Man Show. Shortly thereafter, she became a regular member of the company of the Royal Opera House Covent Garden.</t>
+		<h>Maggie Dempster was a member of the company of the Royal Opera House Covent Garden.</h>
+	</pair>
+	<pair id="10" entailment="NONENTAILMENT" task="IE" >
+		<t>Marcel Beaubien unsuccessfully sought election to the Canadian House of Commons as the Conservative candidate in the federal riding of Sarnia-Lambton in 2004.</t>
+		<h>Marcel Beaubien was elected to the Canadian House of Commons.</h>
+	</pair>
+</entailment-corpus>

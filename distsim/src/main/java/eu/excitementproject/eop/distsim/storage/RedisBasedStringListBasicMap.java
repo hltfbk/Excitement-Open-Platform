@@ -3,13 +3,18 @@
  */
 package eu.excitementproject.eop.distsim.storage;
 
+import java.io.FileNotFoundException;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.util.Configuration;
 
 /**
@@ -26,20 +31,31 @@ public class RedisBasedStringListBasicMap {
 	
 	public static final String ELEMENT_SCORE_DELIMITER = "%";
 	
+	private static Logger logger = Logger.getLogger(RedisBasedStringListBasicMap.class);
+	
 	@SuppressWarnings("unused")
 	private static final long serialVersionUID = 1L;
 
 	public static final String ELEMENT_CLASS_NAME_KEY = "element-class-name";
 	
+	public RedisBasedStringListBasicMap(String dbFile) throws FileNotFoundException, RedisRunException {
+		this.dbFile = dbFile;
+		int port = BasicRedisRunner.getInstance().run(dbFile);
+		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
+		jedis = pool.getResource();
+		jedis.connect();
+		jedis.getClient().setTimeoutInfinite();
+	}
+
 	public RedisBasedStringListBasicMap(String host, int port) {
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), host,port);
 		jedis = pool.getResource();
 		jedis.connect();
 		jedis.getClient().setTimeoutInfinite();
 	}
-
-	public RedisBasedStringListBasicMap(ConfigurationParams params) throws ConfigurationException {
-		this(params.get(Configuration.REDIS_HOST),params.getInt(Configuration.REDIS_PORT));
+	
+	public RedisBasedStringListBasicMap(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
+		this(params.get(Configuration.REDIS_FILE));
 	}
 
 
@@ -82,6 +98,19 @@ public class RedisBasedStringListBasicMap {
 	public void setElementClassName(String elementClassName) {
 		jedis.set(ELEMENT_CLASS_NAME_KEY, elementClassName);
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	@Override
+	protected void finalize() {
+		try {
+			BasicRedisRunner.getInstance().close(dbFile);
+		} catch (Exception e) {
+			logger.info(e.toString());
+		}
+	}
 	
+	protected String dbFile;
 	protected Jedis jedis;
 }

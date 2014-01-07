@@ -4,11 +4,11 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import eu.excitementproject.eop.common.representation.parse.AbstractNodeStringUtils;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultEdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.DefaultNodeInfo;
@@ -22,6 +22,10 @@ import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfS
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrenceExtraction;
+import eu.excitementproject.eop.distsim.dependencypath.AbstractNodeStringUtils;
+import eu.excitementproject.eop.distsim.items.Cooccurrence;
+import eu.excitementproject.eop.distsim.items.TextUnit;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;
@@ -43,7 +47,7 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 	}
 
 	public CollNodeSentenceReader(PartOfSpeech pos, boolean bAutoGenerationOfArtificialRoot) {
-		super();
+		super("UTF-8");
 		this.pos = pos;
 		this.position = 0;
 		this.bAutoGenerationOfArtificialRoot = bAutoGenerationOfArtificialRoot;
@@ -166,20 +170,29 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 			lemma = toks[1];
 		
 		NodeInfo nodeInfo = new DefaultNodeInfo(toks[1],lemma,Integer.parseInt(toks[0]),null, 
-				new DefaultSyntacticInfo(pos.createNewPartOfSpeech(toks[4])));
-		EdgeInfo edgeInfo = new DefaultEdgeInfo(new DependencyRelation(toks[7],null)); 
+				new DefaultSyntacticInfo(pos.createNewPartOfSpeech(toks[4])));		
+		EdgeInfo edgeInfo = new DefaultEdgeInfo(new DependencyRelation(toks[7],null));
 		Info info = new DefaultInfo(null,nodeInfo,edgeInfo);
 		return new BasicNode(info);
 	}
 	
 	
 	public static void main(String[] args) throws Exception {
-		CollNodeSentenceReader reader = new CollNodeSentenceReader(new GermanPartOfSpeech(""));
+		CooccurrenceExtraction cooccurrenceExtraction = new eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedPredArgCooccurrenceExtraction();
+		CollNodeSentenceReader reader = new CollNodeSentenceReader(new eu.excitementproject.eop.common.representation.partofspeech.TextProITPartOfSpeech("other"));
+		//CollNodeSentenceReader reader = new CollNodeSentenceReader(new eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech("other"));
 		reader.setSource(new File(args[0]));
-		Pair<BasicNode,Long> pair = null;
-		while ((pair=reader.nextSentence())!=null) {
-			System.out.println(AbstractNodeStringUtils.toIndentedString(pair.getFirst()));
-			System.out.println("\n\n\n");
+		Pair<BasicNode,Long> sentenceAndCount = null;
+		while ((sentenceAndCount=reader.nextSentence())!=null) {
+			
+			Pair<? extends List<? extends TextUnit>, ? extends List<? extends Cooccurrence>> pair = cooccurrenceExtraction.extractCooccurrences(sentenceAndCount.getFirst());
+			List<? extends TextUnit> textUnits = pair.getFirst();
+			List<? extends Cooccurrence> coOccurrences = pair.getSecond();			
+			System.out.println(coOccurrences);
+			
+			//System.out.println(AbstractNodeStringUtils.toIndentedString(sentenceAndCount.getFirst()));
+			//System.out.println("\n\n\n");
+
 		}
 	}
 	

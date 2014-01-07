@@ -25,7 +25,7 @@ public interface ElementFeatureData {
 	 * 
 	 * @return the rank of this entry with refer to the other entries' values
 	 */
-	int getRank();
+	double getRank();
 	
 	
 	/**
@@ -33,5 +33,5 @@ public interface ElementFeatureData {
 	 * 
 	 * @return the number of entruies in the vector
 	 */
-	int getSize();
+	double getSize();
 }

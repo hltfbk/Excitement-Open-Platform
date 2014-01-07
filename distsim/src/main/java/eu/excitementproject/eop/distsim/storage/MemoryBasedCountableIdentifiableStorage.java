@@ -1,6 +1,9 @@
 package eu.excitementproject.eop.distsim.storage;
 
 
+import org.apache.log4j.Logger;
+
+
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Countable;
@@ -29,6 +32,9 @@ import gnu.trove.map.hash.TObjectIntHashMap;
 public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & Countable & Identifiable> 
 	extends PersistenceCountableIdentifiableStorage<T>
 	implements CountableIdentifiableStorage<T>, Resetable {
+	
+	@SuppressWarnings("unused")
+	private final static Logger logger = Logger.getLogger(MemoryBasedCountableIdentifiableStorage.class);
 	
 	public MemoryBasedCountableIdentifiableStorage(ConfigurationParams params) throws LoadingStateException {
 		this();
@@ -108,11 +114,15 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 	 */
 	@Override
 	public synchronized void add(int id, T data) throws UndefinedKeyException, SerializationException {
-		
-		String key = data.toKey();
-		itemkey2id.put(key, id);
-		data.setID(id);
-		id2item.put(id,data);
+		//@tmp
+		//try {
+			String key = data.toKey();
+			itemkey2id.put(key, id);
+			data.setID(id);
+			id2item.put(id,data);
+		//} catch (Exception e) {
+			//logger.warn(e.toString());
+		//}
 	}
 
 	/* (non-Javadoc)
@@ -144,7 +154,7 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 	 * @see org.excitement.distsim.storage.CountableIdentifiableStorage#iterator()
 	 */
 	@Override
-	public ImmutableIterator<T> iterator() {
+	public synchronized ImmutableIterator<T> iterator() {
 		return new TroveBasedValuesIterator<T>(id2item.iterator());
 	}
 
@@ -162,7 +172,7 @@ public class MemoryBasedCountableIdentifiableStorage<T extends Externalizable & 
 	 * @see org.excitement.distsim.storage.CountableIdentifiableStorage#resetCounts()
 	 */
 	@Override
-	public void resetCounts() {
+	public synchronized void resetCounts() {
 		TIntObjectIterator<T> it = id2item.iterator();
 		while (it.hasNext()) {
 			it.advance();

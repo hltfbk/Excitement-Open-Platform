@@ -29,6 +29,11 @@ public class StringBasedTextUnit extends DeafaultTextUnit<String> {
 		super(data, id,count);
 	}
 	
+	public TextUnit copy() {
+		return new StringBasedTextUnit(data, id,(long)count);
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.items.KeyExternalizable#toKey()
 	 */
