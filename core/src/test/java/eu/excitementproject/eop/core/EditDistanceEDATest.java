@@ -1,10 +1,8 @@
 package eu.excitementproject.eop.core;
 
 import org.apache.uima.jcas.JCas;
-import org.junit.*;
-import static org.junit.Assert.*;
 
-//import org.junit.Ignore;
+import org.junit.Ignore;
 //import eu.excitementproject.eop.core.component.distance.CasCreation;
 //import java.util.List;
 import java.util.Iterator;
@@ -13,27 +11,30 @@ import java.util.List;
 import java.io.*;
 
 import org.apache.uima.cas.FSIterator;
-//import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
-import eu.excitementproject.eop.common.exception.ConfigurationException;
-//import eu.excitementproject.eop.lap.LAPException;
-//import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
-import java.util.logging.Logger;
-import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
-import eu.excitementproject.eop.lap.LAPAccess;
-//import eu.excitementproject.eop.lap.LAPException;
-//import eu.excitementproject.eop.util.eval.EDAScorer;
+import org.junit.Test;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import java.util.logging.Logger;
+
 
 /** This class tests EDADistanceEDA training and testing it 
  * on the 3 different languages
- * this test has been disabled because it requires a lot of time to do it 
  */
 public class EditDistanceEDATest {
 
@@ -44,51 +45,10 @@ public class EditDistanceEDATest {
 	@Test
 	public void test() {
 		
-		//testEditDistance();
+		logger.info("testing EditDistanceEDA ...");
 		testItalian();
-		//testEnglish();
-		//testGerman();
-	}
-	
-	
-	public void testEditDistance() {
-		
-		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
-				new EditDistanceEDA<EditDistanceTEDecision>();
-		
-		LAPAccess lap = null;
-		
-		File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_EN.xml");
-
-		CommonConfig config = null;
-		try {
-			config = new ImplCommonConfig(configFile);
-		} catch (ConfigurationException e) {
-			logger.warning(e.getMessage());
-		}
-		
-		try {
-			editDistanceEDA.initialize(config);
-			
-			JCas test1Cas;
-			
-			lap = new TreeTaggerEN();
-				
-			test1Cas = lap.generateSingleTHPairCAS("Hubble is a telescope, but it is also a spacecraft.","Hubble is a telescope.");	
-
-			logger.info("result:");
-			EditDistanceTEDecision decision = editDistanceEDA.process(test1Cas);
-			logger.info(decision.getDecision().toString());
-			logger.info(String.valueOf(decision.getConfidence()));
-			
-			editDistanceEDA.shutdown();
-			logger.info("shuts down.");
-			
-			assertTrue(null, decision.getConfidence() > 0.1);
-			
-		} catch (Exception e) {
-			logger.info(e.getMessage());
-		}
+		testEnglish();
+		testGerman();
 		
 	}
 	
@@ -101,25 +61,30 @@ public class EditDistanceEDATest {
 	
 		ArrayList<String> list = new ArrayList<String>();
 		
-		//EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
-			//	new EditDistanceEDA<EditDistanceTEDecision>();
-		
 		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
 				new EditDistanceEDA<EditDistanceTEDecision>();
 		
 		try {
 		
 			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_IT.xml");
-			File testDir = new File("/tmp/IT/test/");
+			//String trainDir = "./src/test/resources/data-set/ITA/dev/";
+			//File testDir = new File("./src/test/resources/data-set/ITA/test/");
+			File testDir = new File("/tmp/ITA/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
 			
+			//training
 			long startTime = System.currentTimeMillis(); 
+			//editDistanceEDA.setTrainDIR(trainDir);
+			//editDistanceEDA.setWriteModel(false);
 			editDistanceEDA.startTraining(config);
 			long endTime = System.currentTimeMillis(); 
 			logger.info("Time:" + (endTime - startTime)/1000);
 			editDistanceEDA.shutdown();
 			
+			//testing
+			editDistanceEDA = 
+					new EditDistanceEDA<EditDistanceTEDecision>();
 			editDistanceEDA.initialize(config);
 			
 			startTime = System.currentTimeMillis(); 
@@ -135,13 +100,12 @@ public class EditDistanceEDATest {
 			endTime = System.currentTimeMillis(); 
 			logger.info("Time:" + (endTime - startTime)/1000);
 			
-			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
-			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
-			//String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
+			File annotatedFileName = new File("/tmp/EditDistanceEDA_IT_Result.txt");
+			String evaluationFileName = "/tmp/EditDistanceEDA_IT_Eval.xml";
 
 			save(annotatedFileName, list, false);
 			list.clear();
-			//EDAScorer.score(annotatedFileName, evaluationFileName);
+			score(annotatedFileName, evaluationFileName);
 			editDistanceEDA.shutdown();
 		
 		} catch(Exception e) {
@@ -162,25 +126,31 @@ public class EditDistanceEDATest {
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		EditDistancePSOEDA<EditDistanceTEDecision> editDistanceEDA = 
-				new EditDistancePSOEDA<EditDistanceTEDecision>();
+		EditDistanceEDA<EditDistanceTEDecision> editDistanceEDA = 
+				new EditDistanceEDA<EditDistanceTEDecision>();
 		
 		try {
 			
 			//Without lexical resources
 		    File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_EN.xml");
-	       // File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_EN.xml_Token_Result.txt");
-		    //String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_EN.xml_Token_Result.txt_Eval.xml";	
+	        //String trainDir = "./src/test/resources/data-set/ENG/dev/";
+		    //File testDir = new File("./src/test/resources/data-set/ENG/test/");
 		    File testDir = new File("/tmp/ENG/test/");
 			
 		    CommonConfig config = new ImplCommonConfig(configFile);
 		    
+		    //training
 		    long startTime = System.currentTimeMillis(); 
+		    //editDistanceEDA.setTrainDIR(trainDir);
+		    //editDistanceEDA.setWriteModel(false);
 		    editDistanceEDA.startTraining(config);
 		    long endTime = System.currentTimeMillis(); 
 		    logger.info("Time:" + (endTime - startTime)/1000);
-		    
-			editDistanceEDA.shutdown();
+		    editDistanceEDA.shutdown();
+			
+		    //testing
+			editDistanceEDA = 
+					new EditDistanceEDA<EditDistanceTEDecision>();
 			editDistanceEDA.initialize(config);
 		    
 			startTime = System.currentTimeMillis(); 
@@ -195,13 +165,12 @@ public class EditDistanceEDATest {
 			endTime = System.currentTimeMillis(); 
 			logger.info("Time:" + (endTime - startTime)/1000);
 			
-			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
-			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
-			//String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
+			File annotatedFileName = new File("/tmp/EditDistanceEDA_EN_Result.txt");
+			String evaluationFileName = "/tmp/EditDistanceEDA_EN_Eval.xml";
 			
 			save(annotatedFileName, list, false);
 			list.clear();
-			//EDAScorer.score(annotatedFileName, evaluationFileName);
+			score(annotatedFileName, evaluationFileName);
 			editDistanceEDA.shutdown();
 			
 		} catch(Exception e) {
@@ -229,18 +198,24 @@ public class EditDistanceEDATest {
 			
 			//Without lexical resources
 			File configFile = new File("./src/main/resources/configuration-file/EditDistanceEDA_DE.xml");
-			//File annotatedFileName = new File("./src/main/resources/results/EditDistanceEDA_DE.xml_Token_Result.txt");
-			//String evaluationFileName = "./src/main/resources/results/EditDistanceEDA_DE.xml_Token_Result.txt_Eval.xml";
+			//String trainDir = "./src/test/resources/data-set/GER/dev/";
+			//File testDir = new File("./src/test/resources/data-set/GER/test/");
 			File testDir = new File("/tmp/GER/test/");
 			
 			CommonConfig config = new ImplCommonConfig(configFile);
 			
+			//training
 			long startTime = System.currentTimeMillis(); 
+			//editDistanceEDA.setTrainDIR(trainDir);
+			//editDistanceEDA.setWriteModel(false);
 			editDistanceEDA.startTraining(config);
 			long endTime = System.currentTimeMillis(); 
 			logger.info("Time:" + (endTime - startTime)/1000);
-			
 			editDistanceEDA.shutdown();
+			
+			//testing
+			editDistanceEDA = 
+					new EditDistanceEDA<EditDistanceTEDecision>();
 			editDistanceEDA.initialize(config);
 			
 			startTime = System.currentTimeMillis(); 
@@ -255,13 +230,12 @@ public class EditDistanceEDATest {
 			endTime = System.currentTimeMillis(); 
 			logger.info("Time:" + (endTime - startTime)/1000);
 			
-			String modelFileName = (new File(editDistanceEDA.getModelFile())).getName();
-			File annotatedFileName = new File("./src/main/resources/results/" + modelFileName + "_Result.txt");
-			//String evaluationFileName = "./src/main/resources/results/" + modelFileName + "_Eval.xml";
+			File annotatedFileName = new File("/tmp/EditDistanceEDA_GER_Result.txt");
+			String evaluationFileName = "/tmp/EditDistanceEDA_GER_Eval.xml";
 			
 			save(annotatedFileName, list, false);
 			list.clear();
-			//EDAScorer.score(annotatedFileName, evaluationFileName);
+			score(annotatedFileName, evaluationFileName);
 
 			editDistanceEDA.shutdown();
 			
@@ -331,6 +305,157 @@ public class EditDistanceEDATest {
     			writer.close();
     	}
 
+    }
+    
+    /**
+	 * calculate the accuracy
+	 */
+    public static void score(File resultFile, String outputFile) {
+		BufferedReader input;
+		float pos_corrt = 0f;
+		float pos_wrong = 0f;
+		float neg_corrt = 0f;
+		float neg_wrong = 0f;
+		try {
+			input = new BufferedReader(new InputStreamReader(new FileInputStream(resultFile), "UTF-8"));
+			String line = "";
+			while ((line = input.readLine()) != null) {
+				if (line.trim().length() == 0) {
+					logger.warning("Empty line. Ignore...");
+					continue;
+				}
+				String[] items = line.split("\t");
+				if (items.length != 4) {
+					logger.warning("Wrong format! Ignore the line...");
+					continue;
+				}
+				if (items[1].equalsIgnoreCase("Entailment")) {
+					if (items[2].equalsIgnoreCase("Entailment")) {
+						pos_corrt += 1f;
+					} else if (items[2].equalsIgnoreCase("NonEntailment")) {
+						pos_wrong += 1f;
+					} else {
+						logger.warning("Wrong format! Ignore the line...");
+						continue;
+					}
+				} else if (items[1].equalsIgnoreCase("NonEntailment")) {
+					if (items[2].equalsIgnoreCase("NonEntailment")) {
+						neg_corrt += 1f;
+					} else if (items[2].equalsIgnoreCase("Entailment")) {
+						neg_wrong += 1f;
+					} else {
+						logger.warning("Wrong format! Ignore the line...");
+						continue;
+					}
+				} else {
+					logger.warning("Wrong format! Ignore the line...");
+					continue;
+				}
+			}
+			input.close();
+//			logger.info(String.valueOf(pos_corrt));
+//			logger.info(String.valueOf(pos_wrong));
+//			logger.info(String.valueOf(neg_corrt));
+//			logger.info(String.valueOf(neg_wrong));
+			
+			float EntailmentGold = pos_corrt + pos_wrong;
+			float NonEntailmentGold = neg_corrt + neg_wrong;
+			float Sum = EntailmentGold + NonEntailmentGold;
+			float EntailmentPrecision = pos_corrt / (pos_corrt + neg_wrong);
+			float EntailmentRecall = pos_corrt / EntailmentGold;
+			float EntailmentFMeasure = 2 * EntailmentPrecision * EntailmentRecall / (EntailmentPrecision + EntailmentRecall);
+			float NonEntailmentPrecision = neg_corrt / (neg_corrt + pos_wrong);
+			float NonEntailmentRecall = neg_corrt / NonEntailmentGold;
+			float NonEntailmentFMeasure = 2 * NonEntailmentPrecision * NonEntailmentRecall / (NonEntailmentPrecision + NonEntailmentRecall);
+			float Accuracy = (pos_corrt + neg_corrt) / Sum;
+			
+			// output the result into an XML file
+			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			Document doc = docBuilder.newDocument();
+			Element root = doc.createElement("Result");
+			Attr attr_EDA = doc.createAttribute("EDA_Configuration");
+			attr_EDA.setValue(resultFile.getName());
+			root.setAttributeNode(attr_EDA);
+			doc.appendChild(root);
+	 
+			Element pairs = doc.createElement("Total_Pairs");
+			pairs.appendChild(doc.createTextNode(String.valueOf((int)Sum)));
+			root.appendChild(pairs);
+			
+			Element acc = doc.createElement("Accuracy");
+			acc.appendChild(doc.createTextNode(String.valueOf(Accuracy)));
+			root.appendChild(acc);
+			
+			// positive cases
+			Element pos = doc.createElement("Positive_Pairs");
+			Attr attr_pos = doc.createAttribute("Number");
+			attr_pos.setValue(String.valueOf((int)EntailmentGold));
+			pos.setAttributeNode(attr_pos);
+			root.appendChild(pos);
+			
+			Element pos_pre = doc.createElement("Precision");
+			pos_pre.appendChild(doc.createTextNode(String.valueOf(EntailmentPrecision)));
+			pos.appendChild(pos_pre);
+			
+			Element pos_rec = doc.createElement("Recall");
+			pos_rec.appendChild(doc.createTextNode(String.valueOf(EntailmentRecall)));
+			pos.appendChild(pos_rec);
+			
+			Element pos_f = doc.createElement("F_Measure");
+			pos_f.appendChild(doc.createTextNode(String.valueOf(EntailmentFMeasure)));
+			pos.appendChild(pos_f);
+			
+			Element pos_cor = doc.createElement("Classified_As_Positive");
+			pos_cor.appendChild(doc.createTextNode(String.valueOf((int)pos_corrt)));
+			pos.appendChild(pos_cor);
+			
+			Element pos_wro = doc.createElement("Classified_As_Negative");
+			pos_wro.appendChild(doc.createTextNode(String.valueOf((int)pos_wrong)));
+			pos.appendChild(pos_wro);
+			
+			// negative cases
+			Element neg = doc.createElement("Negative_Pairs");
+			Attr attr_neg = doc.createAttribute("Number");
+			attr_neg.setValue(String.valueOf((int)NonEntailmentGold));
+			neg.setAttributeNode(attr_neg);
+			root.appendChild(neg);
+			
+			Element neg_pre = doc.createElement("Precision");
+			neg_pre.appendChild(doc.createTextNode(String.valueOf(NonEntailmentPrecision)));
+			neg.appendChild(neg_pre);
+			
+			Element neg_rec = doc.createElement("Recall");
+			neg_rec.appendChild(doc.createTextNode(String.valueOf(NonEntailmentRecall)));
+			neg.appendChild(neg_rec);
+			
+			Element neg_f = doc.createElement("F_Measure");
+			neg_f.appendChild(doc.createTextNode(String.valueOf(NonEntailmentFMeasure)));
+			neg.appendChild(neg_f);
+			
+			Element neg_wro = doc.createElement("Classified_As_Positive");
+			neg_wro.appendChild(doc.createTextNode(String.valueOf((int)neg_wrong)));
+			neg.appendChild(neg_wro);
+			
+			Element neg_cor = doc.createElement("Classified_As_Negative");
+			neg_cor.appendChild(doc.createTextNode(String.valueOf((int)neg_corrt)));
+			neg.appendChild(neg_cor);
+			
+			// write the content into xml file
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(outputFile));
+	 
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.transform(source, result);
+	 
+			logger.info("File saved!");
+			
+		} catch (Exception e) {
+			logger.warning(e.getMessage());
+		}
+		
     }
 	
 }
