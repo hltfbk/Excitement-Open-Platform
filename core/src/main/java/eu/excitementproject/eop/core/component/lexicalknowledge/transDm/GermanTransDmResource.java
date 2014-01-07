@@ -5,6 +5,8 @@ package eu.excitementproject.eop.core.component.lexicalknowledge.transDm;
 //import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 //import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
@@ -14,7 +16,8 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.core.component.lexicalknowledge.LexicalResourceNothingToClose;
+
+
 
 
 
@@ -44,17 +47,21 @@ import java.util.Scanner;
  * For each word pair, the similarity table contains the maximum of the similarities 
  * in 1. and 2.
  *   
- * We consider only the 10k most frequent German words observed in the similarity table.
- * Implemented similarity measures are:
+ * We consider only the 2 million word pairs per similarity measure with the highest 
+ * similarity values achieved with this method. Implemented similarity measures are:
  * <li>cosine</li>
  * <li>balAPinc</li>
  * They can be used in combination or individually (cosine, balapinc, all).
  * 
  * 
+ * The two similarity measure files are loaded within 20 seconds on a computer with 
+ * four 2.5GHz cores and 8GB RAM.
+ * 
+ * 
  * @author Britta Zeller <zeller@cl.uni-heidelberg.de> 
  * @since Nov. 2013 
  */
-public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanTransDmInfo> { //implements Component, LexicalResource<GermanTransDmInfo> {
+public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo> {
 
 	
 	/** Stores information if the call is made for normal or reverse sims, thus: 
@@ -97,7 +104,7 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 	 */
 	public GermanTransDmResource(String simMeasure) throws ConfigurationException
 	{ 
-
+		
 		ArrayList<String> listResource = new ArrayList<String>();
 		
 		if (simMeasure.equals("all")) {
@@ -115,7 +122,7 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 		}
 		
 		for (Enum<SimMeasure> sim : simMeasures) {
-			listResource.add("/dewacTransDm-data/sdewac.synt.transdm.10k." + sim.toString());
+			listResource.add("/transDm-data/sdewac.synt.transdm.2mil." + sim.toString()); //sdewac.synt.transdm.10k." + sim.toString());
 		}
 		
 		try {
@@ -411,6 +418,13 @@ public class GermanTransDmResource extends LexicalResourceNothingToClose<GermanT
 			}
 		}	
 		return result;
+	}
+
+
+	@Override
+	public void close() throws LexicalResourceCloseException {
+		this.sims = null;
+		this.reverse_sims = null;
 	}
 
 }
