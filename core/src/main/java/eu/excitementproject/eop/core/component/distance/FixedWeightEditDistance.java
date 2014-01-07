@@ -286,7 +286,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     /**
 	 * set the weight of the substitute edit distant operation
 	 * 
-	 * @param mSubstotuteWeight the value of the edit distant operation
+	 * @param mSubstituteWeight the value of the edit distant operation
 	 *
 	 * @return
 	 */
