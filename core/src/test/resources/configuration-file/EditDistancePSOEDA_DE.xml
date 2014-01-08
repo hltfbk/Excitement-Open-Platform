@@ -115,9 +115,9 @@ a configuration file means allowing other users to replicate the same experiment
 		<property name="substituteValuesRange">0,5</property>
 		
 		<!-- <property name="trainDir">/tmp/</property> -->
-		<property name="trainDir">./src/test/resources/data-set/GER/dev/</property>
+		<property name="trainDir">../core/src/test/resources/data-set/GER/dev/</property>
 		<!-- <property name="testDir">/tmp/</property> -->
-		<property name="testDir">./src/test/resources/data-set/GER/test/</property>
+		<property name="testDir">../core/src/test/resources/data-set/GER/test/</property>
 		<!-- measure to be optimized: accuracy, f1 -->
 		<property name="measure">accuracy</property>
 	    <!-- component to be used by EDA: [FixedWeightTokenEditDistance|FixedWeightLemmaEditDistance] 
@@ -132,15 +132,15 @@ a configuration file means allowing other users to replicate the same experiment
 	<section name="model">
 	
 	    <!-- threshold -->
-		<property name="threshold">0.6634203122211186</property>
+		<property name="threshold">0.4666693497051399</property>
 		<!-- the accuracy obtained on the training data set -->
-		<property name="trainingAccuracy">0.6</property>
+		<property name="trainingAccuracy">0.7</property>
 		
 		<!-- weights of the edit distance operations -->
 		<property name="match">0.0</property>
-		<property name="delete">2.1745722388852777</property>
-		<property name="insert">3.5768725992944708</property>
-		<property name="substitute">3.3738430481885913</property>
+		<property name="delete">3.2803764673791243</property>
+		<property name="insert">3.400694189550215</property>
+		<property name="substitute">0.07490879776612558</property>
 		
 	</section>
 	

@@ -28,6 +28,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
 import eu.excitementproject.eop.biutee.rteflow.preprocess.InstrumentsFactory;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemMain;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
@@ -155,7 +156,7 @@ public class RTEPairsPreProcessor
 	
 	private void readConfigurationFile() throws ConfigurationFileDuplicateKeyException, ConfigurationException, NumberFormatException, TeEngineMlException, ParserRunException, NamedEntityRecognizerException, TextPreprocessorException
 	{
-		configurationFile = new ConfigurationFile(this.configurationFileName);
+		configurationFile = SystemInitialization.loadConfigurationFile(this.configurationFileName);
 		configurationFile.setExpandingEnvironmentVariables(true);
 		ConfigurationParams params = configurationFile.getModuleConfiguration(RTE_PAIRS_PREPROCESS_MODULE_NAME);
 		

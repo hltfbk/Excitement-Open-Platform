@@ -33,6 +33,7 @@ public class WorkaroundTextPreprocessor implements TextPreprocessor
 		WORKAROUND_SENTENCES.put("\" ...","...");
 	}
 	
+	
 
 	public void setText(String text) throws TextPreprocessorException
 	{
@@ -46,12 +47,15 @@ public class WorkaroundTextPreprocessor implements TextPreprocessor
 		{
 			String wordaround = WORKAROUND_SENTENCES.get(this.sentence);
 			
-			logger.info("The given sentence exists in the work-around map.\n" +
+			logger.warn("The given sentence exists in the work-around map.\n" +
 					"Sentence is: \""+this.sentence+"\"\n" +
 							"It will be converted to \""+wordaround+"\"");
 			
 			this.sentence = wordaround;
 		}
+		
+		
+
 	}
 
 	public String getPreprocessedText() throws TextPreprocessorException

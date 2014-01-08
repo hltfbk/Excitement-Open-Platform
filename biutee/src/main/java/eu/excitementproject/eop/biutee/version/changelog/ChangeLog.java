@@ -176,6 +176,11 @@ public class ChangeLog
 				ChangeLogItem[] logArray = new ChangeLogItem[]
 						{
 						// example new ChangeLogItem(VERSION_BEFORE_CHANGE, ChangeType.FIXED, "change description"),
+						new ChangeLogItem(VER_2_5_0, ChangeType.CHANGED, "Improve syntactic resource runtime."),
+						new ChangeLogItem(VER_2_5_0, ChangeType.CHANGED, "Rewrite TemplatesFromTree to get rid from legacy code."),
+						new ChangeLogItem(VER_2_5_0, ChangeType.ADDED, "Add ability to exclude on the fly transformations via configuration file."),
+						new ChangeLogItem(VER_2_5_0, ChangeType.CHANGED, "Migrate to Excitement configuration file."),
+						new ChangeLogItem(VER_2_5_0, ChangeType.FIXED, "Develope a new ArkRef wrapper to get rid of many bugs."),
 						new ChangeLogItem(VER_2_5_0, ChangeType.ADDED, "New high-level flow implementation."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.CHANGED, "Migration (Renames & Maven) of code into Excitement. Splitting the code into \"transformations\" project and \"biutee\" project."),
 						new ChangeLogItem(VER_2_4_1, ChangeType.ADDED, "Learning models are stored and loaded into/from XML files."),

@@ -1,6 +1,8 @@
 package eu.excitementproject.eop.common.configuration;
 
 import java.io.File;
+import java.util.Set;
+
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 
 /**
@@ -24,19 +26,21 @@ Note that set methods are provided mainly for user level or transduction layer l
 are not expected to be called from a entailment core component.
 */
 
-public abstract class NameValueTable {
+public interface NameValueTable {
 	
-	abstract public String getString(String name) throws ConfigurationException;
+	public String getString(String name) throws ConfigurationException;
 	
-	abstract public Integer getInteger(String name) throws ConfigurationException;
+	public Integer getInteger(String name) throws ConfigurationException;
 	
-	abstract public Double getDouble(String name) throws ConfigurationException;
+	public Double getDouble(String name) throws ConfigurationException;
 	
-	abstract public File getFile(String name) throws ConfigurationException;
+	public File getFile(String name) throws ConfigurationException;
 	
-	abstract public File getDirectory(String name) throws ConfigurationException;
+	public File getDirectory(String name) throws ConfigurationException;
 	
-	abstract public void setString(String name, String value);
+	public void setString(String name, String value);
+	
+	public Set<String> keySet();
 	
 	/*
 	abstract public void setInteger(String name, Integer value); 

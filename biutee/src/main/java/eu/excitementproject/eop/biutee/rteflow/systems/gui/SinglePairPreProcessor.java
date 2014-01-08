@@ -4,6 +4,7 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_MODULE_NAME;
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
 import eu.excitementproject.eop.biutee.rteflow.preprocess.InstrumentsFactory;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
@@ -107,7 +108,7 @@ public class SinglePairPreProcessor
 
 	private void readConfigurationFile() throws ConfigurationFileDuplicateKeyException, ConfigurationException, NumberFormatException, TeEngineMlException, ParserRunException, NamedEntityRecognizerException, TextPreprocessorException
 	{
-		configurationFile = new ConfigurationFile(this.configurationFileName);
+		configurationFile = SystemInitialization.loadConfigurationFile(this.configurationFileName);
 		configurationFile.setExpandingEnvironmentVariables(true);
 		ConfigurationParams params = configurationFile.getModuleConfiguration(RTE_PAIRS_PREPROCESS_MODULE_NAME);
 		instruments = new InstrumentsFactory().getDefaultInstruments(params);

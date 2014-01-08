@@ -35,6 +35,9 @@ public class IsA_ByCoreferenceFinder implements Finder<IsASpecification>
 		this.textTree = textTree;
 	}
 
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	@Override
 	public void find() throws OperationException
 	{

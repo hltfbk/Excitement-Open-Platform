@@ -1,6 +1,10 @@
 package eu.excitementproject.eop.core;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 
@@ -24,6 +28,7 @@ public class ImplCommonConfig extends CommonConfig
 	
 	private File file;
 	private Document doc;
+	private List<String> sectionNames = null;
 	
 	/**
 	 * Load a common configuration from XML configuration file 
@@ -45,6 +50,37 @@ public class ImplCommonConfig extends CommonConfig
 	{
 		file = null;
 		doc = null;
+	}
+	
+	public List<String> getSectionNames()
+	{
+		if (null==this.sectionNames)
+		{
+			if (doc != null)
+			{
+				synchronized(this)
+				{
+					final String sectionTagName = "section";
+					NodeList sectionList = doc.getElementsByTagName(sectionTagName);
+					List<String> listNames = new ArrayList<>(sectionList.getLength());
+					for (int i = 0; i < sectionList.getLength(); i++)
+					{
+						Node sectionNode = sectionList.item(i);
+						if (sectionNode.getNodeType() == Node.ELEMENT_NODE)
+						{
+							Element sectionElement = (Element)sectionNode;
+							String name = sectionElement.getAttribute("name");
+							if (name != null)
+							{
+								listNames.add(name);
+							}
+						}
+					}
+					this.sectionNames = Collections.unmodifiableList(listNames);
+				}
+			}
+		}
+		return this.sectionNames;
 	}
 	
 	/**
@@ -110,7 +146,7 @@ public class ImplCommonConfig extends CommonConfig
 			}
 			
 	    } catch (Exception e) {
-	    	throw new ConfigurationException(e.getMessage());
+	    	throw new ConfigurationException("Failed to read the configuration file contents. Please see nested exception.",e);
 	    }
 		
 		if (componentNameSection == false)
@@ -200,7 +236,7 @@ public class ImplCommonConfig extends CommonConfig
 			}
 			
 	    } catch (Exception e) {
-	    	throw new ConfigurationException(e.getMessage());
+	    	throw new ConfigurationException("Failed to read the configuration file contents. Please see nested exception.",e);
 	    }
 		
 		if (componentNameSection == false)
@@ -256,7 +292,8 @@ a file and never saved before.
 			doc.getDocumentElement().normalize();
 		 
 		} catch (Exception e) {
-			throw new ConfigurationException(e.getMessage());
+			throw new ConfigurationException("Failed to read the XML configuration file.\n" +
+					"It is recommended to try to open the XML file in a web browser, and inspect the error.",e);
 		}
 		
 		return doc;

@@ -72,6 +72,9 @@ public class SubstitutionSubtreeFinder implements Finder<SubstitutionSubtreeSpec
 			}, "Substitution to '"+hypothesisWord+"':");
 	}
 
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	public void find() {
 			specs = new LinkedHashSet<SubstitutionSubtreeSpecification>();
 

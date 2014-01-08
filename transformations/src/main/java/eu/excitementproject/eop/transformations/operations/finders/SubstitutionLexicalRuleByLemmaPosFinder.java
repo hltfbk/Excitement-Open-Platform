@@ -61,6 +61,8 @@ public class SubstitutionLexicalRuleByLemmaPosFinder<T extends LexicalRule> impl
 		this.searchingForMultiWords = searchingForMultiWords;
 	}
 
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
 
 
 	@Override

@@ -14,9 +14,10 @@ import java.util.Map;
  */
 public abstract class Proof implements Serializable
 {
-	private static final long serialVersionUID = -4536915487361835659L;
+	private static final long serialVersionUID = 391914455323901395L;
 	
 	@Override
 	public abstract String toString();
 	public abstract Map<Integer, Double> getFeatureVector();
+	public abstract TimeStatistics getTimeStatistics();
 }

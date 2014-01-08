@@ -18,7 +18,6 @@ import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.ExtendedNodeConstructor;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreePatcher;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
@@ -39,11 +38,12 @@ public class IntroductionRuleApplicationOperation extends GenerationOperationFor
 {
 	public IntroductionRuleApplicationOperation(TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesisTree, SyntacticRule<Info, BasicNode> rule,
-			BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree) throws OperationException
+			BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree, boolean collapseMode) throws OperationException
 	{
 		super(textTree, hypothesisTree);
 		this.rule = rule;
 		this.mapLhsToTree = mapLhsToTree;
+		this.collapseMode = collapseMode;
 	}
 	
 	protected void setOverrideRelationToArtificialRoot(EdgeInfo overrideRelationToArtificialRoot) throws UnsupportedPosTagStringException
@@ -67,7 +67,7 @@ public class IntroductionRuleApplicationOperation extends GenerationOperationFor
 		{
 			rhsInstantiation.generate();
 			ExtendedNode fromRhsInstantiation = rhsInstantiation.getGeneratedTree();
-			if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
+			if (collapseMode)
 			{
 				TreePatcher<ExtendedInfo, ExtendedNode> treePatcher = new TreePatcher<ExtendedInfo, ExtendedNode>(textTree.getTree(),fromRhsInstantiation,new ExtendedNodeConstructor());
 				treePatcher.generate();
@@ -110,6 +110,9 @@ public class IntroductionRuleApplicationOperation extends GenerationOperationFor
 	protected SyntacticRule<Info, BasicNode> rule;
 	protected BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree;
 	protected ExtendedInfo overrideRelationToArtificialRoot = null;
+	
+	protected final boolean collapseMode;
+
 	
 	private static final EdgeInfo overrideRelationArtificialRoot = new DefaultEdgeInfo(new DependencyRelation("", null));
 

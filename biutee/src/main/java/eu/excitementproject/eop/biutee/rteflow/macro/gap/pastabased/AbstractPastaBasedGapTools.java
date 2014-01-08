@@ -24,6 +24,11 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentSt
 
 
 /**
+ * A base-class for implementations of gap tools which use PASTA to measure the gap between the
+ * text parse-tree and the hypothesis parse-tree.
+ * <P>
+ * Note that {@link GapHeuristicMeasure} is fully implemented here. The implementation takes the
+ * difference between cost-with-gap and cost-without-gap as the measure of the gap.
  * 
  * @author Asher Stern
  * @since Aug 20, 2013

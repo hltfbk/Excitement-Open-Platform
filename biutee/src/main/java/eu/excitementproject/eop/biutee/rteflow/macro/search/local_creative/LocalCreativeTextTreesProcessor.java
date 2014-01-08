@@ -109,15 +109,7 @@ public class LocalCreativeTextTreesProcessor extends LLGSTextTreesProcessor
 			{
 				double previousTreeGap = getHeuristicGap(previousIterationTree);
 				LocalCreativeTreeElement elementWithSmallestGap = pickElementWithSmallestGapMeasure(elements);
-				boolean gapMode_GapIsDecreasing = true;
-				if (elementWithSmallestGap.getGap()<previousTreeGap)
-				{
-					gapMode_GapIsDecreasing=true;
-				}
-				else
-				{
-					gapMode_GapIsDecreasing=false;
-				}
+				boolean gapMode_GapIsDecreasing = (elementWithSmallestGap.getGap()<previousTreeGap);
 				return gapMode_GapIsDecreasing;
 			}
 		}

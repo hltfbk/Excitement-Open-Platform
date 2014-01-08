@@ -7,6 +7,7 @@ import eu.excitementproject.eop.common.datastructures.ValueSetMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
+import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.operations.GenerationOperation;
 import eu.excitementproject.eop.transformations.operations.specifications.SubstituteNodeSpecification;
 //import eu.excitementproject.eop.transformations.operations.updater.FeatureVectorUpdater;
@@ -48,6 +49,10 @@ public class ChangeAnnotationFinder implements Finder<SubstituteNodeSpecificatio
 		this.text = text;
 		this.hypothesis = hypothesis;
 	}
+	
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 
 	@Override
 	public void find()

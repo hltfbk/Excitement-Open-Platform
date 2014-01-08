@@ -11,7 +11,6 @@ import eu.excitementproject.eop.transformations.operations.specifications.IsASpe
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.ExtendedNodeConstructor;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.EasyFirst_IsA_Constructor;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreePatcher;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
@@ -33,13 +32,14 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> hypothesisTree,
 			IsASpecification isASpecification,
-			PARSER parser)
+			PARSER parser, boolean collapseMode)
 			throws OperationException
 	{
 		super(textTree, hypothesisTree);
 		this.isASpecification = isASpecification;
 		this.parser = parser;
 		if (null==this.parser) throw new OperationException("The given parser configuration is null.");
+		this.collapseMode = collapseMode;
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 			EasyFirst_IsA_Constructor isAConstructor = new EasyFirst_IsA_Constructor(isASpecification.getEntity1(), isASpecification.getEntity2());
 			isAConstructor.construct();
 			ExtendedNode theIsA_generated = isAConstructor.getGeneratedTree();
-			if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
+			if (collapseMode)
 			{
 				TreePatcher<ExtendedInfo, ExtendedNode> patcher = new TreePatcher<ExtendedInfo, ExtendedNode>(textTree.getTree(),theIsA_generated, new ExtendedNodeConstructor());
 				patcher.generate();
@@ -100,5 +100,6 @@ public class IsAConstructionOperation extends GenerationOperationForExtendedNode
 
 
 	private IsASpecification isASpecification;
-	private PARSER parser;
+	private final PARSER parser;
+	private final boolean collapseMode;
 }

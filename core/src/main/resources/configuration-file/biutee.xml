@@ -18,7 +18,7 @@
 		<property name = "easyfirst_stanford_pos_tagger">../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger</property>
 		<property name = "stanford_ner_classifier_path">../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</property>
 		<property name = "new_normalizer">../third-party/BiuNormalizer/string_rules.txt</property>
-		<property name = "coreferencer">ARKREF</property>
+		<property name = "coreferencer">ARKREF_FILES</property>
 
 
 		<property name = "easyfirst_host">localhost</property>
@@ -43,7 +43,7 @@
 		<property name = "easyfirst_stanford_pos_tagger">../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger</property>
 		<property name = "stanford_ner_classifier_path">../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</property>
 		<property name = "new_normalizer">../third-party/BiuNormalizer/string_rules.txt</property>
-		<property name = "coreferencer">ARKREF</property>
+		<property name = "coreferencer">ARKREF_FILES</property>
 
 		<!-- optional parameter -->
 		<!--<property name = "is_novelty_task">false</property>-->
@@ -64,13 +64,15 @@
 		<property name = "lemmatizer_rule_file">../third-party/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
 		<property name = "parser">EASYFIRST</property>
 		<property name = "threads">1</property>
-		<property name = "unigram_lidston_ser_file">Reuters-PPD_unigram.ser</property>
+		<property name = "unigram_lidston_ser_file">unigram_new.ser</property>
+		<property name = "gap_hybrid_mode">false</property>
+		<property name = "collapse-mode">true</property>
 
 		<property name = "search_model">model_search_1.xml</property>
 		<property name = "predictions_model">model_predictions_2.xml</property>
 
 		<!-- optional parameters -->
-		<property name = "dummy_prediction_classifier">false</property>
+		<!--<property name = "dummy_prediction_classifier">false</property>-->
 		<!--<property name = "search_classifier_is_reasonable_guess">false</property>-->
 	</section>
 
@@ -83,10 +85,10 @@
 		<property name = "lemmatizer_rule_file">../third-party/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
 		<property name = "parser">EASYFIRST</property>
 		<property name = "threads">1</property>
-		<property name = "unigram_lidston_ser_file">Reuters-PPD_unigram.ser</property>
+		<property name = "unigram_lidston_ser_file">unigram_new.ser</property>
 
-		<property name = "serialized_samples">labeled_samples2.ser</property>
-		<property name = "search_classifier_samples">labeled_samples1.ser</property>
+		<property name = "search_model">model_search_1.xml</property>
+		<property name = "predictions_model">model_predictions_2.xml</property>
 
 		<!-- optional parameter -->
 		<!--<property name = "is_novelty_task">false</property>-->
@@ -102,6 +104,13 @@
 		<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC</property>
 		<property name = "multiword_resources">WORDNET,VERB_OCEAN</property>
 		<property name = "stop_words">stopwords-Eyal.txt</property>
+	</section>
+
+
+	<section name="pasta-builder">
+		<property name="nomlex-file">/media/Data/asher/data/code/eclipse_juno_1_7_linux/wrappers/data/nominalizations/nomlex-plus.txt</property>
+		<property name="nomlex-class-role-table">/media/Data/asher/data/code/eclipse_juno_1_7_linux/wrappers/data/nominalizations/ClassRoleTable.txt</property>
+		<property name="mode">EXPANDED</property>
 	</section>
 
 
@@ -158,14 +167,14 @@
 		<property name = "connectionString">jdbc:mysql://$MYSQL/lin?user=db_readonly&amp;password=BIUTEE</property>
 		<property name = "user">db_readonly</property>
 		<property name = "password">BIUTEE</property>
-		<property name = "limit on retrieved rules">20</property>
+		<property name = "limit on retrieved rules">50</property>
 	</section>
 
 	<section name = "LinProximityOriginal">
 		<property name = "database_url">jdbc:mysql://$MYSQL/lin?user=db_readonly&amp;password=BIUTEE</property>
 		<property name = "user">db_readonly</property>
 		<property name = "password">BIUTEE</property>
-		<property name = "limit on retrieved rules">20</property>
+		<property name = "limit on retrieved rules">50</property>
 	</section>
 
 	<section name = "LinDependencyReuters">
@@ -181,7 +190,7 @@
 		<property name = "database_url">jdbc:mysql://$MYSQL/original_dirt?user=db_readonly&amp;password=BIUTEE</property>
 		<property name = "templates_table">original_dirt.od_easyfirst_templates</property>
 		<property name = "rules_table">original_dirt.od_rules</property>
-		<property name = "limit_number_of_rules">20</property>
+		<property name = "limit_number_of_rules">50</property>
 	</section>
 
 <!-- No easy-first templates
@@ -220,7 +229,7 @@
 		<property name = "database_url">jdbc:mysql://$MYSQL/reverb?user=db_readonly&amp;password=BIUTEE</property>
 		<property name = "templates_table">reverb_templates</property>
 		<property name = "rules_table">reverb_rules</property>
-		<property name = "limit_number_of_rules">20</property>
+		<property name = "limit_number_of_rules">50</property>
 	</section>
 
 
@@ -229,7 +238,7 @@
 		<property name = "database_url">jdbc:mysql://$MYSQL/framenet?user=db_readonly&amp;password=BIUTEE</property>
 		<property name = "templates_table">framenet_easyfirst_element_table_no_duplicates</property>
 		<property name = "rules_table">framenet_rules_easyfirst_server_rules8_no_duplicates</property>
-		<property name = "limit_number_of_rules">20</property>
+		<property name = "limit_number_of_rules">50</property>
 	</section>
 
 	<section name = "GeoKB">

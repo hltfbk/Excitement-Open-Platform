@@ -9,6 +9,7 @@ import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 
 /**
+ * An object that aggregates logging messages to be printed at the end of the log file.
  * 
  * @author Asher Stern
  * @since Aug 1, 2013

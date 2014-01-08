@@ -9,6 +9,7 @@ import eu.excitementproject.eop.transformations.utilities.Constants;
 
 
 
+
 /**
  * 
  * @author Asher Stern
@@ -70,7 +71,7 @@ public class BiuteeConstants
 	 * 
 	 * 0 means no heuristic
 	 */
-	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 3;
+	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 0;
 	
 
 
@@ -104,6 +105,17 @@ public class BiuteeConstants
 	public static final int NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED = 2000;
 	public static final Double DEFAULT_HYPOTHESIS_LENGTH_FOR_TRAINING_REASONABLE_GUESS = 10.0;
 
+	/**
+	 * apply {@link TextualNoiseReducer#reduceNoise(String)} to correct small errors in the text before preprocess
+	 */
+	public static final boolean REDUCE_NOISE_IN_DATASET = true;
+
+	/**
+	 * This feature adds periods to sentences that do not terminate with punctuation, as they are read from the dataset. 
+	 */
+	public static final boolean COMPLETE_PERIODS = true;
+
+	
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that are less likely to be changed.
 
@@ -211,6 +223,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that there is no reason to change, now and ever.
 
+	
+	public static final String ENVIRONMENT_VARIABLE_SUCCESS_FILE_NAME = "BIUTEE_SUCCESS";
 
 	/**
 	 * A delimiter in the value of "dataset" parameter, for RTE-sum.

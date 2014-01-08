@@ -46,7 +46,7 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 				logger=Logger.getLogger(RTEPairsETETester.class);
 				try
 				{
-					RTEPairsETETester tester = new RTEPairsETETester(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
+					RTEPairsETETester tester = new RTEPairsETETester(configurationFileName);
 					tester.init();
 					try
 					{
@@ -68,9 +68,9 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 	}
 
 	
-	public RTEPairsETETester(String configurationFileName, String configurationModuleName)
+	public RTEPairsETETester(String configurationFileName)
 	{
-		super(configurationFileName, configurationModuleName);
+		super(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
 		if (logger==null){logger=Logger.getLogger(RTEPairsETETester.class);}
 	}
 

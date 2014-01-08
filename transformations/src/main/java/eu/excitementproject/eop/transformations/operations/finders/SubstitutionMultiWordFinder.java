@@ -24,6 +24,9 @@ public class SubstitutionMultiWordFinder implements Finder<SubstituteNodeSpecifi
 		this.textTree = textTree;
 	}
 
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	public void find() throws OperationException
 	{
 		underlyingFinder.find(this.textTree);

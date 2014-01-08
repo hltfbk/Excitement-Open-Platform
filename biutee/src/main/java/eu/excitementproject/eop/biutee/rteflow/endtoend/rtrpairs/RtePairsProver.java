@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
+import eu.excitementproject.eop.biutee.rteflow.endtoend.TimeStatistics;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
@@ -24,8 +25,8 @@ import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
+import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;
 
 /**
  * Implementation of {@link Prover} for T-H pairs of RTE:1-5.
@@ -49,21 +50,37 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			{
 		try
 		{
+			// Make preparations.
 			if (logger.isInfoEnabled()){logger.info("Processing pair #"+instance.getPairData().getPair().getId());}
 			HypothesisInformation hypothesisInformation = instance.getHypothesisInformation();
 			if (!hypothesisInformation.equals(script.getHypothesisInformation()))
 			{
 				script.setHypothesisInformation(hypothesisInformation);
 			}
+			
+			// Get the pair. 
 			ExtendedPairData pairData = instance.getPairData();
-			if (Constants.COLLAPSE_MULTIPLE_TREES_TO_SINGLE_TREE)
+			if (teSystemEnvironment.isCollapseMode())
 			{
 				pairData = new PairDataCollapseToSingleTree(pairData).collapse();
 			}
 			
+			// Process the pair (This is "macro" stage, Search algorithm).
 			TextTreesProcessor processor = createProcessor(pairData,script,classifierForSearch);
+			TimeElapsedTracker timeTracker = new TimeElapsedTracker();
+			timeTracker.start();
+			
+			// process
 			processor.process();
-			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription());
+			
+			timeTracker.end();
+			
+			TimeStatistics timeStatistics = TimeStatistics.fromTimeElapsedTracker(timeTracker);
+			if (logger.isDebugEnabled())
+			{
+				logger.debug("Pair #"+instance.getPairData().getPair().getId()+" done. Time: "+timeStatistics.toString());
+			}
+			THPairProof proof = new THPairProof(processor.getBestTree(),processor.getBestTreeSentence(),processor.getBestTreeHistory(), processor.getGapDescription(), timeStatistics);
 			return proof;
 		}
 		catch (TeEngineMlException | OperationException | ClassifierException | AnnotatorException | ScriptException | RuleBaseException | TreeAndParentMapException e)
@@ -77,6 +94,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			OperationsScript<Info, BasicNode> script,
 			LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
 	{
+		//LocalCreativeTextTreesProcessor processor = new ExperimentalParametersLocalCreativeTextTreesProcessor(
 		LocalCreativeTextTreesProcessor processor = new LocalCreativeTextTreesProcessor(
 				pairData.getPair().getText(), pairData.getPair().getHypothesis(),
 				pairData.getTextTrees(), pairData.getHypothesisTree(),

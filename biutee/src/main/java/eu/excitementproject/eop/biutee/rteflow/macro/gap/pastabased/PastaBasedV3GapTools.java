@@ -47,7 +47,10 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	}
 
 	
-	
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.biutee.rteflow.macro.gap.GapFeaturesUpdate#updateForGap(eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, java.util.Map, eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment)
+	 */
 	@Override
 	public synchronized Map<Integer, Double> updateForGap(TreeAndParentMap<I, S> tree,
 			Map<Integer, Double> featureVector, GapEnvironment<I, S> environment) throws GapException
@@ -74,6 +77,10 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	
 
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescriptionGenerator#describeGap(eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment)
+	 */
 	@Override
 	public synchronized GapDescription describeGap(TreeAndParentMap<I, S> tree,
 			GapEnvironment<I, S> environment) throws GapException
@@ -106,10 +113,10 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	}
 
 	
-	private void updateFeature(Map<Integer, Double> featureVector, Feature feature, List<PredicateAndArgument<I, S>> listMismatch, boolean contantValue) throws GapException
+	private void updateFeature(Map<Integer, Double> featureVector, Feature feature, List<PredicateAndArgument<I, S>> listMismatch, boolean constantValue) throws GapException
 	{
 		double addValue = 0.0;
-		if (is((!contantValue)&&(BiuteeConstants.USE_MLE_FOR_ARGUMENTS_GAP)))
+		if (is((!constantValue)&&(BiuteeConstants.USE_MLE_FOR_ARGUMENTS_GAP)))
 		{
 			addValue = 0.0;
 			for (PredicateAndArgument<I, S> mismatch : listMismatch)
@@ -245,7 +252,7 @@ public class PastaBasedV3GapTools<I extends Info, S extends AbstractNode<I, S>> 
 	/**
 	 * Returns b - used to prevent compilation warning caused by constants.
 	 * @param b what will be returned.
-	 * @return <code>b</code> the given paramter.
+	 * @return <code>b</code> the given parameter.
 	 */
 	private static final boolean is(final boolean b)
 	{

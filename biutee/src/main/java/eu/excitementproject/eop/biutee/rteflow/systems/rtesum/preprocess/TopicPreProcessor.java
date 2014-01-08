@@ -9,6 +9,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
+import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -25,7 +26,6 @@ import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
-import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -136,7 +136,7 @@ public class TopicPreProcessor
 			logger.debug("Sentence is: \""+textSentence+"\"");
 		}
 		
-		if (Constants.COMPLETE_PERIODS)
+		if (BiuteeConstants.COMPLETE_PERIODS)
 		{
 			textSentence = textSentence.trim();
 			if  (!textSentence.isEmpty())
@@ -149,7 +149,7 @@ public class TopicPreProcessor
 				}
 			}
 		}
-		if (Constants.REDUCE_NOISE_IN_DATASET)
+		if (BiuteeConstants.REDUCE_NOISE_IN_DATASET)
 			textSentence = TextualNoiseReducer.reduceNoise(textSentence);
 		
 		if (logger.isDebugEnabled())
