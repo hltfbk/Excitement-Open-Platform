@@ -97,9 +97,9 @@ a configuration file means allowing other users to replicate the same experiment
 		<property name="substitute">1.0</property>
 		
 		<!-- <property name="trainDir">/tmp/</property> -->
-		<property name="trainDir">./src/test/resources/data-set/GER/dev/</property>
+		<property name="trainDir">../core/src/test/resources/data-set/GER/dev/</property>
 		<!-- <property name="testDir">/tmp/</property> -->
-		<property name="testDir">./src/test/resources/data-set/GER/test/</property>
+		<property name="testDir">../core/src/test/resources/data-set/GER/test/</property>
 		<!-- measure to be optimized: [accuracy|f1] -->
 		<property name="measure">accuracy</property>
 		<!-- component to be used by EDA: [FixedWeightTokenEditDistance|FixedWeightLemmaEditDistance] 
