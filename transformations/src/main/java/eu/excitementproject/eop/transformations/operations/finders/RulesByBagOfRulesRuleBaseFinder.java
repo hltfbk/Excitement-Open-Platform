@@ -45,8 +45,6 @@ import static eu.excitementproject.eop.transformations.utilities.Constants.CACHE
  */
 public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification>
 {
-	
-	
 	public RulesByBagOfRulesRuleBaseFinder(TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
 			BagOfRulesRuleBase<Info, BasicNode> ruleBase, String ruleBaseName)
 	{
