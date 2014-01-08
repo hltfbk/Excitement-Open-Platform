@@ -9,7 +9,8 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.TimeStatistics;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
-import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
+import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessorFactory;
+import eu.excitementproject.eop.biutee.rteflow.macro.search.WithStatisticsTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairDataCollapseToSingleTree;
@@ -95,12 +96,18 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
 	{
 		//LocalCreativeTextTreesProcessor processor = new ExperimentalParametersLocalCreativeTextTreesProcessor(
-		LocalCreativeTextTreesProcessor processor = new LocalCreativeTextTreesProcessor(
-				pairData.getPair().getText(), pairData.getPair().getHypothesis(),
+//		LocalCreativeTextTreesProcessor processor = new LocalCreativeTextTreesProcessor(
+//				pairData.getPair().getText(), pairData.getPair().getHypothesis(),
+//				pairData.getTextTrees(), pairData.getHypothesisTree(),
+//				pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),
+//				classifierForSearch, getLemmatizer(), script, teSystemEnvironment
+//				);
+		
+		WithStatisticsTextTreesProcessor processor = TextTreesProcessorFactory.createProcessor(pairData.getPair().getText(), pairData.getPair().getHypothesis(),
 				pairData.getTextTrees(), pairData.getHypothesisTree(),
 				pairData.getMapTreesToSentences(), pairData.getCoreferenceInformation(),
-				classifierForSearch, getLemmatizer(), script, teSystemEnvironment
-				);
+				classifierForSearch, getLemmatizer(), script, teSystemEnvironment);
+		
 		processor.setGlobalPairInformation(createGlobalPairInformation(pairData));
 		return processor;
 	}
