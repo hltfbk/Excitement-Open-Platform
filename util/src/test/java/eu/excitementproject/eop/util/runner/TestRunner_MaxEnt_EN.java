@@ -5,6 +5,7 @@ import org.junit.*;
 //test for English with MaxEnt
 public class TestRunner_MaxEnt_EN {
 
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {"-config", "../core/src/test/resources/configuration-file/MaxEntClassificationEDA_Base+OpenNLP_EN.xml",
