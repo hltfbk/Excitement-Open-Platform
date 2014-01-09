@@ -34,7 +34,7 @@ a configuration file means allowing other users to replicate the same experiment
     <!-- Platform configuration section; the information in this section is used by the EOPRunner class being
     able to perform both the processing of the data set and running the EDA -->
 	<section name="PlatformConfiguration">
-		<!-- The EDA to be used: [EditDistanceEDA|EditDistancePSOEDA] -->
+		<!-- The EDA to be used: EditDistancePSOEDA -->
 		<property name="activatedEDA">eu.excitementproject.eop.core.EditDistancePSOEDA</property>
 		<!-- The language: [EN] -->
 		<property name="language">EN</property>
