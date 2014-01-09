@@ -8,7 +8,6 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.TimeStatistics;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.DefaultProver;
 import eu.excitementproject.eop.biutee.rteflow.macro.GlobalPairInformation;
-import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.TextTreesProcessorFactory;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.WithStatisticsTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
@@ -67,7 +66,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			}
 			
 			// Process the pair (This is "macro" stage, Search algorithm).
-			TextTreesProcessor processor = createProcessor(pairData,script,classifierForSearch);
+			WithStatisticsTextTreesProcessor processor = createProcessor(pairData,script,classifierForSearch);
 			TimeElapsedTracker timeTracker = new TimeElapsedTracker();
 			timeTracker.start();
 			
@@ -76,7 +75,8 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 			
 			timeTracker.end();
 			
-			TimeStatistics timeStatistics = TimeStatistics.fromTimeElapsedTracker(timeTracker);
+			TimeStatistics timeStatistics = TimeStatistics.fromTimeElapsedTracker(timeTracker,
+					processor.getNumberOfExpandedElements(),processor.getNumberOfGeneratedElements());
 			if (logger.isDebugEnabled())
 			{
 				logger.debug("Pair #"+instance.getPairData().getPair().getId()+" done. Time: "+timeStatistics.toString());
@@ -91,7 +91,7 @@ public class RtePairsProver extends DefaultProver<THPairInstance, THPairProof>
 	}
 	
 	
-	protected TextTreesProcessor createProcessor(ExtendedPairData pairData,
+	protected WithStatisticsTextTreesProcessor createProcessor(ExtendedPairData pairData,
 			OperationsScript<Info, BasicNode> script,
 			LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
 	{
