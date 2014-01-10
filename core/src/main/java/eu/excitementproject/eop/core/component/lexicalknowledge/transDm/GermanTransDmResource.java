@@ -122,7 +122,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 		}
 		
 		for (Enum<SimMeasure> sim : simMeasures) {
-			listResource.add("/transDm-data/sdewac.synt.transdm.2mil." + sim.toString()); //sdewac.synt.transdm.10k." + sim.toString());
+			listResource.add("/transDm-data/sdewac.synt.transdm.10k." + sim.toString());///transDm-data/sdewac.synt.transdm.2mil." + sim.toString());
 		}
 		
 		try {
