@@ -487,12 +487,6 @@ public class TreesGeneratorByOperations
 				}
 			}
 			
-			// TO BE DELETED
-			if (item.getRuleBaseName()!=null)
-			{
-				addToCounterGenerated(item.getRuleBaseName(), ret.size());
-			}
-			// -------------
 			return ret;
 		}
 		catch(RuntimeException rx)
