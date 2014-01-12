@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl;
 
+import java.io.Serializable;
+
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Instance;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.InstanceAndProof;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Proof;
@@ -12,8 +14,10 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.Proof;
  * @param <I>
  * @param <P>
  */
-public class InstanceAndProofAndClassification<I extends Instance, P extends Proof>
+public class InstanceAndProofAndClassification<I extends Instance, P extends Proof> implements Serializable
 {
+	private static final long serialVersionUID = -1675166937988070570L;
+	
 	public InstanceAndProofAndClassification(
 			InstanceAndProof<I, P> instanceAndProof, double score,
 			boolean classification)

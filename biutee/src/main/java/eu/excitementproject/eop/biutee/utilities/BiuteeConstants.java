@@ -20,6 +20,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Important constants: constants that you might consider changing their values
 
+	public static final boolean SAVE_SERIALIZED_RESULTS = true;
+	
 	public static final boolean PASTA_GAP_STRICT_ARGUMENT_HEAD_MODE = false;
 	
 	public static final boolean USE_NEGATIVES_FROM_PREVIOUS_ITERATIONS_IN_ACCURACY_TRAINING = false;

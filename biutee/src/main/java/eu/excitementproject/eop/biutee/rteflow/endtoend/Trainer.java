@@ -182,14 +182,18 @@ public class Trainer<I extends Instance, P extends Proof>
 		}
 		logger.info("Current iteration result summary:\n"+resultsLastIteration.print());
 		
-		File serFile = new File(BiuteeConstants.RESULTS_SER_FILE_PREFIX+"_"+iterationNumber+BiuteeConstants.RESULTS_SER_FILE_POSTFIX);
-		logger.info("Iteration "+iterationNumber+" done."
-				+ "Saving results in ser file to "+serFile.getName());
-		try(ObjectOutputStream serStream = new ObjectOutputStream(new FileOutputStream(serFile)))
+		
+		if (BiuteeConstants.SAVE_SERIALIZED_RESULTS)
 		{
-			serStream.writeObject(resultsLastIteration);
+			File serFile = new File(BiuteeConstants.RESULTS_SER_FILE_PREFIX+"_"+iterationNumber+BiuteeConstants.RESULTS_SER_FILE_POSTFIX);
+			logger.info("Iteration "+iterationNumber+" done."
+					+ " Saving results in ser file to "+serFile.getName());
+			try(ObjectOutputStream serStream = new ObjectOutputStream(new FileOutputStream(serFile)))
+			{
+				serStream.writeObject(resultsLastIteration.getProofs());
+			}
+			ExperimentManager.getInstance().register(serFile);
 		}
-		ExperimentManager.getInstance().register(serFile);
 	}
 
 	
