@@ -28,11 +28,21 @@ public class TextProITPartOfSpeech extends PartOfSpeech
 	 * All Italian TextPro pos tags 
 	 */
 	public enum TextProITPosTag {
-		AS, AP, AN, B, C, CADV, CCHE, CCHI, DS, DP, DN, E, ES, EP, I, 
-		N, PS, PP, PN, RS, RP, SS, SP, SN, SPN, QNS, QNP, SYM, 
-		VI, VIY, VF, VFY, VSP, VSPY, VPP, VPPY, VG, VGY, VM, VMY,
+		A, AS, AP, AN, 
+		B, 
+		C, CADV, CCHE, CCHI, 
+		D, DS, DP, DN, 
+		E, ES, EP, 
+		I, 
+		N, 
+		P, PS, PP, PN, 
+		R, RS, RP, 
+		S, SS, SP, SN, SPN, 
+		Q, QNS, QNP, SYM, 
+		V, VI, VIY, VF, VFY, VSP, VSPY, VPP, VPPY, VG, VGY, VM, VMY,
 		VFE, VFYE, VGE, VME, VPPE, VSPE, // these correspond to composite POS: VF+E, ...
-		XPB, XPO, XPS, XPW, YA, YF,
+		X, XPB, XPO, XPS, XPW, 
+		Y, YA, YF,
 		other
 	};
 
@@ -54,6 +64,8 @@ public class TextProITPartOfSpeech extends PartOfSpeech
 	static
 	{
 		// map between all canonical POSs and DKPro POSs
+
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.V, TextProITPosTag.V);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.V, TextProITPosTag.VI);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.V, TextProITPosTag.VIY);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.V, TextProITPosTag.VF);
@@ -74,12 +86,13 @@ public class TextProITPartOfSpeech extends PartOfSpeech
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.V, TextProITPosTag.VPPE);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.V, TextProITPosTag.VSPE);
 
-
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.N, TextProITPosTag.S);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.N, TextProITPosTag.SS);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.N, TextProITPosTag.SP);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.N, TextProITPosTag.SN);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.N, TextProITPosTag.SPN);
 
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.A);				
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.AN);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.AP);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.AS);
@@ -87,6 +100,8 @@ public class TextProITPartOfSpeech extends PartOfSpeech
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.DP);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.DS);
 
+				
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, TextProITPosTag.R);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, TextProITPosTag.RP);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ART, TextProITPosTag.RS);
 				
@@ -101,16 +116,23 @@ public class TextProITPartOfSpeech extends PartOfSpeech
 				
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.CCHE);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.CCHI);
+				
+				
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.P);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.PN);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.PP);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.PS);
+				
+
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.Q);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.QNS);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PR, TextProITPosTag.QNP);
 
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.CARD, TextProITPosTag.N);
 				
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, TextProITPosTag.SYM);
-				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, TextProITPosTag.XPB);
+				
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, TextProITPosTag.X);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, TextProITPosTag.XPO);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, TextProITPosTag.XPS);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.PUNC, TextProITPosTag.XPW);
