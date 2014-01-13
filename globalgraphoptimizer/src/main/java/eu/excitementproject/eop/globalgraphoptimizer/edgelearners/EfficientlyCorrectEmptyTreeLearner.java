@@ -2,10 +2,8 @@ package eu.excitementproject.eop.globalgraphoptimizer.edgelearners;
 
 import java.util.ArrayList;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -27,35 +25,40 @@ import eu.excitementproject.eop.globalgraphoptimizer.score.ScoreModel;
 
 /**
  * An implementation of the tree-node-fix algorithm (http://www.cs.tau.ac.il/~jonatha6/homepage_files/publications/ACL12.pdf)
+ * with empty graph initialization
  * 
  * @author Jonathan Berant
  *
  */
-public class EfficientlyCorrectSortedNodesTreeLearner implements EdgeLearner{
-
+public class EfficientlyCorrectEmptyTreeLearner implements EdgeLearner {
+	
 	double m_edgeCost;
 	NodeGraph m_nodeGraph;
 	ScoreModel m_localModel;
 	
-	private Logger logger = Logger.getLogger(EfficientlyCorrectSortedNodesTreeLearner.class);
+	private Logger logger = Logger.getLogger(EfficientlyCorrectEmptyTreeLearner.class);
 	
-	public EfficientlyCorrectSortedNodesTreeLearner(NodeGraph ioGraph, LocalScoreModel iLocalModel, double edgeCost)  {
+	public EfficientlyCorrectEmptyTreeLearner(NodeGraph ioGraph,LocalScoreModel iLocalModel, double edgeCost) throws Exception {
 		m_edgeCost = edgeCost;
 		m_nodeGraph = ioGraph;
 		m_localModel = iLocalModel;
 	}
 	
-	public EfficientlyCorrectSortedNodesTreeLearner(double edgeCost)  {
+	public EfficientlyCorrectEmptyTreeLearner(double edgeCost) {
+		m_nodeGraph = null;
+		m_localModel = null;
 		m_edgeCost = edgeCost;
-		init(null,null);
 	}
-
-	public void init(NodeGraph ioGraph, MapLocalScorer iLocalModel) {		
+	
+	public void init(NodeGraph ioGraph,MapLocalScorer iLocalModel) {		
 		m_nodeGraph = ioGraph;
 		m_localModel = iLocalModel;
 	}
-
 	
+	/**
+	 * We assume here that the entailing edges do not violate the FRG or transitivity properties
+	 * @throws Exception
+	 */
 	public void insertEntailingEdges() throws Exception {
 		
 		Set<Pair<String,String>> entailing =  m_localModel.getEntailing();
@@ -72,9 +75,9 @@ public class EfficientlyCorrectSortedNodesTreeLearner implements EdgeLearner{
 		}	
 	}
 	
+	
 	public void learn() throws Exception {
 		
-		//init with entailing edges. we assume they do not violate transitivity or the tree property
 		insertEntailingEdges();
 		//perform iterations
 		performIterativeProcedure();
@@ -82,19 +85,16 @@ public class EfficientlyCorrectSortedNodesTreeLearner implements EdgeLearner{
 
 	protected void performIterativeProcedure() throws Exception {
 
-		
 		AbstractOntologyGraph graph = m_nodeGraph.getGraph();
-		
-		List<NodePositiveEdgeSum> sortedNodeIds = sortNodes();
-	
+
 		//keep going while did there are changes to the graph 
 		boolean converge = false;
 		double currentObjValue = m_nodeGraph.getGraph().sumOfEdgeWeights()-m_edgeCost*m_nodeGraph.getGraph().getEdgeCount();
 		logger.warn("OBJECTIVE-FUNCTION-VALUE: " + currentObjValue);	
 		while(!converge) {
 			
-			for(NodePositiveEdgeSum currNodeAndEdgeSum: sortedNodeIds) {
-				RelationNode currNode = graph.getNode(currNodeAndEdgeSum.getId());
+			for(Integer currNodeId: graph.getNodeIds()) {
+				RelationNode currNode = graph.getNode(currNodeId);
 				logger.warn("Current node: " + currNode.id());
 				reattachNode(currNode);
 			}
@@ -106,31 +106,6 @@ public class EfficientlyCorrectSortedNodesTreeLearner implements EdgeLearner{
 			currentObjValue = objectiveValue;
 			logger.warn("OBJECTIVE-FUNCTION-VALUE: " + currentObjValue);	
 		}
-	}
-
-	private List<NodePositiveEdgeSum> sortNodes() throws Exception {
-
-		List<NodePositiveEdgeSum> result = new LinkedList<NodePositiveEdgeSum>();
-		
-		for(RelationNode node: m_nodeGraph.getGraph().getNodes()) {
-			double posEdgeSum = 0;
-			
-			for(RelationNode otherNode: m_nodeGraph.getGraph().getNodes()) {
-				if(otherNode!=node) {
-					
-					double outScore = m_localModel.getEntailmentScore(node, otherNode);
-					double inScore  =  m_localModel.getEntailmentScore(otherNode, node);
-					if(outScore>m_edgeCost)
-						posEdgeSum+=outScore-m_edgeCost;
-					if(inScore>m_edgeCost)
-						posEdgeSum+=inScore-m_edgeCost;				
-				}
-			}
-			
-			result.add(new NodePositiveEdgeSum(node.id(), posEdgeSum));
-		}
-		Collections.sort(result);
-		return result;
 	}
 
 	private void reattachNode(RelationNode removedNode) throws Exception {
@@ -307,34 +282,4 @@ public class EfficientlyCorrectSortedNodesTreeLearner implements EdgeLearner{
 		private RelationNode m_out;
 		private List<RelationNode> m_ins;
 	}
-	
-	private class NodePositiveEdgeSum implements Comparable<NodePositiveEdgeSum>{
-		
-		private int m_id;
-		private double m_posEdgeSum;
-		
-		public NodePositiveEdgeSum(int id, double posEdgeSum) {
-			m_id = id;
-			m_posEdgeSum = posEdgeSum;
-		}
-
-		@Override
-		public int compareTo(NodePositiveEdgeSum o) {
-			
-			if(m_posEdgeSum>o.m_posEdgeSum)
-				return -1;
-			else if(m_edgeCost<o.m_posEdgeSum)
-				return 1;
-			return 0;
-		}
-		
-		public int getId() {
-			return m_id;
-		}
-		
-		public String toString() {
-			return m_id+"\t"+m_posEdgeSum;
-		}
-	}
-
 }
