@@ -71,6 +71,7 @@ public class DependencyPathsFromTree<T extends Info, S extends AbstractNode<T,S>
 	}
 
 	public static class NounPredicate<T extends Info> implements Predicate<T> {
+		@Override
 		public boolean evaluate(T object) {
 			PartOfSpeech pos = InfoGetFields.getPartOfSpeechObject(object);
 			return (
@@ -81,6 +82,7 @@ public class DependencyPathsFromTree<T extends Info, S extends AbstractNode<T,S>
 	}
 
 	public static class VerbRelativeClausePredicate<T extends Info> implements Predicate<T> {
+		@Override
 		public boolean evaluate(T object) {
 			PartOfSpeech pos = InfoGetFields.getPartOfSpeechObject(object);
 			return (
@@ -90,6 +92,7 @@ public class DependencyPathsFromTree<T extends Info, S extends AbstractNode<T,S>
 	}
 
 	public static class VerbAdjectiveNounPredicate<T extends Info> implements Predicate<T> {
+		@Override
 		public boolean evaluate(T object) {
 			PartOfSpeech pos = InfoGetFields.getPartOfSpeechObject(object);
 			return (
@@ -102,6 +105,7 @@ public class DependencyPathsFromTree<T extends Info, S extends AbstractNode<T,S>
 	}
 
 	public static class AdjectiveNounPredicate<T extends Info> implements Predicate<T> {
+		@Override
 		public boolean evaluate(T object) {
 			PartOfSpeech pos = InfoGetFields.getPartOfSpeechObject(object);
 			return (

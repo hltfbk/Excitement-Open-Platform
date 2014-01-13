@@ -105,6 +105,7 @@ public class SimilarityScore implements Writable {
 		System.out.println(values);
 		
 		Collections.sort(values, new Comparator<SimilarityScore>() {
+			@Override
 			public int compare(SimilarityScore o1, SimilarityScore o2) {
 				return (o2.getScore().get() > o1.getScore().get() ? 1 : o1.getScore().get() > o2.getScore().get() ? -1 : 0); }}
 			);

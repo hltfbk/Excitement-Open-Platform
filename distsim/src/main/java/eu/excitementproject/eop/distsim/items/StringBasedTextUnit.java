@@ -29,6 +29,7 @@ public class StringBasedTextUnit extends DeafaultTextUnit<String> {
 		super(data, id,count);
 	}
 	
+	@Override
 	public TextUnit copy() {
 		return new StringBasedTextUnit(data, id,(long)count);
 	}

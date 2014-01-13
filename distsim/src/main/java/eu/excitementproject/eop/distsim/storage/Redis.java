@@ -89,7 +89,7 @@ public class Redis implements PersistenceDevice {
 		if (val == null)
 			return null;
 		else
-			return new Pair<Integer, Serializable>(currID,(Serializable)Serialization.deserialize(val));
+			return new Pair<Integer, Serializable>(currID,Serialization.deserialize(val));
 	}
 
 	/* (non-Javadoc)

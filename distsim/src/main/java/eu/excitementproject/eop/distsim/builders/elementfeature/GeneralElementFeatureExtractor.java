@@ -3,7 +3,6 @@
  */
 package eu.excitementproject.eop.distsim.builders.elementfeature;
 
-import java.util.NoSuchElementException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -143,6 +142,7 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 
 		}
 		
+		@Override
 		public void run() {
 			
 				logger.info("Thread " + threadID + " starts running");

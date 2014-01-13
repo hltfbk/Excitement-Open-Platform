@@ -35,6 +35,7 @@ public class Predicate extends DefaultIdentifiableCountable implements TextUnit 
 		this.predicate = predicate;
 	}
 	
+	@Override
 	public TextUnit copy() {
 		return new Predicate(predicate, id,(long)count);
 	}

@@ -63,6 +63,7 @@ public class GeneralElementSimilarityCalculator implements ElementSimilarityCalc
 		this.similarityCalculatorParams = similarityCalculatorParams;
 		this.iThreadNum = similarityCalculatorParams.getInt(Configuration.THREAD_NUM);
 		this.elementSimilarityScoringFactory = new ElementSimilarityScoringFactory() { 
+			@Override
 			public ElementSimilarityScoring create() throws CreationException { 
 				try { 
 					return (ElementSimilarityScoring)Factory.create(similarityCalculatorParams.get(Configuration.SIMILARITY_SCORING_CLASS),similarityCalculatorParams);
@@ -278,6 +279,7 @@ public class GeneralElementSimilarityCalculator implements ElementSimilarityCalc
 			}
 		}*/
 		
+		@Override
 		public void run() {
 			
 			logger.info("Thread " + threadID + " starts running");

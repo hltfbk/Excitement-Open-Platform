@@ -12,6 +12,7 @@ import java.util.logging.LogRecord;
  */
 
 public class BasicFormatter extends Formatter {
+	@Override
 	public String format(LogRecord rec) {
 		StringBuilder buf = new StringBuilder();
 		buf.append("[");

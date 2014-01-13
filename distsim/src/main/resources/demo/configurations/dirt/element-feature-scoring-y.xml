@@ -171,7 +171,7 @@
 		         * redis-file: a path to the Redis file to store the co-occurrences
 	-->
 	<param name="class">eu.excitementproject.eop.distsim.storage.File</param>
-	<param name="file">models/dirt/elements-y</param>
+	<param name="file">models/dirt/elements-x</param>
 	<param name="read-write">read</param>
 </module>
 

@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.distsim.items.Element;
-import eu.excitementproject.eop.distsim.items.Feature;
 import eu.excitementproject.eop.distsim.items.InvalidCountException;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.storage.BasicMap;

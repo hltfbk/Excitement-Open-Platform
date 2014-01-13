@@ -1,7 +1,5 @@
 package eu.excitementproject.eop.distsim.redis;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class BasicRedisRunnerTest {

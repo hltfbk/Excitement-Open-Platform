@@ -266,6 +266,7 @@ public class BasicRedisRunner implements RedisRunner {
 		if (instanceInfo == null) {		
 			int ret = run1(dbFile);
 			Runtime.getRuntime().addShutdownHook(new Thread() {
+				@Override
 				public void run() {
 					try {
 						close(dbFile);
