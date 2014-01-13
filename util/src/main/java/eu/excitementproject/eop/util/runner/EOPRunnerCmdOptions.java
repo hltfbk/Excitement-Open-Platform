@@ -22,10 +22,10 @@ public class EOPRunnerCmdOptions {
 	@Option(name="-lap", usage="The LAP to be used")
 	public String lap = null;
 	
-	@Option(name="-text", usage="The test (for providing a test/hypothesis pair)")
+	@Option(name="-text", usage="The text part of a text/hypothesis pair")
 	public String text = "";
 	
-	@Option(name="-hypothesis", usage="The hypothesis (for providing a test/hypothesis pair)")
+	@Option(name="-hypothesis", usage="The hypothesis part of a text/hypothesis pair")
 	public String hypothesis = "";
 		
 	@Option(name="-results", usage="The name of the (xml formatted) results file")
