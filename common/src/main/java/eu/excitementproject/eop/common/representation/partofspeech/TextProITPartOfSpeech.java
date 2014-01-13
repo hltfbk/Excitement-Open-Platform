@@ -96,6 +96,8 @@ public class TextProITPartOfSpeech extends PartOfSpeech
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.AN);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.AP);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.AS);
+				
+				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.D);				
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.DN);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.DP);
 				TEXTPRO_IT_TO_CANONICAL_MAP.put(CanonicalPosTag.ADJ, TextProITPosTag.DS);
