@@ -454,6 +454,25 @@ public class EditDistanceEDA<T extends TEDecision>
 					this.component.setmInsertWeight(mInsertWeight);
 					this.component.setmSubstituteWeight(mSubstituteWeight);
 					
+					/*
+					 * Initializing FixedWeightEditDistance without a configuration file
+					FixedWeightEditDistance fwed = new FixedWeightTokenEditDistance(mMatchWeight, mDeleteWeight, 
+							mInsertWeight, mSubstituteWeight, true, "IT", null);
+					
+					this.component = fwed;
+					*/
+					
+					/*
+					 * Initializing FixedWeightEditDistance without a configuration file and using
+					 * wikipedia as an external resource.
+					Map<String,String> resources = new HashMap<String,String>();
+					resources.put("wikipedia", "jdbc:mysql://nathrezim:3306/wikilexresita#root#nat_2k12");
+					FixedWeightEditDistance fwed = new FixedWeightTokenEditDistance(mMatchWeight, mDeleteWeight, 
+							mInsertWeight, mSubstituteWeight, true, "IT", resources);
+					
+					this.component = fwed;
+					*/
+					
 				} catch (Exception e) {
 					throw new ComponentException(e.getMessage());
 				}

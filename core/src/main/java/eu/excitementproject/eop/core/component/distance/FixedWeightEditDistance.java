@@ -342,9 +342,9 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 		    	
 			if (wikipediaConnection != null) { 
 		    	
-				String dbConnection = wikipediaConnection.split(":")[0];
-				String dbUser = wikipediaConnection.split(":")[1];
-				String dbPasswd = wikipediaConnection.split(":")[2];
+				String dbConnection = wikipediaConnection.split("#")[0];
+				String dbUser = wikipediaConnection.split("#")[1];
+				String dbPasswd = wikipediaConnection.split("#")[2];
 		    		
 				if (language.equals("IT")) {
 					try {

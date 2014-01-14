@@ -61,7 +61,7 @@ public class LegacyConfigurationParams extends AbstractConfigurationParams
 	
 	public boolean containsKey(Object key)
 	{
-		return this.parametersHashTable.contains(key);
+		return this.parametersHashTable.containsKey(key);
 	}
 	
 	public String put(String key, String value)
