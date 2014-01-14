@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.distsim.resource;
 
+import java.io.File;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 
@@ -11,10 +13,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
@@ -31,7 +32,7 @@ import eu.excitementproject.eop.distsim.util.Configuration;
  */
 public class TestLemmaPosSimilarity {
 	
-	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ConfigurationFileDuplicateKeyException, ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
+	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ElementTypeException, FileNotFoundException, RedisRunException, eu.excitementproject.eop.common.exception.ConfigurationException {
 		
 		//Assumption: the running directory contains a subdirectory 'redis' with two file: redis-rever and redis.cof
 		if (args.length != 1) {
@@ -39,7 +40,9 @@ public class TestLemmaPosSimilarity {
 			System.exit(0);
 		}
 		
-		ConfigurationFile confFile = new ConfigurationFile(args[0]);
+		//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
+		
 		ConfigurationParams confParams = confFile.getModuleConfiguration(Configuration.KNOWLEDGE_RESOURCE);
 
 		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(confParams);

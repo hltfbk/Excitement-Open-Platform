@@ -1,27 +1,27 @@
-<?xml version="1.0"?>
+
 
 <!--A configuration file for the program eu.excitementproject.eop.distsim.builders.storage.SimilarityFile2Redis, which import a file-based representation of elements' similarities to a Redis database -->
 <configuration>
 
-<module name="logging"> <!--Defines the log4j properties -->
+<section name="logging"> <!--Defines the log4j properties -->
 	<!--the path of the log4j properties file-->
-	<param name="properties-file">configurations/log4j.properties</param> 
-</module>
+	<property name="properties-file">configurations/log4j.properties</property> 
+</section>
 
-<module name="file-to-redis"> <!-- Defines the process of converting a general eu.excitementproject.eop.distsim.storage.File device to eu.excitementproject.eop.distsim.storage.Redis-->
+<section name="file-to-redis"> <!-- Defines the process of converting a general eu.excitementproject.eop.distsim.storage.File device to eu.excitementproject.eop.distsim.storage.Redis-->
 
 	  <!--Defines the specific type of the eu.excitementproject.eop.distsim.storage.File input (can be one of its subclasses)-->
-            <param name="class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</param>
+            <property name="class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</property>
 	    
 	    <!--The path of the similarity input file-->
-  	  <param name="file">models/dirt/elements-similarities-left-xy</param>
+  	  <property name="file">models/dirt/elements-similarities-left-xy</property>
 	  
 	  <!-- The path to the elements file-->
-	  <param name="elements-file">models/dirt/elements-x</param>
+	  <property name="elements-file">models/dirt/elements-x</property>
 	  
 	  <!-- A path to a new generated redis file-->
-	<param name="redis-file">models/dirt/similarity-l2r.rdb</param>
+	<property name="redis-file">models/dirt/similarity-l2r.rdb</property>
 	
-</module>
+</section>
 </configuration>
 

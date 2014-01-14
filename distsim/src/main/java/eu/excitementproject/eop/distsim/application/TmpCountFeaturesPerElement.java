@@ -1,10 +1,12 @@
 package eu.excitementproject.eop.distsim.application;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
 import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
@@ -21,7 +23,8 @@ public class TmpCountFeaturesPerElement {
 				System.exit(0);
 			}
 
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 			
 			DataStructureFactory dataStructureFactory = new ConfigurationBasedDataStructureFactory(confFile);			
 			// build the element score storage

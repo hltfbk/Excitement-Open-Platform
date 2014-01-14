@@ -4,6 +4,7 @@ import eu.fbk.hlt.pso.*;
 import java.io.*;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 
 /**
  * The <code>EditDistanceFitnessFunction</code> class extends the <code>FitnessFunction</code> class.

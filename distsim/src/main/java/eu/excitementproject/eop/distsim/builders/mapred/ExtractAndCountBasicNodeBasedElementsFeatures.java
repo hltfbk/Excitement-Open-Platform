@@ -19,6 +19,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrenceExtraction;
 import eu.excitementproject.eop.distsim.builders.elementfeature.ElementFeatureExtraction;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
@@ -49,7 +50,9 @@ public class ExtractAndCountBasicNodeBasedElementsFeatures {
 		@Override
 		public void setup(Context context)  {
 			try {
-				ConfigurationFile confFile = new ConfigurationFile(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_FILE));
+				//ConfigurationFile confFile = new ConfigurationFile(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_FILE));
+				ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_FILE))));
+				
 			    ConfigurationParams confParams = confFile.getModuleConfiguration(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_MODULE));
 	
 			    this.cooccurrenceExtraction = (CooccurrenceExtraction)Factory.create(confParams.get(eu.excitementproject.eop.distsim.util.Configuration.COOCCURENCE_EXTRACTION_CLASS), confParams);
@@ -93,7 +96,8 @@ public class ExtractAndCountBasicNodeBasedElementsFeatures {
 	  @Override
 		public void setup(Context context)  {
 			try {
-				ConfigurationFile confFile = new ConfigurationFile(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_FILE));
+				//ConfigurationFile confFile = new ConfigurationFile(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_FILE));
+				ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig  (new File(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_FILE))));
 			    ConfigurationParams confParams = confFile.getModuleConfiguration(context.getConfiguration().get(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_MODULE));
 			    try {
 			    	minCount = confParams.getLong(eu.excitementproject.eop.distsim.util.Configuration.MIN_COUNT);
@@ -129,7 +133,8 @@ public class ExtractAndCountBasicNodeBasedElementsFeatures {
 	    conf.set(eu.excitementproject.eop.distsim.util.Configuration.CONFIGURATION_MODULE,eu.excitementproject.eop.distsim.util.Configuration.MAPRED_COOCCURRENCE_COUNTING);
 	    Job job = new Job(conf, "Count cooccurrences");
 	    
-	    ConfigurationFile confFile = new ConfigurationFile(args[0]);
+	    //ConfigurationFile confFile = new ConfigurationFile(args[0]);
+	    ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 	    ConfigurationParams confParams = confFile.getModuleConfiguration(eu.excitementproject.eop.distsim.util.Configuration.MAPRED_COOCCURRENCE_COUNTING);
 	    job.setJarByClass(ExtractAndCountBasicNodeBasedElementsFeatures.class);
 	    job.setMapperClass(MapClass.class);

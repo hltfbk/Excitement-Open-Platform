@@ -36,7 +36,8 @@ public class TestLemmaPosSimilarityGerman {
 //			System.exit(0);
 //		}
 		
-//		ConfigurationFile confFile = new ConfigurationFile(args[0]);
+//		//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+//		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 //		ConfigurationParams confParams = confFile.getModuleConfiguration(Configuration.KNOWLEDGE_RESOURCE);
 
 //		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(confParams);

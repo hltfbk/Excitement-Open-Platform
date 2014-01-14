@@ -8,6 +8,7 @@ import org.apache.log4j.PropertyConfigurator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.util.Configuration;
@@ -39,7 +40,8 @@ public class ElementFile2Redis {
 		}
 		
 		try {
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);			
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);		
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new java.io.File(args[0])));
 			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
 			
 			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));
