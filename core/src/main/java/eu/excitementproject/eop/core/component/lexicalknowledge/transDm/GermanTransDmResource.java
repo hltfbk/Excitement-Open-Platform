@@ -51,11 +51,7 @@ import java.util.Scanner;
  * similarity values achieved with this method. Implemented similarity measures are:
  * <li>cosine</li>
  * <li>balAPinc</li>
- * They can be used in combination or individually (cosine, balapinc, all).
- * 
- * 
- * The two similarity measure files are loaded within 20 seconds on a computer with 
- * four 2.5GHz cores and 8GB RAM.
+ * They can be used in combination or individually (all, cosine, balapinc).
  * 
  * 
  * @author Britta Zeller <zeller@cl.uni-heidelberg.de> 
@@ -122,7 +118,10 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 		}
 		
 		for (Enum<SimMeasure> sim : simMeasures) {
-			listResource.add("/transDm-data/sdewac.synt.transdm.10k." + sim.toString());///transDm-data/sdewac.synt.transdm.2mil." + sim.toString());
+                        /* The two similarity measure files are loaded within 20 seconds on a computer with 
+                         * four 2.5GHz cores and 8GB RAM.
+                         */
+			listResource.add("/transDm-data/sdewac.synt.transdm.2mil." + sim.toString()); 
 		}
 		
 		try {

@@ -28,7 +28,9 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTr
  * 
  * Test scenario 1 is the vastest one, by testing calls via getRulesForLeft, 
  * getRulesForRight, and getRules, and by testing lemmas/lemma pairs which 
- * both exist and do not exist in the resource.   
+ * both exist and do not exist in the resource.  
+ * 
+ * Scenarios 2-4 are commented out to make testing quicker. 
  * 
  * @author Britta Zeller
  *
@@ -181,7 +183,7 @@ public class GermanTransDmResourceTest {
 		//////////////////////////////////////////////////////////////////////////////////////////
 		
 		/** TEST 2: USE ALL MEASURES DIRECTLY */
-
+/*
 		//System.out.println("***************************************************************");
 		//System.out.println("TEST 2");
 		//System.out.println("***************************************************************");
@@ -219,11 +221,13 @@ public class GermanTransDmResourceTest {
 		}				
 	
 		transDmDirect1.close();
+		
+*/
 		//////////////////////////////////////////////////////////////////////////////////////////
 		
 
 		/** TEST 3: USE ONE MEASURE DIRECTLY */
-
+/*
 		//System.out.println("***************************************************************");
 		//System.out.println("TEST 3");
 		//System.out.println("***************************************************************");
@@ -261,12 +265,12 @@ public class GermanTransDmResourceTest {
 		}
 		
 		transDmDirect2.close();
-	
+*/	
 		//////////////////////////////////////////////////////////////////////////////////////////
 		
 		
 		/** TEST 4: USE INVALID MEASURE DIRECTLY */
-		
+/*		
 		//System.out.println("***************************************************************");
 		//System.out.println("TEST 4");
 		//System.out.println("***************************************************************");
@@ -305,6 +309,6 @@ public class GermanTransDmResourceTest {
 		}
 		
 		transDmDirect3.close();
-		
+*/		
 	}
 }
