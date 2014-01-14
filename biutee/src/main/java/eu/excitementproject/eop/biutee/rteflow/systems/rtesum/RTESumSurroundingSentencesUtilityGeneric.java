@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtesum;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +19,10 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  * @param <I>
  * @param <S>
  */
-public class RTESumSurroundingSentencesUtilityGeneric<I, S extends AbstractNode<I,S>>
+public class RTESumSurroundingSentencesUtilityGeneric<I, S extends AbstractNode<I,S>> implements Serializable
 {
+	private static final long serialVersionUID = 1017103576227907982L;
+	
 	public static final String CURRENT_IDENTIFIER = "current";
 	public static final String HEADLINE_IDENTIFIER_PREFIX = "headline";
 	
