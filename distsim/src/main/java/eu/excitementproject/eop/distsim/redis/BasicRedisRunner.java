@@ -140,7 +140,7 @@ public class BasicRedisRunner implements RedisRunner {
 
 	protected static final int MIN_PORT = 6379;
 	protected static final int MAX_PORT = 65535;
-	protected static final String DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME = "redis/redis.conf";
+	protected static final String DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME = "redis.conf";
 	protected static final String DEFAULT_REDIS_BIN_DIR = "redis";
 	protected static final String PID_FILE = "pidfile";
 	protected static final String PORT = "port";
@@ -237,7 +237,7 @@ public class BasicRedisRunner implements RedisRunner {
 	 * @throws FileNotFoundException in case the default redis binary directory and/or the default configuration file are not existed 
 	 */			
 	private BasicRedisRunner() throws FileNotFoundException {
-		this.templateConfigurationFile = DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME;
+		this.templateConfigurationFile = redisBinDir + "/" + DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME;
 		this.mapDir2FileInstanceInfo = new HashMap<String,RedisInstanceInfo>();
 		this.usedPorts = new HashSet<Integer>();		
 		if (!new File(redisBinDir + "/" + REDIS_SERVER_CMD).exists())
