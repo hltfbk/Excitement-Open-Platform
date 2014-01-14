@@ -195,8 +195,9 @@ public class BasicRedisRunner implements RedisRunner {
 	 */
 	public static void setRedisBinDir(String redisBinDir) throws  RedisRunException {
 		if (instance != null)
-			throw new RedisRunException("A singleton instance of redis runner, based on previous binary, is already run");
-		BasicRedisRunner.redisBinDir = redisBinDir;
+			logger.info("A singleton instance of redis runner, based on previous binary, is already run");
+		else
+			BasicRedisRunner.redisBinDir = redisBinDir;
 	}
 
 	
