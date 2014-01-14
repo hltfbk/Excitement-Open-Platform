@@ -23,6 +23,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
 import eu.excitementproject.eop.biutee.rteflow.preprocess.InstrumentsFactory;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.utilities.LogInitializer;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -86,7 +87,7 @@ public class RTESumPreProcessor
 
 	public void preprocess() throws ConfigurationFileDuplicateKeyException, ConfigurationException, NumberFormatException, TeEngineMlException, ParserRunException, NamedEntityRecognizerException, TextPreprocessorException, CoreferenceResolutionException, Rte6mainIOException, TreeCoreferenceInformationException, FileNotFoundException, IOException
 	{
-		this.configurationFile = new ConfigurationFile(new File(configurationFileName));
+		this.configurationFile = SystemInitialization.loadConfigurationFile(configurationFileName);
 		this.configurationFile.setExpandingEnvironmentVariables(true);
 		preprocessParameters = configurationFile.getModuleConfiguration(RTE_SUM_PREPROCESS_MODULE_NAME);
 		this.instruments = new InstrumentsFactory().getDefaultInstruments(preprocessParameters);
