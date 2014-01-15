@@ -71,7 +71,19 @@ public class ArkrefFilesWorkaroundTextPreprocessor implements TextPreprocessor
 	
 	private void handleDanglingNonLetterDigitSequence()
 	{
-		final String str = " "+this.sentence+" ";
+		String current = this.sentence;
+		String removed = removeDanglingNonLetterDigitSequence(current);
+		while (!(removed.equals(current)))
+		{
+			current = removed;
+			removed = removeDanglingNonLetterDigitSequence(current);
+		}
+		this.sentence = removed;
+	}
+	
+	private static String removeDanglingNonLetterDigitSequence(final String givenSentence)
+	{
+		final String str = " "+givenSentence+" ";
 		final Pattern pattern = Pattern.compile("\\s+([^0-9a-zA-Z]+)\\s+");
 		Matcher matcher = pattern.matcher(str);
 		
@@ -84,7 +96,7 @@ public class ArkrefFilesWorkaroundTextPreprocessor implements TextPreprocessor
 		}
 		sb.append(str.substring(index, str.length()));
 
-		this.sentence = sb.toString().trim();
+		return sb.toString().trim();
 	}
 	
 	
