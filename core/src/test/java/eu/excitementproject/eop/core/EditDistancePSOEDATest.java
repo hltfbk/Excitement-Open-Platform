@@ -25,7 +25,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.junit.Test;
+import org.junit.*;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -40,6 +40,7 @@ public class EditDistancePSOEDATest {
 	static Logger logger = Logger.getLogger(EditDistancePSOEDATest.class
 			.getName());
 	
+	@Ignore
 	@Test
 	public void test() {
 		
