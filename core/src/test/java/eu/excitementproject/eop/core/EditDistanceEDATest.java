@@ -15,6 +15,7 @@ import org.apache.uima.jcas.cas.TOP;
 import eu.excitement.type.entailment.Pair;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
 import javax.xml.parsers.DocumentBuilder;

@@ -18,12 +18,10 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
-import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrenceExtraction;
-import eu.excitementproject.eop.distsim.dependencypath.AbstractNodeStringUtils;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.TextUnit;
 import eu.excitementproject.eop.distsim.util.Configuration;
@@ -177,6 +175,7 @@ public class CollNodeSentenceReader extends ReaderBasedSentenceReader<BasicNode>
 	}
 	
 	
+	@SuppressWarnings({ "rawtypes", "unused", "unchecked" })
 	public static void main(String[] args) throws Exception {
 		CooccurrenceExtraction cooccurrenceExtraction = new eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedPredArgCooccurrenceExtraction();
 		CollNodeSentenceReader reader = new CollNodeSentenceReader(new eu.excitementproject.eop.common.representation.partofspeech.TextProITPartOfSpeech("other"));

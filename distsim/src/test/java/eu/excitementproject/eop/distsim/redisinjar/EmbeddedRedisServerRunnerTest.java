@@ -29,7 +29,7 @@ public class EmbeddedRedisServerRunnerTest {
 	// TODO: check with FBK computers. 
 	// TODO: check with Windows computers. (hate that but well) 
 	
-//	@Ignore   
+	@Ignore   
 	@Test
 	public void test() {
 		

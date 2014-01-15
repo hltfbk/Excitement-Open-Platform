@@ -14,6 +14,7 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmResource;

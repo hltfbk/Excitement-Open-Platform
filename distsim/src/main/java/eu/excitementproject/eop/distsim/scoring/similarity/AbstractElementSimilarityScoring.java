@@ -22,6 +22,7 @@ public abstract class AbstractElementSimilarityScoring implements ElementSimilar
 	/* (non-Javadoc)
 	 * @see eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScoring#setTotalLeftFeaturesNum(int)
 	 */
+	@Override
 	public void setTotalFeaturesNum(int totalLeftFeaturesNum, int totalRightFeaturesNum) {
 		this.totalLeftFeaturesNum = totalLeftFeaturesNum;
 		this.totalRightFeaturesNum = totalRightFeaturesNum;

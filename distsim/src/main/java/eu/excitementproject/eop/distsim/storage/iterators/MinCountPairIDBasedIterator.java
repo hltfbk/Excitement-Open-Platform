@@ -30,6 +30,7 @@ public class MinCountPairIDBasedIterator<E extends Externalizable & Countable & 
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.iterators.IDBasedIterator#filtered(org.excitement.distsim.items.Externalizable)
 	 */
+	@Override
 	protected boolean filtered(E e) {
 		try {
 			return e.getCount() < minCount;

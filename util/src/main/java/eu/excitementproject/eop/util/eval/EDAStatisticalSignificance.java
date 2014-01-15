@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.util.eval;
 
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -24,7 +25,7 @@ import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
-import eu.excitementproject.eop.core.ImplCommonConfig;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
 /**

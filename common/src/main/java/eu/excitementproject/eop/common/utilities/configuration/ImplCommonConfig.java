@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.common.utilities.configuration;
 
 import java.io.File;
 import java.util.ArrayList;
