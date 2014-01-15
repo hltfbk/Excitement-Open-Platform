@@ -1,11 +1,12 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtesum;
 
 import java.io.File;
-import java.util.Date;
+import java.io.IOException;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ClassifierGenerator;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Dataset;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.Prover;
@@ -15,68 +16,58 @@ import eu.excitementproject.eop.biutee.rteflow.endtoend.default_impl.F1Classifie
 import eu.excitementproject.eop.biutee.rteflow.endtoend.rtesum.RteSumInstance;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.rtesum.RteSumProof;
 import eu.excitementproject.eop.biutee.rteflow.systems.EndToEndTester;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemMain;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
-import eu.excitementproject.eop.biutee.utilities.LogInitializer;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
+/**
+ * 
+ * @author Asher Stern
+ * @since 2013
+ *
+ */
 public class RteSumETETester extends EndToEndTester<RteSumInstance, RteSumProof>
 {
-
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{
-		try
+		new SystemMain()
 		{
-			String className = RteSumETETester.class.getSimpleName();
-			
-			if (args.length<1)
-				throw new BiuteeException("Need first argument as configuration file name.");
-			
-			String configurationFileName = args[0];
-			new LogInitializer(configurationFileName).init();
-			logger = Logger.getLogger(RteSumETETester.class);
-			
-			ExperimentManager.getInstance().start();
-			ExperimentManager.getInstance().setConfigurationFile(configurationFileName);
-			logger.info(className);
-			
-			RteSumETETester tester = new RteSumETETester(configurationFileName, ConfigurationParametersNames.RTE_SUM_TRAIN_AND_TEST_MODULE_NAME);
-			Date startDate = new Date();
-			tester.init();
-			try
+			@Override
+			protected void run(String[] args) throws BiuteeException
 			{
-				tester.test();
+				logger = Logger.getLogger(RteSumETETester.class);
+				RteSumETETester tester = new RteSumETETester(configurationFileName, ConfigurationParametersNames.RTE_SUM_TRAIN_AND_TEST_MODULE_NAME);
+				try
+				{
+					tester.init();
+					try
+					{
+						tester.test();
+					}
+					finally
+					{
+						tester.cleanUp();
+					}
+				} catch (TeEngineMlException
+						| PluginAdministrationException
+						| ConfigurationException | LemmatizerException
+						| IOException e)
+				{
+					throw new BiuteeException("Failed to run",e);
+				}
 			}
-			finally
-			{
-				tester.cleanUp();
-			}
-			
-			Date endDate = new Date();
-			long elapsedSeconds = (endDate.getTime()-startDate.getTime())/1000;
-			logger.info(className+" done. Time elapsed: "+elapsedSeconds/60+" minutes and "+elapsedSeconds%60+" seconds.");
-			ExperimentManager.getInstance().save();
-		}
-		catch(Throwable e)
-		{
-			ExceptionUtil.outputException(e, System.out);
-			if (logger!=null)
-			{
-				ExceptionUtil.logException(e, logger);
-			}
-		}
+		}.main(RteSumETETester.class, args);
 	}
 	
 	public RteSumETETester(String configurationFileName, String configurationModuleName)
 	{
 		super(configurationFileName, configurationModuleName);
+		if (null==logger){logger = Logger.getLogger(RteSumETETester.class);}
 	}
 
 	@Override
