@@ -1,17 +1,17 @@
-<?xml version="1.0"?>
+
 
 <!--A configuration file for the program eu.excitementproject.eop.distsim.builders.elementfeature.GeneralElementFeatureScorer, which scores features and elements, given elements and features counts-->
 <configuration>
 
-<module name="logging"> <!--Defines the log4j properties -->
+<section name="logging"> <!--Defines the log4j properties -->
 	<!--the path of the log4j properties file-->
-	<param name="properties-file">configurations/log4j.properties</param> 
-</module>
+	<property name="properties-file">configurations/log4j.properties</property> 
+</section>
 
-<module name="element-feature-scoring">
+<section name="element-feature-scoring">
 
 	<!--The number of concurrent threads for the scoring process-->
-          <param name="thread-num">10</param>
+          <property name="thread-num">10</property>
 	  
 	<!-- The name of the class which implements the eu.excitementproject.eop.distsim.scoring.feature.FeatureScoring interface. 
 	       Current options:
@@ -21,7 +21,7 @@
 		   * eu.excitementproject.eop.distsim.scoring.feature.ElementConditionedFeatureProb: The P(feature|element) probability.
 		   * eu.excitementproject.eop.distsim.scoring.feature.TFIDF: The TF-IDF value for the feature of the element, according to their joint and individual distributions.
 	-->
-	 <param name="feature-scoring-class">eu.excitementproject.eop.distsim.scoring.feature.PMI</param>
+	 <property name="feature-scoring-class">eu.excitementproject.eop.distsim.scoring.feature.PMI</property>
 	 
 	 <!--The name of the class which implements the eu.excitementproject.eop.distsim.scoring.element.ElementScoring interface.
 	       Current options:
@@ -29,13 +29,13 @@
 		   * eu.excitementproject.eop.distsim.scoring.element.L1Norm: Defines the normalization value of a given element, as the sum of its features' scores.
                    * eu.excitementproject.eop.distsim.scoring.element.L2Norm: Defines the normalization value of a given element, as the L2 norm of its features' scores.
 	-->
-	 <param name="element-scoring-class">eu.excitementproject.eop.distsim.scoring.element.L1Norm</param>
+	 <property name="element-scoring-class">eu.excitementproject.eop.distsim.scoring.element.L1Norm</property>
 	 
 	 <!-- The minimal number of features per element. Elements with less features will be filtered during the scoring. Optional, default 10.-->
-	 <param name ="min-features-size">10</param>
-</module>
+	 <property name ="min-features-size">10</property>
+</section>
 
-<module name="common-feature-criterion"> <!-- Defines an implementation of the CommonFeatureCriterion interface, which determines whether a given feature is 'common', according to some policy-->
+<section name="common-feature-criterion"> <!-- Defines an implementation of the CommonFeatureCriterion interface, which determines whether a given feature is 'common', according to some policy-->
 
 	<!-- The name of a class which implements the eu.excitementproject.eop.distsim.builders.scoring.CommonFeatureCriterion interface. 
 	       Current options:
@@ -43,11 +43,11 @@
 		      Required features:
 	                  * min-feature-elements-num: the minimal number of assigned elements for a common feature
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.builders.scoring.JointElementBasedCommonFeatureCriterion</param>
-	<param name="min-feature-elements-num">2</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.builders.scoring.JointElementBasedCommonFeatureCriterion</property>
+	<property name="min-feature-elements-num">2</property>
+</section>
 
-<module name="vector-truncate"> <!--Defines an implementation of the VectorTruncate interface, which truncates a given vector according to some policy -->
+<section name="vector-truncate"> <!--Defines an implementation of the VectorTruncate interface, which truncates a given vector according to some policy -->
 
 	<!-- The name of a class which implements the eu.excitementproject.eop.distsim.builders.VectorTruncate interface. 
 	       Current options:
@@ -56,14 +56,14 @@
                            * min-score [default Double.MIN_VALUE]: the truncated vector will be composed of features with score which is equal or greater than the given minimal score.
                            * percent [0-1, default 1]: the truncated vector will be composed of the top percent features.
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.builders.BasicVectorTruncate</param>
-	<param name="top-n">1000</param>
-	<param name="percent">1</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.builders.BasicVectorTruncate</property>
+	<property name="top-n">1000</property>
+	<property name="percent">1</property>
+</section>
 
 
 
-<module name="truncated-feature-elements-storage-device"><!-- Defines the persistent storage device for the truncated features' elements (in case vector-truncate module is define, usually with element-feature-scoring).-->-
+<section name="truncated-feature-elements-storage-device"><!-- Defines the persistent storage device for the truncated features' elements (in case vector-truncate module is define, usually with element-feature-scoring).-->-
 
 	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -75,90 +75,90 @@
 		     Required features:
 		         * redis-file: a path to the Redis file to store the co-occurrences
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntSetFile</param>
-	<param name="file">models/lin/dependency/feature-elements-truncated</param>
-	<param name="read-write">write</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntSetFile</property>
+	<property name="file">models/lin/dependency/feature-elements-truncated</property>
+	<property name="read-write">write</property>
+</section>
 
 
-<module name="text-units-data-structure"> <!--Defines the type data structure to store the extracted text units during the computation-->
-
-	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
-	      Current options
-		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
-		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
-	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
-</module>
-
-<module name="co-occurrences-data-structure"> <!--Defines the type data structure to store the extracted co-occurences during the computation.-->
+<section name="text-units-data-structure"> <!--Defines the type data structure to store the extracted text units during the computation-->
 
 	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
 	      Current options
 		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
 		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
 
-<module name="elements-data-structure"> <!--Defines the type data structure to store the extracted elements during the computation-->
-
-	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
-	      Current options
-		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
-		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
-	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
-</module>
-
-<module name="features-data-structure"> <!--Defines the type data structure to store the extracted features during the computation-->
+<section name="co-occurrences-data-structure"> <!--Defines the type data structure to store the extracted co-occurences during the computation.-->
 
 	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
 	      Current options
 		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
 		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
 
-<module name="element-feature-counts-data-structure"> <!--Defines the type data structure to store the counts of elements and features during the computation-->
+<section name="elements-data-structure"> <!--Defines the type data structure to store the extracted elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
+
+<section name="features-data-structure"> <!--Defines the type data structure to store the extracted features during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
+
+<section name="element-feature-counts-data-structure"> <!--Defines the type data structure to store the counts of elements and features during the computation-->
 
 	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
 		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
 		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
 
-<module name="feature-elements-data-structure"> <!-- Defines the type data structure to store the elements for each during the computation-->
-
-	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
-		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
-		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
-	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
-</module>
-
-<module name="element-feature-scores-data-structure"> <!--Defines the type data structure to store the scoring of features in elements during the computation-->
+<section name="feature-elements-data-structure"> <!-- Defines the type data structure to store the elements for each during the computation-->
 
 	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
 		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
 		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
 
-<module name="element-scores-data-structure"> <!--Defines the type data structure to store the scoring of the elements during the computation-->
+<section name="element-feature-scores-data-structure"> <!--Defines the type data structure to store the scoring of features in elements during the computation-->
 
 	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
 		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
 		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
+
+<section name="element-scores-data-structure"> <!--Defines the type data structure to store the scoring of the elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
 
 
-<module name="elements-storage-device"> <!--Defines the persistent storage device for the elements-->
+<section name="elements-storage-device"> <!--Defines the persistent storage device for the elements-->
 	
 	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -170,12 +170,12 @@
 		     Required features:
 		         * redis-file: a path to the Redis file to store the co-occurrences
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.File</param>
-	<param name="file">models/lin/dependency/elements</param>
-	<param name="read-write">read</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.File</property>
+	<property name="file">models/lin/dependency/elements</property>
+	<property name="read-write">read</property>
+</section>
 
-<module name="features-storage-device"> <!--Defines the persistent storage device for the features-->
+<section name="features-storage-device"> <!--Defines the persistent storage device for the features-->
 	
 	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -187,13 +187,13 @@
 		     Required features:
 		         * redis-file: a path to the Redis file to store the co-occurrences
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.File</param>
-	<param name="file">models/lin/dependency/features</param>
-	<param name="read-write">read</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.File</property>
+	<property name="file">models/lin/dependency/features</property>
+	<property name="read-write">read</property>
+</section>
 
 
-<module name="element-feature-counts-storage-device"> <!-- Defines the persistent storage device for the element-feature counts-->
+<section name="element-feature-counts-storage-device"> <!-- Defines the persistent storage device for the element-feature counts-->
 	
 	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -205,13 +205,13 @@
 		     Required features:
 		         * redis-file: a path to the Redis file to store the co-occurrences
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntDoubleMapFile</param>
-	<param name="file">models/lin/dependency/element-feature-counts</param>
-	<param name="read-write">read</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntDoubleMapFile</property>
+	<property name="file">models/lin/dependency/element-feature-counts</property>
+	<property name="read-write">read</property>
+</section>
 
 
-<module name="feature-elements-storage-device"> <!-- Defines the persistent storage device for the features' elements-->
+<section name="feature-elements-storage-device"> <!-- Defines the persistent storage device for the features' elements-->
 
 	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -223,13 +223,13 @@
 		     Required features:
 		         * redis-file: a path to the Redis file to store the co-occurrences
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntSetFile</param>
-	<param name="file">models/lin/dependency/feature-elements</param>
-	<param name="read-write">read</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntSetFile</property>
+	<property name="file">models/lin/dependency/feature-elements</property>
+	<property name="read-write">read</property>
+</section>
 
 
-<module name="element-feature-scores-storage-device"> <!-- Defines the persistent storage device for the element-feature scoring-->
+<section name="element-feature-scores-storage-device"> <!-- Defines the persistent storage device for the element-feature scoring-->
 
 	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -240,13 +240,13 @@
 	           * eu.excitementproject.eop.distsim.storage.Redis: Redis device, required features:
 	               * redis-file: a path to the Redis file to store the element-feature scorings
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</param>
-	<param name="file">models/lin/dependency/element-feature-scores</param>
-	<param name="read-write">write</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</property>
+	<property name="file">models/lin/dependency/element-feature-scores</property>
+	<property name="read-write">write</property>
+</section>
 
 
-<module name="element-scores-storage-device"> <!-- Defines the persistent storage device for the elements' scorings -->
+<section name="element-scores-storage-device"> <!-- Defines the persistent storage device for the elements' scorings -->
 
 	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -258,10 +258,10 @@
 		      Required features:
                           * redis-file: a path to the Redis file to store the elements' scorings
 	-->
-	<param name="class">eu.excitementproject.eop.distsim.storage.IdDoubleFile</param>
-	<param name="file">models/lin/dependency/element-scores</param>
-	<param name="read-write">write</param>
-</module>
+	<property name="class">eu.excitementproject.eop.distsim.storage.IdDoubleFile</property>
+	<property name="file">models/lin/dependency/element-scores</property>
+	<property name="read-write">write</property>
+</section>
 
 </configuration>
 

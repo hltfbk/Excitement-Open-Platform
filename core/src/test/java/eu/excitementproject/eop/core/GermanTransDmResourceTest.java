@@ -8,12 +8,14 @@ import java.util.List;
 import org.junit.Assume;
 import org.junit.Test;
 
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmResource;
@@ -22,12 +24,14 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTr
  * Tests the GermanTransDmResource in four different settings:
  * 1: using all similarity measures according to a given configuration file
  * 2: using all similarity measures by calling the resource directly
- * 3: using only balapinc measure by calling the resource directly
+ * 3: using only one measure by calling the resource directly
  * 4: using an invalid measure (test exception handling)
  * 
  * Test scenario 1 is the vastest one, by testing calls via getRulesForLeft, 
  * getRulesForRight, and getRules, and by testing lemmas/lemma pairs which 
- * both exist and do not exist in the resource.   
+ * both exist and do not exist in the resource.  
+ * 
+ * Scenarios 2-4 are commented out to make testing quicker. 
  * 
  * @author Britta Zeller
  *
@@ -36,7 +40,7 @@ public class GermanTransDmResourceTest {
 
 	
 	@Test
-	public void test() throws UnsupportedPosTagStringException {
+	public void test() throws UnsupportedPosTagStringException, LexicalResourceCloseException {
 
 		
 		/** TEST 1: USE CONFIGURATION FILE */
@@ -101,13 +105,13 @@ public class GermanTransDmResourceTest {
 
 		
 		// getRulesForRight for a NN noun
-		//System.out.println("rTest for Truppe");
+		//System.out.println("rTest for Stelle");
 		List<LexicalRule<? extends GermanTransDmInfo>> list2 = null; 
 		try {
-			list2 = transDm.getRulesForRight("Truppe", new GermanPartOfSpeech("NN")); 
+			list2 = transDm.getRulesForRight("Stelle", new GermanPartOfSpeech("NN")); 
 			assertTrue(list2.size() > 0);
 			for (LexicalRule<? extends GermanTransDmInfo> rule : list2) {
-				assertTrue(rule.getRLemma().equals("Truppe"));
+				assertTrue(rule.getRLemma().equals("Stelle"));
 				//System.out.print("one leftLemma for 'Truppe': " + rule.getLLemma());
 				//System.out.println(" , corresponding score (" + rule.getRelation() + "): " + rule.getConfidence());
 			}						
@@ -119,15 +123,15 @@ public class GermanTransDmResourceTest {
 		
 			
 
-		// NULL RESULT getRules for a J adjective + N noun
-		//System.out.println("rTest for witzig");
+		// NULL RESULT getRules for a V + N noun
+		//System.out.println("rTest for tätigen");
 		List<LexicalRule<? extends GermanTransDmInfo>> list3 = null; 
 		try {
-			list3 = transDm.getRules("witzig", new GermanPartOfSpeech("ADJ"), "Katze", new GermanPartOfSpeech("N")); 
+			list3 = transDm.getRules("tätigen", new GermanPartOfSpeech("V"), "Katze", new GermanPartOfSpeech("N")); 
 			assertTrue(list3.size() == 0);
 			//System.out.println("Rule list size is " + list3.size());
 			//for (LexicalRule<? extends GermanTransDmInfo> rule : list3) {
-				//System.out.print("SHOULD NOT BE SEEN: one leftLemma for 'witzig': " + rule.getLLemma());
+				//System.out.print("SHOULD NOT BE SEEN: one leftLemma for 'tätigen': " + rule.getLLemma());
 				//System.out.println(" , corresponding score (" + rule.getRelation() + "): " + rule.getConfidence());
 			//}						
 		}
@@ -136,25 +140,24 @@ public class GermanTransDmResourceTest {
 			e.printStackTrace(); 
 		}
 		
-		
-		// RESULT getRules for a J adjective + V verb
-		//System.out.println("rTest for witzig");
+
+		// RESULT getRules for 2x verb
+		//System.out.println("rTest for tätigen");
 		List<LexicalRule<? extends GermanTransDmInfo>> list3a = null; 
 		try {
-			list3a = transDm.getRules("witzig", new GermanPartOfSpeech("ADJ"), "machen", new GermanPartOfSpeech("V")); 
+			list3a = transDm.getRules("tätigen", new GermanPartOfSpeech("V"), "sein", new GermanPartOfSpeech("V")); 
 			assertTrue(list3a.size() > 0);
 			//System.out.println("Rule list size is " + list3a.size());
 			for (LexicalRule<? extends GermanTransDmInfo> rule : list3a) {
-				assertTrue(rule.getLLemma().equals("witzig") ^ rule.getRLemma().equals("witzig"));
-				//System.out.print("one righttLemma for 'witzig': " + rule.getRLemma());
+				assertTrue(rule.getLLemma().equals("tätigen") ^ rule.getRLemma().equals("tätigen"));
+				//System.out.print("one righttLemma for 'tätigen': " + rule.getRLemma());
 				//System.out.println(" , corresponding score (" + rule.getRelation() + "): " + rule.getConfidence());
 			}						
 		}
 		catch (LexicalResourceException e)
 		{
 			e.printStackTrace(); 
-		}		
-			
+		}	
 		
 		
 		/*
@@ -176,10 +179,12 @@ public class GermanTransDmResourceTest {
 		}
 		*/
 		
+		transDm.close();
+		
 		//////////////////////////////////////////////////////////////////////////////////////////
 		
 		/** TEST 2: USE ALL MEASURES DIRECTLY */
-
+/*
 		//System.out.println("***************************************************************");
 		//System.out.println("TEST 2");
 		//System.out.println("***************************************************************");
@@ -198,16 +203,16 @@ public class GermanTransDmResourceTest {
 		
 		
 		//System.out.println("THIS SHOULD OUTPUT THE SAME AS THE TEST BEFORE: ");
-		// RESULT getRules for a J adjective + V verb
-		//System.out.println("rTest for witzig");
+		// RESULT getRules for a V + V verb
+		//System.out.println("rTest for tätigen");
 		List<LexicalRule<? extends GermanTransDmInfo>> list5 = null; 
 		try {
-			list5 = transDmDirect1.getRules("witzig", new GermanPartOfSpeech("ADJ"), "machen", new GermanPartOfSpeech("V")); 
+			list5 = transDmDirect1.getRules("tätigen", new GermanPartOfSpeech("V"), "sein", new GermanPartOfSpeech("V")); 
 			assertTrue(list5.size() > 0);
 			//System.out.println("Rule list size is " + list5.size());
 			for (LexicalRule<? extends GermanTransDmInfo> rule : list5) {
-				assertTrue(rule.getLLemma().equals("witzig") ^ rule.getRLemma().equals("witzig"));
-				//System.out.print("one rightLemma for 'witzig': " + rule.getRLemma());
+				assertTrue(rule.getLLemma().equals("tätigen") ^ rule.getRLemma().equals("tätigen"));
+				//System.out.print("one rightLemma for 'tätigen': " + rule.getRLemma());
 				//System.out.println(" , corresponding score (" + rule.getRelation() + "): " + rule.getConfidence());
 			}
 		}
@@ -216,19 +221,21 @@ public class GermanTransDmResourceTest {
 			e.printStackTrace(); 
 		}				
 	
-	
+		transDmDirect1.close();
+		
+*/
 		//////////////////////////////////////////////////////////////////////////////////////////
 		
 
 		/** TEST 3: USE ONE MEASURE DIRECTLY */
-
+/*
 		//System.out.println("***************************************************************");
 		//System.out.println("TEST 3");
 		//System.out.println("***************************************************************");
 		GermanTransDmResource transDmDirect2 = null;
 
 		try {
-			transDmDirect2 = new GermanTransDmResource("balapinc");
+			transDmDirect2 = new GermanTransDmResource("cosine");
 		} catch (GermanTransDmException e) {
 			System.err.println("WARNING: GermanTransDm file was not found in the given path.");
 		
@@ -240,16 +247,16 @@ public class GermanTransDmResourceTest {
 		
 		
 		//System.out.println("THIS SHOULD OUTPUT LESS RESULTS THAN THE TEST BEFORE: ");
-		// RESULT getRules for a J adjective + N noun
-		//System.out.println("rTest for witzig");
+		// RESULT getRules for a V+V
+		//System.out.println("rTest for tätigen");
 		List<LexicalRule<? extends GermanTransDmInfo>> list6 = null; 
 		try {
-			list6 = transDmDirect2.getRules("witzig", new GermanPartOfSpeech("ADJ"), "machen", new GermanPartOfSpeech("V")); 
+			list6 = transDmDirect2.getRules("tätigen", new GermanPartOfSpeech("V"), "sein", new GermanPartOfSpeech("V")); 
 			assertTrue(list6.size() > 0);
 			//System.out.println("Rule list size is " + list6.size());
 			for (LexicalRule<? extends GermanTransDmInfo> rule : list6) {
-				assertTrue(rule.getLLemma().equals("witzig") ^ rule.getRLemma().equals("witzig"));
-				//System.out.print("one leftLemma for 'witzig': " + rule.getLLemma());
+				assertTrue(rule.getLLemma().equals("tätigen") ^ rule.getRLemma().equals("tätigen"));
+				//System.out.print("one leftLemma for 'tätigen': " + rule.getLLemma());
 				//System.out.println(" , corresponding score (" + rule.getRelation() + "): " + rule.getConfidence());
 			}						
 		}
@@ -258,11 +265,13 @@ public class GermanTransDmResourceTest {
 			e.printStackTrace(); 
 		}
 		
+		transDmDirect2.close();
+*/	
 		//////////////////////////////////////////////////////////////////////////////////////////
 		
 		
 		/** TEST 4: USE INVALID MEASURE DIRECTLY */
-		
+/*		
 		//System.out.println("***************************************************************");
 		//System.out.println("TEST 4");
 		//System.out.println("***************************************************************");
@@ -280,18 +289,18 @@ public class GermanTransDmResourceTest {
 		// The test halts here if transDmDirect3 is null (this should be the case)
 		Assume.assumeNotNull(transDmDirect3);
 		
-		//System.out.println("THIS LINE AND FOLLOWIGN SHOULD NOT BE SEEN!");
+		//System.out.println("THIS LINE AND FOLLOWING SHOULD NOT BE SEEN!");
 		
 		// RESULT getRules for a J adjective + N noun
-		//System.out.println("rTest for witzig");
+		//System.out.println("rTest for tätigen");
 		List<LexicalRule<? extends GermanTransDmInfo>> listN = null; 
 		try {
-			listN = transDmDirect3.getRules("witzig", new GermanPartOfSpeech("ADJ"), "Einkommen", new GermanPartOfSpeech("N")); 
+			listN = transDmDirect3.getRules("tätigen", new GermanPartOfSpeech("V"), "Einkommen", new GermanPartOfSpeech("N")); 
 			assertTrue(listN.size() > 0);
 			//System.out.println("Rule list size is " + listN.size());
 			for (LexicalRule<? extends GermanTransDmInfo> rule : listN) {
-				assertTrue(rule.getRLemma().equals("witzig"));
-				//System.out.print("one leftLemma for 'witzig': " + rule.getLLemma());
+				assertTrue(rule.getRLemma().equals("tätigen"));
+				//System.out.print("one leftLemma for 'tätigen': " + rule.getLLemma());
 				//System.out.println(" , corresponding score (" + rule.getRelation() + "): " + rule.getConfidence());
 			}						
 		}
@@ -300,6 +309,7 @@ public class GermanTransDmResourceTest {
 			e.printStackTrace(); 
 		}
 		
-		
+		transDmDirect3.close();
+*/		
 	}
 }

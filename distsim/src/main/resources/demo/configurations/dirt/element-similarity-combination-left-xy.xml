@@ -1,14 +1,14 @@
-<?xml version="1.0"?>
+
 
 <!--A configuration file for the program eu.excitementproject.eop.distsim.builders.cooccurrence.GeneralElementSimilarityCombiner, which combines several similarity models into one unfied model-->
 
 <configuration>
 
-<module name="logging"> <!--Defines the log4j properties -->
-	<param name="properties-file">/home/ir/adlerm6/workspace/configurations/log4j.properties</param> <!--the path of the log4j properties file-->
-</module>
+<section name="logging"> <!--Defines the log4j properties -->
+	<property name="properties-file">/home/ir/adlerm6/workspace/configurations/log4j.properties</property> <!--the path of the log4j properties file-->
+</section>
 
-<module name="element-similarity-combiner"> <!--Defines the combination method -->
+<section name="element-similarity-combiner"> <!--Defines the combination method -->
 
 <!-- Defines the combination class which implements the eu.excitementproject.eop.distsim.builders.similarity.ElementSimilarityCombiner interface
 	       Options:
@@ -16,16 +16,16 @@
 	       * eu.excitementproject.eop.distsim.builders.similarity.OrderedBasedElementSimilarityCombiner assumes that the elements of the given similarity storages are ascending sorted. No memory is used the storages
 	       * eu.excitementproject.eop.distsim.builders.similarity.RedisBasedElementSimilarityCombiner stores in a Redis server the given set of similarity storages
 	-->
-            <param name="class">eu.excitementproject.eop.distsim.builders.similarity.OrderedBasedElementSimilarityCombiner</param>
+            <property name="class">eu.excitementproject.eop.distsim.builders.similarity.OrderedBasedElementSimilarityCombiner</property>
 	    
 	<!-- Are the elements in the given similarity files sorted? (descending) -->
-           <param name="is-sorted">false</param>
+           <property name="is-sorted">false</property>
 
           <!-- The list of similarity files top be combined-->
-	<param name="in-files">models/dirt/elements-similarities-left-x, models/dirt/elements-similarities-left-y</param>
+	<property name="in-files">models/dirt/elements-similarities-left-x, models/dirt/elements-similarities-left-y</property>
 	  
 	  <!-- The name of the out combined similarity file -->
-	<param name="out-combined-file">models/dirt/elements-similarities-left-xy</param>
+	<property name="out-combined-file">models/dirt/elements-similarities-left-xy</property>
 
 <!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
 	       Current options:
@@ -36,13 +36,13 @@
 	           * eu.excitementproject.eop.distsim.storage.Redis: Redis device, required features:
 	               * redis-file: a path to the Redis file to store the element-feature scorings
 	-->
-	<param name="storage-device-class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</param>
+	<property name="storage-device-class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</property>
 	
 	<!-- The method of combination, defined by the eu.excitementproject.eop.distsim.scoring.combine.SimilarityCombination interface
 		Options:
 		* eu.excitementproject.eop.distsim.scoring.combine.GeometricMean Combines given scores by their geometric mean
 	  -->
-	<param name="similarity-combination-class">eu.excitementproject.eop.distsim.scoring.combine.GeometricMean</param>	 
-</module>
+	<property name="similarity-combination-class">eu.excitementproject.eop.distsim.scoring.combine.GeometricMean</property>	 
+</section>
 </configuration>
 

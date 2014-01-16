@@ -31,7 +31,7 @@
 		<module>biutee</module>
 		<module>util</module>
 		<module>distsim</module>
-		<!--<module>globalgraphoptimizer</module>-->
+		<module>globalgraphoptimizer</module>
 		<module>lexicalinferenceminer</module>
 	</modules>
 	<dependencyManagement>
@@ -262,6 +262,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.3</version>
 				<configuration>
 					<descriptors>
 						<descriptor>assembly.xml</descriptor>
@@ -297,7 +298,7 @@
 				<version>2.5.2</version>
 				<configuration>
 					<xmlOutput>true</xmlOutput>
-					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.distsim.*,eop.util.*</onlyAnalyze>
+					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.distsim.*,eop.util.*,eop.lexicalinferenceminer.*</onlyAnalyze>
 				</configuration>
 			</plugin>
 

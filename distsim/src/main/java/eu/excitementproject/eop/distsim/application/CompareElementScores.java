@@ -4,14 +4,11 @@ import java.io.IOException;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.distsim.items.Element;
-import eu.excitementproject.eop.distsim.items.Feature;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
-import eu.excitementproject.eop.distsim.storage.BasicMap;
 import eu.excitementproject.eop.distsim.storage.BasicMapException;
 import eu.excitementproject.eop.distsim.storage.File;
 import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.IdDoubleFile;
-import eu.excitementproject.eop.distsim.storage.IdTroveBasicIntDoubleMapFile;
 import eu.excitementproject.eop.distsim.storage.ItemNotFoundException;
 import eu.excitementproject.eop.distsim.storage.LoadingStateException;
 import eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage;

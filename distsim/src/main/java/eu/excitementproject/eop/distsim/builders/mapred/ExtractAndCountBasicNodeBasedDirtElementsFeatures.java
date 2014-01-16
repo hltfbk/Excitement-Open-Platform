@@ -13,6 +13,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
 
 /**
@@ -28,7 +29,9 @@ import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
 public class ExtractAndCountBasicNodeBasedDirtElementsFeatures { 
 
   public static void main(String[] args) throws Exception {
-	    ConfigurationFile confFile = new ConfigurationFile(args[0]);
+	    //ConfigurationFile confFile = new ConfigurationFile(args[0]);
+	    ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
+	    
 	    ConfigurationParams confParams = confFile.getModuleConfiguration(eu.excitementproject.eop.distsim.util.Configuration.MAPRED_COOCCURRENCE_COUNTING);
 
 	    Configuration conf = new Configuration();

@@ -48,6 +48,7 @@ public class CreateSimilarityLists {
 				values.add(new SimilarityScore(itemScore.getItem().toString(),itemScore.getScore().get()));
 
 			Collections.sort(values, new Comparator<SimilarityScore>() {
+				@Override
 				public int compare(SimilarityScore o1, SimilarityScore o2) {
 					return (o2.getScore().get() > o1.getScore().get() ? 1 : o1.getScore().get() > o2.getScore().get() ? -1 : 0);
 				}}

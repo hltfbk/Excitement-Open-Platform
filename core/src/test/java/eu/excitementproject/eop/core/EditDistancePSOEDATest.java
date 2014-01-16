@@ -15,6 +15,7 @@ import org.apache.uima.jcas.cas.TOP;
 import eu.excitement.type.entailment.Pair;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -25,7 +26,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.junit.Test;
+import org.junit.*;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -40,6 +41,7 @@ public class EditDistancePSOEDATest {
 	static Logger logger = Logger.getLogger(EditDistancePSOEDATest.class
 			.getName());
 	
+	@Ignore
 	@Test
 	public void test() {
 		

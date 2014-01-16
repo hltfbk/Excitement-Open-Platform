@@ -28,11 +28,11 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.view
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
 import eu.excitementproject.eop.common.utilities.file.FileFilters;
 import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;

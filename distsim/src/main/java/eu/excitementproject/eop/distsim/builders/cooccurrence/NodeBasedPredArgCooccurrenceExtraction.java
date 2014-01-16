@@ -4,8 +4,10 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
 import java.util.LinkedList;
+
 import java.util.List;
 
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
@@ -28,6 +30,10 @@ import eu.excitementproject.eop.distsim.util.Pair;
  *
  */
 public class NodeBasedPredArgCooccurrenceExtraction extends PredArgCooccurrenceExtraction<BasicNode> {
+
+	public NodeBasedPredArgCooccurrenceExtraction(CommonConfig conf) /*throws ConfigurationException*/ {
+		this();
+	} 
 
 	public NodeBasedPredArgCooccurrenceExtraction(ConfigurationParams confParams) /*throws ConfigurationException*/ {
 		this();

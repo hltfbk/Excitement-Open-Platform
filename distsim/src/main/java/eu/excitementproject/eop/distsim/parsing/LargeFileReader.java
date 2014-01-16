@@ -21,13 +21,15 @@ public class LargeFileReader implements Iterable<String>{
 	catch (Exception ex) {}
     }
  
-    public Iterator<String> iterator() {
+    @Override
+	public Iterator<String> iterator() {
 	return new FileIterator();
     }
  
     private class FileIterator implements Iterator<String> {
 	private String currentLine;
  
+	@Override
 	public boolean hasNext(){
 	    try	{
 	    	currentLine = reader.readLine();
@@ -40,11 +42,13 @@ public class LargeFileReader implements Iterable<String>{
 	    return currentLine != null;
 	}
  
+	@Override
 	public String next(){
 		
 	    return currentLine;
 	}
  
+	@Override
 	public void remove(){}
     }
 

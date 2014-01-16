@@ -5,6 +5,7 @@ import org.junit.*;
 //test for English with EditDistanceEDA
 public class TestRunner_EditDistance_EN_singlePair {
 
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {

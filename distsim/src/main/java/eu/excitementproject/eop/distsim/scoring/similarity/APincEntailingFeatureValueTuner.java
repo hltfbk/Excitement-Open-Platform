@@ -21,7 +21,7 @@ public class APincEntailingFeatureValueTuner implements ElementFeatureValueConst
 	 */
 	@Override
 	public double constructFeatureValue(ElementFeatureData data) {
-		return (double)data.getRank();
+		return data.getRank();
 	}
 
 }
