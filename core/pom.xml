@@ -59,6 +59,11 @@
 			<artifactId>GermaNetAPI</artifactId>
 			<version>7.0.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+                <dependency>
+                        <groupId>de.uni-heidelberg.cl</groupId>
+                        <artifactId>transDM-distributional-similarity</artifactId>
+                        <version>20140114</version>
+                </dependency>
 		<dependency>
     			<groupId>eu.fbk.hlt</groupId>
     			<artifactId>pso</artifactId>
