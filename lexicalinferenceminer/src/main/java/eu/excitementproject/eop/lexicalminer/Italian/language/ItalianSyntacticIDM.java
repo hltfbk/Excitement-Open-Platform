@@ -3,11 +3,11 @@ package eu.excitementproject.eop.lexicalminer.Italian.language;
 
 import java.io.FileNotFoundException;
 
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;

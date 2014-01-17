@@ -110,7 +110,8 @@ public class RedirectExtractor implements IExtractor{
 					}
 
 					
-					if (UtilClass.getInstance().isValidRule(srcRedirectLemma,pageTitleLemma))
+					UtilClass.getInstance();
+					if (UtilClass.isValidRule(srcRedirectLemma,pageTitleLemma))
 					{
 						LexicalRule<RuleInfo> rule = new LexicalRule<RuleInfo>(srcRedirectLemma.toLowerCase(),
 								m_nounPOS, //
@@ -123,8 +124,9 @@ public class RedirectExtractor implements IExtractor{
 					}
 					
 					
+					UtilClass.getInstance();
 					// The opposite direction is also rule
-					if (UtilClass.getInstance().isValidRule(pageTitleLemma,srcRedirectLemma))
+					if (UtilClass.isValidRule(pageTitleLemma,srcRedirectLemma))
 					{
 						LexicalRule<RuleInfo> rule = new LexicalRule<RuleInfo>(pageTitleLemma.toLowerCase(),
 								m_nounPOS, //

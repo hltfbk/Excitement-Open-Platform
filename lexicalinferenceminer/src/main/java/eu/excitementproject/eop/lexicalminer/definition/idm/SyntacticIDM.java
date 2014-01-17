@@ -94,8 +94,9 @@ public class SyntacticIDM implements IIDM {
 		List<LexicalRule<RuleInfo>> inferences=new ArrayList<LexicalRule<RuleInfo>>(); 
 		List<LexicalRule<RuleInfo>> temp_results = null;
 		
+		UtilClass.getInstance();
 		//check if need to save the header
-		if (UtilClass.getInstance().isANoun(current_tree.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech()))
+		if (UtilClass.isANoun(current_tree.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech()))
 		{
 			temp_results = getRulesForNouns(full_tree, orignialSentence, current_tree, path, title, sourceId);
 				
@@ -147,7 +148,8 @@ public class SyntacticIDM implements IIDM {
 		
 		try
 		{
-			if (UtilClass.getInstance().isValidRule(titleLemma, word_lemma))
+			UtilClass.getInstance();
+			if (UtilClass.isValidRule(titleLemma, word_lemma))
 			{
 				pattern = new SyntacticPatternRuleInfo(this.m_utils, full_tree, id, path, sourceId, false, titleLemma, word_lemma, orignialSentence);
 				LexicalRule<RuleInfo> regular_inferences = 
@@ -169,7 +171,7 @@ public class SyntacticIDM implements IIDM {
 		
 		try
 		{
-			if ((NP_lemma != null) && (NP_lemma.length() > 0) && (UtilClass.getInstance().isValidRule(titleLemma, NP_lemma)))
+			if ((NP_lemma != null) && (NP_lemma.length() > 0) && (UtilClass.isValidRule(titleLemma, NP_lemma)))
 			{	
 				SyntacticPatternRuleInfo NPpattern = new SyntacticPatternRuleInfo(this.m_utils, full_tree, id, path, sourceId, true, titleLemma, word_lemma, orignialSentence);				
 				NPrule = new LexicalRule<RuleInfo>(titleLemma.toLowerCase(), m_nounPOS,
