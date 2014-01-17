@@ -201,7 +201,8 @@ public class TextProParser implements BasicParser {
     /* (non-Javadoc)
       * @see ac.biu.nlp.nlp.instruments.parse.Parser#parse()
       */
-    public void parse() throws ParserRunException {
+    @SuppressWarnings("unchecked")
+	public void parse() throws ParserRunException {
         // Verifying parameters and flow are legal.
         if (this.sentence == null)
             throw new ParserRunException("the parse method was called with null sentence.");
