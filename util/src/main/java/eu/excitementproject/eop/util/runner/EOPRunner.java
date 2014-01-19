@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.util.runner;
 
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -30,8 +31,8 @@ import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.core.EditDistanceTEDecision;
-import eu.excitementproject.eop.core.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;

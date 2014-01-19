@@ -5,6 +5,7 @@ import org.junit.*;
 // test for German with EditDistanceEDA
 public class TestRunner_EditDistance_DE {
 
+	@Ignore
 	@Test
 	public void test() {
 		String[] cmd = {

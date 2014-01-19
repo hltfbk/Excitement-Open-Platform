@@ -10,6 +10,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.SortUtil;
@@ -31,7 +32,8 @@ public class MemoryBasedRight2LeftSimilarities {
 		
 		try {			
 			
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);			
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 			
 			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
 			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));

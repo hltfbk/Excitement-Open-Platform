@@ -1,10 +1,7 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +17,7 @@ import org.apache.log4j.PropertyConfigurator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.reader.FileBasedSentenceReader;
@@ -135,6 +133,7 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 			System.out.println("Thread " + id + ": got " + files.size() + " files");
 		}
 		
+		@Override
 		@SuppressWarnings("unchecked")
 		public void run() {
 			logger.info("Thread: " + id);
@@ -208,8 +207,9 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 				System.err.println("Usage: GeneralCooccurrenceExtractor <configuarion file>");
 				System.exit(0);
 			}
-
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);			
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 			
 			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
 			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));

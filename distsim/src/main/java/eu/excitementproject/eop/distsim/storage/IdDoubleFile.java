@@ -35,6 +35,7 @@ public class IdDoubleFile extends IdDataFile {
 	/* (non-Javadoc)
 	 * @see eu.excitementproject.eop.distsim.storage.IdDataFile#getData(java.lang.String[])
 	 */
+	@Override
 	public synchronized  Serializable getData(String[] toks) throws SerializationException {
 		if (toks.length != 2)
 			throw new SerializationException("wrong line format: " + toks);		
@@ -44,10 +45,11 @@ public class IdDoubleFile extends IdDataFile {
 	/* (non-Javadoc)
 	 * @see eu.excitementproject.eop.distsim.storage.IdDataFile#writeData(int, java.io.Serializable)
 	 */
+	@Override
 	public synchronized void writeData(int id, Serializable data) {
 		writer.print(id);
 		writer.print("\t");
-		writer.print((Double)data);
+		writer.print(data);
 		writer.print("\n");
 	}
 }

@@ -2,6 +2,7 @@ package eu.excitementproject.eop.distsim.builders;
 
 import java.util.LinkedHashMap;
 
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -26,6 +27,10 @@ import eu.excitementproject.eop.distsim.util.Factory;
  */
 public class ConfigurationBasedDataStructureFactory implements DataStructureFactory {
 
+	
+	public ConfigurationBasedDataStructureFactory(CommonConfig conf) throws ConfigurationException {
+		this(new ConfigurationFile(conf));
+	}
 	
 	public ConfigurationBasedDataStructureFactory(ConfigurationFile confFile) throws ConfigurationException {
 		textUnitParams = confFile.getModuleConfiguration(Configuration.TEXT_UNITS_DATA_STRUCTURE);

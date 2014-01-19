@@ -51,6 +51,7 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 	private final int m_limitOnRetrievedRules;
 	private RetrievalTool m_retrivalTool;
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception{
 		WikipediaLexicalResource wlr = new WikipediaLexicalResource(args[0]);
 		List<LexicalRule<? extends BaseRuleInfo>> lr = wlr.getRulesForLeft("anarchism", null);

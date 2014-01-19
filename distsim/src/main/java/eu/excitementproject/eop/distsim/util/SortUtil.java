@@ -57,6 +57,7 @@ public class SortUtil {
 	public static LinkedHashMap sortMapByValue(Map map, final boolean descending) {
 		List<Map.Entry> list  = new LinkedList<Map.Entry>(map.entrySet());
 		Collections.sort(list, new Comparator() {
+			@Override
 			public int compare(Object o1, Object o2) {
 				int ret = ((Comparable) ((Map.Entry) (o1)).getValue())
 						.compareTo(((Map.Entry) (o2)).getValue());
@@ -94,6 +95,7 @@ public class SortUtil {
 			list.add(new Pair<Integer, Double>(it1.key(),it1.value()));
 		}
 		Collections.sort(list, new Comparator() {
+		@Override
 		public int compare(Object o1, Object o2) {
 				int ret = ((Comparable) ((Pair) (o1)).getSecond())
 						.compareTo(((Pair) (o2)).getSecond());
@@ -132,6 +134,7 @@ public class SortUtil {
 			list.add(new Pair<Integer, Double>(pair.getFirst(),pair.getSecond()));
 		}
 		Collections.sort(list, new Comparator() {
+			@Override
 			public int compare(Object o1, Object o2) {
 				int ret = ((Comparable) ((Pair) (o1)).getSecond())
 						.compareTo(((Pair) (o2)).getSecond());
@@ -195,6 +198,7 @@ public class SortUtil {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void sortSimilarityRules(List<ElementsSimilarityMeasure> list, final boolean descending) {
 		Collections.sort(list, new Comparator() {
+			@Override
 			public int compare(Object o1, Object o2) {
 				int ret = (int) (descending ?
 					((ElementsSimilarityMeasure)o2).getSimilarityMeasure() - ((ElementsSimilarityMeasure)o1).getSimilarityMeasure()

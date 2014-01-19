@@ -38,26 +38,53 @@ public class RedisBasedStringListBasicMap {
 
 	public static final String ELEMENT_CLASS_NAME_KEY = "element-class-name";
 	
+	public RedisBasedStringListBasicMap(String dbFile, String redisDir) throws FileNotFoundException, RedisRunException {
+		init(dbFile, redisDir);
+
+	}
+	
 	public RedisBasedStringListBasicMap(String dbFile) throws FileNotFoundException, RedisRunException {
-		this.dbFile = dbFile;
-		int port = BasicRedisRunner.getInstance().run(dbFile);
-		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
-		jedis = pool.getResource();
-		jedis.connect();
-		jedis.getClient().setTimeoutInfinite();
+		init(dbFile);
 	}
 
 	public RedisBasedStringListBasicMap(String host, int port) {
+		this.dbFile = "";
+		init(host,port);
+	}
+	
+	public RedisBasedStringListBasicMap(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
+		String dbFile = params.get(Configuration.REDIS_FILE);
+		String redisDir = null;
+		try {
+			redisDir = params.get(Configuration.REDIS_BIN_DIR);
+			init(dbFile,redisDir);
+		} catch (ConfigurationException e) {
+			init(dbFile);
+		}
+		
+	}
+	
+	protected void init(String dbFile) throws FileNotFoundException, RedisRunException {
+		this.dbFile = dbFile;
+		int port = BasicRedisRunner.getInstance().run(dbFile);
+		init("localhost",port);
+
+	}
+
+	protected void init(String dbFile, String redisDir) throws FileNotFoundException, RedisRunException {
+		this.dbFile = dbFile;
+		BasicRedisRunner.setRedisBinDir(redisDir);
+		int port = BasicRedisRunner.getInstance().run(dbFile);
+		init("localhost",port);
+
+	}
+	
+	protected void init(String host, int port) {
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), host,port);
 		jedis = pool.getResource();
 		jedis.connect();
 		jedis.getClient().setTimeoutInfinite();
 	}
-	
-	public RedisBasedStringListBasicMap(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
-		this(params.get(Configuration.REDIS_FILE));
-	}
-
 
 	public synchronized  List<String> get(String key) throws BasicMapException {
 		return jedis.lrange(key, 0, -1);

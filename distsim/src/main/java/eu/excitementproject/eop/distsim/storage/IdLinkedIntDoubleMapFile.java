@@ -39,6 +39,7 @@ public class IdLinkedIntDoubleMapFile extends IdDataFile {
 	/* (non-Javadoc)
 	 * @see eu.excitementproject.eop.distsim.storage.IdDataFile#getData(java.lang.String[])
 	 */
+	@Override
 	public synchronized Serializable getData(String[] toks) throws SerializationException {
 		if (toks.length % 2 != 1) {
 			throw new SerializationException("wrong line format: " + toks);
@@ -60,6 +61,7 @@ public class IdLinkedIntDoubleMapFile extends IdDataFile {
 	/* (non-Javadoc)
 	 * @see eu.excitementproject.eop.distsim.storage.IdDataFile#writeData(int, java.io.Serializable)
 	 */
+	@Override
 	public synchronized void writeData(int id, Serializable data) {
 		@SuppressWarnings("unchecked")
 		Map<Integer,Double> map = (Map<Integer, Double>) data;

@@ -93,6 +93,7 @@ public class AbstractNodeStringUtils {
 	 */
 	public static <T extends Info,S extends AbstractNode<T,S>> String toIndentedString(S parseTree) {
 		return toIndentedString(parseTree, new Transformer<T, String>() {
+			@Override
 			public String transform(T input) {
 				return AbstractNodeStringUtils.toString(input);
 			}});

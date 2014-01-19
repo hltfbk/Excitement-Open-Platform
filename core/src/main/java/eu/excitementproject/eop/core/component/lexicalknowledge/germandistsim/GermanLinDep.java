@@ -78,10 +78,8 @@ public class GermanLinDep extends EmbeddedRedisBasedLexicalResource {
 	// private variables
 	//
 	// path to the rdb files in Jar. 
-	// TODO update this for German Lin Dependency artifact. 
-	// The artifact related to this resource is "de.uni-heidelberg.cl: TODO fill here"
-	private static final String resourcePathL2R = "redis-german-lin/similarity-l2r.rdb"; 
-	private static final String resourcePathR2L = "redis-german-lin/similarity-r2l.rdb"; 
+	private static final String resourcePathL2R = "redis-german-lin-dep/similarity-l2r.rdb"; 
+	private static final String resourcePathR2L = "redis-german-lin-dep/similarity-r2l.rdb"; 
 	
 	// the values to be used if not given in the constructor. 
 	private static final int redisPortL2RDefault = 9511; // if not given in the constructor 

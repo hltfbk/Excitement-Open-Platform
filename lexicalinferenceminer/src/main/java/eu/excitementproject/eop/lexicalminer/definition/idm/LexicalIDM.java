@@ -105,10 +105,12 @@ public class LexicalIDM implements IIDM{
 			for (int i=0;i<processResults.size();i++)
 			{	
 
-				if (UtilClass.getInstance().isANoun(processResults.get(i).getPosTag()))
+				UtilClass.getInstance();
+				if (UtilClass.isANoun(processResults.get(i).getPosTag()))
 				{
 					
-					if (UtilClass.getInstance().isValidRule(title, processResults.get(i).getLemma()))
+					UtilClass.getInstance();
+					if (UtilClass.isValidRule(title, processResults.get(i).getLemma()))
 					{
 						StringBuilder sbWords=new StringBuilder();
 						StringBuilder sbPos=new StringBuilder();

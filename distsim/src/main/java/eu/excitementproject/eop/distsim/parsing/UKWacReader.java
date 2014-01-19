@@ -47,6 +47,7 @@ public class UKWacReader implements CorpusReader {
 	 * @return false iff reached the end of corpus. 
 	 * @throws IOException 
 	 */
+	@Override
 	public String nextSentence() throws Exception {
 		// if there is no additional lines (what if we have additional files
 		if(!linesIter.hasNext())

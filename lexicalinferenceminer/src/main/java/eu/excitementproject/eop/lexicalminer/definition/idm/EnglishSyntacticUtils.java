@@ -189,18 +189,19 @@ public class EnglishSyntacticUtils implements SyntacticUtils,  Serializable {
 		else if (pos.equals(CanonicalPosTag.ART))	//it's a DETERMINER (the)
 		{
 				return true;
-		}					
-		else if (UtilClass.getInstance().isANoun(currentPOS))	//it's a noun
-		{
-				return true;
-		}
-		else if (currentPOS.getStringRepresentation().equals("CD"))	//it's a number
-		{		
-				return true;
-		}			
-		else
-		{
-			return false;
+		} else {
+			if (UtilClass.isANoun(currentPOS))	//it's a noun
+			{
+					return true;
+			}
+			else if (currentPOS.getStringRepresentation().equals("CD"))	//it's a number
+			{		
+					return true;
+			}			
+			else
+			{
+				return false;
+			}
 		}
 	}	
 
@@ -331,9 +332,10 @@ public class EnglishSyntacticUtils implements SyntacticUtils,  Serializable {
 	 */
 	protected LinkedList<NodeInfo> filterFirstLastNodes(LinkedList<NodeInfo> nodes) throws InitException
 	{
+		UtilClass.getInstance();
 		//remove last non-nouns
 		while ((nodes.size() > 0) 
-			&&(!UtilClass.getInstance().isANoun(nodes.getLast().getSyntacticInfo().getPartOfSpeech())))
+			&&(!UtilClass.isANoun(nodes.getLast().getSyntacticInfo().getPartOfSpeech())))
 		{
 			nodes.removeLast();	
 		}
@@ -343,7 +345,7 @@ public class EnglishSyntacticUtils implements SyntacticUtils,  Serializable {
 			//remove first non-adjective or nouns or CD (numbers)
 			PartOfSpeech firstpos = nodes.getFirst().getSyntacticInfo().getPartOfSpeech();
 			while ((nodes.size() > 0) &&
-					(!(	(UtilClass.getInstance().isANoun(firstpos))
+					(!(	(UtilClass.isANoun(firstpos))
 							|| (firstpos.getCanonicalPosTag().equals(CanonicalPosTag.ADJ))
 							|| (firstpos.getStringRepresentation().equals("CD"))
 							)))		

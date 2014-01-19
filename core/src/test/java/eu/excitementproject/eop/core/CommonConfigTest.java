@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.configuration.NameValueTable;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 
 public class CommonConfigTest {
 

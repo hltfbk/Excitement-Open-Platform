@@ -1,28 +1,28 @@
-<?xml version="1.0"?>
+
 
 <!--A configuration file for programs which are using Redis-based knowledge resources, e.g., eu.excitementproject.eop.distsim.resource.TestLemmaPosSimilarity and eu.excitementproject.eop.core.component.syntacticknowledge.TestDIRTSimilarity-->
 <configuration>
 
-<module name="logging"> <!--Defines the log4j properties -->
+<section name="logging"> <!--Defines the log4j properties -->
 	<!--the path of the log4j properties file-->
-	<param name="properties-file">configurations/log4j.properties</param> 
-</module>
+	<property name="properties-file">configurations/log4j.properties</property> 
+</section>
 
-<module name="knowledge-resource"> <!-- Defines the parameters of Redis-based knowledge resource-->
+<section name="knowledge-resource"> <!-- Defines the parameters of Redis-based knowledge resource-->
            <!--  a selected name of the resource (as defined in the EOP's eu.excitementproject.eop.common.component.Component interface) -->
-	<param name="resource-name">dist-sim-lin-proximity</param> 
+	<property name="resource-name">dist-sim-lin-proximity</property> 
 	
 	 <!--  a selected name of the resource instance (as defined in the EOP's eu.excitementproject.eop.common.component.Component interface) -->
-	 <param name="instance-name">demo</param> 
+	 <property name="instance-name">demo</property> 
 	 
 	 <!-- a  path to the Redis db file which contains the left-2-right rules-->
-	<param name="l2r-redis-db-file">redis/db/lin/proximity/similarity-l2r.rdb</param>
+	<property name="l2r-redis-db-file">redis/db/lin/proximity/similarity-l2r.rdb</property>
 	
 	<!-- For lexical resources onlt, a  path to the Redis db file which contains the right-2-left rules-->
-	<param name="r2l-redis-db-file">redis/db/lin/proximity/similarity-r2l.rdb</param>
+	<property name="r2l-redis-db-file">redis/db/lin/proximity/similarity-r2l.rdb</property>
 	
 	<!--The number of top rules to be retrieved (default, all)-->
-	 <param name="top-n-rules">20</param>
-</module>
+	 <property name="top-n-rules">20</property>
+</section>
 </configuration>
 
