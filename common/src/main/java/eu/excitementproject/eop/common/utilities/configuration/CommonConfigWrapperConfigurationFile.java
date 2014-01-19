@@ -2,8 +2,10 @@ package eu.excitementproject.eop.common.utilities.configuration;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -59,8 +61,27 @@ public class CommonConfigWrapperConfigurationFile implements UnderlyingConfigura
 	{
 		try
 		{
-			NameValueTable table = commonConfig.getSection(iModuleName);
-			return new ExcitementConfigurationParams(commonConfig, table, iModuleName, expandingEnvironmentVariables, configurationFileReference);
+			if (sectionNames.contains(iModuleName))
+			{
+				NameValueTable table = null;
+				synchronized(this)
+				{
+					if (sectionTables.containsKey(iModuleName))
+					{
+						table = sectionTables.get(iModuleName);
+					}
+					else
+					{
+						table = commonConfig.getSection(iModuleName);
+						sectionTables.put(iModuleName, table);
+					}
+				}
+				return new ExcitementConfigurationParams(commonConfig, table, iModuleName, expandingEnvironmentVariables, configurationFileReference);
+			}
+			else
+			{
+				throw new ConfigurationException("The module \""+iModuleName+"\" does not exist in the configuration file.");
+			}
 		}
 		catch (eu.excitementproject.eop.common.exception.ConfigurationException e)
 		{
@@ -103,5 +124,6 @@ public class CommonConfigWrapperConfigurationFile implements UnderlyingConfigura
 	protected final CommonConfig commonConfig;
 	protected final ConfigurationFile configurationFileReference;
 	protected boolean expandingEnvironmentVariables = false;
-	protected Set<String> sectionNames = null; 
+	protected Set<String> sectionNames = null;
+	protected Map<String, NameValueTable> sectionTables = new LinkedHashMap<>();
 }
