@@ -18,7 +18,7 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.BaseException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.ImplCommonConfig;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;

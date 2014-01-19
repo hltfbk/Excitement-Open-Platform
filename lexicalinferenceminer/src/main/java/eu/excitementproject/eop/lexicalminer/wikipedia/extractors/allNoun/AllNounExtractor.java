@@ -20,7 +20,6 @@ import de.tudarmstadt.ukp.wikipedia.api.Page;
 import de.tudarmstadt.ukp.wikipedia.api.exception.WikiApiException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.InitException;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.LingPipeSentenceSplitter;
@@ -158,6 +157,7 @@ public class AllNounExtractor implements IExtractor {
 		
 	}
 
+	@Override
 	public RelationType getRelationType() {
 
 		return _idm.getRelationType();

@@ -7,20 +7,14 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
-import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
-import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
-import eu.excitementproject.eop.distsim.util.Configuration;
 
 /**
  * A program which demonstrates how to access a given distributional similarity model via Lexical interface, 
@@ -42,7 +36,8 @@ public class TestLemmaPosSimilarityGerman {
 //			System.exit(0);
 //		}
 		
-//		ConfigurationFile confFile = new ConfigurationFile(args[0]);
+//		//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+//		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 //		ConfigurationParams confParams = confFile.getModuleConfiguration(Configuration.KNOWLEDGE_RESOURCE);
 
 //		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(confParams);

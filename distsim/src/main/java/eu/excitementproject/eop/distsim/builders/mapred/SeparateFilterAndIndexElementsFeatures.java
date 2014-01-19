@@ -12,6 +12,7 @@ import java.io.Serializable;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
 import eu.excitementproject.eop.distsim.items.ArgumentFeature;
 import eu.excitementproject.eop.distsim.items.Element;
@@ -37,7 +38,8 @@ public class SeparateFilterAndIndexElementsFeatures  {
 	public static final String DEFAULT_ENCODING = "UTF-8";
 	
 	public static void main(String[] args) throws Exception {
-	    ConfigurationFile confFile = new ConfigurationFile(args[0]);
+	    //ConfigurationFile confFile = new ConfigurationFile(args[0]);
+	    ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 	    separateFilterAndIndexElementsFeatures1(confFile.getModuleConfiguration(Configuration.MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_1));
 	    separateFilterAndIndexElementsFeatures2(confFile.getModuleConfiguration(Configuration.MAPRED_SEPARATE_FILTER_INDEX_ELEMENT_FEATURE_2));
 	}

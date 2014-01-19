@@ -36,6 +36,7 @@ public class StopwordsDictionary {
 		if (!file.exists())
 			throw new FileNotFoundException(String.format("Missing stopwords list file in path:%s",stopwordsFilePath));
 		
+		@SuppressWarnings("resource")
 		BufferedReader input =  new BufferedReader(new FileReader(file));
 		
 		String line;

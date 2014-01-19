@@ -102,7 +102,8 @@ public class CategoryExtractor implements IExtractor {
 				m_lemmatizer.process();
 				category=m_lemmatizer.getLemma();
 				
-				if (UtilClass.getInstance().isValidRule(title, category))
+				UtilClass.getInstance();
+				if (UtilClass.isValidRule(title, category))
 				{
 					LexicalRule<RuleInfo> rule = new LexicalRule<RuleInfo>(title.toLowerCase(),
 							m_nounPOS, 

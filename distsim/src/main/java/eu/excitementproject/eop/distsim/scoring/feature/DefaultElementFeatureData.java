@@ -45,6 +45,7 @@ public class DefaultElementFeatureData implements ElementFeatureData {
 		return size;
 	}
 
+	@Override
 	public String toString() {
 		return "<value: " + value + ", rank: " + rank + ", size: " + size + ">";
 	}

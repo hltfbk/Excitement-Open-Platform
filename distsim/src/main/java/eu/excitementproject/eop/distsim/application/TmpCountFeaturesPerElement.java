@@ -1,18 +1,14 @@
 package eu.excitementproject.eop.distsim.application;
 
+import java.io.File;
 import java.util.LinkedHashMap;
-
-import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
-import eu.excitementproject.eop.distsim.scoring.ElementScore;
-import eu.excitementproject.eop.distsim.storage.BasicSet;
-import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureScoreStorage;
-import eu.excitementproject.eop.distsim.storage.ElementFeatureScoreStorage;
 import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
 import eu.excitementproject.eop.distsim.util.Configuration;
@@ -22,12 +18,13 @@ import eu.excitementproject.eop.distsim.util.Pair;
 public class TmpCountFeaturesPerElement {
 
 	public static void main(String[] args) throws Exception {
-			if (args.length != 1) {
-				System.err.println("Usage: java eu.excitementproject.eop.distsim.application.TmpCountFeaturesPerElement <configuration file>");
+			if (args.length != 2) {
+				System.err.println("Usage: java eu.excitementproject.eop.distsim.application.TmpCountFeaturesPerElement <element-similarity-calculation configuration file> <max feature num>");
 				System.exit(0);
 			}
 
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 			
 			DataStructureFactory dataStructureFactory = new ConfigurationBasedDataStructureFactory(confFile);			
 			// build the element score storage
@@ -40,6 +37,7 @@ public class TmpCountFeaturesPerElement {
 			
 			System.out.println("Finshed loading storage");
 			
+			int upbound = Integer.parseInt(args[1]);
 			int maxFeatureNum = 0;
 			ImmutableIterator<Pair<Integer, LinkedHashMap<Integer, Double>>> it = elementFeatureScores.iterator();
 			while (it.hasNext()) {
@@ -47,7 +45,7 @@ public class TmpCountFeaturesPerElement {
 				int featureNum = pair.getSecond().size();
 				if (featureNum > maxFeatureNum)
 					maxFeatureNum = featureNum;
-				if (maxFeatureNum > 5000) {
+				if (maxFeatureNum > upbound) {
 					System.out.println(maxFeatureNum + " features were found for element " + pair.getFirst());
 					System.exit(0);
 				}

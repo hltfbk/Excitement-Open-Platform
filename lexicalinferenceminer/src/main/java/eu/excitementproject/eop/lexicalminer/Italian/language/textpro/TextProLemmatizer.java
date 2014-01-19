@@ -55,8 +55,7 @@ public class TextProLemmatizer implements Lemmatizer {
         this.partOfSpeech = partOfSpeech;
     }
 
-    @SuppressWarnings("unchecked")
-	public void process() throws LemmatizerException {
+    public void process() throws LemmatizerException {
 	    String pos = null;
 	    if (partOfSpeech != null) {
 	        pos = partOfSpeech.toString();

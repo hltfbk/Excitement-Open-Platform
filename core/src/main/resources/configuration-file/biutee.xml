@@ -101,6 +101,7 @@
 	<section name = "transformations">
 		<!--<property name = "knowledge_resources">WORDNET,WIKIPEDIA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
 		<!--<property name = "multiword_resources">WORDNET,WIKIPEDIA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
+		<!--<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC,REDIS_LIN_PROXIMITY,REDIS_LIN_DEPENDENCY,REDIS_BAP</property>-->
 		<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC</property>
 		<property name = "multiword_resources">WORDNET,VERB_OCEAN</property>
 		<property name = "stop_words">stopwords-Eyal.txt</property>
@@ -250,6 +251,40 @@
 		<property name = "annotation_rules_file">serializedAnnotationRules.ser</property>
 		<property name = "conll_format_output_directory">annotatedSentences</property>
 		<property name = "do_annotations">true</property>
+	</section>
+	
+	
+	<section name = "redis-bap">
+	          <!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->
+		<property name="resource-name">distsim-bap</property>
+		<property name="top-n-rules">20</property>
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">../resources/bap/similarity-l2r.rdb</property>
+		<!-- EDIT: set here the path to the right-2left similarity file -->
+		<property name="r2l-redis-db-file">../resources/bap/similarity-r2l.rdb</property>
+	</section>
+	
+	<section name = "redis-lin-proximity">
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->
+		<property name="resource-name">distsim-lin-proximity</property>
+		<property name="top-n-rules">20</property>
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">../resources/lin/proximity/similarity-l2r.rdb</property>
+		<!-- EDIT: set here the path to the right-2left similarity file -->
+		<property name="r2l-redis-db-file">../resources/lin/proximity/similarity-r2l.rdb</property>
+	</section>
+	
+	<section name = "redis-lin-dependency">
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->
+		<property name="resource-name">distsim-lin-dependency</property>
+		<property name="top-n-rules">20</property>
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">../resources/lin/dependency/similarity-l2r.rdb</property>
+		<!-- EDIT: set here the path to the right-2left similarity file -->
+		<property name="r2l-redis-db-file">../resources/lin/dependency/similarity-r2l.rdb</property>
 	</section>
 
 </configuration>
