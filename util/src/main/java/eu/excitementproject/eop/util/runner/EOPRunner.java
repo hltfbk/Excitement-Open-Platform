@@ -329,8 +329,6 @@ public class EOPRunner {
 
 			if ((lapRunner == null) && (option.test || option.train))
 				lapRunner = new LAPRunner(configFile);
-
-			logger.info("\tLAP initialized " + lapRunner.getClass());
 			
 			if (option.trainFile != null) {
 								
