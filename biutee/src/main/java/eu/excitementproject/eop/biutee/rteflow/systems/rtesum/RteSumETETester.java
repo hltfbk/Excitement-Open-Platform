@@ -22,7 +22,10 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.common.utilities.ExperimentManager;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.AnswerScoreComputer;
+import eu.excitementproject.eop.common.utilities.datasets.rtesum.Rte6mainIOException;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -119,9 +122,10 @@ public class RteSumETETester extends EndToEndTester<RteSumInstance, RteSumProof>
 			logger.info(details);
 		}
 		
-		logger.info("Results summary: "+results.print());
-		
+		logger.info("Gross results summary: "+results.print());
+		logger.info("Results by XML file:\n"+resultsByXmlSummary(xmlResultsFile));
 	}
+	
 
 	@Override
 	protected int retrieveNumberOfThreads() throws BiuteeException
@@ -129,7 +133,31 @@ public class RteSumETETester extends EndToEndTester<RteSumInstance, RteSumProof>
 		return RTESumETEFactory.retrieveNumberOfThreads(configurationParams);
 	}
 	
-	
+
+	private String resultsByXmlSummary(File systemResultsFile)
+	{
+		try
+		{
+			File goldStandardFile = new RTESumETEDatasetFactory(configurationParams, ConfigurationParametersNames.RTE_SERIALIZED_DATASET_FOR_TEST, ConfigurationParametersNames.RTESUM_DATASET_FOR_TEST,teSystemEnvironment).retrieveAndReturnGoldStandardFile();
+			
+			AnswerScoreComputer computer = new AnswerScoreComputer(goldStandardFile.getPath(), systemResultsFile.getPath())
+			{
+				@Override protected void warn(String message) throws Rte6mainIOException
+				{
+					GlobalMessages.globalWarn("Warning while computing results by gold-standard: "+message, logger);
+				}
+			};
+			computer.compute();
+			return computer.getResultsAsString();
+		}
+		catch (Rte6mainIOException | RuntimeException | ConfigurationException | BiuteeException e)
+		{
+			logger.error("Results by XML files are not available. See exception. "
+					+ "However - this does not block the running of the program, since this is not essential to its other parts. "
+					+ "The results can be calculated later offline, by the utility AnswerScoreComputer.",e);
+			return "Results by XML files are not available.";
+		}
+	}
 
 	private static Logger logger = null;
 }
