@@ -326,20 +326,18 @@ public class EOPRunner {
 			
 			if (option.lap != null) 
 				lapRunner = new LAPRunner(option.lap);
+
+			if ((lapRunner == null) && option.test || option.train)
+				lapRunner = new LAPRunner(configFile);
+
+			logger.info("\tLAP initialized " + lapRunner.getClass());
 			
 			if (option.trainFile != null) {
-				
-				logger.info("Trainnig file detecting, getting options and then initializing LAP");
-				
+								
 				String trainFile = getOptionValue(option.trainFile, "trainFile");
 				String trainDir = getOptionValue(option.trainDir, "trainDir");
 				
 				logger.info("\t training file: " + trainFile + "\n\t training dir: " + trainDir);
-				
-				if (lapRunner == null)
-					lapRunner = new LAPRunner(configFile);
-				
-				logger.info("\tLAP initialized");
 				
 				lapRunner.runLAPOnFile(trainFile, trainDir);
 			}
@@ -351,8 +349,7 @@ public class EOPRunner {
 				testFile = getOptionValue(option.testFile, "testFile");
 				testDir = getOptionValue(option.testDir, "testDir");
 
-				if (lapRunner == null)
-					lapRunner = new LAPRunner(configFile);
+				logger.info("\t testing file: " + testFile + "\n\t testing dir: " + testDir);
 				
 				lapRunner.runLAPOnFile(testFile, testDir);
 			}
