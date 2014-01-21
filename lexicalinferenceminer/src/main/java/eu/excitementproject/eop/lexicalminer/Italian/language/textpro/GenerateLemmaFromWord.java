@@ -101,7 +101,7 @@ public class GenerateLemmaFromWord {
                             }
                         }
                         else {
-                            for (String part : subparts) {		
+                            for (@SuppressWarnings("unused") String part : subparts) {		
                             	String[] subsubparts = subparts[0].trim().split("~"); //TODO: shouldn't this be part instead of subparts?
                                 words.add(subsubparts[subsubparts.length - 1]);
                             }

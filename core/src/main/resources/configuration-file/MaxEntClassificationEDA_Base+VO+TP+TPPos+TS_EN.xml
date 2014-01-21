@@ -34,45 +34,32 @@
 <configuration>
 
     <!-- Platform configuration section -->
-	<section name="PlatformConfiguration">
-		<!-- The EDA to be used: MaxEntClassificationEDA -->
-		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
-		<!-- The language: EN for English -->
-		<property name="language">EN</property>
-		<!-- The linguistic annotation pipeline to preprocess the data to be annotated:
+    <section name="PlatformConfiguration">
+        <!-- The EDA to be used: MaxEntClassificationEDA -->
+        <property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+        <!-- The language: EN for English -->
+        <property name="language">EN</property>
+        <!-- The linguistic annotation pipeline to preprocess the data to be annotated:
          here, the MaltParser dependency parser for EN is selected. -->
         <property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserEN</property>
-	</section>
-	
-	<!-- Base processing component for computing a bag of words representation -->
-	<section name="BagOfWordsScoring">
-	</section>
-	
-	<!-- Base processing component for computing a bag of lemmas representation -->
-	<section name="BagOfLemmasScoring">
-	</section>
-	
-	<!-- Processing component for computing a bag of lexeme representation using lexical
+    </section>
+
+    <!-- Base processing component for computing a bag of words representation -->
+    <section name="BagOfWordsScoring">
+    </section>
+
+    <!-- Base processing component for computing a bag of lemmas representation -->
+    <section name="BagOfLemmasScoring">
+    </section>
+
+    <!-- Processing component for computing a bag of lexeme representation using lexical
      knowledge sources that are referenced with help of the name attribute and which have to be specified
      by their own sections. -->
-	<section name="BagOfLexesScoring">
-        <!-- Reference to English WordNet with an enumeration of the used lexical semantic relations -->
-        <property name="WordnetLexicalResource">HYPERNYM,SYNONYM,PART_HOLONYM</property>
+    <section name="BagOfLexesScoring">
         <!-- Reference to English VerbOcean with an enumeration of the used lexical semantic relations -->
         <property name="VerbOceanLexicalResource">StrongerThan,CanResultIn,Similar</property>
-	</section>
-	
-	<!-- Specification of the English WordNet  -->
-	<section name="WordnetLexicalResource">
-        <!-- Boolean isCollapsed means whether to combine the results from different relations into one feature or not.  -->
-		<property name="isCollapsed">true</property>
-        <!--  useFirstSenseOnlyLeft and useFirstSenseOnlyRight are provided by the lexical resource interface. -->
-        <property name="useFirstSenseOnlyLeft">false</property>
-        <property name="useFirstSenseOnlyRight">false</property>
-        <!-- Please update the file path to WordNet -->
-        <property name="wordNetFilesPath">./src/main/resources/ontologies/EnglishWordNet-dict/</property>
-	</section>
-	
+    </section>
+
 	<!-- Specification of the English VerbOcean  -->
 	<section name="VerbOceanLexicalResource">
         <property name="isCollapsed">true</property>
@@ -80,14 +67,14 @@
         <property name="verbOceanFilePath">./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 	</section>
 	
-    <!-- Processing component for using dependency relations without Part-Of-Speech.-->
+	<!-- Processing component for using dependency relations without Part-Of-Speech.-->
 	<section name="BagOfDepsScoring">
 	</section>
 	
     <!-- Processing component for using dependency relations with Part-Of-Speech.-->
 	<section name="BagOfDepsPosScoring">
 	</section>
-	
+    
     <!-- Processing component for performing tree skeleton.  -->
 	<section name="TreeSkeletonScoring">
 	</section>
@@ -97,7 +84,7 @@
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+WN+VO+TP+TPPos+TS_EN</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+VO+TP+TPPos+TS_EN</property>
 		<!-- Please update the location for storing temporary files for training -->
 		<property name="trainDir">./target/EN/dev/</property>
 		<!-- Please update the location for storing temporary files for testing  -->

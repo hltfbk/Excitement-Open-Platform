@@ -110,7 +110,8 @@ public class ParenthesesExtractor implements IExtractor {
 				
 				LexicalRule<RuleInfo> rule;
 
-				if (UtilClass.getInstance().isValidRule(leftLemma, rightLemma))
+				UtilClass.getInstance();
+				if (UtilClass.isValidRule(leftLemma, rightLemma))
 				{
 					rule = new LexicalRule<RuleInfo>(leftLemma.toLowerCase(),
 							m_nounPOS, //

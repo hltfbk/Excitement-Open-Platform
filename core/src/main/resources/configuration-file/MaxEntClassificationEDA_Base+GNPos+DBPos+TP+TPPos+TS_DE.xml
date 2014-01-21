@@ -33,15 +33,15 @@
 
 <configuration>
 
-    <!-- Platform configuration section -->
-	<section name="PlatformConfiguration">
-		<!-- The EDA to be used: MaxEntClassificationEDA -->
-		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
-		<!-- The language: EN for English -->
-		<property name="language">EN</property>
-		<!-- The linguistic annotation pipeline to preprocess the data to be annotated:
-         here, the MaltParser dependency parser for EN is selected. -->
-        <property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserEN</property>
+	<!-- Platform configuration section -->
+    <section name="PlatformConfiguration">
+        <!-- The EDA to be used: MaxEntClassificationEDA -->
+        <property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+        <!-- The language: DE for German -->
+		<property name="language">DE</property>
+        <!-- The linguistic annotation pipeline to preprocess the data to be annotated:
+         here, the MaltParser dependency parser for DE is selected. -->
+        <property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserDE</property>
 	</section>
 	
 	<!-- Base processing component for computing a bag of words representation -->
@@ -52,34 +52,43 @@
 	<section name="BagOfLemmasScoring">
 	</section>
 	
-	<!-- Processing component for computing a bag of lexeme representation using lexical
+    <!-- Processing component for computing a bag of lexeme representation using lexical
      knowledge sources that are referenced with help of the name attribute and which have to be specified
      by their own sections. -->
 	<section name="BagOfLexesScoring">
-        <!-- Reference to English WordNet with an enumeration of the used lexical semantic relations -->
-        <property name="WordnetLexicalResource">HYPERNYM,SYNONYM,PART_HOLONYM</property>
-        <!-- Reference to English VerbOcean with an enumeration of the used lexical semantic relations -->
-        <property name="VerbOceanLexicalResource">StrongerThan,CanResultIn,Similar</property>
+        <!-- true ::= Use part-of-speech tagging, false ::= do not use part-of-speech tagging -->
+		<property name="withPOS">true</property>
+		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
+		<property name="DerivBaseResource"></property>
 	</section>
 	
-	<!-- Specification of the English WordNet  -->
-	<section name="WordnetLexicalResource">
-        <!-- Boolean isCollapsed means whether to combine the results from different relations into one feature or not.  -->
-		<property name="isCollapsed">true</property>
-        <!--  useFirstSenseOnlyLeft and useFirstSenseOnlyRight are provided by the lexical resource interface. -->
-        <property name="useFirstSenseOnlyLeft">false</property>
-        <property name="useFirstSenseOnlyRight">false</property>
-        <!-- Please update the file path to WordNet -->
-        <property name="wordNetFilesPath">./src/main/resources/ontologies/EnglishWordNet-dict/</property>
-	</section>
+	<section name="GermaNetWrapper">
+	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
+		<property name="germaNetFilesPath">../core/src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
+
+		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
+		<property name="causesConfidence">1.0</property> 
+		<property name="entailsConfidence">1.0</property>
+		<property name="hypernymConfidence">1.0</property> 
+		<property name="synonymConfidence">1.0</property>
+	</section> 
 	
-	<!-- Specification of the English VerbOcean  -->
-	<section name="VerbOceanLexicalResource">
-        <property name="isCollapsed">true</property>
-        <!-- Please update the file path to VerbOcean -->
-        <property name="verbOceanFilePath">./src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
+	<section name="DerivBaseResource">
+        <!-- Specifies if rule scores are available or not. True=file with scores avaliable, False=no scores.
+         If you choose a resource format containing scores, but declare "false" here (or vice versa), the
+         DerivBaseResource implementation will raise an exception.
+         DEFAULT: false. -->
+	    <property name="scoreInfo">true</property>
+        <!-- Specifies the confidence in the derivational relationship of a lemma pair.
+         Values range between 0.00 and 1.00; The score is calculated as 1/n, where n is the length of the derivation
+         path. Thus, 1.00 trusts only pairs resulting from one linking rule; 0.5 trusts pairs which are linked by two
+         rules; 0.33 trusts pairs which are linked by three rules, etc.
+         This property is only read if "scoreInfo" = true.
+         DEFAULT: 0.00. -->
+		<property name="scoreConfidence">0.01</property>
 	</section>
-	
+    
     <!-- Processing component for using dependency relations without Part-Of-Speech.-->
 	<section name="BagOfDepsScoring">
 	</section>
@@ -91,19 +100,19 @@
     <!-- Processing component for performing tree skeleton.  -->
 	<section name="TreeSkeletonScoring">
 	</section>
-	
+    
     <!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
      NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
      "activatedEDA" -->
-	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+    <section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+WN+VO+TP+TPPos+TS_EN</property>
+<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DBPos+TP+TPPos+TS_DE</property>
 		<!-- Please update the location for storing temporary files for training -->
-		<property name="trainDir">./target/EN/dev/</property>
-		<!-- Please update the location for storing temporary files for testing  -->
-		<property name="testDir">./target/EN/test/</property>
+		<property name="trainDir">./target/DE/dev/</property>
+        <!-- Please update the location for storing temporary files for testing -->
+		<property name="testDir">./target/DE/test/</property>
         
-        <!-- Two parameters of the MaxEnt classifier, "max iterations" and "cut off":
+		<!-- Two parameters of the MaxEnt classifier, "max iterations" and "cut off":
          left number ::= iterations - The number of GIS iterations to perform.
          right number ::= cutoff - The number of times a feature must be seen in order to be relevant for training.
          see also http://maxent.sourceforge.net/api/index.html -->
