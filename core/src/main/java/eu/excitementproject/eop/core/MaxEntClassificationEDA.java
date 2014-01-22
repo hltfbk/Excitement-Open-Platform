@@ -329,8 +329,13 @@ public class MaxEntClassificationEDA implements
 		if (isTrain) {
 			File file = new File(modelFile);
 			if (file.exists()) {
-				throw new ConfigurationException(
-						"The model file exists! Please specify another file name.");
+				// throw new ConfigurationException(
+				// "The model file exists! Please specify another file name.");
+				String oldModelFile = modelFile + "_old";
+				File oldFile = new File(oldModelFile);
+				if (oldFile.exists())
+					oldFile.delete();
+				file.renameTo(oldFile);
 			} else {
 				logger.info("The trained model will be stored in "
 						+ file.getAbsolutePath());
@@ -339,7 +344,8 @@ public class MaxEntClassificationEDA implements
 			try {
 				File file = new File(modelFile);
 				if (!file.exists()) {
-					throw new ConfigurationException("The model specified in the configuration does NOT exist! Please give the correct file path.");
+					throw new ConfigurationException(
+							"The model specified in the configuration does NOT exist! Please give the correct file path.");
 				} else {
 					logger.info("Reading model from " + file.getAbsolutePath());
 				}
@@ -391,10 +397,11 @@ public class MaxEntClassificationEDA implements
 		// if (null == goldAnswer) {
 		// goldAnswer = DecisionLabel.Abstain.toString();
 		// }
-		
+
 		// a quick answer "yes" for identical T-H pair as input
 		if (isIdenticalPair(aCas)) {
-			return new ClassificationTEDecision(DecisionLabel.Entailment, 1d, pairId);
+			return new ClassificationTEDecision(DecisionLabel.Entailment, 1d,
+					pairId);
 		}
 
 		String[] context = constructContext(aCas);
@@ -477,8 +484,8 @@ public class MaxEntClassificationEDA implements
 		// commented out, use the default value
 		// final double SMOOTHING_OBSERVATION = 0.1;
 
-		String classifier = c.getSection(this.getClass().getName())
-				.getString("classifier");
+		String classifier = c.getSection(this.getClass().getName()).getString(
+				"classifier");
 		int max_iteration = 10000; // default value
 		int cut_off = 1; // default value
 		if (null != classifier && classifier.split(",").length == 2) {
@@ -574,13 +581,15 @@ public class MaxEntClassificationEDA implements
 		Pair p = (Pair) pairIter.next();
 		return p.getPairID();
 	}
-	
+
 	/**
-	 * @param aCas the <code>JCas</code> object
+	 * @param aCas
+	 *            the <code>JCas</code> object
 	 * @return return whether it is an identical pair or not
 	 */
 	protected final boolean isIdenticalPair(JCas aCas) {
-		FSIterator<TOP> iter = aCas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
+		FSIterator<TOP> iter = aCas.getJFSIndexRepository().getAllIndexedFS(
+				Pair.type);
 		if (iter.hasNext()) {
 			Pair p = (Pair) iter.next();
 			String text = p.getText().getCoveredText();
