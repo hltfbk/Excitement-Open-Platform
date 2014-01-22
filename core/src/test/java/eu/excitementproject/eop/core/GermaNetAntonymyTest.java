@@ -22,6 +22,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
 
 
 /**
+ * Tests from this class can also be found in GermaNetWrapperTest class
  * @author Britta Zeller 
  *
  */
@@ -35,7 +36,7 @@ public class GermaNetAntonymyTest {
 		// all DEFAULT_CONF, except antonymy (0.0)  
 		GermaNetWrapper gnw=null;
 		try {
-			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");			
+			gnw = new GermaNetWrapper("/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML");		//originally: path/to/GermaNetFiles/GN_V70/GN_V70_XML		
 		}
 		catch (GermaNetNotInstalledException e) {
 			//System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
@@ -65,7 +66,7 @@ public class GermaNetAntonymyTest {
 			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("Kauf", new GermanPartOfSpeech("NN"));
 			//System.out.println("resulting rules (size: " +rules.size() + "): ");
 			for (LexicalRule<? extends GermaNetInfo> rule : rules) {
-				//System.out.println(rule.toString());
+				System.out.println(rule.toString());
 				assertTrue(rule.getLLemma().equals("Kauf"));
 				assertTrue(!rule.getRLemma().equals("Verkauf"));
 				assertTrue(!rule.getRelation().equals("has_antonym"));
@@ -85,7 +86,7 @@ public class GermaNetAntonymyTest {
 			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForRight("Kauf", new GermanPartOfSpeech("NN"));
 			//System.out.println("resulting rules (size: " +rules.size() + "): ");
 			for (LexicalRule<? extends GermaNetInfo> rule : rules) {
-				//System.out.println(rule.toString());
+				System.out.println(rule.toString());
 				assertTrue(rule.getRLemma().equals("Kauf"));
 				assertTrue(!rule.getLLemma().equals("Verkauf"));
 				assertTrue(!rule.getRelation().equals("has_antonym"));
@@ -105,7 +106,7 @@ public class GermaNetAntonymyTest {
 			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRules("Kauf", new GermanPartOfSpeech("NN"), "Verkauf", new GermanPartOfSpeech("NN"));
 			//System.out.println("resulting rules (size: " +rules.size() + "): ");
 			for (LexicalRule<? extends GermaNetInfo> rule : rules) {
-				//System.out.println(rule.toString());
+				System.out.println(rule.toString());
 				assertTrue(rule.getLLemma().equals("Kauf"));
 				assertTrue(!rule.getRLemma().equals("Verkauf"));
 				assertTrue(!rule.getRelation().equals("has_antonym"));
@@ -125,7 +126,7 @@ public class GermaNetAntonymyTest {
 			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRules("Kauf", new GermanPartOfSpeech("N"), "Ankauf", new GermanPartOfSpeech("NN"));
 			//System.out.println("resulting rules (size: " +rules.size() + "): ");
 			for (LexicalRule<? extends GermaNetInfo> rule : rules) {
-				//System.out.println(rule.toString());
+				System.out.println(rule.toString());
 				assertTrue(rule.getLLemma().equals("Kauf"));
 				assertTrue(!rule.getRLemma().equals("Verkauf"));
 				assertTrue(!rule.getRelation().equals("has_antonym"));
@@ -152,11 +153,11 @@ public class GermaNetAntonymyTest {
 			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("Kauf", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym);
 			//System.out.println("resulting rules (size: " +rules.size() + "): ");
 			for (LexicalRule<? extends GermaNetInfo> rule : rules) {
-				//System.out.println(rule.toString());
+				System.out.println(rule.toString());
 				assertTrue(rule.getLLemma().equals("Kauf"));
 				assertTrue(rule.getRLemma().equals("Verkauf"));
 				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+				assertTrue(rule.getConfidence() == 0.5); //default confidence for antonymy
 			}
 		}
 		catch (LexicalResourceException e)
@@ -194,7 +195,7 @@ public class GermaNetAntonymyTest {
 				assertTrue(rule.getRLemma().equals("Kauf"));
 				assertTrue(rule.getLLemma().equals("Verkauf"));
 				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+				assertTrue(rule.getConfidence() == 0.5); //default confidence for antonymy
 			}
 		}
 		catch (LexicalResourceException e)
@@ -275,7 +276,7 @@ public class GermaNetAntonymyTest {
 				assertTrue(rule.getLLemma().equals("Kauf"));
 				assertTrue(rule.getRLemma().equals("Verkauf"));
 				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+				assertTrue(rule.getConfidence() == 0.5); //default value
 			}
 		}
 		catch (LexicalResourceException e)
