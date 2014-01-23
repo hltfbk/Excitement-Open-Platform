@@ -1,5 +1,8 @@
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * Instantiation of {@link DefaultTextUnit} with a state of type string
@@ -25,6 +28,12 @@ public class StringBasedTextUnit extends DeafaultTextUnit<String> {
 	public StringBasedTextUnit(String data, int id, long count) {
 		super(data, id,count);
 	}
+	
+	@Override
+	public TextUnit copy() {
+		return new StringBasedTextUnit(data, id,(long)count);
+	}
+	
 	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.items.KeyExternalizable#toKey()
@@ -77,5 +86,23 @@ public class StringBasedTextUnit extends DeafaultTextUnit<String> {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		data = key;
+	}
 }
 

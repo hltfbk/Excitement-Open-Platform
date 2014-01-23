@@ -30,6 +30,7 @@ public class SetBasedFilter<T> implements Filter<T> {
 		return relevantItems == null || relevantItems.contains(item);
 	}
 	
+	@Override
 	public String toString() {
 		return (relevantItems == null ? "all" : relevantItems.toString());
 	}

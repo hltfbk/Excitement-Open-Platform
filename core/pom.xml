@@ -13,11 +13,19 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
 			<version>1.1.0</version>
 		</dependency>
+		
+		<dependency>
+    		<groupId>eu.excitementproject</groupId>
+    		<artifactId>distsim</artifactId>
+    		<version>1.1.0</version>
+    	</dependency>
+    	
 		<dependency>
 			<groupId>de.tudarmstadt.ukp</groupId>
 			<artifactId>jwktl</artifactId>
@@ -51,6 +59,11 @@
 			<artifactId>GermaNetAPI</artifactId>
 			<version>7.0.1</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+                <dependency>
+                        <groupId>de.uni-heidelberg.cl</groupId>
+                        <artifactId>transDM-distributional-similarity</artifactId>
+                        <version>20140114</version>
+                </dependency>
 		<dependency>
     			<groupId>eu.fbk.hlt</groupId>
     			<artifactId>pso</artifactId>
@@ -80,6 +93,7 @@
 			<version>3.6.9</version>
 
 		</dependency>
+    	
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

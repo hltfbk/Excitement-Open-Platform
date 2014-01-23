@@ -124,7 +124,7 @@ public abstract class StanfordDependenciesParserAE<T extends BasicPipelinedParse
 				// Handle all extra nodes
 				for (BasicConstructionNode node : extraNodes) {
 					if (node.getAntecedent() == null) {
-						throw new ParserRunException("Got node that should hve an antecedent, but doesn't have one: " + node);
+						throw new ParserRunException("Got node that should have an antecedent, but doesn't have one: " + node);
 					}
 					
 					// the child in the dependency is the topmost antecedent

@@ -3,6 +3,7 @@ package eu.excitementproject.eop.biutee.rteflow.macro;
 import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,10 +19,14 @@ import eu.excitementproject.eop.biutee.script.OperationsScriptForBuiltinKnowledg
 import eu.excitementproject.eop.biutee.script.SingleOperationItem;
 import eu.excitementproject.eop.biutee.script.SingleOperationType;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
+import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelope;
 import eu.excitementproject.eop.transformations.utilities.Constants;
@@ -44,14 +49,16 @@ import eu.excitementproject.eop.transformations.utilities.Constants;
  * In order to put the relevant value into the <B>correct</B>
  * feature, it has to know the feature index. The feature index
  * is an integer, mapped to the rule base name.
- * Thus, a mapping of rule-bases to the corresponding feature-indexes
+ * A mapping of rule-bases to the corresponding feature-indexes
  * is maintained by {@link FeatureVectorStructureOrganizer}. An instance
  * of {@link FeatureVectorStructureOrganizer} is given to {@link FeatureUpdate}
  * as a parameter, providing this mapping.
  * {@link FeatureVectorStructureOrganizer} builds this mapping by getting a list
  * (actually it is a {@link LinkedHashSet}) of the rule-bases used by the system.
+ * This list, however, is stored in {@link OperationsScript}.
  * <BR>
- * Therefore there are some points to be aware of:
+ * To properly build and use the list of rule bases names, 
+ * there are some points to be aware of:
  * <UL>
  * <LI>When adding knowledge resources, their names
  * are added as well, as keys to one of the maps:
@@ -91,9 +98,10 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 {
 	public static final int NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE = BiuteeConstants.NUMBER_OF_FIRST_GLOBAL_ITERATIONS_IN_LOCAL_CREATIVE_IN_DEFAULT_OPERATION_SCRIPT;
 
-	public DefaultOperationScript(ConfigurationFile configurationFile,PluginRegistry pluginRegistry)
+	public DefaultOperationScript(ConfigurationFile configurationFile, PARSER parser, PluginRegistry pluginRegistry, boolean hybridGapMode)
 	{
-		super(configurationFile,pluginRegistry);
+		super(configurationFile,parser,pluginRegistry);
+		this.hybridGapMode = hybridGapMode;
 	}
 
 
@@ -102,6 +110,9 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 	{
 		super.init();
 
+		readExcludeList();
+		
+		
 		// The otherIterationsList will include all operations
 		// except few time-consuming operations (currently -
 		// only coreference).
@@ -110,16 +121,28 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 		// additional few time-consuming operations).
 
 		List<SingleOperationItem> otherIterationsList = new ArrayList<SingleOperationItem>();
+		
 		// Add the on-the-fly operations.
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.MULTIWORD_SUBSTITUTION));
-		otherIterationsList.add(new SingleOperationItem(SingleOperationType.FLIP_POS_SUBSTITUTION));
+		
+//		GlobalMessages.globalWarn("Use on-the-fly in Hybrid mode. This is an experimental setting.", logger);
+//		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_INSERTION));
+//		otherIterationsList.add(new SingleOperationItem(SingleOperationType.UNJUSTIFIED_MOVE));
+
+		if (!hybridGapMode)
+		{
+			addNonKnowledgeTransformation(SingleOperationType.UNJUSTIFIED_INSERTION, otherIterationsList);
+			addNonKnowledgeTransformation(SingleOperationType.UNJUSTIFIED_MOVE, otherIterationsList);
+		}
+		addNonKnowledgeTransformation(SingleOperationType.MULTIWORD_SUBSTITUTION, otherIterationsList);
+		addNonKnowledgeTransformation(SingleOperationType.FLIP_POS_SUBSTITUTION, otherIterationsList);
 
 		// Add an operation that flips the predicate-truth annotation.
-		if (Constants.APPLY_CHANGE_ANNOTATION)
+		if (!hybridGapMode)
 		{
-			otherIterationsList.add(new SingleOperationItem(SingleOperationType.CHANGE_PREDICATE_TRUTH));
+			if (Constants.APPLY_CHANGE_ANNOTATION)
+			{
+				addNonKnowledgeTransformation(SingleOperationType.CHANGE_PREDICATE_TRUTH, otherIterationsList);
+			}
 		}
 
 		// Add all knowledge resources
@@ -140,11 +163,11 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 
 		// Add some time-consuming operations, which will be applied only
 		// in a limited number of iterations (of the search algorithm).
-		List<SingleOperationItem> firstIterationsList;
-		firstIterationsList = new ArrayList<SingleOperationItem>();
-		firstIterationsList.add(new SingleOperationItem(SingleOperationType.PARSER_ANTECEDENT_SUBSTITUTION));
-		firstIterationsList.add(new SingleOperationItem(SingleOperationType.COREFERENCE_SUBSTITUTION));
-		firstIterationsList.add(new SingleOperationItem(SingleOperationType.IS_A_COREFERENCE_CONSTRUCTION));
+		List<SingleOperationItem> firstIterationsList = new ArrayList<SingleOperationItem>();
+		addNonKnowledgeTransformation(SingleOperationType.PARSER_ANTECEDENT_SUBSTITUTION, firstIterationsList);
+		addNonKnowledgeTransformation(SingleOperationType.COREFERENCE_SUBSTITUTION, firstIterationsList);
+		addNonKnowledgeTransformation(SingleOperationType.IS_A_COREFERENCE_CONSTRUCTION, firstIterationsList);
+		
 		for (SingleOperationItem item : otherIterationsList)
 		{
 			firstIterationsList.add(item);
@@ -191,12 +214,47 @@ public class DefaultOperationScript extends OperationsScriptForBuiltinKnowledgeA
 	}
 
 
+	private void readExcludeList() throws OperationException
+	{
+		try
+		{
+			ConfigurationParams transformationsParameters = configurationFile.getModuleConfiguration(ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME);
+			if (transformationsParameters.containsKey(ConfigurationParametersNames.EXCLUDE_TRANSFORMATIONS_PARAMETER_NAME))
+			{
+				excludeTransformations = Collections.unmodifiableSet(transformationsParameters.getEnumSet(SingleOperationType.class, ConfigurationParametersNames.EXCLUDE_TRANSFORMATIONS_PARAMETER_NAME));
+			}
+			else
+			{
+				excludeTransformations = Collections.<SingleOperationType>unmodifiableSet(Collections.<SingleOperationType>emptySet());
+			}
+		}
+		catch(ConfigurationException e)
+		{
+			throw new OperationException("Failed to initialize.",e);
+		}
+		for (SingleOperationType operation : excludeTransformations)
+		{
+			if (operation.isRuleApplication()) {throw new OperationException("Illegal value for parameter "+ConfigurationParametersNames.EXCLUDE_TRANSFORMATIONS_PARAMETER_NAME+". Rule application operation type should not be specified in this parameter.");}
+		}
+
+	}
+
+	private void addNonKnowledgeTransformation(SingleOperationType operation, List<SingleOperationItem> list)
+	{
+		if (!excludeTransformations.contains(operation))
+		{
+			list.add(new SingleOperationItem(operation));
+		}
+	}
 
 
 
 	protected ImmutableList<SingleOperationItem> otherIterationsImList;
 	protected ImmutableList<SingleOperationItem> firstIterationsImList;
+	
+	protected final boolean hybridGapMode;
 
+	private Set<SingleOperationType> excludeTransformations = null;
 
 	@SuppressWarnings("unused")
 	private static final Logger logger = Logger.getLogger(DefaultOperationScript.class);

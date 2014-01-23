@@ -1,10 +1,12 @@
 package eu.excitementproject.eop.biutee.utilities;
 
+import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.transformations.codeannotations.Workaround;
 import eu.excitementproject.eop.transformations.operations.finders.SubstitutionFlipPosFinder;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
 import eu.excitementproject.eop.transformations.utilities.Constants;
+
 
 
 
@@ -18,6 +20,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Important constants: constants that you might consider changing their values
 
+	public static final boolean PASTA_GAP_STRICT_ARGUMENT_HEAD_MODE = false;
+	
 	public static final boolean USE_NEGATIVES_FROM_PREVIOUS_ITERATIONS_IN_ACCURACY_TRAINING = false;
 	
 	/**
@@ -50,14 +54,25 @@ public class BiuteeConstants
 	 * used, regardless whether the inserted word is common or rare.
 	 */
 	public static final boolean USE_MLE_FOR_INSERTION_COST = true;
+	
+	public static final boolean USE_MLE_FOR_GAP = true;
+	
+	public static final boolean USE_MLE_FOR_ARGUMENTS_GAP = false;
 
+	// if <=0 it means all.
+	public static final int FILTER_ENABELED_NUMBER_OF_TREES_TO_PROCESS = -1;
+
+	
 	public static final int LOCAL_CREATIVE_NUMBER_OF_LOCAL_ITERATIONS = 3;
 	
-	// 0 means no heuristic
-	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 3;
+	/**
+	 * See description in the method
+	 * {@link LocalCreativeTextTreesProcessor#updateActualNumberOfLocalIterations}.
+	 * 
+	 * 0 means no heuristic
+	 */
+	public static final int LOCAL_CREATIVE_HEURISTIC_LOCAL_ITERATIONS_HISTORY = 0;
 	
-	// if <=0 it means all.
-	public static final int LOCAL_CREATIVE_NUMBER_OF_TREES_TO_PROCESS = -1;
 
 
 	public static final int FIRST_ITERATION_IN_DEFAULT_OPERATION_SCRIPT = 3;
@@ -90,9 +105,26 @@ public class BiuteeConstants
 	public static final int NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED = 2000;
 	public static final Double DEFAULT_HYPOTHESIS_LENGTH_FOR_TRAINING_REASONABLE_GUESS = 10.0;
 
+	/**
+	 * apply {@link TextualNoiseReducer#reduceNoise(String)} to correct small errors in the text before preprocess
+	 */
+	public static final boolean REDUCE_NOISE_IN_DATASET = true;
+
+	/**
+	 * This feature adds periods to sentences that do not terminate with punctuation, as they are read from the dataset. 
+	 */
+	public static final boolean COMPLETE_PERIODS = true;
+
+	
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that are less likely to be changed.
 
+	/**
+	 * Use the baseline gap measure (true), or the pasta-based gap measure (false).
+	 * Should be false, except for specific experiments.
+	 */
+	public static final boolean GAP_BASELINE = false;
+	
 	public static final long RANDOM_SEED_FOR_GAUSSIAN_GENERATOR_FOR_REASONABLE_GUESS_TRAINING = 0L;
 	
 	public static final boolean USE_NUMBER_NORMALIZER = true;
@@ -191,6 +223,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that there is no reason to change, now and ever.
 
+	
+	public static final String ENVIRONMENT_VARIABLE_SUCCESS_FILE_NAME = "BIUTEE_SUCCESS";
 
 	/**
 	 * A delimiter in the value of "dataset" parameter, for RTE-sum.

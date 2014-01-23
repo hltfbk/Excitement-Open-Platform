@@ -1,6 +1,8 @@
 package eu.excitementproject.eop.distsim.items;
 
 
+import java.util.Set;
+
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 
 /**
@@ -16,6 +18,10 @@ public class LemmaPosTextUnit extends DeafaultTextUnit<LemmaPos> {
 	private static final long serialVersionUID = 1L;
 
 
+	public LemmaPosTextUnit() {
+		this(new LemmaPos());
+	}
+
 	public LemmaPosTextUnit(String lemma, CanonicalPosTag pos) {
 		this(new LemmaPos(lemma,pos));
 	}
@@ -28,11 +34,16 @@ public class LemmaPosTextUnit extends DeafaultTextUnit<LemmaPos> {
 		super(data, id,count);
 	}
 	
+	@Override
+	public TextUnit copy() {
+		return new LemmaPosTextUnit(data, id,(long)count);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.items.KeyExternalizable#toKey()
 	 */
 	@Override
-	public String toKey()  {
+	public String toKey() throws UndefinedKeyException  {
 		return data.toKey();
 	}
 	
@@ -57,7 +68,11 @@ public class LemmaPosTextUnit extends DeafaultTextUnit<LemmaPos> {
 	 */
 	@Override
 	public int hashCode() {
-		return toKey().hashCode();
+		try {
+			return toKey().hashCode();
+		} catch (UndefinedKeyException e) {
+			return 0;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -73,6 +88,22 @@ public class LemmaPosTextUnit extends DeafaultTextUnit<LemmaPos> {
 			return false;
 		LemmaPosTextUnit other = (LemmaPosTextUnit)obj;		
 		return data.equals(other.data);
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		return data.toKeys();
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		data.fromKey(key);
 	}
 	
 }

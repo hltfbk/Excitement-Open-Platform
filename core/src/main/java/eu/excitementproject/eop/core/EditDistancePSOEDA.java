@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.core;
 
+import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,6 +13,12 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.xpath.*;
+import org.w3c.dom.*;
 
 /**
  * The <code>EditDistancePSOEDA</code> class extends the <code>EditDistanceEDA</code> class.
@@ -56,6 +63,29 @@ public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T>
 		
 	}
 	
+	/**
+	 * get the type of component (i.e. EditDistanceEDA)
+	 * 
+	 * @return the type of component
+	 */
+	@SuppressWarnings("rawtypes")
+	protected String getType() {
+    	
+		String name = null;
+		
+		try {
+			
+			Class c = Class.forName(this.getClass().getCanonicalName());
+			name = c.getSuperclass().getCanonicalName();
+			
+		} catch (Exception e) {
+			logger.severe("Error in getting the type of the EDA!");
+		}
+		
+    	return name;
+    	
+    }
+	
 	/*
 	 * PSO initialization
 	 * 
@@ -67,6 +97,9 @@ public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T>
 		
 		PSO pso = null;
 		
+		//EDA initialization
+		initialize(config);
+		
 		try {
 			
 			//the range of values of the delete operation where PSO has to select a value from
@@ -77,7 +110,7 @@ public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T>
 		    Value mSubstituteWeighValue = null;
 			
 			//getting the name value table
-			NameValueTable nameValueTable = config.getSection(getCanonicalName());
+			NameValueTable nameValueTable = config.getSection(this.getType());
 			
 			//the max number of the iteration of PSO
 			if (this.maxIteration == -1)
@@ -116,7 +149,7 @@ public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T>
 			
 			//EditDistanceFitnessFunction represents the function to be optimized by PSO
 			EditDistanceFitnessFunction.CONFIG = config;
-			EditDistanceFitnessFunction.CANONICAL_NAME = getCanonicalName();
+			//EditDistanceFitnessFunction.CANONICAL_NAME = getCanonicalName();
 			
 			Class<?> fitnessFunction = EditDistanceFitnessFunction.class;
 			
@@ -154,11 +187,6 @@ public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T>
 		
 		try {
 		
-			logger.info("startTraining()");
-			
-			//EDA initialization
-			initialize(config);
-			
 			PSO pso = initializePSO(config);
 			Position gBestPosition = pso.execute();
 			
@@ -182,5 +210,93 @@ public class EditDistancePSOEDA<T extends TEDecision> extends EditDistanceEDA<T>
 		}
 		
 	}
+	
+	/**
+     * Initialize the weights of the edit distance operations getting them form the configuration file
+     * 
+     * If all the values of the 4 edit distance operation are defined they are used
+     * to calculate edit distance. Otherwise the weights are read from the configuration file.  
+     * 
+     * @param config the configuration
+     * 
+     */
+    protected void initializeWeights(CommonConfig config) {
+
+    	try{ 
+    		
+    		//get the values from the model section in the configuration file
+    		NameValueTable weightsTable = config.getSection("model");
+    		
+    		//if they weights have already been set use those weights 
+        	if (Double.isNaN(this.getmMatchWeight()) == false && Double.isNaN(this.getmDeleteWeight()) == false &&
+        			Double.isNaN(this.getmInsertWeight()) == false && Double.isNaN(this.getmSubstituteWeight()) == false)
+        		return;
+    		
+        	//set the weights of the edit distance operations
+    		this.setmMatchWeight(weightsTable.getDouble("match"));
+    		this.setmDeleteWeight(weightsTable.getDouble("delete"));
+    		this.setmInsertWeight(weightsTable.getDouble("insert"));
+    		this.setmSubstituteWeight(weightsTable.getDouble("substitute"));
+    		
+    	} catch (Exception e) {
+    		
+    		logger.info("Could not find weights section in configuration file, using defaults");
+    		this.setmMatchWeight(0.0);
+    		this.setmDeleteWeight(0.0);
+    		this.setmInsertWeight(1.0);
+    		this.setmSubstituteWeight(1.0);
+    		
+    	}
+    	
+    }
+	
+	/**
+     * Reads the configuration file and adds the calculated optimized parameters. The optimized 
+     * parameters includes the value of the edit distance operations as well as the threshold calculated on the
+     * training data set.
+     * 
+     * @return the configuration file with the optimized parameters added
+     * 
+     */
+    protected String updateConfigurationFile(CommonConfig config) throws IOException {
+    
+    	StreamResult result = new StreamResult(new StringWriter());
+    	
+    	try {
+    			
+    		DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+    		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+    		Document document = docBuilder.parse(new File(config.getConfigurationFileName()));
+
+    		XPathFactory xpathFactory = XPathFactory.newInstance();
+    		XPath xpath = xpathFactory.newXPath();
+    		
+    		//updating the threshold value and the training accuracy
+    		Node thresholdNode = (Node) xpath.evaluate("//*[@name='model']/*[@name='threshold']", document, XPathConstants.NODE);
+    		thresholdNode.setTextContent(String.valueOf(this.getThreshold()));
+    		Node trainingAccuracyNode = (Node) xpath.evaluate("//*[@name='model']/*[@name='trainingAccuracy']", document, XPathConstants.NODE);
+    		trainingAccuracyNode.setTextContent(String.valueOf(this.getTrainingAccuracy()));
+    		
+    		//updating the weights of the edit distance operations
+    		Node matchWeightNode = (Node) xpath.evaluate("//*[@name='model']/*[@name='match']", document, XPathConstants.NODE);
+    		matchWeightNode.setTextContent(String.valueOf(this.getmMatchWeight()));
+    		Node deleteWeightNode = (Node) xpath.evaluate("//*[@name='model']/*[@name='delete']", document, XPathConstants.NODE);
+    		deleteWeightNode.setTextContent(String.valueOf(this.getmDeleteWeight()));
+    		Node insertWeightNode = (Node) xpath.evaluate("//*[@name='model']/*[@name='insert']", document, XPathConstants.NODE);
+    		insertWeightNode.setTextContent(String.valueOf(this.getmInsertWeight()));
+    		Node substituteWeightNode = (Node) xpath.evaluate("//*[@name='model']/*[@name='substitute']", document, XPathConstants.NODE);
+    		substituteWeightNode.setTextContent(String.valueOf(this.getmSubstituteWeight()));
+    		
+    		TransformerFactory tf = TransformerFactory.newInstance();
+    		Transformer t = tf.newTransformer();
+    		t.transform(new DOMSource(document), result);
+    			       			
+    	}catch (Exception e) {
+    		throw new IOException(e.getMessage());
+    	}
+    	
+    	return result.getWriter().toString();
+	    
+    }
 	
 }

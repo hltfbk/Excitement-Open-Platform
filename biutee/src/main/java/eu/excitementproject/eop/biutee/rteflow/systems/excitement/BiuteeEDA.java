@@ -1,6 +1,5 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.concurrent.ExecutionException;
@@ -10,11 +9,11 @@ import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
-import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairResult;
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
+import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsETETrainer;
 import eu.excitementproject.eop.biutee.script.ScriptException;
+import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.biutee.utilities.SystemInformationLog;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
@@ -23,10 +22,8 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
-import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
-import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
@@ -58,28 +55,18 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			else throw new EDAException("Method initialize must not be called if startTraining was called.");
 		}
 		trainingMode = false;
-		File biuConfigurationFile = null;
+		
 		try
 		{
-			biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
-			BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
-			logger.info("Log file has been converted to BIU log file, and temporarily stored in "+biuConfigurationFile.getPath());
-			new SystemInformationLog(biuConfigurationFile.getPath()).log();
+			new SystemInformationLog(config.getConfigurationFileName()).log();
 			logger.info("Initializing BIUTEE underlying system...");
-			underlyingSystem = new BiuteeEdaUnderlyingSystem(biuConfigurationFile.getPath());
+			underlyingSystem = new BiuteeEdaUnderlyingSystem(config.getConfigurationFileName());
 			underlyingSystem.init();
 			logger.info("Initializing BIUTEE underlying system - done.");
 		}
 		catch (Exception e)
 		{
 			throw new EDAException("Initialization failure. See nested exception.",e);
-		}
-		finally
-		{
-			if (biuConfigurationFile!=null){ if (biuConfigurationFile.exists())
-			{
-				try{biuConfigurationFile.delete();}catch(RuntimeException e){}
-			}}
 		}
 	}
 
@@ -145,16 +132,11 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 		trainingMode = true;
 		try
 		{
-			File biuConfigurationFile = File.createTempFile(TEMPORARY_CONFIGURATION_FILE_PREFIX, TEMPORARY_CONFIGURATION_FILE_SUFFIX);
-			BiuteeEdaUtilities.convertExcitementConfigurationFileToBiuConfigurationFile(new File(config.getConfigurationFileName()), biuConfigurationFile);
-			logger.info("Log file has been converted to BIU log file, and temporarily stored in "+biuConfigurationFile.getPath());
-			new SystemInformationLog(biuConfigurationFile.getPath()).log();
-			
-			RTEPairsMultiThreadTrainer trainer = new RTEPairsMultiThreadTrainer(biuConfigurationFile.getPath());
+			RTEPairsETETrainerWithInitAndCleanUp trainer = new RTEPairsETETrainerWithInitAndCleanUp(config.getConfigurationFileName());
+			logger.info("Training system - initialization...");
+			trainer.init();
 			try
 			{
-				logger.info("Training system - initialization...");
-				trainer.init();
 				logger.info("Training system - initialization - done.");
 				logger.info("Training system - training...");
 				trainer.train();
@@ -163,30 +145,22 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 			finally
 			{
 				trainer.cleanUp();
-				
-				if (biuConfigurationFile!=null){ if (biuConfigurationFile.exists())
-				{
-					try{biuConfigurationFile.delete();}catch(RuntimeException e){}
-				}}
 			}
-
-
 		}
-		catch (IOException | ClassNotFoundException | OperationException |
-				TeEngineMlException |
-				eu.excitementproject.eop.common.utilities.configuration.ConfigurationException |
-				TreeCoreferenceInformationException | LemmatizerException |
-				PluginAdministrationException |
-				ClassifierException | AnnotatorException
-				| ParserRunException | SentenceSplitterException
-				| CoreferenceResolutionException | ScriptException
-				| RuleBaseException | InterruptedException | ExcitementToBiuConfigurationFileConverterException
-				e)
+		catch (BiuteeException | TeEngineMlException | PluginAdministrationException | LemmatizerException | IOException e)
 		{
 			throw new EDAException("Training failed. See nested exception.",e);
 		}
 	}
 
+	
+	private static class RTEPairsETETrainerWithInitAndCleanUp extends RTEPairsETETrainer
+	{
+		public RTEPairsETETrainerWithInitAndCleanUp(String configurationFileName){super(configurationFileName);}
+		public void init() throws ConfigurationFileDuplicateKeyException, eu.excitementproject.eop.common.utilities.configuration.ConfigurationException, MalformedURLException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException {super.init();}
+		public void cleanUp(){super.cleanUp();}
+	}
+	
 	private BiuteeEdaUnderlyingSystem underlyingSystem = null;
 	private Boolean trainingMode = null;
 	private boolean hasBeenShutDown = false;

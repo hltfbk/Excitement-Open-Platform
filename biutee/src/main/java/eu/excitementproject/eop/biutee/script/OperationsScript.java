@@ -24,12 +24,22 @@ import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelop
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
- * Defines the operations and their ordering that are involved in constructing a proof.
+ * Defines the operations and their ordering that are involved in constructing a proof,
+ * and in addition, contains all the knowledge resources and plug-ins.
  * <P>
  * A proof is a sequence of operations that transform T to H. The system tries to find
  * proofs, according to the script. Finding a proof is an iterative process: in each iteration
  * the system applies some operations on the trees. The script defines which operations are
- * to be applied in a each iteration. 
+ * to be applied in a each iteration.
+ * <P>
+ * Application of rules from knowledge resources (as well as plug-in transformations)
+ * are performed by getting the knowledge resource itself (or the plugin) by
+ * calling methods of this class, like {@link #getByLemmaPosLexicalRuleBase(String)},
+ * {@link #getRuleBaseEnvelope(String)}, etc.
+ * <P>
+ * Thus, the {@link OperationsScript} role is two-fold:
+ * (1) Define which operations should be applied in each iteration.
+ * (2) Contain the knowledge resources. 
  * 
  * @author Asher Stern
  * @since February  2011
@@ -43,6 +53,21 @@ public abstract class OperationsScript<I,S extends AbstractNode<I, S>> extends R
 	public abstract void init() throws OperationException;
 	public abstract void cleanUp();
 	
+	/**
+	 * Sets a {@link HypothesisInformation} - an information about the target
+	 * hypothesis, into which the text should be transformed.
+	 * <B>Note</B>, that in order to make the script take this information
+	 * into consideration, this method should be overridden, and make
+	 * the required effect on the knowledge resources and plug-ins
+	 * that are stored in this script.
+	 * <BR>
+	 * When overriding this method, the very first instruction should be
+	 * <code>super.setHypothesisInformation(hypothesisInformation);</code>
+	 * See {@link OperationsScriptForBuiltinKnowledge} for more information.
+	 *  
+	 * @param hypothesisInformation
+	 * @throws TeEngineMlException
+	 */
 	public void setHypothesisInformation(HypothesisInformation hypothesisInformation) throws TeEngineMlException
 	{
 		this.hypothesisInformation = hypothesisInformation;

@@ -1,6 +1,8 @@
 package eu.excitementproject.eop.common.configuration;
 
 import java.io.File;
+import java.util.List;
+
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 
 
@@ -35,6 +37,13 @@ public abstract class CommonConfig
 	{
 		
 	}
+	
+	/**
+	 * Returns a list of sections in this configuration file.
+	 * Returns null if the configuration file was not specified.
+	 * @return a list of sections in this configuration file
+	 */
+	abstract public List<String> getSectionNames();
 	
 	/**
 	 * This method returns the name-value table that is associated with the componentName. If there is no such section, the method

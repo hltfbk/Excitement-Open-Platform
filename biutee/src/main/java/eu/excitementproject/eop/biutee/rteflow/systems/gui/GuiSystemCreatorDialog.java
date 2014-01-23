@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -194,6 +195,14 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 							(GUI_LOADS_LABELED_SAMPLES?useF1Classifier:null)
 							);
 					underlyingSystem.init();
+					if (underlyingSystem.getTeSystemEnvironment().getGapToolBox().isHybridMode())
+					{
+						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! The GUI support of hybrid gap mode is partial and might be inaccurate.", "Hybrid gap mode", JOptionPane.WARNING_MESSAGE);
+					}
+					if (underlyingSystem.isCollapseMode())
+					{
+						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! GUI in COLLAPSE mode is incomplete.\nYou can change the COLLAPSE constant to switch into non-COLLAPSE mode, in which the GUI is fine.", "COLLAPSE mode", JOptionPane.WARNING_MESSAGE);
+					}
 					built = true;
 				}
 				catch(Exception e)
@@ -204,6 +213,8 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 			dispose();
 		}
 	}
+	
+	
 	
 
 

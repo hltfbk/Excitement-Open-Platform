@@ -1,0 +1,28 @@
+
+
+<!--A configuration file for programs which are using Redis-based knowledge resources, e.g., eu.excitementproject.eop.distsim.resource.TestLemmaPosSimilarity and eu.excitementproject.eop.core.component.syntacticknowledge.TestDIRTSimilarity-->
+<configuration>
+
+<section name="logging"> <!--Defines the log4j properties -->
+	<!--the path of the log4j properties file-->
+	<property name="properties-file">configurations/log4j.properties</property> 
+</section>
+
+<section name="knowledge-resource"> <!-- Defines the parameters of Redis-based knowledge resource-->
+           <!--  a selected name of the resource (as defined in the EOP's eu.excitementproject.eop.common.component.Component interface) -->
+	<property name="resource-name">dist-sim-bap-proximity</property> 
+	
+	 <!--  a selected name of the resource instance (as defined in the EOP's eu.excitementproject.eop.common.component.Component interface) -->
+	 <property name="instance-name">demo</property> 
+	 
+	 <!-- a  path to the Redis db file which contains the left-2-right rules-->
+	<property name="l2r-redis-db-file">redis/db/bap/similarity-l2r.rdb</property>
+	
+	<!-- For lexical resources onlt, a  path to the Redis db file which contains the right-2-left rules-->
+	<property name="r2l-redis-db-file">redis/db/bap/similarity-r2l.rdb</property>
+	
+	<!--The number of top rules to be retrieved (default, all)-->
+	 <property name="top-n-rules">20</property>
+</section>
+</configuration>
+

@@ -142,7 +142,7 @@ public class RTEPairsMultiThreadTester extends RTEPairsBaseSystem
 			
 			
 			// Create a classifier, based on a serialized vector of LabeledSamples (stored in a ser file), or based on a reasonable guess
-			OperationsScript<?, ?> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			OperationsScript<?, ?> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 			script.init();
 			try
 			{
@@ -435,7 +435,7 @@ public class RTEPairsMultiThreadTester extends RTEPairsBaseSystem
 
 		private void processAllPairs() throws OperationException, TeEngineMlException, ClassifierException, ScriptException, RuleBaseException, AnnotatorException
 		{
-			oneThreadScript = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			oneThreadScript = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 			oneThreadScript.init();
 			try
 			{

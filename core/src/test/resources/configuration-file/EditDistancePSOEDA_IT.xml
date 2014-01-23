@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- 
+
+Language: Italian 
+
+EDA: EditDistancePSOEDA
+
+Description: Given a certain configuration (i.e. the configuration file), the edit distance EDA can be 
+trained over a specific data set (i.e. trainDir) in order to optimize its performance (i.e. accuracy or
+F1 measure). In the training phase the EDA produces a distance model for the data set, which includes a
+distance threshold that best separates the positive and negative examples in the training data. The calculated
+threshold is then saved in the configuration file itself. Differently to EditDistanceEDA this EDA optimizes
+also the weight of the 3 edit distance operations (i.e. delete, insert, substitute) on the the used data.
+During the test phase the configuration file is read and the reported threshold with the calculated weights of the
+edit distance operations used so that T-H pairs resulting in a distance below the threshold are classified as
+ENTAILMENT, while pairs above the threshold are classified as NONENTAILMENT. 
+
+To calculate the distance between T-H pairs distance EditDistancePSOEDA can use either the FixedWeightTokenEditDistance
+or FixedWeightLemmaEditDistance component. FixedWeightTokenEditDistance calculates the distance between T and H
+by using the tokens whereas FixedWeightLemmaEditDistance uses the lemma of the tokens (in this case a pipeline
+producing the lemma had to be used for preprocessing the data set). In addition FixedWeightTokenEditDistance
+and FixedWeightLemmaEditDistance can exploit external resources like WordNet and Wikipedia.
+
+From the configuration file it is possible to select different instances of EditDistancePSOEDA; this is done
+by selecting the component to be used (i.e. FixedWeightTokenEditDistance or FixedWeightLemmaEditDistance) and
+then one of the available configurations of the selected component (e.g. basic, wordnet, wikipedia).
+
+Basically the configuration file represents a single experiment where information about the used EDA, its
+parameters, the data set used to calculate the threshold and the threshold itself are all available. Sharing
+a configuration file means allowing other users to replicate the same experiment under the same condition.
+
+--><configuration>
+
+
+    <!-- Platform configuration section; the information in this section is used by the EOPRunner class being
+    able to perform both the processing of the data set and running the EDA -->
+	<section name="PlatformConfiguration">
+		<!-- The EDA to be used: EditDistancePSOEDA -->
+		<property name="activatedEDA">eu.excitementproject.eop.core.EditDistancePSOEDA</property>
+		<!-- The language: [IT] -->
+		<property name="language">IT</property>
+		<!-- The linguistic annotation pipeline to preprocess the data to be annotated: [OpenNLPTaggerIT|TreeTaggerIT] -->
+		<!-- Differently to OpenNLPTagger, TreeTagger can produce the lemma and it is the pipeline to be
+		used when FixedWeightLemmaEditDistance is selected. Be sure to have TreeTagger installed before using it -->
+		<!-- <property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerIT</property> -->
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerIT</property>
+	</section>
+	
+	
+	<!-- FixedWeightTokenEditDistance uses the token to calculate the distance between each pair T-H -->
+	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
+	    
+		<!-- stop words removal: [true|false] -->
+		<property name="stopWordRemoval">true</property>
+			
+	    <!-- The configuration to be used by the component: [basic|wordnet|wikipedia|wordnet,wikipedia] -->
+	    <property name="instances">basic</property>
+	    
+	     <!-- This configuration does not use any external resources -->
+		<subsection name="basic"/>
+		
+		<!-- This configuration uses WordNet as an external resources -->
+		<subsection name="wordnet">
+			<!-- path of the WordNet files -->
+			<property name="path">/tmp/eop-resources-1.0.2/IT/wnita</property>
+			<!-- for the DB version of itaWN: ../core/src/main/resources/configuration-file/ -->
+		</subsection>
+		
+		<!-- This configuration uses Wikipedia as an external resources -->
+		<subsection name="wikipedia">
+			<!-- connection to the Wikipedia data base -->
+			<property name="dbconnection">jdbc:mysql://nathrezim:3306/wikilexresita</property>
+			<property name="dbuser">root</property>
+			<property name="dbpasswd">nat_2k12</property>
+		</subsection>
+		
+	</section>	
+	
+	<!-- FixedWeightLemmaEditDistance uses the lemma to calculate the distance between each pair T-H -->
+	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
+	    
+		<!-- stop words removal: [true|false] -->
+		<property name="stopWordRemoval">true</property>
+			
+	    <!-- The configuration to be used by the component: [basic|wordnet|wikipedia|wordnet,wikipedia]
+	    The use of wikipedia for Italian makes the EDA very slow.  -->
+	    <property name="instances">basic</property>
+	    
+	     <!-- This configuration does not use any external resources -->
+		<subsection name="basic"/>
+		
+		<!-- This configuration uses WordNet as an external resources -->
+		<subsection name="wordnet">
+			<!-- path of the WordNet files -->
+			<property name="path">/tmp/eop-resources-1.0.2/IT/wnita</property>
+		</subsection>
+		
+		<!-- This configuration uses Wikipedia as an external resources -->
+		<subsection name="wikipedia">
+			<!-- connection to the Wikipedia data base -->
+			<property name="dbconnection">jdbc:mysql://nathrezim:3306/wikilexresita</property>
+			<property name="dbuser">root</property>
+			<property name="dbpasswd">nat_2k12</property>
+		</subsection>
+		
+	</section>	
+		
+	
+	<!-- EditDistancePSOEDA optimizes the weights of the edit distance operations automatically by using particle 
+	swarm optimization (PSO).  -->
+	<section name="eu.excitementproject.eop.core.EditDistanceEDA">
+		
+		<!-- Particle Swarm Optimization (PSO) Section -->
+		
+		<!-- The following 3 parameters determines when PSO stops -->
+		<!-- max number of iteration -->
+		<property name="maxIteration">1</property>
+		<!-- minimum error criteria -->
+		<property name="errorTolerance">0.1</property>
+		<!-- max number of iterations without any changes in accuracy -->
+		<property name="maxIterationWithoutChanges">5</property>
+		
+		<!-- swarm size -->
+		<property name="swarmSize">1</property>
+		
+		<!-- processors used by PSO -->
+		<!-- for the time being multi-threading is not supported and this parameter
+		do not have to be changed -->
+		<property name="processors">1</property>
+		
+		<!-- range of values of the edit distance operations where PSO has to select a value from -->
+		<property name="deleteValuesRange">0,5</property>
+		<property name="insertValuesRange">0,5</property>
+		<property name="substituteValuesRange">0,5</property>
+		
+		<!-- <property name="trainDir">/tmp/</property> -->
+		<property name="trainDir">../core/src/test/resources/data-set/ITA/dev/</property>
+		<!-- <property name="testDir">/tmp/</property> -->
+		<property name="testDir">../core/src/test/resources/data-set/ITA/test/</property>
+		<!-- measure to be optimized: accuracy, f1 -->
+		<property name="measure">accuracy</property>
+	    <!-- component to be used by EDA: [FixedWeightTokenEditDistance|FixedWeightLemmaEditDistance] 
+		FixedWeightLemmaEditDistance can be used only when the preprocessing pipeline provides lemmas-->
+	    <property name="components">eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance</property>
+	
+	</section>
+	
+	
+	<!-- The information in this section are calculated automatically during the training phase by the EDA and
+	it represents the learnt model. -->
+	<section name="model">
+	
+	    <!-- threshold -->
+		<property name="threshold">0.6741744799582308</property>
+		<!-- the accuracy obtained on the training data set -->
+		<property name="trainingAccuracy">0.8</property>
+		
+		<!-- weights of the edit distance operations -->
+		<property name="match">0.0</property>
+		<property name="delete">0.1319925715320236</property>
+		<property name="insert">0.39240476983732286</property>
+		<property name="substitute">3.909365021880457</property>
+		
+	</section>
+	
+</configuration>

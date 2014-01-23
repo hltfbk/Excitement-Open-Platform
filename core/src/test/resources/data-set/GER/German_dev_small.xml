@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="DE">
+	<pair id="1" entailment="ENTAILMENT" task="IE">
+		<t>Der Verkauf wurde getätigt, um Yukos Steuerbescheid über 27,5 Milliarden US-Dollar zu bezahlen. Yuganskneftegaz wurde ursprünglich für 9,4 Milliarden US-Dollar an ein kaum bekanntes Unternehmen namens Baikalfinansgroup verkauft, welches später von dem russischen staatseigenen Ölunternehmen Rosneft aufgekauft wurde.</t>
+		<h>Baikalfinansgroup wurde an Rosneft verkauft.</h>
+	</pair>
+	<pair id="2" entailment="NONENTAILMENT" task="IE">
+		<t>Der Verkauf wurde getätigt, um Yukos Steuerbescheid über 27,5 Milliarden US-Dollar zu bezahlen. Yuganskneftegaz wurde ursprünglich für 9,4 Milliarden US-Dollar an ein kaum bekanntes Unternehmen namens Baikalfinansgroup verkauft, welches später von dem russischen staatseigenen Ölunternehmen Rosneft aufgekauft wurde.</t>
+		<h>Yuganskneftegaz hat Kosten in Höhe von 27,5 Milliarden US-Dollar.</h>
+	</pair>
+	<pair id="3" entailment="NONENTAILMENT" task="IE">
+		<t>Außer im Broadwaystück "Dreamgirls", war Loraine in der Nicht-Broadwy-Produktion "Does A Tiger Have A Necktie" zu sehen. 1999 ging Loraine nach London, Großbritannien. Dort nahm sie an der Produktion "RENT" teil, wo sie für die Zweitbesetzung der "Mimi" vorgesehen war.</t>
+		<h>"Does A Tiger Have A Necktie" wurde in London produziert.</h>
+	</pair>
+	<pair id="4" entailment="ENTAILMENT" task="IE">
+		<t>"The Extra Girl" (1923) ist die Geschichte des Kleinstadtmädchens Sue Graham (gespielt von Mabel Normand), die nach Hollywood geht, um berühmt zu werden. Dieser Klassiker mit Mabel Normand, der von Mack Sennett produziert wurde, folgte älteren Filmen über die Filmindustrie und ebnete zudem den Weg für spätere Filme über Hollywood, wie zum Beispiel King Vidor's "Show People" (1928).</t>
+		<h>"The Extra Girl" wurde von Sennett produziert.</h>
+	</pair>
+	<pair id="5" entailment="ENTAILMENT" task="IE">
+		<t>Der Zusammenstoß eines Busses mit einem Lastwagen in Uganda hat mindestens 30 Todesopfer gefordert und weitere 21 Verletzte hinterlassen.</t>
+		<h>30 Menschen sterben bei einem Busunglück in Uganda.</h>
+	</pair>
+	<pair id="6" entailment="NONENTAILMENT" task="IE">
+		<t>Nehmen wir den Konsumgüter-Giganten Procter and Gamble. Selbst mit einem Forschungs- und Entwicklungsbudget von 1,8 Milliarden Dollar, finanziert das Unternehmen jährlich 500 aktive Teilhaberschaften. Bei vielen dieser Handelsgesellschaften handelt es sich um kleinere Unternehmen.</t>
+		<h>500 kleine Unternehmen sind Handelspartner von Procter and Gamble.</h>
+	</pair>
+	<pair id="7" entailment="ENTAILMENT" task="IE">
+		<t>Nach seiner Entlassung erzählte der glattrasierte Magdy el-Nashar außerhalb seines Zuhauses den Reportern, dass er mit dem Angriff vom 7. Juli auf einen Transporter nichts zu tun hatte, bei dem 52 Menschen und vier Attentäter ums Leben kamen.</t>
+		<h>52 Menschen und vier Attentäter kamen am 7. Juli ums Leben.</h>
+	</pair>
+	<pair id="8" entailment="NONENTAILMENT" task="IE">
+		<t>Die Beliebtheit von Frau Bush wird mit über 80 Prozent immer noch sehr hoch bewertet, während die ihres Mannes kürzlich unter die 50 Prozentmarke rutschte.</t>
+		<h>80% stimmen für Frau Bush.</h>
+	</pair>
+	<pair id="9" entailment="NONENTAILMENT" task="IE">
+		<t>Die neueste Untersuchung über den Dakosaurus stammt von einem vollständig erhaltenen Schädel, der 1996 in Argentinien gefunden wurde und von Diego Pol der Ohio State University, Zulma Gasparini von der argentinischen National University of La Plata und ihren Kollegen untersucht wurde.</t>
+		<h>Diego Pol entdeckte einen vollständigen Dakosaurus.</h>
+	</pair>
+	<pair id="10" entailment="NONENTAILMENT" task="IE">
+		<t>Am 17. Mai 2005 verabschiedete der Kuwait-Nationalrat mit einer Mehrheit von 35 zu 23 (und einer Enthaltung) eine Wahlgesetz-Änderung, die Frauen das Wahlrecht zuspricht und ihnen erlaubt, bei Parlamentswahlen zu kandidieren.</t>
+		<h>Eine Wahlgesetz-Änderung für Frauen wurde vom Kuwait-Nationalrat zurückgewiesen.</h>
+	</pair>
+</entailment-corpus>

@@ -15,7 +15,7 @@ import eu.excitementproject.eop.distsim.scoring.FeatureScore;
  * <P>
  * Thread-safe
  */
-public class Cover implements ElementSimilarityScoring {
+public class Cover extends AbstractElementSimilarityScoring {
 
 	public Cover(ConfigurationParams params) {
 		this();

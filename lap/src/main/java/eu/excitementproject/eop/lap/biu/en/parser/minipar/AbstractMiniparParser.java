@@ -16,6 +16,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
 import eu.excitementproject.eop.common.representation.partofspeech.MiniparPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.lap.biu.en.parser.AbstractBasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.EnglishSingleTreeParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 
@@ -37,7 +38,7 @@ import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 public abstract class AbstractMiniparParser implements EnglishSingleTreeParser
 {
 	////////////////////////// CONSTANTS ///////////////////////
-	public static final String ROOT_NODE_ID = "ROOT";
+	public static final String ROOT_NODE_ID = AbstractBasicParser.ROOT_NODE_ID;
 	// Used if no other node was found as root (i.e. never used).
 	
 	protected static final int IGNORED_MINIPAR_LINES_HEADER = 1;

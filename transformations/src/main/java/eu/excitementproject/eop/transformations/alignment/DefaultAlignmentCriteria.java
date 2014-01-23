@@ -2,15 +2,15 @@ package eu.excitementproject.eop.transformations.alignment;
 import static eu.excitementproject.eop.transformations.utilities.Constants.USE_ADVANCED_EQUALITIES;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
-import eu.excitementproject.eop.transformations.generic.rule_compiler.Constants;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
+import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.AdvancedEqualities;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.ContentAncestorSetter;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.Equalities;
 
 /**
- * The actual {@link AlignmentCriteria} used by the system.
+ * The actual {@link AlignmentCriteria} used by the BIUTEE system.
  * <BR>
  * Roughly, it requires from two nodes to be aligned that their lemmas are
  * equal, their parts-of-speech are equal, their predicate-truth values are equal
@@ -26,6 +26,10 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.Equalit
  */
 public class DefaultAlignmentCriteria extends AbstractAlignmentCriteria<ExtendedInfo, ExtendedNode>
 {
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.transformations.alignment.AlignmentCriteria#nodesSimilar(eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, eu.excitementproject.eop.common.representation.parse.tree.AbstractNode, eu.excitementproject.eop.common.representation.parse.tree.AbstractNode)
+	 */
 	@Override
 	public boolean nodesSimilar(
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
@@ -44,6 +48,10 @@ public class DefaultAlignmentCriteria extends AbstractAlignmentCriteria<Extended
 		return ret;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.transformations.alignment.AlignmentCriteria#nodesAligned(eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, eu.excitementproject.eop.common.representation.parse.tree.AbstractNode, eu.excitementproject.eop.common.representation.parse.tree.AbstractNode)
+	 */
 	@Override
 	public boolean nodesAligned(
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
@@ -62,6 +70,10 @@ public class DefaultAlignmentCriteria extends AbstractAlignmentCriteria<Extended
 		return ret;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see eu.excitementproject.eop.transformations.alignment.AlignmentCriteria#edgesAligned(eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap, eu.excitementproject.eop.common.representation.parse.tree.AbstractNode, eu.excitementproject.eop.common.representation.parse.tree.AbstractNode)
+	 */
 	@Override
 	public boolean edgesAligned(
 			TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,

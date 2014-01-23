@@ -27,6 +27,7 @@ public class SingleIDBasedIterator<E extends Externalizable & Countable & Identi
 	/**
 	 * Move to the next item, according to the filter condition
 	 */
+	@Override
 	protected void moveNext() {
 		try {
 			next = items.getData(iterator.next());

@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.transformations.alignment;
+
 import eu.excitementproject.eop.common.codeannotations.ThreadSafe;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;

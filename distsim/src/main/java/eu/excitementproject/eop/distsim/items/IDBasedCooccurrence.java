@@ -1,5 +1,8 @@
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 /**
  * A light representation of co-occurrence, based on the ids of the text units and the enum value of the relation 
@@ -8,11 +11,10 @@ package eu.excitementproject.eop.distsim.items;
  * @since 19/07/2012
  *
  */
+@SuppressWarnings("serial")
 public class IDBasedCooccurrence<R> extends DefaultIdentifiableCountable implements Externalizable {
 	
-	private static final long serialVersionUID = 1L;
-
-	protected final String DELIMITER = "###IDBasedCooccurrence###";
+	protected final String DELIMITER = "#";
 	
 	public IDBasedCooccurrence(int textUnitID1, int textUnitID2, R relation) {
 		this.textUnitID1 = textUnitID1;
@@ -34,6 +36,31 @@ public class IDBasedCooccurrence<R> extends DefaultIdentifiableCountable impleme
 		return sb.toString();
 	}
 	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		String[] props = key.split(DELIMITER);
+		if (props.length != 3)
+			throw new UndefinedKeyException("Cannot decode key " + key + " to a LemmaPos object, since it contains  one or more serialization delimiters");
+		try {
+			textUnitID1 = Integer.parseInt(props[0]);
+			relation = (R) props[1];
+			textUnitID1 = Integer.parseInt(props[2]);
+		} catch (Exception e) {
+			throw new UndefinedKeyException(e);
+		}
+	}
+
 	public int getTextUnitID1() {
 		return textUnitID1;
 	}
@@ -87,10 +114,13 @@ public class IDBasedCooccurrence<R> extends DefaultIdentifiableCountable impleme
 		if (getClass() != obj.getClass())
 			return false;
 		ArgumentFeature other = (ArgumentFeature) obj;
-		return toKey().equals(other.toKey());
+		try {
+			return toKey().equals(other.toKey());
+		} catch (UndefinedKeyException e) {
+			return false;
+		}
 	}
 	
 	int textUnitID1, textUnitID2;
 	R relation;
-
 }

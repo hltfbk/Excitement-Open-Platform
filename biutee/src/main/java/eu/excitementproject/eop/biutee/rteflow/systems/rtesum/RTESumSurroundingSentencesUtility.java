@@ -17,6 +17,8 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
  */
 public class RTESumSurroundingSentencesUtility extends RTESumSurroundingSentencesUtilityGeneric<ExtendedInfo,ExtendedNode>
 {
+	private static final long serialVersionUID = -6444401235425594395L;
+
 	public RTESumSurroundingSentencesUtility(GenericPreprocessedTopicDataSet<ExtendedInfo, ExtendedNode> extendedTopic) throws TreeStringGeneratorException
 	{
 		super(extendedTopic);

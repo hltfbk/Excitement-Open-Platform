@@ -14,6 +14,12 @@ public abstract class DeafaultElement<T> extends DefaultIdentifiableCountable im
 	
 	private static final long serialVersionUID = 1L;
 	
+	public DeafaultElement() {
+		super();
+		this.data = null;
+		this.context = null;
+	}
+	
 	public DeafaultElement(T data) {
 		super();
 		this.data = data;
@@ -60,7 +66,7 @@ public abstract class DeafaultElement<T> extends DefaultIdentifiableCountable im
 	
 	
 	
-	protected final T data;
+	protected T data;
 	protected final AggregatedContext context;
 
 }

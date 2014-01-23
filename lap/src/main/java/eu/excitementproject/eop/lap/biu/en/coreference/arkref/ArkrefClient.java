@@ -182,6 +182,9 @@ public class ArkrefClient
 			Stack<String> currentTags = null;
 			try
 			{
+				// For debugging
+				arkrefStackOutput = new ArrayList<WordAndStackTags>();
+
 				EntityGraph entityGraph = arkrefDocument.entGraph();
 				for(Sentence sentence : arkrefDocument.sentences()) // for each sentence
 				{
@@ -243,7 +246,7 @@ public class ArkrefClient
 					}
 
 					// For debugging
-					arkrefStackOutput = new ArrayList<WordAndStackTags>(mapLeavesToWords.keySet().size());
+					//arkrefStackOutput = new ArrayList<WordAndStackTags>(mapLeavesToWords.keySet().size());
 					for (Tree leaf : mapLeavesToWords.keySet())
 					{
 						arkrefStackOutput.add(mapLeavesToWords.get(leaf));
@@ -266,7 +269,7 @@ public class ArkrefClient
 					leafNumToOrdinal.put(word.node().nodeNumber(docTree), i);
 					i++;
 				}
-				SortedMap<Integer, DockedToken> offsets = DockedTokenFinder.find(text, tokens, true, true);
+				SortedMap<Integer, DockedToken> offsets = DockedTokenFinder.find(text, tokens, false, true);
 				
 				
 				arkrefDockedOutput = new LinkedHashMap<String, List<DockedMention>>();
@@ -275,23 +278,29 @@ public class ArkrefClient
 					List<Tree> leaves = node.getLeaves();
 					
 					int startNodeNum = leaves.get(0).nodeNumber(docTree);
-					int startOffset = offsets.get(leafNumToOrdinal.get(startNodeNum)).getCharOffsetStart();
+					DockedToken startDockedToken = offsets.get(leafNumToOrdinal.get(startNodeNum));
 					int endNodeNum = leaves.get(leaves.size()-1).nodeNumber(docTree);
-					int endOffset = offsets.get(leafNumToOrdinal.get(endNodeNum)).getCharOffsetEnd();
-					String mentionString = text.substring(startOffset, endOffset);
+					DockedToken endDockedToken = offsets.get(leafNumToOrdinal.get(endNodeNum));
 					
-					String tag = entityGraph.entName(mention);
-					List<DockedMention> mentionsInGroup = null;
-					if (arkrefDockedOutput.containsKey(tag)) {
-						mentionsInGroup = arkrefDockedOutput.get(tag);
+					if ( (startDockedToken!=null) && (endDockedToken!=null) )
+					{
+						int startOffset = startDockedToken.getCharOffsetStart();
+						int endOffset = endDockedToken.getCharOffsetEnd();
+						String mentionString = text.substring(startOffset, endOffset);
+
+						String tag = entityGraph.entName(mention);
+						List<DockedMention> mentionsInGroup = null;
+						if (arkrefDockedOutput.containsKey(tag)) {
+							mentionsInGroup = arkrefDockedOutput.get(tag);
+						}
+						else {
+							mentionsInGroup = new ArrayList<DockedMention>();
+							arkrefDockedOutput.put(tag, mentionsInGroup);
+						}
+
+						DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
+						mentionsInGroup.add(dockedMention);
 					}
-					else {
-						mentionsInGroup = new ArrayList<DockedMention>();
-						arkrefDockedOutput.put(tag, mentionsInGroup);
-					}
-					
-					DockedMention dockedMention = new DockedMention(mentionString, startOffset, endOffset, tag);
-					mentionsInGroup.add(dockedMention);
 				}
 				
 				// Remove groups with only a single mention

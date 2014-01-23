@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE page [
+<!ENTITY jars "D:\workspace\jars\">
+]>
+
+<configuration>
+
+<module name="General">
+	<param name="jars-dir">&jars;</param>
+	<param name="max_term_length">60</param>
+	<param name="min_term_length">2</param>
+	<param name="useDeAccent">true</param>		<!-- the parameter is used for the UtilClass to change all special English char to regular letters -->
+	<param name="max_NP_words_count">7</param> <!--The maximum words that can be part of a NP phrase (used for the syntacticIDM (in the syntacticUtils class)) ) -->
+	
+</module>
+
+<module name="jwpl">
+	<param name="host">te-srv2</param>
+	<param name="database">wikipedia_may_12</param> <!-- Schema name -->
+	<param name="user">root</param>
+	<param name="password">Miescuel2</param>
+	<param name="language">english</param>
+</module>
+
+<module name="Extractors">
+	<param name="useCategory">true</param>
+	<param name="useRedirect">true</param>
+	<param name="useLink">true</param> <!-- not usable until new stable version of jwpl will show -->
+	<param name="useParenthesis">true</param>
+	<param name="useLexicalIDM">false</param> <!-- Important note – do not fill the database using both the lexicalIDM and syntacticIDM extractors. Using them both can result in wrong classifiers ranks. -->
+	<param name="useSyntacticIDM">true</param>
+
+</module>
+
+<module name="Database">
+	<param name="driver">org.gjt.mm.mysql.Driver</param>
+	<param name="url">jdbc:mysql://localhost:3306/wikipedialexicalrule</param>
+	<param name="username">root</param>
+	<param name="password">DEFAULT_ROOT_PW</param>
+	<param name="insertion batch size">1000</param>
+</module>
+
+<module name="processing_tools">
+	<param name="opennlp-pos-tagger-model-file-path">&jars;opennlp-tools-1.3.0\models\english\parser\tag.bin.gz</param>
+	<param name="opennlp-pos-tag-dictionary-file-path">&jars;opennlp-tools-1.3.0\models\english\parser\tagdict</param>
+	<param name="ner-classifier-path">&jars;stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</param>
+	<param name="lemmatizer_rule_file">&jars;GATE-3.1/plugins/Tools/resources/morph/default.rul</param>
+	<param name="stopwordsFilePath">D:\workspace\LexicalInferencesMiner\stopwords.txt</param>
+	<param name="parser-port">8081</param>
+	<param name="parser-host">te-srv1</param>	
+	<param name="encoding">ISO-8859-1</param>
+</module>
+
+</configuration>

@@ -14,7 +14,7 @@ import eu.excitementproject.eop.distsim.scoring.FeatureScore;
  * <P>
  * Thread-safe
  */
-public class Lin implements ElementSimilarityScoring {
+public class Lin extends AbstractElementSimilarityScoring {
 
 	public Lin(ConfigurationParams params) {
 		this();

@@ -3,6 +3,7 @@ import java.util.Set;
 
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 
 
 /**
@@ -22,6 +23,24 @@ import eu.excitementproject.eop.transformations.operations.specifications.Specif
 public interface Finder<T>
 {
 	public void find() throws OperationException;
+	
+	/**
+	 * An optional method. Usually - has empty implementation. like:
+	 * <code>
+	 * public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException {}
+	 * </code>
+	 * It is not obligatory to implement this method. It might improve runtime, but cannot affect the results.
+	 * An implementation would let the finder know what are the parse-tree nodes affected by a previous iteration of the
+	 * search algorithm (of BIUTEE), and thus all operations which do not involve these nodes should not be returned.
+	 * <BR>
+	 * Anyhow, BIUTEE does remove all such operations, so this does not affect the results. However, runtime might be
+	 * improved if instead of finding the operations (specifications) and then removing them, the operations are not
+	 * found in the first place.
+	 * 
+	 * @param affectedNodes
+	 * @throws OperationException
+	 */
+	public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException;
 	
 	public Set<T> getSpecs() throws OperationException;
 }

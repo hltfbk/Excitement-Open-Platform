@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.WithStatisticsTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.macro.search.local_creative.LocalCreativeTextTreesProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
@@ -105,13 +106,13 @@ public class MultiThreadTopicsProcessor implements AllTopicsProcessor
 	
 	
 	
-	private void initScripts() throws OperationException, InterruptedException
+	private void initScripts() throws OperationException, InterruptedException, GapException
 	{
 		logger.info("Initializing scripts...");
 		queueScripts = new ArrayBlockingQueue<ScriptAndHypothesisInformation>(numberOfThreads);
 		for (int index=0;index<numberOfThreads;++index)
 		{
-			OperationsScript<Info, BasicNode> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			OperationsScript<Info, BasicNode> script = new ScriptFactory(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 			script.init();
 			queueScripts.put(new ScriptAndHypothesisInformation(script, null));
 		}

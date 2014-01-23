@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
+
 import java.io.File;
 
 import org.junit.Assume;
@@ -16,7 +17,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 
 
 

@@ -4,6 +4,7 @@ import java.util.Map;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapDescription;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.biutee.script.ScriptException;
@@ -62,8 +63,7 @@ public abstract class AbstractTextTreesProcessor extends InitializationTextTrees
 	{
 		this.progressFire = percentageFire;
 	}
-
-
+	
 
 	public void process() throws TeEngineMlException, OperationException, ClassifierException, ScriptException, RuleBaseException, TreeAndParentMapException, AnnotatorException
 	{
@@ -78,7 +78,44 @@ public abstract class AbstractTextTreesProcessor extends InitializationTextTrees
 		}
 	}
 	
+	@Override
+	public GapDescription getGapDescription() throws TeEngineMlException
+	{
+		if (teSystemEnvironment.getGapToolBox().isHybridMode())
+		{
+			throw new TeEngineMlException("getGapDescription() is not implemented for this processor.");
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
+	
+	@Override
+	protected void init() throws TeEngineMlException, OperationException, TreeAndParentMapException, AnnotatorException
+	{
+		super.init();
+		if (teSystemEnvironment.getGapToolBox().isHybridMode())
+		{
+			if (!capableForHybridGapMode())
+			{
+				throw new TeEngineMlException("This processor cannot work in hybrid gap mode.\n"
+						+ "Either change the configuration file to use pure transformation mode, or use another processor.");
+			}
+		}
+	}
 
+	
+
+	/**
+	 * This method must be overridden by a processor that is capable of working in hybrid gap mode.
+	 * @return
+	 */
+	protected boolean capableForHybridGapMode()
+	{
+		return false;
+	}
 	
 	/**
 	 * The actual work is done here.

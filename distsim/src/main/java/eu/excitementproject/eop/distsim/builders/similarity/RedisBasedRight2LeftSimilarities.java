@@ -12,6 +12,7 @@ import org.apache.log4j.PropertyConfigurator;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.storage.BasicMapException;
 import eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.Configuration;
@@ -34,7 +35,8 @@ public class RedisBasedRight2LeftSimilarities {
 		
 		try {			
 			
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);			
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);		
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 			
 			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
 			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));
@@ -45,7 +47,7 @@ public class RedisBasedRight2LeftSimilarities {
 			eu.excitementproject.eop.distsim.storage.File rightSimilaritiesFile = new eu.excitementproject.eop.distsim.storage.File(new File(confParams.get(Configuration.INFILE)),true);
 			rightSimilaritiesFile.open();
 
-			RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>> leftSimilarities = new RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>>(confParams.getString(Configuration.REDIS_HOST),confParams.getInt(Configuration.REDIS_PORT));
+			RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>> leftSimilarities = new RedisBasedIDKeyPersistentBasicMap<HashMap<Integer,Double>>(confParams.getString(Configuration.REDIS_FILE));
 			leftSimilarities.clear();
 			
 			// set the right similarities at the left similarities map

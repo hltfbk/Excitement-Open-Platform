@@ -661,6 +661,11 @@ public final class StringUtil
 		return joinIterableToString(list, "");
 	}
 	
+	public static String joinIterableToString(Iterable<String> list, String separator)
+	{
+		return joinIterableToString(list,separator,false);
+	}
+	
 	/**
 	 * Combine the list of strings into one string, using the given separator
 	 *  
@@ -668,11 +673,20 @@ public final class StringUtil
 	 * @param property
 	 * @return
 	 */
-	public static String joinIterableToString(Iterable<String> list, String separator) 
+	public static String joinIterableToString(Iterable<String> list, String separator, boolean omitSeparatorInLast) 
 	{
-		StringBuffer buf = new StringBuffer();
-		for (String line : list)
-			buf.append(line).append(separator);
+		StringBuilder buf = new StringBuilder();
+		boolean firstIteration = true;
+		for (String component : list)
+		{
+			if (firstIteration){firstIteration=false;}
+			else {buf.append(separator);}
+			buf.append(component);
+		}
+		if (!omitSeparatorInLast)
+		{
+			buf.append(separator);
+		}
 
 		return buf.toString();
 	}

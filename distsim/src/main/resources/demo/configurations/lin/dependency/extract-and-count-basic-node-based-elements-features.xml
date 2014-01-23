@@ -1,0 +1,86 @@
+
+
+<!--A configuration file for the programs eu.excitementproject.eop.distsim.builders.mapred.ExtractAndCountBasicNodeBasedElementsFeatures which extracts and counts elements and features from a given parsed corpus, by applying the map-reduce scheme--> 
+<configuration>
+
+<section name="logging"> <!--Defines the log4j properties -->
+	<!--the path of the log4j properties file-->
+	<property name="properties-file">configurations/log4j.properties</property> 
+</section>
+
+
+<section name="mapred-cooccurrence-counting"> <!-- Defines the extraction process of elements and features from a given corpus, based on ma-reduce scheme-->
+
+	<!-- the path to the input corpus-->
+	<property name="in-dir">corpora/eng</property>
+	
+	<!-- a (temporary) output directory for the map-redus process-->
+	<property name="out-dir">mapred/out/lin/dependency</property>
+	
+	<!--the name of the extractor class, which implements the eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrencesExtractor interface. For more details see the extraction-class feature of the co-occurrence extraction module: https://github.com/hltfbk/Excitement-Open-Platform/wiki/_preview#module-cooccurence-extractor-->
+	<property name="cooccurrence-extraction-class">eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedWordCooccurrenceExtraction</property>
+	
+	<!-- the name of the eu.excitementproject.eop.distsim.builders.reader.StreamBasedSentenceReader class, which extracts sentences from a given InputStream, with their frequencies. For more details see the sentence-reader-class feature of the co-occurrence extraction module: https://github.com/hltfbk/Excitement-Open-Platform/wiki/_preview#module-cooccurence-extractor.-->
+	<property name="sentence-reader-class">eu.excitementproject.eop.distsim.builders.reader.XMLNodeSentenceReader</property>
+	
+	<!-- the encoding of the corpus. In case this property is not defined, the default encoding is UTF-8-->
+	<property name="encoding">utf-8</property>
+	
+	<!--the minimal number counts for the map-reduce extracted elements-->
+	<property name="minCount">2</property>
+	
+	<!-- the name of the class that implements the eu.excitementproject.eop.distsim.builders.elementfeature.ElementFeatureExtraction interface. For more details see the extraction-class feature of the element-feature extraction module:https://github.com/hltfbk/Excitement-Open-Platform/wiki/_preview#module-element-feature-extractor.-->
+	<property name="element-feature-extraction-class">eu.excitementproject.eop.distsim.builders.elementfeature.LemmaPosBasedElementFeatureExtraction</property>
+	<property name="include-dependency-relation">true</property>
+	<property name="relevant-pos-list">V,N,ADJ,ADV</property>
+	<property name="stop-words-file">stop-words.txt</property>   
+</section>
+
+
+<section name="separate-filter-and-index-elements-features-1"> <!--defines the first post-processing step of organizing the extracted lexical elements and features (given by the the map-reduce output) into the traditional distsim 'elements' and 'features' files-->
+	
+	<!--  the path to a directory which contains the output of the map-reduce process (usually, the directory that is defined in the out-dir feature of the above mapred-cooccurrence-counting module)-->
+	<property name="in-dir">mapred/out/lin/dependency</property> 
+	
+	<!-- the minimal number of counts for the final extracted elements -->	
+	<property name="min-count">10</property>
+	
+	<!-- encoding: the encoding of the texts in the input directory (defined by the in-dir feature), default utf-8-->
+	<property name="encoding">utf-8</property>
+	
+	<!-- The type of the extracted elements (an implementation of the eu.excitementproject.eop.distsim.items.Element interface)-->
+	<property name="element-class">eu.excitementproject.eop.distsim.items.LemmaPosBasedElement</property>
+	
+	<!-- The type of the extracted features (an implementation of the eu.excitementproject.eop.distsim.items.Feature interface)-->
+	<property name="feature-class">eu.excitementproject.eop.distsim.items.RelationBasedLemmaPosFeature</property>
+	
+	<!-- A path for the output elements file-->
+	<property name="elements-file">models/lin/dependency/elements</property>
+	
+	<!-- A path for the output features file -->
+	<property name="features-file">models/lin/dependency/features</property>
+</section>
+
+<section name="separate-filter-and-index-elements-features-2"> <!--defines the second post-processing step of organizing the extracted lexical elements and features (given by the the map-reduce output) into the traditional distsim 'element-feature-counts' and 'feature-elements' files-->
+
+	<!--  the path to a directory which contains the output of the map-reduce process (usually, the directory that is defined in the out-dir feature of the above mapred-cooccurrence-counting module)-->
+	<property name="in-dir">mapred/out/lin/dependency</property>
+	
+	<!-- encoding: the encoding of the texts in the input directory (defined by the in-dir feature), default utf-8-->
+	<property name="encoding">utf-8</property>
+	
+	<!-- A path for the output elements file-->
+	<property name="elements-file">models/lin/dependency/elements</property>
+	
+	<!-- A path for the output features file -->
+	<property name="features-file">models/lin/dependency/features</property>
+	
+	<!-- A path to the output element-feature-counts file-->
+	<property name="element-feature-counts-file">models/lin/dependency/element-feature-counts</property>
+	
+	<!--  A path to the output feature-elements file -->
+	<property name="feature-elements-file">models/lin/dependency/feature-elements</property>
+	
+</section>
+
+</configuration>

@@ -121,6 +121,14 @@ public class MathUtils {
 		return result;
 	}
 
+	public static Double sumDouble(Collection<Double> collection) {
+		Double result = 0.0;
+		for (Double n : collection) {
+			result += n;
+		}
+		return result;
+	}
+
 	/**
 	 * 	
 	 * @param numbers - doubles

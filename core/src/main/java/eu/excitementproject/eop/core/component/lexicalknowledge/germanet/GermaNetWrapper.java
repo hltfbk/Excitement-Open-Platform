@@ -403,6 +403,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		Iterator<LexicalRule<? extends GermaNetInfo>> i = result.iterator();
 		while (i.hasNext()) {
 			LexicalRule<? extends GermaNetInfo> r = i.next();
+			// TODO: temporary solutions: "confidence == 0 and no fineGrainedRelation " should
+			// be removed!
 			if ( (r.getConfidence() == 0 && !isFineGrainedRelation) || (r.getLLemma().equals(r.getRLemma())) || (r.getRLemma().equals("GNROOT")) ) {
 				i.remove(); 
 			}
@@ -423,6 +425,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		//concatenate Entailment and NonEntailment rules and return
 		List<LexicalRule<? extends GermaNetInfo>> result;
 		result = this.getRulesForRight(lemma, pos, TERuleRelation.Entailment);
+		// The Contract of getRulesForLeft, only returns entailing lexicons. --- Gil		
 		// TODO: TEMPORARY SOLUTION: re-inserted concatenation: NonEntailments are for now accepted, as they 
 		// are now discarded via the confidence scores rather than not considering them
 		result.addAll(this.getRulesForRight(lemma, pos, TERuleRelation.NonEntailment));
@@ -446,8 +449,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	private List<LexicalRule<? extends GermaNetInfo>> getRulesForRight(String lemma, PartOfSpeech pos, TERuleRelation relation) throws LexicalResourceException
         {
 		//only return synonyms and hyponyms
-		//using a set makes the result unique
 		
+			//using a set makes the result unique		
 			Set<LexicalRule<? extends GermaNetInfo>> result = new HashSet<LexicalRule<? extends GermaNetInfo>>();
 			
 			// check POS is valid or not for GermaNet. Note that GermaNet only has noun, verb, and adjective.
@@ -544,6 +547,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 			Iterator<LexicalRule<? extends GermaNetInfo>> i = result.iterator();
 			while (i.hasNext()) {
 				LexicalRule<? extends GermaNetInfo> r = i.next(); 
+				// TODO: temporary solutions: "confidence == 0 and no fineGrainedRelation " should
+				// be removed!				
 				if ( (r.getConfidence() == 0  && !isFineGrainedRelation) || (r.getLLemma().equals(r.getRLemma())) || (r.getRLemma().equals("GNROOT")) ){  
 					i.remove(); 
 				}
@@ -564,6 +569,9 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
                 // concatenate Entailment and NonEntailment rules and return
                 List<LexicalRule<? extends GermaNetInfo>> result;
                 result = this.getRules(leftLemma, leftPos, rightLemma, rightPos, TERuleRelation.Entailment);
+                // The Contract of getRulesForLeft, only returns entailing lexicons. --- Gil
+        		// TODO: TEMPORARY SOLUTION: NonEntailments are accepted, as they are now discarded via the confidence
+        		// scores rather than not considering them
                 result.addAll(this.getRules(leftLemma, leftPos, rightLemma, rightPos, TERuleRelation.NonEntailment));
                 return result;
 	}

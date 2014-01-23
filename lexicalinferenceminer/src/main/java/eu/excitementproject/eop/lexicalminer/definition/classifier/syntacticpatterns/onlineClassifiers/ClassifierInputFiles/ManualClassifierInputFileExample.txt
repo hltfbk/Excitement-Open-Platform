@@ -1,0 +1,32 @@
+Comment, what that Classfier do....
+// Pattern type to use (pos, relation, words, full etc...) starts with ">>>"
+>>> POS
+// Pattern
+NN
+// rank
+0.99
+// Pattern
+NNS
+// rank
+0.99
+NNS>NNS
+0.9
+NN>NN
+0.9
+>>> relation
+// It's just an example.
+prep>pobj
+0.6
+conj>nsubj
+0.55
+>>> POS
+// It's just an example.
+VBN>NN>NN>NN
+0.7555
+>>> full
+adapt:VBN>partmod>roleplay:VBG>dobj>_RIGHT_TERM_:NNS
+0.666
+//you can add the "contains" to mention that it's enough if the pattern will contain this pattern (and not needed to be equal)
+>>> words contains
+roleplay
+0.668

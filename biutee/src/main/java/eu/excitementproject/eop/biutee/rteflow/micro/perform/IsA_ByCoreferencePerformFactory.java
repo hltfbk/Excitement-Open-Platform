@@ -5,6 +5,7 @@ import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenc
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.finders.Finder;
 import eu.excitementproject.eop.transformations.operations.finders.IsA_ByCoreferenceFinder;
@@ -27,10 +28,13 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecification>
 {
 	public IsA_ByCoreferencePerformFactory(
-			TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation)
+			TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation,
+			PARSER parser, boolean collapseMode)
 	{
 		super();
 		this.coreferenceExtendedInformation = coreferenceExtendedInformation;
+		this.parser = parser;
+		this.collapseMode = collapseMode;
 	}
 
 	@Override
@@ -78,7 +82,7 @@ public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecifica
 			IsASpecification specification) throws TeEngineMlException,
 			OperationException
 	{
-		return new IsAConstructionOperation(text, hypothesis, specification);
+		return new IsAConstructionOperation(text, hypothesis, specification, parser, collapseMode);
 	}
 
 	@Override
@@ -91,6 +95,8 @@ public class IsA_ByCoreferencePerformFactory extends PerformFactory<IsASpecifica
 	}
 
 	private TreeCoreferenceInformation<ExtendedNode> coreferenceExtendedInformation;
+	private final PARSER parser;
+	private final boolean collapseMode;
 	
 	private static UpdaterForIsAByCoreference updaterForIsAByCoreference = new UpdaterForIsAByCoreference();
 }
