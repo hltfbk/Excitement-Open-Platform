@@ -18,8 +18,8 @@ public class WordnetRuleInfoWithSenseNumsOnly extends WordnetRuleInfo {
 	private static final long serialVersionUID = -4077010286925937939L;
 
 	/**
-	 * The only information is the sense numbers. -1 means all senses 
-	 * The sysnsets are dummy and empty and the relation was arbitrarily picked and should not be used (it doesn't mean a thing).   
+	 * The only information is the sense numbers. -1 means all senses.
+	 * The synsets are dummy and empty and the relation was arbitrarily picked and should not be used (it doesn't mean a thing).   
 	 * @param leftSynsetNo
 	 * @param rightSynsetNo
 	 * @throws LexicalResourceException

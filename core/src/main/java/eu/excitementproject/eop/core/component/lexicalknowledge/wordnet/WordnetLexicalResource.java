@@ -123,7 +123,6 @@ public class WordnetLexicalResource implements LexicalResource<WordnetRuleInfo>
 	 * @param chainingLength	is the size of transitive relation chaining to be performed on the retrieved rules. E.g. if leftChainingLength = 3, then every
 	 * hypernym/hyponym, merornym and holonym query will return rules with words related up to the 3rd degree (that's 1st, 2nd or 3rd) from the original term. Queries
 	 * on non transitive relations are unaffected by this parameter. Must be positive.   
-	 * @param wordnetDictionaryImplementation The client's choice of underlying {@link Dictionary} implementation. May be null.
 	 * @throws LexicalResourceException
 	 */
 	public WordnetLexicalResource(
