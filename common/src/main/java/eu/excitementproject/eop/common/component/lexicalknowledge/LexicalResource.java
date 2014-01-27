@@ -9,9 +9,8 @@ import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 
 
 /**
- * This is the top level interface for wrappers of lexical resources. Its methods accept tuples of <code>< lemma, part of speech></code> and 
- * retrieve {@link LexicalRule}s
- * that match the criteria (each rule contains a resource-specific {@link RuleInfo} record).<br> 
+ * This is the top level interface for wrappers of lexical resources. Its methods accept tuples of {@code <lemma, POS>} and 
+ * retrieve {@link LexicalRule}s that match the criteria (each rule contains a resource-specific {@link RuleInfo} record).<br> 
  * In case the user gives <code>null</code> POS, implementations must retrieve rules for all possible POSs.<br>
  * In case the user gives a POS that is not supported by the implemented lexical resource, then the implementation must return an empty list (not null). 
  * For instance, Wikipedia supports only nouns, and WordNet supports only nouns, verbs, adjectives and adverbs.     
@@ -23,7 +22,7 @@ import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
  * query. The returned rules should always be the best available. This const should be accepted via Ctor.
  * <p>
  * <b>Note</b> The {@link LexicalResource} is oblivious of the context of the {@code lemma+pos}s it gets. E.g. it would retrieve the same rules for 
- * {@code < Windows, NOUN>} whether the context is OS or interior design. So <b>it is the user's responsibility to disambiguate</b> such terms.  
+ * {@code <Windows, NOUN>} whether the context is OS or interior design. So <b>it is the user's responsibility to disambiguate</b> such terms.  
  * 
  * @author Amnon Lotan
  * @since 06/05/2011
