@@ -20,4 +20,12 @@ public interface TextUnit extends Identifiable, Countable, Externalizable {
 	 * @return the data item of this text unit
 	 */
 	Object getData();
+	
+	/**
+	 * Duplicate the given TextUnit
+	 * 
+	 * @return a duplication of the given TextUnit
+	 */
+	TextUnit copy();
+	
 }

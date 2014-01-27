@@ -11,6 +11,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.Nominalization;
 import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.NomlexException;
 import eu.excitementproject.eop.lap.biu.en.pasta.nomlex.NomlexMapBuilder;
+import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.easyfirst.PastaMode;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentIdentificationException;
 
 /**
@@ -23,9 +24,10 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentId
  */
 public class PredicateArgumentStructureBuilderFactoryFactory<I extends Info, S extends AbstractNode<I, S>>
 {
-	public static final String BUILDER_MODULE_NAME = "builder";
+	public static final String BUILDER_MODULE_NAME = "pasta-builder";
 	public static final String NOMLEX_FILE_PARAMETER_NAME = "nomlex-file";
 	public static final String CLASS_ROLE_TABLE_PARAMETER_NAME = "nomlex-class-role-table";
+	public static final String MODE_PARAMETER_NAME = "mode";
 	
 	public PredicateArgumentStructureBuilderFactoryFactory(ConfigurationFile configurationFile) throws ConfigurationException, NomlexException
 	{
@@ -35,18 +37,31 @@ public class PredicateArgumentStructureBuilderFactoryFactory<I extends Info, S e
 	public PredicateArgumentStructureBuilderFactoryFactory(ConfigurationParams params) throws ConfigurationException, NomlexException
 	{
 		this.nomlexMap = createNomlexMapFromConfigurationParams(params);
+		
+		PastaMode modeInConfiguration = null;
+		if (params.containsKey(MODE_PARAMETER_NAME))
+		{
+			modeInConfiguration = params.getEnum(PastaMode.class, MODE_PARAMETER_NAME);
+		}
+		else
+		{
+			modeInConfiguration = PastaMode.BASIC;
+		}
+		this.mode = modeInConfiguration;
 	}
 	
-	public PredicateArgumentStructureBuilderFactoryFactory(ImmutableMap<String, Nominalization> nomlexMap)
+	public PredicateArgumentStructureBuilderFactoryFactory(ImmutableMap<String, Nominalization> nomlexMap, PastaMode mode)
 	{
 		this.nomlexMap = nomlexMap;
+		this.mode = mode;
 	}
 	
 	public PredicateArgumentStructureBuilderFactory<I,S> createBuilderFactory() throws PredicateArgumentIdentificationException
 	{
 		if (null==this.nomlexMap) throw new PredicateArgumentIdentificationException("null nomlex map.");
+		if (null==this.mode) throw new PredicateArgumentIdentificationException("null mode.");
 		
-		return new PredicateArgumentStructureBuilderFactory<I,S>(this.nomlexMap);
+		return new PredicateArgumentStructureBuilderFactory<I,S>(this.nomlexMap,this.mode);
 	}
 
 	
@@ -59,6 +74,7 @@ public class PredicateArgumentStructureBuilderFactoryFactory<I extends Info, S e
 		nomlexMapBuilder.build();
 		return nomlexMapBuilder.getNomlexMap();
 	}
-
-	private ImmutableMap<String, Nominalization> nomlexMap = null;
+	
+	private final ImmutableMap<String, Nominalization> nomlexMap;
+	private final PastaMode mode;
 }

@@ -1,0 +1,27 @@
+Comment, what that Classfier do....
+// IS A 
+>>> POS
+// Pattern
+NN
+// rank
+0.99
+// Pattern
+NNS
+// rank
+0.99
+>>> Words
+capital>city>of>_RIGHT_TERM_
+0.9
+city>capital>of>RIGHT_TERM
+0.6
+>>> Words
+been>write>by>_RIGHT_TERM_
+0.8
+>>> POS
+// works for "X is a town/river/... in Y"
+NN>IN>>NN
+0.75
+NN>IN>>NNP
+0.75
+NN>IN>>NN>NNP
+0.7

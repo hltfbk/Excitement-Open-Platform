@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.distsim.builders.scoring;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,6 +20,7 @@ import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.VectorTruncate;
@@ -33,9 +35,11 @@ import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureCountStorag
 import eu.excitementproject.eop.distsim.storage.ElementFeatureCountStorage;
 import eu.excitementproject.eop.distsim.storage.ElementFeatureJointCounts;
 import eu.excitementproject.eop.distsim.storage.FeatureCount;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.TroveBasedBasicIntSet;
 import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.SortUtil;
 
@@ -52,18 +56,17 @@ import eu.excitementproject.eop.distsim.util.SortUtil;
 public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 
 	private final static Logger logger = Logger.getLogger(GeneralElementFeatureScorer.class);
+	protected static final int DEFAULT_MIN_FEATURES_SIZE = 10;
 	
-	public GeneralElementFeatureScorer(int iThreadNum, FeatureScoring featureScoring, 
-			ElementScoring elementScoring,
-			CommonFeatureCriterion commonFeatureCriterion,
-			VectorTruncate vectorTruncater,
-			DataStructureFactory dataStructureFactory) {
+	public GeneralElementFeatureScorer(int iThreadNum, ConfigurationParams scorerParams,
+			IDKeyPersistentBasicMap<BasicSet<Integer>> truncatedFesatureElements,
+			DataStructureFactory dataStructureFactory,
+			int minFeaturesSize) throws CreationException {
 		this.iThreadNum = iThreadNum;
-		this.featureScoring = featureScoring;
-		this.elementScoring = elementScoring;
-		this.commonFeatureCriterion = commonFeatureCriterion;
-		this.vectorTruncater = vectorTruncater;
+		this.scorerParams = scorerParams;
+		this.truncatedFesatureElements = truncatedFesatureElements;		
 		this.dataStructureFactory = dataStructureFactory;
+		this.minFeaturesSize = minFeaturesSize;
 		
 	}
 	
@@ -92,7 +95,7 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 			}
 			
 			logger.info("All scorer threads were terminated");
-			
+						
 		} catch (Exception e) {
 			throw new ElementFeatureScorerException(e);
 		}
@@ -100,11 +103,10 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 
 	
 	protected int iThreadNum;
-	protected final FeatureScoring featureScoring;
-	protected final ElementScoring elementScoring;
-	protected final CommonFeatureCriterion commonFeatureCriterion;
-	protected final VectorTruncate vectorTruncater;
+	protected int minFeaturesSize;
+	protected final IDKeyPersistentBasicMap<BasicSet<Integer>> truncatedFesatureElements;
 	protected final DataStructureFactory dataStructureFactory;
+	protected final ConfigurationParams scorerParams;
 	
 	
 	class ElementFeatureScoringTask implements Runnable {
@@ -114,16 +116,26 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 		ElementFeatureScoringTask(int threadID, ImmutableIterator<ElementFeatureJointCounts> iterator,
 				ElementFeatureCountStorage elementFeaturecounts,
 				PersistenceDevice elementFeatureScoreDevice, 
-				PersistenceDevice elementScoreDevice) {
+				PersistenceDevice elementScoreDevice) throws CreationException, ConfigurationException {
 			this.threadID = threadID;
 			this.iterator = iterator;
 			this.elementFeaturecounts = elementFeaturecounts;
 			this.elementFeatureScoreDevice = elementFeatureScoreDevice;
 			this.elementScoreDevice = elementScoreDevice;
+			
+			featureScoring = (FeatureScoring)Factory.create(scorerParams.get(Configuration.FEATURE_SCORING_CLASS), scorerParams);
+			elementScoring = (ElementScoring)Factory.create(scorerParams.get(Configuration.ELEMENT_SCORING_CLASS), scorerParams);
+
+			ConfigurationParams commonFeatureCriterionParams = scorerParams.getSisterModuleConfiguration(Configuration.COMMON_FEATURE_CRITERION);
+			commonFeatureCriterion = (CommonFeatureCriterion)Factory.create(commonFeatureCriterionParams.get(Configuration.CLASS), commonFeatureCriterionParams);
+
+			ConfigurationParams vectorTruncaterParams = scorerParams.getSisterModuleConfiguration(Configuration.VECTOR_TRUNCATE);
+			vectorTruncater = (VectorTruncate)Factory.create(vectorTruncaterParams.get(Configuration.CLASS), vectorTruncaterParams);
+
 		}
 		
+		@Override
 		public void run() {
-			
 			int loop=1;
 			
 			while (true) {
@@ -149,43 +161,63 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 					return;
 				}
 
-				//compute element-feature scores
-				try {
-					Element element = elementFeaturecounts.getElement(elementFeatureJointCount.getElementId());
+				if (elementFeatureJointCount.getFeaturesSize() > minFeaturesSize) {
 
-					ImmutableIterator<FeatureCount> featureCounts = elementFeatureJointCount.getFeatureCounts();
-					// measure the score for each feature, based on its counts
-					Map<Integer,Double> tmpCommonScoredFeatures = new HashMap<Integer,Double>();
-					Map<Integer,Double> tmpScoredFeatures = new HashMap<Integer,Double>();
-					while (featureCounts.hasNext()) {
-						FeatureCount featureJointCount = featureCounts.next();
-						Feature feature = elementFeaturecounts.getFeature(featureJointCount.getFeatureId());
-						
-						double jointCount = featureJointCount.getCount();				
-						double score = featureScoring.score(element, feature, elementFeaturecounts.getTotalElementCount(), jointCount);
-						
-						//debug
-						//System.out.println("Element: " + element.getID() + " " + element.getCount() + ", Feature: " + feature.getID() + " " + feature.getCount() + ", joint count: " + jointCount + ", total element count: " + elementFeaturecounts.getTotalElementCount() + ", Score: " + score);
+					//compute element-feature scores
+					try {
+	
 							
-						// @TOTHIN: does score > 0.0 always hold
-						if (score > 0.0 && (commonFeatureCriterion == null || commonFeatureCriterion.isCommon(elementFeaturecounts,featureJointCount.getFeatureId()))) 
-							tmpCommonScoredFeatures.put(featureJointCount.getFeatureId(), score);
-						if (score > 0.0)
-							tmpScoredFeatures.put(featureJointCount.getFeatureId(), score);
+						
+						Element element = elementFeaturecounts.getElement(elementFeatureJointCount.getElementId());					
+						
+						ImmutableIterator<FeatureCount> featureCounts = elementFeatureJointCount.getFeatureCounts();
+						
+						// measure the score for each feature, based on its counts
+						Map<Integer,Double> tmpCommonScoredFeatures = new HashMap<Integer,Double>();
+						Map<Integer,Double> tmpScoredFeatures = new HashMap<Integer,Double>();
+						while (featureCounts.hasNext()) {
+							FeatureCount featureJointCount = featureCounts.next();
+							Feature feature = elementFeaturecounts.getFeature(featureJointCount.getFeatureId());
+							
+							double jointCount = featureJointCount.getCount();				
+							double score = featureScoring.score(element, feature, elementFeaturecounts.getTotalElementCount(), jointCount);
+							
+							//debug
+							//System.out.println("Element: " + element.getID() + " " + element.getCount() + ", Feature: " + feature.getID() + " " + feature.getCount() + ", joint count: " + jointCount + ", total element count: " + elementFeaturecounts.getTotalElementCount() + ", Score: " + score);
+								
+							// @TOTHIN: does score > 0.0 always hold
+							if (score > 0.0 && (commonFeatureCriterion == null || commonFeatureCriterion.isCommon(elementFeaturecounts,featureJointCount.getFeatureId()))) 
+								tmpCommonScoredFeatures.put(featureJointCount.getFeatureId(), score);
+							if (score > 0.0)
+								tmpScoredFeatures.put(featureJointCount.getFeatureId(), score);
+						}
+						// sort features by their scores
+						@SuppressWarnings("unchecked")
+						LinkedHashMap<Integer,Double> sortedScores = SortUtil.sortMapByValue(tmpCommonScoredFeatures, true);
+						
+						// truncate the vector, if required
+						if (vectorTruncater != null) {
+							sortedScores = vectorTruncater.truncate(sortedScores);
+							// add the element and the feature to the truncated featureElements map
+							for (Integer featureId : sortedScores.keySet()) {
+								synchronized(truncatedFesatureElements) {
+									BasicSet<Integer> elementIds = truncatedFesatureElements.get(featureId);
+									if (elementIds == null) {
+										elementIds = new TroveBasedBasicIntSet();
+										truncatedFesatureElements.put(featureId,elementIds);
+									}
+									elementIds.add(element.getID());
+								}
+							}
+						}
+										
+						// store the scorers for the element and the features
+						elementFeatureScoreDevice.write(elementFeatureJointCount.getElementId(), sortedScores);
+						elementScoreDevice.write(elementFeatureJointCount.getElementId(), elementScoring.score(tmpScoredFeatures.values()));
+						
+					} catch (Exception e) {
+						logger.error(ExceptionUtil.getStackTrace(e));
 					}
-					// sort features by their scores
-					@SuppressWarnings("unchecked")
-					LinkedHashMap<Integer,Double> sortedScores = SortUtil.sortMapByValue(tmpCommonScoredFeatures, true);
-					
-					// truncate the vector, if required
-					if (vectorTruncater != null)
-						sortedScores = vectorTruncater.truncate(sortedScores);
-					
-					// store the scorers for the element and the features
-					elementFeatureScoreDevice.write(elementFeatureJointCount.getElementId(), sortedScores);
-					elementScoreDevice.write(elementFeatureJointCount.getElementId(), elementScoring.score(tmpScoredFeatures.values()));
-				} catch (Exception e) {
-					logger.error(ExceptionUtil.getStackTrace(e));
 				}
 			}
 		}
@@ -195,6 +227,12 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 		final ElementFeatureCountStorage elementFeaturecounts;
 		final PersistenceDevice elementFeatureScoreDevice; 
 		final PersistenceDevice elementScoreDevice;
+		
+		final FeatureScoring featureScoring;
+		final ElementScoring elementScoring;
+		final CommonFeatureCriterion commonFeatureCriterion;
+		final VectorTruncate vectorTruncater;
+
 	}
 	
 public static void main(String[] args) {
@@ -276,7 +314,8 @@ public static void main(String[] args) {
 			System.exit(0);
 		}
 
-		ConfigurationFile confFile = new ConfigurationFile(args[0]);
+		//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 		
 		ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
 		PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));
@@ -303,9 +342,9 @@ public static void main(String[] args) {
 		elements.loadState(elementsDevice); 
 		CountableIdentifiableStorage<Feature> features = dataStructureFactory.createFeaturesDataStucture();
 		features.loadState(featuresDevice);
-		PersistentBasicMap<BasicMap<Integer,Double>> elementFeatureCounts =  dataStructureFactory.createElementFeatureCountsDataStructure();
+		IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elementFeatureCounts =  dataStructureFactory.createElementFeatureCountsDataStructure();
 		elementFeatureCounts.loadState(elementFeatureCountsDevice);
-		PersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
+		IDKeyPersistentBasicMap<BasicSet<Integer>> featureElements = dataStructureFactory.createFeatureElementsDataStructure();
 		featureElements.loadState(featureElementsDevice);
 		ElementFeatureCountStorage elementFeatureCountStorage =  			
 			new DefaultElementFeatureCountStorage (elements,features,elementFeatureCounts,featureElements);
@@ -314,32 +353,18 @@ public static void main(String[] args) {
 		elementFeatureCountsDevice.close();
 		featureElementsDevice.close();
 		logger.info("Finshed loading element-feature count storage");
+						
+		ConfigurationParams truncatedFeatureElementParams = confFile.getModuleConfiguration(Configuration.TRUNCATED_FEATURE_ELEMENTS_STORAGE_DEVICE);
+		IDKeyPersistentBasicMap<BasicSet<Integer>> truncatedFesatureElements = dataStructureFactory.createFeatureElementsDataStructure();
 		
-		//FeatureScoring featureScoring = new PMI();
-		FeatureScoring featureScoring = (FeatureScoring)Factory.create(scorerParams.get(Configuration.FEATURE_SCORING_CLASS), scorerParams);
-		ElementScoring elementScoring = (ElementScoring)Factory.create(scorerParams.get(Configuration.ELEMENT_SCORING_CLASS), scorerParams);
-
-		CommonFeatureCriterion commonFeatureCriterion = null;
-		ConfigurationParams commonFeatureCriterionParams = null;
+		int minFeaturesSize = DEFAULT_MIN_FEATURES_SIZE;
 		try {
-			commonFeatureCriterionParams = confFile.getModuleConfiguration(Configuration.COMMON_FEATURE_CRITERION);
+			minFeaturesSize = scorerParams.getInt(Configuration.MIN_FEATURES_SIZE);
 		} catch (ConfigurationException e) {}
-		if (commonFeatureCriterionParams != null)
-			commonFeatureCriterion = (CommonFeatureCriterion)Factory.create(commonFeatureCriterionParams.get(Configuration.CLASS), commonFeatureCriterionParams);
-
-		VectorTruncate vectorTruncater = null;
-		ConfigurationParams vectorTruncaterParams = null;
-		try {
-			vectorTruncaterParams = confFile.getModuleConfiguration(Configuration.VECTOR_TRUNCATE);
-		} catch (ConfigurationException e) {
-			logger.info("no vector truncter was defined: " + e);
-		}
-		if (vectorTruncaterParams != null) {
-			vectorTruncater = (VectorTruncate)Factory.create(vectorTruncaterParams.get(Configuration.CLASS), vectorTruncaterParams);
-			logger.info("vector truncter: "  + vectorTruncater.toString());
-		}
 		
-		ElementFeatureScorer scorer = new GeneralElementFeatureScorer(iThreadNum, featureScoring, elementScoring, commonFeatureCriterion, vectorTruncater, new ConfigurationBasedDataStructureFactory(confFile));
+		logger.info("minFeaturesSize: " + minFeaturesSize);
+		
+		ElementFeatureScorer scorer = new GeneralElementFeatureScorer(iThreadNum, scorerParams , truncatedFesatureElements,new ConfigurationBasedDataStructureFactory(confFile),minFeaturesSize);
 		 
 		ConfigurationParams elemntFeaturesScoreParams = confFile.getModuleConfiguration(Configuration.ELEMENT_FEATURE_SCORES_STORAGE_DEVICE);
 		PersistenceDevice elemntFeaturesScoresDevice = (PersistenceDevice)Factory.create(elemntFeaturesScoreParams.get(Configuration.CLASS), elemntFeaturesScoreParams);
@@ -350,6 +375,14 @@ public static void main(String[] args) {
 		scorer.scoreElementsFeatures(elementFeatureCountStorage,elemntFeaturesScoresDevice,elementScoresDevice);
 		elemntFeaturesScoresDevice.close();
 		elementScoresDevice.close();
+		
+		//write truncated feature-elements
+		PersistenceDevice truncatedFeatureElementsDevice = (PersistenceDevice)Factory.create(truncatedFeatureElementParams.get(Configuration.CLASS), truncatedFeatureElementParams);
+		if (truncatedFeatureElementsDevice != null) {
+			truncatedFeatureElementsDevice.open();
+			truncatedFesatureElements.saveState(truncatedFeatureElementsDevice);
+			truncatedFeatureElementsDevice.close();
+		}
 		
 	} catch (Exception e) {
 		e.printStackTrace();

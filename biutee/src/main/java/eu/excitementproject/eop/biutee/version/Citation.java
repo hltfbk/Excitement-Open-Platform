@@ -11,10 +11,12 @@ package eu.excitementproject.eop.biutee.version;
 public class Citation
 {
 	public static final String INSTRUCTION =
-		"A paper that describes either theoretical or empirical results, " +
-		"based completely or partially on the BIUTEE system or some of its components, " +
-		"either on its theoretical ideas, its code or its binary-implementation, " +
-		"must contain a citation of the following paper:\n";
+			"We kindly ask that every research work that uses BIUTEE, or any of " +
+			"its components, will include the following citation:\n";
+//		"A paper that describes either theoretical or empirical results, " +
+//		"based completely or partially on the BIUTEE system or some of its components, " +
+//		"either on its theoretical ideas, its code or its binary-implementation, " +
+//		"must contain a citation of the following paper:\n";
 	
 	public static final String CITATION =
 		"Asher Stern and Ido Dagan: " +

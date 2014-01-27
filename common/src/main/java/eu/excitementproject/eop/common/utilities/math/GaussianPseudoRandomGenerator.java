@@ -14,19 +14,9 @@ import java.util.Random;
  */
 public class GaussianPseudoRandomGenerator
 {
-	public static void main(String[] args)
-	{
-		GaussianPseudoRandomGenerator gg = new GaussianPseudoRandomGenerator();
-		for (int i=0;i<10;i++)
-		{
-			System.out.println(String.format("%-4.5f", gg.generate(5.0,0.01)));
-		}
-		
-	}
-	
 	public GaussianPseudoRandomGenerator()
 	{
-		
+		random = new Random();
 	}
 
 	public GaussianPseudoRandomGenerator(long randomSeed)
@@ -64,7 +54,7 @@ public class GaussianPseudoRandomGenerator
 		return (mean + y1*standardDeviation);
 	}
 	
-	private Random random = new Random();
+	private Random random = null;
 	private double y2 = 0;
 	private boolean useLast=false;
 }

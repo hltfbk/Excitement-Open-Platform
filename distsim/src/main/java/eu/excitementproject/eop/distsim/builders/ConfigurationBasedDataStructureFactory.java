@@ -2,6 +2,7 @@ package eu.excitementproject.eop.distsim.builders;
 
 import java.util.LinkedHashMap;
 
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -12,7 +13,7 @@ import eu.excitementproject.eop.distsim.items.TextUnit;
 import eu.excitementproject.eop.distsim.storage.BasicMap;
 import eu.excitementproject.eop.distsim.storage.BasicSet;
 import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;
@@ -26,6 +27,10 @@ import eu.excitementproject.eop.distsim.util.Factory;
  */
 public class ConfigurationBasedDataStructureFactory implements DataStructureFactory {
 
+	
+	public ConfigurationBasedDataStructureFactory(CommonConfig conf) throws ConfigurationException {
+		this(new ConfigurationFile(conf));
+	}
 	
 	public ConfigurationBasedDataStructureFactory(ConfigurationFile confFile) throws ConfigurationException {
 		textUnitParams = confFile.getModuleConfiguration(Configuration.TEXT_UNITS_DATA_STRUCTURE);
@@ -95,9 +100,9 @@ public class ConfigurationBasedDataStructureFactory implements DataStructureFact
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public PersistentBasicMap<BasicMap<Integer, Double>> createElementFeatureCountsDataStructure()  throws CreationException {
+	public IDKeyPersistentBasicMap<BasicMap<Integer, Double>> createElementFeatureCountsDataStructure()  throws CreationException {
 		try {
-			return (PersistentBasicMap<BasicMap<Integer, Double>>) Factory.create(elementFeatureCountsParams.get(Configuration.CLASS),elementFeatureCountsParams);
+			return (IDKeyPersistentBasicMap<BasicMap<Integer, Double>>) Factory.create(elementFeatureCountsParams.get(Configuration.CLASS),elementFeatureCountsParams);
 		} catch (Exception e) {
 			throw new CreationException(e);
 		}
@@ -108,9 +113,9 @@ public class ConfigurationBasedDataStructureFactory implements DataStructureFact
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public PersistentBasicMap<BasicSet<Integer>> createFeatureElementsDataStructure()  throws CreationException {
+	public IDKeyPersistentBasicMap<BasicSet<Integer>> createFeatureElementsDataStructure()  throws CreationException {
 		try {
-			return (PersistentBasicMap<BasicSet<Integer>>) Factory.create(featureElementsParams.get(Configuration.CLASS),featureElementsParams);
+			return (IDKeyPersistentBasicMap<BasicSet<Integer>>) Factory.create(featureElementsParams.get(Configuration.CLASS),featureElementsParams);
 		} catch (Exception e) {
 			throw new CreationException(e);
 		}
@@ -121,9 +126,9 @@ public class ConfigurationBasedDataStructureFactory implements DataStructureFact
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public PersistentBasicMap<LinkedHashMap<Integer,Double>> createElementFeatureScoresDataStructure()  throws CreationException {
+	public IDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> createElementFeatureScoresDataStructure()  throws CreationException {
 		try {
-			return (PersistentBasicMap<LinkedHashMap<Integer,Double>>) Factory.create(elementFeatureScoresParams.get(Configuration.CLASS),elementFeatureScoresParams);
+			return (IDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>) Factory.create(elementFeatureScoresParams.get(Configuration.CLASS),elementFeatureScoresParams);
 		} catch (Exception e) {
 			throw new CreationException(e);
 		}
@@ -134,9 +139,9 @@ public class ConfigurationBasedDataStructureFactory implements DataStructureFact
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public PersistentBasicMap<Double> createElementScoresDataStructure()  throws CreationException {
+	public IDKeyPersistentBasicMap<Double> createElementScoresDataStructure()  throws CreationException {
 		try {
-			return (PersistentBasicMap<Double>) Factory.create(elementElementScoresParams.get(Configuration.CLASS),elementElementScoresParams);
+			return (IDKeyPersistentBasicMap<Double>) Factory.create(elementElementScoresParams.get(Configuration.CLASS),elementElementScoresParams);
 		} catch (Exception e) {
 			throw new CreationException(e);
 		}

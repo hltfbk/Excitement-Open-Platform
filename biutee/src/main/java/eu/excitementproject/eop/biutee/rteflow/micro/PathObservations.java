@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.biutee.rteflow.micro;
-import static eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.getParserMode;
+
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -8,13 +8,15 @@ import eu.excitementproject.eop.biutee.rteflow.macro.FeatureUpdate;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.specifications.MoveNodeSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.InfoObservations;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations.PARSER;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.PathInTree;
+
+
 
 /**
  * This class contains several static methods that give information about a path
@@ -117,7 +119,7 @@ public class PathObservations
 	 * @return
 	 * @throws TeEngineMlException 
 	 */
-	public static boolean pathStrongChangeRelationToRootVerb(PathInTree path) throws TeEngineMlException
+	public static boolean pathStrongChangeRelationToRootVerb(PathInTree path, PARSER parser) throws TeEngineMlException
 	{
 		boolean ret = false;
 		if (
@@ -152,7 +154,7 @@ public class PathObservations
 					rootChildDown = path.getTo();
 				}
 				
-				ret = relationStrongChange(InfoGetFields.getRelation(rootChildUp.getInfo()),InfoGetFields.getRelation(rootChildDown.getInfo()));
+				ret = relationStrongChange(InfoGetFields.getRelation(rootChildUp.getInfo()),InfoGetFields.getRelation(rootChildDown.getInfo()),parser);
 			}
 		}
 		return ret;
@@ -169,55 +171,55 @@ public class PathObservations
 	
 	
 	
-	public static boolean relationIsSubject(String relation) throws TeEngineMlException
+	public static boolean relationIsSubject(String relation,PARSER parser) throws TeEngineMlException
 	{
 		
-		if (getParserMode()==PARSER.EASYFIRST)
+		if (parser.equals(PARSER.EASYFIRST))
 			return relationIsSubjectEasyFirst(relation);
-		else if (getParserMode()==PARSER.MINIPAR)
+		else if (parser.equals(PARSER.MINIPAR))
 			return relationIsSubjectMinipar(relation);
 		else
 			throw new TeEngineMlException("BUG");
 		
 	}
 	
-	public static boolean relationIsObject(String relation) throws TeEngineMlException
+	public static boolean relationIsObject(String relation,PARSER parser) throws TeEngineMlException
 	{
-		if (getParserMode()==PARSER.EASYFIRST)
+		if (parser.equals(PARSER.EASYFIRST))
 			return relationIsObjectEasyFirst(relation);
-		else if (getParserMode()==PARSER.MINIPAR)
+		else if (parser.equals(PARSER.MINIPAR))
 			return relationIsObjectMinipar(relation);
 		else
 			throw new TeEngineMlException("BUG");
 	}
 
 	
-	public static boolean moveChangeRelationStrong(MoveNodeSpecification spec, PathInTree path, TreeAndParentMap<ExtendedInfo,ExtendedNode> tree) throws TeEngineMlException
+	public static boolean moveChangeRelationStrong(MoveNodeSpecification spec, PathInTree path, TreeAndParentMap<ExtendedInfo,ExtendedNode> tree, PARSER parser) throws TeEngineMlException
 	{
 		boolean ret = false;
 		if (pathOnlyChangeRelation(path, tree))
 		{
 			String originalRelation = InfoGetFields.getRelation(spec.getTextNodeToMove().getInfo());
 			String destinationRelation = InfoGetFields.getRelation(spec.getNewEdgeInfo());
-			ret = relationStrongChange(originalRelation,destinationRelation);
+			ret = relationStrongChange(originalRelation,destinationRelation,parser);
 		}
 		return ret;
 	}
 	
-	public static boolean relationStrongChange(String originalRelation, String destinationRelation) throws TeEngineMlException
+	public static boolean relationStrongChange(String originalRelation, String destinationRelation, PARSER parser) throws TeEngineMlException
 	{
 		boolean ret = false;
-		if ((getParserMode()==PARSER.MINIPAR)&&(originalRelation.equalsIgnoreCase("s")))
+		if ((parser.equals(PARSER.MINIPAR))&&(originalRelation.equalsIgnoreCase("s")))
 		{
-			if ( (relationIsSubject(destinationRelation)) || (relationIsObject(destinationRelation)) )
+			if ( (relationIsSubject(destinationRelation,parser)) || (relationIsObject(destinationRelation,parser)) )
 				ret = true;
 		}
 		else
 		{
 			if (
-				( (relationIsSubject(originalRelation)) && (relationIsObject(destinationRelation)) )
+				( (relationIsSubject(originalRelation,parser)) && (relationIsObject(destinationRelation,parser)) )
 				||
-				( (relationIsObject(originalRelation)) && (relationIsSubject(destinationRelation)) )
+				( (relationIsObject(originalRelation,parser)) && (relationIsSubject(destinationRelation,parser)) )
 				)
 				ret = true;
 		}
@@ -225,9 +227,9 @@ public class PathObservations
 		return ret;
 	}
 	
-	public static boolean introduceOnlySurfaceRelation(MoveNodeSpecification spec)
+	public static boolean introduceOnlySurfaceRelation(MoveNodeSpecification spec, PARSER parser)
 	{
-		if (getParserMode()==PARSER.MINIPAR)
+		if (parser.equals(PARSER.MINIPAR))
 		{
 			if (InfoGetFields.getRelation(spec.getNewEdgeInfo()).equalsIgnoreCase("s"))
 				return true;

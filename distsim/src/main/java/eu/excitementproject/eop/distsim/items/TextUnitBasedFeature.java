@@ -3,6 +3,9 @@
  */
 package eu.excitementproject.eop.distsim.items;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Instantiation of {@link eu.excitementproject.eop.distsim.items.DefaultElement} with a state of type string
  * 
@@ -12,7 +15,7 @@ package eu.excitementproject.eop.distsim.items;
  * @since 28/06/2012
  *
  */
-public class TextUnitBasedFeature extends DeafaultElement<Integer> {
+public class TextUnitBasedFeature extends DeafaultFeature<Integer> {
 
 
 	private static final long serialVersionUID = 1L;
@@ -42,6 +45,26 @@ public class TextUnitBasedFeature extends DeafaultElement<Integer> {
 	public String toKey() {
 		return Integer.toString(data);
 	}
+	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#toKeys()
+	 */
+	@Override
+	public Set<String> toKeys() throws UndefinedKeyException {
+		Set<String> ret = new HashSet<String>();
+		ret.add(toKey());
+		return ret;
+	}
+
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.items.Externalizable#fromKey(java.lang.String)
+	 */
+	@Override
+	public void fromKey(String key) throws UndefinedKeyException {
+		data = Integer.parseInt(key);
+		
+	}
+
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

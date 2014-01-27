@@ -32,6 +32,20 @@ public class CandidateIdentifier
 	{
 		return sentenceID;
 	}
+	
+	
+
+
+
+	@Override
+	public String toString()
+	{
+		return "Candidate [topic=" + getTopicId()
+				+ ", sentence-id=" + getSentenceID()
+				+ ", hypothesis=" + getHypothesisID() + "]";
+	}
+
+
 
 
 

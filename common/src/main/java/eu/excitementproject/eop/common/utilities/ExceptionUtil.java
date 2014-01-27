@@ -17,6 +17,10 @@ import org.apache.log4j.Logger;
  */
 public class ExceptionUtil
 {
+	public static final String TITLE_PROBLEMS = "Summary of problems:";
+	public static final String HEADER_PROBLEMS = StringUtil.generateStringOfCharacter('*', 20)+TITLE_PROBLEMS+StringUtil.generateStringOfCharacter('*', 20);
+	public static final String FOOTER_PROBLEMS = StringUtil.generateStringOfCharacter('*', HEADER_PROBLEMS.length());
+	
 	/**
 	 * Returns the exception's message plug all nested
 	 * exceptions messages.
@@ -32,7 +36,7 @@ public class ExceptionUtil
 		{
 			if (throwable.getMessage()!=null)
 			{
-				buffer.append(throwable.getClass().getSimpleName() + ": " + throwable.getMessage()+"\n");
+				buffer.append(throwable.getClass().getSimpleName()).append(": ").append(throwable.getMessage()).append("\n");
 			}
 			throwable = throwable.getCause();
 		}
@@ -50,7 +54,9 @@ public class ExceptionUtil
 	{
 		throwable.printStackTrace(printStream);
 		printStream.println();
+		printStream.println(HEADER_PROBLEMS);
 		printStream.println(ExceptionUtil.getMessages(throwable));
+		printStream.println(FOOTER_PROBLEMS);
 	}
 	
 	/**
@@ -64,13 +70,18 @@ public class ExceptionUtil
 	{
 		throwable.printStackTrace(printWriter);
 		printWriter.println();
+		printWriter.println(HEADER_PROBLEMS);
 		printWriter.println(ExceptionUtil.getMessages(throwable));
+		printWriter.println(FOOTER_PROBLEMS);
 	}
 	
 	public static void logException(Throwable throwable, Logger logger)
 	{
 		logger.error("Exception/Error:\n",throwable);
-		logger.error(ExceptionUtil.getMessages(throwable));
+		logger.error("\n"+HEADER_PROBLEMS+"\n"+
+		ExceptionUtil.getMessages(throwable)+"\n"+
+		FOOTER_PROBLEMS
+		);
 	}
 	
 	public static String getStackTrace(Throwable t)

@@ -57,6 +57,7 @@ public class SortUtil {
 	public static LinkedHashMap sortMapByValue(Map map, final boolean descending) {
 		List<Map.Entry> list  = new LinkedList<Map.Entry>(map.entrySet());
 		Collections.sort(list, new Comparator() {
+			@Override
 			public int compare(Object o1, Object o2) {
 				int ret = ((Comparable) ((Map.Entry) (o1)).getValue())
 						.compareTo(((Map.Entry) (o2)).getValue());
@@ -94,6 +95,7 @@ public class SortUtil {
 			list.add(new Pair<Integer, Double>(it1.key(),it1.value()));
 		}
 		Collections.sort(list, new Comparator() {
+		@Override
 		public int compare(Object o1, Object o2) {
 				int ret = ((Comparable) ((Pair) (o1)).getSecond())
 						.compareTo(((Pair) (o2)).getSecond());
@@ -132,6 +134,7 @@ public class SortUtil {
 			list.add(new Pair<Integer, Double>(pair.getFirst(),pair.getSecond()));
 		}
 		Collections.sort(list, new Comparator() {
+			@Override
 			public int compare(Object o1, Object o2) {
 				int ret = ((Comparable) ((Pair) (o1)).getSecond())
 						.compareTo(((Pair) (o2)).getSecond());
@@ -159,9 +162,9 @@ public class SortUtil {
 	 * @param parameters extra parameters for 'sort' OS command line 
 	 * @throws DiskSortIOException
 	 */
-	public static void sortFile(File infile, File outfile, boolean bNumeric) throws DiskSortIOException {
+	public static void sortFile(File infile, File outfile, boolean bNumeric, String additionalArgs) throws DiskSortIOException {
 		logger.info("Start soring " + infile + " file");
-		OsSort.sortStatic(infile,outfile, false, bNumeric);
+		OsSort.sortStatic(infile,outfile, false, bNumeric, additionalArgs);
 		logger.info("Finish soring " + infile + " file");
 	}
 	
@@ -173,10 +176,10 @@ public class SortUtil {
 	 * @throws DiskSortIOException
 	 */
 
-	public static void sortFile(String file, boolean bNumeric) throws DiskSortIOException {
+	public static void sortFile(String file, boolean bNumeric, String additionalArgs) throws DiskSortIOException {
 		File infile = new File(file);
 		File sortedfile = new File(file + ".sorted.tmp");
-		sortFile(infile,sortedfile,bNumeric);
+		sortFile(infile,sortedfile,bNumeric,additionalArgs);
 		infile.delete();
 		sortedfile.renameTo(infile);
 	}
@@ -195,6 +198,7 @@ public class SortUtil {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void sortSimilarityRules(List<ElementsSimilarityMeasure> list, final boolean descending) {
 		Collections.sort(list, new Comparator() {
+			@Override
 			public int compare(Object o1, Object o2) {
 				int ret = (int) (descending ?
 					((ElementsSimilarityMeasure)o2).getSimilarityMeasure() - ((ElementsSimilarityMeasure)o1).getSimilarityMeasure()

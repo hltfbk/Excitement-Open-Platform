@@ -15,6 +15,12 @@ public abstract class DeafaultFeature<T extends Serializable> extends DefaultIde
 
 	private static final long serialVersionUID = 1L;
 	
+	public DeafaultFeature() {
+		super();
+		this.data = null;
+		this.context = null;
+	}
+	
 	public DeafaultFeature(T data) {
 		super();
 		this.data = data;
@@ -59,7 +65,7 @@ public abstract class DeafaultFeature<T extends Serializable> extends DefaultIde
 		return context;
 	}
 	
-	protected final T data;
+	protected T data;
 	protected final AggregatedContext context;
 
 }

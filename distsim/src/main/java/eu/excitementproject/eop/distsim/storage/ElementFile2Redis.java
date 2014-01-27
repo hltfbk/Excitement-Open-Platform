@@ -1,21 +1,21 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.io.IOException;
-
 import java.io.Serializable;
 
-//import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.SerializationException;
+//import org.apache.log4j.Logger;
 
 
 /**
@@ -40,7 +40,8 @@ public class ElementFile2Redis {
 		}
 		
 		try {
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);			
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);		
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new java.io.File(args[0])));
 			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
 			
 			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));
@@ -57,9 +58,8 @@ public class ElementFile2Redis {
 
 			
 			file.open();
-			String host = confParams.getString(Configuration.REDIS_HOST);
-			int port = confParams.getInt(Configuration.REDIS_PORT);
-			RedisBasedCountableIdentifiableStorage<Element> elementStorage = new RedisBasedCountableIdentifiableStorage<Element>(host,port);
+			String dbFile = confParams.getString(Configuration.REDIS_FILE);
+			RedisBasedCountableIdentifiableStorage<Element> elementStorage = new RedisBasedCountableIdentifiableStorage<Element>(dbFile);
 			elementStorage.clear();
 			Pair<Integer,Serializable> pair = null;
 			while ((pair = file.read())!=null) {

@@ -4,13 +4,15 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
 import java.util.LinkedList;
+
 import java.util.List;
 
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
@@ -29,13 +31,17 @@ import eu.excitementproject.eop.distsim.util.Pair;
  */
 public class NodeBasedPredArgCooccurrenceExtraction extends PredArgCooccurrenceExtraction<BasicNode> {
 
+	public NodeBasedPredArgCooccurrenceExtraction(CommonConfig conf) /*throws ConfigurationException*/ {
+		this();
+	} 
+
 	public NodeBasedPredArgCooccurrenceExtraction(ConfigurationParams confParams) /*throws ConfigurationException*/ {
 		this();
-	}
+	} 
 
 	public NodeBasedPredArgCooccurrenceExtraction() {
-		this.extractor =  new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), true, true);
-	}
+		this.extractor =  new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true);
+	} 
 	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.builders.cooccurrence.CooccurrenceExtraction#extractCooccurrences(java.lang.Object)

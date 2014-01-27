@@ -50,6 +50,8 @@ import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeAndFeatureVector;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistory;
 import eu.excitementproject.eop.biutee.rteflow.macro.TreeHistoryComponent;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.ExtendedPairData;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.PairProcessor;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.ExtendedPreprocessedTopicDataSet;
@@ -60,6 +62,7 @@ import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap.TreeAndParentMapException;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.utilities.StringUtil;
@@ -80,6 +83,7 @@ import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorExc
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
 import eu.excitementproject.eop.transformations.operations.specifications.Specification;
+import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
@@ -746,9 +750,11 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @throws VisualTracingToolException 
 	 * @throws ClassifierException 
 	 * @throws BadLocationException 
+	 * @throws TeEngineMlException 
+	 * @throws TreeAndParentMapException 
 	 * 
 	 */
-	private void redrawAllSearchTextBoxes() throws ClassifierException, VisualTracingToolException, BadLocationException {
+	private void redrawAllSearchTextBoxes() throws ClassifierException, VisualTracingToolException, BadLocationException, TeEngineMlException, TreeAndParentMapException {
 		redrawRegularSearchTextArea();
 		redrawCurrentSingleTreePane();
 	}
@@ -757,8 +763,10 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * redraw the tree and text in the "Selected Tree" pane
 	 * @throws ClassifierException
 	 * @throws VisualTracingToolException
+	 * @throws TeEngineMlException 
+	 * @throws TreeAndParentMapException 
 	 */
-	private void redrawCurrentSingleTreePane() throws ClassifierException, VisualTracingToolException {
+	private void redrawCurrentSingleTreePane() throws ClassifierException, VisualTracingToolException, TeEngineMlException, TreeAndParentMapException {
 		// double check
 		if ((underLyingSystem != null) && (currentDisplayedTreeComponent != null) && (selectedTreeNextStack != null))
 		{
@@ -776,8 +784,9 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @throws ClassifierException
 	 * @throws TeEngineMlException
 	 * @throws IOException 
+	 * @throws TreeAndParentMapException 
 	 */
-	private void refreshAllTreeImages() throws VisualTracingToolException, ClassifierException, TeEngineMlException, IOException {
+	private void refreshAllTreeImages() throws VisualTracingToolException, ClassifierException, TeEngineMlException, IOException, TreeAndParentMapException {
 		if ( (this.underLyingSystem!=null) && (this.pairData!=null) )
 		{
 			redrawTextImageWithCurrentComboBoxSelection();
@@ -806,11 +815,14 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @throws VisualTracingToolException 
 	 * @throws ClassifierException 
 	 * @throws BadLocationException 
+	 * @throws GapException 
+	 * @throws TreeAndParentMapException 
 	 * 
 	 */
-	private void redrawRegularSearchTextArea() throws ClassifierException, VisualTracingToolException, BadLocationException {
+	private void redrawRegularSearchTextArea() throws ClassifierException, VisualTracingToolException, BadLocationException, GapException, TreeAndParentMapException {
 		if (historyComponents != null) {
-			String textAreaText = buildRegularSearchTextAreaText(classificationScoreForPredictions, classificationScoreForSearch, this.bestTreeHistory.getInitialComponent(), historyComponents, 
+			String textAreaText = buildRegularSearchTextAreaText(true,this.bestTreeOfRegularSearch,
+					classificationScoreForPredictions, classificationScoreForSearch, this.bestTreeHistory.getInitialComponent(), historyComponents, 
 					historyComponentsIndex, sortedHistory, originalTreeSentence, true,null);
 			int caretPositionBeforeUpdate = cpe.getRegularSearchTextArea().getCaretPosition();
 			cpe.getRegularSearchTextArea().setContentType("text/html");
@@ -1012,9 +1024,11 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @param currentTreeComponent
 	 * @throws VisualTracingToolException
 	 * @throws ClassifierException
+	 * @throws TeEngineMlException 
+	 * @throws TreeAndParentMapException 
 	 */
 	private void displaySingleTree(SingleTreeComponent lastSingleTreeComponent, SingleTreeComponent currentTreeComponent, int currentComponentIndex)
-			throws VisualTracingToolException, ClassifierException {
+			throws VisualTracingToolException, ClassifierException, TeEngineMlException, TreeAndParentMapException {
 		
 		String imageTitle = (currentTreeComponent != null && currentTreeComponent.getLastSpec() != null) ? 
 				makeTreeImageTitle(currentComponentIndex, currentTreeComponent.getLastSpec().toString()) : ORIGINAL_TREE_TITLE;	
@@ -1029,7 +1043,9 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 		// prepare stuff for displaying the specifications/operations of this tree history
 		SorterOfTreeHistory sortedHistory = new SorterOfTreeHistory(lastSingleTreeComponent.getHistory(), underLyingSystem.getClassifier(),
 				lastSingleTreeComponent.getFeatureVector());
-		String selectedTreeTextAreaText = buildRegularSearchTextAreaText(classificationScoreForPredictions, classificationScoreForSearch,
+		TreeAndFeatureVector treeAndFeatureVector = new TreeAndFeatureVector(lastSingleTreeComponent.getTree(), lastSingleTreeComponent.getFeatureVector());
+		String selectedTreeTextAreaText = buildRegularSearchTextAreaText(false,treeAndFeatureVector,
+				classificationScoreForPredictions, classificationScoreForSearch,
 				lastSingleTreeComponent.getHistory().getInitialComponent(),
 				lastSingleTreeComponent.getHistory().getComponents(), currentComponentIndex, sortedHistory, 
 				underLyingSystem.getMapTreeToSentence().get(lastSingleTreeComponent.getTree()),false,currentTreeComponent.getMissingRelations());
@@ -1051,8 +1067,10 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * 
 	 * @throws VisualTracingToolException
 	 * @throws ClassifierException
+	 * @throws TeEngineMlException 
+	 * @throws TreeAndParentMapException 
 	 */
-	private void displaySelectedTree() throws VisualTracingToolException, ClassifierException {
+	private void displaySelectedTree() throws VisualTracingToolException, ClassifierException, TeEngineMlException, TreeAndParentMapException {
 		if (underLyingSystem != null) { 
 			this.selectedTreeNextStack = new Stack<SingleTreeComponent>();
 			int selectedRow = cpe.getExistingTreesTable().getSelectedRow();
@@ -1439,15 +1457,19 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 	 * @return
 	 * @throws ClassifierException
 	 * @throws VisualTracingToolException
+	 * @throws GapException 
+	 * @throws TreeAndParentMapException 
 	 */
 	private String buildRegularSearchTextAreaText(
-			double classificationScoreForPredictions,  double classificationScoreForSearch, 
+			boolean featureVectorIncludesGap,
+			TreeAndFeatureVector treeAndFeatureVector,
+			final double classificationScoreForPredictions,  final double classificationScoreForSearch, 
 			TreeHistoryComponent initialTreeHistoryComponent,
 			ImmutableList<TreeHistoryComponent> historyComponents,
 			int historyComponentsIndex, SorterOfTreeHistory sortedHistory,
 			String originalTreeSentence, boolean displayWholeProofFeatures,
 			Set<ExtendedNode> missingRelations) 
-					throws ClassifierException, VisualTracingToolException {
+					throws ClassifierException, VisualTracingToolException, GapException, TreeAndParentMapException {
 //		if (classificationScoreForPredictions == 0)
 //			throw new VisualTracingToolException("Bug. classificationScoreForPredictions is 0. You must first initialize it through regularSearch() or displaySingleTree() and then call this method.");
 //		if (historyComponents == null || historyComponents.isEmpty())
@@ -1458,18 +1480,36 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 		if (originalTreeSentence == null)
 			throw new VisualTracingToolException("Bug. no originalTreeSentence.");
 
+		boolean gapMode = underLyingSystem.getTeSystemEnvironment().getGapToolBox().isHybridMode();
+		double classificationScoreForPredictionsToPrint = classificationScoreForPredictions;
+		Map<Integer,Double> featureVectorIncludingGap = null;
+		if (gapMode && (!featureVectorIncludesGap))
+		{
+			featureVectorIncludingGap = underLyingSystem.getGapToolInstances().getGapFeaturesUpdate().updateForGap(new TreeAndParentMap<ExtendedInfo, ExtendedNode>(treeAndFeatureVector.getTree()), treeAndFeatureVector.getFeatureVector(), underLyingSystem.getGapEnvironment());
+			classificationScoreForPredictionsToPrint = underLyingSystem.getClassifierForPredictions().classify(featureVectorIncludingGap);
+		}
 		JEditorPane.registerEditorKitForContentType("text/html", "javax.swing.text.html.HTMLEditorKit");
 		StringBuffer sb = new StringBuffer();
 		sb.append(HTML_OPEN);
 		sb.append(HTML_FORMATTED_BODY_MARK).append('\n');
 		sb.append("Classification Score for Predictions = "); // "...  by classifier-for-predictions "
-		sb.append(strDouble(classificationScoreForPredictions));
+		sb.append(strDouble(classificationScoreForPredictionsToPrint));	
 		sb.append("<BR>\n");
+		
 		if (cpe.getShowSearchDetailsMenuItem().isSelected())	// menu item checkbox
 		{
-			sb.append("Classification Score for Search = ");
-			sb.append(strDouble(classificationScoreForSearch));
+			sb.append("Classification Score for Search ");
+			if (gapMode&&featureVectorIncludesGap){sb.append("including gap");}
+			sb.append(" = ");
+			sb.append(String.format("%-8.10f", classificationScoreForSearch));
 			sb.append("<BR>\n");
+			if (gapMode&&(!featureVectorIncludesGap))
+			{
+				double classificationScoreForSearchIncludingGap = underLyingSystem.getClassifier().classify(featureVectorIncludingGap);
+				sb.append("Classification Score for Search including gap = ");
+				sb.append(String.format("%-8.10f", classificationScoreForSearchIncludingGap));
+				sb.append("<BR>\n");
+			}
 		}
 
 		sb.append("Operations and Costs");
@@ -1618,10 +1658,29 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 				currentComponent = initialTreeHistoryComponent;
 			}
 			if (null==currentComponent) throw new VisualTracingToolException("Current history component is null. Cannot print details of feature vector.");
-			Map<Integer, Double> previousOperationFeatureVector = null;
-			if (previousComponent!=null) previousOperationFeatureVector = previousComponent.getFeatureVector(); 
-			GuiUtils.printFeatures(this.underLyingSystem.getClassifier().getFeatureNames(), currentComponent.getFeatureVector(), previousOperationFeatureVector, sb);
+			boolean hasTheTree = true;
+			if (null==currentComponent.getTree()){hasTheTree=false;}
+			if (gapMode&&(!hasTheTree))
+			{
+				sb.append("<BR>\n<B>Vectors do not include gap features!</B><BR>\n");
+			}
+			Map<Integer, Double> currentComponentFeatureVector = currentComponent.getFeatureVector();
+			if (gapMode&&hasTheTree)
+			{
+				currentComponentFeatureVector = underLyingSystem.getGapToolInstances().getGapFeaturesUpdate().updateForGap(
+					new TreeAndParentMap<ExtendedInfo, ExtendedNode>(currentComponent.getTree()),
+					currentComponentFeatureVector, underLyingSystem.getGapEnvironment());
+			}
 			
+			Map<Integer, Double> previousOperationFeatureVector = null;
+			if (previousComponent!=null) previousOperationFeatureVector = previousComponent.getFeatureVector();
+			if (gapMode&&hasTheTree&&(previousOperationFeatureVector!=null)&&(previousComponent.getTree()!=null))
+			{
+				previousOperationFeatureVector = underLyingSystem.getGapToolInstances().getGapFeaturesUpdate().updateForGap(
+						new TreeAndParentMap<ExtendedInfo, ExtendedNode>(previousComponent.getTree()),
+						previousOperationFeatureVector, underLyingSystem.getGapEnvironment());
+			}
+			GuiUtils.printFeatures(this.underLyingSystem.getClassifier().getFeatureNames(), currentComponentFeatureVector, previousOperationFeatureVector, sb);
 		}
 
 		if (displayWholeProofFeatures){ if(cpe.getShowSearchDetailsMenuItem().isSelected())
@@ -1629,6 +1688,21 @@ public class ActionsPerformer implements ActionListener, ChangeListener, ItemLis
 			sb.append("<BR>\n").append("Whole proof feature-vector:<BR>\n");
 			GuiUtils.printFeatures(this.underLyingSystem.getClassifier().getFeatureNames(), this.bestTreeOfRegularSearch.getFeatureVector(), null, sb);
 		}}
+		
+		if (gapMode)
+		{
+			GapToolInstances<ExtendedInfo, ExtendedNode> gapTools = underLyingSystem.getGapToolInstances();
+			if (null==gapTools) throw new VisualTracingToolException("Null gap tools.");
+			try
+			{
+				sb.append("<P>\n").append("Gap description:<BR><PRE>\n");
+				sb.append(
+				gapTools.getGapDescriptionGenerator().describeGap(
+						new TreeAndParentMap<ExtendedInfo, ExtendedNode>(treeAndFeatureVector.getTree()), underLyingSystem.getGapEnvironment()).getDescription());
+				sb.append("</PRE><BR>\n");
+			} catch (TreeAndParentMapException e){throw new VisualTracingToolException("Failed to build parent map.",e);}
+			
+		}
 		
 		
 		sb.append("</BODY></HTML>\n");

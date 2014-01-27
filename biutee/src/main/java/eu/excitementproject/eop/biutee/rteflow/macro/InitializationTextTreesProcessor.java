@@ -17,6 +17,8 @@ import eu.excitementproject.eop.biutee.plugin.InstanceBasedPlugin;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.rteflow.document_sublayer.DocumentInitializer;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapEnvironment;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolInstances;
 import eu.excitementproject.eop.biutee.rteflow.macro.multiword_namedentity_utils.MultiWordNamedEntityUtils;
 import eu.excitementproject.eop.biutee.rteflow.micro.OperationsEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
@@ -123,6 +125,7 @@ public class InitializationTextTreesProcessor
 		this.lemmatizer = lemmatizer;
 		this.script = script;
 		this.teSystemEnvironment = teSystemEnvironment;
+		this.hybridGapMode = this.teSystemEnvironment.getGapToolBox().isHybridMode();
 	}
 	
 	/**
@@ -238,9 +241,9 @@ public class InitializationTextTreesProcessor
 		this.hypothesisLemmasOnly = new ImmutableSetWrapper<String>(extractOnlyLemmas(this.hypothesisLemmas));
 		this.hypothesisLemmasLowerCase = TreeUtilities.constructSetLemmasLowerCase(hypothesis);
 		
-		logger.info("creating hypothesis templates for DIRT-like resources...");
+		logger.debug("creating hypothesis templates for DIRT-like resources...");
 		hypothesisTemplates = getHypothesisTemplates();
-		logger.info("creating hypothesis templates for DIRT-like resources done.");
+		logger.debug("creating hypothesis templates for DIRT-like resources done.");
 		
 		
 		// Initialize this finder with the hypothesis
@@ -252,9 +255,9 @@ public class InitializationTextTreesProcessor
 		// SEE THE COMMENT OF THE FUNCTION createMapLexicalMultiWord()
 		if (HANDLE_LEXICAL_MULTI_WORD)
 		{
-			logger.info("creating mapRuleBasesForLexicalMultiWord...");
+			logger.debug("creating mapRuleBasesForLexicalMultiWord...");
 			createMapLexicalMultiWord();
-			logger.info("creating mapRuleBasesForLexicalMultiWord - done.");
+			logger.debug("creating mapRuleBasesForLexicalMultiWord - done.");
 		}
 		else
 		{
@@ -262,7 +265,7 @@ public class InitializationTextTreesProcessor
 		}
 		
 		// Create a FeatureUpdate object.
-		this.featureUpdate = new FeatureUpdate(this.wholeTextLemmas, teSystemEnvironment.getFeatureVectorStructureOrganizer(),teSystemEnvironment.getMleEstimation());
+		this.featureUpdate = new FeatureUpdate(this.wholeTextLemmas, teSystemEnvironment.getFeatureVectorStructureOrganizer(),teSystemEnvironment.getMleEstimation(), teSystemEnvironment.getParser());
 		
 		/// Creates a mechanism for handling named-entities that are represented by
 		// several nodes in the parse tree (e.g. "Microsoft Corporation" is represented
@@ -291,15 +294,28 @@ public class InitializationTextTreesProcessor
 		// Stores the parse-trees that were created during the initialization,
 		// which will be used in the proof-construction. 
 		originalTreesAfterInitialization = new OriginalTreesAfterInitialization(originalTextTrees, hypothesisTree, originalMapTreesToSentences,this.coreferenceInformation);
+
+		if (teSystemEnvironment.getGapToolBox().isHybridMode())
+		{
+			gapTools = teSystemEnvironment.getGapToolBox().getGapToolsFactory().createInstances(hypothesis,this.classifier);
+			gapEnvironment = new GapEnvironment<>(surroundingsContext,wholeTextLemmas,hypothesisLemmasLowerCase);
+		}
+		else
+		{
+			gapTools = null;
+			gapEnvironment = null;
+		}
+		
 		
 		// Stores many objects that were created during initialization.
-		operationsEnvironment = new OperationsEnvironment(this.featureUpdate,this.hypothesis,this.hypothesisLemmas,hypothesisLemmasAndCanonicalPos,this.hypothesisLemmasOnly,this.hypothesisLemmasLowerCase,this.hypothesisNumberOfNodes,this.substitutionMultiWordFinder,this.lemmatizer,this.coreferenceInformation,this.mapRuleBasesForLexicalMultiWord,this.hypothesisTemplates, this.multiWordNamedEntityRuleBase, this.richInformationInTreeHistory, teSystemEnvironment.getAlignmentCriteria(),teSystemEnvironment.getStopWords());
+		operationsEnvironment = new OperationsEnvironment(this.featureUpdate,this.hypothesis,this.hypothesisLemmas,hypothesisLemmasAndCanonicalPos,this.hypothesisLemmasOnly,this.hypothesisLemmasLowerCase,this.hypothesisNumberOfNodes,this.substitutionMultiWordFinder,this.lemmatizer,this.coreferenceInformation,this.mapRuleBasesForLexicalMultiWord,this.hypothesisTemplates, this.multiWordNamedEntityRuleBase, this.richInformationInTreeHistory, teSystemEnvironment.getAlignmentCriteria(),teSystemEnvironment.getStopWords(),teSystemEnvironment.getParser(),teSystemEnvironment.isCollapseMode());
 	}
 	
 	public OriginalTreesAfterInitialization getOriginalTreesAfterInitialization()
 	{
 		return originalTreesAfterInitialization;
 	}
+	
 
 	protected void cleanUp()
 	{
@@ -755,6 +771,8 @@ public class InitializationTextTreesProcessor
 	protected Lemmatizer lemmatizer;
 	protected OperationsScript<Info, BasicNode> script;
 	protected TESystemEnvironment teSystemEnvironment;
+	protected final boolean hybridGapMode;
+	
 	protected List<ExtendedNode> surroundingsContext = null;
 	protected boolean richInformationInTreeHistory = false;
 	
@@ -778,7 +796,9 @@ public class InitializationTextTreesProcessor
 	
 	private BagOfRulesRuleBase<Info, BasicNode> multiWordNamedEntityRuleBase = null;
 	
+	protected GapToolInstances<ExtendedInfo, ExtendedNode> gapTools = null;
 	protected OperationsEnvironment operationsEnvironment;
+	protected GapEnvironment<ExtendedInfo, ExtendedNode> gapEnvironment;
 	protected OriginalTreesAfterInitialization originalTreesAfterInitialization = null;
 	
 	private static final Cache<SealedObject<ExtendedNode>, ImmutableSet<String>> cacheHypothesisToTemplates =

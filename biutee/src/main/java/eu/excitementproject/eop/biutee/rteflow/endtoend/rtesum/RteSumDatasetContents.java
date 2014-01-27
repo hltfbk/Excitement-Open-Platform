@@ -9,6 +9,8 @@ import eu.excitementproject.eop.biutee.rteflow.systems.rtesum.preprocess.Extende
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
+ * RTE-sum dataset, which includes the T-H pairs, the gold-standard, and the
+ * {@link RTESumSurroundingSentencesUtility}s.
  * 
  * @author Asher Stern
  * @since Jul 21, 2013

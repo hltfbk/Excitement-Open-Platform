@@ -25,5 +25,12 @@ public interface ElementFeatureJointCounts {
 	 * @return an iterator for the element's features and their joint counts
 	 */
 	ImmutableIterator<FeatureCount> getFeatureCounts();
+	
+	/**
+	 * Return the number of the features
+	 * 
+	 * @return the number of the features
+	 */
+	int getFeaturesSize();
 
 }

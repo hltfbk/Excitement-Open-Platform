@@ -4,13 +4,10 @@
 package eu.excitementproject.eop.distsim.builders.elementfeature;
 
 import java.io.IOException;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-
-//import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
@@ -27,6 +24,7 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Filter;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.SetBasedPOSFilter;
+//import org.apache.log4j.Logger;
 
 
 /**
@@ -67,7 +65,7 @@ public class LemmaPosBasedElementFeatureExtraction extends IrelevantListBasedEle
 		try {
 			this.minCount = params.getInt(Configuration.MIN_COUNT);
 		} catch (ConfigurationException e) {
-			this.minCount = 1;
+			this.minCount = 0;
 		}
 		this.posFilter = new SetBasedPOSFilter(params);
 	}
@@ -81,8 +79,8 @@ public class LemmaPosBasedElementFeatureExtraction extends IrelevantListBasedEle
 		List<Pair<Element, Feature>> ret = new LinkedList<Pair<Element, Feature>>();		
 		
 		try {
-			LemmaPosTextUnit word1 = (LemmaPosTextUnit)cooccurrence.getTextItem1();
-			LemmaPosTextUnit word2 = (LemmaPosTextUnit)cooccurrence.getTextItem2();
+			LemmaPosTextUnit word1 = (LemmaPosTextUnit)cooccurrence.getTextItem1(); //.copy();
+			LemmaPosTextUnit word2 = (LemmaPosTextUnit)cooccurrence.getTextItem2(); //.copy();
 			String rel = (String)cooccurrence.getRelation().getValue();
 
 			if (posFilter.isRelevant(word1.getData().getPOS()) && word1.getCount() >= minCount && !isStopWordFeature(cooccurrence.getTextItem2())) {

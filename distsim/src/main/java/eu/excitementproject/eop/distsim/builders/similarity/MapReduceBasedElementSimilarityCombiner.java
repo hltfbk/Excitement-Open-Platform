@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.distsim.builders.similarity;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -27,6 +28,7 @@ import org.apache.log4j.PropertyConfigurator;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.scoring.combine.IlegalScoresException;
 import eu.excitementproject.eop.distsim.scoring.combine.SimilarityCombination;
 import eu.excitementproject.eop.distsim.util.Factory;
@@ -141,7 +143,8 @@ public class MapReduceBasedElementSimilarityCombiner { //implements ElementSimil
 		 try {
 			 Configuration conf = new Configuration();
 			 
-			 ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			 //ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			 ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 		    
 			 ConfigurationParams loggingParams = confFile.getModuleConfiguration(eu.excitementproject.eop.distsim.util.Configuration.LOGGING);
 			 PropertyConfigurator.configure(loggingParams.get(eu.excitementproject.eop.distsim.util.Configuration.PROPERTIES_FILE));

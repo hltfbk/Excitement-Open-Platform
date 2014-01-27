@@ -4,6 +4,7 @@ import eu.fbk.hlt.pso.*;
 import java.io.*;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 
 /**
  * The <code>EditDistanceFitnessFunction</code> class extends the <code>FitnessFunction</code> class.
@@ -20,12 +21,6 @@ public class EditDistanceFitnessFunction extends FitnessFunction {
 	 * the EDA configuration file that the EDA requires.
 	 */
 	static CommonConfig CONFIG;
-	
-	/* 
-	 * that is used to let the EditDistanceEDA read the configuration file
-	 * section of the EditDistancePSOEDA. 
-	 */
-	static String CANONICAL_NAME;
 	
 	@Override
 	public FitnessFunction call() throws Exception {
@@ -48,8 +43,6 @@ public class EditDistanceFitnessFunction extends FitnessFunction {
 		 * during the training the EDA don't need to save the model
 		 */
 		editDistanceEDA.setWriteModel(false);
-		
-		editDistanceEDA.setCanonicalName(CANONICAL_NAME);
 		
 		/*
 		 * the weights of the edit distance operations are set dynamically by PSO

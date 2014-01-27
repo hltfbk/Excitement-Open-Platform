@@ -16,6 +16,8 @@ import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.plugin.PluginRegisterer;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBoxFactory;
 import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
@@ -26,13 +28,18 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.Lemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
+import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.alignment.DefaultAlignmentCriteria;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorFactory;
 import eu.excitementproject.eop.transformations.generic.truthteller.SentenceAnnotator;
 import eu.excitementproject.eop.transformations.generic.truthteller.SynchronizedAtomicAnnotator;
+import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
 import eu.excitementproject.eop.transformations.utilities.LemmatizerFilterApostrophe;
 import eu.excitementproject.eop.transformations.utilities.StopWordsFileLoader;
@@ -45,10 +52,10 @@ import eu.excitementproject.eop.transformations.utilities.UnigramProbabilityEsti
  * <P>
  * It is recommended that the flow itself (i.e. the class that is an entry point
  * to the system (e.g. {@link RTEPairsMultiThreadTrainer}) will be a subclass
- * of this class).
+ * of this class.
  * <P>
  * Note that this class does not initialize log4j. That initialization is
- * expected to be in the main() method of each entry point (using {@link LogInitializer}).
+ * expected to be in the main() method of each entry point (using {@link LogInitializer}, see also {@link SystemMain}).
  * 
  * @author Asher Stern
  * @since Sep 19, 2011
@@ -74,6 +81,19 @@ public class SystemInitialization
 		this.configurationFileName = configurationFileName;
 		this.configurationModuleName = configurationModuleName;
 	}
+	
+	public static ConfigurationFile loadConfigurationFile(String configurationFileName) throws ConfigurationException
+	{
+		try
+		{
+			return new ConfigurationFile(new ImplCommonConfig(new File(configurationFileName)));
+		}
+		catch (eu.excitementproject.eop.common.exception.ConfigurationException e)
+		{
+			throw new ConfigurationException("Failed to load configuration file. Please see nested exception.",e);
+		}
+
+	}
 
 	protected void init() throws ConfigurationFileDuplicateKeyException, ConfigurationException, MalformedURLException, LemmatizerException, TeEngineMlException, IOException, PluginAdministrationException
 	{
@@ -85,11 +105,12 @@ public class SystemInitialization
 		if (badConstants!=null)throw badConstants;
 		
 		logger.info("Using configuration file: "+configurationFileName+", and module: "+configurationModuleName);
-		configurationFile = new ConfigurationFile(configurationFileName);
+		configurationFile = loadConfigurationFile(configurationFileName);
 		configurationFile.setExpandingEnvironmentVariables(true);
 		configurationParams = configurationFile.getModuleConfiguration(configurationModuleName);
 		
-		SystemUtils.setParserMode(configurationParams);
+		PARSER parserMode = SystemUtils.setParserMode(configurationParams);
+		boolean collapseMode = configurationParams.getBoolean(ConfigurationParametersNames.RTE_ENGINE_COLLAPSE_MODE);
 		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
@@ -137,7 +158,7 @@ public class SystemInitialization
 		if (FILTER_STOP_WORDS_IN_LEXICAL_RESOURCES)
 		{
 			logger.info("Loading stop words");
-			ConfigurationParams transformationsParams = this.configurationFile.getModuleConfiguration(ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME);
+			ConfigurationParams transformationsParams = this.configurationFile.getModuleConfiguration(ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME);
 			File stopWordsFile = transformationsParams.getFile(RTE_TRAIN_AND_TEST_STOP_WORDS);
 			StopWordsFileLoader stopWordsLoader = new StopWordsFileLoader(stopWordsFile.getPath());
 			stopWordsLoader.load();
@@ -162,8 +183,12 @@ public class SystemInitialization
 			}
 		}
 		
+		AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria = new DefaultAlignmentCriteria();
 		
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, new DefaultAlignmentCriteria(),stopWords);
+		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria,mleEstimation, stopWords).createGapToolBox();
+		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
+		else{logger.info("System in pure transformations mode.");}
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode, collapseMode, gapToolBox);
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException
@@ -184,7 +209,7 @@ public class SystemInitialization
 	{
 		try
 		{
-			ConfigurationParams params = configurationFile.getModuleConfiguration(ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME);
+			ConfigurationParams params = configurationFile.getModuleConfiguration(ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME);
 			if (params.containsKey(ConfigurationParametersNames.PLUGIN_REGISTERER_PARAMETER_NAME))
 			{
 				String pluginRegistererClassName = params.get(ConfigurationParametersNames.PLUGIN_REGISTERER_PARAMETER_NAME);

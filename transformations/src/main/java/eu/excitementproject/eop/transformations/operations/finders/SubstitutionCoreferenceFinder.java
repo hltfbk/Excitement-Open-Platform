@@ -45,6 +45,9 @@ public class SubstitutionCoreferenceFinder implements Finder<SubstitutionSubtree
 		this.coreferenceExtendedInformation = coreferenceExtendedInformation;
 	}
 	
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
+
 	@Override
 	public void find() throws OperationException
 	{

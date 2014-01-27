@@ -2,12 +2,18 @@ package eu.excitementproject.eop.biutee.rteflow.systems;
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 
+import eu.excitementproject.eop.biutee.script.OperationsScript;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMap;
 import eu.excitementproject.eop.transformations.datastructures.BooleanAndString;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
  * A base class for {@link FeatureVectorStructureOrganizer}.
+ * <P>
+ * (Note. The preferred way to create an instance of this interface is via
+ * {@link SystemInitialization}: call {@link SystemInitialization#init()} , create an {@link OperationsScript},
+ * call {@link SystemInitialization#completeInitializationWithScript(eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer)}
+ * with that script, and finally you get it in the field teSystemEnvironment via its method {@link TESystemEnvironment#getFeatureVectorStructureOrganizer()}).
  * 
  * @see FeatureVectorStructureOrganizer
  * 

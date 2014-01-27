@@ -72,7 +72,7 @@ public abstract class EndToEndSystem extends SystemInitialization
 	{
 		try
 		{
-			ScriptsCreator scriptsCreator = new ScriptsCreator(configurationFile,teSystemEnvironment.getPluginRegistry(),numberOfthreads);
+			ScriptsCreator scriptsCreator = new ScriptsCreator(configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment,numberOfthreads);
 			scriptsCreator.create();
 			return scriptsCreator.getScripts();
 		}

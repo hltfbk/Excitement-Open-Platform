@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.core.DKProSimilarityClassificationEDA</property>
+		<property name="language">EN</property>
+	</section>
+
+	<section name="GreedyStringTiling">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.string.GreedyStringTiling</property>
+		<property name="annotation">org.apache.uima.jcas.tcas.DocumentAnnotation</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">3</property>
+		</subsection>
+	</section>
+
+	<section name="Levenshtein">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.string.LevenshteinComparator</property>
+		<property name="annotation">org.apache.uima.jcas.tcas.DocumentAnnotation</property>
+		<subsection name="parameters" />		
+	</section>
+
+	<section name="LongestCommonSubstring">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.string.LongestCommonSubstringComparator</property>
+		<property name="annotation">org.apache.uima.jcas.tcas.DocumentAnnotation</property>
+		<subsection name="parameters" />		
+	</section>
+
+	<section name="CosineSimilarity">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.string.CosineSimilarity</property>
+		<property name="annotation">org.apache.uima.jcas.tcas.DocumentAnnotation</property>
+		<subsection name="parameters" />		
+	</section>
+
+	<section name="WordNGramJaccardMeasure_Tokens_2">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>		
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.ngrams.WordNGramJaccardMeasure</property>
+		<property name="annotation">de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">2</property>
+		</subsection>
+	</section>
+
+	<section name="WordNGramJaccardMeasure_Tokens_3">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>		
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.ngrams.WordNGramJaccardMeasure</property>
+		<property name="annotation">de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">3</property>
+		</subsection>
+	</section>
+
+	<section name="WordNGramJaccardMeasure_Tokens_4">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>		
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.ngrams.WordNGramJaccardMeasure</property>
+		<property name="annotation">de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">4</property>
+		</subsection>
+	</section>
+
+	<section name="WordNGramJaccardMeasure_Tokens_5">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>		
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.lexical.ngrams.WordNGramJaccardMeasure</property>
+		<property name="annotation">de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">5</property>
+		</subsection>
+	</section>
+
+	<section name="FunctionWordFrequenciesMeasure">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.style.FunctionWordFrequenciesMeasure</property>
+		<property name="annotation">org.apache.uima.jcas.JCas</property>
+		<subsection name="parameters">		
+			<property name="type_1">String</property>
+			<property name="value_1">classpath:/functionWords/en/function-words-mosteller-wallace.txt</property>
+		</subsection>
+	</section>
+
+	<section name="PosNGramContainment_2">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.structure.PosNGramContainmentMeasure</property>
+		<property name="annotation">org.apache.uima.jcas.JCas</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">2</property>
+		</subsection>
+	</section>
+
+	<section name="PosNGramContainment_3">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.structure.PosNGramContainmentMeasure</property>
+		<property name="annotation">org.apache.uima.jcas.JCas</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">3</property>
+		</subsection>
+	</section>
+
+	<section name="PosNGramContainment_4">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.structure.PosNGramContainmentMeasure</property>
+		<property name="annotation">org.apache.uima.jcas.JCas</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">4</property>
+		</subsection>
+	</section>
+
+	<section name="PosNGramContainment_5">
+		<property name="scoringComponent">eu.excitementproject.eop.core.component.scoring.DKProSimilarityScoring</property>
+		<property name="measure">de.tudarmstadt.ukp.similarity.algorithms.structure.PosNGramContainmentMeasure</property>
+		<property name="annotation">org.apache.uima.jcas.JCas</property>
+		<subsection name="parameters">		
+			<property name="type_1">Integer</property>
+			<property name="value_1">5</property>
+		</subsection>
+	</section>
+	
+	<section name="eu.excitementproject.eop.core.DKProSimilarityClassificationEDA">
+		<property name="trainDir">/train</property>
+		<property name="modelDir">/model</property>
+		<property name="components">GreedyStringTiling,Levenshtein,LongestCommonSubstring,CosineSimilarity,WordNGramJaccardMeasure_Tokens_2,WordNGramJaccardMeasure_Tokens_3,WordNGramJaccardMeasure_Tokens_4,FunctionWordFrequenciesMeasure,PosNGramContainment_2,PosNGramContainment_3,PosNGramContainment_4,PosNGramContainment_5</property>
+	</section>
+
+</configuration>

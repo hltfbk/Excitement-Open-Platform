@@ -20,6 +20,9 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTree;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;
 import eu.excitementproject.eop.transformations.operations.rules.DynamicRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
@@ -46,9 +49,10 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 	////////////////////////////// PUBLIC /////////////////////////////////////
 	
 	
-	public DistSimRuleBase(Connection connection, DistSimParameters distSimParameters, String ruleBaseName) throws RuleBaseException
+	public DistSimRuleBase(Connection connection, DistSimParameters distSimParameters, String ruleBaseName, PARSER parser) throws RuleBaseException
 	{
 		super();
+		this.parser = parser;
 		this.connection = connection;
 		this.distSimParameters = distSimParameters;
 		this.ruleBaseName = ruleBaseName;
@@ -171,7 +175,7 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 				{
 					String templateString = resultSet.getString("description");
 					Integer id = resultSet.getInt("id");
-					TemplateToTree converter = new TemplateToTree(templateString);
+					TemplateToTree converter = new TemplateToTree(templateString,parser);
 					converter.createTree();
 					BasicNode retTree = converter.getTree();
 					thisLemmaMapTreeToTemplateToTree.put(retTree, converter);
@@ -235,7 +239,7 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 					if (null==entailedTemplateString)throw new RuleBaseException("null description");
 					double score = resultSet.getDouble("score");
 					
-					TemplateToTree entailedConverter = new TemplateToTree(entailedTemplateString);
+					TemplateToTree entailedConverter = new TemplateToTree(entailedTemplateString,parser);
 					entailedConverter.createTree();
 					RuleWithConfidenceAndDescription<Info, BasicNode> rule = ruleFromTemplates(converter,entailedConverter,score);
 					rulesSet.add(rule);
@@ -362,7 +366,7 @@ public class DistSimRuleBase extends DynamicRuleBase<Info, BasicNode>
 	
 	
 	
-	
+	protected final PARSER parser;
 	protected Connection connection;
 	protected DistSimParameters distSimParameters;
 	protected String ruleBaseName;

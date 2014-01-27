@@ -28,6 +28,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
 import eu.excitementproject.eop.biutee.rteflow.preprocess.InstrumentsFactory;
+import eu.excitementproject.eop.biutee.rteflow.systems.SystemInitialization;
 import eu.excitementproject.eop.biutee.rteflow.systems.SystemMain;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
@@ -48,6 +49,7 @@ import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionExcepti
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
 import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
@@ -87,10 +89,10 @@ public class RTEPairsPreProcessor
 	{
 		new SystemMain()
 		{
-			
 			@Override
 			protected void run(String[] args) throws BiuteeException
 			{
+				logger = Logger.getLogger(RTEPairsPreProcessor.class);
 				String trainTestFlag = null;
 				if (args.length>=2)
 				{
@@ -119,7 +121,7 @@ public class RTEPairsPreProcessor
 	
 	public RTEPairsPreProcessor(String configurationFileName,String trainTestEnum) throws TeEngineMlException
 	{
-		logger = Logger.getLogger(RTEPairsPreProcessor.class);
+		if (null==logger){logger = Logger.getLogger(RTEPairsPreProcessor.class);}
 		this.configurationFileName = configurationFileName;
 		
 		if (trainTestEnum!=null)
@@ -129,9 +131,12 @@ public class RTEPairsPreProcessor
 		}
 		else
 		{
+			GlobalMessages.globalWarn("No train/test flag is provided (in command line). The correct method to run this class is by providing this flag (in addition to the configuration file).\n" +
+					"The flag's value should be: {"+Utils.getEnumValues(TrainTestEnum.class)+"}", logger);
 			this.trainOrTest = null;
 		}
 	}
+	
 	
 	public void preprocess() throws ConfigurationFileDuplicateKeyException, ConfigurationException, RTEMainReaderException, TeEngineMlException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, FileNotFoundException, IOException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException
 	{
@@ -151,7 +156,7 @@ public class RTEPairsPreProcessor
 	
 	private void readConfigurationFile() throws ConfigurationFileDuplicateKeyException, ConfigurationException, NumberFormatException, TeEngineMlException, ParserRunException, NamedEntityRecognizerException, TextPreprocessorException
 	{
-		configurationFile = new ConfigurationFile(this.configurationFileName);
+		configurationFile = SystemInitialization.loadConfigurationFile(this.configurationFileName);
 		configurationFile.setExpandingEnvironmentVariables(true);
 		ConfigurationParams params = configurationFile.getModuleConfiguration(RTE_PAIRS_PREPROCESS_MODULE_NAME);
 		

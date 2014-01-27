@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+  <pair id="1" entailment="ENTAILMENT" task="IE">
+    <t>
+     La vendita venne fatta per pagare i 27,5 miliardi di dollari di tasse di Yuko. Yuganskneftegaz fu originariamente venduta per 9,4 miliardi di dollari alla poco nota compagnia Baikalfinansgroup che fu poi comperata da una compagnia petrolifera di proprietà dello stato russo, la Rosneft .
+    </t>
+    <h>
+     Baikalfinansgroup fu venduta a Rosneft.
+    </h>
+  </pair>
+  <pair id="2" entailment="NONENTAILMENT" task="IE">
+    <t>
+     La vendita venne fatta per pagare i 27,5 miliardi di dollari di tasse di Yuko. Yuganskneftegaz fu originariamente venduta per 9,4 miliardi di dollari alla poco nota compagnia Baikalfinansgroup che fu poi comperata da una compagnia petrolifera di proprietà dello stato russo, la Rosneft .
+    </t>
+    <h>
+     La Yuganskneftegaz costava 27 miliardi di dollari.
+    </h>
+  </pair>
+  <pair id="3" entailment="NONENTAILMENT" task="IE">
+    <t>
+     Loraine, oltre ad aver partecipato a "Dreamgirls", prodotto a Broadway, partecipo' anche alla produzione off-Broadway "Does A Tiger Have A Necktie". Nel 1999, Loraine andò a Londra, Regno Unito. Lì partecipò alla produzione di "RENT" dove venne scelta come sostituta per il ruolo di "Mimi".
+    </t>
+    <h>
+     “Does A Tiger Have A Necktie" fu prodotto a Londra.
+    </h>
+  </pair>
+  <pair id="4" entailment="ENTAILMENT" task="IE">
+    <t>
+     "The Extra Girl" (1923) è la storia di una ragazza proveniente da una piccola città, Sue Graham (interpretata da Mabel Normand) che arriva ad Hollywood per fare del cinema. A questo film, che lanciò la carriera di Mabel Normand e che venne prodotto da Mack Sennett, seguirono i primi film sull'industria cinematografica e spianò la strada per successivi film su Hollywood, come "Show People" (1928) di King Vidor.
+    </t>
+    <h>
+     "The Extra Girl" fu prodotto da Sennett.
+    </h>
+  </pair>
+  <pair id="5" entailment="ENTAILMENT" task="IE">
+    <t>
+     Un'incidente tra un autobus e un camion in Uganda ha provocato almeno 30 vittime e ha lasciato altre 21 persone ferite.
+    </t>
+    <h>
+     30 muoiono in un incidente d'autobus in Uganda.
+    </h>
+  </pair>
+  <pair id="6" entailment="NONENTAILMENT" task="IE">
+    <t>
+     Consideriamo il gigante mondiale per i prodotti di consumo Procter and Gamble. Anche con un budget per Ricerca e Sviluppo di 1,8 miliardi di dollari, essa gestisce ancora ogni anno 500 partnership attive, molte delle quali con piccole compagnie.
+    </t>
+    <h>
+     500  piccole compagnie sono partner della Procter and Gamble.
+    </h>
+  </pair>
+  <pair id="7" entailment="ENTAILMENT" task="IE">
+    <t>
+     Dopo il suo rilascio, Magdy el-Nasha, ben rasato, disse ai giornalisti fuori dalla sua casa che non aveva niente a che fare con l'attacco ai trasporti del 7 luglio che uccise 52 persone e 4 attentatori.
+    </t>
+    <h>
+     52 persone e 4 attentatori furono uccisi il 7 luglio.
+    </h>
+  </pair>
+  <pair id="8" entailment="NONENTAILMENT" task="IE">
+    <t>
+     L'indice di consenso nei confronti della Signora Bush è rimasto molto alto, circa l' 80%, anche se quello di suo marito è recentemente caduto sotto il 50%.
+    </t>
+    <h>
+     80% approvano il Signor Bush.
+    </h>
+  </pair>
+  <pair id="9" entailment="NONENTAILMENT" task="IE">
+    <t>
+     Una recente ricerca sul Dakosaurus arriva dalla scoperta di un teschio integro trovato in Argentina nel 1996, studiato da Diego Pol della Ohio State University, Zulma Gasparini della Argentina Universidad Nacional di La Plata,e dai loro colleghi.
+    </t>
+    <h>
+     Un Dakosaurus completo fu scoperto da Diego Pol.
+    </h>
+  </pair>
+  <pair id="10" entailment="NONENTAILMENT" task="IE">
+    <t>
+     Il 17 maggio 2005, l' Assemblea Nazionale del Kuwait ha approvato, con una maggioranza di 35 contro 23 (con 1 astensione), un emendamento sulla legge delle elettorale che permetterà alle donne di votare e di candidarsi come parlamentari. 
+    </t>
+    <h>
+     Un emendamento a favore delle donne fu rigettato dall'Assemblea Nazionale del Kuwait.
+    </h>
+  </pair>
+</entailment-corpus>

@@ -15,6 +15,8 @@ import eu.excitementproject.eop.common.representation.pasta.Predicate;
 import eu.excitementproject.eop.lap.biu.en.pasta.stanforddependencies.RelationTypes;
 import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentIdentificationException;
 
+import static eu.excitementproject.eop.lap.biu.en.pasta.utils.IdentificationStaticMethods.getInternalNodes;
+
 /**
  * 
  * @author Asher Stern
@@ -24,6 +26,8 @@ import eu.excitementproject.eop.lap.biu.pasta.identification.PredicateArgumentId
 @StandardSpecific("stanford-dependencies")
 public class VerbPredicatesIdentifier<I extends Info, S extends AbstractNode<I, S>>
 {
+	////////// PUBLIC //////////
+	
 	public VerbPredicatesIdentifier(TreeAndParentMap<I, S> tree)
 	{
 		super();
@@ -47,6 +51,8 @@ public class VerbPredicatesIdentifier<I extends Info, S extends AbstractNode<I, 
 		return verbPredicates;
 	}
 
+	
+	////////// PRIVATE //////////
 
 
 	private Set<S> findVerbPredicateHeads()
@@ -66,23 +72,6 @@ public class VerbPredicatesIdentifier<I extends Info, S extends AbstractNode<I, 
 		return verbPredicateHeads;
 	}
 	
-	private Set<S> getInternalNodes(S node)
-	{
-		Set<S> ret = new LinkedHashSet<S>();
-		ret.add(node);
-		if (node.hasChildren())
-		{
-			for (S child : node.getChildren())
-			{
-				String relation = InfoGetFields.getRelation(child.getInfo());
-				if (RelationTypes.getSemanticInternalFacetRelations().contains(relation))
-				{
-					ret.addAll(getInternalNodes(child));
-				}
-			}
-		}
-		return ret;
-	}
 
 	private final TreeAndParentMap<I,S> tree;
 	

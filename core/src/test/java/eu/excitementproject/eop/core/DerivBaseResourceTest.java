@@ -17,6 +17,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.derivbase.DerivB
 import eu.excitementproject.eop.core.component.lexicalknowledge.derivbase.DerivBaseResource;
 import eu.excitementproject.eop.common.representation.partofspeech.GermanPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 
 
 

@@ -3,7 +3,7 @@
  */
 package eu.excitementproject.eop.distsim.builders.elementfeature;
 
-import java.util.NoSuchElementException;
+import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +16,7 @@ import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
 import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
@@ -23,6 +24,7 @@ import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.Feature;
 import eu.excitementproject.eop.distsim.items.TextUnit;
+import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
 import eu.excitementproject.eop.distsim.storage.BasicCooccurrenceStorage;
 import eu.excitementproject.eop.distsim.storage.BasicMap;
 import eu.excitementproject.eop.distsim.storage.BasicSet;
@@ -30,11 +32,12 @@ import eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage;
 import eu.excitementproject.eop.distsim.storage.DefaultElementFeatureCountStorage;
 import eu.excitementproject.eop.distsim.storage.DeviceBasedCooccurrenceStorage;
 import eu.excitementproject.eop.distsim.storage.ElementFeatureCountStorage;
+import eu.excitementproject.eop.distsim.storage.IDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.PersistenceDevice;
-import eu.excitementproject.eop.distsim.storage.PersistentBasicMap;
 import eu.excitementproject.eop.distsim.storage.TroveBasedBasicIntSet;
 import eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap;
 import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.distsim.util.CreationException;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
 
@@ -52,10 +55,10 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 
 	private static Logger logger = Logger.getLogger(GeneralElementFeatureExtractor.class);
 
-	public GeneralElementFeatureExtractor(int iThreadNum, ElementFeatureExtraction elementFeatureExtraction, DataStructureFactory dataStructureFactory) {
+	public GeneralElementFeatureExtractor(int iThreadNum,DataStructureFactory dataStructureFactory, ConfigurationParams confParams) {
 		this.iThreadNum = iThreadNum;
-		this.elementFeatureExtraction = elementFeatureExtraction;
 		this.dataStructureFactory = dataStructureFactory;
+		this.confParams = confParams;
 	}
 	
 	/* (non-Javadoc)
@@ -84,8 +87,8 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 		
 		try {
 			
-			PersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts = dataStructureFactory.createElementFeatureCountsDataStructure();
-			PersistentBasicMap<BasicSet<Integer>> fesatureElements  = dataStructureFactory.createFeatureElementsDataStructure();	
+			IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts = dataStructureFactory.createElementFeatureCountsDataStructure();
+			IDKeyPersistentBasicMap<BasicSet<Integer>> fesatureElements  = dataStructureFactory.createFeatureElementsDataStructure();	
 	
 			ImmutableIterator<Cooccurrence<PredicateArgumentSlots>> it = cooccurrenceDB.getCooccurrenceInstances();
 			
@@ -114,8 +117,8 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 	}
 	
 	protected final int iThreadNum;
-	protected final ElementFeatureExtraction elementFeatureExtraction;
 	protected final DataStructureFactory dataStructureFactory;
+	protected final ConfigurationParams confParams;
 	
 	class ElementsFeaturesCollectionTask implements Runnable {
 		
@@ -126,8 +129,8 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 				ImmutableIterator<Cooccurrence<PredicateArgumentSlots>> iterator,
 				CountableIdentifiableStorage<Element> elementStorage,
 				CountableIdentifiableStorage<Feature> featureStorage,
-				PersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts,
-				PersistentBasicMap<BasicSet<Integer>> fesatureElements) {
+				IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts,
+				IDKeyPersistentBasicMap<BasicSet<Integer>> fesatureElements) throws CreationException, ConfigurationException {
 			
 			this.threadID = threadID;
 			this.iterator = iterator;
@@ -135,86 +138,108 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 			this.featureStorage = featureStorage;
 			this.elemntFeatureCounts = elemntFeatureCounts;
 			this.fesatureElements = fesatureElements;
+			
+			this.elementFeatureExtraction = (ElementFeatureExtraction)Factory.create(confParams.get(Configuration.EXTRACTION_CLASS),confParams);
+
+
 		}
 		
+		@Override
 		public void run() {
 			
-			logger.info("Thread " + threadID + " starts running");
-			
-			int loop=1;
-			
-			while (true) {
-			
-				if (loop % 100000 == 0) {
-					logger.info("Loop: " + loop);
-				}
-				loop++;
+				logger.info("Thread " + threadID + " starts running");
+				
+				int loop=1;
+				
+				int c=0;
+				
+				while (true) {
+
+					if (loop % 100000 == 0) {
+						logger.info("Loop: " + loop);
+					}
+					loop++;
+						
+					// get next co-occurence
+					Cooccurrence<PredicateArgumentSlots> coOccurrence = null;
+					boolean acquired = false;
 					
-				// get next co-occurence
-				Cooccurrence<PredicateArgumentSlots> coOccurrence = null;
-				boolean acquired = false;
-				synchronized (iterator) {
+					synchronized (iterator) {
+						//try {
+							if (iterator.hasNext()) {
+								coOccurrence = iterator.next();
+								acquired = true;
+								c++;
+							}
+						//} catch (NoSuchElementException e) {
+							//debug
+							//logger.error(ExceptionUtil.getStackTrace(e));
+						//}	
+					}
+					if (!acquired) {
+						logger.info("Thread " + threadID + " is done");
+						break;
+					}
+
+
+					// extract element and feature from the given co-occurrence, and store their counts
 					try {
-						coOccurrence = iterator.next();
-						acquired = true;
-					} catch (NoSuchElementException e) {
-						//debug
-						//logger.error(ExceptionUtil.getStackTrace(e));
-					}	
-				}
-				if (!acquired) {
-					logger.info("Thread " + threadID + " is done");
-					return;
+											
+						for (Pair<Element,Feature> elementFeaturePair :  elementFeatureExtraction.extractElementsFeature(coOccurrence)) {
+	
+							Element element = elementFeaturePair.getFirst();
+							Feature feature = elementFeaturePair.getSecond();
+								
+							// inc element count
+							element = elementStorage.addData(element, coOccurrence.getCount());
+							
+							//inc feature count
+							feature = featureStorage.addData(feature, coOccurrence.getCount());
+	
+							// inc element-feature count
+							synchronized (elemntFeatureCounts) {
+								BasicMap<Integer, Double> featureCounts = elemntFeatureCounts.get(element.getID());
+								if (featureCounts == null) {
+									featureCounts = new TroveBasedIDKeyPersistentBasicMap<Double>();
+									elemntFeatureCounts.put(element.getID(), featureCounts);
+								}
+								Double count = featureCounts.get(feature.getID());
+								if (count == null)
+									count = 0.0;
+								featureCounts.put(feature.getID(), count+coOccurrence.getCount());
+							}
+						
+							// add element to the list of elements for the given feature
+							synchronized (fesatureElements) {
+								// add element to the feature's element list
+								BasicSet<Integer> elements = fesatureElements.get(feature.getID());
+								if (elements == null) {
+									elements = new TroveBasedBasicIntSet();
+									fesatureElements.put(feature.getID(),elements);
+								}
+								elements.add(element.getID());
+							}
+						}
+					} catch (UndefinedKeyException e) {
+						logger.info(e.toString() + ". The element/feature is considered insignificant and will be filtered.");
+					} catch (ElementFeatureExtractionException e) {
+						System.out.println(e.toString());						
+					} catch (Exception e) {
+						logger.error(ExceptionUtil.getStackTrace(e));
+					}				
 				}
 				
-				// extract element and feature from the given co-occurrence, and store their counts
-				try {
-					
-					for (Pair<Element,Feature> elementFeaturePair :  elementFeatureExtraction.extractElementsFeature(coOccurrence)) {
-
-						Element element = elementFeaturePair.getFirst();
-						Feature feature = elementFeaturePair.getSecond();
-							
-						// inc element count
-						element = elementStorage.addData(element, coOccurrence.getCount());
-						
-						//inc feature count
-						feature = featureStorage.addData(feature, coOccurrence.getCount());
-
-						// inc element-feature count
-						synchronized (elemntFeatureCounts) {
-							BasicMap<Integer, Double> featureCounts = elemntFeatureCounts.get(element.getID());
-							if (featureCounts == null) {
-								featureCounts = new TroveBasedIDKeyPersistentBasicMap<Double>();
-								elemntFeatureCounts.put(element.getID(), featureCounts);
-							}
-							Double count = featureCounts.get(feature.getID());
-							if (count == null)
-								count = 0.0;
-							featureCounts.put(feature.getID(), count+coOccurrence.getCount());
-							
-							// add element to the feature's element list
-							BasicSet<Integer> elements = fesatureElements.get(feature.getID());
-							if (elements == null) {
-								elements = new TroveBasedBasicIntSet();
-								fesatureElements.put(feature.getID(),elements);
-							}
-							elements.add(element.getID());
-						}
-					}
-				} catch (ElementFeatureExtractionException e) {
-				} catch (Exception e) {
-					logger.error(ExceptionUtil.getStackTrace(e));
-				}				
-			}			
+				System.out.println(c + " cooccurrences were processed by extractor " + threadID);
+								
 		}
 				
 		final int threadID;
 		final ImmutableIterator<Cooccurrence<PredicateArgumentSlots>> iterator;
 		final CountableIdentifiableStorage<Element> elementStorage;
 		final CountableIdentifiableStorage<Feature> featureStorage;
-		final PersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts;
-		final PersistentBasicMap<BasicSet<Integer>> fesatureElements;	
+		final IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts;
+		final IDKeyPersistentBasicMap<BasicSet<Integer>> fesatureElements;	
+		final ElementFeatureExtraction elementFeatureExtraction;
 
 	}		
 	
@@ -230,7 +255,8 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 				System.exit(0);
 			}
 
-			ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			//ConfigurationFile confFile = new ConfigurationFile(args[0]);
+			ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 			
 			ConfigurationParams loggingParams = confFile.getModuleConfiguration(Configuration.LOGGING);
 			PropertyConfigurator.configure(loggingParams.get(Configuration.PROPERTIES_FILE));
@@ -254,10 +280,7 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 			
 			logger.info("co-occurrence storage was loaded");
 			
-			ConfigurationParams extractionParams = confFile.getModuleConfiguration(extractorParams.get(Configuration.ELEMENT_FEATURE_EXTRACTION_MODULE));
-			ElementFeatureExtraction elementFeatureExtraction = (ElementFeatureExtraction)Factory.create(extractionParams.get(Configuration.CLASS),extractionParams);
-
-			ElementFeatureExtractor<?> extractor = new GeneralElementFeatureExtractor(iThreadNum,elementFeatureExtraction,dataStructureFactory);
+			ElementFeatureExtractor<?> extractor = new GeneralElementFeatureExtractor(iThreadNum,dataStructureFactory,extractorParams);
 
 			ConfigurationParams prevElementDeviceParams = null, prevFeatureDeviceParams=null;
 			ElementFeatureCountStorage db = null;

@@ -252,7 +252,7 @@ public class RTEPairsSingleThreadTester extends SystemInitialization
 		super.init();
 		try
 		{
-			this.script = new ScriptFactory(this.configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			this.script = new ScriptFactory(this.configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 			logger.info("Operation Script class = "+script.getClass().getName());
 			logger.info("Initializing Operations Script...");
 			script.init();

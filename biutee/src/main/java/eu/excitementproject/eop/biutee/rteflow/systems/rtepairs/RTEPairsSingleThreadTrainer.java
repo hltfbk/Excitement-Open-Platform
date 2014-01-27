@@ -94,7 +94,7 @@ public class RTEPairsSingleThreadTrainer extends RTEPairsTrainer
 		try
 		{
 			super.init();
-			this.script = new ScriptFactory(this.configurationFile,teSystemEnvironment.getPluginRegistry()).getDefaultScript();
+			this.script = new ScriptFactory(this.configurationFile,teSystemEnvironment.getPluginRegistry(),teSystemEnvironment).getDefaultScript();
 			script.init();
 			scriptInitialized=true;
 			completeInitializationWithScript(script);

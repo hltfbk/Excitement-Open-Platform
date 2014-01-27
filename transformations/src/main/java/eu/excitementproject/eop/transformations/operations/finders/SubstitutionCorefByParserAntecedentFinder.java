@@ -11,11 +11,11 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.StanfordDependencyRelation.StanfordDepedencyRelationType;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.specifications.SubstitutionSubtreeSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
-import eu.excitementproject.eop.transformations.utilities.ParserSpecificConfigurations;
 
 
 /**
@@ -30,12 +30,15 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 {
 	public static final String REF_RELATION = StanfordDepedencyRelationType.ref.name();
 	
-	public SubstitutionCorefByParserAntecedentFinder(TreeAndParentMap<ExtendedInfo,ExtendedNode> textTree)
+	public SubstitutionCorefByParserAntecedentFinder(TreeAndParentMap<ExtendedInfo,ExtendedNode> textTree, PARSER parser) throws OperationException
 	{
 		super();
 		this.textTree = textTree;
+		this.parser = parser;
 	}
 
+	@Override public void optionallyOptimizeRuntimeByAffectedNodes(Set<ExtendedNode> affectedNodes) throws OperationException
+	{}
 
 
 	@Override
@@ -61,7 +64,7 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 			specs.add(new SubstitutionSubtreeSpecification(nodeThatHasAntecedent, nodesAndTheirAntecedent.get(nodeThatHasAntecedent)));
 		}
 		
-		if (ParserSpecificConfigurations.getParserMode().equals(ParserSpecificConfigurations.PARSER.EASYFIRST))
+		if (parser.equals(PARSER.EASYFIRST))
 		{
 			addCopyForRefRelation();
 		}
@@ -154,6 +157,7 @@ public class SubstitutionCorefByParserAntecedentFinder implements Finder<Substit
 
 
 	private TreeAndParentMap<ExtendedInfo,ExtendedNode> textTree;
+	private final PARSER parser;
 	
 	private Map<ExtendedNode, ExtendedNode> nodesAndTheirAntecedent;
 	private ValueSetMap<ExtendedNode, ExtendedNode> mapNodeToThoseWhoHaveItAsAntecedent;

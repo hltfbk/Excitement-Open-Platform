@@ -28,6 +28,7 @@ public class PairIDBasedIterator<E extends Externalizable & Countable & Identifi
 	/**
 	 * Move to the next item, according to the filter condition
 	 */
+	@Override
 	protected void moveNext() {
 		try {
 			int id = iterator.next().getFirst();

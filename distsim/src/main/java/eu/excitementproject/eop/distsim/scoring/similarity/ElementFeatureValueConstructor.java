@@ -5,8 +5,6 @@ package eu.excitementproject.eop.distsim.scoring.similarity;
 
 
 import eu.excitementproject.eop.distsim.scoring.feature.ElementFeatureData;
-import eu.excitementproject.eop.distsim.storage.ElementFeatureScoreStorage;
-import eu.excitementproject.eop.distsim.storage.NoScoreFoundException;
 
 /**
  * The ElementFeatureValueConstructor defines scoring values constructions, based on various kinds of parameter sets
@@ -16,6 +14,11 @@ import eu.excitementproject.eop.distsim.storage.NoScoreFoundException;
  *
  */
 public interface ElementFeatureValueConstructor {
-	double constructFeatureValue(ElementFeatureScoreStorage elementFeatureScoreStorage, int elementId, int featureId) throws NoScoreFoundException;
+	/**
+	 * Construct a feature value from a given ElementFeatureData
+	 * 
+	 * @param data represent various properties of the feature
+	 * @return a score value for the given feature
+	 */
 	double constructFeatureValue(ElementFeatureData data);
 }

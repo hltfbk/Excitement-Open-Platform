@@ -4,11 +4,11 @@
 package eu.excitementproject.eop.distsim.builders.cooccurrence;
 
 import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import eu.excitementproject.eop.common.representation.parse.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -16,6 +16,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.distsim.dependencypath.DependencyPathsFromTreeBinary;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultCooccurrence;
 import eu.excitementproject.eop.distsim.items.DefaultRelation;
@@ -28,7 +29,7 @@ import eu.excitementproject.eop.distsim.util.SetBasedPOSFilter;
 
 
 /**
-  * Extraction of co-occurrences, composed of word pairs and their dependency relation, from a given parsed sentence, represented by a BasicNode object
+  * Extraction of co-occurrences, composed of lemma-pos pairs and their dependency relation, from a given parsed sentence, represented by a BasicNode object
   * 
  * @author Meni Adler
  * @since 04/09/2012
@@ -72,6 +73,17 @@ public class NodeBasedWordCooccurrenceExtraction extends WordCooccurrenceExtract
 					Relation<String> rel = new DefaultRelation<String>(childNode.getInfo().getEdgeInfo().getDependencyRelation().getStringRepresentation());
 					textUnints.add(parent);
 					textUnints.add(child);
+					
+					//debug
+					/*if (childNode.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag() == CanonicalPosTag.V ||
+						parentNode.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag() == CanonicalPosTag.V) {					
+							System.out.println();
+							System.out.println(parent);
+							System.out.println(rel);
+							System.out.println(child);
+							System.out.println();
+						}*/
+						
 					coOccurrences.add(new DefaultCooccurrence<String>(child, parent,rel));
 				}
 			}
@@ -81,8 +93,8 @@ public class NodeBasedWordCooccurrenceExtraction extends WordCooccurrenceExtract
 		return new Pair<List<LemmaPosTextUnit>,List<DefaultCooccurrence<String>>>(textUnints,coOccurrences);
 	}
 
-	protected boolean relevantNode(BasicNode node) {
-		return node != null && posFilter.isRelevant(node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag());
+	protected boolean relevantNode(BasicNode node) {		
+		return node != null && node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech() != null &&  posFilter.isRelevant(node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag());
 	}
 
 	DependencyPathsFromTreeBinary<Info, BasicNode> extractor;

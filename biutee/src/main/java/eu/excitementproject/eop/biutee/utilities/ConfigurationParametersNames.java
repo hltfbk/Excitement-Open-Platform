@@ -93,13 +93,18 @@ public class ConfigurationParametersNames
 	public static final String RTESUM_DATASET_FOR_TEST = "test_data";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE = "lemmatizer_rule_file";
+	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTE_ENGINE_COLLAPSE_MODE = "collapse-mode";
 	@ConfigurationParameterAnnotation(value={RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME},mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String RTE_ENGINE_PARSER_PARAMETER_NAME = "parser";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME = "threads";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_ENGINE_UNIGRAM_LIDSTON_SER_FILE = "unigram_lidston_ser_file";
+	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
+	public static final String RTE_ENGINE_GAP_HYBRID_MODE = "gap_hybrid_mode";
 
+	
 	@ConfigurationParameterAnnotation(value={RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME},mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String RTE_TRAIN_SERIALIZED_SAMPLES_BASE_PATH = "save_serialized_samples";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
@@ -118,17 +123,19 @@ public class ConfigurationParametersNames
 	
 	// Knowledge resources module
 	@ConfigurationModuleAnnotation
-	public static final String KNOWLEDGE_RESOURCES_MODULE_NAME = "transformations";
-	@ConfigurationParameterAnnotation(KNOWLEDGE_RESOURCES_MODULE_NAME)
+	public static final String TRANSFORMATIONS_MODULE_NAME = "transformations";
+	@ConfigurationParameterAnnotation(TRANSFORMATIONS_MODULE_NAME)
 	public static final String KNOWLEDGE_RESOURCES_PARAMETER_NAME = "knowledge_resources";
-	@ConfigurationParameterAnnotation(KNOWLEDGE_RESOURCES_MODULE_NAME)
+	@ConfigurationParameterAnnotation(TRANSFORMATIONS_MODULE_NAME)
 	public static final String LEXICAL_RESOURCES_RETRIEVE_MULTIWORDS_PARAMETER_NAME = "multiword_resources";
-	@ConfigurationParameterAnnotation(value=KNOWLEDGE_RESOURCES_MODULE_NAME,mandatoryLevel=MandatoryLevel.OPTIONAL)
+	@ConfigurationParameterAnnotation(value=TRANSFORMATIONS_MODULE_NAME,mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String PLUGIN_REGISTERER_PARAMETER_NAME="plugin_registerer";
-	@ConfigurationParameterAnnotation(value=KNOWLEDGE_RESOURCES_MODULE_NAME,mandatoryLevel=MandatoryLevel.OPTIONAL)
+	@ConfigurationParameterAnnotation(value=TRANSFORMATIONS_MODULE_NAME,mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String PLUGINS_TO_APPLY = "plugins_to_apply";
-	@ConfigurationParameterAnnotation(KNOWLEDGE_RESOURCES_MODULE_NAME)
+	@ConfigurationParameterAnnotation(TRANSFORMATIONS_MODULE_NAME)
 	public static final String RTE_TRAIN_AND_TEST_STOP_WORDS = "stop_words";
+	@ConfigurationParameterAnnotation(TRANSFORMATIONS_MODULE_NAME)
+	public static final String EXCLUDE_TRANSFORMATIONS_PARAMETER_NAME = "exclude_transformations";
 
 	@Deprecated
 	public static final String NORMALIZER_MODULE_NAME = "Normalizer";

@@ -1,0 +1,223 @@
+
+
+<!--A configuration file for the program eu.excitementproject.eop.distsim.builders.elementfeature.GeneralElementFeatureExtractor, which extracts and counts elements and features from a given co-occurrence storage-->
+
+<configuration>
+
+<section name="logging"> <!--Defines the log4j properties -->
+	<!--the path of the log4j properties file-->
+	<property name="properties-file">configurations/log4j.properties</property> 
+</section>
+
+<section name="element-feature-extractor"> <!--Defines the extraction process of elements and features from a given storage of co-occurrences-->
+
+    <!-- the number of concurrent threads for the extraction process Features-->
+    <property name="thread-num">10</property>
+   
+    <!-- The name of the class that implements the eu.excitementproject.eop.distsim.builders.elementfeature.ElementFeatureExtraction interface. 
+          Current options:
+	      * eu.excitementproject.eop.distsim.builders.elementfeature.BidirectionalPredArgElementFeatureExtraction: extract predicate elements, and there arguments (X or Y, according to the following 'slot' feature) as features. 
+	        Required features:
+                    * slot: denotes whether the features are the X ('X') or the Y ('Y') arguments.
+		    * stop-words-file: an optional parameter which denotes the path to a file, composed of stop words (word per line), which should be excluded from the element and/or feature sets.
+                    * min-count: minimal number of counts for extracted element.
+	      * eu.excitementproject.eop.distsim.builders.elementfeature.LemmaPosBasedElementFeatureExtraction, extract elements and features, composed of lemma and part of speech, where the element is the head and the feature is the dependent word. 
+	        Required parameters:
+                    * include-dependency-relation: denotes whether the features should include the dependency relation (true) or not (false).
+                    * stop-words-file: an optional parameter which denotes the path to a file, composed of excluded stop words (word per line).
+                    * relevant-pos-list (optional): a list of relevant part-of-speeches for elements and features. In case this parameter is not defined all pos are considered relevant. The name of the pos should be defined in capital letters, according to the enum strings of CanonicalPosTag.
+                    * min-count: minimal number of counts for extracted element.-->
+   <property name="extraction-class">eu.excitementproject.eop.distsim.builders.elementfeature.BidirectionalPredArgElementFeatureExtraction</property>
+   <property name="slot">X</property>
+   <property name="min-count">10</property>
+   <property name="stop-words-file">stop-words-for-pred-args.txt</property>      
+</section>
+
+<section name="text-units-data-structure"> <!--Defines the type data structure to store the extracted text units during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
+
+<section name="co-occurrences-data-structure"> <!--Defines the type data structure to store the extracted co-occurences during the computation.-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
+
+<section name="elements-data-structure"> <!--Defines the type data structure to store the extracted elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
+
+<section name="features-data-structure"> <!--Defines the type data structure to store the extracted features during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.CountableIdentifiableStorage interface. 
+	      Current options
+		   * eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage: Memory-based storage
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedCountableIdentifiableStorage: Redis-based storage
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.MemoryBasedCountableIdentifiableStorage</property>
+</section>
+
+<section name="element-feature-counts-data-structure"> <!--Defines the type data structure to store the counts of elements and features during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
+
+<section name="feature-elements-data-structure"> <!-- Defines the type data structure to store the elements for each during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
+
+<section name="element-feature-scores-data-structure"> <!--Defines the type data structure to store the scoring of features in elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
+
+<section name="element-scores-data-structure"> <!--Defines the type data structure to store the scoring of the elements during the computation-->
+
+	<!--The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistentBasicMap interface. Current options
+		   * eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap: Memory-based map
+		   * eu.excitementproject.eop.distsim.storage.RedisBasedIDKeyPersistentBasicMap: Redis-based map
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.TroveBasedIDKeyPersistentBasicMap</property>
+</section>
+
+
+<section name="text-units-storage-device"> <!--Defines the persistent storage device of the text-units-->
+	
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File: file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+			 * redis-file: a path to the Redis file to store the text units
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.File</property>
+	<property name="file">models/dirt/textunits</property>
+	<property name="read-write">read</property>
+</section>
+
+
+
+<section name="co-occurrences-storage-device"> <!--Defines the persistent storage device of the co-occurrences-->
+	
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File: file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+		         * redis-file: a path to the Redis file to store the co-occurrences
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.File</property>
+	<property name="file">models/dirt/cooccurrences</property>	
+	<property name="read-write">read</property>
+</section>
+
+
+<section name="elements-storage-device"> <!--Defines the persistent storage device for the extracted elements-->
+	
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File: file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+		         * redis-file: a path to the Redis file to store the co-occurrences
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.File</property>
+	<property name="file">models/dirt/elements-x</property>
+	<property name="read-write">write</property>
+</section>
+
+
+<section name="features-storage-device"> <!--Defines the persistent storage device for the extracted features-->
+	
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File: file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+		         * redis-file: a path to the Redis file to store the co-occurrences
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.File</property>
+	<property name="file">models/dirt/features-x</property>
+	<property name="read-write">write</property>
+</section>
+
+
+<section name="element-feature-counts-storage-device"> <!-- Defines the persistent storage device for the element-feature counts-->
+	
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File (or one of its subclasses): file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+		         * redis-file: a path to the Redis file to store the co-occurrences
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntDoubleMapFile</property>
+	<property name="file">models/dirt/element-feature-counts-x</property>
+	<property name="read-write">write</property>
+</section>
+
+
+<section name="feature-elements-storage-device"> <!-- Defines the persistent storage device for the features' elements-->
+	
+	<!-- The name of the selected class, which implements the eu.excitementproject.eop.distsim.storage.PersistenceDevice interface. 
+	       Current options:
+		   * eu.excitementproject.eop.distsim.storage.File  (or one of its subclasses): file device
+		      Required features:
+			   * file: the path of the file
+			   * read-write: 'read' for read-only mode, 'write' for write-only mode
+		  * eu.excitementproject.eop.distsim.storage.Redis: Redis device
+		     Required features:
+		         * redis-file: a path to the Redis file to store the co-occurrences
+	-->
+	<property name="class">eu.excitementproject.eop.distsim.storage.IdTroveBasicIntSetFile</property>
+	<property name="file">models/dirt/feature-elements-x</property>
+	<property name="read-write">write</property>
+</section>
+
+
+</configuration>
+

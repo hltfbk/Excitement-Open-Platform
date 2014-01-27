@@ -90,7 +90,7 @@ public class RuleMatcher
 			for (BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree : mapRuleToTree(tree, rule))
 			{
 				GenerationOperation<ExtendedInfo, ExtendedNode> operation = rule.isExtraction() ?
-						new IntroductionRuleApplicationOperation(textTreeAndParentMap, textTreeAndParentMap, rule, mapLhsToTree)
+						new IntroductionRuleApplicationOperation(textTreeAndParentMap, textTreeAndParentMap, rule, mapLhsToTree, false)
 					:
 						new ExtendedSubstitutionRuleApplicationOperation(textTreeAndParentMap, 
 								new TreeAndParentMap<ExtendedInfo, ExtendedNode>(tree), rule, mapLhsToTree);

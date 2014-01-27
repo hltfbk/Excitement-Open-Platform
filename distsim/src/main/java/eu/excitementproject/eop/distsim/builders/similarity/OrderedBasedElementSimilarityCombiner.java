@@ -132,7 +132,7 @@ public class OrderedBasedElementSimilarityCombiner implements ElementSimilarityC
 	}
 	
 	/**
-	 * Read next element similarity for each of the devices, in case it is less than the maxmal id that was found
+	 * Read next element similarity for each of the devices, in case it is less than the maximal id that was found
 	 * 
 	 * @param similarityStorageDevices a list of devices, each contain element similarities
 	 * @param state The 'state' is composed of the maximal id that was found by now, and the maximal id that was read for each of the devices
@@ -174,7 +174,8 @@ public class OrderedBasedElementSimilarityCombiner implements ElementSimilarityC
 					
 					//debug
 					//System.out.println("id = " + id);
-
+					//System.out.println(i + ": " + id);
+					
 					maxIds.set(i,pair);
 					maxId = Math.max(maxId,id);
 					

@@ -1,0 +1,27 @@
+
+
+<!--A configuration file for the program eu.excitementproject.eop.distsim.builders.storage.SimilarityFile2Redis, which import a file-based representation of elements' similarities to a Redis database -->
+<configuration>
+
+<section name="logging"> <!--Defines the log4j properties -->
+	<!--the path of the log4j properties file-->
+	<property name="properties-file">configurations/log4j.properties</property> 
+</section>
+
+<section name="file-to-redis"> <!-- Defines the process of converting a general eu.excitementproject.eop.distsim.storage.File device to eu.excitementproject.eop.distsim.storage.Redis-->
+
+	  <!--Defines the specific type of the eu.excitementproject.eop.distsim.storage.File input (can be one of its subclasses)-->
+            <property name="class">eu.excitementproject.eop.distsim.storage.IdLinkedIntDoubleMapFile</property>
+	    
+	    <!--The path of the similarity input file-->
+  	  <property name="file">models/lin/proximity/elements-similarities-left</property>
+	  
+	  <!-- The path to the elements file-->
+	  <property name="elements-file">models/lin/proximity/elements</property>
+	  
+	  <!-- A path to a new generated redis file-->
+	<property name="redis-file">models/lin/proximity/similarity-l2r.rdb</property>
+	
+</section>
+</configuration>
+

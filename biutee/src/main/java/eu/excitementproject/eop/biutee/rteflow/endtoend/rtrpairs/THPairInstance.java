@@ -7,6 +7,7 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 
 
 /**
+ * A T-H pair instance, which is mainly an {@link ExtendedPairData}.
  * 
  * @author Asher Stern
  * @since Jul 15, 2013

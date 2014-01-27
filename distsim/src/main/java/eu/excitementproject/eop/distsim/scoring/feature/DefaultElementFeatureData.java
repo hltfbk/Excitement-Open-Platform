@@ -33,7 +33,7 @@ public class DefaultElementFeatureData implements ElementFeatureData {
 	 * @see org.excitement.distsim.scoring.feature.ElementFeatureData#getRank()
 	 */
 	@Override
-	public int getRank() {
+	public double getRank() {
 		return rank;
 	}
 
@@ -41,10 +41,15 @@ public class DefaultElementFeatureData implements ElementFeatureData {
 	 * @see org.excitement.distsim.scoring.feature.ElementFeatureData#getSize()
 	 */
 	@Override
-	public int getSize() {
+	public double getSize() {
 		return size;
 	}
 
+	@Override
+	public String toString() {
+		return "<value: " + value + ", rank: " + rank + ", size: " + size + ">";
+	}
+	
 	protected final double value;
 	protected final int rank;
 	protected final int size;

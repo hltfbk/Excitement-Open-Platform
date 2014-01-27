@@ -1,306 +1,577 @@
 package eu.excitementproject.eop.transformations.operations.rules.distsimnew;
 
-import java.util.HashSet;
-import java.util.Hashtable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-
-import org.BIU.NLP.DIRT.binary.BinaryDIRTUtils;
-import org.BIU.NLP.DIRT.binary.GraphPathExtractor;
-import org.BIU.NLP.DIRT.binary.TemplateInstancesExtractor;
-import org.BIU.NLP.DIRT.lexical.LexicalExtractor.LexicalElementInfo;
-import org.BURST.NLP.TE.impl.Minipar.MiniparSentence;
-import org.BURST.NLP.TE.rep.Edge;
-import org.BURST.NLP.TE.rep.Node;
-import org.BURST.NLP.TE.rep.Term.Type;
-import org.BURST.NLP.TE.rep.Tree;
-import org.BURST.NLP.TE.rep.TreeNode;
-import org.BURST.NLP.rep.POS;
-import org.BURST.NLP.utils.TreeUtils;
-import org.BURST.v2bridge.BurstConvertException;
-import org.BURST.v2bridge.GenericTreeToBurstSentence;
+import java.util.Stack;
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.common.representation.parse.tree.LeastCommonAncestor;
+import eu.excitementproject.eop.common.representation.parse.tree.LeastCommonAncestor.LeastCommonAncestorException;
+import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
+import eu.excitementproject.eop.common.utilities.Cache;
+import eu.excitementproject.eop.common.utilities.CacheFactory;
+import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
+import static eu.excitementproject.eop.transformations.utilities.Constants.TEMPLATES_FROM_TREE_CACHE_SIZE;
 
 /**
- * 
- * Extensively uses legacy code to extract DIRT-like templates from a given tree. 
- * 
- * @author Jonathan Berant and Asher Stern 
- * @since Aug 2, 2011
+ * Extracts DIRT-templates from a given parse-tree.
+ *  
+ * @author Asher Stern
+ * @since Dec 22, 2013
  *
  */
-public class TemplatesFromTree<T extends Info, S extends AbstractNode<T,S>> extends TemplateInstancesExtractor
+public class TemplatesFromTree<I extends Info, S extends AbstractNode<I, S>>
 {
+	////////// PUBLIC //////////
+	
 	public TemplatesFromTree(S tree) throws TeEngineMlException
 	{
-		super();
-		try
-		{
-			ConfigurationParams params = createLegacyConfigurationParams();
-			this.tree = tree;
-			super.init(params);
-			m_utils = new BinaryDIRTUtils();
-			m_utils.init(params);
-		}
-		catch(Exception e)
-		{
-			throw new TeEngineMlException("Unknown problem. See nested",e);
-		}
+		this.tree = tree;
 	}
-
+	
 	public void createTemplate() throws TeEngineMlException
 	{
-		try
+		templates = null;
+		Set<String> theTemplates = null;
+		if (cache.containsKey(tree))
 		{
-			GenericTreeToBurstSentence<T, S> converter = new GenericTreeToBurstSentence<T, S>(tree);
-			converter.create();
-			MiniparSentence burstTree = converter.getBurstSentence();
-			List<TupleExtraction> listTuples = extractTuples(burstTree);
-			templates = new LinkedHashSet<String>(listTuples.size());
-			for (TupleExtraction tuple : listTuples)
+			synchronized(cache)
 			{
-				String templateString = tuple.getPredicate();
-				templates.add(templateString);
+				if (cache.containsKey(tree)) // the if condition appears twice, for efficiency (avoiding synchronized if possible).
+				{
+					theTemplates = cache.get(tree);
+				}
 			}
 		}
-		catch(BurstConvertException e)
+		if (null==theTemplates)
 		{
-			throw new TeEngineMlException("convert to burst problem",e);
+			theTemplates = createTemplateNotInCache();
+			cache.put(tree, theTemplates);
 		}
+		templates = sortAndSeal(theTemplates);
 	}
 	
 
+	
+	
+	
 	public Set<String> getTemplates() throws TeEngineMlException
 	{
-		if (null==templates) throw new TeEngineMlException("Not created");
+		if (null==templates) throw new TeEngineMlException("Templates were not created.");
 		return templates;
 	}
-
-	/**
-	 * Ugly legacy solution.
-	 * @return
-	 */
-	protected static ConfigurationParams createLegacyConfigurationParams()
+	
+	////////// PRIVATE //////////
+	
+	private void init() throws TeEngineMlException
 	{
-		ConfigurationParams ret = new ConfigurationParams();
-		ret.put("verbose-level","1");
-		ret.put("lexical-extractor-class","org.BIU.NLP.DIRT.lexical.NounPhraseElementExtractor");
-		ret.put("element-type","NOUN_TO_NOUN");
-		ret.put("algorithm-type","TEASE");
+		this.parentMap = AbstractNodeUtils.parentMap(tree);
+		lca = new LeastCommonAncestor<I, S>(tree);
+		try
+		{
+			lca.compute();
+		}
+		catch (LeastCommonAncestorException e)
+		{
+			throw new TeEngineMlException("Failed to initialize TemplatesFromTree. See nested exception",e);
+		}
+	}
+	
+	
+	private Set<String> createTemplateNotInCache() throws TeEngineMlException
+	{
+		init();
+		Set<String> theTemplates = new LinkedHashSet<>();
+		List<S> endpoints = findEndpoints();
+		for (S begin : endpoints)
+		{
+			for (S end : endpoints)
+			{
+				if (
+					(end != begin)
+					&&
+					(parentMap.get(begin)!=end)
+					&&
+					(parentMap.get(end)!=begin)
+					)
+				{
+					try
+					{
+						S common = lca.getLeastCommonAncestorOf(begin, end);
+						if (!filter(begin,end,common))
+						{
+							theTemplates.add(pathToString(begin,end,common));
+						}
+					}
+					catch (LeastCommonAncestorException e)
+					{
+						throw new TeEngineMlException("Failed to find templates. See nested exception.",e);
+					}
+				}
+			}
+		}
+		return theTemplates;
+	}
+	
+	
+	private static <T extends Comparable<T>> Set<T> sortAndSeal(Set<T> set)
+	{
+		List<T> list = new ArrayList<>(set.size());
+		list.addAll(set);
+		Collections.sort(list);
+		Set<T> newSet = new LinkedHashSet<>();
+		for (T t : list)
+		{
+			newSet.add(t);
+		}
+		return Collections.unmodifiableSet(newSet);
+	}
+	
+	
+	// Filtering methods here:
+	
+	private boolean lemmaOK(String lemma)
+	{
+		for (char c : lemma.toCharArray())
+		{
+			if (!Character.isLetter(c))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean lemmasOK(S begin, S end, S common)
+	{
+		boolean ret = true;
+		List<S> endpoints = new ArrayList<>(1+1);
+		if (begin!=common) {endpoints.add(begin);}
+		if (end != common) {endpoints.add(end);}
+		for (S endpoint : endpoints)
+		{
+			if (true==ret)
+			{
+				S current = endpoint;
+				while (current != common)
+				{
+					if (current != endpoint)
+					{
+						if (!("conj".equalsIgnoreCase(InfoGetFields.getRelation(current.getInfo()))))
+						{
+							String lemma = InfoGetFields.getLemma(current.getInfo());
+							if (!lemmaOK(lemma))
+							{
+								ret = false;
+								break;
+							}
+						}
+					}
+					current = parentMap.get(current);
+				}
+			}
+		}
+		String commonLemma = InfoGetFields.getLemma(common.getInfo());
+		if (true==ret)
+		{
+			if ( (common!=begin) && (common!=end) )
+			{
+				ret = ret && lemmaOK(commonLemma);
+			}
+		}
 		
 		return ret;
 	}
-
 	
-
-	
-	// TODO: Handle the problem of pronoun
-	
-	// CODE by Jonathan Berant
-	// (Asher: comments below were written during my futile effort to understand
-	// the code... I'm not sure they're correct...)
-	
-
-	/**
-	 * Extracting instances from a template. Differences from implementation of super <br/>
-	 * <ol>
-	 * <li> Extract only from sentences with less than 100 words and with a predicate </li>
-	 * <li> Allow only NOUN-TO-NOUN patterns and takes into account that features are CUIs</li>
-	 * <li> Deleting commented code </li>	
-	 * </ol>
-	 */
-	private List<TupleExtraction> extractTuples(Tree iTree)
+	private boolean filterAntecedent(S begin, S end, S common)
 	{
-
-		List<TupleExtraction> result = new LinkedList<TupleExtraction>();	
-		Hashtable<Node, HashSet<Node>> nodeInfos = new Hashtable<Node, HashSet<Node>>();
-		HashSet<Node> set, done;
-		Node node;
-		StringBuffer xpath, ypath;
-		int xc, yc;
-		Edge edge;
-		String root;
-		String leftFeature;
-		String element;
-		Hashtable<Node, List<String>> lexInfos = new Hashtable<Node, List<String>>();
-		List<String> xinfos, yinfos;
-		char posChar;
-
-		if(!TreeUtils.isSentence(iTree))
-			return result;
-
-		for(TreeNode n : iTree.nodes()) {
-			if(!isPosNoun(n.term().posTag()) || n.term().type()== Type.CLAUSE)
-				continue;
-
-			posChar = firstPosLetter(n.term().posTag());
-
-			// It seems that xinfos is a list and each element represents a child
-			// of the node, under some constraints.
-			xinfos = new LinkedList<String>();
-			for(LexicalElementInfo info : m_lexicalExtractor.extractNounPhrases(n, true)){
-				leftFeature = m_utils.normalizeFeature(info.lemma() + ":" + posChar);
-				if(m_utils.isFeatureValid(leftFeature))
-					xinfos.add(leftFeature);
-			}
-
-			// lexInfos is a map from a node to a list of children
-			lexInfos.put(n, xinfos);
-
-			// Here, the nodeInfos is built. It will be a map from each node
-			// to a set of nodes that are "connected" to that node, in the "up"
-			// direction: i.e. the set contains the node and all ancestors,
-			// until an empty node was encountered.
-			node = n;
-			while(node != null){
-				set = nodeInfos.get(node);
-				if(set == null){
-					set = new HashSet<Node>();
-					nodeInfos.put(node, set);
-				}
-				set.add(n);
-
-				edge = GraphPathExtractor.getInEdge(node);
-				if(edge != null){
-					node = edge.from();
-					if(node.term().lemma() == null || node.term().lemma().length() == 0)
-						node = null;
-				}
-				else
-					node = null;
-			}
+		if ( (begin.getAntecedent()==end) || (end.getAntecedent()==begin) )
+		{
+			return true;
 		}
+		return false;
+	}
+	
+	private boolean filterLemmas(S begin, S end, S common)
+	{
+		if (!(lemmasOK(begin,end,common)))
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	private boolean filterLength(S begin, S end, S common)
+	{
+		boolean ret = false;
+		int contentCounter = 0;
+		@SuppressWarnings("unused")
+		int counter = 0;
 
-
-		for(TreeNode nx : iTree.nodes()){
-			if(!isPosNoun(nx.term().posTag()) || nx.term().type()== Type.CLAUSE || !lexInfos.containsKey(nx))
-				continue;
-
-			xinfos = lexInfos.get(nx);
-			if(xinfos.size()==0)
-				continue;
-
-			done = new HashSet<Node>();
-			done.add(nx);
-
-			xc = 0;
-			xpath = new StringBuffer();
-			xpath.append(nx.term().posTag().toString().charAt(0));
-
-			// It seems that this loop starts with the node "nx",
-			// and goes upwards - from "nx" to its parent, and to its parent...
-			node = nx;
-			while(node != null){
-				if(node != nx){
-					
-					root = firstPosLetter(node.term().posTag()) + ":" + node.term().lemma() + (node.negation() ? "-:" : ":") + 
-					firstPosLetter(node.term().posTag());
-					if(isPosNoun(node.term().posTag()) || node.term().posTag() == POS.VERB || node.term().posTag() == POS.ADJ)
-						xc++;
-				}
-				else
-					root = null;
-
-				set = nodeInfos.get(node);
-				for(Node ny : set){
-					if(done.contains(ny))
-						continue;
-
-					done.add(ny);
-
-					if(!isPosNoun(ny.term().posTag()) || lexInfos.get(ny).size()==0) 
-						continue;
-
-					ypath = new StringBuffer();
-					yc = GraphPathExtractor.getYPath(node, ny, ypath);
-					if(node == ny)
-						yc = -1;
-
-					if((isPosNoun(ny.term().posTag()) && xc + yc <= 0) || xc + yc > MAX_LEXICALS) // dont require lexical elements between N and V
-						continue;
-
-
-					element = ((node == ny || root == null) ? xpath.toString() + ypath.toString() : xpath.toString() + root + ypath.toString());
-					element = m_utils.normalizeAndCanonizeElement(element);
-					if(m_utils.isElementValid(element)){
-
-						yinfos = lexInfos.get(ny);
-						for(String xfeature : xinfos){
-							for(String yfeature : yinfos){
-								if(xfeature.equals(yfeature) || xfeature.endsWith(yfeature) || yfeature.endsWith(xfeature))
-									continue;
-
-								result.add(new TupleExtraction(xfeature,yfeature,element));
-							}
+		List<S> endpoints = new ArrayList<>(1+1);
+		endpoints.add(begin);
+		endpoints.add(end);
+		for (S endpoint : endpoints)
+		{
+			S current = endpoint;
+			while (current!=common)
+			{
+				if (current!=endpoint)
+				{
+					if (!("conj".equalsIgnoreCase(InfoGetFields.getRelation(current.getInfo()))))
+					{
+						++counter;
+						if (posIsContent(current))
+						{
+							++contentCounter;
 						}
-
 					}
 				}
-
-				edge = GraphPathExtractor.getInEdge(node);
-				if(edge != null){
-					if(root != null){
-						xpath.append(root);
-						xpath.append('<').append(edge.rel()).append('<');
-					}
-					else
-						xpath.append('<').append(edge.rel()).append('<');
-
-					node = edge.from();
-					if(node.term().lemma() == null || node.term().lemma().length() == 0)
-						node = null;
-				}
-				else
-					node = null;
+				current = parentMap.get(current);
 			}
 		}
-		return result;
+
+		// for common:
+		if ( (common!=begin) && (common!=end) )
+		{
+			++counter;
+			if (posIsContent(common))
+			{
+				++contentCounter;
+			}
+		}
+
+
+		if ( (contentCounter<1) || (contentCounter>5) )
+		{
+			ret = true;
+		}
+		
+		return ret;
 	}
 	
-	private static boolean isPosNoun(POS pos)
+	private boolean filterConjDirectCommonChild(S begin, S end, S common)
 	{
-		return ( (pos==POS.NOUN) || (pos==POS.PRONOUN) );
+		boolean ret = false;
+		List<S> endpoints = new ArrayList<>(1+1);
+		if (begin!=common) {endpoints.add(begin);}
+		if (end != common) {endpoints.add(end);}
+		for (S endpoint : endpoints)
+		{
+			if (ret != true)
+			{
+				S current = endpoint;
+				while (current!=common)
+				{
+					if (parentMap.get(current)==common)
+					{
+						String relation = InfoGetFields.getRelation(current.getInfo());
+						if ("conj".equalsIgnoreCase(relation))
+						{
+							ret = true;
+						}
+					}
+
+					current = parentMap.get(current);
+				}
+			}
+		}
+		return ret;
 	}
 	
-	private static char firstPosLetter(POS pos)
+	private boolean filterConjEndpoint(S begin, S end, S common)
 	{
-		if (pos==POS.PRONOUN) return POS.NOUN.toString().charAt(0);
-		else return pos.toString().charAt(0);
-	}
-
-	private static final class TupleExtraction {
-
-		public TupleExtraction(String argx, String argy, String predicate) {
-			m_argX = argx;
-			m_argY = argy;
-			m_predicate = predicate;
+		boolean ret = false;
+		List<S> endpoints = new ArrayList<>(1+1);
+		if (begin!=common) {endpoints.add(begin);}
+		if (end != common) {endpoints.add(end);}
+		for (S endpoint : endpoints)
+		{
+			String relation = InfoGetFields.getRelation(endpoint.getInfo());
+			if ("conj".equalsIgnoreCase(relation))
+			{
+				ret = true;
+				break;
+			}
 		}
-
-		public String getPredicate() {
-			return m_predicate;
-		}
-		@SuppressWarnings("unused")
-		public String getArgX() {
-			return m_argX;
-		}
-		@SuppressWarnings("unused")
-		public String getArgY() {
-			return m_argY;
-		}
-
-		private final String m_predicate;
-		private final String m_argX;
-		private final String m_argY;
+		return ret;
+		
 
 	}
+	
+
+	@SuppressWarnings("unused")
+	private boolean filterCrossClauses(S begin, S end, S common)
+	{
+		boolean ret = false;
+		List<S> endpoints = new ArrayList<>(1+1);
+		endpoints.add(begin);
+		endpoints.add(end);
+		for (S endpoint : endpoints)
+		{
+			if (ret != true)
+			{
+				S current = endpoint;
+				while (current!=common)
+				{
+					S parent = parentMap.get(current);
+					String relation = InfoGetFields.getRelation(current.getInfo());
+					SimplerCanonicalPosTag posParent = SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(parent.getInfo()));
+					if (SimplerCanonicalPosTag.VERB.equals(posParent))
+					{
+						if (NEW_CLAUSE_RELATIONS.contains(relation))
+						{
+							ret = true;
+							break;
+						}
+					}
+					current = parentMap.get(current);
+				}
+			}
+		}
+		return ret;
+	}
+	
+	@SuppressWarnings("unused")
+	private boolean filterSameWord(S begin, S end, S common)
+	{
+		String lemmaBegin = InfoGetFields.getLemma(begin.getInfo());
+		String lemmaEnd = InfoGetFields.getLemma(end.getInfo());
+		if (lemmaBegin.equalsIgnoreCase(lemmaEnd))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	private boolean filter(S begin, S end, S common)
+	{
+		boolean ret = false;
+
+		//if (!ret) {ret = filterSameWord(begin, end, common);}
+		if (!ret) {ret = filterAntecedent(begin, end, common);}
+		if (!ret) {ret = filterLemmas(begin, end, common);}
+		if (!ret) {ret = filterConjEndpoint(begin, end, common);}
+		if (!ret) {ret = filterConjDirectCommonChild(begin, end, common);}
+		//if (!ret) {ret = filterCrossClauses(begin, end, common);}
+		if (!ret) {ret = filterLength(begin, end, common);}
+		
+		return ret;
+	}
+	
+	private boolean posIsContent(S node)
+	{
+		SimplerCanonicalPosTag pos = SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(node.getInfo()));
+		switch(pos)
+		{
+		case NOUN:
+			return true;
+		case VERB:
+			return true;
+		case ADJECTIVE:
+			return true;
+		case ADVERB:
+			return true;
+		default:
+			return false;
+		}
+	}
+
+	
+	// End of filtering methods
+
+	
+	private List<S> findEndpoints()
+	{
+		List<S> ret = new LinkedList<>();
+		for (S node : TreeIterator.iterableTree(tree))
+		{
+			SimplerCanonicalPosTag pos = SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(node.getInfo()));
+			if ( (pos.equals(SimplerCanonicalPosTag.NOUN)) || (pos.equals(SimplerCanonicalPosTag.PRONOUN)) )
+			{
+				ret.add(node);
+			}
+		}
+		return ret;
+	}
+
+	private String pathToString(S begin, S end, S common)
+	{
+		if (begin==common)
+		{
+			return halfPathToString(end,common,true,false);
+		}
+		else if (end==common)
+		{
+			return halfPathToString(begin,common,true,true);
+		}
+		else
+		{
+			String up = halfPathToString(begin,common,false,true);
+			String down = halfPathToString(end,common,false,false);
+			down = down.substring(down.indexOf(">"));
+			return up+down;
+		}
+	}
+	
+	private String halfPathToString(S begin, S common, boolean commonIsEndpoint ,boolean direction) // direction=true means up
+	{
+		Stack<String> stack = new Stack<>();
+		stack.push(posOfInfo(begin.getInfo()));
+		if (begin!=common)
+		{
+			stack.push(relationToPrint(begin));
+			S previous = begin;
+			S current = parentMap.get(begin);
+			while (current != common)
+			{
+				if ("conj".equalsIgnoreCase(InfoGetFields.getRelation(previous.getInfo())))
+				{
+					// skip it
+				}
+				else
+				{
+					stack.push(infoToString(current.getInfo()));
+					stack.push(relationToPrint(current));
+				}
+				previous = current;
+				current = parentMap.get(current);
+			}
+			if (commonIsEndpoint)
+			{
+				stack.push(posOfInfo(common.getInfo()));
+			}
+			else
+			{
+				stack.push(infoToString(common.getInfo()));
+			}
+		}
+		String delimiter = ">";
+		if (direction)
+		{
+			Stack<String> temp = new Stack<String>();
+			while (!stack.isEmpty())
+			{
+				temp.push(stack.pop());
+			}
+			stack = temp;
+			delimiter = "<";
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append(stack.pop());
+		while (!stack.isEmpty())
+		{
+			sb.append(delimiter);
+			sb.append(stack.pop());
+		}
+		return sb.toString();
+	}
+	
+	private String relationToPrint(S node)
+	{
+		String relation = InfoGetFields.getRelation(node.getInfo());
+		if (relation.equalsIgnoreCase("conj"))
+		{
+			S parent = parentMap.get(node);
+			if (parentMap.get(parent)!=null)
+			{
+				relation = InfoGetFields.getRelation(parent.getInfo());
+			}
+		}
+		return relation;
+	}
+	
+	private String infoToString(I info)
+	{
+		String lemma = InfoGetFields.getLemma(info).trim().toLowerCase();
+		lemma.replaceAll("<", "#");
+		lemma.replaceAll(">", "#");
+		lemma.replaceAll(":", "#");
+		String pos = posOfInfo(info);
+		return pos+":"+lemma+":"+pos;
+	}
+	
+	private String posOfInfo(I info)
+	{
+		String ret = null;
+		switch(SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(info)))
+		{
+		case ADJECTIVE:
+			ret = "a";
+			break;
+		case ADVERB:
+			ret = "a";
+			break;
+		case DETERMINER:
+			ret = "d";
+			break;
+		case NOUN:
+			ret = "n";
+			break;
+		case OTHER:
+			ret = "o";
+			break;
+		case PREPOSITION:
+			ret = "p";
+			break;
+		case PRONOUN:
+			ret = "p";
+			break;
+		case PUNCTUATION:
+			ret = "o";
+			break;
+		case VERB:
+			ret = "v";
+			break;
+		default: 
+			ret = "o";
+			break;
+		}
+		return ret;
+	}
+	
+	
+	
+	
+	private static final String[] NEW_CLAUSE_RELATIONS_ARRAY = new String[]{
+		"advcl",
+		//"partmod",
+		"prepc",
+		"purpcl",
+		"ccomp",
+		"csubjpass",
+		"csubj",
+		"parataxis",
+		"pcomp",
+		"rcmod",
+		//"xcomp",
+		"infmod"
+	};
+	private static final Set<String> NEW_CLAUSE_RELATIONS = Utils.arrayToCollection(NEW_CLAUSE_RELATIONS_ARRAY, new LinkedHashSet<String>());	
+		
+			
+	
 	
 	private S tree;
+	private Map<S, S> parentMap;
+	private LeastCommonAncestor<I, S> lca;
+	
 	private Set<String> templates = null;
+
+	private static Cache<AbstractNode<?,?>, Set<String>> cache = new CacheFactory<AbstractNode<?,?>, Set<String>>().getCache(TEMPLATES_FROM_TREE_CACHE_SIZE);
 }

@@ -27,6 +27,7 @@ public class FilterFeatureScoreIterator extends FeatureScoreIterator {
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.iterators.ElementFeatureScoreIterator#filtered(java.lang.Double)
 	 */
+	@Override
 	protected boolean filtered(double val) {
 		switch (filterType) {
 			case MIN_VAL:

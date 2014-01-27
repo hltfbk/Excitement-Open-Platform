@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE page [
+<!ENTITY jars "C:\Alon\Studies\Projet M.sc\Workspace\JARS\">
+]>
+
+<configuration>
+
+<module name="General">
+	<param name="jars-dir">&jars;</param>
+	<param name="max_term_length">60</param>
+	<param name="min_term_length">2</param>
+	<param name="useDeAccent">false</param>		<!-- the parameter is used for the UtilClass to change all special English char to regular letters -->
+	<param name="max_NP_words_count">7</param> <!--The maximum words that can be part of a NP phrase (used for the syntacticIDM (in the syntacticUtils class)) ) -->
+	
+</module>
+
+<module name="jwpl">
+	<param name="host">localhost</param>
+	<param name="database">jwpl</param> <!-- Schema name -->
+	<param name="user">root</param>
+	<param name="password">omahgc</param>
+	<param name="language">italian</param>
+</module>
+
+<module name="Extractors">
+	<param name="useCategory">false</param>
+	<param name="useRedirect">false</param>
+	<param name="useLink">false</param> <!-- not usable until new stable version of jwpl will show -->
+	<param name="useParenthesis">false</param>
+	<param name="useLexicalIDM">false</param> <!-- Important note – do not fill the database using both the lexicalIDM and syntacticIDM extractors. Using them both can result in wrong classifiers ranks. -->
+	<param name="useSyntacticIDM">true</param>
+
+</module>
+
+<module name="Database">
+	<param name="driver">org.gjt.mm.mysql.Driver</param>
+	<param name="url">jdbc:mysql://localhost:3306/wikilexresita2</param>
+	<param name="username">root</param>
+	<param name="password">nat_2k12</param>
+	<param name="insertion batch size">500</param>
+</module>
+
+<module name="processing_tools">
+	<param name="TextPro-lemmatizer-command">/home/aprosio/tp-ita/textpro1.5/MorphoPro/bin/fstan /home/aprosio/tp-ita/textpro1.5/MorphoPro/models/italian-utf8.fsa</param>
+	<param name="textPro-path">/home/aprosio/textpro-sw/</param>
+	<param name="parser">malt</param>
+	<param name="parser-path">/home/aprosio/tp-ita/italian-parser-1.7.1/</param>
+	<param name="encoding">ISO-8859-1</param>
+</module>
+
+</configuration>

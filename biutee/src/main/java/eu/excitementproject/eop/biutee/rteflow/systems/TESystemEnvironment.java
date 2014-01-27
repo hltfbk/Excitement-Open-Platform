@@ -1,8 +1,10 @@
 package eu.excitementproject.eop.biutee.rteflow.systems;
-import java.util.Set;
 
+import java.util.Set;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.alignment.AlignmentCriteria;
 import eu.excitementproject.eop.transformations.generic.truthteller.SynchronizedAtomicAnnotator;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
@@ -26,7 +28,9 @@ public class TESystemEnvironment
 			PluginRegistry pluginRegistry,
 			FeatureVectorStructureOrganizer featureVectorStructureOrganizer,
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
-			ImmutableSet<String> stopWords)
+			ImmutableSet<String> stopWords,
+			PARSER parser, boolean collapseMode,
+			GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox)
 	{
 		super();
 		this.ruleBasesToRetrieveMultiWords = ruleBasesToRetrieveMultiWords;
@@ -36,6 +40,9 @@ public class TESystemEnvironment
 		this.featureVectorStructureOrganizer = featureVectorStructureOrganizer;
 		this.alignmentCriteria = alignmentCriteria;
 		this.stopWords = stopWords;
+		this.parser = parser;
+		this.collapseMode = collapseMode;
+		this.gapToolBox = gapToolBox;
 	}
 	
 	
@@ -68,6 +75,22 @@ public class TESystemEnvironment
 	{
 		return stopWords;
 	}
+	public PARSER getParser()
+	{
+		return parser;
+	}
+	public boolean isCollapseMode()
+	{
+		return collapseMode;
+	}
+	public GapToolBox<ExtendedInfo, ExtendedNode> getGapToolBox()
+	{
+		return gapToolBox;
+	}
+
+
+
+
 
 
 
@@ -82,4 +105,7 @@ public class TESystemEnvironment
 	private final FeatureVectorStructureOrganizer featureVectorStructureOrganizer;
 	private final AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria;
 	private final ImmutableSet<String> stopWords;
+	private final PARSER parser;
+	private final boolean collapseMode;
+	private final GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox;
 }

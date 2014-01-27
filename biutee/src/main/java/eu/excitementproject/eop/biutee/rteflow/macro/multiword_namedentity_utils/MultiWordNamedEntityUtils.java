@@ -43,7 +43,14 @@ public class MultiWordNamedEntityUtils
 	setRulesOfNamedEntities(BasicNode hypothesisTree) throws TeEngineMlException
 	{
 		Set<RuleWithConfidenceAndDescription<Info, BasicNode>> ret = new LinkedHashSet<RuleWithConfidenceAndDescription<Info,BasicNode>>();
+		
+		// Create a map from every named-entity node in the tree to a list of nodes
+		// where this list is the full named-entity.
+		// For example, in "Albert Einstein is a scientist" there are two named-entity nodes:
+		// Albert and Einstein. The map will map "Albert" to the list "Albert Einstein"
+		// and "Einstein" to "Albert Einstein".
 		ValueSetMap<BasicNode, List<BasicNode>> vsmNeInTree = mapNamedEntitiesFromTree(hypothesisTree);
+		
 		for (BasicNode lhsNode : vsmNeInTree.keySet())
 		{
 			SimplerCanonicalPosTag pos = SimplerPosTagConvertor.simplerPos(InfoGetFields.getCanonicalPartOfSpeech(lhsNode.getInfo()));
@@ -70,6 +77,7 @@ public class MultiWordNamedEntityUtils
 							}
 							if (null==mappedRhsNode)
 							{
+								// then throw an exception...
 								try
 								{
 									StringBuffer sb = new StringBuffer();
@@ -89,16 +97,10 @@ public class MultiWordNamedEntityUtils
 									sb.append(TreeUtilities.treeToString(rhsTree));
 									throw new TeEngineMlException(sb.toString());
 								}
-								catch(TreeStringGeneratorException e)
+								catch(TreeStringGeneratorException | NullPointerException e)
 								{
 									throw new TeEngineMlException("null==mappedRhsNode");
 								}
-								catch(NullPointerException e)
-								{
-									throw new TeEngineMlException("null==mappedRhsNode");
-								}
-
-
 							}
 							BasicNode ruleLhs = new BasicNode(lhsNode.getInfo());
 							mapNodes.put(ruleLhs,mappedRhsNode);
@@ -120,19 +122,20 @@ public class MultiWordNamedEntityUtils
 							try
 							{
 								StringBuffer sb = new StringBuffer();
-								sb.append("Skipping multi-word-named-entity rule due to: AbstractNodeUtils.treeToSet(rhsTree).size()!=neList.size()\n");
-								sb.append("The neList is:\n");
+								//sb.append("Skipping multi-word-named-entity rule due to: AbstractNodeUtils.treeToSet(rhsTree).size()!=neList.size()\n");
+								sb.append("Skipping multi-word-named-entity rule, since the named-entity nodes do not belong all to the same sub-tree.\n(the named-entity is fragmented in several unrelated sub-trees).");
+								sb.append("The named-entity is:\n");
 								for (BasicNode nn : neList)
 								{
-									sb.append(nn.getInfo().getId()).append(" - ").append(InfoGetFields.getLemma(nn.getInfo()));
-									sb.append(", ");
+									sb.append(InfoGetFields.getLemma(nn.getInfo()));
+									sb.append(" ");
 								}
 								sb.append("\n");
 								logger.warn(sb.toString());
 							}
 							catch(NullPointerException e)
 							{
-								logger.warn("Skipping multi-word-named-entity rule due to: AbstractNodeUtils.treeToSet(rhsTree).size()!=neList.size(). Cannot print the nodes.");
+								logger.warn("Skipping multi-word-named-entity rule, since the named-entity nodes do not belong all to the same sub-tree.\n(the named-entity is fragmented in several unrelated sub-trees).\nCannot print the nodes.");
 							}
 						}
 					}

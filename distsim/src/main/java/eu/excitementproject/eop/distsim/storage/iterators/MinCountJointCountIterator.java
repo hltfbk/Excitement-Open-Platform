@@ -21,6 +21,7 @@ public class MinCountJointCountIterator extends JointCountIterator {
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.JointCountIterator#filtered(java.lang.Double)
 	 */
+	@Override
 	protected boolean filtered(Double count) {
 		return count < minCount;
 	}

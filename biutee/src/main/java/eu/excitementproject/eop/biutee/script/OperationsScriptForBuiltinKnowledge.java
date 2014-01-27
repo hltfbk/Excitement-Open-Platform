@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.biutee.script;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_MODULE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_DYNAMIC_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_FILE_PARAMETER_NAME;
@@ -33,6 +33,7 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
 import eu.excitementproject.eop.transformations.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.builtin_knowledge.LexicalResourcesFactory;
@@ -57,6 +58,7 @@ import eu.excitementproject.eop.transformations.operations.rules.manual.FromText
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames;
 
+
 /**
  * Creates and initializes all the built-in knowledge resources.
  * The initialized knowledge resources can then be retrieved from the
@@ -69,10 +71,11 @@ import eu.excitementproject.eop.transformations.utilities.TransformationsConfigu
 @NotThreadSafe
 public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScript<Info, BasicNode>
 {
-	public OperationsScriptForBuiltinKnowledge(ConfigurationFile configurationFile)
+	public OperationsScriptForBuiltinKnowledge(ConfigurationFile configurationFile,PARSER parser)
 	{
 		super();
 		this.configurationFile = configurationFile;
+		this.parser = parser;
 	}
 	
 	@Override
@@ -82,7 +85,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 		
 		try
 		{
-			knowledgeResourcesParams = configurationFile.getModuleConfiguration(KNOWLEDGE_RESOURCES_MODULE_NAME);
+			knowledgeResourcesParams = configurationFile.getModuleConfiguration(TRANSFORMATIONS_MODULE_NAME);
 			List<KnowledgeResource> knowledgeResources = knowledgeResourcesParams.getEnumList(KnowledgeResource.class, KNOWLEDGE_RESOURCES_PARAMETER_NAME);
 			createItemsForKnowledgeResources(knowledgeResources);
 		}
@@ -90,31 +93,11 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 		{
 			throw new OperationException("Initialization failed. See nested exception.",e);
 		}
-		catch(RuleBaseException e)
+		catch(RuleBaseException|ClassNotFoundException|TeEngineMlException
+				|LexicalResourceException|IOException|SQLException e)
 		{
 			throw new OperationException("Could not create a rule base.",e);
 		}
-		catch (ClassNotFoundException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (TeEngineMlException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (LexicalResourceException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (IOException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-		catch (SQLException e)
-		{
-			throw new OperationException("Could not create a rule base.",e);
-		}
-
 	}
 
 
@@ -168,12 +151,8 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	@Override
 	public void setHypothesisInformation(HypothesisInformation hypothesisInformation) throws TeEngineMlException 
 	{
-		// !!!!! NOTE !!!!!
-		// If you are working on RTE-Sum (RTE 6,7) and it looks like that this method is called too many times,
-		// then consider changing the value of Constants.USE_OLD_CONCURRENCY_IN_RTE_SUM to true.
-
 		super.setHypothesisInformation(hypothesisInformation);	// this.hypothesisInformation = hypothesisInformation;
-		logger.info("DefaultOperationScript.setHypothesisInformation()...");
+		if (logger.isDebugEnabled()){logger.debug(CLASS_NAME+".setHypothesisInformation()...");} 
 		if (graphBasedLexicalChainRuleBase != null)
 		{
 			// Creates a set of "LemmaAndPos" of all hypothesis tree's nodes
@@ -202,17 +181,13 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 				}
 				simpleLexicalChainRuleBase.setRules(createdRules, this);
 			}
-			catch (LexicalResourceException e)
-			{
-				throw new TeEngineMlException("Failed to create chain of lexical rules",e);
-			}
-			catch (RuleBaseException e)
+			catch (LexicalResourceException | RuleBaseException e)
 			{
 				throw new TeEngineMlException("Failed to create chain of lexical rules",e);
 			}
 		}
 
-		logger.info("DefaultOperationScript.setHypothesisInformation() DONE");
+		if (logger.isDebugEnabled()){logger.debug(CLASS_NAME+".setHypothesisInformation() DONE");}
 	}
 	
 	
@@ -234,7 +209,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 		LexicalResourcesFactory lexicalFactory = new LexicalResourcesFactory(configurationFile);
 		for (KnowledgeResource resource : knowledgeResources)
 		{
-			logger.debug("Initializing resource: "+resource.getDisplayName());
+			logger.info("Initializing resource: "+resource.getDisplayName());
 
 			// get the module name for the configuration file
 			String moduleName = resource.getInfrastructureModuleName();
@@ -252,7 +227,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 			if (resource.isDirtLikeDb())
 			{
 				// Handle all DIRT-like resources (orig-dirt, binary, Unary, Binc, Framenet, etc.)
-				DirtDBRuleBase ruleBase = DirtDBRuleBase.fromConfigurationParams(resource.getDisplayName(), configurationFile.getModuleConfiguration(resource.getModuleName()));
+				DirtDBRuleBase ruleBase = DirtDBRuleBase.fromConfigurationParams(resource.getDisplayName(), configurationFile.getModuleConfiguration(resource.getModuleName()),parser);
 				listDirtDbRuleBases.add(ruleBase);
 				ruleBasesEnvelopes.put(resource.getDisplayName(),new RuleBaseEnvelope<Info, BasicNode>(ruleBase));
 				items.add(new ItemForKnowedgeResource(resource, new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName())));
@@ -388,7 +363,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	
 
 
-	
+	protected final PARSER parser;
 	protected ConfigurationFile configurationFile = null;
 	protected ConfigurationParams knowledgeResourcesParams;	
 	protected List<ItemForKnowedgeResource> items;
@@ -398,5 +373,6 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	protected BuilderSetOfWords simpleLexicalChainBuilder = null;
 	protected SimpleLexicalChainRuleBase simpleLexicalChainRuleBase = null;
 
+	private static final String CLASS_NAME = OperationsScriptForBuiltinKnowledge.class.getSimpleName();
 	private static final Logger logger = Logger.getLogger(OperationsScriptForBuiltinKnowledge.class);
 }

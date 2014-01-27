@@ -59,8 +59,8 @@ public class JointCountIterator extends ImmutableIterator<ElementFeatureJointCou
 	protected void moveNext() {
 		if (iterator.hasNext()) {
 			Pair<Integer, BasicMap<Integer, Double>> pair = iterator.next();
-			next = new DefaultElementFeatureJointCounts(pair.getFirst(), pair.getSecond().iterator());
-		} else
+			next = new DefaultElementFeatureJointCounts(pair.getFirst(), pair.getSecond().iterator(),pair.getSecond().size());
+		} else 
 			next = null;
 	}
 
