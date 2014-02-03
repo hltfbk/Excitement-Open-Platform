@@ -166,7 +166,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	 */
 	public String getComponentName()
 	{
-		return "GermanTransDM"; 
+		return "GermanTransDm"; 
 	}
 	
 	
@@ -221,7 +221,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 		Set<LexicalRule<? extends GermanTransDmInfo>> result = new HashSet<LexicalRule<? extends GermanTransDmInfo>>();
       
 		// first check if we have a POS we can say something about with this resource,
-		// i.e., verbs, nouns, adjectives. Else, return emtpy list.
+		// i.e., verbs, nouns, adjectives. Else, return empty list.
 		if (!isValidPos(pos)) {
 			return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>(result);
 		}

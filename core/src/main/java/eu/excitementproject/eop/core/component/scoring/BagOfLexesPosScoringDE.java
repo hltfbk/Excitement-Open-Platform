@@ -58,6 +58,8 @@ public class BagOfLexesPosScoringDE extends BagOfLexesScoringDE {
 	 * the constructor using parameters
 	 * 
 	 * @param isDS whether to use <code>GermanDistSim</code>
+	 * @param isTdm whether to use <code>GermanTransDmResource</code>
+	 * @param simMeasure the similarity measure used for GermanTransDm, either "cosine", "balapinc" or "all"
 	 * @param isGN whether to use <code>GermaNetWrapper</code>
 	 * @param germaNetRelations the array of GermaNet relations
 	 * @param germaNetFilePath the file path to GermaNet
@@ -67,8 +69,8 @@ public class BagOfLexesPosScoringDE extends BagOfLexesScoringDE {
 	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
-	public BagOfLexesPosScoringDE(boolean isDS, boolean isGN, String[] germaNetRelations, String germaNetFilePath, boolean isDB, boolean useScores, Integer derivSteps) throws ConfigurationException, LexicalResourceException{
-		super(isDS, isGN, germaNetRelations, germaNetFilePath, isDB);
+	public BagOfLexesPosScoringDE(boolean isDS, boolean isTdm, String simMeasure, boolean isGN, String[] germaNetRelations, String germaNetFilePath, boolean isDB, boolean useScores, Integer derivSteps) throws ConfigurationException, LexicalResourceException{
+		super(isDS, isTdm, simMeasure, isGN, germaNetRelations, germaNetFilePath, isDB);
 		numOfFeats = super.getNumOfFeats();
 		
 		for (int i = 0; i < moduleFlags.length; i++) {
@@ -166,6 +168,9 @@ public class BagOfLexesPosScoringDE extends BagOfLexesScoringDE {
 			if (super.moduleFlags[1]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw));
 			}
+			if (super.moduleFlags[2]) {
+				scoresVector.add(calculateSingleLexScore(tBag, hBag, gtdm));
+			}
 			if (moduleFlags[0]) {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, dbr));
 			}
@@ -214,7 +219,8 @@ public class BagOfLexesPosScoringDE extends BagOfLexesScoringDE {
 
 		double score = 0.0d;
 		HashMap<String, Integer> tWordBag = new HashMap<String, Integer>();
-
+		
+		
 		for (final Iterator<Entry<String, Integer>> iter = tBag.entrySet()
 				.iterator(); iter.hasNext();) {
 			Entry<String, Integer> entry = iter.next();
@@ -242,6 +248,8 @@ public class BagOfLexesPosScoringDE extends BagOfLexesScoringDE {
 		}
 
 		score = calculateSimilarity(tWordBag, hBag).get(0);
+		
+//		System.out.println("resource: "+lex.toString()+" no of rules: "+numberOfRules);
 
 		return score;
 	}

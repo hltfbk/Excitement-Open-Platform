@@ -32,7 +32,7 @@
 -->
 
 <configuration>
-    
+
     <!-- Platform configuration section -->
     <section name="PlatformConfiguration">
         <!-- The EDA to be used: MaxEntClassificationEDA -->
@@ -57,57 +57,36 @@
      by their own sections. -->
 	<section name="BagOfLexesScoring">
         <!-- true ::= Use part-of-speech tagging, false ::= do not use part-of-speech tagging -->
-		<property name="withPOS">true</property>
+		<property name="withPOS">false</property>
 		<property name="GermanDistSim"></property>
 		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
-		<property name="DerivBaseResource"></property>
 	</section>
-	
-    <!-- Specifies a German lexical resource based on corpus term distribution.
+
+	<!-- Specifies a German lexical resource based on corpus term distribution.
      It uses the distance vectors that is gathered from DeWac, on 10k most frequent
-     German words observed in the corpus.
+     German words observed in the corpus. 
      For details about the corpus: http://wacky.sslmit.unibo.it/doku.php?id=corpora -->
 	<section name="GermanDistSim">
-	</section>
+	</section> 
 	
     <!-- A wrapper for being able to GermaNet - a WordNet-like lexical semantics resource for German. -->
 	<section name="GermaNetWrapper">
-        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] -->
-		<property name="germaNetFilesPath">/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. -->
-        
-		<!-- GermaNet relations and their confidences (LHS -> RHS) -->
-		<property name="causesConfidence">1.0</property>
+	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
+		<property name="germaNetFilesPath">/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
+
+		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
+		<property name="causesConfidence">1.0</property> 
 		<property name="entailsConfidence">1.0</property>
-		<property name="hypernymConfidence">1.0</property>
+		<property name="hypernymConfidence">1.0</property> 
 		<property name="synonymConfidence">1.0</property>
-	</section>
+	</section> 
 	
-    <!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
-	<section name="DerivBaseResource">
-        <!-- Specifies if rule scores are available or not. True=file with scores avaliable, False=no scores.
-         If you choose a resource format containing scores, but declare "false" here (or vice versa), the
-         DerivBaseResource implementation will raise an exception.
-         DEFAULT: false. -->
-	    <property name="scoreInfo">true</property>
-        <!-- Specifies the confidence in the derivational relationship of a lemma pair.
-         Values range between 0.00 and 1.00; The score is calculated as 1/n, where n is the length of the derivation
-         path. Thus, 1.00 trusts only pairs resulting from one linking rule; 0.5 trusts pairs which are linked by two
-         rules; 0.33 trusts pairs which are linked by three rules, etc.
-         This property is only read if "scoreInfo" = true.
-         DEFAULT: 0.00. -->
-		<property name="scoreConfidence">0.01</property>
-	</section>
-    
-   <!-- Processing component for performing tree skeleton.  -->
-	<section name="TreeSkeletonScoring">
-	</section>
-	
-	<!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
+    <!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
      NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DS+DBPos+TS_DE</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GN+DS_DE</property>
         <!-- Please update the location for storing temporary files for training -->
 		<property name="trainDir">./target/DE/dev/</property>
         <!-- Please update the location for storing temporary files for testing -->
@@ -122,7 +101,7 @@
          Note: the mapping must be bijective:
          All names mentioned here must be specified as sections above, and each processing component specified above
          must be mentioned here. -->
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring,TreeSkeletonScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
 	</section>
 
 </configuration>

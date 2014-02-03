@@ -39,7 +39,7 @@ import java.util.HashMap;
 //import com.aliasi.util.Iterators.Array;
 
 /**
- * This class implements a German Lexical Resource based on GermaNet 7.0, which is 
+ * This class implements a German Lexical Resource based on GermaNet 8.0, which is 
  * the German WordNet. The implementation accesses GermaNet via GermaNet API.
  * (It uses GermaNet API each time it is being called upon).
  * 
@@ -49,7 +49,7 @@ import java.util.HashMap;
  * 
  * <P> It has a few configurable values. Basically, it needs path to GermaNet data itself, 
  * and a set of double values that indicates "confidence" for each own relation when they are 
- * treated as "entailment". See the main constructor for the detailed parameter info. 
+ * treated as "entailment". See the main constructor for the detailed parameter info.
  *  
  * <P>
  * Note that EXCITEMENT project cannot and do not redistribute GermaNet, and the
@@ -57,7 +57,7 @@ import java.util.HashMap;
  * University. If the GermaNet is not found, the component will raise an exception and
  * will not be initialized. 
  * 
- * @author Jan Pawellek, Britta Zeller
+ * @author Jan Pawellek, Britta Zeller, Julia Kreutzer
  * @since Nov 2012 
  */
 
@@ -261,8 +261,12 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	}
 
 	
-	/**In addition to getRulesForLeft(lemma,pos), this method 
-	 * also matches the relation field of LexicalRule with the argument.
+	/**
+	 * This method will return LexicalRules for a given LHS lemma, pos and GermaNetRelation.
+	 * LHS and RHS of the resulting rules are connected by the given relation.
+	 * The method can be called with any GermaNetRelation, also indicating non-entailment.
+	 * Note that relations that cannot be followed in GermaNet from LHS to RHS will lead to empty result lists.
+	 * This is the basic getRulesForLeft method that all other getRules/getRulesForLeft methods call.
 	 * 
 	 * @param lemma Lemma to be matched on LHS
 	 * @param pos POS to be matched on LHS. null means "don't care". 
@@ -280,7 +284,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		if ( pos != null && !isValidPos(pos))	{ return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result); } 
 	
 		// check relation is valid or not for this type of rule -> if not, return empty list
-		if ( relation != null && relation != GermaNetRelation.has_antonym && !Arrays.toString(REL_E_LEFT).contains(relation.toGermaNetString()))	{ return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result); } 
+		if ( relation != null && relation != GermaNetRelation.has_antonym && !Arrays.toString(REL_E_LEFT).contains(relation.toGermaNetString())) {		return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result); 	} 
 		
 		// fetch synsets for lemma
 		List<Synset> syns = pos == null ? germanet.getSynsets(lemma) : germanet.getSynsets(lemma, posToWordCategory(pos));
@@ -297,11 +301,17 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		for (Synset syn: syns) {
 			// if conceptual relation
 			if (ConRel.isConRel(relation.toGermaNetString())){
+				Set<LexicalRule<? extends GermaNetInfo>> a = collectConceptualRules("left",lemma, pos, syn, relation);
 				result.addAll(collectConceptualRules("left",lemma, pos, syn, relation));	
+				if (relation == GermaNetRelation.entails) {
+					for (LexicalRule<? extends GermaNetInfo> la : a){
+						System.out.println(la.toString());
+					}
+				}
 			}
 
 			// if lexical relation
-			if (LexRel.isRel(relation.toString())) {
+			else if (LexRel.isRel(relation.toGermaNetString())) {
 				try {
 					result.addAll(collectLexicalRules("left", lemma, pos, syn, relation));
 				} catch (UnsupportedPosTagStringException e) {}
@@ -310,8 +320,12 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result);
 	}
 
-	/** In addition to getRulesForRight(lemma, pos), 
-	 * this method also matches the relation field of LexicalRule with the argument.
+	/** 	 
+	 * This method will return LexicalRules for a given RHS lemma, pos and GermaNetRelation.
+	 * LHS and RHS of the resulting rules are connected by the given relation.
+	 * The method can be called with any GermaNetRelation, also indicating non-entailment.
+	 * Note that relations that cannot be followed in GermaNet from RHS to LHS will lead to empty result lists.
+	 * This is the basic getRulesForRight method that all other getRulesForRight methods call.
 	 * 
 	 * @param lemma Lemma to be matched on RHS. 
 	 * @param pos POS to be matched on RHS. null means "don't care". 
@@ -350,7 +364,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 			}
 
 			// if lexical relation
-			if (LexRel.isRel(relation.toString())) {
+			if (LexRel.isRel(relation.toGermaNetString())) {
 				try {
 					result.addAll(collectLexicalRules("right", lemma, pos, syn, relation));
 				} catch (UnsupportedPosTagStringException e) {}
@@ -360,7 +374,9 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	}
 	
 	/**
-	 * returns the list of LexicalRules that match with the given LHS lemma, pos and canonical relation (NonEntailment or Entailment)
+	 * This method returns the list of LexicalRules that match with the given LHS lemma, pos and canonical relation (NonEntailment or Entailment).
+	 * For NonEntailment it collects rules for all GermaNetRelations indicating non-entailment.
+	 * For Entailment it collects rules for all GermaNetRelations indicating entailment.
 	 * 
 	 * @param lemma lemma to be matched on the rule's LHS
 	 * @param pos POS of the LHS lemma
@@ -382,7 +398,9 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	}
 	
 	/**
-	 * returns the list of LexicalRules that match with the given lemma on RHS, pos and canonical relation (NonEntailment or Entailment)
+	 * This method returns the list of LexicalRules that match with the given RHS lemma, pos and canonical relation (NonEntailment or Entailment).
+	 * For NonEntailment it collects rules for all GermaNetRelations indicating non-entailment.
+	 * For Entailment it collects rules for all GermaNetRelations indicating entailment.
 	 * 
 	 * @param lemma lemma to be matched on the rule's RHS
 	 * @param pos POS of the RHS lemma
@@ -404,9 +422,10 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	}
 	
 	/**
-	 * Returns a list of lexical rules whose left side (the head of the lexical relation) matches
-	 * the given lemma and POS. An empty list means that no rules were matched. If the user 
-	 * gives null POS, the class will retrieve rules for all possible POSes.
+	 * Returns a list of lexical rules whose left side (the head of the lexical relation) matches the given lemma and POS. 
+	 * An empty list means that no rules were matched. 
+	 * If the user gives null POS, the class will retrieve rules for all possible POSes.
+	 * Rules for all valid GermaNetRelations indicating Entailment from LHS to RHS will be collected.
 	 * 
 	 * @param lemma Lemma to be matched on LHS. 
 	 * @param pos POS to be matched on LHS. null means "don't care". 
@@ -425,9 +444,11 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 	}
 
 	/** 
-	 * Returns a list of lexical rules whose right side (the target of the lexical relation) matches 
-	 * the given lemma and POS. An empty list means that no rules were matched.
-	 * 
+	 * Returns a list of lexical rules whose right side (the target of the lexical relation) matches the given lemma and POS. 
+	 * An empty list means that no rules were matched. 
+	 * If the user gives null POS, the class will retrieve rules for all possible POSes.
+	 * Rules for all valid GermaNetRelations indicating Entailment from RHS to LHS will be collected.	 
+	 *  
 	 * @param lemma Lemma to be matched on RHS. 
 	 * @param pos POS to be matched on RHS. null means "don't care". 
 	 * @return a list of rules that matches the given condition. Empty list if there's no match. 
@@ -446,6 +467,7 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 
 	/** 
 	 * This method returns a list of lexical rules whose left and right sides match the two given pairs of lemma and POS.
+	 * Rules for all valid GermaNetRelations indicating Entailment for the given pair will be collected.	 
 	 * 
 	 * @param leftLemma Lemma to be matched on LHS
 	 * @param leftPos POS to be matched on LHS. null means "don't care". 
@@ -479,7 +501,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 		return new ArrayList<LexicalRule<? extends GermaNetInfo>>(result);
 	}
 	
-	/** In addition to getRules(leftlemma, leftpos, rightlemma, rightpos), this method also matches the relation field of LexicalRule with the argument.
+	/** 
+	 * This method returns a list of lexical rules whose left and right sides match the two given pairs of lemma and POS and the given GermaNetRelation.
 	 * 
 	 * @param leftLemma Lemma to be matched on LHS
 	 * @param leftPos POS to be matched on LHS. null means "don't care". 
@@ -555,19 +578,11 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 			throws LexicalResourceException{	
 		
 		Set<LexicalRule<? extends GermaNetInfo>> result = new HashSet<LexicalRule<? extends GermaNetInfo>>();
-		
-		// get transitive closure with given relation
-		//GNversion 7: List<List<Synset>> transClosure = syn.getTransRelations(conrel.toConRel());
-		List<List<Synset>> transClosure = syn.getTransRelatedSynsets(conrel.toConRel());
-		// iteration maximum defines limit of levels to go up: two levels for nouns, one for adjectives and verbs
-		int max = 2; // for nouns
-		if ((pos.toString().equals("ADJ")) || pos.toString().equals("V")){ max = 1; } // adj and verbs
-		
-		// iterate over levels of transitive closure (up till maximum)
-		for (int i=1; i<transClosure.size() && i<=max; i++){ // ignore first level (the synset itself)
-			// iterate over synsets at each level
-			for (Synset rightsyn : transClosure.get(i)) {
-				//iterate over all lexical units of a synset
+				
+		// if relation is not transitive, e.g. for entails and causes
+		if (!conrel.toConRel().isTransitive()){
+			List<Synset> syns = syn.getRelatedSynsets(conrel.toConRel());
+			for (Synset rightsyn : syns){
 				for (LexUnit lu : rightsyn.getLexUnits()){
 					GermanPartOfSpeech luPos = wordCategoryToPos(lu.getWordCategory());	
 					// set pos of lexical unit to "NP" if named entity
@@ -597,8 +612,53 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 				}
 			}
 		}
+		
+		// iteration maximum defines limit of levels to go up: two levels for nouns, one for adjectives and verbs
+		int max = 2; // for nouns
+		if ((pos.toString().equals("ADJ")) || pos.toString().equals("V")){ max = 1; } // adj and verbs
+		
+		// get transitive closure with given relation
+		//GNversion 7: List<List<Synset>> transClosure = syn.getTransRelations(conrel.toConRel());
+		List<List<Synset>> transClosure = syn.getTransRelatedSynsets(conrel.toConRel()); 
+		
+		// iterate over levels of transitive closure (up till maximum)
+		for (int i=1; i<transClosure.size() && i<=max; i++){ // ignore first level (the synset itself)
+			// iterate over synsets at each level
+			for (Synset rightsyn :  transClosure.get(i)) {
+				
+				//iterate over all lexical units of a synset
+				for (LexUnit lu : rightsyn.getLexUnits()){
+					
+					GermanPartOfSpeech luPos = wordCategoryToPos(lu.getWordCategory());	
+					// set pos of lexical unit to "NP" if named entity
+					if (lu.isNamedEntity()){
+						try {
+							luPos = new GermanPartOfSpeech("NP");
+							}
+						catch (UnsupportedPosTagStringException e) {}
+						}
+					// iterate over all orthographic forms of a lexical unit
+					for (String rightorth : rightsyn.getAllOrthForms()) {
+						
+						// create new lexical rule and add it to the results
+						LexicalRule<? extends GermaNetInfo> lexrule = null;
+						if (direction.equals("right")){ 						// if called for RHS, swap sides for lemma and pos
+							lexrule = new LexicalRule<GermaNetInfo>(rightorth, luPos, lemma, pos, CONFIDENCES.get(conrel.toConRel()), conrel.toGermaNetString(), "GermaNet", new GermaNetInfo(rightsyn.getId(), syn.getId()));
+						}
+						else{
+							lexrule = new LexicalRule<GermaNetInfo>(lemma, pos, rightorth, luPos, CONFIDENCES.get(conrel.toConRel()), conrel.toGermaNetString(), "GermaNet", new GermaNetInfo(syn.getId(), rightsyn.getId()));
+						}
+						
+						// exclude lemma from results, as well as GNROOT
+						if (!(lexrule.getLLemma().equals(lexrule.getRLemma())) || (lexrule.getRLemma().equals("GNROOT")) || !(lexrule == null) ) {
+							result.add(lexrule);
+						}
+					}
+				}
+			}
+		}
 		return result;
-	}
+		}
 	
 	/**
 	 * Collect lexical related lexical units and the resulting rules for a given pos, synset and a lexical relation.

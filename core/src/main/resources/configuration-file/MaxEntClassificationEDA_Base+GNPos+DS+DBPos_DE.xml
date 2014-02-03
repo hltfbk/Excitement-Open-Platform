@@ -97,17 +97,14 @@
          DEFAULT: 0.00. -->
 		<property name="scoreConfidence">0.01</property>
 	</section>
-    
-   <!-- Processing component for performing tree skeleton.  -->
-	<section name="TreeSkeletonScoring">
-	</section>
+  
 	
 	<!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
      NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DS+DBPos+TS_DE</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DS+DBPos_DE</property>
         <!-- Please update the location for storing temporary files for training -->
 		<property name="trainDir">./target/DE/dev/</property>
         <!-- Please update the location for storing temporary files for testing -->
@@ -122,7 +119,7 @@
          Note: the mapping must be bijective:
          All names mentioned here must be specified as sections above, and each processing component specified above
          must be mentioned here. -->
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring,TreeSkeletonScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
 	</section>
 
 </configuration>
