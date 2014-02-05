@@ -53,7 +53,7 @@ public final class LexicalRule<I extends RuleInfo> implements Serializable
 	 * @param leftPos
 	 * @param rightLemma
 	 * @param rightPos
-	 * @param confidence the confidence score of the rule, in [0,1]. If now meaningful confidence score is available, the default is 0.5
+	 * @param confidence the confidence score of the rule, in [0,1]. If no meaningful confidence score is available, the default is 0.5
 	 * @param relation If the resource uses real relations (like Wordnet or Wiktionary), it's a String name of the relevant relation. Else, null
 	 * @param resourceName the resource's name
 	 * @param info the additional information of the rule
