@@ -58,7 +58,7 @@
 	<section name="BagOfLexesScoring">
         <!-- true ::= Use part-of-speech tagging, false ::= do not use part-of-speech tagging -->
 		 <property name="withPOS">false</property>
-		<property name="GermanTransDm"></property>
+		<property name="GermanTransDmResource"></property>
 	</section>
 	
 	<!-- Specifies a German lexical resource based on cross- and multilingual corpus term distribution.
@@ -71,7 +71,7 @@
 	 	<li>cosine</li>
  		<li>balAPinc</li>
  	They can be used in combination or individually (all, cosine, balapinc).-->
-	<section name="GermanTransDm">
+	<section name="GermanTransDmResource">
 		<property name="simMeasure">all</property>
 		<!-- Specifies the similarity measure: cos, balapinc or all -->
 	</section>

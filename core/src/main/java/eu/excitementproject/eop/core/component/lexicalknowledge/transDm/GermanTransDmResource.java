@@ -78,19 +78,19 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	
 	
 	/**
-	 * Creates a new GermanTransDm instance via a common config file.
+	 * Creates a new GermanTransDmResourceinstance via a common config file.
 	 * 
-	 * @param config		Configuration for the GermanTransDm instance
+	 * @param config		Configuration for the GermanTransDmResource instance
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
 	public GermanTransDmResource(CommonConfig config) throws ConfigurationException, ComponentException {
-		this(config.getSection("GermanTransDm").getString("simMeasure"));		
+		this(config.getSection("GermanTransDmResource").getString("simMeasure"));		
 	}
 	
 	
 	/**
-	 * Creates a new GermanTransDM instance according to the similarity measure(s) parameter
+	 * Creates a new GermanTransDmResource instance according to the similarity measure(s) parameter
 	 * handed in. Depending on this parameter, either one or two lists of pair similarities
 	 * are loaded.
 	 * 
@@ -166,7 +166,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	 */
 	public String getComponentName()
 	{
-		return "GermanTransDm"; 
+		return "GermanTransDmResource"; 
 	}
 	
 	
@@ -273,10 +273,10 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 					LexicalRule<? extends GermanTransDmInfo> lexrule;
 					if (isReverseMap) { // turn lhs and rhs around.
 						lexrule = new LexicalRule<GermanTransDmInfo>(rhs.substring(0, rhs.lastIndexOf("-")), pos2, 
-								lemma, pos1, score, measure, "GermanTransDm", new GermanTransDmInfo());						
+								lemma, pos1, score, measure, "GermanTransDmResource", new GermanTransDmInfo());						
 					} else { // keep lhs and rhs as it is in this method.
 						lexrule = new LexicalRule<GermanTransDmInfo>(lemma, pos1, rhs.substring(0, rhs.lastIndexOf("-")), 
-								pos2, score, measure, "GermanTransDm", new GermanTransDmInfo());						
+								pos2, score, measure, "GermanTransDmResource", new GermanTransDmInfo());						
 					}
 					result.add(lexrule);
 					

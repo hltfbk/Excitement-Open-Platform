@@ -146,9 +146,7 @@ public class MaxEntClassificationEDATest {
 		/* Baseline + GNPos + DS + DBPos + TPPos + TS */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TPPos+TS_DE.xml");
 //		0.63125
-		
-		// TODO new resource -> get score
-		
+				
 		/* TransDm */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TransDm_DE.xml");
 //		?

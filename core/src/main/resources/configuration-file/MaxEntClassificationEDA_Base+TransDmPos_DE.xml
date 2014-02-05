@@ -60,7 +60,7 @@
 		 <property name="withPOS">true</property>
 		<!-- <property name="GermanDistSim"></property> -->
 		<!--<property name="DerivBaseResource"></property>-->
-		<property name="GermanTransDm"></property>
+		<property name="GermanTransDmResource"></property>
 	</section>
 	
 	<!-- Specifies a German lexical resource based on cross- and multilingual corpus term distribution.
@@ -73,7 +73,7 @@
 	 	<li>cosine</li>
  		<li>balAPinc</li>
  	They can be used in combination or individually (all, cosine, balapinc).-->
-	<section name="GermanTransDm">
+	<section name="GermanTransDmResource">
 		<property name="simMeasure">all</property>
 		<!-- Specifies the similarity measure: cos, balapinc or all -->
 	</section>

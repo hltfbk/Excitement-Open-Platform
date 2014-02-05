@@ -32,7 +32,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTr
  * The <code>BagOfLexesScoringDE</code> class extends
  * <code>BagOfLemmasScoring</code>. It supports (currently)
  * <code>GermanDistSim</code>, <code>GermaNetWrapper</code> 
- * and <code>GermanTransDm<code>, three lexical resources.
+ * and <code>GermanTransDmResource<code>, three lexical resources.
  * 
  * @author Rui Wang, Julia Kreutzer
  * @since November 2012
@@ -109,7 +109,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
-			logger.info("Load GermanTransDm done.");
+			logger.info("Load GermanTransDmResource  done.");
 		}
 
 		// initialize GermaNet
@@ -150,7 +150,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 
 		if (null == comp.getString("GermanDistSim")
 				&& null == comp.getString("GermaNetWrapper")
-				&& null == comp.getString("GermanTransDm")
+				&& null == comp.getString("GermanTransDmResource")
 				&& null == comp.getString("DerivBaseResource")) {
 			throw new ConfigurationException(
 					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
@@ -172,7 +172,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 		}
 		
 		//initialize GermanTransDmResource
-		if (null!= comp.getString("GermanTransDm")){
+		if (null!= comp.getString("GermanTransDmResource")){
 			try {
 				gtdm = new GermanTransDmResource(config); //load gtdm with config
 				numOfFeats++; 
@@ -183,7 +183,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 			} catch (BaseException e){
 				throw new LexicalResourceException(e.getMessage());
 			}
-			logger.info("Load GermanTransDm done.");
+			logger.info("Load GermanTransDmResource done.");
 		}
 
 		// initialize GermaNet
@@ -251,7 +251,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
 			}
 			if (moduleFlags[1]) {
-				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw)); // TODO why not calculateSingleLexScoreWithGermaNetRelation ?
+				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw)); 
 			}
 			if (moduleFlags[2]) {
 				scoresVector.add(calculateSingleLexScore(tBag,hBag, gtdm)); 

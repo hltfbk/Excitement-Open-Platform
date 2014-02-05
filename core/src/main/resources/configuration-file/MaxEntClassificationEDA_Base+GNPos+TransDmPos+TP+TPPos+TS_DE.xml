@@ -59,7 +59,7 @@
         <!-- true ::= Use part-of-speech tagging, false ::= do not use part-of-speech tagging -->
 		<property name="withPOS">true</property>
 		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
-		<property name="GermanTransDm"></property>
+		<property name="GermanTransDmResource"></property>
 	</section>
 
 	
@@ -86,7 +86,7 @@
 	 	<li>cosine</li>
  		<li>balAPinc</li>
  	They can be used in combination or individually (all, cosine, balapinc).-->
-	<section name="GermanTransDm">
+	<section name="GermanTransDmResource">
 		<property name="simMeasure">all</property>
 		<!-- Specifies the similarity measure: cos, balapinc or all -->
 	</section> 
