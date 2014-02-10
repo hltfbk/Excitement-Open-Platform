@@ -7,7 +7,7 @@
 <configuration>
 
         
-   <section name="GermanTransDm">
+   <section name="GermanTransDmResource">
       	<!-- This section specifies the German distributional similarity resource based
         	 on 1) a translation of a distributional space built on an English corpus, 
         	 and 2) a German corpus. -->
