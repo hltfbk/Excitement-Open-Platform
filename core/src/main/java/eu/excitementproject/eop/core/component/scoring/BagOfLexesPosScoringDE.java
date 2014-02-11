@@ -33,6 +33,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNe
  * 
  * It adds POS tags into the queries to the lexical resources.
  * 
+ * Both GermaNetWrapper and GermanTransDmResource can be used with or without POS information. 
+ * 
  * @author Rui Wang
  * @since January 2013
  */

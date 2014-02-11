@@ -31,8 +31,11 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTr
 /**
  * The <code>BagOfLexesScoringDE</code> class extends
  * <code>BagOfLemmasScoring</code>. It supports (currently)
- * <code>GermanDistSim</code>, <code>GermaNetWrapper</code> 
- * and <code>GermanTransDmResource<code>, three lexical resources.
+ * <code>GermanDistSim</code>, <code>GermaNetWrapper</code>,
+ * <code>GermanTransDmResource<code>, and <code>GermanTransDmResource</code>,
+ * four lexical resources.
+ * 
+ * Both GermaNetWrapper and GermanTransDmResource can be used with or without POS information. 
  * 
  * @author Rui Wang, Julia Kreutzer
  * @since November 2012
@@ -109,7 +112,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 			} catch (BaseException e) {
 				throw new LexicalResourceException(e.getMessage());
 			}
-			logger.info("Load GermanTransDmResource  done.");
+			logger.info("Load GermanTransDmResource done.");
 		}
 
 		// initialize GermaNet
