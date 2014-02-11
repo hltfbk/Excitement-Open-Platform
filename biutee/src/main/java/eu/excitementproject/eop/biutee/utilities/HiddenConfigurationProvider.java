@@ -22,19 +22,34 @@ public class HiddenConfigurationProvider
 	
 	public static ConfigurationParams getHiddenParams() throws ConfigurationException
 	{
-		File file = new File(HIDDEN_CONFIGURAITON_FILE_NAME);
-		if (file.exists())
+		if (!existenceChecked)
 		{
-			ConfigurationFile configurationFile = SystemInitialization.loadConfigurationFile(file.getPath());
-			ConfigurationParams params = configurationFile.getModuleConfiguration(HIDDEN_MODULE_NAME);
-			ExperimentManager.getInstance().register(file);
-			return params;
+			synchronized(HiddenConfigurationProvider.class)
+			{
+				if (!existenceChecked)
+				{
+					try
+					{
+						File file = new File(HIDDEN_CONFIGURAITON_FILE_NAME);
+						if (file.exists())
+						{
+							ConfigurationFile configurationFile = SystemInitialization.loadConfigurationFile(file.getPath());
+							ConfigurationParams params = configurationFile.getModuleConfiguration(HIDDEN_MODULE_NAME);
+							ExperimentManager.getInstance().register(file);
+							hiddenParams = params;
+						}
+					}
+					finally
+					{
+						existenceChecked = true;
+					}
+				}
+			}
 		}
-		else
-		{
-			return null;
-		}
-		
+		return hiddenParams;
 	}
+	
+	private static boolean existenceChecked = false;
+	private static ConfigurationParams hiddenParams = null;
 
 }
