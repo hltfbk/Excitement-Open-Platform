@@ -73,7 +73,7 @@
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-        <property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_TransDm_DE</property> <!-- new resource -->
+        <property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_TransDm_10-10_DE</property> <!-- new resource -->
 		<!-- Please update the location for storing temporary files for training -->
 		<property name="trainDir">./target/DE/dev/</property>
         <!-- Please update the location for storing temporary files for testing -->
@@ -82,7 +82,7 @@
          left number ::= iterations - The number of GIS iterations to perform.
          right number ::= cutoff - The number of times a feature must be seen in order to be relevant for training.
          see also http://maxent.sourceforge.net/api/index.html -->
-		<property name="classifier">10000,1</property>
+		<property name="classifier">10,10</property>
         
         <!-- The list of processing components specified as sections above. The order is relevant.
          Note: the mapping must be bijective:

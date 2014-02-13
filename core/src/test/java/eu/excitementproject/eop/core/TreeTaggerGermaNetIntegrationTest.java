@@ -47,7 +47,7 @@ public class TreeTaggerGermaNetIntegrationTest {
 		GermaNetWrapper gnw=null;
 		try {
 			// TODO: in the future, this test code also should read from the common config. 
-			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
+			gnw = new GermaNetWrapper("/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/");
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");

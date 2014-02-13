@@ -81,7 +81,7 @@
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-        <property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TransDm_DE</property> <!-- new resource -->
+        <property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TransDm_withoutIEfeature_DE</property> <!-- new resource -->
 		<!-- Please update the location for storing temporary files for training -->
 		<property name="trainDir">./target/DE/dev/</property>
         <!-- Please update the location for storing temporary files for testing -->

@@ -57,7 +57,7 @@
     <!-- A wrapper for being able to GermaNet - a WordNet-like lexical semantics resource for German. -->
 	<section name="GermaNetWrapper">
 	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
-		<property name="germaNetFilesPath">/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
+		<property name="germaNetFilesPath">/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
 
 		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
 		<property name="causesConfidence">1.0</property> 
@@ -71,7 +71,7 @@
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_GN_DE</property>
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_GNPos_DE</property>
         <!-- Please update the location for storing temporary files for training -->
 		<property name="trainDir">./target/DE/dev/</property>
         <!-- Please update the location for storing temporary files for testing -->

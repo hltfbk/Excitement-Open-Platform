@@ -38,7 +38,7 @@ public class GermaNetWrapperMiniTest {
 		
 		GermaNetWrapper gnw1=null;
 		try {
-			gnw1 = new GermaNetWrapper("/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML");			
+			gnw1 = new GermaNetWrapper("/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/");			
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");

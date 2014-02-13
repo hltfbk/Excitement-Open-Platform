@@ -46,77 +46,23 @@
 	
 	<!-- Base processing component for computing a bag of words representation -->
 	<section name="BagOfWordsScoring">
-	</section>
+	</section> 
 	
 	<!-- Base processing component for computing a bag of lemmas representation -->
 	<section name="BagOfLemmasScoring">
-	</section>
-	
-    <!-- Processing component for computing a bag of lexeme representation using lexical
-     knowledge sources that are referenced with help of the name attribute and which have to be specified
-     by their own sections. -->
-	<section name="BagOfLexesScoring">
-        <!-- true ::= Use part-of-speech tagging, false ::= do not use part-of-speech tagging -->
-		<property name="withPOS">true</property>
-		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
-		<property name="DerivBaseResource"></property>
-	</section>
-	
-	<section name="GermaNetWrapper">
-	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
-		<property name="germaNetFilesPath">/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
-
-		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
-		<property name="causesConfidence">1.0</property> 
-		<property name="entailsConfidence">1.0</property>
-		<property name="hypernymConfidence">1.0</property> 
-		<property name="synonymConfidence">1.0</property>
 	</section> 
 	
-	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
-	<section name="DerivBaseResource"> 
-	<!-- Specifies if rule scores provided by the DErivBase resource should be used or not. 
-             True = scores are used, False = scores are not used.
-             DEFAULT: true.  -->
-        <property name="useScores">true</property>
-        <!-- Specifies the maximum accepted amount of derivation steps between two derivationally related lemmas
-             to count them as entailment pair. Integer values range between 1 and 10.
-             Each pair of lemmas within one derivational family is connected by a set of derivation rules. If one
-             lemma l2 can be directly derived from lemma l1, they are connected by one rule, thus, the number of
-             derivation steps is one. If l1 derives to l2, and l2 derives to l3, then the pair l1-l3 is connected
-             by two derivation steps, etc. The maximum amount of derivation steps to combine two lemmas is ten.
-             We assume the following: The more derivation steps must be carried out to connect two lemmas, the less 
-             probable it is that these two lemmas are really derivationally related - and thus they are less probable
-             to build an enailment relationship. 
-             Thus, a low value for the property "derivationSteps" only considers lemmas which are highly probably related.   
-             NOTE: This property is only considered if the property "useScores" = true.
-             DEFAULT: 10. -->    
-	<property name="derivationSteps">10</property>
-	</section>
-    
-    <!-- Processing component for using dependency relations without Part-Of-Speech.-->
-	<section name="BagOfDepsScoring">
-	</section>
-	
-    <!-- Processing component for using dependency relations with Part-Of-Speech.-->
-	<section name="BagOfDepsPosScoring">
-	</section>
-	
-    <!-- Processing component for performing tree skeleton.  -->
-	<section name="TreeSkeletonScoring">
-	</section>
-    
+
     <!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
      NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
      "activatedEDA" -->
-    <section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DBPos+TP+TPPos+TS_DE</property>
+        <property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base_DE</property> <!-- new resource -->
 		<!-- Please update the location for storing temporary files for training -->
 		<property name="trainDir">./target/DE/dev/</property>
         <!-- Please update the location for storing temporary files for testing -->
 		<property name="testDir">./target/DE/test/</property>
-        
 		<!-- Two parameters of the MaxEnt classifier, "max iterations" and "cut off":
          left number ::= iterations - The number of GIS iterations to perform.
          right number ::= cutoff - The number of times a feature must be seen in order to be relevant for training.
@@ -127,7 +73,7 @@
          Note: the mapping must be bijective:
          All names mentioned here must be specified as sections above, and each processing component specified above
          must be mentioned here. -->
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring,BagOfDepsScoring,BagOfDepsPosScoring,TreeSkeletonScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring</property>
 	</section>
 
 </configuration>
