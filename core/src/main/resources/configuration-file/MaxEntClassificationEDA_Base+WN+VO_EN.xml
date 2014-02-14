@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration [
+<!ENTITY myVar "Some common #PCDATA that can be reused... ">
+]>
+
+<configuration>
+
+	<section name="PlatformConfiguration">
+		<property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+		<property name="language">EN</property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.TreeTaggerEN</property>
+	</section>
+	
+	<section name="BagOfWordsScoring">
+	</section>
+	
+	<section name="BagOfLemmasScoring">
+	</section>
+	
+	<section name="BagOfLexesScoring">
+			<property name="WordnetLexicalResource">HYPERNYM,SYNONYM,PART_HOLONYM</property>
+			<property name="VerbOceanLexicalResource">StrongerThan,CanResultIn,Similar</property>
+	</section>
+	
+	<section name="WordnetLexicalResource">
+			<property name="isCollapsed">true</property>
+			<property name="useFirstSenseOnlyLeft">false</property>
+			<property name="useFirstSenseOnlyRight">false</property>
+			<!-- Please update the file path to WordNet -->
+			<property name="wordNetFilesPath">eop-resources-1.0.2/ontologies/EnglishWordNet-dict/</property>
+	</section>
+	
+	<section name="VerbOceanLexicalResource">
+			<property name="isCollapsed">true</property>
+			<!-- Please update the file path to VerbOcean -->
+			<property name="verbOceanFilePath">eop-resources-1.0.2/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+	</section>
+	
+	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+		<property name="modelFile">eop-resources-1.0.2/model/MaxEntClassificationEDAModel_Base+WN+VO_EN</property>
+		<property name="trainDir">./target/EN/dev/</property>
+		<property name="testDir">./target/EN/test/</property>
+		<property name="classifier">10000,1</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring</property>
+	</section>
+
+</configuration>
