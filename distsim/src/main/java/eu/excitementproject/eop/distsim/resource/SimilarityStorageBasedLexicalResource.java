@@ -62,6 +62,7 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 		this.maxNumOfRetrievedRules = maxNumOfRetrievedRules;
 	}
 	
+
 	/**
 	 * Constructs a lexical resource from configuration params, by constructing a new similarity storage from these params.
 	 * 
@@ -76,6 +77,14 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 				new DefaultSimilarityStorage(params),params.getInt(Configuration.TOP_N_RULES));
 	}
 
+
+	public SimilarityStorageBasedLexicalResource(String leftRedisHost, int leftRedisPort, String rightRedisHost, int rightRedisPort, String resourceName, String instanceName) throws ElementTypeException, RedisRunException, FileNotFoundException {
+		this(new DefaultSimilarityStorage(leftRedisHost,leftRedisPort, rightRedisHost, rightRedisPort, resourceName,instanceName),null);
+	}
+
+	public SimilarityStorageBasedLexicalResource(String leftRedisHost, int leftRedisPort, String rightRedisHost, int rightRedisPort, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, RedisRunException, FileNotFoundException {
+		this(new DefaultSimilarityStorage(leftRedisHost,leftRedisPort, rightRedisHost, rightRedisPort, resourceName,instanceName),maxNumOfRetrievedRules);
+	}
 
 	public SimilarityStorageBasedLexicalResource(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, FileNotFoundException, RedisRunException {
 		this(new DefaultSimilarityStorage(l2rRedisFile, r2lRedisFile, resourceName, instanceName),maxNumOfRetrievedRules);

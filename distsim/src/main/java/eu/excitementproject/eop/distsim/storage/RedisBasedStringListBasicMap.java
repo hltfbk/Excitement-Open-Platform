@@ -48,7 +48,7 @@ public class RedisBasedStringListBasicMap {
 	}
 
 	public RedisBasedStringListBasicMap(String host, int port) {
-		this.dbFile = "";
+		this.dbFile = null;
 		init(host,port);
 	}
 	
@@ -132,7 +132,8 @@ public class RedisBasedStringListBasicMap {
 	@Override
 	protected void finalize() {
 		try {
-			BasicRedisRunner.getInstance().close(dbFile);
+			if (dbFile != null)
+				BasicRedisRunner.getInstance().close(dbFile);
 		} catch (Exception e) {
 			logger.info(e.toString());
 		}

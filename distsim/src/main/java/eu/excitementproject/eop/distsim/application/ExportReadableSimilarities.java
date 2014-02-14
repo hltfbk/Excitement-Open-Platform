@@ -69,8 +69,8 @@ public class ExportReadableSimilarities {
 				while (it.hasNext()) {
 					//Pair<Integer, Double> entry = it.next();
 					//out.println(elementId2Str.get(elementId) + "\t" + elementId2Str.get(entry.getFirst()) + "\t" + entry.getSecond());
-					Entry<Integer, Double> entry = it.next();
-					out.println(elementId2Str.get(elementId) + "\t" + elementId2Str.get(entry.getKey()) + "\t" + entry.getValue());				
+					Entry<Integer, Double> entry = it.next();				
+					out.println(elementId2Str.get(elementId) + "\t" + elementId2Str.get(entry.getKey()) + "\t" + entry.getValue());
 				}
 			}
 		}
