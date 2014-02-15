@@ -67,6 +67,10 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	/** per-relation output confidences */
 	private final List<Enum<SimMeasure>> simMeasures= new ArrayList<Enum<SimMeasure>>();	
 	
+	/** all pos tags that are used for possible queries, if given LeftPos is null */
+	private final String[] allPosTags = {"ADJ", "N", "V"}; //"NN" is excluded from this list, as transDM treats them the same way -> avoid double entries
+
+	
 	/** Stores similarity values: measurename -&gt; LHS word-pos -&gt; RHS word-pos -&gt; similarityvalue */
 	private Map<String, Map<String, Map<String, Float>>> sims = new HashMap<String, Map<String, Map<String, Float>>>();
 
@@ -78,19 +82,19 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	
 	
 	/**
-	 * Creates a new GermanTransDm instance via a common config file.
+	 * Creates a new GermanTransDmResourceinstance via a common config file.
 	 * 
-	 * @param config		Configuration for the GermanTransDm instance
+	 * @param config		Configuration for the GermanTransDmResource instance
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 */
 	public GermanTransDmResource(CommonConfig config) throws ConfigurationException, ComponentException {
-		this(config.getSection("GermanTransDm").getString("simMeasure"));		
+		this(config.getSection("GermanTransDmResource").getString("simMeasure"));		
 	}
 	
 	
 	/**
-	 * Creates a new GermanTransDM instance according to the similarity measure(s) parameter
+	 * Creates a new GermanTransDmResource instance according to the similarity measure(s) parameter
 	 * handed in. Depending on this parameter, either one or two lists of pair similarities
 	 * are loaded.
 	 * 
@@ -166,7 +170,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	 */
 	public String getComponentName()
 	{
-		return "GermanTransDM"; 
+		return "GermanTransDmResource"; 
 	}
 	
 	
@@ -183,7 +187,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	
 	/**
 	 * Checks if the POS is valid for the DErivBase resource, i.e., if it is
-	 * either a noun, verb, or adjective.
+	 * either a noun, verb, or adjective. 
 	 * 
 	 * @param pos the POS to check
 	 * @return true if POS is noun/verb/adjective, else false
@@ -221,7 +225,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 		Set<LexicalRule<? extends GermanTransDmInfo>> result = new HashSet<LexicalRule<? extends GermanTransDmInfo>>();
       
 		// first check if we have a POS we can say something about with this resource,
-		// i.e., verbs, nouns, adjectives. Else, return emtpy list.
+		// i.e., verbs, nouns, adjectives. Null Pos means that all possible pos tags of this lemma are allowed. Else, return empty list.
 		if (!isValidPos(pos)) {
 			return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>(result);
 		}
@@ -254,7 +258,7 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 							pos1 = new GermanPartOfSpeech("N");
 						} else if (lemmapos.substring(lemmapos.lastIndexOf("-") + 1).intern() == "j") {
 							pos1 = new GermanPartOfSpeech("ADJ");
-						} 
+						}
 						
 						if (rhs.substring(rhs.lastIndexOf("-") + 1).intern() == "v") {
 							pos2 = new GermanPartOfSpeech("V");
@@ -273,10 +277,10 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 					LexicalRule<? extends GermanTransDmInfo> lexrule;
 					if (isReverseMap) { // turn lhs and rhs around.
 						lexrule = new LexicalRule<GermanTransDmInfo>(rhs.substring(0, rhs.lastIndexOf("-")), pos2, 
-								lemma, pos1, score, measure, "GermanTransDm", new GermanTransDmInfo());						
+								lemma, pos1, score, measure, "GermanTransDmResource", new GermanTransDmInfo());						
 					} else { // keep lhs and rhs as it is in this method.
 						lexrule = new LexicalRule<GermanTransDmInfo>(lemma, pos1, rhs.substring(0, rhs.lastIndexOf("-")), 
-								pos2, score, measure, "GermanTransDm", new GermanTransDmInfo());						
+								pos2, score, measure, "GermanTransDmResource", new GermanTransDmInfo());						
 					}
 					result.add(lexrule);
 					
@@ -298,7 +302,21 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	public List<LexicalRule<? extends GermanTransDmInfo>> getRulesForLeft(String lemma, PartOfSpeech pos) throws LexicalResourceException
 	{	
 		isReverseMap = false;
+		
+		Set<LexicalRule<? extends GermanTransDmInfo>> result = new HashSet<LexicalRule<? extends GermanTransDmInfo>>();
+		if (pos == null){ //no pos specified -> get rules for all possible pos tags
+			for (String postag : allPosTags){
+				try {
+					result.addAll(getFromMap(lemma, new GermanPartOfSpeech(postag), sims));
+				} catch (UnsupportedPosTagStringException e) {
+					e.printStackTrace();
+				}
+			}
+			return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>(result);
+		}
+		else{
 		return getFromMap(lemma, pos, sims);
+		}
 	}
 	
 	
@@ -315,7 +333,21 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 		if (relation == TERuleRelation.NonEntailment) return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>();
 
 		isReverseMap = false;
+		
+		Set<LexicalRule<? extends GermanTransDmInfo>> result = new HashSet<LexicalRule<? extends GermanTransDmInfo>>();
+		if (pos == null){ //no pos specified -> get rules for all possible pos tags
+			for (String postag : allPosTags){
+				try {
+					result.addAll(getFromMap(lemma, new GermanPartOfSpeech(postag), sims));
+				} catch (UnsupportedPosTagStringException e) {
+					e.printStackTrace();
+				}
+			}
+			return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>(result);
+		}
+		else{
 		return getFromMap(lemma, pos, sims);
+		}
 	}
 	
 	
@@ -328,7 +360,21 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	public List<LexicalRule<? extends GermanTransDmInfo>> getRulesForRight(String lemma, PartOfSpeech pos) throws LexicalResourceException
 	{
 		isReverseMap = true;
+		
+		Set<LexicalRule<? extends GermanTransDmInfo>> result = new HashSet<LexicalRule<? extends GermanTransDmInfo>>();
+		if (pos == null){ //no pos specified -> get rules for all possible pos tags
+			for (String postag : allPosTags){
+				try {
+					result.addAll(getFromMap(lemma, new GermanPartOfSpeech(postag), reverse_sims));
+				} catch (UnsupportedPosTagStringException e) {
+					e.printStackTrace();
+				}
+			}
+			return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>(result);
+		}
+		else{
 		return getFromMap(lemma, pos, reverse_sims);
+		}
 	}
 	
 	/** An overloaded method for getRulesForRight. In addition to the previous method, 
@@ -344,7 +390,21 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 		if (relation == TERuleRelation.NonEntailment) return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>();
 
 		isReverseMap = true;
+		
+		Set<LexicalRule<? extends GermanTransDmInfo>> result = new HashSet<LexicalRule<? extends GermanTransDmInfo>>();
+		if (pos == null){ //no pos specified -> get rules for all possible pos tags
+			for (String postag : allPosTags){
+				try {
+					result.addAll(getFromMap(lemma, new GermanPartOfSpeech(postag), reverse_sims));
+				} catch (UnsupportedPosTagStringException e) {
+					e.printStackTrace();
+				}
+			}
+			return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>(result);
+		}
+		else{
 		return getFromMap(lemma, pos, reverse_sims);
+		}
 	}
 	
 	
@@ -393,30 +453,33 @@ public class GermanTransDmResource implements LexicalResource<GermanTransDmInfo>
 	{		
 		
         GermanPartOfSpeech rightPosShort = null;
-        try {
-	        if (rightPos.toString().startsWith("V")) {
-	        	rightPosShort = new GermanPartOfSpeech ("V");
-	        } else if (rightPos.toString().startsWith("N")) {
-	        	rightPosShort = new GermanPartOfSpeech ("N");
-	        } else if (rightPos.toString().equals("ADJ")) {
-	        	rightPosShort = new GermanPartOfSpeech ("ADJ");
-	        } 
-	        // in all other cases, rightPosShort stays null! But then, there won't
-	        // be information in the resource anyway.
-	        
-        } catch (UnsupportedPosTagStringException e) {
+        
+        if (rightPos != null){
+        	try {
+    	        if (rightPos.toString().startsWith("V")) {
+    	        	rightPosShort = new GermanPartOfSpeech ("V");
+    	        } else if (rightPos.toString().startsWith("N")) {
+    	        	rightPosShort = new GermanPartOfSpeech ("N");
+    	        } else if (rightPos.toString().equals("ADJ")) {
+    	        	rightPosShort = new GermanPartOfSpeech ("ADJ");
+    	        } 
+    	        // in all other cases, rightPosShort stays null! 
+    	        
+            } catch (UnsupportedPosTagStringException e) {
+            }
         }
                 
-		List<LexicalRule<? extends GermanTransDmInfo>> result = new ArrayList<LexicalRule<? extends GermanTransDmInfo>>();
+		Set<LexicalRule<? extends GermanTransDmInfo>> result = new HashSet<LexicalRule<? extends GermanTransDmInfo>>();
 		for (LexicalRule<? extends GermanTransDmInfo> rule : getRulesForLeft(leftLemma, leftPos, relation)) {
 			// if rightPos is null, any lemma-matching result is accepted.
 			// if rightPos is not null, the GermanPartOfSpeech-converted POS from the resource must match the
 			//   short version of the rightPos type.
 			if (rule.getRLemma().equals(rightLemma) && (rightPos == null || rule.getRPos().equals(rightPosShort))) {
-				result.add(rule);
+				result.add(rule); 
 			}
 		}	
-		return result;
+		return new ArrayList<LexicalRule<? extends GermanTransDmInfo>>(result);
+
 	}
 
 

@@ -48,7 +48,7 @@ public class MaxEntClassificationEDATest {
 
 		/** German */
 		/* Baseline: BagOfWords, BagOfLemmas */
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_DE.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_DE.xml");
 //		0.61125
 		
 		/* GermaNet: GermaNet without POS */
@@ -61,11 +61,11 @@ public class MaxEntClassificationEDATest {
 		
 		/* Baseline + GermaNet */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GN_DE.xml");
-//		0.6175
+//		0.61875
 		
 		/* Baseline + GermaNetPos */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos_DE.xml");
-//		0.61375
+//		0.615
 		
 		/* DistSim: distributional similarity */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DS_DE.xml");
@@ -73,7 +73,7 @@ public class MaxEntClassificationEDATest {
 		
 		/* Baseline + DistSim */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS_DE.xml");
-//		0.6275
+//		0.6125
 		
 		/* DBPos: DerivBase with POS */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_DBPos_DE.xml");
@@ -85,11 +85,11 @@ public class MaxEntClassificationEDATest {
 		
 		/* Baseline + GermaNet + DistSim */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GN+DS_DE.xml");
-//		0.62125
+//		0.62
 		
 		/* Baseline + GermaNetPos + DistSim */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS_DE.xml");
-//		0.61
+//		0.61375
 		
 		/* Baseline + DistSim + DBPos */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+DBPos_DE.xml");
@@ -97,7 +97,7 @@ public class MaxEntClassificationEDATest {
 		
 		/* Baseline + GermaNetPos + DistSim + DBPos */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos_DE.xml");
-//		0.61
+//		0.61625
 		
 		/* TP: dependency triples without POS */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TP_DE.xml");
@@ -119,7 +119,7 @@ public class MaxEntClassificationEDATest {
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TS_DE.xml");
 //		0.58
 		
-		/* Basline + TS */
+		/* Baseline + TS */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TS_DE.xml");
 //		0.625
 		
@@ -139,14 +139,62 @@ public class MaxEntClassificationEDATest {
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+TPPos+TS_DE.xml");
 //		0.62375
 		
-		/* Baseline + GN + DS + TPPos + TS */
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GN+DS+TPPos+TS_DE.xml");
-//		0.62875
+		/* Baseline + GNPos + DS + TPPos + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+TPPos+TS_DE.xml");
+//		0.63
 		
 		/* Baseline + GNPos + DS + DBPos + TPPos + TS */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TPPos+TS_DE.xml");
-//		0.63
+//		0.63125
+				
+		/* TransDm */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TransDm_DE.xml");
+//		0.51125
 		
+		/* TransDm with POS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_TransDmPos_DE.xml");
+//		0.51125
+		
+		/* Baseline + TransDm */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TransDm_DE.xml");
+//		0.61625
+		
+		/* Baseline + TransDm with POS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TransDmPos_DE.xml");
+//		0.62
+		
+		/* Baseline + TransDm with POS + TP + TPPOS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TransDmPos+TP+TPPos_DE.xml");
+//		0.6275
+		
+		/* Baseline + TransDm with POS + TP + TPPOS + TS  */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TransDmPos+TP+TPPos+TS_DE.xml");
+//		0.635
+		
+		/* Baseline + GermaNet + DerivBase + TransDm with POS + TP + TPPOS + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
+//		0.635
+		
+		/* Baseline + GermaNet + TransDm with POS + TP + TPPOS + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+TransDmPos+TP+TPPos+TS_DE.xml");
+//		0.63625
+				
+		/* Baseline + DerivBase + TransDm with POS + TP + TPPOS + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
+//		0.63	
+		
+		/* Baseline + GermaNet + DistSim + DerivBase + TransDm with POS + TP + TPPOS + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
+//		0.6325
+		
+		/* Baseline + DistSim + TP + TPPOS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+TP+TPPos_DE.xml");
+//		0.62625
+		
+		/* Baseline + DistSim + TP + TPPOS + TS */
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+TP+TPPos+TS_DE.xml");
+//		0.6275
+				
 		/** English */
 		/* Baseline */
 //		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_EN.xml");
@@ -204,7 +252,7 @@ public class MaxEntClassificationEDATest {
 //		0.64375
 		
 		/* Baseline + WN + VO + TP + TPPos + TS */
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml");
 //		0.645
 
 		Assume.assumeTrue(configFile.exists());
@@ -219,12 +267,12 @@ public class MaxEntClassificationEDATest {
 				
 		// Gil: testLAP_DE() is a very very long test. (More than build process itself) 
 		//German RTE tests
-		//testLAP_DE();
-		//testParser_DE();
-		//testTraining(config);
-		//testTesting_SingleTH(config); 
-		//testTesting_MultiTH(config); 
-		//testTesting_MultiTH_AND_Output(config);
+//		testLAP_DE();
+//		testParser_DE();
+		testTraining(config);
+//		testTesting_SingleTH(config); 
+//		testTesting_MultiTH(config); 
+		testTesting_MultiTH_AND_Output(config);
 		
 		
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time

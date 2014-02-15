@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration [
+<!ENTITY myVar "Some common #PCDATA that can be reused... ">
+]>
+
+<!-- 
+ Description: Given a certain configuration, the EDA - named MaxEntClassificationEDA -
+ can be trained over a specific data set in order to optimize its performance based on Maximum Entropy Modeling.
+ MaxEntClassificationEDA learns a binary classifier for deciding the entailment problem. The supervised learner
+ receives a number of features which are provided through the interplay of different processing components and
+ knowledge sources. A configuration file, like this, specifies these components and knowledge sources together
+ with settings of the learner.
+ 
+ The common structure of a configuration file for MaxEntClassificationEDA is as follows (for further detail
+ also visit https://github.com/hltfbk/Excitement-Open-Platform/wiki/MaxEntClassificationEDA):
+ 
+ - It begins with a specification of platform specific settings in the section "PlatformConfiguration" for
+    selecting the EDA, the language and eventually the LPA (Linguistic Pipeline Analysis).
+ - It follows the names of the processing components to use, where for each component a separate section is
+	defined.
+ - As minimal configuration the base processing components named "BagOfWordsScoring" and "BagOfLemmasScoring"
+	have to be specified, which provide bag of words and bag of lemmas features.
+ - If a processing component also makes use of a knowledge base, then this knowledge base has to be introduced
+	via its own section and referenced via the "name" parameter in the corresponding processing component
+	that uses this knowledge base.
+ - Finally, the parameters for the learning and application phases of the activated EDA have to be specified viz.
+	the model file, locations of training and test data, control parameters for the classifier, 
+	and the list of components to run.
+	Note, that the name of the EDA in the "activatedEDA" property of the "PlatformConfiguration" and the name
+	of this last section must be equal.
+-->
+
+<configuration>
+
+    <!-- Platform configuration section -->
+    <section name="PlatformConfiguration">
+        <!-- The EDA to be used: MaxEntClassificationEDA -->
+        <property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
+        <!-- The language: DE for German -->
+		<property name="language">DE</property>
+        <!-- The linguistic annotation pipeline to preprocess the data to be annotated:
+         here, the MaltParser dependency parser for DE is selected. -->
+        <property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserDE</property>
+	</section>
+	
+    <!-- Processing component for computing a bag of lexeme representation using lexical
+     knowledge sources that are referenced with help of the name attribute and which have to be specified
+     by their own sections. -->
+	<section name="BagOfLexesScoring">
+        <!-- true ::= Use part-of-speech tagging, false ::= do not use part-of-speech tagging -->
+		<property name="withPOS">true</property>
+		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
+	</section>
+
+	
+    <!-- A wrapper for being able to GermaNet - a WordNet-like lexical semantics resource for German. -->
+	<section name="GermaNetWrapper">
+	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
+		<property name="germaNetFilesPath">/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
+
+		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
+		<property name="causesConfidence">1.0</property> 
+		<property name="entailsConfidence">1.0</property>
+		<property name="hypernymConfidence">1.0</property> 
+		<property name="synonymConfidence">1.0</property>
+	</section> 
+	
+    <!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
+     NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
+     "activatedEDA" -->
+	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
+        <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_GNPos_DE</property>
+        <!-- Please update the location for storing temporary files for training -->
+		<property name="trainDir">./target/DE/dev/</property>
+        <!-- Please update the location for storing temporary files for testing -->
+		<property name="testDir">./target/DE/test/</property>
+		<!-- Two parameters of the MaxEnt classifier, "max iterations" and "cut off":
+         left number ::= iterations - The number of GIS iterations to perform.
+         right number ::= cutoff - The number of times a feature must be seen in order to be relevant for training.
+         see also http://maxent.sourceforge.net/api/index.html -->
+		<property name="classifier">10000,1</property>
+        
+        <!-- The list of processing components specified as sections above. The order is relevant.
+         Note: the mapping must be bijective:
+         All names mentioned here must be specified as sections above, and each processing component specified above
+         must be mentioned here. -->
+		<property name="Components">BagOfLexesScoring</property>
+	</section>
+
+</configuration>
