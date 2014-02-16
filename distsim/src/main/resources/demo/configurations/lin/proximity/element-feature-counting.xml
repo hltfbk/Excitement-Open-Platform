@@ -29,7 +29,7 @@
                     * min-count: minimal number of counts for extracted element.-->
    <property name="extraction-class">eu.excitementproject.eop.distsim.builders.elementfeature.LemmaPosBasedElementFeatureExtraction</property>
    <property name="include-dependency-relation">false</property>
-   <property name="relevant-pos-list">N,V,ADJ,ADV</property>
+   <property name="relevant-pos-list">NN,N,V,ADJ,ADV</property>
    <property name="min-count">10</property>
    <property name="stop-words-file">stop-words.txt</property>   
 </section>
