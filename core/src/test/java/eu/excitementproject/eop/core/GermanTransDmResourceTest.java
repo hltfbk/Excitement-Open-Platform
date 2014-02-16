@@ -41,7 +41,6 @@ public class GermanTransDmResourceTest {
 	
 	@Test
 	public void test() throws UnsupportedPosTagStringException, LexicalResourceCloseException {
-
 		
 		/** TEST 1: USE CONFIGURATION FILE */
 
@@ -159,6 +158,24 @@ public class GermanTransDmResourceTest {
 			e.printStackTrace(); 
 		}	
 		
+		//getRulesForLeft for null pos
+//				System.out.println("Test for null pos");
+				List<LexicalRule<? extends GermanTransDmInfo>> list7 = null; 
+				try {
+					list7 = transDm.getRules("Telekommunikation", null, "wirtschaftlich", null); 
+					assertTrue(list7.size() > 0);
+//					System.out.println("Rule list size is " + list7.size());
+					for (LexicalRule<? extends GermanTransDmInfo> rule : list7) {
+						assertTrue(rule.getLLemma().equals("Telekommunikation"));
+						assertTrue(rule.getRLemma().equals("wirtschaftlich"));
+//						System.out.println(rule.toString());
+					}						
+				}
+				catch (LexicalResourceException e)
+				{
+					e.printStackTrace(); 
+				}	
+				
 		
 		/*
 		// getRulesForLeft for a N noun

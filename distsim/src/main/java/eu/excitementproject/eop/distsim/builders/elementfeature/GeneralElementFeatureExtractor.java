@@ -19,7 +19,6 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.ConfigurationBasedDataStructureFactory;
 import eu.excitementproject.eop.distsim.builders.DataStructureFactory;
-import eu.excitementproject.eop.distsim.domains.relation.PredicateArgumentSlots;
 import eu.excitementproject.eop.distsim.items.Cooccurrence;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.Feature;
@@ -90,7 +89,7 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 			IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts = dataStructureFactory.createElementFeatureCountsDataStructure();
 			IDKeyPersistentBasicMap<BasicSet<Integer>> fesatureElements  = dataStructureFactory.createFeatureElementsDataStructure();	
 	
-			ImmutableIterator<Cooccurrence<PredicateArgumentSlots>> it = cooccurrenceDB.getCooccurrenceInstances();
+			ImmutableIterator<Cooccurrence<?>> it = cooccurrenceDB.getCooccurrenceInstances();
 			
 			
 			ExecutorService executor = Executors.newFixedThreadPool(iThreadNum);
@@ -126,7 +125,7 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 		
 		ElementsFeaturesCollectionTask(
 				int threadID,
-				ImmutableIterator<Cooccurrence<PredicateArgumentSlots>> iterator,
+				ImmutableIterator<Cooccurrence<?>> iterator,
 				CountableIdentifiableStorage<Element> elementStorage,
 				CountableIdentifiableStorage<Feature> featureStorage,
 				IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts,
@@ -161,7 +160,7 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 					loop++;
 						
 					// get next co-occurence
-					Cooccurrence<PredicateArgumentSlots> coOccurrence = null;
+					Cooccurrence<?> coOccurrence = null;
 					boolean acquired = false;
 					
 					synchronized (iterator) {
@@ -234,7 +233,7 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 		}
 				
 		final int threadID;
-		final ImmutableIterator<Cooccurrence<PredicateArgumentSlots>> iterator;
+		final ImmutableIterator<Cooccurrence<?>> iterator;
 		final CountableIdentifiableStorage<Element> elementStorage;
 		final CountableIdentifiableStorage<Feature> featureStorage;
 		final IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elemntFeatureCounts;

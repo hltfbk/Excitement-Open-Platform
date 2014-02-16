@@ -141,7 +141,7 @@ public class BasicRedisRunner implements RedisRunner {
 	protected static final int MIN_PORT = 6379;
 	protected static final int MAX_PORT = 65535;
 	protected static final String DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME = "redis.conf";
-	protected static final String DEFAULT_REDIS_BIN_DIR = "redis";
+	public static final String DEFAULT_REDIS_BIN_DIR = "redis";
 	protected static final String PID_FILE = "pidfile";
 	protected static final String PORT = "port";
 	protected static final String DIR = "dir";
@@ -151,7 +151,7 @@ public class BasicRedisRunner implements RedisRunner {
 	protected static final String PID_FILE_EXT = ".pid";
 	protected static final String VM_SWAP_FILE_EXT = ".swap";
 	protected static final String DB_FILE_EXT = ".rdb";
-	protected static final String REDIS_SERVER_CMD = "redis-server";
+	public static final String REDIS_SERVER_CMD = "redis-server";
 
 	protected static RedisRunner instance = null;
 	protected static String redisBinDir; 	 //a path to the Redis binary directory
@@ -264,8 +264,14 @@ public class BasicRedisRunner implements RedisRunner {
 	public int run(final String dbFile) throws RedisRunException {
 	
 		RedisInstanceInfo instanceInfo = mapDir2FileInstanceInfo.get(dbFile);
-		if (instanceInfo == null) {		
-			int ret = run1(dbFile);
+		if (instanceInfo == null) {
+			int port;
+			try {
+				port = getAvailablePort();
+			} catch (NoAvailablePortException e) {
+				throw new RedisRunException(e);
+			}
+			run1(dbFile,port);
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				@Override
 				public void run() {
@@ -276,7 +282,7 @@ public class BasicRedisRunner implements RedisRunner {
 					}
 				}
 			});
-			return ret;
+			return port;
 		} else {
 			logger.info("A redis server instance for this database is already run: " + instanceInfo);
 			instanceInfo.incRef();
@@ -291,14 +297,13 @@ public class BasicRedisRunner implements RedisRunner {
 	 * @param dbFile An existing or non-existing Redis database file. The parent directory of @param dbFile should have writing permissions
 	 * @throws RedisRunException
 	 */
-	public int run1(final String dbFile) throws RedisRunException {
+	public int run1(final String dbFile, int port) throws RedisRunException {
 		
 		logger.debug("running redis server for file " + dbFile);
 		
 		//Assumption: dbFile is a Redis db file (.rdb) or non existing file		
 		try {
-			int port = getAvailablePort();
-			String confFile = generateConfigurationFile(dbFile,port);
+			String confFile = generateConfigurationFile(dbFile,port,templateConfigurationFile);
 			
 			logger.info("A new instance is about to run on port " + port + " according to " + confFile + " configuration");
 			
@@ -399,7 +404,22 @@ public class BasicRedisRunner implements RedisRunner {
 	 * @return the path to the new generated configuration file
 	 * @throws IOException 
 	 */
-	protected String generateConfigurationFile(String dbfile, int port) throws IOException {
+	public static String generateConfigurationFile(String dbfile, int port) throws IOException {
+		return generateConfigurationFile(dbfile,port,DEFAULT_REDIS_BIN_DIR + "/" + DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME);
+	}
+	
+	/**
+	 * Generate a configuration file for the Redis server, based on a template of configuration, 
+	 * a given directory of a database, and a given port 
+	 * 
+	 * @param dbDir an existing directory  with writing permissions.
+	 * @param dbFile a path to an existing or non-existing Redis database file, located at @param dbDir directory
+	 * @param port an available port for Redis connection
+	 * @param templateConfigurationFile a template of redis configuration file
+	 * @return the path to the new generated configuration file
+	 * @throws IOException 
+	 */
+	public static String generateConfigurationFile(String dbfile, int port, String templateConfigurationFile) throws IOException {
 		String confFile = dbfile + CONF_FILE_EXT;
 		String dbDir = new File(dbfile).getParent();
 		BufferedReader reader = new BufferedReader(new FileReader(templateConfigurationFile));

@@ -60,6 +60,8 @@ public class LAPRunner {
 		
 		this.language = language;
 		initializeLAP(getDefaultLAPClass());
+		
+		logger.info("\t LAP initialized: " + lap.getClass());
 	}	
 	
 	

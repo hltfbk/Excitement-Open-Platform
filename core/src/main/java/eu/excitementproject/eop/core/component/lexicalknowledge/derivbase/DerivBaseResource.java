@@ -91,7 +91,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 	 */
 	public DerivBaseResource(CommonConfig config) throws ConfigurationException, ComponentException {
 		this(Boolean.parseBoolean(config.getSection("DerivBaseResource").getString("useScores")),
-				config.getSection("DerivBaseResource").getInteger("derivatonSteps"));
+				config.getSection("DerivBaseResource").getInteger("derivationSteps"));
 	}
 	
 	

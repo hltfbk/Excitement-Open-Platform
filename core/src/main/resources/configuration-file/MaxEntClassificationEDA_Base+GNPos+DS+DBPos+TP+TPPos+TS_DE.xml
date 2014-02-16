@@ -73,7 +73,7 @@
     <!-- A wrapper for being able to GermaNet - a WordNet-like lexical semantics resource for German. -->
 	<section name="GermaNetWrapper">
 	        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] --> 
-		<property name="germaNetFilesPath">../core/src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
+		<property name="germaNetFilesPath">/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. --> 
 
 		<!-- GermaNet relations and their confidences (LHS -> RHS) --> 
 		<property name="causesConfidence">1.0</property> 
@@ -82,21 +82,27 @@
 		<property name="synonymConfidence">1.0</property>
 	</section> 
 	
-    <!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
-	<section name="DerivBaseResource">
-        <!-- Specifies if rule scores are available or not. True=file with scores avaliable, False=no scores.
-         If you choose a resource format containing scores, but declare "false" here (or vice versa), the
-         DerivBaseResource implementation will raise an exception.
-         DEFAULT: false. -->
-	    <property name="scoreInfo">true</property>
-        <!-- Specifies the confidence in the derivational relationship of a lemma pair.
-         Values range between 0.00 and 1.00; The score is calculated as 1/n, where n is the length of the derivation
-         path. Thus, 1.00 trusts only pairs resulting from one linking rule; 0.5 trusts pairs which are linked by two
-         rules; 0.33 trusts pairs which are linked by three rules, etc.
-         This property is only read if "scoreInfo" = true.
-         DEFAULT: 0.00. -->
-		<property name="scoreConfidence">0.01</property>
+   <!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
+	<section name="DerivBaseResource"> 
+	<!-- Specifies if rule scores provided by the DErivBase resource should be used or not. 
+             True = scores are used, False = scores are not used.
+             DEFAULT: true.  -->
+        <property name="useScores">true</property>
+        <!-- Specifies the maximum accepted amount of derivation steps between two derivationally related lemmas
+             to count them as entailment pair. Integer values range between 1 and 10.
+             Each pair of lemmas within one derivational family is connected by a set of derivation rules. If one
+             lemma l2 can be directly derived from lemma l1, they are connected by one rule, thus, the number of
+             derivation steps is one. If l1 derives to l2, and l2 derives to l3, then the pair l1-l3 is connected
+             by two derivation steps, etc. The maximum amount of derivation steps to combine two lemmas is ten.
+             We assume the following: The more derivation steps must be carried out to connect two lemmas, the less 
+             probable it is that these two lemmas are really derivationally related - and thus they are less probable
+             to build an enailment relationship. 
+             Thus, a low value for the property "derivationSteps" only considers lemmas which are highly probably related.   
+             NOTE: This property is only considered if the property "useScores" = true.
+             DEFAULT: 10. -->    
+	<property name="derivationSteps">10</property>
 	</section>
+
     
     <!-- Processing component for using dependency relations without Part-Of-Speech.-->
 	<section name="BagOfDepsScoring">

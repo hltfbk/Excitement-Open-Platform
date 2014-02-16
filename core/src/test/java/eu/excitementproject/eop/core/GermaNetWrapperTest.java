@@ -3,15 +3,17 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
-
 import java.io.File;
 import java.util.List;
+
+
 
 import org.junit.Assume;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 import eu.excitementproject.eop.common.exception.BaseException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
@@ -33,12 +35,12 @@ import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
  * The second part loads GermaNetWrapper via a CommonConfig configuration file.
  * The third part loads GermaNetWrapper by handing the GermaNet installation
  * path and confidence values to GermaNetWrapper's constructor.
+ * Instructions how to initialize GermaNetWrapper in these three ways can be found in GermaNetWrapperMiniTest.
  *  
  * All callable methods are tested:
- * getRulesForLeft(lemma, pos), getRulesForLeft(lemma, pos, ownRelation)
- * getRulesForRight(lemma, pos), getRulesForRight(lemma, pos, ownRelation)
- * getRules(lemma, pos, lemma, pos), getRules(lemma, pos, lemma, pos, ownRelation)
- * 
+ * getRulesForLeft(lemma, pos), getRulesForLeft(lemma, pos, relation)
+ * getRulesForRight(lemma, pos), getRulesForRight(lemma, pos, relation)
+ * getRules(lemma, pos, lemma, pos), getRules(lemma, pos, lemma, pos, relation)
  * 
  * @author Jan Pawellek, Britta Zeller, Julia Kreutzer 
  *
@@ -48,383 +50,541 @@ public class GermaNetWrapperTest {
 	@Test
 	public void test() throws UnsupportedPosTagStringException {
 		
+		// Test for initialization with GN path
 		GermaNetWrapper gnw=null;
-
-	
 		try {
-
-			System.out.println("### run 1: path");
-			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/");
-			
-			/* for GermaNet Evaluation -> test GermaNet for outputs for specific words, saved in testwords
-			try {
-				String[] testwords = {"Forstwirtschaft","Uran","Fauna","Malta","Linse","Kurve","Bargeld","Banane","Spargel","Wäscherei","Tennis","Kegelbahn","Hirn","Reifen","Dozent","hineinhorchen","mästen","zugrundeliegen","ragen","antizipieren","vorausberechnen","überspringen","verpassen","einschießen","zurückzahlen","anstecken","bloßstellen","zermahlen","zieren","glühen"};
-				//String[] testwords = {"abstürzen","verlegen","abkürzen","umringen"};
-				//String[] testwords = {"schön","abstrakt","klein", "laufen", "lernen", "hoffen"};
-				for (String word : testwords){
-					List<LexicalRule<? extends GermaNetInfo>> l = gnw.getRulesForLeft(word, new GermanPartOfSpeech("NN"));
-					for (LexicalRule<? extends GermaNetInfo> rule : l){
-						System.out.println(rule.getLLemma()+"\t"+rule.getRLemma());
-					}
-				}
-				
-				List<LexicalRule<? extends GermaNetInfo>> k = gnw.getRulesForRight("Hund", null);
-				System.out.print("RightRules for Hund:\n ");
-				for (LexicalRule<? extends GermaNetInfo> rule : k){
-					System.out.println(rule.getRLemma()+" "+rule.getRelation());
-				}
-				
-				
-			} catch (LexicalResourceException e) {
-				e.printStackTrace();
-			}	
-				*/	
-			
+			gnw = new GermaNetWrapper("/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/");	
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
-			//throw e;
 		}
 		
 		catch(BaseException e)
 		{
 			e.printStackTrace(); 
 		}
-		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
-
-
-
-		// Test for "simplest" generic method 
-		List<LexicalRule<? extends GermaNetInfo>> list1 = null; 
+		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 	
+		
+		//System.out.println("### run 1: path");
+		
+		//System.out.println("** 1: getRulesForLeft(lemma, pos)"); 
+		// test getRulesForLeft(lemma, pos) for nouns, verbs and adjectives
+		// -> no hyponyms, antonyms allowed
+		// -> left lemma, left pos equal with input
+		// -> left lemma not on right hand side
+		// -> GNROOT not on right hand side
+		// -> N/NN as left POS should return same number of rules
 		try {
-			//System.out.println("** 1");
-			list1 = gnw.getRulesForLeft("wachsen", null);
-			assertTrue(list1.size() > 0); 
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}			
-		
-		// Test for verbs
-		try{
-
-			//System.out.println("** 2");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("wachsen", new GermanPartOfSpeech("VINF"), GermaNetRelation.has_antonym)) {
-				assertTrue(rule.getLLemma().equals("wachsen"));
-				//System.out.println("for wachsen: " + rule.getRLemma());
-				assertTrue(rule.getInfo().getLeftSynsetID() == 59751 || rule.getInfo().getLeftSynsetID() == 54357); // might only be true in GermaNet 7.0
-				assertTrue(rule.getRLemma().equals("schrumpfen"));
-				assertTrue(rule.getInfo().getRightSynsetID() == 59780 || rule.getInfo().getRightSynsetID() == 54511); // might only be true in GermaNet 7.0
-				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+			//System.out.println("   - nouns (N)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForLeft("Haus", new GermanPartOfSpeech("N")); // test for noun
+			int l1 = rules1.size();
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hyponym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertTrue( rel.equals("has_hypernym") || rel.equals("has_synonym") || rel.equals("entails") || rel.equals("causes") );
+				assertTrue(rule.getLLemma().equals("Haus"));
+				assertTrue(rule.getLPos().toString().equals("N"));
+				assertFalse(rule.getRLemma().equals("Haus"));
+				assertFalse(rule.getRLemma().equals("GNROOT"));
 			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}	
-		
-		
-		// Negative test for verbs to show the given POS is used
-		try{
-			//System.out.println("** 3");
-			List<LexicalRule<? extends GermaNetInfo>> rule = gnw.getRulesForLeft("wachsen", new GermanPartOfSpeech("NN"), GermaNetRelation.has_synonym);
-			assertTrue(rule.isEmpty());
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}		
-		
-		// Test for level-maximum for verbs, granted that "lernen" has 4 rules on the first level (might only be true in GermaNet 7.0)
-		try{
-			//System.out.println("** 4");
-			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("lernen", new GermanPartOfSpeech("VINF"));
-			assertTrue(rules.size()==4);
-			for (LexicalRule<? extends GermaNetInfo> rule : rules){
-				assertFalse(rule.getRLemma()=="lernen");
-				assertFalse(rule.getRLemma()=="aufnehmen");
-				assertFalse(rule.getRLemma()=="GN_ROOT");
+			
+			//System.out.println("   - nouns (NN)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRulesForLeft("Haus", new GermanPartOfSpeech("NN")); // use POS "NN" instead
+			int l2 = rules2.size();
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hyponym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertTrue( rel.equals("has_hypernym") || rel.equals("has_synonym") || rel.equals("entails") || rel.equals("causes") );
+				assertTrue(rule.getLLemma().equals("Haus"));
+				assertTrue(rule.getLPos().toString().equals("NN"));
+				assertFalse(rule.getRLemma().equals("Haus"));
+				assertFalse(rule.getRLemma().equals("GNROOT"));
 			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace();
-		}
-		
-		// Test for common nouns
-
-		try{
-			//System.out.println("** 5");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym)) {
-				//System.out.println("lLemma: " + rule.getLLemma() + ", rLemma: " + rule.getRLemma());
-				assertTrue(rule.getLLemma().equals("Hitze"));
-				assertTrue(rule.getRLemma().equals("Kälte"));
-				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+			assertTrue( l1 == l2); // using "NN" instead of "N" should not make a difference for the number of resulting rules
+			
+			//System.out.println("   - verbs (V)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules3 = gnw.getRulesForLeft("beschreiben", new GermanPartOfSpeech("V")); // test for verb
+			int l3 = rules3.size(); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules3){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hyponym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertTrue( rel.equals("has_hypernym") || rel.equals("has_synonym") || rel.equals("entails") || rel.equals("causes") );
+				assertTrue(rule.getLLemma().equals("beschreiben"));
+				assertTrue(rule.getLPos().toString().equals("V"));
+				assertFalse(rule.getRLemma().equals("beschreiben"));
+				assertFalse(rule.getRLemma().equals("GNROOT"));
+				assertTrue(l3 == 3); // for version 8.0
 			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
+			
+			//System.out.println("   - adjectives (ADJ)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules4 = gnw.getRulesForLeft("gut", new GermanPartOfSpeech("ADJ")); // test for adjectives
+			int l4 = rules4.size(); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules4){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hyponym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertTrue( rel.equals("has_hypernym") || rel.equals("has_synonym") || rel.equals("entails") || rel.equals("causes") );
+				assertTrue(rule.getLLemma().equals("gut"));
+				assertTrue(rule.getLPos().toString().equals("ADJ"));
+				assertFalse(rule.getRLemma().equals("gut"));
+				assertFalse(rule.getRLemma().equals("GNROOT"));
+				assertTrue(l4 == 2); // for version 8.0
+			}
+			
+			//System.out.println("   - null (OTHER)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules5 = gnw.getRulesForLeft("gut", null); // test for null pos
+			int l5 = rules5.size(); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules5){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hyponym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertTrue( rel.equals("has_hypernym") || rel.equals("has_synonym") || rel.equals("entails") || rel.equals("causes") );
+				assertTrue(rule.getLLemma().equals("gut"));
+				assertTrue(rule.getLPos().toString().equals("OTHER"));
+				assertFalse(rule.getRLemma().equals("gut"));
+				assertFalse(rule.getRLemma().equals("GNROOT"));
+			}
+			assertTrue(l5 >= l4); // there should at least as many rules for flexible pos as for only adjectives
+			
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
 		}
 		
-		// Test of not-supported POS type (should return an empty list) 
+		//System.out.println("** 2: getRulesForRight(lemma, pos)"); 
+		// test getRulesForRight(lemma, pos) for nouns, verbs and adjectives
+		// -> only hyponyms, synonyms allowed
+		// -> right lemma, left pos equal with input
+		// -> right lemma not on left hand side
+		// -> GNROOT not on left hand side
+		// -> N/NN as left POS should return same number of rules
 		try {
-			//System.out.println("** 6");
-			List<LexicalRule<? extends GermaNetInfo>> l = gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("PTKA")); 
-			assertTrue(l.size() == 0); 
-			// Still, null POS should mean, don't care
-			l = gnw.getRulesForLeft("Hitze",  null); 
-			assertTrue(l.size() > 0);
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		
-		}
-		
-		// Test for level-maximum for nouns, granted that "Katze" has 7 rules on the first two levels (might only be true in GermaNet 7.0)
-		try{
-			//System.out.println("** 7");
-			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("Katze", new GermanPartOfSpeech("NN"));
-			assertTrue(rules.size()==9);
-			for (LexicalRule<? extends GermaNetInfo> rule : rules){
-				//System.out.println("lLemma: " + rule.getLLemma() + ", rLemma: " + rule.getRLemma());
-				assertFalse(rule.getRLemma()=="Katze");
-				assertFalse(rule.getRLemma()=="Bestie");
-				assertFalse(rule.getRLemma()=="GN_ROOT");
+			//System.out.println("   - nouns (N)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForRight("Haus", new GermanPartOfSpeech("N")); // test for noun
+			int l1 = rules1.size();
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hypernym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertFalse(rel.equals("causes")); // causes is not allowed
+				assertFalse(rel.equals("entails")); // entails is not allowed
+				assertTrue( rel.equals("has_hyponym") || rel.equals("has_synonym") );
+				assertTrue(rule.getRLemma().equals("Haus"));
+				assertTrue(rule.getRPos().toString().equals("N"));
+				assertFalse(rule.getLLemma().equals("Haus"));
+				assertFalse(rule.getLLemma().equals("GNROOT"));
 			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace();
+			
+			//System.out.println("   - nouns (NN)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRulesForRight("Haus", new GermanPartOfSpeech("NN")); // use POS "NN" instead
+			int l2 = rules2.size();
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hypernym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertFalse(rel.equals("causes")); // causes is not allowed
+				assertFalse(rel.equals("entails")); // entails is not allowed
+				assertTrue( rel.equals("has_hyponym") || rel.equals("has_synonym") );
+				assertTrue(rule.getRLemma().equals("Haus"));
+				assertTrue(rule.getRPos().toString().equals("NN"));
+				assertFalse(rule.getLLemma().equals("Haus"));
+				assertFalse(rule.getLLemma().equals("GNROOT"));
+			}
+			assertTrue( l1 == l2); // using "NN" instead of "N" should not make a difference for the number of resulting rules
+			
+			//System.out.println("   - verbs (V)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules3 = gnw.getRulesForRight("beschreiben", new GermanPartOfSpeech("V")); // test for verb
+			int l3 = rules3.size(); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules3){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hypernym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertFalse(rel.equals("causes")); // causes is not allowed
+				assertFalse(rel.equals("entails")); // entails is not allowed
+				assertTrue( rel.equals("has_hyponym") || rel.equals("has_synonym") );
+				assertTrue(rule.getRLemma().equals("beschreiben"));
+				assertTrue(rule.getRPos().toString().equals("V"));
+				assertFalse(rule.getLLemma().equals("beschreiben"));
+				assertFalse(rule.getLLemma().equals("GNROOT"));
+				assertTrue(l3 == 7); // for version 8.0
+			}
+			
+			//System.out.println("   - adjectives (ADJ)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules4 = gnw.getRulesForRight("gut", new GermanPartOfSpeech("ADJ")); // test for adjectives
+			int l4 = rules4.size(); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules4){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hypernym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertFalse(rel.equals("causes")); // causes is not allowed
+				assertFalse(rel.equals("entails")); // entails is not allowed
+				assertTrue( rel.equals("has_hyponym") || rel.equals("has_synonym") );
+				assertTrue(rule.getRLemma().equals("gut"));
+				assertTrue(rule.getRPos().toString().equals("ADJ"));
+				assertFalse(rule.getLLemma().equals("gut"));
+				assertFalse(rule.getLLemma().equals("GNROOT"));
+				assertTrue(l4 == 112); // for version 8.0
+			}
+			
+			//System.out.println("   - null (OTHER)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules5 = gnw.getRulesForRight("gut", null); // test for null pos
+			int l5 = rules5.size(); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules5){
+				String rel = rule.getRelation();
+				assertFalse(rel.equals("has_hypernym")); // no hyponyms allowed
+				assertFalse(rel.equals("has_antonym")); // no antonyms allowed
+				assertFalse(rel.equals("causes")); // causes is not allowed
+				assertFalse(rel.equals("entails")); // entails is not allowed
+				assertTrue( rel.equals("has_hyponym") || rel.equals("has_synonym") );
+				assertTrue(rule.getRLemma().equals("gut"));
+				assertTrue(rule.getRPos().toString().equals("OTHER"));
+				assertFalse(rule.getLLemma().equals("gut"));
+				assertFalse(rule.getLLemma().equals("GNROOT"));
+			}
+			assertTrue(l5 >= l4); // there should be more rules for flexible pos than for only adjectives
+			
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
 		}
 		
-		// Test for level-maximum for adjectives, granted that "klein" has 1 rule on the first level (might only be true in GermaNet 7.0)
-		try{
-			//System.out.println("** 8");
-			List<LexicalRule<? extends GermaNetInfo>> rules = gnw.getRulesForLeft("klein", new GermanPartOfSpeech("ADJ"));
-			assertTrue(rules.size()==1);
-			for (LexicalRule<? extends GermaNetInfo> rule : rules){
-				//System.out.println("lLemma: " + rule.getLLemma() + ", rLemma: " + rule.getRLemma());
-				assertFalse(rule.getRLemma()=="klein");
-				assertFalse(rule.getRLemma()=="klassenübergreifend");
-				assertFalse(rule.getRLemma()=="GN_ROOT");
+		//System.out.println("** 3: check antonymy confidence"); 
+		// test getRulesForLeft(lemma, pos, antonym) for correct antonymy confidence scores (default)
+		try {
+			//System.out.println("   - default confidence"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForLeft("Haus", new GermanPartOfSpeech("N"), GermaNetRelation.has_antonym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				String rel = rule.getRelation();
+				assertTrue(rel.equals("has_antonym")); // only antonyms allowed
+				assertTrue(rule.getLLemma().equals("Haus"));
+				assertTrue(rule.getLPos().toString().equals("N"));
+				assertFalse(rule.getRLemma().equals("Haus"));
+				assertFalse(rule.getRLemma().equals("GNROOT"));
+				assertTrue(rule.getConfidence()==0.5); // default confidence for antonymy
 			}
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
 		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace();
+		
+		//System.out.println("** 4: Named Entities");
+		// test getRules(ForLeft/Right) for handling Named Entities
+		// -> Named Entities should have NP POS tag, on both sides of the rules
+		try {
+			//System.out.println("   - NE on LHS");
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForLeft("Berlin", new GermanPartOfSpeech("NP")); // for NE with "NP" pos
+			int l1 = rules1.size();
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				assertTrue(rule.getLPos().toString().equals("NP"));
+			}
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRulesForLeft("Berlin", new GermanPartOfSpeech("NN")); // with "NN" pos
+			int l2 = rules2.size();
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getLPos().toString().equals("NN"));
+			}
+			List<LexicalRule<? extends GermaNetInfo>> rules3 = gnw.getRulesForLeft("Berlin", new GermanPartOfSpeech("N")); // with "N" pos
+			int l3 = rules3.size();
+			for (LexicalRule<? extends GermaNetInfo> rule : rules3){
+				assertTrue(rule.getLPos().toString().equals("N"));
+			}
+			assertTrue((l1 == l2) && (l2 == l3)); // should all return same results
+			
+			//System.out.println("   - NE on RHS");
+			List<LexicalRule<? extends GermaNetInfo>> rules4 = gnw.getRulesForRight("Berlin", new GermanPartOfSpeech("NP")); // for NE with "NP" pos
+			for (LexicalRule<? extends GermaNetInfo> rule : rules4){
+				assertTrue(rule.getRPos().toString().equals("NP"));
+			}
+			
+			//System.out.println("   - NE on LHS and RHS");
+			List<LexicalRule<? extends GermaNetInfo>> rules5 = gnw.getRules("Berlin", new GermanPartOfSpeech("NP"), "Kreuzberg", new GermanPartOfSpeech("NP")); // for NP on both rule sides
+			for (LexicalRule<? extends GermaNetInfo> rule : rules5){
+				assertTrue(rule.getLLemma().equals("Berlin"));
+				assertTrue(rule.getRLemma().equals("Kreuzberg"));
+				assertTrue(rule.getRPos().toString().equals("NP"));
+				assertTrue(rule.getLPos().toString().equals("NP"));
+			}
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
 		}
-
+		
 		
 		
 		// Test for CommonConfig passing
-		//System.out.println("### run 2: common config");
-		
-		gnw=null;
+		gnw = null;
 		try {
 			File f = new File("./src/test/resources/german_resource_test_configuration.xml");
 			gnw = new GermaNetWrapper(new ImplCommonConfig(f)); 
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and update the path in the configuration file");
-			//throw e;
 		}
 		catch(BaseException e)
 		{
 			e.printStackTrace(); 
 		}
 		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
+		
+		//System.out.println("### run 2: common config");
 
-		// repeat the test for common nouns, with CommonConfig inited gnw
-		try{
-			//System.out.println("** 9");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym)) {
-				//System.out.println("lLemma: " + rule.getLLemma() + ", rLemma: " + rule.getRLemma());
-				assertTrue(rule.getLLemma().equals("Hitze"));
-				assertTrue(rule.getRLemma().equals("Kälte"));
-				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+		//System.out.println("** 1: getRulesForLeft(lemma, pos, GermaNetRelation)"); 
+		// test getRulesForLeft(lemma, pos, GermaNetRelation)
+		// -> only rules with given relation are retrieved
+		
+		try {
+			//System.out.println("   - hypernym"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForLeft("Haus", new GermanPartOfSpeech("N"), GermaNetRelation.has_hypernym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				assertTrue(rule.getRelation().equals("has_hypernym"));
+				assertTrue(rule.getLLemma().equals("Haus"));
 			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
+			//System.out.println("   - synonym"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRulesForLeft("Sofa", new GermanPartOfSpeech("N"), GermaNetRelation.has_synonym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getRelation().equals("has_synonym"));
+				assertTrue(rule.getLLemma().equals("Sofa"));
+			}
+			
+			//System.out.println("   - entails"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules3 = gnw.getRulesForLeft("Einkäufe", null, GermaNetRelation.entails); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules3){
+				assertTrue(rule.getRelation().equals("entails"));
+				assertTrue(rule.getLLemma().equals("Einkäufe"));
+			}
+			
+			//System.out.println("   - causes"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules4 = gnw.getRulesForLeft("ansaufen", null, GermaNetRelation.causes); 
+			if (rules4.size() == 0){ System.out.println(":-(");}
+			for (LexicalRule<? extends GermaNetInfo> rule : rules4){
+				assertTrue(rule.getRelation().equals("causes"));
+				assertTrue(rule.getLLemma().equals("ansaufen"));
+			}
+			
+			//System.out.println("   - antonym"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules5 = gnw.getRulesForLeft("Kauf", new GermanPartOfSpeech("N"), GermaNetRelation.has_antonym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules5){
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getLLemma().equals("Kauf"));
+			}
+			
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
 		}
 		
-		// check for hypernyms only
-		try{
-			//System.out.println("** 9a");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", new GermanPartOfSpeech("NN"), GermaNetRelation.has_hypernym)) {
-				//System.out.println("lLemma: " + rule.getLLemma() + ", rLemma: " + rule.getRLemma());
-				assertTrue(rule.getLLemma().equals("Hitze"));
-				assertTrue(rule.getRLemma().equals("Wärmegrad") || rule.getRLemma().equals("Wert") || rule.getRLemma().equals("Temperatur") );
-				assertTrue(rule.getRelation().equals("has_hypernym"));
-				assertTrue(rule.getConfidence() > 0);
+		//System.out.println("** 2: getRulesForRight(lemma, pos, GermaNetRelation)"); 
+		// test getRulesForRight(lemma, pos, GermaNetRelation)
+		// -> only rules with given relation are retrieved
+		
+		try {
+			//System.out.println("   - hyponym"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForRight("Haus", new GermanPartOfSpeech("N"), GermaNetRelation.has_hyponym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				assertTrue(rule.getRelation().equals("has_hyponym"));
+				assertTrue(rule.getRLemma().equals("Haus"));
 			}
+			//System.out.println("   - synonym"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRulesForRight("Sofa", new GermanPartOfSpeech("N"), GermaNetRelation.has_synonym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getRelation().equals("has_synonym"));
+				assertTrue(rule.getRLemma().equals("Sofa"));
+			}
+					
+			//System.out.println("   - antonym"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules5 = gnw.getRulesForRight("Kauf", new GermanPartOfSpeech("N"), GermaNetRelation.has_antonym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules5){
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getRLemma().equals("Kauf"));
+			}
+			
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
 		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
+		
+		//System.out.println("** 3: getRulesForLeft(lemma, pos, TERuleRelation)"); 
+		// test getRulesForLeft(lemma, pos, TERuleRelation)
+		// -> "nonentailment"/"entailment" define the relations allowed
+		try {
+			//System.out.println("   - ENTAILMENT"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForLeft("Haus", new GermanPartOfSpeech("N"), TERuleRelation.Entailment); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				assertFalse(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getLLemma().equals("Haus"));
+				assertTrue(rule.getConfidence() == 0.5); // all entailment relations have confidence 0.5 as defined on config file
+			}
+			//System.out.println("   - NONENTAILMENT"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRulesForLeft("Kauf", new GermanPartOfSpeech("N"), TERuleRelation.NonEntailment); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getLLemma().equals("Kauf"));
+				assertTrue(rule.getConfidence() == 0.0); // antonym confidence score is set to 0.0 in config file
+			}
+					
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
+		}
+		
+		//System.out.println("** 4: getRulesForRight(lemma, pos, TERuleRelation)"); 
+		// test getRulesForRight(lemma, pos, TERuleRelation)
+		// -> "nonentailment"/"entailment" define the relations allowed
+		try {
+			//System.out.println("   - ENTAILMENT"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRulesForRight("Haus", new GermanPartOfSpeech("N"), TERuleRelation.Entailment); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				assertFalse(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getRLemma().equals("Haus"));
+				assertTrue(rule.getConfidence() == 0.5); // all entailment relations have confidence 0.5 as defined on config file
+			}
+			//System.out.println("   - NONENTAILMENT"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRulesForRight("Kauf", new GermanPartOfSpeech("N"), TERuleRelation.NonEntailment); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getRLemma().equals("Kauf"));
+				assertTrue(rule.getConfidence() == 0.0); // antonym confidence score is set to 0.0 in config file
+			}
+					
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
 		}		
 		
-		// repeat test for "simplest" generic method, with CommonConfig initiated gnw. 
-		// and compares the result to previous one.  
-		List<LexicalRule<? extends GermaNetInfo>> list2 = null; 
-		try {
-			//System.out.println("** 10");
-			list2 = gnw.getRulesForLeft("wachsen", null); 
-			assertTrue(list2.size() > 0);
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}			
-
-		
-		// should be identical... (well, unless someone edited the test configuration. none should have) 
-		assertTrue(list1.size() == list2.size());
-		for(int i=0; i < list1.size(); i++)
-		{
-			assertTrue(list1.get(i).getLLemma().equals(list2.get(i).getLLemma())); 
-			assertTrue(list1.get(i).getRLemma().equals(list2.get(i).getRLemma())); 			
-		}
-		
-		// checking that no antonym in getRulesForLeft() 
-		try{
-			//System.out.println("** 11");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hitze", null)) {
-				//System.out.println("lLemma: " + rule.getLLemma() + ", rLemma: " + rule.getRLemma());
-				assertTrue(rule.getLLemma().equals("Hitze"));
-				assertFalse(rule.getRLemma().equals("Kälte")); // no "Kaelte" should be here.  
-				assertTrue(rule.getConfidence() > 0);
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}
-			
-
-		
-		// check that no 0 confidence value returns 
-		//System.out.println("### run 3: check man. set confidence values");
-		try {// Initiating with "no synonym and antonym" (0 confidence on synonym and per internal definition antonym)
-			gnw = new GermaNetWrapper("/mnt/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/", 1.0, 1.0, 1.0, 0.0, 1.0); // , 0.0
+		// Test for confidence passing
+		gnw = null; 
+		try {// Initiating with 0 confidence on entails, causes, hypernym -> relations with 0 confidence are not included from resulting rules
+			gnw = new GermaNetWrapper("/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML", 0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
-			//throw e;
 		}
 		catch(BaseException e)
 		{
 			e.printStackTrace(); 
 		}
-
-		// there should be no synonym RHS, neither anyone with 0 confidence. 
-		try{
-			//System.out.println("** 12");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForLeft("Hund", null)) {
-				//System.out.println("lLemma: " + rule.getLLemma() + ", rLemma: " + rule.getRLemma());
-				assertTrue(rule.getConfidence() > 0);
-				assertFalse(rule.getRelation().equals("has_synonym")); 
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}
+		Assume.assumeNotNull(gnw); // if gnw is null, the following tests will not be run. 
 		
-		//test for getRulesForRight, only hyponyms and synonyms allowed per definition
-		try{
-			//System.out.println("** 13");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForRight("Hund", new GermanPartOfSpeech("NN"))) {
-				//System.out.println(rule.getLLemma() + ", " + rule.getRLemma());
-				assertTrue(rule.getRLemma().equals("Hund"));
-				assertTrue(!rule.getLLemma().equals("Hund"));
-				assertTrue(rule.getInfo().getLeftSynsetID() == 50708); // might only be true in GermaNet 7.0
-				assertTrue((rule.getRelation().equals("has_hyponym")) || (rule.getRelation().equals("has_synonym")));
-				assertTrue(rule.getConfidence() > 0);
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}
+		//System.out.println("### run 3: check manually set confidence values");
 
-
-		//test for getRulesForRight, only hyponyms wanted
-		try{
-			//System.out.println("** 14");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRulesForRight("Hund", new GermanPartOfSpeech("NN"), GermaNetRelation.has_hyponym)) {
-				//System.out.println(rule.getLLemma() + ", " + rule.getRLemma());
-				assertTrue(rule.getRLemma().equals("Hund"));
-				assertTrue(!rule.getLLemma().equals("Hund"));
-				assertTrue(rule.getInfo().getLeftSynsetID() == 50708); // might only be true in GermaNet 7.0
-				assertTrue(rule.getRelation().equals("has_hyponym"));
-				assertTrue(rule.getConfidence() > 0);
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}
-		
-
-		//test for getRules with hyponyms (but no relation restriction in the call); 
-		// should return 1 rule
-		try{
-			//System.out.println("** 15");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRules("Pudel", new GermanPartOfSpeech("NN"), "Hund", new GermanPartOfSpeech("NN"))) {
-				//System.out.println(rule.getLLemma() + ", " + rule.getRLemma());
-				assertTrue(rule.getRLemma().equals("Hund"));
-				assertTrue(rule.getLLemma().equals("Pudel"));
-				assertTrue(!rule.getLLemma().equals("Hund"));
-				assertTrue(rule.getInfo().getRightSynsetID() == 50708); // might only be true in GermaNet 7.0
-				assertTrue((rule.getRelation().equals("has_hypernym")));
-				assertTrue(rule.getConfidence() > 0);
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}		
-		
-		//"false" test for getRules with hyponyms (but no relation restriction in the call); 
-		// should return empty list
-		try{
-			//System.out.println("** 15a");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRules("Hund", new GermanPartOfSpeech("NN"), "Pudel", new GermanPartOfSpeech("NN"))) {
-				System.err.println("this text for rule " + rule.toString() 
-						+ " in GermaNet lookup should not occur; it means an error in the logic");
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}		
-				
-		
-		//test for getRules, only hypernyms allowed
-		try{
-			//System.out.println("** 16");
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw.getRules("Pudel", new GermanPartOfSpeech("NN"), "Hund", new GermanPartOfSpeech("NN"), GermaNetRelation.has_hypernym)) {
-				//System.out.println(rule.getLLemma() + ", " + rule.getRLemma());
-				assertTrue(rule.getLLemma().equals("Pudel"));
-				assertTrue(rule.getRLemma().equals("Hund"));
+		//System.out.println("** 1: getRules(leftlemma, leftpos, rightlemma, rightpos)"); 
+		// test getRules(leftlemma, leftpos, rightlemma, rightpos)
+		// -> only given lemmas and pos are found in results
+		// -> given confidence in rules
+		try {
+			//System.out.println("   - nouns (N)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRules("Haus", new GermanPartOfSpeech("N"), "Gebäude", new GermanPartOfSpeech("N")); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
 				assertTrue(rule.getRelation().equals("has_hypernym"));
-				assertTrue(rule.getConfidence() > 0);
+				assertTrue(rule.getLLemma().equals("Haus"));
+				assertTrue(rule.getRLemma().equals("Gebäude"));
+				assertTrue(rule.getConfidence() == 0.0); // hypernymy has confidence 0.0
 			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}		
+			//System.out.println("   - nouns (NN)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRules("Kauf", new GermanPartOfSpeech("NN"), "Verkauf", new GermanPartOfSpeech("NN")); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getLLemma().equals("Kauf"));
+				assertTrue(rule.getRLemma().equals("Verkauf"));
+				assertTrue(rule.getConfidence() == 1.0); // antonymy confidence score is set to 1.0 
+			}
+			//System.out.println("   - verbs (V)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules3 = gnw.getRules("gehen", new GermanPartOfSpeech("V"), "erstrecken", new GermanPartOfSpeech("V")); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules3){
+				assertTrue(rule.getRelation().equals("has_hypernym"));
+				assertTrue(rule.getLLemma().equals("gehen"));
+				assertTrue(rule.getRLemma().equals("erstrecken"));
+				assertTrue(rule.getConfidence() == 0.0); // hypernymy confidence score is set to 0.0 
+			}
+			//System.out.println("   - adjectives (ADJ)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules4 = gnw.getRules("gut", new GermanPartOfSpeech("ADJ"), "gutartig", new GermanPartOfSpeech("ADJ"));
+			for (LexicalRule<? extends GermaNetInfo> rule : rules4){
+				assertTrue(rule.getRelation().equals("has_hyponym"));
+				assertTrue(rule.getLLemma().equals("gut"));
+				assertTrue(rule.getRLemma().equals("gutartig"));
+				assertTrue(rule.getConfidence() == 1.0); // hyponymy confidence score is set to 1.0 
+			}
 			
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
+		}		
 		
+		//System.out.println("** 2: getRules(leftlemma, leftpos, rightlemma, rightpos, GermaNetRelation)"); 
+		// test getRules(leftlemma, leftpos, rightlemma, rightpos, GermaNetRelation)
+		// -> only given lemmas, pos, relation are found in results
+		// -> given confidence in rules
+		try {
+			//System.out.println("   - nouns (N)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRules("Haus", new GermanPartOfSpeech("N"), "Gebäude", new GermanPartOfSpeech("N"), GermaNetRelation.has_hypernym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				assertTrue(rule.getRelation().equals("has_hypernym"));
+				assertTrue(rule.getLLemma().equals("Haus"));
+				assertTrue(rule.getRLemma().equals("Gebäude"));
+				assertTrue(rule.getConfidence() == 0.0); // hypernymy has confidence 0.0
+			}
+			//System.out.println("   - nouns (NN)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRules("Kauf", new GermanPartOfSpeech("NN"), "Verkauf", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getLLemma().equals("Kauf"));
+				assertTrue(rule.getRLemma().equals("Verkauf"));
+				assertTrue(rule.getConfidence() == 1.0); // antonymy confidence score is set to 1.0 
+			}
+			//System.out.println("   - verbs (V)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules3 = gnw.getRules("gehen", new GermanPartOfSpeech("V"), "erstrecken", new GermanPartOfSpeech("V"), GermaNetRelation.has_hypernym); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules3){
+				assertTrue(rule.getRelation().equals("has_hypernym"));
+				assertTrue(rule.getLLemma().equals("gehen"));
+				assertTrue(rule.getRLemma().equals("erstrecken"));
+				assertTrue(rule.getConfidence() == 0.0); // hypernymy confidence score is set to 0.0 
+			}
+			//System.out.println("   - adjectives (ADJ)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules4 = gnw.getRules("gut", new GermanPartOfSpeech("ADJ"), "gutartig", new GermanPartOfSpeech("ADJ"), GermaNetRelation.has_hyponym);
+			for (LexicalRule<? extends GermaNetInfo> rule : rules4){
+				assertTrue(rule.getRelation().equals("has_hyponym"));
+				assertTrue(rule.getLLemma().equals("gut"));
+				assertTrue(rule.getRLemma().equals("gutartig"));
+				assertTrue(rule.getConfidence() == 1.0); // hyponymy confidence score is set to 1.0 
+			}
+			
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
+		}		
+		
+		//System.out.println("** 3: getRules(leftlemma, leftpos, rightlemma, rightpos, TERuleRelation)"); 
+		// test getRules(leftlemma, leftpos, rightlemma, rightpos, TERuleRelation)
+		// -> only given lemmas and pos are found in results for entailment/nonentailment
+		// -> given confidence in rules
+		try {
+			//System.out.println("   - nouns (N)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules1 = gnw.getRules("Haus", new GermanPartOfSpeech("N"), "Gebäude", new GermanPartOfSpeech("N"), TERuleRelation.Entailment); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules1){
+				assertTrue(rule.getRelation().equals("has_hypernym"));
+				assertTrue(rule.getLLemma().equals("Haus"));
+				assertTrue(rule.getRLemma().equals("Gebäude"));
+				assertTrue(rule.getConfidence() == 0.0); // hypernymy has confidence 0.0
+			}
+			//System.out.println("   - nouns (NN)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules2 = gnw.getRules("Kauf", new GermanPartOfSpeech("NN"), "Verkauf", new GermanPartOfSpeech("NN"), TERuleRelation.NonEntailment); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules2){
+				assertTrue(rule.getRelation().equals("has_antonym"));
+				assertTrue(rule.getLLemma().equals("Kauf"));
+				assertTrue(rule.getRLemma().equals("Verkauf"));
+				assertTrue(rule.getConfidence() == 1.0); // antonymy confidence score is set to 1.0 
+			}
+			//System.out.println("   - verbs (V)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules3 = gnw.getRules("gehen", new GermanPartOfSpeech("V"), "erstrecken", new GermanPartOfSpeech("V"), TERuleRelation.Entailment); 
+			for (LexicalRule<? extends GermaNetInfo> rule : rules3){
+				assertTrue(rule.getRelation().equals("has_hypernym"));
+				assertTrue(rule.getLLemma().equals("gehen"));
+				assertTrue(rule.getRLemma().equals("erstrecken"));
+				assertTrue(rule.getConfidence() == 0.0); // hypernymy confidence score is set to 0.0 
+			}
+			//System.out.println("   - adjectives (ADJ)"); 
+			List<LexicalRule<? extends GermaNetInfo>> rules4 = gnw.getRules("gut", new GermanPartOfSpeech("ADJ"), "gutartig", new GermanPartOfSpeech("ADJ"), TERuleRelation.Entailment);
+			for (LexicalRule<? extends GermaNetInfo> rule : rules4){
+				assertTrue(rule.getRelation().equals("has_hyponym"));
+				assertTrue(rule.getLLemma().equals("gut"));
+				assertTrue(rule.getRLemma().equals("gutartig"));
+				assertTrue(rule.getConfidence() == 1.0); // hyponymy confidence score is set to 1.0 
+			}
+			
+		} catch (LexicalResourceException e1) {
+			e1.printStackTrace();
+		}		
 	}
 }
-
