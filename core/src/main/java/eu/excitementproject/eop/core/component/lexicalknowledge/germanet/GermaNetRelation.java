@@ -39,6 +39,8 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 				case entails: return ConRel.entails;
 				case has_hypernym: return ConRel.has_hypernym;
 				case has_hyponym: return ConRel.has_hyponym;
+			default:
+				break;
 			}
 		}
 		return null;
@@ -53,6 +55,8 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 			switch (this) {
 				case has_synonym: return LexRel.has_synonym;
 				case has_antonym: return LexRel.has_antonym;
+			default:
+				break;
 			}
 		}
 		return null;
