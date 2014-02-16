@@ -1,4 +1,6 @@
 package eu.excitementproject.eop.biutee.script;
+import java.io.Serializable;
+
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 
 /**
@@ -9,8 +11,10 @@ import eu.excitementproject.eop.transformations.representation.ExtendedNode;
  * @since Jul 17, 2011
  *
  */
-public class HypothesisInformation
+public class HypothesisInformation implements Serializable
 {
+	private static final long serialVersionUID = -6195039194680431552L;
+	
 	public HypothesisInformation(String hypothesisSentence,
 			ExtendedNode hypothesisTree)
 	{

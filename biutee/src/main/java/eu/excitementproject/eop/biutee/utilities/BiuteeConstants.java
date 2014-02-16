@@ -20,6 +20,8 @@ public class BiuteeConstants
 	//////////////////////////////////////////////////////////////////////////
 	// Important constants: constants that you might consider changing their values
 
+	public static final boolean SAVE_SERIALIZED_RESULTS = false;
+	
 	public static final boolean PASTA_GAP_STRICT_ARGUMENT_HEAD_MODE = false;
 	
 	public static final boolean USE_NEGATIVES_FROM_PREVIOUS_ITERATIONS_IN_ACCURACY_TRAINING = false;
@@ -260,12 +262,15 @@ public class BiuteeConstants
 	public static final String RTE_SUM_OUTPUT_ANSWER_FILE_PREFIX = "answers";
 	public static final String RTE_SUM_OUTPUT_ANSWER_FILE_POSTFIX = ".xml";
 	
-	public static final String RTE_SUM_OUTPUT_RESULTS_FILE_PREFIX = "serialized_results";
-	public static final String RTE_SUM_OUTPUT_RESULTS_FILE_POSTFIX = ".ser";
+	public static final String RESULTS_SER_FILE_PREFIX = "serialized_results";
+	public static final String RESULTS_SER_FILE_POSTFIX = ".ser";
 	
-	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX = "serialized_results";
+	public static final String RTE_SUM_OUTPUT_RESULTS_FILE_PREFIX = RESULTS_SER_FILE_PREFIX;
+	public static final String RTE_SUM_OUTPUT_RESULTS_FILE_POSTFIX = RESULTS_SER_FILE_POSTFIX;
+	
+	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_PREFIX = RESULTS_SER_FILE_PREFIX;
 	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_INFIX_TEX = "_test";
-	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX = ".ser";
+	public static final String RTE_PAIRS_OUTPUT_RESULTS_FILE_POSTFIX = RESULTS_SER_FILE_POSTFIX;
 	
 	public static final String RTE_PAIRS_XML_RESULTS_FILE_NAME_PREFIX = "rte_pairs_results";
 	public static final String RTE_PAIRS_XML_RESULTS_FILE_NAME_POSTFIX = ".xml";
