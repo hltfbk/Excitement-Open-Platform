@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.biutee.script;
+
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_DYNAMIC_PARAMETER_NAME;
@@ -33,7 +34,10 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.SimilarityStorageBasedDIRTSyntacticResource;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
+import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.transformations.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.builtin_knowledge.LexicalResourcesFactory;
@@ -233,6 +237,21 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 				items.add(new ItemForKnowedgeResource(resource, new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName())));
 				// otherIterationsList.add(new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName()));
 				handledOutsideOfSwitch=true;
+			}
+			else if (resource.isExcitementDIRTlike())
+			{
+				try
+				{
+					SimilarityStorageBasedDIRTSyntacticResource excitementSyntacticResource = new SimilarityStorageBasedDIRTSyntacticResource(resourceParams);
+					RuleBaseEnvelope<Info,BasicNode> syntacticResourceEnvelope = new RuleBaseEnvelope<Info,BasicNode>(excitementSyntacticResource);
+					ruleBasesEnvelopes.put(resource.getDisplayName(), syntacticResourceEnvelope);
+					items.add(new ItemForKnowedgeResource(resource, new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName())));
+					handledOutsideOfSwitch=true;
+				}
+				catch (ElementTypeException | RedisRunException e)
+				{
+					throw new OperationException("Failed to initialize syntactic resource. See nested exception.",e);
+				}
 			}
 			else
 			{

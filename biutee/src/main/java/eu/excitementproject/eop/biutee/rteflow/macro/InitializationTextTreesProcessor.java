@@ -308,7 +308,7 @@ public class InitializationTextTreesProcessor
 		
 		
 		// Stores many objects that were created during initialization.
-		operationsEnvironment = new OperationsEnvironment(this.featureUpdate,this.hypothesis,this.hypothesisLemmas,hypothesisLemmasAndCanonicalPos,this.hypothesisLemmasOnly,this.hypothesisLemmasLowerCase,this.hypothesisNumberOfNodes,this.substitutionMultiWordFinder,this.lemmatizer,this.coreferenceInformation,this.mapRuleBasesForLexicalMultiWord,this.hypothesisTemplates, this.multiWordNamedEntityRuleBase, this.richInformationInTreeHistory, teSystemEnvironment.getAlignmentCriteria(),teSystemEnvironment.getStopWords(),teSystemEnvironment.getParser(),teSystemEnvironment.isCollapseMode());
+		operationsEnvironment = new OperationsEnvironment(this.featureUpdate,this.hypothesis,this.hypothesisLemmas,hypothesisLemmasAndCanonicalPos,this.hypothesisLemmasOnly,this.hypothesisLemmasLowerCase,this.hypothesisNumberOfNodes,this.substitutionMultiWordFinder,this.lemmatizer,this.coreferenceInformation,this.mapRuleBasesForLexicalMultiWord,this.hypothesisTemplates, this.multiWordNamedEntityRuleBase, this.richInformationInTreeHistory, teSystemEnvironment.getAlignmentCriteria(),teSystemEnvironment.getStopWords(),teSystemEnvironment.getParser(),teSystemEnvironment.isCollapseMode(),hypothesisTreeAsBasicNode);
 	}
 	
 	public OriginalTreesAfterInitialization getOriginalTreesAfterInitialization()

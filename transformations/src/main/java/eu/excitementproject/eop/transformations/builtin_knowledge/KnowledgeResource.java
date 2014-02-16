@@ -77,15 +77,27 @@ public enum KnowledgeResource
 	{
 		return lexical;
 	}
+	
+	public boolean isExcitementDIRTlike()
+	{
+		return excitementDIRTlike;
+	}
 
-	private KnowledgeResource(String moduleName, boolean dirtLikeDb, String infrastructureModuleName, boolean lexical)
+	
+	private KnowledgeResource(String moduleName, boolean dirtLikeDb, String infrastructureModuleName, boolean lexical, boolean excitementDIRTlike)
 	{
 		this.moduleName = moduleName;
 		this.dirtLikeDb = dirtLikeDb;
 		this.infrastructureModuleName = infrastructureModuleName;
 		this.lexical = lexical;
+		this.excitementDIRTlike = excitementDIRTlike;
 	}
-	
+
+	private KnowledgeResource(String moduleName, boolean dirtLikeDb, String infrastructureModuleName, boolean lexical)
+	{
+		this(moduleName,dirtLikeDb,infrastructureModuleName,lexical,false);
+	}
+
 	private KnowledgeResource(String moduleName, boolean dirtLikeDb, boolean lexical)
 	{
 		this(moduleName,dirtLikeDb,null,lexical);
@@ -97,4 +109,5 @@ public enum KnowledgeResource
 	private final boolean dirtLikeDb;
 	private final String infrastructureModuleName;
 	private final boolean lexical;
+	private final boolean excitementDIRTlike;
 }

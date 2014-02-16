@@ -9,14 +9,13 @@ import java.util.Collection;
 
 
 import java.util.LinkedList;
-
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleMatch;
-import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
@@ -49,7 +48,8 @@ import eu.excitementproject.eop.distsim.util.Configuration;
  * @since Aug 28 2013
  *
  */
-public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticResource<Info, BasicNode> {
+@ParserSpecific({"easyfirst"})
+public class SimilarityStorageBasedDIRTSyntacticResource extends SyntacticResourceSupportDIRTTemplates<Info, BasicNode> {
 
 	
 	/**
@@ -181,14 +181,24 @@ public class SimilarityStorageBasedDIRTSyntacticResource implements SyntacticRes
 		return new SyntacticRule<Info, BasicNode>(entailing.getTree(), entailed.getTree(), mapLhsRhs);
 	}
 
+	
 	@Override
-	public List<RuleMatch<Info, BasicNode>> findMatches(BasicNode textTree, BasicNode hypothesisTree) throws SyntacticResourceException {
+	public List<RuleMatch<Info, BasicNode>> findMatches(BasicNode textTree, Set<String> hypothesisTemplates) throws SyntacticResourceException
+	{
 		throw new UnsupportedOperationException();
 	}
+
+	@Override
+	protected Set<String> createTemplatesForTree(BasicNode tree) throws SyntacticResourceException
+	{
+		throw new UnsupportedOperationException();
+	}
+
 	
 	SimilarityStorage similarityStorage;
 	DependencyPathsFromTreeBinary<Info, BasicNode> extractor;
 	Integer maxNumOfRetrievedRules;
 	BasicMatchCriteria<Info,Info,BasicNode,BasicNode> matchCriteria;
+	
 
 }
