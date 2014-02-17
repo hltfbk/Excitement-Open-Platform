@@ -269,10 +269,10 @@ public class MaxEntClassificationEDATest {
 		//German RTE tests
 //		testLAP_DE();
 //		testParser_DE();
-		testTraining(config);
+//		testTraining(config);
 //		testTesting_SingleTH(config); 
 //		testTesting_MultiTH(config); 
-		testTesting_MultiTH_AND_Output(config);
+//		testTesting_MultiTH_AND_Output(config);
 		
 		
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
