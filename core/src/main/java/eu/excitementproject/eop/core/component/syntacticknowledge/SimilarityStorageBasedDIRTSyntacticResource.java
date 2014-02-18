@@ -16,6 +16,7 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleMatch;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
@@ -154,7 +155,10 @@ public class SimilarityStorageBasedDIRTSyntacticResource extends SyntacticResour
 						//debug
 						//System.out.println("match!");
 
-						ret.add(new RuleMatch<Info, BasicNode>(rule,match));
+						
+						ret.add(new RuleMatch<Info, BasicNode>(
+								new RuleWithConfidenceAndDescription<Info, BasicNode>(rule,E_MINUS_1,"TODO: add description" ),
+								match));
 					}
 				}
 			}
@@ -201,4 +205,5 @@ public class SimilarityStorageBasedDIRTSyntacticResource extends SyntacticResour
 	BasicMatchCriteria<Info,Info,BasicNode,BasicNode> matchCriteria;
 	
 
+	private static final double E_MINUS_1 = Math.exp(-1);
 }

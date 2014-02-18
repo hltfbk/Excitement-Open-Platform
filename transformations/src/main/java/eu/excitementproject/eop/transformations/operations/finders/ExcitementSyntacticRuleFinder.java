@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleMatch;
-import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
@@ -97,9 +96,8 @@ public class ExcitementSyntacticRuleFinder implements Finder<RuleSpecification>
 			ExtendedNode treeNodeInExtendedTree = mapTextTree.rightGet(treeNodeInBasicNodeTree);
 			mapLhsToTree.put(lhsNode, treeNodeInExtendedTree);
 		}
-		RuleWithConfidenceAndDescription<Info,BasicNode> rule = new RuleWithConfidenceAndDescription<Info,BasicNode>(ruleMatch.getRule(), E_MINUS_1, "syntactic rule");
 		
-		return new RuleSpecification(ruleBaseName,rule,mapLhsToTree,false);
+		return new RuleSpecification(ruleBaseName,ruleMatch.getRule(),mapLhsToTree,false);
 	}
 	
 	
@@ -111,5 +109,4 @@ public class ExcitementSyntacticRuleFinder implements Finder<RuleSpecification>
 	
 	private Set<RuleSpecification> specs = null;
 	
-	private static final double E_MINUS_1 = Math.exp(-1);
 }
