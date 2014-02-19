@@ -36,12 +36,14 @@ public class ReasonableGuessGenerator
 	
 	
 	public ReasonableGuessGenerator(
+			ClassifierFactory classifierFactory,
 			Map<Integer, MeanAndStandardDeviation> priorNegative,
 			Map<Integer, MeanAndStandardDeviation> priorPositive,
 			FeatureVectorStructureOrganizer featureVectorStructure,
 			int negativeSamplesToGenerate, int positiveSamplesToGenerate) throws TeEngineMlException
 	{
 		super();
+		this.classifierFactory = classifierFactory;
 		this.priorNegative = priorNegative;
 		this.priorPositive = priorPositive;
 		this.featureVectorStructure = featureVectorStructure;
@@ -54,7 +56,7 @@ public class ReasonableGuessGenerator
 	public LinearTrainableStorableClassifier createClassifierByPrior() throws ClassifierException
 	{
 		Vector<LabeledSample> priorSamples = createPriorSamples();
-		LinearTrainableStorableClassifier ret = new ClassifierFactory().getDefaultClassifierForSearch();
+		LinearTrainableStorableClassifier ret = classifierFactory.getProperClassifierForSearch(false);
 		ret.train(priorSamples);
 		return ret;
 	}
@@ -119,6 +121,7 @@ public class ReasonableGuessGenerator
 		return retZeroFeatureVector;
 	}
 
+	private final ClassifierFactory classifierFactory;
 	private Map<Integer, MeanAndStandardDeviation> priorNegative;
 	private Map<Integer, MeanAndStandardDeviation> priorPositive;
 	private FeatureVectorStructureOrganizer featureVectorStructure;

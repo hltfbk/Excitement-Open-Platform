@@ -222,6 +222,9 @@ public class BiuteeConstants
 	
 	public static final boolean GUI_LOADS_LABELED_SAMPLES = false;
 
+	public static final String CLASSIFIER_OPTIMIZATION_ACCURACY_PARAMETER_VALUE = "ignore_dataset_and_optimize_accuracy";
+	public static final String CLASSIFIER_OPTIMIZATION_F1_PARAMETER_VALUE = "ignore_dataset_and_optimize_f1";
+	
 	//////////////////////////////////////////////////////////////////////////
 	// Constants that there is no reason to change, now and ever.
 

@@ -12,6 +12,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.classifiers.ClassifierFactory;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.plugin.PluginRegisterer;
@@ -112,6 +113,11 @@ public class SystemInitialization
 		PARSER parserMode = SystemUtils.setParserMode(configurationParams);
 		boolean collapseMode = configurationParams.getBoolean(ConfigurationParametersNames.RTE_ENGINE_COLLAPSE_MODE);
 		
+		ClassifierFactory classifierFactory = new ClassifierFactory(readClassifierOptimizationParameter());
+		
+		
+		
+		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
 		{
@@ -188,7 +194,7 @@ public class SystemInitialization
 		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria,mleEstimation, stopWords).createGapToolBox();
 		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
 		else{logger.info("System in pure transformations mode.");}
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode, collapseMode, gapToolBox);
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode, collapseMode, gapToolBox, classifierFactory);
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException
@@ -290,6 +296,30 @@ public class SystemInitialization
 			return new TeEngineMlException("inconsistency in constants: Constants.REQUIRE_PREDICATE_TYPE_EQUALITY && !Constants.USE_ADVANCED_EQUALITIES"); 
 		else
 			return null;
+	}
+	
+	private Boolean readClassifierOptimizationParameter() throws ConfigurationException, TeEngineMlException
+	{
+		Boolean ret = null;
+		if (configurationParams.containsKey(ConfigurationParametersNames.RTE_ENGINE_CLASSIFIER_OPTIMIZATION_PARAMETER_NAME))
+		{
+			String value = configurationParams.getString(ConfigurationParametersNames.RTE_ENGINE_CLASSIFIER_OPTIMIZATION_PARAMETER_NAME);
+			if (value.equalsIgnoreCase(BiuteeConstants.CLASSIFIER_OPTIMIZATION_ACCURACY_PARAMETER_VALUE))
+			{
+				ret = false;
+			}
+			else if (value.equalsIgnoreCase(BiuteeConstants.CLASSIFIER_OPTIMIZATION_F1_PARAMETER_VALUE))
+			{
+				ret = true;
+			}
+			else
+			{
+				throw new TeEngineMlException("The parameter value \""+value+"\" is illegal for the parameter \""+ConfigurationParametersNames.RTE_ENGINE_CLASSIFIER_OPTIMIZATION_PARAMETER_NAME+"."
+						+ "\nPlease remove this parameter from the configuration file, or use one of the following parameters: \""
+						+ BiuteeConstants.CLASSIFIER_OPTIMIZATION_ACCURACY_PARAMETER_VALUE+"\" or \""+BiuteeConstants.CLASSIFIER_OPTIMIZATION_F1_PARAMETER_VALUE+"\".");
+			}
+		}
+		return ret;
 	}
 
 	protected String configurationFileName;
