@@ -4,6 +4,7 @@ import java.io.File;
 
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
+import eu.excitementproject.eop.biutee.classifiers.ClassifierFactory;
 import eu.excitementproject.eop.biutee.classifiers.LinearClassifier;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.rteflow.endtoend.ClassifierGenerator;
@@ -22,19 +23,22 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 public abstract class DefaultAbstractClassifierGenerator extends ClassifierGenerator
 {
 	public DefaultAbstractClassifierGenerator(
+			ClassifierFactory classifierFactory,
 			FeatureVectorStructureOrganizer featureVectorStructure,
 			File modelForSearch, File modelForPredictions)
 	{
 		super();
+		this.classifierFactory = classifierFactory;
 		this.featureVectorStructure = featureVectorStructure;
 		this.modelForSearch = modelForSearch;
 		this.modelForPredictions = modelForPredictions;
 	}
 
 	
-	public DefaultAbstractClassifierGenerator(FeatureVectorStructureOrganizer featureVectorStructure)
+	public DefaultAbstractClassifierGenerator(ClassifierFactory classifierFactory, FeatureVectorStructureOrganizer featureVectorStructure)
 	{
 		super();
+		this.classifierFactory = classifierFactory;
 		this.featureVectorStructure = featureVectorStructure;
 		this.modelForSearch = null;
 		this.modelForPredictions = null;
@@ -46,7 +50,7 @@ public abstract class DefaultAbstractClassifierGenerator extends ClassifierGener
 	{
 		try
 		{
-			ReasonableGuessCreator reasonableGuessCreator = new ReasonableGuessCreator(featureVectorStructure);
+			ReasonableGuessCreator reasonableGuessCreator = new ReasonableGuessCreator(classifierFactory,featureVectorStructure);
 			reasonableGuessCreator.create();
 			return reasonableGuessCreator.getClassifier();
 		}
@@ -87,6 +91,7 @@ public abstract class DefaultAbstractClassifierGenerator extends ClassifierGener
 	}
 
 
+	protected final ClassifierFactory classifierFactory;
 	protected final FeatureVectorStructureOrganizer featureVectorStructure;
 	private final File modelForSearch; // might be null
 	private final File modelForPredictions; // might be null

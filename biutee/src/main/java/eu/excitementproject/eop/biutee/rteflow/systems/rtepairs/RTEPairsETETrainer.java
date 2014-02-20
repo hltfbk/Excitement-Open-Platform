@@ -86,7 +86,7 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 	@Override
 	protected ClassifierGenerator createClassifierGenerator() throws BiuteeException
 	{
-		return new AccuracyClassifierGenerator(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+		return new AccuracyClassifierGenerator(teSystemEnvironment.getClassifierFactory(), teSystemEnvironment.getFeatureVectorStructureOrganizer());
 	}
 	
 	@Override
