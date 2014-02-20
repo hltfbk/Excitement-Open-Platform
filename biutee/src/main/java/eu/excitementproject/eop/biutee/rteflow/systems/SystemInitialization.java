@@ -19,7 +19,6 @@ import eu.excitementproject.eop.biutee.plugin.PluginRegisterer;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBoxFactory;
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;

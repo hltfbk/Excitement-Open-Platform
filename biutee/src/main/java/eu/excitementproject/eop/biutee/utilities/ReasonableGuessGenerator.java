@@ -9,7 +9,6 @@ import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
-import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
 import eu.excitementproject.eop.common.utilities.math.GaussianPseudoRandomGenerator;
 import eu.excitementproject.eop.transformations.utilities.MeanAndStandardDeviation;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
@@ -23,7 +22,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  * loop of the training - to search for the "best" proof ("best" according to
  * this reasonable-guess classifier).
  * 
- * See {@link RTESystemsUtils}
+ * See {@link ReasonableGuessCreator}
  * 
  * @author Asher Stern
  * @since Jul 26, 2011
