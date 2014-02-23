@@ -17,6 +17,7 @@ import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.plugin.PluginRegisterer;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBoxFactory;
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
@@ -41,6 +42,7 @@ import eu.excitementproject.eop.transformations.generic.truthteller.Synchronized
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.LemmatizerFilterApostrophe;
 import eu.excitementproject.eop.transformations.utilities.StopWordsFileLoader;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
@@ -193,6 +195,8 @@ public class SystemInitialization
 		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria,mleEstimation, stopWords).createGapToolBox();
 		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
 		else{logger.info("System in pure transformations mode.");}
+		warnIfGapAndCollapseAreInconsistent(collapseMode,gapToolBox);
+		
 		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode, collapseMode, gapToolBox, classifierFactory);
 	}
 	
@@ -226,28 +230,7 @@ public class SystemInitialization
 			}
 			pluginRegistry.sealRegistry();
 		}
-		catch(RuntimeException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (NoSuchMethodException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (InstantiationException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (IllegalAccessException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (InvocationTargetException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (PluginException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (ClassNotFoundException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (PluginAdministrationException e)
+		catch(RuntimeException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | PluginException | ClassNotFoundException | PluginAdministrationException | InstantiationException e)
 		{
 			throw new TeEngineMlException("Failed to register plugins",e);
 		}
@@ -319,6 +302,17 @@ public class SystemInitialization
 			}
 		}
 		return ret;
+	}
+	
+	private void warnIfGapAndCollapseAreInconsistent(boolean collapseMode, GapToolBox<?, ?> gapToolBox) throws GapException
+	{
+		boolean hybrid = gapToolBox.isHybridMode();
+		if (hybrid!=collapseMode)
+		{
+			String warning = "Inconsistent values of collapse mode and hybrid mode. Usually hybrid mode uses collapsed tree, while pure transformations mode uses non-collapsed set of trees.";
+			GlobalMessages.globalWarn(warning, logger);
+		}
+		
 	}
 
 	protected String configurationFileName;
