@@ -100,7 +100,7 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		this(leftRedisHost, leftRedisPort,null, -1, resourceName, instanceName);
 	}
 	
-	public DefaultSimilarityStorage(String leftRedisHost, int leftRedisPort, String rightRedisHost, int rightRedisPort, String resourceName, String instanceName) throws ElementTypeException, RedisRunException, FileNotFoundException {
+	public DefaultSimilarityStorage(String leftRedisHost, int leftRedisPort, String rightRedisHost, int rightRedisPort, String resourceName, String instanceName) throws ElementTypeException {
 		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(leftRedisHost,leftRedisPort);
 		if (rightRedisHost != null && rightRedisPort > 0) {
 			this.rightElemntSimilarities = new RedisBasedStringListBasicMap(rightRedisHost,rightRedisPort);
