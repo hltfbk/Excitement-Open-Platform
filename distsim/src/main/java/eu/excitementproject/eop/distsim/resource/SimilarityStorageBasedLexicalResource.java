@@ -73,8 +73,24 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 	 * <p>Additionally, uses the param "top-n-rules" to limit the number of retrieved rules.
 	 */
 	public SimilarityStorageBasedLexicalResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
-		this(
-				new DefaultSimilarityStorage(params),params.getInt(Configuration.TOP_N_RULES));
+		String hostLeft = null;
+		int portLeft = -1;
+		String hostRight = null;
+		int portRight = -1;
+		try {
+			hostLeft = params.get(Configuration.L2R_REDIS_HOST);
+			portLeft = params.getInt(Configuration.L2R_REDIS_PORT);
+			hostRight = params.get(Configuration.R2L_REDIS_HOST);
+			portRight = params.getInt(Configuration.R2L_REDIS_PORT);
+		} catch (ConfigurationException e) {
+		}
+		
+		this.maxNumOfRetrievedRules = params.getInt(Configuration.TOP_N_RULES);
+		
+		if (hostLeft == null || portLeft == -1 || hostRight == null || portRight == -1)
+			this.similarityStorage = new DefaultSimilarityStorage(params);			
+		else 
+			this.similarityStorage = new DefaultSimilarityStorage(hostLeft,portLeft,hostRight,portRight,params.get(Configuration.RESOURCE_NAME),params.get(Configuration.INSTANCE_NAME));	
 	}
 
 
