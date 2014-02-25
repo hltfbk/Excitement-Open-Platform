@@ -78,10 +78,10 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 		String hostRight = null;
 		int portRight = -1;
 		try {
-			hostLeft = params.get(Configuration.REDIS_HOST);
-			portLeft = params.getInt(Configuration.REDIS_PORT);
-			hostRight = params.get(Configuration.REDIS_HOST);
-			portRight = params.getInt(Configuration.REDIS_PORT);
+			hostLeft = params.get(Configuration.L2R_REDIS_HOST);
+			portLeft = params.getInt(Configuration.L2R_REDIS_PORT);
+			hostRight = params.get(Configuration.R2L_REDIS_HOST);
+			portRight = params.getInt(Configuration.R2L_REDIS_PORT);
 		} catch (ConfigurationException e) {
 		}
 		
