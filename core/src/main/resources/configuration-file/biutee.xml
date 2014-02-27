@@ -287,5 +287,22 @@
 		<property name="r2l-redis-db-file">../resources/lin/dependency/similarity-r2l.rdb</property>
 	</section>
 
+	<section name="redis-dirt"> 
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->		
+		<property name="resource-name">distsim-dirt</property> 
+		<property name="top-n-rules">20</property>
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">../resources/dirt/similarity-l2r.rdb</property>
+	</section>
+	
+	<section name="redis-reverb"> 
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->		
+		<property name="resource-name">distsim-reverb</property> 
+		<property name="top-n-rules">20</property>
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">../resources/reverb/similarity-l2r.rdb</property>
+	</section>
 </configuration>
 
