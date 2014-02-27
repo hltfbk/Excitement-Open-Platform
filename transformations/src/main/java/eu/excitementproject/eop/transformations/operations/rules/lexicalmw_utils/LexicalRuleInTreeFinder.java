@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
@@ -21,7 +22,6 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUti
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.transformations.operations.rules.LexicalRule;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ChainOfLexicalRules;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ChainOfRulesWithConfidenceAndDescription;
 

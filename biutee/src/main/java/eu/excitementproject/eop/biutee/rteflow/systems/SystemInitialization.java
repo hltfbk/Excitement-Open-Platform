@@ -12,13 +12,14 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.biutee.classifiers.ClassifierFactory;
 import eu.excitementproject.eop.biutee.plugin.PluginAdministrationException;
 import eu.excitementproject.eop.biutee.plugin.PluginException;
 import eu.excitementproject.eop.biutee.plugin.PluginRegisterer;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
+import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapException;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBoxFactory;
-import eu.excitementproject.eop.biutee.rteflow.systems.rtepairs.RTEPairsMultiThreadTrainer;
 import eu.excitementproject.eop.biutee.script.RuleBasesAndPluginsContainer;
 import eu.excitementproject.eop.biutee.utilities.BiuteeConstants;
 import eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames;
@@ -41,6 +42,7 @@ import eu.excitementproject.eop.transformations.generic.truthteller.Synchronized
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.Constants;
+import eu.excitementproject.eop.transformations.utilities.GlobalMessages;
 import eu.excitementproject.eop.transformations.utilities.LemmatizerFilterApostrophe;
 import eu.excitementproject.eop.transformations.utilities.StopWordsFileLoader;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
@@ -111,6 +113,11 @@ public class SystemInitialization
 		
 		PARSER parserMode = SystemUtils.setParserMode(configurationParams);
 		boolean collapseMode = configurationParams.getBoolean(ConfigurationParametersNames.RTE_ENGINE_COLLAPSE_MODE);
+		
+		ClassifierFactory classifierFactory = new ClassifierFactory(readClassifierOptimizationParameter());
+		
+		
+		
 		
 		lemmatizerRulesFileName = configurationParams.getFile(RTE_ENGINE_GATE_LEMMATIZER_RULES_FILE).getAbsolutePath();
 		if (LEMMATIZER_SINGLE_INSTANCE)
@@ -188,7 +195,9 @@ public class SystemInitialization
 		GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox = new GapToolBoxFactory(configurationFile,configurationParams,alignmentCriteria,mleEstimation, stopWords).createGapToolBox();
 		if (gapToolBox.isHybridMode()){logger.info("System in hybrid-gap mode.");}
 		else{logger.info("System in pure transformations mode.");}
-		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode, collapseMode, gapToolBox);
+		warnIfGapAndCollapseAreInconsistent(collapseMode,gapToolBox);
+		
+		teSystemEnvironment = new TESystemEnvironment(ruleBasesToRetrieveMultiWords, mleEstimation, syncAnnotator, pluginRegistry, featureVectorStructureOrganizer, alignmentCriteria, stopWords,parserMode, collapseMode, gapToolBox, classifierFactory);
 	}
 	
 	protected void completeInitializationWithScript(RuleBasesAndPluginsContainer<?, ?> script) throws TeEngineMlException
@@ -221,28 +230,7 @@ public class SystemInitialization
 			}
 			pluginRegistry.sealRegistry();
 		}
-		catch(RuntimeException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (NoSuchMethodException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (InstantiationException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (IllegalAccessException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (InvocationTargetException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (PluginException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (ClassNotFoundException e)
-		{
-			throw new TeEngineMlException("Failed to register plugins",e);
-		} catch (PluginAdministrationException e)
+		catch(RuntimeException | NoSuchMethodException | IllegalAccessException | InvocationTargetException | PluginException | ClassNotFoundException | PluginAdministrationException | InstantiationException e)
 		{
 			throw new TeEngineMlException("Failed to register plugins",e);
 		}
@@ -290,6 +278,41 @@ public class SystemInitialization
 			return new TeEngineMlException("inconsistency in constants: Constants.REQUIRE_PREDICATE_TYPE_EQUALITY && !Constants.USE_ADVANCED_EQUALITIES"); 
 		else
 			return null;
+	}
+	
+	private Boolean readClassifierOptimizationParameter() throws ConfigurationException, TeEngineMlException
+	{
+		Boolean ret = null;
+		if (configurationParams.containsKey(ConfigurationParametersNames.RTE_ENGINE_CLASSIFIER_OPTIMIZATION_PARAMETER_NAME))
+		{
+			String value = configurationParams.getString(ConfigurationParametersNames.RTE_ENGINE_CLASSIFIER_OPTIMIZATION_PARAMETER_NAME);
+			if (value.equalsIgnoreCase(BiuteeConstants.CLASSIFIER_OPTIMIZATION_ACCURACY_PARAMETER_VALUE))
+			{
+				ret = false;
+			}
+			else if (value.equalsIgnoreCase(BiuteeConstants.CLASSIFIER_OPTIMIZATION_F1_PARAMETER_VALUE))
+			{
+				ret = true;
+			}
+			else
+			{
+				throw new TeEngineMlException("The parameter value \""+value+"\" is illegal for the parameter \""+ConfigurationParametersNames.RTE_ENGINE_CLASSIFIER_OPTIMIZATION_PARAMETER_NAME+"."
+						+ "\nPlease remove this parameter from the configuration file, or use one of the following parameters: \""
+						+ BiuteeConstants.CLASSIFIER_OPTIMIZATION_ACCURACY_PARAMETER_VALUE+"\" or \""+BiuteeConstants.CLASSIFIER_OPTIMIZATION_F1_PARAMETER_VALUE+"\".");
+			}
+		}
+		return ret;
+	}
+	
+	private void warnIfGapAndCollapseAreInconsistent(boolean collapseMode, GapToolBox<?, ?> gapToolBox) throws GapException
+	{
+		boolean hybrid = gapToolBox.isHybridMode();
+		if (hybrid!=collapseMode)
+		{
+			String warning = "Inconsistent values of collapse mode and hybrid mode. Usually hybrid mode uses collapsed tree, while pure transformations mode uses non-collapsed set of trees.";
+			GlobalMessages.globalWarn(warning, logger);
+		}
+		
 	}
 
 	protected String configurationFileName;

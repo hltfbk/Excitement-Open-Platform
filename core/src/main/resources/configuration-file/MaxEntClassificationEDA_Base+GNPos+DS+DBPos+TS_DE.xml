@@ -73,7 +73,7 @@
     <!-- A wrapper for being able to GermaNet - a WordNet-like lexical semantics resource for German. -->
 	<section name="GermaNetWrapper">
         <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] -->
-		<property name="germaNetFilesPath">../core/src/main/resources/ontologies/germanet-7.0/GN_V70/GN_V70_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. -->
+		<property name="germaNetFilesPath">/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. -->
         
 		<!-- GermaNet relations and their confidences (LHS -> RHS) -->
 		<property name="causesConfidence">1.0</property>
@@ -82,7 +82,7 @@
 		<property name="synonymConfidence">1.0</property>
 	</section>
 	
- 	<!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
+   <!-- Specifies parameters for the derivational resource DErivBase (similar to CatVar for English). -->
 	<section name="DerivBaseResource"> 
 	<!-- Specifies if rule scores provided by the DErivBase resource should be used or not. 
              True = scores are used, False = scores are not used.

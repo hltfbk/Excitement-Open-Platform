@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
@@ -23,7 +24,6 @@ import eu.excitementproject.eop.transformations.operations.finders.auxiliary.Pos
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.SingleItemBidirectionalMap;
 import eu.excitementproject.eop.transformations.operations.rules.BagOfRulesRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.specifications.RuleSpecification;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedMatchCriteria;
@@ -45,8 +45,6 @@ import static eu.excitementproject.eop.transformations.utilities.Constants.CACHE
  */
 public class RulesByBagOfRulesRuleBaseFinder implements Finder<RuleSpecification>
 {
-	
-	
 	public RulesByBagOfRulesRuleBaseFinder(TreeAndParentMap<ExtendedInfo, ExtendedNode> textTree,
 			BagOfRulesRuleBase<Info, BasicNode> ruleBase, String ruleBaseName)
 	{

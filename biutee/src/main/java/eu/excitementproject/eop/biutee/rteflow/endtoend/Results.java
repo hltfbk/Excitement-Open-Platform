@@ -8,6 +8,8 @@ import java.util.Vector;
 import eu.excitementproject.eop.biutee.classifiers.Classifier;
 import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.utilities.BiuteeException;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableList;
+import eu.excitementproject.eop.common.datastructures.immutable.ImmutableListWrapper;
 
 /**
  * Holds the entailment-decisions of a full dataset of T-H pairs.
@@ -96,6 +98,29 @@ public abstract class Results<I extends Instance, P extends Proof>
 		}
 		return samples;
 	}
+	
+	///// Standard getters:
+	
+	
+	/**
+	 * Returns the proofs
+	 * @return the proofs
+	 */
+	public ImmutableList<InstanceAndProof<I, P>> getProofs()
+	{
+		return new ImmutableListWrapper<>(proofs);
+	}
+	
+	
+	/**
+	 * Returns the classifier for predictions
+	 * @return the classifier for predictions
+	 */
+	public Classifier getClassifierForPredictions()
+	{
+		return classifierForPredictions;
+	}
+
 
 	
 	protected final List<InstanceAndProof<I, P>> proofs;

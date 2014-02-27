@@ -4,7 +4,7 @@
 package eu.excitementproject.eop.transformations.utilities.view;
 import java.util.List;
 
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.representation.ExtendedConstructionNode;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 

@@ -7,7 +7,7 @@
 <configuration>
 
         
-   <section name="GermanTransDm">
+   <section name="GermanTransDmResource">
       	<!-- This section specifies the German distributional similarity resource based
         	 on 1) a translation of a distributional space built on an English corpus, 
         	 and 2) a German corpus. -->
@@ -26,7 +26,7 @@
 
 		<!-- you need to update this for your own GermaNet path. If not found, 
 		     GermaNet init will raise an exception. -->
-		<property name="germaNetFilesPath">/path/to/GermaNetFiles/GN_V70/GN_V70_XML</property>  
+		<property name="germaNetFilesPath">/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/</property>  
 
 		<!-- GermaNet relations and their confidences. 
 		     Confidence of 1.0 means "this relation absolutely means Entailment".
@@ -40,6 +40,7 @@
 		
 		<!-- both LHS -> RHS and RHS -> LHS relations --> 
 		<property name="synonymConfidence">0.5</property> 
+		<property name="antonymConfidence">0.0</property>
 		
 		<!-- RHS -> LHS relations -->
 		<property name="hyponymConfidence">0.5</property>

@@ -13,8 +13,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 /** This type represent an aligned textual unit. Its span refers to the "source" linguistic entity. This can be a token (word alignment), a syntax node (phrase alignments), or a sentence
 (sentence alignment).
- * Updated by JCasGen Fri Oct 05 20:17:43 CEST 2012
- * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/TextAlignment.xml
+ * Updated by JCasGen Sun Feb 16 17:14:26 CET 2014
+ * XML source: /Users/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/TextAlignment.xml
  * @generated */
 public class AlignedText extends Annotation {
   /** @generated

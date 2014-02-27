@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.transformations.operations.rules;
 import java.util.LinkedHashSet;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.transformations.operations.rules.distsimnew.DirtDBRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ChainOfLexicalRules;
@@ -110,6 +111,22 @@ public class RuleBaseEnvelope<I, S extends AbstractNode<I, S>>
 		return this.dirtDBRuleBase;
 	}
 	private DirtDBRuleBase dirtDBRuleBase = null;
+
+	
+	/////////////////// eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource ///////////////////
+	
+	
+	public RuleBaseEnvelope(SyntacticResource<I,S> ruleBaseSyntacticResource) throws RuleBaseException
+	{
+		if (null==ruleBaseSyntacticResource)
+			throw new RuleBaseException("The given ruleBaseSyntacticResource was null");
+		this.ruleBaseSyntacticResource = ruleBaseSyntacticResource;
+	}
+	public SyntacticResource<I,S> getRuleBaseSyntacticResource()
+	{
+		return this.ruleBaseSyntacticResource;
+	}
+	private SyntacticResource<I,S> ruleBaseSyntacticResource = null;
 	
 	
 	//////////////////////////// General Methods & Fields ///////////////////////////////

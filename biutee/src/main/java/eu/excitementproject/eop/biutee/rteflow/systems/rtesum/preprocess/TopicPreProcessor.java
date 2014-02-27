@@ -187,7 +187,7 @@ public class TopicPreProcessor
 	
 	private void normalizeTopicDataSet() throws TextPreprocessorException, TeEngineMlException
 	{
-		logger.info("Performing text-normalization over the whole topic.");
+		logger.debug("Performing text-normalization over the whole topic.");
 		TextPreprocessor textPreprocessor = instruments.getTextPreprocessor();
 		Map<String,String> hypothesisMap = new LinkedHashMap<String, String>();
 		for (String hypothesisId : topicDataSet.getHypothesisMap().keySet())
@@ -224,7 +224,7 @@ public class TopicPreProcessor
 		TopicDataSet normalizedTopicDataSet = new TopicDataSet(topicDataSet.getTopicId(), topicDataSet.getCandidatesMap(), hypothesisMap, documentsMap, documentsMetaData);
 		
 		this.topicDataSet = normalizedTopicDataSet;
-		logger.info("Text normalization done.");
+		logger.debug("Text normalization done.");
 	}
 	
 	

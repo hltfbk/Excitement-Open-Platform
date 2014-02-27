@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.biutee.classifiers.ClassifierException;
+import eu.excitementproject.eop.biutee.classifiers.ClassifierFactory;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
@@ -20,9 +21,10 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  */
 public class ReasonableGuessCreator
 {
-	public ReasonableGuessCreator(FeatureVectorStructureOrganizer featureVectorStructure)
+	public ReasonableGuessCreator(ClassifierFactory classifierFactory, FeatureVectorStructureOrganizer featureVectorStructure)
 	{
 		super();
+		this.classifierFactory = classifierFactory;
 		this.featureVectorStructure = featureVectorStructure;
 	}
 
@@ -166,7 +168,7 @@ public class ReasonableGuessCreator
 		}
 		
 		ReasonableGuessGenerator generator = 
-			new ReasonableGuessGenerator(priorNegative,priorPositive,featureVectorStructure,
+			new ReasonableGuessGenerator(classifierFactory, priorNegative,priorPositive,featureVectorStructure,
 					BiuteeConstants.NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED/(1+1),
 					BiuteeConstants.NUMBER_OF_SAMPLES_BY_WHICH_REASONABLE_GUESS_IS_TRAINED/(1+1));
 		classifier = generator.createClassifierByPrior();
@@ -190,7 +192,7 @@ public class ReasonableGuessCreator
 
 
 
-
+	private final ClassifierFactory classifierFactory;
 	private final FeatureVectorStructureOrganizer featureVectorStructure;
 	private LinearTrainableStorableClassifier classifier;
 	

@@ -6,13 +6,15 @@ import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING
 import static eu.excitementproject.eop.biutee.utilities.BiuteeConstants.LEARNING_MODEL_FILE_SEARCH_INDICATOR;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
-
 
 import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
@@ -63,29 +65,36 @@ public class Trainer<I extends Instance, P extends Proof>
 
 	public void train() throws BiuteeException
 	{
-		verifyInput();
-		classifierForSearch = classifierGenerator.createReasonableGuessClassifier();
-		iterationNumber = 0;
-		Double successRatePreviousIteration = null;
-		Double successRateCurrentIteration = null;
-		do
+		try
 		{
-			if (samplesLastIteration!=null)
+			verifyInput();
+			classifierForSearch = classifierGenerator.createReasonableGuessClassifier();
+			iterationNumber = 0;
+			Double successRatePreviousIteration = null;
+			Double successRateCurrentIteration = null;
+			do
 			{
-				samplesOfOlderIterations.add(samplesLastIteration);
+				if (samplesLastIteration!=null)
+				{
+					samplesOfOlderIterations.add(samplesLastIteration);
+				}
+				iterate();
+				storeClassifiers();
+
+				successRatePreviousIteration = successRateCurrentIteration;
+				successRateCurrentIteration = resultsLastIteration.getSuccessRate();
+				++iterationNumber;
+
+				logIterationResults();
+				endOfIterationEntryPoint();
 			}
-			iterate();
-			storeClassifiers();
-			
-			successRatePreviousIteration = successRateCurrentIteration;
-			successRateCurrentIteration = resultsLastIteration.getSuccessRate();
-			++iterationNumber;
-			
-			logIterationResults();
-			endOfIterationEntryPoint();
+			while (!isMainLoopDone(iterationNumber,successRatePreviousIteration,successRateCurrentIteration));
+			logger.info("Training done. Results of last iteration:\n"+resultsLastIteration.print());
 		}
-		while (!isMainLoopDone(iterationNumber,successRatePreviousIteration,successRateCurrentIteration));
-		logger.info("Training done. Results of last iteration:\n"+resultsLastIteration.print());
+		catch (IOException e)
+		{
+			throw new BiuteeException("IO failure. Please see nested exception.",e);
+		}
 	}
 	
 	/**
@@ -162,7 +171,7 @@ public class Trainer<I extends Instance, P extends Proof>
 		resultsLastIteration.compute();
 	}
 	
-	private void logIterationResults() throws BiuteeException
+	private void logIterationResults() throws BiuteeException, IOException
 	{
 		logger.info("Iteration done.\nProofs:");
 		Iterator<String> detailsIterator = resultsLastIteration.instanceDetailsIterator();
@@ -172,6 +181,19 @@ public class Trainer<I extends Instance, P extends Proof>
 			logger.info(details);
 		}
 		logger.info("Current iteration result summary:\n"+resultsLastIteration.print());
+		
+		
+		if (BiuteeConstants.SAVE_SERIALIZED_RESULTS)
+		{
+			File serFile = new File(BiuteeConstants.RESULTS_SER_FILE_PREFIX+"_"+iterationNumber+BiuteeConstants.RESULTS_SER_FILE_POSTFIX);
+			logger.info("Iteration "+iterationNumber+" done."
+					+ " Saving results in ser file to "+serFile.getName());
+			try(ObjectOutputStream serStream = new ObjectOutputStream(new FileOutputStream(serFile)))
+			{
+				serStream.writeObject(resultsLastIteration.getProofs());
+			}
+			ExperimentManager.getInstance().register(serFile);
+		}
 	}
 
 	

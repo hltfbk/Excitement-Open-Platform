@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.transformations.operations.rules;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;

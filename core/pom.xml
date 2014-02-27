@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>unituebingen</groupId>
 			<artifactId>GermaNetAPI</artifactId>
-			<version>7.0.1</version><!--$NO-MVN-MAN-VER$ -->
+			<version>8.0</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
                 <dependency>
                         <groupId>de.uni-heidelberg.cl</groupId>

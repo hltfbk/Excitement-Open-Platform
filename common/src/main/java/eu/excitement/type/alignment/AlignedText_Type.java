@@ -15,7 +15,7 @@ import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** This type represent an aligned textual unit. Its span refers to the "source" linguistic entity. This can be a token (word alignment), a syntax node (phrase alignments), or a sentence
 (sentence alignment).
- * Updated by JCasGen Fri Oct 05 20:17:43 CEST 2012
+ * Updated by JCasGen Sun Feb 16 17:14:26 CET 2014
  * @generated */
 public class AlignedText_Type extends Annotation_Type {
   /** @generated */
@@ -68,7 +68,7 @@ public class AlignedText_Type extends Annotation_Type {
     if (lowLevelTypeChecks)
       return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_alignedTo), i, true);
     jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_alignedTo), i);
-	return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_alignedTo), i);
+  return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_alignedTo), i);
   }
    
   /** @generated */ 

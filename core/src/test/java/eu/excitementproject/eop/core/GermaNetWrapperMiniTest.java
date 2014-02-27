@@ -3,7 +3,6 @@ package eu.excitementproject.eop.core;
 
 import static org.junit.Assert.*;
 
-
 import java.io.File;
 
 import org.junit.Assume;
@@ -35,11 +34,11 @@ public class GermaNetWrapperMiniTest {
 	public void test() throws UnsupportedPosTagStringException {
 
 		// case (1): create GermaNetWrapper instance by specifying path to GermaNet files 
-		// -> path should direct to GN_V70_XML
+		// -> path should direct to GN_V80_XML
 		
 		GermaNetWrapper gnw1=null;
 		try {
-			gnw1 = new GermaNetWrapper("path/to/GermaNetFiles/GN_V70/GN_V70_XML");			
+			gnw1 = new GermaNetWrapper("/path/to/GermaNet/version8.0/germanet-8.0/GN_V80_XML/");			
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
@@ -58,7 +57,7 @@ public class GermaNetWrapperMiniTest {
 				assertTrue(rule.getLLemma().equals("Hitze"));
 				assertTrue(rule.getRLemma().equals("Kälte"));
 				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+				assertTrue(rule.getConfidence() == 0.5); //default confidence
 			}
 		}
 		catch (LexicalResourceException e)
@@ -92,7 +91,7 @@ public class GermaNetWrapperMiniTest {
 				assertTrue(rule.getLLemma().equals("Hitze"));
 				assertTrue(rule.getRLemma().equals("Kälte"));
 				assertTrue(rule.getRelation().equals("has_antonym"));
-				assertTrue(rule.getConfidence() == 0);
+				assertTrue(rule.getConfidence() == 0.0);
 			}
 		}
 		catch (LexicalResourceException e)
@@ -102,12 +101,13 @@ public class GermaNetWrapperMiniTest {
 		
 		
 		
-		// case (3): initiate GermaNetWrapper with config file and confidence values
+		// case (3): initiate GermaNetWrapper with confidence values
+		// not that 0.0 confidence relations are still included in resulting rules list
 		
 		GermaNetWrapper gnw3 = null;
-		// check that no 0 confidence value returns 
-		try {// Initiating with "no hypernym" (0 confidence on hypernym)  
-			gnw3 = new GermaNetWrapper("/path/to/GermaNetFiles/GN_V70/GN_V70_XML", 1.0, 1.0, 0.0, 1.0, 1.0);
+
+		try { 
+			gnw3 = new GermaNetWrapper("/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML/", 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 		}
 		catch (GermaNetNotInstalledException e) {
 			System.out.println("WARNING: GermaNet files are not found in the given path. Please correctly install and pass the path to GermaNetWrapper");
@@ -118,17 +118,19 @@ public class GermaNetWrapperMiniTest {
 			e.printStackTrace(); 
 		}
 		
-		// there should be no hypernym RHS, neither anyone with 0 confidence. 
-		try{
-			for (LexicalRule<? extends GermaNetInfo> rule : gnw3.getRulesForLeft("Hund", null)) {
-				assertTrue(rule.getConfidence() > 0);
-				assertFalse(rule.getRelation().equals("has_hypernym")); 
-			}
-		}
-		catch (LexicalResourceException e)
-		{
-			e.printStackTrace(); 
-		}
+		// repeat the test for common nouns, with manually set confidence values 
+				try{
+					for (LexicalRule<? extends GermaNetInfo> rule : gnw3.getRulesForLeft("Hitze", new GermanPartOfSpeech("NN"), GermaNetRelation.has_antonym)) {
+						assertTrue(rule.getLLemma().equals("Hitze"));
+						assertTrue(rule.getRLemma().equals("Kälte"));
+						assertTrue(rule.getRelation().equals("has_antonym"));
+						assertTrue(rule.getConfidence() == 1.0);
+					}
+				}
+				catch (LexicalResourceException e)
+				{
+					e.printStackTrace(); 
+				}			
 		
 	}
 }

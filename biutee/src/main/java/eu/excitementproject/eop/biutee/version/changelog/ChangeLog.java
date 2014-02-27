@@ -22,10 +22,6 @@ import eu.excitementproject.eop.biutee.version.VersionComparator;
  */
 public class ChangeLog
 {
-	public static String verstionShortString(Version version)
-	{
-		return version.getProduct()+"."+version.getMajor()+"."+version.getMinor();
-	}
 	
 	/**
 	 * Returns the log as a string.
@@ -40,23 +36,38 @@ public class ChangeLog
 			sb.append(verstionShortString(version)).append("\n");
 			for (ChangeLogItem item : mapChangedInVersion.get(version))
 			{
-				sb.append("\t");
-				String typeString = "";
-				if (item.isMajor()) typeString = typeString +"* ";
-				typeString = typeString+item.getChangeType().name();
-				sb.append(String.format("%-11s", typeString));
-				sb.append(": ").append(item.getDescription()).append("\n");
+				if (item.getDescription().length()>0)
+				{
+					sb.append("\t");
+					String typeString = "";
+					if (item.isMajor()) typeString = typeString +"* ";
+					typeString = typeString+item.getChangeType().name();
+					sb.append(String.format("%-11s", typeString));
+					sb.append(": ").append(item.getDescription()).append("\n");
+				}
 			}
 		}
 		return sb.toString();
 	}
+	
+	public static List<ChangeLogItem> getLog()
+	{
+		return privateGetLog();
+	}
+	
+	
+	private static String verstionShortString(Version version)
+	{
+		return version.getProduct()+"."+version.getMajor()+"."+version.getMinor();
+	}
+
 	
 	/**
 	 * Returns a map from a version in which changes have been performed - to the set
 	 * of the changes that have been performed in it.
 	 * @return
 	 */
-	public static TreeMap<Version, Set<ChangeLogItem>> getItemsChangedInVersion()
+	private static TreeMap<Version, Set<ChangeLogItem>> getItemsChangedInVersion()
 	{
 		TreeMap<Version, Set<ChangeLogItem>> ret = new TreeMap<Version, Set<ChangeLogItem>>(new VersionComparator());
 		TreeMap<Version, Version> mapNext = mapToNextVersion();
@@ -85,7 +96,7 @@ public class ChangeLog
 	 * 
 	 * @return
 	 */
-	public static TreeSet<Version> getVersionsInLog()
+	private static TreeSet<Version> getVersionsInLog()
 	{
 		TreeSet<Version> ret = new TreeSet<Version>(new VersionComparator());
 		for (ChangeLogItem item : getLog())
@@ -99,7 +110,7 @@ public class ChangeLog
 	 * Returns a map from each version to the immediate successor version.
 	 * @return
 	 */
-	public static TreeMap<Version, Version> mapToNextVersion()
+	private static TreeMap<Version, Version> mapToNextVersion()
 	{
 		TreeMap<Version, Version> ret =	new TreeMap<Version, Version>(new VersionComparator());
 		TreeSet<Version> setVersions = getVersionsInLog();
@@ -129,7 +140,8 @@ public class ChangeLog
 	 *  
 	 * @return
 	 */
-	public static TreeMap<Version, Set<ChangeLogItem>> getItemsByVersion()
+	@SuppressWarnings("unused")
+	private static TreeMap<Version, Set<ChangeLogItem>> getItemsByVersion()
 	{
 		TreeMap<Version, Set<ChangeLogItem>> ret = new TreeMap<Version, Set<ChangeLogItem>>(new VersionComparator());
 		for (ChangeLogItem item : getLog())
@@ -160,6 +172,7 @@ public class ChangeLog
 	private static Version VER_2_4_0 = new Version(2, 4, 0, BuildType.RELEASE);
 	private static Version VER_2_4_1 = new Version(2, 4, 1, BuildType.RELEASE);
 	private static Version VER_2_5_0 = new Version(2, 5, 0, BuildType.RELEASE);
+	private static Version VER_2_6_0 = new Version(2, 6, 0, BuildType.RELEASE);
 	
 	
 	/**
@@ -167,7 +180,7 @@ public class ChangeLog
 	 * The log itself is defined here.
 	 * @return
 	 */
-	public static List<ChangeLogItem> getLog()
+	public static List<ChangeLogItem> privateGetLog()
 	{
 		synchronized (ChangeLog.class)
 		{
@@ -176,6 +189,7 @@ public class ChangeLog
 				ChangeLogItem[] logArray = new ChangeLogItem[]
 						{
 						// example new ChangeLogItem(VERSION_BEFORE_CHANGE, ChangeType.FIXED, "change description"),
+						new ChangeLogItem(VER_2_6_0, ChangeType.ADDED, ""),
 						new ChangeLogItem(VER_2_5_0, ChangeType.CHANGED, "Improve syntactic resource runtime."),
 						new ChangeLogItem(VER_2_5_0, ChangeType.CHANGED, "Rewrite TemplatesFromTree to get rid from legacy code."),
 						new ChangeLogItem(VER_2_5_0, ChangeType.ADDED, "Add ability to exclude on the fly transformations via configuration file."),

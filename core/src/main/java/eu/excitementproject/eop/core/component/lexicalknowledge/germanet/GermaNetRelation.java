@@ -5,6 +5,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.CanonicalRelat
 import eu.excitementproject.eop.common.component.lexicalknowledge.OwnRelationSpecifier;
 import eu.excitementproject.eop.common.component.lexicalknowledge.TERuleRelation;
 
+import de.tuebingen.uni.sfs.germanet.api.ConRel;
+import de.tuebingen.uni.sfs.germanet.api.LexRel;
+
 public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationSpecifier<GermaNetRelation> {
 	causes,
 	entails,
@@ -21,6 +24,40 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 			case has_hyponym: return "has_hyponym";
 			case has_antonym: return "has_antonym";
 			case has_synonym: return "has_synonym";
+		}
+		return null;
+	}
+	
+	/**
+	 * allows a mapping from a germanetrelation to a germanet conceptual relation (ConRel)
+	 * @return corresponding germanet ConRel
+	 */
+	public ConRel toConRel() {
+		if (ConRel.isConRel(this.toGermaNetString())){
+			switch (this) {
+				case causes: return ConRel.causes;
+				case entails: return ConRel.entails;
+				case has_hypernym: return ConRel.has_hypernym;
+				case has_hyponym: return ConRel.has_hyponym;
+			default:
+				break;
+			}
+		}
+		return null;
+	}
+	
+	/**
+	 * allows a mapping from a germanetrelation to a germanet lexical relation (LexRel)
+	 * @return corresponding germanet LexRel
+	 */
+	public LexRel toLexRel() {
+		if (LexRel.isRel(this.toGermaNetString())){
+			switch (this) {
+				case has_synonym: return LexRel.has_synonym;
+				case has_antonym: return LexRel.has_antonym;
+			default:
+				break;
+			}
 		}
 		return null;
 	}
@@ -43,4 +80,3 @@ public enum GermaNetRelation implements CanonicalRelationSpecifier, OwnRelationS
 		return null;
 	}
 }
-
