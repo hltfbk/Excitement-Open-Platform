@@ -10,6 +10,8 @@ import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRes
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
+import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeCopier;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNodeConstructor;
@@ -58,6 +60,7 @@ public class ExcitementSyntacticRuleFinder implements Finder<RuleSpecification>
 			treeCopier.copy();
 			BasicNode textTreeAsBasicNode = treeCopier.getGeneratedTree();
 			BidirectionalMap<ExtendedNode, BasicNode> mapTextTree = treeCopier.getNodesMap();
+			copiedTextTreeNodes = AbstractNodeUtils.treeToLinkedHashSet(textTreeAsBasicNode);
 
 			specs = new LinkedHashSet<>();
 			List<RuleMatch<Info,BasicNode>> matches = ruleBase.findMatches(textTreeAsBasicNode, hypothesisTree);
@@ -86,13 +89,31 @@ public class ExcitementSyntacticRuleFinder implements Finder<RuleSpecification>
 	}
 
 	
-	private RuleSpecification convertRuleMatch(RuleMatch<Info,BasicNode> ruleMatch, BidirectionalMap<ExtendedNode, BasicNode> mapTextTree)
+	private RuleSpecification convertRuleMatch(RuleMatch<Info,BasicNode> ruleMatch, BidirectionalMap<ExtendedNode, BasicNode> mapTextTree) throws OperationException
 	{
 		BidirectionalMap<BasicNode, ExtendedNode> mapLhsToTree = new SimpleBidirectionalMap<>();
 		BidirectionalMap<BasicNode,BasicNode> mapLhsToTreeInRuleMatch = ruleMatch.getMapLHStoTree();
 		for (BasicNode lhsNode : mapLhsToTreeInRuleMatch.leftSet())
 		{
+			if (null==lhsNode) {throw new OperationException("Malformed rule match has returned from the resource. A null node is contained as a rule node in the map from LHS to tree.");}
 			BasicNode treeNodeInBasicNodeTree = mapLhsToTreeInRuleMatch.leftGet(lhsNode);
+			if (null==treeNodeInBasicNodeTree)
+			{
+				String lhsLemma = InfoGetFields.getLemma(lhsNode.getInfo());
+				throw new OperationException("Malformed rule match has returned from the resource. The map from LHS to tree maps a rule node to a null.\n" +
+						"The rule node is: \""+lhsLemma+"\".");
+			}
+			if (!copiedTextTreeNodes.contains(treeNodeInBasicNodeTree))
+			{
+				String lemmaOfTextTreeNode = InfoGetFields.getLemma(treeNodeInBasicNodeTree.getInfo());
+				String idOfTextTreeNode = "info_is_null";
+				if (treeNodeInBasicNodeTree.getInfo()!=null)
+				{
+					idOfTextTreeNode = treeNodeInBasicNodeTree.getInfo().getId();
+					if (null==idOfTextTreeNode) {idOfTextTreeNode="id_is_null";}
+				}
+				throw new OperationException("The map from LHS to tree maps into a tree node that did not exist in the original tree given to the resource.\nThe node lemma is \""+lemmaOfTextTreeNode+"\", the ID is \""+idOfTextTreeNode+"\".");
+			}
 			ExtendedNode treeNodeInExtendedTree = mapTextTree.rightGet(treeNodeInBasicNodeTree);
 			mapLhsToTree.put(lhsNode, treeNodeInExtendedTree);
 		}
@@ -106,6 +127,8 @@ public class ExcitementSyntacticRuleFinder implements Finder<RuleSpecification>
 	private final String ruleBaseName;
 	private final ExtendedNode textTree;
 	private final BasicNode hypothesisTree;
+	
+	private Set<BasicNode> copiedTextTreeNodes;
 	
 	private Set<RuleSpecification> specs = null;
 	
