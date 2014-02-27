@@ -277,9 +277,9 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 				
 				List<String> elementSimilarities;
 				if (ruleDirection == RuleDirection.LEFT_TO_RIGHT)
-					elementSimilarities = leftElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : -1));
+					elementSimilarities = leftElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : Long.MAX_VALUE));
 				else
-					elementSimilarities = rightElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : -1));
+					elementSimilarities = rightElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : Long.MAX_VALUE));
 
 				if (elementSimilarities == null) {
 					logger.warn("No entry was found for key " + element1Key);

@@ -1,8 +1,7 @@
 package eu.excitementproject.eop.distsim.dependencypath;
 
-import java.util.ArrayList;
-
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.commons.collections15.functors.TruePredicate;
 
@@ -58,8 +57,8 @@ public class DependencyPathsFromTreeSnow<T extends Info, S extends AbstractNode<
 	 * @param root the root of a parse-tree.
 	 * @return a list of all dependency paths, in string form, according to [Snow 2005] definition.
 	 */
-	@Override public List<String> stringDependencyPaths(S root) {
-		List<String> result = new ArrayList<String>();
+	@Override public Set<String> stringDependencyPaths(S root) {
+		Set<String> result = new HashSet<String>();
 
 		for (S dependencyPath: oneBranchDPFT.dependencyPaths(root))  
 			result.add(AbstractNodeDependencyPathsUtils.toDependencyPath(dependencyPath, 1, Direction.RIGHT_TO_LEFT, 

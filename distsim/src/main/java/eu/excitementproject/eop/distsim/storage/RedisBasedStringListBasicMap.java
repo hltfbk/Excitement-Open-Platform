@@ -100,7 +100,7 @@ public class RedisBasedStringListBasicMap {
 		
 	}
 
-	public List<String> getTopN(String key, int n) {
+	public List<String> getTopN(String key, long n) {
 		//long t1 = System.currentTimeMillis();
 		List<String> ret= jedis.lrange(key, 0, n-1);
 		//long t2 = System.currentTimeMillis();
