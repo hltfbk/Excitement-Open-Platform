@@ -18,7 +18,7 @@ import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 //import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 //import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
-import eu.excitementproject.eop.lap.lappoc.LAP_ImplBaseAE;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 
 /**
  * 

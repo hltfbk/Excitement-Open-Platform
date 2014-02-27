@@ -32,7 +32,7 @@ import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.biu.test.BIUFullLAPConfigured;
 import eu.excitementproject.eop.lap.biu.test.BiuTreeBuilder;
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
-import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 public class CasTreeConverterTester {
 

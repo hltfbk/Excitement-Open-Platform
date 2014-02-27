@@ -21,7 +21,7 @@ import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEClassifica
 import eu.excitementproject.eop.common.utilities.datasets.rtepairs.TextHypothesisPair;
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
-import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
  * Converts a JCas created by an EOP LAP, to BIU's PairData.

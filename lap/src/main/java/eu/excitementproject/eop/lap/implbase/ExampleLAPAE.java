@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.implbase;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
