@@ -134,9 +134,8 @@ public class SimilarityStorageBasedDIRTSyntacticResource extends SyntacticResour
 	}
 	
 	@Override
-	public void close() throws SyntacticResourceCloseException
-	{
-		throw new SyntacticResourceCloseException("Not implemented");
+	public void close() throws SyntacticResourceCloseException {
+		similarityStorage.close();
 	}
 
 

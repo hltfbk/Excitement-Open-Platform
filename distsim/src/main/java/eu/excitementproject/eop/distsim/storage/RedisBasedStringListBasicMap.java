@@ -126,11 +126,10 @@ public class RedisBasedStringListBasicMap {
 		jedis.set(ELEMENT_CLASS_NAME_KEY, elementClassName);
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#finalize()
+	/**
+	 * Close and release Redis processes
 	 */
-	@Override
-	protected void finalize() {
+	public void close() {
 		try {
 			if (dbFile != null)
 				BasicRedisRunner.getInstance().close(dbFile);
@@ -138,6 +137,8 @@ public class RedisBasedStringListBasicMap {
 			logger.info(e.toString());
 		}
 	}
+	
+	
 	
 	protected String dbFile;
 	protected Jedis jedis;

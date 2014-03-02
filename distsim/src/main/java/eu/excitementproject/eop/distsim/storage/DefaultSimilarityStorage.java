@@ -358,6 +358,16 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		return instanceName;
 	}
 	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.storage.SimilarityStorage#close()
+	 */
+	@Override
+	public void close() {
+		leftElemntSimilarities.close();
+		rightElemntSimilarities.close();
+		
+	}
+	
 	// the name of the l2r redis file (for closing)
 	//protected String l2rRedisFile;
 	// the name of the r2l redis file (for closing)
@@ -370,4 +380,6 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	protected String elementClassName;
 	protected final String resourceName;
 	protected String instanceName;
+
+
 }

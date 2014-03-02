@@ -280,13 +280,13 @@ public class BasicRedisRunner implements RedisRunner {
 					try {
 						close(dbFile);
 					} catch (RedisCloseException e) {
-						logger.info("The redis server was already closed: " + e.toString());
+						//logger.info("The redis server was already closed: " + e.toString());
 					}
 				}
 			});
 			return port;
 		} else {
-			logger.info("A redis server instance for this database is already run: " + instanceInfo);
+			//logger.info("A redis server instance for this database is already run: " + instanceInfo);
 			instanceInfo.incRef();
 			return instanceInfo.getPort();
 		}		
@@ -388,7 +388,7 @@ public class BasicRedisRunner implements RedisRunner {
 		} else {
 			instanceInfo.decRef();
 			
-			logger.info("There are still " + instanceInfo.getRef() + " references for database " + dbFile + ", the redis server instance is not closed yet");
+			//logger.info("There are still " + instanceInfo.getRef() + " references for database " + dbFile + ", the redis server instance is not closed yet");
 			
 			return false;
 		}
