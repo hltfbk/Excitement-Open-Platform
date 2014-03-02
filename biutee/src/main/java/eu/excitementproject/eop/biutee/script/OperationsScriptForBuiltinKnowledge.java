@@ -28,6 +28,8 @@ import eu.excitementproject.eop.biutee.rteflow.macro.InitializationTextTreesProc
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
+import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource;
+import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceCloseException;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -144,6 +146,23 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 
 			}
 		}
+		if (excitementSyntacticResources!=null)
+		{
+			for (SyntacticResource<?, ?> resource : excitementSyntacticResources)
+			{
+				String name = "Unknown resource name";
+				try{name = resource.getComponentName();}catch(Throwable t){}
+				try
+				{
+					if (logger.isDebugEnabled()){logger.debug("Closing syntactic resource "+name);}
+					resource.close();
+				}
+				catch(SyntacticResourceCloseException | RuntimeException e)
+				{
+					logger.error("The syntactic resource \""+name+"\" could not be closed. However, this does not block the program, but only logged as an error.\n",e);
+				}
+			}
+		}
 		// TODO: Clean also chain of lexical rules!
 	}
 	
@@ -205,6 +224,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 
 		// Initialize rule bases.
 		listDirtDbRuleBases = new LinkedList<DirtDBRuleBase>();
+		excitementSyntacticResources = new LinkedList<>();
 
 		ruleBasesEnvelopes = new LinkedHashMap<String, RuleBaseEnvelope<Info,BasicNode>>();
 		byLemmaPosLexicalRuleBases = new LinkedHashMap<String, ByLemmaPosLexicalRuleBase<LexicalRule>>();
@@ -388,6 +408,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	protected List<ItemForKnowedgeResource> items;
 
 	protected List<DirtDBRuleBase> listDirtDbRuleBases;
+	protected List<? extends SyntacticResource<?, ?>> excitementSyntacticResources = null;
 	protected PlisRuleBase graphBasedLexicalChainRuleBase = null;
 	protected BuilderSetOfWords simpleLexicalChainBuilder = null;
 	protected SimpleLexicalChainRuleBase simpleLexicalChainRuleBase = null;

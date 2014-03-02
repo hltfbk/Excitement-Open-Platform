@@ -4,7 +4,6 @@
 package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.io.FileNotFoundException;
-
 import java.util.Collection;
 
 
@@ -19,6 +18,7 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import eu.excitementproject.eop.common.codeannotations.ParserSpecific;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleMatch;
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
+import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceCloseException;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
@@ -132,6 +132,13 @@ public class SimilarityStorageBasedDIRTSyntacticResource extends SyntacticResour
 	{
 		return findMatches1(textTree,hypothesisTemplates);
 	}
+	
+	@Override
+	public void close() throws SyntacticResourceCloseException
+	{
+		throw new SyntacticResourceCloseException("Not implemented");
+	}
+
 
 	private List<RuleMatch<Info, BasicNode>> findMatches1(BasicNode textTree, Set<String> hypothesisTemplates) throws SyntacticResourceException
 	{
