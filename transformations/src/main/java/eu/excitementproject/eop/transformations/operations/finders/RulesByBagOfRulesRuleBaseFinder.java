@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeIterator;
@@ -14,7 +15,6 @@ import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbedd
 import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
 import eu.excitementproject.eop.common.utilities.Cache;
 import eu.excitementproject.eop.common.utilities.CacheFactory;
-import eu.excitementproject.eop.transformations.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.transformations.operations.OperationException;
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.AllowedRootsByAffectedNodesUtility;
 import eu.excitementproject.eop.transformations.operations.finders.auxiliary.LemmaAndSimplerCanonicalPos;
