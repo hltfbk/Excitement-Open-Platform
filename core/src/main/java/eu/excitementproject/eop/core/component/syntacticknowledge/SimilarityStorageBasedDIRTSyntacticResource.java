@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.io.FileNotFoundException;
+
 import java.util.Collection;
 
 
@@ -21,6 +22,7 @@ import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConf
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceException;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -156,7 +158,7 @@ public class SimilarityStorageBasedDIRTSyntacticResource extends SyntacticResour
 					for (BidirectionalMap<BasicNode, BasicNode> match : matches) {
 						ret.add(new RuleMatch<Info, BasicNode>(
 								new RuleWithConfidenceAndDescription<Info, BasicNode>(rule,score,leftSimilarity.getLeftElement().toKey() + "->" + leftSimilarity.getRightElement().toKey()),
-								match));
+								new FlippedBidirectionalMap<BasicNode, BasicNode>(match)));
 					}
 				}
 			}
