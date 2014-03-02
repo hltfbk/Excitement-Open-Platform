@@ -357,7 +357,7 @@
 	<section name="redis-reverb"> 
 		<property name="resource-name">distsim-reverb</property> 
 		<property name="top-n-rules">20</property>
-
+		<property name="element-class">eu.excitementproject.eop.distsim.items.PredicateElement</property>
 		<!-- There are two options for running the Redis server-->
 		
 		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
