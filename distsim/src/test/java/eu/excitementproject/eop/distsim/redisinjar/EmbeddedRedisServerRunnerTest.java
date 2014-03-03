@@ -10,8 +10,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-//import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
 
 import com.google.common.io.Files;
 
@@ -26,10 +25,10 @@ import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 public class EmbeddedRedisServerRunnerTest {
 
 	// ignored for now; we need more through "binary" test.
-	// TODO: check with FBK computers. 
 	// TODO: check with Windows computers. (hate that but well) 
+	// TODO: remove maxmemory setting on runner --- we are read only, and maxmemory does not affect reading setting 
 	
-//	@Ignore   
+	@Ignore   
 	@Test
 	public void test() {
 		

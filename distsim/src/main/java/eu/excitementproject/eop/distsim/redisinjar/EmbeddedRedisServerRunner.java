@@ -194,7 +194,7 @@ public class EmbeddedRedisServerRunner {
 	}
 	
 	// maxmemory configuration argument for redis server. for now, a "fixed" const. 	
-	private static final String REDIS_MAXMEMORY = "10M"; 
+	private static final String REDIS_MAXMEMORY = "100MB"; 
 
 	// pattern string that will be printed by Redis server on successful running. 
 	private static final String REDIS_READY_PATTERN = ".*The server is now ready to accept connections on port.*";	
