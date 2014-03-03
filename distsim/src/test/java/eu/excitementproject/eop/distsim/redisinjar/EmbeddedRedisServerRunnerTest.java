@@ -10,7 +10,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.junit.Ignore;
+//import org.junit.Ignore;
 import org.junit.Test;
 
 import com.google.common.io.Files;
@@ -29,11 +29,11 @@ public class EmbeddedRedisServerRunnerTest {
 	// TODO: check with FBK computers. 
 	// TODO: check with Windows computers. (hate that but well) 
 	
-	@Ignore   
+//	@Ignore   
 	@Test
 	public void test() {
 		
-        Logger.getRootLogger().setLevel(Level.INFO); // (hiding < INFO)
+        Logger.getRootLogger().setLevel(Level.DEBUG); // (hiding < INFO)
 
 		// Simple running itself. Without specifying rdb file. (won't create/load any) 
 		EmbeddedRedisServerRunner rs = null; 		
