@@ -1,41 +1,46 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.implbase;
+
+import static org.junit.Assert.*;
 
 import java.io.File;
-//import java.io.InputStream;
-//import java.net.URL;
+import java.io.FileOutputStream;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.resource.ResourceInitializationException;
+import org.apache.uima.resource.metadata.TypeSystemDescription;
+import org.junit.Test;
+import org.uimafit.factory.TypeSystemDescriptionFactory;
 
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.PlatformCASProber; 
+import eu.excitementproject.eop.lap.PlatformCASProber;
+import eu.excitementproject.eop.lap.implbase.ExampleLAP;
 
-public class UsageExample1 {
+public class LAP_ImplBaseTest {
 
-	// TODO remove all "relative path", which won't work in Jars. 
-	// Well, this isn't really important in this file, since this is just an example... 
-	
-	/**
-	 * Simple usage example of sample LAP, and also that of PlatformCASProber.  
-	 * LAP main class is WSTokenizerEN, which uses an AE WSSeparatorAE. 
-	 * 
-	 * If you re-implement a method in WSTokenizerEN (don't need to be an AE) 
-	 * you automatically gets all LAPAccess interfaces. see WSTokenizerEN.java 
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
+	@Test
+	public void test() {
+		// Set Log4J for the test 
+		BasicConfigurator.resetConfiguration(); 
+		BasicConfigurator.configure(); 
+		Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
+		//Logger testlogger = Logger.getLogger("eu.excitementproject.eop.lap.implbase.LAP_ImplBaseTest"); 
+
 		LAPAccess lap = null; 
 		JCas aJCas = null; 
 
 		// Generating a Single CAS 
 		try {
 			lap = new ExampleLAP(); 
+			assertFalse(lap==null); 
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
 			aJCas = lap.generateSingleTHPairCAS("This is Something.", "This is something else."); 
-
+			assertFalse(aJCas == null); 
+			
 			// probeCas check whether or not the CAS has all needed "Entailment" information. 
 			// If it does not, it raises an LAPException. 
 			// It will also print the summarized data of the CAS to the PrintStream. 
@@ -48,9 +53,7 @@ public class UsageExample1 {
 		}
 		catch(LAPException e)
 		{
-			System.err.println(e.getMessage()); 
-			e.printStackTrace();
-			System.exit(1); 
+			fail(e.getMessage()); 
 		}
 		
 		// process TE data format, and produce XMI files.
@@ -62,20 +65,38 @@ public class UsageExample1 {
 			lap.processRawInputFormat(input, outputDir); // outputDir will have those XMIs
 		} catch (LAPException e)
 		{
-			e.printStackTrace(); 
+			fail(e.getMessage()); 
 		}
 
 		// Now time to open up the XMI files. 
 		// PlatformCASPRober also provides a probe method 
 		// for XMI files: probeXmi() --- this does the same thing 
 		// of probeCas(), but on XMI. 
-		File testXmi = new File("./target/3.xmi"); // you can pick and probe any XMI..  
+		File testXmi = new File("./target/3.xmi"); // you can pick and probe any XMI..
 		try {
 			PlatformCASProber.probeXmi(testXmi, System.out);
 		} catch (LAPException e) {
-			e.printStackTrace();
+			fail(e.getMessage()); 
 		} 
 		
+		// write down the type system, for future usage. 
+		TypeSystemDescription typeSystemDescription = null; 
+		try {
+			typeSystemDescription = TypeSystemDescriptionFactory.createTypeSystemDescription();
+		}
+		catch (ResourceInitializationException e)
+		{
+			fail(e.getMessage()); 
+		}
+		
+		try {
+		typeSystemDescription.toXML(new FileOutputStream(new File(outputDir, "typesystem.xml"))); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
+
 	}
-	
+
 }

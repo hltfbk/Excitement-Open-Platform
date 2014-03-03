@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.implbase;
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;

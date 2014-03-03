@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.implbase;
 
 import static org.junit.Assert.*;
 
@@ -25,6 +25,7 @@ import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 //import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
+import eu.excitementproject.eop.lap.implbase.ExampleLAPAE;
 
 //import static org.uimafit.factory.AnalysisEngineFactory.*;
 
@@ -36,7 +37,7 @@ public class LAP_ImplBaseAETest {
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
 		Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
-		Logger testlogger = Logger.getLogger("eu.excitementproject.eop.lap.lappoc.LAP_ImplBaseAETest"); 
+		Logger testlogger = Logger.getLogger("eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAETest"); 
 
 		LAPAccess lap = null; 
 		JCas aJCas = null; 
@@ -45,7 +46,6 @@ public class LAP_ImplBaseAETest {
 		try {
 
 			lap = new ExampleLAPAE(); 
-			//lap = new TreeTaggerEN(); // (was *much* slower). 
 			assertFalse(lap==null); 
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
