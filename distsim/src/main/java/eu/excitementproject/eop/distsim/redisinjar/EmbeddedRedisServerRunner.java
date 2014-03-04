@@ -36,8 +36,6 @@ import com.google.common.io.Resources;
  * 
  * NOTE: designed with REDIS server binary 2.6.16! 
  * NOTE: tested with Linux-64 and OSX 10.9 
- * TODO write "redis-based lexical resource implementation base". This can work also 
- * with "already existing server (by getting server & port)
  * 
  */
 public class EmbeddedRedisServerRunner {
@@ -121,6 +119,7 @@ public class EmbeddedRedisServerRunner {
 					if (outputLine.matches(REDIS_READY_PATTERN))
 					{
 						portReady = true; // successfully ran the Redis-server. 
+						//logger.debug(reader.readLine()); 
 						break; 
 					}
 				}
@@ -136,12 +135,12 @@ public class EmbeddedRedisServerRunner {
 		ProcessBuilder pb = null; 
 		if ((rdbDir == null) || (rdbName == null))
 		{
-			pb = new ProcessBuilder(command.getAbsolutePath(), "--port", Integer.toString(port));
+			pb = new ProcessBuilder(command.getAbsolutePath(), "--maxmemory", REDIS_MAXMEMORY, "--port", Integer.toString(port));
 			pb.directory(command.getParentFile());
 		}
 		else
 		{
-			pb = new ProcessBuilder(command.getAbsolutePath(), "--port", Integer.toString(port), "--dir", rdbDir, "--dbfilename", rdbName);
+			pb = new ProcessBuilder(command.getAbsolutePath(),  "--maxmemory", REDIS_MAXMEMORY, "--port", Integer.toString(port), "--dir", rdbDir, "--dbfilename", rdbName);
 			pb.directory(command.getParentFile());			
 		}
 		pb.redirectErrorStream(true); // both STDERR/STDOUT via  getInputStream:  needed for rare cases where run fails due to GLIBC problem, etc. 
@@ -194,8 +193,12 @@ public class EmbeddedRedisServerRunner {
 		}
 	}
 	
-	private static final String REDIS_READY_PATTERN = ".*The server is now ready to accept connections on port.*";
+	// maxmemory configuration argument for redis server. for now, a "fixed" const. 	
+	private static final String REDIS_MAXMEMORY = "100MB"; 
 
+	// pattern string that will be printed by Redis server on successful running. 
+	private static final String REDIS_READY_PATTERN = ".*The server is now ready to accept connections on port.*";	
+	
 	private final File command;
 	private final Integer port;
 	private final String rdbDir; 
