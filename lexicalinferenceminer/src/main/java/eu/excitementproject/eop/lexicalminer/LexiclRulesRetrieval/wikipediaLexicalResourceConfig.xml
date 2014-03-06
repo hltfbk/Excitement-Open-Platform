@@ -1,22 +1,13 @@
-<?xml version="1.0"?>
-
 <configuration>
 
-<module name="Database">
-	<param name="driver">org.gjt.mm.mysql.Driver</param>
-	<param name="url">jdbc:mysql://localhost:3306/wikipedialexicalrule</param>
-	<param name="username">root</param>
-	<param name="password">omahgc</param>
-</module>
-
-<module name="Classifier">
-	<param name="classifierPath">ac.biu.nlp.lexicalMiner.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</param>
-	<param name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</param>
-	<param name="NPBouns">0.001</param>
-</module>
-
-<module name="RulesReturn">
-	<param name="limitOnRetrievedRules">10</param>
-</module>
+<section name="WikiV3">
+	<property name="driver">org.gjt.mm.mysql.Driver</property>
+	<property name="url">jdbc:mysql://localhost:3306/wikipedialexicalrule</property>
+	<property name="username">root</property>
+	<property name="password">omahgc</property>
+	<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
+	<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
+	<property name="limitOnRetrievedRules">10</property>
+</section>
 
 </configuration>
