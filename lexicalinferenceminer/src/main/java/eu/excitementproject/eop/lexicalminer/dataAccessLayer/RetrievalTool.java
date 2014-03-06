@@ -238,7 +238,8 @@ public class RetrievalTool {
 		}
 		else
 		{
-			connection.close();
+			if (connection != null)
+				connection.close();
 			counter = 0;
 		}
 	}
