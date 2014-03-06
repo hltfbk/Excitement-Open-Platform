@@ -23,6 +23,7 @@ public enum KnowledgeResource
 {
 	WORDNET("WN",false,"WNV2",true),
 	WIKIPEDIA("Wiki",false,"WikiV2",true),
+	WIKIPEDIA_NEW("Wiki3",false,"WikiV3",true),
 	GEO("GeoKB",false,true),
 	CATVAR("catvar",false,"catvarV2",true),
 	BAP("bap",false,"bapV2",true),

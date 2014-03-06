@@ -3,6 +3,7 @@ package eu.excitementproject.eop.lexicalminer.dataAccessLayer;
 
 import java.sql.DriverManager;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
