@@ -1,5 +1,4 @@
-package eu.excitementproject.eop.transformations.datastructures;
-import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+package eu.excitementproject.eop.common.datastructures;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 
 

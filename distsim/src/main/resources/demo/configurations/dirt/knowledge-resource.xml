@@ -10,16 +10,13 @@
 
 <section name="knowledge-resource"> <!-- Defines the parameters of Redis-based knowledge resource-->
            <!--  a selected name of the resource (as defined in the EOP's eu.excitementproject.eop.common.component.Component interface) -->
-	<property name="resource-name">dist-sim-dirt-proximity</property> 
+	<property name="resource-name">dist-sim-dirt</property> 
 	
 	 <!--  a selected name of the resource instance (as defined in the EOP's eu.excitementproject.eop.common.component.Component interface) -->
 	 <property name="instance-name">demo</property> 
 	 
 	 <!-- a  path to the Redis db file which contains the left-2-right rules-->
 	<property name="l2r-redis-db-file">redis/db/dirt/similarity-l2r.rdb</property>
-	
-	<!-- For lexical resources onlt, a  path to the Redis db file which contains the right-2-left rules-->
-	<property name="r2l-redis-db-file">redis/db/dirt/similarity-r2l.rdb</property>
 	
 	<!--The number of top rules to be retrieved (default, all)-->
 	 <property name="top-n-rules">20</property>

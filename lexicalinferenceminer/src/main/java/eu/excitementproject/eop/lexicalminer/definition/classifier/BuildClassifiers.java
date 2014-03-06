@@ -2,6 +2,8 @@ package eu.excitementproject.eop.lexicalminer.definition.classifier;
 
 import java.util.LinkedList;
 
+
+
 import java.util.List;
 
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
@@ -19,8 +21,8 @@ import eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatt
 import eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocations.SyntacticOfflinePosRelationLocationClassifier;
 import eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocations.SyntacticOfflineRelationLocationClassifier;
 import eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare.SyntacticOfflinePosLocationSquareClassifier;
-import eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare.SyntacticOfflinePosRelationLocationSquareClassifier;
 import eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare.SyntacticOfflineRelationLocationSquareClassifier;
+import eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare.SyntacticOfflinePosRelationLocationSquareClassifier;
 
 public class BuildClassifiers {
 	

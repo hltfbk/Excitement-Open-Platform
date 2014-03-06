@@ -2,6 +2,9 @@ package eu.excitementproject.eop.distsim.dependencypath;
 
 import java.util.ArrayList;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 import java.util.List;
 
@@ -72,8 +75,8 @@ public class DependencyPathsFromTreeBinary<T extends Info, S extends AbstractNod
 	 * @param root the root of a parse-tree.
 	 * @return a list of all dependency paths, in string form, according to UNARY_BINC definition.
 	 */
-	@Override public List<String> stringDependencyPaths(S root) {
-		List<String> result = new ArrayList<String>();
+	@Override public Set<String> stringDependencyPaths(S root) {
+		Set<String> result = new HashSet<String>();
 		
 		// Right-to-left paths are dependency paths where the unknown is the left leaf (usually a noun). 
 		// The root of the tree (usually a verb) is at the right. 

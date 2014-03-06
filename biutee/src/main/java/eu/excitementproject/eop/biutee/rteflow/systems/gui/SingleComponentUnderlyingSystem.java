@@ -103,7 +103,7 @@ public class SingleComponentUnderlyingSystem extends SystemInitialization
 			switch(whichClassifierForSearch)
 			{
 			case REASONABLE_GUESS_OR_DUMMY:
-				ReasonableGuessCreator rgCreator = new ReasonableGuessCreator(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+				ReasonableGuessCreator rgCreator = new ReasonableGuessCreator(teSystemEnvironment.getClassifierFactory(), teSystemEnvironment.getFeatureVectorStructureOrganizer());
 				rgCreator.create();
 				this.classifier = rgCreator.getClassifier();
 				break;

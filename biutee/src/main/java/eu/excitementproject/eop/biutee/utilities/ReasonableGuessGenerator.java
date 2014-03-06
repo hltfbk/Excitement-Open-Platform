@@ -9,7 +9,6 @@ import eu.excitementproject.eop.biutee.classifiers.LabeledSample;
 import eu.excitementproject.eop.biutee.classifiers.LinearTrainableStorableClassifier;
 import eu.excitementproject.eop.biutee.rteflow.macro.Feature;
 import eu.excitementproject.eop.biutee.rteflow.systems.FeatureVectorStructureOrganizer;
-import eu.excitementproject.eop.biutee.rteflow.systems.RTESystemsUtils;
 import eu.excitementproject.eop.common.utilities.math.GaussianPseudoRandomGenerator;
 import eu.excitementproject.eop.transformations.utilities.MeanAndStandardDeviation;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
@@ -23,7 +22,7 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
  * loop of the training - to search for the "best" proof ("best" according to
  * this reasonable-guess classifier).
  * 
- * See {@link RTESystemsUtils}
+ * See {@link ReasonableGuessCreator}
  * 
  * @author Asher Stern
  * @since Jul 26, 2011
@@ -36,12 +35,14 @@ public class ReasonableGuessGenerator
 	
 	
 	public ReasonableGuessGenerator(
+			ClassifierFactory classifierFactory,
 			Map<Integer, MeanAndStandardDeviation> priorNegative,
 			Map<Integer, MeanAndStandardDeviation> priorPositive,
 			FeatureVectorStructureOrganizer featureVectorStructure,
 			int negativeSamplesToGenerate, int positiveSamplesToGenerate) throws TeEngineMlException
 	{
 		super();
+		this.classifierFactory = classifierFactory;
 		this.priorNegative = priorNegative;
 		this.priorPositive = priorPositive;
 		this.featureVectorStructure = featureVectorStructure;
@@ -54,7 +55,7 @@ public class ReasonableGuessGenerator
 	public LinearTrainableStorableClassifier createClassifierByPrior() throws ClassifierException
 	{
 		Vector<LabeledSample> priorSamples = createPriorSamples();
-		LinearTrainableStorableClassifier ret = new ClassifierFactory().getDefaultClassifierForSearch();
+		LinearTrainableStorableClassifier ret = classifierFactory.getProperClassifierForSearch(false);
 		ret.train(priorSamples);
 		return ret;
 	}
@@ -119,6 +120,7 @@ public class ReasonableGuessGenerator
 		return retZeroFeatureVector;
 	}
 
+	private final ClassifierFactory classifierFactory;
 	private Map<Integer, MeanAndStandardDeviation> priorNegative;
 	private Map<Integer, MeanAndStandardDeviation> priorPositive;
 	private FeatureVectorStructureOrganizer featureVectorStructure;

@@ -2,6 +2,7 @@ package eu.excitementproject.eop.lexicalminer.wikipedia;
 import java.io.FileNotFoundException;
 
 
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -53,7 +54,8 @@ public abstract class WikipediaLexicalInferencesMiner {
 	protected static ConfigurationParams processingToolsConf;
 	public static String m_jarsFolder;
 	
-	
+	private static Logger logger = Logger.getLogger(WikipediaLexicalInferencesMiner.class);
+
 	/**
 	 * Main function to execute all the extraction methods.<br>
 	 * Make sure you start the process with sufficient amount of space (for example -Xmx4496M).
@@ -91,7 +93,7 @@ public abstract class WikipediaLexicalInferencesMiner {
 		
 		
 		//m_jarsFolder = System.getenv("JARS"); // Deprecated - read from the configuration file
-		System.out.println(m_jarsFolder);
+		logger.info(m_jarsFolder);
 		
 		// configure the database connection parameters for the jwpl
 		final DatabaseConfiguration dbConfig = new DatabaseConfiguration();
@@ -105,7 +107,7 @@ public abstract class WikipediaLexicalInferencesMiner {
 			dbConfig.setPassword(jwplConf.get("password"));
 			dbConfig.setLanguage(Language.valueOf(jwplConf.get("language")));
 			
-			System.out.println("Password: " + jwplConf.get("password"));
+			logger.info("Password: " + jwplConf.get("password"));
 			
 		} catch (ConfigurationException e) {
 			m_logger.fatal("Missing configuration. module \"jwpl\" must have the keys: host ,database ,user ,password and language. "+e.getMessage());
@@ -150,7 +152,7 @@ public abstract class WikipediaLexicalInferencesMiner {
 		Wikipedia wiki = new Wikipedia(dbConfig);
 
 
-		System.out.println("Wikipedia object was created");
+		logger.info("Wikipedia object was created");
 	
 		try {
 			processingToolsConf = conf.getModuleConfiguration("processing_tools");

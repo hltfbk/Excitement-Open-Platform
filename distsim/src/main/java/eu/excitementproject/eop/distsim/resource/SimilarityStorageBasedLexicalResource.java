@@ -186,6 +186,7 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 	 */
 	@Override
 	public void close() throws LexicalResourceCloseException {
+		similarityStorage.close();
 	}
 
 	SimilarityStorage similarityStorage;

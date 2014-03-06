@@ -134,5 +134,10 @@ public interface SimilarityStorage extends Component  {
 	 * @throws SimilarityNotFoundException in case the given element is absent form both similarity and score dbs. 
 	 */
 	List<ElementsSimilarityMeasure> getSimilarityMeasure(Element element, RuleDirection ruleDirection, ElementFeatureScoreStorage elementFeatureScores, ElementSimilarityScoring elementSimilarityScoring, FilterType filterType, double filterVal) throws SimilarityNotFoundException;
+	
+	/**
+	 * Close and release the storage resources 
+	 */
+	void close();
 
 }

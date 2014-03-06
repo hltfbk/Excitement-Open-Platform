@@ -48,4 +48,12 @@ public interface SyntacticResource<I,S extends AbstractNode<I,S>> extends Compon
 	 */
 	public List<RuleMatch<I,S>> findMatches(S textTree, S hypothesisTree) throws SyntacticResourceException;
 	
+	/**
+	 * Performs any necessary cleans ups.
+	 * This method should be called only when this resource instance is about to be destroyed.
+	 *  
+	 * @throws SyntacticResourceCloseException
+	 */
+	public void close() throws SyntacticResourceCloseException;
+	
 }
