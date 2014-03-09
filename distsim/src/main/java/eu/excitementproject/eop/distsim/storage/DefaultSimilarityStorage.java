@@ -364,7 +364,8 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	@Override
 	public void close() {
 		leftElemntSimilarities.close();
-		rightElemntSimilarities.close();
+		if (rightElemntSimilarities != null)
+			rightElemntSimilarities.close();
 		
 	}
 	

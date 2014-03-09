@@ -1,11 +1,14 @@
 package eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.onlineClassifiers;
 
 import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
+
+import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.lexicalminer.LexiclRulesRetrieval.RuleData;
 import eu.excitementproject.eop.lexicalminer.dataAccessLayer.RetrievalTool;
@@ -13,6 +16,8 @@ import eu.excitementproject.eop.lexicalminer.definition.classifier.OnlineClassif
 
 public class SyntacticFileManualClassifier extends OnlineClassifier {
 
+	private static Logger logger = Logger.getLogger(SyntacticFileManualClassifier.class);
+	
 	private HashMap<String, Double> m_PosMap; 
 	private HashMap<String, Double> m_RelationMap; 
 	private HashMap<String, Double> m_PosRelationMap;
@@ -163,7 +168,7 @@ public class SyntacticFileManualClassifier extends OnlineClassifier {
 		}	
 		int i =0;
 		i++;
-		System.out.println(i);
+		logger.info(i);
 
 	}
 	
@@ -182,7 +187,7 @@ public class SyntacticFileManualClassifier extends OnlineClassifier {
 				}
 			}
 		} while ((line != null) && (line.length() == 0 ));
-		System.out.println(line);
+		logger.info(line);
 		return line;
 	}
 

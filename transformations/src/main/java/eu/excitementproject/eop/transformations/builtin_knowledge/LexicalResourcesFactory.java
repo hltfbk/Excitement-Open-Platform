@@ -81,6 +81,10 @@ public class LexicalResourcesFactory
 			case WIKIPEDIA:
 				ret = new WikiLexicalResource(params);
 				break;
+			case WIKIPEDIA_NEW:
+				ret = new  eu.excitementproject.eop.lexicalminer.LexiclRulesRetrieval.WikipediaLexicalResource(params);
+				break;
+				
 			case WORDNET:
 				ret = new WordnetLexicalResource(params);
 				break;

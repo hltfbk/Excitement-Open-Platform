@@ -2,7 +2,10 @@ package eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpat
 
 import java.sql.ResultSet;
 
+
 import java.sql.SQLException;
+
+import org.apache.log4j.Logger;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -13,6 +16,8 @@ import eu.excitementproject.eop.lexicalminer.definition.classifier.OfflineClassi
 
 public abstract class SyntacticAbstractOfflineFuncClassifier extends OfflineClassifier {
 
+	private static Logger logger = Logger.getLogger(SyntacticAbstractOfflineFuncClassifier.class);
+	
 	protected String m_PatternNameColumn = null;
 	protected String m_PatternKind = null;
 	protected String m_RankQuery = null ;
@@ -51,9 +56,9 @@ public abstract class SyntacticAbstractOfflineFuncClassifier extends OfflineClas
 
 			String query =  " insert into rulesranks(ruleId,classifierId,rank) " + rankQuery;
 					
-			System.out.println("classifierId= " + classifierId);
-			System.out.println("pattern_mul= " + pattern_mul);
-			System.out.println("patternType= " + patternType);
+			logger.info("classifierId= " + classifierId);
+			logger.info("pattern_mul= " + pattern_mul);
+			logger.info("patternType= " + patternType);
 			
 			Connection conn = m_retrivalTool.getMySqlConnection();
 			PreparedStatement cs = (PreparedStatement) conn.prepareStatement(query);
@@ -97,8 +102,8 @@ public abstract class SyntacticAbstractOfflineFuncClassifier extends OfflineClas
 			String query = "SELECT id FROM patterntypes where lower(patternName) like lower('%' ? '%')";		
 			
 			int type = getNumFromDB(patternType, query, "id");
-			System.out.println("patternTypeStr= " + patternType);
-			System.out.println("type= " + type);
+			logger.info("patternTypeStr= " + patternType);
+			logger.info("type= " + type);
 			if (type < 0)
 			{
 				throw new  SQLException("patternType name can't be found in patterntypes: " + patternType);
