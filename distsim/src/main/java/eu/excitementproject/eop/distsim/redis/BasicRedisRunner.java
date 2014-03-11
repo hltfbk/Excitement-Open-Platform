@@ -6,6 +6,7 @@ package eu.excitementproject.eop.distsim.redis;
 import java.io.BufferedReader;
 
 
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,6 +22,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.util.Configuration;
@@ -153,7 +155,6 @@ public class BasicRedisRunner implements RedisRunner {
 	protected static final String PID_FILE_EXT = ".pid";
 	protected static final String VM_SWAP_FILE_EXT = ".swap";
 	protected static final String DB_FILE_EXT = ".rdb";
-	public static final String REDIS_SERVER_CMD = "redis-server";
 
 	protected static RedisRunner instance = null;
 	protected static String redisBinDir; 	 //a path to the Redis binary directory
@@ -165,9 +166,10 @@ public class BasicRedisRunner implements RedisRunner {
 	 * 
 	 * @return a singleton instance of BasicRedisRunner
 	 * 
-	 * @throws FileNotFoundException in case the default redis binary directory and/or the default configuration file are not existed 
+	 * @throws RedisRunException in case the default redis binary directory and/or the default configuration file are not existed
+	 * or does not support current OS  
 	 */
-	public synchronized static RedisRunner getInstance() throws FileNotFoundException {
+	public synchronized static RedisRunner getInstance() throws RedisRunException {
 		if (instance == null) {
 			instance = new BasicRedisRunner();
 		}
@@ -180,13 +182,18 @@ public class BasicRedisRunner implements RedisRunner {
 	 * @param templateConfigurationFile a path to a Redis configuration file
 	 * @return a singleton instance of BasicRedisRunner
 	 * 
-	 * @throws FileNotFoundException in case the default redis binary directory and/or the default configuration file are not existed 
+	 * @throws RedisRunException in case the default redis binary directory and/or the default configuration file are not existed, 
+	 *  or does not support current OS 
 	 */
-	public synchronized static RedisRunner getInstance(String templateConfigurationFile) throws FileNotFoundException {
+	public synchronized static RedisRunner getInstance(String templateConfigurationFile) throws RedisRunException {
 		if (instance == null) {
 			instance = new BasicRedisRunner();
 		}
-		((BasicRedisRunner)instance).setRedisConfigurationFileTemplate(templateConfigurationFile);
+		try {
+			((BasicRedisRunner)instance).setRedisConfigurationFileTemplate(templateConfigurationFile);
+		} catch (FileNotFoundException e) {
+			throw new RedisRunException(e);
+		}
 		return instance;
 	}
 
@@ -214,9 +221,10 @@ public class BasicRedisRunner implements RedisRunner {
 	 * 
 	 * @return  a singleton instance of BasicRedisRunner
 	 * 
-	 * @throws FileNotFoundException in case the configured redis binary directory and/or configuration template file are not existed 
+	 * @throws RedisRunException in case the configured redis binary directory and/or configuration template file are not existed 
+	 * or does not support current OS 
 	 */
-	public synchronized static RedisRunner getInstance(ConfigurationParams params) throws FileNotFoundException {
+	public synchronized static RedisRunner getInstance(ConfigurationParams params) throws RedisRunException {
 		if (instance == null) {			
 			try {
 				BasicRedisRunner.redisBinDir = params.get(Configuration.REDIS_BIN_DIR);
@@ -227,6 +235,8 @@ public class BasicRedisRunner implements RedisRunner {
 		
 		try {
 			((BasicRedisRunner)instance).setRedisConfigurationFileTemplate(params.get(Configuration.REDIS_CONFIGURATION_TEMPLATE_FILE));
+		} catch (FileNotFoundException e) {
+			throw new RedisRunException(e);
 		} catch (ConfigurationException e) {			
 		}
 		
@@ -236,14 +246,15 @@ public class BasicRedisRunner implements RedisRunner {
 	/**
 	 * Constructs BasicRedisRunner, based on a default location of the Redis binary directory (.) and a default location of the Redis configuration template file (desc/redis.conf) 
 	 * 
-	 * @throws FileNotFoundException in case the default redis binary directory and/or the default configuration file are not existed 
+	 * @throws RedisRunException in case the default redis binary directory and/or the default configuration file are not existed, 
+	 * or does not support current OS  
 	 */			
-	private BasicRedisRunner() throws FileNotFoundException {
+	private BasicRedisRunner() throws RedisRunException {
 		this.templateConfigurationFile = redisBinDir + "/" + DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME;
 		this.mapDir2FileInstanceInfo = new HashMap<String,RedisInstanceInfo>();
 		this.usedPorts = new HashSet<Integer>();		
-		if (!new File(redisBinDir + "/" + REDIS_SERVER_CMD).exists())
-			throw new FileNotFoundException("Redis server executable was not found: " + redisBinDir + "/" + REDIS_SERVER_CMD + ". Recheck the redis server directory argument");
+		if (!new File(redisBinDir + "/" + getRedisServerCmd()).exists())
+			throw new RedisRunException("Redis server executable was not found: " + redisBinDir + "/" + getRedisServerCmd() + ". Recheck the redis server directory argument");
 		//this.executor = new DefaultExecutor();
 	}
 	
@@ -317,7 +328,7 @@ public class BasicRedisRunner implements RedisRunner {
 					logger.warn(e.toString());						
 				}					
 			});*/
-			Process process = Runtime.getRuntime().exec(new String[]{redisBinDir + "/" + REDIS_SERVER_CMD,confFile});
+			Process process = Runtime.getRuntime().exec(new String[]{redisBinDir + "/" + getRedisServerCmd(),confFile});
 			waitForRedisInitializing(process);
 			
 			logger.info("The redis server on port " + port + ", based on " + confFile + " configuration, is ready now");
@@ -534,7 +545,16 @@ public class BasicRedisRunner implements RedisRunner {
 		
 	}
 
+
+	public static String getRedisServerCmd() throws RedisRunException {
+		if (OS.isLinux() || OS.isUnix())
+			return "redis-server";
+		if (OS.isWindows()) 
+			return "redis-server.exe";
+		throw new RedisRunException("Current operating system does not support Redis servewr execution");
+	}
+	
 	static {
-		redisBinDir = DEFAULT_REDIS_BIN_DIR;
+		redisBinDir = DEFAULT_REDIS_BIN_DIR;		
 	}
 }
