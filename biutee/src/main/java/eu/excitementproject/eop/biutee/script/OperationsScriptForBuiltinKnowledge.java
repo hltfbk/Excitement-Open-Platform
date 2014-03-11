@@ -263,6 +263,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 				try
 				{
 					SimilarityStorageBasedDIRTSyntacticResource excitementSyntacticResource = new SimilarityStorageBasedDIRTSyntacticResource(resourceParams);
+					excitementSyntacticResources.add(excitementSyntacticResource);
 					RuleBaseEnvelope<Info,BasicNode> syntacticResourceEnvelope = new RuleBaseEnvelope<Info,BasicNode>(excitementSyntacticResource);
 					ruleBasesEnvelopes.put(resource.getDisplayName(), syntacticResourceEnvelope);
 					items.add(new ItemForKnowedgeResource(resource, new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName())));
@@ -408,7 +409,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	protected List<ItemForKnowedgeResource> items;
 
 	protected List<DirtDBRuleBase> listDirtDbRuleBases;
-	protected List<? extends SyntacticResource<?, ?>> excitementSyntacticResources = null;
+	protected List<SyntacticResource<?,?>> excitementSyntacticResources = null;
 	protected PlisRuleBase graphBasedLexicalChainRuleBase = null;
 	protected BuilderSetOfWords simpleLexicalChainBuilder = null;
 	protected SimpleLexicalChainRuleBase simpleLexicalChainRuleBase = null;

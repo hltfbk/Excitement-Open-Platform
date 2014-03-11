@@ -275,9 +275,9 @@
 		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
 		<!--<property name="redis-binary-dir">.</property>-->				
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/bap/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/bap/similarity-l2r.rdb</property>
 		<!-- EDIT: set here the path to the right-2left similarity file -->
-		<property name="r2l-redis-db-file">../resources/bap/similarity-r2l.rdb</property>
+		<property name="r2l-redis-db-file">$REDISDATA/reuters/bap/similarity-r2l.rdb</property>
 		
 		<!-- Option 2: In case we want the Redis server to run on another hos -->
 		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
@@ -301,9 +301,9 @@
 		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
 		<!--<property name="redis-binary-dir">.</property>-->				
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/lin/proximity/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/lin/proximity/similarity-l2r.rdb</property>
 		<!-- EDIT: set here the path to the right-2left similarity file -->
-		<property name="r2l-redis-db-file">../resources/lin/proximity/similarity-r2l.rdb</property>
+		<property name="r2l-redis-db-file">$REDISDATA/reuters/lin/proximity/similarity-r2l.rdb</property>
 		
 		<!-- Option 2: In case we want the Redis server to run on another hos -->
 		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
@@ -327,9 +327,9 @@
 		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
 		<!--<property name="redis-binary-dir">.</property>-->			
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/lin/dependency/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/lin/dependency/similarity-l2r.rdb</property>
 		<!-- EDIT: set here the path to the right-2left similarity file -->
-		<property name="r2l-redis-db-file">../resources/lin/dependency/similarity-r2l.rdb</property>
+		<property name="r2l-redis-db-file">$REDISDATA/reuters/lin/dependency/similarity-r2l.rdb</property>
 		
 		<!-- Option 2: In case we want the Redis server to run on another hos -->
 		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
@@ -353,7 +353,7 @@
 		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
 		<!--<property name="redis-binary-dir">.</property>-->			
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/dirt/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/dirt/similarity-l2r.rdb</property>
 		
 		<!-- Option 2: In case we want the Redis server to run on another hos -->
 		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
@@ -375,7 +375,7 @@
 		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
 		<!--<property name="redis-binary-dir">.</property>-->			
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/reverb/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/reverb/similarity-l2r.rdb</property>
 		
 		<!-- Option 2: In case we want the Redis server to run on another hos -->
 		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
