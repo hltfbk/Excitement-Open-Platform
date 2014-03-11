@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.implbase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.cas.CASException;
@@ -23,16 +26,8 @@ import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitement.type.entailment.Hypothesis;
 import eu.excitement.type.entailment.Pair;
 import eu.excitement.type.entailment.Text;
-import eu.excitementproject.eop.common.configuration.CommonConfig;
-import eu.excitementproject.eop.common.exception.ComponentException;
-import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-//import java.util.HashMap;
-//import java.util.Map;
-//import org.apache.uima.UimaContextAdmin;
-//import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-//import org.apache.uima.resource.Resource;
 
 /**
  * <P>
@@ -70,6 +65,7 @@ import eu.excitementproject.eop.lap.LAPException;
  * @author Gil 
  *
  */
+
 public abstract class LAP_ImplBase implements LAPAccess {
 
 	public LAP_ImplBase() throws LAPException {
@@ -90,6 +86,13 @@ public abstract class LAP_ImplBase implements LAPAccess {
 		{
 			throw new LAPException("Unable to initialize the AE", e); 
 		}		
+
+		// Set logger 
+		BasicConfigurator.resetConfiguration(); 
+		BasicConfigurator.configure(); 
+		Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
+		logger = Logger.getLogger("eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAETest"); 
+
 	}
 
 	@Override
@@ -134,11 +137,6 @@ public abstract class LAP_ImplBase implements LAPAccess {
 			// Add TE structure (Views) and types (Entailment.Pair, .Text, .Hypothesis, and .EntailmentMetadata) 
 			addTEViewAndAnnotations(aJCas, pair.getText(), pair.getHypothesis(), pair.getId(), pair.getTask(), pair.getGoldAnswer()); 
 
-			// TODO If you need to annotate "channel" in EntailmentMetadata, here is the place to annotate it. 
-			// (above method does not annotate "channel")			
-			{ // not now. maybe in "real" annotator. 
-			}
-
 			// call to addAnnotationOn() each view 
 			addAnnotationOn(aJCas, TEXTVIEW);
 			addAnnotationOn(aJCas, HYPOTHESISVIEW);
@@ -161,8 +159,7 @@ public abstract class LAP_ImplBase implements LAPAccess {
 				throw new LAPException("Unable to access/close the file" + xmiOutFile.toString(), e);
 			}
 
-			// TODO replace this with CommonLogger, when it is there. 
-			System.out.println("Pair " + pair.getId() + "\twritten as " + xmiOutFile.toString() ); 
+			logger.info("Pair " + pair.getId() + "\twritten as " + xmiOutFile.toString() ); 
 			// prepare next round
 			aJCas.reset(); 
 		}
@@ -354,21 +351,16 @@ public abstract class LAP_ImplBase implements LAPAccess {
 	protected String languageIdentifier = "EN"; // EN is default value here. One 
 	
 	/**
+	 * log4j logger
+	 */
+	private Logger logger; 
+	
+	/**
 	 *  string constants 
 	 */
 	static public final String TEXTVIEW = "TextView";
 	static public final String HYPOTHESISVIEW = "HypothesisView";
 	static public final String INITIALVIEW = "_InitialView"; 
-
-	// From "interface Components" 
-	//@Override // Gil: initialize is removed from interface Component 
-	public void initialize(CommonConfig config) throws ConfigurationException,
-			ComponentException {
-		// TODO Maybe not? this example does not use configuration. But when you replace it with 
-		// your own annotator, use this part to get CommonConfiguration, and setup your 
-		// annotator properly. 		
-		return; 
-	}
 
 	@Override
 	public String getComponentName() { 

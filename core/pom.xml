@@ -93,6 +93,30 @@
 			<version>3.6.9</version>
 
 		</dependency>
+
+		<!-- German Redis-based lexical Resources. 
+		     Normally commented out because of its sizes (1 Gbytes each) 	
+		     Un-comment them when you actually need them.-->
+        <!-- 		     
+		<dependency>
+			<groupId>de.uni-heidelberg.cl</groupId>
+			<artifactId>redis-german-bap</artifactId>
+			<version>20140228</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.uni-heidelberg.cl</groupId>
+			<artifactId>redis-german-lin-dep</artifactId>
+			<version>20140228</version>
+		</dependency>
+
+		<dependency>
+			<groupId>de.uni-heidelberg.cl</groupId>
+			<artifactId>redis-german-lin-prox</artifactId>
+			<version>20140228</version>
+		</dependency>
+    	--> 
+    	<!--  end of German Redis-based lexical resources -->
     	
 	</dependencies>
 	<dependencyManagement>

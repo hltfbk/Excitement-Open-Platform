@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap.lappoc;
+package eu.excitementproject.eop.lap.implbase;
 
 import java.util.StringTokenizer;
 
@@ -52,7 +52,7 @@ public class WSSeparatorAE extends CasAnnotator_ImplBase {
 	    		Lemma lemmaAnnot = new Lemma(jcas1); 
 	    		lemmaAnnot.setBegin(begin); 
 	    		lemmaAnnot.setEnd(end); 
-	    		lemmaAnnot.setValue(thisTok.toLowerCase()); // TODO: remove comma, period? :-) No. just a example 
+	    		lemmaAnnot.setValue(thisTok.toLowerCase()); // not really lemma. just lc(token). just as an example.  
 	    		lemmaAnnot.addToIndexes(); 
 
 	    		tokenAnnot.setLemma(lemmaAnnot); 
