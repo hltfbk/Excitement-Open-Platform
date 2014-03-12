@@ -47,6 +47,7 @@ import eu.excitementproject.eop.lexicalminer.wikipedia.common.ruleInfo.RedirectR
 public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 
 	private static final int DEFAULT_RULES_LIMIT = 1000;
+	private static final double MINIMAL_CONFIDENCE = 0.00000000001;
 
 	//private static Logger logger = Logger.getLogger(WikipediaLexicalResource.class);
 	
@@ -175,7 +176,7 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 		 	{	 						
 				LexicalRule<BaseRuleInfo> rule  = 
 						new LexicalRule<BaseRuleInfo>(ruleData.getLeftTerm(), this.m_nounPOS,
-						ruleData.getRightTerm(), this.m_nounPOS, m_classifier.getRank(ruleData), ruleData.getRuleType(),
+						ruleData.getRightTerm(), this.m_nounPOS, Math.max(m_classifier.getRank(ruleData),MINIMAL_CONFIDENCE), ruleData.getRuleType(),
 						ruleData.getRuleResource(), getRuleInfo(ruleData));
 				rules.add(rule);		
 			}
