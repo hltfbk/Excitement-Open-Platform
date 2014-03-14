@@ -146,13 +146,17 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	 * 
 	 */
 	public DefaultSimilarityStorage(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
-		//this.
+		String redisDir = null;
+		try {
+			redisDir = params.get(Configuration.REDIS_BIN_DIR);
+		} catch (ConfigurationException e) {}
+		
 		String l2rRedisFile = params.get(Configuration.L2R_REDIS_DB_FILE);
-		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(l2rRedisFile);
+		this.leftElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(l2rRedisFile) : new RedisBasedStringListBasicMap(l2rRedisFile,redisDir));
 		try {
 			//this.
 			String r2lRedisFile= params.get(Configuration.R2L_REDIS_DB_FILE);
-			this.rightElemntSimilarities = new RedisBasedStringListBasicMap(r2lRedisFile);
+			this.rightElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(r2lRedisFile) : new RedisBasedStringListBasicMap(r2lRedisFile,redisDir));
 		} catch (ConfigurationException e) {
 			//this.l2rRedisFile = null;
 			this.rightElemntSimilarities = null;

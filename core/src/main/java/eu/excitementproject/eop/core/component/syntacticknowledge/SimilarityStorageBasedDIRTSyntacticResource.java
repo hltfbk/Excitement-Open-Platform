@@ -68,11 +68,28 @@ public class SimilarityStorageBasedDIRTSyntacticResource extends SyntacticResour
 	 * @throws FileNotFoundException 
 	 */
 	public SimilarityStorageBasedDIRTSyntacticResource(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
-		this(
-				new DefaultSimilarityStorage(params),
-				new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true),
-				params.getInt(Configuration.TOP_N_RULES)
-		);
+		String hostLeft = null;
+		int portLeft = -1;
+		try {
+			hostLeft = params.get(Configuration.L2R_REDIS_HOST);
+			portLeft = params.getInt(Configuration.L2R_REDIS_PORT);
+		} catch (ConfigurationException e) {
+		}		
+		this.maxNumOfRetrievedRules = params.getInt(Configuration.TOP_N_RULES);
+		
+		if (hostLeft == null || portLeft == -1)
+			this.similarityStorage = new DefaultSimilarityStorage(params);			
+		else {
+			String instanceName = "";
+			try {
+				instanceName = params.get(Configuration.INSTANCE_NAME);
+			} catch (ConfigurationException e) {
+				instanceName = params.getConfigurationFile().toString();
+			}
+			this.similarityStorage = new DefaultSimilarityStorage(hostLeft,portLeft,params.get(Configuration.RESOURCE_NAME),instanceName);
+		}
+		this.extractor = new DependencyPathsFromTreeBinary<Info, BasicNode>(new BasicNodeConstructor(), new DependencyPathsFromTree.VerbAdjectiveNounPredicate<Info>(), true, true);
+		this.matchCriteria = new BasicMatchCriteria<Info,Info,BasicNode,BasicNode>();
 	}
 	
 	/**

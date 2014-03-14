@@ -165,13 +165,8 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 
 					//compute element-feature scores
 					try {
-	
-							
-						
-						Element element = elementFeaturecounts.getElement(elementFeatureJointCount.getElementId());					
-						
-						ImmutableIterator<FeatureCount> featureCounts = elementFeatureJointCount.getFeatureCounts();
-						
+						Element element = elementFeaturecounts.getElement(elementFeatureJointCount.getElementId());											
+						ImmutableIterator<FeatureCount> featureCounts = elementFeatureJointCount.getFeatureCounts();						
 						// measure the score for each feature, based on its counts
 						Map<Integer,Double> tmpCommonScoredFeatures = new HashMap<Integer,Double>();
 						Map<Integer,Double> tmpScoredFeatures = new HashMap<Integer,Double>();

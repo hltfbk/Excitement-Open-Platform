@@ -1,12 +1,11 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.excitement;
 
 import java.io.File;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -133,17 +132,39 @@ public class BiuteeMain {
 			}
 			logger.trace(String.format("Processing all %d xmi files in %s using BiuteeEDA...", xmiFiles.length, lapOutputFolder));
 			
-			List<Boolean> results = new ArrayList<Boolean>();
+			double tp=0,fp=0,tn=0,fn=0;
+			//List<Boolean> res = new ArrayList<Boolean>();
 			for (File xmi : xmiFiles) {
 				JCas jcas = PlatformCASProber.probeXmi(xmi, null);
 				TEDecision decision = eda.process(jcas);
 				DecisionLabel gold = readGoldLabel(jcas, xmi);
-				results.add(gold.equals(decision.getDecision()));
+				//res.add(gold.equals(decision.getDecision()));
+				
+				if (gold.equals(decision.getDecision())) {
+					if (decision.getDecision() == DecisionLabel.Entailment)
+						tp++;
+					else
+						tn++;										
+				} else {
+					if (decision.getDecision() == DecisionLabel.Entailment)
+						fp++;
+					else
+						fn++;															
+				}
+				
 				logger.info(String.format("Decision for %s: label=%s, confidence=%f", xmi, decision.getDecision(), decision.getConfidence()));
 			}
 			
+			double accuracy = (tp + tn) / (tp + fp + tn + fn);			
+			double precision = tp / (tp + fp);
+			double recall = tp / (tp + fn);			
+			double f1 = 2 * ((precision * recall) / (precision + recall));
+			
 			logger.trace(String.format("Finished processing %d xmi files using BiuteeEDA.", xmiFiles.length));
-			logger.info("Accuracy: " + calcAccuracy(results));
+			logger.info("Accuracy: " + accuracy);
+			logger.info("Precision: " + precision);
+			logger.info("Recall: " + recall);
+			logger.info("F1: " + f1);
 		}
 		finally {
 			if (eda != null) {
@@ -152,7 +173,7 @@ public class BiuteeMain {
 		}
 	}
 	
-	private static double calcAccuracy(List<Boolean> results) {
+/*	private static double calcAccuracy(List<Boolean> results) {
 		int correct = 0;
 		for (Boolean result : results) {
 			if (result) {
@@ -160,7 +181,7 @@ public class BiuteeMain {
 			}
 		}
 		return ((double)correct) / results.size();
-	}
+	}*/
 	
 	private static DecisionLabel readGoldLabel(JCas jcas, File xmi) throws EDAException {
 		DecisionLabel goldLabel = null;

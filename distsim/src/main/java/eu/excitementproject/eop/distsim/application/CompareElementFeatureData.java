@@ -2,6 +2,7 @@ package eu.excitementproject.eop.distsim.application;
 
 import java.io.IOException;
 
+
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.distsim.items.Element;
 import eu.excitementproject.eop.distsim.items.Feature;
@@ -31,7 +32,7 @@ public class CompareElementFeatureData {
 	public static void main(String[] args) throws LoadingStateException, IOException, ItemNotFoundException, UndefinedKeyException, InvalidCountException {
 		
 		if (args.length != 3 && args.length != 4) {
-			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CompareItemData <in dir 1> <in dir 2> <item-pair file name> [<check elements and features>, default no]");
+			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CompareElementFeatureData <in dir 1> <in dir 2> <item-pair file name> [<check elements and features>, default no]");
 			System.exit(0);
 		}
 		
@@ -46,12 +47,15 @@ public class CompareElementFeatureData {
 		file1.open();
 		elementFeatureData1.loadState(file1);
 		file1.close();
+		
+		
 		IDKeyPersistentBasicMap<BasicMap<Integer,Double>> elementFeatureData2 =  new TroveBasedIDKeyPersistentBasicMap<BasicMap<Integer,Double>>();
 		File file2 = new IdTroveBasicIntDoubleMapFile(new java.io.File(dir2 + "/" + args[2]),true);
 		file2.open();
 		elementFeatureData2.loadState(file2);		
 		file2.close();
 
+		
 		file1 = new File(new java.io.File(dir1 + "/elements"),true);
 		file1.open();
 		MemoryBasedCountableIdentifiableStorage<Element> elements1 = new MemoryBasedCountableIdentifiableStorage<Element>(file1);
@@ -85,7 +89,7 @@ public class CompareElementFeatureData {
 		file2.open();
 		MemoryBasedCountableIdentifiableStorage<Feature> features2 = new MemoryBasedCountableIdentifiableStorage<Feature>(file2);
 		file2.close();
-
+		
 		//compare features
 		if (bCheckElementsAndFeatures) {
 			System.out.println("comparing features");

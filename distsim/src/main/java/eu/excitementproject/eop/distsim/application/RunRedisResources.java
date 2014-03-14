@@ -20,6 +20,6 @@ public class RunRedisResources {
 		String redisFile = args[0];
 		int port = Integer.parseInt(args[1].trim());
 		String redisConfFile = BasicRedisRunner.generateConfigurationFile(redisFile, port);
-		Runtime.getRuntime().exec(new String[]{BasicRedisRunner.DEFAULT_REDIS_BIN_DIR + "/" + BasicRedisRunner.REDIS_SERVER_CMD,redisConfFile});		
+		Runtime.getRuntime().exec(new String[]{BasicRedisRunner.DEFAULT_REDIS_BIN_DIR + "/" + BasicRedisRunner.getRedisServerCmd(),redisConfFile});		
 	}
 }
