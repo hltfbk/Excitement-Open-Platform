@@ -100,8 +100,7 @@
 
 	<section name = "transformations">
 		<!--<property name = "knowledge_resources">WORDNET,WIKIPEDIA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
-		<!--<property name = "multiword_resources">WORDNET,WIKIPEDIA_NEW,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
-		<!--<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC,REDIS_LIN_PROXIMITY,REDIS_LIN_DEPENDENCY,REDIS_BAP</property>-->
+		<!--<property name = "multiword_resources">WORDNET,WIKIPEDIA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
 		<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC</property>
 		<property name = "multiword_resources">WORDNET,VERB_OCEAN</property>
 		<property name = "stop_words">stopwords-Eyal.txt</property>
@@ -109,8 +108,8 @@
 
 
 	<section name="pasta-builder">
-		<property name="nomlex-file">/media/Data/asher/data/code/eclipse_juno_1_7_linux/wrappers/data/nominalizations/nomlex-plus.txt</property>
-		<property name="nomlex-class-role-table">/media/Data/asher/data/code/eclipse_juno_1_7_linux/wrappers/data/nominalizations/ClassRoleTable.txt</property>
+		<property name="nomlex-file">nomlex-plus.txt</property>
+		<property name="nomlex-class-role-table">ClassRoleTable.txt</property>
 		<property name="mode">EXPANDED</property>
 	</section>
 
@@ -138,17 +137,7 @@
 		<property name = "cooccurrence threshold">0.01</property>
 	</section>
 
-	<section name = "WikiV3">
-		<property name="driver">org.gjt.mm.mysql.Driver</property>
-		<property name="url">jdbc:mysql://$MYSQL/wikipedialexicalrule</property>
-		<property name="username">db_readonly</property>
-		<property name="password">BIUTEE</property>
-		<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
-		<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
-		<property name="NPBouns">0.001</property>
-		<property name="limitOnRetrievedRules">10</property>
-	</section>
-		
+	
 	<section name = "bapV2">
 		<property name = "database_url">jdbc:mysql://$MYSQL/bap?user=db_readonly&amp;password=BIUTEE</property>
 		<property name = "limit on retrieved rules">20</property>
@@ -262,8 +251,7 @@
 		<property name = "conll_format_output_directory">annotatedSentences</property>
 		<property name = "do_annotations">true</property>
 	</section>
-	
-	
+
 	<section name = "redis-bap">
 		<property name="resource-name">distsim-bap</property>
 		<property name="top-n-rules">20</property>
@@ -385,5 +373,7 @@
 		<property name="l2r-redis-port">7007</property>
 		-->
 	</section>
+
+
 </configuration>
 
