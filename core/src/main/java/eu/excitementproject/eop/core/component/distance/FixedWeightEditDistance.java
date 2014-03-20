@@ -144,10 +144,13 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 	        //get the selected component
 	    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
 	    	
-	    	//activate stop word removal
+	    	//activate/deactivate stop word removal
 	    	if (componentNameValueTable.getString("stopWordRemoval") != null) {
     			stopWordRemoval = Boolean.parseBoolean(componentNameValueTable.getString("stopWordRemoval"));
-    			logger.info("Stop word removal activated.");
+    			if (stopWordRemoval == true)
+    				logger.info("Stop word removal activated.");
+    			else
+    				logger.info("Stop word removal deactivated.");
     		}
     		else {
     			stopWordRemoval = false;
@@ -749,7 +752,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     	try {
     	
 			relations.add(WordNetRelation.SYNONYM);
-			//relations.add(WordNetRelation.HYPERNYM);
+			relations.add(WordNetRelation.HYPERNYM);
 			
 			@SuppressWarnings("rawtypes")
 			LexicalResource resource = new WordnetLexicalResource(new File(path), false, false, relations, 3);
