@@ -48,7 +48,7 @@ public class RedisBasedStringListBasicMap {
 	}
 
 	public RedisBasedStringListBasicMap(String host, int port) {
-		this.dbFile = "";
+		this.dbFile = null;
 		init(host,port);
 	}
 	
@@ -100,7 +100,7 @@ public class RedisBasedStringListBasicMap {
 		
 	}
 
-	public List<String> getTopN(String key, int n) {
+	public List<String> getTopN(String key, long n) {
 		//long t1 = System.currentTimeMillis();
 		List<String> ret= jedis.lrange(key, 0, n-1);
 		//long t2 = System.currentTimeMillis();
@@ -126,17 +126,19 @@ public class RedisBasedStringListBasicMap {
 		jedis.set(ELEMENT_CLASS_NAME_KEY, elementClassName);
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#finalize()
+	/**
+	 * Close and release Redis processes
 	 */
-	@Override
-	protected void finalize() {
+	public void close() {
 		try {
-			BasicRedisRunner.getInstance().close(dbFile);
+			if (dbFile != null)
+				BasicRedisRunner.getInstance().close(dbFile);
 		} catch (Exception e) {
 			logger.info(e.toString());
 		}
 	}
+	
+	
 	
 	protected String dbFile;
 	protected Jedis jedis;

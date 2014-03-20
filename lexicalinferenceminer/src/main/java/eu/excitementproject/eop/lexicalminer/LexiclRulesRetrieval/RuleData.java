@@ -16,7 +16,7 @@ public final class RuleData
 	private String ruleType;
 	private String ruleMetadata;
 	private int ruleSourceId;
-	
+
 	public RuleData(String leftTerm, String rightTerm, String POSPattern, String wordsPattern,
 			String relationPattern, String POSrelationsPattern, String fullPattern, double defultRank,
 			Double classifierRank, int ruleID, String ruleResource,
@@ -57,12 +57,12 @@ public final class RuleData
 	public String getRelationPattern() {
 		return relationPattern;
 	}
-	
+
 	public String getPOSrelationsPattern() {
 		return POSrelationsPattern;
 	}
-	
-	
+
+
 	public String getFullPattern() {
 		return fullPattern;
 	}
@@ -107,8 +107,8 @@ public final class RuleData
 				+ ruleSourceId + "]";
 	}
 
-	
-	
-	
-	
+
+
+
+
 }

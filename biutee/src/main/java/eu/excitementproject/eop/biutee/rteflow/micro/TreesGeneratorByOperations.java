@@ -486,6 +486,7 @@ public class TreesGeneratorByOperations
 
 				}
 			}
+			
 			return ret;
 		}
 		catch(RuntimeException rx)
@@ -686,4 +687,25 @@ public class TreesGeneratorByOperations
 	
 	
 	private static final Logger logger = Logger.getLogger(TreesGeneratorByOperations.class);
+	
+	
+//	/////////////////// TO BE DELETED ///////////////////
+//	public static Map<String, Long> counterGenerated;
+//	public static void addToCounterGenerated(String ruleBaseName, long count)
+//	{
+//		Long current = counterGenerated.get(ruleBaseName);
+//		long nativeCurrent = 0;
+//		if (current!=null) {nativeCurrent = current.longValue();}
+//		counterGenerated.put(ruleBaseName, nativeCurrent+count);
+//	}
+//	public static void printGeneratedStatistics()
+//	{
+//		StringBuilder sb = new StringBuilder();
+//		sb.append("Generated statistics:\n");
+//		for (String ruleBaseName : counterGenerated.keySet())
+//		{
+//			sb.append(ruleBaseName).append(": ").append(counterGenerated.get(ruleBaseName)).append("\n");
+//		}
+//		logger.info(sb.toString());
+//	}
 }

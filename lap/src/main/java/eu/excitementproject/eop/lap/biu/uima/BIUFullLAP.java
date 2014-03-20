@@ -20,7 +20,7 @@ import eu.excitementproject.eop.lap.biu.uima.ae.parser.EasyFirstParserAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.NagelSentenceSplitterAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.tokenizer.MaxentTokenizerAE;
-import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
  * BIU's LAP (Linguistic Analysis Pipeline). It fits the requirements of

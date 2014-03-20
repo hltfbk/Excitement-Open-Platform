@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -27,13 +29,11 @@ import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherEx
 import eu.excitementproject.eop.common.utilities.log4j.BasicVerySimpleLoggerInitializer;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
 import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;
-import eu.excitementproject.eop.transformations.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.CompilationException;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules.EntailmentRuleCompiler;
 import eu.excitementproject.eop.transformations.operations.operations.ExtendedSubstitutionRuleApplicationOperation;
 import eu.excitementproject.eop.transformations.operations.operations.GenerationOperation;
 import eu.excitementproject.eop.transformations.operations.operations.IntroductionRuleApplicationOperation;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.representation.AdditionalInformationServices;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedMatchCriteria;

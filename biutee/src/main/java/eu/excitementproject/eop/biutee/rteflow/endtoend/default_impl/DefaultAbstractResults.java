@@ -271,16 +271,26 @@ public abstract class DefaultAbstractResults<I extends Instance, P extends Proof
 	{
 		long sumCpuTime = 0;
 		long sumWorldTime = 0;
+		long sumExpanded = 0;
+		long sumGenerated = 0;
+		boolean wasNull=false;
 		for (InstanceAndProof<I, P> proof : proofs)
 		{
 			TimeStatistics ts = proof.getProof().getTimeStatistics();
 			sumCpuTime += ts.getCpuTimeNanoSeconds();
 			sumWorldTime += ts.getWorldClockTimeMilliSeconds();
+			Long expanded = ts.getNumberOfExpandedElements();
+			if (expanded!=null){sumExpanded+=expanded;} else {wasNull=true;}
+			Long generated = ts.getNumberOfGeneratedElements();
+			if (generated!=null){sumGenerated+=generated;} else {wasNull=true;}
 		}
 		int amount = proofs.size();
+		Long averageExpanded = wasNull?null:(sumExpanded/amount);
+		Long averageGenerated = wasNull?null:(sumGenerated/amount);
 		return new TimeStatistics(
 				sumCpuTime/amount,
-				sumWorldTime/amount);
+				sumWorldTime/amount,
+				averageExpanded,averageGenerated);
 	}
 
 	protected final boolean f1_optimized;

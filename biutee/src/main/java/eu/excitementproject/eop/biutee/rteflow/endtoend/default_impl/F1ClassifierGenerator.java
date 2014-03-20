@@ -18,15 +18,16 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeException;
 public class F1ClassifierGenerator extends DefaultAbstractClassifierGenerator
 {
 	public F1ClassifierGenerator(
+			ClassifierFactory classifierFactory,
 			FeatureVectorStructureOrganizer featureVectorStructure,
 			File modelForSearch, File modelForPredictions)
 	{
-		super(featureVectorStructure, modelForSearch, modelForPredictions);
+		super(classifierFactory, featureVectorStructure, modelForSearch, modelForPredictions);
 	}
 
-	public F1ClassifierGenerator(FeatureVectorStructureOrganizer featureVectorStructure)
+	public F1ClassifierGenerator(ClassifierFactory classifierFactory, FeatureVectorStructureOrganizer featureVectorStructure)
 	{
-		super(featureVectorStructure);
+		super(classifierFactory, featureVectorStructure);
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class F1ClassifierGenerator extends DefaultAbstractClassifierGenerator
 	{
 		try
 		{
-			return new ClassifierFactory().getF1Classifier();
+			return classifierFactory.getProperClassifierForSearch(true);
 		}
 		catch (ClassifierException e)
 		{
@@ -47,7 +48,7 @@ public class F1ClassifierGenerator extends DefaultAbstractClassifierGenerator
 	{
 		try
 		{
-			return new ClassifierFactory().getF1Classifier();
+			return classifierFactory.getProperClassifier(true);
 		}
 		catch (ClassifierException e)
 		{

@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicConstructionNode;
@@ -28,7 +29,6 @@ import eu.excitementproject.eop.transformations.generic.rule_compiler.RuleCompil
 import eu.excitementproject.eop.transformations.generic.rule_compiler.annotationrules.DefaultAnnotationRuleCompileServices;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.charger.CgxMultipleChoiceExpander;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.utils.RuleCompilerUtils;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames;
 
 /**

@@ -8,6 +8,7 @@ import java.util.Set;
 import org.apache.log4j.BasicConfigurator;
 
 import eu.excitementproject.eop.biutee.utilities.legacy.ExperimentLoggerNeutralizer;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
@@ -23,7 +24,6 @@ import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResou
 import eu.excitementproject.eop.transformations.datastructures.LemmaAndPos;
 import eu.excitementproject.eop.transformations.operations.rules.DynamicRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.distsim.DistSimRuleBaseManager;
 import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 import eu.excitementproject.eop.transformations.utilities.TimeElapsedTracker;

@@ -97,6 +97,8 @@ public class ConfigurationParametersNames
 	public static final String RTE_ENGINE_COLLAPSE_MODE = "collapse-mode";
 	@ConfigurationParameterAnnotation(value={RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME},mandatoryLevel=MandatoryLevel.OPTIONAL)
 	public static final String RTE_ENGINE_PARSER_PARAMETER_NAME = "parser";
+	@ConfigurationParameterAnnotation(value={RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME},mandatoryLevel=MandatoryLevel.OPTIONAL)
+	public static final String RTE_ENGINE_CLASSIFIER_OPTIMIZATION_PARAMETER_NAME = "classifier-optimization";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})
 	public static final String RTE_ENGINE_NUMBER_OF_THREADS_PARAMETER_NAME = "threads";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME,RTE_SUM_TRAIN_AND_TEST_MODULE_NAME})

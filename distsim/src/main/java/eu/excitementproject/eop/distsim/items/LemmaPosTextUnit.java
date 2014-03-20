@@ -35,7 +35,7 @@ public class LemmaPosTextUnit extends DeafaultTextUnit<LemmaPos> {
 	}
 	
 	@Override
-	public TextUnit copy() {
+	public synchronized TextUnit copy() {
 		return new LemmaPosTextUnit(data, id,(long)count);
 	}
 	

@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
+import eu.excitementproject.eop.common.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
-import eu.excitementproject.eop.transformations.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.CompilationException;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.Constants;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.charger.CgxReadingUtils;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.charger.RuleBuildingUtils;
 import eu.excitementproject.eop.transformations.generic.truthteller.representation.RuleType;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 
 
 /**

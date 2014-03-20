@@ -3,6 +3,7 @@ package eu.excitementproject.eop.lexicalminer.dataAccessLayer;
 
 import java.sql.DriverManager;
 
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -237,7 +238,8 @@ public class RetrievalTool {
 		}
 		else
 		{
-			connection.close();
+			if (connection != null)
+				connection.close();
 			counter = 0;
 		}
 	}

@@ -29,19 +29,56 @@ public class ClassifierFactory
 	public static double SVM_SLACK_COEFFICIENT = BiuteeConstants.SVM_SLACK_COEFFICIENT;
 	public static double LOGISTIC_REGRESSION_LEARNING_RATE= 0.005;
 	
+	public ClassifierFactory(Boolean useF1Classifier)
+	{
+		this.useF1Classifier = useF1Classifier;
+	}
+	
+	
+	public LinearTrainableStorableClassifier getProperClassifier(boolean datasetNatureF1) throws ClassifierException
+	{
+		return getProperClassifierForSearch(datasetNatureF1);
+	}
+	
+	public LinearTrainableStorableClassifier getProperClassifierForSearch(boolean datasetNatureF1) throws ClassifierException
+	{
+		boolean f1 = false;
+		if (this.useF1Classifier!=null)
+		{
+			f1 = this.useF1Classifier.booleanValue();
+		}
+		else
+		{
+			f1 = datasetNatureF1;
+		}
+		
+		if (f1)
+		{
+			logger.info("Using F1 optimized classifier");
+			return getF1Classifier();
+		}
+		else
+		{
+			logger.info("Using accuracy optimized classifier");
+			return getByPoolLinearClassifier();
+		}
+	}
+	
+	@Deprecated
 	public TrainableStorableClassifier getDefaultClassifier() throws ClassifierException
 	{
 		logger.info("getDefaultClassifier()");
 		return getByPoolLinearClassifier();
 	}
 	
+	@Deprecated
 	public LinearTrainableStorableClassifier getDefaultClassifierForSearch() throws ClassifierException
 	{
 		logger.info("getDefaultClassifierForSearch()");
 		return getByPoolLinearClassifier();
 	}
 	
-	
+	@Deprecated
 	public LinearTrainableStorableClassifier getF1Classifier() throws ClassifierException
 	{
 		logger.info("getF1Classifier() returns new GradientAscentClassifier(0.0, 0.01, new F_alpha_DerivativeCalculator(Constants.F1_CLASSIFIER_GAMMA_FOR_SIGMOID),Constants.F1_CLASSIFIER_GAMMA_FOR_SIGMOID)");
@@ -166,7 +203,8 @@ public class ClassifierFactory
 		
 		return new SvmLightClassifier(trainingParameters);
 	}
+
+	private final Boolean useF1Classifier;
 	
 	private static Logger logger = Logger.getLogger(ClassifierFactory.class);
-
 }

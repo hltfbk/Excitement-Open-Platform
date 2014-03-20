@@ -149,6 +149,7 @@ public class LemmaPos implements Externalizable {
 		relevantPos = new HashSet<CanonicalPosTag>();
 		relevantPos.add(CanonicalPosTag.V);
 		relevantPos.add(CanonicalPosTag.N);
+		relevantPos.add(CanonicalPosTag.NN);
 		relevantPos.add(CanonicalPosTag.ADJ);
 		relevantPos.add(CanonicalPosTag.ADV);
 	}

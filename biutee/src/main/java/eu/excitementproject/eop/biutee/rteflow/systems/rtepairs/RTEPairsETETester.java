@@ -88,7 +88,7 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 		{
 			File searchModelFile = configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_SEARCH_MODEL);
 			File predictionsModelFile = configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_PREDICTIONS_MODEL);
-			return new AccuracyClassifierGenerator(teSystemEnvironment.getFeatureVectorStructureOrganizer(),searchModelFile,predictionsModelFile);
+			return new AccuracyClassifierGenerator(teSystemEnvironment.getClassifierFactory(), teSystemEnvironment.getFeatureVectorStructureOrganizer(),searchModelFile,predictionsModelFile);
 		}
 		catch (ConfigurationException e)
 		{

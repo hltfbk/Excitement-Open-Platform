@@ -3,7 +3,6 @@
  */
 package eu.excitementproject.eop.distsim.storage;
 
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 
 import org.apache.log4j.Logger;
@@ -37,7 +36,7 @@ public class RedisBasedBasicMap<K extends Serializable, V extends Serializable> 
 	
 	private static final long serialVersionUID = 1L;
 	
-	public RedisBasedBasicMap(String dbFile) throws FileNotFoundException, RedisRunException {
+	public RedisBasedBasicMap(String dbFile) throws RedisRunException {
 		this.dbFile = dbFile;
 		int port = BasicRedisRunner.getInstance().run(dbFile);
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
@@ -46,7 +45,7 @@ public class RedisBasedBasicMap<K extends Serializable, V extends Serializable> 
 		jedis.getClient().setTimeoutInfinite();
 	}
 
-	public RedisBasedBasicMap(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
+	public RedisBasedBasicMap(ConfigurationParams params) throws ConfigurationException, RedisRunException {
 		this(params.get(Configuration.REDIS_FILE));
 	}
 

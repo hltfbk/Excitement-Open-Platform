@@ -17,14 +17,14 @@ import eu.excitementproject.eop.biutee.utilities.BiuteeException;
  */
 public class AccuracyClassifierGenerator extends DefaultAbstractClassifierGenerator
 {
-	public AccuracyClassifierGenerator(FeatureVectorStructureOrganizer featureVectorStructure, File modelForSearch, File modelForPredictions)
+	public AccuracyClassifierGenerator(ClassifierFactory classifierFactory, FeatureVectorStructureOrganizer featureVectorStructure, File modelForSearch, File modelForPredictions)
 	{
-		super(featureVectorStructure, modelForSearch, modelForPredictions);
+		super(classifierFactory, featureVectorStructure, modelForSearch, modelForPredictions);
 	}
 
-	public AccuracyClassifierGenerator(FeatureVectorStructureOrganizer featureVectorStructure)
+	public AccuracyClassifierGenerator(ClassifierFactory classifierFactory, FeatureVectorStructureOrganizer featureVectorStructure)
 	{
-		super(featureVectorStructure);
+		super(classifierFactory, featureVectorStructure);
 	}
 
 	
@@ -33,7 +33,7 @@ public class AccuracyClassifierGenerator extends DefaultAbstractClassifierGenera
 	{
 		try
 		{
-			return new ClassifierFactory().getDefaultClassifierForSearch();
+			return classifierFactory.getProperClassifierForSearch(false);
 		}
 		catch (ClassifierException e)
 		{
@@ -46,7 +46,7 @@ public class AccuracyClassifierGenerator extends DefaultAbstractClassifierGenera
 	{
 		try
 		{
-			return new ClassifierFactory().getDefaultClassifier();
+			return classifierFactory.getProperClassifier(false);
 		}
 		catch (ClassifierException e)
 		{

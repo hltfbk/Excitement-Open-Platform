@@ -1,4 +1,6 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtesum;
+import java.io.Serializable;
+
 import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentifier;
 
 /**
@@ -7,8 +9,10 @@ import eu.excitementproject.eop.common.utilities.datasets.rtesum.SentenceIdentif
  * @since Aug 7, 2012
  *
  */
-public class CandidateIdentifier
+public class CandidateIdentifier implements Serializable
 {
+	private static final long serialVersionUID = -9159417345278320953L;
+	
 	public CandidateIdentifier(String topicId, String hypothesisID,
 			SentenceIdentifier sentenceID)
 	{

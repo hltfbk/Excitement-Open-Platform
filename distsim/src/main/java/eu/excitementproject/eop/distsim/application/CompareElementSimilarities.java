@@ -30,7 +30,7 @@ public class CompareElementSimilarities {
 	public static void main(String[] args) throws LoadingStateException, IOException, ItemNotFoundException, UndefinedKeyException, InvalidCountException {
 		
 		if (args.length != 3) {
-			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CompareItemData <in dir 1> <in dir 2> <item-pair file name>");
+			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CompareElementSimilarities <in dir 1> <in dir 2> <similarity file name>");
 			System.exit(0);
 		}
 		

@@ -1,17 +1,17 @@
 package eu.excitementproject.eop.biutee.rteflow.systems.rtepairs;
+
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_DO_NER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_DO_TEXT_NORMALIZATION;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_ANNOTATED;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_DATASET_FILE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_ANNOTATED;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_DATASET_FILE_NAME;
-import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_SERIALIZATION_FILE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TEST_ANNOTATED;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TEST_DATASET_FILE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TEST_SERIALIZATION_FILE_NAME;
-
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_ANNOTATED;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_DATASET_FILE_NAME;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.RTE_PAIRS_PREPROCESS_TRAIN_SERIALIZATION_FILE_NAME;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -35,6 +36,7 @@ import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenc
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
+import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -154,19 +156,36 @@ public class RTEPairsPreProcessor
 		logger.info("pre-process done.");
 	}
 	
+	
 	private void readConfigurationFile() throws ConfigurationFileDuplicateKeyException, ConfigurationException, NumberFormatException, TeEngineMlException, ParserRunException, NamedEntityRecognizerException, TextPreprocessorException
 	{
 		configurationFile = SystemInitialization.loadConfigurationFile(this.configurationFileName);
 		configurationFile.setExpandingEnvironmentVariables(true);
 		ConfigurationParams params = configurationFile.getModuleConfiguration(RTE_PAIRS_PREPROCESS_MODULE_NAME);
-		
-		datasetFile = params.get(parameterName(RTE_PAIRS_PREPROCESS_DATASET_FILE_NAME, RTE_PAIRS_PREPROCESS_TRAIN_DATASET_FILE_NAME, RTE_PAIRS_PREPROCESS_TEST_DATASET_FILE_NAME));
 
-		annotated = params.getBoolean(parameterName(RTE_PAIRS_PREPROCESS_ANNOTATED, RTE_PAIRS_PREPROCESS_TRAIN_ANNOTATED, RTE_PAIRS_PREPROCESS_TEST_ANNOTATED));
+		try
+		{
+			datasetFile = params.get(parameterName(RTE_PAIRS_PREPROCESS_DATASET_FILE_NAME, RTE_PAIRS_PREPROCESS_TRAIN_DATASET_FILE_NAME, RTE_PAIRS_PREPROCESS_TEST_DATASET_FILE_NAME));
+			annotated = params.getBoolean(parameterName(RTE_PAIRS_PREPROCESS_ANNOTATED, RTE_PAIRS_PREPROCESS_TRAIN_ANNOTATED, RTE_PAIRS_PREPROCESS_TEST_ANNOTATED));
+			preprocessedPairsSerFileName = params.get(parameterName(RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME, RTE_PAIRS_PREPROCESS_TRAIN_SERIALIZATION_FILE_NAME, RTE_PAIRS_PREPROCESS_TEST_SERIALIZATION_FILE_NAME));
+		}
+		catch(ConfigurationException conf_e)
+		{
+			if (null==trainOrTest)
+			{
+				try{throw new ConfigurationException("Could not read a required configuration parameter. Note that you did not specify a train/test flag in the command line, " +
+							"and hence the system tried to locate a default parameter, which might not exist in the configuration file. " +
+							"If this is the problem, please specify a train/test flag as a second parameter to the command line, and try again. " +
+							"Please specify one of the following flags: "+namesOfEnum(TrainTestEnum.class)+". More details in the nested exception.",conf_e);
+				}catch(Throwable t){throw conf_e;}
+			}
+			else
+			{
+				throw conf_e;
+			}
+		}
 		
 		instruments = new InstrumentsFactory().getDefaultInstruments(params);
-
-		preprocessedPairsSerFileName = params.get(parameterName(RTE_PAIRS_PREPROCESS_SERIALIZATION_FILE_NAME, RTE_PAIRS_PREPROCESS_TRAIN_SERIALIZATION_FILE_NAME, RTE_PAIRS_PREPROCESS_TEST_SERIALIZATION_FILE_NAME));
 
 		
 		if (params.containsKey(PREPROCESS_DO_NER))
@@ -267,6 +286,18 @@ public class RTEPairsPreProcessor
 		}
 		
 	}
+	
+	
+	private static String namesOfEnum(Class<? extends Enum<?>> cls)
+	{
+		LinkedList<String> list = new LinkedList<String>();
+		for (Enum<?> enumConstant : cls.getEnumConstants())
+		{
+			list.add(enumConstant.name());
+		}
+		return StringUtil.joinIterableToString(list, ",  ",true);
+	}
+
 	
 	
 	private String configurationFileName;
