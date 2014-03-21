@@ -3,6 +3,7 @@ import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRul
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
+import eu.excitementproject.eop.common.representation.parse.representation.basic.InfoGetFields;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeConstructor;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
@@ -56,7 +57,11 @@ public abstract class SubstitutionRuleApplicationOperation
 	{
 		bidiMapOrigToGenerated = new SimpleBidirectionalMap<TN, TN>();
 		this.rootOfLhsInTree = mapLhsToTree.leftGet(rule.getLeftHandSide());
-		if (null==rootOfLhsInTree) throw new OperationException("LHS root not mapped to any node in the original tree");
+		if (null==rootOfLhsInTree)
+		{
+			throw new OperationException("LHS root not mapped to any node in the original tree.\n" +
+					"The map from LHS to the tree is:\n"+debug_print_mapLhsToTree());
+		}
 		try
 		{
 			generatedTree = copySubTree(this.textTree.getTree());
@@ -66,6 +71,7 @@ public abstract class SubstitutionRuleApplicationOperation
 			throw new OperationException("Rule application failed. See nested exception.",e);
 		}
 	}
+	
 
 	@Override
 	protected void generateMapOriginalToGenerated() throws OperationException
@@ -138,6 +144,24 @@ public abstract class SubstitutionRuleApplicationOperation
 	protected abstract InfoServices<TI, RI> getNewInfoServices();
 
 
+	private String debug_print_mapLhsToTree()
+	{
+		StringBuilder sb = new StringBuilder();
+		for (RN ruleNode : mapLhsToTree.leftSet())
+		{
+			String ruleLemma = "null";
+			if (ruleNode!=null) {ruleLemma = InfoGetFields.getLemma(ruleNode.getInfo());}
+			TN treeNode = mapLhsToTree.leftGet(ruleNode);
+			String treeLemma = "null";
+			if (treeNode!=null) {treeLemma = InfoGetFields.getLemma(treeNode.getInfo());}
+			
+			sb.append(ruleLemma).append(" --> ").append(treeLemma).append("\n");
+		}
+		return sb.toString();
+	}
+
+	
+	
 	protected AbstractNodeConstructor<TI, TN> nodeConstructor = getNewNodeConstructor();
 	protected SyntacticRule<RI, RN> rule;
 	protected BidirectionalMap<RN, TN> mapLhsToTree;

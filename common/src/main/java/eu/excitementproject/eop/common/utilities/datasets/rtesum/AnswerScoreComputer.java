@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.common.utilities.datasets.rtesum;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +29,7 @@ public class AnswerScoreComputer
 		this.goldStandardFileName = goldStandardFileName;
 		this.systemAnswerFileName = systemAnswerFileName;
 	}
-
+	
 	public void compute() throws Rte6mainIOException
 	{
 		AnswersFileReader gsReader = new DefaultAnswersFileReader();
@@ -111,6 +112,18 @@ public class AnswerScoreComputer
 		return totalF1;
 	}
 	
+	/////////////////////////////////// PROTECTED ////////////////////////////////////////
+	
+	
+	/**
+	 * You can override this method if you wish to prevent warnings from throwing exceptions.
+	 */
+	protected void warn(String message) throws Rte6mainIOException
+	{
+		throw new Rte6mainIOException(message);
+	}
+	
+	
 	/////////////////////////////////// PRIVATE ////////////////////////////////////////
 	
 	
@@ -136,6 +149,11 @@ public class AnswerScoreComputer
 			{
 				Set<SentenceIdentifier> gsHypothesis = gsTopic.get(hypothesisId);
 				Set<SentenceIdentifier> sysHypothesis = sysTopic.get(hypothesisId);
+				if (null==sysHypothesis)
+				{
+					warn("System results for hypothesis "+hypothesisId+" are not available (sysHypothesis is empty).");
+					sysHypothesis = Collections.emptySet();
+				}
 				
 				topicGsYes += gsHypothesis.size();
 				topicYesAnswer += sysHypothesis.size();
@@ -223,7 +241,13 @@ public class AnswerScoreComputer
 		try
 		{
 			if (args.length<2)throw new Exception("args");
-			AnswerScoreComputer computer = new AnswerScoreComputer(args[0], args[1]);
+			AnswerScoreComputer computer = new AnswerScoreComputer(args[0], args[1])
+			{
+				@Override protected void warn(String message) throws Rte6mainIOException
+				{
+					System.out.println("Warning: "+message);
+				}
+			};
 			computer.compute();
 			System.out.println(computer.getResultsAsString());
 			

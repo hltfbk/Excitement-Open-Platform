@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.distsim.dependencypath;
 
-import java.util.List;
+import java.util.Set;
 
 
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -37,5 +37,5 @@ public abstract class DependencyPathsFromTreeAsStrings<T extends Info, S extends
 	 * @param root the root of a parse-tree.
 	 * @return a list of all dependency paths, in string form, according to UNARY_BINC definition.
 	 */
-	public abstract List<String> stringDependencyPaths(S root);
+	public abstract Set<String> stringDependencyPaths(S root);
 }

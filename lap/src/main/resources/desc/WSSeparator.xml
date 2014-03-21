@@ -2,7 +2,7 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>
-  <annotatorImplementationName>eu.excitementproject.eop.lap.lappoc.WSSeparatorAE</annotatorImplementationName>
+  <annotatorImplementationName>eu.excitementproject.eop.lap.implbase.WSSeparatorAE</annotatorImplementationName>
   <analysisEngineMetaData>
     <name>WSSeparator</name>
     <description>A simple pseudo tokenizer, that things everything separated with a whitespace, is a token. 

@@ -23,6 +23,7 @@ public enum KnowledgeResource
 {
 	WORDNET("WN",false,"WNV2",true),
 	WIKIPEDIA("Wiki",false,"WikiV2",true),
+	WIKIPEDIA_NEW("Wiki3",false,"WikiV3",true),
 	GEO("GeoKB",false,true),
 	CATVAR("catvar",false,"catvarV2",true),
 	BAP("bap",false,"bapV2",true),
@@ -48,7 +49,9 @@ public enum KnowledgeResource
 	SIMPLE_LEXICAL_CHAIN("simpleLexicalChain",false,true),
 	REDIS_LIN_PROXIMITY("redis-lin-proximity",false,"redis-lin-proximity",true),
 	REDIS_LIN_DEPENDENCY("redis-lin-dependency",false,"redis-lin-dependency",true),
-	REDIS_BAP("redis-bap",false,"redis-bap",true);
+	REDIS_BAP("redis-bap",false,"redis-bap",true),
+	REDIS_DIRT(null,false,"redis-dirt",false,true),
+	REDIS_REVERB(null,false,"redis-reverb",false,true)
 	;
 
 	public String getModuleName()
@@ -77,15 +80,27 @@ public enum KnowledgeResource
 	{
 		return lexical;
 	}
+	
+	public boolean isExcitementDIRTlike()
+	{
+		return excitementDIRTlike;
+	}
 
-	private KnowledgeResource(String moduleName, boolean dirtLikeDb, String infrastructureModuleName, boolean lexical)
+	
+	private KnowledgeResource(String moduleName, boolean dirtLikeDb, String infrastructureModuleName, boolean lexical, boolean excitementDIRTlike)
 	{
 		this.moduleName = moduleName;
 		this.dirtLikeDb = dirtLikeDb;
 		this.infrastructureModuleName = infrastructureModuleName;
 		this.lexical = lexical;
+		this.excitementDIRTlike = excitementDIRTlike;
 	}
-	
+
+	private KnowledgeResource(String moduleName, boolean dirtLikeDb, String infrastructureModuleName, boolean lexical)
+	{
+		this(moduleName,dirtLikeDb,infrastructureModuleName,lexical,false);
+	}
+
 	private KnowledgeResource(String moduleName, boolean dirtLikeDb, boolean lexical)
 	{
 		this(moduleName,dirtLikeDb,null,lexical);
@@ -97,4 +112,5 @@ public enum KnowledgeResource
 	private final boolean dirtLikeDb;
 	private final String infrastructureModuleName;
 	private final boolean lexical;
+	private final boolean excitementDIRTlike;
 }

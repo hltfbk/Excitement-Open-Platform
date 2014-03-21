@@ -4,7 +4,7 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.ExampleLAP;
+import eu.excitementproject.eop.lap.implbase.ExampleLAP;
 
 
 public class FixedWeightTokenEditDistanceTest {

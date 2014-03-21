@@ -1,0 +1,2 @@
+Redis is open source software released under the terms of the three clause BSD license.
+FOr more details see: http://redis.io/topics/license

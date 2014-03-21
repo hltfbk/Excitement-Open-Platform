@@ -2,6 +2,8 @@ package eu.excitementproject.eop.common.representation.parse.tree;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 /**
@@ -48,15 +50,31 @@ public abstract class AbstractNode<T,S extends AbstractNode<T,S>> implements Ser
 	
 	public void addChild(S child)
 	{
+		if(sealed) {throw new SealedTreeViolationException();}
 		if (this.children==null)
 			this.children = new ArrayList<S>();
 		
 		this.children.add(child);
 	}
 	
-	public ArrayList<S> getChildren()
+	public List<S> getChildren()
 	{
-		return children;
+		if (!sealed)
+		{
+			return children;
+		}
+		else
+		{
+			return Collections.unmodifiableList(children);
+		}
+	}
+	
+	/**
+	 * Seals the tree. Any attempt to change this tree would raise an exception.
+	 */
+	public void seal()
+	{
+		this.sealed = true;
 	}
 	
 	
@@ -81,6 +99,7 @@ public abstract class AbstractNode<T,S extends AbstractNode<T,S>> implements Ser
 
 	public void setAntecedent(S antecedent)
 	{
+		if(sealed) {throw new SealedTreeViolationException();}
 		this.antecedent = antecedent;
 	}
 
@@ -107,4 +126,6 @@ public abstract class AbstractNode<T,S extends AbstractNode<T,S>> implements Ser
 	// Its purpose is for those nodes that it was decided by the parser
 	// that they are actually refer to another node.
 	protected S antecedent;
+	
+	protected boolean sealed=false;
 }

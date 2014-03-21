@@ -18,20 +18,26 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.BaseException;
+//import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSim;
 import eu.excitementproject.eop.core.component.lexicalknowledge.dewakdistributional.GermanDistSimNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetNotInstalledException;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetRelation;
 import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
+import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmResource;
 
 /**
  * The <code>BagOfLexesScoringDE</code> class extends
  * <code>BagOfLemmasScoring</code>. It supports (currently)
- * <code>GermanDistSim</code> and <code>GermaNetWrapper</code> two lexical
- * resources.
+ * <code>GermanDistSim</code>, <code>GermaNetWrapper</code>,
+ * <code>GermanTransDmResource<code>, and <code>GermanTransDmResource</code>,
+ * four lexical resources.
  * 
- * @author Rui Wang
+ * Both GermaNetWrapper and GermanTransDmResource can be used with or without POS information. 
+ * 
+ * @author Rui Wang, Julia Kreutzer
  * @since November 2012
  */
 public class BagOfLexesScoringDE extends BagOfLemmasScoring {
@@ -48,16 +54,20 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 		return numOfFeats;
 	}
 
-	protected boolean[] moduleFlags = new boolean[2];
+	protected boolean[] moduleFlags = new boolean[3];
 
 	protected GermanDistSim gds = null;
 
 	protected GermaNetWrapper gnw = null;
+	
+	protected GermanTransDmResource gtdm = null;
 
 	/**
 	 * the constructor using parameters
 	 * 
 	 * @param isDS whether to use <code>GermanDistSim</code>
+	 * @param isTDm whether to use <code>GermanTransDmResource</code>
+	 * @param simMeasure the similarity measure used for GermanTransDm, either "cosine", "balapinc" or "all"
 	 * @param isGN whether to use <code>GermaNetWrapper</code>
 	 * @param germaNetRelations the array of GermaNet relations
 	 * @param germaNetFilePath the file path to GermaNet
@@ -65,12 +75,12 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
-	public BagOfLexesScoringDE(boolean isDS, boolean isGN, String[] germaNetRelations, String germaNetFilePath, boolean isDB) throws ConfigurationException, LexicalResourceException{
+	public BagOfLexesScoringDE(boolean isDS, boolean isTDm, String simMeasure, boolean isGN, String[] germaNetRelations, String germaNetFilePath, boolean isDB) throws ConfigurationException, LexicalResourceException{
 		for (int i = 0; i < moduleFlags.length; i++) {
 			moduleFlags[i] = false;
 		}
 		
-		if (!isDS && !isGN && !isDB) {
+		if (!isDS && !isGN && !isDB && !isTDm) {
 			throw new ConfigurationException(
 					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoringDE component");
 		}
@@ -88,6 +98,21 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 				throw new LexicalResourceException(e.getMessage());
 			}
 			logger.info("Load GermanDistSim done.");
+		}
+		
+		// initialize GermanTransDmResource
+		if (isTDm) {
+			try {
+				gtdm = new GermanTransDmResource(simMeasure);
+				numOfFeats++;
+				moduleFlags[2] = true;
+			} catch (GermanTransDmException e) {
+				logger.warning("WARNING: GermanTransDmResource could not be loaded.");
+				throw new LexicalResourceException(e.getMessage());
+			} catch (BaseException e) {
+				throw new LexicalResourceException(e.getMessage());
+			}
+			logger.info("Load GermanTransDmResource done.");
 		}
 
 		// initialize GermaNet
@@ -114,7 +139,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 	 * the constructor using the configuration
 	 * 
 	 * @param config
-	 *            the configuation
+	 *            the configuration
 	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
@@ -128,6 +153,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 
 		if (null == comp.getString("GermanDistSim")
 				&& null == comp.getString("GermaNetWrapper")
+				&& null == comp.getString("GermanTransDmResource")
 				&& null == comp.getString("DerivBaseResource")) {
 			throw new ConfigurationException(
 					"Wrong configuation: didn't find any lexical resources for the BagOfLexesScoring component");
@@ -147,6 +173,21 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 			}
 			logger.info("Load GermanDistSim done.");
 		}
+		
+		//initialize GermanTransDmResource
+		if (null!= comp.getString("GermanTransDmResource")){
+			try {
+				gtdm = new GermanTransDmResource(config); //load gtdm with config
+				numOfFeats++; 
+				moduleFlags[2] = true;
+			} catch (GermanTransDmException e) {
+				logger.warning("GermanTransDmResource could not be loaded.");
+				throw new LexicalResourceException(e.getMessage());
+			} catch (BaseException e){
+				throw new LexicalResourceException(e.getMessage());
+			}
+			logger.info("Load GermanTransDmResource done.");
+		}
 
 		// initialize GermaNet
 		if (null != comp.getString("GermaNetWrapper")) {
@@ -154,7 +195,7 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 					.split(",");
 			if (null == GermaNetRelations || 0 == GermaNetRelations.length) {
 				throw new ConfigurationException(
-						"Wrong configuation: didn't find any relations for the GermaNet");
+						"Wrong configuration: didn't find any relations for the GermaNet");
 			}
 			try {
 				gnw = new GermaNetWrapper(config);
@@ -187,6 +228,9 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 			if (null != gnw) {
 				gnw.close();
 			}
+			if (null != gtdm) {
+				gtdm.close();
+			}
 		} catch (LexicalResourceCloseException e) {
 			throw new ScoringComponentException(e.getMessage());
 		}
@@ -210,7 +254,10 @@ public class BagOfLexesScoringDE extends BagOfLemmasScoring {
 				scoresVector.add(calculateSingleLexScore(tBag, hBag, gds));
 			}
 			if (moduleFlags[1]) {
-				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw));
+				scoresVector.add(calculateSingleLexScore(tBag, hBag, gnw)); 
+			}
+			if (moduleFlags[2]) {
+				scoresVector.add(calculateSingleLexScore(tBag,hBag, gtdm)); 
 			}
 		} catch (CASException e) {
 			throw new ScoringComponentException(e.getMessage());

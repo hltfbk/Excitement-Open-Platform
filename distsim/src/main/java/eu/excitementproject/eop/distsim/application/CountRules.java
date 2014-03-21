@@ -22,16 +22,24 @@ public class CountRules {
 			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CountRules <in id-based similarity file>");
 			System.exit(0);
 		}
-		long i=0;
+		long total=0, elements=0,max=0;
 		File similarityFile = new File(args[0]);
 		eu.excitementproject.eop.distsim.storage.File similarities= new IdTroveBasicIntDoubleMapFile(similarityFile, true);
 		similarities.open();
 		Pair<Integer, Serializable> pair = null;
-		while ((pair = similarities.read()) != null) 
-			i += ((TroveBasedIDKeyBasicMap<Double>)pair.getSecond()).size();
+		while ((pair = similarities.read()) != null) { 
+			long size = ((TroveBasedIDKeyBasicMap<Double>)pair.getSecond()).size();
+			elements++;
+			total += size;
+			if (max < size)
+				max = size;
+		}
 		similarities.close();
 		
-		System.out.println("Number of rules: " + i);
+		System.out.println("Total number of rules: " + total);
+		System.out.println("Total number of elements: " + elements);
+		System.out.println("Average number of rules per element: " + (((double)total) / ((double)elements)));
+		System.out.println("Max number of rules per element: " + max);
 	}
 
 

@@ -4,6 +4,7 @@ package eu.excitementproject.eop.lexicalminer.definition.classifier;
 import java.sql.SQLException;
 
 
+
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.lexicalminer.LexiclRulesRetrieval.RuleData;
 import eu.excitementproject.eop.lexicalminer.dataAccessLayer.RetrievalTool;

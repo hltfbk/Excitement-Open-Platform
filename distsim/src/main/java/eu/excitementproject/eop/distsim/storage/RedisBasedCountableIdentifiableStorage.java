@@ -1,7 +1,5 @@
 package eu.excitementproject.eop.distsim.storage;
 
-import java.io.FileNotFoundException;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -49,7 +47,7 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 		jedis.getClient().setTimeoutInfinite();
 	}*/
 
-	public RedisBasedCountableIdentifiableStorage(String dbFile) throws FileNotFoundException, RedisRunException {
+	public RedisBasedCountableIdentifiableStorage(String dbFile) throws RedisRunException {
 		this.dbFile = dbFile;
 		int port = BasicRedisRunner.getInstance().run(dbFile);
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
@@ -58,16 +56,16 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 		jedis.getClient().setTimeoutInfinite();
 	}
 	
-	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
+	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params) throws ConfigurationException, RedisRunException {
 		this(params.getString(Configuration.REDIS_FILE));
 	}
 
-	public RedisBasedCountableIdentifiableStorage(String dbFile, PersistenceDevice device) throws LoadingStateException, FileNotFoundException, RedisRunException {
+	public RedisBasedCountableIdentifiableStorage(String dbFile, PersistenceDevice device) throws LoadingStateException, RedisRunException {
 		this(dbFile);
 		loadState(device);
 	}
 	
-	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params, PersistenceDevice device) throws ConfigurationException, LoadingStateException, FileNotFoundException, RedisRunException {
+	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params, PersistenceDevice device) throws ConfigurationException, LoadingStateException, RedisRunException {
 		this(params);
 		loadState(device);
 	}

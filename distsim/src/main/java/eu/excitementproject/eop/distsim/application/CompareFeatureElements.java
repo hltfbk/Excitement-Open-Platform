@@ -29,7 +29,7 @@ public class CompareFeatureElements {
 	public static void main(String[] args) throws LoadingStateException, IOException, ItemNotFoundException, UndefinedKeyException {
 		
 		if (args.length != 3) {
-			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CompareItemData <in dir 1> <in dir 2> <compared file name>");
+			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.CompareFeatureElements <in dir 1> <in dir 2> <compared file name>");
 			System.exit(0);
 		}
 		

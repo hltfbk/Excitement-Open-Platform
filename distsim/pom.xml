@@ -3,7 +3,7 @@
    <parent>
     <groupId>eu.excitementproject</groupId>
     <artifactId>eop</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
   </parent>
   <artifactId>distsim</artifactId>
   <name>distsim</name>
@@ -43,13 +43,13 @@
     <dependency>
 		<groupId>eu.excitementproject</groupId>
   		<artifactId>common</artifactId>
-  		<version>1.1.1</version>
+  		<version>1.1.2</version>
   	</dependency>
       
     <dependency>
 		<groupId>eu.excitementproject</groupId>
   		<artifactId>lap</artifactId>
-  		<version>1.1.1</version>
+  		<version>1.1.2</version>
   	</dependency>
  
    <!-- <dependency>
@@ -83,13 +83,13 @@
   	</dependency>
 
     <!-- uncomment the following to include the German redis rdb file for test-->
-	<!--
+	<!-- 
 	<dependency>
   		<groupId>de.uni-heidelberg.cl</groupId>
   		<artifactId>redis-german-lin-prox</artifactId>
   		<version>0.1</version>
   	</dependency>
-  	-->
+  	--> 
  	
   	</dependencies>
 

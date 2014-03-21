@@ -86,6 +86,28 @@ public class RTESumETEDatasetFactory
 	}
 	
 	
+	/**
+	 * This is a stand-along method, which can be used without reading the other public methods.
+	 * It is used to retrieve the gold-standard file.
+	 * @return
+	 * @throws BiuteeException
+	 * @throws ConfigurationException 
+	 */
+	public File retrieveAndReturnGoldStandardFile() throws BiuteeException, ConfigurationException
+	{
+		File datasetDirectory = retrieveDatasetDirAndSetFileSystemNames(configurationParams,rawData_parameterName);
+		File goldStandardFile = new File(datasetDirectory,fileSystemNames.getGoldStandardFileName());
+		if ( (goldStandardFile.exists()) && (goldStandardFile.isFile()) )
+		{
+			return goldStandardFile;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
+	
 	
 	///////////////// PRIVATE /////////////////
 

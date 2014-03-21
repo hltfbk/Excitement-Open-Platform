@@ -1,6 +1,8 @@
 package eu.excitementproject.eop.biutee.rteflow.systems;
 
 import java.util.Set;
+
+import eu.excitementproject.eop.biutee.classifiers.ClassifierFactory;
 import eu.excitementproject.eop.biutee.plugin.PluginRegistry;
 import eu.excitementproject.eop.biutee.rteflow.macro.gap.GapToolBox;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
@@ -30,7 +32,8 @@ public class TESystemEnvironment
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
 			ImmutableSet<String> stopWords,
 			PARSER parser, boolean collapseMode,
-			GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox)
+			GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox,
+			ClassifierFactory classifierFactory)
 	{
 		super();
 		this.ruleBasesToRetrieveMultiWords = ruleBasesToRetrieveMultiWords;
@@ -43,6 +46,7 @@ public class TESystemEnvironment
 		this.parser = parser;
 		this.collapseMode = collapseMode;
 		this.gapToolBox = gapToolBox;
+		this.classifierFactory = classifierFactory;
 	}
 	
 	
@@ -87,6 +91,11 @@ public class TESystemEnvironment
 	{
 		return gapToolBox;
 	}
+	public ClassifierFactory getClassifierFactory()
+	{
+		return classifierFactory;
+	}
+
 
 
 
@@ -108,4 +117,5 @@ public class TESystemEnvironment
 	private final PARSER parser;
 	private final boolean collapseMode;
 	private final GapToolBox<ExtendedInfo, ExtendedNode> gapToolBox;
+	private final ClassifierFactory classifierFactory;
 }

@@ -172,8 +172,8 @@ public class Version implements AbstractVersion,Serializable
 	private static final Version instance = new Version(
 			2, // product
 			6, 
-			0, // minor  
-			BuildType.RELEASE);
+			1, // minor  
+			BuildType.DEV);
 	
 	
 	private final int product;

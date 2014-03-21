@@ -12,7 +12,7 @@
 
 <section name="cooccurence-extractor"> <!--Defines the extraction process of co-occurrences from a given corpus-->
           <!-- the number of concurrent threads for the extraction process -->
-	<property name="thread-num">1</property> 
+	<property name="thread-num">10</property> 
 	
 	<!-- the name of the extractor class, which implements the eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrencesExtractor interface
 	       Current options:

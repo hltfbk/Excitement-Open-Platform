@@ -281,9 +281,9 @@ public abstract class LLGSTextTreesProcessor extends AbstractFilterEnabledTextTr
 			// warning if works too hard on this pair
 			if (0 == (currentIteration%WARNING_IF_EXCEEDS_NUMBER_OF_GLOBAL_ITERATIONS) )
 			{
-				logger.warn("Too many global iterations, though proof has not been found! Number of global iterations so far is "+currentIteration
-						+" The current gap is: "+String.format("%-4.4f", currentTreeGap)+
-						" The current cost is: "+String.format("%-4.4f", currentTreeCost)
+				logger.warn("Warning: search takes longer time than usual. [Details: number of global iterations so far is "+currentIteration
+						+", the current gap is: "+String.format("%-4.4f", currentTreeGap)+
+						", the current cost is: "+String.format("%-4.4f", currentTreeCost)+" ]"
 						);
 			}
 			

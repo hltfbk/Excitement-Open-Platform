@@ -258,7 +258,7 @@ public class PairProcessor
 	 * @return the {@link TextTreesProcessor} which will process the given T-H pair.
 	 * @throws TeEngineMlException
 	 */
-	protected TextTreesProcessor createProcessor(ExtendedPairData _pairData) throws TeEngineMlException
+	protected WithStatisticsTextTreesProcessor createProcessor(ExtendedPairData _pairData) throws TeEngineMlException
 	{
 		if (_pairData.getTextTrees().isEmpty())
 			throw new TeEngineMlException("Empty text");
@@ -278,6 +278,10 @@ public class PairProcessor
 		if (!useOldBeam)
 		{
 			textTreesProcessor = lcTextTreesProcessor;
+		}
+		else
+		{
+			textTreesProcessor = beamSearchTextTreesProcessor;
 		}
 		abstractTextTreesProcessor = null;
 		if (!useOldBeam)
@@ -304,7 +308,9 @@ public class PairProcessor
 
 		logger.info("PairProcessor.process: Using TextTreesProcessor: "+abstractTextTreesProcessor.getClass().getName());
 
-		return abstractTextTreesProcessor;
+		if (textTreesProcessor!=abstractTextTreesProcessor) {throw new TeEngineMlException("bug");}
+		
+		return textTreesProcessor;
 	}
 	
 	
@@ -327,11 +333,11 @@ public class PairProcessor
 		}
 		
 		@Override
-		protected TextTreesProcessor createProcessor(ExtendedPairData pairData,
+		protected WithStatisticsTextTreesProcessor createProcessor(ExtendedPairData pairData,
 				OperationsScript<Info, BasicNode> script,
 				LinearClassifier classifierForSearch) throws BiuteeException, TeEngineMlException
 		{
-			TextTreesProcessor processor = PairProcessor.this.createProcessor(pairData);
+			WithStatisticsTextTreesProcessor processor = PairProcessor.this.createProcessor(pairData);
 			processor.setGlobalPairInformation(createGlobalPairInformation(pairData));
 			return processor;
 		}

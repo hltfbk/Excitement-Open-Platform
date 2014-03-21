@@ -20,7 +20,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.ner.type.*;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.*;
 
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
  * LAP using TextPro

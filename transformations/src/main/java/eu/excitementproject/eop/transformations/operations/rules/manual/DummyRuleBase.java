@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.transformations.operations.rules.manual;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.datastructures.DummySet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
@@ -6,8 +7,6 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.transformations.operations.rules.BagOfRulesRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
-//import eu.excitementproject.eop.transformations.rteflow.macro.DefaultOperationScript;
 
 /**
  * An empty rule base.
