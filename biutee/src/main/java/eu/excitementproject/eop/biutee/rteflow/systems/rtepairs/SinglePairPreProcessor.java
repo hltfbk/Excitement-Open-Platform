@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.rteflow.preprocess.Instruments;
 import eu.excitementproject.eop.biutee.utilities.DoNothingShortMessageFire;
 import eu.excitementproject.eop.biutee.utilities.ShortMessageFire;
+import eu.excitementproject.eop.biutee.utilities.preprocess.ValidateTexts;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformation;
 import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -97,11 +98,23 @@ public class SinglePairPreProcessor
 		}
 
 
-		messageFire.fire("Performing sentence splitter");
+		messageFire.fire("Performing sentence split");
 		SentenceSplitter sentenceSplitter = initializedInstruments.getSentenceSplitter();
-		sentenceSplitter.setDocument(pair.getText());
+		final String text = pair.getText();
+		sentenceSplitter.setDocument(text);
 		sentenceSplitter.split();
 		List<String> sentences = sentenceSplitter.getSentences();
+		ValidateTexts validatorSentenceSplitter = ValidateTexts.createForSentences(text, sentences);
+		if (!(validatorSentenceSplitter.compare()))
+		{
+			logger.warn("Text was modified by the sentence splitter.\n" +
+					"Original text:\n" +
+					validatorSentenceSplitter.getOriginalText_noDuplicateSpaces() +
+					"\nText after sentence splitter:\n" +
+					validatorSentenceSplitter.getGeneratedText_noDuplicateSpaces()+"\n"+
+					ValidateTexts.generateMismatchMarks(validatorSentenceSplitter.getMismatches())
+					);
+		}
 		
 		if (logger.isDebugEnabled())
 		{

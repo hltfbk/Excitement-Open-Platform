@@ -19,6 +19,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.apache.log4j.Appender;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.utilities.log4j.GuiAppender;
@@ -145,7 +146,7 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 		return useF1Classifier;
 	}
 
-	public Exception getException()
+	public Throwable getException()
 	{
 		return exception;
 	}
@@ -156,7 +157,8 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 		if (e.getActionCommand().equals("init"))
 		{
 			initButton.setEnabled(false);
-			Logger.getRootLogger().addAppender(new GuiAppender(textArea,LOG_LINES_IN_TEXT_AREA));
+			guiAppender = new GuiAppender(textArea,LOG_LINES_IN_TEXT_AREA);
+			Logger.getRootLogger().addAppender(guiAppender);
 			new Thread(new UnderLyingSystemCreateRunnable()).start();
 		}
 		else if (e.getActionCommand().equals("cancel"))
@@ -171,44 +173,58 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 		@Override
 		public void run()
 		{
-			exception = null;
-			if (GUI_LOADS_LABELED_SAMPLES)
+			try
 			{
-				if (radioGroup.getSelection().getActionCommand().equals("accuracy"))
+				exception = null;
+				if (GUI_LOADS_LABELED_SAMPLES)
 				{
-					useF1Classifier = false;
+					if (radioGroup.getSelection().getActionCommand().equals("accuracy"))
+					{
+						useF1Classifier = false;
+					}
+					else if (radioGroup.getSelection().getActionCommand().equals("f1"))
+					{
+						useF1Classifier = true;
+					}
+					else
+					{
+						exception = new TeEngineMlException("BUG");
+					}
 				}
-				else if (radioGroup.getSelection().getActionCommand().equals("f1"))
+				if (null==exception)
 				{
-					useF1Classifier = true;
-				}
-				else
-				{
-					exception = new TeEngineMlException("BUG");
+					try
+					{
+						underlyingSystem = new SingleComponentUnderlyingSystem(cpe.getSumUtilities(), cpe.getConfigurationFileName(),
+								(GUI_LOADS_LABELED_SAMPLES?useF1Classifier:null)
+								);
+						underlyingSystem.init();
+						if (underlyingSystem.getTeSystemEnvironment().getGapToolBox().isHybridMode())
+						{
+							JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! The GUI support of hybrid gap mode is partial and might be inaccurate.", "Hybrid gap mode", JOptionPane.WARNING_MESSAGE);
+						}
+						if (underlyingSystem.isCollapseMode())
+						{
+							JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! GUI in COLLAPSE mode is incomplete.\nYou can change the COLLAPSE constant to switch into non-COLLAPSE mode, in which the GUI is fine.", "COLLAPSE mode", JOptionPane.WARNING_MESSAGE);
+						}
+						built = true;
+					}
+					catch(Throwable e)
+					{
+						exception = e;
+					}
 				}
 			}
-			if (null==exception)
+			finally
 			{
 				try
 				{
-					underlyingSystem = new SingleComponentUnderlyingSystem(cpe.getSumUtilities(), cpe.getConfigurationFileName(),
-							(GUI_LOADS_LABELED_SAMPLES?useF1Classifier:null)
-							);
-					underlyingSystem.init();
-					if (underlyingSystem.getTeSystemEnvironment().getGapToolBox().isHybridMode())
+					if (guiAppender!=null)
 					{
-						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! The GUI support of hybrid gap mode is partial and might be inaccurate.", "Hybrid gap mode", JOptionPane.WARNING_MESSAGE);
+						Logger.getRootLogger().removeAppender(guiAppender);
 					}
-					if (underlyingSystem.isCollapseMode())
-					{
-						JOptionPane.showMessageDialog(GuiSystemCreatorDialog.this, "Note! GUI in COLLAPSE mode is incomplete.\nYou can change the COLLAPSE constant to switch into non-COLLAPSE mode, in which the GUI is fine.", "COLLAPSE mode", JOptionPane.WARNING_MESSAGE);
-					}
-					built = true;
 				}
-				catch(Exception e)
-				{
-					exception = e;
-				}
+				catch(Throwable tt){}
 			}
 			dispose();
 		}
@@ -221,7 +237,8 @@ public class GuiSystemCreatorDialog extends JDialog implements ActionListener
 	private VisualTracingTool cpe;
 	private Frame owner;
 
-	private Exception exception = null;
+	private Appender guiAppender = null;
+	private Throwable exception = null;
 	private ButtonGroup radioGroup;
 	private boolean useF1Classifier = false;
 	private JButton initButton;

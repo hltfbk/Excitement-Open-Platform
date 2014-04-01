@@ -5,6 +5,7 @@ import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersN
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_COREFERENCE_RESOLUTION_ENGINE;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_DO_NER;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_STANFORD_NE_CLASSIFIER_PATH;
+import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.PREPROCESS_SENTENCE_SPLITTER_TYPE;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,8 @@ import eu.excitementproject.eop.lap.biu.en.coreference.bart.BartCoreferenceResol
 import eu.excitementproject.eop.lap.biu.en.ner.stanford.StanfordNamedEntityRecognizer;
 import eu.excitementproject.eop.lap.biu.en.parser.BasicParser;
 import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.LingPipeSentenceSplitter;
+import eu.excitementproject.eop.lap.biu.en.sentencesplit.MorphAdornerSentenceSplitter;
 import eu.excitementproject.eop.lap.biu.en.sentencesplit.nagel.NagelSentenceSplitter;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.Tokenizer;
 import eu.excitementproject.eop.lap.biu.en.tokenizer.TokenizerException;
@@ -151,9 +154,20 @@ public class DefaultInstruments implements Instruments<Info, BasicNode>
 		}
 		
 		// Construct sentence-splitter.
-		this.sentenceSplitter = new NagelSentenceSplitter();
-		//this.sentenceSplitter = new MorphAdornerSentenceSplitter();
-		
+		SentenceSplitterType sentenceSplitterType = params.getEnum(SentenceSplitterType.class, PREPROCESS_SENTENCE_SPLITTER_TYPE);
+		logger.info("Using "+sentenceSplitterType.name()+" sentence splitter.");
+		switch(sentenceSplitterType)
+		{
+		case NAGEL:
+			this.sentenceSplitter = new NagelSentenceSplitter();
+			break;
+		case MORPH_ADORNER:
+			this.sentenceSplitter = new MorphAdornerSentenceSplitter();
+			break;
+		case LING_PIPE:
+			this.sentenceSplitter = new LingPipeSentenceSplitter();
+			break;
+		}
 		
 		// Construct coreference-resolver.
 		switch (corefChoice)
