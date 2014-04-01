@@ -71,6 +71,8 @@ public class ConfigurationParametersNames
 	public static final String PREPROCESS_DO_TEXT_NORMALIZATION = "do_text_normalization";
 	@ConfigurationParameterAnnotation({RTE_PAIRS_PREPROCESS_MODULE_NAME,RTE_SUM_PREPROCESS_MODULE_NAME})
 	public static final String PREPROCESS_COREFERENCE_RESOLUTION_ENGINE = "coreferencer";
+	@ConfigurationParameterAnnotation({RTE_PAIRS_PREPROCESS_MODULE_NAME,RTE_SUM_PREPROCESS_MODULE_NAME})
+	public static final String PREPROCESS_SENTENCE_SPLITTER_TYPE = "sentence_splitter";
 
 	
 	// Run RTE modules
