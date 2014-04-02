@@ -40,9 +40,10 @@ public class TestBiuteeUsage {
 
 	/**
 	 * Run full BIUTEE: LAP for training, training, LAP for testing, testing.
+	 * @throws Throwable 
 	 */
 	@Test
-	public void runFullBiutee() throws EDAException, ComponentException, ConfigurationException, ConfigurationFileDuplicateKeyException, TeEngineMlException, BiuteeMainException, IOException, ExcitementToBiuConfigurationFileConverterException, eu.excitementproject.eop.common.utilities.configuration.ConfigurationException, RTEMainReaderException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException{
+	public void runFullBiutee() throws Throwable{
 		BiuteeMain.runBiuteeCustomFlow(CONFIG_FILE_PATH, "full");
 	}
 	
