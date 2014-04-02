@@ -2,12 +2,10 @@ package eu.excitementproject.eop.lap.biu.uima;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
-import org.apache.uima.analysis_engine.AnalysisEngine;
+import java.util.Map;
+
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.uimafit.factory.AggregateBuilder;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
@@ -20,7 +18,7 @@ import eu.excitementproject.eop.lap.biu.uima.ae.parser.EasyFirstParserAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.NagelSentenceSplitterAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.tokenizer.MaxentTokenizerAE;
-import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 
 /**
  * BIU's LAP (Linguistic Analysis Pipeline). It fits the requirements of
@@ -29,7 +27,7 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * @author Ofer Bronstein
  * @since May 2013
  */
-public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
+public class BIUFullLAP extends LAP_ImplBaseAE implements LAPAccess {
 
 	public BIUFullLAP(String taggerModelFile, String nerModelFile,
 			String parserHost, Integer parserPort) throws LAPException {
@@ -56,9 +54,10 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 	}
 
 	@Override
-	public void addAnnotationOn(JCas aJCas, String viewName) throws LAPException {
-		try {
-			// Build analysis engines
+	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException{
+		try 
+		{
+			// Build analysis engine descriptions
 			AnalysisEngineDescription splitter =   createPrimitiveDescription(NagelSentenceSplitterAE.class);
 			AnalysisEngineDescription tokenizer =  createPrimitiveDescription(MaxentTokenizerAE.class);
 			AnalysisEngineDescription tagger =     createPrimitiveDescription(MaxentPosTaggerAE.class,
@@ -70,29 +69,21 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 					EasyFirstParserAE.PARAM_PORT , parserPort
 					);
 			AnalysisEngineDescription coref =      createPrimitiveDescription(ArkrefCoreferenceResolverAE.class);
-
-
-			// Using AggregateBuilder to assign views 
-			AggregateBuilder builder = new AggregateBuilder();
-			builder.add(splitter,   "_InitialView", viewName);
-			builder.add(tokenizer,  "_InitialView", viewName);
-			builder.add(tagger,     "_InitialView", viewName); 
-			builder.add(ner,        "_InitialView", viewName); 
-			builder.add(parser,     "_InitialView", viewName); 
-			builder.add(coref,      "_InitialView", viewName); 
 			
-			// Create and run aggregate engine
-			AnalysisEngine ae = builder.createAggregate(); 
-			ae.process(aJCas); 
+			AnalysisEngineDescription[] descs = new AnalysisEngineDescription[] {
+					splitter,
+					tokenizer,
+					tagger,
+					ner,
+					parser,
+					coref,
+			};
+			return descs;
 		}
-		catch (ResourceInitializationException re)
+		catch (ResourceInitializationException e)
 		{
-			throw new LAPException("Failed to initilize analysis engine" , re); 
-		} 
-		catch (AnalysisEngineProcessException e) 
-		{
-			throw new LAPException("An exception while running the aggregate AE", e); 
-		}		
+			throw new LAPException("Unable to create AE descriptions", e); 
+		}
 	}
 
 	private String taggerModelFile;
