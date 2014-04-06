@@ -15,6 +15,7 @@
 		<property name = "test_data_annotated">true</property>
 		<property name = "test_serialization_filename">dummy_test.ser</property>
 		
+		<property name = "sentence_splitter">LING_PIPE</property>
 		<property name = "easyfirst_stanford_pos_tagger">../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger</property>
 		<property name = "stanford_ner_classifier_path">../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</property>
 		<property name = "new_normalizer">../third-party/BiuNormalizer/string_rules.txt</property>
