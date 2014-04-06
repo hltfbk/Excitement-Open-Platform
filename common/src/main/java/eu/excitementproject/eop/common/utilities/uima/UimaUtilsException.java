@@ -6,6 +6,10 @@ public class UimaUtilsException extends Exception {
 		super(message, cause);
 	}
 
+	public UimaUtilsException(Throwable cause) {
+		super("Exception in a UimaUtils method. See inner exception.", cause);
+	}
+
 	public UimaUtilsException(String message) {
 		super(message);
 	}

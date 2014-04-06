@@ -31,7 +31,11 @@ public class BiuTestUtils {
 	 */
 	public static void assumeBiuEnvironment() throws IOException {
 		String workingFolderName = new File(".").getCanonicalFile().getName();
-		Assume.assumeTrue(workingFolderName.toLowerCase().startsWith("workdir"));
+		boolean isInBiuteeEnv = workingFolderName.toLowerCase().startsWith("workdir");
+		if (!isInBiuteeEnv) {
+			System.err.printf("Skipping test since we are not in BIUTEE env (current folder name does not start with 'workdir')");
+		}
+		Assume.assumeTrue(isInBiuteeEnv);
 
 	}
 

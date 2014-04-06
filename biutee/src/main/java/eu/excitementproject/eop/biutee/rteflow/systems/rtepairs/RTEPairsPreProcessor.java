@@ -85,38 +85,52 @@ public class RTEPairsPreProcessor
 
 	/**
 	 * 
-	 * @param args one argument - a configuration file name.
+	 * @param args first argument - configuration file name. second optional argument - "train"/"test".
 	 */
 	public static void main(String[] args)
 	{
-		new SystemMain()
+		new PreprocessorSystemMain().main(RTEPairsPreProcessor.class, args);
+	}
+	
+	/**
+	 * Same as main() but is more suitable to calling programmatically:
+	 * - Explicit arguments, not via args[]
+	 * - Doesn't "swallow" exceptions
+	 * 
+	 * @param configurationFileName
+	 * @param trainTestFlag
+	 * @throws Throwable
+	 */
+	public static void initAndRun(String configurationFileName, String trainTestFlag) throws Throwable {
+		new PreprocessorSystemMain().mainCanThrowExceptions(RTEPairsPreProcessor.class, new String[] {configurationFileName, trainTestFlag});
+	}
+
+	private static class PreprocessorSystemMain extends SystemMain {
+		@Override
+		protected void run(String[] args) throws BiuteeException
 		{
-			@Override
-			protected void run(String[] args) throws BiuteeException
+			logger = Logger.getLogger(RTEPairsPreProcessor.class);
+			String trainTestFlag = null;
+			if (args.length>=2)
 			{
-				logger = Logger.getLogger(RTEPairsPreProcessor.class);
-				String trainTestFlag = null;
-				if (args.length>=2)
-				{
-					trainTestFlag=args[1];
-				}
-				try
-				{
-					RTEPairsPreProcessor application = new RTEPairsPreProcessor(configurationFileName,trainTestFlag);
-					application.preprocess();
-				} catch (TeEngineMlException
-						| ConfigurationException | RTEMainReaderException
-						| ParserRunException | SentenceSplitterException
-						| CoreferenceResolutionException | IOException
-						| TreeCoreferenceInformationException
-						| TextPreprocessorException
-						| NamedEntityRecognizerException
-						| TreeStringGeneratorException e)
-				{
-					throw new BiuteeException("Failed to run",e);
-				}
+				trainTestFlag=args[1];
 			}
-		}.main(RTEPairsPreProcessor.class, args);
+			try
+			{
+				RTEPairsPreProcessor application = new RTEPairsPreProcessor(configurationFileName,trainTestFlag);
+				application.preprocess();
+			} catch (TeEngineMlException
+					| ConfigurationException | RTEMainReaderException
+					| ParserRunException | SentenceSplitterException
+					| CoreferenceResolutionException | IOException
+					| TreeCoreferenceInformationException
+					| TextPreprocessorException
+					| NamedEntityRecognizerException
+					| TreeStringGeneratorException e)
+			{
+				throw new BiuteeException("Failed to run",e);
+			}
+		}
 	}
 	
 	public static enum TrainTestEnum{TRAIN,TEST}
