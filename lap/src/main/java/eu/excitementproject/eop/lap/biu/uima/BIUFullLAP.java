@@ -2,6 +2,7 @@ package eu.excitementproject.eop.lap.biu.uima;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -12,11 +13,10 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.biu.uima.ae.coreference.ArkrefCoreferenceResolverAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.ner.StanfordNamedEntityRecognizerAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.parser.EasyFirstParserAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
-import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.NagelSentenceSplitterAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.LingPipeSentenceSplitterAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.tokenizer.MaxentTokenizerAE;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 
@@ -31,11 +31,7 @@ public class BIUFullLAP extends LAP_ImplBaseAE implements LAPAccess {
 
 	public BIUFullLAP(String taggerModelFile, String nerModelFile,
 			String parserHost, Integer parserPort) throws LAPException {
-		super();
-		this.taggerModelFile = taggerModelFile;
-		this.nerModelFile = nerModelFile;
-		this.parserHost = parserHost;
-		this.parserPort = parserPort;
+		super(buildDescriptorArgs(taggerModelFile, nerModelFile, parserHost, parserPort));
 		
 		languageIdentifier = "EN"; // set languageIdentifer 
 	}
@@ -53,22 +49,36 @@ public class BIUFullLAP extends LAP_ImplBaseAE implements LAPAccess {
 		this(config.getSection(DEFAULT_SECTION_NAME));
 	}
 
+	private static String name(Class<?> cls, String paramName) {
+		return cls.getName() + "." + paramName;
+	}
+	
+	private static Map<String,String> buildDescriptorArgs(String taggerModelFile, String nerModelFile, String parserHost, Integer parserPort) {
+		HashMap<String,String> args = new HashMap<String,String>();
+		
+		args.put(ARGNAME_MAXENT_TAGGER_MODEL_FILE, taggerModelFile);
+		args.put(ARGNAME_STANFORD_NER_MODEL_FILE, nerModelFile);
+		args.put(ARGNAME_EASYFIRST_HOST, parserHost);
+		args.put(ARGNAME_EASYFIRST_PORT, parserPort.toString());
+		
+		return args;
+	}
+	
 	@Override
-	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException{
+	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException {
 		try 
 		{
 			// Build analysis engine descriptions
-			AnalysisEngineDescription splitter =   createPrimitiveDescription(NagelSentenceSplitterAE.class);
+			AnalysisEngineDescription splitter =   createPrimitiveDescription(LingPipeSentenceSplitterAE.class);
 			AnalysisEngineDescription tokenizer =  createPrimitiveDescription(MaxentTokenizerAE.class);
 			AnalysisEngineDescription tagger =     createPrimitiveDescription(MaxentPosTaggerAE.class,
-					MaxentPosTaggerAE.PARAM_MODEL_FILE , taggerModelFile);
+					MaxentPosTaggerAE.PARAM_MODEL_FILE , args.get(ARGNAME_MAXENT_TAGGER_MODEL_FILE));
 			AnalysisEngineDescription ner =        createPrimitiveDescription(StanfordNamedEntityRecognizerAE.class,
-					MaxentPosTaggerAE.PARAM_MODEL_FILE , nerModelFile);
+					StanfordNamedEntityRecognizerAE.PARAM_MODEL_FILE , args.get(ARGNAME_STANFORD_NER_MODEL_FILE));
 			AnalysisEngineDescription parser =     createPrimitiveDescription(EasyFirstParserAE.class,
-					EasyFirstParserAE.PARAM_HOST , parserHost,
-					EasyFirstParserAE.PARAM_PORT , parserPort
+					EasyFirstParserAE.PARAM_HOST , args.get(ARGNAME_EASYFIRST_HOST),
+					EasyFirstParserAE.PARAM_PORT , Integer.parseInt(args.get(ARGNAME_EASYFIRST_PORT))
 					);
-			AnalysisEngineDescription coref =      createPrimitiveDescription(ArkrefCoreferenceResolverAE.class);
 			
 			AnalysisEngineDescription[] descs = new AnalysisEngineDescription[] {
 					splitter,
@@ -76,7 +86,6 @@ public class BIUFullLAP extends LAP_ImplBaseAE implements LAPAccess {
 					tagger,
 					ner,
 					parser,
-					coref,
 			};
 			return descs;
 		}
@@ -86,10 +95,11 @@ public class BIUFullLAP extends LAP_ImplBaseAE implements LAPAccess {
 		}
 	}
 
-	private String taggerModelFile;
-	private String nerModelFile;
-	private String parserHost;
-	private Integer parserPort;
+	
+	private static final String ARGNAME_MAXENT_TAGGER_MODEL_FILE = name(MaxentPosTaggerAE.class, MaxentPosTaggerAE.PARAM_MODEL_FILE);
+	private static final String ARGNAME_STANFORD_NER_MODEL_FILE = name(StanfordNamedEntityRecognizerAE.class, StanfordNamedEntityRecognizerAE.PARAM_MODEL_FILE);
+	private static final String ARGNAME_EASYFIRST_HOST = name(EasyFirstParserAE.class, EasyFirstParserAE.PARAM_HOST);
+	private static final String ARGNAME_EASYFIRST_PORT = name(EasyFirstParserAE.class, EasyFirstParserAE.PARAM_PORT);
 	
 	private static final String DEFAULT_SECTION_NAME = "rte_pairs_preprocess";
 	private static final String DEFAULT_TAGGER_MODEL_FILE_PARAM = "easyfirst_stanford_pos_tagger";
