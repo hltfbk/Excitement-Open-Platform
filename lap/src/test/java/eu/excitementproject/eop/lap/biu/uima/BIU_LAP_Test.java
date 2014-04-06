@@ -70,8 +70,11 @@ public class BIU_LAP_Test {
 	};
 	
 	private static final TestCorefMentionInfo[][] EXPECTED_COREF = new TestCorefMentionInfo[][] {
-		new TestCorefMentionInfo[] {new TestCorefMentionInfo(0,3), new TestCorefMentionInfo(17,20), new TestCorefMentionInfo(98,101)},
-		new TestCorefMentionInfo[] {new TestCorefMentionInfo(37,50), new TestCorefMentionInfo(66,69), new TestCorefMentionInfo(81,84)},
+		//TODO We are not checking coref right now, as it has been removed from the LAP dur to bugs in Arkref
+		// if any coref is ever inserted back - uncomment this coref info for testing
+		
+//		new TestCorefMentionInfo[] {new TestCorefMentionInfo(0,3), new TestCorefMentionInfo(17,20), new TestCorefMentionInfo(98,101)},
+//		new TestCorefMentionInfo[] {new TestCorefMentionInfo(37,50), new TestCorefMentionInfo(66,69), new TestCorefMentionInfo(81,84)},
 	};
 	
 	private LinkedHashMap<Integer, TestTokenInfo> tokensById;

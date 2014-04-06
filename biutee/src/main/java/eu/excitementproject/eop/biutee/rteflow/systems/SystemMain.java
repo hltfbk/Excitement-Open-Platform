@@ -26,7 +26,7 @@ import static eu.excitementproject.eop.biutee.utilities.SuccessFileIndicatorUtil
  */
 public abstract class SystemMain
 {
-	public void main(Class<?> cls, String[] args)
+	public Logger mainCanThrowExceptions(Class<?> cls, String[] args) throws Throwable
 	{
 		Logger logger = null;
 		try
@@ -59,18 +59,30 @@ public abstract class SystemMain
 			boolean experimentManagedSucceeded = ExperimentManager.getInstance().save();
 			logger.info("ExperimentManager save "+(experimentManagedSucceeded?"succeeded":"failed")+".");
 			markSuccess();
+			return logger;
 		}
 		catch(Throwable e)
 		{
+			markFailure();
+			throw e;
+		}
+	}
+	
+	public void main(Class<?> cls, String[] args) {
+		Logger logger = null;
+		try {
+			logger = mainCanThrowExceptions(cls, args);
+		}
+		catch (Throwable e) {
 			ExceptionUtil.outputException(e, System.out);
 			if (logger!=null)
 			{
 				ExceptionUtil.logException(e, logger);
 			}
-			markFailure();
+			
 		}
 	}
-	
+
 	protected abstract void run(String[] args) throws BiuteeException;
 	
 	protected String configurationFileName;

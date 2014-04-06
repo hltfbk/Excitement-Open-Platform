@@ -2,25 +2,23 @@ package eu.excitementproject.eop.lap.biu.uima;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
-import org.apache.uima.analysis_engine.AnalysisEngine;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.uimafit.factory.AggregateBuilder;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.biu.uima.ae.coreference.ArkrefCoreferenceResolverAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.ner.StanfordNamedEntityRecognizerAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.parser.EasyFirstParserAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
-import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.NagelSentenceSplitterAE;
+import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.LingPipeSentenceSplitterAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.tokenizer.MaxentTokenizerAE;
-import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 
 /**
  * BIU's LAP (Linguistic Analysis Pipeline). It fits the requirements of
@@ -29,15 +27,11 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * @author Ofer Bronstein
  * @since May 2013
  */
-public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
+public class BIUFullLAP extends LAP_ImplBaseAE implements LAPAccess {
 
 	public BIUFullLAP(String taggerModelFile, String nerModelFile,
 			String parserHost, Integer parserPort) throws LAPException {
-		super();
-		this.taggerModelFile = taggerModelFile;
-		this.nerModelFile = nerModelFile;
-		this.parserHost = parserHost;
-		this.parserPort = parserPort;
+		super(buildDescriptorArgs(taggerModelFile, nerModelFile, parserHost, parserPort));
 		
 		languageIdentifier = "EN"; // set languageIdentifer 
 	}
@@ -55,50 +49,57 @@ public class BIUFullLAP extends LAP_ImplBase implements LAPAccess {
 		this(config.getSection(DEFAULT_SECTION_NAME));
 	}
 
+	private static String name(Class<?> cls, String paramName) {
+		return cls.getName() + "." + paramName;
+	}
+	
+	private static Map<String,String> buildDescriptorArgs(String taggerModelFile, String nerModelFile, String parserHost, Integer parserPort) {
+		HashMap<String,String> args = new HashMap<String,String>();
+		
+		args.put(ARGNAME_MAXENT_TAGGER_MODEL_FILE, taggerModelFile);
+		args.put(ARGNAME_STANFORD_NER_MODEL_FILE, nerModelFile);
+		args.put(ARGNAME_EASYFIRST_HOST, parserHost);
+		args.put(ARGNAME_EASYFIRST_PORT, parserPort.toString());
+		
+		return args;
+	}
+	
 	@Override
-	public void addAnnotationOn(JCas aJCas, String viewName) throws LAPException {
-		try {
-			// Build analysis engines
-			AnalysisEngineDescription splitter =   createPrimitiveDescription(NagelSentenceSplitterAE.class);
+	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException {
+		try 
+		{
+			// Build analysis engine descriptions
+			AnalysisEngineDescription splitter =   createPrimitiveDescription(LingPipeSentenceSplitterAE.class);
 			AnalysisEngineDescription tokenizer =  createPrimitiveDescription(MaxentTokenizerAE.class);
 			AnalysisEngineDescription tagger =     createPrimitiveDescription(MaxentPosTaggerAE.class,
-					MaxentPosTaggerAE.PARAM_MODEL_FILE , taggerModelFile);
+					MaxentPosTaggerAE.PARAM_MODEL_FILE , args.get(ARGNAME_MAXENT_TAGGER_MODEL_FILE));
 			AnalysisEngineDescription ner =        createPrimitiveDescription(StanfordNamedEntityRecognizerAE.class,
-					MaxentPosTaggerAE.PARAM_MODEL_FILE , nerModelFile);
+					StanfordNamedEntityRecognizerAE.PARAM_MODEL_FILE , args.get(ARGNAME_STANFORD_NER_MODEL_FILE));
 			AnalysisEngineDescription parser =     createPrimitiveDescription(EasyFirstParserAE.class,
-					EasyFirstParserAE.PARAM_HOST , parserHost,
-					EasyFirstParserAE.PARAM_PORT , parserPort
+					EasyFirstParserAE.PARAM_HOST , args.get(ARGNAME_EASYFIRST_HOST),
+					EasyFirstParserAE.PARAM_PORT , Integer.parseInt(args.get(ARGNAME_EASYFIRST_PORT))
 					);
-			AnalysisEngineDescription coref =      createPrimitiveDescription(ArkrefCoreferenceResolverAE.class);
-
-
-			// Using AggregateBuilder to assign views 
-			AggregateBuilder builder = new AggregateBuilder();
-			builder.add(splitter,   "_InitialView", viewName);
-			builder.add(tokenizer,  "_InitialView", viewName);
-			builder.add(tagger,     "_InitialView", viewName); 
-			builder.add(ner,        "_InitialView", viewName); 
-			builder.add(parser,     "_InitialView", viewName); 
-			builder.add(coref,      "_InitialView", viewName); 
 			
-			// Create and run aggregate engine
-			AnalysisEngine ae = builder.createAggregate(); 
-			ae.process(aJCas); 
+			AnalysisEngineDescription[] descs = new AnalysisEngineDescription[] {
+					splitter,
+					tokenizer,
+					tagger,
+					ner,
+					parser,
+			};
+			return descs;
 		}
-		catch (ResourceInitializationException re)
+		catch (ResourceInitializationException e)
 		{
-			throw new LAPException("Failed to initilize analysis engine" , re); 
-		} 
-		catch (AnalysisEngineProcessException e) 
-		{
-			throw new LAPException("An exception while running the aggregate AE", e); 
-		}		
+			throw new LAPException("Unable to create AE descriptions", e); 
+		}
 	}
 
-	private String taggerModelFile;
-	private String nerModelFile;
-	private String parserHost;
-	private Integer parserPort;
+	
+	private static final String ARGNAME_MAXENT_TAGGER_MODEL_FILE = name(MaxentPosTaggerAE.class, MaxentPosTaggerAE.PARAM_MODEL_FILE);
+	private static final String ARGNAME_STANFORD_NER_MODEL_FILE = name(StanfordNamedEntityRecognizerAE.class, StanfordNamedEntityRecognizerAE.PARAM_MODEL_FILE);
+	private static final String ARGNAME_EASYFIRST_HOST = name(EasyFirstParserAE.class, EasyFirstParserAE.PARAM_HOST);
+	private static final String ARGNAME_EASYFIRST_PORT = name(EasyFirstParserAE.class, EasyFirstParserAE.PARAM_PORT);
 	
 	private static final String DEFAULT_SECTION_NAME = "rte_pairs_preprocess";
 	private static final String DEFAULT_TAGGER_MODEL_FILE_PARAM = "easyfirst_stanford_pos_tagger";
