@@ -11,8 +11,9 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.kohsuke.args4j.CmdLineParser;
 
-import eu.excitementproject.eop.util.edaexperimenter.data.DataHandling;
 import eu.excitementproject.eop.lap.implbase.RawDataFormatReader.PairXMLData;
+import eu.excitementproject.eop.util.edaexperimenter.data.DataHandling;
+
 import eu.excitementproject.eop.util.runner.EOPRunner;
 
 public class Experimenter {

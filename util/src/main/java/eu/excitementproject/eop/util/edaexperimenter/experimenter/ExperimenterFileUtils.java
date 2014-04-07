@@ -20,9 +20,10 @@ import org.apache.commons.io.filefilter.IOFileFilter;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.log4j.Logger;
 
+
 import eu.excitementproject.eop.lap.implbase.RawDataFormatReader;
-import eu.excitementproject.eop.lap.implbase.RawFormatReaderException;
 import eu.excitementproject.eop.lap.implbase.RawDataFormatReader.PairXMLData;
+import eu.excitementproject.eop.lap.implbase.RawFormatReaderException;
 import eu.excitementproject.eop.util.runner.ConfigFileUtils;
 
 @SuppressWarnings("unused")
