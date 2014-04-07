@@ -24,7 +24,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.lap.implbase.RawDataFormatReader;
 import eu.excitementproject.eop.lap.implbase.RawDataFormatReader.PairXMLData;
 import eu.excitementproject.eop.lap.implbase.RawFormatReaderException;
-import eu.excitementproject.eop.util.runner.ConfigFileUtils;
+
 
 @SuppressWarnings("unused")
 public class ExperimenterFileUtils {
@@ -45,8 +45,12 @@ public class ExperimenterFileUtils {
 		
 		logger.info("Loading data from files in directory " + dataDir + " with pattern " + pattern);
 		
-		for(File file: FileUtils.listFiles(new File(dataDir), new String[] {"xml", "out", "txt"}, true)) {
+//		for(File file: FileUtils.listFiles(new File(dataDir), new String[] {"xml", "out", "txt"}, true)) {
+		File file;
+		for(Object o: FileUtils.listFiles(new File(dataDir), new String[] {"xml", "out", "txt"}, true)) {
 			
+			file = (File) o;
+
 			clusterName = file.getName();
 			if (clusterName.matches(".*" + pattern + ".*")) {
 				HashMap<String, Set<PairXMLData>> thisData = new HashMap<String,Set<PairXMLData>>();
@@ -237,7 +241,11 @@ public class ExperimenterFileUtils {
 	public static String getLanguage(String dataDir, String pattern) throws IOException {
 		
 		RawDataFormatReader input = null;		
-		for(File file: FileUtils.listFiles(new File(dataDir), new String[] {"xml", "out", "txt"}, true)) {
+//		for(File file: FileUtils.listFiles(new File(dataDir), new String[] {"xml", "out", "txt"}, true)) {
+		File file;
+		for(Object o: FileUtils.listFiles(new File(dataDir), new String[] {"xml", "out", "txt"}, true)) {
+			
+			file = (File) o;
 			
 			if (file.getName().matches(".*" + pattern + ".*")) {
 				try {	
