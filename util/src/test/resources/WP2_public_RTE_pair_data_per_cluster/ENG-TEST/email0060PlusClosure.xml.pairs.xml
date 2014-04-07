@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="220190.txt_1_1-105536.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>meal was not delivered with a smile</t>
+		<h>food was not delivered properly</h>
+	</pair>
+	<pair id="326254.txt_1_1-105536.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer</t>
+		<h>food was not delivered properly</h>
+	</pair>
+	<pair id="326254.txt_1_0-105536.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer to me</t>
+		<h>food was not delivered properly</h>
+	</pair>
+	<pair id="220190.txt_1_0-105536.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>our meal was not delivered with a smile</t>
+		<h>food was not delivered properly</h>
+	</pair>
+	<pair id="105536.txt_5_0-220190.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food was not delivered properly</t>
+		<h>our meal was not delivered with a smile</h>
+	</pair>
+	<pair id="105536.txt_5_0-220190.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food was not delivered properly</t>
+		<h>meal was not delivered with a smile</h>
+	</pair>
+	<pair id="105536.txt_5_0-326254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food was not delivered properly</t>
+		<h>You could improve by bringuing food closer to me</h>
+	</pair>
+	<pair id="105536.txt_5_0-326254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food was not delivered properly</t>
+		<h>You could improve by bringuing food closer</h>
+	</pair>
+	<pair id="105536.txt_5_0-464852.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food was not delivered properly</t>
+		<h>Service food depends on who it is some better then others</h>
+	</pair>
+	<pair id="220190.txt_1_0-326254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>our meal was not delivered with a smile</t>
+		<h>You could improve by bringuing food closer to me</h>
+	</pair>
+	<pair id="220190.txt_1_0-326254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>our meal was not delivered with a smile</t>
+		<h>You could improve by bringuing food closer</h>
+	</pair>
+	<pair id="220190.txt_1_0-464852.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>our meal was not delivered with a smile</t>
+		<h>Service food depends on who it is some better then others</h>
+	</pair>
+	<pair id="220190.txt_1_1-326254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>meal was not delivered with a smile</t>
+		<h>You could improve by bringuing food closer to me</h>
+	</pair>
+	<pair id="220190.txt_1_1-326254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>meal was not delivered with a smile</t>
+		<h>You could improve by bringuing food closer</h>
+	</pair>
+	<pair id="220190.txt_1_1-464852.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>meal was not delivered with a smile</t>
+		<h>Service food depends on who it is some better then others</h>
+	</pair>
+	<pair id="326254.txt_1_0-220190.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer to me</t>
+		<h>our meal was not delivered with a smile</h>
+	</pair>
+	<pair id="326254.txt_1_0-220190.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer to me</t>
+		<h>meal was not delivered with a smile</h>
+	</pair>
+	<pair id="326254.txt_1_0-464852.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer to me</t>
+		<h>Service food depends on who it is some better then others</h>
+	</pair>
+	<pair id="326254.txt_1_1-220190.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer</t>
+		<h>our meal was not delivered with a smile</h>
+	</pair>
+	<pair id="326254.txt_1_1-220190.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer</t>
+		<h>meal was not delivered with a smile</h>
+	</pair>
+	<pair id="326254.txt_1_1-464852.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You could improve by bringuing food closer</t>
+		<h>Service food depends on who it is some better then others</h>
+	</pair>
+	<pair id="464852.txt_1_0-105536.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Service food depends on who it is some better then others</t>
+		<h>food was not delivered properly</h>
+	</pair>
+	<pair id="464852.txt_1_0-220190.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Service food depends on who it is some better then others</t>
+		<h>our meal was not delivered with a smile</h>
+	</pair>
+	<pair id="464852.txt_1_0-220190.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Service food depends on who it is some better then others</t>
+		<h>meal was not delivered with a smile</h>
+	</pair>
+	<pair id="464852.txt_1_0-326254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Service food depends on who it is some better then others</t>
+		<h>You could improve by bringuing food closer to me</h>
+	</pair>
+	<pair id="464852.txt_1_0-326254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Service food depends on who it is some better then others</t>
+		<h>You could improve by bringuing food closer</h>
+	</pair>
+</entailment-corpus>

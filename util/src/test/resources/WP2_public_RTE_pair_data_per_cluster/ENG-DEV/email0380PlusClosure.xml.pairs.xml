@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="457080.txt_2_0-327783.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="187987.txt_2_0-327783.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="330688.txt_4_0-187987.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="330688.txt_4_0-327783.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="187987.txt_2_0-330688.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="457080.txt_2_0-330688.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="327783.txt_6_1-187987.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="457080.txt_2_0-187987.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="327783.txt_6_1-330688.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="327783.txt_6_0-330688.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="327783.txt_6_0-187987.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="127257.txt_1_0-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="127257.txt_1_0-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="127257.txt_1_0-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="127257.txt_1_0-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="127257.txt_1_0-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="127257.txt_1_0-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="127257.txt_1_0-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="127257.txt_1_0-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="127257.txt_1_0-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="127257.txt_1_0-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="127257.txt_1_0-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="127257.txt_1_0-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="127257.txt_1_0-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilets / washrooms sometimes disappointing</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="16005.txt_4_0-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="16005.txt_4_0-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="16005.txt_4_0-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="16005.txt_4_0-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="16005.txt_4_0-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="16005.txt_4_0-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="16005.txt_4_0-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_0-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_0-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="16005.txt_4_0-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is famously bad</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="16005.txt_4_1-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="16005.txt_4_1-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="16005.txt_4_1-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="16005.txt_4_1-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="16005.txt_4_1-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="16005.txt_4_1-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="16005.txt_4_1-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_1-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_1-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="16005.txt_4_1-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is famously bad</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="16005.txt_4_2-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="16005.txt_4_2-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="16005.txt_4_2-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="16005.txt_4_2-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="16005.txt_4_2-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="16005.txt_4_2-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="16005.txt_4_2-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_2-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_2-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="16005.txt_4_2-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue quality is bad</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="16005.txt_4_3-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="16005.txt_4_3-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="16005.txt_4_3-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="16005.txt_4_3-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="16005.txt_4_3-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="16005.txt_4_3-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="16005.txt_4_3-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_3-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="16005.txt_4_3-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="16005.txt_4_3-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Toilet tissue is bad</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="187987.txt_2_0-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="187987.txt_2_0-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="187987.txt_2_0-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="187987.txt_2_0-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="187987.txt_2_0-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="187987.txt_2_0-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="187987.txt_2_0-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="187987.txt_2_0-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="187987.txt_2_0-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="187987.txt_2_0-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="187987.txt_2_0-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets cleaned</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="327783.txt_6_0-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="327783.txt_6_0-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="327783.txt_6_0-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="327783.txt_6_0-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="327783.txt_6_0-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="327783.txt_6_0-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="327783.txt_6_0-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="327783.txt_6_0-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="327783.txt_6_0-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="327783.txt_6_0-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were very dirty</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="327783.txt_6_1-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="327783.txt_6_1-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="327783.txt_6_1-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="327783.txt_6_1-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="327783.txt_6_1-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="327783.txt_6_1-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="327783.txt_6_1-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="327783.txt_6_1-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="327783.txt_6_1-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="327783.txt_6_1-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilets were dirty</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="330688.txt_4_0-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="330688.txt_4_0-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="330688.txt_4_0-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="330688.txt_4_0-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="330688.txt_4_0-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="330688.txt_4_0-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="330688.txt_4_0-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="330688.txt_4_0-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="330688.txt_4_0-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="330688.txt_4_0-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="330688.txt_4_0-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet hygiene non existing</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="457080.txt_2_0-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="457080.txt_2_0-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="457080.txt_2_0-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="457080.txt_2_0-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="457080.txt_2_0-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="457080.txt_2_0-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="457080.txt_2_0-483394.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>not enough ladies toilets at Stars Bridge</h>
+	</pair>
+	<pair id="457080.txt_2_0-483394.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>not enough toilets at Stars Bridge</h>
+	</pair>
+	<pair id="457080.txt_2_0-483394.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>not enough ladies toilets</h>
+	</pair>
+	<pair id="457080.txt_2_0-483394.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>toilet floor dirty</t>
+		<h>not enough toilets</h>
+	</pair>
+	<pair id="483394.txt_5_0-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="483394.txt_5_0-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_0-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_0-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="483394.txt_5_0-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="483394.txt_5_0-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="483394.txt_5_0-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="483394.txt_5_0-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="483394.txt_5_0-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="483394.txt_5_0-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets at Stars Bridge</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="483394.txt_5_1-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="483394.txt_5_1-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_1-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_1-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="483394.txt_5_1-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="483394.txt_5_1-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="483394.txt_5_1-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="483394.txt_5_1-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="483394.txt_5_1-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="483394.txt_5_1-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets at Stars Bridge</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="483394.txt_5_2-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="483394.txt_5_2-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_2-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_2-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="483394.txt_5_2-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="483394.txt_5_2-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="483394.txt_5_2-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="483394.txt_5_2-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="483394.txt_5_2-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="483394.txt_5_2-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough ladies toilets</t>
+		<h>toilet floor dirty</h>
+	</pair>
+	<pair id="483394.txt_5_3-127257.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>Toilets / washrooms sometimes disappointing</h>
+	</pair>
+	<pair id="483394.txt_5_3-16005.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>Toilet tissue quality is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_3-16005.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>Toilet tissue is famously bad</h>
+	</pair>
+	<pair id="483394.txt_5_3-16005.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>Toilet tissue quality is bad</h>
+	</pair>
+	<pair id="483394.txt_5_3-16005.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>Toilet tissue is bad</h>
+	</pair>
+	<pair id="483394.txt_5_3-187987.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>toilets cleaned</h>
+	</pair>
+	<pair id="483394.txt_5_3-327783.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>toilets were very dirty</h>
+	</pair>
+	<pair id="483394.txt_5_3-327783.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>toilets were dirty</h>
+	</pair>
+	<pair id="483394.txt_5_3-330688.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>toilet hygiene non existing</h>
+	</pair>
+	<pair id="483394.txt_5_3-457080.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough toilets</t>
+		<h>toilet floor dirty</h>
+	</pair>
+</entailment-corpus>

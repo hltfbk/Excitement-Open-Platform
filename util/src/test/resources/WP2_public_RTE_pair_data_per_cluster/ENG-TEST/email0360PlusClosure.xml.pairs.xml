@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="505956.txt_4_1-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="308568.txt_3_1-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="196991.txt_3_3-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="46653.txt_5_1-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="31.txt_1_3-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="505956.txt_6_1-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="242866.txt_3_1-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="505956.txt_4_1-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="505956.txt_6_1-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="46653.txt_5_1-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="242866.txt_3_1-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="31.txt_1_3-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="38751.txt_5_0-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="242866.txt_3_0-308568.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="196991.txt_3_3-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="196991.txt_3_2-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="196991.txt_3_2-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="196991.txt_3_0-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="196991.txt_3_0-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="242866.txt_3_0-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="242866.txt_3_0-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="196991.txt_3_1-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="196991.txt_3_1-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="308568.txt_3_0-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="31.txt_1_2-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="31.txt_1_2-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="31.txt_1_1-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="31.txt_1_1-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="46653.txt_5_0-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="46653.txt_5_0-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="505956.txt_6_0-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="505956.txt_6_0-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="505956.txt_4_0-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="505956.txt_4_0-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="31.txt_1_0-38751.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Quasigo can offer better facilities</h>
+	</pair>
+	<pair id="31.txt_1_0-308568.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Poor facilities</h>
+	</pair>
+	<pair id="196991.txt_3_0-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_0-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_0-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="196991.txt_3_0-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_0-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_0-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_0-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_0-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_0-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_0-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="196991.txt_3_0-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="196991.txt_3_0-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="196991.txt_3_0-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is really dirty</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="196991.txt_3_1-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_1-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_1-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="196991.txt_3_1-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_1-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_1-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_1-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_1-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_1-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_1-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="196991.txt_3_1-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="196991.txt_3_1-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="196991.txt_3_1-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal in Stars Bridge is dirty</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="196991.txt_3_2-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_2-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_2-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="196991.txt_3_2-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_2-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_2-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_2-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_2-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_2-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_2-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="196991.txt_3_2-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="196991.txt_3_2-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="196991.txt_3_2-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is really dirty</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="196991.txt_3_3-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_3-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="196991.txt_3_3-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="196991.txt_3_3-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_3-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_3-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="196991.txt_3_3-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="196991.txt_3_3-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_3-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="196991.txt_3_3-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="196991.txt_3_3-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="196991.txt_3_3-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="196991.txt_3_3-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Terminal is dirty</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="242866.txt_3_0-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="242866.txt_3_0-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="242866.txt_3_0-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="242866.txt_3_0-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="242866.txt_3_0-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="242866.txt_3_0-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="242866.txt_3_0-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="242866.txt_3_0-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="242866.txt_3_0-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="242866.txt_3_0-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="242866.txt_3_0-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="242866.txt_3_0-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="242866.txt_3_0-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="242866.txt_3_0-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities at st peter are horrible</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="242866.txt_3_1-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="242866.txt_3_1-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="242866.txt_3_1-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="242866.txt_3_1-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="242866.txt_3_1-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="242866.txt_3_1-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="242866.txt_3_1-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="242866.txt_3_1-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="242866.txt_3_1-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="242866.txt_3_1-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="242866.txt_3_1-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="242866.txt_3_1-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="242866.txt_3_1-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="242866.txt_3_1-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="242866.txt_3_1-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The facilities are horrible</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="308568.txt_3_0-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="308568.txt_3_0-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="308568.txt_3_0-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="308568.txt_3_0-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="308568.txt_3_0-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="308568.txt_3_0-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="308568.txt_3_0-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="308568.txt_3_0-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="308568.txt_3_0-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="308568.txt_3_0-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="308568.txt_3_0-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="308568.txt_3_0-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="308568.txt_3_0-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="308568.txt_3_0-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="308568.txt_3_0-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="308568.txt_3_0-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities at St Peter</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="308568.txt_3_1-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="308568.txt_3_1-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="308568.txt_3_1-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="308568.txt_3_1-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="308568.txt_3_1-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="308568.txt_3_1-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="308568.txt_3_1-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="308568.txt_3_1-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="308568.txt_3_1-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="308568.txt_3_1-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="308568.txt_3_1-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="308568.txt_3_1-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="308568.txt_3_1-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="308568.txt_3_1-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="308568.txt_3_1-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="308568.txt_3_1-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Poor facilities</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="31.txt_1_0-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_0-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="31.txt_1_0-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_0-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="31.txt_1_0-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="31.txt_1_0-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="31.txt_1_0-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="31.txt_1_0-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_0-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_0-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="31.txt_1_0-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="31.txt_1_0-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="31.txt_1_0-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="31.txt_1_1-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_1-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="31.txt_1_1-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_1-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="31.txt_1_1-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="31.txt_1_1-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="31.txt_1_1-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="31.txt_1_1-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_1-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_1-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="31.txt_1_1-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="31.txt_1_1-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="31.txt_1_1-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="31.txt_1_2-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_2-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="31.txt_1_2-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_2-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="31.txt_1_2-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="31.txt_1_2-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="31.txt_1_2-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="31.txt_1_2-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_2-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_2-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="31.txt_1_2-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="31.txt_1_2-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="31.txt_1_2-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough for people in full train</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="31.txt_1_3-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_3-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="31.txt_1_3-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="31.txt_1_3-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="31.txt_1_3-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="31.txt_1_3-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="31.txt_1_3-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="31.txt_1_3-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_3-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="31.txt_1_3-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="31.txt_1_3-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="31.txt_1_3-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="31.txt_1_3-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Waiting room is not big enough</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="38751.txt_5_0-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="38751.txt_5_0-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="38751.txt_5_0-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="38751.txt_5_0-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="38751.txt_5_0-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="38751.txt_5_0-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="38751.txt_5_0-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="38751.txt_5_0-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="38751.txt_5_0-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="38751.txt_5_0-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="38751.txt_5_0-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="38751.txt_5_0-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="38751.txt_5_0-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="38751.txt_5_0-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="38751.txt_5_0-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="38751.txt_5_0-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="38751.txt_5_0-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better facilities</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="46653.txt_5_0-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="46653.txt_5_0-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="46653.txt_5_0-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="46653.txt_5_0-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="46653.txt_5_0-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="46653.txt_5_0-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="46653.txt_5_0-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="46653.txt_5_0-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="46653.txt_5_0-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="46653.txt_5_0-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="46653.txt_5_0-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="46653.txt_5_0-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="46653.txt_5_0-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="46653.txt_5_0-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="46653.txt_5_0-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't very comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="46653.txt_5_1-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="46653.txt_5_1-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="46653.txt_5_1-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="46653.txt_5_1-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="46653.txt_5_1-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="46653.txt_5_1-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="46653.txt_5_1-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="46653.txt_5_1-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="46653.txt_5_1-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="46653.txt_5_1-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="46653.txt_5_1-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="46653.txt_5_1-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="46653.txt_5_1-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="46653.txt_5_1-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="46653.txt_5_1-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it wasn't comfortable inside the waiting area</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="505956.txt_4_0-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="505956.txt_4_0-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="505956.txt_4_0-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="505956.txt_4_0-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="505956.txt_4_0-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="505956.txt_4_0-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="505956.txt_4_0-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="505956.txt_4_0-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_4_0-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_4_0-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_4_0-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_4_0-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_4_0-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_4_0-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="505956.txt_4_0-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too hot</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="505956.txt_4_1-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="505956.txt_4_1-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="505956.txt_4_1-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="505956.txt_4_1-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="505956.txt_4_1-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="505956.txt_4_1-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="505956.txt_4_1-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="505956.txt_4_1-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_4_1-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_4_1-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_4_1-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_4_1-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_4_1-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_4_1-505956.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Stars Bridge Quasigo terminal too small</h>
+	</pair>
+	<pair id="505956.txt_4_1-505956.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal hot</t>
+		<h>Stars Bridge Quasigo terminal small</h>
+	</pair>
+	<pair id="505956.txt_6_0-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="505956.txt_6_0-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="505956.txt_6_0-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="505956.txt_6_0-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="505956.txt_6_0-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="505956.txt_6_0-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="505956.txt_6_0-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="505956.txt_6_0-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_6_0-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_6_0-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_6_0-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_6_0-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_6_0-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_6_0-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="505956.txt_6_0-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal too small</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+	<pair id="505956.txt_6_1-196991.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Terminal in Stars Bridge is really dirty</h>
+	</pair>
+	<pair id="505956.txt_6_1-196991.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Terminal in Stars Bridge is dirty</h>
+	</pair>
+	<pair id="505956.txt_6_1-196991.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Terminal is really dirty</h>
+	</pair>
+	<pair id="505956.txt_6_1-196991.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Terminal is dirty</h>
+	</pair>
+	<pair id="505956.txt_6_1-242866.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>The facilities at st peter are horrible</h>
+	</pair>
+	<pair id="505956.txt_6_1-242866.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>The facilities are horrible</h>
+	</pair>
+	<pair id="505956.txt_6_1-308568.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Poor facilities at St Peter</h>
+	</pair>
+	<pair id="505956.txt_6_1-31.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Stars Bridge Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_6_1-31.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Stars Bridge Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_6_1-31.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Waiting room is not big enough for people in full train</h>
+	</pair>
+	<pair id="505956.txt_6_1-31.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Waiting room is not big enough</h>
+	</pair>
+	<pair id="505956.txt_6_1-46653.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>it wasn't very comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_6_1-46653.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>it wasn't comfortable inside the waiting area</h>
+	</pair>
+	<pair id="505956.txt_6_1-505956.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Stars Bridge Quasigo terminal too hot</h>
+	</pair>
+	<pair id="505956.txt_6_1-505956.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Stars Bridge Quasigo terminal small</t>
+		<h>Stars Bridge Quasigo terminal hot</h>
+	</pair>
+</entailment-corpus>

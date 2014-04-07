@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764787_80854454-2.txt_3_0-13764796_82293716.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13764796_82293716.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_3_0-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I come over here to catch seven fifty six flags it's now been changed to nine five</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_0-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life without really imparting to see if that was going to work press</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764796_82293716.txt_1_1-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they change the to area life</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_0-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy like a couple months ago</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_1-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket that i just buy</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764807_81565659.txt_1_2-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she can't put my ticket</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764816_82295687.txt_2_0-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they put me in a three o'clock flight</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13764823_81589603.txt_1_0-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the departure they just the along date and when i had but</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>i cannot get a play change</h>
+	</pair>
+	<pair id="13765048_83661432.txt_1_0-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been bounced around from flight to flight to flight</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_0-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change in the first class</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_1-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change in the first class</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_2-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a confirm play change</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13765205_85955838.txt_1_3-13765262_83075324.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cannot get a play change</t>
+		<h>the time to change dramatically</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764787_80854454-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>I come over here to catch seven fifty six flags it's now been changed to nine five</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764796_82293716.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>they change the to area life without really imparting to see if that was going to work press</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764796_82293716.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>they change the to area life</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764807_81565659.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>she can't put my ticket that i just buy like a couple months ago</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764807_81565659.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>she can't put my ticket that i just buy</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764807_81565659.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>she can't put my ticket</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764816_82295687.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>they put me in a three o'clock flight</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13764823_81589603.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>the departure they just the along date and when i had but</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13765048_83661432.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>i've been bounced around from flight to flight to flight</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13765205_85955838.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>i cannot get a confirm play change in the first class</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13765205_85955838.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>i cannot get a play change in the first class</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13765205_85955838.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>i cannot get a confirm play change</h>
+	</pair>
+	<pair id="13765262_83075324.txt_1_0-13765205_85955838.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the time to change dramatically</t>
+		<h>i cannot get a play change</h>
+	</pair>
+</entailment-corpus>

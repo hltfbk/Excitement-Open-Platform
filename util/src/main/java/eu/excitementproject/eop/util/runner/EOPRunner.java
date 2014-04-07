@@ -256,7 +256,7 @@ public class EOPRunner {
 			if (option.testFile != null && resultsFile != null) {
 				logger.info("Results file -- XML format: " + xmlResultsFile);
 				OutputUtils.generateXMLResults(option.testFile, resultsFile, xmlResultsFile);
-				scoreResults(xmlResultsFile,Paths.get(xmlResultsFile + "_report.xml"));
+				scoreResults(resultsFile,Paths.get(resultsFile + "_report.xml"));
 			} else {
 				logger.error("Could not score the results -- check that you have provided the correct test file, and that the results file (" + resultsFile + ") was properly generated");
 			}

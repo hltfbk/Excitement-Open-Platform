@@ -1,0 +1,1339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13765235_84379744.txt_1_0-13765252_85694424-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765252_85694424-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765252_85694424-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765252_85694424-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765252_85694424-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764878_82942763-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764878_82942763-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13765252_85694424-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764878_82942763-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765252_85694424-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765252_85694424-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765252_85694424-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765252_85694424-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765252_85694424-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765252_85694424-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765252_85694424-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764878_82942763-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765252_85694424-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764888_80919841-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service out of west york beach on quasi is terrible</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764787_80854454.txt_1_1-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service on quasi is terrible</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like really unacceptable customer service</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764858_82887000.txt_4_1-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>that is like unacceptable customer service</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is so bad</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_1_1-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the service is bad</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764878_82942763-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764888_80919841-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764878_82942763-2.txt_2_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it fell in organized</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_1_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is poor services</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764888_80919841-3.txt_2_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be on poor service</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13764979_83592124-2.txt_1_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you're not being customer service friendly</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765028_82963501.txt_2_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was nobody at the little office</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765028_82963501.txt_3_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there wasn't anybody at the um picky gate</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765153_85271674.txt_2_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>nobody's at the desk</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765235_84379744.txt_1_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys have zero customer satisfaction</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_1_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>terrible customer service</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_2_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>customer service is terrible</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764878_82942763-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764888_80919841-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765272_84422624.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>i am so tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765252_85694424-2.txt_3_0-13765272_84422624.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>was the experience terrible</t>
+		<h>i am tired of quasi airlines people acting like idiots</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764878_82942763-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764888_80919841-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_0-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am so tired of quasi airlines people acting like idiots</t>
+		<h>was the experience terrible</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764787_80854454.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>service out of west york beach on quasi is terrible</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764787_80854454.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>service on quasi is terrible</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764858_82887000.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>that is like really unacceptable customer service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764858_82887000.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>that is like unacceptable customer service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764878_82942763-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>the service is so bad</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764878_82942763-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>the service is bad</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764878_82942763-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>it fell in organized</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764888_80919841-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>this is poor services</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764888_80919841-3.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>would be on poor service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13764979_83592124-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>you're not being customer service friendly</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13765028_82963501.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>there was nobody at the little office</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13765028_82963501.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>there wasn't anybody at the um picky gate</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13765153_85271674.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>nobody's at the desk</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13765235_84379744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>you guys have zero customer satisfaction</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13765252_85694424-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>terrible customer service</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13765252_85694424-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>customer service is terrible</h>
+	</pair>
+	<pair id="13765272_84422624.txt_1_1-13765252_85694424-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am tired of quasi airlines people acting like idiots</t>
+		<h>was the experience terrible</h>
+	</pair>
+</entailment-corpus>
