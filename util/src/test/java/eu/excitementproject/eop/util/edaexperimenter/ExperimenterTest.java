@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.util.edaexperimenter.experimenter.Experimenter;
@@ -11,6 +12,7 @@ import eu.excitementproject.eop.util.edaexperimenter.experimenter.Experimenter;
 @SuppressWarnings("unused")
 public class ExperimenterTest {
 
+	@Ignore
 	@Test
 	public void test() {
 		String[] com_args = {"-config", "src/test/resources/configuration-file/MaxEntClassificationEDA_Base_EN.xml", 
