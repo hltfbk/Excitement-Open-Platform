@@ -12,7 +12,7 @@ import eu.excitementproject.eop.util.edaexperimenter.experimenter.Experimenter;
 @SuppressWarnings("unused")
 public class ExperimenterTest {
 
-//	@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		String[] com_args = {"-config", "src/test/resources/configuration-file/MaxEntClassificationEDA_Base_EN.xml", 
