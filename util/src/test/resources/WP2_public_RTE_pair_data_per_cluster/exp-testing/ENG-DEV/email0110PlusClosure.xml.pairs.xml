@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="32.txt_1_4-46653.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>it would be easier for me if the tickets listed boarding time</t>
+		<h>The e - tickets weren't entirely straightforward</h>
+	</pair>
+	<pair id="10.txt_4_0-21.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>make mobile tickets with QR code available for bookings for more than 1 passenger</t>
+		<h>More flexible tickets</h>
+	</pair>
+	<pair id="14.txt_1_1-20.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be great to have ticket at a reasonable price</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="32.txt_1_7-46653.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>it would be easier if the tickets listed boarding time</t>
+		<h>The e - tickets weren't straightforward</h>
+	</pair>
+	<pair id="16.txt_4_1-21.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>allow different classes to be combined</t>
+		<h>More flexible tickets</h>
+	</pair>
+	<pair id="14.txt_1_0-29.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be great to have ticket at a reasonable price not only 3 months in advance</t>
+		<h>More cheap tickets deals at odd moments ,</h>
+	</pair>
+	<pair id="10.txt_1_0-29.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do better offers ( more promotions , early bird offers etc )</t>
+		<h>More cheap tickets deals ,</h>
+	</pair>
+	<pair id="6.txt_2_1-22.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>make tickets refundable</t>
+		<h>You need to be more flexible in terms of change of ticket</h>
+	</pair>
+	<pair id="23.txt_2_1-22.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>be able to change tickets online</t>
+		<h>You need to be more flexible in terms of change of ticket</h>
+	</pair>
+	<pair id="17.txt_1_0-22.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Allow name changes on tickets</t>
+		<h>You need to be more flexible in terms of change of ticket</h>
+	</pair>
+	<pair id="18.txt_2_1-29.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>offers on 1st class travel</t>
+		<h>More cheap tickets deals ,</h>
+	</pair>
+	<pair id="8.txt_1_1-10.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Name changes on tickets should be allowed</t>
+		<h>more ticket flexibility</h>
+	</pair>
+	<pair id="10.txt_1_0-20.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do better offers ( more promotions , early bird offers etc )</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="100771.txt_3_0-18.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>When booking the seat numbers could show if it 's a 4 table seat or just a 2 seat</t>
+		<h>Help when booking seats</h>
+	</pair>
+	<pair id="6.txt_2_1-10.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>make tickets refundable</t>
+		<h>more ticket flexibility</h>
+	</pair>
+	<pair id="23.txt_2_0-6.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>be able to change semi flexible tickets online</t>
+		<h>make all tickets exchangeable</h>
+	</pair>
+	<pair id="29.txt_1_3-20.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>More cheap tickets deals ,</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="8.txt_1_1-17.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Name changes on tickets should be allowed</t>
+		<h>Allow name changes on tickets</h>
+	</pair>
+	<pair id="18.txt_2_1-20.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>offers on 1st class travel</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="1.txt_1_0-21.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Make same - day , different times flexible tickets more of an option</t>
+		<h>More flexible tickets</h>
+	</pair>
+	<pair id="22.txt_1_1-21.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>You need to be more flexible in terms of change of ticket</t>
+		<h>More flexible tickets</h>
+	</pair>
+	<pair id="22.txt_1_1-10.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>You need to be more flexible in terms of change of ticket</t>
+		<h>more ticket flexibility</h>
+	</pair>
+	<pair id="16.txt_1_1-22.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Allow flexible economy tickets</t>
+		<h>You need to be more flexible in terms of change of ticket</h>
+	</pair>
+	<pair id="1.txt_1_0-22.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Make same - day , different times flexible tickets more of an option</t>
+		<h>You need to be more flexible in terms of change of ticket</h>
+	</pair>
+	<pair id="6.txt_1_1-22.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>make tickets exchangeable</t>
+		<h>You need to be more flexible in terms of change of ticket</h>
+	</pair>
+	<pair id="21.txt_4_0-10.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More flexible tickets</t>
+		<h>more ticket flexibility</h>
+	</pair>
+	<pair id="32.txt_1_6-46653.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>it would be easier if the tickets listed boarding time as well as departure time</t>
+		<h>The e - tickets weren't entirely straightforward</h>
+	</pair>
+	<pair id="8.txt_1_1-22.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Name changes on tickets should be allowed</t>
+		<h>You need to be more flexible in terms of change of ticket</h>
+	</pair>
+	<pair id="37.txt_1_1-29.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Introduce a season ticket</t>
+		<h>More cheap tickets deals ,</h>
+	</pair>
+</entailment-corpus>
+

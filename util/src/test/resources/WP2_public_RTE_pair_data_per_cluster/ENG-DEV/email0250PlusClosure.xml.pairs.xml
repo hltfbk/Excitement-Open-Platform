@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="498974.txt_3_0-483394.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>lounge not enough seats</t>
+		<h>Not enough seating</h>
+	</pair>
+	<pair id="19.txt_2_0-483394.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Solo seats in standard class</t>
+		<h>Not enough seating at Stars Bridge</h>
+	</pair>
+	<pair id="19.txt_2_0-483394.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Solo seats in standard class</t>
+		<h>Not enough seating</h>
+	</pair>
+	<pair id="19.txt_2_0-498974.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Solo seats in standard class</t>
+		<h>lounge not enough seats</h>
+	</pair>
+	<pair id="19.txt_2_0-9.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Solo seats in standard class</t>
+		<h>for each train indicate where to seat left or right</h>
+	</pair>
+	<pair id="19.txt_2_0-9.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Solo seats in standard class</t>
+		<h>for each train indicate where to seat</h>
+	</pair>
+	<pair id="483394.txt_4_0-19.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating at Stars Bridge</t>
+		<h>Solo seats in standard class</h>
+	</pair>
+	<pair id="483394.txt_4_0-498974.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating at Stars Bridge</t>
+		<h>lounge not enough seats</h>
+	</pair>
+	<pair id="483394.txt_4_0-9.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating at Stars Bridge</t>
+		<h>for each train indicate where to seat left or right</h>
+	</pair>
+	<pair id="483394.txt_4_0-9.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating at Stars Bridge</t>
+		<h>for each train indicate where to seat</h>
+	</pair>
+	<pair id="483394.txt_4_1-19.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating</t>
+		<h>Solo seats in standard class</h>
+	</pair>
+	<pair id="483394.txt_4_1-498974.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating</t>
+		<h>lounge not enough seats</h>
+	</pair>
+	<pair id="483394.txt_4_1-9.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating</t>
+		<h>for each train indicate where to seat left or right</h>
+	</pair>
+	<pair id="483394.txt_4_1-9.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Not enough seating</t>
+		<h>for each train indicate where to seat</h>
+	</pair>
+	<pair id="498974.txt_3_0-19.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lounge not enough seats</t>
+		<h>Solo seats in standard class</h>
+	</pair>
+	<pair id="498974.txt_3_0-483394.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lounge not enough seats</t>
+		<h>Not enough seating at Stars Bridge</h>
+	</pair>
+	<pair id="498974.txt_3_0-9.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lounge not enough seats</t>
+		<h>for each train indicate where to seat left or right</h>
+	</pair>
+	<pair id="498974.txt_3_0-9.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lounge not enough seats</t>
+		<h>for each train indicate where to seat</h>
+	</pair>
+	<pair id="9.txt_2_0-19.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat left or right</t>
+		<h>Solo seats in standard class</h>
+	</pair>
+	<pair id="9.txt_2_0-483394.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat left or right</t>
+		<h>Not enough seating at Stars Bridge</h>
+	</pair>
+	<pair id="9.txt_2_0-483394.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat left or right</t>
+		<h>Not enough seating</h>
+	</pair>
+	<pair id="9.txt_2_0-498974.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat left or right</t>
+		<h>lounge not enough seats</h>
+	</pair>
+	<pair id="9.txt_2_1-19.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat</t>
+		<h>Solo seats in standard class</h>
+	</pair>
+	<pair id="9.txt_2_1-483394.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat</t>
+		<h>Not enough seating at Stars Bridge</h>
+	</pair>
+	<pair id="9.txt_2_1-483394.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat</t>
+		<h>Not enough seating</h>
+	</pair>
+	<pair id="9.txt_2_1-498974.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>for each train indicate where to seat</t>
+		<h>lounge not enough seats</h>
+	</pair>
+</entailment-corpus>

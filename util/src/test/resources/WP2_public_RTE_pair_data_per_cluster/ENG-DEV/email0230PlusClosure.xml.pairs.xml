@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="186628.txt_1_3-427784.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are shabby</t>
+		<h>Reupholster seats</h>
+	</pair>
+	<pair id="187987.txt_1_0-427784.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats needs to be repaired</t>
+		<h>they are looking taty</h>
+	</pair>
+	<pair id="187987.txt_1_0-186628.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats needs to be repaired</t>
+		<h>seats are shabby</h>
+	</pair>
+	<pair id="187987.txt_1_0-427784.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats needs to be repaired</t>
+		<h>Reupholster seats</h>
+	</pair>
+	<pair id="427784.txt_5_0-186628.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>they are looking taty</t>
+		<h>seats are shabby</h>
+	</pair>
+	<pair id="186628.txt_1_3-187987.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are shabby</t>
+		<h>seats needs to be repaired</h>
+	</pair>
+	<pair id="427784.txt_3_0-186628.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Reupholster seats</t>
+		<h>seats are shabby</h>
+	</pair>
+	<pair id="427784.txt_3_0-427784.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Reupholster seats</t>
+		<h>they are looking taty</h>
+	</pair>
+	<pair id="427784.txt_3_0-71011.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Reupholster seats</t>
+		<h>Seating can be improved</h>
+	</pair>
+	<pair id="187987.txt_1_0-71011.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats needs to be repaired</t>
+		<h>Seating can be improved</h>
+	</pair>
+	<pair id="186628.txt_1_3-427784.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are shabby</t>
+		<h>they are looking taty</h>
+	</pair>
+	<pair id="427784.txt_5_0-71011.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>they are looking taty</t>
+		<h>Seating can be improved</h>
+	</pair>
+	<pair id="186628.txt_1_3-71011.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are shabby</t>
+		<h>Seating can be improved</h>
+	</pair>
+	<pair id="427784.txt_5_0-187987.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>they are looking taty</t>
+		<h>seats needs to be repaired</h>
+	</pair>
+	<pair id="427784.txt_5_0-427784.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>they are looking taty</t>
+		<h>Reupholster seats</h>
+	</pair>
+	<pair id="427784.txt_3_0-187987.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Reupholster seats</t>
+		<h>seats needs to be repaired</h>
+	</pair>
+	<pair id="186628.txt_1_2-427784.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are quite shabby</t>
+		<h>they are looking taty</h>
+	</pair>
+	<pair id="186628.txt_1_2-427784.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are quite shabby</t>
+		<h>Reupholster seats</h>
+	</pair>
+	<pair id="186628.txt_1_2-187987.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are quite shabby</t>
+		<h>seats needs to be repaired</h>
+	</pair>
+	<pair id="186628.txt_1_2-71011.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are quite shabby</t>
+		<h>Seating can be improved</h>
+	</pair>
+	<pair id="186628.txt_1_0-427784.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are quite shabby</t>
+		<h>they are looking taty</h>
+	</pair>
+	<pair id="186628.txt_1_0-427784.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are quite shabby</t>
+		<h>Reupholster seats</h>
+	</pair>
+	<pair id="186628.txt_1_0-187987.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are quite shabby</t>
+		<h>seats needs to be repaired</h>
+	</pair>
+	<pair id="186628.txt_1_0-71011.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are quite shabby</t>
+		<h>Seating can be improved</h>
+	</pair>
+	<pair id="186628.txt_1_1-427784.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are shabby</t>
+		<h>they are looking taty</h>
+	</pair>
+	<pair id="186628.txt_1_1-427784.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are shabby</t>
+		<h>Reupholster seats</h>
+	</pair>
+	<pair id="186628.txt_1_1-187987.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are shabby</t>
+		<h>seats needs to be repaired</h>
+	</pair>
+	<pair id="186628.txt_1_1-71011.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats in business class are shabby</t>
+		<h>Seating can be improved</h>
+	</pair>
+	<pair id="187987.txt_1_0-186628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats needs to be repaired</t>
+		<h>seats in business class are quite shabby</h>
+	</pair>
+	<pair id="187987.txt_1_0-186628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats needs to be repaired</t>
+		<h>seats in business class are shabby</h>
+	</pair>
+	<pair id="187987.txt_1_0-186628.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats needs to be repaired</t>
+		<h>seats are quite shabby</h>
+	</pair>
+	<pair id="427784.txt_3_0-186628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Reupholster seats</t>
+		<h>seats in business class are quite shabby</h>
+	</pair>
+	<pair id="427784.txt_3_0-186628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Reupholster seats</t>
+		<h>seats in business class are shabby</h>
+	</pair>
+	<pair id="427784.txt_3_0-186628.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Reupholster seats</t>
+		<h>seats are quite shabby</h>
+	</pair>
+	<pair id="427784.txt_5_0-186628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they are looking taty</t>
+		<h>seats in business class are quite shabby</h>
+	</pair>
+	<pair id="427784.txt_5_0-186628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they are looking taty</t>
+		<h>seats in business class are shabby</h>
+	</pair>
+	<pair id="427784.txt_5_0-186628.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they are looking taty</t>
+		<h>seats are quite shabby</h>
+	</pair>
+	<pair id="71011.txt_1_0-186628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating can be improved</t>
+		<h>seats in business class are quite shabby</h>
+	</pair>
+	<pair id="71011.txt_1_0-186628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating can be improved</t>
+		<h>seats in business class are shabby</h>
+	</pair>
+	<pair id="71011.txt_1_0-186628.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating can be improved</t>
+		<h>seats are quite shabby</h>
+	</pair>
+	<pair id="71011.txt_1_0-186628.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating can be improved</t>
+		<h>seats are shabby</h>
+	</pair>
+	<pair id="71011.txt_1_0-187987.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating can be improved</t>
+		<h>seats needs to be repaired</h>
+	</pair>
+	<pair id="71011.txt_1_0-427784.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating can be improved</t>
+		<h>Reupholster seats</h>
+	</pair>
+	<pair id="71011.txt_1_0-427784.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating can be improved</t>
+		<h>they are looking taty</h>
+	</pair>
+</entailment-corpus>

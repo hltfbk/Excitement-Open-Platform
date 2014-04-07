@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="406369.txt_1_2-107379.txt_9_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="406369.txt_2_2-107379.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="406369.txt_2_0-107379.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="107379.txt_4_0-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="107379.txt_4_0-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="107379.txt_4_0-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="107379.txt_4_0-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="107379.txt_4_0-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="107379.txt_4_0-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="107379.txt_4_0-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="107379.txt_4_0-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+	<pair id="107379.txt_4_0-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="107379.txt_4_0-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quieter announcements</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="107379.txt_6_0-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="107379.txt_6_0-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="107379.txt_6_0-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="107379.txt_6_0-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="107379.txt_6_0-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="107379.txt_6_0-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="107379.txt_6_0-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="107379.txt_6_0-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+	<pair id="107379.txt_6_0-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="107379.txt_6_0-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more targeted announcements</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="107379.txt_9_0-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="107379.txt_9_0-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="107379.txt_9_0-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="107379.txt_9_0-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="107379.txt_9_0-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="107379.txt_9_0-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="107379.txt_9_0-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="107379.txt_9_0-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+	<pair id="107379.txt_9_0-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="107379.txt_9_0-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>shorter announcements</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="406369.txt_1_0-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="406369.txt_1_0-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="406369.txt_1_0-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="406369.txt_1_0-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="406369.txt_1_0-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="406369.txt_1_0-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+	<pair id="406369.txt_1_0-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="406369.txt_1_0-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too long</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="406369.txt_1_1-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="406369.txt_1_1-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="406369.txt_1_1-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="406369.txt_1_1-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="406369.txt_1_1-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="406369.txt_1_1-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+	<pair id="406369.txt_1_1-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="406369.txt_1_1-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too long</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="406369.txt_1_2-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="406369.txt_1_2-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="406369.txt_1_2-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="406369.txt_1_2-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="406369.txt_1_2-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+	<pair id="406369.txt_1_2-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="406369.txt_1_2-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager long</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="406369.txt_2_0-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="406369.txt_2_0-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="406369.txt_2_0-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="406369.txt_2_0-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="406369.txt_2_0-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="406369.txt_2_0-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="406369.txt_2_0-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager much too loud</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="406369.txt_2_1-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="406369.txt_2_1-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="406369.txt_2_1-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="406369.txt_2_1-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="406369.txt_2_1-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="406369.txt_2_1-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="406369.txt_2_1-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="406369.txt_2_1-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager too loud</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="406369.txt_2_2-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="406369.txt_2_2-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="406369.txt_2_2-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="406369.txt_2_2-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="406369.txt_2_2-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="406369.txt_2_2-440663.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>less announcements during the train ride</h>
+	</pair>
+	<pair id="406369.txt_2_2-440663.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>micro announcements from the train manager loud</t>
+		<h>less announcements</h>
+	</pair>
+	<pair id="440663.txt_7_0-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="440663.txt_7_0-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="440663.txt_7_0-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="440663.txt_7_0-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="440663.txt_7_0-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="440663.txt_7_0-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="440663.txt_7_0-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="440663.txt_7_0-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="440663.txt_7_0-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements during the train ride</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+	<pair id="440663.txt_7_1-107379.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>quieter announcements</h>
+	</pair>
+	<pair id="440663.txt_7_1-107379.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>more targeted announcements</h>
+	</pair>
+	<pair id="440663.txt_7_1-107379.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>shorter announcements</h>
+	</pair>
+	<pair id="440663.txt_7_1-406369.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>micro announcements from the train manager much too long</h>
+	</pair>
+	<pair id="440663.txt_7_1-406369.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>micro announcements from the train manager too long</h>
+	</pair>
+	<pair id="440663.txt_7_1-406369.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>micro announcements from the train manager long</h>
+	</pair>
+	<pair id="440663.txt_7_1-406369.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>micro announcements from the train manager much too loud</h>
+	</pair>
+	<pair id="440663.txt_7_1-406369.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>micro announcements from the train manager too loud</h>
+	</pair>
+	<pair id="440663.txt_7_1-406369.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>less announcements</t>
+		<h>micro announcements from the train manager loud</h>
+	</pair>
+</entailment-corpus>
