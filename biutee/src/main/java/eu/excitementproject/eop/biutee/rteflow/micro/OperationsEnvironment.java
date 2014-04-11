@@ -93,7 +93,8 @@ public class OperationsEnvironment
 			AlignmentCriteria<ExtendedInfo, ExtendedNode> alignmentCriteria,
 			ImmutableSet<String> stopWords,
 			PARSER parser,
-			boolean collapseMode)
+			boolean collapseMode,
+			BasicNode hypothesisTreeAsBasicNode)
 	{
 		super();
 		this.featureUpdate = featureUpdate;
@@ -114,6 +115,7 @@ public class OperationsEnvironment
 		this.stopWords = stopWords;
 		this.parser = parser;
 		this.collapseMode = collapseMode;
+		this.hypothesisTreeAsBasicNode = hypothesisTreeAsBasicNode;
 	}
 
 	
@@ -191,12 +193,10 @@ public class OperationsEnvironment
 	{
 		return collapseMode;
 	}
-
-
-
-
-
-
+	public BasicNode getHypothesisTreeAsBasicNode()
+	{
+		return hypothesisTreeAsBasicNode;
+	}
 
 
 
@@ -221,4 +221,5 @@ public class OperationsEnvironment
 	private final ImmutableSet<String> stopWords;
 	private final PARSER parser;
 	private final boolean collapseMode;
+	private final BasicNode hypothesisTreeAsBasicNode;
 }

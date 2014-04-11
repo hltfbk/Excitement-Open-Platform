@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -21,7 +22,6 @@ import eu.excitementproject.eop.transformations.generic.rule_compiler.RuleCompil
 import eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules.EntailmentCompilationException;
 import eu.excitementproject.eop.transformations.generic.rule_compiler.entailmentrules.EntailmentRuleCompiler;
 import eu.excitementproject.eop.transformations.generic.truthteller.conll.TreeConllStringConverter;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 
 /**
  * Convert a {@link SyntacticRule} or a set of rules into CoNLL String/file format.<br>

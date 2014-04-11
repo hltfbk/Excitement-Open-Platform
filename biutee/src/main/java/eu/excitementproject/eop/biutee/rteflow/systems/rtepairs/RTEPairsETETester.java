@@ -38,36 +38,48 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 	 */
 	public static void main(String[] args)
 	{
-		new SystemMain()
-		{
-			@Override
-			protected void run(String[] args) throws BiuteeException
-			{
-				logger=Logger.getLogger(RTEPairsETETester.class);
-				try
-				{
-					RTEPairsETETester tester = new RTEPairsETETester(configurationFileName);
-					tester.init();
-					try
-					{
-						tester.test();
-					}
-					finally
-					{
-						tester.cleanUp();
-					}
-				} catch (TeEngineMlException
-						| PluginAdministrationException
-						| ConfigurationException | LemmatizerException
-						| IOException e)
-				{
-					throw new BiuteeException("Failed to run",e);
-				}
-			}
-		}.main(RTEPairsETETester.class, args);
+		new TesterSystemMain().main(RTEPairsETETester.class, args);
 	}
 
+	/**
+	 * Same as main() but is more suitable to calling programmatically:
+	 * - Explicit arguments, not via args[]
+	 * - Doesn't "swallow" exceptions
+	 * 
+	 * @param configurationFileName
+	 * @throws Throwable
+	 */
+	public static void initAndRun(String configurationFileName) throws Throwable {
+		new TesterSystemMain().mainCanThrowExceptions(RTEPairsETETester.class, new String[] {configurationFileName,});
+	}
 	
+	private static class TesterSystemMain extends SystemMain {
+		@Override
+		protected void run(String[] args) throws BiuteeException
+		{
+			logger=Logger.getLogger(RTEPairsETETester.class);
+			try
+			{
+				RTEPairsETETester tester = new RTEPairsETETester(configurationFileName);
+				tester.init();
+				try
+				{
+					tester.test();
+				}
+				finally
+				{
+					tester.cleanUp();
+				}
+			} catch (TeEngineMlException
+					| PluginAdministrationException
+					| ConfigurationException | LemmatizerException
+					| IOException e)
+			{
+				throw new BiuteeException("Failed to run",e);
+			}
+		}
+	}
+
 	public RTEPairsETETester(String configurationFileName)
 	{
 		super(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
@@ -88,7 +100,7 @@ public class RTEPairsETETester extends EndToEndTester<THPairInstance, THPairProo
 		{
 			File searchModelFile = configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_SEARCH_MODEL);
 			File predictionsModelFile = configurationParams.getFile(ConfigurationParametersNames.RTE_TEST_PREDICTIONS_MODEL);
-			return new AccuracyClassifierGenerator(teSystemEnvironment.getFeatureVectorStructureOrganizer(),searchModelFile,predictionsModelFile);
+			return new AccuracyClassifierGenerator(teSystemEnvironment.getClassifierFactory(), teSystemEnvironment.getFeatureVectorStructureOrganizer(),searchModelFile,predictionsModelFile);
 		}
 		catch (ConfigurationException e)
 		{

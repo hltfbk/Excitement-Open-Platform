@@ -180,7 +180,6 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 						break;
 					}
 
-
 					// extract element and feature from the given co-occurrence, and store their counts
 					try {
 											
@@ -225,8 +224,8 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 						System.out.println(e.toString());						
 					} catch (Exception e) {
 						logger.error(ExceptionUtil.getStackTrace(e));
-					}				
-				}
+					}
+					}
 				
 				System.out.println(c + " cooccurrences were processed by extractor " + threadID);
 								

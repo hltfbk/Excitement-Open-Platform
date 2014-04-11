@@ -89,8 +89,15 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 		
 		if (hostLeft == null || portLeft == -1 || hostRight == null || portRight == -1)
 			this.similarityStorage = new DefaultSimilarityStorage(params);			
-		else 
-			this.similarityStorage = new DefaultSimilarityStorage(hostLeft,portLeft,hostRight,portRight,params.get(Configuration.RESOURCE_NAME),params.get(Configuration.INSTANCE_NAME));	
+		else  {
+			String instanceName = "";
+			try {
+				instanceName = params.get(Configuration.INSTANCE_NAME);
+			} catch (ConfigurationException e) {
+				instanceName = params.getConfigurationFile().toString();
+			}
+			this.similarityStorage = new DefaultSimilarityStorage(hostLeft,portLeft,hostRight,portRight,params.get(Configuration.RESOURCE_NAME),instanceName);
+		}
 	}
 
 
@@ -186,6 +193,7 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 	 */
 	@Override
 	public void close() throws LexicalResourceCloseException {
+		similarityStorage.close();
 	}
 
 	SimilarityStorage similarityStorage;

@@ -41,32 +41,40 @@ public class TestLemmaPosSimilarity {
 		}
 		
 		//ConfigurationFile confFile = new ConfigurationFile(args[0]);
-		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
+	    ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 		
 		ConfigurationParams confParams = confFile.getModuleConfiguration(Configuration.KNOWLEDGE_RESOURCE);
-
-		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(confParams);
 		
-		List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForLeft("affect",null);
+		LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource(confParams);
+		//LexicalResource<? extends RuleInfo> resource = new SimilarityStorageBasedLexicalResource("te-srv2", 7002,"te-srv2",7003,"a","b",10);
+
+		//LexicalResource<? extends RuleInfo> resource2 = new SimilarityStorageBasedLexicalResource("te-srv2", 7005,null,-1,"a","b",10);
+
+		/*List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForLeft("chair",null);
 		System.out.println("left-2-right rules for affect: ");
 		for (LexicalRule<? extends RuleInfo> similarity : similarities)
 			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
 		
-		similarities = resource.getRulesForRight("affect",null);
+		similarities = resource.getRulesForRight("chair",null);
 		System.out.println("\nright-2-left rules for affect: ");
 		for (LexicalRule<? extends RuleInfo> similarity : similarities)
 			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
-
+*/
 	
-		similarities = resource.getRulesForLeft("affect",new ByCanonicalPartOfSpeech(CanonicalPosTag.V.name()));
+		List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForLeft("acquire",new ByCanonicalPartOfSpeech(CanonicalPosTag.V.name()));
 		System.out.println("\nleft-2-right rules for affect as a verb: ");
 		for (LexicalRule<? extends RuleInfo> similarity : similarities)
 			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
 
-		similarities = resource.getRulesForRight("affect",new ByCanonicalPartOfSpeech(CanonicalPosTag.V.name()));
+		/*List<? extends LexicalRule<? extends RuleInfo>> similarities2 = resource2.getRulesForLeft("prince",new ByCanonicalPartOfSpeech(CanonicalPosTag.NN.name()));
+		System.out.println("\nleft-2-right rules for affect as a verb: ");
+		for (LexicalRule<? extends RuleInfo> similarity : similarities2)
+			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());*/
+
+		/*	similarities = resource.getRulesForRight("chair",new ByCanonicalPartOfSpeech(CanonicalPosTag.NN.name()));
 		System.out.println("\nright-2-left rules for affect as a verb: ");
 		for (LexicalRule<? extends RuleInfo> similarity : similarities)
-			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
+			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());*/
 
 	}
 }

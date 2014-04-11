@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="12.txt_1_1-18.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>semi - flexible tickets that are cheaper</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="12.txt_1_1-19.txt_3_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>semi - flexible tickets that are cheaper</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="35.txt_1_3-18.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Tickets expensive</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="35.txt_1_3-19.txt_3_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Tickets expensive</t>
+		<h>cheaper tickets</h>
+	</pair>
+	<pair id="11.txt_3_1-530848.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>price paid for a single journey at 200$</t>
+		<h>Ticket Prices are high</h>
+	</pair>
+	<pair id="25.txt_1_1-26.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>tickets are expensive</t>
+		<h>you must make cheaper tickets available</h>
+	</pair>
+	<pair id="3.txt_1_0-530848.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Lower the price of the tickets</t>
+		<h>Ticket Prices are high</h>
+	</pair>
+	<pair id="13.txt_1_0-6.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Cheap flexible tickets</t>
+		<h>decrease your prices</h>
+	</pair>
+	<pair id="6.txt_7_0-34.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>decrease your prices</t>
+		<h>tickets not cheap</h>
+	</pair>
+	<pair id="34.txt_1_0-513573.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>tickets not cheap</t>
+		<h>The tickets are expensive</h>
+	</pair>
+	<pair id="12.txt_1_1-5.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>semi - flexible tickets that are cheaper</t>
+		<h>make more offers for tickets</h>
+	</pair>
+	<pair id="0.txt_1_0-530848.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Tickets are way too expensive</t>
+		<h>Ticket Prices are too high</h>
+	</pair>
+	<pair id="35.txt_2_0-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Not enough special deals</t>
+		<h>Lower the price of the tickets</h>
+	</pair>
+	<pair id="272237.txt_5_0-36.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Lower the fares</t>
+		<h>Reduce ticket prices</h>
+	</pair>
+	<pair id="3.txt_1_0-36.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Lower the price of the tickets</t>
+		<h>Reduce ticket prices</h>
+	</pair>
+	<pair id="25.txt_1_1-24.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>tickets are expensive</t>
+		<h>Selling cheaper tickets</h>
+	</pair>
+	<pair id="24.txt_1_0-513573.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Selling cheaper tickets</t>
+		<h>The tickets are expensive</h>
+	</pair>
+	<pair id="12.txt_1_1-272237.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>semi - flexible tickets that are cheaper</t>
+		<h>Lower the fares</h>
+	</pair>
+	<pair id="26.txt_1_1-35.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>you must make cheaper tickets available</t>
+		<h>Tickets expensive</h>
+	</pair>
+	<pair id="30.txt_1_0-36.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Ticket was expensive</t>
+		<h>Reduce ticket prices</h>
+	</pair>
+	<pair id="25.txt_1_1-272237.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>tickets are expensive</t>
+		<h>Lower the fares</h>
+	</pair>
+	<pair id="0.txt_1_1-387881.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Tickets are expensive</t>
+		<h>Prices are high on tickets</h>
+	</pair>
+</entailment-corpus>
+

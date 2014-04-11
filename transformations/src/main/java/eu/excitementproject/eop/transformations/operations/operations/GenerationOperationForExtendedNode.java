@@ -37,6 +37,7 @@ public abstract class GenerationOperationForExtendedNode extends GenerationOpera
 			OperationPostProcess postProcess = new OperationPostProcess(this);
 			postProcess.postProcess();
 			this.generatedTree = postProcess.getGeneratedTree();
+			this.generatedTree.seal();
 			this.mapOriginalToGenerated = postProcess.getMapOriginalToGenerated();
 			this.affectedNodes = postProcess.getAffectedNodes();
 		}

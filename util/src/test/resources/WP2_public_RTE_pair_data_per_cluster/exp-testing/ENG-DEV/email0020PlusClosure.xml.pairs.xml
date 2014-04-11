@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="215790.txt_2_0-530848.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Time for the food improved</t>
+		<h>quality of food limited</h>
+	</pair>
+	<pair id="413572.txt_1_0-265496.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the meals were not good dishes</t>
+		<h>Food is disappointing</h>
+	</pair>
+	<pair id="187987.txt_3_1-169586.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was terrible</t>
+		<h>food is sub standard</h>
+	</pair>
+	<pair id="223945.txt_1_0-492015.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Improvements in food are greatly needed</t>
+		<h>food could be much better</h>
+	</pair>
+	<pair id="162010.txt_1_0-253572.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bigger portion of food</t>
+		<h>food could be improved</h>
+	</pair>
+	<pair id="85654.txt_1_0-137621.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food looked awful</t>
+		<h>Food is weak</h>
+	</pair>
+	<pair id="418508.txt_1_0-365365.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the food sold in the buffet is sub standard</t>
+		<h>food was bad</h>
+	</pair>
+	<pair id="530848.txt_4_0-196991.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>quality of food limited</t>
+		<h>food not great</h>
+	</pair>
+	<pair id="406369.txt_13_0-492015.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food too fat</t>
+		<h>food could be much better</h>
+	</pair>
+	<pair id="273791.txt_1_0-242866.txt_6_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food could be better in business</t>
+		<h>There 's no normal food anywhere</h>
+	</pair>
+	<pair id="242866.txt_6_1-253572.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There 's no normal food</t>
+		<h>food could be improved</h>
+	</pair>
+	<pair id="418508.txt_1_0-242866.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the food sold in the buffet is sub standard</t>
+		<h>There 's no normal food</h>
+	</pair>
+	<pair id="112459.txt_1_2-151992.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was awful</t>
+		<h>Sell better food</h>
+	</pair>
+	<pair id="190617.txt_5_0-296422.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food in all classes is execrable</t>
+		<h>food is as always not good</h>
+	</pair>
+	<pair id="38751.txt_3_0-313632.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better food</t>
+		<h>Better food needed</h>
+	</pair>
+	<pair id="112459.txt_1_0-500967.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>food in the undercroft bar was awful</t>
+		<h>quality of food at the bar are low standard</h>
+	</pair>
+	<pair id="265496.txt_1_0-365365.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food is very disappointing</t>
+		<h>food was very bad</h>
+	</pair>
+	<pair id="112459.txt_1_2-152552.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was awful</t>
+		<h>Better food in the lounge</h>
+	</pair>
+	<pair id="285041.txt_1_0-418508.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bad food</t>
+		<h>the food sold in the buffet is sub standard</h>
+	</pair>
+	<pair id="406369.txt_13_1-215790.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food fat</t>
+		<h>Time for the food improved</h>
+	</pair>
+	<pair id="253572.txt_3_1-242866.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food Was inedible</t>
+		<h>Catering is aweful</h>
+	</pair>
+	<pair id="38751.txt_3_0-242866.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better food</t>
+		<h>There 's no normal food</h>
+	</pair>
+	<pair id="112459.txt_1_2-365365.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was awful</t>
+		<h>it tasted aweful</h>
+	</pair>
+	<pair id="179281.txt_1_1-223945.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Better food</t>
+		<h>Improvements in food are needed</h>
+	</pair>
+	<pair id="217842.txt_1_0-223945.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Better food</t>
+		<h>Improvements in food are needed</h>
+	</pair>
+	<pair id="190617.txt_5_0-112459.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>food in all classes is execrable</t>
+		<h>food in the bar was awful</h>
+	</pair>
+	<pair id="201627.txt_1_1-365365.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food is awful</t>
+		<h>it tasted aweful</h>
+	</pair>
+	<pair id="455758.txt_2_0-530848.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The food Is of awful quality</t>
+		<h>quality of food limited</h>
+	</pair>
+	<pair id="186709.txt_2_0-500967.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Fresher food in the dining car</t>
+		<h>quality of food are low standard</h>
+	</pair>
+</entailment-corpus>
+

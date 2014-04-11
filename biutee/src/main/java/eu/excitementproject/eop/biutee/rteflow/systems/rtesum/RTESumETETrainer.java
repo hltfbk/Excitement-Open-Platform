@@ -81,7 +81,7 @@ public class RTESumETETrainer extends EndToEndTrainer<RteSumInstance, RteSumProo
 	@Override
 	protected ClassifierGenerator createClassifierGenerator() throws BiuteeException
 	{
-		return new F1ClassifierGenerator(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+		return new F1ClassifierGenerator(teSystemEnvironment.getClassifierFactory(), teSystemEnvironment.getFeatureVectorStructureOrganizer());
 	}
 
 

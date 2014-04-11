@@ -1,0 +1,3403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="401238.txt_7_1-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="433561.txt_1_0-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="190617.txt_1_0-190617.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="273791.txt_2_0-106746.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="433561.txt_1_0-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_8_1-273791.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="142421.txt_8_1-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="142421.txt_8_1-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="401238.txt_7_1-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="273791.txt_2_1-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_8_1-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="190617.txt_1_0-142421.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="142421.txt_8_1-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="72187.txt_1_0-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="440557.txt_1_0-440557.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="106746.txt_1_1-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="142421.txt_8_0-273791.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="142421.txt_8_1-273791.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="72187.txt_1_0-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="273791.txt_2_1-273791.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="72187.txt_1_0-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="433561.txt_1_0-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="106746.txt_1_1-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="190617.txt_1_0-522350.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="522350.txt_1_0-142421.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="215790.txt_1_0-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="401238.txt_7_1-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="273791.txt_2_1-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="273791.txt_2_1-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="215790.txt_1_0-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="401238.txt_7_1-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="401238.txt_7_0-106746.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="273791.txt_2_1-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="106746.txt_1_1-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="493530.txt_4_0-440663.txt_9_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="142421.txt_8_0-106746.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="215790.txt_1_0-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="273791.txt_2_0-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="273791.txt_2_0-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="273791.txt_2_0-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="273791.txt_2_0-273791.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="273791.txt_2_0-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="401238.txt_7_0-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="401238.txt_7_0-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="401238.txt_7_0-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="401238.txt_7_0-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_8_0-273791.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="142421.txt_8_0-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="142421.txt_8_0-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="142421.txt_8_0-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="142421.txt_8_0-273791.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="142421.txt_8_0-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="106746.txt_1_0-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="106746.txt_1_0-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="106746.txt_1_0-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="106746.txt_1_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="106746.txt_1_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="106746.txt_1_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="106746.txt_1_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="106746.txt_1_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="106746.txt_1_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="106746.txt_1_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="106746.txt_1_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="106746.txt_1_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="106746.txt_1_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="106746.txt_1_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="106746.txt_1_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="106746.txt_1_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="106746.txt_1_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="106746.txt_1_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="106746.txt_1_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="106746.txt_1_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="106746.txt_1_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="106746.txt_1_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="106746.txt_1_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="106746.txt_1_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="106746.txt_1_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="106746.txt_1_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="106746.txt_1_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="106746.txt_1_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use some updating</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="106746.txt_1_1-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="106746.txt_1_1-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="106746.txt_1_1-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="106746.txt_1_1-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="106746.txt_1_1-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="106746.txt_1_1-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="106746.txt_1_1-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="106746.txt_1_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="106746.txt_1_1-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="106746.txt_1_1-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="106746.txt_1_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="106746.txt_1_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="106746.txt_1_1-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="106746.txt_1_1-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="106746.txt_1_1-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="106746.txt_1_1-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="106746.txt_1_1-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="106746.txt_1_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="106746.txt_1_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="106746.txt_1_1-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="106746.txt_1_1-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="106746.txt_1_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="106746.txt_1_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="106746.txt_1_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="106746.txt_1_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="109435.txt_4_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="109435.txt_4_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="109435.txt_4_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="109435.txt_4_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="109435.txt_4_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="109435.txt_4_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="109435.txt_4_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="109435.txt_4_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="109435.txt_4_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="109435.txt_4_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="109435.txt_4_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="109435.txt_4_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="109435.txt_4_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="109435.txt_4_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="109435.txt_4_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="109435.txt_4_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="109435.txt_4_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="109435.txt_4_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="109435.txt_4_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="109435.txt_4_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="109435.txt_4_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="109435.txt_4_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="109435.txt_4_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="109435.txt_4_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="109435.txt_4_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="109435.txt_4_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="109435.txt_4_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train too often delays</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="109435.txt_4_1-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="109435.txt_4_1-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="109435.txt_4_1-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="109435.txt_4_1-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="109435.txt_4_1-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="109435.txt_4_1-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="109435.txt_4_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="109435.txt_4_1-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="109435.txt_4_1-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="109435.txt_4_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="109435.txt_4_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="109435.txt_4_1-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="109435.txt_4_1-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="109435.txt_4_1-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="109435.txt_4_1-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="109435.txt_4_1-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="109435.txt_4_1-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="109435.txt_4_1-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="109435.txt_4_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="109435.txt_4_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="109435.txt_4_1-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="109435.txt_4_1-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="109435.txt_4_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="109435.txt_4_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="109435.txt_4_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="109435.txt_4_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="109435.txt_4_1-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train often delays</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="109435.txt_4_2-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="109435.txt_4_2-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="109435.txt_4_2-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="109435.txt_4_2-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="109435.txt_4_2-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="109435.txt_4_2-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="109435.txt_4_2-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="109435.txt_4_2-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="109435.txt_4_2-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="109435.txt_4_2-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="109435.txt_4_2-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="109435.txt_4_2-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="109435.txt_4_2-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="109435.txt_4_2-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="109435.txt_4_2-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="109435.txt_4_2-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="109435.txt_4_2-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="109435.txt_4_2-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="109435.txt_4_2-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="109435.txt_4_2-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="109435.txt_4_2-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="109435.txt_4_2-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="109435.txt_4_2-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="109435.txt_4_2-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="109435.txt_4_2-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="109435.txt_4_2-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="109435.txt_4_2-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>train delays</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_7_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="142421.txt_7_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="142421.txt_7_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="142421.txt_7_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="142421.txt_7_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="142421.txt_7_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="142421.txt_7_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="142421.txt_7_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="142421.txt_7_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="142421.txt_7_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="142421.txt_7_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="142421.txt_7_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="142421.txt_7_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="142421.txt_7_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="142421.txt_7_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="142421.txt_7_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="142421.txt_7_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="142421.txt_7_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="142421.txt_7_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="142421.txt_7_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="142421.txt_7_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="142421.txt_7_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="142421.txt_7_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="142421.txt_7_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="142421.txt_7_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="142421.txt_7_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="142421.txt_7_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="142421.txt_7_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very dirty</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_7_1-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="142421.txt_7_1-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="142421.txt_7_1-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="142421.txt_7_1-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="142421.txt_7_1-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="142421.txt_7_1-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="142421.txt_7_1-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="142421.txt_7_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="142421.txt_7_1-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="142421.txt_7_1-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="142421.txt_7_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="142421.txt_7_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="142421.txt_7_1-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="142421.txt_7_1-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="142421.txt_7_1-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="142421.txt_7_1-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="142421.txt_7_1-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="142421.txt_7_1-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="142421.txt_7_1-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="142421.txt_7_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="142421.txt_7_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="142421.txt_7_1-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="142421.txt_7_1-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="142421.txt_7_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="142421.txt_7_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="142421.txt_7_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="142421.txt_7_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="142421.txt_7_1-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was dirty</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_8_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="142421.txt_8_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="142421.txt_8_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="142421.txt_8_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="142421.txt_8_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="142421.txt_8_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="142421.txt_8_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="142421.txt_8_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="142421.txt_8_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="142421.txt_8_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="142421.txt_8_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="142421.txt_8_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="142421.txt_8_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="142421.txt_8_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="142421.txt_8_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="142421.txt_8_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="142421.txt_8_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="142421.txt_8_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="142421.txt_8_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="142421.txt_8_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="142421.txt_8_1-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="142421.txt_8_1-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="142421.txt_8_1-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="142421.txt_8_1-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="142421.txt_8_1-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="142421.txt_8_1-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="142421.txt_8_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="142421.txt_8_1-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="142421.txt_8_1-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="142421.txt_8_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="142421.txt_8_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="142421.txt_8_1-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="142421.txt_8_1-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="142421.txt_8_1-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="142421.txt_8_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="142421.txt_8_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="142421.txt_8_1-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="142421.txt_8_1-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="142421.txt_8_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="142421.txt_8_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="142421.txt_8_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="142421.txt_8_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="169586.txt_3_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="169586.txt_3_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="169586.txt_3_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="169586.txt_3_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="169586.txt_3_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="169586.txt_3_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="169586.txt_3_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="169586.txt_3_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="169586.txt_3_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="169586.txt_3_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="169586.txt_3_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="169586.txt_3_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="169586.txt_3_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="169586.txt_3_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="169586.txt_3_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="169586.txt_3_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="169586.txt_3_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="169586.txt_3_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="169586.txt_3_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="169586.txt_3_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="169586.txt_3_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="169586.txt_3_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="169586.txt_3_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="169586.txt_3_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="169586.txt_3_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="169586.txt_3_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="169586.txt_3_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="169586.txt_3_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="169586.txt_3_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Zero value for money</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="169586.txt_4_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="169586.txt_4_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="169586.txt_4_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="169586.txt_4_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="169586.txt_4_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="169586.txt_4_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="169586.txt_4_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="169586.txt_4_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="169586.txt_4_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="169586.txt_4_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="169586.txt_4_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="169586.txt_4_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="169586.txt_4_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="169586.txt_4_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="169586.txt_4_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="169586.txt_4_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="169586.txt_4_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="169586.txt_4_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="169586.txt_4_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="169586.txt_4_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="169586.txt_4_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="169586.txt_4_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="169586.txt_4_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="169586.txt_4_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="169586.txt_4_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="169586.txt_4_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="169586.txt_4_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="169586.txt_4_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Complete rip off</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="169586.txt_4_1-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="169586.txt_4_1-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="169586.txt_4_1-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="169586.txt_4_1-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="169586.txt_4_1-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="169586.txt_4_1-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="169586.txt_4_1-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="169586.txt_4_1-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="169586.txt_4_1-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="169586.txt_4_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="169586.txt_4_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="169586.txt_4_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="169586.txt_4_1-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="169586.txt_4_1-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="169586.txt_4_1-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="169586.txt_4_1-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="169586.txt_4_1-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="169586.txt_4_1-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="169586.txt_4_1-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="169586.txt_4_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="169586.txt_4_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="169586.txt_4_1-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="169586.txt_4_1-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="169586.txt_4_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="169586.txt_4_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="169586.txt_4_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="169586.txt_4_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="169586.txt_4_1-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>rip off</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="190617.txt_1_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="190617.txt_1_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="190617.txt_1_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="190617.txt_1_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="190617.txt_1_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="190617.txt_1_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="190617.txt_1_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="190617.txt_1_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="190617.txt_1_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="190617.txt_1_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="190617.txt_1_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="190617.txt_1_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="190617.txt_1_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="190617.txt_1_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="190617.txt_1_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="190617.txt_1_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="190617.txt_1_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="190617.txt_1_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="190617.txt_1_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="190617.txt_1_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="190617.txt_1_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="190617.txt_1_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="190617.txt_1_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="190617.txt_1_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="190617.txt_1_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="190617.txt_1_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="190617.txt_2_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="190617.txt_2_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="190617.txt_2_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="190617.txt_2_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="190617.txt_2_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="190617.txt_2_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="190617.txt_2_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="190617.txt_2_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="190617.txt_2_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="190617.txt_2_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="190617.txt_2_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="190617.txt_2_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="190617.txt_2_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="190617.txt_2_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="190617.txt_2_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="190617.txt_2_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="190617.txt_2_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="190617.txt_2_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="190617.txt_2_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="190617.txt_2_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="190617.txt_2_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="190617.txt_2_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="190617.txt_2_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="190617.txt_2_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="190617.txt_2_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="190617.txt_2_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="190617.txt_2_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="190617.txt_2_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="190617.txt_2_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo is horrible</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="215790.txt_1_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="215790.txt_1_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="215790.txt_1_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="215790.txt_1_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="215790.txt_1_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="215790.txt_1_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="215790.txt_1_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="215790.txt_1_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="215790.txt_1_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="215790.txt_1_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="215790.txt_1_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="215790.txt_1_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="215790.txt_1_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="215790.txt_1_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="215790.txt_1_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="215790.txt_1_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="215790.txt_1_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="215790.txt_1_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="215790.txt_1_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="215790.txt_1_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="215790.txt_1_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="215790.txt_1_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="215790.txt_1_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="215790.txt_1_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="215790.txt_1_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="215790.txt_1_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Time for the trains to be updated</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="273791.txt_2_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="273791.txt_2_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="273791.txt_2_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="273791.txt_2_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="273791.txt_2_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="273791.txt_2_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="273791.txt_2_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="273791.txt_2_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="273791.txt_2_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="273791.txt_2_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="273791.txt_2_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="273791.txt_2_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="273791.txt_2_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="273791.txt_2_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="273791.txt_2_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="273791.txt_2_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="273791.txt_2_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="273791.txt_2_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="273791.txt_2_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="273791.txt_2_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="273791.txt_2_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="273791.txt_2_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="273791.txt_2_1-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="273791.txt_2_1-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="273791.txt_2_1-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="273791.txt_2_1-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="273791.txt_2_1-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="273791.txt_2_1-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="273791.txt_2_1-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="273791.txt_2_1-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="273791.txt_2_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="273791.txt_2_1-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="273791.txt_2_1-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="273791.txt_2_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="273791.txt_2_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="273791.txt_2_1-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="273791.txt_2_1-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="273791.txt_2_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="273791.txt_2_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="273791.txt_2_1-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="273791.txt_2_1-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="273791.txt_2_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="273791.txt_2_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="273791.txt_2_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="273791.txt_2_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="273791.txt_3_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="273791.txt_3_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="273791.txt_3_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="273791.txt_3_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="273791.txt_3_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="273791.txt_3_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="273791.txt_3_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="273791.txt_3_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="273791.txt_3_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="273791.txt_3_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="273791.txt_3_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="273791.txt_3_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="273791.txt_3_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="273791.txt_3_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="273791.txt_3_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="273791.txt_3_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="273791.txt_3_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="273791.txt_3_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="273791.txt_3_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="273791.txt_3_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="273791.txt_3_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="273791.txt_3_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="273791.txt_3_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="273791.txt_3_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="273791.txt_3_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="273791.txt_3_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="273791.txt_3_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="273791.txt_3_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="273791.txt_3_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>trains need refurbishment</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="401238.txt_7_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="401238.txt_7_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="401238.txt_7_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="401238.txt_7_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="401238.txt_7_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="401238.txt_7_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="401238.txt_7_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="401238.txt_7_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="401238.txt_7_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="401238.txt_7_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="401238.txt_7_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="401238.txt_7_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="401238.txt_7_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="401238.txt_7_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="401238.txt_7_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="401238.txt_7_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="401238.txt_7_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="401238.txt_7_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="401238.txt_7_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="401238.txt_7_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="401238.txt_7_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="401238.txt_7_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="401238.txt_7_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior of the train could be modernised</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="401238.txt_7_1-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="401238.txt_7_1-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="401238.txt_7_1-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="401238.txt_7_1-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="401238.txt_7_1-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="401238.txt_7_1-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="401238.txt_7_1-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="401238.txt_7_1-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="401238.txt_7_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="401238.txt_7_1-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="401238.txt_7_1-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="401238.txt_7_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="401238.txt_7_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="401238.txt_7_1-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="401238.txt_7_1-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="401238.txt_7_1-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="401238.txt_7_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="401238.txt_7_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="401238.txt_7_1-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="401238.txt_7_1-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="401238.txt_7_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="401238.txt_7_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="401238.txt_7_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="401238.txt_7_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="433561.txt_1_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="433561.txt_1_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="433561.txt_1_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="433561.txt_1_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="433561.txt_1_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="433561.txt_1_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="433561.txt_1_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="433561.txt_1_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="433561.txt_1_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="433561.txt_1_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="433561.txt_1_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="433561.txt_1_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="433561.txt_1_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="433561.txt_1_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="433561.txt_1_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="433561.txt_1_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="433561.txt_1_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="433561.txt_1_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="433561.txt_1_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="433561.txt_1_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="433561.txt_1_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="433561.txt_1_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="433561.txt_1_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="433561.txt_1_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="433561.txt_1_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="433561.txt_1_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="440557.txt_1_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="440557.txt_1_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="440557.txt_1_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="440557.txt_1_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="440557.txt_1_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="440557.txt_1_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="440557.txt_1_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="440557.txt_1_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="440557.txt_1_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="440557.txt_1_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="440557.txt_1_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="440557.txt_1_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="440557.txt_1_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="440557.txt_1_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="440557.txt_1_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="440557.txt_1_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="440557.txt_1_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="440557.txt_1_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="440557.txt_1_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="440557.txt_1_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="440557.txt_1_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="440557.txt_1_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="440557.txt_1_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="440557.txt_1_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="440557.txt_1_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="440557.txt_1_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="440557.txt_1_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="440557.txt_1_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="440557.txt_2_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="440557.txt_2_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="440557.txt_2_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="440557.txt_2_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="440557.txt_2_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="440557.txt_2_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="440557.txt_2_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="440557.txt_2_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="440557.txt_2_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="440557.txt_2_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="440557.txt_2_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="440557.txt_2_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="440557.txt_2_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="440557.txt_2_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="440557.txt_2_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="440557.txt_2_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="440557.txt_2_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="440557.txt_2_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="440557.txt_2_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="440557.txt_2_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="440557.txt_2_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="440557.txt_2_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="440557.txt_2_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="440557.txt_2_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="440557.txt_2_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="440557.txt_2_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="440557.txt_2_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="440557.txt_2_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="440557.txt_2_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The trains are badly lit</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="440557.txt_5_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="440557.txt_5_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="440557.txt_5_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="440557.txt_5_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="440557.txt_5_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="440557.txt_5_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="440557.txt_5_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="440557.txt_5_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="440557.txt_5_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="440557.txt_5_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="440557.txt_5_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="440557.txt_5_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="440557.txt_5_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="440557.txt_5_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="440557.txt_5_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="440557.txt_5_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="440557.txt_5_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="440557.txt_5_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="440557.txt_5_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="440557.txt_5_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="440557.txt_5_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="440557.txt_5_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="440557.txt_5_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="440557.txt_5_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="440557.txt_5_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="440557.txt_5_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="440557.txt_5_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="440557.txt_5_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is pretty depressing</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="440557.txt_5_1-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="440557.txt_5_1-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="440557.txt_5_1-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="440557.txt_5_1-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="440557.txt_5_1-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="440557.txt_5_1-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="440557.txt_5_1-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="440557.txt_5_1-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="440557.txt_5_1-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="440557.txt_5_1-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="440557.txt_5_1-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="440557.txt_5_1-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="440557.txt_5_1-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="440557.txt_5_1-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="440557.txt_5_1-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="440557.txt_5_1-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="440557.txt_5_1-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="440557.txt_5_1-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="440557.txt_5_1-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="440557.txt_5_1-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="440557.txt_5_1-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="440557.txt_5_1-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="440557.txt_5_1-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="440557.txt_5_1-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="440557.txt_5_1-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="440557.txt_5_1-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="440557.txt_5_1-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="440557.txt_5_1-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The decor is depressing</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="440663.txt_9_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="440663.txt_9_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="440663.txt_9_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="440663.txt_9_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="440663.txt_9_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="440663.txt_9_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="440663.txt_9_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="440663.txt_9_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="440663.txt_9_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="440663.txt_9_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="440663.txt_9_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="440663.txt_9_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="440663.txt_9_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="440663.txt_9_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="440663.txt_9_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="440663.txt_9_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="440663.txt_9_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="440663.txt_9_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="440663.txt_9_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="440663.txt_9_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="440663.txt_9_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="440663.txt_9_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="440663.txt_9_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="440663.txt_9_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="440663.txt_9_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="440663.txt_9_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="440663.txt_9_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="440663.txt_9_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="440663.txt_9_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have quiet coaches</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="493530.txt_4_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="493530.txt_4_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="493530.txt_4_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="493530.txt_4_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="493530.txt_4_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="493530.txt_4_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="493530.txt_4_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="493530.txt_4_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="493530.txt_4_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="493530.txt_4_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="493530.txt_4_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="493530.txt_4_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="493530.txt_4_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="493530.txt_4_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="493530.txt_4_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="493530.txt_4_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="493530.txt_4_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="493530.txt_4_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="493530.txt_4_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="493530.txt_4_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="493530.txt_4_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="493530.txt_4_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="493530.txt_4_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="493530.txt_4_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="493530.txt_4_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="493530.txt_4_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="493530.txt_4_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="493530.txt_4_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>consider an adults only quiet coach</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="522350.txt_1_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="522350.txt_1_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="522350.txt_1_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="522350.txt_1_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="522350.txt_1_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="522350.txt_1_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="522350.txt_1_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="522350.txt_1_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="522350.txt_1_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="522350.txt_1_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="522350.txt_1_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="522350.txt_1_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="522350.txt_1_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="522350.txt_1_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="522350.txt_1_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="522350.txt_1_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="522350.txt_1_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="522350.txt_1_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="522350.txt_1_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="522350.txt_1_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="522350.txt_1_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="522350.txt_1_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="522350.txt_1_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="522350.txt_1_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="522350.txt_1_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="522350.txt_1_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="522350.txt_1_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+	<pair id="522350.txt_1_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Cleaner interior</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="52781.txt_9_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="52781.txt_9_0-106746.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="52781.txt_9_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="52781.txt_9_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="52781.txt_9_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="52781.txt_9_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="52781.txt_9_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="52781.txt_9_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="52781.txt_9_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="52781.txt_9_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="52781.txt_9_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="52781.txt_9_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="52781.txt_9_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="52781.txt_9_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="52781.txt_9_0-215790.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="52781.txt_9_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="52781.txt_9_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="52781.txt_9_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="52781.txt_9_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="52781.txt_9_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="52781.txt_9_0-433561.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="52781.txt_9_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="52781.txt_9_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="52781.txt_9_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="52781.txt_9_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="52781.txt_9_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="52781.txt_9_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="52781.txt_9_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="52781.txt_9_0-72187.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Appalling crush to board train</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="72187.txt_1_0-106746.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="72187.txt_1_0-109435.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>train too often delays</h>
+	</pair>
+	<pair id="72187.txt_1_0-109435.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>train often delays</h>
+	</pair>
+	<pair id="72187.txt_1_0-109435.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>train delays</h>
+	</pair>
+	<pair id="72187.txt_1_0-142421.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The Quasigo train was very dirty</h>
+	</pair>
+	<pair id="72187.txt_1_0-142421.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="72187.txt_1_0-142421.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The Quasigo train was very tatty</h>
+	</pair>
+	<pair id="72187.txt_1_0-142421.txt_8_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The Quasigo train was tatty</h>
+	</pair>
+	<pair id="72187.txt_1_0-169586.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>Zero value for money</h>
+	</pair>
+	<pair id="72187.txt_1_0-169586.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>Complete rip off</h>
+	</pair>
+	<pair id="72187.txt_1_0-169586.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>rip off</h>
+	</pair>
+	<pair id="72187.txt_1_0-190617.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>Quasigo is filthy</h>
+	</pair>
+	<pair id="72187.txt_1_0-190617.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="72187.txt_1_0-273791.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="72187.txt_1_0-273791.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="72187.txt_1_0-273791.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="72187.txt_1_0-401238.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The interior of the train could be modernised</h>
+	</pair>
+	<pair id="72187.txt_1_0-401238.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The interior could be modernised</h>
+	</pair>
+	<pair id="72187.txt_1_0-440557.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The trains are drab</h>
+	</pair>
+	<pair id="72187.txt_1_0-440557.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The trains are badly lit</h>
+	</pair>
+	<pair id="72187.txt_1_0-440557.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The decor is pretty depressing</h>
+	</pair>
+	<pair id="72187.txt_1_0-440557.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="72187.txt_1_0-440663.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>have quiet coaches</h>
+	</pair>
+	<pair id="72187.txt_1_0-493530.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>consider an adults only quiet coach</h>
+	</pair>
+	<pair id="72187.txt_1_0-522350.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>Cleaner interior</h>
+	</pair>
+	<pair id="72187.txt_1_0-52781.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>Appalling crush to board train</h>
+	</pair>
+</entailment-corpus>

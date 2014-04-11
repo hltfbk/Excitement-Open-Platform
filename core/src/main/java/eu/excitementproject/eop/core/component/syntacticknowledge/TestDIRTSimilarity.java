@@ -67,7 +67,7 @@ public class TestDIRTSimilarity {
 					if (matches.size() > 0 ) {
 						System.out.println(matches.size() + " matches were found for tree: " + tree.getFirst().getInfo());					
 						for (RuleMatch<Info, BasicNode> match : matches)
-							System.out.println(match.getRule().getLeftHandSide().getInfo().toString() + "\t" + match.getRule().getRightHandSide().getInfo().toString());
+							System.out.println(match.getRule().getRule().getLeftHandSide().getInfo().toString() + "\t" + match.getRule().getRule().getRightHandSide().getInfo().toString());
 						System.out.println();
 					}
 					

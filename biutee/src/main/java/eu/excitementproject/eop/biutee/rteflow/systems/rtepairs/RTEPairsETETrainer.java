@@ -34,35 +34,48 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 	 */
 	public static void main(String[] args)
 	{
-		new SystemMain()
-		{
-			@Override
-			protected void run(String[] args) throws BiuteeException
-			{
-				logger = Logger.getLogger(RTEPairsETETrainer.class);
-				RTEPairsETETrainer trainer = new RTEPairsETETrainer(configurationFileName);
-				try
-				{
-					trainer.init();
-					try
-					{
-						trainer.train();
-					}
-					finally
-					{
-						trainer.cleanUp();
-					}
-				} catch (TeEngineMlException
-						| PluginAdministrationException
-						| ConfigurationException | LemmatizerException
-						| IOException e)
-				{
-					throw new BiuteeException("Failed to run",e);
-				}
-			}
-		}.main(RTEPairsETETrainer.class, args);
+		new TrainerSystemMain().main(RTEPairsETETrainer.class, args);
 	}
 
+	/**
+	 * Same as main() but is more suitable to calling programmatically:
+	 * - Explicit arguments, not via args[]
+	 * - Doesn't "swallow" exceptions
+	 * 
+	 * @param configurationFileName
+	 * @throws Throwable
+	 */
+	public static void initAndRun(String configurationFileName) throws Throwable {
+		new TrainerSystemMain().mainCanThrowExceptions(RTEPairsETETrainer.class, new String[] {configurationFileName,});
+	}
+
+	private static class TrainerSystemMain extends SystemMain {
+		@Override
+		protected void run(String[] args) throws BiuteeException
+		{
+			logger = Logger.getLogger(RTEPairsETETrainer.class);
+			RTEPairsETETrainer trainer = new RTEPairsETETrainer(configurationFileName);
+			try
+			{
+				trainer.init();
+				try
+				{
+					trainer.train();
+				}
+				finally
+				{
+					trainer.cleanUp();
+				}
+			} catch (TeEngineMlException
+					| PluginAdministrationException
+					| ConfigurationException | LemmatizerException
+					| IOException e)
+			{
+				throw new BiuteeException("Failed to run",e);
+			}
+		}
+	}
+	
 	public RTEPairsETETrainer(String configurationFileName)
 	{
 		super(configurationFileName, ConfigurationParametersNames.RTE_PAIRS_TRAIN_AND_TEST_MODULE_NAME);
@@ -86,7 +99,7 @@ public class RTEPairsETETrainer extends EndToEndTrainer<THPairInstance,THPairPro
 	@Override
 	protected ClassifierGenerator createClassifierGenerator() throws BiuteeException
 	{
-		return new AccuracyClassifierGenerator(teSystemEnvironment.getFeatureVectorStructureOrganizer());
+		return new AccuracyClassifierGenerator(teSystemEnvironment.getClassifierFactory(), teSystemEnvironment.getFeatureVectorStructureOrganizer());
 	}
 	
 	@Override

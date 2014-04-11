@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.common.component.syntacticknowledge;
 
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
-import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 
 
@@ -19,13 +18,13 @@ import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
  */
 public class RuleMatch<I,S extends AbstractNode<I,S>> {
 
-	public RuleMatch(SyntacticRule<I,S> rule, BidirectionalMap<S,S> mapLHStoTree)
+	public RuleMatch(RuleWithConfidenceAndDescription<I,S> rule, BidirectionalMap<S,S> mapLHStoTree)
 	{
 		this.rule = rule;
 		this.mapLHStoTree = mapLHStoTree; 	
 	}
 	
-	public SyntacticRule<I,S> getRule()
+	public RuleWithConfidenceAndDescription<I,S> getRule()
 	{
 		return rule; 
 	}
@@ -34,9 +33,7 @@ public class RuleMatch<I,S extends AbstractNode<I,S>> {
 	{
 		return mapLHStoTree; 
 	}
-	
-	// protected 	
-	private SyntacticRule<I,S> rule;
-	private BidirectionalMap<S,S> mapLHStoTree; 
-	
+
+	private final RuleWithConfidenceAndDescription<I,S> rule;
+	private final BidirectionalMap<S,S> mapLHStoTree; 
 }

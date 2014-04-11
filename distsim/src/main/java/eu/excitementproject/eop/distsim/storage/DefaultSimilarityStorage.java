@@ -146,13 +146,17 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	 * 
 	 */
 	public DefaultSimilarityStorage(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
-		//this.
+		String redisDir = null;
+		try {
+			redisDir = params.get(Configuration.REDIS_BIN_DIR);
+		} catch (ConfigurationException e) {}
+		
 		String l2rRedisFile = params.get(Configuration.L2R_REDIS_DB_FILE);
-		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(l2rRedisFile);
+		this.leftElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(l2rRedisFile) : new RedisBasedStringListBasicMap(l2rRedisFile,redisDir));
 		try {
 			//this.
 			String r2lRedisFile= params.get(Configuration.R2L_REDIS_DB_FILE);
-			this.rightElemntSimilarities = new RedisBasedStringListBasicMap(r2lRedisFile);
+			this.rightElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(r2lRedisFile) : new RedisBasedStringListBasicMap(r2lRedisFile,redisDir));
 		} catch (ConfigurationException e) {
 			//this.l2rRedisFile = null;
 			this.rightElemntSimilarities = null;
@@ -277,9 +281,9 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 				
 				List<String> elementSimilarities;
 				if (ruleDirection == RuleDirection.LEFT_TO_RIGHT)
-					elementSimilarities = leftElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : -1));
+					elementSimilarities = leftElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : Long.MAX_VALUE));
 				else
-					elementSimilarities = rightElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : -1));
+					elementSimilarities = rightElemntSimilarities.getTopN(element1Key,(filterType == FilterType.TOP_N ? (int)filterVal : Long.MAX_VALUE));
 
 				if (elementSimilarities == null) {
 					logger.warn("No entry was found for key " + element1Key);
@@ -358,6 +362,17 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		return instanceName;
 	}
 	
+	/* (non-Javadoc)
+	 * @see eu.excitementproject.eop.distsim.storage.SimilarityStorage#close()
+	 */
+	@Override
+	public void close() {
+		leftElemntSimilarities.close();
+		if (rightElemntSimilarities != null)
+			rightElemntSimilarities.close();
+		
+	}
+	
 	// the name of the l2r redis file (for closing)
 	//protected String l2rRedisFile;
 	// the name of the r2l redis file (for closing)
@@ -370,4 +385,6 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	protected String elementClassName;
 	protected final String resourceName;
 	protected String instanceName;
+
+
 }

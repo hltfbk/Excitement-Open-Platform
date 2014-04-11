@@ -494,13 +494,13 @@ public class VisualTracingTool
 			else
 			{
 				logger.info("Constructing underlying system was interrupted.");
-				Exception exception = systemCreator.getException();
+				Throwable exception = systemCreator.getException();
 				if (exception != null)
 				{
 					exception.printStackTrace(System.out);
 					ExceptionUtil.logException(exception, logger);
 				}
-				System.exit(0);
+				System.exit(1);
 			}
 		}
 		
@@ -581,12 +581,16 @@ public class VisualTracingTool
 				new LogInitializer(args[0]);
 			logInitializer.init();
 		}
-		catch(Exception e)
+		catch(Throwable e)
 		{
 			initializationSucceeded=false;
-			e.printStackTrace(System.out);
-			System.out.println();
-			System.out.println("Initialization failed. Aborting.");
+			try
+			{
+				e.printStackTrace(System.out);
+				System.out.println();
+				System.out.println("Initialization failed. Aborting.");
+			}
+			catch(Throwable tt){}
 		}
 		if (initializationSucceeded)
 		{
@@ -597,12 +601,16 @@ public class VisualTracingTool
 				VisualTracingTool cpe = new VisualTracingTool(args[0]);
 				cpe.createAndShowGUI();
 			}
-			catch (Exception e)
+			catch (Throwable e)
 			{
-				ExceptionUtil.logException(e, logger);
-				System.out.println();
-				System.out.println("Presenting GUI failed. Aborting.");
-				System.exit(0);
+				try
+				{
+					ExceptionUtil.logException(e, logger);
+					System.out.println();
+					System.out.println("Presenting GUI failed. Aborting.");
+					System.exit(0);
+				}
+				catch(Throwable tt){}
 			}
 		}
 	}

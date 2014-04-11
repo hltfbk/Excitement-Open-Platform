@@ -15,6 +15,7 @@
 		<property name = "test_data_annotated">true</property>
 		<property name = "test_serialization_filename">dummy_test.ser</property>
 		
+		<property name = "sentence_splitter">LING_PIPE</property>
 		<property name = "easyfirst_stanford_pos_tagger">../third-party/stanford-postagger-full-2008-09-28/models/bidirectional-wsj-0-18.tagger</property>
 		<property name = "stanford_ner_classifier_path">../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz</property>
 		<property name = "new_normalizer">../third-party/BiuNormalizer/string_rules.txt</property>
@@ -101,7 +102,6 @@
 	<section name = "transformations">
 		<!--<property name = "knowledge_resources">WORDNET,WIKIPEDIA,GEO,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN,ORIG_DIRT,REVERB,BINARY_LIN,FRAMENET,SYNTACTIC</property>-->
 		<!--<property name = "multiword_resources">WORDNET,WIKIPEDIA,CATVAR,BAP,LIN_DEPENDENCY_ORIGINAL,LIN_PROXIMITY_ORIGINAL,LIN_DEPENDENCY_REUTERS,VERB_OCEAN</property>-->
-		<!--<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC,REDIS_LIN_PROXIMITY,REDIS_LIN_DEPENDENCY,REDIS_BAP</property>-->
 		<property name = "knowledge_resources">WORDNET,VERB_OCEAN,SYNTACTIC</property>
 		<property name = "multiword_resources">WORDNET,VERB_OCEAN</property>
 		<property name = "stop_words">stopwords-Eyal.txt</property>
@@ -109,8 +109,8 @@
 
 
 	<section name="pasta-builder">
-		<property name="nomlex-file">/media/Data/asher/data/code/eclipse_juno_1_7_linux/wrappers/data/nominalizations/nomlex-plus.txt</property>
-		<property name="nomlex-class-role-table">/media/Data/asher/data/code/eclipse_juno_1_7_linux/wrappers/data/nominalizations/ClassRoleTable.txt</property>
+		<property name="nomlex-file">nomlex-plus.txt</property>
+		<property name="nomlex-class-role-table">ClassRoleTable.txt</property>
 		<property name="mode">EXPANDED</property>
 	</section>
 
@@ -252,40 +252,129 @@
 		<property name = "conll_format_output_directory">annotatedSentences</property>
 		<property name = "do_annotations">true</property>
 	</section>
-	
-	
+
 	<section name = "redis-bap">
-	          <!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
-		<!--<property name="redis-binary-dir">.</property>-->
 		<property name="resource-name">distsim-bap</property>
 		<property name="top-n-rules">20</property>
+				
+		<!-- There are two options for running the Redis server-->
+		
+		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
+		<!-- The limitation of this option: the Redis server will run in the localhost-->
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->				
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/bap/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/bap/similarity-l2r.rdb</property>
 		<!-- EDIT: set here the path to the right-2left similarity file -->
-		<property name="r2l-redis-db-file">../resources/bap/similarity-r2l.rdb</property>
+		<property name="r2l-redis-db-file">$REDISDATA/reuters/bap/similarity-r2l.rdb</property>
+		
+		<!-- Option 2: In case we want the Redis server to run on another hos -->
+		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
+		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
+		<!--
+		<property name="l2r-redis-host">te-srv2</property>
+		<property name="l2r-redis-port">7000</property>
+		<property name="r2l-redis-host">te-srv2</property>
+		<property name="r2l-redis-port">7001</property>
+		-->
 	</section>
 	
 	<section name = "redis-lin-proximity">
-		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
-		<!--<property name="redis-binary-dir">.</property>-->
 		<property name="resource-name">distsim-lin-proximity</property>
 		<property name="top-n-rules">20</property>
+		
+		<!-- There are two options for running the Redis server-->
+		
+		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
+		<!-- The limitation of this option: the Redis server will run in the localhost-->
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->				
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/lin/proximity/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/lin/proximity/similarity-l2r.rdb</property>
 		<!-- EDIT: set here the path to the right-2left similarity file -->
-		<property name="r2l-redis-db-file">../resources/lin/proximity/similarity-r2l.rdb</property>
+		<property name="r2l-redis-db-file">$REDISDATA/reuters/lin/proximity/similarity-r2l.rdb</property>
+		
+		<!-- Option 2: In case we want the Redis server to run on another hos -->
+		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
+		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
+		<!--
+		<property name="l2r-redis-host">te-srv2</property>
+		<property name="l2r-redis-port">7002</property>
+		<property name="r2l-redis-host">te-srv2</property>
+		<property name="r2l-redis-port">7003</property>
+		-->
 	</section>
 	
 	<section name = "redis-lin-dependency">
-		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
-		<!--<property name="redis-binary-dir">.</property>-->
 		<property name="resource-name">distsim-lin-dependency</property>
 		<property name="top-n-rules">20</property>
+		
+		<!-- There are two options for running the Redis server-->
+		
+		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
+		<!-- The limitation of this option: the Redis server will run in the localhost-->
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->			
 		<!-- EDIT: set here the path to the left-2-right similarity file -->
-		<property name="l2r-redis-db-file">../resources/lin/dependency/similarity-l2r.rdb</property>
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/lin/dependency/similarity-l2r.rdb</property>
 		<!-- EDIT: set here the path to the right-2left similarity file -->
-		<property name="r2l-redis-db-file">../resources/lin/dependency/similarity-r2l.rdb</property>
+		<property name="r2l-redis-db-file">$REDISDATA/reuters/lin/dependency/similarity-r2l.rdb</property>
+		
+		<!-- Option 2: In case we want the Redis server to run on another hos -->
+		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
+		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
+		<!--
+		<property name="l2r-redis-host">te-srv2</property>
+		<property name="l2r-redis-port">7004</property>
+		<property name="r2l-redis-host">te-srv2</property>
+		<property name="r2l-redis-port">7005</property>
+		-->
 	</section>
+
+	<section name="redis-dirt"> 
+		<property name="resource-name">distsim-dirt</property> 
+		<property name="top-n-rules">20</property>
+		
+		<!-- There are two options for running the Redis server-->
+		
+		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
+		<!-- The limitation of this option: the Redis server will run in the localhost-->
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->			
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/dirt/similarity-l2r.rdb</property>
+		
+		<!-- Option 2: In case we want the Redis server to run on another hos -->
+		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
+		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
+		<!--
+		<property name="l2r-redis-host">te-srv2</property>
+		<property name="l2r-redis-port">7006</property>
+		-->
+	</section>
+	
+	<section name="redis-reverb"> 
+		<property name="resource-name">distsim-reverb</property> 
+		<property name="top-n-rules">20</property>
+		<property name="element-class">eu.excitementproject.eop.distsim.items.PredicateElement</property>
+		<!-- There are two options for running the Redis server-->
+		
+		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
+		<!-- The limitation of this option: the Redis server will run in the localhost-->
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->			
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">$REDISDATA/reuters/reverb/similarity-l2r.rdb</property>
+		
+		<!-- Option 2: In case we want the Redis server to run on another hos -->
+		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
+		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
+		<!--
+		<property name="l2r-redis-host">te-srv2</property>
+		<property name="l2r-redis-port">7007</property>
+		-->
+	</section>
+
 
 </configuration>
 

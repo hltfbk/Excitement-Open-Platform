@@ -1,11 +1,11 @@
 package eu.excitementproject.eop.transformations.utilities;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.IdLemmaPosRelNodeString;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 
 /**
  * Static methods that represent a given rule as a string.

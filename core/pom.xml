@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>eu.excitementproject</groupId>
 		<artifactId>eop</artifactId>
-		<version>1.1.2-SNAPSHOT</version>
+		<version>1.1.3-SNAPSHOT</version>
 	</parent>
 	<artifactId>core</artifactId>
 	<name>core</name>
@@ -17,13 +17,13 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>1.1.2-SNAPSHOT</version>
+			<version>1.1.3-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>
     		<groupId>eu.excitementproject</groupId>
     		<artifactId>distsim</artifactId>
-    		<version>1.1.2-SNAPSHOT</version>
+    		<version>1.1.3-SNAPSHOT</version>
     	</dependency>
     	
 		<dependency>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>lap</artifactId>
-			<version>1.1.2-SNAPSHOT</version>
+			<version>1.1.3-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>unituebingen</groupId>
@@ -75,11 +75,25 @@
 				de.tudarmstadt.ukp.similarity.algorithms.style-asl
 			</artifactId>
 		</dependency>
+		<!-- 
+		In some POM configurations, Maven dependency wrongly include older
+		version of DKPro lexmorph Jar artifact: we use 1.4.0, but it includes 1.3.0. 
+		This artifact defines type systems related to Token and POS; and using wrong
+		one (1.3.0) causes breaking down on POS types.
+		Following we define that the artifact's transitive dependency should not be
+		followed on lexmorph module where that module is wrongly versioned. 
+		-->
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
 			<artifactId>
 				de.tudarmstadt.ukp.similarity.algorithms.structure-asl
 			</artifactId>
+            <exclusions>
+            	<exclusion>
+                	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+                    <artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
+            	</exclusion>
+        	</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>

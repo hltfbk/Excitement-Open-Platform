@@ -7,6 +7,7 @@ import java.io.ObjectInputStream;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;

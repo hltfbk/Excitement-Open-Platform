@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="493530.txt_1_1-461540.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was not as good as expected</t>
+		<h>Better food would be good</h>
+	</pair>
+	<pair id="464663.txt_1_1-430935.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't like the food</t>
+		<h>Food need to be improved</h>
+	</pair>
+	<pair id="175519.txt_2_0-429450.txt_5_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have better food in the buffet car</t>
+		<h>The food offering is in need of a improvement</h>
+	</pair>
+	<pair id="513573.txt_2_0-164111.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the food is terrible</t>
+		<h>give us the option to pay for a better meal</h>
+	</pair>
+	<pair id="446414.txt_1_0-464663.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring back the nice food</t>
+		<h>Do n't like the food</h>
+	</pair>
+	<pair id="429450.txt_5_3-464663.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The food is in need of a improvement</t>
+		<h>Do n't like the food</h>
+	</pair>
+	<pair id="461540.txt_1_0-175519.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Better food would be good</t>
+		<h>It would be good to have better food</h>
+	</pair>
+	<pair id="357315.txt_1_0-175519.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food in resto seems to have gone downhill</t>
+		<h>It would be good to have better food in the buffet car</h>
+	</pair>
+	<pair id="480047.txt_1_0-464663.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was awful</t>
+		<h>Do n't like the food</h>
+	</pair>
+	<pair id="357315.txt_1_1-464663.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food seems to have gone downhill</t>
+		<h>Do n't like the food</h>
+	</pair>
+	<pair id="92454.txt_1_2-310443.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food could be a bit better</t>
+		<h>Food is poor now</h>
+	</pair>
+	<pair id="357315.txt_1_1-175519.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food seems to have gone downhill</t>
+		<h>It would be good to have better food</h>
+	</pair>
+	<pair id="480047.txt_1_0-43733.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was awful</t>
+		<h>Better food</h>
+	</pair>
+	<pair id="480047.txt_1_0-430935.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>food was awful</t>
+		<h>Food need to be improved</h>
+	</pair>
+	<pair id="46653.txt_9_1-430935.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>better food would be good</t>
+		<h>Food need to be improved</h>
+	</pair>
+	<pair id="464663.txt_1_1-461540.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't like the food</t>
+		<h>Better food would be good</h>
+	</pair>
+	<pair id="493530.txt_1_0-430935.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food in standard magnum was not as good as expected</t>
+		<h>Food for lunch need to be improved</h>
+	</pair>
+	<pair id="327258.txt_1_0-461540.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food is poor</t>
+		<h>Better food would be good</h>
+	</pair>
+	<pair id="92454.txt_1_1-310443.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food could be better in standard leisure</t>
+		<h>Food is poor now</h>
+	</pair>
+	<pair id="430935.txt_1_1-476365.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food need to be improved</t>
+		<h>Food is poor</h>
+	</pair>
+	<pair id="430935.txt_1_1-310443.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food need to be improved</t>
+		<h>Food is poor</h>
+	</pair>
+	<pair id="40604.txt_1_0-46653.txt_9_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food is really poor</t>
+		<h>better food would be good</h>
+	</pair>
+</entailment-corpus>
+

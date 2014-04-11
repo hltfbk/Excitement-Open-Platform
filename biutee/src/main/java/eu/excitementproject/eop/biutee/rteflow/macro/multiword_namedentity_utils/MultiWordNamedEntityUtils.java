@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
@@ -22,7 +23,6 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerPosTagConvertor;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalmw_utils.LexicalRuleInTreeFinder;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalmw_utils.ListNodesToTree;
 import eu.excitementproject.eop.transformations.utilities.RuleToString;

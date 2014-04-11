@@ -1,4 +1,5 @@
 package eu.excitementproject.eop.biutee.script;
+
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME;
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_DYNAMIC_PARAMETER_NAME;
@@ -26,6 +27,9 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.biutee.rteflow.macro.InitializationTextTreesProcessor;
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
+import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResource;
+import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticResourceCloseException;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSet;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableSetWrapper;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
@@ -33,7 +37,10 @@ import eu.excitementproject.eop.common.representation.parse.tree.dependency.basi
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.syntacticknowledge.SimilarityStorageBasedDIRTSyntacticResource;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
+import eu.excitementproject.eop.distsim.redis.RedisRunException;
+import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.transformations.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.builtin_knowledge.LexicalResourcesFactory;
@@ -46,7 +53,6 @@ import eu.excitementproject.eop.transformations.operations.rules.LexicalRule;
 import eu.excitementproject.eop.transformations.operations.rules.LexicalRuleBaseCloseException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseEnvelope;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.SetBagOfRulesRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.distsimnew.DirtDBRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ChainOfLexicalRules;
@@ -140,6 +146,23 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 
 			}
 		}
+		if (excitementSyntacticResources!=null)
+		{
+			for (SyntacticResource<?, ?> resource : excitementSyntacticResources)
+			{
+				String name = "Unknown resource name";
+				try{name = resource.getComponentName();}catch(Throwable t){}
+				try
+				{
+					if (logger.isDebugEnabled()){logger.debug("Closing syntactic resource "+name);}
+					resource.close();
+				}
+				catch(SyntacticResourceCloseException | RuntimeException e)
+				{
+					logger.error("The syntactic resource \""+name+"\" could not be closed. However, this does not block the program, but only logged as an error.\n",e);
+				}
+			}
+		}
 		// TODO: Clean also chain of lexical rules!
 	}
 	
@@ -201,6 +224,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 
 		// Initialize rule bases.
 		listDirtDbRuleBases = new LinkedList<DirtDBRuleBase>();
+		excitementSyntacticResources = new LinkedList<>();
 
 		ruleBasesEnvelopes = new LinkedHashMap<String, RuleBaseEnvelope<Info,BasicNode>>();
 		byLemmaPosLexicalRuleBases = new LinkedHashMap<String, ByLemmaPosLexicalRuleBase<LexicalRule>>();
@@ -233,6 +257,22 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 				items.add(new ItemForKnowedgeResource(resource, new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName())));
 				// otherIterationsList.add(new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName()));
 				handledOutsideOfSwitch=true;
+			}
+			else if (resource.isExcitementDIRTlike())
+			{
+				try
+				{
+					SimilarityStorageBasedDIRTSyntacticResource excitementSyntacticResource = new SimilarityStorageBasedDIRTSyntacticResource(resourceParams);
+					excitementSyntacticResources.add(excitementSyntacticResource);
+					RuleBaseEnvelope<Info,BasicNode> syntacticResourceEnvelope = new RuleBaseEnvelope<Info,BasicNode>(excitementSyntacticResource);
+					ruleBasesEnvelopes.put(resource.getDisplayName(), syntacticResourceEnvelope);
+					items.add(new ItemForKnowedgeResource(resource, new SingleOperationItem(SingleOperationType.RULE_APPLICATION, resource.getDisplayName())));
+					handledOutsideOfSwitch=true;
+				}
+				catch (ElementTypeException | RedisRunException e)
+				{
+					throw new OperationException("Failed to initialize syntactic resource. See nested exception.",e);
+				}
 			}
 			else
 			{
@@ -369,6 +409,7 @@ public abstract class OperationsScriptForBuiltinKnowledge extends OperationsScri
 	protected List<ItemForKnowedgeResource> items;
 
 	protected List<DirtDBRuleBase> listDirtDbRuleBases;
+	protected List<SyntacticResource<?,?>> excitementSyntacticResources = null;
 	protected PlisRuleBase graphBasedLexicalChainRuleBase = null;
 	protected BuilderSetOfWords simpleLexicalChainBuilder = null;
 	protected SimpleLexicalChainRuleBase simpleLexicalChainRuleBase = null;

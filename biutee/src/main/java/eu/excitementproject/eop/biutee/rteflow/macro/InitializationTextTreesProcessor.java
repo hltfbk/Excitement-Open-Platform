@@ -24,6 +24,7 @@ import eu.excitementproject.eop.biutee.rteflow.micro.OperationsEnvironment;
 import eu.excitementproject.eop.biutee.rteflow.micro.TreesGeneratorByOperations;
 import eu.excitementproject.eop.biutee.rteflow.systems.TESystemEnvironment;
 import eu.excitementproject.eop.biutee.script.OperationsScript;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.SimpleBidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableMapWrapper;
@@ -54,7 +55,6 @@ import eu.excitementproject.eop.transformations.operations.rules.BagOfRulesRuleB
 import eu.excitementproject.eop.transformations.operations.rules.ByLemmaPosLexicalRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.LexicalRule;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseWithNamedEntities;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.SetBagOfRulesRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.distsimnew.TemplatesFromTree;
 import eu.excitementproject.eop.transformations.operations.rules.lexicalchain.ChainOfLexicalRules;
@@ -306,9 +306,12 @@ public class InitializationTextTreesProcessor
 			gapEnvironment = null;
 		}
 		
-		
+		for (ExtendedNode tree : originalTextTrees)
+		{
+			tree.seal();
+		}
 		// Stores many objects that were created during initialization.
-		operationsEnvironment = new OperationsEnvironment(this.featureUpdate,this.hypothesis,this.hypothesisLemmas,hypothesisLemmasAndCanonicalPos,this.hypothesisLemmasOnly,this.hypothesisLemmasLowerCase,this.hypothesisNumberOfNodes,this.substitutionMultiWordFinder,this.lemmatizer,this.coreferenceInformation,this.mapRuleBasesForLexicalMultiWord,this.hypothesisTemplates, this.multiWordNamedEntityRuleBase, this.richInformationInTreeHistory, teSystemEnvironment.getAlignmentCriteria(),teSystemEnvironment.getStopWords(),teSystemEnvironment.getParser(),teSystemEnvironment.isCollapseMode());
+		operationsEnvironment = new OperationsEnvironment(this.featureUpdate,this.hypothesis,this.hypothesisLemmas,hypothesisLemmasAndCanonicalPos,this.hypothesisLemmasOnly,this.hypothesisLemmasLowerCase,this.hypothesisNumberOfNodes,this.substitutionMultiWordFinder,this.lemmatizer,this.coreferenceInformation,this.mapRuleBasesForLexicalMultiWord,this.hypothesisTemplates, this.multiWordNamedEntityRuleBase, this.richInformationInTreeHistory, teSystemEnvironment.getAlignmentCriteria(),teSystemEnvironment.getStopWords(),teSystemEnvironment.getParser(),teSystemEnvironment.isCollapseMode(),hypothesisTreeAsBasicNode);
 	}
 	
 	public OriginalTreesAfterInitialization getOriginalTreesAfterInitialization()

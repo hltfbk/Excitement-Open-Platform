@@ -142,7 +142,7 @@ public class PerformFactoryFactory
 		}
 		case RULE_APPLICATION:
 		{
-			return new SingleItemList<PerformFactory<? extends Specification>>(new RulePerformFactory(operationsEnvironment.getHypothesisTemplates(), operationsEnvironment.getHypothesisLemmasOnly(),operationsEnvironment.isCollapseMode()));
+			return new SingleItemList<PerformFactory<? extends Specification>>(new RulePerformFactory(operationsEnvironment.getHypothesisTemplates(), operationsEnvironment.getHypothesisLemmasOnly(), operationsEnvironment.getHypothesisTreeAsBasicNode(), operationsEnvironment.isCollapseMode()));
 		}
 		case META_RULE_APPLICATION:
 		{

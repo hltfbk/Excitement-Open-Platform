@@ -1,13 +1,13 @@
 package eu.excitementproject.eop.biutee.small_unit_tests;
 import java.io.File;
 
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.Info;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
 import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.StringUtil;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.SetBagOfRulesRuleBase;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 

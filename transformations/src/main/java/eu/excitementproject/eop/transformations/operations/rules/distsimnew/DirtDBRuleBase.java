@@ -20,6 +20,7 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 
 import eu.excitementproject.eop.common.codeannotations.NotThreadSafe;
+import eu.excitementproject.eop.common.component.syntacticknowledge.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.common.component.syntacticknowledge.SyntacticRule;
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
 import eu.excitementproject.eop.common.datastructures.DummySet;
@@ -41,7 +42,6 @@ import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.Temp
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.TemplateToTreeException;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.RuleBaseException;
-import eu.excitementproject.eop.transformations.operations.rules.RuleWithConfidenceAndDescription;
 import eu.excitementproject.eop.transformations.operations.rules.distsim.DistSimParameters;
 import eu.excitementproject.eop.transformations.representation.ExtendedInfo;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;

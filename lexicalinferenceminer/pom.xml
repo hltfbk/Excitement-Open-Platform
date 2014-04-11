@@ -4,7 +4,7 @@
    	<parent>
 		<groupId>eu.excitementproject</groupId>
 	  	<artifactId>eop</artifactId>
-	    <version>1.1.2-SNAPSHOT</version>
+	    <version>1.1.3-SNAPSHOT</version>
 	</parent>
             
    	
@@ -28,20 +28,15 @@
     <dependency>
 		<groupId>eu.excitementproject</groupId>
   		<artifactId>common</artifactId>
-  		<version>1.1.2-SNAPSHOT</version>
+  		<version>1.1.3-SNAPSHOT</version>
   	</dependency>
       
           
-     <dependency>
-		<groupId>ac.biu.nlp</groupId>
-  		<artifactId>parse-utils</artifactId>
-  		<version>001</version>
-  	</dependency>
-  	
+    
      <dependency>
 	    	<groupId>eu.excitementproject</groupId>
     		<artifactId>lap</artifactId>
-    		<version>1.1.2-SNAPSHOT</version>
+    		<version>1.1.3-SNAPSHOT</version>
     	</dependency>
     	
          	 

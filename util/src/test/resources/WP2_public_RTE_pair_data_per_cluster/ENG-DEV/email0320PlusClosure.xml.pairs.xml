@@ -1,0 +1,2051 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="415044.txt_1_1-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_1-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="478371.txt_1_0-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_0-483394.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="511484.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="415044.txt_1_1-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="469143.txt_1_0-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_0-423940.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="30.txt_3_1-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="30.txt_3_1-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="30.txt_3_0-423940.txt_5_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="498974.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="327999.txt_4_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="478371.txt_1_0-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="478371.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="511484.txt_1_0-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="469143.txt_1_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="475555.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="423940.txt_5_3-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_5_3-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="30.txt_3_1-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="30.txt_3_1-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="30.txt_3_0-483394.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="478371.txt_1_0-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="483394.txt_1_4-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="511484.txt_1_0-483394.txt_1_4" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="483394.txt_1_2-423940.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="469143.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="483394.txt_1_3-423940.txt_5_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="415044.txt_1_0-423940.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="423940.txt_5_3-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="483394.txt_1_4-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_1-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="469143.txt_1_0-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_1-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="498974.txt_1_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="327999.txt_4_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="478371.txt_1_0-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="469143.txt_1_0-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="478371.txt_1_0-483394.txt_1_4" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="511484.txt_1_0-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="478371.txt_1_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="30.txt_3_0-423940.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="469143.txt_1_0-483394.txt_1_4" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="30.txt_3_1-483394.txt_1_4" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="505956.txt_1_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_4-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="511484.txt_1_0-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_4-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="30.txt_3_1-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="511484.txt_1_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="511484.txt_1_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="469143.txt_1_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="469143.txt_1_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="469143.txt_1_0-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_4-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_4-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="478371.txt_1_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="478371.txt_1_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="478371.txt_1_0-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_4-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_4-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="415044.txt_1_1-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="415044.txt_1_1-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_2-423940.txt_5_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="415044.txt_1_1-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="483394.txt_1_4-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="415044.txt_1_0-423940.txt_5_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="30.txt_3_1-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="423940.txt_6_1-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="511484.txt_1_0-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="511484.txt_1_0-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="511484.txt_1_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="30.txt_3_1-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="415044.txt_1_1-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="505956.txt_1_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="483394.txt_1_3-423940.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="30.txt_3_1-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="469143.txt_1_0-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="30.txt_3_1-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_4-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="415044.txt_1_1-483394.txt_1_4" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="30.txt_3_0-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="30.txt_3_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="30.txt_3_0-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="30.txt_3_0-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="30.txt_3_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="30.txt_3_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="30.txt_3_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="30.txt_3_0-483394.txt_1_4" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="30.txt_3_0-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="30.txt_3_0-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="415044.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="415044.txt_1_0-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="415044.txt_1_0-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="415044.txt_1_0-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="415044.txt_1_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="415044.txt_1_0-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="415044.txt_1_0-483394.txt_1_4" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="415044.txt_1_0-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="483394.txt_1_0-423940.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="483394.txt_1_0-423940.txt_5_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="483394.txt_1_3-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="483394.txt_1_3-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="483394.txt_1_3-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="483394.txt_1_3-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_3-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_3-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_3-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_3-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="483394.txt_1_3-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="483394.txt_1_3-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_2-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="483394.txt_1_2-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="483394.txt_1_2-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="483394.txt_1_2-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_2-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_2-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_2-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_2-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="483394.txt_1_2-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="483394.txt_1_2-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="423940.txt_5_2-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_5_2-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_5_1-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="423940.txt_5_1-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_5_1-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_5_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="423940.txt_5_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_5_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_0-505956.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="483394.txt_1_0-473384.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="483394.txt_1_0-478371.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="483394.txt_1_0-511484.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_0-498974.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_0-327999.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_0-30.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_0-423940.txt_5_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="483394.txt_1_0-469143.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="483394.txt_1_0-415044.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="30.txt_3_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="30.txt_3_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="30.txt_3_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="30.txt_3_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="30.txt_3_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="30.txt_3_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="30.txt_3_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="30.txt_3_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="30.txt_3_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space so would not recommend if travelling with large</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="30.txt_3_1-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="30.txt_3_1-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="30.txt_3_1-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="30.txt_3_1-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="30.txt_3_1-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="30.txt_3_1-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="30.txt_3_1-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="30.txt_3_1-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="30.txt_3_1-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="30.txt_3_1-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="30.txt_3_1-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="30.txt_3_1-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>limited luggage space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="327999.txt_4_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="327999.txt_4_0-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="327999.txt_4_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="327999.txt_4_0-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="327999.txt_4_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="327999.txt_4_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="327999.txt_4_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="327999.txt_4_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="327999.txt_4_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="327999.txt_4_0-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="327999.txt_4_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="327999.txt_4_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="327999.txt_4_0-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="327999.txt_4_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="327999.txt_4_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="327999.txt_4_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="327999.txt_4_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="327999.txt_4_0-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="327999.txt_4_0-498974.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="327999.txt_4_0-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="327999.txt_4_0-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="415044.txt_1_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="415044.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="415044.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="415044.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="415044.txt_1_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="415044.txt_1_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="415044.txt_1_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs more large luggage space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="415044.txt_1_1-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="415044.txt_1_1-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="415044.txt_1_1-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="415044.txt_1_1-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="415044.txt_1_1-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="415044.txt_1_1-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="415044.txt_1_1-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="415044.txt_1_1-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="415044.txt_1_1-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="415044.txt_1_1-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="415044.txt_1_1-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="415044.txt_1_1-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>needs large luggage space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="423940.txt_5_0-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_0-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_0-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="423940.txt_5_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="423940.txt_5_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_0-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="423940.txt_5_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_0-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_0-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="423940.txt_5_0-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is too small</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_1-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="423940.txt_5_1-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_1-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_1-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_1-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_1-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_1-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="423940.txt_5_1-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="423940.txt_5_1-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_1-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="423940.txt_5_1-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_1-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_1-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_1-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_1-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_1-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="423940.txt_5_1-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is too small</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="423940.txt_5_2-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_2-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_2-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="423940.txt_5_2-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="423940.txt_5_2-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="423940.txt_5_2-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_2-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_2-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_2-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_2-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="423940.txt_5_2-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is small</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_3-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="423940.txt_5_3-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_3-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_3-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_3-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_3-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="423940.txt_5_3-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="423940.txt_5_3-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="423940.txt_5_3-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="423940.txt_5_3-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="423940.txt_5_3-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_3-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_3-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_5_3-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_3-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="423940.txt_5_3-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="423940.txt_5_3-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is small</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="423940.txt_6_0-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-327999.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_6_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="423940.txt_6_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="423940.txt_6_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="423940.txt_6_0-423940.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="423940.txt_6_0-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="423940.txt_6_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="423940.txt_6_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="423940.txt_6_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_6_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="423940.txt_6_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_6_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="423940.txt_6_0-498974.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_6_0-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="423940.txt_6_0-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space currently is poorly organised</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_1-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="423940.txt_6_1-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_1-327999.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_6_1-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_1-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_1-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="423940.txt_6_1-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="423940.txt_6_1-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="423940.txt_6_1-423940.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="423940.txt_6_1-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="423940.txt_6_1-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="423940.txt_6_1-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="423940.txt_6_1-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="423940.txt_6_1-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_6_1-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="423940.txt_6_1-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="423940.txt_6_1-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="423940.txt_6_1-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="423940.txt_6_1-498974.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="423940.txt_6_1-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="423940.txt_6_1-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The space is poorly organised</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="469143.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="469143.txt_1_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="469143.txt_1_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="469143.txt_1_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="469143.txt_1_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="469143.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="469143.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="469143.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="469143.txt_1_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="469143.txt_1_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="469143.txt_1_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="469143.txt_1_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="469143.txt_1_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>There is not enough space for luggage</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="473384.txt_2_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="473384.txt_2_0-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_0-327999.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="473384.txt_2_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_0-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="473384.txt_2_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="473384.txt_2_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="473384.txt_2_0-423940.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="473384.txt_2_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="473384.txt_2_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="473384.txt_2_0-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="473384.txt_2_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_0-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="473384.txt_2_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="473384.txt_2_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="473384.txt_2_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="473384.txt_2_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="473384.txt_2_0-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="473384.txt_2_0-498974.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="473384.txt_2_0-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="473384.txt_2_0-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space at Frowntown</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_1-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="473384.txt_2_1-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_1-327999.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="473384.txt_2_1-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_1-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_1-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="473384.txt_2_1-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="473384.txt_2_1-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="473384.txt_2_1-423940.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="473384.txt_2_1-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="473384.txt_2_1-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="473384.txt_2_1-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="473384.txt_2_1-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="473384.txt_2_1-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="473384.txt_2_1-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="473384.txt_2_1-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="473384.txt_2_1-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="473384.txt_2_1-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="473384.txt_2_1-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="473384.txt_2_1-498974.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="473384.txt_2_1-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="473384.txt_2_1-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Improve the space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="475555.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="475555.txt_1_0-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="475555.txt_1_0-327999.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="475555.txt_1_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="475555.txt_1_0-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="475555.txt_1_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="475555.txt_1_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="475555.txt_1_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="475555.txt_1_0-423940.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="475555.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="475555.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="475555.txt_1_0-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="475555.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="475555.txt_1_0-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="475555.txt_1_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="475555.txt_1_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="475555.txt_1_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="475555.txt_1_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="475555.txt_1_0-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="475555.txt_1_0-498974.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="475555.txt_1_0-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="475555.txt_1_0-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Almost confortable except luggage space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="478371.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="478371.txt_1_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="478371.txt_1_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="478371.txt_1_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="478371.txt_1_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="478371.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="478371.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="478371.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="478371.txt_1_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="478371.txt_1_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="478371.txt_1_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="478371.txt_1_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="478371.txt_1_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More suitcase space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="483394.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="483394.txt_1_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="483394.txt_1_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space on trains</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_1-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="483394.txt_1_1-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_1-327999.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_1-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_1-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_1-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="483394.txt_1_1-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="483394.txt_1_1-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="483394.txt_1_1-423940.txt_5_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>The space is small</h>
+	</pair>
+	<pair id="483394.txt_1_1-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_1-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_1-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="483394.txt_1_1-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="483394.txt_1_1-473384.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>Improve the space</h>
+	</pair>
+	<pair id="483394.txt_1_1-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_1-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="483394.txt_1_1-498974.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="483394.txt_1_1-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="483394.txt_1_1-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little space on trains</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_2-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="483394.txt_1_2-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_2-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="483394.txt_1_2-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_2-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_2-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="483394.txt_1_2-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space on trains</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_3-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="483394.txt_1_3-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_3-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="483394.txt_1_3-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_3-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_3-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="483394.txt_1_3-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too little baggage space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_4-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="483394.txt_1_4-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="483394.txt_1_4-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="483394.txt_1_4-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="483394.txt_1_4-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="483394.txt_1_4-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_4-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="483394.txt_1_4-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="483394.txt_1_4-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little baggage space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="498974.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="498974.txt_1_0-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="498974.txt_1_0-327999.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>not enough space</h>
+	</pair>
+	<pair id="498974.txt_1_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="498974.txt_1_0-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="498974.txt_1_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="498974.txt_1_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="498974.txt_1_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="498974.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="498974.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="498974.txt_1_0-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="498974.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="498974.txt_1_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="498974.txt_1_0-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="498974.txt_1_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="498974.txt_1_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="498974.txt_1_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="498974.txt_1_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="498974.txt_1_0-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="498974.txt_1_0-505956.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>More space would make a lot of difference</h>
+	</pair>
+	<pair id="498974.txt_1_0-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>not enough space</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="505956.txt_1_0-30.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>limited luggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-415044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>needs large luggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="505956.txt_1_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="505956.txt_1_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="505956.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="505956.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="505956.txt_1_0-469143.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>There is not enough space for luggage</h>
+	</pair>
+	<pair id="505956.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="505956.txt_1_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-478371.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>More suitcase space</h>
+	</pair>
+	<pair id="505956.txt_1_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="505956.txt_1_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="505956.txt_1_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="505956.txt_1_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>too little baggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-483394.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>little baggage space</h>
+	</pair>
+	<pair id="505956.txt_1_0-511484.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space would make a lot of difference</t>
+		<h>Would welcome extra luggage space</h>
+	</pair>
+	<pair id="511484.txt_1_0-30.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>limited luggage space so would not recommend if travelling with large</h>
+	</pair>
+	<pair id="511484.txt_1_0-415044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>needs more large luggage space</h>
+	</pair>
+	<pair id="511484.txt_1_0-423940.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>The space currently is too small</h>
+	</pair>
+	<pair id="511484.txt_1_0-423940.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>The space is too small</h>
+	</pair>
+	<pair id="511484.txt_1_0-423940.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>The space currently is small</h>
+	</pair>
+	<pair id="511484.txt_1_0-423940.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>The space currently is poorly organised</h>
+	</pair>
+	<pair id="511484.txt_1_0-423940.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>The space is poorly organised</h>
+	</pair>
+	<pair id="511484.txt_1_0-473384.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>Improve the space at Frowntown</h>
+	</pair>
+	<pair id="511484.txt_1_0-475555.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>Almost confortable except luggage space</h>
+	</pair>
+	<pair id="511484.txt_1_0-483394.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>too little baggage space on trains</h>
+	</pair>
+	<pair id="511484.txt_1_0-483394.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>too little space on trains</h>
+	</pair>
+	<pair id="511484.txt_1_0-483394.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>little baggage space on trains</h>
+	</pair>
+	<pair id="511484.txt_1_0-483394.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome extra luggage space</t>
+		<h>too little baggage space</h>
+	</pair>
+</entailment-corpus>

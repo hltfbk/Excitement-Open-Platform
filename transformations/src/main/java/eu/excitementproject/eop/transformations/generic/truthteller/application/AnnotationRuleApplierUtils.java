@@ -7,10 +7,10 @@ import java.util.Map;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.datastructures.BidirectionalMap;
+import eu.excitementproject.eop.common.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.match.AllEmbeddedMatcher;
 import eu.excitementproject.eop.common.representation.parse.tree.match.MatcherException;
-import eu.excitementproject.eop.transformations.datastructures.FlippedBidirectionalMap;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.generic.truthteller.application.merge.AnnotationsMerger;
 import eu.excitementproject.eop.transformations.generic.truthteller.representation.AnnotationRule;

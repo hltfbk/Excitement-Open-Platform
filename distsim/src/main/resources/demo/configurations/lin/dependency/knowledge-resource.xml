@@ -14,15 +14,30 @@
 	
 	 <!--  a selected name of the resource instance (as defined in the EOP's eu.excitementproject.eop.common.component.Component interface) -->
 	 <property name="instance-name">demo</property> 
-	 
-	 <!-- a  path to the Redis db file which contains the left-2-right rules-->
-	<property name="l2r-redis-db-file">models/lin/dependency/similarity-l2r.rdb</property>
-	
-	<!-- For lexical resources onlt, a  path to the Redis db file which contains the right-2-left rules-->
-	<property name="r2l-redis-db-file">models/lin/dependency/similarity-r2l.rdb</property>
-	
+	 	
 	<!--The number of top rules to be retrieved (default, all)-->
 	 <property name="top-n-rules">20</property>
+	 
+	 	<!-- There are two options for running the Redis server-->
+		
+		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
+		<!-- The limitation of this option: the Redis server will run in the localhost-->
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->				
+	 	<!-- a  path to the Redis db file which contains the left-2-right rules-->
+		<property name="l2r-redis-db-file">models/lin/dependency/similarity-l2r.rdb</property>
+		<!-- For lexical resources only, a  path to the Redis db file which contains the right-2-left rules-->
+		<property name="r2l-redis-db-file">models/lin/dependency/similarity-r2l.rdb</property>
+		
+		<!-- Option 2: In case we want the Redis server to run on another hos -->
+		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
+		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
+		<!--
+		<property name="l2r-redis-host">te-srv2</property>
+		<property name="l2r-redis-port">7002</property>
+		<property name="r2l-redis-host">te-srv2</property>
+		<property name="r2l-redis-port">7003</property>
+		-->	 
 </section>
 </configuration>
 

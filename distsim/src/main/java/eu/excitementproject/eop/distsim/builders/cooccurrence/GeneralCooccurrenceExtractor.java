@@ -47,7 +47,7 @@ import eu.excitementproject.eop.distsim.util.Pair;
 @SuppressWarnings("rawtypes")
 public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 	
-	private static Logger logger = Logger.getLogger(GeneralCooccurrenceExtractor.class);
+	//private static Logger logger = Logger.getLogger(GeneralCooccurrenceExtractor.class);
 	/*
 	public GeneralCooccurrenceExtractor(int iThreadNum, CooccurrenceExtraction cooccurrenceExtraction,FileBasedSentenceReader sentenceReader, DataStructureFactory dataStructureFactory) {
 		this.iThreadNum = iThreadNum;
@@ -57,9 +57,10 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 
 	public GeneralCooccurrenceExtractor(ConfigurationParams params,DataStructureFactory dataStructureFactory) throws ConfigurationException, CreationException {
 		this.iThreadNum = params.getInt(Configuration.THREAD_NUM);
-		if (iThreadNum > 1) {
+		/*if (this.iThreadNum > 1) {
 			logger.warn("Multi-threading is temporarilly not supported - a single thread will be applied instead");
-		}
+			this.iThreadNum = 1;
+		}*/
 		this.confParams = params;
 		this.textUnitStorage = dataStructureFactory.createTextUnitsDataStructure();
 		this.cooccurrenceStorage = dataStructureFactory.createCooccurrencesDataStucture();
@@ -77,7 +78,7 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 			Set<File> files = FileUtils.getFiles(corpus);
 			
 			//tmp
-			System.out.println("total number of files: " + files.size());
+			//System.out.println("total number of files: " + files.size());
 			
 			int filesPerCollector = files.size() / iThreadNum; 
 			if (files.size() % iThreadNum > 0)
@@ -114,7 +115,7 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 		}
 	}
 	
-	protected final int iThreadNum;	
+	protected int iThreadNum;	
 	protected final ConfigurationParams confParams;
 	protected CountableIdentifiableStorage<TextUnit> textUnitStorage;
 	protected CountableIdentifiableStorage<IDBasedCooccurrence> cooccurrenceStorage;
@@ -130,7 +131,7 @@ public class GeneralCooccurrenceExtractor implements CooccurrencesExtractor {
 			this.cooccurrenceExtraction = (CooccurrenceExtraction) Factory.create(confParams.get(Configuration.EXTRACTION_CLASS), confParams);
 			
 			//tmp
-			System.out.println("Thread " + id + ": got " + files.size() + " files");
+			//System.out.println("Thread " + id + ": got " + files.size() + " files");
 		}
 		
 		@Override

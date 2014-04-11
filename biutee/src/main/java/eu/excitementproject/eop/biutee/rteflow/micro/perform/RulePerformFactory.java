@@ -6,6 +6,7 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.tree.TreeAndParentMap;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
 import eu.excitementproject.eop.transformations.operations.OperationException;
+import eu.excitementproject.eop.transformations.operations.finders.ExcitementSyntacticRuleFinder;
 import eu.excitementproject.eop.transformations.operations.finders.Finder;
 import eu.excitementproject.eop.transformations.operations.finders.RulesByBagOfRulesRuleBaseFinder;
 import eu.excitementproject.eop.transformations.operations.finders.RulesFromDirtDBFinder;
@@ -31,11 +32,12 @@ import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 public class RulePerformFactory extends PerformFactory<RuleSpecification>
 {
 	public RulePerformFactory(ImmutableSet<String> hypothesisTemplates,
-			ImmutableSet<String> hypothesisLemmasOnly, boolean collapseMode)
+			ImmutableSet<String> hypothesisLemmasOnly, BasicNode hypothesisTreeAsBasicNode, boolean collapseMode)
 	{
 		super();
 		this.hypothesisTemplates = hypothesisTemplates;
 		this.hypothesisLemmasOnly = hypothesisLemmasOnly;
+		this.hypothesisTreeAsBasicNode = hypothesisTreeAsBasicNode;
 		this.collapseMode = collapseMode;
 	}
 
@@ -79,11 +81,14 @@ public class RulePerformFactory extends PerformFactory<RuleSpecification>
 			if (ruleBase.getBagOfRulesRuleBase()!=null)
 			{
 				return new RulesByBagOfRulesRuleBaseFinder(text, nonNull(ruleBase.getBagOfRulesRuleBase(),"bag-of-rules-rulebase"), ruleBaseName);
-
 			}
 			else if (ruleBase.getDirtDBRuleBase()!=null)
 			{
 				return new RulesFromDirtDBFinder(nonNull(ruleBase.getDirtDBRuleBase(),"Dirt-DB-rulebase"),ruleBaseName,text.getTree(),this.hypothesisTemplates,this.hypothesisLemmasOnly);
+			}
+			else if (ruleBase.getRuleBaseSyntacticResource()!=null)
+			{
+				return new ExcitementSyntacticRuleFinder(ruleBase.getRuleBaseSyntacticResource(), ruleBaseName, text.getTree(), hypothesisTreeAsBasicNode);
 			}
 			else
 			{
@@ -130,7 +135,9 @@ public class RulePerformFactory extends PerformFactory<RuleSpecification>
 	
 	private ImmutableSet<String> hypothesisTemplates;
 	private ImmutableSet<String> hypothesisLemmasOnly;
+	private BasicNode hypothesisTreeAsBasicNode;
 	private final boolean collapseMode;
+	
 	private static UpdaterForRule updaterForRule = new UpdaterForRule();
 
 }
