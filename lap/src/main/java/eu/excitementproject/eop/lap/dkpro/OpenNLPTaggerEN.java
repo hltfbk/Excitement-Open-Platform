@@ -2,7 +2,7 @@ package eu.excitementproject.eop.lap.dkpro;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
-import java.util.Map;
+//import java.util.Map;
 
 //import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
@@ -33,21 +33,11 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 public class OpenNLPTaggerEN extends LAP_ImplBaseAE {
 
 	public OpenNLPTaggerEN() throws LAPException {
-		super(); 
-		languageIdentifier = "EN"; // set languageIdentifer, this ID is needed for generateTHPair from String  		
-	}
-
-	public OpenNLPTaggerEN(String[] views) throws LAPException {
-		super(views, null);
-		languageIdentifier = "EN"; 
-	}
-
-	@Override
-	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException{
+		
+		// 1) prepare AEs 
 		// This LAPAccess instance uses OpenNLP segmenter (sentence breaker + tokenizer) and OpenNLP Tagger;
 		// via DKPro AEs. 
-		// Here it simply return them in an array, with order. (sentence segmentation first, then tagging) 
-		// also, this LAP does not use any arguments (e.g. no model selection, etc) 
+		// This LAP does not use any arguments (e.g. no model selection, etc) 
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[2];
 		try 
 		{
@@ -58,9 +48,34 @@ public class OpenNLPTaggerEN extends LAP_ImplBaseAE {
 		{
 			throw new LAPException("Unable to create AE descriptions", e); 
 		}
+
+		// 2) call initializeViews() 
+		initializeViews(descArr); 
 		
-		return descArr; 
+		// 3) set lang ID 		
+		languageIdentifier = "EN"; 
+		
 	}
+
+//	@Override
+//	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException{
+//		// This LAPAccess instance uses OpenNLP segmenter (sentence breaker + tokenizer) and OpenNLP Tagger;
+//		// via DKPro AEs. 
+//		// Here it simply return them in an array, with order. (sentence segmentation first, then tagging) 
+//		// also, this LAP does not use any arguments (e.g. no model selection, etc) 
+//		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[2];
+//		try 
+//		{
+//			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
+//			descArr[1] = createPrimitiveDescription(OpenNlpPosTagger.class); 
+//		}
+//		catch (ResourceInitializationException e)
+//		{
+//			throw new LAPException("Unable to create AE descriptions", e); 
+//		}
+//		
+//		return descArr; 
+//	}
 }
 
 //public class OpenNLPTaggerEN extends LAP_ImplBase implements LAPAccess {
