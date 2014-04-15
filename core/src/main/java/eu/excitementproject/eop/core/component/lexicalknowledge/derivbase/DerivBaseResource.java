@@ -23,10 +23,11 @@ import java.util.HashSet;
 
 /**
  * This class implements a German Lexical Resource based on derivational information, 
- * DErivBase v1.3. The resource contains groups of lemmas, so-called derivational families,
+ * DErivBase v1.4. The resource contains groups of lemmas, so-called derivational families,
  * which share a morphologic (and ideally a semantic) relationship, e.g. "sleep, 
  * sleepy, to sleep, sleepless" 
  * 
+ *TODO update description
  * The implementation can access the resource file containing lemma-POS pairs and their 
  * corresponding derivations in two different formats:
  * 1. with confidence scores for each lemma pair within one derivational family; 
