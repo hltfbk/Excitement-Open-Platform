@@ -5,13 +5,11 @@ package eu.excitementproject.eop.lap.dkpro;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
-import java.util.Map;
-
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
@@ -29,60 +27,32 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 public class MaltParserEN extends LAP_ImplBaseAE {
 
 	/**
-	 * the default, simple constructor. Will generate default pipeline with default views and models. 
+	 * the default, simple constructor. Will generate default pipeline with default model. 
 	 * 
 	 * @throws LAPException
 	 */
 	public MaltParserEN() throws LAPException {
-		super();
-		languageIdentifier = "EN";
+		this(null); // default model 
 	}
 
 	/**
 	 * constructor with parameter for the classifier.
 	 * 
-	 * @param listAEDescriptorsArgs
-	 *            the parameter for the underlying AEs. This pipeline only has one argument PARSER_MODEL_VARIANT. 
-	 *            know model variants are including "linear" and "poly" for English. Null means all default variable (default model) 
+	 * @param modelVariant 
+	 *            This pipeline only has one argument PARSER_MODEL_VARIANT. 
+	 *            know model variants are including "linear" and "poly" for English. 
+	 *            Null means all default variable (default model) 
 	 *            Note that passing unknown model will raise EXCEPTION from the UIMA AE. 
 	 *            
 	 * @throws LAPException
 	 */
-	public MaltParserEN(Map<String,String> listAEDescriptorsArgs) throws LAPException {
-		super(listAEDescriptorsArgs);
-		languageIdentifier = "EN"; // set languageIdentifer
-	}
-
-	/**
-	 * constructor with parameter for the classifier and view names.
-	 * 
-	 * @param listAEDescriptorsArgs
-	 *            the parameter for the underlying AEs. This pipeline only has one argument PARSER_MODEL_VARIANT. 
-	 *            know model variants are including "linear" and "poly" for English. Null means all default variable (default model) 
-	 *            Note that passing unknown model will raise EXCEPTION from the UIMA AE. 
-	 * @param views
-	 * @throws LAPException
-	 */
-	public MaltParserEN(String[] views, Map<String,String> listAEDescriptorsArgs) throws LAPException {
-		super(views, listAEDescriptorsArgs);
-		languageIdentifier = "EN";
-	}
-
-	@Override
-	public final AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args)
-			throws LAPException {
-		final int NUM_OF_ARR = 3;
-		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[NUM_OF_ARR];
+	public MaltParserEN(String modelVariant) throws LAPException {
 		
-		String modelVariant=null; 
+		// a) prepare AEs 
+		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[3];
 		
-	    if ( null != args && "" != args.get("PARSER_MODEL_VARIANT"))
-	    { // parser model argument passed in from the constructor. 
-	    	modelVariant = args.get("PARSER_MODEL_VARIANT"); 
-	    }
-
 		try {
-			descArr[0] = createPrimitiveDescription(BreakIteratorSegmenter.class);
+			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
 			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
 			descArr[2] = createPrimitiveDescription(MaltParser.class,
 					MaltParser.PARAM_VARIANT, modelVariant,
@@ -90,8 +60,53 @@ public class MaltParserEN extends LAP_ImplBaseAE {
 		} catch (ResourceInitializationException e) {
 			throw new LAPException("Unable to create AE descriptions", e);
 		}
-
-		return descArr;
+		
+		// b) call initializeViews() 
+		initializeViews(descArr); 
+		
+		// c) set lang ID 
+		languageIdentifier = "EN"; // set languageIdentifer
 	}
+
+//	/**
+//	 * constructor with parameter for the classifier and view names.
+//	 * 
+//	 * @param listAEDescriptorsArgs
+//	 *            the parameter for the underlying AEs. This pipeline only has one argument PARSER_MODEL_VARIANT. 
+//	 *            know model variants are including "linear" and "poly" for English. Null means all default variable (default model) 
+//	 *            Note that passing unknown model will raise EXCEPTION from the UIMA AE. 
+//	 * @param views
+//	 * @throws LAPException
+//	 */
+//	public MaltParserEN(String[] views, Map<String,String> listAEDescriptorsArgs) throws LAPException {
+//		super(views, listAEDescriptorsArgs);
+//		languageIdentifier = "EN";
+//	}
+//
+//	@Override
+//	public final AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args)
+//			throws LAPException {
+//		final int NUM_OF_ARR = 3;
+//		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[NUM_OF_ARR];
+//		
+//		String modelVariant=null; 
+//		
+//	    if ( null != args && "" != args.get("PARSER_MODEL_VARIANT"))
+//	    { // parser model argument passed in from the constructor. 
+//	    	modelVariant = args.get("PARSER_MODEL_VARIANT"); 
+//	    }
+//
+//		try {
+//			descArr[0] = createPrimitiveDescription(BreakIteratorSegmenter.class);
+//			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
+//			descArr[2] = createPrimitiveDescription(MaltParser.class,
+//					MaltParser.PARAM_VARIANT, modelVariant,
+//					MaltParser.PARAM_PRINT_TAGSET, true);
+//		} catch (ResourceInitializationException e) {
+//			throw new LAPException("Unable to create AE descriptions", e);
+//		}
+//
+//		return descArr;
+//	}
 
 }
