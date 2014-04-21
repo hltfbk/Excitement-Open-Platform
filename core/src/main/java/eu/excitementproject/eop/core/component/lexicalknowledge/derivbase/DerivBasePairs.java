@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 
@@ -25,10 +26,10 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
  * score for each lemma pair, computed by the length of the derivational
  * path between the two lemmas.    
  * 
- * @author zeller, kreutzer
+ * @author zeller
  * @since March 2013 
  */
-public class DerivBase {
+public class DerivBasePairs {
 	
 	/**
 	 * File which keeps the DErivBase resource.
@@ -64,11 +65,20 @@ public class DerivBase {
 	 * @throws IOException
 	 * @throws LexicalResourceException
 	 */
-	public DerivBase(boolean useScores, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
-		this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
-    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
-        load("/derivbase/DErivBase-v1.4-rulePaths.txt", useScores, score);  
+	public DerivBasePairs(boolean useScores, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
+		
+		if (useScores) { 
+			this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
+	    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
+	        load("/derivbase/DErivBase-v1.3-pairs.txt", useScores, score);  
+	        
+		} else {
+			this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
+	    	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
+	    	load("/derivbase/DErivBase-v1.3-pairsWithoutScore.txt", useScores, score);
+		}
 	}
+	
 	
 	
     /**
@@ -96,8 +106,7 @@ public class DerivBase {
      * DerivBase object range always between 0.5 and 1. 
      * 
      * Attention: the gender information for nouns (e.g. Nm, Nf) will be omitted; we only
-     * keep "N". Verbs similarly carry additional information: e.g. "Ven" for "en"-type verbs 
-     * (i.e. ending on "en"), "Veln" or "Vern". This information will be omitted as well.
+     * keep "N".
      * 
      * @param inFile the File containing the input DErivBase file
      * @param scoreInfo true if the file has score information, false otherwise
@@ -113,62 +122,59 @@ public class DerivBase {
 
 		System.out.print("Loading DErivBase... ");
         while ((line = br.readLine()) != null) {
-        	//e.g. line:
-        	//Abrechnen_Nn abrechnen_V 1 Abrechnen_Nn dNV09> abrechnen_V
-        	String[] splittedLine = line.split(" ");
+        
+    		String headString = line.split(":")[0];
+    		ArrayList<String> tailList = new ArrayList<String>(Arrays.asList(line.split(": ")[1].split(" ")));
+    		
+    		// omit ".substring(0, 1)" if you want to keep gender information.
+    		Tuple<String> head = new Tuple<String>(headString.split("_")[0], headString.split("_")[1].substring(0, 1));
+
         	
-    		int pathLength = Integer.parseInt(splittedLine[2]); 
-//    		if (pathLength == 0) {continue;}
+    		ArrayList<HashMap<Tuple<String>, Double>> scoreTail = new ArrayList<HashMap<Tuple<String>, Double>>();
+    		ArrayList<Tuple<String>> tail = new ArrayList<Tuple<String>>();
     		
-    		//rule paths are listed for each pair with their shortest path -> only first and last lemma are needed
-    		String start = splittedLine[0]; //lemma_pos which is beginning of rule path    		
-    		// omit ".substring(0, 1)" if you want to keep gender information.
-    		Tuple<String> head = new Tuple<String>(start.split("_")[0], start.split("_")[1].substring(0, 1));
-    		
-    		String end = splittedLine[1]; //last lemma_pos
-    		// omit ".substring(0, 1)" if you want to keep gender information.
-    		Tuple<String> tail = new Tuple<String>(end.split("_")[0], end.split("_")[1].substring(0, 1));
-    		
-    		if (scoreInfo){
-    			// DERIVBASE-INTERNAL CALCULATION, value range 0-1:
-    			Double score = 1.0/pathLength; // = score
-    			
-        		ArrayList<HashMap<Tuple<String>, Double>> scoreTail1 = new ArrayList<HashMap<Tuple<String>, Double>>();
-        		ArrayList<HashMap<Tuple<String>, Double>> scoreTail2 = new ArrayList<HashMap<Tuple<String>,Double>>(); //pairs are only mentioned once in file -> two entries, one for each lemma_pos
+        	if (scoreInfo) { // if the infile contains scores: load scorer-based format
         		
-        		if (score >= minScore) { // save pair only if score has at least defined value.
-        			// EXCITEMENT-CONFORMANT RECALCULATION, value range 0.5-1:
-        			score = (0.5 * score) + 0.5; // = score
-        			if (this.entryScores.containsKey(head)){
-	    				scoreTail1 = this.entryScores.get(head);
-	    			}
-        			if (this.entryScores.containsKey(tail)){
-        				scoreTail2 = this.entryScores.get(tail);
+        		int i = 1;
+        		Tuple<String> tailElement = new Tuple<String>() ; // = <lemma, pos>
+        		
+        		
+        		for (String t : tailList) {
+        			
+        			if (i % 2 == 1) { // for lemmas in the family queue
+            			// omit ".substring(0, 1)" if you want to keep gender information.
+            			tailElement = new Tuple<String>(t.split("_")[0], t.split("_")[1].substring(0, 1));
+            			
+        			} else { // for scores in the family queue
+        				// DERIVBASE-INTERNAL CALCULATION, value range 0-1:
+            			Double score = Double.parseDouble(t); // = score
+            			
+            			if (score >= minScore) { // save pair only if score has at least defined value.
+            				HashMap<Tuple<String>, Double> s = new HashMap<>();
+            				// EXCITEMENT-CONFORMANT RECALCULATION, value range 0.5-1:
+                			score = (0.5 * score) + 0.5; // = score
+                			
+                			s.put(tailElement, score);
+                			
+                			scoreTail.add(s);
+            			}
+            			
+            			tailElement = new Tuple<String>();
         			}
-	        		HashMap<Tuple<String>, Double> s1 = new HashMap<>();
-	        		HashMap<Tuple<String>, Double> s2 = new HashMap<>();
-	        		s1.put(tail, score);
-	        		s2.put(head, score);
-	        		scoreTail1.add(s1);
-	        		scoreTail2.add(s2);
-	        		this.entryScores.put(head, scoreTail1); //first entry for head
-	        		this.entryScores.put(tail, scoreTail2); //second entry for tail
+        			i++;
         		}
-    		}
-    		else {
-    			ArrayList<Tuple<String>> tailList1 = new ArrayList<Tuple<String>>();
-    			ArrayList<Tuple<String>> tailList2 = new ArrayList<Tuple<String>>();
-    			if (this.entries.containsKey(head)){
-    				tailList1 = this.entries.get(head);
-    			}
-    			if (this.entries.containsKey(tail)){
-    				tailList2 = this.entries.get(tail);
-    			}
-    			tailList1.add(tail);
-    			tailList2.add(head);
-    			this.entries.put(head, tailList1);
-    			this.entries.put(tail, tailList2);
-    		}
+        		this.setSingleEntryScore(head, scoreTail);
+        		
+        		
+        	} else { // else if infile contains no scores: load base format
+        		
+        		for (String t : tailList) {
+        			// omit ".substring(0, 1)" if you want to keep gender information.
+        			Tuple<String> tailElement = new Tuple<String>(t.split("_")[0], t.split("_")[1].substring(0, 1));
+        			tail.add(tailElement);
+        		}
+        		this.setSingleEntry(head, tail);
+        	}  	
     		
         }
         br.close();
@@ -184,7 +190,6 @@ public class DerivBase {
 	 * @param pos The respective POS tag 
 	 * @return an ArrayList of related lemma-POS tuples
 	 */
-	
 	public ArrayList<Tuple<String>> getRelatedLemmaPosPairs(String lemma, String pos) {
 		Tuple<String> query = new Tuple<String>(lemma,pos); 
 		if (this.entries.keySet().contains(query)) {
@@ -212,6 +217,7 @@ public class DerivBase {
 			HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>> entryScores) {
 		this.entryScores = entryScores;
 	}
+
 	
 	public HashMap<Tuple<String>, ArrayList<Tuple<String>>> getEntries() {
 		return entries;
@@ -220,41 +226,44 @@ public class DerivBase {
 	public void setEntries(HashMap<Tuple<String>, ArrayList<Tuple<String>>> entries) {
 		this.entries = entries;
 	}
-
-	//TODO following methods not used/needed
-//	public ArrayList<Tuple<String>> getSingleEntry(Tuple<String> head) {
-//		if (this.entries.containsKey(head)) {
-//			return entries.get(head);			
-//		} else {
-//			return null;
-//		}		
-//	}
-//	
-//	public ArrayList<HashMap<Tuple<String>, Double>> getSingleEntryScore(Tuple<String> head) {
-//		if (this.entryScores.containsKey(head)) {
-//			return entryScores.get(head);			
-//		} else {
-//			return null;
-//		}		
-//	}
 	
-//	public void setSingleEntry(Tuple<String> head, ArrayList<Tuple<String>> tailEntries) throws LexicalResourceException {
-//		if (this.entries.containsKey(head)) {
-//			throw new LexicalResourceException("Failure: entry for " + head + " already exists.");
-//		}
-//		this.entries.put(head, tailEntries);
-//	}
-//	
-//
-//	public void setSingleEntryScore(Tuple<String> head, ArrayList<HashMap<Tuple<String>, Double>> 
-//			tailEntries) throws LexicalResourceException {
-//		
-//		if (this.entryScores.containsKey(head)) {
-//			throw new LexicalResourceException("Failure: entry for " + head + " already exists.");
-//		}
-//		this.entryScores.put(head, tailEntries);
-//	}
+	public ArrayList<Tuple<String>> getSingleEntry(Tuple<String> head) {
+		if (this.entries.containsKey(head)) {
+			return entries.get(head);			
+		} else {
+			return null;
+		}		
+	}
+	
 
+	public ArrayList<HashMap<Tuple<String>, Double>> getSingleEntryScore(Tuple<String> head) {
+		if (this.entryScores.containsKey(head)) {
+			return entryScores.get(head);			
+		} else {
+			return null;
+		}		
+	}
+	
+	
+	
+	public void setSingleEntry(Tuple<String> head, ArrayList<Tuple<String>> tailEntries) throws LexicalResourceException {
+		if (this.entries.containsKey(head)) {
+			throw new LexicalResourceException("Failure: entry for " + head + " already exists.");
+		}
+		this.entries.put(head, tailEntries);
+	}
+	
+
+	public void setSingleEntryScore(Tuple<String> head, ArrayList<HashMap<Tuple<String>, Double>> 
+			tailEntries) throws LexicalResourceException {
+		
+		if (this.entryScores.containsKey(head)) {
+			throw new LexicalResourceException("Failure: entry for " + head + " already exists.");
+		}
+		this.entryScores.put(head, tailEntries);
+	}
+	
+	
 	
 	@Override
 	public String toString() {
@@ -266,7 +275,6 @@ public class DerivBase {
 			return null;
 	}
 
-	//TODO override methods for entryScores?
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -291,6 +299,8 @@ public class DerivBase {
 			return false;
 		return true;
 	}
+	
+	
 	
 
 }
