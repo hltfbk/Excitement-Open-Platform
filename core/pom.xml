@@ -67,7 +67,7 @@
        		 <dependency>
         		<groupId>de.uni-heidelberg.cl</groupId>
         	 	<artifactId>DErivBase</artifactId>
-             		<version>1.4</version>
+             	<version>1.4</version>
         	</dependency>        
 		<dependency>
     			<groupId>eu.fbk.hlt</groupId>

@@ -27,17 +27,14 @@ import java.util.HashSet;
  * which share a morphologic (and ideally a semantic) relationship, e.g. "sleep, 
  * sleepy, to sleep, sleepless" 
  * 
- *TODO update description
  * The implementation can access the resource file containing lemma-POS pairs and their 
- * corresponding derivations in two different formats:
- * 1. with confidence scores for each lemma pair within one derivational family; 
- *    example:
-      Aalener_Nm: Aalen_Nn 1.00 aalen_V 0.50 Aal_Nn 0.33
- * 2. simply derivational families without information about lemma pair confidences; 
- *    example:
- *    Aalener_Nm: Aalen_Nn aalen_V Aal_Nn 
+ * corresponding derivations in the following format (new in v1.4):
+ * lemma1_POS lemma2_POS pathLength lemma1_POS derivationalRule lemma2_POS
+ * e.g. Abrechnen_Nn abrechnen_V 1 Abrechnen_Nn dNV09> abrechnen_V 
+ * Each lemma pair within one derivational family is connected via one shortest derivational rule path.
+ * From its length the score can be calculated. 
  * The user has to specify with the constructor call (or in the CommonConfig setting) 
- * if the resource format contains scores (1.) or not (2.). 
+ * if the resource is used with scores or not. 
  * 
  * Each lemma is considered as entailing as well as being entailed by its corresponding 
  * derivations. The user can restrict this generalization by setting a maximum amount

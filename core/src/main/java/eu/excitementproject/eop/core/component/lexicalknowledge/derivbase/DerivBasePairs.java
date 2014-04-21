@@ -14,7 +14,8 @@ import java.util.HashMap;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 
 /**
- * Class which holds information from a DErivBase resource file.
+ * Class which holds information from the DErivBase resource file version 1.3.
+ * For the current version 1.4 use class "DerivBase".
  * DErivBase contains groups of lemmas, so-called derivational families,
  * which share a morphologic (and ideally a semantic) relationship, e.g.
  * "sleep, sleepy, to sleep, sleepless"

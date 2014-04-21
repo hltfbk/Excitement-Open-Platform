@@ -54,7 +54,7 @@ public class DerivBase {
 
 	/**
 	 * Main constructor. If the resource should contain confidence scores for each lemma pair 
-	 * within one family, it loads a score-containing file, otherwise a file without scores.
+	 * within one family, the scores are calculated from the path length, if not, they are omitted.
 	 * The minimum score a lemma pair within a family must achieve to be considered in the 
 	 * created DerivBase object. 
 	 * 
@@ -73,12 +73,12 @@ public class DerivBase {
 	
     /**
      * Loads the data from a DErivBase into the data object. 
-     * The input file can have two different formats: 
-     * 1. containing scores for each lemma pair within one derivational family; example:
-     *    Aalener_Nm: Aalen_Nn 1.00 aalen_V 0.50 Aal_Nn 0.33 
-     * 2. simply containing derivational families without information about lemma pair 
-     *    confidences; example:
-     *    Aalener_Nm: Aalen_Nn aalen_V Aal_Nn 
+     * The input file has the following format:
+     * lemma1_POS lemma2_POS pathLength lemma1_POS derivationalRule lemma2_POS
+     * e.g. Abrechnen_Nn abrechnen_V 1 Abrechnen_Nn dNV09> abrechnen_V 
+     * Each lemma pair within one derivational family is connected via one shortest derivational rule path.
+     * From its length the score can be calculated. 
+     * The user can decide whether to use the scores or not.
      * 
      * Every line is saved as an individual HashMap entry, where the key is a tuple of 
      * lemma and POS tag and the value is:
@@ -118,7 +118,6 @@ public class DerivBase {
         	String[] splittedLine = line.split(" ");
         	
     		int pathLength = Integer.parseInt(splittedLine[2]); 
-//    		if (pathLength == 0) {continue;}
     		
     		//rule paths are listed for each pair with their shortest path -> only first and last lemma are needed
     		String start = splittedLine[0]; //lemma_pos which is beginning of rule path    		
@@ -220,41 +219,6 @@ public class DerivBase {
 	public void setEntries(HashMap<Tuple<String>, ArrayList<Tuple<String>>> entries) {
 		this.entries = entries;
 	}
-
-	//TODO following methods not used/needed
-//	public ArrayList<Tuple<String>> getSingleEntry(Tuple<String> head) {
-//		if (this.entries.containsKey(head)) {
-//			return entries.get(head);			
-//		} else {
-//			return null;
-//		}		
-//	}
-//	
-//	public ArrayList<HashMap<Tuple<String>, Double>> getSingleEntryScore(Tuple<String> head) {
-//		if (this.entryScores.containsKey(head)) {
-//			return entryScores.get(head);			
-//		} else {
-//			return null;
-//		}		
-//	}
-	
-//	public void setSingleEntry(Tuple<String> head, ArrayList<Tuple<String>> tailEntries) throws LexicalResourceException {
-//		if (this.entries.containsKey(head)) {
-//			throw new LexicalResourceException("Failure: entry for " + head + " already exists.");
-//		}
-//		this.entries.put(head, tailEntries);
-//	}
-//	
-//
-//	public void setSingleEntryScore(Tuple<String> head, ArrayList<HashMap<Tuple<String>, Double>> 
-//			tailEntries) throws LexicalResourceException {
-//		
-//		if (this.entryScores.containsKey(head)) {
-//			throw new LexicalResourceException("Failure: entry for " + head + " already exists.");
-//		}
-//		this.entryScores.put(head, tailEntries);
-//	}
-
 	
 	@Override
 	public String toString() {
@@ -266,7 +230,6 @@ public class DerivBase {
 			return null;
 	}
 
-	//TODO override methods for entryScores?
 	@Override
 	public int hashCode() {
 		final int prime = 31;
