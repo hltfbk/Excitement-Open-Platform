@@ -43,7 +43,7 @@ public class UimaUtils {
 	 * Path, inside the project, to a descriptor file of a "dummy" analysis engine.
 	 * This is required for working with XMI. 
 	 */
-	public static final String DUMMY_AE_DESC = "src/main/resources/desc/DummyAE.xml";
+	public static final String DUMMY_AE_DESC = "/desc/DummyAE.xml";
 	
 	// This class should not be instantiated
 	private UimaUtils() {}
@@ -102,6 +102,23 @@ public class UimaUtils {
 	 */
 	public static JCas loadXmi(File xmiFile) throws UimaUtilsException {
 		return loadXmi(xmiFile, DUMMY_AE_DESC);
+	}
+	
+	/**
+	 * Returns a new JCas. Uses <tt>src/main/resources/desc/DummyAE.xml</tt>
+	 * as the required analysis engine descriptor.
+	 * 
+	 * @return a new JCas
+	 * @throws UimaUtilsException
+	 */
+	public static JCas newJcas() throws UimaUtilsException {
+		try {
+			AnalysisEngine ae = loadAE(DUMMY_AE_DESC);
+			return ae.newJCas();
+		}
+		catch (ResourceInitializationException e) {
+			throw new UimaUtilsException(e);
+		}
 	}
 	
 	/**
@@ -185,6 +202,9 @@ public class UimaUtils {
 	 * @throws IllegalArgumentException if not exactly one instance if the given type is present
 	 * 		   under the covering annotation.
 	 * @see Subiterator
+	 * 
+	 * @author Ofer Bronstein
+	 * @since April 2014
 	 */
 	@SuppressWarnings("unchecked")
 	public static <T extends Annotation> T selectCoveredSingle(JCas jCas, final Class<T> type,
@@ -208,6 +228,9 @@ public class UimaUtils {
 	 * @throws IllegalArgumentException if not exactly one instance if the given type is present
 	 * 		   under the covering annotation.
 	 * @see Subiterator
+	 * 
+	 * @author Ofer Bronstein
+	 * @since April 2014
 	 */
 	public static AnnotationFS selectCoveredSingle(CAS cas, Type type,
 			AnnotationFS coveringAnnotation) {
