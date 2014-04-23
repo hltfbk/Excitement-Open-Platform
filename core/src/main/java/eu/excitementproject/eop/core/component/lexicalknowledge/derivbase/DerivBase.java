@@ -119,12 +119,12 @@ public class DerivBase {
         	
     		int pathLength = Integer.parseInt(splittedLine[2]); 
     		
-    		//rule paths are listed for each pair with their shortest path -> only first and last lemma are needed
+    		//rule paths are listed for each pair with their shortest path, pair contains of two first lemmas in line
     		String start = splittedLine[0]; //lemma_pos which is beginning of rule path    		
     		// omit ".substring(0, 1)" if you want to keep gender information.
     		Tuple<String> head = new Tuple<String>(start.split("_")[0], start.split("_")[1].substring(0, 1));
     		
-    		String end = splittedLine[1]; //last lemma_pos
+    		String end = splittedLine[1]; //last lemma_pos on derivational rule path
     		// omit ".substring(0, 1)" if you want to keep gender information.
     		Tuple<String> tail = new Tuple<String>(end.split("_")[0], end.split("_")[1].substring(0, 1));
     		

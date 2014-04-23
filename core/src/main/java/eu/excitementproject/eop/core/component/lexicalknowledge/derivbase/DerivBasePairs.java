@@ -15,7 +15,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 
 /**
  * Class which holds information from the DErivBase resource file version 1.3.
- * For the current version 1.4 use class "DerivBase".
+ * For the current version 1.4 use class "DerivBase". 
+ * The format for this class is only available until version 1.3, 
+ * and this class is deprecated for any later DB versions (from version 1.4).
  * DErivBase contains groups of lemmas, so-called derivational families,
  * which share a morphologic (and ideally a semantic) relationship, e.g.
  * "sleep, sleepy, to sleep, sleepless"
