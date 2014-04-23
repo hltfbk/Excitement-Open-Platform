@@ -145,6 +145,7 @@ public class DerivBaseResourceTest {
 			e.printStackTrace(); 
 		}
 		
+		dbWithoutScores = null; //set null to help GC
 
 		
 		/**
@@ -246,7 +247,7 @@ public class DerivBaseResourceTest {
 			e.printStackTrace(); 
 		}
 		
-	
+		dbWithoutScoresCommConf = null; //set null to help GC
 		
 		/**
 		 * ****************************
@@ -364,7 +365,7 @@ public class DerivBaseResourceTest {
 			e.printStackTrace(); 
 		}
 		
-		
+		dbWithScores = null; //set null to help GC
 	}
 }
 
