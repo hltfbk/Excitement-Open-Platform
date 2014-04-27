@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764759_80299358-2.txt_1_0-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13764759_80299358-2.txt_1_0-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you book something six months in advance and then you guys change it that your whim</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13764766_78604096.txt_1_0-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the book was in two different totally select</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_0-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_1-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized by having to make a choice now</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_2-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized when you guys haven't even open up the flights yet</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13764792_81008437.txt_1_3-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are we being penalized</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13764825_81144163.txt_1_0-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>when i go to look at i keep saying segment selected was unavailable</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_0-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation yesterday reinstated the wrong one</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_1-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person that reinstated the reservation reinstated the wrong one</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+	<pair id="13765013_83600327-2.txt_1_2-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the person reinstated the wrong one</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13765013_83600327.txt_1_0-13765133_84335771.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>all i want is a reservation reinstated for the same price</t>
+		<h>i've tried about twenty times to booked a flight on it</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13764759_80299358-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>you book something six months in advance and then you guys change it that your whim</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13764766_78604096.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>the book was in two different totally select</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13764792_81008437.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>why are we being penalized by having to make a choice now when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13764792_81008437.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>why are we being penalized by having to make a choice now</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13764792_81008437.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>why are we being penalized when you guys haven't even open up the flights yet</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13764792_81008437.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>why are we being penalized</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13764825_81144163.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>when i go to look at i keep saying segment selected was unavailable</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13765013_83600327-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>the person that reinstated the reservation yesterday reinstated the wrong one</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13765013_83600327-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>the person that reinstated the reservation reinstated the wrong one</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13765013_83600327-2.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>the person reinstated the wrong one</h>
+	</pair>
+	<pair id="13765133_84335771.txt_1_0-13765013_83600327.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've tried about twenty times to booked a flight on it</t>
+		<h>all i want is a reservation reinstated for the same price</h>
+	</pair>
+</entailment-corpus>

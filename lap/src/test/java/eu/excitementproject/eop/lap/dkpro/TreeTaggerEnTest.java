@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.apache.commons.lang.exception.ExceptionUtils; 
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
-import org.junit.Ignore;
+//import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.lap.LAPAccess;
@@ -20,7 +20,7 @@ import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
 public class TreeTaggerEnTest {
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void test() {
 
@@ -44,10 +44,10 @@ public class TreeTaggerEnTest {
 			// If it does not, it raises an LAPException. 
 			// It will also print the summarized data of the CAS to the PrintStream. 
 			// If the second argument is null, it will only check the format and raise Exceptions, without printing 
-			PlatformCASProber.probeCas(aJCas, System.out); 
+			//PlatformCASProber.probeCas(aJCas, System.out); 
 			
 			// To see the full content of each View, use this 
-			//PlatformCASProber.probeCasAndPrintContent(aJCas, System.out); 
+			PlatformCASProber.probeCasAndPrintContent(aJCas, System.out); 
 
 		}
 		catch(LAPException e)
@@ -84,6 +84,16 @@ public class TreeTaggerEnTest {
 		File testXmi = new File("./target/3.xmi"); // you can pick and probe any XMI..  
 		try {
 			PlatformCASProber.probeXmi(testXmi, System.out);
+		} catch (LAPException e) {
+			fail(e.getMessage()); 
+		} 
+
+
+		try {
+			aJCas = lap.generateSingleTHPairCAS("China's victory?", "Korea's defeat?"); 
+			// 's should work okay, but I won't put it as test condition. 
+			//PlatformCASProber.probeCasAndPrintContent(aJCas, System.out);
+
 		} catch (LAPException e) {
 			fail(e.getMessage()); 
 		} 

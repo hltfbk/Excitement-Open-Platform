@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764665_77155079-2.txt_1_0-13764665_77155079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I have to put two hundred thousand miles because I want to get a good connection</t>
+		<h>i can never find it a a light on the day i want</h>
+	</pair>
+	<pair id="13764665_77155079-2.txt_1_0-13764829_81137701-2.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I have to put two hundred thousand miles because I want to get a good connection</t>
+		<h>there weren't many flights</h>
+	</pair>
+	<pair id="13764665_77155079.txt_1_0-13764665_77155079-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i can never find it a a light on the day i want</t>
+		<h>I have to put two hundred thousand miles because I want to get a good connection</h>
+	</pair>
+	<pair id="13764665_77155079.txt_1_0-13764829_81137701-2.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i can never find it a a light on the day i want</t>
+		<h>there weren't many flights</h>
+	</pair>
+	<pair id="13764829_81137701-2.txt_5_0-13764665_77155079-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there weren't many flights</t>
+		<h>I have to put two hundred thousand miles because I want to get a good connection</h>
+	</pair>
+	<pair id="13764829_81137701-2.txt_5_0-13764665_77155079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there weren't many flights</t>
+		<h>i can never find it a a light on the day i want</h>
+	</pair>
+</entailment-corpus>

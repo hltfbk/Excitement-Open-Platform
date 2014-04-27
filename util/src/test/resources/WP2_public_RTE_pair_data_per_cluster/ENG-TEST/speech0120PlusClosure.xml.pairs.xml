@@ -1,0 +1,1179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764743_77605503.txt_1_0-13764826_81589824.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764637_77233258.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764637_77233258-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764826_81589824.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13765069_84130827.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764637_77233258-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764637_77233258.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764637_77233258-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764637_77233258-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764899_83105425.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there's something wrong with the website</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764637_77233258-2.txt_2_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's not allowing me to book get online</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available on the website</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764637_77233258.txt_1_1-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ticket is not available</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764743_77605503.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i am having a great deal of difficulty trying to pull up my uh advantage balance</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764800_80670011.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting very frustrated with the website</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764826_81589824.txt_1_1-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i was getting frustrated with the website</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764826_81589824.txt_5_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i kept getting bounced out</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764848_82871346.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>every time i do this on your website it says the flight is no longer available this price</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13764899_83105425.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i 'm having trouble with the website</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book a trip online and it said it to i took too long start over again</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764637_77233258-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13764899_83105425.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_1-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just tried to book online and it said it to i took too long start over again</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13765042_83667551.txt_1_2-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i tried to book online and it said it to i took too long start over again</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13765069_84130827.txt_1_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they're not showing them is available</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13765269_84557628.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>it doesn't seem to that they're there anymore</h>
+	</pair>
+	<pair id="13765133_84335771.txt_3_0-13765269_84557628.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i mean have the nothing but trouble with this ridiculous website</t>
+		<h>it doesn't seem to that they're there</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764637_77233258-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13764899_83105425.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_0-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there anymore</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764637_77233258-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>there's something wrong with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764637_77233258-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>it's not allowing me to book get online</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764637_77233258.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>ticket is not available on the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764637_77233258.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>ticket is not available</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764743_77605503.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i am having a great deal of difficulty trying to pull up my uh advantage balance</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764800_80670011.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i'm having to travel forty five minutes to an hour to go to an airport the book it taking that technically i should be able to do over the internet</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764826_81589824.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i was getting very frustrated with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764826_81589824.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i was getting frustrated with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764826_81589824.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i kept getting bounced out</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764848_82871346.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>every time i do this on your website it says the flight is no longer available this price</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13764899_83105425.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i 'm having trouble with the website</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13765042_83667551.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i just tried to book a trip online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13765042_83667551.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i just tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13765042_83667551.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i tried to book online and it said it to i took too long start over again</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13765069_84130827.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>they're not showing them is available</h>
+	</pair>
+	<pair id="13765269_84557628.txt_1_1-13765133_84335771.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it doesn't seem to that they're there</t>
+		<h>i mean have the nothing but trouble with this ridiculous website</h>
+	</pair>
+</entailment-corpus>

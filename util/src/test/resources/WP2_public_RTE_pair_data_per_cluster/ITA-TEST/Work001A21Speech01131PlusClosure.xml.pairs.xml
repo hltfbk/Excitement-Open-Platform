@@ -1,0 +1,3115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0051.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0113.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0111.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0111.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0036.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0088.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0111.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0050.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0111.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0113.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0113.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0050.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0036.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0051.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0111.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0113.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0111.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0088.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0051.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0111.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0088.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0111.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0113.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0113.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0050.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0036.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0008.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho chiesto di attivarmi questa promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0018.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad attivare la promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0029.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa da quella che ho scelto</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0036.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione è diversa</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0037.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>L'assistenza mi ha detto che la promozione non esiste ma non è vero</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho mai detto di disattivare la promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0044.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non ho detto di disattivare la promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione che ho adesso</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0050.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a togliere la promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione attuale</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0051.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a disattivare la promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0062.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad attivare la promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione per i punti</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0064.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a vedere la promozione</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_0-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri clienti</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0076.txt_1_1-ItaSpeech0113.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>pago questa promozione più di altri</t>
+		<h>non voglio che cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma io non ho chiesto questo</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0088.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>cambiate la promozione ma non ho chiesto questo</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma a me va bene quella che ho</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0100.txt_1_1-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi cambiate la promozione ma va bene quella che ho</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma io non voglio</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà in un'altra ma non voglio</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_2-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma io non voglio</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0111.txt_1_3-ItaSpeech0113.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la promozione si trasformerà ma non voglio</t>
+		<h>non voglio che mi cambiate la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_0-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che mi cambiate la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0008.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non ho chiesto di attivarmi questa promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0018.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>Non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0029.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del mio pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0029.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>mi è arrivato un messaggio che da una promozione diversa quella del pacchetto</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0036.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>la promozione è diversa da quella che ho scelto</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0036.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>la promozione è diversa</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0037.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>L'assistenza mi ha detto che la mia promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0037.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>L'assistenza mi ha detto che la promozione non esiste ma non è vero</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0044.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non ho mai detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0044.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non ho detto di disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0050.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non riesco a togliere la promozione che ho adesso</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0050.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non riesco a togliere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non riesco a disattivare la promozione attuale</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non riesco a disattivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0062.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non riesco ad attivare la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0064.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non riesco a vedere la promozione per i punti</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0064.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>non riesco a vedere la promozione</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>pago questa promozione più di altri clienti</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>pago questa promozione più di altri</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0088.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>cambiate la promozione ma io non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0088.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>cambiate la promozione ma non ho chiesto questo</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>mi cambiate la promozione ma a me va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>mi cambiate la promozione ma va bene quella che ho</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0111.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0111.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>la promozione si trasformerà in un'altra ma non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0111.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>la promozione si trasformerà ma io non voglio</h>
+	</pair>
+	<pair id="ItaSpeech0113.txt_1_1-ItaSpeech0111.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non voglio che cambiate la promozione</t>
+		<h>la promozione si trasformerà ma non voglio</h>
+	</pair>
+</entailment-corpus>

@@ -135,7 +135,7 @@ public class EasyFirstClient
 		} 
 		catch (IOException e)
 		{
-			throw new ParserRunException("Failed to run parser. Input was the following tagger text:\n"+taggedText+"\nPlease see nested exception",e);
+			throw new ParserRunException("Failed to run parser.\n*** Please make sure that the EasyFirst parser server is running, and listening on: "+parserUrl+"\nInput was the following tagger text:\n"+taggedText+"\nPlease see nested exception",e);
 		}
 	}
 	

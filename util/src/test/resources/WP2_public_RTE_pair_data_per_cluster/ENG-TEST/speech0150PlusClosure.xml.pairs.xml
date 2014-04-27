@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764639_76379475.txt_1_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers the first time</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764639_76379475.txt_1_1-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we were disappointed with the servers</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764740_77897146.txt_1_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>france a ridiculous system</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764740_77897146.txt_2_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they gotta do something about it</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764770_80323139.txt_2_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there is just it so many of these</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764794_81531499.txt_1_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you can't put my miles back at the my account</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_1-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher whether i'm at the the ticket desk</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764800_80670011-3.txt_1_2-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I should be able to consume out travel voucher</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program when you you can't use it darn miles</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764880_80919718.txt_1_1-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i don't at the point of having mile program</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764941_82755737-2.txt_1_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been told nothing's available unless I give you a hundred thirty thousand miles</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+	<pair id="13764970_83405709.txt_1_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>with so many garden restrictions on these miles it becomes such a pain in the neck</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13765041_83666815.txt_2_0-13765153_85271674.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there was a problem with the aircraft</t>
+		<h>i didn't get a boarding pass</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764639_76379475.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>we were disappointed with the servers the first time</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764639_76379475.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>we were disappointed with the servers</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764740_77897146.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>france a ridiculous system</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764740_77897146.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>they gotta do something about it</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764770_80323139.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>there is just it so many of these</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764794_81531499.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>you can't put my miles back at the my account</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764800_80670011-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk or whether i'm calling you over the phone</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764800_80670011-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>I should be able to consume out travel voucher whether i'm at the the ticket desk</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764800_80670011-3.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>I should be able to consume out travel voucher</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764880_80919718.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>i don't at the point of having mile program when you you can't use it darn miles</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764880_80919718.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>i don't at the point of having mile program</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764941_82755737-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>i've been told nothing's available unless I give you a hundred thirty thousand miles</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13764970_83405709.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>with so many garden restrictions on these miles it becomes such a pain in the neck</h>
+	</pair>
+	<pair id="13765153_85271674.txt_1_0-13765041_83666815.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i didn't get a boarding pass</t>
+		<h>there was a problem with the aircraft</h>
+	</pair>
+</entailment-corpus>

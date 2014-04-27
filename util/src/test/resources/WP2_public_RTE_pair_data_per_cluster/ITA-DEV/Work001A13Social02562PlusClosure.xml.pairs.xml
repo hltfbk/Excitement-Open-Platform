@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="0058.txt_1_1-0093.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0093.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_7" entailment="ENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0093.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_0-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_0-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_0-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_0-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_0-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_0-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_0-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_1_1-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_1-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_1-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_1-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_1-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_1-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_1-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_1_2-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_2-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_2-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_2-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_2-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_2-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_2-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so ancora a che punto sia il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_1_3-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_3-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_3-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_3-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_3-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_3-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_3-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_1_4-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_4-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_4-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_4-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_4-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_4-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_4-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ad oggi non so a che punto sia il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_1_5-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_5-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_5-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_5-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_5-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_5-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_5-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia la mia pratica e il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_1_6-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_6-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_6-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_6-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_6-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_6-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_6-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so ancora a che punto sia il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_1_7-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_7-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_7-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia il ri - accredito punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0019.txt_1_7-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_7-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia il ri - accredito punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_7-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia il ri - accredito punti</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_1_7-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non so a che punto sia il ri - accredito punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0019.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_0-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti ben 907 punti TELEFONIAX ABC</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>ad oggi non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0019.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_1-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti 907 punti TELEFONIAX ABC</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>ad oggi non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>ad oggi non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0019.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0093.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>problemi con il trasferimento punti</h>
+	</pair>
+	<pair id="0019.txt_2_2-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me sono spariti punti TELEFONIAX ABC</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>ad oggi non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>ad oggi non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0058.txt_1_0-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0058.txt_1_0-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il servizio trasferimento punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>ad oggi non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>ad oggi non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0058.txt_1_1-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0058.txt_1_1-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Scandaloso il trasferimento punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>ad oggi non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>ad oggi non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0093.txt_1_0-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0093.txt_1_0-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+	<pair id="0093.txt_1_0-0256.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>problemi con il trasferimento punti</t>
+		<h>per l'accredito dei punti ancora nulla</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>ad oggi non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>ad oggi non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>ad oggi non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>non so ancora a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>ad oggi non so a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>non so a che punto sia la mia pratica e il ri - accredito punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>non so ancora a che punto sia il ri - accredito punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>a me sono spariti ben 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>a me sono spariti 907 punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0256.txt_2_0-0019.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>a me sono spariti punti TELEFONIAX ABC</h>
+	</pair>
+	<pair id="0256.txt_2_0-0058.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>Scandaloso il servizio trasferimento punti</h>
+	</pair>
+	<pair id="0256.txt_2_0-0058.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>per l'accredito dei punti ancora nulla</t>
+		<h>Scandaloso il trasferimento punti</h>
+	</pair>
+</entailment-corpus>

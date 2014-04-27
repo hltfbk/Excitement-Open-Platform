@@ -74,7 +74,7 @@ public class VisualTracingTool
 	/**
 	 * 
 	 */
-	private static final String HTML_TABLE_TOOL_TIP = "Click on the help botton for a legend of the table";
+	private static final String HTML_TABLE_TOOL_TIP = "Click on the help button for a legend of the table";
 	/**
 	 * 
 	 */

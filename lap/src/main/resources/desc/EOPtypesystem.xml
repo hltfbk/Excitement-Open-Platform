@@ -14,7 +14,8 @@
     <import name="desc.type.PredicateTruth"/>
     <import name="desc.type.SemanticRole"/>
     <import name="desc.type.TemporalExpression"/>
-    <import name="desc.type.TextAlignment"/>
+<!-- <import name="desc.type.TextAlignment"/> --> 
+    <import name="desc.type.AlignmentTypes"/> 
     <import name="desc.type.coref"/>
   </imports>
 </typeSystemDescription>

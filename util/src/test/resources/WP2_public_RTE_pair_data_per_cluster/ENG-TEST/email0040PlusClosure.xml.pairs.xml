@@ -1,0 +1,1523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="57576.txt_4_0-305036.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="57576.txt_4_1-57576.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_2-399686.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_4_0-57576.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_3_1-57576.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="428613.txt_3_0-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_1-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>more food</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_3-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_2_3-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_1_0-399686.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_2_0-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_0-399686.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_1-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="305036.txt_3_2-57576.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_2_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_2_2-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="77304.txt_2_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>more food</h>
+	</pair>
+	<pair id="305036.txt_3_3-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>more food</h>
+	</pair>
+	<pair id="57576.txt_2_1-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>more food</h>
+	</pair>
+	<pair id="57576.txt_2_0-305036.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="305036.txt_3_3-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="305036.txt_3_3-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_1-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_1-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="428613.txt_3_0-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_0-399686.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_2_1-305036.txt_3_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_0-305036.txt_3_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_2-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_0-399686.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="428613.txt_3_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>more food</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="193730.txt_4_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>more food</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_2-399686.txt_2_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_0-305036.txt_3_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="77304.txt_2_0-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="57576.txt_4_1-305036.txt_3_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="305036.txt_3_3-57576.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_1-57576.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_1-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="305036.txt_3_1-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="305036.txt_3_1-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>more food</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_0-57576.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_0-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="305036.txt_3_0-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="305036.txt_3_0-57576.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_3_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>more food</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_0-305036.txt_3_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="57576.txt_2_0-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="57576.txt_2_0-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="57576.txt_2_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>more food</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_1-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="57576.txt_2_1-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="305036.txt_3_2-57576.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_2-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="305036.txt_3_2-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="305036.txt_3_2-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>more food</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_0-305036.txt_3_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="57576.txt_4_0-57576.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="57576.txt_4_0-305036.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="57576.txt_4_0-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="57576.txt_4_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>more food</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_1-77304.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_0-399686.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="399686.txt_2_0-399686.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_1-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_2_1-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_1_0-399686.txt_2_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="399686.txt_1_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_1_0-399686.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_2-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_2_2-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="399686.txt_2_0-193730.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>more food</h>
+	</pair>
+	<pair id="193730.txt_4_0-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="193730.txt_4_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="193730.txt_4_0-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="193730.txt_4_0-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="193730.txt_4_0-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="193730.txt_4_0-399686.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="193730.txt_4_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="193730.txt_4_0-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="193730.txt_4_0-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="193730.txt_4_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="193730.txt_4_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="193730.txt_4_0-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food is finished too early</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="193730.txt_7_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="193730.txt_7_0-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="193730.txt_7_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="193730.txt_7_0-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="193730.txt_7_0-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="193730.txt_7_0-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="193730.txt_7_0-399686.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="193730.txt_7_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="193730.txt_7_0-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="193730.txt_7_0-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="193730.txt_7_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="193730.txt_7_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="193730.txt_7_0-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more food</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="305036.txt_2_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="305036.txt_2_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="305036.txt_2_0-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="305036.txt_2_0-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="305036.txt_2_0-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_2_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_2_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="305036.txt_2_0-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_2_0-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_2_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_2_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I wished the food would be more consistant in terms of quantity</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="305036.txt_3_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_3_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller each time</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_1-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_1-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_1-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="305036.txt_3_1-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_3_1-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting rather smaller</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_2-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_2-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_2-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="305036.txt_3_2-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_3_2-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller each time</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="305036.txt_3_3-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="305036.txt_3_3-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="305036.txt_3_3-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="305036.txt_3_3-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_3_3-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="305036.txt_3_3-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the portions are getting smaller</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_1_0-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_1_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_0-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_1_0-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_0-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_1_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_1_0-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_0-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_0-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are absurdly small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_1_1-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_1_1-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_1_1-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_1-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_1_1-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_1-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_1_1-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="399686.txt_1_1-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_1-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="399686.txt_1_1-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_1_1-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_1-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_1-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_1-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_1-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_1_2-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_1_2-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_1_2-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_2-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_1_2-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_2-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_1_2-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="399686.txt_1_2-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_2-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_1_2-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_2-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_2-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_2-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_2-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are absurdly small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_1_3-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_1_3-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_1_3-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_3-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_1_3-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_1_3-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_1_3-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="399686.txt_1_3-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_3-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="399686.txt_1_3-399686.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_1_3-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_1_3-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_3-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_3-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_1_3-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_1_3-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_2_0-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_2_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_0-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_2_0-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_0-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_2_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_2_0-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_0-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_0-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are insultingly small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_1-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_2_1-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_2_1-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_1-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_2_1-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_1-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_2_1-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="399686.txt_2_1-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="399686.txt_2_1-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="399686.txt_2_1-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_2_1-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_1-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_1-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_1-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_1-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Standard magnum food portions are small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_2-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_2_2-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_2_2-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_2-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_2_2-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_2-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_2_2-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="399686.txt_2_2-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="399686.txt_2_2-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_2_2-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_2-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_2-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_2-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_2-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are insultingly small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="399686.txt_2_3-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="399686.txt_2_3-305036.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>I wished the food would be more consistant in terms of quantity</h>
+	</pair>
+	<pair id="399686.txt_2_3-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_3-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="399686.txt_2_3-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="399686.txt_2_3-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="399686.txt_2_3-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="399686.txt_2_3-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="399686.txt_2_3-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="399686.txt_2_3-399686.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>food portions are small</h>
+	</pair>
+	<pair id="399686.txt_2_3-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="399686.txt_2_3-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_3-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_3-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="399686.txt_2_3-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="399686.txt_2_3-77304.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>food portions are small</t>
+		<h>It could be improved by making the portions of the meals larger</h>
+	</pair>
+	<pair id="428613.txt_3_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="428613.txt_3_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="428613.txt_3_0-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="428613.txt_3_0-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="428613.txt_3_0-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="428613.txt_3_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="428613.txt_3_0-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="428613.txt_3_0-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="428613.txt_3_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="428613.txt_3_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bigger salads</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="57576.txt_2_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="57576.txt_2_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_2_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="57576.txt_2_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="57576.txt_2_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined over time</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="57576.txt_2_1-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="57576.txt_2_1-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="57576.txt_2_1-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="57576.txt_2_1-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_2_1-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_2_1-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="57576.txt_2_1-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="57576.txt_2_1-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Food quantity has declined</t>
+		<h>drink quantity has declined</h>
+	</pair>
+	<pair id="57576.txt_4_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="57576.txt_4_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_4_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined over time</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="57576.txt_4_1-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="57576.txt_4_1-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="57576.txt_4_1-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="57576.txt_4_1-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="57576.txt_4_1-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="57576.txt_4_1-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="57576.txt_4_1-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>drink quantity has declined</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="77304.txt_2_0-193730.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>food is finished too early</h>
+	</pair>
+	<pair id="77304.txt_2_0-305036.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>the portions are getting rather smaller each time</h>
+	</pair>
+	<pair id="77304.txt_2_0-305036.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>the portions are getting rather smaller</h>
+	</pair>
+	<pair id="77304.txt_2_0-305036.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>the portions are getting smaller each time</h>
+	</pair>
+	<pair id="77304.txt_2_0-305036.txt_3_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>the portions are getting smaller</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>Standard magnum food portions are absurdly small</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>food portions are absurdly small</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>Standard magnum food portions are insultingly small</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>Standard magnum food portions are small</h>
+	</pair>
+	<pair id="77304.txt_2_0-399686.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>food portions are insultingly small</h>
+	</pair>
+	<pair id="77304.txt_2_0-428613.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>Bigger salads</h>
+	</pair>
+	<pair id="77304.txt_2_0-57576.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>Food quantity has declined over time</h>
+	</pair>
+	<pair id="77304.txt_2_0-57576.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>Food quantity has declined</h>
+	</pair>
+	<pair id="77304.txt_2_0-57576.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>drink quantity has declined over time</h>
+	</pair>
+	<pair id="77304.txt_2_0-57576.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by making the portions of the meals larger</t>
+		<h>drink quantity has declined</h>
+	</pair>
+</entailment-corpus>

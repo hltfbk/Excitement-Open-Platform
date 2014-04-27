@@ -31,7 +31,7 @@ public class OpenNLPTaggerENTest {
 			// If it does not, it raises an LAPException. 
 			// It will also print the summarized data of the CAS to the PrintStream. 
 			// If the second argument is null, it will only check the format and raise Exceptions, without printing 
-			PlatformCASProber.probeCas(aJCas, System.out); 
+			PlatformCASProber.probeCasAndPrintContent(aJCas, System.out); 
 			
 			// To see the full content of each View, use this 
 			//PlatformCASProber.probeCasAndPrintContent(aJCas, System.out); 
