@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE page [
-<!ENTITY jars "C:\Alon\Studies\Projet M.sc\Workspace\JARS\">
+<!ENTITY jars "/opt/share/tp-ita/">
 ]>
 
 <configuration>
@@ -17,17 +17,17 @@
 
 <module name="jwpl">
 	<param name="host">localhost</param>
-	<param name="database">jwpl</param> <!-- Schema name -->
+	<param name="database">jwpl_ita</param> <!-- Schema name -->
 	<param name="user">root</param>
-	<param name="password">omahgc</param>
+	<param name="password">my_nor_2k</param>
 	<param name="language">italian</param>
 </module>
 
 <module name="Extractors">
-	<param name="useCategory">false</param>
-	<param name="useRedirect">false</param>
-	<param name="useLink">false</param> <!-- not usable until new stable version of jwpl will show -->
-	<param name="useParenthesis">false</param>
+	<param name="useCategory">true</param>
+	<param name="useRedirect">true</param>
+	<param name="useLink">true</param> <!-- not usable until new stable version of jwpl will show -->
+	<param name="useParenthesis">true</param>
 	<param name="useLexicalIDM">false</param> <!-- Important note – do not fill the database using both the lexicalIDM and syntacticIDM extractors. Using them both can result in wrong classifiers ranks. -->
 	<param name="useSyntacticIDM">true</param>
 
@@ -37,15 +37,16 @@
 	<param name="driver">org.gjt.mm.mysql.Driver</param>
 	<param name="url">jdbc:mysql://localhost:3306/wikilexresita2</param>
 	<param name="username">root</param>
-	<param name="password">nat_2k12</param>
+	<param name="password">my_nor_2k</param>
 	<param name="insertion batch size">500</param>
 </module>
 
 <module name="processing_tools">
-	<param name="TextPro-lemmatizer-command">/home/aprosio/tp-ita/textpro1.5/MorphoPro/bin/fstan /home/aprosio/tp-ita/textpro1.5/MorphoPro/models/italian-utf8.fsa</param>
-	<param name="textPro-path">/home/aprosio/textpro-sw/</param>
+	<param name="TextPro-lemmatizer-command">/opt/share/tp-ita/textpro1.5/MorphoPro/bin/fstan /opt/share/tp-ita/textpro1.5/MorphoPro/models/italian-utf8.fsa</param>
+	<param name="textPro-path">/opt/share/tp-ita/textpro1.5/</param>
 	<param name="parser">malt</param>
-	<param name="parser-path">/home/aprosio/tp-ita/italian-parser-1.7.1/</param>
+	<param name="parser-path">/opt/share/tp-ita/italian-parser-1.7.1/</param>
+	<param name="stopwordsFilePath">/opt/share/tp-ita/stopwords_ita.txt</param>
 	<param name="encoding">ISO-8859-1</param>
 </module>
 

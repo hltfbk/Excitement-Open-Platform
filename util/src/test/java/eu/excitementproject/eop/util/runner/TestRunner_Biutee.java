@@ -3,12 +3,12 @@ package eu.excitementproject.eop.util.runner;
 import org.junit.*;
 
 //test for English with MaxEnt
-public class TestRunner_MaxEnt_EN {
+public class TestRunner_Biutee {
 
 	@Ignore
 	@Test
 	public void test() {
-		String[] cmd = {"-config", "../core/src/test/resources/configuration-file/MaxEntClassificationEDA_Base+OpenNLP_EN.xml",
+		String[] cmd = {"-config", "../core/src/test/resources/configuration-file/biutee.xml",
 		        "-train",
 		        "-trainFile","../core/src/test/resources/data-set/ENG/English_dev_small.xml",
 		        "-test",
