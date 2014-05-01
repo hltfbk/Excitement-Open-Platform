@@ -51,7 +51,9 @@ public class SentenceCountingRecordReader<T> extends RecordReader<T,LongWritable
 			senntenceAndCount = sentenceReader.nextSentence();
 			pos = sentenceReader.getPosition();
 		} catch (SentenceReaderException e) {
-			throw new IOException(e);
+			//throw new IOException(e);
+			pos = sentenceReader.getPosition();
+			return nextKeyValue();
 		}
 		if (senntenceAndCount == null) {
 			key = null;

@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.lexicalminer.LexiclRulesRetrieval.RuleData;
 import eu.excitementproject.eop.lexicalminer.dataAccessLayer.RetrievalTool;
 import eu.excitementproject.eop.lexicalminer.definition.classifier.OnlineClassifier;
+import eu.excitementproject.eop.lexicalminer.redis.RedisRuleData;
 
 public class SyntacticFileManualClassifier extends OnlineClassifier {
 
@@ -217,6 +218,32 @@ public class SyntacticFileManualClassifier extends OnlineClassifier {
 		}
 	}
 
+	@Override
+	public double getClassifierRank(RedisRuleData rule) {
+		
+		double max_rank = 0;
+
+		max_rank = getPatternMaxRank(max_rank, this.m_WordsMap, rule.getWordsPattern());
+		max_rank = getPatternMaxRank(max_rank, this.m_PosMap, rule.getPOSPattern());
+		max_rank = getPatternMaxRank(max_rank, this.m_RelationMap, rule.getRelationPattern());
+		max_rank = getPatternMaxRank(max_rank, this.m_PosRelationMap, rule.getPOSrelationsPattern());
+		max_rank = getPatternMaxRank(max_rank, this.m_FullMap, rule.getFullPattern());
+		max_rank = getPatternMaxRankContains(max_rank, this.m_WordsMapContains, rule.getWordsPattern());
+		max_rank = getPatternMaxRankContains(max_rank, this.m_PosMapContains, rule.getPOSPattern());
+		max_rank = getPatternMaxRankContains(max_rank, this.m_RelationMapContains, rule.getRelationPattern());
+		max_rank = getPatternMaxRankContains(max_rank, this.m_PosRelationMapContains, rule.getPOSrelationsPattern());
+		max_rank = getPatternMaxRankContains(max_rank, this.m_FullMapContains, rule.getFullPattern());
+		
+		if (max_rank > 0)
+		{
+			return max_rank;
+		}
+		else
+		{
+			return rule.getDefultRank();
+		}
+	}
+	
 	private double getPatternMaxRank(double max_rank, HashMap<String, Double> current_map, String key) {
 		if (key != null)
 		{

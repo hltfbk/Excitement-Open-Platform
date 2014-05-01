@@ -1,6 +1,5 @@
-package eu.excitementproject.eop.distsim.application;
+package eu.excitementproject.eop.redis;
 
-import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
 
 /**
  * Runs a Redis similarity resources on local host, given Redis file and port

@@ -5,6 +5,7 @@ package eu.excitementproject.eop.lexicalminer.LexiclRulesRetrieval;
 
 
 import java.io.File;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
@@ -60,12 +61,26 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 	private final int m_limitOnRetrievedRules;
 	private RetrievalTool m_retrivalTool;
 
-	@SuppressWarnings("unused")
 	public static void main(String[] args) throws Exception{
 		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 		WikipediaLexicalResource wlr = new WikipediaLexicalResource(confFile.getModuleConfiguration("WikiV3"));
-		List<LexicalRule<? extends BaseRuleInfo>> lr = wlr.getRulesForLeft("anarchism", null);
-		List<LexicalRule<? extends BaseRuleInfo>> r = wlr.getRulesForRight("philosophy", null);
+		List<LexicalRule<? extends BaseRuleInfo>> l1 = wlr.getRulesForLeft("anarchism", null);
+		List<LexicalRule<? extends BaseRuleInfo>> l2 = wlr.getRulesForRight("anarchism", null);
+		List<LexicalRule<? extends BaseRuleInfo>> l3 = wlr.getRulesForLeft("philosophy", null);
+		List<LexicalRule<? extends BaseRuleInfo>> l4 = wlr.getRulesForRight("philosophy", null);
+		
+		System.out.println("\nanarchism --> :");
+		for (LexicalRule<? extends BaseRuleInfo> rule : l1)
+			System.out.println("\t" + rule.getRLemma() + ", " + rule.getConfidence());
+		System.out.println("\n--> anarchism:");
+		for (LexicalRule<? extends BaseRuleInfo> rule : l2)
+			System.out.println("\t" + rule.getLLemma() + ", " + rule.getConfidence());
+		System.out.println("\nphilosophy --> : ");
+		for (LexicalRule<? extends BaseRuleInfo> rule : l3) 
+			System.out.println("\t" + rule.getRLemma() + ", " + rule.getConfidence());	
+		System.out.println("\n--> philosophy: ");
+		for (LexicalRule<? extends BaseRuleInfo> rule : l4) 
+			System.out.println("\t" + rule.getLLemma() + ", " + rule.getConfidence());	
 	}
  
 	public WikipediaLexicalResource(ConfigurationParams params) throws ConfigurationException, LexicalResourceException {
@@ -178,9 +193,11 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 						new LexicalRule<BaseRuleInfo>(ruleData.getLeftTerm(), this.m_nounPOS,
 						ruleData.getRightTerm(), this.m_nounPOS, Math.max(m_classifier.getRank(ruleData),MINIMAL_CONFIDENCE), ruleData.getRuleType(),
 						ruleData.getRuleResource(), getRuleInfo(ruleData));
+				
 				rules.add(rule);		
 			}
 
+		 	
 		 	//sort rules
 		 	Collections.sort(rules, new LexicalRuleReverseComparator());
 		 	if (rules.size() > this.m_limitOnRetrievedRules)

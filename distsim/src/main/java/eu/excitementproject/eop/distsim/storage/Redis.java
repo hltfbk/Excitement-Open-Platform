@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.io.IOException;
+
 import java.io.Serializable;
 
 import org.apache.log4j.Logger;
@@ -13,11 +14,11 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.Serialization;
 import eu.excitementproject.eop.distsim.util.SerializationException;
+import eu.excitementproject.eop.redis.BasicRedisRunner;
 
 /**
  * An implementation of of the PersistenceDevice, based on a given Redis storage server 

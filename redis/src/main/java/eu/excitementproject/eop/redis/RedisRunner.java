@@ -1,7 +1,7 @@
 /**
  * 
  */
-package eu.excitementproject.eop.distsim.redis;
+package eu.excitementproject.eop.redis;
 
 /**
  * Management of Redis running, given a directory of Redis databases

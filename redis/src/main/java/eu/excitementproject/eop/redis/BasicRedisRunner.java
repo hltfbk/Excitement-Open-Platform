@@ -1,9 +1,10 @@
 /**
  * 
  */
-package eu.excitementproject.eop.distsim.redis;
+package eu.excitementproject.eop.redis;
 
 import java.io.BufferedReader;
+
 
 
 
@@ -25,7 +26,6 @@ import org.apache.log4j.Logger;
 import eu.excitementproject.eop.common.utilities.OS;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.distsim.util.Configuration;
 
 /*import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.ExecuteException;
@@ -133,7 +133,7 @@ class RedisInstanceInfo {
 }
 
 /**
- * A general (singleton) implementation of the {@link eu.excitementproject.eop.distsim.redis.RedisRunner} interface
+ * A general (singleton) implementation of the {@link eu.excitementproject.eop.redis.RedisRunner} interface
  *      
  * 
  * @author Meni Adler

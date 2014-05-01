@@ -1,11 +1,12 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.distsim.domains.FilterType;
+
 import eu.excitementproject.eop.distsim.scoring.ElementFeatureScores;
 import eu.excitementproject.eop.distsim.scoring.ElementScore;
 import eu.excitementproject.eop.distsim.scoring.FeatureScore;
 import eu.excitementproject.eop.distsim.scoring.feature.ElementFeatureData;
+import eu.excitementproject.eop.distsim.domains.FilterType;
 
 /**
  * The feature score DB contains scores for features of elements, and feature of elements

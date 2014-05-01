@@ -2,6 +2,7 @@ package eu.excitementproject.eop.distsim.resource;
 
 import java.io.File;
 
+
 import java.io.FileNotFoundException;
 import java.util.List;
 
@@ -16,10 +17,10 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
-import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.redis.RedisRunException;
 
 /**
  * A program which demonstrates how to access a given distributional similarity model via Lexical interface, 
