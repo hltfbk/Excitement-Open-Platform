@@ -1,0 +1,811 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="255958.txt_4_0-193730.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="137621.txt_4_1-30724.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="255958.txt_3_0-30724.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="193730.txt_1_1-255958.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="137621.txt_4_0-30724.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="193730.txt_1_0-255958.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="137621.txt_4_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="137621.txt_4_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="137621.txt_4_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="137621.txt_4_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="137621.txt_4_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="137621.txt_4_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="137621.txt_4_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="137621.txt_4_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="137621.txt_4_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="137621.txt_4_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="137621.txt_4_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="137621.txt_4_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This really has to be fixed</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="137621.txt_4_1-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="137621.txt_4_1-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="137621.txt_4_1-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="137621.txt_4_1-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="137621.txt_4_1-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="137621.txt_4_1-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="137621.txt_4_1-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="137621.txt_4_1-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="137621.txt_4_1-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="137621.txt_4_1-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="137621.txt_4_1-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="137621.txt_4_1-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>This has to be fixed</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="193730.txt_1_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="193730.txt_1_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="193730.txt_1_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="193730.txt_1_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="193730.txt_1_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="193730.txt_1_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="193730.txt_1_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="193730.txt_1_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="193730.txt_1_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="193730.txt_1_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="193730.txt_1_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="193730.txt_1_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is too expensive</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="193730.txt_1_1-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="193730.txt_1_1-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="193730.txt_1_1-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="193730.txt_1_1-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="193730.txt_1_1-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="193730.txt_1_1-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="193730.txt_1_1-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="193730.txt_1_1-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="193730.txt_1_1-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="193730.txt_1_1-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="193730.txt_1_1-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="193730.txt_1_1-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is expensive</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="255958.txt_2_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="255958.txt_2_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="255958.txt_2_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="255958.txt_2_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="255958.txt_2_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="255958.txt_2_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="255958.txt_2_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="255958.txt_2_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="255958.txt_2_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="255958.txt_2_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="255958.txt_2_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="255958.txt_2_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="255958.txt_2_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="255958.txt_2_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its poor</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="255958.txt_3_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="255958.txt_3_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="255958.txt_3_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="255958.txt_3_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="255958.txt_3_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="255958.txt_3_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="255958.txt_3_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="255958.txt_3_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="255958.txt_3_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="255958.txt_3_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="255958.txt_3_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="255958.txt_3_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="255958.txt_3_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its limited</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="255958.txt_4_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="255958.txt_4_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="255958.txt_4_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="255958.txt_4_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="255958.txt_4_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="255958.txt_4_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="255958.txt_4_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="255958.txt_4_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="255958.txt_4_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="255958.txt_4_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="255958.txt_4_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="255958.txt_4_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="255958.txt_4_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its overpriced</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="27.txt_3_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="27.txt_3_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="27.txt_3_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="27.txt_3_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="27.txt_3_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="27.txt_3_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="27.txt_3_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="27.txt_3_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="27.txt_3_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="27.txt_3_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="27.txt_3_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="27.txt_3_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="27.txt_3_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="27.txt_3_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>they Are slow</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="30724.txt_4_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="30724.txt_4_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="30724.txt_4_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="30724.txt_4_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="30724.txt_4_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="30724.txt_4_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="30724.txt_4_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="30724.txt_4_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="30724.txt_4_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="30724.txt_4_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="30724.txt_4_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="30724.txt_4_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="30724.txt_4_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="30724.txt_4_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It was not sufficient</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="379399.txt_2_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="379399.txt_2_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="379399.txt_2_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="379399.txt_2_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="379399.txt_2_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="379399.txt_2_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="379399.txt_2_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="379399.txt_2_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="379399.txt_2_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="379399.txt_2_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="379399.txt_2_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="379399.txt_2_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="379399.txt_2_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="379399.txt_2_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its cold</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="379399.txt_3_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="379399.txt_3_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="379399.txt_3_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="379399.txt_3_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="379399.txt_3_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="379399.txt_3_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="379399.txt_3_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="379399.txt_3_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="379399.txt_3_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="379399.txt_3_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="379399.txt_3_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="379399.txt_3_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="379399.txt_3_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="379399.txt_3_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>its boring</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="429450.txt_6_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="429450.txt_6_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="429450.txt_6_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="429450.txt_6_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="429450.txt_6_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="429450.txt_6_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="429450.txt_6_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="429450.txt_6_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="429450.txt_6_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="429450.txt_6_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="429450.txt_6_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="429450.txt_6_0-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="429450.txt_6_0-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>currently it is a disgrace</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="429450.txt_6_1-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="429450.txt_6_1-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="429450.txt_6_1-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="429450.txt_6_1-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="429450.txt_6_1-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="429450.txt_6_1-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="429450.txt_6_1-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="429450.txt_6_1-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="429450.txt_6_1-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="429450.txt_6_1-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="429450.txt_6_1-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="429450.txt_6_1-513573.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>very little of it</h>
+	</pair>
+	<pair id="429450.txt_6_1-513573.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it is a disgrace</t>
+		<h>little of it</h>
+	</pair>
+	<pair id="513573.txt_3_0-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="513573.txt_3_0-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="513573.txt_3_0-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="513573.txt_3_0-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="513573.txt_3_0-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="513573.txt_3_0-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="513573.txt_3_0-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="513573.txt_3_0-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="513573.txt_3_0-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="513573.txt_3_0-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="513573.txt_3_0-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="513573.txt_3_0-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="513573.txt_3_0-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very little of it</t>
+		<h>it is a disgrace</h>
+	</pair>
+	<pair id="513573.txt_3_1-137621.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>This really has to be fixed</h>
+	</pair>
+	<pair id="513573.txt_3_1-137621.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>This has to be fixed</h>
+	</pair>
+	<pair id="513573.txt_3_1-193730.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>it is too expensive</h>
+	</pair>
+	<pair id="513573.txt_3_1-193730.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>it is expensive</h>
+	</pair>
+	<pair id="513573.txt_3_1-255958.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>its poor</h>
+	</pair>
+	<pair id="513573.txt_3_1-255958.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>its limited</h>
+	</pair>
+	<pair id="513573.txt_3_1-255958.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>its overpriced</h>
+	</pair>
+	<pair id="513573.txt_3_1-27.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>they Are slow</h>
+	</pair>
+	<pair id="513573.txt_3_1-30724.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>It was not sufficient</h>
+	</pair>
+	<pair id="513573.txt_3_1-379399.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>its cold</h>
+	</pair>
+	<pair id="513573.txt_3_1-379399.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>its boring</h>
+	</pair>
+	<pair id="513573.txt_3_1-429450.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>currently it is a disgrace</h>
+	</pair>
+	<pair id="513573.txt_3_1-429450.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little of it</t>
+		<h>it is a disgrace</h>
+	</pair>
+</entailment-corpus>

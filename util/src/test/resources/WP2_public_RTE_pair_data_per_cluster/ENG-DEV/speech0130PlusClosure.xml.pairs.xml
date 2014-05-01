@@ -1,0 +1,1491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764993_83585107.txt_1_1-13764766_78604096-3.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764993_83585107.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764768_77088303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764627_76353375.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764858_82887000-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764766_78604096-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13765175_85245455.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764993_83585107.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764627_76353375.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764993_83585107.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764993_83585107.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764993_83585107.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764768_77088303.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764858_82887000.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764858_82887000-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764993_83585107.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764766_78604096-3.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764993_83585107.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764766_78604096-3.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764766_78604096-3.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764766_78604096-3.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764766_78604096-3.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764627_76353375.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it's impossible to make a call</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764684_76477077.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>this is the fifth call i have made trying to get my ticket</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was very route</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764766_78604096-3.txt_1_1-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i thought she was route</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764768_77088303.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>your represent on the makes a mistake</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764768_77088303.txt_2_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she makes a mistake</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764776_82291713.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>year automated system it's horrible</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764776_82291713.txt_3_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764787_80854454-2.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I hate this lack of communication</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764800_80670011-2.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm frustrated with whoever continues to give me a crappy answer</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764858_82887000-2.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the agent would you know hung up on me</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me again</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764858_82887000.txt_1_1-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>she hunk up on me</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was absolutely rude</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13764993_83585107.txt_1_1-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the guy was rude</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13765001_83599251.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>different people say different things</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13765175_85245455.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>i've been on hold for a long time</h>
+	</pair>
+	<pair id="13765054_84130967.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why for customer service there's not a phone number</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_0-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a really long time</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13765175_85245455.txt_1_1-13765177_84384451.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've been on hold for a long time</t>
+		<h>it was it twenty nine minute wait</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764627_76353375.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>it's impossible to make a call</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764684_76477077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>this is the fifth call i have made trying to get my ticket</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764766_78604096-3.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>i thought she was very route</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764766_78604096-3.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>i thought she was route</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764768_77088303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>your represent on the makes a mistake</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764768_77088303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>she makes a mistake</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764776_82291713.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>year automated system it's horrible</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764776_82291713.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>i should not have to call three times to make sure my advantage numbers on my flight tomorrow</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764787_80854454-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>I hate this lack of communication</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764800_80670011-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>i'm frustrated with whoever continues to give me a crappy answer</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764858_82887000-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>the agent would you know hung up on me</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764858_82887000.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>she hunk up on me again</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764858_82887000.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>she hunk up on me</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764993_83585107.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>the guy was absolutely rude</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13764993_83585107.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>the guy was rude</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13765001_83599251.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>different people say different things</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13765054_84130967.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>why for customer service there's not a phone number</h>
+	</pair>
+	<pair id="13765177_84384451.txt_1_0-13765175_85245455.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it was it twenty nine minute wait</t>
+		<h>i've been on hold for a really long time</h>
+	</pair>
+</entailment-corpus>

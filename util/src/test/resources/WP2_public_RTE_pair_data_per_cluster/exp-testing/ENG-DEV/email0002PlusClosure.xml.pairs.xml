@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="153220.txt_3_0-237090.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>no more pre - dinner drink</t>
+		<h>More choice of drink</h>
+	</pair>
+	<pair id="237090.txt_2_0-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More choice of drink</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="187987.txt_4_1-500967.txt_6_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink was terrible</t>
+		<h>drinks are low standard</h>
+	</pair>
+	<pair id="418508.txt_10_1-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be real milk ,</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="57576.txt_3_1-500967.txt_6_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink quality has declined</t>
+		<h>drinks are low standard</h>
+	</pair>
+	<pair id="63301.txt_1_1-237090.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>You could bring back champagne</t>
+		<h>More choice of drink</h>
+	</pair>
+	<pair id="228464.txt_2_2-418508.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>tea would be a welcome addition</t>
+		<h>There should be a good english tea</h>
+	</pair>
+	<pair id="418508.txt_5_1-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a proper expresso machine ,</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="63301.txt_1_1-423204.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>You could bring back champagne</t>
+		<h>wine selection poor</h>
+	</pair>
+	<pair id="418508.txt_8_0-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a good english tea</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="446414.txt_3_0-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring back the welcome drink</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="327783.txt_4_0-500967.txt_6_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>fresh coffee is nicer than instant coffee</t>
+		<h>drinks are low standard</h>
+	</pair>
+	<pair id="153220.txt_3_0-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>no more pre - dinner drink</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="15589.txt_5_0-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>No drinks offered</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="418508.txt_5_1-327783.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a proper expresso machine ,</t>
+		<h>fresh coffee is nicer than instant coffee</h>
+	</pair>
+	<pair id="228464.txt_1_2-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>coffee would be a welcome addition</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="187987.txt_4_0-500967.txt_6_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>drink available on board was terrible</t>
+		<h>quality of drinks are low standard</h>
+	</pair>
+	<pair id="418508.txt_5_1-500967.txt_6_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a proper expresso machine ,</t>
+		<h>drinks are low standard</h>
+	</pair>
+	<pair id="63301.txt_1_0-305036.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>You could bring back champagne in leisure select</t>
+		<h>there is no more champagne</h>
+	</pair>
+	<pair id="418508.txt_5_0-500967.txt_6_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a proper expresso machine , not that horrible nespresso</t>
+		<h>quality of drinks are low standard</h>
+	</pair>
+	<pair id="153220.txt_3_0-446414.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>no more pre - dinner drink</t>
+		<h>Bring back the welcome drink</h>
+	</pair>
+	<pair id="305036.txt_1_3-63301.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>there is no champagne</t>
+		<h>You could bring back champagne</h>
+	</pair>
+	<pair id="418508.txt_8_0-237090.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a good english tea</t>
+		<h>More choice of drink</h>
+	</pair>
+	<pair id="305036.txt_1_3-423204.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>there is no champagne</t>
+		<h>wine selection poor</h>
+	</pair>
+	<pair id="305036.txt_1_3-522350.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>there is no champagne</t>
+		<h>better drinks selection</h>
+	</pair>
+	<pair id="418508.txt_8_0-228464.txt_2_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a good english tea</t>
+		<h>tea would be a welcome addition</h>
+	</pair>
+	<pair id="423204.txt_3_0-237090.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>wine selection poor</t>
+		<h>More choice of drink</h>
+	</pair>
+</entailment-corpus>

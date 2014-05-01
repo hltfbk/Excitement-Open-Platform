@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="373217.txt_1_1-56571.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Hot snacks would be an improvement</t>
+		<h>Offer a wider variety of snacks</h>
+	</pair>
+	<pair id="228464.txt_3_2-38058.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>snacks would be a welcome addition</t>
+		<h>have snacks available</h>
+	</pair>
+	<pair id="38058.txt_8_0-15589.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have snacks available</t>
+		<h>no snacks offered</h>
+	</pair>
+	<pair id="38058.txt_8_0-228464.txt_3_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>have snacks available</t>
+		<h>snacks would be a welcome addition</h>
+	</pair>
+	<pair id="15589.txt_7_0-38058.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>no snacks offered</t>
+		<h>have snacks available</h>
+	</pair>
+	<pair id="411441.txt_4_0-38058.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it would be better if there were staff walking around selling snacks</t>
+		<h>have snacks available</h>
+	</pair>
+	<pair id="411441.txt_4_0-228464.txt_3_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>it would be better if there were staff walking around selling snacks</t>
+		<h>snacks would be a welcome addition</h>
+	</pair>
+	<pair id="411441.txt_4_0-15589.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it would be better if there were staff walking around selling snacks</t>
+		<h>no snacks offered</h>
+	</pair>
+	<pair id="15589.txt_7_0-228464.txt_3_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>no snacks offered</t>
+		<h>snacks would be a welcome addition</h>
+	</pair>
+	<pair id="228464.txt_3_2-15589.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>snacks would be a welcome addition</t>
+		<h>no snacks offered</h>
+	</pair>
+	<pair id="228464.txt_3_1-15589.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>snacks would be a welcome addition to the economy section</t>
+		<h>no snacks offered</h>
+	</pair>
+	<pair id="228464.txt_3_1-38058.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>snacks would be a welcome addition to the economy section</t>
+		<h>have snacks available</h>
+	</pair>
+	<pair id="228464.txt_3_0-15589.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>A trolley serving snacks would be a welcome addition to the economy section</t>
+		<h>no snacks offered</h>
+	</pair>
+	<pair id="228464.txt_3_0-38058.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>A trolley serving snacks would be a welcome addition to the economy section</t>
+		<h>have snacks available</h>
+	</pair>
+	<pair id="373217.txt_1_0-56571.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Hot snacks would be an improvement as opposed to cold buffet items</t>
+		<h>Offer a wider variety of snacks</h>
+	</pair>
+	<pair id="153220.txt_1_0-15589.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>no snacks offered</h>
+	</pair>
+	<pair id="153220.txt_1_0-228464.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>A trolley serving snacks would be a welcome addition to the economy section</h>
+	</pair>
+	<pair id="153220.txt_1_0-228464.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>snacks would be a welcome addition to the economy section</h>
+	</pair>
+	<pair id="153220.txt_1_0-228464.txt_3_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>snacks would be a welcome addition</h>
+	</pair>
+	<pair id="153220.txt_1_0-278254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>Savory snacks in the waiting room in Moonport - horrible</h>
+	</pair>
+	<pair id="153220.txt_1_0-278254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>Savory snacks in the waiting room - horrible</h>
+	</pair>
+	<pair id="153220.txt_1_0-278254.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>Savory snacks - horrible</h>
+	</pair>
+	<pair id="153220.txt_1_0-278254.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>snacks - horrible</h>
+	</pair>
+	<pair id="153220.txt_1_0-373217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>snack in your Standard Magnum class is ridiculous</t>
+		<h>Hot snacks would be an improvement as opposed to cold buffet items</h>
+	</pair>
+</entailment-corpus>

@@ -1,0 +1,2483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="0254.txt_2_0-0254.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0254.txt_1_1-0254.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0254.txt_2_1-0254.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0254.txt_1_0-0254.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0254.txt_2_0-0254.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0254.txt_1_0-0254.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0051.txt_1_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0051.txt_1_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0051.txt_1_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0051.txt_1_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0051.txt_1_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0051.txt_1_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0051.txt_1_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0051.txt_1_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0051.txt_1_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0051.txt_1_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0051.txt_1_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0051.txt_1_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0051.txt_1_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0051.txt_1_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0051.txt_1_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0051.txt_1_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0051.txt_1_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0051.txt_1_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0051.txt_1_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0051.txt_1_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0051.txt_1_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0051.txt_1_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0051.txt_1_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0051.txt_1_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_1-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_1-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0051.txt_1_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0051.txt_1_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0051.txt_1_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0051.txt_1_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>continuo ad aspettare il mio smartphone</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0076.txt_1_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0076.txt_1_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0076.txt_1_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0076.txt_1_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0076.txt_1_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0076.txt_1_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0076.txt_1_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0076.txt_1_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0076.txt_1_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0076.txt_1_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0076.txt_1_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0076.txt_1_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0076.txt_1_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0076.txt_1_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti da parte vostra NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0076.txt_1_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0076.txt_1_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0076.txt_1_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0076.txt_1_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0076.txt_1_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0076.txt_1_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0076.txt_1_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0076.txt_1_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0076.txt_1_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0076.txt_1_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0076.txt_1_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_1-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_1-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0076.txt_1_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0076.txt_1_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0076.txt_1_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0076.txt_1_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>gli aggiornamenti NON ARRIVANO MAI</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0077.txt_1_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0077.txt_1_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0077.txt_1_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0077.txt_1_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0077.txt_1_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0077.txt_1_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0077.txt_1_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0077.txt_1_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0077.txt_1_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0077.txt_1_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0077.txt_1_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0077.txt_1_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0077.txt_1_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0077.txt_1_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0077.txt_1_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0077.txt_1_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0077.txt_1_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0077.txt_1_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0077.txt_1_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>scarsissimo impegno in termini di rilascio degli aggiornamenti</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_1-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_1-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_2-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_2-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_2-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_2-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_2-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_2-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_2-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_2-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_2-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_2-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_2-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_2-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_2-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_2-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_2-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_2-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_2-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_2-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_2-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_3-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_3-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_3-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_3-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_3-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_3-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_3-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_3-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_3-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_3-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_3-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_3-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_3-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_3-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_3-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_3-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_3-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_3-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_3-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_4-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_4-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_4-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_4-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_4-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_4-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_4-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_4-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_4-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_4-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_4-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_4-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_4-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_4-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_4-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_4-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_4-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_4-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_4-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link al servizio clienti</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_5-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_5-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_5-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_5-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_5-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_5-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_5-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_5-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_5-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_5-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_5-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_5-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_5-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_5-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_5-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_5-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_5-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_5-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_5-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona neppure il link</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_6-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_6-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_6-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_6-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_6-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_6-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_6-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_6-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_6-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_6-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_6-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_6-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_6-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_6-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_6-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_6-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_6-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_6-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_6-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>dal mio MOBILEE non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_7-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_7-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0079.txt_1_7-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_7-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0079.txt_1_7-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0079.txt_1_7-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_7-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0079.txt_1_7-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0079.txt_1_7-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0079.txt_1_7-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0079.txt_1_7-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0079.txt_1_7-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_7-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_7-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_7-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0079.txt_1_7-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0079.txt_1_7-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0079.txt_1_7-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0079.txt_1_7-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona il link</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0080.txt_1_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0080.txt_1_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0080.txt_1_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0080.txt_1_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0080.txt_1_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0080.txt_1_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_1-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_1-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0080.txt_1_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0080.txt_1_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona in un telefono</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_2-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_2-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_2-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_2-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_2-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_2-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_2-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0080.txt_1_2-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0080.txt_1_2-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_2-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_2-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_2-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_2-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0080.txt_1_2-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0080.txt_1_2-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_2-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona se la inserisco</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_3-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_3-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0080.txt_1_3-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_3-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0080.txt_1_3-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_3-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0080.txt_1_3-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0080.txt_1_3-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0080.txt_1_3-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_3-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_3-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_3-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0080.txt_1_3-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0080.txt_1_3-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0080.txt_1_3-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0080.txt_1_3-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la sim non funziona</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0144.txt_2_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0144.txt_2_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0144.txt_2_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0144.txt_2_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0144.txt_2_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0144.txt_2_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0144.txt_2_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0144.txt_2_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0144.txt_2_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0144.txt_2_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0144.txt_2_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0144.txt_2_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0144.txt_2_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0144.txt_2_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth del mio MOBILEG Sonic</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0144.txt_2_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0144.txt_2_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0144.txt_2_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0144.txt_2_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0144.txt_2_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0144.txt_2_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0144.txt_2_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0144.txt_2_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0144.txt_2_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0144.txt_2_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0144.txt_2_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_1-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_1-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0144.txt_2_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0144.txt_2_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0144.txt_2_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0144.txt_2_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho problemi con il Bluetooth</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_1_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_1_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_1_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_1_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_1_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_1_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_1_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0254.txt_1_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0254.txt_1_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0254.txt_1_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0254.txt_1_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0254.txt_1_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0254.txt_1_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0254.txt_1_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0254.txt_1_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_1_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_1_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_1_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_1_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_1_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_1_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_1_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_1_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0254.txt_1_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0254.txt_1_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0254.txt_1_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0254.txt_1_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0254.txt_1_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0254.txt_1_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0254.txt_1_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0254.txt_1_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0254.txt_1_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_1_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono acquistato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_2_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_2_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_2_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_2_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_2_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_2_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_2_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0254.txt_2_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0254.txt_2_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0254.txt_2_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0254.txt_2_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0254.txt_2_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0254.txt_2_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0254.txt_2_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0254.txt_2_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_2_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>noi del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_2_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_2_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0254.txt_2_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_2_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0254.txt_2_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_2_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0254.txt_2_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0254.txt_2_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0254.txt_2_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0254.txt_2_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0254.txt_2_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0254.txt_2_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0254.txt_2_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0254.txt_2_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0254.txt_2_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0254.txt_2_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0254.txt_2_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>del telefono pagato non abbiamo notizie</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0295.txt_1_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_1_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_1_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_1_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_1_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_1_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_1_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0295.txt_1_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0295.txt_1_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0295.txt_1_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0295.txt_1_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0295.txt_1_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0295.txt_1_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_0-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0295.txt_1_0-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0295.txt_1_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_1_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_1_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_1_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_1_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_1_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_1_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0295.txt_1_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0295.txt_1_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0295.txt_1_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0295.txt_1_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0295.txt_1_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0295.txt_1_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_1-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_1-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_1_1-0295.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</h>
+	</pair>
+	<pair id="0295.txt_1_1-0295.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 usato</t>
+		<h>mi hanno inviato un MODELLOA2 con pixel bruciati</h>
+	</pair>
+	<pair id="0295.txt_2_0-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_2_0-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_2_0-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_2_0-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_2_0-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_2_0-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_2_0-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0295.txt_2_0-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0295.txt_2_0-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0295.txt_2_0-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0295.txt_2_0-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0295.txt_2_0-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0295.txt_2_0-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_0-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_0-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_0-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_0-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0295.txt_2_0-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con una montagna di pixel bruciati</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+	<pair id="0295.txt_2_1-0051.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>Fatta la SEMPLICE500 continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_2_1-0051.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>continuo ad aspettare il mio smartphone</h>
+	</pair>
+	<pair id="0295.txt_2_1-0076.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>gli aggiornamenti da parte vostra NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_2_1-0076.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>gli aggiornamenti NON ARRIVANO MAI</h>
+	</pair>
+	<pair id="0295.txt_2_1-0077.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>scarsissimo impegno in termini di rilascio degli aggiornamenti</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>non funziona neppure il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>non funziona il link al servizio clienti</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>non funziona neppure il link</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>dal mio MOBILEE non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_2_1-0079.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>non funziona il link</h>
+	</pair>
+	<pair id="0295.txt_2_1-0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>la sim non funziona se la inserisco in un telefono</h>
+	</pair>
+	<pair id="0295.txt_2_1-0080.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>la sim non funziona in un telefono</h>
+	</pair>
+	<pair id="0295.txt_2_1-0080.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>la sim non funziona se la inserisco</h>
+	</pair>
+	<pair id="0295.txt_2_1-0080.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>la sim non funziona</h>
+	</pair>
+	<pair id="0295.txt_2_1-0144.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>ho problemi con il Bluetooth del mio MOBILEG Sonic</h>
+	</pair>
+	<pair id="0295.txt_2_1-0144.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>ho problemi con il Bluetooth</h>
+	</pair>
+	<pair id="0295.txt_2_1-0254.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>noi del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_1-0254.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>del telefono acquistato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_1-0254.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>noi del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_1-0254.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>del telefono pagato non abbiamo notizie</h>
+	</pair>
+	<pair id="0295.txt_2_1-0295.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>mi hanno inviato un MODELLOA2 s fondo di magazzino , usato</h>
+	</pair>
+	<pair id="0295.txt_2_1-0295.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>mi hanno inviato un MODELLOA2 con pixel bruciati</t>
+		<h>mi hanno inviato un MODELLOA2 usato</h>
+	</pair>
+</entailment-corpus>

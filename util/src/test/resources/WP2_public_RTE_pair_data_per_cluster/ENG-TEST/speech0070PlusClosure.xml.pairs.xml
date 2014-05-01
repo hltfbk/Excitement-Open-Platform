@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764759_80299358.txt_1_0-13764813_81567470.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys change my seat</t>
+		<h>the seeds or so type together</h>
+	</pair>
+	<pair id="13764759_80299358.txt_1_0-13764813_81567470.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys change my seat</t>
+		<h>the seeds or type together</h>
+	</pair>
+	<pair id="13764759_80299358.txt_1_0-13764829_81137701-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys change my seat</t>
+		<h>there were no open seats</h>
+	</pair>
+	<pair id="13764813_81567470.txt_1_0-13764759_80299358.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the seeds or so type together</t>
+		<h>you guys change my seat</h>
+	</pair>
+	<pair id="13764813_81567470.txt_1_0-13764829_81137701-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the seeds or so type together</t>
+		<h>there were no open seats</h>
+	</pair>
+	<pair id="13764813_81567470.txt_1_1-13764759_80299358.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the seeds or type together</t>
+		<h>you guys change my seat</h>
+	</pair>
+	<pair id="13764813_81567470.txt_1_1-13764829_81137701-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the seeds or type together</t>
+		<h>there were no open seats</h>
+	</pair>
+	<pair id="13764829_81137701-2.txt_1_0-13764759_80299358.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there were no open seats</t>
+		<h>you guys change my seat</h>
+	</pair>
+	<pair id="13764829_81137701-2.txt_1_0-13764813_81567470.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there were no open seats</t>
+		<h>the seeds or so type together</h>
+	</pair>
+	<pair id="13764829_81137701-2.txt_1_0-13764813_81567470.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there were no open seats</t>
+		<h>the seeds or type together</h>
+	</pair>
+</entailment-corpus>

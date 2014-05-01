@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="190617.txt_6_1-212549.txt_4_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are uncomfortable</t>
+		<h>seats not comfortableGenerally</h>
+	</pair>
+	<pair id="212549.txt_4_2-190617.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats not comfortableGenerally</t>
+		<h>seats are uncomfortable</h>
+	</pair>
+	<pair id="183009.txt_1_0-190617.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating could be more comfortable</t>
+		<h>seats are uncomfortable</h>
+	</pair>
+	<pair id="411441.txt_1_0-183009.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seats need to be more comfortable</t>
+		<h>Seating could be more comfortable</h>
+	</pair>
+	<pair id="411441.txt_1_0-190617.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seats need to be more comfortable</t>
+		<h>seats are uncomfortable</h>
+	</pair>
+	<pair id="183009.txt_1_0-212549.txt_4_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating could be more comfortable</t>
+		<h>seats not comfortableGenerally</h>
+	</pair>
+	<pair id="212549.txt_4_2-183009.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats not comfortableGenerally</t>
+		<h>Seating could be more comfortable</h>
+	</pair>
+	<pair id="183009.txt_1_0-411441.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating could be more comfortable</t>
+		<h>Seats need to be more comfortable</h>
+	</pair>
+	<pair id="190617.txt_6_1-411441.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are uncomfortable</t>
+		<h>Seats need to be more comfortable</h>
+	</pair>
+	<pair id="190617.txt_6_1-183009.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are uncomfortable</t>
+		<h>Seating could be more comfortable</h>
+	</pair>
+	<pair id="411441.txt_1_0-212549.txt_4_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seats need to be more comfortable</t>
+		<h>seats not comfortableGenerally</h>
+	</pair>
+	<pair id="212549.txt_4_2-411441.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats not comfortableGenerally</t>
+		<h>Seats need to be more comfortable</h>
+	</pair>
+	<pair id="190617.txt_6_0-212549.txt_4_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are stunningly uncomfortable</t>
+		<h>seats not comfortableGenerally</h>
+	</pair>
+	<pair id="190617.txt_6_0-183009.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are stunningly uncomfortable</t>
+		<h>Seating could be more comfortable</h>
+	</pair>
+	<pair id="190617.txt_6_0-411441.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are stunningly uncomfortable</t>
+		<h>Seats need to be more comfortable</h>
+	</pair>
+	<pair id="212549.txt_4_1-183009.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not comfortableGenerally</t>
+		<h>Seating could be more comfortable</h>
+	</pair>
+	<pair id="212549.txt_4_1-411441.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not comfortableGenerally</t>
+		<h>Seats need to be more comfortable</h>
+	</pair>
+	<pair id="212549.txt_4_1-190617.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not comfortableGenerally</t>
+		<h>seats are uncomfortable</h>
+	</pair>
+	<pair id="212549.txt_4_0-183009.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not very comfortableGenerally</t>
+		<h>Seating could be more comfortable</h>
+	</pair>
+	<pair id="212549.txt_4_0-411441.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not very comfortableGenerally</t>
+		<h>Seats need to be more comfortable</h>
+	</pair>
+	<pair id="212549.txt_4_0-190617.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not very comfortableGenerally</t>
+		<h>seats are uncomfortable</h>
+	</pair>
+	<pair id="183009.txt_1_0-190617.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating could be more comfortable</t>
+		<h>seats are stunningly uncomfortable</h>
+	</pair>
+	<pair id="183009.txt_1_0-212549.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating could be more comfortable</t>
+		<h>Ecomony seats not very comfortableGenerally</h>
+	</pair>
+	<pair id="183009.txt_1_0-212549.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating could be more comfortable</t>
+		<h>Ecomony seats not comfortableGenerally</h>
+	</pair>
+	<pair id="190617.txt_6_0-212549.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are stunningly uncomfortable</t>
+		<h>Ecomony seats not very comfortableGenerally</h>
+	</pair>
+	<pair id="190617.txt_6_0-212549.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are stunningly uncomfortable</t>
+		<h>Ecomony seats not comfortableGenerally</h>
+	</pair>
+	<pair id="190617.txt_6_1-212549.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are uncomfortable</t>
+		<h>Ecomony seats not very comfortableGenerally</h>
+	</pair>
+	<pair id="190617.txt_6_1-212549.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are uncomfortable</t>
+		<h>Ecomony seats not comfortableGenerally</h>
+	</pair>
+	<pair id="212549.txt_4_0-190617.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not very comfortableGenerally</t>
+		<h>seats are stunningly uncomfortable</h>
+	</pair>
+	<pair id="212549.txt_4_1-190617.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Ecomony seats not comfortableGenerally</t>
+		<h>seats are stunningly uncomfortable</h>
+	</pair>
+	<pair id="212549.txt_4_2-190617.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats not comfortableGenerally</t>
+		<h>seats are stunningly uncomfortable</h>
+	</pair>
+	<pair id="411441.txt_1_0-190617.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seats need to be more comfortable</t>
+		<h>seats are stunningly uncomfortable</h>
+	</pair>
+	<pair id="411441.txt_1_0-212549.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seats need to be more comfortable</t>
+		<h>Ecomony seats not very comfortableGenerally</h>
+	</pair>
+	<pair id="411441.txt_1_0-212549.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seats need to be more comfortable</t>
+		<h>Ecomony seats not comfortableGenerally</h>
+	</pair>
+</entailment-corpus>

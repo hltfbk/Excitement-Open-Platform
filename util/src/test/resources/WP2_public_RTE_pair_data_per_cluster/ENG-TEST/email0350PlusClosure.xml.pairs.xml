@@ -1,0 +1,4083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="217842.txt_7_1-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="156303.txt_1_3-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="473384.txt_7_0-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="473384.txt_9_0-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="423940.txt_1_0-217842.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="511484.txt_2_0-7.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="473384.txt_9_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="473384.txt_7_0-473384.txt_9_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="473384.txt_9_0-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="473384.txt_8_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="213508.txt_4_3-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="121566.txt_1_0-431092.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="473384.txt_7_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="423940.txt_2_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>slow</h>
+	</pair>
+	<pair id="156303.txt_1_2-277071.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="473384.txt_8_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>slow</h>
+	</pair>
+	<pair id="451113.txt_6_0-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="431092.txt_1_0-277071.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="121566.txt_2_0-431092.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="156303.txt_1_3-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>slow</h>
+	</pair>
+	<pair id="121566.txt_2_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="317673.txt_4_1-277071.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="473384.txt_8_0-473384.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="213508.txt_4_3-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="213508.txt_4_3-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>slow</h>
+	</pair>
+	<pair id="473384.txt_9_0-473384.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="473384.txt_8_0-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="213508.txt_4_2-277071.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="423940.txt_2_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="451113.txt_6_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>slow</h>
+	</pair>
+	<pair id="317673.txt_4_1-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="431092.txt_1_1-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>slow</h>
+	</pair>
+	<pair id="451113.txt_6_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="431092.txt_1_1-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="473384.txt_9_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>slow</h>
+	</pair>
+	<pair id="473384.txt_7_0-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="473384.txt_7_0-473384.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="121566.txt_1_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="451113.txt_6_0-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="473384.txt_9_0-473384.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="431092.txt_1_1-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="431092.txt_2_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="473384.txt_8_0-473384.txt_9_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="431092.txt_1_1-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="277071.txt_1_1-317673.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="423940.txt_1_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="423940.txt_1_0-431092.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="473384.txt_7_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>slow</h>
+	</pair>
+	<pair id="277071.txt_1_1-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="423940.txt_2_0-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="423940.txt_2_0-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="473384.txt_8_0-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="156303.txt_1_3-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="277071.txt_1_0-317673.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="277071.txt_1_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="317673.txt_4_0-277071.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="317673.txt_4_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="217842.txt_7_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="213508.txt_4_1-277071.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="213508.txt_4_2-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>slow</h>
+	</pair>
+	<pair id="213508.txt_4_2-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="213508.txt_4_2-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="213508.txt_4_0-277071.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="156303.txt_1_2-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="156303.txt_1_2-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>slow</h>
+	</pair>
+	<pair id="156303.txt_1_2-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="431092.txt_1_0-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="431092.txt_1_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>slow</h>
+	</pair>
+	<pair id="431092.txt_1_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="431092.txt_1_0-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="156303.txt_1_1-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="156303.txt_1_1-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>slow</h>
+	</pair>
+	<pair id="156303.txt_1_1-277071.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="156303.txt_1_1-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="213508.txt_4_1-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>slow</h>
+	</pair>
+	<pair id="213508.txt_4_1-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="213508.txt_4_1-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="213508.txt_4_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>slow</h>
+	</pair>
+	<pair id="213508.txt_4_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="213508.txt_4_0-156303.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="156303.txt_1_0-213508.txt_4_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="156303.txt_1_0-277071.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>slow</h>
+	</pair>
+	<pair id="156303.txt_1_0-277071.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="156303.txt_1_0-423940.txt_11_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="121566.txt_1_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="121566.txt_1_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="121566.txt_1_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="121566.txt_1_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="121566.txt_1_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="121566.txt_1_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="121566.txt_1_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="121566.txt_1_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="121566.txt_1_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="121566.txt_1_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="121566.txt_1_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="121566.txt_1_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="121566.txt_1_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="121566.txt_1_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="121566.txt_1_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>slow</h>
+	</pair>
+	<pair id="121566.txt_1_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="121566.txt_1_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="121566.txt_1_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="121566.txt_1_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="121566.txt_1_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="121566.txt_1_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="121566.txt_1_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="121566.txt_1_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="121566.txt_1_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="121566.txt_1_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="121566.txt_1_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="121566.txt_1_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="121566.txt_1_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="121566.txt_1_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="121566.txt_1_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More space at check - in</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="121566.txt_2_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="121566.txt_2_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="121566.txt_2_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="121566.txt_2_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="121566.txt_2_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="121566.txt_2_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="121566.txt_2_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="121566.txt_2_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="121566.txt_2_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="121566.txt_2_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="121566.txt_2_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="121566.txt_2_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="121566.txt_2_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="121566.txt_2_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="121566.txt_2_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>slow</h>
+	</pair>
+	<pair id="121566.txt_2_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="121566.txt_2_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="121566.txt_2_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="121566.txt_2_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="121566.txt_2_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="121566.txt_2_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="121566.txt_2_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="121566.txt_2_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="121566.txt_2_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="121566.txt_2_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="121566.txt_2_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="121566.txt_2_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="121566.txt_2_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="121566.txt_2_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="121566.txt_2_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it gets like a cattle market</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="156303.txt_1_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="156303.txt_1_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="156303.txt_1_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="156303.txt_1_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="156303.txt_1_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="156303.txt_1_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="156303.txt_1_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="156303.txt_1_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="156303.txt_1_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="156303.txt_1_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="156303.txt_1_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="156303.txt_1_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="156303.txt_1_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="156303.txt_1_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="156303.txt_1_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="156303.txt_1_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="156303.txt_1_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long today</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="156303.txt_1_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="156303.txt_1_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="156303.txt_1_1-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_1-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_1-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="156303.txt_1_1-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_1-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="156303.txt_1_1-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="156303.txt_1_1-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="156303.txt_1_1-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_1-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="156303.txt_1_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="156303.txt_1_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="156303.txt_1_1-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_1-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="156303.txt_1_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="156303.txt_1_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="156303.txt_1_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="156303.txt_1_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="156303.txt_1_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="156303.txt_1_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="156303.txt_1_1-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_1-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were too long</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="156303.txt_1_2-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="156303.txt_1_2-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="156303.txt_1_2-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_2-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_2-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="156303.txt_1_2-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_2-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="156303.txt_1_2-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="156303.txt_1_2-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="156303.txt_1_2-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_2-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_2-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="156303.txt_1_2-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="156303.txt_1_2-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="156303.txt_1_2-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_2-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_2-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="156303.txt_1_2-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="156303.txt_1_2-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="156303.txt_1_2-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="156303.txt_1_2-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="156303.txt_1_2-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="156303.txt_1_2-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="156303.txt_1_2-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_2-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Check in queues were long</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="156303.txt_1_3-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="156303.txt_1_3-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="156303.txt_1_3-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_3-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="156303.txt_1_3-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="156303.txt_1_3-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_3-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="156303.txt_1_3-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="156303.txt_1_3-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="156303.txt_1_3-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="156303.txt_1_3-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_3-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="156303.txt_1_3-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="156303.txt_1_3-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="156303.txt_1_3-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="156303.txt_1_3-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_3-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="156303.txt_1_3-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="156303.txt_1_3-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="156303.txt_1_3-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="156303.txt_1_3-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="156303.txt_1_3-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="156303.txt_1_3-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="156303.txt_1_3-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="156303.txt_1_3-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="156303.txt_1_3-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>queues were long</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="213508.txt_4_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="213508.txt_4_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="213508.txt_4_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="213508.txt_4_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="213508.txt_4_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="213508.txt_4_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="213508.txt_4_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="213508.txt_4_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="213508.txt_4_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="213508.txt_4_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="213508.txt_4_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="213508.txt_4_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="213508.txt_4_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="213508.txt_4_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="213508.txt_4_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="213508.txt_4_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="213508.txt_4_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="213508.txt_4_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="213508.txt_4_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues too long for something to eat at St Peter</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="213508.txt_4_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="213508.txt_4_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="213508.txt_4_1-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="213508.txt_4_1-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="213508.txt_4_1-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="213508.txt_4_1-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_1-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="213508.txt_4_1-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="213508.txt_4_1-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="213508.txt_4_1-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_1-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="213508.txt_4_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="213508.txt_4_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="213508.txt_4_1-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_1-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="213508.txt_4_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="213508.txt_4_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="213508.txt_4_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="213508.txt_4_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="213508.txt_4_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="213508.txt_4_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="213508.txt_4_1-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_1-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat at St Peter</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="213508.txt_4_2-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="213508.txt_4_2-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="213508.txt_4_2-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="213508.txt_4_2-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="213508.txt_4_2-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="213508.txt_4_2-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_2-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="213508.txt_4_2-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="213508.txt_4_2-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="213508.txt_4_2-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_2-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_2-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="213508.txt_4_2-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="213508.txt_4_2-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="213508.txt_4_2-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_2-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_2-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="213508.txt_4_2-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="213508.txt_4_2-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="213508.txt_4_2-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="213508.txt_4_2-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="213508.txt_4_2-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="213508.txt_4_2-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="213508.txt_4_2-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_2-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long for something to eat</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="213508.txt_4_3-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="213508.txt_4_3-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="213508.txt_4_3-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="213508.txt_4_3-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="213508.txt_4_3-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="213508.txt_4_3-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_3-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="213508.txt_4_3-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="213508.txt_4_3-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="213508.txt_4_3-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="213508.txt_4_3-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_3-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="213508.txt_4_3-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="213508.txt_4_3-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="213508.txt_4_3-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="213508.txt_4_3-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_3-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="213508.txt_4_3-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="213508.txt_4_3-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="213508.txt_4_3-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="213508.txt_4_3-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="213508.txt_4_3-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="213508.txt_4_3-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="213508.txt_4_3-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="213508.txt_4_3-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="213508.txt_4_3-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Queues long</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="217842.txt_7_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="217842.txt_7_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="217842.txt_7_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="217842.txt_7_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="217842.txt_7_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="217842.txt_7_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="217842.txt_7_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="217842.txt_7_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="217842.txt_7_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="217842.txt_7_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="217842.txt_7_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="217842.txt_7_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="217842.txt_7_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="217842.txt_7_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>slow</h>
+	</pair>
+	<pair id="217842.txt_7_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="217842.txt_7_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="217842.txt_7_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="217842.txt_7_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="217842.txt_7_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="217842.txt_7_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="217842.txt_7_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="217842.txt_7_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="217842.txt_7_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="217842.txt_7_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="217842.txt_7_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="217842.txt_7_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="217842.txt_7_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="217842.txt_7_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="217842.txt_7_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="217842.txt_7_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports in Stars Bridge</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="217842.txt_7_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="217842.txt_7_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="217842.txt_7_1-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="217842.txt_7_1-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="217842.txt_7_1-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="217842.txt_7_1-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="217842.txt_7_1-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="217842.txt_7_1-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="217842.txt_7_1-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="217842.txt_7_1-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="217842.txt_7_1-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="217842.txt_7_1-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="217842.txt_7_1-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="217842.txt_7_1-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>slow</h>
+	</pair>
+	<pair id="217842.txt_7_1-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="217842.txt_7_1-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="217842.txt_7_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="217842.txt_7_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="217842.txt_7_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="217842.txt_7_1-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="217842.txt_7_1-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="217842.txt_7_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="217842.txt_7_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="217842.txt_7_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="217842.txt_7_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="217842.txt_7_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="217842.txt_7_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="217842.txt_7_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="217842.txt_7_1-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="217842.txt_7_1-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better organization in controlling the passports</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="277071.txt_1_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="277071.txt_1_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="277071.txt_1_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="277071.txt_1_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="277071.txt_1_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="277071.txt_1_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="277071.txt_1_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_1_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_1_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="277071.txt_1_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="277071.txt_1_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_1_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="277071.txt_1_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="277071.txt_1_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>slow</h>
+	</pair>
+	<pair id="277071.txt_1_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="277071.txt_1_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="277071.txt_1_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="277071.txt_1_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="277071.txt_1_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="277071.txt_1_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="277071.txt_1_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="277071.txt_1_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="277071.txt_1_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="277071.txt_1_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="277071.txt_1_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="277071.txt_1_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="277071.txt_1_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="277071.txt_1_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_1_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in at Moonport</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="277071.txt_1_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="277071.txt_1_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="277071.txt_1_1-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="277071.txt_1_1-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="277071.txt_1_1-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="277071.txt_1_1-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="277071.txt_1_1-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_1_1-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_1_1-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="277071.txt_1_1-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="277071.txt_1_1-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_1_1-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="277071.txt_1_1-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="277071.txt_1_1-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>slow</h>
+	</pair>
+	<pair id="277071.txt_1_1-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="277071.txt_1_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="277071.txt_1_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="277071.txt_1_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="277071.txt_1_1-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="277071.txt_1_1-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="277071.txt_1_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="277071.txt_1_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="277071.txt_1_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="277071.txt_1_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="277071.txt_1_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="277071.txt_1_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="277071.txt_1_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="277071.txt_1_1-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_1_1-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Chaotic check in</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="277071.txt_4_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="277071.txt_4_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="277071.txt_4_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="277071.txt_4_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="277071.txt_4_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="277071.txt_4_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="277071.txt_4_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_4_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_4_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="277071.txt_4_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="277071.txt_4_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_4_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="277071.txt_4_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="277071.txt_4_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="277071.txt_4_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="277071.txt_4_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="277071.txt_4_0-423940.txt_11_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="277071.txt_4_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="277071.txt_4_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="277071.txt_4_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="277071.txt_4_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="277071.txt_4_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="277071.txt_4_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="277071.txt_4_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="277071.txt_4_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="277071.txt_4_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="277071.txt_4_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="277071.txt_4_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="277071.txt_4_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="277071.txt_4_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_4_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>very slow</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="277071.txt_4_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="277071.txt_4_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="277071.txt_4_1-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="277071.txt_4_1-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="277071.txt_4_1-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="277071.txt_4_1-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="277071.txt_4_1-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_4_1-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="277071.txt_4_1-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="277071.txt_4_1-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="277071.txt_4_1-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_4_1-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="277071.txt_4_1-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="277071.txt_4_1-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="277071.txt_4_1-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="277071.txt_4_1-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="277071.txt_4_1-423940.txt_11_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="277071.txt_4_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="277071.txt_4_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="277071.txt_4_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="277071.txt_4_1-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="277071.txt_4_1-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="277071.txt_4_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="277071.txt_4_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="277071.txt_4_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="277071.txt_4_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="277071.txt_4_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="277071.txt_4_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="277071.txt_4_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="277071.txt_4_1-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="277071.txt_4_1-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="317673.txt_4_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="317673.txt_4_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="317673.txt_4_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="317673.txt_4_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="317673.txt_4_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="317673.txt_4_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="317673.txt_4_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="317673.txt_4_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="317673.txt_4_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="317673.txt_4_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="317673.txt_4_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="317673.txt_4_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="317673.txt_4_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="317673.txt_4_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="317673.txt_4_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>slow</h>
+	</pair>
+	<pair id="317673.txt_4_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="317673.txt_4_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="317673.txt_4_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="317673.txt_4_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="317673.txt_4_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="317673.txt_4_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="317673.txt_4_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="317673.txt_4_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="317673.txt_4_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="317673.txt_4_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="317673.txt_4_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="317673.txt_4_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="317673.txt_4_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="317673.txt_4_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure at Frownville station was unclear</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="317673.txt_4_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="317673.txt_4_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="317673.txt_4_1-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="317673.txt_4_1-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="317673.txt_4_1-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="317673.txt_4_1-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="317673.txt_4_1-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="317673.txt_4_1-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="317673.txt_4_1-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="317673.txt_4_1-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="317673.txt_4_1-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="317673.txt_4_1-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="317673.txt_4_1-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="317673.txt_4_1-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="317673.txt_4_1-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>slow</h>
+	</pair>
+	<pair id="317673.txt_4_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="317673.txt_4_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="317673.txt_4_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="317673.txt_4_1-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="317673.txt_4_1-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="317673.txt_4_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="317673.txt_4_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="317673.txt_4_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="317673.txt_4_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="317673.txt_4_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="317673.txt_4_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="317673.txt_4_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="317673.txt_4_1-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="317673.txt_4_1-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The check in procedure was unclear</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="423940.txt_11_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="423940.txt_11_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="423940.txt_11_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="423940.txt_11_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="423940.txt_11_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="423940.txt_11_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="423940.txt_11_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_11_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_11_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="423940.txt_11_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="423940.txt_11_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_11_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="423940.txt_11_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="423940.txt_11_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="423940.txt_11_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="423940.txt_11_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>slow</h>
+	</pair>
+	<pair id="423940.txt_11_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="423940.txt_11_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="423940.txt_11_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="423940.txt_11_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="423940.txt_11_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="423940.txt_11_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="423940.txt_11_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="423940.txt_11_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="423940.txt_11_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="423940.txt_11_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="423940.txt_11_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="423940.txt_11_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="423940.txt_11_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="423940.txt_11_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="423940.txt_11_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_11_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It makes people tense</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="423940.txt_12_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="423940.txt_12_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="423940.txt_12_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="423940.txt_12_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="423940.txt_12_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="423940.txt_12_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="423940.txt_12_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_12_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_12_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="423940.txt_12_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="423940.txt_12_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_12_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="423940.txt_12_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="423940.txt_12_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="423940.txt_12_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="423940.txt_12_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>slow</h>
+	</pair>
+	<pair id="423940.txt_12_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="423940.txt_12_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="423940.txt_12_0-423940.txt_11_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="423940.txt_12_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="423940.txt_12_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="423940.txt_12_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="423940.txt_12_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="423940.txt_12_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="423940.txt_12_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="423940.txt_12_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="423940.txt_12_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="423940.txt_12_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="423940.txt_12_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="423940.txt_12_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="423940.txt_12_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_12_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>The same for the space in Frowntown</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="423940.txt_1_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="423940.txt_1_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="423940.txt_1_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="423940.txt_1_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="423940.txt_1_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="423940.txt_1_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="423940.txt_1_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_1_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_1_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="423940.txt_1_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="423940.txt_1_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_1_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="423940.txt_1_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="423940.txt_1_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="423940.txt_1_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>slow</h>
+	</pair>
+	<pair id="423940.txt_1_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="423940.txt_1_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="423940.txt_1_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="423940.txt_1_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="423940.txt_1_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="423940.txt_1_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="423940.txt_1_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="423940.txt_1_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="423940.txt_1_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="423940.txt_1_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="423940.txt_1_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="423940.txt_1_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="423940.txt_1_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_1_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Better queuing space in Stars Bridge between passport control and security</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="423940.txt_2_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="423940.txt_2_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="423940.txt_2_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="423940.txt_2_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="423940.txt_2_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="423940.txt_2_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_2_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="423940.txt_2_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="423940.txt_2_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_2_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="423940.txt_2_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="423940.txt_2_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="423940.txt_2_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="423940.txt_2_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="423940.txt_2_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="423940.txt_2_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="423940.txt_2_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="423940.txt_2_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="423940.txt_2_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="423940.txt_2_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="423940.txt_2_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="423940.txt_2_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="423940.txt_2_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="423940.txt_2_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="423940.txt_2_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="423940.txt_2_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="423940.txt_2_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="423940.txt_2_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you have to wait longer as new people join the line from the sides</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="431092.txt_1_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="431092.txt_1_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="431092.txt_1_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="431092.txt_1_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="431092.txt_1_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="431092.txt_1_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="431092.txt_1_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="431092.txt_1_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="431092.txt_1_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="431092.txt_1_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="431092.txt_1_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="431092.txt_1_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="431092.txt_1_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="431092.txt_1_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="431092.txt_1_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="431092.txt_1_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="431092.txt_1_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="431092.txt_1_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="431092.txt_1_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="431092.txt_1_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="431092.txt_1_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="431092.txt_1_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="431092.txt_1_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="431092.txt_1_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="431092.txt_1_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="431092.txt_1_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Very slow through security</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="431092.txt_1_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="431092.txt_1_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="431092.txt_1_1-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="431092.txt_1_1-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="431092.txt_1_1-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="431092.txt_1_1-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="431092.txt_1_1-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="431092.txt_1_1-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="431092.txt_1_1-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="431092.txt_1_1-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="431092.txt_1_1-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="431092.txt_1_1-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="431092.txt_1_1-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="431092.txt_1_1-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="431092.txt_1_1-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="431092.txt_1_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="431092.txt_1_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="431092.txt_1_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="431092.txt_1_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="431092.txt_1_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="431092.txt_1_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="431092.txt_1_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="431092.txt_1_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="431092.txt_1_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="431092.txt_1_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="431092.txt_1_1-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="431092.txt_1_1-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>slow through security</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="431092.txt_2_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="431092.txt_2_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="431092.txt_2_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="431092.txt_2_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="431092.txt_2_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="431092.txt_2_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="431092.txt_2_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="431092.txt_2_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="431092.txt_2_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="431092.txt_2_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="431092.txt_2_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="431092.txt_2_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="431092.txt_2_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="431092.txt_2_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="431092.txt_2_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="431092.txt_2_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>slow</h>
+	</pair>
+	<pair id="431092.txt_2_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="431092.txt_2_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="431092.txt_2_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="431092.txt_2_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="431092.txt_2_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="431092.txt_2_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="431092.txt_2_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="431092.txt_2_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="431092.txt_2_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="431092.txt_2_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="431092.txt_2_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="431092.txt_2_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="431092.txt_2_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="431092.txt_2_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="431092.txt_2_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>little space to queue</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="451113.txt_6_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="451113.txt_6_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="451113.txt_6_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="451113.txt_6_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="451113.txt_6_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="451113.txt_6_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="451113.txt_6_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="451113.txt_6_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="451113.txt_6_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="451113.txt_6_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="451113.txt_6_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="451113.txt_6_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="451113.txt_6_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="451113.txt_6_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="451113.txt_6_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="451113.txt_6_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="451113.txt_6_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="451113.txt_6_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="451113.txt_6_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="451113.txt_6_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="451113.txt_6_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="451113.txt_6_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="451113.txt_6_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="451113.txt_6_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="451113.txt_6_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="451113.txt_6_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="451113.txt_6_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="451113.txt_6_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>too much queue at customs</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="473384.txt_7_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="473384.txt_7_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="473384.txt_7_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="473384.txt_7_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="473384.txt_7_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="473384.txt_7_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="473384.txt_7_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="473384.txt_7_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="473384.txt_7_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="473384.txt_7_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="473384.txt_7_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="473384.txt_7_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="473384.txt_7_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="473384.txt_7_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="473384.txt_7_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="473384.txt_7_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="473384.txt_7_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="473384.txt_7_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="473384.txt_7_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="473384.txt_7_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="473384.txt_7_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="473384.txt_7_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="473384.txt_7_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="473384.txt_7_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="473384.txt_7_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="473384.txt_7_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to be in a queue</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="473384.txt_8_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="473384.txt_8_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="473384.txt_8_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="473384.txt_8_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="473384.txt_8_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="473384.txt_8_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="473384.txt_8_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="473384.txt_8_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="473384.txt_8_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="473384.txt_8_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="473384.txt_8_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="473384.txt_8_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="473384.txt_8_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="473384.txt_8_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="473384.txt_8_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="473384.txt_8_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="473384.txt_8_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="473384.txt_8_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="473384.txt_8_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="473384.txt_8_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="473384.txt_8_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="473384.txt_8_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="473384.txt_8_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="473384.txt_8_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="473384.txt_8_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="473384.txt_8_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to queue up</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="473384.txt_9_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="473384.txt_9_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="473384.txt_9_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="473384.txt_9_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="473384.txt_9_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="473384.txt_9_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="473384.txt_9_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="473384.txt_9_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="473384.txt_9_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="473384.txt_9_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="473384.txt_9_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="473384.txt_9_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="473384.txt_9_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="473384.txt_9_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="473384.txt_9_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="473384.txt_9_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="473384.txt_9_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="473384.txt_9_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="473384.txt_9_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="473384.txt_9_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="473384.txt_9_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="473384.txt_9_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="473384.txt_9_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="473384.txt_9_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="473384.txt_9_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="473384.txt_9_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Do n't let people not required to waste others time</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="511484.txt_2_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="511484.txt_2_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="511484.txt_2_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="511484.txt_2_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="511484.txt_2_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="511484.txt_2_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="511484.txt_2_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="511484.txt_2_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="511484.txt_2_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="511484.txt_2_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="511484.txt_2_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="511484.txt_2_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="511484.txt_2_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="511484.txt_2_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="511484.txt_2_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="511484.txt_2_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>slow</h>
+	</pair>
+	<pair id="511484.txt_2_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="511484.txt_2_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="511484.txt_2_0-423940.txt_11_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="511484.txt_2_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="511484.txt_2_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="511484.txt_2_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="511484.txt_2_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="511484.txt_2_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="511484.txt_2_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="511484.txt_2_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="511484.txt_2_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="511484.txt_2_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="511484.txt_2_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="511484.txt_2_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="511484.txt_2_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Would welcome priority boarding for pushchairs</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="52781.txt_6_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="52781.txt_6_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="52781.txt_6_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="52781.txt_6_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="52781.txt_6_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="52781.txt_6_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="52781.txt_6_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="52781.txt_6_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="52781.txt_6_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="52781.txt_6_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="52781.txt_6_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="52781.txt_6_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="52781.txt_6_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="52781.txt_6_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="52781.txt_6_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="52781.txt_6_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>slow</h>
+	</pair>
+	<pair id="52781.txt_6_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="52781.txt_6_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="52781.txt_6_0-423940.txt_11_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="52781.txt_6_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="52781.txt_6_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="52781.txt_6_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="52781.txt_6_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="52781.txt_6_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="52781.txt_6_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="52781.txt_6_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="52781.txt_6_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="52781.txt_6_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="52781.txt_6_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="52781.txt_6_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="52781.txt_6_0-7.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>improve boarding Stars Bridge</h>
+	</pair>
+	<pair id="52781.txt_6_0-7.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Insufficient shopping opportunities once through security</t>
+		<h>improve boarding</h>
+	</pair>
+	<pair id="7.txt_3_0-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="7.txt_3_0-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="7.txt_3_0-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="7.txt_3_0-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="7.txt_3_0-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="7.txt_3_0-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="7.txt_3_0-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="7.txt_3_0-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="7.txt_3_0-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="7.txt_3_0-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="7.txt_3_0-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="7.txt_3_0-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="7.txt_3_0-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="7.txt_3_0-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="7.txt_3_0-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="7.txt_3_0-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>slow</h>
+	</pair>
+	<pair id="7.txt_3_0-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="7.txt_3_0-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="7.txt_3_0-423940.txt_11_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="7.txt_3_0-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="7.txt_3_0-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="7.txt_3_0-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="7.txt_3_0-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="7.txt_3_0-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="7.txt_3_0-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="7.txt_3_0-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="7.txt_3_0-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="7.txt_3_0-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="7.txt_3_0-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="7.txt_3_0-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="7.txt_3_0-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding Stars Bridge</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+	<pair id="7.txt_3_1-121566.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>More space at check - in</h>
+	</pair>
+	<pair id="7.txt_3_1-121566.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>it gets like a cattle market</h>
+	</pair>
+	<pair id="7.txt_3_1-156303.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Check in queues were too long today</h>
+	</pair>
+	<pair id="7.txt_3_1-156303.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Check in queues were too long</h>
+	</pair>
+	<pair id="7.txt_3_1-156303.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Check in queues were long</h>
+	</pair>
+	<pair id="7.txt_3_1-156303.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>queues were long</h>
+	</pair>
+	<pair id="7.txt_3_1-213508.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Queues too long for something to eat at St Peter</h>
+	</pair>
+	<pair id="7.txt_3_1-213508.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Queues long for something to eat at St Peter</h>
+	</pair>
+	<pair id="7.txt_3_1-213508.txt_4_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Queues long for something to eat</h>
+	</pair>
+	<pair id="7.txt_3_1-213508.txt_4_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Queues long</h>
+	</pair>
+	<pair id="7.txt_3_1-217842.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>better organization in controlling the passports in Stars Bridge</h>
+	</pair>
+	<pair id="7.txt_3_1-217842.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>better organization in controlling the passports</h>
+	</pair>
+	<pair id="7.txt_3_1-277071.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Chaotic check in at Moonport</h>
+	</pair>
+	<pair id="7.txt_3_1-277071.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Chaotic check in</h>
+	</pair>
+	<pair id="7.txt_3_1-277071.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>very slow</h>
+	</pair>
+	<pair id="7.txt_3_1-277071.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>slow</h>
+	</pair>
+	<pair id="7.txt_3_1-317673.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>The check in procedure at Frownville station was unclear</h>
+	</pair>
+	<pair id="7.txt_3_1-317673.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>The check in procedure was unclear</h>
+	</pair>
+	<pair id="7.txt_3_1-423940.txt_11_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>It makes people tense</h>
+	</pair>
+	<pair id="7.txt_3_1-423940.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>The same for the space in Frowntown</h>
+	</pair>
+	<pair id="7.txt_3_1-423940.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Better queuing space in Stars Bridge between passport control and security</h>
+	</pair>
+	<pair id="7.txt_3_1-423940.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>you have to wait longer as new people join the line from the sides</h>
+	</pair>
+	<pair id="7.txt_3_1-431092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Very slow through security</h>
+	</pair>
+	<pair id="7.txt_3_1-431092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>slow through security</h>
+	</pair>
+	<pair id="7.txt_3_1-431092.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>little space to queue</h>
+	</pair>
+	<pair id="7.txt_3_1-451113.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>too much queue at customs</h>
+	</pair>
+	<pair id="7.txt_3_1-473384.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Do n't let people not required to be in a queue</h>
+	</pair>
+	<pair id="7.txt_3_1-473384.txt_8_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Do n't let people not required to queue up</h>
+	</pair>
+	<pair id="7.txt_3_1-473384.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Do n't let people not required to waste others time</h>
+	</pair>
+	<pair id="7.txt_3_1-511484.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Would welcome priority boarding for pushchairs</h>
+	</pair>
+	<pair id="7.txt_3_1-52781.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>improve boarding</t>
+		<h>Insufficient shopping opportunities once through security</h>
+	</pair>
+</entailment-corpus>

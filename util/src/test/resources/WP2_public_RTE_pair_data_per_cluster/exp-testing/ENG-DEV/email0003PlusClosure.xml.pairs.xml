@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="427028.txt_1_0-184748.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>I wd hav liked a vegan meal</t>
+		<h>vegan food would be awesome</h>
+	</pair>
+	<pair id="184748.txt_1_0-427028.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>I wd hav liked a vegan meal</h>
+	</pair>
+	<pair id="184748.txt_1_0-277071.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>Veggie meal too small</h>
+	</pair>
+	<pair id="184748.txt_1_0-277071.txt_6_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>Veggie meal small</h>
+	</pair>
+	<pair id="184748.txt_1_0-32676.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>Better vegetarian food</h>
+	</pair>
+	<pair id="184748.txt_1_0-429450.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>I was provided with a very mediocre vegetarian dinner</h>
+	</pair>
+	<pair id="184748.txt_1_0-429450.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>I was provided with a very mediocre dinner</h>
+	</pair>
+	<pair id="184748.txt_1_0-429450.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>I was provided with a mediocre vegetarian dinner</h>
+	</pair>
+	<pair id="184748.txt_1_0-429450.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>I was provided with a mediocre dinner</h>
+	</pair>
+	<pair id="184748.txt_1_0-532098.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>you do not seem to offer any vegetarian food options in the cafe</h>
+	</pair>
+	<pair id="184748.txt_1_0-64004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>you could make it much easier to order vegetarian food when booking first class</h>
+	</pair>
+	<pair id="184748.txt_1_0-64004.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>you could make it easier to order vegetarian food when booking first class</h>
+	</pair>
+	<pair id="184748.txt_1_0-64004.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>you could make it much easier to order vegetarian food</h>
+	</pair>
+	<pair id="184748.txt_1_0-64004.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>vegan food would be awesome</t>
+		<h>you could make it easier to order vegetarian food</h>
+	</pair>
+	<pair id="277071.txt_6_0-184748.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>vegan food would be awesome</h>
+	</pair>
+	<pair id="277071.txt_6_0-32676.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>Better vegetarian food</h>
+	</pair>
+	<pair id="277071.txt_6_0-427028.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>I wd hav liked a vegan meal</h>
+	</pair>
+	<pair id="277071.txt_6_0-429450.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>I was provided with a very mediocre vegetarian dinner</h>
+	</pair>
+	<pair id="277071.txt_6_0-429450.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>I was provided with a very mediocre dinner</h>
+	</pair>
+	<pair id="277071.txt_6_0-429450.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>I was provided with a mediocre vegetarian dinner</h>
+	</pair>
+	<pair id="277071.txt_6_0-429450.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>I was provided with a mediocre dinner</h>
+	</pair>
+	<pair id="277071.txt_6_0-532098.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>you do not seem to offer any vegetarian food options in the cafe</h>
+	</pair>
+	<pair id="277071.txt_6_0-64004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>you could make it much easier to order vegetarian food when booking first class</h>
+	</pair>
+	<pair id="277071.txt_6_0-64004.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>you could make it easier to order vegetarian food when booking first class</h>
+	</pair>
+	<pair id="277071.txt_6_0-64004.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>you could make it much easier to order vegetarian food</h>
+	</pair>
+	<pair id="277071.txt_6_0-64004.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal too small</t>
+		<h>you could make it easier to order vegetarian food</h>
+	</pair>
+	<pair id="277071.txt_6_1-184748.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal small</t>
+		<h>vegan food would be awesome</h>
+	</pair>
+	<pair id="277071.txt_6_1-32676.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Veggie meal small</t>
+		<h>Better vegetarian food</h>
+	</pair>
+</entailment-corpus>
+

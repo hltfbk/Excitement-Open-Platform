@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0052.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0074.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0080.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0052.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0010.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0052.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0080.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0080.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0052.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0010.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0005.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0021.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0052.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0052.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0131.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0010.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0131.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0080.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0052.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0074.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0010.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0010.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0021.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0131.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0080.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0074.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0052.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0080.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0010.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0021.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0005.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione è lenta</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0052.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona più la connessione</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0052.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0010.txt_1_1-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non mi si attiva</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0019.txt_1_1-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione internet non si attiva</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0021.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>La connessione internet non funziona</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia da venerdì scorso</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_1-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione da venerdì scorso</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_2-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione di casa mia</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0052.txt_1_3-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho un problema con la connessione</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0061.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>internet è lento</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0074.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona la connessione internet</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0052.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0080.txt_1_0-ItaSpeech0131.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la connessione non funziona</t>
+		<h>non riesco ad avere la connessione sul telefono</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0052.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_0-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal mio cellulare</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0052.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0099.txt_1_1-ItaSpeech0131.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad accedere a internet dal cellulare</t>
+		<h>non riesco ad avere la connessione sul mio telefono</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0052.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_0-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul mio telefono</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0005.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>La connessione è lenta</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0010.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>non funziona più la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0010.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>non funziona la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0019.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>la connessione internet non mi si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0019.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>la connessione internet non si attiva</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0021.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>La connessione internet non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0052.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>ho un problema con la connessione di casa mia da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0052.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>ho un problema con la connessione da venerdì scorso</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0052.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>ho un problema con la connessione di casa mia</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0052.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>ho un problema con la connessione</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0061.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>internet è lento</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>non funziona la connessione internet</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0080.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>la connessione non funziona</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0099.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>non riesco ad accedere a internet dal mio cellulare</h>
+	</pair>
+	<pair id="ItaSpeech0131.txt_1_1-ItaSpeech0099.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco ad avere la connessione sul telefono</t>
+		<h>non riesco ad accedere a internet dal cellulare</h>
+	</pair>
+</entailment-corpus>
