@@ -13,7 +13,7 @@ package eu.excitementproject.eop.common.component.alignment;
  * 
  * @author Tae-Gil Noh
  */
-public interface AlignmentComponent extends AnnotatorComponent {
+public interface AlignmentComponent extends PairAnnotatorComponent {
 	
 	// the interface adds no new methods
 	

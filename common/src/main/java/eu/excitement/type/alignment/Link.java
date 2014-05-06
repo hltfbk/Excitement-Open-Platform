@@ -7,17 +7,21 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
+import org.apache.uima.jcas.cas.StringList;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** - CAS type that links two Target. 
 - Multi-view type: a Link connects one target in T (TextView), the other target in H (HypothesisView). 
-- Three features: "from" (alignment.Target), "to" (alignment.Target), and "strength" (double). 
 
-The semantic of a "Link" is: The text (or structure) pointed by "from" has a relation of "type" to the text (or structure) pointed in "to". 
+The semantic of a "Link" is: The texts (or structures) pointed by "TSideTarget" and "HSideTarget" have a relation of "type", with the direction of "direction",  on a strength of "strength". 
 
- We make no assumptions regarding what annotations are aligned by Link and Target types. One Target can be linked by an arbitrary number of Link, also a Target can group an arbitrary number of Annotations. Note that uima.tcas.Annotation is the super type of almost all CAS annotation data. Since a Target can group Annotation, it can group any type of annotations in CAS. 
- * Updated by JCasGen Thu Apr 24 15:21:08 CEST 2014
+We make no assumptions regarding what annotations are aligned by Link and Target types. One Target can be linked by an arbitrary number of Link, also a Target can group an arbitrary number of Annotations. Note that uima.tcas.Annotation is the super type of almost all CAS annotation data. Since a Target can group Annotation, it can group any type of annotations in CAS.
+
+Some notes on Link type usage. (Indexing and setting begin - end) 
+- A Link instance should be indexed on the Hypothesis View. So one iteration over the Hypothesis view can get all alignment links.
+- begin and end : both span value should hold the same value to that of HSide Target 
+ * Updated by JCasGen Tue May 06 15:54:34 CEST 2014
  * XML source: /home/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/AlignmentTypes.xml
  * @generated */
 public class Link extends Annotation {
@@ -69,39 +73,39 @@ public class Link extends Annotation {
  
     
   //*--------------*
-  //* Feature: from
+  //* Feature: TSideTarget
 
-  /** getter for from - gets This feature points one Target. Mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) pointed by "from" has a relation of "type" to the text (or structure) pointed in "to". 
+  /** getter for TSideTarget - gets This feature points one Target in TEXTVIEW side. A mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) targets have the relation of "type" between them, with the direction of "direction".
    * @generated */
-  public Target getFrom() {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_from == null)
-      jcasType.jcas.throwFeatMissing("from", "eu.excitement.type.alignment.Link");
-    return (Target)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Link_Type)jcasType).casFeatCode_from)));}
+  public Target getTSideTarget() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_TSideTarget == null)
+      jcasType.jcas.throwFeatMissing("TSideTarget", "eu.excitement.type.alignment.Link");
+    return (Target)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Link_Type)jcasType).casFeatCode_TSideTarget)));}
     
-  /** setter for from - sets This feature points one Target. Mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) pointed by "from" has a relation of "type" to the text (or structure) pointed in "to".  
+  /** setter for TSideTarget - sets This feature points one Target in TEXTVIEW side. A mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) targets have the relation of "type" between them, with the direction of "direction". 
    * @generated */
-  public void setFrom(Target v) {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_from == null)
-      jcasType.jcas.throwFeatMissing("from", "eu.excitement.type.alignment.Link");
-    jcasType.ll_cas.ll_setRefValue(addr, ((Link_Type)jcasType).casFeatCode_from, jcasType.ll_cas.ll_getFSRef(v));}    
+  public void setTSideTarget(Target v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_TSideTarget == null)
+      jcasType.jcas.throwFeatMissing("TSideTarget", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setRefValue(addr, ((Link_Type)jcasType).casFeatCode_TSideTarget, jcasType.ll_cas.ll_getFSRef(v));}    
    
     
   //*--------------*
-  //* Feature: to
+  //* Feature: HSideTarget
 
-  /** getter for to - gets This feature points one Target. Mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) pointed by "from" has a relation of "type" to the text (or structure) pointed in "to". 
+  /** getter for HSideTarget - gets This feature points one Target in HYPOTHESISVIEW side. A mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) targets have the relation of "type" between them, with the direction of "direction".
    * @generated */
-  public Target getTo() {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_to == null)
-      jcasType.jcas.throwFeatMissing("to", "eu.excitement.type.alignment.Link");
-    return (Target)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Link_Type)jcasType).casFeatCode_to)));}
+  public Target getHSideTarget() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_HSideTarget == null)
+      jcasType.jcas.throwFeatMissing("HSideTarget", "eu.excitement.type.alignment.Link");
+    return (Target)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Link_Type)jcasType).casFeatCode_HSideTarget)));}
     
-  /** setter for to - sets This feature points one Target. Mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) pointed by "from" has a relation of "type" to the text (or structure) pointed in "to".  
+  /** setter for HSideTarget - sets This feature points one Target in HYPOTHESISVIEW side. A mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) targets have the relation of "type" between them, with the direction of "direction". 
    * @generated */
-  public void setTo(Target v) {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_to == null)
-      jcasType.jcas.throwFeatMissing("to", "eu.excitement.type.alignment.Link");
-    jcasType.ll_cas.ll_setRefValue(addr, ((Link_Type)jcasType).casFeatCode_to, jcasType.ll_cas.ll_getFSRef(v));}    
+  public void setHSideTarget(Target v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_HSideTarget == null)
+      jcasType.jcas.throwFeatMissing("HSideTarget", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setRefValue(addr, ((Link_Type)jcasType).casFeatCode_HSideTarget, jcasType.ll_cas.ll_getFSRef(v));}    
    
     
   //*--------------*
@@ -120,6 +124,128 @@ public class Link extends Annotation {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_strength == null)
       jcasType.jcas.throwFeatMissing("strength", "eu.excitement.type.alignment.Link");
     jcasType.ll_cas.ll_setDoubleValue(addr, ((Link_Type)jcasType).casFeatCode_strength, v);}    
+   
+    
+  //*--------------*
+  //* Feature: direction
+
+  /** getter for direction - gets This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric". 
+
+   * @generated */
+  public String getDirection() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_direction == null)
+      jcasType.jcas.throwFeatMissing("direction", "eu.excitement.type.alignment.Link");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_direction);}
+    
+  /** setter for direction - sets This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric". 
+ 
+   * @generated */
+  public void setDirection(String v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_direction == null)
+      jcasType.jcas.throwFeatMissing("direction", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_direction, v);}    
+   
+    
+  //*--------------*
+  //* Feature: alignerID
+
+  /** getter for alignerID - gets This is the first part of 3 ID strings for the alignment.Link instance. The string denotes the idetification of the aligner (or underlying resource). 
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + version + info 
+   * @generated */
+  public String getAlignerID() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_alignerID == null)
+      jcasType.jcas.throwFeatMissing("alignerID", "eu.excitement.type.alignment.Link");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_alignerID);}
+    
+  /** setter for alignerID - sets This is the first part of 3 ID strings for the alignment.Link instance. The string denotes the idetification of the aligner (or underlying resource). 
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + version + info  
+   * @generated */
+  public void setAlignerID(String v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_alignerID == null)
+      jcasType.jcas.throwFeatMissing("alignerID", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_alignerID, v);}    
+   
+    
+  //*--------------*
+  //* Feature: version
+
+  /** getter for version - gets This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + version + info 
+   * @generated */
+  public String getVersion() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_version == null)
+      jcasType.jcas.throwFeatMissing("version", "eu.excitement.type.alignment.Link");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_version);}
+    
+  /** setter for version - sets This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + version + info  
+   * @generated */
+  public void setVersion(String v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_version == null)
+      jcasType.jcas.throwFeatMissing("version", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_version, v);}    
+   
+    
+  //*--------------*
+  //* Feature: info
+
+  /** getter for info - gets This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + version + info 
+   * @generated */
+  public String getInfo() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_info == null)
+      jcasType.jcas.throwFeatMissing("info", "eu.excitement.type.alignment.Link");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_info);}
+    
+  /** setter for info - sets This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + version + info  
+   * @generated */
+  public void setInfo(String v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_info == null)
+      jcasType.jcas.throwFeatMissing("info", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_info, v);}    
+   
+    
+  //*--------------*
+  //* Feature: groupLabel
+
+  /** getter for groupLabel - gets TBDTBDTBDTBD
+
+TO BE DETERMINED. 
+
+We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
+
+Actual values for the labels will be updated. TBDTBDTBDTBD 
+   * @generated */
+  public StringList getGroupLabel() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_groupLabel == null)
+      jcasType.jcas.throwFeatMissing("groupLabel", "eu.excitement.type.alignment.Link");
+    return (StringList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Link_Type)jcasType).casFeatCode_groupLabel)));}
+    
+  /** setter for groupLabel - sets TBDTBDTBDTBD
+
+TO BE DETERMINED. 
+
+We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
+
+Actual values for the labels will be updated. TBDTBDTBDTBD  
+   * @generated */
+  public void setGroupLabel(StringList v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_groupLabel == null)
+      jcasType.jcas.throwFeatMissing("groupLabel", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setRefValue(addr, ((Link_Type)jcasType).casFeatCode_groupLabel, jcasType.ll_cas.ll_getFSRef(v));}    
   }
 
     

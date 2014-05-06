@@ -38,7 +38,7 @@ import eu.excitementproject.eop.common.component.Component;
  * @author Tae-Gil Noh
  */
 
-public interface AnnotatorComponent extends Component {
+public interface PairAnnotatorComponent extends Component {
 	
 	/**
 	 * The method gets one JCas. Once the annotate process is done, 
