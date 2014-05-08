@@ -419,11 +419,9 @@
 		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
 		<!--
 		<property name="l2r-redis-host">te-srv2</property>
-		<property name="l2r-redis-port">7010</property>
+		<property name="l2r-redis-port">7011</property>
 		<property name="r2l-redis-host">te-srv2</property>
-		<property name="r2l-redis-port">7011</property>		
-		<property name="NPBouns">0.001</property>
-		<property name="limitOnRetrievedRules">10</property>
+		<property name="r2l-redis-port">7012</property>		
 		-->
 		
 		<property name="NPBouns">0.001</property>
