@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project lexicalminer">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="D:/workspace/lexminer.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="eu.excitementproject.eop.lexicalminer.redis.SQL2RedisConverter"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="D:/git/exci2/lexicalinferenceminer/target/classes"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/xerces/xercesImpl/2.9.1/xercesImpl-2.9.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/xml-apis/xml-apis/1.3.04/xml-apis-1.3.04.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/mysql/mysql-connector-java/5.1.12/mysql-connector-java-5.1.12.jar"/>
+            <fileset dir="D:/git/exci2/common/target/classes"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/uima/uimaj-core/2.4.0/uimaj-core-2.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/uima/uimaj-tools/2.4.0/uimaj-tools-2.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/uima/uimaj-cpe/2.4.0/uimaj-cpe-2.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/uima/uimaj-adapter-vinci/2.4.0/uimaj-adapter-vinci-2.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/uima/jVinci/2.4.0/jVinci-2.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/uima/uimaj-document-annotation/2.4.0/uimaj-document-annotation-2.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/junit/junit/4.8.2/junit-4.8.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/servicemix/bundles/org.apache.servicemix.bundles.collections-generic/4.01_1/org.apache.servicemix.bundles.collections-generic-4.01_1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/uimafit/uimafit/1.4.0/uimafit-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-lang/commons-lang/2.4/commons-lang-2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-io/commons-io/1.4/commons-io-1.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/springframework/spring-core/3.1.0.RELEASE/spring-core-3.1.0.RELEASE.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/springframework/spring-asm/3.1.0.RELEASE/spring-asm-3.1.0.RELEASE.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/springframework/spring-context/3.1.0.RELEASE/spring-context-3.1.0.RELEASE.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/springframework/spring-aop/3.1.0.RELEASE/spring-aop-3.1.0.RELEASE.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/springframework/spring-beans/3.1.0.RELEASE/spring-beans-3.1.0.RELEASE.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/springframework/spring-expression/3.1.0.RELEASE/spring-expression-3.1.0.RELEASE.jar"/>
+            <fileset dir="D:/git/exci2/lap/target/classes"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/arkref/arkref/unversioned-20110321/arkref-unversioned-20110321.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/edu/stanford/nlp/stanford-parser/2008-10-26/stanford-parser-2008-10-26.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/edu/cmu/ark/supersense-tagger/unversioned-2011/supersense-tagger-unversioned-2011.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/edu/stanford/nlp/stanford-ner/2008-05-07/stanford-ner-2008-05-07.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/edu/stanford/nlp/stanford-postagger/2008-09-28/stanford-postagger-2008-09-28.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/com/aliasi/lingpipe/3.1.1/lingpipe-3.1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/edu/northwestern/morphadorner/2009-04-30/morphadorner-2009-04-30.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/com/ibm/icu/icu4j/3.6.1/icu4j-3.6.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/gate/gate/3.1/gate-3.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/com/sleepycat/je/4.1.10/je-4.1.10.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/com/googlecode/concurrentlinkedhashmap/concurrentlinkedhashmap-lru/1.2/concurrentlinkedhashmap-lru-1.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.io.text-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.io.text-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.io-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.io-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/commons/commons-compress/1.4.1/commons-compress-1.4.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/tukaani/xz/1.0/xz-1.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.tokit-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.tokit-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-jxpath/commons-jxpath/1.3/commons-jxpath-1.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.parameter-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.parameter-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.ner-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.ner-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.opennlp-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/opennlp/opennlp-tools/1.5.2-incubating/opennlp-tools-1.5.2-incubating.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/opennlp/opennlp-maxent/3.0.2-incubating/opennlp-maxent-3.0.2-incubating.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/jwnl/jwnl/1.3.3/jwnl-1.3.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.syntax-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.syntax-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.testing-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.testing-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent/20120616.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent-20120616.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent/20120616.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent-20120616.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent/20120616.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent-20120616.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-de-maxent/20120616.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-de-maxent-20120616.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-de-maxent/20120616.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-de-maxent-20120616.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-de-maxent/20120616.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-de-maxent-20120616.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-it-maxent/20130823.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-it-maxent-20130823.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-it-maxent/20130823.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-it-maxent-20130823.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-it-maxent/20130823.0/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-it-maxent-20130823.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.treetagger-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.treetagger-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/annolab/tt4j/org.annolab.tt4j/1.1.1/org.annolab.tt4j-1.1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.resources-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.resources-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-linear/20120312.0/de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-linear-20120312.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-poly/20120312.0/de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-poly-20120312.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.maltparser-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.maltparser-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/maltparser/maltparser/1.7.1/maltparser-1.7.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/tw/edu/ntu/csie/libsvm/3.1/libsvm-3.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/bwaldvogel/liblinear/1.8/liblinear-1.8.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear/20130511.0/de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear-20130511.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl/1.4.0/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/edu/stanford/nlp/stanford-corenlp/1.3.3/stanford-corenlp-1.3.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/xom/xom/1.2.5/xom-1.2.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/xalan/xalan/2.7.0/xalan-2.7.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/joda-time/joda-time/2.0/joda-time-2.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.metadata-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.metadata-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.api.coref-asl/1.4.0/de.tudarmstadt.ukp.dkpro.core.api.coref-asl-1.4.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/biu/nlp/biu_legacy/2013-jan-24/biu_legacy-2013-jan-24.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/wikipedia/de.tudarmstadt.ukp.wikipedia.api/0.9.2/de.tudarmstadt.ukp.wikipedia.api-0.9.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/hibernate/hibernate-core/4.1.3.Final/hibernate-core-4.1.3.Final.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/jboss/logging/jboss-logging/3.1.0.GA/jboss-logging-3.1.0.GA.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.0.Final/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/hibernate/javax/persistence/hibernate-jpa-2.0-api/1.0.1.Final/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/hibernate/common/hibernate-commons-annotations/4.0.1.Final/hibernate-commons-annotations-4.0.1.Final.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/hibernate/hibernate-c3p0/4.1.3.Final/hibernate-c3p0-4.1.3.Final.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/c3p0/c3p0/0.9.1/c3p0-0.9.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/jgrapht/jgrapht-jdk1.5/0.7.3/jgrapht-jdk1.5-0.7.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/net/sf/trove4j/trove4j/3.0.2/trove4j-3.0.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/javassist/javassist/3.16.1-GA/javassist-3.16.1-GA.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/sweble/wikitext/swc-parser-lazy/1.1.0/swc-parser-lazy-1.1.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/fau/cs/osr/ptk/ptk-common/1.1.0/ptk-common-1.1.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/xtc/rats-runtime/1.15.0/rats-runtime-1.15.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/fau/cs/osr/utils/utils/0.3.0/utils-0.3.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/net/sf/jopt-simple/jopt-simple/4.3/jopt-simple-4.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/sweble/wikitext/swc-engine/1.1.0/swc-engine-1.1.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/tudarmstadt/ukp/wikipedia/de.tudarmstadt.ukp.wikipedia.revisionmachine/0.9.2/de.tudarmstadt.ukp.wikipedia.revisionmachine-0.9.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/ant/ant/1.8.3/ant-1.8.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/org/apache/ant/ant-launcher/1.8.3/ant-launcher-1.8.3.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/redis/clients/jedis/2.0.0/jedis-2.0.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/commons-pool/commons-pool/1.5.5/commons-pool-1.5.5.jar"/>
+            <fileset dir="D:/git/exci2/redis/target/classes"/>
+            <zipfileset excludes="META-INF/*.SF" src="C:/Users/idogroup/.m2/repository/de/uni-heidelberg/cl/embedded-redis/20131205/embedded-redis-20131205.jar"/>
+        </jar>
+    </target>
+</project>

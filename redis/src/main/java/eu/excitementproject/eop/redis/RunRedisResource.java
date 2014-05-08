@@ -10,11 +10,12 @@ package eu.excitementproject.eop.redis;
  * @since Feb 11, 2014
  *
  */
-public class RunRedisResources {
+public class RunRedisResource {
 	public static void main(String[] args) throws Exception {
 		
 		if (args.length != 2) {
-			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.RunRedisResources <redis file name> <port>");
+			System.out.println("Usage: java eu.excitementproject.eop.redis.RunRedisResource <redis file name> <port>");
+			System.exit(0);
 		}
 		String redisFile = args[0];
 		int port = Integer.parseInt(args[1].trim());
