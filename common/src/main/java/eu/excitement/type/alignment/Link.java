@@ -20,9 +20,9 @@ We make no assumptions regarding what annotations are aligned by Link and Target
 
 Some notes on Link type usage. (Indexing and setting begin - end) 
 - A Link instance should be indexed on the Hypothesis View. So one iteration over the Hypothesis view can get all alignment links.
-- begin and end : both span value should hold the same value to that of HSide Target 
- * Updated by JCasGen Tue May 06 15:54:34 CEST 2014
- * XML source: /home/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/AlignmentTypes.xml
+- begin and end : both span value should hold the same value to that of HSide Target
+ * Updated by JCasGen Sat May 10 23:34:30 CEST 2014
+ * XML source: /Users/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/AlignmentTypes.xml
  * @generated */
 public class Link extends Annotation {
   /** @generated
@@ -171,51 +171,51 @@ alignerID + version + info
    
     
   //*--------------*
-  //* Feature: version
+  //* Feature: alignerVersion
 
-  /** getter for version - gets This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
+  /** getter for alignerVersion - gets This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info 
+alignerID + alignerVersion + linkInfo
    * @generated */
-  public String getVersion() {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_version == null)
-      jcasType.jcas.throwFeatMissing("version", "eu.excitement.type.alignment.Link");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_version);}
+  public String getAlignerVersion() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_alignerVersion == null)
+      jcasType.jcas.throwFeatMissing("alignerVersion", "eu.excitement.type.alignment.Link");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_alignerVersion);}
     
-  /** setter for version - sets This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
+  /** setter for alignerVersion - sets This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info  
+alignerID + alignerVersion + linkInfo 
    * @generated */
-  public void setVersion(String v) {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_version == null)
-      jcasType.jcas.throwFeatMissing("version", "eu.excitement.type.alignment.Link");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_version, v);}    
+  public void setAlignerVersion(String v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_alignerVersion == null)
+      jcasType.jcas.throwFeatMissing("alignerVersion", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_alignerVersion, v);}    
    
     
   //*--------------*
-  //* Feature: info
+  //* Feature: linkInfo
 
-  /** getter for info - gets This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
+  /** getter for linkInfo - gets This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info 
+alignerID + alignerVersion + linkInfo
    * @generated */
-  public String getInfo() {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_info == null)
-      jcasType.jcas.throwFeatMissing("info", "eu.excitement.type.alignment.Link");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_info);}
+  public String getLinkInfo() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_linkInfo == null)
+      jcasType.jcas.throwFeatMissing("linkInfo", "eu.excitement.type.alignment.Link");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_linkInfo);}
     
-  /** setter for info - sets This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
+  /** setter for linkInfo - sets This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info  
+alignerID + alignerVersion + linkInfo 
    * @generated */
-  public void setInfo(String v) {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_info == null)
-      jcasType.jcas.throwFeatMissing("info", "eu.excitement.type.alignment.Link");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_info, v);}    
+  public void setLinkInfo(String v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_linkInfo == null)
+      jcasType.jcas.throwFeatMissing("linkInfo", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_linkInfo, v);}    
    
     
   //*--------------*
@@ -246,6 +246,10 @@ Actual values for the labels will be updated. TBDTBDTBDTBD
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_groupLabel == null)
       jcasType.jcas.throwFeatMissing("groupLabel", "eu.excitement.type.alignment.Link");
     jcasType.ll_cas.ll_setRefValue(addr, ((Link_Type)jcasType).casFeatCode_groupLabel, jcasType.ll_cas.ll_getFSRef(v));}    
+    /** A convenience method to get long (full) ID of the Link instance */
+  public String getID() {
+	  // TODO: better method that ignores null? 
+	  return getAlignerID() + getAlignerVersion() + getLinkInfo(); 
   }
-
-    
+  
+  }

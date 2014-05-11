@@ -30,7 +30,7 @@ We make no assumptions regarding what annotations are aligned by Link and Target
 
 Some notes on Link type usage. (Indexing and setting begin - end) 
 - A Link instance should be indexed on the Hypothesis View. So one iteration over the Hypothesis view can get all alignment links.
-- begin and end : both span value should hold the same value to that of HSide Target </description>
+- begin and end : both span value should hold the same value to that of HSide Target</description>
       <supertypeName>uima.tcas.Annotation</supertypeName>
       <features>
         <featureDescription>
@@ -50,8 +50,7 @@ Some notes on Link type usage. (Indexing and setting begin - end)
         </featureDescription>
         <featureDescription>
           <name>direction</name>
-          <description>This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric". 
-</description>
+          <description>This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric".</description>
           <rangeTypeName>eu.excitement.type.alignment.Direction</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -59,23 +58,23 @@ Some notes on Link type usage. (Indexing and setting begin - end)
           <description>This is the first part of 3 ID strings for the alignment.Link instance. The string denotes the idetification of the aligner (or underlying resource). 
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info </description>
+alignerID + alignerVersion + linkInfo</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>version</name>
+          <name>alignerVersion</name>
           <description>This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info </description>
+alignerID + alignerVersion + linkInfo</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>info</name>
+          <name>linkInfo</name>
           <description>This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info </description>
+alignerID + alignerVersion + linkInfo</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -86,7 +85,7 @@ TO BE DETERMINED.
 
 We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
 
-Actual values for the labels will be updated. TBDTBDTBDTBD </description>
+Actual values for the labels will be updated. TBDTBDTBDTBD</description>
           <rangeTypeName>uima.cas.StringList</rangeTypeName>
         </featureDescription>
       </features>
@@ -100,16 +99,15 @@ Allowed values are: "TtoH", "HtoT", "Symmetric"</description>
       <allowedValues>
         <value>
           <string>TtoH</string>
-          <description>The relation is from TSideTarget to HSideTarget. </description>
+          <description>The relation is from TSideTarget to HSideTarget.</description>
         </value>
         <value>
           <string>HtoT</string>
-          <description>The relation is from HSideTarget to TSideTarget
-</description>
+          <description>The relation is from HSideTarget to TSideTarget</description>
         </value>
         <value>
           <string>Symmetric</string>
-          <description>The relation is a symmetric one. (Both TSideTarget to HSideTarget and HSideTarget to TSideTarget.) </description>
+          <description>The relation is a symmetric one. (Both TSideTarget to HSideTarget and HSideTarget to TSideTarget.)</description>
         </value>
       </allowedValues>
     </typeDescription>

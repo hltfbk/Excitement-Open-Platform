@@ -22,8 +22,8 @@ We make no assumptions regarding what annotations are aligned by Link and Target
 
 Some notes on Link type usage. (Indexing and setting begin - end) 
 - A Link instance should be indexed on the Hypothesis View. So one iteration over the Hypothesis view can get all alignment links.
-- begin and end : both span value should hold the same value to that of HSide Target 
- * Updated by JCasGen Tue May 06 15:54:34 CEST 2014
+- begin and end : both span value should hold the same value to that of HSide Target
+ * Updated by JCasGen Sat May 10 23:34:30 CEST 2014
  * @generated */
 public class Link_Type extends Annotation_Type {
   /** @generated */
@@ -144,38 +144,38 @@ public class Link_Type extends Annotation_Type {
   
  
   /** @generated */
-  final Feature casFeat_version;
+  final Feature casFeat_alignerVersion;
   /** @generated */
-  final int     casFeatCode_version;
+  final int     casFeatCode_alignerVersion;
   /** @generated */ 
-  public String getVersion(int addr) {
-        if (featOkTst && casFeat_version == null)
-      jcas.throwFeatMissing("version", "eu.excitement.type.alignment.Link");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_version);
+  public String getAlignerVersion(int addr) {
+        if (featOkTst && casFeat_alignerVersion == null)
+      jcas.throwFeatMissing("alignerVersion", "eu.excitement.type.alignment.Link");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_alignerVersion);
   }
   /** @generated */    
-  public void setVersion(int addr, String v) {
-        if (featOkTst && casFeat_version == null)
-      jcas.throwFeatMissing("version", "eu.excitement.type.alignment.Link");
-    ll_cas.ll_setStringValue(addr, casFeatCode_version, v);}
+  public void setAlignerVersion(int addr, String v) {
+        if (featOkTst && casFeat_alignerVersion == null)
+      jcas.throwFeatMissing("alignerVersion", "eu.excitement.type.alignment.Link");
+    ll_cas.ll_setStringValue(addr, casFeatCode_alignerVersion, v);}
     
   
  
   /** @generated */
-  final Feature casFeat_info;
+  final Feature casFeat_linkInfo;
   /** @generated */
-  final int     casFeatCode_info;
+  final int     casFeatCode_linkInfo;
   /** @generated */ 
-  public String getInfo(int addr) {
-        if (featOkTst && casFeat_info == null)
-      jcas.throwFeatMissing("info", "eu.excitement.type.alignment.Link");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_info);
+  public String getLinkInfo(int addr) {
+        if (featOkTst && casFeat_linkInfo == null)
+      jcas.throwFeatMissing("linkInfo", "eu.excitement.type.alignment.Link");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_linkInfo);
   }
   /** @generated */    
-  public void setInfo(int addr, String v) {
-        if (featOkTst && casFeat_info == null)
-      jcas.throwFeatMissing("info", "eu.excitement.type.alignment.Link");
-    ll_cas.ll_setStringValue(addr, casFeatCode_info, v);}
+  public void setLinkInfo(int addr, String v) {
+        if (featOkTst && casFeat_linkInfo == null)
+      jcas.throwFeatMissing("linkInfo", "eu.excitement.type.alignment.Link");
+    ll_cas.ll_setStringValue(addr, casFeatCode_linkInfo, v);}
     
   
  
@@ -226,12 +226,12 @@ public class Link_Type extends Annotation_Type {
     casFeatCode_alignerID  = (null == casFeat_alignerID) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_alignerID).getCode();
 
  
-    casFeat_version = jcas.getRequiredFeatureDE(casType, "version", "uima.cas.String", featOkTst);
-    casFeatCode_version  = (null == casFeat_version) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_version).getCode();
+    casFeat_alignerVersion = jcas.getRequiredFeatureDE(casType, "alignerVersion", "uima.cas.String", featOkTst);
+    casFeatCode_alignerVersion  = (null == casFeat_alignerVersion) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_alignerVersion).getCode();
 
  
-    casFeat_info = jcas.getRequiredFeatureDE(casType, "info", "uima.cas.String", featOkTst);
-    casFeatCode_info  = (null == casFeat_info) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_info).getCode();
+    casFeat_linkInfo = jcas.getRequiredFeatureDE(casType, "linkInfo", "uima.cas.String", featOkTst);
+    casFeatCode_linkInfo  = (null == casFeat_linkInfo) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_linkInfo).getCode();
 
  
     casFeat_groupLabel = jcas.getRequiredFeatureDE(casType, "groupLabel", "uima.cas.StringList", featOkTst);
