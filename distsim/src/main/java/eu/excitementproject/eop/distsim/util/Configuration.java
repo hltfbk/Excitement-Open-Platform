@@ -125,7 +125,8 @@ public class Configuration {
 	public static final String GENERATE_ARTIFICIAL_ROOT = "generate-artificial-root";
 	public static final String REDIS_FILE = "redis-file";
 	public static final String START_ELEMENT_ID = "stasrt-element-id";
-	public static final String MIN_FEATURES_SIZE = "min-features-size"; 
+	public static final String MIN_FEATURES_SIZE = "min-features-size";
+	public static final String MAX_SIMILARITIES_PER_ELEMENT = "max-similarities-per-element"; 
 
 }
 

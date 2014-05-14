@@ -2,8 +2,15 @@
  * 
  */
 package eu.excitementproject.eop.core.component.lexicalknowledge.similarity;
+import java.util.List;
+
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 
@@ -97,5 +104,12 @@ public class Direct1000LexicalResource extends AbstractDirectLexicalResource {
 		return RESOURCE_NAME;
 	}
 
+	public static void main(String args[]) throws LexicalResourceException, UnsupportedPosTagStringException {
+		Direct1000LexicalResource resource = new Direct1000LexicalResource("jdbc:mysql://localhost:3306/bap","root","root",10);
+		List<? extends LexicalRule<? extends RuleInfo>> similarities = resource.getRulesForLeft("find",new ByCanonicalPartOfSpeech(CanonicalPosTag.V.name()));
+		for (LexicalRule<? extends RuleInfo> similarity : similarities)
+			System.out.println("<" + similarity.getLLemma() + "," + similarity.getLPos() + ">" + " --> " + "<" + similarity.getRLemma() + "," + similarity.getRPos() + ">" + ": " + similarity.getConfidence());
+
+	}
 }
 

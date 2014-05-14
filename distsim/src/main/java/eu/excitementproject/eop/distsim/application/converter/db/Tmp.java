@@ -1,9 +1,9 @@
 package eu.excitementproject.eop.distsim.application.converter.db;
 
+
+
 import eu.excitementproject.eop.distsim.storage.Redis;
-
-
-import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
 
 public class Tmp {
 	public static void main(String[] args) throws Exception {

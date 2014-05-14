@@ -3,6 +3,8 @@ package eu.excitementproject.eop.distsim.storage;
 import java.io.Serializable;
 
 
+
+
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
@@ -18,7 +20,8 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.SerializationException;
-
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;;
 
 /**
  * A program which load a File device into a Redis server
@@ -52,6 +55,11 @@ public class SimilarityFile2Redis {
 						
 			final ConfigurationParams confParams = confFile.getModuleConfiguration(Configuration.FILE_TO_REDIS);			
 
+			int maxSimilaritiesNum = -1;
+			try {
+				maxSimilaritiesNum = confParams.getInt(Configuration.MAX_SIMILARITIES_PER_ELEMENT);	
+			} catch (ConfigurationException e) {}
+			
 			File elementsFile = new File(new java.io.File(confParams.get(Configuration.ELEMENTS_FILE)),true);
 			elementsFile.open();
 			elementStorage = new MemoryBasedCountableIdentifiableStorage<Element>(elementsFile);
@@ -86,7 +94,8 @@ public class SimilarityFile2Redis {
 
 						@SuppressWarnings("unchecked")
 						LinkedHashMap<Integer, Double> sortedElementScores = (LinkedHashMap<Integer, Double>) pair.getSecond();
-						for (Entry<Integer,Double> elementScore : sortedElementScores.entrySet()) {
+						int i=0;
+						for (Entry<Integer,Double> elementScore : sortedElementScores.entrySet()) {							
 							int element2Id = elementScore.getKey();
 							double score = elementScore.getValue();		
 							String element2key = getElementKey(element2Id);
@@ -100,8 +109,12 @@ public class SimilarityFile2Redis {
 							
 							if (element2key.contains(RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER))
 								logger.info("Element " + element2key + " contains the delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + "', and considered insignificant. The element is filtered from the model");
-							else 
+							else { 
 								redis.rpush(element1key, element2key + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + score);
+								i++;
+								if (maxSimilaritiesNum != -1 & i == maxSimilaritiesNum)
+									break;
+							}
 							//redis.write(pair.getFirst(),pair.getSecond());
 						}
 					}
