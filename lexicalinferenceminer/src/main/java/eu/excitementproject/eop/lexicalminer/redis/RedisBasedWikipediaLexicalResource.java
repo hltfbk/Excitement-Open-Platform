@@ -8,6 +8,7 @@ import java.io.File;
 
 
 
+
 import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 
@@ -44,10 +45,16 @@ import eu.excitementproject.eop.redis.RedisRunException;
  */
 public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiRuleInfo> {
 
-	private static final int DEFAULT_RULES_LIMIT = 1000;
+	private static final int DEFAULT_RULES_LIMIT = 100;
 	private static final double MINIMAL_CONFIDENCE = 0.00000000001;
+	private static final double MAXIMAL_CONFIDENCE = 1 - 0.00000000001;
 	public static final String CLASSIFIER_CLASS_NAME = "###classifier-class###";
 	public static final String CLASSIFIER_ID_NAME = "###classifier-id###";
+
+	//protected static final String PARAM_STOP_WORDS = "stop-words";
+	//protected static final String PARAM_EXTRACTION_TYPES = "extraction-types";
+	//protected Set<String> stopWords;
+	//protected final Set<String> extractionTypes;
 
 	//private static Logger logger = Logger.getLogger(WikipediaLexicalResource.class);
 	
@@ -257,7 +264,7 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 	 	for (RedisRuleData ruleData : rulesData) {	
 			LexicalRule<WikiRuleInfo> rule  =
 					new LexicalRule<WikiRuleInfo>(ruleData.getLeftTerm(), this.m_nounPOS,
-					ruleData.getRightTerm(), this.m_nounPOS, Math.max(m_classifier.getRank(ruleData),MINIMAL_CONFIDENCE), ruleData.getRuleType(),
+					ruleData.getRightTerm(), this.m_nounPOS, Math.max(Math.min(m_classifier.getRank(ruleData),MAXIMAL_CONFIDENCE),MINIMAL_CONFIDENCE), ruleData.getRuleType(),
 					"Wikipedia", WikiRuleInfo.getInstance());
 			rules.add(rule);		
 		}
