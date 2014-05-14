@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>eu.excitementproject</groupId>
 	<artifactId>eop</artifactId>
-	<version>1.1.2-SNAPSHOT</version>
+	<version>1.1.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Free Open Source Platform for Recognizing Textual Entailments (RTE)</name>
 	<description>The Excitement Open Platform (EOP), has created a generic architecture and a comprehensive implementation for a multilingual textual inference platform available to the scientific and technological communities. The EOP is a main product of the EXCITEMENT project. This research project, has two interleaved high-level goals. The first is to set up, for the first time, a generic architecture and a comprehensive implementation for a multilingual textual inference platform and to make it available to the scientific and technological communities. The second goal of the project is to develop a new generation of inference-based industrial text exploration applications for customer interactions, which will enable businesses to better analyze and make sense of their diverse and often unpredicted client content. These goals will be achieved for three languages – English, German and Italian, and for three customer interaction channels – speech (transcriptions), email and social media. </description>
