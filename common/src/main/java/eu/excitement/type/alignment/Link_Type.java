@@ -23,7 +23,7 @@ We make no assumptions regarding what annotations are aligned by Link and Target
 Some notes on Link type usage. (Indexing and setting begin - end) 
 - A Link instance should be indexed on the Hypothesis View. So one iteration over the Hypothesis view can get all alignment links.
 - begin and end : both span value should hold the same value to that of HSide Target
- * Updated by JCasGen Sat May 10 23:34:30 CEST 2014
+ * Updated by JCasGen Wed May 14 14:20:19 CEST 2014
  * @generated */
 public class Link_Type extends Annotation_Type {
   /** @generated */
@@ -108,20 +108,20 @@ public class Link_Type extends Annotation_Type {
   
  
   /** @generated */
-  final Feature casFeat_direction;
+  final Feature casFeat_directionString;
   /** @generated */
-  final int     casFeatCode_direction;
+  final int     casFeatCode_directionString;
   /** @generated */ 
-  public String getDirection(int addr) {
-        if (featOkTst && casFeat_direction == null)
-      jcas.throwFeatMissing("direction", "eu.excitement.type.alignment.Link");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_direction);
+  public String getDirectionString(int addr) {
+        if (featOkTst && casFeat_directionString == null)
+      jcas.throwFeatMissing("directionString", "eu.excitement.type.alignment.Link");
+    return ll_cas.ll_getStringValue(addr, casFeatCode_directionString);
   }
   /** @generated */    
-  public void setDirection(int addr, String v) {
-        if (featOkTst && casFeat_direction == null)
-      jcas.throwFeatMissing("direction", "eu.excitement.type.alignment.Link");
-    ll_cas.ll_setStringValue(addr, casFeatCode_direction, v);}
+  public void setDirectionString(int addr, String v) {
+        if (featOkTst && casFeat_directionString == null)
+      jcas.throwFeatMissing("directionString", "eu.excitement.type.alignment.Link");
+    ll_cas.ll_setStringValue(addr, casFeatCode_directionString, v);}
     
   
  
@@ -218,8 +218,8 @@ public class Link_Type extends Annotation_Type {
     casFeatCode_strength  = (null == casFeat_strength) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_strength).getCode();
 
  
-    casFeat_direction = jcas.getRequiredFeatureDE(casType, "direction", "eu.excitement.type.alignment.Direction", featOkTst);
-    casFeatCode_direction  = (null == casFeat_direction) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_direction).getCode();
+    casFeat_directionString = jcas.getRequiredFeatureDE(casType, "directionString", "eu.excitement.type.alignment.Direction", featOkTst);
+    casFeatCode_directionString  = (null == casFeat_directionString) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_directionString).getCode();
 
  
     casFeat_alignerID = jcas.getRequiredFeatureDE(casType, "alignerID", "uima.cas.String", featOkTst);

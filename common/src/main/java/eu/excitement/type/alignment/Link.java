@@ -1,6 +1,3 @@
-
-
-/* First created by JCasGen Thu Apr 24 15:21:08 CEST 2014 */
 package eu.excitement.type.alignment;
 
 import org.apache.uima.jcas.JCas; 
@@ -21,8 +18,8 @@ We make no assumptions regarding what annotations are aligned by Link and Target
 Some notes on Link type usage. (Indexing and setting begin - end) 
 - A Link instance should be indexed on the Hypothesis View. So one iteration over the Hypothesis view can get all alignment links.
 - begin and end : both span value should hold the same value to that of HSide Target
- * Updated by JCasGen Sat May 10 23:34:30 CEST 2014
- * XML source: /Users/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/AlignmentTypes.xml
+ * Updated by JCasGen Wed May 14 14:20:19 CEST 2014
+ * XML source: /home/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/AlignmentTypes.xml
  * @generated */
 public class Link extends Annotation {
   /** @generated
@@ -111,14 +108,14 @@ public class Link extends Annotation {
   //*--------------*
   //* Feature: strength
 
-  /** getter for strength - gets This feature keeps one double (numerical) value. Mandatory value, and should not be null. The value indicates the strength of the relation. 
+  /** getter for strength - gets This feature keeps one double (numerical) value. Mandatory value, and should not be null. The value indicates the strength of the relation.
    * @generated */
   public double getStrength() {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_strength == null)
       jcasType.jcas.throwFeatMissing("strength", "eu.excitement.type.alignment.Link");
     return jcasType.ll_cas.ll_getDoubleValue(addr, ((Link_Type)jcasType).casFeatCode_strength);}
     
-  /** setter for strength - sets This feature keeps one double (numerical) value. Mandatory value, and should not be null. The value indicates the strength of the relation.  
+  /** setter for strength - sets This feature keeps one double (numerical) value. Mandatory value, and should not be null. The value indicates the strength of the relation. 
    * @generated */
   public void setStrength(double v) {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_strength == null)
@@ -127,23 +124,21 @@ public class Link extends Annotation {
    
     
   //*--------------*
-  //* Feature: direction
+  //* Feature: directionString
 
-  /** getter for direction - gets This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric". 
-
+  /** getter for directionString - gets This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric".
    * @generated */
-  public String getDirection() {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_direction == null)
-      jcasType.jcas.throwFeatMissing("direction", "eu.excitement.type.alignment.Link");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_direction);}
+  public String getDirectionString() {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_directionString == null)
+      jcasType.jcas.throwFeatMissing("directionString", "eu.excitement.type.alignment.Link");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Link_Type)jcasType).casFeatCode_directionString);}
     
-  /** setter for direction - sets This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric". 
- 
+  /** setter for directionString - sets This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric". 
    * @generated */
-  public void setDirection(String v) {
-    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_direction == null)
-      jcasType.jcas.throwFeatMissing("direction", "eu.excitement.type.alignment.Link");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_direction, v);}    
+  public void setDirectionString(String v) {
+    if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_directionString == null)
+      jcasType.jcas.throwFeatMissing("directionString", "eu.excitement.type.alignment.Link");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Link_Type)jcasType).casFeatCode_directionString, v);}    
    
     
   //*--------------*
@@ -152,7 +147,7 @@ public class Link extends Annotation {
   /** getter for alignerID - gets This is the first part of 3 ID strings for the alignment.Link instance. The string denotes the idetification of the aligner (or underlying resource). 
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info 
+alignerID + alignerVersion + linkInfo
    * @generated */
   public String getAlignerID() {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_alignerID == null)
@@ -162,7 +157,7 @@ alignerID + version + info
   /** setter for alignerID - sets This is the first part of 3 ID strings for the alignment.Link instance. The string denotes the idetification of the aligner (or underlying resource). 
 
 It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
-alignerID + version + info  
+alignerID + alignerVersion + linkInfo 
    * @generated */
   public void setAlignerID(String v) {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_alignerID == null)
@@ -227,7 +222,7 @@ TO BE DETERMINED.
 
 We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
 
-Actual values for the labels will be updated. TBDTBDTBDTBD 
+Actual values for the labels will be updated. TBDTBDTBDTBD
    * @generated */
   public StringList getGroupLabel() {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_groupLabel == null)
@@ -240,16 +235,65 @@ TO BE DETERMINED.
 
 We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
 
-Actual values for the labels will be updated. TBDTBDTBDTBD  
+Actual values for the labels will be updated. TBDTBDTBDTBD 
    * @generated */
   public void setGroupLabel(StringList v) {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_groupLabel == null)
       jcasType.jcas.throwFeatMissing("groupLabel", "eu.excitement.type.alignment.Link");
     jcasType.ll_cas.ll_setRefValue(addr, ((Link_Type)jcasType).casFeatCode_groupLabel, jcasType.ll_cas.ll_getFSRef(v));}    
-    /** A convenience method to get long (full) ID of the Link instance */
-  public String getID() {
-	  // TODO: better method that ignores null? 
-	  return getAlignerID() + getAlignerVersion() + getLinkInfo(); 
-  }
+  
+  
+  //
+  // Start of the manually extended code part. 
+  // WARNING: JCasGen automated code generation often overwrites all of those, if you change
+  // the type definition and regenerates. It is advisable to copy and keep the section, do 
+  // auto-generate, and then update the code part ... 
+  //
+  
+  /** 
+   * This is a convenience method that returns "Type string" that can identify the 
+   * type of the Link uniquely within the consumer of the CAS Links (e.g. EDAs, as a feature name, etc) 
+   * The method returns a concatenated string of "alignerID" + "alignerVersion" + "linkInfo"
+   * */
+  
+   public String getID() {
+	   return (getAlignerID() + "__" + getAlignerVersion() + "__" + getLinkInfo()); 
+   }
+  
+   /**
+    * Enum wrapper for type.alignment.Direction string sub-type. Used with 
+    * set/getDirection()  
+    */
+   public enum Direction
+   {
+	   HtoT, // correspond to eu.excitement.type.alignment.Direction -- "HtoT" (string subtype) 
+	   TtoH, // correspond to eu.excitement.type.alignment.Direction -- "TtoH" (string subtype)
+	   Bidirection, // correspond to Direction string -- "Bidirection" 
+   }
+   
+   /**
+    * Use this method to set the direction of the Link instance: one of HtoT, TtoH, or Bidirection 
+    * (A wrapper method for setDirectionString. On the actual CAS, directionString will be set to indicate the direction. However, this wrapper provides enum-access instead of string access.) 
+    * 
+    * @param dir Direction enum (type of Link.Direction) 
+    */
+   public void setDirection(Link.Direction dir)
+   {
+	   setDirectionString(dir.name()); 
+   }
+   
+   /**
+    * Use this method to check the direction of the Link instance: one of HtoT, TtoH, or Bidirection. 
+    * (A wrapper method for getDirectionString. On the actual CAS, directionString will be set to indicate the direction. However, this wrapper provides enum-access instead of string access.) 
+    * 
+    * @return Direction enum (type of Link.Direction), one of HtoT, TtoH, or Bidirection 
+    */
+   public Direction getDirection()
+   {
+	   Direction dir = Direction.valueOf(getDirectionString()); 
+	   return dir; 
+   }
   
   }
+
+    

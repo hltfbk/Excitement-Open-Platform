@@ -14,8 +14,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 /** This is a CAS annotation type that can point one or more annotations (tokens, parse nodes, NER nodes, or any annotations) 
 It is a list that groups annotations in one View. The target type allows flexible alignment between any data, including structures made by multiple annotations. 
 Note on usage: begin holds the minimum begin value among annotations in targetAnnotations. Likewise, end should point the maximum end among annotations.
- * Updated by JCasGen Sat May 10 23:34:30 CEST 2014
- * XML source: /Users/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/AlignmentTypes.xml
+ * Updated by JCasGen Wed May 14 14:20:19 CEST 2014
+ * XML source: /home/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/AlignmentTypes.xml
  * @generated */
 public class Target extends Annotation {
   /** @generated
