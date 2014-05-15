@@ -52,6 +52,8 @@ public abstract class SyntacticAbstractOfflineFuncClassifier extends OfflineClas
 		{
 			int patternType =getPatternType(patternKind);
 			int pattern_count = getDifferntPatternsCount(patternType , select_func);
+			if (pattern_count == 0)
+				throw new SQLException("No rule pattern was found in the database");
 			float pattern_mul = (1/(float)(pattern_count));
 
 			String query =  " insert into rulesranks(ruleId,classifierId,rank) " + rankQuery;
