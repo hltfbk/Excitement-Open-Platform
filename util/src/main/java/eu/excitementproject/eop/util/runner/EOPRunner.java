@@ -346,7 +346,7 @@ public class EOPRunner {
 				lapRunner = new LAPRunner(option.lap);
 
 //			if ((lapRunner == null) && (option.test || option.train))
-			if (lapRunner == null)
+			if (lapRunner == null && option.config != null)
 				lapRunner = new LAPRunner(configFile);
 			
 			if (option.trainFile != null) {
