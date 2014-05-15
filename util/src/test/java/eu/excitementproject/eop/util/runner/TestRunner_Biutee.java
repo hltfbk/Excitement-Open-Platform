@@ -8,11 +8,19 @@ public class TestRunner_Biutee {
 	@Ignore
 	@Test
 	public void test() {
-		String[] cmd = {"-config", "../core/src/test/resources/configuration-file/biutee.xml",
+
+		System.out.println("PATH: " + System.getenv("PATH"));
+		
+		String[] cmd = {
+//				"-config", "./src/test/resources/biutee_demo/biutee_demo.xml",
+//				"-config", "../core/src/main/resources/configuration-file/biutee.xml",
+				"-config", "./src/test/resources/configuration-file/biutee_2.xml",
 		        "-train",
 		        "-trainFile","../core/src/test/resources/data-set/ENG/English_dev_small.xml",
+		        "-trainDir","/tmp/eop-runs/biutee/train",
 		        "-test",
 		        "-testFile","../core/src/test/resources/data-set/ENG/English_test_small.xml",
+		        "-testDir","/tmp/eop-runs/biutee/test",
 		        "-output","../core/src/test/resources/results/",
 		        "-score"};
 		/*

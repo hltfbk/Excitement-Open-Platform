@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.distsim.builders.scoring;
 
 import java.io.File;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -16,7 +17,6 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.common.utilities.ExceptionUtil;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
@@ -211,7 +211,8 @@ public class GeneralElementFeatureScorer implements ElementFeatureScorer {
 						elementScoreDevice.write(elementFeatureJointCount.getElementId(), elementScoring.score(tmpScoredFeatures.values()));
 						
 					} catch (Exception e) {
-						logger.error(ExceptionUtil.getStackTrace(e));
+						//logger.error(ExceptionUtil.getStackTrace(e));
+						logger.error(e.toString() + ": skipping to next element");
 					}
 				}
 			}

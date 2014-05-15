@@ -17,7 +17,7 @@
 	
 	<param name="SyntacticOfflinePosLocationSquareClassifier">false</param>
 	<param name="SyntacticOfflineRelationLocationSquareClassifier">true</param>
-	<param name="SyntacticOfflinePosRelationLocationSquareClassifier">false</param>
+	<param name="SyntacticOfflinePosRelationLocationSquareClassifier">true</param>
 </module>
 
 <module name="Database">

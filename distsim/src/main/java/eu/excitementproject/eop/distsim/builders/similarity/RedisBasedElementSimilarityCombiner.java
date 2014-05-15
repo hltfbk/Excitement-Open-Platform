@@ -56,7 +56,7 @@ public class RedisBasedElementSimilarityCombiner implements ElementSimilarityCom
 			throw new SimilarityCombinationException("the number of provided devices is grater than existed redis servers");
 		try {
 			List<RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>> similarities = new LinkedList<RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>>();
-			if (similarityStorageDevices.size() > 1) {
+			if (similarityStorageDevices.size() > 1) { 
 				for (int i=1;i<similarityStorageDevices.size();i++) { 
 					RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> redis = 
 						new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(

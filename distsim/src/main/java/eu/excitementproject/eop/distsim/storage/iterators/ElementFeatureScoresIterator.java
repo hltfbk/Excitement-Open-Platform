@@ -1,14 +1,14 @@
 package eu.excitementproject.eop.distsim.storage.iterators;
 
 import java.util.LinkedHashMap;
+
 import java.util.NoSuchElementException;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.scoring.DefaultElementFeatureScores;
 import eu.excitementproject.eop.distsim.scoring.ElementFeatureScores;
 import eu.excitementproject.eop.distsim.util.Pair;
-
+import eu.excitementproject.eop.distsim.domains.FilterType;
 /**
  * Implements an iterator for {@link ElementFeatureScores} items, based on a given iterator of pairs of id and scoring map 
  * 

@@ -5,7 +5,7 @@
 <configuration>
 
 <section name="logging"> <!--Defines the log4j properties -->
-	<property name="properties-file">/home/ir/adlerm6/workspace/configurations/log4j.properties</property> <!--the path of the log4j properties file-->
+	<property name="properties-file">configurations/log4j.properties</property> <!--the path of the log4j properties file-->
 </section>
 
 <section name="element-similarity-combiner"> <!--Defines the combination method -->

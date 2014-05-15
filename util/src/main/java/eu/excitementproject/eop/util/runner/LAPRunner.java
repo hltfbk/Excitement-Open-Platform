@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPAccess;
@@ -104,11 +105,15 @@ public class LAPRunner {
 	public void initializeLAP(String lapClassName, File configFile) {
 				
 		logger.info("LAP initialized from class " + lapClassName);
-		
 		try {
-				Class<?> lapClass = Class.forName(lapClassName);
-				Constructor<?> lapClassConstructor = lapClass.getConstructor();
-				lap = (LAPAccess) lapClassConstructor.newInstance(new ImplCommonConfig(configFile));
+
+//			CommonConfig config = new ImplCommonConfig(configFile);
+		
+			Class<?> lapClass = Class.forName(lapClassName);
+			Constructor<?> lapClassConstructor = lapClass.getConstructor(CommonConfig.class);
+			lap = (LAPAccess) lapClassConstructor.newInstance(new ImplCommonConfig(configFile));
+//			lap = (LAPAccess) lapClassConstructor.newInstance(config);
+			
 		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | ConfigurationException e) {
 			logger.error("Error initializing LAP : " + e.getClass());
 			e.printStackTrace();
