@@ -263,7 +263,7 @@ public class SystemInitialization
 	{
 		Lemmatizer gateLemmatizer = new GateLemmatizer(new File(lemmatizerRulesFileName).toURI().toURL());
 		Lemmatizer lemmatizer = new LemmatizerFilterApostrophe(gateLemmatizer);
-//		lemmatizer.init();
+		lemmatizer.init();
 		return lemmatizer;
 	}
 	

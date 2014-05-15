@@ -130,9 +130,9 @@ a configuration file means allowing other users to replicate the same experiment
 	<section name="model">
 	
 	    <!-- threshold -->
-		<property name="threshold">-1.0</property>
+		<property name="threshold">0.2571428571428572</property>
 		<!-- the accuracy obtained on the training data set -->
-		<property name="trainingAccuracy">0.0</property>
+		<property name="trainingAccuracy">0.9</property>
 		
 	</section>
 		
