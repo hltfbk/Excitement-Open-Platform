@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.core.component.lexicalknowledge.wordnet;
 import java.io.File;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,9 +11,13 @@ import java.util.Set;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Dictionary;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.SensedWord;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.Synset;
@@ -365,7 +370,7 @@ public class WordnetLexicalResource implements LexicalResource<WordnetRuleInfo>
 			throw new LexicalResourceException("The relations set cannot be empty");
 		this.defaultRelations = new LinkedHashSet<WordNetRelation>(defaultRelations);
 	}
-	
+
 	///////////////////////////////////////////////// PROTECTED + PRIVATE ////////////////////////////////////////////////////////////////////
 
 	protected final WordnetLexicalResourceServices wordnetLexResourceServices;
@@ -374,6 +379,24 @@ public class WordnetLexicalResource implements LexicalResource<WordnetRuleInfo>
 	protected Set<WordNetRelation> defaultRelations;
 	protected int chainingLength;
 
+	
+	///////////////////////////////////////////////////////////////
+	
+	public static void main(String args[]) throws Exception {
+		if (args.length != 3) {
+			System.out.println("Usage: eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource <configuration file> <wordnet section name> <tested noun>");
+			System.exit(0);
+		}
+		
+		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
+		ConfigurationParams confParams = confFile.getModuleConfiguration(args[1]);
+		WordnetLexicalResource resource = new WordnetLexicalResource(confParams);
+		List<LexicalRule<? extends WordnetRuleInfo>> rules = resource.getRulesForRight(args[2], new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN));
+		for (LexicalRule<? extends WordnetRuleInfo> rule : rules) {
+			System.out.println(rule.getLLemma() + " " + rule.getLPos());
+		}
+		
+	}
 
 }
 

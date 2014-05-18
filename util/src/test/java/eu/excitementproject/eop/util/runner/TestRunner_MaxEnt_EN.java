@@ -13,7 +13,8 @@ public class TestRunner_MaxEnt_EN {
 		        "-trainFile","../core/src/test/resources/data-set/ENG/English_dev_small.xml",
 		        "-test",
 		        "-testFile","../core/src/test/resources/data-set/ENG/English_test_small.xml",
-		        "-output","../core/src/test/resources/results/"};
+		        "-output","../core/src/test/resources/results/",
+		        "-score"};
 		/*
 		String[] cmd = {"-config", "./src/test/resources/configuration-file/demo_config_test_maxent_EN.xml",
 				        "-train",

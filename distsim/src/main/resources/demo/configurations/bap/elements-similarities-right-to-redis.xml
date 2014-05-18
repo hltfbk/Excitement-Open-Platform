@@ -22,6 +22,9 @@
 	  <!-- A path to a new generated redis file-->
 	<property name="redis-file">models/bap/similarity-r2l.rdb</property>
 	
+	<!-- Defines the number of top similarities per element, to be stored in Redis -->
+	<property name="max-similarities-per-element">100</property>
+	
 </section>
 </configuration>
 

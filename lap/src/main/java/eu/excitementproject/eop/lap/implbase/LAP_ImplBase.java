@@ -6,8 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
+//import org.apache.log4j.BasicConfigurator;
+//import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
@@ -88,10 +88,11 @@ public abstract class LAP_ImplBase implements LAPAccess {
 		}		
 
 		// Set logger 
-		BasicConfigurator.resetConfiguration(); 
-		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
-		logger = Logger.getLogger("eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAETest"); 
+		//BasicConfigurator.resetConfiguration(); 
+		//BasicConfigurator.configure(); 
+		//Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
+		logger = Logger.getLogger("eu.excitementproject.eop.lap.implbase.LAP_ImplBase"); 
+		//logger.setLevel(Level.INFO); 
 
 	}
 

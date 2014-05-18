@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13765107_84849719.txt_1_0-13765218_85964833.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13764680_76468004.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13764680_76468004.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13764680_76468004.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765107_84849719.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13764680_76468004.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13764680_76468004.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13764680_76468004.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765022_84067622.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>my bag was out there</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13764680_76468004.txt_1_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag i don't know where it is</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13764878_82942763.txt_1_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>one of my bags arrived and i don't want to not</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13764888_80919841.txt_1_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i'm on day three in narnia without my back</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765022_84067622.txt_1_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my bag was out there</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport last night but my bag did not</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_1-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home in moonport but my bag did not</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_2-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home last night but my bag did not</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765028_82963501.txt_1_3-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>high arrived home but my bag did not</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765107_84849719.txt_1_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why are they keep on my back</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left last night</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_1-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left last night</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_2-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um three bags that were left</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+	<pair id="13765197_83038377.txt_2_3-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we had um bags that were left</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765218_85964833.txt_1_0-13765222_86100744.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>why did n't they just gave me my bag</t>
+		<h>her bags it looks like have been transferred over</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13764680_76468004.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>my bag i don't know where it is</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13764878_82942763.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>one of my bags arrived and i don't want to not</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13764888_80919841.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>i'm on day three in narnia without my back</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765028_82963501.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>high arrived home in moonport last night but my bag did not</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765028_82963501.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>high arrived home in moonport but my bag did not</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765028_82963501.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>high arrived home last night but my bag did not</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765028_82963501.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>high arrived home but my bag did not</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765107_84849719.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>why are they keep on my back</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765197_83038377.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>we had um three bags that were left last night</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765197_83038377.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>we had um bags that were left last night</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765197_83038377.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>we had um three bags that were left</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765197_83038377.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>we had um bags that were left</h>
+	</pair>
+	<pair id="13765222_86100744.txt_1_0-13765218_85964833.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>her bags it looks like have been transferred over</t>
+		<h>why did n't they just gave me my bag</h>
+	</pair>
+</entailment-corpus>

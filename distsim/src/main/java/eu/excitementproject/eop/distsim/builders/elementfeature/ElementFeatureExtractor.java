@@ -34,6 +34,15 @@ public interface ElementFeatureExtractor<R> extends Builder {
 	 * 
 	 * @param cooccurrenceDB a data base of co-occurrences
 	 * @param elementStorage existing elements storage
+	 * @return An ElementFeaturesDB composed of the extracted elements and features 
+	 */
+	ElementFeatureCountStorage constructElementFeatureDB(BasicCooccurrenceStorage<R> cooccurrenceDB,
+			CountableIdentifiableStorage<Element> elementStorage) throws ElementFeatureCountsDBConstructionException;
+	/**
+	 * The method extract elements and features from a given corpus, represented by co-occurrence instances DB.
+	 * 
+	 * @param cooccurrenceDB a data base of co-occurrences
+	 * @param elementStorage existing elements storage
 	 * @param featureStorage existing featureStroage
 	 * @return An ElementFeaturesDB composed of the extracted elements and features 
 	 */

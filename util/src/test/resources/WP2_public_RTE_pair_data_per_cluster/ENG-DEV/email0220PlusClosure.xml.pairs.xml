@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="443092.txt_1_0-72187.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="72187.txt_2_0-327999.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="72187.txt_2_1-327999.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="317673.txt_1_1-327999.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="317673.txt_16_0-317673.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="327999.txt_1_0-317673.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="327999.txt_1_0-72187.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="443092.txt_1_1-327999.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="443092.txt_1_0-327999.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="317673.txt_16_0-327999.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="327999.txt_1_1-72187.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="443092.txt_1_1-317673.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="317673.txt_1_0-327999.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="72187.txt_2_1-317673.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="317673.txt_1_1-72187.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="317673.txt_16_0-72187.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="443092.txt_1_0-317673.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="327999.txt_1_1-317673.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="443092.txt_1_1-72187.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="327999.txt_1_0-72187.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="327999.txt_1_0-317673.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="443092.txt_1_0-72187.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="443092.txt_1_0-327999.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="443092.txt_1_0-317673.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="72187.txt_2_0-327999.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="72187.txt_2_0-317673.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="72187.txt_2_0-317673.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="317673.txt_1_0-72187.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="317673.txt_1_0-327999.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="317673.txt_1_0-72187.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_0-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="317673.txt_15_0-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="317673.txt_15_0-317673.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="317673.txt_15_0-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="317673.txt_15_0-327999.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="317673.txt_15_0-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="317673.txt_15_0-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="317673.txt_15_0-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_0-72187.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable with the person next to me taking up most of the space</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_1-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="317673.txt_15_1-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="317673.txt_15_1-317673.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="317673.txt_15_1-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="317673.txt_15_1-327999.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="317673.txt_15_1-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="317673.txt_15_1-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="317673.txt_15_1-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_1-72187.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been very uncomfortable</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_2-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="317673.txt_15_2-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="317673.txt_15_2-317673.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="317673.txt_15_2-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="317673.txt_15_2-327999.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="317673.txt_15_2-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="317673.txt_15_2-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="317673.txt_15_2-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_2-72187.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable with the person next to me taking up most of the space</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_3-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="317673.txt_15_3-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="317673.txt_15_3-317673.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>Seating is cramped</h>
+	</pair>
+	<pair id="317673.txt_15_3-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="317673.txt_15_3-327999.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>seats are small</h>
+	</pair>
+	<pair id="317673.txt_15_3-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="317673.txt_15_3-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="317673.txt_15_3-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="317673.txt_15_3-72187.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my journey has been uncomfortable</t>
+		<h>make space in seats</h>
+	</pair>
+	<pair id="317673.txt_16_0-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="317673.txt_16_0-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="317673.txt_16_0-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="317673.txt_16_0-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="317673.txt_16_0-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="317673.txt_16_0-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="317673.txt_16_0-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="317673.txt_16_0-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="317673.txt_16_0-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>service would improve with more seating space</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="317673.txt_1_0-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="317673.txt_1_0-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="317673.txt_1_0-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="317673.txt_1_0-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="317673.txt_1_0-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="317673.txt_1_0-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="317673.txt_1_0-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is very cramped</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="317673.txt_1_1-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="317673.txt_1_1-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="317673.txt_1_1-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="317673.txt_1_1-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="317673.txt_1_1-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="317673.txt_1_1-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="317673.txt_1_1-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="317673.txt_1_1-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="317673.txt_1_1-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Seating is cramped</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="327999.txt_1_0-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="327999.txt_1_0-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="327999.txt_1_0-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="327999.txt_1_0-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="327999.txt_1_0-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="327999.txt_1_0-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="327999.txt_1_0-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are too small</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="327999.txt_1_1-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="327999.txt_1_1-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="327999.txt_1_1-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="327999.txt_1_1-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="327999.txt_1_1-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="327999.txt_1_1-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="327999.txt_1_1-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="327999.txt_1_1-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="327999.txt_1_1-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>seats are small</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="443092.txt_1_0-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="443092.txt_1_0-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="443092.txt_1_0-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="443092.txt_1_0-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="443092.txt_1_0-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are very narrow</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="443092.txt_1_1-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="443092.txt_1_1-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="443092.txt_1_1-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="443092.txt_1_1-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="443092.txt_1_1-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="443092.txt_1_1-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="443092.txt_1_1-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="443092.txt_1_1-72187.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Spaces between seats are narrow</t>
+		<h>make some space in seats</h>
+	</pair>
+	<pair id="72187.txt_2_0-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="72187.txt_2_0-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="72187.txt_2_0-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="72187.txt_2_0-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="72187.txt_2_0-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="72187.txt_2_0-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="72187.txt_2_0-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make some space in seats</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+	<pair id="72187.txt_2_1-317673.txt_15_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>my journey has been very uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="72187.txt_2_1-317673.txt_15_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>my journey has been very uncomfortable</h>
+	</pair>
+	<pair id="72187.txt_2_1-317673.txt_15_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>my journey has been uncomfortable with the person next to me taking up most of the space</h>
+	</pair>
+	<pair id="72187.txt_2_1-317673.txt_15_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>my journey has been uncomfortable</h>
+	</pair>
+	<pair id="72187.txt_2_1-317673.txt_16_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>service would improve with more seating space</h>
+	</pair>
+	<pair id="72187.txt_2_1-317673.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>Seating is very cramped</h>
+	</pair>
+	<pair id="72187.txt_2_1-327999.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>seats are too small</h>
+	</pair>
+	<pair id="72187.txt_2_1-443092.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>Spaces between seats are very narrow</h>
+	</pair>
+	<pair id="72187.txt_2_1-443092.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>make space in seats</t>
+		<h>Spaces between seats are narrow</h>
+	</pair>
+</entailment-corpus>

@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="0005.txt_2_0-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0005.txt_2_0-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0005.txt_2_0-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0005.txt_2_0-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0005.txt_2_0-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0005.txt_2_0-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0005.txt_2_0-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0005.txt_2_0-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0005.txt_2_0-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0005.txt_2_0-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0005.txt_2_0-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0005.txt_2_0-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX sta cercando di truffarmi</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0142.txt_1_0-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0142.txt_1_0-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0142.txt_1_0-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0142.txt_1_0-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0142.txt_1_0-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0142.txt_1_0-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0142.txt_1_0-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0142.txt_1_0-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0142.txt_1_0-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0142.txt_1_0-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0142.txt_1_0-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0142.txt_1_0-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX non risolve i problemi</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_0-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0147.txt_2_0-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0147.txt_2_0-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0147.txt_2_0-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_0-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_0-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_0-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_0-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_0-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_1-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0147.txt_2_1-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0147.txt_2_1-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0147.txt_2_1-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_1-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_1-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_1-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_1-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_1-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è davvero una catastrofe</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_2-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0147.txt_2_2-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0147.txt_2_2-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0147.txt_2_2-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_2-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_2-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_2-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_2-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_2-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro i clieti è una catastrofe</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_3-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0147.txt_2_3-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0147.txt_2_3-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0147.txt_2_3-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_3-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0147.txt_2_3-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_3-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_3-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0147.txt_2_3-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX ke prende in giro è una catastrofe</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0308.txt_2_0-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0308.txt_2_0-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0308.txt_2_0-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0308.txt_2_0-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0308.txt_2_0-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0308.txt_2_0-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0308.txt_2_0-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0308.txt_2_0-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0308.txt_2_0-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0308.txt_2_0-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0308.txt_2_0-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0308.txt_2_0-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>promettete cose che non potrete mai far ottenere</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_0-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0315.txt_1_0-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0315.txt_1_0-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_0-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_0-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_0-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_0-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0315.txt_1_0-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_0-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_0-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_0-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e solo una fregatura</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_1-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0315.txt_1_1-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0315.txt_1_1-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_1-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_1-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_1-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0315.txt_1_1-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0315.txt_1_1-0318.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_1-0318.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>sono 3 mesi ke i servizi non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_1-0318.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>i servizi TELEFONIAX sim non funzionano</h>
+	</pair>
+	<pair id="0315.txt_1_1-0318.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>la TELEFONIAX e una fregatura</t>
+		<h>i servizi non funzionano</h>
+	</pair>
+	<pair id="0318.txt_1_0-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0318.txt_1_0-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0318.txt_1_0-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_0-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_0-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_0-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_0-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0318.txt_1_0-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0318.txt_1_0-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0318.txt_1_1-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0318.txt_1_1-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0318.txt_1_1-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_1-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_1-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_1-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_1-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0318.txt_1_1-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0318.txt_1_1-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sono 3 mesi ke i servizi non funzionano</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0318.txt_1_2-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0318.txt_1_2-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0318.txt_1_2-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_2-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_2-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_2-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_2-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0318.txt_1_2-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0318.txt_1_2-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi TELEFONIAX sim non funzionano</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+	<pair id="0318.txt_1_3-0005.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>TELEFONIAX sta cercando di truffarmi</h>
+	</pair>
+	<pair id="0318.txt_1_3-0142.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>la TELEFONIAX non risolve i problemi</h>
+	</pair>
+	<pair id="0318.txt_1_3-0147.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_3-0147.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è davvero una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_3-0147.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro i clieti è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_3-0147.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>la TELEFONIAX ke prende in giro è una catastrofe</h>
+	</pair>
+	<pair id="0318.txt_1_3-0308.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>promettete cose che non potrete mai far ottenere</h>
+	</pair>
+	<pair id="0318.txt_1_3-0315.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>la TELEFONIAX e solo una fregatura</h>
+	</pair>
+	<pair id="0318.txt_1_3-0315.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i servizi non funzionano</t>
+		<h>la TELEFONIAX e una fregatura</h>
+	</pair>
+</entailment-corpus>

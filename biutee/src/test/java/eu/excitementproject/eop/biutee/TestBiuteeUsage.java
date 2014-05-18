@@ -6,22 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeMain;
-import eu.excitementproject.eop.biutee.rteflow.systems.excitement.BiuteeMainException;
-import eu.excitementproject.eop.biutee.rteflow.systems.excitement.ExcitementToBiuConfigurationFileConverter.ExcitementToBiuConfigurationFileConverterException;
-import eu.excitementproject.eop.common.EDAException;
-import eu.excitementproject.eop.common.exception.ComponentException;
-import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.common.representation.coreference.TreeCoreferenceInformationException;
-import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator.TreeStringGeneratorException;
-import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
-import eu.excitementproject.eop.common.utilities.datasets.rtepairs.RTEMainReaderException;
-import eu.excitementproject.eop.common.utilities.text.TextPreprocessorException;
-import eu.excitementproject.eop.lap.biu.coreference.CoreferenceResolutionException;
-import eu.excitementproject.eop.lap.biu.en.parser.ParserRunException;
-import eu.excitementproject.eop.lap.biu.ner.NamedEntityRecognizerException;
-import eu.excitementproject.eop.lap.biu.sentencesplit.SentenceSplitterException;
 import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
-import eu.excitementproject.eop.transformations.utilities.TeEngineMlException;
 
 /**
  * Tests for BIUTEE in EOP. Runs full BIUTEE.<BR>
@@ -40,9 +25,10 @@ public class TestBiuteeUsage {
 
 	/**
 	 * Run full BIUTEE: LAP for training, training, LAP for testing, testing.
+	 * @throws Throwable 
 	 */
 	@Test
-	public void runFullBiutee() throws EDAException, ComponentException, ConfigurationException, ConfigurationFileDuplicateKeyException, TeEngineMlException, BiuteeMainException, IOException, ExcitementToBiuConfigurationFileConverterException, eu.excitementproject.eop.common.utilities.configuration.ConfigurationException, RTEMainReaderException, ParserRunException, SentenceSplitterException, CoreferenceResolutionException, TreeCoreferenceInformationException, TextPreprocessorException, NamedEntityRecognizerException, TreeStringGeneratorException{
+	public void runFullBiutee() throws Throwable{
 		BiuteeMain.runBiuteeCustomFlow(CONFIG_FILE_PATH, "full");
 	}
 	

@@ -162,19 +162,13 @@ CREATE TABLE `ruleresources` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping routines for database 'wikipedialexicalrule'
+-- Routines for database 
 --
-/*!50003 DROP FUNCTION IF EXISTS `getClassifierId` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `getClassifierId`(classifierName varchar(100) ) RETURNS int(11)
+
+DROP FUNCTION IF EXISTS `getClassifierId`;
+
+DELIMITER $$
+CREATE FUNCTION `getClassifierId`(classifierName varchar(100) ) RETURNS int(11)
 BEGIN
 
     DECLARE classifierId INT; 
@@ -185,23 +179,13 @@ BEGIN
     end if;  
     
     RETURN(classifierId);
-END */;;
+END$$
+
 DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP FUNCTION IF EXISTS `insertNewClassifier` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `insertNewClassifier`(classifierName varchar(100) ) RETURNS int(11)
+DROP FUNCTION IF EXISTS `insertNewClassifier`;
+
+DELIMITER $$
+CREATE FUNCTION `insertNewClassifier`(classifierName varchar(100) ) RETURNS int(11)
 BEGIN
 
     DECLARE classifierId INT; 
@@ -214,23 +198,13 @@ BEGIN
     end if;  
     
     RETURN(classifierId);
-END */;;
+END$$
+
 DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `insertPatternRule` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `insertPatternRule`(left_Term varchar(200),
+DROP FUNCTION IF EXISTS `insertPatternRule`;
+
+DELIMITER $$
+CREATE PROCEDURE `insertPatternRule`(left_Term varchar(200),
 
 right_Term varchar(200), 
 
@@ -405,21 +379,9 @@ BEGIN
 
     commit;
 
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+END$$
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+DELIMITER ;
 
 INSERT INTO `patterntypes` (`id`,`patternName`) VALUES (1,'pos pattern');
 INSERT INTO `patterntypes` (`id`,`patternName`) VALUES (2,'words pattern');
@@ -428,4 +390,3 @@ INSERT INTO `patterntypes` (`id`,`patternName`) VALUES (4,'pos_relations pattern
 INSERT INTO `patterntypes` (`id`,`patternName`) VALUES (5,'full pattern');
 commit;
 
--- Dump completed on 2012-11-07 20:22:27

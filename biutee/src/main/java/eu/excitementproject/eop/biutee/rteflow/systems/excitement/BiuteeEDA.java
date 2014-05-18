@@ -79,20 +79,28 @@ public class BiuteeEDA implements EDABasic<TEDecision>
 	{
 		if (hasBeenShutDown) throw new EDAException("After calling the method shutdown(), no method should be called.");
 		if (null == underlyingSystem) throw new EDAException("Method initialize must be called before calling method process.");
+		String pairId = null;
 		try
 		{
 			logger.info("Building PairData from the given JCas...");
-			String pairId = BiuteeEdaUtilities.getPairIdFromJCas(aCas);
+			pairId = BiuteeEdaUtilities.getPairIdFromJCas(aCas);
 			PairData pairData = BiuteeEdaUtilities.convertJCasToPairData(aCas);
 			logger.info("Building PairData from the given JCas - done.");
-			logger.info("Processing T-H pair...");
+			logger.info(String.format("Processing T-H pair (Pair ID %s)...", pairId));
 			PairResult pairResult = underlyingSystem.process(pairData);
-			logger.info("Processing T-H pair - done.");
+			logger.info(String.format("Processing T-H pair (Pair ID %s)- done.", pairId));
 			return BiuteeEdaUtilities.createDecisionFromPairResult(pairId,pairResult,underlyingSystem.getClassifierForPredictions());
 		}
 		catch (TeEngineMlException | AnnotatorException | OperationException | ClassifierException | MalformedURLException | TreeCoreferenceInformationException | ScriptException | RuleBaseException | LemmatizerException | InterruptedException | ExecutionException e)
 		{
-			throw new EDAException("Failed to process given CAS. See nested exception.",e);
+			String pairIdDetail = "";
+			if (pairId == null) {
+				pairIdDetail = "(Pair ID unknown)";
+			}
+			else {
+				pairIdDetail = String.format("(Pair ID: %s)", pairId);
+			}
+			throw new EDAException(String.format("Failed to process given CAS %s. See nested exception.", pairIdDetail),e);
 		}
 	}
 

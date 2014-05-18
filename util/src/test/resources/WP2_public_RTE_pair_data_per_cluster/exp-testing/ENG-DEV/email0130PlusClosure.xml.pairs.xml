@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="401238.txt_7_1-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="433561.txt_1_0-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="190617.txt_1_0-190617.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>Quasigo is horrible</h>
+	</pair>
+	<pair id="273791.txt_2_0-106746.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are quite shabby</t>
+		<h>trains could use some updating</h>
+	</pair>
+	<pair id="433561.txt_1_0-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>New updated train would be nice</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_8_1-273791.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains are shabby</h>
+	</pair>
+	<pair id="142421.txt_8_1-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="142421.txt_8_1-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="401238.txt_7_1-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The interior could be modernised</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="273791.txt_2_1-72187.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains are shabby</t>
+		<h>modernize the train</h>
+	</pair>
+	<pair id="142421.txt_8_1-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="190617.txt_1_0-142421.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo is filthy</t>
+		<h>The Quasigo train was dirty</h>
+	</pair>
+	<pair id="142421.txt_8_1-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains could use updating</h>
+	</pair>
+	<pair id="72187.txt_1_0-433561.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>New updated train would be nice</h>
+	</pair>
+	<pair id="440557.txt_1_0-440557.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The trains are drab</t>
+		<h>The decor is depressing</h>
+	</pair>
+	<pair id="106746.txt_1_1-215790.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>trains could use updating</t>
+		<h>Time for the trains to be updated</h>
+	</pair>
+	<pair id="142421.txt_8_0-273791.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was very tatty</t>
+		<h>trains are quite shabby</h>
+	</pair>
+	<pair id="142421.txt_8_1-273791.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>The Quasigo train was tatty</t>
+		<h>trains need refurbishment</h>
+	</pair>
+	<pair id="72187.txt_1_0-106746.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>modernize the train</t>
+		<h>trains could use updating</h>
+	</pair>
+</entailment-corpus>

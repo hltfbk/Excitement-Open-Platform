@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="193822.txt_4_0-461540.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="193822.txt_4_1-461540.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="193822.txt_4_0-461540.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="179281.txt_2_0-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="179281.txt_2_0-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="179281.txt_2_0-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="179281.txt_2_0-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="179281.txt_2_0-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="179281.txt_2_0-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_0-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_0-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="179281.txt_2_0-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit at Stars Bridge station</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="179281.txt_2_1-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="179281.txt_2_1-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="179281.txt_2_1-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="179281.txt_2_1-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="179281.txt_2_1-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="179281.txt_2_1-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_1-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_1-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="179281.txt_2_1-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit at Stars Bridge station</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="179281.txt_2_2-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="179281.txt_2_2-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="179281.txt_2_2-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="179281.txt_2_2-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="179281.txt_2_2-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="179281.txt_2_2-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_2-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_2-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="179281.txt_2_2-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>simple first aid kit</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="179281.txt_2_3-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="179281.txt_2_3-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="179281.txt_2_3-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="179281.txt_2_3-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="179281.txt_2_3-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="179281.txt_2_3-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_3-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="179281.txt_2_3-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="179281.txt_2_3-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>first aid kit</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="193822.txt_4_0-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="193822.txt_4_0-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="193822.txt_4_0-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="193822.txt_4_0-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="193822.txt_4_0-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="193822.txt_4_0-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="193822.txt_4_0-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="193822.txt_4_0-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="193822.txt_4_0-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service through Quasigo not available</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="193822.txt_4_1-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="193822.txt_4_1-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="193822.txt_4_1-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="193822.txt_4_1-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="193822.txt_4_1-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="193822.txt_4_1-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="193822.txt_4_1-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="193822.txt_4_1-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="193822.txt_4_1-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="193822.txt_4_1-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>taxi service not available</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="461540.txt_4_0-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="461540.txt_4_0-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="461540.txt_4_0-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="461540.txt_4_0-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="461540.txt_4_0-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="461540.txt_4_0-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="461540.txt_4_0-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="461540.txt_4_0-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="461540.txt_4_0-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="461540.txt_4_0-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="461540.txt_4_0-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service at the other end</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="461540.txt_4_1-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="461540.txt_4_1-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="461540.txt_4_1-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="461540.txt_4_1-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="461540.txt_4_1-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="461540.txt_4_1-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="461540.txt_4_1-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="461540.txt_4_1-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="461540.txt_4_1-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="461540.txt_4_1-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="461540.txt_4_1-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better taxi service</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="522262.txt_1_0-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="522262.txt_1_0-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="522262.txt_1_0-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="522262.txt_1_0-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="522262.txt_1_0-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="522262.txt_1_0-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="522262.txt_1_0-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="522262.txt_1_0-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="522262.txt_1_0-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="522262.txt_1_0-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="522262.txt_1_0-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="522262.txt_1_0-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>I would like a smoking area</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="52781.txt_12_0-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="52781.txt_12_0-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="52781.txt_12_0-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="52781.txt_12_0-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="52781.txt_12_0-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="52781.txt_12_0-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="52781.txt_12_0-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="52781.txt_12_0-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="52781.txt_12_0-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="52781.txt_12_0-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="52781.txt_12_0-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Absolutely ruins the notion of a leisurely trip</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="52781.txt_12_1-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="52781.txt_12_1-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="52781.txt_12_1-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="52781.txt_12_1-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="52781.txt_12_1-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="52781.txt_12_1-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="52781.txt_12_1-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="52781.txt_12_1-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="52781.txt_12_1-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="52781.txt_12_1-92454.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>You should have more connections into europe</h>
+	</pair>
+	<pair id="52781.txt_12_1-92454.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ruins the notion of a leisurely trip</t>
+		<h>You should have more connections</h>
+	</pair>
+	<pair id="92454.txt_5_0-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="92454.txt_5_0-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="92454.txt_5_0-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="92454.txt_5_0-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="92454.txt_5_0-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="92454.txt_5_0-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="92454.txt_5_0-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="92454.txt_5_0-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="92454.txt_5_0-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="92454.txt_5_0-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="92454.txt_5_0-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections into europe</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="92454.txt_5_1-179281.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>simple first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="92454.txt_5_1-179281.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>first aid kit at Stars Bridge station</h>
+	</pair>
+	<pair id="92454.txt_5_1-179281.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>simple first aid kit</h>
+	</pair>
+	<pair id="92454.txt_5_1-179281.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>first aid kit</h>
+	</pair>
+	<pair id="92454.txt_5_1-193822.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>taxi service through Quasigo not available</h>
+	</pair>
+	<pair id="92454.txt_5_1-193822.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>taxi service not available</h>
+	</pair>
+	<pair id="92454.txt_5_1-461540.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>better taxi service at the other end</h>
+	</pair>
+	<pair id="92454.txt_5_1-461540.txt_4_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>better taxi service</h>
+	</pair>
+	<pair id="92454.txt_5_1-522262.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>I would like a smoking area</h>
+	</pair>
+	<pair id="92454.txt_5_1-52781.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>Absolutely ruins the notion of a leisurely trip</h>
+	</pair>
+	<pair id="92454.txt_5_1-52781.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>You should have more connections</t>
+		<h>ruins the notion of a leisurely trip</h>
+	</pair>
+</entailment-corpus>

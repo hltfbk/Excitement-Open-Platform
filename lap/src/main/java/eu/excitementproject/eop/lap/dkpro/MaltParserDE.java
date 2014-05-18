@@ -1,7 +1,5 @@
 package eu.excitementproject.eop.lap.dkpro;
 
-import java.util.Map;
-
 import eu.excitementproject.eop.lap.LAPException;
 
 /**
@@ -41,28 +39,27 @@ public class MaltParserDE extends MaltParserEN {
 	 *            moment!
 	 * @throws LAPException
 	 */
-	public MaltParserDE(Map<String, String> listAEDescriptorsArgs)
-			throws LAPException {
-		super(listAEDescriptorsArgs);
+	public MaltParserDE(String modelVariant) throws LAPException {
+		super(modelVariant);
 		languageIdentifier = "DE";
 	}
 
-	/**
-	 * constructor with parameter for the classifier and view names.
-	 * 
-	 * @param listAEDescriptorsArgs
-	 *            the parameter for the underlying AEs. This pipeline only has
-	 *            one argument PARSER_MODEL_VARIANT. Null means all default
-	 *            variable (default model) Note that passing unknown model will
-	 *            raise EXCEPTION from the UIMA AE. Note that there is no other
-	 *            models than the default one available for German for the
-	 *            moment!
-	 * @param views
-	 * @throws LAPException
-	 */
-	public MaltParserDE(String[] views,
-			Map<String, String> listAEDescriptorsArgs) throws LAPException {
-		super(views, listAEDescriptorsArgs);
-		languageIdentifier = "DE";
-	}
+//	/**
+//	 * constructor with parameter for the classifier and view names.
+//	 * 
+//	 * @param listAEDescriptorsArgs
+//	 *            the parameter for the underlying AEs. This pipeline only has
+//	 *            one argument PARSER_MODEL_VARIANT. Null means all default
+//	 *            variable (default model) Note that passing unknown model will
+//	 *            raise EXCEPTION from the UIMA AE. Note that there is no other
+//	 *            models than the default one available for German for the
+//	 *            moment!
+//	 * @param views
+//	 * @throws LAPException
+//	 */
+//	public MaltParserDE(String[] views,
+//			Map<String, String> listAEDescriptorsArgs) throws LAPException {
+//		super(views, listAEDescriptorsArgs);
+//		languageIdentifier = "DE";
+//	}
 }

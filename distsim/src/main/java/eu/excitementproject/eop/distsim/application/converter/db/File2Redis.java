@@ -1,10 +1,11 @@
 package eu.excitementproject.eop.distsim.application.converter.db;
 
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 
 import eu.excitementproject.eop.distsim.storage.Redis;
-import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
 
 /**
  * @author Meni Adler

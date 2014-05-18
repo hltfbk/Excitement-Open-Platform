@@ -1,10 +1,10 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.util.ArrayList;
+
 import java.util.LinkedHashMap;
 
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.scoring.ElementFeatureScores;
 import eu.excitementproject.eop.distsim.scoring.ElementScore;
 import eu.excitementproject.eop.distsim.scoring.FeatureScore;
@@ -14,6 +14,7 @@ import eu.excitementproject.eop.distsim.storage.iterators.ElementFeatureScoresIt
 import eu.excitementproject.eop.distsim.storage.iterators.ElementScoreIterator;
 import eu.excitementproject.eop.distsim.storage.iterators.FeatureScoreIterator;
 import eu.excitementproject.eop.distsim.storage.iterators.FilterFeatureScoreIterator;
+import eu.excitementproject.eop.distsim.domains.FilterType;
 
 /**
  * A general implementation of the ElementFeatureScoreStorage interface

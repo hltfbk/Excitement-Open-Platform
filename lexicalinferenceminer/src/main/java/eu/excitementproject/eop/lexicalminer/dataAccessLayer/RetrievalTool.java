@@ -216,6 +216,9 @@ public class RetrievalTool {
 				String fullPattern  = rs.getString("fullPattern");
 				Double classifierRank = rs.getDouble("classifierRank");				
 				
+				//tmp
+				//System.out.println("classifierRank = " + classifierRank);
+				
 				res.add(new RuleData(leftTerm, rightTerm, POSPattern, wordsPattern, relationsPattern, POSrelationsPattern, fullPattern, defultRank, 
 										classifierRank, ruleId, ruleResource, ruleType, ruleMetadata, ruleSourceId));
 	      }

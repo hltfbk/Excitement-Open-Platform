@@ -1,0 +1,3819 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="0086.txt_1_1-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_11" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_9" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_11-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_11-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_11" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0319.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_11-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_3-0114.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_8" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_9" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_8" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_3-0319.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_10-0038.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0114.txt_1_0-0319.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0038.txt_1_1-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_10-0173.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0038.txt_1_1-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0320.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_10" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0319.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0038.txt_1_0-0173.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_2-0114.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0320.txt_1_2-0319.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_10-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_10-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_10-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0086.txt_1_0-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_11" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_1-0114.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0320.txt_1_1-0319.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0320.txt_1_0-0319.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0320.txt_1_0-0114.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0320.txt_1_0-0319.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_8-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_8-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_8-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_9-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_9-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_9-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_6-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_6-0173.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_6-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_6-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_6-0038.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_7-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_7-0173.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_7-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_7-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_7-0038.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_4-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_4-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_4-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_5-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_5-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_5-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_2-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_2-0173.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_2-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_2-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_2-0038.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_3-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_3-0173.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_3-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_3-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_3-0038.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0055.txt_1_0-0114.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0055.txt_1_0-0319.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0038.txt_1_0-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_11" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_0-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_0-0173.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_0-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_0-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_0-0038.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_1-0038.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_1-0086.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_1-0173.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0038.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0038.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0038.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0038.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0038.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0038.txt_1_0-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0038.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0038.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0038.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0038.txt_1_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione TUO 444 non funziona più</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0038.txt_1_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0038.txt_1_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0038.txt_1_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0038.txt_1_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0038.txt_1_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0038.txt_1_1-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0038.txt_1_1-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0038.txt_1_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0038.txt_1_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0038.txt_1_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0038.txt_1_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'aplicazione non funziona più</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0055.txt_1_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0055.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0055.txt_1_0-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0055.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0055.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0055.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0055.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0055.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0055.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0055.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0055.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0055.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0055.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non riesco a chiamare il 444</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0086.txt_1_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0086.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0086.txt_1_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0086.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0086.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0086.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0086.txt_1_0-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0086.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0086.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0086.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0086.txt_1_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0086.txt_1_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0086.txt_1_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0086.txt_1_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0086.txt_1_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0086.txt_1_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0086.txt_1_1-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0086.txt_1_1-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0086.txt_1_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0086.txt_1_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0086.txt_1_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0086.txt_1_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>APP , non mi funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_0-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_1-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_1-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . per PC . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_10-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_10-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_10-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_10-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_10-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_10-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_10-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_10-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_10-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_10-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_10-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_10-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_10-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_10-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_10-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_10-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_10-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_11-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_11-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_11-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_11-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_11-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_11-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_11-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_11-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_11-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_11-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_11-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_11-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_11-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_11-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_11-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_11-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_11-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_11-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_11-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_2-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_2-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_2-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_2-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_2-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_2-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_2-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_2-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_2-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_2-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_2-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_2-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_2-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_2-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_2-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_2-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_2-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 per PC . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_3-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_3-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_3-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_3-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_3-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_3-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_3-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_3-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_3-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_3-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_3-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_3-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_3-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_3-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_3-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_3-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_3-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . TUO 444 . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_4-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_4-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_4-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_4-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_4-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_4-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_4-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_4-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_4-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_4-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_4-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_4-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_4-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_4-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_4-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_4-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_4-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_4-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_4-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . per PC . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_5-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_5-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_5-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_5-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_5-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_5-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_5-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_5-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_5-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_5-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_5-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_5-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_5-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_5-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_5-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_5-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_5-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_5-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_5-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da molti giorni l'app . . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_6-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_6-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_6-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_6-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_6-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_6-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_6-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_6-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_6-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_6-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_6-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_6-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_6-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_6-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_6-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_6-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_6-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . TUO 444 per PC . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_7-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_7-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_7-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_7-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_7-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_7-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_7-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_7-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_7-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_7-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_7-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_7-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_7-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_7-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_7-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_7-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_7-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . TUO 444 . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_8-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_8-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_8-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_8-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_8-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_8-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_8-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_8-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_8-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_8-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_8-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_8-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_8-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_8-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_8-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_8-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_8-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_8-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_8-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'app . per PC . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_9-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0100.txt_1_9-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0100.txt_1_9-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0100.txt_1_9-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0100.txt_1_9-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0100.txt_1_9-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_9-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0100.txt_1_9-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0100.txt_1_9-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0100.txt_1_9-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_9-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_9-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_9-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0100.txt_1_9-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0100.txt_1_9-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0100.txt_1_9-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_9-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0100.txt_1_9-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0100.txt_1_9-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>da giorni l'app . . . non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0114.txt_1_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0114.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0114.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0114.txt_1_0-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0114.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0114.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0114.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0114.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0114.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0114.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0114.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0114.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0114.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0114.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0114.txt_1_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Non riesco ad usare TUO 444</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0173.txt_1_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0173.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0173.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0173.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0173.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0173.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0173.txt_1_0-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0173.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_1_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione TUO 444 ha un BUG</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0173.txt_1_1-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0173.txt_1_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0173.txt_1_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0173.txt_1_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0173.txt_1_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0173.txt_1_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_1_1-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0173.txt_1_1-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0173.txt_1_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_1_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_1_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_1_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>l'applicazione ha un BUG</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0173.txt_2_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0173.txt_2_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0173.txt_2_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0173.txt_2_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0173.txt_2_0-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0173.txt_2_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0173.txt_2_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0173.txt_2_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0173.txt_2_0-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0173.txt_2_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_2_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_2_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_2_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Da oltre un mese non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0173.txt_2_1-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0173.txt_2_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0173.txt_2_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0173.txt_2_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0173.txt_2_1-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0173.txt_2_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0173.txt_2_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0173.txt_2_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0173.txt_2_1-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0173.txt_2_1-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0173.txt_2_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_2_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0173.txt_2_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0173.txt_2_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non funziona</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0265.txt_1_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0265.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0265.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0265.txt_1_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0265.txt_1_0-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0265.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0265.txt_1_0-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0265.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0265.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0265.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0265.txt_1_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono nemmeno qui su fb</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0265.txt_1_1-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0265.txt_1_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0265.txt_1_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0265.txt_1_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0265.txt_1_1-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0265.txt_1_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0265.txt_1_1-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0265.txt_1_1-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0265.txt_1_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0265.txt_1_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0265.txt_1_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0265.txt_1_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>A me non rispondono</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0273.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0273.txt_1_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_0-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0273.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0273.txt_1_0-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0273.txt_1_0-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0273.txt_1_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici TELEFONIAX vanno a rilento</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_1-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0273.txt_1_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0273.txt_1_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_1-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0273.txt_1_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0273.txt_1_1-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0273.txt_1_1-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0273.txt_1_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi telematici vanno a rilento</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_2-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_2-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0273.txt_1_2-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0273.txt_1_2-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_2-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_2-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0273.txt_1_2-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0273.txt_1_2-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0273.txt_1_2-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0273.txt_1_2-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_2-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_2-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_2-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi TELEFONIAX vanno a rilento</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_3-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0273.txt_1_3-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0273.txt_1_3-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0273.txt_1_3-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_3-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0273.txt_1_3-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0273.txt_1_3-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0273.txt_1_3-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+	<pair id="0273.txt_1_3-0319.txt_7_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>a me TUO 444 dà problemi</h>
+	</pair>
+	<pair id="0273.txt_1_3-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_3-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0273.txt_1_3-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0273.txt_1_3-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i sistemi vanno a rilento</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0319.txt_7_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0319.txt_7_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0319.txt_7_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0319.txt_7_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0319.txt_7_0-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0319.txt_7_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0319.txt_7_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0319.txt_7_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_0-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0319.txt_7_0-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0319.txt_7_0-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0319.txt_7_0-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà un sacco di problemi</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0319.txt_7_1-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0319.txt_7_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0319.txt_7_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0114.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>Non riesco ad usare TUO 444</h>
+	</pair>
+	<pair id="0319.txt_7_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0319.txt_7_1-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0319.txt_7_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0319.txt_7_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0319.txt_7_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0319.txt_7_1-0320.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>a me TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0319.txt_7_1-0320.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>a me TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0319.txt_7_1-0320.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>TUO 444 bon funziona da giorni</h>
+	</pair>
+	<pair id="0319.txt_7_1-0320.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 dà problemi</t>
+		<h>TUO 444 bon funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_0-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_0-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0320.txt_1_0-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_0-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_0-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_0-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0320.txt_1_0-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0320.txt_1_0-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_0-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_0-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_0-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona da giorni</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_1-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_1-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_1-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0320.txt_1_1-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_1-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_1-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_1-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0320.txt_1_1-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0320.txt_1_1-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_1-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_1-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_1-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a me TUO 444 bon funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_2-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_2-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_2-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0320.txt_1_2-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_2-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_2-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_2-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0320.txt_1_2-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0320.txt_1_2-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_2-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_2-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_2-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona da giorni</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_3-0038.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'aplicazione TUO 444 non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_3-0038.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'aplicazione non funziona più</h>
+	</pair>
+	<pair id="0320.txt_1_3-0055.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>non riesco a chiamare il 444</h>
+	</pair>
+	<pair id="0320.txt_1_3-0086.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>APP della TELEFONIAX ACCESSOSEMPLICE , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0086.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>APP , non mi funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_10" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_11" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da giorni l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_4" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da giorni l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_5" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da molti giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_6" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'app . TUO 444 per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_7" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da giorni l'app . TUO 444 . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_8" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'app . per PC . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0100.txt_1_9" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>da giorni l'app . . . non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0173.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'applicazione TUO 444 ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_3-0173.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>l'applicazione ha un BUG</h>
+	</pair>
+	<pair id="0320.txt_1_3-0173.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>Da oltre un mese non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0173.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>non funziona</h>
+	</pair>
+	<pair id="0320.txt_1_3-0265.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>A me non rispondono nemmeno qui su fb</h>
+	</pair>
+	<pair id="0320.txt_1_3-0265.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>A me non rispondono</h>
+	</pair>
+	<pair id="0320.txt_1_3-0273.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>i sistemi telematici TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_3-0273.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>i sistemi telematici vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_3-0273.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>i sistemi TELEFONIAX vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_3-0273.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>i sistemi vanno a rilento</h>
+	</pair>
+	<pair id="0320.txt_1_3-0319.txt_7_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TUO 444 bon funziona</t>
+		<h>a me TUO 444 dà un sacco di problemi</h>
+	</pair>
+</entailment-corpus>
