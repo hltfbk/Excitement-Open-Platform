@@ -49,7 +49,7 @@ Some notes on Link type usage. (Indexing and setting begin - end)
           <rangeTypeName>uima.cas.Double</rangeTypeName>
         </featureDescription>
         <featureDescription>
-          <name>direction</name>
+          <name>directionString</name>
           <description>This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric".</description>
           <rangeTypeName>eu.excitement.type.alignment.Direction</rangeTypeName>
         </featureDescription>
@@ -106,8 +106,8 @@ Allowed values are: "TtoH", "HtoT", "Symmetric"</description>
           <description>The relation is from HSideTarget to TSideTarget</description>
         </value>
         <value>
-          <string>Symmetric</string>
-          <description>The relation is a symmetric one. (Both TSideTarget to HSideTarget and HSideTarget to TSideTarget.)</description>
+          <string>Bidirection</string>
+          <description>The relation is a bidirectional (symmetric) one. (Both TSideTarget to HSideTarget and HSideTarget to TSideTarget.)</description>
         </value>
       </allowedValues>
     </typeDescription>
