@@ -28,7 +28,7 @@ public class SQL2RedisConverter {
 		
 		if (args.length != 4) {
 			System.out.println("Usage: java eu.excitementproject.eop.lexicalminer.redis.SQL2RedisConverter" +
-					"<in sql dump fule> " +
+					"<in sql dump file> " +
 					"<out l2r redis file> " +
 					"<out r2l redis file> +" +
 					"<number of classifiers> ");

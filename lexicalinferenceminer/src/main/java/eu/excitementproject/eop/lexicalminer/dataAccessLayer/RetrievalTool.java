@@ -183,6 +183,17 @@ public class RetrievalTool {
 	private List<RuleData> getRulesForQuery(
 			String first_lemma, String second_lemma, String query, int classifierID) throws SQLException,
 			LexicalResourceException, UnsupportedPosTagStringException {
+		
+		// the terms were saved with lower case
+		if (first_lemma != null)
+			first_lemma = first_lemma.toLowerCase();
+		if (second_lemma != null)
+			second_lemma = second_lemma.toLowerCase();
+
+		
+		//tmp
+		System.out.println("first_lemma = " + first_lemma + ", second_lemma = " + second_lemma);
+		
 		List<RuleData> res = new ArrayList<RuleData>();
 		
 		Connection conn = getMySqlConnection();
