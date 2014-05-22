@@ -40,6 +40,7 @@ public class MinerExecuter {
 			return;
 		}
 		
+		System.out.println("Configuration read. Initializing the miner ...");
 		WikipediaLexicalInferencesMiner miner = new WikipediaLexicalInferencesMinerForItalian();
 		miner.MineWikipedia(conf);
 	}

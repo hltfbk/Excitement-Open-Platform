@@ -10,6 +10,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.geo.RedisBasedGeoLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.Direct200LexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.LinDependencyOriginalLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.similarity.LinDistsimLexicalResource;
@@ -18,6 +19,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbO
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
+import eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource;
 import eu.excitementproject.eop.transformations.operations.rules.ByLemmaPosLexicalRuleBase;
 import eu.excitementproject.eop.transformations.operations.rules.ByLemmaPosLexicalRuleBaseWrapper;
 import eu.excitementproject.eop.transformations.operations.rules.LexicalRule;
@@ -106,6 +108,20 @@ public class LexicalResourcesFactory
 					throw new LexicalResourceException(e.toString());
 				}
 				break;
+			case REDIS_WIKI:
+				try {
+					ret = new RedisBasedWikipediaLexicalResource(params);
+				} catch (Exception e) {
+					throw new LexicalResourceException(e.toString());
+				}
+				break;
+			case REDIS_GEO:
+				try {
+					ret = new RedisBasedGeoLexicalResource(params);
+				} catch (Exception e) {
+					throw new LexicalResourceException(e.toString());
+				}
+				break;								
 			default:
 				ret = null; // leave ret as null
 				break;

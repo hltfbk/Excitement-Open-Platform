@@ -5,6 +5,7 @@ package eu.excitementproject.eop.distsim.storage;
 
 import java.io.Serializable;
 
+
 import org.apache.log4j.Logger;
 
 import redis.clients.jedis.Jedis;
@@ -13,13 +14,13 @@ import redis.clients.jedis.JedisPoolConfig;
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
-import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
-import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.iterators.RedisBasedIterator;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.Serialization;
 import eu.excitementproject.eop.distsim.util.SerializationException;
+import eu.excitementproject.eop.redis.BasicRedisRunner;
+import eu.excitementproject.eop.redis.RedisRunException;
 
 /**
  * An implementation of the BasicMap interface for integer keys, based on Redis

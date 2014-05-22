@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.biutee.script;
 
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.TRANSFORMATIONS_MODULE_NAME;
+
 import static eu.excitementproject.eop.biutee.utilities.ConfigurationParametersNames.KNOWLEDGE_RESOURCES_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_DYNAMIC_PARAMETER_NAME;
 import static eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames.MANUAL_FILE_RULEBASE_FILE_PARAMETER_NAME;
@@ -39,8 +40,8 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.core.component.syntacticknowledge.SimilarityStorageBasedDIRTSyntacticResource;
 import eu.excitementproject.eop.core.component.syntacticknowledge.utilities.PARSER;
-import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
+import eu.excitementproject.eop.redis.RedisRunException;
 import eu.excitementproject.eop.transformations.builtin_knowledge.ConstructorOfLexicalResourcesForChain;
 import eu.excitementproject.eop.transformations.builtin_knowledge.KnowledgeResource;
 import eu.excitementproject.eop.transformations.builtin_knowledge.LexicalResourcesFactory;

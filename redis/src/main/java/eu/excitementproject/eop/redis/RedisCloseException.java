@@ -1,7 +1,7 @@
 /**
  * 
  */
-package eu.excitementproject.eop.distsim.redis;
+package eu.excitementproject.eop.redis;
 
 /**
  * @author Meni Adler

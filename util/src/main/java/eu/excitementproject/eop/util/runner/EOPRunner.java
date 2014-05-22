@@ -19,6 +19,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.nio.charset.StandardCharsets;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -241,6 +243,21 @@ public class EOPRunner {
 			
 			logger.info("Results file -- txt format: " + resultsFile);			
 			
+			File outputDir = new File(outDir);
+			
+			logger.info("Copying configuration file in output directory " + outDir);
+			FileUtils.copyFileToDirectory(configFile, outputDir);
+
+			// careful with the copying! The model file may have a relative path which must be first resolved!
+
+			logger.info("Copying model in output directory " + outDir);
+			String modelFile = ConfigFileUtils.getAttribute(configFile, "modelFile");
+			if (modelFile != null && !modelFile.isEmpty()) {
+				FileUtils.copyFileToDirectory(new File(modelFile), outputDir);
+			} else {
+				logger.info("No model file found");
+			}
+			
 		} catch (Exception e) {
 			logger.error("Error testing the EOP");
 			e.printStackTrace();
@@ -328,7 +345,8 @@ public class EOPRunner {
 			if (option.lap != null) 
 				lapRunner = new LAPRunner(option.lap);
 
-			if ((lapRunner == null) && (option.test || option.train))
+//			if ((lapRunner == null) && (option.test || option.train))
+			if (lapRunner == null && option.config != null)
 				lapRunner = new LAPRunner(configFile);
 			
 			if (option.trainFile != null) {
@@ -355,7 +373,9 @@ public class EOPRunner {
 			
 			if (option.test) {
 				
-				eda.initialize(config);
+//				if (! option.train)
+					eda.initialize(config);
+				
 				testDir = getOptionValue(option.testDir, "testDir");
 				
 				if (! option.text.isEmpty()) {

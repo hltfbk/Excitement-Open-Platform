@@ -1,6 +1,5 @@
-package eu.excitementproject.eop.distsim.application;
+package eu.excitementproject.eop.redis;
 
-import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
 
 /**
  * Runs a Redis similarity resources on local host, given Redis file and port
@@ -11,11 +10,12 @@ import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
  * @since Feb 11, 2014
  *
  */
-public class RunRedisResources {
+public class RunRedisResource {
 	public static void main(String[] args) throws Exception {
 		
 		if (args.length != 2) {
-			System.out.println("Usage: java eu.excitementproject.eop.distsim.application.RunRedisResources <redis file name> <port>");
+			System.out.println("Usage: java eu.excitementproject.eop.redis.RunRedisResource <redis file name> <port>");
+			System.exit(0);
 		}
 		String redisFile = args[0];
 		int port = Integer.parseInt(args[1].trim());

@@ -3,7 +3,11 @@
  */
 package eu.excitementproject.eop.distsim.storage;
 
+
 import java.io.FileNotFoundException;
+
+
+
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,11 +20,13 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationPara
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.Element;
-import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.scoring.similarity.ElementSimilarityScoring;
+import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.SortUtil;
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
+import eu.excitementproject.eop.redis.RedisRunException;
 
 /**
  * A general implementation of the {@link SimilarityStorage} interface, based on a given left and right similarity storages, and an element storage

@@ -8,3 +8,4 @@ java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.similarit
 java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.similarity.GeneralElementSimilarityCalculator $1/element-similarity-calculation-y.xml 
 java -cp distsim.jar -Xmx64G eu.excitementproject.eop.distsim.builders.similarity.GeneralElementSimilarityCombiner $1/element-similarity-combination-left-xy.xml 
 java -cp distsim.jar -Xmx32G eu.excitementproject.eop.distsim.storage.SimilarityFile2Redis $1/elements-similarities-left-to-redis.xml
+

@@ -3,6 +3,7 @@ package eu.excitementproject.eop.distsim.resource;
 import java.util.List;
 
 
+
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
@@ -10,11 +11,11 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFileDuplicateKeyException;
+import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
-import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
-import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
 
 /**
  * A program which demonstrates how to access a given distributional similarity model via Lexical interface, 
