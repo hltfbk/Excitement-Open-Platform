@@ -63,25 +63,23 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 	private RetrievalTool m_retrivalTool;
 
 	public static void main(String[] args) throws Exception{
+		
+		String term = "";
+		for (int i = 1; i < args.length; i++)
+			term += (" " + args[i]);
+		term = term.trim();
+
 		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 		WikipediaLexicalResource wlr = new WikipediaLexicalResource(confFile.getModuleConfiguration("WikiV3"));
-		List<LexicalRule<? extends BaseRuleInfo>> l1 = wlr.getRulesForLeft("anarchism", null);
-		List<LexicalRule<? extends BaseRuleInfo>> l2 = wlr.getRulesForRight("anarchism", null);
-		List<LexicalRule<? extends BaseRuleInfo>> l3 = wlr.getRulesForLeft("philosophy", null);
-		List<LexicalRule<? extends BaseRuleInfo>> l4 = wlr.getRulesForRight("philosophy", null);
+		List<LexicalRule<? extends BaseRuleInfo>> l1 = wlr.getRulesForLeft(term, null);
+		List<LexicalRule<? extends BaseRuleInfo>> l2 = wlr.getRulesForRight(term, null);
 		
-		System.out.println("\nanarchism --> :");
+		System.out.println("\n" + term + " --> :");
 		for (LexicalRule<? extends BaseRuleInfo> rule : l1)
 			System.out.println("\t" + rule.getRLemma() + ", " + rule.getConfidence());
-		System.out.println("\n--> anarchism:");
+		System.out.println("\n--> " + term + ":");
 		for (LexicalRule<? extends BaseRuleInfo> rule : l2)
 			System.out.println("\t" + rule.getLLemma() + ", " + rule.getConfidence());
-		System.out.println("\nphilosophy --> : ");
-		for (LexicalRule<? extends BaseRuleInfo> rule : l3) 
-			System.out.println("\t" + rule.getRLemma() + ", " + rule.getConfidence());	
-		System.out.println("\n--> philosophy: ");
-		for (LexicalRule<? extends BaseRuleInfo> rule : l4) 
-			System.out.println("\t" + rule.getLLemma() + ", " + rule.getConfidence());	
 	}
  
 	public WikipediaLexicalResource(ConfigurationParams params) throws ConfigurationException, LexicalResourceException {
