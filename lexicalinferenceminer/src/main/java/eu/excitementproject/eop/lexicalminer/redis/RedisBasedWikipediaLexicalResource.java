@@ -73,15 +73,20 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 		
 		ConfigurationFile confFile = new ConfigurationFile(new ImplCommonConfig(new File(args[0])));
 		RedisBasedWikipediaLexicalResource wlr = new RedisBasedWikipediaLexicalResource(confFile.getModuleConfiguration("WikiV3"));
-		String word = args[1];
-		List<LexicalRule<? extends WikiRuleInfo>> l1 = wlr.getRulesForLeft(word, null);
-		List<LexicalRule<? extends WikiRuleInfo>> l2 = wlr.getRulesForRight(word, null);
+		
+		String term = "";
+		for (int i = 1; i < args.length; i++)
+			term += (" " + args[i]);
+		term = term.trim();
+
+		List<LexicalRule<? extends WikiRuleInfo>> l1 = wlr.getRulesForLeft(term, null);
+		List<LexicalRule<? extends WikiRuleInfo>> l2 = wlr.getRulesForRight(term, null);
 
 
-		System.out.println("\n" + word + "--> :");
+		System.out.println("\n" + term + "--> :");
 		for (LexicalRule<? extends WikiRuleInfo> rule : l1)
 			System.out.println("\t" + rule.getRLemma() + ", " + rule.getConfidence());
-		System.out.println("\n--> " + word + ": ");
+		System.out.println("\n--> " + term + ": ");
 		for (LexicalRule<? extends WikiRuleInfo> rule : l2) 
 			System.out.println("\t" + rule.getLLemma() + ", " + rule.getConfidence());	
 	}
@@ -199,6 +204,11 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 	}
 	
 	public List<LexicalRule<? extends WikiRuleInfo>> getRules(String lemma, PartOfSpeech pos, boolean l2r) throws LexicalResourceException {	
+			
+			// the terms were saved with lower case
+			if (lemma != null)
+				lemma = lemma.toLowerCase();
+		
 			//If it's not a noun, we ignore it...
 			if ((pos !=null) && (!(pos.getCanonicalPosTag().equals(CanonicalPosTag.N))))
 			{
@@ -223,7 +233,13 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 			PartOfSpeech leftPos, String rightLemma, PartOfSpeech rightPos)
 			throws LexicalResourceException {
 
-		//If it's not a noun, we ignore it...
+		// the terms were saved with lower case
+		if (leftLemma != null)
+			leftLemma = leftLemma.toLowerCase();
+		if (rightLemma != null)
+			rightLemma = rightLemma.toLowerCase();
+		
+		//If it's not a noun, we ignore it...1
 		if ((leftPos !=null) && (!(leftPos.getCanonicalPosTag().equals(CanonicalPosTag.N))))
 		{
 			return new LinkedList<LexicalRule<? extends WikiRuleInfo>>();
