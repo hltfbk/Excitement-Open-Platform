@@ -2,28 +2,15 @@ package eu.excitementproject.eop.core;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.logging.Logger;
 
-import opennlp.model.GenericModelReader;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.TOP;
-import org.eclipse.jdt.core.dom.ThisExpression;
-import org.maltparser.core.helper.HashSet;
 import org.uimafit.util.JCasUtil;
 
 import weka.classifiers.Classifier;
@@ -33,15 +20,12 @@ import weka.core.FastVector;
 import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.SparseInstance;
-import weka.core.converters.ArffSaver;
-import weka.core.converters.ConverterUtils.DataSource;
 
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
-import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
@@ -110,10 +94,35 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 	private Classifier classifier;
 	
 	/**
-	 * when true: in training, false: just testing (default)
+	 * when true: in training
 	 */
 	private boolean isTrain = false; 
 	
+	/**
+	 * when true: in testing
+	 */
+	private boolean isTest = false; 
+	//both isTest and isTrain needed, as initialization can take place before testing or training is defined
+	
+	public String getModelFile() {
+		return modelFile;
+	}
+
+
+	public void setModelFile(String modelFile) {
+		this.modelFile = modelFile;
+	}
+
+
+	public boolean isTest() {
+		return isTest;
+	}
+
+
+	public void setTest(boolean isTest) {
+		this.isTest = isTest;
+	}
+
 	/**
 	 * when true: overwrites existing models while training, false: appends "_old" to existing model file
 	 */
@@ -128,6 +137,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		this.edas = edas;
 		logger.info("new MetaEDA with "+edas.size()+" internal EDABasics");
 	}
+
 
 	@Override
 	public void initialize(CommonConfig config) throws ConfigurationException,
@@ -174,10 +184,10 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		if (EDA.getString("confidenceAsFeature") != null){ //default is false
 			this.confidenceAsFeature = Boolean.parseBoolean(EDA.getString("confidenceAsFeature"));
 			if (this.confidenceAsFeature){
-				logger.info("mode 1: use confidence scores as features");
+				logger.info("mode 2: use confidence scores as features");
 			}
 			else {
-				logger.info("mode 2: majority vote");
+				logger.info("mode 1: majority vote");
 			}
 		}
 		else {
@@ -204,9 +214,6 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		
 		if (EDA.getString("overwrite") != null){ //default is false
 			this.overwrite = Boolean.parseBoolean(EDA.getString("overwrite"));
-			if (this.isTrain){
-				logger.info("If model already exists, overwrite.");
-			}
 		}
 		else {
 			if (this.isTrain){
@@ -259,7 +266,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 					e.printStackTrace();
 				}
 			}
-			else {
+			else if (!this.isTest){
 				throw new ConfigurationException("The model specified in the configuration does NOT exist! Please give the correct file path.");
 			}
 		}
@@ -298,8 +305,9 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 	}
 
 	@Override
-	public void startTraining(CommonConfig c) throws EDAException {
+	public void startTraining(CommonConfig c) throws EDAException, LAPException {
 		this.isTrain = true; //set train flag
+		this.isTest = false;
 		try {
 			this.initialize(c);
 		} catch (ConfigurationException | EDAException | ComponentException e) {
@@ -315,22 +323,21 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 			
 			ArrayList<String> goldAnswers = new ArrayList<String>(); //stores gold answers
 			
-			//files in training directory
-			Collection<File> xmis = FileUtils.listFiles(new File(this.trainDir), new String[] {"xmi"}, false);
+//			//files in training directory
+			File [] xmis = new File(this.trainDir).listFiles();
 			
 			//create attributes: for each EDABasic instance use their name and index as attribute name
 			FastVector attrs = getAttributes();
 			
 			//build up the dataset from training data
-			Instances instances = new Instances("EOP", attrs, xmis.size());  
+			Instances instances = new Instances("EOP", attrs, xmis.length);  
 			
-			for (File xmi : xmis){
-				JCas jcas = null;
-				try {
-					jcas = PlatformCASProber.probeXmi(xmi, null);
-				} catch (LAPException e) {
-					e.printStackTrace();
-				}
+			for (File xmi : xmis) {
+			    if (!xmi.getName().endsWith(".xmi")) {
+			      continue;
+			    }
+			    // The annotated pair is added into the CAS.
+			    JCas jcas = PlatformCASProber.probeXmi(xmi, null);
 				Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
 				String goldAnswer = pair.getGoldAnswer(); //get gold annotation
 				
@@ -468,6 +475,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		this.testDir = "";
 		this.classifier = null;
 		this.isTrain = false;
+		this.isTest = false;
 		this.overwrite = false;
 	}
 

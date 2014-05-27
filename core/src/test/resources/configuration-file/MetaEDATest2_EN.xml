@@ -22,7 +22,7 @@
         <!-- The EDA to be used: MaxEntClassificationEDA -->
         <property name="activatedEDA">eu.excitementproject.eop.core.MetaEDA</property>
         <!-- The language: DE for German -->
-		<property name="language">DE</property>
+		<property name="language">EN</property>
 	</section>
 
     <!-- MetaEDA uses a weka classifier to train an entailment classifier.
@@ -30,15 +30,15 @@
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MetaEDA">
 		<!-- Whether to use the basic EDAs' confidence scores as features for training or not -->
-		<property name="confidenceAsFeature">false</property>
+		<property name="confidenceAsFeature">true</property>
 		<!-- Whether to overwrite existing model files with the same name while training or not -->
 		<property name="overwrite">false</property>
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-        <property name="modelFile">./target/MEDAModelTest1_DE.model</property> <!-- new resource -->
+        <property name="modelFile">./src/test/resources/results/MEDAModelTest2_EN.model</property> <!-- new resource -->
 		<!-- Please update the location for storing temporary files for training -->
-		<property name="trainDir">./target/DE/dev/</property>
+		<property name="trainDir">./target/EN/dev/</property>
         <!-- Please update the location for storing temporary files for testing -->
-		<property name="testDir">./target/DE/test/</property>
+		<property name="testDir">./target/EN/test/</property>
 	</section>
 
 </configuration>
