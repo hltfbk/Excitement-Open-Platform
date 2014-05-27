@@ -150,7 +150,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		}
 		else {
 			// mode 2:
-			// load and initialize pre-trained model	
+			// load and initialize pre-trained model
 			initializeModel(config);
 		}
 
@@ -229,7 +229,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		File file = new File(modelFile);
 		
 		if (file.exists()){
-			if (this.isTrain){
+			if (this.isTrain && !this.isTest){
 				if (this.overwrite){
 					logger.info("The existing model will be overwritten.");
 				}
@@ -242,7 +242,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 					file.renameTo(oldFile);
 				}
 			}
-			else{
+			else if (this.isTest){
 				logger.info("Reading model from "+file.getAbsolutePath());
 				 //deserialize model to classifier 
 				ObjectInputStream ois;
@@ -258,7 +258,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 			}
 		}
 		else {
-			if (this.isTrain){
+			if (this.isTrain && !this.isTest){
 				logger.info("The trained model will be stored in "+ file.getAbsolutePath());
 				try {
 					file.createNewFile();
@@ -266,7 +266,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 					e.printStackTrace();
 				}
 			}
-			else if (!this.isTest){
+			else if (this.isTest){
 				throw new ConfigurationException("The model specified in the configuration does NOT exist! Please give the correct file path.");
 			}
 		}
@@ -288,7 +288,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		}
 		this.trainDir = EDA.getString("trainDir");
 		if (null == trainDir) {
-			if (this.isTrain) {
+			if (this.isTrain && !this.isTest) {
 				throw new ConfigurationException("Please specify the training data directory.");
 			} else {
 				logger.warning("Warning: Please specify the training data directory.");
@@ -296,10 +296,10 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 		}
 		this.testDir = EDA.getString("testDir");
 		if (null == testDir) {
-			if (this.isTrain) {
-				logger.warning("Warning: Please specify the testing data directory.");
-			} else {
+			if (this.isTest && !this.isTrain) {
 				throw new ConfigurationException("Please specify the testing data directory.");
+			} else {
+				logger.warning("Warning: Please specify the testing data directory.");
 			}
 		}
 	}

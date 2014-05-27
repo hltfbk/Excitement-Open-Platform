@@ -632,7 +632,7 @@ public class MetaEDATest {
 				this.preprocessedDE = true;
 			}
 		}
-		else if (!this.preprocessedEN){
+		if (!this.preprocessedEN){
 			if (meda.getLanguage().equals("EN")){
 				logger.info("preprocessing English training and test data.");
 				LAPAccess tLap = null;
