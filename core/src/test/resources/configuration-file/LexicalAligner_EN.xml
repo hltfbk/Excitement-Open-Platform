@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+        <section name="LexicalResources">
+        
+        	<!-- WordNet -->
+			<property name="eu.excitementproject.eop.core.component.lexicalknowledge.wordnet"/>
+			
+			<!-- Redis BAP -->
+			<property name="eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource"/>
+        </section>
+        
+        <!-- WordNet configuration parameters -->
+        <section name="eu.excitementproject.eop.core.component.lexicalknowledge.wordnet">
+			<property name = "wordnet-dir">src/test/resources/data/WordNet/3.0/dict.wn.orig</property>
+			<property name = "useFirstSenseOnlyLeft">true</property>
+			<property name = "useFirstSenseOnlyRight">true</property>
+			<property name = "entailing-relations">SYNONYM,DERIVATIONALLY_RELATED,HYPERNYM,INSTANCE_HYPERNYM,MEMBER_HOLONYM,PART_HOLONYM,ENTAILMENT,SUBSTANCE_MERONYM</property>
+			<property name = "wordnet-depth">2</property>
+		</section>
+		
+		<!-- Redis BAP configuration parameters -->
+		<section name = "eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource">
+			<property name="resource-name">distsim-bap</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">$REDISDATA/reuters/bap/similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">$REDISDATA/reuters/bap/similarity-r2l.rdb</property>
+		</section>
+        
+</configuration>
