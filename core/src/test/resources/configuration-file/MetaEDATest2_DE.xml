@@ -4,15 +4,14 @@
 
 <!-- 
  Description: Given a certain configuration, the EDA - named MetaEDA -
- can be trained over a specific data set in order to ...
+ can be trained over a specific data set in order to combine the entailment decisions of
+ a set of internal EDABasics.
+ MetaEDA either trains a classifier on the internal EDAs' decisions or goes with the majority's decision.
  
  The common structure of a configuration file for MetaEDA is as follows 
- - It begins with a specification of platform specific settings in the section "PlatformConfiguration" for
-    selecting the EDA, the language and eventually the LPA (Linguistic Pipeline Analysis).
- - Finally, the parameters for the learning and application phases of the activated EDA have to be specified, that is
-	the model file, locations of training and test data, and the list of EDABasics to initialize.
-	Note, that the name of the EDA in the "activatedEDA" property of the "PlatformConfiguration" and the name
-	of this last section must be equal.
+ - It begins with a specification of platform specific settings in the section "PlatformConfiguration" for selecting the EDA and the language.
+ - Finally, the parameters for the learning and application phases of the activated EDA have to be specified, that is the model file, locations of training and test data, the decision mode and the overwrite mode.
+	Note, that the name of the EDA in the "activatedEDA" property of the "PlatformConfiguration" and the name of this last section must be equal.
 -->
 
 <configuration>
