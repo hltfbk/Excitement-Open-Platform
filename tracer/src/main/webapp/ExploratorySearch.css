@@ -1,0 +1,38 @@
+/** Add css rules here for your application. */
+
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+.categories {
+  padding-top: 40px;
+  padding-bottom: 0px;
+}
+
+.instances {
+  padding-top: 80px;
+  padding-bottom: 0px;
+}
+
+
+/*.gwt-Tree .gwt-TreeItem-selected  { 
+        background: blue; 
+		color:white;
+} */
+
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
