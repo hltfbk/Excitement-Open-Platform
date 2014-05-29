@@ -4,8 +4,6 @@
   <inherits name="com.google.gwt.user.User"/>
   <inherits name='com.google.gwt.user.UserAgent' />
   
-  <!-- <inherits name='ac.biu.nlp.nlp.src'/> -->
-  
   <!-- Inherit the default GWT style sheet.  You can change       -->
   <!-- the theme of your GWT application by uncommenting          -->
   <!-- any one of the following lines.                            -->
@@ -22,8 +20,7 @@
   <!-- Specify the paths for translatable code                    -->
   <source path='eu/excitementproject/eop/tracer/client'/> 
   <source path='eu/excitementproject/eop/tracer/shared'/>
-  <!-- <source path='D:/git/exci/common/src/main/java/eu/excitementproject/eop/common/utilities/uima'/>-->
-  
+    
    <!-- Compile only for modern browsers. Remove at production.   -->
    <set-property name="user.agent" value="safari"/>
    <set-property name="locale" value="default" />

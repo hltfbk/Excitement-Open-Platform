@@ -1,8 +1,7 @@
 package eu.excitementproject.eop.tracer.client;
 
-//import org.apache.uima.jcas.JCas;
-
 import com.google.gwt.core.client.EntryPoint;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -25,7 +24,7 @@ public class Tracer implements EntryPoint  {
 	 * This is the entry point method.
 	 */ 
 	public void onModuleLoad() {
-		
+
 		//JCas jcas;
 		
 		mainPanel.add(label);

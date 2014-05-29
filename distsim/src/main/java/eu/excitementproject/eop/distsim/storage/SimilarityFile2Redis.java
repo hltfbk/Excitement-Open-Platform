@@ -20,6 +20,7 @@ import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Factory;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.distsim.util.SerializationException;
+import eu.excitementproject.eop.redis.BasicRedisRunner;
 import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;;
 
@@ -71,9 +72,13 @@ public class SimilarityFile2Redis {
 			//}
 			file.open();
 			
+			//tmp
+			BasicRedisRunner.setRedisBinDir("d:\\tmp");
+			
 			redis = new Redis(confParams.getString(Configuration.REDIS_FILE));
 			redis.open();
 			redis.clear();			
+						
 			Pair<Integer,Serializable> pair = null;
 			while (true) {
 				try {
