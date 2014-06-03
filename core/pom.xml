@@ -110,7 +110,16 @@
 			<groupId>nz.ac.waikato.cms.weka</groupId>
 			<artifactId>weka-stable</artifactId>
 			<version>3.6.9</version>
-
+		</dependency>
+		<dependency>
+			<groupId>edu.cmu.parex</groupId>
+			<artifactId>meteor-paraphrase-en</artifactId>
+			<version>1.5</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.cmu.parex</groupId>
+			<artifactId>meteor-paraphrase-de</artifactId>
+			<version>1.5</version>
 		</dependency>
 
 		<!-- German Redis-based lexical Resources. 
