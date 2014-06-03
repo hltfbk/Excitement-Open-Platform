@@ -79,8 +79,8 @@
              to build an enailment relationship. 
              Thus, a low value for the property "derivationSteps" only considers lemmas which are highly probably related.   
              NOTE: This property is only considered if the property "useScores" = true.
-             DEFAULT: 10. -->    
-	<property name="derivationSteps">10</property>
+             DEFAULT: 20. -->    
+	<property name="derivationSteps">20</property>
 	</section>
     
     <!-- Specifies a German lexical resource based on cross- and multilingual corpus term distribution.

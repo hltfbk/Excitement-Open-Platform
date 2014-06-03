@@ -33,78 +33,42 @@
 
 <configuration>
 
-	<!-- Platform configuration section -->
+    <!-- Platform configuration section -->
     <section name="PlatformConfiguration">
         <!-- The EDA to be used: MaxEntClassificationEDA -->
         <property name="activatedEDA">eu.excitementproject.eop.core.MaxEntClassificationEDA</property>
-        <!-- The language: DE for German -->
-		<property name="language">DE</property>
+        <!-- The language: EN for English -->
+        <property name="language">EN</property>
         <!-- The linguistic annotation pipeline to preprocess the data to be annotated:
-         here, the MaltParser dependency parser for DE is selected. -->
-        <property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserDE</property>
-	</section>
-	
-	<!-- Base processing component for computing a bag of words representation -->
-	<section name="BagOfWordsScoring">
-	</section>
-	
-	<!-- Base processing component for computing a bag of lemmas representation -->
-	<section name="BagOfLemmasScoring">
-	</section>
-	
-    <!-- Processing component for computing a bag of lexeme representation using lexical
-     knowledge sources that are referenced with help of the name attribute and which have to be specified
-     by their own sections. -->
-	<section name="BagOfLexesScoring">
-        <!-- true ::= Use part-of-speech tagging, false ::= do not use part-of-speech tagging -->
-		<property name="withPOS">true</property>
-		<property name="GermanDistSim"></property>
-		<property name="GermaNetWrapper">Causes,Entails,Has_Hypernym,Has_Synonym</property>
-	</section>
-	
-    <!-- Specifies a German lexical resource based on corpus term distribution.
-     It uses the distance vectors that is gathered from DeWac, on 10k most frequent
-     German words observed in the corpus.
-     For details about the corpus: http://wacky.sslmit.unibo.it/doku.php?id=corpora -->
-	<section name="GermanDistSim">
-	</section>
-	
-    <!-- A wrapper for being able to GermaNet - a WordNet-like lexical semantics resource for German. -->
-	<section name="GermaNetWrapper">
-        <!-- GermaNetWrapper options: path to GermanNet top dir, and relations to be used for LHS->RHS, as a value of confidence [0.0 - 1.0] -->
-		<property name="germaNetFilesPath">/home/julia/Dokumente/HiWi/germanet/germanet-8.0/GN_V80_XML/</property> <!-- you need to update this for your own GermaNet path. If not found, GermaNet init will raise an exception. -->
-        
-		<!-- GermaNet relations and their confidences (LHS -> RHS) -->
-		<property name="causesConfidence">1.0</property>
-		<property name="entailsConfidence">1.0</property>
-		<property name="hypernymConfidence">1.0</property>
-		<property name="synonymConfidence">1.0</property>
-	</section>
-	
-    
-    <!-- Processing component for using dependency relations without Part-Of-Speech.-->
-	<section name="BagOfDepsScoring">
-	</section>
-	
-    <!-- Processing component for using dependency relations with Part-Of-Speech.-->
-	<section name="BagOfDepsPosScoring">
-	</section>
-	
+         here, the MaltParser dependency parser for EN is selected. -->
+        <property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserEN</property>
+    </section>
+
+    <!-- Base processing component for computing a bag of words representation -->
+    <section name="BagOfWordsScoring">
+    </section>
+
+    <!-- Base processing component for computing a bag of lemmas representation -->
+    <section name="BagOfLemmasScoring">
+    </section>
+
+
     <!-- Processing component for performing tree skeleton.  -->
 	<section name="TreeSkeletonScoring">
 	</section>
 	
-	<!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
+    <!-- MaxEntClassificationEDA uses maximum entropy modeling for a learning entailment classifier.
      NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
      "activatedEDA" -->
 	<section name="eu.excitementproject.eop.core.MaxEntClassificationEDA">
         <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
-		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+GNPos+DS+TP+TPPos+TS_DE</property>
-        <!-- Please update the location for storing temporary files for training -->
-		<property name="trainDir">./target/DE/dev/</property>
-        <!-- Please update the location for storing temporary files for testing -->
-		<property name="testDir">./target/DE/test/</property>
-		<!-- Two parameters of the MaxEnt classifier, "max iterations" and "cut off":
+		<property name="modelFile">./src/main/resources/model/MaxEntClassificationEDAModel_Base+TS_EN</property>
+		<!-- Please update the location for storing temporary files for training -->
+		<property name="trainDir">./target/EN/dev/</property>
+		<!-- Please update the location for storing temporary files for testing  -->
+		<property name="testDir">./target/EN/test/</property>
+        
+        <!-- Two parameters of the MaxEnt classifier, "max iterations" and "cut off":
          left number ::= iterations - The number of GIS iterations to perform.
          right number ::= cutoff - The number of times a feature must be seen in order to be relevant for training.
          see also http://maxent.sourceforge.net/api/index.html -->
@@ -114,7 +78,7 @@
          Note: the mapping must be bijective:
          All names mentioned here must be specified as sections above, and each processing component specified above
          must be mentioned here. -->
-		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,BagOfLexesScoring,BagOfDepsScoring,BagOfDepsPosScoring,TreeSkeletonScoring</property>
+		<property name="Components">BagOfWordsScoring,BagOfLemmasScoring,TreeSkeletonScoring</property>
 	</section>
 
 </configuration>
