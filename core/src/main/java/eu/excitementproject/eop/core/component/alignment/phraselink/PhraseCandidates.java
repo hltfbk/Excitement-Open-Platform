@@ -7,8 +7,8 @@ import org.apache.uima.jcas.JCas;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
 /**
- * A Utility class that holds utility methods for getting "phrase" candidates from 
- * the given view (of a JCas) 
+ * A Utility class that holds utility methods for getting (extracting) 
+ * "phrase" candidates from the given view (of a JCas) 
  * 
  * @author Tae-Gil Noh
  *
