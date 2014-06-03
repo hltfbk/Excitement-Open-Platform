@@ -11,8 +11,10 @@ import java.sql.SQLException;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 //import org.apache.log4j.Logger;
 //import org.apache.log4j.PropertyConfigurator;
@@ -50,6 +52,9 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 	private static final int DEFAULT_RULES_LIMIT = 1000;
 	private static final double MINIMAL_CONFIDENCE = 0.00000000001;
 	private static final double MAXIMAL_CONFIDENCE = 1 - 0.00000000001;
+
+	//protected static final String PARAM_STOP_WORDS = "stop-words";
+	protected static final String PARAM_EXTRACTION_TYPES = "extraction-types";
 
 	//private static Logger logger = Logger.getLogger(WikipediaLexicalResource.class);
 	
@@ -90,7 +95,16 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 			throw new LexicalResourceException(e.toString());
 		}
 
-		m_retrivalTool = new RetrievalTool(params);			
+		Set<String> extractionTypes = new HashSet<String>();
+		try {
+			for (String extractionType : params.getStringArray(PARAM_EXTRACTION_TYPES))
+				extractionTypes.add(extractionType);
+		} catch (ConfigurationException e) {
+			extractionTypes = null;
+			
+		}
+
+		m_retrivalTool = new RetrievalTool(params,extractionTypes);			
 		this.m_limitOnRetrievedRules = params.getInt("limitOnRetrievedRules");
 		String classifierPathName;
 		String classifierClassName;	
@@ -98,6 +112,8 @@ public class WikipediaLexicalResource implements LexicalResource<BaseRuleInfo> {
 		classifierPathName = params.getString("classifierPath");
 		classifierClassName = params.getString("classifierClass");
 		NPBouns = params.getDouble("NPBouns");
+		
+		
 		try {
 			this.m_classifier = (Classifier)Class.forName(classifierPathName + "." + classifierClassName).getConstructor(RetrievalTool.class,Double.class).newInstance(m_retrivalTool, NPBouns);
 		} catch (InstantiationException | IllegalAccessException
