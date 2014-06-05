@@ -63,7 +63,7 @@ import eu.excitementproject.eop.common.utilities.Utils;
  * 
  * <h4>Metricity</h4>
  * If the match weight of all tokens is zero, then the distance between a token sequence
- * and itself will be zero.  
+ * and itself will be zero.  bgaklhfbgladkb
  * 
  * @author Roberto Zanoli
  * 
