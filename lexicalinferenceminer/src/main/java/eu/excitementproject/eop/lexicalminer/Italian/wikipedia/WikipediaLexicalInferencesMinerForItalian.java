@@ -44,7 +44,8 @@ public class WikipediaLexicalInferencesMinerForItalian extends WikipediaLexicalI
 		
 		IExtractor extractor=null;
 		try {
-			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+//			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+			Lemmatizer lemmatizer = new TextProLemmatizer(processingToolsConf);
 			extractor = new AllNounExtractor(idm, lemmatizer);
 
 		} catch (Exception e) {
@@ -67,7 +68,8 @@ public class WikipediaLexicalInferencesMinerForItalian extends WikipediaLexicalI
 		
 		IExtractor extractor=null;
 		try {
-			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+//			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+			Lemmatizer lemmatizer = new TextProLemmatizer(processingToolsConf); 
 			extractor = new AllNounExtractor(idm, lemmatizer);
 
 		} catch (Exception e) {
