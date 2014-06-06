@@ -50,13 +50,14 @@ a configuration file means allowing other users to replicate the same experiment
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    
 	     <!-- Do not consider the stop words: [POS|LIST|POS,LIST|false] -->
+	     <!-- POS eliminate only some part of speech, LIST eliminate only the words listed in a file -->
 		<property name="stopWordRemoval">POS</property>
 
 		<!-- Do not consider the case: [true|false] -->
 		<property name="ignoreCase">true</property>
 
 		<!-- Path to the stop word list -->
-		<property name="pathStopWordFile">/core/src/main/resources/external-data/edit/stopwords_DE.txt</property>
+		<property name="pathStopWordFile">../core/src/main/resources/external-data/edit/stopwords_DE.txt</property>
 
 		<!-- Normalization type for the distance: [default|long] -->
 		<property name="normalizationType">default</property>
@@ -79,13 +80,14 @@ a configuration file means allowing other users to replicate the same experiment
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
 	    
 		 <!-- Do not consider the stop words: [POS|LIST|POS,LIST|false] -->
+	     <!-- POS eliminate only some part of speech, LIST eliminate only the words listed in a file -->
 		<property name="stopWordRemoval">POS</property>
 
 		<!-- Do not consider the case: [true|false] -->
 		<property name="ignoreCase">true</property>
 
 		<!-- Path to the stop word list -->
-		<property name="pathStopWordFile">/core/src/main/resources/external-data/edit/stopwords_DE.txt</property>
+		<property name="pathStopWordFile">../core/src/main/resources/external-data/edit/stopwords_DE.txt</property>
 
 		<!-- Normalization type for the distance: [default|long] -->
 		<property name="normalizationType">default</property>
