@@ -152,7 +152,7 @@ public class EOPRunner {
 		configFileName = option.config;
 		configFile = new File(configFileName);
 		
-		System.out.println("Configuration file: " + configFileName);
+		logger.info("Configuration file: " + configFileName);
 		
 		try {
 			config = new ImplCommonConfig(configFile);
