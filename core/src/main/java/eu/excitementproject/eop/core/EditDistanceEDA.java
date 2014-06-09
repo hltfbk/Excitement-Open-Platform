@@ -57,13 +57,6 @@ public class EditDistanceEDA<T extends TEDecision>
 	private double threshold;
 	
 	/**
-	 * this is the minimal increment that has to be used for finding the threshold value;
-	 * smaller values allows for a more precise threshold whereas the training phase could
-	 * take much more time. 
-	 */
-	private double minIncrement = 0.001;
-	
-	/**
 	 * the accuracy obtained on the training data set
 	 */
 	private double trainingAccuracy;
@@ -549,6 +542,8 @@ public class EditDistanceEDA<T extends TEDecision>
 			List<DistanceValue> distanceValueList = new ArrayList<DistanceValue>();
 			//contains the entailment annotation between each pair of T-H
 			List<String> entailmentValueList = new ArrayList<String>();
+			//contains the entailment annotation and the distance between each pair of T-H
+			List<Annotation> annotationList;
 			
 			File f = new File(trainDIR);
 			if (f.exists() == false) {
@@ -568,6 +563,8 @@ public class EditDistanceEDA<T extends TEDecision>
 				
 				filesCounter++;
 			}
+			
+			annotationList = merge(distanceValueList, entailmentValueList);
 		
 			if (filesCounter == 0)
 				throw new ConfigurationException("trainDIR:" + f.getAbsolutePath() + " empty!");
@@ -575,7 +572,8 @@ public class EditDistanceEDA<T extends TEDecision>
 			//array of two elements; the first element is the calculated threshold whereas the
 			//second one is the obtained accuracy
 			double[] thresholdAndAccuracy = 
-					sequentialSearch(distanceValueList, entailmentValueList, measureToOptimize);
+					//sequentialSearch(distanceValueList, entailmentValueList, measureToOptimize);
+					sequentialSearch(annotationList, measureToOptimize);
 			
 			this.threshold = thresholdAndAccuracy[0];
 			this.trainingAccuracy = thresholdAndAccuracy[1];
@@ -621,7 +619,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @throws ComponentException, EDAException, Exception
      */
-	private double[] sequentialSearch(List<DistanceValue> distanceValueList, List<String> entailmentValueList, String measureToOptimize) 
+	private double[] sequentialSearch(List<Annotation> annotationList, String measureToOptimize) 
 			throws ComponentException, EDAException, Exception {
 		
 		//double[0] is the calculated threshold
@@ -637,9 +635,8 @@ public class EditDistanceEDA<T extends TEDecision>
 		double recall = 0.0;
 		double precision = 0.0;
 		
-		if ( (distanceValueList != null && entailmentValueList != null) &&
-				(distanceValueList.size() == 0 || entailmentValueList.size() == 0) ||
-				distanceValueList == null || entailmentValueList == null) {
+		if ( (annotationList != null && annotationList.size() == 0) ||
+				annotationList == null) {
 			results[0] = 0.0;
 			results[1] = 0.0;
 			
@@ -648,14 +645,8 @@ public class EditDistanceEDA<T extends TEDecision>
 		
 		try {
 			
-			List<DistanceValue> sortedDistanceValueList = sortDistanceValues(distanceValueList);
-			
-			// get the smallest distance value. It is the first element of the array.
-			double min = getMinimum(sortedDistanceValueList);
-			// get the largest distance value. It is the last element of the array.
-			double max = getMaximum(sortedDistanceValueList);
-			// get the increment
-			double increment = getIncrement(sortedDistanceValueList);
+			//A copy of the specified list sorted in increasing order from smallest
+			List<Annotation> sortedAnnotationList = sortAnnotationList(annotationList);
 			
 			// true positive
 			double tp = 0; 
@@ -665,43 +656,52 @@ public class EditDistanceEDA<T extends TEDecision>
 			double tn = 0; 
 			// false negative
 			double fn = 0;
-
-			// Searching the threshold begins at a lower bound (i.e. min) and
-			// increments by a step size up to an upper bound (i.e. max).
-			for (double i = min; i <= max; i = i + increment) {
-				for (int j = 0; j < distanceValueList.size(); j++) {
-					double distanceValue = distanceValueList.get(j).getDistance();
-					String entailmentValue = entailmentValueList.get(j);
-					if (distanceValue <= i)
-						if (entailmentValue.equals("ENTAILMENT"))
-							tp = tp + 1;
-						else
-							fp = fp + 1;
+			
+			int totNumberOfEntailment = 0;
+			int totNumberOfNonEntailment = 0;
+			for (int i = 0; i < sortedAnnotationList.size(); i++) {
+				if (sortedAnnotationList.get(i).getEntailmentRelation().equals("ENTAILMENT"))
+					totNumberOfEntailment++;
+				else
+					totNumberOfNonEntailment++;
+				//System.out.println(sortedAnnotationList.get(i).getDistance().getDistance() + "\t" + sortedAnnotationList.get(i).getEntailmentRelation());
+			}
+			
+			for (int j = -1; j < sortedAnnotationList.size(); j++) {
+					
+				double distanceValue = 0;
+				String entailmentRelation = "";
+				
+				if ( j != -1 ) {
+					
+					distanceValue = sortedAnnotationList.get(j).getDistanceValue().getDistance();
+					entailmentRelation = sortedAnnotationList.get(j).getEntailmentRelation();
+				
+					if (entailmentRelation.equals("ENTAILMENT"))
+						tp = tp + 1;
 					else
-						if (entailmentValue.equals("ENTAILMENT"))
-							fn = fn + 1;
-						else
-							tn = tn + 1;
+						fp = fp + 1;
+				
 				}
 				
+				fn = totNumberOfEntailment - tp;
+				tn = totNumberOfNonEntailment - fp;
+				
 				accuracy = (tp + fp + fn + tn == 0) ? 0 : (tp+tn)/(tp + fp + fn + tn);
-				precision = (tp + fp == 0) ? 0 : tp / (tp + fp);
+				precision = (tp + fp == 0) ? 1 : tp / (tp + fp);
 				recall = (tp + fn == 0) ? 0 : tp / (tp + fn);
 				f1 = (precision + recall == 0) ? 0: (2 * precision * recall)/(precision + recall);
 				
+				//System.out.println(f1 + "\t" + precision + "\t" + recall + "\t" + accuracy);
+				
 				if (accuracy > maxAccuracy) {
 					maxAccuracy = accuracy;
-					accuracyThreshold = i;
+					accuracyThreshold = distanceValue;
 				}
 				if (f1 > maxF1) {
 					maxF1 = f1;
-					f1Threshold = i;
+					f1Threshold = distanceValue;
 				}
-				
-			    tp = 0; 
-				fp = 0; 
-				tn = 0; 
-				fn = 0;
 				
 			}
 			
@@ -719,61 +719,6 @@ public class EditDistanceEDA<T extends TEDecision>
 		}
 		
 		return results;
-		
-	}
-	
-	/**
-     * Returns the distance between the two closest elements in the specified sorted list
-     *
-     * @param sortedDistanceValueList the sorted list
-     * 
-     * @return the distance
-     */
-	private double getIncrement(List<DistanceValue> sortedDistanceValueList) {
-		
-		double result = Double.MAX_VALUE;
-		
-		for (int i = 1; i < sortedDistanceValueList.size(); i++) {
-			double diff = sortedDistanceValueList.get(i).getDistance() - 
-					sortedDistanceValueList.get(i-1).getDistance();
-			if (diff != 0 && diff < result)
-				result = diff;
-		}
-		
-		result = result/2;
-		
-		if (result < minIncrement) {
-			result = minIncrement;
-			logger.info("the increment to find the threshold is below the default value; using default");
-		}
-		
-		return result;
-		
-	}
-	
-	/**
-     * Returns the minimum value in the specified sorted list
-     *
-     * @param sortedDistanceValueList the sorted list
-     * 
-     * @return the minimum
-     */
-	private double getMinimum(List<DistanceValue> sortedDistanceValueList) {
-		
-		return sortedDistanceValueList.get(0).getDistance();
-		
-	}
-	
-	/**
-     * Returns the maximum value in the specified sorted list
-     *
-     * @param sortedDistanceValueList the sorted list
-     * 
-     * @return the maximum
-     */
-	private double getMaximum(List<DistanceValue> sortedDistanceValueList) {
-		
-		return sortedDistanceValueList.get(sortedDistanceValueList.size() - 1).getDistance();
 		
 	}
 	
@@ -807,22 +752,22 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @return a copy of the specified list sorted in increasing order
      */
-	private List<DistanceValue> sortDistanceValues(List<DistanceValue> distanceValues) {
+	private List<Annotation> sortAnnotationList(List<Annotation> annotationList) {
 		
-		List<DistanceValue> newDistanceValues = new ArrayList<DistanceValue>(distanceValues);
+		List<Annotation> newAnnotationList = new ArrayList<Annotation>(annotationList);
 		
-		Collections.copy(newDistanceValues, distanceValues);
+		Collections.copy(newAnnotationList, annotationList);
 				
-		Collections.sort(newDistanceValues, new Comparator<DistanceValue>(){
+		Collections.sort(newAnnotationList, new Comparator<Annotation>(){
 			 
-            public int compare(DistanceValue d1,  DistanceValue d2) {
-                return d1.getDistance() > d2.getDistance() ? 1 :
-                	d1.getDistance() == d2.getDistance() ? 0 : -1;
+            public int compare(Annotation a1,  Annotation a2) {
+                return a1.getDistanceValue().getDistance() > a2.getDistanceValue().getDistance() ? 1 :
+                	a1.getDistanceValue().getDistance() == a2.getDistanceValue().getDistance() ? 0 : -1;
             }
   
         });
 		
-		return newDistanceValues;
+		return newAnnotationList;
 		
 	}
 	
@@ -875,6 +820,36 @@ public class EditDistanceEDA<T extends TEDecision>
 			throw e;
 		}
 			
+				
+	}	
+	
+	/**
+     * For each T/H pair puts its entailment annotation value and distance into a list of Annotations. 
+     *
+     * @param distanceValues
+     * @param entailmentValueList
+     * 
+     * @return a list of Annotation
+     * 
+     * @throws Exception
+     */
+	private List<Annotation> merge(List<DistanceValue> distanceValues, List<String> entailmentValueList) 
+			throws Exception {
+			
+		List<Annotation>  annotationList = new ArrayList<Annotation>();
+		
+		try {
+			
+			for (int i = 0; i < distanceValues.size(); i++) {
+				Annotation annotation = new Annotation(distanceValues.get(i), entailmentValueList.get(i));
+				annotationList.add(annotation);
+			}
+			
+		} catch(Exception e) {
+			throw e;
+		}
+			
+		return annotationList;
 				
 	}	
 	
@@ -1003,6 +978,35 @@ public class EditDistanceEDA<T extends TEDecision>
     	
     	return result.getWriter().toString();
 	    
+    }
+    
+    /* 
+     * This class represents the entailment annotation between a T/H pair with its edit distance.
+     */
+    private class Annotation {
+    	
+    	DistanceValue distance;
+    	String entailmentRelation;
+    	
+    	Annotation(DistanceValue distance, String entailmentRelation) {
+    		
+    		this.distance = distance;
+    		this.entailmentRelation = entailmentRelation;
+    		
+    	}
+    	
+    	DistanceValue getDistanceValue() {
+    		
+    		return distance;
+    		
+    	}
+    	
+    	String getEntailmentRelation() {
+    		
+    		return entailmentRelation;
+    		
+    	}
+    	
     }
 	
 }
