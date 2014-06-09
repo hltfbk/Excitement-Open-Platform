@@ -1,49 +1,50 @@
 
 package eu.excitementproject.eop.core.component.distance;
 
-import java.util.List;
-import java.util.Vector;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Map;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Vector;
 import java.util.logging.Logger;
 
-import org.apache.uima.jcas.JCas;
 import org.apache.uima.cas.text.AnnotationIndex;
+import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CARD;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CONJ;
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PP;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PP;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PUNC;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-
 import eu.excitementproject.eop.common.component.distance.DistanceCalculation;
 import eu.excitementproject.eop.common.component.distance.DistanceComponentException;
 import eu.excitementproject.eop.common.component.distance.DistanceValue;
-import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.utilities.Utils;
+import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiExtractionType;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.it.WikiLexicalResourceIT;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
-import eu.excitementproject.eop.core.component.lexicalknowledge.germanet.GermaNetWrapper;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
-import eu.excitementproject.eop.common.utilities.Utils;
 
 
 /**
@@ -70,6 +71,16 @@ import eu.excitementproject.eop.common.utilities.Utils;
  */
 public abstract class FixedWeightEditDistance implements DistanceCalculation {
 
+	private static final String STOP_WORD_POS = "POS";
+	private static final String STOP_WORD_LIST = "LIST";
+	private static final String STOP_WORD_POS_LIST = "POS,LIST";
+	private static final String IGNORE_CASE = "ignoreCase";
+	private static final String NORMALIZATION_TYPE = "normalizationType";
+	private static final String DEFAULT = "default";
+	private static final String LONG = "long";
+	private static final String PATH_STOP_WORD = "pathStopWordFile";
+	private static final String STOP_WORD_TYPE = "stopWordRemoval";
+	
 	/**
 	 * weight for match
 	 */
@@ -98,8 +109,11 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     /**
 	 * stop word removal
 	 */
-    private boolean stopWordRemoval;
+    private boolean stopWordRemovalPOS;
+	private boolean ignoreCase;
     Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
+	private HashSet<String> ignoreSet = null;
+	private String normalizationType;
 
     static Logger logger = Logger.getLogger(FixedWeightEditDistance.class.getName());
     
@@ -145,16 +159,51 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
 	    	NameValueTable componentNameValueTable = config.getSection(this.getClass().getCanonicalName());
 	    	
 	    	//activate/deactivate stop word removal
-	    	if (componentNameValueTable.getString("stopWordRemoval") != null) {
-    			stopWordRemoval = Boolean.parseBoolean(componentNameValueTable.getString("stopWordRemoval"));
-    			if (stopWordRemoval == true)
-    				logger.info("Stop word removal activated.");
-    			else
-    				logger.info("Stop word removal deactivated.");
+			if (componentNameValueTable.getString(STOP_WORD_TYPE) != null) {
+				stopWordRemovalPOS = Boolean.parseBoolean(componentNameValueTable.getString(STOP_WORD_TYPE));
+				if (stopWordRemovalPOS == true)
+					logger.info("Stop word pos removal activated.");
+				else {
+					if (STOP_WORD_POS.equalsIgnoreCase(componentNameValueTable.getString(STOP_WORD_TYPE))) {
+						stopWordRemovalPOS = true;
+						logger.info("Stop word pos removal activated.");
+					} else if (STOP_WORD_LIST.equalsIgnoreCase(componentNameValueTable.getString(STOP_WORD_TYPE))
+							&& componentNameValueTable.getString(PATH_STOP_WORD) != null) {
+						stopWordRemovalPOS = false;
+						initializeStopWordList(componentNameValueTable.getString(PATH_STOP_WORD));
+						logger.info("Stop word list removal activated.");
+					} else if (STOP_WORD_POS_LIST.equalsIgnoreCase(componentNameValueTable.getString(STOP_WORD_TYPE))
+							&& componentNameValueTable.getString(PATH_STOP_WORD) != null) {
+						stopWordRemovalPOS = true;
+						initializeStopWordList(componentNameValueTable.getString(PATH_STOP_WORD));
+						logger.info("Stop word list removal activated.");
+					}
+					logger.info("Stop word removal deactivated.");
+				}
+			}
+    		else {
+    			stopWordRemovalPOS = false;
+        		logger.info("Stop word removal deactivated.");
+    		}
+	    	
+	    	//activate ignore case
+	    	if (componentNameValueTable.getString(IGNORE_CASE) != null) {
+    			ignoreCase = Boolean.parseBoolean(componentNameValueTable.getString(IGNORE_CASE));
+    			logger.info("Ignore case set to "+ignoreCase);
     		}
     		else {
-    			stopWordRemoval = false;
-        		logger.info("Stop word removal deactivated.");
+    			ignoreCase = false;
+        		logger.info("Ignore case deactivated.");
+    		}
+	    	
+	    	//activate normalization
+	    	if (componentNameValueTable.getString(NORMALIZATION_TYPE) != null) {
+    			normalizationType = componentNameValueTable.getString(NORMALIZATION_TYPE);
+        		logger.info("Normalization type setted to "+normalizationType);
+    		}
+    		else {
+    			normalizationType = DEFAULT;
+        		logger.info("Normalization type setted to DEFAULT");
     		}
 	    	
 	    	//get the selected instances
@@ -245,7 +294,24 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     }
     
     
-    /** 
+    private void initializeStopWordList(String path) {
+    	File sourceFile = new File(path);
+    	try {
+			BufferedReader br = new BufferedReader(new FileReader(sourceFile));
+			ignoreSet = new HashSet<String>();
+			String line;
+			while ((line = br.readLine()) != null) {
+				ignoreSet.add(line);
+			}
+			br.close();
+		} catch (Exception e) {
+			logger.info("Stop word list file not found or unreadable");
+		}
+		
+	}
+
+
+	/** 
 	 * Constructor used to create this object. All the main parameters of the component are
 	 * exposed in the constructor. Here is an example on how it can be used. 
 	 * 
@@ -295,8 +361,8 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     	this.mInsertWeight = mInsertWeight;
     	this.mSubstituteWeight = mSubstituteWeight;
     	
-        this.stopWordRemoval = stopWordRemoval;
-	    if (this.stopWordRemoval) {
+        this.stopWordRemovalPOS = stopWordRemoval;
+	    if (this.stopWordRemovalPOS) {
 	    	logger.info("Stop word removal activated.");
     	}
     	else {
@@ -537,17 +603,32 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     		Token curr = (Token) tokenIter.next();
     		
     		// stop word removal
-    		if (stopWordRemoval) {
-    			if(curr.getPos().getTypeIndexID() != PP.typeIndexID &&
-    			curr.getPos().getTypeIndexID() != PUNC.typeIndexID &&
-    			curr.getPos().getTypeIndexID() != ART.typeIndexID &&
-    			curr.getPos().getTypeIndexID() != CONJ.typeIndexID &&
-    			curr.getPos().getTypeIndexID() != CARD.typeIndexID &&
-    			curr.getPos().getTypeIndexID() != O.typeIndexID &&
-    			curr.getPos().getTypeIndexID() != POS.typeIndexID) {
-    				tokensList.add(curr);
-    			}
-    		}
+			if (stopWordRemovalPOS && ignoreSet == null) {
+				if (curr.getPos().getTypeIndexID() != PP.typeIndexID
+						&& curr.getPos().getTypeIndexID() != PUNC.typeIndexID
+						&& curr.getPos().getTypeIndexID() != ART.typeIndexID
+						&& curr.getPos().getTypeIndexID() != CONJ.typeIndexID
+						&& curr.getPos().getTypeIndexID() != CARD.typeIndexID
+						&& curr.getPos().getTypeIndexID() != O.typeIndexID
+						&& curr.getPos().getTypeIndexID() != POS.typeIndexID) {
+					tokensList.add(curr);
+				}
+			} else if (!stopWordRemovalPOS && ignoreSet != null) {
+				if (!ignoreSet.contains(getTokenBaseForm(curr))) {
+					tokensList.add(curr);
+				}
+			} else if(stopWordRemovalPOS && ignoreSet != null){
+				if(curr.getPos().getTypeIndexID() != PP.typeIndexID &&
+		    			curr.getPos().getTypeIndexID() != PUNC.typeIndexID &&
+		    			curr.getPos().getTypeIndexID() != ART.typeIndexID &&
+		    			curr.getPos().getTypeIndexID() != CONJ.typeIndexID &&
+		    			curr.getPos().getTypeIndexID() != CARD.typeIndexID &&
+		    			curr.getPos().getTypeIndexID() != O.typeIndexID &&
+		    			curr.getPos().getTypeIndexID() != POS.typeIndexID &&
+		    			!ignoreSet.contains(getTokenBaseForm(curr))){
+		    					tokensList.add(curr);				
+		    				}
+			}
     		else
     			tokensList.add(curr);
     	}
@@ -666,7 +747,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
                 for (int j = 1; j <= target.size(); j++) {
 
                 	distanceTable[i][j] = minimum(
-                			getTokenBaseForm(source.get(i-1)).equals(getTokenBaseForm(target.get(j-1))) || (
+                			compare(getTokenBaseForm(source.get(i-1)),getTokenBaseForm(target.get(j-1))) || (
                                        
                 					// it doesn't use the PoS to look for the relations in the lexical resource
                 					/* lexR != null && 
@@ -699,7 +780,13 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     	double distance = distanceTable[source.size()][target.size()];
     	// norm is the distance equivalent to the cost of inserting the target token sequence and deleting
     	// the entire source sequence. It is used to normalize distance values.
-    	double norm = distanceTable[source.size()][0] + distanceTable[0][target.size()];
+
+    	double norm;
+    	if(normalizationType.equalsIgnoreCase(DEFAULT)){
+    		norm = distanceTable[source.size()][0] + distanceTable[0][target.size()];
+    	}else{
+    		norm = source.size() + target.size();
+    	}
     	// the normalizedDistanceValue score has a range from 0 (when source is identical to target), to 1
     	// (when source is completely different form target).
     	double normalizedDistanceValue = distance/norm;
@@ -709,7 +796,14 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      }
     
     
-    /**
+	private boolean compare(String tokenBaseForm, String tokenBaseForm2) {
+		if(ignoreCase){
+			return tokenBaseForm.equalsIgnoreCase(tokenBaseForm2);
+		}	
+		return tokenBaseForm.equals(tokenBaseForm2);
+	}
+
+	/**
      * Returns the token base form. It is the form of the token
      * or its lemma.
      *

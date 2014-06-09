@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764673_76463240.txt_1_0-13765041_83666815.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>my played it's been delayed</t>
+		<h>my flight is delayed</h>
+	</pair>
+	<pair id="13764673_76463240.txt_1_0-13764816_82295687.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>my played it's been delayed</t>
+		<h>flights are delete</h>
+	</pair>
+	<pair id="13765041_83666815.txt_1_0-13764816_82295687.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>my flight is delayed</t>
+		<h>flights are delete</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_1-13764673_76463240.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've managed to get three delays on two flights</t>
+		<h>my played it's been delayed</h>
+	</pair>
+	<pair id="13765041_83666815.txt_1_0-13764673_76463240.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>my flight is delayed</t>
+		<h>my played it's been delayed</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_1-13765041_83666815.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've managed to get three delays on two flights</t>
+		<h>my flight is delayed</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_1-13764816_82295687.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've managed to get three delays on two flights</t>
+		<h>flights are delete</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_0-13765041_83666815.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've managed to get three mechanical delays on two flights</t>
+		<h>my flight is delayed</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_0-13764673_76463240.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've managed to get three mechanical delays on two flights</t>
+		<h>my played it's been delayed</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_0-13764816_82295687.txt_6_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've managed to get three mechanical delays on two flights</t>
+		<h>flights are delete</h>
+	</pair>
+	<pair id="13764673_76463240.txt_1_0-13764816_82295687.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my played it's been delayed</t>
+		<h>flights are delete from moonport</h>
+	</pair>
+	<pair id="13764673_76463240.txt_1_0-13764857_82650117.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my played it's been delayed</t>
+		<h>i've managed to get three mechanical delays on two flights</h>
+	</pair>
+	<pair id="13764673_76463240.txt_1_0-13764857_82650117.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my played it's been delayed</t>
+		<h>i've managed to get three delays on two flights</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_0-13764673_76463240.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete from moonport</t>
+		<h>my played it's been delayed</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_0-13764857_82650117.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete from moonport</t>
+		<h>i've managed to get three mechanical delays on two flights</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_0-13764857_82650117.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete from moonport</t>
+		<h>i've managed to get three delays on two flights</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_0-13765041_83666815.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete from moonport</t>
+		<h>my flight is delayed</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_1-13764673_76463240.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete</t>
+		<h>my played it's been delayed</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_1-13764857_82650117.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete</t>
+		<h>i've managed to get three mechanical delays on two flights</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_1-13764857_82650117.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete</t>
+		<h>i've managed to get three delays on two flights</h>
+	</pair>
+	<pair id="13764816_82295687.txt_6_1-13765041_83666815.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>flights are delete</t>
+		<h>my flight is delayed</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_0-13764816_82295687.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've managed to get three mechanical delays on two flights</t>
+		<h>flights are delete from moonport</h>
+	</pair>
+	<pair id="13764857_82650117.txt_1_1-13764816_82295687.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've managed to get three delays on two flights</t>
+		<h>flights are delete from moonport</h>
+	</pair>
+	<pair id="13765041_83666815.txt_1_0-13764816_82295687.txt_6_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my flight is delayed</t>
+		<h>flights are delete from moonport</h>
+	</pair>
+	<pair id="13765041_83666815.txt_1_0-13764857_82650117.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my flight is delayed</t>
+		<h>i've managed to get three mechanical delays on two flights</h>
+	</pair>
+	<pair id="13765041_83666815.txt_1_0-13764857_82650117.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>my flight is delayed</t>
+		<h>i've managed to get three delays on two flights</h>
+	</pair>
+</entailment-corpus>

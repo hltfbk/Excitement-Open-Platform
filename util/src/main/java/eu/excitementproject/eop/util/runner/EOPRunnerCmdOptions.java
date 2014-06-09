@@ -57,4 +57,5 @@ public class EOPRunnerCmdOptions {
 	
 	@Option(name="-score", usage="Compute the scores on the test data or not")
 	public boolean score = false;
+	
 }

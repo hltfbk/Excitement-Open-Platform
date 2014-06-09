@@ -23,20 +23,18 @@ import java.util.HashSet;
 
 /**
  * This class implements a German Lexical Resource based on derivational information, 
- * DErivBase v1.3. The resource contains groups of lemmas, so-called derivational families,
+ * DErivBase v1.4. The resource contains groups of lemmas, so-called derivational families,
  * which share a morphologic (and ideally a semantic) relationship, e.g. "sleep, 
  * sleepy, to sleep, sleepless" 
  * 
  * The implementation can access the resource file containing lemma-POS pairs and their 
- * corresponding derivations in two different formats:
- * 1. with confidence scores for each lemma pair within one derivational family; 
- *    example:
-      Aalener_Nm: Aalen_Nn 1.00 aalen_V 0.50 Aal_Nn 0.33
- * 2. simply derivational families without information about lemma pair confidences; 
- *    example:
- *    Aalener_Nm: Aalen_Nn aalen_V Aal_Nn 
+ * corresponding derivations in the following format (new in v1.4):
+ * lemma1_POS lemma2_POS pathLength lemma1_POS derivationalRule lemma2_POS
+ * e.g. Abrechnen_Nn abrechnen_V 1 Abrechnen_Nn dNV09> abrechnen_V 
+ * Each lemma pair within one derivational family is connected via one shortest derivational rule path.
+ * From its length the score can be calculated. 
  * The user has to specify with the constructor call (or in the CommonConfig setting) 
- * if the resource format contains scores (1.) or not (2.). 
+ * if the resource is used with scores or not. 
  * 
  * Each lemma is considered as entailing as well as being entailed by its corresponding 
  * derivations. The user can restrict this generalization by setting a maximum amount
@@ -125,10 +123,8 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		catch (java.lang.Exception e) {
 			throw new ComponentException("Cannot initialize DErivBase"
 					+ ". Please check the path and the format of your DErivBase version. "
-					+ "Should be: \n1) if you do not use confidence scores:\n" 
-					+ "lemma_pos: relatedl1_p1 relatedl2_p2 ..." 
-					+ "\n2) if you use confidence scores:\n" 
-					+ "lemma_pos: relatedl1_p1 score1 relatedl2_ps score2 ...", e);
+					+ "Should be: "
+					+ "lemma1_POS lemma2_POS pathLength lemma1_POS derivationalRule lemma2_POS", e);
 		}
 	
 	}
@@ -212,13 +208,13 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 			PartOfSpeech pos) throws LexicalResourceException {
 
 		// get related lemma-POS pairs and add them to results LexicalRule
-		// --> Get these pairs once for the resource without scores...
+		// --> Get these pairs once without scores...
 		// The information in this List will later be written as additional information into DerivBaseInfo
 		ArrayList<Tuple<String>> related = new ArrayList<Tuple<String>>();
 		if (!derivbase.entries.isEmpty()) {
 			related = derivbase.getRelatedLemmaPosPairs(lemma, derivbasePos);
 		}
-		// --> ... and once for the resource with scores.
+		// --> ... and once with scores.
 		ArrayList<HashMap<Tuple<String>, Double>> relatedScores = new ArrayList<HashMap<Tuple<String>, Double>>();
 		if (!derivbase.entryScores.isEmpty()) {
 			relatedScores = derivbase.getRelatedLemmaPosPairsWithScore(lemma, derivbasePos);
@@ -227,10 +223,10 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		// System.out.println("which one is empty? related: " + related.isEmpty() + ", or relatedScores: " + relatedScores.isEmpty());
 		
 		
-		if (relatedScores.isEmpty()) { // if scores are not available
+		if (relatedScores.isEmpty()) { // if scores are not used
 			result = proceedWithoutScores(related, result, lemma, pos);
 			
-		} else { // if scores are available
+		} else { // if scores are used
 			result = proceedWithScores(relatedScores, result, lemma, pos);
 		}		
 
@@ -239,7 +235,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 
 
 	/**
-	 * Conducts the lookup of a lemma-POS pair in DErivBase if scores are available.
+	 * Conducts the lookup of a lemma-POS pair in DErivBase if scores are used.
 	 * Returns a set of LexicalRules for this lemma-POS pair as left hand side. 
 	 * 
 	 * @param relatedScores the list of lemmas and corresponding scores which are 
@@ -279,7 +275,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 				Double internalScore = (relatedConfScore-0.5)/0.5;
 				
 			    LexicalRule<? extends DerivBaseInfo> rule = new LexicalRule<DerivBaseInfo>(lemma, pos, 
-						relatedLemma, relatedPos, relatedConfScore, "deriv-related", "DErivBase v1.3", new DerivBaseInfo(derivFamily, internalScore));
+						relatedLemma, relatedPos, relatedConfScore, "deriv-related", "DErivBase v1.4", new DerivBaseInfo(derivFamily, internalScore));
 				
 				result.add(rule);	
 			}
@@ -303,7 +299,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 
 
 	/**
-	 * Conducts the lookup of a lemma-POS pair in DErivBase if no scores are available.
+	 * Conducts the lookup of a lemma-POS pair in DErivBase if no scores are used.
 	 * Returns a set of LexicalRules for this lemma-POS pair as left hand side. 
 	 * 
 	 * @param related the list of lemmas which are (in DErivBase) derivationally related to the lemma
@@ -332,7 +328,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 				derivFamily.add(relatedMember.getA().concat("_").concat(relatedMember.getB()));
 			}			
 			LexicalRule<? extends DerivBaseInfo> rule = new LexicalRule<DerivBaseInfo>(lemma, pos, 
-					relatedLemma, relatedPos, "deriv-related", "DErivBase v1.3", new DerivBaseInfo(derivFamily));
+					relatedLemma, relatedPos, "deriv-related", "DErivBase v1.4", new DerivBaseInfo(derivFamily));
 			
 			result.add(rule);	
 		}
@@ -359,7 +355,7 @@ public class DerivBaseResource implements Component, LexicalResource<DerivBaseIn
 		List<LexicalRule<? extends DerivBaseInfo>> rules = getRulesForLeft(lemma, pos);
 		for (LexicalRule<? extends DerivBaseInfo> rule : rules) {
 			result.add(new LexicalRule<DerivBaseInfo>(rule.getRLemma(), rule.getRPos(), 
-					rule.getLLemma(), rule.getLPos(), rule.getConfidence(), "deriv-related", "DErivBase v1.3", rule.getInfo()));
+					rule.getLLemma(), rule.getLPos(), rule.getConfidence(), "deriv-related", "DErivBase v1.4", rule.getInfo()));
 		}
 		return result;
 	}

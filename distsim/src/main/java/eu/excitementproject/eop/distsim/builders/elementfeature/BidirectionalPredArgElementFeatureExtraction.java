@@ -120,7 +120,7 @@ public class BidirectionalPredArgElementFeatureExtraction extends IrelevantListB
 			if (isRelevantSlot(cooccurrence))
 				ret.add(new Pair<Element, Feature>(
 					new PredicateElement(cooccurrence.getTextItem1().toKey()),
-					new ArgumentFeature((PredicateArgumentSlots) cooccurrence.getRelation().getValue(),cooccurrence.getTextItem2().toKey())
+					new ArgumentFeature((PredicateArgumentSlots)cooccurrence.getRelation().getValue(),cooccurrence.getTextItem2().toKey())
 					));
 			else
 				ret.add(new Pair<Element, Feature>(

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+  
+  <!-- Servlets -->
+  
+  <servlet-mapping>
+    <servlet-name>entailmentServlet</servlet-name>
+    <url-pattern>/tracer/entailment</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>entailmentServlet</servlet-name>
+    <servlet-class>eu.excitementproject.eop.tracer.server.EntailmentServiceImpl</servlet-class>
+  </servlet>
+    
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>tracer.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="0073.txt_1_0-0030.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0074.txt_1_1-0287.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_3-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_3-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0073.txt_1_0-0074.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0287.txt_1_1-0030.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0030.txt_1_0-0287.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0030.txt_1_1-0287.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0030.txt_1_1-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0287.txt_1_2-0030.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0073.txt_1_0-0287.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_1-0074.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0074.txt_1_1-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0074.txt_1_0-0030.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0074.txt_1_1-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_3-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0030.txt_1_1-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0073.txt_1_1-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0074.txt_1_1-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0073.txt_1_1-0287.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0074.txt_1_0-0287.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0073.txt_1_1-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0287.txt_1_3-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0030.txt_1_1-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_1-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0287.txt_1_1-0073.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0287.txt_1_3-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0073.txt_1_1-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0073.txt_1_0-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0073.txt_1_0-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0073.txt_1_0-0287.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0073.txt_1_0-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0073.txt_1_1-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0074.txt_1_1-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0074.txt_1_0-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0074.txt_1_0-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0074.txt_1_0-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0074.txt_1_0-0287.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0074.txt_1_0-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0030.txt_1_0-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0030.txt_1_0-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0030.txt_1_0-0287.txt_1_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0030.txt_1_0-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0030.txt_1_1-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0287.txt_1_1-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0287.txt_1_1-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0287.txt_1_1-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_1-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0287.txt_1_1-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_0-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0287.txt_1_0-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0287.txt_1_0-0073.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0287.txt_1_0-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_0-0030.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0287.txt_1_0-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0287.txt_1_0-0074.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0287.txt_1_0-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_0-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0287.txt_1_2-0030.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0287.txt_1_2-0228.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0287.txt_1_2-0073.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_2-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0287.txt_1_2-0074.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0073.txt_1_0-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0030.txt_1_0-0228.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0030.txt_1_0-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0030.txt_1_0-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0030.txt_1_0-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0030.txt_1_0-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0030.txt_1_0-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0030.txt_1_0-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' ancora arrivato</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0030.txt_1_1-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0030.txt_1_1-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0030.txt_1_1-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0030.txt_1_1-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0030.txt_1_1-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0030.txt_1_1-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0030.txt_1_1-0287.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>il mio rimborso non e' arrivato</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0073.txt_1_0-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0073.txt_1_0-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0073.txt_1_0-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0073.txt_1_0-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso da mesi</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0073.txt_1_1-0030.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0073.txt_1_1-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0073.txt_1_1-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0073.txt_1_1-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0073.txt_1_1-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0073.txt_1_1-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0073.txt_1_1-0287.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Aspetto un rimborso</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0074.txt_1_0-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0074.txt_1_0-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0074.txt_1_0-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0074.txt_1_0-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0074.txt_1_0-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso del 2008</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0074.txt_1_1-0030.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0074.txt_1_1-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0074.txt_1_1-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0074.txt_1_1-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0074.txt_1_1-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0074.txt_1_1-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0074.txt_1_1-0287.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>sto ancora aspettando il rimborso</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_0-0030.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0217.txt_1_0-0030.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0217.txt_1_0-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0217.txt_1_0-0073.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_0-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0217.txt_1_0-0074.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_0-0228.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0217.txt_1_0-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0217.txt_1_0-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0217.txt_1_0-0287.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_0-0287.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_1-0030.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0217.txt_1_1-0030.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0217.txt_1_1-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0217.txt_1_1-0073.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_1-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0217.txt_1_1-0074.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_1-0228.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0217.txt_1_1-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0217.txt_1_1-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0217.txt_1_1-0287.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0217.txt_1_1-0287.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>TELEFONIAX non l'ha accreditato</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0228.txt_2_0-0030.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0228.txt_2_0-0030.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0228.txt_2_0-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0228.txt_2_0-0073.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0228.txt_2_0-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0228.txt_2_0-0074.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0228.txt_2_0-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0228.txt_2_0-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0228.txt_2_0-0228.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>Rivoglio il mio risarcimento</h>
+	</pair>
+	<pair id="0228.txt_2_0-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0228.txt_2_0-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0228.txt_2_0-0287.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0228.txt_2_0-0287.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio credito</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0228.txt_3_0-0030.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0228.txt_3_0-0030.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>il mio rimborso non e' arrivato</h>
+	</pair>
+	<pair id="0228.txt_3_0-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0228.txt_3_0-0073.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>Aspetto un rimborso</h>
+	</pair>
+	<pair id="0228.txt_3_0-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0228.txt_3_0-0074.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>sto ancora aspettando il rimborso</h>
+	</pair>
+	<pair id="0228.txt_3_0-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0228.txt_3_0-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0228.txt_3_0-0228.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>Rivoglio il mio credito</h>
+	</pair>
+	<pair id="0228.txt_3_0-0287.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>io sono ancora in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0228.txt_3_0-0287.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>io sono in attesa di un rimborso per una truffa subita</h>
+	</pair>
+	<pair id="0228.txt_3_0-0287.txt_1_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>io sono ancora in attesa di un rimborso</h>
+	</pair>
+	<pair id="0228.txt_3_0-0287.txt_1_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Rivoglio il mio risarcimento</t>
+		<h>io sono in attesa di un rimborso</h>
+	</pair>
+	<pair id="0287.txt_1_0-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0287.txt_1_0-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso per una truffa subita</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0287.txt_1_1-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0287.txt_1_1-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso per una truffa subita</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0287.txt_1_2-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0287.txt_1_2-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0287.txt_1_2-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0287.txt_1_2-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono ancora in attesa di un rimborso</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0287.txt_1_3-0030.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>il mio rimborso non e' ancora arrivato</h>
+	</pair>
+	<pair id="0287.txt_1_3-0073.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>Aspetto un rimborso da mesi</h>
+	</pair>
+	<pair id="0287.txt_1_3-0074.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>sto ancora aspettando il rimborso del 2008</h>
+	</pair>
+	<pair id="0287.txt_1_3-0217.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>ho caricato al bancomat il cell ma TELEFONIAX non l'ha accreditato</h>
+	</pair>
+	<pair id="0287.txt_1_3-0217.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>io sono in attesa di un rimborso</t>
+		<h>TELEFONIAX non l'ha accreditato</h>
+	</pair>
+</entailment-corpus>

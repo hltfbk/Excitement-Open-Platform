@@ -2,15 +2,14 @@ package eu.excitementproject.eop.lap.dkpro;
 
 import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
-import java.util.Map;
-
 //import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 //import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 //import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 //import org.uimafit.factory.AggregateBuilder;
-import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
+//import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
 
 import eu.excitementproject.eop.lap.LAPAccess;
@@ -32,24 +31,12 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 public class TreeTaggerEN extends LAP_ImplBaseAE implements LAPAccess {
 
 	public TreeTaggerEN() throws LAPException {
-		super(); 
-		languageIdentifier = "EN"; // set languageIdentifer, this ID is needed for generateTHPair from String  		
-	}
 
-	public TreeTaggerEN(String[] views) throws LAPException {
-		super(views, null);
-		languageIdentifier = "EN"; 
-	}
-
-	@Override
-	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException{
-		// This example uses DKPro BreakIterSegmenter and TreeTagger. 
-		// simply return them in an array, with order. (sentence segmentation first, then tagging) 
-		// also, this example does not use any arguments (e.g. no model selection, etc) 
+		// 1) prepare AEs
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[2];
 		try 
 		{
-			descArr[0] = createPrimitiveDescription(BreakIteratorSegmenter.class);
+			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
 			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
 		}
 		catch (ResourceInitializationException e)
@@ -57,8 +44,38 @@ public class TreeTaggerEN extends LAP_ImplBaseAE implements LAPAccess {
 			throw new LAPException("Unable to create AE descriptions", e); 
 		}
 		
-		return descArr; 
+		// 2) initialize Views 
+		initializeViews(descArr); 
+
+		// 3) set lang ID 
+		languageIdentifier = "EN"; // set languageIdentifer, this ID is needed for generateTHPair from String  		
 	}
+
+//	public TreeTaggerEN(String[] views) throws LAPException {
+//		super(views, null);
+//		languageIdentifier = "EN"; 
+//	}
+//
+//	@Override
+//	public AnalysisEngineDescription[] listAEDescriptors(Map<String,String> args) throws LAPException{
+//		// This example uses DKPro BreakIterSegmenter and TreeTagger. 
+//		// simply return them in an array, with order. (sentence segmentation first, then tagging) 
+//		// also, this example does not use any arguments (e.g. no model selection, etc) 
+//		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[2];
+//		try 
+//		{
+//			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
+//			//descArr[0] = createPrimitiveDescription(BreakIteratorSegmenter.class);
+//			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
+//		}
+//		catch (ResourceInitializationException e)
+//		{
+//			throw new LAPException("Unable to create AE descriptions", e); 
+//		}
+//		
+//		return descArr; 
+//	}
+	
 }
 
 

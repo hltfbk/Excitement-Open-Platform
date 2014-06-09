@@ -1,14 +1,20 @@
 package eu.excitementproject.eop.distsim.application.converter.db;
 
-import eu.excitementproject.eop.distsim.storage.Redis;
 
-import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
+import eu.excitementproject.eop.distsim.storage.Redis;
+import eu.excitementproject.eop.distsim.util.SortUtil;
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
+import gnu.trove.iterator.TIntObjectIterator;
+import gnu.trove.map.TIntDoubleMap;
 import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntDoubleHashMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 
 /**
  * @author Meni Adler
@@ -33,11 +39,14 @@ public class DIRTSimilaritySQL2Redis {
 		redis.write(RedisBasedStringListBasicMap.ELEMENT_CLASS_NAME_KEY,"eu.excitementproject.eop.distsim.items.PredicateElement");
 		
 		TIntObjectMap<String> id2description = new TIntObjectHashMap<String>();
+		
+		TIntObjectMap<TIntDoubleMap> element2similarities = new TIntObjectHashMap<TIntDoubleMap>();
+		
 		String line=null;
 
 		BufferedReader reader = new BufferedReader(new FileReader(new File(args[0])));
-		//String prefix = "INSERT INTO `reverb_local_distlexfeatures_templates` VALUES ";
-		String prefix = "INSERT INTO `reverb_templates` VALUES ";
+		String prefix = "INSERT INTO `framenet_easyfirst_element_table_no_duplicates` VALUES ";
+		//String prefix = "INSERT INTO `reverb_templates` VALUES ";
 
 		while ((line=reader.readLine())!=null) {
 			if (line.startsWith(prefix)) {
@@ -59,12 +68,12 @@ public class DIRTSimilaritySQL2Redis {
 			}
 		}		
 		reader.close();
-		
+				
 		System.out.println(id2description.size() + " items were found");
 			
 		reader = new BufferedReader(new FileReader(new File(args[0])));
-		//prefix = "INSERT INTO `reverb_local_distlexfeatures_rules` VALUES ";
-		prefix = "INSERT INTO `reverb_rules` VALUES ";
+		prefix = "INSERT INTO `framenet_rules_easyfirst_server_rules8_no_duplicates` VALUES ";
+		//prefix = "INSERT INTO `reverb_rules` VALUES ";
 		int pushedItems=0;
 		while ((line=reader.readLine())!=null) {
 			if (line.startsWith(prefix)) {
@@ -81,29 +90,47 @@ public class DIRTSimilaritySQL2Redis {
 					int id1 = Integer.parseInt(toks[0]);
 					int id2 = Integer.parseInt(toks[1]);
 					double score = Double.parseDouble(toks[2].substring(1,toks[2].length()-1));
-					
-					String item1 = id2description.get(id1);
-					if (item1 == null) {
-						System.out.println("Unmapped item id1: " + id1);
-						continue;
+					TIntDoubleMap similarities = element2similarities.get(id1);
+					if (similarities == null) {
+						similarities = new TIntDoubleHashMap();
+						element2similarities.put(id1, similarities);
 					}
-					String item2 = id2description.get(id2);
-					if (item2 == null) {
-						System.out.println("Unmapped item id2: " + id2);
-						continue;
-					}
-					
-					if (item2.contains(RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER))
-						System.out.println("Element " + item2 + " contains the delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + "', and considered insignificant. The element is filtered from the model");
-					else {
-						redis.rpush(item1, item2 + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + score);
-						pushedItems++;
-					}
+					similarities.put(id2, score);					
 					i++;
 				}
 			}
-		}		
+		}
 		reader.close();
+		
+		TIntObjectIterator<TIntDoubleMap> it = element2similarities.iterator();
+		while (it.hasNext()) {
+			
+			it.advance();
+			int leftId = it.key();
+			String left = id2description.get(leftId);
+			if (left == null) {
+				System.out.println("Unmapped item leftId: " + leftId);
+				continue;
+			}
+			TIntDoubleMap rightSimilarities = it.value();
+			LinkedHashMap<Integer, Double> sortedElementScores = SortUtil.sortMapByValue(rightSimilarities,true);			
+
+			for (Entry<Integer, Double> entry : sortedElementScores.entrySet()) {
+				int rightId = entry.getKey();
+				String right = id2description.get(rightId);
+				if (right == null) {
+					System.out.println("Unmapped item rightId: " + rightId);
+					continue;
+				}
+				double score = entry.getValue();
+				if (right.contains(RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER))
+					System.out.println("Element " + right + " contains the delimiter '" + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + "', and considered insignificant. The element is filtered from the model");
+				else {
+					redis.rpush(left, right + RedisBasedStringListBasicMap.ELEMENT_SCORE_DELIMITER + score);
+					pushedItems++;
+				}				
+			}
+		}
 		
 		System.out.println(pushedItems + " items were added to Redis");
 

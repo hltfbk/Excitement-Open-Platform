@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="0213.txt_2_1-0262.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0303.txt_3_0-0098.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0262.txt_2_1-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0067.txt_1_1-0303.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0213.txt_2_3-0262.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0213.txt_2_3-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0303.txt_3_0-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0067.txt_1_1-0213.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0262.txt_2_0-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0213.txt_2_2-0262.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0213.txt_2_2-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0213.txt_2_1-0262.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0213.txt_2_1-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0067.txt_1_1-0262.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0067.txt_1_1-0098.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0067.txt_1_1-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0213.txt_2_0-0262.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0213.txt_2_0-0262.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0213.txt_2_0-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0067.txt_1_0-0262.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0067.txt_1_0-0213.txt_2_3" entailment="ENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0067.txt_1_0-0098.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0067.txt_1_0-0303.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0067.txt_1_0-0303.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0067.txt_1_0-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0067.txt_1_0-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0067.txt_1_0-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0067.txt_1_0-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0067.txt_1_0-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0067.txt_1_1-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0067.txt_1_1-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0067.txt_1_1-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0067.txt_1_1-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0067.txt_1_1-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non mi rispondono</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0098.txt_2_0-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0098.txt_2_0-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0098.txt_2_0-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0098.txt_2_0-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0098.txt_2_0-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0098.txt_2_0-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0098.txt_2_0-0213.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0098.txt_2_0-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0098.txt_2_0-0262.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0098.txt_2_0-0303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0098.txt_2_0-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>servizio che fa pena</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0174.txt_1_0-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0174.txt_1_0-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0174.txt_1_0-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0174.txt_1_0-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0174.txt_1_0-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0174.txt_1_0-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0174.txt_1_0-0213.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0174.txt_1_0-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0174.txt_1_0-0262.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0174.txt_1_0-0303.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>lasciate la gente con problemi</h>
+	</pair>
+	<pair id="0174.txt_1_0-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Pessima Gestione Commerciale</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0213.txt_2_0-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_0-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_0-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0213.txt_2_0-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0213.txt_2_0-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea senza alcun preavviso</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0213.txt_2_1-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_1-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_1-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0213.txt_2_1-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0213.txt_2_1-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea senza alcun preavviso</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0213.txt_2_2-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_2-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_2-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0213.txt_2_2-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0213.txt_2_2-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0213.txt_2_2-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>a mia madre è stata immediamente staccata la linea</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0213.txt_2_3-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_3-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0213.txt_2_3-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0213.txt_2_3-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0213.txt_2_3-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0213.txt_2_3-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>staccata la linea</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0262.txt_2_0-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0262.txt_2_0-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0262.txt_2_0-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0262.txt_2_0-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0262.txt_2_0-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0262.txt_2_0-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0262.txt_2_0-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0262.txt_2_0-0213.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0262.txt_2_0-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tizio vestito da tecnico ti sistemi la linea</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0262.txt_2_1-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0262.txt_2_1-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0262.txt_2_1-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0262.txt_2_1-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0262.txt_2_1-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0262.txt_2_1-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0262.txt_2_1-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0262.txt_2_1-0213.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0262.txt_2_1-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>attesa che un tecnico ti sistemi la linea</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0303.txt_2_0-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0303.txt_2_0-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0303.txt_2_0-0098.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>servizio che fa pena</h>
+	</pair>
+	<pair id="0303.txt_2_0-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0303.txt_2_0-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0303.txt_2_0-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0303.txt_2_0-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0303.txt_2_0-0213.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0303.txt_2_0-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0303.txt_2_0-0262.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0303.txt_2_0-0303.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>lasciate la gente con problemi</t>
+		<h>non vi preocupate dei clienti</h>
+	</pair>
+	<pair id="0303.txt_3_0-0067.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>ho provato a scrivere alla mail del servizio post vendita della TELEFONIAX ma non mi rispondono</h>
+	</pair>
+	<pair id="0303.txt_3_0-0067.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>non mi rispondono</h>
+	</pair>
+	<pair id="0303.txt_3_0-0174.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>Pessima Gestione Commerciale</h>
+	</pair>
+	<pair id="0303.txt_3_0-0213.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>a mia madre è stata immediamente staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0303.txt_3_0-0213.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>staccata la linea senza alcun preavviso</h>
+	</pair>
+	<pair id="0303.txt_3_0-0213.txt_2_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>a mia madre è stata immediamente staccata la linea</h>
+	</pair>
+	<pair id="0303.txt_3_0-0213.txt_2_3" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>staccata la linea</h>
+	</pair>
+	<pair id="0303.txt_3_0-0262.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>attesa che un tizio vestito da tecnico ti sistemi la linea</h>
+	</pair>
+	<pair id="0303.txt_3_0-0262.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>non vi preocupate dei clienti</t>
+		<h>attesa che un tecnico ti sistemi la linea</h>
+	</pair>
+</entailment-corpus>

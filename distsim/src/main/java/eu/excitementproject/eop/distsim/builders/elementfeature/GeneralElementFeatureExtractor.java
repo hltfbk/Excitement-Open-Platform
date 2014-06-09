@@ -77,6 +77,20 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.builders.elementfeature.ElementsFeaturesExtractor#constructElementFeatureDB(org.excitement.distsim.storage.CooccurrenceStorage)
 	 */
+	@Override 
+	public ElementFeatureCountStorage constructElementFeatureDB(BasicCooccurrenceStorage cooccurrenceDB,
+			CountableIdentifiableStorage elementStorage) throws ElementFeatureCountsDBConstructionException {
+		try {
+			CountableIdentifiableStorage<Feature> featureStorage = dataStructureFactory.createFeaturesDataStucture();
+			return constructElementFeatureDB(cooccurrenceDB,elementStorage,featureStorage);
+		} catch (Exception e) {
+			throw new ElementFeatureCountsDBConstructionException(e);
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.builders.elementfeature.ElementsFeaturesExtractor#constructElementFeatureDB(org.excitement.distsim.storage.CooccurrenceStorage)
+	 */
 	@SuppressWarnings("unchecked")
 	@Override 
 	public ElementFeatureCountStorage constructElementFeatureDB(
@@ -295,23 +309,27 @@ public class GeneralElementFeatureExtractor implements ElementFeatureExtractor {
 			}
 			
 			
-			if (prevElementDeviceParams != null && prevFeatureDeviceParams != null) {
+			if (prevElementDeviceParams != null) {
 				PersistenceDevice elementsDevice = (PersistenceDevice)Factory.create(prevElementDeviceParams.get(Configuration.CLASS), prevElementDeviceParams);
 				elementsDevice.open();
 				CountableIdentifiableStorage<Element> elements = dataStructureFactory.createElementsDataStucture();
 				elements.loadState(elementsDevice);
 				elementsDevice.close();
 				elements.resetCounts();
-				PersistenceDevice featuresDevice = (PersistenceDevice)Factory.create(prevFeatureDeviceParams.get(Configuration.CLASS), prevFeatureDeviceParams);
-				featuresDevice.open();
-				CountableIdentifiableStorage<Feature> features = dataStructureFactory.createFeaturesDataStucture();
-				features.loadState(featuresDevice);
-				featuresDevice.close();
-				features.resetCounts();
+				logger.info("Using previous elements");
 				
-				logger.info("Using previous elements and features");
+				if (prevFeatureDeviceParams != null) {
+					PersistenceDevice featuresDevice = (PersistenceDevice)Factory.create(prevFeatureDeviceParams.get(Configuration.CLASS), prevFeatureDeviceParams);
+					featuresDevice.open();
+					CountableIdentifiableStorage<Feature> features = dataStructureFactory.createFeaturesDataStucture();
+					features.loadState(featuresDevice);
+					featuresDevice.close();
+					features.resetCounts();
+					logger.info("Using previous features");	
+					db = extractor.constructElementFeatureDB(cooccurrenceDB, elements, features);
+				} else
+					db = extractor.constructElementFeatureDB(cooccurrenceDB, elements);
 				
-				db = extractor.constructElementFeatureDB(cooccurrenceDB, elements, features);
 			} else
 				db = extractor.constructElementFeatureDB(cooccurrenceDB);
 			

@@ -98,6 +98,8 @@ public abstract class WikipediaLexicalInferencesMiner {
 		// configure the database connection parameters for the jwpl
 		final DatabaseConfiguration dbConfig = new DatabaseConfiguration();
 		
+		m_logger.info("Initializing the configuration parameters ...");
+		
 		try {
 			ConfigurationParams jwplConf = conf.getModuleConfiguration("jwpl");
 			
@@ -114,7 +116,7 @@ public abstract class WikipediaLexicalInferencesMiner {
 			return;
 		}
 		
-		
+		System.out.println("Getting the extraction parameters ...");
 		
 		ConfigurationParams databaseConf;
 		boolean useCategory,useRedirect,useLink,useParenthesis,useLexicalIDM,useSyntacticIDM;
@@ -138,6 +140,7 @@ public abstract class WikipediaLexicalInferencesMiner {
 		}
 		
 		
+		m_logger.info("Getting parameters for new database  ...");
 		
 		try {
 			// where we save the inferences to
@@ -148,18 +151,23 @@ public abstract class WikipediaLexicalInferencesMiner {
 		}
 		
 		
+		m_logger.info("Creating the Wikipedia object ...");
+		
 		// Create the Wikipedia object
 		Wikipedia wiki = new Wikipedia(dbConfig);
 
 
-		logger.info("Wikipedia object was created");
-	
+		m_logger.info("Wikipedia object was created");
+			
 		try {
 			processingToolsConf = conf.getModuleConfiguration("processing_tools");
 		} catch (ConfigurationException e) {
 			m_logger.fatal("module \"processing_tools\" in configuration file is missing. "+e.getMessage());
 			return;
 		}
+		
+		m_logger.info("Tools configuration gathered");
+		
 		String stopwordsFilePath;
 		try {
 			stopwordsFilePath = processingToolsConf.getString("stopwordsFilePath");
@@ -313,6 +321,9 @@ public abstract class WikipediaLexicalInferencesMiner {
 	protected void startExtractorInNewThread(final Wikipedia wiki, final IExtractor extractor,final ConfigurationParams databaseConf) {
 		Thread thread = new Thread(){
 		    public void run(){
+		    	
+		    	m_logger.info("Running extractor " + extractor.toString() + " and parameters " + databaseConf.toString());
+		    	
 		    	RunExtractor(wiki, extractor,databaseConf);
 		        
 		    }

@@ -4,6 +4,7 @@
 package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.io.FileNotFoundException;
+
 import java.util.Collection;
 
 
@@ -39,16 +40,16 @@ import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.StringBasedElement;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
-import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
 import eu.excitementproject.eop.distsim.util.Configuration;
+import eu.excitementproject.eop.redis.RedisRunException;
 
 /**
- * Implements the SyntacticResource for DIRT rules stored in a {@link eu.excitementproject.eop.distsim.storage.SimilarityStorage}
+ * Implements the SyntacticResource for DIRT rules stored in a {@link eu.excitementproject.eop.redis.SimilarityStorage}
  * 
  * @author Meni Adler
  * @since Aug 28 2013

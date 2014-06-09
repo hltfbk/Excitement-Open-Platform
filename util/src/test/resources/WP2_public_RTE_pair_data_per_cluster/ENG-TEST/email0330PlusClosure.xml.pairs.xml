@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="152552.txt_2_0-217842.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>More magazines in the lounge</t>
+		<h>more magazines</h>
+	</pair>
+	<pair id="38058.txt_5_0-217842.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>poor selection of English papers</t>
+		<h>more news papers</h>
+	</pair>
+	<pair id="38058.txt_4_0-152552.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>poor selection of English mags</t>
+		<h>More magazines in the lounge</h>
+	</pair>
+	<pair id="38058.txt_4_0-217842.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>poor selection of English mags</t>
+		<h>more magazines</h>
+	</pair>
+	<pair id="472607.txt_9_0-217842.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Magazines for children</t>
+		<h>more magazines</h>
+	</pair>
+	<pair id="152552.txt_2_0-217842.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More magazines in the lounge</t>
+		<h>more news papers</h>
+	</pair>
+	<pair id="152552.txt_2_0-38058.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More magazines in the lounge</t>
+		<h>poor selection of English mags</h>
+	</pair>
+	<pair id="152552.txt_2_0-38058.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More magazines in the lounge</t>
+		<h>poor selection of English papers</h>
+	</pair>
+	<pair id="152552.txt_2_0-472607.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More magazines in the lounge</t>
+		<h>Magazines for children</h>
+	</pair>
+	<pair id="152552.txt_2_0-513560.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>More magazines in the lounge</t>
+		<h>Magazine selection too French</h>
+	</pair>
+	<pair id="217842.txt_3_0-152552.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more news papers</t>
+		<h>More magazines in the lounge</h>
+	</pair>
+	<pair id="217842.txt_3_0-217842.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more news papers</t>
+		<h>more magazines</h>
+	</pair>
+	<pair id="217842.txt_3_0-38058.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more news papers</t>
+		<h>poor selection of English mags</h>
+	</pair>
+	<pair id="217842.txt_3_0-38058.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more news papers</t>
+		<h>poor selection of English papers</h>
+	</pair>
+	<pair id="217842.txt_3_0-472607.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more news papers</t>
+		<h>Magazines for children</h>
+	</pair>
+	<pair id="217842.txt_3_0-513560.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more news papers</t>
+		<h>Magazine selection too French</h>
+	</pair>
+	<pair id="217842.txt_4_0-152552.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more magazines</t>
+		<h>More magazines in the lounge</h>
+	</pair>
+	<pair id="217842.txt_4_0-217842.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more magazines</t>
+		<h>more news papers</h>
+	</pair>
+	<pair id="217842.txt_4_0-38058.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more magazines</t>
+		<h>poor selection of English mags</h>
+	</pair>
+	<pair id="217842.txt_4_0-38058.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more magazines</t>
+		<h>poor selection of English papers</h>
+	</pair>
+	<pair id="217842.txt_4_0-472607.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more magazines</t>
+		<h>Magazines for children</h>
+	</pair>
+	<pair id="217842.txt_4_0-513560.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>more magazines</t>
+		<h>Magazine selection too French</h>
+	</pair>
+	<pair id="38058.txt_4_0-217842.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English mags</t>
+		<h>more news papers</h>
+	</pair>
+	<pair id="38058.txt_4_0-38058.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English mags</t>
+		<h>poor selection of English papers</h>
+	</pair>
+	<pair id="38058.txt_4_0-472607.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English mags</t>
+		<h>Magazines for children</h>
+	</pair>
+	<pair id="38058.txt_4_0-513560.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English mags</t>
+		<h>Magazine selection too French</h>
+	</pair>
+	<pair id="38058.txt_5_0-152552.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English papers</t>
+		<h>More magazines in the lounge</h>
+	</pair>
+	<pair id="38058.txt_5_0-217842.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English papers</t>
+		<h>more magazines</h>
+	</pair>
+	<pair id="38058.txt_5_0-38058.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English papers</t>
+		<h>poor selection of English mags</h>
+	</pair>
+	<pair id="38058.txt_5_0-472607.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English papers</t>
+		<h>Magazines for children</h>
+	</pair>
+	<pair id="38058.txt_5_0-513560.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>poor selection of English papers</t>
+		<h>Magazine selection too French</h>
+	</pair>
+	<pair id="472607.txt_9_0-152552.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazines for children</t>
+		<h>More magazines in the lounge</h>
+	</pair>
+	<pair id="472607.txt_9_0-217842.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazines for children</t>
+		<h>more news papers</h>
+	</pair>
+	<pair id="472607.txt_9_0-38058.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazines for children</t>
+		<h>poor selection of English mags</h>
+	</pair>
+	<pair id="472607.txt_9_0-38058.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazines for children</t>
+		<h>poor selection of English papers</h>
+	</pair>
+	<pair id="472607.txt_9_0-513560.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazines for children</t>
+		<h>Magazine selection too French</h>
+	</pair>
+	<pair id="513560.txt_5_0-152552.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazine selection too French</t>
+		<h>More magazines in the lounge</h>
+	</pair>
+	<pair id="513560.txt_5_0-217842.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazine selection too French</t>
+		<h>more news papers</h>
+	</pair>
+	<pair id="513560.txt_5_0-217842.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazine selection too French</t>
+		<h>more magazines</h>
+	</pair>
+	<pair id="513560.txt_5_0-38058.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazine selection too French</t>
+		<h>poor selection of English mags</h>
+	</pair>
+	<pair id="513560.txt_5_0-38058.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazine selection too French</t>
+		<h>poor selection of English papers</h>
+	</pair>
+	<pair id="513560.txt_5_0-472607.txt_9_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Magazine selection too French</t>
+		<h>Magazines for children</h>
+	</pair>
+</entailment-corpus>

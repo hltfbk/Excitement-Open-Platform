@@ -19,6 +19,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
@@ -40,9 +41,12 @@ public class ConfigFileUtils {
 	public static String sectionTag = "section";
 	public static String propertyTag = "property";
 	
+	
 	public static String getAttribute(File file, String attr) {
 
-		System.out.println("Looking for a value for attribute: " + attr);
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.ConfigFileUtils:getAttribute");
+
+		logger.info("Looking for a value for attribute: " + attr);
 		
 		Document configDoc = parse(file);
 		NodeList sectionList = configDoc.getElementsByTagName(sectionTag);
@@ -50,7 +54,7 @@ public class ConfigFileUtils {
 		String value = findAttributeRec(sectionList, attr);
 		
 		if (value != null) {
-			System.out.println("Value for attribute " + attr + " : " + value);
+			logger.info("Value for attribute " + attr + " : " + value);
 		}
 		
 		return value;
@@ -61,10 +65,12 @@ public class ConfigFileUtils {
 		Document configDoc = parse(file);
 		NodeList sectionList = configDoc.getElementsByTagName(sectionTag);
 		
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.ConfigFileUtils:getAttribute");
+		
 		NodeList nodesList = findNodesWithTag(sectionList, configTag);
 		String edaName = findAttribute(nodesList, edaTag);
 				
-		System.out.println("EDA class name from config file: " + edaName);
+		logger.info("EDA class name from config file: " + edaName);
 		
 		return edaName;
 	}
@@ -135,13 +141,16 @@ public class ConfigFileUtils {
 	
 	
 	private static String getOptionValue(String tagName, EOPRunnerCmdOptions option) {
+		
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.ConfigFileUtils:getOptionValue");
+
 		if (tagName.equals("activatedEDA"))
 			return option.eda;
 		
 		if(tagName.equals("language"))
 			return option.language;
 		
-		System.out.println("Unknown user option: " + tagName);
+		logger.error("Unknown user option: " + tagName);
 		return "";
 	}
 	

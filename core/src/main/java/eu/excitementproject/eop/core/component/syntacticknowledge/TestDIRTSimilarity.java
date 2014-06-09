@@ -5,6 +5,7 @@ package eu.excitementproject.eop.core.component.syntacticknowledge;
 
 import java.io.File;
 
+
 import java.io.FileNotFoundException;
 
 import java.util.List;
@@ -22,12 +23,12 @@ import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.distsim.builders.reader.FileBasedSentenceReader;
 import eu.excitementproject.eop.distsim.builders.reader.SentenceReaderException;
 import eu.excitementproject.eop.distsim.builders.reader.XMLNodeSentenceReader;
-import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.ElementTypeException;
 import eu.excitementproject.eop.distsim.storage.SimilarityNotFoundException;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.FileUtils;
 import eu.excitementproject.eop.distsim.util.Pair;
+import eu.excitementproject.eop.redis.RedisRunException;
 
 /**
  * A program which demonstrates how to access a given DIRT distributional similarity model via {@link SyntacticInterface}, 
