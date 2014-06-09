@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="313632.txt_7_0-530848.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>no enough options</t>
+		<h>diversity of food limited</h>
+	</pair>
+	<pair id="526592.txt_1_0-389749.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Child meal not suitable</t>
+		<h>More child friendly meal options</h>
+	</pair>
+	<pair id="440663.txt_1_0-428613.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>healthier food in the lounge</t>
+		<h>Healthier foods at the bar buffet</h>
+	</pair>
+	<pair id="373217.txt_1_1-213508.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Hot snacks would be an improvement</t>
+		<h>no hot food</h>
+	</pair>
+	<pair id="472607.txt_3_1-296192.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>there is no food for kids</t>
+		<h>Food choice is weird</h>
+	</pair>
+	<pair id="164111.txt_1_1-522350.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Reinstate a decent breakfast</t>
+		<h>better food selection</h>
+	</pair>
+	<pair id="330024.txt_1_0-205826.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Hot meal on all trips</t>
+		<h>Better food selection</h>
+	</pair>
+	<pair id="526592.txt_1_0-189187.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Child meal not suitable</t>
+		<h>More variety of food would improve service</h>
+	</pair>
+	<pair id="213508.txt_1_1-209734.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>no hot food</t>
+		<h>more choice of food</h>
+	</pair>
+	<pair id="32676.txt_4_1-522350.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>I always get bland food</t>
+		<h>better food selection</h>
+	</pair>
+	<pair id="32676.txt_4_1-272237.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>I always get bland food</t>
+		<h>Expand the meal options</h>
+	</pair>
+	<pair id="472607.txt_3_1-293614.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>there is no food for kids</t>
+		<h>better food choices</h>
+	</pair>
+	<pair id="63301.txt_2_1-237090.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>You could bring back hot meals</t>
+		<h>More choice of food</h>
+	</pair>
+	<pair id="428613.txt_1_0-440663.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Healthier foods at the bar buffet</t>
+		<h>healthier food in the lounge</h>
+	</pair>
+	<pair id="327783.txt_1_1-193822.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>There should be a choice of meal</t>
+		<h>Food options have room for improvement</h>
+	</pair>
+	<pair id="330024.txt_1_0-530848.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Hot meal on all trips</t>
+		<h>diversity of food limited</h>
+	</pair>
+	<pair id="373217.txt_1_1-209734.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Hot snacks would be an improvement</t>
+		<h>more choice of food</h>
+	</pair>
+	<pair id="428613.txt_7_1-189187.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>The food choices are limted</t>
+		<h>More variety of food would improve service</h>
+	</pair>
+	<pair id="451113.txt_4_0-272237.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be ready to pay higher price for full dinner with hot meal</t>
+		<h>Expand the meal options</h>
+	</pair>
+	<pair id="451113.txt_4_0-63301.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be ready to pay higher price for full dinner with hot meal</t>
+		<h>You could bring back hot meals</h>
+	</pair>
+	<pair id="526592.txt_1_0-472607.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Child meal not suitable</t>
+		<h>there is no food for kids</h>
+	</pair>
+	<pair id="220190.txt_4_2-522350.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>We would welcome back the hot meal</t>
+		<h>better food selection</h>
+	</pair>
+	<pair id="213508.txt_1_1-205826.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>no hot food</t>
+		<h>Better food selection</h>
+	</pair>
+	<pair id="59665.txt_1_1-189187.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Choice of meal not available</t>
+		<h>More variety of food would improve service</h>
+	</pair>
+	<pair id="406369.txt_20_0-428613.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>not enough fruit</t>
+		<h>Healthier foods</h>
+	</pair>
+	<pair id="293614.txt_4_0-313632.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>better food choices</t>
+		<h>no enough options</h>
+	</pair>
+	<pair id="160668.txt_1_1-488224.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>poor to have stopped serving a hot meal in standard magnum</t>
+		<h>Was expecting food to be more substantial in standard magnum</h>
+	</pair>
+	<pair id="313632.txt_8_0-327783.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>no enough French products</t>
+		<h>There should be a choice of meal</h>
+	</pair>
+	<pair id="406369.txt_19_0-272237.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>not enough vegetables</t>
+		<h>Expand the meal options</h>
+	</pair>
+	<pair id="406369.txt_19_0-296192.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>not enough vegetables</t>
+		<h>Food choice is weird</h>
+	</pair>
+	<pair id="455758.txt_6_0-237090.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>please provide better choice of healthy options</t>
+		<h>More choice of food</h>
+	</pair>
+	<pair id="451113.txt_4_0-209734.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be ready to pay higher price for full dinner with hot meal</t>
+		<h>more choice of food</h>
+	</pair>
+	<pair id="313632.txt_7_0-189187.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>no enough options</t>
+		<h>More variety of food would improve service</h>
+	</pair>
+	<pair id="59665.txt_1_1-313632.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Choice of meal not available</t>
+		<h>no enough options</h>
+	</pair>
+	<pair id="59665.txt_1_1-267457.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Choice of meal not available</t>
+		<h>Food could be with more choice</h>
+	</pair>
+	<pair id="368719.txt_1_0-272237.txt_7_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>more choice of hot food would be nice</t>
+		<h>Expand the meal options</h>
+	</pair>
+	<pair id="272237.txt_7_1-193822.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Expand the meal options</t>
+		<h>Food options have room for improvement</h>
+	</pair>
+</entailment-corpus>
+

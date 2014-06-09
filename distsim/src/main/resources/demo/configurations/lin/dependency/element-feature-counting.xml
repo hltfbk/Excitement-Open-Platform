@@ -16,17 +16,25 @@
    
     <!-- The name of the class that implements the eu.excitementproject.eop.distsim.builders.elementfeature.ElementFeatureExtraction interface. 
           Current options:
-	      * eu.excitementproject.eop.distsim.builders.elementfeature.BidirectionalPredArgElementFeatureExtraction: extract predicate elements, and there arguments (X or Y, according to the following 'slot' feature) as features. 
+	      * Wordeu.excitementproject.eop.distsim.builders.elementfeature.BidirectionalPredArgElementFeatureExtraction
+	        Extracts predicate elements, and there arguments (X or Y, according to the following 'slot' feature) as features. 
 	        Required features:
-                    * slot: denotes whether the features are the X ('X') or the Y ('Y') arguments.
-		    * stop-words-file: an optional parameter which denotes the path to a file, composed of stop words (word per line), which should be excluded from the element and/or feature sets.
-                    * min-count: minimal number of counts for extracted element.
-	      * eu.excitementproject.eop.distsim.builders.elementfeature.LemmaPosBasedElementFeatureExtraction, extract elements and features, composed of lemma and part of speech, where the element is the head and the feature is the dependent word. 
+                 * slot: denotes whether the features are the X ('X') or the Y ('Y') arguments.
+		         * stop-words-file: an optional parameter which denotes the path to a file, composed of stop words (word per line), which should be excluded from the element and/or feature sets.
+                 * min-count: minimal number of counts for extracted element.
+	      * eu.excitementproject.eop.distsim.builders.elementfeature.LemmaPosBasedElementFeatureExtraction
+	        Extracts elements and features, composed of lemma and part of speech, where the element is the head and the feature is the dependent word. 
 	        Required parameters:
-                    * include-dependency-relation: denotes whether the features should include the dependency relation (true) or not (false).
-                    * stop-words-file: an optional parameter which denotes the path to a file, composed of excluded stop words (word per line).
-                    * relevant-pos-list (optional): a list of relevant part-of-speeches for elements and features. In case this parameter is not defined all pos are considered relevant. The name of the pos should be defined in capital letters, according to the enum strings of CanonicalPosTag.
-                    * min-count: minimal number of counts for extracted element.-->
+                 * include-dependency-relation: denotes whether the features should include the dependency relation (true) or not (false).
+                 * stop-words-file: an optional parameter which denotes the path to a file, composed of excluded stop words (word per line).
+                 * relevant-pos-list (optional): a list of relevant part-of-speeches for elements and features. In case this parameter is not defined all pos are considered relevant. The name of the pos should be defined in capital letters, according to the enum strings of CanonicalPosTag.
+                 * min-count: minimal number of counts for extracted element.
+          * eu.excitementproject.eop.distsim.builders.elementfeature.WordPairBasedElementFeatureExtraction
+            Extracts two element-feature pairs, from a given co-occurrence of two items, each element-pair composed of a string word, where the element is the element is one of the words and the feature is the other word, with no dependency relation.
+			Required configuration properties:
+				 * stop-word-file: the path to a text file, composed of stop words to be filtered from the model features, word per line (default, no stop-word list).
+				 * min-count: the minimal number of occurrences for each element (i.e., a word that occurs less then this minimal number would not form an element).
+    -->
    <property name="extraction-class">eu.excitementproject.eop.distsim.builders.elementfeature.LemmaPosBasedElementFeatureExtraction</property>
    <property name="include-dependency-relation">true</property>
    <property name="relevant-pos-list">NN,N,V,ADJ,ADV</property>

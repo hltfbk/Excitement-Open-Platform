@@ -50,8 +50,11 @@ public enum KnowledgeResource
 	REDIS_LIN_PROXIMITY("redis-lin-proximity",false,"redis-lin-proximity",true),
 	REDIS_LIN_DEPENDENCY("redis-lin-dependency",false,"redis-lin-dependency",true),
 	REDIS_BAP("redis-bap",false,"redis-bap",true),
+	REDIS_WIKI("redis-wiki",false,"redis-wiki",true),
+	REDIS_GEO("redis-geo",false,"redis-geo",true),
 	REDIS_DIRT(null,false,"redis-dirt",false,true),
-	REDIS_REVERB(null,false,"redis-reverb",false,true)
+	REDIS_REVERB(null,false,"redis-reverb",false,true),
+	REDIS_FRAMENET(null,false,"redis-framenet",false,true),
 	;
 
 	public String getModuleName()

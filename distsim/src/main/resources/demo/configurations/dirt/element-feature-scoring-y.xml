@@ -171,7 +171,7 @@
 		         * redis-file: a path to the Redis file to store the co-occurrences
 	-->
 	<property name="class">eu.excitementproject.eop.distsim.storage.File</property>
-	<property name="file">models/dirt/elements-x</property>
+	<property name="file">models/dirt/elements-y</property>
 	<property name="read-write">read</property>
 </section>
 

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+	<pair id="189492.txt_1_1-46653.txt_8_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>need power supply at every seat</t>
+		<h>charging points on train would be good</h>
+	</pair>
+	<pair id="330688.txt_1_0-472607.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>No considerations for the needs of passengers with small children</t>
+		<h>More child friendly</h>
+	</pair>
+	<pair id="445370.txt_2_1-46653.txt_8_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Not much plugs</t>
+		<h>charging points would be good</h>
+	</pair>
+	<pair id="189492.txt_1_2-461540.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>need power supply</t>
+		<h>better charging for electronics</h>
+	</pair>
+	<pair id="46653.txt_8_1-189492.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>charging points on train would be good</t>
+		<h>need power supply at every seat</h>
+	</pair>
+	<pair id="46653.txt_8_2-524160.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>charging points would be good</t>
+		<h>could do with more electricity points</h>
+	</pair>
+	<pair id="330688.txt_1_0-440663.txt_10_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>No considerations for the needs of passengers with small children</t>
+		<h>have kid - friendly coaches</h>
+	</pair>
+	<pair id="445370.txt_2_1-189492.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>Not much plugs</t>
+		<h>need power supply</h>
+	</pair>
+	<pair id="305036.txt_5_1-305036.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>train is often late</t>
+		<h>timetable is not always accurate</h>
+	</pair>
+	<pair id="305036.txt_5_3-305036.txt_4_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>train is late</t>
+		<h>timetable is not accurate</h>
+	</pair>
+	<pair id="445370.txt_2_0-46653.txt_8_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Not much plugs to work</t>
+		<h>charging points on train would be good</h>
+	</pair>
+	<pair id="189492.txt_1_1-524160.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>need power supply at every seat</t>
+		<h>could do with more electricity points to charge laptop</h>
+	</pair>
+	<pair id="445370.txt_2_0-524160.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Not much plugs to work</t>
+		<h>could do with more electricity points to charge laptop</h>
+	</pair>
+	<pair id="445370.txt_2_1-461540.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Not much plugs</t>
+		<h>better charging for electronics</h>
+	</pair>
+	<pair id="46653.txt_8_2-461540.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>charging points would be good</t>
+		<h>better charging for electronics</h>
+	</pair>
+	<pair id="189492.txt_1_0-46653.txt_8_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>need power supply at every seat in business</t>
+		<h>Phone charging points on train would be good</h>
+	</pair>
+	<pair id="524160.txt_2_1-445370.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>could do with more electricity points</t>
+		<h>Not much plugs</h>
+	</pair>
+	<pair id="524160.txt_2_1-189492.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>could do with more electricity points</t>
+		<h>need power supply</h>
+	</pair>
+	<pair id="524160.txt_2_1-46653.txt_8_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>could do with more electricity points</t>
+		<h>charging points would be good</h>
+	</pair>
+	<pair id="524160.txt_2_0-445370.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>could do with more electricity points to charge laptop</t>
+		<h>Not much plugs to work</h>
+	</pair>
+	<pair id="524160.txt_2_1-461540.txt_7_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>could do with more electricity points</t>
+		<h>better charging for electronics</h>
+	</pair>
+	<pair id="46653.txt_8_2-189492.txt_1_2" entailment="ENTAILMENT" task="usecase1" >
+		<t>charging points would be good</t>
+		<h>need power supply</h>
+	</pair>
+</entailment-corpus>
+

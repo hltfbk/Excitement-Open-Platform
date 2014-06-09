@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.distsim.redisinjar;
 
 import static org.junit.Assert.*;
+
 import static org.junit.Assume.*;
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +20,8 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
-import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
 
 public class EmbeddedRedisServerRunnerTest {
 

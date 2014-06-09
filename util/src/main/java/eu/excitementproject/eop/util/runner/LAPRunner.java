@@ -3,10 +3,15 @@ package eu.excitementproject.eop.util.runner;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
+import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
@@ -45,7 +50,15 @@ public class LAPRunner {
 		logger = Logger.getLogger("eu.excitementproject.eop.util.runner.LAPRunner");
 		
 		language = ConfigFileUtils.getAttribute(configFile, "language");
-		initializeLAP(getLAPClass(configFile));	
+		
+		Pattern biuteeP = Pattern.compile(".*biutee.*",Pattern.CASE_INSENSITIVE);
+		Matcher biuteeM = biuteeP.matcher(configFile.getName());
+		
+		if (biuteeM.matches()) {
+			initializeLAP(getLAPClass(configFile), configFile);
+		} else {
+			initializeLAP(getLAPClass(configFile));
+		}
 	}
 	
 
@@ -84,7 +97,28 @@ public class LAPRunner {
 		} 
 	}
 	
+	/**
+	 * Initializes the LAP based on the lap parameter (if given) and the language information in the configuration file
+	 * 
+	 * @param option -- (parsed) command arguments
+	 */
+	public void initializeLAP(String lapClassName, File configFile) {
+				
+		logger.info("LAP initialized from class " + lapClassName);
+		try {
 
+//			CommonConfig config = new ImplCommonConfig(configFile);
+		
+			Class<?> lapClass = Class.forName(lapClassName);
+			Constructor<?> lapClassConstructor = lapClass.getConstructor(CommonConfig.class);
+			lap = (LAPAccess) lapClassConstructor.newInstance(new ImplCommonConfig(configFile));
+//			lap = (LAPAccess) lapClassConstructor.newInstance(config);
+			
+		} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | ConfigurationException e) {
+			logger.error("Error initializing LAP : " + e.getClass());
+			e.printStackTrace();
+		} 
+	}
 
 	
 	/**

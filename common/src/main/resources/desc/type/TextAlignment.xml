@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <name>TextAlignment</name>
-  <description>A simple annotation type is provided for text alignment. EXCITEMENT.alignment.AlignedText rep-
+  <description>This type has been deprecated. Do not use it any more! 
+
+A simple annotation type is provided for text alignment. EXCITEMENT.alignment.AlignedText rep-
 resent an aligned textual unit. It is a uima.tcas.Annotation. Its span refers to the "source" linguistic
 entity. This can be a token (word alignment), a syntax node (phrase alignments), or a sentence (sen-
 tence alignment). It has a single feature that can point other instances of of AlignedText:</description>

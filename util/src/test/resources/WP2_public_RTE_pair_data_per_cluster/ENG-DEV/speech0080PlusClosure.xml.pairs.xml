@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764888_80919841-2.txt_1_0-13764888_80919841-2.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've missed my flight through moonport</t>
+		<h>i've missed my connection through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_0-13764888_80919841-2.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've missed my connection through moonport</t>
+		<h>i've missed my flight through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_1-13764888_80919841-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've missed my connection</t>
+		<h>i've missed my flight</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_1-13764888_80919841-2.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've missed my flight</t>
+		<h>i've missed my connection</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_0-13764888_80919841-2.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've missed my flight through moonport</t>
+		<h>i've missed my connection</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_0-13764888_80919841-2.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i've missed my connection through moonport</t>
+		<h>i've missed my flight</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764888_80919841-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>i've missed my flight through moonport</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764888_80919841-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>i've missed my flight</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764888_80919841-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>i've missed my connection through moonport</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764888_80919841-2.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>i've missed my connection</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764888_80919841-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>the flight was diverted stars bridge</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764888_80919841-2.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>the flight was diverted</h>
+	</pair>
+	<pair id="13764644_76379048.txt_1_0-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764888_80919841-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>i've missed my flight through moonport</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764888_80919841-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>i've missed my flight</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764888_80919841-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>i've missed my connection through moonport</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764888_80919841-2.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>i've missed my connection</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764888_80919841-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>the flight was diverted stars bridge</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764888_80919841-2.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>the flight was diverted</h>
+	</pair>
+	<pair id="13764673_76463240.txt_2_0-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>it seems like it's indefinite when it's going to leave</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_0-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight through moonport</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_0-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight through moonport</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_0-13764888_80919841-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight through moonport</t>
+		<h>the flight was diverted stars bridge</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_0-13764888_80919841-2.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight through moonport</t>
+		<h>the flight was diverted</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_0-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight through moonport</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_1-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_1-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_1-13764888_80919841-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight</t>
+		<h>i've missed my connection through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_1-13764888_80919841-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight</t>
+		<h>the flight was diverted stars bridge</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_1-13764888_80919841-2.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight</t>
+		<h>the flight was diverted</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_1_1-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my flight</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_0-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection through moonport</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_0-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection through moonport</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_0-13764888_80919841-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection through moonport</t>
+		<h>the flight was diverted stars bridge</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_0-13764888_80919841-2.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection through moonport</t>
+		<h>the flight was diverted</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_0-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection through moonport</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_1-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_1-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_1-13764888_80919841-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection</t>
+		<h>i've missed my flight through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_1-13764888_80919841-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection</t>
+		<h>the flight was diverted stars bridge</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_1-13764888_80919841-2.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection</t>
+		<h>the flight was diverted</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_2_1-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i've missed my connection</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_0-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted stars bridge</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_0-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted stars bridge</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_0-13764888_80919841-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted stars bridge</t>
+		<h>i've missed my flight through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_0-13764888_80919841-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted stars bridge</t>
+		<h>i've missed my flight</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_0-13764888_80919841-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted stars bridge</t>
+		<h>i've missed my connection through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_0-13764888_80919841-2.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted stars bridge</t>
+		<h>i've missed my connection</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_0-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted stars bridge</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_1-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_1-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_1-13764888_80919841-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted</t>
+		<h>i've missed my flight through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_1-13764888_80919841-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted</t>
+		<h>i've missed my flight</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_1-13764888_80919841-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted</t>
+		<h>i've missed my connection through moonport</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_1-13764888_80919841-2.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted</t>
+		<h>i've missed my connection</h>
+	</pair>
+	<pair id="13764888_80919841-2.txt_3_1-13764973_84033481.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the flight was diverted</t>
+		<h>i have to provide all of that stuff</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764644_76379048.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>the confirmation was for um the twentieth through the twenty fourth coming back friday mornings that was never said</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764673_76463240.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>it seems like it's indefinite when it's going to leave</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764888_80919841-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>i've missed my flight through moonport</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764888_80919841-2.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>i've missed my flight</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764888_80919841-2.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>i've missed my connection through moonport</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764888_80919841-2.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>i've missed my connection</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764888_80919841-2.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>the flight was diverted stars bridge</h>
+	</pair>
+	<pair id="13764973_84033481.txt_1_0-13764888_80919841-2.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i have to provide all of that stuff</t>
+		<h>the flight was diverted</h>
+	</pair>
+</entailment-corpus>

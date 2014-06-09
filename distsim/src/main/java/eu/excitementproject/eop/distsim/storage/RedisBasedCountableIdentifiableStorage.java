@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.distsim.storage;
 
 import java.util.HashSet;
+
 import java.util.Set;
 
 import redis.clients.jedis.Jedis;
@@ -14,13 +15,14 @@ import eu.excitementproject.eop.distsim.items.Externalizable;
 import eu.excitementproject.eop.distsim.items.Identifiable;
 import eu.excitementproject.eop.distsim.items.InvalidCountException;
 import eu.excitementproject.eop.distsim.items.UndefinedKeyException;
-import eu.excitementproject.eop.distsim.redis.BasicRedisRunner;
-import eu.excitementproject.eop.distsim.redis.RedisRunException;
 import eu.excitementproject.eop.distsim.storage.iterators.RedisBasedIterator;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Resetable;
 import eu.excitementproject.eop.distsim.util.Serialization;
 import eu.excitementproject.eop.distsim.util.SerializationException;
+import eu.excitementproject.eop.redis.BasicRedisRunner;
+import eu.excitementproject.eop.redis.RedisRunException;
+
 import org.apache.log4j.Logger;
 /**
  * An implementation of the {@link CountableIdentifiableStorage} interface, which stored objects with id, based on Redis DB

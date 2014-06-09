@@ -2,10 +2,11 @@ package eu.excitementproject.eop.distsim.storage.iterators;
 
 import java.util.LinkedHashMap;
 
+
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
-import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.scoring.ElementFeatureScore;
 import eu.excitementproject.eop.distsim.util.Pair;
+import eu.excitementproject.eop.distsim.domains.FilterType;
 
 /**
  * Implements an iterator for {@link ElementFeatureScore} items, based on a given iterator of pairs of id and score map, 

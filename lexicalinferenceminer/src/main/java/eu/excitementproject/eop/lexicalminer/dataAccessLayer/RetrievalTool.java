@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -94,10 +95,16 @@ public class RetrievalTool {
 	private String m_username;
 	private String m_password; 
 	protected org.apache.log4j.Logger m_logger;
+	protected Set<String> m_extractionTypes;
 	
-	public RetrievalTool(ConfigurationParams params) throws ConfigurationException
+	public RetrievalTool(ConfigurationParams params) throws ConfigurationException {
+		this(params,null);
+	}
+	
+	public RetrievalTool(ConfigurationParams params, Set<String> extractionTypes) throws ConfigurationException
 	{
 		try {
+			m_extractionTypes = extractionTypes;
 			m_driver = params.get("driver");
 			m_url = params.get("url");
 			m_username = params.get("username");
@@ -183,6 +190,14 @@ public class RetrievalTool {
 	private List<RuleData> getRulesForQuery(
 			String first_lemma, String second_lemma, String query, int classifierID) throws SQLException,
 			LexicalResourceException, UnsupportedPosTagStringException {
+		
+		// the terms were saved with lower case
+		if (first_lemma != null)
+			first_lemma = first_lemma.toLowerCase();
+		if (second_lemma != null)
+			second_lemma = second_lemma.toLowerCase();
+
+		
 		List<RuleData> res = new ArrayList<RuleData>();
 		
 		Connection conn = getMySqlConnection();
@@ -216,8 +231,13 @@ public class RetrievalTool {
 				String fullPattern  = rs.getString("fullPattern");
 				Double classifierRank = rs.getDouble("classifierRank");				
 				
-				res.add(new RuleData(leftTerm, rightTerm, POSPattern, wordsPattern, relationsPattern, POSrelationsPattern, fullPattern, defultRank, 
-										classifierRank, ruleId, ruleResource, ruleType, ruleMetadata, ruleSourceId));
+				//tmp
+				//System.out.println("classifierRank = " + classifierRank);
+				
+				RuleData ruleData = new RuleData(leftTerm, rightTerm, POSPattern, wordsPattern, relationsPattern, POSrelationsPattern, fullPattern, defultRank, 
+						classifierRank, ruleId, ruleResource, ruleType, ruleMetadata, ruleSourceId); 
+				if (m_extractionTypes == null || m_extractionTypes.contains(ruleData.getRuleType()))
+					res.add(ruleData);
 	      }
 		 
 		 closeConnection();

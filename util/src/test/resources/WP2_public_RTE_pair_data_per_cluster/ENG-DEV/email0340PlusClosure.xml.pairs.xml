@@ -1,0 +1,1771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="77304.txt_1_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="20.txt_4_0-38058.txt_10_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="19.txt_1_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="56571.txt_5_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="445827.txt_3_1-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="77304.txt_1_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="445827.txt_3_1-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="38058.txt_10_1-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="38058.txt_10_0-445827.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="19.txt_1_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="38058.txt_10_1-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="38058.txt_10_1-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="77304.txt_1_0-38058.txt_10_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="445827.txt_3_0-175519.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="38058.txt_10_1-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="20.txt_4_0-77304.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="445827.txt_3_0-293614.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="38058.txt_10_1-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="19.txt_1_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="340247.txt_4_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="77304.txt_1_0-20.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="278254.txt_5_2-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="43733.txt_3_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="77304.txt_1_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="272237.txt_1_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="20.txt_4_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="272237.txt_1_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="77304.txt_1_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="175519.txt_1_1-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="445827.txt_3_1-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="445827.txt_3_1-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="19.txt_1_0-272237.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="19.txt_1_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="20.txt_4_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="445827.txt_3_1-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="340247.txt_4_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="56571.txt_5_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="272237.txt_1_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="340247.txt_4_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="77304.txt_1_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="293614.txt_1_1-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="38058.txt_10_1-20.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="20.txt_4_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="20.txt_4_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="38751.txt_4_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="175519.txt_1_1-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="38058.txt_10_0-175519.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="56571.txt_5_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="175519.txt_1_1-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="272237.txt_1_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="19.txt_1_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="56571.txt_5_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="20.txt_4_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="20.txt_4_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="20.txt_4_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="272237.txt_1_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="38058.txt_10_0-293614.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="175519.txt_1_1-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="272237.txt_1_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="38058.txt_10_1-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="340247.txt_4_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="445827.txt_3_1-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="175519.txt_1_1-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="272237.txt_1_0-19.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="278254.txt_5_2-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="175519.txt_1_0-445827.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="77304.txt_1_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="38058.txt_10_1-77304.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="38058.txt_10_1-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="19.txt_1_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="293614.txt_1_1-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="175519.txt_1_0-293614.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="77304.txt_1_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="56571.txt_5_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="340247.txt_4_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="272237.txt_1_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="340247.txt_4_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="56571.txt_5_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="19.txt_1_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="175519.txt_1_1-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="445827.txt_3_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="445827.txt_3_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="445827.txt_3_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="445827.txt_3_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="445827.txt_3_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="445827.txt_3_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="175519.txt_1_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="175519.txt_1_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="175519.txt_1_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="175519.txt_1_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="175519.txt_1_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="175519.txt_1_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="293614.txt_1_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="293614.txt_1_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="38058.txt_10_0-20.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="38058.txt_10_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="38058.txt_10_0-56571.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="38058.txt_10_0-77304.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="38058.txt_10_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="38058.txt_10_0-293614.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="38058.txt_10_0-445827.txt_3_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="38058.txt_10_0-175519.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="38058.txt_10_0-340247.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="278254.txt_5_1-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="278254.txt_5_1-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="278254.txt_5_0-38751.txt_4_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="278254.txt_5_0-43733.txt_3_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="175519.txt_1_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="175519.txt_1_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="175519.txt_1_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="175519.txt_1_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="175519.txt_1_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="175519.txt_1_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="175519.txt_1_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="175519.txt_1_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="175519.txt_1_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="175519.txt_1_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="175519.txt_1_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="175519.txt_1_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have onboard wifi</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="175519.txt_1_1-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="175519.txt_1_1-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="175519.txt_1_1-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="175519.txt_1_1-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="175519.txt_1_1-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="175519.txt_1_1-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="175519.txt_1_1-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="175519.txt_1_1-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="175519.txt_1_1-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="175519.txt_1_1-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="175519.txt_1_1-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="175519.txt_1_1-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="175519.txt_1_1-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="175519.txt_1_1-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It would be good to have wifi</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="19.txt_1_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="19.txt_1_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="19.txt_1_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="19.txt_1_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="19.txt_1_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="19.txt_1_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="19.txt_1_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="19.txt_1_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="19.txt_1_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="19.txt_1_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="19.txt_1_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="19.txt_1_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="19.txt_1_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Wifi in standard class</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="20.txt_4_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="20.txt_4_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="20.txt_4_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="20.txt_4_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="20.txt_4_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="20.txt_4_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="20.txt_4_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="20.txt_4_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="20.txt_4_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="20.txt_4_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="20.txt_4_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="20.txt_4_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>FREE WIFI</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="272237.txt_1_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="272237.txt_1_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="272237.txt_1_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="272237.txt_1_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="272237.txt_1_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="272237.txt_1_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="272237.txt_1_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="272237.txt_1_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="272237.txt_1_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="272237.txt_1_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="272237.txt_1_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="272237.txt_1_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="272237.txt_1_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Bring WiFi to the main carriages</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="278254.txt_5_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="278254.txt_5_0-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="278254.txt_5_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="278254.txt_5_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="278254.txt_5_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="278254.txt_5_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="278254.txt_5_0-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="278254.txt_5_0-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="278254.txt_5_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="278254.txt_5_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="278254.txt_5_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="278254.txt_5_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="278254.txt_5_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="278254.txt_5_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="278254.txt_5_0-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="278254.txt_5_0-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="278254.txt_5_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet there is always tricky</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="278254.txt_5_1-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="278254.txt_5_1-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="278254.txt_5_1-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="278254.txt_5_1-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="278254.txt_5_1-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="278254.txt_5_1-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="278254.txt_5_1-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="278254.txt_5_1-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="278254.txt_5_1-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="278254.txt_5_1-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="278254.txt_5_1-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="278254.txt_5_1-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="278254.txt_5_1-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="278254.txt_5_1-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="278254.txt_5_1-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="278254.txt_5_1-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="278254.txt_5_1-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is always tricky</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="278254.txt_5_2-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="278254.txt_5_2-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="278254.txt_5_2-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="278254.txt_5_2-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="278254.txt_5_2-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="278254.txt_5_2-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="278254.txt_5_2-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="278254.txt_5_2-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="278254.txt_5_2-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="278254.txt_5_2-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="278254.txt_5_2-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="278254.txt_5_2-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="278254.txt_5_2-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="278254.txt_5_2-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="278254.txt_5_2-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="278254.txt_5_2-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="278254.txt_5_2-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>the Internet is tricky</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="293614.txt_1_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="293614.txt_1_0-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="293614.txt_1_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="293614.txt_1_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="293614.txt_1_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="293614.txt_1_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="293614.txt_1_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="293614.txt_1_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="293614.txt_1_0-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="293614.txt_1_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="293614.txt_1_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="293614.txt_1_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="293614.txt_1_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="293614.txt_1_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="293614.txt_1_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="293614.txt_1_0-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="293614.txt_1_0-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="293614.txt_1_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need wifi internet access</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="293614.txt_1_1-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="293614.txt_1_1-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="293614.txt_1_1-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="293614.txt_1_1-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="293614.txt_1_1-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="293614.txt_1_1-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="293614.txt_1_1-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="293614.txt_1_1-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="293614.txt_1_1-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="293614.txt_1_1-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="293614.txt_1_1-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="293614.txt_1_1-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="293614.txt_1_1-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="293614.txt_1_1-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="293614.txt_1_1-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="293614.txt_1_1-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="293614.txt_1_1-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="293614.txt_1_1-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Need internet access</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="340247.txt_4_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="340247.txt_4_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="340247.txt_4_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="340247.txt_4_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="340247.txt_4_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="340247.txt_4_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="340247.txt_4_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="340247.txt_4_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="340247.txt_4_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="340247.txt_4_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="340247.txt_4_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="340247.txt_4_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="340247.txt_4_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="340247.txt_4_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="340247.txt_4_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>would be great to have WiFi</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="38058.txt_10_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="38058.txt_10_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="38058.txt_10_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="38058.txt_10_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="38058.txt_10_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="38058.txt_10_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="38058.txt_10_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="38058.txt_10_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi on board</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="38058.txt_10_1-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="38058.txt_10_1-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="38058.txt_10_1-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="38058.txt_10_1-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="38058.txt_10_1-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="38058.txt_10_1-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="38058.txt_10_1-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="38058.txt_10_1-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="38058.txt_10_1-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="38058.txt_10_1-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="38058.txt_10_1-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>have free WiFi</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="38751.txt_4_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="38751.txt_4_0-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="38751.txt_4_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="38751.txt_4_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="38751.txt_4_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="38751.txt_4_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="38751.txt_4_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="38751.txt_4_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="38751.txt_4_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="38751.txt_4_0-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="38751.txt_4_0-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="38751.txt_4_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="38751.txt_4_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="38751.txt_4_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="38751.txt_4_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="38751.txt_4_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="38751.txt_4_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="38751.txt_4_0-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="38751.txt_4_0-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="38751.txt_4_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Quasigo can offer better Internet</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="429450.txt_12_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="429450.txt_12_0-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="429450.txt_12_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="429450.txt_12_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="429450.txt_12_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="429450.txt_12_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="429450.txt_12_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="429450.txt_12_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="429450.txt_12_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="429450.txt_12_0-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="429450.txt_12_0-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="429450.txt_12_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="429450.txt_12_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="429450.txt_12_0-38751.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="429450.txt_12_0-43733.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="429450.txt_12_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="429450.txt_12_0-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="429450.txt_12_0-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="429450.txt_12_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the meager seating facilities St Peter</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="429450.txt_12_1-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="429450.txt_12_1-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="429450.txt_12_1-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="429450.txt_12_1-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="429450.txt_12_1-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="429450.txt_12_1-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="429450.txt_12_1-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="429450.txt_12_1-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="429450.txt_12_1-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="429450.txt_12_1-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="429450.txt_12_1-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="429450.txt_12_1-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="429450.txt_12_1-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="429450.txt_12_1-38751.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="429450.txt_12_1-43733.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="429450.txt_12_1-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="429450.txt_12_1-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="429450.txt_12_1-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="429450.txt_12_1-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities St Peter</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="429450.txt_12_2-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="429450.txt_12_2-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="429450.txt_12_2-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="429450.txt_12_2-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="429450.txt_12_2-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="429450.txt_12_2-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="429450.txt_12_2-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="429450.txt_12_2-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="429450.txt_12_2-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="429450.txt_12_2-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="429450.txt_12_2-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="429450.txt_12_2-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="429450.txt_12_2-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="429450.txt_12_2-38751.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>Quasigo can offer better Internet</h>
+	</pair>
+	<pair id="429450.txt_12_2-43733.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>better web service</h>
+	</pair>
+	<pair id="429450.txt_12_2-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="429450.txt_12_2-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="429450.txt_12_2-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="429450.txt_12_2-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>expand the seating facilities</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="43733.txt_3_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="43733.txt_3_0-175519.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>It would be good to have wifi</h>
+	</pair>
+	<pair id="43733.txt_3_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="43733.txt_3_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="43733.txt_3_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="43733.txt_3_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="43733.txt_3_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="43733.txt_3_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="43733.txt_3_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="43733.txt_3_0-293614.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>Need internet access</h>
+	</pair>
+	<pair id="43733.txt_3_0-340247.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>would be great to have WiFi</h>
+	</pair>
+	<pair id="43733.txt_3_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="43733.txt_3_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="43733.txt_3_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="43733.txt_3_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="43733.txt_3_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="43733.txt_3_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="43733.txt_3_0-445827.txt_3_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>WiFi would be nice</h>
+	</pair>
+	<pair id="43733.txt_3_0-56571.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>Provide WiFi service</h>
+	</pair>
+	<pair id="43733.txt_3_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>better web service</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="445827.txt_3_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="445827.txt_3_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="445827.txt_3_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="445827.txt_3_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="445827.txt_3_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="445827.txt_3_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="445827.txt_3_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="445827.txt_3_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="445827.txt_3_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="445827.txt_3_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="445827.txt_3_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="445827.txt_3_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi in train would be nice</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="445827.txt_3_1-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="445827.txt_3_1-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="445827.txt_3_1-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="445827.txt_3_1-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="445827.txt_3_1-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="445827.txt_3_1-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="445827.txt_3_1-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="445827.txt_3_1-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="445827.txt_3_1-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="445827.txt_3_1-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="445827.txt_3_1-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="445827.txt_3_1-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="445827.txt_3_1-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="445827.txt_3_1-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>WiFi would be nice</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="56571.txt_5_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="56571.txt_5_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="56571.txt_5_0-20.txt_4_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>FREE WIFI</h>
+	</pair>
+	<pair id="56571.txt_5_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="56571.txt_5_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="56571.txt_5_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="56571.txt_5_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="56571.txt_5_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="56571.txt_5_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="56571.txt_5_0-38058.txt_10_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>have free WiFi</h>
+	</pair>
+	<pair id="56571.txt_5_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="56571.txt_5_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="56571.txt_5_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="56571.txt_5_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+	<pair id="56571.txt_5_0-77304.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>Provide WiFi service</t>
+		<h>It could be improved by adding free Internet access</h>
+	</pair>
+	<pair id="77304.txt_1_0-175519.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>It would be good to have onboard wifi</h>
+	</pair>
+	<pair id="77304.txt_1_0-19.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>Wifi in standard class</h>
+	</pair>
+	<pair id="77304.txt_1_0-272237.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>Bring WiFi to the main carriages</h>
+	</pair>
+	<pair id="77304.txt_1_0-278254.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>the Internet there is always tricky</h>
+	</pair>
+	<pair id="77304.txt_1_0-278254.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>the Internet is always tricky</h>
+	</pair>
+	<pair id="77304.txt_1_0-278254.txt_5_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>the Internet is tricky</h>
+	</pair>
+	<pair id="77304.txt_1_0-293614.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>Need wifi internet access</h>
+	</pair>
+	<pair id="77304.txt_1_0-38058.txt_10_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>have free WiFi on board</h>
+	</pair>
+	<pair id="77304.txt_1_0-429450.txt_12_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>expand the meager seating facilities St Peter</h>
+	</pair>
+	<pair id="77304.txt_1_0-429450.txt_12_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>expand the seating facilities St Peter</h>
+	</pair>
+	<pair id="77304.txt_1_0-429450.txt_12_2" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>expand the seating facilities</h>
+	</pair>
+	<pair id="77304.txt_1_0-445827.txt_3_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>It could be improved by adding free Internet access</t>
+		<h>WiFi in train would be nice</h>
+	</pair>
+</entailment-corpus>

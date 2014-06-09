@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="IT">
+	<pair id="13764816_82295687.txt_1_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764816_82295687.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764790_78628180.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13765197_83038377.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764957_83408162.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764816_82295687.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764790_78628180.txt_1_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764816_82295687.txt_5_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13765197_83038377.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764816_82295687.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764816_82295687.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13765197_83038377.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764816_82295687.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13765197_83038377.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13765197_83038377.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764957_83408162.txt_2_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13765197_83038377.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764816_82295687.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764957_83408162.txt_2_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764816_82295687.txt_5_1" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764829_81137701.txt_1_0" entailment="ENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764631_76451726.txt_1_0-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i cann't believe that you're canceling at a last minute like this</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764766_78604096-2.txt_1_0-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i get called at six thirty in the morning telling me that much fly hasn't cancel</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764789_81559386.txt_1_0-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys a cancel twice on us</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called again that my flight was canceled</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764790_78628180.txt_1_1-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i just got called that my flight was canceled</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764816_82295687.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764816_82295687.txt_5_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>you guys cancel the flight</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764829_81137701.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>there canceling flights</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13764957_83408162.txt_2_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>you discontinued the service</h>
+	</pair>
+	<pair id="13764796_82293716-2.txt_1_0-13765197_83038377.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>we'd actually canceled that</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_1_0-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>quasi cancel that flight</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13764816_82295687.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_0-13765197_83038377.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys almost always cancel the flight</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764816_82295687.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764816_82295687.txt_5_1-13765197_83038377.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys cancel the flight</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764816_82295687.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+	<pair id="13764829_81137701.txt_1_0-13765197_83038377.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>there canceling flights</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764816_82295687.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_0-13765197_83038377.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you guys discontinued the service</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764816_82295687.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>quasi cancel that flight</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13764957_83408162.txt_2_1-13765197_83038377.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>you discontinued the service</t>
+		<h>i flight was canceled</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764631_76451726.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>i cann't believe that you're canceling at a last minute like this</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764766_78604096-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>i get called at six thirty in the morning telling me that much fly hasn't cancel</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764789_81559386.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>you guys a cancel twice on us</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764790_78628180.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>i just got called again that my flight was canceled</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764790_78628180.txt_1_1" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>i just got called that my flight was canceled</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764796_82293716-2.txt_1_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>we'd actually canceled that</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764816_82295687.txt_5_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>you guys almost always cancel the flight</h>
+	</pair>
+	<pair id="13765197_83038377.txt_1_0-13764957_83408162.txt_2_0" entailment="NONENTAILMENT" task="usecase1" >
+		<t>i flight was canceled</t>
+		<h>you guys discontinued the service</h>
+	</pair>
+</entailment-corpus>

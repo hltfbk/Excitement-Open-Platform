@@ -17,7 +17,7 @@
 	<property name="out-dir">mapred/out/dirt</property>
 	
 	<!--the name of the extractor class, which implements the eu.excitementproject.eop.distsim.builders.cooccurrence.CooccurrencesExtractor interface. For more details see the extraction-class feature of the co-occurrence extraction module: https://github.com/hltfbk/Excitement-Open-Platform/wiki/_preview#module-cooccurence-extractor-->
-	<property name="cooccurrence-extraction-class">eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedWordCooccurrenceExtraction</property>
+	<property name="cooccurrence-extraction-class">eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedPredArgCooccurrenceExtraction</property>
 	
 	<!-- the name of the eu.excitementproject.eop.distsim.builders.reader.StreamBasedSentenceReader class, which extracts sentences from a given InputStream, with their frequencies. For more details see the sentence-reader-class feature of the co-occurrence extraction module: https://github.com/hltfbk/Excitement-Open-Platform/wiki/_preview#module-cooccurence-extractor.-->
 	<property name="sentence-reader-class">eu.excitementproject.eop.distsim.builders.reader.XMLNodeSentenceReader</property>

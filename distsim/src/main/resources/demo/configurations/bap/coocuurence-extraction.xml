@@ -29,6 +29,11 @@
 		   Extracts co-occurrences, each composed of a binary predicate and one of its arguments with a relation which indicates the position of the argument (X, Y), from a given parsed sentences, represented a BasicNode.
 		* eu.excitementproject.eop.distsim.builders.cooccurrence.TupleBasedPredArgCooccurrenceExtraction
 		   Extracts co-occurrences, each composed of a binary predicate and one of its arguments with a relation which indicates the position of the argument (X, Y), from a given string representation of a tuple of binary predicate and its two arguments.
+        * eu.excitementproject.eop.distsim.builders.cooccurrence.RawTextBasedWordCooccurrenceExtraction
+           Extracts co-occurrence, composed of word pairs that appear in a given window, in a given raw text sentence. Required properties:
+           Required features:
+            * window-size: the size of window in which word pairs are taken, e.g., for window-size 2, two words ahead and two words back are candidate pairs for the given word (default, 3).
+            * stop-words-file: the path to a text file, composed of stop words to be filtered from the model, word per line (default, no stop-word list).		   		   
          -->
 	<property name="extraction-class">eu.excitementproject.eop.distsim.builders.cooccurrence.NodeBasedWordCooccurrenceExtraction</property>
 	

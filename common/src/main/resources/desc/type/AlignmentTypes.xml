@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>AlignmentTypes</name>
+  <description>All components that implement AlignmentComponent must annotate according to the specific CAS types that are designed for alignment annotations within EOP. This file defines the two types needed for alignment within EOP.</description>
+  <version>1.0</version>
+  <vendor/>
+  <types>
+    <typeDescription>
+      <name>eu.excitement.type.alignment.Target</name>
+      <description>This is a CAS annotation type that can point one or more annotations (tokens, parse nodes, NER nodes, or any annotations) 
+It is a list that groups annotations in one View. The target type allows flexible alignment between any data, including structures made by multiple annotations. 
+Note on usage: begin holds the minimum begin value among annotations in targetAnnotations. Likewise, end should point the maximum end among annotations.</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>targetAnnotations</name>
+          <description>This is a FSArray that can hold one or more annotations. A target should mark one or more annotations</description>
+          <rangeTypeName>uima.cas.FSArray</rangeTypeName>
+          <elementType>uima.tcas.Annotation</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.alignment.Link</name>
+      <description>- CAS type that links two Target. 
+- Multi-view type: a Link connects one target in T (TextView), the other target in H (HypothesisView). 
+
+The semantic of a "Link" is: The texts (or structures) pointed by "TSideTarget" and "HSideTarget" have a relation of "type", with the direction of "direction",  on a strength of "strength". 
+
+We make no assumptions regarding what annotations are aligned by Link and Target types. One Target can be linked by an arbitrary number of Link, also a Target can group an arbitrary number of Annotations. Note that uima.tcas.Annotation is the super type of almost all CAS annotation data. Since a Target can group Annotation, it can group any type of annotations in CAS.
+
+Some notes on Link type usage. (Indexing and setting begin - end) 
+- A Link instance should be indexed on the Hypothesis View. So one iteration over the Hypothesis view can get all alignment links.
+- begin and end : both span value should hold the same value to that of HSide Target</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>TSideTarget</name>
+          <description>This feature points one Target in TEXTVIEW side. A mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) targets have the relation of "type" between them, with the direction of "direction".</description>
+          <rangeTypeName>eu.excitement.type.alignment.Target</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>HSideTarget</name>
+          <description>This feature points one Target in HYPOTHESISVIEW side. A mandatory value, and should not be null. The semantic of a "Link" is: The text (or structure) targets have the relation of "type" between them, with the direction of "direction".</description>
+          <rangeTypeName>eu.excitement.type.alignment.Target</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>strength</name>
+          <description>This feature keeps one double (numerical) value. Mandatory value, and should not be null. The value indicates the strength of the relation.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>directionString</name>
+          <description>This value denotes the "direction" of the alignment.Link. Enum-like value that holds one of "TtoH", "HtoT", or "Symmetric".</description>
+          <rangeTypeName>eu.excitement.type.alignment.Direction</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>alignerID</name>
+          <description>This is the first part of 3 ID strings for the alignment.Link instance. The string denotes the idetification of the aligner (or underlying resource). 
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + alignerVersion + linkInfo</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>alignerVersion</name>
+          <description>This is the second part of 3 ID strings for the alignment.Link instance. The string denotes the sub-identification of the aligner (or underlying resource) --- which are generally the version (or date).  
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + alignerVersion + linkInfo</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>linkInfo</name>
+          <description>This is the thrid part of 3 ID strings for the alignment.Link instance. The string denotes the internal information about the added link; for example "synonym" (in WordNet based aligner), "stronger-than" (in VerbOcean based lexical aligner), or "local-entailment" (some aligner that aligned multiple structures). Thus, the value is defined by the aligner, and enable alginer to denote more than one relations that is identifiable by getID().
+
+It is the convention to use getID() method of alignment.Link to get the concatenated, unique string for the instance. getID() returns such a string by concatenating 3 ID strings: 
+alignerID + alignerVersion + linkInfo</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>groupLabel</name>
+          <description>TBDTBDTBDTBD
+
+TO BE DETERMINED. 
+
+We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
+
+Actual values for the labels will be updated. TBDTBDTBDTBD</description>
+          <rangeTypeName>uima.cas.StringList</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>eu.excitement.type.alignment.Direction</name>
+      <description>A string sub-type for direciton marking. This type is a enum-like value that holds all possible directional marker for alignment.Link. This value is only to be used within an alignment.Link instance. 
+
+Allowed values are: "TtoH", "HtoT", "Symmetric"</description>
+      <supertypeName>uima.cas.String</supertypeName>
+      <allowedValues>
+        <value>
+          <string>TtoH</string>
+          <description>The relation is from TSideTarget to HSideTarget.</description>
+        </value>
+        <value>
+          <string>HtoT</string>
+          <description>The relation is from HSideTarget to TSideTarget</description>
+        </value>
+        <value>
+          <string>Bidirection</string>
+          <description>The relation is a bidirectional (symmetric) one. (Both TSideTarget to HSideTarget and HSideTarget to TSideTarget.)</description>
+        </value>
+      </allowedValues>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

@@ -4,13 +4,14 @@ import java.util.List;
 
 
 
+
 import eu.excitementproject.eop.distsim.domains.FilterType;
 import eu.excitementproject.eop.distsim.domains.RuleDirection;
 import eu.excitementproject.eop.distsim.items.StringBasedElement;
 import eu.excitementproject.eop.distsim.scoring.ElementsSimilarityMeasure;
 import eu.excitementproject.eop.distsim.storage.DefaultSimilarityStorage;
-import eu.excitementproject.eop.distsim.storage.RedisBasedStringListBasicMap;
 import eu.excitementproject.eop.distsim.storage.SimilarityStorage;
+import eu.excitementproject.eop.redis.RedisBasedStringListBasicMap;
 
 /**
  * A program which demonstrates how to access a given distributional similarity model, with a given word, via SimilarityStorage interface, 

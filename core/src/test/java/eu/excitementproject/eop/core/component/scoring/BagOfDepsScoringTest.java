@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.core.component.scoring;
 
-import java.util.HashMap;
+//import java.util.HashMap;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -35,9 +35,9 @@ public class BagOfDepsScoringTest {
 			// lap = new MaltParserEN("poly");
 
 			// New usage for MaltParserEN passing parameter for Model variant. 
-			HashMap<String, String> descArgs = new HashMap<String,String>(); 
-			descArgs.put("PARSER_MODEL_VARIANT", "poly"); 
-			lap = new MaltParserEN(descArgs); 
+//			HashMap<String, String> descArgs = new HashMap<String,String>(); 
+//			descArgs.put("PARSER_MODEL_VARIANT", "poly"); 
+			lap = new MaltParserEN("poly"); 
 
 			// Entailment
 			aCas = lap.generateSingleTHPairCAS(
