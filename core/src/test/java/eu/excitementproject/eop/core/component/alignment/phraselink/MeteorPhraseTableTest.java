@@ -22,6 +22,7 @@ public class MeteorPhraseTableTest {
 		Logger.getRootLogger().setLevel(Level.DEBUG);   
 		Logger testlogger = Logger.getLogger(this.getClass().toString()); 
 		
+		testlogger.info("This test may take upto 30 seconds..."); 
 		// load test. 
 		// (2.8Ghz Pentium dual takes 26 seconds on loading English paraphrase.) 
 		MeteorPhraseTable englishTable = null; 
@@ -52,8 +53,15 @@ public class MeteorPhraseTableTest {
 		}
 		
 		// null result. 
-		
-		
+		String lhs2 = "bikini atoll"; // not in the resource 
+		rhsAndProbList = englishTable.lookupParaphrasesFor(lhs2); 
+	    assertEquals(rhsAndProbList.size(), 0);  
+		for (ScoredString rhsProbTuple : rhsAndProbList)
+		{
+			String rhs = rhsProbTuple.getString(); 
+			Double prob = rhsProbTuple.getScore(); 
+			testlogger.debug(lhs + " -> " + rhs + " : " + prob.toString()); 
+		}
 	}
 
 }
