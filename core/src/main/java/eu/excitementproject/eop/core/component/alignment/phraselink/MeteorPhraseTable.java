@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map; 
 import java.util.HashMap; 
@@ -36,17 +37,30 @@ public class MeteorPhraseTable {
 		InputStream is = getClass().getResourceAsStream(resourcePath);
 		BufferedReader tableReader = new BufferedReader(new InputStreamReader(is)); 
 
-		int lc = 0; 
 		int ec = 0; 
-		String line = null; 
-		while((line = tableReader.readLine()) != null)
+		String line1 = null; 
+		while((line1 = tableReader.readLine()) != null)
 		{
-			// TODO fill up the data structure
-			line.length(); 
-			lc++;
+			Float prob = Float.parseFloat(line1); 
+			String lhs = tableReader.readLine(); 
+			String rhs = tableReader.readLine(); 
+			
+			// no lhs yet in the map ?
+			if (!entryPairsAsMap.containsKey(lhs))
+			{
+				// then, make the entry in the first-level map, 
+				Map<String,Float> map = new HashMap<String,Float>(); 
+				entryPairsAsMap.put(lhs, map); 
+			}
+
+			// add the (lhs, rhs, prob) 
+			// lhs as the key for outer map, rhs as the key for inner map, 
+			// and probability value is in the value of the inner map. 
+			entryPairsAsMap.get(lhs).put(rhs, prob); 
+			
+			ec++;
 		}
-		ec = lc / 3; 
-		logger.info("loading complelte, " + lc + " lines (" + ec + " entries).") ; 
+		logger.info("loading complelte, " + ec + " entries).") ; 
 
 	}
 
@@ -63,9 +77,26 @@ public class MeteorPhraseTable {
 	{
 		ArrayList<ScoredString> phrList = new ArrayList<ScoredString>(); 
 
-		// TODO Do matching and fill phrList 
-
-
+		// check if the phrase exist as LHS in the paraphrase table 
+		if (!entryPairsAsMap.containsKey(phrase))
+		{
+			// if not, no need to look into it. 
+			// returning an empty list.
+			return phrList;   
+		}
+		
+		// Okay. there is paraphrase rules applicable to this give LHS. 
+		// return them all, as a list of (String, Score) tuples. 
+		// [ (rhs1, probability for rhs1), (rhs2, probability for rhs2), ...] 
+		Map<String,Float> mapForLhs = entryPairsAsMap.get(phrase); 
+		Iterator<String> itr = mapForLhs.keySet().iterator();
+		while(itr.hasNext())
+		{
+			String rhs = itr.next(); 
+			Float prob = mapForLhs.get(rhs); 
+			ScoredString rhsAndItsProb = new ScoredString(rhs, prob); 
+			phrList.add(rhsAndItsProb); 
+		}
 
 		return phrList; 
 	}
@@ -102,9 +133,14 @@ public class MeteorPhraseTable {
 	}
 
 	// internal data structures and variables 
+
+	// entryPairsAsMap holds all entries. 
+	// single entry is: (lhs string, rhs string, probability float) 
+	// 
+	// lhs as the key for outer map, 
+	// rhs as the key for inner map, 
+	// and probability value is in the value of the inner map. 
 	private final Map<String,Map<String,Float>> entryPairsAsMap; 
 	private final Logger logger; 
 	
-	
-
 }
