@@ -49,8 +49,18 @@ a configuration file means allowing other users to replicate the same experiment
 	<!-- FixedWeightTokenEditDistance uses the token to calculate the distance between each pair T-H -->
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightTokenEditDistance">
 	    
-	    <!-- Do not consider the stop words: [true|false] -->
-		<property name="stopWordRemoval">true</property>
+	    <!-- Do not consider the stop words: [POS|LIST|POS,LIST|false] -->
+	     <!-- POS eliminate only some part of speech, LIST eliminate only the words listed in a file -->
+		<property name="stopWordRemoval">POS</property>
+
+		<!-- Do not consider the case: [true|false] -->
+		<property name="ignoreCase">true</property>
+
+		<!-- Path to the stop word list -->
+		<property name="pathStopWordFile">../core/src/main/resources/external-data/edit/stopwords_EN.txt</property>
+
+		<!-- Normalization type for the distance: [default|long] -->
+		<property name="normalizationType">default</property>
 	    
 	    <!-- The configuration to be used by the component: [basic|wordnet|wikipedia|wordnet,wikipedia] -->
 	    <property name="instances">basic</property>
@@ -77,8 +87,18 @@ a configuration file means allowing other users to replicate the same experiment
 	<!-- FixedWeightLemmaEditDistance uses the lemma to calculate the distance between each pair T-H -->
 	<section name="eu.excitementproject.eop.core.component.distance.FixedWeightLemmaEditDistance">
 	    
-	    <!-- Do not consider the stop words: [true|false] -->
-		<property name="stopWordRemoval">true</property>
+	    <!-- Do not consider the stop words: [POS|LIST|POS,LIST|false] -->
+	     <!-- POS eliminate only some part of speech, LIST eliminate only the words listed in a file -->
+		<property name="stopWordRemoval">POS</property>
+
+		<!-- Do not consider the case: [true|false] -->
+		<property name="ignoreCase">true</property>
+
+		<!-- Path to the stop word list -->
+		<property name="pathStopWordFile">../core/src/main/resources/external-data/edit/stopwords_EN.txt</property>
+
+		<!-- Normalization type for the distance: [default|long] -->
+		<property name="normalizationType">default</property>
 	    
 	    <!-- The configuration to be used by the component: [basic|wordnet|wikipedia|wordnet,wikipedia] -->
 		<subsection name="basic"/>

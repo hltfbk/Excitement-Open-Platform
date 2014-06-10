@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
@@ -33,6 +34,9 @@ public class OutputUtils {
 	
 	public static HashMap<String,String> readResults(String file) {
 		HashMap<String,String> results = new HashMap<String,String>();
+		
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:readResults");
+		
 		try {
 			InputStream in = Files.newInputStream(Paths.get(file));
 			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -44,13 +48,13 @@ public class OutputUtils {
 				m = p.matcher(line);
 				if (m.matches()) {
 					results.put(m.group(1), m.group(2));
-					System.out.println("Added result: " + m.group(1) + " / " + m.group(2));
+					logger.info("Added result: " + m.group(1) + " / " + m.group(2));
 				}
 			}
 			reader.close();
 			in.close();
 		} catch (IOException e) {
-			System.out.println("Problems reading results file " + file);
+			logger.error("Problems reading results file " + file);
 			e.printStackTrace();
 		}
 		return results;
@@ -59,6 +63,9 @@ public class OutputUtils {
 	public static void generateXMLResults(String testFile, String resultsFile, String xmlFile) {
 		
 		HashMap<String,String> results = readResults(resultsFile);
+		
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:generateXMLResults");
+		
 		try {
 			BufferedReader reader = Files.newBufferedReader(Paths.get(testFile), StandardCharsets.UTF_8);
 			//InputStream in = Files.newInputStream(Paths.get(testFile));
@@ -78,7 +85,7 @@ public class OutputUtils {
 					id = m.group(2);
 					if (results.containsKey(id)) {
 						entDec = results.get(id).split("\\t");
-						line = m.group(1) + " " + "entailment=\"" + entDec[1] + "\" benchmark=\"" + entDec[0] + "\" score=\"" + entDec[2] + "\" confidence=\"1\" " + m.group(3);
+						line = m.group(1) + " " + "entailment=\"" + entDec[1] + "\" benchmark=\"" + entDec[0] + "\" confidence=\"" + entDec[2] + "\" " + m.group(3);
 					}
 				}
 				writer.write(line + "\n");
@@ -88,7 +95,7 @@ public class OutputUtils {
 			reader.close();
 			//in.close();
 		} catch (IOException e) {
-			System.out.println("Problems reading test file " + testFile);
+			logger.error("Problems reading test file " + testFile);
 			e.printStackTrace();
 		}
 		
@@ -98,13 +105,16 @@ public class OutputUtils {
 	public static void makeSinglePairXML(TEDecision decision, JCas aJCas, String outDir, String lang) {
 		
 		String xmlResultsFile = outDir + "/results.xml";
+		
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:makeSinglePairXML");
+		
 		try {
 			
 			OutputStream out = Files.newOutputStream(Paths.get(xmlResultsFile));
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
 			
 			writer.write("<entailment-corpus lang=\"" + lang + "\">\n");
-			writer.write("  <pair id=\"1\" entailment=\"" + decision.getDecision().name() + "\" benchmark=\"N/A\" score=\"" + decision.getConfidence() + "\" confidence=\"1\" task=\"EOP test\">\n");
+			writer.write("  <pair id=\"1\" entailment=\"" + decision.getDecision().name() + "\" benchmark=\"N/A\" confidence=\"" + decision.getConfidence() + "\" task=\"EOP test\">\n");
 			writer.write("    <t>" + aJCas.getView("TextView").getDocumentText() + "</t>\n");
 			writer.write("    <h>" + aJCas.getView("HypothesisView").getDocumentText() + "</h>\n");
 			writer.write("  </pair>\n");
@@ -113,10 +123,10 @@ public class OutputUtils {
 			out.close();
 
 			
-			System.out.println("Results file: " + xmlResultsFile);
+			logger.info("Results file: " + xmlResultsFile);
 			
 		} catch (IOException | CASException e) {
-			System.out.println("Coudl not write to output file " + xmlResultsFile);
+			logger.error("Could not write to output file " + xmlResultsFile);
 			e.printStackTrace();
 		}
 		

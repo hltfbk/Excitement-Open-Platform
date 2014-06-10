@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
@@ -94,10 +95,16 @@ public class RetrievalTool {
 	private String m_username;
 	private String m_password; 
 	protected org.apache.log4j.Logger m_logger;
+	protected Set<String> m_extractionTypes;
 	
-	public RetrievalTool(ConfigurationParams params) throws ConfigurationException
+	public RetrievalTool(ConfigurationParams params) throws ConfigurationException {
+		this(params,null);
+	}
+	
+	public RetrievalTool(ConfigurationParams params, Set<String> extractionTypes) throws ConfigurationException
 	{
 		try {
+			m_extractionTypes = extractionTypes;
 			m_driver = params.get("driver");
 			m_url = params.get("url");
 			m_username = params.get("username");
@@ -191,9 +198,6 @@ public class RetrievalTool {
 			second_lemma = second_lemma.toLowerCase();
 
 		
-		//tmp
-		System.out.println("first_lemma = " + first_lemma + ", second_lemma = " + second_lemma);
-		
 		List<RuleData> res = new ArrayList<RuleData>();
 		
 		Connection conn = getMySqlConnection();
@@ -230,8 +234,10 @@ public class RetrievalTool {
 				//tmp
 				//System.out.println("classifierRank = " + classifierRank);
 				
-				res.add(new RuleData(leftTerm, rightTerm, POSPattern, wordsPattern, relationsPattern, POSrelationsPattern, fullPattern, defultRank, 
-										classifierRank, ruleId, ruleResource, ruleType, ruleMetadata, ruleSourceId));
+				RuleData ruleData = new RuleData(leftTerm, rightTerm, POSPattern, wordsPattern, relationsPattern, POSrelationsPattern, fullPattern, defultRank, 
+						classifierRank, ruleId, ruleResource, ruleType, ruleMetadata, ruleSourceId); 
+				if (m_extractionTypes == null || m_extractionTypes.contains(ruleData.getRuleType()))
+					res.add(ruleData);
 	      }
 		 
 		 closeConnection();

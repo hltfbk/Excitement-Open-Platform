@@ -106,7 +106,9 @@ public class Redis implements PersistenceDevice {
 	 */
 	@Override
 	public void close() {
-		jedis = null;;
+		jedis.save();
+		jedis.disconnect();
+		jedis = null;
 		this.currID = -1;
 		try {
 			BasicRedisRunner.getInstance().close(dbFile);
