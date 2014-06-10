@@ -9,6 +9,7 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import edu.berkeley.nlp.lm.util.Logger;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
 import eu.excitement.type.alignment.Target;
@@ -211,6 +212,12 @@ public class LexicalAligner implements AlignmentComponent {
 		
 		for (Token token : tokens.subList(start, end + 1)) {
 			phrase.append(token.getCoveredText());
+			phrase.append(" ");
+		}
+		
+		// Remove last space
+		if (phrase.length() > 0) {
+			phrase.deleteCharAt(phrase.length() - 1);
 		}
 		
 		return phrase.toString();
@@ -234,8 +241,13 @@ public class LexicalAligner implements AlignmentComponent {
 		// Check in all the resources for rules of type textPhrase -> hypoPhrase 
 		for (LexicalResource<? extends RuleInfo> resource : lexicalResources) {
 			
-			// TODO: What should I do with POS?
-			rules.addAll(resource.getRules(textPhrase, null, hypoPhrase, null));
+			try {
+				rules.addAll(resource.getRules(textPhrase, null, hypoPhrase, null));
+			} catch (Exception e) {
+				Logger.warn("Could not add rules from " + 
+							resource.getClass().getSimpleName() + " for " +
+							textPhrase + "->" + hypoPhrase, e);
+			}
 		}
 		
 		return rules;

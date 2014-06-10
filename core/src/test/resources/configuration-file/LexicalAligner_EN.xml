@@ -4,10 +4,10 @@
         <section name="LexicalResources">
         
         	<!-- WordNet -->
-			<property name="eu.excitementproject.eop.core.component.lexicalknowledge.wordnet"/>
+			<!-- <property name="eu.excitementproject.eop.core.component.lexicalknowledge.wordnet"/>-->
 			
 			<!-- Redis BAP -->
-			<property name="eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource"/>
+			<property name="eu.excitementproject.eop.core.component.lexicalknowledge.similarity.SimilarityStorageBasedLexicalResource"/>
         </section>
         
         <!-- WordNet configuration parameters -->
@@ -20,11 +20,14 @@
 		</section>
 		
 		<!-- Redis BAP configuration parameters -->
-		<section name = "eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource">
+		<section name = "eu.excitementproject.eop.core.component.lexicalknowledge.similarity.SimilarityStorageBasedLexicalResource">
 			<property name="resource-name">distsim-bap</property>
+			<property name="redis-binary-dir">C:\Programs\redis</property>
 			<property name="top-n-rules">20</property>
-			<property name="l2r-redis-db-file">$REDISDATA/reuters/bap/similarity-l2r.rdb</property>
-			<property name="r2l-redis-db-file">$REDISDATA/reuters/bap/similarity-r2l.rdb</property>
+			<!-- <property name="l2r-redis-db-file">%REDISDATA%/reuters/bap/similarity-l2r.rdb</property> -->
+			<!-- <property name="r2l-redis-db-file">%REDISDATA%/reuters/bap/similarity-r2l.rdb</property> -->
+			<property name="l2r-redis-db-file">C:\git\EOP\target\EOP-1.1.3-SNAPSHOT\eop-resources-1.1.3\BIUTEE_Environment\data\RedisData\reuters\bap\similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">C:\git\EOP\target\EOP-1.1.3-SNAPSHOT\eop-resources-1.1.3\BIUTEE_Environment\data\RedisData\reuters\bap\similarity-r2l.rdb</property>
 		</section>
         
 </configuration>

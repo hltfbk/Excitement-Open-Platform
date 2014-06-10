@@ -34,9 +34,8 @@ public class LexicalAlignerTest {
 					"localhost",
 					8080);
 			
-			JCas aJCas = lap.generateSingleTHPairCAS("death penalty", "capital punishment");
-//			JCas aJCas = lap.generateSingleTHPairCAS("I have two parrots.", "I own a bird.");
-//			JCas aJCas = lap.generateSingleTHPairCAS("I have a dog.", "I own a pet.");
+			JCas aJCas = lap.generateSingleTHPairCAS("The assassin was convicted and sentenced to death penalty", 
+					"The killer has been accused of murder and doomed to capital punishment");
 			
 			// Create and initialize the aligner
 			LexicalAligner aligner = new LexicalAligner();
