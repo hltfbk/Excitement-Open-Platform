@@ -48,9 +48,10 @@ public class LexicalAligner implements AlignmentComponent {
 
 	// Constants
 	private static final String LEXICAL_RESOURCES_CONF_SECTION = "LexicalResources";
-	private static final String WORDNET = "eu.excitementproject.eop.core.component.lexicalknowledge.wordnet";
-	private static final String REDIS_BAP = 
-			"eu.excitementproject.eop.core.component.lexicalknowledge.similarity.SimilarityStorageBasedLexicalResource";
+	private static final String WORDNET = "wordnet";
+	private static final String REDIS_BAP = "distsim-bap";
+	private static final String REDIS_LIN_PROXIMITY = "redis-lin-proximity";
+	private static final String REDIS_LIN_DEPENDENCY = "redis-lin-dependency";
 	
 	// Private Members
 	List<Token> textTokens;
@@ -152,9 +153,9 @@ public class LexicalAligner implements AlignmentComponent {
 			ConfigurationFile configFile = new ConfigurationFile(config);
 			
 			// Get each resource and create it using the configuration section related to it
-			for (String resourceClassName : lexicalResourcesSection.keySet()) {
-				lexicalResources.add(createLexicalResource(resourceClassName, 
-						configFile.getModuleConfiguration(resourceClassName)));
+			for (String resourceName : lexicalResourcesSection.keySet()) {
+				lexicalResources.add(createLexicalResource(resourceName, 
+						configFile.getModuleConfiguration(resourceName)));
 			}
 	
 		} catch (LexicalResourceException e) {
@@ -384,10 +385,10 @@ public class LexicalAligner implements AlignmentComponent {
 //			case LIN_DEPENDENCY_REUTERS:
 //				ret = new LinDistsimLexicalResource(params);
 //				break;
-//			case REDIS_LIN_PROXIMITY:
-//			case REDIS_LIN_DEPENDENCY:
 			
-			// Redis BAP
+			// Redis similarity-based resources
+			case REDIS_LIN_PROXIMITY:
+			case REDIS_LIN_DEPENDENCY:
 			case REDIS_BAP: {
 				try {
 					lexicalResource = new 

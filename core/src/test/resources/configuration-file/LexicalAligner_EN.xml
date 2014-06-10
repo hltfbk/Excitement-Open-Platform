@@ -4,14 +4,20 @@
         <section name="LexicalResources">
         
         	<!-- WordNet -->
-			<!-- <property name="eu.excitementproject.eop.core.component.lexicalknowledge.wordnet"/>-->
+			<!-- <property name="wordnet"/>-->
 			
 			<!-- Redis BAP -->
-			<property name="eu.excitementproject.eop.core.component.lexicalknowledge.similarity.SimilarityStorageBasedLexicalResource"/>
+			<!-- <property name="distsim-bap"/> -->
+			
+			<!-- Redis Lin Proximity -->
+			<!-- <property name = "redis-lin-proximity"/>-->
+			
+			<!-- Redis Lin Dependency -->
+			<property name = "redis-lin-dependency"/>
         </section>
         
         <!-- WordNet configuration parameters -->
-        <section name="eu.excitementproject.eop.core.component.lexicalknowledge.wordnet">
+        <section name="wordnet">
 			<property name = "wordnet-dir">src/test/resources/data/WordNet/3.0/dict.wn.orig</property>
 			<property name = "useFirstSenseOnlyLeft">true</property>
 			<property name = "useFirstSenseOnlyRight">true</property>
@@ -20,7 +26,7 @@
 		</section>
 		
 		<!-- Redis BAP configuration parameters -->
-		<section name = "eu.excitementproject.eop.core.component.lexicalknowledge.similarity.SimilarityStorageBasedLexicalResource">
+		<section name = "distsim-bap">
 			<property name="resource-name">distsim-bap</property>
 			<property name="redis-binary-dir">C:\Programs\redis</property>
 			<property name="top-n-rules">20</property>
@@ -30,4 +36,23 @@
 			<property name="r2l-redis-db-file">C:\git\EOP\target\EOP-1.1.3-SNAPSHOT\eop-resources-1.1.3\BIUTEE_Environment\data\RedisData\reuters\bap\similarity-r2l.rdb</property>
 		</section>
         
+        <!-- Redis Lin Proximity configuration parameters -->
+        <section name = "redis-lin-proximity">
+			<property name="resource-name">distsim-lin-proximity</property>
+			<property name="redis-binary-dir">C:\Programs\redis</property>
+			<property name="element-class">eu.excitementproject.eop.distsim.items.LemmaPosBasedElement</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">C:\git\EOP\target\EOP-1.1.3-SNAPSHOT\eop-resources-1.1.3\BIUTEE_Environment\data\RedisData\reuters\lin\proximity\similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">C:\git\EOP\target\EOP-1.1.3-SNAPSHOT\eop-resources-1.1.3\BIUTEE_Environment\data\RedisData\reuters\lin\proximity\similarity-r2l.rdb</property>
+		</section>
+		
+		<!-- Redis Lin Dependency configuration parameters -->
+		<section name = "redis-lin-dependency">
+			<property name="resource-name">distsim-lin-dependency</property>
+			<property name="redis-binary-dir">C:\Programs\redis</property>
+			<property name="element-class">eu.excitementproject.eop.distsim.items.LemmaPosBasedElement</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">C:\git\EOP\target\EOP-1.1.3-SNAPSHOT\eop-resources-1.1.3\BIUTEE_Environment\data\RedisData\reuters\lin\dependency\similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">C:\git\EOP\target\EOP-1.1.3-SNAPSHOT\eop-resources-1.1.3\BIUTEE_Environment\data\RedisData\reuters\lin\dependency\similarity-r2l.rdb</property>
+		</section>
 </configuration>
