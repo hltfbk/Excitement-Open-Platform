@@ -7,10 +7,13 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 /**
- * Some utility methods for alignment.Link type and related codes  
+ * Some utility methods for alignment.Link type and related codes. 
+ * 
+ * ** UNDER CONSTRUCTION ** 
  * 
  * @author Tae-Gil Noh
- *
+ * @since June, 2014 
+ * 
  */
 public class LinkUtils {
 

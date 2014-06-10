@@ -12,6 +12,7 @@ import org.junit.Test;
 @SuppressWarnings("unused")
 public class LinkUtilsTest {
 
+	@Ignore 
 	@Test
 	public void test() {
 		fail("Not yet implemented");
