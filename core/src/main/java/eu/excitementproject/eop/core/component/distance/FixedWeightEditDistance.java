@@ -782,10 +782,10 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     	// the entire source sequence. It is used to normalize distance values.
 
     	double norm;
-    	if(normalizationType.equalsIgnoreCase(DEFAULT)){
-    		norm = distanceTable[source.size()][0] + distanceTable[0][target.size()];
-    	}else{
+    	if(LONG.equalsIgnoreCase(normalizationType)){
     		norm = source.size() + target.size();
+    	}else {
+    		norm = distanceTable[source.size()][0] + distanceTable[0][target.size()];
     	}
     	// the normalizedDistanceValue score has a range from 0 (when source is identical to target), to 1
     	// (when source is completely different form target).
