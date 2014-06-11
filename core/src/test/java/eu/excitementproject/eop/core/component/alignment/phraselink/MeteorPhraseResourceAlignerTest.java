@@ -83,10 +83,31 @@ public class MeteorPhraseResourceAlignerTest {
 		
 		// main class test. 
 		// load test 
+		MeteorPhraseResourceAligner phraseLinker = null; 
+		try {
+			phraseLinker = new MeteorPhraseResourceAligner("/meteor-1.5/data/paraphrase-en", 7); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
 		
 		// alignment test with one CAS 
+//		 *                          1         2         3         4
+//		 *                012345678901234567890123456789012345678901234567890
+//		 * TEXTVIEW SOFA  He went there in person to dwell on the importance, and to dwell on the importance. 
+//		 * HYPOVIEW SOFA  He went there to explain the significance and significance. 
+//       (more than one match, for test) 
+		try {
+			aJCas = tokenizer.generateSingleTHPairCAS("He went there in person to dwell on the importance, and to dwell on the importance.", "He went there to explain the significance and significance."); 
+			phraseLinker.annotate(aJCas); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
 		
-		// .. and on another CAS. 
+		// .. and on another CAS? 
 	}
 
 }

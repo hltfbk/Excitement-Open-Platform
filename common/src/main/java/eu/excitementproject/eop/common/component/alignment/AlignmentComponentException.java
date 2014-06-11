@@ -3,15 +3,13 @@
  */
 package eu.excitementproject.eop.common.component.alignment;
 
-import eu.excitementproject.eop.common.exception.ComponentException;
-
 /**
  * The exception type for AlignmentComponents 
  * 
  * @author Tae-Gil Noh 
  *
  */
-public class AlignmentComponentException extends ComponentException {
+public class AlignmentComponentException extends PairAnnotatorComponentException {
 
 	private static final long serialVersionUID = 2157830765388558808L;
 
