@@ -255,7 +255,7 @@ public class EOPRunner {
 			if (modelFile != null && !modelFile.isEmpty()) {
 				FileUtils.copyFileToDirectory(new File(modelFile), outputDir);
 			} else {
-				logger.info("No model file found");
+//				logger.info("No model file found");
 			}
 			
 		} catch (Exception e) {
