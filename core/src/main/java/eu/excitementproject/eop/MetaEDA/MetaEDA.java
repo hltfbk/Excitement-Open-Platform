@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.MetaEDA;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,6 +30,7 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.MaxEntClassificationEDA;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -51,13 +52,270 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * @author Julia Kreutzer
  *
  */
-public class MetaEDA implements EDABasic<MetaTEDecision>{
+public class MetaEDA implements EDABasic<TEDecision>{
 	
 	/**
 	 * the logger
 	 */
-	public final static Logger logger = Logger.getLogger(MaxEntClassificationEDA.class.getName());
+	public final static Logger logger = Logger.getLogger(MetaEDA.class.getName());
 	
+	//both isTest and isTrain needed, as initialization can take place before testing or training is defined
+	
+	/**
+	 * Constructs a new MetaEDA instance with a list of already initialized 
+	 * basic EDAs.
+	 * @param edas list of already initialized EDABasic instances
+	 */
+	public MetaEDA(ArrayList<EDABasic<? extends TEDecision>> edas){
+		this.edas = edas;
+		logger.info("new MetaEDA with "+edas.size()+" internal EDABasics");
+	}
+
+	@Override
+	public void initialize(CommonConfig config) throws ConfigurationException,
+			EDAException, ComponentException {
+		logger.info("initialize MetaEDA");
+		initializeEDA(config);
+		initializeData(config);
+		if (!this.confidenceAsFeature){
+			// mode 1: do nothing
+		}
+		else {
+			// mode 2:
+			// load and initialize pre-trained model
+			initializeModel(config);
+		}
+	
+	}
+
+	@Override
+		public void startTraining(CommonConfig c) throws EDAException, LAPException {
+			this.isTrain = true; //set train flag
+			this.isTest = false;
+			try {
+				this.initialize(c);
+			} catch (ConfigurationException | EDAException | ComponentException e) {
+				e.printStackTrace();
+			}
+			if (!this.confidenceAsFeature){
+				//do nothing: no training in mode 1
+				return;
+			}
+			else {
+				//mode 2
+				logger.info("Start training with confidences from EDABasic instances as features.");
+				
+				ArrayList<String> goldAnswers = new ArrayList<String>(); //stores gold answers
+				
+	//			//files in training directory
+				File [] xmis = new File(this.trainDir).listFiles();
+				
+				//create attributes: for each EDABasic instance use their name and index as attribute name
+				FastVector attrs = getAttributes();
+				
+				//build up the dataset from training data
+				Instances instances = new Instances("EOP", attrs, xmis.length);  
+				
+				for (File xmi : xmis) {
+				    if (!xmi.getName().endsWith(".xmi")) {
+				      continue;
+				    }
+				    // The annotated pair is added into the CAS.
+				    JCas jcas = PlatformCASProber.probeXmi(xmi, null);
+					Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
+					logger.fine("processing pair "+pair.getPairID());
+					String goldAnswer = pair.getGoldAnswer(); //get gold annotation
+					logger.fine("gold answer: "+goldAnswer);
+					//get features from BasicEDAs' confidence scores
+					ArrayList<Double> scores = getFeatures(jcas);
+									
+					//Store gold answer
+					goldAnswers.add(goldAnswer);
+					
+					//add new instance to dataset
+					Instance instance = new Instance(scores.size());
+					instance.setDataset(instances);
+					for (int j = 0; j < scores.size(); j++){
+						Double score = scores.get(j);
+						instance.setValue((Attribute) attrs.elementAt(j), score);
+					}
+					instances.add(instance);
+				}
+				
+				//last attribute is class prediction (either nonentailment or entailment)
+				FastVector values = new FastVector(); 
+			    values.addElement("NONENTAILMENT");          
+			    values.addElement("ENTAILMENT");
+			    Attribute gold = new Attribute("gold", values);
+			    instances.insertAttributeAt(gold, instances.numAttributes());	
+				instances.setClassIndex(instances.numAttributes()-1); // set class attribute -> last attribute (gold label)
+				
+				//set gold labels for instances
+				logger.info(instances.numInstances()+" training instances loaded with "+instances.numAttributes()+" attributes");
+				for (int k = 0; k<instances.numInstances(); k++){
+					instances.instance(k).setValue(instances.numAttributes()-1, goldAnswers.get(k).toUpperCase());
+				}
+				
+				// Train the classifier
+				logger.info("Training the classifier...");
+				
+				this.classifier = new NaiveBayes();
+				try {
+					classifier.buildClassifier(instances);
+					ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.modelFile));
+					oos.writeObject(this.classifier);
+					oos.flush();
+					oos.close();
+					logger.info("Serialized model and stored as "+this.modelFile);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				logger.info("training done.");
+			}
+		}
+
+	@Override
+		public MetaTEDecision process(JCas aCas) throws EDAException,
+				ComponentException {
+			
+			//generate the confidence features
+			List<Double> features = getFeatures(aCas);
+			
+			Pair pair = JCasUtil.selectSingle(aCas, Pair.class);
+			
+			DecisionLabel dLabel;
+			
+			if (this.confidenceAsFeature){
+				//create attributes: for each EDABasic instance use their name and index as attribute name
+				FastVector attrs = getAttributes();
+	
+				//build up the dataset, here only a single instance
+				Instances instances = new Instances("EOP", attrs, 1);  
+				
+				//last attribute is class prediction (either nonentailment or entailment)
+				FastVector values = new FastVector(); 
+			    values.addElement("NONENTAILMENT");          
+			    values.addElement("ENTAILMENT");
+			    instances.insertAttributeAt(new Attribute("prediction", values), instances.numAttributes());	
+				instances.setClassIndex(edas.size()); // set class attribute -> last attribute which is prediction
+				
+				//add new instance to dataset
+				Instance instance = new SparseInstance(features.size() + 1);
+				instance.setDataset(instances);
+				
+				for (int i = 0; i < features.size(); i++){
+					Double score = features.get(i);
+					instance.setValue((Attribute) attrs.elementAt(i), score);
+				}
+				instances.add(instance);
+				
+				logger.fine("classifying "+instance.toString());
+				
+				//classify instance
+				double result = 0.0;
+				try {
+					result = this.classifier.classifyInstance(instances.firstInstance());
+					instances.firstInstance().setClassValue(result);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				// Determine the result label
+				String label = instances.firstInstance().classAttribute().value((int)result);
+				
+				// Convert to a DecisionLabel instance
+				if (label.toUpperCase().equals(DecisionLabel.Entailment.toString().toUpperCase()))
+					dLabel = DecisionLabel.Entailment;
+				else
+					dLabel = DecisionLabel.NonEntailment;
+				
+				logger.fine("DecisionLabel: "+dLabel);
+			
+			} else {
+				//majority vote
+				int decision = 0;
+				for (Double feature : features) {
+					if (feature < 0){
+						decision -= 1;
+					} else {
+						decision += 1;
+					}
+				}
+				if (decision < 0){
+					dLabel = DecisionLabel.NonEntailment;
+				} else {
+					dLabel = DecisionLabel.Entailment;
+				}
+				logger.fine("DecisionLabel after voting: "+dLabel);
+
+			}
+			return new MetaTEDecision(dLabel, pair.getPairID());
+		}
+
+	@Override
+	public void shutdown() {
+		// disengage resources
+		this.confidenceAsFeature = false;
+		this.edas = null;
+		this.language = "";
+		this.modelFile = "";
+		this.trainDir = "";
+		this.testDir = "";
+		this.classifier = null;
+		this.isTrain = false;
+		this.isTest = false;
+		this.overwrite = false;
+	}
+
+	public String getModelFile() {
+		return modelFile;
+	}
+
+	//both isTest and isTrain needed, as initialization can take place before testing or training is defined
+	
+	public boolean isTest() {
+		return isTest;
+	}
+
+	public boolean isConfidenceAsFeature() {
+		return confidenceAsFeature;
+	}
+
+	public ArrayList<EDABasic<? extends TEDecision>> getEdas() {
+		return edas;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public String getModelDir() {
+		return modelFile;
+	}
+
+	public boolean isTrain() {
+		return isTrain;
+	}
+
+	public boolean isOverwrite() {
+		return overwrite;
+	}
+
+	public void setTest(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getTestDir() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getTrainDir() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * the mode: use the EDABasics' confidence scores as features for training (2) or just decide via majority vote (1)
 	 */
@@ -104,57 +362,10 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 	private boolean isTest = false; 
 	//both isTest and isTrain needed, as initialization can take place before testing or training is defined
 	
-	public String getModelFile() {
-		return modelFile;
-	}
-
-
-	public void setModelFile(String modelFile) {
-		this.modelFile = modelFile;
-	}
-
-
-	public boolean isTest() {
-		return isTest;
-	}
-
-
-	public void setTest(boolean isTest) {
-		this.isTest = isTest;
-	}
-
 	/**
 	 * when true: overwrites existing models while training, false: appends "_old" to existing model file
 	 */
 	private boolean overwrite = false;
-
-	/**
-	 * Constructs a new MetaEDA instance with a list of already initialized 
-	 * basic EDAs.
-	 * @param edas list of already initialized EDABasic instances
-	 */
-	public MetaEDA(ArrayList<EDABasic<? extends TEDecision>> edas){
-		this.edas = edas;
-		logger.info("new MetaEDA with "+edas.size()+" internal EDABasics");
-	}
-
-
-	@Override
-	public void initialize(CommonConfig config) throws ConfigurationException,
-			EDAException, ComponentException {
-		logger.info("initialize MetaEDA");
-		initializeEDA(config);
-		initializeData(config);
-		if (!this.confidenceAsFeature){
-			// mode 1: do nothing
-		}
-		else {
-			// mode 2:
-			// load and initialize pre-trained model
-			initializeModel(config);
-		}
-
-	}
 
 	/**
 	 * initialize the language flag from the configuration,
@@ -277,7 +488,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 	 * @param config the CommonConfig configuration
 	 * @throws ConfigurationException
 	 */
-	public final void initializeData(CommonConfig config)
+	private void initializeData(CommonConfig config)
 			throws ConfigurationException {
 		NameValueTable EDA = null;
 		try {
@@ -302,181 +513,6 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 				logger.warning("Warning: Please specify the testing data directory.");
 			}
 		}
-	}
-
-	@Override
-	public void startTraining(CommonConfig c) throws EDAException, LAPException {
-		this.isTrain = true; //set train flag
-		this.isTest = false;
-		try {
-			this.initialize(c);
-		} catch (ConfigurationException | EDAException | ComponentException e) {
-			e.printStackTrace();
-		}
-		if (!this.confidenceAsFeature){
-			//do nothing: no training in mode 1
-			return;
-		}
-		else {
-			//mode 2
-			logger.info("Start training with confidences from EDABasic instances as features.");
-			
-			ArrayList<String> goldAnswers = new ArrayList<String>(); //stores gold answers
-			
-//			//files in training directory
-			File [] xmis = new File(this.trainDir).listFiles();
-			
-			//create attributes: for each EDABasic instance use their name and index as attribute name
-			FastVector attrs = getAttributes();
-			
-			//build up the dataset from training data
-			Instances instances = new Instances("EOP", attrs, xmis.length);  
-			
-			for (File xmi : xmis) {
-			    if (!xmi.getName().endsWith(".xmi")) {
-			      continue;
-			    }
-			    // The annotated pair is added into the CAS.
-			    JCas jcas = PlatformCASProber.probeXmi(xmi, null);
-				Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
-				String goldAnswer = pair.getGoldAnswer(); //get gold annotation
-				
-				//get features from BasicEDAs' confidence scores
-				ArrayList<Double> scores = getFeatures(jcas);
-								
-				//Store gold answer
-				goldAnswers.add(goldAnswer);
-				
-				//add new instance to dataset
-				Instance instance = new Instance(scores.size());
-				instance.setDataset(instances);
-				for (int j = 0; j < scores.size(); j++){
-					Double score = scores.get(j);
-					instance.setValue((Attribute) attrs.elementAt(j), score);
-				}
-				instances.add(instance);
-			}
-			
-			//last attribute is class prediction (either nonentailment or entailment)
-			FastVector values = new FastVector(); 
-		    values.addElement("NONENTAILMENT");          
-		    values.addElement("ENTAILMENT");
-		    Attribute gold = new Attribute("gold", values);
-		    instances.insertAttributeAt(gold, instances.numAttributes());	
-			instances.setClassIndex(instances.numAttributes()-1); // set class attribute -> last attribute (gold label)
-			
-			//set gold labels for instances
-			logger.info(instances.numInstances()+" training instances loaded with "+instances.numAttributes()+" attributes");
-			for (int k = 0; k<instances.numInstances(); k++){
-				instances.instance(k).setValue(instances.numAttributes()-1, goldAnswers.get(k).toUpperCase());
-			}
-			
-			// Train the classifier
-			logger.info("Training the classifier...");
-			
-			this.classifier = new NaiveBayes();
-			try {
-				classifier.buildClassifier(instances);
-				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.modelFile));
-				oos.writeObject(this.classifier);
-				oos.flush();
-				oos.close();
-				logger.info("Serialized model and stored as "+this.modelFile);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			logger.info("training done.");
-		}
-	}
-
-	@Override
-	public MetaTEDecision process(JCas aCas) throws EDAException,
-			ComponentException {
-		
-		//generate the confidence features
-		List<Double> features = getFeatures(aCas);
-		
-		Pair pair = JCasUtil.selectSingle(aCas, Pair.class);
-		
-		DecisionLabel dLabel;
-		
-		if (this.confidenceAsFeature){
-			//create attributes: for each EDABasic instance use their name and index as attribute name
-			FastVector attrs = getAttributes();
-
-			//build up the dataset, here only a single instance
-			Instances instances = new Instances("EOP", attrs, 1);  
-			
-			//last attribute is class prediction (either nonentailment or entailment)
-			FastVector values = new FastVector(); 
-		    values.addElement("NONENTAILMENT");          
-		    values.addElement("ENTAILMENT");
-		    instances.insertAttributeAt(new Attribute("prediction", values), instances.numAttributes());	
-			instances.setClassIndex(edas.size()); // set class attribute -> last attribute which is prediction
-			
-			//add new instance to dataset
-			Instance instance = new SparseInstance(features.size() + 1);
-			instance.setDataset(instances);
-			
-			for (int i = 0; i < features.size(); i++){
-				Double score = features.get(i);
-				instance.setValue((Attribute) attrs.elementAt(i), score);
-			}
-			instances.add(instance);
-			
-//			System.out.println(instance.toString());
-			
-			//classify instance
-			double result = 0.0;
-			try {
-				result = this.classifier.classifyInstance(instances.firstInstance());
-				instances.firstInstance().setClassValue(result);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			// Determine the result label
-			String label = instances.firstInstance().classAttribute().value((int)result);
-//			System.out.println("label "+label);
-			
-			// Convert to a DecisionLabel instance
-			if (label.toUpperCase().equals(DecisionLabel.Entailment.toString().toUpperCase()))
-				dLabel = DecisionLabel.Entailment;
-			else
-				dLabel = DecisionLabel.NonEntailment;
-//			System.out.println("dLabel "+dLabel);
-		} else {
-			//majority vote
-			int decision = 0;
-			for (Double feature : features) {
-				if (feature < 0){
-					decision -= 1;
-				} else {
-					decision += 1;
-				}
-			}
-			if (decision < 0){
-				dLabel = DecisionLabel.NonEntailment;
-			} else {
-				dLabel = DecisionLabel.Entailment;
-			}
-		}
-		return new MetaTEDecision(dLabel, pair.getPairID());
-	}
-
-	@Override
-	public void shutdown() {
-		// disengage resources
-		this.confidenceAsFeature = false;
-		this.edas = null;
-		this.language = "";
-		this.modelFile = "";
-		this.trainDir = "";
-		this.testDir = "";
-		this.classifier = null;
-		this.isTrain = false;
-		this.isTest = false;
-		this.overwrite = false;
 	}
 
 	/**
@@ -506,6 +542,7 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 				TEDecision decision = null;
 				try {
 					decision = eda.process(jcas);
+					logger.fine(eda.getClass().getSimpleName()+i+"'s decision: "+decision.getDecision()+" "+decision.getConfidence());
 					if (decision.equals(null)){
 						throw new EDAException("The internal EDA "+eda.getClass().getSimpleName()+i+"could not process the data." +
 								"Please check the internal EDA's configuration");
@@ -525,81 +562,5 @@ public class MetaEDA implements EDABasic<MetaTEDecision>{
 	//		logger.info("MetaEDA features from EDABasic confidences: "+features.toString());
 			return features;
 		}
-
-	public boolean isConfidenceAsFeature() {
-		return confidenceAsFeature;
-	}
-
-	public void setConfidenceAsFeature(boolean confidenceAsFeature) {
-		this.confidenceAsFeature = confidenceAsFeature;
-	}
-
-	public ArrayList<EDABasic<? extends TEDecision>> getEdas() {
-		return edas;
-	}
-
-	public void setEdas(ArrayList<EDABasic<? extends TEDecision>> edas) {
-		this.edas = edas;
-	}
-
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
-	public String getModelDir() {
-		return modelFile;
-	}
-
-	public void setModelDir(String modelDir) {
-		this.modelFile = modelDir;
-	}
-
-	public String getTrainDir() {
-		return trainDir;
-	}
-
-	public void setTrainDir(String trainDir) {
-		this.trainDir = trainDir;
-	}
-
-	public String getTestDir() {
-		return testDir;
-	}
-
-	public void setTestDir(String testDir) {
-		this.testDir = testDir;
-	}
-
-	public Classifier getClassifier() {
-		return classifier;
-	}
-
-	public void setClassifier(Classifier classifier) {
-		this.classifier = classifier;
-	}
-
-	public boolean isTrain() {
-		return isTrain;
-	}
-
-	public void setTrain(boolean isTrain) {
-		this.isTrain = isTrain;
-	}
-
-	public boolean isOverwrite() {
-		return overwrite;
-	}
-
-	public void setOverwrite(boolean overwrite) {
-		this.overwrite = overwrite;
-	}
-
-	public static Logger getLogger() {
-		return logger;
-	}
 
 }

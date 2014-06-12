@@ -1,7 +1,8 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.MetaEDA;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.commons.io.FileUtils;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.MetaEDA.MetaEDA;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
@@ -19,6 +21,9 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
+import eu.excitementproject.eop.core.ClassificationTEDecision;
+import eu.excitementproject.eop.core.EditDistancePSOEDA;
+import eu.excitementproject.eop.core.MaxEntClassificationEDA;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
@@ -28,17 +33,21 @@ import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 public class MetaEDATest {
 	static Logger logger = Logger.getLogger(MetaEDATest.class
 			.getName());
-	private boolean preprocessedDE = false; //set to true once preprocessing for train and test data is done
-	private boolean preprocessedEN = false;
 	
-	@Test
+	public static void main(String[] args){
+		logger.setLevel(Level.FINE); //change level to "INFO" if you want to skip detailed information about processes
+		MetaEDATest test = new MetaEDATest();
+		test.testDE();
+		test.testEN();
+	}
+	
 	public void testDE(){
 		test1DE();
 //		test2DE(); //running all three tests takes a long time
 //		test3DE(); //test 2 has to run before 3
 	}
 	
-	@Test
+	
 	public void testEN(){
 		test1EN();
 //		test2EN(); //running all three tests takes a long time
@@ -550,6 +559,10 @@ public class MetaEDATest {
 		logger.info("EDA shuts down.");
 	}
 	
+	private boolean preprocessedDE = false; //set to true once preprocessing for train and test data is done
+
+	private boolean preprocessedEN = false;
+
 	/**
 	 * performs test on testing data with initialized MetaEDA
 	 * prints results to stdout

@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core;
+package eu.excitementproject.eop.MetaEDA;
 
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.TEDecision;
