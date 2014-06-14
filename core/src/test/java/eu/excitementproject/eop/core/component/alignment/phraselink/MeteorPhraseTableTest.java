@@ -7,12 +7,14 @@ import java.util.List;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseTable.ScoredString;
 
 public class MeteorPhraseTableTest {
 
+	@Ignore // blocked, due to the fact that this test is also done by MeteorPhraseResource class test that uses this class.  
 	@Test
 	public void test() {
 		
