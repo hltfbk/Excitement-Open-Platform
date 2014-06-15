@@ -24,7 +24,9 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
 import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
@@ -48,15 +50,19 @@ public class LexicalAligner implements AlignmentComponent {
 
 	// Constants
 	private static final String LEXICAL_RESOURCES_CONF_SECTION = "LexicalResources";
+	private static final String GENERAL_PARAMS_CONF_SECTION = "GeneralParameters";
+	private static final String MAX_PHRASE_KEY = "maxPhraseLength";
 	private static final String WORDNET = "wordnet";
 	private static final String REDIS_BAP = "distsim-bap";
 	private static final String REDIS_LIN_PROXIMITY = "redis-lin-proximity";
 	private static final String REDIS_LIN_DEPENDENCY = "redis-lin-dependency";
+	private static final String VERB_OCEAN = "verb-ocean";
 	
 	// Private Members
-	List<Token> textTokens;
-	List<Token> hypoTokens;
-	List<LexicalResource<? extends RuleInfo>> lexicalResources;
+	private List<Token> textTokens;
+	private List<Token> hypoTokens;
+	private List<LexicalResource<? extends RuleInfo>> lexicalResources;
+	private int maxPhrase = 0;
 	
 	// Public Methods
 	
@@ -86,11 +92,13 @@ public class LexicalAligner implements AlignmentComponent {
 			String textPhrase = "", hypoPhrase = "";
 			
 			for (int textStart = 0; textStart < textTokens.size(); ++textStart) {
-				for (int textEnd = textStart; textEnd < textTokens.size(); ++textEnd) {
+				for (int textEnd = textStart; textEnd < Math.min(textTokens.size(), 
+						textStart + maxPhrase); ++textEnd) {
 					textPhrase = getPhrase(textTokens, textStart, textEnd);
 					
 					for (int hypoStart = 0; hypoStart < hypoTokens.size(); ++hypoStart) {
-						for (int hypoEnd = hypoStart; hypoEnd < hypoTokens.size(); ++hypoEnd) {
+						for (int hypoEnd = hypoStart; hypoEnd < Math.min(hypoTokens.size(), 
+								hypoStart + maxPhrase); ++hypoEnd) {
 							hypoPhrase = getPhrase(hypoTokens, hypoStart, hypoEnd);
 							
 							// Get the rules textPhrase -> hypoPhrase
@@ -138,7 +146,17 @@ public class LexicalAligner implements AlignmentComponent {
 	 */
 	public void init(CommonConfig config) throws AlignerRunException, ConfigurationException {
 		
-		// Get the relevant configuration section
+		// Get the general parameters configuration section
+		NameValueTable paramsSection = null;
+		try {
+			paramsSection = config.getSection(GENERAL_PARAMS_CONF_SECTION);
+		} catch (ConfigurationException e) {
+			throw new ConfigurationException(e);
+		}
+		
+		maxPhrase = paramsSection.getInteger(MAX_PHRASE_KEY);
+				
+		// Get the Lexical Resources configuration section
 		NameValueTable lexicalResourcesSection = null;
 		try {
 			lexicalResourcesSection = config.getSection(LEXICAL_RESOURCES_CONF_SECTION);
@@ -243,7 +261,29 @@ public class LexicalAligner implements AlignmentComponent {
 		for (LexicalResource<? extends RuleInfo> resource : lexicalResources) {
 			
 			try {
-				rules.addAll(resource.getRules(textPhrase, null, hypoPhrase, null));
+				
+				// WordNet workaround:
+				// Make sure the synsets of the right and left sides of the rule
+				// are equal to the right and left phrases.
+				// (WN returns rules associated with any of the words in the phrase)
+				if (resource.getClass().getName().toLowerCase().contains(WORDNET)) {
+					
+					for (LexicalRule<? extends RuleInfo> rule : 
+							resource.getRules(textPhrase, null, hypoPhrase, null)) {
+						
+						WordnetRuleInfo ruleInfo = (WordnetRuleInfo)rule.getInfo();
+						
+						if ((ruleInfo.getLeftSense().getWords().contains(textPhrase)) &&
+							(ruleInfo.getRightSense().getWords().contains(hypoPhrase))) {
+						
+							rules.add(rule);
+						}
+					}
+					
+				} else {
+					rules.addAll(resource.getRules(textPhrase, null, hypoPhrase, null));
+				}
+				
 			} catch (Exception e) {
 				Logger.warn("Could not add rules from " + 
 							resource.getClass().getSimpleName() + " for " +
@@ -361,9 +401,13 @@ public class LexicalAligner implements AlignmentComponent {
 //			case CATVAR:
 //				ret = new CatvarLexicalResource(params);
 //				break;
-//			case VERB_OCEAN:
-//				ret = new VerbOceanLexicalResource(params);
-//				break;
+		
+			// VerbOcean
+			case VERB_OCEAN: {
+				lexicalResource = new VerbOceanLexicalResource(configurationParams);
+				break;
+			}
+			
 //			case WIKIPEDIA:
 //				ret = new WikiLexicalResource(params);
 //				break;
