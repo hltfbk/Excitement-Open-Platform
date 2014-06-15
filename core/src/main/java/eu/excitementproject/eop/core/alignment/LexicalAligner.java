@@ -8,6 +8,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import edu.berkeley.nlp.lm.util.Logger;
 import eu.excitement.type.alignment.Link;
@@ -63,6 +64,15 @@ public class LexicalAligner implements AlignmentComponent {
 	private List<Token> hypoTokens;
 	private List<LexicalResource<? extends RuleInfo>> lexicalResources;
 	private int maxPhrase = 0;
+	private static List<String> lexicalResourceThatSupportLemma;
+	
+	// Initialization
+	static {
+		
+		// These resources should be queried with lemmas and not surface words.
+		lexicalResourceThatSupportLemma = new ArrayList<String>();
+		lexicalResourceThatSupportLemma.add(VerbOceanLexicalResource.class.getName());
+	}
 	
 	// Public Methods
 	
@@ -87,27 +97,38 @@ public class LexicalAligner implements AlignmentComponent {
 			// Get the tokens of the text and hypothesis
 			getTokensAnnotations(aJCas);
 			
-			// For every phrase t in T and phrase h in H, check the lexical
-			// resources if they contain a rule t->h
-			String textPhrase = "", hypoPhrase = "";
+			// Get the lemmas
 			
-			for (int textStart = 0; textStart < textTokens.size(); ++textStart) {
-				for (int textEnd = textStart; textEnd < Math.min(textTokens.size(), 
-						textStart + maxPhrase); ++textEnd) {
-					textPhrase = getPhrase(textTokens, textStart, textEnd);
-					
-					for (int hypoStart = 0; hypoStart < hypoTokens.size(); ++hypoStart) {
-						for (int hypoEnd = hypoStart; hypoEnd < Math.min(hypoTokens.size(), 
-								hypoStart + maxPhrase); ++hypoEnd) {
-							hypoPhrase = getPhrase(hypoTokens, hypoStart, hypoEnd);
-							
-							// Get the rules textPhrase -> hypoPhrase
-							for (LexicalRule<? extends RuleInfo> rule : 
-									getRules(textPhrase, hypoPhrase)) {
+			
+			// Check in all the resources for rules of type textPhrase -> hypoPhrase 
+			for (LexicalResource<? extends RuleInfo> resource : lexicalResources) {
+				
+				// For every phrase t in T and phrase h in H, check the lexical
+				// resources if they contain a rule t->h
+				String textPhrase = "", hypoPhrase = "";
+				
+				for (int textStart = 0; textStart < textTokens.size(); ++textStart) {
+					for (int textEnd = textStart; textEnd < Math.min(textTokens.size(), 
+							textStart + maxPhrase); ++textEnd) {
+						
+						textPhrase = getPhrase(textTokens, textStart, textEnd, 
+								lexicalResourceThatSupportLemma.contains(resource.getClass().getName()));
+						
+						for (int hypoStart = 0; hypoStart < hypoTokens.size(); ++hypoStart) {
+							for (int hypoEnd = hypoStart; hypoEnd < Math.min(hypoTokens.size(), 
+									hypoStart + maxPhrase); ++hypoEnd) {
 								
-								// Add alignment annotations
-								addAlignmentAnnotations(aJCas, textStart, textEnd, 
-										hypoStart, hypoEnd, rule);
+								hypoPhrase = getPhrase(hypoTokens, hypoStart, hypoEnd,
+										lexicalResourceThatSupportLemma.contains(resource.getClass().getName()));
+								
+								// Get the rules textPhrase -> hypoPhrase
+								for (LexicalRule<? extends RuleInfo> rule : 
+										getRules(resource, textPhrase, hypoPhrase)) {
+									
+									// Add alignment annotations
+									addAlignmentAnnotations(aJCas, textStart, textEnd, 
+											hypoStart, hypoEnd, rule);
+								}
 							}
 						}
 					}
@@ -223,14 +244,17 @@ public class LexicalAligner implements AlignmentComponent {
 	 * @param tokens The list of tokens
 	 * @param start The start token index
 	 * @param end The end token index
+	 * @param supportLemma The current lexical resources needs right and left lemmas 
+	 * rather than surface words
 	 * @return The phrase containing the tokens from start to end
 	 */
-	private String getPhrase(List<Token> tokens, int start, int end) {
+	private String getPhrase(List<Token> tokens, int start, int end, boolean supportLemma) {
 
 		StringBuilder phrase = new StringBuilder();
 		
-		for (Token token : tokens.subList(start, end + 1)) {
-			phrase.append(token.getCoveredText());
+		for (Token token : tokens.subList(start, end + 1)) {		
+			phrase.append(supportLemma ? token.getLemma().getValue() : 
+				token.getCoveredText());
 			phrase.append(" ");
 		}
 		
@@ -243,52 +267,49 @@ public class LexicalAligner implements AlignmentComponent {
 	}
 
 	/**
-	 * Get rules of type textPhrase -> hypoPhrase, using all the lexical resources
-	 * in use by this aligner
+	 * Get rules of type textPhrase -> hypoPhrase, using the lexical resource given
+	 * @param resource The lexical resource to use
 	 * @param textPhrase The text phrase, will be looked for as lhs of a rule
 	 * @param hypoPhrase The hypothesis phrase, will be looked for as rhs of a rule
 	 * @return The list of rules textPhrase -> hypoPhrase
 	 * @throws LexicalResourceException 
 	 */
 	private List<LexicalRule<? extends RuleInfo>> 
-						getRules(String textPhrase, String hypoPhrase) 
+						getRules(LexicalResource<? extends RuleInfo> resource,
+								String textPhrase, String hypoPhrase) 
 								throws LexicalResourceException {
 
 		List<LexicalRule<? extends RuleInfo>> rules = 
 				new ArrayList<LexicalRule<? extends RuleInfo>>();
 		
-		// Check in all the resources for rules of type textPhrase -> hypoPhrase 
-		for (LexicalResource<? extends RuleInfo> resource : lexicalResources) {
+		try {
 			
-			try {
+			// WordNet workaround:
+			// Make sure the synsets of the right and left sides of the rule
+			// are equal to the right and left phrases.
+			// (WN returns rules associated with any of the words in the phrase)
+			if (resource.getClass().getName().toLowerCase().contains(WORDNET)) {
 				
-				// WordNet workaround:
-				// Make sure the synsets of the right and left sides of the rule
-				// are equal to the right and left phrases.
-				// (WN returns rules associated with any of the words in the phrase)
-				if (resource.getClass().getName().toLowerCase().contains(WORDNET)) {
+				for (LexicalRule<? extends RuleInfo> rule : 
+						resource.getRules(textPhrase, null, hypoPhrase, null)) {
 					
-					for (LexicalRule<? extends RuleInfo> rule : 
-							resource.getRules(textPhrase, null, hypoPhrase, null)) {
-						
-						WordnetRuleInfo ruleInfo = (WordnetRuleInfo)rule.getInfo();
-						
-						if ((ruleInfo.getLeftSense().getWords().contains(textPhrase)) &&
-							(ruleInfo.getRightSense().getWords().contains(hypoPhrase))) {
-						
-							rules.add(rule);
-						}
+					WordnetRuleInfo ruleInfo = (WordnetRuleInfo)rule.getInfo();
+					
+					if ((ruleInfo.getLeftSense().getWords().contains(textPhrase)) &&
+						(ruleInfo.getRightSense().getWords().contains(hypoPhrase))) {
+					
+						rules.add(rule);
 					}
-					
-				} else {
-					rules.addAll(resource.getRules(textPhrase, null, hypoPhrase, null));
 				}
 				
-			} catch (Exception e) {
-				Logger.warn("Could not add rules from " + 
-							resource.getClass().getSimpleName() + " for " +
-							textPhrase + "->" + hypoPhrase, e);
+			} else {
+				rules.addAll(resource.getRules(textPhrase, null, hypoPhrase, null));
 			}
+				
+		} catch (Exception e) {
+			Logger.warn("Could not add rules from " + 
+						resource.getClass().getSimpleName() + " for " +
+						textPhrase + "->" + hypoPhrase, e);
 		}
 		
 		return rules;
