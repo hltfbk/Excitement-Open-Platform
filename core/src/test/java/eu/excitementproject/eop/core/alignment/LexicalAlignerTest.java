@@ -37,6 +37,9 @@ public class LexicalAlignerTest {
 			JCas aJCas = lap.generateSingleTHPairCAS("The assassin was convicted and sentenced to death penalty", 
 					"The killer has been accused of murder and doomed to capital punishment");
 			
+//			JCas aJCas = lap.generateSingleTHPairCAS("Kennedy was killed in Dallas", 
+//					"Kennedy was wounded and died in Texas");
+			
 			// Create and initialize the aligner
 			LexicalAligner aligner = new LexicalAligner();
 			File configFile = new File("src/test/resources/configuration-file/LexicalAligner_EN.xml");

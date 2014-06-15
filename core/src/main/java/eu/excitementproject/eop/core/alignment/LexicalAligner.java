@@ -8,7 +8,6 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.uimafit.util.JCasUtil;
 
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import edu.berkeley.nlp.lm.util.Logger;
 import eu.excitement.type.alignment.Link;
@@ -25,6 +24,8 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource;
+import eu.excitementproject.eop.core.component.lexicalknowledge.geo.RedisBasedGeoLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
@@ -58,6 +59,8 @@ public class LexicalAligner implements AlignmentComponent {
 	private static final String REDIS_LIN_PROXIMITY = "redis-lin-proximity";
 	private static final String REDIS_LIN_DEPENDENCY = "redis-lin-dependency";
 	private static final String VERB_OCEAN = "verb-ocean";
+	private static final String REDIS_GEO = "redis-geo";
+	private static final String CATVAR = "catvar";
 	
 	// Private Members
 	private List<Token> textTokens;
@@ -72,6 +75,7 @@ public class LexicalAligner implements AlignmentComponent {
 		// These resources should be queried with lemmas and not surface words.
 		lexicalResourceThatSupportLemma = new ArrayList<String>();
 		lexicalResourceThatSupportLemma.add(VerbOceanLexicalResource.class.getName());
+		lexicalResourceThatSupportLemma.add(CatvarLexicalResource.class.getName());
 	}
 	
 	// Public Methods
@@ -419,9 +423,12 @@ public class LexicalAligner implements AlignmentComponent {
 //			case BAP:
 //				ret = new Direct200LexicalResource(params);
 //				break;
-//			case CATVAR:
-//				ret = new CatvarLexicalResource(params);
-//				break;
+		
+			// CatVar
+			case CATVAR: {
+				lexicalResource = new CatvarLexicalResource(configurationParams);
+				break;
+			}
 		
 			// VerbOcean
 			case VERB_OCEAN: {
@@ -471,13 +478,16 @@ public class LexicalAligner implements AlignmentComponent {
 //					throw new LexicalResourceException(e.toString());
 //				}
 //				break;
-//			case REDIS_GEO:
-//				try {
-//					ret = new RedisBasedGeoLexicalResource(params);
-//				} catch (Exception e) {
-//					throw new LexicalResourceException(e.toString());
-//				}
-//				break;								
+			
+			// Redis geo resource
+			case REDIS_GEO: {
+				try {
+					lexicalResource = new RedisBasedGeoLexicalResource(configurationParams);
+				} catch (Exception e) {
+					throw new LexicalResourceException(e.toString());
+				}
+				break;		
+			}
 			default: {
 				lexicalResource = null;
 				break;
