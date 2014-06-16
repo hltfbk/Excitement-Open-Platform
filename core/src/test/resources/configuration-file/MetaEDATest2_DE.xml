@@ -18,7 +18,7 @@
 
 	<!-- Platform configuration section -->
     <section name="PlatformConfiguration">
-        <!-- The EDA to be used: MaxEntClassificationEDA -->
+        <!-- The EDA to be used: MetaEDA -->
         <property name="activatedEDA">eu.excitementproject.eop.core.MetaEDA</property>
         <!-- The language: DE for German -->
 		<property name="language">DE</property>
