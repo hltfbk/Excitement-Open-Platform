@@ -30,33 +30,110 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
+/**
+ * This class performs as a usage example with tests for <code>MetaEDA</code>.
+ * The user can test some sample configurations, modify them or create and test a MetaEDA with their own configurations.
+ * 
+ * <code>MetaEDA</code> performs as a higher level EDA. It implements the
+ * <code>EDABasic</code> interface. 
+ * 
+ * It uses multiple initialized EDABasic instances and their classifying results as features to make its own
+ * decision.  
+ * It has two modes:
+ * 1) voting: each EDA's DecisionLabel counts as vote for NonEntailment or Entailment.
+ * 	MetaEDA goes with the majority. In case of a tie, it decides NonEntailment. 
+ *  Note that there is no training in this mode.
+ * 2) confidences as features: each EDA's decision and its confidence on this decision is taken as a feature
+ * 	for a classifier which is then trained on the input pairs. 
+ *  If the decision is "NonEntailment", the numerical feature is the confidence*(-1), if it is "Entailment", the feature is simply the confidence. 
+ * 	The trained model is stored and can be loaded again to use it for classifying new data.
+ *  Training is performed with a weka classifier.
+ *   
+ *  MetaEDA is initialized with a configuration file, where the following parameters need to be set:
+ *  - "activatedEDA": the activated EDA, has to be eu.excitementproject.eop.core.MetaEDA
+ *  - "language": "EN" or "DE"
+ *  - "confidenceAsFeature": defines the mode (1 or 2), see above
+ *  - "overwrite": whether to overwrite an existing model with the same name or not
+ *  - "modelFile": path to model file
+ *  - "trainDir": path to training data directory
+ *  - "testDir": path to test data directory
+ *  A sample configuration file can be found in core/src/test/resources/configuration-file/MetaEDATest1_DE.xml
+ *  
+ * @author Julia Kreutzer
+ *
+ */
 public class MetaEDATest {
 	static Logger logger = Logger.getLogger(MetaEDATest.class
 			.getName());
 	
+	/**
+	 * The main method calls the two methods "testDE" and "testEN", methods for running German or English tests respectively.
+	 * The user can add own test methods to run, or comment out test methods which they wish not to run.
+	 * @param args
+	 */
 	public static void main(String[] args){
 		logger.setLevel(Level.FINE); //change level to "INFO" if you want to skip detailed information about processes
 		MetaEDATest test = new MetaEDATest();
+		//perform tests contained in testDE method for German
 		test.testDE();
+		//perform tests contained in testEN method for English
 		test.testEN();
 	}
 	
+	/**
+	 * tests for German with sample configurations
+	 * - comment out tests you wish not to run
+	 * - or: modify code in called test classed
+	 * test1DE: majority vote, training and testing with TIE: Base and Edits: PSO
+	 * test2DE: confidence as features, training and testing with TIE: Base+DB and Edits: PSO
+	 * test3DE: confidence as features, loading the model created in test2DE and testing
+	 */
 	public void testDE(){
 		test1DE();
-//		test2DE(); //running all three tests takes a long time
-//		test3DE(); //test 2 has to run before 3
+		test2DE(); //running all three tests takes a long time
+		test3DE(); //test 2 has to run before 3
 	}
 	
-	
+	/**
+	 * tests for English with sample configurations
+	 * - comment out tests you wish not to run!
+	 * - or: modify code in called test classed
+	 * test1EN: similar to test1DE (majority vote), training and testing, TIE: Base and Edits: PSO
+	 * test2EN: similar to test2DE (confidence as features), training and testing with TIE: Base and Edits: PSO
+	 * test3EN: similar to test3DE (confidence as features), loading the model created in test2En and testing
+	 */
 	public void testEN(){
 		test1EN();
-//		test2EN(); //running all three tests takes a long time
-//		test3EN(); //test 2 has to run before 3
+		test2EN(); //running all three tests takes a long time
+		test3EN(); //test 2 has to run before 3
 	}
 	
 	
 	/**
-	 * test MetaEDA in mode 1 (majority vote) with two internal EDAs for German
+	 * Tests MetaEDA in mode 1 (majority vote) with two internal EDAs for German: 1)TIE:Base and 2)Edits:PSO.	
+	 * 
+	 * 1) loads MetaEDA configuration file   
+	 * 2) initializes TIE and Edits instance
+	 * 3) constructs a MetaEDA with the two EDABasics
+	 * 4) preprocess test data by calling preprocess(MetaEDA) method
+	 * 5) process test data with MetaEDA (majority vote) by calling testMetaEDA(MetaEDA) method and prints results to stdout
+	 * 
+	 * The sample configuration file is loaded from "./src/test/resources/configuration-file/MetaEDATest1_DE.xml"
+	 * Test and training data, model file directory, overwrite mode are defined there.
+	 * 
+	 * Each testing data sample is first processed by both internal EDAs. 
+	 * Their decisions are consequently used for the MetaEDA to find a meta decision, which goes with the majority.
+	 * E.g. Both EDABasics return "NonEntailment", so MetaEDA will return "NonEntailment" as well.
+	 * Or the opposite case: both return "Entailment", so MetaEDA decides "Entailment" as well.
+	 * If one of them votes for "Entailment", and one for "NonEntailment", MetaEDA will decide "NonEntailment", as reaction to a tie.
+	 * 
+	 * Of course, more than two EDABasic instances can be included. 
+	 * Note that they need to be initialized before constructing a MetaEDA.
+	 * 
+	 * Note that some EDABasics require certain linguistic preprocessing steps.
+	 * The user has to provide these annotation layers on training and test data by calling linguistic preprocessing tools in the preprocess(MetaEDA) method.
+	 * For this example, data is preprocessed with TreeTagger.
+	 *
 	 * @throws EDAException
 	 * @throws ComponentException
 	 */
@@ -69,7 +146,7 @@ public class MetaEDATest {
 		Assume.assumeTrue(metaconfigFile.exists());
 		CommonConfig metaconfig = null;
 		try {
-			// read in the configuration from the file
+			//read in the configuration from the file
 			metaconfig = new ImplCommonConfig(metaconfigFile);
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
@@ -100,7 +177,7 @@ public class MetaEDATest {
 		}
 		edas.add(meceda);
 
-//		//initialize EditDistancePSOEDA
+		//initialize EditDistancePSOEDA
 		EditDistancePSOEDA<TEDecision> eda2 = new EditDistancePSOEDA<TEDecision>();
 		EDABasic<? extends TEDecision> edpsoeda = eda2;
 		File edpsoedaconfigfile = new File("./src/main/resources/configuration-file/EditDistancePSOEDA_DE.xml");
@@ -122,7 +199,7 @@ public class MetaEDATest {
 		}
 		edas.add(edpsoeda);
 		
-		//construct meta EDA
+		//construct metaEDA
 		MetaEDA meda = new MetaEDA(edas);
 		//preprocess test and training data
 		try {
@@ -141,7 +218,27 @@ public class MetaEDATest {
 
 
 	/**
-	 * test MetaEDA in training mode 2 (confidence as features) with two internal EDAs for German
+	 * Tests MetaEDA in training mode 2 (confidence as features) with two internal EDAs for German: 1)TIE:Base+DB and 2)Edits:PSO
+	 * 
+	 * 1) loads MetaEDA configuration file   
+	 * 2) initializes TIE and Edits instance
+	 * 3) constructs a MetaEDA with the two EDABasics
+	 * 4) preprocess test data by calling preprocess(MetaEDA) method
+	 * 5) trains the MetaEDA on training data with EDABasic confidences as features
+	 * 5) process test data with MetaEDA (majority vote) by calling testMetaEDA(MetaEDA) method and prints results to stdout
+	 * 
+	 * The sample configuration file is loaded from "./src/test/resources/configuration-file/MetaEDATest2_DE.xml"
+	 * Test and training data, model file directory, overwrite mode are defined there.
+	 * 
+	 * Each training data sample is first processed by both internal EDAs. 
+	 * Their decisions are consequently used for the MetaEDA to find a meta decision by serving as features for training of a weka classifier.
+	 * E.g. One EDABasic returns "NonEntailment" and the confidence 0.4, so MetaEDA uses the feature "-0.4" for training.
+	 * Another EDABasic returns "Entailment" with confidence 0.8, so MetaEDA uses the feature "0.8" for training.
+	 * After training, the MetaEDA model is serialized and stored in the file defined in the configuration.
+	 * 
+	 * Of course, more than two EDABasic instances can be included. 
+	 * Note that they need to be initialized before constructing a MetaEDA.
+	 *
 	 * @throws EDAException
 	 * @throws ComponentException
 	 */
@@ -225,7 +322,24 @@ public class MetaEDATest {
 	
 
 	/**
-	 * test MetaEDA processing with model file created in test2DE for German
+	 * Tests MetaEDA processing with model file created in test2DE for German (two internal EDAs for German: 1)TIE:Base+DB and 2)Edits:PSO).
+	 * 
+	 * 1) loads MetaEDA configuration file   
+	 * 2) initializes TIE and Edits instance
+	 * 3) constructs a MetaEDA with the two EDABasics and loads trained model
+	 * 4) preprocess test data by calling preprocess(MetaEDA) method
+	 * 5) process test data with MetaEDA (majority vote) by calling testMetaEDA(MetaEDA) method and prints results to stdout
+	 * 
+	 * The sample configuration file is loaded from "./src/test/resources/configuration-file/MetaEDATest3_DE.xml"
+	 * Test and training data, model file directory, overwrite mode are defined there.
+	 * 
+	 * Each test data sample is first processed by both internal EDAs. 
+	 * Their decisions are consequently used for the MetaEDA to find a meta decision by serving as features for classifying with the pre-trained weka classifier.
+	 * E.g. One EDABasic returns "NonEntailment" and the confidence 0.4, so MetaEDA uses the feature "-0.4" for classifying.
+	 * Another EDABasic returns "Entailment" with confidence 0.8, so MetaEDA uses the feature "0.8" for classifying.
+	 * 
+	 * For consistencies sake it is important to initialize and use the same EDABasics as in test2DE().
+	 * Note that they need to be initialized before constructing a MetaEDA.
 	 * @throws EDAException
 	 * @throws ComponentException
 	 */
@@ -308,7 +422,30 @@ public class MetaEDATest {
 	}
 	
 	/**
-	 * test MetaEDA in mode 1 (majority vote) with two internal EDAs for English
+	 * Tests MetaEDA in mode 1 (majority vote) with two internal EDAs for English: 1)TIE:Base and 2)Edits:PSO.	
+	 * 
+	 * 1) loads MetaEDA configuration file   
+	 * 2) initializes TIE and Edits instance
+	 * 3) constructs a MetaEDA with the two EDABasics
+	 * 4) preprocess test data by calling preprocess(MetaEDA) method
+	 * 5) process test data with MetaEDA (majority vote) by calling testMetaEDA(MetaEDA) method and prints results to stdout
+	 * 
+	 * The sample configuration file is loaded from "./src/test/resources/configuration-file/MetaEDATest1_EN.xml"
+	 * Test and training data, model file directory, overwrite mode are defined there.
+	 * 
+	 * Each testing data sample is first processed by both internal EDAs. 
+	 * Their decisions are consequently used for the MetaEDA to find a meta decision, which goes with the majority.
+	 * E.g. Both EDABasics return "NonEntailment", so MetaEDA will return "NonEntailment" as well.
+	 * Or the opposite case: both return "Entailment", so MetaEDA decides "Entailment" as well.
+	 * If one of them votes for "Entailment", and one for "NonEntailment", MetaEDA will decide "NonEntailment", as reaction to a tie.
+	 * 
+	 * Of course, more than two EDABasic instances can be included. 
+	 * Note that they need to be initialized before constructing a MetaEDA.
+	 * 
+	 * Note that some EDABasics require certain linguistic preprocessing steps.
+	 * The user has to provide these annotation layers on training and test data by calling linguistic preprocessing tools in the preprocess(MetaEDA) method.
+	 * For this example, data is preprocessed with TreeTagger.
+	 *
 	 * @throws EDAException
 	 * @throws ComponentException
 	 * @throws ConfigurationException 
@@ -393,7 +530,31 @@ public class MetaEDATest {
 	}
 
 	/**
-	 * test MetaEDA in training mode 2 (confidence as features) with two internal EDAs for English
+	 * Tests MetaEDA in training mode 2 (confidence as features) with two internal EDAs for English: 1)TIE:Base+DB and 2)Edits:PSO
+	 * 
+	 * 1) loads MetaEDA configuration file   
+	 * 2) initializes TIE and Edits instance
+	 * 3) constructs a MetaEDA with the two EDABasics
+	 * 4) preprocess test data by calling preprocess(MetaEDA) method
+	 * 5) trains the MetaEDA on training data with EDABasic confidences as features
+	 * 5) process test data with MetaEDA (majority vote) by calling testMetaEDA(MetaEDA) method and prints results to stdout
+	 * 
+	 * The sample configuration file is loaded from "./src/test/resources/configuration-file/MetaEDATest2_EN.xml"
+	 * Test and training data, model file directory, overwrite mode are defined there.
+	 * 
+	 * Each training data sample is first processed by both internal EDAs. 
+	 * Their decisions are consequently used for the MetaEDA to find a meta decision by serving as features for training of a weka classifier.
+	 * E.g. One EDABasic returns "NonEntailment" and the confidence 0.4, so MetaEDA uses the feature "-0.4" for training.
+	 * Another EDABasic returns "Entailment" with confidence 0.8, so MetaEDA uses the feature "0.8" for training.
+	 * After training, the MetaEDA model is serialized and stored in the file defined in the configuration.
+	 * 
+	 * Of course, more than two EDABasic instances can be included. 
+	 * Note that they need to be initialized before constructing a MetaEDA.
+	 *
+	 * Note that some EDABasics require certain linguistic preprocessing steps.
+	 * The user has to provide these annotation layers on training and test data by calling linguistic preprocessing tools in the preprocess(MetaEDA) method.
+	 * For this example, data is preprocessed with TreeTagger.
+	 * 
 	 * @throws EDAException
 	 * @throws ComponentException
 	 */
@@ -477,7 +638,29 @@ public class MetaEDATest {
 	
 
 	/**
-	 * test MetaEDA processing with model file created in test2EN for English
+	 * Tests MetaEDA processing with model file created in test2EN for English (two internal EDAs for English: 1)TIE:Base+DB and 2)Edits:PSO).
+	 * 
+	 * 1) loads MetaEDA configuration file   
+	 * 2) initializes TIE and Edits instance
+	 * 3) constructs a MetaEDA with the two EDABasics and loads trained model
+	 * 4) preprocess test data by calling preprocess(MetaEDA) method
+	 * 5) process test data with MetaEDA (majority vote) by calling testMetaEDA(MetaEDA) method and prints results to stdout
+	 * 
+	 * The sample configuration file is loaded from "./src/test/resources/configuration-file/MetaEDATest3_EN.xml"
+	 * Test and training data, model file directory, overwrite mode are defined there.
+	 * 
+	 * Each test data sample is first processed by both internal EDAs. 
+	 * Their decisions are consequently used for the MetaEDA to find a meta decision by serving as features for classifying with the pre-trained weka classifier.
+	 * E.g. One EDABasic returns "NonEntailment" and the confidence 0.4, so MetaEDA uses the feature "-0.4" for classifying.
+	 * Another EDABasic returns "Entailment" with confidence 0.8, so MetaEDA uses the feature "0.8" for classifying.
+	 * 
+	 * For consistencies sake it is important to initialize and use the same EDABasics as in test2EN().
+	 * Note that they need to be initialized before constructing a MetaEDA.
+	 * 
+	 * Note that some EDABasics require certain linguistic preprocessing steps.
+	 * The user has to provide these annotation layers on training and test data by calling linguistic preprocessing tools in the preprocess(MetaEDA) method.
+	 * For this example, data is preprocessed with TreeTagger.
+	 * 
 	 * @throws EDAException
 	 * @throws ComponentException
 	 */
@@ -559,14 +742,25 @@ public class MetaEDATest {
 		logger.info("EDA shuts down.");
 	}
 	
-	private boolean preprocessedDE = false; //set to true once preprocessing for train and test data is done
+	/**
+	 * set to true once pre-processing for German training and test data is done
+	 */
+	private boolean preprocessedDE = false; 
 
+	/**
+	 * set to true once pre-processing for English training and test data is done
+	 */
 	private boolean preprocessedEN = false;
 
 	/**
-	 * performs test on testing data with initialized MetaEDA
-	 * prints results to stdout
-	 * @param meda
+	 * Performs test on testing data with initialized MetaEDA and
+	 * prints results to stdout.
+	 * 
+	 * First, CASes are built for input data.
+	 * Then, they are processed by MetaEDA.
+	 * Finally, results are printed. This includes the number of correctly predicted T-H-pairs, the number of all input pairs, and the percentage of correct predictions.
+	 * 
+	 * @param meda initialized MetaEDA
 	 * @throws EDAException
 	 * @throws ComponentException
 	 */
@@ -601,12 +795,16 @@ public class MetaEDATest {
 			sum += 1;
 		}
 		float score = (float)correct/sum;
-		System.out.println("sum "+sum+" - correct "+correct+" - correct/sum = "+score+"\n");
+		System.out.println("sum "+sum+" - correct "+correct+" ("+score*100+"%) \n");
 	}
 	
 	/**
-	 * preprocesses the T-H pairs with TreeTagger
-	 * @param meda
+	 * Pre-processes the T-H pairs with TreeTagger
+	 *
+	 * Note that some EDABasics require certain linguistic preprocessing steps.
+	 * The user has to provide these annotation layers on training and test data by calling linguistic preprocessing tools here.
+	 * 
+	 * @param meda initialized MetaEDA
 	 * @throws LAPException 
 	 */
 	private void preprocess(MetaEDA meda){
