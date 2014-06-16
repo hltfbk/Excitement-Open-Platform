@@ -33,6 +33,7 @@ public class MeteorPhraseTable {
 
 		// start loading the table text from resource path
 		logger.info("Loading Meteor Paraphrase table from resource path: " + resourcePath); 
+		final long loadStart = System.currentTimeMillis();
 
 		InputStream is = getClass().getResourceAsStream(resourcePath);
 		BufferedReader tableReader = new BufferedReader(new InputStreamReader(is)); 
@@ -60,7 +61,10 @@ public class MeteorPhraseTable {
 			
 			ec++;
 		}
-		logger.info("loading complelte, " + ec + " entries).") ; 
+		final long loadEnd = System.currentTimeMillis();
+		final long duration = ( loadEnd - loadStart ) / 1000; 
+
+		logger.info("loading complelte, " + ec + " entries. (in " + duration + " seconds)") ; 
 
 	}
 

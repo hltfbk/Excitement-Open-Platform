@@ -3,15 +3,18 @@ package eu.excitementproject.eop.core.component.alignment.phraselink;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.FSArray;
 import org.uimafit.util.JCasUtil; 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
 import eu.excitement.type.alignment.Link;
+import eu.excitement.type.alignment.Target;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
@@ -48,6 +51,9 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 	
 	public void annotate(JCas aJCas) throws AlignmentComponentException 
 	{
+		// intro log
+		logger.info("annotate() called with a JCas with the following T and H;  ");   
+		
 		if (aJCas == null)
 			throw new AlignmentComponentException("annotate() got a null JCas object."); 
 		
@@ -57,12 +63,17 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 			textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 			hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 			
-			// TODO language check. 
+			// TODO language check. (in the extended ones? hmm.) 
 		}
 		catch (CASException e)
 		{
-			throw new AlignmentComponentException(e); 
+			throw new AlignmentComponentException("Failed to access the Two views (TEXTVIEW, HYPOTHESISVIEW)", e); 
 		}
+		
+		logger.info("TEXT: " + textView.getDocumentText().substring(0, 25) + " ..."); 
+		logger.info("HYPO: " + hypoView.getDocumentText().substring(0, 25) + " ...");  
+		
+		int countAnnotatedLinks = 0; 
 		
 		// get all candidates on Text view 
 		List<String> phraseCandidatesInTextView = getPhraseCandidatesFromSOFA(textView, maxPhraseLength); 
@@ -94,7 +105,28 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 							List<Integer> lhsOccurrences = getOccurrencePoints(textViewSofaText, lhs);
 							for (int lhsBegin : lhsOccurrences)
 							{
-								addAlignmentLinksOnTokenLevel(textView, hypoView, lhsBegin, lhsBegin + lhs.length(), rhsBegin, rhsBegin + rhs.length()); 								
+								try {
+									// generate a new Link with Two Targets  
+									Link aLink = addOneAlignmentLinkOnTokenLevel(textView, hypoView, lhsBegin, lhsBegin + lhs.length(), rhsBegin, rhsBegin + rhs.length(), Link.Direction.TtoH); 								
+									
+									// check aLink is not null. 
+									if (aLink == null)
+									{
+										throw new AlignmentComponentException("Something went wrong: Integrity failure - null-Token-alignment requested within code, and this shouldn't happen."); 
+									}
+									
+									// add Meta-information on the Link. 
+									// setStrength() .setAlignerID() .setAlignerVersion() .setLinkInfo(). (Also groupLabel, if using that)
+									aLink.setStrength(tuple.getScore());
+									aLink.setAlignerID(this.alignerID); 
+									aLink.setAlignerVersion(this.alignerVersion); 
+									aLink.setLinkInfo(this.linkInfo); 														
+									countAnnotatedLinks ++; 
+								}
+								catch(CASException e)
+								{
+									throw new AlignmentComponentException("JCas access failed while adding Links", e); 
+								}
 							}
 						}
 					}
@@ -102,7 +134,8 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 			}
 		}
 		
-		
+		// outro log 
+		logger.info("annotate() added " + countAnnotatedLinks + " links to the CAS." ); 
 		
 	}
 
@@ -175,8 +208,12 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 	 * and all tokens that are covering HYPO SOFA text position 14 - 40 will be grouped in another alignment.Group
 	 * and they will be linked by alignment.Link. 
 	 * 
-	 * NOTE 
-	 *  
+	 * <P> 
+	 * NOTE
+	 *  - This method *does not* add any "meta-level" information, such as aligner ID, etc. Those has to be added by the caller on the returned new Link instance.   
+	 *  - The caller must do after the call  .setStrength() .setAlignerID() .setAlignerVersion() .setLinkInfo(). (Also groupLabel, if using that) 
+	 *  - (But this method does add the new Link to CAS annotation index)
+	 * 
 	 * @param viewFrom The view where tokens will be grouped as a target for alignment.link From. 
 	 * @param viewTo   The view where tokens will be grouped as a target for alignment.link Target. 
 	 * @param fromStart start position of Tokens in viewFrom
@@ -185,17 +222,98 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 	 * @param toEnd     end position of Tokens in viewTo
 	 * @return Link    the successful call will return the newly generated Link instance. 
 	 */
-	public static Link addAlignmentLinksOnTokenLevel(JCas viewFrom, JCas viewTo, int fromStart, int fromEnd, int toStart, int toEnd)
+	public static Link addOneAlignmentLinkOnTokenLevel(JCas textView, JCas hypoView, int fromBegin, int fromEnd, int toBegin, int toEnd, Link.Direction dir) throws CASException
 	{
-		Link newLink = null; 
-		// TODO write. 
+		// declare what is being done on log ... 
 		logger.debug("got request to add link from TEXT -> HYPO group"); 
-		logger.debug("TEXT group: " + fromStart + " to " + fromEnd + ":" + viewFrom.getDocumentText().substring(fromStart, fromEnd)); 
-		logger.debug("HYPO group: " + toStart + " to " + toEnd +":" + viewTo.getDocumentText().substring(toStart, toEnd)); 
+		logger.debug("TEXT group: " + fromBegin + " to " + fromEnd + ":" + textView.getDocumentText().substring(fromBegin, fromEnd)); 
+		logger.debug("HYPO group: " + toBegin + " to " + toEnd +":" + hypoView.getDocumentText().substring(toBegin, toEnd)); 
 		//logger.debug("TEXT SOFA: " + viewFrom.getDocumentText()); 
 		//logger.debug("HYPO SOFA: " + viewTo.getDocumentText()); 
 		
-		return newLink; 
+		// prepared two alignment Targets
+		// FROM side 
+		//List<Token> tokens = JCasUtil.selectCovering(textView, Token.class, fromBegin, fromEnd); 
+		List<Token> tokens = tokensBetween(textView, fromBegin, fromEnd); 
+		Target textTarget = prepareOneTarget(textView, tokens); 
+		
+		// TO side 
+		//tokens = JCasUtil.selectCovering(hypoView,  Token.class,  toBegin,  toEnd);  		
+		tokens = tokensBetween(hypoView, toBegin, toEnd); 
+		Target hypoTarget = prepareOneTarget(hypoView, tokens);
+		
+		if ((textTarget == null) || (hypoTarget == null))
+		{
+			logger.warn("got request for a alignment.Target with 0 tokens. Something wrong, not making Link instance and returning null."); 
+			return null; 
+		}
+		
+		// Okay. we have two targets. Make one Link.
+		Link theLink = new Link(hypoView); 
+		theLink.setTSideTarget(textTarget); 
+		theLink.setHSideTarget(hypoTarget); 
+		theLink.setDirection(dir); 
+	
+		logger.debug("TSideTarget, "  + textTarget.getTargetAnnotations().size() + " tokens, covers: " + textTarget.getCoveredText()); 
+		logger.debug("HSideTarget, "  + hypoTarget.getTargetAnnotations().size() + " tokens, covers: " + hypoTarget.getCoveredText()); 
+
+		theLink.setBegin(hypoTarget.getBegin()); 
+		theLink.setEnd(hypoTarget.getEnd());
+		
+		theLink.addToIndexes(); 
+		
+		// The caller must do after the call  
+		// .setStrength()
+		// .setAlignerID()
+		// .setAlignerVersion()
+		// .setLinkInfo(); 
+		
+		return theLink; 
+	}
+	
+	// a utility method used by addAlignmentLinnksOnTokenLevel
+	// Gets one View and a set of Tokens (of that view) and makes one alignment.Target 
+	private static Target prepareOneTarget(JCas view, Collection<Token> tokens)
+	{		
+		int countTokens = tokens.size(); 
+		if (countTokens == 0) // check; null means no Tokens for target.  
+			return null; 
+	
+		Target aTarget = new Target(view); 
+
+		FSArray annots = new FSArray(view, countTokens); 
+		aTarget.setTargetAnnotations(annots); 
+		Iterator<Token> itr = tokens.iterator(); 
+		int begin=0; 
+		int end=0; 
+		for(int i=0; i < countTokens; i++)
+		{
+			Token t = itr.next(); 
+			if (begin == 0)
+				begin = t.getBegin(); 
+			end = t.getEnd();  // we are assuming that collection tokens is ordered. 
+			annots.set(i, t); 
+		}
+		
+		aTarget.setBegin(begin); 
+		aTarget.setEnd(end); 
+		aTarget.addToIndexes(); 
+		
+		return aTarget; 
+	}
+	
+	private static List<Token> tokensBetween(JCas aJCas, int from, int to)
+	{
+		List<Token> tokenList = new ArrayList<Token>(); 
+		
+		for (Token token: JCasUtil.select(aJCas, Token.class))
+		{
+			if ( (token.getBegin() >= from) && (token.getEnd() <= to))
+			{
+				tokenList.add(token); 
+			}
+		}
+		return tokenList; 
 	}
 	
 	public String getComponentName()
@@ -227,5 +345,11 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 	private final String resourcePath; 
 	private final MeteorPhraseTable table; 
 	private final int maxPhraseLength; 
+
 	private final static Logger logger = Logger.getLogger(MeteorPhraseResourceAligner.class);
+
+	private final String alignerID = "PhraseAligner";
+	private final String alignerVersion = "MeteorPhraseTable"; 
+	private final String linkInfo = "paraphrase"; 
+	
 }

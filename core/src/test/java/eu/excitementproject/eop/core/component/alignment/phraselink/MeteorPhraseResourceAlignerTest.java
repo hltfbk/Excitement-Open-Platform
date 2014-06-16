@@ -18,14 +18,14 @@ import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 @SuppressWarnings("unused")
 public class MeteorPhraseResourceAlignerTest {
 
-	@Ignore // Temporarily blocked; still work in progress. - Gil.
+//	@Ignore // Temporarily blocked; still work in progress. - Gil.
 	@Test
 	public void test() {
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.DEBUG);   
+		Logger.getRootLogger().setLevel(Level.WARN);  // to hide openNLP logs 
 		Logger testlogger = Logger.getLogger(this.getClass().toString()); 
-		
+
 		// prepare a JCas 
 		JCas aJCas = null; 
 		OpenNLPTaggerEN tokenizer = null; 
@@ -38,6 +38,9 @@ public class MeteorPhraseResourceAlignerTest {
 		{
 			fail(e.getMessage()); 
 		}
+
+		Logger.getRootLogger().setLevel(Level.INFO);  // main log setting: set as DEBUG to see what's going & debug. 
+		testlogger.info("This test class may take upto 30 seconds ... "); 
 
 		// phrase candidate extract test 		
 		try 
