@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.MetaEDA;
+package eu.excitementproject.eop.core.metaeda;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,7 +30,6 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.MaxEntClassificationEDA;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -42,7 +41,7 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * decision.  
  * It has two modes:
  * 1) voting: each EDA's DecisionLabel counts as vote for NonEntailment or Entailment.
- * 	MetaEDA goes with the majority. In case of a tie, it decides NonEntailment. 
+ * 	SimpleMetaEDAConfidenceFeatures goes with the majority. In case of a tie, it decides NonEntailment. 
  *  Note that there is no training in this mode.
  * 2) confidences as features: each EDA's decision and its confidence on this decision is taken as a feature
  * 	for a classifier which is then trained on the input pairs. 
@@ -50,9 +49,9 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  * 	The trained model is stored and can be loaded again to use it for classifying new data.
  *  Training is performed with a weka classifier.
  *  
- *  MetaEDA is initialized with a configuration file, where the following parameters need to be set:
- *  - "activatedEDA": the activated EDA, has to be eu.excitementproject.eop.core.MetaEDA
- *  - "language": "EN" or "DE"
+ *  SimpleMetaEDAConfidenceFeatures is initialized with a configuration file, where the following parameters need to be set:
+ *  - "activatedEDA": the activated EDA, has to be eu.excitementproject.eop.core.SimpleMetaEDAConfidenceFeatures
+ *  - "language": "EN", "DE" or any other language supported in internal EDABasics
  *  - "confidenceAsFeature": defines the mode (1 or 2), see above
  *  - "overwrite": whether to overwrite an existing model with the same name or not
  *  - "modelFile": path to model file
@@ -60,37 +59,51 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
  *  - "testDir": path to test data directory
  *  A sample configuration file can be found in core/src/test/resources/configuration-file/MetaEDATest1_DE.xml
  *  
+ *  Alternatively, it can be initialized with the parameters parameters listed above directly,
+ *  calling <code>initialize(String language, boolean confidenceAsFeatures, boolean overwrite, String modelFile, String trainDir, String testDir)</code>.
+ *  Note that we assume here that the activatedEDA is this SimpleMetaEDAConfidenceFeatures and does therefore not require passing the parameter.
+ *  
+ * Please note that the following steps need to be done before initializing a SimpleMetaEDAConfidenceFeatures instance:
+ *  1) All EDABasic instances used for the MetaEDA must have been initialized correctly. 
+ *     The MetaEDA does not check whether they are correctly initialized.
+ *     Details about how to initialize an EDABasic correctly can be found in their documentation.
+ *  2) Calling process() or startTraining() requires LAP annotations on test and training data (specified in testDir and trainDir) for the given EDABasic instances. 
+ *     Again, the MetaEDA does not check whether the required annotation layers are there.
+ *     For details about the annotation layers required by each EDABasic, refer to the specific EDABasic's documentation.
+ *  
+ * For usage examples see <code>SimpleMetaEDAConfidenceFeaturesUsageExample.java</code>.
+ * 
  * @author Julia Kreutzer
  *
  */
-public class MetaEDA implements EDABasic<TEDecision>{
+public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	
 	/**
 	 * the logger, "info" level just reports EDA statuses like "initializing", "training", etc.;
-	 * "fine" level also reports TEDecisions from EDABasic instances and the MetaEDA's decisions for classified data
+	 * "fine" level also reports TEDecisions from EDABasic instances and the SimpleMetaEDAConfidenceFeatures's decisions for classified data
 	 */
-	public final static Logger logger = Logger.getLogger(MetaEDA.class.getName());
+	public final static Logger logger = Logger.getLogger(SimpleMetaEDAConfidenceFeatures.class.getName());
 		
 	/**
-	 * Constructs a new MetaEDA instance with a list of already initialized 
+	 * Constructs a new SimpleMetaEDAConfidenceFeatures instance with a list of already initialized 
 	 * basic EDAs.
 	 * @param edas list of already initialized EDABasic instances
 	 */
-	public MetaEDA(ArrayList<EDABasic<? extends TEDecision>> edas){
+	public SimpleMetaEDAConfidenceFeatures(ArrayList<EDABasic<? extends TEDecision>> edas){
 		this.edas = edas;
-		logger.info("new MetaEDA with "+edas.size()+" internal EDABasics");
+		logger.info("new SimpleMetaEDAConfidenceFeatures with "+edas.size()+" internal EDABasics");
 	}
 
 	/**
-	 * Initializes a MetaEDA instance with a configuration file, 
+	 * Initializes a SimpleMetaEDAConfidenceFeatures instance with a configuration file, 
 	 * where training and decision mode, overwrite mode,
 	 * path to model file, training data and test data directory are defined
-	 * @param config a CommonConfig where parameters and directories for MetaEDA are defined
+	 * @param config a CommonConfig where parameters and directories for SimpleMetaEDAConfidenceFeatures are defined
 	 */
 	@Override
 	public void initialize(CommonConfig config) throws ConfigurationException,
 			EDAException, ComponentException {
-		logger.info("initialize MetaEDA");
+		logger.info("initialize SimpleMetaEDAConfidenceFeatures with configuration file");
 		initializeEDA(config);
 		initializeData(config);
 		if (!this.confidenceAsFeature){
@@ -102,10 +115,36 @@ public class MetaEDA implements EDABasic<TEDecision>{
 			initializeModel(config);
 		}
 	}
+	
+	/**
+	 * Initializes a SimpleMetaEDAConfidenceFeatures instance with parameters (without configuration file) 
+	 * that define training and decision mode, overwrite mode,
+	 * path to model file, training data and test data directory
+	 * @param language String, e.g. "EN" or "DE"
+	 * @param confidenceAsFeatures if true: use confidence features, do majority vote otherwise
+	 * @param modelFile String path to model file
+	 * @param trainDir String path to training data directory
+	 * @param testDir String path to test data directory
+	 */
+	public void initialize(String language, boolean confidenceAsFeatures, boolean overwrite, String modelFile, String trainDir, String testDir) throws ConfigurationException,
+			EDAException, ComponentException {
+		logger.info("initialize SimpleMetaEDAConfidenceFeatures with given parameters");
+		initializeEDA(language, confidenceAsFeatures);
+		initializeData(trainDir, testDir);
+		if (!this.confidenceAsFeature){
+			// mode 1: do nothing
+		}
+		else {
+			// mode 2:
+			// load and initialize pre-trained model
+			initializeModel(overwrite, modelFile);
+		}
+	}
+	
 
 	/**
 	 * Starts training on the EDABasic instances' confidence features with the given configuration.
-	 * MetaEDA initialization is included in this method.
+	 * SimpleMetaEDAConfidenceFeatures initialization is included in this method.
 	 * Note that training is only performed in mode 2 (confidence as features).
 	 * In mode 2) a simple Naive Bayes classifier is trained on the EDABasic decisions and confidences.
 	 * Training and testing data directories are defined in the configuration file.
@@ -202,7 +241,7 @@ public class MetaEDA implements EDABasic<TEDecision>{
 	/**
 	 * Processes a given JCas:
 	 * -> in mode 1) just collect decisions from EDABasic instances and go with the majority (or NonEntailment in case of a tie)
-	 * -> in mode 2) collect features from EDABasic instances for the JCas text and classify the data with this MetaEDA's  trained weka classifier
+	 * -> in mode 2) collect features from EDABasic instances for the JCas text and classify the data with this SimpleMetaEDAConfidenceFeatures's  trained weka classifier
 	 * @param aCas the JCas to process
 	 * @return a MetaTEDecision with decision label and pairID for the classified input JCas
 	 */
@@ -285,7 +324,7 @@ public class MetaEDA implements EDABasic<TEDecision>{
 	}
 
 	/**
-	 * shuts down MetaEDA and disengage all resources
+	 * shuts down SimpleMetaEDAConfidenceFeatures and disengage all resources
 	 */
 	@Override
 	public void shutdown() {
@@ -312,31 +351,31 @@ public class MetaEDA implements EDABasic<TEDecision>{
 
 	//both isTest and isTrain needed, as initialization can take place before testing or training is defined
 	/**
-	 * whether MetaEDA is in testing mode or not
-	 * @return true if MetaEDA is used for testing, false otherwise
+	 * whether SimpleMetaEDAConfidenceFeatures is in testing mode or not
+	 * @return true if SimpleMetaEDAConfidenceFeatures is used for testing, false otherwise
 	 */
 	public boolean isTest() {
 		return isTest;
 	}
 	
 	/**
-	 * whether MetaEDA is in training mode or not
-	 * @return true if MetaEDA is used for training, false otherwise
+	 * whether SimpleMetaEDAConfidenceFeatures is in training mode or not
+	 * @return true if SimpleMetaEDAConfidenceFeatures is used for training, false otherwise
 	 */
 	public boolean isTrain() {
 		return isTrain;
 	}
 	
 	/**
-	 * wether MetaEDA is used in mode 2) (use EDABasics' decision confidences for training)
-	 * @return true if MetaEDA is in mode 2) (confidence as features), false otherwise
+	 * wether SimpleMetaEDAConfidenceFeatures is used in mode 2) (use EDABasics' decision confidences for training)
+	 * @return true if SimpleMetaEDAConfidenceFeatures is in mode 2) (confidence as features), false otherwise
 	 */
 	public boolean isConfidenceAsFeature() {
 		return confidenceAsFeature;
 	}
 
 	/**
-	 * get the list of initialized EDABasic instances this MetaEDA is based on
+	 * get the list of initialized EDABasic instances this SimpleMetaEDAConfidenceFeatures is based on
 	 * @return ArrayList of EDABasic instances
 	 */
 	public ArrayList<EDABasic<? extends TEDecision>> getEdas() {
@@ -352,7 +391,7 @@ public class MetaEDA implements EDABasic<TEDecision>{
 	}
 
 	/**
-	 * whether MetaEDA is in "overwrite" mode, i.e. if model file does already exist, it is overwritten
+	 * whether SimpleMetaEDAConfidenceFeatures is in "overwrite" mode, i.e. if model file does already exist, it is overwritten
 	 * @return true if already existing model files should get overwritten, false otherwise
 	 */
 	public boolean isOverwrite() {
@@ -470,13 +509,35 @@ public class MetaEDA implements EDABasic<TEDecision>{
 			}
 		}
 		else {
-			throw new ConfigurationException("Please specify MetaEDA's mode: use confidence scores as features or not.");
+			throw new ConfigurationException("Please specify SimpleMetaEDAConfidenceFeatures's mode: use confidence scores as features or not.");
 		}
 	}
 
 	/**
+	 * Initializes the EDA:
+	 * initializes the language flag 
+	 * and sets the mode (use confidence as features or not).
+	 * @param language the language used, e.g. "DE"
+	 * @param confidenceAsFeatures mode 2 (using confidence features for training) if true, mode 1 (majority vote) otherwise
+	 */
+	private void initializeEDA(String language, boolean confidenceAsFeature){
+		this.language = language;
+		if (!(this.language != null)) {
+			this.language = "EN"; // default language is English
+		}
+		this.confidenceAsFeature = confidenceAsFeature;
+		if (this.confidenceAsFeature){
+			logger.info("mode 2: use confidence scores as features");
+		}
+		else {
+			logger.info("mode 1: majority vote");
+		}
+	}
+
+	
+	/**
 	 * Initializes the model by either reading existing model or creating a new model file.
-	 * If "overwrite" is set to true and MetaEDA is in training mode, an existing model file with the same name is overwritten.
+	 * If "overwrite" is set to true and SimpleMetaEDAConfidenceFeatures is in training mode, an existing model file with the same name is overwritten.
 	 * If it is set to false, the old model file is renamed with the ending "_old".
 	 * 
 	 * @param config the CommonConfig configuration
@@ -498,7 +559,7 @@ public class MetaEDA implements EDABasic<TEDecision>{
 		}
 		else {
 			if (this.isTrain){
-				throw new ConfigurationException("Please specify MetaEDA's overwrite mode.");
+				throw new ConfigurationException("Please specify SimpleMetaEDAConfidenceFeatures's overwrite mode.");
 			}
 		}
 		
@@ -554,6 +615,71 @@ public class MetaEDA implements EDABasic<TEDecision>{
 	}
 
 	/**
+	 * Initializes the model by either reading existing model or creating a new model file.
+	 * If "overwrite" is set to true and SimpleMetaEDAConfidenceFeatures is in training mode, an existing model file with the same name is overwritten.
+	 * If it is set to false, the old model file is renamed with the ending "_old".
+	 * 
+	 * @param overwrite if true: overwrite possibly existing model file with same name, rename it otherwise
+	 * @param modelFile String path to model file
+	 * @throws ConfigurationException
+	 */
+	private void initializeModel(boolean overwrite, String modelFile)
+			throws ConfigurationException {
+		
+		this.overwrite = overwrite;
+		this.modelFile = modelFile;
+		if (null == this.modelFile){
+			throw new ConfigurationException("No model directory specified.");
+		}
+		
+		File file = new File(modelFile);
+		
+		if (file.exists()){
+			if (this.isTrain && !this.isTest){
+				if (this.overwrite){
+					logger.info("The existing model will be overwritten.");
+				}
+				else{
+					String oldModelFile = modelFile + "_old";
+					logger.info("The existing model is renamed to "+file.getAbsolutePath()+"_old");
+					File oldFile = new File(oldModelFile);
+					if (oldFile.exists())
+						oldFile.delete();
+					file.renameTo(oldFile);
+				}
+			}
+			else if (this.isTest){
+				logger.info("Reading model from "+file.getAbsolutePath());
+				 //deserialize model to classifier 
+				ObjectInputStream ois;
+				try {
+					ois = new ObjectInputStream(new FileInputStream(this.modelFile));
+					this.classifier = (Classifier) ois.readObject();
+					ois.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		else {
+			if (this.isTrain && !this.isTest){
+				logger.info("The trained model will be stored in "+ file.getAbsolutePath());
+				try {
+					file.createNewFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else if (this.isTest){
+				throw new ConfigurationException("The model specified in the configuration does NOT exist! Please give the correct file path.");
+			}
+		}
+	}
+
+	
+	/**
 	 * Initializes the data, for training and/or testing
 	 * @param config the CommonConfig configuration
 	 * @throws ConfigurationException
@@ -584,6 +710,33 @@ public class MetaEDA implements EDABasic<TEDecision>{
 			}
 		}
 	}
+	
+	/**
+	 * Initializes the data, for training and/or testing
+	 * @throws ConfigurationException 
+	 * @param trainDir directory for training data
+	 * @param testDir directory for test data
+	 */
+	private void initializeData(String trainDir, String testDir) throws ConfigurationException {
+		this.trainDir = trainDir;
+		if (null == trainDir) {
+			if (this.isTrain && !this.isTest) {
+				throw new ConfigurationException("Please specify the training data directory.");
+			} else {
+				logger.warning("Warning: Please specify the training data directory.");
+			}
+		}
+		this.testDir = testDir;
+		if (null == testDir) {
+			if (this.isTest && !this.isTrain) {
+				throw new ConfigurationException("Please specify the testing data directory.");
+			} else {
+				logger.warning("Warning: Please specify the testing data directory.");
+			}
+		}
+		
+	}
+
 
 	/**
 	 * Gets the attributes for all internal EDAs (n internal EDAs -> n attributes).
@@ -631,7 +784,7 @@ public class MetaEDA implements EDABasic<TEDecision>{
 				}
 				features.add(confidence);
 			}
-			logger.fine("MetaEDA features from EDABasic confidences: "+features.toString());
+			logger.fine("SimpleMetaEDAConfidenceFeatures features from EDABasic confidences: "+features.toString());
 			return features;
 		}
 
