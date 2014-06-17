@@ -256,7 +256,7 @@
 				<version>2.13</version>
 				<configuration>
 					<skipTests>false</skipTests>
-					<argLine>-Xms1G -Xmx1G</argLine>
+					<argLine>-Xms4G -Xmx4G</argLine>
 				</configuration>
 			</plugin>
 

@@ -16,11 +16,15 @@ import org.apache.log4j.Logger;
  * This class represents Meteor Phrase Table. 
  * 
  * Memo: 
- *    TODO consider (later) this aspect. -- force symmetric? for the moment, no. 
  *   - one interesting aspect is that Meteor Phrase Table is *not* symmetric. 
  *   - (e.g. "12 candidate countries -> 12 candidates does exist", but not the other way around, etc)
+ *   
+ *   This table provides the capability to load and look up meteor-like phrase table
+ *   by querying "LHS phrase" and get [(rhs, probability of lhs->rhs), ... ]  
+ *   
  * 
  * @author Tae-Gil Noh
+ * @since June 2014
  *
  */
 public class MeteorPhraseTable {
@@ -33,6 +37,7 @@ public class MeteorPhraseTable {
 
 		// start loading the table text from resource path
 		logger.info("Loading Meteor Paraphrase table from resource path: " + resourcePath); 
+		final long loadStart = System.currentTimeMillis();
 
 		InputStream is = getClass().getResourceAsStream(resourcePath);
 		BufferedReader tableReader = new BufferedReader(new InputStreamReader(is)); 
@@ -60,7 +65,10 @@ public class MeteorPhraseTable {
 			
 			ec++;
 		}
-		logger.info("loading complelte, " + ec + " entries).") ; 
+		final long loadEnd = System.currentTimeMillis();
+		final long duration = ( loadEnd - loadStart ) / 1000; 
+
+		logger.info("loading complelte, " + ec + " entries. (in " + duration + " seconds)") ; 
 
 	}
 

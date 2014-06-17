@@ -1,5 +1,6 @@
 package eu.excitement.type.alignment;
 
+import java.io.OutputStream;
 import java.util.List;
 
 import org.apache.uima.cas.CASException;
@@ -55,34 +56,32 @@ public class LinkUtils {
 	 * @param type target annotation class. 
 	 * @return
 	 */
-	public static <T extends TOP> List<Link> selectLinksWith(JCas jCas, Class<T> type)
+	public static <T extends TOP> List<Link> selectLinksWith(JCas aJCas, Class<T> type)
 	{
 		// TODO work on this once 
 		return null; 
 	}
 	
 	
-	public static List<Link> selectLinksWith(String alignerID, String versionID, String linkInfo)
+	public static List<Link> selectLinksWith(JCas aJCas, String alignerID, String versionID, String linkInfo)
 	{
 		// get links with those names; 
+		// "null" means "don't care".
 		// TODO work on this once 
 		return null; 
 	}
 	
-	public static List<Link> selectLinksWith(String fullID)
+//	public static List<Link> selectLinksWith(String fullID)
+//	{
+//		// get links where link.getID() == fullID
+//		// TODO work on this once 
+//		return null; 
+//	}
+	
+	public static void dumpTokenLevelLinks(JCas aJCas, OutputStream os)
 	{
-		// get links where link.getID() == fullID
-		// TODO work on this once 
-		return null; 
+		// utility class that is useful to see what Links are added in the given CAS  
+		// TODO work on this once. 
+		
 	}
-	
-	// TODO design getAlingerInfo ? 
-	// return a data structure that holds, info for aligner IDs...  
-	// (e.g. what aligners have annotated this JCas, with what linkInfo?) 
-	// 
-	// aligner ID --- (list of all version strings)
-	//             |- (list of all linkInfo strings)
-	//             |- TBD - (semantic labels) 
-	
-	
 }
