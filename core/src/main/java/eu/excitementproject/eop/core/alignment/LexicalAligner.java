@@ -1,15 +1,16 @@
 package eu.excitementproject.eop.core.alignment;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import edu.berkeley.nlp.lm.util.Logger;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
 import eu.excitement.type.alignment.Target;
@@ -25,11 +26,8 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource;
-import eu.excitementproject.eop.core.component.lexicalknowledge.geo.RedisBasedGeoLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
-import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
-import eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 
@@ -55,12 +53,6 @@ public class LexicalAligner implements AlignmentComponent {
 	private static final String GENERAL_PARAMS_CONF_SECTION = "GeneralParameters";
 	private static final String MAX_PHRASE_KEY = "maxPhraseLength";
 	private static final String WORDNET = "wordnet";
-	private static final String REDIS_BAP = "distsim-bap";
-	private static final String REDIS_LIN_PROXIMITY = "redis-lin-proximity";
-	private static final String REDIS_LIN_DEPENDENCY = "redis-lin-dependency";
-	private static final String VERB_OCEAN = "verb-ocean";
-	private static final String REDIS_GEO = "redis-geo";
-	private static final String CATVAR = "catvar";
 	
 	// Private Members
 	private List<Token> textTokens;
@@ -68,10 +60,12 @@ public class LexicalAligner implements AlignmentComponent {
 	private List<LexicalResource<? extends RuleInfo>> lexicalResources;
 	private int maxPhrase = 0;
 	private static List<String> lexicalResourceThatSupportLemma;
+	private static final Logger logger = Logger.getLogger(LexicalAligner.class);
 	
 	// Initialization
 	static {
 		
+		// TODO: Add to configuration
 		// These resources should be queried with lemmas and not surface words.
 		lexicalResourceThatSupportLemma = new ArrayList<String>();
 		lexicalResourceThatSupportLemma.add(VerbOceanLexicalResource.class.getName());
@@ -130,8 +124,10 @@ public class LexicalAligner implements AlignmentComponent {
 										getRules(resource, textPhrase, hypoPhrase)) {
 									
 									// Add alignment annotations
-									addAlignmentAnnotations(aJCas, textStart, textEnd, 
-											hypoStart, hypoEnd, rule);
+									addAlignmentAnnotations(aJCas, textTokens.get(textStart).getBegin(), 
+											textTokens.get(textEnd).getEnd(), 
+											hypoTokens.get(hypoStart).getBegin(), 
+											hypoTokens.get(hypoEnd).getEnd(), rule);
 								}
 							}
 						}
@@ -141,10 +137,8 @@ public class LexicalAligner implements AlignmentComponent {
 			
 		} catch (Exception e) {
 			
-			// TODO: Write to log / raise exception
-			System.out.println(this.getClass().getName() + 
-					"LexicalAligner failed aligning the sentence pair. " + 
-					e.getMessage());
+			logger.error(this.getClass().getName() + 
+					"LexicalAligner failed aligning the sentence pair. ", e); 
 		} 		
 	}
 
@@ -197,8 +191,17 @@ public class LexicalAligner implements AlignmentComponent {
 			
 			// Get each resource and create it using the configuration section related to it
 			for (String resourceName : lexicalResourcesSection.keySet()) {
-				lexicalResources.add(createLexicalResource(resourceName, 
-						configFile.getModuleConfiguration(resourceName)));
+				
+				// Get the class name
+				String resourceClassName = lexicalResourcesSection.getString(resourceName);
+				
+				LexicalResource<? extends RuleInfo> lexicalResource = 
+						createLexicalResource(resourceClassName, 
+						configFile.getModuleConfiguration(resourceName));
+				
+				if (lexicalResource != null) {
+					lexicalResources.add(lexicalResource);
+				}
 			}
 	
 		} catch (LexicalResourceException e) {
@@ -256,7 +259,7 @@ public class LexicalAligner implements AlignmentComponent {
 
 		StringBuilder phrase = new StringBuilder();
 		
-		for (Token token : tokens.subList(start, end + 1)) {		
+		for (Token token : tokens.subList(start, end + 1)) {	
 			phrase.append(supportLemma ? token.getLemma().getValue() : 
 				token.getCoveredText());
 			phrase.append(" ");
@@ -311,7 +314,7 @@ public class LexicalAligner implements AlignmentComponent {
 			}
 				
 		} catch (Exception e) {
-			Logger.warn("Could not add rules from " + 
+			logger.warn("Could not add rules from " + 
 						resource.getClass().getSimpleName() + " for " +
 						textPhrase + "->" + hypoPhrase, e);
 		}
@@ -346,17 +349,7 @@ public class LexicalAligner implements AlignmentComponent {
 		// Prepare an FSArray instance and put the target annotations in it   
 		FSArray textAnnots = new FSArray(textView, textEnd - textStart + 1);
 		FSArray hypoAnnots = new FSArray(hypoView, hypoEnd - hypoStart + 1);
-		
-		int tokenIndex = 0;
-		for (Token token : textTokens.subList(textStart, textEnd)) {
-			textAnnots.set(tokenIndex++, token);
-		}
-		
-		tokenIndex = 0;
-		for (Token token : hypoTokens.subList(hypoStart, hypoEnd)) {
-			hypoAnnots.set(tokenIndex++, token);
-		}
-		
+
 		textTarget.setTargetAnnotations(textAnnots);
 		hypoTarget.setTargetAnnotations(hypoAnnots);
 		
@@ -418,82 +411,22 @@ public class LexicalAligner implements AlignmentComponent {
 	{
 		LexicalResource<? extends RuleInfo> lexicalResource = null;
 		
-		// TODO: Implement all resources
-		switch (resourceClassName) {
-//			case BAP:
-//				ret = new Direct200LexicalResource(params);
-//				break;
+		// Load the class using reflection
+		Class<LexicalResource<? extends RuleInfo>> resourceClass;
+		Constructor<LexicalResource<? extends RuleInfo>> ctor;
 		
-			// CatVar
-			case CATVAR: {
-				lexicalResource = new CatvarLexicalResource(configurationParams);
-				break;
-			}
-		
-			// VerbOcean
-			case VERB_OCEAN: {
-				lexicalResource = new VerbOceanLexicalResource(configurationParams);
-				break;
-			}
-			
-//			case WIKIPEDIA:
-//				ret = new WikiLexicalResource(params);
-//				break;
-//			case WIKIPEDIA_NEW:
-//				ret = new  eu.excitementproject.eop.lexicalminer.LexiclRulesRetrieval.WikipediaLexicalResource(params);
-//				break;
-				
-			// WordNet
-			case WORDNET: {
-				lexicalResource = new WordnetLexicalResource(configurationParams);
-				break;
-			}
-//			case LIN_DEPENDENCY_ORIGINAL:
-//				ret = new LinDependencyOriginalLexicalResource(params);
-//				break;
-//			case LIN_PROXIMITY_ORIGINAL:
-//				ret = new LinProximityOriginalLexicalResource(params);
-//				break;
-//			case LIN_DEPENDENCY_REUTERS:
-//				ret = new LinDistsimLexicalResource(params);
-//				break;
-			
-			// Redis similarity-based resources
-			case REDIS_LIN_PROXIMITY:
-			case REDIS_LIN_DEPENDENCY:
-			case REDIS_BAP: {
-				try {
-					lexicalResource = new 
-							SimilarityStorageBasedLexicalResource(configurationParams);
-				} catch (Exception e) {
-					throw new LexicalResourceException(e.toString());
-				}
-				break;
-			}
-			
-//			case REDIS_WIKI:
-//				try {
-//					ret = new RedisBasedWikipediaLexicalResource(params);
-//				} catch (Exception e) {
-//					throw new LexicalResourceException(e.toString());
-//				}
-//				break;
-			
-			// Redis geo resource
-			case REDIS_GEO: {
-				try {
-					lexicalResource = new RedisBasedGeoLexicalResource(configurationParams);
-				} catch (Exception e) {
-					throw new LexicalResourceException(e.toString());
-				}
-				break;		
-			}
-			default: {
-				lexicalResource = null;
-				break;
-			}
+		try {
+			resourceClass = (Class<LexicalResource<? extends RuleInfo>>) 
+					Class.forName(resourceClassName);
+			ctor = resourceClass.getConstructor(ConfigurationParams.class);
+			lexicalResource = ctor.newInstance(configurationParams);
+			logger.info("Loaded resource: " + resourceClassName);
+		} catch (Exception e) {
+			logger.error("Could not instantiate the lexical resource " + 
+					resourceClassName, e);
+			return null;
 		}
-
+	
 		return lexicalResource;
 	}
 }
