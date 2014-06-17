@@ -22,13 +22,23 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 /**
  * This component annotates a JCas based on Meteor (or Meteor-like) paraphrase
  * resource. This class itself is not supposed to be used by end-users. 
- * A thin-wrapper per each language will be provided, that is using this class. 
+ * A thin-wrapper per each language + resource will be provided for end users, and that 
+ * end user class would be extending this class. 
  * 
  * Actual look up depends on MeteorPhraseTable class.  
  * annotate() adds alignment.Link/Target instances that link Token annotations. 
  * Phrase-to-Phrase link is represented by alignment.Targets that holds more than one Token. 
  * 
+ * The class has some static methods that might be useful for other aligners. For example, 
+ * "addOneAlignmentLinkOnTokenLevel()" is public, and might be useful. 
+ * 
+ * TODO: groupLabel part is ignored in the class yet. To be added. 
+ * 
+ * Note: You can easily add a paraphrase linker, from any "Meteor-like paraphrase data file" in resource path. 
+ * For an usage example, check MeteorPhraseLinkerEN class, which provides end-user component with Meteor English table. 
+ * 
  * @author Tae-Gil Noh
+ * @since June 2014
  */
 public class MeteorPhraseResourceAligner implements AlignmentComponent {
 
@@ -63,7 +73,7 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 			textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 			hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 			
-			// TODO language check. (in the extended ones? hmm.) 
+			// note - language check should be done by class that extends this class 
 		}
 		catch (CASException e)
 		{
@@ -348,8 +358,9 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 
 	private final static Logger logger = Logger.getLogger(MeteorPhraseResourceAligner.class);
 
-	private final String alignerID = "PhraseAligner";
-	private final String alignerVersion = "MeteorPhraseTable"; 
-	private final String linkInfo = "paraphrase"; 
-	
+	// default link metadata, can be (or should be) overridden by subclasses. 
+	protected String alignerID = "PhraseLink";
+	protected String alignerVersion = "MeteorPhraseTable"; 
+	protected String linkInfo = "paraphrase"; 
+
 }
