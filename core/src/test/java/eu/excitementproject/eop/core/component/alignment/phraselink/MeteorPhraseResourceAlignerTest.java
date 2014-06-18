@@ -18,7 +18,6 @@ import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 @SuppressWarnings("unused")
 public class MeteorPhraseResourceAlignerTest {
 
-//	@Ignore // Temporarily blocked; still work in progress. - Gil.
 	@Test
 	public void test() {
 		BasicConfigurator.resetConfiguration(); 

@@ -1,11 +1,13 @@
 package eu.excitement.type.alignment;
 
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
+import org.uimafit.util.JCasUtil;
 
 /**
  * Some utility methods for alignment.Link type and related codes. 
@@ -54,12 +56,35 @@ public class LinkUtils {
 	 * 
 	 * @param jCas the JCas with EOP views 
 	 * @param type target annotation class. 
-	 * @return
+	 * @return a List<Link> that holds all links that satisfy the condition. If none satisfy the condition, it will return an empty List. 
 	 */
-	public static <T extends TOP> List<Link> selectLinksWith(JCas aJCas, Class<T> type)
+	public static <T extends TOP> List<Link> selectLinksWith(JCas aJCas, Class<T> type) throws CASException 
 	{
-		// TODO work on this once 
-		return null; 
+		List<Link> resultList = new ArrayList<Link>(); 
+		
+		JCas hypoView = aJCas.getView("HypothesisView");
+		// get Links that satisfy the condition by iterating all Links just once. 
+		
+		for (Link l : JCasUtil.select(hypoView, Link.class)) 
+		{
+			// is this link holds type object in either of its target? 
+			Target tt = l.getTSideTarget(); 
+			Target ht = l.getHSideTarget(); 
+			
+			if (JCasUtil.select(tt.getTargetAnnotations(), type).size() > 0)
+			{
+				// T side target does hold at least one of type instance. 
+				resultList.add(l); 
+				continue; // no need to check h side target 
+			}
+			
+			if (JCasUtil.select(ht.getTargetAnnotations(), type).size() > 0)
+			{
+				// H side target does hold at least one of type instance. 
+				resultList.add(l); 
+			}
+		}
+		return resultList; 
 	}
 	
 	
