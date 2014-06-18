@@ -30,11 +30,11 @@ import eu.excitementproject.eop.distsim.util.SerializationException;
  */
 public class File implements PersistenceDevice {
 
-	protected static final String DEFAULT_ENCODING = "UTF-8";
+	//protected static final String DEFAULT_ENCODING = "UTF-8";
 	
 	
 	public File(java.io.File file, boolean bRead) {
-		this(file,bRead, DEFAULT_ENCODING);
+		this(file,bRead, null);
 	}
 	
 	public File(java.io.File file, boolean bRead, String encoding) {
@@ -49,7 +49,7 @@ public class File implements PersistenceDevice {
 		try {
 			this.encoding = params.get(Configuration.ENCODING);
 		} catch (ConfigurationException e) {
-			this.encoding = DEFAULT_ENCODING;
+			this.encoding = null;
 		}
 	}
 	
@@ -59,11 +59,13 @@ public class File implements PersistenceDevice {
 	@Override
 	public synchronized void open()  throws IOException {
 		if (bRead) {
-			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),encoding));
+			reader = (encoding == null ? new BufferedReader(new InputStreamReader(new FileInputStream(file)))
+									   : new BufferedReader(new InputStreamReader(new FileInputStream(file),encoding)));
 			writer = null;
 		} else {
 			reader = null;
-			writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),encoding));
+			writer = (encoding == null ? new PrintWriter(new OutputStreamWriter(new FileOutputStream(file)))
+									   : new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),encoding)));
 		}		
 	}
 
