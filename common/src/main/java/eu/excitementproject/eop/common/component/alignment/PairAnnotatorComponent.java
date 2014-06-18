@@ -52,6 +52,6 @@ public interface PairAnnotatorComponent extends Component {
 	 * was successful --- even though there were no added annotations 
 	 * (e.g. contradiction annotator, but there was no contradiction). 
 	 */
-	public void annotate(JCas aJCas); 
+	public void annotate(JCas aJCas) throws PairAnnotatorComponentException; 
 	
 }

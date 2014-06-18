@@ -27,11 +27,11 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharsetEncoder;
+//import java.nio.ByteBuffer;
+//import java.nio.CharBuffer;
+//import java.nio.charset.Charset;
+//import java.nio.charset.CharsetDecoder;
+//import java.nio.charset.CharsetEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -340,7 +340,8 @@ public class TextPro {
                 
                 commands.clear();
                 if (this.parser.equals("malt")) {
-                    commands.add("/usr/bin/java");
+//                    commands.add("/usr/bin/java");
+                	commands.add("/opt/share/jdk1.7.0/jre/bin/java");
                     commands.add("-mx3800m");
                     commands.add("-jar");
                     commands.add(parserPath + maltJar);
@@ -439,7 +440,7 @@ public class TextPro {
     
     public static void writeFile(File wikiChunk, String content, String encoding) {
         try {
-            if (!encoding.equals("UTF-8")) {
+/*            if (!encoding.equals("UTF-8")) {
                 Charset charset = Charset.forName(encoding);
                 @SuppressWarnings("unused")
 				CharsetDecoder decoder = charset.newDecoder();
@@ -452,10 +453,10 @@ public class TextPro {
                 fos.close();
             }
             else {
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(wikiChunk), encoding));
+ */               BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(wikiChunk), encoding));
                 writer.write("" + content);
                 writer.close();
-            }
+ //           }
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
