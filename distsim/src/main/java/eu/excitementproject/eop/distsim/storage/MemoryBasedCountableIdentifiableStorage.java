@@ -3,7 +3,6 @@ package eu.excitementproject.eop.distsim.storage;
 
 import org.apache.log4j.Logger;
 
-
 import eu.excitementproject.eop.common.datastructures.immutable.ImmutableIterator;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.distsim.items.Countable;
@@ -18,6 +17,8 @@ import eu.excitementproject.eop.distsim.util.SerializationException;
 import gnu.trove.iterator.TIntObjectIterator;
 import gnu.trove.map.hash.TIntObjectHashMap;
 import gnu.trove.map.hash.TObjectIntHashMap;
+
+
 /**
  * An implementation of the {@link CountableIdentifiableStorage} interface, which stored objects with id, based on a map in the memory
  *  

@@ -50,7 +50,7 @@ public class File implements PersistenceDevice {
 			this.encoding = params.get(Configuration.ENCODING);
 		} catch (ConfigurationException e) {
 			this.encoding = DEFAULT_ENCODING;
-		}
+		}		
 	}
 	
 	/* (non-Javadoc)
@@ -59,14 +59,10 @@ public class File implements PersistenceDevice {
 	@Override
 	public synchronized void open()  throws IOException {
 		if (bRead) {
-			//reader = (encoding == null ? new BufferedReader(new InputStreamReader(new FileInputStream(file)))
-				//					   : new BufferedReader(new InputStreamReader(new FileInputStream(file),encoding)));
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file),encoding));
 			writer = null;
 		} else {
 			reader = null;
-			//writer = (encoding == null ? new PrintWriter(new OutputStreamWriter(new FileOutputStream(file)))
-				//					   : new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),encoding)));
 			writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file),encoding));
 		}		
 	}
