@@ -34,7 +34,7 @@ public class File implements PersistenceDevice {
 	
 	
 	public File(java.io.File file, boolean bRead) {
-		this(file,bRead, DEFAULT_ENCODING);
+		this(file,bRead, DEFAULT_ENCODING); //null
 	}
 	
 	public File(java.io.File file, boolean bRead, String encoding) {
@@ -50,7 +50,7 @@ public class File implements PersistenceDevice {
 			this.encoding = params.get(Configuration.ENCODING);
 		} catch (ConfigurationException e) {
 			this.encoding = DEFAULT_ENCODING;
-		}
+		}		
 	}
 	
 	/* (non-Javadoc)
