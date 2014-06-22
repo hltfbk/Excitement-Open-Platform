@@ -9,9 +9,7 @@ import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
-import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.biu.uima.BIUFullLAP;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
@@ -35,7 +33,7 @@ public class LexicalAlignerTest {
 			ImplCommonConfig commonConfig = new ImplCommonConfig(configFile);
 			aligner.init(commonConfig);
 						
-			// Create a sentence pair example and annotate with tokens
+			// Create a sentence pair example and annotate with tokens and lemmas
 			String t1 = "The assassin was convicted and sentenced to death penalty";
 			String h1 = "The killer has been accused of murder and doomed to capital punishment";
 			
@@ -44,12 +42,12 @@ public class LexicalAlignerTest {
 			
 			logger.info("Tokenize the sentence pairs");
 			
+			// Tokenize
 			OpenNLPTaggerEN lap = null; 
 	        try {
 	        	lap = new OpenNLPTaggerEN();
-	        }
-	        catch (LAPException e) {
-	        	System.err.println(e.getMessage()); 
+	        } catch (LAPException e) {
+	        	logger.info("Could not tokenize sentence. " + e.getMessage()); 
 	        }
 	        
 			JCas pair1 = lap.generateSingleTHPairCAS(t1, h1);
@@ -78,16 +76,16 @@ public class LexicalAlignerTest {
 									link.getAlignerID(),
 									link.getStrength()));
 				
-				assassinKiller = assassinKiller || ((link.getTSideTarget().getBegin() == 1) &&
-													(link.getTSideTarget().getEnd() == 1) && 
-													(link.getHSideTarget().getBegin() == 1) &&
-													(link.getHSideTarget().getEnd() == 1));
+				assassinKiller = assassinKiller || ((link.getTSideTarget().getBegin() == 4) &&
+													(link.getTSideTarget().getEnd() == 12) && 
+													(link.getHSideTarget().getBegin() == 4) &&
+													(link.getHSideTarget().getEnd() == 10));
 				
 				deathPenaltyCapitalPunishment = deathPenaltyCapitalPunishment || 
-						((link.getTSideTarget().getBegin() == 7) &&
-						(link.getTSideTarget().getEnd() == 8) && 
-						(link.getHSideTarget().getBegin() == 10) &&
-						(link.getHSideTarget().getEnd() == 11));
+						((link.getTSideTarget().getBegin() == 44) &&
+						(link.getTSideTarget().getEnd() == 57) && 
+						(link.getHSideTarget().getBegin() == 52) &&
+						(link.getHSideTarget().getEnd() == 70));
 			}
 			
 			// Call the aligner to align T and H of pair 2
@@ -110,15 +108,15 @@ public class LexicalAlignerTest {
 									link.getAlignerID(),
 									link.getStrength()));
 				
-				killedWounded = killedWounded || ((link.getTSideTarget().getBegin() == 2) &&
-						(link.getTSideTarget().getEnd() == 2) && 
-						(link.getHSideTarget().getBegin() == 2) &&
-						(link.getHSideTarget().getEnd() == 2));
+				killedWounded = killedWounded || ((link.getTSideTarget().getBegin() == 12) &&
+						(link.getTSideTarget().getEnd() == 18) && 
+						(link.getHSideTarget().getBegin() == 12) &&
+						(link.getHSideTarget().getEnd() == 19));
 
-				dallasTexas = dallasTexas || ((link.getTSideTarget().getBegin() == 4) &&
-						(link.getTSideTarget().getEnd() == 4) && 
-						(link.getHSideTarget().getBegin() == 6) &&
-						(link.getHSideTarget().getEnd() == 6));
+				dallasTexas = dallasTexas || ((link.getTSideTarget().getBegin() == 22) &&
+						(link.getTSideTarget().getEnd() == 28) && 
+						(link.getHSideTarget().getBegin() == 32) &&
+						(link.getHSideTarget().getEnd() == 37));
 			}
 			
 			// Make sure the alignments contain some expected alignments
