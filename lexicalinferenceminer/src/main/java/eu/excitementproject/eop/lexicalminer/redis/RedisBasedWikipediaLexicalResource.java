@@ -5,6 +5,7 @@ package eu.excitementproject.eop.lexicalminer.redis;
 
 
 import java.io.File;
+import java.io.IOException;
 
 
 
@@ -15,6 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -34,6 +36,7 @@ import eu.excitementproject.eop.common.utilities.configuration.ConfigurationExce
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
+import eu.excitementproject.eop.common.utilities.file.FileUtils;
 import eu.excitementproject.eop.lexicalminer.dataAccessLayer.RetrievalTool;
 import eu.excitementproject.eop.lexicalminer.definition.classifier.Classifier;
 import eu.excitementproject.eop.redis.Configuration;
@@ -53,9 +56,9 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 	public static final String CLASSIFIER_CLASS_NAME = "###classifier-class###";
 	public static final String CLASSIFIER_ID_NAME = "###classifier-id###";
 
-	//protected static final String PARAM_STOP_WORDS = "stop-words";
+	protected static final String PARAM_STOP_WORDS = "stop-words";
 	protected static final String PARAM_EXTRACTION_TYPES = "extraction-types";
-	//protected Set<String> stopWords;
+	protected Set<String> stopWords;
 	protected Set<String> extractionTypes;
 
 	//private static Logger logger = Logger.getLogger(WikipediaLexicalResource.class);
@@ -68,8 +71,6 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 	private Classifier m_classifier;
 	private final int m_limitOnRetrievedRules;
 	private RedisBasedStringListBasicMap leftRules, rightRules;
-
-	//private RetrievalTool m_retrivalTool;
 
 	public static void main(String[] args) throws Exception{
 		
@@ -87,10 +88,10 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 
 		System.out.println("\n" + term + "--> :");
 		for (LexicalRule<? extends WikiRuleInfo> rule : l1)
-			System.out.println("\t" + rule.getRLemma() + ", " + rule.getConfidence());
+			System.out.println("\t" + rule.getRLemma() + ", " + rule.getRelation() + ", " + rule.getConfidence());
 		System.out.println("\n--> " + term + ": ");
 		for (LexicalRule<? extends WikiRuleInfo> rule : l2) 
-			System.out.println("\t" + rule.getLLemma() + ", " + rule.getConfidence());	
+			System.out.println("\t" + rule.getLLemma() + ", " + rule.getRelation() + ", " + rule.getConfidence());	
 	}
  
 	public RedisBasedWikipediaLexicalResource(ConfigurationParams params) throws ConfigurationException, LexicalResourceException, RedisRunException {
@@ -113,6 +114,20 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 			extractionTypes = null;
 			
 		}
+		
+		try {
+			String stopWordsFile = params.getString(PARAM_STOP_WORDS);
+			try {	
+				stopWords = new LinkedHashSet<String>(FileUtils.loadFileToList(new File(stopWordsFile)));	
+			}
+			catch (IOException e) {	
+				throw new LexicalResourceException("error reading " + stopWordsFile);	
+			} 
+		} catch (ConfigurationException e) {
+			extractionTypes = null;
+			
+		}
+		
 		initRedisDB(params);
 		
 		String classifierPathName = params.getString("classifierPath");
@@ -220,9 +235,9 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 			if (lemma != null)
 				lemma = lemma.toLowerCase();
 		
-			//If it's not a noun, we ignore it...
-			if ((pos !=null) && (!(pos.getCanonicalPosTag().equals(CanonicalPosTag.N))))
-			{
+			//If it's not a noun or it's a stop word, we ignore it...
+			if (((pos !=null) && (!(pos.getCanonicalPosTag().equals(CanonicalPosTag.N))))
+					|| stopWords.contains(lemma)) {
 				return new LinkedList<LexicalRule<? extends WikiRuleInfo>>();
 			}
 
@@ -253,14 +268,16 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 		if (rightLemma != null)
 			rightLemma = rightLemma.toLowerCase();
 		
-		//If it's not a noun, we ignore it...1
-		if ((leftPos !=null) && (!(leftPos.getCanonicalPosTag().equals(CanonicalPosTag.N))))
+		//If it's not a noun, or it's a stop word, we ignore it...1
+		if (((leftPos !=null) && (!(leftPos.getCanonicalPosTag().equals(CanonicalPosTag.N)))) || 
+				stopWords.contains(leftLemma))
 		{
 			return new LinkedList<LexicalRule<? extends WikiRuleInfo>>();
 		}
 
-		//If it's not a noun, we ignore it...
-		if ((rightPos !=null) && (!(rightPos.getCanonicalPosTag().equals(CanonicalPosTag.N))))
+		//If it's not a noun, or it's a stop word, we ignore it...
+		if (((rightPos !=null) && (!(rightPos.getCanonicalPosTag().equals(CanonicalPosTag.N)))) ||
+				stopWords.contains(rightLemma))
 		{
 			return new LinkedList<LexicalRule<? extends WikiRuleInfo>>();
 		}		
@@ -291,7 +308,7 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 		Collections.sort(rulesData, new RuleDataReverseComparator());
 		
 		LinkedList<LexicalRule<? extends WikiRuleInfo>> rules = new LinkedList<LexicalRule<? extends WikiRuleInfo>>(); 
-	 	for (RedisRuleData ruleData : rulesData) {	
+	 	for (RedisRuleData ruleData : rulesData) {
 			LexicalRule<WikiRuleInfo> rule  =
 					new LexicalRule<WikiRuleInfo>(ruleData.getLeftTerm(), this.m_nounPOS,
 					ruleData.getRightTerm(), this.m_nounPOS, Math.max(Math.min(m_classifier.getRank(ruleData),MAXIMAL_CONFIDENCE),MINIMAL_CONFIDENCE), ruleData.getRuleType(),
