@@ -1,0 +1,51 @@
+<configuration>
+
+<section name="WikiV3">
+<property name="resource-name">wiki</property>
+		<!-- There are two options for running the Redis server-->
+		
+		<!-- Option 1: The user provide the path to the Redis db file and the system runs automatically a redis server for this db (in case there's already Redis server for this db, in will be reused) -->
+		<!-- The limitation of this option: the Redis server will run in the localhost-->
+		<!-- EDIT: in case the redis bin directory is not located in the current directory, uncomment the following property, and set the path to the Redis bin directory -->
+		<!--<property name="redis-binary-dir">.</property>-->				
+		<!-- EDIT: set here the path to the left-2-right similarity file -->
+		<property name="l2r-redis-db-file">wiki-l2r.rdb</property>
+		<!-- EDIT: set here the path to the right-2left similarity file -->
+		<property name="r2l-redis-db-file">wiki-r2l.rdb</property>
+		
+		<!-- Option 2: In case we want the Redis server to run on another hos -->
+		<!-- The user run Redis server on a selected port (can be done by applying eu.excitementproject.eop.distsim.application.RunRedisResources), and configure the host and the port of the server -->
+		<!-- EDIT: set here the host and the port of the Redis server for the left-2-right similarity -->
+		
+		<!--<property name="l2r-redis-host">te-srv2</property>
+		<property name="l2r-redis-port">7011</property>
+		<property name="r2l-redis-host">te-srv2</property>
+		<property name="r2l-redis-port">7012</property>-->
+		
+		<!-- The 'bonus' for online -->
+		<property name="NPBouns">0.001</property>
+		
+		<!-- Define the number of maximum number of reteived rules for a single query
+			 Default: all 
+		-->
+		<property name="limitOnRetrievedRules">10</property>
+		
+		<!-- A list of selected extraction types: Redirect,Category,LexicalIDM,SyntacticIDM,Parenthesis,Link
+			 Default: all but link and category
+		-->
+		<property name="extraction-types">Redirect,Parenthesis,LexicalIDM,SyntacticIDM</property>
+		
+		<!-- A file containing stop words. One word per line.
+			 Rules based on stop words inj left or right hand side will be filtered
+			 Default: no stoop words
+		-->
+		<property name = "stop-words">stopwords-Eyal.txt</property>
+		
+		
+		<!-- The following two properties define the package and the class of the IDM rule classifieres
+		     The class should extend eu.excitementproject.eop.lexicalminer.definition.classifier.Classifier -->
+		<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
+		<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
+</section>
+
+</configuration>
