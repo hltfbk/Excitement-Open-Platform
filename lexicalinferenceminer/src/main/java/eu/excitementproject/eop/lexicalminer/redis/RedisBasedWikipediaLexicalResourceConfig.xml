@@ -22,11 +22,28 @@
 		<property name="r2l-redis-host">te-srv2</property>
 		<property name="r2l-redis-port">7012</property>-->
 		
+		<!-- The 'bonus' for online -->
 		<property name="NPBouns">0.001</property>
+		
+		<!-- Define the number of maximum number of reteived rules for a single query
+			 Default: all 
+		-->
 		<property name="limitOnRetrievedRules">10</property>
-		<!--<property name="extraction-types">Redirect,Category,LexicalIDM,SyntacticIDM,Parenthesis</property>-->
+		
+		<!-- A list of selected extraction types: Redirect,Category,LexicalIDM,SyntacticIDM,Parenthesis,Link
+			 Default: all but link and category
+		-->
 		<property name="extraction-types">Redirect,Parenthesis,LexicalIDM,SyntacticIDM</property>
+		
+		<!-- A file containing stop words. One word per line.
+			 Rules based on stop words inj left or right hand side will be filtered
+			 Default: no stoop words
+		-->
 		<property name = "stop-words">stopwords-Eyal.txt</property>
+		
+		
+		<!-- The following two properties define the package and the class of the IDM rule classifieres
+		     The class should extend eu.excitementproject.eop.lexicalminer.definition.classifier.Classifier -->
 		<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
 		<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
 </section>
