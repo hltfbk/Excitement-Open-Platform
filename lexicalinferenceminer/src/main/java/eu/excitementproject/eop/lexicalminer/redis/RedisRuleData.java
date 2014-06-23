@@ -80,11 +80,11 @@ public final class RedisRuleData
 	public Double getClassifierRank(int classifierId) {
 		
 		if (classifierRanks == null)
-			return 0.0; //return null; 
+			return null; 
 		
 		double d = classifierRanks.get(classifierId-1);
 		if (d == -1)
-			return 0.0; //return null; 
+			return null; 
 		else
 			return d;
 	}
