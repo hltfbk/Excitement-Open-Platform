@@ -124,7 +124,7 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 				throw new LexicalResourceException("error reading " + stopWordsFile);	
 			} 
 		} catch (ConfigurationException e) {
-			extractionTypes = null;
+			stopWords = null;
 			
 		}
 		
