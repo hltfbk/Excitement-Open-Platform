@@ -428,6 +428,9 @@
 		<property name="limitOnRetrievedRules">10</property>
 		<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
 		<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
+		<property name = "stop-words">stopwords-Eyal.txt</property>
+		<!--<property name="extraction-types">Redirect,Category,LexicalIDM,SyntacticIDM,Parenthesis</property>-->
+		<property name="extraction-types">Redirect,Parenthesis,LexicalIDM,SyntacticIDM</property>
 
 	</section>
 
