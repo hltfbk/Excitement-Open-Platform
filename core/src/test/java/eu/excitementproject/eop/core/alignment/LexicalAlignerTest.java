@@ -57,7 +57,9 @@ public class LexicalAlignerTest {
 					killedWounded = false, dallasTexas = false;
 			
 			// Call the aligner to align T and H of pair 1
+			logger.info("Started annotating a text and hypothesis pair using lexical aligner");
 			aligner.annotate(pair1);
+			logger.info("Finished annotating a text and hypothesis pair using lexical aligner");
 						
 			// Print the alignment of pair 1
 			JCas hypoView = pair1.getView(LAP_ImplBase.HYPOTHESISVIEW);
@@ -89,8 +91,10 @@ public class LexicalAlignerTest {
 			}
 			
 			// Call the aligner to align T and H of pair 2
+			logger.info("Started annotating a text and hypothesis pair using lexical aligner");
 			aligner.annotate(pair2);
-			
+			logger.info("Finished annotating a text and hypothesis pair using lexical aligner");
+						
 			// Print the alignment of pair 2
 			hypoView = pair2.getView(LAP_ImplBase.HYPOTHESISVIEW);
 			

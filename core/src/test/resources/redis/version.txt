@@ -1,1 +1,0 @@
-The redis-server version is redis-2.4.14

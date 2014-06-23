@@ -95,6 +95,8 @@ public class LexicalAligner implements AlignmentComponent {
 		
 		try {
 
+			logger.info("Started annotating a text and hypothesis pair using lexical aligner");
+			
 			// Get the tokens of the text and hypothesis
 			getTokensAnnotations(aJCas);
 			
@@ -139,6 +141,8 @@ public class LexicalAligner implements AlignmentComponent {
 					}
 				}
 			}
+			
+			logger.info("Finished annotating a text and hypothesis pair using lexical aligner");
 			
 		} catch (Exception e) {
 			
