@@ -19,13 +19,14 @@ public abstract class OfflineClassifier extends Classifier {
 	@Override
 	protected final double getClassifierRank(RuleData rule)
 	{
+
 		if (rule.getClassifierRank() == null)
 		{
 			return rule.getDefultRank();
 		}
 		else
 		{
-			return rule.getClassifierRank();
+			return (rule.getDefultRank() * rule.getClassifierRank());
 
 		}
 	}
@@ -33,14 +34,15 @@ public abstract class OfflineClassifier extends Classifier {
 	@Override
 	protected final double getClassifierRank(RedisRuleData rule)
 	{
+		
 		if (rule.getClassifierRank(getSimpleClassifierId()) == null)
 		{
 			return rule.getDefultRank();
 		}
 		else
-		{		
-			return rule.getClassifierRank(getSimpleClassifierId());
-
+		{	
+			//return rule.getClassifierRank(getSimpleClassifierId());
+			return (rule.getDefultRank() * rule.getClassifierRank(getSimpleClassifierId()));
 		}
 	}
 	
