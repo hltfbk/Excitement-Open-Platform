@@ -237,7 +237,7 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 		
 			//If it's not a noun or it's a stop word, we ignore it...
 			if (((pos !=null) && (!(pos.getCanonicalPosTag().equals(CanonicalPosTag.N))))
-					|| stopWords.contains(lemma)) {
+					|| (stopWords != null && stopWords.contains(lemma))) {
 				return new LinkedList<LexicalRule<? extends WikiRuleInfo>>();
 			}
 
@@ -269,15 +269,15 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 			rightLemma = rightLemma.toLowerCase();
 		
 		//If it's not a noun, or it's a stop word, we ignore it...1
-		if (((leftPos !=null) && (!(leftPos.getCanonicalPosTag().equals(CanonicalPosTag.N)))) || 
-				stopWords.contains(leftLemma))
+		if (((leftPos !=null) && (!(leftPos.getCanonicalPosTag().equals(CanonicalPosTag.N))))  
+				|| (stopWords != null && stopWords.contains(leftLemma)))
 		{
 			return new LinkedList<LexicalRule<? extends WikiRuleInfo>>();
 		}
 
 		//If it's not a noun, or it's a stop word, we ignore it...
-		if (((rightPos !=null) && (!(rightPos.getCanonicalPosTag().equals(CanonicalPosTag.N)))) ||
-				stopWords.contains(rightLemma))
+		if (((rightPos !=null) && (!(rightPos.getCanonicalPosTag().equals(CanonicalPosTag.N)))) 
+				|| (stopWords != null && stopWords.contains(rightLemma)))
 		{
 			return new LinkedList<LexicalRule<? extends WikiRuleInfo>>();
 		}		
