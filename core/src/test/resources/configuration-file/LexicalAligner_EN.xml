@@ -30,7 +30,7 @@
  			<property name = "catvar">eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource</property>
  			
  			<!-- Wiki -->
- 			<!-- <property name = "redis-wiki">eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource</property> -->
+ 			<property name = "redis-wiki">eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource</property>
         </section>
         
         <!-- WordNet configuration parameters -->
