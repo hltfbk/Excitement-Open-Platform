@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+		<section name="GeneralParameters">
+			<property name="maxPhraseLength">5</property>
+			<property name="gateLemmatizerFileUrl">src/test/resources/model/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
+		</section>
+		
+        <section name="LexicalResources">
+        
+			<!-- WordNet -->
+			<property name="wordnet">eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource</property>
+			
+			<!-- Redis BAP -->
+			<property name="distsim-bap">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
+			
+			<!-- Redis Lin Proximity -->
+			<property name = "redis-lin-proximity">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
+			
+			<!-- Redis Lin Dependency -->
+			<property name = "redis-lin-dependency">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
+			
+			<!-- VerbOcean -->
+			<property name = "verb-ocean">eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource</property>
+
+			<!-- Redis Geo -->
+			<property name = "redis-geo">eu.excitementproject.eop.core.component.lexicalknowledge.geo.RedisBasedGeoLexicalResource</property>
+
+			<!-- Catvar -->
+ 			<property name = "catvar">eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource</property>
+ 			
+ 			<!-- Wiki -->
+ 			<property name = "redis-wiki">eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource</property>
+        </section>
+        
+        <!-- WordNet configuration parameters -->
+        <section name="wordnet">
+        	<property name = "useLemma">false</property>
+        	<property name = "version">3.0</property>
+			<property name = "wordnet-dir">src/test/resources/data/WordNet/3.0/dict.wn.orig</property>
+			<property name = "useFirstSenseOnlyLeft">true</property>
+			<property name = "useFirstSenseOnlyRight">true</property>
+			<property name = "entailing-relations">SYNONYM,DERIVATIONALLY_RELATED,HYPERNYM,INSTANCE_HYPERNYM,MEMBER_HOLONYM,PART_HOLONYM,ENTAILMENT,SUBSTANCE_MERONYM</property>
+			<property name = "wordnet-depth">2</property>
+		</section>
+		
+		<!-- Redis BAP configuration parameters -->
+		<section name = "distsim-bap">
+			<property name = "useLemma">false</property>
+			<property name = "version">1.0</property>
+			<property name="resource-name">distsim-bap</property>
+			<property name="redis-binary-dir">$REDIS</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">$REDISDATA/reuters/bap/similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">$REDISDATA/reuters/bap/similarity-r2l.rdb</property>
+		</section>
+        
+        <!-- Redis Lin Proximity configuration parameters -->
+        <section name = "redis-lin-proximity">
+        	<property name = "useLemma">false</property>
+        	<property name = "version">1.0</property>
+			<property name="resource-name">distsim-lin-proximity</property>
+			<property name="redis-binary-dir">$REDIS</property>
+			<property name="element-class">eu.excitementproject.eop.distsim.items.LemmaPosBasedElement</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">$REDISDATA/reuters/lin/proximity/similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">$REDISDATA/reuters/lin/proximity/similarity-r2l.rdb</property>
+		</section>
+		
+		<!-- Redis Lin Dependency configuration parameters -->
+		<section name = "redis-lin-dependency">
+			<property name = "useLemma">false</property>
+			<property name = "version">1.0</property>
+			<property name="resource-name">distsim-lin-dependency</property>
+			<property name="redis-binary-dir">$REDIS</property>
+			<property name="element-class">eu.excitementproject.eop.distsim.items.LemmaPosBasedElement</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">$REDISDATA/reuters/lin/dependency/similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">$REDISDATA/reuters/lin/dependency/similarity-r2l.rdb</property>
+		</section>
+		
+		<!-- Redis Geo configuration parameters -->
+		<section name = "redis-geo">
+			<property name = "useLemma">false</property>
+			<property name = "version">1.0</property>
+			<property name="resource-name">geo</property>
+			<property name="redis-binary-dir">$REDIS</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">$REDISDATA/geo/geo-l2r.rdb</property>
+			<property name="r2l-redis-db-file">$REDISDATA/geo/geo-r2l.rdb</property>
+		</section>
+		
+		<!-- VerbOcean configuration parameters -->
+		<section name = "verb-ocean">
+			<property name = "useLemma">true</property>
+			<property name = "version">unrefined.2004-05-20</property>
+			<property name = "threshold">1</property>
+			<property name = "file">src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+			<property name = "allowedRelations">STRONGER_THAN</property>
+		</section>
+		
+		<!-- CatVar configuration parameters -->
+		<section name = "catvar">
+			<property name = "useLemma">true</property>
+			<property name = "version">2.1</property>
+			<property name = "catver-file-name">src/test/resources/data/CatVar/catvar21</property>
+		</section>
+		
+		<!-- Redis Wiki configuration parameters -->
+		<section name = "redis-wiki">
+			<property name = "useLemma">false</property>
+			<property name = "version">1.0</property>
+			<property name="resource-name">wiki</property>
+			<property name="redis-binary-dir">$REDIS</property>
+			<property name="l2r-redis-db-file">$REDISDATA/wiki/wiki-l2r.rdb</property>
+			<property name="r2l-redis-db-file">$REDISDATA/wiki/wiki-r2l.rdb</property>
+			<property name="NPBouns">0.001</property>
+			<property name="limitOnRetrievedRules">10</property>
+			<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
+			<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
+		</section>
+</configuration>
