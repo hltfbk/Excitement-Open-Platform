@@ -3,6 +3,7 @@ package eu.excitementproject.eop.core.alignment;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -28,6 +29,8 @@ import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpe
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanRuleInfo;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRuleInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
 import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
 import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
@@ -57,6 +60,7 @@ public class LexicalAligner implements AlignmentComponent {
 	private static final String MAX_PHRASE_KEY = "maxPhraseLength";
 	private static final String WORDNET = "wordnet";
 	private static final String USE_LEMMA_PARAM = "useLemma";
+	private static final String VERSION_PARAM = "version";
 	private static final String LEMMATIZER_URL = "gateLemmatizerFileUrl";
 	
 	// Private Members
@@ -66,7 +70,8 @@ public class LexicalAligner implements AlignmentComponent {
 	private List<String> hypoLemmas;
 	private List<LexicalResource<? extends RuleInfo>> lexicalResources;
 	private int maxPhrase = 0;
-	private List<String> lexicalResourceThatSupportLemma;
+	private HashMap<String, LexicalResourceInformation> lexicalResourcesInformation;
+	private boolean needToLemmatize;
 	private GateLemmatizer lemmatizer = null;
 	private static final Logger logger = Logger.getLogger(LexicalAligner.class);
 	
@@ -74,7 +79,10 @@ public class LexicalAligner implements AlignmentComponent {
 	
 	public LexicalAligner() {
 		
-		lexicalResourceThatSupportLemma = new ArrayList<String>();
+		lexicalResourcesInformation = new HashMap<String, LexicalResourceInformation>();
+		
+		// This will be true if any of the resources use lemmas
+		needToLemmatize = false;
 	}
 	
 	/**
@@ -101,12 +109,15 @@ public class LexicalAligner implements AlignmentComponent {
 			getTokensAnnotations(aJCas);
 			
 			// If there are any resources requiring lemmas, lemmatize the sentence
-			if (lexicalResourceThatSupportLemma.size() > 0) {
+			if (needToLemmatize) {
 				getLemmasAnnotations(textTokens, hypoTokens);
 			}
 			
 			// Check in all the resources for rules of type textPhrase -> hypoPhrase 
 			for (LexicalResource<? extends RuleInfo> resource : lexicalResources) {
+				
+				LexicalResourceInformation resourceInfo = 
+						lexicalResourcesInformation.get(resource.getClass().getName());
 				
 				// For every phrase t in T and phrase h in H, check the lexical
 				// resources if they contain a rule t->h
@@ -117,14 +128,14 @@ public class LexicalAligner implements AlignmentComponent {
 							textStart + maxPhrase); ++textEnd) {
 						
 						textPhrase = getPhrase(textTokens, textLemmas, textStart, textEnd, 
-								lexicalResourceThatSupportLemma.contains(resource.getClass().getName()));
+								resourceInfo.useLemma());
 						
 						for (int hypoStart = 0; hypoStart < hypoTokens.size(); ++hypoStart) {
 							for (int hypoEnd = hypoStart; hypoEnd < Math.min(hypoTokens.size(), 
 									hypoStart + maxPhrase); ++hypoEnd) {
 								
-								hypoPhrase = getPhrase(hypoTokens, hypoLemmas, hypoStart, hypoEnd,
-										lexicalResourceThatSupportLemma.contains(resource.getClass().getName()));
+								hypoPhrase = getPhrase(hypoTokens, hypoLemmas, hypoStart, hypoEnd, 
+										resourceInfo.useLemma());
 								
 								// Get the rules textPhrase -> hypoPhrase
 								for (LexicalRule<? extends RuleInfo> rule : 
@@ -134,7 +145,8 @@ public class LexicalAligner implements AlignmentComponent {
 									addAlignmentAnnotations(aJCas, textTokens.get(textStart).getBegin(), 
 											textTokens.get(textEnd).getEnd(), 
 											hypoTokens.get(hypoStart).getBegin(), 
-											hypoTokens.get(hypoEnd).getEnd(), rule);
+											hypoTokens.get(hypoEnd).getEnd(), rule,
+											resourceInfo.getVersion());
 								}
 							}
 						}
@@ -214,15 +226,19 @@ public class LexicalAligner implements AlignmentComponent {
 				if (lexicalResource != null) {
 					lexicalResources.add(lexicalResource);
 					
-					// This resource should be used with lemmas
-					if (resourceParams.getBoolean(USE_LEMMA_PARAM)) {
-						lexicalResourceThatSupportLemma.add(lexicalResource.getClass().getName());
-					}
+					// Add the information about this resource
+					lexicalResourcesInformation.put(lexicalResource.getClass().getName(), 
+							new LexicalResourceInformation(
+									resourceParams.getString(VERSION_PARAM), 
+									resourceParams.getBoolean(USE_LEMMA_PARAM)));
+					
+					needToLemmatize = needToLemmatize || 
+							resourceParams.getBoolean(USE_LEMMA_PARAM);
 				}
 			}
 			
 			// If there are any resources requiring lemmas, initialize a lemmatizer
-			if (lexicalResourceThatSupportLemma.size() > 0) {
+			if (needToLemmatize) {
 				 
 		        try {
 		        	File gateLemmatizerFile = paramsSection.getFile(LEMMATIZER_URL);
@@ -405,11 +421,14 @@ public class LexicalAligner implements AlignmentComponent {
 	 * @param hypoStart The index of the first token in H in this alignment link 
 	 * @param hypoEnd The index of the last token in H in this alignment link 
 	 * @param rule The rule t->h
+	 * @param lexicalResourceVersion The version of the lexical resource that 
+	 * this rule came from
 	 * @throws CASException 
 	 */
 	private void addAlignmentAnnotations(JCas aJCas, 	int textStart, int textEnd, 
 														int hypoStart, int hypoEnd, 
-														LexicalRule<? extends RuleInfo> rule) 
+														LexicalRule<? extends RuleInfo> rule,
+														String lexicalResourceVersion) 
 																throws CASException {
 		// Get the text and hypothesis views
 		JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
@@ -450,10 +469,8 @@ public class LexicalAligner implements AlignmentComponent {
 		
 		// Add the link information
 		link.setAlignerID(rule.getResourceName());  
-		
-		// TODO: Set these fields differently?
-		link.setAlignerVersion("1.0"); 
-		link.setLinkInfo("local-entailment");
+		link.setAlignerVersion(lexicalResourceVersion); 
+		link.setLinkInfo(getLinkInfo(rule));
 		
 		// Mark begin and end according to the hypothesis target
 		link.setBegin(hypoTarget.getBegin()); 
@@ -463,6 +480,40 @@ public class LexicalAligner implements AlignmentComponent {
 		link.addToIndexes(); 
 	}
 	
+	/**
+	 * Receives a rule and return the type of the rule,
+	 * such as "synonym" or "hypernym" for WordNet, "redirect" 
+	 * for Wikipedia, etc. The default value is "local-entailment".<br>
+	 * A better solution is to add an abstract class implementing RuleInfo, 
+	 * that all the concrete RuleInfos will extend. This class will contain a 
+	 * field "relation" with a default of "local-entailment".
+	 * Then we can call: rule.getInfo().getRelation() without having to
+	 * know which resource the rule belongs to.
+	 * @param rule
+	 * @return The type of the rule
+	 */
+	private String getLinkInfo(LexicalRule<? extends RuleInfo> rule) {
+
+		String type = "local-entailment";
+		
+		// WordNet
+		if (rule.getResourceName().equals("WORDNET")) {
+			type = ((WordnetRuleInfo)rule.getInfo()).getTypedRelation().name();
+		}
+		
+		// Wikipedia
+		else if (rule.getResourceName().equals("Wikipedia")) {
+			type = ((WikiRuleInfo)rule.getInfo()).getBestExtractionType().name();
+		}
+		
+		// VerbOcean
+		else if (rule.getResourceName().equals("VerbOcean")) {
+			type = ((VerbOceanRuleInfo)rule.getInfo()).getRelationType().name();
+		}
+		
+		return type;
+	}
+
 	/**
 	 * Constructs a {@link LexicalResource} for the given class name
 	 * and a configuration subsection with parameters related to it. 
@@ -477,7 +528,7 @@ public class LexicalAligner implements AlignmentComponent {
 	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
-	public LexicalResource<? extends RuleInfo> 
+	private LexicalResource<? extends RuleInfo> 
 		createLexicalResource(String resourceClassName, 
 				ConfigurationParams configurationParams) 
 				throws ConfigurationException, LexicalResourceException

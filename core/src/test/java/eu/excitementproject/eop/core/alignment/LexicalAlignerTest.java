@@ -72,10 +72,10 @@ public class LexicalAlignerTest {
 				
 				logger.info(String.format("Text phrase: %s, " +
 									"hypothesis phrase: %s, " + 
-									"resource: %s, confidence: %f", 
+									"id: %s, confidence: %f", 
 									link.getTSideTarget().getCoveredText(),
 									link.getHSideTarget().getCoveredText(),
-									link.getAlignerID(),
+									link.getID(),
 									link.getStrength()));
 				
 				assassinKiller = assassinKiller || ((link.getTSideTarget().getBegin() == 4) &&
@@ -106,10 +106,10 @@ public class LexicalAlignerTest {
 				
 				logger.info(String.format("Text phrase: %s, " +
 									"hypothesis phrase: %s, " + 
-									"resource: %s, confidence: %f", 
+									"id: %s, confidence: %f", 
 									link.getTSideTarget().getCoveredText(),
 									link.getHSideTarget().getCoveredText(),
-									link.getAlignerID(),
+									link.getID(),
 									link.getStrength()));
 				
 				killedWounded = killedWounded || ((link.getTSideTarget().getBegin() == 12) &&
