@@ -126,7 +126,6 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		test3EN(); //test 2 has to run before 3
 	}
 	
-	@Test
 	public void testEvalDE(){
 		//test selected configurations and combinations
 		
@@ -230,14 +229,14 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		edas.add(meceda3);		
 		
 		//construct meta EDAs
-		MetaEDA meda1 = new MetaEDA(edas);
-		MetaEDA meda2 = new MetaEDA(edas);
+		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);
+		SimpleMetaEDAConfidenceFeatures meda2 = new SimpleMetaEDAConfidenceFeatures(edas);
 		//preprocess test and training data
 		try {
 			meda1.initialize(metaconfig1);
 			meda2.initialize(metaconfig2);
 			meda2.startTraining(metaconfig2);
-//			preprocess(meda1);
+			preprocess(meda1);
 			logger.info("Initialization done.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -252,8 +251,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		meda2.shutdown();
 		
 	}
-	
-	@Test 
+ 
 	public void testEvalEN(){
 		//test selected configurations and combinations
 
