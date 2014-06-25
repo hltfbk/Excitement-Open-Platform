@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 
 
+
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
@@ -74,6 +75,7 @@ public class SimilarityFile2Redis {
 			redis = new Redis(confParams.getString(Configuration.REDIS_FILE));
 			redis.open();
 			redis.clear();			
+						
 			Pair<Integer,Serializable> pair = null;
 			while (true) {
 				try {

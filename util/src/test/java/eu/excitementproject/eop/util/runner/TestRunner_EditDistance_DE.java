@@ -14,7 +14,8 @@ public class TestRunner_EditDistance_DE {
 		        "-trainFile","../core/src/test/resources/data-set/GER/German_dev_small.xml",
 		        "-test",
 		        "-testFile","../core/src/test/resources/data-set/GER/German_test_small.xml",
-		        "-output","../core/src/test/resources/results/"};
+		        "-output","../core/src/test/resources/results/",
+		        "-score"};
 		/*
 		String[] cmd = {
                 "-config", "./src/test/resources/configuration-file/demo_config_test_maxent_DE.xml",

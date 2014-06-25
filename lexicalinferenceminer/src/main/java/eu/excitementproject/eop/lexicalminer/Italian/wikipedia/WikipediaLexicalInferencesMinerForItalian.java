@@ -9,7 +9,7 @@ import eu.excitementproject.eop.lexicalminer.definition.idm.IIDM;
 import eu.excitementproject.eop.lexicalminer.definition.idm.LexicalIDM;
 import eu.excitementproject.eop.lexicalminer.definition.idm.SyntacticIDM;
 import eu.excitementproject.eop.lexicalminer.instrumentscombination.LexicalSentenceProcessor;
-import eu.excitementproject.eop.lexicalminer.instrumentscombination.LexicalToolsFactory;
+//import eu.excitementproject.eop.lexicalminer.instrumentscombination.LexicalToolsFactory;
 import eu.excitementproject.eop.lexicalminer.wikipedia.WikipediaLexicalInferencesMiner;
 import eu.excitementproject.eop.lexicalminer.wikipedia.common.IExtractor;
 import eu.excitementproject.eop.lexicalminer.wikipedia.extractors.allNoun.AllNounExtractor;
@@ -44,7 +44,8 @@ public class WikipediaLexicalInferencesMinerForItalian extends WikipediaLexicalI
 		
 		IExtractor extractor=null;
 		try {
-			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+//			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+			Lemmatizer lemmatizer = new TextProLemmatizer(processingToolsConf);
 			extractor = new AllNounExtractor(idm, lemmatizer);
 
 		} catch (Exception e) {
@@ -67,7 +68,8 @@ public class WikipediaLexicalInferencesMinerForItalian extends WikipediaLexicalI
 		
 		IExtractor extractor=null;
 		try {
-			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+//			Lemmatizer lemmatizer = LexicalToolsFactory.createLemmatizer(processingToolsConf);
+			Lemmatizer lemmatizer = new TextProLemmatizer(processingToolsConf); 
 			extractor = new AllNounExtractor(idm, lemmatizer);
 
 		} catch (Exception e) {

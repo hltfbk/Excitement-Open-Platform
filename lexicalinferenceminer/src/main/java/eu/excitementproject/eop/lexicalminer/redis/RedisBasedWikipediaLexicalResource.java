@@ -14,8 +14,10 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 //import org.apache.log4j.Logger;
 //import org.apache.log4j.PropertyConfigurator;
@@ -52,9 +54,9 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 	public static final String CLASSIFIER_ID_NAME = "###classifier-id###";
 
 	//protected static final String PARAM_STOP_WORDS = "stop-words";
-	//protected static final String PARAM_EXTRACTION_TYPES = "extraction-types";
+	protected static final String PARAM_EXTRACTION_TYPES = "extraction-types";
 	//protected Set<String> stopWords;
-	//protected final Set<String> extractionTypes;
+	protected Set<String> extractionTypes;
 
 	//private static Logger logger = Logger.getLogger(WikipediaLexicalResource.class);
 	
@@ -102,6 +104,15 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 		this.m_limitOnRetrievedRules = params.getInt("limitOnRetrievedRules");
 		double NPBouns;
 		NPBouns = params.getDouble("NPBouns");
+		
+		extractionTypes = new HashSet<String>();
+		try {
+			for (String extractionType : params.getStringArray(PARAM_EXTRACTION_TYPES))
+				extractionTypes.add(extractionType);
+		} catch (ConfigurationException e) {
+			extractionTypes = null;
+			
+		}
 		initRedisDB(params);
 		
 		String classifierPathName = params.getString("classifierPath");
@@ -218,8 +229,11 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 			//get all rules
 			try 
 			{	List<RedisRuleData> rulesData = new LinkedList<RedisRuleData>();
-			 	for (String value : (l2r ? leftRules.get(lemma) : rightRules.get(lemma))) 			 		
-			 		rulesData.add(new RedisRuleData(lemma,value,l2r));
+			 	for (String value : (l2r ? leftRules.get(lemma) : rightRules.get(lemma))) {
+			 		RedisRuleData ruleData = new RedisRuleData(lemma,value,l2r);
+			 		if (extractionTypes == null || extractionTypes.contains(ruleData.getRuleType()))
+			 			rulesData.add(ruleData);
+			 	}
 			 	return makeLexicalRules(rulesData);	
 			} catch (Exception e) {
 				throw new LexicalResourceException("Exception while trying to get rules",e);

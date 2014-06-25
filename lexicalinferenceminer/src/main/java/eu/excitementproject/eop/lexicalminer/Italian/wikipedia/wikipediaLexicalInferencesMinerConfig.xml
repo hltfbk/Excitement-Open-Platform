@@ -47,7 +47,7 @@
 	<param name="parser">malt</param>
 	<param name="parser-path">/opt/share/tp-ita/italian-parser-1.7.1/</param>
 	<param name="stopwordsFilePath">/opt/share/tp-ita/stopwords_ita.txt</param>
-	<param name="encoding">ISO-8859-1</param>
+	<param name="encoding">UTF-8</param>
 </module>
 
 </configuration>
