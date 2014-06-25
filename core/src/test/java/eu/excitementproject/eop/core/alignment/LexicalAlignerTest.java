@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
@@ -22,6 +23,7 @@ public class LexicalAlignerTest {
 
 	static Logger logger = Logger.getLogger(LexicalAligner.class.getName());
 	
+	@Ignore
 	@Test
 	public void test() {
 		
