@@ -11,6 +11,7 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import eu.excitement.type.alignment.LinkUtils;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
@@ -18,7 +19,6 @@ import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 @SuppressWarnings("unused")
 public class MeteorPhraseResourceAlignerTest {
 
-//	@Ignore // Temporarily blocked; still work in progress. - Gil.
 	@Test
 	public void test() {
 		BasicConfigurator.resetConfiguration(); 
@@ -105,6 +105,7 @@ public class MeteorPhraseResourceAlignerTest {
 		try {
 			aJCas = tokenizer.generateSingleTHPairCAS("He went there in person to dwell on the importance, and to dwell on the importance.", "He went there to explain the significance and significance."); 
 			phraseLinker.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); // this will dump 24 (token level) links
 		}
 		catch (Exception e)
 		{
