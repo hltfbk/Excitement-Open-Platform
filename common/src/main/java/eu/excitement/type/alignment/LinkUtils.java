@@ -1,13 +1,16 @@
 package eu.excitement.type.alignment;
 
-import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 import org.uimafit.util.JCasUtil;
+
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
 /**
  * Some utility methods for alignment.Link type and related codes. 
@@ -103,10 +106,53 @@ public class LinkUtils {
 //		return null; 
 //	}
 	
-	public static void dumpTokenLevelLinks(JCas aJCas, OutputStream os)
+	/**
+	 * Utility class that is useful to see what surface level (token level) Links are added in the given CAS.
+	 * This method iterates all Links that includes tokens within their targets, and shows them (only tokens! 
+	 * does not show other items in Target. ) --- Thus, the method is not generic enough to be used to check 
+	 * Link (and targets) that links more than tokens. 
+	 *   
+	 * @param aJCas
+	 * @param os
+	 */
+	public static void dumpTokenLevelLinks(JCas aJCas, PrintStream ps) throws CASException
 	{
-		// utility class that is useful to see what Links are added in the given CAS  
-		// TODO work on this once. 
+		// get all links that connects Tokens... 
 		
-	}
+		List<Link> tokenLevelLinks = selectLinksWith(aJCas, Token.class);
+
+		ps.println("The CAS has " + tokenLevelLinks.size() + " Link instances in it.");
+
+		int linkNum = 0; 
+		for(Link l : tokenLevelLinks)
+		{
+			// output to the give output stream
+			ps.print("Link " + linkNum);
+			// The link information 
+			ps.println(" (" + l.getDirectionString() + ", " + l.getID() + ")");
+			linkNum++; 
+			
+			Target tside = l.getTSideTarget(); 
+			Target hside = l.getHSideTarget(); 
+			
+			// T side target has n tokens... TEXT(begin,end) TEXT(begin, end) ... 
+			Collection<Token> tokens = JCasUtil.select(tside.getTargetAnnotations(), Token.class); 
+			ps.print("\t TSide target has " + tokens.size() + " token(s): ");
+			for (Token t: tokens)
+			{
+				ps.print(t.getCoveredText() + "(" + t.getBegin() + "," + t.getEnd() + ") ");
+			}
+			ps.println(""); 
+			
+			// H side target has m tokens ... 
+			tokens = JCasUtil.select(hside.getTargetAnnotations(), Token.class); 
+			ps.print("\t HSide target has " + tokens.size() + " token(s): ");
+			for (Token t: tokens)
+			{
+				ps.print(t.getCoveredText() + "(" + t.getBegin() + "," + t.getEnd() + ") ");
+			}
+			ps.println(""); 
+						
+		}
+	}	
 }
