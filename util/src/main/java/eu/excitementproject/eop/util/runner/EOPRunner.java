@@ -1,30 +1,16 @@
 package eu.excitementproject.eop.util.runner;
 
-import java.io.BufferedReader;
-
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.log4j.Logger;
-import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
-import org.kohsuke.args4j.CmdLineException;
 import org.kohsuke.args4j.CmdLineParser;
 
 import eu.excitementproject.eop.common.EDABasic;
@@ -34,16 +20,8 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
-import eu.excitementproject.eop.core.EditDistanceTEDecision;
-import eu.excitementproject.eop.lap.LAPAccess;
-import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
-import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerDE;
-import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
-import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
-import eu.excitementproject.eop.lap.textpro.TextProTaggerIT;
 import eu.excitementproject.eop.util.eval.EDAScorer;
-import static java.nio.file.StandardCopyOption.*;
 
 /**
  * 
@@ -55,7 +33,7 @@ import static java.nio.file.StandardCopyOption.*;
  * given test/hypothesis pairs. 
  *
  */
-@SuppressWarnings("unused")
+
 public class EOPRunner {
 
 	// command line options
@@ -70,13 +48,14 @@ public class EOPRunner {
 	private String resultsFile = null;
 	private String xmlResultsFile = null;
 
+	@SuppressWarnings("unused")
 	private String language = "EN";
 	
 	private CommonConfig config;
 				
 	private EDABasic<?> eda = null;
 	
-	private String configSection = "PlatformConfiguration";
+//	private String configSection = "PlatformConfiguration";
 
 	private Logger logger;
 
@@ -255,7 +234,7 @@ public class EOPRunner {
 			if (modelFile != null && !modelFile.isEmpty()) {
 				FileUtils.copyFileToDirectory(new File(modelFile), outputDir);
 			} else {
-				logger.info("No model file found");
+//				logger.info("No model file found");
 			}
 			
 		} catch (Exception e) {
