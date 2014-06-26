@@ -164,13 +164,13 @@ public class MetaEDAEval {
 		}
 
 		int[] sumcorrect2 = testMetaEDA(meda2);
-		float score2 = (float)sumcorrect2[0]/sumcorrect2[1];
+		float score2 = (float)sumcorrect2[1]/sumcorrect2[0];
 		logger.info("\nResults for majority vote ");
 		logger.info("sum "+sumcorrect2[0]+" - correct "+sumcorrect2[1]+" ("+score2*100+"%) \n");
 		
 		int[] sumcorrect1= testMetaEDA(meda1);
 		logger.info("\nResults for training with confidence as features ");
-		float score1 = (float)sumcorrect1[0]/sumcorrect1[1];
+		float score1 = (float)sumcorrect1[1]/sumcorrect1[0];
 		logger.info("sum "+sumcorrect1[0]+" - correct "+sumcorrect1[1]+" ("+score1*100+"%) \n");
 		
 		meda1.shutdown();	
