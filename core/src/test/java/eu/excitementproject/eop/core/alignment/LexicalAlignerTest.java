@@ -24,8 +24,7 @@ public class LexicalAlignerTest {
 
 	static Logger logger = Logger.getLogger(LexicalAligner.class.getName());
 	
-	// TODO: Ignore
-//	@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		

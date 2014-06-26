@@ -468,6 +468,7 @@ public class LexicalAligner implements AlignmentComponent {
 	 * @throws ConfigurationException
 	 * @throws LexicalResourceException
 	 */
+	@SuppressWarnings("unchecked")
 	private LexicalResource<? extends RuleInfo> 
 		createLexicalResource(String resourceClassName, 
 				ConfigurationParams configurationParams) 
