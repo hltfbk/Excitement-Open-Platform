@@ -92,10 +92,12 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	public static void main(String[] args){
 		logger.setLevel(Level.FINE); //change level to "INFO" if you want to skip detailed information about processes
 		SimpleMetaEDAConfidenceFeaturesUsageExample test = new SimpleMetaEDAConfidenceFeaturesUsageExample();
+		//meta eda eval
+		test.testEvalDE();
 		//perform tests contained in testDE method for German
-		test.testDE();
+		//test.testDE();
 		//perform tests contained in testEN method for English
-		test.testEN();
+		//test.testEN();
 	}
 	
 	/**
@@ -135,6 +137,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		CommonConfig metaconfig1 = null;
 		try {
 			// read in the configuration from the file
+			logger.info("Reading metaEDA config file1: "+metaconfigFile1);
 			metaconfig1 = new ImplCommonConfig(metaconfigFile1);
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
@@ -147,6 +150,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		CommonConfig metaconfig2 = null;
 		try {
 			// read in the configuration from the file
+			logger.info("Reading metaEDA config file2: "+metaconfigFile2);
 			metaconfig2 = new ImplCommonConfig(metaconfigFile2);
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
@@ -233,17 +237,17 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		SimpleMetaEDAConfidenceFeatures meda2 = new SimpleMetaEDAConfidenceFeatures(edas);
 		//preprocess test and training data
 		try {
+			preprocess(meda1);
 			meda1.initialize(metaconfig1);
 			meda2.initialize(metaconfig2);
 			meda2.startTraining(metaconfig2);
-			preprocess(meda1);
 			logger.info("Initialization done.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-//		logger.info("\nResults for majority vote ");
-//		testMetaEDA(meda1);
+		logger.info("\nResults for majority vote ");
+		testMetaEDA(meda1);
 		logger.info("\nResults for training with confidence as features ");
 		testMetaEDA(meda2);
 

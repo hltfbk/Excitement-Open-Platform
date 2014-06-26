@@ -18,8 +18,8 @@
 
 	<!-- Platform configuration section -->
     <section name="PlatformConfiguration">
-        <!-- The EDA to be used: MaxEntClassificationEDA -->
-        <property name="activatedEDA">eu.excitementproject.eop.core.MetaEDA</property>
+       <!-- The EDA to be used: SimpleMetaEDAConfidenceFeatures -->
+        <property name="activatedEDA">eu.excitementproject.eop.core.metaeda.SimpleMetaEDAConfidenceFeatures</property>
         <!-- The language: DE for German -->
 		<property name="language">DE</property>
 	</section>
@@ -27,7 +27,7 @@
     <!-- MetaEDA uses a weka classifier to train an entailment classifier.
      NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
      "activatedEDA" -->
-	<section name="eu.excitementproject.eop.core.MetaEDA">
+	<section name="eu.excitementproject.eop.core.metaeda.SimpleMetaEDAConfidenceFeatures">
 		<!-- Whether to use the basic EDAs' confidence scores as features for training or not -->
 		<property name="confidenceAsFeature">false</property>
 		<!-- Whether to overwrite existing model files with the same name while training or not -->
