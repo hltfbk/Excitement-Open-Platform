@@ -237,6 +237,101 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			logger.info("training done.");
 		}
 	}
+	
+	/**
+	 * Starts training on the EDABasic instances' confidence features with the given configuration.
+	 * SimpleMetaEDAConfidenceFeatures initialization is included in this method.
+	 * Note that training is only performed in mode 2 (confidence as features).
+	 * In mode 2) a simple Naive Bayes classifier is trained on the EDABasic decisions and confidences.
+	 * Training and testing data directories are defined in the configuration file.
+	 */
+	public void startTraining(String language, boolean confidenceAsFeatures, boolean overwrite, String modelFile, String trainDir, String testDir) throws EDAException, LAPException {
+		this.isTrain = true; //set train flag
+		this.isTest = false;
+		try {
+			this.initialize(language, confidenceAsFeatures, overwrite, modelFile, trainDir, testDir);
+		} catch (ConfigurationException | EDAException | ComponentException e) {
+			e.printStackTrace();
+		}
+		if (!this.confidenceAsFeature){
+			//do nothing: no training in mode 1
+			return;
+		}
+		else {
+			//mode 2
+			logger.info("Start training with confidences from EDABasic instances as features.");
+			
+			ArrayList<String> goldAnswers = new ArrayList<String>(); //stores gold answers
+			
+			//xmi files in training directory
+			File [] xmis = new File(this.trainDir).listFiles();
+			
+			//create attributes: for each EDABasic instance use their name and index as attribute name
+			FastVector attrs = getAttributes();
+			
+			//build up the dataset from training data
+			Instances instances = new Instances("EOP", attrs, xmis.length);  
+			
+			for (File xmi : xmis) {
+			    if (!xmi.getName().endsWith(".xmi")) {
+			      continue;
+			    }
+			    // The annotated pair is added into the CAS.
+			    JCas jcas = PlatformCASProber.probeXmi(xmi, null);
+				Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
+				logger.fine("processing pair "+pair.getPairID());
+				String goldAnswer = pair.getGoldAnswer(); //get gold annotation
+				logger.fine("gold answer: "+goldAnswer);
+				//get features from BasicEDAs' confidence scores
+				ArrayList<Double> scores = getFeatures(jcas);
+								
+				//Store gold answer
+				goldAnswers.add(goldAnswer);
+				
+				//add new instance to dataset
+				Instance instance = new Instance(scores.size());
+				instance.setDataset(instances);
+				for (int j = 0; j < scores.size(); j++){
+					Double score = scores.get(j);
+					instance.setValue((Attribute) attrs.elementAt(j), score);
+				}
+				instances.add(instance);
+			}
+			
+			//last attribute is class prediction (either nonentailment or entailment)
+			FastVector values = new FastVector(); 
+		    values.addElement("NONENTAILMENT");          
+		    values.addElement("ENTAILMENT");
+		    Attribute gold = new Attribute("gold", values);
+		    instances.insertAttributeAt(gold, instances.numAttributes());	
+			instances.setClassIndex(instances.numAttributes()-1); // set class attribute -> last attribute (gold label)
+			
+			//set gold labels for instances
+			logger.info(instances.numInstances()+" training instances loaded with "+instances.numAttributes()+" attributes");
+			for (int k = 0; k<instances.numInstances(); k++){
+				instances.instance(k).setValue(instances.numAttributes()-1, goldAnswers.get(k).toUpperCase());
+			}
+			
+			//train the classifier
+			logger.info("Training the classifier...");
+			
+			//classifier is a simple Naive Bayes classifier with default options and parameters
+			this.classifier = new NaiveBayes();
+			try {
+				//train the classifier on training data set
+				classifier.buildClassifier(instances);
+				//serialize and store classifier in model file
+				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.modelFile));
+				oos.writeObject(this.classifier);
+				oos.flush();
+				oos.close();
+				logger.info("Serialized model and stored as "+this.modelFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			logger.info("training done.");
+		}
+	}
 
 	/**
 	 * Processes a given JCas:

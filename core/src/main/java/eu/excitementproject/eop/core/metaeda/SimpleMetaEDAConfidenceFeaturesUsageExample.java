@@ -2,6 +2,7 @@ package eu.excitementproject.eop.core.metaeda;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -90,12 +91,18 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	 * @param args
 	 */
 	public static void main(String[] args){
-		logger.setLevel(Level.FINE); //change level to "INFO" if you want to skip detailed information about processes
+		logger.setLevel(Level.FINER); //change level to "INFO" if you want to skip detailed information about processes
+		ConsoleHandler handler = new ConsoleHandler();
+        handler.setLevel(Level.FINER); //change level to "INFO" if you want to skip detailed information about processes
+        logger.addHandler(handler);
+		
 		SimpleMetaEDAConfidenceFeaturesUsageExample test = new SimpleMetaEDAConfidenceFeaturesUsageExample();
+		//test eval method
+		test.testEvalDE();
 		//perform tests contained in testDE method for German
-		test.testDE();
+//		test.testDE();
 		//perform tests contained in testEN method for English
-		test.testEN();
+//		test.testEN();
 	}
 	
 	/**
@@ -232,18 +239,18 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);
 		SimpleMetaEDAConfidenceFeatures meda2 = new SimpleMetaEDAConfidenceFeatures(edas);
 		//preprocess test and training data
+		preprocess(meda1);
 		try {
 			meda1.initialize(metaconfig1);
 			meda2.initialize(metaconfig2);
 			meda2.startTraining(metaconfig2);
-			preprocess(meda1);
 			logger.info("Initialization done.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-//		logger.info("\nResults for majority vote ");
-//		testMetaEDA(meda1);
+		logger.info("\nResults for majority vote ");
+		testMetaEDA(meda1);
 		logger.info("\nResults for training with confidence as features ");
 		testMetaEDA(meda2);
 
@@ -999,7 +1006,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				}
 				try {
 					tlap.processRawInputFormat(g, outputDirTrain);
-					mlap.processRawInputFormat(outputDirTrain, outputDirTrain);
+					mlap.processRawInputFormat(g, outputDirTrain);
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
