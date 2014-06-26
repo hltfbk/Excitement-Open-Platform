@@ -78,7 +78,7 @@ public class MetaEDAEval {
 		
 		
 		//initialize TIE instance
-		//TIE	BL, TP, TPPOS, TS, TDMPOS	RTE-3 (DE)	63,50%
+		//1) TIE	BL, TP, TPPOS, TS, TDMPOS	RTE-3 (DE)	63,50%
 
 		EDABasic<ClassificationTEDecision> eda1 = new MaxEntClassificationEDA();
 		EDABasic<? extends TEDecision> meceda = eda1;
@@ -102,11 +102,11 @@ public class MetaEDAEval {
 		edas.add(meceda);
 		
 		//another one
-		//TIE	BL, TP, TPPOS, TS, GNPOS, DS, TDMPOS, DBPOS	RTE-3 (DE)	63,25%
+		//2) TIE	BL, TP, TPPOS, TS, DBPOS, TDMPOS	RTE-3 (DE)	63,00%
 
 		EDABasic<ClassificationTEDecision> eda2 = new MaxEntClassificationEDA();
 		EDABasic<? extends TEDecision> meceda2 = eda2;
-		File mecedaconfigfile2 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
+		File mecedaconfigfile2 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
 		CommonConfig mecedaconfig2 = null;
 		try {
 			// read in the configuration from the file
@@ -126,11 +126,11 @@ public class MetaEDAEval {
 		edas.add(meceda2);
 		
 		//another one
-		// TIE	BL, TP, TPPOS, TS, DBPOS, DS	RTE-3 (DE)	62,88%
+		//3) TIE	BL, TP, TPPOS, TS, GNPOS, DS, TDMPOS, DBPOS	RTE-3 (DE)	63,25%
 
 		EDABasic<ClassificationTEDecision> eda3 = new MaxEntClassificationEDA();
 		EDABasic<? extends TEDecision> meceda3 = eda3;
-		File mecedaconfigfile3 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+DBPos+TP+TPPos+TS_DE.xml");
+		File mecedaconfigfile3 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
 		CommonConfig mecedaconfig3 = null;
 		try {
 			// read in the configuration from the file
@@ -147,7 +147,31 @@ public class MetaEDAEval {
 		} catch (ConfigurationException | EDAException | ComponentException e1) {
 			e1.printStackTrace();
 		}
-		edas.add(meceda3);		
+		edas.add(meceda3);
+		
+		//another one
+		// 4) TIE	BL, TP, TPPOS, TS, DBPOS, DS	RTE-3 (DE)	62,88%
+
+		EDABasic<ClassificationTEDecision> eda4 = new MaxEntClassificationEDA();
+		EDABasic<? extends TEDecision> meceda4 = eda4;
+		File mecedaconfigfile4 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+DBPos+TP+TPPos+TS_DE.xml");
+		CommonConfig mecedaconfig4 = null;
+		try {
+			// read in the configuration from the file
+			mecedaconfig4 = new ImplCommonConfig(mecedaconfigfile4);
+			logger.info("MaxEntClassification EDA config file read");
+		} catch (ConfigurationException e) {
+			e.printStackTrace();
+		}
+		Assume.assumeNotNull(mecedaconfig4);
+	
+		logger.info("initialize MaxEntClassification and load model");
+		try {
+			meceda4.initialize(mecedaconfig4);
+		} catch (ConfigurationException | EDAException | ComponentException e1) {
+			e1.printStackTrace();
+		}
+		edas.add(meceda4);		
 		
 		//construct meta EDAs with parameters, not from config file
 		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);

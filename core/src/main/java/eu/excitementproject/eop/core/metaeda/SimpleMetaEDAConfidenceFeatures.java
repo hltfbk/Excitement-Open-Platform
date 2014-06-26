@@ -14,6 +14,7 @@ import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
 import weka.classifiers.Classifier;
+import weka.classifiers.bayes.BayesianLogisticRegression;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.bayes.BayesianLogisticRegression;
 import weka.core.Attribute;
