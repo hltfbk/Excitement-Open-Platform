@@ -97,12 +97,13 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
         logger.addHandler(handler);
 		
 		SimpleMetaEDAConfidenceFeaturesUsageExample test = new SimpleMetaEDAConfidenceFeaturesUsageExample();
-		//test eval method
+		
+		//meta eda eval
 		test.testEvalDE();
 		//perform tests contained in testDE method for German
-//		test.testDE();
+		//test.testDE();
 		//perform tests contained in testEN method for English
-//		test.testEN();
+		//test.testEN();
 	}
 	
 	/**
@@ -142,6 +143,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		CommonConfig metaconfig1 = null;
 		try {
 			// read in the configuration from the file
+			logger.info("Reading metaEDA config file1: "+metaconfigFile1);
 			metaconfig1 = new ImplCommonConfig(metaconfigFile1);
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
@@ -154,6 +156,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		CommonConfig metaconfig2 = null;
 		try {
 			// read in the configuration from the file
+			logger.info("Reading metaEDA config file2: "+metaconfigFile2);
 			metaconfig2 = new ImplCommonConfig(metaconfigFile2);
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
@@ -241,6 +244,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		//preprocess test and training data
 		preprocess(meda1);
 		try {
+			preprocess(meda1);
 			meda1.initialize(metaconfig1);
 			meda2.initialize(metaconfig2);
 			meda2.startTraining(metaconfig2);
