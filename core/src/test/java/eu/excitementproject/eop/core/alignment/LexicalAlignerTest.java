@@ -10,12 +10,13 @@ import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
+import eu.excitementproject.eop.core.component.alignment.LexicalAligner;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
- * Test class to {@link eu.excitementproject.eop.core.alignment.LexicalAligner}.
+ * Test class to {@link eu.excitementproject.eop.core.component.alignment.LexicalAligner}.
  * @author Vered Shwartz
  *
  */
@@ -30,11 +31,10 @@ public class LexicalAlignerTest {
 		try {
 			
 			// Create and initialize the aligner
-			LexicalAligner aligner = new LexicalAligner();
 			File configFile = new File("src/test/resources/configuration-file/LexicalAligner_EN.xml");
 			ImplCommonConfig commonConfig = new ImplCommonConfig(configFile);
-			aligner.init(commonConfig);
-						
+			LexicalAligner aligner = new LexicalAligner(commonConfig);
+			
 			// Create a sentence pair example and annotate with tokens and lemmas
 			String t1 = "The assassin was convicted and sentenced to death penalty";
 			String h1 = "The killer has been accused of murder and doomed to capital punishment";
