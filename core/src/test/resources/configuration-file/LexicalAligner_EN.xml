@@ -12,25 +12,25 @@
 			<property name="wordnet">eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource</property>
 			
 			<!-- Redis BAP -->
-<!-- 			<property name="distsim-bap">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property> -->
+			<property name="distsim-bap">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
 			
 			<!-- Redis Lin Proximity -->
-<!-- 			<property name = "redis-lin-proximity">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property> -->
+			<property name = "redis-lin-proximity">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
 			
 			<!-- Redis Lin Dependency -->
-<!-- 			<property name = "redis-lin-dependency">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property> -->
+			<property name = "redis-lin-dependency">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
 			
 			<!-- VerbOcean -->
 			<property name = "verb-ocean">eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource</property>
 
 			<!-- Redis Geo -->
-<!-- 			<property name = "redis-geo">eu.excitementproject.eop.core.component.lexicalknowledge.geo.RedisBasedGeoLexicalResource</property> -->
+			<property name = "redis-geo">eu.excitementproject.eop.core.component.lexicalknowledge.geo.RedisBasedGeoLexicalResource</property>
 
 			<!-- Catvar -->
  			<property name = "catvar">eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource</property>
  			
  			<!-- Wiki -->
-<!--  			<property name = "redis-wiki">eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource</property> -->
+ 			<property name = "redis-wiki">eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource</property>
         </section>
         
         <!-- WordNet configuration parameters -->

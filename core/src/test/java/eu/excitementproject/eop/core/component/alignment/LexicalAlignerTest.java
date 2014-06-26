@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
-import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.uimafit.util.JCasUtil;
@@ -61,7 +60,6 @@ public class LexicalAlignerTest {
 		}
 	}
 	
-	@Ignore
 	@Test
 	public void test1() {
 		
@@ -129,7 +127,6 @@ public class LexicalAlignerTest {
 		}
 	}
 	
-	@Ignore
 	@Test
 	public void test2() {
 		
