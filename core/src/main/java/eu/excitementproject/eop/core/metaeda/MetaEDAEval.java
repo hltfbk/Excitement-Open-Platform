@@ -152,10 +152,11 @@ public class MetaEDAEval {
 		//construct meta EDAs with parameters, not from config file
 		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);
 		SimpleMetaEDAConfidenceFeatures meda2 = new SimpleMetaEDAConfidenceFeatures(edas);
-		//preprocess test and training data
-		preprocess(meda1);
+		
+		
 		try {
-			//meda1.initialize("DE", true, true, "./target/MEDAModelTest1_DE.model", "./target/DE/dev/", "./target/DE/test/");
+			meda1.initialize("DE", true, true, "./target/MEDAModelTest1_DE.model", "./target/DE/dev/", "./target/DE/test/");
+			preprocess(meda1);
 			meda2.initialize("DE", false, true, "./target/MEDAModelTest2_DE.model", "./target/DE/dev/", "./target/DE/test/");
 			meda1.startTraining("DE", true, true, "./target/MEDAModelTest1_DE.model", "./target/DE/dev/", "./target/DE/test/");
 			logger.info("Initialization done.");
