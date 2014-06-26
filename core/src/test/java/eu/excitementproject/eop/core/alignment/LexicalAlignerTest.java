@@ -12,7 +12,7 @@ import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.core.component.alignment.LexicalAligner;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
+import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
@@ -24,7 +24,8 @@ public class LexicalAlignerTest {
 
 	static Logger logger = Logger.getLogger(LexicalAligner.class.getName());
 	
-	@Ignore
+	// TODO: Ignore
+//	@Ignore
 	@Test
 	public void test() {
 		
@@ -42,14 +43,14 @@ public class LexicalAlignerTest {
 			String t2 = "Kennedy was killed in Dallas";
 			String h2 = "Kennedy was wounded and died in Texas";
 			
-			logger.info("Tokenize the sentence pairs");
+			logger.info("Tokenize and lemmatize the sentence pairs");
 			
-			// Tokenize
-			OpenNLPTaggerEN lap = null; 
+			// Tokenize and lemmatize
+			TreeTaggerEN lap = null; 
 	        try {
-	        	lap = new OpenNLPTaggerEN();
+	        	lap = new TreeTaggerEN();
 	        } catch (LAPException e) {
-	        	logger.info("Could not tokenize sentence. " + e.getMessage()); 
+	        	logger.info("Could not load the tokenizer and lemmatizer. " + e.getMessage()); 
 	        }
 	        
 			JCas pair1 = lap.generateSingleTHPairCAS(t1, h1);

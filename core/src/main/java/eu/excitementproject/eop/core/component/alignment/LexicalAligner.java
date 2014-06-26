@@ -1,6 +1,5 @@
 package eu.excitementproject.eop.core.component.alignment;
 
-import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,15 +25,11 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanRuleInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRuleInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
-import eu.excitementproject.eop.lap.biu.en.lemmatizer.gate.GateLemmatizer;
-import eu.excitementproject.eop.lap.biu.lemmatizer.LemmatizerException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 
@@ -58,18 +53,13 @@ public class LexicalAligner implements AlignmentComponent {
 	private static final String WORDNET = "wordnet";
 	private static final String USE_LEMMA_PARAM = "useLemma";
 	private static final String VERSION_PARAM = "version";
-	private static final String LEMMATIZER_URL = "gateLemmatizerFileUrl";
 	
 	// Private Members
 	private List<Token> textTokens;
 	private List<Token> hypoTokens;
-	private List<String> textLemmas;
-	private List<String> hypoLemmas;
 	private List<LexicalResource<? extends RuleInfo>> lexicalResources;
 	private int maxPhrase = 0;
 	private HashMap<String, LexicalResourceInformation> lexicalResourcesInformation;
-	private boolean needToLemmatize;
-	private GateLemmatizer lemmatizer = null;
 	private static final Logger logger = Logger.getLogger(LexicalAligner.class);
 	
 	// Public Methods
@@ -83,9 +73,6 @@ public class LexicalAligner implements AlignmentComponent {
 	public LexicalAligner(CommonConfig config) throws AlignmentComponentException {
 		
 		lexicalResourcesInformation = new HashMap<String, LexicalResourceInformation>();
-		
-		// This will be true if any of the resources use lemmas
-		needToLemmatize = false;
 		
 		// Initialize the lexical aligner
 		try {
@@ -116,13 +103,8 @@ public class LexicalAligner implements AlignmentComponent {
 
 			logger.info("Started annotating a text and hypothesis pair using lexical aligner");
 			
-			// Get the tokens of the text and hypothesis
-			getTokensAnnotations(aJCas);
-			
-			// If there are any resources requiring lemmas, lemmatize the sentence
-			if (needToLemmatize) {
-				getLemmasAnnotations(textTokens, hypoTokens);
-			}
+			// Get the tokens and lemmas of the text and hypothesis
+			getTokenAnnotations(aJCas);
 			
 			// Check in all the resources for rules of type textPhrase -> hypoPhrase 
 			for (LexicalResource<? extends RuleInfo> resource : lexicalResources) {
@@ -138,14 +120,14 @@ public class LexicalAligner implements AlignmentComponent {
 					for (int textEnd = textStart; textEnd < Math.min(textTokens.size(), 
 							textStart + maxPhrase); ++textEnd) {
 						
-						textPhrase = getPhrase(textTokens, textLemmas, textStart, textEnd, 
+						textPhrase = getPhrase(textTokens, textStart, textEnd, 
 								resourceInfo.useLemma());
 						
 						for (int hypoStart = 0; hypoStart < hypoTokens.size(); ++hypoStart) {
 							for (int hypoEnd = hypoStart; hypoEnd < Math.min(hypoTokens.size(), 
 									hypoStart + maxPhrase); ++hypoEnd) {
 								
-								hypoPhrase = getPhrase(hypoTokens, hypoLemmas, hypoStart, hypoEnd, 
+								hypoPhrase = getPhrase(hypoTokens, hypoStart, hypoEnd, 
 										resourceInfo.useLemma());
 								
 								// Get the rules textPhrase -> hypoPhrase
@@ -257,101 +239,44 @@ public class LexicalAligner implements AlignmentComponent {
 						new LexicalResourceInformation(
 								resourceParams.getString(VERSION_PARAM), 
 								resourceParams.getBoolean(USE_LEMMA_PARAM)));
-				
-				needToLemmatize = needToLemmatize || 
-						resourceParams.getBoolean(USE_LEMMA_PARAM);
 			}
-		}
-		
-		// If there are any resources requiring lemmas, initialize a lemmatizer
-		if (needToLemmatize) {
-			 
-	        try {
-	        	File gateLemmatizerFile = paramsSection.getFile(LEMMATIZER_URL);
-	        	lemmatizer = new GateLemmatizer(gateLemmatizerFile.toURL());
-	        	lemmatizer.init();
-	        } catch (Exception e) {
-	        	logger.error("Could not load the lemmatizer.", e); 
-	        }
 		}
 	}
 	
 	/**
-	 * Uses the annotations in the CAS and extracts the tokens of the
-	 * text and hypothesis.
-	 * @param aJCas The JCas object of the text and hypothesis, after tokenization.
+	 * Uses the annotations in the CAS and extracts the tokens and 
+	 * their lemmas from the text and hypothesis views
+	 * @param aJCas The JCas object of the text and hypothesis, 
+	 * after tokenization and lemmatization.
 	 * @throws CASException
 	 */
-	private void getTokensAnnotations(JCas aJCas) throws CASException {
+	private void getTokenAnnotations(JCas aJCas) throws CASException {
 		
 		// Get the text and hypothesis views
 		JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 		JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 			
-		// Get the text and hypothesis tokens
+		// Get the tokens
 		textTokens = new ArrayList<Token>(JCasUtil.select(textView, Token.class));
 		hypoTokens = new ArrayList<Token>(JCasUtil.select(hypoView, Token.class));
 	}
 	
 	/**
-	 * Lemmatizes the text and hypothesis
-	 * @param textTokens The text tokens
-	 * @param hypoTokens The hypothesis tokens
-	 */
-	private void getLemmasAnnotations(List<Token> textTokens, List<Token> hypoTokens) {
-		
-		textLemmas = new ArrayList<String>();
-		hypoLemmas = new ArrayList<String>();
-		
-		for (Token token : textTokens) {
-			
-			String lemma = token.getCoveredText();
-			try {
-				lemmatizer.set(lemma, new PennPartOfSpeech(token.getPos().getPosValue()));
-				lemmatizer.process();
-				lemma = lemmatizer.getLemma();
-			} catch (LemmatizerException | UnsupportedPosTagStringException e) {
-				logger.warn("Could not lemmatize: " + token.getCoveredText() + ":" +
-						token.getPos().getPosValue() + " " + e.getMessage());
-			}
-			
-			textLemmas.add(lemma);
-		}
-		
-		for (Token token : hypoTokens) {
-			
-			String lemma = token.getCoveredText();
-			try {
-				lemmatizer.set(lemma, new PennPartOfSpeech(token.getPos().getPosValue()));
-				lemmatizer.process();
-				lemma = lemmatizer.getLemma();
-			} catch (LemmatizerException | UnsupportedPosTagStringException e) {
-				logger.warn("Could not lemmatize: " + token.getCoveredText() + ":" +
-						token.getPos().getPosValue() + " " + e.getMessage());
-			}
-			
-			hypoLemmas.add(lemma);
-		}
-	}
-
-	/**
 	 * Get a phrase from a list of consecutive tokens
 	 * @param tokens The list of tokens
-	 * @param lemmas The list of lemmas
 	 * @param start The start token index
 	 * @param end The end token index
 	 * @param supportLemma The current lexical resources needs right and left lemmas 
 	 * rather than surface words
 	 * @return The phrase containing the tokens from start to end
 	 */
-	private String getPhrase(List<Token> tokens, List<String> lemmas, 
-			int start, int end, boolean supportLemma) {
+	private String getPhrase(List<Token> tokens, int start, int end, boolean supportLemma) {
 
 		StringBuilder phrase = new StringBuilder();
 		
 		for (int tokenIndex = start; tokenIndex < end + 1; ++tokenIndex) {
 			phrase.append(supportLemma ? 
-					lemmas.get(tokenIndex) : 
+					tokens.get(tokenIndex).getLemma().getValue() :
 					tokens.get(tokenIndex).getCoveredText());
 			phrase.append(" ");
 		}
