@@ -14,6 +14,7 @@ import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
 import weka.classifiers.Classifier;
+import weka.classifiers.bayes.BayesianLogisticRegression;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.core.Attribute;
 import weka.core.FastVector;
@@ -221,7 +222,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			logger.info("Training the classifier...");
 			
 			//classifier is a simple Naive Bayes classifier with default options and parameters
-			this.classifier = new NaiveBayes();
+			this.classifier = new BayesianLogisticRegression();
 			try {
 				//train the classifier on training data set
 				classifier.buildClassifier(instances);
