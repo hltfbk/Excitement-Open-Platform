@@ -164,17 +164,22 @@ public class MetaEDAEval {
 			e.printStackTrace();
 		}
 
+		int[] sumcorrect2 = testMetaEDA(meda2);
+		float score2 = (float)sumcorrect2[0]/sumcorrect2[1];
 		logger.info("\nResults for majority vote ");
-		testMetaEDA(meda1);
+		logger.info("sum "+sumcorrect2[0]+" - correct "+sumcorrect2[1]+" ("+score2*100+"%) \n");
+		
+		int[] sumcorrect1= testMetaEDA(meda1);
 		logger.info("\nResults for training with confidence as features ");
-		testMetaEDA(meda2);
-
+		float score1 = (float)sumcorrect1[0]/sumcorrect1[1];
+		logger.info("sum "+sumcorrect1[0]+" - correct "+sumcorrect1[1]+" ("+score1*100+"%) \n");
+		
 		meda1.shutdown();	
 		meda2.shutdown();
 		
 	}
 	
-	private void testMetaEDA(SimpleMetaEDAConfidenceFeatures meda){
+	private int[] testMetaEDA(SimpleMetaEDAConfidenceFeatures meda){
 		int correct = 0;
 		int sum = 0;
 		logger.info("build CASes for input sentence pairs");
@@ -218,6 +223,10 @@ public class MetaEDAEval {
 		}
 		float score = (float)correct/sum;
 		System.out.println("sum "+sum+" - correct "+correct+" ("+score*100+"%) \n");
+		int[] sumcorrect = new int[2];
+		sumcorrect[0] = sum;
+		sumcorrect[1] = correct;
+		return sumcorrect;
 	}
 	
 	private void preprocess(SimpleMetaEDAConfidenceFeatures meda){
