@@ -129,7 +129,7 @@ public class LinkUtils {
 			// output to the give output stream
 			ps.print("Link " + linkNum);
 			// The link information 
-			ps.println(" (" + l.getDirectionString() + ", " + l.getID() + ")");
+			ps.println(" (" + l.getDirectionString() + ", " + l.getID() + ", " + l.getStrength() + ")");
 			linkNum++; 
 			
 			Target tside = l.getTSideTarget(); 

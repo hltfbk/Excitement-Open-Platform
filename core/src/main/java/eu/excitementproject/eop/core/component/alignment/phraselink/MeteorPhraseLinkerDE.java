@@ -1,8 +1,10 @@
 package eu.excitementproject.eop.core.component.alignment.phraselink;
 
+import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 
 /**
@@ -43,7 +45,19 @@ public class MeteorPhraseLinkerDE extends MeteorPhraseResourceAligner {
 	public void annotate(JCas aJCas) throws AlignmentComponentException 
 	{
 		// language check 
-		if (! languageId.equals(aJCas.getDocumentLanguage()))
+		String tViewLangId; // language Ids in two views of the given CAS
+		String hViewLangId; 
+		try 
+		{
+			tViewLangId = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW).getDocumentLanguage();
+			hViewLangId = aJCas.getView(LAP_ImplBase.TEXTVIEW).getDocumentLanguage(); 
+		}
+		catch(CASException e)
+		{
+			throw new AlignmentComponentException("Accessing text/hypothesis view failed: CAS object might not be a correct one."); 
+		}
+		
+		if (! ( languageId.equals(tViewLangId) && languageId.equals(hViewLangId)) )
 		{
 			throw new AlignmentComponentException("Language ID mismatch: this component provides service for " + languageId + ", but received a JCas with " + aJCas.getDocumentLanguage());
 		}
