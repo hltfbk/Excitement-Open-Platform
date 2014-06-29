@@ -2,6 +2,8 @@ package eu.excitementproject.eop.core.metaeda;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +22,7 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.core.ClassificationTEDecision;
+import eu.excitementproject.eop.core.EditDistanceEDA;
 import eu.excitementproject.eop.core.MaxEntClassificationEDA;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
@@ -43,36 +46,32 @@ public class MetaEDAEval {
 		
 		MetaEDAEval test = new MetaEDAEval();
 		//test eval method
-		test.testEvalDE();
+		
+		//for german
+		Set<Integer> edanrs_DE = new HashSet<Integer>();
+		//add indices for edas 
+		edanrs_DE.add(1);
+//		edanrs_DE.add(2);
+//		edanrs_DE.add(3);
+//		edanrs_DE.add(4);
+		edanrs_DE.add(5);
+		
+		//run test
+		test.testEvalDE(edanrs_DE);
 	}
 
 	
-	public void testEvalDE(){
+	public void testEvalDE(Set<Integer> edanrs){
 		//test selected configurations and combinations
 		
-//		//config file for majority vote mode
-//		File metaconfigFile1 = new File("./src/test/resources/configuration-file/MetaEDAEval1_DE.xml");
-//		Assume.assumeTrue(metaconfigFile1.exists());
-//		CommonConfig metaconfig1 = null;
-//		try {
-//			// read in the configuration from the file
-//			metaconfig1 = new ImplCommonConfig(metaconfigFile1);
-//		} catch (ConfigurationException e) {
-//			e.printStackTrace();
-//		}
-//		Assume.assumeNotNull(metaconfig1);
-//		
-//		//config file for confidence as features mode
-//		File metaconfigFile2 = new File("./src/test/resources/configuration-file/MetaEDAEval2_DE.xml");
-//		Assume.assumeTrue(metaconfigFile2.exists());
-//		CommonConfig metaconfig2 = null;
-//		try {
-//			// read in the configuration from the file
-//			metaconfig2 = new ImplCommonConfig(metaconfigFile2);
-//		} catch (ConfigurationException e) {
-//			e.printStackTrace();
-//		}
-//		Assume.assumeNotNull(metaconfig2);
+		//TIE:
+		//1) TIE	BL, TP, TPPOS, TS, TDMPOS	RTE-3 (DE)	63,50%
+		//2) TIE	BL, TP, TPPOS, TS, DBPOS, TDMPOS	RTE-3 (DE)	63,00%
+		//3) TIE	BL, TP, TPPOS, TS, GNPOS, DS, TDMPOS, DBPOS	RTE-3 (DE)	63,25%
+		//4) TIE	BL, TP, TPPOS, TS, DBPOS, DS	RTE-3 (DE)	62,88%
+		
+		//EDITS:
+		//5) EDITS	Basic Wordnet
 		
 		ArrayList<EDABasic<? extends TEDecision>> edas = new ArrayList<EDABasic<? extends TEDecision>>();
 		
@@ -80,98 +79,130 @@ public class MetaEDAEval {
 		//initialize TIE instance
 		//1) TIE	BL, TP, TPPOS, TS, TDMPOS	RTE-3 (DE)	63,50%
 
-		EDABasic<ClassificationTEDecision> eda1 = new MaxEntClassificationEDA();
-		EDABasic<? extends TEDecision> meceda = eda1;
-		File mecedaconfigfile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TransDmPos+TP+TPPos+TS_DE.xml");
-		CommonConfig mecedaconfig = null;
-		try {
-			// read in the configuration from the file
-			mecedaconfig = new ImplCommonConfig(mecedaconfigfile);
-			logger.info("MaxEntClassification EDA config file read");
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
+		if (edanrs.contains(1)){
+			EDABasic<ClassificationTEDecision> eda1 = new MaxEntClassificationEDA();
+			EDABasic<? extends TEDecision> meceda = eda1;
+			File mecedaconfigfile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TransDmPos+TP+TPPos+TS_DE.xml");
+			CommonConfig mecedaconfig = null;
+			try {
+				// read in the configuration from the file
+				mecedaconfig = new ImplCommonConfig(mecedaconfigfile);
+				logger.info("MaxEntClassification EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(mecedaconfig);
+		
+			logger.info("initialize MaxEntClassification and load model");
+			try {
+				meceda.initialize(mecedaconfig);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(meceda);
 		}
-		Assume.assumeNotNull(mecedaconfig);
-	
-		logger.info("initialize MaxEntClassification and load model");
-		try {
-			meceda.initialize(mecedaconfig);
-		} catch (ConfigurationException | EDAException | ComponentException e1) {
-			e1.printStackTrace();
-		}
-		edas.add(meceda);
 		
 		//another one
 		//2) TIE	BL, TP, TPPOS, TS, DBPOS, TDMPOS	RTE-3 (DE)	63,00%
-
-		EDABasic<ClassificationTEDecision> eda2 = new MaxEntClassificationEDA();
-		EDABasic<? extends TEDecision> meceda2 = eda2;
-		File mecedaconfigfile2 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
-		CommonConfig mecedaconfig2 = null;
-		try {
-			// read in the configuration from the file
-			mecedaconfig2 = new ImplCommonConfig(mecedaconfigfile2);
-			logger.info("MaxEntClassification EDA config file read");
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
+		if (edanrs.contains(2)){
+			EDABasic<ClassificationTEDecision> eda2 = new MaxEntClassificationEDA();
+			EDABasic<? extends TEDecision> meceda2 = eda2;
+			File mecedaconfigfile2 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
+			CommonConfig mecedaconfig2 = null;
+			try {
+				// read in the configuration from the file
+				mecedaconfig2 = new ImplCommonConfig(mecedaconfigfile2);
+				logger.info("MaxEntClassification EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(mecedaconfig2);
+		
+			logger.info("initialize MaxEntClassification and load model");
+			try {
+				meceda2.initialize(mecedaconfig2);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(meceda2);
 		}
-		Assume.assumeNotNull(mecedaconfig2);
-	
-		logger.info("initialize MaxEntClassification and load model");
-		try {
-			meceda2.initialize(mecedaconfig2);
-		} catch (ConfigurationException | EDAException | ComponentException e1) {
-			e1.printStackTrace();
-		}
-		edas.add(meceda2);
 		
 		//another one
 		//3) TIE	BL, TP, TPPOS, TS, GNPOS, DS, TDMPOS, DBPOS	RTE-3 (DE)	63,25%
-
-		EDABasic<ClassificationTEDecision> eda3 = new MaxEntClassificationEDA();
-		EDABasic<? extends TEDecision> meceda3 = eda3;
-		File mecedaconfigfile3 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
-		CommonConfig mecedaconfig3 = null;
-		try {
-			// read in the configuration from the file
-			mecedaconfig3 = new ImplCommonConfig(mecedaconfigfile3);
-			logger.info("MaxEntClassification EDA config file read");
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
+		if (edanrs.contains(3)){
+			EDABasic<ClassificationTEDecision> eda3 = new MaxEntClassificationEDA();
+			EDABasic<? extends TEDecision> meceda3 = eda3;
+			File mecedaconfigfile3 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+GNPos+DS+DBPos+TransDmPos+TP+TPPos+TS_DE.xml");
+			CommonConfig mecedaconfig3 = null;
+			try {
+				// read in the configuration from the file
+				mecedaconfig3 = new ImplCommonConfig(mecedaconfigfile3);
+				logger.info("MaxEntClassification EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(mecedaconfig3);
+		
+			logger.info("initialize MaxEntClassification and load model");
+			try {
+				meceda3.initialize(mecedaconfig3);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(meceda3);
 		}
-		Assume.assumeNotNull(mecedaconfig3);
-	
-		logger.info("initialize MaxEntClassification and load model");
-		try {
-			meceda3.initialize(mecedaconfig3);
-		} catch (ConfigurationException | EDAException | ComponentException e1) {
-			e1.printStackTrace();
-		}
-		edas.add(meceda3);
 		
 		//another one
 		// 4) TIE	BL, TP, TPPOS, TS, DBPOS, DS	RTE-3 (DE)	62,88%
-
-		EDABasic<ClassificationTEDecision> eda4 = new MaxEntClassificationEDA();
-		EDABasic<? extends TEDecision> meceda4 = eda4;
-		File mecedaconfigfile4 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+DBPos+TP+TPPos+TS_DE.xml");
-		CommonConfig mecedaconfig4 = null;
-		try {
-			// read in the configuration from the file
-			mecedaconfig4 = new ImplCommonConfig(mecedaconfigfile4);
-			logger.info("MaxEntClassification EDA config file read");
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
+		if (edanrs.contains(4)){
+			EDABasic<ClassificationTEDecision> eda4 = new MaxEntClassificationEDA();
+			EDABasic<? extends TEDecision> meceda4 = eda4;
+			File mecedaconfigfile4 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+DS+DBPos+TP+TPPos+TS_DE.xml");
+			CommonConfig mecedaconfig4 = null;
+			try {
+				// read in the configuration from the file
+				mecedaconfig4 = new ImplCommonConfig(mecedaconfigfile4);
+				logger.info("MaxEntClassification EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(mecedaconfig4);
+		
+			logger.info("initialize MaxEntClassification and load model");
+			try {
+				meceda4.initialize(mecedaconfig4);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(meceda4);		
 		}
-		Assume.assumeNotNull(mecedaconfig4);
-	
-		logger.info("initialize MaxEntClassification and load model");
-		try {
-			meceda4.initialize(mecedaconfig4);
-		} catch (ConfigurationException | EDAException | ComponentException e1) {
-			e1.printStackTrace();
+		
+		//add a EDITS instance
+		//5)	EDITS	Basic WordNet
+		if (edanrs.contains(5)){
+			EDABasic<ClassificationTEDecision> edits1 = new EditDistanceEDA();
+			EDABasic<? extends TEDecision> editseda1 = edits1;
+			File editsedaconfigfile1 = new File("./src/main/resources/configuration-file/EditDistanceEDA_DE.xml");
+			CommonConfig editsedaconfig1 = null;
+			try {
+				// read in the configuration from the file
+				editsedaconfig1 = new ImplCommonConfig(editsedaconfigfile1);
+				logger.info("EditDistance EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(editsedaconfig1);
+		
+			logger.info("initialize EditDistanceEDA and load model");
+			try {
+				editseda1.initialize(editsedaconfig1);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(editseda1);		
 		}
-		edas.add(meceda4);		
+		
+		
 		
 		//construct meta EDAs with parameters, not from config file
 		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);
