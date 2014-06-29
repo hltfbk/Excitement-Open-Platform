@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.component.alignment;
+package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -35,7 +35,10 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
  * Produces alignment links between the text and the hypothesis,
- * based on lexical rules: if T contains a 
+ * based on lexical rules: if T contains a phrase t, H contains
+ * a phrase h and a lexical resource contains one of the rules 
+ * t->h or h->t, then an alignment link between t and h will be 
+ * created.
  * <P>
  * Usage: align a sentence pair by calling {@link #align(String, String)} method.
  * When the {@linkplain Aligner} object is no longer to be used, the
@@ -131,14 +134,18 @@ public class LexicalAligner implements AlignmentComponent {
 										resourceInfo.useLemma());
 								
 								// Get the rules textPhrase -> hypoPhrase
-								for (LexicalRule<? extends RuleInfo> rule : 
-										getRules(resource, textPhrase, hypoPhrase)) {
-									
-									// Add alignment annotations
-									addAlignmentAnnotations(aJCas, textStart, textEnd,
-											hypoStart, hypoEnd, rule,
-											resourceInfo.getVersion());
-								}
+								List<LexicalRule<? extends RuleInfo>> ruleFromLeft = 
+										getRules(resource, textPhrase, hypoPhrase);
+								
+								// Get the rules hypoPhrase -> textPhrase
+								List<LexicalRule<? extends RuleInfo>> ruleFromRight = 
+										getRules(resource, hypoPhrase, textPhrase);
+								
+								// Create the alignment links for the rules
+								createAlignmentLinks(
+										aJCas, textStart, textEnd,
+										hypoStart, hypoEnd, ruleFromLeft, ruleFromRight,
+										resourceInfo.getVersion());
 							}
 						}
 					}
@@ -290,16 +297,16 @@ public class LexicalAligner implements AlignmentComponent {
 	}
 
 	/**
-	 * Get rules of type textPhrase -> hypoPhrase, using the lexical resource given
+	 * Get rules of type leftSide -> rightSide, using the given lexical resource
 	 * @param resource The lexical resource to use
-	 * @param textPhrase The text phrase, will be looked for as lhs of a rule
-	 * @param hypoPhrase The hypothesis phrase, will be looked for as rhs of a rule
-	 * @return The list of rules textPhrase -> hypoPhrase
+	 * @param leftSide The phrase that will be looked for as lhs of a rule
+	 * @param rightSide The phrase that will be looked for as rhs of a rule
+	 * @return The list of rules leftSide -> rightSide
 	 * @throws LexicalResourceException 
 	 */
 	private List<LexicalRule<? extends RuleInfo>> 
 						getRules(LexicalResource<? extends RuleInfo> resource,
-								String textPhrase, String hypoPhrase) 
+								String leftSide, String rightSide) 
 								throws LexicalResourceException {
 
 		List<LexicalRule<? extends RuleInfo>> rules = 
@@ -314,28 +321,67 @@ public class LexicalAligner implements AlignmentComponent {
 			if (resource.getClass().getName().toLowerCase().contains(WORDNET)) {
 				
 				for (LexicalRule<? extends RuleInfo> rule : 
-						resource.getRules(textPhrase, null, hypoPhrase, null)) {
+						resource.getRules(leftSide, null, rightSide, null)) {
 					
 					WordnetRuleInfo ruleInfo = (WordnetRuleInfo)rule.getInfo();
 					
-					if ((ruleInfo.getLeftSense().getWords().contains(textPhrase)) &&
-						(ruleInfo.getRightSense().getWords().contains(hypoPhrase))) {
+					if ((ruleInfo.getLeftSense().getWords().contains(leftSide)) &&
+						(ruleInfo.getRightSense().getWords().contains(rightSide))) {
 					
-						rules.add(rule);
+						addRuleToList(rules, rule);
 					}
 				}
 				
 			} else {
-				rules.addAll(resource.getRules(textPhrase, null, hypoPhrase, null));
+				
+				// Get rules from t to h
+				for (LexicalRule<? extends RuleInfo> rule : 
+					resource.getRules(leftSide, null, rightSide, null)) {
+					
+					addRuleToList(rules, rule);
+				}
 			}
 				
 		} catch (Exception e) {
 			logger.warn("Could not add rules from " + 
 						resource.getClass().getSimpleName() + " for " +
-						textPhrase + "->" + hypoPhrase, e);
+						leftSide + "->" + rightSide, e);
 		}
 		
 		return rules;
+	}
+
+	/**
+	 * Adds a rule to the list of rules, only if there exists no other rule with the
+	 * same rule info and a lower confidence
+	 * @param rules The list of rules
+	 * @param rule The new rule to add
+	 */
+	private void addRuleToList(List<LexicalRule<? extends RuleInfo>> rules,
+			LexicalRule<? extends RuleInfo> rule) {
+		
+		boolean addRule = true;
+		
+		for (int otherIndex = 0; otherIndex < rules.size(); ++otherIndex) {
+			
+			LexicalRule<? extends RuleInfo> otherRule = rules.get(otherIndex);
+			
+			if (getLinkInfo(rule).equals(getLinkInfo(otherRule))) {
+			
+				addRule = false;
+				
+				// Replace the rule with the same info and a lower confidence
+				if (rule.getConfidence() > otherRule.getConfidence()) {
+					rules.set(otherIndex, rule);
+				}
+				
+				break;
+			}
+		}
+		
+		if (addRule) {
+			rules.add(rule);
+		}
 	}
 
 	/**
@@ -347,15 +393,20 @@ public class LexicalAligner implements AlignmentComponent {
 	 * @param textEnd The index of the last token in T in this alignment link 
 	 * @param hypoStart The index of the first token in H in this alignment link 
 	 * @param hypoEnd The index of the last token in H in this alignment link 
-	 * @param rule The rule t->h
-	 * @param lexicalResourceVersion The version of the lexical resource that 
-	 * this rule came from
+	 * @param resourceName The lexical resource that this rule came from
+	 * @param lexicalResourceVersion The version of the lexical resource
+	 * @param confidence The confidence of the rule
+	 * @param linkDirection The direction of the link (t to h, h to t or bidirectional). 
+	 * @param linkInfo The relation of the rule (Wordnet synonym, Wikipedia redirect etc).
 	 * @throws CASException 
 	 */
 	private void addAlignmentAnnotations(JCas aJCas, 	int textStart, int textEnd, 
 														int hypoStart, int hypoEnd, 
-														LexicalRule<? extends RuleInfo> rule,
-														String lexicalResourceVersion) 
+														String resourceName,
+														String lexicalResourceVersion,
+														double confidence,
+														Direction linkDirection,
+														String linkInfo) 
 																throws CASException {
 		
 		// Get the text and hypothesis views
@@ -399,18 +450,17 @@ public class LexicalAligner implements AlignmentComponent {
 		Link link = new Link(hypoView); 
 		link.setTSideTarget(textTarget); 
 		link.setHSideTarget(hypoTarget); 
-		
-		// TODO: Get the direction according to the resource
-		// and maybe set it as Bi-directional if h->t by the resource 
-		link.setDirection(Direction.TtoH); 
+
+		// Set the link direction
+		link.setDirection(linkDirection); 
 		
 		// Set strength according to the rule data
-		link.setStrength(rule.getConfidence()); 
+		link.setStrength(confidence); 
 		
 		// Add the link information
-		link.setAlignerID(rule.getResourceName());  
+		link.setAlignerID(resourceName);  
 		link.setAlignerVersion(lexicalResourceVersion); 
-		link.setLinkInfo(getLinkInfo(rule));
+		link.setLinkInfo(linkInfo);
 		
 		// Mark begin and end according to the hypothesis target
 		link.setBegin(hypoTarget.getBegin()); 
@@ -493,5 +543,67 @@ public class LexicalAligner implements AlignmentComponent {
 		}
 	
 		return lexicalResource;
+	}
+	
+	/**
+	 * Receives a list of rules of type t->h and h->t and creates the 
+	 * alignment links for them
+	 * @param aJCas The JCas object
+	 * @param textStart The index of the first token in T in this alignment link 
+	 * @param textEnd The index of the last token in T in this alignment link 
+	 * @param hypoStart The index of the first token in H in this alignment link 
+	 * @param hypoEnd The index of the last token in H in this alignment link 
+	 * @param rulesFromLeft The list of rules t->h
+	 * @param rulesFromRight The list of rules h->t
+	 * @param lexicalResourceVersion The lexical resource version
+	 * @throws CASException 
+	 */
+	private void createAlignmentLinks(JCas aJCas, int textStart, int textEnd,
+			int hypoStart, int hypoEnd,
+			List<LexicalRule<? extends RuleInfo>> rulesFromLeft,
+			List<LexicalRule<? extends RuleInfo>> rulesFromRight, 
+			String lexicalResourceVersion) throws CASException {
+		
+		// Find rules that match by rule info and make them bidirectional
+		for (int leftRuleIndex = rulesFromLeft.size() - 1; 
+				leftRuleIndex >= 0; --leftRuleIndex) {
+			for (int rightRuleIndex = rulesFromRight.size() - 1; 
+					rightRuleIndex >= 0; --rightRuleIndex) {
+				
+				if (getLinkInfo(rulesFromLeft.get(leftRuleIndex)).
+						equals(getLinkInfo(rulesFromRight.get(rightRuleIndex)))) {
+					
+					// Remove these rules from the list
+					LexicalRule<? extends RuleInfo> rightRule = 
+							rulesFromRight.remove(rightRuleIndex);
+					LexicalRule<? extends RuleInfo> leftRule = 
+							rulesFromLeft.remove(leftRuleIndex);
+					
+					// Add the annotation
+					addAlignmentAnnotations(aJCas, textStart, textEnd, hypoStart, hypoEnd, 
+							rightRule.getResourceName(), lexicalResourceVersion, 
+							Math.max(rightRule.getConfidence(), leftRule.getConfidence()),
+							Direction.Bidirection, getLinkInfo(rightRule));
+					
+					break;
+				}
+			}
+		}
+		
+		// Add rules from t to h
+		for (LexicalRule<? extends RuleInfo> rule : rulesFromLeft) {
+			
+			addAlignmentAnnotations(aJCas, textStart, textEnd, hypoStart, hypoEnd, 
+					rule.getResourceName(), lexicalResourceVersion, 
+					rule.getConfidence(), Direction.TtoH, getLinkInfo(rule));
+		}
+		
+		// Add rules from h to t
+		for (LexicalRule<? extends RuleInfo> rule : rulesFromRight) {
+			
+			addAlignmentAnnotations(aJCas, textStart, textEnd, hypoStart, hypoEnd, 
+					rule.getResourceName(), lexicalResourceVersion, 
+					rule.getConfidence(), Direction.HtoT, getLinkInfo(rule));
+		}
 	}
 }

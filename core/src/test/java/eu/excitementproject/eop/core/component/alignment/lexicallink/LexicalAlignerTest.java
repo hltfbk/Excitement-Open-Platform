@@ -1,22 +1,24 @@
-package eu.excitementproject.eop.core.component.alignment;
+package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
 import java.io.File;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+
 import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
-import eu.excitementproject.eop.core.component.alignment.LexicalAligner;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
- * Test class to {@link eu.excitementproject.eop.core.component.alignment.LexicalAligner}.
+ * Test class to {@link eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner}.
  * @author Vered Shwartz
  *
  */
@@ -86,12 +88,12 @@ public class LexicalAlignerTest {
 			for (Link link : JCasUtil.select(hypoView, Link.class)) {
 				
 				logger.info(String.format("Text phrase: %s, " +
-									"hypothesis phrase: %s, " + 
-									"id: %s, confidence: %f", 
-									link.getTSideTarget().getCoveredText(),
-									link.getHSideTarget().getCoveredText(),
-									link.getID(),
-									link.getStrength()));
+						"hypothesis phrase: %s, " + 
+						"id: %s, confidence: %f, direction: %s", 
+						link.getTSideTarget().getCoveredText(),
+						link.getHSideTarget().getCoveredText(),
+						link.getID(), link.getStrength(),
+						link.getDirection().toString()));
 				
 				assassinKiller = assassinKiller || ((link.getTSideTarget().getBegin() == 4) &&
 													(link.getTSideTarget().getEnd() == 12) && 
@@ -154,11 +156,11 @@ public class LexicalAlignerTest {
 				
 				logger.info(String.format("Text phrase: %s, " +
 									"hypothesis phrase: %s, " + 
-									"id: %s, confidence: %f", 
+									"id: %s, confidence: %f, direction: %s", 
 									link.getTSideTarget().getCoveredText(),
 									link.getHSideTarget().getCoveredText(),
-									link.getID(),
-									link.getStrength()));
+									link.getID(), link.getStrength(),
+									link.getDirection().toString()));
 				
 				killedWounded = killedWounded || ((link.getTSideTarget().getBegin() == 12) &&
 						(link.getTSideTarget().getEnd() == 18) && 
