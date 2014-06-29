@@ -94,6 +94,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	public SimpleMetaEDAConfidenceFeatures(ArrayList<EDABasic<? extends TEDecision>> edas){
 		this.edas = edas;
 		logger.info("new SimpleMetaEDAConfidenceFeatures with "+edas.size()+" internal EDABasics");
+		System.out.println("new SimpleMetaEDAConfidenceFeatures with "+edas.size()+" internal EDABasics");
 	}
 
 	/**
@@ -106,6 +107,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	public void initialize(CommonConfig config) throws ConfigurationException,
 			EDAException, ComponentException {
 		logger.info("initialize SimpleMetaEDAConfidenceFeatures with configuration file");
+		System.out.println("initialize SimpleMetaEDAConfidenceFeatures with configuration file");
 		initializeEDA(config);
 		initializeData(config);
 		if (!this.confidenceAsFeature){
