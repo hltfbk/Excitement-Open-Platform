@@ -48,7 +48,7 @@ public class MaxEntClassificationEDATest {
 
 		/** German */
 		/* Baseline: BagOfWords, BagOfLemmas */
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_DE.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base_DE.xml");
 //		0.61125
 		
 		/* GermaNet: GermaNet without POS */
@@ -248,7 +248,7 @@ public class MaxEntClassificationEDATest {
 		/* Baseline + TPPos + TS */
 		
 		/* Baseline + TP + TPPos + TS */
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml");
 //		0.64375
 		
 		/* Baseline + WN + VO + TP + TPPos + TS */
@@ -276,14 +276,14 @@ public class MaxEntClassificationEDATest {
 		
 		
 		// Rui: testLAP_EN(), testTraining_EN(), and testTesting_MultiTH_EN() also take long time
-		/* English RTE tests
-		testLAP_EN();
+//		English RTE tests
+//		testLAP_EN();
 		testParser_EN("poly");
 		testTraining(config);
-		testTesting_SingleTH(config);
-		testTesting_MultiTH(config);
+//		testTesting_SingleTH(config);
+//		testTesting_MultiTH(config);
 		testTesting_MultiTH_AND_Output(config);
-		 */
+//		
 	}
 	
 	public void testLAP_DE() {
