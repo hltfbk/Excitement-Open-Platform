@@ -570,8 +570,8 @@ public class LexicalAligner implements AlignmentComponent {
 			for (int rightRuleIndex = rulesFromRight.size() - 1; 
 					rightRuleIndex >= 0; --rightRuleIndex) {
 				
-				if (getLinkInfo(rulesFromLeft.get(leftRuleIndex)).
-						equals(getLinkInfo(rulesFromRight.get(rightRuleIndex)))) {
+				if (areOppositeLinks(rulesFromLeft.get(leftRuleIndex), 
+									rulesFromRight.get(rightRuleIndex))) {
 					
 					// Remove these rules from the list
 					LexicalRule<? extends RuleInfo> rightRule = 
@@ -605,5 +605,22 @@ public class LexicalAligner implements AlignmentComponent {
 					rule.getResourceName(), lexicalResourceVersion, 
 					rule.getConfidence(), Direction.HtoT, getLinkInfo(rule));
 		}
+	}
+
+	/**
+	 * Returns true if these two rules are opposite, meaning that:
+	 * the first rule is w1->w2, with confidence c and relation r
+	 * the second rule is w2->w1, with confidence c and relation r
+	 * @param firstRule The first rule
+	 * @param secondRule The second rule
+	 * @return Whether the rules are opposite
+	 */
+	private boolean areOppositeLinks(
+			LexicalRule<? extends RuleInfo> firstRule, 
+			LexicalRule<? extends RuleInfo> secondRule) {
+		
+		return ((getLinkInfo(firstRule).equals(getLinkInfo(secondRule))) &&
+				((Math.abs(firstRule.getConfidence() - 
+						secondRule.getConfidence()) <= 0.000001)));
 	}
 }
