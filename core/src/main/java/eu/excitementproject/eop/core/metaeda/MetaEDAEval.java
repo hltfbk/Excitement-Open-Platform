@@ -51,10 +51,11 @@ public class MetaEDAEval {
 		Set<Integer> edanrs_DE = new HashSet<Integer>();
 		//add indices for edas 
 		edanrs_DE.add(1);
-		edanrs_DE.add(2);
+//		edanrs_DE.add(2);
 //		edanrs_DE.add(3);
 //		edanrs_DE.add(4);
 		edanrs_DE.add(5);
+		edanrs_DE.add(6);
 		
 		//run test
 		test.testEvalDE(edanrs_DE);
@@ -72,7 +73,7 @@ public class MetaEDAEval {
 		
 		//EDITS:
 		//5) EDITS	Basic Wordnet
-		
+		//6) EDITS	Basic WordNet (like 5)
 		ArrayList<EDABasic<? extends TEDecision>> edas = new ArrayList<EDABasic<? extends TEDecision>>();
 		
 		
@@ -203,7 +204,30 @@ public class MetaEDAEval {
 		}
 		
 		
-		
+		//add a EDITS instance
+                //6)    EDITS   Basic WordNet
+                if (edanrs.contains(6)){
+                        EDABasic<ClassificationTEDecision> edits2 = new EditDistanceEDA();
+                        EDABasic<? extends TEDecision> editseda2 = edits2;
+                        File editsedaconfigfile2 = new File("./src/main/resources/configuration-file/EditDistanceEDA_DE.xml");
+                        CommonConfig editsedaconfig2 = null;
+                        try {
+                                // read in the configuration from the file
+                                editsedaconfig2 = new ImplCommonConfig(editsedaconfigfile2);
+                                logger.info("EditDistance EDA config file read");
+                        } catch (ConfigurationException e) {
+                                e.printStackTrace();
+                        }       
+                        Assume.assumeNotNull(editsedaconfig2);
+                        
+                        logger.info("initialize EditDistanceEDA and load model");
+                        try {
+                                editseda2.initialize(editsedaconfig2);
+                        } catch (ConfigurationException | EDAException | ComponentException e1) {
+                                e1.printStackTrace();
+                        }       
+                        edas.add(editseda2);
+                }   
 		//construct meta EDAs with parameters, not from config file
 		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);
 		SimpleMetaEDAConfidenceFeatures meda2 = new SimpleMetaEDAConfidenceFeatures(edas);
