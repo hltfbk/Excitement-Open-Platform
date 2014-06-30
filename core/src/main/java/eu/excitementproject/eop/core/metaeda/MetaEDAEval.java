@@ -48,17 +48,28 @@ public class MetaEDAEval {
 		//test eval method
 		
 		//for german
-		Set<Integer> edanrs_DE = new HashSet<Integer>();
+//		Set<Integer> edanrs_DE = new HashSet<Integer>();
 		//add indices for edas 
-		edanrs_DE.add(1);
+//		edanrs_DE.add(1);
 //		edanrs_DE.add(2);
 //		edanrs_DE.add(3);
 //		edanrs_DE.add(4);
-		edanrs_DE.add(5);
-		edanrs_DE.add(6);
+//		edanrs_DE.add(5);
+//		edanrs_DE.add(6);
+		
+		//for english
+		Set<Integer> edanrs_EN = new HashSet<Integer>();
+		//add indices for edas 
+		edanrs_EN.add(1);
+//		edanrs_EN.add(2);
+//		edanrs_EN.add(3);
+//		edanrs_EN.add(4);
+		edanrs_EN.add(5);
+
 		
 		//run test
-		test.testEvalDE(edanrs_DE);
+//		test.testEvalDE(edanrs_DE);
+		test.testEvalEN(edanrs_EN);
 	}
 
 	
@@ -306,6 +317,173 @@ public class MetaEDAEval {
 		sumcorrect[0] = sum;
 		sumcorrect[1] = correct;
 		return sumcorrect;
+	}
+	
+	public void testEvalEN(Set<Integer> edanrs){
+		//test selected configurations and combinations
+//		1) TIE	Baseline + TP + TPPos + TS	0.6475 
+//		2) TIE Baseline + WN + VO + TP + TPPos + TS	0.64125
+//		3) TIE Baseline + WN + VO		0.625	
+//		4) EDITS	Treetagger - WN (synonyns+hypernyms)	RTE-3 (EN)	64,38%
+//		5) EDITS	Treetagger - WN (synonyms+hypernyms), Wikipedia	RTE-3 (EN)	63,75%
+
+		
+		ArrayList<EDABasic<? extends TEDecision>> edas = new ArrayList<EDABasic<? extends TEDecision>>();
+		
+		
+		//initialize TIE instance
+//		1) TIE	Baseline + TP + TPPos + TS	0.6475 
+
+		if (edanrs.contains(1)){
+			EDABasic<ClassificationTEDecision> eda1 = new MaxEntClassificationEDA();
+			EDABasic<? extends TEDecision> meceda = eda1;
+			File mecedaconfigfile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml");
+			CommonConfig mecedaconfig = null;
+			try {
+				// read in the configuration from the file
+				mecedaconfig = new ImplCommonConfig(mecedaconfigfile);
+				logger.info("MaxEntClassification EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(mecedaconfig);
+		
+			logger.info("initialize MaxEntClassification and load model");
+			try {
+				meceda.initialize(mecedaconfig);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(meceda);
+		}
+		
+		//another one
+//		2) TIE Baseline + WN + VO + TP + TPPos + TS	0.64125
+		if (edanrs.contains(2)){
+			EDABasic<ClassificationTEDecision> eda2 = new MaxEntClassificationEDA();
+			EDABasic<? extends TEDecision> meceda2 = eda2;
+			File mecedaconfigfile2 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml");
+			CommonConfig mecedaconfig2 = null;
+			try {
+				// read in the configuration from the file
+				mecedaconfig2 = new ImplCommonConfig(mecedaconfigfile2);
+				logger.info("MaxEntClassification EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(mecedaconfig2);
+		
+			logger.info("initialize MaxEntClassification and load model");
+			try {
+				meceda2.initialize(mecedaconfig2);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(meceda2);
+		}
+		
+		//another one
+		//3) TIE Baseline + WN + VO		0.625	
+		if (edanrs.contains(3)){
+			EDABasic<ClassificationTEDecision> eda3 = new MaxEntClassificationEDA();
+			EDABasic<? extends TEDecision> meceda3 = eda3;
+			File mecedaconfigfile3 = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO_EN.xml");
+			CommonConfig mecedaconfig3 = null;
+			try {
+				// read in the configuration from the file
+				mecedaconfig3 = new ImplCommonConfig(mecedaconfigfile3);
+				logger.info("MaxEntClassification EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(mecedaconfig3);
+		
+			logger.info("initialize MaxEntClassification and load model");
+			try {
+				meceda3.initialize(mecedaconfig3);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(meceda3);
+		}
+		
+		//add a EDITS instance
+		//4)	EDITS	Treetagger - WN (synonyns+hypernyms)	RTE-3 (EN)	64,38%
+		if (edanrs.contains(4)){
+			EDABasic<ClassificationTEDecision> edits1 = new EditDistanceEDA();
+			EDABasic<? extends TEDecision> editseda1 = edits1;
+			File editsedaconfigfile1 = new File("./src/main/resources/configuration-file/EditDistanceEDA_WN_DE.xml");
+			CommonConfig editsedaconfig1 = null;
+			try {
+				// read in the configuration from the file
+				editsedaconfig1 = new ImplCommonConfig(editsedaconfigfile1);
+				logger.info("EditDistance EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(editsedaconfig1);
+		
+			logger.info("initialize EditDistanceEDA and load model");
+			try {
+				editseda1.initialize(editsedaconfig1);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(editseda1);		
+		}
+		
+		//add a EDITS instance
+		//5) Treetagger - WN (synonyms+hypernyms), Wikipedia	RTE-3 (EN)	63,75%
+		if (edanrs.contains(5)){
+			EDABasic<ClassificationTEDecision> edits2 = new EditDistanceEDA();
+			EDABasic<? extends TEDecision> editseda2 = edits2;
+			File editsedaconfigfile2 = new File("./src/main/resources/configuration-file/EditDistanceEDA_EN.xml");
+			CommonConfig editsedaconfig2 = null;
+			try {
+				// read in the configuration from the file
+				editsedaconfig2 = new ImplCommonConfig(editsedaconfigfile2);
+				logger.info("EditDistance EDA config file read");
+			} catch (ConfigurationException e) {
+				e.printStackTrace();
+			}
+			Assume.assumeNotNull(editsedaconfig2);
+		
+			logger.info("initialize EditDistanceEDA and load model");
+			try {
+				editseda2.initialize(editsedaconfig2);
+			} catch (ConfigurationException | EDAException | ComponentException e1) {
+				e1.printStackTrace();
+			}
+			edas.add(editseda2);		
+		}
+		
+		//construct meta EDAs with parameters, not from config file
+		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);
+		SimpleMetaEDAConfidenceFeatures meda2 = new SimpleMetaEDAConfidenceFeatures(edas);
+		//preprocess test and training data
+		preprocess(meda1);
+		try {
+			//meda1.initialize("EN", true, true, "./target/MEDAModelTest1_EN.model", "./target/EN/dev/", "./target/EN/test/");
+			meda2.initialize("EN", false, true, "./target/MEDAModelTest2_EN.model", "./target/EN/dev/", "./target/EN/test/");
+			meda1.startTraining("EN", true, true, "./target/MEDAModelTest1_EN.model", "./target/EN/dev/", "./target/EN/test/");
+			logger.info("Initialization done.");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		int[] sumcorrect2 = testMetaEDA(meda2);
+		float score2 = (float)sumcorrect2[1]/sumcorrect2[0];
+		logger.info("\nResults for majority vote ");
+		logger.info("sum "+sumcorrect2[0]+" - correct "+sumcorrect2[1]+" ("+score2*100+"%) \n");
+		
+		int[] sumcorrect1= testMetaEDA(meda1);
+		logger.info("\nResults for training with confidence as features ");
+		float score1 = (float)sumcorrect1[1]/sumcorrect1[0];
+		logger.info("sum "+sumcorrect1[0]+" - correct "+sumcorrect1[1]+" ("+score1*100+"%) \n");
+		
+		meda1.shutdown();	
+		meda2.shutdown();
+		
 	}
 	
 	private void preprocess(SimpleMetaEDAConfidenceFeatures meda){
