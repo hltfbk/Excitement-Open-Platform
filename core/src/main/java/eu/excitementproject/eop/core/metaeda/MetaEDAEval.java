@@ -51,7 +51,7 @@ public class MetaEDAEval {
 		Set<Integer> edanrs_DE = new HashSet<Integer>();
 		//add indices for edas 
 		edanrs_DE.add(1);
-//		edanrs_DE.add(2);
+		edanrs_DE.add(2);
 //		edanrs_DE.add(3);
 //		edanrs_DE.add(4);
 		edanrs_DE.add(5);
