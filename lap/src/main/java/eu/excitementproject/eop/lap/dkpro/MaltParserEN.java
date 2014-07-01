@@ -9,6 +9,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
 import eu.excitementproject.eop.lap.LAPException;
@@ -49,17 +50,35 @@ public class MaltParserEN extends LAP_ImplBaseAE {
 	public MaltParserEN(String modelVariant) throws LAPException {
 		
 		// a) prepare AEs 
-		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[3];
+//		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[3];
+//		
+//		try {
+//			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
+//			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
+//			descArr[2] = createPrimitiveDescription(MaltParser.class,
+//					MaltParser.PARAM_VARIANT, modelVariant,
+//					MaltParser.PARAM_PRINT_TAGSET, true);
+//		} catch (ResourceInitializationException e) {
+//			throw new LAPException("Unable to create AE descriptions", e);
+//		}
+
+		// Gil: Temporary code until we can use PosMapper (of later DKPros (> 1.5))
+		// TreeTagger first adds POS and Lemma, then POS overridden by OpenNLP. 
+		// Note that, TreeTaggers POS annotations are still there in AnnotationIndex, 
+		// but lost connection from Token annotations. Thus, parser only see OpenNLP POS. 
+		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[4];
 		
 		try {
 			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
 			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
-			descArr[2] = createPrimitiveDescription(MaltParser.class,
+			descArr[2] = createPrimitiveDescription(OpenNlpPosTagger.class);
+			descArr[3] = createPrimitiveDescription(MaltParser.class,
 					MaltParser.PARAM_VARIANT, modelVariant,
 					MaltParser.PARAM_PRINT_TAGSET, true);
 		} catch (ResourceInitializationException e) {
 			throw new LAPException("Unable to create AE descriptions", e);
 		}
+
 		
 		// b) call initializeViews() 
 		initializeViews(descArr); 
