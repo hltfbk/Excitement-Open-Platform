@@ -54,7 +54,7 @@ public class GermanPartOfSpeech extends PartOfSpeech {
 	 */
 	
 	// Mapping STTS -> DKPro POS can be found at 
-	// http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/src/main/resources/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/de-stts-tagger.map
+	// http://code.google.com/p/dkpro-core-asl/source/browse/de.tudarmstadt.ukp.dkpro.core-asl/trunk/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/src/main/resources/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/de-stts-pos.map
 	private String mapOntoStts(String posTagString) {
 
 		if (posTagString.startsWith("ADJ")) {
