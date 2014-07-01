@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.core.alignment;
+package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
 /**
  * Contains general information about a lexical resource,

@@ -182,7 +182,7 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 				LemmaPosBasedElement left = (LemmaPosBasedElement)similarityRule.getLeftElement();
 				LemmaPosBasedElement right = (LemmaPosBasedElement)similarityRule.getRightElement();
 				ret.add(new LexicalRule<RuleInfo>(left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()), right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()), similarityRule.getSimilarityMeasure(), null, similarityStorage.getComponentName(), 
-						new RuleInfo() {}));
+						DistSimRuleInfo.getInstance()));
 			}
 			return ret;
 		} catch (Exception e) {
