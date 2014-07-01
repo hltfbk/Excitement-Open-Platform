@@ -20,8 +20,10 @@ public class MeteorPhraseLinkerENTest {
 	public void test() {
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.DEBUG);  // to hide openNLP logs 
+		Logger.getRootLogger().setLevel(Level.DEBUG);   
 		Logger testlogger = Logger.getLogger(this.getClass().toString()); 
+		
+		testlogger.info("This test class may take upto 30 seconds ... "); 
 
 		// prepare a JCas 
 		JCas aJCas = null; 
@@ -35,15 +37,12 @@ public class MeteorPhraseLinkerENTest {
 		{
 			fail(e.getMessage()); 
 		}
-		
-		Logger.getRootLogger().setLevel(Level.DEBUG);  // main log setting: set as DEBUG to see what's going & debug. 
-		testlogger.info("This test class may take upto 30 seconds ... "); 
 
 		// main class test. 
 		// load test 
 		AlignmentComponent phraseLinker = null; 
 		try {
-			phraseLinker = new MeteorPhraseLinkerEN(); 
+			phraseLinker = new MeteorPhraseLinkerDE(); 
 		}
 		catch (Exception e)
 		{

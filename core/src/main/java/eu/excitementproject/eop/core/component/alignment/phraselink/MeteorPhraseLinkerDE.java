@@ -57,9 +57,9 @@ public class MeteorPhraseLinkerDE extends MeteorPhraseResourceAligner {
 			throw new AlignmentComponentException("Accessing text/hypothesis view failed: CAS object might not be a correct one."); 
 		}
 		
-		if (! ( languageId.equals(tViewLangId) && languageId.equals(hViewLangId)) )
+		if (! ( languageId.equalsIgnoreCase(tViewLangId) && languageId.equalsIgnoreCase(hViewLangId)) )
 		{
-			throw new AlignmentComponentException("Language ID mismatch: this component provides service for " + languageId + ", but received a JCas with " + aJCas.getDocumentLanguage());
+			throw new AlignmentComponentException("Language ID mismatch: this component provides service for " + languageId + ", but received a JCas with " +  tViewLangId + "/" + hViewLangId);
 		}
 		
 		// call super, which does the actual work. 
