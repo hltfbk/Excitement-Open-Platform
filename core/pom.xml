@@ -121,7 +121,12 @@
 			<artifactId>meteor-paraphrase-de</artifactId>
 			<version>1.5</version>
 		</dependency>
-
+		<dependency>
+    		<groupId>eu.fbk</groupId>
+    		<artifactId>vivis-paraphrase-it</artifactId>
+    		<version>1.0</version>	
+		</dependency>
+		
 		<!-- German Redis-based lexical Resources. 
 		     Normally commented out because of its sizes (1 Gbytes each) 	
 		     Un-comment them when you actually need them.-->

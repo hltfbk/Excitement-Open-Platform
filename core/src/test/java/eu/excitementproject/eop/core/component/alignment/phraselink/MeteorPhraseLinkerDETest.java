@@ -50,7 +50,7 @@ public class MeteorPhraseLinkerDETest {
 		}
 
 		try {
-			// RTE3 test pair 17 (some links) 
+			// RTE3 test pair 17
 			aJCas = tokenizer.generateSingleTHPairCAS(
 					"David Golinkin ist ganz allein für die Entdeckung und Neuveröffentlichung Dutzender von Erwiderungen des Ausschusses für jüdische Gesetze und Normen der Rabbinerversammlung verantwortlich, so dass sie nun der breiten Öffentlichkeit in einer dreibändigen Reihe zugänglich sind.",
 					"David Golinkin ist der Autor Dutzender von Erwiderungen des Ausschusses für jüdische Gesetze und Normen der Rabbinerversammlung."
@@ -58,7 +58,7 @@ public class MeteorPhraseLinkerDETest {
 			phraseLinker.annotate(aJCas); 
 			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
 
-			// RTE3 test pair 18 (0 links...) 
+			// RTE3 test pair 18 
 			aJCas = tokenizer.generateSingleTHPairCAS(
 					"Ryo Okumoto (geboren in Osaka, Japan) ist ein Keyboarder, der für seine Arbeit mit der progressiven Rockgruppe Spocks Beard bekannt ist.",
 					"Die Rockgruppe Spocks Beard kommt aus Japan."
