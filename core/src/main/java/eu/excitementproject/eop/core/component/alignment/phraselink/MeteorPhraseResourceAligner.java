@@ -32,6 +32,10 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * The class has some static methods that might be useful for other aligners. For example, 
  * "addOneAlignmentLinkOnTokenLevel()" is public, and might be useful. 
  * 
+ * All comparison / match is done on surface (Sofa text) level, and then the matching 
+ * positive links are established on CAS Tokens. Also note that all comparisons are done 
+ * as lower-case, as the underlying Meteor resource requires.  
+ * 
  * TODO: groupLabel part is ignored in the class yet. To be added. 
  * 
  * Note: You can easily add a paraphrase linker, from any "Meteor-like paraphrase data file" in resource path. 
@@ -105,7 +109,8 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 					String rhs = tuple.getString(); 
 					if (hypoViewSofaText.contains(rhs))
 					{
-						// Okay. rhs does exist in HYPOTHESIS view SOFA. 
+						// Okay. rhs seems to exist in HYPOTHESIS view SOFA. (as a token, or as a sub-token -> we will add only if it is a full Token)
+						
 						// Find out locations and annotate one (or more) phrase Links. 
 						// (note that multiple link is only possible if same lhs or rhs occurrs multiple 
 						// time on text or hypothesis) 
@@ -119,10 +124,11 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 									// generate a new Link with Two Targets  
 									Link aLink = addOneAlignmentLinkOnTokenLevel(textView, hypoView, lhsBegin, lhsBegin + lhs.length(), rhsBegin, rhsBegin + rhs.length(), Link.Direction.TtoH); 								
 									
-									// check aLink is not null. 
+									// Do we have tokens for them? --- check aLink created. 
+									// note that the link is created only RHS exist as a token in Hypothesis View. 
 									if (aLink == null)
-									{
-										throw new AlignmentComponentException("Something went wrong: Integrity failure - null-Token-alignment requested within code, and this shouldn't happen."); 
+									{   // pass. Hypothesis Text does include RHS, but only as a sub-token. (say, rhs is "Jew", within token "Jewish". ) 
+										continue; 
 									}
 									
 									// add Meta-information on the Link. 
@@ -254,7 +260,7 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 		
 		if ((textTarget == null) || (hypoTarget == null))
 		{
-			logger.warn("got request for a alignment.Target with 0 tokens. Something wrong, not making Link instance and returning null."); 
+			logger.debug("no matching Tokens (probably rhs exist only as sub-token, not a full token). --- not making Link instance and returning null."); 
 			return null; 
 		}
 		
