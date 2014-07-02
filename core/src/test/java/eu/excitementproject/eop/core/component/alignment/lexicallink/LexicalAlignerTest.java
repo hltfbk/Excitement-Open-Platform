@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
@@ -45,8 +46,8 @@ public class LexicalAlignerTest {
 			
 			// Create and initialize the aligner
 			logger.info("Initialize the Lexical Aligner");
-			File configFile = new File(
-					"src/test/resources/configuration-file/LexicalAligner_EN.xml");
+			URL configFileURL = getClass().getResource("/configuration-file/LexicalAligner_EN.xml");
+			File configFile = new File(configFileURL.getFile());
 			ImplCommonConfig commonConfig = new ImplCommonConfig(configFile);
 			aligner = new LexicalAligner(commonConfig);
 			
