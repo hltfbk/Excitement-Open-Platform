@@ -1,20 +1,23 @@
 package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
+import org.junit.BeforeClass;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
-import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
+import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
+import eu.excitementproject.eop.lap.biu.test.BIUFullLAPConfigured;
+import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
@@ -26,7 +29,7 @@ public class LexicalAlignerTest {
 
 	// Private Members
 	private LexicalAligner aligner;
-	private TreeTaggerEN lap; 
+	private LAPAccess lap; 
 	private String t1 = "The assassin was convicted and sentenced to death penalty";
 	private String h1 = "The killer has been accused of murder and doomed to capital punishment";
 	private String t2 = "Kennedy was killed in Dallas";
@@ -43,14 +46,14 @@ public class LexicalAlignerTest {
 			
 			// Create and initialize the aligner
 			logger.info("Initialize the Lexical Aligner");
-			File configFile = new File(
-					"src/test/resources/configuration-file/LexicalAligner_EN.xml");
+			URL configFileURL = getClass().getResource("/configuration-file/LexicalAligner_EN.xml");
+			File configFile = new File(configFileURL.getFile());
 			ImplCommonConfig commonConfig = new ImplCommonConfig(configFile);
 			aligner = new LexicalAligner(commonConfig);
 			
 			// Load the tokenizer and lemmatizer
 	        try {
-	        	lap = new TreeTaggerEN();
+	        	lap = new BIUFullLAPConfigured();
 	        } catch (LAPException e) {
 	        	logger.info("Could not load the tokenizer and lemmatizer. " + 
 	        			e.getMessage()); 
@@ -60,6 +63,13 @@ public class LexicalAlignerTest {
 			logger.info("Failed initializing the LexicalAligner tests: " + 
 					e.getMessage());
 		}
+	}
+	
+	@BeforeClass
+	public static void beforeClass() throws IOException {
+		
+		// Run test only under BIU environment
+		BiuTestUtils.assumeBiuEnvironment();
 	}
 	
 	@Test
