@@ -320,7 +320,7 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 			
 			if (element1Keys.size() > 1) {
 				SortUtil.sortSimilarityRules(tmp, true); 			
-				int i=0;
+				int i=1;
 				for (ElementsSimilarityMeasure similarityRule :  tmp) {
 					if (!filtered(filterType,filterVal,similarityRule.getSimilarityMeasure(),tmp.size(),i)) 
 						ret.add(new DefaultElementsSimilarityMeasure(similarityRule.getLeftElement(),similarityRule.getRightElement(),similarityRule.getSimilarityMeasure(),similarityRule.getAdditionalInfo()));
