@@ -17,3 +17,6 @@ common/bin/
 lap/bin/
 uima.log
 
+.metadata
+lap/src/null223365410
+.gitignore
