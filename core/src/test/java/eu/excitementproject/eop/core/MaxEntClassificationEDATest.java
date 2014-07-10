@@ -248,11 +248,11 @@ public class MaxEntClassificationEDATest {
 		/* Baseline + TPPos + TS */
 		
 		/* Baseline + TP + TPPos + TS */
-		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml");
+//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+TP+TPPos+TS_EN.xml");
 //		0.64375
 		
 		/* Baseline + WN + VO + TP + TPPos + TS */
-//		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml");
+		File configFile = new File("./src/main/resources/configuration-file/MaxEntClassificationEDA_Base+WN+VO+TP+TPPos+TS_EN.xml");
 //		0.645
 
 		Assume.assumeTrue(configFile.exists());
