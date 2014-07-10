@@ -90,7 +90,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	 * @param args
 	 */
 	public static void main(String[] args){
-		logger.setLevel(Level.DEBUG); //change level to "DEBUG" if you want to skip detailed information about processes
+		logger.setLevel(Level.DEBUG); //change level to "INFO" if you want to skip detailed information about processes
 		SimpleMetaEDAConfidenceFeaturesUsageExample test = new SimpleMetaEDAConfidenceFeaturesUsageExample();
 		//perform tests contained in testDE method for German
 		test.testDE();
@@ -158,12 +158,6 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	public void test1DE(){
 		
 		logger.info("SimpleMetaEDAConfidenceFeatures test (mode 1) started");
-		logger.debug("fine test");
-		System.out.println(logger.getClass().toString());
-		System.out.println(logger.getName().toString());
-//		System.out.println(logger.getFilter().toString()); -> null
-//		System.out.println(logger.getParent().getName()); -> nix
-//		System.out.println(logger.getLevel().toString()); -> FINE
 		File metaconfigFile = new File("./src/test/resources/configuration-file/MetaEDATest1_DE.xml");
 		
 		Assume.assumeTrue(metaconfigFile.exists());
