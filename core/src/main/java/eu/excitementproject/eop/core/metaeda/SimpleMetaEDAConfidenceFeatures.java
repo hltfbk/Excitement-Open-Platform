@@ -7,16 +7,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
 import weka.classifiers.Classifier;
-import weka.classifiers.bayes.BayesianLogisticRegression;
-import weka.classifiers.bayes.NaiveBayes;
-import weka.classifiers.bayes.BayesianLogisticRegression;
+import weka.classifiers.functions.Logistic;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
@@ -98,6 +98,14 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	}
 
 	/**
+	 * returns the classification results
+	 * @return
+	 */
+	public HashMap<Integer,float[]> getResults(){
+		return this.results;
+	}
+	
+	/**
 	 * Initializes a SimpleMetaEDAConfidenceFeatures instance with a configuration file, 
 	 * where training and decision mode, overwrite mode,
 	 * path to model file, training data and test data directory are defined
@@ -150,7 +158,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	 * Starts training on the EDABasic instances' confidence features with the given configuration.
 	 * SimpleMetaEDAConfidenceFeatures initialization is included in this method.
 	 * Note that training is only performed in mode 2 (confidence as features).
-	 * In mode 2) a simple Naive Bayes classifier is trained on the EDABasic decisions and confidences.
+	 * In mode 2) a BayesianLogisticRegression classifier is trained on the EDABasic decisions and confidences.
 	 * Training and testing data directories are defined in the configuration file.
 	 */
 	@Override
@@ -188,11 +196,14 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			    // The annotated pair is added into the CAS.
 			    JCas jcas = PlatformCASProber.probeXmi(xmi, null);
 				Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
-				logger.fine("processing pair "+pair.getPairID());
+				logger.debug("processing pair "+pair.getPairID());
+				int pairID = Integer.parseInt(pair.getPairID());
+				
 				String goldAnswer = pair.getGoldAnswer(); //get gold annotation
-				logger.fine("gold answer: "+goldAnswer);
+				logger.debug("gold answer: "+goldAnswer);
+				
 				//get features from BasicEDAs' confidence scores
-				ArrayList<Double> scores = getFeatures(jcas);
+				ArrayList<Double> scores = getFeatures(jcas, pairID);
 								
 				//Store gold answer
 				goldAnswers.add(goldAnswer);
@@ -224,11 +235,16 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			//train the classifier
 			logger.info("Training the classifier...");
 			
-			//classifier is a simple Naive Bayes classifier with default options and parameters
-			this.classifier = new BayesianLogisticRegression();
+			//classifier is a Logistic classifier with default options and parameters
+			this.classifier = new Logistic();
+
 			try {
 				//train the classifier on training data set
-				classifier.buildClassifier(instances);
+				this.classifier.buildClassifier(instances);
+
+				//print the classifiers coefficients on debug level
+				logger.debug(Arrays.deepToString(this.classifier.coefficients()));
+				
 				//serialize and store classifier in model file
 				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.modelFile));
 				oos.writeObject(this.classifier);
@@ -241,14 +257,14 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			logger.info("training done.");
 		}
 	}
-	
+
 	/**
-	 * Starts training on the EDABasic instances' confidence features with the given configuration.
-	 * SimpleMetaEDAConfidenceFeatures initialization is included in this method.
-	 * Note that training is only performed in mode 2 (confidence as features).
-	 * In mode 2) a simple Naive Bayes classifier is trained on the EDABasic decisions and confidences.
-	 * Training and testing data directories are defined in the configuration file.
-	 */
+	* Starts training on the EDABasic instances' confidence features with the given parameters.
+	* SimpleMetaEDAConfidenceFeatures initialization is included in this method.
+	* Note that training is only performed in mode 2 (confidence as features).
+	* In mode 2) a BayesianLogisticRegression classifier is trained on the EDABasic decisions and confidences.
+	* Training and testing data directories are defined in the configuration file.
+	*/
 	public void startTraining(String language, boolean confidenceAsFeatures, boolean overwrite, String modelFile, String trainDir, String testDir) throws EDAException, LAPException {
 		this.isTrain = true; //set train flag
 		this.isTest = false;
@@ -264,34 +280,35 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 		else {
 			//mode 2
 			logger.info("Start training with confidences from EDABasic instances as features.");
-			
+	
 			ArrayList<String> goldAnswers = new ArrayList<String>(); //stores gold answers
-			
+	
 			//xmi files in training directory
 			File [] xmis = new File(this.trainDir).listFiles();
 			
 			//create attributes: for each EDABasic instance use their name and index as attribute name
 			FastVector attrs = getAttributes();
-			
+	
 			//build up the dataset from training data
-			Instances instances = new Instances("EOP", attrs, xmis.length);  
+			Instances instances = new Instances("EOP", attrs, xmis.length);
 			
 			for (File xmi : xmis) {
-			    if (!xmi.getName().endsWith(".xmi")) {
-			      continue;
-			    }
-			    // The annotated pair is added into the CAS.
-			    JCas jcas = PlatformCASProber.probeXmi(xmi, null);
+				if (!xmi.getName().endsWith(".xmi")) {
+					continue;
+				}
+				// The annotated pair is added into the CAS.
+				JCas jcas = PlatformCASProber.probeXmi(xmi, null);
 				Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
-				logger.fine("processing pair "+pair.getPairID());
+				int pairID = Integer.parseInt(pair.getPairID());
+				logger.debug("processing pair "+pairID);
 				String goldAnswer = pair.getGoldAnswer(); //get gold annotation
-				logger.fine("gold answer: "+goldAnswer);
+				logger.debug("gold answer: "+goldAnswer);
 				//get features from BasicEDAs' confidence scores
-				ArrayList<Double> scores = getFeatures(jcas);
-								
+				ArrayList<Double> scores = getFeatures(jcas, pairID);
+				
 				//Store gold answer
 				goldAnswers.add(goldAnswer);
-				
+	
 				//add new instance to dataset
 				Instance instance = new Instance(scores.size());
 				instance.setDataset(instances);
@@ -301,13 +318,13 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 				}
 				instances.add(instance);
 			}
-			
+	
 			//last attribute is class prediction (either nonentailment or entailment)
-			FastVector values = new FastVector(); 
-		    values.addElement("NONENTAILMENT");          
-		    values.addElement("ENTAILMENT");
-		    Attribute gold = new Attribute("gold", values);
-		    instances.insertAttributeAt(gold, instances.numAttributes());	
+			FastVector values = new FastVector();
+			values.addElement("NONENTAILMENT");
+			values.addElement("ENTAILMENT");
+			Attribute gold = new Attribute("gold", values);
+			instances.insertAttributeAt(gold, instances.numAttributes());	
 			instances.setClassIndex(instances.numAttributes()-1); // set class attribute -> last attribute (gold label)
 			
 			//set gold labels for instances
@@ -315,15 +332,19 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			for (int k = 0; k<instances.numInstances(); k++){
 				instances.instance(k).setValue(instances.numAttributes()-1, goldAnswers.get(k).toUpperCase());
 			}
-			
+	
 			//train the classifier
 			logger.info("Training the classifier...");
-			
-			//classifier is a simple Naive Bayes classifier with default options and parameters
-			this.classifier = new NaiveBayes();
+	
+			//classifier is a BayesianLogisticRegression classifier with default options and parameters
+			this.classifier = new Logistic();
 			try {
 				//train the classifier on training data set
-				classifier.buildClassifier(instances);
+				this.classifier.buildClassifier(instances);
+				
+				//print the classifiers coefficients on debug level
+				logger.debug("logistic classifier's coefficients: "+Arrays.deepToString(this.classifier.coefficients()));
+				
 				//serialize and store classifier in model file
 				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.modelFile));
 				oos.writeObject(this.classifier);
@@ -336,7 +357,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			logger.info("training done.");
 		}
 	}
-
+	
 	/**
 	 * Processes a given JCas:
 	 * -> in mode 1) just collect decisions from EDABasic instances and go with the majority (or NonEntailment in case of a tie)
@@ -348,12 +369,14 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	public MetaTEDecision process(JCas aCas) throws EDAException,
 			ComponentException {
 		
-		//generate the confidence features
-		List<Double> features = getFeatures(aCas);
-		
 		Pair pair = JCasUtil.selectSingle(aCas, Pair.class);
+		int pairID = Integer.parseInt(pair.getPairID());
 		
-		DecisionLabel dLabel;
+		//generate the confidence features
+		List<Double> features = getFeatures(aCas, pairID);
+		
+		
+		DecisionLabel dLabel;	
 		
 		//mode 2: classify on features collected from BasicEDAs' decisions
 		if (this.confidenceAsFeature){
@@ -379,7 +402,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			}
 			instances.add(instance);
 			
-			logger.fine("classifying "+instance.toString());
+			logger.debug("classifying pair no. "+pairID);
 			
 			//classify instance
 			double result = 0.0;
@@ -399,7 +422,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			else
 				dLabel = DecisionLabel.NonEntailment;
 			
-			logger.fine("DecisionLabel: "+dLabel);
+			logger.debug("DecisionLabel: "+dLabel);
 		
 		} else {
 			//mode 1: majority vote
@@ -411,12 +434,19 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 					decision += 1;
 				}
 			}
-			if (decision < 0){
+			if (decision <= 0){
 				dLabel = DecisionLabel.NonEntailment;
 			} else {
 				dLabel = DecisionLabel.Entailment;
 			}
-			logger.fine("DecisionLabel after voting: "+dLabel);
+			logger.debug("DecisionLabel after voting: "+dLabel);
+		}
+		
+		if (dLabel == DecisionLabel.Entailment){
+			this.results.get(pairID)[edas.size()+1] = 1f; //on last position in array comes meta decision
+		}
+		else if (dLabel == DecisionLabel.NonEntailment){
+			this.results.get(pairID)[edas.size()+1] = -1f;
 		}
 		
 		return new MetaTEDecision(dLabel, pair.getPairID());
@@ -526,6 +556,11 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	 */
 	private boolean confidenceAsFeature; //if true: 2nd mode
 	
+	/*
+	 * store classification results in hashmap, one entry for each pair, especially useful for testing
+	 */
+	private HashMap<Integer,float[]> results = new HashMap<Integer,float[]>();
+
 	/**
 	 * contains all internal basic EDAs
 	 */
@@ -554,7 +589,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	/**
 	 * the weka classifier
 	 */
-	private Classifier classifier;
+	private Logistic classifier;
 	
 	//both isTest and isTrain needed, as initialization can take place before testing or training is defined
 	/**
@@ -689,7 +724,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 				ObjectInputStream ois;
 				try {
 					ois = new ObjectInputStream(new FileInputStream(this.modelFile));
-					this.classifier = (Classifier) ois.readObject();
+					this.classifier = (Logistic) ois.readObject();
 					ois.close();
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -753,7 +788,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 				ObjectInputStream ois;
 				try {
 					ois = new ObjectInputStream(new FileInputStream(this.modelFile));
-					this.classifier = (Classifier) ois.readObject();
+					this.classifier = (Logistic) ois.readObject();
 					ois.close();
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -797,7 +832,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			if (this.isTrain && !this.isTest) {
 				throw new ConfigurationException("Please specify the training data directory.");
 			} else {
-				logger.warning("Warning: Please specify the training data directory.");
+				logger.warn("Warning: Please specify the training data directory.");
 			}
 		}
 		this.testDir = EDA.getString("testDir");
@@ -805,7 +840,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			if (this.isTest && !this.isTrain) {
 				throw new ConfigurationException("Please specify the testing data directory.");
 			} else {
-				logger.warning("Warning: Please specify the testing data directory.");
+				logger.warn("Warning: Please specify the testing data directory.");
 			}
 		}
 	}
@@ -822,7 +857,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			if (this.isTrain && !this.isTest) {
 				throw new ConfigurationException("Please specify the training data directory.");
 			} else {
-				logger.warning("Warning: Please specify the training data directory.");
+				logger.warn("Warning: Please specify the training data directory.");
 			}
 		}
 		this.testDir = testDir;
@@ -830,7 +865,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			if (this.isTest && !this.isTrain) {
 				throw new ConfigurationException("Please specify the testing data directory.");
 			} else {
-				logger.warning("Warning: Please specify the testing data directory.");
+				logger.warn("Warning: Please specify the testing data directory.");
 			}
 		}
 		
@@ -856,17 +891,20 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	 * Retrieves confidence scores from all BasicEDAs for one given JCas.
 	 * Each BasicEDA instance produces one feature each. N edas -> N features.
 	 * @param jcas the JCas to process
+	 * @param pairID the according pairID
 	 * @return an ArrayList of features for the given JCas.
 	 */
-		private ArrayList<Double> getFeatures(JCas jcas) {
+		private ArrayList<Double> getFeatures(JCas jcas, int pairID) {
 			ArrayList<Double> features = new ArrayList<Double>();
+			float[] resultsForPair = new float[this.edas.size()+2];
 			for (int i=0; i<this.edas.size(); i++){
 				EDABasic<? extends TEDecision> eda = this.edas.get(i);
 				//process aCas and get confidence
 				TEDecision decision = null;
 				try {
 					decision = eda.process(jcas);
-					logger.fine(eda.getClass().getSimpleName()+i+"'s decision: "+decision.getDecision()+" "+decision.getConfidence());
+					logger.debug(eda.getClass().getSimpleName()+i+"'s decision: "+decision.getDecision()+" "+decision.getConfidence());
+					
 					if (decision.equals(null)){
 						throw new EDAException("The internal EDA "+eda.getClass().getSimpleName()+i+"could not process the data." +
 								"Please check the internal EDA's configuration");
@@ -882,8 +920,10 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 					confidence = confidence * -1;
 				}
 				features.add(confidence);
+				resultsForPair[i+1]=(float) (confidence);
+				this.results.put(pairID, resultsForPair);
 			}
-			logger.fine("SimpleMetaEDAConfidenceFeatures features from EDABasic confidences: "+features.toString());
+			logger.debug("SimpleMetaEDAConfidenceFeatures features from EDABasic confidences: "+features.toString());
 			return features;
 		}
 
