@@ -160,11 +160,11 @@
 	
 	<!-- TreeTagger related dependencies --> 
 	<!-- if you want to use TreeTagger, and related LAPs, please read /lap/src/scripts/treetagger/README.txt, and follow the instructions --> 
-	<!-- 
+	 
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
-     		<version>20130228.0</version>
+     		<version>20131118.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -181,7 +181,7 @@
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
      		<version>20101115.0</version>
     	</dependency>
-	--> 
+	 
 	<!-- end of TreeTagger related dependencies --> 
 
     	<dependency>

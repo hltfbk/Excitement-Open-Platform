@@ -60,11 +60,11 @@ public class MetaEDAEval {
 		//for english
 		Set<Integer> edanrs_EN = new HashSet<Integer>();
 		//add indices for edas 
-		edanrs_EN.add(1);
+//		edanrs_EN.add(1);
 //		edanrs_EN.add(2);
-//		edanrs_EN.add(3);
-//		edanrs_EN.add(4);
-		edanrs_EN.add(5);
+		edanrs_EN.add(3);
+		edanrs_EN.add(4);
+//		edanrs_EN.add(5);
 
 		
 		//run test
@@ -344,6 +344,7 @@ public class MetaEDAEval {
 				mecedaconfig = new ImplCommonConfig(mecedaconfigfile);
 				logger.info("MaxEntClassification EDA config file read");
 			} catch (ConfigurationException e) {
+				System.out.println(mecedaconfigfile.toString());
 				e.printStackTrace();
 			}
 			Assume.assumeNotNull(mecedaconfig);
@@ -412,7 +413,7 @@ public class MetaEDAEval {
 		if (edanrs.contains(4)){
 			EDABasic<ClassificationTEDecision> edits1 = new EditDistanceEDA();
 			EDABasic<? extends TEDecision> editseda1 = edits1;
-			File editsedaconfigfile1 = new File("./src/main/resources/configuration-file/EditDistanceEDA_WN_DE.xml");
+			File editsedaconfigfile1 = new File("./src/main/resources/configuration-file/EditDistanceEDA_WN_EN.xml");
 			CommonConfig editsedaconfig1 = null;
 			try {
 				// read in the configuration from the file
@@ -461,9 +462,9 @@ public class MetaEDAEval {
 		SimpleMetaEDAConfidenceFeatures meda1 = new SimpleMetaEDAConfidenceFeatures(edas);
 		SimpleMetaEDAConfidenceFeatures meda2 = new SimpleMetaEDAConfidenceFeatures(edas);
 		//preprocess test and training data
-		preprocess(meda1);
 		try {
-			//meda1.initialize("EN", true, true, "./target/MEDAModelTest1_EN.model", "./target/EN/dev/", "./target/EN/test/");
+			meda1.initialize("EN", true, true, "./target/MEDAModelTest1_EN.model", "./target/EN/dev/", "./target/EN/test/");
+			preprocess(meda1);
 			meda2.initialize("EN", false, true, "./target/MEDAModelTest2_EN.model", "./target/EN/dev/", "./target/EN/test/");
 			meda1.startTraining("EN", true, true, "./target/MEDAModelTest1_EN.model", "./target/EN/dev/", "./target/EN/test/");
 			logger.info("Initialization done.");
