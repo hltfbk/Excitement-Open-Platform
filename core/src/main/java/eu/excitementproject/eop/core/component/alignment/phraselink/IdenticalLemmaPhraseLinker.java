@@ -38,10 +38,25 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 		// get Tview 
 		// get Hview 
 		
-		// TODO outline algorithm. 
+		// - outline of the algorithm 
+		
+		// Part one. finding longest lemma match from T - H. 
+		// Okay, we have two list of tokens (that has access to lemma & pos)  
+		// T and H. 
+		// 
+		// Okay, we strat on H sequence, pos = 0 (first word). 
+		// we start finding "longest identical sequence" from the position this pos. 
+		//   if we find the same lemma for pos, we try to find, lemma sequence of pos, pos+1 
+		//   on T side. If found, we continue, if not, we stop, and record the match location.
+		//   (if any match was recorded) 
+		//   and update pos to (pos+ sequence length)(anything found) or (pos + 1) (nothing found)  
 
+		// (data structure for match? simple num array? two numbers? or two arrays?)
+		
+		// Part two. annotating match with alignment.Link 
 		// (before accept the link) check if the target is only consist of exclusion-only POSes. 
 		// containsOnlyNonContentPOSes() - list of tokens? 
+		
 	}
 
 	@Override
