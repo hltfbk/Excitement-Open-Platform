@@ -124,7 +124,7 @@ public class AnnotateSentenceToConll {
 		return sentences;
 	}
 	
-	private ExtendedNode annotateSentece(String sentence) throws ConllConverterException
+	public ExtendedNode annotateSentece(String sentence) throws ConllConverterException
 	{
 			parser.setSentence(sentence);
 		ExtendedNode annotatedSentece;
