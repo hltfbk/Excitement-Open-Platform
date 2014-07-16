@@ -10,9 +10,9 @@ import org.apache.uima.jcas.cas.TOP_Type;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
-/** This type represents an implication signature of a predicate.
- * Updated by JCasGen Fri Oct 05 20:17:26 CEST 2012
- * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/PredicateTruth.xml
+/** 
+ * Updated by JCasGen Tue Jul 15 10:01:13 IDT 2014
+ * XML source: C:/Users/user/fromHP/Shared/excitement workspace/eop/common/src/main/resources/desc/type/PredicateTruth.xml
  * @generated */
 public class PredicateSignature extends Annotation {
   /** @generated
@@ -54,10 +54,13 @@ public class PredicateSignature extends Annotation {
     readObject();
   }   
 
-  /** <!-- begin-user-doc -->
+  /** 
+   * <!-- begin-user-doc -->
     * Write your own initialization here
     * <!-- end-user-doc -->
-  @generated modifiable */
+  *
+   * @generated modifiable 
+   */
   private void readObject() {/*default - does nothing empty block */}
      
 }
