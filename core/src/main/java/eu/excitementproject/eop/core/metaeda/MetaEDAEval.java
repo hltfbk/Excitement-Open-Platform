@@ -2,6 +2,8 @@ package eu.excitementproject.eop.core.metaeda;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -28,6 +30,7 @@ import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.MaltParserDE;
+import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
@@ -60,11 +63,11 @@ public class MetaEDAEval {
 		//for english
 		Set<Integer> edanrs_EN = new HashSet<Integer>();
 		//add indices for edas 
-//		edanrs_EN.add(1);
+		edanrs_EN.add(1);
 //		edanrs_EN.add(2);
 		edanrs_EN.add(3);
 		edanrs_EN.add(4);
-//		edanrs_EN.add(5);
+		edanrs_EN.add(5);
 
 		
 		//run test
@@ -285,7 +288,6 @@ public class MetaEDAEval {
 //				System.out.println(jcas.getSofaDataString());
 //				PlatformCASProber.probeCas(jcas, null);
 //				try {
-//					mp.process(jcas);
 //				} catch (AnalysisEngineProcessException e) {
 //					// TODO Auto-generated catch block
 //					e.printStackTrace();
@@ -294,6 +296,7 @@ public class MetaEDAEval {
 				e.printStackTrace();
 			} 
 			Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
+			int pairID = Integer.parseInt(pair.getPairID());
 			DecisionLabel goldAnswer = null;
 			try {
 				goldAnswer = DecisionLabel.getLabelFor(pair.getGoldAnswer());
@@ -303,6 +306,12 @@ public class MetaEDAEval {
 			TEDecision decision = null;
 			try {
 				decision = meda.process(jcas);
+				if (goldAnswer.is(DecisionLabel.NonEntailment)){
+					meda.getResults().get(pairID)[0]=-1;
+				}
+				else if (goldAnswer.is(DecisionLabel.Entailment)){
+					meda.getResults().get(pairID)[0]=1;
+				}
 			} catch (EDAException | ComponentException e) {
 				e.printStackTrace();
 			}
@@ -312,13 +321,61 @@ public class MetaEDAEval {
 			sum += 1;
 		}
 		float score = (float)correct/sum;
-		System.out.println("sum "+sum+" - correct "+correct+" ("+score*100+"%) \n");
-		int[] sumcorrect = new int[2];
-		sumcorrect[0] = sum;
-		sumcorrect[1] = correct;
-		return sumcorrect;
+
+		//comment out if you do not want to get results printed
+		printDecisionTable(meda);
+		printResults(sum, correct, score);
+		
+		int[] r = new int[2];
+		r[0]=sum;
+		r[1]=correct;
+		return r;
 	}
-	
+
+	/**
+	 * prints test results to stdout
+	 * @param sum number of pairs tested
+	 * @param correct number of correctly classified pairs
+	 * @param score correct/sum
+	 */
+	private void printResults(int sum, int correct, float score) {
+		//print test results
+		System.out.println("\nsum "+sum+" - correct "+correct+" ("+score*100+"%)\n");
+	}
+
+	/**
+	 * prints a table with detailed overview of decisions to stdout
+	 * pairID | goldLabel | BasicEDAs' decisions | MetaEDA decision
+	 * values <0 -> NonEntailment
+	 * values >0 -> Entailment
+	 * @param meda
+	 */
+	private void printDecisionTable(SimpleMetaEDAConfidenceFeatures meda) {
+		
+		if (meda.isConfidenceAsFeature()){
+			System.out.println(Arrays.deepToString(meda.getClassifier().coefficients()));
+		}
+		//print detailed classification overview table for test data
+		HashMap<Integer, float[]> results = meda.getResults();
+		StringBuffer sb = new StringBuffer();
+		sb.append(String.format("%30s", "PairID")+String.format("%30s", "GoldLabel"));
+		
+		for (int i=0; i<meda.getEdas().size(); i++){
+			sb.append(String.format("%30s", meda.getEdas().get(i).getClass().getName().replace("eu.excitementproject.eop.core.", "")));
+		}
+		sb.append(String.format("%30s","MetaEDA"));
+		System.out.println("\n"+sb.toString());
+		StringBuffer sb2 = new StringBuffer();
+		for (int pairID : results.keySet()){
+			sb2.append(String.format("%30d", pairID));
+			for (int j=0; j<results.get(pairID).length; j++){
+				sb2.append(String.format("%30f", results.get(pairID)[j]));
+			}
+			System.out.println(sb2.toString());
+			sb2.setLength(0);
+		}		
+	}
+
 	public void testEvalEN(Set<Integer> edanrs){
 		//test selected configurations and combinations
 //		1) TIE	Baseline + TP + TPPos + TS	0.6475 
@@ -532,7 +589,7 @@ public class MetaEDAEval {
 				logger.info("preprocessing English training and test data.");
 				LAPAccess tLap = null;
 				try {
-					tLap = new TreeTaggerEN();
+					tLap = new MaltParserEN();
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
@@ -560,7 +617,8 @@ public class MetaEDAEval {
 					e.printStackTrace();
 				}
 				this.preprocessedEN = true;
-			}	
+			}
 		}
 	}
 }
+

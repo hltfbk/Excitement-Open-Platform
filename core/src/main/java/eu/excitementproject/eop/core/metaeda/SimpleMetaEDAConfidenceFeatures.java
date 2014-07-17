@@ -104,6 +104,14 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	public HashMap<Integer,float[]> getResults(){
 		return this.results;
 	}
+
+	/**
+	 * returns the classifier
+	 * @return
+	 */
+	public Logistic getClassifier(){
+		return this.classifier;
+	}
 	
 	/**
 	 * Initializes a SimpleMetaEDAConfidenceFeatures instance with a configuration file, 

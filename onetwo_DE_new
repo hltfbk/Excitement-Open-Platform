@@ -1,0 +1,78 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Free Open Source Platform for Recognizing Textual Entailments (RTE)
+[INFO] common
+[INFO] redis
+[INFO] lap
+[INFO] distsim
+[INFO] core
+[INFO] lexicalminer
+[INFO] transformations
+[INFO] biutee
+[INFO] util
+[INFO] globalgraphoptimizer
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/apache/maven/plugins/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/apache/maven/plugins/maven-metadata.xml
+[WARNING] Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/exec-maven-plugin/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/exec-maven-plugin/maven-metadata.xml
+[WARNING] Could not transfer metadata org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Free Open Source Platform for Recognizing Textual Entailments (RTE) 1.1.4-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[WARNING] Failure to transfer org.apache.maven.plugins/maven-metadata.xml from http://hlt-services4.fbk.eu:8080/artifactory/repo was cached in the local repository, resolution will not be reattempted until the update interval of FBK has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Failure to transfer org.apache.maven.plugins/maven-metadata.xml from http://hlt-services4.fbk.eu:8080/artifactory/repo was cached in the local repository, resolution will not be reattempted until the update interval of FBKsnapshots has elapsed or updates are forced. Original error: Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Failure to transfer org.codehaus.mojo/maven-metadata.xml from http://hlt-services4.fbk.eu:8080/artifactory/repo was cached in the local repository, resolution will not be reattempted until the update interval of FBK has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Failure to transfer org.codehaus.mojo/maven-metadata.xml from http://hlt-services4.fbk.eu:8080/artifactory/repo was cached in the local repository, resolution will not be reattempted until the update interval of FBKsnapshots has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Failure to transfer org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from http://hlt-services4.fbk.eu:8080/artifactory/repo was cached in the local repository, resolution will not be reattempted until the update interval of FBK has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Failure to transfer org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from http://hlt-services4.fbk.eu:8080/artifactory/repo was cached in the local repository, resolution will not be reattempted until the update interval of FBKsnapshots has elapsed or updates are forced. Original error: Could not transfer metadata org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[INFO] 
+[INFO] --- exec-maven-plugin:1.3.1:java (default-cli) @ eop ---
+[WARNING] Warning: killAfter is now deprecated. Do you need it ? Please comment on MEXEC-6.
+[WARNING] 
+java.lang.ClassNotFoundException: eu.excitementproject.eop.core.metaeda.MetaEDAEval
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:366)
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:281)
+	at java.lang.Thread.run(Thread.java:745)
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Free Open Source Platform for Recognizing Textual Entailments (RTE)  FAILURE [3.187s]
+[INFO] common ............................................ SKIPPED
+[INFO] redis ............................................. SKIPPED
+[INFO] lap ............................................... SKIPPED
+[INFO] distsim ........................................... SKIPPED
+[INFO] core .............................................. SKIPPED
+[INFO] lexicalminer ...................................... SKIPPED
+[INFO] transformations ................................... SKIPPED
+[INFO] biutee ............................................ SKIPPED
+[INFO] util .............................................. SKIPPED
+[INFO] globalgraphoptimizer .............................. SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.850s
+[INFO] Finished at: Thu Jul 10 16:07:53 CEST 2014
+[INFO] Final Memory: 29M/1963M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.3.1:java (default-cli) on project eop: An exception occured while executing the Java class. eu.excitementproject.eop.core.metaeda.MetaEDAEval -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

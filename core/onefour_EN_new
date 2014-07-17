@@ -1,0 +1,13 @@
+[INFO] Scanning for projects...
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/apache/maven/plugins/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/apache/maven/plugins/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/maven-metadata.xml
+[WARNING] Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.apache.maven.plugins/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.codehaus.mojo/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/exec-maven-plugin/maven-metadata.xml
+Downloading: http://hlt-services4.fbk.eu:8080/artifactory/repo/org/codehaus/mojo/exec-maven-plugin/maven-metadata.xml
+[WARNING] Could not transfer metadata org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from/to FBK (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
+[WARNING] Could not transfer metadata org.codehaus.mojo:exec-maven-plugin/maven-metadata.xml from/to FBKsnapshots (http://hlt-services4.fbk.eu:8080/artifactory/repo): Not authorized , ReasonPhrase:Unauthorized.
