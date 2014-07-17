@@ -107,6 +107,14 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	}
 	
 	/**
+	 * returns the classifier
+	 * @return
+	 */
+	public Logistic getClassifier(){
+		return this.classifier;
+	}
+	
+	/**
 	 * Initializes a SimpleMetaEDAConfidenceFeatures instance with a configuration file, 
 	 * where training and decision mode, overwrite mode,
 	 * path to model file, training data and test data directory are defined
