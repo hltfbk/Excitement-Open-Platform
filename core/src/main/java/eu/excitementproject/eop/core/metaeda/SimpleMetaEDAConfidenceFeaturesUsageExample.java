@@ -2,10 +2,12 @@ package eu.excitementproject.eop.core.metaeda;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Arrays;
+import java.util.HashMap;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
 import org.uimafit.util.JCasUtil;
@@ -26,6 +28,8 @@ import eu.excitementproject.eop.core.metaeda.SimpleMetaEDAConfidenceFeatures;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
+import eu.excitementproject.eop.lap.dkpro.MaltParserDE;
+import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
@@ -77,7 +81,7 @@ import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
  *
  */
 public class SimpleMetaEDAConfidenceFeaturesUsageExample {
-	static Logger logger = Logger.getLogger(SimpleMetaEDAConfidenceFeaturesUsageExample.class
+	static Logger logger = Logger.getLogger(SimpleMetaEDAConfidenceFeatures.class
 			.getName());
 	
 	/**
@@ -86,7 +90,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	 * @param args
 	 */
 	public static void main(String[] args){
-		logger.setLevel(Level.FINE); //change level to "INFO" if you want to skip detailed information about processes
+		logger.setLevel(Level.DEBUG); //change level to "INFO" if you want to skip detailed information about processes
 		SimpleMetaEDAConfidenceFeaturesUsageExample test = new SimpleMetaEDAConfidenceFeaturesUsageExample();
 		//perform tests contained in testDE method for German
 		test.testDE();
@@ -154,7 +158,6 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	public void test1DE(){
 		
 		logger.info("SimpleMetaEDAConfidenceFeatures test (mode 1) started");
-		
 		File metaconfigFile = new File("./src/test/resources/configuration-file/MetaEDATest1_DE.xml");
 		
 		Assume.assumeTrue(metaconfigFile.exists());
@@ -218,7 +221,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		//preprocess test and training data
 		try {
 			meda.initialize(metaconfig);
-			preprocess(meda);
+//			preprocess(meda);
 			logger.info("Initialization done.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -772,6 +775,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	 * 
 	 * First, CASes are built for input data.
 	 * Then, they are processed by MetaEDA.
+	 * A table for all pairs with their gold labels, the internal BasicEDAs' decisions and the MetaEDA's decision is printed.
 	 * Finally, results are printed. This includes the number of correctly predicted T-H-pairs, the number of all input pairs, and the percentage of correct predictions.
 	 * 
 	 * @param meda initialized MetaEDA
@@ -791,6 +795,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				e.printStackTrace();
 			} 
 			Pair pair = JCasUtil.selectSingle(jcas, Pair.class);
+			int pairID = Integer.parseInt(pair.getPairID());
 			DecisionLabel goldAnswer = null;
 			try {
 				goldAnswer = DecisionLabel.getLabelFor(pair.getGoldAnswer());
@@ -800,6 +805,13 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 			TEDecision decision = null;
 			try {
 				decision = meda.process(jcas);
+				if (goldAnswer.is(DecisionLabel.NonEntailment)){
+					meda.getResults().get(pairID)[0]=-1;
+				}
+				else if (goldAnswer.is(DecisionLabel.Entailment)){
+					meda.getResults().get(pairID)[0]=1;
+				}
+				
 			} catch (EDAException | ComponentException e) {
 				e.printStackTrace();
 			}
@@ -809,14 +821,62 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 			sum += 1;
 		}
 		float score = (float)correct/sum;
-		System.out.println("sum "+sum+" - correct "+correct+" ("+score*100+"%) \n");
+		
+		//comment out if you do not want to get results printed
+		printDecisionTable(meda);
+		printResults(sum, correct, score);
+		
 	}
 	
 	/**
-	 * Pre-processes the T-H pairs with TreeTagger
+	 * prints test results to stdout
+	 * @param sum number of pairs tested
+	 * @param correct number of correctly classified pairs
+	 * @param score correct/sum
+	 */
+	private void printResults(int sum, int correct, float score) {
+		//print test results
+		System.out.println("\nsum "+sum+" - correct "+correct+" ("+score*100+"%)\n");
+	}
+
+	/**
+	 * prints a table with detailed overview of decisions to stdout
+	 * pairID | goldLabel | BasicEDAs' decisions | MetaEDA decision
+	 * values <0 -> NonEntailment
+	 * values >0 -> Entailment
+	 * @param meda
+	 */
+	private void printDecisionTable(SimpleMetaEDAConfidenceFeatures meda) {
+		//print detailed classification overview table for test data
+		if (meda.isConfidenceAsFeature()){
+			System.out.println(Arrays.deepToString(meda.getClassifier().coefficients()));
+		}
+		
+		HashMap<Integer, float[]> results = meda.getResults();
+		StringBuffer sb = new StringBuffer();
+		sb.append(String.format("%30s", "PairID")+String.format("%30s", "GoldLabel"));
+		
+		for (int i=0; i<meda.getEdas().size(); i++){
+			sb.append(String.format("%30s", meda.getEdas().get(i).getClass().getName().replace("eu.excitementproject.eop.core.", "")));
+		}
+		sb.append(String.format("%30s","MetaEDA"));
+		System.out.println("\n"+sb.toString());
+		StringBuffer sb2 = new StringBuffer();
+		for (int pairID : results.keySet()){
+			sb2.append(String.format("%30d", pairID));
+			for (int j=0; j<results.get(pairID).length; j++){
+				sb2.append(String.format("%30f", results.get(pairID)[j]));
+			}
+			System.out.println(sb2.toString());
+			sb2.setLength(0);
+		}		
+	}
+
+	/**
+	 * Pre-processes the T-H pairs with MaltParser
 	 *
-	 * Note that some EDABasics require certain linguistic preprocessing steps.
-	 * The user has to provide these annotation layers on training and test data by calling linguistic preprocessing tools here.
+	 * Note that some EDABasics require certain linguistic pre-processing steps.
+	 * The user has to provide these annotation layers on training and test data by calling linguistic pre-processing tools here.
 	 * 
 	 * @param meda initialized MetaEDA
 	 * @throws LAPException 
@@ -827,7 +887,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				logger.info("preprocessing German training and test data.");
 				LAPAccess tlap = null;
 				try {
-					tlap = new TreeTaggerDE();
+					tlap = new MaltParserDE();
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
@@ -862,7 +922,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				logger.info("preprocessing English training and test data.");
 				LAPAccess tLap = null;
 				try {
-					tLap = new TreeTaggerEN();
+					tLap = new MaltParserEN();
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
