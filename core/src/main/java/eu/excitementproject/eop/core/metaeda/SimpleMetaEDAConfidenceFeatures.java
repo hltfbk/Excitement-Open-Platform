@@ -15,9 +15,9 @@ import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
-import weka.classifiers.Classifier;
-import weka.classifiers.bayes.BayesianLogisticRegression;
-import weka.classifiers.bayes.NaiveBayes;
+//import weka.classifiers.Classifier;
+//import weka.classifiers.bayes.BayesianLogisticRegression;
+//import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.Logistic;
 import weka.core.Attribute;
 import weka.core.FastVector;

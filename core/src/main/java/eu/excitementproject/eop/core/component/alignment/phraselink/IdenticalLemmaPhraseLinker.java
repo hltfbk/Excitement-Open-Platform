@@ -69,6 +69,7 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 		return null; // this module does not support multiple-instances (e.g. with different configurations) 
 	}
 	
+	@SuppressWarnings("unused")
 	private Boolean containsOnlyNonContentPOSes()
 	{
 		// TODO: write this once. 
@@ -77,5 +78,6 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 	}
 	
 	// Punctuation, Preposition, Others, Conjunction, and Articles 
+	@SuppressWarnings("unused")
 	final private String[] nonContentPOSes = {"PUNC", "PP", "O", "CONJ", "ART"}; 
 }

@@ -30,8 +30,8 @@ import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.MaltParserDE;
 import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
-import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
-import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
+//import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
+//import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
 /**
  * This class performs as a usage example with tests for <code>MetaEDA</code>.
