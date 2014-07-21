@@ -49,7 +49,7 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 	public MeteorPhraseResourceAligner(String resourcePath, int maxPhraseLength) throws AlignmentComponentException
 	{	
 		// initialize private final variables 
-		//logger = Logger.getLogger(this.getClass().toString()); 
+		//logger = Logger.getLogger(this.getClass().toString()); // we use a static instance  
 		this.resourcePath = resourcePath; 
 		this.maxPhraseLength = maxPhraseLength; 
 		
