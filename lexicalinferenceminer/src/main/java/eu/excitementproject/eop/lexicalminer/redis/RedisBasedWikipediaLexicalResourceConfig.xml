@@ -46,6 +46,10 @@
 		     The class should extend eu.excitementproject.eop.lexicalminer.definition.classifier.Classifier -->
 		<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
 		<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
+		
+		<!-- should the redis server run with virtual memory (low memory usage, disk based access)? -->
+		<property name="redis-vm">false</property>
+		
 </section>
 
 </configuration>

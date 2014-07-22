@@ -60,7 +60,7 @@ public class RedisBasedElementSimilarityCombiner implements ElementSimilarityCom
 				for (int i=1;i<similarityStorageDevices.size();i++) { 
 					RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> redis = 
 						new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(
-								dbs.get(i-1), 
+								dbs.get(i-1), false,
 								similarityStorageDevices.get(i));
 					similarities.add(redis);
 				}

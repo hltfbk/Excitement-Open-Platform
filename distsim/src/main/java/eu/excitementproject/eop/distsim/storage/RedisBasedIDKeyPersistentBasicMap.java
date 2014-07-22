@@ -37,27 +37,35 @@ public class RedisBasedIDKeyPersistentBasicMap<V extends Serializable> extends D
 	private Logger logger = Logger.getLogger(RedisBasedIDKeyPersistentBasicMap.class);
 	private static final long serialVersionUID = 1L;
 	
-	public RedisBasedIDKeyPersistentBasicMap(String dbFile) throws FileNotFoundException, RedisRunException {
-		this.dbFile = dbFile;
-		int port = BasicRedisRunner.getInstance().run(dbFile);
-		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
-		jedis = pool.getResource();
-		jedis.connect();
-		jedis.getClient().setTimeoutInfinite();
+	public RedisBasedIDKeyPersistentBasicMap(String dbFile, boolean bVM) throws FileNotFoundException, RedisRunException {
+		init(dbFile,bVM);
 	}
 
 	public RedisBasedIDKeyPersistentBasicMap(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
-		this(params.get(Configuration.REDIS_FILE));
+		boolean bVM = false;
+		try {
+			bVM = params.getBoolean(eu.excitementproject.eop.redis.Configuration.REDIS_VM);
+		} catch (ConfigurationException e) {}		
+		init(params.get(Configuration.REDIS_FILE),bVM);
 	}
 
-	public RedisBasedIDKeyPersistentBasicMap(String dbFile, PersistenceDevice device) throws LoadingStateException, FileNotFoundException, RedisRunException {
-		this(dbFile);
+	public RedisBasedIDKeyPersistentBasicMap(String dbFile, boolean bVM, PersistenceDevice device) throws LoadingStateException, FileNotFoundException, RedisRunException {
+		this(dbFile,bVM);
 		loadState(device);
 	}
 	
 	public RedisBasedIDKeyPersistentBasicMap(ConfigurationParams params, PersistenceDevice device) throws ConfigurationException, LoadingStateException, FileNotFoundException, RedisRunException {
 		this(params);
 		loadState(device);
+	}
+
+	protected void init(String dbFile, boolean bVM) throws FileNotFoundException, RedisRunException {
+		this.dbFile = dbFile;
+		int port = BasicRedisRunner.getInstance().run(dbFile,bVM);
+		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
+		jedis = pool.getResource();
+		jedis.connect();
+		jedis.getClient().setTimeoutInfinite();
 	}
 
 	/* (non-Javadoc)
@@ -130,6 +138,6 @@ public class RedisBasedIDKeyPersistentBasicMap<V extends Serializable> extends D
 	}
 	
 	protected Jedis jedis;
-	protected final String dbFile;
+	protected String dbFile;
 
 }

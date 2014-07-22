@@ -24,6 +24,7 @@ public class Configuration {
 	public static final String REDIS_CONFIGURATION_TEMPLATE_FILE = "redis-configuration-template-file";
 	public static final String REDIS_BIN_DIR = "redis-binary-dir";
 	public static final String REDIS_FILE = "redis-file";
+	public static final String REDIS_VM = "redis-vm";
 
 }
 

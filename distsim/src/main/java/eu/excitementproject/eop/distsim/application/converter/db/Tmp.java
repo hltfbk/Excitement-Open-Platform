@@ -13,7 +13,7 @@ public class Tmp {
 		
 		}
 		
-		Redis redis = new Redis(args[0]);
+		Redis redis = new Redis(args[0],false);
 		redis.open();
 		redis.write(RedisBasedStringListBasicMap.ELEMENT_CLASS_NAME_KEY,"eu.excitementproject.eop.distsim.items.PredicateElement");
 	}

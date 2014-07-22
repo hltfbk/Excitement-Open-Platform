@@ -59,7 +59,7 @@ public class ElementFile2Redis {
 			
 			file.open();
 			String dbFile = confParams.getString(Configuration.REDIS_FILE);
-			RedisBasedCountableIdentifiableStorage<Element> elementStorage = new RedisBasedCountableIdentifiableStorage<Element>(dbFile);
+			RedisBasedCountableIdentifiableStorage<Element> elementStorage = new RedisBasedCountableIdentifiableStorage<Element>(dbFile,false);
 			elementStorage.clear();
 			Pair<Integer,Serializable> pair = null;
 			while ((pair = file.read())!=null) {

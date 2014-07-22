@@ -46,7 +46,7 @@ public class MemoryBasedScoreAggregator {
 			}
 			reader.close();
 
-			RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> redis = new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(redisSimilarityFile);
+			RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>> redis = new RedisBasedIDKeyPersistentBasicMap<LinkedHashMap<Integer,Double>>(redisSimilarityFile,false);
 			redis.clear();			
 			TIntObjectIterator<TIntDoubleMap> it = scoresMap.iterator();
 			while (it.hasNext()) {				
