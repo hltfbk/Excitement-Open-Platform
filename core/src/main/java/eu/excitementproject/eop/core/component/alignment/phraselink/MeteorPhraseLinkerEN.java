@@ -57,7 +57,7 @@ public class MeteorPhraseLinkerEN extends MeteorPhraseResourceAligner {
 		
 		if (! ( languageId.equalsIgnoreCase(tViewLangId) && languageId.equalsIgnoreCase(hViewLangId)) )
 		{
-			throw new AlignmentComponentException("Language ID mismatch: this component provides service for " + languageId + ", but received a JCas with " + aJCas.getDocumentLanguage());
+			throw new AlignmentComponentException("Language ID mismatch: this component provides service for " + languageId + ", but received a JCas with " + tViewLangId + "/" + hViewLangId);
 		}
 		
 		// call super, which does the actual work. 
