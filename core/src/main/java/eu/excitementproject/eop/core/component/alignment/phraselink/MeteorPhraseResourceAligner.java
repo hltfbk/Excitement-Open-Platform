@@ -84,8 +84,8 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 			throw new AlignmentComponentException("Failed to access the Two views (TEXTVIEW, HYPOTHESISVIEW)", e); 
 		}
 		
-		logger.info("TEXT: " + textView.getDocumentText().substring(0, 25) + " ..."); 
-		logger.info("HYPO: " + hypoView.getDocumentText().substring(0, 25) + " ...");  
+		logger.info("TEXT: " + textView.getDocumentText()); 
+		logger.info("HYPO: " + hypoView.getDocumentText());  
 		
 		int countAnnotatedLinks = 0; 
 		
