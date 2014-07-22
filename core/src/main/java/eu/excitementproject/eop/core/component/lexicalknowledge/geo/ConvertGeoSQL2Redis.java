@@ -27,14 +27,14 @@ public class ConvertGeoSQL2Redis {
 			System.exit(0);
 		}
 		
-		int lPort = BasicRedisRunner.getInstance().run(args[1]);
+		int lPort = BasicRedisRunner.getInstance().run(args[1],false);
 		JedisPool lPool = new JedisPool(new JedisPoolConfig(), "localhost",lPort,10000);
 		Jedis lJedis = lPool.getResource();
 		lJedis.connect();
 		lJedis.getClient().setTimeoutInfinite();
 		lJedis.flushAll();
 		
-		int rPort = BasicRedisRunner.getInstance().run(args[2]);
+		int rPort = BasicRedisRunner.getInstance().run(args[2],false);
 		JedisPool rPool = new JedisPool(new JedisPoolConfig(), "localhost",rPort,10000);
 		Jedis rJedis = rPool.getResource();
 		rJedis.connect();

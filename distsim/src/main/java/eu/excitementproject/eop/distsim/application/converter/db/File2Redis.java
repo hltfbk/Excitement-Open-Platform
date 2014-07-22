@@ -28,7 +28,7 @@ public class File2Redis {
 
 		String infile = args[0];
 		String redisFile = args[1];
-		Redis redis = new Redis(redisFile);
+		Redis redis = new Redis(redisFile,false);
 		redis.open();
 		redis.clear();
 		

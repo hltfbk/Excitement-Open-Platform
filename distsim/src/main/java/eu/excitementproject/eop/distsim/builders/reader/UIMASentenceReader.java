@@ -5,18 +5,13 @@ package eu.excitementproject.eop.distsim.builders.reader;
 
 import java.io.File;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
+
 import java.util.Iterator;
 
-import org.apache.uima.UIMAFramework;
-import org.apache.uima.analysis_engine.AnalysisEngine;
-import org.apache.uima.cas.impl.XmiCasDeserializer;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.ResourceSpecifier;
-import org.apache.uima.util.XMLInputSource;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
+import eu.excitementproject.eop.common.utilities.uima.UimaUtils;
 import eu.excitementproject.eop.distsim.util.Configuration;
 import eu.excitementproject.eop.distsim.util.Pair;
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
@@ -32,7 +27,7 @@ import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
  */
 public abstract class UIMASentenceReader<T> extends FileBasedSentenceReader<T> {
 
-	protected static final String DEFAULT_AE_TEMPLATE_FILE ="desc/DummyAE.xml";
+	protected static final String DEFAULT_AE_TEMPLATE_FILE ="/desc/DummyAE.xml";
 	
 	public UIMASentenceReader(ConfigurationParams params)  {
 		converter = new CasTreeConverter();
@@ -59,16 +54,15 @@ public abstract class UIMASentenceReader<T> extends FileBasedSentenceReader<T> {
 	@Override
 	public void setSource(File source) throws SentenceReaderException {
 		try {
-			//the following should be replaced with: JCas jcas = UimaUtils.loadXmi(source,aeTemplateFile);
-			// After UimaUtils will be part of the EOP
-			InputStream s = UIMASentenceReader.class.getResourceAsStream(aeTemplateFile);
+			JCas jcas = UimaUtils.loadXmi(source,aeTemplateFile);
+			/*InputStream s = UIMASentenceReader.class.getResourceAsStream(aeTemplateFile);
 			XMLInputSource in = new XMLInputSource(s, null); 
 			ResourceSpecifier specifier = UIMAFramework.getXMLParser().parseResourceSpecifier(in);		
 			AnalysisEngine ae = UIMAFramework.produceAnalysisEngine(specifier);
 			JCas jcas = ae.newJCas(); 
 			FileInputStream inputStream = new FileInputStream(source);
 			XmiCasDeserializer.deserialize(inputStream, jcas.getCas()); 
-			inputStream.close();
+			inputStream.close();*/
 			
 			converter.convertCasToTrees(jcas);
 			extractData();
