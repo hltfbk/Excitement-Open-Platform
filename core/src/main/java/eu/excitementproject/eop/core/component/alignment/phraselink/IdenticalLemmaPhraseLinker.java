@@ -137,7 +137,7 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 
 		// Part two. annotating match with alignment.Link. 
 		// We do this by calling a utility method with the above information.  
-		addLinkAnnotations(aJCas, matchingPhraseStartLocations, matchingPhraseLengths); 
+		addLinkAnnotations(aJCas, matchingPhraseStartLocations, matchingPhraseLengths, tTokens, hTokens); 
 		
 	}
 
@@ -196,17 +196,67 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 	 * @param matchingPhraseStartLocationsOnText index "n" of this array is for n-th token of HSide. The value means m-th token on Tside. -1 means, no match. 
 	 * @param matchingPhraseLengths index "n" of this array is for n-th token of HSide. The value means length of matching tokens.  
 	 */
-	private static void addLinkAnnotations(JCas aJCas, int[] matchingPhraseStartLocationsOnText, int[] matchingPhraseLengths)
+	private static void addLinkAnnotations(JCas aJCas, int[] matchingPhraseStartLocationsOnText, int[] matchingPhraseLengths, Token[] tTokens, Token hTokens[]) throws AlignmentComponentException
 	{
 		logger.info("addLinnkAnnotations() called with the following info:"); 
 		logger.info("matchingPhraseStartingLocationsOnText:"  + Arrays.toString(matchingPhraseStartLocationsOnText)); 
 		logger.info("matchingPhraseLengths:" + Arrays.toString(matchingPhraseLengths)); 
 
-		// TODO write the code, utilize 
+		// Okay, we have enough information. 
+		// Add alignment.Link annotations by utilizing static method 
 		// MeteorPhraseResourceAligner.addOneAlignmentLinkOnTokenLevel(JCas textView, JCas hypoView, int fromBegin, int fromEnd, int toBegin, int toEnd, Link.Direction dir) throws CASException
 
-		// TODO make sure don't add links that only has non 
-		
+		for (int i=0; i < matchingPhraseStartLocationsOnText.length; i++)
+		{
+			// i-th Token of Hypothesis, has no matching identical lemma word/phrase on Text. Pass. 
+			if (matchingPhraseStartLocationsOnText[i] == -1) 
+				continue; 
+			
+			// The best (longest) "identically matching" lemma-sequence of current token (ith, on Hypothesis) 
+			// is starting on "startingTokenIdx" on TextTokens, and ends on "endingTokenIdx". 
+			int startingTokenIdx = matchingPhraseStartLocationsOnText[i]; 
+			int endingTokenIdx = startingTokenIdx + matchingPhraseLengths[i] - 1;
+			
+			// check exclusion case. 
+			if (containsOnlyNonContentPOSes (Arrays.copyOfRange(tTokens, startingTokenIdx, endingTokenIdx)))
+				continue; 
+			
+			// Okay. it is normal, so let's prepare to add Token level alignment.Link 
+			int tSideBegin; 
+			int tSideEnd;
+			int hSideBegin;
+			int hSideEnd;
+
+			try {
+				tSideBegin = tTokens[startingTokenIdx].getBegin(); 
+				tSideEnd = tTokens[endingTokenIdx].getEnd(); 
+				hSideBegin = hTokens[i].getBegin(); 
+				hSideEnd = hTokens[i + matchingPhraseLengths[i] -1].getEnd(); 
+			} catch (ArrayIndexOutOfBoundsException e )
+			{
+				throw new AlignmentComponentException("Internal integrity failure: internal logic of annotate() generated wrong parameter for the utility static method.", e); 
+			}
+					
+			// Now we can add Link itself... Borrowing a public static utility method from another module. 
+			
+			try {
+				JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
+				JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+				Link.Direction d = Link.Direction.Bidirection; // since it is "identical". 
+				Link aNewLink = MeteorPhraseResourceAligner.addOneAlignmentLinkOnTokenLevel(textView, hypoView, tSideBegin, tSideEnd, hSideBegin, hSideEnd, d);
+				
+				// as the Javadoc of the above utility method says, we need to add 
+				// The caller must do after the call .setStrength() .setAlignerID() .setAlignerVersion() .setLinkInfo(). (Also groupLabel, if using that) - (But this method does add the new Link to CAS annotation index)
+				aNewLink.setStrength(DEFAULT_LINK_STR); 
+				aNewLink.setAlignerID(ALIGNER_ID);
+				aNewLink.setAlignerVersion(ALIGNER_VER);
+				aNewLink.setLinkInfo(ALIGNER_LINK_INFO); 
+				
+			} catch (CASException e)
+			{
+				throw new AlignmentComponentException("Adding link instance failed with a CAS Exception. Something wasn't right on the input CAS.", e); 
+			}
+		}		
 	}
 	
 	
@@ -222,11 +272,9 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 	
 	public static Boolean containsOnlyNonContentPOSes(Token[] tokenArr)
 	{
-		
-//		for (Token t : tokenArr)
-//		{
-//			// TODO write this 
-//		}
+		logger.debug("checking non content POSes only or not: "); 
+		// TODO make Lemma/POS array, output on log. 
+		// TODO coding for actually checking this with map "isNonContentPos". 
 
 		return false; 
 	}
@@ -241,4 +289,11 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 	// non Content POS types. (among DKPro POS types that we use)  
 	// Punctuation, Preposition, Others, Conjunction, and Articles.  
 	final private static String[] nonContentPOSes = {"PUNC", "PP", "O", "CONJ", "ART"}; 	
+	
+	// meta-information that will be added on link instances added by the module. 
+	final private static double DEFAULT_LINK_STR = 1.0; 
+	final private static String ALIGNER_ID = "IdenticalLemmas";
+	final private static String ALIGNER_VER = "1.0";
+	final private static String ALIGNER_LINK_INFO = "SameLemma"; 
+			
 }
