@@ -17,6 +17,8 @@ import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import eu.excitement.type.alignment.LinkUtils;
+import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
@@ -27,7 +29,7 @@ public class IdenticalLemmaPhraseLinkerTest {
 		
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.DEBUG);  // to hide openNLP logs 
+		Logger.getRootLogger().setLevel(Level.INFO);  
 		Logger testlogger = Logger.getLogger(this.getClass().toString()); 
 
 		// prepare a lemmatizer 
@@ -62,6 +64,93 @@ public class IdenticalLemmaPhraseLinkerTest {
 			fail(e.getMessage()); 
 		}
 
+		LAPAccess tokenizer = lemmatizer; 
+		JCas aJCas = null; 
+		// Some RTE pairs, as test. 
+		try {
+			// RTE3 test pair 17 (some links) 
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"David Golinkin is single-handedly responsible for uncovering and re-publishing dozens of responsa of the Committee on Jewish Law and Standards of the Rabbinical Assembly, making them available to the general public in a three-volume set.",
+					"David Golinkin is the author of dozen of responsa of the Committee on Jewish Law and Standards of the Rabbinical Assembly."); 
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+
+			// RTE3 test pair 18 (0 links...) 
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"Ryo Okumoto (born in Osaka, Japan) is a keyboardist, best known for his work with progressive rock group Spock's Beard.", 
+					"The rock group Spock's Beard comes from Japan."
+					); 			
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+
+			// RTE3 test pair 35
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"A Revenue Cutter, the ship was named for Harriet Lane, niece of President James Buchanan, who served as Buchanan's White House hostess.",
+					"Harriet Lane was a relative of President James Buchanan."
+					); 			
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+			
+			// RTE3 test pair 2
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"Claude Chabrol (born June 24, 1930) is a French movie director and has become well-known in the 40 years since his first film, Le Beau Serge , for his chilling tales of murder, including Le Boucher.",
+					"Le Boucher was made by a French movie director."
+					); 			
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+			
+			
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
+		
+		// some German ones ... 
+		try {
+			// RTE3 test pair 17
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"David Golinkin ist ganz allein für die Entdeckung und Neuveröffentlichung Dutzender von Erwiderungen des Ausschusses für jüdische Gesetze und Normen der Rabbinerversammlung verantwortlich, so dass sie nun der breiten Öffentlichkeit in einer dreibändigen Reihe zugänglich sind.",
+					"David Golinkin ist der Autor Dutzender von Erwiderungen des Ausschusses für jüdische Gesetze und Normen der Rabbinerversammlung."
+					); 
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+
+			// RTE3 test pair 18 
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"Ryo Okumoto (geboren in Osaka, Japan) ist ein Keyboarder, der für seine Arbeit mit der progressiven Rockgruppe Spocks Beard bekannt ist.",
+					"Die Rockgruppe Spocks Beard kommt aus Japan."
+					); 			
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+
+			// RTE3 test pair 35
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"Das Schiff, ein Zollkutter, wurde nach Harriet Lane benannt, der Nichte des Präsidenten James Buchanan, die im Weißen Haus als Buchanans Hausherrin diente.", 
+					"Harriet Lane war eine Verwandte des Präsidenten James Buchanan."
+					); 			
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+			
+			// RTE3 test pair 2
+			aJCas = tokenizer.generateSingleTHPairCAS(
+					"Claude Chabrol (geboren am 24. Juni 1930) ist ein französischer Regisseur und wurde in den 40er Jahren nach seinem ersten Film, 'Le Beau Serge', berühmt für seine schaurigen Mordgeschichten, wie 'Le Boucher'.",
+					"Le Boucher wurde von einem französischen Regisseur geleitet."
+					); 			
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+			
+			
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
+
+
+		
+		
+		
 	}
 
 	

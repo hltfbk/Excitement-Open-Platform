@@ -16,7 +16,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
-import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
+//import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
@@ -52,12 +52,12 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 		
 	public IdenticalLemmaPhraseLinker()
 	{
-		// initialize nonContentPOS map 
-		isNonContentPos = new HashMap<String,Boolean>(); 
-		for (String s : nonContentPOSes)
-		{
-			isNonContentPos.put(s, true); 
-		}
+//		// initialize nonContentPOS map 
+//		isNonContentPos = new HashMap<String,Boolean>(); 
+//		for (String s : nonContentPOSes)
+//		{
+//			isNonContentPos.put(s, true); 
+//		}
 	}
 	
 	
@@ -202,6 +202,8 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 		logger.info("matchingPhraseStartingLocationsOnText:"  + Arrays.toString(matchingPhraseStartLocationsOnText)); 
 		logger.info("matchingPhraseLengths:" + Arrays.toString(matchingPhraseLengths)); 
 
+		int countNewLinks = 0; 
+		int ignoredNoncontentMatches = 0; 
 		// Okay, we have enough information. 
 		// Add alignment.Link annotations by utilizing static method 
 		// MeteorPhraseResourceAligner.addOneAlignmentLinkOnTokenLevel(JCas textView, JCas hypoView, int fromBegin, int fromEnd, int toBegin, int toEnd, Link.Direction dir) throws CASException
@@ -216,10 +218,27 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 			// is starting on "startingTokenIdx" on TextTokens, and ends on "endingTokenIdx". 
 			int startingTokenIdx = matchingPhraseStartLocationsOnText[i]; 
 			int endingTokenIdx = startingTokenIdx + matchingPhraseLengths[i] - 1;
-			
+
+			String logstring = ""; 
+			for(int j=0; j < matchingPhraseLengths[i]; j++)
+			{
+				logstring += hTokens[i+j].getCoveredText() + " "; 
+			}
+
+			logger.debug("addLinkAnnotations: considering the following sequence" + "\"" + logstring + "\""); 
+
 			// check exclusion case. 
-			if (containsOnlyNonContentPOSes (Arrays.copyOfRange(tTokens, startingTokenIdx, endingTokenIdx)))
+			if (containsOnlyNonContentPOSes (Arrays.copyOfRange(tTokens, startingTokenIdx, endingTokenIdx + 1)))
+			{
+				logger.debug("will not add an alignment.Link for this sequence."); 
+				ignoredNoncontentMatches ++; 
 				continue; 
+			}
+			
+			// consider: remove punctuations at the ending of a sequence? hmm. maybe not. if to do so, here is the place 
+			// yet another a boolean asking method.. 
+			
+			logger.debug("Adding an alignment.Link for the sequence."); 
 			
 			// Okay. it is normal, so let's prepare to add Token level alignment.Link 
 			int tSideBegin; 
@@ -243,6 +262,7 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 				JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 				JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 				Link.Direction d = Link.Direction.Bidirection; // since it is "identical". 
+								
 				Link aNewLink = MeteorPhraseResourceAligner.addOneAlignmentLinkOnTokenLevel(textView, hypoView, tSideBegin, tSideEnd, hSideBegin, hSideEnd, d);
 				
 				// as the Javadoc of the above utility method says, we need to add 
@@ -252,11 +272,15 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 				aNewLink.setAlignerVersion(ALIGNER_VER);
 				aNewLink.setLinkInfo(ALIGNER_LINK_INFO); 
 				
+				countNewLinks++; 
+				
 			} catch (CASException e)
 			{
 				throw new AlignmentComponentException("Adding link instance failed with a CAS Exception. Something wasn't right on the input CAS.", e); 
 			}
 		}		
+		
+		logger.info("added " + countNewLinks + " new links on the CAS" + " (ignored " + ignoredNoncontentMatches + " function-word only possible links)"); 
 	}
 	
 	
@@ -270,25 +294,51 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 		return null; // this module does not support multiple-instances (e.g. with different configurations) 
 	}
 	
-	public static Boolean containsOnlyNonContentPOSes(Token[] tokenArr)
+	private static Boolean containsOnlyNonContentPOSes(Token[] tokenArr) throws AlignmentComponentException
 	{
 		logger.debug("checking non content POSes only or not: "); 
-		// TODO make Lemma/POS array, output on log. 
-		// TODO coding for actually checking this with map "isNonContentPos". 
 
-		return false; 
+		String logline=""; 
+		Boolean nonContentPOSesOnly = true; 
+		for(Token t : tokenArr)
+		{
+			POS p = t.getPos(); 
+			if (p == null)
+			{
+				throw new AlignmentComponentException("Unable to Process this CAS: There is one (or more) token without POS annotation. The process requires POS and Lemma annotated.");
+			}
+			String s = p.getType().toString(); 	
+			String typeString = s.substring(s.lastIndexOf(".") + 1); 
+			logline += t.getCoveredText() + "/" + typeString + ", "; 
+			if (!(isNonContentPos.containsKey(typeString)) )
+			{
+				nonContentPOSesOnly = false; 
+				// break; // no need to continue. 
+			}
+		}
+		logger.debug(logline + " => " + nonContentPOSesOnly.toString()); 
+
+		return nonContentPOSesOnly; 
 	}
 	
 	// logger 
-	private final static Logger logger = Logger.getLogger(MeteorPhraseResourceAligner.class);
+	private final static Logger logger = Logger.getLogger(IdenticalLemmaPhraseLinker.class);
 
-	// 
-	final private Map<String,Boolean> isNonContentPos; 
 
 	// Non-configurable, (hard-coded) settings. 
 	// non Content POS types. (among DKPro POS types that we use)  
 	// Punctuation, Preposition, Others, Conjunction, and Articles.  
 	final private static String[] nonContentPOSes = {"PUNC", "PP", "O", "CONJ", "ART"}; 	
+	
+	private static Map<String,Boolean> isNonContentPos = new HashMap<String, Boolean>(); 
+	static {
+		// initialize nonContentPOS map 
+		isNonContentPos = new HashMap<String,Boolean>(); 
+		for (String s : nonContentPOSes)
+		{
+			isNonContentPos.put(s, true); 
+		}		
+	}
 	
 	// meta-information that will be added on link instances added by the module. 
 	final private static double DEFAULT_LINK_STR = 1.0; 
