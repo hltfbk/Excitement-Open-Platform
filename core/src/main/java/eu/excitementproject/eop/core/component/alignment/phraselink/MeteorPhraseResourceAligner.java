@@ -300,12 +300,12 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 		FSArray annots = new FSArray(view, countTokens); 
 		aTarget.setTargetAnnotations(annots); 
 		Iterator<Token> itr = tokens.iterator(); 
-		int begin=0; 
+		int begin = -1;  // I am using -1 as "not set yet". 
 		int end=0; 
 		for(int i=0; i < countTokens; i++)
 		{
 			Token t = itr.next(); 
-			if (begin == 0)
+			if (begin == -1) // if not set. 
 				begin = t.getBegin(); 
 			end = t.getEnd();  // we are assuming that collection tokens is ordered. 
 			annots.set(i, t); 

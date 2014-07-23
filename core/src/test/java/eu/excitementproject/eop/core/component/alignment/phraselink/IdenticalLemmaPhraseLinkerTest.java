@@ -27,7 +27,7 @@ public class IdenticalLemmaPhraseLinkerTest {
 		
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.INFO);  // to hide openNLP logs 
+		Logger.getRootLogger().setLevel(Level.DEBUG);  // to hide openNLP logs 
 		Logger testlogger = Logger.getLogger(this.getClass().toString()); 
 
 		// prepare a lemmatizer 
