@@ -1003,7 +1003,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	 */
 	private void printDecisionTable(SimpleMetaEDAConfidenceFeatures meda) {
 		//print detailed classification overview table for test data
-		HashMap<Integer, float[]> results = meda.getResults();
+		HashMap<Integer, double[]> results = meda.getResults();
 		StringBuffer sb = new StringBuffer();
 		sb.append(String.format("%30s", "PairID")+String.format("%30s", "GoldLabel"));
 		

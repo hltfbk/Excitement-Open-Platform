@@ -63,10 +63,10 @@ public class MetaEDAEval {
 		//for english
 		Set<Integer> edanrs_EN = new HashSet<Integer>();
 		//add indices for edas 
-		edanrs_EN.add(1);
+//		edanrs_EN.add(1);
 //		edanrs_EN.add(2);
-		edanrs_EN.add(3);
-		edanrs_EN.add(4);
+//		edanrs_EN.add(3);
+//		edanrs_EN.add(4);
 		edanrs_EN.add(5);
 
 		
@@ -356,7 +356,7 @@ public class MetaEDAEval {
 			System.out.println(Arrays.deepToString(meda.getClassifier().coefficients()));
 		}
 		//print detailed classification overview table for test data
-		HashMap<Integer, float[]> results = meda.getResults();
+		HashMap<Integer, double[]> results = meda.getResults();
 		StringBuffer sb = new StringBuffer();
 		sb.append(String.format("%30s", "PairID")+String.format("%30s", "GoldLabel"));
 		
