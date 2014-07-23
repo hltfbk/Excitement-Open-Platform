@@ -16,8 +16,6 @@ import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
 import weka.classifiers.Classifier;
-import weka.classifiers.bayes.BayesianLogisticRegression;
-import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.Logistic;
 import weka.core.Attribute;
 import weka.core.FastVector;
@@ -102,10 +100,10 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	 * returns the classification results
 	 * @return
 	 */
-	public HashMap<Integer,float[]> getResults(){
+	public HashMap<Integer,double[]> getResults(){
 		return this.results;
 	}
-	
+
 	/**
 	 * returns the classifier
 	 * @return
@@ -245,6 +243,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			
 			//classifier is a Logistic classifier with default options and parameters
 			this.classifier = new Logistic();
+
 			try {
 				//train the classifier on training data set
 				this.classifier.buildClassifier(instances);
@@ -384,6 +383,8 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 		
 		
 		DecisionLabel dLabel;	
+		double[] distribution = new double[2]; //at index 0: probability for NonEntailment, index 1: probability for Entailment
+
 		
 		//mode 2: classify on features collected from BasicEDAs' decisions
 		if (this.confidenceAsFeature){
@@ -415,6 +416,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			double result = 0.0;
 			try {
 				result = this.classifier.classifyInstance(instances.firstInstance());
+				distribution = this.classifier.distributionForInstance(instances.firstInstance());				
 				instances.firstInstance().setClassValue(result);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -434,13 +436,20 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 		} else {
 			//mode 1: majority vote
 			int decision = 0;
+			int nonEntCount = 0; //count how often NonEntailment is voted
+			int entCount = 0; //same for Entailment
 			for (Double feature : features) {
 				if (feature < 0){
 					decision -= 1;
+					nonEntCount += 1;
 				} else {
 					decision += 1;
+					entCount += 1;
 				}
 			}
+			distribution[0]=nonEntCount/features.size();
+			distribution[1]=entCount/features.size();
+
 			if (decision <= 0){
 				dLabel = DecisionLabel.NonEntailment;
 			} else {
@@ -448,16 +457,18 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 			}
 			logger.debug("DecisionLabel after voting: "+dLabel);
 		}
-		
+		double confidence = 0;
 		if (dLabel == DecisionLabel.Entailment){
-			this.results.get(pairID)[edas.size()+1] = 1f; //on last position in array comes meta decision
+			confidence = distribution[1];
+			this.results.get(pairID)[edas.size()+1] = confidence; //on last position in array comes meta decision
 		}
 		else if (dLabel == DecisionLabel.NonEntailment){
-			this.results.get(pairID)[edas.size()+1] = -1f;
+			confidence = distribution[0];
+			this.results.get(pairID)[edas.size()+1] = -1* confidence;
 		}
 		
-		return new MetaTEDecision(dLabel, pair.getPairID());
-	}
+		return new MetaTEDecision(dLabel, confidence, pair.getPairID());
+	}		
 
 	/**
 	 * shuts down SimpleMetaEDAConfidenceFeatures and disengage all resources
@@ -566,7 +577,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	/*
 	 * store classification results in hashmap, one entry for each pair, especially useful for testing
 	 */
-	private HashMap<Integer,float[]> results = new HashMap<Integer,float[]>();
+	private HashMap<Integer,double[]> results = new HashMap<Integer,double[]>();
 
 	/**
 	 * contains all internal basic EDAs
@@ -903,7 +914,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	 */
 		private ArrayList<Double> getFeatures(JCas jcas, int pairID) {
 			ArrayList<Double> features = new ArrayList<Double>();
-			float[] resultsForPair = new float[this.edas.size()+2];
+			double[] resultsForPair = new double[this.edas.size()+2];
 			for (int i=0; i<this.edas.size(); i++){
 				EDABasic<? extends TEDecision> eda = this.edas.get(i);
 				//process aCas and get confidence
@@ -927,7 +938,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 					confidence = confidence * -1;
 				}
 				features.add(confidence);
-				resultsForPair[i+1]=(float) (confidence);
+				resultsForPair[i+1]= confidence;
 				this.results.put(pairID, resultsForPair);
 			}
 			logger.debug("SimpleMetaEDAConfidenceFeatures features from EDABasic confidences: "+features.toString());
