@@ -82,7 +82,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	
 	/**
 	 * the logger, "info" level just reports EDA statuses like "initializing", "training", etc.;
-	 * "fine" level also reports TEDecisions from EDABasic instances and the SimpleMetaEDAConfidenceFeatures's decisions for classified data
+	 * "debug" level also reports TEDecisions from EDABasic instances and the SimpleMetaEDAConfidenceFeatures's decisions for classified data
 	 */
 	public final static Logger logger = Logger.getLogger(SimpleMetaEDAConfidenceFeatures.class.getName());
 		
@@ -164,7 +164,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	 * Starts training on the EDABasic instances' confidence features with the given configuration.
 	 * SimpleMetaEDAConfidenceFeatures initialization is included in this method.
 	 * Note that training is only performed in mode 2 (confidence as features).
-	 * In mode 2) a BayesianLogisticRegression classifier is trained on the EDABasic decisions and confidences.
+	 * In mode 2) a Logistic classifier is trained on the EDABasic decisions and confidences.
 	 * Training and testing data directories are defined in the configuration file.
 	 */
 	@Override
@@ -268,7 +268,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	* Starts training on the EDABasic instances' confidence features with the given parameters.
 	* SimpleMetaEDAConfidenceFeatures initialization is included in this method.
 	* Note that training is only performed in mode 2 (confidence as features).
-	* In mode 2) a BayesianLogisticRegression classifier is trained on the EDABasic decisions and confidences.
+	* In mode 2) a Logistic classifier is trained on the EDABasic decisions and confidences.
 	* Training and testing data directories are defined in the configuration file.
 	*/
 	public void startTraining(String language, boolean confidenceAsFeatures, boolean overwrite, String modelFile, String trainDir, String testDir) throws EDAException, LAPException {
@@ -369,7 +369,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 	 * -> in mode 1) just collect decisions from EDABasic instances and go with the majority (or NonEntailment in case of a tie)
 	 * -> in mode 2) collect features from EDABasic instances for the JCas text and classify the data with this SimpleMetaEDAConfidenceFeatures's  trained weka classifier
 	 * @param aCas the JCas to process
-	 * @return a MetaTEDecision with decision label and pairID for the classified input JCas
+	 * @return a MetaTEDecision with decision label, confidence, and pairID for the classified input JCas
 	 */
 	@Override
 	public MetaTEDecision process(JCas aCas) throws EDAException,
