@@ -2,6 +2,7 @@ package eu.excitementproject.eop.core.metaeda;
 
 import java.io.File;
 import java.util.ArrayList;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -11,6 +12,8 @@ import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
 import org.uimafit.util.JCasUtil;
+
+import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
 
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
@@ -30,8 +33,6 @@ import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.MaltParserDE;
 import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
-//import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
-//import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
 /**
  * This class performs as a usage example with tests for <code>MetaEDA</code>.
@@ -92,6 +93,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 	public static void main(String[] args){
 		logger.setLevel(Level.DEBUG); //change level to "INFO" if you want to skip detailed information about processes
 		SimpleMetaEDAConfidenceFeaturesUsageExample test = new SimpleMetaEDAConfidenceFeaturesUsageExample();
+		
 		//perform tests contained in testDE method for German
 		test.testDE();
 		//perform tests contained in testEN method for English
@@ -125,8 +127,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		test2EN(); //running all three tests takes a long time
 		test3EN(); //test 2 has to run before 3
 	}
-	
-	
+
 	/**
 	 * Tests MetaEDA in mode 1 (majority vote) with two internal EDAs for German: 1)TIE:Base and 2)Edits:PSO.	
 	 * 
@@ -221,7 +222,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		//preprocess test and training data
 		try {
 			meda.initialize(metaconfig);
-//			preprocess(meda);
+			preprocess(meda);
 			logger.info("Initialization done.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -787,10 +788,19 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 		int sum = 0;
 		logger.info("build CASes for input sentence pairs");
 		
+		MaltParser mp = new MaltParser();
+		
 		for (File xmi : FileUtils.listFiles(new File(meda.getTestDir()), new String[] {"xmi"}, false)){
 			JCas jcas = null;
 			try {
 				jcas = PlatformCASProber.probeXmi(xmi, null);
+				PlatformCASProber.probeCas(jcas, null);
+				try {
+					mp.process(jcas);
+				} catch (AnalysisEngineProcessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			} catch (LAPException e) {
 				e.printStackTrace();
 			} 
@@ -852,7 +862,8 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 			System.out.println(Arrays.deepToString(meda.getClassifier().coefficients()));
 		}
 		
-		HashMap<Integer, float[]> results = meda.getResults();
+		HashMap<Integer, double[]> results = meda.getResults();
+		
 		StringBuffer sb = new StringBuffer();
 		sb.append(String.format("%30s", "PairID")+String.format("%30s", "GoldLabel"));
 		
@@ -886,6 +897,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 			if (meda.getLanguage().equals("DE")){
 				logger.info("preprocessing German training and test data.");
 				LAPAccess tlap = null;
+				LAPAccess mlap = null;
 				try {
 					tlap = new MaltParserDE();
 				} catch (LAPException e) {
@@ -900,6 +912,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				//file pre-processing
 				try {
 					tlap.processRawInputFormat(f, outputDirTest);
+					mlap.processRawInputFormat(f, outputDirTest);
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
@@ -911,6 +924,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				}
 				try {
 					tlap.processRawInputFormat(g, outputDirTrain);
+					mlap.processRawInputFormat(g, outputDirTrain);
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
