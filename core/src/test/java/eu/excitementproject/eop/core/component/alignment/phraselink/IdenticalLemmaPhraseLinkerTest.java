@@ -37,6 +37,7 @@ public class IdenticalLemmaPhraseLinkerTest {
 		try 
 		{
 			lemmatizer = new TreeTaggerEN(); 
+			lemmatizer.generateSingleTHPairCAS("this is a test.", "TreeTagger in sight?"); 
 		}
 		catch (Exception e)
 		{
