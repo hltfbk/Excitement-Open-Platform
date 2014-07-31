@@ -321,7 +321,8 @@ public class DataHandling {
 		HashMap<String,Set<PairXMLData>> balancedCluster = new HashMap<String,Set<PairXMLData>>();
 		
 		// adjust how close to the 50/50 ratio we should get with undersampling. I'm allowing here a bit more of the majority class
-		double ratio = 1.1;
+//		double ratio = 1.1;
+		double ratio = 1.0;
 		int min = Integer.MAX_VALUE;
 		
 		for(String cls: oldCluster.keySet()) {
