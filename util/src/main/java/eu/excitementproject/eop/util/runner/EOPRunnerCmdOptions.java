@@ -22,6 +22,9 @@ public class EOPRunnerCmdOptions {
 	@Option(name="-lap", usage="The LAP to be used")
 	public String lap = null;
 	
+	@Option(name="-nolap", usage="Even if train and test files are given, don't do preprocessing (useful for the Experimenter)")
+	public boolean nolap = false;
+	
 	@Option(name="-text", usage="The text part of a text/hypothesis pair")
 	public String text = "";
 	

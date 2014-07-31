@@ -141,6 +141,7 @@ public class Experimenter {
 
 		// make the list of arguments for the EOPRunner
 		String[] args =  new String[] {"-config", options.config, "-train", "-trainFile", tmpTrainFile, "-test", "-testFile", tmpTestFile, "-output", options.output, "-score"};
+
 		
 		logger.info("Running the EOP with arguments: " + StringUtils.join(args," "));		
 //		System.out.println("Running the EOP with arguments: " + StringUtils.join(args," "));		

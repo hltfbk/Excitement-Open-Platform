@@ -335,7 +335,9 @@ public class EOPRunner {
 				
 				logger.info("\t training file: " + trainFile + "\n\t training dir: " + trainDir);
 				
-				lapRunner.runLAPOnFile(trainFile, trainDir);
+				if (! option.nolap) {
+					lapRunner.runLAPOnFile(trainFile, trainDir);
+				}
 			}
 			
 			if (option.train) 				
@@ -347,7 +349,9 @@ public class EOPRunner {
 
 				logger.info("\t testing file: " + testFile + "\n\t testing dir: " + testDir);
 				
-				lapRunner.runLAPOnFile(testFile, testDir);
+				if (! option.nolap) {
+					lapRunner.runLAPOnFile(testFile, testDir);
+				}
 			}
 			
 			if (option.test) {
