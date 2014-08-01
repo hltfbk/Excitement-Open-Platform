@@ -1,4 +1,4 @@
-package eu.excitement.eop.alignmentedas;
+package eu.excitementproject.eop.alignmentedas;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
