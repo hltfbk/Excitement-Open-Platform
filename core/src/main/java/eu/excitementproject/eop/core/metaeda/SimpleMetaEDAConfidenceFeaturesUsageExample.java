@@ -35,6 +35,13 @@ import eu.excitementproject.eop.lap.dkpro.MaltParserDE;
 import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
 
 /**
+ * Caution: this example requires TreeTagger for successful running. see the following file in the source tree, 
+ *  /Excitement-Open-Platform/lap/src/scripts/treetagger/README.txt 
+ *  or see the following URL 
+ *  https://github.com/hltfbk/Excitement-Open-Platform/wiki/Step-by-Step,-TreeTagger-Installation
+ * ===
+ * ===
+ * 
  * This class performs as a usage example with tests for <code>MetaEDA</code>.
  * The user can test some sample configurations, modify them or create and test a MetaEDA with their own configurations.
  * 
@@ -897,7 +904,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 			if (meda.getLanguage().equals("DE")){
 				logger.info("preprocessing German training and test data.");
 				LAPAccess tlap = null;
-				LAPAccess mlap = null;
+//				LAPAccess mlap = null;
 				try {
 					tlap = new MaltParserDE();
 				} catch (LAPException e) {
@@ -912,7 +919,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				//file pre-processing
 				try {
 					tlap.processRawInputFormat(f, outputDirTest);
-					mlap.processRawInputFormat(f, outputDirTest);
+//					mlap.processRawInputFormat(f, outputDirTest);
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
@@ -924,7 +931,7 @@ public class SimpleMetaEDAConfidenceFeaturesUsageExample {
 				}
 				try {
 					tlap.processRawInputFormat(g, outputDirTrain);
-					mlap.processRawInputFormat(g, outputDirTrain);
+//					mlap.processRawInputFormat(g, outputDirTrain);
 				} catch (LAPException e) {
 					e.printStackTrace();
 				}
