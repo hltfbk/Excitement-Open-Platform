@@ -155,6 +155,8 @@ public class BasicRedisRunner implements RedisRunner {
 	protected static final String PID_FILE_EXT = ".pid";
 	protected static final String VM_SWAP_FILE_EXT = ".swap";
 	protected static final String DB_FILE_EXT = ".rdb";
+	protected static final String VM_ENABLED = "vm-enabled";
+	protected static final String REALY_USE_VM = "really-use-vm";
 
 	protected static RedisRunner instance = null;
 	protected static String redisBinDir; 	 //a path to the Redis binary directory
@@ -274,7 +276,7 @@ public class BasicRedisRunner implements RedisRunner {
 	 * @see eu.excitementproject.eop.distsim.redis.RedisRunner#run(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public synchronized int run(final String dbFile) throws RedisRunException {
+	public synchronized int run(final String dbFile, boolean bVM) throws RedisRunException {
 	
 		RedisInstanceInfo instanceInfo = mapDir2FileInstanceInfo.get(dbFile);
 		if (instanceInfo == null) {
@@ -284,7 +286,7 @@ public class BasicRedisRunner implements RedisRunner {
 			} catch (NoAvailablePortException e) {
 				throw new RedisRunException(e);
 			}
-			run1(dbFile,port);
+			run1(dbFile,port,bVM);
 			Runtime.getRuntime().addShutdownHook(new Thread() {
 				@Override
 				public void run() {
@@ -308,15 +310,17 @@ public class BasicRedisRunner implements RedisRunner {
 	 * Run, if needed, a local Redis server for a given Redis database file in a given directory
 	 * 
 	 * @param dbFile An existing or non-existing Redis database file. The parent directory of @param dbFile should have writing permissions
+	 * @param port a port for the redis server to be run
+	 * @param bVM should the redis server run on low memory usage mode (virtual memory).
 	 * @throws RedisRunException
 	 */
-	public synchronized int run1(final String dbFile, int port) throws RedisRunException {
+	public synchronized int run1(final String dbFile, int port, boolean bVM) throws RedisRunException {
 		
 		logger.debug("running redis server for file " + dbFile);
 		
 		//Assumption: dbFile is a Redis db file (.rdb) or non existing file		
 		try {
-			String confFile = generateConfigurationFile(dbFile,port,templateConfigurationFile);
+			String confFile = generateConfigurationFile(dbFile,port,templateConfigurationFile,bVM);
 			
 			logger.info("A new instance is about to run on port " + port + " according to " + confFile + " configuration");
 			
@@ -414,11 +418,12 @@ public class BasicRedisRunner implements RedisRunner {
 	 * @param dbDir an existing directory  with writing permissions.
 	 * @param dbFile a path to an existing or non-existing Redis database file, located at @param dbDir directory
 	 * @param port an available port for Redis connection
+	 * @param bVM should the redis server run on low memory usage mode (virtual memory).
 	 * @return the path to the new generated configuration file
 	 * @throws IOException 
 	 */
-	public synchronized static String generateConfigurationFile(String dbfile, int port) throws IOException {
-		return generateConfigurationFile(dbfile,port,DEFAULT_REDIS_BIN_DIR + "/" + DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME);
+	public synchronized static String generateConfigurationFile(String dbfile, int port, boolean bVM) throws IOException {
+		return generateConfigurationFile(dbfile,port,DEFAULT_REDIS_BIN_DIR + "/" + DEFAULT_TEMPLATE_CONFIGURATION_FILE_NAME,bVM);
 	}
 	
 	/**
@@ -429,10 +434,11 @@ public class BasicRedisRunner implements RedisRunner {
 	 * @param dbFile a path to an existing or non-existing Redis database file, located at @param dbDir directory
 	 * @param port an available port for Redis connection
 	 * @param templateConfigurationFile a template of redis configuration file
+	 * @param bVM should the redis server run on low memory usage mode (virtual memory).
 	 * @return the path to the new generated configuration file
 	 * @throws IOException 
 	 */
-	public synchronized static String generateConfigurationFile(String dbfile, int port, String templateConfigurationFile) throws IOException {
+	public synchronized static String generateConfigurationFile(String dbfile, int port, String templateConfigurationFile, boolean bVM) throws IOException {
 		String confFile = dbfile + CONF_FILE_EXT;
 		String dbDir = new File(dbfile).getParent();
 		BufferedReader reader = new BufferedReader(new FileReader(templateConfigurationFile));
@@ -449,6 +455,10 @@ public class BasicRedisRunner implements RedisRunner {
 				writer.println(DB_FILE_NAME + " " + new File(dbfile).getName());
 			} else if (line.startsWith(VM_SWAP_FILE)) {
 				writer.println(VM_SWAP_FILE + " " + dbfile + VM_SWAP_FILE_EXT);
+			} else if (line.startsWith(VM_ENABLED)) {
+				writer.println(VM_ENABLED + " " + (bVM ? "yes" : "no"));
+				if (bVM)
+					writer.println(REALY_USE_VM + " yes");
 			} else {
 				writer.println(line);
 			}
@@ -528,9 +538,9 @@ public class BasicRedisRunner implements RedisRunner {
 		try {
 			BasicRedisRunner.setRedisBinDir(args[0]);
 			RedisRunner runner = BasicRedisRunner.getInstance(args[1]);
-			runner.run(args[2]);
-			runner.run(args[2]);
-			runner.run(args[2]);
+			runner.run(args[2],false);
+			runner.run(args[2],false);
+			runner.run(args[2],false);
 			
 			Thread.sleep(10000);			
 			runner.close(args[2]);

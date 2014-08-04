@@ -49,22 +49,30 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 		jedis.getClient().setTimeoutInfinite();
 	}*/
 
-	public RedisBasedCountableIdentifiableStorage(String dbFile) throws RedisRunException {
+	public RedisBasedCountableIdentifiableStorage(String dbFile, boolean bVM) throws RedisRunException {
+		init(dbFile,bVM);
+	}
+	
+	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params) throws ConfigurationException, RedisRunException {
+		boolean bVM = false;
+		try {
+			bVM = params.getBoolean(eu.excitementproject.eop.redis.Configuration.REDIS_VM);
+		} catch (ConfigurationException e) {}
+		init(params.getString(Configuration.REDIS_FILE),bVM);
+	}
+
+	public RedisBasedCountableIdentifiableStorage(String dbFile, boolean bVM, PersistenceDevice device) throws LoadingStateException, RedisRunException {
+		this(dbFile, bVM);
+		loadState(device);
+	}
+	
+	protected void init(String dbFile, boolean bVM) throws RedisRunException {
 		this.dbFile = dbFile;
-		int port = BasicRedisRunner.getInstance().run(dbFile);
+		int port = BasicRedisRunner.getInstance().run(dbFile,bVM);
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
 		jedis = pool.getResource();
 		jedis.connect();
 		jedis.getClient().setTimeoutInfinite();
-	}
-	
-	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params) throws ConfigurationException, RedisRunException {
-		this(params.getString(Configuration.REDIS_FILE));
-	}
-
-	public RedisBasedCountableIdentifiableStorage(String dbFile, PersistenceDevice device) throws LoadingStateException, RedisRunException {
-		this(dbFile);
-		loadState(device);
 	}
 	
 	public RedisBasedCountableIdentifiableStorage(ConfigurationParams params, PersistenceDevice device) throws ConfigurationException, LoadingStateException, RedisRunException {
@@ -268,7 +276,7 @@ public class RedisBasedCountableIdentifiableStorage<T extends Externalizable & C
 	}
 	
 	protected Jedis jedis;
-	protected final String dbFile;
+	protected String dbFile;
 
 
 }

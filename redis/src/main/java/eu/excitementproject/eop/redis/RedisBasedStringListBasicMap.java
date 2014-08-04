@@ -36,13 +36,13 @@ public class RedisBasedStringListBasicMap {
 
 	public static final String ELEMENT_CLASS_NAME_KEY = "element-class-name";
 	
-	public RedisBasedStringListBasicMap(String dbFile, String redisDir) throws FileNotFoundException, RedisRunException {
-		init(dbFile, redisDir);
+	public RedisBasedStringListBasicMap(String dbFile, String redisDir, boolean bVM) throws FileNotFoundException, RedisRunException {
+		init(dbFile, redisDir,bVM);
 
 	}
 	
-	public RedisBasedStringListBasicMap(String dbFile) throws FileNotFoundException, RedisRunException {
-		init(dbFile);
+	public RedisBasedStringListBasicMap(String dbFile, boolean bVM) throws FileNotFoundException, RedisRunException {
+		init(dbFile,bVM);
 	}
 
 	public RedisBasedStringListBasicMap(String host, int port) {
@@ -52,27 +52,31 @@ public class RedisBasedStringListBasicMap {
 	
 	public RedisBasedStringListBasicMap(ConfigurationParams params) throws ConfigurationException, FileNotFoundException, RedisRunException {
 		String dbFile = params.get(Configuration.REDIS_FILE);
+		boolean bVM = false;
+		try {
+			bVM = params.getBoolean(Configuration.REDIS_VM);
+		} catch (ConfigurationException e) {}
 		String redisDir = null;
 		try {
-			redisDir = params.get(Configuration.REDIS_BIN_DIR);
-			init(dbFile,redisDir);
+			redisDir = params.get(Configuration.REDIS_BIN_DIR);			
+			init(dbFile,redisDir,bVM);
 		} catch (ConfigurationException e) {
-			init(dbFile);
+			init(dbFile,bVM);
 		}
 		
 	}
 	
-	protected void init(String dbFile) throws FileNotFoundException, RedisRunException {
+	protected void init(String dbFile, boolean bVM) throws FileNotFoundException, RedisRunException {
 		this.dbFile = dbFile;
-		int port = BasicRedisRunner.getInstance().run(dbFile);
+		int port = BasicRedisRunner.getInstance().run(dbFile,bVM);
 		init("localhost",port);
 
 	}
 
-	protected void init(String dbFile, String redisDir) throws FileNotFoundException, RedisRunException {
+	protected void init(String dbFile, String redisDir, boolean bVM) throws FileNotFoundException, RedisRunException {
 		this.dbFile = dbFile;
 		BasicRedisRunner.setRedisBinDir(redisDir);
-		int port = BasicRedisRunner.getInstance().run(dbFile);
+		int port = BasicRedisRunner.getInstance().run(dbFile,bVM);
 		init("localhost",port);
 
 	}

@@ -72,7 +72,7 @@ public class SimilarityFile2Redis {
 			//}
 			file.open();
 			
-			redis = new Redis(confParams.getString(Configuration.REDIS_FILE));
+			redis = new Redis(confParams.getString(Configuration.REDIS_FILE),false);
 			redis.open();
 			redis.clear();			
 						

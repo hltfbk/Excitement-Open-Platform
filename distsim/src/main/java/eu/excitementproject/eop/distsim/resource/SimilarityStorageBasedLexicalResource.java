@@ -110,8 +110,8 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 		this(new DefaultSimilarityStorage(leftRedisHost,leftRedisPort, rightRedisHost, rightRedisPort, resourceName,instanceName),maxNumOfRetrievedRules);
 	}
 
-	public SimilarityStorageBasedLexicalResource(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, FileNotFoundException, RedisRunException {
-		this(new DefaultSimilarityStorage(l2rRedisFile, r2lRedisFile, resourceName, instanceName),maxNumOfRetrievedRules);
+	public SimilarityStorageBasedLexicalResource(String l2rRedisFile, String r2lRedisFile, boolean bVM, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, FileNotFoundException, RedisRunException {
+		this(new DefaultSimilarityStorage(l2rRedisFile, r2lRedisFile, resourceName, instanceName, bVM),maxNumOfRetrievedRules);
 	}
 	
 	/* (non-Javadoc)
