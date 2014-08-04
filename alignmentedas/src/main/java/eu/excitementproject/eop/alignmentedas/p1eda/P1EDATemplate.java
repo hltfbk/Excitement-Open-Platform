@@ -5,8 +5,10 @@ package eu.excitementproject.eop.alignmentedas.p1eda;
 
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
+import weka.classifiers.Classifier;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -16,15 +18,54 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
 /**
  * This is a template, abstract class for P1 EDA. 
  * 
+ * <H3> What this template class is for? </H3>
+ * <P> 
+ * It provides basic "flow" for process and training of alignment-based EDA. 
+ * The template is an "abstract" class, and supposed to be extended to become 
+ * an actual Entailment Decision Algorithm (EDA) class.  
+ * 
+ * <P> 
+ * The following two methods *must* be extended (override) 
+ * <UL>
+ *   <LI> addAlignment() 
+ *   <LI> evaluateAlignments() 
+ * </UL>
+ * 
+ * <P>
+ * The following methods are optional to be extended (EDA can work and classify 
+ * Entailment, even though they are not overridden). They provide optional capabilities.   
+ * 
+ * <UL>
+ *   <LI> TODO write 
+ *   <LI> 
+ * </UL>
+ * 
+ * <P> It is recommended to check actual example codes to see how you make 
+ * an alignment-based EDA by extending this abstract class. Please check the following 
+ * classes: {@link ClassName} TODO update 
+ * 
+ * <H3> Classifier capability is embedded within the template </H3> 
+ * <P> 
+ * Classification capability of this template is provided by using Weka 
+ * classifier. Changing the classifier and option within Weka is simple: 
+ * TODO change this, and this. 
+ * 
+ * If you want to use some other classifiers; 
+ * TODO check and write this. (e.g. one with Rui's classifier) 
+ * 
+ * Please see the following document for more info: 
+ * TODO fill in URL 
  * 
  * @author Tae-Gil Noh
  *
  */
-/**
- * @author tailblues
- *
- */
 public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
+	
+	public P1EDATemplate()
+	{
+		// set logger 
+		logger = Logger.getLogger(this.getClass()); 
+	}
 
 		
 	public TEDecisionWithAlignment process(JCas eopJCas) throws EDAException 
@@ -33,14 +74,16 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// Note that, the template assumes that you override each of the step-methods. 
 		// (although you are free to override any, including this process()). 
 		
+		logger.info("process() has been called.");
+		
 		// Step 0. check JCas: a correct one with all needed annotations? 
 		checkInputJCas(eopJCas); 
-		
+		// TODO log EntailmentPair Id  
+
 		// Step 1. add alignments. The method will add various alignment.Link instances
 		// Once this step is properly called, the JCas holds alignment.Link data in it. 
 		addAlignments(eopJCas); 
-		
-		
+				
 		// Step 2. (this is an optional step.) The method will interact / output 
 		// the added alignment links for debug / analysis purpose. (for Tracer)  
 		visualizeAlignments(eopJCas); 
@@ -65,12 +108,22 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	{
 		// TODO 
 	}
+	
+	public void initialize(String modelPath)
+	{
+		// TODO 
+	}
 
 	public void startTraining(CommonConfig conf)
 	{
 		// TODO 
 	}
 	
+	public void startTraining(String modelPath, String dirXmiTrainingData)
+	{
+		// TODO 
+	}
+
 	public void shutdown()
 	{
 		// TODO 
@@ -134,5 +187,10 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// provide default classifier. 
 		return null; 
 	}
-
+	
+	// TODO store classifier? 
+	
+	protected final Logger logger; 
+	protected Classifier classifier = null; 
+	
 }
