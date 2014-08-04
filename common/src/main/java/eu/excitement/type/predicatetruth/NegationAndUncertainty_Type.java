@@ -13,8 +13,8 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
-/** This type represents a negation-and-uncertainty annotation.
- * Updated by JCasGen Fri Oct 05 20:17:26 CEST 2012
+/** 
+ * Updated by JCasGen Tue Jul 15 10:01:13 IDT 2014
  * @generated */
 public class NegationAndUncertainty_Type extends Annotation_Type {
   /** @generated */
@@ -44,35 +44,11 @@ public class NegationAndUncertainty_Type extends Annotation_Type {
   //@SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.NegationAndUncertainty");
  
-  /** @generated */
-  final Feature casFeat_value;
-  /** @generated */
-  final int     casFeatCode_value;
-  /** @generated */ 
-  public String getValue(int addr) {
-        if (featOkTst && casFeat_value == null)
-      jcas.throwFeatMissing("value", "eu.excitement.type.predicatetruth.NegationAndUncertainty");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_value);
-  }
-  /** @generated */    
-  public void setValue(int addr, String v) {
-        if (featOkTst && casFeat_value == null)
-      jcas.throwFeatMissing("value", "eu.excitement.type.predicatetruth.NegationAndUncertainty");
-    ll_cas.ll_setStringValue(addr, casFeatCode_value, v);}
-    
-  
-
-
-
   /** initialize variables to correspond with Cas Type and Features
 	* @generated */
   public NegationAndUncertainty_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
-
- 
-    casFeat_value = jcas.getRequiredFeatureDE(casType, "value", "eu.excitement.type.predicatetruth.NegationAndUncertaintyValue", featOkTst);
-    casFeatCode_value  = (null == casFeat_value) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_value).getCode();
 
   }
 }
