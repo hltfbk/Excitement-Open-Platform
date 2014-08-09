@@ -1,4 +1,4 @@
-package uima.ae.truthteller;
+package eu.excitementproject.eop.transformations.uima.ae.truthteller;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -51,31 +51,31 @@ public class PredicateTruthAETest {
 	@Test
 	public void testPT() throws Exception {
 		Collection<Annotation> annotations = new ArrayList<Annotation>(JCasUtil.select(tView, PredicateTruth.class));
-		assertListEqual(annotations,ptExpected);
+		assertPTListEqual(annotations,ptExpected);
 	}
 	
 	@Test
 	public void testPTPositive() throws Exception {
 		Collection<Annotation> annotations = new ArrayList<Annotation>(JCasUtil.select(tView, PredicateTruthPositive.class));
-		assertListEqual(annotations,ptPositiveExpected);
+		assertPTListEqual(annotations,ptPositiveExpected);
 	}
 	
 	@Test
 	public void testPTNegative() throws Exception {
 		Collection<Annotation> annotations = new ArrayList<Annotation>(JCasUtil.select(tView, PredicateTruthNegative.class));
-		assertListEqual(annotations,ptNegativeExpected);
+		assertPTListEqual(annotations,ptNegativeExpected);
 	}
 	
 	@Test
 	public void testNU() throws Exception {
 		Collection<Annotation> annotations = new ArrayList<Annotation>(JCasUtil.select(hView, NegationAndUncertaintyNegative.class));
-		assertListEqual(annotations,nuNegativeExpected);
+		assertPTListEqual(annotations,nuNegativeExpected);
 	}
 	
 	@Test
 	public void testCTNegative() throws Exception{
 		Collection<Annotation> annotations = new ArrayList<Annotation>(JCasUtil.select(tView, ClauseTruthNegative.class));
-		assertListEqual(annotations,ctNegativeExpected);	
+		assertPTListEqual(annotations,ctNegativeExpected);	
 	}
 	
 	/**
@@ -83,7 +83,7 @@ public class PredicateTruthAETest {
 	 * @param observed
 	 * @param expected
 	 */
-	private static void assertListEqual(Collection<Annotation> observed, List<String> expected){
+	private static void assertPTListEqual(Collection<Annotation> observed, List<String> expected){
 		// assert expected and observed annotations are of the same size
 		int s = observed.size();
 		assertEquals(s,expected.size());

@@ -41,15 +41,13 @@ public class PredicateTruthAligner implements AlignmentComponent {
 	private JCas textView, hypoView;
 	
 	//constant values used for aligner description
-	private static final String ALIGNER_ID = "PredicateTruth";
-	private static final String ALIGNER_VERSION = "1.0"; //FIXME not sure about the desired values for these two
-	private static final String ALIGNEMNT_TYPE_AGREEING_POSITIVE = "Agreeing Positive Predicate Truth";
-	private static final String ALIGNEMNT_TYPE_AGREEING_NEGATIVE = "Agreeing Negative Predicate Truth";
-	private static final String ALIGNEMNT_TYPE_DISAGREEING = "Disagreeing Predicate Truth";
-	private static final String ALIGNEMNT_TYPE_NON_MATCHING = "Non Matching Predicate Truth";
+	public static final String ALIGNER_ID = "PredicateTruth";
+	public static final String ALIGNER_VERSION = "1.0"; //FIXME not sure about the desired values for these two
+	public static final String ALIGNEMNT_TYPE_AGREEING_POSITIVE = "Agreeing Positive Predicate Truth";
+	public static final String ALIGNEMNT_TYPE_AGREEING_NEGATIVE = "Agreeing Negative Predicate Truth";
+	public static final String ALIGNEMNT_TYPE_DISAGREEING = "Disagreeing Predicate Truth";
+	public static final String ALIGNEMNT_TYPE_NON_MATCHING = "Non Matching Predicate Truth";
 
-	
-	
 	//(currently) constant values used for alignment links
 	private static final double ALIGNER_CONFIDENCE = 1.0;
 	private static final Direction ALIGNER_DIRECTION = Direction.Bidirection;
