@@ -17,12 +17,12 @@ public class PredicateSignatureUncertainNegative extends PredicateSignature {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(PredicateSignatureUncertainNegative.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated
    * @return index of the type  

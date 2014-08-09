@@ -2,15 +2,13 @@
 /* First created by JCasGen Mon Jul 14 22:29:07 IDT 2014 */
 package eu.excitement.type.predicatetruth;
 
-import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.JCasRegistry;
+import org.apache.uima.cas.FeatureStructure;
+import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.CASImpl;
 import org.apache.uima.cas.impl.FSGenerator;
-import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.cas.impl.TypeImpl;
-import org.apache.uima.cas.Type;
-
-import org.apache.uima.jcas.tcas.Annotation_Type;
+import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.JCasRegistry;
 
 /** 
  * Updated by JCasGen Tue Jul 15 10:01:13 IDT 2014
@@ -38,11 +36,11 @@ public class ClauseTruthNotIdentified_Type extends ClauseTruth_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int typeIndexID = ClauseTruthNotIdentified.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.ClauseTruthNotIdentified");
 
 

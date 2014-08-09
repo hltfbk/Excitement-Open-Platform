@@ -17,12 +17,12 @@ public class NegationAndUncertaintyUncertain extends NegationAndUncertainty {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(NegationAndUncertaintyUncertain.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated
    * @return index of the type  

@@ -36,11 +36,11 @@ public class ClauseTruthUnknown_Type extends ClauseTruth_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int typeIndexID = ClauseTruthUnknown.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.ClauseTruthUnknown");
 
 

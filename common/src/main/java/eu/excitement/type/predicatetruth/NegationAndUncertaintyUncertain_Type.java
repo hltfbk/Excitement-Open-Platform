@@ -36,11 +36,11 @@ public class NegationAndUncertaintyUncertain_Type extends NegationAndUncertainty
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int typeIndexID = NegationAndUncertaintyUncertain.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.NegationAndUncertaintyUncertain");
 
 

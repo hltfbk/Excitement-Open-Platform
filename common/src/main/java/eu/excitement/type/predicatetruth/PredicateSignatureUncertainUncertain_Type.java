@@ -36,11 +36,11 @@ public class PredicateSignatureUncertainUncertain_Type extends PredicateSignatur
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static int typeIndexID = PredicateSignatureUncertainUncertain.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+  //@SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.PredicateSignatureUncertainUncertain");
 
 

@@ -17,12 +17,12 @@ public class ClauseTruthPositive extends ClauseTruth {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(ClauseTruthPositive.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated
    * @return index of the type  

@@ -3,13 +3,9 @@
 /* First created by JCasGen Mon Jul 14 22:29:07 IDT 2014 */
 package eu.excitement.type.predicatetruth;
 
-import org.apache.uima.jcas.JCas; 
+import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
-
-
-
-import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
@@ -20,12 +16,12 @@ public class ClauseTruthNotIdentified extends ClauseTruth {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(ClauseTruthNotIdentified.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+  // @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated
    * @return index of the type  

@@ -1,17 +1,19 @@
-package eu.excitementproject.eop.transformations.generic.truthteller;
+package eu.excitementproject.eop.transformations.uima.ae.truthteller;
 
-import java.util.Set;
+import java.util.List;
 
+import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth;
 import eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty;
 import eu.excitementproject.eop.transformations.representation.annotations.PredTruth;
 import eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature;
-import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 
-/* 
+/** 
  * A container for the result of truth annotation on a single token
  * contains Predicate Truth, Clause Truth, Negation and Uncertainty, and Predicate Signature
  * If any of these is missing, an empty string is expected.
+ * @author Gabi Stanovsky
+ * @since Aug 2014
  */
 
 public class SingleTokenTruthAnnotation {
@@ -20,37 +22,18 @@ public class SingleTokenTruthAnnotation {
 	private ClauseTruth clauseTruthValue;
 	private NegationAndUncertainty nuValue;
 	private PredicateSignature predicateSignatureValue;
-	/*
-	private String SpredicateTruthValue;
-	private String SclauseTruthValue;
-	private String SnuValue;
-	private String SpredicateSignatureValue;
-	*/
 	
-	private Set<ExtendedNode> subtree;
-	private int subtreeMinimalIndex,subtreeMaximalIndex;
+	private List<ExtendedNode> subtree;
+	private Integer subtreeMinimalIndex,subtreeMaximalIndex;
 	
-	public SingleTokenTruthAnnotation(PredTruth pt,ClauseTruth ct, NegationAndUncertainty nu, PredicateSignature sig, Set<ExtendedNode> sub){
+	public SingleTokenTruthAnnotation(PredTruth pt,ClauseTruth ct, NegationAndUncertainty nu, PredicateSignature sig, List<ExtendedNode> sub){
 		predicateTruthValue = pt;
 		clauseTruthValue = ct;
 		nuValue = nu;
 		predicateSignatureValue = sig;
 		subtree=sub;
-		
-		/*
-		switch(pt){
-			case N: SpredicateTruthValue = "eu.excitement.type.predicatetruth.PredicateTruthNegative";
-				break;
-			case O: SpredicateTruthValue = "eu.excitement.type.predicatetruth.PredicateTruthNotIdentified";
-				break;
-			case P: SpredicateTruthValue = "eu.excitement.type.predicatetruth.PredicateTruthPositive";
-				break;
-			case U: SpredicateTruthValue = "eu.excitement.type.predicatetruth.PredicateTruthUncertain";
-				break;
-			default:
-				break;
-			
-		}*/
+		subtreeMaximalIndex = null;
+		subtreeMinimalIndex = null;
 	}
 
 	public SingleTokenTruthAnnotation(PredTruth pt,ClauseTruth ct, NegationAndUncertainty nu, PredicateSignature sig){
@@ -91,12 +74,12 @@ public class SingleTokenTruthAnnotation {
 		return predicateSignatureValue;
 	}
 
-	public Set<ExtendedNode> getSubtree() {
+	public List<ExtendedNode> getSubtree() {
 		return subtree;
 	}
 
 
-	public void setSubtree(Set<ExtendedNode> subtree) {
+	public void setSubtree(List<ExtendedNode> subtree) {
 		this.subtree = subtree;
 	}
 	

@@ -1,19 +1,20 @@
-package eu.excitementproject.eop.transformations.generic.truthteller;
+package eu.excitementproject.eop.transformations.uima.ae.truthteller;
 
 /**
- * Exception class thrown by {@link TruthAnnotator} in any error case.
- *
+ * Exception class thrown by {@link PredicateTruth} in any error case.
+ * @author Gabi Stanovsky
+ * @since Aug 2014
  */
-public class TruthAnnotatorException extends Exception
+public class PredicateTruthException extends Exception
 {
 	private static final long serialVersionUID = 1L;
 
-	public TruthAnnotatorException(String message, Throwable cause)
+	public PredicateTruthException(String message, Throwable cause)
 	{
 		super(message, cause);
 	}
 
-	public TruthAnnotatorException(String message)
+	public PredicateTruthException(String message)
 	{
 		super(message);
 	}

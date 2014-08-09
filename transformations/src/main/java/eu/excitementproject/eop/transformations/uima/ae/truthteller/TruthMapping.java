@@ -1,10 +1,14 @@
-package eu.excitementproject.eop.transformations.generic.truthteller;
+package eu.excitementproject.eop.transformations.uima.ae.truthteller;
 
-import java.util.Set;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.uima.cas.Type;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.predicatetruth.ClauseTruth;
 import eu.excitement.type.predicatetruth.ClauseTruthNegative;
 import eu.excitement.type.predicatetruth.ClauseTruthNotIdentified;
@@ -30,44 +34,28 @@ import eu.excitement.type.predicatetruth.PredicateTruthNotIdentified;
 import eu.excitement.type.predicatetruth.PredicateTruthPositive;
 import eu.excitement.type.predicatetruth.PredicateTruthUncertain;
 import eu.excitementproject.eop.transformations.representation.annotations.PredTruth;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
-/* 
+/**
  * Conversion class from Truthteller's annotations to UIMA annotations
  * Each static function converts a different annotation type.
+ * @author Gabi Stanovsky
+ * @since Aug 2014
  */
 
 public class TruthMapping {
 	
 	public static PredicateTruth mapPredicateTruth(PredTruth pt, JCas jcas, int begin, int end){
-		 switch (pt) {
-         case P: return new PredicateTruthPositive(jcas,begin,end); 
-         case N: return new PredicateTruthNegative(jcas,begin,end); 
-         case U: return new PredicateTruthUncertain(jcas,begin,end); 
-         default: return new PredicateTruthNotIdentified(jcas,begin,end); //case O
-		 }
+		Type type = jcas.getTypeSystem().getType(PRED_TRUTH_MAP.get(pt).getName());
+		PredicateTruth ret = (PredicateTruth)jcas.getCas().createAnnotation(type, begin, end);
+		return ret;
 	}
 	
-	public static ClauseTruth mapClauseTruth(eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth ct, JCas jcas, Set<Token> subtree,int begin,int end){
+	public static ClauseTruth mapClauseTruth(eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth ct, JCas jcas, List<Token> subtree,int begin,int end){
 		int subtreeSize = subtree.size();
-		ClauseTruth ret = null;
-		
-		//decide on type of clause truth
-		
-		switch(ct){
-			case N: ret = new ClauseTruthNegative(jcas,begin,end);
-				break;
-			case O: ret = new ClauseTruthNotIdentified(jcas,begin,end);
-				break;
-			case P: ret = new ClauseTruthPositive(jcas,begin,end);
-				break;
-			case U: ret = new ClauseTruthUncertain(jcas,begin,end);
-				break;
-			default:
-				break;
-		}
-		
-		// set the subtree token as a feature structure		
+		Type type = jcas.getTypeSystem().getType(CLAUSE_TRUTH_MAP.get(ct).getName());
+		ClauseTruth ret = (ClauseTruth)jcas.getCas().createAnnotation(type, begin, end);
+	
+		// set the subtree tokens as a feature structure		
 		FSArray subtreeFSArray = new FSArray(jcas, subtreeSize);
 		subtreeFSArray.copyFromArray(subtree.toArray(new Token[subtree.size()]), 0, 0, subtreeSize);
 		ret.setClauseTokens(subtreeFSArray);
@@ -75,67 +63,71 @@ public class TruthMapping {
 	}
 	
 	public static NegationAndUncertainty mapNegationAndUncertainty(eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty nu, JCas jcas,int begin,int end){
-		switch(nu){
-			case N: return new NegationAndUncertaintyNegative(jcas,begin,end);
-			case P: return new NegationAndUncertaintyPositive(jcas, begin, end);
-			case U: return new NegationAndUncertaintyUncertain(jcas, begin, end);
-			default: return null;
-			
-			}
+		Type type = jcas.getTypeSystem().getType(NU_MAP.get(nu).getName());
+		NegationAndUncertainty ret = (NegationAndUncertainty)jcas.getCas().createAnnotation(type, begin, end);
+		return ret;
 	}
 	
 	public static PredicateSignature mapPredicateSignature(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature sig,JCas jcas,int begin,int end){
-		switch (sig){
-		
-		// signature: -/-
-		case N_N: 
-			return new PredicateSignatureNegativeNegative(jcas,begin,end);
-		
-		// signature: -/+
-		case N_P:
-			return new PredicateSignatureNegativePositive(jcas,begin,end);
-			
-		// signature: -/?
-		case N_U:
-		case N_U_InfP:
-			return new PredicateSignatureNegativeUncertain(jcas,begin,end);
-			
-		// signature: +/-
-		case P_N:
-		case P_N_InfP:
-			return new PredicateSignaturePositiveNegative(jcas,begin,end);
-		
-		// signature: +/+
-		case P_P:	
-		case P_P_FinP:
-		case P_P_FinP_N_P_InfP:			
-		case P_P_FinP_N_U_InfP:
-		case P_P_FinP_P_N_InfP:
-		case P_P_FinP_P_U_InfP:
-			return new PredicateSignaturePositivePositive(jcas,begin,end);
-		
-		// signature: +/?
-		case P_U:
-		case P_U_FinP:
-		case P_U_InfP:
-			return new PredicateSignaturePositiveUncertain(jcas,begin,end);
-		
-		// signature: ?/-
-		case U_N: 
-			return new PredicateSignatureUncertainNegative(jcas,begin,end);
-			
-		// signature: ?/+
-		case U_P: 
-			return new PredicateSignatureUncertainPositive(jcas,begin,end);
-			
-		// signature: ?/? (default in unknown cases)
-		case NOT_IN_LEXICON:
-		default: 
-			return new PredicateSignatureUncertainUncertain(jcas,begin,end);
-		
-		}
-		
+		Type type = jcas.getTypeSystem().getType(SIG_MAP.get(sig).getName());
+		PredicateSignature ret = (PredicateSignature)jcas.getCas().createAnnotation(type, begin, end);
+		return ret;
 	}
+	
+	//static mapping from TruthTeller types to UIMA types
+	public static Map<PredTruth, Class<?>> PRED_TRUTH_MAP = new HashMap<PredTruth, Class<?>>();
+	public static Map<eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth, Class<?>> CLAUSE_TRUTH_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth, Class<?>>();
+	public static Map<eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty, Class<?>> NU_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty, Class<?>>();
+	public static Map<eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature, Class<?>> SIG_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature, Class<?>>();
+	static
+	{
+		// predicate truth mapping
+		PRED_TRUTH_MAP.put(PredTruth.P, PredicateTruthPositive.class);
+		PRED_TRUTH_MAP.put(PredTruth.N, PredicateTruthNegative.class);
+		PRED_TRUTH_MAP.put(PredTruth.U, PredicateTruthUncertain.class);
+		PRED_TRUTH_MAP.put(PredTruth.O, PredicateTruthNotIdentified.class);
+		
+		// clause truth mapping
+		CLAUSE_TRUTH_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth.P, ClauseTruthPositive.class);
+		CLAUSE_TRUTH_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth.N, ClauseTruthNegative.class);
+		CLAUSE_TRUTH_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth.U, ClauseTruthUncertain.class);
+		CLAUSE_TRUTH_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth.O, ClauseTruthNotIdentified.class);
+		
+		// negation and uncertainty mapping
+		NU_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty.P, NegationAndUncertaintyPositive.class);
+		NU_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty.N, NegationAndUncertaintyNegative.class);
+		NU_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty.U, NegationAndUncertaintyUncertain.class);
+		
+		// predicate signature mapping
+		// signature: -/-
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.N_N, PredicateSignatureNegativeNegative.class);
+		// signature: -/+
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.N_P, PredicateSignatureNegativePositive.class);
+		// signature: -/?
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.N_U, PredicateSignatureNegativeUncertain.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.N_U_InfP, PredicateSignatureNegativeUncertain.class);
+		// signature: +/-
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_N, PredicateSignaturePositiveNegative.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_N_InfP, PredicateSignaturePositiveNegative.class);
+		// signature: +/+
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_P, PredicateSignaturePositivePositive.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_P_FinP, PredicateSignaturePositivePositive.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_P_FinP_N_P_InfP, PredicateSignaturePositivePositive.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_P_FinP_N_U_InfP, PredicateSignaturePositivePositive.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_P_FinP_P_N_InfP, PredicateSignaturePositivePositive.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_P_FinP_P_U_InfP, PredicateSignaturePositivePositive.class);
+		// signature: +/?
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_U, PredicateSignaturePositiveUncertain.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_U_FinP, PredicateSignaturePositiveUncertain.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.P_U_InfP, PredicateSignaturePositiveUncertain.class);
+		// signature: ?/-
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.U_N, PredicateSignatureUncertainNegative.class);
+		// signature: ?/+
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.U_P, PredicateSignatureUncertainPositive.class);	
+		// signature: ?/? (default in unknown cases)
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.U_U, PredicateSignatureUncertainUncertain.class);
+		SIG_MAP.put(eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature.NOT_IN_LEXICON, PredicateSignatureUncertainUncertain.class);
+	};
 	
 
 }
