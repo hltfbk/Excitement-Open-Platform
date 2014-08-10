@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
+import eu.excitementproject.eop.lap.biu.test.BiuTestParams;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.generic.truthteller.DefaultSentenceAnnotator;
 import eu.excitementproject.eop.transformations.representation.AdditionalNodeInformation;
@@ -29,8 +30,21 @@ public class TruthTellerAnnotator implements PredicateTruth {
 	private ExtendedNode annotatedSentence;
 	private List<SingleTokenTruthAnnotation> annotationResult;
 	
+	/**
+	 * Constructor which receives the annotation rules file
+	 * @param IannotationRulesFile
+	 * @throws PredicateTruthException
+	 */
 	public TruthTellerAnnotator(File IannotationRulesFile) throws PredicateTruthException{
 			annotationRulesFile = IannotationRulesFile;
+	}
+	
+	/**
+	 * Default constructor which uses a default file location for annotation rules file
+	 * @throws PredicateTruthException
+	 */
+	public TruthTellerAnnotator() throws PredicateTruthException{
+		annotationRulesFile = new File(BiuTestParams.TRUTH_TELLER_MODEL_FILE);
 	}
 	
 	
