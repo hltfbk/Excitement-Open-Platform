@@ -85,8 +85,8 @@ public class classifiertemplate {
 		 
 		 Instance newone = new Instance(4); 
 		 newone.setDataset(isTrainingSet); 
-		 newone.setValue(0, 1.0); 
-		 newone.setValue(1, 0.5); 
+		 newone.setValue(0, 0.5); 
+		 newone.setValue(1, 0.1); 
 		 newone.setValue((Attribute) fvWekaAttributes.elementAt(2), "blue"); 
 		 
 		 try {

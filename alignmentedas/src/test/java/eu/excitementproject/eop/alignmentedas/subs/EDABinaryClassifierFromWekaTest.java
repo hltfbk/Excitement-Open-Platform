@@ -2,6 +2,7 @@ package eu.excitementproject.eop.alignmentedas.subs;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -30,6 +31,8 @@ public class EDABinaryClassifierFromWekaTest {
 		LabeledInstance ins1 = new LabeledInstance(DecisionLabel.Entailment, fv1); 
 		trainingData.add(ins1); 
 		
+		
+		// init one and ask it to train ... 
 		EDAClassifierAbstraction classifier = null; 
 		try {
 			classifier = new EDABinaryClassifierFromWeka(); 
@@ -47,6 +50,8 @@ public class EDABinaryClassifierFromWekaTest {
 			fail(e.getMessage()); 
 		}
 		
+		// classify an instance ... 
+		
 		Vector<FeatureValue> fv2 = new Vector<FeatureValue>(); 
 		fv2.addElement(new FeatureValue(0.5)); 
 		fv2.addElement(new FeatureValue(0.1)); 
@@ -62,7 +67,45 @@ public class EDABinaryClassifierFromWekaTest {
 			fail(e.getMessage()); 
 		}
 		
+		// evaluate classifier ... 
+		try {
+			List<Double> eval = classifier.evaluateClassifier(trainingData); 
+			System.out.println("acc: " + eval.get(0)); 
+			System.out.println("f1 :" + eval.get(1)); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 			
+		}
 
+		
+		// store model, 
+		File f = new File("target/default1.model"); 
+		try {
+			classifier.storeClassifierModel(f); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 			
+		}
+		
+		// load model on a new instance ... 
+		// and ask again ... 
+		EDAClassifierAbstraction classifier2 = null; 
+		try {
+			classifier2 = new EDABinaryClassifierFromWeka(); 
+			classifier2.loadClassifierModel(f); 
+			DecisionLabelWithDistribution result = classifier.classifyInstance(fv2); 
+			System.out.println(result.getLabel().toString()); 
+			System.out.println(result.getConfidence()); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
+		
+		f.delete(); 
+		
 	}
 
 	public enum MyColor 

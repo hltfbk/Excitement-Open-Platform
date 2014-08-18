@@ -1,11 +1,13 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.subs;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 import eu.excitementproject.eop.common.DecisionLabel;
 import weka.classifiers.Classifier;
+import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.core.Attribute;
 import weka.core.FastVector;
@@ -16,9 +18,12 @@ import weka.core.Instances;
 /**
  * 
  * An implementation of "EDAClassifierAbstraction", based on Weka. 
- * You can put any classifier supported in Weka, by extend/override prepareWekaClassifierInstance() 
+ * You can change the underlying classifier (that is supported in Weka)
+ * by extend/override prepareWekaClassifierInstance(). 
  * 
- * Note that, this class only supports binary classifications only, for now... 
+ * Note that, this class only supports binary classifications only; Any LabeledInstance given 
+ * to the training step that is not DecisionLabel.Entailment DecisionLabel.NonEntailment will cause 
+ * the implmenetation to throw an exception. 
  * 
  * @author Tae-Gil Noh 
  *
@@ -157,23 +162,83 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 		}
 		
 		// Okay, store the model in the given path. 
-		// TODO 
+		try {
+			weka.core.SerializationHelper.write(path.getAbsolutePath(), classifier); 
+		}
+		catch (Exception e)
+		{
+			throw new ClassifierException("Serializing the trainined Weka classifier model failed, Weka serializationHelper raised an exception: ", e); 
+		}
 
 	}
 
 	@Override
 	public void loadClassifierModel(File path) throws ClassifierException {
 
-		// TODO load model ... 		
+		if (!path.exists())
+		{
+			throw new ClassifierException("Unable to load trained classifier model; Model file " + path.toString() + " does not exist"); 
+		}
+		
+		try {
+			classifier = (Classifier) weka.core.SerializationHelper.read(path.getAbsolutePath());
+		}
+		catch (Exception e)
+		{
+			
+		}
+
 		modelReady = true; 
 	}
 
 	@Override
-	public void evaluateClassifier(List<LabeledInstance> goldData)
+	public List<Double> evaluateClassifier(List<LabeledInstance> goldData) 
 			throws ClassifierException {
 		
-		// TODO, "one optimal number? (e.g. accuracy)  or multiple optimal number? list of (accuracy, f1, prec, recall)? " 
+		// TODO consider: make it solely as cross-validation? 
+		
+		Instances trainingData = null; 
+		Evaluation eTest = null; 
+		try {
+		  trainingData = buildTrainingDataSet(goldData); 
+			
+		} catch (ValueException ve)
+		{
+			throw new ClassifierException("Failed to read FeatureValue of training data. Must be a bug in code", ve); 
+		}
+		catch (Exception e)
+		{
+			throw new ClassifierException("Underlying Weka Classifier Evaluator throws an exception", e); 
+		}
+		
+		try {
+			eTest = new Evaluation(trainingData); 
+			eTest.evaluateModel(classifier, trainingData); 
+		}
+		catch (Exception e)
+		{
+			throw new ClassifierException("Underlying Weka Classifier Evaluator throws an exception", e); 
+		}
+		
+		// DCODE - as log debug?  
+		// System.out.println(eTest.toSummaryString()); 
+		
+		double tp = eTest.weightedTruePositiveRate(); 
+		double tn = eTest.weightedTrueNegativeRate(); 
+		double prec = eTest.weightedPrecision(); 
+		double rec = eTest.weightedRecall(); 
+		double f1 = eTest.weightedFMeasure(); 
+		double accuracy = (eTest.correct()) / (eTest.incorrect() + eTest.correct()); 
+		
+		List<Double> evalResult = new ArrayList<Double>(); 
+		evalResult.add(accuracy); 
+		evalResult.add(f1); 
+		evalResult.add(prec); 
+		evalResult.add(rec); 
+		evalResult.add(tp); 
+		evalResult.add(tn); 
 
+		return evalResult; 
 	}
 	
 	/**

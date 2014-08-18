@@ -9,7 +9,7 @@ import java.util.Vector;
  * 
  * An abstract for classifier(s) that support TE decisions (EDAs). 
  * 
- * See "EDAClassifierFromWeka" for a wrapped (implemented) example.  
+ * See "EDABinaryClassifierFromWeka" for a wrapped (implemented) example.  
  * 
  * @author Tae-Gil Noh
  *
@@ -40,9 +40,11 @@ public interface EDAClassifierAbstraction {
 	public void loadClassifierModel(File path) throws ClassifierException; 
 	
 	/**
+	 * Evaluate currently trained classifier and returns a list of double values where it holds; 
+	 * (accuracy, f1, prec, recall, true positive ratio, true negative ratio) 
+	 * 
 	 * @param goldData
 	 * @throws ClassifierException
-	 * TODO update it to return value(s). 
 	 */
-	public void evaluateClassifier(List<LabeledInstance> goldData) throws ClassifierException; 
+	public List<Double> evaluateClassifier(List<LabeledInstance> goldData) throws ClassifierException; 
 }
