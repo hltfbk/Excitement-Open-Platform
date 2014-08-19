@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.util.edaexperimenter.experimenter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -53,6 +54,11 @@ public class Experimenter {
 	
 		try{ 
 			parser.parseArgument(args);
+			
+			File f = new File(options.output);
+			if (! f.exists() || !f.isDirectory()) {
+				f.mkdir();
+			}
 			
 			tmpTrainFile = options.output + "/" + tmpTrainFile;
 			tmpTestFile = options.output + "/" + tmpTestFile;				

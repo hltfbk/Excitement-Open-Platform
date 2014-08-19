@@ -32,6 +32,13 @@
  			<property name = "redis-wiki">eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource</property>
         </section>
         
+        <!-- The following properties can be added to any of the resources below, if you would only like to receive alignment links of a certain part-of-speech. -->
+		<!-- Each property can have one of the following values: ADJ, ADV, ART, CARD, CONJ, N,	NN,	NP, O, PP, PR, PUNC, V -->
+		<!-- If you want the alignment links of all different parts-of-speech, leave out these properties. -->
+		<!-- Please notice that if a certain resource doesn't support searching by POS, it may return all rules regardless of the POS. -->
+		<!-- <property name="leftSidePOS">N</property>
+		<property name="rightSidePOS">N</property> -->
+			
         <!-- WordNet configuration parameters -->
         <section name="wordnet">
         	<property name = "useLemma">false</property>
