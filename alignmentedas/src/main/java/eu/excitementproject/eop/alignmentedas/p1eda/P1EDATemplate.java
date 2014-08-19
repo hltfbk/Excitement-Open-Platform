@@ -6,9 +6,15 @@ package eu.excitementproject.eop.alignmentedas.p1eda;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.TOP;
 
-import weka.classifiers.Classifier;
+import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithDistribution;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -61,12 +67,18 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
  */
 public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
 	
-	public P1EDATemplate()
+	/**
+	 * The constructor for this abstract class. Does nothing but initializing 
+	 * two mandatory final fields. They are: 
+	 * 
+	 * @param classifier Pass one of EDAClassifierAbstraction, such as WekaLogisticRegression, etc. The given classifier will be used for training and classification. 
+	 * @param logger Usual log4j logger to be used. 
+	 */
+	public P1EDATemplate(EDAClassifierAbstraction classifier, Logger logger) 
 	{
-		// set logger 
-		logger = Logger.getLogger(this.getClass()); 
+		this.logger = logger; 
+		this.classifier = classifier; 
 	}
-
 		
 	public TEDecisionWithAlignment process(JCas eopJCas) throws EDAException 
 	{
@@ -78,7 +90,8 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		
 		// Step 0. check JCas: a correct one with all needed annotations? 
 		checkInputJCas(eopJCas); 
-		// TODO log EntailmentPair Id  
+		String pairID = getTEPairID(eopJCas); 
+		logger.info("processing pair with ID: " + pairID); 
 
 		// Step 1. add alignments. The method will add various alignment.Link instances
 		// Once this step is properly called, the JCas holds alignment.Link data in it. 
@@ -89,8 +102,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		visualizeAlignments(eopJCas); 
 		
 		// Step 3. 
-		// 
-		Vector<Double> featureValues = evaluateAlignments(); 
+		Vector<FeatureValue> featureValues = evaluateAlignments(); 
 		
 		// Step 4. (this is also an optional step.) 
 		//
@@ -98,10 +110,10 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		
 		// Step 5. 
 		// Classification. 
-		TEDecisionWithAlignment decision = classifyEntailment(featureValues); 
+		DecisionLabelWithDistribution result = classifyEntailment(featureValues); 
 		
-				
-		return decision; 
+		// Finally, return a TEDecision object with CAS (which holds alignments) 
+		return new TEDecisionWithAlignment(result.getLabel(), result.getConfidence(), pairID, eopJCas); 
 	}
 	
 	public void initialize(CommonConfig conf)
@@ -136,7 +148,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public abstract void addAlignments(JCas input); 
 		
-	public abstract Vector<Double> evaluateAlignments(); 
+	public abstract Vector<FeatureValue> evaluateAlignments(); 
 
 	
 	/* 
@@ -156,6 +168,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	/*
 	 * 	Optional methods (steps) that can be overridden. --- but these 
 	 *  methods provide default functionalities. You can extend if you want. 
+	 *  But default implementations would also work as well.  
 	 */
 	
 	/**
@@ -181,16 +194,48 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 
-	public TEDecisionWithAlignment classifyEntailment(Vector<Double> fValues)
-	{
-		// TODO. check existing classifier abstract & Weka tool. 
-		// provide default classifier. 
-		return null; 
+	public DecisionLabelWithDistribution classifyEntailment(Vector<FeatureValue> fValues) throws EDAException
+	{		
+		DecisionLabelWithDistribution dl = null; 
+		try {
+			dl = classifier.classifyInstance(fValues); 
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException("underlying classifier throw exception", ce); 
+		}
+		
+		return dl; 
 	}
 	
-	// TODO store classifier? 
+	// private utility methods 
+	private String getTEPairID(JCas aJCas) throws EDAException
+	{
+		String id = null; 
+		
+		// check entailment pair, 
+		FSIterator<TOP> iter = aJCas.getJFSIndexRepository().getAllIndexedFS(Pair.type); 
+		if (iter.hasNext())
+		{
+			Pair p = (Pair) iter.next(); 
+			id = p.getPairID(); 
+			
+			if (iter.hasNext())
+			{
+				logger.warn("This JCas has more than one TE Pairs: This P1EDA template only processes single-pair inputs. Any additional pairs are being ignored, and only the first Pair will be processed.");
+			}
+			return id; 
+		}
+		else
+		{
+			throw new EDAException("Input CAS is not well-formed CAS as EOP EDA input: missing TE pair"); 
+		}
+	}
 	
+	// private final fields... 
+	private final EDAClassifierAbstraction classifier; 
 	protected final Logger logger; 
-	protected Classifier classifier = null; 
+	
+	
 	
 }
