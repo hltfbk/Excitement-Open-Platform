@@ -7,9 +7,9 @@ import eu.excitementproject.eop.common.DecisionLabel;
  * 
  * @author Tae-Gil Noh 
  */
-public class DecisionLabelWithDistribution {
+public class DecisionLabelWithConfidence {
 
-	public DecisionLabelWithDistribution(DecisionLabel label, double confidence) {
+	public DecisionLabelWithConfidence(DecisionLabel label, double confidence) {
 		this.label = label;
 		this.confidence = confidence; 
 	}	

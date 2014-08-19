@@ -9,7 +9,7 @@ import java.util.Vector;
  * 
  * An abstract for classifier(s) that support TE decisions (EDAs). 
  * 
- * See "EDABinaryClassifierFromWeka" for a wrapped (implemented) example.  
+ * See "EDABinaryClassifierFromWeka" for an implementation example. 
  * 
  * @author Tae-Gil Noh
  *
@@ -20,7 +20,7 @@ public interface EDAClassifierAbstraction {
 	 * @param featureVector
 	 * @return DecisionLabelWithConfidence 
 	 */
-	public DecisionLabelWithDistribution classifyInstance(Vector<FeatureValue> featureVector) throws ClassifierException; 
+	public DecisionLabelWithConfidence classifyInstance(Vector<FeatureValue> featureVector) throws ClassifierException; 
 	
 	/**
 	 * @param goldData

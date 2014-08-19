@@ -18,12 +18,16 @@ import weka.core.Instances;
 /**
  * 
  * An implementation of "EDAClassifierAbstraction", based on Weka. 
+ * 
+ * You can use any of the Weka's Classifiers 
+ * (e.g. Classifier classes that support Weka's Classifier interface, "distributionForInstance") 
+ *
  * You can change the underlying classifier (that is supported in Weka)
  * by extend/override prepareWekaClassifierInstance(). 
  * 
  * Note that, this class only supports binary classifications only; Any LabeledInstance given 
  * to the training step that is not DecisionLabel.Entailment DecisionLabel.NonEntailment will cause 
- * the implmenetation to throw an exception. 
+ * the implementation to throw an exception. 
  * 
  * @author Tae-Gil Noh 
  *
@@ -55,7 +59,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 	}
 
 	@Override
-	public DecisionLabelWithDistribution classifyInstance(
+	public DecisionLabelWithConfidence classifyInstance(
 			Vector<FeatureValue> featureVector) throws ClassifierException {
 
 		if (!modelReady) 
@@ -63,7 +67,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 			throw new ClassifierException("The classifier is not ready for classification; either training, or loading model should be done before calling classify"); 
 		}
 
-		DecisionLabelWithDistribution result = null; 
+		DecisionLabelWithConfidence result = null; 
 
 		// Prepare Feature information (e.g. which index has what feature? required for Weka) 
 		Instances attributeInfo = null; 
@@ -115,11 +119,11 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 
 		if (dist[0] > dist[1])
 		{
-			result = new DecisionLabelWithDistribution(DecisionLabel.Entailment, dist[0]);  
+			result = new DecisionLabelWithConfidence(DecisionLabel.Entailment, dist[0]);  
 		}
 		else
 		{
-			result = new DecisionLabelWithDistribution(DecisionLabel.NonEntailment, dist[1]); 
+			result = new DecisionLabelWithConfidence(DecisionLabel.NonEntailment, dist[1]); 
 		}
 
 		return result;

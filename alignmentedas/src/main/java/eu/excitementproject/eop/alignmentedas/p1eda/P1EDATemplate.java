@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.alignmentedas.p1eda;
 
+import java.io.File;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
@@ -12,9 +13,10 @@ import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
-import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithDistribution;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithConfidence;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
+//import eu.excitementproject.eop.alignmentedas.p1eda.subs.ParameterValue;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -110,35 +112,62 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		
 		// Step 5. 
 		// Classification. 
-		DecisionLabelWithDistribution result = classifyEntailment(featureValues); 
+		DecisionLabelWithConfidence result = classifyEntailment(featureValues); 
 		
 		// Finally, return a TEDecision object with CAS (which holds alignments) 
 		return new TEDecisionWithAlignment(result.getLabel(), result.getConfidence(), pairID, eopJCas); 
 	}
 	
-	public void initialize(CommonConfig conf)
+	public void initialize(CommonConfig conf) throws EDAException
 	{
-		// TODO 
+		// TODO read from common config table, and call argument version 
 	}
 	
-	public void initialize(String modelPath)
+	public void initialize(File classifierModelToLoad) throws EDAException
 	{
-		// TODO 
+		try 
+		{
+			classifier.loadClassifierModel(classifierModelToLoad); 
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException(ce); 
+		}
 	}
+
+	// TODO CONSIDER: parameter portion; for startTraining() Where?
+	// For example. 
+	//	public void initialize(File classifierModelToLoad, Vector<ParameterValue> param)
+	//	public void initialize(File classifierModelToLoad, File parameterFileToLoad) ... 
+	// Or, simply, param as "constant" within a EDA instance? (Optimization of param = optimization of various EDA config) 
+	// Param 이 config의 일부가 되는게지...  흠. 그거 괜찮네. 
+
 
 	public void startTraining(CommonConfig conf)
 	{
-		// TODO 
+		// TODO read from common config, and call argument version, 
 	}
 	
-	public void startTraining(String modelPath, String dirXmiTrainingData)
+	public void startTraining(File dirTrainingDataInXMIFiles, File classifierModelPathToStore)
 	{
 		// TODO 
+		
+		// read all XMI files in the Directory ... 
+		
+		// 
+		
 	}
+	
+	// TODO CONSIDER: parameter portion; for start_training() Where?
+	// For example. 
+	//	public void initialize(File classifierModelToLoad, Vector<ParameterValue> param)
+	//	public void initialize(File classifierModelToLoad, File parameterFileToLoad) ... 
+	// Or, simply, param as "constant" within a EDA instance? (Optimization of param = optimization of various EDA config) 
+	// Param 이 모델의 일부는 아닌게지. 흠. 그거 괜찮네. 
 
 	public void shutdown()
 	{
-		// TODO 
+		// This template itself has nothing to close down. 
 	}
 			
 	
@@ -194,9 +223,9 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 
-	public DecisionLabelWithDistribution classifyEntailment(Vector<FeatureValue> fValues) throws EDAException
+	public DecisionLabelWithConfidence classifyEntailment(Vector<FeatureValue> fValues) throws EDAException
 	{		
-		DecisionLabelWithDistribution dl = null; 
+		DecisionLabelWithConfidence dl = null; 
 		try {
 			dl = classifier.classifyInstance(fValues); 
 		}

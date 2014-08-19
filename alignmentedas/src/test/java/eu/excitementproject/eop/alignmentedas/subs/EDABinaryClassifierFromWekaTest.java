@@ -9,7 +9,7 @@ import java.util.Vector;
 
 import org.junit.Test;
 
-import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithDistribution;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithConfidence;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
@@ -58,7 +58,7 @@ public class EDABinaryClassifierFromWekaTest {
 		fv2.addElement(new FeatureValue(MyColor.blue)); 
 
 		try {
-			DecisionLabelWithDistribution result = classifier.classifyInstance(fv2); 
+			DecisionLabelWithConfidence result = classifier.classifyInstance(fv2); 
 			System.out.println(result.getLabel().toString()); 
 			System.out.println(result.getConfidence()); 
 		}
@@ -95,7 +95,7 @@ public class EDABinaryClassifierFromWekaTest {
 		try {
 			classifier2 = new EDABinaryClassifierFromWeka(); 
 			classifier2.loadClassifierModel(f); 
-			DecisionLabelWithDistribution result = classifier.classifyInstance(fv2); 
+			DecisionLabelWithConfidence result = classifier.classifyInstance(fv2); 
 			System.out.println(result.getLabel().toString()); 
 			System.out.println(result.getConfidence()); 
 		}
