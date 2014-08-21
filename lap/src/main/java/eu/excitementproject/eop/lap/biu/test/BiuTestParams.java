@@ -12,5 +12,5 @@ public class BiuTestParams {
 	public static final String STANFORD_NER_CLASSIFIER_PATH = "../third-party/stanford-ner-2009-01-16/classifiers/ner-eng-ie.crf-3-all2008-distsim.ser.gz";
 	public static final String MAXENT_POS_TAGGER_MODEL_FILE = "../third-party/stanford-postagger-full-2008-09-28/models/left3words-wsj-0-18.tagger";
 	public static final String EASYFIRST_HOST = "localhost";
-	public static final int EASYFIRST_PORT = 8080;
+	public static final int EASYFIRST_PORT = 7782; //Updated port in Jenkins in FBK, August 2014
 }
