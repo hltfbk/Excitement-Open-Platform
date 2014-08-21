@@ -34,6 +34,7 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * if the CAS has T: "I have a dog.", H: "She has a dog too". 
  * It module will add only *one link* that connects three tokens of T ([have a dog]) to 
  * three tokens of H ([has a dog]). It won't link (have -> has), or (dog -> dog). 
+ * TODO: FIXIT - this is only partially true -- each word in H side are checked again and again. 
  * 
  * ( Also note that, the module does not annotate "function words only" sequences. That is 
  * it will add links between "to emphasize" -> "to emphasize", but not "to the" -> "to the". ) 
