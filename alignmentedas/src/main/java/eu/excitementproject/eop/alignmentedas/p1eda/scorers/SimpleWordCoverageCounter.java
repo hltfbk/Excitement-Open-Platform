@@ -22,7 +22,7 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 	 *  If null given, the module uses, *all* link instances to calculate coverage. 
 	 *  
 	 */
-	public SimpleWordCoverageCounter() {
+	public SimpleWordCoverageCounter(String linkID) {
 		// TODO Auto-generated constructor stub
 	}
 
