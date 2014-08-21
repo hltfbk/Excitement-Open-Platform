@@ -8,11 +8,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.cas.CAS;
+import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.Subiterator;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
@@ -30,6 +36,9 @@ import org.apache.uima.util.XMLSerializer;
 import org.uimafit.util.CasUtil;
 import org.uimafit.util.JCasUtil;
 import org.xml.sax.SAXException;
+
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 
 /**
  * Generic convenience methods when using UIMA.
@@ -191,14 +200,14 @@ public class UimaUtils {
 	 * Does not use subiterators.
 	 *
 	 * @param <T>
-	 *            the JCas type.
+	 *            the required annotation type to be retrieved.
 	 * @param jCas
 	 *            a JCas containing the annotation.
 	 * @param type
-	 *            a UIMA type.
+	 *            the required annotation type to be retrieved.
 	 * @param coveringAnnotation
 	 *            the covering annotation.
-	 * @return the single instance of the given type.
+	 * @return the single instance of the required type.
 	 * @throws IllegalArgumentException if not exactly one instance if the given type is present
 	 * 		   under the covering annotation.
 	 * @see Subiterator
@@ -207,10 +216,34 @@ public class UimaUtils {
 	 * @since April 2014
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T extends Annotation> T selectCoveredSingle(JCas jCas, final Class<T> type,
-			AnnotationFS coveringAnnotation) {
+	public static <T extends Annotation> T selectCoveredSingle(JCas jCas, final Class<T> type, AnnotationFS coveringAnnotation) {
 		return (T) selectCoveredSingle(jCas.getCas(), JCasUtil.getType(jCas, type),
 				coveringAnnotation);
+	}
+
+	/**
+	 * Get the annotation of the given annotation type constrained by a 'covering' annotation.
+	 * Iterates over all annotations of the given type to find the covered annotations.
+	 * Does not use subiterators.
+	 *
+	 * @param <T>
+	 *            the required annotation type to be retrieved.
+	 * @param jCas
+	 *            a JCas containing the annotation.
+	 * @param type
+	 *            the required annotation type to be retrieved.
+	 * @param coveringAnnotation
+	 *            the covering annotation.
+	 * @return the single instance of the required type.
+	 * @throws IllegalArgumentException if not exactly one instance if the given type is present
+	 * 		   under the covering annotation.
+	 * @see Subiterator
+	 * 
+	 * @author Ofer Bronstein
+	 * @since April 2014
+	 */
+	public static <T extends Annotation> T selectCoveredSingle(final Class<T> type,	AnnotationFS coveringAnnotation) throws CASException {
+		return selectCoveredSingle(coveringAnnotation.getCAS().getJCas(), type, coveringAnnotation);
 	}
 
 	/**
@@ -221,10 +254,10 @@ public class UimaUtils {
 	 * @param cas
 	 *            a cas containing the annotation.
 	 * @param type
-	 *            a UIMA type.
+	 *            the required annotation type to be retrieved.
 	 * @param coveringAnnotation
 	 *            the covering annotation.
-	 * @return the single instance of the given type.
+	 * @return the single instance of the required type.
 	 * @throws IllegalArgumentException if not exactly one instance if the given type is present
 	 * 		   under the covering annotation.
 	 * @see Subiterator
@@ -232,19 +265,98 @@ public class UimaUtils {
 	 * @author Ofer Bronstein
 	 * @since April 2014
 	 */
-	public static AnnotationFS selectCoveredSingle(CAS cas, Type type,
-			AnnotationFS coveringAnnotation) {
+	public static AnnotationFS selectCoveredSingle(CAS cas, Type type, AnnotationFS coveringAnnotation) {
 		List<AnnotationFS> annotations = CasUtil.selectCovered(cas, type, coveringAnnotation);
 		
 		if (annotations.isEmpty()) {
-			throw new IllegalArgumentException("CAS does not contain any [" + type.getName() + "]");
+			throw new IllegalArgumentException("No annotations of type [" + type.getName() + "] in selected range");
 		}
 		if (annotations.size() > 1)  {
-			throw new IllegalArgumentException("CAS contains more than one [" + type.getName()
-					+ "]");
+			throw new IllegalArgumentException("More than one annotation of type [" + type.getName()
+					+ "] in selected range");
 		}
 		
 		return annotations.get(0);
 	}
 
+	public static <A extends Annotation> String annotationToString(A anno) {
+		return String.format("%s[%s:%s]", anno.getCoveredText(), anno.getBegin(), anno.getEnd());
+	}
+
+	public static String annotationToString(Token token) {
+		return annotationToString(token, true, true);
+	}
+	
+	public static String annotationToString(Token token, boolean writeLemma, boolean writePOS) {
+		String strLemma = "";
+		if (writeLemma && (token.getLemma() != null && !token.getLemma().getValue().isEmpty())) {
+			strLemma = String.format("(%s)", token.getLemma().getValue());
+		}
+		String strPOS = "";
+		if (writePOS && (token.getPos() != null && !token.getPos().getPosValue().isEmpty())) {
+			strPOS = String.format("/%s", token.getPos().getPosValue());
+		}
+		return String.format("%s%s%s[%s:%s]", token.getCoveredText(), strLemma, strPOS, token.getBegin(), token.getEnd());
+	}
+	
+	public static String annotationToString(Dependency dep) {
+		Token dependent = dep.getDependent();
+		Token governer = dep.getGovernor();
+		return String.format(String.format("%s(%s->%s)", dep.getDependencyType(),
+				annotationToString(dependent, false, false), annotationToString(governer, false, false)));
+	}
+	
+	public static <A extends Annotation> String annotationIterableToString(Iterable<A> annos) {
+		List<String> strs = new ArrayList<String>();
+		for (A anno : annos) {
+			String annoStr;
+			if (anno instanceof Token) {
+				annoStr = annotationToString((Token) anno);
+			}
+			else if (anno instanceof Dependency) {
+				annoStr = annotationToString((Dependency) anno);
+			}
+			else {
+				annoStr = annotationToString(anno);
+			}
+			strs.add(annoStr);
+		}
+		return String.format("[%s]", StringUtils.join(strs, ", "));
+	}
+
+	public static <A extends Annotation> String annotationCollectionToString(Collection<A> annos) {
+		return String.format("%s/%s", annos.size(), annotationIterableToString(annos));
+	}
+
+	/**
+	 * Calculates an annotation's hash code only by its type and span (begin..end).
+	 * This is useful for times when you can assume that only one annotation of a certain type
+	 * will be on a specific span (when that's not the case you'll get the same hash code
+	 * for multiple distinct annotations, so don't use this!).
+	 * 
+	 * @param anno
+	 * @return
+	 */
+	public static int hashCodeAnnotationByTypeAndSpan(Annotation anno) {
+	     return new HashCodeBuilder(131, 79).append(anno.getType()).append(anno.getBegin()).append(anno.getEnd()).toHashCode();
+	}
+
+	/**
+	 * Check whether two annotations are equals only by their type and span (begin..end).
+	 * This is useful for times when you can assume that only one annotation of a certain type
+	 * will be on a specific span (when that's not the case you'll get equality
+	 * for multiple distinct annotation, so don't use this!).
+	 * 
+	 * @param anno
+	 * @return
+	 */
+	public static boolean equalsAnnotationByTypeAndSpan(Object obj1, Object obj2) {
+		if (obj1 == null && obj2 == null) { return true; }
+		if (obj1 == null || obj2 == null) { return false; }
+		if (obj1 == obj2) { return true; }
+		if (obj1.getClass() != obj2.getClass()) { return false; }
+		Annotation anno1 = (Annotation) obj1;
+		Annotation anno2 = (Annotation) obj2;
+		return new EqualsBuilder().append(anno1.getBegin(), anno2.getBegin()).append(anno1.getEnd(), anno2.getEnd()).isEquals();
+	}
 }
