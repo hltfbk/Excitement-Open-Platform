@@ -192,19 +192,9 @@ public class CasTreeConverter {
 		deepDependencies = new ArrayList<Dependency>();
 		extraNodes = new LinkedHashSet<BasicNode>();
 		
-		logger.trace(String.format("\n***************\n***************\n%s\n***************\n", sentenceAnno.getCoveredText()));
-		
-		/// DEBUG
-		try {
-			System.out.printf("\n\n\n****CasTreeConverter Input:\n\t\tSentence: %s\n\t\ttokens=%s\n\t\tdependencies=\n%s\n\n\n",
-					UimaUtils.annotationToString(sentenceAnno), UimaUtils.annotationCollectionToString(tokenAnnotations),
-					UimaUtils.annotationCollectionToString(dependencyAnnotations));
-		}
-		catch (Exception e) {
-			throw new CasTreeConverterException(e);
-		}
-		////
-
+		logger.trace(String.format("\n***************\n***************\nCasTreeConverter Input:\n\t\tSentence: %s\n\t\ttokens=%s\n\t\tdependencies=\n%s\n***************\n",
+				UimaUtils.annotationToString(sentenceAnno), UimaUtils.annotationCollectionToString(tokenAnnotations),
+				UimaUtils.annotationCollectionToString(dependencyAnnotations)));
 		
 		// Get token positions in sentence (1-based)
 		Map<Token, Integer> tokenPositions = new LinkedHashMap<Token, Integer>(tokenAnnotations.size());
@@ -212,13 +202,6 @@ public class CasTreeConverter {
 		for (Token token : tokenAnnotations) {
 			tokenPositions.put(token, i);
 			i++;
-			
-			/// DEBUG
-			if (token.getCoveredText().contains("-")) {
-				System.out.printf("\n\n\nCasTreeConverter: Token with hyphen: '%s[%s:%s]' in sentence '%s'[%s:%s]\n\n\n",
-						token.getCoveredText(), token.getBegin(), token.getEnd(), sentenceAnno.getCoveredText(), sentenceAnno.getBegin(), sentenceAnno.getEnd());
-			}
-			///
 		}
 		
 		// Create all nodes from dependents in Dependencies
@@ -226,12 +209,6 @@ public class CasTreeConverter {
 			String depType = getDependency(depAnno);
 			Token governor = depAnno.getGovernor();
 			Token dependent = depAnno.getDependent();
-			
-			/// DEBUG
-			if (governor.getCoveredText().contains("-") || dependent.getCoveredText().contains("-")) {
-				System.out.printf("\n\n\nCasTreeConverter: Dependency with hyphen: gov='%s' or dep='%s', rel=%s\n\n\n", outToken(governor), outToken(dependent), depType);
-			}
-			////
 			
 			// Handle deep dependencies and antecedents
 			if (StanfordDependenciesParserAE.getDeepDependencyRelations().contains(depType)) {
@@ -299,21 +276,16 @@ public class CasTreeConverter {
 		BasicNode root = buildNode(jcas, serialandId, serialandId, rootToken, null, null);
 		addChildren(root, childrenByParent.get(rootToken));
 				
-		/// DEBUG
+		String treePrint;
 		try {
-			//if (sentenceAnno.getCoveredText().contains("For us the United Natgions")) {
-				System.out.printf("\n\n\n****CasTreeConverter Summary:\n\t\tSentence: %s\n\t\ttokens(%s)=%s\n\t\ttree(%s nodes, out of which %s deep)=\n%s\n\n\n",
-						UimaUtils.annotationToString(sentenceAnno), tokenAnnotations.size(), UimaUtils.annotationCollectionToString(tokenAnnotations),
-						nodes.size(), extraNodes.size(),
-						//TreeStringGenerator.treeToStringWordPos(root)
-						TreeToLineString.getStringWordRelPos(root)
-						);
-			//}
+			treePrint = TreeStringGenerator.treeToStringWordPos(root);
+		} catch (TreeStringGenerator.TreeStringGeneratorException e) {
+			treePrint = TreeToLineString.getStringWordRelPos(root);
 		}
-		catch (Exception e) {
-			throw new CasTreeConverterException(e);
-		}
-		////
+		
+		logger.trace(String.format("\n\n\n****CasTreeConverter Summary:\n\t\tSentence: %s\n\t\ttokens(%s)=%s\n\t\ttree(%s nodes, out of which %s deep)=\n%s\n\n\n",
+				UimaUtils.annotationToString(sentenceAnno), tokenAnnotations.size(), UimaUtils.annotationCollectionToString(tokenAnnotations),
+				nodes.size(), extraNodes.size(), treePrint));
 
 		
 		if (nodes.size() != tokenAnnotations.size() + extraNodes.size()) {
@@ -489,13 +461,6 @@ public class CasTreeConverter {
 		// So for every token, the first node is always the non-deep one. All subsequent nodes
 		// may be deep (if any). Note that the value collection in this MultiMap is a List.
 		tokenToNode.put(token, node);
-		
-		/// DEBUG
-		if (token.getCoveredText().contains("-")) {
-			System.out.printf("CasTreeConverter: now storing the hyphen token: %s[%s:%s]",
-					token.getCoveredText(), token.getBegin(), token.getEnd());
-		}
-		///
 		
 		return node;
 	}
