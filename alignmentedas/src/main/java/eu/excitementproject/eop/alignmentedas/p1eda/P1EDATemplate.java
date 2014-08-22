@@ -101,7 +101,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// Note that, the template assumes that you override each of the step-methods. 
 		// (although you are free to override any, including this process()). 
 		
-		logger.info("process() has been called.");
+		logger.debug("process() has been called with CAS " + eopJCas);
 		
 		// Step 0. check JCas: a correct one with all needed annotations? 
 		checkInputJCas(eopJCas); 
@@ -110,24 +110,31 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 
 		// Step 1. add alignments. The method will add various alignment.Link instances
 		// Once this step is properly called, the JCas holds alignment.Link data in it. 
+		logger.debug("calling addAlignments"); 
 		addAlignments(eopJCas); 
 				
 		// Step 2. (this is an optional step.) The method will interact / output 
 		// the added alignment links for debug / analysis purpose. (for Tracer)  
+		logger.debug("calling visualizeAlignments"); 
 		visualizeAlignments(eopJCas); 
 		
 		// Step 3. 
+		logger.debug("calling evaluateAlignments"); 
 		Vector<FeatureValue> featureValues = evaluateAlignments(eopJCas); 
+		logger.debug("evaluateAlignments returned feature vector as of; "); 
+		logger.debug(featureValues.toString()); 
 		
 		// Step 4. (this is also an optional step.) 
-		//
+		logger.debug("calling evaluateAlignments"); 
 		visualizeEdaInternals(); 
 		
 		// Step 5. 
 		// Classification. 
+		logger.debug("calling classifyEntailment"); 
 		DecisionLabelWithConfidence result = classifyEntailment(featureValues); 
 		
 		// Finally, return a TEDecision object with CAS (which holds alignments) 
+		logger.debug("TEDecision object generated and being returned: " + result.getLabel() + ", " + result.getConfidence()); 
 		return new TEDecisionWithAlignment(result.getLabel(), result.getConfidence(), pairID, eopJCas); 
 	}
 	
@@ -169,7 +176,8 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		{
 			// is it a XMI file?
 			// 
-			
+
+			logger.debug("Working with file " + f.getName()); 
 			if(!f.isFile()) 
 			{	// no ... 
 				logger.warn(f.toString() + " is not a file... ignore this"); 
@@ -188,17 +196,22 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 			}
 			catch (LAPException le)
 			{
-				logger.equals("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
+				logger.warn("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
 				throw new EDAException("failed to read XMI file into a JCas", le); 
 			}
 			
 			// convert it into one LabeledInstance by calling 
 			// addAlignments and evaluateAlignments on each of them 
+			logger.debug("adding alignments..."); 
 			addAlignments(aTrainingPair);
+			
+			logger.debug("evaluating alignments..."); 
 			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair); 
 			DecisionLabel l = getGoldLabel(aTrainingPair); 
 			LabeledInstance ins = new LabeledInstance(l, fv); 
 		
+			logger.debug("a labeled instance added in the training set for the classifier as;"); 
+			logger.debug(fv.toString() + ", " + l.toString()); 
 			trainingSet.add(ins); 	
 		}
 		
