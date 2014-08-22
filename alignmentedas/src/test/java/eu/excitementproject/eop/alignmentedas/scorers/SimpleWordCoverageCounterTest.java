@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Vector;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.BasicConfigurator;
@@ -20,6 +21,7 @@ import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.LinkUtils;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleWordCoverageCounter;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
@@ -32,7 +34,7 @@ public class SimpleWordCoverageCounterTest {
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
 		Logger.getRootLogger().setLevel(Level.DEBUG);  // for UIMA (hiding < INFO) 
-		Logger testlogger = Logger.getLogger("eu.excitement.type.alignment.LunkUtilsTest"); 
+		Logger testlogger = Logger.getLogger(getClass().getName()); 
 		
 		// prepare a lemmatizer 
 		TreeTaggerEN lemmatizer = null; 
@@ -87,8 +89,19 @@ public class SimpleWordCoverageCounterTest {
 			fail(e.getMessage()); 
 		}
 		
-		// Okay, actual coverage test. 
-		// TODO 
+		// Okay, Let's do some coverage test. 
+		ScoringComponent count1 = new SimpleWordCoverageCounter(null); // count all 
+		try {
+			Vector<Double> v = count1.calculateScores(aJCas); 
+			testlogger.info(v.get(0)); 
+			testlogger.info(v.get(1)); 
+			testlogger.info(v.get(2)); 
+			testlogger.info(v.get(3)); 
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
 		
 	}
 

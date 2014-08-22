@@ -4,6 +4,8 @@
 package eu.excitementproject.eop.alignmentedas.p1eda;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
@@ -16,12 +18,19 @@ import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithConfidence;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.LabeledInstance;
+import eu.excitementproject.eop.common.DecisionLabel;
 //import eu.excitementproject.eop.alignmentedas.p1eda.subs.ParameterValue;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.PlatformCASProber;
 import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas; 
+
+// TODO: TOCONSIDER
+// - where to pass the Parameter List 
+// - where comes the Parameter optimization portion (minimize cost) 
 
 /**
  * This is a template, abstract class for P1 EDA. 
@@ -104,7 +113,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		visualizeAlignments(eopJCas); 
 		
 		// Step 3. 
-		Vector<FeatureValue> featureValues = evaluateAlignments(); 
+		Vector<FeatureValue> featureValues = evaluateAlignments(eopJCas); 
 		
 		// Step 4. (this is also an optional step.) 
 		//
@@ -148,14 +157,74 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// TODO read from common config, and call argument version, 
 	}
 	
-	public void startTraining(File dirTrainingDataInXMIFiles, File classifierModelPathToStore)
+	public void startTraining(File dirTrainingDataXMIFiles, File classifierModelPathToStore) throws EDAException 
 	{
-		// TODO 
+		// list where the labeled instances will be stored... 
+		List<LabeledInstance> trainingSet = new ArrayList<LabeledInstance>(); 
 		
-		// read all XMI files in the Directory ... 
+		// walk each XMI files in the Directory ... 
+		File[] files =  dirTrainingDataXMIFiles.listFiles(); 
+		if (files == null)
+		{
+			throw new EDAException("Path " + dirTrainingDataXMIFiles.getAbsolutePath() + " does not hold XMI files"); 
+		}
 		
-		// 
+		for (File f : files)
+		{
+			// is it a XMI file?
+			// 
+			
+			if(!f.isFile()) 
+			{	// no ... 
+				logger.warn(f.toString() + " is not a file... ignore this"); 
+				continue; 
+			}
+			if(!f.getName().toLowerCase().endsWith("xmi")) // let's trust name, if it does not end with XMI, pass
+			{
+				logger.warn(f.toString() + " is not a XMI file... ignoring this"); 
+				continue; 
+			}
+			
+			// So, we have an XMI file. Load in to CAS 
+			JCas aTrainingPair = null; 
+			try {
+				 aTrainingPair = PlatformCASProber.probeXmi(f, null);
+			}
+			catch (LAPException le)
+			{
+				logger.equals("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
+				throw new EDAException("failed to read XMI file into a JCas", le); 
+			}
+			
+			// convert it into one LabeledInstance by calling 
+			// addAlignments and evaluateAlignments on each of them 
+			addAlignments(aTrainingPair);
+			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair); 
+			DecisionLabel l = getGoldLabel(aTrainingPair); 
+			LabeledInstance ins = new LabeledInstance(l, fv); 
 		
+			trainingSet.add(ins); 	
+		}
+		
+		// finally, calling classifier abstract to train a model 
+		try
+		{
+			classifier.createClassifierModel(trainingSet); 
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException("Underlying classifier thrown exception while training a model", ce); 
+		}
+		
+		// and store the model 
+		try 
+		{
+			classifier.storeClassifierModel(classifierModelPathToStore);
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException("Underlying classifier thrown exception while deserializing a model", ce); 
+		}
 	}
 	
 	// TODO CONSIDER: parameter portion; for start_training() Where?
@@ -177,7 +246,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public abstract void addAlignments(JCas input); 
 		
-	public abstract Vector<FeatureValue> evaluateAlignments(); 
+	public abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas); 
 
 	
 	/* 
@@ -254,6 +323,31 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 				logger.warn("This JCas has more than one TE Pairs: This P1EDA template only processes single-pair inputs. Any additional pairs are being ignored, and only the first Pair will be processed.");
 			}
 			return id; 
+		}
+		else
+		{
+			throw new EDAException("Input CAS is not well-formed CAS as EOP EDA input: missing TE pair"); 
+		}
+	}
+	
+	private DecisionLabel getGoldLabel(JCas aJCas) throws EDAException 
+	{
+		String labelString; 
+		DecisionLabel labelEnum; 
+		
+		FSIterator<TOP> iter = aJCas.getJFSIndexRepository().getAllIndexedFS(Pair.type); 
+		if (iter.hasNext())
+		{
+			Pair p = (Pair) iter.next(); 
+			labelString = p.getGoldAnswer(); 
+			
+			labelEnum = DecisionLabel.getLabelFor(labelString); 
+			
+			if (iter.hasNext())
+			{
+				logger.warn("This JCas has more than one TE Pairs: This P1EDA template only processes single-pair inputs. Any additional pairs are being ignored, and only the first Pair will be processed.");
+			}
+			return labelEnum; 
 		}
 		else
 		{

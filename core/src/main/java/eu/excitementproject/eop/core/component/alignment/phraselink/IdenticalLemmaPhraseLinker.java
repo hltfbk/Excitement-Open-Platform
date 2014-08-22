@@ -331,7 +331,7 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 	// Punctuation, Preposition, Others, Conjunction, and Articles.  
 	final private static String[] nonContentPOSes = {"PUNC", "PP", "O", "CONJ", "ART"}; 	
 	
-	private static Map<String,Boolean> isNonContentPos = new HashMap<String, Boolean>(); 
+	public static Map<String,Boolean> isNonContentPos = new HashMap<String, Boolean>(); 
 	static {
 		// initialize nonContentPOS map 
 		isNonContentPos = new HashMap<String,Boolean>(); 

@@ -5,22 +5,32 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.LinkUtils;
 import eu.excitement.type.alignment.Target;
+//import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
- * This is a very simple "alignment evaluator" which reports two numbers; 
- * "number of covered content word in H", "number of content words in H".
+ * This is a very simple "alignment evaluator" which reports the following numbers; 
+ * "number of covered word in H", "number of words in H".
+ * 
+ * calculateScores() method will return 4 numbers  
+ *  ( count covered tokens , count all tokens, count covered content-tokens, count all content-tokens) 
+ *  
+ * CAS needs POS annotations and Token annotations, minimally. 
  * 
  * @author Tae-Gil Noh
  *
@@ -32,11 +42,10 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 	 *  with that ID, to calculate "coverage". 
 	 *  If null given, the module uses, *all* link instances to calculate coverage. 
 	 *  
-	 *  calculateScores will return 2 numbers  
-	 *  ( count covered tokens , count all tokens ) 
+	 *  calculateScores will return 4 numbers  
+	 *  ( count covered tokens , count all tokens, count covered content-tokens, count all content-tokens) 
 	 *  
-	 *   TODO CONSIDER, extend this to include "count covered content-word tokens, count all content-word"
-	 *    tokens ) and return 4 numbers instead of 2. 
+	 *  Content token means, tokens with POS other than "PUNC", "PP", "O", "CONJ", "ART"
 	 */
 	public SimpleWordCoverageCounter(String alignerID) {
 		this.alignerIdToMatch = alignerID; 
@@ -47,13 +56,36 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 	public Vector<Double> calculateScores(JCas aJCas)
 			throws ScoringComponentException {
 		
-		Vector<Double> result = new Vector<Double>(2); 
+		Vector<Double> result = new Vector<Double>(4);  // this module always returns four numbers
+		JCas hView = null; 
 		
 		// get the list of tokens 
-		Collection<Token> allTokens = JCasUtil.select(aJCas, Token.class); 
+		Collection<Token> allTokens = null; 
+		try {
+			hView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW); 
+			allTokens = JCasUtil.select(hView, Token.class); 
+		}
+		catch (CASException ce)
+		{
+			throw new ScoringComponentException("Accessing CAS HView failed!", ce); 	
+		}
 		int countTokens = allTokens.size(); 
+		int countContentTokens = allTokens.size(); // will be reduced within the loops, to reflect only content words. 
+		int countCoveredTokens = 0; 
+		int countCoveredContentTokens = 0; 
+		
+		logger.debug("calculateScore: count all tokens, HView: " + countTokens); 
 		
 		// get all Links with the ID 
+		if (alignerIdToMatch == null)
+		{
+			logger.debug("calculateScore: all links are fetched");
+		}
+		else
+		{
+			logger.debug("calculateScore: links with ID \"" + this.alignerIdToMatch + "\" are fetched");			
+		}
+
 		List<Link> linksWithTheID = null; 
 		try 
 		{
@@ -63,9 +95,10 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 		{
 			throw new ScoringComponentException("Accessing CAS failed somehow!", ce); 	
 		}
+		
+		logger.debug("calculateScore: total " + linksWithTheID.size() + " links fetched"); 
 
 		// for each Token, check if this token is covered. 
-		int countCoveredTokens = 0; 
 		if (linksWithTheID.size() == 0)
 		{
 			// no need to count 
@@ -75,15 +108,32 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 		{
 			for(Token tok : allTokens)
 			{
+				logger.debug("Checking Token " + tok.getCoveredText()); 
+
+				Boolean nonContentToken = isNonContentToken(tok); 
+				if (nonContentToken)
+				{
+					countContentTokens --; 
+				}
+
 				List<Link> linksHoldingThisToken = filterLinksWithTargetsIncluding(linksWithTheID, tok);
 				if (linksHoldingThisToken.size() != 0)
+				{
 					countCoveredTokens ++; 
+					logger.debug("The token is covered by " + linksHoldingThisToken.size() + " link(s)."); 
+					if (!nonContentToken)
+					{
+						countCoveredContentTokens++; 
+					}
+				}				
 			}
 		}
 		
 		// now the two numbers are ready. 
 		result.add((double) countCoveredTokens); 
 		result.add((double) countTokens); 
+		result.add((double) countCoveredContentTokens); 
+		result.add((double) countContentTokens); 
 		
 		return result;
 	}
@@ -139,8 +189,36 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 		return null;
 	}
 
+	/**
+	 * This utility checks if the token is one of non-content token type. 
+	 * (e.g. "PUNC", "PP", "O", "CONJ", "ART"). Actual definition of non content POSes
+	 * are borrowed from a static definition set in IdenticalLemmaPhraseLinker. 
+	 * 
+	 * @param t The token to be checked. 
+	 * @return
+	 */
+	private boolean isNonContentToken(Token t) throws ScoringComponentException 
+	{
+		
+		POS p = t.getPos(); 
+		if (p == null)
+		{
+			throw new ScoringComponentException("The module requires POS annotated for the Tokens, to check non-content words"); 
+		}
+		String s = p.getType().toString(); 	
+		String typeString = s.substring(s.lastIndexOf(".") + 1); 
+		//String logline = t.getCoveredText() + "/" + typeString + ", ";
+		Boolean result = IdenticalLemmaPhraseLinker.isNonContentPos.containsKey(typeString); 
+		logger.debug(t.getCoveredText() + "/" + typeString + ": isNonContentToken: " + result); 
+
+		return result; 
+	}
+	
 	private final String alignerIdToMatch; 
 	
 	
+	private final static Logger logger = Logger.getLogger(SimpleWordCoverageCounter.class);
+
+
 	
 }
