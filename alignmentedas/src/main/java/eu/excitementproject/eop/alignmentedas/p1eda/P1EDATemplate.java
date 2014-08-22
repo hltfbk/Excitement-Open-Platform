@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
+import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
+import org.apache.uima.jcas.tcas.Annotation;
+import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
@@ -26,6 +29,7 @@ import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas; 
 
 // TODO: TOCONSIDER
@@ -144,14 +148,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 
-	// TODO CONSIDER: parameter portion; for startTraining() Where?
-	// For example. 
-	//	public void initialize(File classifierModelToLoad, Vector<ParameterValue> param)
-	//	public void initialize(File classifierModelToLoad, File parameterFileToLoad) ... 
-	// Or, simply, param as "constant" within a EDA instance? (Optimization of param = optimization of various EDA config) 
-	// Param 이 config의 일부가 되는게지...  흠. 그거 괜찮네. 
-
-
 	public void startTraining(CommonConfig conf)
 	{
 		// TODO read from common config, and call argument version, 
@@ -227,13 +223,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 	
-	// TODO CONSIDER: parameter portion; for start_training() Where?
-	// For example. 
-	//	public void initialize(File classifierModelToLoad, Vector<ParameterValue> param)
-	//	public void initialize(File classifierModelToLoad, File parameterFileToLoad) ... 
-	// Or, simply, param as "constant" within a EDA instance? (Optimization of param = optimization of various EDA config) 
-	// Param 이 모델의 일부는 아닌게지. 흠. 그거 괜찮네. 
-
 	public void shutdown()
 	{
 		// This template itself has nothing to close down. 
@@ -244,9 +233,9 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * Mandatory methods (steps) that should be overridden. 
 	 */
 	
-	public abstract void addAlignments(JCas input); 
+	public abstract void addAlignments(JCas input) throws EDAException; 
 		
-	public abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas); 
+	public abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas) throws EDAException; 
 
 	
 	/* 
@@ -307,7 +296,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	}
 	
 	// private utility methods 
-	private String getTEPairID(JCas aJCas) throws EDAException
+	protected String getTEPairID(JCas aJCas) throws EDAException
 	{
 		String id = null; 
 		
@@ -330,7 +319,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 	
-	private DecisionLabel getGoldLabel(JCas aJCas) throws EDAException 
+	protected DecisionLabel getGoldLabel(JCas aJCas) throws EDAException 
 	{
 		String labelString; 
 		DecisionLabel labelEnum; 
@@ -353,6 +342,33 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		{
 			throw new EDAException("Input CAS is not well-formed CAS as EOP EDA input: missing TE pair"); 
 		}
+	}
+	
+	/**
+	 * A check utility method. 
+	 * A static utility method for checking, if or not, the CAS has a specific 
+	 * type of annotation instances, or not. 
+	 * 
+	 * e.g. haveCASAnnotationType(aJCas, 
+	 * 
+	 * @param aJCas
+	 * @param annot
+	 * @return
+	 */
+	protected static <T extends Annotation> boolean haveCASAnnotationType(JCas aJCas, Class<T> type) throws CASException
+	{
+		// returns false, if both of the views do not have the requested type. 
+		JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+
+		if (JCasUtil.select(hypoView, type).size() > 0)
+			return true; 
+
+		JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
+
+		if (JCasUtil.select(textView, type).size() > 0)
+			return true; 
+
+		return false; 
 	}
 	
 	// private final fields... 

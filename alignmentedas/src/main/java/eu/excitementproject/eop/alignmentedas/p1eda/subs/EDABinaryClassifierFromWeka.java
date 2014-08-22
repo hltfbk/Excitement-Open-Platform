@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import eu.excitementproject.eop.common.DecisionLabel;
+import eu.excitementproject.eop.common.EDAException;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
@@ -34,8 +35,16 @@ import weka.core.Instances;
  */
 public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 
-	public EDABinaryClassifierFromWeka() throws ClassifierException {
-		 prepareWekaClassifierInstance(); 
+	public EDABinaryClassifierFromWeka() //throws ClassifierException,  {
+		throws EDAException {
+		
+		try {
+			prepareWekaClassifierInstance();
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException("Underlying classifier failed to initialize.", ce); 
+		}
 	}
 	
 	/**
