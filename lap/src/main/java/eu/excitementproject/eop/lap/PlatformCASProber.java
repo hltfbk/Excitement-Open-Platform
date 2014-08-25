@@ -3,6 +3,7 @@ package eu.excitementproject.eop.lap;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -21,6 +22,7 @@ import org.apache.uima.cas.IntArrayFS;
 import org.apache.uima.cas.StringArrayFS;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
+import org.apache.uima.cas.impl.XmiCasSerializer;
 import org.apache.uima.cas.text.AnnotationFS;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
@@ -29,6 +31,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
+import org.apache.uima.util.XMLSerializer;
 import org.xml.sax.SAXException;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
@@ -297,6 +300,31 @@ public class PlatformCASProber {
 			throw new LAPException("Unable to access the views", e); 
 		}				
 		return aJCas; 
+	}
+	
+	/**
+	 * A static utility method: a one liner helper method to store JCAS as XMI. 
+	 * 
+	 * @param aJCas
+	 * @param xmiOutFile
+	 * @throws LAPException
+	 */
+	public static void storeJCasAsXMI(JCas aJCas, File xmiOutFile) throws LAPException 
+	{
+				
+		try {
+			FileOutputStream out = new FileOutputStream(xmiOutFile);
+			XmiCasSerializer ser = new XmiCasSerializer(aJCas.getTypeSystem());
+			XMLSerializer xmlSer = new XMLSerializer(out, false);
+			ser.serialize(aJCas.getCas(), xmlSer.getContentHandler());
+			out.close();
+		} catch (FileNotFoundException e) {
+			throw new LAPException("Unable to create/open the file" + xmiOutFile.toString(), e);
+		} catch (SAXException e) {
+			throw new LAPException("Failed to serialize the CAS into XML", e); 
+		} catch (IOException e) {
+			throw new LAPException("Unable to access/close the file" + xmiOutFile.toString(), e);
+		}
 	}
 
 	//

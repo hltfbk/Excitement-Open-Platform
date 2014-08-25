@@ -147,6 +147,19 @@ public class IdenticalLemmaPhraseLinkerTest {
 		{
 			fail(e.getMessage()); 
 		}
+		
+		// Some problematic one ... 
+		try {
+    		aJCas = tokenizer.generateSingleTHPairCAS("Claude Chabrol divorced Agnes, his first wife, to marry the actress Stéphane Audran. His third wife is Aurore Paquiss.", "Aurore Paquiss married Chabrol."); 
+			testInstance.annotate(aJCas); 
+			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
+
+			
+		}
+		catch (Exception e)
+		{
+			fail(e.getMessage()); 
+		}
 
 
 		
@@ -202,6 +215,6 @@ public class IdenticalLemmaPhraseLinkerTest {
 		catch (Exception e)
 		{
 			fail(e.getMessage());
-		}
+		}		
 	}
 }

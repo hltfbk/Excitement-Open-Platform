@@ -208,7 +208,9 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 	public List<Double> evaluateClassifier(List<LabeledInstance> goldData) 
 			throws ClassifierException {
 		
-		// TODO consider: make it solely as cross-validation? 
+		// DECIDED: TODOconsider: make it solely as cross-validation? or option for cross-validation? 
+		// This code does "as-is" evaluation. 
+		// To do cross-validation of the given goldData, support other doCrossValidationEvaluation()
 		
 		Instances trainingData = null; 
 		Evaluation eTest = null; 

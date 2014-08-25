@@ -162,58 +162,64 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public void startTraining(File dirTrainingDataXMIFiles, File classifierModelPathToStore) throws EDAException 
 	{
-		// list where the labeled instances will be stored... 
-		List<LabeledInstance> trainingSet = new ArrayList<LabeledInstance>(); 
+//		// list where the labeled instances will be stored... 
+//		List<LabeledInstance> trainingSet = new ArrayList<LabeledInstance>(); 
+//		
+//		// walk each XMI files in the Directory ... 
+//		File[] files =  dirTrainingDataXMIFiles.listFiles(); 
+//		if (files == null)
+//		{
+//			throw new EDAException("Path " + dirTrainingDataXMIFiles.getAbsolutePath() + " does not hold XMI files"); 
+//		}
+//		
+//		for (File f : files)
+//		{
+//			// is it a XMI file?
+//			// 
+//
+//			logger.debug("Working with file " + f.getName()); 
+//			if(!f.isFile()) 
+//			{	// no ... 
+//				logger.warn(f.toString() + " is not a file... ignore this"); 
+//				continue; 
+//			}
+//			if(!f.getName().toLowerCase().endsWith("xmi")) // let's trust name, if it does not end with XMI, pass
+//			{
+//				logger.warn(f.toString() + " is not a XMI file... ignoring this"); 
+//				continue; 
+//			}
+//			
+//			// So, we have an XMI file. Load in to CAS 
+//			JCas aTrainingPair = null; 
+//			try {
+//				 aTrainingPair = PlatformCASProber.probeXmi(f, null);
+//			}
+//			catch (LAPException le)
+//			{
+//				logger.warn("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
+//				throw new EDAException("failed to read XMI file into a JCas", le); 
+//			}
+//			
+//			// convert it into one LabeledInstance by calling 
+//			// addAlignments and evaluateAlignments on each of them 
+//			logger.debug("adding alignments..."); 
+//			addAlignments(aTrainingPair);
+//			
+//			logger.debug("evaluating alignments..."); 
+//			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair); 
+//			DecisionLabel l = getGoldLabel(aTrainingPair); 
+//			LabeledInstance ins = new LabeledInstance(l, fv); 
+//		
+//			logger.debug("a labeled instance added in the training set for the classifier as;"); 
+//			logger.debug(fv.toString() + ", " + l.toString()); 
+//			trainingSet.add(ins); 	
+//		}
 		
-		// walk each XMI files in the Directory ... 
-		File[] files =  dirTrainingDataXMIFiles.listFiles(); 
-		if (files == null)
-		{
-			throw new EDAException("Path " + dirTrainingDataXMIFiles.getAbsolutePath() + " does not hold XMI files"); 
-		}
-		
-		for (File f : files)
-		{
-			// is it a XMI file?
-			// 
-
-			logger.debug("Working with file " + f.getName()); 
-			if(!f.isFile()) 
-			{	// no ... 
-				logger.warn(f.toString() + " is not a file... ignore this"); 
-				continue; 
-			}
-			if(!f.getName().toLowerCase().endsWith("xmi")) // let's trust name, if it does not end with XMI, pass
-			{
-				logger.warn(f.toString() + " is not a XMI file... ignoring this"); 
-				continue; 
-			}
-			
-			// So, we have an XMI file. Load in to CAS 
-			JCas aTrainingPair = null; 
-			try {
-				 aTrainingPair = PlatformCASProber.probeXmi(f, null);
-			}
-			catch (LAPException le)
-			{
-				logger.warn("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
-				throw new EDAException("failed to read XMI file into a JCas", le); 
-			}
-			
-			// convert it into one LabeledInstance by calling 
-			// addAlignments and evaluateAlignments on each of them 
-			logger.debug("adding alignments..."); 
-			addAlignments(aTrainingPair);
-			
-			logger.debug("evaluating alignments..."); 
-			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair); 
-			DecisionLabel l = getGoldLabel(aTrainingPair); 
-			LabeledInstance ins = new LabeledInstance(l, fv); 
-		
-			logger.debug("a labeled instance added in the training set for the classifier as;"); 
-			logger.debug(fv.toString() + ", " + l.toString()); 
-			trainingSet.add(ins); 	
-		}
+		// This work method will read Xmi files and convert them to labeled feature vectors
+		// what we call as "LabeledInstance":
+		// The method does so, by calling "addAlignments", "evaluateAlignments" on 
+		// each of the annotated training(gold) data. 
+		List<LabeledInstance> trainingSet = makeLabeledInstancesFromXmiFiles(dirTrainingDataXMIFiles); 
 		
 		// finally, calling classifier abstract to train a model 
 		try
@@ -234,6 +240,52 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		{
 			throw new EDAException("Underlying classifier thrown exception while deserializing a model", ce); 
 		}
+	}
+	
+	/**
+	 * A method to be used for evaluation. The method reads XMI files (with labels) and 
+	 * use the current model (loaded or trained) and evaluate it over the give XMI files. 
+	 * 
+	 * returns a List of double values. They are: (accuracy, f1, prec, recall, true positive ratio, true negative ratio) 
+	 * 
+	 * TODO: CONSIDER: this needs to be broken down into two methods.... or not?  
+	 * 
+	 * Hmm. Let's say, what is the common step in "optimize" 
+	 *  
+	 * [PRE]
+	 * 1) Load XMIS (ONCE) 
+	 * 2) Add alignments (also ONCE) 
+	 * 
+	 * [MAIN-LOOP] while exploring (search) best parameters (parameter population, one individual parameter) 
+	 * 3) Make a list of labeled instances, with one-individual parameter, and calling evaluateAlignments (MULTIPLE TIMES) 
+	 * 4) Train a model with the set, evaluate it. 
+	 * 
+	 * [POST] 
+	 * 5) report the best result, with best individual parameter 
+	 * 
+	 * Okay, can we reuse, share more from the above? (maybe not. let's worry later. This method itself is almost free.) 
+	 * 
+	 * @return	a double list: (accuracy, f1, prec, recall, true positive ratio, true negative ratio) 
+
+	 */
+	public List<Double> evaluateModelWithGoldXmis(File annotatedXmiFiles) throws EDAException
+	{		
+		// read annotatedXmiFiles, and make a set of labeled instances, 
+		// by calling the utility method (the same one used in startTraining()) 
+		List<LabeledInstance> goldData = makeLabeledInstancesFromXmiFiles(annotatedXmiFiles); 
+
+
+		// ask the classifier to evaluate it (with current loaded/trained model) on the provided labeled data 
+		List<Double> evaluationResult = null;
+		try {
+			evaluationResult = classifier.evaluateClassifier(goldData); 
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException ("The classifier was not ready for evalute (make sure a compatible model properly trained and loaded..)", ce); 
+		}
+		
+		return evaluationResult; 
 	}
 	
 	public void shutdown()
@@ -308,7 +360,82 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		return dl; 
 	}
 	
-	// private utility methods 
+	//	
+	// protected utility methods 
+	
+	
+	protected List<LabeledInstance> makeLabeledInstancesFromXmiFiles(File xmiDir) throws EDAException
+	{
+		List<LabeledInstance> labeledData = new ArrayList<LabeledInstance>(); 
+		
+		// walk each XMI files in the Directory ... 
+		File[] files =  xmiDir.listFiles(); 
+		if (files == null)
+		{
+			throw new EDAException("Path " + xmiDir.getAbsolutePath() + " does not hold XMI files"); 
+		}
+		
+		for (File f : files)
+		{
+			// is it a XMI file?
+			// 
+
+			logger.debug("Working with file " + f.getName()); 
+			if(!f.isFile()) 
+			{	// no ... 
+				logger.warn(f.toString() + " is not a file... ignore this"); 
+				continue; 
+			}
+			if(!f.getName().toLowerCase().endsWith("xmi")) // let's trust name, if it does not end with XMI, pass
+			{
+				logger.warn(f.toString() + " is not a XMI file... ignoring this"); 
+				continue; 
+			}
+			
+			// So, we have an XMI file. Load in to CAS 
+			JCas aTrainingPair = null; 
+			try {
+				 aTrainingPair = PlatformCASProber.probeXmi(f, null);
+			}
+			catch (LAPException le)
+			{
+				logger.warn("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
+				throw new EDAException("failed to read XMI file into a JCas", le); 
+			}
+			
+			// convert it into one LabeledInstance by calling 
+			// addAlignments and evaluateAlignments on each of them 
+			logger.debug("adding alignments..."); 
+			addAlignments(aTrainingPair);
+			
+			logger.debug("evaluating alignments..."); 
+			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair); 
+			DecisionLabel l = getGoldLabel(aTrainingPair); 
+			if (l == null)
+			{
+				throw new EDAException("Gold data has been given to be used as a Labeled Instance: However, the CAS holds no Gold Label!"); 
+			}
+			
+			LabeledInstance ins = new LabeledInstance(l, fv); 
+		
+			logger.debug("a labeled instance has been generated from XMI file " + f.getName()); 
+			logger.debug(fv.toString() + ", " + l.toString()); 
+			labeledData.add(ins); 	
+		}
+		
+		return labeledData; 
+	}	
+
+	
+	
+	/**
+	 * 
+	 * Get Pair ID from a JCas 
+	 * 
+	 * @param aJCas
+	 * @return
+	 * @throws EDAException
+	 */
 	protected String getTEPairID(JCas aJCas) throws EDAException
 	{
 		String id = null; 
@@ -332,6 +459,13 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 	
+	/**
+	 * get Gold Label from an annotated JCas with Entailment.Pair 
+	 * 
+	 * @param aJCas
+	 * @return
+	 * @throws EDAException
+	 */
 	protected DecisionLabel getGoldLabel(JCas aJCas) throws EDAException 
 	{
 		String labelString; 
@@ -342,6 +476,9 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		{
 			Pair p = (Pair) iter.next(); 
 			labelString = p.getGoldAnswer(); 
+			
+			if (labelString == null) // there is no gold answer annotated in this Pair
+				return null; 
 			
 			labelEnum = DecisionLabel.getLabelFor(labelString); 
 			
@@ -384,7 +521,11 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		return false; 
 	}
 	
+	
+	
+	//
 	// private final fields... 
+	//
 	private final EDAClassifierAbstraction classifier; 
 	protected final Logger logger; 
 	

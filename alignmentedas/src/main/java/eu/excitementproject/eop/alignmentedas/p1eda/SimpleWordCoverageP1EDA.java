@@ -60,6 +60,8 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 			double ratio1 = score1.get(0) / score1.get(1); 
 			double ratio2 = score1.get(2) / score1.get(3); 
 			
+			logger.debug("Adding feature as: " + score1.get(0) + "/" + score1.get(1)); 
+			logger.debug("Adding feature as: " + score1.get(2) + "/" + score1.get(3)); 
 			fv.add(new FeatureValue(ratio1)); 
 			fv.add(new FeatureValue(ratio2)); 
 			

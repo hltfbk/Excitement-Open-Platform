@@ -129,7 +129,38 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 			
 			// record the best match for this position (i) 
 			matchingPhraseStartLocations[i] = bestMatchTextPosition; 
-			matchingPhraseLengths[i] = bestMatchLength; 			
+			matchingPhraseLengths[i] = bestMatchLength; 	
+			
+		}
+		
+		// post processing: let's save only the "maximum coverage" cases. (e.g. 
+		// if this token has already been covered with identical (or longer) pattern, 
+		// let's ignore "less-covered term". (e.g.  when we have  [this very moment -> this very moment]
+		// we ignore [very moment -> very moment]. ) 
+
+		int lastBestMatchPos = -1; 
+		int lastBestMatchLen = 0; 
+		int[] finalMatchingPhraseStartLocations = new int[hTokens.length]; // a value represent n-th token of TSide. . 
+		int[] finalMatchingPhraseLengths = new int[hTokens.length]; // again, a value here means token-sequence length. 
+		
+		for(int i=0; i < hTokens.length; i++)
+		{
+			int bestMatchPos = matchingPhraseStartLocations[i]; 
+			int bestMatchLen = matchingPhraseLengths[i]; 
+			
+			if ( (bestMatchPos == (lastBestMatchPos + 1)) && (lastBestMatchLen == (bestMatchLen + 1)) ) // essentially, previous one covered this, with exactly same sequence...
+			{	// if that's the case, we ignore this link
+				finalMatchingPhraseStartLocations[i] = -1; 
+				finalMatchingPhraseLengths[i] = 0; 
+			}
+			else
+			{  // otherwise, use it as is 
+				finalMatchingPhraseStartLocations[i] = matchingPhraseStartLocations[i];
+				finalMatchingPhraseLengths[i] = matchingPhraseLengths[i]; 
+			}
+			
+			lastBestMatchPos = bestMatchPos;
+			lastBestMatchLen = bestMatchLen; 
 		}
 
 		// Okay. we have the full information in the two arrays. 
@@ -138,7 +169,7 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 
 		// Part two. annotating match with alignment.Link. 
 		// We do this by calling a utility method with the above information.  
-		addLinkAnnotations(aJCas, matchingPhraseStartLocations, matchingPhraseLengths, tTokens, hTokens); 
+		addLinkAnnotations(aJCas, finalMatchingPhraseStartLocations, finalMatchingPhraseLengths, tTokens, hTokens); 
 		
 	}
 
@@ -199,9 +230,9 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 	 */
 	private static void addLinkAnnotations(JCas aJCas, int[] matchingPhraseStartLocationsOnText, int[] matchingPhraseLengths, Token[] tTokens, Token hTokens[]) throws AlignmentComponentException
 	{
-		logger.info("addLinnkAnnotations() called with the following info:"); 
-		logger.info("matchingPhraseStartingLocationsOnText:"  + Arrays.toString(matchingPhraseStartLocationsOnText)); 
-		logger.info("matchingPhraseLengths:" + Arrays.toString(matchingPhraseLengths)); 
+		logger.debug("addLinnkAnnotations() called with the following info:"); 
+		logger.debug("matchingPhraseStartingLocationsOnText:"  + Arrays.toString(matchingPhraseStartLocationsOnText)); 
+		logger.debug("matchingPhraseLengths:" + Arrays.toString(matchingPhraseLengths)); 
 
 		int countNewLinks = 0; 
 		int ignoredNoncontentMatches = 0; 
