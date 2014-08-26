@@ -9,18 +9,64 @@ package eu.excitementproject.eop.alignmentedas.p1eda.subs;
 
 public class ParameterValue extends Value {
 
-	public ParameterValue(double d) {
-		super(d);
+	/**
+	 * Constructor for initializing a ParameterValue 
+	 * with double. Range of the parameter will be given 
+	 * from default. (0 ~ 1) 
+	 * 
+	 * @param d
+	 */
+	public ParameterValue(double val) {		
+		super(val);
+		this.rangeMin = DEFAULT_MIN;
+		this.rangeMax = DEFAULT_MAX; 
+	}
+	
+	/**
+	 * Constructor for initializing a ParameterValue 
+	 * with double. This constructor enables you to set 
+	 * min/max range of the double value of this parameter. 
+	 * 
+	 * @param val
+	 * @param rangeMin
+	 * @param rangeMax
+	 */
+	public ParameterValue(double val, double rangeMin, double rangeMax)
+	{
+		super(val); 
+		this.rangeMin = rangeMin; 
+		this.rangeMax = rangeMax; 
 	}
 
 	public ParameterValue(Enum<?> e) {
 		super(e);
+		rangeMin = null; 
+		rangeMax = null; 
 	}
 
 	public ParameterValue(Boolean b) {
 		super(b);
+		rangeMin = null; 
+		rangeMax = null; 
 	}
 
-	// TODO, for all d(double) values, 
-	// possibility to add range (max, min) and step (minimal change) 
+	public double getRangeMin()
+	{
+		return rangeMin; 
+	}
+	
+	public double getRangeMax()
+	{
+		return rangeMax; 
+	}
+
+	// Range (min and max values) of the parameter value
+	// the values are only meaningful when getValueType() == ValueType.DOUBLE
+	private final Double rangeMin; 
+	private final Double rangeMax;
+
+	// Default values 
+	private final double DEFAULT_MIN = 0.0; 
+	private final double DEFAULT_MAX = 1.0; 
+	
 }

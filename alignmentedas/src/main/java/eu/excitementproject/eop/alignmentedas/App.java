@@ -58,7 +58,8 @@ public class App
     		// evaluate it.
     		File evalXmiDir = new File("target/testingXmis/"); 
     		File testingXml = new File("../core/src/main/resources/data-set/English_test.xml");  
-    		runLAPForXmis(lap, testingXml, evalXmiDir); 
+    		// uncomment the following at least once. 
+    		//runLAPForXmis(lap, testingXml, evalXmiDir); 
     		List<Double> evalResult = p1eda.evaluateModelWithGoldXmis(evalXmiDir); 
     		
     		System.out.println("(accuracy, f1, prec, recall, true positive ratio, true negative ratio)"); 
@@ -89,7 +90,7 @@ public class App
     
     
     
-    private static void runLAPForXmis(LAP_ImplBase lap, File rteInputXML, File xmiDir) throws LAPException, IOException
+    public static void runLAPForXmis(LAP_ImplBase lap, File rteInputXML, File xmiDir) throws LAPException, IOException
     {
     	
     	if (xmiDir.exists()) {

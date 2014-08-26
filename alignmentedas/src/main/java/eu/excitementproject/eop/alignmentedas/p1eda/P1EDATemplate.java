@@ -250,7 +250,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	public abstract void addAlignments(JCas input) throws EDAException; 
 		
 	public abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas) throws EDAException; 
-
 	
 	/* 
 	 *  Optional methods (steps) that can be overridden.    
