@@ -162,58 +162,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public void startTraining(File dirTrainingDataXMIFiles, File classifierModelPathToStore) throws EDAException 
 	{
-//		// list where the labeled instances will be stored... 
-//		List<LabeledInstance> trainingSet = new ArrayList<LabeledInstance>(); 
-//		
-//		// walk each XMI files in the Directory ... 
-//		File[] files =  dirTrainingDataXMIFiles.listFiles(); 
-//		if (files == null)
-//		{
-//			throw new EDAException("Path " + dirTrainingDataXMIFiles.getAbsolutePath() + " does not hold XMI files"); 
-//		}
-//		
-//		for (File f : files)
-//		{
-//			// is it a XMI file?
-//			// 
-//
-//			logger.debug("Working with file " + f.getName()); 
-//			if(!f.isFile()) 
-//			{	// no ... 
-//				logger.warn(f.toString() + " is not a file... ignore this"); 
-//				continue; 
-//			}
-//			if(!f.getName().toLowerCase().endsWith("xmi")) // let's trust name, if it does not end with XMI, pass
-//			{
-//				logger.warn(f.toString() + " is not a XMI file... ignoring this"); 
-//				continue; 
-//			}
-//			
-//			// So, we have an XMI file. Load in to CAS 
-//			JCas aTrainingPair = null; 
-//			try {
-//				 aTrainingPair = PlatformCASProber.probeXmi(f, null);
-//			}
-//			catch (LAPException le)
-//			{
-//				logger.warn("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
-//				throw new EDAException("failed to read XMI file into a JCas", le); 
-//			}
-//			
-//			// convert it into one LabeledInstance by calling 
-//			// addAlignments and evaluateAlignments on each of them 
-//			logger.debug("adding alignments..."); 
-//			addAlignments(aTrainingPair);
-//			
-//			logger.debug("evaluating alignments..."); 
-//			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair); 
-//			DecisionLabel l = getGoldLabel(aTrainingPair); 
-//			LabeledInstance ins = new LabeledInstance(l, fv); 
-//		
-//			logger.debug("a labeled instance added in the training set for the classifier as;"); 
-//			logger.debug(fv.toString() + ", " + l.toString()); 
-//			trainingSet.add(ins); 	
-//		}
 		
 		// This work method will read Xmi files and convert them to labeled feature vectors
 		// what we call as "LabeledInstance":
@@ -248,7 +196,8 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * 
 	 * returns a List of double values. They are: (accuracy, f1, prec, recall, true positive ratio, true negative ratio) 
 	 * 
-	 * TODO: CONSIDER: this needs to be broken down into two methods.... or not?  
+	 * TODO: CONSIDER: this needs to be broken down into two methods.... or not?
+	 * (decision - for now, as is)   
 	 * 
 	 * Hmm. Let's say, what is the common step in "optimize" 
 	 *  
