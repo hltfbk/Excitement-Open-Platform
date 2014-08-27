@@ -13,7 +13,6 @@ import org.apache.uima.jcas.JCas;
 import eu.excitementproject.eop.alignmentedas.p1eda.P1EDATemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.SimpleWordCoverageP1EDA;
 import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
-import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
@@ -24,7 +23,6 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  */
 public class App 
 {
-    @SuppressWarnings("unused")
 	public static void main( String[] args )
     {
     	try 
@@ -34,14 +32,23 @@ public class App
     		Logger.getRootLogger().setLevel(Level.DEBUG);  // set INFO to hide Debug info 
 
     		// Prepare LAP and EDA 
+    		//
     		LAP_ImplBase lap = new TreeTaggerEN(); 
     		P1EDATemplate p1eda = new SimpleWordCoverageP1EDA(); 
 
     		// Train the instance, and save model. 
+    		//
         	File rteInputXML = new File("../core/src/main/resources/data-set/English_dev.xml");  
     		File classifierModel = new File ("target/cModel.model"); 
-    		// uncomment the following for re-training ... 
-    	    //trainEDAInstanceWith(p1eda, lap, rteInputXML, classifierModel); 
+
+    		// pre-process training data 
+        	File xmiDir = new File("target/trainingXmis/");    		
+    		// uncomment the following at least once. 
+        	//runLAPForXmis(lap, rteInputXML, xmiDir); 
+        	
+    		// train a model, and store ...  
+    		p1eda.startTraining(xmiDir, classifierModel); 
+    		p1eda.shutdown();     	
 
     	    // Okay, we have it done. 
     		p1eda = new SimpleWordCoverageP1EDA(); 
@@ -73,21 +80,7 @@ public class App
     	
     }
     
-    
-    
-    @SuppressWarnings("unused")
-	private static void trainEDAInstanceWith(P1EDATemplate p1eda, LAP_ImplBase lap, File rteInputXML, File classifierModel) throws LAPException, IOException, EDAException
-    {
-		
-		// pre-process training data 
-    	File xmiDir = new File("target/trainingXmis/");
-		runLAPForXmis(lap, rteInputXML, xmiDir); 
-		
-		// train a model, and store ...  
-		p1eda.startTraining(xmiDir, classifierModel); 
-		p1eda.shutdown();     	
-    }
-    
+        
     
     
     public static void runLAPForXmis(LAP_ImplBase lap, File rteInputXML, File xmiDir) throws LAPException, IOException

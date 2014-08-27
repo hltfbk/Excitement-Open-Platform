@@ -2,12 +2,16 @@ package eu.excitementproject.eop.alignmentedas.p1eda;
 
 import java.util.Vector;
 
-import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
+//import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.functions.Logistic;
+import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleWordCoverageCounter;
-import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDABinaryClassifierFromWeka;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.ParameterValue;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
@@ -19,11 +23,6 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 
 	public SimpleWordCoverageP1EDA() throws EDAException
 	{	
-		// Okay. Two thing you need to provide for the P1 template constructor 
-		// are a classifier, and a logger ... 
-		// Let's use a Weka based one. 
-		super(new EDABinaryClassifierFromWeka(), Logger.getLogger(SimpleWordCoverageP1EDA.class));
-		
 		// And let's keep the alinger instance and scoring component... 
 		// This configuration keeps just one for each. (as-is counter) 
 		aligner1 = new IdenticalLemmaPhraseLinker(); 
@@ -43,13 +42,16 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		}
 		
 	}
-
+	
 	@Override
-	public Vector<FeatureValue> evaluateAlignments(JCas aJCas) throws EDAException {
-		
+	public Vector<FeatureValue> evaluateAlignments(JCas aJCas, Vector<ParameterValue> param) throws EDAException {
+				
 		// The simplest possible method... that works well with simple alignment added 
 		// on addAlignments step.  
 		// count the "covered" ratio (== H term linked) of words in H. 
+		// Note that this instance does not utilize param at all. 
+
+		// the feature vector that will be filled in
 		Vector<FeatureValue> fv = new Vector<FeatureValue>(); 
 		try {
 			Vector<Double> score1 = scorer1.calculateScores(aJCas); 	
@@ -77,6 +79,20 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		
 		return fv; 
 	}
+	
+	@Override
+	protected EDAClassifierAbstraction prepareClassifier() throws EDAException
+	{
+		try {
+			return new EDABinaryClassifierFromWeka(new Logistic(), null); 
+			//return new EDABinaryClassifierFromWeka(new NaiveBayes(), null); 
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException("Preparing an instance of Classifier for EDA failed: underlying Classifier raised an exception: ", ce); 
+		}
+	}
+	
 	
 	final AlignmentComponent aligner1; 
 	final ScoringComponent scorer1;  

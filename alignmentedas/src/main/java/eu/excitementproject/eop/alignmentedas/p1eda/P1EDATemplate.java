@@ -17,11 +17,13 @@ import org.apache.uima.jcas.tcas.Annotation;
 import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithConfidence;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.LabeledInstance;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.ParameterValue;
 import eu.excitementproject.eop.common.DecisionLabel;
 //import eu.excitementproject.eop.alignmentedas.p1eda.subs.ParameterValue;
 import eu.excitementproject.eop.common.EDABasic;
@@ -83,16 +85,44 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
 public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
 	
 	/**
-	 * The constructor for this abstract class. Does nothing but initializing 
-	 * two mandatory final fields. They are: 
+	 * The default, no argument constructor for this abstract class. Does nothing 
+	 * but initializing two mandatory final fields. They are: logger and classifier. 
+	 *  
+	 * This constructor does not set evaluateAlignmentParameters. (it will be set as null) 
+	 * If your evaluateAlignment override *does not* require parameters (e.g. simple feature
+	 * extractors that does not require parameters); then using this constructor is enough. 
+	 * (evaluateAlignments() will be always called with null). 
 	 * 
-	 * @param classifier Pass one of EDAClassifierAbstraction, such as WekaLogisticRegression, etc. The given classifier will be used for training and classification. 
-	 * @param logger Usual log4j logger to be used. 
+	 * For example, see SimpleWordCoverageP1EDA. 
+	 * 
 	 */
-	public P1EDATemplate(EDAClassifierAbstraction classifier, Logger logger) 
+	public P1EDATemplate() throws EDAException 
 	{
-		this.logger = logger; 
-		this.classifier = classifier; 
+		this(null); 
+	}
+	
+	
+	/**
+	 * 
+	 * The main constructor for this abstract class. 
+	 * 
+	 * It does two things: initializing logger + classifier, and store Parameter value 
+	 * 
+	 * The constructor gets one Vector of parameters: This parameter vector is so called 
+	 * "Feature Extractor parameters" or "Evaluate Alignment parameters" -- and the value 
+	 * will be passed to evaluateAlignments(). 
+	 * 
+	 * If your evaluateAlignment override *require* parameters (e.g. weights for each 
+	 * aligner, etc), then you have to use this constructor. 
+	 * 
+	 * @param evaluateAlignmentParameter
+	 * @throws EDAException
+	 */
+	public P1EDATemplate(Vector<ParameterValue> evaluateAlignmentParameter) throws EDAException
+	{
+		this.logger = Logger.getLogger(getClass()); 
+		this.classifier = prepareClassifier();  
+		this.evaluateAlignmentParameters = evaluateAlignmentParameter; 
 	}
 		
 	public TEDecisionWithAlignment process(JCas eopJCas) throws EDAException 
@@ -120,7 +150,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		
 		// Step 3. 
 		logger.debug("calling evaluateAlignments"); 
-		Vector<FeatureValue> featureValues = evaluateAlignments(eopJCas); 
+		Vector<FeatureValue> featureValues = evaluateAlignments(eopJCas, evaluateAlignmentParameters); 
 		logger.debug("evaluateAlignments returned feature vector as of; "); 
 		logger.debug(featureValues.toString()); 
 		
@@ -159,6 +189,12 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	{
 		// TODO read from common config, and call argument version, 
 	}
+	
+	
+	// TODO: for parameter optimization. Once parameter optimization comes in, 
+	// training-sub methods will be provided. 
+	// "Training Classifier"
+	// "Train Classifier With Parameter Optimizations" 
 	
 	public void startTraining(File dirTrainingDataXMIFiles, File classifierModelPathToStore) throws EDAException 
 	{
@@ -247,9 +283,26 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * Mandatory methods (steps) that should be overridden. 
 	 */
 	
+	/**
+	 * @param input
+	 * @throws EDAException
+	 */
 	public abstract void addAlignments(JCas input) throws EDAException; 
 		
-	public abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas) throws EDAException; 
+	/**
+	 * @param aJCas
+	 * @return
+	 * @throws EDAException
+	 */
+	public abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas, Vector<ParameterValue> featureExtractorParameters) throws EDAException; 
+	
+	
+//	/**
+//	 * 
+//	 * @return
+//	 */
+//	protected abstract Vector<ParameterValue> prepareEvaluateAlignmentParameters(); 
+
 	
 	/* 
 	 *  Optional methods (steps) that can be overridden.    
@@ -264,13 +317,24 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	{
 		// Template default is doing nothing. 
 	}
-	
-	/*
+		
+	/**
 	 * 	Optional methods (steps) that can be overridden. --- but these 
 	 *  methods provide default functionalities. You can extend if you want. 
 	 *  But default implementations would also work as well.  
 	 */
 	
+	protected EDAClassifierAbstraction prepareClassifier() throws EDAException
+	{
+		try {
+			return new EDABinaryClassifierFromWeka(); 
+		}
+		catch (ClassifierException ce)
+		{
+			throw new EDAException("Preparing an instance of Classifier for EDA failed: underlying Classifier raised an exception: ", ce); 
+		}
+	}
+		
 	/**
 	 * This method will be used to check input CAS for P1EDA flow. 
 	 * As is, it will do the basic check of CAS as EOP CAS input, via PlatformCASProber.probeCAS(). 
@@ -283,7 +347,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * @param input JCas that is given to your EDA  
 	 * @throws EDAException If the given JCas was not well-formed for your EDA, you should throw this exception
 	 */
-	public void checkInputJCas(JCas input) throws EDAException 
+	protected void checkInputJCas(JCas input) throws EDAException 
 	{
 		try {
 			probeCas(input, null); 
@@ -294,7 +358,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 
-	public DecisionLabelWithConfidence classifyEntailment(Vector<FeatureValue> fValues) throws EDAException
+	protected DecisionLabelWithConfidence classifyEntailment(Vector<FeatureValue> fValues) throws EDAException
 	{		
 		DecisionLabelWithConfidence dl = null; 
 		try {
@@ -357,7 +421,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 			addAlignments(aTrainingPair);
 			
 			logger.debug("evaluating alignments..."); 
-			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair); 
+			Vector<FeatureValue> fv = evaluateAlignments(aTrainingPair, evaluateAlignmentParameters); 
 			DecisionLabel l = getGoldLabel(aTrainingPair); 
 			if (l == null)
 			{
@@ -468,15 +532,26 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 
 		return false; 
 	}
+
 	
-	
+
+	/**
+	 * This is the vector of parameters, that will be stored at the init time 
+	 * (at initialize() for processing, and start_training() time for training) and 
+	 * that will be passed to internal method evaluateAlignments().  
+	 * 
+	 * Within this P1EDA Template, this value is a fixed value, where it is set as 
+	 * a configuration. For "Optimizing" this value ... TODO see this extended template 
+	 * 
+	 */
+	protected Vector<ParameterValue> evaluateAlignmentParameters; 
+
 	
 	//
 	// private final fields... 
 	//
 	private final EDAClassifierAbstraction classifier; 
 	protected final Logger logger; 
-	
 	
 	
 }

@@ -9,8 +9,8 @@ import java.util.Vector;
 
 import org.junit.Test;
 
+import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithConfidence;
-import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.LabeledInstance;

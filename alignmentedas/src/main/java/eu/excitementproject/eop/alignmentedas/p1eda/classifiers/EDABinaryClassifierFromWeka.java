@@ -1,12 +1,17 @@
-package eu.excitementproject.eop.alignmentedas.p1eda.subs;
+package eu.excitementproject.eop.alignmentedas.p1eda.classifiers;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.DecisionLabelWithConfidence;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.LabeledInstance;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.ValueException;
 import eu.excitementproject.eop.common.DecisionLabel;
-import eu.excitementproject.eop.common.EDAException;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayes;
@@ -35,37 +40,68 @@ import weka.core.Instances;
  */
 public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 
-	public EDABinaryClassifierFromWeka() //throws ClassifierException,  {
-		throws EDAException {
-		
-		try {
-			prepareWekaClassifierInstance();
-		}
-		catch (ClassifierException ce)
-		{
-			throw new EDAException("Underlying classifier failed to initialize.", ce); 
-		}
-	}
-	
 	/**
-	 * Extend/Override this method to change the classifier & its option. 
+	 * Default (argument-less) constructor. Will initialize the instance with 
+	 * a default Weka-classifier (here, that default is, NaiveBayes with Kernel density estimation) 
 	 * 
 	 * @throws ClassifierException
 	 */
-	protected void prepareWekaClassifierInstance() throws ClassifierException 
-	{
-		modelReady = false; 
-		classifier = (Classifier)new NaiveBayes();
-		String[] options = {"-K"}; 
-		try 
-		{
-			classifier.setOptions(options); 
-		} 
-		catch (Exception e)
-		{
-			throw new ClassifierException("Unable to set classifier options", e); 
-		}		
+	public EDABinaryClassifierFromWeka() throws ClassifierException  {
+		this(new NaiveBayes(), new String[] {"-K"}); 
 	}
+	
+	/**
+	 * The main constructor. 
+	 * 
+	 * Pass Weka Classifier Instance, and its options. Then the class will provide all EDAClassifierAbstraction 
+	 * methods. 
+	 *  
+	 * Some possible classes for wekaClassifierInstance.  (See their Weka JavaDoc for all option stings) 
+	 *  - NaiveBayes() (weka.classifiers.bayes.NaiveBayes) 
+	 *  - Logistic()   (weka.classifiers.functions.Logistic) (a logistic regression) 
+	 * 
+	 * TODO: write more some commonly used classifier names, and options; as we test more and more. 
+	 *
+	 * @param wekaClassifierInstance One weka Classifier instance (e.g. new Logistic()) 
+	 * @param classifierOptions Option String[] for the give classifier instance. null means, no passing of options
+	 * @throws ClassifierException
+	 */
+	public EDABinaryClassifierFromWeka(Classifier wekaClassifierInstance, String[] classifierOptions) throws ClassifierException
+	{
+		this.modelReady = false; // this will become true, only after train (or load model) 
+		this.classifier = wekaClassifierInstance; 
+		
+		if (classifierOptions != null)
+		{
+			try {
+				classifier.setOptions(classifierOptions); 			
+			}
+			catch (Exception e)
+			{
+				throw new ClassifierException("Underlying Weka classifier class failed to initialize.", e); 
+			}
+		}
+	}
+	
+//	/**
+//	 * Extend/Override this method to change the classifier & its option. 
+//	 * 
+//	 * @throws ClassifierException
+//	 */
+//	protected void prepareWekaClassifierInstance() throws ClassifierException 
+//	{
+//		modelReady = false; 
+//		classifier = (Classifier)new NaiveBayes();
+//		String[] options = {"-K"}; 
+//		try 
+//		{
+//			classifier.setOptions(options); 
+//		} 
+//		catch (Exception e)
+//		{
+//			throw new ClassifierException("Unable to set classifier options", e); 
+//		}		
+//	}
 
 	@Override
 	public DecisionLabelWithConfidence classifyInstance(
@@ -115,7 +151,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 		{
 			throw new ClassifierException("Reading a FeatureValue failed for some reason - must be a code bug! ", ve); 
 		}
-
+		
 		// Okay, classify the newly prepared instance. 
 		double[] dist = null; 
 		try {
@@ -123,7 +159,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 		}
 		catch (Exception e)
 		{
-			throw new ClassifierException("Underlying Weka classifier throws an exception", e); 
+			throw new ClassifierException("Underlying Weka classifier throws an exception:" + e.getMessage(), e); 
 		}
 
 		if (dist[0] > dist[1])
@@ -264,7 +300,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 	private Instances buildAttributeInfo(Vector<FeatureValue> vec) throws ValueException 
 	{
 		
-		FastVector fvWekaAttributes = new FastVector(vec.size());
+		FastVector fvWekaAttributes = new FastVector(vec.size() + 1); // why +1? Some Weka classifier cries out loud if this (column size) is different from 
 
 		for (int i=0; i < vec.size(); i++)
 		{
@@ -304,7 +340,18 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 			}
 		}
 		
+		// Features are ready, but put class variable (although not meaningful) 
+		// Some Weka classifiers cry out loud if the number of features (including class variable) is different... 
+		FastVector fvClassVal = new FastVector(2);
+		fvClassVal.addElement(DecisionLabel.Entailment.toString());
+		fvClassVal.addElement(DecisionLabel.NonEntailment.toString());
+		Attribute ClassAttribute = new Attribute("theClass", fvClassVal);
+		fvWekaAttributes.addElement(ClassAttribute);
+
+		
 		Instances attributeTable = new Instances("table", fvWekaAttributes, 10); 
+		attributeTable.setClass(ClassAttribute); 
+
 		return attributeTable; 
 
 	}
