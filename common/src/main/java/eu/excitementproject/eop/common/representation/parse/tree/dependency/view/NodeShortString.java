@@ -8,10 +8,30 @@ public abstract class NodeShortString {
 	private static final String ROOT_STR = "<ROOT>";
 	public abstract <I extends Info> String toString(AbstractNode<? extends I, ?> node);
 	
+	public static <I extends Info> String prepConcrete(AbstractNode<? extends I, ?> node) {
+		if (node.getInfo().getEdgeInfo().getDependencyRelation() != null &&
+				node.getInfo().getEdgeInfo().getDependencyRelation().getStringRepresentation().equals("prep")) {
+			return "_" + node.getInfo().getNodeInfo().getWordLemma();
+		}
+		else {
+			return "";
+		}
+	}
+	
+	
+	//// Concrete Classes ////////////////////////////////////////
+	
 	public static class Rel extends NodeShortString {
 		@Override
 		public <I extends Info> String toString(AbstractNode<? extends I, ?> node) {
 			return InfoGetFields.getRelation(node.getInfo(), ROOT_STR);
+		}
+	}
+	
+	public static class RelPrep extends NodeShortString {
+		@Override
+		public <I extends Info> String toString(AbstractNode<? extends I, ?> node) {
+			return InfoGetFields.getRelation(node.getInfo(), ROOT_STR)+prepConcrete(node);
 		}
 	}
 	
@@ -22,10 +42,24 @@ public abstract class NodeShortString {
 		}
 	}
 	
+	public static class RelPrepPos extends NodeShortString {
+		@Override
+		public <I extends Info> String toString(AbstractNode<? extends I, ?> node) {
+			return InfoGetFields.getRelation(node.getInfo(), ROOT_STR)+prepConcrete(node)+"->"+InfoGetFields.getPartOfSpeech(node.getInfo());
+		}
+	}
+	
 	public static class RelCanonicalPos extends NodeShortString {
 		@Override
 		public <I extends Info> String toString(AbstractNode<? extends I, ?> node) {
 			return InfoGetFields.getRelation(node.getInfo(), ROOT_STR)+"->"+node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag();
+		}
+	}
+	
+	public static class RelPrepCanonicalPos extends NodeShortString {
+		@Override
+		public <I extends Info> String toString(AbstractNode<? extends I, ?> node) {
+			return InfoGetFields.getRelation(node.getInfo(), ROOT_STR)+prepConcrete(node)+"->"+node.getInfo().getNodeInfo().getSyntacticInfo().getPartOfSpeech().getCanonicalPosTag();
 		}
 	}
 	

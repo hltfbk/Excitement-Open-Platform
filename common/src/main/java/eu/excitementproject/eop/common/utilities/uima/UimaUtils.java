@@ -302,8 +302,8 @@ public class UimaUtils {
 	public static String annotationToString(Dependency dep) {
 		Token dependent = dep.getDependent();
 		Token governer = dep.getGovernor();
-		return String.format(String.format("%s(%s->%s)", dep.getDependencyType(),
-				annotationToString(dependent, false, false), annotationToString(governer, false, false)));
+		return String.format("%s(%s->%s)", dep.getDependencyType(),
+				annotationToString(dependent, false, false), annotationToString(governer, false, false));
 	}
 	
 	public static <A extends Annotation> String annotationIterableToString(Iterable<A> annos) {
