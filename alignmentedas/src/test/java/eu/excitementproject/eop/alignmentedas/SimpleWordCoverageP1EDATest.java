@@ -56,13 +56,13 @@ public class SimpleWordCoverageP1EDATest {
 		{
 			xmiDir.mkdirs(); 
 		}
-		File dirToStoreModel = new File("target/simple.model"); 
+		File modelBaseName = new File("target/simple"); 
 		
 		PlatformCASProber.storeJCasAsXMI(cas1, new File("target/xmis/train1.xmi")); 
 		PlatformCASProber.storeJCasAsXMI(cas2, new File("target/xmis/train2.xmi")); 
 		
 		// Okay. Start Training 
-		eda.startTraining(xmiDir,  dirToStoreModel); 
+		eda.startTraining(xmiDir,  modelBaseName); 
 		
 		// ask something?
 		JCas eopJCas = lap.generateSingleTHPairCAS("This was hello world.", "This is hello world."); 
@@ -74,7 +74,7 @@ public class SimpleWordCoverageP1EDATest {
 		
 		// load Model test 
 		SimpleWordCoverageP1EDA eda2 = new SimpleWordCoverageP1EDA(); 
-		eda2.initialize(dirToStoreModel); 
+		eda2.initialize(modelBaseName); 
 		TEDecisionWithAlignment d2 = eda2.process(eopJCas); 
 		assertEquals(d2.getDecision(), d1.getDecision()); 
 		assertEquals(d2.getConfidence(), d1.getConfidence(), 0.01);

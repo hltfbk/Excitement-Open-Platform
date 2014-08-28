@@ -54,10 +54,11 @@ public class LinkUtilsTest {
 		}
 		
 		// prepare aJCas with two different aligners  
-		AlignmentComponent idtLinker = new IdenticalLemmaPhraseLinker(); 
+		AlignmentComponent idtLinker = null; 
 		AlignmentComponent phraseLinker = null; 
 		JCas aJCas = null; 
 		try {
+			idtLinker = new IdenticalLemmaPhraseLinker(); 
 			phraseLinker = new MeteorPhraseLinkerEN(); 
 		}
 		catch (Exception e)

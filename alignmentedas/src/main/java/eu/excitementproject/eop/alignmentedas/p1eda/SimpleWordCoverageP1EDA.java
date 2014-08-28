@@ -39,9 +39,9 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		// This configuration keeps just one for each. (as-is counter) 
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
-			aligner2 = new MeteorPhraseLinkerEN(); 
-			aligner3 = new WordNetENLinker(null); 
-			aligner4 = new VerbOceanENLinker(null); 
+//			aligner2 = new MeteorPhraseLinkerEN(); 
+//			aligner3 = new WordNetENLinker(null); 
+//			aligner4 = new VerbOceanENLinker(null); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -57,8 +57,8 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		// Here, just one aligner... (same lemma linker) 
 		try {
 			aligner1.annotate(input);
-			aligner2.annotate(input); 
-			aligner3.annotate(input);
+//			aligner2.annotate(input); 
+//			aligner3.annotate(input);
 //			aligner4.annotate(input); 
 
 		}
@@ -126,10 +126,10 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 	}
 	
 	
-	final AlignmentComponent aligner1; 
-	final AlignmentComponent aligner2; 
-	final AlignmentComponent aligner3; 
-	final AlignmentComponent aligner4; 
+	AlignmentComponent aligner1; 
+	AlignmentComponent aligner2; 
+	AlignmentComponent aligner3; 
+	AlignmentComponent aligner4; 
 
 	final ScoringComponent scorer1;  
 

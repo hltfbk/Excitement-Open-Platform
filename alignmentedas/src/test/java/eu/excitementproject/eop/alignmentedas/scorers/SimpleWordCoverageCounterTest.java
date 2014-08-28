@@ -59,8 +59,8 @@ public class SimpleWordCoverageCounterTest {
 		}
 			
 		// annotate with identity 
-		AlignmentComponent idtLinker = new IdenticalLemmaPhraseLinker(); 
 		try {
+			AlignmentComponent idtLinker = new IdenticalLemmaPhraseLinker(); 
 			idtLinker.annotate(aJCas); 
 			LinkUtils.dumpTokenLevelLinks(aJCas, System.out); 
 

@@ -51,7 +51,7 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  */
 public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 		
-	public IdenticalLemmaPhraseLinker()
+	public IdenticalLemmaPhraseLinker() throws AlignmentComponentException
 	{
 //		// initialize nonContentPOS map 
 //		isNonContentPos = new HashMap<String,Boolean>(); 

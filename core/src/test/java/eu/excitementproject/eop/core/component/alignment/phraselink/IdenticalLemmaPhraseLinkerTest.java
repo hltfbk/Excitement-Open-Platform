@@ -55,8 +55,9 @@ public class IdenticalLemmaPhraseLinkerTest {
 
 		testMaxMatchOnPositions(lemmatizer);  
 		
-		IdenticalLemmaPhraseLinker testInstance = new IdenticalLemmaPhraseLinker(); 
+		IdenticalLemmaPhraseLinker testInstance = null; 
 		try {
+			testInstance = new IdenticalLemmaPhraseLinker(); 
 			JCas aJCas = lemmatizer.generateSingleTHPairCAS("This is China's new cat, and a new cat is a good thing.", "This is a new cat, and a thing. Gil?"); 
 			testInstance.annotate(aJCas); 
 		}

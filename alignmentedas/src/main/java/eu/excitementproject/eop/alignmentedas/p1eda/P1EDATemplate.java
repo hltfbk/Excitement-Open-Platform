@@ -39,10 +39,6 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas; 
 
-// TODO: TOCONSIDER
-// - where to pass the Parameter List 
-// - where comes the Parameter optimization portion (minimize cost) 
-
 /**
  * This is a template, abstract class for P1 EDA. 
  * 
@@ -212,6 +208,8 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// what we call as "LabeledInstance":
 		// The method does so, by calling "addAlignments", "evaluateAlignments" on 
 		// each of the annotated training(gold) data. 
+		
+		
 		List<LabeledInstance> trainingSet = makeLabeledInstancesFromXmiFiles(dirTrainingDataXMIFiles); 
 		
 		// finally, calling classifier abstract to train a model 
@@ -384,8 +382,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	//	
 	// utility methods 
-	// They are protected, so your extensions can access them -- however, they are not 
-	// expected to be over-ridden. 
 	
 	protected List<LabeledInstance> makeLabeledInstancesFromXmiFiles(File xmiDir) throws EDAException
 	{
@@ -569,14 +565,9 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	protected void storeParameters(File paramSerFile) throws EDAException
 	{
-		if (!paramSerFile.exists())
-		{
-			throw new EDAException("File not found: "+ paramSerFile.getAbsolutePath()); 
-		}
-		
 		ArrayList<Vector<ParameterValue>> twoParamVectors = new ArrayList<Vector<ParameterValue>>();
-		twoParamVectors.set(0, evaluateAlignmentParameters); 
-		twoParamVectors.set(1, internalParameters); 
+		twoParamVectors.add(evaluateAlignmentParameters); 
+		twoParamVectors.add(internalParameters); 
 		
 		try
 	    {
