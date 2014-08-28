@@ -183,8 +183,6 @@ public class NemexAligner implements AlignmentComponent {
 			int endOffset) {
 		
 		NemexType annot = new NemexType(view, startOffset, endOffset);
-		//annot.setBegin(startOffset);
-		//annot.setEnd(endOffset);
 		annot.setValues(values);
 		return annot;
 
@@ -295,14 +293,12 @@ public class NemexAligner implements AlignmentComponent {
 
 	@Override
 	public String getComponentName() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.getClass().getName();
 	}
 
 	@Override
 	public String getInstanceName() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.gazetteerFilePath;
 	}
 
 	private final static Logger logger = Logger.getLogger(NemexAligner.class);
