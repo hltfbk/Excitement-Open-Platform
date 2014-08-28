@@ -2,7 +2,7 @@
 <configuration>
 
 		<section name="GeneralParameters">
-			<property name="maxPhraseLength">5</property>
+			<property name="maxPhraseLength">2</property>
 		</section>
 		
         <section name="LexicalResources">
@@ -25,7 +25,7 @@
         	<!--  
 			<property name = "wordnet-dir">../data/WordNet/3.0/dict.wn.orig</property>
 			--> 
-			<property name = "wordnet-dir">src/main/resources/ontologies/EnglishWordNet-dict</property>
+			<property name = "wordnet-dir">../core/src/main/resources/ontologies/EnglishWordNet-dict</property>
 			<property name = "useFirstSenseOnlyLeft">true</property>
 			<property name = "useFirstSenseOnlyRight">true</property>
 			<property name = "entailing-relations">SYNONYM,DERIVATIONALLY_RELATED,HYPERNYM,INSTANCE_HYPERNYM,MEMBER_HOLONYM,PART_HOLONYM,ENTAILMENT,SUBSTANCE_MERONYM</property>

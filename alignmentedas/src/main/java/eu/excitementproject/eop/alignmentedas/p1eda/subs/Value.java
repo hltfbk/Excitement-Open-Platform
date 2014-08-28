@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.subs;
 
+import java.io.Serializable;
+
 /**
  * This class expresses a "value" that can be either a Boolean, a double number, or a nominal value. 
  * 
@@ -9,7 +11,12 @@ package eu.excitementproject.eop.alignmentedas.p1eda.subs;
  * @author Tae-Gil Noh
  *
  */
-public class Value {
+public class Value implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6413857523514908870L;
 
 	public Value(double d)
 	{

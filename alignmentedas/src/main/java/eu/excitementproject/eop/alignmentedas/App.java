@@ -23,13 +23,14 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  */
 public class App 
 {
+	@SuppressWarnings("unused")
 	public static void main( String[] args )
     {
     	try 
     	{
     		// Set Log4J setting with DEBUG
     		BasicConfigurator.configure(); 
-    		Logger.getRootLogger().setLevel(Level.DEBUG);  // set INFO to hide Debug info 
+    		Logger.getRootLogger().setLevel(Level.INFO);  // set INFO to hide Debug info 
 
     		// Prepare LAP and EDA 
     		//
@@ -44,15 +45,15 @@ public class App
     		// pre-process training data 
         	File xmiDir = new File("target/trainingXmis/");    		
     		// uncomment the following at least once. 
-        	//runLAPForXmis(lap, rteInputXML, xmiDir); 
+        	runLAPForXmis(lap, rteInputXML, xmiDir); 
         	
     		// train a model, and store ...  
     		p1eda.startTraining(xmiDir, classifierModel); 
-    		p1eda.shutdown();     	
+    		//p1eda.shutdown();     	
 
-    	    // Okay, we have it done. 
-    		p1eda = new SimpleWordCoverageP1EDA(); 
-    		p1eda.initialize(classifierModel); 
+    	    // Okay, maybe start a new instance with the stored model? 
+    		//p1eda = new SimpleWordCoverageP1EDA(); 
+    		//p1eda.initialize(classifierModel); 
     		
     		// now you can call process() 
     		JCas aPair = lap.generateSingleTHPairCAS("Claude Chabrol divorced Agnes, his first wife, to marry the actress Stéphane Audran. His third wife is Aurore Paquiss.", "Aurore Paquiss married Chabrol."); 
@@ -65,22 +66,23 @@ public class App
     		// evaluate it.
     		File evalXmiDir = new File("target/testingXmis/"); 
     		File testingXml = new File("../core/src/main/resources/data-set/English_test.xml");  
+
     		// uncomment the following at least once. 
-    		//runLAPForXmis(lap, testingXml, evalXmiDir); 
+    		runLAPForXmis(lap, testingXml, evalXmiDir); 
     		List<Double> evalResult = p1eda.evaluateModelWithGoldXmis(evalXmiDir); 
     		
     		System.out.println("(accuracy, f1, prec, recall, true positive ratio, true negative ratio)"); 
     		System.out.println(evalResult.toString()); 
     		
+    		int something;  //  
+    		
     	}
     	catch(Exception e) 
     	{
-    		System.err.println("Run stopped with an exception " + e.getMessage()); 
+    		System.err.println("Run stopped with an exception: " + e.getMessage()); 
     	}
     	
     }
-    
-        
     
     
     public static void runLAPForXmis(LAP_ImplBase lap, File rteInputXML, File xmiDir) throws LAPException, IOException

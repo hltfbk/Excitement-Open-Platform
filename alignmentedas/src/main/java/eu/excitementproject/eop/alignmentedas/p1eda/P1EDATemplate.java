@@ -4,6 +4,11 @@
 package eu.excitementproject.eop.alignmentedas.p1eda;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -173,15 +178,19 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// TODO read from common config table, and call argument version 
 	}
 	
-	public void initialize(File classifierModelToLoad) throws EDAException
+	public void initialize(File modelToLoadBaseName) throws EDAException
 	{
+		File classifierModelFile = new File(modelToLoadBaseName.getAbsolutePath() + CLASSIFIER_MODEL_POSTFIX); 
+		File paramSerFile = new File(modelToLoadBaseName.getAbsolutePath() + PARAMETER_SER_POSTFIX); 
+		
 		try 
 		{
-			classifier.loadClassifierModel(classifierModelToLoad); 
+			classifier.loadClassifierModel(classifierModelFile); 
+			loadParameters(paramSerFile); 
 		}
 		catch (ClassifierException ce)
 		{
-			throw new EDAException(ce); 
+			throw new EDAException("Loading classifier model and/or parameter failed: ", ce); 
 		}
 	}
 
@@ -196,7 +205,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	// "Training Classifier"
 	// "Train Classifier With Parameter Optimizations" 
 	
-	public void startTraining(File dirTrainingDataXMIFiles, File classifierModelPathToStore) throws EDAException 
+	public void startTraining(File dirTrainingDataXMIFiles, File modelToStoreBaseName) throws EDAException 
 	{
 		
 		// This work method will read Xmi files and convert them to labeled feature vectors
@@ -215,10 +224,11 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 			throw new EDAException("Underlying classifier thrown exception while training a model", ce); 
 		}
 		
-		// and store the model 
+		// and store the model and parameters 
 		try 
 		{
-			classifier.storeClassifierModel(classifierModelPathToStore);
+			classifier.storeClassifierModel(new File(modelToStoreBaseName.getAbsolutePath() + CLASSIFIER_MODEL_POSTFIX));
+			this.storeParameters(new File(modelToStoreBaseName.getAbsolutePath() + PARAMETER_SER_POSTFIX)); 
 		}
 		catch (ClassifierException ce)
 		{
@@ -373,8 +383,9 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	}
 	
 	//	
-	// protected utility methods 
-	
+	// utility methods 
+	// They are protected, so your extensions can access them -- however, they are not 
+	// expected to be over-ridden. 
 	
 	protected List<LabeledInstance> makeLabeledInstancesFromXmiFiles(File xmiDir) throws EDAException
 	{
@@ -391,8 +402,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		{
 			// is it a XMI file?
 			// 
-
-			logger.debug("Working with file " + f.getName()); 
+			logger.info("Working with file " + f.getName()); 
 			if(!f.isFile()) 
 			{	// no ... 
 				logger.warn(f.toString() + " is not a file... ignore this"); 
@@ -414,6 +424,8 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 				logger.warn("File " + f.toString() + " looks like XMI file, but its contents are *not* proper EOP EDA JCas"); 
 				throw new EDAException("failed to read XMI file into a JCas", le); 
 			}
+			String pairID = getTEPairID(aTrainingPair); 
+			logger.info("processing pair with ID: " + pairID); 
 			
 			// convert it into one LabeledInstance by calling 
 			// addAlignments and evaluateAlignments on each of them 
@@ -545,13 +557,79 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * 
 	 */
 	protected Vector<ParameterValue> evaluateAlignmentParameters; 
-
+	
+	
+	/**
+	 * This is a vector of parameters, that has been "trained" in one startTraining() session. 
+	 * This is internal parameters that  and external "parameter" optimizer 
+	 * 
+	 */
+	protected Vector<ParameterValue> internalParameters = null; 
+	
+	
+	protected void storeParameters(File paramSerFile) throws EDAException
+	{
+		if (!paramSerFile.exists())
+		{
+			throw new EDAException("File not found: "+ paramSerFile.getAbsolutePath()); 
+		}
+		
+		ArrayList<Vector<ParameterValue>> twoParamVectors = new ArrayList<Vector<ParameterValue>>();
+		twoParamVectors.set(0, evaluateAlignmentParameters); 
+		twoParamVectors.set(1, internalParameters); 
+		
+		try
+	    {
+	    	FileOutputStream os = new FileOutputStream(paramSerFile); 
+	        ObjectOutputStream out = new ObjectOutputStream(os);
+	        out.writeObject(twoParamVectors);
+	        out.close();
+	        os.close();
+	        logger.info("Parameters stored in " + paramSerFile.getName()); 
+      	}
+		catch(IOException io)
+		{
+			throw new EDAException("IO operation to store / serialize parameters failed", io); 
+		}	
+	}
+	
+	protected void loadParameters(File paramSerFile) throws EDAException
+	{
+		if (!paramSerFile.exists())
+		{
+			throw new EDAException("File not found: "+ paramSerFile.getAbsolutePath()); 
+		}
+		try
+		{
+			FileInputStream is = new FileInputStream(paramSerFile); 
+			ObjectInputStream in = new ObjectInputStream(is);
+			@SuppressWarnings("unchecked")
+			ArrayList<Vector<ParameterValue>> twoParamVectors = (ArrayList<Vector<ParameterValue>>) in.readObject(); 
+			in.close();
+			is.close();
+			evaluateAlignmentParameters = twoParamVectors.get(0); 
+			internalParameters = twoParamVectors.get(1); 
+		}
+		catch(IOException i)
+		{
+			throw new EDAException("Reading and deserilaizing the file failed: "+ paramSerFile.getAbsolutePath(), i); 	
+		}
+		catch(ClassNotFoundException c)
+		{
+			throw new EDAException("Integrity failure --- serialization file is of an unknown class type that is not parameters "+ paramSerFile.getAbsolutePath(), c); 
+		}
+	}
+	
 	
 	//
 	// private final fields... 
 	//
 	private final EDAClassifierAbstraction classifier; 
 	protected final Logger logger; 
+	
+	// some constants 
+	public final String CLASSIFIER_MODEL_POSTFIX = ".classifier.model"; 
+	public final String PARAMETER_SER_POSTFIX = ".parameters.ser"; 
 	
 	
 }

@@ -10,6 +10,10 @@ package eu.excitementproject.eop.alignmentedas.p1eda.subs;
 public class ParameterValue extends Value {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3934660978437533820L;
+	/**
 	 * Constructor for initializing a ParameterValue 
 	 * with double. Range of the parameter will be given 
 	 * from default. (0 ~ 1) 

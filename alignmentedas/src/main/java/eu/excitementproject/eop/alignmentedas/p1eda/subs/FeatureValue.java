@@ -10,6 +10,11 @@ package eu.excitementproject.eop.alignmentedas.p1eda.subs;
  */
 public class FeatureValue extends Value {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1413295719580599625L;
+
 	public FeatureValue(double d) {
 		super(d);
 	}

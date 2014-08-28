@@ -16,7 +16,7 @@
 			<property name = "useLemma">true</property>
 			<property name = "version">unrefined.2004-05-20</property>
 			<property name = "threshold">1</property>
-			<property name = "file">src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+			<property name = "file">../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
 			<property name = "allowedRelations">STRONGER_THAN</property>
 		</section>
 		

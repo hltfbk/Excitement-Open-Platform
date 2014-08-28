@@ -4,8 +4,14 @@ import java.util.Vector;
 
 import org.apache.uima.jcas.JCas;
 
-//import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.Logistic;
+import weka.classifiers.functions.MultilayerPerceptron;
+import weka.classifiers.functions.SimpleLogistic;
+import weka.classifiers.functions.VotedPerceptron;
+import weka.classifiers.lazy.KStar;
+import weka.classifiers.meta.LogitBoost;
+import weka.classifiers.trees.J48;
 import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleWordCoverageCounter;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
@@ -14,18 +20,34 @@ import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ParameterValue;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
+import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.VerbOceanENLinker;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.WordNetENLinker;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
+import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerDE;
+import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
+@SuppressWarnings("unused")
 public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 
 	public SimpleWordCoverageP1EDA() throws EDAException
 	{	
 		// And let's keep the alinger instance and scoring component... 
 		// This configuration keeps just one for each. (as-is counter) 
-		aligner1 = new IdenticalLemmaPhraseLinker(); 
+		try {
+			aligner1 = new IdenticalLemmaPhraseLinker(); 
+			aligner2 = new MeteorPhraseLinkerEN(); 
+			aligner3 = new WordNetENLinker(null); 
+			aligner4 = new VerbOceanENLinker(null); 
+		}
+		catch (AlignmentComponentException ae)
+		{
+			throw new EDAException("Initializing Alignment components failed: " + ae.getMessage(), ae); 
+		}
+		
 		scorer1 = new SimpleWordCoverageCounter(null); 
 	}
 
@@ -35,6 +57,10 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		// Here, just one aligner... (same lemma linker) 
 		try {
 			aligner1.annotate(input);
+			aligner2.annotate(input); 
+			aligner3.annotate(input);
+//			aligner4.annotate(input); 
+
 		}
 		catch (PairAnnotatorComponentException pe)
 		{
@@ -86,6 +112,12 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		try {
 			return new EDABinaryClassifierFromWeka(new Logistic(), null); 
 			//return new EDABinaryClassifierFromWeka(new NaiveBayes(), null); 
+			//return new EDABinaryClassifierFromWeka(new VotedPerceptron(), null); 
+			//return new EDABinaryClassifierFromWeka(new J48(), null); 
+			//return new EDABinaryClassifierFromWeka(new MultilayerPerceptron(), null); 
+			//return new EDABinaryClassifierFromWeka(new KStar(), null);
+			//return new EDABinaryClassifierFromWeka(new SimpleLogistic(), null); 
+
 		}
 		catch (ClassifierException ce)
 		{
@@ -95,6 +127,10 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 	
 	
 	final AlignmentComponent aligner1; 
+	final AlignmentComponent aligner2; 
+	final AlignmentComponent aligner3; 
+	final AlignmentComponent aligner4; 
+
 	final ScoringComponent scorer1;  
 
 }
