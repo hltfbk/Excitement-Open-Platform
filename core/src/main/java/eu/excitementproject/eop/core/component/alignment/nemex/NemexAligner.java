@@ -60,8 +60,11 @@ public class NemexAligner implements AlignmentComponent {
 		if (aJCas == null)
 			throw new AlignmentComponentException(
 					"annotate() got a null JCas object.");
-
-		createDictionary(aJCas);
+		
+		HashMap<Integer, String> queryMap = new HashMap<Integer, String>(); //query id and query String
+		HashMap<String, ArrayList<QueryOffset>> queryIndex = new HashMap<String, ArrayList<QueryOffset>>(); //query String and offsets for the query Strings
+		
+		createDictionary(aJCas, queryMap, queryIndex);
 
 		JCas textView;
 
@@ -79,11 +82,11 @@ public class NemexAligner implements AlignmentComponent {
 
 		String text = textView.getDocumentText().toLowerCase();
 
-		annotateSubstring(text);
+		annotateSubstring(textView, queryMap, queryIndex);
 
 	}
 
-	public void createDictionary(JCas aJCas)
+	public void createDictionary(JCas aJCas, HashMap<Integer, String> queryMap, HashMap<String, ArrayList<QueryOffset>> queryIndex)
 			throws PairAnnotatorComponentException {
 		logger.info("Create dictionary entries from all the queries in H:  ");
 
@@ -107,9 +110,6 @@ public class NemexAligner implements AlignmentComponent {
 		String hypothesis = hypoView.getDocumentText().toLowerCase();
 		String query = new String();
 
-		HashMap<String, ArrayList<QueryOffset>> queryIndex = new HashMap<String, ArrayList<QueryOffset>>(); //query String and offsets for the query Strings
-		HashMap<Integer, String> queryMap = new HashMap<Integer, String>(); //query id and query String
-		
 		int index = 0;
 		for (int i = 0; i < hypothesis.length(); i++)
 			for (int j = 1; j <= hypothesis.length()+1; j++) {
@@ -152,12 +152,14 @@ public class NemexAligner implements AlignmentComponent {
 					+ value.size());
 			NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath).getGazetteer()
 					.addNewEntry(entry);
+			NemexType hypoAnnot = addNemexAnnotation(hypoView, entry, i, j);
 		}
 
 	}
 
-	private void annotateSubstring(String content) {
-
+	private void annotateSubstring(JCas textView, , HashMap<Integer, String> queryMap, HashMap<String, ArrayList<QueryOffset>> queryIndex) {
+		
+		String content = textView.getDocumentText().toLowerCase();
 		String str = new String();
 		List<String> values = null;
 		for (int i = 0; i < content.length(); i++)
@@ -170,19 +172,125 @@ public class NemexAligner implements AlignmentComponent {
 					e.printStackTrace();
 				}
 
-				addAnnotation(values, i, j);
+				NemexType textAnnot = addNemexAnnotation(textView, values, i, j);
+				addAlignmentLink(textAnnot, textView, i, j, queryMap, queryIndex);
 
 			}
 
 	}
 
-	private void addAnnotation(List<String> values, int startOffset,
+	private NemexType addNemexAnnotation(JCas view, List<String> values, int startOffset,
 			int endOffset) {
-		/*NemexType annot = new NemexType();
-		annot.setBegin(startOffset);
-		annot.setEnd(endOffset);
-		annot.setValues(values);*/
+		
+		NemexType annot = new NemexType(view, startOffset, endOffset);
+		//annot.setBegin(startOffset);
+		//annot.setEnd(endOffset);
+		annot.setValues(values);
+		return annot;
 
+	}
+	
+	private void addAlignmentLink(NemexType textAnnot, JCas textView, int textStart, int textEnd, HashMap<Integer, String> queryMap, HashMap<String, ArrayList<QueryOffset>> queryIndex) {
+		List<String> values = textAnnot.getValues();
+		Iterator<String> textAnnotIter = values.iterator();
+		while(textAnnotIter.hasNext()) {
+			String value = textAnnotIter.next();
+			int queryId = Integer.parseInt(value.split("\\s+").get(0));
+			String query = (String) queryMap.get(queryId);
+			
+			ArrayList<QueryOffset> hypotheses = queryIndex.get(query);
+			Iterator<QueryOffset> hypoIter = hypotheses.iter();
+			
+			while(hypoIter.hasNext()) {
+				QueryOffset hypothesis = hypoIter.next();
+				JCas hypoView = hypothesis.getHypothesisView();
+				int hypoStart = hypothesis.getStartOffset();
+				int hypoEnd = hypothesis.getEndOffset();
+				
+				addLink(textView, textStart, textEnd, hypoView, hypoStart, hypoEnd);
+			}
+			
+			
+		}
+		
+	}
+	
+	private void addLink(JCas tView, int tStart, int tEnd, JCas hView, int hStart, int hEnd) {
+		// Prepare the Target instances
+		Target textTarget = new Target(tView);
+		Target hypoTarget = new Target(hView);
+				
+		// Prepare an FSArray instance and put the target annotations in it   
+		//FSArray textAnnots = new FSArray(tView, tEnd - tStart + 1);
+		//FSArray hypoAnnots = new FSArray(hView, hEnd - hStart + 1);
+		
+		for(NemexType ntype: JCasUtil.select(tView, NemexType.class))
+		{
+			// Actual work code to put Annotations 
+			// in a Target instance. 
+			
+			// 1) prepare a Target instance. 
+			if ( (ntype.getBegin() >= tStart) && (ntype.getEnd() <= tEnd)) {
+			Target tg = new Target(tView);
+			// 2) prepare a FSArray instance, put the target annotations in it.   
+			// (Note that FSArray is not really a Java Array -- but FSArray) 
+			FSArray tAnnots = new FSArray(tView, 1); // this is a size 1 FSarray; 
+			tAnnots.set(0,ntype);
+			// 3) Okay, now the FSArray is prepared. Put it on field "targetAnnotations" 
+			tg.setTargetAnnotations(tAnnots);
+			// 4) Set begin - end value of the Target annotation (just like any annotation)
+			// note that, setting of begin and end of Target is a convention. 
+			// - begin as the earliest "begin" (among Target-ed annotations) 
+			// - end as the latest "end" (among Target-ed annotations) 
+			tg.setBegin(ntype.getBegin());
+			tg.setEnd(ntype.getEnd());
+			// 5) add it to the index (just like any annotation) 
+			tg.addToIndexes(); 
+			
+			// The target instance is now ready. 
+			textTarget = tg; 
+			}
+		}
+		
+		for(NemexType ntype: JCasUtil.select(hypoViewOfJCas1, Token.class) )
+		{
+			if ( (ntype.getBegin() >= tStart) && (ntype.getEnd() <= tEnd)) {
+			Target tg = new Target(hView);
+			FSArray hAnnots = new FSArray(hView, 1); 
+			hAnnots.set(0, ntype);
+			tg.setTargetAnnotations(hAnnots);
+			tg.setBegin(ntype.getBegin());
+			tg.setEnd(ntype.getEnd());
+			tg.addToIndexes(); 
+			hypoTarget = tg;
+		}
+		}
+
+		textTarget.setTargetAnnotations(textAnnots);
+		hypoTarget.setTargetAnnotations(hypoAnnots);
+		
+		// Mark an alignment.Link and add it to the hypothesis view
+		Link link = new Link(hypoView); 
+		link.setTSideTarget(textTarget); 
+		link.setHSideTarget(hypoTarget); 
+
+		// Set the link direction
+		link.setDirection(Direction.hToT); 
+				
+		// Set strength according to the nemex-a threshold
+		link.setStrength(this.similarityThreshold); 
+				
+		// Add the link information
+		link.setAlignerID("NemexA");  
+		link.setAlignerVersion("1.0"); 
+		link.setLinkInfo("nemex-results");
+				
+		// Mark begin and end according to the hypothesis target
+		link.setBegin(hypoTarget.getBegin()); 
+		link.setEnd(hypoTarget.getEnd());
+				
+		// Add to index 
+		link.addToIndexes(); 
 	}
 
 	@Override
