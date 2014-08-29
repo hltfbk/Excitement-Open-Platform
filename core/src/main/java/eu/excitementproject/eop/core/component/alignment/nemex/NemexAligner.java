@@ -172,19 +172,18 @@ public class NemexAligner implements AlignmentComponent {
 		String str = new String();
 		List<String> values = null;
 		for (int i = 0; i < content.length(); i++)
-			for (int j = 1; j <= content.length(); j++) {
+			for (int j = i + 1; j <= content.length(); j++) {
 				str = content.substring(i, j);
 				try {
 					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
 							similarityMeasure, similarityThreshold);
+					NemexType textAnnot = addNemexAnnotation(textView, values,
+							i, j);
+					addAlignmentLink(textAnnot, textView, i, j, queryMap,
+							queryIndex);
 				} catch (GazetteerNotLoadedException e) {
 					e.printStackTrace();
 				}
-
-				NemexType textAnnot = addNemexAnnotation(textView, values, i, j);
-				addAlignmentLink(textAnnot, textView, i, j, queryMap,
-						queryIndex);
-
 			}
 
 	}
@@ -205,8 +204,8 @@ public class NemexAligner implements AlignmentComponent {
 		// annot.setEnd(endOffset);
 
 		StringArray valuesArray = null;
-		valuesArray.copyFromArray((String[]) entry.toArray(), 0, 0,
-				entry.size());
+		//valuesArray.copyFromArray((String[]) entry.toArray(), 0, 0,
+		//		entry.size());
 
 		logger.info("Setting values of annotation as " + valuesArray);
 		annot.setValues(valuesArray);
