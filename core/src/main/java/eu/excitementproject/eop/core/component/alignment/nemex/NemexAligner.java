@@ -66,127 +66,101 @@ public class NemexAligner implements AlignmentComponent {
 					"annotate() got a null JCas object.");
 		}
 
-		HashMap<Integer, String> queryMap = new HashMap<Integer, String>(); // query
-																			// id
-																			// and
-																			// query
-																			// String
-		HashMap<String, ArrayList<QueryOffset>> queryIndex = new HashMap<String, ArrayList<QueryOffset>>(); // query
-																											// String
-																											// and
-																											// offsets
-																											// for
-																											// the
-																											// query
-																											// Strings
+		// unique query id vs query string
+		HashMap<Integer, String> queryMap = new HashMap<Integer, String>();
 
-		createDictionary(aJCas, queryMap, queryIndex);
-
-		JCas textView;
-
-		try {
-			textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
-
-		} catch (CASException e) {
-			throw new AlignmentComponentException(
-					"Failed to access the Two views (TEXTVIEW, HYPOTHESISVIEW)",
-					e);
-		}
-
-		logger.info("TEXT: " + textView.getDocumentText().substring(0, 25)
-				+ " ...");
-
-		String text = textView.getDocumentText().toLowerCase();
-
-		annotateSubstring(textView, queryMap, queryIndex);
-
-	}
-
-	public void createDictionary(JCas aJCas, HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<QueryOffset>> queryIndex)
-			throws PairAnnotatorComponentException {
-		logger.info("Reading aJCas object");
-
-		if (aJCas == null) {
-			logger.info("null JCas object");
-			throw new AlignmentComponentException(
-					"annotate() got a null JCas object.");
-		}
+		// query string vs hypothesis views and offsets
+		HashMap<String, ArrayList<QueryOffset>> queryIndex = new HashMap<String, ArrayList<QueryOffset>>();
 
 		try {
 			JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-
-			logger.info("HYPO: " + hypoView.getDocumentText());
-
-			String hypothesis = hypoView.getDocumentText().toLowerCase();
-			String query = new String();
-
-			int index = 0;
-			logger.info("Creating queries from hypothesis");
-			for (int i = 0; i < hypothesis.length(); i++) {
-				for (int j = i + 1; j <= hypothesis.length(); j++) {
-
-					query = hypothesis.substring(i, j);
-					ArrayList<QueryOffset> offsets = new ArrayList<QueryOffset>();
-
-					QueryOffset curOffset = new QueryOffset(hypoView, i, j);
-
-					if (queryMap.containsValue(query)) {
-						offsets = queryIndex.get(query);
-					} else {
-						index++;
-						queryMap.put(index, query);
-					}
-
-					offsets.add(curOffset);
-
-					queryIndex.put(query, offsets);
-
-				}
-			}
-
-			logger.info("Finished creating queries");
-
-			logger.info("Adding queries to dictionary");
-			Iterator<Entry<Integer, String>> iter = queryMap.entrySet()
-					.iterator();
-			while (iter.hasNext()) {
-
-				Map.Entry queryEntry = (Map.Entry) iter.next();
-				int idx = (int) queryEntry.getKey();
-				String queryText = (String) queryEntry.getValue();
-
-				ArrayList<QueryOffset> value = (ArrayList<QueryOffset>) queryIndex
-						.get(queryText);
-
-				logger.info("Creating dictionary entry from hypothesis query");
-
-				List<String> entry = new ArrayList<String>();
-				entry.add(new String(idx + " " + value.size() + " " + queryText
-						+ " " + "NG:" + "1:" + value.size()));
-
-				logger.info("Adding entry to dictionary," + entry);
-				NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath)
-						.getGazetteer().addNewEntry(entry.get(0));
-				logger.info("Finished adding entry to dictionary");
-
-				Iterator queryIter = value.iterator();
-				while (queryIter.hasNext()) {
-					QueryOffset hQuery = (QueryOffset) queryIter.next();
-					int start = hQuery.getStartOffset();
-					int end = hQuery.getEndOffset();
-					logger.info("Adding NemexType annotation on hypothesis query");
-					NemexType hypoAnnot = addNemexAnnotation(hypoView, entry,
-							start, end);
-					logger.info("Finished adding NemexType annotation on hypothesis query");
-				}
-
-			}
+			createDictionary(hypoView, queryMap, queryIndex);
 
 		} catch (CASException e) {
-			logger.info("Failed to access the HypothesisView");
 			throw new AlignmentComponentException(
-					"Failed to access the HypothesisView", e);
+					"Failed to access the hypothesis view", e);
+		}
+
+		try {
+			JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
+			logger.info("TEXT: " + textView.getDocumentText());
+			annotateSubstring(textView, queryMap, queryIndex);
+
+		} catch (CASException e) {
+			throw new AlignmentComponentException(
+					"Failed to access the text view", e);
+		}
+
+	}
+
+	public void createDictionary(JCas hypoView,
+			HashMap<Integer, String> queryMap,
+			HashMap<String, ArrayList<QueryOffset>> queryIndex)
+			throws PairAnnotatorComponentException {
+		logger.info("HYPO: " + hypoView.getDocumentText());
+
+		String hypothesis = hypoView.getDocumentText().toLowerCase();
+		String query = new String();
+
+		int index = 0;
+		logger.info("Creating queries from hypothesis");
+		for (int i = 0; i < hypothesis.length(); i++) {
+			for (int j = i + 1; j <= hypothesis.length(); j++) {
+
+				query = hypothesis.substring(i, j);
+				ArrayList<QueryOffset> offsets = new ArrayList<QueryOffset>();
+
+				QueryOffset curOffset = new QueryOffset(hypoView, i, j);
+
+				if (queryMap.containsValue(query)) {
+					offsets = queryIndex.get(query);
+				} else {
+					index++;
+					queryMap.put(index, query);
+				}
+
+				offsets.add(curOffset);
+
+				queryIndex.put(query, offsets);
+
+			}
+		}
+
+		logger.info("Finished creating queries");
+
+		logger.info("Adding queries to dictionary");
+		Iterator<Entry<Integer, String>> iter = queryMap.entrySet().iterator();
+		while (iter.hasNext()) {
+
+			Map.Entry queryEntry = (Map.Entry) iter.next();
+			int idx = (int) queryEntry.getKey();
+			String queryText = (String) queryEntry.getValue();
+
+			ArrayList<QueryOffset> value = (ArrayList<QueryOffset>) queryIndex
+					.get(queryText);
+
+			logger.info("Creating dictionary entry from hypothesis query");
+
+			List<String> entry = new ArrayList<String>();
+			entry.add(new String(idx + " " + value.size() + " " + queryText
+					+ " " + "NG:" + "1:" + value.size()));
+
+			logger.info("Adding entry to dictionary," + entry);
+			NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath).getGazetteer()
+					.addNewEntry(entry.get(0));
+			logger.info("Finished adding entry to dictionary");
+
+			Iterator queryIter = value.iterator();
+			while (queryIter.hasNext()) {
+				QueryOffset hQuery = (QueryOffset) queryIter.next();
+				int start = hQuery.getStartOffset();
+				int end = hQuery.getEndOffset();
+				logger.info("Adding NemexType annotation on hypothesis query");
+				NemexType hypoAnnot = addNemexAnnotation(hypoView, entry,
+						start, end);
+				logger.info("Finished adding NemexType annotation on hypothesis query");
+			}
+
 		}
 	}
 
