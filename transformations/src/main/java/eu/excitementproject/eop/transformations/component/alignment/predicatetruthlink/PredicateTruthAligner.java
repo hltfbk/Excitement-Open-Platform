@@ -1,7 +1,10 @@
-package eu.excitementproject.eop.core.component.alignment.predicatetruthlink;
+package eu.excitementproject.eop.transformations.component.alignment.predicatetruthlink;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
@@ -13,6 +16,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
 import eu.excitement.type.alignment.Target;
+import eu.excitement.type.predicatetruth.PredicateTruth;
 import eu.excitement.type.predicatetruth.PredicateTruthNegative;
 import eu.excitement.type.predicatetruth.PredicateTruthPositive;
 import eu.excitement.type.predicatetruth.PredicateTruthUncertain;
@@ -42,16 +46,30 @@ public class PredicateTruthAligner implements AlignmentComponent {
 	
 	//constant values used for aligner description
 	public static final String ALIGNER_ID = "PredicateTruth";
-	public static final String ALIGNER_VERSION = "1.0"; //FIXME not sure about the desired values for these two
-	public static final String ALIGNEMNT_TYPE_AGREEING_POSITIVE = "Agreeing Positive Predicate Truth";
-	public static final String ALIGNEMNT_TYPE_AGREEING_NEGATIVE = "Agreeing Negative Predicate Truth";
-	public static final String ALIGNEMNT_TYPE_DISAGREEING = "Disagreeing Predicate Truth";
-	public static final String ALIGNEMNT_TYPE_NON_MATCHING = "Non Matching Predicate Truth";
+	public static final String ALIGNER_VERSION = "TruthTeller_1.0"; 
+	public static final String ALIGNEMNT_TYPE_AGREEING_POSITIVE = "Agreeing_Positive_Predicate_Truth";
+	public static final String ALIGNEMNT_TYPE_AGREEING_NEGATIVE = "Agreeing_Negative_Predicate_Truth";
+	public static final String ALIGNEMNT_TYPE_DISAGREEING = "Disagreeing_Predicate_Truth";
+	public static final String ALIGNEMNT_TYPE_NON_MATCHING = "Non_Matching_Predicate_Truth";
 
 	//(currently) constant values used for alignment links
 	private static final double ALIGNER_CONFIDENCE = 1.0;
 	private static final Direction ALIGNER_DIRECTION = Direction.Bidirection;
 
+	//store the annotations of predicate truth, for memoization
+	private Map<Class<? extends PredicateTruth>,Collection<? extends Annotation>> memoTextAnnots;
+	private Map<Class<? extends PredicateTruth>,Collection<? extends Annotation>> memoHypoAnnots;
+	private static final List<Class<? extends PredicateTruth>> ptTypes = new ArrayList<Class<? extends PredicateTruth>>(){
+		private static final long serialVersionUID = 8489900798036315449L;
+
+	{
+		add(PredicateTruthPositive.class);
+		add(PredicateTruthNegative.class);
+		add(PredicateTruthUncertain.class);
+	}};
+	
+	
+	
 	/** 
 	 * default constructor
 	 * set all members to null 
@@ -67,6 +85,16 @@ public class PredicateTruthAligner implements AlignmentComponent {
 			// Get the text and hypothesis views
 			textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 			hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+			
+			// Record annotations
+			memoTextAnnots = new HashMap<Class<? extends PredicateTruth>,Collection<? extends Annotation>>();
+			memoHypoAnnots = new HashMap<Class<? extends PredicateTruth>,Collection<? extends Annotation>>();
+			
+			for (Class<? extends PredicateTruth> ptType : ptTypes){
+				memoTextAnnots.put(ptType, JCasUtil.select(textView, ptType));
+				memoHypoAnnots.put(ptType, JCasUtil.select(hypoView, ptType));
+			}
+			
 
 			// add alignment links
 			// Agreeing Positive Predicate Truth
@@ -86,7 +114,7 @@ public class PredicateTruthAligner implements AlignmentComponent {
 			// Non Matching Predicate Truth
 			// PT+ <-> PT?
 			createPredicateTruthLinks(PredicateTruthPositive.class,PredicateTruthUncertain.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING);
-			// PT- <-> PT+
+			// PT- <-> PT?
 			createPredicateTruthLinks(PredicateTruthNegative.class,PredicateTruthUncertain.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING);
 			// PT? <-> PT+
 			createPredicateTruthLinks(PredicateTruthUncertain.class,PredicateTruthPositive.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING);
@@ -122,11 +150,11 @@ public class PredicateTruthAligner implements AlignmentComponent {
 	 * @param linkInfo
 	 * @throws CASException
 	 */
-	private void createPredicateTruthLinks(Class<? extends Annotation> textType, Class<? extends Annotation> hypoType, double confidence,Direction linkDirection,String linkInfo) throws CASException{
+	private void createPredicateTruthLinks(Class<? extends PredicateTruth> textType, Class<? extends Annotation> hypoType, double confidence,Direction linkDirection,String linkInfo) throws CASException{
 		
-		// get relevant annotations from text and hypothesis
-		Collection<Annotation> textAnnotations = new ArrayList<Annotation>(JCasUtil.select(textView, textType));
-		Collection<Annotation> hypoAnnotations = new ArrayList<Annotation>(JCasUtil.select(hypoView, hypoType));
+		// get relevant annotations from text and hypothesis - use pre-recorded annotations
+		Collection<? extends Annotation> textAnnotations = memoTextAnnots.get(textType);
+		Collection<? extends Annotation> hypoAnnotations = memoHypoAnnots.get(hypoType);
 		
 		// mark links between all of the found types
 		for (Annotation tAnno : textAnnotations){

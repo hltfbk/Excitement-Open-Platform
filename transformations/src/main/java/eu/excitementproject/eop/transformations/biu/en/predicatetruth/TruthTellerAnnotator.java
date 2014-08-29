@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.transformations.uima.ae.truthteller;
+package eu.excitementproject.eop.transformations.biu.en.predicatetruth;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 import eu.excitementproject.eop.common.representation.parse.tree.AbstractNodeUtils;
-import eu.excitementproject.eop.lap.biu.test.BiuTestParams;
 import eu.excitementproject.eop.transformations.generic.truthteller.AnnotatorException;
 import eu.excitementproject.eop.transformations.generic.truthteller.DefaultSentenceAnnotator;
 import eu.excitementproject.eop.transformations.representation.AdditionalNodeInformation;
@@ -35,18 +34,10 @@ public class TruthTellerAnnotator implements PredicateTruth {
 	 * @param IannotationRulesFile
 	 * @throws PredicateTruthException
 	 */
-	public TruthTellerAnnotator(File IannotationRulesFile) throws PredicateTruthException{
-			annotationRulesFile = IannotationRulesFile;
+	public TruthTellerAnnotator(File annotationRulesFile) throws PredicateTruthException{
+			this.annotationRulesFile = annotationRulesFile;
+			annotatedSentence = null;
 	}
-	
-	/**
-	 * Default constructor which uses a default file location for annotation rules file
-	 * @throws PredicateTruthException
-	 */
-	public TruthTellerAnnotator() throws PredicateTruthException{
-		annotationRulesFile = new File(BiuTestParams.TRUTH_TELLER_MODEL_FILE);
-	}
-	
 	
 	@Override
 	public void init() throws PredicateTruthException {					
@@ -67,6 +58,10 @@ public class TruthTellerAnnotator implements PredicateTruth {
 	@Override
 	public void annotate() throws PredicateTruthException {
 		try {
+			// verify that setSentence was run before calling this function
+			if (annotatedSentence == null){
+				throw new PredicateTruthException("annotate was called without first calling setSentence");
+			}
 			// run TruthTeller
 			annotator.setTree(annotatedSentence);
 			annotator.annotate();
@@ -77,8 +72,7 @@ public class TruthTellerAnnotator implements PredicateTruth {
 			List<ExtendedNode> nodes = AbstractNodeUtils.treeToList(ttResult);
 			
 			for (ExtendedNode node : nodes){
-				assert(node.getInfo().getNodeInfo().getWord() != null);
-				int id = node.getInfo().getNodeInfo().getSerial()-1; // this node's id in the original sentence
+				int serial = node.getInfo().getNodeInfo().getSerial()-1; // this node's id in the original sentence
 				AdditionalNodeInformation info = node.getInfo().getAdditionalNodeInformation();
 				// store result from info, according to index in the original sentence
 				SingleTokenTruthAnnotation singleTokenAnnotation =new SingleTokenTruthAnnotation(info.getPredTruth(),info.getClauseTruth(),info.getNegationAndUncertainty(),info.getPredicateSignature()); 
@@ -106,12 +100,12 @@ public class TruthTellerAnnotator implements PredicateTruth {
 					singleTokenAnnotation.setSubtreeMinimalIndex(minimalIndex);
 					singleTokenAnnotation.setSubtreeMaximalIndex(maximalIndex);
 				}
-				annotationMap.put(id,singleTokenAnnotation); 
+				annotationMap.put(serial,singleTokenAnnotation); 
 	
 			}
 			
 			//convert the map into a list - assumes there's a truth annotation for each token index
-			for (int i=0; i < nodes.size();i++){
+			for (int i=0; i < annotationMap.size();i++){
 				annotationResult.add(annotationMap.get(i));
 			}
 			

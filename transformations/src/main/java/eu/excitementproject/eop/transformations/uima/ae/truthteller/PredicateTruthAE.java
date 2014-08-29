@@ -20,6 +20,8 @@ import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPo
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverter;
 import eu.excitementproject.eop.lap.biu.uima.CasTreeConverterException;
 import eu.excitementproject.eop.lap.biu.uima.ae.SingletonSynchronizedAnnotator;
+import eu.excitementproject.eop.transformations.biu.en.predicatetruth.PredicateTruthException;
+import eu.excitementproject.eop.transformations.biu.en.predicatetruth.SingleTokenTruthAnnotation;
 import eu.excitementproject.eop.transformations.representation.ExtendedNode;
 import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUtilities;
 
@@ -29,9 +31,9 @@ import eu.excitementproject.eop.transformations.utilities.parsetreeutils.TreeUti
  *  @since Aug 2014
  */
 
-public abstract class PredicateTruthAE<T extends eu.excitementproject.eop.transformations.uima.ae.truthteller.PredicateTruth> extends SingletonSynchronizedAnnotator<T>  {
+public abstract class PredicateTruthAE<T extends eu.excitementproject.eop.transformations.biu.en.predicatetruth.PredicateTruth> extends SingletonSynchronizedAnnotator<T>  {
 	
-	CasTreeConverter converter;
+	private CasTreeConverter converter;
 	
   	@Override
   	public void initialize(UimaContext aContext) throws ResourceInitializationException{
@@ -108,7 +110,7 @@ public abstract class PredicateTruthAE<T extends eu.excitementproject.eop.transf
 		catch (CasTreeConverterException
 				| UnsupportedPosTagStringException
 				| PredicateTruthException e ) {
-			throw new AnalysisEngineProcessException(e);
+			throw new AnalysisEngineProcessException(AnalysisEngineProcessException.ANNOTATOR_EXCEPTION, null, e);
 		}
 	}
 	

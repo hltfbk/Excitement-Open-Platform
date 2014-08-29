@@ -75,10 +75,10 @@ public class TruthMapping {
 	}
 	
 	//static mapping from TruthTeller types to UIMA types
-	public static Map<PredTruth, Class<?>> PRED_TRUTH_MAP = new HashMap<PredTruth, Class<?>>();
-	public static Map<eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth, Class<?>> CLAUSE_TRUTH_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth, Class<?>>();
-	public static Map<eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty, Class<?>> NU_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty, Class<?>>();
-	public static Map<eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature, Class<?>> SIG_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature, Class<?>>();
+	public static Map<PredTruth, Class<? extends PredicateTruth>> PRED_TRUTH_MAP = new HashMap<PredTruth, Class<? extends PredicateTruth>>();
+	public static Map<eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth, Class<?  extends ClauseTruth>> CLAUSE_TRUTH_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.ClauseTruth, Class<? extends ClauseTruth>>();
+	public static Map<eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty, Class<? extends NegationAndUncertainty>> NU_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.NegationAndUncertainty, Class<? extends NegationAndUncertainty>>();
+	public static Map<eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature, Class<? extends PredicateSignature>> SIG_MAP = new HashMap<eu.excitementproject.eop.transformations.representation.annotations.PredicateSignature, Class<?  extends PredicateSignature>>();
 	static
 	{
 		// predicate truth mapping

@@ -15,7 +15,7 @@ import eu.excitementproject.eop.lap.biu.uima.ae.postagger.MaxentPosTaggerAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.sentencesplitter.LingPipeSentenceSplitterAE;
 import eu.excitementproject.eop.lap.biu.uima.ae.tokenizer.MaxentTokenizerAE;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
-import eu.excitementproject.eop.transformations.uima.ae.truthteller.TruthTellerAnnotatorAE;
+import eu.excitementproject.eop.transformations.biu.en.predicatetruth.TruthTellerAnnotatorAE;
 import eu.excitementproject.eop.transformations.utilities.TransformationsConfigurationParametersNames;
 
 /**

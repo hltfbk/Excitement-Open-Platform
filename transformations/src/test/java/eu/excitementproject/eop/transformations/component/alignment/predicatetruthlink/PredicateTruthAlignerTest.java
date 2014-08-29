@@ -1,9 +1,9 @@
-package alignment.predicatetruthlink;
+package eu.excitementproject.eop.transformations.component.alignment.predicatetruthlink;
 
-import static eu.excitementproject.eop.core.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_AGREEING_POSITIVE;
-import static eu.excitementproject.eop.core.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_AGREEING_NEGATIVE;
-import static eu.excitementproject.eop.core.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_DISAGREEING;
-import static eu.excitementproject.eop.core.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_NON_MATCHING;
+import static eu.excitementproject.eop.transformations.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_AGREEING_NEGATIVE;
+import static eu.excitementproject.eop.transformations.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_AGREEING_POSITIVE;
+import static eu.excitementproject.eop.transformations.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_DISAGREEING;
+import static eu.excitementproject.eop.transformations.component.alignment.predicatetruthlink.PredicateTruthAligner.ALIGNEMNT_TYPE_NON_MATCHING;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -22,10 +22,11 @@ import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
-import eu.excitementproject.eop.core.component.alignment.predicatetruthlink.PredicateTruthAligner;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
+import eu.excitementproject.eop.transformations.component.alignment.predicatetruthlink.PredicateTruthAligner;
 import eu.excitementproject.eop.transformations.uima.BIUFullLAPWithTruthTellerConfigured;
 /** 
  * A test class for {@link PredicateTruthAligner}  
@@ -38,19 +39,17 @@ import eu.excitementproject.eop.transformations.uima.BIUFullLAPWithTruthTellerCo
 public class PredicateTruthAlignerTest {
 	
 	@BeforeClass
-	public static void beforeClass() throws IOException {
-		try {
-			// create a lap with truth teller annotator
-			lap = new BIUFullLAPWithTruthTellerConfigured();
-			// create an aligner
-			aligner = new PredicateTruthAligner();
-			// annotations for reference text - all tests will examine this result 
-			jcas = lap.generateSingleTHPairCAS(testText, testHypothesis);
-			aligner.annotate(jcas);
-			hypoView = jcas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-		} catch (PairAnnotatorComponentException | LAPException | CASException e) {
-			throw new IOException(e);
-		}
+	public static void beforeClass() throws IOException, LAPException, PairAnnotatorComponentException, CASException {
+		// Run test only under BIU environment
+		BiuTestUtils.assumeBiuEnvironment();
+		// create a lap with truth teller annotator
+		lap = new BIUFullLAPWithTruthTellerConfigured();
+		// create an aligner
+		aligner = new PredicateTruthAligner();
+		// annotations for reference text - all tests will examine this result 
+		jcas = lap.generateSingleTHPairCAS(testText, testHypothesis);
+		aligner.annotate(jcas);
+		hypoView = jcas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 		 
 	}
 	
@@ -137,6 +136,12 @@ public class PredicateTruthAlignerTest {
 	private static JCas jcas;
 	private static JCas hypoView;
 	private static AlignmentComponent aligner;
+	
+	/* 
+	 * when adding new sentences: 
+	 * make sure that no sentence has any duplicate word
+	 */  
+	
 	private static final String testText = "John refused to dance and instead thought of jumping";
 	private static final String testHypothesis = "John did not dance";
 	private static final double EPSILON = 0.1;
@@ -156,6 +161,8 @@ public class PredicateTruthAlignerTest {
 	// Non Matching 
 	private static List<String> nonMatchingExpectedText = new ArrayList<String>();
 	private static List<String> nonMatchingExpectedHypo = new ArrayList<String>();
+	
+	 
 	
 	 static{
 		 positiveAgreeingExpectedText.add("refused");

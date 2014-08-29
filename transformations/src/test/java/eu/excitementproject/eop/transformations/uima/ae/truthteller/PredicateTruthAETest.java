@@ -22,8 +22,8 @@ import eu.excitement.type.predicatetruth.PredicateTruthPositive;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
+import eu.excitementproject.eop.transformations.biu.en.predicatetruth.TruthTellerAnnotatorAE;
 import eu.excitementproject.eop.transformations.uima.BIUFullLAPWithTruthTellerConfigured;
-import eu.excitementproject.eop.transformations.uima.ae.truthteller.TruthTellerAnnotatorAE;
 
 /** 
  * A test class for {@link TruthTellerAnnotatorAE}  
@@ -34,18 +34,13 @@ import eu.excitementproject.eop.transformations.uima.ae.truthteller.TruthTellerA
 public class PredicateTruthAETest {
 	
 	@BeforeClass
-	public static void beforeClass() throws IOException {
-		try {
-			// create a lap with truth teller annotator
-			lap = new BIUFullLAPWithTruthTellerConfigured();
-			// annotations for reference text - all tests will examine this result 
-			jcas = lap.generateSingleTHPairCAS(testText, testHypothesis);
-			tView = jcas.getView(LAP_ImplBase.TEXTVIEW);
-			hView = jcas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-		} catch (LAPException | CASException e) {
-			throw new IOException(e);
-		}
-		
+	public static void beforeClass() throws LAPException, CASException {
+		// create a lap with truth teller annotator
+		lap = new BIUFullLAPWithTruthTellerConfigured();
+		// annotations for reference text - all tests will examine this result 
+		jcas = lap.generateSingleTHPairCAS(testText, testHypothesis);
+		tView = jcas.getView(LAP_ImplBase.TEXTVIEW);
+		hView = jcas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 	}
 	
 	@Test

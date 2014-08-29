@@ -1,4 +1,5 @@
-package eu.excitementproject.eop.transformations.uima.ae.truthteller;
+package eu.excitementproject.eop.transformations.biu.en.predicatetruth;
+
 
 /**
  * Exception class thrown by {@link PredicateTruth} in any error case.

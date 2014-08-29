@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.transformations.uima.ae.truthteller;
+package eu.excitementproject.eop.transformations.biu.en.predicatetruth;
 
 import java.util.List;
 
