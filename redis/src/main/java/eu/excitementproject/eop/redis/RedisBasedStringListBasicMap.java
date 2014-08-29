@@ -78,11 +78,13 @@ public class RedisBasedStringListBasicMap {
 		BasicRedisRunner.setRedisBinDir(redisDir);
 		int port = BasicRedisRunner.getInstance().run(dbFile,bVM);
 		init("localhost",port);
-
 	}
 	
 	protected void init(String host, int port) {
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), host,port);
+		//debug
+		logger.info("Connecting to redis server at host " + host + ", port " + port);
+		
 		jedis = pool.getResource();
 		jedis.connect();
 		jedis.getClient().setTimeoutInfinite();

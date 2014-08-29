@@ -126,6 +126,9 @@ public class ImmutableListWrapper<T> extends AbstractImmutableCollectionWrapper<
 		return this.getClass().getSimpleName()+" wrapping "+realList.getClass().getSimpleName()+": "+realList.toString();
 	}
 	
+	public String mutableListToString() {
+		return realList.toString();
+	}
 	
 	@Override
 	public int hashCode()
