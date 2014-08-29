@@ -21,22 +21,23 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 public class NemexAlignerTestEN {
 
-	static Logger logger = Logger.getLogger(NemexAligner.class.getName());
+	static Logger logger;
 
 	private NemexAligner aligner;
 
-	public NemexAlignerTestEN() {
-		logger.info("Initialize the Nemex Aligner");
-
-		aligner = new NemexAligner(
-				"src/test/resources/gazetteer/nemexAligner.txt", "", true, 3,
-				false, "DICE_SIMILARITY_MEASURE", 0.39);
-	}
+	
 
 	@Test
 	public void test() {
 		try {
 			
+			logger = Logger.getLogger(NemexAligner.class.getName());
+			logger.info("Initialize the Nemex Aligner");
+
+			aligner = new NemexAligner(
+					"src/test/resources/gazetteer/nemexAligner.txt", "#", true, 3,
+					false, "DICE_SIMILARITY_MEASURE", 0.39);
+			logger.info("Initialization finished");
 			// prepare a JCas
 			JCas aJCas = null;
 			OpenNLPTaggerEN tokenizer = null;
