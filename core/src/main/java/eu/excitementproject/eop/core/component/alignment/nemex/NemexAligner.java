@@ -3,6 +3,9 @@
  */
 package eu.excitementproject.eop.core.component.alignment.nemex;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,16 +23,13 @@ import org.uimafit.util.JCasUtil;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
-import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
 import eu.excitement.type.alignment.Target;
 import eu.excitement.type.nemex.*;
 import de.dfki.lt.nemex.a.*;
-import de.dfki.lt.nemex.a.data.Gazetteer;
 import de.dfki.lt.nemex.a.data.GazetteerNotLoadedException;
-import de.dfki.lt.nemex.a.similarity.SimilarityMeasure;
 
 /**
  * @author Madhumita
@@ -50,9 +50,9 @@ public class NemexAligner implements AlignmentComponent {
 
 		this.similarityMeasure = similarityMeasure;
 		this.similarityThreshold = similarityThreshold;
-		NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
-				this.delimiterSwitchOff, this.nGramSize,
-				this.ignoreDuplicateNgrams);
+		// NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
+		// this.delimiterSwitchOff, this.nGramSize,
+		// this.ignoreDuplicateNgrams);
 	}
 
 	@Override
@@ -100,14 +100,17 @@ public class NemexAligner implements AlignmentComponent {
 		logger.info("HYPO: " + hypoView.getDocumentText());
 
 		String hypothesis = hypoView.getDocumentText().toLowerCase();
+		hypothesis = hypothesis.replaceAll(" ", "#");
 		String query = new String();
 
 		int index = 0;
+		int totalNoOfQueries = 0;
 		logger.info("Creating queries from hypothesis");
 		for (int i = 0; i < hypothesis.length(); i++) {
 			for (int j = i + 1; j <= hypothesis.length(); j++) {
 
 				query = hypothesis.substring(i, j);
+
 				ArrayList<QueryOffset> offsets = new ArrayList<QueryOffset>();
 
 				QueryOffset curOffset = new QueryOffset(hypoView, i, j);
@@ -119,6 +122,7 @@ public class NemexAligner implements AlignmentComponent {
 					queryMap.put(index, query);
 				}
 
+				totalNoOfQueries++;
 				offsets.add(curOffset);
 
 				queryIndex.put(query, offsets);
@@ -130,38 +134,54 @@ public class NemexAligner implements AlignmentComponent {
 
 		logger.info("Adding queries to dictionary");
 		Iterator<Entry<Integer, String>> iter = queryMap.entrySet().iterator();
-		while (iter.hasNext()) {
 
-			Map.Entry queryEntry = (Map.Entry) iter.next();
-			int idx = (int) queryEntry.getKey();
-			String queryText = (String) queryEntry.getValue();
+		PrintWriter fw;
+		try {
+			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath, true));
+			fw.println("0 utf-8 EN " + totalNoOfQueries + " " + queryMap.size());
+			while (iter.hasNext()) {
 
-			ArrayList<QueryOffset> value = (ArrayList<QueryOffset>) queryIndex
-					.get(queryText);
+				Map.Entry<Integer, String> queryEntry = (Map.Entry<Integer, String>) iter
+						.next();
+				int idx = (int) queryEntry.getKey();
+				String queryText = (String) queryEntry.getValue();
 
-			logger.info("Creating dictionary entry from hypothesis query");
+				ArrayList<QueryOffset> value = (ArrayList<QueryOffset>) queryIndex
+						.get(queryText);
 
-			List<String> entry = new ArrayList<String>();
-			entry.add(new String(idx + " " + value.size() + " " + queryText
-					+ " " + "NG:" + "1:" + value.size()));
+				logger.info("Creating dictionary entry from hypothesis query");
 
-			logger.info("Adding entry to dictionary," + entry);
-			NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath).getGazetteer()
-					.addNewEntry(entry.get(0));
-			logger.info("Finished adding entry to dictionary");
+				List<String> entry = new ArrayList<String>();
+				entry.add(new String(idx + " " + value.size() + " " + queryText
+						+ " " + "NG:" + "1:" + value.size()));
 
-			Iterator queryIter = value.iterator();
-			while (queryIter.hasNext()) {
-				QueryOffset hQuery = (QueryOffset) queryIter.next();
-				int start = hQuery.getStartOffset();
-				int end = hQuery.getEndOffset();
-				logger.info("Adding NemexType annotation on hypothesis query");
-				NemexType hypoAnnot = addNemexAnnotation(hypoView, entry,
-						start, end);
-				logger.info("Finished adding NemexType annotation on hypothesis query");
+				logger.info("Adding entry to dictionary," + entry.get(0));
+
+				fw.println(entry.get(0));
+				// NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath)
+				// .getGazetteer().addNewEntry(entry.get(0));
+				logger.info("Finished adding entry to dictionary");
+
+				Iterator<QueryOffset> queryIter = value.iterator();
+				while (queryIter.hasNext()) {
+					QueryOffset hQuery = (QueryOffset) queryIter.next();
+					int start = hQuery.getStartOffset();
+					int end = hQuery.getEndOffset();
+					logger.info("Adding NemexType annotation on hypothesis query");
+					addNemexAnnotation(hypoView, entry, start, end);
+					logger.info("Finished adding NemexType annotation on hypothesis query");
+				}
+
 			}
-
+			fw.close();
+			NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
+					this.delimiterSwitchOff, this.nGramSize,
+					this.ignoreDuplicateNgrams);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 	}
 
 	private void annotateSubstring(JCas textView,
@@ -169,18 +189,22 @@ public class NemexAligner implements AlignmentComponent {
 			HashMap<String, ArrayList<QueryOffset>> queryIndex) {
 
 		String content = textView.getDocumentText().toLowerCase();
+		content = content.replaceAll(" ", "#");
 		String str = new String();
-		List<String> values = null;
+		List<String> values = new ArrayList<String>();
 		for (int i = 0; i < content.length(); i++)
 			for (int j = i + 1; j <= content.length(); j++) {
 				str = content.substring(i, j);
+
 				try {
 					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
 							similarityMeasure, similarityThreshold);
-					NemexType textAnnot = addNemexAnnotation(textView, values,
-							i, j);
-					addAlignmentLink(textAnnot, textView, i, j, queryMap,
-							queryIndex);
+					if (values.size() > 0) {
+						NemexType textAnnot = addNemexAnnotation(textView,
+								values, i, j);
+						addAlignmentLink(textAnnot, textView, i, j, queryMap,
+								queryIndex);
+					}
 				} catch (GazetteerNotLoadedException e) {
 					e.printStackTrace();
 				}
@@ -200,22 +224,20 @@ public class NemexAligner implements AlignmentComponent {
 				+ " to end offset " + endOffset);
 
 		try {
-		NemexType annot = new NemexType(view, startOffset, endOffset);
-		StringArray valuesArray = null;
-		String [] entryArray = entry.toArray(new String[entry.size()]);
-		//valuesArray.copyFromArray(entryArray, 0, 0,
-		//		entryArray.length);
+			NemexType annot = new NemexType(view, startOffset, endOffset);
+			StringArray valuesArray = new StringArray(view, entry.size());
+			String[] entryArray = entry.toArray(new String[entry.size()]);
+			valuesArray.copyFromArray(entryArray, 0, 0, entryArray.length);
 
-		logger.info("Setting values of annotation as " + valuesArray);
-		annot.setValues(valuesArray);
-		annot.addToIndexes();
-		return annot;
-		}
-		catch(Exception e) {
+			logger.info("Setting values of annotation");
+			annot.setValues(valuesArray);
+			annot.addToIndexes();
+			return annot;
+		} catch (Exception e) {
 			logger.info("Could not generate NemexType");
 			e.printStackTrace();
 		}
-		
+
 		return null;
 
 	}
@@ -226,9 +248,7 @@ public class NemexAligner implements AlignmentComponent {
 		String[] values = textAnnot.getValues().toStringArray();
 		for (int i = 0; i < values.length; i++) {
 
-			String value = values[i];
-			int queryId = Integer.parseInt(value.split("\\s+")[0]);
-			String query = (String) queryMap.get(queryId);
+			String query = values[i];
 
 			ArrayList<QueryOffset> hypotheses = queryIndex.get(query);
 			Iterator<QueryOffset> hypoIter = hypotheses.iterator();
@@ -262,7 +282,6 @@ public class NemexAligner implements AlignmentComponent {
 				Target tg = new Target(tView);
 				// 2) prepare a FSArray instance, put the target annotations in
 				// it.
-				// (Note that FSArray is not really a Java Array -- but FSArray)
 				FSArray tAnnots = new FSArray(tView, 1); // this is a size 1
 															// FSarray;
 				tAnnots.set(0, ntype);
