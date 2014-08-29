@@ -60,9 +60,11 @@ public class NemexAligner implements AlignmentComponent {
 		// intro log
 		logger.info("annotate() called with a JCas with the following T and H;  ");
 
-		if (aJCas == null)
+		if (aJCas == null) {
+			logger.info("Null JCas object");
 			throw new AlignmentComponentException(
 					"annotate() got a null JCas object.");
+		}
 
 		HashMap<Integer, String> queryMap = new HashMap<Integer, String>(); // query
 																			// id
@@ -103,81 +105,89 @@ public class NemexAligner implements AlignmentComponent {
 	public void createDictionary(JCas aJCas, HashMap<Integer, String> queryMap,
 			HashMap<String, ArrayList<QueryOffset>> queryIndex)
 			throws PairAnnotatorComponentException {
-		logger.info("Create dictionary entries from all the queries in H:  ");
+		logger.info("Reading aJCas object");
 
-		if (aJCas == null)
+		if (aJCas == null) {
+			logger.info("null JCas object");
 			throw new AlignmentComponentException(
 					"annotate() got a null JCas object.");
-
-		JCas hypoView;
+		}
 
 		try {
-			hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-		} catch (CASException e) {
-			throw new AlignmentComponentException(
-					"Failed to access the HypothesisView", e);
+			JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 
-		}
+			logger.info("HYPO: " + hypoView.getDocumentText());
 
-		logger.info("HYPO: " + hypoView.getDocumentText().substring(0, 25)
-				+ " ...");
+			String hypothesis = hypoView.getDocumentText().toLowerCase();
+			String query = new String();
 
-		String hypothesis = hypoView.getDocumentText().toLowerCase();
-		String query = new String();
+			int index = 0;
+			logger.info("Creating queries from hypothesis");
+			for (int i = 0; i < hypothesis.length(); i++) {
+				for (int j = i + 1; j <= hypothesis.length(); j++) {
 
-		int index = 0;
-		for (int i = 0; i < hypothesis.length(); i++)
-			for (int j = 1; j <= hypothesis.length() + 1; j++) {
+					query = hypothesis.substring(i, j);
+					ArrayList<QueryOffset> offsets = new ArrayList<QueryOffset>();
 
-				query = hypothesis.substring(i, j);
-				ArrayList<QueryOffset> offsets = new ArrayList<QueryOffset>();
+					QueryOffset curOffset = new QueryOffset(hypoView, i, j);
 
-				QueryOffset curOffset = new QueryOffset(hypoView, i, j);
+					if (queryMap.containsValue(query)) {
+						offsets = queryIndex.get(query);
+					} else {
+						index++;
+						queryMap.put(index, query);
+					}
 
-				if (queryMap.containsValue(query)) {
-					offsets = queryIndex.get(query);
-				} else {
-					index++;
-					queryMap.put(index, query);
+					offsets.add(curOffset);
+
+					queryIndex.put(query, offsets);
+
+				}
+			}
+
+			logger.info("Finished creating queries");
+
+			logger.info("Adding queries to dictionary");
+			Iterator<Entry<Integer, String>> iter = queryMap.entrySet()
+					.iterator();
+			while (iter.hasNext()) {
+
+				Map.Entry queryEntry = (Map.Entry) iter.next();
+				int idx = (int) queryEntry.getKey();
+				String queryText = (String) queryEntry.getValue();
+
+				ArrayList<QueryOffset> value = (ArrayList<QueryOffset>) queryIndex
+						.get(queryText);
+
+				logger.info("Creating dictionary entry from hypothesis query");
+
+				List<String> entry = new ArrayList<String>();
+				entry.add(new String(idx + " " + value.size() + " " + queryText
+						+ " " + "NG:" + "1:" + value.size()));
+
+				logger.info("Adding entry to dictionary," + entry);
+				NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath)
+						.getGazetteer().addNewEntry(entry.get(0));
+				logger.info("Finished adding entry to dictionary");
+
+				Iterator queryIter = value.iterator();
+				while (queryIter.hasNext()) {
+					QueryOffset hQuery = (QueryOffset) queryIter.next();
+					int start = hQuery.getStartOffset();
+					int end = hQuery.getEndOffset();
+					logger.info("Adding NemexType annotation on hypothesis query");
+					NemexType hypoAnnot = addNemexAnnotation(hypoView, entry,
+							start, end);
+					logger.info("Finished adding NemexType annotation on hypothesis query");
 				}
 
-				offsets.add(curOffset);
-
-				queryIndex.put(query, offsets);
-
 			}
 
-		int i = 0;
-		String firstLine = new String("0 utf-8 EN 4 4");
-
-		NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath).getGazetteer()
-				.addNewEntry(firstLine);
-
-		Iterator<Entry<Integer, String>> iter = queryMap.entrySet().iterator();
-		while (iter.hasNext()) {
-			i++;
-			Map.Entry queryEntry = (Map.Entry) iter.next();
-			String key = (String) queryEntry.getKey();
-			ArrayList<QueryOffset> value = (ArrayList<QueryOffset>) queryEntry
-					.getValue();
-
-			List<String> entry = null;
-			entry.add(new String(i + " " + value.size() + " " + key + " "
-					+ "NG:" + "1:" + value.size()));
-			NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath).getGazetteer()
-					.addNewEntry(entry.get(0));
-
-			Iterator queryIter = value.iterator();
-			while (queryIter.hasNext()) {
-				QueryOffset hQuery = (QueryOffset) queryIter.next();
-				int start = hQuery.getStartOffset();
-				int end = hQuery.getEndOffset();
-				NemexType hypoAnnot = addNemexAnnotation(hypoView, entry,
-						start, end);
-			}
-
+		} catch (CASException e) {
+			logger.info("Failed to access the HypothesisView");
+			throw new AlignmentComponentException(
+					"Failed to access the HypothesisView", e);
 		}
-
 	}
 
 	private void annotateSubstring(JCas textView,
@@ -208,11 +218,25 @@ public class NemexAligner implements AlignmentComponent {
 	private NemexType addNemexAnnotation(JCas view, List<String> entry,
 			int startOffset, int endOffset) {
 
+		logger.info("Within addNemexAnnotation function, adding annotation on view: "
+				+ view.getDocumentText()
+				+ " ,and adding entries "
+				+ entry
+				+ " as values from start offset "
+				+ startOffset
+				+ " to end offset " + endOffset);
+
+		NemexType annot = new NemexType(view, startOffset, endOffset);
+		// annot.setBegin(startOffset);
+		// annot.setEnd(endOffset);
+
 		StringArray valuesArray = null;
 		valuesArray.copyFromArray((String[]) entry.toArray(), 0, 0,
 				entry.size());
-		NemexType annot = new NemexType(view, startOffset, endOffset);
+
+		logger.info("Setting values of annotation as " + valuesArray);
 		annot.setValues(valuesArray);
+		annot.addToIndexes();
 		return annot;
 
 	}

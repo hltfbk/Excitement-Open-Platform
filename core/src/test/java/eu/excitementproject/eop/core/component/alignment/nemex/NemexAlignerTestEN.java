@@ -1,21 +1,14 @@
 package eu.excitementproject.eop.core.component.alignment.nemex;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.util.List;
-
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.alignment.Link;
-import eu.excitement.type.alignment.LinkUtils;
-import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
