@@ -199,18 +199,24 @@ public class NemexAligner implements AlignmentComponent {
 				+ startOffset
 				+ " to end offset " + endOffset);
 
+		try {
 		NemexType annot = new NemexType(view, startOffset, endOffset);
-		// annot.setBegin(startOffset);
-		// annot.setEnd(endOffset);
-
 		StringArray valuesArray = null;
-		//valuesArray.copyFromArray((String[]) entry.toArray(), 0, 0,
-		//		entry.size());
+		String [] entryArray = entry.toArray(new String[entry.size()]);
+		//valuesArray.copyFromArray(entryArray, 0, 0,
+		//		entryArray.length);
 
 		logger.info("Setting values of annotation as " + valuesArray);
 		annot.setValues(valuesArray);
 		annot.addToIndexes();
 		return annot;
+		}
+		catch(Exception e) {
+			logger.info("Could not generate NemexType");
+			e.printStackTrace();
+		}
+		
+		return null;
 
 	}
 
