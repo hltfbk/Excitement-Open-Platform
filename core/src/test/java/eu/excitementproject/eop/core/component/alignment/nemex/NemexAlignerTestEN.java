@@ -27,7 +27,7 @@ public class NemexAlignerTestEN {
 
 			aligner = new NemexAligner(
 					"src/test/resources/gazetteer/nemexAligner.txt", "#", true, 3,
-					false, "DICE_SIMILARITY_MEASURE", 0.39);
+					false, "DICE_SIMILARITY_MEASURE", 0.8);
 			logger.info("Initialization finished");
 			// prepare a JCas
 			JCas aJCas = null;
@@ -69,6 +69,7 @@ public class NemexAlignerTestEN {
 						(link.getHSideTarget().getBegin() == 2) &&
 						(link.getHSideTarget().getEnd() == 5));
 				
+			}
 				// Make sure the alignments contain the alignment of
 				// saw and saw)
 				if (!saw) {
@@ -76,7 +77,7 @@ public class NemexAlignerTestEN {
 				}
 				else
 					logger.info("Saw successfully aligned");
-			}
+			
 
 		} catch (Exception e) {
 			logger.info("Could not align the JCas test pair");

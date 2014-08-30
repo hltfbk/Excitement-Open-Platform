@@ -104,7 +104,7 @@ public class NemexAligner implements AlignmentComponent {
 		String query = new String();
 
 		int index = 0;
-		int totalNoOfQueries = 0;
+		double totalNoOfQueries = 0;
 		logger.info("Creating queries from hypothesis");
 		for (int i = 0; i < hypothesis.length(); i++) {
 			for (int j = i + 1; j <= hypothesis.length(); j++) {
@@ -138,7 +138,7 @@ public class NemexAligner implements AlignmentComponent {
 		PrintWriter fw;
 		try {
 			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath, true));
-			fw.println("0 utf-8 EN " + totalNoOfQueries + " " + queryMap.size());
+			fw.println("0 utf-8 EN " + (int)totalNoOfQueries + " " + queryMap.size());
 			while (iter.hasNext()) {
 
 				Map.Entry<Integer, String> queryEntry = (Map.Entry<Integer, String>) iter
@@ -152,8 +152,8 @@ public class NemexAligner implements AlignmentComponent {
 				logger.info("Creating dictionary entry from hypothesis query");
 
 				List<String> entry = new ArrayList<String>();
-				entry.add(new String(idx + " " + value.size() + " " + queryText
-						+ " " + "NG:" + "1:" + value.size()));
+				entry.add(new String(idx + " " + Math.log(value.size()/totalNoOfQueries) + " " + queryText
+						+ " " + "NG:" + "1:" +Math.log(value.size()/totalNoOfQueries)));
 
 				logger.info("Adding entry to dictionary," + entry.get(0));
 
@@ -278,7 +278,7 @@ public class NemexAligner implements AlignmentComponent {
 			// in a Target instance.
 
 			// 1) prepare a Target instance.
-			if ((ntype.getBegin() >= tStart) && (ntype.getEnd() <= tEnd)) {
+			if ((ntype.getBegin() == tStart) && (ntype.getEnd() == tEnd)) {
 				Target tg = new Target(tView);
 				// 2) prepare a FSArray instance, put the target annotations in
 				// it.
@@ -305,7 +305,7 @@ public class NemexAligner implements AlignmentComponent {
 		}
 
 		for (NemexType ntype : JCasUtil.select(hView, NemexType.class)) {
-			if ((ntype.getBegin() >= tStart) && (ntype.getEnd() <= tEnd)) {
+			if ((ntype.getBegin() == tStart) && (ntype.getEnd() == tEnd)) {
 				Target tg = new Target(hView);
 				FSArray hAnnots = new FSArray(hView, 1);
 				hAnnots.set(0, ntype);
