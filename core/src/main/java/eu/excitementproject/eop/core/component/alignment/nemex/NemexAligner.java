@@ -154,13 +154,16 @@ public class NemexAligner implements AlignmentComponent {
 
 				logger.info("Creating dictionary entry from hypothesis query");
 
-				List<String> entry = new ArrayList<String>();
-				entry.add(new String(idx + " " + Math.log(value.size()/totalNoOfQueries) + " " + queryText
-						+ " " + "NG:" + "1:" +Math.log(value.size()/totalNoOfQueries)));
+				List<String> values = new ArrayList<String>();
+				values.add(queryText);
+				
+				String entry = new String();
+				entry = new String(idx + " " + Math.log(value.size()/totalNoOfQueries) + " " + queryText
+						+ " " + "NG:" + "1:" +Math.log(value.size()/totalNoOfQueries));
 
-				logger.info("Adding entry to dictionary," + entry.get(0));
+				logger.info("Adding entry to dictionary," + entry);
 
-				fw.println(entry.get(0));
+				fw.println(entry);
 				// NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath)
 				// .getGazetteer().addNewEntry(entry.get(0));
 				logger.info("Finished adding entry to dictionary");
@@ -171,7 +174,7 @@ public class NemexAligner implements AlignmentComponent {
 					int start = hQuery.getStartOffset();
 					int end = hQuery.getEndOffset();
 					logger.info("Adding NemexType annotation on hypothesis query");
-					addNemexAnnotation(hypoView, entry, start, end);
+					addNemexAnnotation(hypoView, values, start, end);
 					logger.info("Finished adding NemexType annotation on hypothesis query");
 				}
 
