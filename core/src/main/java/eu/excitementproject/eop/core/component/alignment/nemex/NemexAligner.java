@@ -137,8 +137,11 @@ public class NemexAligner implements AlignmentComponent {
 
 		PrintWriter fw;
 		try {
-			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath, true));
+			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath));
 			fw.println("0 utf-8 EN " + (int)totalNoOfQueries + " " + queryMap.size());
+			fw.close();
+			
+			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath, true));
 			while (iter.hasNext()) {
 
 				Map.Entry<Integer, String> queryEntry = (Map.Entry<Integer, String>) iter
