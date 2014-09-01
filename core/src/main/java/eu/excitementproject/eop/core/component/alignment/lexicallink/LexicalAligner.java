@@ -2,7 +2,9 @@ package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -73,6 +75,7 @@ public class LexicalAligner implements AlignmentComponent {
 	private static final Logger logger = Logger.getLogger(LexicalAligner.class);
 	private static final HashMap<String, String> linkInfoToDomainLevel;
 	private static final HashMap<String, String> linkInfoToInferenceLevel;
+	private static final HashMap<String, String> linkInfoToDirectionality;
 	
 	// Static Initializer
 	static {
@@ -105,42 +108,72 @@ public class LexicalAligner implements AlignmentComponent {
 		
 		// TODO: RedisBasedWikipediaLexicalResource returns a WikiRuleInfo 
 		// that doesn't contain the extraction type 
-		linkInfoToInferenceLevel.put("Wikipedia_Redirect", "LOCAL_ENTAILMENT_BIDIRECTIONAL");
+		linkInfoToInferenceLevel.put("Wikipedia_Redirect", "LOCAL_ENTAILMENT");
 		
-		linkInfoToInferenceLevel.put("WORDNET__SYNONYM", "LOCAL_ENTAILMENT_BIDIRECTIONAL");
-		linkInfoToInferenceLevel.put("WORDNET__DERIVATIONALLY_RELATED", "LOCAL_ENTAILMENT_BIDIRECTIONAL");
-		linkInfoToDomainLevel.put("CatVar__local-entailment", "LOCAL_ENTAILMENT_BIDIRECTIONAL");
+		linkInfoToInferenceLevel.put("WORDNET__SYNONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__DERIVATIONALLY_RELATED", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("CatVar__local-entailment", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wordnet__ENTAILMENT", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wikipedia_BeComp", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wikipedia_Parenthesis", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wikipedia_Category", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__HYPERNYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__INSTANCE_HYPERNYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("VerbOcean__STRONGER_THAN", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__HYPONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__INSTANCE_HYPONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__TROPONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__MEMBER_MERONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__PART_MERONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__SUBSTANCE_MERONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__MEMBER_HOLONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__PART_HOLONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__SUBSTANCE_HOLONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__CAUSE", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("VerbOcean__HAPPENS_BEFORE", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("GEO__local-entailment", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__SIMILAR_TO", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("WORDNET__VERB_GROUP", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("VerbOcean__SIMILAR", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("Wikipedia_AllNouns", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("Wikipedia_Link", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("distsim-lin-proximity__local-entailment", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("distsim-lin-dependency__local-entailment", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("distsim-bap__local-entailment", "LOCAL_SIMILARITY");
 		
-		linkInfoToInferenceLevel.put("Wordnet__ENTAILMENT", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToInferenceLevel.put("Wikipedia_BeComp", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToInferenceLevel.put("Wikipedia_Parenthesis", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToInferenceLevel.put("Wikipedia_Category", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		
-		linkInfoToDomainLevel.put("WORDNET__HYPERNYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__INSTANCE_HYPERNYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("VerbOcean__STRONGER_THAN", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__HYPONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__INSTANCE_HYPONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__TROPONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__MEMBER_MERONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__PART_MERONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__SUBSTANCE_MERONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__MEMBER_HOLONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__PART_HOLONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__SUBSTANCE_HOLONYM", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__CAUSE", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("VerbOcean__HAPPENS_BEFORE", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		linkInfoToDomainLevel.put("GEO__local-entailment", "LOCAL_ENTAILMENT_DIRECTIONAL");
-		
-		linkInfoToDomainLevel.put("WORDNET__SIMILAR_TO", "LOCAL_SIMILARITY_BIDIRECTIONAL");
-		linkInfoToDomainLevel.put("WORDNET__VERB_GROUP", "LOCAL_SIMILARITY_BIDIRECTIONAL");
-		linkInfoToDomainLevel.put("VerbOcean__SIMILAR", "LOCAL_SIMILARITY_BIDIRECTIONAL");
-		linkInfoToInferenceLevel.put("Wikipedia_AllNouns", "LOCAL_SIMILARITY_BIDIRECTIONAL");
-		linkInfoToInferenceLevel.put("Wikipedia_Link", "LOCAL_SIMILARITY_BIDIRECTIONAL");
-		linkInfoToInferenceLevel.put("distsim-lin-proximity__local-entailment", "LOCAL_SIMILARITY_BIDIRECTIONAL");
-		linkInfoToInferenceLevel.put("distsim-lin-dependency__local-entailment", "LOCAL_SIMILARITY_BIDIRECTIONAL");
-		
-		linkInfoToInferenceLevel.put("distsim-bap__local-entailment", "LOCAL_SIMILARITY_DIRECTIONAL");
+		// Define the specific relations to directionality table
+		linkInfoToDirectionality = new HashMap<String, String>();
+		linkInfoToDirectionality.put("Wikipedia_Redirect", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SYNONYM", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__DERIVATIONALLY_RELATED", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("CatVar__local-entailment", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("Wordnet__ENTAILMENT", "DIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_BeComp", "DIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_Parenthesis", "DIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_Category", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__HYPERNYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__INSTANCE_HYPERNYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("VerbOcean__STRONGER_THAN", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__HYPONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__INSTANCE_HYPONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__TROPONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__MEMBER_MERONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__PART_MERONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SUBSTANCE_MERONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__MEMBER_HOLONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__PART_HOLONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SUBSTANCE_HOLONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__CAUSE", "DIRECTIONAL");
+		linkInfoToDirectionality.put("VerbOcean__HAPPENS_BEFORE", "DIRECTIONAL");
+		linkInfoToDirectionality.put("GEO__local-entailment", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SIMILAR_TO", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__VERB_GROUP", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("VerbOcean__SIMILAR", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_AllNouns", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_Link", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("distsim-lin-proximity__local-entailment", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("distsim-lin-dependency__local-entailment", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("distsim-bap__local-entailment", "DIRECTIONAL");
 	}
 	
 	// Public Methods
@@ -571,18 +604,22 @@ public class LexicalAligner implements AlignmentComponent {
 		link.setLinkInfo(linkInfo);
 		
 		// Set the group label
-		String domainLevel = "", inferenceLevel = "";
+		List<String> labels = new ArrayList<String>();
 		String relationType = resourceName + "__" + linkInfo; 
 		
 		if (linkInfoToDomainLevel.containsKey(relationType)) {
-			domainLevel = linkInfoToDomainLevel.get(relationType);
+			labels.add(linkInfoToDomainLevel.get(relationType));
 		}
 		
 		if (linkInfoToInferenceLevel.containsKey(relationType)) {
-			inferenceLevel = linkInfoToInferenceLevel.get(relationType);
+			labels.add(linkInfoToInferenceLevel.get(relationType));
 		}
 		
-		link.setGroupLabel(getGroupLabel(aJCas, domainLevel, inferenceLevel));
+		if (linkInfoToDirectionality.containsKey(relationType)) {
+			labels.add(linkInfoToDirectionality.get(relationType));
+		}
+		
+		link.setGroupLabel(createStringList(aJCas, labels));
 		
 		// Mark begin and end according to the hypothesis target
 		link.setBegin(hypoTarget.getBegin()); 
@@ -591,35 +628,6 @@ public class LexicalAligner implements AlignmentComponent {
 		// Add to index 
 		link.addToIndexes(); 
 	}
-	
-	/**
-	 * Creates a {@link StringList} containing the domain level and 
-	 * inference level labels.
-	 * @param aJCas
-	 * @param domainLevel
-	 * @param inferenceLevel
-	 * @return
-	 */
-	public static StringList getGroupLabel(JCas aJCas, String domainLevel, 
-			String inferenceLevel) {
-        
-		// Empty group label
-		if (domainLevel.isEmpty()) {
-			return new EmptyStringList(aJCas);
-		}
-
-		// Non empty group label
-		NonEmptyStringList head = new NonEmptyStringList(aJCas);
-		NonEmptyStringList list = head;
-		head.setHead(domainLevel);
-		head.setTail(new NonEmptyStringList(aJCas));
-        head = (NonEmptyStringList) head.getTail();
-        head.setHead(inferenceLevel);
-        head.setTail(new NonEmptyStringList(aJCas));
-        head.setTail(new EmptyStringList(aJCas));
-                    
-        return list;
-    }
 	
 	/**
 	 * Receives a rule and return the type of the rule,
@@ -769,4 +777,32 @@ public class LexicalAligner implements AlignmentComponent {
 				((Math.abs(firstRule.getConfidence() - 
 						secondRule.getConfidence()) <= 0.000001)));
 	}
+	
+	/**
+	 * Create a StringList containing the strings in the collection
+	 * @param aJCas
+	 * @param aCollection
+	 * @return
+	 */
+	public static StringList createStringList(JCas aJCas, Collection<String> aCollection) {
+ 		if (aCollection.size() == 0) {
+ 			return new EmptyStringList(aJCas);
+ 		}
+
+ 		NonEmptyStringList head = new NonEmptyStringList(aJCas);
+ 		NonEmptyStringList list = head;
+ 		Iterator<String> i = aCollection.iterator();
+ 		while (i.hasNext()) {
+ 			head.setHead(i.next());
+ 			if (i.hasNext()) {
+ 				head.setTail(new NonEmptyStringList(aJCas));
+ 				head = (NonEmptyStringList) head.getTail();
+ 			}
+ 			else {
+ 				head.setTail(new EmptyStringList(aJCas));
+ 			}
+ 		}
+
+ 		return list;
+ 	}
 }
