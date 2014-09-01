@@ -23,49 +23,51 @@ public class NemexAlignerTestEN {
 
 			logger = Logger.getLogger(NemexAligner.class.getName());
 
-			// prepare a JCas
-			JCas aJCas1 = null;
+			// prepare JCas
+			
 			OpenNLPTaggerEN tokenizer = null;
-
 			tokenizer = new OpenNLPTaggerEN();
-			aJCas1 = tokenizer.generateSingleTHPairCAS("I saw a car.",
+			
+			JCas aJCas1 = tokenizer.generateSingleTHPairCAS("I saw a car.",
 					"I saw an automobile.");
-
-			JCas aJCas2 = tokenizer
-					.generateSingleTHPairCAS(
-							"Judge Drew served as Justice until Kennon returned to claim his seat in 1945.",
-							"Kennon served as Justice.");
-
-			JCas aJCas3 = tokenizer
-					.generateSingleTHPairCAS(
-							"Ms. Minton left Australia in 1961 to pursue her studies in London.",
-							"Ms. Minton was born in Australia.");
-
-			JCas aJCas4 = tokenizer
-					.generateSingleTHPairCAS(
-							"Robinson's garden style can be seen today at Gravetye Manor, West Sussex, England, though it is more manicured than it was in Robinson's time.",
-							"Gravetye Manor is located in West Sussex.");
 
 			Logger.getRootLogger().setLevel(Level.INFO); // main log setting:
 															// set as DEBUG to
 															// see what's going
 															// & debug.
 
-			/*logger.info("Starting alignment for test JCas pair 1");
+			logger.info("Starting alignment for test JCas pair 1");
 			alignAndPrint(aJCas1);
 			logger.info("Finished alignment of test JCas pair 1");
+			
+			/*JCas aJCas2 = tokenizer
+					.generateSingleTHPairCAS(
+							"Judge Drew served as Justice until Kennon returned to claim his seat in 1945.",
+							"Kennon served as Justice.");
 
 			logger.info("Starting alignment for test JCas pair 2");
 			alignAndPrint(aJCas2);
 			logger.info("Finished alignment of test JCas pair 2");
 
+
+			JCas aJCas3 = tokenizer
+					.generateSingleTHPairCAS(
+							"Ms. Minton left Australia in 1961 to pursue her studies in London.",
+							"Ms. Minton was born in Australia.");
+							
 			logger.info("Starting alignment for test JCas pair 3");
 			alignAndPrint(aJCas3);
-			logger.info("Finished alignment of test JCas pair 3");*/
+			logger.info("Finished alignment of test JCas pair 3");
 
+			
+			JCas aJCas4 = tokenizer
+					.generateSingleTHPairCAS(
+							"Robinson's garden style can be seen today at Gravetye Manor, West Sussex, England, though it is more manicured than it was in Robinson's time.",
+							"Gravetye Manor is located in West Sussex.");
+			
 			logger.info("Starting alignment for test JCas pair 4");
 			alignAndPrint(aJCas4);
-			logger.info("Finished alignment of test JCas pair 4");
+			logger.info("Finished alignment of test JCas pair 4");*/
 
 		} catch (Exception e) {
 			logger.info("Could not align the JCas test pair");
@@ -79,7 +81,7 @@ public class NemexAlignerTestEN {
 			logger.info("Initialize the Nemex Aligner");
 
 			aligner = new NemexAligner(
-					"src/test/resources/gazetteer/nemexAligner.txt", "#", false,
+					"src/test/resources/gazetteer/nemexAligner.txt", "#", true,
 					3, false, "DICE_SIMILARITY_MEASURE", 0.8);
 			logger.info("Initialization finished");
 
