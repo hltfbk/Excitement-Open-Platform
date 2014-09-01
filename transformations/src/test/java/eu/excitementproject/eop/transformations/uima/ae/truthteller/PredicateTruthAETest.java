@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.transformations.uima.ae.truthteller;
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -20,6 +21,7 @@ import eu.excitement.type.predicatetruth.PredicateTruthNegative;
 import eu.excitement.type.predicatetruth.PredicateTruthPositive;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 import eu.excitementproject.eop.transformations.biu.en.predicatetruth.TruthTellerAnnotatorAE;
 import eu.excitementproject.eop.transformations.uima.BIUFullLAPWithTruthTellerConfigured;
@@ -33,7 +35,9 @@ import eu.excitementproject.eop.transformations.uima.BIUFullLAPWithTruthTellerCo
 public class PredicateTruthAETest {
 	
 	@BeforeClass
-	public static void beforeClass() throws LAPException, CASException {
+	public static void beforeClass() throws LAPException, CASException, IOException {
+		// Run test only under BIU environment
+		BiuTestUtils.assumeBiuEnvironment();
 		// create a lap with truth teller annotator
 		lap = new BIUFullLAPWithTruthTellerConfigured();
 		// annotations for reference text - all tests will examine this result 
