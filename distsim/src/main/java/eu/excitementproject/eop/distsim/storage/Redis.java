@@ -31,17 +31,21 @@ public class Redis implements PersistenceDevice {
 
 	private static Logger logger = Logger.getLogger(Redis.class);
 	
-	public Redis(String dbFile) {
+	public Redis(String dbFile, boolean bVM) {
 		this.dbFile = dbFile;
 		this.jedis = null;
 		this.currID = -1;
-		
+		this.bVM = bVM;
 	}
 	
 	public Redis(ConfigurationParams params) throws ConfigurationException {
 		this.dbFile = params.get(Configuration.REDIS_FILE);
 		this.jedis = null;
 		this.currID = -1;
+		this.bVM = false;
+		try {
+			bVM = params.getBoolean(eu.excitementproject.eop.redis.Configuration.REDIS_VM);
+		} catch (ConfigurationException e) {}
 	}
 	
 	/* (non-Javadoc)
@@ -50,7 +54,7 @@ public class Redis implements PersistenceDevice {
 	@Override
 	public void open() throws IOException {
 		try {
-			int port = BasicRedisRunner.getInstance().run(dbFile);
+			int port = BasicRedisRunner.getInstance().run(dbFile,bVM);
 			JedisPoolConfig config = new JedisPoolConfig();
 			JedisPool pool = new JedisPool(config, "localhost",port,10000);
 			jedis = pool.getResource();
@@ -140,6 +144,6 @@ public class Redis implements PersistenceDevice {
 	
 	protected Jedis jedis;
 	protected int currID;
-	
+	protected boolean bVM;
 	protected final String dbFile;
 }

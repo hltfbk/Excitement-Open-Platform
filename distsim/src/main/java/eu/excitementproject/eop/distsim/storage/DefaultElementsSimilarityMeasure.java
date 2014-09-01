@@ -49,6 +49,11 @@ public class DefaultElementsSimilarityMeasure extends DefaultSimilarityMeasure
 		return rightElement;
 	}
 	
+	@Override
+	public String toString() {
+		return leftElement.getData() + "->" + rightElement.getData() + ": " + score;
+	}
+	
 	protected final Element leftElement;
 	protected final Element rightElement;
 

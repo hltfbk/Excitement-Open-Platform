@@ -89,12 +89,12 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 		
 	}
 
-	public DefaultSimilarityStorage(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName) throws ElementTypeException, RedisRunException, FileNotFoundException {
+	public DefaultSimilarityStorage(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName, boolean bVM) throws ElementTypeException, RedisRunException, FileNotFoundException {
 		//this.l2rRedisFile = l2rRedisFile;
 		//this.r2lRedisFile= r2lRedisFile;
-		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(l2rRedisFile);
+		this.leftElemntSimilarities = new RedisBasedStringListBasicMap(l2rRedisFile, bVM);
 		if (r2lRedisFile != null) {
-			this.rightElemntSimilarities = new RedisBasedStringListBasicMap(r2lRedisFile);
+			this.rightElemntSimilarities = new RedisBasedStringListBasicMap(r2lRedisFile, bVM);
 		} else
 			this.rightElemntSimilarities = null;
 		this.resourceName = resourceName;
@@ -154,15 +154,20 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 	public DefaultSimilarityStorage(ConfigurationParams params) throws ConfigurationException, ElementTypeException, FileNotFoundException, RedisRunException {
 		String redisDir = null;
 		try {
-			redisDir = params.get(Configuration.REDIS_BIN_DIR);
+			redisDir = params.get(eu.excitementproject.eop.redis.Configuration.REDIS_BIN_DIR);
+		} catch (ConfigurationException e) {}
+		
+		boolean bVM = false;
+		try {
+			bVM = params.getBoolean(eu.excitementproject.eop.redis.Configuration.REDIS_VM);
 		} catch (ConfigurationException e) {}
 		
 		String l2rRedisFile = params.get(Configuration.L2R_REDIS_DB_FILE);
-		this.leftElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(l2rRedisFile) : new RedisBasedStringListBasicMap(l2rRedisFile,redisDir));
+		this.leftElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(l2rRedisFile, bVM) : new RedisBasedStringListBasicMap(l2rRedisFile,redisDir, bVM));
 		try {
 			//this.
 			String r2lRedisFile= params.get(Configuration.R2L_REDIS_DB_FILE);
-			this.rightElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(r2lRedisFile) : new RedisBasedStringListBasicMap(r2lRedisFile,redisDir));
+			this.rightElemntSimilarities = (redisDir == null ? new RedisBasedStringListBasicMap(r2lRedisFile, bVM) : new RedisBasedStringListBasicMap(r2lRedisFile,redisDir, bVM));
 		} catch (ConfigurationException e) {
 			//this.l2rRedisFile = null;
 			this.rightElemntSimilarities = null;
@@ -320,7 +325,7 @@ public class DefaultSimilarityStorage implements SimilarityStorage {
 			
 			if (element1Keys.size() > 1) {
 				SortUtil.sortSimilarityRules(tmp, true); 			
-				int i=0;
+				int i=1;
 				for (ElementsSimilarityMeasure similarityRule :  tmp) {
 					if (!filtered(filterType,filterVal,similarityRule.getSimilarityMeasure(),tmp.size(),i)) 
 						ret.add(new DefaultElementsSimilarityMeasure(similarityRule.getLeftElement(),similarityRule.getRightElement(),similarityRule.getSimilarityMeasure(),similarityRule.getAdditionalInfo()));

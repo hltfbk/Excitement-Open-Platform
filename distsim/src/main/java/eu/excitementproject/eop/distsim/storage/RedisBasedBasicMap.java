@@ -37,19 +37,28 @@ public class RedisBasedBasicMap<K extends Serializable, V extends Serializable> 
 	
 	private static final long serialVersionUID = 1L;
 	
-	public RedisBasedBasicMap(String dbFile) throws RedisRunException {
+	public RedisBasedBasicMap(String dbFile, boolean bVM) throws RedisRunException {
+		init(dbFile,bVM);
+	}
+
+	public RedisBasedBasicMap(ConfigurationParams params) throws ConfigurationException, RedisRunException {
+		boolean bVM = false;
+		try {
+			bVM = params.getBoolean(eu.excitementproject.eop.redis.Configuration.REDIS_VM);
+		} catch (ConfigurationException e) {}
+		init(params.get(Configuration.REDIS_FILE),bVM);
+	}
+
+	protected void init(String dbFile, boolean bVM) throws RedisRunException {
 		this.dbFile = dbFile;
-		int port = BasicRedisRunner.getInstance().run(dbFile);
+		int port = BasicRedisRunner.getInstance().run(dbFile,bVM);
 		JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost",port);
 		jedis = pool.getResource();
 		jedis.connect();
 		jedis.getClient().setTimeoutInfinite();
 	}
 
-	public RedisBasedBasicMap(ConfigurationParams params) throws ConfigurationException, RedisRunException {
-		this(params.get(Configuration.REDIS_FILE));
-	}
-
+	
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.ThinMap#put(java.lang.Object, java.lang.Object)
 	 */
@@ -112,6 +121,7 @@ public class RedisBasedBasicMap<K extends Serializable, V extends Serializable> 
 	}
 	
 	protected Jedis jedis;
-	protected final String dbFile;
+	protected String dbFile;
+	protected boolean bVM;
 
 }

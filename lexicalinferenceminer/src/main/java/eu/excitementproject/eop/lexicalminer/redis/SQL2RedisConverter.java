@@ -41,8 +41,8 @@ public class SQL2RedisConverter {
 		//Assumption: the classifiers are identified by 1...numOfClassifiers
 		int numOfClassifiers = Integer.parseInt(args[3]);
 		
-		int lPort = BasicRedisRunner.getInstance().run(args[1]);
-		int rPort = BasicRedisRunner.getInstance().run(args[2]);
+		int lPort = BasicRedisRunner.getInstance().run(args[1],false);
+		int rPort = BasicRedisRunner.getInstance().run(args[2],false);
 		
 		JedisPool lpool = new JedisPool(new JedisPoolConfig(), "localhost",lPort,10000);
 		Jedis lJedis = lpool.getResource();

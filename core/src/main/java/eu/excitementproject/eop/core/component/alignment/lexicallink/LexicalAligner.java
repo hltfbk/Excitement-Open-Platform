@@ -25,13 +25,14 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanRuleInfo;
-import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRuleInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
-
 
 /**
  * Produces alignment links between the text and the hypothesis,
@@ -40,7 +41,8 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * t->h or h->t, then an alignment link between t and h will be 
  * created.
  * <P>
- * Usage: align a sentence pair by calling {@link #align(String, String)} method.
+ * Usage: Align a sentence pair by calling {@link #annotate(JCas)} method.
+ * Configure the aligner using the LexicalAligner.xml configuration file. 
  * When the {@linkplain Aligner} object is no longer to be used, the
  * {@link #cleanUp()} method should be called.
  * 
@@ -55,6 +57,8 @@ public class LexicalAligner implements AlignmentComponent {
 	private static final String MAX_PHRASE_KEY = "maxPhraseLength";
 	private static final String WORDNET = "wordnet";
 	private static final String USE_LEMMA_PARAM = "useLemma";
+	private static final String LEFT_SIDE_POS_PARAM = "leftSidePOS";
+	private static final String RIGHT_SIDE_POS_PARAM = "rightSidePOS";
 	private static final String VERSION_PARAM = "version";
 	
 	// Private Members
@@ -135,11 +139,13 @@ public class LexicalAligner implements AlignmentComponent {
 								
 								// Get the rules textPhrase -> hypoPhrase
 								List<LexicalRule<? extends RuleInfo>> ruleFromLeft = 
-										getRules(resource, textPhrase, hypoPhrase);
+										getRules(resource, textPhrase, hypoPhrase,
+												resourceInfo.getLeftSidePOS(), resourceInfo.getRightSidePOS());
 								
 								// Get the rules hypoPhrase -> textPhrase
 								List<LexicalRule<? extends RuleInfo>> ruleFromRight = 
-										getRules(resource, hypoPhrase, textPhrase);
+										getRules(resource, hypoPhrase, textPhrase,
+												resourceInfo.getLeftSidePOS(), resourceInfo.getRightSidePOS());
 								
 								// Create the alignment links for the rules
 								createAlignmentLinks(
@@ -241,11 +247,36 @@ public class LexicalAligner implements AlignmentComponent {
 			if (lexicalResource != null) {
 				lexicalResources.add(lexicalResource);
 				
+				PartOfSpeech leftSidePOS = null, rightSidePOS = null;
+				
 				// Add the information about this resource
+				
+				// Get the right and left side POS, in case it's mentioned
+				if (resourceParams.keySet().contains(LEFT_SIDE_POS_PARAM)) {
+					try {
+						leftSidePOS = new ByCanonicalPartOfSpeech(resourceParams.getString(LEFT_SIDE_POS_PARAM));
+					} catch (UnsupportedPosTagStringException e) {
+						logger.warn("Could not load POS for left side: " + 
+								resourceParams.getString(LEFT_SIDE_POS_PARAM) + 
+								". Alignment links of all POS will be retreived.");
+					}
+				}
+				
+				if (resourceParams.keySet().contains(RIGHT_SIDE_POS_PARAM)) {
+					try {
+						rightSidePOS = new ByCanonicalPartOfSpeech(resourceParams.getString(RIGHT_SIDE_POS_PARAM));
+					} catch (UnsupportedPosTagStringException e) {
+						logger.warn("Could not load POS for right side: " + 
+								resourceParams.getString(RIGHT_SIDE_POS_PARAM) + 
+								". Alignment links of all POS will be retreived.");
+					}
+				}
+				
 				lexicalResourcesInformation.put(lexicalResource.getClass().getName(), 
 						new LexicalResourceInformation(
 								resourceParams.getString(VERSION_PARAM), 
-								resourceParams.getBoolean(USE_LEMMA_PARAM)));
+								resourceParams.getBoolean(USE_LEMMA_PARAM),
+								leftSidePOS, rightSidePOS));
 			}
 		}
 	}
@@ -301,12 +332,15 @@ public class LexicalAligner implements AlignmentComponent {
 	 * @param resource The lexical resource to use
 	 * @param leftSide The phrase that will be looked for as lhs of a rule
 	 * @param rightSide The phrase that will be looked for as rhs of a rule
+	 * @param partOfSpeech2 
+	 * @param partOfSpeech 
 	 * @return The list of rules leftSide -> rightSide
 	 * @throws LexicalResourceException 
 	 */
 	private List<LexicalRule<? extends RuleInfo>> 
 						getRules(LexicalResource<? extends RuleInfo> resource,
-								String leftSide, String rightSide) 
+								String leftSide, String rightSide, 
+								PartOfSpeech leftSidePOS, PartOfSpeech rightSidePOS) 
 								throws LexicalResourceException {
 
 		List<LexicalRule<? extends RuleInfo>> rules = 
@@ -321,7 +355,7 @@ public class LexicalAligner implements AlignmentComponent {
 			if (resource.getClass().getName().toLowerCase().contains(WORDNET)) {
 				
 				for (LexicalRule<? extends RuleInfo> rule : 
-						resource.getRules(leftSide, null, rightSide, null)) {
+						resource.getRules(leftSide, leftSidePOS, rightSide, rightSidePOS)) {
 					
 					WordnetRuleInfo ruleInfo = (WordnetRuleInfo)rule.getInfo();
 					
@@ -336,7 +370,7 @@ public class LexicalAligner implements AlignmentComponent {
 				
 				// Get rules from t to h
 				for (LexicalRule<? extends RuleInfo> rule : 
-					resource.getRules(leftSide, null, rightSide, null)) {
+					resource.getRules(leftSide, leftSidePOS, rightSide, rightSidePOS)) {
 					
 					addRuleToList(rules, rule);
 				}
@@ -491,11 +525,6 @@ public class LexicalAligner implements AlignmentComponent {
 			type = ((WordnetRuleInfo)rule.getInfo()).getTypedRelation().name();
 		}
 		
-		// Wikipedia
-		else if (rule.getResourceName().equals("Wikipedia")) {
-			type = ((WikiRuleInfo)rule.getInfo()).getBestExtractionType().name();
-		}
-		
 		// VerbOcean
 		else if (rule.getResourceName().equals("VerbOcean")) {
 			type = ((VerbOceanRuleInfo)rule.getInfo()).getRelationType().name();
@@ -570,8 +599,8 @@ public class LexicalAligner implements AlignmentComponent {
 			for (int rightRuleIndex = rulesFromRight.size() - 1; 
 					rightRuleIndex >= 0; --rightRuleIndex) {
 				
-				if (getLinkInfo(rulesFromLeft.get(leftRuleIndex)).
-						equals(getLinkInfo(rulesFromRight.get(rightRuleIndex)))) {
+				if (areOppositeLinks(rulesFromLeft.get(leftRuleIndex), 
+									rulesFromRight.get(rightRuleIndex))) {
 					
 					// Remove these rules from the list
 					LexicalRule<? extends RuleInfo> rightRule = 
@@ -605,5 +634,22 @@ public class LexicalAligner implements AlignmentComponent {
 					rule.getResourceName(), lexicalResourceVersion, 
 					rule.getConfidence(), Direction.HtoT, getLinkInfo(rule));
 		}
+	}
+
+	/**
+	 * Returns true if these two rules are opposite, meaning that:
+	 * the first rule is w1->w2, with confidence c and relation r
+	 * the second rule is w2->w1, with confidence c and relation r
+	 * @param firstRule The first rule
+	 * @param secondRule The second rule
+	 * @return Whether the rules are opposite
+	 */
+	private boolean areOppositeLinks(
+			LexicalRule<? extends RuleInfo> firstRule, 
+			LexicalRule<? extends RuleInfo> secondRule) {
+		
+		return ((getLinkInfo(firstRule).equals(getLinkInfo(secondRule))) &&
+				((Math.abs(firstRule.getConfidence() - 
+						secondRule.getConfidence()) <= 0.000001)));
 	}
 }

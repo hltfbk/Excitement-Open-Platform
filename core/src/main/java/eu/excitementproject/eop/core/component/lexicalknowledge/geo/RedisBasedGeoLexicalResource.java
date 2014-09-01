@@ -55,11 +55,16 @@ public class RedisBasedGeoLexicalResource extends LexicalResourceNothingToClose<
 			portRight = params.getInt(Configuration.R2L_REDIS_PORT);
 		} catch (ConfigurationException e) {
 		}
-		
+
+		boolean bVM = false;
+		try {
+			bVM = params.getBoolean(Configuration.REDIS_VM);
+		} catch (ConfigurationException e) {
+		}
 		if (hostLeft == null || portLeft == -1 || hostRight == null || portRight == -1) {
 			try {
-				leftRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE)) : new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE),redisDir));
-				rightRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE)) : new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE), redisDir));
+				leftRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE),bVM) : new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE),redisDir,bVM));
+				rightRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE),bVM) : new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE), redisDir,bVM));
 			} catch (Exception e) {
 				throw new RedisRunException(e);
 			}
@@ -76,8 +81,8 @@ public class RedisBasedGeoLexicalResource extends LexicalResourceNothingToClose<
 
 	
 	public RedisBasedGeoLexicalResource(String leftRedisDBFile, String rightRedisDBFile) throws UnsupportedPosTagStringException, FileNotFoundException, RedisRunException, LexicalResourceException{
-		leftRules = new RedisBasedStringListBasicMap(leftRedisDBFile);
-		rightRules = new RedisBasedStringListBasicMap(rightRedisDBFile);
+		leftRules = new RedisBasedStringListBasicMap(leftRedisDBFile, false);
+		rightRules = new RedisBasedStringListBasicMap(rightRedisDBFile,false);
 		try 										{ NOUN = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);	} 
 		catch (UnsupportedPosTagStringException e) 	{ throw new LexicalResourceException("Bug: couldn't construct a new UnspecifiedPartOfSpeech(SimplerCanonicalPosTag.NOUN)",e);		}		
 	}

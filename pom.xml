@@ -35,6 +35,96 @@
 		<module>globalgraphoptimizer</module>
 		<module>lexicalinferenceminer</module>
 	</modules>
+
+        <profiles>
+           
+           <!-- The following profile let Jenkins test BIUTEE by running it from the BIUTEE environment.
+
+                1) it downalods the last version of the BIUTEE environment from artifactory and unzips it into $dependency.output.dir
+                2) it runs the BIUTEE unit tests from the BIUTEE environment: $dependency.output.dir/biutee/workdir/
+
+                usage: mvn test -Pjenkins_biutee_test -Ddependency.output.dir=the_directory_where_the_biutee_environment_has_been_saved
+                e.g. mvn test -Pjenkins_biutee_test -Ddependency.output.dir=~/eop-resources-X.Y.Z/
+
+                requirements: runeasyfirst.sh should be available on port 8080 and tha global variable DATA
+                should be set so that it points to biutee/data/
+
+           -->
+	   <profile>
+	     <id>jenkins_biutee_test</id>
+	     <build>
+	       <plugins>
+                 <plugin>
+	           <artifactId>maven-surefire-plugin</artifactId>
+		   <configuration>
+                     <workingDirectory>${dependency.output.dir}/biutee/workdir/</workingDirectory>
+                      <includes>
+                        <include>**/biutee/*.java</include>
+                        <include>**/biu/**/*.java</include>
+                      </includes>
+		   </configuration>
+	         </plugin> 
+                 <plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-dependency-plugin</artifactId>
+		    <executions>
+			<execution>
+                           <inherited>false</inherited>
+			   <id>unpack</id>
+			   <phase>test</phase>
+			   <goals>
+			      <goal>unpack</goal>
+			   </goals>
+			   <configuration>
+			      <artifactItems>
+				 <artifactItem>
+				    <groupId>eu.excitementproject</groupId>
+				    <artifactId>biutee_env</artifactId>
+				    <version>0.0.0</version>
+                                    <overWrite>true</overWrite>
+				    <type>zip</type>
+                                    <includes>**/*</includes>
+				 </artifactItem>
+			      </artifactItems>
+			      <outputDirectory>${dependency.output.dir}</outputDirectory>
+			   </configuration>
+			</execution>
+		    </executions>
+		</plugin>
+	       </plugins>
+	     </build>
+	   </profile>
+
+           <!-- The following profile let developers test BIUTEE from the BIUTEE environment.
+
+                usage: mvn test -Pbiutee_test -Dsurefire.working.dir=the_biutee_workdir
+                e.g. mvn test -Pbiutee_test -Dsurefire.working.dir=~/eop-resources-X.Y.Z/BIUTEE_Environment/workdir/
+
+                requirements: runeasyfirst.sh should be available on port 8080 and tha global variable DATA
+                should be set so that it points to biutee/data/. Then the BIUTEE environemnt must already be downaloded and installed. 
+           -->
+           <profile>
+	     <id>biutee_test</id>
+	     <build>
+	       <plugins>
+                 <plugin>
+	           <artifactId>maven-surefire-plugin</artifactId>
+		   <configuration>
+                     <workingDirectory>${surefire.working.dir}</workingDirectory>
+                      <includes>
+                        <include>**/biutee/*.java</include>
+                        <include>**/biu/**/*.java</include>
+                      </includes>
+		   </configuration>
+	         </plugin> 
+	       </plugins>
+	     </build>
+	   </profile>
+
+	   <!-- Other profiles go here .. -->
+
+	</profiles>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -640,5 +730,7 @@
 	</reporting>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <surefire.working.dir>${project.build.directory}/BIUTEE_Environment/biutee/workdir/</surefire.working.dir>
+                <dependency.output.dir>${project.build.directory}/BIUTEE_Environment/</dependency.output.dir>
 	</properties>
 </project>

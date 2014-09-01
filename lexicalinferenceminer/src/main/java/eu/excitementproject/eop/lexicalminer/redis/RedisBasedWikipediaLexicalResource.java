@@ -178,10 +178,16 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 		} catch (ConfigurationException e) {
 		}
 		
+		boolean bVM = false;
+		try {
+			bVM = params.getBoolean(Configuration.REDIS_VM);
+		} catch (ConfigurationException e) {
+		}
+		
 		if (hostLeft == null || portLeft == -1 || hostRight == null || portRight == -1) {
 			try {
-				leftRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE)) : new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE),redisDir));
-				rightRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE)) : new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE), redisDir));
+				leftRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE),bVM) : new RedisBasedStringListBasicMap(params.get(Configuration.L2R_REDIS_DB_FILE),redisDir,bVM));
+				rightRules = (redisDir == null ? new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE),bVM) : new RedisBasedStringListBasicMap(params.get(Configuration.R2L_REDIS_DB_FILE), redisDir,bVM));
 			} catch (Exception e) {
 				throw new RedisRunException(e);
 			}
@@ -195,13 +201,13 @@ public class RedisBasedWikipediaLexicalResource implements LexicalResource<WikiR
 	}
 
 	
-	public RedisBasedWikipediaLexicalResource(Classifier classifier, String leftRedisDBFile, String rightRedisDBFile) throws UnsupportedPosTagStringException, FileNotFoundException, RedisRunException{
-		this(classifier, DEFAULT_RULES_LIMIT, leftRedisDBFile, rightRedisDBFile);
+	public RedisBasedWikipediaLexicalResource(Classifier classifier, String leftRedisDBFile, String rightRedisDBFile, boolean bVM) throws UnsupportedPosTagStringException, FileNotFoundException, RedisRunException{
+		this(classifier, DEFAULT_RULES_LIMIT, leftRedisDBFile, rightRedisDBFile, bVM);
 	}
 
-	public RedisBasedWikipediaLexicalResource(Classifier classifier, int limitOnRetrievedRules, String leftRedisDBFile, String rightRedisDBFile) throws UnsupportedPosTagStringException, FileNotFoundException, RedisRunException {
-		leftRules = new RedisBasedStringListBasicMap(leftRedisDBFile);
-		rightRules = new RedisBasedStringListBasicMap(rightRedisDBFile);
+	public RedisBasedWikipediaLexicalResource(Classifier classifier, int limitOnRetrievedRules, String leftRedisDBFile, String rightRedisDBFile, boolean bVM) throws UnsupportedPosTagStringException, FileNotFoundException, RedisRunException {
+		leftRules = new RedisBasedStringListBasicMap(leftRedisDBFile, bVM);
+		rightRules = new RedisBasedStringListBasicMap(rightRedisDBFile, bVM);
 		this.m_nounPOS = new eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech(CanonicalPosTag.N.name());
 		this.m_classifier = classifier;
 		this.m_limitOnRetrievedRules = limitOnRetrievedRules;

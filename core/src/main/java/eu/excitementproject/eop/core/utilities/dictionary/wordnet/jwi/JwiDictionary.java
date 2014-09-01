@@ -86,6 +86,24 @@ public class JwiDictionary implements Dictionary
 		return ret;
 	}
 
+	/**
+	 * Returns the number of synsets of given lemma and POS.
+	 * @param lemma
+	 * @param partOfSpeech
+	 * @return
+	 * @throws WordNetException
+	 * @author Ofer Bronstein
+	 * @since June 2014
+	 */
+	public int getNumberOfSynsets(String lemma, WordNetPartOfSpeech partOfSpeech)  throws WordNetException
+	{
+		IIndexWord idxWord = jwiRealDictionary.getIndexWord (lemma, JwiUtils.getJwiPartOfSpeec(partOfSpeech));
+		if (idxWord==null) {
+			return 0;
+		}
+		return idxWord.getWordIDs().size();
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see ac.biu.nlp.nlp.instruments.dictionary.wordnet.Dictionary#getSynsetsOf(java.lang.String, ac.biu.nlp.nlp.instruments.dictionary.wordnet.WordNetPartOfSpeech)
