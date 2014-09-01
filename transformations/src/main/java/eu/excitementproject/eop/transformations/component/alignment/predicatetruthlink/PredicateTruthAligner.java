@@ -3,12 +3,16 @@ package eu.excitementproject.eop.transformations.component.alignment.predicatetr
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.EmptyStringList;
 import org.apache.uima.jcas.cas.FSArray;
+import org.apache.uima.jcas.cas.NonEmptyStringList;
+import org.apache.uima.jcas.cas.StringList;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.uimafit.util.JCasUtil;
 
@@ -51,7 +55,12 @@ public class PredicateTruthAligner implements AlignmentComponent {
 	public static final String ALIGNEMNT_TYPE_AGREEING_NEGATIVE = "Agreeing_Negative_Predicate_Truth";
 	public static final String ALIGNEMNT_TYPE_DISAGREEING = "Disagreeing_Predicate_Truth";
 	public static final String ALIGNEMNT_TYPE_NON_MATCHING = "Non_Matching_Predicate_Truth";
-
+	//group labels
+	public static final String GROUP_LABEL_OPPOSITE_PREDICATE_TRUTH = "OPPOSITE_PREDICATE_TRUTH";
+	public static final String GROUP_LABEL_SAME_PREDICATE_TRUTH = "SAME_PREDICATE_TRUTH";
+	public static final String GROUP_LABEL_LOCAL_CONTRADICTION = "LOCAL_CONTRADICTION";
+	public static final String GROUP_LABEL_LOCAL_ENTAILMENT = "LOCAL_ENTAILMENT";
+	
 	//(currently) constant values used for alignment links
 	private static final double ALIGNER_CONFIDENCE = 1.0;
 	private static final Direction ALIGNER_DIRECTION = Direction.Bidirection;
@@ -76,12 +85,32 @@ public class PredicateTruthAligner implements AlignmentComponent {
 	 */
 	public PredicateTruthAligner(){
 		textView = null;
-		hypoView =  null;
+		hypoView =  null; 
 	}
 	
 	@Override
 	public void annotate(JCas aJCas) throws PairAnnotatorComponentException {
 		try {
+			// create possible group labels instances for this jcas
+			StringList localEntailment = createStringList(aJCas, new ArrayList<String>() {
+				private static final long serialVersionUID = 1L;
+
+			{
+			    add(GROUP_LABEL_SAME_PREDICATE_TRUTH);
+			    add(GROUP_LABEL_LOCAL_ENTAILMENT);
+			}});
+			
+			StringList localContradiction = createStringList(aJCas, new ArrayList<String>() {
+				private static final long serialVersionUID = 1L;
+
+			{
+			    add(GROUP_LABEL_OPPOSITE_PREDICATE_TRUTH);
+			    add(GROUP_LABEL_LOCAL_CONTRADICTION);
+			}});
+			
+			StringList emptyGroupLabel = new EmptyStringList(aJCas);
+ 
+
 			// Get the text and hypothesis views
 			textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 			hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
@@ -99,27 +128,27 @@ public class PredicateTruthAligner implements AlignmentComponent {
 			// add alignment links
 			// Agreeing Positive Predicate Truth
 			// PT+ <-> PT+
-			createPredicateTruthLinks(PredicateTruthPositive.class,PredicateTruthPositive.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_AGREEING_POSITIVE);
+			createPredicateTruthLinks(PredicateTruthPositive.class,PredicateTruthPositive.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_AGREEING_POSITIVE,localEntailment);
 			
 			// Agreeing Negative Predicate Truth
 			// PT- <-> PT-
-			createPredicateTruthLinks(PredicateTruthNegative.class,PredicateTruthNegative.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_AGREEING_NEGATIVE);
+			createPredicateTruthLinks(PredicateTruthNegative.class,PredicateTruthNegative.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_AGREEING_NEGATIVE,localEntailment);
 			
 			// Disagreeing Predicate Truth
 			// PT+ <-> PT-
-			createPredicateTruthLinks(PredicateTruthPositive.class,PredicateTruthNegative.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_DISAGREEING);
+			createPredicateTruthLinks(PredicateTruthPositive.class,PredicateTruthNegative.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_DISAGREEING,localContradiction);
 			// PT- <-> PT+
-			createPredicateTruthLinks(PredicateTruthNegative.class,PredicateTruthPositive.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_DISAGREEING);
+			createPredicateTruthLinks(PredicateTruthNegative.class,PredicateTruthPositive.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_DISAGREEING,localContradiction);
 			
 			// Non Matching Predicate Truth
 			// PT+ <-> PT?
-			createPredicateTruthLinks(PredicateTruthPositive.class,PredicateTruthUncertain.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING);
+			createPredicateTruthLinks(PredicateTruthPositive.class,PredicateTruthUncertain.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING,emptyGroupLabel);
 			// PT- <-> PT?
-			createPredicateTruthLinks(PredicateTruthNegative.class,PredicateTruthUncertain.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING);
+			createPredicateTruthLinks(PredicateTruthNegative.class,PredicateTruthUncertain.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING,emptyGroupLabel);
 			// PT? <-> PT+
-			createPredicateTruthLinks(PredicateTruthUncertain.class,PredicateTruthPositive.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING);
+			createPredicateTruthLinks(PredicateTruthUncertain.class,PredicateTruthPositive.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING,emptyGroupLabel);
 			// PT? <-> PT-
-			createPredicateTruthLinks(PredicateTruthUncertain.class,PredicateTruthNegative.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING);
+			createPredicateTruthLinks(PredicateTruthUncertain.class,PredicateTruthNegative.class, ALIGNER_CONFIDENCE, ALIGNER_DIRECTION,ALIGNEMNT_TYPE_NON_MATCHING,emptyGroupLabel);
 			
 		}
 		catch (CASException e) {
@@ -150,7 +179,7 @@ public class PredicateTruthAligner implements AlignmentComponent {
 	 * @param linkInfo
 	 * @throws CASException
 	 */
-	private void createPredicateTruthLinks(Class<? extends PredicateTruth> textType, Class<? extends Annotation> hypoType, double confidence,Direction linkDirection,String linkInfo) throws CASException{
+	private void createPredicateTruthLinks(Class<? extends PredicateTruth> textType, Class<? extends Annotation> hypoType, double confidence,Direction linkDirection,String linkInfo,StringList linkGroupLabel) throws CASException{
 		
 		// get relevant annotations from text and hypothesis - use pre-recorded annotations
 		Collection<? extends Annotation> textAnnotations = memoTextAnnots.get(textType);
@@ -161,12 +190,11 @@ public class PredicateTruthAligner implements AlignmentComponent {
 			for (Annotation hAnno : hypoAnnotations){
 				Token tToken = UimaUtils.selectCoveredSingle(textView, Token.class, tAnno);
 				Token hToken = UimaUtils.selectCoveredSingle(hypoView, Token.class, hAnno);
-				addAlignmentAnnotations(tToken,hToken, confidence, linkDirection, linkInfo);				
+				addAlignmentAnnotations(tToken,hToken, confidence, linkDirection, linkInfo, linkGroupLabel);				
 			}
 		}
 		
 	}
-	
 	
 	/**
 	 * Add an alignment link from T to H, based on the rule t->h
@@ -177,12 +205,13 @@ public class PredicateTruthAligner implements AlignmentComponent {
 	 * @param confidence The confidence of the rule
 	 * @param linkDirection The direction of the link (t to h, h to t or bidirectional). 
 	 * @param linkInfo The relation of the rule (Wordnet synonym, Wikipedia redirect etc).
+	 * @param linkGroupLabel 
 	 * @throws CASException 
 	 */
 	private void addAlignmentAnnotations(Token textToken, Token hypoToken,
 														double confidence,
 														Direction linkDirection,
-														String linkInfo) 
+														String linkInfo, StringList linkGroupLabel) 
 																throws CASException {
 		
 	
@@ -219,8 +248,12 @@ public class PredicateTruthAligner implements AlignmentComponent {
 		// Set the link direction
 		link.setDirection(linkDirection); 
 		
-		// Set strength according to the rule data
+		// Set strength
 		link.setStrength(confidence); 
+		
+		// Set Group label
+		link.setGroupLabel(linkGroupLabel);
+		
 		
 		// Add the link information
 		link.setAlignerID(ALIGNER_ID);  
@@ -234,6 +267,36 @@ public class PredicateTruthAligner implements AlignmentComponent {
 		// Add to index 
 		link.addToIndexes(); 
 	}
+	
+	/**
+	 * Converts a collection of string into a a Uima Stringlist
+	 * @param aJCas - Jcas to which to attach the string list?
+	 * @param aCollection - the collection to be converted
+	 * @return a Uima Stringlist, consisting of all the elements in aCollection
+	 */
+	private static StringList createStringList(JCas aJCas, 
+			Collection<String> aCollection)
+			        {
+			                if (aCollection.size() == 0) {
+			                        return new EmptyStringList(aJCas);
+			                }
+
+			                NonEmptyStringList head = new NonEmptyStringList(aJCas);
+			                NonEmptyStringList list = head;
+			                Iterator<String> i = aCollection.iterator();
+			                while (i.hasNext()) {
+			                        head.setHead(i.next());
+			                        if (i.hasNext()) {
+			                                head.setTail(new NonEmptyStringList(aJCas));
+			                                head = (NonEmptyStringList) head.getTail();
+			                        }
+			                        else {
+			                                head.setTail(new EmptyStringList(aJCas));
+			                        }
+			                }
+
+			                return list;
+			        }
 
 
 }

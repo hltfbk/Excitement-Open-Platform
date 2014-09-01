@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.transformations.uima.ae.truthteller;
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
