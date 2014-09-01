@@ -79,7 +79,7 @@ public class NemexAlignerTestEN {
 			logger.info("Initialize the Nemex Aligner");
 
 			aligner = new NemexAligner(
-					"src/test/resources/gazetteer/nemexAligner.txt", "#", true,
+					"src/test/resources/gazetteer/nemexAligner.txt", "#", false,
 					3, false, "DICE_SIMILARITY_MEASURE", 0.8);
 			logger.info("Initialization finished");
 
