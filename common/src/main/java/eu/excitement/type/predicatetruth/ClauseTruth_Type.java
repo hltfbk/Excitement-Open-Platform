@@ -13,8 +13,8 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
-/** This type represents a clause truth value annotation.
- * Updated by JCasGen Fri Oct 05 20:17:26 CEST 2012
+/** 
+ * Updated by JCasGen Tue Jul 15 10:01:13 IDT 2014
  * @generated */
 public class ClauseTruth_Type extends Annotation_Type {
   /** @generated */
@@ -45,22 +45,55 @@ public class ClauseTruth_Type extends Annotation_Type {
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.ClauseTruth");
  
   /** @generated */
-  final Feature casFeat_value;
+  final Feature casFeat_clauseTokens;
   /** @generated */
-  final int     casFeatCode_value;
-  /** @generated */ 
-  public String getValue(int addr) {
-        if (featOkTst && casFeat_value == null)
-      jcas.throwFeatMissing("value", "eu.excitement.type.predicatetruth.ClauseTruth");
-    return ll_cas.ll_getStringValue(addr, casFeatCode_value);
+  final int     casFeatCode_clauseTokens;
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
+  public int getClauseTokens(int addr) {
+        if (featOkTst && casFeat_clauseTokens == null)
+      jcas.throwFeatMissing("clauseTokens", "eu.excitement.type.predicatetruth.ClauseTruth");
+    return ll_cas.ll_getRefValue(addr, casFeatCode_clauseTokens);
   }
-  /** @generated */    
-  public void setValue(int addr, String v) {
-        if (featOkTst && casFeat_value == null)
-      jcas.throwFeatMissing("value", "eu.excitement.type.predicatetruth.ClauseTruth");
-    ll_cas.ll_setStringValue(addr, casFeatCode_value, v);}
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
+  public void setClauseTokens(int addr, int v) {
+        if (featOkTst && casFeat_clauseTokens == null)
+      jcas.throwFeatMissing("clauseTokens", "eu.excitement.type.predicatetruth.ClauseTruth");
+    ll_cas.ll_setRefValue(addr, casFeatCode_clauseTokens, v);}
     
-  
+   /** @generated
+   * @param addr low level Feature Structure reference
+   * @param i index of item in the array
+   * @return value at index i in the array 
+   */
+  public int getClauseTokens(int addr, int i) {
+        if (featOkTst && casFeat_clauseTokens == null)
+      jcas.throwFeatMissing("clauseTokens", "eu.excitement.type.predicatetruth.ClauseTruth");
+    if (lowLevelTypeChecks)
+      return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_clauseTokens), i, true);
+    jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_clauseTokens), i);
+  return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_clauseTokens), i);
+  }
+   
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param i index of item in the array
+   * @param v value to set
+   */ 
+  public void setClauseTokens(int addr, int i, int v) {
+        if (featOkTst && casFeat_clauseTokens == null)
+      jcas.throwFeatMissing("clauseTokens", "eu.excitement.type.predicatetruth.ClauseTruth");
+    if (lowLevelTypeChecks)
+      ll_cas.ll_setRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_clauseTokens), i, v, true);
+    jcas.checkArrayBounds(ll_cas.ll_getRefValue(addr, casFeatCode_clauseTokens), i);
+    ll_cas.ll_setRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_clauseTokens), i, v);
+  }
+ 
 
 
 
@@ -71,8 +104,8 @@ public class ClauseTruth_Type extends Annotation_Type {
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
-    casFeat_value = jcas.getRequiredFeatureDE(casType, "value", "eu.excitement.type.predicatetruth.ClauseTruthValue", featOkTst);
-    casFeatCode_value  = (null == casFeat_value) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_value).getCode();
+    casFeat_clauseTokens = jcas.getRequiredFeatureDE(casType, "clauseTokens", "uima.cas.FSArray", featOkTst);
+    casFeatCode_clauseTokens  = (null == casFeat_clauseTokens) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_clauseTokens).getCode();
 
   }
 }

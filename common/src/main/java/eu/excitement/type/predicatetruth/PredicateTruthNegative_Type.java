@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Fri Oct 05 20:17:26 CEST 2012 */
+/* First created by JCasGen Sun Jul 13 18:54:20 IDT 2014 */
 package eu.excitement.type.predicatetruth;
 
 import org.apache.uima.cas.FeatureStructure;
@@ -9,44 +9,48 @@ import org.apache.uima.cas.impl.FSGenerator;
 import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
-import org.apache.uima.jcas.tcas.Annotation_Type;
 
-/** This type represents a predicate truth value annotation. 
-It is an abstract representation from which the different Predicate Truth annotations will inherit (PT+,PT-,PT?).
-This annotation covers a single predicate token.
+/** This type annotates predicates with PT-.
  * Updated by JCasGen Tue Jul 15 10:01:13 IDT 2014
  * @generated */
-public class PredicateTruth_Type extends Annotation_Type {
-  /** @generated */
+public class PredicateTruthNegative_Type extends PredicateTruth_Type {
+  /** @generated 
+   * @return the generator for this type
+   */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}
   /** @generated */
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (PredicateTruth_Type.this.useExistingInstance) {
+  			 if (PredicateTruthNegative_Type.this.useExistingInstance) {
   			   // Return eq fs instance if already created
-  		     FeatureStructure fs = PredicateTruth_Type.this.jcas.getJfsFromCaddr(addr);
+  		     FeatureStructure fs = PredicateTruthNegative_Type.this.jcas.getJfsFromCaddr(addr);
   		     if (null == fs) {
-  		       fs = new PredicateTruth(addr, PredicateTruth_Type.this);
-  			   PredicateTruth_Type.this.jcas.putJfsFromCaddr(addr, fs);
+  		       fs = new PredicateTruthNegative(addr, PredicateTruthNegative_Type.this);
+  			   PredicateTruthNegative_Type.this.jcas.putJfsFromCaddr(addr, fs);
   			   return fs;
   		     }
   		     return fs;
-        } else return new PredicateTruth(addr, PredicateTruth_Type.this);
+        } else return new PredicateTruthNegative(addr, PredicateTruthNegative_Type.this);
   	  }
     };
   /** @generated */
   //@SuppressWarnings ("hiding")
-  public final static int typeIndexID = PredicateTruth.typeIndexID;
+  public final static int typeIndexID = PredicateTruthNegative.typeIndexID;
   /** @generated 
      @modifiable */
   //@SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.PredicateTruth");
- 
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("eu.excitement.type.predicatetruth.PredicateTruthNegative");
+
+
+
   /** initialize variables to correspond with Cas Type and Features
-	* @generated */
-  public PredicateTruth_Type(JCas jcas, Type casType) {
+	 * @generated
+	 * @param jcas JCas
+	 * @param casType Type 
+	 */
+  public PredicateTruthNegative_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
