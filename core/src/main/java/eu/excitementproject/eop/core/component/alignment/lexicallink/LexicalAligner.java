@@ -105,11 +105,7 @@ public class LexicalAligner implements AlignmentComponent {
 		linkInfoToInferenceLevel = new HashMap<String, String>();
 		linkInfoToInferenceLevel.put("WORDNET__ANTONYM", "LOCAL_CONTRADICTION");
 		linkInfoToInferenceLevel.put("VerbOcean__OPPOSITE_OF", "LOCAL_CONTRADICTION");
-		
-		// TODO: RedisBasedWikipediaLexicalResource returns a WikiRuleInfo 
-		// that doesn't contain the extraction type 
 		linkInfoToInferenceLevel.put("Wikipedia_Redirect", "LOCAL_ENTAILMENT");
-		
 		linkInfoToInferenceLevel.put("WORDNET__SYNONYM", "LOCAL_ENTAILMENT");
 		linkInfoToInferenceLevel.put("WORDNET__DERIVATIONALLY_RELATED", "LOCAL_ENTAILMENT");
 		linkInfoToInferenceLevel.put("CatVar__local-entailment", "LOCAL_ENTAILMENT");
@@ -179,7 +175,7 @@ public class LexicalAligner implements AlignmentComponent {
 	// Public Methods
 	
 	/**
-	 * Initialize a lexical aligner
+	 * Initialize a lexical aligner from the configuration
 	 * @param config a CommonConfig instance. The aligner retrieves the lexical 
 	 * resources configuration values. 
 	 * @throws AlignmentComponentException if initialization failed
@@ -195,6 +191,24 @@ public class LexicalAligner implements AlignmentComponent {
 			throw new AlignmentComponentException(
 					"Could not initialize the lexical aligner", e);
 		}
+	}
+	
+	/**
+	 * Initialize a lexical aligner using parameters
+	 * @param lexicalResources A set of initialized lexical resources
+	 * @param maxPhrase The maximum length of phrase to align
+	 * @param lexicalResourcesInformation Additional information required for the aligner
+	 * about each of the resources, such as whether this resource uses lemma or surface-level tokens,
+	 * and whether to limit the alignments to certain relations only. 
+	 * The lexicalResourcesInformation should hold keys of type: resource.getClass().getName()
+	 */
+	public LexicalAligner(List<LexicalResource<? extends RuleInfo>> lexicalResources, 
+			int maxPhrase, 
+			HashMap<String, LexicalResourceInformation> lexicalResourcesInformation) {
+		
+		this.lexicalResources = lexicalResources;
+		this.lexicalResourcesInformation = lexicalResourcesInformation;
+		this.maxPhrase = maxPhrase;
 	}
 	
 	/**
@@ -653,6 +667,11 @@ public class LexicalAligner implements AlignmentComponent {
 		// VerbOcean
 		else if (rule.getResourceName().equals("VerbOcean")) {
 			type = ((VerbOceanRuleInfo)rule.getInfo()).getRelationType().name();
+		}
+		
+		// Wikipedia
+		if (rule.getResourceName().equals("Wikipedia")) {
+			type = rule.getRelation();
 		}
 		
 		return type;
