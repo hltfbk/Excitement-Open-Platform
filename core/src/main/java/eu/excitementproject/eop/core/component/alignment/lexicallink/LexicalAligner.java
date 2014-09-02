@@ -175,7 +175,7 @@ public class LexicalAligner implements AlignmentComponent {
 	// Public Methods
 	
 	/**
-	 * Initialize a lexical aligner
+	 * Initialize a lexical aligner from the configuration
 	 * @param config a CommonConfig instance. The aligner retrieves the lexical 
 	 * resources configuration values. 
 	 * @throws AlignmentComponentException if initialization failed
@@ -191,6 +191,24 @@ public class LexicalAligner implements AlignmentComponent {
 			throw new AlignmentComponentException(
 					"Could not initialize the lexical aligner", e);
 		}
+	}
+	
+	/**
+	 * Initialize a lexical aligner using parameters
+	 * @param lexicalResources A set of initialized lexical resources
+	 * @param maxPhrase The maximum length of phrase to align
+	 * @param lexicalResourcesInformation Additional information required for the aligner
+	 * about each of the resources, such as whether this resource uses lemma or surface-level tokens,
+	 * and whether to limit the alignments to certain relations only. 
+	 * The lexicalResourcesInformation should hold keys of type: resource.getClass().getName()
+	 */
+	public LexicalAligner(List<LexicalResource<? extends RuleInfo>> lexicalResources, 
+			int maxPhrase, 
+			HashMap<String, LexicalResourceInformation> lexicalResourcesInformation) {
+		
+		this.lexicalResources = lexicalResources;
+		this.lexicalResourcesInformation = lexicalResourcesInformation;
+		this.maxPhrase = maxPhrase;
 	}
 	
 	/**
