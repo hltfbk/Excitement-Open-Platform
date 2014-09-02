@@ -38,7 +38,7 @@ public class TestLemmaPosSimilarity {
 		
 		//Assumption: the running directory contains a subdirectory 'redis' with two file: redis-rever and redis.cof
 		if (args.length != 1) {
-			System.out.println("Usage: eu.excitementproject.eop.distsim.application.TestLemmaPosSimilarity <configuration file>");
+			System.out.println("Usage: eu.excitementproject.eop.distsim.resource.TestLemmaPosSimilarity <configuration file>");
 			System.exit(0);
 		}
 		
