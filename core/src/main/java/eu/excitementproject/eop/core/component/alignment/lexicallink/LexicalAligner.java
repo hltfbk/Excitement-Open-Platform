@@ -105,11 +105,7 @@ public class LexicalAligner implements AlignmentComponent {
 		linkInfoToInferenceLevel = new HashMap<String, String>();
 		linkInfoToInferenceLevel.put("WORDNET__ANTONYM", "LOCAL_CONTRADICTION");
 		linkInfoToInferenceLevel.put("VerbOcean__OPPOSITE_OF", "LOCAL_CONTRADICTION");
-		
-		// TODO: RedisBasedWikipediaLexicalResource returns a WikiRuleInfo 
-		// that doesn't contain the extraction type 
 		linkInfoToInferenceLevel.put("Wikipedia_Redirect", "LOCAL_ENTAILMENT");
-		
 		linkInfoToInferenceLevel.put("WORDNET__SYNONYM", "LOCAL_ENTAILMENT");
 		linkInfoToInferenceLevel.put("WORDNET__DERIVATIONALLY_RELATED", "LOCAL_ENTAILMENT");
 		linkInfoToInferenceLevel.put("CatVar__local-entailment", "LOCAL_ENTAILMENT");
@@ -653,6 +649,11 @@ public class LexicalAligner implements AlignmentComponent {
 		// VerbOcean
 		else if (rule.getResourceName().equals("VerbOcean")) {
 			type = ((VerbOceanRuleInfo)rule.getInfo()).getRelationType().name();
+		}
+		
+		// Wikipedia
+		if (rule.getResourceName().equals("Wikipedia")) {
+			type = rule.getRelation();
 		}
 		
 		return type;
