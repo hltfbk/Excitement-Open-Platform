@@ -14,7 +14,8 @@ import weka.classifiers.meta.LogitBoost;
 import weka.classifiers.trees.J48;
 import weka.classifiers.trees.RandomForest;
 import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
-import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleNerCoverageCounter;
+import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleProperNounCoverageCounter;
+import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleVerbCoverageCounter;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleWordCoverageCounter;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
@@ -42,8 +43,8 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null); 
-//			aligner4 = new VerbOceanENLinker(null); 
+			aligner3 = new WordNetENLinker(null); 
+			aligner4 = new VerbOceanENLinker(null); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -51,7 +52,8 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		}
 		
 		wordCoverageScorer = new SimpleWordCoverageCounter(null); 
-		nerCoverageScorer = new SimpleNerCoverageCounter(); 
+		nerCoverageScorer = new SimpleProperNounCoverageCounter(); 
+		verbCoverageScorer = new SimpleVerbCoverageCounter(); 
 	}
 
 	@Override
@@ -61,8 +63,8 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		try {
 			aligner1.annotate(input);
 			aligner2.annotate(input); 
-//			aligner3.annotate(input);
-//			aligner4.annotate(input); 
+//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
+			aligner4.annotate(input); 
 
 		}
 		catch (PairAnnotatorComponentException pe)
@@ -112,6 +114,20 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 			}
 			fv.add(new FeatureValue(ratio_ner)); 		
 			
+			
+			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
+			// we know Verb Coverage counter returns 2 numbers. 
+			// (number of covered Vs in H, number of all Vs in H) 
+			double ratio_V = 0; 
+			// special case first... (hmm would be rare but)
+			if(score3.get(1) ==0)
+				ratio_V = 1.0; 
+			else
+			{
+				ratio_V = score3.get(0) / score3.get(1); 
+			}
+			fv.add(new FeatureValue(ratio_V)); 		
+			
 		}
 		catch (ScoringComponentException se)
 		{
@@ -154,6 +170,8 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 
 	ScoringComponent wordCoverageScorer;  
 	ScoringComponent nerCoverageScorer;  
+	ScoringComponent verbCoverageScorer;  
+
 
 
 }

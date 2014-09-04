@@ -34,9 +34,9 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * @author Tae-Gil Noh
  *
  */
-public class SimpleNerCoverageCounter implements ScoringComponent {
+public class SimpleProperNounCoverageCounter implements ScoringComponent {
 
-	public SimpleNerCoverageCounter() {
+	public SimpleProperNounCoverageCounter() {
 	}
 
 	@Override
@@ -130,6 +130,6 @@ public class SimpleNerCoverageCounter implements ScoringComponent {
 	}
 
 	// privates 	
-	private final static Logger logger = Logger.getLogger(SimpleNerCoverageCounter.class);
+	private final static Logger logger = Logger.getLogger(SimpleProperNounCoverageCounter.class);
 
 }

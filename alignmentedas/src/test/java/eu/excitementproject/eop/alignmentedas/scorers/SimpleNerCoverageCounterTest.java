@@ -13,7 +13,7 @@ import org.junit.Assume;
 import org.junit.Test;
 
 import eu.excitement.type.alignment.LinkUtils;
-import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleNerCoverageCounter;
+import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleProperNounCoverageCounter;
 //import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleWordCoverageCounter;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
@@ -65,7 +65,7 @@ public class SimpleNerCoverageCounterTest {
 		}
 
 		// and simple test. 
-		ScoringComponent count1 = new SimpleNerCoverageCounter();  
+		ScoringComponent count1 = new SimpleProperNounCoverageCounter();  
 		try {
 			Vector<Double> v = count1.calculateScores(aJCas); 
 			testlogger.info(v.get(0)); 
