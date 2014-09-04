@@ -184,9 +184,14 @@ public class LAPRunner {
 	public void runLAPOnFile(String inputFile, String outDir) {
 		
 		logger.info("Running lap on file: " + inputFile + " // writing output to directory " + outDir);
+
+		File dir = new File(outDir);
+		if (! dir.exists() || !dir.isDirectory()) {
+			dir.mkdir();
+		}
 		
 		try {
-			lap.processRawInputFormat(new File(inputFile), new File(outDir));
+			lap.processRawInputFormat(new File(inputFile), dir);
 		} catch (LAPException e) {
 			System.err.println("Error running the LAP");
 			e.printStackTrace();
