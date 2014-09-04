@@ -88,6 +88,8 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 		
 		this.maxNumOfRetrievedRules = params.getInt(Configuration.TOP_N_RULES);
 		
+		System.out.println("Max rules: " + this.maxNumOfRetrievedRules);
+		
 		if (hostLeft == null || portLeft == -1 || hostRight == null || portRight == -1)
 			this.similarityStorage = new DefaultSimilarityStorage(params);			
 		else  {

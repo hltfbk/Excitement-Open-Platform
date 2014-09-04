@@ -9,6 +9,11 @@
 	<name>core</name>
 	<description>core</description>
 	<dependencies>
+	<dependency>
+			<groupId>dfki</groupId>
+			<artifactId>nemex</artifactId>
+			<version>1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

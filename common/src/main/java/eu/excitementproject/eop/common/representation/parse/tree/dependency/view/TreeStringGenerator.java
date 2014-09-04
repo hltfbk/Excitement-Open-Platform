@@ -16,6 +16,18 @@ import eu.excitementproject.eop.common.representation.parse.tree.AbstractNode;
  * The graphical representation is merely several text lines, with characters
  * like "|" and "-" to represent edges, and the string produced by
  * a {@link NodeString} object.
+ * <BR><BR>
+ * Example output for the sentence <tt>"De Villepin made no comment on arrival."</tt>:<BR><BR>
+ * <pre>
+ *                                          (3 / made[make] / VBD / (null))                                         
+ *                                                         |                                                        
+ *                    |-------------------------------------|------------------------------------|                  
+ * (2 / Villepin[villepin] / NNP / nsubj)  (5 / comment[comment] / NN / dobj)        (6 / on[on] / IN / prep)       
+ *                    |                                     |                                    |                  
+ *                    |                                     |                                    |                  
+ *         (1 / De[de] / NNP / nn)               (4 / no[no] / DT / det)        (7 / arrival[arrival] / NN / pobj)  
+ * </pre>
+ * 
  * @author Asher Stern
  *
  */
@@ -230,10 +242,31 @@ public class TreeStringGenerator<I extends Info>
 		}
 	}
 	
+	/**
+	 * Convenience method to print a tree with full node data (Id, word, lemma, POS, rel).
+	 * @param root
+	 * @return
+	 * @throws TreeStringGeneratorException
+	 * @author Ofer Bronstein
+	 * @since August 2014
+	 */
+	public static String treeToStringFull(AbstractNode<? extends Info, ?> root) throws TreeStringGeneratorException {
+		TreeStringGenerator<Info> gen = new TreeStringGenerator<Info>(new SimpleNodeString(), root);
+		return gen.generateString();
+	}	
 	
-	
-	
-	
+	/**
+	 * Convenience method to print a tree with word and POS in node.
+	 * @param root
+	 * @return
+	 * @throws TreeStringGeneratorException
+	 * @author Ofer Bronstein
+	 * @since August 2014
+	 */
+	public static String treeToStringWordPos(AbstractNode<? extends Info, ?> root) throws TreeStringGeneratorException {
+		TreeStringGenerator<Info> gen = new TreeStringGenerator<Info>(new WordAndPosNodeString(), root);
+		return gen.generateString();
+	}	
 	
 	
 	protected AbstractNode<? extends I, ?> root;
