@@ -37,7 +37,6 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
-import eu.excitementproject.eop.common.representation.partofspeech.CanonicalPosTag;
 import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
 import eu.excitementproject.eop.common.utilities.Utils;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
@@ -998,7 +997,7 @@ public abstract class FixedWeightEditDistancewRedis implements DistanceCalculati
 			LexicalResource resource = new SimilarityStorageBasedLexicalResource(confParams);
     		lexR.add(resource);
     		
-    		try {
+/*    		try {
     			logger.info("LR test: ");
     			
     			PartOfSpeech pos = new ByCanonicalPartOfSpeech("V");
@@ -1011,27 +1010,27 @@ public abstract class FixedWeightEditDistancewRedis implements DistanceCalculati
     			List<LexicalRule> rules = new ArrayList<LexicalRule>();     			  
 //    			List<LexicalRule> rules = resource.getRulesForLeft("vedere", null);
 
-/*      	        rules = resource.getRulesForLeft("vedere", pos);
+      	        rules = resource.getRulesForLeft("vedere", pos);
       	        
     			if (rules != null) {
     				for (LexicalRule r: rules) {
     					logger.info("Rules for left: " + r.toString());
     				}
     			}
-*/    			
+    			
     			rules = resource.getRulesForRight("vedere", new ByCanonicalPartOfSpeech("V"));
     			if (rules != null) {
     				for (LexicalRule r: rules) {
     					logger.info("Rules for right: " + r.toString());
     				}
     			}
-    			
+   			
     		} //catch (LexicalResourceException lre) {
     			catch (Exception lre) {
     			logger.info("Testing the resource didn't work out");
     			lre.printStackTrace();
     		}
-    		
+*/    		
     	} catch (Exception e) {
     		throw new LexicalResourceException(e.getMessage());
     	}

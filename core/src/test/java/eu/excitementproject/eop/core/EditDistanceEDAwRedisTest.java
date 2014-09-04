@@ -41,7 +41,7 @@ public class EditDistanceEDAwRedisTest {
 	static Logger logger = Logger.getLogger(EditDistanceEDAwRedisTest.class
 			.getName());
 	
-//	@Ignore
+	@Ignore
 	@Test
 	public void test() {
 		
