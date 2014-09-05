@@ -14,7 +14,7 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
  * Given a pair of T-H, each of them represented as a sequences of tokens (i.e. the lemma of the tokens), the edit distance between 
  * T and H is the minimum number of operations required to convert T to H.
  * 
- * @author Roberto Zanoli
+ * @author Roberto Zanoli & Vivi@fbk
  * 
  */
 public class FixedWeightLemmaEditDistancewRedis extends FixedWeightEditDistancewRedis {
