@@ -2,7 +2,7 @@
 <configuration>
 
 		<section name="GeneralParameters">
-			<property name="maxPhraseLength">2</property>
+			<property name="maxPhraseLength">1</property>
 		</section>
 		
         <section name="LexicalResources">

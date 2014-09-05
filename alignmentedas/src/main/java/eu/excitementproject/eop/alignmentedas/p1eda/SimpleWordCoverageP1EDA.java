@@ -12,7 +12,10 @@ import weka.classifiers.functions.VotedPerceptron;
 import weka.classifiers.lazy.KStar;
 import weka.classifiers.meta.LogitBoost;
 import weka.classifiers.trees.J48;
+import weka.classifiers.trees.RandomForest;
 import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
+import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleProperNounCoverageCounter;
+import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleVerbCoverageCounter;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleWordCoverageCounter;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ClassifierException;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.EDAClassifierAbstraction;
@@ -39,16 +42,18 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		// This configuration keeps just one for each. (as-is counter) 
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
-//			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null); 
-//			aligner4 = new VerbOceanENLinker(null); 
+			aligner2 = new MeteorPhraseLinkerEN(); 
+			aligner3 = new WordNetENLinker(null); 
+			aligner4 = new VerbOceanENLinker(null); 
 		}
 		catch (AlignmentComponentException ae)
 		{
 			throw new EDAException("Initializing Alignment components failed: " + ae.getMessage(), ae); 
 		}
 		
-		scorer1 = new SimpleWordCoverageCounter(null); 
+		wordCoverageScorer = new SimpleWordCoverageCounter(null); 
+		nerCoverageScorer = new SimpleProperNounCoverageCounter(); 
+		verbCoverageScorer = new SimpleVerbCoverageCounter(); 
 	}
 
 	@Override
@@ -57,9 +62,9 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		// Here, just one aligner... (same lemma linker) 
 		try {
 			aligner1.annotate(input);
-//			aligner2.annotate(input); 
-//			aligner3.annotate(input);
-//			aligner4.annotate(input); 
+			aligner2.annotate(input); 
+//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
+			aligner4.annotate(input); 
 
 		}
 		catch (PairAnnotatorComponentException pe)
@@ -80,8 +85,8 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		// the feature vector that will be filled in
 		Vector<FeatureValue> fv = new Vector<FeatureValue>(); 
 		try {
-			Vector<Double> score1 = scorer1.calculateScores(aJCas); 	
-			// we know scorer 1 returns 4 numbers. 
+			Vector<Double> score1 = wordCoverageScorer.calculateScores(aJCas); 	
+			// we know word Coverage scorer returns 4 numbers. 
 			// ( count covered tokens , count all tokens, count covered content-tokens, count all content-tokens)
 			// Make two "coverage" ratio now. 
 			
@@ -92,6 +97,36 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 			logger.debug("Adding feature as: " + score1.get(2) + "/" + score1.get(3)); 
 			fv.add(new FeatureValue(ratio1)); 
 			fv.add(new FeatureValue(ratio2)); 
+			
+			Vector<Double> score2 = nerCoverageScorer.calculateScores(aJCas); 
+			// we know NER Coverage scorer  returns 2 numbers. 
+			// (number of ner words covered in H, number of all NER words in H) 
+			// let's make one coverage ratio. 
+
+			// ratio of Proper noun coverage ... 
+			double ratio_ner = 0; 
+			// special case first ... 
+			if (score2.get(1) == 0)
+				ratio_ner = 1.0;
+			else
+			{
+				ratio_ner = score2.get(0) / score2.get(1); 
+			}
+			fv.add(new FeatureValue(ratio_ner)); 		
+			
+			
+			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
+			// we know Verb Coverage counter returns 2 numbers. 
+			// (number of covered Vs in H, number of all Vs in H) 
+			double ratio_V = 0; 
+			// special case first... (hmm would be rare but)
+			if(score3.get(1) ==0)
+				ratio_V = 1.0; 
+			else
+			{
+				ratio_V = score3.get(0) / score3.get(1); 
+			}
+			fv.add(new FeatureValue(ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)
@@ -111,12 +146,14 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 	{
 		try {
 			return new EDABinaryClassifierFromWeka(new Logistic(), null); 
+			// you can use other classifiers from Weka, such as ... 
 			//return new EDABinaryClassifierFromWeka(new NaiveBayes(), null); 
 			//return new EDABinaryClassifierFromWeka(new VotedPerceptron(), null); 
 			//return new EDABinaryClassifierFromWeka(new J48(), null); 
 			//return new EDABinaryClassifierFromWeka(new MultilayerPerceptron(), null); 
 			//return new EDABinaryClassifierFromWeka(new KStar(), null);
 			//return new EDABinaryClassifierFromWeka(new SimpleLogistic(), null); 
+			//return new EDABinaryClassifierFromWeka(new RandomForest(), null); 
 
 		}
 		catch (ClassifierException ce)
@@ -131,6 +168,10 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 	AlignmentComponent aligner3; 
 	AlignmentComponent aligner4; 
 
-	final ScoringComponent scorer1;  
+	ScoringComponent wordCoverageScorer;  
+	ScoringComponent nerCoverageScorer;  
+	ScoringComponent verbCoverageScorer;  
+
+
 
 }
