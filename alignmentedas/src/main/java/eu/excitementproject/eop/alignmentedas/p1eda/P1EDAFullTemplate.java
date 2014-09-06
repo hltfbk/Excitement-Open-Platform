@@ -39,6 +39,9 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas; 
 
+// WARNING --- A work in progress. don't try to run it yet. 
+// TODO: Make this as an extension of P1EDASimpleTemplate (hmm.?) 
+
 /**
  * This is a template, abstract class for P1 EDA. 
  * 
@@ -208,8 +211,6 @@ public abstract class P1EDAFullTemplate implements EDABasic<TEDecisionWithAlignm
 		// what we call as "LabeledInstance":
 		// The method does so, by calling "addAlignments", "evaluateAlignments" on 
 		// each of the annotated training(gold) data. 
-		
-		
 		List<LabeledInstance> trainingSet = makeLabeledInstancesFromXmiFiles(dirTrainingDataXMIFiles); 
 		
 		// finally, calling classifier abstract to train a model 

@@ -311,12 +311,12 @@ public abstract class P1EDASimpleTemplate implements EDABasic<TEDecisionWithAlig
 	 *  Optional methods (steps) that can be overridden.    
 	 */  
 	
-	public void visualizeAlignments(JCas CASWithAlignments)
+	protected void visualizeAlignments(JCas CASWithAlignments)
 	{
 		// Template default is doing nothing. 
 	}
 	
-	public void visualizeEdaInternals() 
+	protected void visualizeEdaInternals() 
 	{
 		// Template default is doing nothing. 
 	}
@@ -552,7 +552,7 @@ public abstract class P1EDASimpleTemplate implements EDABasic<TEDecisionWithAlig
 	
 	/**
 	 * This is a vector of parameters, that has been "trained" in one startTraining() session. 
-	 * This is internal parameters that  and external "parameter" optimizer 
+	 * This is internal parameters that and external "parameter" optimizer 
 	 * 
 	 */
 	protected Vector<ParameterValue> internalParameters = null; 
@@ -567,8 +567,8 @@ public abstract class P1EDASimpleTemplate implements EDABasic<TEDecisionWithAlig
 	protected final Logger logger; 
 	
 	// some constants 
-	public final String CLASSIFIER_MODEL_POSTFIX = ".classifier.model"; 
-	public final String PARAMETER_SER_POSTFIX = ".parameters.ser"; 
+//	public final String CLASSIFIER_MODEL_POSTFIX = ".classifier.model"; 
+//	public final String PARAMETER_SER_POSTFIX = ".parameters.ser"; 
 	
 	
 }
