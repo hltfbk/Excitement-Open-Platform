@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
+import org.junit.Assume;
 import org.junit.Test;
 
 import eu.excitementproject.eop.alignmentedas.p1eda.SimpleWordCoverageP1EDA;
@@ -25,11 +27,31 @@ public class SimpleWordCoverageP1EDATest {
 		// Set Log4J for the test 
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.DEBUG);  // set INFO to hide Debug info 
+		Logger.getRootLogger().setLevel(Level.INFO);  // set INFO to hide Debug info 
 		testlogger = Logger.getLogger(getClass().getName()); 
 
+		// prepare a lemmatizer 
+		TreeTaggerEN lap = null; 
+		
+		try 
+		{
+			lap = new TreeTaggerEN(); 
+			lap.generateSingleTHPairCAS("this is a test.", "TreeTagger in sight?"); 
+		}
+		catch (Exception e)
+		{
+			// check if this is due to missing TreeTagger binary and model. 
+			// In such a case, we just skip this test. 
+			// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
+			if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
+			{
+				testlogger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
+				Assume.assumeTrue(false); // we won't test this test case any longer. 
+			}
+		}
+
 		try {
-			doMinimalTest(); 
+			doMinimalTest(lap); 
 		}
 		catch (Exception e)
 		{
@@ -38,14 +60,32 @@ public class SimpleWordCoverageP1EDATest {
 		
 	}
 	
-	public void doMinimalTest() throws EDAException, LAPException
+	public void doMinimalTest(TreeTaggerEN lap) throws EDAException, LAPException
 	{
 		
 		// get an instance of the EDA
 		SimpleWordCoverageP1EDA eda = new SimpleWordCoverageP1EDA(); 
-		
-		// get the LAP for this. 
-		TreeTaggerEN lap = new TreeTaggerEN(); 
+
+//		// prepare a lemmatizer 
+//		TreeTaggerEN lap = null; 
+//		
+//		try 
+//		{
+//			lap = new TreeTaggerEN(); 
+//			lap.generateSingleTHPairCAS("this is a test.", "TreeTagger in sight?"); 
+//		}
+//		catch (Exception e)
+//		{
+//			// check if this is due to missing TreeTagger binary and model. 
+//			// In such a case, we just skip this test. 
+//			// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
+//			if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
+//			{
+//				testlogger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
+//				Assume.assumeTrue(false); // we won't test this test case any longer. 
+//			}
+//		}
+
 		
 		// Make the "very simple", "minimal" two training data. 
 		JCas cas1 = lap.generateSingleTHPairCAS("The train was uncomfortable", "the train was comfortable", "NONENTAILMENT"); 

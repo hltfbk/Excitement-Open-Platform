@@ -1,8 +1,6 @@
 package eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped;
 
 import java.io.File;
-import java.net.URL;
-
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
@@ -36,8 +34,8 @@ public class VerbOceanENLinker implements AlignmentComponent {
 	public VerbOceanENLinker(String verbOceanFilePath) throws AlignmentComponentException {
 		
 		this.verbOceanPath = verbOceanFilePath; 
-		URL configFileURL = getClass().getResource("/configuration-file/lexlinkers/VerbOceanENLinker.xml");
-		File configFile = new File(configFileURL.getFile());
+		// temporary! 
+		File configFile = new File("../core/src/main/resources/configuration-file/lexlinkers/VerbOceanENLinker.xml");
 		try {
 			config = new ImplCommonConfig(configFile);
 		}

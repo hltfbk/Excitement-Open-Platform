@@ -23,28 +23,27 @@ public class VerbOceanENLinkTest {
 		Logger.getRootLogger().setLevel(Level.INFO);  
 		Logger testlogger = Logger.getLogger(this.getClass().toString()); 
 		
+		// prepare a lemmatizer 
+		TreeTaggerEN lemmatizer = null; 
+		try 
+		{
+			lemmatizer = new TreeTaggerEN(); 
+			lemmatizer.generateSingleTHPairCAS("this is a test.", "TreeTagger in sight?"); 
+		}
+		catch (Exception e)
+		{
+			// check if this is due to missing TreeTagger binary and model. 
+			// In such a case, we just skip this test. 
+			// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
+			if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
+			{
+				testlogger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
+				Assume.assumeTrue(false); // we won't test this test case any longer. 
+			}
+		}
+
+
 		try {
-			// prepare a lemmatizer 
-			TreeTaggerEN lemmatizer = null; 
-			try 
-			{
-				lemmatizer = new TreeTaggerEN(); 
-				lemmatizer.generateSingleTHPairCAS("this is a test.", "TreeTagger in sight?"); 
-			}
-			catch (Exception e)
-			{
-				// check if this is due to missing TreeTagger binary and model. 
-				// In such a case, we just skip this test. 
-				// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
-				if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
-				{
-					testlogger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
-					Assume.assumeTrue(false); // we won't test this test case any longer. 
-				}
-
-				fail(e.getMessage()); 
-			}
-
 
 			// prepare the alinger 
 			//AlignmentComponent wnLinker = new WordNetENLinker("src/main/resources/ontologies/EnglishWordNet-dict");

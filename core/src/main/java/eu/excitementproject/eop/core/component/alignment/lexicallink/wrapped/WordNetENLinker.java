@@ -1,8 +1,6 @@
 package eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped;
 
 import java.io.File;
-import java.net.URL;
-
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
@@ -37,8 +35,7 @@ public class WordNetENLinker implements AlignmentComponent {
 	public WordNetENLinker(String wordNetPath) throws AlignmentComponentException {
 		
 		this.wordNetPath = wordNetPath; 
-		URL configFileURL = getClass().getResource("/configuration-file/lexlinkers/WordNetENLinker.xml");
-		File configFile = new File(configFileURL.getFile());
+		File configFile = new File("../core/src/main/resources/configuration-file/lexlinkers/WordNetENLinker.xml"); 
 		try {
 			config = new ImplCommonConfig(configFile);
 		}

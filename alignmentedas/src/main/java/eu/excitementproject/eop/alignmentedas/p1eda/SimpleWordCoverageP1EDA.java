@@ -43,7 +43,7 @@ public class SimpleWordCoverageP1EDA extends P1EDATemplate {
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-			aligner3 = new WordNetENLinker(null); 
+//			aligner3 = new WordNetENLinker(null); 
 			aligner4 = new VerbOceanENLinker(null); 
 		}
 		catch (AlignmentComponentException ae)
