@@ -27,7 +27,7 @@ public class CompareTwoEDAs {
 	 * @param eda2
 	 * @param dirXMITestSet
 	 */
-	static public void logDiffPairs(EDABasic eda1, EDABasic eda2, File dirXMITestSet)
+	static public void logDiffPairs(EDABasic<? extends TEDecision> eda1, EDABasic<? extends TEDecision> eda2, File dirXMITestSet)
 	{
 		// well. Run each of the XMI pairs on two EDAs, and keep the 
 		// pairID, and results. 

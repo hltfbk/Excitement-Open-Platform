@@ -4,11 +4,11 @@
 package eu.excitementproject.eop.alignmentedas.p1eda;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+//import java.io.FileInputStream;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -83,7 +83,7 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
  * @author Tae-Gil Noh
  *
  */
-public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
+public abstract class P1EDASimpleTemplate implements EDABasic<TEDecisionWithAlignment> {
 	
 	/**
 	 * The default, no argument constructor for this abstract class. Does nothing 
@@ -97,7 +97,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * For example, see SimpleWordCoverageP1EDA. 
 	 * 
 	 */
-	public P1EDATemplate() throws EDAException 
+	public P1EDASimpleTemplate() throws EDAException 
 	{
 		this(null); 
 	}
@@ -119,7 +119,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * @param evaluateAlignmentParameter
 	 * @throws EDAException
 	 */
-	public P1EDATemplate(Vector<ParameterValue> evaluateAlignmentParameter) throws EDAException
+	public P1EDASimpleTemplate(Vector<ParameterValue> evaluateAlignmentParameter) throws EDAException
 	{
 		this.logger = Logger.getLogger(getClass()); 
 		this.classifier = prepareClassifier();  
@@ -174,15 +174,11 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// TODO read from common config table, and call argument version 
 	}
 	
-	public void initialize(File modelToLoadBaseName) throws EDAException
-	{
-		File classifierModelFile = new File(modelToLoadBaseName.getAbsolutePath() + CLASSIFIER_MODEL_POSTFIX); 
-		File paramSerFile = new File(modelToLoadBaseName.getAbsolutePath() + PARAMETER_SER_POSTFIX); 
-		
+	public void initialize(File classifierModelFile) throws EDAException
+	{		
 		try 
 		{
 			classifier.loadClassifierModel(classifierModelFile); 
-			loadEDAStates(paramSerFile); 
 		}
 		catch (ClassifierException ce)
 		{
@@ -201,7 +197,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	// "Training Classifier"
 	// "Train Classifier With Parameter Optimizations" 
 	
-	public void startTraining(File dirTrainingDataXMIFiles, File modelToStoreBaseName) throws EDAException 
+	public void startTraining(File dirTrainingDataXMIFiles, File classifierModelToStore) throws EDAException 
 	{
 		
 		// This work method will read Xmi files and convert them to labeled feature vectors
@@ -225,8 +221,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		// and store the model and parameters 
 		try 
 		{
-			classifier.storeClassifierModel(new File(modelToStoreBaseName.getAbsolutePath() + CLASSIFIER_MODEL_POSTFIX));
-			this.storeEDAStates(new File(modelToStoreBaseName.getAbsolutePath() + PARAMETER_SER_POSTFIX)); 
+			classifier.storeClassifierModel(classifierModelToStore);
 		}
 		catch (ClassifierException ce)
 		{
@@ -295,14 +290,14 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * @param input
 	 * @throws EDAException
 	 */
-	public abstract void addAlignments(JCas input) throws EDAException; 
+	protected abstract void addAlignments(JCas input) throws EDAException; 
 		
 	/**
 	 * @param aJCas
 	 * @return
 	 * @throws EDAException
 	 */
-	public abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas, Vector<ParameterValue> featureExtractorParameters) throws EDAException; 
+	protected abstract Vector<FeatureValue> evaluateAlignments(JCas aJCas, Vector<ParameterValue> featureExtractorParameters) throws EDAException; 
 	
 	
 //	/**
@@ -341,87 +336,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		{
 			throw new EDAException("Preparing an instance of Classifier for EDA failed: underlying Classifier raised an exception: ", ce); 
 		}
-	}
-
-	
-	/**
-	 * The method stores EDA-level states and parameters that are set via training to 
-	 * a File, so that can be restored when initializing a new EDA instance. 
-	 * 
-	 * This method is called within the training step (startTraining()) of the EDA. 
-	 * 
-	 * If you add some additional "internal parameters" (or states) that can affect 
-	 * EDA (e.g. things that would affect addAlignments(), evaluateAlignments() and so on.)  
-	 * You will also need to save them, in addition to default EDAStates which are defined 
-	 * in the methods. Override this method if you have such a case. 
-	 * 
-	 * @param paramSerFile
-	 * @throws EDAException
-	 */
-	protected void storeEDAStates(File paramSerFile) throws EDAException
-	{
-		ArrayList<Vector<ParameterValue>> twoParamVectors = new ArrayList<Vector<ParameterValue>>();
-		twoParamVectors.add(evaluateAlignmentParameters); 
-		twoParamVectors.add(internalParameters); 
-		
-		try
-	    {
-	    	FileOutputStream os = new FileOutputStream(paramSerFile); 
-	        ObjectOutputStream out = new ObjectOutputStream(os);
-	        out.writeObject(twoParamVectors);
-	        out.close();
-	        os.close();
-	        logger.info("Parameters stored in " + paramSerFile.getName()); 
-      	}
-		catch(IOException io)
-		{
-			throw new EDAException("IO operation to store / serialize parameters failed", io); 
-		}	
-	}
-	/**
-	 * The method loads EDA-level states and parameters from a file, that has been 
-	 * stored in previous training run. 
-	 * 
-	 * This method is called within the initialization step (initialize()) of the EDA.
-	 * (Roughly the same instance when it loads Classifier model)  
-	 * 
-	 * If you add some additional "internal parameters" (or states) that can affect 
-	 * EDA (e.g. things that would affect addAlignments(), evaluateAlignments() and so on.)  
-	 * You will also need to save (after training) and load (when init) them, 
-	 * in addition to default EDAStates which are defined in the methods. 
-	 * Override this method if you have such a case. 
-	 * 
-	 * @param paramSerFile
-	 * @throws EDAException
-	 */
-
-	protected void loadEDAStates(File paramSerFile) throws EDAException
-	{
-		if (!paramSerFile.exists())
-		{
-			throw new EDAException("File not found: "+ paramSerFile.getAbsolutePath()); 
-		}
-		try
-		{
-			FileInputStream is = new FileInputStream(paramSerFile); 
-			ObjectInputStream in = new ObjectInputStream(is);
-			@SuppressWarnings("unchecked")
-			ArrayList<Vector<ParameterValue>> twoParamVectors = (ArrayList<Vector<ParameterValue>>) in.readObject(); 
-			in.close();
-			is.close();
-			evaluateAlignmentParameters = twoParamVectors.get(0); 
-			internalParameters = twoParamVectors.get(1); 
-		}
-		catch(IOException i)
-		{
-			throw new EDAException("Reading and deserilaizing the file failed: "+ paramSerFile.getAbsolutePath(), i); 	
-		}
-		catch(ClassNotFoundException c)
-		{
-			throw new EDAException("Integrity failure --- serialization file is of an unknown class type that is not parameters "+ paramSerFile.getAbsolutePath(), c); 
-		}
-	}
-
+	}	
 	
 	/**
 	 * This method will be used to check input CAS for P1EDA flow. 

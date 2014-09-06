@@ -34,7 +34,7 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 @SuppressWarnings("unused")
-public class SimpleWordCoverageP1EDA extends P1EDATemplate {
+public class SimpleWordCoverageP1EDA extends P1EDASimpleTemplate {
 
 	public SimpleWordCoverageP1EDA() throws EDAException
 	{	

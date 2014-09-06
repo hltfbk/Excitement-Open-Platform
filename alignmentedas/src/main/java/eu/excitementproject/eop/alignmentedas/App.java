@@ -10,7 +10,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.alignmentedas.p1eda.P1EDATemplate;
+import eu.excitementproject.eop.alignmentedas.p1eda.P1EDASimpleTemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.SimpleWordCoverageP1EDA;
 import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
 import eu.excitementproject.eop.lap.LAPException;
@@ -35,7 +35,7 @@ public class App
     		// Prepare LAP and EDA 
     		//
     		LAP_ImplBase lap = new TreeTaggerEN(); 
-    		P1EDATemplate p1eda = new SimpleWordCoverageP1EDA(); 
+    		P1EDASimpleTemplate p1eda = new SimpleWordCoverageP1EDA(); 
 
     		// Train the instance, and save model. 
     		//
@@ -49,11 +49,11 @@ public class App
         	
     		// train a model, and store ...  
     		p1eda.startTraining(xmiDir, classifierModel); 
-    		//p1eda.shutdown();     	
+    		p1eda.shutdown();     	
 
     	    // Okay, maybe start a new instance with the stored model? 
-    		//p1eda = new SimpleWordCoverageP1EDA(); 
-    		//p1eda.initialize(classifierModel); 
+    		p1eda = new SimpleWordCoverageP1EDA(); 
+    		p1eda.initialize(classifierModel); 
     		
     		// now you can call process() 
     		JCas aPair = lap.generateSingleTHPairCAS("Claude Chabrol divorced Agnes, his first wife, to marry the actress Stéphane Audran. His third wife is Aurore Paquiss.", "Aurore Paquiss married Chabrol."); 
@@ -84,6 +84,12 @@ public class App
     	
     }
     
+	
+	public static void runTrainAndTest(P1EDASimpleTemplate p1eda)
+	{
+		
+	}
+	
     
     public static void runLAPForXmis(LAP_ImplBase lap, File rteInputXML, File xmiDir) throws LAPException, IOException
     {
