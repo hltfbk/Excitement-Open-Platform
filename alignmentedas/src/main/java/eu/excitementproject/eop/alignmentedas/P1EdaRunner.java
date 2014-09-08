@@ -42,7 +42,7 @@ public class P1EdaRunner
 //    		P1EDASimpleTemplate p1eda = new WithoutVO(); // Put your (configured, instance) P1EDA here... 
 
 
-    		evaluateOnRTE3EN(lap, p1eda, true);  // set final argument true, if lap has not been changed from last call. (reuse saved XMI files) 
+    		evaluateOnRTE3EN(lap, p1eda, false);  // set final argument true, if lap has not been changed from last call. (reuse saved XMI files) 
     		
     		// use evaluateOnRTE3DE for German 
     		// use evaluateOnRTE3IT for Italian 
