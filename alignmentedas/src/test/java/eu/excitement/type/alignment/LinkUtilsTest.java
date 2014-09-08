@@ -15,6 +15,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
+import eu.excitementproject.eop.common.utilities.uima.UimaUtils;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
@@ -32,10 +33,12 @@ public class LinkUtilsTest {
 		Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
 		Logger testlogger = Logger.getLogger("eu.excitement.type.alignment.LunkUtilsTest"); 
 		
+		
 		// prepare a lemmatizer 
 		TreeTaggerEN lemmatizer = null; 
 		try 
-		{
+		{	
+			JCas test = UimaUtils.newJcas(); 
 			lemmatizer = new TreeTaggerEN(); 
 			lemmatizer.generateSingleTHPairCAS("this is a test.", "TreeTagger in sight?"); 
 		}

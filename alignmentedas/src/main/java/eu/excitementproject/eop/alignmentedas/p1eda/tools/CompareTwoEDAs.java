@@ -1,10 +1,8 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.tools;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;

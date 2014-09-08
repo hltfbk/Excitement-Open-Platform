@@ -15,7 +15,8 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 /**
  * Some utility methods for alignment.Link type and related codes. 
  * 
- * ** UNDER CONSTRUCTION ** 
+ * ** UNDER CONSTRUCTION **; 
+ * ( feel free to add / request static utility methods that would be useful for alignment.Link instances in CAS) 
  * 
  * @author Tae-Gil Noh
  * @since June, 2014 
