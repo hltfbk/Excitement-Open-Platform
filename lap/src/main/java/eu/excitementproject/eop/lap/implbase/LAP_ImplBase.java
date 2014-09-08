@@ -165,7 +165,7 @@ public abstract class LAP_ImplBase implements LAPAccess {
 			aJCas.reset(); 
 		}
 	}
-
+	
 	@Override
 	public JCas generateSingleTHPairCAS(String text, String hypothesis)
 			throws LAPException {

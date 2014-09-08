@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.lap;
+package eu.excitement.type;
 
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;

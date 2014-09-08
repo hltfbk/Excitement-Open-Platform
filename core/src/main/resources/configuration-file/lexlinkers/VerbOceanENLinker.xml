@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+		<section name="GeneralParameters">
+			<property name="maxPhraseLength">5</property>
+		</section>
+		
+        <section name="LexicalResources">
+			<!-- VerbOcean -->
+			<property name =
+                                  "verb-ocean">eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource</property>
+        </section> 
+		
+		<!-- VerbOcean configuration parameters -->
+		<section name = "verb-ocean">
+			<property name = "useLemma">true</property>
+			<property name = "version">unrefined.2004-05-20</property>
+			<property name = "threshold">1</property>
+			<property name = "file">../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+			<property name = "allowedRelations">STRONGER_THAN</property>
+		</section>
+		
+</configuration>
