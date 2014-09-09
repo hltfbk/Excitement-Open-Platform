@@ -140,6 +140,8 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 	
 	
 	/** Maybe this need to go to LinkUtils 
+	 * TODO: export this method with "direction selection" option to LinkUtils 
+	 * 
 	 * @param fullList   The full list of Links
 	 * @param annot      The annotation that is being considered. 
 	 * @return
@@ -169,6 +171,10 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 			{
 				if (a == annot)
 				{
+					// In this score component, we ignore HtoT case. (only TtoH and bidirection) 
+					// Hmm. possible better coding for this? 
+					if (l.getDirection() == Link.Direction.HtoT)
+						break; 
 					filteredList.add(l); 
 					break; 
 				}
@@ -215,8 +221,6 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 	}
 	
 	private final String alignerIdToMatch; 
-	
-	
 	private final static Logger logger = Logger.getLogger(SimpleWordCoverageCounter.class);
 
 

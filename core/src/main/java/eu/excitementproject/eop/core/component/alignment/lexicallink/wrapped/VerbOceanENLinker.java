@@ -1,50 +1,61 @@
 package eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
-import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 
 /**
- * This is, useful, but a broken code. 
- * (e.g. won't work within a JAR) 
  * 
- * TODO 
- * Update ASAP, after updating LexicalAligner to accept 
- * List of lexical resource in its constructor. 
+ * TODO: extract verbOcean to temporal directory, use that ... (true 0 configuration) 
  * 
- * *sigh* ... Well, but it works as is, at least within Source Tree Trunk. 
+ * A lexical aligner class that links tokens based on VerbOcean. 
+ * Convenience class. The class utilizes VerbOcean class and LexicalAligner class to make 
+ * the aligner. 
  * 
  * @author Tae-Gil Noh
  *
  */
 public class VerbOceanENLinker implements AlignmentComponent {
+
 	/**
-	 * WARN: Broken code; verbOceanPath doesn't work. --- update either common config 
-	 * or LexicalAligner. Thus, it will rely on fixed XML file path --- which won't work
-	 * within a Jar (used as a library) 
+	 * 
+	 * Default parameters. note that this won't work when you use EOP as library. 
+	 * 
+	 */
+	public VerbOceanENLinker() throws AlignmentComponentException
+	{
+		this(new File(verbOceanDefaultPath), defaultRelations); 
+	}
+	
+	
+	/**
 	 * 
 	 * @param wordNetPath
 	 * @throws AlignmentComponentException
 	 */
-	public VerbOceanENLinker(String verbOceanFilePath) throws AlignmentComponentException {
+	public VerbOceanENLinker(File verbOceanFile, Set<RelationType> allowedRelationTypes) throws AlignmentComponentException {
 		
-		this.verbOceanPath = verbOceanFilePath; 
-		// temporary! 
-		File configFile = new File("../core/src/main/resources/configuration-file/lexlinkers/VerbOceanENLinker.xml");
-		try {
-			config = new ImplCommonConfig(configFile);
-		}
-		catch (ConfigurationException ce)
+		try 
 		{
-			throw new AlignmentComponentException("Reading base configuration file failed!", ce); 
+			VerbOceanLexicalResource lex = new VerbOceanLexicalResource(1.0, verbOceanFile, allowedRelationTypes); 
+			LexicalAligner theAligner = LexicalAlignerFactory.getLexicalAlignerFromLexicalResource(lex, 1, "1.0", true, null, null); 
+			worker = theAligner; 
 		}
-		//updateConfig(); 	
-		worker = new LexicalAligner(config); 
+		catch (LexicalResourceException e)
+		{
+			throw new AlignmentComponentException ("Underlying resource thrown an exception: " + e.getMessage(), e); 
+		}
+		
 		
 	}
 	
@@ -52,17 +63,15 @@ public class VerbOceanENLinker implements AlignmentComponent {
 	{
 		worker.annotate(aJCas); 
 	}
-
 	
-	// private variable for path of underlying resource 
-	@SuppressWarnings("unused")
-	private final String verbOceanPath; 
-	
-	// two common private variables 
+	// private variable 
 	private final LexicalAligner worker; 
-	private final ImplCommonConfig config;  
-
 	
+	// const, default values. Woudln't work when within Jar!  
+	private static final String verbOceanDefaultPath = "../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"; 
+	private static final HashSet<RelationType> defaultRelations = new HashSet<RelationType>(Arrays.asList(RelationType.STRONGER_THAN)); 
+
+
 	public String getComponentName()
 	{
 		return this.getClass().getName(); 

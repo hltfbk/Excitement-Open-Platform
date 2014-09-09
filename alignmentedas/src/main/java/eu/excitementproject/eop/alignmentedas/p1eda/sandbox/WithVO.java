@@ -45,7 +45,7 @@ public class WithVO extends P1EDASimpleTemplate {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
 //			aligner3 = new WordNetENLinker(null); 
-			aligner4 = new VerbOceanENLinker(null); 
+			aligner4 = new VerbOceanENLinker(); 
 		}
 		catch (AlignmentComponentException ae)
 		{

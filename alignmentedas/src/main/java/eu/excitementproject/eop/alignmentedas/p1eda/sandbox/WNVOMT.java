@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.alignmentedas.p1eda;
+package eu.excitementproject.eop.alignmentedas.p1eda.sandbox;
 
 import java.util.Vector;
 
@@ -13,6 +13,7 @@ import weka.classifiers.lazy.KStar;
 import weka.classifiers.meta.LogitBoost;
 import weka.classifiers.trees.J48;
 import weka.classifiers.trees.RandomForest;
+import eu.excitementproject.eop.alignmentedas.p1eda.P1EDASimpleTemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleProperNounCoverageCounter;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleVerbCoverageCounter;
@@ -34,16 +35,16 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 @SuppressWarnings("unused")
-public class SimpleWordCoverageP1EDA extends P1EDASimpleTemplate {
+public class WNVOMT extends P1EDASimpleTemplate {
 
-	public SimpleWordCoverageP1EDA() throws EDAException
+	public WNVOMT() throws EDAException
 	{	
 		// And let's keep the alinger instance and scoring component... 
 		// This configuration keeps just one for each. (as-is counter) 
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null); 
+			aligner3 = new WordNetENLinker(null); 
 			aligner4 = new VerbOceanENLinker(); 
 		}
 		catch (AlignmentComponentException ae)
@@ -63,7 +64,7 @@ public class SimpleWordCoverageP1EDA extends P1EDASimpleTemplate {
 		try {
 			aligner1.annotate(input);
 			aligner2.annotate(input); 
-//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
+			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
 			aligner4.annotate(input); 
 
 		}

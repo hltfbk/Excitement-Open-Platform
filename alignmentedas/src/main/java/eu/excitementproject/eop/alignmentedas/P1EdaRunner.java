@@ -13,6 +13,7 @@ import org.apache.uima.jcas.JCas;
 import eu.excitementproject.eop.alignmentedas.p1eda.P1EDASimpleTemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.SimpleWordCoverageP1EDA;
 import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
+import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WNVOMT;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithVO;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithoutVO;
 import eu.excitementproject.eop.common.EDAException;
@@ -38,11 +39,12 @@ public class P1EdaRunner
     		// Prepare LAP and EDA (here, both for English) and eval on RTE3 (again, EN)  
     		LAP_ImplBase lap = new TreeTaggerEN(); 
 //   		P1EDASimpleTemplate p1eda = new SimpleWordCoverageP1EDA(); // Put your (configured, instance) P1EDA here... 
-    		P1EDASimpleTemplate p1eda = new WithVO(); // Put your (configured, instance) P1EDA here... 
+//    		P1EDASimpleTemplate p1eda = new WithVO(); // Put your (configured, instance) P1EDA here... 
 //    		P1EDASimpleTemplate p1eda = new WithoutVO(); // Put your (configured, instance) P1EDA here... 
+    		P1EDASimpleTemplate p1eda = new WNVOMT(); 
 
 
-    		evaluateOnRTE3EN(lap, p1eda, false);  // set final argument true, if lap has not been changed from last call. (reuse saved XMI files) 
+    		evaluateOnRTE3EN(lap, p1eda, true);  // set final argument true, if lap has not been changed from last call. (reuse saved XMI files) 
     		
     		// use evaluateOnRTE3DE for German 
     		// use evaluateOnRTE3IT for Italian 
