@@ -16,7 +16,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbO
 
 /**
  * 
- * TODO: extract verbOcean to temporal directory, use that ... (true 0 configuration) 
+ * TODO: extract verbOcean to temporal directory, and use that (true zero-configuration) 
  * 
  * A lexical aligner class that links tokens based on VerbOcean. 
  * Convenience class. The class utilizes VerbOcean class and LexicalAligner class to make 
