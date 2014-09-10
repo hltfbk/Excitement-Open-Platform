@@ -20,6 +20,8 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
+ * (A Language Independent scorer) 
+ * 
  * A simple, POS-based coverage feature extractor that extracts 
  * how much of Hypothesis named entities are covered. The decision 
  * is done purely based on canonical POS type NP (proper noun), and 

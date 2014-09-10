@@ -12,14 +12,15 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
 import org.junit.Test;
 
-import eu.excitementproject.eop.alignmentedas.p1eda.SimpleWordCoverageP1EDA;
+import eu.excitementproject.eop.alignmentedas.p1eda.P1EDATemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
+import eu.excitementproject.eop.alignmentedas.p1eda.instances.MinimalP1EDA;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 
-public class SimpleWordCoverageP1EDATest {
+public class MinimalP1EDATest {
 
 	@Test
 	public void test() {
@@ -27,7 +28,7 @@ public class SimpleWordCoverageP1EDATest {
 		// Set Log4J for the test 
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.INFO);  // set INFO to hide Debug info 
+		Logger.getRootLogger().setLevel(Level.INFO);  // set INFO to hide Debug  
 		testlogger = Logger.getLogger(getClass().getName()); 
 
 		// prepare a lemmatizer 
@@ -64,28 +65,7 @@ public class SimpleWordCoverageP1EDATest {
 	{
 		
 		// get an instance of the EDA
-		SimpleWordCoverageP1EDA eda = new SimpleWordCoverageP1EDA(); 
-
-//		// prepare a lemmatizer 
-//		TreeTaggerEN lap = null; 
-//		
-//		try 
-//		{
-//			lap = new TreeTaggerEN(); 
-//			lap.generateSingleTHPairCAS("this is a test.", "TreeTagger in sight?"); 
-//		}
-//		catch (Exception e)
-//		{
-//			// check if this is due to missing TreeTagger binary and model. 
-//			// In such a case, we just skip this test. 
-//			// (see /lap/src/scripts/treetagger/README.txt to how to install TreeTagger) 
-//			if (ExceptionUtils.getRootCause(e) instanceof java.io.IOException) 
-//			{
-//				testlogger.info("Skipping the test: TreeTagger binary and/or models missing. \n To run this testcase, TreeTagger installation is needed. (see /lap/src/scripts/treetagger/README.txt)");  
-//				Assume.assumeTrue(false); // we won't test this test case any longer. 
-//			}
-//		}
-
+		P1EDATemplate eda = new MinimalP1EDA(); 
 		
 		// Make the "very simple", "minimal" two training data. 
 		JCas cas1 = lap.generateSingleTHPairCAS("The train was uncomfortable", "the train was comfortable", "NONENTAILMENT"); 
@@ -111,9 +91,10 @@ public class SimpleWordCoverageP1EDATest {
 		// ask another 
 		eopJCas = lap.generateSingleTHPairCAS("This is a very simple configuration.", "This is in fact a complex configuration."); 
 		TEDecisionWithAlignment d1 = eda.process(eopJCas); 
+		testlogger.info(d1.getDecision() + ", " + d1.getConfidence()); 
 		
 		// load Model test 
-		SimpleWordCoverageP1EDA eda2 = new SimpleWordCoverageP1EDA(); 
+		MinimalP1EDA eda2 = new MinimalP1EDA(); 
 		eda2.initialize(modelBaseName); 
 		TEDecisionWithAlignment d2 = eda2.process(eopJCas); 
 		assertEquals(d2.getDecision(), d1.getDecision()); 

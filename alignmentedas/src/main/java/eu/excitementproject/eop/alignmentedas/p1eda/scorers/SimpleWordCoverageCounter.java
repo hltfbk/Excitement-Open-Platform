@@ -24,6 +24,8 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLem
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
+ * (A Language Independent scorer) 
+ * 
  * This is a very simple "alignment evaluator" which reports the following numbers; 
  * "number of covered word in H", "number of words in H".
  * 

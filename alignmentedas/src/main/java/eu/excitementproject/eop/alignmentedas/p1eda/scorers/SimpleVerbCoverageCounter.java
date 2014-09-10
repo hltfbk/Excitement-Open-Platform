@@ -21,7 +21,7 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
- * 
+ * (A Language Independent scorer) 
  * It would be ideal, if we can count coverage of "main verb", or "predicates" 
  * 
  * Since that is not possible with simple "lexical" level alignments, here we 

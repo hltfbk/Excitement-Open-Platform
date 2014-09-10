@@ -11,7 +11,7 @@ import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalReso
 
 /**
  * A static class for lexical resource developers (?). Give one lexical resource with parameters, 
- * the methods will return a lexical aligner that works with the given resouce. 
+ * the methods will return a lexical aligner that works with the given resource. 
  * 
  * @author Tae-Gil Noh
  *

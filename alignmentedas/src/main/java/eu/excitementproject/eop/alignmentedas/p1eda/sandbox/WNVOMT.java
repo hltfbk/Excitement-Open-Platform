@@ -13,7 +13,7 @@ import weka.classifiers.lazy.KStar;
 import weka.classifiers.meta.LogitBoost;
 import weka.classifiers.trees.J48;
 import weka.classifiers.trees.RandomForest;
-import eu.excitementproject.eop.alignmentedas.p1eda.P1EDASimpleTemplate;
+import eu.excitementproject.eop.alignmentedas.p1eda.P1EDATemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleProperNounCoverageCounter;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleVerbCoverageCounter;
@@ -35,7 +35,7 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 @SuppressWarnings("unused")
-public class WNVOMT extends P1EDASimpleTemplate {
+public class WNVOMT extends P1EDATemplate {
 
 	public WNVOMT() throws EDAException
 	{	

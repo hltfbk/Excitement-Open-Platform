@@ -15,9 +15,7 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.Relat
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 
 /**
- * 
- * TODO: extract verbOcean to temporal directory, and use that (true zero-configuration) 
- * 
+ *
  * A lexical aligner class that links tokens based on VerbOcean. 
  * Convenience class. The class utilizes VerbOcean class and LexicalAligner class to make 
  * the aligner. 
@@ -29,7 +27,9 @@ public class VerbOceanENLinker implements AlignmentComponent {
 
 	/**
 	 * 
-	 * Default parameters. note that this won't work when you use EOP as library. 
+	 * Default constructor with no param. Will initiated VerbOcean with default params 
+	 * note that this won't work when you use EOP as library. 
+	 * In such a case, use the other constructor (with path, and allowed relation type) 
 	 * 
 	 */
 	public VerbOceanENLinker() throws AlignmentComponentException
@@ -39,9 +39,11 @@ public class VerbOceanENLinker implements AlignmentComponent {
 	
 	
 	/**
+	 * Main constructor. 
 	 * 
-	 * @param wordNetPath
-	 * @throws AlignmentComponentException
+	 * @param wordNetPath verbOcean text file
+	 * @param allowedRelationTypes VerbOcean relation types that you want to be added as alignment.Links  
+	 * @throws AlignmentComponentException 
 	 */
 	public VerbOceanENLinker(File verbOceanFile, Set<RelationType> allowedRelationTypes) throws AlignmentComponentException {
 		

@@ -1,5 +1,6 @@
-package eu.excitementproject.eop.alignmentedas.p1eda.sandbox;
+package eu.excitementproject.eop.alignmentedas.p1eda.instances;
 
+import java.io.File;
 import java.util.Vector;
 
 import org.apache.uima.jcas.JCas;
@@ -30,22 +31,28 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.VerbOceanENLinker;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.WordNetENLinker;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.WordNetITLinker;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerDE;
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
+import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerIT;
 
+/**
+ * 
+ * 
+ * (Best configuration on this simple coverage Italian was: 64.625 on RTE3.)
+ * 
+ * @author Tae-Gil Noh 
+ */
 @SuppressWarnings("unused")
-public class WithoutVO extends P1EDATemplate {
+public class SimpleWordCoverageIT extends P1EDATemplate {
 
-	public WithoutVO() throws EDAException
+	public SimpleWordCoverageIT() throws EDAException
 	{	
-		// And let's keep the alinger instance and scoring component... 
-		// This configuration keeps just one for each. (as-is counter) 
 		try {
-			aligner1 = new IdenticalLemmaPhraseLinker(); 
-			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null); 
-//			aligner4 = new VerbOceanENLinker(null); 
+			identicalLemmaLinker = new IdenticalLemmaPhraseLinker(); 
+			paraphraseLinker = new MeteorPhraseLinkerIT(); 
+			italianWordNetLinker = new WordNetITLinker(new File("/Users/tailblues/eop-resources-1.1.3/ontologies/ItalianWordNet-dict")); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -60,13 +67,10 @@ public class WithoutVO extends P1EDATemplate {
 	@Override
 	public void addAlignments(JCas input) throws EDAException {
 
-		// Here, just one aligner... (same lemma linker) 
 		try {
-			aligner1.annotate(input);
-			aligner2.annotate(input); 
-//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
-//			aligner4.annotate(input); 
-
+			identicalLemmaLinker.annotate(input);
+			paraphraseLinker.annotate(input); 
+			italianWordNetLinker.annotate(input); 
 		}
 		catch (PairAnnotatorComponentException pe)
 		{
@@ -164,10 +168,10 @@ public class WithoutVO extends P1EDATemplate {
 	}
 	
 	
-	AlignmentComponent aligner1; 
-	AlignmentComponent aligner2; 
-	AlignmentComponent aligner3; 
-	AlignmentComponent aligner4; 
+	AlignmentComponent identicalLemmaLinker; 
+	AlignmentComponent paraphraseLinker; 
+	AlignmentComponent italianWordNetLinker; 
+	AlignmentComponent italianWikiLinker; 
 
 	ScoringComponent wordCoverageScorer;  
 	ScoringComponent nerCoverageScorer;  

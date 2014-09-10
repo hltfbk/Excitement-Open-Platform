@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.alignmentedas.p1eda.sandbox;
+package eu.excitementproject.eop.alignmentedas.p1eda.instances;
 
 import java.util.Vector;
 
@@ -34,18 +34,25 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLem
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerDE;
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
+/**
+ * 
+ * 
+ * 
+ * (On this simple coverage setup, best was with all four aligners, and three feature sets.
+ * on RTE3: 66.75)
+ * 
+ * @author Tae-Gil Noh
+ */
 @SuppressWarnings("unused")
-public class WithoutVO extends P1EDATemplate {
+public class SimpleWordCoverageEN extends P1EDATemplate {
 
-	public WithoutVO() throws EDAException
+	public SimpleWordCoverageEN() throws EDAException
 	{	
-		// And let's keep the alinger instance and scoring component... 
-		// This configuration keeps just one for each. (as-is counter) 
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null); 
-//			aligner4 = new VerbOceanENLinker(null); 
+			aligner3 = new WordNetENLinker(null);  
+			aligner4 = new VerbOceanENLinker(); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -64,8 +71,8 @@ public class WithoutVO extends P1EDATemplate {
 		try {
 			aligner1.annotate(input);
 			aligner2.annotate(input); 
-//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
-//			aligner4.annotate(input); 
+			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
+			aligner4.annotate(input); 
 
 		}
 		catch (PairAnnotatorComponentException pe)
@@ -139,6 +146,7 @@ public class WithoutVO extends P1EDATemplate {
 			throw new EDAException("Integrity failure - this simply shouldn't happen", obe); 
 		}
 		
+		// Now return the feature vector. The P1EDA template will use this. 
 		return fv; 
 	}
 	
