@@ -9,7 +9,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 
-import eu.excitementproject.eop.alignmentedas.P1EdaRunner;
+import eu.excitementproject.eop.alignmentedas.P1EdaRTERunner;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
@@ -50,7 +50,7 @@ public class InMemoryCasTest {
 			LAP_ImplBase lap = new MaltParserEN(); 
         	File rteInputXML = new File("../core/src/main/resources/data-set/English_dev.xml");  
     		File xmiDir = new File ("target/xmiTest/"); 
-			P1EdaRunner.runLAPForXmis(lap, rteInputXML, xmiDir); 
+			P1EdaRTERunner.runLAPForXmis(lap, rteInputXML, xmiDir); 
 			
 			logger.info("***"); 			logger.info("***"); 			logger.info("***"); 
 			

@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.alignmentedas.p1eda.sandbox;
+package eu.excitementproject.eop.alignmentedas.p1eda.instances;
 
 import java.util.Vector;
 
@@ -35,17 +35,12 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 @SuppressWarnings("unused")
-public class WithoutVO extends P1EDATemplate {
+public class MinimalP1EDA extends P1EDATemplate {
 
-	public WithoutVO() throws EDAException
+	public MinimalP1EDA() throws EDAException
 	{	
-		// And let's keep the alinger instance and scoring component... 
-		// This configuration keeps just one for each. (as-is counter) 
 		try {
-			aligner1 = new IdenticalLemmaPhraseLinker(); 
-			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null); 
-//			aligner4 = new VerbOceanENLinker(null); 
+			aligner = new IdenticalLemmaPhraseLinker(); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -62,11 +57,7 @@ public class WithoutVO extends P1EDATemplate {
 
 		// Here, just one aligner... (same lemma linker) 
 		try {
-			aligner1.annotate(input);
-			aligner2.annotate(input); 
-//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
-//			aligner4.annotate(input); 
-
+			aligner.annotate(input);
 		}
 		catch (PairAnnotatorComponentException pe)
 		{
@@ -164,10 +155,7 @@ public class WithoutVO extends P1EDATemplate {
 	}
 	
 	
-	AlignmentComponent aligner1; 
-	AlignmentComponent aligner2; 
-	AlignmentComponent aligner3; 
-	AlignmentComponent aligner4; 
+	AlignmentComponent aligner; 
 
 	ScoringComponent wordCoverageScorer;  
 	ScoringComponent nerCoverageScorer;  

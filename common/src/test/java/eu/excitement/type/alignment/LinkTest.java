@@ -43,6 +43,16 @@ public class LinkTest {
 			testlogger.info(iSet); 
 			Assert.assertEquals(1, dSet.size()); 
 			testlogger.info(dSet); 
+			
+			// empty set test 
+			aJCas = UimaUtils.newJcas(); 
+			aLink = new Link(aJCas); 
+
+			iSet = aLink.getGroupLabelsInferenceLevel(); 
+			dSet = aLink.getGroupLabelsDomainLevel(); 
+			Assert.assertEquals(0, iSet.size()); 
+			Assert.assertEquals(0, dSet.size()); 
+
 		}
 		catch (Exception e)
 		{

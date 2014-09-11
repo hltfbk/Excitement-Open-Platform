@@ -83,7 +83,7 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
  * @author Tae-Gil Noh
  *
  */
-public abstract class P1EDASimpleTemplate implements EDABasic<TEDecisionWithAlignment> {
+public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
 	
 	/**
 	 * The default, no argument constructor for this abstract class. Does nothing 
@@ -97,7 +97,7 @@ public abstract class P1EDASimpleTemplate implements EDABasic<TEDecisionWithAlig
 	 * For example, see SimpleWordCoverageP1EDA. 
 	 * 
 	 */
-	public P1EDASimpleTemplate() throws EDAException 
+	public P1EDATemplate() throws EDAException 
 	{
 		this(null); 
 	}
@@ -119,7 +119,7 @@ public abstract class P1EDASimpleTemplate implements EDABasic<TEDecisionWithAlig
 	 * @param evaluateAlignmentParameter
 	 * @throws EDAException
 	 */
-	public P1EDASimpleTemplate(Vector<ParameterValue> evaluateAlignmentParameter) throws EDAException
+	public P1EDATemplate(Vector<ParameterValue> evaluateAlignmentParameter) throws EDAException
 	{
 		this.logger = Logger.getLogger(getClass()); 
 		this.classifier = prepareClassifier();  

@@ -9,7 +9,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
-import eu.excitementproject.eop.alignmentedas.p1eda.P1EDASimpleTemplate;
+import eu.excitementproject.eop.alignmentedas.p1eda.P1EDATemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithVO;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithoutVO;
 import eu.excitementproject.eop.common.DecisionLabel;
@@ -36,8 +36,8 @@ public class CompareTwoEDAs {
 	public static void main(String[] args)
 	{
 		try {
-			P1EDASimpleTemplate withVO = new WithVO(); 
-			P1EDASimpleTemplate withoutVO = new WithoutVO(); 
+			P1EDATemplate withVO = new WithVO(); 
+			P1EDATemplate withoutVO = new WithoutVO(); 
 	
 			withVO.initialize(new File("target/withVO.cmodel")); 
 			withoutVO.initialize(new File("target/withoutVO.cmodel")); 

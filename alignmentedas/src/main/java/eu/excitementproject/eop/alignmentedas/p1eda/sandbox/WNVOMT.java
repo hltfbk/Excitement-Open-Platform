@@ -35,17 +35,17 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 @SuppressWarnings("unused")
-public class WithoutVO extends P1EDATemplate {
+public class WNVOMT extends P1EDATemplate {
 
-	public WithoutVO() throws EDAException
+	public WNVOMT() throws EDAException
 	{	
 		// And let's keep the alinger instance and scoring component... 
 		// This configuration keeps just one for each. (as-is counter) 
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null); 
-//			aligner4 = new VerbOceanENLinker(null); 
+			aligner3 = new WordNetENLinker(null); 
+			aligner4 = new VerbOceanENLinker(); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -64,8 +64,8 @@ public class WithoutVO extends P1EDATemplate {
 		try {
 			aligner1.annotate(input);
 			aligner2.annotate(input); 
-//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
-//			aligner4.annotate(input); 
+			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
+			aligner4.annotate(input); 
 
 		}
 		catch (PairAnnotatorComponentException pe)

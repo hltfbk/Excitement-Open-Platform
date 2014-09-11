@@ -14,7 +14,8 @@ import eu.excitementproject.eop.alignmentedas.p1eda.subs.ValueException;
 import eu.excitementproject.eop.common.DecisionLabel;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
-import weka.classifiers.bayes.NaiveBayes;
+//import weka.classifiers.bayes.NaiveBayes;
+import weka.classifiers.functions.Logistic;
 import weka.core.Attribute;
 import weka.core.FastVector;
 import weka.core.Instance;
@@ -47,7 +48,8 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 	 * @throws ClassifierException
 	 */
 	public EDABinaryClassifierFromWeka() throws ClassifierException  {
-		this(new NaiveBayes(), new String[] {"-K"}); 
+		this(new Logistic(), null); // logistic regression is generally go good in most situations. 
+		//this(new NaiveBayes(), new String[] {"-K"});   
 	}
 	
 	/**
