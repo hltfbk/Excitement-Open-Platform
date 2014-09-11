@@ -65,7 +65,6 @@ public class WordNetITLinker implements AlignmentComponent {
 	// private variable 
 	private final LexicalAligner worker; 
 	
-	// const, default values. Woudln't work when within Jar!  
 	private static final HashSet<WordNetRelation> defaultRelations = new HashSet<WordNetRelation>(Arrays.asList(WordNetRelation.SYNONYM)); 
 
 
