@@ -10,6 +10,7 @@ import java.io.File;
 //import java.io.ObjectInputStream;
 //import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
@@ -388,6 +389,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		{
 			throw new EDAException("Path " + xmiDir.getAbsolutePath() + " does not hold XMI files"); 
 		}
+		Arrays.sort(files); 
 		
 		for (File f : files)
 		{

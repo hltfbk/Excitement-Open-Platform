@@ -8,6 +8,7 @@
  * 
  * (TODO fill in overview here once finished) 
  * 
+ * - check p1eda.instances for running examples, such as English, German and Italian P1EDA instances. 
  * 
  * @author Tae-Gil Noh 
  * @since July 2014 
