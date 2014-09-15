@@ -40,7 +40,7 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 /**
  * 
  * 
- * (Best configuration on this simple coverage Italian was: 64.625 on RTE3.)
+ * (Best configuration on this simple coverage Italian was: 65.125 on RTE3.)
  * 
  * @author Tae-Gil Noh 
  */
@@ -69,6 +69,7 @@ public class SimpleWordCoverageIT extends P1EDATemplate {
 
 		try {
 			identicalLemmaLinker.annotate(input);
+			// slightly better result without using paraphrase linker, but... 
 			paraphraseLinker.annotate(input); 
 			italianWordNetLinker.annotate(input); 
 		}
@@ -117,7 +118,8 @@ public class SimpleWordCoverageIT extends P1EDATemplate {
 			{
 				ratio_ner = score2.get(0) / score2.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_ner)); 		
+			// For Italian, PN coverage seems to work less well... 
+			//fv.add(new FeatureValue(ratio_ner)); 		
 			
 			
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 

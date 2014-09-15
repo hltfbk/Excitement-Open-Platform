@@ -38,8 +38,8 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
  * 
  * 
  * 
- * (On this simple coverage setup, best was with all four aligners, and three feature sets.
- * on RTE3: 66.75)
+ * (On this simple coverage setup, best was with all four aligners, with three features (without verb coverage ratio) 
+ * on RTE3: 67.0)
  * 
  * @author Tae-Gil Noh
  */
@@ -134,7 +134,8 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_V)); 		
+			// For English, verb coverage feature doesn't seem to work well. 
+			//fv.add(new FeatureValue(ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)
