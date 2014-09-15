@@ -54,9 +54,9 @@ public class SimpleWordCoverageDE extends P1EDATemplate {
 		// And let's prepare the aligner instances and scoring components... 
 		try {
 			identicalLemmaLinker = new IdenticalLemmaPhraseLinker(); 
-//			meteorParaphraseLinker = new MeteorPhraseLinkerDE(); 
-//			derivBaseLinker = new DerivBaseDELinker(); 
-//			distSimLinker = new GermanTransDMDELinker();
+			meteorParaphraseLinker = new MeteorPhraseLinkerDE(); 
+			derivBaseLinker = new DerivBaseDELinker(); 
+			distSimLinker = new GermanTransDMDELinker();
 			germaNetLinker = new GermaNetDELinker("/Users/tailblues/germanet-8.0/GN_V80_XML/"); // please provide correct path for GermaNet!! 
 																								// see GermaNetDELinker for detail ... 
 		}

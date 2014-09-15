@@ -134,7 +134,7 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
 			}
-			// For English, verb coverage feature doesn't help. 
+			// For English, verb coverage feature doesn't seem to work well. 
 			//fv.add(new FeatureValue(ratio_V)); 		
 			
 		}

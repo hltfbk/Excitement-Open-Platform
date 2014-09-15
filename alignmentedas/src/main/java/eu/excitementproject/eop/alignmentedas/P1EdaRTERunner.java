@@ -47,7 +47,7 @@ public class P1EdaRTERunner
     		// use evaluateOnRTE3DE for German 
 //    		LAP_ImplBase lapDE = new TreeTaggerDE(); 
 //    		P1EDATemplate p1edaDE = new SimpleWordCoverageDE(); 
-//    		evaluateOnRTE3DE(lapDE, p1edaDE, true); 
+//    		evaluateOnRTE3DE(lapDE, p1edaDE, false); 
     		
     		// use evaluateOnRTE3IT for Italian 
 //    		LAP_ImplBase lapIT = new TreeTaggerIT(); 
