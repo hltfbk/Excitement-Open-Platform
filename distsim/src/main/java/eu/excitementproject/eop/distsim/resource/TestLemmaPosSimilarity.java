@@ -36,9 +36,9 @@ public class TestLemmaPosSimilarity {
 	
 	public static void main(String[] args) throws SimilarityNotFoundException, LexicalResourceException, UnsupportedPosTagStringException, ElementTypeException, FileNotFoundException, RedisRunException, eu.excitementproject.eop.common.exception.ConfigurationException {
 		
-		//Assumption: the running directory contains a subdirectory 'redis' with two file: redis-rever and redis.cof
+		//Assumption: the running directory contains a subdirectory 'redis' with two files: redis-rever and redis.conf
 		if (args.length != 1) {
-			System.out.println("Usage: eu.excitementproject.eop.distsim.application.TestLemmaPosSimilarity <configuration file>");
+			System.err.printf("Usage: %s <configuration file>\n", TestLemmaPosSimilarity.class.getName());
 			System.exit(0);
 		}
 		
