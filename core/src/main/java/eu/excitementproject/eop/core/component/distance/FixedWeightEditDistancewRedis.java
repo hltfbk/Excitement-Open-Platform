@@ -83,6 +83,7 @@ public abstract class FixedWeightEditDistancewRedis extends FixedWeightEditDista
 		    		initializeRedisResource(instance, config);
 		    			
 	    		} catch (LexicalResourceException e) {
+	    			logger.info("Problem initializing redis resource");
 		    		throw new ComponentException(e.getMessage());
 		    	}
      		}
