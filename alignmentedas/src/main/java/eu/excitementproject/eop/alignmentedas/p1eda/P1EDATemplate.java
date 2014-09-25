@@ -86,6 +86,7 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
  * @author Tae-Gil Noh
  *
  */
+
 public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
 	
 	/**
@@ -195,6 +196,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public void initialize(CommonConfig conf) throws EDAException
 	{
+<<<<<<< HEAD
 		//getting the name value table of the EDA
 		NameValueTable nameValueTable;
 		try {
@@ -219,6 +221,16 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 			e.printStackTrace();
 		}
 
+=======
+		NameValueTable nameValueTable;
+		try {
+			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	
+			File modelFile = nameValueTable.getFile("modelFile"); 
+			initialize(modelFile);
+		} catch (ConfigurationException e) {
+			throw new EDAException ("Reading configuration data failed: " + e.getMessage(), e); 
+		}
+>>>>>>> upstream/master
 	}
 	
 	public void initialize(File classifierModelFile) throws EDAException
@@ -233,13 +245,18 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		}
 	}
 
-	public void startTraining(CommonConfig conf)
+	public void startTraining(CommonConfig conf) throws EDAException 
 	{
+<<<<<<< HEAD
 		// TODO read from common config, and call argument version,
+=======
+		// read from common config, and call argument version,
+>>>>>>> upstream/master
 		NameValueTable nameValueTable;
 		try {
 			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	
 			
+<<<<<<< HEAD
 			//setting the training directory
 			if (this.trainDIR == null)
 				this.trainDIR = nameValueTable.getString("trainDir");
@@ -259,6 +276,15 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 			e.printStackTrace();
 		}
 
+=======
+			File trainDir = nameValueTable.getFile("trainDir"); 
+			File modelFileToCreate = nameValueTable.getFile("modelFile"); 
+			
+			startTraining(trainDir, modelFileToCreate); 
+		} catch (ConfigurationException ce) {
+			throw new EDAException("Reading configuration from CommonConfig failed: " + ce.getMessage(), ce); 
+		}	
+>>>>>>> upstream/master
 	}
 	
 	
@@ -627,9 +653,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	 * 
 	 */
 	protected Vector<ParameterValue> internalParameters = null; 
-	
-	
-	
 	
 	//
 	// private final fields... 
