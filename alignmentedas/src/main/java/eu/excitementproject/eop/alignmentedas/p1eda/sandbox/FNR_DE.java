@@ -28,6 +28,9 @@ import eu.excitementproject.eop.common.component.alignment.AlignmentComponentExc
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.DerivBaseDELinker;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.GermaNetDELinker;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.GermanTransDMDELinker;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.VerbOceanENLinker;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.WordNetENLinker;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
@@ -35,25 +38,24 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 /**
- * 
- * Fast aNd Reliable, word-coverage based English configuration of P1EDA.
- * (This setting will get you around 65-66% accuracy on RTE3. Not the best setting, 
- * but more reliable, and fast to be used on "any" text. )
+ * Fast aNd Reliable, word-coverage based German configuration of P1EDA.
+ * (This setting will get you around 63-64% accuracy on German RTE3. 
+ * Not the best setting, but more reliable, and fast to be used on "any" text. )
  *  
- * Mainly to be used for WP6 experiments. 
- * 
  * @author Tae-Gil Noh
+ *
  */
 @SuppressWarnings("unused")
-public class FNR_EN extends P1EDATemplate {
+public class FNR_DE extends P1EDATemplate {
 
-	public FNR_EN() throws EDAException
+	public FNR_DE() throws EDAException
 	{	
+		// And let's prepare the aligner instances and scoring components... 
 		try {
-			aligner1 = new IdenticalLemmaPhraseLinker(); 
-			aligner2 = new MeteorPhraseLinkerEN(); 
-//			aligner3 = new WordNetENLinker(null);  // due to its slowness.  
-//			aligner4 = new VerbOceanENLinker();  // due to its usage of fixed-path. 
+			identicalLemmaLinker = new IdenticalLemmaPhraseLinker(); 
+			meteorParaphraseLinker = new MeteorPhraseLinkerDE(); 
+//			derivBaseLinker = new DerivBaseDELinker(); 
+//			distSimLinker = new GermanTransDMDELinker();
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -67,14 +69,12 @@ public class FNR_EN extends P1EDATemplate {
 
 	@Override
 	public void addAlignments(JCas input) throws EDAException {
-
-		// Here, just one aligner... (same lemma linker) 
+		
 		try {
-			aligner1.annotate(input);
-			aligner2.annotate(input); 
-//			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
-//			aligner4.annotate(input); // not to be used by TL. (due to need of external path) 
-
+			identicalLemmaLinker.annotate(input);
+			meteorParaphraseLinker.annotate(input); 
+//			derivBaseLinker.annotate(input); 
+//			distSimLinker.annotate(input); 
 		}
 		catch (PairAnnotatorComponentException pe)
 		{
@@ -123,7 +123,6 @@ public class FNR_EN extends P1EDATemplate {
 			}
 			fv.add(new FeatureValue(ratio_ner)); 		
 			
-			
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
 			// we know Verb Coverage counter returns 2 numbers. 
 			// (number of covered Vs in H, number of all Vs in H) 
@@ -134,7 +133,7 @@ public class FNR_EN extends P1EDATemplate {
 			else
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
-			}
+			}			
 			fv.add(new FeatureValue(ratio_V)); 		
 			
 		}
@@ -147,7 +146,6 @@ public class FNR_EN extends P1EDATemplate {
 			throw new EDAException("Integrity failure - this simply shouldn't happen", obe); 
 		}
 		
-		// Now return the feature vector. The P1EDA template will use this. 
 		return fv; 
 	}
 	
@@ -156,6 +154,15 @@ public class FNR_EN extends P1EDATemplate {
 	{
 		try {
 			return new EDABinaryClassifierFromWeka(new Logistic(), null); 
+			// you can use other classifiers from Weka, such as ... 
+			//return new EDABinaryClassifierFromWeka(new NaiveBayes(), null); 
+			//return new EDABinaryClassifierFromWeka(new VotedPerceptron(), null); 
+			//return new EDABinaryClassifierFromWeka(new J48(), null); 
+			//return new EDABinaryClassifierFromWeka(new MultilayerPerceptron(), null); 
+			//return new EDABinaryClassifierFromWeka(new KStar(), null);
+			//return new EDABinaryClassifierFromWeka(new SimpleLogistic(), null); 
+			//return new EDABinaryClassifierFromWeka(new RandomForest(), null); 
+
 		}
 		catch (ClassifierException ce)
 		{
@@ -163,10 +170,12 @@ public class FNR_EN extends P1EDATemplate {
 		}
 	}
 	
-	AlignmentComponent aligner1; 
-	AlignmentComponent aligner2; 
-//	AlignmentComponent aligner3; 
-//	AlignmentComponent aligner4; 
+	
+	AlignmentComponent identicalLemmaLinker; 
+	AlignmentComponent meteorParaphraseLinker; 
+	AlignmentComponent derivBaseLinker; 
+	AlignmentComponent distSimLinker; 
+	AlignmentComponent germaNetLinker; 
 
 	ScoringComponent wordCoverageScorer;  
 	ScoringComponent nerCoverageScorer;  
