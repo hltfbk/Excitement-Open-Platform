@@ -38,7 +38,7 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 /**
- * Fast aNd Reliable, word-coverage based English configuration of P1EDA.
+ * Fast aNd Reliable, word-coverage based German configuration of P1EDA.
  * (This setting will get you around 63-64% accuracy on German RTE3. 
  * Not the best setting, but more reliable, and fast to be used on "any" text. )
  *  
