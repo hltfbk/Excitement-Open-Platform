@@ -35,6 +35,8 @@ import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
@@ -85,6 +87,27 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
  *
  */
 public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
+	
+	/**
+	 * the language
+	 */
+	protected String language;
+
+	/**
+	 * the training data directory
+	 */
+	protected String trainDIR = null;
+
+	/**
+	 * the test data directory
+	 */
+	protected String testDIR = null;
+
+
+	/**
+	 * the model file 
+	 */
+	protected String modelFile = null;
 	
 	/**
 	 * The default, no argument constructor for this abstract class. Does nothing 
@@ -172,7 +195,30 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public void initialize(CommonConfig conf) throws EDAException
 	{
-		// TODO read from common config table, and call argument version 
+		//getting the name value table of the EDA
+		NameValueTable nameValueTable;
+		try {
+			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	
+			
+			//setting the training directory
+			if (this.trainDIR == null)
+				this.trainDIR = nameValueTable.getString("trainDir");
+		
+			//setting the test directory
+			if (this.testDIR == null)
+				this.testDIR = nameValueTable.getString("testDir");
+			
+			// setting the model file
+			if (this.modelFile == null)
+				this.modelFile = nameValueTable.getString("modelFile");
+			
+			initialize(new File(modelFile));
+			
+		} catch (ConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	public void initialize(File classifierModelFile) throws EDAException
@@ -189,7 +235,30 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 
 	public void startTraining(CommonConfig conf)
 	{
-		// TODO read from common config, and call argument version, 
+		// TODO read from common config, and call argument version,
+		NameValueTable nameValueTable;
+		try {
+			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	
+			
+			//setting the training directory
+			if (this.trainDIR == null)
+				this.trainDIR = nameValueTable.getString("trainDir");
+		
+			//setting the test directory
+			if (this.testDIR == null)
+				this.testDIR = nameValueTable.getString("testDir");
+			
+			// setting the model file
+			if (this.modelFile == null)
+				this.modelFile = nameValueTable.getString("modelFile");
+			
+			startTraining(new File(trainDIR), new File(modelFile));
+			
+		} catch (ConfigurationException | EDAException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 	
 	
