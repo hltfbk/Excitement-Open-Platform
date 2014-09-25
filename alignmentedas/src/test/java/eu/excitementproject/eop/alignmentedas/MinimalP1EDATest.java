@@ -28,7 +28,7 @@ public class MinimalP1EDATest {
 		// Set Log4J for the test 
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
-		Logger.getRootLogger().setLevel(Level.INFO);  // set INFO to hide Debug  
+		Logger.getRootLogger().setLevel(Level.DEBUG);  // set INFO to hide Debug  
 		testlogger = Logger.getLogger(getClass().getName()); 
 
 		// prepare a lemmatizer 
