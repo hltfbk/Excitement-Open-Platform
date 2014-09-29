@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -19,83 +19,94 @@
   <body>
     <header>
       <div class="inner">
-        <h1>EXCITEMENT&nbsp;Open&nbsp;Platform</h1>
-        <h2>for Textual Entailment</h2>
-        <!--
-        <a href="https://github.com/hltfbk/Excitement-Open-Platform" class="button"><small>View project on</small>GitHub</a>
-        -->
+        <h1>Excitement-open-platform</h1>
+        <h2>Open Source Platform for Recognizing Textual Entailments (RTE)</h2>
+        <a href="https://github.com/hltfbk/Excitement-Open-Platform" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
 
     <div id="content-wrapper">
       <div class="inner clearfix">
         <section id="main-content">
-          <h3>
-<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h3>
+          <h2>
+<a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
-<p>The EXCITEMENT Open Platform (EOP) is an open source software platform containing state-of-the-art algorithms for recognizing texual entailment relations: </p>
-
-<p>given two text fragments, one named text and the other named hypothesis, the task consists in recognizing whether the hypothesis can be inferred from the text. </p>
-
-<p>Written in Java, EOP is a main product of the project <a href="http://www.excitement-project.eu/" target="_blank">EXCITEMENT - EXploring Customer Interactions through Textual EntailMENT</a>  which is funded by the European Commission under the European Union's Seventh Framework Programme (FP7). EOP is designed to be efficient and extendable. Highlights include:
+<p align="justify">
+The Excitement Open Platform (EOP) is a generic architecture and a comprehensive implementation for textual inference in multiple languages. The platform includes state-of-art algorithms, a large number of knowledge resources, and facilities for experimenting and testing innovative approaches. EOP is a main product of the main outcomes of the project <a href="http://www.excitement-project.eu/" target="_blank">EXCITEMENT - EXploring Customer Interactions through Textual EntailMENT</a> and its highlights include:
 </p>
+
+<p>Readily-available Recognizing Textual Entailment (RTE) Technology</p>
 
 <ul>
-<li>Separation between Linguistic Analysis Pipelines and Entailment Components</li>
-<li>Supporting modularity and interoperability among Components</li>
-<li>Java API with source code</li>
-<li>Pre-trained multi-lingual models (i.e. English, German, Italian)</li>
-<li>Trainable with new sample data</li>
-<li>Detailed documentation to understand the structure and implementation of EOP</li>
-<li>Quick Start documentation to start using EOP from now</li>
-<li>Results and configuration files archive shared among users</li>
-</ul>
-
-
-<h3>
-<a name="licence" class="anchor" href="#licence"><span class="octicon octicon-link"></span></a>Licence</h3>
-
-<p>The EXCITEMENT Open Platform (EOP) is released under the terms of <a href="http://www.gnu.org/licenses/gpl.html" target="_blank">General Public License (GPL) Version 3</a>.</p>
-
-<h3>
-<a name="code-distribution" class="anchor" href="#code-distribution"><span class="octicon octicon-link"></span></a>Code Distribution</h3>
-
-<p>We provide different distributions for users depending on the fact that they want to get the code as a Zip File, clone the code from the EOP GitHub central repository or they want to use the EOP Maven Artifacts. Users have access to the lastest code release by selecting the <em>Lastest Release</em> option at the right side menu. In contrast developers who want to contribute to the project should select the <em>EOP GitHub Repository</em> option from the menu. </p>
-
-<h3>
-<a name="get-involved" class="anchor" href="#get-involved"><span class="octicon octicon-link"></span></a>Get Involved</h3>
-
-<p>EOP is developed by the members of the EXCITEMENT project and by volunteers and is always looking for new contributors to work on all parts of the project. Every contribution is welcome and can be anything from a small documentation typo fix to new components development and/or modifications of exiting ones. Before you start to contribute we suggest to join the following user and development mailing lists:</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>To communicate with the people already involved with EOP in order to report bugs, suggestions or a personal interest in contributing to the project we are providing two different mailing lists:</p>
+<li>Including state-of-the-art methods</li>
+</ul><p>Modular</p>
 
 <ul>
-<li>Users: this list is the general users mailing list and is used for posting most relevant questions. If you are not sure of which list you should use, post here first. Subscribe by sending an e-mail to: <a href="mailto:eop-users+subscribe@googlegroups.com">eop-users+subscribe@googlegroups.com</a>
-</li>
-<li>Developers: this list is for development discussions like current issues, patch suggestions and to show interest in contributing to the platform. Subscribe by sending an e-mail to:  <a href="mailto:eop-dev+subscribe@googlegroups.com">eop-dev+subscribe@googlegroups.com</a>
-</li>
-</ul>
+<li>Preprocessing</li>
+<li>Entailment Engines</li>
+<li>Knowledge Resources</li>
+</ul><p>Multilingual</p>
 
-<h3>
-<a name="reference" class="anchor" href="#licence"><span class="octicon octicon-link"></span></a>Reference</h3>
-<p>
-B. Magnini, R. Zanoli, I. Dagan, K. Eichler, G. Neumann, T.-Gil. Noh, S. Pado, A. Stern, O. Levy<br>
-<a href="http://u.cs.biu.ac.il/~dagan/publications/the-excitement-open-platform-for-textual-inferences-acl-2014.pdf" target="_blank">
-The Excitement Open Platform for Textual Inferences.</a> In proceedings of ACL demo session, June 2014.
-</p>
-<p></p>
-S. Pado, T.-G. Noh, A. Stern, R. Wang, R. Zanoli<br>
-<a href="http://journals.cambridge.org/action/displayAbstract?fromPage=online&#38;aid=9115155&#38;fulltextType=RA&#38;fileId=S1351324913000351" target="_blank">Design and Realization of a Modular Architecture for Textual Entailment.</a>
-Natural Language Engineering. Cambridge University Press, 2014.
+<ul>
+<li>Existing modules in 3 languages (i.e. English, German, Italian)</li>
+<li>Tools for creating new resources in any language</li>
+</ul><hr><h2>
+<a name="recognizing-textual-entailment" class="anchor" href="#recognizing-textual-entailment"><span class="octicon octicon-link"></span></a>Recognizing Textual Entailment</h2>
+
+<p align="justify">
+Given two text fragments, one named text (T) and the other named hypothesis (H), the task consists in recognizing whether the hypothesis can be inferred from the text, e.g.,
 </p>
 
+<pre><code>T: Obama was born in Hawaii 
+H1: Obama was born in America 
+H2: Obama was born in Kenya 
 
+T entails H1 but not H2 
+</code></pre>
+
+<hr><h2>
+<a name="architecture" class="anchor" href="#architecture"><span class="octicon octicon-link"></span></a>Architecture</h2>
+
+<p align="justify">
+<img src="http://hlt-services4.fbk.eu:8080/artifactory/repo/eop_website/images/EOP-Architecture.gif" alt="EOP Architecture" align="left" width="60%" height="60%"> EOP takes the T-H pairs as input and the output is an entailment judgement, represented by "Entailment" if T entails H, or "NonEntailment" if the relation does not hold. The EOP architecture is based on the concept of modularization with pluggable and replaceable components to enable extension and customization. <br><br>
+
+The Linguistic Analysis Pipeline (LAP) is a collection of annotation components for Natural Language Processing (NLP) where component integration is based on the Apache UIMA framework. It enables interoperability among components while ensuring language independence. <br><br>
+
+The Entailment Decision Algorithm (EDA) computes an entailment decision for a given T-H pair, and can use components that provide standardized algorithms or knowledge resources. Currently, the EOP ships with three EDAs each following a different approach: transformation-based, edit-distance based, and classification based. <br><br>
+
+Knowledge Resources are crucial to recognize cases where T and H use different textual expressions (words, phrases) while preserving entailment (e.g., home --&gt; house, Hawaii --&gt; America, born in --&gt; citizen of). EOP includes a wide range of knowledge resources, including lexical and syntactic resources, where some of them are grabbed from manual resources, like dictionaries, while others are learned automatically.
+</p>
+
+<hr><h2>
+<a name="use-cases" class="anchor" href="#use-cases"><span class="octicon octicon-link"></span></a>Use Cases</h2>
+
+<ul>
+<li>Applied Textual Entailment: users not interested in details of RTE but in NLP tasks in which textual entailment can take over part of or all of the semantic processing, such as Question Answering or Intelligent Tutoring. </li>
+<li>Textual Entailment Development: researchers interested in RTE itself, for example with the goal of developing novel algorithms for detecting entailment. </li>
+<li>Lexical Semantics Evaluation: researchers whose primary interest is in (lexical) semantics. They want to integrate knowledge resources into the EOP platform and measure their impact on deciding textual entailment.</li>
+<li>Educational Use: EOP as an educational tool to support academic courses and projects on RTE and inference more generally.</li>
+</ul><hr><h2>
+<a name="distribution" class="anchor" href="#distribution"><span class="octicon octicon-link"></span></a>Distribution</h2>
+
+<ul>
+<li>Communication channels: users/developers mailing list and issue tracking system.</li>
+<li>Build Automation Tool: EOP as a Maven multi-modules project, with all modules sharing the same Maven standard structure, making it easier to find files in the project once one is used to Maven.<br>
+</li>
+<li>Version Control System: GitHub for code and documentation storage, development, and issue tracking.<br>
+</li>
+<li>Continuous Integration: Jenkins for Continuous Integration, a software development practice where developers of a team integrate their work frequently (e.g., daily).</li>
+<li>Results Archive: as a new feature for community building; EOP users share their experiments and results in a dedicated repository.</li>
+<li>Licence: General Public License (GPL) Version 3.<br>
+</li>
+</ul><hr><h2>
+<a name="references" class="anchor" href="#references"><span class="octicon octicon-link"></span></a>References</h2>
+
+<p>B. Magnini, R. Zanoli, I. Dagan, K. Eichler, G. Neumann, T.-Gil. Noh, S. Pado, A. Stern, O. Levy<br><a href="http://u.cs.biu.ac.il/~dagan/publications/the-excitement-open-platform-for-textual-inferences-acl-2014.pdf" target="_blank">The Excitement Open Platform for Textual Inferences.</a> In proceedings of ACL demo session, June 2014.</p>
+
+<p>S. Pado, T.-G. Noh, A. Stern, R. Wang, R. Zanoli
+<a href="http://journals.cambridge.org/action/displayAbstract?fromPage=online&amp;aid=9115155&amp;fulltextType=RA&amp;fileId=S1351324913000351" target="_blank">Design and Realization of a Modular Architecture for Textual Entailment.</a> Natural Language Engineering. Cambridge University Press, 2014. </p>
         </section>
 
-        <!--
         <aside id="sidebar">
           <a href="https://github.com/hltfbk/Excitement-Open-Platform/zipball/master" class="button">
             <small>Download</small>
@@ -108,68 +119,21 @@ Natural Language Engineering. Cambridge University Press, 2014.
 
           <p class="repo-owner"><a href="https://github.com/hltfbk/Excitement-Open-Platform"></a> is maintained by <a href="https://github.com/hltfbk">hltfbk</a>.</p>
 
-          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
         </aside>
-        -->
-        
-        <aside id="sidebar">
-        
-          <a href="http://hlt-services4.fbk.eu/eop/index.php" target="_blank" class="button">
-            <!-- <small>EOP Demo</small> -->
-            EOP Demo
-          </a>
-          <a href="https://github.com/hltfbk/EOP-1.1.3/wiki" class="button">
-            <!-- <small>Latest Release v1.1.3</small> -->
-            Latest Release v1.1.3
-          </a>
-          <a href="https://github.com/hltfbk/Excitement-Open-Platform" class="button">
-            <!-- <small>EOP Repository</small> -->
-            EOP GitHub Repository
-          </a>
-          
-          
-          <p>
-          <span style="FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #555555; text-decoration: underline">News and Events</span>
-          </p>
-          
-          <ul>
-          <li>
-          June 2014: EOP v1.1.3
-          </li>
-          <li>
-          May 2014: EOP at <a href="http://lrec2014.lrec-conf.org/en/" target="_blank">LREC</a>
-          </li>
-          <li>
-          March 2014: EOP v1.1.2
-          </li>
-          <li>
-          February 2014: EOP v1.1.1
-          </li>
-          </ul>
-            
-          <p>
-          <span style="FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #555555; text-decoration: underline">Previous Releases</span>
-          </p>
-          <ul>
-          <li>
-          March 2014: <a href="https://github.com/hltfbk/EOP-1.1.2/wiki" target="_blank">EOP v1.1.2</a>
-          </li>
-          <li>
-          February 2014: <a href="https://github.com/hltfbk/EOP-1.1.1/wiki" target="_blank">EOP v1.1.1</a>
-          </li>
-          <li>
-          August 2013: <a href="https://github.com/hltfbk/EOP-1.0.2/wiki" target="_blank">EOP v1.0.2</a>
-          </li>
-          </ul>
-          
-        </aside>
-        
-        
-        
-        
       </div>
     </div>
 
-  
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-000000-01");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
