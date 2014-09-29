@@ -1,0 +1,17 @@
+<!DOCTYPE InsertChildQuery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+
+<!ELEMENT InsertChildQuery (xpath, childInfo, info?, multiple?)>
+<!ATTLIST InsertChildQuery
+	toolName CDATA #FIXED "InsertChild"
+>
+<!ELEMENT xpath (#PCDATA)>	<!-- The XPath expression -->
+<!ELEMENT childInfo EMPTY>	<!-- The new attribute info -->
+<!ATTLIST childInfo
+	type	(element|text)	"element"
+	data	CDATA	#REQUIRED
+	pos	CDATA	#IMPLIED
+>
+
+%common;
+]>

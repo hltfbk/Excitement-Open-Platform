@@ -1,0 +1,92 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body BGCOLOR="#FFFFCB">
+
+<p>This file contains a short description of the DTD used for saving/loading <em>Tokenizers</em>
+in <em>ClarkSystem</em>. There is one example XML document which represents the
+serialization of one <em>Tokenizer</em> from the system.</p>
+
+<p><b>&lt;!DOCTYPE Tokenizers [<br>
+</b><br>
+<b>&lt;!ELEMENT Tokenizers (tokenizer)+&gt;</b><br>
+<br>
+<b>&lt;!ELEMENT tokenizer (name,author?,parent?,so?,Comment?,line+)&gt;</b> 
+
+<ul>
+  <li><b>name</b> - The tokenizer name</li>
+  <li><b>author - </b>The tokenizer's author</li>
+  <li><b>parent - </b>The parent tokenizer (only for normal tokenizers)</li>
+  <li><b>so - </b>The sort order of categories (only for primitive tokenizers)</li>
+  <li><b>Comment - </b>User commentary</li>
+  <li><b>line - </b>lines with definitions of categories and their values.</li>
+</ul>
+
+<p><b>&lt;!ATTLIST tokenizer<br>
+&nbsp;&nbsp;&nbsp; type (primitive|normal) &quot;normal&quot;<br>
+&gt;</b><br>
+The attribute<b> type</b> of the tokenizer represent the tokenizer type
+primitive or normal.<br>
+For the primitive tokenizer the so (sort order) element is obligatory.<br>
+The normal tokenizer must have a parent element which represents the parent tokenizer
+name.</p>
+
+<p><b>&lt;!ELEMENT name #PCDATA&gt;</b> <br>
+<b>&lt;!ELEMENT author #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT so #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT parent #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT Comment #PCDATA&gt;</b> </p>
+
+<p><b>&lt;!ELEMENT line (cat,value,normalize?)+&gt;</b> 
+
+<ul>
+  <li><b>cat - </b>Tokenizer's category name</li>
+  <li><b>value - </b>Category value regular expression or primitive category
+    definition</li>
+  <li><b>normalize - </b>Normalization of the current category value (only for
+    primitive tokenizer)</li>
+</ul>
+
+<p><b>&lt;!ELEMENT cat #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT value #PCDATA&gt;</b> </p>
+
+<p><b>&lt;!ELEMENT normalize (normcat,(code,norm)*)&gt;</b>&lt;!-- Normalization
+for the current line --&gt; 
+
+<ul>
+  <li><b>normcat - </b>Tokenizer's category name</li>
+  <li><b>code - </b>Symbol code in HEX format</li>
+  <li><b>norm - </b>Normalized symbol code in HEX fromat</li>
+</ul>
+<b>
+
+<p>&lt;!ELEMENT normcat #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT code #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT norm #PCDATA&gt;</b></p>
+
+<p>Example :</p>
+
+<p>&lt;?xml version=&quot;1.0&quot;?&gt;<br>
+&lt;!-- This Document is created with the Clark System! http://www.bultreebank.org --&gt;<br>
+&lt;Tokenizers&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;tokenizer type=&quot;normal&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;name&gt;MixedWord&lt;/name&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;author&gt;Clark System&lt;/author&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;parent&gt;Mixed&lt;/parent&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;cat&gt;LATw&lt;/cat&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;value&gt;LAT+|(LAT+,&amp;quot;-&amp;quot;,LAT+)+&lt;/value&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;cat&gt;CYRw&lt;/cat&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;value&gt;CYR+|(CYR+,&amp;quot;-&amp;quot;,CYR+)+&lt;/value&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/line&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/tokenizer&gt;<br>
+&lt;/Tokenizers&gt;</p>
+
+<p><img src="example.gif" width="525" height="259" alt="example.gif (14878 bytes)"></p>
+</body>
+</html>

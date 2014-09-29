@@ -1,0 +1,37 @@
+<!DOCTYPE multiqueryex [
+
+
+<!ELEMENT multiqueryex ((query|control)*, info?)>
+<!ATTLIST multiqueryex
+	toolName CDATA #FIXED "MultiQueryEx"
+	nowarn	(y|n)	"y"
+	noresultbreak (y|n)	"n"
+	usegc	(y|n)	"n"
+	xmlView (y|n) "n"
+>
+
+<!ELEMENT query (#PCDATA)>
+<!ATTLIST query
+	tool (Statistics|Concordance|Extract|Sort
+		|TextReplace|Remove|Grammar|Constraints
+		|Rename|XSLT|MultiQuery|EntityConverter
+		|GrammarGroup|InsertAttribute|InsertChild
+		|InsertParent|InsertSibling|XPathTransformation
+		|MultiQueryEx) #REQUIRED
+	label	CDATA   #IMPLIED>
+
+<!ELEMENT control Documents?>
+<!ELEMENT Documents document+>
+<!ELEMENT document (#PCDATA)>
+
+<!ATTLIST control
+	type (IF|IF_NOT|IF_CHANGED
+		|IF_NOT_CHANGED|GOTO
+		|IF_APPLIED|DELETE|EXIST)	#REQUIRED
+	xpath	CDATA	#IMPLIED
+	target	CDATA	#REQUIRED
+	label		CDATA  #IMPLIED
+>
+<!ELEMENT info (#PCDATA)>
+
+]>

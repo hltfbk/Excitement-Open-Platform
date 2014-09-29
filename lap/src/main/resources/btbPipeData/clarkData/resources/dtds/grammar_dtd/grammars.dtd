@@ -1,0 +1,29 @@
+<!DOCTYPE Grammars [
+
+<!ELEMENT Grammars (grammar)+>
+
+<!ELEMENT grammar (name,variables?,line+)>
+
+<!ATTLIST grammar
+	direction (left_to_right|right_to_left) 'left_to_right'
+>
+
+<!ELEMENT variables (variable+)>
+
+<!ELEMENT variable (vname,positive,negative)>
+<!ELEMENT positive (value*)>
+<!ELEMENT negative (value*)>
+<!ELEMENT value (#PCDATA)>
+<!ELEMENT vname (#PCDATA*)>
+<!ATTLIST variable
+    match (longest|shortest) 'longest'>
+
+
+<!ELEMENT line (LC?,RE,RC?,RM,Comment?)+>
+<!ELEMENT name (#PCDATA)> <!-- The grammar name -->
+<!ELEMENT LC (#PCDATA)> <!-- Left Context of grammar line -->
+<!ELEMENT RE (#PCDATA)> <!-- Body of grammar line -->
+<!ELEMENT RC (#PCDATA)> <!--  -->
+<!ELEMENT RM (#PCDATA)>  <!-- Return match of grammar line -->
+<!ELEMENT Comment (#PCDATA)>
+]>

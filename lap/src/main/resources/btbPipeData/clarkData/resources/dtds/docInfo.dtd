@@ -1,0 +1,17 @@
+<!DOCTYPE docInfo [
+
+<!ELEMENT docInfo (comment?,document+)>
+<!ATTLIST docInfo
+	type  (tags|words)   #REQUIRED>
+
+<!ELEMENT comment (#PCDATA)>
+
+<!ELEMENT document (entry*)>
+<!ATTLIST document
+	name CDATA #REQUIRED>
+
+<!ELEMENT entry EMPTY>
+<!ATTLIST entry
+	item CDATA #REQUIRED
+	count CDATA #REQUIRED>
+]>

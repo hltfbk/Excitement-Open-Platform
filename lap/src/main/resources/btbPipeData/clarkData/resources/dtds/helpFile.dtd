@@ -1,0 +1,11 @@
+<!DOCTYPE CLaRK_constraints_help [
+
+<!ELEMENT CLaRK_constraints_help (comment,pair+)>
+
+<!ELEMENT pair (item, descr)>
+
+<!ELEMENT item (#PCDATA)>
+<!ELEMENT descr (#PCDATA)>
+<!ELEMENT comment (#PCDATA)>
+
+]>

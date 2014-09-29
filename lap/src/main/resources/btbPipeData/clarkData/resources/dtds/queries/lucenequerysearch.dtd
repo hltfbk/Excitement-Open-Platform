@@ -1,0 +1,18 @@
+<!DOCTYPE InsertAttributeQuery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+
+<!ELEMENT LuceneSearchQuery (field*)>
+<!ATTLIST LuceneSearchQuery 
+	toolName CDATA #IMPLIED 
+	indexID CDATA #REQUIRED
+	extract (y|n) "n"
+>
+<!ELEMENT field EMPTY>	<!-- The new attribute info -->
+<!ATTLIST field
+	id	CDATA	#REQUIRED
+	type	CDATA	#REQUIRED
+	
+>
+
+%common;
+]>

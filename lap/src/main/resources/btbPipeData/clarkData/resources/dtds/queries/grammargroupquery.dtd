@@ -1,0 +1,9 @@
+<!DOCTYPE grammargroupquery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+%common;
+<!ELEMENT grammargroupquery (query*, info?, multiple?)>
+<!ATTLIST grammargroupquery
+	toolName CDATA #FIXED "GrammarGroup"
+>
+<!ELEMENT query (#PCDATA)>
+]>
