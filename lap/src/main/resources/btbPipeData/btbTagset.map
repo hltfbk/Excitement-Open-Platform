@@ -50,3 +50,6 @@ I=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O
 
 #punctuation
 Punct=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PUNC
+
+#foreign word
+L=de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O
