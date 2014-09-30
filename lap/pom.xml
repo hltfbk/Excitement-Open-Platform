@@ -263,7 +263,16 @@
 			<groupId>org.biu.nlp</groupId>
 			<artifactId>biu_legacy</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.bultreebank.clark</groupId>
+			<artifactId>clark-system</artifactId>
+			<version>3.1.20130611</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bultreebank.clark.plugins.gaze</groupId>
+			<artifactId>gaze-plugin</artifactId>
+			<version>1.0.20140922</version>
+		</dependency>
 
  	</dependencies>
 
