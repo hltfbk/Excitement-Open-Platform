@@ -163,7 +163,7 @@ public static void main(String[] args) {
 		try {
 			LAP_BTBPipe l = new LAP_BTBPipe();
 
-			String testFile = "src/test/resources/small_bg_dev.xml";
+			String testFile = "src/test/resources/small_bg.xml";
 			l.processRawInputFormat(new File(testFile), new File("./"));			
 			
 		} catch (Exception e) {
