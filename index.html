@@ -31,7 +31,7 @@
           <h2>
 <a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
-<p>The Excitement Open Platform (EOP) is a generic architecture and a comprehensive implementation for textual inference in multiple languages. The platform includes state-of-art algorithms, a large number of knowledge resources, and facilities for experimenting and testing innovative approaches. The EOP is one of the main outcomes of the project <a href="http://www.excitement-project.eu/" target="_blank">EXCITEMENT - EXploring Customer Interactions through Textual EntailMENT</a>. The Platform includes readily-available <a href="#Recognizing_Textual_Entailment">Recognizing Textual Entailment</a> (RTE) technology, and a modular <a href="#Architecture">architecture</a>  for text preprocessing, entailment engines and several knowledge resources. The current EOP version covers three languages (i.e. English, German, Italian) and includes tools for creating new resources in other languages. The EOP has been designed to be used in several research <a href="#Use%20Cases">use cases</a> and its <a href="#Distribution">distribution</a> package provides a number of utilities.</p>
+<p>The Excitement Open Platform (EOP) is a generic architecture and a comprehensive implementation for textual inference in multiple languages. The platform includes state-of-art algorithms, a large number of knowledge resources, and facilities for experimenting and testing innovative approaches. The EOP is one of the main outcomes of the project <a href="http://www.excitement-project.eu/" target="_blank">EXCITEMENT - EXploring Customer Interactions through Textual EntailMENT</a>. The Platform includes readily-available <a href="#Recognizing_Textual_Entailment">Recognizing Textual Entailment</a> (RTE) technology, and a modular <a href="#Architecture">architecture</a> for text preprocessing, entailment engines and several knowledge resources. The current EOP version covers three languages (i.e. English, German, Italian) and includes tools for creating new resources in other languages. The EOP has been designed to be used in several research <a href="#Use_Cases">use cases</a> and its <a href="#Distribution">distribution</a> package provides a number of utilities.</p>
 
 <hr><h2>
 <a name="recognizing-textual-entailment" class="anchor" href="#recognizing-textual-entailment"><span class="octicon octicon-link"></span></a>
@@ -57,13 +57,14 @@ T entails H1 but not H2
 
 The Linguistic Analysis Pipeline (LAP) is a collection of annotation components for Natural Language Processing (NLP) where component integration is based on the Apache UIMA framework. It enables interoperability among components while ensuring language independence. <br><br>
 
-The Entailment Decision Algorithm (EDA) computes an entailment decision for a given T-H pair, and can use components that provide standardized algorithms or knowledge resources. Currently, EOP ships with three EDAs each following a different approach: transformation-based, edit-distance based, and classification based. <br><br>
+The Entailment Decision Algorithm (EDA) computes an entailment decision for a given T-H pair, and can use components that provide standardized algorithms or knowledge resources. Currently, the EOP ships with three EDAs each following a different approach: transformation-based, edit-distance based, and classification based. <br><br>
 
-Knowledge Resources are crucial to recognize cases where T and H use different textual expressions (words, phrases) while preserving entailment (e.g., home --&gt; house, Hawaii --&gt; America, born in --&gt; citizen of). EOP includes a wide range of knowledge resources, including lexical and syntactic resources, where some of them are grabbed from manual resources, like dictionaries, while others are learned automatically.
+Knowledge Resources are crucial to recognize cases where T and H use different textual expressions (words, phrases) while preserving entailment (e.g., home --&gt; house, Hawaii --&gt; America, born in --&gt; citizen of). The EOP includes a wide range of knowledge resources, including lexical and syntactic resources, where some of them are grabbed from manual resources, like dictionaries, while others are learned automatically.
 </p>
 
 <hr><h2>
-<a name="use-cases" class="anchor" href="#use-cases"><span class="octicon octicon-link"></span></a>Use Cases</h2>
+<a name="use-cases" class="anchor" href="#use-cases"><span class="octicon octicon-link"></span></a>
+<a name="Use_Cases"></a>Use Cases</h2>
 
 <ul>
 <li>Applied Textual Entailment: users not interested in details of RTE but in NLP tasks in which textual entailment can take over part of or all of the semantic processing, such as Question Answering or Intelligent Tutoring. </li>
@@ -71,7 +72,8 @@ Knowledge Resources are crucial to recognize cases where T and H use different t
 <li>Lexical Semantics Evaluation: researchers whose primary interest is in (lexical) semantics. They want to integrate knowledge resources into the EOP platform and measure their impact on deciding textual entailment.</li>
 <li>Educational Use: EOP as an educational tool to support academic courses and projects on RTE and inference more generally.</li>
 </ul><hr><h2>
-<a name="distribution" class="anchor" href="#distribution"><span class="octicon octicon-link"></span></a>Distribution</h2>
+<a name="distribution" class="anchor" href="#distribution"><span class="octicon octicon-link"></span></a>
+<a name="Distribution"></a>Distribution</h2>
 
 <ul>
 <li>Communication channels: users/developers mailing list and issue tracking system.</li>
@@ -80,7 +82,7 @@ Knowledge Resources are crucial to recognize cases where T and H use different t
 <li>Version Control System: GitHub for code and documentation storage, development, and issue tracking.<br>
 </li>
 <li>Continuous Integration: Jenkins for Continuous Integration, a software development practice where developers of a team integrate their work frequently (e.g., daily).</li>
-<li>Results Archive: as a new feature for community building; EOP users share their experiments and results in a dedicated repository.</li>
+<li>Results Archive: as a new feature for community building; the EOP users share their experiments and results in a dedicated repository.</li>
 <li>Licence: General Public License (GPL) Version 3.<br>
 </li>
 </ul><hr><h2>
