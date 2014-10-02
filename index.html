@@ -32,29 +32,14 @@
 <a name="introduction" class="anchor" href="#introduction"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
 <p align="justify">
-The Excitement Open Platform (EOP) is a generic architecture and a comprehensive implementation for textual inference in multiple languages. The platform includes state-of-art algorithms, a large number of knowledge resources, and facilities for experimenting and testing innovative approaches. EOP is a main product of the main outcomes of the project <a href="http://www.excitement-project.eu/" target="_blank">EXCITEMENT - EXploring Customer Interactions through Textual EntailMENT</a> and its highlights include:
+The Excitement Open Platform (EOP) is a generic architecture and a comprehensive implementation for textual inference in multiple languages. The platform includes state-of-art algorithms, a large number of knowledge resources, and facilities for experimenting and testing innovative approaches. The EOP is one of the main outcomes of the project <a href="http://www.excitement-project.eu/" target="_blank">EXCITEMENT - EXploring Customer Interactions through Textual EntailMENT</a>. The Platform includes readily-available [Recognizing Textual Entailment](#Recognizing Textual Entailment) (RTE) technology, and a modular [architecture](#Architecture)  for text preprocessing, entailment engines and several knowledge resources. The current EOP version covers three languages (i.e. English, German, Italian) and includes tools for creating new resources in other languages. The EOP has been designed to be used in several research [use cases](#Use Cases) and its [distribution](#Distribution) package provides a number of utilities.
 </p>
 
-<p>Readily-available Recognizing Textual Entailment (RTE) Technology</p>
-
-<ul>
-<li>Including state-of-the-art methods</li>
-</ul><p>Modular</p>
-
-<ul>
-<li>Preprocessing</li>
-<li>Entailment Engines</li>
-<li>Knowledge Resources</li>
-</ul><p>Multilingual</p>
-
-<ul>
-<li>Existing modules in 3 languages (i.e. English, German, Italian)</li>
-<li>Tools for creating new resources in any language</li>
-</ul><hr><h2>
+<hr><h2>
 <a name="recognizing-textual-entailment" class="anchor" href="#recognizing-textual-entailment"><span class="octicon octicon-link"></span></a>Recognizing Textual Entailment</h2>
 
 <p align="justify">
-Given two text fragments, one named text (T) and the other named hypothesis (H), the task consists in recognizing whether the hypothesis can be inferred from the text, e.g.,
+Given two text fragments, one named Text (T) and the other named Hypothesis (H), the task consists in recognizing whether the hypothesis can be inferred from the text, e.g.,
 </p>
 
 <pre><code>T: Obama was born in Hawaii 
@@ -68,7 +53,7 @@ T entails H1 but not H2
 <a name="architecture" class="anchor" href="#architecture"><span class="octicon octicon-link"></span></a>Architecture</h2>
 
 <p align="justify">
-<img src="http://hlt-services4.fbk.eu:8080/artifactory/repo/eop_website/images/EOP-Architecture.gif" alt="EOP Architecture" align="left" width="60%" height="60%"> EOP takes the T-H pairs as input and the output is an entailment judgement, represented by "Entailment" if T entails H, or "NonEntailment" if the relation does not hold. The EOP architecture is based on the concept of modularization with pluggable and replaceable components to enable extension and customization. <br><br>
+<img src="http://hlt-services4.fbk.eu:8080/artifactory/repo/eop_website/images/EOP-Architecture.gif" alt="EOP Architecture" align="left" width="60%" height="60%"> The EOP takes T-H pairs as input and the output is an entailment judgement, represented by "Entailment" if T entails H, or "NonEntailment" if the relation does not hold. The EOP architecture is based on the concept of modularization with pluggable and replaceable components to enable extension and customization. <br><br>
 
 The Linguistic Analysis Pipeline (LAP) is a collection of annotation components for Natural Language Processing (NLP) where component integration is based on the Apache UIMA framework. It enables interoperability among components while ensuring language independence. <br><br>
 
@@ -108,37 +93,18 @@ Knowledge Resources are crucial to recognize cases where T and H use different t
         </section>
 
         <aside id="sidebar">
-        
-          
-          
- <a href="http://hlt-services4.fbk.eu/eop/index.php" target="_blank" class="button">
-<!-- <small>EOP Demo</small> -->
-EOP Demo
-</a>
-<a href="https://github.com/hltfbk/EOP-1.1.3/wiki" class="button">
-<!-- <small>Latest Release v1.1.3</small> -->
-Latest Release v1.1.3
-</a>
-<br>
-<p>
-<span style="FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #555555; text-decoration: underline">News and Events</span>
-</p>
-June 2014: EOP v1.1.3
-<br><br>
-May 28-30, 2014: EOP at HLT Village at <a href="http://lrec2014.lrec-conf.org/en/" target="_blank">LREC 2014</a>
-<br><br>
-<p>
-<span style="FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #555555; text-decoration: underline">Previous Releases</span>
-</p>
-March 2014: <a href="https://github.com/hltfbk/EOP-1.1.2/wiki" target="_blank">EOP v1.1.2</a>
-<br>
-February 2014: <a href="https://github.com/hltfbk/EOP-1.1.1/wiki" target="_blank">EOP v1.1.1</a>
-<br><br><br>
-<p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+          <a href="https://github.com/hltfbk/Excitement-Open-Platform/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/hltfbk/Excitement-Open-Platform/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
 
-          
-          
-          
+          <p class="repo-owner"><a href="https://github.com/hltfbk/Excitement-Open-Platform"></a> is maintained by <a href="https://github.com/hltfbk">hltfbk</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
         </aside>
       </div>
     </div>
