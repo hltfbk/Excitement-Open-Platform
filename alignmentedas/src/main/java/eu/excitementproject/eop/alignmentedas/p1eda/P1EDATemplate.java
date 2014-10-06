@@ -196,32 +196,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public void initialize(CommonConfig conf) throws EDAException
 	{
-<<<<<<< HEAD
-		//getting the name value table of the EDA
-		NameValueTable nameValueTable;
-		try {
-			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	
-			
-			//setting the training directory
-			if (this.trainDIR == null)
-				this.trainDIR = nameValueTable.getString("trainDir");
-		
-			//setting the test directory
-			if (this.testDIR == null)
-				this.testDIR = nameValueTable.getString("testDir");
-			
-			// setting the model file
-			if (this.modelFile == null)
-				this.modelFile = nameValueTable.getString("modelFile");
-			
-			initialize(new File(modelFile));
-			
-		} catch (ConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-=======
 		NameValueTable nameValueTable;
 		try {
 			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	
@@ -230,7 +205,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		} catch (ConfigurationException e) {
 			throw new EDAException ("Reading configuration data failed: " + e.getMessage(), e); 
 		}
->>>>>>> upstream/master
 	}
 	
 	public void initialize(File classifierModelFile) throws EDAException
@@ -247,36 +221,11 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 
 	public void startTraining(CommonConfig conf) throws EDAException 
 	{
-<<<<<<< HEAD
-		// TODO read from common config, and call argument version,
-=======
 		// read from common config, and call argument version,
->>>>>>> upstream/master
 		NameValueTable nameValueTable;
 		try {
 			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	
 			
-<<<<<<< HEAD
-			//setting the training directory
-			if (this.trainDIR == null)
-				this.trainDIR = nameValueTable.getString("trainDir");
-		
-			//setting the test directory
-			if (this.testDIR == null)
-				this.testDIR = nameValueTable.getString("testDir");
-			
-			// setting the model file
-			if (this.modelFile == null)
-				this.modelFile = nameValueTable.getString("modelFile");
-			
-			startTraining(new File(trainDIR), new File(modelFile));
-			
-		} catch (ConfigurationException | EDAException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-=======
 			File trainDir = nameValueTable.getFile("trainDir"); 
 			File modelFileToCreate = nameValueTable.getFile("modelFile"); 
 			
@@ -284,7 +233,6 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 		} catch (ConfigurationException ce) {
 			throw new EDAException("Reading configuration from CommonConfig failed: " + ce.getMessage(), ce); 
 		}	
->>>>>>> upstream/master
 	}
 	
 	
