@@ -48,7 +48,34 @@
 		<artifactId>biutee</artifactId>
 		<version>1.1.4-SNAPSHOT</version>
 	</dependency>
+	
+	
+	 	<!-- TreeTagger related dependencies --> 
+	<!-- You need to install TreeTagger;  please read /tl/src/scripts/treetagger/README.txt, and follow the instructions --> 
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
+     		<version>20130228.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-de</artifactId>
+     		<version>20121207.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-en</artifactId>
+     		<version>20111109.0</version>
+    	</dependency>
+    	<dependency>
+     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
+     		<version>20101115.0</version>
+    	</dependency>
+	<!-- end of TreeTagger related dependencies -->
+	
   </dependencies>
+  
   
   	<repositories>
 		<repository>

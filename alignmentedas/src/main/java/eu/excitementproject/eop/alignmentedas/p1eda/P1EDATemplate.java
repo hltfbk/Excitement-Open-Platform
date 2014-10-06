@@ -90,6 +90,27 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
 public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment> {
 	
 	/**
+	 * the language
+	 */
+	protected String language;
+
+	/**
+	 * the training data directory
+	 */
+	protected String trainDIR = null;
+
+	/**
+	 * the test data directory
+	 */
+	protected String testDIR = null;
+
+
+	/**
+	 * the model file 
+	 */
+	protected String modelFile = null;
+	
+	/**
 	 * The default, no argument constructor for this abstract class. Does nothing 
 	 * but initializing two mandatory final fields. They are: logger and classifier. 
 	 *  
@@ -175,6 +196,7 @@ public abstract class P1EDATemplate implements EDABasic<TEDecisionWithAlignment>
 	
 	public void initialize(CommonConfig conf) throws EDAException
 	{
+
 		NameValueTable nameValueTable;
 		try {
 			nameValueTable = conf.getSection(this.getClass().getCanonicalName());	

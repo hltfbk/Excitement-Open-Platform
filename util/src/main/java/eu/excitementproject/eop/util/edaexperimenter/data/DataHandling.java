@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import edu.stanford.nlp.util.StringUtils;
@@ -283,8 +284,9 @@ public class DataHandling {
 	// not sure how to do this ... it is used (for now) to enforce the training/testing split ratio when clusters are not split (inside)
 	private static SortedMap<Integer, Set<String>> enforceRatio(
 			SortedMap<Integer, Set<String>> folds, double ratio) {
-		// TODO Auto-generated method stub
+
 		Logger logger = Logger.getLogger("eu.excitementproject.eda-exp.experimenter.ExperimenterFileUtils / enforceRatio");
+		logger.setLevel(Level.INFO);
 		
 		for(Integer i: folds.keySet()) {
 			logger.info(" key=" + i + " val=" + folds.get(i));
@@ -316,12 +318,16 @@ public class DataHandling {
 	 * @param cluster the name of the cluster to be balanced
 	 */
 	private static HashMap<String,Set<PairXMLData>> balanceCluster(HashMap<String,HashMap<String,Set<PairXMLData>>> dataRaw, String cluster) {
+
+		Logger logger = Logger.getLogger("eu.excitementproject.eda-exp.experimenter.ExperimenterFileUtils / balanceCluster");
+		logger.setLevel(Level.INFO);
 		
 		HashMap<String,Set<PairXMLData>> oldCluster = dataRaw.get(cluster);
 		HashMap<String,Set<PairXMLData>> balancedCluster = new HashMap<String,Set<PairXMLData>>();
 		
+		logger.info("Balancing clusters!");
+		
 		// adjust how close to the 50/50 ratio we should get with undersampling. I'm allowing here a bit more of the majority class
-//		double ratio = 1.1;
 		double ratio = 1.0;
 		int min = Integer.MAX_VALUE;
 		
@@ -334,7 +340,8 @@ public class DataHandling {
 		
 		for(String cls: oldCluster.keySet()) {
 			
-			if (oldCluster.keySet().size() == min) {
+			logger.info("Balancing cluster " + cls + ", size = " + oldCluster.get(cls).size());
+			if (oldCluster.get(cls).size() == min) {
 				balancedCluster.put(cls,oldCluster.get(cls));
 			} else {
 				balancedCluster.put(cls, undersample(oldCluster.get(cls), min * ratio));
@@ -345,6 +352,11 @@ public class DataHandling {
 
 	// undersample randomly a given set of instances
 	private static Set<PairXMLData> undersample(Set<PairXMLData> set, double d) {
+		
+		Logger logger = Logger.getLogger("eu.excitementproject.eda-exp.experimenter.ExperimenterFileUtils / balanceCluster");
+		logger.setLevel(Level.INFO);
+		
+		logger.info("\tundersampling to size " + d);
 		
 		List<PairXMLData> setX = new ArrayList<PairXMLData>();
 		setX.addAll(set);
@@ -360,6 +372,8 @@ public class DataHandling {
 			}
 		}
 				
+		logger.info("\tnew set size: " + newSet.size());
+		
 		return newSet;
 	}
 }

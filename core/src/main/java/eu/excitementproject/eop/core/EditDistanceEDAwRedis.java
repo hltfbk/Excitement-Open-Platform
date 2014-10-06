@@ -80,7 +80,7 @@ public class EditDistanceEDAwRedis<T extends TEDecision>
 			//getting the name value table of the EDA
 			NameValueTable nameValueTable = config.getSection(this.getType());
 			
-			logger.info("Setting the train and test dirs for LDA");
+			logger.info("Setting the train and test dirs for LAP");
 			
 			//setting the training directory
 			if (this.trainDIR == null)
@@ -113,25 +113,6 @@ public class EditDistanceEDAwRedis<T extends TEDecision>
 					this.component.setmDeleteWeight(mDeleteWeight);
 					this.component.setmInsertWeight(mInsertWeight);
 					this.component.setmSubstituteWeight(mSubstituteWeight);
-					
-					/*
-					 * Initializing FixedWeightEditDistance without a configuration file
-					FixedWeightEditDistance fwed = new FixedWeightTokenEditDistance(mMatchWeight, mDeleteWeight, 
-							mInsertWeight, mSubstituteWeight, true, "IT", null);
-					
-					this.component = fwed;
-					*/
-					
-					/*
-					 * Initializing FixedWeightEditDistance without a configuration file and using
-					 * wikipedia as an external resource.
-					Map<String,String> resources = new HashMap<String,String>();
-					resources.put("wikipedia", "jdbc:mysql://nathrezim:3306/wikilexresita#root#nat_2k12");
-					FixedWeightEditDistance fwed = new FixedWeightTokenEditDistance(mMatchWeight, mDeleteWeight, 
-							mInsertWeight, mSubstituteWeight, true, "IT", resources);
-					
-					this.component = fwed;
-					*/
 					
 				} catch (Exception e) {
 					throw new ComponentException(e.getMessage());
@@ -216,6 +197,8 @@ public class EditDistanceEDAwRedis<T extends TEDecision>
 			if (f.exists() == false) {
 				throw new ConfigurationException("trainDIR:" + f.getAbsolutePath() + " not found!");
 			}
+			
+			logger.info(f.listFiles().length + " files to process from " + f.getName() );
 			
 			int filesCounter = 0;
 			for (File xmi : f.listFiles()) {
