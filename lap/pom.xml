@@ -212,6 +212,14 @@
             </artifactId>
             <version>20130511.0</version>
         </dependency>
+    	<dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>
+                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-it-linear
+            </artifactId>
+            <version>20141002.0</version>
+        </dependency>
+
     	<!-- We are not using MST parser for 1.0 release.  -->
     	<!--  
     	
