@@ -54,6 +54,10 @@ public class Nominalization
 	{
 		return mapTypeToArgument;
 	}
+	
+	public String toString() {
+		return String.format("%s(%s, %s)", getClass().getSimpleName(), nominal, verbs.mutableListToString());
+	}
 
 	private void createMapTypeToArgument()
 	{

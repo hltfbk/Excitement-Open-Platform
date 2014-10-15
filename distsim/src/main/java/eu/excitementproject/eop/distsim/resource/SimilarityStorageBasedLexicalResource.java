@@ -88,6 +88,8 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 		
 		this.maxNumOfRetrievedRules = params.getInt(Configuration.TOP_N_RULES);
 		
+		System.out.println("Max rules: " + this.maxNumOfRetrievedRules);
+		
 		if (hostLeft == null || portLeft == -1 || hostRight == null || portRight == -1)
 			this.similarityStorage = new DefaultSimilarityStorage(params);			
 		else  {
@@ -110,8 +112,8 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 		this(new DefaultSimilarityStorage(leftRedisHost,leftRedisPort, rightRedisHost, rightRedisPort, resourceName,instanceName),maxNumOfRetrievedRules);
 	}
 
-	public SimilarityStorageBasedLexicalResource(String l2rRedisFile, String r2lRedisFile, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, FileNotFoundException, RedisRunException {
-		this(new DefaultSimilarityStorage(l2rRedisFile, r2lRedisFile, resourceName, instanceName),maxNumOfRetrievedRules);
+	public SimilarityStorageBasedLexicalResource(String l2rRedisFile, String r2lRedisFile, boolean bVM, String resourceName, String instanceName, Integer maxNumOfRetrievedRules) throws ElementTypeException, FileNotFoundException, RedisRunException {
+		this(new DefaultSimilarityStorage(l2rRedisFile, r2lRedisFile, resourceName, instanceName, bVM),maxNumOfRetrievedRules);
 	}
 	
 	/* (non-Javadoc)
@@ -181,7 +183,8 @@ public class SimilarityStorageBasedLexicalResource implements LexicalResource<Ru
 			for (ElementsSimilarityMeasure similarityRule : similarityStorage.getSimilarityMeasure(leftElement, rightElement)) {
 				LemmaPosBasedElement left = (LemmaPosBasedElement)similarityRule.getLeftElement();
 				LemmaPosBasedElement right = (LemmaPosBasedElement)similarityRule.getRightElement();
-				ret.add(new LexicalRule<RuleInfo>(left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()), right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()), similarityRule.getSimilarityMeasure(), null, similarityStorage.getComponentName(), null));
+				ret.add(new LexicalRule<RuleInfo>(left.getData().getLemma(), new ByCanonicalPartOfSpeech(left.getData().getPOS().name()), right.getData().getLemma(), new ByCanonicalPartOfSpeech(right.getData().getPOS().name()), similarityRule.getSimilarityMeasure(), null, similarityStorage.getComponentName(), 
+						DistSimRuleInfo.getInstance()));
 			}
 			return ret;
 		} catch (Exception e) {

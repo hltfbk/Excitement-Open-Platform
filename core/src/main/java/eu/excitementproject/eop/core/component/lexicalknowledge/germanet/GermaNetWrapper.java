@@ -657,6 +657,17 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 				}
 			}
 		}
+		
+		// remove 0-confidence rules. 
+		// (setting 0 confidence on a relation will remove that relation from forming a rule.) 
+		// -- Gil, 2014 September 
+		Set<LexicalRule<? extends GermaNetInfo>> check = new HashSet<LexicalRule<? extends GermaNetInfo>>(result);
+		for(LexicalRule<? extends GermaNetInfo> l : check)
+		{
+			if (l.getConfidence() == 0)
+				result.remove(l); 
+		}
+
 		return result;
 		}
 	
@@ -710,6 +721,17 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 				}
 			}
 		}
+
+		// remove 0-confidence rules. 
+		// (setting 0 confidence on a relation will remove that relation from forming a rule.) 
+		// -- Gil, 2014 September 
+		Set<LexicalRule<? extends GermaNetInfo>> check = new HashSet<LexicalRule<? extends GermaNetInfo>>(result);
+		for(LexicalRule<? extends GermaNetInfo> l : check)
+		{
+			if (l.getConfidence() == 0)
+				result.remove(l); 
+		}
+		
 		return result;
 	}
 	

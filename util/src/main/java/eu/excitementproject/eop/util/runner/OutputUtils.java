@@ -48,7 +48,7 @@ public class OutputUtils {
 				m = p.matcher(line);
 				if (m.matches()) {
 					results.put(m.group(1), m.group(2));
-					logger.info("Added result: " + m.group(1) + " / " + m.group(2));
+//					logger.info("Added result: " + m.group(1) + " / " + m.group(2));
 				}
 			}
 			reader.close();

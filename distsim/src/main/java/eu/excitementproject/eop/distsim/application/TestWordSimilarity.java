@@ -35,8 +35,8 @@ public class TestWordSimilarity {
 		String r2lRedisFile = args[1];
 		
 		SimilarityStorage similarityStorage = new DefaultSimilarityStorage(
-				new RedisBasedStringListBasicMap(l2rRedisFile),
-				new RedisBasedStringListBasicMap(r2lRedisFile),
+				new RedisBasedStringListBasicMap(l2rRedisFile,true),
+				new RedisBasedStringListBasicMap(r2lRedisFile,true),
 				"lin-dist-sim", null, "eu.excitementproject.eop.distsim.items.LemmaPosBasedElement");
 		
 		

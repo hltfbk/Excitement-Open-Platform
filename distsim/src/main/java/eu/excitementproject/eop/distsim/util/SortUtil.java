@@ -200,12 +200,12 @@ public class SortUtil {
 		Collections.sort(list, new Comparator() {
 			@Override
 			public int compare(Object o1, Object o2) {
-				int ret = (int) (descending ?
+				double ret = (descending ?
 					((ElementsSimilarityMeasure)o2).getSimilarityMeasure() - ((ElementsSimilarityMeasure)o1).getSimilarityMeasure()
 					:
 					((ElementsSimilarityMeasure)o1).getSimilarityMeasure() - ((ElementsSimilarityMeasure)o2).getSimilarityMeasure()
 					);
-				return ret;
+				return (ret > 0 ? 1 : (ret < 0 ? -1 : 0));
 			}
 		});
 	}
