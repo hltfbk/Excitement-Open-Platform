@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE configuration>
+
+<!-- 
+ Description: Given a certain configuration, the EDA - named MetaEDA -
+ can be trained over a specific data set in order to combine the entailment decisions of
+ a set of internal EDABasics.
+ MetaEDA either trains a classifier on the internal EDAs' decisions or goes with the majority's decision.
+ 
+ The common structure of a configuration file for MetaEDA is as follows 
+ - It begins with a specification of platform specific settings in the section "PlatformConfiguration" for selecting the EDA and the language.
+ - Finally, the parameters for the learning and application phases of the activated EDA have to be specified, that is the model file, locations of training and test data, the decision mode and the overwrite mode.
+	Note, that the name of the EDA in the "activatedEDA" property of the "PlatformConfiguration" and the name of this last section must be equal.
+-->
+
+<configuration>
+
+	<!-- Platform configuration section -->
+    <section name="PlatformConfiguration">
+        <!-- The EDA to be used: MetaEDA -->
+        <property name="activatedEDA">eu.excitementproject.eop.core.metaeda.SimpleMetaEDAConfidenceFeatures</property>
+        <!-- The language: DE for German -->
+		<property name="language">DE</property>
+	</section>
+
+    <!-- MetaEDA uses a weka classifier to train an entailment classifier.
+     NOTE: the name must be the same as specified in section "PlatformConfiguration" in the property
+     "activatedEDA" -->
+	<section name="eu.excitementproject.eop.core.metaeda.SimpleMetaEDAConfidenceFeatures">
+		<!-- Whether to use the basic EDAs' confidence scores as features for training or not -->
+		<property name="confidenceAsFeature">false</property>
+		<!-- Whether to overwrite existing model files with the same name while training or not -->
+		<property name="overwrite">false</property>
+        <!-- The name of the model created during the training phase of the learner and applied during the testing phase. If only testing is performed, this model file must exist! -->
+        <property name="modelFile">./target/MEDAModelTest1_DE.model</property> <!-- new resource -->
+		<!-- Please update the location for storing temporary files for training -->
+		<property name="trainDir">./target/DE/dev/</property>
+        <!-- Please update the location for storing temporary files for testing -->
+		<property name="testDir">./target/DE/test/</property>
+	</section>
+
+</configuration>

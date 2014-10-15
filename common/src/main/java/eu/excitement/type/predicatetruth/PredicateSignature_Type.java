@@ -11,8 +11,8 @@ import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
-/** This type represents an implication signature of a predicate.
- * Updated by JCasGen Fri Oct 05 20:17:26 CEST 2012
+/** 
+ * Updated by JCasGen Tue Jul 15 10:01:13 IDT 2014
  * @generated */
 public class PredicateSignature_Type extends Annotation_Type {
   /** @generated */

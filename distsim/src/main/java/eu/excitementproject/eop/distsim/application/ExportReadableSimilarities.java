@@ -35,7 +35,7 @@ public class ExportReadableSimilarities {
 		}
 		File similarityFile = new File(args[0]);
 		TIntObjectMap<String> elementId2Str = new TIntObjectHashMap<String>(); 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(similarityFile.getParent() + "/elements"),"UTF-8"));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(similarityFile.getParent() + "/elements"))); //,"UTF-8"));
 		String line = null;
 		while ((line=reader.readLine())!=null) {
 			String[] toks = line.split("\t");

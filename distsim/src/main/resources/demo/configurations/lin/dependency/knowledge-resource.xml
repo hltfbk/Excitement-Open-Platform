@@ -38,6 +38,9 @@
 		<property name="r2l-redis-host">te-srv2</property>
 		<property name="r2l-redis-port">7003</property>
 		-->	 
+		
+		<!-- should the redis server run with virtual memory (low memory usage, disk based access)? -->
+		<property name="redis-vm">true</property>
 </section>
 </configuration>
 

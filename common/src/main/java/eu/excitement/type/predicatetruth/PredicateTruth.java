@@ -10,9 +10,11 @@ import org.apache.uima.jcas.cas.TOP_Type;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
-/** This type represents a predicate truth value annotation.
- * Updated by JCasGen Fri Oct 05 20:17:26 CEST 2012
- * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/PredicateTruth.xml
+/** This type represents a predicate truth value annotation. 
+It is an abstract representation from which the different Predicate Truth annotations will inherit (PT+,PT-,PT?).
+This annotation covers a single predicate token.
+ * Updated by JCasGen Tue Jul 15 10:01:13 IDT 2014
+ * XML source: C:/Users/user/fromHP/Shared/excitement workspace/eop/common/src/main/resources/desc/type/PredicateTruth.xml
  * @generated */
 public class PredicateTruth extends Annotation {
   /** @generated
@@ -54,30 +56,17 @@ public class PredicateTruth extends Annotation {
     readObject();
   }   
 
-  /** <!-- begin-user-doc -->
+  /** 
+   * <!-- begin-user-doc -->
     * Write your own initialization here
     * <!-- end-user-doc -->
-  @generated modifiable */
+  *
+   * @generated modifiable 
+   */
   private void readObject() {/*default - does nothing empty block */}
      
  
     
-  //*--------------*
-  //* Feature: value
-
-  /** getter for value - gets This represents the value of the annotation.
-   * @generated */
-  public String getValue() {
-    if (PredicateTruth_Type.featOkTst && ((PredicateTruth_Type)jcasType).casFeat_value == null)
-      jcasType.jcas.throwFeatMissing("value", "eu.excitement.type.predicatetruth.PredicateTruth");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((PredicateTruth_Type)jcasType).casFeatCode_value);}
-    
-  /** setter for value - sets This represents the value of the annotation. 
-   * @generated */
-  public void setValue(String v) {
-    if (PredicateTruth_Type.featOkTst && ((PredicateTruth_Type)jcasType).casFeat_value == null)
-      jcasType.jcas.throwFeatMissing("value", "eu.excitement.type.predicatetruth.PredicateTruth");
-    jcasType.ll_cas.ll_setStringValue(addr, ((PredicateTruth_Type)jcasType).casFeatCode_value, v);}    
-  }
+}
 
     

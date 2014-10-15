@@ -32,7 +32,7 @@ public class DIRTSimilaritySQL2Redis {
 		
 		}
 		
-		Redis redis = new Redis(args[1]);
+		Redis redis = new Redis(args[1],false);
 		redis.open();
 		redis.clear();
 

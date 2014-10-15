@@ -70,9 +70,11 @@ public class MaltParserDeTest {
 		try {
 			JCas textCas = aJCas.getView("TextView");
 			JCas hypoCas = aJCas.getView("HypothesisView");
+		System.out.println("---dependency in textview---"); 	
 		for (Dependency dep : JCasUtil.select(textCas, Dependency.class)) {
 			System.out.println(dep.getGovernor().getCoveredText() + " -" + dep.getDependencyType() + "-> " + dep.getDependent().getCoveredText());
 		}
+		System.out.println("---dependency in hypoview---"); 
 		for (Dependency dep : JCasUtil.select(hypoCas, Dependency.class)) {
 			System.out.println(dep.getGovernor().getCoveredText() + " -" + dep.getDependencyType() + "-> " + dep.getDependent().getCoveredText());
 		}

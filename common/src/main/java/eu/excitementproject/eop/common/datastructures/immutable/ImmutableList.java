@@ -30,4 +30,6 @@ public interface ImmutableList<T> extends ImmutableCollection<T>, Serializable
 	
 	public String toString();
 
+	public String mutableListToString();
+
 }

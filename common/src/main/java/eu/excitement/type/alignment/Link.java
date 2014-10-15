@@ -1,18 +1,20 @@
 package eu.excitement.type.alignment;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
+import org.apache.uima.jcas.cas.NonEmptyStringList;
 import org.apache.uima.jcas.cas.TOP_Type;
-
 import org.apache.uima.jcas.cas.StringList;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** - CAS type that links two Target. 
 - Multi-view type: a Link connects one target in T (TextView), the other target in H (HypothesisView). 
-
 The semantic of a "Link" is: The texts (or structures) pointed by "TSideTarget" and "HSideTarget" have a relation of "type", with the direction of "direction",  on a strength of "strength". 
-
 We make no assumptions regarding what annotations are aligned by Link and Target types. One Target can be linked by an arbitrary number of Link, also a Target can group an arbitrary number of Annotations. Note that uima.tcas.Annotation is the super type of almost all CAS annotation data. Since a Target can group Annotation, it can group any type of annotations in CAS.
 
 Some notes on Link type usage. (Indexing and setting begin - end) 
@@ -216,26 +218,31 @@ alignerID + alignerVersion + linkInfo
   //*--------------*
   //* Feature: groupLabel
 
-  /** getter for groupLabel - gets TBDTBDTBDTBD
-
-TO BE DETERMINED. 
-
-We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
-
-Actual values for the labels will be updated. TBDTBDTBDTBD
+  /** 
+   *  Getter for groupLabel - Please do not use this method directly. 
+   *  
+   *  Instead, Please use getGroupLabel methods that returns a Enum Set. 
+   *  (getGroupLabelInferenceLevel() and getGroupLabelDomainLevel()).
+   *  
+   *  This method retrieves the underlying StringList object, which is a linkedList. 
+   *  The wrapper methods getGroupLabel() for levels are better presented with Enums. 
+   *  
    * @generated */
   public StringList getGroupLabel() {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_groupLabel == null)
       jcasType.jcas.throwFeatMissing("groupLabel", "eu.excitement.type.alignment.Link");
     return (StringList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Link_Type)jcasType).casFeatCode_groupLabel)));}
     
-  /** setter for groupLabel - sets TBDTBDTBDTBD
-
-TO BE DETERMINED. 
-
-We will adopt "common semantic groups", such as "LOCAL-ENTAILMENT" links, or "LOCAL-CONTRADICTION" links, and so on. This field is for those "labels". Such labels are provided as "Convenience" tools --- to help the consumer modules of alignment.Link can classify various Links without hard-coding aliner Id or link's getIDs. 
-
-Actual values for the labels will be updated. TBDTBDTBDTBD 
+  /** 
+   * setter for groupLabel - Please do not use this method directly.
+   * 
+   * Instead, please use addGroupLabel method that accepts two Enum types. 
+   *  --- domain level group label and inference lavel group label. 
+   * 
+   *  This method sets StringList object, which is a linkedList. 
+   *  The wrapper methods addGroupLabel() methods are better presented 
+   *  with Enums. Use those methods. 
+   *  
    * @generated */
   public void setGroupLabel(StringList v) {
     if (Link_Type.featOkTst && ((Link_Type)jcasType).casFeat_groupLabel == null)
@@ -293,7 +300,147 @@ Actual values for the labels will be updated. TBDTBDTBDTBD
 	   Direction dir = Direction.valueOf(getDirectionString()); 
 	   return dir; 
    }
+   
+   	/**
+   	 * One of the two getter method for Group Labels. 
+   	 * 
+   	 * This method returns the set of "Inference level" group labels that are added for this 
+   	 * alignment.Link instance. See SemanticLabelInferenceLevel enum class, for checking what 
+   	 * type of labels are there currently.
+   	 * 
+   	 * @return set of inference level group labels. 
+   	 */
+   	public Set<GroupLabelInferenceLevel> getGroupLabelsInferenceLevel() 
+   	{
+   		Set<GroupLabelInferenceLevel> result = new HashSet<GroupLabelInferenceLevel>(); 
+   		
+   		// iterate each of string, check, and add if it is. 
+   		NonEmptyStringList i = (NonEmptyStringList) this.getGroupLabel(); 
+   		
+   		while(i != null)
+   		{
+   			String s = i.getHead(); 
+   			i = (NonEmptyStringList) i.getTail(); 
+   			
+   			GroupLabelInferenceLevel label = null; 
+   			try {
+   	   			label = GroupLabelInferenceLevel.valueOf(s);    				
+   			}
+   			catch(IllegalArgumentException e)
+   			{
+   				continue; // this string is not one of this enum. pass. 
+   			}
+   			result.add(label);    			
+   		}
+   		return result; 
+   	}
+   	
+   	/**
+   	 * One of the two getter method for Group Labels. 
+   	 * 
+   	 * This method returns the set of "Domain level" group labels that are added for this 
+   	 * alignment.Link instance. See SemanticLabelDomainLevel enum class, for checking what 
+   	 * type of labels are there currently. 
+   	 * 
+   	 * @return set of domain level group labels. 
+   	 */
+   	public Set<GroupLabelDomainLevel> getGroupLabelsDomainLevel()
+   	{
+   		Set<GroupLabelDomainLevel> result = new HashSet<GroupLabelDomainLevel>(); 
+   		
+   		// iterate each of string, check, and add if it is. 
+   		NonEmptyStringList i = (NonEmptyStringList) this.getGroupLabel(); 
+   		
+   		while(i != null)
+   		{
+   			String s = i.getHead(); 
+   			i = (NonEmptyStringList) i.getTail(); 
+
+   			GroupLabelDomainLevel label = null; 
+   			try {
+   	   			label = GroupLabelDomainLevel.valueOf(s);    				
+   			}
+   			catch(IllegalArgumentException e)
+   			{
+   				continue; // this string is not one of this enum. pass. 
+   			}
+   			result.add(label);    			
+   		}
+   		return result; 
+   	}
+   	
+   	/**
+   	 * Use this method to add one semantic group label (domain level). 
+   	 * To add multiple labels, call this method multiple times with different labels. 
+   	 * 
+   	 * Adding semantic group label is optional, but can be helpful for the grouping of the 
+   	 * Links for the consumer of the JCas. Thus, it is highly recommended that an aligner 
+   	 * should add minimally the inference level group label, if applicable. 
+   	 *  
+   	 * This method adds one domain level group label, to this alignment.Link instance. 
+   	 * See SemanticLabelDomainLevel enum class, for checking what type of labels are there currently.
+   	 * 
+   	 * @param label
+   	 */
+   	public void addGroupLabel(GroupLabelDomainLevel aDomainLabel) throws CASException 
+   	{
+   		addOneStringInGroupLabelList(aDomainLabel.toString()); 
+   	}
+   	
+   	/**
+   	 * Use this method to add one semantic group label (inference level). 
+   	 * To add multiple labels, call this method multiple times with different labels. 
+   	 * 
+ 	 * Adding semantic group label is optional, but can be helpful for the grouping of the 
+   	 * Links for the consumer of the JCas. Thus, it is highly recommended that an aligner 
+   	 * should add minimally the inference level group label, if applicable. 
+
+   	 * This method adds one inference level group label, to this alignment.Link instance. 
+   	 * See SemanticLabelInferenceLevel enum class, for checking what type of labels are there currently.
+   	 * 
+   	 * @param label
+   	 */
+   	public void addGroupLabel(GroupLabelInferenceLevel aInferenceLabel) throws CASException
+   	{
+   		addOneStringInGroupLabelList(aInferenceLabel.toString());    		
+   	}
+
+   	/**
+   	 * Worker method for addGroupLabel. 
+   	 * 
+   	 * @param stringToAdd
+   	 * @throws CASException
+   	 */
+   	private void addOneStringInGroupLabelList(String stringToAdd) throws CASException
+   	{
+   		NonEmptyStringList sList = (NonEmptyStringList) this.getGroupLabel(); 
+   		
+   		// if the underlying StringList is null, make a new head. (underlying String list is a linked list)  
+   		if (sList == null)
+   		{
+   	   		NonEmptyStringList head = new NonEmptyStringList(this.getCAS().getJCas()); 
+   	   		head.setHead(stringToAdd); 
+   	   		this.setGroupLabel(head); 
+   	   		
+   		}
+   		else
+   		{
+   			// get to the last part, and add label as a string 
+   			NonEmptyStringList i = sList;    		
+   			
+   			// find the last node ... 
+   			while(i.getTail() != null)
+   			{
+   				i = (NonEmptyStringList) i.getTail(); 
+   			}
+   			
+   			// add new node at the end. 
+   	   		NonEmptyStringList newNode = new NonEmptyStringList(this.getCAS().getJCas()); 
+   	   		newNode.setHead(stringToAdd); 
+   	   		i.setTail(newNode); 
+   		}  		
+   	}
+   	
+   	
   
   }
-
-    
