@@ -36,8 +36,8 @@ public class MaltParserItTest {
 			lap = new MaltParserIT(); 
 			
 			// one of the LAPAccess interface: that generates single TH CAS. 
-			aJCas = lap.generateSingleTHPairCAS("Io sono un ragazzo, e hanno due cani.", "Sei una ragazza, e hanno un gatto nero."); 
-			
+			//aJCas = lap.generateSingleTHPairCAS("Io sono un ragazzo, e ho due cani.", "Sei una ragazza, e hai un gatto nero."); 
+			aJCas = lap.generateSingleTHPairCAS("L'Europa adotta una moneta unica.", "L'area economica europea si espande.");
 		}
 		catch(LAPException e)
 		{
