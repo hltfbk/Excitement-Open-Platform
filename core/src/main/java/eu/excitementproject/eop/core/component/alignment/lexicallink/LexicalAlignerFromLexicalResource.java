@@ -26,8 +26,33 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 
 	@Override
 	public void annotate(JCas aJCas) throws PairAnnotatorComponentException {
-		// TODO 
-		// outline -- after check what we do on Meteor and outline what it should look like 
+		
+		// TODO: start coding on this outline. 
+		// 
+		
+		// do we accept phrases (the entry can be more than one lemma --- two or more lemmas)
+		// do both. If no phrases, just first part. 
+		
+		// single-lemma route 
+		// get H side lemmas as all possible candidates 
+		// ready T side lemma as a Lemma list. 
+		// 
+		//   for all candidates 
+		//     query getRulesForRight(lemma) 
+		//     check each T side lemma list for applicable places
+		//	     if found: add link. 
+		//   (WE do check POS and Lemma for single lemma cases) 
+		
+		// phrase-checking route 
+		// prepare T side lemma sequences as one string, so we can do quick look up of 
+		// applicable or not. 
+		// 
+		// get H side lemma sequences as all possible phrase candidates 
+		// for each candidates 
+		//    query getRulesForRight(lemma-seq as one string)
+		//    for the returned rules, string search on T-side lemma sequence  
+		//       if match is there; 
+		//       do real search on T side Lemma List, and link them.  
 		
 	}
 
