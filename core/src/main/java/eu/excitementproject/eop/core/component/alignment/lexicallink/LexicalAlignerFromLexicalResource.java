@@ -1,9 +1,15 @@
 package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
+import java.util.Map;
+import java.util.Set;
+
 import org.apache.uima.jcas.JCas;
 
+import eu.excitement.type.alignment.GroupLabelDomainLevel;
+import eu.excitement.type.alignment.GroupLabelInferenceLevel;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
-import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
+import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 
 /**
  * TODO full document
@@ -12,20 +18,72 @@ import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponen
  * 
  * (how it does what it does) 
  * 
+ * <H3> About passing two group label mappings </H3> 
+ * 
+ * <P>
+ * Constructors can accept group label mappings, for adding "canonical relations" 
+ * to the alignment.Link. Key of such map should have "info" field string of the
+ * underlying resource (e.g. "synonym") as key, and the value should have one or 
+ * more GroupLabel (as set). (e.g. { "LOCAL_ENTAILMENT", "LOCAL_SIMILARITY" } )
+ * For the above example, when the aligner adds links with lexical rule of info field
+ * (of LexicalRule) "synonym", it will add canonical relation (enum) "LOCAL_ENTAILMENT", 
+ * "LOCAL_SIMILARITY" on that link. You can pass two maps: one for inference level 
+ * (generic) relation, one for domain level (more specific) canonical relation. 
+ * Note that both mappings are optional (can be null). If so, that groupLabels will 
+ * simply not added.  
+ * 
+ * <P> To check available canonical relations see GroupLabelDomainLevel and 
+ * GroupLabelInferenceLabel. </P>  
+ * 
  * 
  * @author Tae-Gil Noh
  *
  */
 public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 
-	public LexicalAlignerFromLexicalResource()  {
-		// TODO 
-		// once annotate line is outlined, fill up needed information 
-		// starting from "LexicalResource" instance ... 
+	/**
+	 * Full Constructor for the class: use convenient constructurs, if you don't require all the fields. 
+	 * 
+	 * @param res 	the underlying LexicalResource. Cannot be null.  
+	 * @param supportPhrase  The underlying resource supports phrases (multi-word expression)? 
+	 * @param maxPhraseLen (checked only when supportPhrase is true) what is the length of maximum phrase in the underlying resource? (the aligner will lookup only to that length) 
+	 * @param groupLabelMapI map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of inference level group label).  
+	 * @param groupLabelMapD map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of domain level group label) 
+ 	 */
+	public LexicalAlignerFromLexicalResource(LexicalResource<?> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD) throws AlignmentComponentException
+	{
+		// set underlying LexicalResource
+		if (res != null)
+		{
+			this.underlyingResource = res; 
+		}
+		else
+		{
+			throw new AlignmentComponentException("Unable to build an aligner from null Lexical Resource: lexicalResource passed was null"); 
+		}
+		
+		// maps (which will let us know how resource specific "info" string would be 
+		// mapped into canonical enum values. 
+		// Both can be null (optional values) 
+		this.mapInfoToGroupLabelInference = groupLabelMapI; // inference level map. (alignment, contradictory, etc --- generic ) 
+		this.mapInfoToGroupLabelDomain = groupLabelMapD; // domain level map. (lexical relations ... predicate relations, etc --- specific ) 
+		// setting phrase flag 
+		// (multiple lemmas forming one entry in the underlying resource or not 
+		// if supported, set the length of maximum phrase, too) 
+		if (supportPhrase && maxPhraseLen > 1)
+		{
+			this.supportPhraseLookup = true; 
+			this.phraseMaxLen = maxPhraseLen; 
+		}
+		else
+		{
+			this.supportPhraseLookup = false; 
+			this.phraseMaxLen = 0; 
+		}			
 	}
 
 	@Override
-	public void annotate(JCas aJCas) throws PairAnnotatorComponentException {
+	public void annotate(JCas aJCas) throws AlignmentComponentException {
 		
 		// TODO: start coding on this outline. 
 		// 
@@ -54,10 +112,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 		//       if match is there; 
 		//       do real search on T side Lemma List, and link them.  
 		
-	}
-
-	
-	
+	}	
 	
 	@Override
 	public String getComponentName()
@@ -70,5 +125,13 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	{
 		return null; 
 	}
+	
+	// private data
+	private final LexicalResource<?> underlyingResource; 
+	private final Map<String,Set<GroupLabelInferenceLevel>> mapInfoToGroupLabelInference; 
+	private final Map<String,Set<GroupLabelDomainLevel>> mapInfoToGroupLabelDomain; 
+
+	private final Boolean supportPhraseLookup; 
+	private final int phraseMaxLen; 
 
 }
