@@ -3,10 +3,13 @@
  */
 package eu.excitementproject.eop.core.component.alignment.nemex;
 
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -30,6 +33,9 @@ import eu.excitement.type.alignment.Target;
 import eu.excitement.type.nemex.*;
 import de.dfki.lt.nemex.a.*;
 import de.dfki.lt.nemex.a.data.GazetteerNotLoadedException;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import opennlp.tools.chunker.*;
+import opennlp.tools.util.Span;
 
 /**
  * 
@@ -96,7 +102,7 @@ public class NemexAligner implements AlignmentComponent {
 
 		HashMap<Integer, String> queryMap = new HashMap<Integer, String>();
 
-		HashMap<String, ArrayList<QueryOffset>> queryIndex = new HashMap<String, ArrayList<QueryOffset>>();
+		HashMap<String, ArrayList<QueryInfo>> queryIndex = new HashMap<String, ArrayList<QueryInfo>>();
 
 		try {
 			JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
@@ -141,39 +147,93 @@ public class NemexAligner implements AlignmentComponent {
 	 */
 	public void createDictionary(JCas hypoView,
 			HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<QueryOffset>> queryIndex)
+			HashMap<String, ArrayList<QueryInfo>> queryIndex)
 			throws PairAnnotatorComponentException {
 		logger.info("HYPO: " + hypoView.getDocumentText());
 
-		String hypothesis = hypoView.getDocumentText().toLowerCase();
-		hypothesis = hypothesis.replaceAll(" ", "#");
 		String query = new String();
 
 		int index = 0;
 		double totalNoOfQueries = 0;
 		logger.info("Creating queries from hypothesis");
-		for (int i = 0; i < hypothesis.length(); i++) {
-			for (int j = i + 1; j <= hypothesis.length(); j++) {
 
-				query = hypothesis.substring(i, j);
+		Collection<Token> hTokens = JCasUtil.select(hypoView, Token.class);
+		Token[] tokens = hTokens.toArray(new Token[hTokens.size()]);
 
-				ArrayList<QueryOffset> offsets = new ArrayList<QueryOffset>();
+		logger.info(tokens.length + " Tokens obtained from hypothesis");
+		int tLength = tokens.length;
+		String[] hTokenArray = new String[tLength];
+		String[] hTagArray = new String[tLength];
+		int[] hTokenStartOffsetArray = new int[tLength];
+		int[] hTokenEndOffsetArray = new int[tLength];
 
-				QueryOffset curOffset = new QueryOffset(hypoView, i, j);
+		for (int tNum = 0; tNum < tokens.length; tNum++) {
+			Token token = tokens[tNum];
 
-				if (queryMap.containsValue(query)) {
-					offsets = queryIndex.get(query);
-				} else {
-					index++;
-					queryMap.put(index, query);
+			hTokenArray[tNum] = token.getCoveredText();
+			hTagArray[tNum] = token.getPos().getPosValue();
+			hTokenStartOffsetArray[tNum] = token.getBegin();
+			hTokenEndOffsetArray[tNum] = token.getEnd();
+
+		}
+
+		logger.info("Token text and offsets obtained");
+
+		InputStream modelIn = null;
+		ChunkerModel model = null;
+
+		try {
+			modelIn = new FileInputStream(
+					"src/main/resources/chunker-model/en-chunker.bin");
+			model = new ChunkerModel(modelIn);
+		} catch (IOException e) {
+			// Model loading failed, handle the error
+			e.printStackTrace();
+		} finally {
+			if (modelIn != null) {
+				try {
+					modelIn.close();
+				} catch (IOException e) {
 				}
+			}
+		}
 
-				totalNoOfQueries++;
-				offsets.add(curOffset);
+		ChunkerME chunker = new opennlp.tools.chunker.ChunkerME(model);
+		Span[] chunk = chunker.chunkAsSpans(hTokenArray, hTagArray);
 
-				queryIndex.put(query, offsets);
+		for (int i = 0; i < chunk.length; i++) {
+			int start = chunk[i].getStart();
+			int end = chunk[i].getEnd();
+			String tag = chunk[i].getType();
+			query = "";
+			for (int j = start; j < end; j++) {
+				if (query != "")
+					query += "#";
+				query += hTokenArray[j];
 
 			}
+			
+			query = query.toLowerCase();
+			logger.info("Query:" + query);
+			int startOffset = hTokenStartOffsetArray[start];
+			int endOffset = hTokenEndOffsetArray[end - 1];
+			ArrayList<QueryInfo> offsets = new ArrayList<QueryInfo>();
+
+			QueryInfo curOffset = new QueryInfo(hypoView, startOffset,
+					endOffset, tag);
+
+			if (queryMap.containsValue(query)) {
+				offsets = queryIndex.get(query);
+			} else {
+				index++;
+				queryMap.put(index, query);
+			}
+
+			totalNoOfQueries++;
+			offsets.add(curOffset);
+
+			queryIndex.put(query, offsets);
+
 		}
 
 		logger.info("Finished creating queries");
@@ -189,6 +249,10 @@ public class NemexAligner implements AlignmentComponent {
 			fw.close();
 
 			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath, true));
+			
+			HashMap<String, Integer> querySenseMap = new HashMap<String, Integer>();
+
+			
 			while (iter.hasNext()) {
 
 				Map.Entry<Integer, String> queryEntry = (Map.Entry<Integer, String>) iter
@@ -196,7 +260,7 @@ public class NemexAligner implements AlignmentComponent {
 				int idx = (int) queryEntry.getKey();
 				String queryText = (String) queryEntry.getValue();
 
-				ArrayList<QueryOffset> value = (ArrayList<QueryOffset>) queryIndex
+				ArrayList<QueryInfo> value = (ArrayList<QueryInfo>) queryIndex
 						.get(queryText);
 
 				logger.info("Creating dictionary entry from hypothesis query");
@@ -204,29 +268,44 @@ public class NemexAligner implements AlignmentComponent {
 				List<String> values = new ArrayList<String>();
 				values.add(queryText);
 
+				Iterator<QueryInfo> queryIter = value.iterator();
+				
+				while (queryIter.hasNext()) {
+
+					QueryInfo hQuery = (QueryInfo) queryIter.next();
+					int start = hQuery.getStartOffset();
+					int end = hQuery.getEndOffset();
+					String tag = hQuery.getPosTag();
+					if (querySenseMap.containsKey(tag)) {
+						querySenseMap.put(tag, querySenseMap.get(tag) + 1);
+					} else
+						querySenseMap.put(tag, 1);
+					logger.info("Adding NemexType annotation on hypothesis query");
+					addNemexAnnotation(hypoView, values, start, end);
+					logger.info("Finished adding NemexType annotation on hypothesis query");
+				}
+
 				String entry = new String();
 				entry = new String(idx + " "
 						+ Math.log(value.size() / totalNoOfQueries) + " "
-						+ queryText + " " + "NG:" + "1:"
-						+ Math.log(value.size() / totalNoOfQueries));
+						+ queryText);
 
+				Iterator<Entry<String, Integer>> senseIter = querySenseMap
+						.entrySet().iterator();
+				while (senseIter.hasNext()) {
+					Map.Entry<String, Integer> sense = (Map.Entry<String, Integer>) senseIter
+							.next();
+					entry = entry + " " + sense.getKey() + ":"
+							+ sense.getValue() + ":"
+							+ Math.log(sense.getValue() / totalNoOfQueries);
+				}
 				logger.info("Adding entry to dictionary," + entry);
 
 				fw.println(entry);
 				// NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath)
 				// .getGazetteer().addNewEntry(entry.get(0));
 				logger.info("Finished adding entry to dictionary");
-
-				Iterator<QueryOffset> queryIter = value.iterator();
-				while (queryIter.hasNext()) {
-					QueryOffset hQuery = (QueryOffset) queryIter.next();
-					int start = hQuery.getStartOffset();
-					int end = hQuery.getEndOffset();
-					logger.info("Adding NemexType annotation on hypothesis query");
-					addNemexAnnotation(hypoView, values, start, end);
-					logger.info("Finished adding NemexType annotation on hypothesis query");
-				}
-
+				querySenseMap.clear();
 			}
 			fw.close();
 			NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
@@ -260,31 +339,90 @@ public class NemexAligner implements AlignmentComponent {
 	 */
 	private void annotateSubstring(JCas textView,
 			HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<QueryOffset>> queryIndex) {
+			HashMap<String, ArrayList<QueryInfo>> queryIndex) {
 
-		String content = textView.getDocumentText().toLowerCase();
-		content = content.replaceAll(" ", "#");
 		String str = new String();
 		List<String> values = new ArrayList<String>();
-		for (int i = 0; i < content.length(); i++)
-			for (int j = i + 1; j <= content.length(); j++) {
-				str = content.substring(i, j);
 
+		Collection<Token> tTokens = JCasUtil.select(textView, Token.class);
+		Token[] tokens = tTokens.toArray(new Token[tTokens.size()]);
+
+		logger.info(tokens.length + " Tokens obtained");
+		int tLength = tokens.length;
+		String[] tTokenArray = new String[tLength];
+		String[] tTagArray = new String[tLength];
+		int[] tTokenStartOffsetArray = new int[tLength];
+		int[] tTokenEndOffsetArray = new int[tLength];
+
+		for (int tNum = 0; tNum < tokens.length; tNum++) {
+			Token token = tokens[tNum];
+
+			tTokenArray[tNum] = token.getCoveredText();
+			tTagArray[tNum] = token.getPos().getPosValue();
+			tTokenStartOffsetArray[tNum] = token.getBegin();
+			tTokenEndOffsetArray[tNum] = token.getEnd();
+
+		}
+
+		logger.info("Token text and offsets obtained");
+
+		InputStream modelIn = null;
+		ChunkerModel model = null;
+
+		try {
+			modelIn = new FileInputStream(
+					"src/main/resources/chunker-model/en-chunker.bin");
+			model = new ChunkerModel(modelIn);
+		} catch (IOException e) {
+			// Model loading failed, handle the error
+			e.printStackTrace();
+		} finally {
+			if (modelIn != null) {
 				try {
-					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
-							similarityMeasure, similarityThreshold);
-					if (values.size() > 0) {
-						NemexType textAnnot = addNemexAnnotation(textView,
-								values, i, j);
-						addAlignmentLink(textAnnot, textView, i, j, queryMap,
-								queryIndex);
-					}
-				} catch (GazetteerNotLoadedException e) {
-					logger.info("Could not load the gazetteer");
-					e.printStackTrace();
+					modelIn.close();
+				} catch (IOException e) {
 				}
 			}
+		}
 
+		ChunkerME chunker = new opennlp.tools.chunker.ChunkerME(model);
+		Span[] chunk = chunker.chunkAsSpans(tTokenArray, tTagArray);
+
+		for (int i = 0; i < chunk.length; i++) {
+			int start = chunk[i].getStart();
+			int end = chunk[i].getEnd();
+			str = "";
+			for (int j = start; j < end; j++) {
+				if (str != "")
+					str += "#";
+				str += tTokenArray[j];
+			}
+			
+			
+			str = str.toLowerCase();
+
+			logger.info("Text query: " + str);
+			
+			int startOffset = tTokenStartOffsetArray[start];
+			int endOffset = tTokenEndOffsetArray[end - 1];
+			
+			try {
+				values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
+						similarityMeasure, similarityThreshold);
+				
+				if (values.size() > 0) {
+					logger.info("Similar entry: " + values);
+					NemexType textAnnot = addNemexAnnotation(textView, values,
+							startOffset, endOffset);
+
+					addAlignmentLink(textAnnot, textView, startOffset, endOffset, queryMap,
+							queryIndex);
+				}
+			} catch (GazetteerNotLoadedException e) {
+				logger.info("Could not load the gazetteer");
+				e.printStackTrace();
+			}
+		}
 	}
 
 	/**
@@ -356,17 +494,17 @@ public class NemexAligner implements AlignmentComponent {
 	 */
 	private void addAlignmentLink(NemexType textAnnot, JCas textView,
 			int textStart, int textEnd, HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<QueryOffset>> queryIndex) {
+			HashMap<String, ArrayList<QueryInfo>> queryIndex) {
 		String[] values = textAnnot.getValues().toStringArray();
 		for (int i = 0; i < values.length; i++) {
 
 			String query = values[i];
 
-			ArrayList<QueryOffset> hypotheses = queryIndex.get(query);
-			Iterator<QueryOffset> hypoIter = hypotheses.iterator();
+			ArrayList<QueryInfo> hypotheses = queryIndex.get(query);
+			Iterator<QueryInfo> hypoIter = hypotheses.iterator();
 
 			while (hypoIter.hasNext()) {
-				QueryOffset hypothesis = hypoIter.next();
+				QueryInfo hypothesis = hypoIter.next();
 				JCas hypoView = hypothesis.getHypothesisView();
 				int hypoStart = hypothesis.getStartOffset();
 				int hypoEnd = hypothesis.getEndOffset();
