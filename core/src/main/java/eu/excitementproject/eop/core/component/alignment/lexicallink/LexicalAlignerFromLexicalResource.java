@@ -10,6 +10,7 @@ import eu.excitement.type.alignment.GroupLabelInferenceLevel;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 
 /**
  * TODO full document
@@ -35,6 +36,9 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
  * <P> To check available canonical relations see GroupLabelDomainLevel and 
  * GroupLabelInferenceLabel. </P>  
  * 
+ * <P> 
+ * Memo: no need to care about "only this POS" feature of old Lexical Aligner. 
+ * 
  * 
  * @author Tae-Gil Noh
  *
@@ -42,7 +46,7 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 
 	/**
-	 * Full Constructor for the class: use convenient constructurs, if you don't require all the fields. 
+	 * Full Constructor for the class: use other convenient constructors, if you don't require of the fields. 
 	 * 
 	 * @param res 	the underlying LexicalResource. Cannot be null.  
 	 * @param supportPhrase  The underlying resource supports phrases (multi-word expression)? 
@@ -50,7 +54,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	 * @param groupLabelMapI map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of inference level group label).  
 	 * @param groupLabelMapD map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of domain level group label) 
  	 */
-	public LexicalAlignerFromLexicalResource(LexicalResource<?> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD) throws AlignmentComponentException
+	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD) throws AlignmentComponentException
 	{
 		// set underlying LexicalResource
 		if (res != null)
@@ -127,7 +131,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	}
 	
 	// private data
-	private final LexicalResource<?> underlyingResource; 
+	private final LexicalResource<? extends RuleInfo> underlyingResource; 
 	private final Map<String,Set<GroupLabelInferenceLevel>> mapInfoToGroupLabelInference; 
 	private final Map<String,Set<GroupLabelDomainLevel>> mapInfoToGroupLabelDomain; 
 
