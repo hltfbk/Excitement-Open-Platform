@@ -71,7 +71,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	 * @param groupLabelMapI map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of inference level group label).  
 	 * @param groupLabelMapD map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of domain level group label) 
  	 */
-	public LexicalAlignerFromLexicalResource(LexicalResource<RuleInfo> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD, Set<GroupLabelInferenceLevel> defaultGroupLabel) throws AlignmentComponentException
+	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD, Set<GroupLabelInferenceLevel> defaultGroupLabel) throws AlignmentComponentException
 	{
 		// set underlying LexicalResource
 		if (res != null)
@@ -129,37 +129,31 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 		}
 		
 		// for each candidate, query the underlying resource,  
-		// check for applicable rules  
+		// check for applicable rules; and if found, add alignment.link. 
 		try {
 			for (Lemma[] oneCand : allHSideCandidates)
 			{		
 				// TEXT -> HYPOTHESIS SIDE first 
 				String candVal = lemmaArrAsString(oneCand); 
-				List<LexicalRule<?>> retrievedRules = null; 
-				if (oneCand.length > 1)
-				{	// phrase level 
-					retrievedRules = underlyingResource.getRulesForRight(candVal, null); 
-				}
-				else
-				{ 	// single word level 
-					// TODO (?) for single Lemma instance, we can still check POS. 
-					// should we? for now, we won't (just as old lexical alinger) 
-					// (no pos checking on the candidate)  --- 
-					// (if we do, we might want to use canonical POS object) 
-					retrievedRules = underlyingResource.getRulesForRight(candVal, null); 
-				}						
-				
-				for (LexicalRule<?> rule : retrievedRules)
+
+				for (LexicalRule<? extends RuleInfo> rule : underlyingResource.getRulesForRight(candVal, null))
 				{
-					// does this exist in Text side? 
-					if (tLemmaSeq.contains(rule.getLLemma())) // asking "applicable"? 
+					// does this rule applicable in this T-H pair?  
+					if (tLemmaSeq.contains(rule.getLLemma()))  
 					{
 						// if so, add an alignment link! 
 						addAlignmentLinkT2H(aJCas, rule, tSideLemmas, oneCand); 
 					}
 				}
+				// TODO (MAYBE?) (add if oneCand.length == 1?) 
+				// please note that here, getRulesForRight call does not uses POS info. (null) 
+				// This is mainly because that we do "phrase" level support where we 
+				// can't really tell POS apart (multiple POSes). 
+				// But for single-word queries, we might still can use POS; but for now, 
+				// we don't pass POS, just as old lexical aligner did not. 
 				
-				// TODO HYPOTHESIS -> TEXT side too, if we need.  
+				// TODO (PROLLY)  
+				// HYPOTHESIS -> TEXT side too, if we need.  
 			}
 		} catch (LexicalResourceException le)
 		{
@@ -342,7 +336,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	}
 	
 	// private data
-	private final LexicalResource<RuleInfo> underlyingResource; 
+	private final LexicalResource<? extends RuleInfo> underlyingResource; 
 	private final Map<String,Set<GroupLabelInferenceLevel>> mapInfoToGroupLabelInference; 
 	private final Map<String,Set<GroupLabelDomainLevel>> mapInfoToGroupLabelDomain; 
 
