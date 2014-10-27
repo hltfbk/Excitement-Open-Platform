@@ -1,19 +1,36 @@
 package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
+import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
+//import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.GroupLabelDomainLevel;
 import eu.excitement.type.alignment.GroupLabelInferenceLevel;
+import eu.excitement.type.alignment.Link;
+import eu.excitement.type.alignment.Link.Direction;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
+import static eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseResourceAligner.addOneAlignmentLinkOnTokenLevel; 
 
 /**
- * TODO full document
+ *  
+ * TODO full JavaDoc document
  * (what this modules does) 
  * (goal: use rich lexical resources as lexical aligner) 
  * 
@@ -54,7 +71,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	 * @param groupLabelMapI map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of inference level group label).  
 	 * @param groupLabelMapD map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of domain level group label) 
  	 */
-	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD) throws AlignmentComponentException
+	public LexicalAlignerFromLexicalResource(LexicalResource<RuleInfo> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD, Set<GroupLabelInferenceLevel> defaultGroupLabel) throws AlignmentComponentException
 	{
 		// set underlying LexicalResource
 		if (res != null)
@@ -71,52 +88,246 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 		// Both can be null (optional values) 
 		this.mapInfoToGroupLabelInference = groupLabelMapI; // inference level map. (alignment, contradictory, etc --- generic ) 
 		this.mapInfoToGroupLabelDomain = groupLabelMapD; // domain level map. (lexical relations ... predicate relations, etc --- specific ) 
+		this.defaultGroupLabel = defaultGroupLabel; 
+		
 		// setting phrase flag 
 		// (multiple lemmas forming one entry in the underlying resource or not 
 		// if supported, set the length of maximum phrase, too) 
 		if (supportPhrase && maxPhraseLen > 1)
 		{
-			this.supportPhraseLookup = true; 
+			this.supportPhrases = true; 
 			this.phraseMaxLen = maxPhraseLen; 
 		}
 		else
 		{
-			this.supportPhraseLookup = false; 
-			this.phraseMaxLen = 0; 
+			this.supportPhrases = false; 
+			this.phraseMaxLen = 1; 
 		}			
 	}
 
 	@Override
 	public void annotate(JCas aJCas) throws AlignmentComponentException {
+				
+		// get T lemma sequence as one single string 
+		String tLemmaSeq = null; // TEXTVIEW Lemma sequences (ordered) as one string, for quick existence check 
+//		String hLemmaSeq = null; // HYPOTHESISVIEW Lemma sequences (ordered) as one string, for candidate generation  
+		Lemma[] tSideLemmas = null; 
+//		Lemma[] hSideLemmas = null; 
+		HashSet<Lemma[]> allHSideCandidates = null; 
 		
-		// TODO: start coding on this outline. 
-		// 
+		try {
+			tLemmaSeq = getLemmasAsStringSequence(aJCas.getView(LAP_ImplBase.TEXTVIEW));
+			Collection<Lemma> lemmas = JCasUtil.select(aJCas.getView(LAP_ImplBase.TEXTVIEW), Lemma.class); 
+			tSideLemmas = lemmas.toArray(new Lemma[lemmas.size()]); 
+
+//			hLemmaSeq = getLemmasAsStringSequence(aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW));
+			allHSideCandidates = getAllPossibleCandidates(aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW)); 
+		}
+		catch (CASException ce)
+		{
+			throw new AlignmentComponentException("unable to access views (text or hypothesis) of the given CAS");
+		}
 		
-		// do we accept phrases (the entry can be more than one lemma --- two or more lemmas)
-		// do both. If no phrases, just first part. 
-		
-		// single-lemma route 
-		// get H side lemmas as all possible candidates 
-		// ready T side lemma as a Lemma list. 
-		// 
-		//   for all candidates 
-		//     query getRulesForRight(lemma) 
-		//     check each T side lemma list for applicable places
-		//	     if found: add link. 
-		//   (WE do check POS and Lemma for single lemma cases) 
-		
-		// phrase-checking route 
-		// prepare T side lemma sequences as one string, so we can do quick look up of 
-		// applicable or not. 
-		// 
-		// get H side lemma sequences as all possible phrase candidates 
-		// for each candidates 
-		//    query getRulesForRight(lemma-seq as one string)
-		//    for the returned rules, string search on T-side lemma sequence  
-		//       if match is there; 
-		//       do real search on T side Lemma List, and link them.  
-		
+		// for each candidate, query the underlying resource,  
+		// check for applicable rules  
+		try {
+			for (Lemma[] oneCand : allHSideCandidates)
+			{		
+				// TEXT -> HYPOTHESIS SIDE first 
+				String candVal = lemmaArrAsString(oneCand); 
+				List<LexicalRule<?>> retrievedRules = null; 
+				if (oneCand.length > 1)
+				{	// phrase level 
+					retrievedRules = underlyingResource.getRulesForRight(candVal, null); 
+				}
+				else
+				{ 	// single word level 
+					// TODO (?) for single Lemma instance, we can still check POS. 
+					// should we? for now, we won't (just as old lexical alinger) 
+					// (no pos checking on the candidate)  --- 
+					// (if we do, we might want to use canonical POS object) 
+					retrievedRules = underlyingResource.getRulesForRight(candVal, null); 
+				}						
+				
+				for (LexicalRule<?> rule : retrievedRules)
+				{
+					// does this exist in Text side? 
+					if (tLemmaSeq.contains(rule.getLLemma())) // asking "applicable"? 
+					{
+						// if so, add an alignment link! 
+						addAlignmentLinkT2H(aJCas, rule, tSideLemmas, oneCand); 
+					}
+				}
+				
+				// TODO HYPOTHESIS -> TEXT side too, if we need.  
+			}
+		} catch (LexicalResourceException le)
+		{
+			throw new AlignmentComponentException("Underlying Lexical Resource raised an exception: " + le.getMessage(), le); 
+		}
+				
 	}	
+	
+	// utility methods 
+	private void addAlignmentLinkT2H(JCas aJCas, LexicalRule<?> rule, Lemma[] tLemmasToBeMatched, Lemma[] hSideTarget) throws AlignmentComponentException
+	{
+		List<Integer> matches = findAllMatches(tLemmasToBeMatched, hSideTarget);
+	
+		// can't be zero. if so, internal integrity failure. 
+		assert(matches.isEmpty() != true); 
+		logger.debug("addAlignmentLinkT2H: found " + matches.size() + " links"); 
+		
+		for (int matchLoc : matches)
+		{
+			// get begin-end locations and call 
+			// addOneAlignmentLinkOnTokenLevel
+			int toBegin = hSideTarget[0].getBegin(); 
+			int toEnd = hSideTarget[hSideTarget.length - 1].getEnd(); 
+			int fromBegin = tLemmasToBeMatched[matchLoc].getBegin(); 
+			int fromEnd = tLemmasToBeMatched[matchLoc + hSideTarget.length -1].getEnd(); 
+			
+			JCas textView; 
+			JCas hypoView;
+			Direction dir = Direction.TtoH; // TODO: (reminder) you add HtoT also, this should be checked and updated (one, not two TtoH, HtoT) - on HtoT side check. 
+			try {
+				textView = aJCas.getView(LAP_ImplBase.TEXTVIEW); 
+				hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW); 
+			} catch (CASException ce)
+			{
+				throw new AlignmentComponentException("unable to access views (text or hypothesis) of the given CAS");
+			}
+			
+			// finally, call the actual worker to add alignment link... 
+			Link newLink = null; 
+			try {
+				newLink = addOneAlignmentLinkOnTokenLevel(textView, hypoView, fromBegin, fromEnd, toBegin, toEnd, dir); 
+			} catch (CASException ce)
+			{
+				throw new AlignmentComponentException("Adding Alignment.Link instance failed in CAS access: " + ce.getMessage(), ce);
+			}
+			
+			// addOneAlingmentLinkOnTokenLevel does not add the following MetaInfo. 
+			// add them accordingly... 
+			newLink.setStrength(rule.getConfidence()); 
+			newLink.setAlignerID(rule.getResourceName()); 
+			newLink.setAlignerVersion(""); 
+			newLink.setLinkInfo(rule.getRelation()); 	
+			
+			// and finally, add GroupLabel 
+			addGroupLabel(rule, newLink); 
+		}
+	}
+	
+	private void addGroupLabel(LexicalRule<?> rule, Link aLink)
+	{
+		// TODO: code for add Group Label  
+		// inference level groupLabel 
+		// if table is given, look up the table, and add accoring to table, 
+		// if table is not given, use default 
+		
+	}
+	
+	/**
+	 * @param sequences
+	 * @param target
+	 * @return
+	 */
+	private List<Integer> findAllMatches(Lemma[] sequences, Lemma[] target)
+	{
+		ArrayList<Integer> result = new ArrayList<Integer>(); 
+		
+		for(int i=0; i < sequences.length; i++)
+		{
+			boolean passAtI = true; 
+			for (int j=0; j < target.length; j++)
+			{
+				if (! (target[j].getValue().equals(sequences[i+j].getValue())))
+				{
+					passAtI = false; 
+					break; 
+				}
+			}
+			if (passAtI)
+			{
+				result.add(i); 
+			}
+		}
+		
+		return result; 
+	}
+	
+	/**
+	 * @param aView
+	 * @return
+	 */
+	private String getLemmasAsStringSequence(JCas aView)
+	{
+		String result=""; 
+		
+		// get all Lemmas 
+		Collection<Lemma> lemmas = JCasUtil.select(aView, Lemma.class); 
+		
+		for(Lemma cur : lemmas )
+		{
+			result += cur.getValue() + " "; 
+		}
+		return result; 
+	}
+	
+	/**
+	 * This method returns all possible consecutive sequences from 
+	 * Lemmas of a "View", as possible phrase. Phrases also includes 
+	 * single-len (word) case. Note that, if phraseMaxLen is 1, all 
+	 * this method return would be length 1 phrases (words)  
+	 * 
+	 * @param aView aJCas view with lemmas 
+	 * @return
+	 * @throws AlignmentComponentException
+	 */
+	private HashSet<Lemma[]> getAllPossibleCandidates(JCas aView) throws AlignmentComponentException
+	{
+		// sanity check 
+		assert(aView != null); 		
+		
+		// the result will be stored here... 
+		HashSet<Lemma[]> result = new HashSet<Lemma[]>(); 
+		
+		// Okay. 
+		// Let's start with the all lemmas, in order, convert them to indexed array... 
+		Collection<Lemma> clem = JCasUtil.select(aView, Lemma.class); 
+		Lemma[] lems = clem.toArray(new Lemma[clem.size()]); 
+		
+		// and generate all candidates, upto phraseMaxLen
+		for (int i=0; i < lems.length; i++)
+		{
+			for(int j=0; (j < phraseMaxLen) && (i+j < lems.length); j++ )
+			{
+				Lemma[] oneCand = Arrays.copyOfRange(lems, i, i+j); 
+				result.add(oneCand); 
+			}			
+		}		
+		return result; 
+	}
+	
+	/**
+	 * Makes Lemma array as Lemma-sequence (as one String) - whitespace as separator. 
+	 * @param lem
+	 * @return
+	 */
+	private String lemmaArrAsString(Lemma[] lem)
+	{
+		String result = lem[0].getValue(); 
+		
+		for(int j = 1; j < lem.length; j++) 
+		{
+			result += " " + lem[j].getValue(); 
+		}
+		
+		return result; 
+	}
+	
+	
+	
 	
 	@Override
 	public String getComponentName()
@@ -131,11 +342,14 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	}
 	
 	// private data
-	private final LexicalResource<? extends RuleInfo> underlyingResource; 
+	private final LexicalResource<RuleInfo> underlyingResource; 
 	private final Map<String,Set<GroupLabelInferenceLevel>> mapInfoToGroupLabelInference; 
 	private final Map<String,Set<GroupLabelDomainLevel>> mapInfoToGroupLabelDomain; 
 
-	private final Boolean supportPhraseLookup; 
+	private final Boolean supportPhrases; 
 	private final int phraseMaxLen; 
+	private final Set<GroupLabelInferenceLevel> defaultGroupLabel; 
+	
+	private final static Logger logger = Logger.getLogger(LexicalAlignerFromLexicalResource.class);
 
 }

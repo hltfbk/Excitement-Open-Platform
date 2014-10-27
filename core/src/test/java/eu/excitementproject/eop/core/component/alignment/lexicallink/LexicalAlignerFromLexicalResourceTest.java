@@ -43,8 +43,13 @@ public class LexicalAlignerFromLexicalResourceTest {
 		// Create and initialize the aligner
 		logger.info("Initialize the Lexical Aligner and required LAPs");
 		
+		// initialize WordNet & aligner for that 
+		
+		// initialize VerbOcean & aligner for that 
 		
 	}
+	
+	
 	
 	
 	@Test
