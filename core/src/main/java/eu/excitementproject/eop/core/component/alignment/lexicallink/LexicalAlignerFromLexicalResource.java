@@ -22,9 +22,12 @@ import eu.excitement.type.alignment.Link.Direction;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceCloseException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 import static eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseResourceAligner.addOneAlignmentLinkOnTokenLevel; 
 
@@ -113,7 +116,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 //		String hLemmaSeq = null; // HYPOTHESISVIEW Lemma sequences (ordered) as one string, for candidate generation  
 		Lemma[] tSideLemmas = null; 
 //		Lemma[] hSideLemmas = null; 
-		HashSet<Lemma[]> allHSideCandidates = null; 
+		List<Lemma[]> allHSideCandidates = null; 
 		
 		try {
 			tLemmaSeq = getLemmasAsStringSequence(aJCas.getView(LAP_ImplBase.TEXTVIEW));
@@ -135,7 +138,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 			{		
 				// TEXT -> HYPOTHESIS SIDE first 
 				String candVal = lemmaArrAsString(oneCand); 
-
+				//logger.debug("check cand: " + candVal); 
 				for (LexicalRule<? extends RuleInfo> rule : underlyingResource.getRulesForRight(candVal, null))
 				{
 					// does this rule applicable in this T-H pair?  
@@ -145,8 +148,8 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 						addAlignmentLinkT2H(aJCas, rule, tSideLemmas, oneCand); 
 					}
 				}
-				// TODO (MAYBE?) (add if oneCand.length == 1?) 
-				// please note that here, getRulesForRight call does not uses POS info. (null) 
+				// TODO (MAYBE?) Reflect POS (especially one-word entry)  
+				// please note that here, getRulesForRight call is done without POS info. (null) 
 				// This is mainly because that we do "phrase" level support where we 
 				// can't really tell POS apart (multiple POSes). 
 				// But for single-word queries, we might still can use POS; but for now, 
@@ -165,11 +168,25 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	// utility methods 
 	private void addAlignmentLinkT2H(JCas aJCas, LexicalRule<?> rule, Lemma[] tLemmasToBeMatched, Lemma[] hSideTarget) throws AlignmentComponentException
 	{
-		List<Integer> matches = findAllMatches(tLemmasToBeMatched, hSideTarget);
+		
+		logger.debug("addAlignmentLinkT2H: got request of adding links for rule { " + rule.getLLemma() + " => " + rule.getRLemma() + " } on H-SOFA " + hSideTarget[0].getBegin() + " <-> " + hSideTarget[hSideTarget.length -1].getEnd());
+		
+		// special workaround code for WordNet --- wordNet tries non-exact matching for phrases. 
+		// the following method will detect any non-exact match. 
+		if (isRuleRHSWordnetNonExactMatch(rule, hSideTarget))
+		{
+			logger.debug("Skipping non-exact matching rule of WordNet"); 
+			return; // we ignore such non-exact match phrase. 
+		}
+		
+		// okay. Prepare link. First, find all applicable locations on TEXT side. 	
+		
+		String[] ruleLeft = rule.getLLemma().split("\\s+"); // Hmm. this assumption of white space and lemma separations are okay for current languages... 
+		List<Integer> matches = findAllMatches(tLemmasToBeMatched, ruleLeft);
 	
 		// can't be zero. if so, internal integrity failure. 
 		assert(matches.isEmpty() != true); 
-		logger.debug("addAlignmentLinkT2H: found " + matches.size() + " links"); 
+		logger.debug("addAlignmentLinkT2H: found " + matches.size() + " applicable places on T side"); 
 		
 		for (int matchLoc : matches)
 		{
@@ -178,7 +195,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 			int toBegin = hSideTarget[0].getBegin(); 
 			int toEnd = hSideTarget[hSideTarget.length - 1].getEnd(); 
 			int fromBegin = tLemmasToBeMatched[matchLoc].getBegin(); 
-			int fromEnd = tLemmasToBeMatched[matchLoc + hSideTarget.length -1].getEnd(); 
+			int fromEnd = tLemmasToBeMatched[matchLoc + ruleLeft.length -1].getEnd(); 
 			
 			JCas textView; 
 			JCas hypoView;
@@ -221,21 +238,49 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 		
 	}
 	
+	private boolean isRuleRHSWordnetNonExactMatch(LexicalRule<? extends RuleInfo> rule, Lemma[] rhsTarget) throws AlignmentComponentException
+	{
+		if (!rule.getResourceName().contains("WORDNET"))
+		{
+			return false; 
+		}
+		
+		// So, this is wordnet, check synset. 
+		WordnetRuleInfo ruleInfo = (WordnetRuleInfo)rule.getInfo();
+		String rhs = lemmaArrAsString(rhsTarget); 
+		
+		// Exact match? 
+		try {
+			if (ruleInfo.getRightSense().getWords().contains(rhs) )
+			{
+				// then, this is not non-exact match 
+				return false; 
+			}
+		}
+		catch (WordNetException we)
+		{
+			throw new AlignmentComponentException("Underlying Resource (wordnet) raised an exception" + we.getMessage(), we); 
+		}
+		
+		// otherwise, non-exact match. 					
+		return true; 
+	}
+	
 	/**
 	 * @param sequences
 	 * @param target
 	 * @return
 	 */
-	private List<Integer> findAllMatches(Lemma[] sequences, Lemma[] target)
+	private List<Integer> findAllMatches(Lemma[] sequences, String[] ruleLeft)
 	{
 		ArrayList<Integer> result = new ArrayList<Integer>(); 
 		
 		for(int i=0; i < sequences.length; i++)
 		{
 			boolean passAtI = true; 
-			for (int j=0; j < target.length; j++)
+			for (int j=0; j < ruleLeft.length; j++)
 			{
-				if (! (target[j].getValue().equals(sequences[i+j].getValue())))
+				if (! (ruleLeft[j].equals(sequences[i+j].getValue())))
 				{
 					passAtI = false; 
 					break; 
@@ -278,13 +323,13 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	 * @return
 	 * @throws AlignmentComponentException
 	 */
-	private HashSet<Lemma[]> getAllPossibleCandidates(JCas aView) throws AlignmentComponentException
+	private List<Lemma[]> getAllPossibleCandidates(JCas aView) throws AlignmentComponentException
 	{
 		// sanity check 
 		assert(aView != null); 		
 		
 		// the result will be stored here... 
-		HashSet<Lemma[]> result = new HashSet<Lemma[]>(); 
+		ArrayList<Lemma[]> result = new ArrayList<Lemma[]>(); 
 		
 		// Okay. 
 		// Let's start with the all lemmas, in order, convert them to indexed array... 
@@ -294,7 +339,7 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 		// and generate all candidates, upto phraseMaxLen
 		for (int i=0; i < lems.length; i++)
 		{
-			for(int j=0; (j < phraseMaxLen) && (i+j < lems.length); j++ )
+			for(int j=1; (j <= phraseMaxLen) && (i+j <= lems.length); j++ )
 			{
 				Lemma[] oneCand = Arrays.copyOfRange(lems, i, i+j); 
 				result.add(oneCand); 
@@ -310,17 +355,42 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	 */
 	private String lemmaArrAsString(Lemma[] lem)
 	{
-		String result = lem[0].getValue(); 
+		try {
+			String result = lem[0].getValue(); 
 		
-		for(int j = 1; j < lem.length; j++) 
-		{
-			result += " " + lem[j].getValue(); 
+			for(int j = 1; j < lem.length; j++) 
+			{
+				result += " " + lem[j].getValue(); 
+			}
+
+			return result; 
 		}
-		
-		return result; 
+		catch (ArrayIndexOutOfBoundsException ae)
+		{
+			logger.warn("OutofBOunds?!?!?"); 
+			logger.warn("lem size:" + lem.length); 
+			for (Lemma l : lem)
+			{
+				logger.info(l.getValue()); 
+			}
+			return lem[0].getValue(); 
+		}
 	}
 	
-	
+	/**
+	 * close() 
+	 */
+	public void close() throws AlignmentComponentException
+	{
+		try {
+			underlyingResource.close(); 
+		} 
+		catch (LexicalResourceCloseException le)
+		{
+			throw new AlignmentComponentException("closing the underlying lexical resource failed: " + le.getMessage(), le); 
+		}
+		
+	}
 	
 	
 	@Override
@@ -345,5 +415,4 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	private final Set<GroupLabelInferenceLevel> defaultGroupLabel; 
 	
 	private final static Logger logger = Logger.getLogger(LexicalAlignerFromLexicalResource.class);
-
 }
