@@ -456,7 +456,7 @@ public class NemexAligner implements AlignmentComponent {
 			String[] entryArray = entry.toArray(new String[entry.size()]);
 			valuesArray.copyFromArray(entryArray, 0, 0, entryArray.length);
 
-			logger.info("Setting values of annotation");
+			//logger.info("Setting values of annotation");
 			annot.setValues(valuesArray);
 
 			// add annotation to index of annotations
@@ -561,7 +561,7 @@ public class NemexAligner implements AlignmentComponent {
 		}
 
 		for (NemexType ntype : JCasUtil.select(hView, NemexType.class)) {
-			if ((ntype.getBegin() == tStart) && (ntype.getEnd() == tEnd)) {
+			if ((ntype.getBegin() == hStart) && (ntype.getEnd() == hEnd)) {
 				Target tg = new Target(hView);
 				FSArray hAnnots = new FSArray(hView, 1);
 				hAnnots.set(0, ntype);
