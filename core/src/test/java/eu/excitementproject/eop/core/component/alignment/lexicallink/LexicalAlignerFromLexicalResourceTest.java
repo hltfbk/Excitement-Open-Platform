@@ -139,10 +139,11 @@ public class LexicalAlignerFromLexicalResourceTest {
 		}
 	}
 	
-	//@Test
+//	//@Test
 	public void test0() 
 	{
 		// this test shows problem of WordNet and Multi-Word (multi token) lemma. 
+      // Thus, we need a work around code ... 
 		try {
 			// this goes okay (relatively, ie. capital => capital punishment isn't good)
 			for(LexicalRule<? extends RuleInfo> rule : wordNet.getRulesForRight("capital punishment", null))
@@ -236,7 +237,7 @@ public class LexicalAlignerFromLexicalResourceTest {
 		}
 	}
 	
-	//@Test
+	@Test
 	public void test2() {
 		
 		try {

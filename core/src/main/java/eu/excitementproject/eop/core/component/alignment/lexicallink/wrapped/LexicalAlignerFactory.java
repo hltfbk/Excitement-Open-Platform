@@ -13,9 +13,11 @@ import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalReso
  * A static class for lexical resource developers (?). Give one lexical resource with parameters, 
  * the methods will return a lexical aligner that works with the given resource. 
  * 
+ * NOTE: this code is deprecated. LexicalAlignerFromLexicalResource, instead of this code.  
  * @author Tae-Gil Noh
  *
  */
+@Deprecated 
 public class LexicalAlignerFactory {
 
 	static LexicalAligner getLexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> aLexicalResource, int maxPhrase, String resourceVersion, Boolean useLemma, PartOfSpeech leftPos, PartOfSpeech rightPos)

@@ -3,7 +3,6 @@ package eu.excitementproject.eop.core.component.alignment.lexicallink;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -65,6 +64,48 @@ import static eu.excitementproject.eop.core.component.alignment.phraselink.Meteo
  */
 public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 
+	
+	
+	/**
+	 * @param res the underlying LexicalResource. Cannot be null
+	 * @param defaultGroupLabel a set of inference level group label, and they will be set as default value for alignment.Links of this aligner (e.g. the provided group label will be added when the map groupLabelMapI is not provided, or map look up does not yield for LexicalRule relation)
+	 * @param maxPhraseLen what is the length of maximum phrase in the underlying resource? set only when the underlying resource supports multi-word expressions 
+	 * @throws AlignmentComponentException
+	 */
+	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res, Set<GroupLabelInferenceLevel> defaultGroupLabel, int maxPhraseLen) throws AlignmentComponentException
+	{
+		this(res, true, maxPhraseLen, null, null, defaultGroupLabel); 		
+	}
+
+	/**
+	 * @param res the underlying LexicalResource. Cannot be null
+	 * @param maxPhraseLen what is the length of maximum phrase in the underlying resource? set only when the underlying resource supports multi-word expressions 
+	 * @throws AlignmentComponentException
+	 */
+	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res, int maxPhraseLen) throws AlignmentComponentException
+	{
+		this(res, true, maxPhraseLen, null, null, null); 		
+	}
+	
+	/**
+	 * @param res the underlying LexicalResource. Cannot be null
+	 * @throws AlignmentComponentException
+	 */
+	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res) throws AlignmentComponentException
+	{
+		this(res, false, 1, null, null, null); 		
+	}
+	
+	/**
+	 * @param res the underlying LexicalResource. Cannot be null
+	 * @param defaultGroupLabel a set of inference level group label, and they will be set as default value for alignment.Links of this aligner (e.g. the provided group label will be added when the map groupLabelMapI is not provided, or map look up does not yield for LexicalRule relation)
+	 * @throws AlignmentComponentException
+	 */
+	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res, Set<GroupLabelInferenceLevel> defaultGroupLabel) throws AlignmentComponentException
+	{
+		this(res, false, 1, null, null, defaultGroupLabel); 
+	}
+	
 	/**
 	 * Full Constructor for the class: use other convenient constructors, if you don't require of the fields. 
 	 * 
@@ -73,7 +114,9 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	 * @param maxPhraseLen (checked only when supportPhrase is true) what is the length of maximum phrase in the underlying resource? (the aligner will lookup only to that length) 
 	 * @param groupLabelMapI map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of inference level group label).  
 	 * @param groupLabelMapD map -  which will let us know how resource specific "info" string would be mapped into canonical enum value that groups alignment.Link. This is for inference level map. (alignment, contradictory, etc --- generic ). The value is optional, and can be null. if null, the aligner won't add canonical relation of domain level group label) 
- 	 */
+	 * @param defaultGroupLabel - a set of inference level group label, and they will be set as default value for alignment.Links of this aligner (e.g. the provided group label will be added when the map groupLabelMapI is not provided, or map look up does not yield for LexicalRule relation) 
+	 * 
+	 */
 	public LexicalAlignerFromLexicalResource(LexicalResource<? extends RuleInfo> res, Boolean supportPhrase, int maxPhraseLen, Map<String,Set<GroupLabelInferenceLevel>> groupLabelMapI, Map<String,Set<GroupLabelDomainLevel>> groupLabelMapD, Set<GroupLabelInferenceLevel> defaultGroupLabel) throws AlignmentComponentException
 	{
 		// set underlying LexicalResource
@@ -407,11 +450,15 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 	
 	// private data
 	private final LexicalResource<? extends RuleInfo> underlyingResource; 
+	@SuppressWarnings("unused")
 	private final Map<String,Set<GroupLabelInferenceLevel>> mapInfoToGroupLabelInference; 
+	@SuppressWarnings("unused")
 	private final Map<String,Set<GroupLabelDomainLevel>> mapInfoToGroupLabelDomain; 
 
+	@SuppressWarnings("unused")
 	private final Boolean supportPhrases; 
 	private final int phraseMaxLen; 
+	@SuppressWarnings("unused")
 	private final Set<GroupLabelInferenceLevel> defaultGroupLabel; 
 	
 	private final static Logger logger = Logger.getLogger(LexicalAlignerFromLexicalResource.class);
