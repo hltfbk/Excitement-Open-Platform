@@ -228,7 +228,12 @@ public class LexicalAlignerFromLexicalResource implements AlignmentComponent {
 		List<Integer> matches = findAllMatches(tLemmasToBeMatched, ruleLeft);
 	
 		// can't be zero. if so, internal integrity failure. 
-		assert(matches.isEmpty() != true); 
+		if (matches.size() == 0)
+		{
+			logger.debug("Skipping non-exact matching rule (on text side, prolly a partial match"); 			
+			return; // again, we ignore such non-exact match. 
+		}
+		
 		logger.debug("addAlignmentLinkT2H: found " + matches.size() + " applicable places on T side"); 
 		
 		for (int matchLoc : matches)

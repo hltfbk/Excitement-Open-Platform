@@ -3,8 +3,6 @@ package eu.excitementproject.eop.core.component.alignment.lexicallink;
 import static org.junit.Assert.*;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +13,6 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
@@ -26,10 +23,6 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourc
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
-import eu.excitementproject.eop.common.configuration.CommonConfig;
-import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
-import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.WordNetENLinker;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanRuleInfo;
@@ -38,13 +31,9 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetR
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
-import eu.excitementproject.eop.lap.PlatformCASProber;
-import eu.excitementproject.eop.lap.biu.test.BIUFullLAPConfigured;
-import eu.excitementproject.eop.lap.biu.test.BiuTestUtils;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
-@SuppressWarnings("unused")
 public class LexicalAlignerFromLexicalResourceTest {
 
 	// Private Members
@@ -136,36 +125,6 @@ public class LexicalAlignerFromLexicalResourceTest {
 			}
 			// if this is some other exception, the test will fail  
 			fail(e.getMessage()); 
-		}
-	}
-	
-//	//@Test
-	public void test0() 
-	{
-		// this test shows problem of WordNet and Multi-Word (multi token) lemma. 
-      // Thus, we need a work around code ... 
-		try {
-			// this goes okay (relatively, ie. capital => capital punishment isn't good)
-			for(LexicalRule<? extends RuleInfo> rule : wordNet.getRulesForRight("capital punishment", null))
-			{
-				logger.info("rule: " + rule.getLLemma() + "(" + rule.getLPos() + ") => " + rule.getRLemma() + "(" + rule.getRPos() + ")"); 
-			}
-			// this is quite bad: note that WordNet returns rules for ( x => killer, x => have, x => accuse ) .. all together. 
-			// It just don't make match "strictly for the given lemma". I guess this is a bug. 
-			for(LexicalRule<? extends RuleInfo> rule : wordNet.getRulesForRight("killer have been accuse", null))
-			{
-				logger.info("rule: " + rule.getLLemma() + "(" + rule.getLPos() + ") => " + rule.getRLemma() + "(" + rule.getRPos() + ")"); 
-			}
-			
-			// however, this call is Okay; the problem is, this kind of call *must* be repeated, and very slow. 
-			for(LexicalRule<? extends RuleInfo> rule : wordNet.getRules("death penalty", null, "capital punishment", null))
-			{
-				logger.info("rule: " + rule.getLLemma() + "(" + rule.getLPos() + ") => " + rule.getRLemma() + "(" + rule.getRPos() + ")"); 
-			}			
-		}
-		catch (Exception e)
-		{
-			fail (e.getMessage()); 
 		}
 	}
 	
