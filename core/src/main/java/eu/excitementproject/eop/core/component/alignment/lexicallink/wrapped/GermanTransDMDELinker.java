@@ -5,7 +5,8 @@ import org.apache.uima.jcas.JCas;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
+//import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAlignerFromLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.transDm.GermanTransDmResource;
 
 /**
@@ -39,8 +40,9 @@ public class GermanTransDMDELinker implements AlignmentComponent {
 		try 
 		{
 			GermanTransDmResource lex = new GermanTransDmResource(simMeasureChoice);  
-			LexicalAligner theAligner = LexicalAlignerFactory.getLexicalAlignerFromLexicalResource(lex, 1, "1.3", true, null, null); 
-			worker = theAligner; 
+//			LexicalAligner theAligner = LexicalAlignerFactory.getLexicalAlignerFromLexicalResource(lex, 1, "1.3", true, null, null); 
+//			worker = theAligner; 
+			worker = new LexicalAlignerFromLexicalResource(lex); 
 		}
 		catch (ConfigurationException ce)
 		{
@@ -57,7 +59,8 @@ public class GermanTransDMDELinker implements AlignmentComponent {
 	}
 	
 	// private variable 
-	private final LexicalAligner worker; 
+//	private final LexicalAligner worker; 
+	private final LexicalAlignerFromLexicalResource worker; 
 
 	public String getComponentName()
 	{

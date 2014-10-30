@@ -9,11 +9,14 @@ import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResource;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
-import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
+//import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+//import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
-
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanRuleInfo;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAlignerFromLexicalResource;
 /**
  *
  * A lexical aligner class that links tokens based on VerbOcean. 
@@ -49,9 +52,9 @@ public class VerbOceanENLinker implements AlignmentComponent {
 		
 		try 
 		{
-			VerbOceanLexicalResource lex = new VerbOceanLexicalResource(1.0, verbOceanFile, allowedRelationTypes); 
-			LexicalAligner theAligner = LexicalAlignerFactory.getLexicalAlignerFromLexicalResource(lex, 1, "1.0", true, null, null); 
-			worker = theAligner; 
+			LexicalResource<VerbOceanRuleInfo> lex = new VerbOceanLexicalResource(1.0, verbOceanFile, allowedRelationTypes); 
+			//LexicalAligner theAligner = LexicalAlignerFactory.getLexicalAlignerFromLexicalResource(lex, 1, "1.0", true, null, null); 
+			worker = new LexicalAlignerFromLexicalResource(lex, 1); 
 		}
 		catch (LexicalResourceException e)
 		{
@@ -67,7 +70,7 @@ public class VerbOceanENLinker implements AlignmentComponent {
 	}
 	
 	// private variable 
-	private final LexicalAligner worker; 
+	private final LexicalAlignerFromLexicalResource worker; 
 	
 	// const, default values. Woudln't work when within Jar!  
 	private static final String verbOceanDefaultPath = "../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"; 

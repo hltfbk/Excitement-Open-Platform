@@ -1,7 +1,5 @@
 package eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped;
 
-import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -66,11 +64,11 @@ public class WordNetENLinker implements AlignmentComponent {
 		} 
 		catch (LexicalResourceException e)
 		{
-			fail("failed to initialize WordNet LexicalResource: " + e.getMessage()); 
+			throw new AlignmentComponentException ("failed to initialize WordNet LexicalResource: " + e.getMessage()); 
 		} 
 		catch (AlignmentComponentException ae)
 		{
-			fail("failed to initialize lexical aligner: " + ae.getMessage()); 
+			throw new AlignmentComponentException ("failed to initialize lexical aligner: " + ae.getMessage()); 
 		}
 
 	}
@@ -90,7 +88,7 @@ public class WordNetENLinker implements AlignmentComponent {
 		return null; 
 	}
 	
-	private LexicalAlignerFromLexicalResource worker; 
+	private final LexicalAlignerFromLexicalResource worker; 
 	
 	// Default path. Note that this path won't work when EOP is in Jar. 
 	// The default path is only provided as convenience of using within development process. 
