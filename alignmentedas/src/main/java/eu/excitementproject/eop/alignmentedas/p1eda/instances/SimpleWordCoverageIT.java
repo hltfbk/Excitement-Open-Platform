@@ -39,7 +39,6 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 
 /**
  * 
- * 
  * (Best configuration on this simple coverage Italian was: 65.125 on RTE3.)
  * 
  * @author Tae-Gil Noh 
@@ -52,7 +51,8 @@ public class SimpleWordCoverageIT extends P1EDATemplate {
 		try {
 			identicalLemmaLinker = new IdenticalLemmaPhraseLinker(); 
 			paraphraseLinker = new MeteorPhraseLinkerIT(); 
-			italianWordNetLinker = new WordNetITLinker(new File("/Users/tailblues/eop-resources-1.1.3/ontologies/ItalianWordNet-dict")); 
+			// please provide correct path to Italian WordNet to make it work correctly! 
+			italianWordNetLinker = new WordNetITLinker("/Users/tailblues/eop-resources-1.1.3/ontologies/ItalianWordNet-dict"); 
 		}
 		catch (AlignmentComponentException ae)
 		{

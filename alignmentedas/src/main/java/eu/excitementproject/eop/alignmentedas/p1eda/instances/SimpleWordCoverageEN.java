@@ -39,7 +39,7 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
  * 
  * 
  * (On this simple coverage setup, best was with all four aligners, with three features (without verb coverage ratio) 
- * on RTE3: 67.0)
+ * on RTE3: 66.75)
  * 
  * @author Tae-Gil Noh
  */
@@ -51,7 +51,7 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-			aligner3 = new WordNetENLinker(null);  
+			aligner3 = new WordNetENLinker();  
 			aligner4 = new VerbOceanENLinker(); 
 		}
 		catch (AlignmentComponentException ae)
@@ -71,7 +71,7 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 		try {
 			aligner1.annotate(input);
 			aligner2.annotate(input); 
-			aligner3.annotate(input); // WordNet. Really slow in its current form. (several hours) 
+			aligner3.annotate(input); // WordNet. rather slow.  
 			aligner4.annotate(input); 
 
 		}
