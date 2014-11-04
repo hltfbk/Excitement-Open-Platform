@@ -25,58 +25,29 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
+
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
-import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoringDE;
-import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringDE;
-import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
-import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
+import eu.excitementproject.eop.core.component.scoring.NemexAlignerScoring;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
-//import de.dfki.lt.nemex.a.NEMEX_A;
-
-/**
- * The <code>MaxEntClassificationEDA</code> class implements the
- * <code>EDABasic</code> interface.
- * 
- * It uses the OpenNLP MaxEnt package to train a <code>GISModel</code> in order
- * to classify Entailment T-H pairs from Non-Entailment ones. Currently, it
- * works for both English and German.
- * 
- * The compatible components are: 1) components in
- * <code>eu.excitementproject.eop.core.component.distance</code>; 2) components
- * in <code>eu.excitementproject.eop.core.component.scoring</code>; 3) lexical
- * knowledge components: for English, WordNet and VerbOcean; for German,
- * GermaNet and DistSim. Please refer to the specific lexical resources for more
- * details.
- * 
- * The following parameters need to be included in the configuration file: 1)
- * the training data directory (containing XMI files); 2) the testing data
- * directory; 3) the model file path; 4) the component list separated by comma;
- * 5) (optional) settings for the classifier, the maximum number of iterations
- * and the cut-off threshold.
- * 
- * @author Rui Wang, Madhumita
- * @since December 2012
- */
-public class MaxEntClassificationEDA implements
+public class NemexClassificationEDA implements
 		EDABasic<ClassificationTEDecision> {
 
 	/**
 	 * the logger
 	 */
 	public final static Logger logger = Logger
-			.getLogger(MaxEntClassificationEDA.class.getName());
+			.getLogger(NemexClassificationEDA.class.getName());
 
 	/**
 	 * list of components used in this EDA
@@ -235,29 +206,11 @@ public class MaxEntClassificationEDA implements
 						"Wrong configuation: didn't find the corresponding setting for the component: "
 								+ component);
 			}
-			if (component.equals("BagOfLexesScoring")) {
-				if (language.equalsIgnoreCase("DE")) {
-					if (null == comp.getString("withPOS")
-							|| !Boolean.parseBoolean(comp.getString("withPOS"))) {
-						initializeLexCompsDE(config, false);
-					} else {
-						initializeLexCompsDE(config, true);
-					}
-				} else {
-					initializeLexCompsEN(config);
-				}
-			} /*else if (component.equals("NemexA")) {
-				String gazetteerFilePath = comp.getString("gazetteerFilePath");
-				String delimiter = comp.getString("delimiter");
-				Boolean delimiterSwitchOff = Boolean.valueOf(comp
-						.getString("delimiterSwitchOff"));
-				int nGramSize = Integer.parseInt(comp.getString("nGramSize"));
-				Boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
-						.getString("ignoreDuplicateNgrams"));
-				NEMEX_A.loadNewGazetteer(gazetteerFilePath, delimiter,
-						delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams);
+			if (component.equals("NemexAligner")) {
 
-			}*/ else {
+				initializeNemexComp(config);
+
+			} else {
 				try {
 					@SuppressWarnings("unchecked")
 					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class
@@ -271,53 +224,19 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 
-	/**
-	 * initialize the lexical components
-	 * 
-	 * @param config
-	 *            the configuration
-	 * @param withPOS
-	 *            whether use POS for the queries to the lexical components
-	 * @throws ConfigurationException
-	 */
-	private void initializeLexCompsDE(CommonConfig config, boolean withPOS)
-			throws ConfigurationException {
-		try {
+	private void initializeNemexComp(CommonConfig config) {
+		
 			ScoringComponent comp3 = null;
-			if (withPOS) {
-				comp3 = new BagOfLexesPosScoringDE(config);
-			} else {
-				comp3 = new BagOfLexesScoringDE(config);
+			try {
+				comp3 = new NemexAlignerScoring(config);
+			} catch (ConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			// check the number of features. if it's 0, no instantiation of the
-			// component.
-			if (((BagOfLexesScoringDE) comp3).getNumOfFeats() > 0) {
+			if ((( NemexAlignerScoring) comp3).getNumOfFeats() > 0) {
 				components.add(comp3);
 			}
-		} catch (LexicalResourceException e) {
-			throw new ConfigurationException(e.getMessage());
-		}
-	}
-
-	/**
-	 * initialize the <b>English</b> lexical components
-	 * 
-	 * @param comp
-	 *            the <code>NameValueTable</code> for the components in the
-	 *            configuration
-	 * @throws ConfigurationException
-	 * @throws ComponentException
-	 */
-	private void initializeLexCompsEN(CommonConfig config)
-			throws ConfigurationException, ComponentException {
-		try {
-			ScoringComponent comp3 = new BagOfLexesScoringEN(config);
-			if (((BagOfLexesScoringEN) comp3).getNumOfFeats() > 0) {
-				components.add(comp3);
-			}
-		} catch (LexicalResourceException e) {
-			throw new ComponentException(e.getMessage());
-		}
+		
 	}
 
 	/**
@@ -464,7 +383,7 @@ public class MaxEntClassificationEDA implements
 		if (null != components) {
 			for (ScoringComponent comp : components) {
 				try {
-					((BagOfWordsScoring) comp).close();
+					((NemexAlignerScoring) comp).close();
 				} catch (ScoringComponentException e) {
 					logger.warning(e.getMessage());
 				}
