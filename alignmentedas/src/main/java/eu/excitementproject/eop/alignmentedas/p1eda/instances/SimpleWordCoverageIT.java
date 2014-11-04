@@ -52,7 +52,7 @@ public class SimpleWordCoverageIT extends P1EDATemplate {
 			identicalLemmaLinker = new IdenticalLemmaPhraseLinker(); 
 			paraphraseLinker = new MeteorPhraseLinkerIT(); 
 			// please provide correct path to Italian WordNet to make it work correctly! 
-			italianWordNetLinker = new WordNetITLinker("/Users/tailblues/eop-resources-1.1.3/ontologies/ItalianWordNet-dict"); 
+			italianWordNetLinker = new WordNetITLinker("/Users/tailblues/eop-resources-1.1.4/ontologies/ItalianWordNet-dict"); 
 		}
 		catch (AlignmentComponentException ae)
 		{
