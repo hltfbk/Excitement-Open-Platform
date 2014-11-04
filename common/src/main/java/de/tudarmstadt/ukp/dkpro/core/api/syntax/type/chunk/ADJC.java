@@ -17,12 +17,12 @@ public class ADJC extends Chunk {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+ // @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(ADJC.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+//  @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated
    * @return index of the type  

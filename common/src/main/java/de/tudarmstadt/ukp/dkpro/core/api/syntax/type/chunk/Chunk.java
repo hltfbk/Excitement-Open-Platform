@@ -18,12 +18,12 @@ public class Chunk extends Annotation {
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+//  @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(Chunk.class);
   /** @generated
    * @ordered 
    */
-  @SuppressWarnings ("hiding")
+//  @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated
    * @return index of the type  

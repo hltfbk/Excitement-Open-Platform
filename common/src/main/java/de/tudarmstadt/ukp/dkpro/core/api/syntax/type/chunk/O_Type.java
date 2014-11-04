@@ -36,11 +36,11 @@ public class O_Type extends Chunk_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+//  @SuppressWarnings ("hiding")
   public final static int typeIndexID = O.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+//  @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.O");
 
 

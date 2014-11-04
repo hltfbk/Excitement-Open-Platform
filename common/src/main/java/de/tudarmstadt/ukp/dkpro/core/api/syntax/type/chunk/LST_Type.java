@@ -36,11 +36,11 @@ public class LST_Type extends Chunk_Type {
   	  }
     };
   /** @generated */
-  @SuppressWarnings ("hiding")
+//  @SuppressWarnings ("hiding")
   public final static int typeIndexID = LST.typeIndexID;
   /** @generated 
      @modifiable */
-  @SuppressWarnings ("hiding")
+//  @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.LST");
 
 
