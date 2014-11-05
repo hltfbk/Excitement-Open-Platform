@@ -82,7 +82,7 @@ public class NemexAlignerTestEN {
 
 			aligner = new NemexAligner(
 					"src/test/resources/gazetteer/nemexAligner.txt", "#", true,
-					3, false, "DICE_SIMILARITY_MEASURE", 0.8);
+					3, false, "DICE_SIMILARITY_MEASURE", 0.8, "src/main/resources/chunker-model/en-chunker.bin");
 			logger.info("Initialization finished");
 
 			// align test JCas pair

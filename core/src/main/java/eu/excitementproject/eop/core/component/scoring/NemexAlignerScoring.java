@@ -45,10 +45,11 @@ public class NemexAlignerScoring  implements ScoringComponent {
 				.getString("ignoreDuplicateNgrams"));
 		String similarityMeasure = comp.getString("similarityMeasure");
 		double similarityThreshold = Double.parseDouble(comp.getString("similarityThreshold"));
+		String chunkerModelPath = comp.getString("chunkerModelPath");
 
 		this.aligner = new NemexAligner(gazetteerFilePath, delimiter,
 				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams, similarityMeasure,
-				similarityThreshold);
+				similarityThreshold, chunkerModelPath);
 		
 		
 	}

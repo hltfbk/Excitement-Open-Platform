@@ -65,7 +65,7 @@ public class NemexAligner implements AlignmentComponent {
 	public NemexAligner(String gazetteerFilePath, String delimiter,
 			Boolean delimiterSwitchOff, int nGramSize,
 			Boolean ignoreDuplicateNgrams, String similarityMeasure,
-			double similarityThreshold) {
+			double similarityThreshold, String chunkerModelPath) {
 
 		this.gazetteerFilePath = gazetteerFilePath;
 		this.delimiter = delimiter;
@@ -75,6 +75,7 @@ public class NemexAligner implements AlignmentComponent {
 
 		this.similarityMeasure = similarityMeasure;
 		this.similarityThreshold = similarityThreshold;
+		this.chunkerModelPath = chunkerModelPath;
 		// NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
 		// this.delimiterSwitchOff, this.nGramSize,
 		// this.ignoreDuplicateNgrams);
@@ -184,7 +185,7 @@ public class NemexAligner implements AlignmentComponent {
 
 		try {
 			modelIn = new FileInputStream(
-					"src/main/resources/chunker-model/en-chunker.bin");
+					chunkerModelPath);
 			model = new ChunkerModel(modelIn);
 		} catch (IOException e) {
 			// Model loading failed, handle the error
@@ -371,7 +372,7 @@ public class NemexAligner implements AlignmentComponent {
 
 		try {
 			modelIn = new FileInputStream(
-					"src/main/resources/chunker-model/en-chunker.bin");
+					chunkerModelPath);
 			model = new ChunkerModel(modelIn);
 		} catch (IOException e) {
 			// Model loading failed, handle the error
@@ -616,5 +617,6 @@ public class NemexAligner implements AlignmentComponent {
 
 	private double similarityThreshold;
 	private String similarityMeasure;
+	private String chunkerModelPath;
 
 }

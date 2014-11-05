@@ -47,6 +47,7 @@
 		<property name="ignoreDuplicateNgrams">false</property>
 		<property name="similarityMeasure">DICE_SIMILARITY_MEASURE</property>
 		<property name="similarityThreshold">0.8</property>
+		<property name="chunkerModelPath">./src/main/resources/chunker-model/en-chunker.bin</property>
 	</section>
 	
 	<section name="eu.excitementproject.eop.core.NemexClassificationEDA">
