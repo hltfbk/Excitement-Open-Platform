@@ -2,6 +2,7 @@ package eu.excitementproject.eop.util.runner;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.file.Files;
@@ -225,8 +226,11 @@ public class EOPRunner {
 			File outputDir = new File(outDir);
 			
 			logger.info("Copying configuration file in output directory " + outDir);
-			FileUtils.copyFileToDirectory(configFile, outputDir);
-
+			try {
+				FileUtils.copyFileToDirectory(configFile, outputDir);
+			} catch (IOException e) {
+				logger.info("Problem copying the configuration file " + configFile.getName() + " to directory " + outputDir.getName());
+			}
 			// careful with the copying! The model file may have a relative path which must be first resolved!
 
 			logger.info("Copying model in output directory " + outDir);

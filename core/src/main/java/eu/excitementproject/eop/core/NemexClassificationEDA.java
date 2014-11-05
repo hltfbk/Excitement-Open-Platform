@@ -206,7 +206,7 @@ public class NemexClassificationEDA implements
 						"Wrong configuation: didn't find the corresponding setting for the component: "
 								+ component);
 			}
-			if (component.equals("NemexAligner")) {
+			if (component.equals("NemexAlignerScoring")) {
 
 				initializeNemexComp(config);
 
@@ -231,6 +231,7 @@ public class NemexClassificationEDA implements
 				comp3 = new NemexAlignerScoring(config);
 			} catch (ConfigurationException e) {
 				// TODO Auto-generated catch block
+				logger.info("Configration Exception while initializing NemexComp");
 				e.printStackTrace();
 			}
 			if ((( NemexAlignerScoring) comp3).getNumOfFeats() > 0) {

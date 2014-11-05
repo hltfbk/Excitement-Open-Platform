@@ -36,7 +36,7 @@
 	<section name="PlatformConfiguration">
 		<property name="activatedEDA">eu.excitementproject.eop.core.NemexClassificationEDA</property>
 		<property name="language">EN</property>
-		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN/property>
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN</property>
 	</section>
 	
 	<section name="NemexAlignerScoring">
@@ -54,7 +54,7 @@
 		<property name="trainDir">/tmp/</property>
 		<property name="testDir">/tmp/</property>
 		<property name="classifier">10000,1</property>
-		<property name="Components">NemexAligner</property>
+		<property name="Components">NemexAlignerScoring</property>
 	</section>
 
 </configuration>

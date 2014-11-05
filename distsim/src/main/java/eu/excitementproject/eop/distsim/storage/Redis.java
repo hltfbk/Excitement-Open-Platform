@@ -67,6 +67,25 @@ public class Redis implements PersistenceDevice {
 		}
 		
 	}
+	
+	/* (non-Javadoc)
+	 * @see org.excitement.distsim.storage.PersistenceDevice#open()
+	 */
+	public void open(ConfigurationParams confParams) throws IOException {
+		try {
+			int port = BasicRedisRunner.getInstance(confParams).run(dbFile,bVM);
+			JedisPoolConfig config = new JedisPoolConfig();
+			JedisPool pool = new JedisPool(config, "localhost",port,10000);
+			jedis = pool.getResource();
+			jedis.connect();
+			jedis.getClient().setTimeoutInfinite();
+			//jedis = new Jedis(host,port,10000);
+			currID = 0;
+		} catch (Exception e) {
+			throw new IOException(e);
+		}
+		
+	}
 
 	/* (non-Javadoc)
 	 * @see org.excitement.distsim.storage.PersistenceDevice#save(int, org.excitement.distsim.items.Externalizable)

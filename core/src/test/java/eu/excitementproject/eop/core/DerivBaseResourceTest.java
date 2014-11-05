@@ -83,14 +83,14 @@ public class DerivBaseResourceTest {
 		}			
 		
 		// getRules for a NN+N
-		//System.out.println("rulesTest for Beziehung + Erzieherin");
+		//System.out.println("rulesTest for Erzieher + Erzieherin");
 		List<LexicalRule<? extends DerivBaseInfo>> list3 = null; 
 		try {
-			list3 = dbWithoutScores.getRules("Beziehung", new GermanPartOfSpeech("N"), "Erzieherin", new GermanPartOfSpeech("NN"));
+			list3 = dbWithoutScores.getRules("Erzieher", new GermanPartOfSpeech("N"), "Erzieherin", new GermanPartOfSpeech("NN"));
 			assertTrue(list3.size() > 0);
 			assertTrue(list3.size() == 1);
 			for (LexicalRule<? extends DerivBaseInfo> rule : list3) {
-				assertTrue(rule.getLLemma().equals("Beziehung"));
+				assertTrue(rule.getLLemma().equals("Erzieher"));
 				//System.out.println("one getRules rule (should be only one) for nn+n: " + rule.toString());
 			}						
 		}
@@ -100,14 +100,14 @@ public class DerivBaseResourceTest {
 		}			
 					
 		// getRules for a NN+ADJ
-		//System.out.println("rulesTest for Beziehung + erziehbar");
+		//System.out.println("rulesTest for Erziehung + erziehbar");
 		List<LexicalRule<? extends DerivBaseInfo>> list4 = null; 
 		try {
-			list4 = dbWithoutScores.getRules("Beziehung", new GermanPartOfSpeech("N"), "erziehbar", new GermanPartOfSpeech("ADJ"));
+			list4 = dbWithoutScores.getRules("Erziehung", new GermanPartOfSpeech("N"), "erziehbar", new GermanPartOfSpeech("ADJ"));
 			assertTrue(list4.size() > 0);
 			assertTrue(list4.size() == 1);
 			for (LexicalRule<? extends DerivBaseInfo> rule : list4) {
-				assertTrue(rule.getLLemma().equals("Beziehung"));
+				assertTrue(rule.getLLemma().equals("Erziehung"));
 				//System.out.println("one getRules rule (should be only one) for nn+adj: " + rule.toString());
 			}						
 		}
@@ -320,10 +320,10 @@ public class DerivBaseResourceTest {
 		}		
 		
 		// getRules for a NN+N
-		//System.out.println("rulesTest for Bettlerin + Erbitterte");
+		//System.out.println("rulesTest for Bettlerin + Betteln");
 		List<LexicalRule<? extends DerivBaseInfo>> list11 = null; 
 		try {
-			list11 = dbWithScores.getRules("Bettlerin", new GermanPartOfSpeech("N"), "Erbitterte", new GermanPartOfSpeech("NN"));
+			list11 = dbWithScores.getRules("Bettlerin", new GermanPartOfSpeech("N"), "Betteln", new GermanPartOfSpeech("NN"));
 			assertTrue(list11.size() > 0);
 			assertTrue(list11.size() == 1);
 			for (LexicalRule<? extends DerivBaseInfo> rule : list11) {

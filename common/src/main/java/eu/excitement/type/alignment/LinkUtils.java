@@ -15,7 +15,8 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 /**
  * Some utility methods for alignment.Link type and related codes. 
  * 
- * ** UNDER CONSTRUCTION ** 
+ * ** UNDER CONSTRUCTION **; 
+ * ( feel free to add / request static utility methods that would be useful for alignment.Link instances in CAS) 
  * 
  * @author Tae-Gil Noh
  * @since June, 2014 
@@ -91,12 +92,61 @@ public class LinkUtils {
 	}
 	
 	
-	public static List<Link> selectLinksWith(JCas aJCas, String alignerID, String versionID, String linkInfo)
+	/**
+	 * Use this utility method to fetch Links of specific aligner, or links of specific relations. 
+	 * The method will fetch only those links that satisfy your given condition (such as alignerID, versionID and linkInfo string) 
+	 * if you put null, it would ignore that part of the link ID (as don't care). 
+	 * 
+	 * For example, alignerID = "WordNetAligner", with versionID=null and linkInfo = null, 
+	 * will fetch all the links that has been added by "WordNetAligner", regardless of version and linkInfo. 
+	 * 
+	 * @param aJCas
+	 * @param alignerID
+	 * @param versionID
+	 * @param linkInfo
+	 * @return
+	 * @throws CASException
+	 */
+	public static List<Link> selectLinksWith(JCas aJCas, String alignerID, String versionID, String linkInfo) throws CASException
 	{
 		// get links with those names; 
 		// "null" means "don't care".
-		// TODO work on this once 
-		return null; 
+		List<Link> resultList = new ArrayList<Link>(); 
+		
+		JCas hypoView = aJCas.getView("HypothesisView");
+		// get Links that satisfy the condition by iterating all Links just once. 
+		
+		for (Link l : JCasUtil.select(hypoView, Link.class)) 
+		{
+			// pass if the link does not satisfy the given IDs. 
+			if (alignerID != null && (!l.getAlignerID().equals(alignerID)))
+				continue; // condition given and no match - skip this one 
+			
+			if (versionID != null && (!l.getAlignerVersion().equals(versionID)))
+				continue; // condition given and no match - skip this one. 
+			
+			if (linkInfo != null && (!l.getLinkInfo().equals(linkInfo)) )
+				continue; // condition given and no match - skip. 
+			
+			// Okay, all given conditions are met. push it. 
+			resultList.add(l); 
+		}
+		return resultList; 
+	}
+	
+	/**
+	 * Use this utility method to fetch Links added by specific aligner. 
+	 * The method will fetch only those links that satisfy your given condition (alignerID) 
+	 * where the ID would be checked by alignment.Link.getAlignerID()
+	 *
+	 * @param aJCas
+	 * @param alignerID that will be compared to link.getAlignerID() 
+	 * @return
+	 * @throws CASException
+	 */
+	public static List<Link> selectLinksWith(JCas aJCas, String alignerID) throws CASException
+	{
+		return selectLinksWith(aJCas, alignerID, null, null); 
 	}
 	
 //	public static List<Link> selectLinksWith(String fullID)

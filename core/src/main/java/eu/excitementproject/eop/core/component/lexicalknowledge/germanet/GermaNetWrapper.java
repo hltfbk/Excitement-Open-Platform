@@ -26,6 +26,8 @@ import de.tuebingen.uni.sfs.germanet.api.WordCategory;
 import de.tuebingen.uni.sfs.germanet.api.ConRel;
 import de.tuebingen.uni.sfs.germanet.api.LexRel;
 
+
+
 //import java.util.Iterator;
 // other imports
 import java.util.Arrays;
@@ -35,6 +37,8 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.HashMap;
+
+import org.apache.log4j.Logger;
 
 //import com.aliasi.util.Iterators.Array;
 
@@ -305,7 +309,8 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 				result.addAll(collectConceptualRules("left",lemma, pos, syn, relation));	
 				if (relation == GermaNetRelation.entails) {
 					for (LexicalRule<? extends GermaNetInfo> la : a){
-						System.out.println(la.toString());
+						// System.out.println(la.toString());
+						logger.debug(la.toString());
 					}
 				}
 			}
@@ -657,6 +662,17 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 				}
 			}
 		}
+		
+		// remove 0-confidence rules. 
+		// (setting 0 confidence on a relation will remove that relation from forming a rule.) 
+		// -- Gil, 2014 September 
+		Set<LexicalRule<? extends GermaNetInfo>> check = new HashSet<LexicalRule<? extends GermaNetInfo>>(result);
+		for(LexicalRule<? extends GermaNetInfo> l : check)
+		{
+			if (l.getConfidence() == 0)
+				result.remove(l); 
+		}
+
 		return result;
 		}
 	
@@ -710,7 +726,21 @@ public class GermaNetWrapper implements Component, LexicalResourceWithRelation<G
 				}
 			}
 		}
+
+		// remove 0-confidence rules. 
+		// (setting 0 confidence on a relation will remove that relation from forming a rule.) 
+		// -- Gil, 2014 September 
+		Set<LexicalRule<? extends GermaNetInfo>> check = new HashSet<LexicalRule<? extends GermaNetInfo>>(result);
+		for(LexicalRule<? extends GermaNetInfo> l : check)
+		{
+			if (l.getConfidence() == 0)
+				result.remove(l); 
+		}
+		
 		return result;
 	}
+	
+	// logger 
+	private static final Logger logger = Logger.getLogger(GermaNetWrapper.class);
 	
 }
