@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.core.component.scoring;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -94,7 +95,16 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 			int hChunkNum = hChunks.size();
 			
-			if(0 == tChunkNum|| 0 == hChunkNum) {
+			if(0 == tChunkNum || 0 == hChunkNum) {
+				//scoresVector.addAll(new ArrayList(0d,0d,0d,0d,0d,0d,0d,0d));
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				scoresVector.add(0d);
+				
 				return scoresVector;
 			}
 			
