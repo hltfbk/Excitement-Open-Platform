@@ -496,9 +496,9 @@ public class NemexClassificationEDA implements
 		}
 		try {
 			String[] contexts = constructContext(cas);
-			/*if(contexts.length == 0) {
-				
-			}*/
+			if(contexts.length == 0) {
+				logger.info("Failed because context is null");
+			}
 			float[] values = RealValueFileEventStream.parseContexts(contexts);
 			return new Event(goldAnswer, contexts, values);
 		} catch (ScoringComponentException e) {
