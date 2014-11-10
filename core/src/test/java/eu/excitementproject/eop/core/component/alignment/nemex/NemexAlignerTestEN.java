@@ -28,8 +28,8 @@ public class NemexAlignerTestEN {
 			OpenNLPTaggerEN tokenizer = null;
 			tokenizer = new OpenNLPTaggerEN();
 			
-			JCas aJCas1 = tokenizer.generateSingleTHPairCAS("I saw a car.",
-					"I saw an automobile.");
+			JCas aJCas1 = tokenizer.generateSingleTHPairCAS("Gabriel Garcia Marquez was a liberal thinker whose left-wing politics angered many conservative politicians and heads of state. His job as a reporter for the Cuban news agency Prensa Latina, in 1960, and and friendship with Fidel Castro resulted in his being ultimately denied entry to the United States for political reasons.",
+					"Gabriel Garcia Marquez was a conservative politician.");
 
 			Logger.getRootLogger().setLevel(Level.INFO); // main log setting:
 															// set as DEBUG to

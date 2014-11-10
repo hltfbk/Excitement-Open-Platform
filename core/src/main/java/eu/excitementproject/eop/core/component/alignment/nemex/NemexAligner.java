@@ -516,18 +516,24 @@ public class NemexAligner implements AlignmentComponent {
 
 			String query = values[i];
 
-			ArrayList<QueryInfo> hypotheses = queryIndex.get(query);
-			Iterator<QueryInfo> hypoIter = hypotheses.iterator();
+			if(queryIndex.containsKey(query)) {
+				ArrayList<QueryInfo> hypotheses = queryIndex.get(query);
+				Iterator<QueryInfo> hypoIter = hypotheses.iterator();
 
-			while (hypoIter.hasNext()) {
-				QueryInfo hypothesis = hypoIter.next();
-				JCas hypoView = hypothesis.getHypothesisView();
-				int hypoStart = hypothesis.getStartOffset();
-				int hypoEnd = hypothesis.getEndOffset();
+				while (hypoIter.hasNext()) {
+					QueryInfo hypothesis = hypoIter.next();
+					JCas hypoView = hypothesis.getHypothesisView();
+					int hypoStart = hypothesis.getStartOffset();
+					int hypoEnd = hypothesis.getEndOffset();
 
-				addLink(textView, textStart, textEnd, hypoView, hypoStart,
-						hypoEnd);
+					addLink(textView, textStart, textEnd, hypoView, hypoStart,
+							hypoEnd);
+				}
 			}
+			else
+				logger.info("Query not present in queryIndex");
+			
+			
 
 		}
 
