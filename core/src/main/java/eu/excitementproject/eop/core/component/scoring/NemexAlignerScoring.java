@@ -8,7 +8,7 @@ import java.util.Vector;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
@@ -85,21 +85,22 @@ public class NemexAlignerScoring  implements ScoringComponent {
 		try {
 			aligner.annotate(cas);
 		
-			JCas tView = cas.getView("TextView");
-			Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
-			HashSet<String> tLinkSet = countLinks(tLinks);
 			
-			// Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
-			Collection<Token> tChunks = JCasUtil.select(tView, Token.class);
+			JCas tView = cas.getView("TextView");
+			Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
 			int tChunkNum = tChunks.size();
 
 			JCas hView = cas.getView("HypothesisView");
-			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
-			
-			
-			// Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
-			Collection<Token> hChunks = JCasUtil.select(hView, Token.class);
+			Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 			int hChunkNum = hChunks.size();
+			
+			if(0 == tChunkNum|| 0 == hChunkNum) {
+				return scoresVector;
+			}
+			
+			Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
+			HashSet<String> tLinkSet = countLinks(tLinks);
+			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
 			
 			scoresVector.addAll(calculateSimilarity(tLinkSet, hLinks, tChunkNum, hChunkNum));
 			

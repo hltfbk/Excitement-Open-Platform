@@ -34,6 +34,7 @@ import eu.excitement.type.nemex.*;
 import de.dfki.lt.nemex.a.*;
 import de.dfki.lt.nemex.a.data.GazetteerNotLoadedException;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.*;
 import opennlp.tools.chunker.*;
 import opennlp.tools.util.Span;
 
@@ -214,10 +215,16 @@ public class NemexAligner implements AlignmentComponent {
 
 			}
 			
-			query = query.toLowerCase();
-			logger.info("Query:" + query);
+			
 			int startOffset = hTokenStartOffsetArray[start];
 			int endOffset = hTokenEndOffsetArray[end - 1];
+			
+			Chunk annot = new Chunk(hypoView, startOffset, endOffset);
+			annot.setChunkValue(query);
+			annot.addToIndexes();
+			
+			query = query.toLowerCase();
+			logger.info("Query:" + query);
 			ArrayList<QueryInfo> offsets = new ArrayList<QueryInfo>();
 
 			QueryInfo curOffset = new QueryInfo(hypoView, startOffset,
@@ -400,18 +407,24 @@ public class NemexAligner implements AlignmentComponent {
 			}
 			
 			
-			str = str.toLowerCase();
-
-			logger.info("Text query: " + str);
+			
 			
 			int startOffset = tTokenStartOffsetArray[start];
 			int endOffset = tTokenEndOffsetArray[end - 1];
+			
+			Chunk annot = new Chunk(textView, startOffset, endOffset);
+			annot.setChunkValue(str);
+			annot.addToIndexes();
+			
+			str = str.toLowerCase();
+
 			
 			try {
 				values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
 						similarityMeasure, similarityThreshold);
 				
 				if (values.size() > 0) {
+					logger.info("Text query: " + str);
 					logger.info("Similar entry: " + values);
 					NemexType textAnnot = addNemexAnnotation(textView, values,
 							startOffset, endOffset);
