@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
+import java.util.logging.Logger;
 
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
@@ -17,6 +18,7 @@ import eu.excitementproject.eop.common.component.scoring.ScoringComponentExcepti
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.NemexClassificationEDA;
 import eu.excitementproject.eop.core.component.alignment.nemex.NemexAligner;
 
 public class NemexAlignerScoring  implements ScoringComponent {
@@ -26,6 +28,7 @@ public class NemexAlignerScoring  implements ScoringComponent {
 	 */
 	private int numOfFeats = 7;
 	private NemexAligner aligner;
+	public final static Logger logger = Logger.getLogger(NemexClassificationEDA.class.getName());
 
 	/**
 	 * get the number of features
@@ -95,8 +98,16 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 			int hChunkNum = hChunks.size();
 			
-			if(0 == tChunkNum || 0 == hChunkNum) {
-				//scoresVector.addAll(new ArrayList(0d,0d,0d,0d,0d,0d,0d,0d));
+			logger.info("after getting chunks");
+			
+			
+			Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
+			HashSet<String> tLinkSet = countLinks(tLinks);
+			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
+			
+			if(0 == tLinks.size() || 0 == hLinks.size()) {
+				logger.info("No chunks found");
+				
 				scoresVector.add(0d);
 				scoresVector.add(0d);
 				scoresVector.add(0d);
@@ -107,10 +118,6 @@ public class NemexAlignerScoring  implements ScoringComponent {
 				
 				return scoresVector;
 			}
-			
-			Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
-			HashSet<String> tLinkSet = countLinks(tLinks);
-			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
 			
 			scoresVector.addAll(calculateSimilarity(tLinkSet, hLinks, tChunkNum, hChunkNum));
 			
