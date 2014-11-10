@@ -476,6 +476,7 @@ public class NemexAligner implements AlignmentComponent {
 
 			// add annotation to index of annotations
 			annot.addToIndexes();
+			logger.info("Added annotation to index");
 			return annot;
 		} catch (Exception e) {
 			logger.info("Could not generate NemexType");
