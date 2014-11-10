@@ -151,6 +151,10 @@ public class NemexAligner implements AlignmentComponent {
 			HashMap<Integer, String> queryMap,
 			HashMap<String, ArrayList<QueryInfo>> queryIndex)
 			throws PairAnnotatorComponentException {
+		
+		logger.info("Unloading Gazetteer for updating dictionary");
+		NEMEX_A.unloadGazetteer(gazetteerFilePath);
+		
 		logger.info("HYPO: " + hypoView.getDocumentText());
 
 		String query = new String();
@@ -316,9 +320,14 @@ public class NemexAligner implements AlignmentComponent {
 				querySenseMap.clear();
 			}
 			fw.close();
+			
+			
+			
+			logger.info("Loading the gazetteer");
 			NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
 					this.delimiterSwitchOff, this.nGramSize,
 					this.ignoreDuplicateNgrams);
+
 		} catch (IOException e) {
 			logger.info("Error updating the Gazetteer file");
 			e.printStackTrace();
