@@ -106,7 +106,7 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
 			
 			if(0 == tLinks.size() || 0 == hLinks.size()) {
-				logger.info("No chunks found");
+				logger.info("No Links found for either H or T");
 				
 				scoresVector.add(0d);
 				scoresVector.add(0d);

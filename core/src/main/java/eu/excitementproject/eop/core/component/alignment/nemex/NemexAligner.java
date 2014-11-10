@@ -469,7 +469,8 @@ public class NemexAligner implements AlignmentComponent {
 			StringArray valuesArray = new StringArray(view, entry.size());
 			String[] entryArray = entry.toArray(new String[entry.size()]);
 			valuesArray.copyFromArray(entryArray, 0, 0, entryArray.length);
-
+			logger.info("converted to StringArray");
+			
 			//logger.info("Setting values of annotation");
 			annot.setValues(valuesArray);
 
