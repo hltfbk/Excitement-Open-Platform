@@ -17,7 +17,7 @@ import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
-import static eu.excitementproject.eop.alignmentedas.p1eda.inspector.InspectJCasAndAlignment.*; 
+import static eu.excitementproject.eop.alignmentedas.p1eda.inspector.InspectUtilsJCasAndLinks.*; 
 
 /**
  * This class holds some static methods that are useful, or needed to 
@@ -91,7 +91,7 @@ public class CompareTwoEDAs {
 			}
 
 			// get pair ID and gold annotation 
-			String pairId = InspectJCasAndAlignment.getTEPairID(pairForEDA1); 
+			String pairId = InspectUtilsJCasAndLinks.getTEPairID(pairForEDA1); 
 			logger.info("comparing two edas on pair " + pairId); 
 			DecisionLabel gold = getGoldLabel(pairForEDA1); 
 

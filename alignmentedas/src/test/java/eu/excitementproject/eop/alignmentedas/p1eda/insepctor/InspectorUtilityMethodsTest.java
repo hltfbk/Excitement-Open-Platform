@@ -1,8 +1,14 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.insepctor;
 
 import static org.junit.Assert.*;
+
 import java.io.File;
-import org.junit.Before;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.uima.jcas.JCas;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -20,11 +26,27 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 // method tests) --- not every build requires this test, and the test is @ignored 
 // by default. 
 
-@Ignore 
+@SuppressWarnings("unused")
 public class InspectorUtilityMethodsTest {
 
-	@Before 
-	public void dataPrep() {
+	@BeforeClass 
+	public static void testPrep() 
+	{		
+		// Set Log4J for the test 
+		BasicConfigurator.resetConfiguration(); 
+		BasicConfigurator.configure(); 
+		Logger.getRootLogger().setLevel(Level.DEBUG);  // set INFO to hide Debug  
+		logger = Logger.getLogger(InspectorUtilityMethodsTest.class); 
+		
+		logger.info("hello"); 
+				
+		// this prepares a few aligned data 
+	}
+	
+	private static JCas alignedData1; 
+	private static JCas alignedData2; 
+	
+	public void prepareTestXmis() {
 
 		// pre-process RTE English testset for the test
 		File rteTestingXML = new File("../core/src/main/resources/data-set/English_test.xml");
@@ -38,12 +60,15 @@ public class InspectorUtilityMethodsTest {
 		{
 			fail(e.getMessage()); 
 		}
-		
 	}
 	
-	@Test
+		
+	// a long test. let's ignore this by default.
+	@Ignore("a long test; ignored on default.") @Test
 	public void testDiffPairs()
 	{
+		prepareTestXmis(); 		
+
 		try {
 			P1EDATemplate withVO = new WithVO(); 
 			P1EDATemplate withoutVO = new WithoutVO(); 
@@ -58,5 +83,19 @@ public class InspectorUtilityMethodsTest {
 			System.err.println("Run stopped with Exception: " + e.getMessage()); 
 		}
 	}	
-
+	
+	@Test
+	public void testSummarizeLinks() 
+	{
+		fail(); // TODO 
+	}
+	@Test
+	public void testSummarizeJCasWordLevel()
+	{
+		fail(); // TODO 
+	}
+	
+	// logger 
+	private static Logger logger; 
+	private boolean b; 
 }

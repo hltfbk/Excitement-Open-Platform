@@ -11,6 +11,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.LinkUtils;
@@ -26,7 +28,7 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * @author Tae-Gil Noh 
  * 
  */
-public class InspectJCasAndAlignment {
+public class InspectUtilsJCasAndLinks {
 
 	/**
 	 * This method returns Entailment.Pair type's pairID value (string).  
@@ -142,8 +144,115 @@ public class InspectJCasAndAlignment {
 		return coveringLinks; 
 	}
 		
+	
+	/**
+	 * This utility method returns 4-lines summary of the given JCas T-H pairs. 
+	 * 
+	 * 2 lines of T-H as-is. (first line T, second line H) 
+	 * 2 lines of T as lemma sequence (with canonical pos), H as lemma sequence (with canonical pos) 
+	 * 
+	 * 
+	 * @param aJCas
+	 * @return
+	 * @throws CASException
+	 */
+	public static String summarizeJCasWordLevel(JCas aJCas) throws CASException 
+	{
+		String tSofaText; 
+		String hSofaText; 
+		String tLemmaSeq=""; 
+		String hLemmaSeq=""; 
+		
+		JCas tView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
+		JCas hView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW); 
+		tSofaText = tView.getDocumentText(); 
+		hSofaText = hView.getDocumentText(); 
+		
+		Collection<Token> tTokens = JCasUtil.select(tView, Token.class); 		
+		Collection<Token> hTokens = JCasUtil.select(hView, Token.class); 
+		
+		for (Token t : tTokens)
+		{
+			String lemPos = ""; 
+			Lemma l = t.getLemma(); 
+			POS p = t.getPos(); 
+			
+			if (l != null)
+			{
+				lemPos += l.getValue(); 
+			}
+			
+			if (p != null)
+			{
+				String s = p.getType().toString(); 	
+				String typeString = s.substring(s.lastIndexOf(".") + 1); 	
+				lemPos += "/" + typeString; 
+			}	
+			tLemmaSeq += lemPos + " "; 
+		}
+		
+		for (Token t : hTokens)
+		{
+			String lemPos = ""; 
+			Lemma l = t.getLemma(); 
+			POS p = t.getPos(); 
+			
+			if (l != null)
+			{
+				lemPos += l.getValue(); 
+			}
+			
+			if (p != null)
+			{
+				String s = p.getType().toString(); 	
+				String typeString = s.substring(s.lastIndexOf(".") + 1); 	
+				lemPos += "/" + typeString; 
+			}	
+			hLemmaSeq += lemPos + " "; 
+		}
+				
+		String result = tSofaText + "\n" + hSofaText + "\n" + tLemmaSeq + "\n" + hLemmaSeq; 
+		return result; 
+	}
+	
+	/**
+	 * This utility method generates one big string that summarizes all the alignment links 
+	 * in the given JCas. 
+	 * 
+	 * For reader's convenience, it names each alignment.link instance a (index) number (as the order of 
+	 * appearance in AnnotationIndex within JCas View). Note that this number, is artificial and does not 
+	 * actually exist in JCas. However, the numbers can be used to identify "n-th" link in the JCas, etc. 
+	 * 
+	 * It will return a long, multi-line string with the following format. 
+	 * 
+	 * Link [n], info:[linker_version_info], strength: [strength num], direction: [direction]  
+	 *  \t  Tside: {  [Annotations]  } 
+	 *  \t  Hside: {  [Annotations]  } 
+	 * Link [n+1] ... 
+	 * 
+	 * Each link will be summarized as 3 lines. Note that, Tside/Hside targets will be 
+	 * displayed as: 
+	 *   if it is a token: token value (its covered SOFA string) will be seen. 
+	 *   if it is other than token: 
+	 * 
+	 * @param aJCas
+	 * @return string as described. 
+	 * @throws CASException
+	 */
+	public static String summarizeAlignmentLinks(JCas aJCas) throws CASException 
+	{
+		String result =""; 
+		Link aLink = null; 
+		
+		return result;
+	}
+	
+	
+	///
+	///
+	///
 
 	// the logger 
-	private static Logger logger = Logger.getLogger(InspectJCasAndAlignment.class); 
+	private static Logger logger = Logger.getLogger(InspectUtilsJCasAndLinks.class); 
 
 }
