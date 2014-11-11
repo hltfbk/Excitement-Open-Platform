@@ -169,7 +169,7 @@ public abstract class P1EDAFullTemplate implements EDABasic<TEDecisionWithAlignm
 		
 		// Finally, return a TEDecision object with CAS (which holds alignments) 
 		logger.debug("TEDecision object generated and being returned: " + result.getLabel() + ", " + result.getConfidence()); 
-		return new TEDecisionWithAlignment(result.getLabel(), result.getConfidence(), pairID, eopJCas); 
+		return new TEDecisionWithAlignment(result.getLabel(), result.getConfidence(), pairID, eopJCas, null); 
 	}
 	
 	public void initialize(CommonConfig conf) throws EDAException

@@ -103,7 +103,7 @@ public class SimpleVerbCoverageCounter implements ScoringComponent {
 			{
 				logger.debug("Checking Token " + tok.getCoveredText()); 
 
-				List<Link> linksHoldingThisToken = SimpleWordCoverageCounter.filterLinksWithTargetsIncluding(links, tok);
+				List<Link> linksHoldingThisToken = LinkUtils.filterLinksWithTargetsIncluding(links, tok, Link.Direction.TtoH);
 				if (linksHoldingThisToken.size() != 0)
 				{
 					countCoveredVTokens ++; 
