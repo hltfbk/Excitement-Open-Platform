@@ -110,10 +110,14 @@ public class InspectJCasAndAlignment {
 	 * each of the list element holds a set of Links where each set holds alignment.Link 
 	 * instances that covers that token on Hypothesis side.
 	 * 
+	 * Note that, you can still give direction. If you set dir as "null", you will get 
+	 * all links (regardless of their direction). If you set dir as "TtoH", you will get 
+	 * "TtoH" links and (naturally) Bidirectional links. 
+	 * 
 	 * @param aJCas
 	 * @return
 	 */
-	public static List<List<Link>>getCoveringLinksTokenLevel(JCas aJCas) throws CASException
+	public static List<List<Link>>getCoveringLinksTokenLevel(JCas aJCas, Link.Direction dir) throws CASException
 	{
 		ArrayList<List<Link>> coveringLinks = new ArrayList<List<Link>>(); 
 
@@ -134,7 +138,7 @@ public class InspectJCasAndAlignment {
 		for (Token tok : allTokens)
 		{
 			logger.debug("getCoveringLinksWordLevel: Checking Token " + tok.getCoveredText()); 
-			List<Link> linksHoldingThisToken = LinkUtils.filterLinksWithTargetsIncluding(links, tok, Link.Direction.TtoH);
+			List<Link> linksHoldingThisToken = LinkUtils.filterLinksWithTargetsIncluding(links, tok, dir);
 			coveringLinks.add(linksHoldingThisToken); 
 			logger.debug("getCoveringLinksWordLevel: found " + linksHoldingThisToken.size() + "links"); 
 		}
