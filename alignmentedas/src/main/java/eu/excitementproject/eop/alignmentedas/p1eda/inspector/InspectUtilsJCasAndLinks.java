@@ -21,6 +21,7 @@ import eu.excitement.type.alignment.Target;
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
@@ -41,9 +42,9 @@ public class InspectUtilsJCasAndLinks {
 	 *  
 	 * @param aJCas
 	 * @return
-	 * @throws EDAException
+	 * @throws LAPException
 	 */
-	public static String getTEPairID(JCas aJCas) throws EDAException
+	public static String getTEPairID(JCas aJCas) throws LAPException
 	{
 		String id = null; 
 		
@@ -62,7 +63,7 @@ public class InspectUtilsJCasAndLinks {
 		}
 		else
 		{
-			throw new EDAException("Input CAS is not well-formed CAS as EOP EDA input: missing TE pair"); 
+			throw new LAPException("Input CAS is not well-formed CAS as EOP EDA input: missing TE pair"); 
 		}
 	}
 
@@ -76,9 +77,9 @@ public class InspectUtilsJCasAndLinks {
 	 * 
 	 * @param aJCas
 	 * @return
-	 * @throws EDAException
+	 * @throws LAPException
 	 */
-	public static DecisionLabel getGoldLabel(JCas aJCas) throws EDAException 
+	public static DecisionLabel getGoldLabel(JCas aJCas) throws LAPException 
 	{
 		String labelString; 
 		DecisionLabel labelEnum; 
@@ -92,8 +93,13 @@ public class InspectUtilsJCasAndLinks {
 			if (labelString == null) // there is no gold answer annotated in this Pair
 				return null; 
 			
-			labelEnum = DecisionLabel.getLabelFor(labelString); 
-			
+			try {
+				labelEnum = DecisionLabel.getLabelFor(labelString); 
+			}
+			catch (EDAException ee)
+			{
+				throw new LAPException("Input CAS is not well-formed CAS as EOP EDA input: unknown gold label string: "+ labelString);  
+			}
 			if (iter.hasNext())
 			{
 				logger.warn("This JCas has more than one TE Pairs: This P1EDA template only processes single-pair inputs. Any additional pairs are being ignored, and only the first Pair will be processed.");
@@ -102,7 +108,7 @@ public class InspectUtilsJCasAndLinks {
 		}
 		else
 		{
-			throw new EDAException("Input CAS is not well-formed CAS as EOP EDA input: missing TE pair"); 
+			throw new LAPException("Input CAS is not well-formed CAS as EOP EDA input: missing TE pair"); 
 		}
 	}
 
@@ -216,9 +222,31 @@ public class InspectUtilsJCasAndLinks {
 			}	
 			hLemmaSeq += lemPos + " "; 
 		}
-				
-		String result = tSofaText + "\n" + hSofaText + "\n" + tLemmaSeq + "\n" + hLemmaSeq; 
-		return result; 
+		
+		
+		DecisionLabel goldAnswer;
+		String pairId;  
+		
+		try { 
+			pairId = getTEPairID(aJCas); 
+		}
+		catch (LAPException e) // ill-formed CAS (no pair annotation). we simply ignore ID for such case. 
+		{ 
+			pairId = ""; 
+		}
+		
+		try { goldAnswer=getGoldLabel(aJCas); } 
+		catch (LAPException e) // this exception means gold string value was unknown string within CAS and conversion to Decision Label failed. (Won't really happen but), we will ignore such case in this printout 
+		{ goldAnswer = null; }
+		
+		String part1 = "Pair ID: " + pairId + " ";
+		if (goldAnswer != null)
+		{
+			part1 += "(gold answer: " + goldAnswer.toString() + ")"; 
+		}
+		part1 += "\n";
+		String part2 = "T: " + tSofaText + "\n" + "H: " + hSofaText + "\n" + "TLemmaPos Sequence: " + tLemmaSeq + "\n" + "HLemmaPos Sequence: "+ hLemmaSeq; 
+		return part1 + part2; 
 	}
 	
 	/**
@@ -277,8 +305,8 @@ public class InspectUtilsJCasAndLinks {
 
 		String line1 = "Link " + index + ", info: " + l.getAlignerID() + "_" + l.getAlignerVersion() + "_" + l.getLinkInfo() +
 				", strength: " + l.getStrength() + ", direction: " + l.getDirectionString() + "\n"; 
-		String line2 = "\t Tside: { " + summaryOutputLinkTarget(l.getTSideTarget()) + " }"; 
-		String line3 = "\t Hside: { " + summaryOutputLinkTarget(l.getHSideTarget()) + " }\n"; 
+		String line2 = "  Tside: { " + summaryOutputLinkTarget(l.getTSideTarget()) + " }"; 
+		String line3 = "  Hside: { " + summaryOutputLinkTarget(l.getHSideTarget()) + " }\n"; 
 				
 		return (line1 + line2 + line3); 
 	}
@@ -300,12 +328,12 @@ public class InspectUtilsJCasAndLinks {
 			
 			if (typeString.equals("Token")) // hard coded. This summary utility treats Token as special one, and outputs some detail about it. (actual text) 
 			{
-				summary += "[" + a.getCoveredText() + "], "; 
+				summary += "[" + a.getCoveredText() + "] "; 
 			}
 			else
 			{
 				// The annotation is not a token; simply output type name and address 
-				summary += typeString + "(" + t.getAddress() + "), ";  // getAddress isn't really good idea but .. hmm. let's see. 
+				summary += typeString + "(" + t.getAddress() + ") ";  // getAddress isn't really good idea but .. hmm. let's see. 
 			}			
 		}
 		return summary; 

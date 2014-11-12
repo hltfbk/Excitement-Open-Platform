@@ -252,7 +252,15 @@ public class InspectorUtilityMethodsTest {
 	@Test
 	public void testSummarizeJCasWordLevel()
 	{
-		fail(); // TODO 
+		try {
+			String out = InspectUtilsJCasAndLinks.summarizeJCasWordLevel(pair2); 
+			System.out.print(out); 
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			fail (); 
+		}
 	}
 	
 	// logger 
