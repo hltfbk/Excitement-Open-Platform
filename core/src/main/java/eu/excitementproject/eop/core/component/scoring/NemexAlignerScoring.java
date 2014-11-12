@@ -1,6 +1,5 @@
 package eu.excitementproject.eop.core.component.scoring;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -50,10 +49,11 @@ public class NemexAlignerScoring  implements ScoringComponent {
 		String similarityMeasure = comp.getString("similarityMeasure");
 		double similarityThreshold = Double.parseDouble(comp.getString("similarityThreshold"));
 		String chunkerModelPath = comp.getString("chunkerModelPath");
+		String direction = comp.getString("direction");
 
 		this.aligner = new NemexAligner(gazetteerFilePath, delimiter,
 				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams, similarityMeasure,
-				similarityThreshold, chunkerModelPath);
+				similarityThreshold, chunkerModelPath,direction);
 		
 		
 	}
