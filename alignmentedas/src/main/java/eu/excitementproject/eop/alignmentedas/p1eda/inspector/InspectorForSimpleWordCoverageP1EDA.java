@@ -1,5 +1,11 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.inspector;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.HashMap;
+import java.util.List;
+
+import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
 
 /**
@@ -15,6 +21,7 @@ import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
  * @author Tae-Gil Noh 
  *
  */
+
 public class InspectorForSimpleWordCoverageP1EDA {
 
 	/**
@@ -35,13 +42,44 @@ public class InspectorForSimpleWordCoverageP1EDA {
 	 * 
 	 * @param decision
 	 */
-	public static void inspectDecision(TEDecisionWithAlignment decision)
+	public static void inspectDecision(TEDecisionWithAlignment decision, PrintStream out)
 	{
+		// a. get JCas, output JCas summary 
+		// calling summarizeJCasWordLevel 
 		
+		// b. output alignment.Link summary 
+		// calling summarizeAlignmentLinks
 		
+		// c & d:  coverage histogram and covering links 
+		
+		// 1) first get covering links per word 
+		// calling getCoveringLinksTokenLevel 
+		
+		// 2) fill up an array with coverage numbers. 
+		// (call?)  
+		
+		// 3) make linkIndex (a hashmap where  linkIndex.get(Link l) returns numeric id of alignment.Link as reported in step b.
+		// (call?) 
+
+		// output. "coverage and covering links" 
+		// (c. & d.) 
+		// one word per line \t coverage score \t <link ids> < > < >
+		
+		// d. output covering links (vertical) 
+		//   one word per line
+		
+		// e. output feature vector, as-is. 
+	}
+
+	private static HashMap<Link, Integer> makeLinkIndex(List<Link> allLinks)
+	{
+		// TODO 
+		return null; 
 	}
 	
-	
-	
-
+	private List<Double> coveragePerWord(List<List<Link>> coveringLinks) 
+	{
+		//TODO 
+		return null; 
+	}
 }
