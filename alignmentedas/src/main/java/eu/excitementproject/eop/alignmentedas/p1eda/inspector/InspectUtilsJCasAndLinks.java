@@ -9,6 +9,7 @@ import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
+import org.apache.uima.jcas.tcas.Annotation;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
@@ -16,6 +17,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.LinkUtils;
+import eu.excitement.type.alignment.Target;
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDAException;
@@ -246,11 +248,68 @@ public class InspectUtilsJCasAndLinks {
 	public static String summarizeAlignmentLinks(JCas aJCas) throws CASException 
 	{
 		String result =""; 
-		Link aLink = null; 
+		
+		// get all links, with order... 
+		List<Link> links = LinkUtils.selectLinksWith(aJCas, (String) null);
+		
+		// for each link, print out with the promised format ... 
+		for (int i=0; i < links.size(); i++)
+		{
+			Link l = links.get(i); 
+			String oneLinkSummary = summaryOutputSingleLink(l, i);	
+			result += oneLinkSummary;
+		}
 		
 		return result;
 	}
 	
+	/**
+	 * Generates summary two-liner for the given link. used in summarizeAlignmentLinks() 
+	 * 
+	 * @param l
+	 * @return
+	 */
+	private static String summaryOutputSingleLink(Link l, int index)
+	{
+//	 	Link [n], info:[linker_version_info], strength: [strength num], direction: [direction]  
+//		 \t  Tside: {  [Annotations]  } 
+//		 \t  Hside: {  [Annotations]  } 
+
+		String line1 = "Link " + index + ", info: " + l.getAlignerID() + "_" + l.getAlignerVersion() + "_" + l.getLinkInfo() +
+				", strength: " + l.getStrength() + ", direction: " + l.getDirectionString() + "\n"; 
+		String line2 = "\t Tside: { " + summaryOutputLinkTarget(l.getTSideTarget()) + " }"; 
+		String line3 = "\t Hside: { " + summaryOutputLinkTarget(l.getHSideTarget()) + " }\n"; 
+				
+		return (line1 + line2 + line3); 
+	}
+	
+	/**
+	 * Generates summary one liner (as a set) for the given alignment.target. (used in summarizeAlignmentLinks() 
+	 * 
+	 * @param t one Target of link target. 
+	 * @return
+	 */
+	private static String summaryOutputLinkTarget(Target t)
+	{
+		String summary = ""; 
+		Collection<Annotation> annots = JCasUtil.select(t.getTargetAnnotations(), Annotation.class); 
+		for (Annotation a : annots)
+		{
+			String s = a.getType().toString(); 	
+			String typeString = s.substring(s.lastIndexOf(".") + 1); 
+			
+			if (typeString.equals("Token")) // hard coded. This summary utility treats Token as special one, and outputs some detail about it. (actual text) 
+			{
+				summary += "[" + a.getCoveredText() + "], "; 
+			}
+			else
+			{
+				// The annotation is not a token; simply output type name and address 
+				summary += typeString + "(" + t.getAddress() + "), ";  // getAddress isn't really good idea but .. hmm. let's see. 
+			}			
+		}
+		return summary; 
+	}
 	
 	///
 	///
