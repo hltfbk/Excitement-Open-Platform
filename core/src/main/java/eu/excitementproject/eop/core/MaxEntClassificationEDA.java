@@ -40,6 +40,7 @@ import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoringDE;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringDE;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
+import eu.excitementproject.eop.core.component.scoring.NemexAlignerScoring;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -246,18 +247,11 @@ public class MaxEntClassificationEDA implements
 				} else {
 					initializeLexCompsEN(config);
 				}
-			} /*else if (component.equals("NemexA")) {
-				String gazetteerFilePath = comp.getString("gazetteerFilePath");
-				String delimiter = comp.getString("delimiter");
-				Boolean delimiterSwitchOff = Boolean.valueOf(comp
-						.getString("delimiterSwitchOff"));
-				int nGramSize = Integer.parseInt(comp.getString("nGramSize"));
-				Boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
-						.getString("ignoreDuplicateNgrams"));
-				NEMEX_A.loadNewGazetteer(gazetteerFilePath, delimiter,
-						delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams);
+			} else if (component.equals("NemexAlignerScoring")) {
 
-			}*/ else {
+				initializeNemexComp(config);
+
+			} else {
 				try {
 					@SuppressWarnings("unchecked")
 					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class
@@ -320,6 +314,22 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 
+	private void initializeNemexComp(CommonConfig config) {
+		
+		ScoringComponent comp3 = null;
+		try {
+			comp3 = new NemexAlignerScoring(config);
+		} catch (ConfigurationException e) {
+			// TODO Auto-generated catch block
+			logger.info("Configration Exception while initializing NemexComp");
+			e.printStackTrace();
+		}
+		if ((( NemexAlignerScoring) comp3).getNumOfFeats() > 0) {
+			components.add(comp3);
+		}
+	
+}
+	
 	/**
 	 * initialize the model
 	 * 
