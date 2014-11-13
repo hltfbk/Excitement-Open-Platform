@@ -474,7 +474,10 @@ public class MaxEntClassificationEDA implements
 		if (null != components) {
 			for (ScoringComponent comp : components) {
 				try {
-					((BagOfWordsScoring) comp).close();
+					if (comp.getComponentName() == "NemexAlignerScoring") 
+						((NemexAlignerScoring) comp).close();
+					else
+						((BagOfWordsScoring) comp).close();
 				} catch (ScoringComponentException e) {
 					logger.warning(e.getMessage());
 				}
