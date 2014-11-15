@@ -208,6 +208,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 			}
 
 			if (tTarget.equals(tView)) {
+				logger.info("Incrementing sum");
 				sum += 1;
 			} else
 				continue;
