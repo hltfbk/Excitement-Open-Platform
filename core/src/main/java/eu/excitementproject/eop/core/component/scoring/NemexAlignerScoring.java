@@ -20,6 +20,7 @@ import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.NemexClassificationEDA;
 import eu.excitementproject.eop.core.component.alignment.nemex.NemexAligner;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 public class NemexAlignerScoring  implements ScoringComponent {
 	
@@ -91,15 +92,13 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			aligner.annotate(cas);
 		
 			
-			JCas tView = cas.getView("TextView");
+			JCas tView = cas.getView(LAP_ImplBase.TEXTVIEW);
 			Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
 			int tChunkNum = tChunks.size();
 
-			JCas hView = cas.getView("HypothesisView");
+			JCas hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 			Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 			int hChunkNum = hChunks.size();
-			
-			logger.info("after getting chunks");
 			
 			
 			//Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
