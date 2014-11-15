@@ -13,6 +13,8 @@ import org.uimafit.util.JCasUtil;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.entailment.EntailmentMetadata;
+import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
+import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -22,25 +24,27 @@ import eu.excitementproject.eop.core.NemexClassificationEDA;
 import eu.excitementproject.eop.core.component.alignment.nemex.NemexAligner;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
-public class NemexAlignerScoring  implements ScoringComponent {
-	
+public class NemexAlignerScoring implements ScoringComponent {
+
 	/**
 	 * the number of features
 	 */
 	private int numOfFeats = 7;
 	private NemexAligner aligner;
-	public final static Logger logger = Logger.getLogger(NemexClassificationEDA.class.getName());
+	public final static Logger logger = Logger
+			.getLogger(NemexClassificationEDA.class.getName());
 
 	/**
 	 * get the number of features
+	 * 
 	 * @return
-	 * @throws ConfigurationException 
+	 * @throws ConfigurationException
 	 */
-	
-	public NemexAlignerScoring(CommonConfig config) throws ConfigurationException {
+
+	public NemexAlignerScoring(CommonConfig config)
+			throws ConfigurationException {
 		NameValueTable comp = config.getSection("NemexAlignerScoring");
-		
-		
+
 		String gazetteerFilePath = comp.getString("gazetteerFilePath");
 		String delimiter = comp.getString("delimiter");
 		Boolean delimiterSwitchOff = Boolean.valueOf(comp
@@ -49,17 +53,18 @@ public class NemexAlignerScoring  implements ScoringComponent {
 		Boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
 				.getString("ignoreDuplicateNgrams"));
 		String similarityMeasure = comp.getString("similarityMeasure");
-		double similarityThreshold = Double.parseDouble(comp.getString("similarityThreshold"));
+		double similarityThreshold = Double.parseDouble(comp
+				.getString("similarityThreshold"));
 		String chunkerModelPath = comp.getString("chunkerModelPath");
 		String direction = comp.getString("direction");
 
 		this.aligner = new NemexAligner(gazetteerFilePath, delimiter,
-				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams, similarityMeasure,
-				similarityThreshold, chunkerModelPath,direction);
-		
-		
+				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams,
+				similarityMeasure, similarityThreshold, chunkerModelPath,
+				direction);
+
 	}
-	
+
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
@@ -73,13 +78,14 @@ public class NemexAlignerScoring  implements ScoringComponent {
 	public String getInstanceName() {
 		return null;
 	}
-	
+
 	/**
 	 * close the component
+	 * 
 	 * @throws ScoringComponentException
 	 */
-	public void close() throws ScoringComponentException{
-		
+	public void close() throws ScoringComponentException {
+
 	}
 
 	@Override
@@ -87,54 +93,67 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			throws ScoringComponentException {
 		// all the values: (T&H/H), (T&H/T), and ((T&H/H)*(T&H/T))
 		Vector<Double> scoresVector = new Vector<Double>();
-		
+
 		try {
 			aligner.annotate(cas);
 		
-			
-			JCas tView = cas.getView(LAP_ImplBase.TEXTVIEW);
+
+		JCas tView = null, hView = null;
+		try {
+			hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+		} catch (CASException e) {
+			throw new AlignmentComponentException(
+					"Failed to access the hypothesis view", e);
+		}
+
+		try {
+			tView = cas.getView(LAP_ImplBase.TEXTVIEW);
+
+		} catch (CASException e) {
+			throw new AlignmentComponentException(
+					"Failed to access the text view", e);
+		}
+
+		if (null != tView && null != hView ) {
 			Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
 			int tChunkNum = tChunks.size();
 
-			JCas hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 			Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 			int hChunkNum = hChunks.size();
-			
-			
-			//Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
-			//HashSet<String> tLinkSet = countLinks(tLinks);
+
 			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
-			
-			if(0 == hLinks.size()) {
-				logger.info("No Links found for Hypo view ");
-				
-				scoresVector.add(0d);
-				scoresVector.add(0d);
-				scoresVector.add(0d);
-				
-			}
-			
-			else
-			{
-				logger.info("Links found, adding scores");
-				scoresVector.addAll(calculateSimilarity(tView, hLinks, tChunkNum, hChunkNum));
-			}
-				
-			
-			String task = JCasUtil.select(cas, EntailmentMetadata.class).iterator().next().getTask();
+
+			logger.info("Links found, adding scores");
+			scoresVector.addAll(calculateSimilarity(tView, hLinks, tChunkNum,
+					hChunkNum));
+
+			String task = JCasUtil.select(cas, EntailmentMetadata.class)
+					.iterator().next().getTask();
 			if (null == task) {
 				scoresVector.add(0d);
 				scoresVector.add(0d);
 				scoresVector.add(0d);
-				scoresVector.add(0d);				
+				scoresVector.add(0d);
 			} else {
 				scoresVector.add(isTaskIE(task));
 				scoresVector.add(isTaskIR(task));
 				scoresVector.add(isTaskQA(task));
 				scoresVector.add(isTaskSUM(task));
 			}
-		} catch (Exception e) {
-			throw new ScoringComponentException(e.getMessage());
+
+		}
+
+		/*
+		 * if(0 == hLinks.size()) {
+		 * logger.info("No Links found for Hypo view ");
+		 * 
+		 * scoresVector.add(0d); scoresVector.add(0d); scoresVector.add(0d);
+		 * 
+		 * }
+		 */
+		} catch (PairAnnotatorComponentException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		return scoresVector;
 	}
@@ -147,19 +166,18 @@ public class NemexAlignerScoring  implements ScoringComponent {
 	 * @return a HashMap represents the bag of tokens contained in the text, in
 	 *         the form of <Token, Frequency>
 	 */
-	/*protected HashSet<String> countLinks(Collection<Link> links) {
-		HashSet<String> linkSet = new HashSet<String>();
-		Iterator<Link> linkIter = links.iterator();
-		
-		while (linkIter.hasNext()) {
-			Link curr = (Link) linkIter.next();
-			String linkID = curr.getAlignerID();
-
-			linkSet.add(linkID);
-			
-		}
-		return linkSet;
-	}*/
+	/*
+	 * protected HashSet<String> countLinks(Collection<Link> links) {
+	 * HashSet<String> linkSet = new HashSet<String>(); Iterator<Link> linkIter
+	 * = links.iterator();
+	 * 
+	 * while (linkIter.hasNext()) { Link curr = (Link) linkIter.next(); String
+	 * linkID = curr.getAlignerID();
+	 * 
+	 * linkSet.add(linkID);
+	 * 
+	 * } return linkSet; }
+	 */
 
 	/**
 	 * Calculate the similarity between two bags of tokens
@@ -176,36 +194,36 @@ public class NemexAlignerScoring  implements ScoringComponent {
 	protected Vector<Double> calculateSimilarity(JCas tView,
 			Collection<Link> hLinks, int tSize, int hSize) {
 		double sum = 0.0d;
-		
+
 		for (final Iterator<Link> iter = hLinks.iterator(); iter.hasNext();) {
 			Link hLink = iter.next();
-			
+
 			JCas tTarget = null;
-			
+
 			try {
 				tTarget = hLink.getTSideTarget().getCAS().getJCas();
 			} catch (CASException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 			if (tTarget.equals(tView)) {
-				sum +=1;
-			}
-			else
+				sum += 1;
+			} else
 				continue;
-			
+
 		}
-		
+
 		Vector<Double> returnValue = new Vector<Double>();
 		returnValue.add(sum / hSize);
 		returnValue.add(sum / tSize);
 		returnValue.add(sum * sum / hSize / tSize);
 		return returnValue;
 	}
-	
+
 	/**
 	 * check whether the task is IE
+	 * 
 	 * @param task
 	 * @return 1: yes; 0: no.
 	 */
@@ -215,9 +233,10 @@ public class NemexAlignerScoring  implements ScoringComponent {
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * check whether the task is IR
+	 * 
 	 * @param task
 	 * @return 1: yes; 0: no.
 	 */
@@ -227,9 +246,10 @@ public class NemexAlignerScoring  implements ScoringComponent {
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * check whether the task is QA
+	 * 
 	 * @param task
 	 * @return 1: yes; 0: no.
 	 */
@@ -239,7 +259,7 @@ public class NemexAlignerScoring  implements ScoringComponent {
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * check whether the task is SUM
 	 * 
