@@ -111,16 +111,15 @@ public class NemexAlignerScoring  implements ScoringComponent {
 				scoresVector.add(0d);
 				scoresVector.add(0d);
 				scoresVector.add(0d);
-				//scoresVector.add(0d);
-				//scoresVector.add(0d);
-				//scoresVector.add(0d);
-				//scoresVector.add(0d);
 				
-				//return scoresVector;
 			}
 			
 			else
+			{
+				logger.info("Links found, adding scores");
 				scoresVector.addAll(calculateSimilarity(tLinkSet, hLinks, tChunkNum, hChunkNum));
+			}
+				
 			
 			String task = JCasUtil.select(cas, EntailmentMetadata.class).iterator().next().getTask();
 			if (null == task) {
