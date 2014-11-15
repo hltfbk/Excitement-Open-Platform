@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
@@ -101,12 +102,12 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			logger.info("after getting chunks");
 			
 			
-			Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
-			HashSet<String> tLinkSet = countLinks(tLinks);
+			//Collection<Link> tLinks = JCasUtil.select(tView, Link.class);
+			//HashSet<String> tLinkSet = countLinks(tLinks);
 			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
 			
-			if(0 == tLinks.size() || 0 == hLinks.size()) {
-				logger.info("No Links found for either H or T");
+			if(0 == hLinks.size()) {
+				logger.info("No Links found for Hypo view ");
 				
 				scoresVector.add(0d);
 				scoresVector.add(0d);
@@ -117,7 +118,7 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			else
 			{
 				logger.info("Links found, adding scores");
-				scoresVector.addAll(calculateSimilarity(tLinkSet, hLinks, tChunkNum, hChunkNum));
+				scoresVector.addAll(calculateSimilarity(tView, hLinks, tChunkNum, hChunkNum));
 			}
 				
 			
@@ -147,7 +148,7 @@ public class NemexAlignerScoring  implements ScoringComponent {
 	 * @return a HashMap represents the bag of tokens contained in the text, in
 	 *         the form of <Token, Frequency>
 	 */
-	protected HashSet<String> countLinks(Collection<Link> links) {
+	/*protected HashSet<String> countLinks(Collection<Link> links) {
 		HashSet<String> linkSet = new HashSet<String>();
 		Iterator<Link> linkIter = links.iterator();
 		
@@ -159,7 +160,7 @@ public class NemexAlignerScoring  implements ScoringComponent {
 			
 		}
 		return linkSet;
-	}
+	}*/
 
 	/**
 	 * Calculate the similarity between two bags of tokens
@@ -173,18 +174,28 @@ public class NemexAlignerScoring  implements ScoringComponent {
 	 *         2) the ratio between the number of overlapping tokens and the
 	 *         number of tokens in T; 3) the product of the above two
 	 */
-	protected Vector<Double> calculateSimilarity(HashSet<String> tLinkSet,
+	protected Vector<Double> calculateSimilarity(JCas tView,
 			Collection<Link> hLinks, int tSize, int hSize) {
 		double sum = 0.0d;
 		
 		for (final Iterator<Link> iter = hLinks.iterator(); iter.hasNext();) {
 			Link hLink = iter.next();
-			final String hLinkId = hLink.getAlignerID();
 			
-			if (!tLinkSet.contains(hLinkId)) {
-				continue;
+			JCas tTarget = null;
+			
+			try {
+				tTarget = hLink.getTSideTarget().getCAS().getJCas();
+			} catch (CASException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			sum += 1;
+			
+			if (tTarget.equals(tView)) {
+				sum +=1;
+			}
+			else
+				continue;
+			
 		}
 		
 		Vector<Double> returnValue = new Vector<Double>();
