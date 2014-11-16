@@ -100,6 +100,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 			JCas tView = null, hView = null;
 			try {
 				hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+				logger.info("Obtained hView:" + hView.getDocumentText());
 			} catch (CASException e) {
 				throw new AlignmentComponentException(
 						"Failed to access the hypothesis view", e);
@@ -117,7 +118,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 				Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
 				int tChunkNum = tChunks.size();
 
-				if(tChunkNum == 0) {
+				if(0 == tChunkNum) {
 					logger.info("No chunks found for T");
 				}
 				
@@ -129,6 +130,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 					logger.info("No chunks found for H");
 				}
 				
+				logger.info("Getting links from hView now");
 				Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
 
 				if (hLinks.size() > 0) {
