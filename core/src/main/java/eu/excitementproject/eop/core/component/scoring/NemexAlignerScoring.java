@@ -194,6 +194,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 	protected Vector<Double> calculateSimilarity(JCas tView,
 			Collection<Link> hLinks, int tSize, int hSize) {
 		double sum = 0.0d;
+		
+		logger.info("Entered calculate similarity");
 
 		for (final Iterator<Link> iter = hLinks.iterator(); iter.hasNext();) {
 			Link hLink = iter.next();
