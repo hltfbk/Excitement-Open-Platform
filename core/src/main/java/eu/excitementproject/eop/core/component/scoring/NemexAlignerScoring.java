@@ -96,61 +96,61 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		try {
 			aligner.annotate(cas);
-		
 
-		JCas tView = null, hView = null;
-		try {
-			hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-		} catch (CASException e) {
-			throw new AlignmentComponentException(
-					"Failed to access the hypothesis view", e);
-		}
-
-		try {
-			tView = cas.getView(LAP_ImplBase.TEXTVIEW);
-
-		} catch (CASException e) {
-			throw new AlignmentComponentException(
-					"Failed to access the text view", e);
-		}
-
-		if (null != tView && null != hView ) {
-			Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
-			int tChunkNum = tChunks.size();
-
-			Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
-			int hChunkNum = hChunks.size();
-
-			Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
-
-			logger.info("Links found, adding scores");
-			scoresVector.addAll(calculateSimilarity(tView, hLinks, tChunkNum,
-					hChunkNum));
-
-			String task = JCasUtil.select(cas, EntailmentMetadata.class)
-					.iterator().next().getTask();
-			if (null == task) {
-				scoresVector.add(0d);
-				scoresVector.add(0d);
-				scoresVector.add(0d);
-				scoresVector.add(0d);
-			} else {
-				scoresVector.add(isTaskIE(task));
-				scoresVector.add(isTaskIR(task));
-				scoresVector.add(isTaskQA(task));
-				scoresVector.add(isTaskSUM(task));
+			JCas tView = null, hView = null;
+			try {
+				hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+			} catch (CASException e) {
+				throw new AlignmentComponentException(
+						"Failed to access the hypothesis view", e);
 			}
 
-		}
+			try {
+				tView = cas.getView(LAP_ImplBase.TEXTVIEW);
 
-		/*
-		 * if(0 == hLinks.size()) {
-		 * logger.info("No Links found for Hypo view ");
-		 * 
-		 * scoresVector.add(0d); scoresVector.add(0d); scoresVector.add(0d);
-		 * 
-		 * }
-		 */
+			} catch (CASException e) {
+				throw new AlignmentComponentException(
+						"Failed to access the text view", e);
+			}
+
+			if (null != tView && null != hView) {
+				Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
+				int tChunkNum = tChunks.size();
+
+				Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
+				int hChunkNum = hChunks.size();
+
+				Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
+
+				if (hLinks.size() > 0) {
+					logger.info("Links found, adding scores");
+					scoresVector.addAll(calculateSimilarity(tView, hLinks,
+							tChunkNum, hChunkNum));
+				}
+				String task = JCasUtil.select(cas, EntailmentMetadata.class)
+						.iterator().next().getTask();
+				if (null == task) {
+					scoresVector.add(0d);
+					scoresVector.add(0d);
+					scoresVector.add(0d);
+					scoresVector.add(0d);
+				} else {
+					scoresVector.add(isTaskIE(task));
+					scoresVector.add(isTaskIR(task));
+					scoresVector.add(isTaskQA(task));
+					scoresVector.add(isTaskSUM(task));
+				}
+
+			}
+
+			/*
+			 * if(0 == hLinks.size()) {
+			 * logger.info("No Links found for Hypo view ");
+			 * 
+			 * scoresVector.add(0d); scoresVector.add(0d); scoresVector.add(0d);
+			 * 
+			 * }
+			 */
 		} catch (PairAnnotatorComponentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -194,21 +194,19 @@ public class NemexAlignerScoring implements ScoringComponent {
 	protected Vector<Double> calculateSimilarity(JCas tView,
 			Collection<Link> hLinks, int tSize, int hSize) {
 		double sum = 0.0d;
-		
-		logger.info("Entered calculate similarity");
 
 		for (final Iterator<Link> iter = hLinks.iterator(); iter.hasNext();) {
 			Link hLink = iter.next();
 
-			//JCas tTarget = null;
+			// JCas tTarget = null;
 
-			//tTarget = (JCas) hLink.getTSideTarget().getView();
+			// tTarget = (JCas) hLink.getTSideTarget().getView();
 
-			//if (tTarget.equals(tView)) {
-				logger.info("Incrementing sum");
-				sum += 1;
-			//} else
-				//continue;
+			// if (tTarget.equals(tView)) {
+			logger.info("Incrementing sum");
+			sum += 1;
+			// } else
+			// continue;
 
 		}
 
