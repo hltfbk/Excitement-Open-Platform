@@ -117,9 +117,18 @@ public class NemexAlignerScoring implements ScoringComponent {
 				Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
 				int tChunkNum = tChunks.size();
 
+				if(tChunkNum == 0) {
+					logger.info("No chunks found for T");
+				}
+				
+				
 				Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 				int hChunkNum = hChunks.size();
 
+				if (0 == hChunkNum) {
+					logger.info("No chunks found for H");
+				}
+				
 				Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
 
 				if (hLinks.size() > 0) {
