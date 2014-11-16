@@ -77,10 +77,9 @@ public class NemexAligner implements AlignmentComponent {
 
 		this.similarityMeasure = similarityMeasure;
 		this.similarityThreshold = similarityThreshold;
-		
+
 		this.chunkerModelPath = chunkerModelPath;
-		
-		
+
 		this.direction = direction;
 		// NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
 		// this.delimiterSwitchOff, this.nGramSize,
@@ -183,7 +182,8 @@ public class NemexAligner implements AlignmentComponent {
 		logger.info("Creating queries");
 
 		Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
-		Token[] tokenAnnotsArray = tokenAnnots.toArray(new Token[tokenAnnots.size()]);
+		Token[] tokenAnnotsArray = tokenAnnots.toArray(new Token[tokenAnnots
+				.size()]);
 
 		int numOfTokens = tokenAnnotsArray.length;
 		String[] tokenTextArray = new String[numOfTokens];
@@ -201,10 +201,8 @@ public class NemexAligner implements AlignmentComponent {
 
 		}
 
-		logger.info("Token text and offsets obtained");
-
 		query = getQuery(chunkerModelPath);
-		
+
 		InputStream modelIn = null;
 		ChunkerModel model = null;
 
@@ -382,7 +380,8 @@ public class NemexAligner implements AlignmentComponent {
 		List<String> values = new ArrayList<String>();
 
 		Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
-		Token[] tokenAnnotsArray = tokenAnnots.toArray(new Token[tokenAnnots.size()]);
+		Token[] tokenAnnotsArray = tokenAnnots.toArray(new Token[tokenAnnots
+				.size()]);
 
 		int numOfTokens = tokenAnnotsArray.length;
 		String[] tokenTextArray = new String[numOfTokens];
@@ -492,7 +491,6 @@ public class NemexAligner implements AlignmentComponent {
 			StringArray valuesArray = new StringArray(view, entry.size());
 			String[] entryArray = entry.toArray(new String[entry.size()]);
 			valuesArray.copyFromArray(entryArray, 0, 0, entryArray.length);
-			
 
 			// logger.info("Setting values of annotation");
 			curAnnot.setValues(valuesArray);
@@ -615,31 +613,56 @@ public class NemexAligner implements AlignmentComponent {
 			}
 		}
 
-		// Mark an alignment.Link and add it to the hypothesis view
-		Link link = new Link(hView);
-		link.setTSideTarget(textTarget);
-		link.setHSideTarget(hypoTarget);
+		if (direction == "HtoT") {
+			// Mark an alignment.Link and add it to the hypothesis view
+			Link link = new Link(hView);
+			link.setTSideTarget(textTarget);
+			link.setHSideTarget(hypoTarget);
 
-		// Set the link direction
-		if(direction == "HtoT")
+			// Set the link direction
 			link.setDirection(Direction.HtoT);
-		else
+
+			// Set strength according to the nemex-a threshold
+			link.setStrength(this.similarityThreshold);
+
+			// Add the link information
+			link.setAlignerID("NemexA");
+			link.setAlignerVersion("1.0");
+			link.setLinkInfo("nemex-results");
+
+			// Mark begin and end according to the hypothesis target
+			link.setBegin(hypoTarget.getBegin());
+			link.setEnd(hypoTarget.getEnd());
+
+			// Add to index
+			link.addToIndexes();
+		}
+
+		else {
+			// Mark an alignment.Link and add it to the hypothesis view
+			Link link = new Link(hView);
+			link.setTSideTarget(textTarget);
+			link.setHSideTarget(hypoTarget);
+
+			// Set the link direction
 			link.setDirection(Direction.TtoH);
 
-		// Set strength according to the nemex-a threshold
-		link.setStrength(this.similarityThreshold);
+			// Set strength according to the nemex-a threshold
+			link.setStrength(this.similarityThreshold);
 
-		// Add the link information
-		link.setAlignerID("NemexA");
-		link.setAlignerVersion("1.0");
-		link.setLinkInfo("nemex-results");
+			// Add the link information
+			link.setAlignerID("NemexA");
+			link.setAlignerVersion("1.0");
+			link.setLinkInfo("nemex-results");
 
-		// Mark begin and end according to the hypothesis target
-		link.setBegin(hypoTarget.getBegin());
-		link.setEnd(hypoTarget.getEnd());
+			// Mark begin and end according to the hypothesis target
+			link.setBegin(hypoTarget.getBegin());
+			link.setEnd(hypoTarget.getEnd());
 
-		// Add to index
-		link.addToIndexes();
+			// Add to index
+			link.addToIndexes();
+
+		}
 	}
 
 	@Override

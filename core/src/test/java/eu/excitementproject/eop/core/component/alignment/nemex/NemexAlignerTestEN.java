@@ -82,7 +82,7 @@ public class NemexAlignerTestEN {
 
 			aligner = new NemexAligner(
 					"src/test/resources/gazetteer/nemexAligner.txt", "#", true,
-					3, false, "DICE_SIMILARITY_MEASURE", 0.8, "src/main/resources/chunker-model/en-chunker.bin", "HtoT");
+					3, false, "DICE_SIMILARITY_MEASURE", 0.8, "src/main/resources/chunker-model/en-chunker.bin", "TtoH");
 			logger.info("Initialization finished");
 
 			// align test JCas pair
@@ -91,9 +91,9 @@ public class NemexAlignerTestEN {
 
 			// Print the alignment of JCas pair
 
-			JCas hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+			JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 
-			for (Link link : JCasUtil.select(hypoView, Link.class)) {
+			for (Link link : JCasUtil.select(textView, Link.class)) {
 
 				logger.info(String.format("Text phrase: %s, "
 						+ "hypothesis phrase: %s, "
@@ -101,6 +101,12 @@ public class NemexAlignerTestEN {
 						.getTSideTarget().getCoveredText(), link
 						.getHSideTarget().getCoveredText(), link.getID(), link
 						.getStrength(), link.getDirection().toString()));
+				
+				/*JCas targetView = link.getHSideTarget().getCASImpl().getExistingJCas();
+				JCas hView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+				if(targetView.equals(hView)) {
+					logger.info("Same as hiew");
+				}*/
 
 			}
 		} catch (Exception e) {

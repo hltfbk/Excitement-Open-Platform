@@ -31,6 +31,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 	 */
 	private int numOfFeats = 7;
 	private NemexAligner aligner;
+	private String direction;
 	public final static Logger logger = Logger
 			.getLogger(NemexClassificationEDA.class.getName());
 
@@ -56,7 +57,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 		double similarityThreshold = Double.parseDouble(comp
 				.getString("similarityThreshold"));
 		String chunkerModelPath = comp.getString("chunkerModelPath");
-		String direction = comp.getString("direction");
+		this.direction = comp.getString("direction");
 
 		this.aligner = new NemexAligner(gazetteerFilePath, delimiter,
 				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams,
@@ -100,7 +101,6 @@ public class NemexAlignerScoring implements ScoringComponent {
 			JCas tView = null, hView = null;
 			try {
 				hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-				logger.info("Obtained hView:" + hView.getDocumentText());
 			} catch (CASException e) {
 				throw new AlignmentComponentException(
 						"Failed to access the hypothesis view", e);
@@ -118,25 +118,40 @@ public class NemexAlignerScoring implements ScoringComponent {
 				Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
 				int tChunkNum = tChunks.size();
 
-				if(0 == tChunkNum) {
+				if (0 == tChunkNum) {
 					logger.info("No chunks found for T");
 				}
-				
-				
+
 				Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 				int hChunkNum = hChunks.size();
 
 				if (0 == hChunkNum) {
 					logger.info("No chunks found for H");
 				}
-				
-				logger.info("Getting links from hView now");
-				Collection<Link> hLinks = JCasUtil.select(hView, Link.class);
 
-				if (hLinks.size() > 0) {
-					logger.info("Links found, adding scores");
-					scoresVector.addAll(calculateSimilarity(tView, hLinks,
-							tChunkNum, hChunkNum));
+				if (direction == "HtoT") {
+					logger.info("Getting links from hView now");
+					Collection<Link> hLinks = JCasUtil
+							.select(hView, Link.class);
+
+					if (hLinks.size() > 0) {
+						logger.info("Links found, adding scores");
+						scoresVector.addAll(calculateSimilarity(tView, hLinks,
+								tChunkNum, hChunkNum));
+					}
+
+				}
+
+				else {
+					logger.info("Getting links from tView now");
+					Collection<Link> tLinks = JCasUtil
+							.select(tView, Link.class);
+
+					if (tLinks.size() > 0) {
+						logger.info("Links found, adding scores");
+						scoresVector.addAll(calculateSimilarity(hView, tLinks,
+								tChunkNum, hChunkNum));
+					}
 				}
 				String task = JCasUtil.select(cas, EntailmentMetadata.class)
 						.iterator().next().getTask();
@@ -202,22 +217,25 @@ public class NemexAlignerScoring implements ScoringComponent {
 	 *         2) the ratio between the number of overlapping tokens and the
 	 *         number of tokens in T; 3) the product of the above two
 	 */
-	protected Vector<Double> calculateSimilarity(JCas tView,
-			Collection<Link> hLinks, int tSize, int hSize) {
+	protected Vector<Double> calculateSimilarity(JCas view,
+			Collection<Link> links, int tSize, int hSize) {
 		double sum = 0.0d;
 
-		for (final Iterator<Link> iter = hLinks.iterator(); iter.hasNext();) {
-			Link hLink = iter.next();
+		for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
+			Link link = iter.next();
 
-			// JCas tTarget = null;
+			/*JCas target = null;
 
-			// tTarget = (JCas) hLink.getTSideTarget().getView();
+			if(direction == "HtoT")
+				target = (JCas) link.getTSideTarget().getView();
+			else
+				target = (JCas) link.getHSideTarget().getView();
 
-			// if (tTarget.equals(tView)) {
-			logger.info("Incrementing sum");
-			sum += 1;
-			// } else
-			// continue;
+			if (target.equals(view)) {*/
+				logger.info("Incrementing sum");
+				sum += 1;
+			/*} else
+				continue;*/
 
 		}
 
