@@ -200,12 +200,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 			JCas tTarget = null;
 
-			try {
-				tTarget = hLink.getTSideTarget().getCAS().getJCas();
-			} catch (CASException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			tTarget = (JCas) hLink.getTSideTarget().getView();
 
 			if (tTarget.equals(tView)) {
 				logger.info("Incrementing sum");
