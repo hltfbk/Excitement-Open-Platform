@@ -198,15 +198,15 @@ public class NemexAlignerScoring implements ScoringComponent {
 		for (final Iterator<Link> iter = hLinks.iterator(); iter.hasNext();) {
 			Link hLink = iter.next();
 
-			JCas tTarget = null;
+			//JCas tTarget = null;
 
-			tTarget = (JCas) hLink.getTSideTarget().getView();
+			//tTarget = (JCas) hLink.getTSideTarget().getView();
 
-			if (tTarget.equals(tView)) {
+			//if (tTarget.equals(tView)) {
 				logger.info("Incrementing sum");
 				sum += 1;
-			} else
-				continue;
+			//} else
+				//continue;
 
 		}
 
