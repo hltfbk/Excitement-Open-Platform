@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.inspector;
 
-import java.io.OutputStream;
+//import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
@@ -71,12 +71,14 @@ public class InspectorForSimpleWordCoverageP1EDA {
 		// e. output feature vector, as-is. 
 	}
 
+	@SuppressWarnings("unused")
 	private static HashMap<Link, Integer> makeLinkIndex(List<Link> allLinks)
 	{
 		// TODO 
 		return null; 
 	}
 	
+	@SuppressWarnings("unused")
 	private List<Double> coveragePerWord(List<List<Link>> coveringLinks) 
 	{
 		//TODO 
