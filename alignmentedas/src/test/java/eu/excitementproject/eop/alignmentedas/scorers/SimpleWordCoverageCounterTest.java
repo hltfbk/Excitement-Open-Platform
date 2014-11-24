@@ -80,7 +80,7 @@ public class SimpleWordCoverageCounterTest {
 			Iterator<Token> ti = tokens.iterator(); 
 			ti.next(); // first token 
 			Token t = ti.next(); // second token
-			List<Link> filteredLinks = SimpleWordCoverageCounter.filterLinksWithTargetsIncluding(links, t); 
+			List<Link> filteredLinks = LinkUtils.filterLinksWithTargetsIncluding(links, t, Link.Direction.TtoH); 
 			//System.out.println(filteredLinks.size()); 
 			assertEquals(1, filteredLinks.size()); 
 		}

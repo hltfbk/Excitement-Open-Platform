@@ -18,6 +18,8 @@ import eu.excitementproject.eop.alignmentedas.p1eda.instances.SimpleWordCoverage
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WNVOMT;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithVO;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithoutVO;
+import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.DEWithoutDerivBase;
+import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.DEWithDerivBase;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.dkpro.TreeTaggerDE;
@@ -28,6 +30,8 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 /**
  * A simple (EOP)-RTE XML data runner for P1EDA configurations 
  *
+ * (Note that, basic LAP for P1EDA configurations are TreeTagger using pipelines. 
+ * Thus, you need to have TreeTagger dependencies in lap/POM.xml
  */
 @SuppressWarnings("unused")
 public class P1EdaRTERunner 
@@ -46,7 +50,8 @@ public class P1EdaRTERunner
     		
     		// use evaluateOnRTE3DE for German 
 //    		LAP_ImplBase lapDE = new TreeTaggerDE(); 
-//    		P1EDATemplate p1edaDE = new SimpleWordCoverageDE(); 
+////    		P1EDATemplate p1edaDE = new SimpleWordCoverageDE(); 
+//    		P1EDATemplate p1edaDE = new DEWithoutDerivBase(); 
 //    		evaluateOnRTE3DE(lapDE, p1edaDE, false); 
     		
     		// use evaluateOnRTE3IT for Italian 

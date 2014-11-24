@@ -1,4 +1,4 @@
-package eu.excitementproject.eop.alignmentedas.p1eda.instances;
+package eu.excitementproject.eop.alignmentedas.p1eda.sandbox;
 
 import java.util.Vector;
 
@@ -28,6 +28,9 @@ import eu.excitementproject.eop.common.component.alignment.AlignmentComponentExc
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.DerivBaseDELinker;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.GermaNetDELinker;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.GermanTransDMDELinker;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.VerbOceanENLinker;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.WordNetENLinker;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
@@ -35,24 +38,27 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 /**
+ * A simple German EDA instance based on three basic (language independent) feature extractors. 
  * 
- * 
- * 
- * (On this simple coverage setup, best was with all four aligners, with three features (without verb coverage ratio) 
- * on RTE3: 66.75) (or 67.0 with older lexical linker --- some check needed why faster alinger gets less links) 
+ * On this setup, the best value was 64.5% accuracy with the following two alingers.
+ * (identical lemma + GermaNet) 
  * 
  * @author Tae-Gil Noh
+ *
  */
 @SuppressWarnings("unused")
-public class SimpleWordCoverageEN extends P1EDATemplate {
+public class DEWithDerivBase extends P1EDATemplate {
 
-	public SimpleWordCoverageEN() throws EDAException
+	public DEWithDerivBase() throws EDAException
 	{	
+		// And let's prepare the aligner instances and scoring components... 
 		try {
-			aligner1 = new IdenticalLemmaPhraseLinker(); 
-			aligner2 = new MeteorPhraseLinkerEN(); 
-			aligner3 = new WordNetENLinker();  
-			aligner4 = new VerbOceanENLinker(); 
+			identicalLemmaLinker = new IdenticalLemmaPhraseLinker(); 
+//			meteorParaphraseLinker = new MeteorPhraseLinkerDE(); 
+			derivBaseLinker = new DerivBaseDELinker(); 
+//			distSimLinker = new GermanTransDMDELinker();
+//			germaNetLinker = new GermaNetDELinker("/Users/tailblues/germanet-8.0/GN_V80_XML/"); // please provide correct path for GermaNet!! 
+																								// see GermaNetDELinker for detail ... 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -66,14 +72,13 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 
 	@Override
 	public void addAlignments(JCas input) throws EDAException {
-
-		// Here, just one aligner... (same lemma linker) 
+		
 		try {
-			aligner1.annotate(input);
-			aligner2.annotate(input); 
-			aligner3.annotate(input); // WordNet. rather slow.  
-			aligner4.annotate(input); 
-
+			identicalLemmaLinker.annotate(input);
+//			meteorParaphraseLinker.annotate(input); 
+			derivBaseLinker.annotate(input); 
+//			distSimLinker.annotate(input); 
+//			germaNetLinker.annotate(input); 
 		}
 		catch (PairAnnotatorComponentException pe)
 		{
@@ -122,7 +127,9 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 			}
 			fv.add(new FeatureValue(ratio_ner)); 		
 			
-			
+
+			// VerbCoverage scorer as-is, generally don't work well with German. 
+			// (should use more German specific, predicate coverage approximation) 
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
 			// we know Verb Coverage counter returns 2 numbers. 
 			// (number of covered Vs in H, number of all Vs in H) 
@@ -133,9 +140,8 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 			else
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
-			}
-			// For English, verb coverage feature doesn't seem to work well. 
-			//fv.add(new FeatureValue(ratio_V)); 		
+			}			
+			fv.add(new FeatureValue(ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)
@@ -147,7 +153,6 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 			throw new EDAException("Integrity failure - this simply shouldn't happen", obe); 
 		}
 		
-		// Now return the feature vector. The P1EDA template will use this. 
 		return fv; 
 	}
 	
@@ -173,10 +178,11 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 	}
 	
 	
-	AlignmentComponent aligner1; 
-	AlignmentComponent aligner2; 
-	AlignmentComponent aligner3; 
-	AlignmentComponent aligner4; 
+	AlignmentComponent identicalLemmaLinker; 
+	AlignmentComponent meteorParaphraseLinker; 
+	AlignmentComponent derivBaseLinker; 
+	AlignmentComponent distSimLinker; 
+	AlignmentComponent germaNetLinker; 
 
 	ScoringComponent wordCoverageScorer;  
 	ScoringComponent nerCoverageScorer;  

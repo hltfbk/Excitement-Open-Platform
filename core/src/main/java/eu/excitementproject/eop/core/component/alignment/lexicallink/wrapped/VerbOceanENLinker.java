@@ -86,4 +86,10 @@ public class VerbOceanENLinker implements AlignmentComponent {
 	{
 		return null; 
 	}
+	
+	public void close() throws AlignmentComponentException
+	{
+		worker.close(); 
+	}
+
 }

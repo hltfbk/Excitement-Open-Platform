@@ -100,4 +100,10 @@ public class WordNetENLinker_old implements AlignmentComponent {
 	{
 		return null;
 	}
+	
+	public void close() throws AlignmentComponentException
+	{
+		worker.close(); 
+	}
+
 }

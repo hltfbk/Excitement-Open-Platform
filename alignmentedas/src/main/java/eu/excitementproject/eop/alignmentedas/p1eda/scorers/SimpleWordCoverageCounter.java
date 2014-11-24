@@ -1,6 +1,5 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.scorers;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
@@ -8,16 +7,12 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSArray;
-import org.apache.uima.jcas.tcas.Annotation;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.LinkUtils;
-import eu.excitement.type.alignment.Target;
-//import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
@@ -118,7 +113,7 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 					countContentTokens --; 
 				}
 
-				List<Link> linksHoldingThisToken = filterLinksWithTargetsIncluding(linksWithTheID, tok);
+				List<Link> linksHoldingThisToken = LinkUtils.filterLinksWithTargetsIncluding(linksWithTheID, tok, Link.Direction.TtoH);
 				if (linksHoldingThisToken.size() != 0)
 				{
 					countCoveredTokens ++; 
@@ -139,52 +134,51 @@ public class SimpleWordCoverageCounter implements ScoringComponent {
 		
 		return result;
 	}
-	
-	
-	/** Maybe this need to go to LinkUtils 
-	 * TODO: export this method with "direction selection" option to LinkUtils 
-	 * 
-	 * @param fullList   The full list of Links
-	 * @param annot      The annotation that is being considered. 
-	 * @return
-	 */
-	public static <T extends Annotation> List<Link> filterLinksWithTargetsIncluding(List<Link> fullList, T annot)
-	{
-		List<Link> filteredList = new ArrayList<Link>(); 
 		
-		for (Link l : fullList)
-		{
-			Target tSideTarget = l.getTSideTarget(); 
-			Target hSideTarget = l.getHSideTarget(); 
-			
-			FSArray arr = null; 
-			arr = tSideTarget.getTargetAnnotations(); 
-			for (Annotation a : JCasUtil.select(arr, Annotation.class))
-			{
-				if (a == annot)
-				{
-					filteredList.add(l); 
-					break; 
-				}
-			}
-			
-			arr = hSideTarget.getTargetAnnotations(); 
-			for (Annotation a : JCasUtil.select(arr, Annotation.class))
-			{
-				if (a == annot)
-				{
-					// In this score component, we ignore HtoT case. (only TtoH and bidirection) 
-					// Hmm. possible better coding for this? 
-					if (l.getDirection() == Link.Direction.HtoT)
-						break; 
-					filteredList.add(l); 
-					break; 
-				}
-			}			
-		}
-		
-		return filteredList; 
-	}
+//	/** Maybe this need to go to LinkUtils 
+//	 * TODO: export this method with "direction selection" option to LinkUtils 
+//	 * 
+//	 * @param fullList   The full list of Links
+//	 * @param annot      The annotation that is being considered. 
+//	 * @return
+//	 */
+//	public static <T extends Annotation> List<Link> filterLinksWithTargetsIncluding(List<Link> fullList, T annot)
+//	{
+//		List<Link> filteredList = new ArrayList<Link>(); 
+//		
+//		for (Link l : fullList)
+//		{
+//			Target tSideTarget = l.getTSideTarget(); 
+//			Target hSideTarget = l.getHSideTarget(); 
+//			
+//			FSArray arr = null; 
+//			arr = tSideTarget.getTargetAnnotations(); 
+//			for (Annotation a : JCasUtil.select(arr, Annotation.class))
+//			{
+//				if (a == annot)
+//				{
+//					filteredList.add(l); 
+//					break; 
+//				}
+//			}
+//			
+//			arr = hSideTarget.getTargetAnnotations(); 
+//			for (Annotation a : JCasUtil.select(arr, Annotation.class))
+//			{
+//				if (a == annot)
+//				{
+//					// In this score component, we ignore HtoT case. (only TtoH and bidirection) 
+//					// Hmm. possible better coding for this? 
+//					if (l.getDirection() == Link.Direction.HtoT)
+//						break; 
+//					filteredList.add(l); 
+//					break; 
+//				}
+//			}			
+//		}
+//		
+//		return filteredList; 
+//	}
 	
 	
 	@Override

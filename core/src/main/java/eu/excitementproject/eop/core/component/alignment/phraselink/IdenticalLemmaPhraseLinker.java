@@ -326,6 +326,12 @@ public class IdenticalLemmaPhraseLinker implements AlignmentComponent {
 		return null; // this module does not support multiple-instances (e.g. with different configurations) 
 	}
 	
+	@Override
+	public void close() throws AlignmentComponentException
+	{
+		// nothing to close in this aligner. 
+	}
+
 	private static Boolean containsOnlyNonContentPOSes(Token[] tokenArr) throws AlignmentComponentException
 	{
 		logger.debug("checking non content POSes only or not: "); 

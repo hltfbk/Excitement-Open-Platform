@@ -4,6 +4,7 @@ import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
+import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
@@ -67,4 +68,10 @@ public class GermaNetDELinker_old implements AlignmentComponent {
 	{
 		return null; 
 	}
+	
+	public void close() throws AlignmentComponentException, PairAnnotatorComponentException
+	{
+		worker.close(); 
+	}
+
 }

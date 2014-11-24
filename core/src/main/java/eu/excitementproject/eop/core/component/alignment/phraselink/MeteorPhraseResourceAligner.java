@@ -342,6 +342,12 @@ public class MeteorPhraseResourceAligner implements AlignmentComponent {
 		return resourcePath; 
 	}
 	
+	public void close() throws AlignmentComponentException
+	{
+		// nothing to close on this aligner. 
+	}
+
+	
 	// a utility method 
 	static List<Integer> getOccurrencePoints(String holder, String substring)
 	{
