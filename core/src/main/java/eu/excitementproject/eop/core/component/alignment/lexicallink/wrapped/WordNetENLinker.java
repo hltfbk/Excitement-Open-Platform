@@ -88,6 +88,12 @@ public class WordNetENLinker implements AlignmentComponent {
 		return null; 
 	}
 	
+	public void close() throws AlignmentComponentException
+	{
+		worker.close(); 
+	}
+
+	
 	private final LexicalAlignerFromLexicalResource worker; 
 	
 	// Default path. Note that this path won't work when EOP is in Jar. 

@@ -46,7 +46,7 @@ public class LexicalAlignerFromLexicalResourceTest {
 	private String t2 = "Kennedy was killed in Dallas";
 	private String h2 = "Kennedy was wounded and died in Texas";
 	
-	static Logger logger = Logger.getLogger(LexicalAligner.class.getName());
+	static Logger logger = Logger.getLogger(LexicalAlignerFromLexicalResourceTest.class);
 	
 	// some configurations to be used for lexical resources 
 	// WordNet 

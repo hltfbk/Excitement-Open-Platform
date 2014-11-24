@@ -54,4 +54,17 @@ public interface PairAnnotatorComponent extends Component {
 	 */
 	public void annotate(JCas aJCas) throws PairAnnotatorComponentException; 
 	
+	/**
+	 * The method indicates that the underlying annotator (or aligner) is 
+	 * now no longer required --- this is an indication that the aligner and/or 
+	 * its underlying resources can be released. (e.g. files closed, DB connection 
+	 * close, etc). 
+	 * 
+	 * You can expect that every aligner users will call close() method at the 
+	 * end of their usage. 
+	 * 
+	 * @throws PairAnnotatorComponentException
+	 */
+	public void close() throws PairAnnotatorComponentException; 
+	
 }

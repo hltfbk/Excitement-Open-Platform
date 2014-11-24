@@ -48,9 +48,13 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * When the {@linkplain Aligner} object is no longer to be used, the
  * {@link #cleanUp()} method should be called.
  * 
+ * NOTE: the class is deprecated, please use LexicalAlignerFromLexicalResource, 
+ * instead of this class. (Nov. 2014) 
+ * 
  * @author Vered Shwartz
  * @since 26/05/2014
  */
+@Deprecated  // please use LexicalAlignerFromLexicalResource, instead of this class. 
 public class LexicalAligner implements AlignmentComponent {
 
 	// Constants
@@ -264,6 +268,12 @@ public class LexicalAligner implements AlignmentComponent {
 		return null; 
 	} 
 	
+	@Override
+	public void close() throws AlignmentComponentException
+	{
+		cleanUp(); 
+	}
+
 	/**
 	 * Cleans up any resources that were used by the aligner.
 	 * <P>
