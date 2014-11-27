@@ -49,12 +49,20 @@ public class FeatureValue extends Value {
 		this.featureName = featureName; 
 	}
 	
+	/**
+	 * (Deprecated constructor --- please use FeatureValue(String, double) instead of this constructor. ) 
+	 * @param d
+	 */
 	@Deprecated
 	public FeatureValue(double d) {
 		super(d);
 		featureName = "(NoName)"; 
 	}
 
+	/**
+	 * (Deprecated constructor --- please use FeatureValue(String, enum) instead of this constructor. ) 
+	 * @param e
+	 */
 	@Deprecated
 	public FeatureValue(Enum<?> e) {
 		super(e);
@@ -62,6 +70,10 @@ public class FeatureValue extends Value {
 
 	}
 
+	/**
+	 * 	 * (Deprecated constructor --- please use FeatureValue(String, Boolean) instead of this constructor. ) 
+	 * @param b
+	 */
 	@Deprecated 
 	public FeatureValue(Boolean b) {
 		super(b);
