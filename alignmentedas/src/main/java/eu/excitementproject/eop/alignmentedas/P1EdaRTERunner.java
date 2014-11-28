@@ -15,6 +15,7 @@ import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
 import eu.excitementproject.eop.alignmentedas.p1eda.instances.SimpleWordCoverageDE;
 import eu.excitementproject.eop.alignmentedas.p1eda.instances.SimpleWordCoverageEN;
 import eu.excitementproject.eop.alignmentedas.p1eda.instances.SimpleWordCoverageIT;
+import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.FNR_EN;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WNVOMT;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithVO;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithoutVO;
@@ -45,7 +46,9 @@ public class P1EdaRTERunner
     	{	
     		// Prepare LAP and EDA (here, both for English) and eval on RTE3 (again, EN)  
     		LAP_ImplBase lapEN = new TreeTaggerEN(); 
-    		P1EDATemplate p1edaEN = new SimpleWordCoverageEN(); // Put your (configured, instance) P1EDA here... 
+//   		P1EDATemplate p1edaEN = new SimpleWordCoverageEN(); // Put your (configured, instance) P1EDA here... 
+    		P1EDATemplate p1edaEN = new FNR_EN(); // Put your (configured, instance) P1EDA here... 
+
     		evaluateOnRTE3EN(lapEN, p1edaEN, false);  // set final argument true, if lap has not been changed from last call. (to reuse saved XMI files) 
     		
     		// use evaluateOnRTE3DE for German 
