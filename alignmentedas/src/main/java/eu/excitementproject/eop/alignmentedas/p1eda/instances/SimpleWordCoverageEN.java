@@ -35,8 +35,9 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 /**
+ * This is an instance of P1EDA (internal code name for alignment EDA in EOP code base). 
  * 
- * 
+ * This instance uses word-level coverage of the Hypothesis with various aligners
  * 
  * (On this simple coverage setup, best was with all four aligners, with three features (without verb coverage ratio) 
  * on RTE3: 66.75) (or 67.0 with older lexical linker --- some check needed why faster alinger gets less links) 
