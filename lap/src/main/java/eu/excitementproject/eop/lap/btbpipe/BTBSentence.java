@@ -3,7 +3,8 @@ package eu.excitementproject.eop.lap.btbpipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.excitementproject.eop.lap.btbpipe.BTBToken;
+//Import from same Package!
+//import eu.excitementproject.eop.lap.btbpipe.BTBToken;
 
 /**
  * A class to represent sentences and their properties: begin/end index, list of

@@ -17,8 +17,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import eu.excitementproject.eop.lap.btbpipe.BTBSentence;
-import eu.excitementproject.eop.lap.btbpipe.BTBToken;
+//Import from same Package!
+//import eu.excitementproject.eop.lap.btbpipe.BTBSentence;
+//import eu.excitementproject.eop.lap.btbpipe.BTBToken;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
