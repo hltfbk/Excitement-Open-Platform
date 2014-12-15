@@ -1,0 +1,98 @@
+<TABLE>
+<TR><td>A0</td><td>00A0</td></TR>NO-BREAK SPACE<br/>
+<TR><td>A1</td><td>00A1</td></TR>INVERTED EXCLAMATION MARK<br/>
+<TR><td>A2</td><td>00A2</td></TR>CENT SIGN<br/>
+<TR><td>A3</td><td>00A3</td></TR>POUND SIGN<br/>
+<TR><td>A4</td><td>00A4</td></TR>CURRENCY SIGN<br/>
+<TR><td>A5</td><td>00A5</td></TR>YEN SIGN<br/>
+<TR><td>A6</td><td>00A6</td></TR>BROKEN BAR<br/>
+<TR><td>A7</td><td>00A7</td></TR>SECTION SIGN<br/>
+<TR><td>A8</td><td>00A8</td></TR>DIAERESIS<br/>
+<TR><td>A9</td><td>00A9</td></TR>COPYRIGHT SIGN<br/>
+<TR><td>AA</td><td>00AA</td></TR>FEMININE ORDINAL INDICATOR<br/>
+<TR><td>AB</td><td>00AB</td></TR>LEFT-POINTING DOUBLE ANGLE QUOTATION MARK<br/>
+<TR><td>AC</td><td>00AC</td></TR>NOT SIGN<br/>
+<TR><td>AD</td><td>00AD</td></TR>SOFT HYPHEN<br/>
+<TR><td>AE</td><td>00AE</td></TR>REGISTERED SIGN<br/>
+<TR><td>AF</td><td>00AF</td></TR>MACRON<br/>
+<TR><td>B0</td><td>00B0</td></TR>DEGREE SIGN<br/>
+<TR><td>B1</td><td>00B1</td></TR>PLUS-MINUS SIGN<br/>
+<TR><td>B2</td><td>00B2</td></TR>SUPERSCRIPT TWO<br/>
+<TR><td>B3</td><td>00B3</td></TR>SUPERSCRIPT THREE<br/>
+<TR><td>B4</td><td>00B4</td></TR>ACUTE ACCENT<br/>
+<TR><td>B5</td><td>00B5</td></TR>MICRO SIGN<br/>
+<TR><td>B6</td><td>00B6</td></TR>PILCROW SIGN<br/>
+<TR><td>B7</td><td>00B7</td></TR>MIDDLE DOT<br/>
+<TR><td>B8</td><td>00B8</td></TR>CEDILLA<br/>
+<TR><td>B9</td><td>00B9</td></TR>SUPERSCRIPT ONE<br/>
+<TR><td>BA</td><td>00BA</td></TR>MASCULINE ORDINAL INDICATOR<br/>
+<TR><td>BB</td><td>00BB</td></TR>RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK<br/>
+<TR><td>BC</td><td>00BC</td></TR>VULGAR FRACTION ONE QUARTER<br/>
+<TR><td>BD</td><td>00BD</td></TR>VULGAR FRACTION ONE HALF<br/>
+<TR><td>BE</td><td>00BE</td></TR>VULGAR FRACTION THREE QUARTERS<br/>
+<TR><td>BF</td><td>00BF</td></TR>INVERTED QUESTION MARK<br/>
+<TR><td>C0</td><td>00C0</td></TR>LATIN CAPITAL LETTER A WITH GRAVE<br/>
+<TR><td>C1</td><td>00C1</td></TR>LATIN CAPITAL LETTER A WITH ACUTE<br/>
+<TR><td>C2</td><td>00C2</td></TR>LATIN CAPITAL LETTER A WITH CIRCUMFLEX<br/>
+<TR><td>C3</td><td>00C3</td></TR>LATIN CAPITAL LETTER A WITH TILDE<br/>
+<TR><td>C4</td><td>00C4</td></TR>LATIN CAPITAL LETTER A WITH DIAERESIS<br/>
+<TR><td>C5</td><td>00C5</td></TR>LATIN CAPITAL LETTER A WITH RING ABOVE<br/>
+<TR><td>C6</td><td>00C6</td></TR>LATIN CAPITAL LETTER AE<br/>
+<TR><td>C7</td><td>00C7</td></TR>LATIN CAPITAL LETTER C WITH CEDILLA<br/>
+<TR><td>C8</td><td>00C8</td></TR>LATIN CAPITAL LETTER E WITH GRAVE<br/>
+<TR><td>C9</td><td>00C9</td></TR>LATIN CAPITAL LETTER E WITH ACUTE<br/>
+<TR><td>CA</td><td>00CA</td></TR>LATIN CAPITAL LETTER E WITH CIRCUMFLEX<br/>
+<TR><td>CB</td><td>00CB</td></TR>LATIN CAPITAL LETTER E WITH DIAERESIS<br/>
+<TR><td>CC</td><td>00CC</td></TR>LATIN CAPITAL LETTER I WITH GRAVE<br/>
+<TR><td>CD</td><td>00CD</td></TR>LATIN CAPITAL LETTER I WITH ACUTE<br/>
+<TR><td>CE</td><td>00CE</td></TR>LATIN CAPITAL LETTER I WITH CIRCUMFLEX<br/>
+<TR><td>CF</td><td>00CF</td></TR>LATIN CAPITAL LETTER I WITH DIAERESIS<br/>
+<TR><td>D0</td><td>011E</td></TR>LATIN CAPITAL LETTER G WITH BREVE<br/>
+<TR><td>D1</td><td>00D1</td></TR>LATIN CAPITAL LETTER N WITH TILDE<br/>
+<TR><td>D2</td><td>00D2</td></TR>LATIN CAPITAL LETTER O WITH GRAVE<br/>
+<TR><td>D3</td><td>00D3</td></TR>LATIN CAPITAL LETTER O WITH ACUTE<br/>
+<TR><td>D4</td><td>00D4</td></TR>LATIN CAPITAL LETTER O WITH CIRCUMFLEX<br/>
+<TR><td>D5</td><td>00D5</td></TR>LATIN CAPITAL LETTER O WITH TILDE<br/>
+<TR><td>D6</td><td>00D6</td></TR>LATIN CAPITAL LETTER O WITH DIAERESIS<br/>
+<TR><td>D7</td><td>00D7</td></TR>MULTIPLICATION SIGN<br/>
+<TR><td>D8</td><td>00D8</td></TR>LATIN CAPITAL LETTER O WITH STROKE<br/>
+<TR><td>D9</td><td>00D9</td></TR>LATIN CAPITAL LETTER U WITH GRAVE<br/>
+<TR><td>DA</td><td>00DA</td></TR>LATIN CAPITAL LETTER U WITH ACUTE<br/>
+<TR><td>DB</td><td>00DB</td></TR>LATIN CAPITAL LETTER U WITH CIRCUMFLEX<br/>
+<TR><td>DC</td><td>00DC</td></TR>LATIN CAPITAL LETTER U WITH DIAERESIS<br/>
+<TR><td>DD</td><td>0130</td></TR>LATIN CAPITAL LETTER I WITH DOT ABOVE<br/>
+<TR><td>DE</td><td>015E</td></TR>LATIN CAPITAL LETTER S WITH CEDILLA<br/>
+<TR><td>DF</td><td>00DF</td></TR>LATIN SMALL LETTER SHARP S<br/>
+<TR><td>E0</td><td>00E0</td></TR>LATIN SMALL LETTER A WITH GRAVE<br/>
+<TR><td>E1</td><td>00E1</td></TR>LATIN SMALL LETTER A WITH ACUTE<br/>
+<TR><td>E2</td><td>00E2</td></TR>LATIN SMALL LETTER A WITH CIRCUMFLEX<br/>
+<TR><td>E3</td><td>00E3</td></TR>LATIN SMALL LETTER A WITH TILDE<br/>
+<TR><td>E4</td><td>00E4</td></TR>LATIN SMALL LETTER A WITH DIAERESIS<br/>
+<TR><td>E5</td><td>00E5</td></TR>LATIN SMALL LETTER A WITH RING ABOVE<br/>
+<TR><td>E6</td><td>00E6</td></TR>LATIN SMALL LETTER AE<br/>
+<TR><td>E7</td><td>00E7</td></TR>LATIN SMALL LETTER C WITH CEDILLA<br/>
+<TR><td>E8</td><td>00E8</td></TR>LATIN SMALL LETTER E WITH GRAVE<br/>
+<TR><td>E9</td><td>00E9</td></TR>LATIN SMALL LETTER E WITH ACUTE<br/>
+<TR><td>EA</td><td>00EA</td></TR>LATIN SMALL LETTER E WITH CIRCUMFLEX<br/>
+<TR><td>EB</td><td>00EB</td></TR>LATIN SMALL LETTER E WITH DIAERESIS<br/>
+<TR><td>EC</td><td>00EC</td></TR>LATIN SMALL LETTER I WITH GRAVE<br/>
+<TR><td>ED</td><td>00ED</td></TR>LATIN SMALL LETTER I WITH ACUTE<br/>
+<TR><td>EE</td><td>00EE</td></TR>LATIN SMALL LETTER I WITH CIRCUMFLEX<br/>
+<TR><td>EF</td><td>00EF</td></TR>LATIN SMALL LETTER I WITH DIAERESIS<br/>
+<TR><td>F0</td><td>011F</td></TR>LATIN SMALL LETTER G WITH BREVE<br/>
+<TR><td>F1</td><td>00F1</td></TR>LATIN SMALL LETTER N WITH TILDE<br/>
+<TR><td>F2</td><td>00F2</td></TR>LATIN SMALL LETTER O WITH GRAVE<br/>
+<TR><td>F3</td><td>00F3</td></TR>LATIN SMALL LETTER O WITH ACUTE<br/>
+<TR><td>F4</td><td>00F4</td></TR>LATIN SMALL LETTER O WITH CIRCUMFLEX<br/>
+<TR><td>F5</td><td>00F5</td></TR>LATIN SMALL LETTER O WITH TILDE<br/>
+<TR><td>F6</td><td>00F6</td></TR>LATIN SMALL LETTER O WITH DIAERESIS<br/>
+<TR><td>F7</td><td>00F7</td></TR>DIVISION SIGN<br/>
+<TR><td>F8</td><td>00F8</td></TR>LATIN SMALL LETTER O WITH STROKE<br/>
+<TR><td>F9</td><td>00F9</td></TR>LATIN SMALL LETTER U WITH GRAVE<br/>
+<TR><td>FA</td><td>00FA</td></TR>LATIN SMALL LETTER U WITH ACUTE<br/>
+<TR><td>FB</td><td>00FB</td></TR>LATIN SMALL LETTER U WITH CIRCUMFLEX<br/>
+<TR><td>FC</td><td>00FC</td></TR>LATIN SMALL LETTER U WITH DIAERESIS<br/>
+<TR><td>FD</td><td>0131</td></TR>LATIN SMALL LETTER DOTLESS I<br/>
+<TR><td>FE</td><td>015F</td></TR>LATIN SMALL LETTER S WITH CEDILLA<br/>
+<TR><td>FF</td><td>00FF</td></TR>LATIN SMALL LETTER Y WITH DIAERESIS<br/>
+</TABLE>

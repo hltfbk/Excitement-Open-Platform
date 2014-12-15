@@ -1,0 +1,41 @@
+<!DOCTYPE concordancequery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+%common;
+
+<!ELEMENT concordancequery (xpath,search, info?, multiple?)>
+
+<!ATTLIST concordancequery
+	toolName CDATA #FIXED "Concordance"
+	number (y|n) #IMPLIED
+    source (y|n) #IMPLIED
+    path (y|n) #IMPLIED
+    special (y|n) #IMPLIED
+>
+<!ELEMENT xpath (#PCDATA|key+)>
+<!ATTLIST xpath
+    grammar_settings (true|false) #IMPLIED>
+
+<!ELEMENT search ((textQuery,tokenizer?,filter?)|(grammar,ElValues?,tokenizer?,filter?)|(sgrammar,rgrammar?)|(for,left?,right?))>
+<!ATTLIST search
+	type (grammar|xpath) #REQUIRED
+	grMode (simplified|normal|queries) #IMPLIED>
+<!ELEMENT sgrammar (#PCDATA)>
+<!ELEMENT rgrammar (#PCDATA)>
+<!ELEMENT for (#PCDATA)>
+<!ELEMENT left (#PCDATA)>
+<!ELEMENT right (#PCDATA)>
+
+<!ELEMENT tokenizer (#PCDATA)>
+<!ATTLIST tokenizer
+	norm (yes|no) "no">
+
+<!ELEMENT filter (#PCDATA)>
+<!ELEMENT ElValues (element,xpath)+>
+<!ELEMENT element (#PCDATA)>
+<!ELEMENT textQuery (#PCDATA)>
+<!ELEMENT grammar (#PCDATA)>
+
+<!ENTITY % keys SYSTEM 'key.dtd'>
+%keys;
+
+]>

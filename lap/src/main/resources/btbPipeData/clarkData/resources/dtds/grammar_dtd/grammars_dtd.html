@@ -1,0 +1,97 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body BGCOLOR="#FFFFCB">
+
+<p>This file contains a short description of the DTD used for saving/loading <em>Grammars</em>
+in <em>ClarkSystem</em>. There is one example XML document which represents the
+serialization of one <em>Grammar</em> from the system.</p>
+
+<p><b>&lt;!DOCTYPE Grammars [<br>
+</b><br>
+<b>&lt;!ELEMENT Grammars (grammar)+&gt;</b><br>
+<br>
+<b>&lt;!ELEMENT grammar (name,author?,Comment?,xpath?,tokenizer?,filter?,line+)&gt;</b>
+
+<ul>
+  <li><b>name - </b>The grammar name</li>
+  <li><b>author - </b>The grammar author</li>
+  <li><b>Comment - </b>User comment</li>
+  <li><b>xpath - </b>The grammar xpath</li>
+  <li><b>tokenizer - </b>The grammar tokenizer</li>
+  <li><b>filter - </b>The grammar filter</li>
+  <li><b>line - </b>The grammar rules</li>
+</ul>
+
+<p><b>&lt;!ATTLIST grammar<br>
+&nbsp;&nbsp;&nbsp; normalize (yes|no) &quot;no&quot;<br>
+match_body (long|short|any_up|any_down) &quot;long&quot;<br>
+&nbsp;&nbsp;&nbsp; match_left (long|short) &quot;long&quot;<br>
+&nbsp;&nbsp;&nbsp; match_right (long|short) &quot;long&quot;<br>
+&gt;</b><br>
+The attributes of the grammar represent the matches of the grammar and normalize option </p>
+
+<p><b>&lt;!ELEMENT name #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT author #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT tokenizer #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT filter #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT xpath #PCDATA&gt;</b><br>
+</p>
+
+<p><b>&lt;!ELEMENT line (LC?,RE,RC?,RM,Comment?)+&gt;</b><br>
+
+<ul>
+  <li><b>LC - </b>Left Regular Expression of grammar rule</li>
+  <li><b>RE - </b>Regular Expression of grammar rule</li>
+  <li><b>RC - </b>Right Regular Expression of grammar rule</li>
+  <li><b>RM - </b>Return match of grammar rule</li>
+  <li><b>Comment - </b>User comment on grammar rule</li>
+</ul>
+
+<p><b>&lt;!ELEMENT LC #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT RE #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT RC #PCDATA&gt;</b><br>
+<b>&lt;!ELEMENT RM #PCDATA&gt;</b><br>
+]&gt;</p>
+
+<p>Example : </p>
+
+<p>&lt;?xml version=&quot;1.0&quot;?&gt;<br>
+&lt;!-- This Document is created with the Clark System! http://www.bultreebank.org --&gt;<br>
+&lt;Grammars&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;grammar normalize=&quot;no&quot; match_left=&quot;long&quot;
+match_body=&quot;long&quot; match_right=&quot;long&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;name&gt;tag&lt;/name&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;author&gt;Clark System&lt;/author&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;tokenizer&gt;MixedWord&lt;/tokenizer&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;ElValues&gt;&lt;/ElValues&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LC&gt;&lt;/LC&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RE&gt;&amp;quot;quick&amp;quot;|&amp;quot;brown&amp;quot;&lt;/RE&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RC&gt;&lt;/RC&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RM&gt;&amp;lt;adj&amp;gt;\w&amp;lt;/adj&amp;gt;&lt;/RM&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Comment&gt;&lt;/Comment&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LC&gt;&lt;/LC&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RE&gt;&amp;quot;fox&amp;quot;&lt;/RE&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RC&gt;&lt;/RC&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RM&gt;&amp;lt;n&amp;gt;\w&amp;lt;/n&amp;gt;&lt;/RM&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Comment&gt;&lt;/Comment&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;line&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LC&gt;&lt;/LC&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RE&gt;&amp;quot;the&amp;quot;&lt;/RE&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RC&gt;&lt;/RC&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;RM&gt;&amp;lt;det&amp;gt;\w&amp;lt;/det&amp;gt;&lt;/RM&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;Comment&gt;&lt;/Comment&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/line&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/grammar&gt;<br>
+&lt;/Grammars&gt;</p>
+
+<p><img src="example.gif" width="758" height="296" alt="example.gif (22377 bytes)"></p>
+</body>
+</html>

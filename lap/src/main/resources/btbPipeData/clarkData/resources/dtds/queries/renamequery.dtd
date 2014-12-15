@@ -1,0 +1,11 @@
+<!DOCTYPE renamequery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+%common;
+
+<!ELEMENT renamequery (xpath, newTag, info?, multiple?)>
+<!ATTLIST removequery 
+	toolName CDATA #FIXED "Rename"
+>	
+<!ELEMENT xpath (#PCDATA)>	<!-- The XPath expression -->
+<!ELEMENT newTag (#PCDATA)>	<!-- The new tag name -->
+]>

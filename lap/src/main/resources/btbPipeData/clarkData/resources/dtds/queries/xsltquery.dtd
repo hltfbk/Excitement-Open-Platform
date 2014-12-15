@@ -1,0 +1,13 @@
+<!DOCTYPE xsltquery [
+
+<!ENTITY % common SYSTEM 'query.dtd'>
+%common;
+
+<!ELEMENT xsltquery (transformation?, xpath?, info?, multiple?)>
+<!ATTLIST xsltquery 
+	toolName CDATA #FIXED "XSLT"
+	local (y|n) "n"
+>	
+<!ELEMENT xpath (#PCDATA)>	
+<!ELEMENT transformation (#PCDATA)>	
+]>
