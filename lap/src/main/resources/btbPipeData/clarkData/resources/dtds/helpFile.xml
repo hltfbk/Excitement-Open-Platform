@@ -1,0 +1,9 @@
+<CLaRK_constraints_help>
+<comment>Some comments</comment>
+<pair><item>token1</item><descr>description 1</descr></pair>
+<pair><item>token2</item><descr>description 2</descr></pair>
+<pair><item>token3</item><descr>description 3</descr></pair>
+<pair><item>token4</item><descr>description 4</descr></pair>
+<pair><item>token5</item><descr>description 5</descr></pair>
+<pair><item>token6</item><descr>description 6</descr></pair>
+</CLaRK_constraints_help>

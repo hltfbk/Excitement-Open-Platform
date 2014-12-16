@@ -1,0 +1,17 @@
+<!DOCTYPE InsertSiblingQuery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+
+<!ELEMENT InsertSiblingQuery (xpath, siblingInfo, info?, multiple?)>
+<!ATTLIST InsertSiblingQuery
+	toolName CDATA #FIXED "InsertSibling"
+>
+<!ELEMENT xpath (#PCDATA)>	<!-- The XPath expression -->
+<!ELEMENT siblingInfo EMPTY>	<!-- The new sibling info info -->
+<!ATTLIST siblingInfo
+	type	(element|text)	"element"
+	data	CDATA	#REQUIRED
+	dir	(p|n)	"n"
+>
+
+%common;
+]>

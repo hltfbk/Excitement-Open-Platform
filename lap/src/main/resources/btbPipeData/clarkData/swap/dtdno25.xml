@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Document is created with the Clark System! http://www.bultreebank.org -->
+<CLaRK_document_dtd><dtdname>SearchEngineQuery.dtd</dtdname><doctype>Query</doctype><tokenizer>Default</tokenizer><dtd>&lt;!ELEMENT and (field|and|or)+|(arg|and|or)+&gt;
+&lt;!ELEMENT arg EMPTY&gt;
+&lt;!ATTLIST arg
+	included	(y|n)	&quot;y&quot;
+	literalV	CDATA	#REQUIRED
+	pOp	(similarSpelling|none)	&quot;none&quot;
+&gt;
+&lt;!ELEMENT context (context|field|and|or)+&gt;
+&lt;!ATTLIST context
+	value	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT field (arg|and|or|range)+&gt;
+&lt;!ATTLIST field
+	searchBy	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT or (field|and|or)+|(arg|and|or)+&gt;
+&lt;!ELEMENT Query (context|field|and|or)+&gt;
+&lt;!ATTLIST Query
+	lang	CDATA	&quot;en&quot;
+	name	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT range EMPTY&gt;
+&lt;!ATTLIST range
+	maxLiteralV	CDATA	#REQUIRED
+	minLiteralV	CDATA	#REQUIRED
+&gt;
+</dtd><CLaRK_document_layout offsets="n" spaces="4"><tagLine children="y" closeEnd="n" closeStart="n" name="and" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="arg" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="context" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="field" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="or" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Query" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="range" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Unknown*" openEnd="n" openStart="n" tag="y"></tagLine></CLaRK_document_layout><CLaRK_document_element_features tokenizer="Default"></CLaRK_document_element_features><CLaRK_document_attribute_features></CLaRK_document_attribute_features></CLaRK_document_dtd>

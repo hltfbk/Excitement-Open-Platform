@@ -1,0 +1,22 @@
+<!-- iso-amso.ent produced by Norman Walsh for the XML version of DocBook -->
+
+
+name = ang "&#x2220;" <!-- ANGLE -->
+name = angmsd "&#x2221;" <!-- MEASURED ANGLE -->
+name = beth "&#x2136;" <!-- BET SYMBOL -->
+name = bprime "&#x2035;" <!-- REVERSED PRIME -->
+name = comp "&#x2201;" <!-- COMPLEMENT -->
+name = daleth "&#x2138;" <!-- DALET SYMBOL -->
+name = ell "&#x2113;" <!-- SCRIPT SMALL L -->
+name = empty "&#xE2D3;" <!--  -->
+name = gimel "&#x2137;" <!-- GIMEL SYMBOL -->
+name = image "&#x2111;" <!-- BLACK-LETTER CAPITAL I -->
+name = inodot "&#x0131;" <!-- LATIN SMALL LETTER DOTLESS I -->
+<!--     jnodot Unknown unicode character -->
+name = nexist "&#x2204;" <!-- THERE DOES NOT EXIST -->
+name = oS "&#xE41D;" <!--  -->
+name = planck "&#x210F;" <!-- PLANCK CONSTANT OVER TWO PI -->
+name = real "&#x211C;" <!-- BLACK-LETTER CAPITAL R -->
+name = sbsol "&#xFE68;" <!-- SMALL REVERSE SOLIDUS -->
+<!--     vprime Unknown unicode character -->
+name = weierp "&#x2118;" <!-- SCRIPT CAPITAL P -->

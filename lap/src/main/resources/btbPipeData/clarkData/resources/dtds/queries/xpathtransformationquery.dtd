@@ -1,0 +1,37 @@
+<!DOCTYPE XPathTransformationquery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+%common;
+
+
+<!ELEMENT  XPathTransformationquery (tmode,target,source,multiple?)>
+<!ATTLIST XPathTransformationquery
+	toolName CDATA #FIXED "XPathTransformation"
+>
+<!ELEMENT tmode (#PCDATA)>
+
+<!ELEMENT  target (xpath)>
+<!ELEMENT  xpath (#PCDATA)>
+<!ATTLIST target 
+	as (0|1|2|3) #REQUIRED
+	at CDATA #IMPLIED
+	relative (true|false|disable) #REQUIRED>
+
+
+
+<!ELEMENT  source (xpath,Documents?)>
+<!ATTLIST  source 
+	   NodeToNode (AllToEach|EachToEach|disable) #REQUIRED
+	   Equals (true|false|disable) #REQUIRED
+	   Operation (Copy|Move|disable) #REQUIRED
+	   IncludeSubTree (true|false|disable) #REQUIRED
+	   Xml (true|false|disable) #REQUIRED>
+<!ELEMENT Documents (file*)>
+<!ELEMENT file EMPTY>
+<!ATTLIST file 
+	  source CDATA #REQUIRED
+	  target CDATA #REQUIRED>
+
+]>
+
+
+

@@ -1,0 +1,60 @@
+<TABLE>
+<TR><td>A0</td><td>00A0</td></TR>NO-BREAK SPACE<br/>
+<TR><td>A2</td><td>00A2</td></TR>CENT SIGN<br/>
+<TR><td>A3</td><td>00A3</td></TR>POUND SIGN<br/>
+<TR><td>A4</td><td>00A4</td></TR>CURRENCY SIGN<br/>
+<TR><td>A5</td><td>00A5</td></TR>YEN SIGN<br/>
+<TR><td>A6</td><td>00A6</td></TR>BROKEN BAR<br/>
+<TR><td>A7</td><td>00A7</td></TR>SECTION SIGN<br/>
+<TR><td>A8</td><td>00A8</td></TR>DIAERESIS<br/>
+<TR><td>A9</td><td>00A9</td></TR>COPYRIGHT SIGN<br/>
+<TR><td>AA</td><td>00D7</td></TR>MULTIPLICATION SIGN<br/>
+<TR><td>AB</td><td>00AB</td></TR>LEFT-POINTING DOUBLE ANGLE QUOTATION MARK<br/>
+<TR><td>AC</td><td>00AC</td></TR>NOT SIGN<br/>
+<TR><td>AD</td><td>00AD</td></TR>SOFT HYPHEN<br/>
+<TR><td>AE</td><td>00AE</td></TR>REGISTERED SIGN<br/>
+<TR><td>AF</td><td>203E</td></TR>OVERLINE<br/>
+<TR><td>B0</td><td>00B0</td></TR>DEGREE SIGN<br/>
+<TR><td>B1</td><td>00B1</td></TR>PLUS-MINUS SIGN<br/>
+<TR><td>B2</td><td>00B2</td></TR>SUPERSCRIPT TWO<br/>
+<TR><td>B3</td><td>00B3</td></TR>SUPERSCRIPT THREE<br/>
+<TR><td>B4</td><td>00B4</td></TR>ACUTE ACCENT<br/>
+<TR><td>B5</td><td>00B5</td></TR>MICRO SIGN<br/>
+<TR><td>B6</td><td>00B6</td></TR>PILCROW SIGN<br/>
+<TR><td>B7</td><td>00B7</td></TR>MIDDLE DOT<br/>
+<TR><td>B8</td><td>00B8</td></TR>CEDILLA<br/>
+<TR><td>B9</td><td>00B9</td></TR>SUPERSCRIPT ONE<br/>
+<TR><td>BA</td><td>00F7</td></TR>DIVISION SIGN<br/>
+<TR><td>BB</td><td>00BB</td></TR>RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK<br/>
+<TR><td>BC</td><td>00BC</td></TR>VULGAR FRACTION ONE QUARTER<br/>
+<TR><td>BD</td><td>00BD</td></TR>VULGAR FRACTION ONE HALF<br/>
+<TR><td>BE</td><td>00BE</td></TR>VULGAR FRACTION THREE QUARTERS<br/>
+<TR><td>DF</td><td>2017</td></TR>DOUBLE LOW LINE<br/>
+<TR><td>E0</td><td>05D0</td></TR>HEBREW LETTER ALEF<br/>
+<TR><td>E1</td><td>05D1</td></TR>HEBREW LETTER BET<br/>
+<TR><td>E2</td><td>05D2</td></TR>HEBREW LETTER GIMEL<br/>
+<TR><td>E3</td><td>05D3</td></TR>HEBREW LETTER DALET<br/>
+<TR><td>E4</td><td>05D4</td></TR>HEBREW LETTER HE<br/>
+<TR><td>E5</td><td>05D5</td></TR>HEBREW LETTER VAV<br/>
+<TR><td>E6</td><td>05D6</td></TR>HEBREW LETTER ZAYIN<br/>
+<TR><td>E7</td><td>05D7</td></TR>HEBREW LETTER HET<br/>
+<TR><td>E8</td><td>05D8</td></TR>HEBREW LETTER TET<br/>
+<TR><td>E9</td><td>05D9</td></TR>HEBREW LETTER YOD<br/>
+<TR><td>EA</td><td>05DA</td></TR>HEBREW LETTER FINAL KAF<br/>
+<TR><td>EB</td><td>05DB</td></TR>HEBREW LETTER KAF<br/>
+<TR><td>EC</td><td>05DC</td></TR>HEBREW LETTER LAMED<br/>
+<TR><td>ED</td><td>05DD</td></TR>HEBREW LETTER FINAL MEM<br/>
+<TR><td>EE</td><td>05DE</td></TR>HEBREW LETTER MEM<br/>
+<TR><td>EF</td><td>05DF</td></TR>HEBREW LETTER FINAL NUN<br/>
+<TR><td>F0</td><td>05E0</td></TR>HEBREW LETTER NUN<br/>
+<TR><td>F1</td><td>05E1</td></TR>HEBREW LETTER SAMEKH<br/>
+<TR><td>F2</td><td>05E2</td></TR>HEBREW LETTER AYIN<br/>
+<TR><td>F3</td><td>05E3</td></TR>HEBREW LETTER FINAL PE<br/>
+<TR><td>F4</td><td>05E4</td></TR>HEBREW LETTER PE<br/>
+<TR><td>F5</td><td>05E5</td></TR>HEBREW LETTER FINAL TSADI<br/>
+<TR><td>F6</td><td>05E6</td></TR>HEBREW LETTER TSADI<br/>
+<TR><td>F7</td><td>05E7</td></TR>HEBREW LETTER QOF<br/>
+<TR><td>F8</td><td>05E8</td></TR>HEBREW LETTER RESH<br/>
+<TR><td>F9</td><td>05E9</td></TR>HEBREW LETTER SHIN<br/>
+<TR><td>FA</td><td>05EA</td></TR>HEBREW LETTER TAV<br/>
+</TABLE>

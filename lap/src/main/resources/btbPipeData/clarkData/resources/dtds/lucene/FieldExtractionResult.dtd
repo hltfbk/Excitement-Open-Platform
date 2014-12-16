@@ -1,0 +1,12 @@
+<!DOCTYPE FieldContentResult [
+<!ELEMENT field EMPTY>
+<!ATTLIST field
+	id	CDATA	#REQUIRED
+	content	CDATA	#REQUIRED
+>
+<!ELEMENT FieldContentResult field*>
+<!ATTLIST FieldContentResult
+	field	CDATA	#REQUIRED
+	docID	CDATA	#REQUIRED
+>
+]>

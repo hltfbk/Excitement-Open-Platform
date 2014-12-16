@@ -1,0 +1,20 @@
+<CLaRK_value_constraints>
+	<constraint active="y" showBefore="y" showAfter="n" type="some_attributes">
+		<name>my constraint name</name>
+		<descr>my free text description</descr>
+		<targetTag>constraint</targetTag>
+		<targetAttr>type</targetAttr>
+		<targetRestr>not(child::*)</targetRestr>
+		<tokenizer>MixedWord</tokenizer>
+		<source type="external_doc">/book/isbn</source>
+		<externalDoc>Xtest2.XML</externalDoc>
+		<helpDoc>helpFile.xml</helpDoc>
+	</constraint>
+	<constraint showBefore="n" showAfter="n" type="parent">
+		<name>my parent constraint name</name>
+		<descr>my free text description(optional)</descr>
+		<targetTag>filter</targetTag>
+		<targetRestr>not(parent::constraint)</targetRestr>
+		<source type="xml_data">&lt;constraint/&gt;&lt;comment/&gt;</source>
+	</constraint>
+</CLaRK_value_constraints>

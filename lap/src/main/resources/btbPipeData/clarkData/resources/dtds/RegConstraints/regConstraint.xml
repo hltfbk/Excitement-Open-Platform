@@ -1,0 +1,14 @@
+<CLaRK_reg_constraints>
+	<regConstraint>
+		<name>reg constraint name 1</name>
+		<regExpr>&lt;a&gt;,&lt;b&gt;?,&lt;c&gt;+</regExpr>
+		<tokenizer>MixedWord</tokenizer>
+		<defaultXPath>/child::para</defaultXPath>
+	</regConstraint>
+	<regConstraint>
+		<name>reg constraint name 2</name>
+		<regExpr>$NUMBER+,$SPACE*</regExpr>
+		<tokenizer>Default</tokenizer>
+		<defaultXPath>//pages</defaultXPath>
+	</regConstraint>
+</CLaRK_reg_constraints>
