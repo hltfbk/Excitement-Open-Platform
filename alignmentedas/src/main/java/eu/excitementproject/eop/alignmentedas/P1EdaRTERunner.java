@@ -16,7 +16,6 @@ import eu.excitementproject.eop.alignmentedas.p1eda.instances.SimpleWordCoverage
 import eu.excitementproject.eop.alignmentedas.p1eda.instances.SimpleWordCoverageEN;
 import eu.excitementproject.eop.alignmentedas.p1eda.instances.SimpleWordCoverageIT;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.FNR_EN;
-import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WNVOMT;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithVO;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.WithoutVO;
 import eu.excitementproject.eop.alignmentedas.p1eda.sandbox.DEWithoutDerivBase;
@@ -46,15 +45,13 @@ public class P1EdaRTERunner
     	{	
     		// Prepare LAP and EDA (here, both for English) and eval on RTE3 (again, EN)  
     		LAP_ImplBase lapEN = new TreeTaggerEN(); 
-//   		P1EDATemplate p1edaEN = new SimpleWordCoverageEN(); // Put your (configured, instance) P1EDA here... 
-    		P1EDATemplate p1edaEN = new FNR_EN(); // Put your (configured, instance) P1EDA here... 
-
+    		P1EDATemplate p1edaEN = new SimpleWordCoverageEN("../core/src/main/resources/ontologies/EnglishWordNet-dict","../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"); // Put your (configured, instance) P1EDA here... 
     		evaluateOnRTE3EN(lapEN, p1edaEN, false);  // set final argument true, if lap has not been changed from last call. (to reuse saved XMI files) 
     		
     		// use evaluateOnRTE3DE for German 
 //    		LAP_ImplBase lapDE = new TreeTaggerDE(); 
-////    		P1EDATemplate p1edaDE = new SimpleWordCoverageDE(); 
-//    		P1EDATemplate p1edaDE = new DEWithoutDerivBase(); 
+//    		P1EDATemplate p1edaDE = new SimpleWordCoverageDE(); 
+////   		P1EDATemplate p1edaDE = new DEWithoutDerivBase(); 
 //    		evaluateOnRTE3DE(lapDE, p1edaDE, false); 
     		
     		// use evaluateOnRTE3IT for Italian 

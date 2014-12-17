@@ -47,13 +47,21 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 @SuppressWarnings("unused")
 public class SimpleWordCoverageEN extends P1EDATemplate {
 
-	public SimpleWordCoverageEN() throws EDAException
+	/**
+	 * The constructor for this P1EDA instance. 
+	 * This instance uses WordNet, VerbOcean, and Meteor Paraphrase resources and 
+	 * utilize them to get (semantic) coverage of Hypothesis by Text elements. 
+	 * 
+	 * @param wordNetPath
+	 * @throws EDAException
+	 */
+	public SimpleWordCoverageEN(String wordNetDirPath, String verbOceanFilePath) throws EDAException
 	{	
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-			aligner3 = new WordNetENLinker();  
-			aligner4 = new VerbOceanENLinker(); 
+			aligner3 = new WordNetENLinker(wordNetDirPath);  
+			aligner4 = new VerbOceanENLinker(verbOceanFilePath); 
 		}
 		catch (AlignmentComponentException ae)
 		{

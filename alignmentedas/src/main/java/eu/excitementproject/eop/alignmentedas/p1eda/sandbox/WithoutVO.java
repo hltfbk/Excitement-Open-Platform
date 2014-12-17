@@ -34,6 +34,14 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLem
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerDE;
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
+/**
+ * An instance of word-coverage based English P1EDA instance. 
+ * It uses Meteor, and without VerbOcean 
+ * 
+ * @author Tae-Gil Noh
+ *
+ */
+
 @SuppressWarnings("unused")
 public class WithoutVO extends P1EDATemplate {
 

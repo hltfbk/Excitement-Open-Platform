@@ -28,16 +28,28 @@ import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAlig
  */
 public class VerbOceanENLinker implements AlignmentComponent {
 
+//	/**
+//	 * 
+//	 * Default constructor with no param. Will initiated VerbOcean with default params 
+//	 * note that this won't work when you use EOP as library. 
+//	 * In such a case, use the other constructor (with path, and allowed relation type) 
+//	 * 
+//	 */
+//	public VerbOceanENLinker() throws AlignmentComponentException
+//	{
+//		this(new File(verbOceanDefaultPath), defaultRelations); 
+//	}
+	
 	/**
+	 * Convenient constructor with pre-set "default relations" 
+	 * This constructor requires only one argument, the path to VerbOcean 
 	 * 
-	 * Default constructor with no param. Will initiated VerbOcean with default params 
-	 * note that this won't work when you use EOP as library. 
-	 * In such a case, use the other constructor (with path, and allowed relation type) 
-	 * 
+	 * @param verbOceanPath needs to point to txt file path of VerbOcean. (e.g. verbocean.unrefined.2004-05-20.txt)
 	 */
-	public VerbOceanENLinker() throws AlignmentComponentException
+	public VerbOceanENLinker(String verbOceanPath) throws AlignmentComponentException
 	{
-		this(new File(verbOceanDefaultPath), defaultRelations); 
+		//this(new File(verbOceanDefaultPath), defaultRelations); 
+		this(new File(verbOceanPath), defaultRelations); 
 	}
 	
 	
@@ -59,9 +71,7 @@ public class VerbOceanENLinker implements AlignmentComponent {
 		catch (LexicalResourceException e)
 		{
 			throw new AlignmentComponentException ("Underlying resource thrown an exception: " + e.getMessage(), e); 
-		}
-		
-		
+		}		
 	}
 	
 	public void annotate(JCas aJCas) throws AlignmentComponentException
@@ -71,10 +81,12 @@ public class VerbOceanENLinker implements AlignmentComponent {
 	
 	// private variable 
 	private final LexicalAlignerFromLexicalResource worker; 
-	
-	// const, default values. Woudln't work when within Jar!  
-	private static final String verbOceanDefaultPath = "../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"; 
+
+	// default relations (of entailment) 
 	private static final HashSet<RelationType> defaultRelations = new HashSet<RelationType>(Arrays.asList(RelationType.STRONGER_THAN)); 
+
+	// const, default values. Woudln't work when within Jar!  
+	//private static final String verbOceanDefaultPath = "../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"; 
 
 
 	public String getComponentName()
