@@ -1,5 +1,6 @@
 /**
- * 
+ * WARNING: a work in progress (basically, P1EDA + confidence model + its training) 
+ * DO NOT USE this code. 
  */
 package eu.excitementproject.eop.alignmentedas.p1eda;
 
@@ -86,7 +87,7 @@ import static eu.excitementproject.eop.lap.PlatformCASProber.probeCas;
  * @author Tae-Gil Noh
  *
  */
-public abstract class P1EDAFullTemplate implements EDABasic<TEDecisionWithAlignment> {
+public abstract class P2EDATemplate implements EDABasic<TEDecisionWithAlignment> {
 	
 	/**
 	 * The default, no argument constructor for this abstract class. Does nothing 
@@ -100,7 +101,7 @@ public abstract class P1EDAFullTemplate implements EDABasic<TEDecisionWithAlignm
 	 * For example, see SimpleWordCoverageP1EDA. 
 	 * 
 	 */
-	public P1EDAFullTemplate() throws EDAException 
+	public P2EDATemplate() throws EDAException 
 	{
 		this(null); 
 	}
@@ -122,7 +123,7 @@ public abstract class P1EDAFullTemplate implements EDABasic<TEDecisionWithAlignm
 	 * @param evaluateAlignmentParameter
 	 * @throws EDAException
 	 */
-	public P1EDAFullTemplate(Vector<ParameterValue> evaluateAlignmentParameter) throws EDAException
+	public P2EDATemplate(Vector<ParameterValue> evaluateAlignmentParameter) throws EDAException
 	{
 		this.logger = Logger.getLogger(getClass()); 
 		this.classifier = prepareClassifier();  

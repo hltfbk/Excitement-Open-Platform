@@ -35,8 +35,9 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 /**
+ * This is an instance of P1EDA (internal code name for alignment EDA in EOP code base). 
  * 
- * 
+ * This instance uses word-level coverage of the Hypothesis with various aligners
  * 
  * (On this simple coverage setup, best was with all four aligners, with three features (without verb coverage ratio) 
  * on RTE3: 66.75) (or 67.0 with older lexical linker --- some check needed why faster alinger gets less links) 
@@ -46,13 +47,22 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 @SuppressWarnings("unused")
 public class SimpleWordCoverageEN extends P1EDATemplate {
 
-	public SimpleWordCoverageEN() throws EDAException
+	/**
+	 * The constructor for this P1EDA instance. 
+	 * This instance uses WordNet, VerbOcean, and Meteor Paraphrase resources and 
+	 * utilize them to get (semantic) coverage of Hypothesis by Text elements. 
+	 * 
+	 * @param wordNetDirPath path to WordNet directory. 
+	 * @param verbOceanFilePath path to the VerbOcean text file 
+	 * @throws EDAException
+	 */
+	public SimpleWordCoverageEN(String wordNetDirPath, String verbOceanFilePath) throws EDAException
 	{	
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-			aligner3 = new WordNetENLinker();  
-			aligner4 = new VerbOceanENLinker(); 
+			aligner3 = new WordNetENLinker(wordNetDirPath);  
+			aligner4 = new VerbOceanENLinker(verbOceanFilePath); 
 		}
 		catch (AlignmentComponentException ae)
 		{

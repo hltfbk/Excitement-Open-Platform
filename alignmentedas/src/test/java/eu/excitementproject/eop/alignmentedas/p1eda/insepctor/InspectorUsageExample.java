@@ -45,7 +45,7 @@ public class InspectorUsageExample {
 		try {
 			// prepare lap and eda
 			theLap = new TreeTaggerEN(); // TreeTagger pipeline 
-			theEda = new SimpleWordCoverageEN();
+			theEda = new SimpleWordCoverageEN("../core/src/main/resources/ontologies/EnglishWordNet-dict", "../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt");
 			theEda.initialize(new File("./src/test/resources/swc_en.cmodel"));  // init a pre-trained model from RTE3 English train 
 		}
 		catch(Exception e)

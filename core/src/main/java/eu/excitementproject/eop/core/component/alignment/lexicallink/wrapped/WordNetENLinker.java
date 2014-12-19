@@ -25,23 +25,26 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelatio
  */
 public class WordNetENLinker implements AlignmentComponent {
 	
-	/**
-	 * Note that, default WordNet path requires EOP source (refers to /resource as file path) 
-	 * 
-	 * So, please note that this default constructor *will not* work when you use 
-	 * EOP as a library (in Jar). This default constructor is provided for 
-	 * convenience of EOP code developers who runs their experiment with EOP sources.
-	 * 
-	 * If you are using EOP as library; use WordNetENLinker(path) constructor. 
-	 * @throws AlignmentComponentException
-	 */
-	public WordNetENLinker() throws AlignmentComponentException
-	{
-		this(defaultWNPath); 
-	}
+//	/**
+//	 * Note that, default WordNet path requires EOP source (refers to /resource as file path) 
+//	 * 
+//	 * So, please note that this default constructor *will not* work when you use 
+//	 * EOP as a library (in Jar). This default constructor is provided for 
+//	 * convenience of EOP code developers who runs their experiment with EOP sources.
+//	 * 
+//	 * If you are using EOP as library; use WordNetENLinker(path) constructor. 
+//	 * @throws AlignmentComponentException
+//	 */
+//	public WordNetENLinker() throws AlignmentComponentException
+//	{
+//		this(defaultWNPath); 
+//	}
 	
 	/**
-	 * @param wordNetPath
+	 * This is a convenient constructor that uses known "default relation" (for Entailment)
+	 * to formalize an aligner based on WordNet. The constructor requires one argument --- path to WordNet directory.  
+	 * 
+	 * @param wordNetPath needs to point WordNet directory (that holds indexes and data files) 
 	 * @throws AlignmentComponentException
 	 */
 	public WordNetENLinker(String wordNetPath) throws AlignmentComponentException
@@ -98,7 +101,7 @@ public class WordNetENLinker implements AlignmentComponent {
 	
 	// Default path. Note that this path won't work when EOP is in Jar. 
 	// The default path is only provided as convenience of using within development process. 
-	private static final String defaultWNPath = "../core/src/main/resources/ontologies/EnglishWordNet-dict"; 
+	// private static final String defaultWNPath = "../core/src/main/resources/ontologies/EnglishWordNet-dict"; 
 	
 	// Default "Relation". 
 	private static final WordNetRelation[] defaultEntailingRelations = new WordNetRelation[] { WordNetRelation.SYNONYM, WordNetRelation.DERIVATIONALLY_RELATED, WordNetRelation.HYPERNYM, WordNetRelation.INSTANCE_HYPERNYM, WordNetRelation.MEMBER_HOLONYM, WordNetRelation.PART_HOLONYM, WordNetRelation.ENTAILMENT, WordNetRelation.SUBSTANCE_MERONYM }; 

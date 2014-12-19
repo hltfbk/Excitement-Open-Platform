@@ -48,7 +48,7 @@ public class VerbOceanENLinkTest {
 			// prepare the alinger 
 			//AlignmentComponent wnLinker = new WordNetENLinker("src/main/resources/ontologies/EnglishWordNet-dict");
 			//AlignmentComponent voLinker = new VerbOceanENLinker("src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"); 
-			AlignmentComponent voLinker = new VerbOceanENLinker(); 
+			AlignmentComponent voLinker = new VerbOceanENLinker("../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"); 
 		
 			
 			String t1 = "Kennedy was killed in Dallas";
