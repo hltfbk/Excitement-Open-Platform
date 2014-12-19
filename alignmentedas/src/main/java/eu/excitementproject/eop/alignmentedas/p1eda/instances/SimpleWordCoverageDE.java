@@ -38,9 +38,11 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 /**
- * A simple German EDA instance based on three basic (language independent) feature extractors. 
+ * This is an instance of P1EDA (internal code name for alignment EDA in EOP code base)
+ * for German. 
  * 
- * On this setup, the best value was 64.5% accuracy with the following two alingers.
+ * This instance uses word-level coverage of the Hypothesis with various aligners. 
+ * On this setup, the best value was 64.375% accuracy with the following two alingers.
  * (identical lemma + GermaNet) 
  * 
  * @author Tae-Gil Noh
@@ -49,7 +51,14 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 @SuppressWarnings("unused")
 public class SimpleWordCoverageDE extends P1EDATemplate {
 
-	public SimpleWordCoverageDE() throws EDAException
+	/**
+	 * The constructor for this P1EDA instance. 
+	 * This instance uses GermaNet, and requires the path to GermaNet 
+	 * 
+	 * @param germaNetDirPath the path to GermaNet directory (for example, .../germanet-8.0/GN_V80_XML/) 
+	 * @throws EDAException
+	 */
+	public SimpleWordCoverageDE(String germaNetDirPath) throws EDAException
 	{	
 		// And let's prepare the aligner instances and scoring components... 
 		try {
@@ -57,7 +66,7 @@ public class SimpleWordCoverageDE extends P1EDATemplate {
 			meteorParaphraseLinker = new MeteorPhraseLinkerDE(); 
 			derivBaseLinker = new DerivBaseDELinker(); 
 			distSimLinker = new GermanTransDMDELinker();
-			germaNetLinker = new GermaNetDELinker("/Users/tailblues/germanet-8.0/GN_V80_XML/"); // please provide correct path for GermaNet!! 
+			germaNetLinker = new GermaNetDELinker(germaNetDirPath); // please provide correct path for GermaNet!! 
 																								// see GermaNetDELinker for detail ... 
 		}
 		catch (AlignmentComponentException ae)
@@ -161,15 +170,6 @@ public class SimpleWordCoverageDE extends P1EDATemplate {
 	{
 		try {
 			return new EDABinaryClassifierFromWeka(new Logistic(), null); 
-			// you can use other classifiers from Weka, such as ... 
-			//return new EDABinaryClassifierFromWeka(new NaiveBayes(), null); 
-			//return new EDABinaryClassifierFromWeka(new VotedPerceptron(), null); 
-			//return new EDABinaryClassifierFromWeka(new J48(), null); 
-			//return new EDABinaryClassifierFromWeka(new MultilayerPerceptron(), null); 
-			//return new EDABinaryClassifierFromWeka(new KStar(), null);
-			//return new EDABinaryClassifierFromWeka(new SimpleLogistic(), null); 
-			//return new EDABinaryClassifierFromWeka(new RandomForest(), null); 
-
 		}
 		catch (ClassifierException ce)
 		{

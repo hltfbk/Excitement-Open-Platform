@@ -52,7 +52,8 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 	 * This instance uses WordNet, VerbOcean, and Meteor Paraphrase resources and 
 	 * utilize them to get (semantic) coverage of Hypothesis by Text elements. 
 	 * 
-	 * @param wordNetPath
+	 * @param wordNetDirPath path to WordNet directory. 
+	 * @param verbOceanFilePath path to the VerbOcean text file 
 	 * @throws EDAException
 	 */
 	public SimpleWordCoverageEN(String wordNetDirPath, String verbOceanFilePath) throws EDAException
