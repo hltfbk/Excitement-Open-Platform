@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.TOP;
+import org.apache.uima.jcas.tcas.Annotation;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
@@ -155,6 +157,58 @@ public class LinkUtils {
 //		// TODO work on this once 
 //		return null; 
 //	}
+	
+	/** 
+	 * This utility method gets one list of Links, and one annotation type (any annotation), 
+	 * and returns those links that actually relates with the given annotation (e.g. holds that exact annotation 
+	 * within a target). 
+	 * 
+	 * @param fullList   a list of Links
+	 * @param annot      One annotation instance that is being focused. 
+	 * @param direction  Direction condition. (This can be null). If given, only links with target annotation & with this link direction will be fetched. If null, any direction will be accepted. (Note that, bidirectional links are compatible with both T2H and H2T, and will be always fetched. 
+	 * @return
+	 */
+	public static <T extends Annotation> List<Link> filterLinksWithTargetsIncluding(List<Link> fullList, T annot, Link.Direction direction)
+	{
+		List<Link> filteredList = new ArrayList<Link>(); 
+		
+		for (Link l : fullList)
+		{
+			Target tSideTarget = l.getTSideTarget(); 
+			Target hSideTarget = l.getHSideTarget(); 
+			
+			FSArray arr = null; 
+			arr = tSideTarget.getTargetAnnotations(); 
+			for (Annotation a : JCasUtil.select(arr, Annotation.class))
+			{
+				if (a == annot)
+				{
+					// direction check. 
+					// if direction is given, and not compatible, we pass this link. 
+					if ( (direction != null) && (l.getDirection() != direction) && (l.getDirection() != Link.Direction.Bidirection))
+						break; 
+					filteredList.add(l); 
+					break; 
+				}
+			}
+			
+			arr = hSideTarget.getTargetAnnotations(); 
+			for (Annotation a : JCasUtil.select(arr, Annotation.class))
+			{
+				if (a == annot)
+				{
+					// direction check. 
+					// if direction is given, and not compatible, we pass this link. 
+					if ( (direction != null) && (l.getDirection() != direction) && (l.getDirection() != Link.Direction.Bidirection))
+						break; 
+					filteredList.add(l); 
+					break; 
+				}
+			}			
+		}		
+		return filteredList; 
+	}
+
 	
 	/**
 	 * Utility class that is useful to see what surface level (token level) Links are added in the given CAS.

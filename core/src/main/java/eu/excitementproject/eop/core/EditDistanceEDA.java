@@ -760,10 +760,19 @@ public class EditDistanceEDA<T extends TEDecision>
 				
 		Collections.sort(newAnnotationList, new Comparator<Annotation>(){
 			 
-            public int compare(Annotation a1,  Annotation a2) {
+			public int compare(Annotation a1,  Annotation a2) {
+                return Double.compare(a1.getDistanceValue().getDistance(),
+                		a2.getDistanceValue().getDistance());
+			}
+			
+			/// This method can arise this exception: Comparison method violates its general contract!
+            // The reason is reported here: http://stackoverflow.com/questions/19182700/collections-sort-throws-comparison-method-violates-its-general-contract-excep
+            /*
+			public int compare(Annotation a1,  Annotation a2) {
                 return a1.getDistanceValue().getDistance() > a2.getDistanceValue().getDistance() ? 1 :
                 	a1.getDistanceValue().getDistance() == a2.getDistanceValue().getDistance() ? 0 : -1;
             }
+            */
   
         });
 		

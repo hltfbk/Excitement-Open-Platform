@@ -1,0 +1,11 @@
+<!DOCTYPE DTDIndex [
+
+<!ELEMENT DTDIndex (entry*)>
+
+<!ELEMENT entry EMPTY>
+<!ATTLIST entry
+	name CDATA #REQUIRED
+	doctype CDATA #REQUIRED
+	file CDATA #REQUIRED
+>
+]>

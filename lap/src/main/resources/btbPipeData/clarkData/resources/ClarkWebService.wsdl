@@ -1,0 +1,535 @@
+<wsdl:definitions xmlns:ns="http://webadapter.webinterface.clark" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://webadapter.webinterface.clark/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://webadapter.webinterface.clark"><wsdl:types><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://webadapter.webinterface.clark/xsd">
+<xs:element name="addDocumentFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="addDocumentFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDocument">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDocumentResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDocumentInCorpusFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="addDocumentInCorpusFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDocumentInCorpus">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDocumentInCorpusResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addQueryFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="addQueryFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addQuery">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addQueryResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="removeDTDFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="removeDTDFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="removeDTD">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="removeDTDResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="removeDocumentFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="removeDocumentFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="removeDocument">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="removeDocumentResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDTDFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="addDTDFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDTD">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="addDTDResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getDTDFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="getDTDFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getDTD">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getDTDResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getDocumentFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="getDocumentFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getDocument">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getDocumentResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getPreferenceFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="getPreferenceFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getPreference">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="getPreferenceResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performSavedQueryFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQuery">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryInOutFileFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performSavedQueryInOutFileFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryInOutFile">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryInOutFileResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryOnUnsavedDocSaveResultFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performSavedQueryOnUnsavedDocSaveResultFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryOnUnsavedDocSaveResult">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+<xs:element name="param3" nillable="true" type="xs:string" />
+<xs:element name="param4" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryOnUnsavedDocSaveResultResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performUnsavedQueryFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQuery">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryInOutFileFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performUnsavedQueryInOutFileFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryInOutFile">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryInOutFileResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryOnUnsavedDocSaveResultFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performUnsavedQueryOnUnsavedDocSaveResultFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryOnUnsavedDocSaveResult">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+<xs:element name="param3" nillable="true" type="xs:string" />
+<xs:element name="param4" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryOnUnsavedDocSaveResultResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listCorpusIDsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listDTDsFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="listDTDsFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listDTDsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listDocIDsFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="listDocIDsFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listDocIDsResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listDocIDsInCorpusFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="listDocIDsInCorpusFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listDocIDsInCorpusResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listQueriesFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="listQueriesFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listQueries">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listQueriesResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performQueryFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performQueryFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performQuery">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performQueryResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryOnUnsavedDocFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performSavedQueryOnUnsavedDocFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryOnUnsavedDoc">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+<xs:element name="param3" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryOnUnsavedDocResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryReturnResFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performSavedQueryReturnResFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryReturnRes">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performSavedQueryReturnResResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryOnUnsavedDocFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="performUnsavedQueryOnUnsavedDocFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryOnUnsavedDoc">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+<xs:element name="param2" nillable="true" type="xs:string" />
+<xs:element name="param3" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="performUnsavedQueryOnUnsavedDocResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listPreferencesFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="listPreferencesFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="listPreferencesResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xsd:StringArrType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:complexType name="StringArrType">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" name="return" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:element name="setPreferenceFault">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="setPreferenceFault" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="setPreference">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="param0" nillable="true" type="xs:string" />
+<xs:element name="param1" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema></wsdl:types><wsdl:message name="performSavedQueryMessage"><wsdl:part name="part1" element="xsd:performSavedQuery" /></wsdl:message><wsdl:message name="performSavedQueryResponseMessage"><wsdl:part name="part1" element="xsd:performSavedQueryResponse" /></wsdl:message><wsdl:message name="performSavedQueryFault"><wsdl:part name="part1" element="xsd:performSavedQueryFault" /></wsdl:message><wsdl:message name="performSavedQueryReturnResMessage"><wsdl:part name="part1" element="xsd:performSavedQueryReturnRes" /></wsdl:message><wsdl:message name="performSavedQueryReturnResResponseMessage"><wsdl:part name="part1" element="xsd:performSavedQueryReturnResResponse" /></wsdl:message><wsdl:message name="performSavedQueryReturnResFault"><wsdl:part name="part1" element="xsd:performSavedQueryReturnResFault" /></wsdl:message><wsdl:message name="performUnsavedQueryOnUnsavedDocMessage"><wsdl:part name="part1" element="xsd:performUnsavedQueryOnUnsavedDoc" /></wsdl:message><wsdl:message name="performUnsavedQueryOnUnsavedDocResponseMessage"><wsdl:part name="part1" element="xsd:performUnsavedQueryOnUnsavedDocResponse" /></wsdl:message><wsdl:message name="performUnsavedQueryOnUnsavedDocFault"><wsdl:part name="part1" element="xsd:performUnsavedQueryOnUnsavedDocFault" /></wsdl:message><wsdl:message name="listDocIDsMessage" /><wsdl:message name="listDocIDsResponseMessage"><wsdl:part name="part1" element="xsd:listDocIDsResponse" /></wsdl:message><wsdl:message name="listDocIDsFault"><wsdl:part name="part1" element="xsd:listDocIDsFault" /></wsdl:message><wsdl:message name="performSavedQueryOnUnsavedDocSaveResultMessage"><wsdl:part name="part1" element="xsd:performSavedQueryOnUnsavedDocSaveResult" /></wsdl:message><wsdl:message name="performSavedQueryOnUnsavedDocSaveResultResponseMessage"><wsdl:part name="part1" element="xsd:performSavedQueryOnUnsavedDocSaveResultResponse" /></wsdl:message><wsdl:message name="performSavedQueryOnUnsavedDocSaveResultFault"><wsdl:part name="part1" element="xsd:performSavedQueryOnUnsavedDocSaveResultFault" /></wsdl:message><wsdl:message name="getDocumentMessage"><wsdl:part name="part1" element="xsd:getDocument" /></wsdl:message><wsdl:message name="getDocumentResponseMessage"><wsdl:part name="part1" element="xsd:getDocumentResponse" /></wsdl:message><wsdl:message name="getDocumentFault"><wsdl:part name="part1" element="xsd:getDocumentFault" /></wsdl:message><wsdl:message name="getPreferenceMessage"><wsdl:part name="part1" element="xsd:getPreference" /></wsdl:message><wsdl:message name="getPreferenceResponseMessage"><wsdl:part name="part1" element="xsd:getPreferenceResponse" /></wsdl:message><wsdl:message name="getPreferenceFault"><wsdl:part name="part1" element="xsd:getPreferenceFault" /></wsdl:message><wsdl:message name="performUnsavedQueryOnUnsavedDocSaveResultMessage"><wsdl:part name="part1" element="xsd:performUnsavedQueryOnUnsavedDocSaveResult" /></wsdl:message><wsdl:message name="performUnsavedQueryOnUnsavedDocSaveResultResponseMessage"><wsdl:part name="part1" element="xsd:performUnsavedQueryOnUnsavedDocSaveResultResponse" /></wsdl:message><wsdl:message name="performUnsavedQueryOnUnsavedDocSaveResultFault"><wsdl:part name="part1" element="xsd:performUnsavedQueryOnUnsavedDocSaveResultFault" /></wsdl:message><wsdl:message name="getDTDMessage"><wsdl:part name="part1" element="xsd:getDTD" /></wsdl:message><wsdl:message name="getDTDResponseMessage"><wsdl:part name="part1" element="xsd:getDTDResponse" /></wsdl:message><wsdl:message name="getDTDFault"><wsdl:part name="part1" element="xsd:getDTDFault" /></wsdl:message><wsdl:message name="removeDocumentMessage"><wsdl:part name="part1" element="xsd:removeDocument" /></wsdl:message><wsdl:message name="removeDocumentResponseMessage"><wsdl:part name="part1" element="xsd:removeDocumentResponse" /></wsdl:message><wsdl:message name="removeDocumentFault"><wsdl:part name="part1" element="xsd:removeDocumentFault" /></wsdl:message><wsdl:message name="performQueryMessage"><wsdl:part name="part1" element="xsd:performQuery" /></wsdl:message><wsdl:message name="performQueryResponseMessage"><wsdl:part name="part1" element="xsd:performQueryResponse" /></wsdl:message><wsdl:message name="performQueryFault"><wsdl:part name="part1" element="xsd:performQueryFault" /></wsdl:message><wsdl:message name="addDocumentMessage"><wsdl:part name="part1" element="xsd:addDocument" /></wsdl:message><wsdl:message name="addDocumentResponseMessage"><wsdl:part name="part1" element="xsd:addDocumentResponse" /></wsdl:message><wsdl:message name="addDocumentFault"><wsdl:part name="part1" element="xsd:addDocumentFault" /></wsdl:message><wsdl:message name="listPreferencesMessage" /><wsdl:message name="listPreferencesResponseMessage"><wsdl:part name="part1" element="xsd:listPreferencesResponse" /></wsdl:message><wsdl:message name="listPreferencesFault"><wsdl:part name="part1" element="xsd:listPreferencesFault" /></wsdl:message><wsdl:message name="performSavedQueryOnUnsavedDocMessage"><wsdl:part name="part1" element="xsd:performSavedQueryOnUnsavedDoc" /></wsdl:message><wsdl:message name="performSavedQueryOnUnsavedDocResponseMessage"><wsdl:part name="part1" element="xsd:performSavedQueryOnUnsavedDocResponse" /></wsdl:message><wsdl:message name="performSavedQueryOnUnsavedDocFault"><wsdl:part name="part1" element="xsd:performSavedQueryOnUnsavedDocFault" /></wsdl:message><wsdl:message name="addDTDMessage"><wsdl:part name="part1" element="xsd:addDTD" /></wsdl:message><wsdl:message name="addDTDResponseMessage"><wsdl:part name="part1" element="xsd:addDTDResponse" /></wsdl:message><wsdl:message name="addDTDFault"><wsdl:part name="part1" element="xsd:addDTDFault" /></wsdl:message><wsdl:message name="addDocumentInCorpusMessage"><wsdl:part name="part1" element="xsd:addDocumentInCorpus" /></wsdl:message><wsdl:message name="addDocumentInCorpusResponseMessage"><wsdl:part name="part1" element="xsd:addDocumentInCorpusResponse" /></wsdl:message><wsdl:message name="addDocumentInCorpusFault"><wsdl:part name="part1" element="xsd:addDocumentInCorpusFault" /></wsdl:message><wsdl:message name="listQueriesMessage"><wsdl:part name="part1" element="xsd:listQueries" /></wsdl:message><wsdl:message name="listQueriesResponseMessage"><wsdl:part name="part1" element="xsd:listQueriesResponse" /></wsdl:message><wsdl:message name="listQueriesFault"><wsdl:part name="part1" element="xsd:listQueriesFault" /></wsdl:message><wsdl:message name="listDTDsMessage" /><wsdl:message name="listDTDsResponseMessage"><wsdl:part name="part1" element="xsd:listDTDsResponse" /></wsdl:message><wsdl:message name="listDTDsFault"><wsdl:part name="part1" element="xsd:listDTDsFault" /></wsdl:message><wsdl:message name="listDocIDsInCorpusMessage" /><wsdl:message name="listDocIDsInCorpusResponseMessage"><wsdl:part name="part1" element="xsd:listDocIDsInCorpusResponse" /></wsdl:message><wsdl:message name="listDocIDsInCorpusFault"><wsdl:part name="part1" element="xsd:listDocIDsInCorpusFault" /></wsdl:message><wsdl:message name="removeDTDMessage"><wsdl:part name="part1" element="xsd:removeDTD" /></wsdl:message><wsdl:message name="removeDTDResponseMessage"><wsdl:part name="part1" element="xsd:removeDTDResponse" /></wsdl:message><wsdl:message name="removeDTDFault"><wsdl:part name="part1" element="xsd:removeDTDFault" /></wsdl:message><wsdl:message name="performUnsavedQueryInOutFileMessage"><wsdl:part name="part1" element="xsd:performUnsavedQueryInOutFile" /></wsdl:message><wsdl:message name="performUnsavedQueryInOutFileResponseMessage"><wsdl:part name="part1" element="xsd:performUnsavedQueryInOutFileResponse" /></wsdl:message><wsdl:message name="performUnsavedQueryInOutFileFault"><wsdl:part name="part1" element="xsd:performUnsavedQueryInOutFileFault" /></wsdl:message><wsdl:message name="setPreferenceMessage"><wsdl:part name="part1" element="xsd:setPreference" /></wsdl:message><wsdl:message name="setPreferenceFault"><wsdl:part name="part1" element="xsd:setPreferenceFault" /></wsdl:message><wsdl:message name="addQueryMessage"><wsdl:part name="part1" element="xsd:addQuery" /></wsdl:message><wsdl:message name="addQueryResponseMessage"><wsdl:part name="part1" element="xsd:addQueryResponse" /></wsdl:message><wsdl:message name="addQueryFault"><wsdl:part name="part1" element="xsd:addQueryFault" /></wsdl:message><wsdl:message name="performUnsavedQueryMessage"><wsdl:part name="part1" element="xsd:performUnsavedQuery" /></wsdl:message><wsdl:message name="performUnsavedQueryResponseMessage"><wsdl:part name="part1" element="xsd:performUnsavedQueryResponse" /></wsdl:message><wsdl:message name="performUnsavedQueryFault"><wsdl:part name="part1" element="xsd:performUnsavedQueryFault" /></wsdl:message><wsdl:message name="performSavedQueryInOutFileMessage"><wsdl:part name="part1" element="xsd:performSavedQueryInOutFile" /></wsdl:message><wsdl:message name="performSavedQueryInOutFileResponseMessage"><wsdl:part name="part1" element="xsd:performSavedQueryInOutFileResponse" /></wsdl:message><wsdl:message name="performSavedQueryInOutFileFault"><wsdl:part name="part1" element="xsd:performSavedQueryInOutFileFault" /></wsdl:message><wsdl:message name="listCorpusIDsMessage" /><wsdl:message name="listCorpusIDsResponseMessage"><wsdl:part name="part1" element="xsd:listCorpusIDsResponse" /></wsdl:message><wsdl:portType name="ClarkWebServicePortType"><wsdl:operation name="performSavedQuery"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryMessage" wsaw:Action="urn:performSavedQuery" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryFault" name="performSavedQueryFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQuery/Fault/performSavedQueryFault" /></wsdl:operation><wsdl:operation name="performSavedQueryReturnRes"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryReturnResMessage" wsaw:Action="urn:performSavedQueryReturnRes" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryReturnResResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryReturnResResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryReturnResFault" name="performSavedQueryReturnResFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryReturnRes/Fault/performSavedQueryReturnResFault" /></wsdl:operation><wsdl:operation name="performUnsavedQueryOnUnsavedDoc"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryOnUnsavedDocMessage" wsaw:Action="urn:performUnsavedQueryOnUnsavedDoc" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryOnUnsavedDocResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQueryOnUnsavedDocResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryOnUnsavedDocFault" name="performUnsavedQueryOnUnsavedDocFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQueryOnUnsavedDoc/Fault/performUnsavedQueryOnUnsavedDocFault" /></wsdl:operation><wsdl:operation name="listDocIDs"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDocIDsMessage" wsaw:Action="urn:listDocIDs" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDocIDsResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listDocIDsResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDocIDsFault" name="listDocIDsFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listDocIDs/Fault/listDocIDsFault" /></wsdl:operation><wsdl:operation name="performSavedQueryOnUnsavedDocSaveResult"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryOnUnsavedDocSaveResultMessage" wsaw:Action="urn:performSavedQueryOnUnsavedDocSaveResult" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryOnUnsavedDocSaveResultResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryOnUnsavedDocSaveResultResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryOnUnsavedDocSaveResultFault" name="performSavedQueryOnUnsavedDocSaveResultFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryOnUnsavedDocSaveResult/Fault/performSavedQueryOnUnsavedDocSaveResultFault" /></wsdl:operation><wsdl:operation name="getDocument"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getDocumentMessage" wsaw:Action="urn:getDocument" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getDocumentResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/getDocumentResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getDocumentFault" name="getDocumentFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/getDocument/Fault/getDocumentFault" /></wsdl:operation><wsdl:operation name="getPreference"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getPreferenceMessage" wsaw:Action="urn:getPreference" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getPreferenceResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/getPreferenceResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getPreferenceFault" name="getPreferenceFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/getPreference/Fault/getPreferenceFault" /></wsdl:operation><wsdl:operation name="performUnsavedQueryOnUnsavedDocSaveResult"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryOnUnsavedDocSaveResultMessage" wsaw:Action="urn:performUnsavedQueryOnUnsavedDocSaveResult" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryOnUnsavedDocSaveResultResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQueryOnUnsavedDocSaveResultResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryOnUnsavedDocSaveResultFault" name="performUnsavedQueryOnUnsavedDocSaveResultFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQueryOnUnsavedDocSaveResult/Fault/performUnsavedQueryOnUnsavedDocSaveResultFault" /></wsdl:operation><wsdl:operation name="getDTD"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getDTDMessage" wsaw:Action="urn:getDTD" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getDTDResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/getDTDResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:getDTDFault" name="getDTDFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/getDTD/Fault/getDTDFault" /></wsdl:operation><wsdl:operation name="removeDocument"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:removeDocumentMessage" wsaw:Action="urn:removeDocument" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:removeDocumentResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/removeDocumentResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:removeDocumentFault" name="removeDocumentFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/removeDocument/Fault/removeDocumentFault" /></wsdl:operation><wsdl:operation name="performQuery"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performQueryMessage" wsaw:Action="urn:performQuery" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performQueryResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performQueryResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performQueryFault" name="performQueryFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performQuery/Fault/performQueryFault" /></wsdl:operation><wsdl:operation name="addDocument"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDocumentMessage" wsaw:Action="urn:addDocument" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDocumentResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addDocumentResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDocumentFault" name="addDocumentFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addDocument/Fault/addDocumentFault" /></wsdl:operation><wsdl:operation name="listPreferences"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listPreferencesMessage" wsaw:Action="urn:listPreferences" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listPreferencesResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listPreferencesResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listPreferencesFault" name="listPreferencesFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listPreferences/Fault/listPreferencesFault" /></wsdl:operation><wsdl:operation name="performSavedQueryOnUnsavedDoc"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryOnUnsavedDocMessage" wsaw:Action="urn:performSavedQueryOnUnsavedDoc" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryOnUnsavedDocResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryOnUnsavedDocResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryOnUnsavedDocFault" name="performSavedQueryOnUnsavedDocFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryOnUnsavedDoc/Fault/performSavedQueryOnUnsavedDocFault" /></wsdl:operation><wsdl:operation name="addDTD"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDTDMessage" wsaw:Action="urn:addDTD" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDTDResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addDTDResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDTDFault" name="addDTDFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addDTD/Fault/addDTDFault" /></wsdl:operation><wsdl:operation name="addDocumentInCorpus"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDocumentInCorpusMessage" wsaw:Action="urn:addDocumentInCorpus" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDocumentInCorpusResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addDocumentInCorpusResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addDocumentInCorpusFault" name="addDocumentInCorpusFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addDocumentInCorpus/Fault/addDocumentInCorpusFault" /></wsdl:operation><wsdl:operation name="listQueries"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listQueriesMessage" wsaw:Action="urn:listQueries" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listQueriesResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listQueriesResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listQueriesFault" name="listQueriesFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listQueries/Fault/listQueriesFault" /></wsdl:operation><wsdl:operation name="listDTDs"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDTDsMessage" wsaw:Action="urn:listDTDs" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDTDsResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listDTDsResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDTDsFault" name="listDTDsFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listDTDs/Fault/listDTDsFault" /></wsdl:operation><wsdl:operation name="listDocIDsInCorpus"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDocIDsInCorpusMessage" wsaw:Action="urn:listDocIDsInCorpus" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDocIDsInCorpusResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listDocIDsInCorpusResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listDocIDsInCorpusFault" name="listDocIDsInCorpusFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listDocIDsInCorpus/Fault/listDocIDsInCorpusFault" /></wsdl:operation><wsdl:operation name="removeDTD"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:removeDTDMessage" wsaw:Action="urn:removeDTD" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:removeDTDResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/removeDTDResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:removeDTDFault" name="removeDTDFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/removeDTD/Fault/removeDTDFault" /></wsdl:operation><wsdl:operation name="performUnsavedQueryInOutFile"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryInOutFileMessage" wsaw:Action="urn:performUnsavedQueryInOutFile" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryInOutFileResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQueryInOutFileResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryInOutFileFault" name="performUnsavedQueryInOutFileFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQueryInOutFile/Fault/performUnsavedQueryInOutFileFault" /></wsdl:operation><wsdl:operation name="setPreference"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:setPreferenceMessage" wsaw:Action="urn:setPreference" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:setPreferenceFault" name="setPreferenceFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/setPreference/Fault/setPreferenceFault" /></wsdl:operation><wsdl:operation name="addQuery"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addQueryMessage" wsaw:Action="urn:addQuery" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addQueryResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addQueryResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:addQueryFault" name="addQueryFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/addQuery/Fault/addQueryFault" /></wsdl:operation><wsdl:operation name="performUnsavedQuery"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryMessage" wsaw:Action="urn:performUnsavedQuery" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQueryResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performUnsavedQueryFault" name="performUnsavedQueryFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performUnsavedQuery/Fault/performUnsavedQueryFault" /></wsdl:operation><wsdl:operation name="performSavedQueryInOutFile"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryInOutFileMessage" wsaw:Action="urn:performSavedQueryInOutFile" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryInOutFileResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryInOutFileResponse" /><wsdl:fault xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:performSavedQueryInOutFileFault" name="performSavedQueryInOutFileFault" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/performSavedQueryInOutFile/Fault/performSavedQueryInOutFileFault" /></wsdl:operation><wsdl:operation name="listCorpusIDs"><wsdl:input xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listCorpusIDsMessage" wsaw:Action="urn:listCorpusIDs" /><wsdl:output xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" message="ns:listCorpusIDsResponseMessage" wsaw:Action="http://webadapter.webinterface.clark/ClarkWebServicePortType/listCorpusIDsResponse" /></wsdl:operation></wsdl:portType><wsdl:binding name="ClarkWebServiceSOAP11Binding" type="ns:ClarkWebServicePortType"><soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" /><wsdl:operation name="performSavedQuery"><soap:operation soapAction="urn:performSavedQuery" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryReturnRes"><soap:operation soapAction="urn:performSavedQueryReturnRes" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryReturnResFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQueryOnUnsavedDoc"><soap:operation soapAction="urn:performUnsavedQueryOnUnsavedDoc" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryOnUnsavedDocFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="listDocIDs"><soap:operation soapAction="urn:listDocIDs" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="listDocIDsFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryOnUnsavedDocSaveResult"><soap:operation soapAction="urn:performSavedQueryOnUnsavedDocSaveResult" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryOnUnsavedDocSaveResultFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="getDocument"><soap:operation soapAction="urn:getDocument" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="getDocumentFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="getPreference"><soap:operation soapAction="urn:getPreference" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="getPreferenceFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQueryOnUnsavedDocSaveResult"><soap:operation soapAction="urn:performUnsavedQueryOnUnsavedDocSaveResult" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryOnUnsavedDocSaveResultFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="getDTD"><soap:operation soapAction="urn:getDTD" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="getDTDFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="removeDocument"><soap:operation soapAction="urn:removeDocument" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="removeDocumentFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performQuery"><soap:operation soapAction="urn:performQuery" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performQueryFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="addDocument"><soap:operation soapAction="urn:addDocument" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="addDocumentFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="listPreferences"><soap:operation soapAction="urn:listPreferences" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="listPreferencesFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryOnUnsavedDoc"><soap:operation soapAction="urn:performSavedQueryOnUnsavedDoc" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryOnUnsavedDocFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="addDTD"><soap:operation soapAction="urn:addDTD" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="addDTDFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="addDocumentInCorpus"><soap:operation soapAction="urn:addDocumentInCorpus" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="addDocumentInCorpusFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="listQueries"><soap:operation soapAction="urn:listQueries" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="listQueriesFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="listDTDs"><soap:operation soapAction="urn:listDTDs" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="listDTDsFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="listDocIDsInCorpus"><soap:operation soapAction="urn:listDocIDsInCorpus" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="listDocIDsInCorpusFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="removeDTD"><soap:operation soapAction="urn:removeDTD" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="removeDTDFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQueryInOutFile"><soap:operation soapAction="urn:performUnsavedQueryInOutFile" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryInOutFileFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="setPreference"><soap:operation soapAction="urn:setPreference" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:fault name="setPreferenceFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="addQuery"><soap:operation soapAction="urn:addQuery" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="addQueryFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQuery"><soap:operation soapAction="urn:performUnsavedQuery" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryInOutFile"><soap:operation soapAction="urn:performSavedQueryInOutFile" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryInOutFileFault"><soap:body use="literal" /></wsdl:fault></wsdl:operation><wsdl:operation name="listCorpusIDs"><soap:operation soapAction="urn:listCorpusIDs" style="document" /><wsdl:input><soap:body use="literal" /></wsdl:input><wsdl:output><soap:body use="literal" /></wsdl:output></wsdl:operation></wsdl:binding><wsdl:binding name="ClarkWebServiceSOAP12Binding" type="ns:ClarkWebServicePortType"><soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" /><wsdl:operation name="performSavedQuery"><soap12:operation soapAction="urn:performSavedQuery" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryFault"><soap12:fault use="literal" name="performSavedQueryFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryReturnRes"><soap12:operation soapAction="urn:performSavedQueryReturnRes" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryReturnResFault"><soap12:fault use="literal" name="performSavedQueryReturnResFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQueryOnUnsavedDoc"><soap12:operation soapAction="urn:performUnsavedQueryOnUnsavedDoc" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryOnUnsavedDocFault"><soap12:fault use="literal" name="performUnsavedQueryOnUnsavedDocFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="listDocIDs"><soap12:operation soapAction="urn:listDocIDs" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="listDocIDsFault"><soap12:fault use="literal" name="listDocIDsFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryOnUnsavedDocSaveResult"><soap12:operation soapAction="urn:performSavedQueryOnUnsavedDocSaveResult" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryOnUnsavedDocSaveResultFault"><soap12:fault use="literal" name="performSavedQueryOnUnsavedDocSaveResultFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="getDocument"><soap12:operation soapAction="urn:getDocument" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="getDocumentFault"><soap12:fault use="literal" name="getDocumentFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="getPreference"><soap12:operation soapAction="urn:getPreference" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="getPreferenceFault"><soap12:fault use="literal" name="getPreferenceFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQueryOnUnsavedDocSaveResult"><soap12:operation soapAction="urn:performUnsavedQueryOnUnsavedDocSaveResult" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryOnUnsavedDocSaveResultFault"><soap12:fault use="literal" name="performUnsavedQueryOnUnsavedDocSaveResultFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="getDTD"><soap12:operation soapAction="urn:getDTD" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="getDTDFault"><soap12:fault use="literal" name="getDTDFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="removeDocument"><soap12:operation soapAction="urn:removeDocument" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="removeDocumentFault"><soap12:fault use="literal" name="removeDocumentFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performQuery"><soap12:operation soapAction="urn:performQuery" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performQueryFault"><soap12:fault use="literal" name="performQueryFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="addDocument"><soap12:operation soapAction="urn:addDocument" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="addDocumentFault"><soap12:fault use="literal" name="addDocumentFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="listPreferences"><soap12:operation soapAction="urn:listPreferences" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="listPreferencesFault"><soap12:fault use="literal" name="listPreferencesFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryOnUnsavedDoc"><soap12:operation soapAction="urn:performSavedQueryOnUnsavedDoc" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryOnUnsavedDocFault"><soap12:fault use="literal" name="performSavedQueryOnUnsavedDocFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="addDTD"><soap12:operation soapAction="urn:addDTD" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="addDTDFault"><soap12:fault use="literal" name="addDTDFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="addDocumentInCorpus"><soap12:operation soapAction="urn:addDocumentInCorpus" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="addDocumentInCorpusFault"><soap12:fault use="literal" name="addDocumentInCorpusFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="listQueries"><soap12:operation soapAction="urn:listQueries" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="listQueriesFault"><soap12:fault use="literal" name="listQueriesFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="listDTDs"><soap12:operation soapAction="urn:listDTDs" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="listDTDsFault"><soap12:fault use="literal" name="listDTDsFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="listDocIDsInCorpus"><soap12:operation soapAction="urn:listDocIDsInCorpus" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="listDocIDsInCorpusFault"><soap12:fault use="literal" name="listDocIDsInCorpusFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="removeDTD"><soap12:operation soapAction="urn:removeDTD" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="removeDTDFault"><soap12:fault use="literal" name="removeDTDFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQueryInOutFile"><soap12:operation soapAction="urn:performUnsavedQueryInOutFile" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryInOutFileFault"><soap12:fault use="literal" name="performUnsavedQueryInOutFileFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="setPreference"><soap12:operation soapAction="urn:setPreference" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:fault name="setPreferenceFault"><soap12:fault use="literal" name="setPreferenceFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="addQuery"><soap12:operation soapAction="urn:addQuery" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="addQueryFault"><soap12:fault use="literal" name="addQueryFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performUnsavedQuery"><soap12:operation soapAction="urn:performUnsavedQuery" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performUnsavedQueryFault"><soap12:fault use="literal" name="performUnsavedQueryFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="performSavedQueryInOutFile"><soap12:operation soapAction="urn:performSavedQueryInOutFile" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output><wsdl:fault name="performSavedQueryInOutFileFault"><soap12:fault use="literal" name="performSavedQueryInOutFileFault" /></wsdl:fault></wsdl:operation><wsdl:operation name="listCorpusIDs"><soap12:operation soapAction="urn:listCorpusIDs" style="document" /><wsdl:input><soap12:body use="literal" /></wsdl:input><wsdl:output><soap12:body use="literal" /></wsdl:output></wsdl:operation></wsdl:binding><wsdl:service name="ClarkWebService"><wsdl:port name="ClarkWebServiceSOAP11port_http" binding="ns:ClarkWebServiceSOAP11Binding"><soap:address location="http://213.191.192.50:8080/axis2/services/ClarkWebService" /></wsdl:port><wsdl:port name="ClarkWebServiceSOAP12port_http" binding="ns:ClarkWebServiceSOAP12Binding"><soap12:address location="http://213.191.192.50:8080/axis2/services/ClarkWebService" /></wsdl:port></wsdl:service></wsdl:definitions>

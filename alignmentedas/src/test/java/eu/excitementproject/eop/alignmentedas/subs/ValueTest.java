@@ -9,6 +9,7 @@ import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
 
 public class ValueTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		

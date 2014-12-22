@@ -6,7 +6,8 @@ import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
-import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
+// import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
+import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAlignerFromLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.derivbase.DerivBaseResource;
 
 /**
@@ -40,8 +41,9 @@ public class DerivBaseDELinker implements AlignmentComponent {
 		try 
 		{
 			DerivBaseResource lex = new DerivBaseResource(useDerivBaseScore, derivSteps); 
-			LexicalAligner theAligner = LexicalAlignerFactory.getLexicalAlignerFromLexicalResource(lex, 1, "1.3", true, null, null); 
-			worker = theAligner; 
+//			LexicalAligner theAligner = LexicalAlignerFactory.getLexicalAlignerFromLexicalResource(lex, 1, "1.3", true, null, null); 
+//			worker = theAligner; 
+			worker = new LexicalAlignerFromLexicalResource(lex); 
 		}
 		catch (ComponentException e)
 		{
@@ -62,7 +64,8 @@ public class DerivBaseDELinker implements AlignmentComponent {
 	}
 	
 	// private variable 
-	private final LexicalAligner worker; 
+//	private final LexicalAligner worker; 
+	private final LexicalAlignerFromLexicalResource worker; 
 
 	public String getComponentName()
 	{
@@ -72,5 +75,10 @@ public class DerivBaseDELinker implements AlignmentComponent {
 	public String getInstanceName()
 	{
 		return null; 
+	}
+	
+	public void close() throws AlignmentComponentException
+	{
+		worker.close(); 
 	}
 }

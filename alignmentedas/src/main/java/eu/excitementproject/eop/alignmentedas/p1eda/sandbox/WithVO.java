@@ -34,6 +34,14 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLem
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerDE;
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
+/**
+ * An instance of word-coverage based English P1EDA instance. 
+ * It uses Meteor and VerbOcean. -- note that this instance won't work when EOP is used as an 
+ * artifact. (assumes fixed VerbOcean in a known path within source repository) 
+ * 
+ * @author Tae-Gil Noh
+ *
+ */
 @SuppressWarnings("unused")
 public class WithVO extends P1EDATemplate {
 
@@ -45,7 +53,7 @@ public class WithVO extends P1EDATemplate {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
 //			aligner3 = new WordNetENLinker(null); 
-			aligner4 = new VerbOceanENLinker(); 
+			aligner4 = new VerbOceanENLinker("../core/src/main/resources/VerbOcean/verbocean.unrefined.2004-05-20.txt"); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -96,8 +104,8 @@ public class WithVO extends P1EDATemplate {
 			
 			logger.debug("Adding feature as: " + score1.get(0) + "/" + score1.get(1)); 
 			logger.debug("Adding feature as: " + score1.get(2) + "/" + score1.get(3)); 
-			fv.add(new FeatureValue(ratio1)); 
-			fv.add(new FeatureValue(ratio2)); 
+			fv.add(new FeatureValue("TokenCoverageRatio", ratio1)); 
+			fv.add(new FeatureValue("ContentTokenCoverageRatio", ratio2)); 
 			
 			Vector<Double> score2 = nerCoverageScorer.calculateScores(aJCas); 
 			// we know NER Coverage scorer  returns 2 numbers. 
@@ -113,7 +121,7 @@ public class WithVO extends P1EDATemplate {
 			{
 				ratio_ner = score2.get(0) / score2.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_ner)); 		
+			fv.add(new FeatureValue("NERCoverageRatio", ratio_ner)); 		
 			
 			
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
@@ -127,7 +135,7 @@ public class WithVO extends P1EDATemplate {
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_V)); 		
+			fv.add(new FeatureValue("VerbCoverageRatio", ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)

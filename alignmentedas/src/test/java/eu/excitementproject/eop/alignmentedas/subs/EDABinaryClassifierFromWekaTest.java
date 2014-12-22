@@ -18,6 +18,7 @@ import eu.excitementproject.eop.common.DecisionLabel;
 
 public class EDABinaryClassifierFromWekaTest {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {		
 		// prepare a training set 

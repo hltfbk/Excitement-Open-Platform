@@ -1,0 +1,98 @@
+<!DOCTYPE Documents [
+<!ELEMENT c (#PCDATA*)>
+<!ELEMENT chunk (chunk|tok|markedTerm|Concept)+>
+<!ATTLIST chunk
+	category	CDATA	#IMPLIED
+	id	CDATA	#REQUIRED
+	lang	CDATA	#IMPLIED
+	rend	CDATA	#IMPLIED
+	type	CDATA	#IMPLIED
+	wsd	CDATA	#IMPLIED
+	xml:lang	CDATA	#IMPLIED
+>
+<!ELEMENT Concept (tok+,conl?,tok*)>
+<!ATTLIST Concept
+	class	CDATA	#IMPLIED
+>
+<!ELEMENT conl c*>
+<!ELEMENT definingText (chunk|tok|markedTerm|Concept)+>
+<!ATTLIST definingText
+	comment	CDATA	#IMPLIED
+	continue	(y|n)	"n"
+	def	CDATA	#IMPLIED
+	id	CDATA	#REQUIRED
+	lang	CDATA	#IMPLIED
+	part	CDATA	#IMPLIED
+	rend	CDATA	#IMPLIED
+	status	CDATA	#IMPLIED
+	type	CDATA	#IMPLIED
+	wsd	CDATA	#IMPLIED
+	xml:lang	CDATA	#IMPLIED
+>
+<!ELEMENT document field*>
+<!ATTLIST document
+	searchBy	CDATA	#IMPLIED
+	id	CDATA	#REQUIRED
+>
+<!ELEMENT Documents document+>
+<!ATTLIST Documents
+	queryName	CDATA	#REQUIRED
+	date	CDATA	#REQUIRED
+>
+<!ELEMENT field (s*|par*)>
+<!ATTLIST field
+	id	CDATA	#IMPLIED
+	content	CDATA	#REQUIRED
+	searchBy	CDATA	#IMPLIED
+	xpath	CDATA	#IMPLIED
+>
+<!ELEMENT markedTerm (chunk|tok|markedTerm|Concept)+>
+<!ATTLIST markedTerm
+	comment	CDATA	#IMPLIED
+	dt	(y|n)	"n"
+	id	CDATA	#REQUIRED
+	kw	(y|n)	"n"
+	lang	CDATA	#IMPLIED
+	rend	CDATA	#IMPLIED
+	status	CDATA	#IMPLIED
+	type	CDATA	#IMPLIED
+	wsd	CDATA	#IMPLIED
+	xml:lang	CDATA	#IMPLIED
+>
+<!ELEMENT par (s|tok)+>
+<!ATTLIST par
+	id	CDATA	#REQUIRED
+	lang	CDATA	#IMPLIED
+	name	CDATA	#IMPLIED
+	rend	CDATA	#IMPLIED
+	type	CDATA	#IMPLIED
+	wsd	CDATA	#IMPLIED
+	xml:lang	CDATA	#IMPLIED
+>
+<!ELEMENT s (chunk|tok|markedTerm|definingText|Concept)+>
+<!ATTLIST s
+	id	CDATA	#REQUIRED
+	lang	CDATA	#IMPLIED
+	rend	CDATA	#IMPLIED
+	type	CDATA	#IMPLIED
+	wsd	CDATA	#IMPLIED
+	xml:lang	CDATA	#IMPLIED
+>
+<!ELEMENT tok (#PCDATA)>
+<!ATTLIST tok
+	base	CDATA	#IMPLIED
+	cat	CDATA	#IMPLIED
+	class	CDATA	#IMPLIED
+	ctag	CDATA	#IMPLIED
+	exp	CDATA	#IMPLIED
+	id	CDATA	#REQUIRED
+	lang	CDATA	#IMPLIED
+	msd	CDATA	#IMPLIED
+	name	CDATA	#IMPLIED
+	rend	CDATA	#IMPLIED
+	sp	(y|n)	"n"
+	type	CDATA	#IMPLIED
+	wsd	CDATA	#IMPLIED
+	xml:lang	CDATA	#IMPLIED
+>
+]>

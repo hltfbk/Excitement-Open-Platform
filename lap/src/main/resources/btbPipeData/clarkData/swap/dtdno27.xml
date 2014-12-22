@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Document is created with the Clark System! http://www.bultreebank.org -->
+<CLaRK_document_dtd><dtdname>statisticsquery.dtd</dtdname><doctype>statisticsquery</doctype><tokenizer>Default</tokenizer><dtd>&lt;!ELEMENT document (#PCDATA)&gt;
+&lt;!ELEMENT folder (#PCDATA)&gt;
+&lt;!ELEMENT group (#PCDATA)&gt;
+&lt;!ATTLIST group
+	recursive	(y|n)	#REQUIRED
+&gt;
+&lt;!ELEMENT info (#PCDATA)&gt;
+&lt;!ELEMENT inputFiles (document*|group*)&gt;
+&lt;!ELEMENT item (#PCDATA)&gt;
+&lt;!ELEMENT key EMPTY&gt;
+&lt;!ATTLIST key
+	expr	CDATA	#REQUIRED
+	order	(asc|desc)	#IMPLIED
+	trim	(y|n)	#IMPLIED
+	normalize	(y|n)	#IMPLIED
+	number	(y|n)	#IMPLIED
+	reverse	(y|n)	#IMPLIED
+	tokenizer	CDATA	#IMPLIED
+	prefix	(LC|I|RC|COM)	#IMPLIED
+&gt;
+&lt;!ELEMENT keys key+&gt;
+&lt;!ELEMENT mode EMPTY&gt;
+&lt;!ATTLIST mode
+	type	(new|overwrite)	&quot;overwrite&quot;
+	extension	CDATA	#IMPLIED
+	save	(y|n)	#IMPLIED
+	overwrite	(y|n)	#IMPLIED
+&gt;
+&lt;!ELEMENT multiple (folder,output,mode,inputFiles?,outputFiles?)&gt;
+&lt;!ELEMENT name (#PCDATA)&gt;
+&lt;!ELEMENT output EMPTY&gt;
+&lt;!ATTLIST output
+	type	(separate|united)	&quot;separate&quot;
+	ufn	CDATA	#IMPLIED
+	dtdname	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT outputFiles (document*)&gt;
+&lt;!ELEMENT outputFilter EMPTY&gt;
+&lt;!ATTLIST outputFilter
+	cat	(y|n)	&quot;y&quot;
+	num	(y|n)	&quot;y&quot;
+	per	(y|n)	&quot;y&quot;
+	keyval	(y|n)	&quot;y&quot;
+&gt;
+&lt;!ELEMENT statisticsquery (xpath,keys,tokenizer,outputFilter?,info?,multiple?)&gt;
+&lt;!ATTLIST statisticsquery
+	toolName	CDATA	#FIXED &quot;Statistics&quot;
+&gt;
+&lt;!ELEMENT tokenizer (name,item*)&gt;
+&lt;!ELEMENT xpath (#PCDATA)&gt;
+&lt;!ATTLIST xpath
+	Element_Name_Sensitive	(true|false)	&quot;false&quot;
+&gt;
+</dtd><CLaRK_document_layout offsets="n" spaces="4"><tagLine children="y" closeEnd="n" closeStart="n" name="document" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="folder" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="group" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="info" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="inputFiles" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="item" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="key" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="keys" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="mode" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="multiple" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="name" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="output" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="outputFiles" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="outputFilter" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="statisticsquery" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="tokenizer" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="xpath" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Unknown*" openEnd="n" openStart="n" tag="y"></tagLine></CLaRK_document_layout><CLaRK_document_element_features tokenizer="Default"></CLaRK_document_element_features><CLaRK_document_attribute_features></CLaRK_document_attribute_features></CLaRK_document_dtd>
