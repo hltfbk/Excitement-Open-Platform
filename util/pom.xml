@@ -4,7 +4,7 @@
   <parent>
     <groupId>eu.excitementproject</groupId>
     <artifactId>eop</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1-SNAPSHOT</version>
   </parent>
   <artifactId>util</artifactId>
   <name>util</name>
@@ -25,17 +25,17 @@
     <dependency>
 	  <groupId>eu.excitementproject</groupId>
 	  <artifactId>common</artifactId>
-	  <version>1.2.0</version>
+	  <version>1.2.1-SNAPSHOT</version>
 	</dependency>
 	<dependency>
   	  <groupId>eu.excitementproject</groupId>
   	  <artifactId>core</artifactId>
-  	  <version>1.2.0</version>
+  	  <version>1.2.1-SNAPSHOT</version>
   	</dependency>
 	<dependency>
   	  <groupId>eu.excitementproject</groupId>
   	  <artifactId>lap</artifactId>
-  	  <version>1.2.0</version>
+  	  <version>1.2.1-SNAPSHOT</version>
   	</dependency>
 	<dependency>
 		<groupId>args4j</groupId>
@@ -46,7 +46,7 @@
 	<dependency>
 		<groupId>eu.excitementproject</groupId>
 		<artifactId>biutee</artifactId>
-		<version>1.2.0</version>
+		<version>1.2.1-SNAPSHOT</version>
 	</dependency>
 	
 	
