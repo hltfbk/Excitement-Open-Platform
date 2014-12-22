@@ -25,6 +25,7 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * @author Vered Shwartz
  *
  */
+@SuppressWarnings("deprecation")
 public class LexicalAlignerTest {
 
 	// Private Members

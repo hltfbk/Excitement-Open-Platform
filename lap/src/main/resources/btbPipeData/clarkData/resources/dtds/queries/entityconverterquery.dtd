@@ -1,0 +1,14 @@
+<!DOCTYPE EntityConverterQuery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+
+<!ELEMENT EntityConverterQuery (xpath?, filter+)>
+<!ATTLIST EntityConverterQuery
+	toolName CDATA #FIXED "EntityConverter"
+	dir	(1|2)	 #REQUIRED
+>
+
+<!ELEMENT xpath (#PCDATA)>	<!-- The XPath expression -->
+<!ELEMENT filter (#PCDATA)>	<!-- The new attribute info -->
+
+%common;
+]>

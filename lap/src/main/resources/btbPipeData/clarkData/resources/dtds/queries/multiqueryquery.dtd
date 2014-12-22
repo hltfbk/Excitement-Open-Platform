@@ -1,0 +1,42 @@
+<!DOCTYPE multiquery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+%common;
+
+<!ELEMENT multiquery ((query|control|condition)*, info?, multiple?)>
+<!ATTLIST multiquery
+	toolName CDATA #FIXED "MultiQuery"
+	nowarn	(y|n)	"y"
+	noresultbreak (y|n)	"n"
+	usegc	(y|n)	"n"
+>
+
+<!ELEMENT query (#PCDATA)>
+<!ATTLIST query
+	tool (Statistics|Concordance|Extract|Sort
+		|TextReplace|Remove|Grammar|Constraints
+		|Rename|XSLT|MultiQuery|EntityConverter
+		|GrammarGroup|InsertAttribute|InsertChild
+		|InsertParent|InsertSibling|XPathTransformation) #REQUIRED
+	label	CDATA   #IMPLIED>
+
+<!ELEMENT control EMPTY>
+<!ATTLIST control
+	type (IF|IF_NOT|IF_CHANGED|IF_NOT_CHANGED|GOTO)	#REQUIRED
+	xpath	CDATA	#IMPLIED
+	target	CDATA	#REQUIRED
+	label		CDATA  #IMPLIED
+>
+
+<!ELEMENT condition EMPTY>
+<!ATTLIST condition
+	type	(xpath|val_const|re_const|num_const)	#REQUIRED
+	xpath CDATA	#IMPLIED
+	cut	(y|n)	 "n"
+	name	 CDATA #IMPLIED
+	savedoc CDATA #IMPLIED
+	savepath CDATA #IMPLIED
+	saveover (y|n)	"n"
+	label		CDATA  #IMPLIED
+>
+
+]>

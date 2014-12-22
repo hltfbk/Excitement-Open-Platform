@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Document is created with the Clark System! http://www.bultreebank.org -->
+<CLaRK_document_dtd><dtdname>weblicht.dtd</dtdname><doctype>ns4:D-Spin</doctype><tokenizer>Default</tokenizer><dtd>&lt;!ELEMENT ns2:POStags (ns2:tag)*&gt;
+&lt;!ATTLIST ns2:POStags
+	tagset	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT ns2:sentence (ns2:tokenRef)*&gt;
+&lt;!ATTLIST ns2:sentence
+	ID	CDATA	#IMPLIED
+	start	CDATA	#IMPLIED
+	end	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT ns2:sentences (ns2:sentence)*&gt;
+&lt;!ELEMENT ns2:tag (#PCDATA)&gt;
+&lt;!ATTLIST ns2:tag
+	ID	CDATA	#IMPLIED
+	tokID	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT ns2:text (#PCDATA)&gt;
+&lt;!ELEMENT ns2:TextCorpus (#PCDATA|ns2:text|ns2:tokens|ns2:POStags|ns2:sentences)*&gt;
+&lt;!ELEMENT ns2:token (#PCDATA)&gt;
+&lt;!ATTLIST ns2:token
+	ID	CDATA	#IMPLIED
+	start	CDATA	#IMPLIED
+	end	CDATA	#IMPLIED
+	svm	CDATA	#IMPLIED
+	ana	CDATA	#IMPLIED
+	aa	CDATA	#IMPLIED
+	maybe_abbr	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT ns2:tokenRef EMPTY&gt;
+&lt;!ATTLIST ns2:tokenRef
+	tokID	CDATA	#IMPLIED
+	xmlns	CDATA	#IMPLIED
+	xmlns:ns2	CDATA	#IMPLIED
+	xmlns:ns3	CDATA	#IMPLIED
+	xmlns:ns4	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT ns2:tokens (ns2:token)*&gt;
+&lt;!ELEMENT ns4:D-Spin (ns2:TextCorpus)*&gt;
+&lt;!ATTLIST ns4:D-Spin
+	xmlns:ns3	CDATA	#IMPLIED
+	xmlns:ns2	CDATA	#IMPLIED
+	xmlns:ns4	CDATA	#IMPLIED
+	xmlns	CDATA	#IMPLIED
+&gt;
+</dtd><CLaRK_document_layout offsets="n" spaces="4"><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:POStags" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:sentence" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:sentences" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:tag" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:text" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:TextCorpus" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:token" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:tokenRef" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns2:tokens" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="ns4:D-Spin" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="y" closeStart="n" name="Unknown*" openEnd="n" openStart="y" tag="y"></tagLine></CLaRK_document_layout><treelayout active="y" keepTooltip="y"><pattern col="4" tag="ns2:token">{child::text()} @ana:{@ana} @svm:{@svm} @aa:{@aa} </pattern></treelayout><CLaRK_document_element_features tokenizer="Default"></CLaRK_document_element_features><CLaRK_document_attribute_features></CLaRK_document_attribute_features></CLaRK_document_dtd>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Document is created with the Clark System! http://www.bultreebank.org -->
+<CLaRK_document_dtd><dtdname>multiqueryquery.dtd</dtdname><doctype>multiquery</doctype><tokenizer>Default</tokenizer><dtd>&lt;!ELEMENT condition EMPTY&gt;
+&lt;!ATTLIST condition
+	type	(xpath|val_const|re_const|num_const)	#REQUIRED
+	xpath	CDATA	#IMPLIED
+	cut	(y|n)	&quot;n&quot;
+	name	CDATA	#IMPLIED
+	savedoc	CDATA	#IMPLIED
+	savepath	CDATA	#IMPLIED
+	saveover	(y|n)	&quot;n&quot;
+	label	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT control EMPTY&gt;
+&lt;!ATTLIST control
+	type	(IF|IF_NOT|IF_CHANGED|IF_NOT_CHANGED|GOTO)	#REQUIRED
+	xpath	CDATA	#IMPLIED
+	target	CDATA	#REQUIRED
+	label	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT document (#PCDATA)&gt;
+&lt;!ELEMENT folder (#PCDATA)&gt;
+&lt;!ELEMENT group (#PCDATA)&gt;
+&lt;!ATTLIST group
+	recursive	(y|n)	#REQUIRED
+&gt;
+&lt;!ELEMENT info (#PCDATA)&gt;
+&lt;!ELEMENT inputFiles (document*|group*)&gt;
+&lt;!ELEMENT mode EMPTY&gt;
+&lt;!ATTLIST mode
+	type	(new|overwrite)	&quot;overwrite&quot;
+	extension	CDATA	#IMPLIED
+	save	(y|n)	#IMPLIED
+	overwrite	(y|n)	#IMPLIED
+&gt;
+&lt;!ELEMENT multiple (folder,output,mode,inputFiles?,outputFiles?)&gt;
+&lt;!ELEMENT multiquery ((query|control|condition)*,info?,multiple?)&gt;
+&lt;!ATTLIST multiquery
+	toolName	CDATA	#FIXED &quot;MultiQuery&quot;
+	nowarn	(y|n)	&quot;y&quot;
+	noresultbreak	(y|n)	&quot;n&quot;
+	usegc	(y|n)	&quot;n&quot;
+&gt;
+&lt;!ELEMENT output EMPTY&gt;
+&lt;!ATTLIST output
+	type	(separate|united)	&quot;separate&quot;
+	ufn	CDATA	#IMPLIED
+	dtdname	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT outputFiles (document*)&gt;
+&lt;!ELEMENT query (#PCDATA)&gt;
+&lt;!ATTLIST query
+	tool	(Statistics|Concordance|Extract|Sort|TextReplace|Remove|Grammar|Constraints|Rename|XSLT|MultiQuery|EntityConverter|GrammarGroup|InsertAttribute|InsertChild|InsertParent|InsertSibling|XPathTransformation)	#REQUIRED
+	label	CDATA	#IMPLIED
+&gt;
+</dtd><CLaRK_document_layout offsets="y" spaces="4"><tagLine children="y" closeEnd="n" closeStart="n" name="condition" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="control" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="document" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="folder" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="group" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="info" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="inputFiles" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="mode" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="multiple" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="multiquery" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="output" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="outputFiles" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="query" openEnd="n" openStart="y" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Unknown*" openEnd="n" openStart="y" tag="y"></tagLine></CLaRK_document_layout><treelayout active="y" keepTooltip="y"><pattern col="4" tag="query">q:{@tool}:{text()}</pattern></treelayout><CLaRK_document_element_features tokenizer="Default"></CLaRK_document_element_features><CLaRK_document_attribute_features></CLaRK_document_attribute_features></CLaRK_document_dtd>

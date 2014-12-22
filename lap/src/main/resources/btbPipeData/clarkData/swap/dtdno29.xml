@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Document is created with the Clark System! http://www.bultreebank.org -->
+<CLaRK_document_dtd><dtdname>index_schema.dtd</dtdname><doctype>schema</doctype><tokenizer>Default</tokenizer><dtd>&lt;!ELEMENT context (context|field)+&gt;
+&lt;!ATTLIST context
+	name	CDATA	#REQUIRED
+	xpath	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT field EMPTY&gt;
+&lt;!ATTLIST field
+	keyword	(n|y)	&quot;n&quot;
+	name	CDATA	#REQUIRED
+	retrievable	(n|y)	&quot;n&quot;
+	searchable	(n|y)	&quot;y&quot;
+	value	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT schema (context|field)+&gt;
+&lt;!ATTLIST schema
+	name	CDATA	#REQUIRED
+	lang	CDATA	&quot;en&quot;
+&gt;
+</dtd><CLaRK_document_layout offsets="n" spaces="4"><tagLine children="y" closeEnd="n" closeStart="n" name="context" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="field" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="schema" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Unknown*" openEnd="n" openStart="n" tag="y"></tagLine></CLaRK_document_layout><CLaRK_document_element_features tokenizer="Default"></CLaRK_document_element_features><CLaRK_document_attribute_features></CLaRK_document_attribute_features></CLaRK_document_dtd>

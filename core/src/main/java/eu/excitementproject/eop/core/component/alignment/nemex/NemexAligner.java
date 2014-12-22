@@ -468,6 +468,13 @@ public class NemexAligner implements AlignmentComponent {
 	public String getInstanceName() {
 		return this.gazetteerFilePath;
 	}
+	
+	@Override
+	public void close() throws AlignmentComponentException
+	{
+		// nothing to close on this aligner
+	}
+
 
 	private final static Logger logger = Logger.getLogger(NemexAligner.class);
 	private String gazetteerFilePath;

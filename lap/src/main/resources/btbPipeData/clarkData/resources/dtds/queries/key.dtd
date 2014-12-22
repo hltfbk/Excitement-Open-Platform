@@ -1,0 +1,11 @@
+<!ELEMENT key EMPTY>
+
+<!ATTLIST key
+		expr CDATA #REQUIRED
+		order (asc|desc) #IMPLIED
+		trim (y|n) #IMPLIED
+		normalize (y|n) #IMPLIED
+        number (y|n) #IMPLIED
+		reverse (y|n) #IMPLIED
+		tokenizer CDATA #IMPLIED
+        prefix (LC|I|RC|COM) #IMPLIED>

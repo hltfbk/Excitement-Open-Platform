@@ -1,7 +1,9 @@
 package eu.excitementproject.eop.alignmentedas.p1eda;
 
-import org.apache.uima.jcas.JCas;
+import java.util.Vector;
 
+import org.apache.uima.jcas.JCas;
+import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.TEDecision;
 
@@ -20,12 +22,13 @@ import eu.excitementproject.eop.common.TEDecision;
  */
 public class TEDecisionWithAlignment implements TEDecision {
 	
-	public TEDecisionWithAlignment(DecisionLabel label, Double confidence, String pairID, JCas casWithAlignment)
+	public TEDecisionWithAlignment(DecisionLabel label, Double confidence, String pairID, JCas casWithAlignment, Vector<FeatureValue> featureVector)
 	{
 		this.label = label; 
 		this.confidence = confidence; 
 		this.pairID = pairID; 
 		this.theJCas = casWithAlignment; 
+		this.featureVector = featureVector; 
 	}
 	
 	@Override
@@ -52,9 +55,20 @@ public class TEDecisionWithAlignment implements TEDecision {
 		return theJCas; 
 	}
 	
+	/**
+	 * Call this method to access the "features", as they were used in the EDA. 
+	 * 
+	 * @return
+	 */
+	public Vector<FeatureValue> getFeatureVector()
+	{
+		return featureVector; 
+	}
+	
 	private final DecisionLabel label; 
 	private final double confidence; 
 	private final String pairID; 
 	private final JCas theJCas; 
-	
+	private final Vector<FeatureValue> featureVector; 
+
 }

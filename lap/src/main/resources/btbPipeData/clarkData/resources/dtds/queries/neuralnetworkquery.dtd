@@ -1,0 +1,13 @@
+<!DOCTYPE NNQuery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+
+<!ELEMENT NNQuery (sXPath, wXPath, vXPath, info?, multiple?)>
+<!ATTLIST NNQuery
+	toolName CDATA #FIXED "NeuralNetwork"
+>
+<!ELEMENT sXPath (#PCDATA)>	<!-- The XPath expression -->
+<!ELEMENT wXPath (#PCDATA)>	<!-- The XPath expression -->
+<!ELEMENT vXPath (#PCDATA)>	<!-- The XPath expression -->
+
+%common;
+]>

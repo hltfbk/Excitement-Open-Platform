@@ -1,0 +1,16 @@
+<!DOCTYPE sortquery [
+
+<!ELEMENT sortquery (xpath?,keys?,info?, multiple?)>
+<!ATTLIST sortquery 
+	toolName CDATA #FIXED "Sort"
+	type (DTD|Advanced) #IMPLIED
+>
+
+<!ELEMENT keys (key+)>
+<!ELEMENT xpath (#PCDATA)>
+
+<!ENTITY % common SYSTEM 'query.dtd'>
+%common;
+<!ENTITY % keys SYSTEM 'key.dtd'>
+%keys;
+]>
