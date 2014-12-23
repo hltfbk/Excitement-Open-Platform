@@ -23,6 +23,7 @@ public class EntailmentServiceImpl extends RemoteServiceServlet implements Entai
 	@Override
 	public String resolve(String  text,String hypothesis) throws EntailmentServiceException {
 		try {
+			@SuppressWarnings("unused")
 			org.apache.uima.jcas.JCas jcas = UimaUtils.newJcas();
 			return "Hello World";
 		} catch (UimaUtilsException e) {

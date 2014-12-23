@@ -34,7 +34,8 @@
 		<module>distsim</module>
 		<module>globalgraphoptimizer</module>
 		<module>lexicalinferenceminer</module>
-                <module>alignmentedas</module> 
+        <module>alignmentedas</module> 
+        <module>tracer</module> 
 	</modules>
 
         <profiles>
