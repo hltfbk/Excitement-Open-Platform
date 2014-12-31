@@ -63,13 +63,14 @@ import opennlp.tools.util.Span;
 
 public class NemexAligner implements AlignmentComponent {
 
-	public NemexAligner(String gazetteerFilePath, String delimiter,
-			Boolean delimiterSwitchOff, int nGramSize,
+	public NemexAligner(String gazetteerFilePath, String extrenalDictPath,
+			String delimiter, Boolean delimiterSwitchOff, int nGramSize,
 			Boolean ignoreDuplicateNgrams, String similarityMeasure,
 			double similarityThreshold, String chunkerModelPath,
 			String direction) {
 
 		this.gazetteerFilePath = gazetteerFilePath;
+		this.externalDictPath = externalDictPath;
 		this.delimiter = delimiter;
 		this.delimiterSwitchOff = delimiterSwitchOff;
 		this.nGramSize = nGramSize;
@@ -81,9 +82,9 @@ public class NemexAligner implements AlignmentComponent {
 		this.chunkerModelPath = chunkerModelPath;
 
 		this.direction = direction;
-		// NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
-		// this.delimiterSwitchOff, this.nGramSize,
-		// this.ignoreDuplicateNgrams);
+		NEMEX_A.loadNewGazetteer(this.externalDictPath, this.delimiter,
+				this.delimiterSwitchOff, this.nGramSize,
+				this.ignoreDuplicateNgrams);
 	}
 
 	/**
@@ -171,106 +172,138 @@ public class NemexAligner implements AlignmentComponent {
 	public void createDictionary(JCas view, HashMap<Integer, String> queryMap,
 			HashMap<String, ArrayList<QueryInfo>> queryIndex)
 			throws PairAnnotatorComponentException {
-
-		logger.info("Unloading Gazetteer for updating dictionary");
-		NEMEX_A.unloadGazetteer(gazetteerFilePath);
-
-		String query = new String();
-
-		int index = 0;
-		double totalNoOfQueries = 0;
-		logger.info("Creating queries");
-
-		Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
-		Token[] tokenAnnotsArray = tokenAnnots.toArray(new Token[tokenAnnots
-				.size()]);
-
-		int numOfTokens = tokenAnnotsArray.length;
-		String[] tokenTextArray = new String[numOfTokens];
-		String[] tagArray = new String[numOfTokens];
-		int[] tokenStartOffsetArray = new int[numOfTokens];
-		int[] tokenEndOffsetArray = new int[numOfTokens];
-
-		for (int tNum = 0; tNum < tokenAnnotsArray.length; tNum++) {
-			Token token = tokenAnnotsArray[tNum];
-
-			tokenTextArray[tNum] = token.getCoveredText();
-			tagArray[tNum] = token.getPos().getPosValue();
-			tokenStartOffsetArray[tNum] = token.getBegin();
-			tokenEndOffsetArray[tNum] = token.getEnd();
-
-		}
-
-		query = getQuery(chunkerModelPath);
-
-		InputStream modelIn = null;
-		ChunkerModel model = null;
-
 		try {
-			modelIn = new FileInputStream(chunkerModelPath);
-			model = new ChunkerModel(modelIn);
-		} catch (IOException e) {
-			// Model loading failed, handle the error
-			e.printStackTrace();
-		} finally {
-			if (modelIn != null) {
-				try {
-					modelIn.close();
-				} catch (IOException e) {
+			logger.info("Unloading Gazetteer for updating dictionary");
+			NEMEX_A.unloadGazetteer(gazetteerFilePath);
+
+			String query = new String();
+
+			int index = 0;
+			double totalNoOfQueries = 0;
+			logger.info("Creating queries");
+
+			Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
+			Token[] tokenAnnotsArray = tokenAnnots
+					.toArray(new Token[tokenAnnots.size()]);
+
+			int numOfTokens = tokenAnnotsArray.length;
+			String[] tokenTextArray = new String[numOfTokens];
+			String[] tagArray = new String[numOfTokens];
+			int[] tokenStartOffsetArray = new int[numOfTokens];
+			int[] tokenEndOffsetArray = new int[numOfTokens];
+
+			for (int tNum = 0; tNum < tokenAnnotsArray.length; tNum++) {
+				Token token = tokenAnnotsArray[tNum];
+
+				tokenTextArray[tNum] = token.getCoveredText();
+				tagArray[tNum] = token.getPos().getPosValue();
+				tokenStartOffsetArray[tNum] = token.getBegin();
+				tokenEndOffsetArray[tNum] = token.getEnd();
+
+			}
+
+			query = getQuery(chunkerModelPath);
+
+			InputStream modelIn = null;
+			ChunkerModel model = null;
+
+			try {
+				modelIn = new FileInputStream(chunkerModelPath);
+				model = new ChunkerModel(modelIn);
+			} catch (IOException e) {
+				// Model loading failed, handle the error
+				e.printStackTrace();
+			} finally {
+				if (modelIn != null) {
+					try {
+						modelIn.close();
+					} catch (IOException e) {
+					}
 				}
 			}
-		}
 
-		ChunkerME chunker = new opennlp.tools.chunker.ChunkerME(model);
-		Span[] chunk = chunker.chunkAsSpans(tokenTextArray, tagArray);
+			ChunkerME chunker = new opennlp.tools.chunker.ChunkerME(model);
+			Span[] chunk = chunker.chunkAsSpans(tokenTextArray, tagArray);
 
-		for (int i = 0; i < chunk.length; i++) {
-			int start = chunk[i].getStart();
-			int end = chunk[i].getEnd();
-			String tag = chunk[i].getType();
-			query = "";
-			for (int j = start; j < end; j++) {
-				if (query != "")
-					query += "#";
-				query += tokenTextArray[j];
+			for (int i = 0; i < chunk.length; i++) {
+				int start = chunk[i].getStart();
+				int end = chunk[i].getEnd();
+				String tag = chunk[i].getType();
+				List<String> queries = new ArrayList<String>();
 
+				query = "";
+				queries.add(query);
+
+				for (int j = start; j < end; j++) {
+
+					List<String> newQueries = new ArrayList<String>();
+					for (int k = 0; k < queries.size(); k++) {
+						String curQuery = queries.get(k);
+						if (curQuery != "")
+
+							queries.set(k, curQuery + "#");
+
+						newQueries.add(curQuery + tokenTextArray[j]);
+
+						if (tagArray[j].equals("NN")
+								|| tagArray[j].equals("NNS")
+								|| tagArray[j].equals("NNP")
+								|| tagArray[j].equals("NNPS")) {
+							List<String> values = NEMEX_A.checkSimilarity(
+									tagArray[j], gazetteerFilePath,
+									similarityMeasure, similarityThreshold);
+
+							for (int l = 0; i < values.size(); l++) {
+								String newQuery = curQuery + values.get(l);
+								newQueries.add(newQuery);
+							}
+
+						}
+
+					}
+					queries = newQueries;
+
+				}
+
+				for (int j = 0; j < queries.size(); j++) {
+					query = queries.get(j);
+
+					int startOffset = tokenStartOffsetArray[start];
+					int endOffset = tokenEndOffsetArray[end - 1];
+
+					Chunk annot = new Chunk(view, startOffset, endOffset);
+					annot.setChunkValue(query);
+					annot.addToIndexes();
+
+					query = query.toLowerCase();
+					logger.info("Query:" + query);
+					ArrayList<QueryInfo> offsets = new ArrayList<QueryInfo>();
+
+					QueryInfo curOffset = new QueryInfo(view, startOffset,
+							endOffset, tag);
+
+					if (queryMap.containsValue(query)) {
+						offsets = queryIndex.get(query);
+					} else {
+						index++;
+						queryMap.put(index, query);
+					}
+
+					totalNoOfQueries++;
+					offsets.add(curOffset);
+
+					queryIndex.put(query, offsets);
+				}
 			}
 
-			int startOffset = tokenStartOffsetArray[start];
-			int endOffset = tokenEndOffsetArray[end - 1];
+			logger.info("Finished creating queries");
 
-			Chunk annot = new Chunk(view, startOffset, endOffset);
-			annot.setChunkValue(query);
-			annot.addToIndexes();
+			logger.info("Adding queries to dictionary");
+			Iterator<Entry<Integer, String>> iter = queryMap.entrySet()
+					.iterator();
 
-			query = query.toLowerCase();
-			logger.info("Query:" + query);
-			ArrayList<QueryInfo> offsets = new ArrayList<QueryInfo>();
+			PrintWriter fw;
 
-			QueryInfo curOffset = new QueryInfo(view, startOffset, endOffset,
-					tag);
-
-			if (queryMap.containsValue(query)) {
-				offsets = queryIndex.get(query);
-			} else {
-				index++;
-				queryMap.put(index, query);
-			}
-
-			totalNoOfQueries++;
-			offsets.add(curOffset);
-
-			queryIndex.put(query, offsets);
-
-		}
-
-		logger.info("Finished creating queries");
-
-		logger.info("Adding queries to dictionary");
-		Iterator<Entry<Integer, String>> iter = queryMap.entrySet().iterator();
-
-		PrintWriter fw;
-		try {
 			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath));
 			fw.println("0 utf-8 EN " + (int) totalNoOfQueries + " "
 					+ queryMap.size());
@@ -341,7 +374,9 @@ public class NemexAligner implements AlignmentComponent {
 					this.delimiterSwitchOff, this.nGramSize,
 					this.ignoreDuplicateNgrams);
 
-		} catch (IOException e) {
+		}
+
+		catch (Exception e) {
 			logger.info("Error updating the Gazetteer file");
 			e.printStackTrace();
 		}
@@ -677,6 +712,7 @@ public class NemexAligner implements AlignmentComponent {
 
 	private final static Logger logger = Logger.getLogger(NemexAligner.class);
 	private String gazetteerFilePath;
+	private String externalDictPath;
 	private String delimiter;
 	private Boolean delimiterSwitchOff;
 	private int nGramSize;

@@ -80,7 +80,7 @@ public class NemexAlignerTestEN {
 
 			logger.info("Initialize the Nemex Aligner");
 
-			aligner = new NemexAligner(
+			aligner = new NemexAligner("null", 
 					"src/test/resources/gazetteer/nemexAligner.txt", "#", true,
 					3, false, "DICE_SIMILARITY_MEASURE", 0.8, "src/main/resources/chunker-model/en-chunker.bin", "TtoH");
 			logger.info("Initialization finished");

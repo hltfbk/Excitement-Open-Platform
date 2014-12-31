@@ -46,6 +46,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 			throws ConfigurationException {
 		NameValueTable comp = config.getSection("NemexAlignerScoring");
 
+		String externalDictPath = comp.getString("externalDictPath");
+		
 		String gazetteerFilePath = comp.getString("gazetteerFilePath");
 		String delimiter = comp.getString("delimiter");
 		Boolean delimiterSwitchOff = Boolean.valueOf(comp
@@ -59,7 +61,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 		String chunkerModelPath = comp.getString("chunkerModelPath");
 		this.direction = comp.getString("direction");
 
-		this.aligner = new NemexAligner(gazetteerFilePath, delimiter,
+		this.aligner = new NemexAligner(externalDictPath, gazetteerFilePath, delimiter,
 				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams,
 				similarityMeasure, similarityThreshold, chunkerModelPath,
 				direction);
@@ -130,12 +132,10 @@ public class NemexAlignerScoring implements ScoringComponent {
 				}
 
 				if (direction == "HtoT") {
-					logger.info("Getting links from hView now");
 					Collection<Link> hLinks = JCasUtil
 							.select(hView, Link.class);
 
 					if (hLinks.size() > 0) {
-						logger.info("Links found, adding scores");
 						scoresVector.addAll(calculateSimilarity(tView, hLinks,
 								tChunkNum, hChunkNum));
 					}
@@ -143,12 +143,10 @@ public class NemexAlignerScoring implements ScoringComponent {
 				}
 
 				else {
-					logger.info("Getting links from tView now");
 					Collection<Link> tLinks = JCasUtil
 							.select(tView, Link.class);
 
 					if (tLinks.size() > 0) {
-						logger.info("Links found, adding scores");
 						scoresVector.addAll(calculateSimilarity(hView, tLinks,
 								tChunkNum, hChunkNum));
 					}
@@ -232,7 +230,6 @@ public class NemexAlignerScoring implements ScoringComponent {
 				target = (JCas) link.getHSideTarget().getView();
 
 			if (target.equals(view)) {*/
-				logger.info("Incrementing sum");
 				sum += 1;
 			/*} else
 				continue;*/
