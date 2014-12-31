@@ -28,7 +28,8 @@ public class NemexAlignerTestEN {
 			OpenNLPTaggerEN tokenizer = null;
 			tokenizer = new OpenNLPTaggerEN();
 			
-			JCas aJCas1 = tokenizer.generateSingleTHPairCAS("Gabriel Garcia Marquez was a liberal thinker whose left-wing politics angered many conservative politicians and heads of state. His job as a reporter for the Cuban news agency Prensa Latina, in 1960, and and friendship with Fidel Castro resulted in his being ultimately denied entry to the United States for political reasons.",
+			/*
+			 JCas aJCas1 = tokenizer.generateSingleTHPairCAS("Gabriel Garcia Marquez was a liberal thinker whose left-wing politics angered many conservative politicians and heads of state. His job as a reporter for the Cuban news agency Prensa Latina, in 1960, and and friendship with Fidel Castro resulted in his being ultimately denied entry to the United States for political reasons.",
 					"Gabriel Garcia Marquez was a conservative politician.");
 
 			Logger.getRootLogger().setLevel(Level.INFO); // main log setting:
@@ -40,7 +41,7 @@ public class NemexAlignerTestEN {
 			alignAndPrint(aJCas1);
 			logger.info("Finished alignment of test JCas pair 1");
 			
-			/*JCas aJCas2 = tokenizer
+			JCas aJCas2 = tokenizer
 					.generateSingleTHPairCAS(
 							"Judge Drew served as Justice until Kennon returned to claim his seat in 1945.",
 							"Kennon served as Justice.");
@@ -68,6 +69,18 @@ public class NemexAlignerTestEN {
 			logger.info("Starting alignment for test JCas pair 4");
 			alignAndPrint(aJCas4);
 			logger.info("Finished alignment of test JCas pair 4");*/
+			
+			JCas aJCas5 = tokenizer.generateSingleTHPairCAS("Ampicilin is a drug.",
+					"Ampicillin is useful.");
+
+			Logger.getRootLogger().setLevel(Level.INFO); // main log setting:
+															// set as DEBUG to
+															// see what's going
+															// & debug.
+
+			logger.info("Starting alignment for test JCas pair 5");
+			alignAndPrint(aJCas5);
+			logger.info("Finished alignment of test JCas pair 5");
 
 		} catch (Exception e) {
 			logger.info("Could not align the JCas test pair");
@@ -80,8 +93,8 @@ public class NemexAlignerTestEN {
 
 			logger.info("Initialize the Nemex Aligner");
 
-			aligner = new NemexAligner("null", 
-					"src/test/resources/gazetteer/nemexAligner.txt", "#", true,
+			aligner = new NemexAligner( 
+					"src/test/resources/gazetteer/nemexAligner.txt", "src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt", "#", true,
 					3, false, "DICE_SIMILARITY_MEASURE", 0.8, "src/main/resources/chunker-model/en-chunker.bin", "TtoH");
 			logger.info("Initialization finished");
 

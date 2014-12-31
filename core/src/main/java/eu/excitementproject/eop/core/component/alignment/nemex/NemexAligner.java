@@ -63,7 +63,7 @@ import opennlp.tools.util.Span;
 
 public class NemexAligner implements AlignmentComponent {
 
-	public NemexAligner(String gazetteerFilePath, String extrenalDictPath,
+	public NemexAligner(String gazetteerFilePath, String externalDictPath,
 			String delimiter, Boolean delimiterSwitchOff, int nGramSize,
 			Boolean ignoreDuplicateNgrams, String similarityMeasure,
 			double similarityThreshold, String chunkerModelPath,
@@ -239,21 +239,21 @@ public class NemexAligner implements AlignmentComponent {
 					List<String> newQueries = new ArrayList<String>();
 					for (int k = 0; k < queries.size(); k++) {
 						String curQuery = queries.get(k);
-						if (curQuery != "")
-
-							queries.set(k, curQuery + "#");
-
+						if (curQuery != "") {
+							curQuery = curQuery + "#";
+							queries.set(k, curQuery);
+						}
 						newQueries.add(curQuery + tokenTextArray[j]);
-
+						logger.info("Token and tag:"+tokenTextArray[j]+tagArray[j]);
 						if (tagArray[j].equals("NN")
 								|| tagArray[j].equals("NNS")
 								|| tagArray[j].equals("NNP")
 								|| tagArray[j].equals("NNPS")) {
 							List<String> values = NEMEX_A.checkSimilarity(
-									tagArray[j], gazetteerFilePath,
+									tokenTextArray[j].toLowerCase(), this.externalDictPath,
 									similarityMeasure, similarityThreshold);
-
-							for (int l = 0; i < values.size(); l++) {
+							logger.info("Similar entries:"+values);
+							for (int l = 0; l < values.size(); l++) {
 								String newQuery = curQuery + values.get(l);
 								newQueries.add(newQuery);
 							}
