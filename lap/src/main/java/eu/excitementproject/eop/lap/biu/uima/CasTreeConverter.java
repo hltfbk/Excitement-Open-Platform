@@ -16,6 +16,7 @@ import java.util.Set;
 
 import org.apache.commons.collections15.BidiMap;
 import org.apache.commons.collections15.bidimap.DualHashBidiMap;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
@@ -33,8 +34,11 @@ import eu.excitementproject.eop.common.representation.parse.representation.basic
 import eu.excitementproject.eop.common.representation.parse.representation.basic.EdgeInfo;
 import eu.excitementproject.eop.common.representation.parse.representation.basic.NodeInfo;
 import eu.excitementproject.eop.common.representation.parse.tree.dependency.basic.BasicNode;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeStringGenerator;
+import eu.excitementproject.eop.common.representation.parse.tree.dependency.view.TreeToLineString;
 import eu.excitementproject.eop.common.representation.partofspeech.PennPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
+import eu.excitementproject.eop.common.utilities.uima.UimaUtils;
 import eu.excitementproject.eop.lap.biu.PreprocessUtilities;
 import eu.excitementproject.eop.lap.biu.uima.ae.parser.StanfordDependenciesParserAE;
 
@@ -48,6 +52,18 @@ public class CasTreeConverter {
 
 	//////////////// PUBLIC ZONE /////////////////////////
 	
+	public CasTreeConverter() {
+		this(false);
+	}
+	
+	/**
+	 * @param failOnMultipleRootCandidates If true, then in case more than one token is eligible 
+	 * to be the root - throw an exception. If false, then in this case - output a warning and silently
+	 * choose one of the candidates arbitrarily to be the root and continue.
+	 */
+	public CasTreeConverter(boolean failOnMultipleRootCandidates) {
+		this.failOnMultipleRootCandidates = failOnMultipleRootCandidates;
+	}
 	/**
 	 * 
 	 * @param jcas a JCas created by an EOP LAP
@@ -176,7 +192,9 @@ public class CasTreeConverter {
 		deepDependencies = new ArrayList<Dependency>();
 		extraNodes = new LinkedHashSet<BasicNode>();
 		
-		logger.trace(String.format("\n***************\n***************\n%s\n***************\n", sentenceAnno.getCoveredText()));
+		logger.trace(String.format("\n***************\n***************\nCasTreeConverter Input:\n\t\tSentence: %s\n\t\ttokens=%s\n\t\tdependencies=\n%s\n***************\n",
+				UimaUtils.annotationToString(sentenceAnno), UimaUtils.annotationCollectionToString(tokenAnnotations),
+				UimaUtils.annotationCollectionToString(dependencyAnnotations)));
 		
 		// Get token positions in sentence (1-based)
 		Map<Token, Integer> tokenPositions = new LinkedHashMap<Token, Integer>(tokenAnnotations.size());
@@ -201,8 +219,8 @@ public class CasTreeConverter {
 			// NOTE that LATER (after deep dependencies) a token actually may have a few nodes. But not here. 
 			else if (tokenToNode.containsKey(dependent)) {
 				throw new CasTreeConverterException(String.format(
-						"Got dependent in more than one non-deep dependency. Dependent:%s, current governor:%s",
-						tokenString(dependent), tokenString(governor)));
+						"Got dependent in more than one non-deep dependency. Dependent:%s, current governor:%s, all dependencies: %s",
+						UimaUtils.annotationToString(dependent), UimaUtils.annotationToString(governor), UimaUtils.annotationCollectionToString(dependencyAnnotations)));
 			}
 			
 			// Create a node for dependent
@@ -252,33 +270,24 @@ public class CasTreeConverter {
 			}
 		}
 		
-		// Verify exactly one root
-		Set<Token> tokensThatAreNotchildren = new LinkedHashSet<Token>(tokenAnnotations);
-		tokensThatAreNotchildren.removeAll(children);
-		if (tokensThatAreNotchildren.size() == 0) {
-			throw new CasTreeConverterException("All nodes are children - no node to be root!");
-		}
-		else if (tokensThatAreNotchildren.size() > 1) {
-			//TODO hack due to issue: https://github.com/hltfbk/Excitement-Open-Platform/issues/220
-			// When it is resolved, remove all content of this if body, and uncomment and leave in only this exception-throwing
-//			throw new CasTreeConverterException(String.format(
-//					"Got %d nodes that are tokens and not children and thus should be root - there should be exactly one: %s",
-//					tokensThatAreNotchildren.size(), tokensThatAreNotchildren));
-			logger.error(String.format(
-					"Got %d nodes that are tokens and not children and thus should be root - there should be exactly one: %s",
-					tokensThatAreNotchildren.size(), tokensThatAreNotchildren));
-			Token root = tokensThatAreNotchildren.iterator().next();
-			tokensThatAreNotchildren = new LinkedHashSet<Token>();
-			tokensThatAreNotchildren.add(root);
-			//TODO finish temp solution
-		}
-		
 		// Build root
-		Token rootToken = tokensThatAreNotchildren.iterator().next();
+		Token rootToken = getRootToken();
 		int serialandId = tokenPositions.get(rootToken);
 		BasicNode root = buildNode(jcas, serialandId, serialandId, rootToken, null, null);
 		addChildren(root, childrenByParent.get(rootToken));
 				
+		String treePrint;
+		try {
+			treePrint = TreeStringGenerator.treeToStringWordPos(root);
+		} catch (TreeStringGenerator.TreeStringGeneratorException e) {
+			treePrint = TreeToLineString.getStringWordRelPos(root);
+		}
+		
+		logger.trace(String.format("\n\n\n****CasTreeConverter Summary:\n\t\tSentence: %s\n\t\ttokens(%s)=%s\n\t\ttree(%s nodes, out of which %s deep)=\n%s\n\n\n",
+				UimaUtils.annotationToString(sentenceAnno), tokenAnnotations.size(), UimaUtils.annotationCollectionToString(tokenAnnotations),
+				nodes.size(), extraNodes.size(), treePrint));
+
+		
 		if (nodes.size() != tokenAnnotations.size() + extraNodes.size()) {
 			//TODO hack due to issue: https://github.com/hltfbk/Excitement-Open-Platform/issues/220
 			// When it is resolved, remove all content of this if body, and uncomment and leave in only this exception-throwing
@@ -290,13 +299,65 @@ public class CasTreeConverter {
 					nodes.size(), tokenAnnotations.size(), extraNodes.size()));
 			//TODO finish temp solution
 		}
-		
+
 		// Add artificial root on top (this is mandatory in BIU parse trees) 
 		BasicNode artificialRoot = PreprocessUtilities.addArtificialRoot(root);
 		
 		return artificialRoot;
 	}
 	
+	/**
+	 * A root token must conform to these:
+	 * <ol>
+	 * <li> is not a child (doesn't have parents)
+	 * <li> has children (when the sentence has more than one token).
+	 * </ol>
+	 * 
+	 * In a perfect world, only one token will obey these condition. However in practice,
+	 * maybe due to parsing issues, there could be more than one. In this case, we behave
+	 * according to {@code failOnMultipleRootCandidates}, and possibly just choose
+	 * arbitrarily one of the root candidates to be the root. <b>NOTE</b> that in this
+	 * case, all other tokens would be left out of the tree.
+	 * 
+	 * @see <a href=https://github.com/hltfbk/Excitement-Open-Platform/issues/220>
+	 *      a report about an earlier version of this issue</a>
+	 */
+	private Token getRootToken() throws CasTreeConverterException {
+		Set<Token> rootCandidates = new LinkedHashSet<Token>(tokenAnnotations);
+		
+		// condition 1 - not a child
+		rootCandidates.removeAll(children);
+		if (rootCandidates.size() == 0) {
+			throw new CasTreeConverterException("All nodes are children - no node to be root!");
+		}
+		
+		// condition 2 - has children (unless sentence has only one token)
+		if (rootCandidates.size() > 1) {
+			for (Iterator<Token> iter = rootCandidates.iterator(); iter.hasNext();) {
+				Token curr = iter.next();
+				Set<BasicNode> children = childrenByParent.get(curr);
+				if (children==null || children.isEmpty()) {
+					iter.remove();
+				}
+			}
+		}
+		
+		Token root = rootCandidates.iterator().next();
+		
+		// handle multiple candidates after all the filtering
+		if (rootCandidates.size() > 1) {
+			String errMsg = String.format("Got %s candidate tokens for root (there should be exactly one): %s", rootCandidates.size(), outTokens(rootCandidates));
+			
+			if (failOnMultipleRootCandidates) {
+				throw new CasTreeConverterException(errMsg);
+			}
+			else {
+				logger.error(errMsg + String.format("  Choosing one token as root arbitrarily: %s", outToken(root)));
+			}
+		}
+		
+		return root;
+	}
 	
 	private static NodeInfo buildNodeInfo(JCas jcas, Token tokenAnno, int serial) throws CasTreeConverterException, UnsupportedPosTagStringException {
 		String word = tokenAnno.getCoveredText();
@@ -374,6 +435,18 @@ public class CasTreeConverter {
 		return result;
 	}
 	
+	private static String outToken(Token t) {
+		return String.format("%s[%s:%s]", t.getCoveredText(), t.getBegin(), t.getEnd());
+	}
+
+	private static String outTokens(Collection<Token> tokens) {
+		List<String> strs = new ArrayList<String>(tokens.size());
+		for (Token t : tokens) {
+			strs.add(outToken(t));
+		}
+		return "[" + StringUtils.join(strs, ", ") + "]";
+	}
+	
 	private BasicNode buildNode(JCas jcas, int serial, int id, Token token, String depType, Token parent) throws CasTreeConverterException, UnsupportedPosTagStringException {
 		String idString = Integer.toString(id);
 		NodeInfo nodeInfo = buildNodeInfo(jcas, token, serial);
@@ -407,10 +480,6 @@ public class CasTreeConverter {
 		}
 	}
 	
-	private static String tokenString(Token token) {
-		return String.format("'%s'[%d:%d]", token.getCoveredText(), token.getBegin(), token.getEnd());
-	}
-
 	/**
 	 * Defines an order for children of a node.<BR>
 	 * First come all the regular nodes, ordered by serial. Then come
@@ -437,6 +506,8 @@ public class CasTreeConverter {
 
 	private final Comparator<BasicNode> CHILDREN_ORDER = new ChildrenOrder();
 	private List<Token> tokenAnnotations;
+	
+	private boolean failOnMultipleRootCandidates = false;
 	
 	// We need the BasicNodes in the value collections to be ordered, as the first one will always
 	// be a non-deep node, and all subsequent nodes will be deep nodes (if any)

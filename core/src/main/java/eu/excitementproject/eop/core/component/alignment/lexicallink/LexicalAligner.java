@@ -2,13 +2,18 @@ package eu.excitementproject.eop.core.component.alignment.lexicallink;
 
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.EmptyStringList;
 import org.apache.uima.jcas.cas.FSArray;
+import org.apache.uima.jcas.cas.NonEmptyStringList;
+import org.apache.uima.jcas.cas.StringList;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
@@ -25,13 +30,14 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.representation.partofspeech.ByCanonicalPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.PartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.UnsupportedPosTagStringException;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationFile;
 import eu.excitementproject.eop.common.utilities.configuration.ConfigurationParams;
 import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanRuleInfo;
-import eu.excitementproject.eop.core.component.lexicalknowledge.wikipedia.WikiRuleInfo;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetRuleInfo;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
-
 
 /**
  * Produces alignment links between the text and the hypothesis,
@@ -40,7 +46,8 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * t->h or h->t, then an alignment link between t and h will be 
  * created.
  * <P>
- * Usage: align a sentence pair by calling {@link #align(String, String)} method.
+ * Usage: Align a sentence pair by calling {@link #annotate(JCas)} method.
+ * Configure the aligner using the LexicalAligner.xml configuration file. 
  * When the {@linkplain Aligner} object is no longer to be used, the
  * {@link #cleanUp()} method should be called.
  * 
@@ -55,6 +62,8 @@ public class LexicalAligner implements AlignmentComponent {
 	private static final String MAX_PHRASE_KEY = "maxPhraseLength";
 	private static final String WORDNET = "wordnet";
 	private static final String USE_LEMMA_PARAM = "useLemma";
+	private static final String LEFT_SIDE_POS_PARAM = "leftSidePOS";
+	private static final String RIGHT_SIDE_POS_PARAM = "rightSidePOS";
 	private static final String VERSION_PARAM = "version";
 	
 	// Private Members
@@ -64,11 +73,109 @@ public class LexicalAligner implements AlignmentComponent {
 	private int maxPhrase = 0;
 	private HashMap<String, LexicalResourceInformation> lexicalResourcesInformation;
 	private static final Logger logger = Logger.getLogger(LexicalAligner.class);
+	private static final HashMap<String, String> linkInfoToDomainLevel;
+	private static final HashMap<String, String> linkInfoToInferenceLevel;
+	private static final HashMap<String, String> linkInfoToDirectionality;
+	
+	// Static Initializer
+	static {
+		
+		// Define the specific relations to domain level table
+		linkInfoToDomainLevel = new HashMap<String, String>();
+		linkInfoToDomainLevel.put("WORDNET__SYNONYM", "SYNONYM");
+		linkInfoToDomainLevel.put("WORDNET__HYPERNYM", "HYPERNYM");
+		linkInfoToDomainLevel.put("WORDNET__INSTANCE_HYPERNYM", "HYPERNYM");
+		linkInfoToDomainLevel.put("VerbOcean__STRONGER_THAN", "HYPERNYM");
+		linkInfoToDomainLevel.put("WORDNET__HYPONYM", "HYPONYM");
+		linkInfoToDomainLevel.put("WORDNET__INSTANCE_HYPONYM", "HYPONYM");
+		linkInfoToDomainLevel.put("WORDNET__TROPONYM", "HYPONYM");
+		linkInfoToDomainLevel.put("WORDNET__MEMBER_MERONYM", "MERONYM");
+		linkInfoToDomainLevel.put("WORDNET__PART_MERONYM", "MERONYM");
+		linkInfoToDomainLevel.put("WORDNET__SUBSTANCE_MERONYM", "MERONYM");
+		linkInfoToDomainLevel.put("WORDNET__MEMBER_HOLONYM", "HOLONYM");
+		linkInfoToDomainLevel.put("WORDNET__PART_HOLONYM", "HOLONYM");
+		linkInfoToDomainLevel.put("WORDNET__SUBSTANCE_HOLONYM", "HOLONYM");
+		linkInfoToDomainLevel.put("WORDNET__CAUSE", "CAUSE");
+		linkInfoToDomainLevel.put("WORDNET__DERIVATIONALLY_RELATED", "DERIVATIONALLY_RELATED");
+		linkInfoToDomainLevel.put("VerbOcean__HAPPENS_BEFORE", "HAPPENS_BEFORE");
+		linkInfoToDomainLevel.put("WORDNET__ANTONYM", "ANTONYM");
+		linkInfoToDomainLevel.put("VerbOcean__OPPOSITE_OF", "ANTONYM");
+		
+		// Define the specific relations to inference level table
+		linkInfoToInferenceLevel = new HashMap<String, String>();
+		linkInfoToInferenceLevel.put("WORDNET__ANTONYM", "LOCAL_CONTRADICTION");
+		linkInfoToInferenceLevel.put("VerbOcean__OPPOSITE_OF", "LOCAL_CONTRADICTION");
+		linkInfoToInferenceLevel.put("Wikipedia_Redirect", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__SYNONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__DERIVATIONALLY_RELATED", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("CatVar__local-entailment", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wordnet__ENTAILMENT", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wikipedia_BeComp", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wikipedia_Parenthesis", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("Wikipedia_Category", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__HYPERNYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__INSTANCE_HYPERNYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("VerbOcean__STRONGER_THAN", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__HYPONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__INSTANCE_HYPONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__TROPONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__MEMBER_MERONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__PART_MERONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__SUBSTANCE_MERONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__MEMBER_HOLONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__PART_HOLONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__SUBSTANCE_HOLONYM", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__CAUSE", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("VerbOcean__HAPPENS_BEFORE", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("GEO__local-entailment", "LOCAL_ENTAILMENT");
+		linkInfoToInferenceLevel.put("WORDNET__SIMILAR_TO", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("WORDNET__VERB_GROUP", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("VerbOcean__SIMILAR", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("Wikipedia_AllNouns", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("Wikipedia_Link", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("distsim-lin-proximity__local-entailment", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("distsim-lin-dependency__local-entailment", "LOCAL_SIMILARITY");
+		linkInfoToInferenceLevel.put("distsim-bap__local-entailment", "LOCAL_SIMILARITY");
+		
+		// Define the specific relations to directionality table
+		linkInfoToDirectionality = new HashMap<String, String>();
+		linkInfoToDirectionality.put("Wikipedia_Redirect", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SYNONYM", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__DERIVATIONALLY_RELATED", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("CatVar__local-entailment", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("Wordnet__ENTAILMENT", "DIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_BeComp", "DIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_Parenthesis", "DIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_Category", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__HYPERNYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__INSTANCE_HYPERNYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("VerbOcean__STRONGER_THAN", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__HYPONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__INSTANCE_HYPONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__TROPONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__MEMBER_MERONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__PART_MERONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SUBSTANCE_MERONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__MEMBER_HOLONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__PART_HOLONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SUBSTANCE_HOLONYM", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__CAUSE", "DIRECTIONAL");
+		linkInfoToDirectionality.put("VerbOcean__HAPPENS_BEFORE", "DIRECTIONAL");
+		linkInfoToDirectionality.put("GEO__local-entailment", "DIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__SIMILAR_TO", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("WORDNET__VERB_GROUP", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("VerbOcean__SIMILAR", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_AllNouns", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("Wikipedia_Link", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("distsim-lin-proximity__local-entailment", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("distsim-lin-dependency__local-entailment", "BIDIRECTIONAL");
+		linkInfoToDirectionality.put("distsim-bap__local-entailment", "DIRECTIONAL");
+	}
 	
 	// Public Methods
 	
 	/**
-	 * Initialize a lexical aligner
+	 * Initialize a lexical aligner from the configuration
 	 * @param config a CommonConfig instance. The aligner retrieves the lexical 
 	 * resources configuration values. 
 	 * @throws AlignmentComponentException if initialization failed
@@ -84,6 +191,24 @@ public class LexicalAligner implements AlignmentComponent {
 			throw new AlignmentComponentException(
 					"Could not initialize the lexical aligner", e);
 		}
+	}
+	
+	/**
+	 * Initialize a lexical aligner using parameters
+	 * @param lexicalResources A set of initialized lexical resources
+	 * @param maxPhrase The maximum length of phrase to align
+	 * @param lexicalResourcesInformation Additional information required for the aligner
+	 * about each of the resources, such as whether this resource uses lemma or surface-level tokens,
+	 * and whether to limit the alignments to certain relations only. 
+	 * The lexicalResourcesInformation should hold keys of type: resource.getClass().getName()
+	 */
+	public LexicalAligner(List<LexicalResource<? extends RuleInfo>> lexicalResources, 
+			int maxPhrase, 
+			HashMap<String, LexicalResourceInformation> lexicalResourcesInformation) {
+		
+		this.lexicalResources = lexicalResources;
+		this.lexicalResourcesInformation = lexicalResourcesInformation;
+		this.maxPhrase = maxPhrase;
 	}
 	
 	/**
@@ -135,11 +260,13 @@ public class LexicalAligner implements AlignmentComponent {
 								
 								// Get the rules textPhrase -> hypoPhrase
 								List<LexicalRule<? extends RuleInfo>> ruleFromLeft = 
-										getRules(resource, textPhrase, hypoPhrase);
+										getRules(resource, textPhrase, hypoPhrase,
+												resourceInfo.getLeftSidePOS(), resourceInfo.getRightSidePOS());
 								
 								// Get the rules hypoPhrase -> textPhrase
 								List<LexicalRule<? extends RuleInfo>> ruleFromRight = 
-										getRules(resource, hypoPhrase, textPhrase);
+										getRules(resource, hypoPhrase, textPhrase,
+												resourceInfo.getLeftSidePOS(), resourceInfo.getRightSidePOS());
 								
 								// Create the alignment links for the rules
 								createAlignmentLinks(
@@ -241,11 +368,36 @@ public class LexicalAligner implements AlignmentComponent {
 			if (lexicalResource != null) {
 				lexicalResources.add(lexicalResource);
 				
+				PartOfSpeech leftSidePOS = null, rightSidePOS = null;
+				
 				// Add the information about this resource
+				
+				// Get the right and left side POS, in case it's mentioned
+				if (resourceParams.keySet().contains(LEFT_SIDE_POS_PARAM)) {
+					try {
+						leftSidePOS = new ByCanonicalPartOfSpeech(resourceParams.getString(LEFT_SIDE_POS_PARAM));
+					} catch (UnsupportedPosTagStringException e) {
+						logger.warn("Could not load POS for left side: " + 
+								resourceParams.getString(LEFT_SIDE_POS_PARAM) + 
+								". Alignment links of all POS will be retreived.");
+					}
+				}
+				
+				if (resourceParams.keySet().contains(RIGHT_SIDE_POS_PARAM)) {
+					try {
+						rightSidePOS = new ByCanonicalPartOfSpeech(resourceParams.getString(RIGHT_SIDE_POS_PARAM));
+					} catch (UnsupportedPosTagStringException e) {
+						logger.warn("Could not load POS for right side: " + 
+								resourceParams.getString(RIGHT_SIDE_POS_PARAM) + 
+								". Alignment links of all POS will be retreived.");
+					}
+				}
+				
 				lexicalResourcesInformation.put(lexicalResource.getClass().getName(), 
 						new LexicalResourceInformation(
 								resourceParams.getString(VERSION_PARAM), 
-								resourceParams.getBoolean(USE_LEMMA_PARAM)));
+								resourceParams.getBoolean(USE_LEMMA_PARAM),
+								leftSidePOS, rightSidePOS));
 			}
 		}
 	}
@@ -301,12 +453,15 @@ public class LexicalAligner implements AlignmentComponent {
 	 * @param resource The lexical resource to use
 	 * @param leftSide The phrase that will be looked for as lhs of a rule
 	 * @param rightSide The phrase that will be looked for as rhs of a rule
+	 * @param partOfSpeech2 
+	 * @param partOfSpeech 
 	 * @return The list of rules leftSide -> rightSide
 	 * @throws LexicalResourceException 
 	 */
 	private List<LexicalRule<? extends RuleInfo>> 
 						getRules(LexicalResource<? extends RuleInfo> resource,
-								String leftSide, String rightSide) 
+								String leftSide, String rightSide, 
+								PartOfSpeech leftSidePOS, PartOfSpeech rightSidePOS) 
 								throws LexicalResourceException {
 
 		List<LexicalRule<? extends RuleInfo>> rules = 
@@ -321,7 +476,7 @@ public class LexicalAligner implements AlignmentComponent {
 			if (resource.getClass().getName().toLowerCase().contains(WORDNET)) {
 				
 				for (LexicalRule<? extends RuleInfo> rule : 
-						resource.getRules(leftSide, null, rightSide, null)) {
+						resource.getRules(leftSide, leftSidePOS, rightSide, rightSidePOS)) {
 					
 					WordnetRuleInfo ruleInfo = (WordnetRuleInfo)rule.getInfo();
 					
@@ -336,7 +491,7 @@ public class LexicalAligner implements AlignmentComponent {
 				
 				// Get rules from t to h
 				for (LexicalRule<? extends RuleInfo> rule : 
-					resource.getRules(leftSide, null, rightSide, null)) {
+					resource.getRules(leftSide, leftSidePOS, rightSide, rightSidePOS)) {
 					
 					addRuleToList(rules, rule);
 				}
@@ -456,11 +611,29 @@ public class LexicalAligner implements AlignmentComponent {
 		
 		// Set strength according to the rule data
 		link.setStrength(confidence); 
-		
+	
 		// Add the link information
 		link.setAlignerID(resourceName);  
 		link.setAlignerVersion(lexicalResourceVersion); 
 		link.setLinkInfo(linkInfo);
+		
+		// Set the group label
+		List<String> labels = new ArrayList<String>();
+		String relationType = resourceName + "__" + linkInfo; 
+		
+		if (linkInfoToDomainLevel.containsKey(relationType)) {
+			labels.add(linkInfoToDomainLevel.get(relationType));
+		}
+		
+		if (linkInfoToInferenceLevel.containsKey(relationType)) {
+			labels.add(linkInfoToInferenceLevel.get(relationType));
+		}
+		
+		if (linkInfoToDirectionality.containsKey(relationType)) {
+			labels.add(linkInfoToDirectionality.get(relationType));
+		}
+		
+		link.setGroupLabel(createStringList(aJCas, labels));
 		
 		// Mark begin and end according to the hypothesis target
 		link.setBegin(hypoTarget.getBegin()); 
@@ -491,14 +664,14 @@ public class LexicalAligner implements AlignmentComponent {
 			type = ((WordnetRuleInfo)rule.getInfo()).getTypedRelation().name();
 		}
 		
-		// Wikipedia
-		else if (rule.getResourceName().equals("Wikipedia")) {
-			type = ((WikiRuleInfo)rule.getInfo()).getBestExtractionType().name();
-		}
-		
 		// VerbOcean
 		else if (rule.getResourceName().equals("VerbOcean")) {
 			type = ((VerbOceanRuleInfo)rule.getInfo()).getRelationType().name();
+		}
+		
+		// Wikipedia
+		if (rule.getResourceName().equals("Wikipedia")) {
+			type = rule.getRelation();
 		}
 		
 		return type;
@@ -623,4 +796,32 @@ public class LexicalAligner implements AlignmentComponent {
 				((Math.abs(firstRule.getConfidence() - 
 						secondRule.getConfidence()) <= 0.000001)));
 	}
+	
+	/**
+	 * Create a StringList containing the strings in the collection
+	 * @param aJCas
+	 * @param aCollection
+	 * @return
+	 */
+	public static StringList createStringList(JCas aJCas, Collection<String> aCollection) {
+ 		if (aCollection.size() == 0) {
+ 			return new EmptyStringList(aJCas);
+ 		}
+
+ 		NonEmptyStringList head = new NonEmptyStringList(aJCas);
+ 		NonEmptyStringList list = head;
+ 		Iterator<String> i = aCollection.iterator();
+ 		while (i.hasNext()) {
+ 			head.setHead(i.next());
+ 			if (i.hasNext()) {
+ 				head.setTail(new NonEmptyStringList(aJCas));
+ 				head = (NonEmptyStringList) head.getTail();
+ 			}
+ 			else {
+ 				head.setTail(new EmptyStringList(aJCas));
+ 			}
+ 		}
+
+ 		return list;
+ 	}
 }

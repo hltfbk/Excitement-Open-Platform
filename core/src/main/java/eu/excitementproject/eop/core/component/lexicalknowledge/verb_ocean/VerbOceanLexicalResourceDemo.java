@@ -33,14 +33,14 @@ public class VerbOceanLexicalResourceDemo {
 	public static void main(String[] args) throws UnsupportedPosTagStringException, LexicalResourceException, ConfigurationException, InitException {
 		System.out.println("Start \n*****************************\n");
 
-		String lLemma = "abandon";
-		PartOfSpeech pos2 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN);
-		String rLemma = "reconsider";
+		String lLemma = "loathe";
+		PartOfSpeech pos2 = new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.VERB);
+		String rLemma = "dislike";
 		System.out.println("Looking for all rules from \"" + lLemma + "\" to \"" + rLemma + "\"");
 		
 		Set<RelationType> allowedRelationTypes = Utils.arrayToCollection(new RelationType[]{RelationType.STRONGER_THAN, RelationType.HAPPENS_BEFORE
 				, RelationType.CAN_RESULT_IN}, new LinkedHashSet<RelationType>());
-		VerbOceanLexicalResource verbOceanLexR = new  VerbOceanLexicalResource(1, new File("//qa-srv/Data/RESOURCES/VerbOcean/verbocean.unrefined.2004-05-20.txt"), 
+		VerbOceanLexicalResource verbOceanLexR = new  VerbOceanLexicalResource(1, new File("C:/Java/Packages/biutee/eop_2014.03.31/biutee/data/VerbOcean/verbocean.unrefined.2004-05-20.txt"), 
 				allowedRelationTypes);
 		verbOceanLexR = new VerbOceanLexicalResource(verbOceanLexR);
 
