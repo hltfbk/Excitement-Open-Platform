@@ -3,6 +3,7 @@ package eu.excitementproject.eop.lap;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -11,6 +12,8 @@ import java.util.List;
 
 import org.apache.uima.UIMAFramework;
 import org.apache.uima.analysis_engine.AnalysisEngine;
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIterator;
@@ -21,6 +24,7 @@ import org.apache.uima.cas.IntArrayFS;
 import org.apache.uima.cas.StringArrayFS;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.XmiCasDeserializer;
+import org.apache.uima.cas.impl.XmiCasSerializer;
 import org.apache.uima.cas.text.AnnotationFS;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
@@ -29,7 +33,11 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
+import org.apache.uima.util.XMLSerializer;
+import org.uimafit.component.xwriter.CASDumpWriter;
+import org.uimafit.factory.AggregateBuilder;
 import org.xml.sax.SAXException;
+import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
@@ -298,6 +306,60 @@ public class PlatformCASProber {
 		}				
 		return aJCas; 
 	}
+	
+	/**
+	 * A static utility method: a one liner helper method to store JCAS as XMI. 
+	 * 
+	 * @param aJCas
+	 * @param xmiOutFile
+	 * @throws LAPException
+	 */
+	public static void storeJCasAsXMI(JCas aJCas, File xmiOutFile) throws LAPException 
+	{
+				
+		try {
+			FileOutputStream out = new FileOutputStream(xmiOutFile);
+			XmiCasSerializer ser = new XmiCasSerializer(aJCas.getTypeSystem());
+			XMLSerializer xmlSer = new XMLSerializer(out, false);
+			ser.serialize(aJCas.getCas(), xmlSer.getContentHandler());
+			out.close();
+		} catch (FileNotFoundException e) {
+			throw new LAPException("Unable to create/open the file" + xmiOutFile.toString(), e);
+		} catch (SAXException e) {
+			throw new LAPException("Failed to serialize the CAS into XML", e); 
+		} catch (IOException e) {
+			throw new LAPException("Unable to access/close the file" + xmiOutFile.toString(), e);
+		}
+	}
+
+    /**
+     * This utility method dumps the content of CAS for human readers.
+     * It dumps the content of the given aJCas into a new text file with fileName.
+     * If a file exists, it will be overwritten.
+     *
+     * @param aJCas CAS to be dumped into a file
+     * @param fileName the new text file that will holds the content for human readers.
+     * @throws LAPException
+     */
+    public static void dumpJCasToTextFile(JCas aJCas, String fileName) throws LAPException
+    {
+            try {
+                    AnalysisEngineDescription cc = createPrimitiveDescription(CASDumpWriter.class,
+                                    CASDumpWriter.PARAM_OUTPUT_FILE, fileName);
+                    AggregateBuilder builder = new AggregateBuilder();
+                    builder.add(cc);
+                    AnalysisEngine dumper = builder.createAggregate();
+                    dumper.process(aJCas);
+            }
+            catch (ResourceInitializationException e)
+            {
+                    throw new LAPException("Unable to initialize CASDumpWriter AE");
+            }
+            catch (AnalysisEngineProcessException e)
+            {
+                    throw new LAPException("CASDumpWriter returned an Exception.");
+            }
+    }
 
 	//
 	//
@@ -557,5 +619,5 @@ public class PlatformCASProber {
 	      aOut.print("\t");
 	    }
 	  }
-
+	  
 }

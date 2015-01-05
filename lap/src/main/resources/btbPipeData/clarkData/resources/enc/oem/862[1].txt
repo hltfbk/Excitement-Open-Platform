@@ -1,0 +1,131 @@
+<!-- Microsoft Windows OEM Codepage 862 (Hebrew) -->
+<TABLE>
+<TR><td>80</td><td>05D0</td></TR>HEBREW LETTER ALEF<br/>
+<TR><td>81</td><td>05D1</td></TR>HEBREW LETTER BET<br/>
+<TR><td>82</td><td>05D2</td></TR>HEBREW LETTER GIMEL<br/>
+<TR><td>83</td><td>05D3</td></TR>HEBREW LETTER DALET<br/>
+<TR><td>84</td><td>05D4</td></TR>HEBREW LETTER HE<br/>
+<TR><td>85</td><td>05D5</td></TR>HEBREW LETTER VAV<br/>
+<TR><td>86</td><td>05D6</td></TR>HEBREW LETTER ZAYIN<br/>
+<TR><td>87</td><td>05D7</td></TR>HEBREW LETTER HET<br/>
+<TR><td>88</td><td>05D8</td></TR>HEBREW LETTER TET<br/>
+<TR><td>89</td><td>05D9</td></TR>HEBREW LETTER YOD<br/>
+<TR><td>8A</td><td>05DA</td></TR>HEBREW LETTER FINAL KAF<br/>
+<TR><td>8B</td><td>05DB</td></TR>HEBREW LETTER KAF<br/>
+<TR><td>8C</td><td>05DC</td></TR>HEBREW LETTER LAMED<br/>
+<TR><td>8D</td><td>05DD</td></TR>HEBREW LETTER FINAL MEM<br/>
+<TR><td>8E</td><td>05DE</td></TR>HEBREW LETTER MEM<br/>
+<TR><td>8F</td><td>05DF</td></TR>HEBREW LETTER FINAL NUN<br/>
+<TR><td>90</td><td>05E0</td></TR>HEBREW LETTER NUN<br/>
+<TR><td>91</td><td>05E1</td></TR>HEBREW LETTER SAMEKH<br/>
+<TR><td>92</td><td>05E2</td></TR>HEBREW LETTER AYIN<br/>
+<TR><td>93</td><td>05E3</td></TR>HEBREW LETTER FINAL PE<br/>
+<TR><td>94</td><td>05E4</td></TR>HEBREW LETTER PE<br/>
+<TR><td>95</td><td>05E5</td></TR>HEBREW LETTER FINAL TSADI<br/>
+<TR><td>96</td><td>05E6</td></TR>HEBREW LETTER TSADI<br/>
+<TR><td>97</td><td>05E7</td></TR>HEBREW LETTER QOF<br/>
+<TR><td>98</td><td>05E8</td></TR>HEBREW LETTER RESH<br/>
+<TR><td>99</td><td>05E9</td></TR>HEBREW LETTER SHIN<br/>
+<TR><td>9A</td><td>05EA</td></TR>HEBREW LETTER TAV<br/>
+<TR><td>9B</td><td>00A2</td></TR>CENT SIGN<br/>
+<TR><td>9C</td><td>00A3</td></TR>POUND SIGN<br/>
+<TR><td>9D</td><td>00A5</td></TR>YEN SIGN<br/>
+<TR><td>9E</td><td>20A7</td></TR>PESETA SIGN<br/>
+<TR><td>9F</td><td>0192</td></TR>LATIN SMALL LETTER F WITH HOOK<br/>
+<TR><td>A0</td><td>00E1</td></TR>LATIN SMALL LETTER A WITH ACUTE<br/>
+<TR><td>A1</td><td>00ED</td></TR>LATIN SMALL LETTER I WITH ACUTE<br/>
+<TR><td>A2</td><td>00F3</td></TR>LATIN SMALL LETTER O WITH ACUTE<br/>
+<TR><td>A3</td><td>00FA</td></TR>LATIN SMALL LETTER U WITH ACUTE<br/>
+<TR><td>A4</td><td>00F1</td></TR>LATIN SMALL LETTER N WITH TILDE<br/>
+<TR><td>A5</td><td>00D1</td></TR>LATIN CAPITAL LETTER N WITH TILDE<br/>
+<TR><td>A6</td><td>00AA</td></TR>FEMININE ORDINAL INDICATOR<br/>
+<TR><td>A7</td><td>00BA</td></TR>MASCULINE ORDINAL INDICATOR<br/>
+<TR><td>A8</td><td>00BF</td></TR>INVERTED QUESTION MARK<br/>
+<TR><td>A9</td><td>2310</td></TR>REVERSED NOT SIGN<br/>
+<TR><td>AA</td><td>00AC</td></TR>NOT SIGN<br/>
+<TR><td>AB</td><td>00BD</td></TR>VULGAR FRACTION ONE HALF<br/>
+<TR><td>AC</td><td>00BC</td></TR>VULGAR FRACTION ONE QUARTER<br/>
+<TR><td>AD</td><td>00A1</td></TR>INVERTED EXCLAMATION MARK<br/>
+<TR><td>AE</td><td>00AB</td></TR>LEFT-POINTING DOUBLE ANGLE QUOTATION MARK<br/>
+<TR><td>AF</td><td>00BB</td></TR>RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK<br/>
+<TR><td>B0</td><td>2591</td></TR>LIGHT SHADE<br/>
+<TR><td>B1</td><td>2592</td></TR>MEDIUM SHADE<br/>
+<TR><td>B2</td><td>2593</td></TR>DARK SHADE<br/>
+<TR><td>B3</td><td>2502</td></TR>BOX DRAWINGS LIGHT VERTICAL<br/>
+<TR><td>B4</td><td>2524</td></TR>BOX DRAWINGS LIGHT VERTICAL AND LEFT<br/>
+<TR><td>B5</td><td>2561</td></TR>BOX DRAWINGS VERTICAL SINGLE AND LEFT DOUBLE<br/>
+<TR><td>B6</td><td>2562</td></TR>BOX DRAWINGS VERTICAL DOUBLE AND LEFT SINGLE<br/>
+<TR><td>B7</td><td>2556</td></TR>BOX DRAWINGS DOWN DOUBLE AND LEFT SINGLE<br/>
+<TR><td>B8</td><td>2555</td></TR>BOX DRAWINGS DOWN SINGLE AND LEFT DOUBLE<br/>
+<TR><td>B9</td><td>2563</td></TR>BOX DRAWINGS DOUBLE VERTICAL AND LEFT<br/>
+<TR><td>BA</td><td>2551</td></TR>BOX DRAWINGS DOUBLE VERTICAL<br/>
+<TR><td>BB</td><td>2557</td></TR>BOX DRAWINGS DOUBLE DOWN AND LEFT<br/>
+<TR><td>BC</td><td>255D</td></TR>BOX DRAWINGS DOUBLE UP AND LEFT<br/>
+<TR><td>BD</td><td>255C</td></TR>BOX DRAWINGS UP DOUBLE AND LEFT SINGLE<br/>
+<TR><td>BE</td><td>255B</td></TR>BOX DRAWINGS UP SINGLE AND LEFT DOUBLE<br/>
+<TR><td>BF</td><td>2510</td></TR>BOX DRAWINGS LIGHT DOWN AND LEFT<br/>
+<TR><td>C0</td><td>2514</td></TR>BOX DRAWINGS LIGHT UP AND RIGHT<br/>
+<TR><td>C1</td><td>2534</td></TR>BOX DRAWINGS LIGHT UP AND HORIZONTAL<br/>
+<TR><td>C2</td><td>252C</td></TR>BOX DRAWINGS LIGHT DOWN AND HORIZONTAL<br/>
+<TR><td>C3</td><td>251C</td></TR>BOX DRAWINGS LIGHT VERTICAL AND RIGHT<br/>
+<TR><td>C4</td><td>2500</td></TR>BOX DRAWINGS LIGHT HORIZONTAL<br/>
+<TR><td>C5</td><td>253C</td></TR>BOX DRAWINGS LIGHT VERTICAL AND HORIZONTAL<br/>
+<TR><td>C6</td><td>255E</td></TR>BOX DRAWINGS VERTICAL SINGLE AND RIGHT DOUBLE<br/>
+<TR><td>C7</td><td>255F</td></TR>BOX DRAWINGS VERTICAL DOUBLE AND RIGHT SINGLE<br/>
+<TR><td>C8</td><td>255A</td></TR>BOX DRAWINGS DOUBLE UP AND RIGHT<br/>
+<TR><td>C9</td><td>2554</td></TR>BOX DRAWINGS DOUBLE DOWN AND RIGHT<br/>
+<TR><td>CA</td><td>2569</td></TR>BOX DRAWINGS DOUBLE UP AND HORIZONTAL<br/>
+<TR><td>CB</td><td>2566</td></TR>BOX DRAWINGS DOUBLE DOWN AND HORIZONTAL<br/>
+<TR><td>CC</td><td>2560</td></TR>BOX DRAWINGS DOUBLE VERTICAL AND RIGHT<br/>
+<TR><td>CD</td><td>2550</td></TR>BOX DRAWINGS DOUBLE HORIZONTAL<br/>
+<TR><td>CE</td><td>256C</td></TR>BOX DRAWINGS DOUBLE VERTICAL AND HORIZONTAL<br/>
+<TR><td>CF</td><td>2567</td></TR>BOX DRAWINGS UP SINGLE AND HORIZONTAL DOUBLE<br/>
+<TR><td>D0</td><td>2568</td></TR>BOX DRAWINGS UP DOUBLE AND HORIZONTAL SINGLE<br/>
+<TR><td>D1</td><td>2564</td></TR>BOX DRAWINGS DOWN SINGLE AND HORIZONTAL DOUBLE<br/>
+<TR><td>D2</td><td>2565</td></TR>BOX DRAWINGS DOWN DOUBLE AND HORIZONTAL SINGLE<br/>
+<TR><td>D3</td><td>2559</td></TR>BOX DRAWINGS UP DOUBLE AND RIGHT SINGLE<br/>
+<TR><td>D4</td><td>2558</td></TR>BOX DRAWINGS UP SINGLE AND RIGHT DOUBLE<br/>
+<TR><td>D5</td><td>2552</td></TR>BOX DRAWINGS DOWN SINGLE AND RIGHT DOUBLE<br/>
+<TR><td>D6</td><td>2553</td></TR>BOX DRAWINGS DOWN DOUBLE AND RIGHT SINGLE<br/>
+<TR><td>D7</td><td>256B</td></TR>BOX DRAWINGS VERTICAL DOUBLE AND HORIZONTAL SINGLE<br/>
+<TR><td>D8</td><td>256A</td></TR>BOX DRAWINGS VERTICAL SINGLE AND HORIZONTAL DOUBLE<br/>
+<TR><td>D9</td><td>2518</td></TR>BOX DRAWINGS LIGHT UP AND LEFT<br/>
+<TR><td>DA</td><td>250C</td></TR>BOX DRAWINGS LIGHT DOWN AND RIGHT<br/>
+<TR><td>DB</td><td>2588</td></TR>FULL BLOCK<br/>
+<TR><td>DC</td><td>2584</td></TR>LOWER HALF BLOCK<br/>
+<TR><td>DD</td><td>258C</td></TR>LEFT HALF BLOCK<br/>
+<TR><td>DE</td><td>2590</td></TR>RIGHT HALF BLOCK<br/>
+<TR><td>DF</td><td>2580</td></TR>UPPER HALF BLOCK<br/>
+<TR><td>E0</td><td>03B1</td></TR>GREEK SMALL LETTER ALPHA<br/>
+<TR><td>E1</td><td>00DF</td></TR>LATIN SMALL LETTER SHARP S<br/>
+<TR><td>E2</td><td>0393</td></TR>GREEK CAPITAL LETTER GAMMA<br/>
+<TR><td>E3</td><td>03C0</td></TR>GREEK SMALL LETTER PI<br/>
+<TR><td>E4</td><td>03A3</td></TR>GREEK CAPITAL LETTER SIGMA<br/>
+<TR><td>E5</td><td>03C3</td></TR>GREEK SMALL LETTER SIGMA<br/>
+<TR><td>E6</td><td>00B5</td></TR>MICRO SIGN<br/>
+<TR><td>E7</td><td>03C4</td></TR>GREEK SMALL LETTER TAU<br/>
+<TR><td>E8</td><td>03A6</td></TR>GREEK CAPITAL LETTER PHI<br/>
+<TR><td>E9</td><td>0398</td></TR>GREEK CAPITAL LETTER THETA<br/>
+<TR><td>EA</td><td>03A9</td></TR>GREEK CAPITAL LETTER OMEGA<br/>
+<TR><td>EB</td><td>03B4</td></TR>GREEK SMALL LETTER DELTA<br/>
+<TR><td>EC</td><td>221E</td></TR>INFINITY<br/>
+<TR><td>ED</td><td>03C6</td></TR>GREEK SMALL LETTER PHI<br/>
+<TR><td>EE</td><td>03B5</td></TR>GREEK SMALL LETTER EPSILON<br/>
+<TR><td>EF</td><td>2229</td></TR>INTERSECTION<br/>
+<TR><td>F0</td><td>2261</td></TR>IDENTICAL TO<br/>
+<TR><td>F1</td><td>00B1</td></TR>PLUS-MINUS SIGN<br/>
+<TR><td>F2</td><td>2265</td></TR>GREATER-THAN OR EQUAL TO<br/>
+<TR><td>F3</td><td>2264</td></TR>LESS-THAN OR EQUAL TO<br/>
+<TR><td>F4</td><td>2320</td></TR>TOP HALF INTEGRAL<br/>
+<TR><td>F5</td><td>2321</td></TR>BOTTOM HALF INTEGRAL<br/>
+<TR><td>F6</td><td>00F7</td></TR>DIVISION SIGN<br/>
+<TR><td>F7</td><td>2248</td></TR>ALMOST EQUAL TO<br/>
+<TR><td>F8</td><td>00B0</td></TR>DEGREE SIGN<br/>
+<TR><td>F9</td><td>2219</td></TR>BULLET OPERATOR<br/>
+<TR><td>FA</td><td>00B7</td></TR>MIDDLE DOT<br/>
+<TR><td>FB</td><td>221A</td></TR>SQUARE ROOT<br/>
+<TR><td>FC</td><td>207F</td></TR>SUPERSCRIPT LATIN SMALL LETTER N<br/>
+<TR><td>FD</td><td>00B2</td></TR>SUPERSCRIPT TWO<br/>
+<TR><td>FE</td><td>25A0</td></TR>BLACK SQUARE<br/>
+<TR><td>FF</td><td>00A0</td></TR>NO-BREAK SPACE<br/>
+</TABLE>

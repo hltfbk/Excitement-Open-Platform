@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Document is created with the Clark System! http://www.bultreebank.org -->
+<CLaRK_document_dtd><dtdname>xpathtransformationquery.dtd</dtdname><doctype>XPathTransformationquery</doctype><tokenizer>Default</tokenizer><dtd>&lt;!ELEMENT document (#PCDATA)&gt;
+&lt;!ELEMENT Documents (file*)&gt;
+&lt;!ELEMENT file EMPTY&gt;
+&lt;!ATTLIST file
+	source	CDATA	#REQUIRED
+	target	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT folder (#PCDATA)&gt;
+&lt;!ELEMENT group (#PCDATA)&gt;
+&lt;!ATTLIST group
+	recursive	(y|n)	#REQUIRED
+&gt;
+&lt;!ELEMENT info (#PCDATA)&gt;
+&lt;!ELEMENT inputFiles (document*|group*)&gt;
+&lt;!ELEMENT mode EMPTY&gt;
+&lt;!ATTLIST mode
+	type	(new|overwrite)	&quot;overwrite&quot;
+	extension	CDATA	#IMPLIED
+	save	(y|n)	#IMPLIED
+	overwrite	(y|n)	#IMPLIED
+&gt;
+&lt;!ELEMENT multiple (folder,output,mode,inputFiles?,outputFiles?)&gt;
+&lt;!ELEMENT output EMPTY&gt;
+&lt;!ATTLIST output
+	type	(separate|united)	&quot;separate&quot;
+	ufn	CDATA	#IMPLIED
+	dtdname	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT outputFiles (document*)&gt;
+&lt;!ELEMENT source (xpath,Documents?)&gt;
+&lt;!ATTLIST source
+	NodeToNode	(AllToEach|EachToEach|disable)	#REQUIRED
+	Equals	(true|false|disable)	#REQUIRED
+	Operation	(Copy|Move|disable)	#REQUIRED
+	IncludeSubTree	(true|false|disable)	#REQUIRED
+	Xml	(true|false|disable)	#REQUIRED
+&gt;
+&lt;!ELEMENT target (xpath)&gt;
+&lt;!ATTLIST target
+	as	(0|1|2|3)	#REQUIRED
+	at	CDATA	#IMPLIED
+	relative	(true|false|disable)	#REQUIRED
+&gt;
+&lt;!ELEMENT tmode (#PCDATA)&gt;
+&lt;!ELEMENT xpath (#PCDATA)&gt;
+&lt;!ELEMENT XPathTransformationquery (tmode,target,source,multiple?)&gt;
+&lt;!ATTLIST XPathTransformationquery
+	toolName	CDATA	#FIXED &quot;XPathTransformation&quot;
+&gt;
+</dtd><CLaRK_document_layout offsets="n" spaces="4"><tagLine children="y" closeEnd="n" closeStart="n" name="document" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Documents" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="file" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="folder" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="group" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="info" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="inputFiles" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="mode" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="multiple" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="output" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="outputFiles" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="source" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="target" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="tmode" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="xpath" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="XPathTransformationquery" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Unknown*" openEnd="n" openStart="n" tag="y"></tagLine></CLaRK_document_layout><CLaRK_document_element_features tokenizer="Default"></CLaRK_document_element_features><CLaRK_document_attribute_features></CLaRK_document_attribute_features></CLaRK_document_dtd>

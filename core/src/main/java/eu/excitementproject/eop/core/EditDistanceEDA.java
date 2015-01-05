@@ -54,17 +54,17 @@ public class EditDistanceEDA<T extends TEDecision>
 	 * the threshold that has to be learnt on a training set and then used
 	 * to annotate examples in the test set
 	 */
-	private double threshold;
+	protected double threshold;
 	
 	/**
 	 * the accuracy obtained on the training data set
 	 */
-	private double trainingAccuracy;
+	protected double trainingAccuracy;
 	
 	/**
 	 * the edit distance component to be used
 	 */
-	private FixedWeightEditDistance component;
+	protected FixedWeightEditDistance component;
 	
 	/**
 	 * the logger
@@ -74,17 +74,17 @@ public class EditDistanceEDA<T extends TEDecision>
 	/**
 	 * the language
 	 */
-	private String language;
+	protected String language;
 
 	/**
 	 * the training data directory
 	 */
-	private String trainDIR;
+	protected String trainDIR;
 
 	/**
 	 * the test data directory
 	 */
-	private String testDIR;
+	protected String testDIR;
 
 	/**
 	 * if the model produced during the training phase
@@ -92,32 +92,32 @@ public class EditDistanceEDA<T extends TEDecision>
 	 * if it should stay in the memory for further calculation 
 	 * (e.g. EditDistancePSOEDA uses this modality)
 	 */
-	private boolean writeModel;
+	protected boolean writeModel;
 	
 	/**
 	 * weight for match
 	 */
-    private double mMatchWeight;
+    protected double mMatchWeight;
     
     /**
 	 * weight for delete
 	 */
-    private double mDeleteWeight;
+    protected double mDeleteWeight;
     
     /**
 	 * weight for insert
 	 */
-    private double mInsertWeight;
+    protected double mInsertWeight;
     
     /**
 	 * weight for substitute
 	 */
-    private double mSubstituteWeight;
+    protected double mSubstituteWeight;
     
     /**
 	 * measure to optimize: accuracy or f1 measure
 	 */
-    private String measureToOptimize;
+    protected String measureToOptimize;
     
 	/**
 	 * if the EDA has to write the learnt model at the end of the training phase
@@ -604,7 +604,7 @@ public class EditDistanceEDA<T extends TEDecision>
      *
      * @throws ConfigurationException
      */
-	private void checkConfiguration(CommonConfig config) 
+	protected void checkConfiguration(CommonConfig config) 
 			throws ConfigurationException {
 		
 		if (config == null)
@@ -619,7 +619,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @throws ComponentException, EDAException, Exception
      */
-	private double[] sequentialSearch(List<Annotation> annotationList, String measureToOptimize) 
+	protected double[] sequentialSearch(List<Annotation> annotationList, String measureToOptimize) 
 			throws ComponentException, EDAException, Exception {
 		
 		//double[0] is the calculated threshold
@@ -729,7 +729,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @return the pair identifier
      */
-	private String getPairId(JCas jcas) {
+	protected String getPairId(JCas jcas) {
 		
 		FSIterator<TOP> pairIter = jcas.getJFSIndexRepository().getAllIndexedFS(Pair.type);
 		
@@ -752,7 +752,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @return a copy of the specified list sorted in increasing order
      */
-	private List<Annotation> sortAnnotationList(List<Annotation> annotationList) {
+	protected List<Annotation> sortAnnotationList(List<Annotation> annotationList) {
 		
 		List<Annotation> newAnnotationList = new ArrayList<Annotation>(annotationList);
 		
@@ -760,10 +760,19 @@ public class EditDistanceEDA<T extends TEDecision>
 				
 		Collections.sort(newAnnotationList, new Comparator<Annotation>(){
 			 
-            public int compare(Annotation a1,  Annotation a2) {
+			public int compare(Annotation a1,  Annotation a2) {
+                return Double.compare(a1.getDistanceValue().getDistance(),
+                		a2.getDistanceValue().getDistance());
+			}
+			
+			/// This method can arise this exception: Comparison method violates its general contract!
+            // The reason is reported here: http://stackoverflow.com/questions/19182700/collections-sort-throws-comparison-method-violates-its-general-contract-excep
+            /*
+			public int compare(Annotation a1,  Annotation a2) {
                 return a1.getDistanceValue().getDistance() > a2.getDistanceValue().getDistance() ? 1 :
                 	a1.getDistanceValue().getDistance() == a2.getDistanceValue().getDistance() ? 0 : -1;
             }
+            */
   
         });
 		
@@ -781,7 +790,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @throws DistanceComponentException
      */
-	private void getDistanceValues(JCas jcas, List<DistanceValue> distanceValues)
+	protected void getDistanceValues(JCas jcas, List<DistanceValue> distanceValues)
 			throws DistanceComponentException {
 	
 		try {
@@ -805,7 +814,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @throws Exception
      */
-	private void getEntailmentAnnotation(JCas jcas, List<String> entailmentValueList) 
+	protected void getEntailmentAnnotation(JCas jcas, List<String> entailmentValueList) 
 			throws Exception {
 			
 		try {
@@ -833,7 +842,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * 
      * @throws Exception
      */
-	private List<Annotation> merge(List<DistanceValue> distanceValues, List<String> entailmentValueList) 
+	protected List<Annotation> merge(List<DistanceValue> distanceValues, List<String> entailmentValueList) 
 			throws Exception {
 			
 		List<Annotation>  annotationList = new ArrayList<Annotation>();
@@ -856,7 +865,7 @@ public class EditDistanceEDA<T extends TEDecision>
 	/**
      * Save the optimized parameters (e.g. threshold) into the configuration file itself
      */
-	private void saveModel(CommonConfig config) throws IOException {
+	protected void saveModel(CommonConfig config) throws IOException {
     	
 		logger.info("Writing model ...");
 		
@@ -890,7 +899,7 @@ public class EditDistanceEDA<T extends TEDecision>
      * @param config the configuration
      * 
      */
-    private void initializeThreshold(CommonConfig config) {
+    protected void initializeThreshold(CommonConfig config) {
 
     	try{ 
     		
@@ -983,7 +992,7 @@ public class EditDistanceEDA<T extends TEDecision>
     /* 
      * This class represents the entailment annotation between a T/H pair with its edit distance.
      */
-    private class Annotation {
+    protected class Annotation {
     	
     	DistanceValue distance;
     	String entailmentRelation;

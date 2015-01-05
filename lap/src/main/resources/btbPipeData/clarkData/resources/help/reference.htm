@@ -1,0 +1,966 @@
+<html>
+
+<head>
+<title>CLaRK Quick Reference</title>
+</head>
+
+<body>
+
+<h2 align="center">A Quick Reference List of the Most Frequently Used Terms<br>
+in the CLaRK System</h2>
+
+<p align="center">Index:<i><b>&nbsp;&nbsp;&nbsp; <a href="#A">A</a>&nbsp;&nbsp;
+B&nbsp;&nbsp; <a href="#C">C</a> &nbsp;&nbsp; <a href="#D">D</a>&nbsp;&nbsp; <a href="#E">E</a>&nbsp;&nbsp;
+<a href="#F">F</a> &nbsp;&nbsp; <a href="#G">G</a>&nbsp;&nbsp; H&nbsp;&nbsp; <a href="#I">I</a>&nbsp;&nbsp;
+J &nbsp;&nbsp; K&nbsp;&nbsp; <a href="#L">L</a>&nbsp;&nbsp; <a href="#M">M</a>&nbsp;&nbsp;
+<a href="#N">N</a>&nbsp;&nbsp; <a href="#O">O</a>&nbsp;&nbsp; <a href="#P">P</a>&nbsp;&nbsp;
+<a href="#Q">Q</a>&nbsp;&nbsp; <a href="#R">R</a>&nbsp;&nbsp; <a href="#S">S</a>&nbsp;&nbsp;
+<a href="#T">T</a>&nbsp;&nbsp; <a href="#U">U</a>&nbsp;&nbsp; <a href="#V">V</a>&nbsp;&nbsp;
+<a href="#W">W</a>&nbsp;&nbsp; <a href="#X">X</a>&nbsp;&nbsp; Y&nbsp;&nbsp; Z</b></i><br>
+<br>
+</p>
+<a name="A">
+
+<h2>A</h2>
+</a>
+
+<ul>
+  <li><b>ASCII (American Standard Code for Information Interchange)</b><p>A standard for
+    character encoding, usually 1 symbol is encoded in 1 byte (8 bits).</p>
+  </li>
+  <li><b>Absolute XPath expression</b><p>An XPath expression which uses the root element of
+    the document as a context node.</p>
+  </li>
+  <li><b><a name="all-children">All Children (Value) Constraint</a></b><p>This is a kind of <i>Value
+    Constraint</i>. It restricts the possible child nodes of a node, according to the context
+    in which it appears. For details see <i>Value Constraints</i> in the system manual.</p>
+  </li>
+  <li><b>Ancestor Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>ancestor</i>
+    axis contains the ancestors of the context node; the ancestors of the context node consist
+    of the parent of context node and the parent's parent and so on; thus, the ancestor axis
+    will always include the root node, unless the context node is the root node. </p>
+  </li>
+  <li><b>Ancestor-or-self Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>ancestor-or-self</i>
+    axis contains the context node and the ancestors of the context node; thus, the
+    ancestor-or-self axis will always include the root node.</p>
+  </li>
+  <li><a name="any-down"><b>Any Down</b></a><p>This is a grammar <a href="#match">match</a>
+    mode. In this mode the grammar finds the longest possible subword of the input word that
+    satisfies the context expressions.</p>
+  </li>
+  <li><a name="any-up"><b>Any Up</b></a><p>This is a grammar <a href="#match">match</a> mode.
+    In this mode the grammar finds the shortest possible subword of the input word that
+    satisfies the context expressions.</p>
+  </li>
+  <li><b>Attribute Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>attribute</i>
+    axis contains the attributes of the context node; the axis will be empty unless the
+    context node is an element. </p>
+  </li>
+  <li><b>Attribute Feature</b><p>Additional information for each DTD attribute (tokenizer,
+    type of value).</p>
+  </li>
+  <li><b>Attribute Table</b><p>A component of the <i>CLaRK System</i> Editor. It contains the
+    attributes of the currently selected element node in the editor.</p>
+  </li>
+</ul>
+<a name="C">
+
+<h2>C</h2>
+</a>
+
+<ul>
+  <li><b>CDATA</b><p>It is a part of the DTD which can be used in the definition of attributes'
+    value type. It is an identifier for text content without any internal structure.</p>
+  </li>
+</ul>
+
+<ul>
+  <li><b>Character Encoding Corrector</b><p>This component is responsible for the mapping
+    between the upper half of ASCII table and Unicode character encodings. The mapping is
+    needed because of the different capacities of the two standards.</p>
+  </li>
+  <li><b>Character Encoding</b><p>A mapping from symbols (letter, digit, etc.) into numbers
+    represented in one or two bytes.</p>
+  </li>
+  <li><b>Child Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>child</i>
+    axis contains the children of the context node. </p>
+  </li>
+  <li><b>Close Document</b><p>An operation which removes the current active document from the
+    system editor.</p>
+  </li>
+  <li><b>Color Scheme</b><p>A mechanism for creating user-defined colorization of the XML
+    document elements in the text area of CLaRK. Each scheme is a set of rules which in turn
+    define a color for nodes which meet certain XPath expression requirements (types, names,
+    contexts, etc.).</p>
+  </li>
+  <li><b>Complex Tokenizer</b><p>A tokenizer which is defined on the basis of other complex or
+    primitive tokenizers, i.e. the tokenizer uses in its definitions token categories defined
+    in other tokenizers.</p>
+  </li>
+  <li><b>Concordance</b><p>A system tool, which can be used for searching for tokens and
+    mark-up in a specific context. For details see <i>Concordance</i> in the system manual.</p>
+  </li>
+  <li><b>Constraint Manager</b><p>A component which is responsible for the management and
+    application of all kinds of <i>Value Constraint</i>s. For details see <i>Value Constraints</i>
+    in the system manual.</p>
+  </li>
+  <li><b>Control Operator</b><p>A construction in the <i>MultiQuery Tool</i> which is used
+    certain operations to be applied depending on certain conditions. When a condition for
+    such operator is true a certain operation is performed (<i>if-then-else</i> structure).
+    The control operators are: <i>IF (XPath)</i>, <i>IF NOT (XPath)</i>, <i>IF CHANGED</i>,
+    <i>IF NOT CHANGED</i>, <i>GOTO</i>. For detailed description see the system manual.</p>
+  </li>
+  <li><b>Copy</b> (tree)<p>A system function which copies the selected nodes, including their
+    subtrees, to a copy buffer. After applying the Copy operation the buffer contains a set of
+    trees - one for each selected node.</p>
+  </li>
+  <li><b>Current Document</b><p>A document which is currently opened in the main editor of <i>the
+    CLaRK System</i> and is activated (currently being edited).</p>
+  </li>
+  <li><b>Cut</b> (tree)<p>A system function which copies the selected nodes (including their
+    subtrees) to a copy buffer and then deletes the nodes from the tree. After applying the
+    Cut operation, the copy buffer contains a set of trees - one for each selected node.</p>
+  </li>
+</ul>
+<a name="D">
+
+<h2>D</h2>
+</a>
+
+<ul>
+  <li><b>Default Attribute</b><p>A specific attribute defined in a DTD for which the following
+    holds: if an element node for which the attribute is defined does not contain the given
+    attribute, it is assumed that the attribute is present with a (default) value stated in
+    the DTD.</p>
+  </li>
+  <li><b>Descendant Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>descendant</i>
+    axis contains the descendants of the context node; a descendant is a child or a child of a
+    child and so on; the descendant axis never contains attribute nodes. </p>
+  </li>
+  <li><b>Descendant-or-self Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>descendant-or-self</i>
+    axis contains the context node and the descendants of the context node. </p>
+  </li>
+  <li><b>DOCTYPE</b><p>A property of the XML documents. The DOCTYPE specifies characteristics
+    related with the structural DTD validation of the documents: main (topmost) element of a
+    document, a name of the corresponding DTD, a set of DTD definitions. For details see: <i>http://www.w3.org/TR/2000/REC-xml-20001006</i></p>
+  </li>
+  <li><b>DTD (Document Type Definition)</b><p>The XML document type declaration contains or
+    points to markup declarations that provide a grammar for a class of documents. This
+    grammar is known as a <b>document type definition</b>, or <b>DTD</b>. For details see: <i>http://www.w3.org/TR/2000/REC-xml-20001006</i>.
+    </p>
+  </li>
+  <li><b>DTD Database</b><p>A component which contains all DTDs, compiled in the system and
+    the information attached to them.</p>
+  </li>
+</ul>
+
+<ul>
+  <li><b>Delete Document</b><p>An operation which removes a document (or documents) from the <i>Internal
+    Document Database</i> of CLaRK System.</p>
+  </li>
+  <li><b>Delete Node</b><p>A system function which allows the user to delete the selected
+    nodes. The children of each selected node will be inserted as children of the parent of
+    it. The system will warn the user if, after the deletion, the structure of the document is
+    non-valid.</p>
+  </li>
+  <li><b>Delete Subtree</b><p>A system function which allows the user to delete the selected
+    node(s) in the tree with the entire subtree(s) below it (them). The system will warn the
+    user if, after the deletion, the structure of the document is non-valid.</p>
+  </li>
+</ul>
+
+<ul>
+  <li><b><a name="document-group">Document Group</a></b><p>An abstract grouping of documents.
+    It is useful when a certain operation must be applied to a set of documents. The user does
+    not have to point each time to the documents one by one, but s/he can point to a whole
+    group instead.</p>
+  </li>
+  <li><b>Document Manager</b><p>A component which is responsible for the internal documents
+    management. It suggests operations like: opening a document, removing a document, grouping
+    documents in abstract unions. For details see <i>Document Manager</i> in the system
+    manual.</p>
+  </li>
+  <li><b>Document Selector</b><p>A component which allows for selecting a set of documents
+    which will be sent to a certain tool in the <i>CLaRK System</i>. For details see <i>Document
+    Selector</i> in the system manual.</p>
+  </li>
+</ul>
+<a name="E">
+
+<h2>E</h2>
+</a>
+
+<ul>
+  <li><b>Element<b> (node)</b></b><p>A part of an XML document comprising an open
+    tag, a close tag and a content or it is an empty element and is represented by one tag.
+    Additionally an element could have attributes. Because an XML document could be viewed as
+    a tree in which the nodes represent the elements of the document, we also use <i>node</i>
+    as a synonym to element.</p>
+  </li>
+  <li><b>Element Feature</b><p>Additional information for each DTD element. It includes:
+    tokenizer, type of value, element value (an XPath expression). For details see <i>Element
+    Features</i> in the system manual.</p>
+  </li>
+  <li><b>Empty Document</b><p>A document which contains only one (root) tag. The tagname is
+    taken from the <i>DOCTYPE</i> of the document's DTD. <i>http://www.w3.org/TR/2000/REC-xml-20001006#dt-markupdecl</i>.</p>
+  </li>
+  <li><b>Encoding Correction</b><p>This option allows the user to set the correct mapping from
+    ASCII to Unicode character encoding.</p>
+  </li>
+  <li><b>Entity Converter</b><p>A tool which converts symbols into entities and vice versa in
+    the current document. For details see <i>Entity Converter</i> in the system manual.</p>
+  </li>
+  <li><b>Error Message Panel</b><p>A component of the <i>CLaRK System</i> situated at the
+    bottom of the main editor window. It contains all messages for the errors which occurred
+    during validation of the current document.</p>
+  </li>
+  <li><b>Expand Subtree</b><p>A system function which expands a folded part of tree
+    representation of the document in the <i>Tree Panel</i>.</p>
+  </li>
+  <li><b>Export XML</b><p>When a document is in the <i>Internal Document Database</i> of the <i>CLaRK
+    System</i> it can not be accessed by external programs. In order to use it outside the
+    system, it must be loaded in the main editor and then exported to a file.</p>
+  </li>
+</ul>
+<a name="F">
+
+<h2>F</h2>
+</a>
+
+<ul>
+  <li><b>Filter</b><p>A system component that is used for filtering tokens and mark-up when
+    applying different tools (grammars, concordance, constraints). For details see <i>Filters</i>
+    in the system manual.</p>
+  </li>
+  <li><b>Following Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>following</i>
+    axis contains all nodes in the same document as the context node and that are after the
+    context node in document order, excluding any descendants and attribute nodes.</p>
+  </li>
+  <li><b>Following-sibling Axis</b> <p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>following-sibling</i>
+    axis contains all the following siblings of the context node; if the context node is an
+    attribute node node, the following-sibling axis is empty.</p>
+  </li>
+</ul>
+<a name="G">
+
+<h2>G</h2>
+</a>
+
+<ul>
+  <li><b>Garbage Collector</b><p>A system environment engine which works in the background of
+    all system activities. It takes care about throwing away all resources which are not
+    needed any more (the <i>garbage</i>) from the computer memory. Running the garbage
+    collection before/after executing heavy processing procedures plays crucial role on the
+    computer performance.</p>
+  </li>
+  <li><b>Grammar Group</b><p>A group of grammars that are intended to be applied together. For
+    details see <i>Grammar Groups</i> in the system manual.</p>
+  </li>
+  <li><b>Grammar (XPath) Key</b><p>A basic structure for constructing definitions for <i>Element
+    Values</i> of certain nodes used in the grammar tool. Each <i>Grammar Key</i> contains an
+    XPath expression which points the substantial information for certain nodes and
+    tokenization info (tokenizer, normalization). Each value definition for certain type of
+    elements consists of a sequence of <i>Grammar keys</i>.</p>
+  </li>
+</ul>
+<a name="I">
+
+<h2>I</h2>
+</a>
+
+<ul>
+  <li><b>#IMPLIED</b><p>It is a part of the DTD which defines the default value of the
+    attributes. This identifier stands for an attribute which can be present for each tag it
+    is defined for, but not obligatory.</p>
+  </li>
+  <li><b>Import from URL</b><p>Retrieves a <a href="#wellformed">wellformed</a> XML
+    document from a specified <a href="#url">URL</a> (if a network connection is available).
+    If the retrieved data can not be parsed as XML, it can be stored on the Hard Drive as text
+    data.</p>
+  </li>
+  <li><b><a name="import-rtf">Import RTF</a></b><p>An operation which reads a <a
+    href="#rtf">RTF</a> file and represents it as an XML document. The resulting XML document
+    structure follows the <i>TEI.2</i> DTD. The system reads from the source file the
+    following type of information: heading information (creator, date, title, keywords, etc.),
+    content information ( paragraphs, sections, lines) and layout information (bold, italics,
+    underlined). The collected data is inserted in the result XML document in the
+    corresponding places, provided by the DTD.</p>
+  </li>
+  <li><b>Import Text</b><p>An operation which reads a text file without interpreting
+    its content, but representing it as one text node.</p>
+  </li>
+  <li><b>Import XML</b><p>An operation which reads an XML document from an external file,
+    parses it and loads it in the editor.</p>
+  </li>
+  <li><b>Insert Comment Child</b></li>
+</ul>
+
+<blockquote>
+  <p>A system function which allows insertion of a first <i>Comment</i> child to each
+  selected node. For each selected node the system will insert an empty comment child.</p>
+</blockquote>
+
+<ul>
+  <li><b>Insert Comment Sibling</b><p>A system function which allows insertion of a
+    first <i>Comment</i> sibling to each selected node. For each selected node the system
+    will insert an empty comment sibling.</p>
+  </li>
+</ul>
+
+<ul>
+  <li><b>Insert Element Child</b><p>A system function which allows insertion of a first <i>Element</i>
+    child to each selected node. The system will give the user a choice between valid tags
+    (tags which can be inserted at the specified position according to the DTD), all tags (all
+    tags defined in the DTD) and any other user defined tag.</p>
+  </li>
+  <li><b>Insert Element Sibling</b><p>A system function which allows insertion of a following
+    sibling <i>Element</i> node to each selected node. The system gives the user a choice
+    between valid tags (tags which can be inserted at the specified position according to the
+    DTD), all tags (all tags defined in the DTD) and any other user defined tag.</p>
+  </li>
+  <li><b>Insert Parent</b><p>A system function which allows the user to insert a parent of the
+    selected node(s). When there is a multiple selection of nodes and the user chooses this
+    item, the selection is changed so that only the ancestors of the selected nodes (or the
+    nodes themselves) that have a common parent are selected.</p>
+  </li>
+  <li><b>Insert Text Child</b><p>A system function which allows insertion of a first
+    <i>Text</i> child to each selected node. For each selected node the system will insert a
+    text child containing a single space character.</p>
+  </li>
+  <li><b>Insert Text Sibling</b><p>A system function which allows insertion of a
+    first <i>Text</i> sibling to each selected node. For each selected node the system will
+    insert a text sibling, containing a single space character..</p>
+  </li>
+  <li><b>Internal Document Database</b><p>This is a database containing records for all
+    documents imported and saved in the system. The internal documents are NOT visible from
+    outside the system. Each internal document has a DTD attached to it.</p>
+  </li>
+  <li><b>Invoke XSLT</b><p>A system function which applies a local XSLT transformation over
+    the selected node(s) of the current document. The user must select a document containing
+    an XSLT transformation. For details see <i>XSLT Transformations</i> in the system manual.</p>
+  </li>
+</ul>
+<a name="L">
+
+<h2>L</h2>
+</a>
+
+<ul>
+  <li><b>Layout</b><p>A definition concerning the graphical representation of XML documents in
+    CLaRK. A layout can be used either in the tree representation (<a href="#tree-layout"><i>Tree
+    Layout</i></a>) or in the text representation (<a href="#text-layout"><i>Text Layout</i></a>)
+    of an opened XML document in the system.</p>
+  </li>
+  <li><b>Left Regular Expression</b><p>A regular expression for the left context of a grammar
+    rule. For details see <i>Edit Grammar</i> in the system manual.</p>
+  </li>
+  <li><b>Line Offset</b></li>
+</ul>
+
+<blockquote>
+  <p>A notion used in the <i>Text Layout</i> for the documents opened in CLaRK. It defines
+  the amount of space characters which are shown in front of the XML tags in order to
+  beautify the text representation in the editor or in the output file.</p>
+</blockquote>
+
+<ul>
+  <li><b><a name="longest-match">Longest Match</a></b><p>The longest sequence of tokens and
+    mark-up that matches a regular expression. For details see <i>Edit Grammar</i> in the
+    system manual.</p>
+  </li>
+  <li><b>Look &amp; Feel</b></li>
+</ul>
+
+<blockquote>
+  <p>The LookAndFeel defines the style of the graphical user interface components to be
+  painted on the screen. Each operating system (Windows, Unix, Mac, ...)&nbsp; has its
+  specific style (look@feel).</p>
+</blockquote>
+<a name="M">
+
+<h2>M</h2>
+</a>
+
+<ul>
+  <li><b>Main Menu</b><p>This component is the main functional menu of the <i>CLaRK System</i>.
+    It is situated at the top of the editor window.</p>
+  </li>
+  <li><b><a name="match">Match</a></b><p>A sequence of tokens and mark-up recognized by a
+    regular expression. The supported matching modes are: <a href="#longest-match">Longest
+    Match</a>, <a href="#shortest-match">Shortest Match</a>, <a href="#any-up">Any Up</a> and <a
+    href="#any-down">Any Down</a>. For details see <i>Grammar</i><i> Manager</i> in the
+    system manual.</p>
+  </li>
+  <li><b>Memory Monitor</b></li>
+</ul>
+
+<blockquote>
+  <p>A system indicator which appears on the menu bar of CLaRK and shows the amount of
+  memory the system currently uses. Clicking on it activates a <i>Garbage Collection</i>
+  procedure.</p>
+</blockquote>
+
+<ul>
+  <li><b>Multi-Export</b><p>An operation which <i>export</i>s a set of documents from the <i>Internal
+    Document Database</i> of the <i>CLaRK System</i> into a specified directory. Related item:
+    <i>Export XML</i>.</p>
+  </li>
+  <li><b>Multi-Import</b><p>An operation which <i>import</i>s a set of documents into the <i>Internal
+    Document Database</i> of the <i>CLaRK System</i>, stored in files from one directory.
+    Related item: <i>Import XML</i>.</p>
+  </li>
+  <li><b>MultiQuery Tool</b></li>
+</ul>
+
+<blockquote>
+  <p>A tool which runs different other tools to process the working data. The tool uses <i>Control
+  Operators</i> to perform conditional tool applications.</p>
+</blockquote>
+<a name="N">
+
+<h2>N</h2>
+</a>
+
+<ul>
+  <li><b>New View</b><p>This option allows one document to be shown in more than one window.
+    For details see <i>New view</i> in the system manual.</p>
+  </li>
+  <li><b>Node</b><p>A representation of an XML element in the tree format of an XML document.
+    A <i>node</i> could have attributes associated with it. The content of the element is
+    represented as a subtree under the element node.</p>
+  </li>
+  <li><b>Normalization</b><p>A procedure which change tokens before they are used in some
+    tools like regular grammars, sorting and others. The normalization is defined on symbol
+    level within a tokenizer. Example: &quot;Love&quot; is normalized to &quot;love&quot; for
+    sorting. Normalization doesn't change the content of the document.</p>
+  </li>
+  <li><b>Number Constraints</b><p>This tool restricts the number of occurrences of certain
+    elements within one document. It is expressed by an XPath expression and two natural
+    numbers defining the minimum and maximum number of nodes selected by the XPath expression.
+    For details see <i>Number Constraints</i> in the system manual.</p>
+  </li>
+</ul>
+<a name="O">
+
+<h2>O</h2>
+</a>
+
+<ul>
+  <li><b>Open Document</b><p>An operation which opens a document from the internal document
+    database in the system editor.</p>
+  </li>
+</ul>
+<a name="P">
+
+<h2>P</h2>
+</a>
+
+<ul>
+  <li><b>Parent Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>parent</i>
+    axis contains the parent of the context node, if there is one. </p>
+  </li>
+  <li><b><a name="parent">Parent (Value) Constraint</a></b><p>This is a kind of <i>Value
+    Constraint</i> in the <i>CLaRK System</i>. It restricts the possible parent nodes of a
+    node or a sequence of nodes, according to the context in which they appear. For details
+    see <i>Value Constraints</i> in the system manual.</p>
+  </li>
+  <li><b>Parse Error Message</b><p>A message given by the <i>CLaRK System</i> when the parser
+    detects an error which occurred while checking the well-formedness of a document, when
+    reading it from a file (importing).</p>
+  </li>
+  <li><b>Paste As Child</b><p>A system function which pastes the content of the copy buffer as
+    a first child of the selected node(s). If the copy buffer contains more than one tree, the
+    trees are inserted as neighbor children.</p>
+  </li>
+  <li><b>Paste As Sibling</b><p>A system function which pastes the content of the copy buffer
+    as a following sibling of the selected node(s). If the copy buffer contains more than one
+    tree, the trees are inserted as neighbor siblings of the selected node(s).</p>
+  </li>
+  <li><b>#PCDATA</b><p>A key word used in the element definition in a DTD. It stands for
+    textual data without tags.</p>
+  </li>
+  <li><b>Preceding Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>preceding</i>
+    axis contains all nodes in the same document as the context node and that are before the
+    context node in document order, excluding any ancestors and attribute nodes.</p>
+  </li>
+  <li><b>Preceding-sibling Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the <i>preceding-sibling</i>
+    axis contains all the preceding siblings of the context node; if the context node is an
+    attribute node, the preceding-sibling axis is empty. </p>
+  </li>
+  <li><b>Primitive Tokenizer</b><p>A <i>tokenizer</i> which assigns categories only to
+    symbols. The categories of a primitive tokenizer are defined by a list of Unicode
+    characters. For details see <i>Tokenizers</i> in the system manual.</p>
+  </li>
+  <li><b>Processing-instruction</b><p>A standard way for encoding meta information in an XML
+    document. This information usually is targeted to an XML processor. The <i>CLaRK System</i>
+    does not use <i>processing-instruction</i>s and ignores them when parsing a document.</p>
+  </li>
+</ul>
+<a name="Q">
+
+<h2>Q</h2>
+</a>
+
+<ul>
+  <li><b>Query</b></li>
+</ul>
+
+<blockquote>
+  <p>This is short for <i>Tool Query</i> which is an XML document describing a set of
+  options of certain tool. On the basis of such description a tool can be applied without
+  any other additional information and without opening a corresponding tool dialog window.
+  On this descriptions the <i>MultyQuery Tool</i> strongly relies. The tools supporting the
+  query techniques are: <ul>
+    <li>XPath Insert Sibling</li>
+    <li>XPath Insert Child</li>
+    <li>XPath Insert Attribute</li>
+    <li>XPath Insert Parent</li>
+    <li>Concordance</li>
+    <li>Constraints (Value)</li>
+    <li>Extract</li>
+    <li>Grammar</li>
+    <li>Grammar Group</li>
+    <li>XPath Remove</li>
+    <li>XPath Rename</li>
+    <li>Sort</li>
+    <li>Statistics</li>
+    <li>Text Replace</li>
+    <li>XSLT</li>
+    <li>MultiQuery Tool</li>
+  </ul>
+</blockquote>
+
+<h2><a name="R">R</a></h2>
+
+<ul>
+  <li><b>REQUIRED</b><p>It is a part of the DTD which defines the default value of the
+    attributes. This identifier stands for an attribute which MUST be present for each tag it
+    is defined for.</p>
+  </li>
+  <li><b>ReImport</b><p>The <i>CLaRK System</i> can import only well-formed XML documents.
+    When the user tries to import a non-well-formed document, an error occurs. The error has
+    to be corrected outside the system. This function allows for a new attempt for importing
+    the same file without dialogs for choosing the file.</p>
+  </li>
+  <li><b>RegExpr. Constraints</b><p>A system function which applies a <i>Regular Expression
+    Constraint</i> over the content of the selected node(s).</p>
+  </li>
+  <li><b>Regular Expression Constraints</b><p>A tool which allows for checking the validity of
+    the content of certain document elements according to constraints defined by regular
+    expressions. It is useful for textual content or when the content of some elements is
+    defined by a disjunction in the DTD. Application of these constraints is context
+    sensitive. For details see <i>Regular Expression Constraints</i> in the system manual.</p>
+  </li>
+  <li><b>Relative XPath Expression</b><p>An XPath expression which can use an arbitrary node
+    as a context node. In contrast with <i>Absolute XPath Expression,</i> which always use the
+    root node as context node.</p>
+  </li>
+  <li><b>Rename</b><p>A system function which allows the user to rename the selected element
+    nodes in the tree.</p>
+  </li>
+  <li><b>Return Markup</b><p>An XML mark-up related to a grammar rule. Each word recognized by
+    the grammar rule is substituted by this XML mark-up. If the recognized word has to be
+    included in the result of the application of the rule, it can be cited by the variable <b>\w</b>.
+    For details see <i>Edit Grammar</i> in the system manual.</p>
+  </li>
+  <li><b>Right Regular Expression</b><p>A regular expression for the right context of a
+    grammar rule. For details see <i>Edit Grammar</i> in the system manual.</p>
+  </li>
+  <li><b><a name="rtf">RTF (Rich Text Format)</a></b></li>
+</ul>
+
+<blockquote>
+  <p>The RTF is a format for text and graphics interchange that can be used with different
+  output devices, operating environments, and operating systems. RTF uses the ANSI, PC-8,
+  Macintosh, or IBM PC character set to control the representation and formatting of a
+  document. The system supports importing of RTF documents and representing them in XML
+  according to TEI.2 DTD. For details see <a href="#import-rtf"><i>Import RTF</i></a>.</p>
+</blockquote>
+<a name="S">
+
+<h2>S</h2>
+</a>
+
+<ul>
+  <li><b>Save Document</b><p>An operation which saves the current active document into the <i>Internal
+    Document Database</i>.</p>
+  </li>
+  <li><b>Self Axis</b><p>An <a href="#xpath-axis"><i>XPath axis</i></a>: the self axis
+    contains just the context node itself.</p>
+  </li>
+  <li><b>Shortcut</b> <p>A mechanism for assigning certain key combinations to trigger certain
+    actions: applying different types of operations on the current document in the editor. For
+    details see <i>Definitions</i>/<i>Shortcut</i> in the system manual.</p>
+  </li>
+  <li><b><a name="shortest-match">Shortest Match</a></b><p>The shortest sequence of tokens and
+    mark-up that matches a regular expression. For details see <i>Grammar</i><i> Manager</i>
+    in the system manual.</p>
+  </li>
+  <li><b><a name="some-attribute">Some Attribute (Value) Constraint</a></b><p>A kind of <i>Value
+    Constraint</i> in the <i>CLaRK System</i>. It restricts the possible attributes and their
+    values of a node, according to the context in which it appears. For details see <i>Value
+    Constraints</i> in the system manual.</p>
+  </li>
+  <li><b><a name="some-children">Some Children (Value) Constraint</a></b><p>A kind of <i>Value
+    Constraint</i> in the <i>CLaRK System</i>. It restricts the possible child nodes of a
+    node, according the context in which it appears. For details see <i>Value Constraints</i>
+    in the system manual.</p>
+  </li>
+  <li><b>Sort</b><p>A system function which sorts some nodes in a document according to their
+    sort keys defined by XPath expressions. For details see <i>Sort Tools</i> in the system
+    manual.</p>
+  </li>
+  <li><b>Sort Key</b><p>A definition of values used for comparing elements during sort
+    operation. It is defined by an XPath expression. The value for each element is the list of
+    nodes returned after the evaluation of the XPath expression. The list is additionally
+    processed according to some options for normalization of text, reverse of text and
+    similar.</p>
+  </li>
+  <li><b>Status Bar</b><p>A component of the <i>CLaRK System</i> Editor. It is a field at the
+    bottom of the main editor window. It is used to display system messages.</p>
+  </li>
+</ul>
+<a name="T">
+
+<h2>T</h2>
+</a>
+
+<ul>
+  <li><b>Table View</b><p>Each concordance document has the structure of a table. This
+    function allows the user to see a concordance document as a table and to work with it. The
+    table view of the concordance document is connected with the XML representation of the
+    document. For details see <i>Table View</i> in the system manual.</p>
+  </li>
+  <li><b>Text Area</b><p>A component of the <i>CLaRK System</i> Editor. The area shows the
+    current document in a textual XML format. </p>
+  </li>
+  <li><b><a name="text-layout">Text Layout</a></b></li>
+</ul>
+
+<blockquote>
+  <p>This component determines the way an XML document will be shown in the text area. The
+  options are: showing/hiding tags with/without their contents, drawing some tags on new
+  lines, inserting leading offsets, using <i>Color Schemes</i>. For more details see <i>Edit
+  Text Layout</i> in the system manual.</p>
+</blockquote>
+
+<ul>
+  <li><b>Token</b><p>A sequence of characters in a text grouped on the base of their
+    appearance.</p>
+  </li>
+  <li><b>Token Category</b><p>A name for a class of tokens.</p>
+  </li>
+  <li><b>Token Description</b><p>An expression describing tokens. A token description could be
+    a token category or a sequence of Unicode symbols surrounded by double quotes. A token
+    description could contain wildcard symbols: <b>#</b> for any number of symbols, <b>%</b>
+    for exactly one symbol and <b>@</b> for one or zero symbols. Wildcard symbols,
+    the double quote symbol can be used in a token description being preceded by the symbol <b>^</b>.
+    It itself is represented by the sequence: <b>^^</b>. Example: &quot;love#&quot; is a
+    description of <i>love</i>, <i>loves</i>, <i>loved</i>, <i>lover</i> and many others.</p>
+  </li>
+  <li><b>Tokenizer</b><p>A system tool which is used for segmenting raw texts into tokens. For
+    details see <i>Tokenizers</i> in the system manual.</p>
+  </li>
+  <li><b>Tool Query</b><p>An XML document describing a set of options of certain tool. On the
+    basis of such description a tool can be applied without any other additional information
+    and without opening a corresponding tool dialog window. On this descriptions the <i>MultyQuery
+    Tool</i> strongly relies. When the user applies a tool from the tool dialog, s/he can save
+    the current settings as a tool query in the corresponding tool query <a
+    href="#document-group">group</a>.</p>
+  </li>
+  <li><b><a name="tree-layout">Tree Layout</a></b></li>
+</ul>
+
+<blockquote>
+  <p>This component determines the way an XML document will be shown in the tree area. For
+  each tag name from a DTD the user can define a string pattern describing the desired
+  appearance of the corresponding elements in the tree. The patterns are based on retrieving
+  related data by XPath expressions. Further more each pattern defines a color for the tags.</p>
+</blockquote>
+
+<ul>
+  <li><b>Tree Panel</b><p>A component of the <i>CLaRK System</i> Editor. The panel shows the
+    tree structure of the current document.</p>
+  </li>
+</ul>
+<a name="U">
+
+<h2>U</h2>
+</a>
+
+<ul>
+  <li><b>Unicode (UTF-16)</b><p>A standard for character encoding. Each symbol is represented
+    in 2 bytes (16 bits). For details see: <a href="http://www.unicode.org/"><i>http://www.unicode.org/</i></a>.</p>
+  </li>
+  <li><b><a name="url">URL (Uniform Resource Locator)</a></b><p>An address of a web page or
+    other data resource (pictures, sounds, etc.) on the world wide web.</p>
+  </li>
+  <li><b>User Keyboard</b><p>This tool allows the user to define his/her own keyboard binding.
+    For details how to use keyboard bindings, see <i>Keyboard</i> in the system manual.</p>
+  </li>
+</ul>
+<a name="V">
+
+<h2>V</h2>
+</a>
+
+<ul>
+  <li><b>Valid Document</b><p>An XML document is <b>valid</b> if it has an associated document
+    type declaration (DTD) and if the document complies with the constraints expressed in it.</p>
+  </li>
+  <li><b>Validation Error Message</b><p>A message reported by the <i>CLaRK System</i> when an
+    error occurs while checking the validity of a document according to its DTD.</p>
+  </li>
+  <li><b>Value Constraint</b><p>A tool which restricts the content of certain elements
+    according to the context in which they appear. The types of Value Constraints are: <a
+    href="#parent">Parent</a>, <a href="#all-children">All Children</a>, <a
+    href="#some-children">Some Children</a>, and <a href="#some-attribute">Some Attributes</a>.
+    For details see <i>Value Constraints</i> in the system manual.</p>
+  </li>
+  <li><b>Value Constraint Group</b><p>A collection of <i>Value Constraint</i>s which is used
+    when a set of constraints must be applied in a specific context. For details see <i>Value
+    Constraints</i> in the system manual.</p>
+  </li>
+</ul>
+<a name="W">
+
+<h2>W</h2>
+</a>
+
+<ul>
+  <li><b><a name="wellformed">Well-formed Document</a></b><p>An XML document, which meets all
+    the well-formedness constraints given in the following specification: <a
+    href="http://www.w3.org/TR/2000/REC-xml-20001006"><i>http://www.w3.org/TR/2000/REC-xml-20001006</i></a>.</p>
+  </li>
+  <li><b>Wildcard Symbol</b></li>
+</ul>
+
+<blockquote>
+  <p>A syntactic element from the <i>Token</i> description language, which allows
+  describing a set of tokens by leaving some of the characters in them underespecified. The
+  symbols are as follows: '#' - corresponds to a sequence (possibly empty) of characters;
+  '%' - corresponds to exactly one character; '@' - zero or one character.</p>
+</blockquote>
+<a name="X">
+
+<h2>X</h2>
+</a>
+
+<ul>
+  <li><b>XML Parser</b><p>A tool which recognizes an XML document from any source in general.
+    In the <i>CLaRK System</i>, this source is usually an external file.</p>
+  </li>
+  <li><b>XPath (XML Path Language)</b><p>An XML query language which uses the tree
+    representation of XML documents (DOM tree). For more details, see the XPath language
+    specification: <i>http://www.w3.org/TR/1999/REC-xpath-19991116</i>. </p>
+  </li>
+  <li><a name="xpath-axis"><b>XPath Axis</b></a><p>An element from the <i>XPath</i> syntax
+    which is used for selecting nodes from a certain context node in the <i>DOM</i> tree.</p>
+    <p>The following axes are available:<ul>
+      <li><b><code>self</code></b></li>
+      <li><b><code>child</code></b></li>
+      <li><b><code>descendant</code></b></li>
+      <li><b><code>descendant-or-self</code></b></li>
+      <li><b><code>parent</code></b></li>
+      <li><b><code>ancestor</code></b></li>
+      <li><b><code>ancestor-or-self</code></b></li>
+      <li><b><code>following-sibling</code></b></li>
+      <li><b><code>following</code></b></li>
+      <li><b><code>preceding-sibling</code></b></li>
+      <li><b><code>preceding</code></b></li>
+      <li><b><code>attribute</code></b></li>
+    </ul>
+  </li>
+</ul>
+
+<ul>
+  <li><b>XPath Function</b><p>The functions in <i>XPath</i> are divided into four categories,
+    depending on the data structures they work with. The four data structures are: boolean,
+    number, string, node set. Below <code>object</code> stands for any of the four data
+    structures.<ol>
+      <li>Node Set Functions: <ul>
+          <li><b><code>last()</code></b> : number</li>
+          <li><b><code>position()</code></b> : number</li>
+          <li><b><code>count(node-set)</code></b> : number</li>
+          <li><b><code>name(node-set?)</code></b> : string</li>
+        </ul>
+      </li>
+      <li>String Functions: <ul>
+          <li><b><code>string(object?)</code></b> : string</li>
+          <li><b><code>concat(string, string, string*)</code></b> : string</li>
+          <li><b><code>starts-with(string, string)</code></b> : boolean</li>
+          <li><b><code>contains(string, string)</code></b> : boolean</li>
+          <li><b><code>string substring-before(string, string)</code></b> : string</li>
+          <li><b><code>substring-after(string, string)</code></b> : string</li>
+          <li><b><code>substring(string, number, number?)</code></b> : string</li>
+          <li><b><code>string-length(string?)</code></b> : number</li>
+          <li><b><code>normalize-space(string?)</code></b> : string</li>
+          <li><b><code>translate(string, string, string)</code></b> : string</li>
+        </ul>
+      </li>
+      <li>Boolean Functions: <ul>
+          <li><b><code>boolean(object)</code></b> : boolean</li>
+          <li><b><code>not(boolean)</code></b> : boolean</li>
+          <li><b><code>true()</code></b> : boolean</li>
+          <li><b><code>false()</code></b> : boolean</li>
+        </ul>
+      </li>
+      <li>Number Functions: <ul>
+          <li><b><code>number(object?)</code></b> : number</li>
+          <li><b><code>sum(node-set)</code></b> : number</li>
+          <li><b><code>floor(number)</code></b> : number</li>
+          <li><b><code>ceiling(number)</code></b> : number</li>
+          <li><b><code>round(number)</code></b> : number</li>
+        </ul>
+      </li>
+    </ol>
+    <p><i><b>Extended XPath functions</b></i>:<ol>
+      <li>Node Set Functions:<ul>
+          <li><b>set:difference(node-set, node-set)</b> : node-set</li>
+          <li><b>set:intersection(node-set, node-set)</b> : node-set</li>
+          <li><b>set:distinct(node-set)</b> : node-set</li>
+          <li><b>set:has-same-node(node-set, node-set)</b> : boolean</li>
+          <li><b>set:leading(node-set, node-set)</b> : node-set</li>
+          <li><b>set:trailing(node-set, node-set)</b> : node-set</li>
+          <li><b>set:generate-id(node-set)</b> : string</li>
+          <li><b>set:eq(object, object)</b> : boolean</li>
+          <li><b>set:order(node-list)</b> : node-set</li>
+          <li><b>set:reverse(node-set)</b> : node-set</li>
+          <li><b>set:eval(string)</b> : node-set</li>
+        </ul>
+      </li>
+      <li>String Functions:<ul>
+          <li><b>str:align( string, string, string?)</b> : string</li>
+          <li><b>str:concat(node-set)</b> : string</li>
+          <li><b>str:padding(number, string?)</b> : string</li>
+          <li><b>str:index-of(string, string, number?)</b> : number</li>
+          <li><b>str:last-index-of(string, string, number?)</b> : number</li>
+          <li><b>str:region-matches(string, number, string, number, number, boolean)</b> :
+            boolean</li>
+          <li><b>str:to-lower-case(string)</b> : string</li>
+          <li><b>str:to-upper-case(string)</b> : string</li>
+          <li><b>ends-with(string, string)</b> : boolean</li>
+          <li><b>str:count-tokens(string, string)</b> : number</li>
+          <li><b>str:token-at(string, string, number)</b> : string</li>
+          <li><b>clark:count-tokens(string, string, string?)</b> : number</li>
+          <li><b>clark:token-at(string, number, string, number?)</b> : string</li>
+          <li><b>str:eval(string)</b> : string</li>
+        </ul>
+      </li>
+      <li>Boolean Functions:<ul>
+          <li><b>error()</b> : boolean</li>
+          <li><b>test(string)</b> : boolean</li>
+        </ul>
+      </li>
+      <li>Number Functions:<ul>
+          <li><b>math:min(node-set)</b> : number</li>
+          <li><b>math:max(node-set)</b> : number</li>
+          <li><b>math:highest(node-set)</b> : node-set</li>
+          <li><b>math:lowest(node-set)</b> : node-set</li>
+          <li><b>math:abs(number)</b> : number</li>
+          <li><b>math:sqrt(number)</b> : number</li>
+          <li><b>math:power(number, number)</b> : number</li>
+          <li><b>math:log(number)</b> : number</li>
+          <li><b>math:random()</b> : number</li>
+          <li><b>math:sin(number)</b> : number</li>
+          <li><b>math:cos(number)</b> : number</li>
+          <li><b>math:tan(number)</b> : number</li>
+          <li><b>math:asin(number)</b> : number</li>
+          <li><b>math:acos(number)</b> : number</li>
+          <li><b>math:atan(number)</b> : number</li>
+          <li><b>math:atan2(number, number)</b> : number</li>
+          <li><b>math:exp(number)</b> : number</li>
+          <li><b>math:eval(string)</b> : number</li>
+        </ul>
+      </li>
+    </ol>
+  </li>
+  <li><b>XPath Insert Attribute</b><p>A tool for automatic attribute insertion based
+    on XPath selection. The <i>Element</i> nodes selected by the XPath expression are
+    inserted, one by one, with the supplied attribute-value specification.</p>
+  </li>
+  <li><b>XPath Insert Child</b><p>A tool for automatic <i>Element</i>/<i>Text</i>
+    node insertion based on XPath selection. The new nodes are inserted as child nodes of the
+    selected by the XPath evaluation <i>Element</i> nodes. The user supplies the new node
+    definition (tag name / text content) and the position in which the insertions should be
+    performed.</p>
+  </li>
+  <li><b>XPath Insert Parent</b><p>A tool for automatic parent <i>Element</i> node
+    insertion based on XPath selection. The user specifies the target nodes with an XPath
+    expression and the tag name of the parent nodes to be inserted.</p>
+  </li>
+  <li><b>XPath Insert Sibling</b><p>A tool for automatic <i>Element</i>/<i>Text</i>
+    node insertion based on XPath selection. The new nodes are inserted as sibling nodes
+    (preceding or following) of the selected by the XPath evaluation nodes. The user supplies
+    the new node definition (tag name / text content) and the position (before or after the
+    selected nodes) in which the insertions should be performed.</p>
+  </li>
+</ul>
+
+<ul>
+  <li><b>XPath Key</b></li>
+</ul>
+
+<blockquote>
+  <p>An general named entity which contains XPath expression and other specific information.
+  It is designed to be used in other tools applications. Major representatives of XPath Keys
+  are: <i>Grammar Keys</i>, <i>Sort Keys</i>, <i>Table Sort Keys</i>.</p>
+</blockquote>
+
+<ul>
+  <li><b>XPath Macro</b></li>
+</ul>
+
+<blockquote>
+  <p>A means for given names to XPath expressions and using them later in other expressions,
+  referring them only by name. The XPath of a macro must be a valid expression, which can
+  use other <i>XPath Macros</i>.</p>
+</blockquote>
+
+<ul>
+  <li><b>XPath Node Test</b><p>The node tests are divided into two categories: node type tests
+    and node name tests. Here are the node type tests implemented in the system:<ul>
+      <li><b><code>text()</code></b></li>
+      <li><b><code>text(&lt;text&gt;)</code></b></li>
+      <li><b><code>text(&lt;mode&gt;,&lt;text&gt;)</code></b>, mode = 1, 2, 3 or 4.</li>
+      <li><b><code>text(&lt;mode&gt;,&lt;y|n&gt;,&lt;&quot;(&quot; regular expression
+        &quot;)&quot;&gt;)</code></b>, mode = 1, 2, 3 or 4, normalization = <b>y</b> for
+        &quot;yes&quot; and <b>n</b> for &quot;no&quot;, <b>regular expression</b> pattern of the
+        searched string. Example: <b><code>text(3,y,(&quot;play#&quot;|&quot;replay#&quot;))</code></b><br>
+        Here and in the previous tests <b>&lt;text&gt;</b> and the element used in the <b>regular
+        expression</b> are token description and could include wildcard symbols <b>#</b>, <b>@</b>.</li>
+      <li><b><code>node()</code></b>. Short form <b><code>*</code></b></li>
+      <li><b><code>element()</code></b></li>
+      <li><b><code>attribute()</code></b></li>
+      <li><b><code>attribute(&lt;attributeName&gt;)</code></b></li>
+      <li><b><code>attribute(&lt;attributeName&gt; = &quot;&lt;attributeValue&gt;&quot;)</code></b></li>
+    </ul>
+    <p><br>
+    The name node tests are used to filter the initial node-set for element nodes with a given
+    name. Example: <b><code>child::para</code></b> </p>
+  </li>
+</ul>
+
+<ul>
+  <li><b>XPath Predicates</b><p>The predicates in <i>XPath</i> are boolean expressions which
+    are evaluated according to a specific context node. They are enclosed by square brackets
+    ('<code>[</code>','<code>]</code>') and can contain combinations of: location paths;
+    function calls; union operators ('<code>|</code>'); additive operators (' <code>+</code>',
+    '<code>-</code>'); multiplicative operators ('<code>*</code>', ' <code>div</code>', '<code>mod</code>');
+    logical operators ('<code>and</code>', '<code>or</code>'); equality (=).</p>
+  </li>
+  <li><b>XPath Remove</b><p>A tool for automatic XML data removal based on XPath
+    selection. The nodes returned by the XPath expression evaluation can be of any type (<i>Element</i>,
+    <i>Text</i>, <i>Attribute</i>, etc.).</p>
+  </li>
+  <li><b>XPath Rename</b><p>A tool for automatic <i>Element</i> nodes renaming
+    based on XPath selection. The nodes to be renamed must be of type <i>Elemen</i>t. All
+    other types of nodes are discarded.</p>
+  </li>
+  <li><b>XPath Transformation</b><p>A tool which performs transformations over XML documents
+    using XPath for navigation. For details see <i>XPath Transformations</i> in the system
+    manual.</p>
+  </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<TABLE>
+<TR><td>80</td><td>0402</td><td>CYRILLIC CAPITAL LETTER DJE</td></TR>
+<TR><td>81</td><td>0403</td><td>CYRILLIC CAPITAL LETTER GJE</td></TR>
+<TR><td>82</td><td>201A</td><td>SINGLE LOW-9 QUOTATION MARK</td></TR>
+<TR><td>83</td><td>0453</td><td>CYRILLIC SMALL LETTER GJE</td></TR>
+<TR><td>84</td><td>201E</td><td>DOUBLE LOW-9 QUOTATION MARK</td></TR>
+<TR><td>85</td><td>2026</td><td>HORIZONTAL ELLIPSIS</td></TR>
+<TR><td>86</td><td>2020</td><td>DAGGER</td></TR>
+<TR><td>87</td><td>2021</td><td>DOUBLE DAGGER</td></TR>
+<TR><td>88</td><td>20AC</td><td>EURO SIGN</td></TR>
+<TR><td>89</td><td>2030</td><td>PER MILLE SIGN</td></TR>
+<TR><td>8A</td><td>0409</td><td>CYRILLIC CAPITAL LETTER LJE</td></TR>
+<TR><td>8B</td><td>2039</td><td>SINGLE LEFT-POINTING ANGLE QUOTATION MARK</td></TR>
+<TR><td>8C</td><td>040A</td><td>CYRILLIC CAPITAL LETTER NJE</td></TR>
+<TR><td>8D</td><td>040C</td><td>CYRILLIC CAPITAL LETTER KJE</td></TR>
+<TR><td>8E</td><td>040B</td><td>CYRILLIC CAPITAL LETTER TSHE</td></TR>
+<TR><td>8F</td><td>040F</td><td>CYRILLIC CAPITAL LETTER DZHE</td></TR>
+<TR><td>90</td><td>0452</td><td>CYRILLIC SMALL LETTER DJE</td></TR>
+<TR><td>91</td><td>2018</td><td>LEFT SINGLE QUOTATION MARK</td></TR>
+<TR><td>92</td><td>2019</td><td>RIGHT SINGLE QUOTATION MARK</td></TR>
+<TR><td>93</td><td>201C</td><td>LEFT DOUBLE QUOTATION MARK</td></TR>
+<TR><td>94</td><td>201D</td><td>RIGHT DOUBLE QUOTATION MARK</td></TR>
+<TR><td>95</td><td>2022</td><td>BULLET</td></TR>
+<TR><td>96</td><td>2013</td><td>EN DASH</td></TR>
+<TR><td>97</td><td>2014</td><td>EM DASH</td></TR>
+<TR><td>98</td><td> </td><td>UNDEFINED</td></TR>
+<TR><td>99</td><td>2122</td><td>TRADE MARK SIGN</td></TR>
+<TR><td>9A</td><td>0459</td><td>CYRILLIC SMALL LETTER LJE</td></TR>
+<TR><td>9B</td><td>203A</td><td>SINGLE RIGHT-POINTING ANGLE QUOTATION MARK</td></TR>
+<TR><td>9C</td><td>045A</td><td>CYRILLIC SMALL LETTER NJE</td></TR>
+<TR><td>9D</td><td>045C</td><td>CYRILLIC SMALL LETTER KJE</td></TR>
+<TR><td>9E</td><td>045B</td><td>CYRILLIC SMALL LETTER TSHE</td></TR>
+<TR><td>9F</td><td>045F</td><td>CYRILLIC SMALL LETTER DZHE</td></TR>
+<TR><td>A0</td><td>00A0</td><td>NO-BREAK SPACE</td></TR>
+<TR><td>A1</td><td>040E</td><td>CYRILLIC CAPITAL LETTER SHORT U</td></TR>
+<TR><td>A2</td><td>045E</td><td>CYRILLIC SMALL LETTER SHORT U</td></TR>
+<TR><td>A3</td><td>0408</td><td>CYRILLIC CAPITAL LETTER JE</td></TR>
+<TR><td>A4</td><td>00A4</td><td>CURRENCY SIGN</td></TR>
+<TR><td>A5</td><td>0490</td><td>CYRILLIC CAPITAL LETTER GHE WITH UPTURN</td></TR>
+<TR><td>A6</td><td>00A6</td><td>BROKEN BAR</td></TR>
+<TR><td>A7</td><td>00A7</td><td>SECTION SIGN</td></TR>
+<TR><td>A8</td><td>0401</td><td>CYRILLIC CAPITAL LETTER IO</td></TR>
+<TR><td>A9</td><td>00A9</td><td>COPYRIGHT SIGN</td></TR>
+<TR><td>AA</td><td>0404</td><td>CYRILLIC CAPITAL LETTER UKRAINIAN IE</td></TR>
+<TR><td>AB</td><td>00AB</td><td>LEFT-POINTING DOUBLE ANGLE QUOTATION MARK</td></TR>
+<TR><td>AC</td><td>00AC</td><td>NOT SIGN</td></TR>
+<TR><td>AD</td><td>00AD</td><td>SOFT HYPHEN</td></TR>
+<TR><td>AE</td><td>00AE</td><td>REGISTERED SIGN</td></TR>
+<TR><td>AF</td><td>0407</td><td>CYRILLIC CAPITAL LETTER YI</td></TR>
+<TR><td>B0</td><td>00B0</td><td>DEGREE SIGN</td></TR>
+<TR><td>B1</td><td>00B1</td><td>PLUS-MINUS SIGN</td></TR>
+<TR><td>B2</td><td>0406</td><td>CYRILLIC CAPITAL LETTER BYELORUSSIAN-UKRAINIAN I</td></TR>
+<TR><td>B3</td><td>0456</td><td>CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I</td></TR>
+<TR><td>B4</td><td>0491</td><td>CYRILLIC SMALL LETTER GHE WITH UPTURN</td></TR>
+<TR><td>B5</td><td>00B5</td><td>MICRO SIGN</td></TR>
+<TR><td>B6</td><td>00B6</td><td>PILCROW SIGN</td></TR>
+<TR><td>B7</td><td>00B7</td><td>MIDDLE DOT</td></TR>
+<TR><td>B8</td><td>0451</td><td>CYRILLIC SMALL LETTER IO</td></TR>
+<TR><td>B9</td><td>2116</td><td>NUMERO SIGN</td></TR>
+<TR><td>BA</td><td>0454</td><td>CYRILLIC SMALL LETTER UKRAINIAN IE</td></TR>
+<TR><td>BB</td><td>00BB</td><td>RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK</td></TR>
+<TR><td>BC</td><td>0458</td><td>CYRILLIC SMALL LETTER JE</td></TR>
+<TR><td>BD</td><td>0405</td><td>CYRILLIC CAPITAL LETTER DZE</td></TR>
+<TR><td>BE</td><td>0455</td><td>CYRILLIC SMALL LETTER DZE</td></TR>
+<TR><td>BF</td><td>0457</td><td>CYRILLIC SMALL LETTER YI</td></TR>
+<TR><td>C0</td><td>0410</td><td>CYRILLIC CAPITAL LETTER A</td></TR>
+<TR><td>C1</td><td>0411</td><td>CYRILLIC CAPITAL LETTER BE</td></TR>
+<TR><td>C2</td><td>0412</td><td>CYRILLIC CAPITAL LETTER VE</td></TR>
+<TR><td>C3</td><td>0413</td><td>CYRILLIC CAPITAL LETTER GHE</td></TR>
+<TR><td>C4</td><td>0414</td><td>CYRILLIC CAPITAL LETTER DE</td></TR>
+<TR><td>C5</td><td>0415</td><td>CYRILLIC CAPITAL LETTER IE</td></TR>
+<TR><td>C6</td><td>0416</td><td>CYRILLIC CAPITAL LETTER ZHE</td></TR>
+<TR><td>C7</td><td>0417</td><td>CYRILLIC CAPITAL LETTER ZE</td></TR>
+<TR><td>C8</td><td>0418</td><td>CYRILLIC CAPITAL LETTER I</td></TR>
+<TR><td>C9</td><td>0419</td><td>CYRILLIC CAPITAL LETTER SHORT I</td></TR>
+<TR><td>CA</td><td>041A</td><td>CYRILLIC CAPITAL LETTER KA</td></TR>
+<TR><td>CB</td><td>041B</td><td>CYRILLIC CAPITAL LETTER EL</td></TR>
+<TR><td>CC</td><td>041C</td><td>CYRILLIC CAPITAL LETTER EM</td></TR>
+<TR><td>CD</td><td>041D</td><td>CYRILLIC CAPITAL LETTER EN</td></TR>
+<TR><td>CE</td><td>041E</td><td>CYRILLIC CAPITAL LETTER O</td></TR>
+<TR><td>CF</td><td>041F</td><td>CYRILLIC CAPITAL LETTER PE</td></TR>
+<TR><td>D0</td><td>0420</td><td>CYRILLIC CAPITAL LETTER ER</td></TR>
+<TR><td>D1</td><td>0421</td><td>CYRILLIC CAPITAL LETTER ES</td></TR>
+<TR><td>D2</td><td>0422</td><td>CYRILLIC CAPITAL LETTER TE</td></TR>
+<TR><td>D3</td><td>0423</td><td>CYRILLIC CAPITAL LETTER U</td></TR>
+<TR><td>D4</td><td>0424</td><td>CYRILLIC CAPITAL LETTER EF</td></TR>
+<TR><td>D5</td><td>0425</td><td>CYRILLIC CAPITAL LETTER HA</td></TR>
+<TR><td>D6</td><td>0426</td><td>CYRILLIC CAPITAL LETTER TSE</td></TR>
+<TR><td>D7</td><td>0427</td><td>CYRILLIC CAPITAL LETTER CHE</td></TR>
+<TR><td>D8</td><td>0428</td><td>CYRILLIC CAPITAL LETTER SHA</td></TR>
+<TR><td>D9</td><td>0429</td><td>CYRILLIC CAPITAL LETTER SHCHA</td></TR>
+<TR><td>DA</td><td>042A</td><td>CYRILLIC CAPITAL LETTER HARD SIGN</td></TR>
+<TR><td>DB</td><td>042B</td><td>CYRILLIC CAPITAL LETTER YERU</td></TR>
+<TR><td>DC</td><td>042C</td><td>CYRILLIC CAPITAL LETTER SOFT SIGN</td></TR>
+<TR><td>DD</td><td>042D</td><td>CYRILLIC CAPITAL LETTER E</td></TR>
+<TR><td>DE</td><td>042E</td><td>CYRILLIC CAPITAL LETTER YU</td></TR>
+<TR><td>DF</td><td>042F</td><td>CYRILLIC CAPITAL LETTER YA</td></TR>
+<TR><td>E0</td><td>0430</td><td>CYRILLIC SMALL LETTER A</td></TR>
+<TR><td>E1</td><td>0431</td><td>CYRILLIC SMALL LETTER BE</td></TR>
+<TR><td>E2</td><td>0432</td><td>CYRILLIC SMALL LETTER VE</td></TR>
+<TR><td>E3</td><td>0433</td><td>CYRILLIC SMALL LETTER GHE</td></TR>
+<TR><td>E4</td><td>0434</td><td>CYRILLIC SMALL LETTER DE</td></TR>
+<TR><td>E5</td><td>0435</td><td>CYRILLIC SMALL LETTER IE</td></TR>
+<TR><td>E6</td><td>0436</td><td>CYRILLIC SMALL LETTER ZHE</td></TR>
+<TR><td>E7</td><td>0437</td><td>CYRILLIC SMALL LETTER ZE</td></TR>
+<TR><td>E8</td><td>0438</td><td>CYRILLIC SMALL LETTER I</td></TR>
+<TR><td>E9</td><td>0439</td><td>CYRILLIC SMALL LETTER SHORT I</td></TR>
+<TR><td>EA</td><td>043A</td><td>CYRILLIC SMALL LETTER KA</td></TR>
+<TR><td>EB</td><td>043B</td><td>CYRILLIC SMALL LETTER EL</td></TR>
+<TR><td>EC</td><td>043C</td><td>CYRILLIC SMALL LETTER EM</td></TR>
+<TR><td>ED</td><td>043D</td><td>CYRILLIC SMALL LETTER EN</td></TR>
+<TR><td>EE</td><td>043E</td><td>CYRILLIC SMALL LETTER O</td></TR>
+<TR><td>EF</td><td>043F</td><td>CYRILLIC SMALL LETTER PE</td></TR>
+<TR><td>F0</td><td>0440</td><td>CYRILLIC SMALL LETTER ER</td></TR>
+<TR><td>F1</td><td>0441</td><td>CYRILLIC SMALL LETTER ES</td></TR>
+<TR><td>F2</td><td>0442</td><td>CYRILLIC SMALL LETTER TE</td></TR>
+<TR><td>F3</td><td>0443</td><td>CYRILLIC SMALL LETTER U</td></TR>
+<TR><td>F4</td><td>0444</td><td>CYRILLIC SMALL LETTER EF</td></TR>
+<TR><td>F5</td><td>0445</td><td>CYRILLIC SMALL LETTER HA</td></TR>
+<TR><td>F6</td><td>0446</td><td>CYRILLIC SMALL LETTER TSE</td></TR>
+<TR><td>F7</td><td>0447</td><td>CYRILLIC SMALL LETTER CHE</td></TR>
+<TR><td>F8</td><td>0448</td><td>CYRILLIC SMALL LETTER SHA</td></TR>
+<TR><td>F9</td><td>0449</td><td>CYRILLIC SMALL LETTER SHCHA</td></TR>
+<TR><td>FA</td><td>044A</td><td>CYRILLIC SMALL LETTER HARD SIGN</td></TR>
+<TR><td>FB</td><td>044B</td><td>CYRILLIC SMALL LETTER YERU</td></TR>
+<TR><td>FC</td><td>044C</td><td>CYRILLIC SMALL LETTER SOFT SIGN</td></TR>
+<TR><td>FD</td><td>044D</td><td>CYRILLIC SMALL LETTER E</td></TR>
+<TR><td>FE</td><td>044E</td><td>CYRILLIC SMALL LETTER YU</td></TR>
+<TR><td>FF</td><td>044F</td><td>CYRILLIC SMALL LETTER YA</td></TR>
+</TABLE>

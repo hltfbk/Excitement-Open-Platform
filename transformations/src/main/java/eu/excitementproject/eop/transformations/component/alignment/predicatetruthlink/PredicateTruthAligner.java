@@ -25,6 +25,7 @@ import eu.excitement.type.predicatetruth.PredicateTruthNegative;
 import eu.excitement.type.predicatetruth.PredicateTruthPositive;
 import eu.excitement.type.predicatetruth.PredicateTruthUncertain;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
+import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.utilities.uima.UimaUtils;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
@@ -169,6 +170,13 @@ public class PredicateTruthAligner implements AlignmentComponent {
 		// This component does not support instance configuration
 		return null;
 	}
+
+	@Override
+	public void close() throws AlignmentComponentException
+	{
+		
+	}
+
 	
 	/**
 	 * Draw bidirectional links between all predicate truth annotation of type (TextType) in text and truth annotation of type (hypoType) in Hypothesis

@@ -1,0 +1,23 @@
+<!DOCTYPE LuceneQuery [
+<!ELEMENT and ((arg|and|or),(arg|and|or)+)+|((field|and|or),(field|and|or)+)+>
+<!ELEMENT arg EMPTY>
+<!ATTLIST arg
+	literalV	CDATA	#REQUIRED
+	pOP	(similarSpelling|none)	"none"
+	included	(y|n)	"y"
+>
+<!ELEMENT field (arg*|and|or|range)>
+<!ATTLIST field
+	searchBy	CDATA	#REQUIRED
+>
+<!ELEMENT LuceneQuery (field*|and|or)>
+<!ATTLIST LuceneQuery
+	name	CDATA	#REQUIRED
+>
+<!ELEMENT or ((arg|and|or),(arg|and|or)+)+|((field|and|or),(field|and|or)+)+>
+<!ELEMENT range EMPTY>
+<!ATTLIST range
+	maxLiteralV	CDATA	#REQUIRED
+	minLiteralV	CDATA	#REQUIRED
+>
+]>

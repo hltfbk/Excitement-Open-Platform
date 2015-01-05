@@ -71,49 +71,49 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelatio
  */
 public abstract class FixedWeightEditDistance implements DistanceCalculation {
 
-	private static final String STOP_WORD_POS = "POS";
-	private static final String STOP_WORD_LIST = "LIST";
-	private static final String STOP_WORD_POS_LIST = "POS,LIST";
-	private static final String IGNORE_CASE = "ignoreCase";
-	private static final String NORMALIZATION_TYPE = "normalizationType";
-	private static final String DEFAULT = "default";
-	private static final String LONG = "long";
-	private static final String PATH_STOP_WORD = "pathStopWordFile";
-	private static final String STOP_WORD_TYPE = "stopWordRemoval";
+	protected static final String STOP_WORD_POS = "POS";
+	protected static final String STOP_WORD_LIST = "LIST";
+	protected static final String STOP_WORD_POS_LIST = "POS,LIST";
+	protected static final String IGNORE_CASE = "ignoreCase";
+	protected static final String NORMALIZATION_TYPE = "normalizationType";
+	protected static final String DEFAULT = "default";
+	protected static final String LONG = "long";
+	protected static final String PATH_STOP_WORD = "pathStopWordFile";
+	protected static final String STOP_WORD_TYPE = "stopWordRemoval";
 	
 	/**
 	 * weight for match
 	 */
-    private double mMatchWeight;
+    protected double mMatchWeight;
     /**
 	 * weight for delete
 	 */
-    private double mDeleteWeight;
+    protected double mDeleteWeight;
     /**
 	 * weight for insert
 	 */
-    private double mInsertWeight;
+    protected double mInsertWeight;
     /**
 	 * weight for substitute
 	 */
-    private double mSubstituteWeight;
+    protected double mSubstituteWeight;
     /**
 	 * the activated instance
 	 */
-    private String instances;
+    protected String instances;
     /**
 	 * the resource
 	 */
     @SuppressWarnings("rawtypes")
-	private List<LexicalResource> lexR;
+	protected List<LexicalResource> lexR;
     /**
 	 * stop word removal
 	 */
-    private boolean stopWordRemovalPOS;
-	private boolean ignoreCase;
+    protected boolean stopWordRemovalPOS;
+	protected boolean ignoreCase;
     Set<WordNetRelation> relations = new HashSet<WordNetRelation>();
-	private HashSet<String> ignoreSet = null;
-	private String normalizationType;
+	protected HashSet<String> ignoreSet = null;
+	protected String normalizationType;
 
     static Logger logger = Logger.getLogger(FixedWeightEditDistance.class.getName());
     
@@ -294,7 +294,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
     }
     
     
-    private void initializeStopWordList(String path) {
+    protected void initializeStopWordList(String path) {
     	File sourceFile = new File(path);
     	try {
 			BufferedReader br = new BufferedReader(new FileReader(sourceFile));
@@ -590,7 +590,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * @return the list of tokens in the CAS.
      *
 	 */
-    private List<Token> getTokenSequences(JCas jcas) {
+    protected List<Token> getTokenSequences(JCas jcas) {
     	
     	List<Token> tokensList = new ArrayList<Token>();
     	
@@ -796,7 +796,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      }
     
     
-	private boolean compare(String tokenBaseForm, String tokenBaseForm2) {
+	protected boolean compare(String tokenBaseForm, String tokenBaseForm2) {
 		if(ignoreCase){
 			return tokenBaseForm.equalsIgnoreCase(tokenBaseForm2);
 		}	
@@ -825,7 +825,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * @return the smaller of three double values
      * 
      */
-    private double minimum(double a, double b, double c) {
+    protected double minimum(double a, double b, double c) {
     	
     	return Math.min(Math.min(a, b), c);
     	
@@ -839,7 +839,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * 
      * @throws LexicalResourceException
      */
-    private void initializeWordnet(String path) throws LexicalResourceException {
+    protected void initializeWordnet(String path) throws LexicalResourceException {
     	
     	logger.info("Wordnet initialization ...");
     	
@@ -869,7 +869,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * 
      * @throws LexicalResourceException
      */
-    private void initializeGermaNet(String path) throws LexicalResourceException {
+    protected void initializeGermaNet(String path) throws LexicalResourceException {
     	
     	logger.info("GermaNet initialization ...");
     	
@@ -897,7 +897,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * 
      * @throws LexicalResourceException
      */
-    private void initializeEnglishWikipedia(String dbConnection, String dbUser, String dbPasswd) throws LexicalResourceException {
+    protected void initializeEnglishWikipedia(String dbConnection, String dbUser, String dbPasswd) throws LexicalResourceException {
     	
     	logger.info("English Wikipedia initialization ...");
     	
@@ -931,7 +931,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * 
      * @throws LexicalResourceException
      */
-    private void initializeItalianWikipedia(String dbConnection, String dbUser, String dbPasswd) throws LexicalResourceException {
+    protected void initializeItalianWikipedia(String dbConnection, String dbUser, String dbPasswd) throws LexicalResourceException {
     	
     	logger.info("Italian Wikipedia initialization ...");
     	
@@ -973,7 +973,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * @throws LexicalResourceException
      */
     @SuppressWarnings("unchecked")
-	private boolean getRulesFromResource(String leftLemma, PartOfSpeech leftPos, 
+	protected boolean getRulesFromResource(String leftLemma, PartOfSpeech leftPos, 
     		String rightLemma, PartOfSpeech rightPos) throws LexicalResourceException {
     	
     	//logger.info("leftLemma:" + leftLemma + " leftPos:" + leftPos + "\t" + "rightLemma:" + rightLemma + " " + "rightPos:" + rightPos);
@@ -1007,7 +1007,7 @@ public abstract class FixedWeightEditDistance implements DistanceCalculation {
      * The <code>EditDistanceValue</code> class extends the DistanceValue
      * to hold the distance calculation result. 
      */
-    private class EditDistanceValue extends DistanceValue {
+    protected class EditDistanceValue extends DistanceValue {
 
     	public EditDistanceValue(double distance, boolean simBased, double rawValue)
     	{

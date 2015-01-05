@@ -1,0 +1,11 @@
+<!DOCTYPE InsertParentQuery [
+<!ENTITY % common SYSTEM 'query.dtd'>
+
+<!ELEMENT InsertParentQuery (xpath, parentTag, info?, multiple?)>
+<!ATTLIST InsertParentQuery
+	toolName CDATA #FIXED "InsertParent"
+>
+<!ELEMENT xpath (#PCDATA)>	<!-- The XPath expression -->
+<!ELEMENT parentTag (#PCDATA)>	<!-- The new parent tag name -->
+%common;
+]>

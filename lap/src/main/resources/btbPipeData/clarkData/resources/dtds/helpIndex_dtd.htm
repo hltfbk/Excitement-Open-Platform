@@ -1,0 +1,60 @@
+<html>
+
+<head>
+<title></title>
+</head>
+
+<body BGCOLOR="#FFFFCB">
+
+<p>This is a short description of the DTD which defines the XML documents representing the
+help table used by the <em>Value Constraint</em> engine in the <em>ClarkSystem</em>. The
+table define the correspondence between tokens and short descriptions. When the constraint
+engine works and there is a choice among several tokens, the user can use this table to
+check runtime the meaning of each of them.</p>
+
+<p>Note: In order to use a help table, the document containing it must be imported and
+saved in the system. Then it will appear in the choice box of the <em>Value Constraint</em>
+Editor for help file.</p>
+
+<p><strong>&lt;!DOCTYPE CLaRK_constraints_help [<br>
+&lt;!ELEMENT CLaRK_constraints_help (comment,pair+)&gt;</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp; Each such document is a sequence of several pairs
+(token-description). There is an additional <em>comment</em> element which is not
+processed by the system parser.</p>
+
+<p><strong>&lt;!ELEMENT pair (item, descr)&gt;</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp; This element represent a single token-description pair. The content
+of each element of the pair have to obey the XML syntax.</p>
+
+<p><strong>&lt;!ELEMENT item (#PCDATA)&gt;<br>
+&lt;!ELEMENT descr (#PCDATA)&gt;<br>
+&lt;!ELEMENT comment (#PCDATA)&gt;</strong><br>
+]&gt;</p>
+
+<p>Example help table:</p>
+
+<p><strong>&lt;CLaRK_constraints_help&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; &lt;comment&gt;Some comments&lt;/comment&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;pair&gt;&lt;item&gt;token1&lt;/item&gt;&lt;descr&gt;description
+1&lt;/descr&gt;&lt;/pair&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;pair&gt;&lt;item&gt;token2&lt;/item&gt;&lt;descr&gt;description
+2&lt;/descr&gt;&lt;/pair&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;pair&gt;&lt;item&gt;token3&lt;/item&gt;&lt;descr&gt;description
+3&lt;/descr&gt;&lt;/pair&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;pair&gt;&lt;item&gt;token4&lt;/item&gt;&lt;descr&gt;description
+4&lt;/descr&gt;&lt;/pair&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;pair&gt;&lt;item&gt;token5&lt;/item&gt;&lt;descr&gt;description
+5&lt;/descr&gt;&lt;/pair&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;pair&gt;&lt;item&gt;token6&lt;/item&gt;&lt;descr&gt;description
+6&lt;/descr&gt;&lt;/pair&gt;<br>
+&lt;/CLaRK_constraints_help&gt;</strong></p>
+</body>
+</html>

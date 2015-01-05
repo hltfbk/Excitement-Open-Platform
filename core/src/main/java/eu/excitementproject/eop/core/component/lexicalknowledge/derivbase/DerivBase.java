@@ -67,7 +67,7 @@ public class DerivBase {
 	public DerivBase(boolean useScores, Double score) throws FileNotFoundException, IOException, LexicalResourceException {
 		this.entries = new HashMap<Tuple<String>, ArrayList<Tuple<String>>>();
     	this.entryScores = new HashMap<Tuple<String>, ArrayList<HashMap<Tuple<String>, Double>>>();
-        load("/derivbase/DErivBase-v1.4-rulePaths.txt", useScores, score);  
+        load("/derivbase/DErivBase-v2.0-rulePaths.txt", useScores, score);  
 	}
 	
 	

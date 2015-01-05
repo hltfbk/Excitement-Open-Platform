@@ -5,7 +5,7 @@
   	<parent>
 		<groupId>eu.excitementproject</groupId>
 	  	<artifactId>eop</artifactId>
-	    <version>1.1.4-SNAPSHOT</version>
+	    <version>1.2.1-SNAPSHOT</version>
 	</parent>
   
   	<artifactId>lap</artifactId>
@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>1.1.4-SNAPSHOT</version>
+			<version>1.2.1-SNAPSHOT</version>
 		</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
@@ -151,6 +151,11 @@
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-it-maxent</artifactId>
      		<version>20130823.0</version>
     	</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-parser-en-chunking</artifactId>
+			<version>20120616.1</version>
+		</dependency>
     	<!--  end of openNLP models -->
     	
     	<dependency>
@@ -160,7 +165,8 @@
 	
 	<!-- TreeTagger related dependencies --> 
 	<!-- if you want to use TreeTagger, and related LAPs, please read /lap/src/scripts/treetagger/README.txt, and follow the instructions --> 
-	<!-- 
+ 	
+ 	<!--
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
@@ -181,7 +187,7 @@
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
      		<version>20101115.0</version>
     	</dependency>
-	--> 
+ 	-->
 	<!-- end of TreeTagger related dependencies --> 
 
     	<dependency>
@@ -211,6 +217,14 @@
             </artifactId>
             <version>20130511.0</version>
         </dependency>
+    	<dependency>
+            <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+            <artifactId>
+                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-it-linear
+            </artifactId>
+            <version>20141002.0</version>
+        </dependency>
+
     	<!-- We are not using MST parser for 1.0 release.  -->
     	<!--  
     	
@@ -263,7 +277,16 @@
 			<groupId>org.biu.nlp</groupId>
 			<artifactId>biu_legacy</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.bultreebank.clark</groupId>
+			<artifactId>clark-system</artifactId>
+			<version>3.1.20130611</version>
+		</dependency>
+		<dependency>
+			<groupId>org.bultreebank.clark.plugins.gaze</groupId>
+			<artifactId>gaze-plugin</artifactId>
+			<version>1.0.20140922</version>
+		</dependency>
 
  	</dependencies>
 
