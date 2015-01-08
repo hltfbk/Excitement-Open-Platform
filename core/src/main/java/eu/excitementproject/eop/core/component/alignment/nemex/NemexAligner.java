@@ -3,6 +3,7 @@
  */
 package eu.excitementproject.eop.core.component.alignment.nemex;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,22 +11,32 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
+import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
+import org.apache.uima.jcas.tcas.Annotation;
 import org.uimafit.util.JCasUtil;
 
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
+import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
@@ -65,9 +76,13 @@ public class NemexAligner implements AlignmentComponent {
 
 	public NemexAligner(String gazetteerFilePath, String externalDictPath,
 			String delimiter, Boolean delimiterSwitchOff, int nGramSize,
-			Boolean ignoreDuplicateNgrams, String similarityMeasure,
-			double similarityThreshold, String chunkerModelPath,
-			String direction) {
+			Boolean ignoreDuplicateNgrams, String similarityMeasureLookup,
+			String similarityMeasureGazetteerCreation,
+			double similarityThresholdLookup,
+			double similarityThresholdGazetteerCreation,
+			String chunkerModelPath, String direction, boolean isWN,
+			String WNRel, boolean isWNCollapsed, boolean useFirstSenseOnlyLeft,
+			boolean useFirstSenseOnlyRight, String wnPath) {
 
 		this.gazetteerFilePath = gazetteerFilePath;
 		this.externalDictPath = externalDictPath;
@@ -76,8 +91,11 @@ public class NemexAligner implements AlignmentComponent {
 		this.nGramSize = nGramSize;
 		this.ignoreDuplicateNgrams = ignoreDuplicateNgrams;
 
-		this.similarityMeasure = similarityMeasure;
-		this.similarityThreshold = similarityThreshold;
+		this.similarityMeasureLookup = similarityMeasureLookup;
+		this.similarityMeasureGazetteerCreation = similarityMeasureGazetteerCreation;
+
+		this.similarityThresholdLookup = similarityThresholdLookup;
+		this.similarityThresholdGazetteerCreation = similarityThresholdGazetteerCreation;
 
 		this.chunkerModelPath = chunkerModelPath;
 
@@ -85,6 +103,56 @@ public class NemexAligner implements AlignmentComponent {
 		NEMEX_A.loadNewGazetteer(this.externalDictPath, this.delimiter,
 				this.delimiterSwitchOff, this.nGramSize,
 				this.ignoreDuplicateNgrams);
+		logger.info("Loading external Nemex Gazetteer done");
+
+		this.isWN = isWN;
+		try {
+			if (isWN) {
+				String[] WNRelations = WNRel.split(",");
+				if (null == WNRelations || 0 == WNRelations.length) {
+					throw new ConfigurationException(
+							"Wrong configuation: didn't find any relations for the WordNet");
+				}
+				Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+				for (String relation : WNRelations) {
+					if (relation.equalsIgnoreCase("HYPERNYM")) {
+						wnRelSet.add(WordNetRelation.HYPERNYM);
+					} else if (relation.equalsIgnoreCase("SYNONYM")) {
+						wnRelSet.add(WordNetRelation.SYNONYM);
+					} else if (relation.equalsIgnoreCase("PART_HOLONYM")) {
+						wnRelSet.add(WordNetRelation.PART_HOLONYM);
+					} else {
+						logger.info("Warning: wrong relation names for the WordNet");
+					}
+				}
+				if (wnRelSet.isEmpty()) {
+					throw new ConfigurationException(
+							"Wrong configuation: didn't find any (correct) relations for the WordNet");
+				}
+				
+				File wnFile = new File(wnPath);
+				if (!wnFile.exists()) {
+					throw new ConfigurationException("cannot find WordNet at: "
+							+ wnPath);
+				}
+				if (isWNCollapsed) {
+					this.wnlr = new WordnetLexicalResource(wnFile,
+							useFirstSenseOnlyLeft, useFirstSenseOnlyRight,
+							wnRelSet);
+				
+				} else {
+					for (WordNetRelation wnr : wnRelSet) {
+						this.wnlr = new WordnetLexicalResource(wnFile,
+								useFirstSenseOnlyLeft, useFirstSenseOnlyRight,
+								Collections.singleton(wnr));
+						
+					}
+				}
+				logger.info("Load WordNet done.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -147,6 +215,7 @@ public class NemexAligner implements AlignmentComponent {
 				annotateSubstring(hypoView, queryMap, queryIndex);
 			}
 		}
+
 	}
 
 	/**
@@ -182,23 +251,34 @@ public class NemexAligner implements AlignmentComponent {
 			double totalNoOfQueries = 0;
 			logger.info("Creating queries");
 
-			Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
-			Token[] tokenAnnotsArray = tokenAnnots
-					.toArray(new Token[tokenAnnots.size()]);
-
-			int numOfTokens = tokenAnnotsArray.length;
+			AnnotationIndex<Annotation> tokenAnnots = view.getAnnotationIndex(Token.type);
+			
+			int numOfTokens = tokenAnnots.size();
+			
 			String[] tokenTextArray = new String[numOfTokens];
 			String[] tagArray = new String[numOfTokens];
+			String[] tokenLemmaArray = new String[numOfTokens];
+
 			int[] tokenStartOffsetArray = new int[numOfTokens];
 			int[] tokenEndOffsetArray = new int[numOfTokens];
-
-			for (int tNum = 0; tNum < tokenAnnotsArray.length; tNum++) {
-				Token token = tokenAnnotsArray[tNum];
-
+			
+			int tNum = 0;
+			Iterator<Annotation>  tIter = tokenAnnots.iterator();
+			
+			while(tIter.hasNext()) {
+				
+				Token token = (Token) tIter.next();
+				
 				tokenTextArray[tNum] = token.getCoveredText();
 				tagArray[tNum] = token.getPos().getPosValue();
+
+				
+				tokenLemmaArray[tNum] = token.getLemma().getValue();
+
 				tokenStartOffsetArray[tNum] = token.getBegin();
 				tokenEndOffsetArray[tNum] = token.getEnd();
+				
+				tNum++;
 
 			}
 
@@ -244,15 +324,31 @@ public class NemexAligner implements AlignmentComponent {
 							queries.set(k, curQuery);
 						}
 						newQueries.add(curQuery + tokenTextArray[j]);
-						logger.info("Token and tag:"+tokenTextArray[j]+tagArray[j]);
+
 						if (tagArray[j].equals("NN")
 								|| tagArray[j].equals("NNS")
 								|| tagArray[j].equals("NNP")
 								|| tagArray[j].equals("NNPS")) {
 							List<String> values = NEMEX_A.checkSimilarity(
-									tokenTextArray[j].toLowerCase(), this.externalDictPath,
-									similarityMeasure, similarityThreshold);
-							logger.info("Similar entries:"+values);
+									tokenTextArray[j].toLowerCase(),
+									this.externalDictPath,
+									similarityMeasureGazetteerCreation,
+									similarityThresholdGazetteerCreation);
+
+							if (isWN) {
+								
+								if (tokenLemmaArray[j] != "") {
+
+									for (LexicalRule<? extends RuleInfo> rule : wnlr
+											.getRulesForLeft(
+													tokenLemmaArray[j], null)) {
+										values.add(rule.getRLemma()
+												.toLowerCase());
+									}
+								}
+								else
+									logger.info(tokenTextArray[j] + " " + tokenLemmaArray[j]);
+							}
 							for (int l = 0; l < values.size(); l++) {
 								String newQuery = curQuery + values.get(l);
 								newQueries.add(newQuery);
@@ -278,10 +374,16 @@ public class NemexAligner implements AlignmentComponent {
 					query = query.toLowerCase();
 					logger.info("Query:" + query);
 					ArrayList<QueryInfo> offsets = new ArrayList<QueryInfo>();
+					QueryInfo curOffset;
+					if (j == 0) {
 
-					QueryInfo curOffset = new QueryInfo(view, startOffset,
-							endOffset, tag);
+						curOffset = new QueryInfo(view, startOffset, endOffset,
+								tag, false);
+					} else {
 
+						curOffset = new QueryInfo(view, startOffset, endOffset,
+								tag, true);
+					}
 					if (queryMap.containsValue(query)) {
 						offsets = queryIndex.get(query);
 					} else {
@@ -478,7 +580,7 @@ public class NemexAligner implements AlignmentComponent {
 
 			try {
 				values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
-						similarityMeasure, similarityThreshold);
+						similarityMeasureLookup, similarityThresholdLookup);
 
 				if (values.size() > 0) {
 					logger.info("Query text: " + str);
@@ -658,7 +760,7 @@ public class NemexAligner implements AlignmentComponent {
 			link.setDirection(Direction.HtoT);
 
 			// Set strength according to the nemex-a threshold
-			link.setStrength(this.similarityThreshold);
+			link.setStrength(this.similarityThresholdLookup);
 
 			// Add the link information
 			link.setAlignerID("NemexA");
@@ -683,7 +785,7 @@ public class NemexAligner implements AlignmentComponent {
 			link.setDirection(Direction.TtoH);
 
 			// Set strength according to the nemex-a threshold
-			link.setStrength(this.similarityThreshold);
+			link.setStrength(this.similarityThresholdLookup);
 
 			// Add the link information
 			link.setAlignerID("NemexA");
@@ -718,11 +820,18 @@ public class NemexAligner implements AlignmentComponent {
 	private int nGramSize;
 	private Boolean ignoreDuplicateNgrams;
 
-	private double similarityThreshold;
-	private String similarityMeasure;
+	private double similarityThresholdLookup;
+	private double similarityThresholdGazetteerCreation;
+
+	private String similarityMeasureLookup;
+	private String similarityMeasureGazetteerCreation;
 
 	private String chunkerModelPath;
 
 	private String direction;
+
+	private WordnetLexicalResource wnlr;
+
+	private Boolean isWN;
 
 }

@@ -19,12 +19,15 @@ public class QueryInfo {
 	int startOffset; // inclusive
 	int endOffset; // exclusive
 	String tag;
+	boolean extended;
 
-	public QueryInfo(JCas hView, int start, int end, String posTag) {
+	public QueryInfo(JCas hView, int start, int end, String posTag, boolean ext) {
 		hypoView = hView;
 		startOffset = start;
 		endOffset = end;
 		tag = posTag;
+		extended = ext;
+		
 	}
 
 	public JCas getHypothesisView() {
@@ -41,6 +44,10 @@ public class QueryInfo {
 	
 	public String getPosTag() {
 		return tag;
+	}
+	
+	public Boolean getExtended() {
+		return extended;
 	}
 
 }

@@ -1,7 +1,6 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 import java.util.logging.Logger;
@@ -55,17 +54,30 @@ public class NemexAlignerScoring implements ScoringComponent {
 		int nGramSize = Integer.parseInt(comp.getString("nGramSize"));
 		Boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
 				.getString("ignoreDuplicateNgrams"));
-		String similarityMeasure = comp.getString("similarityMeasure");
-		double similarityThreshold = Double.parseDouble(comp
-				.getString("similarityThreshold"));
+		String similarityMeasureLookup = comp.getString("similarityMeasureLookup");
+		double similarityThresholdLookup = Double.parseDouble(comp
+				.getString("similarityThresholdLookup"));
+		
+		String similarityMeasureGazetteerCreation = comp.getString("similarityMeasureGazetteerCreation");
+		double similarityThresholdGazetteerCreation = Double.parseDouble(comp
+				.getString("similarityThresholdGazetteerCreation"));
+		
 		String chunkerModelPath = comp.getString("chunkerModelPath");
 		this.direction = comp.getString("direction");
 
+		Boolean isWN = Boolean.valueOf(comp.getString("isWN"));
+		String WNRelations = comp.getString("WNRelations");
+		Boolean isWNCollapsed = Boolean.valueOf(comp.getString("isWNCollapsed"));
+		Boolean useFirstSenseOnlyLeft = Boolean.valueOf(comp.getString("useFirstSenseOnlyLeft"));
+		Boolean useFirstSenseOnlyRight = Boolean.valueOf(comp.getString("useFirstSenseOnlyRight"));
+		String wnPath = comp.getString("wnPath");
+		
 		this.aligner = new NemexAligner(externalDictPath, gazetteerFilePath, delimiter,
-				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams,
-				similarityMeasure, similarityThreshold, chunkerModelPath,
-				direction);
+				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams, similarityMeasureLookup,
+				similarityMeasureGazetteerCreation, similarityThresholdLookup, similarityThresholdGazetteerCreation, chunkerModelPath,
+				direction, isWN, WNRelations, isWNCollapsed, useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath);
 
+		
 	}
 
 	public int getNumOfFeats() {
