@@ -336,18 +336,16 @@ public class NemexAligner implements AlignmentComponent {
 									similarityThresholdGazetteerCreation);
 
 							if (isWN) {
+								logger.info(tokenTextArray[j] + " " + tokenLemmaArray[j]);
 								
-								if (tokenLemmaArray[j] != "") {
-
-									for (LexicalRule<? extends RuleInfo> rule : wnlr
+								for (LexicalRule<? extends RuleInfo> rule : wnlr
 											.getRulesForLeft(
 													tokenLemmaArray[j], null)) {
 										values.add(rule.getRLemma()
 												.toLowerCase());
 									}
-								}
-								else
-									logger.info(tokenTextArray[j] + " " + tokenLemmaArray[j]);
+								
+									
 							}
 							for (int l = 0; l < values.size(); l++) {
 								String newQuery = curQuery + values.get(l);

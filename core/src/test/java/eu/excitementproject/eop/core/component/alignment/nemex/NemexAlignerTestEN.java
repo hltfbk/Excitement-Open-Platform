@@ -97,7 +97,7 @@ public class NemexAlignerTestEN {
 					"#", true, 3, false, "DICE_SIMILARITY_MEASURE",
 					"DICE_SIMILARITY_MEASURE", 0.8, 0.8,
 					"src/main/resources/chunker-model/en-chunker.bin", "TtoH",
-					true, "HYPERNYM,SYNONYM,PART_HOLONYM", true, true, true,
+					true, "HYPERNYM,SYNONYM,PART_HOLONYM", true, false, false,
 					"src/main/resources/ontologies/EnglishWordNet-dict/");
 			logger.info("Initialization finished");
 
