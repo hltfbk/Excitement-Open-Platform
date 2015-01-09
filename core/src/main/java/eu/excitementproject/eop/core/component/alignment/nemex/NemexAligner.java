@@ -344,7 +344,7 @@ public class NemexAligner implements AlignmentComponent {
 											.getRulesForLeft(
 													tokenLemmaArray[j], new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN))) {
 										values.add(rule.getRLemma()
-												.toLowerCase());
+												.toLowerCase().replace(" ","#"));
 										
 										
 									}
