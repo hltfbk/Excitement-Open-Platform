@@ -35,6 +35,8 @@ import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponen
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
 import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
+import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
@@ -336,17 +338,21 @@ public class NemexAligner implements AlignmentComponent {
 									similarityThresholdGazetteerCreation);
 
 							if (isWN) {
-								logger.info(tokenTextArray[j] + " " + tokenLemmaArray[j]);
+								//logger.info(tokenTextArray[j] + " " + tokenLemmaArray[j]);
 								
 								for (LexicalRule<? extends RuleInfo> rule : wnlr
 											.getRulesForLeft(
-													tokenLemmaArray[j], null)) {
+													tokenLemmaArray[j], new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN))) {
 										values.add(rule.getRLemma()
 												.toLowerCase());
+										
+										
 									}
 								
-									
+								
 							}
+							
+							logger.info("values: " + values);
 							for (int l = 0; l < values.size(); l++) {
 								String newQuery = curQuery + values.get(l);
 								newQueries.add(newQuery);
@@ -370,7 +376,7 @@ public class NemexAligner implements AlignmentComponent {
 					annot.addToIndexes();
 
 					query = query.toLowerCase();
-					logger.info("Query:" + query);
+					
 					ArrayList<QueryInfo> offsets = new ArrayList<QueryInfo>();
 					QueryInfo curOffset;
 					if (j == 0) {
