@@ -352,7 +352,7 @@ public class NemexAligner implements AlignmentComponent {
 								
 							}
 							
-							logger.info("values: " + values);
+							//logger.info("values: " + values);
 							for (int l = 0; l < values.size(); l++) {
 								String newQuery = curQuery + values.get(l);
 								newQueries.add(newQuery);
