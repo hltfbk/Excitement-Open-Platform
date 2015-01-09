@@ -72,7 +72,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 		Boolean useFirstSenseOnlyRight = Boolean.valueOf(comp.getString("useFirstSenseOnlyRight"));
 		String wnPath = comp.getString("wnPath");
 		
-		this.aligner = new NemexAligner(externalDictPath, gazetteerFilePath, delimiter,
+		this.aligner = new NemexAligner(gazetteerFilePath, externalDictPath, delimiter,
 				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams, similarityMeasureLookup,
 				similarityMeasureGazetteerCreation, similarityThresholdLookup, similarityThresholdGazetteerCreation, chunkerModelPath,
 				direction, isWN, WNRelations, isWNCollapsed, useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath);
