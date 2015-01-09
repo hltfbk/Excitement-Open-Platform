@@ -19,6 +19,9 @@
                 <include>eu.excitementproject:lexicalminer</include>
                 <include>eu.excitementproject:distsim</include>
                 <include>eu.excitementproject:globalgraphoptimizer</include>
+                <include>eu.excitementproject:tracer</include>
+                <include>eu.excitementproject:alignmentedas</include>
+                <include>eu.excitementproject:redis</include>
             </includes>
             <binaries>
                 <outputDirectory>/</outputDirectory>
