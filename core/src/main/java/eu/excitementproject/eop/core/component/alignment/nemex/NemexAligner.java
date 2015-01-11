@@ -284,7 +284,7 @@ public class NemexAligner implements AlignmentComponent {
 
 			}
 
-			query = getQuery(chunkerModelPath);
+			//query = getQuery(chunkerModelPath);
 
 			InputStream modelIn = null;
 			ChunkerModel model = null;
@@ -338,7 +338,7 @@ public class NemexAligner implements AlignmentComponent {
 									similarityThresholdGazetteerCreation);
 
 							if (isWN) {
-								//logger.info(tokenTextArray[j] + " " + tokenLemmaArray[j]);
+								logger.info("Finding wordnet rules");
 								
 								for (LexicalRule<? extends RuleInfo> rule : wnlr
 											.getRulesForLeft(
@@ -474,7 +474,8 @@ public class NemexAligner implements AlignmentComponent {
 				querySenseMap.clear();
 			}
 			fw.close();
-
+			wnlr.close();
+			
 			logger.info("Loading the gazetteer");
 			NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
 					this.delimiterSwitchOff, this.nGramSize,
@@ -489,10 +490,10 @@ public class NemexAligner implements AlignmentComponent {
 
 	}
 
-	private String getQuery(String chunkerModelPath2) {
+	/*private String getQuery(String chunkerModelPath2) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 	/**
 	 * This method adds nemex.NemexType annotation on text queries.
