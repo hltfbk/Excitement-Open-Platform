@@ -1,11 +1,12 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.visualization;
 
 /**
- * An implementation if the {@link eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer} interface.
+ * An implementation if the {@link eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer} interface, based on {@link Brat visualizer http://brat.nlplab.org/embed.html}
+
  * Visualizes POS and dependency relation annotations and alignments.
- * Provide GUI for filtering annotations and alignments. 
+ * Provides GUI for filtering annotations and alignments. 
  * 
- * @author Meni Adler
+ * @author Eden Erez
  * @since Jan 6, 2015
  *
  */
@@ -57,8 +58,11 @@ public class P1EdaVisualizer implements Visualizer {
 		public static HashMap<String, String> hashAlignmentData = new HashMap<String, String>();
 		public static HashMap<String, String> hashAlignmentEntities = new HashMap<String, String>();
 		public static String strRelationData = "docData['relations'] = [ \r\n";
-		public static String strHtml = "";
+		public static StringBuilder strHtml = null;
 		
+		/* (non-Javadoc)
+		 * @see eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer#generateHTML(eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment)
+		 */
 		public String generateHTML(TEDecisionWithAlignment decision) throws VisualizerGenerationException
 		{
 			JCas jCas = decision.getJCasWithAlignment();
@@ -73,6 +77,9 @@ public class P1EdaVisualizer implements Visualizer {
 			}
 		}
 		
+		/* (non-Javadoc)
+		 * @see eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer#generateHTML(org.apache.uima.jcas.JCas)
+		 */
 		public String generateHTML(JCas jCas) throws VisualizerGenerationException
 		{
 			try {
@@ -81,27 +88,46 @@ public class P1EdaVisualizer implements Visualizer {
 				throw new VisualizerGenerationException(e);
 			}
 		}
+		
+		
+		/**
+		 * Generates an html string, which visualizes the various annotations and alignments defined in the JCas (with filtering options), and some details on the entailment decision
+		 * 
+		 * @param jCas JCas object, composed of text, hypothesis and their annotations (e.g., part-of-speech, dependency relations, alignments)
+		 * @param strDecisionLabel A description of the entailment decision 
+		 * @param confidence The confidence of the entailment decision
+		 * @param featureValues A list of the features and their values, used for the entailment decision. 
+		 * @return an html string, which visualizes the various annotations and alignments defined in the JCas, the features, and the entailment decision.
+		 * @throws ValueException
+		 */
 		protected String generateHTML(JCas jCas,String strDecisionLabel, String confidence , Vector<FeatureValue> featureValues ) throws ValueException
 		{
+			
+			// define the colors of the entity annotations and their relations
 			String alignmentEntityColor = "#88ccFf";
 			String entityPOSColor = "#7fffa2";
 			String relationAlignColor = "blue";
 			String relationDEPColor = "green";
 			
 			
+			// basic containers for the entities, the relations and the alignments
 			HashMap<String,Boolean> entities = new HashMap<String,Boolean>();
 			HashMap<String,Boolean> relationEntities = new HashMap<String,Boolean>();
 			HashMap<String,Boolean> alignmentEntities = new HashMap<String,Boolean>();
+			
+			// basic java-script variables 
 			strDocEntities = "var collData = { entity_types: [ \r\n";
 			strDocText = "var docData = { \r\n";
 			strDocData = "docData['entities'] = [ \r\n";
 			strRelationEntities = "collData['relation_types'] = [ \r\n";
 			strRelationData = "docData['relations'] = [ \r\n";
-			strHtml = "";
+			strHtml = new StringBuilder();
 			
 			int countInstances = 0;
 			int countRelation = 0;
 			try {
+				
+				// Get the text and the hypothesis data from the JCas
 				JCas jCasText = jCas.getView("TextView");
 				JCas jCasHypothesis = jCas.getView("HypothesisView");
 				
@@ -149,7 +175,6 @@ public class P1EdaVisualizer implements Visualizer {
 						int indexOfS = entity.indexOf("S");
 						String  begin = entity.substring(1,indexOfS);
 						String  end = entity.substring(indexOfS+1);
-						//System.out.println("entity: "+entity+" begin: " + begin + " end: " + end );
 						strDocData += " ['"+entity+"', '"+strVal+"', [["+begin+", "+end+"]]], \r\n";
 					}
 					
@@ -332,7 +357,6 @@ public class P1EdaVisualizer implements Visualizer {
 					
 					String relation = l.getID() + " (" + l.getStrength() + ")";
 					String []strSplit = l.getID().split("_");
-					//System.out.println(relation);
 					if(!relationEntities.containsKey(relation))
 					{
 						if(relationEntities.keySet().size()!=0)
@@ -363,14 +387,8 @@ public class P1EdaVisualizer implements Visualizer {
 					hashAlignmentEntities.put(strSplit[0], hashAlignmentEntities.get(strSplit[0]) + hashTEEntities.get("TE"+(countInstances-1)));
 					hashAlignmentEntities.put(strSplit[0], hashAlignmentEntities.get(strSplit[0]) + hashTEEntities.get("TE"+(countInstances)));
 					
-					//strRelationData += strRelationInstance;
 					String strRelationInstance =  " ['RE"+(++countRelation)+"', '"+relation+"', [['From', 'TE"+(countInstances-1)+"'], ['To', 'TE"+countInstances+"']]], \r\n";
-					hashAlignmentData.put(strSplit[0], hashAlignmentData.get(strSplit[0]) + strRelationInstance);
-					
-					
-					//System.out.println("Its direction is: " + l.getDirection().toString());
-					//System.out.println("l.getAddress(): " +l.getAddress());
-					
+					hashAlignmentData.put(strSplit[0], hashAlignmentData.get(strSplit[0]) + strRelationInstance);					
 				}
 				
 				
@@ -397,290 +415,292 @@ public class P1EdaVisualizer implements Visualizer {
 				}
 				
 				
-				strHtml += "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd\">\r\n";
-				strHtml += " <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n";
-				strHtml += " <HTML lang=\"en-GB\" lang=\"en-GB\" xml:lang=\"en-GB\" xmlns=\"http://www.w3.org/1999/xhtml\">\r\n";
-				strHtml += " <HEAD>  \r\n";
-				strHtml += " <META http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\r\n";     
-				strHtml += " <TITLE>EOP Visualizar</TITLE>\r\n";
+				
+				// Generate the html string
+				
+				strHtml.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd\">\r\n");
+				strHtml.append(" <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n");
+				strHtml.append(" <HTML lang=\"en-GB\" lang=\"en-GB\" xml:lang=\"en-GB\" xmlns=\"http://www.w3.org/1999/xhtml\">\r\n");
+				strHtml.append(" <HEAD>  \r\n");
+				strHtml.append(" <META http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\r\n");     
+				strHtml.append(" <TITLE>EOP Visualizar</TITLE>\r\n");
 				
 				
-				strHtml += "<STYLE>" +  GetCss() + " body { width:100%;  text-align: center;  }</STYLE>\r\n";
-				//strHtml += " <LINK href=\"style-vis.css\"\r\n"; 
-				//strHtml += " rel=\"stylesheet\" type=\"text/css\">         \r\n";
-				strHtml += " <SCRIPT language=\"javascript\" type=\"text/javascript\">(function (a) { var b = a.documentElement, c, d, e = [], f = [], g = {}, h = {}, i = a.createElement(\"script\").async === true || \"MozAppearance\" in a.documentElement.style || window.opera; var j = window.head_conf && head_conf.head || \"head\", k = window[j] = window[j] || function () { k.ready.apply(null, arguments) }; var l = 0, m = 1, n = 2, o = 3; i ? k.js = function () { var a = arguments, b = a[a.length - 1], c = []; t(b) || (b = null), s(a, function (d, e) { d != b && (d = r(d), c.push(d), x(d, b && e == a.length - 2 ? function () { u(c) && p(b) } : null)) }); return k } : k.js = function () { var a = arguments, b = [].slice.call(a, 1), d = b[0]; if (!c) { f.push(function () { k.js.apply(null, a) }); return k } d ? (s(b, function (a) { t(a) || w(r(a)) }), x(r(a[0]), t(d) ? d : function () { k.js.apply(null, b) })) : x(r(a[0])); return k }, k.ready = function (a, b) { if (a == \"dom\") { d ? p(b) : e.push(b); return k } t(a) && (b = a, a = \"ALL\"); var c = h[a]; if (c && c.state == o || a == \"ALL\" && u() && d) { p(b); return k } var f = g[a]; f ? f.push(b) : f = g[a] = [b]; return k }, k.ready(\"dom\", function () { c && u() && s(g.ALL, function (a) { p(a) }), k.feature && k.feature(\"domloaded\", true) }); function p(a) { a._done || (a(), a._done = 1) } function q(a) { var b = a.split(\"/\"), c = b[b.length - 1], d = c.indexOf(\"?\"); return d != -1 ? c.substring(0, d) : c } function r(a) { var b; if (typeof a == \"object\") for (var c in a) a[c] && (b = { name: c, url: a[c] }); else b = { name: q(a), url: a }; var d = h[b.name]; if (d && d.url === b.url) return d; h[b.name] = b; return b } function s(a, b) { if (a) { typeof a == \"object\" && (a = [].slice.call(a)); for (var c = 0; c < a.length; c++) b.call(a, a[c], c) } } function t(a) { return Object.prototype.toString.call(a) == \"[object Function]\" } function u(a) { a = a || h; var b = false, c = 0; for (var d in a) { if (a[d].state != o) return false; b = true, c++ } return b || c === 0 } function v(a) { a.state = l, s(a.onpreload, function (a) { a.call() }) } function w(a, b) { a.state || (a.state = m, a.onpreload = [], y({ src: a.url, type: \"cache\" }, function () { v(a) })) } function x(a, b) { if (a.state == o && b) return b(); if (a.state == n) return k.ready(a.name, b); if (a.state == m) return a.onpreload.push(function () { x(a, b) }); a.state = n, y(a.url, function () { a.state = o, b && b(), s(g[a.name], function (a) { p(a) }), d && u() && s(g.ALL, function (a) { p(a) }) }) } function y(c, d) { var e = a.createElement(\"script\"); e.type = \"text/\" + (c.type || \"javascript\"), e.src = c.src || c, e.async = false, e.onreadystatechange = e.onload = function () { var a = e.readyState; !d.done && (!a || /loaded|complete/.test(a)) && (d(), d.done = true) }, b.appendChild(e) } setTimeout(function () { c = true, s(f, function (a) { a() }) }, 0); function z() { d || (d = true, s(e, function (a) { p(a) })) } window.addEventListener ? (a.addEventListener(\"DOMContentLoaded\", z, false), window.addEventListener(\"onload\", z, false)) : window.attachEvent && (a.attachEvent(\"onreadystatechange\", function () { a.readyState === \"complete\" && z() }), window.frameElement == null && b.doScroll && function () { try { b.doScroll(\"left\"), z() } catch (a) { setTimeout(arguments.callee, 1); return } } (), window.attachEvent(\"onload\", z)), !a.readyState && a.addEventListener && (a.readyState = \"loading\", a.addEventListener(\"DOMContentLoaded\", handler = function () { a.removeEventListener(\"DOMContentLoaded\", handler, false), a.readyState = \"complete\" }, false)) })(document)</SCRIPT>\r\n";  
-				strHtml += " </HEAD>\r\n";
-				strHtml += " <BODY>\r\n";
+				strHtml.append("<STYLE>" +  GetCss() + " body { width:100%;  text-align: center;  }</STYLE>\r\n");
+				//strHtml.append(" <LINK href=\"style-vis.css\"\r\n"; 
+				//strHtml.append(" rel=\"stylesheet\" type=\"text/css\">         \r\n";
+				strHtml.append(" <SCRIPT language=\"javascript\" type=\"text/javascript\">(function (a) { var b = a.documentElement, c, d, e = [], f = [], g = {}, h = {}, i = a.createElement(\"script\").async === true || \"MozAppearance\" in a.documentElement.style || window.opera; var j = window.head_conf && head_conf.head || \"head\", k = window[j] = window[j] || function () { k.ready.apply(null, arguments) }; var l = 0, m = 1, n = 2, o = 3; i ? k.js = function () { var a = arguments, b = a[a.length - 1], c = []; t(b) || (b = null), s(a, function (d, e) { d != b && (d = r(d), c.push(d), x(d, b && e == a.length - 2 ? function () { u(c) && p(b) } : null)) }); return k } : k.js = function () { var a = arguments, b = [].slice.call(a, 1), d = b[0]; if (!c) { f.push(function () { k.js.apply(null, a) }); return k } d ? (s(b, function (a) { t(a) || w(r(a)) }), x(r(a[0]), t(d) ? d : function () { k.js.apply(null, b) })) : x(r(a[0])); return k }, k.ready = function (a, b) { if (a == \"dom\") { d ? p(b) : e.push(b); return k } t(a) && (b = a, a = \"ALL\"); var c = h[a]; if (c && c.state == o || a == \"ALL\" && u() && d) { p(b); return k } var f = g[a]; f ? f.push(b) : f = g[a] = [b]; return k }, k.ready(\"dom\", function () { c && u() && s(g.ALL, function (a) { p(a) }), k.feature && k.feature(\"domloaded\", true) }); function p(a) { a._done || (a(), a._done = 1) } function q(a) { var b = a.split(\"/\"), c = b[b.length - 1], d = c.indexOf(\"?\"); return d != -1 ? c.substring(0, d) : c } function r(a) { var b; if (typeof a == \"object\") for (var c in a) a[c] && (b = { name: c, url: a[c] }); else b = { name: q(a), url: a }; var d = h[b.name]; if (d && d.url === b.url) return d; h[b.name] = b; return b } function s(a, b) { if (a) { typeof a == \"object\" && (a = [].slice.call(a)); for (var c = 0; c < a.length; c++) b.call(a, a[c], c) } } function t(a) { return Object.prototype.toString.call(a) == \"[object Function]\" } function u(a) { a = a || h; var b = false, c = 0; for (var d in a) { if (a[d].state != o) return false; b = true, c++ } return b || c === 0 } function v(a) { a.state = l, s(a.onpreload, function (a) { a.call() }) } function w(a, b) { a.state || (a.state = m, a.onpreload = [], y({ src: a.url, type: \"cache\" }, function () { v(a) })) } function x(a, b) { if (a.state == o && b) return b(); if (a.state == n) return k.ready(a.name, b); if (a.state == m) return a.onpreload.push(function () { x(a, b) }); a.state = n, y(a.url, function () { a.state = o, b && b(), s(g[a.name], function (a) { p(a) }), d && u() && s(g.ALL, function (a) { p(a) }) }) } function y(c, d) { var e = a.createElement(\"script\"); e.type = \"text/\" + (c.type || \"javascript\"), e.src = c.src || c, e.async = false, e.onreadystatechange = e.onload = function () { var a = e.readyState; !d.done && (!a || /loaded|complete/.test(a)) && (d(), d.done = true) }, b.appendChild(e) } setTimeout(function () { c = true, s(f, function (a) { a() }) }, 0); function z() { d || (d = true, s(e, function (a) { p(a) })) } window.addEventListener ? (a.addEventListener(\"DOMContentLoaded\", z, false), window.addEventListener(\"onload\", z, false)) : window.attachEvent && (a.attachEvent(\"onreadystatechange\", function () { a.readyState === \"complete\" && z() }), window.frameElement == null && b.doScroll && function () { try { b.doScroll(\"left\"), z() } catch (a) { setTimeout(arguments.callee, 1); return } } (), window.attachEvent(\"onload\", z)), !a.readyState && a.addEventListener && (a.readyState = \"loading\", a.addEventListener(\"DOMContentLoaded\", handler = function () { a.removeEventListener(\"DOMContentLoaded\", handler, false), a.readyState = \"complete\" }, false)) })(document)</SCRIPT>\r\n");  
+				strHtml.append(" </HEAD>\r\n");
+				strHtml.append(" <BODY>\r\n");
 				
-				strHtml += " <DIV id=\"content\" style=\"margin: 0px auto; width:96%;\">\r\n";
+				strHtml.append(" <DIV id=\"content\" style=\"margin: 0px auto; width:96%;\">\r\n");
 				
-				strHtml += " <h2 id=\"header\">Entailment Visualization</h2>";
+				strHtml.append(" <h2 id=\"header\">Entailment Visualization</h2>");
 				if (strDecisionLabel != null) {
-					strHtml += "<h3>Decision: " + strDecisionLabel;
+					strHtml.append("<h3>Decision: " + strDecisionLabel);
 					if (confidence != null) {
-						strHtml += ", Confidence: " + confidence;
+						strHtml.append(", Confidence: " + confidence);
 					}
-					strHtml += "</h3>";
+					strHtml.append("</h3>");
 				}
 				
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-call\">\r\n";
-				strHtml += " head.ready(function() {\r\n";
-				strHtml += "     Util.embed(\r\n";
-				strHtml += "         '${DIV_ID}',\r\n";
-				strHtml += " collData,\r\n";
-				strHtml += " docData,\r\n";
-				strHtml += " webFontURLs\r\n";
-				strHtml += "     );\r\n";
-				strHtml += " });\r\n";
-				strHtml += " </CODE></PRE>\r\n";
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-entity-coll\"> \r\n";
-				strHtml +=  strDocEntities ;
-				strHtml += " </CODE></PRE>\r\n";
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-text-doc\"> \r\n";
-				strHtml +=  strDocText ;
-				strHtml += " </CODE></PRE>\r\n";
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-call\">\r\n");
+				strHtml.append(" head.ready(function() {\r\n");
+				strHtml.append("     Util.embed(\r\n");
+				strHtml.append("         '${DIV_ID}',\r\n");
+				strHtml.append(" collData,\r\n");
+				strHtml.append(" docData,\r\n");
+				strHtml.append(" webFontURLs\r\n");
+				strHtml.append("     );\r\n");
+				strHtml.append(" });\r\n");
+				strHtml.append(" </CODE></PRE>\r\n");
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-entity-coll\"> \r\n");
+				strHtml.append( strDocEntities );
+				strHtml.append(" </CODE></PRE>\r\n");
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-text-doc\"> \r\n");
+				strHtml.append( strDocText );
+				strHtml.append(" </CODE></PRE>\r\n");
 				
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-init-doc\">\r\n"; 
-				strHtml += "  docData['entities'] = [ ];\r\n";
-				strHtml += "  docData['relations'] = [ ];\r\n";
-				strHtml += " </CODE></PRE>\r\n";
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-init-doc\">\r\n"); 
+				strHtml.append("  docData['entities'] = [ ];\r\n");
+				strHtml.append("  docData['relations'] = [ ];\r\n");
+				strHtml.append(" </CODE></PRE>\r\n");
 				
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-entity-doc\"> \r\n";
-				strHtml +=  strDocData ;
-				strHtml += " </CODE></PRE>\r\n";
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-alignment-entity-doc\"> \r\n";
-				strHtml +=  docAlignmentData ;
-				strHtml += " </CODE></PRE>\r\n";
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-entity-doc\"> \r\n");
+				strHtml.append( strDocData );
+				strHtml.append(" </CODE></PRE>\r\n");
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-alignment-entity-doc\"> \r\n");
+				strHtml.append( docAlignmentData );
+				strHtml.append(" </CODE></PRE>\r\n");
 				
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-relation-coll\"> \r\n";
-				strHtml +=  strRelationEntities ;
-				strHtml += " </CODE></PRE>\r\n";
-				strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-relation-doc\"> \r\n";
-				strHtml +=  strRelationData ;
-				strHtml += " </CODE></PRE>\r\n";
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-relation-coll\"> \r\n");
+				strHtml.append( strRelationEntities );
+				strHtml.append(" </CODE></PRE>\r\n");
+				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-relation-doc\"> \r\n");
+				strHtml.append( strRelationData );
+				strHtml.append(" </CODE></PRE>\r\n");
 				
 				
 				
 				for (String strBlock : hashAlignmentData.keySet()) {
-					strHtml += " <PRE style=\"display:none;\"><CODE id=\"embedding-relation-"+strBlock+"-doc\"> \r\n";
+					strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-relation-"+strBlock+"-doc\"> \r\n");
 					
-					strHtml +=  hashAlignmentEntities.get(strBlock) + "\r\n";
-					strHtml +=  hashAlignmentData.get(strBlock) ;
-					strHtml += " </CODE></PRE>\r\n";
+					strHtml.append( hashAlignmentEntities.get(strBlock) + "\r\n");
+					strHtml.append( hashAlignmentData.get(strBlock));
+					strHtml.append(" </CODE></PRE>\r\n");
 					hashAlignmentData.put(strBlock, hashAlignmentData.get(strBlock) + "  ]; ");
 				}
 				
-				//strHtml += " <DIV id=\"embedding-relation-example\"></DIV>\r\n";
-				strHtml += " <DIV id=\"embedding-live-example\"></DIV>\r\n";
+				//strHtml.append(" <DIV id=\"embedding-relation-example\"></DIV>\r\n");
+				strHtml.append(" <DIV id=\"embedding-live-example\"></DIV>\r\n");
 				
-				strHtml += " <div style='width:100%;  text-align: center;'>";
-				strHtml += " <table style='width:700px; margin: 0px auto;'><tr>\r\n";
-				strHtml += "<td><input id=\"cb_DEP\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />Dependency</td>\r\n";
-				strHtml += "<td><input id=\"cb_POS\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />POS</td>\r\n";
+				strHtml.append(" <div style='width:100%;  text-align: center;'>");
+				strHtml.append(" <table style='width:700px; margin: 0px auto;'><tr>\r\n");
+				strHtml.append("<td><input id=\"cb_DEP\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />Dependency</td>\r\n");
+				strHtml.append("<td><input id=\"cb_POS\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />POS</td>\r\n");
 				for (String strBlock : hashAlignmentData.keySet()) {
-					strHtml += "    <td><input id=\"cb_"+strBlock+"\" type=\"checkbox\" onclick=\"javascript:Update();\" checked=\"checked\" />"+strBlock+"</td>\r\n";
+					strHtml.append("    <td><input id=\"cb_"+strBlock+"\" type=\"checkbox\" onclick=\"javascript:Update();\" checked=\"checked\" />"+strBlock+"</td>\r\n");
 				}
-				strHtml += "</tr></table><br/><hr/>\r\n";
-				strHtml += "</div>";
+				strHtml.append("</tr></table><br/><hr/>\r\n");
+				strHtml.append("</div>");
 				
 				if(featureValues!=null)
 				{
-					strHtml += "<div><h3>Extracted features</h3></div>   " ;
+					strHtml.append("<div><h3>Extracted features</h3></div>   ");
 					
-					strHtml += "<style>.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 3px solid #006699; -webkit-border-radius: 11px; -moz-border-radius: 11px; border-radius: 11px; }.datagrid table td, .datagrid table th { padding: 4px 4px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 2px solid #E1EEF4; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 14px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }.datagrid table tfoot td div { border-top: 1px solid #006699;background: #E1EEF4;} .datagrid table tfoot td { padding: 0; font-size: 12px } .datagrid table tfoot td div{ padding: 2px; }.datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }.datagrid table tfoot  li { display: inline; }.datagrid table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #006699;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; }.datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration: none;border-color: #006699; color: #FFFFFF; background: none; background-color:#00557F;}div.dhtmlx_window_active, div.dhx_modal_cover_dv { position: fixed !important; }</style>";
+					strHtml.append("<style>.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 3px solid #006699; -webkit-border-radius: 11px; -moz-border-radius: 11px; border-radius: 11px; }.datagrid table td, .datagrid table th { padding: 4px 4px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 2px solid #E1EEF4; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 14px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }.datagrid table tfoot td div { border-top: 1px solid #006699;background: #E1EEF4;} .datagrid table tfoot td { padding: 0; font-size: 12px } .datagrid table tfoot td div{ padding: 2px; }.datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }.datagrid table tfoot  li { display: inline; }.datagrid table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #006699;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; }.datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration: none;border-color: #006699; color: #FFFFFF; background: none; background-color:#00557F;}div.dhtmlx_window_active, div.dhx_modal_cover_dv { position: fixed !important; }</style>");
 					
-					strHtml += " <div style='width:100%;  text-align: center;'>";
-					strHtml += "<div style='width: 400px; margin: 0px auto;' class=\"datagrid\"><table>";
-					strHtml += "<thead><tr><th style='width: 70%;'>header</th><th>header</th></tr></thead><tbody>";
+					strHtml.append(" <div style='width:100%;  text-align: center;'>");
+					strHtml.append("<div style='width: 400px; margin: 0px auto;' class=\"datagrid\"><table>");
+					strHtml.append("<thead><tr><th style='width: 70%;'>Feature</th><th>Value</th></tr></thead><tbody>");
 					
 					
 					boolean bRow = true;
 					for (FeatureValue featureValue : featureValues) {
 						if(bRow)
-							strHtml += "<tr>";
+							strHtml.append("<tr>");
 						else 
-							strHtml += "<tr class=\"alt\">";
+							strHtml.append("<tr class=\"alt\">");
 						
-						strHtml += "<td>"+featureValue.getFeatureName()+"</td><td>"+featureValue.getDoubleValue()+"</td></tr>"; 
+						strHtml.append("<td>"+featureValue.getFeatureName()+"</td><td>"+featureValue.getDoubleValue()+"</td></tr>"); 
 						bRow = !bRow;
 						
 					}
-					strHtml += "</tbody></table></div></div><br/><br/>";
+					strHtml.append("</tbody></table></div></div><br/><br/>");
 					
 				
 				}
 				
-				strHtml += " <DIV id=\"live-io\" style=\"display:none;\">\r\n";
-				strHtml += " <P><TEXTAREA id=\"coll-input\" style=\"border: 2px inset currentColor; border-image: none; width: 40%; height: 400px; font-size: 11px; float: left; display: block;\" placeholder=\"Enter JSON for the collection object here...\">Enter JSON for the collection object here...</TEXTAREA>\r\n";
-				strHtml += " <TEXTAREA id=\"doc-input\" style=\"border: 2px inset currentColor; border-image: none; width: 55%; height: 400px; font-size: 11px; float: right; display: block;\" placeholder=\"Enter JSON for the document object here...\">Enter JSON for the document object here...</TEXTAREA></P></DIV>\r\n";
-				strHtml += " <STYLE type=\"text/css\">\r\n";
-				strHtml += " text { font-size: 15px; }\r\n";
-				strHtml += " .span text { font-size: 10px; }\r\n";
-				strHtml += " .arcs text { font-size: 9px; }\r\n";
-				strHtml += " </STYLE>\r\n";
+				strHtml.append(" <DIV id=\"live-io\" style=\"display:none;\">\r\n");
+				strHtml.append(" <P><TEXTAREA id=\"coll-input\" style=\"border: 2px inset currentColor; border-image: none; width: 40%; height: 400px; font-size: 11px; float: left; display: block;\" placeholder=\"Enter JSON for the collection object here...\">Enter JSON for the collection object here...</TEXTAREA>\r\n");
+				strHtml.append(" <TEXTAREA id=\"doc-input\" style=\"border: 2px inset currentColor; border-image: none; width: 55%; height: 400px; font-size: 11px; float: right; display: block;\" placeholder=\"Enter JSON for the document object here...\">Enter JSON for the document object here...</TEXTAREA></P></DIV>\r\n");
+				strHtml.append(" <STYLE type=\"text/css\">\r\n");
+				strHtml.append(" text { font-size: 15px; }\r\n");
+				strHtml.append(" .span text { font-size: 10px; }\r\n");
+				strHtml.append(" .arcs text { font-size: 9px; }\r\n");
+				strHtml.append(" </STYLE>\r\n");
 	 
 				
-				strHtml += " <SCRIPT type=\"text/javascript\">\r\n";
+				strHtml.append(" <SCRIPT type=\"text/javascript\">\r\n");
 				
-				strHtml += " var packJSON = function (s) { \r\n";
-			    strHtml += "     s = s.replace(/(\\{[^\\{\\}\\[\\]]*\\})/g,\r\n";
-				strHtml += "                       function (a, b) { return b.replace(/\\s+/g, ' '); });\r\n";
-			    strHtml += "     s = s.replace(/(\\[(?:[^\\[\\]\\{\\}]|\\[[^\\[\\]\\{\\}]*\\])*\\])/g,\r\n";
-				strHtml += "                       function (a, b) { return b.replace(/\\s+/g, ' '); });\r\n";
-				strHtml += "     return s;\r\n";
-				strHtml += " } \r\n";
+				strHtml.append(" var packJSON = function (s) { \r\n");
+			    strHtml.append("     s = s.replace(/(\\{[^\\{\\}\\[\\]]*\\})/g,\r\n");
+				strHtml.append("                       function (a, b) { return b.replace(/\\s+/g, ' '); });\r\n");
+			    strHtml.append("     s = s.replace(/(\\[(?:[^\\[\\]\\{\\}]|\\[[^\\[\\]\\{\\}]*\\])*\\])/g,\r\n");
+				strHtml.append("                       function (a, b) { return b.replace(/\\s+/g, ' '); });\r\n");
+				strHtml.append("     return s;\r\n");
+				strHtml.append(" } \r\n");
 				
 				
-				strHtml += "     var bratLocation = 'http://weaver.nlplab.org/~brat/demo/v1.3';\r\n";
-				strHtml += "     head.js(\r\n";
-				strHtml += "         bratLocation + '/client/lib/jquery.min.js',\r\n";
-				strHtml += "         bratLocation + '/client/lib/jquery.svg.min.js',\r\n";
-				strHtml += "         bratLocation + '/client/lib/jquery.svgdom.min.js',\r\n";
-				strHtml += "         bratLocation + '/client/src/configuration.js',\r\n";
-				strHtml += "         bratLocation + '/client/src/util.js',\r\n";
-				strHtml += "         bratLocation + '/client/src/annotation_log.js',\r\n";
-				strHtml += "         bratLocation + '/client/lib/webfont.js',\r\n";
-				strHtml += "         bratLocation + '/client/src/dispatcher.js',\r\n";
-				strHtml += " 		 bratLocation + '/client/src/url_monitor.js',\r\n";
-				strHtml += "         bratLocation + '/client/src/visualizer.js'\r\n";
-				strHtml += "     );\r\n";
-				strHtml += "     var webFontURLs = [\r\n";
-				strHtml += "         bratLocation + '/static/fonts/Astloch-Bold.ttf',\r\n";
-				strHtml += "         bratLocation + '/static/fonts/PT_Sans-Caption-Web-Regular.ttf',\r\n";
-				strHtml += "         bratLocation + '/static/fonts/Liberation_Sans-Regular.ttf'\r\n";
-				strHtml += "     ];\r\n";
-				strHtml += "     var liveDispatcher;\r\n";
-				strHtml += "     head.ready(function () {\r\n";
-				strHtml += "         document.getElementById(\"cb_POS\").disabled = true;\r\n";
-				strHtml += "         eval($('#embedding-entity-coll').text());\r\n";
-				strHtml += "         eval($('#embedding-text-doc').text());\r\n";
-				strHtml += "         eval($('#embedding-entity-doc').text());\r\n";
-				strHtml += "      	 eval($('#embedding-alignment-entity-doc').text());";
-				strHtml += "      	 docData['entities'] = docData['entities'].concat(docData['alignment_entity']);";
+				strHtml.append("     var bratLocation = 'http://weaver.nlplab.org/~brat/demo/v1.3';\r\n");
+				strHtml.append("     head.js(\r\n");
+				strHtml.append("         bratLocation + '/client/lib/jquery.min.js',\r\n");
+				strHtml.append("         bratLocation + '/client/lib/jquery.svg.min.js',\r\n");
+				strHtml.append("         bratLocation + '/client/lib/jquery.svgdom.min.js',\r\n");
+				strHtml.append("         bratLocation + '/client/src/configuration.js',\r\n");
+				strHtml.append("         bratLocation + '/client/src/util.js',\r\n");
+				strHtml.append("         bratLocation + '/client/src/annotation_log.js',\r\n");
+				strHtml.append("         bratLocation + '/client/lib/webfont.js',\r\n");
+				strHtml.append("         bratLocation + '/client/src/dispatcher.js',\r\n");
+				strHtml.append(" 		 bratLocation + '/client/src/url_monitor.js',\r\n");
+				strHtml.append("         bratLocation + '/client/src/visualizer.js'\r\n");
+				strHtml.append("     );\r\n");
+				strHtml.append("     var webFontURLs = [\r\n");
+				strHtml.append("         bratLocation + '/static/fonts/Astloch-Bold.ttf',\r\n");
+				strHtml.append("         bratLocation + '/static/fonts/PT_Sans-Caption-Web-Regular.ttf',\r\n");
+				strHtml.append("         bratLocation + '/static/fonts/Liberation_Sans-Regular.ttf'\r\n");
+				strHtml.append("     ];\r\n");
+				strHtml.append("     var liveDispatcher;\r\n");
+				strHtml.append("     head.ready(function () {\r\n");
+				strHtml.append("         document.getElementById(\"cb_POS\").disabled = true;\r\n");
+				strHtml.append("         eval($('#embedding-entity-coll').text());\r\n");
+				strHtml.append("         eval($('#embedding-text-doc').text());\r\n");
+				strHtml.append("         eval($('#embedding-entity-doc').text());\r\n");
+				strHtml.append("      	 eval($('#embedding-alignment-entity-doc').text());");
+				strHtml.append("      	 docData['entities'] = docData['entities'].concat(docData['alignment_entity']);");
 
-				strHtml += "         eval($('#embedding-relation-coll').text());\r\n";
-				strHtml += "         eval($('#embedding-relation-doc').text());\r\n";
+				strHtml.append("         eval($('#embedding-relation-coll').text());\r\n");
+				strHtml.append("         eval($('#embedding-relation-doc').text());\r\n");
 				
 				for (String strBlock : hashAlignmentData.keySet()) {
-					strHtml += " 	 	eval($('#embedding-relation-"+strBlock+"-doc').text());\r\n";
-					strHtml += " 	 	docData['relations'] = docData['relations'].concat(docData['relations_"+strBlock+"']);\r\n";
+					strHtml.append(" 	 	eval($('#embedding-relation-"+strBlock+"-doc').text());\r\n");
+					strHtml.append(" 	 	docData['relations'] = docData['relations'].concat(docData['relations_"+strBlock+"']);\r\n");
 				}
-				//strHtml += "         Util.embed('embedding-relation-example', $.extend({}, collData),\r\n";
-				//strHtml += "                 $.extend({}, docData), webFontURLs);   \r\n";
+				//strHtml.append("         Util.embed('embedding-relation-example', $.extend({}, collData),\r\n");
+				//strHtml.append("                 $.extend({}, docData), webFontURLs);   \r\n");
 				
 				
-				strHtml += "         var collInput = $('#coll-input');\r\n";
-				strHtml += "         var docInput = $('#doc-input');\r\n";
-				strHtml += "         var liveDiv = $('#embedding-live-example');\r\n";
+				strHtml.append("         var collInput = $('#coll-input');\r\n");
+				strHtml.append("         var docInput = $('#doc-input');\r\n");
+				strHtml.append("         var liveDiv = $('#embedding-live-example');\r\n");
 
-				strHtml += "         liveDispatcher = Util.embed('embedding-live-example',\r\n";
-				strHtml += "                 $.extend({ 'collection': null }, collData),\r\n";
-				strHtml += "                 $.extend({}, docData), webFontURLs);\r\n";
+				strHtml.append("         liveDispatcher = Util.embed('embedding-live-example',\r\n");
+				strHtml.append("                 $.extend({ 'collection': null }, collData),\r\n");
+				strHtml.append("                 $.extend({}, docData), webFontURLs);\r\n");
 		        
-				strHtml += "         var renderError = function () {\r\n";
-				strHtml += "             collInput.css({ 'border': '2px solid red' });\r\n";
-				strHtml += "             docInput.css({ 'border': '2px solid red' });\r\n";
-				strHtml += "         };\r\n";
-				strHtml += "         liveDispatcher.on('renderError: Fatal', renderError);\r\n";
-				strHtml += "         var collInputHandler = function () {\r\n";
-				strHtml += "             var collJSON;\r\n";
-				strHtml += "             try {\r\n";
-				strHtml += "                 collJSON = JSON.parse(collInput.val());\r\n";
-				strHtml += "                 collInput.css({ 'border': '2px inset' });\r\n";
-				strHtml += "             } catch (e) {\r\n";
-				strHtml += "                 collInput.css({ 'border': '2px solid red' });\r\n";
-				strHtml += "                 return;\r\n";
-				strHtml += "             }\r\n";
+				strHtml.append("         var renderError = function () {\r\n");
+				strHtml.append("             collInput.css({ 'border': '2px solid red' });\r\n");
+				strHtml.append("             docInput.css({ 'border': '2px solid red' });\r\n");
+				strHtml.append("         };\r\n");
+				strHtml.append("         liveDispatcher.on('renderError: Fatal', renderError);\r\n");
+				strHtml.append("         var collInputHandler = function () {\r\n");
+				strHtml.append("             var collJSON;\r\n");
+				strHtml.append("             try {\r\n");
+				strHtml.append("                 collJSON = JSON.parse(collInput.val());\r\n");
+				strHtml.append("                 collInput.css({ 'border': '2px inset' });\r\n");
+				strHtml.append("             } catch (e) {\r\n");
+				strHtml.append("                 collInput.css({ 'border': '2px solid red' });\r\n");
+				strHtml.append("                 return;\r\n");
+				strHtml.append("             }\r\n");
 
-				strHtml += "             try {\r\n";
-				strHtml += "                 liveDispatcher.post('collectionLoaded',[$.extend({ 'collection': null }, collJSON)]);\r\n";
-				strHtml += "                 docInput.css({ 'border': '2px inset' });\r\n";
-				strHtml += "             } catch (e) {\r\n";
-				strHtml += "                 console.error('collectionLoaded went down with:', e);\r\n";
-				strHtml += "                 collInput.css({ 'border': '2px solid red' });\r\n";
-				strHtml += "             }\r\n";
-				strHtml += "         };\r\n";
+				strHtml.append("             try {\r\n");
+				strHtml.append("                 liveDispatcher.post('collectionLoaded',[$.extend({ 'collection': null }, collJSON)]);\r\n");
+				strHtml.append("                 docInput.css({ 'border': '2px inset' });\r\n");
+				strHtml.append("             } catch (e) {\r\n");
+				strHtml.append("                 console.error('collectionLoaded went down with:', e);\r\n");
+				strHtml.append("                 collInput.css({ 'border': '2px solid red' });\r\n");
+				strHtml.append("             }\r\n");
+				strHtml.append("         };\r\n");
 
-				strHtml += "         var docInputHandler = function () {\r\n";
-				strHtml += "             var docJSON;\r\n";
-				strHtml += "             try {\r\n";
-				strHtml += "                 docJSON = JSON.parse(docInput.val());\r\n";
-				strHtml += "                 docInput.css({ 'border': '2px inset' });\r\n";
-				strHtml += "             } catch (e) {\r\n";
-				strHtml += "                 docInput.css({ 'border': '2px solid red' });\r\n";
-				strHtml += "                 return;\r\n";
-				strHtml += "             }\r\n";
+				strHtml.append("         var docInputHandler = function () {\r\n");
+				strHtml.append("             var docJSON;\r\n");
+				strHtml.append("             try {\r\n");
+				strHtml.append("                 docJSON = JSON.parse(docInput.val());\r\n");
+				strHtml.append("                 docInput.css({ 'border': '2px inset' });\r\n");
+				strHtml.append("             } catch (e) {\r\n");
+				strHtml.append("                 docInput.css({ 'border': '2px solid red' });\r\n");
+				strHtml.append("                 return;\r\n");
+				strHtml.append("             }\r\n");
 
-				strHtml += "             try {\r\n";
-				strHtml += "                 liveDispatcher.post('requestRenderData', [$.extend({}, docJSON)]);\r\n";
-				strHtml += "                 collInput.css({ 'border': '2px inset' });\r\n";
-				strHtml += "             } catch (e) {\r\n";
-				strHtml += "                 console.error('requestRenderData went down with:', e);\r\n";
-				strHtml += "                 collInput.css({ 'border': '2px solid red' });\r\n";
-				strHtml += "             }\r\n";
-				strHtml += "         };\r\n";
+				strHtml.append("             try {\r\n");
+				strHtml.append("                 liveDispatcher.post('requestRenderData', [$.extend({}, docJSON)]);\r\n");
+				strHtml.append("                 collInput.css({ 'border': '2px inset' });\r\n");
+				strHtml.append("             } catch (e) {\r\n");
+				strHtml.append("                 console.error('requestRenderData went down with:', e);\r\n");
+				strHtml.append("                 collInput.css({ 'border': '2px solid red' });\r\n");
+				strHtml.append("             }\r\n");
+				strHtml.append("         };\r\n");
 
-				strHtml += "         var collJSON = JSON.stringify(collData, undefined, '    ');\r\n";
-		        strHtml += "         docJSON = JSON.stringify(docData, undefined, '    ')\r\n";
+				strHtml.append("         var collJSON = JSON.stringify(collData, undefined, '    ');\r\n");
+		        strHtml.append("         docJSON = JSON.stringify(docData, undefined, '    ')\r\n");
 		        
-		        strHtml += "         collInput.text(packJSON(collJSON));\r\n";
-		        strHtml += "         docInput.text(packJSON(docJSON));\r\n";
+		        strHtml.append("         collInput.text(packJSON(collJSON));\r\n");
+		        strHtml.append("         docInput.text(packJSON(docJSON));\r\n");
 
-		        strHtml += "         var listenTo = 'propertychange keyup input paste';\r\n";
-		        strHtml += "         collInput.bind(listenTo, collInputHandler);\r\n";
-		        strHtml += "         docInput.bind(listenTo, docInputHandler);\r\n";
+		        strHtml.append("         var listenTo = 'propertychange keyup input paste';\r\n");
+		        strHtml.append("         collInput.bind(listenTo, collInputHandler);\r\n");
+		        strHtml.append("         docInput.bind(listenTo, docInputHandler);\r\n");
 				
 				
-				strHtml += "     });\r\n";
-				strHtml += " </SCRIPT></DIV>\r\n";
+				strHtml.append("     });\r\n");
+				strHtml.append(" </SCRIPT></DIV>\r\n");
 				
 
-				strHtml += " 	<div>\r\n";
+				strHtml.append(" 	<div>\r\n");
 					
-				strHtml += " 	  <script language=\"javascript\" type=\"text/javascript\">\r\n";
-				strHtml += " 	    function Update() {\r\n";
-				strHtml += "           docData = \"\";\r\n";
+				strHtml.append(" 	  <script language=\"javascript\" type=\"text/javascript\">\r\n");
+				strHtml.append(" 	    function Update() {\r\n");
+				strHtml.append("           docData = \"\";\r\n");
 				
-				strHtml += "      	   eval($('#embedding-entity-coll').text());\r\n";
-				strHtml += "      	   eval($('#embedding-relation-coll').text());\r\n";
+				strHtml.append("      	   eval($('#embedding-entity-coll').text());\r\n");
+				strHtml.append("      	   eval($('#embedding-relation-coll').text());\r\n");
 				
-				strHtml += "      	   eval($('#embedding-text-doc').text());\r\n";
-				strHtml += "      	   eval($('#embedding-init-doc').text());\r\n";
-				strHtml += "      	   var is_DEP = document.getElementById(\"cb_DEP\").checked;\r\n";
-				strHtml += "      	   var chkPOS = document.getElementById(\"cb_POS\");\r\n";
-				strHtml += "      	   var is_POS = chkPOS.checked;\r\n";
-				strHtml += "      	   if (is_DEP) {\r\n";
-				strHtml += "      	         eval($('#embedding-relation-doc').text());\r\n";
-				strHtml += "      	         eval($('#embedding-entity-doc').text());\r\n";
-				strHtml += "      	         chkPOS.checked = true;\r\n";
-				strHtml += "      	         chkPOS.disabled = true;\r\n";
-				strHtml += "      	   } else if (is_POS) {\r\n";
-				strHtml += "      	   		 eval($('#embedding-entity-doc').text());\r\n";
-				strHtml += "      	   		 chkPOS.disabled = false;\r\n";
-				strHtml += "      	   }\r\n";
+				strHtml.append("      	   eval($('#embedding-text-doc').text());\r\n");
+				strHtml.append("      	   eval($('#embedding-init-doc').text());\r\n");
+				strHtml.append("      	   var is_DEP = document.getElementById(\"cb_DEP\").checked;\r\n");
+				strHtml.append("      	   var chkPOS = document.getElementById(\"cb_POS\");\r\n");
+				strHtml.append("      	   var is_POS = chkPOS.checked;\r\n");
+				strHtml.append("      	   if (is_DEP) {\r\n");
+				strHtml.append("      	         eval($('#embedding-relation-doc').text());\r\n");
+				strHtml.append("      	         eval($('#embedding-entity-doc').text());\r\n");
+				strHtml.append("      	         chkPOS.checked = true;\r\n");
+				strHtml.append("      	         chkPOS.disabled = true;\r\n");
+				strHtml.append("      	   } else if (is_POS) {\r\n");
+				strHtml.append("      	   		 eval($('#embedding-entity-doc').text());\r\n");
+				strHtml.append("      	   		 chkPOS.disabled = false;\r\n");
+				strHtml.append("      	   }\r\n");
 				
 				
 			for (String strBlock : hashAlignmentData.keySet()) {
-				strHtml += " 	        var is_"+strBlock+" = document.getElementById(\"cb_"+strBlock+"\").checked;\r\n";
-				strHtml += " 	        if (is_"+strBlock+") {\r\n";
-				strHtml += " 	            eval($('#embedding-relation-"+strBlock+"-doc').text());\r\n";
-				strHtml += " 	            docData['relations'] = docData['relations'].concat(docData['relations_"+strBlock+"']);\r\n";
-				strHtml += " 	            docData['entities'] = docData['entities'].concat(docData['alignment_entity_"+strBlock+"']);\r\n";
-				strHtml += " 	        }\r\n";
+				strHtml.append(" 	        var is_"+strBlock+" = document.getElementById(\"cb_"+strBlock+"\").checked;\r\n");
+				strHtml.append(" 	        if (is_"+strBlock+") {\r\n");
+				strHtml.append(" 	            eval($('#embedding-relation-"+strBlock+"-doc').text());\r\n");
+				strHtml.append(" 	            docData['relations'] = docData['relations'].concat(docData['relations_"+strBlock+"']);\r\n");
+				strHtml.append(" 	            docData['entities'] = docData['entities'].concat(docData['alignment_entity_"+strBlock+"']);\r\n");
+				strHtml.append(" 	        }\r\n");
 			}
 				
-				strHtml += " 	        var docJSON = JSON.stringify(docData, undefined, '    ');\r\n";
-				strHtml += " 	        var docInput = $('#doc-input');\r\n";
-				strHtml += " 	        docInput.text(packJSON(docJSON));\r\n";
-				strHtml += " 	        docJSON = JSON.parse(docInput.val());\r\n";
-				strHtml += " 	        liveDispatcher.post('requestRenderData', [$.extend({}, docJSON)]);\r\n";
-					     
-				strHtml += " 	    }\r\n";
-				strHtml += " 	 </script>\r\n";
-				strHtml += "   </div>\r\n";
+				strHtml.append(" 	        var docJSON = JSON.stringify(docData, undefined, '    ');\r\n");
+				strHtml.append(" 	        var docInput = $('#doc-input');\r\n");
+				strHtml.append(" 	        docInput.text(packJSON(docJSON));\r\n");
+				strHtml.append(" 	        docJSON = JSON.parse(docInput.val());\r\n");
+				strHtml.append(" 	        liveDispatcher.post('requestRenderData', [$.extend({}, docJSON)]);\r\n");					     
+				strHtml.append(" 	    }\r\n");
+				strHtml.append(" 	 </script>\r\n");
+				strHtml.append("   </div>\r\n");
 				
 				
-				strHtml += "</BODY></HTML>\r\n";
+				strHtml.append("</BODY></HTML>\r\n");
 
 				
 			} catch (CASException e) {
@@ -690,7 +710,7 @@ public class P1EdaVisualizer implements Visualizer {
 			
 
 			
-			return strHtml;
+			return strHtml.toString();
 		}
 		
 		
@@ -765,7 +785,7 @@ public class P1EdaVisualizer implements Visualizer {
 			
 			JCas jCas;
 			try {
-				jCas = UimaUtils.loadXmi(new File("D:\\tmp\\xmi\\1.XMI"));
+				jCas = UimaUtils.loadXmi(new File(args[0]));
 				
 				
 				Vector<FeatureValue> featureVector = new Vector<FeatureValue>();
