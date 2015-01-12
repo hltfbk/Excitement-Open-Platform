@@ -139,7 +139,6 @@ public class P1EdaVisualizer implements Visualizer {
 
 				checkAllTypes(col);
 				checkAllTypes(colH);
-				printAllTypes();
 				
 				hashPOS = new HashMap<String, String>();
 				hashRel = new HashMap<String, HashMap<String, String>>();
@@ -213,7 +212,7 @@ public class P1EdaVisualizer implements Visualizer {
 					//for text sentence
 					for (AnnotationFS annotationFS : col) {
 						Type type = annotationFS.getType();
-						String typeShortName = type.getShortName();
+						//String typeShortName = type.getShortName();
 						int begin = annotationFS.getBegin();
 						int end = annotationFS.getEnd();
 						String strVal = "";
@@ -265,7 +264,7 @@ public class P1EdaVisualizer implements Visualizer {
 						int end = annotationFS.getEnd()+TextSize;
 						String strVal = "";
 						Type type = annotationFS.getType();
-						String typeShortName = type.getShortName();
+						//String typeShortName = type.getShortName();
 						if(type.toString().startsWith("de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos"))
 						{
 							strVal=((POS)annotationFS).getPosValue();
@@ -493,13 +492,16 @@ public class P1EdaVisualizer implements Visualizer {
 				
 				//strHtml.append(" <DIV id=\"embedding-relation-example\"></DIV>\r\n");
 				strHtml.append(" <DIV id=\"embedding-live-example\"></DIV>\r\n");
-				
+				strHtml.append("<br>\r\n");
 				strHtml.append(" <div style='width:100%;  text-align: center;'>");
-				strHtml.append(" <table style='width:700px; margin: 0px auto;'><tr>\r\n");
-				strHtml.append("<td><input id=\"cb_DEP\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />Dependency</td>\r\n");
-				strHtml.append("<td><input id=\"cb_POS\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />POS</td>\r\n");
+				strHtml.append(" <table style='width:500px; margin: 0px auto;'><tr>\r\n");
+				strHtml.append("<td><b>Annotations: </b></td>\r\n");
+				strHtml.append("<td style='background-color: " + relationDEPColor + ";'><input id=\"cb_DEP\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />Dependency</td>\r\n");
+				strHtml.append("<td style='background-color: " + entityPOSColor + ";'><input id=\"cb_POS\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />POS</td>\r\n");
+				strHtml.append("</tr><tr>\r\n");
+				strHtml.append("<td><b>Alignments:</b></td>\r\n");
 				for (String strBlock : hashAlignmentData.keySet()) {
-					strHtml.append("    <td><input id=\"cb_"+strBlock+"\" type=\"checkbox\" onclick=\"javascript:Update();\" checked=\"checked\" />"+strBlock+"</td>\r\n");
+					strHtml.append("    <td style='background-color: " + alignmentEntityColor + ";'><input id=\"cb_"+strBlock+"\" type=\"checkbox\" onclick=\"javascript:Update();\" checked=\"checked\" />"+strBlock+"</td>\r\n");
 				}
 				strHtml.append("</tr></table><br/><hr/>\r\n");
 				strHtml.append("</div>");
@@ -732,6 +734,9 @@ public class P1EdaVisualizer implements Visualizer {
 					Token governor = ((Dependency)annotationFS).getGovernor();
 					Token dependent = ((Dependency)annotationFS).getDependent();
 					String dependencyType = ((Dependency)annotationFS).getDependencyType();
+										
+					//tmp
+					//System.out.println(governor.getLemma().getValue() + "--" + dependencyType + "--> " + dependent.getLemma().getValue());
 					
 					String strGovernorId="T"+(governor.getBegin()+Identication)+"S"+(governor.getEnd()+Identication);
 					String strDependentId="T"+(dependent.getBegin()+Identication)+"S"+(dependent.getEnd()+Identication);
@@ -762,12 +767,6 @@ public class P1EdaVisualizer implements Visualizer {
 				
 			}
 			
-		}
-		private static void printAllTypes()
-		{
-			for (String strKey : hashTypes.keySet()) {
-				System.out.println(strKey);
-			}
 		}
 		
 		
@@ -810,7 +809,6 @@ public class P1EdaVisualizer implements Visualizer {
 				}
 				
 				File file = new File("temp.html");
-				System.out.println(file.getAbsolutePath());
 				
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {

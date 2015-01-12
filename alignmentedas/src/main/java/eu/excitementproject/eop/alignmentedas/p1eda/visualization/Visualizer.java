@@ -1,12 +1,8 @@
 package eu.excitementproject.eop.alignmentedas.p1eda.visualization;
 
-import java.util.Vector;
-
 import org.apache.uima.jcas.JCas;
 
 import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
-import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
-import eu.excitementproject.eop.common.DecisionLabel;
 
 /**
  * This interface defines the basic functionality of the visualizer: generation of a stand-alone html given a JCas.
@@ -38,19 +34,5 @@ public interface Visualizer {
 	 * @throws VisualizerGenerationException
 	 */
 	String generateHTML(TEDecisionWithAlignment decision) throws VisualizerGenerationException;
-
-}
-
-
-class Temp {
-	public static void foo () {
-		JCas jcas = null;
-		Vector<FeatureValue> featureVector = new Vector<FeatureValue>();
-		featureVector.add(new FeatureValue("feature1",0.1));
-		featureVector.add(new FeatureValue("feature2",0.3));
-		featureVector.add(new FeatureValue("feature3",0.7));
-		TEDecisionWithAlignment decision = new TEDecisionWithAlignment(DecisionLabel.Entailment, 0.5, "", jcas, featureVector);
-	}
-	
 }
 
