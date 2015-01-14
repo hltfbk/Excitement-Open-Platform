@@ -36,6 +36,7 @@ public class OutputUtils {
 		HashMap<String,String> results = new HashMap<String,String>();
 		
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:readResults");
+		logger.info("Reading results from file: " + file);
 		
 		try {
 			InputStream in = Files.newInputStream(Paths.get(file));
