@@ -173,7 +173,11 @@ public class OutputUtils {
 
 		Path traceDir = Paths.get(outDir + "/trace");
 		
-		String traceFile = outDir + "/trace/" + OutputUtils.getPairID(aJCas) + ".html";		
+		String pairID = OutputUtils.getPairID(aJCas);
+		if (pairID == null)
+			pairID = "test_example";
+		
+		String traceFile = outDir + "/trace/" + pairID + ".html";		
 
 		try {
 			if ( Files.notExists(traceDir) ) // || ( ! Files.isDirectory(traceDir)))
