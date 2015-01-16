@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -21,6 +22,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
+import eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer;
 import eu.excitementproject.eop.common.TEDecision;
 
 /**
@@ -161,6 +164,31 @@ public class OutputUtils {
 			return null;
 		} else {
 			return p.getGoldAnswer();
+		}
+	}
+
+	public static void makeTraceHTML(TEDecision te, JCas aJCas, String outDir, Visualizer vis) {
+
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:makeTraceHTML");
+
+		Path traceDir = Paths.get(outDir + "/trace");
+		
+		String traceFile = outDir + "/trace/" + OutputUtils.getPairID(aJCas) + ".html";		
+
+		try {
+			if ( Files.notExists(traceDir) ) // || ( ! Files.isDirectory(traceDir)))
+				Files.createDirectories(traceDir);
+		
+			TEDecisionWithAlignment decision = (TEDecisionWithAlignment) te;
+			
+			OutputStream out = Files.newOutputStream(Paths.get(traceFile));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));			
+			writer.write(vis.generateHTML(decision));
+			writer.close();
+			out.close();
+		} catch (Exception e) {
+			logger.info("Error writing trace file for pair " + getPairID(aJCas));
+			e.printStackTrace();
 		}
 	}
 }
