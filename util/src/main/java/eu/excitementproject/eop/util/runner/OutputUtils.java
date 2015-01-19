@@ -175,7 +175,7 @@ public class OutputUtils {
 		
 		String pairID = OutputUtils.getPairID(aJCas);
 		if (pairID == null)
-			pairID = "test_example";
+			pairID = "1";
 		
 		String traceFile = outDir + "/trace/" + pairID + ".html";		
 
