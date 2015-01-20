@@ -43,28 +43,31 @@ import eu.excitementproject.eop.common.utilities.uima.UimaUtilsException;
 
 public class P1EdaVisualizer implements Visualizer {
 
-		public static HashMap<String, String> hashPOS = new HashMap<String, String>();
-		public static HashMap<String, HashMap<String, String>> hashRel = new HashMap<String, HashMap<String, String>>();
-		public static HashMap<String, String> hashTEEntities = new HashMap<String, String>();
+		protected HashMap<String, String> hashPOS;
+		protected HashMap<String, HashMap<String, String>> hashRel;
+		protected HashMap<String, String> hashTEEntities;
 		
-		public static String strDocEntities = "var collData = { entity_types: [ \r\n";
+		protected String strDocText;
+		protected String strDocData;
+		protected String strDocEntities;
 		
-		public static String strDocText;
-		public static String strDocData;
+		protected String docAlignmentData;
+		protected String strRelationEntities;
+		protected HashMap<String, String> hashAlignmentData;
+		protected HashMap<String, String> hashAlignmentEntities;
+		protected String strRelationData;
+		protected  StringBuilder strHtml;
 		
-		
-		public static String docAlignmentData = "docData['alignment_entity'] = [ \r\n";
-		public static String strRelationEntities = "collData['relation_types'] = [ \r\n";
-		public static HashMap<String, String> hashAlignmentData = new HashMap<String, String>();
-		public static HashMap<String, String> hashAlignmentEntities = new HashMap<String, String>();
-		public static String strRelationData = "docData['relations'] = [ \r\n";
-		public static StringBuilder strHtml = null;
+		public P1EdaVisualizer() {
+			init();
+		}
 		
 		/* (non-Javadoc)
 		 * @see eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer#generateHTML(eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment)
 		 */
 		public String generateHTML(TEDecisionWithAlignment decision) throws VisualizerGenerationException
 		{
+			init();
 			JCas jCas = decision.getJCasWithAlignment();
 			Vector<FeatureValue> featureValues = decision.getFeatureVector();
 			DecisionLabel label = decision.getDecision();
@@ -102,6 +105,8 @@ public class P1EdaVisualizer implements Visualizer {
 		 */
 		protected String generateHTML(JCas jCas,String strDecisionLabel, String confidence , Vector<FeatureValue> featureValues ) throws ValueException
 		{
+			
+			init();
 			
 			// define the colors of the entity annotations and their relations
 			String alignmentEntityColor = "#88ccFf";
@@ -292,6 +297,7 @@ public class P1EdaVisualizer implements Visualizer {
 				// get "Link" type annotations back..
 				for (Link l : JCasUtil.select(jCasHypothesis, Link.class))
 				{
+					
 					// you can access Link, as normal, annotation. Of course.
 					int tBegin = l.getTSideTarget().getBegin();
 					int hBegin = l.getHSideTarget().getBegin()+TextSize;
@@ -410,7 +416,7 @@ public class P1EdaVisualizer implements Visualizer {
 				}
 				
 				for (String strBlock : hashAlignmentEntities.keySet()) {
-					hashAlignmentEntities.put(strBlock, hashAlignmentEntities.get(strBlock) + "  ]; ");
+						hashAlignmentEntities.put(strBlock, hashAlignmentEntities.get(strBlock) + "  ]; ");
 				}
 				
 				
@@ -469,14 +475,14 @@ public class P1EdaVisualizer implements Visualizer {
 				strHtml.append( strDocData );
 				strHtml.append(" </CODE></PRE>\r\n");
 				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-alignment-entity-doc\"> \r\n");
-				strHtml.append( docAlignmentData );
+				strHtml.append(docAlignmentData);
 				strHtml.append(" </CODE></PRE>\r\n");
 				
 				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-relation-coll\"> \r\n");
 				strHtml.append( strRelationEntities );
 				strHtml.append(" </CODE></PRE>\r\n");
 				strHtml.append(" <PRE style=\"display:none;\"><CODE id=\"embedding-relation-doc\"> \r\n");
-				strHtml.append( strRelationData );
+				strHtml.append(strRelationData);
 				strHtml.append(" </CODE></PRE>\r\n");
 				
 				
@@ -487,19 +493,24 @@ public class P1EdaVisualizer implements Visualizer {
 					strHtml.append( hashAlignmentEntities.get(strBlock) + "\r\n");
 					strHtml.append( hashAlignmentData.get(strBlock));
 					strHtml.append(" </CODE></PRE>\r\n");
-					hashAlignmentData.put(strBlock, hashAlignmentData.get(strBlock) + "  ]; ");
+					///////XXXXXXXXXXX
+					//hashAlignmentData.put(strBlock, hashAlignmentData.get(strBlock) + "  ]; ");
 				}
 				
 				//strHtml.append(" <DIV id=\"embedding-relation-example\"></DIV>\r\n");
 				strHtml.append(" <DIV id=\"embedding-live-example\"></DIV>\r\n");
 				strHtml.append("<br>\r\n");
 				strHtml.append(" <div style='width:100%;  text-align: center;'>");
-				strHtml.append(" <table style='width:500px; margin: 0px auto;'><tr>\r\n");
-				strHtml.append("<td><b>Annotations: </b></td>\r\n");
+				strHtml.append(" <table style='width:500px; margin: 0px auto;'>\r\n");
+				if (hasDependency)
+					strHtml.append("<tr><td><b>Annotations: </b></td>\r\n");
+				else
+					strHtml.append("<tr style=\"display:none\"><td><b>Annotations: </b></td>\r\n");
 				strHtml.append("<td style='background-color: " + relationDEPColor + ";'><input id=\"cb_DEP\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />Dependency</td>\r\n");
 				strHtml.append("<td style='background-color: " + entityPOSColor + ";'><input id=\"cb_POS\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />POS</td>\r\n");
-				strHtml.append("</tr><tr>\r\n");
-				strHtml.append("<td><b>Alignments:</b></td>\r\n");
+				strHtml.append("</tr>\r\n");
+					
+				strHtml.append("<tr><td><b>Alignments:</b></td>\r\n");
 				for (String strBlock : hashAlignmentData.keySet()) {
 					strHtml.append("    <td style='background-color: " + alignmentEntityColor + ";'><input id=\"cb_"+strBlock+"\" type=\"checkbox\" onclick=\"javascript:Update();\" checked=\"checked\" />"+strBlock+"</td>\r\n");
 				}
@@ -723,7 +734,7 @@ public class P1EdaVisualizer implements Visualizer {
 			return ret;
 		}
 
-		private static void updateEntitiesAndRelations(Collection<AnnotationFS> col, int Identication) {
+		private void updateEntitiesAndRelations(Collection<AnnotationFS> col, int Identication) {
 			for (AnnotationFS annotationFS : col) {
 				Type type = annotationFS.getType();
 				String typeShortName = type.getShortName();
@@ -824,6 +835,25 @@ public class P1EdaVisualizer implements Visualizer {
 				e.printStackTrace();
 			}
 			
+		}
+		
+		protected void init() {
+			strDocText = null;
+			strDocData = null;
+			strDocEntities = null;
+
+			hashPOS = new HashMap<String, String>();
+			hashRel = new HashMap<String, HashMap<String, String>>();
+			hashTEEntities = new HashMap<String, String>();
+			
+			strDocEntities = "var collData = { entity_types: [ \r\n";
+			
+			docAlignmentData = "docData['alignment_entity'] = [ \r\n";
+			strRelationEntities = "collData['relation_types'] = [ \r\n";
+			hashAlignmentData = new HashMap<String, String>();
+			hashAlignmentEntities = new HashMap<String, String>();
+			strRelationData = "docData['relations'] = [ \r\n";
+			strHtml = null;
 		}
 
 	}
