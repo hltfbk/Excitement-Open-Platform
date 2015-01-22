@@ -190,6 +190,7 @@ public class OutputUtils {
 			writer.write(vis.generateHTML(decision));
 			writer.close();
 			out.close();
+			
 		} catch (Exception e) {
 			logger.info("Error writing trace file for pair " + getPairID(aJCas));
 			e.printStackTrace();

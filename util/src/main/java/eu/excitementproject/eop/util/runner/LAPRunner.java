@@ -1,13 +1,20 @@
 package eu.excitementproject.eop.util.runner;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.apache.uima.cas.impl.XmiCasSerializer;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.util.XMLSerializer;
+import org.xml.sax.SAXException;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
@@ -16,6 +23,7 @@ import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
+@SuppressWarnings("unused")
 public class LAPRunner {
 
 	private LAPAccess lap = null;
@@ -185,15 +193,22 @@ public class LAPRunner {
 		
 		logger.info("Running lap on file: " + inputFile + " // writing output to directory " + outDir);
 
-		File dir = new File(outDir);
-		if (! dir.exists() || !dir.isDirectory()) {
-			dir.mkdir();
-		}
-		
 		try {
+
+			File dir = new File(outDir);
+			if (! dir.exists() || !dir.isDirectory()) {
+				dir.mkdirs();
+			} else {
+				FileUtils.cleanDirectory(dir);
+			}
+		
 			lap.processRawInputFormat(new File(inputFile), dir);
 		} catch (LAPException e) {
 			System.err.println("Error running the LAP");
+			e.printStackTrace();
+			System.exit(1);
+		} catch (IOException e) {
+			System.err.println("Could not clean up LAP output directory " + outDir);
 			e.printStackTrace();
 			System.exit(1);
 		}
@@ -212,6 +227,9 @@ public class LAPRunner {
 		try {
 			aJCas = lap.generateSingleTHPairCAS(text, hypothesis);
 			PlatformCASProber.probeCasAndPrintContent(aJCas, System.out);
+			
+//			serializeCAS(aJCas);
+			
 		} catch (LAPException e) {
 			logger.error("Error running the LAP");
 			e.printStackTrace();
@@ -219,6 +237,32 @@ public class LAPRunner {
 		
 		return aJCas;
 	}	
+
+/*	
+	// code copied from LAP_ImplBase.java, just for testing the LAP when processing one pair from the command line
+	private void serializeCAS(JCas aJCas) throws LAPException {
+		// serialize 
+		String xmiName = "1.from_commandLine.xmi"; 
+		File xmiOutFile = new File("/tmp/", xmiName); 
+	
+		try {
+			FileOutputStream out = new FileOutputStream(xmiOutFile);
+			XmiCasSerializer ser = new XmiCasSerializer(aJCas.getTypeSystem());
+			XMLSerializer xmlSer = new XMLSerializer(out, false);
+			ser.serialize(aJCas.getCas(), xmlSer.getContentHandler());
+			out.close();
+		} catch (FileNotFoundException e) {
+			throw new LAPException("Unable to create/open the file" + xmiOutFile.toString(), e);
+		} catch (SAXException e) {
+			throw new LAPException("Failed to serialize the CAS into XML", e); 
+		} catch (IOException e) {
+			throw new LAPException("Unable to access/close the file" + xmiOutFile.toString(), e);
+		}
+
+		logger.info("Pair written as " + xmiOutFile.toString() );
+	}
+*/	
+	
 	/**
 	 * @param args
 	 */
