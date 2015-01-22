@@ -136,7 +136,7 @@ public class P1EdaVisualizer implements Visualizer {
 				JCas jCasText = jCas.getView("TextView");
 				JCas jCasHypothesis = jCas.getView("HypothesisView");
 				
-				strDocText += " text     : \""+jCasText.getDocumentText()+"\r\\n"+jCasHypothesis.getDocumentText()+"\"\r\n";
+				strDocText += " text     : \""+jCasText.getDocumentText()+"\\r\\n"+jCasHypothesis.getDocumentText()+"\"\r\n";
 				
 				int TextSize = jCasText.getDocumentText().length()+2;
 				Collection<AnnotationFS> col = CasUtil.selectAll(jCasText.getCas());
