@@ -209,6 +209,10 @@ public class EOPRunner {
 	 */
 	public void runEOPTest(String testDirStr, String outDir) {
 
+		File outDirectory = new File(outDir);
+		if (! outDirectory.exists())
+			outDirectory.mkdirs();
+		
 		if (option.results != null) {
 			resultsFile = option.results;
 			xmlResultsFile = option.results.replaceAll(".txt$", ".xml");
