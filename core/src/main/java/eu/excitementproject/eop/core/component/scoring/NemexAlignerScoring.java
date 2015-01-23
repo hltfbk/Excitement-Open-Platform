@@ -54,6 +54,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 		boolean isBOW = Boolean.valueOf(comp.getString("isBOW"));
 		boolean isBOL = Boolean.valueOf(comp.getString("isBOL"));
 		boolean isBOChunks = Boolean.valueOf(comp.getString("isBOChunks"));
+		
 		int numOfExtDicts = Integer.parseInt(comp.getString("numOfExtDicts"));
 		String[] externalDictPath = comp.getString("externalDictPath").split(
 				",");
@@ -79,9 +80,9 @@ public class NemexAlignerScoring implements ScoringComponent {
 		boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
 				.getString("ignoreDuplicateNgrams"));
 
-		String chunkerModelPath = comp.getString("chunkerModelPath");
-
 		this.direction = comp.getString("direction");
+		
+		String chunkerModelPath = comp.getString("chunkerModelPath");
 
 		boolean isWN = Boolean.valueOf(comp.getString("isWN"));
 		String WNRelations = comp.getString("WNRelations");
