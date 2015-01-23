@@ -303,7 +303,7 @@ public class NemexAligner implements AlignmentComponent {
 
 			double totalNumOfGazetteerEntries = 0;
 			int index = 0; // id of Entry in Entry map
-			ArrayList<EntryInfo> offsets = new ArrayList<EntryInfo>();
+			
 
 			// int numOfTokens = tokenAnnots.size();
 
@@ -324,6 +324,8 @@ public class NemexAligner implements AlignmentComponent {
 				int curStartOffset = token.getBegin();
 				int curEndOffset = token.getEnd();
 
+				ArrayList<EntryInfo> offsets = new ArrayList<EntryInfo>();
+
 				if (isBOW) {
 
 					// Add all the entries to entryMap and entryInvIndex
@@ -331,6 +333,7 @@ public class NemexAligner implements AlignmentComponent {
 							curEndOffset, curPOS, false);
 
 					if (entryMap.containsValue(curToken)) {
+						
 						offsets = entryInvIndex.get(curToken);
 					} else {
 						index++;
@@ -527,6 +530,9 @@ public class NemexAligner implements AlignmentComponent {
 							curOffset = new EntryInfo(view, startOffset,
 									endOffset, tag, true);
 						}
+						
+
+						ArrayList<EntryInfo> offsets = new ArrayList<EntryInfo>();
 						
 						if (entryMap.containsValue(curEntry)) {
 							offsets = entryInvIndex.get(curEntry);
