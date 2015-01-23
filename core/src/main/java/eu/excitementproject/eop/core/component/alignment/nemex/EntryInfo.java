@@ -13,15 +13,15 @@ import org.apache.uima.jcas.JCas;
  * 
  */
 
-public class QueryInfo {
+public class EntryInfo {
 
 	JCas hypoView;
 	int startOffset; // inclusive
 	int endOffset; // exclusive
-	String tag;
+	String tag; //POSTag
 	boolean extended;
 
-	public QueryInfo(JCas hView, int start, int end, String posTag, boolean ext) {
+	public EntryInfo(JCas hView, int start, int end, String posTag, boolean ext) {
 		hypoView = hView;
 		startOffset = start;
 		endOffset = end;

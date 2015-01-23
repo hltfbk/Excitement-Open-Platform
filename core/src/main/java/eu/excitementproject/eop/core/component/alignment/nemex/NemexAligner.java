@@ -76,40 +76,84 @@ import opennlp.tools.util.Span;
 
 public class NemexAligner implements AlignmentComponent {
 
-	public NemexAligner(String gazetteerFilePath, String externalDictPath,
-			String delimiter, Boolean delimiterSwitchOff, int nGramSize,
-			Boolean ignoreDuplicateNgrams, String similarityMeasureLookup,
-			String similarityMeasureGazetteerCreation,
-			double similarityThresholdLookup,
-			double similarityThresholdGazetteerCreation,
-			String chunkerModelPath, String direction, boolean isWN,
-			String WNRel, boolean isWNCollapsed, boolean useFirstSenseOnlyLeft,
+	public NemexAligner(Boolean isBOW, Boolean isBOL, Boolean isBOChunks,
+			int numOfExtDicts, String[] externalDictPath,
+			String[] similarityMeasureExtLookup,
+			double[] similarityThresholdExtLookup, String gazetteerFilePath,
+			String similarityMeasureAlignmentLookup,
+			double similarityThresholdAlignmentLookup, String delimiter,
+			Boolean delimiterSwitchOff, int nGramSize,
+			Boolean ignoreDuplicateNgrams, String chunkerModelPath,
+			String direction, boolean isWN, String WNRel,
+			boolean isWNCollapsed, boolean useFirstSenseOnlyLeft,
 			boolean useFirstSenseOnlyRight, String wnPath) {
 
-		this.gazetteerFilePath = gazetteerFilePath;
+		this.isBOW = isBOW;
+		this.isBOL = isBOL;
+		this.isBOChunks = isBOChunks;
+		this.isWN = isWN;
+
+		this.numOfExtDicts = numOfExtDicts;
 		this.externalDictPath = externalDictPath;
+		this.similarityMeasureExtLookup = similarityMeasureExtLookup;
+		this.similarityThresholdExtLookup = similarityThresholdExtLookup;
+
+		this.gazetteerFilePath = gazetteerFilePath;
+		this.similarityMeasureAlignmentLookup = similarityMeasureAlignmentLookup;
+		this.similarityThresholdAlignmentLookup = similarityThresholdAlignmentLookup;
+
 		this.delimiter = delimiter;
 		this.delimiterSwitchOff = delimiterSwitchOff;
 		this.nGramSize = nGramSize;
 		this.ignoreDuplicateNgrams = ignoreDuplicateNgrams;
 
-		this.similarityMeasureLookup = similarityMeasureLookup;
-		this.similarityMeasureGazetteerCreation = similarityMeasureGazetteerCreation;
-
-		this.similarityThresholdLookup = similarityThresholdLookup;
-		this.similarityThresholdGazetteerCreation = similarityThresholdGazetteerCreation;
-
-		this.chunkerModelPath = chunkerModelPath;
-
 		this.direction = direction;
-		NEMEX_A.loadNewGazetteer(this.externalDictPath, this.delimiter,
-				this.delimiterSwitchOff, this.nGramSize,
-				this.ignoreDuplicateNgrams);
-		logger.info("Loading external Nemex Gazetteer done");
+		
+		this.wnlr = null;
 
-		this.isWN = isWN;
+		if (this.numOfExtDicts == 0) {
+			logger.info("No external dictionaries to load");
+		} else {
+			try {
+				for (int i = 0; i < this.numOfExtDicts; i++) {
+					NEMEX_A.loadNewGazetteer(this.externalDictPath[i],
+							this.delimiter, this.delimiterSwitchOff,
+							this.nGramSize, this.ignoreDuplicateNgrams);
+				}
+			} catch (Exception e) {
+				logger.error("Error in loading the external Nemex Dictionaries");
+			}
+
+			logger.info("Loading external Nemex Dictionaries done");
+		}
+
+		if (isBOChunks) {
+
+			// initialize the chunker model file
+			InputStream modelIn = null;
+			ChunkerModel model = null;
+
+			try {
+				modelIn = new FileInputStream(chunkerModelPath);
+				model = new ChunkerModel(modelIn);
+			} catch (IOException e) {
+				logger.error("Could not load Chunker model");
+			} finally {
+				if (modelIn != null) {
+					try {
+						modelIn.close();
+					} catch (IOException e) {
+					}
+				}
+			}
+
+			this.chunker = new opennlp.tools.chunker.ChunkerME(model);
+
+		}
+
 		try {
 			if (isWN) {
+				logger.info("Loading wordnet");
 				String[] WNRelations = WNRel.split(",");
 				if (null == WNRelations || 0 == WNRelations.length) {
 					throw new ConfigurationException(
@@ -131,7 +175,7 @@ public class NemexAligner implements AlignmentComponent {
 					throw new ConfigurationException(
 							"Wrong configuation: didn't find any (correct) relations for the WordNet");
 				}
-				
+
 				File wnFile = new File(wnPath);
 				if (!wnFile.exists()) {
 					throw new ConfigurationException("cannot find WordNet at: "
@@ -141,13 +185,13 @@ public class NemexAligner implements AlignmentComponent {
 					this.wnlr = new WordnetLexicalResource(wnFile,
 							useFirstSenseOnlyLeft, useFirstSenseOnlyRight,
 							wnRelSet);
-				
+
 				} else {
 					for (WordNetRelation wnr : wnRelSet) {
 						this.wnlr = new WordnetLexicalResource(wnFile,
 								useFirstSenseOnlyLeft, useFirstSenseOnlyRight,
 								Collections.singleton(wnr));
-						
+
 					}
 				}
 				logger.info("Load WordNet done.");
@@ -168,7 +212,7 @@ public class NemexAligner implements AlignmentComponent {
 	 */
 
 	public void annotate(JCas aJCas) throws PairAnnotatorComponentException {
-		// intro log
+
 		logger.info("annotate() called with a JCas with the following T and H;  ");
 
 		if (aJCas == null) {
@@ -180,16 +224,12 @@ public class NemexAligner implements AlignmentComponent {
 		JCas textView = null;
 		JCas hypoView = null;
 
+		// contains queryID and queryText for all unique queries in T or H,
+		// depending on direction
 		HashMap<Integer, String> queryMap = new HashMap<Integer, String>();
 
-		HashMap<String, ArrayList<QueryInfo>> queryIndex = new HashMap<String, ArrayList<QueryInfo>>();
-
-		try {
-			hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-		} catch (CASException e) {
-			throw new AlignmentComponentException(
-					"Failed to access the hypothesis view", e);
-		}
+		// queryText with JCas ID and offsets for queryText
+		HashMap<String, ArrayList<EntryInfo>> queryInvIndex = new HashMap<String, ArrayList<EntryInfo>>();
 
 		try {
 			textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
@@ -197,6 +237,14 @@ public class NemexAligner implements AlignmentComponent {
 		} catch (CASException e) {
 			throw new AlignmentComponentException(
 					"Failed to access the text view", e);
+		}
+
+		try {
+			hypoView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+			logger.info("HYPOTHESIS: " + hypoView.getDocumentText());
+		} catch (CASException e) {
+			throw new AlignmentComponentException(
+					"Failed to access the hypothesis view", e);
 		}
 
 		if (textView != null && hypoView != null) {
@@ -207,14 +255,14 @@ public class NemexAligner implements AlignmentComponent {
 
 			if (direction == "HtoT") {
 
-				createDictionary(hypoView, queryMap, queryIndex);
-				annotateSubstring(textView, queryMap, queryIndex);
+				createDictionary(hypoView, queryMap, queryInvIndex);
+				annotateSubstring(textView, queryMap, queryInvIndex);
 
 			}
 
 			else {
-				createDictionary(textView, queryMap, queryIndex);
-				annotateSubstring(hypoView, queryMap, queryIndex);
+				createDictionary(textView, queryMap, queryInvIndex);
+				annotateSubstring(hypoView, queryMap, queryInvIndex);
 			}
 		}
 
@@ -240,179 +288,273 @@ public class NemexAligner implements AlignmentComponent {
 	 *            query.
 	 * @return
 	 */
-	public void createDictionary(JCas view, HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<QueryInfo>> queryIndex)
+	public void createDictionary(JCas view, HashMap<Integer, String> entryMap,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndex)
 			throws PairAnnotatorComponentException {
 		try {
+
+			if (!this.isBOW && !this.isBOL && !this.isBOChunks) {
+				logger.info("Setting the configuration to BOW by default");
+				this.isBOW = true;
+			}
+
+			AnnotationIndex<Annotation> tokenAnnots = view
+					.getAnnotationIndex(Token.type);
+
+			double totalNumOfGazetteerEntries = 0;
+			int index = 0; // id of Entry in Entry map
+			ArrayList<EntryInfo> offsets = new ArrayList<EntryInfo>();
+
+			// int numOfTokens = tokenAnnots.size();
+
+			// Required for Chunking
+			List<String> tokenTextArray = new ArrayList<String>();
+			List<String> tagArray = new ArrayList<String>();
+			List<String> tokenLemmaArray = new ArrayList<String>();
+			List<Integer> tokenStartOffsetArray = new ArrayList<Integer>();
+			List<Integer> tokenEndOffsetArray = new ArrayList<Integer>();
+
+			Iterator<Annotation> tIter = tokenAnnots.iterator();
+
+			while (tIter.hasNext()) {
+				Token token = (Token) tIter.next();
+				String curToken = token.getCoveredText().toLowerCase();
+				String curLemma = token.getLemma().getValue();
+				String curPOS = token.getPos().getPosValue();
+				int curStartOffset = token.getBegin();
+				int curEndOffset = token.getEnd();
+
+				if (isBOW) {
+
+					// Add all the entries to entryMap and entryInvIndex
+					EntryInfo curOffset = new EntryInfo(view, curStartOffset,
+							curEndOffset, curPOS, false);
+
+					if (entryMap.containsValue(curToken)) {
+						offsets = entryInvIndex.get(curToken);
+					} else {
+						index++;
+						entryMap.put(index, curToken);
+					}
+
+					totalNumOfGazetteerEntries++;
+					offsets.add(curOffset);
+
+					entryInvIndex.put(curToken, offsets);
+				}
+
+				if (isBOL) {
+
+					EntryInfo curOffset = new EntryInfo(view, curStartOffset,
+							curEndOffset, curPOS, false);
+
+					if (entryMap.containsValue(curLemma)) {
+						offsets = entryInvIndex.get(curLemma);
+					} else {
+						index++;
+						entryMap.put(index, curLemma);
+					}
+
+					totalNumOfGazetteerEntries++;
+					offsets.add(curOffset);
+
+					entryInvIndex.put(curLemma, offsets);
+
+					if (isWN) {
+
+						for (LexicalRule<? extends RuleInfo> rule : wnlr
+								.getRulesForLeft(curLemma, null)) {
+
+							String curEntry = rule.getRLemma().toLowerCase()
+									.replace(" ", this.delimiter);
+							curOffset = new EntryInfo(view, curStartOffset,
+									curEndOffset, curPOS, true);
+							if (entryMap.containsValue(curEntry)) {
+								offsets = entryInvIndex.get(curEntry);
+							} else {
+								index++;
+								entryMap.put(index, curEntry);
+							}
+
+							totalNumOfGazetteerEntries++;
+							offsets.add(curOffset);
+
+							entryInvIndex.put(curEntry, offsets);
+
+						}
+
+					}
+				}
+
+				if (isBOChunks) {
+					tokenTextArray.add(curToken);
+					tagArray.add(curPOS);
+					tokenLemmaArray.add(curLemma);
+					tokenStartOffsetArray.add(curStartOffset);
+					tokenEndOffsetArray.add(curEndOffset);
+				}
+
+			}
+
+			if (isBOChunks) {
+
+				String originalQuery = new String(); // query generated directly
+														// from chunk in given
+														// data
+
+				// chunking using openNLP chunker
+				Span[] chunk = this.chunker.chunkAsSpans(tokenTextArray
+						.toArray(new String[tokenTextArray.size()]), tagArray
+						.toArray(new String[tagArray.size()]));
+
+				// iterating over all chunks
+				for (int i = 0; i < chunk.length; i++) {
+
+					// Starting and Ending token ID for chunk, Chunk tag - NP,
+					// VP, etc.
+					int start = chunk[i].getStart();
+					int end = chunk[i].getEnd();
+					String tag = chunk[i].getType();
+
+					// Chunks to be added as dictionary entries
+					Set<String> entries = new HashSet<String>();
+
+					originalQuery = "";
+					entries.add("");
+
+					// Iterating over all the tokens in the chunk
+					for (int j = start; j < end; j++) {
+
+						// To keep track of queries generated using ExtDicts and
+						// Gazetteer
+						Set<String> newQueries = new HashSet<String>();
+
+						Iterator<String> entryIter = entries.iterator();
+
+						while (entryIter.hasNext()) {
+
+							String curQuery = entryIter.next();
+
+							// Add the delimiter at end of previous word
+							if (curQuery != "") {
+								curQuery = curQuery + this.delimiter;
+							}
+
+							if (originalQuery != "") {
+								originalQuery += this.delimiter;
+							}
+
+							String curToken = tokenTextArray.get(j);
+							String curPosTag = tagArray.get(j);
+
+							originalQuery = originalQuery + curToken;
+							newQueries.add(curQuery + curToken);
+
+							// Find matching entries from external dictionaries
+							// and Wordnet for nouns
+							if (curPosTag.equals("NN")
+									|| curPosTag.equals("NNS")
+									|| curPosTag.equals("NNP")
+									|| curPosTag.equals("NNPS")) {
+
+								List<String> values = new ArrayList<String>();
+
+								for (int n = 0; n < this.numOfExtDicts; n++) {
+									values.addAll(NEMEX_A.checkSimilarity(
+											curToken.toLowerCase(),
+											this.externalDictPath[n],
+											this.similarityMeasureExtLookup[n],
+											this.similarityThresholdExtLookup[n]));
+								}
+
+								if (isWN) {
+
+									// Finding and adding wordnet entries to
+									// generate new entries
+
+									for (LexicalRule<? extends RuleInfo> rule : wnlr
+											.getRulesForLeft(
+													tokenLemmaArray.get(j),
+													new BySimplerCanonicalPartOfSpeech(
+															SimplerCanonicalPosTag.NOUN))) {
+										values.add(rule.getRLemma()
+												.toLowerCase()
+												.replace(" ", this.delimiter));
+
+									}
+
+								}
+
+								// Appending new info to existing phrase so far
+								for (int l = 0; l < values.size(); l++) {
+									String newQuery = curQuery + values.get(l);
+									newQueries.add(newQuery);
+								}
+
+							}
+						}
+
+						entries.clear();
+						entries.addAll(newQueries);
+						newQueries.clear();
+
+					}
+
+					// Once we have all the chunks (including the newly
+					// generated ones), that need to be added as entries, add
+					// them to entryMap and entryInvIndex
+					Iterator<String> eIter = entries.iterator();
+
+					while (eIter.hasNext()) {
+
+						String curEntry = eIter.next();
+						int startOffset = tokenStartOffsetArray.get(start);
+						int endOffset = tokenEndOffsetArray.get(end - 1);
+
+						//Add he generated Chunk annotation to the AnnotationIndex
+						Chunk annot = new Chunk(view, startOffset, endOffset);
+						annot.setChunkValue(curEntry);
+						annot.addToIndexes();
+
+						curEntry = curEntry.toLowerCase();
+
+						EntryInfo curOffset;
+						
+						if (curEntry.equals(originalQuery.toLowerCase())) {
+							curOffset = new EntryInfo(view, startOffset,
+									endOffset, tag, false);
+						} else {
+							curOffset = new EntryInfo(view, startOffset,
+									endOffset, tag, true);
+						}
+						
+						if (entryMap.containsValue(curEntry)) {
+							offsets = entryInvIndex.get(curEntry);
+						} else {
+							index++;
+							entryMap.put(index, curEntry);
+						}
+
+						totalNumOfGazetteerEntries++;
+						offsets.add(curOffset);
+
+						entryInvIndex.put(curEntry, offsets);
+					}
+				}
+			}
+
 			logger.info("Unloading Gazetteer for updating dictionary");
 			NEMEX_A.unloadGazetteer(gazetteerFilePath);
 
-			String query = new String();
-
-			int index = 0;
-			double totalNoOfQueries = 0;
-			logger.info("Creating queries");
-
-			AnnotationIndex<Annotation> tokenAnnots = view.getAnnotationIndex(Token.type);
-			
-			int numOfTokens = tokenAnnots.size();
-			
-			String[] tokenTextArray = new String[numOfTokens];
-			String[] tagArray = new String[numOfTokens];
-			String[] tokenLemmaArray = new String[numOfTokens];
-
-			int[] tokenStartOffsetArray = new int[numOfTokens];
-			int[] tokenEndOffsetArray = new int[numOfTokens];
-			
-			int tNum = 0;
-			Iterator<Annotation>  tIter = tokenAnnots.iterator();
-			
-			while(tIter.hasNext()) {
-				
-				Token token = (Token) tIter.next();
-				
-				tokenTextArray[tNum] = token.getCoveredText();
-				tagArray[tNum] = token.getPos().getPosValue();
-
-				
-				tokenLemmaArray[tNum] = token.getLemma().getValue();
-
-				tokenStartOffsetArray[tNum] = token.getBegin();
-				tokenEndOffsetArray[tNum] = token.getEnd();
-				
-				tNum++;
-
-			}
-
-			//query = getQuery(chunkerModelPath);
-
-			InputStream modelIn = null;
-			ChunkerModel model = null;
-
-			try {
-				modelIn = new FileInputStream(chunkerModelPath);
-				model = new ChunkerModel(modelIn);
-			} catch (IOException e) {
-				// Model loading failed, handle the error
-				e.printStackTrace();
-			} finally {
-				if (modelIn != null) {
-					try {
-						modelIn.close();
-					} catch (IOException e) {
-					}
-				}
-			}
-
-			ChunkerME chunker = new opennlp.tools.chunker.ChunkerME(model);
-			Span[] chunk = chunker.chunkAsSpans(tokenTextArray, tagArray);
-
-			for (int i = 0; i < chunk.length; i++) {
-				int start = chunk[i].getStart();
-				int end = chunk[i].getEnd();
-				String tag = chunk[i].getType();
-				List<String> queries = new ArrayList<String>();
-
-				query = "";
-				queries.add(query);
-
-				for (int j = start; j < end; j++) {
-
-					List<String> newQueries = new ArrayList<String>();
-					for (int k = 0; k < queries.size(); k++) {
-						String curQuery = queries.get(k);
-						if (curQuery != "") {
-							curQuery = curQuery + "#";
-							queries.set(k, curQuery);
-						}
-						newQueries.add(curQuery + tokenTextArray[j]);
-
-						if (tagArray[j].equals("NN")
-								|| tagArray[j].equals("NNS")
-								|| tagArray[j].equals("NNP")
-								|| tagArray[j].equals("NNPS")) {
-							List<String> values = NEMEX_A.checkSimilarity(
-									tokenTextArray[j].toLowerCase(),
-									this.externalDictPath,
-									similarityMeasureGazetteerCreation,
-									similarityThresholdGazetteerCreation);
-
-							if (isWN) {
-								logger.info("Finding wordnet rules");
-								
-								for (LexicalRule<? extends RuleInfo> rule : wnlr
-											.getRulesForLeft(
-													tokenLemmaArray[j], new BySimplerCanonicalPartOfSpeech(SimplerCanonicalPosTag.NOUN))) {
-										values.add(rule.getRLemma()
-												.toLowerCase().replace(" ","#"));
-										
-										
-									}
-								
-								
-							}
-							
-							//logger.info("values: " + values);
-							for (int l = 0; l < values.size(); l++) {
-								String newQuery = curQuery + values.get(l);
-								newQueries.add(newQuery);
-							}
-
-						}
-
-					}
-					queries = newQueries;
-
-				}
-
-				for (int j = 0; j < queries.size(); j++) {
-					query = queries.get(j);
-
-					int startOffset = tokenStartOffsetArray[start];
-					int endOffset = tokenEndOffsetArray[end - 1];
-
-					Chunk annot = new Chunk(view, startOffset, endOffset);
-					annot.setChunkValue(query);
-					annot.addToIndexes();
-
-					query = query.toLowerCase();
-					
-					ArrayList<QueryInfo> offsets = new ArrayList<QueryInfo>();
-					QueryInfo curOffset;
-					if (j == 0) {
-
-						curOffset = new QueryInfo(view, startOffset, endOffset,
-								tag, false);
-					} else {
-
-						curOffset = new QueryInfo(view, startOffset, endOffset,
-								tag, true);
-					}
-					if (queryMap.containsValue(query)) {
-						offsets = queryIndex.get(query);
-					} else {
-						index++;
-						queryMap.put(index, query);
-					}
-
-					totalNoOfQueries++;
-					offsets.add(curOffset);
-
-					queryIndex.put(query, offsets);
-				}
-			}
-
-			logger.info("Finished creating queries");
-
-			logger.info("Adding queries to dictionary");
-			Iterator<Entry<Integer, String>> iter = queryMap.entrySet()
+			logger.info("Adding entries to dictionary");
+			Iterator<Entry<Integer, String>> iter = entryMap.entrySet()
 					.iterator();
 
 			PrintWriter fw;
 
 			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath));
-			fw.println("0 utf-8 EN " + (int) totalNoOfQueries + " "
-					+ queryMap.size());
+			fw.println("0 utf-8 EN " + (int) totalNumOfGazetteerEntries + " "
+					+ entryMap.size());
 			fw.close();
 
 			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath, true));
@@ -426,7 +568,7 @@ public class NemexAligner implements AlignmentComponent {
 				int idx = (int) queryEntry.getKey();
 				String queryText = (String) queryEntry.getValue();
 
-				ArrayList<QueryInfo> value = (ArrayList<QueryInfo>) queryIndex
+				ArrayList<EntryInfo> value = (ArrayList<EntryInfo>) entryInvIndex
 						.get(queryText);
 
 				logger.info("Creating dictionary entry string from query");
@@ -434,11 +576,11 @@ public class NemexAligner implements AlignmentComponent {
 				List<String> values = new ArrayList<String>();
 				values.add(queryText);
 
-				Iterator<QueryInfo> queryIter = value.iterator();
+				Iterator<EntryInfo> queryIter = value.iterator();
 
 				while (queryIter.hasNext()) {
 
-					QueryInfo hQuery = (QueryInfo) queryIter.next();
+					EntryInfo hQuery = (EntryInfo) queryIter.next();
 					int start = hQuery.getStartOffset();
 					int end = hQuery.getEndOffset();
 					String tag = hQuery.getPosTag();
@@ -453,17 +595,22 @@ public class NemexAligner implements AlignmentComponent {
 
 				String entry = new String();
 				entry = new String(idx + " "
-						+ Math.log(value.size() / totalNoOfQueries) + " "
-						+ queryText);
+						+ Math.log(value.size() / totalNumOfGazetteerEntries)
+						+ " " + queryText);
 
 				Iterator<Entry<String, Integer>> senseIter = querySenseMap
 						.entrySet().iterator();
 				while (senseIter.hasNext()) {
 					Map.Entry<String, Integer> sense = (Map.Entry<String, Integer>) senseIter
 							.next();
-					entry = entry + " " + sense.getKey() + ":"
-							+ sense.getValue() + ":"
-							+ Math.log(sense.getValue() / totalNoOfQueries);
+					entry = entry
+							+ " "
+							+ sense.getKey()
+							+ ":"
+							+ sense.getValue()
+							+ ":"
+							+ Math.log(sense.getValue()
+									/ totalNumOfGazetteerEntries);
 				}
 				logger.info("Adding entry to dictionary," + entry);
 
@@ -474,8 +621,8 @@ public class NemexAligner implements AlignmentComponent {
 				querySenseMap.clear();
 			}
 			fw.close();
-			wnlr.close();
-			
+			// wnlr.close();
+
 			logger.info("Loading the gazetteer");
 			NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
 					this.delimiterSwitchOff, this.nGramSize,
@@ -490,10 +637,10 @@ public class NemexAligner implements AlignmentComponent {
 
 	}
 
-	/*private String getQuery(String chunkerModelPath2) {
-		// TODO Auto-generated method stub
-		return null;
-	}*/
+	/*
+	 * private String getQuery(String chunkerModelPath2) { // TODO
+	 * Auto-generated method stub return null; }
+	 */
 
 	/**
 	 * This method adds nemex.NemexType annotation on text queries.
@@ -516,7 +663,7 @@ public class NemexAligner implements AlignmentComponent {
 	 */
 	private void annotateSubstring(JCas view,
 			HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<QueryInfo>> queryIndex) {
+			HashMap<String, ArrayList<EntryInfo>> queryIndex) {
 
 		String str = new String();
 		List<String> values = new ArrayList<String>();
@@ -543,26 +690,7 @@ public class NemexAligner implements AlignmentComponent {
 
 		logger.info("Token text and offsets obtained");
 
-		InputStream modelIn = null;
-		ChunkerModel model = null;
-
-		try {
-			modelIn = new FileInputStream(chunkerModelPath);
-			model = new ChunkerModel(modelIn);
-		} catch (IOException e) {
-			// Model loading failed, handle the error
-			e.printStackTrace();
-		} finally {
-			if (modelIn != null) {
-				try {
-					modelIn.close();
-				} catch (IOException e) {
-				}
-			}
-		}
-
-		ChunkerME chunker = new opennlp.tools.chunker.ChunkerME(model);
-		Span[] chunk = chunker.chunkAsSpans(tokenTextArray, tagArray);
+		Span[] chunk = this.chunker.chunkAsSpans(tokenTextArray, tagArray);
 
 		for (int i = 0; i < chunk.length; i++) {
 			int start = chunk[i].getStart();
@@ -570,7 +698,7 @@ public class NemexAligner implements AlignmentComponent {
 			str = "";
 			for (int j = start; j < end; j++) {
 				if (str != "")
-					str += "#";
+					str += this.delimiter;
 				str += tokenTextArray[j];
 			}
 
@@ -585,7 +713,8 @@ public class NemexAligner implements AlignmentComponent {
 
 			try {
 				values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
-						similarityMeasureLookup, similarityThresholdLookup);
+						this.similarityMeasureAlignmentLookup,
+						this.similarityThresholdAlignmentLookup);
 
 				if (values.size() > 0) {
 					logger.info("Query text: " + str);
@@ -673,18 +802,18 @@ public class NemexAligner implements AlignmentComponent {
 	 */
 	private void addAlignmentLink(NemexType textAnnot, JCas textView,
 			int textStart, int textEnd, HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<QueryInfo>> queryIndex) {
+			HashMap<String, ArrayList<EntryInfo>> queryIndex) {
 		String[] values = textAnnot.getValues().toStringArray();
 		for (int i = 0; i < values.length; i++) {
 
 			String query = values[i];
 
 			if (queryIndex.containsKey(query)) {
-				ArrayList<QueryInfo> hypotheses = queryIndex.get(query);
-				Iterator<QueryInfo> hypoIter = hypotheses.iterator();
+				ArrayList<EntryInfo> hypotheses = queryIndex.get(query);
+				Iterator<EntryInfo> hypoIter = hypotheses.iterator();
 
 				while (hypoIter.hasNext()) {
-					QueryInfo hypothesis = hypoIter.next();
+					EntryInfo hypothesis = hypoIter.next();
 					JCas hypoView = hypothesis.getHypothesisView();
 					int hypoStart = hypothesis.getStartOffset();
 					int hypoEnd = hypothesis.getEndOffset();
@@ -765,7 +894,7 @@ public class NemexAligner implements AlignmentComponent {
 			link.setDirection(Direction.HtoT);
 
 			// Set strength according to the nemex-a threshold
-			link.setStrength(this.similarityThresholdLookup);
+			link.setStrength(this.similarityThresholdAlignmentLookup);
 
 			// Add the link information
 			link.setAlignerID("NemexA");
@@ -790,7 +919,7 @@ public class NemexAligner implements AlignmentComponent {
 			link.setDirection(Direction.TtoH);
 
 			// Set strength according to the nemex-a threshold
-			link.setStrength(this.similarityThresholdLookup);
+			link.setStrength(this.similarityThresholdAlignmentLookup);
 
 			// Add the link information
 			link.setAlignerID("NemexA");
@@ -818,25 +947,29 @@ public class NemexAligner implements AlignmentComponent {
 	}
 
 	private final static Logger logger = Logger.getLogger(NemexAligner.class);
+
+	private Boolean isBOW;
+	private Boolean isBOL;
+	private Boolean isBOChunks;
+	private Boolean isWN;
+
+	private int numOfExtDicts;
+	private String[] externalDictPath;
+	private double[] similarityThresholdExtLookup;
+	private String[] similarityMeasureExtLookup;
+
 	private String gazetteerFilePath;
-	private String externalDictPath;
+	private double similarityThresholdAlignmentLookup;
+	private String similarityMeasureAlignmentLookup;
+
 	private String delimiter;
 	private Boolean delimiterSwitchOff;
 	private int nGramSize;
 	private Boolean ignoreDuplicateNgrams;
 
-	private double similarityThresholdLookup;
-	private double similarityThresholdGazetteerCreation;
-
-	private String similarityMeasureLookup;
-	private String similarityMeasureGazetteerCreation;
-
-	private String chunkerModelPath;
-
 	private String direction;
 
 	private WordnetLexicalResource wnlr;
-
-	private Boolean isWN;
+	private ChunkerME chunker;
 
 }

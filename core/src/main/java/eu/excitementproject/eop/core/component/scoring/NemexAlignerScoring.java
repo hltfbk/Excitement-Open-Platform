@@ -1,7 +1,12 @@
 package eu.excitementproject.eop.core.component.scoring;
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 import java.util.logging.Logger;
 
@@ -10,6 +15,7 @@ import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
@@ -45,39 +51,57 @@ public class NemexAlignerScoring implements ScoringComponent {
 			throws ConfigurationException {
 		NameValueTable comp = config.getSection("NemexAlignerScoring");
 
-		String externalDictPath = comp.getString("externalDictPath");
-		
+		boolean isBOW = Boolean.valueOf(comp.getString("isBOW"));
+		boolean isBOL = Boolean.valueOf(comp.getString("isBOL"));
+		boolean isBOChunks = Boolean.valueOf(comp.getString("isBOChunks"));
+		int numOfExtDicts = Integer.parseInt(comp.getString("numOfExtDicts"));
+		String[] externalDictPath = comp.getString("externalDictPath").split(
+				",");
+		String[] similarityMeasureExtLookup = comp.getString(
+				"similarityMeasureExtLookup").split(",");
+		String[] thresholdStrings = comp.getString(
+				"similarityThresholdExtLookup").split(",");
+		double[] similarityThresholdExtLookup = new double[thresholdStrings.length];
+		for (int i = 0; i < thresholdStrings.length; i++)
+			similarityThresholdExtLookup[i] = Double
+					.valueOf(thresholdStrings[i]);
+
 		String gazetteerFilePath = comp.getString("gazetteerFilePath");
+		String similarityMeasureAlignmentLookup = comp
+				.getString("similarityMeasureAlignmentLookup");
+		double similarityThresholdAlignmentLookup = Double.parseDouble(comp
+				.getString("similarityThresholdAlignmentLookup"));
+
 		String delimiter = comp.getString("delimiter");
-		Boolean delimiterSwitchOff = Boolean.valueOf(comp
+		boolean delimiterSwitchOff = Boolean.valueOf(comp
 				.getString("delimiterSwitchOff"));
 		int nGramSize = Integer.parseInt(comp.getString("nGramSize"));
-		Boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
+		boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
 				.getString("ignoreDuplicateNgrams"));
-		String similarityMeasureLookup = comp.getString("similarityMeasureLookup");
-		double similarityThresholdLookup = Double.parseDouble(comp
-				.getString("similarityThresholdLookup"));
-		
-		String similarityMeasureGazetteerCreation = comp.getString("similarityMeasureGazetteerCreation");
-		double similarityThresholdGazetteerCreation = Double.parseDouble(comp
-				.getString("similarityThresholdGazetteerCreation"));
-		
+
 		String chunkerModelPath = comp.getString("chunkerModelPath");
+
 		this.direction = comp.getString("direction");
 
-		Boolean isWN = Boolean.valueOf(comp.getString("isWN"));
+		boolean isWN = Boolean.valueOf(comp.getString("isWN"));
 		String WNRelations = comp.getString("WNRelations");
-		Boolean isWNCollapsed = Boolean.valueOf(comp.getString("isWNCollapsed"));
-		Boolean useFirstSenseOnlyLeft = Boolean.valueOf(comp.getString("useFirstSenseOnlyLeft"));
-		Boolean useFirstSenseOnlyRight = Boolean.valueOf(comp.getString("useFirstSenseOnlyRight"));
+		boolean isWNCollapsed = Boolean
+				.valueOf(comp.getString("isWNCollapsed"));
+		boolean useFirstSenseOnlyLeft = Boolean.valueOf(comp
+				.getString("useFirstSenseOnlyLeft"));
+		boolean useFirstSenseOnlyRight = Boolean.valueOf(comp
+				.getString("useFirstSenseOnlyRight"));
 		String wnPath = comp.getString("wnPath");
-		
-		this.aligner = new NemexAligner(gazetteerFilePath, externalDictPath, delimiter,
-				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams, similarityMeasureLookup,
-				similarityMeasureGazetteerCreation, similarityThresholdLookup, similarityThresholdGazetteerCreation, chunkerModelPath,
-				direction, isWN, WNRelations, isWNCollapsed, useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath);
 
-		
+		this.aligner = new NemexAligner(isBOW, isBOL, isBOChunks,
+				numOfExtDicts, externalDictPath, similarityMeasureExtLookup,
+				similarityThresholdExtLookup, gazetteerFilePath,
+				similarityMeasureAlignmentLookup,
+				similarityThresholdAlignmentLookup, delimiter,
+				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams,
+				chunkerModelPath, direction, isWN, WNRelations, isWNCollapsed,
+				useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath);
+
 	}
 
 	public int getNumOfFeats() {
@@ -130,39 +154,40 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 			if (null != tView && null != hView) {
 				Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
+
 				int tChunkNum = tChunks.size();
 
 				if (0 == tChunkNum) {
-					logger.info("No chunks found for T");
+					logger.warning("No chunks found for T");
 				}
 
 				Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 				int hChunkNum = hChunks.size();
 
 				if (0 == hChunkNum) {
-					logger.info("No chunks found for H");
+					logger.warning("No chunks found for H");
 				}
 
-				if (direction == "HtoT") {
-					Collection<Link> hLinks = JCasUtil
-							.select(hView, Link.class);
+				scoresVector
+						.addAll(calculateSimilarity(tView, hView, direction));
 
-					if (hLinks.size() > 0) {
-						scoresVector.addAll(calculateSimilarity(tView, hLinks,
-								tChunkNum, hChunkNum));
-					}
-
-				}
-
-				else {
-					Collection<Link> tLinks = JCasUtil
-							.select(tView, Link.class);
-
-					if (tLinks.size() > 0) {
-						scoresVector.addAll(calculateSimilarity(hView, tLinks,
-								tChunkNum, hChunkNum));
-					}
-				}
+				/*
+				 * if (direction == "HtoT") { Collection<Link> hLinks = JCasUtil
+				 * .select(hView, Link.class);
+				 * 
+				 * if (hLinks.size() > 0) {
+				 * scoresVector.addAll(calculateSimilarity(tView, hLinks,
+				 * tChunkNum, hChunkNum)); }
+				 * 
+				 * }
+				 * 
+				 * else { Collection<Link> tLinks = JCasUtil .select(tView,
+				 * Link.class);
+				 * 
+				 * if (tLinks.size() > 0) {
+				 * scoresVector.addAll(calculateSimilarity(hView, tLinks,
+				 * tChunkNum, hChunkNum)); } }
+				 */
 				String task = JCasUtil.select(cas, EntailmentMetadata.class)
 						.iterator().next().getTask();
 				if (null == task) {
@@ -227,33 +252,213 @@ public class NemexAlignerScoring implements ScoringComponent {
 	 *         2) the ratio between the number of overlapping tokens and the
 	 *         number of tokens in T; 3) the product of the above two
 	 */
-	protected Vector<Double> calculateSimilarity(JCas view,
-			Collection<Link> links, int tSize, int hSize) {
-		double sum = 0.0d;
+
+	protected Vector<Double> calculateSimilarity(JCas tView, JCas hView,
+			String direction) {
+
+		HashMap<String, Integer> tWordsMap = new HashMap<String, Integer>();
+		HashMap<String, Integer> tPosMap = new HashMap<String, Integer>();
+
+		HashMap<String, Integer> hWordsMap = new HashMap<String, Integer>();
+		HashMap<String, Integer> hPosMap = new HashMap<String, Integer>();
+
+		Collection<Token> tTokens = JCasUtil.select(tView, Token.class);
+		int numOfTTokens = tTokens.size();
+		int numOfTContentWords = 0;
+		int numOfTVerbs = 0;
+		int numOfTProperNouns = 0;
+
+		Collection<Token> hTokens = JCasUtil.select(tView, Token.class);
+		int numOfHTokens = hTokens.size();
+		
+		int numOfHContentWords = 0;
+		int numOfHVerbs = 0;
+		int numOfHProperNouns = 0;
+
+		Set<String> contentTags = new HashSet<String>(Arrays.asList("NN",
+				"NNS", "NNP", "NNPS", "VB", "VBG", "VBD", "VBN", "VBP", "VBZ",
+				"JJ", "JJR", "JJS"));
+
+		Set<String> verbTags = new HashSet<String>(Arrays.asList("VB", "VBG",
+				"VBD", "VBN"));
+
+		Set<String> properNounTags = new HashSet<String>(Arrays.asList("NNP",
+				"NNPS"));
+
+		for(final Iterator<Token> tIter = tTokens.iterator(); tIter.hasNext();)
+		{
+			Token t =tIter.next();
+			if(contentTags.contains(t.getPos().getPosValue()))
+				numOfTContentWords++;
+			if(verbTags.contains(t.getPos().getPosValue()))
+				numOfTVerbs++;
+			if(properNounTags.contains(t.getPos().getPosValue()))
+				numOfTProperNouns++;
+				
+		}
+		
+		for(final Iterator<Token> hIter = hTokens.iterator(); hIter.hasNext();)
+		{
+			Token t =hIter.next();
+			if(contentTags.contains(t.getPos().getPosValue()))
+				numOfHContentWords++;
+			if(verbTags.contains(t.getPos().getPosValue()))
+				numOfHVerbs++;
+			if(properNounTags.contains(t.getPos().getPosValue()))
+				numOfHProperNouns++;
+				
+		}
+		
+		
+		Collection<Link> links = null;
+
+		if (direction == "HtoT")
+			links = JCasUtil.select(hView, Link.class);
+		else
+			links = JCasUtil.select(tView, Link.class);
 
 		for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
 			Link link = iter.next();
+			int hStartOffset = link.getHSideTarget().getBegin();
+			int hEndOffset = link.getHSideTarget().getEnd();
+			int tStartOffset = link.getTSideTarget().getBegin();
+			int tEndOffset = link.getTSideTarget().getEnd();
 
-			/*JCas target = null;
+			Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
+					hView, Token.class, hStartOffset, hEndOffset);
 
-			if(direction == "HtoT")
-				target = (JCas) link.getTSideTarget().getView();
-			else
-				target = (JCas) link.getHSideTarget().getView();
+			Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
+					hView, Token.class, tStartOffset, tEndOffset);
 
-			if (target.equals(view)) {*/
-				sum += 1;
-			/*} else
-				continue;*/
+			addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
+			addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
 
 		}
 
-		Vector<Double> returnValue = new Vector<Double>();
-		returnValue.add(sum / hSize);
-		returnValue.add(sum / tSize);
-		returnValue.add(sum * sum / hSize / tSize);
+		Vector<Double> returnValue = null;
+		if (direction == "TtoH")
+			returnValue = calculateOverlap(tWordsMap, tPosMap, new String[] {
+					"word", "contentWord", "verb", "properNoun" }, new int[] {
+					numOfTTokens, numOfTContentWords, numOfTVerbs,
+					numOfTProperNouns }, contentTags, verbTags, properNounTags);
+		else
+			returnValue = calculateOverlap(hWordsMap, hPosMap, new String[] {
+					"word", "contentWord", "verb", "properNoun" }, new int[] {
+					numOfHTokens, numOfHContentWords, numOfHVerbs,
+					numOfHProperNouns }, contentTags, verbTags, properNounTags);
+
+		/*
+		 * double wordOverlap = calculateOverlap(tWordsMap, hWordsMap, "word");
+		 * double contentWordOverlap = calculateOverlap(tPosMap, hPosMap,
+		 * "contentWord"); double verbOverlap = calculateOverlap(tPosMap,
+		 * hPosMap, "verb"); double properNounOverlap =
+		 * calculateOverlap(tPosMap, hPosMap, "properNoun");
+		 * 
+		 * 
+		 * returnValue.add(wordOverlap); returnValue.add(contentWordOverlap);
+		 * returnValue.add(verbOverlap); returnValue.add(properNounOverlap);
+		 */
+
 		return returnValue;
+
 	}
+
+	private void addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
+			HashMap<String, Integer> posMap,
+			Collection<Token> hLinkCoveredTokens) {
+		for (final Iterator<Token> tokensIter = hLinkCoveredTokens.iterator(); tokensIter
+				.hasNext();) {
+			Token token = tokensIter.next();
+			String curToken = token.getCoveredText().toLowerCase();
+			String curPOS = token.getPos().getPosValue();
+
+			if (wordsMap.containsKey(curToken)) {
+				wordsMap.put(curToken, wordsMap.get(curToken) + 1);
+			} else
+				wordsMap.put(curToken, 1);
+
+			if (posMap.containsKey(curPOS)) {
+				posMap.put(curPOS, posMap.get(curPOS) + 1);
+			} else
+				posMap.put(curPOS, 1);
+
+		}
+
+	}
+
+	private Vector<Double> calculateOverlap(HashMap<String, Integer> wordsMap,
+			HashMap<String, Integer> posMap, String[] overlaps, int[] num,
+			Set<String> contentTags, Set<String> verbTags,
+			Set<String> properNounTags) {
+
+		Vector<Double> overlapScore = new Vector<Double>();
+
+		for (int i = 0; i < overlaps.length; i++) {
+
+			String overlapType = overlaps[i];
+			double overlap = 0.0;
+
+			if (overlapType.equalsIgnoreCase("word")) {
+				for (Map.Entry<String, Integer> entry : wordsMap.entrySet()) {
+					overlap += entry.getValue();
+				}
+			}
+
+			else if (overlapType.equalsIgnoreCase("contentWord")) {
+
+				for (Map.Entry<String, Integer> entry : posMap.entrySet()) {
+					if (contentTags.contains(entry.getKey()))
+						overlap += entry.getValue();
+				}
+			}
+
+			else if (overlapType.equalsIgnoreCase("verb")) {
+
+				for (Map.Entry<String, Integer> entry : posMap.entrySet()) {
+					if (verbTags.contains(entry.getKey()))
+						overlap += entry.getValue();
+				}
+			}
+
+			else if (overlapType.equalsIgnoreCase("properNoun")) {
+
+				for (Map.Entry<String, Integer> entry : posMap.entrySet()) {
+					if (properNounTags.contains(entry.getKey()))
+						overlap += entry.getValue();
+				}
+			}
+
+			if(overlap!=0.0 && num[i]!=0)
+				overlap = overlap / num[i];
+			else
+				overlap = 0.0;
+			overlapScore.add(overlap);
+
+		}
+		
+		return overlapScore;
+	}
+
+	/*
+	 * protected Vector<Double> calculateSimilarity(JCas view, Collection<Link>
+	 * links, int tSize, int hSize) { double sum = 0.0d;
+	 * 
+	 * for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
+	 * Link link = iter.next();
+	 * 
+	 * JCas target = null;
+	 * 
+	 * if(direction == "HtoT") target = (JCas) link.getTSideTarget().getView();
+	 * else target = (JCas) link.getHSideTarget().getView();
+	 * 
+	 * if (target.equals(view)) { sum += 1; } else continue;
+	 * 
+	 * }
+	 * 
+	 * Vector<Double> returnValue = new Vector<Double>(); returnValue.add(sum /
+	 * hSize); returnValue.add(sum / tSize); returnValue.add(sum * sum / hSize /
+	 * tSize); return returnValue; }
+	 */
 
 	/**
 	 * check whether the task is IE

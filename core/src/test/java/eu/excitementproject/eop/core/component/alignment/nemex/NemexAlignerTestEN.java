@@ -91,11 +91,12 @@ public class NemexAlignerTestEN {
 
 			logger.info("Initialize the Nemex Aligner");
 
-			aligner = new NemexAligner(
+			aligner = new NemexAligner(false, false, true, 1,
+					new String[] { "src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt"},
+					new String[] { "DICE_SIMILARITY_MEASURE"}, new double[]{0.7},
 					"src/test/resources/gazetteer/nemexAligner.txt",
-					"src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt",
-					"#", true, 3, false, "DICE_SIMILARITY_MEASURE",
-					"DICE_SIMILARITY_MEASURE", 0.8, 0.8,
+					"DICE_SIMILARITY_MEASURE", 0.8,
+					"#", true, 3, false, 
 					"src/main/resources/chunker-model/en-chunker.bin", "TtoH",
 					true, "HYPERNYM,SYNONYM,PART_HOLONYM", true, false, false,
 					"src/main/resources/ontologies/EnglishWordNet-dict/");
