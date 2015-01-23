@@ -57,7 +57,7 @@
 	
 	 	<!-- TreeTagger related dependencies --> 
 	<!-- You need to install TreeTagger;  please read /tl/src/scripts/treetagger/README.txt, and follow the instructions --> 
-    <!-- 
+      <!--
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
@@ -78,7 +78,7 @@
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
      		<version>20101115.0</version>
     	</dependency>
--->
+    	-->
     		<!-- end of TreeTagger related dependencies -->
   </dependencies>
   
