@@ -51,6 +51,8 @@ public class EOPRunner {
 	private String resultsFile = null;
 	private String xmlResultsFile = null;
 
+	private String outputDir = "./";
+	
 	@SuppressWarnings("unused")
 	private String language = "EN";
 	
@@ -94,6 +96,16 @@ public class EOPRunner {
 			parser.parseArgument(args);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		// make the output directory if given
+		if (! option.output.isEmpty()) {
+			outputDir = option.output;
+
+			File dir = new File(outputDir);
+			if (! dir.exists() || !dir.isDirectory()) {
+				dir.mkdirs();
+			}
 		}
 	}
 
@@ -238,7 +250,7 @@ public class EOPRunner {
 //				hasGoldLabel = OutputUtils.getGoldLabel(cas);
 				
 				if (visualizer != null) {
-					OutputUtils.makeTraceHTML(teDecision, cas, option.output, visualizer);
+					OutputUtils.makeTraceHTML(teDecision, cas, outputDir, visualizer);
 				}
 			}
 			writer.close();
@@ -277,6 +289,48 @@ public class EOPRunner {
 	}
 
 	
+
+	/**
+	 * Run the platform on a single test/hypothesis pair
+	 * 	 	
+	 * @param option -- command line arguments
+	 */
+	public void runEOPSinglePair() {
+		
+		logger.info("Text: " + option.text);
+		logger.info("Hypothesis: " + option.hypothesis);
+		
+		JCas aJCas = lapRunner.runLAP(option.text, option.hypothesis);
+
+		if (option.results != null) {
+			resultsFile = option.results;
+			xmlResultsFile = option.results.replaceAll(".txt$", ".xml");
+		} else {
+			resultsFile = outputDir + "/" + configFile.getName() + "_results.txt";
+			xmlResultsFile = outputDir + "/" + configFile.getName() + "_results.xml";
+		}		
+		
+		try {
+			TEDecision teDecision = eda.process(aJCas);
+			logger.info("T/H pair processing result: " + teDecision.getDecision() + " with confidence " + teDecision.getConfidence());
+			OutputUtils.makeSinglePairXML(teDecision, aJCas, xmlResultsFile, option.language);
+			
+			if (visualizer != null) {
+				OutputUtils.makeTraceHTML(teDecision, aJCas, outputDir, visualizer);
+			}
+		} catch (EDAException e) {
+			System.err.println("Problem running the EDA");
+			e.printStackTrace();
+		} catch (ComponentException e) {
+			System.err.println("Problem running a component of the EDA");
+			e.printStackTrace();
+		} 
+	}
+
+	
+	/**
+	 * Score the results relative to the given gold standard
+	 */
 	public void scoreResults() {
 
 		String availableResultsFile = resultsFile;
@@ -311,36 +365,6 @@ public class EOPRunner {
 		logger.info("Evaluation file: " + target.toString());
 	}
 	
-	
-
-	/**
-	 * Run the platform on a single test/hypothesis pair
-	 * 	 	
-	 * @param option -- command line arguments
-	 */
-	public void runEOPSinglePair() {
-		
-		logger.info("Text: " + option.text);
-		logger.info("Hypothesis: " + option.hypothesis);
-		
-		JCas aJCas = lapRunner.runLAP(option.text, option.hypothesis);
-		try {
-			TEDecision te = eda.process(aJCas);
-			logger.info("T/H pair processing result: " + te.getDecision() + " with confidence " + te.getConfidence());
-			OutputUtils.makeSinglePairXML(te, aJCas, option.output, option.language);
-			if (visualizer != null) {
-				OutputUtils.makeTraceHTML(te, aJCas, option.output, visualizer);
-			}
-		} catch (EDAException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ComponentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-	}
-		
-	
 	/**
 	 * When the command line arguments could not be parsed, show the help
 	 * 
@@ -367,6 +391,7 @@ public class EOPRunner {
 				initializeConfigFile();
 			
 			setLanguage();
+
 			
 			if (option.trace) 
 				initializeVisualizer();
@@ -416,11 +441,7 @@ public class EOPRunner {
 				if (! option.text.isEmpty()) {
 					runEOPSinglePair();					
 				} else {
-					if (option.output.isEmpty()) {
-						runEOPTest(testDir, "./");
-					} else {
-						runEOPTest(testDir,option.output);
-					}
+					runEOPTest(testDir,outputDir);
 				}
 			}
 			

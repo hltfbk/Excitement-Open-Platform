@@ -106,10 +106,8 @@ public class OutputUtils {
 	}
 	
 	
-	public static void makeSinglePairXML(TEDecision decision, JCas aJCas, String outDir, String lang) {
-		
-		String xmlResultsFile = outDir + "/results.xml";
-		
+	public static void makeSinglePairXML(TEDecision decision, JCas aJCas, String xmlResultsFile, String lang) {
+			
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:makeSinglePairXML");
 		
 		try {
@@ -167,6 +165,14 @@ public class OutputUtils {
 		}
 	}
 
+	/**
+	 * Produce the html that shows the alignment between the text and hypothesis (if an alignment EDA was used to produce the decision)
+	 * 
+	 * @param te -- the entailment decision as a TEDecision object
+	 * @param aJCas -- a CAS object with the pair that was analyzed
+	 * @param outDir -- output directory for the entire processing. The html file created will be but in <outDir>/trace
+	 * @param vis -- visualizer
+	 */
 	public static void makeTraceHTML(TEDecision te, JCas aJCas, String outDir, Visualizer vis) {
 
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:makeTraceHTML");
