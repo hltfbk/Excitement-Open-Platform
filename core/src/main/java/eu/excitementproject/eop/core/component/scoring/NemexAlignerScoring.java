@@ -34,7 +34,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 	/**
 	 * the number of features
 	 */
-	private int numOfFeats = 7;
+	private int numOfFeats = 8;
 	private NemexAligner aligner;
 	private String direction;
 	public final static Logger logger = Logger
@@ -346,18 +346,6 @@ public class NemexAlignerScoring implements ScoringComponent {
 					"word", "contentWord", "verb", "properNoun" }, new int[] {
 					numOfHTokens, numOfHContentWords, numOfHVerbs,
 					numOfHProperNouns }, contentTags, verbTags, properNounTags);
-
-		/*
-		 * double wordOverlap = calculateOverlap(tWordsMap, hWordsMap, "word");
-		 * double contentWordOverlap = calculateOverlap(tPosMap, hPosMap,
-		 * "contentWord"); double verbOverlap = calculateOverlap(tPosMap,
-		 * hPosMap, "verb"); double properNounOverlap =
-		 * calculateOverlap(tPosMap, hPosMap, "properNoun");
-		 * 
-		 * 
-		 * returnValue.add(wordOverlap); returnValue.add(contentWordOverlap);
-		 * returnValue.add(verbOverlap); returnValue.add(properNounOverlap);
-		 */
 
 		return returnValue;
 
