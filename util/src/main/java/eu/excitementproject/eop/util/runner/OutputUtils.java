@@ -76,7 +76,7 @@ public class OutputUtils {
 			//BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			
 			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
 			
 			String line = null, id;
 			String[] entDec;
@@ -113,7 +113,7 @@ public class OutputUtils {
 		try {
 			
 			OutputStream out = Files.newOutputStream(Paths.get(xmlResultsFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
 			
 			writer.write("<entailment-corpus lang=\"" + lang + "\">\n");
 			writer.write("  <pair id=\"1\" entailment=\"" + decision.getDecision().name() + "\" benchmark=\"N/A\" confidence=\"" + decision.getConfidence() + "\" task=\"EOP test\">\n");
@@ -192,7 +192,7 @@ public class OutputUtils {
 			TEDecisionWithAlignment decision = (TEDecisionWithAlignment) te;
 			
 			OutputStream out = Files.newOutputStream(Paths.get(traceFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));			
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));			
 			writer.write(vis.generateHTML(decision));
 			writer.close();
 			out.close();

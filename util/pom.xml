@@ -78,7 +78,7 @@
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
      		<version>20101115.0</version>
     	</dependency>
-    	-->
+  	-->
     		<!-- end of TreeTagger related dependencies -->
   </dependencies>
   
