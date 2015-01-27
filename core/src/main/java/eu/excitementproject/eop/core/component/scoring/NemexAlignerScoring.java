@@ -241,19 +241,6 @@ public class NemexAlignerScoring implements ScoringComponent {
 	 * } return linkSet; }
 	 */
 
-	/**
-	 * Calculate the similarity between two bags of tokens
-	 * 
-	 * @param tBag
-	 *            the bag of tokens of T stored in a HashMap
-	 * @param hBag
-	 *            the bag of tokens of H stored in a HashMap
-	 * @return a vector of double values, which contains: 1) the ratio between
-	 *         the number of overlapping tokens and the number of tokens in H;
-	 *         2) the ratio between the number of overlapping tokens and the
-	 *         number of tokens in T; 3) the product of the above two
-	 */
-
 	protected Vector<Double> calculateSimilarity(JCas tView, JCas hView,
 			String direction) {
 
@@ -269,9 +256,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 		int numOfTVerbs = 0;
 		int numOfTProperNouns = 0;
 
-		Collection<Token> hTokens = JCasUtil.select(tView, Token.class);
+		Collection<Token> hTokens = JCasUtil.select(hView, Token.class);
 		int numOfHTokens = hTokens.size();
-		
 		int numOfHContentWords = 0;
 		int numOfHVerbs = 0;
 		int numOfHProperNouns = 0;
@@ -325,11 +311,12 @@ public class NemexAlignerScoring implements ScoringComponent {
 			int tStartOffset = link.getTSideTarget().getBegin();
 			int tEndOffset = link.getTSideTarget().getEnd();
 
+			Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
+					tView, Token.class, tStartOffset, tEndOffset);
+			
 			Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
 					hView, Token.class, hStartOffset, hEndOffset);
-
-			Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
-					hView, Token.class, tStartOffset, tEndOffset);
+			
 
 			addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
 			addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
@@ -354,8 +341,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 	private void addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
 			HashMap<String, Integer> posMap,
-			Collection<Token> hLinkCoveredTokens) {
-		for (final Iterator<Token> tokensIter = hLinkCoveredTokens.iterator(); tokensIter
+			Collection<Token> linkCoveredTokens) {
+		for (final Iterator<Token> tokensIter = linkCoveredTokens.iterator(); tokensIter
 				.hasNext();) {
 			Token token = tokensIter.next();
 			String curToken = token.getCoveredText().toLowerCase();
