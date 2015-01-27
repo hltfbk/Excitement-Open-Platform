@@ -351,17 +351,17 @@ public class NemexAligner implements AlignmentComponent {
 					EntryInfo curOffset = new EntryInfo(view, curStartOffset,
 							curEndOffset, curPOS, false);
 
-					if (entryMap.containsValue(curLemma)) {
-						offsets = entryInvIndex.get(curLemma);
+					if (entryMap.containsValue(curLemma.toLowerCase())) {
+						offsets = entryInvIndex.get(curLemma.toLowerCase());
 					} else {
 						index++;
-						entryMap.put(index, curLemma);
+						entryMap.put(index, curLemma.toLowerCase());
 					}
 
 					totalNumOfGazetteerEntries++;
 					offsets.add(curOffset);
 
-					entryInvIndex.put(curLemma, offsets);
+					entryInvIndex.put(curLemma.toLowerCase(), offsets);
 
 					if (isWN) {
 
