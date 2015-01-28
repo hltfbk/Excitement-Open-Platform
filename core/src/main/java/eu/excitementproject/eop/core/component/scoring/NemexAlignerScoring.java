@@ -34,7 +34,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 	/**
 	 * the number of features
 	 */
-	private int numOfFeats = 4;
+	private int numOfFeats = 8;
 	private NemexAligner aligner;
 	private String direction;
 	public final static Logger logger = Logger
@@ -189,19 +189,19 @@ public class NemexAlignerScoring implements ScoringComponent {
 				 * scoresVector.addAll(calculateSimilarity(hView, tLinks,
 				 * tChunkNum, hChunkNum)); } }
 				 */
-//				String task = JCasUtil.select(cas, EntailmentMetadata.class)
-//						.iterator().next().getTask();
-//				if (null == task) {
-//					scoresVector.add(0d);
-//					scoresVector.add(0d);
-//					scoresVector.add(0d);
-//					scoresVector.add(0d);
-//				} else {
-//					scoresVector.add(isTaskIE(task));
-//					scoresVector.add(isTaskIR(task));
-//					scoresVector.add(isTaskQA(task));
-//					scoresVector.add(isTaskSUM(task));
-//				}
+				String task = JCasUtil.select(cas, EntailmentMetadata.class)
+						.iterator().next().getTask();
+				if (null == task) {
+					scoresVector.add(0d);
+					scoresVector.add(0d);
+					scoresVector.add(0d);
+					scoresVector.add(0d);
+				} else {
+					scoresVector.add(isTaskIE(task));
+					scoresVector.add(isTaskIR(task));
+					scoresVector.add(isTaskQA(task));
+					scoresVector.add(isTaskSUM(task));
+				}
 
 			}
 
@@ -446,51 +446,51 @@ public class NemexAlignerScoring implements ScoringComponent {
 	 * @return 1: yes; 0: no.
 	 */
 	
-//	
-//	protected double isTaskIE(String task) {
-//		if (task.equalsIgnoreCase("IE")) {
-//			return 1;
-//		}
-//		return 0;
-//	}
-//
-//	/**
-//	 * check whether the task is IR
-//	 * 
-//	 * @param task
-//	 * @return 1: yes; 0: no.
-//	 */
-//	protected double isTaskIR(String task) {
-//		if (task.equalsIgnoreCase("IR")) {
-//			return 1;
-//		}
-//		return 0;
-//	}
-//
-//	/**
-//	 * check whether the task is QA
-//	 * 
-//	 * @param task
-//	 * @return 1: yes; 0: no.
-//	 */
-//	protected double isTaskQA(String task) {
-//		if (task.equalsIgnoreCase("QA")) {
-//			return 1;
-//		}
-//		return 0;
-//	}
-//
-//	/**
-//	 * check whether the task is SUM
-//	 * 
-//	 * @param task
-//	 * @return 1: yes; 0: no.
-//	 */
-//	protected double isTaskSUM(String task) {
-//		if (task.equalsIgnoreCase("SUM")) {
-//			return 1;
-//		}
-//		return 0;
-//	}
+	
+	protected double isTaskIE(String task) {
+		if (task.equalsIgnoreCase("IE")) {
+			return 1;
+		}
+		return 0;
+	}
+
+	/**
+	 * check whether the task is IR
+	 * 
+	 * @param task
+	 * @return 1: yes; 0: no.
+	 */
+	protected double isTaskIR(String task) {
+		if (task.equalsIgnoreCase("IR")) {
+			return 1;
+		}
+		return 0;
+	}
+
+	/**
+	 * check whether the task is QA
+	 * 
+	 * @param task
+	 * @return 1: yes; 0: no.
+	 */
+	protected double isTaskQA(String task) {
+		if (task.equalsIgnoreCase("QA")) {
+			return 1;
+		}
+		return 0;
+	}
+
+	/**
+	 * check whether the task is SUM
+	 * 
+	 * @param task
+	 * @return 1: yes; 0: no.
+	 */
+	protected double isTaskSUM(String task) {
+		if (task.equalsIgnoreCase("SUM")) {
+			return 1;
+		}
+		return 0;
+	}
 
 }

@@ -210,7 +210,8 @@ public class NemexClassificationEDA implements
 
 				initializeNemexComp(config);
 
-			} else {
+			} 
+			else {
 				try {
 					@SuppressWarnings("unchecked")
 					Class<? extends ScoringComponent> comp1 = (Class<? extends ScoringComponent>) Class
