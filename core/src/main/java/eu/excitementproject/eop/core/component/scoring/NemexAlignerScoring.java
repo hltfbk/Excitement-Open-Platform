@@ -305,10 +305,10 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		Collection<Link> links = null;
 
-		if (direction == "HtoT")
+		//if (direction == "HtoT")
 			links = JCasUtil.select(hView, Link.class);
-		else
-			links = JCasUtil.select(tView, Link.class);
+		//else
+			//links = JCasUtil.select(tView, Link.class);
 
 		if (links.size() == 0)
 			logger.warning("No alignment link found");

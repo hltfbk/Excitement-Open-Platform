@@ -957,14 +957,14 @@ public class NemexAligner implements AlignmentComponent {
 			}
 		}
 
-		if (direction == "HtoT") {
+		//if (direction == "HtoT") {
 			// Mark an alignment.Link and add it to the hypothesis view
 			Link link = new Link(hView);
 			link.setTSideTarget(textTarget);
 			link.setHSideTarget(hypoTarget);
 
 			// Set the link direction
-			link.setDirection(Direction.HtoT);
+			link.setDirection(Direction.Bidirection);
 
 			// Set strength according to the nemex-a threshold
 			link.setStrength(this.similarityThresholdAlignmentLookup);
@@ -980,33 +980,33 @@ public class NemexAligner implements AlignmentComponent {
 
 			// Add to index
 			link.addToIndexes();
-		}
+		//}
 
-		else {
-			// Mark an alignment.Link and add it to the hypothesis view
-			Link link = new Link(tView);
-			link.setTSideTarget(textTarget);
-			link.setHSideTarget(hypoTarget);
-
-			// Set the link direction
-			link.setDirection(Direction.TtoH);
-
-			// Set strength according to the nemex-a threshold
-			link.setStrength(this.similarityThresholdAlignmentLookup);
-
-			// Add the link information
-			link.setAlignerID("NemexA");
-			link.setAlignerVersion("1.0");
-			link.setLinkInfo("nemex-results");
-
-			// Mark begin and end according to the hypothesis target
-			link.setBegin(textTarget.getBegin());
-			link.setEnd(textTarget.getEnd());
-
-			// Add to index
-			link.addToIndexes();
-
-		}
+//		else {
+//			// Mark an alignment.Link and add it to the hypothesis view
+//			Link link = new Link(hView);
+//			link.setTSideTarget(textTarget);
+//			link.setHSideTarget(hypoTarget);
+//
+//			// Set the link direction
+//			link.setDirection(Direction.TtoH);
+//
+//			// Set strength according to the nemex-a threshold
+//			link.setStrength(this.similarityThresholdAlignmentLookup);
+//
+//			// Add the link information
+//			link.setAlignerID("NemexA");
+//			link.setAlignerVersion("1.0");
+//			link.setLinkInfo("nemex-results");
+//
+//			// Mark begin and end according to the hypothesis target
+//			link.setBegin(hypoTarget.getBegin());
+//			link.setEnd(hypoTarget.getEnd());
+//
+//			// Add to index
+//			link.addToIndexes();
+//
+//		}
 	}
 
 	@Override
