@@ -9,6 +9,7 @@ import org.uimafit.util.JCasUtil;
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.lap.dkpro.MaltParserEN;
+import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 //import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
@@ -26,8 +27,8 @@ public class NemexAlignerTestEN {
 
 			// prepare JCas
 
-			MaltParserEN tokenizer = null;
-			tokenizer = new MaltParserEN();
+			OpenNLPTaggerEN tokenizer = null;
+			tokenizer = new OpenNLPTaggerEN();
 
 			/*
 			 * JCas aJCas1 = tokenizer.generateSingleTHPairCAS(
@@ -91,13 +92,13 @@ public class NemexAlignerTestEN {
 
 			logger.info("Initialize the Nemex Aligner");
 
-			aligner = new NemexAligner(false, false, true, 1,
+			aligner = new NemexAligner(true, false, false, 1,
 					new String[] { "src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt"},
 					new String[] { "DICE_SIMILARITY_MEASURE"}, new double[]{0.7},
 					"src/test/resources/gazetteer/nemexAligner.txt",
 					"DICE_SIMILARITY_MEASURE", 0.8,
 					"#", true, 3, false, 
-					"src/main/resources/chunker-model/en-chunker.bin", "TtoH",
+					"src/main/resources/chunker-model/en-chunker.bin", "HtoT",
 					true, "HYPERNYM,SYNONYM,PART_HOLONYM", true, false, false,
 					"src/main/resources/ontologies/EnglishWordNet-dict/");
 			logger.info("Initialization finished");
@@ -108,9 +109,9 @@ public class NemexAlignerTestEN {
 
 			// Print the alignment of JCas pair
 
-			JCas textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
+			JCas hView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
 
-			for (Link link : JCasUtil.select(textView, Link.class)) {
+			for (Link link : JCasUtil.select(hView, Link.class)) {
 
 				logger.info(String.format("Text phrase: %s, "
 						+ "hypothesis phrase: %s, "

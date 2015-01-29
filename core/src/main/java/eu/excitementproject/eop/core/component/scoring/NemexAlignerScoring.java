@@ -141,13 +141,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 			aligner.annotate(cas);
 
 			JCas tView = null, hView = null;
-			try {
-				hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
-			} catch (CASException e) {
-				throw new AlignmentComponentException(
-						"Failed to access the hypothesis view", e);
-			}
-
+			
 			try {
 				tView = cas.getView(LAP_ImplBase.TEXTVIEW);
 
@@ -156,6 +150,14 @@ public class NemexAlignerScoring implements ScoringComponent {
 						"Failed to access the text view", e);
 			}
 
+			try {
+				hView = cas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+			} catch (CASException e) {
+				throw new AlignmentComponentException(
+						"Failed to access the hypothesis view", e);
+			}
+
+			
 			if (null != tView && null != hView) {
 
 				if (isBOChunks) {
@@ -305,18 +307,14 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		Collection<Link> links = null;
 
-		//if (direction == "HtoT")
-			links = JCasUtil.select(hView, Link.class);
-		//else
-			//links = JCasUtil.select(tView, Link.class);
-
+		links = JCasUtil.select(hView, Link.class);
+		
 		if (links.size() == 0)
 			logger.warning("No alignment link found");
 
 		for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
 			Link link = iter.next();
 			
-			//FSArray test = link.getTSideTarget().getTargetAnnotations();
 			
 			int tStartOffset = link.getTSideTarget().getBegin();
 			int tEndOffset = link.getTSideTarget().getEnd();
