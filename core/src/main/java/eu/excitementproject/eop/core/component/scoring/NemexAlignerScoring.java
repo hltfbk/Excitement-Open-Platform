@@ -1,5 +1,6 @@
 package eu.excitementproject.eop.core.component.scoring;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -263,7 +264,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 		int numOfHTokens = hTokens.size();
 		
 		if(numOfHTokens == 0) {
-			logger.warning("No tokens found for TEXT");
+			logger.warning("No tokens found for HYPOTHESIS");
 		}
 		
 		int numOfHContentWords = 0;
@@ -322,18 +323,30 @@ public class NemexAlignerScoring implements ScoringComponent {
 			int hStartOffset = link.getHSideTarget().getBegin();
 			int hEndOffset = link.getHSideTarget().getEnd();
 			
-			logger.info("Link direction: " +link.getDirection());
+			//logger.info("Link direction: " +link.getDirection());
 			logger.info("TStart: "+tStartOffset+", TEnd: "+ tEndOffset);
 			logger.info("HStart: "+hStartOffset+", HEnd: "+ hEndOffset);
 
-			Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
-					tView, Token.class, tStartOffset, tEndOffset);
+			Collection<Token> tLinkCoveredTokens = new ArrayList<Token>();
+			
+			for(final Iterator<Token> tIter = tTokens.iterator(); tIter.hasNext();)
+			{
+				Token curToken = tIter.next();
+				if(curToken.getBegin() >= tStartOffset && curToken.getEnd() <= tEndOffset)
+					tLinkCoveredTokens.add(curToken);
+			}
 
 			if (tLinkCoveredTokens.size() == 0)
 				logger.warning("No tokens covered under aligned data in TEXT.");
+			
+			Collection<Token> hLinkCoveredTokens = new ArrayList<Token>();
 
-			Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
-					hView, Token.class, hStartOffset, hEndOffset);
+			for(final Iterator<Token> hIter = hTokens.iterator(); hIter.hasNext();)
+			{
+				Token curToken = hIter.next();
+				if(curToken.getBegin() >= hStartOffset && curToken.getEnd() <= hEndOffset)
+					hLinkCoveredTokens.add(curToken);
+			}
 
 			if (hLinkCoveredTokens.size() == 0)
 				logger.warning("No tokens covered under aligned data in HYPOTHESIS.");

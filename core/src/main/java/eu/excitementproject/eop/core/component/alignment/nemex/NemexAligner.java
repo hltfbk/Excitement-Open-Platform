@@ -984,7 +984,7 @@ public class NemexAligner implements AlignmentComponent {
 
 		else {
 			// Mark an alignment.Link and add it to the hypothesis view
-			Link link = new Link(hView);
+			Link link = new Link(tView);
 			link.setTSideTarget(textTarget);
 			link.setHSideTarget(hypoTarget);
 
@@ -1000,8 +1000,8 @@ public class NemexAligner implements AlignmentComponent {
 			link.setLinkInfo("nemex-results");
 
 			// Mark begin and end according to the hypothesis target
-			link.setBegin(hypoTarget.getBegin());
-			link.setEnd(hypoTarget.getEnd());
+			link.setBegin(textTarget.getBegin());
+			link.setEnd(textTarget.getEnd());
 
 			// Add to index
 			link.addToIndexes();
