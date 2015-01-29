@@ -15,14 +15,14 @@ import org.apache.uima.jcas.JCas;
 
 public class EntryInfo {
 
-	JCas hypoView;
+	JCas view;
 	int startOffset; // inclusive
 	int endOffset; // exclusive
 	String tag; //POSTag
 	boolean extended;
 
-	public EntryInfo(JCas hView, int start, int end, String posTag, boolean ext) {
-		hypoView = hView;
+	public EntryInfo(JCas curView, int start, int end, String posTag, boolean ext) {
+		view = curView;
 		startOffset = start;
 		endOffset = end;
 		tag = posTag;
@@ -31,7 +31,7 @@ public class EntryInfo {
 	}
 
 	public JCas getHypothesisView() {
-		return hypoView;
+		return view;
 	}
 
 	public int getStartOffset() {

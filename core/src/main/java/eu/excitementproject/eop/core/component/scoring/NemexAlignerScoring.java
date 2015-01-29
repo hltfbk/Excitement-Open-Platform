@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.cas.FSArray;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
@@ -322,8 +321,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 			int hEndOffset = link.getHSideTarget().getEnd();
 			
 			//logger.info("Link direction: " +link.getDirection());
-			logger.info("TStart: "+tStartOffset+", TEnd: "+ tEndOffset);
-			logger.info("HStart: "+hStartOffset+", HEnd: "+ hEndOffset);
+			//logger.info("TStart: "+tStartOffset+", TEnd: "+ tEndOffset);
+			//logger.info("HStart: "+hStartOffset+", HEnd: "+ hEndOffset);
 
 			Collection<Token> tLinkCoveredTokens = new ArrayList<Token>();
 			

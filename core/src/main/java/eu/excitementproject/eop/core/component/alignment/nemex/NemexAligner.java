@@ -671,69 +671,53 @@ public class NemexAligner implements AlignmentComponent {
 			HashMap<Integer, String> queryMap,
 			HashMap<String, ArrayList<EntryInfo>> queryIndex) {
 
+		Map<String, EntryInfo> queries = new HashMap<String, EntryInfo>();
+		
 		String str = new String();
 		List<String> values = new ArrayList<String>();
 		Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
-
-		if (isBOW) {
-			for (Iterator<Token> iter = tokenAnnots.iterator(); iter.hasNext();) {
+		
+		for (Iterator<Token> iter = tokenAnnots.iterator(); iter.hasNext();) {
+		
+			
 				Token t = iter.next();
 				str = t.getCoveredText().toLowerCase();
 				int startOffset = t.getBegin();
 				int endOffset = t.getEnd();
-
-				try {
-					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
-							this.similarityMeasureAlignmentLookup,
-							this.similarityThresholdAlignmentLookup);
-
-					if (values.size() > 0) {
-						logger.info("Query text: " + str);
-						logger.info("Similar entry: " + values);
-						NemexType alignmentAnnot = addNemexAnnotation(view,
-								values, startOffset, endOffset);
-
-						addAlignmentLink(alignmentAnnot, view, startOffset,
-								endOffset, queryMap, queryIndex);
-					}
-				} catch (GazetteerNotLoadedException e) {
-					logger.info("Could not load the gazetteer");
-					e.printStackTrace();
+				
+				EntryInfo curQuery = new EntryInfo(view, startOffset, endOffset, null, false);
+				if (isBOW) 
+					queries.put(str, curQuery);
+				if(isBOL){
+					String lemma = t.getLemma().getValue();
+					queries.put(lemma, curQuery);
 				}
-
-			}
+				
+				
+//				try {
+//					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
+//							this.similarityMeasureAlignmentLookup,
+//							this.similarityThresholdAlignmentLookup);
+//
+//					if (values.size() > 0) {
+//						logger.info("Query text: " + str);
+//						logger.info("Similar entry: " + values);
+//						NemexType alignmentAnnot = addNemexAnnotation(view,
+//								values, startOffset, endOffset);
+//
+//						addAlignmentLink(alignmentAnnot, view, startOffset,
+//								endOffset, queryMap, queryIndex);
+//					}
+//				} catch (GazetteerNotLoadedException e) {
+//					logger.info("Could not load the gazetteer");
+//					e.printStackTrace();
+//				}
+//
+//			}
 
 		}
 
-		if (isBOL) {
-			for (Iterator<Token> iter = tokenAnnots.iterator(); iter.hasNext();) {
-				Token t = iter.next();
-				str = t.getLemma().getValue().toLowerCase();
-				int startOffset = t.getBegin();
-				int endOffset = t.getEnd();
-
-				try {
-					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
-							this.similarityMeasureAlignmentLookup,
-							this.similarityThresholdAlignmentLookup);
-
-					if (values.size() > 0) {
-						logger.info("Query text: " + str);
-						logger.info("Similar entry: " + values);
-						NemexType alignmentAnnot = addNemexAnnotation(view,
-								values, startOffset, endOffset);
-
-						addAlignmentLink(alignmentAnnot, view, startOffset,
-								endOffset, queryMap, queryIndex);
-					}
-				} catch (GazetteerNotLoadedException e) {
-					logger.info("Could not load the gazetteer");
-					e.printStackTrace();
-				}
-
-			}
-
-		}
+		
 
 		if (isBOChunks) {
 
@@ -778,7 +762,18 @@ public class NemexAligner implements AlignmentComponent {
 				chunkAnnot.addToIndexes();
 
 				str = str.toLowerCase();
-
+				EntryInfo curQuery = new EntryInfo(view, startOffset, endOffset, null, false);
+				queries.put(str, curQuery);
+			}
+		}
+		
+		Iterator<Map.Entry<String, EntryInfo>> queriesIter = queries.entrySet().iterator();
+		while(queriesIter.hasNext()) {
+		Map.Entry<String, EntryInfo> curQuery = queriesIter.next();
+		str = curQuery.getKey();
+		int startOffset = curQuery.getValue().getStartOffset();
+		int endOffset = curQuery.getValue().getEndOffset();
+		
 				try {
 					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
 							this.similarityMeasureAlignmentLookup,
@@ -799,7 +794,7 @@ public class NemexAligner implements AlignmentComponent {
 				}
 			}
 		}
-	}
+	
 
 	/**
 	 * This method adds nemex.NemexType annotation on queries.
