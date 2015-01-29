@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.cas.FSArray;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
@@ -37,6 +38,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 	private int numOfFeats = 11;
 	private NemexAligner aligner;
 	private String direction;
+	private boolean isBOChunks;
 	public final static Logger logger = Logger
 			.getLogger(NemexClassificationEDA.class.getName());
 
@@ -53,8 +55,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		boolean isBOW = Boolean.valueOf(comp.getString("isBOW"));
 		boolean isBOL = Boolean.valueOf(comp.getString("isBOL"));
-		boolean isBOChunks = Boolean.valueOf(comp.getString("isBOChunks"));
-		
+		this.isBOChunks = Boolean.valueOf(comp.getString("isBOChunks"));
+
 		int numOfExtDicts = Integer.parseInt(comp.getString("numOfExtDicts"));
 		String[] externalDictPath = comp.getString("externalDictPath").split(
 				",");
@@ -81,7 +83,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 				.getString("ignoreDuplicateNgrams"));
 
 		this.direction = comp.getString("direction");
-		
+
 		String chunkerModelPath = comp.getString("chunkerModelPath");
 
 		boolean isWN = Boolean.valueOf(comp.getString("isWN"));
@@ -154,21 +156,25 @@ public class NemexAlignerScoring implements ScoringComponent {
 			}
 
 			if (null != tView && null != hView) {
-				Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
 
-				int tChunkNum = tChunks.size();
+				if (isBOChunks) {
+					Collection<Chunk> tChunks = JCasUtil.select(tView,
+							Chunk.class);
 
-				if (0 == tChunkNum) {
-					logger.warning("No chunks found for T");
+					int tChunkNum = tChunks.size();
+
+					if (0 == tChunkNum) {
+						logger.warning("No chunks found for T");
+					}
+
+					Collection<Chunk> hChunks = JCasUtil.select(hView,
+							Chunk.class);
+					int hChunkNum = hChunks.size();
+
+					if (0 == hChunkNum) {
+						logger.warning("No chunks found for H");
+					}
 				}
-
-				Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
-				int hChunkNum = hChunks.size();
-
-				if (0 == hChunkNum) {
-					logger.warning("No chunks found for H");
-				}
-
 				scoresVector
 						.addAll(calculateSimilarity(tView, hView, direction));
 
@@ -205,7 +211,6 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 			}
 
-			
 		} catch (PairAnnotatorComponentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -245,12 +250,22 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		Collection<Token> tTokens = JCasUtil.select(tView, Token.class);
 		int numOfTTokens = tTokens.size();
+		
+		if(numOfTTokens == 0) {
+			logger.warning("No tokens found for TEXT");
+		}
+		
 		int numOfTContentWords = 0;
 		int numOfTVerbs = 0;
 		int numOfTProperNouns = 0;
 
 		Collection<Token> hTokens = JCasUtil.select(hView, Token.class);
 		int numOfHTokens = hTokens.size();
+		
+		if(numOfHTokens == 0) {
+			logger.warning("No tokens found for TEXT");
+		}
+		
 		int numOfHContentWords = 0;
 		int numOfHVerbs = 0;
 		int numOfHProperNouns = 0;
@@ -265,61 +280,64 @@ public class NemexAlignerScoring implements ScoringComponent {
 		Set<String> properNounTags = new HashSet<String>(Arrays.asList("NNP",
 				"NNPS"));
 
-		for(final Iterator<Token> tIter = tTokens.iterator(); tIter.hasNext();)
-		{
-			Token t =tIter.next();
-			if(contentTags.contains(t.getPos().getPosValue()))
+		for (final Iterator<Token> tIter = tTokens.iterator(); tIter.hasNext();) {
+			Token t = tIter.next();
+			if (contentTags.contains(t.getPos().getPosValue()))
 				numOfTContentWords++;
-			if(verbTags.contains(t.getPos().getPosValue()))
+			if (verbTags.contains(t.getPos().getPosValue()))
 				numOfTVerbs++;
-			if(properNounTags.contains(t.getPos().getPosValue()))
+			if (properNounTags.contains(t.getPos().getPosValue()))
 				numOfTProperNouns++;
-				
+
 		}
-		
-		for(final Iterator<Token> hIter = hTokens.iterator(); hIter.hasNext();)
-		{
-			Token t =hIter.next();
-			if(contentTags.contains(t.getPos().getPosValue()))
+
+		for (final Iterator<Token> hIter = hTokens.iterator(); hIter.hasNext();) {
+			Token t = hIter.next();
+			if (contentTags.contains(t.getPos().getPosValue()))
 				numOfHContentWords++;
-			if(verbTags.contains(t.getPos().getPosValue()))
+			if (verbTags.contains(t.getPos().getPosValue()))
 				numOfHVerbs++;
-			if(properNounTags.contains(t.getPos().getPosValue()))
+			if (properNounTags.contains(t.getPos().getPosValue()))
 				numOfHProperNouns++;
-				
+
 		}
-		
-		
+
 		Collection<Link> links = null;
 
 		if (direction == "HtoT")
 			links = JCasUtil.select(hView, Link.class);
 		else
 			links = JCasUtil.select(tView, Link.class);
-		
-		if(links.size() == 0)
+
+		if (links.size() == 0)
 			logger.warning("No alignment link found");
 
 		for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
 			Link link = iter.next();
-			int hStartOffset = link.getHSideTarget().getBegin();
-			int hEndOffset = link.getHSideTarget().getEnd();
+			
+			//FSArray test = link.getTSideTarget().getTargetAnnotations();
+			
 			int tStartOffset = link.getTSideTarget().getBegin();
 			int tEndOffset = link.getTSideTarget().getEnd();
+			int hStartOffset = link.getHSideTarget().getBegin();
+			int hEndOffset = link.getHSideTarget().getEnd();
+			
+			logger.info("Link direction: " +link.getDirection());
+			logger.info("TStart: "+tStartOffset+", TEnd: "+ tEndOffset);
+			logger.info("HStart: "+hStartOffset+", HEnd: "+ hEndOffset);
 
 			Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
 					tView, Token.class, tStartOffset, tEndOffset);
-			
-			if(tLinkCoveredTokens.size() == 0)
+
+			if (tLinkCoveredTokens.size() == 0)
 				logger.warning("No tokens covered under aligned data in TEXT.");
-			
-			
+
 			Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
 					hView, Token.class, hStartOffset, hEndOffset);
-			
-			if(hLinkCoveredTokens.size() == 0)
+
+			if (hLinkCoveredTokens.size() == 0)
 				logger.warning("No tokens covered under aligned data in HYPOTHESIS.");
-			
+
 			addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
 			addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
 
@@ -336,17 +354,13 @@ public class NemexAlignerScoring implements ScoringComponent {
 					"word", "contentWord", "verb", "properNoun" }, new int[] {
 					numOfHTokens, numOfHContentWords, numOfHVerbs,
 					numOfHProperNouns }, contentTags, verbTags, properNounTags);
-		
-		    
-		 
 
 		return returnValue;
 
 	}
 
 	private void addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
-			HashMap<String, Integer> posMap,
-			Collection<Token> linkCoveredTokens) {
+			HashMap<String, Integer> posMap, Collection<Token> linkCoveredTokens) {
 		for (final Iterator<Token> tokensIter = linkCoveredTokens.iterator(); tokensIter
 				.hasNext();) {
 			Token token = tokensIter.next();
@@ -409,14 +423,14 @@ public class NemexAlignerScoring implements ScoringComponent {
 				}
 			}
 
-			if(overlap!=0.0 && num[i]!=0)
+			if (overlap != 0.0 && num[i] != 0)
 				overlap = overlap / num[i];
 			else
 				overlap = 0.0;
 			overlapScore.add(overlap);
 
 		}
-		
+
 		return overlapScore;
 	}
 
@@ -439,19 +453,15 @@ public class NemexAlignerScoring implements ScoringComponent {
 	 * Vector<Double> returnValue = new Vector<Double>(); returnValue.add(sum /
 	 * hSize); returnValue.add(sum / tSize); returnValue.add(sum * sum / hSize /
 	 * tSize); return returnValue; }
-	 * 
-	 * 
 	 */
 
-	
 	/**
 	 * check whether the task is IE
 	 * 
 	 * @param task
 	 * @return 1: yes; 0: no.
 	 */
-	
-	
+
 	protected double isTaskIE(String task) {
 		if (task.equalsIgnoreCase("IE")) {
 			return 1;

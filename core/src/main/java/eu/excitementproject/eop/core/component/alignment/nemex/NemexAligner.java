@@ -936,8 +936,8 @@ public class NemexAligner implements AlignmentComponent {
 				tAnnots.set(0, ntype);
 
 				tg.setTargetAnnotations(tAnnots);
-				tg.setBegin(ntype.getBegin());
-				tg.setEnd(ntype.getEnd());
+				tg.setBegin(tStart);
+				tg.setEnd(tEnd);
 				tg.addToIndexes();
 
 				textTarget = tg;
@@ -950,8 +950,8 @@ public class NemexAligner implements AlignmentComponent {
 				FSArray hAnnots = new FSArray(hView, 1);
 				hAnnots.set(0, ntype);
 				tg.setTargetAnnotations(hAnnots);
-				tg.setBegin(ntype.getBegin());
-				tg.setEnd(ntype.getEnd());
+				tg.setBegin(hStart);
+				tg.setEnd(hEnd);
 				tg.addToIndexes();
 				hypoTarget = tg;
 			}
