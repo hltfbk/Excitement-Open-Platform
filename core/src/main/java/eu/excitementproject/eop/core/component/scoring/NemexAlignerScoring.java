@@ -34,7 +34,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 	/**
 	 * the number of features
 	 */
-	private int numOfFeats = 8;
+	private int numOfFeats = 11;
 	private NemexAligner aligner;
 	private String direction;
 	public final static Logger logger = Logger
@@ -205,14 +205,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 			}
 
-			/*
-			 * if(0 == hLinks.size()) {
-			 * logger.info("No Links found for Hypo view ");
-			 * 
-			 * scoresVector.add(0d); scoresVector.add(0d); scoresVector.add(0d);
-			 * 
-			 * }
-			 */
+			
 		} catch (PairAnnotatorComponentException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -303,6 +296,9 @@ public class NemexAlignerScoring implements ScoringComponent {
 			links = JCasUtil.select(hView, Link.class);
 		else
 			links = JCasUtil.select(tView, Link.class);
+		
+		if(links.size() == 0)
+			logger.warning("No alignment link found");
 
 		for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
 			Link link = iter.next();
@@ -314,10 +310,16 @@ public class NemexAlignerScoring implements ScoringComponent {
 			Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
 					tView, Token.class, tStartOffset, tEndOffset);
 			
+			if(tLinkCoveredTokens.size() == 0)
+				logger.warning("No tokens covered under aligned data in TEXT.");
+			
+			
 			Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
 					hView, Token.class, hStartOffset, hEndOffset);
 			
-
+			if(hLinkCoveredTokens.size() == 0)
+				logger.warning("No tokens covered under aligned data in HYPOTHESIS.");
+			
 			addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
 			addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
 
@@ -334,6 +336,9 @@ public class NemexAlignerScoring implements ScoringComponent {
 					"word", "contentWord", "verb", "properNoun" }, new int[] {
 					numOfHTokens, numOfHContentWords, numOfHVerbs,
 					numOfHProperNouns }, contentTags, verbTags, properNounTags);
+		
+		    
+		 
 
 		return returnValue;
 
