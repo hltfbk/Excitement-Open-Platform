@@ -643,11 +643,6 @@ public class NemexAligner implements AlignmentComponent {
 
 	}
 
-	/*
-	 * private String getQuery(String chunkerModelPath2) { // TODO
-	 * Auto-generated method stub return null; }
-	 */
-
 	/**
 	 * This method adds nemex.NemexType annotation on text queries.
 	 * 
@@ -668,81 +663,106 @@ public class NemexAligner implements AlignmentComponent {
 	 * @return
 	 */
 	private void annotateSubstring(JCas view,
-			HashMap<Integer, String> queryMap,
-			HashMap<String, ArrayList<EntryInfo>> queryIndex) {
+			HashMap<Integer, String> entryMap,
+			HashMap<String, ArrayList<EntryInfo>> entryIndex) {
 
-		Map<String, EntryInfo> queries = new HashMap<String, EntryInfo>();
+		Map<String, ArrayList<EntryInfo>> queriesIndex = new HashMap<String, ArrayList<EntryInfo>>();
 		
 		String str = new String();
 		List<String> values = new ArrayList<String>();
 		Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
-		
+
+		// Required for Chunking
+		List<String> tokenTextArray = new ArrayList<String>();
+		List<String> tagArray = new ArrayList<String>();
+		List<String> tokenLemmaArray = new ArrayList<String>();
+		List<Integer> tokenStartOffsetArray = new ArrayList<Integer>();
+		List<Integer> tokenEndOffsetArray = new ArrayList<Integer>();
+
 		for (Iterator<Token> iter = tokenAnnots.iterator(); iter.hasNext();) {
-		
-			
-				Token t = iter.next();
-				str = t.getCoveredText().toLowerCase();
-				int startOffset = t.getBegin();
-				int endOffset = t.getEnd();
+
+			Token token = (Token) iter.next();
+
+			String curToken = token.getCoveredText().toLowerCase();
+			String curPOS = token.getPos().getPosValue();
+			int curStartOffset = token.getBegin();
+			int curEndOffset = token.getEnd();
+
+			EntryInfo curQuery = new EntryInfo(view, curStartOffset,
+					curEndOffset, null, false);
+
+			if (isBOW) {
 				
-				EntryInfo curQuery = new EntryInfo(view, startOffset, endOffset, null, false);
-				if (isBOW) 
-					queries.put(str, curQuery);
-				if(isBOL){
-					String lemma = t.getLemma().getValue();
-					queries.put(lemma, curQuery);
+				ArrayList<EntryInfo> queries = new ArrayList<EntryInfo>();
+
+				if (queriesIndex.containsKey(curToken)) {
+					boolean flag = false;
+					queries = queriesIndex.get(curToken);
+					for (final Iterator<EntryInfo> entryIter = queries
+							.iterator(); entryIter.hasNext();) {
+						EntryInfo curEntry = entryIter.next();
+						if (curEntry.getStartOffset() == curStartOffset
+								&& curEntry.getEndOffset() == curEndOffset) {
+							flag = true;
+						}
+					}
+
+					if (flag == false) {
+						queries.add(curQuery);
+						queriesIndex.put(curToken, queries);
+					}
+
+				} else {
+					//queryId++;
+					//queryMap.put(queryId, curToken);
+					queries.add(curQuery);
+					queriesIndex.put(curToken, queries);
+
 				}
-				
-				
-//				try {
-//					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
-//							this.similarityMeasureAlignmentLookup,
-//							this.similarityThresholdAlignmentLookup);
-//
-//					if (values.size() > 0) {
-//						logger.info("Query text: " + str);
-//						logger.info("Similar entry: " + values);
-//						NemexType alignmentAnnot = addNemexAnnotation(view,
-//								values, startOffset, endOffset);
-//
-//						addAlignmentLink(alignmentAnnot, view, startOffset,
-//								endOffset, queryMap, queryIndex);
-//					}
-//				} catch (GazetteerNotLoadedException e) {
-//					logger.info("Could not load the gazetteer");
-//					e.printStackTrace();
-//				}
-//
-//			}
-
-		}
-
-		
-
-		if (isBOChunks) {
-
-			Token[] tokenAnnotsArray = tokenAnnots
-					.toArray(new Token[tokenAnnots.size()]);
-
-			int numOfTokens = tokenAnnotsArray.length;
-			String[] tokenTextArray = new String[numOfTokens];
-			String[] tagArray = new String[numOfTokens];
-			int[] tokenStartOffsetArray = new int[numOfTokens];
-			int[] tokenEndOffsetArray = new int[numOfTokens];
-
-			for (int tNum = 0; tNum < tokenAnnotsArray.length; tNum++) {
-				Token token = tokenAnnotsArray[tNum];
-
-				tokenTextArray[tNum] = token.getCoveredText();
-				tagArray[tNum] = token.getPos().getPosValue();
-				tokenStartOffsetArray[tNum] = token.getBegin();
-				tokenEndOffsetArray[tNum] = token.getEnd();
 
 			}
+			if (isBOL) {
+				String curLemma = token.getLemma().getValue().toLowerCase();
+				
+				ArrayList<EntryInfo> queries = new ArrayList<EntryInfo>();
 
-			logger.info("Token text and offsets obtained");
+				if (queriesIndex.containsKey(curLemma)) {
+					boolean flag = false;
+					queries = queriesIndex.get(curLemma);
+					for (final Iterator<EntryInfo> entryIter = queries
+							.iterator(); entryIter.hasNext();) {
+						EntryInfo curEntry = entryIter.next();
+						if (curEntry.getStartOffset() == curStartOffset
+								&& curEntry.getEndOffset() == curEndOffset) {
+							flag = true;
+						}
+					}
 
-			Span[] chunk = this.chunker.chunkAsSpans(tokenTextArray, tagArray);
+					if (flag == false) {
+						queries.add(curQuery);
+						queriesIndex.put(curLemma, queries);
+					}
+
+				} else {
+					queries.add(curQuery);
+					queriesIndex.put(curLemma, queries);
+
+				}
+			}
+
+			if (isBOChunks) {
+				tokenTextArray.add(curToken);
+				tagArray.add(curPOS);
+				tokenLemmaArray.add(token.getLemma().getValue());
+				tokenStartOffsetArray.add(curStartOffset);
+				tokenEndOffsetArray.add(curEndOffset);
+			}
+		}
+
+		if (isBOChunks) {
+			Span[] chunk = this.chunker.chunkAsSpans(
+					tokenTextArray.toArray(new String[tokenTextArray.size()]),
+					tagArray.toArray(new String[tagArray.size()]));
 
 			for (int i = 0; i < chunk.length; i++) {
 				int start = chunk[i].getStart();
@@ -751,42 +771,81 @@ public class NemexAligner implements AlignmentComponent {
 				for (int j = start; j < end; j++) {
 					if (str != "")
 						str += this.delimiter;
-					str += tokenTextArray[j];
+					str += tokenTextArray.get(j);
 				}
 
-				int startOffset = tokenStartOffsetArray[start];
-				int endOffset = tokenEndOffsetArray[end - 1];
+				int startOffset = tokenStartOffsetArray.get(start);
+				int endOffset = tokenEndOffsetArray.get(end - 1);
 
 				Chunk chunkAnnot = new Chunk(view, startOffset, endOffset);
 				chunkAnnot.setChunkValue(str);
 				chunkAnnot.addToIndexes();
 
 				str = str.toLowerCase();
-				EntryInfo curQuery = new EntryInfo(view, startOffset, endOffset, null, false);
-				queries.put(str, curQuery);
+
+				EntryInfo curQuery = new EntryInfo(view, startOffset,
+						endOffset, null, false);
+				
+				ArrayList<EntryInfo> queries = new ArrayList<EntryInfo>();
+
+				if (queriesIndex.containsKey(str)) {
+					boolean flag = false;
+					queries = queriesIndex.get(str);
+					for (final Iterator<EntryInfo> entryIter = queries
+							.iterator(); entryIter.hasNext();) {
+						EntryInfo curEntry = entryIter.next();
+						if (curEntry.getStartOffset() == startOffset
+								&& curEntry.getEndOffset() == endOffset) {
+							flag = true;
+						}
+					}
+
+					if (flag == false) {
+						queries.add(curQuery);
+						queriesIndex.put(str, queries);
+					}
+
+				} else {
+					queries.add(curQuery);
+					queriesIndex.put(str, queries);
+
+				}
 			}
+
 		}
+
+		Iterator<Map.Entry<String, ArrayList<EntryInfo>>> queriesIter = queriesIndex
+				.entrySet().iterator();
 		
-		Iterator<Map.Entry<String, EntryInfo>> queriesIter = queries.entrySet().iterator();
-		while(queriesIter.hasNext()) {
-		Map.Entry<String, EntryInfo> curQuery = queriesIter.next();
-		str = curQuery.getKey();
-		int startOffset = curQuery.getValue().getStartOffset();
-		int endOffset = curQuery.getValue().getEndOffset();
-		
+		while (queriesIter.hasNext()) {
+			
+			Map.Entry<String, ArrayList<EntryInfo>> curQuery = queriesIter
+					.next();
+			String query = curQuery.getKey();
+			ArrayList<EntryInfo> queryOffsets = curQuery.getValue();
+			
+			for (final Iterator<EntryInfo> iter = queryOffsets.iterator(); iter
+					.hasNext();) {
+				EntryInfo curOffset = iter.next();
+
+				JCas curView = curOffset.getView();
+				int startOffset = curOffset.getStartOffset();
+				int endOffset = curOffset.getEndOffset();
+				
+
 				try {
-					values = NEMEX_A.checkSimilarity(str, gazetteerFilePath,
+					values = NEMEX_A.checkSimilarity(query, gazetteerFilePath,
 							this.similarityMeasureAlignmentLookup,
 							this.similarityThresholdAlignmentLookup);
 
 					if (values.size() > 0) {
-						logger.info("Query text: " + str);
+						logger.info("Query text: " + query);
 						logger.info("Similar entry: " + values);
-						NemexType alignmentAnnot = addNemexAnnotation(view,
+						NemexType alignmentAnnot = addNemexAnnotation(curView,
 								values, startOffset, endOffset);
 
-						addAlignmentLink(alignmentAnnot, view, startOffset,
-								endOffset, queryMap, queryIndex);
+						addAlignmentLink(alignmentAnnot, curView, startOffset,
+								endOffset, entryMap, entryIndex);
 					}
 				} catch (GazetteerNotLoadedException e) {
 					logger.info("Could not load the gazetteer");
@@ -794,7 +853,7 @@ public class NemexAligner implements AlignmentComponent {
 				}
 			}
 		}
-	
+	}
 
 	/**
 	 * This method adds nemex.NemexType annotation on queries.
@@ -878,7 +937,7 @@ public class NemexAligner implements AlignmentComponent {
 
 				while (entryIter.hasNext()) {
 					EntryInfo entry = entryIter.next();
-					JCas view2 = entry.getHypothesisView();
+					JCas view2 = entry.getView();
 					int start2 = entry.getStartOffset();
 					int end2 = entry.getEndOffset();
 

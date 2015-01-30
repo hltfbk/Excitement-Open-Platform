@@ -30,7 +30,7 @@ public class EntryInfo {
 		
 	}
 
-	public JCas getHypothesisView() {
+	public JCas getView() {
 		return view;
 	}
 
