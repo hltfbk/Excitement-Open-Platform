@@ -791,6 +791,51 @@ public class NemexAligner implements AlignmentComponent {
 		List<Integer> tokenStartOffsetArray = new ArrayList<Integer>();
 		List<Integer> tokenEndOffsetArray = new ArrayList<Integer>();
 
+		if (isBOW) {
+			logger.info("Loading BOW gazetteer");
+
+			try {
+				NEMEX_A.loadNewGazetteer(
+						this.gazetteerFilePathAlignmentLookupBOW,
+						this.delimiterAlignmentLookupBOW,
+						this.delimiterSwitchOffAlignmentLookupBOW,
+						this.nGramSizeAlignmentLookupBOW,
+						this.ignoreDuplicateNgramsAlignmentLookupBOW);
+			} catch (Exception e) {
+				logger.error("Could not load BOW gazetteer");
+			}
+		}
+
+		if (isBOL) {
+			logger.info("Loading BOL gazetteer");
+
+			try {
+				NEMEX_A.loadNewGazetteer(
+						this.gazetteerFilePathAlignmentLookupBOL,
+						this.delimiterAlignmentLookupBOL,
+						this.delimiterSwitchOffAlignmentLookupBOL,
+						this.nGramSizeAlignmentLookupBOL,
+						this.ignoreDuplicateNgramsAlignmentLookupBOL);
+			} catch (Exception e) {
+				logger.error("Could not load BOL gazetteer");
+			}
+		}
+
+		if (isBOChunks) {
+			logger.info("Loading BOChunks gazetteer");
+
+			try {
+				NEMEX_A.loadNewGazetteer(
+						this.gazetteerFilePathAlignmentLookupBOChunks,
+						this.delimiterAlignmentLookupBOChunks,
+						this.delimiterSwitchOffAlignmentLookupBOChunks,
+						this.nGramSizeAlignmentLookupBOChunks,
+						this.ignoreDuplicateNgramsAlignmentLookupBOChunks);
+			} catch (Exception e) {
+				logger.error("Could not load BOChunks gazetteer");
+			}
+		}
+
 		for (Iterator<Token> iter = tokenAnnots.iterator(); iter.hasNext();) {
 
 			Token token = (Token) iter.next();
@@ -801,19 +846,6 @@ public class NemexAligner implements AlignmentComponent {
 			int curEndOffset = token.getEnd();
 
 			if (isBOW) {
-
-				logger.info("Loading BOW gazetteer");
-
-				try {
-					NEMEX_A.loadNewGazetteer(
-							this.gazetteerFilePathAlignmentLookupBOW,
-							this.delimiterAlignmentLookupBOW,
-							this.delimiterSwitchOffAlignmentLookupBOW,
-							this.nGramSizeAlignmentLookupBOW,
-							this.ignoreDuplicateNgramsAlignmentLookupBOW);
-				} catch (Exception e) {
-					logger.error("Could not load BOW gazetteer");
-				}
 
 				try {
 					values = NEMEX_A.checkSimilarity(curToken,
@@ -835,19 +867,9 @@ public class NemexAligner implements AlignmentComponent {
 					e.printStackTrace();
 				}
 
-				logger.info("Unloading BOW gazetteer");
-				NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOW);
 			}
 			if (isBOL) {
 				String curLemma = token.getLemma().getValue().toLowerCase();
-
-				logger.info("Loading BOL gazetteer");
-				NEMEX_A.loadNewGazetteer(
-						this.gazetteerFilePathAlignmentLookupBOL,
-						this.delimiterAlignmentLookupBOL,
-						this.delimiterSwitchOffAlignmentLookupBOL,
-						this.nGramSizeAlignmentLookupBOL,
-						this.ignoreDuplicateNgramsAlignmentLookupBOL);
 
 				try {
 					values = NEMEX_A.checkSimilarity(curLemma,
@@ -865,12 +887,10 @@ public class NemexAligner implements AlignmentComponent {
 								curEndOffset, entryMapBOL, entryInvIndexBOL);
 					}
 				} catch (GazetteerNotLoadedException e) {
-					logger.info("Could not load the gazetteer");
+					logger.info("BOL gazetteer is not loaded");
 					e.printStackTrace();
 				}
 
-				logger.info("Unloading BOL gazetteer");
-				NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOL);
 			}
 
 			if (isBOChunks) {
@@ -909,14 +929,6 @@ public class NemexAligner implements AlignmentComponent {
 
 				str = str.toLowerCase();
 
-				logger.info("Loading BOChunks gazetteer");
-				NEMEX_A.loadNewGazetteer(
-						this.gazetteerFilePathAlignmentLookupBOChunks,
-						this.delimiterAlignmentLookupBOChunks,
-						this.delimiterSwitchOffAlignmentLookupBOChunks,
-						this.nGramSizeAlignmentLookupBOChunks,
-						this.ignoreDuplicateNgramsAlignmentLookupBOChunks);
-
 				try {
 					values = NEMEX_A.checkSimilarity(str,
 							gazetteerFilePathAlignmentLookupBOChunks,
@@ -934,15 +946,22 @@ public class NemexAligner implements AlignmentComponent {
 								entryMapBOChunks, entryInvIndexBOChunks);
 					}
 				} catch (GazetteerNotLoadedException e) {
-					logger.info("Could not load the gazetteer");
+					logger.info("BOChunks gazetteer is not loaded");
 					e.printStackTrace();
 				}
 
-				logger.info("Unloading BOChunks gazetteer");
-				NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOChunks);
 			}
 
 		}
+
+		logger.info("Unloading BOW gazetteer");
+		NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOW);
+
+		logger.info("Unloading BOL gazetteer");
+		NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOL);
+
+		logger.info("Unloading BOChunks gazetteer");
+		NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOChunks);
 	}
 
 	/**
