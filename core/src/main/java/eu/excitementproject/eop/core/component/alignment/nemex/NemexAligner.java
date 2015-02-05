@@ -9,6 +9,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -105,7 +108,9 @@ public class NemexAligner implements AlignmentComponent {
 			boolean ignoreDuplicateNgramsAlignmentLookupBOChunks,
 			String chunkerModelPath, String direction, boolean isWN,
 			String WNRel, boolean isWNCollapsed, boolean useFirstSenseOnlyLeft,
-			boolean useFirstSenseOnlyRight, String wnPath) {
+			boolean useFirstSenseOnlyRight, String wnPath, String stopWordPath) {
+		
+		stopWords = new HashSet<String>();
 
 		this.isBOW = isBOW;
 		this.isBOL = isBOL;
@@ -148,7 +153,15 @@ public class NemexAligner implements AlignmentComponent {
 		this.direction = direction;
 
 		this.wnlr = null;
-
+		
+		try {
+			for (String str : (Files.readAllLines(Paths.get(stopWordPath), Charset.forName("UTF-8"))))
+				stopWords.add(str.toLowerCase());
+		} catch (IOException e1) {
+			logger.error("Could not read stop words file");
+		}
+		
+	
 		if (this.numOfExtDicts == 0) {
 			logger.info("No external dictionaries to load");
 		} else {
@@ -378,6 +391,9 @@ public class NemexAligner implements AlignmentComponent {
 				Token token = (Token) tIter.next();
 				String curToken = token.getCoveredText().toLowerCase();
 
+				if(stopWords.contains(curToken.toLowerCase()))
+					continue;
+				
 				String curPOS = token.getPos().getPosValue();
 				int curStartOffset = token.getBegin();
 				int curEndOffset = token.getEnd();
@@ -1224,6 +1240,8 @@ public class NemexAligner implements AlignmentComponent {
 	
 	private String direction;
 
+	private Set<String> stopWords;
+	
 	private WordnetLexicalResource wnlr;
 	private ChunkerME chunker;
 

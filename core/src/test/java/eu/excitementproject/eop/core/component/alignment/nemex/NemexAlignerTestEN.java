@@ -108,7 +108,7 @@ public class NemexAlignerTestEN {
 					false, "", "", 0.0, "", false, 0, false, "", "", 0.0, "", false, 0, false, 
 					"src/main/resources/chunker-model/en-chunker.bin", "HtoT",
 					true, "HYPERNYM,SYNONYM,PART_HOLONYM", true, false, false,
-					"src/main/resources/ontologies/EnglishWordNet-dict/");
+					"src/main/resources/ontologies/EnglishWordNet-dict/", "src/main/resources/external-data/stopwords_EN.txt");
 			logger.info("Initialization finished");
 
 			// align test JCas pair

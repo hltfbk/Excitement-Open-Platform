@@ -1,5 +1,9 @@
 package eu.excitementproject.eop.core.component.scoring;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -8,8 +12,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
@@ -41,8 +45,10 @@ public class NemexAlignerScoring implements ScoringComponent {
 	private boolean isBOChunks;
 	private boolean useCoverageFeats;
 	private String[] coverageFeats;
+	private Set<String> stopWords;
+
 	public final static Logger logger = Logger
-			.getLogger(NemexClassificationEDA.class.getName());
+			.getLogger(NemexClassificationEDA.class);
 
 	/**
 	 * get the number of features
@@ -162,6 +168,17 @@ public class NemexAlignerScoring implements ScoringComponent {
 		if (useCoverageFeats)
 			numOfFeats += coverageFeats.length;
 
+		String stopWordPath = comp.getString("stopWordPath");
+
+		stopWords = new HashSet<String>();
+		try {
+			for (String str : (Files.readAllLines(Paths.get(stopWordPath),
+					Charset.forName("UTF-8"))))
+				stopWords.add(str.toLowerCase());
+		} catch (IOException e1) {
+			logger.error("Could not read stop words file");
+		}
+
 		this.aligner = new NemexAligner(isBOW, isBOL, isBOChunks,
 				numOfExtDicts, externalDictPath, similarityMeasureExtLookup,
 				similarityThresholdExtLookup, delimiterExtLookup,
@@ -187,7 +204,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 				nGramSizeAlignmentLookupBOChunks,
 				ignoreDuplicateNGramsAlignmentLookupBOChunks, chunkerModelPath,
 				direction, isWN, WNRelations, isWNCollapsed,
-				useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath);
+				useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath,
+				stopWordPath);
 
 	}
 
@@ -252,7 +270,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 					tChunkNum = tChunks.size();
 
 					if (0 == tChunkNum) {
-						logger.warning("No chunks found for T");
+						logger.warn("No chunks found for T");
 					}
 
 					Collection<Chunk> hChunks = JCasUtil.select(hView,
@@ -260,7 +278,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 					hChunkNum = hChunks.size();
 
 					if (0 == hChunkNum) {
-						logger.warning("No chunks found for H");
+						logger.warn("No chunks found for H");
 					}
 				}
 				scoresVector.addAll(calculateSimilarity(tView, hView,
@@ -327,14 +345,14 @@ public class NemexAlignerScoring implements ScoringComponent {
 		int numOfTTokens = tTokens.size();
 
 		if (numOfTTokens == 0) {
-			logger.warning("No tokens found for TEXT");
+			logger.warn("No tokens found for TEXT");
 		}
 
 		Collection<Token> hTokens = JCasUtil.select(hView, Token.class);
 		int numOfHTokens = hTokens.size();
 
 		if (numOfHTokens == 0) {
-			logger.warning("No tokens found for HYPOTHESIS");
+			logger.warn("No tokens found for HYPOTHESIS");
 		}
 
 		Collection<Link> links = null;
@@ -342,7 +360,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 		links = JCasUtil.select(hView, Link.class);
 
 		if (links.size() == 0)
-			logger.warning("No alignment links found");
+			logger.warn("No alignment links found");
 
 		Vector<Double> returnValue = new Vector<Double>();
 
@@ -417,24 +435,35 @@ public class NemexAlignerScoring implements ScoringComponent {
 						tView, Token.class, tStartOffset, tEndOffset);
 
 				if (tLinkCoveredTokens.size() == 0)
-					logger.warning("No tokens covered under aligned data in TEXT.");
+					logger.warn("No tokens covered under aligned data in TEXT.");
 
 				Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
 						hView, Token.class, hStartOffset, hEndOffset);
 
 				if (hLinkCoveredTokens.size() == 0)
-					logger.warning("No tokens covered under aligned data in HYPOTHESIS.");
+					logger.warn("No tokens covered under aligned data in HYPOTHESIS.");
 
-				addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
-				addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
+				numOfTTokens = addToWordsAndPosMap(tWordsMap, tPosMap,
+						tLinkCoveredTokens);
+				numOfHTokens = addToWordsAndPosMap(hWordsMap, hPosMap,
+						hLinkCoveredTokens);
 
 			}
 			// new String[] {"word", "contentWord", "verb", "properNoun" }
 
-			returnValue.add(numOfCommonLinks / hChunkNum);
-			returnValue.add(numOfCommonLinks / tChunkNum);
-			returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
-					/ tChunkNum);
+			if (tChunkNum != 0 && hChunkNum != 0) {
+				returnValue.add(numOfCommonLinks / hChunkNum);
+				returnValue.add(numOfCommonLinks / tChunkNum);
+				returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
+						/ tChunkNum);
+			}
+
+			else {
+				returnValue.add(numOfCommonLinks / numOfTTokens);
+				returnValue.add(numOfCommonLinks / numOfHTokens);
+				returnValue.add(numOfCommonLinks * numOfCommonLinks
+						/ numOfTTokens / numOfHTokens);
+			}
 
 			if (direction == "TtoH")
 				returnValue.addAll(calculateOverlap(tWordsMap, tPosMap,
@@ -463,22 +492,38 @@ public class NemexAlignerScoring implements ScoringComponent {
 				}
 			}
 
-			returnValue.add(numOfCommonLinks / hChunkNum);
-			returnValue.add(numOfCommonLinks / tChunkNum);
-			returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
-					/ tChunkNum);
+			if (tChunkNum != 0 && hChunkNum != 0) {
+				returnValue.add(numOfCommonLinks / hChunkNum);
+				returnValue.add(numOfCommonLinks / tChunkNum);
+				returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
+						/ tChunkNum);
+			}
+
+			else {
+				returnValue.add(numOfCommonLinks / numOfTTokens);
+				returnValue.add(numOfCommonLinks / numOfHTokens);
+				returnValue.add(numOfCommonLinks * numOfCommonLinks
+						/ numOfTTokens / numOfHTokens);
+			}
 		}
 
 		return returnValue;
 
 	}
 
-	private void addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
+	private int addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
 			HashMap<String, Integer> posMap, Collection<Token> linkCoveredTokens) {
+
+		int numOfTokens = 0;
 		for (final Iterator<Token> tokensIter = linkCoveredTokens.iterator(); tokensIter
 				.hasNext();) {
 			Token token = tokensIter.next();
 			String curToken = token.getCoveredText().toLowerCase();
+
+			if (stopWords.contains(curToken.toLowerCase()))
+				continue;
+
+			numOfTokens++;
 			String curPOS = token.getPos().getPosValue();
 
 			if (wordsMap.containsKey(curToken)) {
@@ -492,6 +537,8 @@ public class NemexAlignerScoring implements ScoringComponent {
 				posMap.put(curPOS, 1);
 
 		}
+
+		return numOfTokens;
 
 	}
 
