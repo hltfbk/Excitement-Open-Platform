@@ -68,8 +68,10 @@ public class NemexAlignerTestEN {
 			 * logger.info("Finished alignment of test JCas pair 4");
 			 */
 
-			JCas aJCas5 = tokenizer.generateSingleTHPairCAS(
-					"Ampicilin is a drug.", "Ampicillin is useful.");
+			JCas aJCas5 = tokenizer
+					.generateSingleTHPairCAS(
+							"Relations between Argentina and Britain were soured again last May when Britain decided to extend territorial waters to 200 miles around South Georgia and the South Sandwich Islands.",
+							"Britain angered Argentina.");
 
 			Logger.getRootLogger().setLevel(Level.INFO); // main log setting:
 															// set as DEBUG to
@@ -94,7 +96,7 @@ public class NemexAlignerTestEN {
 			aligner = new NemexAligner(
 					true,
 					false,
-					false,
+					false, true,
 					1,
 					new String[] { "src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt" },
 					new String[] { "DICE_SIMILARITY_MEASURE" },
@@ -102,13 +104,13 @@ public class NemexAlignerTestEN {
 					new boolean[] { true }, new int[] { 3 },
 					new boolean[] { false },
 					"src/test/resources/gazetteer/nemexAlignerBOW.txt",
-					"COSINE_SIMILARITY_MEASURE",
-					0.8, "#",
-					true, 3,
-					false, "", "", 0.0, "", false, 0, false, "", "", 0.0, "", false, 0, false, 
-					"src/main/resources/chunker-model/en-chunker.bin", "HtoT",
-					true, "HYPERNYM,SYNONYM,PART_HOLONYM", true, false, false,
-					"src/main/resources/ontologies/EnglishWordNet-dict/", "src/main/resources/external-data/stopwords_EN.txt");
+					"COSINE_SIMILARITY_MEASURE", 0.8, "#", true, 3, false, "",
+					"", 0.0, "", false, 0, false, "", "", 0.0, "", false, 0,
+					false, "src/main/resources/chunker-model/en-chunker.bin",
+					"TtoH", true, "SYNONYM", true, false,
+					false,
+					"src/main/resources/ontologies/EnglishWordNet-dict/",
+					"src/main/resources/external-data/stopwords_EN.txt");
 			logger.info("Initialization finished");
 
 			// align test JCas pair

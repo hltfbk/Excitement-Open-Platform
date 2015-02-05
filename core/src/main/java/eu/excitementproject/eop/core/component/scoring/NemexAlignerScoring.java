@@ -46,6 +46,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 	private boolean useCoverageFeats;
 	private String[] coverageFeats;
 	private Set<String> stopWords;
+	private boolean removeStopWords;
 
 	public final static Logger logger = Logger
 			.getLogger(NemexClassificationEDA.class);
@@ -64,6 +65,9 @@ public class NemexAlignerScoring implements ScoringComponent {
 		boolean isBOW = Boolean.valueOf(comp.getString("isBOW"));
 		boolean isBOL = Boolean.valueOf(comp.getString("isBOL"));
 		this.isBOChunks = Boolean.valueOf(comp.getString("isBOChunks"));
+
+		this.removeStopWords = Boolean.valueOf(comp
+				.getString("removeStopWords"));
 
 		int numOfExtDicts = Integer.parseInt(comp.getString("numOfExtDicts"));
 		String[] externalDictPath = comp.getString("externalDictPath").split(
@@ -167,24 +171,26 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		if (useCoverageFeats)
 			numOfFeats += coverageFeats.length;
-
-		String stopWordPath = comp.getString("stopWordPath");
-
+		
 		stopWords = new HashSet<String>();
-		try {
-			for (String str : (Files.readAllLines(Paths.get(stopWordPath),
-					Charset.forName("UTF-8"))))
-				stopWords.add(str.toLowerCase());
-		} catch (IOException e1) {
-			logger.error("Could not read stop words file");
+		String stopWordPath = comp.getString("stopWordPath");
+		
+		if (removeStopWords) {
+			
+			try {
+				for (String str : (Files.readAllLines(Paths.get(stopWordPath),
+						Charset.forName("UTF-8"))))
+					stopWords.add(str.toLowerCase());
+			} catch (IOException e1) {
+				logger.error("Could not read stop words file");
+			}
 		}
-
 		this.aligner = new NemexAligner(isBOW, isBOL, isBOChunks,
-				numOfExtDicts, externalDictPath, similarityMeasureExtLookup,
-				similarityThresholdExtLookup, delimiterExtLookup,
-				delimiterSwitchOffExtLookup, nGramSizeExtLookup,
-				ignoreDuplicateNGramsExtLookup, gazetteerFilePathBOW,
-				similarityMeasureAlignmentLookupBOW,
+				removeStopWords, numOfExtDicts, externalDictPath,
+				similarityMeasureExtLookup, similarityThresholdExtLookup,
+				delimiterExtLookup, delimiterSwitchOffExtLookup,
+				nGramSizeExtLookup, ignoreDuplicateNGramsExtLookup,
+				gazetteerFilePathBOW, similarityMeasureAlignmentLookupBOW,
 				similarityThresholdAlignmentLookupBOW,
 				delimiterAlignmentLookupBOW,
 				delimiterSwitchOffAlignmentLookupBOW,
@@ -520,8 +526,10 @@ public class NemexAlignerScoring implements ScoringComponent {
 			Token token = tokensIter.next();
 			String curToken = token.getCoveredText().toLowerCase();
 
-			if (stopWords.contains(curToken.toLowerCase()))
-				continue;
+			if (removeStopWords) {
+				if (stopWords.contains(curToken.toLowerCase()))
+					continue;
+			}
 
 			numOfTokens++;
 			String curPOS = token.getPos().getPosValue();

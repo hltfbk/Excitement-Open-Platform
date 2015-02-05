@@ -80,8 +80,8 @@ import opennlp.tools.util.Span;
 public class NemexAligner implements AlignmentComponent {
 
 	public NemexAligner(boolean isBOW, boolean isBOL, boolean isBOChunks,
-			int numOfExtDicts, String[] externalDictPath,
-			String[] similarityMeasureExtLookup,
+			boolean removeStopWords, int numOfExtDicts,
+			String[] externalDictPath, String[] similarityMeasureExtLookup,
 			double[] similarityThresholdExtLookup, String[] delimiterExtLookup,
 			boolean[] delimiterSwitchOffExtLookup, int[] nGramSizeExtLookup,
 			boolean[] ignoreDuplicateNgramsExtLookup,
@@ -109,13 +109,14 @@ public class NemexAligner implements AlignmentComponent {
 			String chunkerModelPath, String direction, boolean isWN,
 			String WNRel, boolean isWNCollapsed, boolean useFirstSenseOnlyLeft,
 			boolean useFirstSenseOnlyRight, String wnPath, String stopWordPath) {
-		
+
 		stopWords = new HashSet<String>();
 
 		this.isBOW = isBOW;
 		this.isBOL = isBOL;
 		this.isBOChunks = isBOChunks;
 		this.isWN = isWN;
+		this.removeStopWords = removeStopWords;
 
 		this.numOfExtDicts = numOfExtDicts;
 		this.externalDictPath = externalDictPath;
@@ -133,7 +134,7 @@ public class NemexAligner implements AlignmentComponent {
 		this.delimiterSwitchOffAlignmentLookupBOW = delimiterSwitchOffAlignmentLookupBOW;
 		this.nGramSizeAlignmentLookupBOW = nGramSizeAlignmentLookupBOW;
 		this.ignoreDuplicateNgramsAlignmentLookupBOW = ignoreDuplicateNgramsAlignmentLookupBOW;
-		
+
 		this.gazetteerFilePathAlignmentLookupBOL = gazetteerFilePathAlignmentLookupBOL;
 		this.similarityThresholdAlignmentLookupBOL = similarityThresholdAlignmentLookupBOL;
 		this.similarityMeasureAlignmentLookupBOL = similarityMeasureAlignmentLookupBOL;
@@ -141,7 +142,7 @@ public class NemexAligner implements AlignmentComponent {
 		this.delimiterSwitchOffAlignmentLookupBOL = delimiterSwitchOffAlignmentLookupBOL;
 		this.nGramSizeAlignmentLookupBOL = nGramSizeAlignmentLookupBOL;
 		this.ignoreDuplicateNgramsAlignmentLookupBOL = ignoreDuplicateNgramsAlignmentLookupBOL;
-		
+
 		this.gazetteerFilePathAlignmentLookupBOChunks = gazetteerFilePathAlignmentLookupBOChunks;
 		this.similarityThresholdAlignmentLookupBOChunks = similarityThresholdAlignmentLookupBOChunks;
 		this.similarityMeasureAlignmentLookupBOChunks = similarityMeasureAlignmentLookupBOChunks;
@@ -153,15 +154,18 @@ public class NemexAligner implements AlignmentComponent {
 		this.direction = direction;
 
 		this.wnlr = null;
-		
-		try {
-			for (String str : (Files.readAllLines(Paths.get(stopWordPath), Charset.forName("UTF-8"))))
-				stopWords.add(str.toLowerCase());
-		} catch (IOException e1) {
-			logger.error("Could not read stop words file");
+
+		if (removeStopWords) {
+			try {
+				for (String str : (Files.readAllLines(Paths.get(stopWordPath),
+						Charset.forName("UTF-8"))))
+					stopWords.add(str.toLowerCase());
+			} catch (IOException e1) {
+				logger.error("Could not read stop words file");
+			}
+
 		}
-		
-	
+
 		if (this.numOfExtDicts == 0) {
 			logger.info("No external dictionaries to load");
 		} else {
@@ -391,9 +395,11 @@ public class NemexAligner implements AlignmentComponent {
 				Token token = (Token) tIter.next();
 				String curToken = token.getCoveredText().toLowerCase();
 
-				if(stopWords.contains(curToken.toLowerCase()))
-					continue;
-				
+				if (removeStopWords) {
+					if (stopWords.contains(curToken.toLowerCase()))
+						continue;
+				}
+
 				String curPOS = token.getPos().getPosValue();
 				int curStartOffset = token.getBegin();
 				int curEndOffset = token.getEnd();
@@ -631,33 +637,26 @@ public class NemexAligner implements AlignmentComponent {
 				}
 			}
 
-			
-			
-				
-
-			if(isBOW) {
-				//NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOW);
+			if (isBOW) {
+				// NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOW);
 				addEntryToDict(view, gazetteerFilePathAlignmentLookupBOW,
-					entryMapBOW, entryInvIndexBOW,
-					totalNumOfGazetteerEntriesBOW);
+						entryMapBOW, entryInvIndexBOW,
+						totalNumOfGazetteerEntriesBOW);
 			}
-			
-			if(isBOL) {
-				//NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOL);
+
+			if (isBOL) {
+				// NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOL);
 				addEntryToDict(view, gazetteerFilePathAlignmentLookupBOL,
 						entryMapBOL, entryInvIndexBOL,
 						totalNumOfGazetteerEntriesBOL);
 			}
-				
-			
-			if(isBOChunks) {
-				//NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOChunks);
-				addEntryToDict(view, gazetteerFilePathAlignmentLookupBOChunks,
-					entryMapBOChunks, entryInvIndexBOChunks,
-					totalNumOfGazetteerEntriesBOChunks);
-			}
 
-			
+			if (isBOChunks) {
+				// NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOChunks);
+				addEntryToDict(view, gazetteerFilePathAlignmentLookupBOChunks,
+						entryMapBOChunks, entryInvIndexBOChunks,
+						totalNumOfGazetteerEntriesBOChunks);
+			}
 
 		}
 
@@ -800,16 +799,20 @@ public class NemexAligner implements AlignmentComponent {
 			int curEndOffset = token.getEnd();
 
 			if (isBOW) {
-				
+
 				logger.info("Loading BOW gazetteer");
-				NEMEX_A.loadNewGazetteer(
+
+				try {
+					NEMEX_A.loadNewGazetteer(
 							this.gazetteerFilePathAlignmentLookupBOW,
 							this.delimiterAlignmentLookupBOW,
 							this.delimiterSwitchOffAlignmentLookupBOW,
 							this.nGramSizeAlignmentLookupBOW,
 							this.ignoreDuplicateNgramsAlignmentLookupBOW);
-				
-				
+				} catch (Exception e) {
+					logger.error("Could not load BOW gazetteer");
+				}
+
 				try {
 					values = NEMEX_A.checkSimilarity(curToken,
 							gazetteerFilePathAlignmentLookupBOW,
@@ -826,23 +829,23 @@ public class NemexAligner implements AlignmentComponent {
 								curEndOffset, entryMapBOW, entryInvIndexBOW);
 					}
 				} catch (GazetteerNotLoadedException e) {
-					logger.info("Could not load the gazetteer");
+					logger.error("BOW gazetteer is not loaded");
 					e.printStackTrace();
 				}
-				
+
 				logger.info("Unloading BOW gazetteer");
 				NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOW);
 			}
 			if (isBOL) {
 				String curLemma = token.getLemma().getValue().toLowerCase();
-				
+
 				logger.info("Loading BOL gazetteer");
 				NEMEX_A.loadNewGazetteer(
-							this.gazetteerFilePathAlignmentLookupBOL,
-							this.delimiterAlignmentLookupBOL,
-							this.delimiterSwitchOffAlignmentLookupBOL,
-							this.nGramSizeAlignmentLookupBOL,
-							this.ignoreDuplicateNgramsAlignmentLookupBOL);
+						this.gazetteerFilePathAlignmentLookupBOL,
+						this.delimiterAlignmentLookupBOL,
+						this.delimiterSwitchOffAlignmentLookupBOL,
+						this.nGramSizeAlignmentLookupBOL,
+						this.ignoreDuplicateNgramsAlignmentLookupBOL);
 
 				try {
 					values = NEMEX_A.checkSimilarity(curLemma,
@@ -863,7 +866,7 @@ public class NemexAligner implements AlignmentComponent {
 					logger.info("Could not load the gazetteer");
 					e.printStackTrace();
 				}
-				
+
 				logger.info("Unloading BOL gazetteer");
 				NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOL);
 			}
@@ -906,12 +909,12 @@ public class NemexAligner implements AlignmentComponent {
 
 				logger.info("Loading BOChunks gazetteer");
 				NEMEX_A.loadNewGazetteer(
-							this.gazetteerFilePathAlignmentLookupBOChunks,
-							this.delimiterAlignmentLookupBOChunks,
-							this.delimiterSwitchOffAlignmentLookupBOChunks,
-							this.nGramSizeAlignmentLookupBOChunks,
-							this.ignoreDuplicateNgramsAlignmentLookupBOChunks);
-				
+						this.gazetteerFilePathAlignmentLookupBOChunks,
+						this.delimiterAlignmentLookupBOChunks,
+						this.delimiterSwitchOffAlignmentLookupBOChunks,
+						this.nGramSizeAlignmentLookupBOChunks,
+						this.ignoreDuplicateNgramsAlignmentLookupBOChunks);
+
 				try {
 					values = NEMEX_A.checkSimilarity(str,
 							gazetteerFilePathAlignmentLookupBOChunks,
@@ -932,7 +935,7 @@ public class NemexAligner implements AlignmentComponent {
 					logger.info("Could not load the gazetteer");
 					e.printStackTrace();
 				}
-				
+
 				logger.info("Unloading BOChunks gazetteer");
 				NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookupBOChunks);
 			}
@@ -1104,7 +1107,7 @@ public class NemexAligner implements AlignmentComponent {
 			// Set strength as that of BOChunks if activated, BOW otherwise
 			if (this.isBOChunks)
 				link.setStrength(this.similarityThresholdAlignmentLookupBOChunks);
-			else if(this.isBOW)
+			else if (this.isBOW)
 				link.setStrength(this.similarityThresholdAlignmentLookupBOW);
 			else
 				link.setStrength(this.similarityThresholdAlignmentLookupBOL);
@@ -1167,11 +1170,11 @@ public class NemexAligner implements AlignmentComponent {
 			// Set strength as that of BOChunks if activated, BOW otherwise
 			if (this.isBOChunks)
 				link.setStrength(this.similarityThresholdAlignmentLookupBOChunks);
-			else if(this.isBOW)
+			else if (this.isBOW)
 				link.setStrength(this.similarityThresholdAlignmentLookupBOW);
 			else
 				link.setStrength(this.similarityThresholdAlignmentLookupBOL);
-			
+
 			// Add the link information
 			link.setAlignerID("NemexA");
 			link.setAlignerVersion("1.0");
@@ -1221,7 +1224,7 @@ public class NemexAligner implements AlignmentComponent {
 	private boolean delimiterSwitchOffAlignmentLookupBOW;
 	private int nGramSizeAlignmentLookupBOW;
 	private boolean ignoreDuplicateNgramsAlignmentLookupBOW;
-	
+
 	private String gazetteerFilePathAlignmentLookupBOL;
 	private double similarityThresholdAlignmentLookupBOL;
 	private String similarityMeasureAlignmentLookupBOL;
@@ -1229,7 +1232,7 @@ public class NemexAligner implements AlignmentComponent {
 	private boolean delimiterSwitchOffAlignmentLookupBOL;
 	private int nGramSizeAlignmentLookupBOL;
 	private boolean ignoreDuplicateNgramsAlignmentLookupBOL;
-	
+
 	private String gazetteerFilePathAlignmentLookupBOChunks;
 	private double similarityThresholdAlignmentLookupBOChunks;
 	private String similarityMeasureAlignmentLookupBOChunks;
@@ -1237,11 +1240,12 @@ public class NemexAligner implements AlignmentComponent {
 	private boolean delimiterSwitchOffAlignmentLookupBOChunks;
 	private int nGramSizeAlignmentLookupBOChunks;
 	private boolean ignoreDuplicateNgramsAlignmentLookupBOChunks;
-	
+
 	private String direction;
 
 	private Set<String> stopWords;
-	
+	private boolean removeStopWords;
+
 	private WordnetLexicalResource wnlr;
 	private ChunkerME chunker;
 
