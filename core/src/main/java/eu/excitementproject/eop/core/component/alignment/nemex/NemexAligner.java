@@ -378,7 +378,9 @@ public class NemexAligner implements AlignmentComponent {
 			double totalNumOfGazetteerEntriesBOW = 0;
 			double totalNumOfGazetteerEntriesBOL = 0;
 			double totalNumOfGazetteerEntriesBOChunks = 0;
-			int index = 0; // id of Entry in Entry map
+			int indexBOW = 0; // id of Entry in Entry map
+			int indexBOL = 0;
+			int indexBOChunks = 0;
 
 			// int numOfTokens = tokenAnnots.size();
 
@@ -416,8 +418,8 @@ public class NemexAligner implements AlignmentComponent {
 
 						offsets = entryInvIndexBOW.get(curToken);
 					} else {
-						index++;
-						entryMapBOW.put(index, curToken);
+						indexBOW++;
+						entryMapBOW.put(indexBOW, curToken);
 					}
 
 					totalNumOfGazetteerEntriesBOW++;
@@ -434,8 +436,8 @@ public class NemexAligner implements AlignmentComponent {
 					if (entryMapBOL.containsValue(curLemma.toLowerCase())) {
 						offsets = entryInvIndexBOL.get(curLemma.toLowerCase());
 					} else {
-						index++;
-						entryMapBOL.put(index, curLemma.toLowerCase());
+						indexBOL++;
+						entryMapBOL.put(indexBOL, curLemma.toLowerCase());
 					}
 
 					totalNumOfGazetteerEntriesBOL++;
@@ -458,8 +460,8 @@ public class NemexAligner implements AlignmentComponent {
 							if (entryMapBOL.containsValue(curEntry)) {
 								offsets = entryInvIndexBOL.get(curEntry);
 							} else {
-								index++;
-								entryMapBOL.put(index, curEntry);
+								indexBOL++;
+								entryMapBOL.put(indexBOL, curEntry);
 							}
 
 							totalNumOfGazetteerEntriesBOL++;
@@ -625,8 +627,8 @@ public class NemexAligner implements AlignmentComponent {
 						if (entryMapBOChunks.containsValue(curEntry)) {
 							offsets = entryInvIndexBOChunks.get(curEntry);
 						} else {
-							index++;
-							entryMapBOChunks.put(index, curEntry);
+							indexBOChunks++;
+							entryMapBOChunks.put(indexBOChunks, curEntry);
 						}
 
 						totalNumOfGazetteerEntriesBOChunks++;
