@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.uimafit.util.JCasUtil;
 
 import eu.excitement.type.alignment.Link;
+//import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
-//import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 public class NemexAlignerTestEN {
@@ -91,12 +91,21 @@ public class NemexAlignerTestEN {
 
 			logger.info("Initialize the Nemex Aligner");
 
-			aligner = new NemexAligner(true, false, false, 1,
-					new String[] { "src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt"},
-					new String[] { "DICE_SIMILARITY_MEASURE"}, new double[]{0.7},
-					"src/test/resources/gazetteer/nemexAligner.txt",
-					"DICE_SIMILARITY_MEASURE", 0.8,
-					"#", true, 3, false, 
+			aligner = new NemexAligner(
+					true,
+					false,
+					false,
+					1,
+					new String[] { "src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt" },
+					new String[] { "DICE_SIMILARITY_MEASURE" },
+					new double[] { 0.7 }, new String[] { "#" },
+					new boolean[] { true }, new int[] { 3 },
+					new boolean[] { false },
+					new String[] {"src/test/resources/gazetteer/nemexAlignerBOW.txt"},
+					new String[] { "COSINE_SIMILARITY_MEASURE" },
+					new double[] { 0.8 }, new String[] { "#" },
+					new boolean[] { true }, new int[] { 3 },
+					new boolean[] { false },
 					"src/main/resources/chunker-model/en-chunker.bin", "HtoT",
 					true, "HYPERNYM,SYNONYM,PART_HOLONYM", true, false, false,
 					"src/main/resources/ontologies/EnglishWordNet-dict/");
@@ -119,6 +128,18 @@ public class NemexAlignerTestEN {
 						.getHSideTarget().getCoveredText(), link.getID(), link
 						.getStrength(), link.getDirection().toString()));
 
+				// int tStart = link.getTSideTarget().getBegin();
+				// int tEnd = link.getTSideTarget().getEnd();
+				// int hStart = link.getHSideTarget().getBegin();
+				// int hEnd = link.getHSideTarget().getEnd();
+				//
+				// Collection<Token> hTokens = JCasUtil.selectCovered(hView,
+				// Token.class, hStart, hEnd);
+				//
+				// for(java.util.Iterator<Token> iter = hTokens.iterator();
+				// iter.hasNext();) {
+				// logger.info("Token covered by link on H: "+iter.next().getCoveredText());
+				// }
 				/*
 				 * JCas targetView =
 				 * link.getHSideTarget().getCASImpl().getExistingJCas(); JCas

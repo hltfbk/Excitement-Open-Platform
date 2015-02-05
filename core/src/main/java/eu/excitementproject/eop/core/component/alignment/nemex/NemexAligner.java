@@ -79,13 +79,18 @@ public class NemexAligner implements AlignmentComponent {
 	public NemexAligner(Boolean isBOW, Boolean isBOL, Boolean isBOChunks,
 			int numOfExtDicts, String[] externalDictPath,
 			String[] similarityMeasureExtLookup,
-			double[] similarityThresholdExtLookup, String gazetteerFilePath,
-			String similarityMeasureAlignmentLookup,
-			double similarityThresholdAlignmentLookup, String delimiter,
-			Boolean delimiterSwitchOff, int nGramSize,
-			Boolean ignoreDuplicateNgrams, String chunkerModelPath,
-			String direction, boolean isWN, String WNRel,
-			boolean isWNCollapsed, boolean useFirstSenseOnlyLeft,
+			double[] similarityThresholdExtLookup, String[] delimiterExtLookup,
+			boolean[] delimiterSwitchOffExtLookup, int[] nGramSizeExtLookup,
+			boolean[] ignoreDuplicateNgramsExtLookup,
+			String[] gazetteerFilePathAlignmentLookup,
+			String[] similarityMeasureAlignmentLookup,
+			double[] similarityThresholdAlignmentLookup,
+			String[] delimiterAlignmentLookup,
+			boolean[] delimiterSwitchOffAlignmentLookup,
+			int[] nGramSizeAlignmentLookup,
+			boolean[] ignoreDuplicateNgramsAlignmentLookup,
+			String chunkerModelPath, String direction, boolean isWN,
+			String WNRel, boolean isWNCollapsed, boolean useFirstSenseOnlyLeft,
 			boolean useFirstSenseOnlyRight, String wnPath) {
 
 		this.isBOW = isBOW;
@@ -97,15 +102,18 @@ public class NemexAligner implements AlignmentComponent {
 		this.externalDictPath = externalDictPath;
 		this.similarityMeasureExtLookup = similarityMeasureExtLookup;
 		this.similarityThresholdExtLookup = similarityThresholdExtLookup;
+		this.delimiterExtLookup = delimiterExtLookup;
+		this.delimiterSwitchOffExtLookup = delimiterSwitchOffExtLookup;
+		this.nGramSizeExtLookup = nGramSizeExtLookup;
+		this.ignoreDuplicateNgramsExtLookup = ignoreDuplicateNgramsExtLookup;
 
-		this.gazetteerFilePath = gazetteerFilePath;
+		this.gazetteerFilePathAlignmentLookup = gazetteerFilePathAlignmentLookup;
 		this.similarityMeasureAlignmentLookup = similarityMeasureAlignmentLookup;
 		this.similarityThresholdAlignmentLookup = similarityThresholdAlignmentLookup;
-
-		this.delimiter = delimiter;
-		this.delimiterSwitchOff = delimiterSwitchOff;
-		this.nGramSize = nGramSize;
-		this.ignoreDuplicateNgrams = ignoreDuplicateNgrams;
+		this.delimiterAlignmentLookup = delimiterAlignmentLookup;
+		this.delimiterSwitchOffAlignmentLookup = delimiterSwitchOffAlignmentLookup;
+		this.nGramSizeAlignmentLookup = nGramSizeAlignmentLookup;
+		this.ignoreDuplicateNgramsAlignmentLookup = ignoreDuplicateNgramsAlignmentLookup;
 
 		this.direction = direction;
 
@@ -117,8 +125,10 @@ public class NemexAligner implements AlignmentComponent {
 			try {
 				for (int i = 0; i < this.numOfExtDicts; i++) {
 					NEMEX_A.loadNewGazetteer(this.externalDictPath[i],
-							this.delimiter, this.delimiterSwitchOff,
-							this.nGramSize, this.ignoreDuplicateNgrams);
+							this.delimiterExtLookup[i],
+							this.delimiterSwitchOffExtLookup[i],
+							this.nGramSizeExtLookup[i],
+							this.ignoreDuplicateNgramsExtLookup[i]);
 				}
 			} catch (Exception e) {
 				logger.error("Error in loading the external Nemex Dictionaries");
@@ -226,10 +236,14 @@ public class NemexAligner implements AlignmentComponent {
 
 		// contains queryID and queryText for all unique queries in T or H,
 		// depending on direction
-		HashMap<Integer, String> queryMap = new HashMap<Integer, String>();
+		HashMap<Integer, String> queryMapBOW = new HashMap<Integer, String>();
+		HashMap<Integer, String> queryMapBOL = new HashMap<Integer, String>();
+		HashMap<Integer, String> queryMapBOChunks = new HashMap<Integer, String>();
 
 		// queryText with JCas ID and offsets for queryText
-		HashMap<String, ArrayList<EntryInfo>> queryInvIndex = new HashMap<String, ArrayList<EntryInfo>>();
+		HashMap<String, ArrayList<EntryInfo>> queryInvIndexBOW = new HashMap<String, ArrayList<EntryInfo>>();
+		HashMap<String, ArrayList<EntryInfo>> queryInvIndexBOL = new HashMap<String, ArrayList<EntryInfo>>();
+		HashMap<String, ArrayList<EntryInfo>> queryInvIndexBOChunks = new HashMap<String, ArrayList<EntryInfo>>();
 
 		try {
 			textView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
@@ -255,14 +269,22 @@ public class NemexAligner implements AlignmentComponent {
 
 			if (direction == "HtoT") {
 
-				createDictionary(hypoView, queryMap, queryInvIndex);
-				annotateSubstring(textView, queryMap, queryInvIndex);
+				createDictionary(hypoView, queryMapBOW, queryMapBOL,
+						queryMapBOChunks, queryInvIndexBOW, queryInvIndexBOL,
+						queryInvIndexBOChunks);
+				annotateSubstring(textView, queryMapBOW, queryMapBOL,
+						queryMapBOChunks, queryInvIndexBOW, queryInvIndexBOL,
+						queryInvIndexBOChunks);
 
 			}
 
 			else {
-				createDictionary(textView, queryMap, queryInvIndex);
-				annotateSubstring(hypoView, queryMap, queryInvIndex);
+				createDictionary(textView, queryMapBOW, queryMapBOL,
+						queryMapBOChunks, queryInvIndexBOW, queryInvIndexBOL,
+						queryInvIndexBOChunks);
+				annotateSubstring(hypoView, queryMapBOW, queryMapBOL,
+						queryMapBOChunks, queryInvIndexBOW, queryInvIndexBOL,
+						queryInvIndexBOChunks);
 			}
 		}
 
@@ -288,8 +310,13 @@ public class NemexAligner implements AlignmentComponent {
 	 *            query.
 	 * @return
 	 */
-	public void createDictionary(JCas view, HashMap<Integer, String> entryMap,
-			HashMap<String, ArrayList<EntryInfo>> entryInvIndex)
+	public void createDictionary(JCas view,
+			HashMap<Integer, String> entryMapBOW,
+			HashMap<Integer, String> entryMapBOL,
+			HashMap<Integer, String> entryMapBOChunks,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndexBOW,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndexBOL,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndexBOChunks)
 			throws PairAnnotatorComponentException {
 		try {
 
@@ -301,7 +328,9 @@ public class NemexAligner implements AlignmentComponent {
 			AnnotationIndex<Annotation> tokenAnnots = view
 					.getAnnotationIndex(Token.type);
 
-			double totalNumOfGazetteerEntries = 0;
+			double totalNumOfGazetteerEntriesBOW = 0;
+			double totalNumOfGazetteerEntriesBOL = 0;
+			double totalNumOfGazetteerEntriesBOChunks = 0;
 			int index = 0; // id of Entry in Entry map
 
 			// int numOfTokens = tokenAnnots.size();
@@ -331,18 +360,18 @@ public class NemexAligner implements AlignmentComponent {
 					EntryInfo curOffset = new EntryInfo(view, curStartOffset,
 							curEndOffset, curPOS, false);
 
-					if (entryMap.containsValue(curToken)) {
+					if (entryMapBOW.containsValue(curToken)) {
 
-						offsets = entryInvIndex.get(curToken);
+						offsets = entryInvIndexBOW.get(curToken);
 					} else {
 						index++;
-						entryMap.put(index, curToken);
+						entryMapBOW.put(index, curToken);
 					}
 
-					totalNumOfGazetteerEntries++;
+					totalNumOfGazetteerEntriesBOW++;
 					offsets.add(curOffset);
 
-					entryInvIndex.put(curToken, offsets);
+					entryInvIndexBOW.put(curToken, offsets);
 				}
 
 				if (isBOL) {
@@ -350,38 +379,41 @@ public class NemexAligner implements AlignmentComponent {
 					EntryInfo curOffset = new EntryInfo(view, curStartOffset,
 							curEndOffset, curPOS, false);
 
-					if (entryMap.containsValue(curLemma.toLowerCase())) {
-						offsets = entryInvIndex.get(curLemma.toLowerCase());
+					if (entryMapBOL.containsValue(curLemma.toLowerCase())) {
+						offsets = entryInvIndexBOL.get(curLemma.toLowerCase());
 					} else {
 						index++;
-						entryMap.put(index, curLemma.toLowerCase());
+						entryMapBOL.put(index, curLemma.toLowerCase());
 					}
 
-					totalNumOfGazetteerEntries++;
+					totalNumOfGazetteerEntriesBOL++;
 					offsets.add(curOffset);
 
-					entryInvIndex.put(curLemma.toLowerCase(), offsets);
+					entryInvIndexBOL.put(curLemma.toLowerCase(), offsets);
 
 					if (isWN) {
 
 						for (LexicalRule<? extends RuleInfo> rule : wnlr
 								.getRulesForLeft(curLemma, null)) {
 
-							String curEntry = rule.getRLemma().toLowerCase()
-									.replace(" ", this.delimiter);
+							String curEntry = rule
+									.getRLemma()
+									.toLowerCase()
+									.replace(" ",
+											this.delimiterAlignmentLookup[1]);
 							curOffset = new EntryInfo(view, curStartOffset,
 									curEndOffset, curPOS, true);
-							if (entryMap.containsValue(curEntry)) {
-								offsets = entryInvIndex.get(curEntry);
+							if (entryMapBOL.containsValue(curEntry)) {
+								offsets = entryInvIndexBOL.get(curEntry);
 							} else {
 								index++;
-								entryMap.put(index, curEntry);
+								entryMapBOL.put(index, curEntry);
 							}
 
-							totalNumOfGazetteerEntries++;
+							totalNumOfGazetteerEntriesBOL++;
 							offsets.add(curOffset);
 
-							entryInvIndex.put(curEntry, offsets);
+							entryInvIndexBOL.put(curEntry, offsets);
 
 						}
 
@@ -440,11 +472,12 @@ public class NemexAligner implements AlignmentComponent {
 
 							// Add the delimiter at end of previous word
 							if (curQuery != "") {
-								curQuery = curQuery + this.delimiter;
+								curQuery = curQuery
+										+ this.delimiterAlignmentLookup[2];
 							}
 
 							if (originalQuery != "") {
-								originalQuery += this.delimiter;
+								originalQuery += this.delimiterAlignmentLookup[2];
 							}
 
 							String curToken = tokenTextArray.get(j);
@@ -480,9 +513,12 @@ public class NemexAligner implements AlignmentComponent {
 													tokenLemmaArray.get(j),
 													new BySimplerCanonicalPartOfSpeech(
 															SimplerCanonicalPosTag.NOUN))) {
-										values.add(rule.getRLemma()
+										values.add(rule
+												.getRLemma()
 												.toLowerCase()
-												.replace(" ", this.delimiter));
+												.replace(
+														" ",
+														this.delimiterAlignmentLookup[2]));
 
 									}
 
@@ -534,105 +570,48 @@ public class NemexAligner implements AlignmentComponent {
 
 						ArrayList<EntryInfo> offsets = new ArrayList<EntryInfo>();
 
-						if (entryMap.containsValue(curEntry)) {
-							offsets = entryInvIndex.get(curEntry);
+						if (entryMapBOChunks.containsValue(curEntry)) {
+							offsets = entryInvIndexBOChunks.get(curEntry);
 						} else {
 							index++;
-							entryMap.put(index, curEntry);
+							entryMapBOChunks.put(index, curEntry);
 						}
 
-						totalNumOfGazetteerEntries++;
+						totalNumOfGazetteerEntriesBOChunks++;
 						offsets.add(curOffset);
 
-						entryInvIndex.put(curEntry, offsets);
+						entryInvIndexBOChunks.put(curEntry, offsets);
 					}
 				}
 			}
 
-			logger.info("Unloading Gazetteer for updating dictionary");
-			NEMEX_A.unloadGazetteer(gazetteerFilePath);
+			logger.info("Unloading Gazetteers for updating dictionary");
+			for (int i = 0; i < this.gazetteerFilePathAlignmentLookup.length; i++)
+				NEMEX_A.unloadGazetteer(gazetteerFilePathAlignmentLookup[i]);
 
-			logger.info("Adding entries to dictionary");
-			Iterator<Entry<Integer, String>> iter = entryMap.entrySet()
-					.iterator();
+			if(isBOW)
+				addEntryToDict(view, gazetteerFilePathAlignmentLookup[0],
+					entryMapBOW, entryInvIndexBOW,
+					totalNumOfGazetteerEntriesBOW);
+			
+			if(isBOL)
+				addEntryToDict(view, gazetteerFilePathAlignmentLookup[1],
+					entryMapBOL, entryInvIndexBOL,
+					totalNumOfGazetteerEntriesBOL);
+			
+			if(isBOChunks)
+				addEntryToDict(view, gazetteerFilePathAlignmentLookup[2],
+					entryMapBOChunks, entryInvIndexBOChunks,
+					totalNumOfGazetteerEntriesBOChunks);
 
-			PrintWriter fw;
-
-			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath));
-			fw.println("0 utf-8 EN " + (int) totalNumOfGazetteerEntries + " "
-					+ entryMap.size());
-			fw.close();
-
-			fw = new PrintWriter(new FileWriter(this.gazetteerFilePath, true));
-
-			HashMap<String, Integer> querySenseMap = new HashMap<String, Integer>();
-
-			while (iter.hasNext()) {
-
-				Map.Entry<Integer, String> queryEntry = (Map.Entry<Integer, String>) iter
-						.next();
-				int idx = (int) queryEntry.getKey();
-				String queryText = (String) queryEntry.getValue();
-
-				ArrayList<EntryInfo> value = (ArrayList<EntryInfo>) entryInvIndex
-						.get(queryText);
-
-				logger.info("Creating dictionary entry string from query");
-
-				List<String> values = new ArrayList<String>();
-				values.add(queryText);
-
-				Iterator<EntryInfo> queryIter = value.iterator();
-
-				while (queryIter.hasNext()) {
-
-					EntryInfo hQuery = (EntryInfo) queryIter.next();
-					int start = hQuery.getStartOffset();
-					int end = hQuery.getEndOffset();
-					String tag = hQuery.getPosTag();
-					if (querySenseMap.containsKey(tag)) {
-						querySenseMap.put(tag, querySenseMap.get(tag) + 1);
-					} else
-						querySenseMap.put(tag, 1);
-					logger.info("Adding NemexType annotation on query");
-					addNemexAnnotation(view, values, start, end);
-					logger.info("Finished adding NemexType annotation on query");
-				}
-
-				String entry = new String();
-				entry = new String(idx + " "
-						+ Math.log(value.size() / totalNumOfGazetteerEntries)
-						+ " " + queryText);
-
-				Iterator<Entry<String, Integer>> senseIter = querySenseMap
-						.entrySet().iterator();
-				while (senseIter.hasNext()) {
-					Map.Entry<String, Integer> sense = (Map.Entry<String, Integer>) senseIter
-							.next();
-					entry = entry
-							+ " "
-							+ sense.getKey()
-							+ ":"
-							+ sense.getValue()
-							+ ":"
-							+ Math.log(sense.getValue()
-									/ totalNumOfGazetteerEntries);
-				}
-				logger.info("Adding entry to dictionary," + entry);
-
-				fw.println(entry);
-				// NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath)
-				// .getGazetteer().addNewEntry(entry.get(0));
-				logger.info("Finished adding entry to dictionary");
-				querySenseMap.clear();
-			}
-			fw.close();
-			// wnlr.close();
-
-			logger.info("Loading the gazetteer");
-			NEMEX_A.loadNewGazetteer(this.gazetteerFilePath, this.delimiter,
-					this.delimiterSwitchOff, this.nGramSize,
-					this.ignoreDuplicateNgrams);
+			logger.info("Loading the gazetteers");
+			for (int i = 0; i < gazetteerFilePathAlignmentLookup.length; i++)
+				NEMEX_A.loadNewGazetteer(
+						this.gazetteerFilePathAlignmentLookup[i],
+						this.delimiterAlignmentLookup[i],
+						this.delimiterSwitchOffAlignmentLookup[i],
+						this.nGramSizeAlignmentLookup[i],
+						this.ignoreDuplicateNgramsAlignmentLookup[i]);
 
 		}
 
@@ -640,6 +619,87 @@ public class NemexAligner implements AlignmentComponent {
 			logger.info("Error updating the Gazetteer file");
 			e.printStackTrace();
 		}
+
+	}
+
+	private void addEntryToDict(JCas view, String gazetteerFilePath,
+			HashMap<Integer, String> entryMap,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndex,
+			double totalNumOfGazetteerEntries) throws IOException {
+		logger.info("Adding entries to dictionary");
+		Iterator<Entry<Integer, String>> iter = entryMap.entrySet().iterator();
+
+		PrintWriter fw;
+
+		fw = new PrintWriter(new FileWriter(gazetteerFilePath));
+		fw.println("0 utf-8 EN " + (int) totalNumOfGazetteerEntries + " "
+				+ entryMap.size());
+		fw.close();
+
+		fw = new PrintWriter(new FileWriter(gazetteerFilePath, true));
+
+		HashMap<String, Integer> querySenseMap = new HashMap<String, Integer>();
+
+		while (iter.hasNext()) {
+
+			Map.Entry<Integer, String> queryEntry = (Map.Entry<Integer, String>) iter
+					.next();
+			int idx = (int) queryEntry.getKey();
+			String queryText = (String) queryEntry.getValue();
+
+			ArrayList<EntryInfo> value = (ArrayList<EntryInfo>) entryInvIndex
+					.get(queryText);
+
+			logger.info("Creating dictionary entry string from query");
+
+			List<String> values = new ArrayList<String>();
+			values.add(queryText);
+
+			Iterator<EntryInfo> queryIter = value.iterator();
+
+			while (queryIter.hasNext()) {
+
+				EntryInfo hQuery = (EntryInfo) queryIter.next();
+				int start = hQuery.getStartOffset();
+				int end = hQuery.getEndOffset();
+				String tag = hQuery.getPosTag();
+				if (querySenseMap.containsKey(tag)) {
+					querySenseMap.put(tag, querySenseMap.get(tag) + 1);
+				} else
+					querySenseMap.put(tag, 1);
+				logger.info("Adding NemexType annotation on query");
+				addNemexAnnotation(view, values, start, end);
+				logger.info("Finished adding NemexType annotation on query");
+			}
+
+			String entry = new String();
+			entry = new String(idx + " "
+					+ Math.log(value.size() / totalNumOfGazetteerEntries) + " "
+					+ queryText);
+
+			Iterator<Entry<String, Integer>> senseIter = querySenseMap
+					.entrySet().iterator();
+			while (senseIter.hasNext()) {
+				Map.Entry<String, Integer> sense = (Map.Entry<String, Integer>) senseIter
+						.next();
+				entry = entry
+						+ " "
+						+ sense.getKey()
+						+ ":"
+						+ sense.getValue()
+						+ ":"
+						+ Math.log(sense.getValue()
+								/ totalNumOfGazetteerEntries);
+			}
+			logger.info("Adding entry to dictionary," + entry);
+
+			fw.println(entry);
+			// NEMEX_A.loadedGazetteers.get(this.gazetteerFilePath)
+			// .getGazetteer().addNewEntry(entry.get(0));
+			logger.info("Finished adding entry to dictionary");
+			querySenseMap.clear();
+		}
+		fw.close();
 
 	}
 
@@ -663,11 +723,16 @@ public class NemexAligner implements AlignmentComponent {
 	 * @return
 	 */
 	private void annotateSubstring(JCas view,
-			HashMap<Integer, String> entryMap,
-			HashMap<String, ArrayList<EntryInfo>> entryIndex) {
+			HashMap<Integer, String> entryMapBOW,
+			HashMap<Integer, String> entryMapBOL,
+			HashMap<Integer, String> entryMapBOChunks,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndexBOW,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndexBOL,
+			HashMap<String, ArrayList<EntryInfo>> entryInvIndexBOChunks) {
 
-		Map<String, ArrayList<EntryInfo>> queriesIndex = new HashMap<String, ArrayList<EntryInfo>>();
-		
+		// Map<String, ArrayList<EntryInfo>> queriesIndex = new HashMap<String,
+		// ArrayList<EntryInfo>>();
+
 		String str = new String();
 		List<String> values = new ArrayList<String>();
 		Collection<Token> tokenAnnots = JCasUtil.select(view, Token.class);
@@ -688,65 +753,48 @@ public class NemexAligner implements AlignmentComponent {
 			int curStartOffset = token.getBegin();
 			int curEndOffset = token.getEnd();
 
-			EntryInfo curQuery = new EntryInfo(view, curStartOffset,
-					curEndOffset, null, false);
-
 			if (isBOW) {
-				
-				ArrayList<EntryInfo> queries = new ArrayList<EntryInfo>();
+				try {
+					values = NEMEX_A.checkSimilarity(curToken,
+							gazetteerFilePathAlignmentLookup[0],
+							this.similarityMeasureAlignmentLookup[0],
+							this.similarityThresholdAlignmentLookup[0]);
 
-				if (queriesIndex.containsKey(curToken)) {
-					boolean flag = false;
-					queries = queriesIndex.get(curToken);
-					for (final Iterator<EntryInfo> entryIter = queries
-							.iterator(); entryIter.hasNext();) {
-						EntryInfo curEntry = entryIter.next();
-						if (curEntry.getStartOffset() == curStartOffset
-								&& curEntry.getEndOffset() == curEndOffset) {
-							flag = true;
-						}
+					if (values.size() > 0) {
+						logger.info("Query text: " + curToken);
+						logger.info("Similar entry: " + values);
+						NemexType alignmentAnnot = addNemexAnnotation(view,
+								values, curStartOffset, curEndOffset);
+
+						addAlignmentLink(alignmentAnnot, view, curStartOffset,
+								curEndOffset, entryMapBOW, entryInvIndexBOW);
 					}
-
-					if (flag == false) {
-						queries.add(curQuery);
-						queriesIndex.put(curToken, queries);
-					}
-
-				} else {
-					//queryId++;
-					//queryMap.put(queryId, curToken);
-					queries.add(curQuery);
-					queriesIndex.put(curToken, queries);
-
+				} catch (GazetteerNotLoadedException e) {
+					logger.info("Could not load the gazetteer");
+					e.printStackTrace();
 				}
-
 			}
 			if (isBOL) {
 				String curLemma = token.getLemma().getValue().toLowerCase();
-				
-				ArrayList<EntryInfo> queries = new ArrayList<EntryInfo>();
 
-				if (queriesIndex.containsKey(curLemma)) {
-					boolean flag = false;
-					queries = queriesIndex.get(curLemma);
-					for (final Iterator<EntryInfo> entryIter = queries
-							.iterator(); entryIter.hasNext();) {
-						EntryInfo curEntry = entryIter.next();
-						if (curEntry.getStartOffset() == curStartOffset
-								&& curEntry.getEndOffset() == curEndOffset) {
-							flag = true;
-						}
+				try {
+					values = NEMEX_A.checkSimilarity(curLemma,
+							gazetteerFilePathAlignmentLookup[1],
+							this.similarityMeasureAlignmentLookup[1],
+							this.similarityThresholdAlignmentLookup[1]);
+
+					if (values.size() > 0) {
+						logger.info("Query text: " + curLemma);
+						logger.info("Similar entry: " + values);
+						NemexType alignmentAnnot = addNemexAnnotation(view,
+								values, curStartOffset, curEndOffset);
+
+						addAlignmentLink(alignmentAnnot, view, curStartOffset,
+								curEndOffset, entryMapBOL, entryInvIndexBOL);
 					}
-
-					if (flag == false) {
-						queries.add(curQuery);
-						queriesIndex.put(curLemma, queries);
-					}
-
-				} else {
-					queries.add(curQuery);
-					queriesIndex.put(curLemma, queries);
-
+				} catch (GazetteerNotLoadedException e) {
+					logger.info("Could not load the gazetteer");
+					e.printStackTrace();
 				}
 			}
 
@@ -765,93 +813,49 @@ public class NemexAligner implements AlignmentComponent {
 					tagArray.toArray(new String[tagArray.size()]));
 
 			for (int i = 0; i < chunk.length; i++) {
-				int start = chunk[i].getStart();
-				int end = chunk[i].getEnd();
+				int start = chunk[i].getStart(); // start index for tokens in
+													// that chunk
+				int end = chunk[i].getEnd(); // end index for tokens in that
+												// chunk
 				str = "";
 				for (int j = start; j < end; j++) {
 					if (str != "")
-						str += this.delimiter;
+						str += this.delimiterAlignmentLookup[2];
 					str += tokenTextArray.get(j);
 				}
 
-				int startOffset = tokenStartOffsetArray.get(start);
-				int endOffset = tokenEndOffsetArray.get(end - 1);
+				int chunkStartOffset = tokenStartOffsetArray.get(start);
+				int chunkEndOffset = tokenEndOffsetArray.get(end - 1);
 
-				Chunk chunkAnnot = new Chunk(view, startOffset, endOffset);
+				Chunk chunkAnnot = new Chunk(view, chunkStartOffset,
+						chunkEndOffset);
 				chunkAnnot.setChunkValue(str);
 				chunkAnnot.addToIndexes();
 
 				str = str.toLowerCase();
 
-				EntryInfo curQuery = new EntryInfo(view, startOffset,
-						endOffset, null, false);
-				
-				ArrayList<EntryInfo> queries = new ArrayList<EntryInfo>();
-
-				if (queriesIndex.containsKey(str)) {
-					boolean flag = false;
-					queries = queriesIndex.get(str);
-					for (final Iterator<EntryInfo> entryIter = queries
-							.iterator(); entryIter.hasNext();) {
-						EntryInfo curEntry = entryIter.next();
-						if (curEntry.getStartOffset() == startOffset
-								&& curEntry.getEndOffset() == endOffset) {
-							flag = true;
-						}
-					}
-
-					if (flag == false) {
-						queries.add(curQuery);
-						queriesIndex.put(str, queries);
-					}
-
-				} else {
-					queries.add(curQuery);
-					queriesIndex.put(str, queries);
-
-				}
-			}
-
-		}
-
-		Iterator<Map.Entry<String, ArrayList<EntryInfo>>> queriesIter = queriesIndex
-				.entrySet().iterator();
-		
-		while (queriesIter.hasNext()) {
-			
-			Map.Entry<String, ArrayList<EntryInfo>> curQuery = queriesIter
-					.next();
-			String query = curQuery.getKey();
-			ArrayList<EntryInfo> queryOffsets = curQuery.getValue();
-			
-			for (final Iterator<EntryInfo> iter = queryOffsets.iterator(); iter
-					.hasNext();) {
-				EntryInfo curOffset = iter.next();
-
-				JCas curView = curOffset.getView();
-				int startOffset = curOffset.getStartOffset();
-				int endOffset = curOffset.getEndOffset();
-				
-
 				try {
-					values = NEMEX_A.checkSimilarity(query, gazetteerFilePath,
-							this.similarityMeasureAlignmentLookup,
-							this.similarityThresholdAlignmentLookup);
+					values = NEMEX_A.checkSimilarity(str,
+							gazetteerFilePathAlignmentLookup[2],
+							this.similarityMeasureAlignmentLookup[2],
+							this.similarityThresholdAlignmentLookup[2]);
 
 					if (values.size() > 0) {
-						logger.info("Query text: " + query);
+						logger.info("Query text: " + str);
 						logger.info("Similar entry: " + values);
-						NemexType alignmentAnnot = addNemexAnnotation(curView,
-								values, startOffset, endOffset);
+						NemexType alignmentAnnot = addNemexAnnotation(view,
+								values, chunkStartOffset, chunkEndOffset);
 
-						addAlignmentLink(alignmentAnnot, curView, startOffset,
-								endOffset, entryMap, entryIndex);
+						addAlignmentLink(alignmentAnnot, view,
+								chunkStartOffset, chunkEndOffset,
+								entryMapBOChunks, entryInvIndexBOChunks);
 					}
 				} catch (GazetteerNotLoadedException e) {
 					logger.info("Could not load the gazetteer");
 					e.printStackTrace();
 				}
 			}
+
 		}
 	}
 
@@ -1016,8 +1020,11 @@ public class NemexAligner implements AlignmentComponent {
 			// Set the link direction
 			link.setDirection(Direction.HtoT);
 
-			// Set strength according to the nemex-a threshold
-			link.setStrength(this.similarityThresholdAlignmentLookup);
+			// Set strength as that of BOChunks if activated, BOW otherwise
+			if (this.isBOChunks)
+				link.setStrength(this.similarityThresholdAlignmentLookup[2]);
+			else
+				link.setStrength(this.similarityThresholdAlignmentLookup[0]);
 
 			// Add the link information
 			link.setAlignerID("NemexA");
@@ -1074,8 +1081,11 @@ public class NemexAligner implements AlignmentComponent {
 			// Set the link direction
 			link.setDirection(Direction.TtoH);
 
-			// Set strength according to the nemex-a threshold
-			link.setStrength(this.similarityThresholdAlignmentLookup);
+			// Set strength as that of BOChunks if activated, BOW otherwise
+			if (this.isBOChunks)
+				link.setStrength(this.similarityThresholdAlignmentLookup[2]);
+			else
+				link.setStrength(this.similarityThresholdAlignmentLookup[0]);
 
 			// Add the link information
 			link.setAlignerID("NemexA");
@@ -1100,7 +1110,7 @@ public class NemexAligner implements AlignmentComponent {
 
 	@Override
 	public String getInstanceName() {
-		return this.gazetteerFilePath;
+		return null;
 	}
 
 	private final static Logger logger = Logger.getLogger(NemexAligner.class);
@@ -1114,15 +1124,19 @@ public class NemexAligner implements AlignmentComponent {
 	private String[] externalDictPath;
 	private double[] similarityThresholdExtLookup;
 	private String[] similarityMeasureExtLookup;
+	private String[] delimiterExtLookup;
+	private boolean[] delimiterSwitchOffExtLookup;
+	private int[] nGramSizeExtLookup;
+	private boolean[] ignoreDuplicateNgramsExtLookup;
 
-	private String gazetteerFilePath;
-	private double similarityThresholdAlignmentLookup;
-	private String similarityMeasureAlignmentLookup;
+	private String[] gazetteerFilePathAlignmentLookup;
+	private double[] similarityThresholdAlignmentLookup;
+	private String[] similarityMeasureAlignmentLookup;
 
-	private String delimiter;
-	private Boolean delimiterSwitchOff;
-	private int nGramSize;
-	private Boolean ignoreDuplicateNgrams;
+	private String[] delimiterAlignmentLookup;
+	private boolean[] delimiterSwitchOffAlignmentLookup;
+	private int[] nGramSizeAlignmentLookup;
+	private boolean[] ignoreDuplicateNgramsAlignmentLookup;
 
 	private String direction;
 

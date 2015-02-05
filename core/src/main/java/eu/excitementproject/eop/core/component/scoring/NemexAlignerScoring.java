@@ -1,6 +1,5 @@
 package eu.excitementproject.eop.core.component.scoring;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -18,6 +17,7 @@ import org.uimafit.util.JCasUtil;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;
+import eu.excitement.type.alignment.Target;
 import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
@@ -35,10 +35,12 @@ public class NemexAlignerScoring implements ScoringComponent {
 	/**
 	 * the number of features
 	 */
-	private int numOfFeats = 11;
+	private int numOfFeats = 7;
 	private NemexAligner aligner;
 	private String direction;
 	private boolean isBOChunks;
+	private boolean useCoverageFeats;
+	private String[] coverageFeats;
 	public final static Logger logger = Logger
 			.getLogger(NemexClassificationEDA.class.getName());
 
@@ -62,6 +64,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 				",");
 		String[] similarityMeasureExtLookup = comp.getString(
 				"similarityMeasureExtLookup").split(",");
+
 		String[] thresholdStrings = comp.getString(
 				"similarityThresholdExtLookup").split(",");
 		double[] similarityThresholdExtLookup = new double[thresholdStrings.length];
@@ -69,18 +72,65 @@ public class NemexAlignerScoring implements ScoringComponent {
 			similarityThresholdExtLookup[i] = Double
 					.valueOf(thresholdStrings[i]);
 
-		String gazetteerFilePath = comp.getString("gazetteerFilePath");
-		String similarityMeasureAlignmentLookup = comp
-				.getString("similarityMeasureAlignmentLookup");
-		double similarityThresholdAlignmentLookup = Double.parseDouble(comp
-				.getString("similarityThresholdAlignmentLookup"));
+		String[] delimiterExtLookup = comp.getString("delimiterExtLookup")
+				.split(",");
 
-		String delimiter = comp.getString("delimiter");
-		boolean delimiterSwitchOff = Boolean.valueOf(comp
-				.getString("delimiterSwitchOff"));
-		int nGramSize = Integer.parseInt(comp.getString("nGramSize"));
-		boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
-				.getString("ignoreDuplicateNgrams"));
+		String[] delimiterSwitchOffExtLookupStrings = comp.getString(
+				"delimiterSwitchOffExtLookup").split(",");
+		boolean[] delimiterSwitchOffExtLookup = new boolean[delimiterSwitchOffExtLookupStrings.length];
+		for (int i = 0; i < delimiterSwitchOffExtLookupStrings.length; i++)
+			delimiterSwitchOffExtLookup[i] = Boolean
+					.valueOf(delimiterSwitchOffExtLookupStrings[i]);
+
+		String[] nGramSizeExtLookupStrings = comp.getString(
+				"nGramSizeExtLookup").split(",");
+		int[] nGramSizeExtLookup = new int[nGramSizeExtLookupStrings.length];
+		for (int i = 0; i < nGramSizeExtLookupStrings.length; i++)
+			nGramSizeExtLookup[i] = Integer
+					.valueOf(nGramSizeExtLookupStrings[i]);
+
+		String[] ignoreDuplicateNGramsExtLookupStrings = comp.getString(
+				"ignoreDuplicateNGramsExtLookup").split(",");
+		boolean[] ignoreDuplicateNGramsExtLookup = new boolean[ignoreDuplicateNGramsExtLookupStrings.length];
+		for (int i = 0; i < ignoreDuplicateNGramsExtLookupStrings.length; i++)
+			ignoreDuplicateNGramsExtLookup[i] = Boolean
+					.valueOf(ignoreDuplicateNGramsExtLookupStrings[i]);
+
+		String[] gazetteerFilePath = comp.getString("gazetteerFilePath").split(
+				",");
+		String[] similarityMeasureAlignmentLookup = comp.getString(
+				"similarityMeasureAlignmentLookup").split(",");
+
+		String[] thresholdAlignmentStrings = comp.getString(
+				"similarityThresholdAlignmentLookup").split(",");
+		double[] similarityThresholdAlignmentLookup = new double[thresholdAlignmentStrings.length];
+		for (int i = 0; i < thresholdAlignmentStrings.length; i++)
+			similarityThresholdAlignmentLookup[i] = Double
+					.valueOf(thresholdAlignmentStrings[i]);
+
+		String[] delimiterAlignmentLookup = comp.getString(
+				"delimiterAlignmentLookup").split(",");
+
+		String[] delimiterSwitchOffAlignmentLookupStrings = comp.getString(
+				"delimiterSwitchOffAlignmentLookup").split(",");
+		boolean[] delimiterSwitchOffAlignmentLookup = new boolean[delimiterSwitchOffAlignmentLookupStrings.length];
+		for (int i = 0; i < delimiterSwitchOffAlignmentLookupStrings.length; i++)
+			delimiterSwitchOffAlignmentLookup[i] = Boolean
+					.valueOf(delimiterSwitchOffAlignmentLookupStrings[i]);
+
+		String[] nGramSizeAlignmentLookupStrings = comp.getString(
+				"nGramSizeAlignmentLookup").split(",");
+		int[] nGramSizeAlignmentLookup = new int[nGramSizeAlignmentLookupStrings.length];
+		for (int i = 0; i < nGramSizeAlignmentLookupStrings.length; i++)
+			nGramSizeAlignmentLookup[i] = Integer
+					.valueOf(nGramSizeAlignmentLookupStrings[i]);
+
+		String[] ignoreDuplicateNGramsAlignmentLookupStrings = comp.getString(
+				"ignoreDuplicateNGramsAlignmentLookup").split(",");
+		boolean[] ignoreDuplicateNGramsAlignmentLookup = new boolean[ignoreDuplicateNGramsAlignmentLookupStrings.length];
+		for (int i = 0; i < ignoreDuplicateNGramsAlignmentLookupStrings.length; i++)
+			ignoreDuplicateNGramsAlignmentLookup[i] = Boolean
+					.valueOf(ignoreDuplicateNGramsAlignmentLookupStrings[i]);
 
 		this.direction = comp.getString("direction");
 
@@ -96,13 +146,23 @@ public class NemexAlignerScoring implements ScoringComponent {
 				.getString("useFirstSenseOnlyRight"));
 		String wnPath = comp.getString("wnPath");
 
+		this.useCoverageFeats = Boolean.valueOf(comp
+				.getString("useCoverageFeatures"));
+		this.coverageFeats = comp.getString("coverageFeatures").split(",");
+
+		if (useCoverageFeats)
+			numOfFeats += coverageFeats.length;
+
 		this.aligner = new NemexAligner(isBOW, isBOL, isBOChunks,
 				numOfExtDicts, externalDictPath, similarityMeasureExtLookup,
-				similarityThresholdExtLookup, gazetteerFilePath,
+				similarityThresholdExtLookup, delimiterExtLookup,
+				delimiterSwitchOffExtLookup, nGramSizeExtLookup,
+				ignoreDuplicateNGramsExtLookup, gazetteerFilePath,
 				similarityMeasureAlignmentLookup,
-				similarityThresholdAlignmentLookup, delimiter,
-				delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams,
-				chunkerModelPath, direction, isWN, WNRelations, isWNCollapsed,
+				similarityThresholdAlignmentLookup, delimiterAlignmentLookup,
+				delimiterSwitchOffAlignmentLookup, nGramSizeAlignmentLookup,
+				ignoreDuplicateNGramsAlignmentLookup, chunkerModelPath,
+				direction, isWN, WNRelations, isWNCollapsed,
 				useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath);
 
 	}
@@ -140,7 +200,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 			aligner.annotate(cas);
 
 			JCas tView = null, hView = null;
-			
+
 			try {
 				tView = cas.getView(LAP_ImplBase.TEXTVIEW);
 
@@ -156,14 +216,16 @@ public class NemexAlignerScoring implements ScoringComponent {
 						"Failed to access the hypothesis view", e);
 			}
 
-			
 			if (null != tView && null != hView) {
+
+				int tChunkNum = 0;
+				int hChunkNum = 0;
 
 				if (isBOChunks) {
 					Collection<Chunk> tChunks = JCasUtil.select(tView,
 							Chunk.class);
 
-					int tChunkNum = tChunks.size();
+					tChunkNum = tChunks.size();
 
 					if (0 == tChunkNum) {
 						logger.warning("No chunks found for T");
@@ -171,14 +233,14 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 					Collection<Chunk> hChunks = JCasUtil.select(hView,
 							Chunk.class);
-					int hChunkNum = hChunks.size();
+					hChunkNum = hChunks.size();
 
 					if (0 == hChunkNum) {
 						logger.warning("No chunks found for H");
 					}
 				}
-				scoresVector
-						.addAll(calculateSimilarity(tView, hView, direction));
+				scoresVector.addAll(calculateSimilarity(tView, hView,
+						direction, tChunkNum, hChunkNum));
 
 				/*
 				 * if (direction == "HtoT") { Collection<Link> hLinks = JCasUtil
@@ -220,151 +282,169 @@ public class NemexAlignerScoring implements ScoringComponent {
 		return scoresVector;
 	}
 
-	/**
-	 * Count the tokens contained in a text and store the counts in a HashMap
-	 * 
-	 * @param text
-	 *            the input text represented in a JCas
-	 * @return a HashMap represents the bag of tokens contained in the text, in
-	 *         the form of <Token, Frequency>
-	 */
-	/*
-	 * protected HashSet<String> countLinks(Collection<Link> links) {
-	 * HashSet<String> linkSet = new HashSet<String>(); Iterator<Link> linkIter
-	 * = links.iterator();
-	 * 
-	 * while (linkIter.hasNext()) { Link curr = (Link) linkIter.next(); String
-	 * linkID = curr.getAlignerID();
-	 * 
-	 * linkSet.add(linkID);
-	 * 
-	 * } return linkSet; }
-	 */
+	// protected HashSet<String> countLinks(Collection<Link> links) {
+	// HashSet<String> linkSet = new HashSet<String>();
+	// Iterator<Link> linkIter = links.iterator();
+	//
+	// while (linkIter.hasNext()) {
+	// Link curr = (Link) linkIter.next();
+	// String linkID = curr.getAlignerID();
+	//
+	// linkSet.add(linkID);
+	//
+	// }
+	// return linkSet;
+	// }
 
 	protected Vector<Double> calculateSimilarity(JCas tView, JCas hView,
-			String direction) {
-
-		HashMap<String, Integer> tWordsMap = new HashMap<String, Integer>();
-		HashMap<String, Integer> tPosMap = new HashMap<String, Integer>();
-
-		HashMap<String, Integer> hWordsMap = new HashMap<String, Integer>();
-		HashMap<String, Integer> hPosMap = new HashMap<String, Integer>();
+			String direction, int tChunkNum, int hChunkNum) {
 
 		Collection<Token> tTokens = JCasUtil.select(tView, Token.class);
 		int numOfTTokens = tTokens.size();
-		
-		if(numOfTTokens == 0) {
+
+		if (numOfTTokens == 0) {
 			logger.warning("No tokens found for TEXT");
 		}
-		
-		int numOfTContentWords = 0;
-		int numOfTVerbs = 0;
-		int numOfTProperNouns = 0;
 
 		Collection<Token> hTokens = JCasUtil.select(hView, Token.class);
 		int numOfHTokens = hTokens.size();
-		
-		if(numOfHTokens == 0) {
+
+		if (numOfHTokens == 0) {
 			logger.warning("No tokens found for HYPOTHESIS");
-		}
-		
-		int numOfHContentWords = 0;
-		int numOfHVerbs = 0;
-		int numOfHProperNouns = 0;
-
-		Set<String> contentTags = new HashSet<String>(Arrays.asList("NN",
-				"NNS", "NNP", "NNPS", "VB", "VBG", "VBD", "VBN", "VBP", "VBZ",
-				"JJ", "JJR", "JJS"));
-
-		Set<String> verbTags = new HashSet<String>(Arrays.asList("VB", "VBG",
-				"VBD", "VBN"));
-
-		Set<String> properNounTags = new HashSet<String>(Arrays.asList("NNP",
-				"NNPS"));
-
-		for (final Iterator<Token> tIter = tTokens.iterator(); tIter.hasNext();) {
-			Token t = tIter.next();
-			if (contentTags.contains(t.getPos().getPosValue()))
-				numOfTContentWords++;
-			if (verbTags.contains(t.getPos().getPosValue()))
-				numOfTVerbs++;
-			if (properNounTags.contains(t.getPos().getPosValue()))
-				numOfTProperNouns++;
-
-		}
-
-		for (final Iterator<Token> hIter = hTokens.iterator(); hIter.hasNext();) {
-			Token t = hIter.next();
-			if (contentTags.contains(t.getPos().getPosValue()))
-				numOfHContentWords++;
-			if (verbTags.contains(t.getPos().getPosValue()))
-				numOfHVerbs++;
-			if (properNounTags.contains(t.getPos().getPosValue()))
-				numOfHProperNouns++;
-
 		}
 
 		Collection<Link> links = null;
 
 		links = JCasUtil.select(hView, Link.class);
-		
+
 		if (links.size() == 0)
-			logger.warning("No alignment link found");
+			logger.warning("No alignment links found");
 
-		for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
-			Link link = iter.next();
-			
-			
-			int tStartOffset = link.getTSideTarget().getBegin();
-			int tEndOffset = link.getTSideTarget().getEnd();
-			int hStartOffset = link.getHSideTarget().getBegin();
-			int hEndOffset = link.getHSideTarget().getEnd();
-			
-			//logger.info("Link direction: " +link.getDirection());
-			//logger.info("TStart: "+tStartOffset+", TEnd: "+ tEndOffset);
-			//logger.info("HStart: "+hStartOffset+", HEnd: "+ hEndOffset);
+		Vector<Double> returnValue = new Vector<Double>();
 
-			Collection<Token> tLinkCoveredTokens = new ArrayList<Token>();
-			
-			for(final Iterator<Token> tIter = tTokens.iterator(); tIter.hasNext();)
-			{
-				Token curToken = tIter.next();
-				if(curToken.getBegin() >= tStartOffset && curToken.getEnd() <= tEndOffset)
-					tLinkCoveredTokens.add(curToken);
+		if (useCoverageFeats) {
+
+			HashMap<String, Integer> tWordsMap = new HashMap<String, Integer>();
+			HashMap<String, Integer> tPosMap = new HashMap<String, Integer>();
+
+			HashMap<String, Integer> hWordsMap = new HashMap<String, Integer>();
+			HashMap<String, Integer> hPosMap = new HashMap<String, Integer>();
+
+			int numOfTContentWords = 0;
+			int numOfTVerbs = 0;
+			int numOfTProperNouns = 0;
+
+			int numOfHContentWords = 0;
+			int numOfHVerbs = 0;
+			int numOfHProperNouns = 0;
+
+			Set<String> contentTags = new HashSet<String>(Arrays.asList("NN",
+					"NNS", "NNP", "NNPS", "VB", "VBG", "VBD", "VBN", "VBP",
+					"VBZ", "JJ", "JJR", "JJS"));
+
+			Set<String> verbTags = new HashSet<String>(Arrays.asList("VB",
+					"VBG", "VBD", "VBN"));
+
+			Set<String> properNounTags = new HashSet<String>(Arrays.asList(
+					"NNP", "NNPS"));
+
+			for (final Iterator<Token> tIter = tTokens.iterator(); tIter
+					.hasNext();) {
+				Token t = tIter.next();
+				if (contentTags.contains(t.getPos().getPosValue()))
+					numOfTContentWords++;
+				if (verbTags.contains(t.getPos().getPosValue()))
+					numOfTVerbs++;
+				if (properNounTags.contains(t.getPos().getPosValue()))
+					numOfTProperNouns++;
+
 			}
 
-			if (tLinkCoveredTokens.size() == 0)
-				logger.warning("No tokens covered under aligned data in TEXT.");
-			
-			Collection<Token> hLinkCoveredTokens = new ArrayList<Token>();
+			for (final Iterator<Token> hIter = hTokens.iterator(); hIter
+					.hasNext();) {
+				Token t = hIter.next();
+				if (contentTags.contains(t.getPos().getPosValue()))
+					numOfHContentWords++;
+				if (verbTags.contains(t.getPos().getPosValue()))
+					numOfHVerbs++;
+				if (properNounTags.contains(t.getPos().getPosValue()))
+					numOfHProperNouns++;
 
-			for(final Iterator<Token> hIter = hTokens.iterator(); hIter.hasNext();)
-			{
-				Token curToken = hIter.next();
-				if(curToken.getBegin() >= hStartOffset && curToken.getEnd() <= hEndOffset)
-					hLinkCoveredTokens.add(curToken);
 			}
 
-			if (hLinkCoveredTokens.size() == 0)
-				logger.warning("No tokens covered under aligned data in HYPOTHESIS.");
+			double numOfCommonLinks = 0;
+			for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
+				Link link = iter.next();
 
-			addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
-			addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
+				// Getting number of overlapping alignment links between T and H
 
+				Target tSideTarget = link.getTSideTarget();
+				if (tSideTarget.getView().equals(tView)) {
+					numOfCommonLinks++;
+				}
+				// Getting scores for coverage
+
+				int tStartOffset = link.getTSideTarget().getBegin();
+				int tEndOffset = link.getTSideTarget().getEnd();
+				int hStartOffset = link.getHSideTarget().getBegin();
+				int hEndOffset = link.getHSideTarget().getEnd();
+
+				Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
+						tView, Token.class, tStartOffset, tEndOffset);
+
+				if (tLinkCoveredTokens.size() == 0)
+					logger.warning("No tokens covered under aligned data in TEXT.");
+
+				Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
+						hView, Token.class, hStartOffset, hEndOffset);
+
+				if (hLinkCoveredTokens.size() == 0)
+					logger.warning("No tokens covered under aligned data in HYPOTHESIS.");
+
+				addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
+				addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
+
+			}
+			// new String[] {"word", "contentWord", "verb", "properNoun" }
+
+			returnValue.add(numOfCommonLinks / hChunkNum);
+			returnValue.add(numOfCommonLinks / tChunkNum);
+			returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
+					/ tChunkNum);
+
+			if (direction == "TtoH")
+				returnValue.addAll(calculateOverlap(tWordsMap, tPosMap,
+						coverageFeats, new int[] { numOfTTokens,
+								numOfTContentWords, numOfTVerbs,
+								numOfTProperNouns }, contentTags, verbTags,
+						properNounTags));
+			else
+				returnValue.addAll(calculateOverlap(hWordsMap, hPosMap,
+						coverageFeats, new int[] { numOfHTokens,
+								numOfHContentWords, numOfHVerbs,
+								numOfHProperNouns }, contentTags, verbTags,
+						properNounTags));
 		}
 
-		Vector<Double> returnValue = null;
-		if (direction == "TtoH")
-			returnValue = calculateOverlap(tWordsMap, tPosMap, new String[] {
-					"word", "contentWord", "verb", "properNoun" }, new int[] {
-					numOfTTokens, numOfTContentWords, numOfTVerbs,
-					numOfTProperNouns }, contentTags, verbTags, properNounTags);
-		else
-			returnValue = calculateOverlap(hWordsMap, hPosMap, new String[] {
-					"word", "contentWord", "verb", "properNoun" }, new int[] {
-					numOfHTokens, numOfHContentWords, numOfHVerbs,
-					numOfHProperNouns }, contentTags, verbTags, properNounTags);
+		else {
+			double numOfCommonLinks = 0;
+			for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
+				Link link = iter.next();
 
+				// Getting number of overlapping alignment links between T and H
+
+				Target tSideTarget = link.getTSideTarget();
+				if (tSideTarget.getView().equals(tView)) {
+					numOfCommonLinks++;
+				}
+			}
+
+			returnValue.add(numOfCommonLinks / hChunkNum);
+			returnValue.add(numOfCommonLinks / tChunkNum);
+			returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
+					/ tChunkNum);
+		}
+		
 		return returnValue;
 
 	}
