@@ -96,41 +96,50 @@ public class NemexAlignerScoring implements ScoringComponent {
 			ignoreDuplicateNGramsExtLookup[i] = Boolean
 					.valueOf(ignoreDuplicateNGramsExtLookupStrings[i]);
 
-		String[] gazetteerFilePath = comp.getString("gazetteerFilePath").split(
-				",");
-		String[] similarityMeasureAlignmentLookup = comp.getString(
-				"similarityMeasureAlignmentLookup").split(",");
+		String gazetteerFilePathBOW = comp.getString("gazetteerFilePathBOW");
+		String similarityMeasureAlignmentLookupBOW = comp
+				.getString("similarityMeasureAlignmentLookupBOW");
+		double similarityThresholdAlignmentLookupBOW = Double.valueOf(comp
+				.getString("similarityThresholdAlignmentLookupBOW"));
+		String delimiterAlignmentLookupBOW = comp
+				.getString("delimiterAlignmentLookupBOW");
+		boolean delimiterSwitchOffAlignmentLookupBOW = Boolean.valueOf(comp
+				.getString("delimiterSwitchOffAlignmentLookupBOW"));
+		int nGramSizeAlignmentLookupBOW = Integer.valueOf(comp
+				.getString("nGramSizeAlignmentLookupBOW"));
+		boolean ignoreDuplicateNGramsAlignmentLookupBOW = Boolean.valueOf(comp
+				.getString("ignoreDuplicateNGramsAlignmentLookupBOW"));
 
-		String[] thresholdAlignmentStrings = comp.getString(
-				"similarityThresholdAlignmentLookup").split(",");
-		double[] similarityThresholdAlignmentLookup = new double[thresholdAlignmentStrings.length];
-		for (int i = 0; i < thresholdAlignmentStrings.length; i++)
-			similarityThresholdAlignmentLookup[i] = Double
-					.valueOf(thresholdAlignmentStrings[i]);
+		String gazetteerFilePathBOL = comp.getString("gazetteerFilePathBOL");
+		String similarityMeasureAlignmentLookupBOL = comp
+				.getString("similarityMeasureAlignmentLookupBOL");
+		double similarityThresholdAlignmentLookupBOL = Double.valueOf(comp
+				.getString("similarityThresholdAlignmentLookupBOL"));
+		String delimiterAlignmentLookupBOL = comp
+				.getString("delimiterAlignmentLookupBOL");
+		boolean delimiterSwitchOffAlignmentLookupBOL = Boolean.valueOf(comp
+				.getString("delimiterSwitchOffAlignmentLookupBOL"));
+		int nGramSizeAlignmentLookupBOL = Integer.valueOf(comp
+				.getString("nGramSizeAlignmentLookupBOL"));
+		boolean ignoreDuplicateNGramsAlignmentLookupBOL = Boolean.valueOf(comp
+				.getString("ignoreDuplicateNGramsAlignmentLookupBOL"));
 
-		String[] delimiterAlignmentLookup = comp.getString(
-				"delimiterAlignmentLookup").split(",");
-
-		String[] delimiterSwitchOffAlignmentLookupStrings = comp.getString(
-				"delimiterSwitchOffAlignmentLookup").split(",");
-		boolean[] delimiterSwitchOffAlignmentLookup = new boolean[delimiterSwitchOffAlignmentLookupStrings.length];
-		for (int i = 0; i < delimiterSwitchOffAlignmentLookupStrings.length; i++)
-			delimiterSwitchOffAlignmentLookup[i] = Boolean
-					.valueOf(delimiterSwitchOffAlignmentLookupStrings[i]);
-
-		String[] nGramSizeAlignmentLookupStrings = comp.getString(
-				"nGramSizeAlignmentLookup").split(",");
-		int[] nGramSizeAlignmentLookup = new int[nGramSizeAlignmentLookupStrings.length];
-		for (int i = 0; i < nGramSizeAlignmentLookupStrings.length; i++)
-			nGramSizeAlignmentLookup[i] = Integer
-					.valueOf(nGramSizeAlignmentLookupStrings[i]);
-
-		String[] ignoreDuplicateNGramsAlignmentLookupStrings = comp.getString(
-				"ignoreDuplicateNGramsAlignmentLookup").split(",");
-		boolean[] ignoreDuplicateNGramsAlignmentLookup = new boolean[ignoreDuplicateNGramsAlignmentLookupStrings.length];
-		for (int i = 0; i < ignoreDuplicateNGramsAlignmentLookupStrings.length; i++)
-			ignoreDuplicateNGramsAlignmentLookup[i] = Boolean
-					.valueOf(ignoreDuplicateNGramsAlignmentLookupStrings[i]);
+		String gazetteerFilePathBOChunks = comp
+				.getString("gazetteerFilePathBOChunks");
+		String similarityMeasureAlignmentLookupBOChunks = comp
+				.getString("similarityMeasureAlignmentLookupBOChunks");
+		double similarityThresholdAlignmentLookupBOChunks = Double.valueOf(comp
+				.getString("similarityThresholdAlignmentLookupBOChunks"));
+		String delimiterAlignmentLookupBOChunks = comp
+				.getString("delimiterAlignmentLookupBOChunks");
+		boolean delimiterSwitchOffAlignmentLookupBOChunks = Boolean
+				.valueOf(comp
+						.getString("delimiterSwitchOffAlignmentLookupBOChunks"));
+		int nGramSizeAlignmentLookupBOChunks = Integer.valueOf(comp
+				.getString("nGramSizeAlignmentLookupBOChunks"));
+		boolean ignoreDuplicateNGramsAlignmentLookupBOChunks = Boolean
+				.valueOf(comp
+						.getString("ignoreDuplicateNGramsAlignmentLookupBOChunks"));
 
 		this.direction = comp.getString("direction");
 
@@ -157,11 +166,26 @@ public class NemexAlignerScoring implements ScoringComponent {
 				numOfExtDicts, externalDictPath, similarityMeasureExtLookup,
 				similarityThresholdExtLookup, delimiterExtLookup,
 				delimiterSwitchOffExtLookup, nGramSizeExtLookup,
-				ignoreDuplicateNGramsExtLookup, gazetteerFilePath,
-				similarityMeasureAlignmentLookup,
-				similarityThresholdAlignmentLookup, delimiterAlignmentLookup,
-				delimiterSwitchOffAlignmentLookup, nGramSizeAlignmentLookup,
-				ignoreDuplicateNGramsAlignmentLookup, chunkerModelPath,
+				ignoreDuplicateNGramsExtLookup, gazetteerFilePathBOW,
+				similarityMeasureAlignmentLookupBOW,
+				similarityThresholdAlignmentLookupBOW,
+				delimiterAlignmentLookupBOW,
+				delimiterSwitchOffAlignmentLookupBOW,
+				nGramSizeAlignmentLookupBOW,
+				ignoreDuplicateNGramsAlignmentLookupBOW, gazetteerFilePathBOL,
+				similarityMeasureAlignmentLookupBOL,
+				similarityThresholdAlignmentLookupBOL,
+				delimiterAlignmentLookupBOL,
+				delimiterSwitchOffAlignmentLookupBOL,
+				nGramSizeAlignmentLookupBOL,
+				ignoreDuplicateNGramsAlignmentLookupBOL,
+				gazetteerFilePathBOChunks,
+				similarityMeasureAlignmentLookupBOChunks,
+				similarityThresholdAlignmentLookupBOChunks,
+				delimiterAlignmentLookupBOChunks,
+				delimiterSwitchOffAlignmentLookupBOChunks,
+				nGramSizeAlignmentLookupBOChunks,
+				ignoreDuplicateNGramsAlignmentLookupBOChunks, chunkerModelPath,
 				direction, isWN, WNRelations, isWNCollapsed,
 				useFirstSenseOnlyLeft, useFirstSenseOnlyRight, wnPath);
 
@@ -444,7 +468,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 			returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
 					/ tChunkNum);
 		}
-		
+
 		return returnValue;
 
 	}
