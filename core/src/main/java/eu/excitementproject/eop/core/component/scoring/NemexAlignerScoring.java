@@ -171,12 +171,12 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		if (useCoverageFeats)
 			numOfFeats += coverageFeats.length;
-		
+
 		stopWords = new HashSet<String>();
 		String stopWordPath = comp.getString("stopWordPath");
-		
+
 		if (removeStopWords) {
-			
+
 			try {
 				for (String str : (Files.readAllLines(Paths.get(stopWordPath),
 						Charset.forName("UTF-8"))))
@@ -365,10 +365,51 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		links = JCasUtil.select(hView, Link.class);
 
-		if (links.size() == 0)
+		double numOfCommonLinks = links.size();
+
+		if (0 == links.size())
 			logger.warn("No alignment links found");
 
 		Vector<Double> returnValue = new Vector<Double>();
+
+		if (removeStopWords) {
+
+			numOfTTokens = 0;
+			numOfHTokens = 0;
+			for (final Iterator<Token> tokensIter = tTokens.iterator(); tokensIter
+					.hasNext();) {
+				Token token = tokensIter.next();
+				String curToken = token.getCoveredText().toLowerCase();
+
+				if (!stopWords.contains(curToken.toLowerCase()))
+					numOfTTokens++;
+
+			}
+
+			for (final Iterator<Token> tokensIter = hTokens.iterator(); tokensIter
+					.hasNext();) {
+				Token token = tokensIter.next();
+				String curToken = token.getCoveredText().toLowerCase();
+
+				if (!stopWords.contains(curToken.toLowerCase()))
+					numOfHTokens++;
+
+			}
+		}
+
+		if (tChunkNum != 0 && hChunkNum != 0) {
+			returnValue.add(numOfCommonLinks / hChunkNum);
+			returnValue.add(numOfCommonLinks / tChunkNum);
+			returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
+					/ tChunkNum);
+		}
+
+		else {
+			returnValue.add(numOfCommonLinks / numOfTTokens);
+			returnValue.add(numOfCommonLinks / numOfHTokens);
+			returnValue.add(numOfCommonLinks * numOfCommonLinks / numOfTTokens
+					/ numOfHTokens);
+		}
 
 		if (useCoverageFeats) {
 
@@ -420,16 +461,17 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 			}
 
-			double numOfCommonLinks = 0;
+			// double numOfCommonLinks = 0;
 			for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
 				Link link = iter.next();
-
-				// Getting number of overlapping alignment links between T and H
-
-				Target tSideTarget = link.getTSideTarget();
-				if (tSideTarget.getView().equals(tView)) {
-					numOfCommonLinks++;
-				}
+				//
+				// // Getting number of overlapping alignment links between T
+				// and H
+				//
+				// Target tSideTarget = link.getTSideTarget();
+				// if (tSideTarget.getView().equals(tView)) {
+				// numOfCommonLinks++;
+				// }
 				// Getting scores for coverage
 
 				int tStartOffset = link.getTSideTarget().getBegin();
@@ -449,27 +491,25 @@ public class NemexAlignerScoring implements ScoringComponent {
 				if (hLinkCoveredTokens.size() == 0)
 					logger.warn("No tokens covered under aligned data in HYPOTHESIS.");
 
-				numOfTTokens = addToWordsAndPosMap(tWordsMap, tPosMap,
-						tLinkCoveredTokens);
-				numOfHTokens = addToWordsAndPosMap(hWordsMap, hPosMap,
-						hLinkCoveredTokens);
+				addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
+				addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
 
 			}
 			// new String[] {"word", "contentWord", "verb", "properNoun" }
 
-			if (tChunkNum != 0 && hChunkNum != 0) {
-				returnValue.add(numOfCommonLinks / hChunkNum);
-				returnValue.add(numOfCommonLinks / tChunkNum);
-				returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
-						/ tChunkNum);
-			}
-
-			else {
-				returnValue.add(numOfCommonLinks / numOfTTokens);
-				returnValue.add(numOfCommonLinks / numOfHTokens);
-				returnValue.add(numOfCommonLinks * numOfCommonLinks
-						/ numOfTTokens / numOfHTokens);
-			}
+			// if (tChunkNum != 0 && hChunkNum != 0) {
+			// returnValue.add(numOfCommonLinks / hChunkNum);
+			// returnValue.add(numOfCommonLinks / tChunkNum);
+			// returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
+			// / tChunkNum);
+			// }
+			//
+			// else {
+			// returnValue.add(numOfCommonLinks / numOfTTokens);
+			// returnValue.add(numOfCommonLinks / numOfHTokens);
+			// returnValue.add(numOfCommonLinks * numOfCommonLinks
+			// / numOfTTokens / numOfHTokens);
+			// }
 
 			if (direction == "TtoH")
 				returnValue.addAll(calculateOverlap(tWordsMap, tPosMap,
@@ -485,53 +525,40 @@ public class NemexAlignerScoring implements ScoringComponent {
 						properNounTags));
 		}
 
-		else {
-			double numOfCommonLinks = 0;
-			for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
-				Link link = iter.next();
+		// else {
+		// double numOfCommonLinks = 0;
+		// for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
+		// Link link = iter.next();
+		//
+		// // Getting number of overlapping alignment links between T and H
+		//
+		// Target tSideTarget = link.getTSideTarget();
+		// if (tSideTarget.getView().equals(tView)) {
+		// numOfCommonLinks++;
+		// }
+		// }
 
-				// Getting number of overlapping alignment links between T and H
-
-				Target tSideTarget = link.getTSideTarget();
-				if (tSideTarget.getView().equals(tView)) {
-					numOfCommonLinks++;
-				}
-			}
-
-			if (tChunkNum != 0 && hChunkNum != 0) {
-				returnValue.add(numOfCommonLinks / hChunkNum);
-				returnValue.add(numOfCommonLinks / tChunkNum);
-				returnValue.add(numOfCommonLinks * numOfCommonLinks / hChunkNum
-						/ tChunkNum);
-			}
-
-			else {
-				returnValue.add(numOfCommonLinks / numOfTTokens);
-				returnValue.add(numOfCommonLinks / numOfHTokens);
-				returnValue.add(numOfCommonLinks * numOfCommonLinks
-						/ numOfTTokens / numOfHTokens);
-			}
-		}
+		// }
 
 		return returnValue;
 
 	}
 
-	private int addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
+	private void addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
 			HashMap<String, Integer> posMap, Collection<Token> linkCoveredTokens) {
 
-		int numOfTokens = 0;
+		// int numOfTokens = 0;
 		for (final Iterator<Token> tokensIter = linkCoveredTokens.iterator(); tokensIter
 				.hasNext();) {
 			Token token = tokensIter.next();
 			String curToken = token.getCoveredText().toLowerCase();
 
-			if (removeStopWords) {
-				if (stopWords.contains(curToken.toLowerCase()))
-					continue;
-			}
+//			if (removeStopWords) {
+//				if (stopWords.contains(curToken.toLowerCase()))
+//					continue;
+//			}
 
-			numOfTokens++;
+			// numOfTokens++;
 			String curPOS = token.getPos().getPosValue();
 
 			if (wordsMap.containsKey(curToken)) {
@@ -546,7 +573,7 @@ public class NemexAlignerScoring implements ScoringComponent {
 
 		}
 
-		return numOfTokens;
+		// return numOfTokens;
 
 	}
 

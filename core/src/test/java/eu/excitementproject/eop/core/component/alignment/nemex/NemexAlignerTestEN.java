@@ -120,6 +120,7 @@ public class NemexAlignerTestEN {
 			// Print the alignment of JCas pair
 
 			JCas hView = aJCas.getView(LAP_ImplBase.HYPOTHESISVIEW);
+			JCas tView = aJCas.getView(LAP_ImplBase.TEXTVIEW);
 
 			for (Link link : JCasUtil.select(hView, Link.class)) {
 
@@ -134,6 +135,9 @@ public class NemexAlignerTestEN {
 				// int tEnd = link.getTSideTarget().getEnd();
 				// int hStart = link.getHSideTarget().getBegin();
 				// int hEnd = link.getHSideTarget().getEnd();
+				
+				if(link.getTSideTarget().getView().getCurrentView().equals(tView)){
+						logger.info("Same view");}
 				//
 				// Collection<Token> hTokens = JCasUtil.selectCovered(hView,
 				// Token.class, hStart, hEnd);
