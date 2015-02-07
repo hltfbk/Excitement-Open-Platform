@@ -446,9 +446,47 @@ public class NemexAligner implements AlignmentComponent {
 					entryInvIndexBOL.put(curLemma.toLowerCase(), offsets);
 
 					if (isWN) {
+						BySimplerCanonicalPartOfSpeech curTag = null;
+						if(curPOS.startsWith("NN")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.NOUN);
+						}
+						else if(curPOS.startsWith("VB")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.VERB);
+						}
+						else if(curPOS.startsWith("RB") || curPOS.equalsIgnoreCase("WRB")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.ADVERB);
+						}
+						else if(curPOS.startsWith("JJ")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.ADJECTIVE);
+						}
+						else if(curPOS.startsWith("DT") || curPOS.equals("WDT")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.DETERMINER);
+						}
+						else if(curPOS.startsWith("PR") || curPOS.startsWith("WP")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.PRONOUN);
+						}
+						else if(curPOS.startsWith("IN")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.PREPOSITION);
+						}
+						else if(curPOS.startsWith("SYM")) {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.PUNCTUATION);
+						}
+						else {
+							curTag = new BySimplerCanonicalPartOfSpeech(
+									SimplerCanonicalPosTag.OTHER);
+						}
+						
 
 						for (LexicalRule<? extends RuleInfo> rule : wnlr
-								.getRulesForLeft(curLemma, null)) {
+								.getRulesForLeft(curLemma, curTag)) {
 
 							String curEntry = rule
 									.getRLemma()
