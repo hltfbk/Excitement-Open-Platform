@@ -37,6 +37,11 @@
   	  <artifactId>alignmentedas</artifactId>
   	  <version>1.2.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+  	  <groupId>eu.excitementproject</groupId>
+  	  <artifactId>adarte</artifactId>
+  	  <version>1.2.1-SNAPSHOT</version>
+  	</dependency>
 	<dependency>
   	  <groupId>eu.excitementproject</groupId>
   	  <artifactId>lap</artifactId>

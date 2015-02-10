@@ -35,6 +35,7 @@
 		<module>globalgraphoptimizer</module>
 		<module>lexicalinferenceminer</module>
 		<module>alignmentedas</module> 
+		<module>adarte</module> 
 	</modules>
 
         <profiles>
@@ -390,7 +391,7 @@
 				<version>2.5.2</version>
 				<configuration>
 					<xmlOutput>true</xmlOutput>
-					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.redis.*,eop.distsim.*,eop.util.*,eop.lexicalinferenceminer.*,eop.globalgraphoptimizer.*</onlyAnalyze>
+					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.redis.*,eop.distsim.*,eop.util.*,eop.lexicalinferenceminer.*,eop.globalgraphoptimizer.*,eop.adarte.*</onlyAnalyze>
 				</configuration>
 			</plugin>
 
