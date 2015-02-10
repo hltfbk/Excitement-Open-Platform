@@ -205,7 +205,7 @@ public class Transformation {
 	 * @param match true for consider the match transformations; false otherwise
 	 * @param deletion true for consider the deletion transformations; false otherwise
 	 * @param insertion true for consider the insertion transformations; false otherwise
-	 * @param how to represent the transformations: LeastSpecificForm | IntermediateForm | GeneralForm
+	 * @param form how to represent the transformations: LeastSpecificForm | IntermediateForm | GeneralForm
 	 * 
 	 * @return the transformation
 	 */

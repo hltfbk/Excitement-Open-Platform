@@ -43,8 +43,6 @@ public class Fragment {
      * 
      * @param dependencyTree
      * 
-     * @return the fragment
-     *
      * @throws Exception
      */
     public Fragment(String dependencyTree) throws Exception {
@@ -119,7 +117,7 @@ public class Fragment {
 	 * 
 	 * Add a new token into the fragment
 	 * 
-	 * @param the token to be added
+	 * @param token the token to be added
 	 */
 	public void addToken (FToken token) {
 		

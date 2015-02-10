@@ -52,8 +52,8 @@ public class DataSet {
 	/**
 	 * The constructor that initializes the data set declaring its attributes (features and classes)
 	 * 
-	 * @param featuresList the features
-	 * @param classList the classes
+	 * @param featuresSet the features
+	 * @param classLabels the classes
 	 * 
 	 */
 	public DataSet(Map<String,Integer> featuresSet, FastVector classLabels) throws Exception {

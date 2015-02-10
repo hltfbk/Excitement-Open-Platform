@@ -51,7 +51,7 @@ public class Alignments {
 	// The lexical aligner component to be used to create the alignments
 	private LexicalAligner aligner;
 	
-	/*
+	/**
      * The constructor
      */
 	public Alignments() {
@@ -60,7 +60,7 @@ public class Alignments {
 		
 	}
 
-	/*
+	/**
      * The constructor
      * 
      * @param The lexical aligner to be used for creating the alignments

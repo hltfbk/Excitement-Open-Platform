@@ -151,7 +151,7 @@ public class FToken {
     	 * 
     	 * set the dprel relations
     	 * 
-    	 * @param the dprel relations
+    	 * @param dprelRelations the dprel relations
     	 */
     	public void setDprelRelations(String dprelRelations) {
 	    		
