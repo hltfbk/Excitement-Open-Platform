@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+AdArte Configuration File
+=========================
+
+A configuration represents a single experiment where information about the used EDA, its parameters, the 
+data set used to produce the model are all available. Sharing a configuration file means allowing other 
+users to replicate the same experiment under the same condition.
+
+AdArte (A Transformation-Driven Approach for Recognizing Textual Entailment) is based on modeling
+Entailment relations as a classification problem where the single T-H pairs are first represented by 
+a sequence of edit operations (i.e., deleting, replacing and inserting pieces of text) called transformations
+needed to transform T into H, and then used as features to feed up a supervised learning classifier to
+classify the pairs as positive or negative examples. The transformations are calculated by applying tree 
+edit distance (Tai, 1979) on the dependency trees of the T-H pairs while some Background Knowledge like 
+WordNet, VerbOcean and Catvar is used for recognizing cases where T and H use different textual expressions
+(e.g., girl vs young_woman, spray vs spraying) while preserving entailment. The transformations are then used
+as feature for the T-H pairs classification. In this context we adopt Weka (Hall et al, 2009), that is a
+collection of machine learning algorithms that allows for trying different algorithms like Random Forest
+and Support Vector Machines (SVM).
+
+ 
+Recommendation
+ 
+With some data sets like RTE-3 where the number of labeled examples is limited (a few hundreds of pairs) 
+and the number of the produced transformations could exceed the examples, the predictive power of the learned 
+model could be considerably reduced. In this case using other EDAs could allow for better performance. In 
+contrast, when the number of example is larger (a few thousands of pairs) and when the 
+syntactic differences between the Text T and the hypothesis H can discriminate Entailment relations from 
+Not-Entailment ones (e.g. SICK data set), AdArte could outperform other EDAs.
+
+-->
+
+
+<configuration>
+
+
+    <!--  P L A T F O R M: the information in this section is used by the EOPRunner for
+    pre-processing the data set and running the EDA -->
+    
+	<section name="PlatformConfiguration">
+		<!-- The EDA to be used: AdArte -->
+		<property name="activatedEDA">eu.excitementproject.eop.adarte.AdArte</property>
+		<!-- The language: [EN] -->
+		<property name="language">EN</property>
+		<!-- The linguistic annotation pipeline for pre-processing the data set: [MaltParserEN] -->
+		<property name="activatedLAP">eu.excitementproject.eop.lap.dkpro.MaltParserEN</property>
+	</section>
+	
+	
+	<!-- C O M P O N E N T: the information in this section configures the component to be used for
+	calculating the transformations -->
+	
+	<!-- FixedWeightTreeEditDistance component -->
+	<section name="eu.excitementproject.eop.adarte.FixedWeightTreeEditDistance">
+	    
+	    <!-- The component configuration; available options: [basic|alignment-based] -->
+	    <property name="instance">basic</property>
+	    <!-- <property name="instances">alignment-based</property> -->
+	  
+	  
+		<!-- basic: with this configuration the transformation are calculated simply matching the words in 
+		the T/H pairs. No external resources are used.
+		 -->
+		<subsection name="basic">
+		
+		    <!-- matches between the words are done considering the word themselves -->
+		    <property name="alignment-component"></property>
+		    
+		    <!-- If the punctuation has to be removed; available options: [true|false] -->
+		    <property name="punctuation-removal">true</property>
+		    <!-- <property name="punctuation-removal">false</property> -->
+		
+		    <!-- Matches among tokens are done by considering: [dprel,lemma,dprel-lemma]
+		    dprel: two words match if they have the same dprel relation to the HEAD
+		    lemma: two words match if they have the same lemma
+		    dprel-lemma: two words match if they have the same lemma and dprel relation to the HEAD
+		    -->
+		    <property name="node-match">lemma-dprel</property>
+		    <!-- <property name="node-match">dprel</property> -->
+		    <!-- <property name="node-match">lemma</property> -->
+
+		    <!-- The verbosity level; available options: [INFO|FINE|FINER] -->
+		    <property name="verbosity-level">INFO</property>
+		    <!-- <property name="verbosity-level">FINE</property> -->
+		    <!-- <property name="verbosity-level">FINER</property> -->
+		
+		</subsection>
+		
+		
+		<!-- alignment-based: with this configuration the transformations are calculating also considering
+		 the matches (e.g. girl with young_woman, spray with spraying) produced by a lexical alignment component
+		 that can use external resources like WordNet; the lexical component can be configured through it 
+		 configuration-file -->
+		<subsection name="alignment-based">
+		
+		    <!-- matches between words are done considering the word themselves and the matches
+		    produced by the following lexical alignment component-->
+            <property name="alignment-component">eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner</property>    
+		    <!-- The configuration file of the lexical alignment component -->
+		    <property name="configuration-file">./src/main/resources/configuration-file/LexicalAligner_EN.xml</property>
+		    <!-- <property name="configuration-file">./src/main/resources/configuration-file/TreeEditDistance_LexicalAligner_DE.xml</property> -->
+		   
+		    <!-- If the punctuation has to be removed; available options: [true|false] -->
+		    <property name="punctuation-removal">true</property>
+		    <!-- <property name="punctuation-removal">false</property> -->
+		
+		    <!-- Matches among tokens are done by considering: [dprel,lemma,dprel-lemma]
+		    dprel: two words match if they have the same dprel relation to the HEAD
+		    lemma: two words match if they have the same lemma
+		    dprel-lemma: two words match if they have the same lemma and dprel relation to the HEAD
+		    -->
+		    <property name="node-match">lemma-dprel</property>
+		    <!-- <property name="node-match">dprel</property> -->
+		    <!-- <property name="node-match">lemma</property> -->
+
+		    <!-- The verbosity level; available options: [INFO|FINE|FINER] -->
+		    <property name="verbosity-level">INFO</property>
+		    <!-- <property name="verbosity-level">FINE</property> -->
+		    <!-- <property name="verbosity-level">FINER</property> -->
+		
+		
+		</subsection>
+		
+	</section>	
+	
+	
+	<!-- E D A: the information in this section configures the EDA for training and testing -->
+	<section name="eu.excitementproject.eop.adarte.AdArte">
+	
+	
+	    <!-- D A T A S E T S -->
+	
+	    <!-- The training data set -->
+		<property name="trainDir">/hardmnt/norris0/home/zanoli/SICK_DATA_SET_ESP_LRESOURCESE/SICK/tmpTrain/</property> 
+		<!-- The test data set -->
+		<property name="testDir">/hardmnt/norris0/home/zanoli/SICK_DATA_SET_ESP_LRESOURCESE/SICK/tmpTest/</property>
+		
+		
+		<!-- T R A S F O R M A T I O N S   R E P R E S E N T A T I O N -->
+		
+		<!-- The transformations are used by the classifier as features and they can be represented at
+		different levels of specificity/genericity; available options [GeneralForm|LeastSpecificForm] 
+ 
+        -GeneralForm: it includes the transformation type while the nodes in the transformation are
+        represented with the lemma and PoS in addition to the whole chain of the dependency relations (dprel)
+        from the current node to the root of the tree.
+        
+		-LeastSpecificForm: it includes the transformation type as in the General Form but the nodes in
+		the transformation are here only represented by the dependency relations (dprel) that they have with
+		their direct parent nodes. 
+		
+		For example, given the following T/H pair:
+		T:The girl is spraying the plants with water
+		H:The boy is spraying the plants with water
+		
+		A single transformation replacing "girl" with "boy" is produced. It can be represented thought its
+		General Form or Least Specific Form as following:
+		
+		General Form: Replacing(T:girl-NN-nsubj:root, H:boy-NN-nsubj:root)
+        where the word with lemma and PoS girl-NN, that has a nsubj syntactic relation with its parent which
+        in turn is the root of T, is replaced with boy-NN, that has a the same syntactic relation nsubj with
+        its parent that is the root of H.
+		
+		Replacing(T:nsubj, H:nsubj)
+		meaning that a word in T has to be replace with another word in H and that each of these words has a
+		syntactic relation of nsubj with its parent.
+		
+		-->
+		
+		<property name="transformation-form">LeastSpecificForm</property>
+		<!-- <property name="transformation-form">GeneralForm</property> -->
+		
+		
+		<!-- C L A S S I F I E R S: different type of classifiers can be used -->
+		
+		<!-- 
+		<property name="classifier">weka.classifiers.trees.DecisionStump</property>
+		<property name="classifier-model">/hardmnt/norris0/zanoli/TBMLEDA/dataset/DecisionStump.model</property>
+		-->
+		
+		<!-- 
+		<property name="classifier">weka.classifiers.bayes.NaiveBayes</property>
+		<property name="classifier-model">/hardmnt/norris0/zanoli/TBMLEDA/dataset/NaiveBayes.model</property>
+		-->
+		
+		<!--
+		<property name="classifier">weka.classifiers.trees.J48</property>
+		<property name="classifier-parameters">-C 0.25 -M 2</property>
+		<property name="classifier-model">/hardmnt/norris0/zanoli/TBMLEDA/dataset/J48.model</property> 
+		-->
+		
+		<!--
+		<property name="classifier">weka.classifiers.functions.SMO</property>
+		<property name="classifier-parameters">-C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K weka.classifiers.functions.supportVector.PolyKernel -C 250007 -E 1.0</property>
+		<property name="classifier-model">/hardmnt/norris0/zanoli/SICK_DATA_SET_ESP_LRESOURCESE/SMO2.model</property>
+		-->
+		
+		<property name="classifier">weka.classifiers.trees.RandomForest</property>
+		<property name="classifier-parameters">-I 1000 -K 0 -S 1</property>
+		<property name="classifier-model">/hardmnt/norris0/home/zanoli/SICK_DATA_SET_ESP_LRESOURCESE/RandomForest.model</property>
+		
+		<!--
+		<property name="classifier">weka.classifiers.meta.Vote</property>
+		<property name="classifier-parameters">-S 1 -B weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K weka.classifiers.functions.supportVector.PolyKernel -C 250007 -E 1.0 -B weka.classifiers.trees.J48 -C 0.25 -M 2 -R AVG</property>
+		<property name="classifier-model">/hardmnt/norris0/zanoli/TBMLEDA/dataset/Vote.model</property>
+		-->
+		
+		<!-- Enable 10-fold-cross-validation on the training data set; available options: [true|false] -->
+		<property name="cross-validation">false</property>
+		<!-- <property name="cross-validation">true</property> -->
+		
+		<!-- binary features vs weighted features; available options: [true] -->
+		<property name="binary-feature">true</property>
+		
+		<!-- Save the training data set into arff format to let one use the WEKA experimenter tool;
+		empty value for not set  -->
+		<property name="save-arff-format">/hardmnt/norris0/home/zanoli/SICK_DATA_SET_ESP_LRESOURCESE/SICK/tmp/data.arff</property>
+		<!-- <property name="save-training-dataset-into-arff-format"></property> -->
+		
+		<!-- The verbosity level; available options: [INFO|FINE|FINER] -->
+		<property name="verbosity-level">INFO</property>
+		<!-- FINE: to take a look at the produced transformations -->
+		<!-- <property name="verbosity-level">FINE</property> -->
+		<!-- <property name="verbosity-level">FINER</property> -->
+		
+		<!-- component to be used by the EDA; available options: [FixedWeightTreeEditDistance] 
+		FixedWeightLemmaEditDistance can be used only when the preprocessing pipeline provides lemmas-->
+	    <property name="components">eu.excitementproject.eop.adarte.FixedWeightTreeEditDistance</property>
+	    
+		<!-- Transformations are used as features by the EDA. Decide which type of transformation
+		the EDA has to use: match, replacement, insertion, or deletion -->
+		<property name="transformations">match,replacement,insertion,deletion</property>
+		
+	</section>
+	
+</configuration>

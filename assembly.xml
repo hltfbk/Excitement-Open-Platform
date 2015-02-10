@@ -22,6 +22,7 @@
                 <include>eu.excitementproject:tracer</include>
                 <include>eu.excitementproject:alignmentedas</include>
                 <include>eu.excitementproject:redis</include>
+                <include>eu.excitementproject:adarte</include>
             </includes>
             <binaries>
                 <outputDirectory>/</outputDirectory>
