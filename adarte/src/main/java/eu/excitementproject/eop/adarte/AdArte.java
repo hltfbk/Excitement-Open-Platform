@@ -28,7 +28,7 @@ import eu.excitementproject.eop.lap.PlatformCASProber;
 
 
 /**
- * The <code>TransformationDrivenEDA</code> class implements the <code>EDABasic</code> interface.
+ * The <code>AdArte</code> class implements the <code>EDABasic</code> interface.
  * Given a certain configuration, it can be trained over a specific data set in order to optimize its
  * performance. 
  * 
