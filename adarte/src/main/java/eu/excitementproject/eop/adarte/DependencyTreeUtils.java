@@ -22,6 +22,7 @@ import static org.apache.uima.fit.util.JCasUtil.selectCovered;
  * @author silvia colombo
  * 
  * @since January 2015
+ * 
 */
 public class DependencyTreeUtils {
 

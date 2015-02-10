@@ -63,7 +63,7 @@ public class Alignments {
 	/**
      * The constructor
      * 
-     * @param The lexical aligner to be used for creating the alignments
+     * @param aligner The lexical aligner to be used for creating the alignments
      * @param jcas the CAS containing T and H to be aligned.
      * 
      */
