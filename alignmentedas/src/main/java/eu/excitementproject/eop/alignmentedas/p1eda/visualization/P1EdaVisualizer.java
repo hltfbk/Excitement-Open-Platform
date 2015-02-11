@@ -64,6 +64,10 @@ public class P1EdaVisualizer implements Visualizer {
 		
 		/* (non-Javadoc)
 		 * @see eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer#generateHTML(eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment)
+		 * 
+ 		 * Note: There might be problems with the generated html in case the strings in the given JCas (i.e., the text and the hypothesis) contain empty spaces. 
+		 * It is high recommended to trim these spaces while generating the provided JCas.
+
 		 */
 		public String generateHTML(TEDecisionWithAlignment decision) throws VisualizerGenerationException
 		{
@@ -82,6 +86,10 @@ public class P1EdaVisualizer implements Visualizer {
 		
 		/* (non-Javadoc)
 		 * @see eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer#generateHTML(org.apache.uima.jcas.JCas)
+		 * 
+		 * 
+		 * Note: There might be problems with the generated html, in case the strings in the given JCas (i.e., the text and the hypothesis) contain empty spaces. 
+		 * It is high recommended to trim these spaces while generating the provided JCas.
 		 */
 		public String generateHTML(JCas jCas) throws VisualizerGenerationException
 		{
@@ -136,9 +144,12 @@ public class P1EdaVisualizer implements Visualizer {
 				JCas jCasText = jCas.getView("TextView");
 				JCas jCasHypothesis = jCas.getView("HypothesisView");
 				
-				strDocText += " text     : \""+jCasText.getDocumentText()+"\\r\\n"+jCasHypothesis.getDocumentText()+"\"\r\n";
+				String txText = jCasText.getDocumentText().replaceAll("'", "`");
+				String hpText = jCasHypothesis.getDocumentText().replaceAll("'", "`");
+
+				strDocText += " text     : '"+txText+"\\r\\n"+hpText+"'\r\n";
 				
-				int TextSize = jCasText.getDocumentText().length()+2;
+				int TextSize = txText.length()+2;
 				Collection<AnnotationFS> col = CasUtil.selectAll(jCasText.getCas());
 				Collection<AnnotationFS> colH = CasUtil.selectAll(jCasHypothesis.getCas());
 
@@ -307,9 +318,9 @@ public class P1EdaVisualizer implements Visualizer {
 					String hText = l.getHSideTarget().getCoveredText();
 
 					if(tText.contains("'"))
-						tText=tText.replaceAll("'", "\\\\'");
+						tText=tText.replaceAll("'", "`");
 					if(hText.contains("'"))
-						hText=hText.replaceAll("'", "\\\\'");
+						hText=hText.replaceAll("'", "`");
 					
 					if(!entities.containsKey(tText+"Sred"))
 					{
@@ -510,16 +521,18 @@ public class P1EdaVisualizer implements Visualizer {
 				strHtml.append("<td style='background-color: " + entityPOSColor + ";'><input id=\"cb_POS\" type=\"checkbox\" onclick='Update();' checked=\"checked\" />POS</td>\r\n");
 				strHtml.append("</tr>\r\n");
 					
-				strHtml.append("<tr><td><b>Alignments:</b></td>\r\n");
-				for (String strBlock : hashAlignmentData.keySet()) {
-					strHtml.append("    <td style='background-color: " + alignmentEntityColor + ";'><input id=\"cb_"+strBlock+"\" type=\"checkbox\" onclick=\"javascript:Update();\" checked=\"checked\" />"+strBlock+"</td>\r\n");
-				}
+				if (!hashAlignmentData.keySet().isEmpty()) {
+					strHtml.append("<tr><td><b>Alignments:</b></td>\r\n");
+					for (String strBlock : hashAlignmentData.keySet()) 
+						strHtml.append("    <td style='background-color: " + alignmentEntityColor + ";'><input id=\"cb_"+strBlock+"\" type=\"checkbox\" onclick=\"javascript:Update();\" checked=\"checked\" />"+strBlock+"</td>\r\n");
+				} else
+					strHtml.append("<tr style=\"display:none\"><td><b>Alignments: </b></td>\r\n");				
 				strHtml.append("</tr></table><br/><hr/>\r\n");
 				strHtml.append("</div>");
 				
 				if(featureValues!=null)
 				{
-					strHtml.append("<div><h3>Extracted features</h3></div>   ");
+					strHtml.append("<div><h3>Extracted Features</h3></div>   ");
 					
 					strHtml.append("<style>.datagrid table { border-collapse: collapse; text-align: left; width: 100%; } .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 3px solid #006699; -webkit-border-radius: 11px; -moz-border-radius: 11px; border-radius: 11px; }.datagrid table td, .datagrid table th { padding: 4px 4px; }.datagrid table thead th {background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; color:#FFFFFF; font-size: 15px; font-weight: bold; border-left: 2px solid #E1EEF4; } .datagrid table thead th:first-child { border: none; }.datagrid table tbody td { color: #00496B; border-left: 1px solid #E1EEF4;font-size: 14px;font-weight: normal; }.datagrid table tbody .alt td { background: #E1EEF4; color: #00496B; }.datagrid table tbody td:first-child { border-left: none; }.datagrid table tbody tr:last-child td { border-bottom: none; }.datagrid table tfoot td div { border-top: 1px solid #006699;background: #E1EEF4;} .datagrid table tfoot td { padding: 0; font-size: 12px } .datagrid table tfoot td div{ padding: 2px; }.datagrid table tfoot td ul { margin: 0; padding:0; list-style: none; text-align: right; }.datagrid table tfoot  li { display: inline; }.datagrid table tfoot li a { text-decoration: none; display: inline-block;  padding: 2px 8px; margin: 1px;color: #FFFFFF;border: 1px solid #006699;-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #006699), color-stop(1, #00557F) );background:-moz-linear-gradient( center top, #006699 5%, #00557F 100% );filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#006699', endColorstr='#00557F');background-color:#006699; }.datagrid table tfoot ul.active, .datagrid table tfoot ul a:hover { text-decoration: none;border-color: #006699; color: #FFFFFF; background: none; background-color:#00557F;}div.dhtmlx_window_active, div.dhx_modal_cover_dv { position: fixed !important; }</style>");
 					
