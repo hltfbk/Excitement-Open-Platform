@@ -60,5 +60,8 @@ public class EOPRunnerCmdOptions {
 	
 	@Option(name="-score", usage="Compute the scores on the test data or not")
 	public boolean score = false;
+
+	@Option(name="-trace", usage="Produce output (one file per pair) that allows the visualization of the alignment. Only usable with an alignment EDA")
+	public boolean trace = false;
 	
 }

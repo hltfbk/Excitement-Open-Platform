@@ -5,7 +5,7 @@
   	<parent>
 		<groupId>eu.excitementproject</groupId>
 	  	<artifactId>eop</artifactId>
-	    <version>1.2.0</version>
+	    <version>1.2.1</version>
 	</parent>
   
   	<artifactId>lap</artifactId>
@@ -44,6 +44,18 @@
    	</pluginRepositories>
 
  	<dependencies> 	
+ 	
+ 	    <!-- The following library (lexmorph-asl) contains the correct Italian part-of-speech mapping (it-stein-tagger.map).
+ 	     The wrong one contained in DKPro 1.1.4 maps all the part-of-speech with POS while the correct one distributed with the
+ 	     EOP (under the lap resources directory) is regularly overwritten by the DKPro one.
+ 	     When we will adopt DKPro 1.1.7 this library will not be necessary any more and will be removed.
+ 	     Please don't move the dependency to the library in anywhere else. -->
+ 	 	<dependency>
+      		<groupId>eu.fbk</groupId>
+         	<artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
+   			<version>1.4.0</version>
+    	</dependency>
+    	
    		<dependency>
    			<groupId>junit</groupId>
    			<artifactId>junit</artifactId>
@@ -89,7 +101,7 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>1.2.0</version>
+			<version>1.2.1</version>
 		</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
