@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entailment-corpus lang="EN">
+<pair id="42" entailment="CONTRADICTION" task="IR">
+<t>Two people are kickboxing and spectators are not watching</t>
+<h>Two people are kickboxing and spectators are watching</h>
+</pair>
+<pair id="44" entailment="ENTAILMENT" task="IR">
+<t>Two young women are sparring in a kickboxing fight</t>
+<h>Two women are sparring in a kickboxing match</h>
+</pair>
+<pair id="47" entailment="UNKNOWN" task="IR">
+<t>Two people are kickboxing and spectators are watching</t>
+<h>Two young women are not sparring in a kickboxing fight</h>
+</pair>
+</entailment-corpus>
+

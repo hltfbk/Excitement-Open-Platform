@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -21,6 +22,8 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import eu.excitement.type.entailment.Pair;
+import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
+import eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer;
 import eu.excitementproject.eop.common.TEDecision;
 
 /**
@@ -36,6 +39,7 @@ public class OutputUtils {
 		HashMap<String,String> results = new HashMap<String,String>();
 		
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:readResults");
+		logger.info("Reading results from file: " + file);
 		
 		try {
 			InputStream in = Files.newInputStream(Paths.get(file));
@@ -72,7 +76,7 @@ public class OutputUtils {
 			//BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			
 			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
 			
 			String line = null, id;
 			String[] entDec;
@@ -102,16 +106,14 @@ public class OutputUtils {
 	}
 	
 	
-	public static void makeSinglePairXML(TEDecision decision, JCas aJCas, String outDir, String lang) {
-		
-		String xmlResultsFile = outDir + "/results.xml";
-		
+	public static void makeSinglePairXML(TEDecision decision, JCas aJCas, String xmlResultsFile, String lang) {
+			
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:makeSinglePairXML");
 		
 		try {
 			
 			OutputStream out = Files.newOutputStream(Paths.get(xmlResultsFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
 			
 			writer.write("<entailment-corpus lang=\"" + lang + "\">\n");
 			writer.write("  <pair id=\"1\" entailment=\"" + decision.getDecision().name() + "\" benchmark=\"N/A\" confidence=\"" + decision.getConfidence() + "\" task=\"EOP test\">\n");
@@ -160,6 +162,44 @@ public class OutputUtils {
 			return null;
 		} else {
 			return p.getGoldAnswer();
+		}
+	}
+
+	/**
+	 * Produce the html that shows the alignment between the text and hypothesis (if an alignment EDA was used to produce the decision)
+	 * 
+	 * @param te -- the entailment decision as a TEDecision object
+	 * @param aJCas -- a CAS object with the pair that was analyzed
+	 * @param outDir -- output directory for the entire processing. The html file created will be but in <outDir>/trace
+	 * @param vis -- visualizer
+	 */
+	public static void makeTraceHTML(TEDecision te, JCas aJCas, String outDir, Visualizer vis) {
+
+		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:makeTraceHTML");
+
+		Path traceDir = Paths.get(outDir + "/trace");
+		
+		String pairID = OutputUtils.getPairID(aJCas);
+		if (pairID == null)
+			pairID = "1";
+		
+		String traceFile = outDir + "/trace/" + pairID + ".html";		
+
+		try {
+			if ( Files.notExists(traceDir) ) // || ( ! Files.isDirectory(traceDir)))
+				Files.createDirectories(traceDir);
+		
+			TEDecisionWithAlignment decision = (TEDecisionWithAlignment) te;
+			
+			OutputStream out = Files.newOutputStream(Paths.get(traceFile));
+			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));			
+			writer.write(vis.generateHTML(decision));
+			writer.close();
+			out.close();
+			
+		} catch (Exception e) {
+			logger.info("Error writing trace file for pair " + getPairID(aJCas));
+			e.printStackTrace();
 		}
 	}
 }

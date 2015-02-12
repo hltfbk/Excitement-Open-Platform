@@ -25,6 +25,14 @@
 	<!-- Defines the number of top similarities per element, to be stored in Redis -->
 	<property name="max-similarities-per-element">100</property>
 	
+	<!-- The path to the features file-->
+	  <property name="features-file">models/lin/dependency/features</property>
+
+	  <!--  Indicates whether the model is first order (based on the element-feature-scores file instead of elements-similarities file) 
+	        or second order. -->
+	  <property name="first-order">false</property>
+	
+	  
 </section>
 </configuration>
 

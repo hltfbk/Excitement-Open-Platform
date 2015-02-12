@@ -209,7 +209,7 @@
 			platform="windows-x86_64" file="tree-tagger.exe" md5="c88d7fe1aa63bebaccfa019c222f54ea"/>
 	</target>
 	
-	<target name="install-all-models" depends="et, la, gr, de, en, nl, bg, fr, it, ru, sw, es, pt, gz, zh, sl"/>
+	<target name="install-all-models" depends="et, la, gr, de, en, nl, bg, fr, it, sw, es, sl"/>
 	
 	<!--
 	- Little Endian - x86 (Linux, Windows, Mac-Intel)

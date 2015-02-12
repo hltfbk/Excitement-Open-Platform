@@ -344,7 +344,7 @@ public class BasicRedisRunner implements RedisRunner {
 			try {
 				close(dbFile);
 			} catch (RedisCloseException e1) {
-				logger.error(e1.toString());
+				//logger.error(e1.toString());
 			}
 			throw new RedisRunException(e);
 		}
@@ -360,6 +360,7 @@ public class BasicRedisRunner implements RedisRunner {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		String line = null;
 		while ((line = reader.readLine())!= null) {
+			logger.info(line);
 			if (line.contains("The server is now ready")) {
 				reader.close();
 				return;
@@ -557,7 +558,7 @@ public class BasicRedisRunner implements RedisRunner {
 
 
 	public static String getRedisServerCmd() throws RedisRunException {
-		if (OS.isLinux() || OS.isUnix())
+		if (OS.isLinux() || OS.isUnix() || OS.isMac())
 			return "redis-server";
 		if (OS.isWindows()) 
 			return "redis-server.exe";

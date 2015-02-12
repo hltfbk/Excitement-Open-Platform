@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+		<section name="GeneralParameters">
+			<property name="maxPhraseLength">1</property>
+			<property name="gateLemmatizerFileUrl">../src/test/resources/model/GATE-3.1/plugins/Tools/resources/morph/default.rul</property>
+		</section>
+		
+        <section name="LexicalResources">
+        
+            <!-- WordNet  -->
+			<property name="wordnet">eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource</property>
+			  
+			<!-- VerbOcean   -->
+			<property name = "verb-ocean">eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource</property>
+			
+			<!-- Catvar    -->
+ 			<property name = "catvar">eu.excitementproject.eop.core.component.lexicalknowledge.catvar.CatvarLexicalResource</property>
+ 			
+ 			<!-- Wiki 
+ 			<property name = "redis-wiki">eu.excitementproject.eop.lexicalminer.redis.RedisBasedWikipediaLexicalResource</property>
+           -->
+ 			
+			<!-- Redis BAP  
+			<property name="distsim-bap">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
+			 -->
+			 
+			 
+			<!-- Redis Lin Proximity
+			<property name = "redis-lin-proximity">eu.excitementproject.eop.distsim.resource.SimilarityStorageBasedLexicalResource</property>
+			   -->
+ 			
+	   </section>
+	   
+        
+        <!-- WordNet configuration parameters -->
+        <section name="wordnet">
+        	<property name = "useLemma">true</property>
+        	<property name = "version">3.0</property>
+        	
+        	<!--  ENGLISH  -->
+			<property name = "wordnet-dir">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/BIUTEE_Environment/data/WordNet/3.0/dict.wn.orig</property>
+			
+			 <!-- ITALIAN 
+			<property name = "wordnet-dir">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/ontologies/ItalianWordNet-dict/</property>
+			-->
+			
+			<property name = "useFirstSenseOnlyLeft">false</property>
+			<property name = "useFirstSenseOnlyRight">false</property>
+			<property name = "entailing-relations">ANTONYM,SYNONYM,DERIVATIONALLY_RELATED,HYPERNYM,INSTANCE_HYPERNYM,MEMBER_HOLONYM,ENTAILMENT</property> 
+			<!-- <property name = "entailing-relations">SYNONYM,DERIVATIONALLY_RELATED,HYPERNYM,INSTANCE_HYPERNYM,MEMBER_HOLONYM,ENTAILMENT</property> -->
+			
+			<property name = "wordnet-depth">10</property>
+			
+		</section>
+		
+		<!-- VerbOcean configuration parameters -->
+		<section name = "verb-ocean">
+			<property name = "useLemma">true</property>
+			<property name = "version">unrefined.2004-05-20</property>
+			<property name = "threshold">1</property>
+			<property name = "file">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/VerbOcean/verbocean.unrefined.2004-05-20.txt</property>
+			<property name = "allowedRelations">SIMILAR,OPPOSITE_OF,STRONGER_THAN</property>
+			<!-- <property name = "allowedRelations">SIMILAR,STRONGER_THAN</property>  -->
+		</section>
+		
+		<!-- CatVar configuration parameters -->
+		<section name = "catvar">
+			<property name = "useLemma">true</property>
+			<property name = "version">2.1</property>
+			<property name = "catver-file-name">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/BIUTEE_Environment/data/CatVar/catvar21</property>
+		</section>
+		
+		<!-- Redis Wiki configuration parameters -->
+		<section name = "redis-wiki">
+		    <property name="redis-binary-dir">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/BIUTEE_Environment/workdir/redis/</property> 
+			<property name = "useLemma">false</property>
+			<property name = "version">1.0</property>
+			<property name="resource-name">wiki</property>
+			<property name="l2r-redis-db-file">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/redis/wiki-l2r.rdb</property>
+			<property name="r2l-redis-db-file">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/redis/wiki-r2l.rdb</property>
+			<property name="NPBouns">0.001</property>
+			<property name="limitOnRetrievedRules">10</property>
+			<property name="classifierPath">eu.excitementproject.eop.lexicalminer.definition.classifier.syntacticpatterns.offlineClassifiers.syntacticpatternsLocationsSquare</property>
+			<property name="classifierClass">SyntacticOfflinePosRelationLocationSquareClassifier</property>
+		</section>
+		
+		<!-- Redis BAP configuration parameters -->
+		<section name = "distsim-bap">
+		    <property name="redis-binary-dir">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/BIUTEE_Environment/workdir/redis/</property> 
+			
+			<property name = "useLemma">false</property>
+			<property name = "version">1.0</property>
+			<property name="resource-name">distsim-bap</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/redis/ukwac/bap/similarity-l2r.rdb</property>
+			<property name="r2l-redis-db-file">/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/redis/ukwac/bap/similarity-r2r.rdb</property>
+		</section>
+        
+        <!-- Redis Lin Proximity configuration parameters -->
+        <section name = "redis-lin-proximity">
+            <property name="redis-binary-dir">/hardmnt/norris0/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/BIUTEE_Environment/workdir/redis/</property> 
+			
+        	<property name = "useLemma">false</property>
+        	<property name = "version">1.0</property>
+			<property name="resource-name">distsim-lin-proximity</property>
+			<property name="element-class">eu.excitementproject.eop.distsim.items.LemmaPosBasedElement</property>
+			<property name="top-n-rules">20</property>
+			<property name="l2r-redis-db-file">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/redis/reuters/lin/proximity/similarity-l2r.top100.rdb</property>
+			<property name="r2l-redis-db-file">/hardmnt/norris0/home/zanoli/EOP/Excitement-Open-Platform-1.1.3/target/EOP-1.1.3/eop-resources-1.1.3/redis/reuters/lin/proximity/similarity-r2r.top100.rdb</property>
+		</section>
+		
+</configuration>
