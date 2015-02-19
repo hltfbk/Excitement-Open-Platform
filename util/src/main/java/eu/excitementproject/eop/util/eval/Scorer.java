@@ -100,14 +100,14 @@ public class Scorer {
 	 * @param outputFile the output file containing the produced evaluation
 	 * 
 	 */
-	public static void score(File annotatedFile, String ouputFile) {
+	public static void score(File annotatedFile, String outputFile) {
 		
 		// read the annotated files and save the gold labels
 		initLabels(annotatedFile);
 		// fill the contingency table of the labels 
 		createContingencyTable(annotatedFile);
 		// print the evaluation
-		print(ouputFile);
+		print(outputFile);
 		
 	}
 	
@@ -402,6 +402,9 @@ public class Scorer {
 	
 	
 	@Test
+	/**
+	 * Test the scorer
+	 */
 	public void test() {
 		
 		File annotatedFile = new File("../core/src/main/resources/results/EditDistanceEDA_EN.xml_Result.txt");
