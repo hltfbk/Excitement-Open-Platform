@@ -35,7 +35,7 @@ public class ExperimenterFileUtils {
 	public static HashMap<String,HashMap<String,Set<PairXMLData>>> loadDataFromXML(String dataDir, String pattern) throws IOException{
 		
 		HashMap<String,HashMap<String,Set<PairXMLData>>> data = new HashMap<String,HashMap<String,Set<PairXMLData>>>();
-		Logger logger =  Logger.getLogger("eu.excitementproject.eda_exp.experimenter.ExperimenterFileUtils");
+		Logger logger =  Logger.getLogger("eu.excitementproject.eda_exp.experimenter.ExperimenterFileUtils / loadDataFromXML");
 		
 		//prepare the reader
 		RawDataFormatReader input = null;
