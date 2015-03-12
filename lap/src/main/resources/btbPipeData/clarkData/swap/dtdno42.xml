@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This Document is created with the Clark System! http://www.bultreebank.org -->
+<CLaRK_document_dtd><dtdname>naf.dtd</dtdname><doctype>NAF</doctype><tokenizer>Default</tokenizer><dtd>&lt;!ELEMENT chunk (span)+&gt;
+&lt;!ATTLIST chunk
+	id	ID	#REQUIRED
+	head	IDREF	#REQUIRED
+	phrase	CDATA	#REQUIRED
+	case	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT chunks (chunk)+&gt;
+&lt;!ELEMENT component (externalReferences)*&gt;
+&lt;!ATTLIST component
+	id	ID	#REQUIRED
+	lemma	CDATA	#REQUIRED
+	pos	CDATA	#REQUIRED
+	case	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT constituency (tree)+&gt;
+&lt;!ELEMENT coref (span)+&gt;
+&lt;!ATTLIST coref
+	id	ID	#REQUIRED
+&gt;
+&lt;!ELEMENT coreferences (coref)+&gt;
+&lt;!ELEMENT dep EMPTY&gt;
+&lt;!ATTLIST dep
+	from	IDREF	#REQUIRED
+	to	IDREF	#REQUIRED
+	rfunc	CDATA	#REQUIRED
+	case	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT deps (dep)+&gt;
+&lt;!ELEMENT edge EMPTY&gt;
+&lt;!ATTLIST edge
+	id	ID	#IMPLIED
+	from	IDREF	#REQUIRED
+	to	IDREF	#REQUIRED
+&gt;
+&lt;!ELEMENT entities (entity)+&gt;
+&lt;!ELEMENT entity (references|externalRef)+&gt;
+&lt;!ATTLIST entity
+	id	ID	#REQUIRED
+	type	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT externalRef (externalRef)*&gt;
+&lt;!ATTLIST externalRef
+	resource	CDATA	#IMPLIED
+	reference	CDATA	#REQUIRED
+	reftype	CDATA	#IMPLIED
+	status	CDATA	#IMPLIED
+	source	CDATA	#IMPLIED
+	confidence	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT externalReferences (externalRef)+&gt;
+&lt;!ELEMENT fileDesc EMPTY&gt;
+&lt;!ATTLIST fileDesc
+	title	CDATA	#IMPLIED
+	author	CDATA	#IMPLIED
+	creationtime	CDATA	#IMPLIED
+	filename	CDATA	#IMPLIED
+	filetype	CDATA	#IMPLIED
+	pages	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT linguisticProcessors (lp)+&gt;
+&lt;!ATTLIST linguisticProcessors
+	layer	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT lp EMPTY&gt;
+&lt;!ATTLIST lp
+	name	CDATA	#REQUIRED
+	version	CDATA	#REQUIRED
+	timestamp	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT NAF (nafHeader|text|terms|deps|chunks|entities|coreferences|constituency|srl|tunits)*&gt;
+&lt;!ATTLIST NAF
+	doc	CDATA	#IMPLIED
+	version	CDATA	#IMPLIED
+	xml:lang	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT nafHeader (fileDesc?,public?,linguisticProcessors*)&gt;
+&lt;!ELEMENT nt EMPTY&gt;
+&lt;!ATTLIST nt
+	id	ID	#REQUIRED
+	label	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT opinion (opinion_holder,opinion_target,opinion_expression)+&gt;
+&lt;!ATTLIST opinion
+	id	ID	#REQUIRED
+&gt;
+&lt;!ELEMENT opinion_expression (span)+&gt;
+&lt;!ATTLIST opinion_expression
+	polarity	CDATA	#IMPLIED
+	strength	CDATA	#IMPLIED
+	subjectivity	CDATA	#IMPLIED
+	sentiment_semantic_type	CDATA	#IMPLIED
+	sentiment_product_feature	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT opinion_holder (span)+&gt;
+&lt;!ATTLIST opinion_holder
+	type	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT opinion_target (span)+&gt;
+&lt;!ATTLIST opinion_target
+	type	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT opinions (opinion)+&gt;
+&lt;!ELEMENT predicate (externalReferences|span|role)+&gt;
+&lt;!ATTLIST predicate
+	id	ID	#REQUIRED
+	uri	CDATA	#IMPLIED
+	confidence	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT public EMPTY&gt;
+&lt;!ATTLIST public
+	publicId	CDATA	#IMPLIED
+	uri	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT references (span)+&gt;
+&lt;!ELEMENT role (externalReferences|span)+&gt;
+&lt;!ATTLIST role
+	id	ID	#REQUIRED
+	uri	CDATA	#IMPLIED
+	confidence	CDATA	#IMPLIED
+	semRole	CDATA	#REQUIRED
+&gt;
+&lt;!ELEMENT sentiment EMPTY&gt;
+&lt;!ATTLIST sentiment
+	resource	CDATA	#IMPLIED
+	polarity	CDATA	#IMPLIED
+	strength	CDATA	#IMPLIED
+	subjectivity	CDATA	#IMPLIED
+	sentiment_semantic_type	CDATA	#IMPLIED
+	sentiment_product_feature	CDATA	#IMPLIED
+	sentiment_modifier	CDATA	#IMPLIED
+	sentiment_marker	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT span (target)+&gt;
+&lt;!ELEMENT srl (predicate)+&gt;
+&lt;!ELEMENT t (span)&gt;
+&lt;!ATTLIST t
+	id	ID	#REQUIRED
+&gt;
+&lt;!ELEMENT target EMPTY&gt;
+&lt;!ATTLIST target
+	id	IDREF	#REQUIRED
+	head	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT term (sentiment?|span|externalReferences|component)+&gt;
+&lt;!ATTLIST term
+	id	ID	#REQUIRED
+	type	CDATA	#IMPLIED
+	lemma	CDATA	#IMPLIED
+	pos	CDATA	#IMPLIED
+	morphofeat	CDATA	#IMPLIED
+	netype	CDATA	#IMPLIED
+	case	CDATA	#IMPLIED
+	head	CDATA	#IMPLIED
+&gt;
+&lt;!ELEMENT terms (term)+&gt;
+&lt;!ELEMENT text (wf)+&gt;
+&lt;!ELEMENT tree (nt|t|edge)+&gt;
+&lt;!ELEMENT tunits EMPTY&gt;
+&lt;!ELEMENT wf (#PCDATA)&gt;
+&lt;!ATTLIST wf
+	id	ID	#REQUIRED
+	sent	CDATA	#IMPLIED
+	para	CDATA	#IMPLIED
+	page	CDATA	#IMPLIED
+	offset	CDATA	#IMPLIED
+	length	CDATA	#IMPLIED
+	xpath	CDATA	#IMPLIED
+&gt;
+</dtd><CLaRK_document_layout offsets="n" spaces="4"><tagLine children="y" closeEnd="n" closeStart="n" name="chunk" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="chunks" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="component" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="constituency" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="coref" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="coreferences" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="dep" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="deps" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="edge" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="entities" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="entity" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="externalRef" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="externalReferences" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="fileDesc" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="linguisticProcessors" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="lp" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="NAF" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="nafHeader" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="nt" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="opinion" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="opinion_expression" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="opinion_holder" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="opinion_target" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="opinions" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="predicate" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="public" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="references" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="role" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="sentiment" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="span" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="srl" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="t" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="target" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="term" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="terms" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="text" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="tree" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="tunits" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="wf" openEnd="n" openStart="n" tag="y"></tagLine><tagLine children="y" closeEnd="n" closeStart="n" name="Unknown*" openEnd="n" openStart="n" tag="y"></tagLine></CLaRK_document_layout><CLaRK_document_element_features tokenizer="Default"></CLaRK_document_element_features><CLaRK_document_attribute_features></CLaRK_document_attribute_features></CLaRK_document_dtd>
