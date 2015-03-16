@@ -1,8 +1,0 @@
-<!DOCTYPE RemoteCallQuery [
-<!ENTITY % common SYSTEM 'query.dtd'>
-
-<!ELEMENT RemoteCallQuery (serverURI, queryName)>
-<!ELEMENT serverURI (#PCDATA)>	<!-- The service URI -->
-<!ELEMENT queryName (#PCDATA)>	<!-- The name of the query -->
-%common;
-]>
