@@ -1,8 +1,0 @@
-<!DOCTYPE Result [
-<!ELEMENT Result EMPTY>
-<!ATTLIST Result
-	docIDs	CDATA	#REQUIRED
-	date	CDATA	#REQUIRED
-	queryName	CDATA	#REQUIRED
->
-]>
