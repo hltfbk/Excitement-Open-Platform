@@ -36,39 +36,53 @@ import org.w3c.dom.Element;
  * It supports multi-class annotation problems evaluation (e.g., Entailment, Contradiction, Unknown).
  * 
  * Given a file containing the pair id (1st column), the gold annotation (2nd column), the predicted
- * annotation (3rd column) and the annotation confidence (4th column) it calculates Precision, Recall
- * and F1 measure for each of the gold labels (e.g. Entailment, NonEntailment) in the annotated file. The
- * overall Accuracy is another measure produced by the scorer. 
+ * annotation (3rd column) and the annotation confidence (4th column) it calculates the system performance.
+ * 
+ * In additions to the Accuracy (i.e., the percentage of predictions that are correct), classification effectiveness 
+ * is measured in terms of the classic IR notions of Precision (Pr) and Recall (Re). where the traditional F-measure 
+ * or balanced F-score is the harmonic mean of Precision and Recall. For obtaining estimates of Precision and Recall 
+ * relative to the whole category set (e.g., Entailment, Contradiction, Unknown), the scorer uses the micro-averaging 
+ * method: Precision and Recall are obtained by globally summing over all individual decisions.
  * 
  * The following is an example of valid input file:
  * 
- * 747     NONENTAILMENT   NonEntailment   0.21761363636362963
- * 795     ENTAILMENT      Entailment      0.5823863636363704
- * 60      ENTAILMENT      Entailment      0.3601641414141482
- * 546     NONENTAILMENT   NonEntailment   0.14488636363635687
+ * 54	NONENTAILMENT	NonEntailment	0.21761363636362963
+ * 43	ENTAILMENT		Entailment		0.58238636363637043
+ * 60	ENTAILMENT		Entailment		0.36016414141414824
+ * 50	NONENTAILMENT	NonEntailment	0.14488636363000005
+ * 51	CONTRADICTION	NonEntailment	0.14488636363635687
+ * 103	CONTRADICTION	Contradiction	0.12228636363635687
+ *
  * 
- * while the following is an example of final report:
+ * while the following is an example of output for the example above:
  * 
  * <?xml version="1.0" encoding="UTF-8"?>
  * <results>
- *   <label id="NONENTAILMENT">
- *     <Precision>66.182</Precision>
- *     <Recall>46.667</Recall>
- *     <F1>54.737</F1>
- *     <ContingencyTable FN="208" FP="93" TN="317" TP="182"/>
- *   </label>
- *   <label id="ENTAILMENT">
- *     <Precision>60.381</Precision>
- *     <Recall>77.317</Recall>
- *     <F1>67.807</F1>
- *     <ContingencyTable FN="301" FP="301" TN="499" TP="499"/>
- *   </label>
- *   <Accuracy>62.375</Accuracy>
- *   <Precision>62.375</Precision>
- *   <Recall>62.375</Recall>
- *   <F1micro>62.375</F1micro>
- *   <ContingencyTable FN="301" FP="301" TN="499" TP="499"/>
+ *  <label id="NONENTAILMENT">
+ *   <Precision>66.667</Precision>
+ *   <Recall>100.000</Recall>
+ *   <F1>80.000</F1>
+ *   <ContingencyTable FN="0" FP="1" TN="3" TP="2"/>
+ * </label>
+ * <label id="ENTAILMENT">
+ *   <Precision>100.000</Precision>
+ *   <Recall>100.000</Recall>
+ *   <F1>100.000</F1>
+ *   <ContingencyTable FN="0" FP="0" TN="4" TP="2"/>
+ * </label>
+ * <label id="CONTRADICTION">
+ *   <Precision>100.000</Precision>
+ *   <Recall>50.000</Recall>
+ *   <F1>66.667</F1>
+ *   <ContingencyTable FN="1" FP="0" TN="4" TP="1"/>
+ * </label>
+ * <Accuracy>88.889</Accuracy>
+ * <Precision>83.333</Precision>
+ * <Recall>83.333</Recall>
+ * <F1micro>83.333</F1micro>
+ * <ContingencyTable FN="1" FP="1" TN="11" TP="5"/>
  * </results>
+ *
  *
  * 
  * @author Roberto Zanoli
@@ -268,11 +282,15 @@ public class Scorer {
 				globalContingencyTable.incFp(contingencyTable_label_i.getFp());
 				globalContingencyTable.incTn(contingencyTable_label_i.getTn());
 				
-				//calculate the precision
-				double precision = (double)contingencyTable_label_i.getTp()/
+				//calculate the precision; Precision = 1 when FP=0, since no there were no spurious results
+				double precision = 1.0;
+				if (contingencyTable_label_i.getTp() + contingencyTable_label_i.getFp() !=0)
+					precision = (double)contingencyTable_label_i.getTp()/
 						(double)(contingencyTable_label_i.getTp() + contingencyTable_label_i.getFp()) * 100;
-				//calculate the recall
-				double recall = (double)contingencyTable_label_i.getTp()/
+				//calculate the recall; Recall = 1 when FN=0, since 100% of the TP were discovered
+				double recall = 1.0;
+				if (contingencyTable_label_i.getTp() + contingencyTable_label_i.getFn() != 0)
+					recall = (double)contingencyTable_label_i.getTp()/
 						(double)(contingencyTable_label_i.getTp() + contingencyTable_label_i.getFn()) * 100;
 				//calculate the F1 micro
 				double f1_micro = 2*precision*recall/(precision+recall);
@@ -309,19 +327,19 @@ public class Scorer {
 				label.appendChild(elementContingencyTable );
 				// add attribute tp to contingency table element
 				Attr attr_tp = doc.createAttribute("TP");
-				attr_tp.setValue(String.valueOf(globalContingencyTable.getTp()));
+				attr_tp.setValue(String.valueOf(contingencyTable_label_i.getTp()));
 				elementContingencyTable.setAttributeNode(attr_tp);
 				// add attribute fn to contingency table element
 				Attr attr_fn = doc.createAttribute("FN");
-				attr_fn.setValue(String.valueOf(globalContingencyTable.getFn()));
+				attr_fn.setValue(String.valueOf(contingencyTable_label_i.getFn()));
 				elementContingencyTable.setAttributeNode(attr_fn);
 				// add attribute fp to contingency table element
 				Attr attr_fp = doc.createAttribute("FP");
-				attr_fp.setValue(String.valueOf(globalContingencyTable.getFp()));
+				attr_fp.setValue(String.valueOf(contingencyTable_label_i.getFp()));
 				elementContingencyTable.setAttributeNode(attr_fp);
 				// add attribute tn to contingency table element
 				Attr attr_tn = doc.createAttribute("TN");
-				attr_tn.setValue(String.valueOf(globalContingencyTable.getTn()));
+				attr_tn.setValue(String.valueOf(contingencyTable_label_i.getTn()));
 				elementContingencyTable.setAttributeNode(attr_tn);
 				
 			}
@@ -330,11 +348,15 @@ public class Scorer {
 			double accuracy = (double)(globalContingencyTable.getTp() + globalContingencyTable.getTn())/
 					(double)(globalContingencyTable.getTp() + globalContingencyTable.getFp() +
 							globalContingencyTable.getFn() + globalContingencyTable.getTn()) * 100;
-			//calculate the global precision
-			double precision = (double)globalContingencyTable.getTp()/
+			//calculate the global precision; Precision = 1 when FP=0, since no there were no spurious results
+			double precision = 1.0;
+			if (globalContingencyTable.getTp() + globalContingencyTable.getFp() != 0)
+				precision =	(double)globalContingencyTable.getTp()/
 					(double)(globalContingencyTable.getTp() + globalContingencyTable.getFp()) * 100;
-			//calculate the global recall
-			double recall = (double)globalContingencyTable.getTp()/
+			//calculate the global recall; Recall = 1 when FN=0, since 100% of the TP were discovered
+			double recall = 1.0;
+			if (globalContingencyTable.getTp() + globalContingencyTable.getFn() != 0)
+				recall = (double)globalContingencyTable.getTp()/
 					(double)(globalContingencyTable.getTp() + globalContingencyTable.getFn()) * 100;
 			//calculate the global F1
 			double f1Micro = 2*precision*recall/(precision + recall);
