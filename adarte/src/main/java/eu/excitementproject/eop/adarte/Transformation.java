@@ -228,11 +228,11 @@ public class Transformation {
 		else if (type.equals(MATCH) && match == true) {
 			
 			if (form.equals("LeastSpecificForm"))
-				return ("Type:" + this.type + "#" + "Resource:" + this.resource + "#" + "T_DPrel:" + this.token_T.getDprel() + "#" + "H_DPrel:" + this.token_H.getDprel());
+				return ("Type:" + this.type + "#" + "Resource:" + "null" + "#" + "T_DPrel:" + this.token_T.getDprel() + "#" + "H_DPrel:" + this.token_H.getDprel());
 			else if (form.equals("IntermediateForm"))
-				return ("Type:" + this.type + "#" + "Resource:" + this.resource + "#" + "T_DPrel:" + this.token_T.getDprelRelations() + "#" + "H_DPrel:" + this.token_H.getDprelRelations());
+				return ("Type:" + this.type + "#" + "Resource:" + "null" + "#" + "T_DPrel:" + this.token_T.getDprelRelations() + "#" + "H_DPrel:" + this.token_H.getDprelRelations());
 			else // GeneralForm
-				return ("Type:" + this.type + "#" + "Resource:" + this.resource + "#" + "T_DPrel:" + this.token_T.getDprelRelations() + "#" + "T_POS:" + this.token_T.getPOS() + "#" + "T_Token:" + this.token_T.getLemma() + "#" + "H_DPrel:" + this.token_H.getDprelRelations() + "#" + "H_POS:" + this.token_H.getPOS() + "#" + "H_Token:" + this.token_H.getLemma());
+				return ("Type:" + this.type + "#" + "Resource:" + "null" + "#" + "T_DPrel:" + this.token_T.getDprelRelations() + "#" + "T_POS:" + this.token_T.getPOS() + "#" + "T_Token:" + this.token_T.getLemma() + "#" + "H_DPrel:" + this.token_H.getDprelRelations() + "#" + "H_POS:" + this.token_H.getPOS() + "#" + "H_Token:" + this.token_H.getLemma());
 			
 			//you can represent the representations in other ways
 			//return ("Type:" + this.type + "#" + "Info:" + this.info + "#" + "T_DPrel:" + this.token_T.getDprelRelations() + "#" + "H_DPrel:" + this.token_H.getDeprelRelations());
