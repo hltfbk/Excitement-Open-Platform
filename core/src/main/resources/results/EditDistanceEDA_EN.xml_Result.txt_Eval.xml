@@ -1,19 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Result EDA_Configuration="EditDistanceEDA_EN.xml_Result.txt">
-<Total_Pairs>800</Total_Pairs>
-<Accuracy>0.62375</Accuracy>
-<Positive_Pairs Number="410">
-<Precision>0.60380954</Precision>
-<Recall>0.7731707</Recall>
-<F_Measure>0.67807484</F_Measure>
-<Classified_As_Positive>317</Classified_As_Positive>
-<Classified_As_Negative>93</Classified_As_Negative>
-</Positive_Pairs>
-<Negative_Pairs Number="390">
-<Precision>0.6618182</Precision>
-<Recall>0.46666667</Recall>
-<F_Measure>0.54736847</F_Measure>
-<Classified_As_Positive>208</Classified_As_Positive>
-<Classified_As_Negative>182</Classified_As_Negative>
-</Negative_Pairs>
-</Result>
+<?xml version="1.0" encoding="UTF-8"?>
+<results>
+  <label id="NONENTAILMENT">
+    <Accuracy>62.375</Accuracy>
+    <Precision>66.182</Precision>
+    <Recall>46.667</Recall>
+    <F1>54.737</F1>
+    <ContingencyTable FN="208" FP="93" TN="317" TP="182"/>
+  </label>
+  <label id="ENTAILMENT">
+    <Accuracy>62.375</Accuracy>
+    <Precision>60.381</Precision>
+    <Recall>77.317</Recall>
+    <F1>67.807</F1>
+    <ContingencyTable FN="93" FP="208" TN="182" TP="317"/>
+  </label>
+  <Accuracy>62.375</Accuracy>
+  <Precision>62.375</Precision>
+  <Recall>62.375</Recall>
+  <F1micro>62.375</F1micro>
+  <ContingencyTable FN="301" FP="301" TN="499" TP="499"/>
+</results>
