@@ -282,6 +282,14 @@ public class Scorer {
 				globalContingencyTable.incFp(contingencyTable_label_i.getFp());
 				globalContingencyTable.incTn(contingencyTable_label_i.getTn());
 				
+				//calculate the accuracy
+				double accuracy =0.0;
+				if (contingencyTable_label_i.getTp() + contingencyTable_label_i.getFp() +
+						contingencyTable_label_i.getTn() + contingencyTable_label_i.getFn() !=0)
+					accuracy = ((double)contingencyTable_label_i.getTp() + (double)contingencyTable_label_i.getTn())/
+							((double)contingencyTable_label_i.getTp() + (double)contingencyTable_label_i.getTn() +
+									(double)contingencyTable_label_i.getFp() + (double)contingencyTable_label_i.getFn()) * 100;
+				
 				//calculate the precision; Precision = 1 when FP=0, since no there were no spurious results
 				double precision = 1.0;
 				if (contingencyTable_label_i.getTp() + contingencyTable_label_i.getFp() !=0)
@@ -309,6 +317,10 @@ public class Scorer {
 				//Attr attrOccurrences = doc.createAttribute("occurrences");
 				//attrOccurrences.setValue(String.valueOf(labelOccurrences));
 				//label.setAttributeNode(attrOccurrences);
+				// accuracy element
+				Element elementAccuracy = doc.createElement("Accuracy");
+				elementAccuracy.appendChild(doc.createTextNode(String.valueOf(FORMATTER.format(accuracy))));
+				label.appendChild(elementAccuracy);
 				// precision element
 				Element elementPrecision = doc.createElement("Precision");
 				elementPrecision.appendChild(doc.createTextNode(String.valueOf(FORMATTER.format(precision))));
