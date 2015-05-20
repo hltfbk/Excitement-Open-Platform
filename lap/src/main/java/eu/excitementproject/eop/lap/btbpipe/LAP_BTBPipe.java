@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.lap.btbpipe;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Constructor;
@@ -25,8 +26,10 @@ public class LAP_BTBPipe extends LAP_ImplBase {
 
 	Logger logger = Logger.getLogger(getClass().getName());
 
-	private static final String CLARK_DATA_DIR = "/btbPipeData/clarkData";
-	private static final String TAGSET_MAP = "/btbPipeData/btbTagset.map";
+	private static final String CLARK_DATA_DIR = "btbPipeData" + File.separator
+			+ "clarkData";
+	private static final String TAGSET_MAP = "btbPipeData" + File.separator
+			+ "btbTagset.map";
 	private static final String DEFAULT_TAG = "de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O";
 	private Properties tagSetMap;
 
@@ -36,13 +39,23 @@ public class LAP_BTBPipe extends LAP_ImplBase {
 	 * Initialize the preprocessing module of the pipeline
 	 * 
 	 * @throws LAPException
+	 * @throws IOException
 	 */
-	public LAP_BTBPipe() throws LAPException {
+	public LAP_BTBPipe() throws LAPException, IOException {
 		super();
 		this.languageIdentifier = "BG";
+		String eopResources = System.getenv("EOP_RESOURCES");
 
-		String clarkDataAbsPath = this.getClass().getResource(CLARK_DATA_DIR)
-				.getPath();
+		if (eopResources == null) {
+			throw new IOException(
+					"EOP_RESOURCES variable is not set (required path to the EOP resources directory)");
+		} else {
+			if (!eopResources.endsWith(File.separator)) {
+				eopResources += File.separator;
+			}
+		}
+		String clarkDataAbsPath = new File(eopResources + File.separator
+				+ CLARK_DATA_DIR).getPath();
 
 		// initialize the processor
 		try {
@@ -58,8 +71,8 @@ public class LAP_BTBPipe extends LAP_ImplBase {
 		tagSetMap = new Properties();
 
 		try {
-			tagSetMap.load(new InputStreamReader(this.getClass()
-					.getResourceAsStream(TAGSET_MAP)));
+			tagSetMap.load(new InputStreamReader(new FileInputStream(
+					eopResources + File.separator + TAGSET_MAP)));
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new LAPException(
@@ -104,9 +117,12 @@ public class LAP_BTBPipe extends LAP_ImplBase {
 					lemAnnotation.addToIndexes();
 
 					// add pos annotation
-					Class<?> posAnnotClass = Class.forName(getTagType(tok.getBtbPOS()));
-					Constructor<?> posAnnotClassCon = posAnnotClass.getConstructor(JCas.class);
-					POS posAnnotation = (POS) posAnnotClassCon.newInstance(aJCas.getView(viewName));
+					Class<?> posAnnotClass = Class.forName(getTagType(tok
+							.getBtbPOS()));
+					Constructor<?> posAnnotClassCon = posAnnotClass
+							.getConstructor(JCas.class);
+					POS posAnnotation = (POS) posAnnotClassCon
+							.newInstance(aJCas.getView(viewName));
 					posAnnotation.setBegin(tok.getBegin());
 					posAnnotation.setEnd(tok.getEnd());
 					posAnnotation.setPosValue(tok.getBtbPOS());
@@ -146,26 +162,25 @@ public class LAP_BTBPipe extends LAP_ImplBase {
 		} else {
 			mapKey = String.valueOf(morphoTag.charAt(0));
 		}
-		
+
 		if (tagSetMap.containsKey(mapKey)) {
 			return tagSetMap.getProperty(mapKey);
 		} else {
-			logger.warning("The short BTB-tag \""
-					+ mapKey
+			logger.warning("The short BTB-tag \"" + mapKey
 					+ "\" was not found in the tagset map file. Assigning"
 					+ " default tag value \"" + DEFAULT_TAG + "\"");
 			return DEFAULT_TAG;
 		}
 	}
-	
-public static void main(String[] args) {
+
+	public static void main(String[] args) {
 		// test
 		try {
 			LAP_BTBPipe l = new LAP_BTBPipe();
 
 			String testFile = "src/test/resources/small_bg.xml";
-			l.processRawInputFormat(new File(testFile), new File("./"));			
-			
+			l.processRawInputFormat(new File(testFile), new File("./"));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

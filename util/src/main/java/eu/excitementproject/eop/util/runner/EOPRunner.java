@@ -24,7 +24,9 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.lap.PlatformCASProber;
-import eu.excitementproject.eop.util.eval.EDAScorer;
+//import eu.excitementproject.eop.util.eval.EDAScorer;
+//it enables multi-class problems evaluation
+import eu.excitementproject.eop.util.eval.Scorer;
 
 /**
  * 
@@ -360,7 +362,9 @@ public class EOPRunner {
 	
 	
 	public void scoreResults(String resultsFile, Path target) {
-		EDAScorer.score(new File(resultsFile), target.toString());
+		//EDAScorer.score(new File(resultsFile), target.toString());
+		//it enables multi-class problems evaluation
+		Scorer.score(new File(resultsFile), target.toString());
 		logger.info("Results file: " + resultsFile);
 		logger.info("Evaluation file: " + target.toString());
 	}
