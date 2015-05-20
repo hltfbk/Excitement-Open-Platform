@@ -1,5 +1,7 @@
 package eu.excitementproject.eop.lap.btbpipe;
 
+import java.io.IOException;
+
 import eu.excitementproject.eop.lap.LAPException;
 
 /**
@@ -15,8 +17,9 @@ public class BTBPreprocessorBG extends LAP_BTBPipe {
 	 * Initialize the preprocessor
 	 * 
 	 * @throws LAPException
+	 * @throws IOException 
 	 */
-	public BTBPreprocessorBG() throws LAPException {
+	public BTBPreprocessorBG() throws LAPException, IOException {
 		super();
 	}
 }

@@ -144,6 +144,9 @@ public class DataSet {
 				//its values are set to 0 
 				Instance instance_i = new SparseInstance(1.0, initValues);//1.0 is the instance weight
 				
+				//if T and H are the same; no insertion, substitution or replacement of text portions
+				boolean no_differences = true;
+				
 				//binary feature
 				//Iterator<String> iterator_j = example_i.iterator();
 				//weighted feature
@@ -188,11 +191,14 @@ public class DataSet {
 						instance_i.setValue(featureIndex, weight);//1.0 is the feature weight
 						//System.err.println("feature:" + feature_j + " "  + featureIndex + " weight:" + weight);
 						
+						//if there are other transformations than matching, then T and H are different
+						if (feature_j.indexOf(Transformation.MATCH) == -1)
+							no_differences = false;
 					}
 					
 				}
 				
-				if (instance_i.numValues() == 0) {
+				if (instance_i.numValues() == 0 || no_differences == true) {
 					int featureIndex;
 					featureIndex = featuresSet.get("fake_attribute");
 					instance_i.setValue(featureIndex, 1.0);//1.0 is the feature weight

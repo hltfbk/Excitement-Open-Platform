@@ -170,7 +170,8 @@ public class MyClassifier {
 	protected void initClassesList() {
 		
 		this.classesList = new FastVector();
-		this.classesList.addElement("fake_class");
+		this.classesList.addElement("?");
+		//this.classesList.addElement("fake_class");
 		
 	}
 
