@@ -3,29 +3,29 @@
   <parent>
     <groupId>eu.excitementproject</groupId>
     <artifactId>eop</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3-SNAPSHOT</version>
   </parent>
   <artifactId>adarte</artifactId>
   <dependencies>
   	<dependency>
   	    <groupId>eu.excitementproject</groupId>
     	<artifactId>common</artifactId>
-    	<version>1.2.2</version>
+    	<version>1.2.3-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   	    <groupId>eu.excitementproject</groupId>
     	<artifactId>lap</artifactId>
-    	<version>1.2.2</version>
+    	<version>1.2.3-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   	    <groupId>eu.excitementproject</groupId>
     	<artifactId>distsim</artifactId>
-    	<version>1.2.2</version>
+    	<version>1.2.3-SNAPSHOT</version>
   	</dependency>
   	<dependency>
   	    <groupId>eu.excitementproject</groupId>
     	<artifactId>core</artifactId>
-    	<version>1.2.2</version>
+    	<version>1.2.3-SNAPSHOT</version>
   	</dependency>
   	<dependency>
 		<groupId>nz.ac.waikato.cms.weka</groupId>
