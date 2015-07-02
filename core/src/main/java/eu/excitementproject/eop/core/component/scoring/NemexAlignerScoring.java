@@ -18,10 +18,9 @@ import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
-import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitement.type.alignment.Link;
-import eu.excitement.type.alignment.Target;
 import eu.excitement.type.entailment.EntailmentMetadata;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;

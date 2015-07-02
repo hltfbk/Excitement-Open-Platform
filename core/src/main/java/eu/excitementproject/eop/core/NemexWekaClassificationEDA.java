@@ -201,7 +201,7 @@ public class NemexWekaClassificationEDA implements
 			}
 			if (component.equals("NemexBagOfWordsScoring")) {
 				initializeNemexBOWComp(config);
-			} else if (component.equals("NemexBagOfLemasScoring")) {
+			} else if (component.equals("NemexBagOfLemmasScoring")) {
 				initializeNemexBOLComp(config);
 			} else if (component.equals("NemexBagOfChunksScoring")) {
 				initializeNemexBOChunksComp(config);
