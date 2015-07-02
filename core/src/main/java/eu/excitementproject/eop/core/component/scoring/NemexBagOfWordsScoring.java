@@ -8,6 +8,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -45,6 +46,7 @@ public class NemexBagOfWordsScoring implements ScoringComponent {
 				.getString("removeStopWords"));
 
 		if (removeStopWords) {
+			this.stopWords = new HashSet<String>();
 			try {
 				for (String str : (Files.readAllLines(
 						Paths.get(comp.getString("stopWordPath")),
@@ -106,10 +108,10 @@ public class NemexBagOfWordsScoring implements ScoringComponent {
 				scoresVector.add(0d);
 				scoresVector.add(0d);
 			} else {
-				scoresVector.add(ScorerUtility.isTaskIE(task));
-				scoresVector.add(ScorerUtility.isTaskIR(task));
-				scoresVector.add(ScorerUtility.isTaskQA(task));
-				scoresVector.add(ScorerUtility.isTaskSUM(task));
+				scoresVector.add(NemexScorerUtility.isTaskIE(task));
+				scoresVector.add(NemexScorerUtility.isTaskIR(task));
+				scoresVector.add(NemexScorerUtility.isTaskQA(task));
+				scoresVector.add(NemexScorerUtility.isTaskSUM(task));
 			}
 
 		} catch (PairAnnotatorComponentException | CASException e) {

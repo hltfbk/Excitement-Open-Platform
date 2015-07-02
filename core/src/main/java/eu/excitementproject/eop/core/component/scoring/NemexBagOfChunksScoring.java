@@ -100,10 +100,10 @@ public class NemexBagOfChunksScoring implements ScoringComponent {
 				scoresVector.add(0d);
 				scoresVector.add(0d);
 			} else {
-				scoresVector.add(ScorerUtility.isTaskIE(task));
-				scoresVector.add(ScorerUtility.isTaskIR(task));
-				scoresVector.add(ScorerUtility.isTaskQA(task));
-				scoresVector.add(ScorerUtility.isTaskSUM(task));
+				scoresVector.add(NemexScorerUtility.isTaskIE(task));
+				scoresVector.add(NemexScorerUtility.isTaskIR(task));
+				scoresVector.add(NemexScorerUtility.isTaskQA(task));
+				scoresVector.add(NemexScorerUtility.isTaskSUM(task));
 			}
 
 		} catch (PairAnnotatorComponentException | CASException e) {

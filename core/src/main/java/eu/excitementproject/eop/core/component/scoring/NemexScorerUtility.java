@@ -2,7 +2,7 @@ package eu.excitementproject.eop.core.component.scoring;
 
 
 
-public class ScorerUtility {
+public class NemexScorerUtility {
 
 	/**
 	 * check whether the task is IE
