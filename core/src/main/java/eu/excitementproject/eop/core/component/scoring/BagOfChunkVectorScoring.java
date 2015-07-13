@@ -94,14 +94,26 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 		return null;
 	}
 
+	/**
+	 * @return num of features.
+	 */
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
 
+	/**
+	 * num of features
+	 */
 	int numOfFeats = 3;
 
+	/**
+	 * aligner to add alignment links on T and H pairs
+	 */
 	BagOfChunkVectorAligner aligner;
 
+	/**
+	 * The logger.
+	 */
 	public final static Logger logger = Logger
 			.getLogger(BagOfChunkVectorScoring.class);
 

@@ -94,14 +94,27 @@ public class BagOfWordVectorScoring implements ScoringComponent {
 		return null;
 	}
 
+	/**
+	 * 
+	 * @return number of features
+	 */
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
 
+	/**
+	 * number of features
+	 */
 	int numOfFeats = 3;
 
+	/**
+	 * aligner to add alignment links between T and H.
+	 */
 	BagOfWordVectorAligner aligner;
 
+	/**
+	 * The logger
+	 */
 	public final static Logger logger = Logger
 			.getLogger(BagOfWordVectorScoring.class);
 
