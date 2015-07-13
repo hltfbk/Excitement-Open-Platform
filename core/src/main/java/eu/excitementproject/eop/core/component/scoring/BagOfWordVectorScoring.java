@@ -18,6 +18,13 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.alignment.vectorlink.BagOfWordVectorAligner;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
+/**
+ * Calculate similarity scores between T and H based on alignment of words
+ * through word vectors.
+ * 
+ * @author Madhumita
+ * @since July 2015
+ */
 public class BagOfWordVectorScoring implements ScoringComponent {
 
 	public BagOfWordVectorScoring(CommonConfig config)

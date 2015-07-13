@@ -18,6 +18,13 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.alignment.vectorlink.BagOfChunkVectorAligner;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
+/**
+ * Calculate similarity scores between T and H based on alignment of chunks
+ * through vectors.
+ * 
+ * @author Madhumita
+ * @since Juy 2015
+ */
 public class BagOfChunkVectorScoring implements ScoringComponent {
 
 	public BagOfChunkVectorScoring(CommonConfig config)
