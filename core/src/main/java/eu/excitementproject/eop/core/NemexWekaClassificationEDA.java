@@ -11,8 +11,8 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
@@ -36,6 +36,8 @@ import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.scoring.BagOfChunkVectorScoring;
+import eu.excitementproject.eop.core.component.scoring.BagOfWordVectorScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfChunksScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfLemmasScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfWordsScoring;
@@ -57,8 +59,12 @@ public class NemexWekaClassificationEDA implements
 		initializeTestDir(config);
 
 		// initialize the components
-		initializeComponents(config);
- 
+		try {
+			initializeComponents(config);
+		} catch (IOException e) {
+			throw new ComponentException(e.getMessage());
+		}
+
 		// initialize the model
 		initializeModel(config, false);
 
@@ -136,7 +142,7 @@ public class NemexWekaClassificationEDA implements
 				throw new ConfigurationException(
 						"Please specify the training data directory.");
 			} else {
-				logger.warning("Warning: Please specify the training data directory.");
+				logger.warn("Warning: Please specify the training data directory.");
 			}
 		}
 
@@ -161,7 +167,7 @@ public class NemexWekaClassificationEDA implements
 
 		this.testDIR = EDA.getString("testDir");
 		if (null == testDIR) {
-			logger.warning("Warning: Please specify the testing data directory.");
+			logger.warn("Warning: Please specify the testing data directory.");
 		}
 	}
 
@@ -172,9 +178,10 @@ public class NemexWekaClassificationEDA implements
 	 *            the configuration
 	 * @throws ConfigurationException
 	 * @throws ComponentException
+	 * @throws IOException
 	 */
 	private void initializeComponents(CommonConfig config)
-			throws ConfigurationException, ComponentException {
+			throws ConfigurationException, ComponentException, IOException {
 		NameValueTable EDA = null;
 		try {
 			EDA = config.getSection(this.getClass().getName());
@@ -205,6 +212,10 @@ public class NemexWekaClassificationEDA implements
 				initializeNemexBOLComp(config);
 			} else if (component.equals("NemexBagOfChunksScoring")) {
 				initializeNemexBOChunksComp(config);
+			} else if (component.equals("BagOfWordVectorScoring")) {
+				initializeBOWordVecComp(config);
+			} else if (component.equals("BagOfChunkVectorScoring")) {
+				initializeBOChunkVecComp(config);
 			} else {
 				try {
 					@SuppressWarnings("unchecked")
@@ -217,6 +228,49 @@ public class NemexWekaClassificationEDA implements
 				}
 			}
 		}
+	}
+
+	/**
+	 * Initialize the BagOfChunkVectorScoring component.
+	 * 
+	 * @param config
+	 *            Configuration file.
+	 * @throws IOException
+	 */
+	private void initializeBOChunkVecComp(CommonConfig config)
+			throws IOException {
+		ScoringComponent comp = null;
+		try {
+			comp = new BagOfChunkVectorScoring(config);
+		} catch (ConfigurationException e) {
+			// TODO Auto-generated catch block
+			logger.warn(e.getMessage());
+		}
+		if (((BagOfChunkVectorScoring) comp).getNumOfFeats() > 0) {
+			components.add(comp);
+		}
+
+	}
+
+	/**
+	 * Initialize the BagOfWordVectorScoring component.
+	 * 
+	 * @param config
+	 *            The configuration file.
+	 * @throws IOException
+	 */
+	private void initializeBOWordVecComp(CommonConfig config)
+			throws IOException {
+		ScoringComponent comp = null;
+		try {
+			comp = new BagOfWordVectorScoring(config);
+		} catch (ConfigurationException e) {
+			logger.warn(e.getMessage());
+		}
+		if (((BagOfWordVectorScoring) comp).getNumOfFeats() > 0) {
+			components.add(comp);
+		}
+
 	}
 
 	/**
@@ -354,11 +408,14 @@ public class NemexWekaClassificationEDA implements
 			for (ScoringComponent curComp : components) {
 
 				if (curComp.getComponentName() == "NemexBagOfWordsScoring") {
-					writeAttributes(writer, "BOW");
+					writeAttributesNumAlignments(writer, "BOW");
+					writeAttributesTask(writer, "BOW");
 				} else if (curComp.getComponentName() == "NemexBagOfLemmasScoring") {
-					writeAttributes(writer, "BOL");
+					writeAttributesNumAlignments(writer, "BOL");
+					writeAttributesTask(writer, "BOL");
 				} else if (curComp.getComponentName() == "NemexBagOfChunksScoring") {
-					writeAttributes(writer, "BOChunks");
+					writeAttributesNumAlignments(writer, "BOChunks");
+					writeAttributesTask(writer, "BOChunks");
 
 					int numOfFeats = ((NemexBagOfChunksScoring) curComp)
 							.getNumOfFeats();
@@ -373,10 +430,16 @@ public class NemexWekaClassificationEDA implements
 						}
 					}
 
+				} else if (curComp.getComponentName() == "BagOfWordVectorScoring") {
+					writeAttributesNumAlignments(writer, "BOWVec");
+				}
+
+				else if (curComp.getComponentName() == "BagOfChunkVectorScoring") {
+					writeAttributesNumAlignments(writer, "BOChunkVec");
 				}
 			}
 			writer.newLine();
-			writer.append("@ATTRIBUTE class {ENTAILMENT,NONENTAILMENT,ABSTAIN}");
+			writer.append("@ATTRIBUTE class {ENTAILMENT,NONENTAILMENT}");
 			writer.newLine();
 			writer.newLine();
 			writer.append("@DATA");
@@ -389,7 +452,7 @@ public class NemexWekaClassificationEDA implements
 	}
 
 	/**
-	 * Write all 7 attribute features common to all scoring components.
+	 * Write all 3 attribute features common to all scoring components.
 	 * 
 	 * @param writer
 	 *            BuferedWriter for ARFF file.
@@ -397,15 +460,29 @@ public class NemexWekaClassificationEDA implements
 	 *            Specifying whether it is bag of words or lemmas or chunks
 	 * @throws IOException
 	 */
-	private void writeAttributes(BufferedWriter writer, String string)
-			throws IOException {
-		// 7 default features for NemexBOW, NemexBOL, and NemexBOChunks scoring
+	private void writeAttributesNumAlignments(BufferedWriter writer,
+			String string) throws IOException {
+		// 3 default features for all scoring components
 		writer.newLine();
 		writer.append("@ATTRIBUTE Nemex" + string + "Score1 NUMERIC");
 		writer.newLine();
 		writer.append("@ATTRIBUTE Nemex" + string + "Score2 NUMERIC");
 		writer.newLine();
 		writer.append("@ATTRIBUTE Nemex" + string + "Score3 NUMERIC");
+	}
+
+	/**
+	 * Write all 4 attribute features related to concerned task.
+	 * 
+	 * @param writer
+	 *            BuferedWriter for ARFF file.
+	 * @param string
+	 *            Specifying whether it is bag of words or lemmas or chunks
+	 * @throws IOException
+	 */
+	private void writeAttributesTask(BufferedWriter writer, String string)
+			throws IOException {
+		// 4 scores for task
 		writer.newLine();
 		writer.append("@ATTRIBUTE Nemex" + string + "TaskIE NUMERIC");
 		writer.newLine();
@@ -499,7 +576,7 @@ public class NemexWekaClassificationEDA implements
 	 * 
 	 * @param pairId
 	 *            ID for pair to classify
-	 * @return classification decision - entailment, nonentailment or abstain.
+	 * @return classification decision - entailment or nonentailment.
 	 */
 	private ClassificationTEDecision classifyData(String pairId) {
 		Instances testData;
@@ -535,12 +612,12 @@ public class NemexWekaClassificationEDA implements
 				return new ClassificationTEDecision(
 						DecisionLabel.NonEntailment,
 						Math.maximum(predThreshold), pairId);
-			} else if (predictedClass.equalsIgnoreCase("ABSTAIN")) {
-				return new ClassificationTEDecision(DecisionLabel.Abstain,
-						Math.maximum(predThreshold), pairId);
-			}
+				// } else if (predictedClass.equalsIgnoreCase("ABSTAIN")) {
+				// return new ClassificationTEDecision(DecisionLabel.Abstain,
+				// Math.maximum(predThreshold), pairId);
+				// }
 
-			// }
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -563,7 +640,11 @@ public class NemexWekaClassificationEDA implements
 		initializeTestDir(config);
 
 		// initialize the components
-		initializeComponents(config);
+		try {
+			initializeComponents(config);
+		} catch (IOException e) {
+			throw new ComponentException(e.getMessage());
+		}
 
 		// initialize the model
 		initializeModel(config, true);
@@ -741,7 +822,7 @@ public class NemexWekaClassificationEDA implements
 
 	@Override
 	public void shutdown() {
-		//TODO: shutdown in better way
+		// TODO: shutdown in better way
 		components.clear();
 		trainDIR = "";
 		testDIR = "";
@@ -751,7 +832,7 @@ public class NemexWekaClassificationEDA implements
 	 * the logger
 	 */
 	public final static Logger logger = Logger
-			.getLogger(MaxEntClassificationEDA.class.getName());
+			.getLogger(NemexWekaClassificationEDA.class.getName());
 
 	/**
 	 * list of components used in this EDA

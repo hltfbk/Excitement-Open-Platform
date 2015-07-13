@@ -320,18 +320,12 @@ public class NemexBagOfWordsAligner implements AlignmentComponent {
 
 	}
 
-	/**
-	 * @return Name for current component.
-	 */
-
 	@Override
 	public String getComponentName() {
 		return "NemexBagOfWordsAligner";
 	}
 
-	/**
-	 * @return Name for current instance.
-	 */
+	
 	@Override
 	public String getInstanceName() {
 		return null;
