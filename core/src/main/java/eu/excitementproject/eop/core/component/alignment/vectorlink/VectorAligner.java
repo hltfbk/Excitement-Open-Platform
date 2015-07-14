@@ -114,7 +114,9 @@ public class VectorAligner implements AlignmentComponent {
 		}
 
 		if (modelType.equalsIgnoreCase("google")) {
-			vec = WordVectorSerializer.loadGoogleModel(new File(vecModel), true);
+
+			File modelFile = new File(vecModel);
+			vec = WordVectorSerializer.loadGoogleModel(modelFile, true);
 			if (null == vec) {
 				throw new IOException("Could not load Google model file.");
 			}
