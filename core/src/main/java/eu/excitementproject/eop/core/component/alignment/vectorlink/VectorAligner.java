@@ -184,7 +184,7 @@ public class VectorAligner implements AlignmentComponent {
 
 		for (FSIterator<Annotation> tIter = tAnnots.iterator(); tIter.hasNext();) {
 			Annotation curTAnnot = tIter.next();
-			String str1 = curTAnnot.getCoveredText();
+			String str1 = curTAnnot.getCoveredText().toLowerCase();
 			
 			if(removeStopWords) {
 				if(stopWords.contains(str1))
@@ -195,14 +195,19 @@ public class VectorAligner implements AlignmentComponent {
 					.hasNext();) {
 
 				Annotation curHAnnot = hIter.next();
-				String str2 = curHAnnot.getCoveredText();
+				String str2 = curHAnnot.getCoveredText().toLowerCase();
 
 				if(removeStopWords) {
 					if(stopWords.contains(str2))
 						continue;
 				}
 				
-				double sim = vec.similarity(str1, str2);
+				double sim = 0d;
+				if(str1.equals(str2))
+					sim = 1.0;
+				else
+					sim = vec.similarity(str1, str2);
+				
 				logger.info("Similarity between, " + str1 + " and " + str2
 						+ " is: " + sim);
 

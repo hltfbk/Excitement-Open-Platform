@@ -150,12 +150,12 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		//Find similarity between all T and H chunks
 		for (FSIterator<Annotation> hIter = hChunks.iterator(); hIter.hasNext();) {
 			Annotation curHAnnot = hIter.next();
-			String hStr = curHAnnot.getCoveredText();
+			String hStr = curHAnnot.getCoveredText().toLowerCase();
 
 			for (FSIterator<Annotation> tIter = tChunks.iterator(); tIter
 					.hasNext();) {
 				Annotation curTAnnot = tIter.next();
-				String tStr = curTAnnot.getCoveredText();
+				String tStr = curTAnnot.getCoveredText().toLowerCase();
 
 				double sim = 0d;
 				
@@ -219,7 +219,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			Annotation curAnnot = tIter.next();
 			
 			//Vector for required chunk string has been calculated already
-			if(vectors.containsKey(curAnnot.getCoveredText()))
+			if(vectors.containsKey(curAnnot.getCoveredText().toLowerCase()))
 				continue;
 
 			// Get all tokens covered under Chunk annotation.
@@ -236,15 +236,15 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 				if (curVec == null)
 					// First token in given chunk
 					curVec = vec.getWordVectorMatrix(iter.next()
-							.getCoveredText());
+							.getCoveredText().toLowerCase());
 				else
 					// Sum vectors for all tokens to get equivalent chunk vector
 					curVec = curVec.add(vec.getWordVectorMatrix(iter.next()
-							.getCoveredText()));
+							.getCoveredText().toLowerCase()));
 			}
 
 			// Store resulting vector in map of chunk string vs. vector
-			vectors.put(curAnnot.getCoveredText(), Transforms.unitVec(curVec));
+			vectors.put(curAnnot.getCoveredText().toLowerCase(), Transforms.unitVec(curVec));
 
 		}
 
