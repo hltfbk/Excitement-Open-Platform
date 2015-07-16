@@ -142,13 +142,10 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					"Could not read hypothesis chunks.");
 		}
 
-		//Map of text chunks and their vectors
-		HashMap<String, INDArray> tVectors = new HashMap<String, INDArray>();
-		createChunkVecMap(tView, tChunks, tVectors);
-
-		//Map of hypothesis chunks and their vectors
-		HashMap<String, INDArray> hVectors = new HashMap<String, INDArray>();
-		createChunkVecMap(hView, hChunks, hVectors);
+		//Map of chunks and their vectors
+		HashMap<String, INDArray> vectors = new HashMap<String, INDArray>();
+		createChunkVecMap(tView, tChunks, vectors);
+		createChunkVecMap(hView, hChunks, vectors);
 		
 		//Find similarity between all T and H chunks
 		for (FSIterator<Annotation> hIter = hChunks.iterator(); hIter.hasNext();) {
@@ -165,7 +162,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 				if(hStr.equals(tStr))
 					sim = 1.0;
 				else
-					sim = calculateSimilarity(tVectors,hVectors,tStr,hStr);
+					sim = calculateSimilarity(vectors,tStr,hStr);
 				
 				logger.info("Similarity between, " + tStr + " and " + hStr
 						+ " is: " + sim);
@@ -182,10 +179,17 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		}
 	}
 
-	private double calculateSimilarity(HashMap<String, INDArray> tVectors,
-			HashMap<String, INDArray> hVectors, String tStr, String hStr) {
-		INDArray tVec = tVectors.get(tStr);
-        INDArray hVec = hVectors.get(hStr);
+	/**
+	 * Calculate similarity between two chunk strings
+	 * @param vectors Map for chunk strings and vectors.
+	 * @param tStr tChunk string.
+	 * @param hStr hChunk string.
+	 * @return similarity between vectors for tStr and hStr.
+	 */
+	private double calculateSimilarity(HashMap<String, INDArray> vectors,
+			String tStr, String hStr) {
+		INDArray tVec = vectors.get(tStr);
+        INDArray hVec = vectors.get(hStr);
         
         if(tVec == null || hVec == null)
             return -1;
@@ -212,18 +216,22 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 		// Iterate over all chunks
 		for (FSIterator<Annotation> tIter = chunks.iterator(); tIter.hasNext();) {
-			Annotation curTAnnot = tIter.next();
+			Annotation curAnnot = tIter.next();
+			
+			//Vector for required chunk string has been calculated already
+			if(vectors.containsKey(curAnnot.getCoveredText()))
+				continue;
 
 			// Get all tokens covered under Chunk annotation.
-			Collection<Token> tCoveredTokens = JCasUtil.selectCovered(view,
-					Token.class, curTAnnot.getBegin(), curTAnnot.getEnd());
+			Collection<Token> coveredTokens = JCasUtil.selectCovered(view,
+					Token.class, curAnnot.getBegin(), curAnnot.getEnd());
 
-			if (tCoveredTokens.size() == 0)
+			if (coveredTokens.size() == 0)
 				logger.warn("No tokens covered under the current chunk annotation.");
 
 			INDArray curVec = null;
 			// Iterate over all tokens
-			for (Iterator<Token> iter = tCoveredTokens.iterator(); iter
+			for (Iterator<Token> iter = coveredTokens.iterator(); iter
 					.hasNext();) {
 				if (curVec == null)
 					// First token in given chunk
@@ -236,7 +244,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			}
 
 			// Store resulting vector in map of chunk string vs. vector
-			vectors.put(curTAnnot.getCoveredText(), Transforms.unitVec(curVec));
+			vectors.put(curAnnot.getCoveredText(), Transforms.unitVec(curVec));
 
 		}
 
