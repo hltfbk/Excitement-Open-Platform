@@ -1,6 +1,11 @@
 package eu.excitementproject.eop.core.component.scoring;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
@@ -14,6 +19,7 @@ import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponen
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
+import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.alignment.vectorlink.BagOfChunkVectorAligner;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
@@ -23,14 +29,35 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * through vectors.
  * 
  * @author Madhumita
- * @since Juy 2015
+ * @since July 2015
  */
 public class BagOfChunkVectorScoring implements ScoringComponent {
 
 	public BagOfChunkVectorScoring(CommonConfig config)
 			throws ConfigurationException, IOException {
 
-		this.aligner = new BagOfChunkVectorAligner(config);
+
+		NameValueTable comp = config.getSection("BagOfWordVectorScoring");
+		
+		this.removeStopWords = Boolean.valueOf(comp
+				.getString("removeStopWords"));
+
+		/*
+		 * If remove stop words is true, create a stopwords set.
+		 */
+		if (removeStopWords) {
+			this.stopWords = new HashSet<String>();
+			try {
+				for (String str : (Files.readAllLines(
+						Paths.get(comp.getString("stopWordPath")),
+						Charset.forName("UTF-8"))))
+					this.stopWords.add(str.toLowerCase());
+			} catch (IOException e1) {
+				logger.error("Could not read stop words file");
+			}
+		}
+		
+		this.aligner = new BagOfChunkVectorAligner(config, removeStopWords, stopWords);
 
 	}
 
@@ -93,7 +120,7 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 
 	@Override
 	public String getComponentName() {
-		return "BagOfChunkVectorAligner";
+		return "BagOfChunkVectorScoring";
 	}
 
 	@Override
@@ -113,6 +140,16 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 	 */
 	int numOfFeats = 3;
 
+	/**
+	 * Stopwords set
+	 */
+	private Set<String> stopWords;
+	
+	/**
+	 * whether stopwords should be removed
+	 */
+	private boolean removeStopWords;
+	
 	/**
 	 * aligner to add alignment links on T and H pairs
 	 */

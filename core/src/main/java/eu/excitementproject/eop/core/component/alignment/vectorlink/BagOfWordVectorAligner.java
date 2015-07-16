@@ -1,6 +1,7 @@
 package eu.excitementproject.eop.core.component.alignment.vectorlink;
 
 import java.io.IOException;
+import java.util.Set;
 
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
@@ -16,9 +17,9 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
  */
 public class BagOfWordVectorAligner extends VectorAligner {
 
-	public BagOfWordVectorAligner(CommonConfig config)
+	public BagOfWordVectorAligner(CommonConfig config, boolean removeStopWords, Set<String> stopWords)
 			throws ConfigurationException, IOException {
-		super(config, "BagOfWordVectorScoring","tokenWord");
+		super(config, removeStopWords, stopWords, "BagOfWordVectorScoring","tokenWord");
 	}
 	
 	@Override

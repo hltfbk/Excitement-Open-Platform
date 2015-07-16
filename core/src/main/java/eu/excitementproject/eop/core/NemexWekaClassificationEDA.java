@@ -407,13 +407,13 @@ public class NemexWekaClassificationEDA implements
 
 			for (ScoringComponent curComp : components) {
 
-				if (curComp.getComponentName() == "NemexBagOfWordsScoring") {
+				if (curComp.getComponentName().equalsIgnoreCase("NemexBagOfWordsScoring")) {
 					writeAttributesNumAlignments(writer, "BOW");
 					writeAttributesTask(writer, "BOW");
-				} else if (curComp.getComponentName() == "NemexBagOfLemmasScoring") {
+				} else if (curComp.getComponentName().equalsIgnoreCase("NemexBagOfLemmasScoring")) {
 					writeAttributesNumAlignments(writer, "BOL");
 					writeAttributesTask(writer, "BOL");
-				} else if (curComp.getComponentName() == "NemexBagOfChunksScoring") {
+				} else if (curComp.getComponentName().equalsIgnoreCase("NemexBagOfChunksScoring")) {
 					writeAttributesNumAlignments(writer, "BOChunks");
 					writeAttributesTask(writer, "BOChunks");
 
@@ -430,11 +430,11 @@ public class NemexWekaClassificationEDA implements
 						}
 					}
 
-				} else if (curComp.getComponentName() == "BagOfWordVectorScoring") {
+				} else if (curComp.getComponentName().equalsIgnoreCase("BagOfWordVectorScoring")) {
 					writeAttributesNumAlignments(writer, "BOWVec");
 				}
 
-				else if (curComp.getComponentName() == "BagOfChunkVectorScoring") {
+				else if (curComp.getComponentName().equalsIgnoreCase("BagOfChunkVectorScoring")) {
 					writeAttributesNumAlignments(writer, "BOChunkVec");
 				}
 			}

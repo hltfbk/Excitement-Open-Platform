@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import opennlp.tools.chunker.ChunkerME;
 import opennlp.tools.chunker.ChunkerModel;
@@ -14,7 +16,13 @@ import opennlp.tools.util.Span;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
+import org.apache.uima.cas.FSIterator;
+import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
+import org.apache.uima.jcas.tcas.Annotation;
+import org.nd4j.linalg.api.ndarray.INDArray;
+import org.nd4j.linalg.factory.Nd4j;
+import org.nd4j.linalg.ops.transforms.Transforms;
 import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
@@ -34,11 +42,13 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  */
 public class BagOfChunkVectorAligner extends VectorAligner {
 
-	public BagOfChunkVectorAligner(CommonConfig config)
+	public BagOfChunkVectorAligner(CommonConfig config,
+			boolean removeStopWords, Set<String> stopWords)
 			throws ConfigurationException, IOException {
 
 		// Initialize the vector models and threshold using superclass.
-		super(config, "BagOfChunkVectorScoring", "chunk");
+		super(config, removeStopWords, stopWords, "BagOfChunkVectorScoring",
+				"chunk");
 
 		// Load the chunker model
 		NameValueTable comp = config.getSection("NemexBagOfChunksScoring");
@@ -115,7 +125,121 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		chunk(hView);
 
 		// Call to super, which does the actual alignment
-		super.annotate(aJCas);
+		// super.annotate(aJCas);
+
+		//Get T and H chunk annotations
+		AnnotationIndex<Annotation> tChunks = tView
+				.getAnnotationIndex(Chunk.type);
+		AnnotationIndex<Annotation> hChunks = hView
+				.getAnnotationIndex(Chunk.type);
+
+		if (null == tChunks) {
+			throw new AlignmentComponentException("Could not read text chunks.");
+		}
+
+		if (null == hChunks) {
+			throw new AlignmentComponentException(
+					"Could not read hypothesis chunks.");
+		}
+
+		//Map of text chunks and their vectors
+		HashMap<String, INDArray> tVectors = new HashMap<String, INDArray>();
+		createChunkVecMap(tView, tChunks, tVectors);
+
+		//Map of hypothesis chunks and their vectors
+		HashMap<String, INDArray> hVectors = new HashMap<String, INDArray>();
+		createChunkVecMap(hView, hChunks, hVectors);
+		
+		//Find similarity between all T and H chunks
+		for (FSIterator<Annotation> hIter = hChunks.iterator(); hIter.hasNext();) {
+			Annotation curHAnnot = hIter.next();
+			String hStr = curHAnnot.getCoveredText();
+
+			for (FSIterator<Annotation> tIter = tChunks.iterator(); tIter
+					.hasNext();) {
+				Annotation curTAnnot = tIter.next();
+				String tStr = curTAnnot.getCoveredText();
+
+				double sim = 0d;
+				
+				if(hStr.equals(tStr))
+					sim = 1.0;
+				else
+					sim = calculateSimilarity(tVectors,hVectors,tStr,hStr);
+				
+				logger.info("Similarity between, " + tStr + " and " + hStr
+						+ " is: " + sim);
+
+				int compare = Double.compare(sim, threshold);
+				if (compare == 0 || compare > 0) {
+					// if similarity >= threshold, add alignment link
+					logger.info("Adding alignment link between, " + tStr
+							+ " and " + hStr);
+					addAlignmentLink(tView, hView, curTAnnot, curHAnnot, sim);
+				}
+
+			}
+		}
+	}
+
+	private double calculateSimilarity(HashMap<String, INDArray> tVectors,
+			HashMap<String, INDArray> hVectors, String tStr, String hStr) {
+		INDArray tVec = tVectors.get(tStr);
+        INDArray hVec = hVectors.get(hStr);
+        
+        if(tVec == null || hVec == null)
+            return -1;
+        
+        return  Nd4j.getBlasWrapper().dot(tVec, hVec);
+		
+	}
+
+	/**
+	 * Create a Map of chunk annotation text and corresponding vector for the
+	 * chunk. The resultant vector is calculated by summing vectors for all
+	 * tokens in the chunk.
+	 * 
+	 * @param view
+	 *            View which contains required chunk annotations.
+	 * @param chunks
+	 *            Chunk annotations on given view.
+	 * @param vectors
+	 *            Map which stores vectors for chunks.
+	 */
+	private void createChunkVecMap(JCas view,
+			AnnotationIndex<Annotation> chunks,
+			HashMap<String, INDArray> vectors) {
+
+		// Iterate over all chunks
+		for (FSIterator<Annotation> tIter = chunks.iterator(); tIter.hasNext();) {
+			Annotation curTAnnot = tIter.next();
+
+			// Get all tokens covered under Chunk annotation.
+			Collection<Token> tCoveredTokens = JCasUtil.selectCovered(view,
+					Token.class, curTAnnot.getBegin(), curTAnnot.getEnd());
+
+			if (tCoveredTokens.size() == 0)
+				logger.warn("No tokens covered under the current chunk annotation.");
+
+			INDArray curVec = null;
+			// Iterate over all tokens
+			for (Iterator<Token> iter = tCoveredTokens.iterator(); iter
+					.hasNext();) {
+				if (curVec == null)
+					// First token in given chunk
+					curVec = vec.getWordVectorMatrix(iter.next()
+							.getCoveredText());
+				else
+					// Sum vectors for all tokens to get equivalent chunk vector
+					curVec = curVec.add(vec.getWordVectorMatrix(iter.next()
+							.getCoveredText()));
+			}
+
+			// Store resulting vector in map of chunk string vs. vector
+			vectors.put(curTAnnot.getCoveredText(), Transforms.unitVec(curVec));
+
+		}
+
 	}
 
 	/**

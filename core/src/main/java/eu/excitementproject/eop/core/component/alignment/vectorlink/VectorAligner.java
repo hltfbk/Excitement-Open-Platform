@@ -2,6 +2,7 @@ package eu.excitementproject.eop.core.component.alignment.vectorlink;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import org.apache.uima.cas.CASException;
@@ -14,7 +15,7 @@ import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
+//import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
 import eu.excitement.type.alignment.Target;
@@ -40,12 +41,14 @@ public class VectorAligner implements AlignmentComponent {
 	 * 
 	 * @param config
 	 *            Configuration file
+	 * @param stopWords2 
+	 * @param removeStopWords2 
 	 * @param sectionName
 	 *            Name of section containing required configuration.
 	 * @throws ConfigurationException
 	 * @throws IOException
 	 */
-	public VectorAligner(CommonConfig config, String sectionName,
+	public VectorAligner(CommonConfig config, boolean removeStopWords, Set<String> stopWords, String sectionName,
 			String annotName) throws ConfigurationException, IOException {
 
 		// load the vector model
@@ -56,6 +59,10 @@ public class VectorAligner implements AlignmentComponent {
 
 		// initialize annotation name
 		this.annotName = annotName;
+		
+		//initialize stopwords removal and stopwords set
+		this.removeStopWords = removeStopWords;
+		this.stopWords = stopWords;
 	}
 
 	/**
@@ -154,16 +161,16 @@ public class VectorAligner implements AlignmentComponent {
 
 		AnnotationIndex<Annotation> tAnnots = null, hAnnots = null;
 
-		if (annotName.equalsIgnoreCase("tokenWord")) {
+//		if (annotName.equalsIgnoreCase("tokenWord")) {
 			tAnnots = tView.getAnnotationIndex(Token.type);
 			hAnnots = hView.getAnnotationIndex(Token.type);
-		} else if (annotName.equalsIgnoreCase("chunk")) {
-			tAnnots = tView.getAnnotationIndex(Chunk.type);
-			hAnnots = hView.getAnnotationIndex(Chunk.type);
-		} else {
-			throw new AlignmentComponentException(
-					"Failed to align data: Incorrect annotation name specified");
-		}
+//		} else if (annotName.equalsIgnoreCase("chunk")) {
+//			tAnnots = tView.getAnnotationIndex(Chunk.type);
+//			hAnnots = hView.getAnnotationIndex(Chunk.type);
+//		} else {
+//			throw new AlignmentComponentException(
+//					"Failed to align data: Incorrect annotation name specified");
+//		}
 
 		if (null == tAnnots) {
 			throw new AlignmentComponentException(
@@ -178,6 +185,11 @@ public class VectorAligner implements AlignmentComponent {
 		for (FSIterator<Annotation> tIter = tAnnots.iterator(); tIter.hasNext();) {
 			Annotation curTAnnot = tIter.next();
 			String str1 = curTAnnot.getCoveredText();
+			
+			if(removeStopWords) {
+				if(stopWords.contains(str1))
+					continue;
+			}
 
 			for (FSIterator<Annotation> hIter = hAnnots.iterator(); hIter
 					.hasNext();) {
@@ -185,6 +197,11 @@ public class VectorAligner implements AlignmentComponent {
 				Annotation curHAnnot = hIter.next();
 				String str2 = curHAnnot.getCoveredText();
 
+				if(removeStopWords) {
+					if(stopWords.contains(str2))
+						continue;
+				}
+				
 				double sim = vec.similarity(str1, str2);
 				logger.info("Similarity between, " + str1 + " and " + str2
 						+ " is: " + sim);
@@ -215,7 +232,7 @@ public class VectorAligner implements AlignmentComponent {
 	 * @param sim
 	 *            word2vec similarity between strings for tAnnot and hAnnot
 	 */
-	private void addAlignmentLink(JCas tView, JCas hView, Annotation tAnnot,
+	protected void addAlignmentLink(JCas tView, JCas hView, Annotation tAnnot,
 			Annotation hAnnot, double sim) {
 		logger.info("Adding alignment link");
 
@@ -313,6 +330,16 @@ public class VectorAligner implements AlignmentComponent {
 	 * Word2Vec similarity threshold for alignment.
 	 */
 	double threshold;
+	
+	/**
+	 * Whether to remove stopwords
+	 */
+	protected boolean removeStopWords;
+	
+	/**
+	 * stopwords set
+	 */
+	protected Set<String> stopWords;
 
 	/**
 	 * the logger
