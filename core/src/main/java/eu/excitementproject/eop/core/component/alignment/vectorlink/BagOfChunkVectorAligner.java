@@ -218,14 +218,15 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			String curPos = curToken.getPos().getPosValue();
 			String curTokenText = curToken.getCoveredText();
 
-			// If token is a symbol, number, 's or a determiner, skip it for
+			// If token is a symbol, number, 's, determiner (a/an/the) or the stopword "in", skip it for
 			// chunk vector calculation because it does not add any new
 			// information.
 
 			if (ignorePosSet.contains(curPos)
 					|| curTokenText.equalsIgnoreCase("a")
 					|| curTokenText.equalsIgnoreCase("an")
-					|| curTokenText.equalsIgnoreCase("the")) {
+					|| curTokenText.equalsIgnoreCase("the")
+					|| curTokenText.equalsIgnoreCase("in")) {
 				continue;
 			}
 
