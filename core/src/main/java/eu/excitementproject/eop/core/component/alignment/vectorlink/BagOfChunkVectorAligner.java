@@ -3,9 +3,12 @@ package eu.excitementproject.eop.core.component.alignment.vectorlink;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -16,8 +19,6 @@ import opennlp.tools.util.Span;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
-import org.apache.uima.cas.FSIterator;
-import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.nd4j.linalg.api.ndarray.INDArray;
@@ -60,6 +61,16 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		}
 		loadChunkerModel(chunkerModel);
 
+		// create set of POS tags to ignore
+		this.ignorePosSet = new HashSet<String>();
+		try {
+			for (String str : (Files.readAllLines(
+					Paths.get(comp.getString("ignorePosPath")),
+					Charset.forName("UTF-8"))))
+				this.ignorePosSet.add(str);
+		} catch (IOException e1) {
+			logger.error("Could not read POS tags file");
+		}
 	}
 
 	/**
@@ -127,11 +138,9 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		// Call to super, which does the actual alignment
 		// super.annotate(aJCas);
 
-		//Get T and H chunk annotations
-		AnnotationIndex<Annotation> tChunks = tView
-				.getAnnotationIndex(Chunk.type);
-		AnnotationIndex<Annotation> hChunks = hView
-				.getAnnotationIndex(Chunk.type);
+		// Get T and H chunk annotations
+		Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
+		Collection<Chunk> hChunks = JCasUtil.select(hView, Chunk.class);
 
 		if (null == tChunks) {
 			throw new AlignmentComponentException("Could not read text chunks.");
@@ -142,28 +151,28 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					"Could not read hypothesis chunks.");
 		}
 
-		//Map of chunks and their vectors
-		HashMap<String, INDArray> vectors = new HashMap<String, INDArray>();
-		createChunkVecMap(tView, tChunks, vectors);
-		createChunkVecMap(hView, hChunks, vectors);
-		
-		//Find similarity between all T and H chunks
-		for (FSIterator<Annotation> hIter = hChunks.iterator(); hIter.hasNext();) {
-			Annotation curHAnnot = hIter.next();
-			String hStr = curHAnnot.getCoveredText().toLowerCase();
+		// Find similarity between all T and H chunk vectors
+		for (Iterator<Chunk> hIter = hChunks.iterator(); hIter.hasNext();) {
+			Annotation curHChunk = hIter.next();
+			String hStr = curHChunk.getCoveredText();
+			
+			//Get vector for H chunk.
+			INDArray curHChunkVec = getChunkVec(hView, curHChunk);
 
-			for (FSIterator<Annotation> tIter = tChunks.iterator(); tIter
-					.hasNext();) {
-				Annotation curTAnnot = tIter.next();
-				String tStr = curTAnnot.getCoveredText().toLowerCase();
-
+			for (Iterator<Chunk> tIter = tChunks.iterator(); tIter.hasNext();) {
+				Annotation curTChunk = tIter.next();
+				String tStr = curTChunk.getCoveredText();
+				
 				double sim = 0d;
 				
-				if(hStr.equals(tStr))
+				//Similarity 1.0 for identical chunks
+				if (hStr.equals(tStr))
 					sim = 1.0;
-				else
-					sim = calculateSimilarity(vectors,tStr,hStr);
-				
+				else {
+					//Get vector for T chunk.
+					INDArray curTChunkVec = getChunkVec(tView, curTChunk);
+					sim = calculateSimilarity(curHChunkVec, curTChunkVec);
+				}
 				logger.info("Similarity between, " + tStr + " and " + hStr
 						+ " is: " + sim);
 
@@ -172,7 +181,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					// if similarity >= threshold, add alignment link
 					logger.info("Adding alignment link between, " + tStr
 							+ " and " + hStr);
-					addAlignmentLink(tView, hView, curTAnnot, curHAnnot, sim);
+					addAlignmentLink(tView, hView, curTChunk, curHChunk, sim);
 				}
 
 			}
@@ -180,73 +189,82 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	}
 
 	/**
-	 * Calculate similarity between two chunk strings
-	 * @param vectors Map for chunk strings and vectors.
-	 * @param tStr tChunk string.
-	 * @param hStr hChunk string.
-	 * @return similarity between vectors for tStr and hStr.
+	 * Calculate similarity between two vectors.
+	 * 
+	 * @param vec1
+	 *            First vector
+	 * @param vec2
+	 *            Second vector
+	 * @return similarity between vec1 and vec2.
 	 */
-	private double calculateSimilarity(HashMap<String, INDArray> vectors,
-			String tStr, String hStr) {
-		INDArray tVec = vectors.get(tStr);
-        INDArray hVec = vectors.get(hStr);
-        
-        if(tVec == null || hVec == null)
-            return -1;
-        
-        return  Nd4j.getBlasWrapper().dot(tVec, hVec);
-		
+	private double calculateSimilarity(INDArray vec1, INDArray vec2) {
+		if (vec1 == null || vec2 == null)
+			return -1;
+
+		return Nd4j.getBlasWrapper().dot(vec1, vec2);
+
 	}
 
 	/**
-	 * Create a Map of chunk annotation text and corresponding vector for the
-	 * chunk. The resultant vector is calculated by summing vectors for all
+	 * Return vector for the given chunk, calculated by summing vectors for all
 	 * tokens in the chunk.
 	 * 
 	 * @param view
 	 *            View which contains required chunk annotations.
 	 * @param chunks
 	 *            Chunk annotations on given view.
-	 * @param vectors
-	 *            Map which stores vectors for chunks.
+	 * @return vector for given chunk.
 	 */
-	private void createChunkVecMap(JCas view,
-			AnnotationIndex<Annotation> chunks,
-			HashMap<String, INDArray> vectors) {
+	private INDArray getChunkVec(JCas view, Annotation curChunk) {
 
-		// Iterate over all chunks
-		for (FSIterator<Annotation> tIter = chunks.iterator(); tIter.hasNext();) {
-			Annotation curAnnot = tIter.next();
-			
-			//Vector for required chunk string has been calculated already
-			if(vectors.containsKey(curAnnot.getCoveredText().toLowerCase()))
+		INDArray curVec = null;
+
+		// Get all tokens covered under Chunk annotation.
+		Collection<Token> coveredTokens = JCasUtil.selectCovered(view,
+				Token.class, curChunk.getBegin(), curChunk.getEnd());
+
+		if (coveredTokens.size() == 0)
+			logger.warn("No tokens covered under the current chunk annotation.");
+
+		// Iterate over all tokens
+		for (Iterator<Token> iter = coveredTokens.iterator(); iter.hasNext();) {
+			Token curToken = iter.next();
+			String curPos = curToken.getPos().getPosValue();
+			String curTokenText = curToken.getCoveredText();
+
+			// If token is a symbol, number, 's or a determiner, skip it for
+			// chunk vector calculation because it does not add any new
+			// information.
+
+			if (ignorePosSet.contains(curPos)
+					|| curTokenText.equalsIgnoreCase("a")
+					|| curTokenText.equalsIgnoreCase("an")
+					|| curTokenText.equalsIgnoreCase("the")) {
 				continue;
-
-			// Get all tokens covered under Chunk annotation.
-			Collection<Token> coveredTokens = JCasUtil.selectCovered(view,
-					Token.class, curAnnot.getBegin(), curAnnot.getEnd());
-
-			if (coveredTokens.size() == 0)
-				logger.warn("No tokens covered under the current chunk annotation.");
-
-			INDArray curVec = null;
-			// Iterate over all tokens
-			for (Iterator<Token> iter = coveredTokens.iterator(); iter
-					.hasNext();) {
-				if (curVec == null)
-					// First token in given chunk
-					curVec = vec.getWordVectorMatrix(iter.next()
-							.getCoveredText().toLowerCase());
-				else
-					// Sum vectors for all tokens to get equivalent chunk vector
-					curVec = curVec.add(vec.getWordVectorMatrix(iter.next()
-							.getCoveredText().toLowerCase()));
 			}
 
-			// Store resulting vector in map of chunk string vs. vector
-			vectors.put(curAnnot.getCoveredText().toLowerCase(), Transforms.unitVec(curVec));
+			// Lower case if token is not proper noun.
+			if (!curPos.startsWith("NNP"))
+				curTokenText = curTokenText.toLowerCase();
+
+			if (curVec == null) {
+				// First token in given chunk
+				//Check if word present in vector model file
+				if (vec.hasWord(curTokenText))
+					curVec = vec.getWordVectorMatrix(curTokenText);
+			} else {
+				// Sum vectors for all tokens to get equivalent chunk vector
+				//Check if word present in vector model file
+				if (vec.hasWord(curTokenText))
+					curVec = curVec.add(vec.getWordVectorMatrix(curTokenText));
+			}
 
 		}
+
+		if (null == curVec)
+			return null;
+
+		return Transforms.unitVec(curVec);
 
 	}
 
@@ -321,6 +339,12 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 * Chunker
 	 */
 	private ChunkerME chunker;
+
+	/**
+	 * Set of POS tags to ignore for chunk vector calculation
+	 */
+
+	HashSet<String> ignorePosSet;
 
 	/**
 	 * Logger
