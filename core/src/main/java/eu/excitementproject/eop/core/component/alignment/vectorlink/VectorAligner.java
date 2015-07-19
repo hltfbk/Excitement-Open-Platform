@@ -2,20 +2,24 @@ package eu.excitementproject.eop.core.component.alignment.vectorlink;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
-import org.apache.uima.cas.FSIterator;
-import org.apache.uima.cas.text.AnnotationIndex;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.deeplearning4j.models.word2vec.Word2Vec;
+import org.uimafit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-//import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitement.type.alignment.Link;
 import eu.excitement.type.alignment.Link.Direction;
 import eu.excitement.type.alignment.Target;
@@ -41,15 +45,16 @@ public class VectorAligner implements AlignmentComponent {
 	 * 
 	 * @param config
 	 *            Configuration file
-	 * @param stopWords2 
-	 * @param removeStopWords2 
+	 * @param stopWords2
+	 * @param removeStopWords2
 	 * @param sectionName
 	 *            Name of section containing required configuration.
 	 * @throws ConfigurationException
 	 * @throws IOException
 	 */
-	public VectorAligner(CommonConfig config, boolean removeStopWords, Set<String> stopWords, String sectionName,
-			String annotName) throws ConfigurationException, IOException {
+	public VectorAligner(CommonConfig config, boolean removeStopWords,
+			Set<String> stopWords, String sectionName, String annotName)
+			throws ConfigurationException, IOException {
 
 		// load the vector model
 		initializeModel(config, sectionName);
@@ -57,12 +62,43 @@ public class VectorAligner implements AlignmentComponent {
 		// initialize similarity threshold
 		intializeThreshold(config, sectionName);
 
+		// initialize ignore POS set
+		intializeIgnorePosSet(config, sectionName);
+
 		// initialize annotation name
 		this.annotName = annotName;
-		
-		//initialize stopwords removal and stopwords set
+
+		// initialize stopwords removal and stopwords set
 		this.removeStopWords = removeStopWords;
 		this.stopWords = stopWords;
+
+	}
+
+	/**
+	 * Initialize set of POS tags to ignore for vector alignment
+	 * 
+	 * @param config
+	 *            Configuration file
+	 * @param sectionName
+	 *            Name of current section in configuration file
+	 * @throws ConfigurationException
+	 */
+	private void intializeIgnorePosSet(CommonConfig config, String sectionName)
+			throws ConfigurationException {
+
+		NameValueTable comp = config.getSection(sectionName);
+
+		// create set of POS tags to ignore
+		this.ignorePosSet = new HashSet<String>();
+		try {
+			for (String str : (Files.readAllLines(
+					Paths.get(comp.getString("ignorePosPath")),
+					Charset.forName("UTF-8"))))
+				this.ignorePosSet.add(str);
+		} catch (IOException e1) {
+			logger.error("Could not read POS tags file");
+		}
+
 	}
 
 	/**
@@ -117,7 +153,7 @@ public class VectorAligner implements AlignmentComponent {
 		String vecModel = comp.getString("vecModel");
 
 		if (null == vecModel) {
-			logger.warning("Please specify the vector model file path.");
+			logger.warn("Please specify the vector model file path.");
 		}
 
 		if (modelType.equalsIgnoreCase("google")) {
@@ -131,7 +167,7 @@ public class VectorAligner implements AlignmentComponent {
 		}
 
 		else {
-			logger.warning("Please specify the correct model type to load");
+			logger.warn("Please specify the correct model type to load");
 		}
 
 	}
@@ -159,18 +195,8 @@ public class VectorAligner implements AlignmentComponent {
 		logger.info("TEXT: " + tView.getDocumentText());
 		logger.info("HYPO: " + hView.getDocumentText());
 
-		AnnotationIndex<Annotation> tAnnots = null, hAnnots = null;
-
-//		if (annotName.equalsIgnoreCase("tokenWord")) {
-			tAnnots = tView.getAnnotationIndex(Token.type);
-			hAnnots = hView.getAnnotationIndex(Token.type);
-//		} else if (annotName.equalsIgnoreCase("chunk")) {
-//			tAnnots = tView.getAnnotationIndex(Chunk.type);
-//			hAnnots = hView.getAnnotationIndex(Chunk.type);
-//		} else {
-//			throw new AlignmentComponentException(
-//					"Failed to align data: Incorrect annotation name specified");
-//		}
+		Collection<Token> tAnnots = JCasUtil.select(tView, Token.class);
+		Collection<Token> hAnnots = JCasUtil.select(hView, Token.class);
 
 		if (null == tAnnots) {
 			throw new AlignmentComponentException(
@@ -182,32 +208,50 @@ public class VectorAligner implements AlignmentComponent {
 					"Could not read hypothesis annotations");
 		}
 
-		for (FSIterator<Annotation> tIter = tAnnots.iterator(); tIter.hasNext();) {
-			Annotation curTAnnot = tIter.next();
-			String str1 = curTAnnot.getCoveredText().toLowerCase();
-			
-			if(removeStopWords) {
-				if(stopWords.contains(str1))
+		for (Iterator<Token> tIter = tAnnots.iterator(); tIter.hasNext();) {
+			Token curTAnnot = tIter.next();
+
+			// Skip current token if it is punctuation or numeric
+			if (curTAnnot.getPos().getPosValue().equals("SYM")
+					|| curTAnnot.getPos().getPosValue().equals("CD"))
+				continue;
+
+			String str1 = curTAnnot.getCoveredText();
+
+			// Lower case token string if not proper noun.
+			if (!curTAnnot.getPos().getPosValue().startsWith("NNP"))
+				str1 = str1.toLowerCase();
+
+			if (removeStopWords) {
+				if (stopWords.contains(str1))
 					continue;
 			}
 
-			for (FSIterator<Annotation> hIter = hAnnots.iterator(); hIter
-					.hasNext();) {
+			for (Iterator<Token> hIter = hAnnots.iterator(); hIter.hasNext();) {
 
-				Annotation curHAnnot = hIter.next();
-				String str2 = curHAnnot.getCoveredText().toLowerCase();
+				Token curHAnnot = hIter.next();
 
-				if(removeStopWords) {
-					if(stopWords.contains(str2))
+				// Skip current token if it is punctuation or numeric
+				if (ignorePosSet.contains(curHAnnot.getPos().getPosValue()))
+					continue;
+
+				String str2 = curHAnnot.getCoveredText();
+
+				// Lower case token string if not proper noun.
+				if (!curHAnnot.getPos().getPosValue().startsWith("NNP"))
+					str2 = str2.toLowerCase();
+
+				if (removeStopWords) {
+					if (stopWords.contains(str2))
 						continue;
 				}
-				
+
 				double sim = 0d;
-				if(str1.equals(str2))
+				if (str1.equals(str2))
 					sim = 1.0;
 				else
 					sim = vec.similarity(str1, str2);
-				
+
 				logger.info("Similarity between, " + str1 + " and " + str2
 						+ " is: " + sim);
 
@@ -287,24 +331,25 @@ public class VectorAligner implements AlignmentComponent {
 	 */
 	private Target prepareTarget(JCas view, Annotation annot) {
 
-		//prepare a Target instance.
+		// prepare a Target instance.
 		Target target = new Target(view);
-		
-		//prepare a FSArray instance, put the target annotations in it.   
+
+		// prepare a FSArray instance, put the target annotations in it.
 		FSArray tAnnots = new FSArray(view, 1);
 		tAnnots.set(0, annot);
-		
-		//the FSArray is prepared. Put it on field "targetAnnotations" 
+
+		// the FSArray is prepared. Put it on field "targetAnnotations"
 		target.setTargetAnnotations(tAnnots);
-		
-		//set begin - end value of the Target annotation (just like any annotation)
-		//setting of begin and end of Target is a convention. 
-		// - begin as the earliest "begin" (among Target-ed annotations) 
-		// - end as the latest "end" (among Target-ed annotations) 
+
+		// set begin - end value of the Target annotation (just like any
+		// annotation)
+		// setting of begin and end of Target is a convention.
+		// - begin as the earliest "begin" (among Target-ed annotations)
+		// - end as the latest "end" (among Target-ed annotations)
 		target.setBegin(annot.getBegin());
 		target.setEnd(annot.getEnd());
-		
-		//add it to the index (just like any annotation) 
+
+		// add it to the index (just like any annotation)
 		target.addToIndexes();
 
 		return target;
@@ -335,16 +380,21 @@ public class VectorAligner implements AlignmentComponent {
 	 * Word2Vec similarity threshold for alignment.
 	 */
 	double threshold;
-	
+
 	/**
 	 * Whether to remove stopwords
 	 */
 	protected boolean removeStopWords;
-	
+
 	/**
 	 * stopwords set
 	 */
 	protected Set<String> stopWords;
+
+	/**
+	 * Set of POS tags to ignore for chunk vector calculation
+	 */
+	HashSet<String> ignorePosSet;
 
 	/**
 	 * the logger

@@ -3,12 +3,8 @@ package eu.excitementproject.eop.core.component.alignment.vectorlink;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -61,16 +57,6 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		}
 		loadChunkerModel(chunkerModel);
 
-		// create set of POS tags to ignore
-		this.ignorePosSet = new HashSet<String>();
-		try {
-			for (String str : (Files.readAllLines(
-					Paths.get(comp.getString("ignorePosPath")),
-					Charset.forName("UTF-8"))))
-				this.ignorePosSet.add(str);
-		} catch (IOException e1) {
-			logger.error("Could not read POS tags file");
-		}
 	}
 
 	/**
@@ -339,12 +325,6 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 * Chunker
 	 */
 	private ChunkerME chunker;
-
-	/**
-	 * Set of POS tags to ignore for chunk vector calculation
-	 */
-
-	HashSet<String> ignorePosSet;
 
 	/**
 	 * Logger
