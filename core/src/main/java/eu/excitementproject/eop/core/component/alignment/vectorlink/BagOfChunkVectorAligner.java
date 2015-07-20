@@ -40,8 +40,6 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  */
 public class BagOfChunkVectorAligner extends VectorAligner {
 
-	private HashMap<String, INDArray> chunkVecMap;
-
 	public BagOfChunkVectorAligner(CommonConfig config,
 			boolean removeStopWords, Set<String> stopWords)
 			throws ConfigurationException, IOException {
@@ -184,9 +182,12 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	}
 
 	/**
+	 * Create map of chunk text and corresponding vector
 	 * 
 	 * @param view
+	 *            text or hypothesis view for current chunk
 	 * @param chunks
+	 *            chunk annotations.
 	 */
 	private void createMap(JCas view, Collection<Chunk> chunks) {
 
@@ -280,6 +281,11 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		return Transforms.unitVec(curVec);
 
 	}
+
+	/**
+	 * Map of chunk strings and corresponding vectors.
+	 */
+	private HashMap<String, INDArray> chunkVecMap;
 
 	/**
 	 * Chunk the content in given view and add chunk annotations.
