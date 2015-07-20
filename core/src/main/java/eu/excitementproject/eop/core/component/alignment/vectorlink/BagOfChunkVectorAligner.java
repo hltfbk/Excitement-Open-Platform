@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +39,8 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
  * @since July 2015
  */
 public class BagOfChunkVectorAligner extends VectorAligner {
+
+	private HashMap<String, INDArray> chunkVecMap;
 
 	public BagOfChunkVectorAligner(CommonConfig config,
 			boolean removeStopWords, Set<String> stopWords)
@@ -137,26 +140,32 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					"Could not read hypothesis chunks.");
 		}
 
+		chunkVecMap = new HashMap<String, INDArray>();
+		createMap(tView, tChunks);
+		createMap(hView, hChunks);
+
 		// Find similarity between all T and H chunk vectors
 		for (Iterator<Chunk> hIter = hChunks.iterator(); hIter.hasNext();) {
+
 			Annotation curHChunk = hIter.next();
 			String hStr = curHChunk.getCoveredText();
-			
-			//Get vector for H chunk.
-			INDArray curHChunkVec = getChunkVec(hView, curHChunk);
+
+			// Get vector for H chunk.
+			INDArray curHChunkVec = chunkVecMap.get(hStr);
 
 			for (Iterator<Chunk> tIter = tChunks.iterator(); tIter.hasNext();) {
 				Annotation curTChunk = tIter.next();
 				String tStr = curTChunk.getCoveredText();
-				
+
 				double sim = 0d;
-				
-				//Similarity 1.0 for identical chunks
+
+				// Similarity 1.0 for identical chunks
 				if (hStr.equals(tStr))
 					sim = 1.0;
 				else {
-					//Get vector for T chunk.
-					INDArray curTChunkVec = getChunkVec(tView, curTChunk);
+					// Get vector for T chunk.
+					INDArray curTChunkVec = chunkVecMap.get(tStr);
+
 					sim = calculateSimilarity(curHChunkVec, curTChunkVec);
 				}
 				logger.info("Similarity between, " + tStr + " and " + hStr
@@ -172,6 +181,22 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 			}
 		}
+	}
+
+	/**
+	 * 
+	 * @param view
+	 * @param chunks
+	 */
+	private void createMap(JCas view, Collection<Chunk> chunks) {
+
+		for (Iterator<Chunk> chunkIter = chunks.iterator(); chunkIter.hasNext();) {
+			Chunk curChunk = chunkIter.next();
+			String curChunkText = curChunk.getCoveredText();
+			if (!chunkVecMap.containsKey(curChunkText))
+				chunkVecMap.put(curChunkText, getChunkVec(view, curChunk));
+		}
+
 	}
 
 	/**
@@ -218,7 +243,8 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			String curPos = curToken.getPos().getPosValue();
 			String curTokenText = curToken.getCoveredText();
 
-			// If token is a symbol, number, 's, determiner (a/an/the) or the stopword "in", skip it for
+			// If token is a symbol, number, 's, determiner (a/an/the) or the
+			// stopword "in", skip it for
 			// chunk vector calculation because it does not add any new
 			// information.
 
@@ -236,12 +262,12 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 			if (curVec == null) {
 				// First token in given chunk
-				//Check if word present in vector model file
+				// Check if word present in vector model file
 				if (vec.hasWord(curTokenText))
 					curVec = vec.getWordVectorMatrix(curTokenText);
 			} else {
 				// Sum vectors for all tokens to get equivalent chunk vector
-				//Check if word present in vector model file
+				// Check if word present in vector model file
 				if (vec.hasWord(curTokenText))
 					curVec = curVec.add(vec.getWordVectorMatrix(curTokenText));
 			}
