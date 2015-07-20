@@ -38,6 +38,7 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.core.component.scoring.BagOfChunkVectorScoring;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordVectorScoring;
+import eu.excitementproject.eop.core.component.scoring.NegationScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfChunksScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfLemmasScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfWordsScoring;
@@ -216,6 +217,8 @@ public class NemexWekaClassificationEDA implements
 				initializeBOWordVecComp(config);
 			} else if (component.equals("BagOfChunkVectorScoring")) {
 				initializeBOChunkVecComp(config);
+			} else if (component.equals("NegationScoring")) {
+				initializeNegComp(config);
 			} else {
 				try {
 					@SuppressWarnings("unchecked")
@@ -227,6 +230,24 @@ public class NemexWekaClassificationEDA implements
 					throw new ConfigurationException(e.getMessage());
 				}
 			}
+		}
+	}
+
+	/**
+	 * Initialize component for negation scoring
+	 * @param config Configuration file
+	 * @throws IOException
+	 */
+	private void initializeNegComp(CommonConfig config) throws IOException {
+		ScoringComponent comp = null;
+		try {
+			comp = new NegationScoring(config);
+		} catch (ConfigurationException e) {
+			// TODO Auto-generated catch block
+			logger.warn(e.getMessage());
+		}
+		if (((NegationScoring) comp).getNumOfFeats() > 0) {
+			components.add(comp);
 		}
 	}
 
@@ -436,6 +457,10 @@ public class NemexWekaClassificationEDA implements
 
 				else if (curComp.getComponentName().equalsIgnoreCase("BagOfChunkVectorScoring")) {
 					writeAttributesNumAlignments(writer, "BOChunkVec");
+				}
+				else if (curComp.getComponentName().equalsIgnoreCase("NegationScoring")) {
+					writer.newLine();
+					writer.append("@ATTRIBUTE NegationScore NUMERIC");
 				}
 			}
 			writer.newLine();
