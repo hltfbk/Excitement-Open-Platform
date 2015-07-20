@@ -111,9 +111,9 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 
 		// Scores: num of alignments/num of T chunks, num of alignments/num of H
 		// chunks, product of the two.
-		scoresVector.add((double) numOfLinks / tSize);
+		//scoresVector.add((double) numOfLinks / tSize);
 		scoresVector.add((double) numOfLinks / hSize);
-		scoresVector.add((double) numOfLinks * numOfLinks / tSize / hSize);
+		//scoresVector.add((double) numOfLinks * numOfLinks / tSize / hSize);
 
 		return scoresVector;
 	}
@@ -138,7 +138,8 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 	/**
 	 * num of features
 	 */
-	int numOfFeats = 3;
+	//int numOfFeats = 3;
+	int numOfFeats = 1;
 
 	/**
 	 * Stopwords set
