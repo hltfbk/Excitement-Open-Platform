@@ -86,7 +86,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		String wnPath = "/ontologies/EnglishWordNet-dict/";
 
 		// Get values from configuration file
-		NameValueTable comp = config.getSection("AntonymScoring");
+		NameValueTable comp = config.getSection("BagOfChunkVectorScoring");
 
 		if (null != comp.getString("useFirstSenseOnlyLeft")
 				&& Boolean
