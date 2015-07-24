@@ -260,7 +260,7 @@ public class VectorAligner implements AlignmentComponent {
 					// if similarity >= threshold, add alignment link
 					logger.info("Adding alignment link between, " + str1
 							+ " and " + str2);
-					addAlignmentLink(tView, hView, curTAnnot, curHAnnot, sim);
+					addAlignmentLink(tView, hView, curTAnnot, curHAnnot, sim, false);
 				}
 
 			}
@@ -280,9 +280,10 @@ public class VectorAligner implements AlignmentComponent {
 	 *            annotation in hypothesis which needs to be linked.
 	 * @param sim
 	 *            word2vec similarity between strings for tAnnot and hAnnot
+	 * @param antonyms If antonym of lemma in H is present in T.
 	 */
 	protected void addAlignmentLink(JCas tView, JCas hView, Annotation tAnnot,
-			Annotation hAnnot, double sim) {
+			Annotation hAnnot, double sim, boolean antonyms) {
 		logger.info("Adding alignment link");
 
 		// Prepare the text Target instance
@@ -307,7 +308,11 @@ public class VectorAligner implements AlignmentComponent {
 
 		// Set strength for link
 		link.setStrength(sim);
-
+		
+		if(antonyms) {
+			link.setLinkInfo("antonym");
+		}
+	
 		// Add the link information
 		link.setAlignerID("VectorAligner");
 		link.setAlignerVersion("1.0");

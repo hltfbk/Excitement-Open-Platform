@@ -30,6 +30,7 @@ import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -63,6 +64,8 @@ public class NemexWekaClassificationEDA implements
 		try {
 			initializeComponents(config);
 		} catch (IOException e) {
+			throw new ComponentException(e.getMessage());
+		} catch (LexicalResourceException e) {
 			throw new ComponentException(e.getMessage());
 		}
 
@@ -180,9 +183,10 @@ public class NemexWekaClassificationEDA implements
 	 * @throws ConfigurationException
 	 * @throws ComponentException
 	 * @throws IOException
+	 * @throws LexicalResourceException 
 	 */
 	private void initializeComponents(CommonConfig config)
-			throws ConfigurationException, ComponentException, IOException {
+			throws ConfigurationException, ComponentException, IOException, LexicalResourceException {
 		NameValueTable EDA = null;
 		try {
 			EDA = config.getSection(this.getClass().getName());
@@ -257,9 +261,10 @@ public class NemexWekaClassificationEDA implements
 	 * @param config
 	 *            Configuration file.
 	 * @throws IOException
+	 * @throws LexicalResourceException 
 	 */
 	private void initializeBOChunkVecComp(CommonConfig config)
-			throws IOException {
+			throws IOException, LexicalResourceException {
 		ScoringComponent comp = null;
 		try {
 			comp = new BagOfChunkVectorScoring(config);
@@ -670,6 +675,8 @@ public class NemexWekaClassificationEDA implements
 		try {
 			initializeComponents(config);
 		} catch (IOException e) {
+			throw new ComponentException(e.getMessage());
+		} catch (LexicalResourceException e) {
 			throw new ComponentException(e.getMessage());
 		}
 

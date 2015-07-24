@@ -1,11 +1,13 @@
 package eu.excitementproject.eop.core.component.alignment.vectorlink;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -27,9 +29,14 @@ import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
+import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
@@ -42,7 +49,8 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 	public BagOfChunkVectorAligner(CommonConfig config,
 			boolean removeStopWords, Set<String> stopWords)
-			throws ConfigurationException, IOException {
+			throws ConfigurationException, IOException,
+			LexicalResourceException {
 
 		// Initialize the vector models and threshold using superclass.
 		super(config, removeStopWords, stopWords, "BagOfChunkVectorScoring",
@@ -58,6 +66,57 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		}
 		loadChunkerModel(chunkerModel);
 
+		loadWn(config);
+
+	}
+
+	/**
+	 * Initialization of Wordnet Lexical Resource
+	 * 
+	 * @param config
+	 *            The configuration file
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
+	private void loadWn(CommonConfig config) throws ConfigurationException,
+			LexicalResourceException {
+		// Default values
+		boolean useFirstSenseOnlyLeft = false;
+		boolean useFirstSenseOnlyRight = false;
+		String wnPath = "/ontologies/EnglishWordNet-dict/";
+
+		// Get values from configuration file
+		NameValueTable comp = config.getSection("AntonymScoring");
+
+		if (null != comp.getString("useFirstSenseOnlyLeft")
+				&& Boolean
+						.parseBoolean(comp.getString("useFirstSenseOnlyLeft"))) {
+			useFirstSenseOnlyLeft = true;
+		}
+		if (null != comp.getString("useFirstSenseOnlyRight")
+				&& Boolean.parseBoolean(comp
+						.getString("useFirstSenseOnlyRight"))) {
+			useFirstSenseOnlyRight = true;
+		}
+		if (null != comp.getString("wordNetFilesPath")) {
+			wnPath = comp.getString("wordNetFilesPath");
+		}
+
+		File wnFile = new File(wnPath);
+		if (!wnFile.exists()) {
+			throw new ConfigurationException("cannot find WordNet at: "
+					+ wnPath);
+		}
+
+		Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+		wnRelSet.add(WordNetRelation.ANTONYM);
+
+		logger.info("Loading WordNet");
+
+		wnlr = new WordnetLexicalResource(wnFile, useFirstSenseOnlyLeft,
+				useFirstSenseOnlyRight, wnRelSet);
+
+		logger.info("Load WordNet done.");
 	}
 
 	/**
@@ -174,11 +233,68 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					// if similarity >= threshold, add alignment link
 					logger.info("Adding alignment link between, " + tStr
 							+ " and " + hStr);
-					addAlignmentLink(tView, hView, curTChunk, curHChunk, sim);
+
+					HashSet<String> tTokenSet = new HashSet<String>();
+					HashSet<String> hTokenSet = new HashSet<String>();
+
+					createLemmaSet(tView, curTChunk, tTokenSet);
+					createLemmaSet(hView, curHChunk, hTokenSet);
+					
+					boolean antonyms = false;
+					
+					//check for negative alignments
+					try {
+						antonyms = checkforAntonym(tTokenSet, hTokenSet);
+					} catch (LexicalResourceException e) {
+						e.getMessage();
+					}
+
+					addAlignmentLink(tView, hView, curTChunk, curHChunk, sim,antonyms);
 				}
 
 			}
 		}
+	}
+
+	/**
+	 * Create set of all token lemma strings covered by given chunk in given view
+	 * @param view Current JCas view
+	 * @param curChunk Current chunk annotation
+	 * @param tokenSet Set of token lemma
+	 */
+	private void createLemmaSet(JCas view, Annotation curChunk,
+			HashSet<String> tokenSet) {
+
+		for (Token t : JCasUtil.selectCovered(view, Token.class,
+				curChunk.getBegin(), curChunk.getEnd())) {
+			String curLemma = t.getLemma().getValue();
+			if (!tokenSet.contains(curLemma))
+				tokenSet.add(curLemma);
+		}
+
+	}
+
+	/**
+	 * Check if one of the text token lemmas is an antonym of one of the hypothesis token lemmas
+	 * @param tTokenSet Set of lemmas of tokens in T
+	 * @param hTokenSet Set of lemmas of tokens in H
+	 * @return true if antonym is present
+	 * @throws LexicalResourceException
+	 */
+	private boolean checkforAntonym(HashSet<String> tTokenSet,
+			HashSet<String> hTokenSet) throws LexicalResourceException {
+		// Iterating over all h token strings
+		for (Iterator<String> hIter = hTokenSet.iterator(); hIter.hasNext();) {
+			//Get all antonyms for current h token string
+			for (LexicalRule<? extends RuleInfo> rule : wnlr.getRulesForLeft(
+					hIter.next(), null)) {
+				//If antonym present in t token string set, negative alignment
+				if (tTokenSet.contains(rule.getRLemma()))
+					return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -358,6 +474,11 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 * Chunker
 	 */
 	private ChunkerME chunker;
+
+	/**
+	 * WordNet lexical resource
+	 */
+	private WordnetLexicalResource wnlr;
 
 	/**
 	 * Logger

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -16,6 +17,7 @@ import org.uimafit.util.JCasUtil;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
+import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalResourceException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
@@ -34,7 +36,7 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 public class BagOfChunkVectorScoring implements ScoringComponent {
 
 	public BagOfChunkVectorScoring(CommonConfig config)
-			throws ConfigurationException, IOException {
+			throws ConfigurationException, IOException, LexicalResourceException {
 
 
 		NameValueTable comp = config.getSection("BagOfWordVectorScoring");
@@ -106,13 +108,25 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 			logger.warn("No chunks found for hypothesis");
 		}
 
+		//Get all alignment links
+		int negLink = 0;
+		Collection<Link> links = JCasUtil.select(hView, Link.class);
+		for(Link link : links) {
+			if(link.getLinkInfo().equalsIgnoreCase("antonym")) {
+				negLink++;
+			}
+		}
 		// num of alignment links between text and hypothesis
-		int numOfLinks = JCasUtil.select(hView, Link.class).size();
-
+		int posLink = JCasUtil.select(hView, Link.class).size() - negLink;
+		
 		// Scores: num of alignments/num of T chunks, num of alignments/num of H
 		// chunks, product of the two.
 		//scoresVector.add((double) numOfLinks / tSize);
-		scoresVector.add((double) numOfLinks / hSize);
+		
+		//Separate scores for negative and positive alignments
+		scoresVector.add((double) negLink / hSize);
+		scoresVector.add((double) posLink / hSize);
+		
 		//scoresVector.add((double) numOfLinks * numOfLinks / tSize / hSize);
 
 		return scoresVector;
@@ -139,7 +153,7 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 	 * num of features
 	 */
 	//int numOfFeats = 3;
-	int numOfFeats = 1;
+	int numOfFeats = 2;
 
 	/**
 	 * Stopwords set
