@@ -463,7 +463,9 @@ public class NemexWekaClassificationEDA implements
 				else if (curComp.getComponentName().equalsIgnoreCase("BagOfChunkVectorScoring")) {
 					//writeAttributesNumAlignments(writer, "BOChunkVec");
 					writer.newLine();
-					writer.append("@ATTRIBUTE BOChunkVecScore NUMERIC");
+					writer.append("@ATTRIBUTE BOChunkVecNegAlignment NUMERIC");
+					writer.newLine();
+					writer.append("@ATTRIBUTE BOChunkVecPositiveAlignment NUMERIC");
 				}
 				else if (curComp.getComponentName().equalsIgnoreCase("NegationScoring")) {
 					writer.newLine();
