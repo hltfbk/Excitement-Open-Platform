@@ -325,6 +325,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 *            Second vector
 	 * @return similarity between vec1 and vec2.
 	 */
+	@SuppressWarnings("unchecked")
 	private double calculateSimilarity(INDArray vec1, INDArray vec2) {
 		if (vec1 == null || vec2 == null)
 			return -1;
@@ -428,7 +429,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		List<Integer> tokenEndOffsets = new ArrayList<Integer>();
 
 		for (Iterator<Token> iter = annots.iterator(); iter.hasNext();) {
-			Token token = (Token) iter.next();
+			Token token = iter.next();
 			tokenTexts.add(token.getCoveredText().toLowerCase());
 			tags.add(token.getPos().getPosValue());
 			tokenStartOffsets.add(token.getBegin());
