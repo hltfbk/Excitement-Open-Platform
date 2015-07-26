@@ -234,17 +234,17 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					logger.info("Adding alignment link between, " + tStr
 							+ " and " + hStr);
 
-					HashSet<String> tTokenSet = new HashSet<String>();
-					HashSet<String> hTokenSet = new HashSet<String>();
+					HashSet<String> tLemmaSet = new HashSet<String>();
+					HashSet<String> hLemmaSet = new HashSet<String>();
 
-					createLemmaSet(tView, curTChunk, tTokenSet);
-					createLemmaSet(hView, curHChunk, hTokenSet);
+					createLemmaSet(tView, curTChunk, tLemmaSet);
+					createLemmaSet(hView, curHChunk, hLemmaSet);
 					
 					boolean antonyms = false;
 					
 					//check for negative alignments
 					try {
-						antonyms = checkforAntonym(tTokenSet, hTokenSet);
+						antonyms = checkforAntonym(tLemmaSet, hLemmaSet);
 					} catch (LexicalResourceException e) {
 						e.getMessage();
 					}
@@ -269,7 +269,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 				curChunk.getBegin(), curChunk.getEnd())) {
 			String curLemma = t.getLemma().getValue();
 			if (!tokenSet.contains(curLemma))
-				tokenSet.add(curLemma);
+				tokenSet.add(curLemma.toLowerCase());
 		}
 
 	}
@@ -289,7 +289,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			for (LexicalRule<? extends RuleInfo> rule : wnlr.getRulesForLeft(
 					hIter.next(), null)) {
 				//If antonym present in t token string set, negative alignment
-				if (tTokenSet.contains(rule.getRLemma()))
+				if (tTokenSet.contains(rule.getRLemma().toLowerCase()))
 					return true;
 			}
 		}
