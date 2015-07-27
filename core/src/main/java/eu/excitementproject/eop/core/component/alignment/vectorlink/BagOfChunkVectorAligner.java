@@ -290,7 +290,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			for (LexicalRule<? extends RuleInfo> rule : wnlr.getRulesForLeft(
 					curLemma, null)) {
 				String antonym = rule.getRLemma().toLowerCase();
-				logger.info("Checking if anotonym: " +antonym +"of "+curLemma +" in H chunk is present in text chunk" );
+				logger.info("Checking if anotonym: " +antonym +" of "+curLemma +" in H chunk is present in text chunk" );
 				//If antonym present in t token string set, negative alignment
 				if (tTokenSet.contains(antonym)){
 					logger.info("Antonym match between T and H, negative alignment");

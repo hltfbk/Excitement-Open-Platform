@@ -113,11 +113,12 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 		Collection<Link> links = JCasUtil.select(hView, Link.class);
 		for(Link link : links) {
 			if(link.getLinkInfo().equalsIgnoreCase("antonym")) {
+				logger.info("Found negative link");
 				negLink++;
 			}
 		}
 		// num of alignment links between text and hypothesis
-		int posLink = JCasUtil.select(hView, Link.class).size() - negLink;
+		int posLink = links.size() - negLink;
 		
 		// Scores: num of alignments/num of T chunks, num of alignments/num of H
 		// chunks, product of the two.
