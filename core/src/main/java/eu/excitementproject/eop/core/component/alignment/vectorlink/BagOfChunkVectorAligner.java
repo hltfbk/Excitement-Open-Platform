@@ -285,12 +285,17 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			HashSet<String> hTokenSet) throws LexicalResourceException {
 		// Iterating over all h token strings
 		for (Iterator<String> hIter = hTokenSet.iterator(); hIter.hasNext();) {
+			String curLemma = hIter.next();
 			//Get all antonyms for current h token string
 			for (LexicalRule<? extends RuleInfo> rule : wnlr.getRulesForLeft(
-					hIter.next(), null)) {
+					curLemma, null)) {
+				String antonym = rule.getRLemma().toLowerCase();
+				logger.info("Checking if anotonym: " +antonym +"of "+curLemma +" in H chunk is present in text chunk" );
 				//If antonym present in t token string set, negative alignment
-				if (tTokenSet.contains(rule.getRLemma().toLowerCase()))
+				if (tTokenSet.contains(antonym)){
+					logger.info("Antonym match between T and H, negative alignment");
 					return true;
+				}
 			}
 		}
 
