@@ -313,12 +313,13 @@ public class VectorAligner implements AlignmentComponent {
 			logger.info("Setting antonym link info");
 			link.setLinkInfo("antonym");
 		}
+		else
+			link.setLinkInfo("word2vec");
 	
 		// Add the link information
 		link.setAlignerID("VectorAligner");
 		link.setAlignerVersion("1.0");
-		link.setLinkInfo("word2vec");
-
+		
 		// Add to index
 		link.addToIndexes();
 
