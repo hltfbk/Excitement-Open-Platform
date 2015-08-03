@@ -310,14 +310,14 @@ public class VectorAligner implements AlignmentComponent {
 		link.setStrength(sim);
 		
 		if(antonyms) {
-			logger.info("Setting antonym link info");
-			link.setLinkInfo("antonym");
+			logger.info("Setting negative link info");
+			link.setLinkInfo("negative");
 		}
 		else
-			link.setLinkInfo("word2vec");
+			link.setLinkInfo("positive");
 	
 		// Add the link information
-		link.setAlignerID("VectorAligner");
+		link.setAlignerID("Word2VecAligner");
 		link.setAlignerVersion("1.0");
 		
 		// Add to index

@@ -112,7 +112,7 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 		int negLink = 0;
 		Collection<Link> links = JCasUtil.select(hView, Link.class);
 		for(Link link : links) {
-			if(link.getLinkInfo().equalsIgnoreCase("antonym")) {
+			if(link.getLinkInfo().equalsIgnoreCase("negative")) {
 				logger.info("Found negative link");
 				negLink++;
 			}

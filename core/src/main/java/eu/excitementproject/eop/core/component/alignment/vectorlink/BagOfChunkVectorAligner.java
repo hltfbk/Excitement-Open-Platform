@@ -35,12 +35,15 @@ import eu.excitementproject.eop.common.component.lexicalknowledge.RuleInfo;
 import eu.excitementproject.eop.common.configuration.CommonConfig;
 import eu.excitementproject.eop.common.configuration.NameValueTable;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.RelationType;
+import eu.excitementproject.eop.core.component.lexicalknowledge.verb_ocean.VerbOceanLexicalResource;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
 import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
- * Alignment between chunks of T and H using vector based approaches.
+ * Alignment between chunks of T and H using distributional vector based
+ * approaches.
  * 
  * @author Madhumita
  * @since July 2015
@@ -68,10 +71,58 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 		loadWn(config);
 
+		loadVO(config);
+
 	}
 
 	/**
-	 * Initialization of Wordnet Lexical Resource
+	 * Initialization of VerbOcean Lexical Resource to check negative alignment
+	 * wrt entailment
+	 * 
+	 * @param config
+	 *            The configuration file
+	 * @throws ConfigurationException
+	 * @throws LexicalResourceException
+	 */
+	private void loadVO(CommonConfig config) throws ConfigurationException,
+			LexicalResourceException {
+		// Default values
+		String voPath = "/VerbOcean/verbocean.unrefined.2004-05-20.txt";
+		double voTh = 1.0;
+
+		// Get values from configuration file
+		NameValueTable comp = config.getSection("BagOfChunkVectorScoring");
+
+		if (null != comp.getString("verbOceanFilesPath")) {
+			voPath = comp.getString("verbOceanFilesPath");
+		}
+		if (null != comp.getString("verbOceanThreshold")) {
+			voTh = Double.parseDouble(comp.getString("verbOceanThreshold"));
+		}
+
+		File voFile = new File(voPath);
+		if (!voFile.exists()) {
+			throw new ConfigurationException("cannot find VerbOcean at: "
+					+ voPath);
+		}
+
+		Set<RelationType> voRelSet = new HashSet<RelationType>();
+		// If H verb is stronger than, opposite of, or happens before T verb:
+		// negative alignment
+		voRelSet.add(RelationType.STRONGER_THAN);
+		voRelSet.add(RelationType.OPPOSITE_OF);
+		voRelSet.add(RelationType.HAPPENS_BEFORE);
+
+		logger.info("Loading VerbOcean");
+
+		volr = new VerbOceanLexicalResource(voTh, voFile, voRelSet);
+
+		logger.info("Load VerbOcean done.");
+	}
+
+	/**
+	 * Initialization of Wordnet Lexical Resource to query antomyms to detect
+	 * negative alignments wrt entailment.
 	 * 
 	 * @param config
 	 *            The configuration file
@@ -239,17 +290,22 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 					createLemmaSet(tView, curTChunk, tLemmaSet);
 					createLemmaSet(hView, curHChunk, hLemmaSet);
-					
-					boolean antonyms = false;
-					
-					//check for negative alignments
+
+					boolean negative = false;
+
+					// check for negative alignments
 					try {
-						antonyms = checkforAntonym(tLemmaSet, hLemmaSet);
+						negative = checkforAntonym(tLemmaSet, hLemmaSet);
+
+						if (!negative)
+							negative = checkNegVerbStrength(tLemmaSet,
+									hLemmaSet);
 					} catch (LexicalResourceException e) {
 						e.getMessage();
 					}
 
-					addAlignmentLink(tView, hView, curTChunk, curHChunk, sim,antonyms);
+					addAlignmentLink(tView, hView, curTChunk, curHChunk, sim,
+							negative);
 				}
 
 			}
@@ -257,10 +313,15 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	}
 
 	/**
-	 * Create set of all token lemma strings covered by given chunk in given view
-	 * @param view Current JCas view
-	 * @param curChunk Current chunk annotation
-	 * @param tokenSet Set of token lemma
+	 * Create set of all token lemma strings covered by given chunk in given
+	 * view
+	 * 
+	 * @param view
+	 *            Current JCas view
+	 * @param curChunk
+	 *            Current chunk annotation
+	 * @param tokenSet
+	 *            Set of token lemma
 	 */
 	private void createLemmaSet(JCas view, Annotation curChunk,
 			HashSet<String> tokenSet) {
@@ -275,9 +336,13 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	}
 
 	/**
-	 * Check if one of the text token lemmas is an antonym of one of the hypothesis token lemmas
-	 * @param tTokenSet Set of lemmas of tokens in T
-	 * @param hTokenSet Set of lemmas of tokens in H
+	 * Check if one of the text token lemmas is an antonym of one of the
+	 * hypothesis token lemmas
+	 * 
+	 * @param tTokenSet
+	 *            Set of lemmas of tokens in T
+	 * @param hTokenSet
+	 *            Set of lemmas of tokens in H
 	 * @return true if antonym is present
 	 * @throws LexicalResourceException
 	 */
@@ -286,19 +351,52 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		// Iterating over all h token strings
 		for (Iterator<String> hIter = hTokenSet.iterator(); hIter.hasNext();) {
 			String curLemma = hIter.next();
-			//Get all antonyms for current h token string
+			// Get all antonyms for current h token string
 			for (LexicalRule<? extends RuleInfo> rule : wnlr.getRulesForLeft(
 					curLemma, null)) {
 				String antonym = rule.getRLemma().toLowerCase();
-				logger.info("Checking if anotonym: " +antonym +" of "+curLemma +" in H chunk is present in text chunk" );
-				//If antonym present in t token string set, negative alignment
-				if (tTokenSet.contains(antonym)){
+				logger.info("Checking if anotonym: " + antonym + " of "
+						+ curLemma + " in H chunk is present in text chunk");
+				// If antonym present in t token string set, negative alignment
+				if (tTokenSet.contains(antonym)) {
 					logger.info("Antonym match between T and H, negative alignment");
 					return true;
 				}
 			}
 		}
 
+		return false;
+	}
+
+	/**
+	 * 
+	 * @param tTokenSet
+	 *            Set of lemmas of tokens in T
+	 * @param hTokenSet
+	 *            Set of lemmas of tokens in H
+	 * @return true if negative relation wrt entailment
+	 * @throws LexicalResourceException
+	 */
+	private boolean checkNegVerbStrength(HashSet<String> tTokenSet,
+			HashSet<String> hTokenSet) throws LexicalResourceException {
+		// Iterating over all h token strings
+		for (Iterator<String> hIter = hTokenSet.iterator(); hIter.hasNext();) {
+			String curLemma = hIter.next();
+			// Get all opposites, stronger verbs and verbs that happen before
+			// current verb for current h token string
+			for (LexicalRule<? extends RuleInfo> rule : volr.getRulesForLeft(
+					curLemma, null)) {
+				String vRelation = rule.getRLemma().toLowerCase();
+				logger.info("Checking if verb relation: " + vRelation + " of "
+						+ curLemma + " in H chunk is present in T chunk");
+				// If the relation is present in t token string set, negative
+				// alignment
+				if (tTokenSet.contains(vRelation)) {
+					logger.info("Relation match between T and H, negative alignment");
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -485,6 +583,11 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 * WordNet lexical resource
 	 */
 	private WordnetLexicalResource wnlr;
+
+	/**
+	 * VerbOcean lexical resource
+	 */
+	private VerbOceanLexicalResource volr;
 
 	/**
 	 * Logger
