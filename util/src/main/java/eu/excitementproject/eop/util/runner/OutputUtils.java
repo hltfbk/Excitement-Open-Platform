@@ -7,11 +7,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +19,18 @@ import org.apache.uima.cas.CASException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
+
+/* Start imports for StAx */
+
+import javax.xml.namespace.QName;
+import javax.xml.stream.*;
+import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
+/* End imports for StAx */
 
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.alignmentedas.p1eda.TEDecisionWithAlignment;
@@ -63,45 +74,112 @@ public class OutputUtils {
 		}
 		return results;
 	}
-	
+
 	public static void generateXMLResults(String testFile, String resultsFile, String xmlFile) {
 		
 		HashMap<String,String> results = readResults(resultsFile);
 		
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:generateXMLResults");
+        logger.info("Generador de XML iniciado");
+        logger.info("testFile: " + testFile);
+        logger.info("resultsFile: " + resultsFile);
+        logger.info("xmlFile: " + xmlFile);
 		
+		XMLInputFactory ifactory = XMLInputFactory.newFactory();
+		XMLOutputFactory ofactory = XMLOutputFactory.newFactory();
+		XMLEventFactory xfactory = XMLEventFactory.newFactory();
+		StreamSource input = new StreamSource(testFile);
+		StreamResult output = new StreamResult(xmlFile);
+
 		try {
-			BufferedReader reader = Files.newBufferedReader(Paths.get(testFile), StandardCharsets.UTF_8);
-			//InputStream in = Files.newInputStream(Paths.get(testFile));
-			//BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-			
-			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
-			
-			String line = null, id;
-			String[] entDec;
-			Pattern p = Pattern.compile("^(.*pair id=\"(\\d+)\") .* (task.*)$");
-			Matcher m;
-			
-			while ((line = reader.readLine()) != null) {
-				m = p.matcher(line);
-				if (m.matches()) {
-					id = m.group(2);
-					if (results.containsKey(id)) {
-						entDec = results.get(id).split("\\t");
-						line = m.group(1) + " " + "entailment=\"" + entDec[1] + "\" benchmark=\"" + entDec[0] + "\" confidence=\"" + entDec[2] + "\" " + m.group(3);
-					}
-				}
-				writer.write(line + "\n");
-			}
-			writer.close();
-			out.close();
-			reader.close();
-			//in.close();
-		} catch (IOException e) {
-			logger.error("Problems reading test file " + testFile);
-			e.printStackTrace();
-		}
+			XMLEventReader in = ifactory.createXMLEventReader(input);
+			XMLEventWriter out = ofactory.createXMLEventWriter(output);
+			while (in.hasNext()) {
+                XMLEvent event = in.nextEvent();
+                /* We only look for starting pairs */
+                if (event.isStartElement() &&
+                        ((StartElement) event).getName().getLocalPart().equalsIgnoreCase("pair")) {
+                    /* Get the id attribute */
+                    QName attID = new QName("id");
+                    Attribute idAttribute = ((StartElement) event).getAttributeByName(attID);
+                    String id = idAttribute.getValue().toString();
+                    if (idAttribute != null) {
+                        if (!results.containsKey(id)) {
+                            out.add(event);
+                            continue;
+                        }
+                    }
+
+                    Iterator<Attribute> attributes = ((StartElement) event).getAttributes();
+                    QName pairName = new QName("pair");
+                    ArrayList attributeList = new ArrayList();
+
+                    List nsList = Arrays.asList();
+                    String[] entDec = results.get(id).split("\\t");
+                    Attribute newIdAttr = xfactory.createAttribute("id", idAttribute.getValue());
+                    attributeList.add(newIdAttr);
+                    Attribute newEntailAttr = xfactory.createAttribute("entailment", entDec[1]);
+                    attributeList.add(newEntailAttr);
+                    Attribute newBenchAttr = xfactory.createAttribute("benchmark", entDec[0]);
+                    attributeList.add(newBenchAttr);
+                    Attribute newConfAttr = xfactory.createAttribute("confidence", entDec[2]);
+                    attributeList.add(newConfAttr);
+                    while (attributes.hasNext()) {
+                        Attribute attribute = attributes.next();
+                        if (!attribute.getName().toString().equalsIgnoreCase("id")
+                                || !attribute.getName().toString().equalsIgnoreCase("entailment")
+                                || !attribute.getName().toString().equalsIgnoreCase("benchmark")
+                                || !attribute.getName().toString().equalsIgnoreCase("confidence")) {
+                            Attribute newAttr = xfactory.createAttribute(
+                                    attribute.getName().toString(), attribute.getValue());
+                            attributeList.add(newAttr);
+                        }
+                        String attr = attributes.next().getValue();
+                    }
+                    event = xfactory.createStartElement(pairName, attributeList.iterator(), nsList.iterator());
+                }
+                out.add(event);
+            }
+            out.flush();
+            out.close();
+            in.close();
+		} catch (XMLStreamException e) {
+            e.printStackTrace();
+        }
+
+//        try {
+//			BufferedReader reader = Files.newBufferedReader(Paths.get(testFile), StandardCharsets.UTF_8);
+//			//InputStream in = Files.newInputStream(Paths.get(testFile));
+//			//BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+//
+//			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
+//			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
+//
+//			String line = null, id;
+//			String[] entDec;
+//			Pattern p = Pattern.compile("^(.*task.*) (.*pair id=\"(\\d+)\").*$");
+//			Matcher m;
+//
+//			while ((line = reader.readLine()) != null) {
+//				m = p.matcher(line);
+//				if (m.matches()) {
+//					logger.info("Cosas leidas: " + m.group(1) + " - " + m.group(2) + " - " + m.group(3));
+//					id = m.group(2);
+//					if (results.containsKey(id)) {
+//						entDec = results.get(id).split("\\t");
+//						line = m.group(1) + " " + "entailment=\"" + entDec[1] + "\" benchmark=\"" + entDec[0] + "\" confidence=\"" + entDec[2] + "\" " + m.group(3);
+//					}
+//				}
+//				writer.write(line + "\n");
+//			}
+//			writer.close();
+//			out.close();
+//			reader.close();
+//			//in.close();
+//		} catch (IOException e) {
+//			logger.error("Problems reading test file " + testFile);
+//			e.printStackTrace();
+//		}
 		
 	}
 	
