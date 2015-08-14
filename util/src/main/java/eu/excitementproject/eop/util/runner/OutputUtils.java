@@ -63,7 +63,6 @@ public class OutputUtils {
 				m = p.matcher(line);
 				if (m.matches()) {
 					results.put(m.group(1), m.group(2));
-//					logger.info("Added result: " + m.group(1) + " / " + m.group(2));
 				}
 			}
 			reader.close();
@@ -80,14 +79,13 @@ public class OutputUtils {
 		HashMap<String,String> results = readResults(resultsFile);
 		
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:generateXMLResults");
-        logger.info("Generador de XML iniciado");
-        logger.info("testFile: " + testFile);
-        logger.info("resultsFile: " + resultsFile);
-        logger.info("xmlFile: " + xmlFile);
-		
+
+        /* XML Factories */
 		XMLInputFactory ifactory = XMLInputFactory.newFactory();
 		XMLOutputFactory ofactory = XMLOutputFactory.newFactory();
 		XMLEventFactory xfactory = XMLEventFactory.newFactory();
+
+        /* Files to read from and save to */
 		StreamSource input = new StreamSource(testFile);
 		StreamResult output = new StreamResult(xmlFile);
 
@@ -95,6 +93,7 @@ public class OutputUtils {
 			XMLEventReader in = ifactory.createXMLEventReader(input);
 			XMLEventWriter out = ofactory.createXMLEventWriter(output);
 			while (in.hasNext()) {
+                /* The XML element we are checking */
                 XMLEvent event = in.nextEvent();
                 /* We only look for starting pairs */
                 if (event.isStartElement() &&
@@ -103,18 +102,20 @@ public class OutputUtils {
                     QName attID = new QName("id");
                     Attribute idAttribute = ((StartElement) event).getAttributeByName(attID);
                     String id = idAttribute.getValue().toString();
-                    if (idAttribute != null) {
-                        if (!results.containsKey(id)) {
-                            out.add(event);
-                            continue;
-                        }
+                    /* If the id attribute was not found, just add the pair starter element and continue */
+                    if (idAttribute != null && !results.containsKey(id)) {
+                        out.add(event);
+                        continue;
                     }
-
+                    /* Iterator to iterate over the other attributes of the pair element */
                     Iterator<Attribute> attributes = ((StartElement) event).getAttributes();
+
+                    /* Elements for the creation of the new pair starter element */
                     QName pairName = new QName("pair");
                     ArrayList attributeList = new ArrayList();
-
                     List nsList = Arrays.asList();
+
+                    /* View the result file and append the result as attributes of the pair element */
                     String[] entDec = results.get(id).split("\\t");
                     Attribute newIdAttr = xfactory.createAttribute("id", idAttribute.getValue());
                     attributeList.add(newIdAttr);
@@ -124,8 +125,11 @@ public class OutputUtils {
                     attributeList.add(newBenchAttr);
                     Attribute newConfAttr = xfactory.createAttribute("confidence", entDec[2]);
                     attributeList.add(newConfAttr);
+
+                    /* Iterate over the other attributes the pair has */
                     while (attributes.hasNext()) {
                         Attribute attribute = attributes.next();
+                        /* If the attributes are not equal to the ones we added, add them */
                         if (!attribute.getName().toString().equalsIgnoreCase("id")
                                 || !attribute.getName().toString().equalsIgnoreCase("entailment")
                                 || !attribute.getName().toString().equalsIgnoreCase("benchmark")
@@ -134,52 +138,20 @@ public class OutputUtils {
                                     attribute.getName().toString(), attribute.getValue());
                             attributeList.add(newAttr);
                         }
-                        String attr = attributes.next().getValue();
                     }
+                    /* Create the new start element */
                     event = xfactory.createStartElement(pairName, attributeList.iterator(), nsList.iterator());
                 }
+                /* Add the element to the output stream */
                 out.add(event);
             }
+            /* Flush and close streams */
             out.flush();
             out.close();
             in.close();
 		} catch (XMLStreamException e) {
             e.printStackTrace();
         }
-
-//        try {
-//			BufferedReader reader = Files.newBufferedReader(Paths.get(testFile), StandardCharsets.UTF_8);
-//			//InputStream in = Files.newInputStream(Paths.get(testFile));
-//			//BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-//
-//			OutputStream out = Files.newOutputStream(Paths.get(xmlFile));
-//			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
-//
-//			String line = null, id;
-//			String[] entDec;
-//			Pattern p = Pattern.compile("^(.*task.*) (.*pair id=\"(\\d+)\").*$");
-//			Matcher m;
-//
-//			while ((line = reader.readLine()) != null) {
-//				m = p.matcher(line);
-//				if (m.matches()) {
-//					logger.info("Cosas leidas: " + m.group(1) + " - " + m.group(2) + " - " + m.group(3));
-//					id = m.group(2);
-//					if (results.containsKey(id)) {
-//						entDec = results.get(id).split("\\t");
-//						line = m.group(1) + " " + "entailment=\"" + entDec[1] + "\" benchmark=\"" + entDec[0] + "\" confidence=\"" + entDec[2] + "\" " + m.group(3);
-//					}
-//				}
-//				writer.write(line + "\n");
-//			}
-//			writer.close();
-//			out.close();
-//			reader.close();
-//			//in.close();
-//		} catch (IOException e) {
-//			logger.error("Problems reading test file " + testFile);
-//			e.printStackTrace();
-//		}
 		
 	}
 	
