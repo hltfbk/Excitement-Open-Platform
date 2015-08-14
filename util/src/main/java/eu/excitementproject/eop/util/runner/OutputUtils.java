@@ -25,6 +25,7 @@ import org.apache.uima.jcas.cas.TOP;
 import javax.xml.namespace.QName;
 import javax.xml.stream.*;
 import javax.xml.stream.events.Attribute;
+import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import javax.xml.transform.stream.StreamResult;
@@ -131,9 +132,9 @@ public class OutputUtils {
                         Attribute attribute = attributes.next();
                         /* If the attributes are not equal to the ones we added, add them */
                         if (!attribute.getName().toString().equalsIgnoreCase("id")
-                                || !attribute.getName().toString().equalsIgnoreCase("entailment")
-                                || !attribute.getName().toString().equalsIgnoreCase("benchmark")
-                                || !attribute.getName().toString().equalsIgnoreCase("confidence")) {
+                                && !attribute.getName().toString().equalsIgnoreCase("entailment")
+                                && !attribute.getName().toString().equalsIgnoreCase("benchmark")
+                                && !attribute.getName().toString().equalsIgnoreCase("confidence")) {
                             Attribute newAttr = xfactory.createAttribute(
                                     attribute.getName().toString(), attribute.getValue());
                             attributeList.add(newAttr);
@@ -159,12 +160,12 @@ public class OutputUtils {
 	public static void makeSinglePairXML(TEDecision decision, JCas aJCas, String xmlResultsFile, String lang) {
 			
 		Logger logger = Logger.getLogger("eu.excitementproject.eop.util.runner.OutputUtils:makeSinglePairXML");
-		
-		try {
+
+        try {
 			
 			OutputStream out = Files.newOutputStream(Paths.get(xmlResultsFile));
 			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out,"UTF-8"));
-			
+
 			writer.write("<entailment-corpus lang=\"" + lang + "\">\n");
 			writer.write("  <pair id=\"1\" entailment=\"" + decision.getDecision().name() + "\" benchmark=\"N/A\" confidence=\"" + decision.getConfidence() + "\" task=\"EOP test\">\n");
 			writer.write("    <t>" + aJCas.getView("TextView").getDocumentText() + "</t>\n");
@@ -173,7 +174,6 @@ public class OutputUtils {
 			writer.write("</entailment-corpus>\n");
 			writer.close();
 			out.close();
-
 			
 			logger.info("Results file: " + xmlResultsFile);
 			
