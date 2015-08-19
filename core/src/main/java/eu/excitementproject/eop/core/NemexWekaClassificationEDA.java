@@ -54,7 +54,7 @@ public class NemexWekaClassificationEDA implements
 		initializeEDA(config);
 
 		// initialize the data paths
-		initializeTrainConfig(config, false); //TODO: check if required
+		initializeTrainConfig(config, false); // TODO: check if required
 		initializeTestDir(config);
 
 		// initialize the components
@@ -66,11 +66,11 @@ public class NemexWekaClassificationEDA implements
 			throw new ComponentException(e.getMessage());
 		}
 
-		// initialize the model
-		initializeModel(config, false);
-
 		// initialize classifier
 		initializeClassifier(config);
+				
+		// initialize the model
+		initializeModel(config, false);
 
 	}
 
@@ -147,7 +147,7 @@ public class NemexWekaClassificationEDA implements
 				logger.warn("Warning: Please specify the training data directory.");
 			}
 		}
-		
+
 		this.split = Boolean.parseBoolean(EDA.getString("dataSplit"));
 
 	}
@@ -384,7 +384,8 @@ public class NemexWekaClassificationEDA implements
 		}
 		modelFile = EDA.getString("modelFile");
 		if (isTrain) {
-			//For training, numOfModelFiles initialized before initializing model files
+			// For training, numOfModelFiles initialized before initializing
+			// model files
 			for (int i = 0; i < numOfModelFiles; i++) {
 				File file = new File(modelFile + String.valueOf(i));
 				if (file.exists()) {
@@ -400,7 +401,7 @@ public class NemexWekaClassificationEDA implements
 				}
 			}
 		} else {
-			//For testing, numOfModelFiles specified via configuration file.
+			// For testing, numOfModelFiles specified via configuration file.
 			this.numOfModelFiles = Integer.parseInt(EDA
 					.getString("numOfModelFiles"));
 			for (int i = 0; i < numOfModelFiles; i++) {
@@ -417,22 +418,23 @@ public class NemexWekaClassificationEDA implements
 	 * Write the headers for all Weka ARFF file, including relation names and
 	 * attribute names and types.
 	 * 
-	 * @param isTrain whether it is in training mode
+	 * @param isTrain
+	 *            whether it is in training mode
 	 * @throws ConfigurationException
 	 */
-	private void writeArffHeaders(boolean isTrain) throws ConfigurationException {
-		
-		int numOfWekaFiles; //num of weka data files
-		if(isTrain)
+	private void writeArffHeaders(boolean isTrain)
+			throws ConfigurationException {
+
+		int numOfWekaFiles; // num of weka data files
+		if (isTrain)
 			numOfWekaFiles = numOfModelFiles;
 		else
 			numOfWekaFiles = 1;
 
-		//write headers to all weka files
+		// write headers to all weka files
 		for (int i = 0; i < numOfWekaFiles; i++) {
 			// Create a new Path
-			Path arffFile = Paths.get(wekaArffFile + String.valueOf(i)
-					+ ".arff");
+			Path arffFile = Paths.get(wekaArffFile + String.valueOf(i) + ".arff");
 
 			try {
 				Files.deleteIfExists(arffFile);
@@ -555,9 +557,9 @@ public class NemexWekaClassificationEDA implements
 
 		String pairId = getPairID(aCas);
 
-		 String goldAnswer = getGoldLabel(aCas);
-		 if (null == goldAnswer) {
-		 goldAnswer = DecisionLabel.Abstain.toString();
+		String goldAnswer = getGoldLabel(aCas);
+		if (null == goldAnswer) {
+			goldAnswer = DecisionLabel.Abstain.toString();
 		}
 
 		// a quick answer "yes" for identical T-H pair as input
@@ -574,8 +576,8 @@ public class NemexWekaClassificationEDA implements
 		}
 
 		String feats = scoreData(aCas);
-		feats += goldAnswer; //class label
-		writeDatatoArff(feats,wekaArffFile+String.valueOf(0)+".arff");
+		feats += goldAnswer; // class label
+		writeDatatoArff(feats, wekaArffFile + String.valueOf(0) + ".arff");
 
 		ClassificationTEDecision pred = classifyData(pairId);
 
@@ -611,7 +613,7 @@ public class NemexWekaClassificationEDA implements
 	 *            string with all scores from all components and actual class
 	 */
 	private void writeDatatoArff(String feats, String wekaFileName) {
-	
+
 		// Create a new Path
 		Path arffFile = Paths.get(wekaFileName);
 
@@ -633,35 +635,37 @@ public class NemexWekaClassificationEDA implements
 	 * @return classification decision - entailment or nonentailment.
 	 */
 	private ClassificationTEDecision classifyData(String pairId) {
-		
-	
-		int ent = 0, nent = 0; //no. of models predicting entailing and non entailing classes resp.
-		
-		//get decision label using all model files
-		for(int i = 0; i < numOfModelFiles; i++) {
-			
-		Instances testData;
 
-		try {
-			testData = loadInstancesFromARFF(wekaArffFile+String.valueOf(0)+".arff", "class");
+		int ent = 0, nent = 0; // no. of models predicting entailing and non
+								// entailing classes resp.
 
-			// deserialize model
-			classifier = (LibLINEAR) weka.core.SerializationHelper
-					.read(modelFile+String.valueOf(i));
+		// get decision label using all model files
+		for (int i = 0; i < numOfModelFiles; i++) {
 
-			double pred = classifier.classifyInstance(testData.instance(0));
+			Instances testData;
 
-			// get the predicted probabilities
-			//double[] predThreshold = classifier
-				//	.distributionForInstance(testData.instance(0));
+			try {
+				testData = loadInstancesFromARFF(
+						wekaArffFile + String.valueOf(0) + ".arff", "class");
 
-			String predictedClass = testData.classAttribute().value((int) pred);
-			
-			if (predictedClass.equalsIgnoreCase("ENTAILMENT"))
-				ent++;
-			else if (predictedClass.equalsIgnoreCase("NONENTAILMENT"))
-				nent++;
-				
+				// deserialize model
+				classifier = (LibLINEAR) weka.core.SerializationHelper
+						.read(modelFile + String.valueOf(i));
+
+				double pred = classifier.classifyInstance(testData.instance(0));
+
+				// get the predicted probabilities
+				// double[] predThreshold = classifier
+				// .distributionForInstance(testData.instance(0));
+
+				String predictedClass = testData.classAttribute().value(
+						(int) pred);
+
+				if (predictedClass.equalsIgnoreCase("ENTAILMENT"))
+					ent++;
+				else if (predictedClass.equalsIgnoreCase("NONENTAILMENT"))
+					nent++;
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -669,16 +673,16 @@ public class NemexWekaClassificationEDA implements
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
 		}
-			
+
 		// Ensemble learning: Bagging to return most frequently predicted label
-		if(ent >= nent)
+		if (ent >= nent)
 			return new ClassificationTEDecision(DecisionLabel.Entailment,
-						pairId); 
+					pairId);
 		else
-				return new ClassificationTEDecision(
-						DecisionLabel.NonEntailment,pairId);
+			return new ClassificationTEDecision(DecisionLabel.NonEntailment,
+					pairId);
 	}
 
 	@Override
@@ -719,12 +723,12 @@ public class NemexWekaClassificationEDA implements
 		// calculate scores and add the data to weka arff file
 		generateTrainingDataArff(entNum);
 
-		// initialize the models
-		initializeModel(config, true);
-
 		// initialize classifier
 		initializeClassifier(config);
 
+		// initialize the models
+		initializeModel(config, true);
+		
 		// train classifier on each weka data file and store model
 		trainClassifier();
 
@@ -733,13 +737,15 @@ public class NemexWekaClassificationEDA implements
 	/**
 	 * write data to Weka ARFF file for all training pairs.
 	 * 
-	 * @param entNum no. of entailing pairs in total
+	 * @param entNum
+	 *            no. of entailing pairs in total
 	 * @throws ConfigurationException
 	 * @throws LAPException
 	 * @throws ScoringComponentException
 	 */
-	private void generateTrainingDataArff(int entNum) throws ConfigurationException,
-			LAPException, ScoringComponentException {
+	private void generateTrainingDataArff(int entNum)
+			throws ConfigurationException, LAPException,
+			ScoringComponentException {
 
 		File f = new File(trainDIR);
 		if (f.exists() == false) {
@@ -755,25 +761,30 @@ public class NemexWekaClassificationEDA implements
 
 			JCas cas = PlatformCASProber.probeXmi(xmi, null);
 			String feats = scoreData(cas);
-			
+
 			String goldClass = getGoldLabel(cas);
 			feats += goldClass;
-			
-			if(1 == numOfModelFiles)
-				//no split, only one file to write to.
-				writeDatatoArff(feats,wekaArffFile+String.valueOf(0)+".arff");
+
+			if (1 == numOfModelFiles)
+				// no split, only one file to write to.
+				writeDatatoArff(feats, wekaArffFile + String.valueOf(0)
+						+ ".arff");
 			else {
-				int curFileNum = 0; // file number to write next nonentailment entry to
-				int curNEntNum = 0; // no. of non entailing cases in current file
-				
-				//entailing cases written to all files
-				if(goldClass.equalsIgnoreCase("ENTAILMENT")) {
-					for(int i =0; i > numOfModelFiles; i++) 
-						writeDatatoArff(feats,wekaArffFile+String.valueOf(i)+".arff");
+				int curFileNum = 0; // file number to write next nonentailment
+									// entry to
+				int curNEntNum = 0; // no. of non entailing cases in current
+									// file
+
+				// entailing cases written to all files
+				if (goldClass.equalsIgnoreCase("ENTAILMENT")) {
+					for (int i = 0; i > numOfModelFiles; i++)
+						writeDatatoArff(feats, wekaArffFile + String.valueOf(i)
+								+ ".arff");
 				}
-				//non entailing cases written to a certain file number
+				// non entailing cases written to a certain file number
 				else {
-					writeDatatoArff(feats,wekaArffFile+String.valueOf(curFileNum)+".arff");
+					writeDatatoArff(feats,
+							wekaArffFile + String.valueOf(curFileNum) + ".arff");
 					curNEntNum++;
 					if (curNEntNum >= entNum) {
 						curFileNum++;
@@ -796,27 +807,28 @@ public class NemexWekaClassificationEDA implements
 	 * 
 	 */
 	private void trainClassifier() {
-		for(int i=0; i< numOfModelFiles; i++) {
-		Instances data;
-		try {
-			data = loadInstancesFromARFF(wekaArffFile, "class");
-			java.util.Random rand = new java.util.Random();
-			data.randomize(rand);
-			classifier = new LibLINEAR();
-			((LibLINEAR) classifier).setSVMType(new SelectedTag(
-					LibLINEAR.SVMTYPE_L2_LR, LibLINEAR.TAGS_SVMTYPE));
-			classifier.buildClassifier(data);
+		for (int i = 0; i < numOfModelFiles; i++) {
+			Instances data;
+			try {
+				data = loadInstancesFromARFF(wekaArffFile, "class");
+				java.util.Random rand = new java.util.Random();
+				data.randomize(rand);
+				classifier = new LibLINEAR();
+				((LibLINEAR) classifier).setSVMType(new SelectedTag(
+						LibLINEAR.SVMTYPE_L2_LR, LibLINEAR.TAGS_SVMTYPE));
+				classifier.buildClassifier(data);
 
-			// serialize model
-			weka.core.SerializationHelper.write(modelFile+String.valueOf(i), classifier);
+				// serialize model
+				weka.core.SerializationHelper.write(
+						modelFile + String.valueOf(i), classifier);
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
