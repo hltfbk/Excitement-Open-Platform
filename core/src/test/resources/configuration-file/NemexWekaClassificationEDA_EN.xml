@@ -111,8 +111,10 @@
 
 	<section name="eu.excitementproject.eop.core.NemexWekaClassificationEDA">
 		<property name="trainDir">../core/src/test/resources/data-set/ENG/dev/</property>
+		<property name="dataSplit">true</property>
 		<property name="testDir">../core/src/test/resources/data-set/ENG/test/</property>
 		<property name="modelFile">../core/src/test/resources/NemexWekaClassificationEDAModel</property>
+		<property name="numOfModelFiles">1</property>
 		<property name="wekaArffFile">../core/src/test/resources/NemexWekaArff.arff</property>
 		<property name="Components">NemexBagOfWordsScoring</property>
 
