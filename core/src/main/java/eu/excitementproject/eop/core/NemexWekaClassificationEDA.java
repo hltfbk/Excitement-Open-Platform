@@ -717,17 +717,19 @@ public class NemexWekaClassificationEDA implements
 		} else
 			this.numOfModelFiles = 1;
 
+		// initialize classifier
+		initializeClassifier(config);
+
+		// initialize the models
+		initializeModel(config, true);
+		
 		// write headers for weka arff file
 		writeArffHeaders(true);
 
 		// calculate scores and add the data to weka arff file
 		generateTrainingDataArff(entNum);
 
-		// initialize classifier
-		initializeClassifier(config);
 
-		// initialize the models
-		initializeModel(config, true);
 		
 		// train classifier on each weka data file and store model
 		trainClassifier();
