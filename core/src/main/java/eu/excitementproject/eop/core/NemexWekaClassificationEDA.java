@@ -68,7 +68,7 @@ public class NemexWekaClassificationEDA implements
 
 		// initialize classifier
 		initializeClassifier(config);
-				
+
 		// initialize the model
 		initializeModel(config, false);
 
@@ -434,7 +434,8 @@ public class NemexWekaClassificationEDA implements
 		// write headers to all weka files
 		for (int i = 0; i < numOfWekaFiles; i++) {
 			// Create a new Path
-			Path arffFile = Paths.get(wekaArffFile + String.valueOf(i) + ".arff");
+			Path arffFile = Paths.get(wekaArffFile + String.valueOf(i)
+					+ ".arff");
 
 			try {
 				Files.deleteIfExists(arffFile);
@@ -722,15 +723,13 @@ public class NemexWekaClassificationEDA implements
 
 		// initialize the models
 		initializeModel(config, true);
-		
+
 		// write headers for weka arff file
 		writeArffHeaders(true);
 
 		// calculate scores and add the data to weka arff file
 		generateTrainingDataArff(entNum);
 
-
-		
 		// train classifier on each weka data file and store model
 		trainClassifier();
 
@@ -748,6 +747,9 @@ public class NemexWekaClassificationEDA implements
 	private void generateTrainingDataArff(int entNum)
 			throws ConfigurationException, LAPException,
 			ScoringComponentException {
+
+		int curFileNum = 0; // file number to write next nonentailment entry to
+		int curNEntNum = 0; // no. of non entailing cases in current file
 
 		File f = new File(trainDIR);
 		if (f.exists() == false) {
@@ -772,11 +774,6 @@ public class NemexWekaClassificationEDA implements
 				writeDatatoArff(feats, wekaArffFile + String.valueOf(0)
 						+ ".arff");
 			else {
-				int curFileNum = 0; // file number to write next nonentailment
-									// entry to
-				int curNEntNum = 0; // no. of non entailing cases in current
-									// file
-
 				// entailing cases written to all files
 				if (goldClass.equalsIgnoreCase("ENTAILMENT")) {
 					for (int i = 0; i > numOfModelFiles; i++)
