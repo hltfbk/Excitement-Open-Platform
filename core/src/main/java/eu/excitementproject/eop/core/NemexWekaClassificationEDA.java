@@ -776,7 +776,7 @@ public class NemexWekaClassificationEDA implements
 			else {
 				// entailing cases written to all files
 				if (goldClass.equalsIgnoreCase("ENTAILMENT")) {
-					for (int i = 0; i > numOfModelFiles; i++)
+					for (int i = 0; i < numOfModelFiles; i++)
 						writeDatatoArff(feats, wekaArffFile + String.valueOf(i)
 								+ ".arff");
 				}
