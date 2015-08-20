@@ -809,7 +809,7 @@ public class NemexWekaClassificationEDA implements
 		for (int i = 0; i < numOfModelFiles; i++) {
 			Instances data;
 			try {
-				data = loadInstancesFromARFF(wekaArffFile, "class");
+				data = loadInstancesFromARFF(wekaArffFile+String.valueOf(i)+".arff", "class");
 				java.util.Random rand = new java.util.Random();
 				data.randomize(rand);
 				classifier = new LibLINEAR();
