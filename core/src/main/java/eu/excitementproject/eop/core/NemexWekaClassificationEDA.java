@@ -390,7 +390,7 @@ public class NemexWekaClassificationEDA implements
 				File file = new File(modelFile + String.valueOf(i));
 				if (file.exists()) {
 					// keep backup of one old model
-					String oldModelFile = modelFile + "_old";
+					String oldModelFile = modelFile + String.valueOf(i) + "_old";
 					File oldFile = new File(oldModelFile);
 					if (oldFile.exists())
 						oldFile.delete();
@@ -405,7 +405,7 @@ public class NemexWekaClassificationEDA implements
 			this.numOfModelFiles = Integer.parseInt(EDA
 					.getString("numOfModelFiles"));
 			for (int i = 0; i < numOfModelFiles; i++) {
-				File file = new File(modelFile);
+				File file = new File(modelFile+String.valueOf(i));
 				if (!file.exists()) {
 					throw new ConfigurationException(
 							"The model specified in the configuration does NOT exist! Please give the correct file path.");
