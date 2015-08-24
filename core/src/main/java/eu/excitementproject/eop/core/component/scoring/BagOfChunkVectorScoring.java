@@ -42,7 +42,7 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 			throws ConfigurationException, IOException,
 			LexicalResourceException {
 
-		NameValueTable comp = config.getSection("BagOfWordVectorScoring");
+		NameValueTable comp = config.getSection("BagOfChunkVectorScoring");
 
 		this.removeStopWords = Boolean.valueOf(comp
 				.getString("removeStopWords"));

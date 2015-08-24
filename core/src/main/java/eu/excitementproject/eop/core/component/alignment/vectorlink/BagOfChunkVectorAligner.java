@@ -60,7 +60,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 				"chunk");
 
 		// Load the chunker model
-		NameValueTable comp = config.getSection("NemexBagOfChunksScoring");
+		NameValueTable comp = config.getSection("BagOfChunkVectorScoring");
 		String chunkerModel = comp.getString("chunkerModelPath");
 
 		if (null == chunkerModel) {
