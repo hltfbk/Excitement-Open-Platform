@@ -6,7 +6,6 @@ package eu.excitementproject.eop.core.component.scoring;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Vector;
 
 import org.apache.log4j.Logger;
@@ -54,11 +53,11 @@ public class NemexBagOfChunksScoring implements ScoringComponent {
 	 * 
 	 * @return number of features
 	 */
-	
+
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
-	
+
 	public String[] getCoverageFeats() {
 		return this.coverageFeats;
 	}
@@ -156,6 +155,8 @@ public class NemexBagOfChunksScoring implements ScoringComponent {
 
 		if (useCoverageFeats) {
 
+			// Get T and H tokens
+
 			Collection<Token> tTokens = JCasUtil.select(tView, Token.class);
 			int numOfTTokens = tTokens.size();
 
@@ -170,47 +171,22 @@ public class NemexBagOfChunksScoring implements ScoringComponent {
 				logger.warn("No tokens found for HYPOTHESIS");
 			}
 
+			// Initialization of hash maps
 			HashMap<String, Integer> tWordsMap = new HashMap<String, Integer>();
 			HashMap<String, Integer> tPosMap = new HashMap<String, Integer>();
 
 			HashMap<String, Integer> hWordsMap = new HashMap<String, Integer>();
 			HashMap<String, Integer> hPosMap = new HashMap<String, Integer>();
 
-			int numOfTContentWords = 0;
-		 	int numOfTVerbs = 0;
-			int numOfTProperNouns = 0;
+			HashMap<String, Integer> tCovFeatMap = new HashMap<String, Integer>();
+			HashMap<String, Integer> hCovFeatMap = new HashMap<String, Integer>();
 
-			int numOfHContentWords = 0;
-			int numOfHVerbs = 0;
-			int numOfHProperNouns = 0;
+			// Create map of content words, verbs and proper nouns wrt frequency
+			// in given token set of T/H
+			NemexScorerUtility.createCovPosMap(tTokens, tCovFeatMap);
+			NemexScorerUtility.createCovPosMap(hTokens, hCovFeatMap);
 
-			for (final Iterator<Token> tIter = tTokens.iterator(); tIter
-					.hasNext();) {
-				Token t = tIter.next();
-				String curTag = t.getPos().getPosValue();
-				if (curTag.startsWith("NN") || curTag.startsWith("VB")
-						|| curTag.startsWith("JJ"))
-					numOfTContentWords++;
-				if (curTag.startsWith("VB"))
-					numOfTVerbs++;
-				if (curTag.startsWith("NNP"))
-					numOfTProperNouns++;
-			}
-
-			for (final Iterator<Token> hIter = hTokens.iterator(); hIter
-					.hasNext();) {
-				Token t = hIter.next();
-				String curTag = t.getPos().getPosValue();
-				if (curTag.startsWith("NN") || curTag.startsWith("VB")
-						|| curTag.startsWith("JJ"))
-					numOfHContentWords++;
-				if (curTag.startsWith("VB"))
-					numOfHVerbs++;
-				if (curTag.startsWith("NNP"))
-					numOfHProperNouns++;
-
-			}
-
+			//Iterating over all alignment links
 			for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
 				Link link = iter.next();
 
@@ -219,113 +195,37 @@ public class NemexBagOfChunksScoring implements ScoringComponent {
 				int hStartOffset = link.getHSideTarget().getBegin();
 				int hEndOffset = link.getHSideTarget().getEnd();
 
+				//T tokens covered under alignment
 				Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
 						tView, Token.class, tStartOffset, tEndOffset);
 
 				if (tLinkCoveredTokens.size() == 0)
 					logger.warn("No tokens covered under aligned data in TEXT.");
 
+				//H tokens covered under alignment
 				Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
 						hView, Token.class, hStartOffset, hEndOffset);
 
 				if (hLinkCoveredTokens.size() == 0)
 					logger.warn("No tokens covered under aligned data in HYPOTHESIS.");
 
-				addToWordsAndPosMap(tWordsMap, tPosMap, tLinkCoveredTokens);
-				addToWordsAndPosMap(hWordsMap, hPosMap, hLinkCoveredTokens);
+				//Map of all word and POS wrt frequency, covered under alignment
+				NemexScorerUtility.addToWordsAndPosMap(tWordsMap, tPosMap,
+						tLinkCoveredTokens);
+				NemexScorerUtility.addToWordsAndPosMap(hWordsMap, hPosMap,
+						hLinkCoveredTokens);
 
 			}
 
 			if (direction == "TtoH")
-				scoreValues.addAll(calculateOverlap(tWordsMap, tPosMap,
-						coverageFeats, new int[] { numOfTTokens,
-								numOfTContentWords, numOfTVerbs,
-								numOfTProperNouns }));
+				scoreValues.addAll(NemexScorerUtility.calculateOverlap(
+						tWordsMap, tPosMap, coverageFeats, tCovFeatMap));
 			else
-				scoreValues.addAll(calculateOverlap(hWordsMap, hPosMap,
-						coverageFeats, new int[] { numOfHTokens,
-								numOfHContentWords, numOfHVerbs,
-								numOfHProperNouns }));
+				scoreValues.addAll(NemexScorerUtility.calculateOverlap(
+						hWordsMap, hPosMap, coverageFeats, hCovFeatMap));
 		}
 
 		return scoreValues;
-	}
-
-	private void addToWordsAndPosMap(HashMap<String, Integer> wordsMap,
-			HashMap<String, Integer> posMap, Collection<Token> linkCoveredTokens) {
-
-		for (final Iterator<Token> tokensIter = linkCoveredTokens.iterator(); tokensIter
-				.hasNext();) {
-			Token token = tokensIter.next();
-			String curToken = token.getCoveredText().toLowerCase();
-
-			String curPOS = token.getPos().getPosValue();
-
-			if (wordsMap.containsKey(curToken)) {
-				wordsMap.put(curToken, wordsMap.get(curToken) + 1);
-			} else
-				wordsMap.put(curToken, 1);
-
-			if (posMap.containsKey(curPOS)) {
-				posMap.put(curPOS, posMap.get(curPOS) + 1);
-			} else
-				posMap.put(curPOS, 1);
-
-		}
-
-	}
-
-	private Vector<Double> calculateOverlap(HashMap<String, Integer> wordsMap,
-			HashMap<String, Integer> posMap, String[] overlaps, int[] num) {
-
-		Vector<Double> overlapScore = new Vector<Double>();
-
-		for (int i = 0; i < overlaps.length; i++) {
-
-			String overlapType = overlaps[i];
-			double overlap = 0.0;
-
-			if (overlapType.equalsIgnoreCase("Word")) {
-				for (Map.Entry<String, Integer> entry : wordsMap.entrySet()) {
-					overlap += entry.getValue();
-				}
-			}
-
-			else if (overlapType.equalsIgnoreCase("ContentWord")) {
-
-				for (Map.Entry<String, Integer> entry : posMap.entrySet()) {
-					if (entry.getKey().startsWith("NN")
-							|| entry.getKey().startsWith("VB")
-							|| entry.getKey().startsWith("JJ"))
-						overlap += entry.getValue();
-				}
-			}
-
-			else if (overlapType.equalsIgnoreCase("Verb")) {
-
-				for (Map.Entry<String, Integer> entry : posMap.entrySet()) {
-					if (entry.getKey().startsWith("VB"))
-						overlap += entry.getValue();
-				}
-			}
-
-			else if (overlapType.equalsIgnoreCase("ProperNoun")) {
-
-				for (Map.Entry<String, Integer> entry : posMap.entrySet()) {
-					if (entry.getKey().startsWith("NNP"))
-						overlap += entry.getValue();
-				}
-			}
-
-			if (overlap != 0.0 && num[i] != 0)
-				overlap = overlap / num[i];
-			else
-				overlap = 0.0;
-			overlapScore.add(overlap);
-
-		}
-
-		return overlapScore;
 	}
 
 	private int numOfFeats = 7;

@@ -5,7 +5,9 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.Vector;
 
@@ -14,6 +16,7 @@ import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.uimafit.util.JCasUtil;
 
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk.Chunk;
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
@@ -36,11 +39,11 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 public class BagOfChunkVectorScoring implements ScoringComponent {
 
 	public BagOfChunkVectorScoring(CommonConfig config)
-			throws ConfigurationException, IOException, LexicalResourceException {
-
+			throws ConfigurationException, IOException,
+			LexicalResourceException {
 
 		NameValueTable comp = config.getSection("BagOfWordVectorScoring");
-		
+
 		this.removeStopWords = Boolean.valueOf(comp
 				.getString("removeStopWords"));
 
@@ -58,8 +61,16 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 				logger.error("Could not read stop words file");
 			}
 		}
-		
-		this.aligner = new BagOfChunkVectorAligner(config, removeStopWords, stopWords);
+
+		this.useCoverageFeats = Boolean.valueOf(comp
+				.getString("useCoverageFeats"));
+		this.coverageFeats = comp.getString("coverageFeats").split(",");
+
+		if (useCoverageFeats)
+			numOfFeats += coverageFeats.length;
+
+		this.aligner = new BagOfChunkVectorAligner(config, removeStopWords,
+				stopWords);
 
 	}
 
@@ -108,27 +119,97 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 			logger.warn("No chunks found for hypothesis");
 		}
 
-		//Get all alignment links
+		// Get all alignment links
 		int negLink = 0;
 		Collection<Link> links = JCasUtil.select(hView, Link.class);
-		for(Link link : links) {
-			if(link.getLinkInfo().equalsIgnoreCase("negative")) {
+		for (Link link : links) {
+			if (link.getLinkInfo().equalsIgnoreCase("negative")) {
 				logger.info("Found negative link");
 				negLink++;
 			}
 		}
 		// num of alignment links between text and hypothesis
 		int posLink = links.size() - negLink;
-		
+
 		// Scores: num of alignments/num of T chunks, num of alignments/num of H
 		// chunks, product of the two.
-		//scoresVector.add((double) numOfLinks / tSize);
-		
-		//Separate scores for negative and positive alignments
+		// scoresVector.add((double) numOfLinks / tSize);
+
+		// Separate scores for negative and positive alignments
 		scoresVector.add((double) negLink / hSize);
 		scoresVector.add((double) posLink / hSize);
-		
-		//scoresVector.add((double) numOfLinks * numOfLinks / tSize / hSize);
+		// scoresVector.add((double) numOfLinks * numOfLinks / tSize / hSize);
+
+		if (useCoverageFeats) {
+
+			// Get T and H tokens
+
+			Collection<Token> tTokens = JCasUtil.select(tView, Token.class);
+			int numOfTTokens = tTokens.size();
+
+			if (numOfTTokens == 0) {
+				logger.warn("No tokens found for TEXT");
+			}
+
+			Collection<Token> hTokens = JCasUtil.select(hView, Token.class);
+			int numOfHTokens = hTokens.size();
+
+			if (numOfHTokens == 0) {
+				logger.warn("No tokens found for HYPOTHESIS");
+			}
+
+			// Initialization of hash maps
+			HashMap<String, Integer> tWordsMap = new HashMap<String, Integer>();
+			HashMap<String, Integer> tPosMap = new HashMap<String, Integer>();
+
+			HashMap<String, Integer> hWordsMap = new HashMap<String, Integer>();
+			HashMap<String, Integer> hPosMap = new HashMap<String, Integer>();
+
+			HashMap<String, Integer> tCovFeatMap = new HashMap<String, Integer>();
+			HashMap<String, Integer> hCovFeatMap = new HashMap<String, Integer>();
+
+			// Create map of content words, verbs and proper nouns wrt frequency
+			// in given token set of T/H
+			NemexScorerUtility.createCovPosMap(tTokens, tCovFeatMap);
+			NemexScorerUtility.createCovPosMap(hTokens, hCovFeatMap);
+
+			// Iterating over all alignment links
+			for (final Iterator<Link> iter = links.iterator(); iter.hasNext();) {
+				Link link = iter.next();
+
+				int tStartOffset = link.getTSideTarget().getBegin();
+				int tEndOffset = link.getTSideTarget().getEnd();
+				int hStartOffset = link.getHSideTarget().getBegin();
+				int hEndOffset = link.getHSideTarget().getEnd();
+
+				// T tokens covered under alignment
+				Collection<Token> tLinkCoveredTokens = JCasUtil.selectCovered(
+						tView, Token.class, tStartOffset, tEndOffset);
+
+				if (tLinkCoveredTokens.size() == 0)
+					logger.warn("No tokens covered under aligned data in TEXT.");
+
+				// H tokens covered under alignment
+				Collection<Token> hLinkCoveredTokens = JCasUtil.selectCovered(
+						hView, Token.class, hStartOffset, hEndOffset);
+
+				if (hLinkCoveredTokens.size() == 0)
+					logger.warn("No tokens covered under aligned data in HYPOTHESIS.");
+
+				// Map of all word and POS wrt frequency, covered under
+				// alignment
+				NemexScorerUtility.addToWordsAndPosMap(tWordsMap, tPosMap,
+						tLinkCoveredTokens);
+				NemexScorerUtility.addToWordsAndPosMap(hWordsMap, hPosMap,
+						hLinkCoveredTokens);
+
+			}
+
+			//calculating overlap scores
+			scoresVector.addAll(NemexScorerUtility.calculateOverlap(hWordsMap,
+					hPosMap, coverageFeats, hCovFeatMap));
+
+		}
 
 		return scoresVector;
 	}
@@ -153,19 +234,30 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 	/**
 	 * num of features
 	 */
-	//int numOfFeats = 3;
 	int numOfFeats = 2;
 
 	/**
 	 * Stopwords set
 	 */
 	private Set<String> stopWords;
-	
+
 	/**
 	 * whether stopwords should be removed
 	 */
 	private boolean removeStopWords;
-	
+
+	/**
+	 * Use coverage features like percentage of named entities, content words,
+	 * etc. covered under positively aligned chunks.
+	 */
+	private boolean useCoverageFeats;
+
+	/**
+	 * Which coverage features to use: word coverage, content word coverage,
+	 * verb coverage and proper noun coverage.
+	 */
+	private String[] coverageFeats;
+
 	/**
 	 * aligner to add alignment links on T and H pairs
 	 */
