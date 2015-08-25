@@ -490,6 +490,19 @@ public class NemexWekaClassificationEDA implements
 						writer.append("@ATTRIBUTE BOChunkVecNegAlignment NUMERIC");
 						writer.newLine();
 						writer.append("@ATTRIBUTE BOChunkVecPositiveAlignment NUMERIC");
+						
+						int numOfFeats = ((BagOfChunkVectorScoring) curComp)
+								.getNumOfFeats();
+						if (numOfFeats > 2) {
+							String[] coverageFeats = ((BagOfChunkVectorScoring) curComp)
+									.getCoverageFeats();
+
+							for (int j = 0; j < coverageFeats.length; j++) {
+								writer.newLine();
+								writer.append("@ATTRIBUTE BOChunkVec"
+										+ coverageFeats[j] + "Overlap NUMERIC");
+							}
+						}
 					} else if (curComp.getComponentName().equalsIgnoreCase(
 							"NegationScoring")) {
 						writer.newLine();

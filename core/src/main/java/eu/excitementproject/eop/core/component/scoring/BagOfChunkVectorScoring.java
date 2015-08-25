@@ -230,6 +230,14 @@ public class BagOfChunkVectorScoring implements ScoringComponent {
 	public int getNumOfFeats() {
 		return numOfFeats;
 	}
+	
+	/**
+	 * @return coverage features used
+	 */
+	public String[] getCoverageFeats() {
+		return coverageFeats;
+	}
+
 
 	/**
 	 * num of features
