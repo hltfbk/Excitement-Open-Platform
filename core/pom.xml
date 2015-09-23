@@ -16,7 +16,7 @@
 		<dependency>
 			<groupId>org.deeplearning4j</groupId>
 			<artifactId>deeplearning4j-ui</artifactId>
-			<version>0.0.3.3.4.alpha2</version>
+			<version>0.4-rc3.2</version>
 
 		<exclusions>
 				<exclusion>
@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>org.deeplearning4j</groupId>
 			<artifactId>deeplearning4j-nlp</artifactId>
-			<version>0.0.3.3.4.alpha2</version>
+			<version>0.4-rc3.2</version>
 
 			<exclusions>
 				<exclusion>
@@ -96,7 +96,7 @@
 		<dependency>
 			<groupId>org.nd4j</groupId>
 			<artifactId>nd4j-jblas</artifactId> <!-- you can choose different backends -->
-			<version>0.0.3.5.5.5</version>
+			<version>0.4-rc3.2</version>
 
 			<exclusions>
 				<exclusion>
