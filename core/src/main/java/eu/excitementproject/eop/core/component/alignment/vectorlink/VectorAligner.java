@@ -65,9 +65,6 @@ public class VectorAligner implements AlignmentComponent {
 		// initialize ignore POS set
 		intializeIgnorePosSet(config, sectionName);
 
-		// initialize annotation name
-		this.annotName = annotName;
-
 		// initialize stopwords removal and stopwords set
 		this.removeStopWords = removeStopWords;
 		this.stopWords = stopWords;
@@ -152,10 +149,16 @@ public class VectorAligner implements AlignmentComponent {
 		String modelType = comp.getString("modelType");
 		String vecModel = comp.getString("vecModel");
 
-		if (null == vecModel) {
-			logger.warn("Please specify the vector model file path.");
+		if(null == modelType) {
+			logger.warn("Word vector model type not specified.");
+			return;
 		}
-
+		
+		if (null == vecModel) {
+			logger.warn("Word vector model file path not specified.");
+			return;
+		}
+		
 		if (modelType.equalsIgnoreCase("google")) {
 
 			File modelFile = new File(vecModel);
@@ -377,11 +380,6 @@ public class VectorAligner implements AlignmentComponent {
 	 * Word2Vec model
 	 */
 	Word2Vec vec;
-
-	/**
-	 * Annotation on which alignment needs to be performed.
-	 */
-	String annotName;
 
 	/**
 	 * Word2Vec similarity threshold for alignment.

@@ -2,11 +2,11 @@ package eu.excitementproject.eop.core.component.alignment.vectorlink;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -20,6 +20,8 @@ import org.apache.log4j.Logger;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
+import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
+import org.deeplearning4j.models.embeddings.wordvectors.WordVectors;
 import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.factory.Nd4j;
 import org.nd4j.linalg.ops.transforms.Transforms;
@@ -42,7 +44,7 @@ import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelatio
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
- * Alignment between chunks of T and H using distributional vector based
+ * Alignment between chunks of T and H using embedded vector based
  * approaches.
  * 
  * @author Madhumita
@@ -53,7 +55,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	public BagOfChunkVectorAligner(CommonConfig config,
 			boolean removeStopWords, Set<String> stopWords)
 			throws ConfigurationException, IOException,
-			LexicalResourceException {
+			LexicalResourceException{
 
 		// Initialize the vector models and threshold using superclass.
 		super(config, removeStopWords, stopWords, "BagOfChunkVectorScoring",
@@ -69,10 +71,27 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		}
 		loadChunkerModel(chunkerModel);
 
+		loadChunkVectorModel(config);
+
 		loadWn(config);
 
 		loadVO(config);
 
+	}
+
+	/**
+	 * Load the file which contains chunk vectors
+	 * @param config Configuration file
+	 * @throws ConfigurationException
+	 * @throws FileNotFoundException
+	 */
+	private void loadChunkVectorModel(CommonConfig config)
+			throws ConfigurationException, FileNotFoundException {
+
+		NameValueTable comp = config.getSection("BagOfChunkVectorScoring");
+
+		wordVectors = WordVectorSerializer.loadTxtVectors(new File(comp
+				.getString("chunkVecModel")));
 	}
 
 	/**
@@ -86,38 +105,44 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 */
 	private void loadVO(CommonConfig config) throws ConfigurationException,
 			LexicalResourceException {
-		// Default values
-		String voPath = "/VerbOcean/verbocean.unrefined.2004-05-20.txt";
-		double voTh = 1.0;
-
 		// Get values from configuration file
 		NameValueTable comp = config.getSection("BagOfChunkVectorScoring");
+		boolean isVO = Boolean.parseBoolean(comp.getString("isVO"));
 
-		if (null != comp.getString("verbOceanFilesPath")) {
-			voPath = comp.getString("verbOceanFilesPath");
-		}
-		if (null != comp.getString("verbOceanThreshold")) {
-			voTh = Double.parseDouble(comp.getString("verbOceanThreshold"));
-		}
+		if (isVO) {
+			// Default values
+			String voPath = "/VerbOcean/verbocean.unrefined.2004-05-20.txt";
+			double voTh = 1.0;
 
-		File voFile = new File(voPath);
-		if (!voFile.exists()) {
-			throw new ConfigurationException("cannot find VerbOcean at: "
-					+ voPath);
-		}
+			if (null != comp.getString("verbOceanFilesPath")) {
+				voPath = comp.getString("verbOceanFilesPath");
+			}
+			if (null != comp.getString("verbOceanThreshold")) {
+				voTh = Double.parseDouble(comp.getString("verbOceanThreshold"));
+			}
 
-		Set<RelationType> voRelSet = new HashSet<RelationType>();
-		// If H verb is stronger than, opposite of, or happens before T verb:
-		// negative alignment
-		voRelSet.add(RelationType.STRONGER_THAN);
-		voRelSet.add(RelationType.OPPOSITE_OF);
-		voRelSet.add(RelationType.HAPPENS_BEFORE);
+			File voFile = new File(voPath);
+			if (!voFile.exists()) {
+				throw new ConfigurationException("cannot find VerbOcean at: "
+						+ voPath);
+			}
 
-		logger.info("Loading VerbOcean");
+			Set<RelationType> voRelSet = new HashSet<RelationType>();
+			// If H verb is stronger than, opposite of, or happens before T
+			// verb:
+			// negative alignment
+			voRelSet.add(RelationType.STRONGER_THAN);
+			voRelSet.add(RelationType.OPPOSITE_OF);
+			voRelSet.add(RelationType.HAPPENS_BEFORE);
 
-		volr = new VerbOceanLexicalResource(voTh, voFile, voRelSet);
+			logger.info("Loading VerbOcean");
 
-		logger.info("Load VerbOcean done.");
+			volr = new VerbOceanLexicalResource(voTh, voFile, voRelSet);
+
+			logger.info("Load VerbOcean done.");
+		} else
+			volr = null;
+
 	}
 
 	/**
@@ -131,43 +156,48 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 */
 	private void loadWn(CommonConfig config) throws ConfigurationException,
 			LexicalResourceException {
-		// Default values
-		boolean useFirstSenseOnlyLeft = false;
-		boolean useFirstSenseOnlyRight = false;
-		String wnPath = "/ontologies/EnglishWordNet-dict/";
-
 		// Get values from configuration file
 		NameValueTable comp = config.getSection("BagOfChunkVectorScoring");
+		boolean isWN = Boolean.parseBoolean(comp.getString("isWN"));
 
-		if (null != comp.getString("useFirstSenseOnlyLeft")
-				&& Boolean
-						.parseBoolean(comp.getString("useFirstSenseOnlyLeft"))) {
-			useFirstSenseOnlyLeft = true;
-		}
-		if (null != comp.getString("useFirstSenseOnlyRight")
-				&& Boolean.parseBoolean(comp
-						.getString("useFirstSenseOnlyRight"))) {
-			useFirstSenseOnlyRight = true;
-		}
-		if (null != comp.getString("wordNetFilesPath")) {
-			wnPath = comp.getString("wordNetFilesPath");
-		}
+		if (isWN) {
 
-		File wnFile = new File(wnPath);
-		if (!wnFile.exists()) {
-			throw new ConfigurationException("cannot find WordNet at: "
-					+ wnPath);
-		}
+			// Default values
+			boolean useFirstSenseOnlyLeft = false;
+			boolean useFirstSenseOnlyRight = false;
+			String wnPath = "/ontologies/EnglishWordNet-dict/";
 
-		Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
-		wnRelSet.add(WordNetRelation.ANTONYM);
+			if (null != comp.getString("useFirstSenseOnlyLeft")
+					&& Boolean.parseBoolean(comp
+							.getString("useFirstSenseOnlyLeft"))) {
+				useFirstSenseOnlyLeft = true;
+			}
+			if (null != comp.getString("useFirstSenseOnlyRight")
+					&& Boolean.parseBoolean(comp
+							.getString("useFirstSenseOnlyRight"))) {
+				useFirstSenseOnlyRight = true;
+			}
+			if (null != comp.getString("wordNetFilesPath")) {
+				wnPath = comp.getString("wordNetFilesPath");
+			}
 
-		logger.info("Loading WordNet");
+			File wnFile = new File(wnPath);
+			if (!wnFile.exists()) {
+				throw new ConfigurationException("cannot find WordNet at: "
+						+ wnPath);
+			}
 
-		wnlr = new WordnetLexicalResource(wnFile, useFirstSenseOnlyLeft,
-				useFirstSenseOnlyRight, wnRelSet);
+			Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+			wnRelSet.add(WordNetRelation.ANTONYM);
 
-		logger.info("Load WordNet done.");
+			logger.info("Loading WordNet");
+
+			wnlr = new WordnetLexicalResource(wnFile, useFirstSenseOnlyLeft,
+					useFirstSenseOnlyRight, wnRelSet);
+
+			logger.info("Load WordNet done.");
+		} else
+			wnlr = null;
 	}
 
 	/**
@@ -228,12 +258,8 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		logger.info("HYPO: " + hView.getDocumentText());
 
 		// Add chunk annotations to the JCas T and H entries.
-
 		chunk(tView);
 		chunk(hView);
-
-		// Call to super, which does the actual alignment
-		// super.annotate(aJCas);
 
 		// Get T and H chunk annotations
 		Collection<Chunk> tChunks = JCasUtil.select(tView, Chunk.class);
@@ -248,34 +274,28 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					"Could not read hypothesis chunks.");
 		}
 
-		chunkVecMap = new HashMap<String, INDArray>();
-		createMap(tView, tChunks);
-		createMap(hView, hChunks);
-
 		// Find similarity between all T and H chunk vectors
 		for (Iterator<Chunk> hIter = hChunks.iterator(); hIter.hasNext();) {
 
 			Annotation curHChunk = hIter.next();
-			String hStr = curHChunk.getCoveredText();
-
-			// Get vector for H chunk.
-			INDArray curHChunkVec = chunkVecMap.get(hStr);
+			String hStr = curHChunk.getCoveredText().replaceAll(" ", "_");
+			
+			//check if hStr - hypothesis chunk is present in vocab 
+			if(!wordVectors.hasWord(hStr))
+				continue;
 
 			for (Iterator<Chunk> tIter = tChunks.iterator(); tIter.hasNext();) {
 				Annotation curTChunk = tIter.next();
-				String tStr = curTChunk.getCoveredText();
-
-				double sim = 0d;
-
-				// Similarity 1.0 for identical chunks
-				if (hStr.equals(tStr))
-					sim = 1.0;
-				else {
-					// Get vector for T chunk.
-					INDArray curTChunkVec = chunkVecMap.get(tStr);
-
-					sim = calculateSimilarity(curHChunkVec, curTChunkVec);
-				}
+				String tStr = curTChunk.getCoveredText().replaceAll(" ", "_");
+				
+				//check if tStr - text chunk is present in vocab
+				if(!wordVectors.hasWord(tStr))
+					continue;
+				
+				//calculate similarity between T chunk vector and H chunk vector
+				double sim = this.wordVectors.similarity(
+						hStr, tStr);
+				
 				logger.info("Similarity between, " + tStr + " and " + hStr
 						+ " is: " + sim);
 
@@ -295,11 +315,14 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 					// check for negative alignments
 					try {
-						negative = checkforAntonym(tLemmaSet, hLemmaSet);
+						if (null != wnlr)
+							negative = checkforAntonym(tLemmaSet, hLemmaSet);
 
-						if (!negative)
-							negative = checkNegVerbStrength(tLemmaSet,
-									hLemmaSet);
+						if (!negative) {
+							if (null != volr)
+								negative = checkNegVerbStrength(tLemmaSet,
+										hLemmaSet);
+						}
 					} catch (LexicalResourceException e) {
 						e.getMessage();
 					}
@@ -311,6 +334,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			}
 		}
 	}
+	
 
 	/**
 	 * Create set of all token lemma strings covered by given chunk in given
@@ -401,113 +425,6 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	}
 
 	/**
-	 * Create map of chunk text and corresponding vector
-	 * 
-	 * @param view
-	 *            text or hypothesis view for current chunk
-	 * @param chunks
-	 *            chunk annotations.
-	 */
-	private void createMap(JCas view, Collection<Chunk> chunks) {
-
-		for (Iterator<Chunk> chunkIter = chunks.iterator(); chunkIter.hasNext();) {
-			Chunk curChunk = chunkIter.next();
-			String curChunkText = curChunk.getCoveredText();
-			if (!chunkVecMap.containsKey(curChunkText))
-				chunkVecMap.put(curChunkText, getChunkVec(view, curChunk));
-		}
-
-	}
-
-	/**
-	 * Calculate similarity between two vectors.
-	 * 
-	 * @param vec1
-	 *            First vector
-	 * @param vec2
-	 *            Second vector
-	 * @return similarity between vec1 and vec2.
-	 */
-	@SuppressWarnings("unchecked")
-	private double calculateSimilarity(INDArray vec1, INDArray vec2) {
-		if (vec1 == null || vec2 == null)
-			return -1;
-
-		return Nd4j.getBlasWrapper().dot(vec1, vec2);
-
-	}
-
-	/**
-	 * Return vector for the given chunk, calculated by summing vectors for all
-	 * tokens in the chunk.
-	 * 
-	 * @param view
-	 *            View which contains required chunk annotations.
-	 * @param chunks
-	 *            Chunk annotations on given view.
-	 * @return vector for given chunk.
-	 */
-	private INDArray getChunkVec(JCas view, Annotation curChunk) {
-
-		INDArray curVec = null;
-
-		// Get all tokens covered under Chunk annotation.
-		Collection<Token> coveredTokens = JCasUtil.selectCovered(view,
-				Token.class, curChunk.getBegin(), curChunk.getEnd());
-
-		if (coveredTokens.size() == 0)
-			logger.warn("No tokens covered under the current chunk annotation.");
-
-		// Iterate over all tokens
-		for (Iterator<Token> iter = coveredTokens.iterator(); iter.hasNext();) {
-			Token curToken = iter.next();
-			String curPos = curToken.getPos().getPosValue();
-			String curTokenText = curToken.getCoveredText();
-
-			// If token is a symbol, number, 's, determiner (a/an/the) or the
-			// stopword "in", skip it for
-			// chunk vector calculation because it does not add any new
-			// information.
-
-			if (ignorePosSet.contains(curPos)
-					|| curTokenText.equalsIgnoreCase("a")
-					|| curTokenText.equalsIgnoreCase("an")
-					|| curTokenText.equalsIgnoreCase("the")
-					|| curTokenText.equalsIgnoreCase("in")) {
-				continue;
-			}
-
-			// Lower case if token is not proper noun.
-			if (!curPos.startsWith("NNP"))
-				curTokenText = curTokenText.toLowerCase();
-
-			if (curVec == null) {
-				// First token in given chunk
-				// Check if word present in vector model file
-				if (vec.hasWord(curTokenText))
-					curVec = vec.getWordVectorMatrix(curTokenText);
-			} else {
-				// Sum vectors for all tokens to get equivalent chunk vector
-				// Check if word present in vector model file
-				if (vec.hasWord(curTokenText))
-					curVec = curVec.add(vec.getWordVectorMatrix(curTokenText));
-			}
-
-		}
-
-		if (null == curVec)
-			return null;
-
-		return Transforms.unitVec(curVec);
-
-	}
-
-	/**
-	 * Map of chunk strings and corresponding vectors.
-	 */
-	private HashMap<String, INDArray> chunkVecMap;
-
-	/**
 	 * Chunk the content in given view and add chunk annotations.
 	 * 
 	 * @param view
@@ -588,6 +505,11 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 	 * VerbOcean lexical resource
 	 */
 	private VerbOceanLexicalResource volr;
+
+	/**
+	 * chunk vectors
+	 */
+	WordVectors wordVectors;
 
 	/**
 	 * Logger
