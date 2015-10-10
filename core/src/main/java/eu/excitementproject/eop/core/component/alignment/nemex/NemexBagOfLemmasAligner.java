@@ -1,9 +1,12 @@
 package eu.excitementproject.eop.core.component.alignment.nemex;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +21,6 @@ import de.dfki.lt.nemex.a.NEMEX_A;
 import de.dfki.lt.nemex.a.data.GazetteerNotLoadedException;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.nemex.NemexType;
-import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponentException;
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.component.lexicalknowledge.LexicalRule;
@@ -29,6 +31,7 @@ import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.representation.partofspeech.BySimplerCanonicalPartOfSpeech;
 import eu.excitementproject.eop.common.representation.partofspeech.SimplerCanonicalPosTag;
 import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetLexicalResource;
+import eu.excitementproject.eop.core.utilities.dictionary.wordnet.WordNetRelation;
 
 /**
  * <code>NemexBagOfLemmasAligner</code> approximately aligns word lemmas in T
@@ -42,8 +45,8 @@ import eu.excitementproject.eop.core.component.lexicalknowledge.wordnet.WordnetL
  * @author Madhumita
  * 
  */
-public class NemexBagOfLemmasAligner implements AlignmentComponent {
-	
+public class NemexBagOfLemmasAligner extends NemexAligner {
+
 	/**
 	 * Constructor, indicates configuration settings for NemexBagOfLemmas
 	 * alignment using NemexA. Loads external dictionaries if required.
@@ -61,81 +64,15 @@ public class NemexBagOfLemmasAligner implements AlignmentComponent {
 			boolean removeStopWords, Set<String> stopWords)
 			throws ConfigurationException {
 
+		super(config, "NemexBagOfLemmasScoring");
+
 		NameValueTable comp = config.getSection("NemexBagOfLemmasScoring");
-		
-		int numOfExtDicts = Integer.parseInt(comp.getString("numOfExtDicts"));
-
-		if (0 == numOfExtDicts) {
-
-			logger.info("No external dictionaries to load.");
-
-		} else {
-
-			String[] extDicts = comp.getString("extDicts").split(",");
-
-			String[] delimiterExtLookup = comp.getString("delimiterExtLookup")
-					.split(",");
-
-			String[] delimSwitchOffExtLookupStrings = comp.getString(
-					"delimSwitchOffExtLookup").split(",");
-			boolean[] delimiterSwitchOffExtLookup = new boolean[delimSwitchOffExtLookupStrings.length];
-			for (int i = 0; i < delimSwitchOffExtLookupStrings.length; i++)
-				delimiterSwitchOffExtLookup[i] = Boolean
-						.valueOf(delimSwitchOffExtLookupStrings[i]);
-
-			String[] nGramSizeExtLookupStrings = comp.getString(
-					"nGramSizeExtLookup").split(",");
-			int[] nGramSizeExtLookup = new int[nGramSizeExtLookupStrings.length];
-			for (int i = 0; i < nGramSizeExtLookupStrings.length; i++)
-				nGramSizeExtLookup[i] = Integer
-						.valueOf(nGramSizeExtLookupStrings[i]);
-
-			String[] ignoreDuplicateNGramsExtLookupStrings = comp.getString(
-					"ignoreDuplicateNGramsExtLookup").split(",");
-			boolean[] ignoreDuplicateNGramsExtLookup = new boolean[ignoreDuplicateNGramsExtLookupStrings.length];
-			for (int i = 0; i < ignoreDuplicateNGramsExtLookupStrings.length; i++)
-				ignoreDuplicateNGramsExtLookup[i] = Boolean
-						.valueOf(ignoreDuplicateNGramsExtLookupStrings[i]);
-
-			// load all the external dictionaries that are required for lookup
-			NemexAlignerUtility.loadExternalDictionaries(numOfExtDicts,
-					extDicts, delimiterExtLookup, delimiterSwitchOffExtLookup,
-					nGramSizeExtLookup, ignoreDuplicateNGramsExtLookup);
-
-			// TODO: Add checking for entries in External dicts
-
-			// this.simMeasureExtLookup = comp.getString(
-			// "simMeasureExtLookup").split(",");
-			//
-			// String[] thresholdStrings = comp.getString(
-			// "simThresholdExtLookup").split(",");
-			// this.simThresholdExtLookup = new
-			// double[thresholdStrings.length];
-			// for (int i = 0; i < thresholdStrings.length; i++)
-			// simThresholdExtLookup[i] = Double
-			// .valueOf(thresholdStrings[i]);
-		}
-
-		this.gazetteerAlignLookup = comp.getString("gazetteerAlignLookup");
-		this.simMeasureAlignLookup = comp.getString("simMeasureAlignLookup");
-		this.simThresholdAlignLookup = Double.valueOf(comp
-				.getString("simThresholdAlignLookup"));
-		this.delimiterAlignLookup = comp.getString("delimiterAlignLookup");
-		this.delimiterSwitchOffAlignLookup = Boolean.valueOf(comp
-				.getString("delimiterSwitchOffAlignLookup"));
-		this.nGramSizeAlignLookup = Integer.valueOf(comp
-				.getString("nGramSizeAlignLookup"));
-		this.ignoreDuplicateNGramsAlignLookup = Boolean.valueOf(comp
-				.getString("ignoreDuplicateNGramsAlignLookup"));
-
-		this.direction = comp.getString("direction");
-
 		this.removeStopWords = removeStopWords;
 		this.stopWords = stopWords;
 
 		// Load WordNet if required
 		this.isWN = Boolean.valueOf(comp.getString("isWN"));
-		;
+
 		if (this.isWN) {
 
 			String wnPath = comp.getString("wnPath");
@@ -147,13 +84,74 @@ public class NemexBagOfLemmasAligner implements AlignmentComponent {
 			boolean useFirstSenseOnlyRight = Boolean.valueOf(comp
 					.getString("useFirstSenseOnlyRight"));
 
-			this.wnlr = NemexAlignerUtility.loadWordnet(WNRelations, wnPath,
-					isWNCollapsed, useFirstSenseOnlyLeft,
-					useFirstSenseOnlyRight);
+			this.wnlr = loadWordnet(WNRelations, wnPath, isWNCollapsed,
+					useFirstSenseOnlyLeft, useFirstSenseOnlyRight);
 
 		}
 	}
 
+	protected List<WordnetLexicalResource> loadWordnet(String WNRel,
+			String wnPath, boolean isWNCollapsed,
+			boolean useFirstSenseOnlyLeft, boolean useFirstSenseOnlyRight) {
+		try {
+			logger.info("Loading wordnet");
+			String[] WNRelations = WNRel.split(",");
+			if (null == WNRelations || 0 == WNRelations.length) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any relations for the WordNet");
+			}
+			Set<WordNetRelation> wnRelSet = new HashSet<WordNetRelation>();
+			for (String relation : WNRelations) {
+				if (relation.equalsIgnoreCase("HYPERNYM")) {
+					wnRelSet.add(WordNetRelation.HYPERNYM);
+				} else if (relation.equalsIgnoreCase("SYNONYM")) {
+					wnRelSet.add(WordNetRelation.SYNONYM);
+				} else if (relation.equalsIgnoreCase("PART_HOLONYM")) {
+					wnRelSet.add(WordNetRelation.PART_HOLONYM);
+				} else {
+					logger.info("Warning: wrong relation names for the WordNet");
+				}
+			}
+			if (wnRelSet.isEmpty()) {
+				throw new ConfigurationException(
+						"Wrong configuation: didn't find any (correct) relations for the WordNet");
+			}
+
+			File wnFile = new File(wnPath);
+			if (!wnFile.exists()) {
+				throw new ConfigurationException("cannot find WordNet at: "
+						+ wnPath);
+			}
+			if (isWNCollapsed) {
+				List<WordnetLexicalResource> wnlrList = new ArrayList<WordnetLexicalResource>();
+				WordnetLexicalResource wnlr = new WordnetLexicalResource(
+						wnFile, useFirstSenseOnlyLeft, useFirstSenseOnlyRight,
+						wnRelSet);
+				logger.info("Load WordNet done.");
+				wnlrList.add(wnlr);
+				return wnlrList;
+
+			} else {
+				List<WordnetLexicalResource> wnlrList = new ArrayList<WordnetLexicalResource>();
+				for (WordNetRelation wnr : wnRelSet) {
+					WordnetLexicalResource wnlr = new WordnetLexicalResource(
+							wnFile, useFirstSenseOnlyLeft,
+							useFirstSenseOnlyRight, Collections.singleton(wnr));
+					wnlrList.add(wnlr);
+
+				}
+				logger.info("Load WordNet done.");
+				return wnlrList;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	
 	@Override
 	public void annotate(JCas aJCas) throws PairAnnotatorComponentException {
 
@@ -165,8 +163,8 @@ public class NemexBagOfLemmasAligner implements AlignmentComponent {
 					"annotate() got a null JCas object.");
 		}
 
-		JCas textView = NemexAlignerUtility.readCas(aJCas, "text");
-		JCas hypoView = NemexAlignerUtility.readCas(aJCas, "hypothesis");
+		JCas textView = readCas(aJCas, "text");
+		JCas hypoView = readCas(aJCas, "hypothesis");
 
 		if (textView != null && hypoView != null) {
 			if (direction == null) {
@@ -239,8 +237,8 @@ public class NemexBagOfLemmasAligner implements AlignmentComponent {
 
 				logger.info("Adding NemexType annotation on entry");
 				List<String> nemexAnnotVals = Arrays.asList(curLemma);
-				NemexAlignerUtility.addNemexAnnotation(view, nemexAnnotVals,
-						curStartOffset, curEndOffset);
+				addNemexAnnotation(view, nemexAnnotVals, curStartOffset,
+						curEndOffset);
 				logger.info("Finished adding NemexType annotation on entry");
 
 				ArrayList<EntryInfo> offsets = new ArrayList<EntryInfo>();
@@ -317,8 +315,8 @@ public class NemexBagOfLemmasAligner implements AlignmentComponent {
 				}
 			}
 
-			NemexAlignerUtility.addEntryToDict(this.gazetteerAlignLookup,
-					entryMap, entryInvIndex, totalNumOfGazetteerEntries);
+			addEntryToDict(this.gazetteerAlignLookup, entryMap, entryInvIndex,
+					totalNumOfGazetteerEntries);
 
 		} catch (Exception e) {
 			logger.info("Error updating the Gazetteer file");
@@ -387,14 +385,12 @@ public class NemexBagOfLemmasAligner implements AlignmentComponent {
 				if (values.size() > 0) {
 					logger.info("Query text: " + queryText);
 					logger.info("Similar entry: " + values);
-					NemexType queryAnnot = NemexAlignerUtility
-							.addNemexAnnotation(queryView, values,
-									queryStartOff, queryEndOff);
+					NemexType queryAnnot = addNemexAnnotation(queryView,
+							values, queryStartOff, queryEndOff);
 
-					NemexAlignerUtility.addAlignmentLink(queryAnnot, queryView,
-							queryStartOff, queryEndOff, entryMap,
-							entryInvIndex, this.direction,
-							this.simThresholdAlignLookup);
+					addAlignmentLink(queryAnnot, queryView, queryStartOff,
+							queryEndOff, entryMap, entryInvIndex,
+							this.direction, this.simThresholdAlignLookup);
 				}
 			} catch (GazetteerNotLoadedException e) {
 				logger.error("Gazetteer is not loaded");
@@ -428,15 +424,15 @@ public class NemexBagOfLemmasAligner implements AlignmentComponent {
 	// private double[] similarityThresholdExtLookup;
 	// private String[] similarityMeasureExtLookup;
 
-	private String gazetteerAlignLookup;
-	private double simThresholdAlignLookup;
-	private String simMeasureAlignLookup;
-	private String delimiterAlignLookup;
-	private boolean delimiterSwitchOffAlignLookup;
-	private int nGramSizeAlignLookup;
-	private boolean ignoreDuplicateNGramsAlignLookup;
-
-	private String direction;
+	// private String gazetteerAlignLookup;
+	// private double simThresholdAlignLookup;
+	// private String simMeasureAlignLookup;
+	// private String delimiterAlignLookup;
+	// private boolean delimiterSwitchOffAlignLookup;
+	// private int nGramSizeAlignLookup;
+	// private boolean ignoreDuplicateNGramsAlignLookup;
+	//
+	// private String direction;
 
 	private Set<String> stopWords;
 	private boolean removeStopWords;
