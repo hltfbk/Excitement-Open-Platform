@@ -1,6 +1,3 @@
-/**
- * 
- */
 package eu.excitementproject.eop.core.component.alignment.nemex;
 
 import java.io.FileWriter;
@@ -35,22 +32,10 @@ import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;
 
 /**
  * 
- * This class provides nemex.NemexType annotations for a given JCas pair and
- * adds alignment.Link on nemex.NemexType.
- * 
- * Adds alignment from hypothesis to text annotations. An online Gazetteer is
- * created based on queries from the hypothesis. The queries in text are
- * annotated based on the online Gazetteer.
- * 
- * (This is the first version of the aligner and does not do efficient query
- * generation and disambiguation. It simply creates all possible substrings as
- * queries from hypothesis and text and adds all possible approximate
- * alignments.)
- * 
- * Resource it is based on: Nemex-A tool developed at DFKI.
- * 
- * 
- * 
+ * This class provides a base class with utility functions  for all alignments 
+ * generated using NemexA, which is a tool developed at DFKI for matching multiword 
+ * entries.
+ *
  * @author Madhumita
  * @since September 2015
  * 
