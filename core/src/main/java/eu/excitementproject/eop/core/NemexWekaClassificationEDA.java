@@ -40,6 +40,7 @@ import eu.excitementproject.eop.core.component.scoring.NegationScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfChunksScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfLemmasScoring;
 import eu.excitementproject.eop.core.component.scoring.NemexBagOfWordsScoring;
+import eu.excitementproject.eop.core.component.scoring.NemexPersonNameScoring;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -218,7 +219,9 @@ public class NemexWekaClassificationEDA implements
 				initializeNemexBOLComp(config);
 			} else if (component.equals("NemexBagOfChunksScoring")) {
 				initializeNemexBOChunksComp(config);
-			} else if (component.equals("BagOfWordVectorScoring")) {
+			} else if (component.equals("NemexPersonNameScoring")) {
+				initializeNemexPersonNameComp(config); }
+			else if (component.equals("BagOfWordVectorScoring")) {
 				initializeBOWordVecComp(config);
 			} else if (component.equals("BagOfChunkVectorScoring")) {
 				initializeBOChunkVecComp(config);
@@ -236,6 +239,21 @@ public class NemexWekaClassificationEDA implements
 				}
 			}
 		}
+	}
+
+	private void initializeNemexPersonNameComp(CommonConfig config) {
+		
+		ScoringComponent comp = null;
+		try {
+			comp = new NemexPersonNameScoring(config);
+		} catch (ConfigurationException e) {
+			// TODO Auto-generated catch block
+			logger.warn(e.getMessage());
+		}
+		if (((NemexPersonNameScoring) comp).getNumOfFeats() > 0) {
+			components.add(comp);
+		}
+		
 	}
 
 	/**
@@ -460,6 +478,9 @@ public class NemexWekaClassificationEDA implements
 							"NemexBagOfLemmasScoring")) {
 						writeAttributesNumAlignments(writer, "BOL");
 						writeAttributesTask(writer, "BOL");
+					} else if (curComp.getComponentName().equalsIgnoreCase(
+							"NemexPersonNameScoring")) {
+						writeAttributesNumAlignments(writer, "Name");
 					} else if (curComp.getComponentName().equalsIgnoreCase(
 							"NemexBagOfChunksScoring")) {
 						writeAttributesNumAlignments(writer, "BOChunks");
