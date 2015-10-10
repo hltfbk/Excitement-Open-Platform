@@ -293,7 +293,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 					continue;
 				
 				//calculate similarity between T chunk vector and H chunk vector
-				double sim = this.wordVectors.similarity(
+				double sim = calculateSimilarity(
 						hStr, tStr);
 				
 				logger.info("Similarity between, " + tStr + " and " + hStr
@@ -359,6 +359,23 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 	}
 
+        /**
+         * Returns the similarity of 2 words
+         * @param word the first word
+         * @param word2 the second word
+         * @return a normalized similarity (cosine similarity)
+         */
+        public double calculateSimilarity(String word,String word2) {
+            if(word.equals(word2))
+                return 1.0;
+
+            INDArray vector = this.wordVectors.getWordVectorMatrix(word);
+            INDArray vector2 = this.wordVectors.getWordVectorMatrix(word2);
+            if(vector == null || vector2 == null)
+                return -1;
+            return  Nd4j.getBlasWrapper().dot(vector, vector2);
+        }
+        
 	/**
 	 * Check if one of the text token lemmas is an antonym of one of the
 	 * hypothesis token lemmas
