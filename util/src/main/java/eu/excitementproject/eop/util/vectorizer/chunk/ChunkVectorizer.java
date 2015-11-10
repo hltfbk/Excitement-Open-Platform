@@ -362,7 +362,7 @@ public class ChunkVectorizer {
 			StringBuilder sb = new StringBuilder();
 			
 			//String for chunk text
-			sb.append(word.replaceAll(" ", "_"));
+			sb.append(word.replaceAll("\\s+","_"));
 			sb.append(" ");
 			INDArray wordVector = curEntry.getValue();
 			

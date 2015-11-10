@@ -278,7 +278,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 		for (Iterator<Chunk> hIter = hChunks.iterator(); hIter.hasNext();) {
 
 			Annotation curHChunk = hIter.next();
-			String hStr = curHChunk.getCoveredText().replaceAll(" ", "_");
+			String hStr = curHChunk.getCoveredText().replaceAll("\\s+", "_");
 			
 			//check if hStr - hypothesis chunk is present in vocab 
 			if(!wordVectors.hasWord(hStr))
@@ -286,7 +286,7 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 
 			for (Iterator<Chunk> tIter = tChunks.iterator(); tIter.hasNext();) {
 				Annotation curTChunk = tIter.next();
-				String tStr = curTChunk.getCoveredText().replaceAll(" ", "_");
+				String tStr = curTChunk.getCoveredText().replaceAll("\\s+", "_");
 				
 				//check if tStr - text chunk is present in vocab
 				if(!wordVectors.hasWord(tStr))
