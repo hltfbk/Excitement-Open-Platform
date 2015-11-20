@@ -18,7 +18,10 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.TOP;
 
 import weka.classifiers.Classifier;
+import weka.classifiers.CostMatrix;
 import weka.classifiers.functions.LibLINEAR;
+import weka.classifiers.meta.CostSensitiveClassifier;
+import weka.classifiers.meta.MetaCost;
 import weka.core.Attribute;
 import weka.core.Instances;
 import weka.core.SelectedTag;
@@ -81,7 +84,7 @@ public class NemexWekaClassificationEDA implements
 	 * 
 	 * @param config
 	 *            the configuration
-	 * @throws ConfigurationException
+	 * @throws ConfigurationException 
 	 */
 	private void initializeClassifier(CommonConfig config)
 			throws ConfigurationException {
@@ -94,7 +97,37 @@ public class NemexWekaClassificationEDA implements
 					"Please specify the path for ARFF data file without file extension.");
 		}
 
-		// TODO: check for which classifier to use and initialize accordingly.
+		String classifierStr = comp.getString("classifier");
+
+		Classifier curClassifier = null;
+
+		if (classifierStr.equalsIgnoreCase("liblinear")) {
+			curClassifier = new LibLINEAR();
+			((LibLINEAR) curClassifier).setSVMType(new SelectedTag(
+					LibLINEAR.SVMTYPE_L2_LR, LibLINEAR.TAGS_SVMTYPE));
+		} else
+			throw new ConfigurationException(
+					"Specify the correct classifier (liblinear)");
+
+		if (Boolean.parseBoolean(comp.getString("costSensitive"))) {
+			CostSensitiveClassifier costSens = new CostSensitiveClassifier();
+			costSens.setClassifier(curClassifier);
+
+			CostMatrix cm = new CostMatrix(2); // [0.0 95.0; 5.0 0.0]
+			cm.initialize();
+			
+//			cm = cm.parseMatlab(comp.getString("costMatrix"));
+			
+			cm.setElement(0, 1, Float.parseFloat(comp.getString("cost_0-1")));
+			cm.setElement(1, 0,  Float.parseFloat(comp.getString("cost_1-0")));
+
+			costSens.setCostMatrix(cm);
+			costSens.setMinimizeExpectedCost(Boolean.parseBoolean(comp
+					.getString("minimizeExpectedCost")));
+
+			this.classifier = costSens;
+		} else
+			this.classifier = curClassifier;
 	}
 
 	/**
@@ -220,8 +253,8 @@ public class NemexWekaClassificationEDA implements
 			} else if (component.equals("NemexBagOfChunksScoring")) {
 				initializeNemexBOChunksComp(config);
 			} else if (component.equals("NemexPersonNameScoring")) {
-				initializeNemexPersonNameComp(config); }
-			else if (component.equals("BagOfWordVectorScoring")) {
+				initializeNemexPersonNameComp(config);
+			} else if (component.equals("BagOfWordVectorScoring")) {
 				initializeBOWordVecComp(config);
 			} else if (component.equals("BagOfChunkVectorScoring")) {
 				initializeBOChunkVecComp(config);
@@ -242,7 +275,7 @@ public class NemexWekaClassificationEDA implements
 	}
 
 	private void initializeNemexPersonNameComp(CommonConfig config) {
-		
+
 		ScoringComponent comp = null;
 		try {
 			comp = new NemexPersonNameScoring(config);
@@ -253,7 +286,7 @@ public class NemexWekaClassificationEDA implements
 		if (((NemexPersonNameScoring) comp).getNumOfFeats() > 0) {
 			components.add(comp);
 		}
-		
+
 	}
 
 	/**
@@ -408,7 +441,8 @@ public class NemexWekaClassificationEDA implements
 				File file = new File(modelFile + String.valueOf(i));
 				if (file.exists()) {
 					// keep backup of one old model
-					String oldModelFile = modelFile + String.valueOf(i) + "_old";
+					String oldModelFile = modelFile + String.valueOf(i)
+							+ "_old";
 					File oldFile = new File(oldModelFile);
 					if (oldFile.exists())
 						oldFile.delete();
@@ -423,7 +457,7 @@ public class NemexWekaClassificationEDA implements
 			this.numOfModelFiles = Integer.parseInt(EDA
 					.getString("numOfModelFiles"));
 			for (int i = 0; i < numOfModelFiles; i++) {
-				File file = new File(modelFile+String.valueOf(i));
+				File file = new File(modelFile + String.valueOf(i));
 				if (!file.exists()) {
 					throw new ConfigurationException(
 							"The model specified in the configuration does NOT exist! Please give the correct file path.");
@@ -511,7 +545,7 @@ public class NemexWekaClassificationEDA implements
 						writer.append("@ATTRIBUTE BOChunkVecNegAlignment NUMERIC");
 						writer.newLine();
 						writer.append("@ATTRIBUTE BOChunkVecPositiveAlignment NUMERIC");
-						
+
 						int numOfFeats = ((BagOfChunkVectorScoring) curComp)
 								.getNumOfFeats();
 						if (numOfFeats > 2) {
@@ -684,7 +718,7 @@ public class NemexWekaClassificationEDA implements
 						wekaArffFile + String.valueOf(0) + ".arff", "class");
 
 				// deserialize model
-				classifier = (LibLINEAR) weka.core.SerializationHelper
+				classifier = (Classifier) weka.core.SerializationHelper
 						.read(modelFile + String.valueOf(i));
 
 				double pred = classifier.classifyInstance(testData.instance(0));
@@ -843,12 +877,13 @@ public class NemexWekaClassificationEDA implements
 		for (int i = 0; i < numOfModelFiles; i++) {
 			Instances data;
 			try {
-				data = loadInstancesFromARFF(wekaArffFile+String.valueOf(i)+".arff", "class");
+				data = loadInstancesFromARFF(wekaArffFile + String.valueOf(i)
+						+ ".arff", "class");
 				java.util.Random rand = new java.util.Random();
 				data.randomize(rand);
-				classifier = new LibLINEAR();
-				((LibLINEAR) classifier).setSVMType(new SelectedTag(
-						LibLINEAR.SVMTYPE_L2_LR, LibLINEAR.TAGS_SVMTYPE));
+				// classifier = new LibLINEAR();
+				// ((LibLINEAR) classifier).setSVMType(new SelectedTag(
+				// LibLINEAR.SVMTYPE_L2_LR, LibLINEAR.TAGS_SVMTYPE));
 				classifier.buildClassifier(data);
 
 				// serialize model
