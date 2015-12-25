@@ -645,6 +645,10 @@ public class NemexWekaClassificationEDA implements
 		}
 
 		String feats = scoreData(aCas);
+		if(null == feats)
+			return new ClassificationTEDecision(DecisionLabel.Abstain,
+					pairId);
+
 		feats += goldAnswer; // class label
 		writeDatatoArff(feats, wekaArffFile + String.valueOf(0) + ".arff");
 
@@ -668,6 +672,8 @@ public class NemexWekaClassificationEDA implements
 			logger.info("Current component:" + comp.getComponentName());
 			Vector<Double> scores = comp.calculateScores(aCas);
 			for (int i = 0; i < scores.size(); i++) {
+				if(Float.isNaN(scores.get(i).floatValue()))
+  					return null;
 				feats += scores.get(i).floatValue() + ",";
 			}
 		}
@@ -689,6 +695,8 @@ public class NemexWekaClassificationEDA implements
 		// Writing to ARFF file
 		try (BufferedWriter writer = Files.newBufferedWriter(arffFile,
 				Charset.defaultCharset(), StandardOpenOption.APPEND)) {
+			if(null == feats)
+				return;
 			writer.newLine();
 			writer.append(feats);
 		} catch (IOException exception) {
@@ -833,6 +841,8 @@ public class NemexWekaClassificationEDA implements
 
 			JCas cas = PlatformCASProber.probeXmi(xmi, null);
 			String feats = scoreData(cas);
+			if(null==feats)
+				continue;
 
 			String goldClass = getGoldLabel(cas);
 			feats += goldClass;
