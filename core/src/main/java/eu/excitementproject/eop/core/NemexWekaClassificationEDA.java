@@ -84,7 +84,7 @@ public class NemexWekaClassificationEDA implements
 	 * 
 	 * @param config
 	 *            the configuration
-	 * @throws ConfigurationException 
+	 * @throws ConfigurationException
 	 */
 	private void initializeClassifier(CommonConfig config)
 			throws ConfigurationException {
@@ -115,11 +115,11 @@ public class NemexWekaClassificationEDA implements
 
 			CostMatrix cm = new CostMatrix(2); // [0.0 95.0; 5.0 0.0]
 			cm.initialize();
-			
-//			cm = cm.parseMatlab(comp.getString("costMatrix"));
-			
+
+			// cm = cm.parseMatlab(comp.getString("costMatrix"));
+
 			cm.setElement(0, 1, Float.parseFloat(comp.getString("cost_0-1")));
-			cm.setElement(1, 0,  Float.parseFloat(comp.getString("cost_1-0")));
+			cm.setElement(1, 0, Float.parseFloat(comp.getString("cost_1-0")));
 
 			costSens.setCostMatrix(cm);
 			costSens.setMinimizeExpectedCost(Boolean.parseBoolean(comp
@@ -435,7 +435,7 @@ public class NemexWekaClassificationEDA implements
 		}
 		modelFile = EDA.getString("modelFile");
 		if (isTrain) {
-			// For training, numOfModelFiles initialized before initializing
+			// For training, numOfModelFiles specified before initializing
 			// model files
 			for (int i = 0; i < numOfModelFiles; i++) {
 				File file = new File(modelFile + String.valueOf(i));
@@ -565,7 +565,7 @@ public class NemexWekaClassificationEDA implements
 					}
 				}
 				writer.newLine();
-				writer.append("@ATTRIBUTE class {ENTAILMENT,NONENTAILMENT}");
+				writer.append("@ATTRIBUTE class {ENTAILMENT,NONENTAILMENT,UNKNOWN}");
 				writer.newLine();
 				writer.newLine();
 				writer.append("@DATA");
@@ -645,9 +645,8 @@ public class NemexWekaClassificationEDA implements
 		}
 
 		String feats = scoreData(aCas);
-		if(null == feats)
-			return new ClassificationTEDecision(DecisionLabel.Abstain,
-					pairId);
+		if (null == feats)
+			return new ClassificationTEDecision(DecisionLabel.Abstain, pairId);
 
 		feats += goldAnswer; // class label
 		writeDatatoArff(feats, wekaArffFile + String.valueOf(0) + ".arff");
@@ -672,8 +671,9 @@ public class NemexWekaClassificationEDA implements
 			logger.info("Current component:" + comp.getComponentName());
 			Vector<Double> scores = comp.calculateScores(aCas);
 			for (int i = 0; i < scores.size(); i++) {
-				if(Float.isNaN(scores.get(i).floatValue()))
-  					return null;
+				if (Float.isNaN(scores.get(i).floatValue())
+						|| Float.isInfinite(scores.get(i).floatValue()))
+					scores.set(i, 0d);
 				feats += scores.get(i).floatValue() + ",";
 			}
 		}
@@ -695,7 +695,7 @@ public class NemexWekaClassificationEDA implements
 		// Writing to ARFF file
 		try (BufferedWriter writer = Files.newBufferedWriter(arffFile,
 				Charset.defaultCharset(), StandardOpenOption.APPEND)) {
-			if(null == feats)
+			if (null == feats)
 				return;
 			writer.newLine();
 			writer.append(feats);
@@ -709,12 +709,13 @@ public class NemexWekaClassificationEDA implements
 	 * 
 	 * @param pairId
 	 *            ID for pair to classify
-	 * @return classification decision - entailment or nonentailment.
+	 * @return classification decision - entailment, nonentailment or unknown.
 	 */
 	private ClassificationTEDecision classifyData(String pairId) {
 
-		int ent = 0, nent = 0; // no. of models predicting entailing and non
-								// entailing classes resp.
+		int ent = 0, nent = 0, unk = 0; // no. of models predicting entailing,
+										// non
+		// entailing and neutral classes resp.
 
 		// get decision label using all model files
 		for (int i = 0; i < numOfModelFiles; i++) {
@@ -742,6 +743,8 @@ public class NemexWekaClassificationEDA implements
 					ent++;
 				else if (predictedClass.equalsIgnoreCase("NONENTAILMENT"))
 					nent++;
+				else if (predictedClass.equalsIgnoreCase("UNKNOWN"))
+					unk++;
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -754,12 +757,14 @@ public class NemexWekaClassificationEDA implements
 		}
 
 		// Ensemble learning: Bagging to return most frequently predicted label
-		if (ent >= nent)
+		if (ent >= nent && ent >= unk)
 			return new ClassificationTEDecision(DecisionLabel.Entailment,
 					pairId);
-		else
+		else if (nent >= ent && nent >= unk)
 			return new ClassificationTEDecision(DecisionLabel.NonEntailment,
 					pairId);
+		else
+			return new ClassificationTEDecision(DecisionLabel.Unknown, pairId);
 	}
 
 	@Override
@@ -783,7 +788,8 @@ public class NemexWekaClassificationEDA implements
 		}
 
 		int entNum = 0;
-		// Split weka arff into multiple uniformly distributed datasets.
+		// Split weka arff into multiple uniformly distributed datasets - for
+		// RTE6.
 		if (split) {
 			// TODO: make this allocation dynamic
 			entNum = 897; // no. of entailing pairs in RTE6 dev data.
@@ -841,8 +847,6 @@ public class NemexWekaClassificationEDA implements
 
 			JCas cas = PlatformCASProber.probeXmi(xmi, null);
 			String feats = scoreData(cas);
-			if(null==feats)
-				continue;
 
 			String goldClass = getGoldLabel(cas);
 			feats += goldClass;
