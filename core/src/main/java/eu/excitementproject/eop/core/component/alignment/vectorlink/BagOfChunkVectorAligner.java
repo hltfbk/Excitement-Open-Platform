@@ -133,8 +133,6 @@ public class BagOfChunkVectorAligner extends VectorAligner {
 			// negative alignment
 			voRelSet.add(RelationType.STRONGER_THAN);
 			voRelSet.add(RelationType.OPPOSITE_OF);
-			voRelSet.add(RelationType.HAPPENS_BEFORE);
-
 			logger.info("Loading VerbOcean");
 
 			volr = new VerbOceanLexicalResource(voTh, voFile, voRelSet);
