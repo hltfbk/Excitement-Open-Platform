@@ -304,7 +304,7 @@ public class NemexBagOfChunksAligner extends NemexAligner {
 						// and Wordnet for nouns
 						if (curPosTag.startsWith("NN")) {
 
-							List<String> values = new ArrayList<String>();
+							Set<String> values = new HashSet<String>();
 
 							for (int n = 0; n < this.numOfExtDicts; n++) {
 								values.addAll(NEMEX_A.checkSimilarity(
@@ -326,12 +326,14 @@ public class NemexBagOfChunksAligner extends NemexAligner {
 													tokenLemmaArray.get(j),
 													new BySimplerCanonicalPartOfSpeech(
 															SimplerCanonicalPosTag.NOUN))) {
-										values.add(rule
+										String wnEntry = rule
 												.getRLemma()
 												.toLowerCase()
 												.replace(
 														" ",
-														this.delimiterAlignLookup));
+														this.delimiterAlignLookup);
+										
+										values.add(wnEntry);
 
 									}
 								}
@@ -339,8 +341,8 @@ public class NemexBagOfChunksAligner extends NemexAligner {
 							}
 
 							// Appending new info to existing phrase so far
-							for (int l = 0; l < values.size(); l++) {
-								String newQuery = curQuery + values.get(l);
+							for (String v : values) {
+								String newQuery = curQuery + v;
 								newQueries.add(newQuery);
 							}
 
