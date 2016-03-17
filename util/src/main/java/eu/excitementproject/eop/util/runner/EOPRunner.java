@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.kohsuke.args4j.CmdLineParser;
 
+import eu.excitementproject.eop.alignmentedas.p1eda.visualization.P1EdaVisualizer;
+import eu.excitementproject.eop.alignmentedas.p1eda.visualization.Visualizer;
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;
 import eu.excitementproject.eop.common.TEDecision;
@@ -22,7 +24,9 @@ import eu.excitementproject.eop.common.exception.ComponentException;
 import eu.excitementproject.eop.common.exception.ConfigurationException;
 import eu.excitementproject.eop.common.utilities.configuration.ImplCommonConfig;
 import eu.excitementproject.eop.lap.PlatformCASProber;
-import eu.excitementproject.eop.util.eval.EDAScorer;
+//import eu.excitementproject.eop.util.eval.EDAScorer;
+//it enables multi-class problems evaluation
+import eu.excitementproject.eop.util.eval.Scorer;
 
 /**
  * 
@@ -49,6 +53,8 @@ public class EOPRunner {
 	private String resultsFile = null;
 	private String xmlResultsFile = null;
 
+	private String outputDir = "./";
+	
 	@SuppressWarnings("unused")
 	private String language = "EN";
 	
@@ -60,6 +66,7 @@ public class EOPRunner {
 
 	private Logger logger;
 
+	private Visualizer visualizer = null;
 	
 	/**
 	 * @param args
@@ -83,7 +90,7 @@ public class EOPRunner {
 		dih = new EOPRunnerInitializationHelper();
 		
 		logger = Logger.getLogger("eu.excitementproject.eop.util.runner.EOPRunner");
-		
+				
 		if (args.length == 0)
 			showHelp(parser);
 		
@@ -91,6 +98,16 @@ public class EOPRunner {
 			parser.parseArgument(args);
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		
+		// make the output directory if given
+		if (! option.output.isEmpty()) {
+			outputDir = option.output;
+
+			File dir = new File(outputDir);
+			if (! dir.exists() || !dir.isDirectory()) {
+				dir.mkdirs();
+			}
 		}
 	}
 
@@ -144,6 +161,13 @@ public class EOPRunner {
 	}
 	
 	/**
+	 * Initialize P1EDA's visualizer to enable tracing
+	 */
+	public void initializeVisualizer() {		
+		visualizer = new P1EdaVisualizer();
+	}
+	
+	/**
 	 * Find the value for a given parameter either from the command line arguments or from the configuration file
 	 * 
 	 * @param fileOption -- option value from the command line arguments
@@ -173,7 +197,7 @@ public class EOPRunner {
 			logger.error("Could not create EDA object");
 			e.printStackTrace();
 		} 
-		logger.info("EDA object created from class " + eda.getClass());
+		logger.info("EDA object created from class " + eda.getClass());		
 	}
 	
 	/**
@@ -198,10 +222,19 @@ public class EOPRunner {
 	 * @param outDir -- directory for storing the results in the web-demo-friendly format
 	 */
 	public void runEOPTest(String testDirStr, String outDir) {
+
+		File outDirectory = new File(outDir);
+		if (! outDirectory.exists())
+			outDirectory.mkdirs();
 		
-		resultsFile = outDir + "/" + configFile.getName() + "_results.txt";		
-		xmlResultsFile = outDir + "/" + configFile.getName() + "_results.xml";
-		
+		if (option.results != null) {
+			resultsFile = option.results;
+			xmlResultsFile = option.results.replaceAll(".txt$", ".xml");
+		} else {
+			resultsFile = outDir + "/" + configFile.getName() + "_results.txt";
+			xmlResultsFile = outDir + "/" + configFile.getName() + "_results.xml";
+		}
+
 		try {
 						
 			File testDir = new File(testDirStr);
@@ -217,9 +250,17 @@ public class EOPRunner {
 				
 				writer.write(OutputUtils.getPairID(cas) + "\t" + OutputUtils.getGoldLabel(cas) + "\t"  + teDecision.getDecision().toString() + "\t" + teDecision.getConfidence() + "\n");
 //				hasGoldLabel = OutputUtils.getGoldLabel(cas);
+				
+				if (visualizer != null) {
+					OutputUtils.makeTraceHTML(teDecision, cas, outputDir, visualizer);
+				}
 			}
 			writer.close();
 			out.close();
+
+			// generate the XML results file
+			logger.info("Results file -- XML format: " + xmlResultsFile);
+			OutputUtils.generateXMLResults(option.testFile, resultsFile, xmlResultsFile);
 			
 			logger.info("Results file -- txt format: " + resultsFile);			
 			
@@ -231,6 +272,8 @@ public class EOPRunner {
 			} catch (IOException e) {
 				logger.info("Problem copying the configuration file " + configFile.getName() + " to directory " + outputDir.getName());
 			}
+			
+			
 			// careful with the copying! The model file may have a relative path which must be first resolved!
 
 			logger.info("Copying model in output directory " + outDir);
@@ -248,30 +291,6 @@ public class EOPRunner {
 	}
 
 	
-	public void scoreResults() {
-		
-		if (option.results != null) {
-			scoreResults(option.results,Paths.get(option.results + "_report.xml"));			
-		} else {
-			if (option.testFile != null && resultsFile != null) {
-				logger.info("Results file -- XML format: " + xmlResultsFile);
-				OutputUtils.generateXMLResults(option.testFile, resultsFile, xmlResultsFile);
-				scoreResults(resultsFile,Paths.get(resultsFile + "_report.xml"));
-			} else {
-				logger.error("Could not score the results -- check that you have provided the correct test file, and that the results file (" + resultsFile + ") was properly generated");
-			}
-		}
-		
-	}
-	
-	
-	public void scoreResults(String resultsFile, Path target) {
-		EDAScorer.score(new File(resultsFile), target.toString());
-		logger.info("Results file: " + resultsFile);
-		logger.info("Evaluation file: " + target.toString());
-	}
-	
-	
 
 	/**
 	 * Run the platform on a single test/hypothesis pair
@@ -284,19 +303,71 @@ public class EOPRunner {
 		logger.info("Hypothesis: " + option.hypothesis);
 		
 		JCas aJCas = lapRunner.runLAP(option.text, option.hypothesis);
+
+		if (option.results != null) {
+			resultsFile = option.results;
+			xmlResultsFile = option.results.replaceAll(".txt$", ".xml");
+		} else {
+			resultsFile = outputDir + "/" + configFile.getName() + "_results.txt";
+			xmlResultsFile = outputDir + "/" + configFile.getName() + "_results.xml";
+		}		
+		
 		try {
-			TEDecision te = eda.process(aJCas);
-			logger.info("T/H pair processing result: " + te.getDecision() + " with confidence " + te.getConfidence());
-			OutputUtils.makeSinglePairXML(te, aJCas, option.output, option.language);
+			TEDecision teDecision = eda.process(aJCas);
+			logger.info("T/H pair processing result: " + teDecision.getDecision() + " with confidence " + teDecision.getConfidence());
+			OutputUtils.makeSinglePairXML(teDecision, aJCas, xmlResultsFile, option.language);
+			
+			if (visualizer != null) {
+				OutputUtils.makeTraceHTML(teDecision, aJCas, outputDir, visualizer);
+			}
 		} catch (EDAException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Problem running the EDA");
 			e.printStackTrace();
 		} catch (ComponentException e) {
-			// TODO Auto-generated catch block
+			System.err.println("Problem running a component of the EDA");
 			e.printStackTrace();
-		}	
+		} 
 	}
+
+	
+	/**
+	 * Score the results relative to the given gold standard
+	 */
+	public void scoreResults() {
+
+		String availableResultsFile = resultsFile;
+		if (option.results != null) {
+			availableResultsFile = option.results;
+		}
 		
+		if (availableResultsFile != null) {
+
+			if (xmlResultsFile == null) {
+				xmlResultsFile = availableResultsFile.replaceAll(".txt$", ".xml");
+			}
+
+			scoreResults(availableResultsFile,Paths.get(availableResultsFile + "_report.xml"));			
+
+			if (option.testFile != null) {
+				logger.info("Results file -- XML format: " + xmlResultsFile);
+				OutputUtils.generateXMLResults(option.testFile, availableResultsFile, xmlResultsFile);
+			} else {
+				logger.error("Could not score the results -- the testFile option is missing");
+			} 
+		} else {
+				logger.error("Could not score the results -- check that you have provided the correct test file, and that the results file (" + availableResultsFile + ") was properly generated");
+		}
+		
+	}
+	
+	
+	public void scoreResults(String resultsFile, Path target) {
+		//EDAScorer.score(new File(resultsFile), target.toString());
+		//it enables multi-class problems evaluation
+		Scorer.score(new File(resultsFile), target.toString());
+		logger.info("Results file: " + resultsFile);
+		logger.info("Evaluation file: " + target.toString());
+	}
 	
 	/**
 	 * When the command line arguments could not be parsed, show the help
@@ -324,6 +395,10 @@ public class EOPRunner {
 				initializeConfigFile();
 			
 			setLanguage();
+
+			
+			if (option.trace) 
+				initializeVisualizer();
 			
 			if (option.lap != null) 
 				lapRunner = new LAPRunner(option.lap);
@@ -335,11 +410,11 @@ public class EOPRunner {
 			if (option.trainFile != null) {
 								
 				String trainFile = getOptionValue(option.trainFile, "trainFile");
-				String trainDir = getOptionValue(option.trainDir, "trainDir");
-				
-				logger.info("\t training file: " + trainFile + "\n\t training dir: " + trainDir);
-				
+								
 				if (! option.nolap) {
+					String trainDir = getOptionValue(option.trainDir, "trainDir");
+					logger.info("\t training file: " + trainFile + "\n\t training dir: " + trainDir);
+
 					lapRunner.runLAPOnFile(trainFile, trainDir);
 				}
 			}
@@ -349,30 +424,28 @@ public class EOPRunner {
 						
 			if (option.testFile != null) {
 				testFile = getOptionValue(option.testFile, "testFile");
-				testDir = getOptionValue(option.testDir, "testDir");
-
-				logger.info("\t testing file: " + testFile + "\n\t testing dir: " + testDir);
 				
-				if (! option.nolap) {
+				if ((! option.nolap) && (option.config != null)) {
+					testDir = getOptionValue(option.testDir, "testDir");
+					logger.info("\t testing file: " + testFile + "\n\t testing dir: " + testDir);
+
 					lapRunner.runLAPOnFile(testFile, testDir);
+				} else {
+					logger.info("Skipping LAP processing (if you think it shouldn't skip, check that the config option was used and the configuration file was given, and that the option \"-nolap\" was not used. \n");
 				}
 			}
 			
 			if (option.test) {
 				
 //				if (! option.train)
-					eda.initialize(config);
+				    eda.initialize(config);
 				
 				testDir = getOptionValue(option.testDir, "testDir");
 				
 				if (! option.text.isEmpty()) {
 					runEOPSinglePair();					
 				} else {
-					if (option.output.isEmpty()) {
-						runEOPTest(testDir, "./");
-					} else {
-						runEOPTest(testDir,option.output);
-					}
+					runEOPTest(testDir,outputDir);
 				}
 			}
 			

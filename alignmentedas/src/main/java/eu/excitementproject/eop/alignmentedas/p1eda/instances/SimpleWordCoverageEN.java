@@ -35,24 +35,34 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
 /**
+ * This is an instance of P1EDA (internal code name for alignment EDA in EOP code base). 
  * 
- * 
+ * This instance uses word-level coverage of the Hypothesis with various aligners
  * 
  * (On this simple coverage setup, best was with all four aligners, with three features (without verb coverage ratio) 
- * on RTE3: 66.75)
+ * on RTE3: 66.75) (or 67.0 with older lexical linker --- some check needed why faster alinger gets less links) 
  * 
  * @author Tae-Gil Noh
  */
 @SuppressWarnings("unused")
 public class SimpleWordCoverageEN extends P1EDATemplate {
 
-	public SimpleWordCoverageEN() throws EDAException
+	/**
+	 * The constructor for this P1EDA instance. 
+	 * This instance uses WordNet, VerbOcean, and Meteor Paraphrase resources and 
+	 * utilize them to get (semantic) coverage of Hypothesis by Text elements. 
+	 * 
+	 * @param wordNetDirPath path to WordNet directory. 
+	 * @param verbOceanFilePath path to the VerbOcean text file 
+	 * @throws EDAException
+	 */
+	public SimpleWordCoverageEN(String wordNetDirPath, String verbOceanFilePath) throws EDAException
 	{	
 		try {
 			aligner1 = new IdenticalLemmaPhraseLinker(); 
 			aligner2 = new MeteorPhraseLinkerEN(); 
-			aligner3 = new WordNetENLinker();  
-			aligner4 = new VerbOceanENLinker(); 
+			aligner3 = new WordNetENLinker(wordNetDirPath);  
+			aligner4 = new VerbOceanENLinker(verbOceanFilePath); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -103,8 +113,8 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 			
 			logger.debug("Adding feature as: " + score1.get(0) + "/" + score1.get(1)); 
 			logger.debug("Adding feature as: " + score1.get(2) + "/" + score1.get(3)); 
-			fv.add(new FeatureValue(ratio1)); 
-			fv.add(new FeatureValue(ratio2)); 
+			fv.add(new FeatureValue("TokenCoverageRatio", ratio1)); 
+			fv.add(new FeatureValue("ContentTokenCoverageRatio", ratio2)); 
 			
 			Vector<Double> score2 = nerCoverageScorer.calculateScores(aJCas); 
 			// we know NER Coverage scorer  returns 2 numbers. 
@@ -120,7 +130,7 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 			{
 				ratio_ner = score2.get(0) / score2.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_ner)); 		
+			fv.add(new FeatureValue("NERCoverageRatio", ratio_ner)); 		
 			
 			
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
@@ -135,7 +145,7 @@ public class SimpleWordCoverageEN extends P1EDATemplate {
 				ratio_V = score3.get(0) / score3.get(1); 
 			}
 			// For English, verb coverage feature doesn't seem to work well. 
-			//fv.add(new FeatureValue(ratio_V)); 		
+			//fv.add(new FeatureValue("VerbCoverageRatio", ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)

@@ -3,16 +3,7 @@ package eu.excitementproject.eop.alignmentedas.p1eda.instances;
 import java.util.Vector;
 
 import org.apache.uima.jcas.JCas;
-
-import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.Logistic;
-import weka.classifiers.functions.MultilayerPerceptron;
-import weka.classifiers.functions.SimpleLogistic;
-import weka.classifiers.functions.VotedPerceptron;
-import weka.classifiers.lazy.KStar;
-import weka.classifiers.meta.LogitBoost;
-import weka.classifiers.trees.J48;
-import weka.classifiers.trees.RandomForest;
 import eu.excitementproject.eop.alignmentedas.p1eda.P1EDATemplate;
 import eu.excitementproject.eop.alignmentedas.p1eda.classifiers.EDABinaryClassifierFromWeka;
 import eu.excitementproject.eop.alignmentedas.p1eda.scorers.SimpleProperNounCoverageCounter;
@@ -28,13 +19,19 @@ import eu.excitementproject.eop.common.component.alignment.AlignmentComponentExc
 import eu.excitementproject.eop.common.component.alignment.PairAnnotatorComponentException;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
 import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
-import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.VerbOceanENLinker;
-import eu.excitementproject.eop.core.component.alignment.lexicallink.wrapped.WordNetENLinker;
 import eu.excitementproject.eop.core.component.alignment.phraselink.IdenticalLemmaPhraseLinker;
-import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerDE;
-import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerEN;
 
-@SuppressWarnings("unused")
+/**
+ * This is a minimally configured instance for P1EDA. It uses nothing but "same 
+ * lemma" aligner, and uses 3 basic features (word coverage, proper noun coverage 
+ * and verb coverage). 
+ * 
+ * The EDA instance requires no argument on the constructor. 
+ * The EDA requires Token, Lemma and POS annotated on the input T-H pair (JCas). 
+ * 
+ * @author Tae-Gil Noh 
+ *
+ */
 public class MinimalP1EDA extends P1EDATemplate {
 
 	public MinimalP1EDA() throws EDAException
@@ -87,8 +84,8 @@ public class MinimalP1EDA extends P1EDATemplate {
 			
 			logger.debug("Adding feature as: " + score1.get(0) + "/" + score1.get(1)); 
 			logger.debug("Adding feature as: " + score1.get(2) + "/" + score1.get(3)); 
-			fv.add(new FeatureValue(ratio1)); 
-			fv.add(new FeatureValue(ratio2)); 
+			fv.add(new FeatureValue("TokenCoverageRatio", ratio1)); 
+			fv.add(new FeatureValue("ContentTokenCoverageRatio", ratio2)); 
 			
 			Vector<Double> score2 = nerCoverageScorer.calculateScores(aJCas); 
 			// we know NER Coverage scorer  returns 2 numbers. 
@@ -104,7 +101,7 @@ public class MinimalP1EDA extends P1EDATemplate {
 			{
 				ratio_ner = score2.get(0) / score2.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_ner)); 		
+			fv.add(new FeatureValue("NERCoverageRatio", ratio_ner)); 		
 			
 			
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
@@ -118,7 +115,7 @@ public class MinimalP1EDA extends P1EDATemplate {
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_V)); 		
+			fv.add(new FeatureValue("VerbCoverageRatio", ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)
@@ -138,15 +135,6 @@ public class MinimalP1EDA extends P1EDATemplate {
 	{
 		try {
 			return new EDABinaryClassifierFromWeka(new Logistic(), null); 
-			// you can use other classifiers from Weka, such as ... 
-			//return new EDABinaryClassifierFromWeka(new NaiveBayes(), null); 
-			//return new EDABinaryClassifierFromWeka(new VotedPerceptron(), null); 
-			//return new EDABinaryClassifierFromWeka(new J48(), null); 
-			//return new EDABinaryClassifierFromWeka(new MultilayerPerceptron(), null); 
-			//return new EDABinaryClassifierFromWeka(new KStar(), null);
-			//return new EDABinaryClassifierFromWeka(new SimpleLogistic(), null); 
-			//return new EDABinaryClassifierFromWeka(new RandomForest(), null); 
-
 		}
 		catch (ClassifierException ce)
 		{

@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>eu.excitementproject</groupId>
 		<artifactId>eop</artifactId>
-		<version>1.1.5-SNAPSHOT</version>
+		<version>1.2.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>core</artifactId>
 	<name>core</name>
@@ -159,15 +159,14 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>common</artifactId>
-			<version>1.1.5-SNAPSHOT</version>
+			<version>1.2.4-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
-			<groupId>eu.excitementproject</groupId>
-			<artifactId>distsim</artifactId>
-			<version>1.1.5-SNAPSHOT</version>
-		</dependency>
-
+    		<groupId>eu.excitementproject</groupId>
+    		<artifactId>distsim</artifactId>
+    		<version>1.2.4-SNAPSHOT</version>
+    	</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp</groupId>
 			<artifactId>jwktl</artifactId>
@@ -194,28 +193,29 @@
 		<dependency>
 			<groupId>eu.excitementproject</groupId>
 			<artifactId>lap</artifactId>
-			<version>1.1.5-SNAPSHOT</version>
+			<version>1.2.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>unituebingen</groupId>
 			<artifactId>GermaNetAPI</artifactId>
 			<version>8.0</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
+
+                <dependency>
+                        <groupId>de.uni-heidelberg.cl</groupId>
+                        <artifactId>transDM-distributional-similarity</artifactId>
+                        <version>20140114</version>
+                </dependency>
+       		 <dependency>
+        		<groupId>de.uni-heidelberg.cl</groupId>
+        	 	<artifactId>DErivBase</artifactId>
+             	<version>2.0</version>
+        	</dependency>        
 		<dependency>
-			<groupId>de.uni-heidelberg.cl</groupId>
-			<artifactId>transDM-distributional-similarity</artifactId>
-			<version>20140114</version>
-		</dependency>
-		<dependency>
-			<groupId>de.uni-heidelberg.cl</groupId>
-			<artifactId>DErivBase</artifactId>
-			<version>2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>eu.fbk.hlt</groupId>
-			<artifactId>pso</artifactId>
-			<version>0.0.1</version>
-		</dependency>
+    			<groupId>eu.fbk.hlt</groupId>
+    			<artifactId>pso</artifactId>
+    			<version>0.0.1</version>
+                </dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.similarity.algorithms</groupId>
 			<artifactId>
@@ -281,6 +281,14 @@
 			<artifactId>lexicalminer</artifactId>
 			<version>1.1.5-SNAPSHOT</version>
 		</dependency>
+    	--> 
+    	<!--  end of German Redis-based lexical resources -->
+
+    	<dependency>
+    		<groupId>eu.excitementproject</groupId>
+    		<artifactId>lexicalminer</artifactId>
+    		<version>1.2.4-SNAPSHOT</version>
+    	</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

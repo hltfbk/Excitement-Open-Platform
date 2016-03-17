@@ -104,8 +104,8 @@ public class FNR_DEvar3 extends P1EDATemplate {
 			
 			logger.debug("Adding feature as: " + score1.get(0) + "/" + score1.get(1)); 
 			logger.debug("Adding feature as: " + score1.get(2) + "/" + score1.get(3)); 
-			fv.add(new FeatureValue(ratio1)); 
-			fv.add(new FeatureValue(ratio2)); 
+			fv.add(new FeatureValue("TokenCoverageRatio", ratio1)); 
+			fv.add(new FeatureValue("ContentTokenCoverageRatio", ratio2)); 
 			
 			Vector<Double> score2 = nerCoverageScorer.calculateScores(aJCas); 
 			// we know NER Coverage scorer  returns 2 numbers. 
@@ -121,7 +121,7 @@ public class FNR_DEvar3 extends P1EDATemplate {
 			{
 				ratio_ner = score2.get(0) / score2.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_ner)); 		
+			fv.add(new FeatureValue("NERCoverageRatio", ratio_ner)); 		
 			
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
 			// we know Verb Coverage counter returns 2 numbers. 
@@ -134,7 +134,7 @@ public class FNR_DEvar3 extends P1EDATemplate {
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
 			}			
-			fv.add(new FeatureValue(ratio_V)); 		
+			fv.add(new FeatureValue("VerbCoverageRatio", ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)

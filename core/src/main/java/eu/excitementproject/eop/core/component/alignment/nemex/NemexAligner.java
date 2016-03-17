@@ -526,6 +526,13 @@ public class NemexAligner implements AlignmentComponent {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public void close() throws AlignmentComponentException
+	{
+		// nothing to close on this aligner
+	}
+
 
 	private final static Logger logger = Logger.getLogger(NemexAligner.class);
 

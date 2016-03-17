@@ -87,4 +87,10 @@ public class WordNetITLinker implements AlignmentComponent {
 	{
 		return null; 
 	}
+	
+	public void close() throws AlignmentComponentException
+	{
+		worker.close(); 
+	}
+
 }

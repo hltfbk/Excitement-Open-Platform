@@ -38,21 +38,32 @@ import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhrase
 import eu.excitementproject.eop.core.component.alignment.phraselink.MeteorPhraseLinkerIT;
 
 /**
+ * This is an instance of P1EDA (internal code name for alignment EDA in EOP code base) 
+ * for Italian. 
  * 
- * (Best configuration on this simple coverage Italian was: 65.125 on RTE3.)
+ * This instance uses word-level coverage of the Hypothesis with various aligners. 
+ * (Best configuration on this simple coverage Italian was: 65.0 on RTE3.)
  * 
  * @author Tae-Gil Noh 
  */
 @SuppressWarnings("unused")
 public class SimpleWordCoverageIT extends P1EDATemplate {
 
-	public SimpleWordCoverageIT() throws EDAException
+	/**
+	 * The constructor for this P1EDA instance. 
+	 * This instance uses Italian WordNet, Italian paraphrase resource, 
+	 * utilize them to get (semantic) coverage of Hypothesis by Text elements. 
+	 * 
+	 * @param wordNetITDirPath path to (Italian) WordNet directory. 
+	 * @throws EDAException
+	 */
+	public SimpleWordCoverageIT(String wordNetITDirPath) throws EDAException
 	{	
 		try {
 			identicalLemmaLinker = new IdenticalLemmaPhraseLinker(); 
 			paraphraseLinker = new MeteorPhraseLinkerIT(); 
 			// please provide correct path to Italian WordNet to make it work correctly! 
-			italianWordNetLinker = new WordNetITLinker("/Users/tailblues/eop-resources-1.1.4/ontologies/ItalianWordNet-dict"); 
+			italianWordNetLinker = new WordNetITLinker(wordNetITDirPath); 
 		}
 		catch (AlignmentComponentException ae)
 		{
@@ -101,8 +112,8 @@ public class SimpleWordCoverageIT extends P1EDATemplate {
 			
 			logger.debug("Adding feature as: " + score1.get(0) + "/" + score1.get(1)); 
 			logger.debug("Adding feature as: " + score1.get(2) + "/" + score1.get(3)); 
-			fv.add(new FeatureValue(ratio1)); 
-			fv.add(new FeatureValue(ratio2)); 
+			fv.add(new FeatureValue("TokenCoverageRatio", ratio1)); 
+			fv.add(new FeatureValue("ContentTokenCoverageRatio", ratio2)); 
 			
 			Vector<Double> score2 = nerCoverageScorer.calculateScores(aJCas); 
 			// we know NER Coverage scorer  returns 2 numbers. 
@@ -119,7 +130,7 @@ public class SimpleWordCoverageIT extends P1EDATemplate {
 				ratio_ner = score2.get(0) / score2.get(1); 
 			}
 			// For Italian, PN coverage seems to work less well... 
-			//fv.add(new FeatureValue(ratio_ner)); 		
+			//fv.add(new FeatureValue("NERCoverageRatio", ratio_ner)); 		
 			
 			
 			Vector<Double> score3 = verbCoverageScorer.calculateScores(aJCas); 
@@ -133,7 +144,7 @@ public class SimpleWordCoverageIT extends P1EDATemplate {
 			{
 				ratio_V = score3.get(0) / score3.get(1); 
 			}
-			fv.add(new FeatureValue(ratio_V)); 		
+			fv.add(new FeatureValue("VerbCoverageRatio", ratio_V)); 		
 			
 		}
 		catch (ScoringComponentException se)
