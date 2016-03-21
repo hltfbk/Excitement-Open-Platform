@@ -274,14 +274,7 @@
 			<artifactId>redis-german-lin-dep</artifactId> <version>20140228</version> 
 			</dependency> <dependency> <groupId>de.uni-heidelberg.cl</groupId> <artifactId>redis-german-lin-prox</artifactId> 
 			<version>20140228</version> </dependency> -->
-		<!-- end of German Redis-based lexical resources -->
-
-		<dependency>
-			<groupId>eu.excitementproject</groupId>
-			<artifactId>lexicalminer</artifactId>
-			<version>1.1.5-SNAPSHOT</version>
-		</dependency>
-    	--> 
+		
     	<!--  end of German Redis-based lexical resources -->
 
     	<dependency>
