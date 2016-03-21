@@ -152,6 +152,11 @@ public class NemexBagOfChunksScoring implements ScoringComponent {
 			scoreValues.add(numOfLinks / hChunkNum);
 			scoreValues.add(numOfLinks * numOfLinks / tChunkNum / hChunkNum);
 		}
+		else {
+			scoreValues.add(0d);
+			scoreValues.add(0d);
+			scoreValues.add(0d);
+		}
 
 		if (useCoverageFeats) {
 
