@@ -528,7 +528,7 @@ public class NemexAligner implements AlignmentComponent {
 	}
 	
 	@Override
-	public void close() throws AlignmentComponentException
+	public void close() throws PairAnnotatorComponentException
 	{
 		// nothing to close on this aligner
 	}
