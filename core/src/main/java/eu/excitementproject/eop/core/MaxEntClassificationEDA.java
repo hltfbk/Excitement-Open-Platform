@@ -40,7 +40,6 @@ import eu.excitementproject.eop.core.component.scoring.BagOfLexesPosScoringDE;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringDE;
 import eu.excitementproject.eop.core.component.scoring.BagOfLexesScoringEN;
 import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
-import eu.excitementproject.eop.core.component.scoring.NemexAlignerScoring;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
@@ -247,10 +246,6 @@ public class MaxEntClassificationEDA implements
 				} else {
 					initializeLexCompsEN(config);
 				}
-			} else if (component.equals("NemexAlignerScoring")) {
-
-				initializeNemexComp(config);
-
 			} else {
 				try {
 					@SuppressWarnings("unchecked")
@@ -314,22 +309,6 @@ public class MaxEntClassificationEDA implements
 		}
 	}
 
-	private void initializeNemexComp(CommonConfig config) {
-		
-		ScoringComponent comp3 = null;
-		try {
-			comp3 = new NemexAlignerScoring(config);
-		} catch (ConfigurationException e) {
-			// TODO Auto-generated catch block
-			logger.info("Configration Exception while initializing NemexComp");
-			e.printStackTrace();
-		}
-		if ((( NemexAlignerScoring) comp3).getNumOfFeats() > 0) {
-			components.add(comp3);
-		}
-	
-}
-	
 	/**
 	 * initialize the model
 	 * 
@@ -474,10 +453,7 @@ public class MaxEntClassificationEDA implements
 		if (null != components) {
 			for (ScoringComponent comp : components) {
 				try {
-					if (comp.getComponentName() == "NemexAlignerScoring") 
-						((NemexAlignerScoring) comp).close();
-					else
-						((BagOfWordsScoring) comp).close();
+					((BagOfWordsScoring) comp).close();
 				} catch (ScoringComponentException e) {
 					logger.warning(e.getMessage());
 				}
