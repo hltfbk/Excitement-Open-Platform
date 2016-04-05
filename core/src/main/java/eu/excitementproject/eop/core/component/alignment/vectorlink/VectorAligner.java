@@ -407,4 +407,9 @@ public class VectorAligner implements AlignmentComponent {
 	public final static Logger logger = Logger.getLogger(VectorAligner.class
 			.getName());
 
+	@Override
+	public void close() throws PairAnnotatorComponentException {
+		// TODO Auto-generated method stub
+	}
+
 }
