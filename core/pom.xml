@@ -141,9 +141,9 @@
 
 		<!-- Dependency for LibLinear weka wrapper -->
 		<dependency>
-			<groupId>liblinear</groupId>
+			<groupId>de.bwaldvogel</groupId>
 			<artifactId>liblinear</artifactId>
-			<version>1.51</version>
+			<version>1.95</version>
 		</dependency>
 
 		<dependency>
