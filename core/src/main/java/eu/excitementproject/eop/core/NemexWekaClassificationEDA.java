@@ -21,7 +21,6 @@ import weka.classifiers.Classifier;
 import weka.classifiers.CostMatrix;
 import weka.classifiers.functions.LibLINEAR;
 import weka.classifiers.meta.CostSensitiveClassifier;
-import weka.classifiers.meta.MetaCost;
 import weka.core.Attribute;
 import weka.core.Instances;
 import weka.core.SelectedTag;
