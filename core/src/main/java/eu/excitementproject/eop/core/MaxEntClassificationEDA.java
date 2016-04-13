@@ -43,7 +43,7 @@ import eu.excitementproject.eop.core.component.scoring.BagOfWordsScoring;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.PlatformCASProber;
 
-import de.dfki.lt.nemex.a.NEMEX_A;
+//import de.dfki.lt.nemex.a.NEMEX_A;
 
 /**
  * The <code>MaxEntClassificationEDA</code> class implements the
@@ -246,17 +246,6 @@ public class MaxEntClassificationEDA implements
 				} else {
 					initializeLexCompsEN(config);
 				}
-			} else if (component.equals("NemexA")) {
-				String gazetteerFilePath = comp.getString("gazetteerFilePath");
-				String delimiter = comp.getString("delimiter");
-				Boolean delimiterSwitchOff = Boolean.valueOf(comp
-						.getString("delimiterSwitchOff"));
-				int nGramSize = Integer.parseInt(comp.getString("nGramSize"));
-				Boolean ignoreDuplicateNgrams = Boolean.valueOf(comp
-						.getString("ignoreDuplicateNgrams"));
-				NEMEX_A.loadNewGazetteer(gazetteerFilePath, delimiter,
-						delimiterSwitchOff, nGramSize, ignoreDuplicateNgrams);
-
 			} else {
 				try {
 					@SuppressWarnings("unchecked")
