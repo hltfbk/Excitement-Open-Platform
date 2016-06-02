@@ -11,6 +11,15 @@
 	<description>core</description>
 
 	<dependencies>
+	
+		<!-- Dependency for LibLinear weka wrapper -->
+		<dependency>
+  			<groupId>de.bwaldvogel</groupId>
+  			<artifactId>liblinear</artifactId>
+  			<version>1.5</version>
+			<type>pom</type>
+		</dependency>
+
 
 		<!-- Deeplearning4j dependencies -->
 		<dependency>
@@ -137,13 +146,6 @@
 			<groupId>dfki</groupId>
 			<artifactId>nemex</artifactId>
 			<version>1.0</version>
-		</dependency>
-
-		<!-- Dependency for LibLinear weka wrapper -->
-		<dependency>
-			<groupId>de.bwaldvogel</groupId>
-			<artifactId>liblinear</artifactId>
-			<version>1.95</version>
 		</dependency>
 
 		<dependency>
