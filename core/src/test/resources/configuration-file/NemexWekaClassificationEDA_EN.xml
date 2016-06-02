@@ -37,83 +37,11 @@
 		<property name="direction">TtoH</property>
 	</section>
 
-	<section name="NemexBagOfLemmasScoring">
-
-		<property name="removeStopWords">false</property>
-		<property name="stopWordPath">../core/src/main/resources/external-data/edit/stopwords_EN.txt</property>
-
-		<property name="numOfExtDicts">0</property>
-		<property name="extDicts">../core/src/test/resources/gazetteer/all-dblp-mwl-plain.txt,../core/src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt</property>
-		<property name="delimExtLookup">#,#</property>
-		<property name="delimSwitchOffExtLookup">true,true</property>
-		<property name="nGramSizeExtLookup">3,3</property>
-		<property name="ignoreDuplicateNGramsExtLookup">false,false</property>
-		<property name="simMeasureExtLookup">COSINE_SIMILARITY_MEASURE,COSINE_SIMILARITY_MEASURE</property>
-		<property name="simThresholdExtLookup">0.8,0.8</property>
-
-		<property name="gazetteerAlignLookup">../core/src/test/resources/gazetteer/nemexBOWAligner.txt</property>
-		<property name="delimiterAlignLookup">#</property>
-		<property name="delimiterSwitchOffAlignLookup">true</property>
-		<property name="nGramSizeAlignLookup">3</property>
-		<property name="ignoreDuplicateNGramsAlignLookup">false</property>
-		<property name="simMeasureAlignLookup">COSINE_SIMILARITY_MEASURE</property>
-		<property name="simThresholdAlignLookup">0.8</property>
-
-		<property name="direction">HtoT</property>
-
-		<property name="isWN">false</property>
-		<property name="wnPath"></property>
-		<property name="WNRelations"></property>
-		<property name="isWNCollapsed"></property>
-		<property name="useFirstSenseOnlyLeft"></property>
-		<property name="useFirstSenseOnlyRight"></property>
-
-
-	</section>
-	
-	<section name="NemexBagOfChunksScoring">
-
-		<property name="removeStopWords">false</property>
-		<property name="stopWordPath">../core/src/main/resources/external-data/edit/stopwords_EN.txt</property>
-
-		<property name="numOfExtDicts">0</property>
-		<property name="extDicts">../core/src/test/resources/gazetteer/all-dblp-mwl-plain.txt,../core/src/test/resources/gazetteer/MedicalTerms-mwl-plain.txt</property>
-		<property name="delimExtLookup">#,#</property>
-		<property name="delimSwitchOffExtLookup">true,true</property>
-		<property name="nGramSizeExtLookup">3,3</property>
-		<property name="ignoreDuplicateNGramsExtLookup">false,false</property>
-		<property name="simMeasureExtLookup">COSINE_SIMILARITY_MEASURE,COSINE_SIMILARITY_MEASURE</property>
-		<property name="simThresholdExtLookup">0.8,0.8</property>
-
-		<property name="gazetteerAlignLookup">../core/src/test/resources/gazetteer/nemexBOWAligner.txt</property>
-		<property name="delimiterAlignLookup">#</property>
-		<property name="delimiterSwitchOffAlignLookup">true</property>
-		<property name="nGramSizeAlignLookup">3</property>
-		<property name="ignoreDuplicateNGramsAlignLookup">false</property>
-		<property name="simMeasureAlignLookup">COSINE_SIMILARITY_MEASURE</property>
-		<property name="simThresholdAlignLookup">0.8</property>
-
-		<property name="direction">HtoT</property>
-
-		<property name="isWN">false</property>
-		<property name="wnPath"></property>
-		<property name="WNRelations"></property>
-		<property name="isWNCollapsed"></property>
-		<property name="useFirstSenseOnlyLeft"></property>
-		<property name="useFirstSenseOnlyRight"></property>
-
-		<property name="useCoverageFeats">false</property>
-		<property name="coverageFeats">Word,ContentWord,Verb,ProperNoun</property>
-
-		<property name="chunkerModelPath"></property>
-
-	</section>
-
 	<section name="eu.excitementproject.eop.core.NemexWekaClassificationEDA">
 		<property name="trainDir">../core/src/test/resources/data-set/ENG/dev/</property>
 		<property name="dataSplit">false</property>
 		<property name="testDir">../core/src/test/resources/data-set/ENG/test/</property>
-		<property name="modelFile">../core/src/test/resources/NemexWekaClassificationEDAModel</property>
+		<property name="modelFile">../core/src/test/resources/model/NemexWekaClassificationEDAModel</property>
 		<property name="numOfModelFiles">1</property>
 		<property name="wekaArffFile">../core/src/test/resources/NemexWekaArff.arff</property>
 		<property name="classifier">liblinear</property>
