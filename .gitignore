@@ -4,6 +4,10 @@
 .settings/
 target/
 
+# IntelliJ files #
+*.iml
+.idea/
+
 # Package Files #
 *.jar
 *.war

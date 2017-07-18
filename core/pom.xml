@@ -297,7 +297,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<repositories>
-		<repository>
+		<!--repository>
 			<id>ukp-oss</id>
 			<name>ukp-oss-releases</name>
 			<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ukp-releases-local</url>
@@ -306,6 +306,14 @@
 			<id>ukp-oss-ext</id>
 			<name>ukp-oss-releases-ext</name>
 			<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-ext-releases-local</url>
+		</repository-->
+		<repository>
+			<id>ukp-oss-releases</id>
+			<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
+		</repository>
+		<repository>
+			<id>ukp-oss-snapshots</id>
+			<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots</url>
 		</repository>
 	</repositories>
 </project>

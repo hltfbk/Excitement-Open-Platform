@@ -1,7 +1,7 @@
 <!--
    Copyright 2010
    Ubiquitous Knowledge Processing (UKP) Lab
-   Technische Universität Darmstadt
+   Technische UniversitÃ¤t Darmstadt
    
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -14,10 +14,14 @@
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+   This script has been updated for installing TreeTagger with the Excitement 
+   Open platform -EOP- (http://hltfbk.github.io/Excitement-Open-Platform/) by the EOP team.
+
 -->
 <project basedir="../.." default="separate-jars">
 	<import>
-		<url url="http://dkpro-core-asl.googlecode.com/svn/built-ant-macros/tags/0.4.0/ant-macros.xml"/>
+		<url url="https://raw.githubusercontent.com/dkpro/resource-packager/0.4.0/ant-macros.xml"/>
 	</import>
 	
 	<target name="local-maven">
@@ -59,6 +63,7 @@
 		<model-lang-jar language="es"/>
 		<model-lang-jar language="et"/>
 		<model-lang-jar language="fr"/>
+		<model-lang-jar language="fi"/>
 		<!-- model-lang-jar language="gr"/ -->
 		<model-lang-jar language="gz"/>
 		<model-lang-jar language="it"/>
@@ -145,11 +150,14 @@
 	</target>
 	
 	<target name="install-executables" depends="check-license">
-		<property name="version.bin" value="20130228.0"/>
+                <!-- The EOP uses 20130228.0 instead of 20131118.0 -->
+		<!-- <property name="version.bin" value="20131118.0"/> -->
+                <property name="version.bin" value="20130228.0"/>
+                
 			
 		<fail unless="outputDir">No output directory set.</fail>
 		<mkdir dir="${outputDir}/bin"/>
-		<get src="http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence" dest="${outputDir}/bin/LICENSE.txt"/>
+		<get src="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/Tagger-Licence" dest="${outputDir}/bin/LICENSE.txt"/>
 		
 		<!-- 
 		  - Helmut Schmid seems to have a habit of releasing new versions of TreeTagger without
@@ -162,24 +170,28 @@
 		  - 2010-11-19 | 2012-04-25 | 076c8002337b89a9a8581aae81d5d481
 		  - 2012-04-25 | now        | a47bac91b5f373c5ba8703faa5ec7dd7 : buffer flush after 10 lines with -prob 
 		  -->
-		<install-executable-file-tar url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2-intel.tar.gz"
+		<install-executable-file-tar url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-MacOSX-3.2.tar.gz"
 			platform="osx-x86_64" file="tree-tagger" md5="a47bac91b5f373c5ba8703faa5ec7dd7"/>
-		<install-executable-file-tar url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2-intel.tar.gz"
+		<install-executable-file-tar url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-MacOSX-3.2.tar.gz"
 			platform="osx-x86_32" file="tree-tagger" md5="a47bac91b5f373c5ba8703faa5ec7dd7"/>
 		
 		<!-- FILE: tree-tagger-MacOSX-3.2.tar.gz - - - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2010-11-19 | now        | 63560dcb3a5932bc5ae0e9aab8f48e42
 		  -->
-		<install-executable-file-tar url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2.tar.gz"
-			platform="osx-ppc" file="tree-tagger" md5="63560dcb3a5932bc5ae0e9aab8f48e42"/>
+		<install-executable-file-tar url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-MacOSX-3.2.tar.gz"
+			platform="osx-ppc" file="tree-tagger" md5="a47bac91b5f373c5ba8703faa5ec7dd7"/>
 		
 		<!-- FILE: tree-tagger-linux-3.2-64bit.tar.gz  - - - - - - - - - - - - - - - - - - - - - - - - - - 
 		  - 2012-08-03 | 2012-09-12 | 1bab69906368061d6e7c7466abdeb643 : build can now be 32 bit or 64 bit 
 		  - 2012-09-12 | 2013-02-28 | 4b6459574b6b334a090399b76dbc2cdb
-		  - 2013-02-28 | now        | 3c8433d34cc2430197f8ed7b9e220b9c : only 64 bit build 
+		  - 2013-02-28 | 2013-05-07 | 3c8433d34cc2430197f8ed7b9e220b9c : only 64 bit build
+		  - 2013-05-07 | 2013-11-18 | 9c015219f8a5c696f03ee43b72e913b0
+		  - 2013-11-18 | 2015-02-09 | cbc0833fd6cb8c1ec1ea4cae4d40b25a
+                  - 2015-02-09 | now        | 2a0a3740cc9a838949219caf0d64544c
+                  
 		  -->
-		<install-executable-file-tar url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2.tar.gz"
-			platform="linux-x86_64" file="tree-tagger" md5="df6b174f31282def9445fc9148a8053a"/>
+		<install-executable-file-tar url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-linux-3.2.tar.gz"
+			platform="linux-x86_64" file="tree-tagger" md5="16cf3578fafd8c39b5b9df0077297025"/>
 
 		<!-- FILE: tree-tagger-linux-3.2.tar.gz  - - - - - - - - - - - - - - - - - - - - - - - - - - 
 		  - xxxx-xx-xx | 2010-11-19 | 293ecb477a9f3993206674d68e81b792 (contains dynamically linked binary)
@@ -196,20 +208,26 @@
 		  - 2010-11-19 | 2012-02-06 | 4a58ee2a4177cc4e9bfaead8cec6430d
 		  - 2012-02-06 | now        | bcebb9b9745e2ac12c5226a032b8bfb4 (ELF 32-bit MSB executable, SPARC, version 1 (SYSV), dynamically linked (uses shared libs), stripped)
 		  -->
-		<install-executable-file-tar url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-3.2.tar.gz"
+		<install-executable-file-tar url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-3.2.tar.gz"
 			platform="solaris-sparc" file="tree-tagger" md5="bcebb9b9745e2ac12c5226a032b8bfb4"/>
 			
 		<!-- FILE: tree-tagger-windows-3.2.zip - - - - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2010-11-19 | 2012-04-25 | 72a5489fe197b0173ea476e2224a6ad6
-		  - 2012-04-25 | now        | c88d7fe1aa63bebaccfa019c222f54ea : buffer flush after 10 lines with -prob 
+		  - 2012-04-25 | 2015-02-09 | c88d7fe1aa63bebaccfa019c222f54ea : buffer flush after 10 lines with -prob
+                  - 2015-02-09 | now        | e78a1b710d738f9e29d4756ccac4fc3a
+                  
 		  -->
-		<install-executable-file-zip url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-windows-3.2.zip"
-			platform="windows-x86_32" file="tree-tagger.exe" md5="c88d7fe1aa63bebaccfa019c222f54ea"/>
-		<install-executable-file-zip url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-windows-3.2.zip"
-			platform="windows-x86_64" file="tree-tagger.exe" md5="c88d7fe1aa63bebaccfa019c222f54ea"/>
+		<install-executable-file-zip url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-windows-3.2.zip"
+			platform="windows-x86_32" file="tree-tagger.exe" md5="e78a1b710d738f9e29d4756ccac4fc3a"/>
+		<install-executable-file-zip url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-windows-3.2.zip"
+			platform="windows-x86_64" file="tree-tagger.exe" md5="e78a1b710d738f9e29d4756ccac4fc3a"/>
 	</target>
 	
-	<target name="install-all-models" depends="et, la, gr, de, en, nl, bg, fr, it, sw, es, sl"/>
+        <!-- 
+	<target name="install-all-models" depends="et, la, gr, de, en, nl, bg, fr, fi, it, ru, sw, es, pt, gz, zh, sl"/>
+        -->
+        <!-- EOP configuration -->
+        <target name="install-all-models" depends="de, en, it"/>
 	
 	<!--
 	- Little Endian - x86 (Linux, Windows, Mac-Intel)
@@ -229,28 +247,37 @@
 		<!-- FILE: english-par-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2011-10-31 | now        | 6037a03deda962b8938b7b243d0c902d
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/english-par-3.2.bin.gz"
+        <!-- EOP project: it doesn't exist any more so we removed it. -->
+        <!--
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/english-par-3.2.bin.gz"
     		type="tagger" endianness="big-endian" language="en" encoding="ISO-8859-1" tagset="ptb"
     		md5="6037a03deda962b8938b7b243d0c902d"/>
+       -->
 
 		<!-- FILE: english-chunker-par-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2009-08-24 | now        | e751e720200feff98c611819f95e0f5e
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/english-chunker-par-3.2.bin.gz"
+        <!-- EOP project: it doesn't exist any more so we removed it. -->
+        <!--
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/english-chunker-par-3.2.bin.gz"
     		type="chunker" endianness="big-endian" language="en" encoding="ISO-8859-1" tagset="tt"
     		md5="e751e720200feff98c611819f95e0f5e"/>
+        -->
 
 		<!-- FILE: english-par-linux-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
-		  - 2011-11-09 | now        | c64968dfed3f74d17b63987ff7421151
-		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/english-par-linux-3.2.bin.gz"
+		  - 2011-11-09 | 2015-03-23 | c64968dfed3f74d17b63987ff7421151
+                  - 2015-03-23 |            | 17d93abadfd8786b9a36dfdfd12f8d98
+                  - 2015-03-23 |            | 441b51369b6888387a17a26a5dc2d146
+                  - 2015-03-23 | now        | 9a70c2da699c4a57d8cc361039cd0cc7
+ 		  -->
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/english-par-linux-3.2-utf8.bin.gz"
     		type="tagger" endianness="little-endian" language="en" encoding="ISO-8859-1" tagset="ptb"
-    		md5="c64968dfed3f74d17b63987ff7421151"/>
+    		md5="9a70c2da699c4a57d8cc361039cd0cc7"/>
 
 		<!-- FILE: english-par-linux-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2009-08-24 | now        | 981df5901588a016ade69108d4421531
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/english-chunker-par-linux-3.2.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/english-chunker-par-linux-3.2.bin.gz"
     		type="chunker" endianness="little-endian" language="en" encoding="ISO-8859-1" tagset="tt"
     		md5="981df5901588a016ade69108d4421531"/>
 	</target>
@@ -261,31 +288,39 @@
 		<!-- FILE: german-par-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2011-02-09 | now        | 6618dd26e4974193ae50fbed0888666a
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/german-par-3.2.bin.gz"
+        <!-- EOP project: it doesn't exist any more so we removed it. -->
+        <!-- 
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/german-par-3.2.bin.gz"
     		type="tagger" endianness="big-endian" language="de" encoding="ISO-8859-1" tagset="stts"
     		md5="6618dd26e4974193ae50fbed0888666a"/>
+         -->
 
 		<!-- FILE: german-chunker-par-3.1.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2008-06-02 | now        | 2a07ffa062165557ea99f4fcdf4303a9
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/german-chunker-par-3.1.bin.gz"
+
+        <!-- EOP project: it doesn't exist any more so we removed it. -->
+        <!--
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/german-chunker-par-3.1.bin.gz"
     		type="chunker" endianness="big-endian" language="de" encoding="ISO-8859-1" tagset="tt"
     		md5="2a07ffa062165557ea99f4fcdf4303a9"/>
+         -->
 		
 		<!-- FILE: german-par-linux-3.2-utf8.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  -            | 2012-02-13 | acbfeaafdcfcc07cbb1e9c396757934c
 		  - 2012-02-13 | 2012-03-15 | 45afdcdabfffc69995523748cd42bf81
 		  - 2012-03-15 | 2012-12-07 | 3a18444accf080f54c5ebf655fedc781
-		  - 2012-12-07 | now        | 54f16f045083ae6ebe8b9d9d4a24484e
+		  - 2012-12-07 | 2017-04-07 | 54f16f045083ae6ebe8b9d9d4a24484e
+                  - 2012-12-07 | now        | 36183505f5ef1059aac104fb1fe1534d
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/german-par-linux-3.2-utf8.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/german-par-linux-3.2-utf8.bin.gz"
     		type="tagger" endianness="little-endian" language="de" encoding="UTF-8" tagset="stts"
-    		md5="54f16f045083ae6ebe8b9d9d4a24484e"/>
+    		md5="36183505f5ef1059aac104fb1fe1534d"/>
 
 		<!-- FILE: german-chunker-par-linux-3.2-utf8.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2011-04-29 | now        | 56ea6ac618bc21d28929a85a6964ff65
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/german-chunker-par-linux-3.2-utf8.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/german-chunker-par-linux-3.2-utf8.bin.gz"
     		type="chunker" endianness="little-endian" language="de" encoding="UTF-8" tagset="tt"
     		md5="56ea6ac618bc21d28929a85a6964ff65"/>
 	</target>
@@ -296,7 +331,7 @@
 		<!-- FILE: dutch-par-3.1.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2008-06-02 | now        | 44bc760c29fb202d2ca5fe5f8acd1dd3
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/dutch-par-3.1.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/dutch-par-3.1.bin.gz"
     		type="tagger" endianness="big-endian" language="nl" encoding="ISO-8859-1" tagset="tt"
     		md5="0fed5cd154759632ff8181ec588a67e3"/>
 
@@ -305,7 +340,7 @@
 		  - ????-??-?? | 2013-01-07 | 7d533ea8e8b768f87d9c684e47a59872 (dutch-par-linux-3.1)
 		  - 2013-01-07 | now        | 40c82daae0c7063eb3eabf1541303fca
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/dutch-par-linux-3.2-utf8.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/dutch-par-linux-3.2-utf8.bin.gz"
     		type="tagger" endianness="little-endian" language="nl" encoding="UTF-8" tagset="tt"
     		md5="40c82daae0c7063eb3eabf1541303fca"/>
 	</target>
@@ -316,39 +351,53 @@
 		<!-- FILE: bulgarian-par-3.1.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2006-02-17 | now        | 6a29dc14daf2256eacf036a52add4b9e
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/bulgarian-par-3.1.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/bulgarian-par-3.1.bin.gz"
     		type="tagger" endianness="big-endian" language="bg" encoding="UTF-8" tagset="btb"
     		md5="6a29dc14daf2256eacf036a52add4b9e"/>
     	
 		<!-- FILE: bulgarian-par-linux-3.1.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2006-02-17 | now        | bd3661679ffe9630f6bd61c59cea391b
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/bulgarian-par-linux-3.1.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/bulgarian-par-linux-3.1.bin.gz"
     		type="tagger" endianness="little-endian" language="bg" encoding="UTF-8" tagset="btb"
     		md5="bd3661679ffe9630f6bd61c59cea391b"/>
 	</target>
 
+	<target name="fi">
+		<property name="version.fi" value="20130716.0"/>
+		
+		<!-- FILE: finnish-par-linux-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - - - -
+		  - 2013-07-16 | now        | 241dbbae52baad70787a952d3a0e71a3
+		  -
+		  - Corpus: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/treebank/
+		  - Tagset: http://www.ling.helsinki.fi/kieliteknologia/tutkimus/treebank/sources/FinnTreeBankManual.pdf
+		  -->
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/finnish-par-linux-3.2.bin.gz"
+    		type="tagger" endianness="little-endian" language="fi" encoding="UTF-8" tagset="ftb-tt"
+    		md5="241dbbae52baad70787a952d3a0e71a3"/>
+	</target>
+	
 	<target name="fr">
 		<property name="version.fr" value="20101115.0"/>
 		
 		<!-- FILE: french-par-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2010-01-11 | now        | e6f2f1ffb6c29e3a08bc11f140c5b9dc
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/french-par-3.2.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/french-par-3.2.bin.gz"
     		type="tagger" endianness="big-endian" language="fr" encoding="ISO-8859-1" tagset="stein"
     		md5="e6f2f1ffb6c29e3a08bc11f140c5b9dc"/>
     	
 		<!-- FILE: french-par-linux-3.2-utf8.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2010-01-11 | now        | 41d978f247b23d6fee733da32a55a775
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/french-par-linux-3.2-utf8.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/french-par-linux-3.2-utf8.bin.gz"
     		type="tagger" endianness="little-endian" language="fr" encoding="UTF-8" tagset="stein"
     		md5="41d978f247b23d6fee733da32a55a775"/>
 
 		<!-- FILE: french-chunker-par-linux-3.2-utf8.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2008-06-11 | now        | 975e3e306198c9f61f14428621ed87ba
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/french-chunker-par-linux-3.2-utf8.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/french-chunker-par-linux-3.2-utf8.bin.gz"
     		type="chunker" endianness="little-endian" language="fr" encoding="UTF-8" tagset="ftb"
     		md5="975e3e306198c9f61f14428621ed87ba"/>
 	</target>
@@ -370,16 +419,21 @@
 		<!-- FILE: italian-par-3.1.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2008-06-02 | now        | e7809f33e72a0e620ec4247ae8ad5a80
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/italian-par-3.1.bin.gz"
+        
+        <!-- EOP project: it doesn't exist any more so we removed it. -->
+        <!--
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/italian-par-3.1.bin.gz"
     		type="tagger" endianness="big-endian" language="it" encoding="ISO-8859-1" tagset="stein"
     		md5="e7809f33e72a0e620ec4247ae8ad5a80"/>
+        -->
     	
 		<!-- FILE: italian-par-linux-3.2-utf8.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
-		  - 2009-06-22 | now        | 79c03b4cc14c89d58aa1f97a133d01d7
+		  - 2009-06-22 | 2015-02-09   | 79c03b4cc14c89d58aa1f97a133d01d7
+                  - 2015-02-09 | now          | d3266e8b3d1860543403342fe0c95fc8
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/italian-par-linux-3.2-utf8.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/italian-par-linux-3.2-utf8.bin.gz"
     		type="tagger" endianness="little-endian" language="it" encoding="UTF-8" tagset="stein"
-    		md5="79c03b4cc14c89d58aa1f97a133d01d7"/>
+    		md5="d3266e8b3d1860543403342fe0c95fc8"/>
 	</target>
 	
 	<target name="ru">
@@ -394,14 +448,15 @@
 	</target>
 
 	<target name="sw">
-		<property name="version.sw" value="20101115.0"/>
+		<property name="version.sw" value="20130729.0"/>
 		
 		<!-- FILE: swahili-par-linux-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
-		  - 2010-03-17 | now        | 0df5f70b0cc81a3b437a46a9e0a3d71b
+		  - 2010-03-17 | 2013-07-29 | 0df5f70b0cc81a3b437a46a9e0a3d71b
+		  - 2013-07-29 | now        | 002bebeeca52d1112aa5f31173c5ecec
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/swahili-par-linux-3.2.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/swahili-par-linux-3.2.bin.gz"
     		type="tagger" endianness="little-endian" language="sw" encoding="ISO-8859-1" tagset="swatwol"
-    		md5="0df5f70b0cc81a3b437a46a9e0a3d71b"/>
+    		md5="002bebeeca52d1112aa5f31173c5ecec"/>
 	</target>
 
 	<target name="et">
@@ -410,7 +465,7 @@
 		<!-- FILE: estonian-par-linux-3.2.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2011-01-24 | now        | 4a98b412e36afefbc204fca9e561f5cb
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/estonian-par-linux-3.2.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/estonian-par-linux-3.2.bin.gz"
     		type="tagger" endianness="little-endian" language="et" encoding="UTF-8" tagset="tartu"
     		md5="4a98b412e36afefbc204fca9e561f5cb"/>
 	</target>
@@ -422,28 +477,30 @@
 		  - 2011-05-07 | 2011-08-19 | f959f8633ef842f069f0331ad19dc8b4
 		  - 2011-08-19 | now        | bde1f6a63b2c5a658ba25a8eb90832a8
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/latin-par-linux-3.2.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/latin-par-linux-3.2.bin.gz"
     		type="tagger" endianness="little-endian" language="la" encoding="ISO-8859-1" tagset="brandolini"
     		md5="bde1f6a63b2c5a658ba25a8eb90832a8"/>
 	</target>
 	
 	<target name="es">
-		<property name="version.es" value="20130214.0"/>
+		<property name="version.es" value="20131007.0"/>
 		
 		<!-- FILE: spanish-par-3.1.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2008-06-02 | now        | 5ccc79322b7954bfc82923e6123cac04
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/spanish-par-3.1.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/spanish-par-3.1.bin.gz"
     		type="tagger" endianness="big-endian" language="es" encoding="ISO-8859-1" tagset="crater"
     		md5="5ccc79322b7954bfc82923e6123cac04"/>
 
 		<!-- FILE: spanish-par-linux-3.2-utf8.bin.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2011-11-07 | 2013-02-14 | 9770d507bd3cfb30385e1c2d4ce46f89
-		  - 2013-02-14 | now        | 33359d3deca5f9acab7f3b5b38529e17
+		  - 2013-02-14 | 2013-04-03 | 33359d3deca5f9acab7f3b5b38529e17
+		  - 2013-04-03 | 2013-10-07 | 30a9c4deed380e7986a4a76753ecde51
+		  - 2013-10-07 | now        | 8488c4319fac414802637b654a61db37
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/spanish-par-linux-3.2-utf8.bin.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/spanish-par-linux-3.2-utf8.bin.gz"
     		type="tagger" endianness="little-endian" language="es" encoding="UTF-8" tagset="crater"
-    		md5="30a9c4deed380e7986a4a76753ecde51"/>
+    		md5="8488c4319fac414802637b654a61db37"/>
 	</target>
 
 	<target name="pt">
@@ -474,7 +531,7 @@
 		<!-- FILE: slovenian.par.gz - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2010-07-03 | now        | d6b230483364be5ec0a3054a1b78df2d
 		  -->
-    	<install-model-file-url url="ftp://ftp.ims.uni-stuttgart.de/pub/corpora/slovenian.par.gz"
+    	<install-model-file-url url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/slovenian.par.gz"
     		type="tagger" endianness="little-endian" language="sl" encoding="UTF-8"
     		md5="d6b230483364be5ec0a3054a1b78df2d"/>
 	</target>
