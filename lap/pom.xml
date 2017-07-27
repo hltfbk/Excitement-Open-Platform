@@ -12,49 +12,14 @@
   	<name>lap</name>
   	<description>lap</description>
 
-	<repositories>
-     	<repository>
-       		<id>ukp-oss-releases</id>
-			<name>DKPro repository</name>
-          	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
-     	</repository>
-     <!--  
-     	<repository>
-     		<id>ukp-oss-snapshot</id>
-     		<name>DKPro snapshot repository (for 1.5.0 access)</name>
-     		<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots</url> 
-     	</repository>
-     --> 
-  	</repositories>
-  	
-   	<pluginRepositories>
-   		<pluginRepository>
-        	<id>ukp-oss-releases</id>
-			<name>DKPro repository</name>
-          	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
-          	<releases>
-            	<enabled>true</enabled>
-            	<updatePolicy>never</updatePolicy>
-            	<checksumPolicy>warn</checksumPolicy>
-          	</releases>
-          	<snapshots>
-            	<enabled>false</enabled>
-          	</snapshots>
-      	</pluginRepository>
-   	</pluginRepositories>
-
- 	<dependencies> 	
+ 	<dependencies>
  	
- 	    <!-- The following library (lexmorph-asl) contains the correct Italian part-of-speech mapping (it-stein-tagger.map).
- 	     The wrong one contained in DKPro 1.1.4 maps all the part-of-speech with POS while the correct one distributed with the
- 	     EOP (under the lap resources directory) is regularly overwritten by the DKPro one.
- 	     When we will adopt DKPro 1.1.7 this library will not be necessary any more and will be removed.
- 	     Please don't move the dependency to the library in anywhere else. -->
+ 	    <!-- TODO: verify that this is no longer needed (using DKPro libs version 1.4.0) >
  	 	<dependency>
       		<groupId>eu.fbk</groupId>
          	<artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
    			<version>1.4.0</version>
-    	</dependency>
+    	</dependency-->
     	
    		<dependency>
    			<groupId>junit</groupId>
@@ -115,37 +80,37 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
     	</dependency>
-    	
+
     	<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
-    	<dependency>
+		<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent</artifactId>
-     		<version>20120616.0</version>
+     		<version>${dkpro-opennlp-version}</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent</artifactId>
-     		<version>20120616.0</version>
+     		<version>${dkpro-opennlp-version}</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent</artifactId>
-     		<version>20120616.0</version>
+     		<version>${dkpro-opennlp-version}</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-de-maxent</artifactId>
-     		<version>20120616.0</version>
+     		<version>${dkpro-opennlp-version}</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-de-maxent</artifactId>
-     		<version>20120616.0</version>
+     		<version>${dkpro-opennlp-version}</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-de-maxent</artifactId>
-     		<version>20120616.0</version>
+     		<version>${dkpro-opennlp-version}</version>
     	</dependency>
     	<!--  the following 3 models are Italian models, trained by FBK; they exists only on project repository -->
     	<dependency>
@@ -280,7 +245,7 @@
     		<artifactId>
     			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
     		</artifactId>
-    		<version>1.4.0</version>
+    		<version>${dkpro-version}</version>
     	</dependency>
 
 		<dependency>
@@ -305,11 +270,15 @@
      		<dependency>
      			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      			<artifactId>de.tudarmstadt.ukp.dkpro.core-asl</artifactId>
-     			<version>1.4.0</version>
+     			<version>${dkpro-version}</version>
      			<type>pom</type>
      			<scope>import</scope>
      		</dependency>
    		</dependencies>
   	</dependencyManagement>
+
+	<properties>
+		<dkpro-opennlp-version>20120616.0</dkpro-opennlp-version>
+	</properties>
 
 </project>

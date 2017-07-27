@@ -38,11 +38,5 @@
     		<artifactId>transformations</artifactId>
     		<version>1.2.4-SNAPSHOT</version>
     	</dependency>
-      <dependency>
-          <groupId>eu.excitementproject</groupId>
-          <artifactId>distsim</artifactId>
-          <version>1.2.4-SNAPSHOT</version>
-      </dependency>
-
   </dependencies>
 </project>
