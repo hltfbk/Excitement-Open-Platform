@@ -13,14 +13,6 @@
   	<description>lap</description>
 
  	<dependencies>
- 	
- 	    <!-- TODO: verify that this is no longer needed (using DKPro libs version 1.4.0) >
- 	 	<dependency>
-      		<groupId>eu.fbk</groupId>
-         	<artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
-   			<version>1.4.0</version>
-    	</dependency-->
-    	
    		<dependency>
    			<groupId>junit</groupId>
    			<artifactId>junit</artifactId>
