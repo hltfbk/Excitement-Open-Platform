@@ -49,6 +49,7 @@
     		<artifactId>lexicalminer</artifactId>
     		<version>1.2.4-SNAPSHOT</version>
     	</dependency>
+    	
     	<!-- Dependency on legacy code of Bar-Ilan University NLP lab -->
 		<dependency>
     		<groupId>org.biu.nlp</groupId>

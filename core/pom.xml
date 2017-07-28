@@ -144,6 +144,10 @@
 			<artifactId>opennlp-tools</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>de.bwaldvogel</groupId>
+			<artifactId>liblinear</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
