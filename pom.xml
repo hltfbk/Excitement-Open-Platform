@@ -906,6 +906,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<surefire.working.dir>${project.build.directory}/BIUTEE_Environment/biutee/workdir/</surefire.working.dir>
 		<dependency.output.dir>${project.build.directory}/BIUTEE_Environment/</dependency.output.dir>
-		<dkpro-version>1.4.0</dkpro-version> <!-- Latest version is 1.8.0, but 1.5.0 already breaks the build -->
+		<dkpro-version>1.5.0</dkpro-version> <!-- TODO: make code compatible with latest DKPro release -->
 	</properties>
 </project>

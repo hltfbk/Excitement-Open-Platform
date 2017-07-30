@@ -212,7 +212,7 @@
 		<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl</artifactId>
-    		<version>${dkpro-tools-version}</version>
+    		<version>${dkpro-version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>*</groupId>
@@ -243,36 +243,32 @@
      		<dependency>
      			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      			<artifactId>de.tudarmstadt.ukp.dkpro.core-asl</artifactId>
-     			<version>${dkpro-version}</version>
+     			<version>1.4.0</version><!-- TODO: version 1.5.0 breaks the build -->
      			<type>pom</type>
      			<scope>import</scope>
      		</dependency>
 			<dependency>
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
-				<version>${dkpro-tools-version}</version>
+				<version>${dkpro-version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
-				<version>${dkpro-tools-version}</version>
+				<version>${dkpro-version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-asl</artifactId>
-				<version>${dkpro-tools-version}</version>
+				<version>${dkpro-version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
    		</dependencies>
   	</dependencyManagement>
-
-	<properties>
-		<dkpro-tools-version>1.5.0</dkpro-tools-version>
-	</properties>
 
 </project>
