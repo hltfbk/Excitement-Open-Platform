@@ -12,50 +12,7 @@
   	<name>lap</name>
   	<description>lap</description>
 
-	<repositories>
-     	<repository>
-       		<id>ukp-oss-releases</id>
-			<name>DKPro repository</name>
-          	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
-     	</repository>
-     <!--  
-     	<repository>
-     		<id>ukp-oss-snapshot</id>
-     		<name>DKPro snapshot repository (for 1.5.0 access)</name>
-     		<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-snapshots</url> 
-     	</repository>
-     --> 
-  	</repositories>
-  	
-   	<pluginRepositories>
-   		<pluginRepository>
-        	<id>ukp-oss-releases</id>
-			<name>DKPro repository</name>
-          	<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases</url>
-          	<releases>
-            	<enabled>true</enabled>
-            	<updatePolicy>never</updatePolicy>
-            	<checksumPolicy>warn</checksumPolicy>
-          	</releases>
-          	<snapshots>
-            	<enabled>false</enabled>
-          	</snapshots>
-      	</pluginRepository>
-   	</pluginRepositories>
-
- 	<dependencies> 	
- 	
- 	    <!-- The following library (lexmorph-asl) contains the correct Italian part-of-speech mapping (it-stein-tagger.map).
- 	     The wrong one contained in DKPro 1.1.4 maps all the part-of-speech with POS while the correct one distributed with the
- 	     EOP (under the lap resources directory) is regularly overwritten by the DKPro one.
- 	     When we will adopt DKPro 1.1.7 this library will not be necessary any more and will be removed.
- 	     Please don't move the dependency to the library in anywhere else. -->
- 	 	<dependency>
-      		<groupId>eu.fbk</groupId>
-         	<artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
-   			<version>1.4.0</version>
-    	</dependency>
-    	
+ 	<dependencies>
    		<dependency>
    			<groupId>junit</groupId>
    			<artifactId>junit</artifactId>
@@ -115,58 +72,48 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
     	</dependency>
-    	
+
     	<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
-    	<dependency>
+		<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent</artifactId>
-     		<version>20120616.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent</artifactId>
-     		<version>20120616.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent</artifactId>
-     		<version>20120616.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-de-maxent</artifactId>
-     		<version>20120616.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-de-maxent</artifactId>
-     		<version>20120616.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-de-maxent</artifactId>
-     		<version>20120616.0</version>
     	</dependency>
-    	<!--  the following 3 models are Italian models, trained by FBK; they exists only on project repository -->
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-it-maxent</artifactId>
-     		<version>20130823.0</version>
+     		<version>20130823.0</version><!--  TODO: this model, trained by FBK, exists only on project repository -->
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-it-maxent</artifactId>
-     		<version>20130823.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-it-maxent</artifactId>
-     		<version>20130823.0</version>
     	</dependency>
 		<dependency>
 			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 			<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-parser-en-chunking</artifactId>
-			<version>20120616.1</version>
 		</dependency>
     	<!--  end of openNLP models -->
     	
@@ -178,63 +125,50 @@
 	<!-- TreeTagger related dependencies --> 
 	<!-- if you want to use TreeTagger, and related LAPs, please read /lap/src/scripts/treetagger/README.txt, and follow the instructions --> 
  	
- 	<!--
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
-     		<version>20130228.0</version>
+     		<version>20130228.0</version><!-- TODO: the version specified in treetagger-asl breaks the build -->
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-de</artifactId>
-     		<version>20121207.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-en</artifactId>
-     		<version>20111109.0</version>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
-     		<version>20101115.0</version>
     	</dependency>
- 	-->
-	<!-- end of TreeTagger related dependencies --> 
+	<!-- end of TreeTagger related dependencies -->
 
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
     			de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-linear
     		</artifactId>
-    		<version>20120312.0</version>
     	</dependency>
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     		<artifactId>
     			de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-en-poly
     		</artifactId>
-    		<version>20120312.0</version>
     	</dependency>
     	<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    		<artifactId>
-    			de.tudarmstadt.ukp.dkpro.core.maltparser-asl
-    		</artifactId>
+    		<artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-asl</artifactId>
     	</dependency>
     	<dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-            <artifactId>
-                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear
-            </artifactId>
-            <version>20130511.0</version>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear</artifactId>
+            <version>20130511.0</version><!-- TODO: defined in "use-proprietary-resources" profile in maltparser-asl -->
         </dependency>
     	<dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-            <artifactId>
-                de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-it-linear
-            </artifactId>
-            <version>20141002.0</version>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-it-linear</artifactId>
+            <version>20141002.0</version><!-- TODO: can't find this in dkpro-core codebase -->
         </dependency>
 
     	<!-- We are not using MST parser for 1.0 release.  -->
@@ -275,15 +209,17 @@
     	</dependency>
     	-->
 
-		<!-- MUST BE THE LAST DEPENDENCY, to avoid jar hell with another version of stanfordnlp.
-		     Used only for the file ner-en-all.3class.distsim.crf.map, by the class StanfordNamedEntityRecognizerAE -->
 		<dependency>
     		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-    		<artifactId>
-    			de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl
-    		</artifactId>
-    		<version>1.4.0</version>
-    	</dependency>
+    		<artifactId>de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl</artifactId>
+    		<version>${dkpro-version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 
 		<dependency>
 			<groupId>org.biu.nlp</groupId>
@@ -307,10 +243,31 @@
      		<dependency>
      			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      			<artifactId>de.tudarmstadt.ukp.dkpro.core-asl</artifactId>
-     			<version>1.4.0</version>
+     			<version>1.4.0</version><!-- TODO: version 1.5.0 breaks the build -->
      			<type>pom</type>
      			<scope>import</scope>
      		</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
+				<version>${dkpro-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
+				<version>${dkpro-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-asl</artifactId>
+				<version>${dkpro-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
    		</dependencies>
   	</dependencyManagement>
 
