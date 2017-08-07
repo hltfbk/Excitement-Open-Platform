@@ -292,13 +292,6 @@
 		<!-- Configuration for dependencies which otherwise have multiple versions on the classpath.
 		Putting these in the main pom for easier maintenance -->
 			<dependency>
-			<!-- TODO: NemexWekaClassificationEDATest throws "java.lang.Exception: liblinear classes not in CLASSPATH!".
-			This requires a wrapper but the one in https://github.com/bwaldvogel/liblinear-weka is outdated. -->
-				<groupId>de.bwaldvogel</groupId>
-				<artifactId>liblinear</artifactId>
-				<version>1.95</version>
-			</dependency>
-			<dependency>
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
 				<version>${dkpro-version}</version>

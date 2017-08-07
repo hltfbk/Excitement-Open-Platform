@@ -11,16 +11,6 @@
 	<description>core</description>
 
 	<dependencies>
-	
-		<!-- Dependency for LibLinear weka wrapper -->
-		<dependency>
-  			<groupId>de.bwaldvogel</groupId>
-  			<artifactId>liblinear</artifactId>
-  			<version>1.5</version>
-			<type>pom</type>
-		</dependency>
-
-
 		<!-- Deeplearning4j dependencies -->
 		<dependency>
 			<groupId>org.deeplearning4j</groupId>
@@ -153,8 +143,12 @@
 			<artifactId>opennlp-tools</artifactId>
 		</dependency>
 		<dependency>
+			<!-- TODO: NemexWekaClassificationEDATest throws "java.lang.Exception: liblinear classes not in CLASSPATH!".
+            This requires a wrapper but the one in https://github.com/bwaldvogel/liblinear-weka is outdated. -->
 			<groupId>de.bwaldvogel</groupId>
 			<artifactId>liblinear</artifactId>
+			<version>2.11</version>
+			
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
