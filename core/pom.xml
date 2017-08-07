@@ -148,7 +148,7 @@
 			<groupId>de.bwaldvogel</groupId>
 			<artifactId>liblinear</artifactId>
 			<version>2.11</version>
-			
+
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

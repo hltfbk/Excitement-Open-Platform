@@ -35,7 +35,8 @@
 		<module>globalgraphoptimizer</module>
 		<module>lexicalinferenceminer</module>
 		<module>alignmentedas</module> 
-		<module>adarte</module> 
+		<module>adarte</module>
+		<module>distribution</module>
 	</modules>
 
         <profiles>
@@ -896,6 +897,7 @@
 
 	</reporting>
 	<properties>
+		<eop-version>1.2.4-SNAPSHOT</eop-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<surefire.working.dir>${project.build.directory}/BIUTEE_Environment/biutee/workdir/</surefire.working.dir>
 		<dependency.output.dir>${project.build.directory}/BIUTEE_Environment/</dependency.output.dir>
