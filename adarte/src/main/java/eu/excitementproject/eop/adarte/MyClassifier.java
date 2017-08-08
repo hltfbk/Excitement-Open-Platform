@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
+import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.FastVector;
@@ -26,7 +27,7 @@ import weka.core.Instance;
 public class MyClassifier {
 	
 	//the classifier
-	private Classifier classifier = null;
+	private AbstractClassifier classifier = null;
 	//for cross validation
 	private int numFolds = 10;
 	//the feature set
@@ -53,7 +54,7 @@ public class MyClassifier {
 			
 			Class<?> classifierClass = Class.forName(classifierName);
 			Constructor<?> classifierClassConstructor = classifierClass.getConstructor();
-			this.classifier = (Classifier) classifierClassConstructor.newInstance();
+			this.classifier = (AbstractClassifier) classifierClassConstructor.newInstance();
 			if (classifierParameters != null && !classifierParameters.equals(""))
 				this.classifier.setOptions(classifierParameters);
 			String[] options = this.classifier.getOptions();
@@ -89,7 +90,7 @@ public class MyClassifier {
 		try {
 			
 	    	if (this.classifier == null) {
-	    		this.classifier = (Classifier) weka.core.SerializationHelper.read(classifierModel);
+	    		this.classifier = (AbstractClassifier) weka.core.SerializationHelper.read(classifierModel);
 	    	}
 	    	
 	    	//load the feature set used for training the classifier

@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
+import de.bwaldvogel.liblinear.SolverType;
 import org.apache.log4j.Logger;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
@@ -103,7 +104,7 @@ public class NemexWekaClassificationEDA implements
 		if (classifierStr.equalsIgnoreCase("liblinear")) {
 			curClassifier = new LibLINEAR();
 			((LibLINEAR) curClassifier).setSVMType(new SelectedTag(
-					LibLINEAR.SVMTYPE_L2_LR, LibLINEAR.TAGS_SVMTYPE));
+					SolverType.L2R_LR.getId(), LibLINEAR.TAGS_SVMTYPE));
 		} else
 			throw new ConfigurationException(
 					"Specify the correct classifier (liblinear)");

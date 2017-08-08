@@ -36,7 +36,6 @@
 		<module>lexicalinferenceminer</module>
 		<module>alignmentedas</module> 
 		<module>adarte</module>
-		<module>distribution</module>
 	</modules>
 
         <profiles>
@@ -125,8 +124,29 @@
 	   </profile>
 
 	   <!-- Other profiles go here .. -->
+		<profile>
+			<!-- A profile for building the distribution file -->
+			<id>release</id>
+			<modules>
+				<module>core</module>
+				<module>lap</module>
+				<module>common</module>
+				<!-- <module>infrastructure</module> -->
+				<!-- <module>engineml</module> -->
+				<module>transformations</module>
+				<module>biutee</module>
+				<module>util</module>
+				<module>redis</module>
+				<module>distsim</module>
+				<module>globalgraphoptimizer</module>
+				<module>lexicalinferenceminer</module>
+				<module>alignmentedas</module>
+				<module>adarte</module>
+				<module>distribution</module>
+			</modules>
+		</profile>
 
-	</profiles>
+		</profiles>
 
 	<dependencyManagement>
 		<dependencies>
@@ -340,7 +360,7 @@
 			<dependency>
 				<groupId>nz.ac.waikato.cms.weka</groupId>
 				<artifactId>weka-stable</artifactId>
-				<version>3.6.9</version> <!-- TODO: version 3.6.11 breaks the build -->
+				<version>3.8.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ant</groupId>

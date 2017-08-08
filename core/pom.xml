@@ -143,12 +143,18 @@
 			<artifactId>opennlp-tools</artifactId>
 		</dependency>
 		<dependency>
-			<!-- TODO: NemexWekaClassificationEDATest throws "java.lang.Exception: liblinear classes not in CLASSPATH!".
-            This requires a wrapper but the one in https://github.com/bwaldvogel/liblinear-weka is outdated. -->
 			<groupId>de.bwaldvogel</groupId>
 			<artifactId>liblinear</artifactId>
-			<version>2.11</version>
-
+			<version>1.96</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/liblinear.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>liblinear</artifactId>
+			<version>1.9.8-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/liblinear-wrapper.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
