@@ -41,6 +41,23 @@
       <supertypeName>uima.tcas.Annotation</supertypeName>
     </typeDescription>
     <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Div</name>
+      <description/>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>divType</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>id</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>

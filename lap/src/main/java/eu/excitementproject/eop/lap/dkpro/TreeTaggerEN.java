@@ -10,7 +10,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 //import org.uimafit.factory.AggregateBuilder;
 //import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
+import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosTagger;
 
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
@@ -37,7 +37,7 @@ public class TreeTaggerEN extends LAP_ImplBaseAE implements LAPAccess {
 		try 
 		{
 			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
-			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
+			descArr[1] = createPrimitiveDescription(TreeTaggerPosTagger.class);
 		}
 		catch (ResourceInitializationException e)
 		{

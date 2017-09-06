@@ -543,7 +543,9 @@ public class PlatformCASProber {
 	        }
 	      } else if (CAS.TYPE_NAME_INTEGER.equals(rangeTypeName)) {
 	        aOut.println(aFS.getIntValue(feat));
-	      } else if (CAS.TYPE_NAME_FLOAT.equals(rangeTypeName)) {
+	      } else if (CAS.TYPE_NAME_BOOLEAN.equals(rangeTypeName)) {
+			  aOut.println(aFS.getBooleanValue(feat));
+		  } else if (CAS.TYPE_NAME_FLOAT.equals(rangeTypeName)) {
 	        aOut.println(aFS.getFloatValue(feat));
 	      } else if (CAS.TYPE_NAME_STRING_ARRAY.equals(rangeTypeName)) {
 	        StringArrayFS arrayFS = (StringArrayFS) aFS.getFeatureValue(feat);

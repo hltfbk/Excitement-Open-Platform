@@ -153,47 +153,47 @@
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-core</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-examples</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-bootstrap</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-adapter-soap</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-tools</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-document-annotation</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-cpe</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimaj-adapter-vinci</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>jVinci</artifactId>
-				<version>2.4.0</version>
+				<version>${uimaj-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
@@ -266,11 +266,6 @@
 				<version>2008-09-28</version>
 			</dependency>
 			<dependency>
-				<groupId>opennlp</groupId> <!-- TODO: does this exist? -->
-				<artifactId>opennlp-tools</artifactId>
-				<version>1.3.0</version>
-			</dependency>
-			<dependency>
 				<groupId>com.aliasi</groupId>
 				<artifactId>lingpipe</artifactId>
 				<version>3.1.1</version>
@@ -315,6 +310,21 @@
 			<dependency>
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
+				<version>${dkpro-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.frequency-asl</artifactId>
+				<version>${dkpro-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.resources-asl</artifactId>
+				<version>${dkpro-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl</artifactId>
 				<version>${dkpro-version}</version>
 			</dependency>
 			<dependency>
@@ -380,12 +390,12 @@
 			<dependency>
 				<groupId>org.apache.opennlp</groupId>
 				<artifactId>opennlp-tools</artifactId>
-				<version>1.5.3</version>
+				<version>1.6.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.uima</groupId>
 				<artifactId>uimafit-core</artifactId>
-				<version>2.1.0</version>
+				<version>2.2.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.json</groupId>
@@ -921,6 +931,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<surefire.working.dir>${project.build.directory}/BIUTEE_Environment/biutee/workdir/</surefire.working.dir>
 		<dependency.output.dir>${project.build.directory}/BIUTEE_Environment/</dependency.output.dir>
-		<dkpro-version>1.5.0</dkpro-version> <!-- TODO: make code compatible with latest DKPro release -->
+		<dkpro-version>1.8.0</dkpro-version>
+		<uimaj-version>2.8.1</uimaj-version>
 	</properties>
 </project>

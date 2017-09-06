@@ -7,7 +7,7 @@ import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
-import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
+import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosTagger;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 
@@ -44,7 +44,7 @@ public class MaltParserIT extends LAP_ImplBaseAE {
 		
 		try {
 			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
-			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
+			descArr[1] = createPrimitiveDescription(TreeTaggerPosTagger.class);
 			descArr[2] = createPrimitiveDescription(MaltParser.class,
 					MaltParser.PARAM_VARIANT, modelVariant,
 					MaltParser.PARAM_PRINT_TAGSET, true);
