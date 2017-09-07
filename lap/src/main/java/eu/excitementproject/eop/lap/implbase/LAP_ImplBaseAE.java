@@ -7,7 +7,7 @@ import eu.excitementproject.eop.lap.LAPException;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-import org.uimafit.factory.AggregateBuilder;
+import org.apache.uima.fit.factory.AggregateBuilder;
 
 import java.util.HashMap; 
 //import java.util.Map; 

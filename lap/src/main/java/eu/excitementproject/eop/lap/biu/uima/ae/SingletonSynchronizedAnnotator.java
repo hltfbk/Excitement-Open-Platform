@@ -2,7 +2,7 @@ package eu.excitementproject.eop.lap.biu.uima.ae;
 
 import org.apache.uima.UimaContext;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.uimafit.component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 
 import eu.excitementproject.eop.common.datastructures.Envelope;
 

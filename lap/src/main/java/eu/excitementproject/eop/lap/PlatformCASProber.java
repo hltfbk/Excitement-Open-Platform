@@ -34,10 +34,12 @@ import org.apache.uima.resource.ResourceSpecifier;
 import org.apache.uima.util.InvalidXMLException;
 import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.util.XMLSerializer;
-import org.uimafit.component.xwriter.CASDumpWriter;
-import org.uimafit.factory.AggregateBuilder;
+import org.apache.uima.fit.component.CasDumpWriter;
+import org.apache.uima.fit.factory.AggregateBuilder;
 import org.xml.sax.SAXException;
-import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
+
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createPrimitiveDescription;
 
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity;
@@ -344,8 +346,8 @@ public class PlatformCASProber {
     public static void dumpJCasToTextFile(JCas aJCas, String fileName) throws LAPException
     {
             try {
-                    AnalysisEngineDescription cc = createPrimitiveDescription(CASDumpWriter.class,
-                                    CASDumpWriter.PARAM_OUTPUT_FILE, fileName);
+                    AnalysisEngineDescription cc = createEngineDescription(CasDumpWriter.class,
+							CasDumpWriter.PARAM_OUTPUT_FILE, fileName);
                     AggregateBuilder builder = new AggregateBuilder();
                     builder.add(cc);
                     AnalysisEngine dumper = builder.createAggregate();

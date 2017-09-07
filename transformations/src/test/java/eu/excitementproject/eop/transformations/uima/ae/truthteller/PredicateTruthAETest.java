@@ -12,7 +12,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import eu.excitement.type.predicatetruth.ClauseTruthNegative;
 import eu.excitement.type.predicatetruth.NegationAndUncertaintyNegative;

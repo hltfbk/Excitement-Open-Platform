@@ -15,7 +15,7 @@ import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.StringArray;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import de.dfki.lt.nemex.a.NEMEX_A;
 import eu.excitement.type.alignment.Link;

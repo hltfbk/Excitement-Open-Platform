@@ -12,7 +12,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.metadata.TypeSystemDescription;
 import org.junit.Test;
-import org.uimafit.factory.TypeSystemDescriptionFactory;
+import org.apache.uima.fit.factory.TypeSystemDescriptionFactory;
 
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;

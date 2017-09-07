@@ -61,10 +61,9 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.collections-generic</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.uimafit</groupId>
-			<artifactId>uimafit</artifactId>
-			<version>1.4.0</version>
-		</dependency>
+	  <dependency>
+		  <groupId>org.apache.uima</groupId>
+		  <artifactId>uimafit-core</artifactId>
+	  </dependency>
   </dependencies>
 </project>

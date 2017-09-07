@@ -1,5 +1,5 @@
 package eu.excitementproject.eop.transformations.uima;
-import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
 
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.resource.ResourceInitializationException;
@@ -33,17 +33,17 @@ public class BIUFullLAPWithTruthTeller extends LAP_ImplBaseAE implements LAPAcce
 		try 
 		{
 			// Step a) Build analysis engine descriptions
-			AnalysisEngineDescription splitter =   createPrimitiveDescription(LingPipeSentenceSplitterAE.class);
-			AnalysisEngineDescription tokenizer =  createPrimitiveDescription(MaxentTokenizerAE.class);
-			AnalysisEngineDescription tagger =     createPrimitiveDescription(MaxentPosTaggerAE.class,
+			AnalysisEngineDescription splitter =   createEngineDescription(LingPipeSentenceSplitterAE.class);
+			AnalysisEngineDescription tokenizer =  createEngineDescription(MaxentTokenizerAE.class);
+			AnalysisEngineDescription tagger =     createEngineDescription(MaxentPosTaggerAE.class,
 														MaxentPosTaggerAE.PARAM_MODEL_FILE , taggerModelFile);
-			AnalysisEngineDescription ner =        createPrimitiveDescription(StanfordNamedEntityRecognizerAE.class,
+			AnalysisEngineDescription ner =        createEngineDescription(StanfordNamedEntityRecognizerAE.class,
 														StanfordNamedEntityRecognizerAE.PARAM_MODEL_FILE , nerModelFile);
-			AnalysisEngineDescription parser =     createPrimitiveDescription(EasyFirstParserAE.class,
+			AnalysisEngineDescription parser =     createEngineDescription(EasyFirstParserAE.class,
 														EasyFirstParserAE.PARAM_HOST , parserHost,
 														EasyFirstParserAE.PARAM_PORT , parserPort
 														);
-			AnalysisEngineDescription truthteller =	createPrimitiveDescription(TruthTellerAnnotatorAE.class,
+			AnalysisEngineDescription truthteller =	createEngineDescription(TruthTellerAnnotatorAE.class,
 					TruthTellerAnnotatorAE.PARAM_CONFIG , truthTellerAnnotationsFile);
 
 			AnalysisEngineDescription[] descs = new AnalysisEngineDescription[] {

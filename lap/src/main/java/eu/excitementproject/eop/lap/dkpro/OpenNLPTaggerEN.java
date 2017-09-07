@@ -1,24 +1,23 @@
 package eu.excitementproject.eop.lap.dkpro;
 
-import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
-
-//import java.util.Map;
-
-//import org.apache.uima.analysis_engine.AnalysisEngine;
-import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-//import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
-//import org.apache.uima.jcas.JCas;
-import org.apache.uima.resource.ResourceInitializationException;
-//import org.uimafit.factory.AggregateBuilder;
-
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
+import eu.excitementproject.eop.lap.LAPException;
+import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.resource.ResourceInitializationException;
+
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
+
+//import java.util.Map;
+//import org.apache.uima.analysis_engine.AnalysisEngine;
+//import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
+//import org.apache.uima.jcas.JCas;
+//import org.uimafit.factory.AggregateBuilder;
 //import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 //import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
 //import eu.excitementproject.eop.lap.LAPAccess;
-import eu.excitementproject.eop.lap.LAPException;
 //import eu.excitementproject.eop.lap.lappoc.LAP_ImplBase;
-import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
 
 /**
  * 
@@ -41,8 +40,8 @@ public class OpenNLPTaggerEN extends LAP_ImplBaseAE {
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[2];
 		try 
 		{
-			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
-			descArr[1] = createPrimitiveDescription(OpenNlpPosTagger.class); 
+			descArr[0] = createEngineDescription(OpenNlpSegmenter.class);
+			descArr[1] = createEngineDescription(OpenNlpPosTagger.class);
 		}
 		catch (ResourceInitializationException e)
 		{

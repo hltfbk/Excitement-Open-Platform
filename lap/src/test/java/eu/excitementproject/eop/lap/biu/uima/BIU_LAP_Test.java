@@ -15,7 +15,7 @@ import java.util.TreeMap;
 import org.apache.uima.jcas.JCas;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;

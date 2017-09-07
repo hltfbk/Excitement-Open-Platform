@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.lap.biu.uima.ae.parser;
 
-import org.uimafit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import eu.excitementproject.eop.common.datastructures.Envelope;
 import eu.excitementproject.eop.lap.biu.en.parser.easyfirst.EasyFirstParser;

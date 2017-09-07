@@ -14,7 +14,7 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.NonEmptyStringList;
 import org.apache.uima.jcas.cas.StringList;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import eu.excitement.type.alignment.Link;

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import eu.excitement.type.entailment.Hypothesis;

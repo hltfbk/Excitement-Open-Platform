@@ -15,7 +15,7 @@ import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.dkpro.OpenNLPTaggerEN;
 
 
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 
 
