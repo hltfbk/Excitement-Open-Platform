@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Fri Oct 05 20:17:13 CEST 2012 */
+/* First created by JCasGen Wed Sep 13 18:11:14 CEST 2017 */
 package de.tudarmstadt.ukp.dkpro.core.api.ner.type;
 
 import org.apache.uima.jcas.JCas; 
@@ -10,22 +10,24 @@ import org.apache.uima.jcas.cas.TOP_Type;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
-/** 
- * Updated by JCasGen Fri Oct 05 20:17:13 CEST 2012
- * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/NamedEntity.xml
+/** Named entities refer e.g. to persons, locations, organizations and so on. They often consist of multiple tokens.
+ * Updated by JCasGen Wed Sep 13 18:11:14 CEST 2017
+ * XML source: /home/nira/informiz/Excitement-Open-Platform/common/target/jcasgen/typesystem.xml
  * @generated */
 public class NamedEntity extends Annotation {
   /** @generated
    * @ordered 
    */
-  //@SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(NamedEntity.class);
   /** @generated
    * @ordered 
    */
-  //@SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
-  /** @generated  */
+  /** @generated
+   * @return index of the type  
+   */
   @Override
   public              int getTypeIndexID() {return typeIndexID;}
  
@@ -34,19 +36,28 @@ public class NamedEntity extends Annotation {
   protected NamedEntity() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
-   * @generated */
+   * @generated
+   * @param addr low level Feature Structure reference
+   * @param type the type of this Feature Structure 
+   */
   public NamedEntity(int addr, TOP_Type type) {
     super(addr, type);
     readObject();
   }
   
-  /** @generated */
+  /** @generated
+   * @param jcas JCas to which this Feature Structure belongs 
+   */
   public NamedEntity(JCas jcas) {
     super(jcas);
     readObject();   
   } 
 
-  /** @generated */  
+  /** @generated
+   * @param jcas JCas to which this Feature Structure belongs
+   * @param begin offset to the begin spot in the SofA
+   * @param end offset to the end spot in the SofA 
+  */  
   public NamedEntity(JCas jcas, int begin, int end) {
     super(jcas);
     setBegin(begin);
@@ -54,10 +65,13 @@ public class NamedEntity extends Annotation {
     readObject();
   }   
 
-  /** <!-- begin-user-doc -->
-    * Write your own initialization here
-    * <!-- end-user-doc -->
-  @generated modifiable */
+  /** 
+   * <!-- begin-user-doc -->
+   * Write your own initialization here
+   * <!-- end-user-doc -->
+   *
+   * @generated modifiable 
+   */
   private void readObject() {/*default - does nothing empty block */}
      
  
@@ -66,14 +80,18 @@ public class NamedEntity extends Annotation {
   //* Feature: value
 
   /** getter for value - gets 
-   * @generated */
+   * @generated
+   * @return value of the feature 
+   */
   public String getValue() {
     if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_value == null)
       jcasType.jcas.throwFeatMissing("value", "de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity");
     return jcasType.ll_cas.ll_getStringValue(addr, ((NamedEntity_Type)jcasType).casFeatCode_value);}
     
   /** setter for value - sets  
-   * @generated */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setValue(String v) {
     if (NamedEntity_Type.featOkTst && ((NamedEntity_Type)jcasType).casFeat_value == null)
       jcasType.jcas.throwFeatMissing("value", "de.tudarmstadt.ukp.dkpro.core.api.ner.type.NamedEntity");

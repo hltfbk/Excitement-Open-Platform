@@ -19,5 +19,7 @@
     <import name="desc.type.coref"/>
     <import name="desc.type.NemexTypes"/>
     <import name="desc.type.Chunks"/>
+    <import name="desc.type.Morpheme"/>
+    <import name="desc.type.metadata"/>
   </imports>
 </typeSystemDescription>

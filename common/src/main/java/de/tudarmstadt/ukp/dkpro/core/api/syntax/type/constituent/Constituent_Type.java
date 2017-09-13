@@ -1,12 +1,9 @@
 
-/* First created by JCasGen Fri Oct 05 20:16:25 CEST 2012 */
+/* First created by JCasGen Wed Sep 13 18:11:14 CEST 2017 */
 package de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent;
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
-import org.apache.uima.cas.impl.CASImpl;
-import org.apache.uima.cas.impl.FSGenerator;
-import org.apache.uima.cas.FeatureStructure;
 import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.FeatureImpl;
@@ -14,47 +11,34 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Fri Oct 05 20:16:25 CEST 2012
+ * Updated by JCasGen Wed Sep 13 18:11:14 CEST 2017
  * @generated */
 public class Constituent_Type extends Annotation_Type {
   /** @generated */
-  @Override
-  protected FSGenerator getFSGenerator() {return fsGenerator;}
-  /** @generated */
-  private final FSGenerator fsGenerator = 
-    new FSGenerator() {
-      public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (Constituent_Type.this.useExistingInstance) {
-  			   // Return eq fs instance if already created
-  		     FeatureStructure fs = Constituent_Type.this.jcas.getJfsFromCaddr(addr);
-  		     if (null == fs) {
-  		       fs = new Constituent(addr, Constituent_Type.this);
-  			   Constituent_Type.this.jcas.putJfsFromCaddr(addr, fs);
-  			   return fs;
-  		     }
-  		     return fs;
-        } else return new Constituent(addr, Constituent_Type.this);
-  	  }
-    };
-  /** @generated */
-  //@SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static int typeIndexID = Constituent.typeIndexID;
   /** @generated 
      @modifiable */
-  //@SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static boolean featOkTst = JCasRegistry.getFeatOkTst("de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
  
   /** @generated */
   final Feature casFeat_constituentType;
   /** @generated */
   final int     casFeatCode_constituentType;
-  /** @generated */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
   public String getConstituentType(int addr) {
         if (featOkTst && casFeat_constituentType == null)
       jcas.throwFeatMissing("constituentType", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
     return ll_cas.ll_getStringValue(addr, casFeatCode_constituentType);
   }
-  /** @generated */    
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
   public void setConstituentType(int addr, String v) {
         if (featOkTst && casFeat_constituentType == null)
       jcas.throwFeatMissing("constituentType", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
@@ -66,13 +50,19 @@ public class Constituent_Type extends Annotation_Type {
   final Feature casFeat_parent;
   /** @generated */
   final int     casFeatCode_parent;
-  /** @generated */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
   public int getParent(int addr) {
         if (featOkTst && casFeat_parent == null)
       jcas.throwFeatMissing("parent", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
     return ll_cas.ll_getRefValue(addr, casFeatCode_parent);
   }
-  /** @generated */    
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
   public void setParent(int addr, int v) {
         if (featOkTst && casFeat_parent == null)
       jcas.throwFeatMissing("parent", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
@@ -84,19 +74,29 @@ public class Constituent_Type extends Annotation_Type {
   final Feature casFeat_children;
   /** @generated */
   final int     casFeatCode_children;
-  /** @generated */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
   public int getChildren(int addr) {
         if (featOkTst && casFeat_children == null)
       jcas.throwFeatMissing("children", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
     return ll_cas.ll_getRefValue(addr, casFeatCode_children);
   }
-  /** @generated */    
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
   public void setChildren(int addr, int v) {
         if (featOkTst && casFeat_children == null)
       jcas.throwFeatMissing("children", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
     ll_cas.ll_setRefValue(addr, casFeatCode_children, v);}
     
-   /** @generated */
+   /** @generated
+   * @param addr low level Feature Structure reference
+   * @param i index of item in the array
+   * @return value at index i in the array 
+   */
   public int getChildren(int addr, int i) {
         if (featOkTst && casFeat_children == null)
       jcas.throwFeatMissing("children", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
@@ -106,7 +106,11 @@ public class Constituent_Type extends Annotation_Type {
 	return ll_cas.ll_getRefArrayValue(ll_cas.ll_getRefValue(addr, casFeatCode_children), i);
   }
    
-  /** @generated */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param i index of item in the array
+   * @param v value to set
+   */ 
   public void setChildren(int addr, int i, int v) {
         if (featOkTst && casFeat_children == null)
       jcas.throwFeatMissing("children", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
@@ -121,13 +125,19 @@ public class Constituent_Type extends Annotation_Type {
   final Feature casFeat_syntacticFunction;
   /** @generated */
   final int     casFeatCode_syntacticFunction;
-  /** @generated */ 
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @return the feature value 
+   */ 
   public String getSyntacticFunction(int addr) {
         if (featOkTst && casFeat_syntacticFunction == null)
       jcas.throwFeatMissing("syntacticFunction", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
     return ll_cas.ll_getStringValue(addr, casFeatCode_syntacticFunction);
   }
-  /** @generated */    
+  /** @generated
+   * @param addr low level Feature Structure reference
+   * @param v value to set 
+   */    
   public void setSyntacticFunction(int addr, String v) {
         if (featOkTst && casFeat_syntacticFunction == null)
       jcas.throwFeatMissing("syntacticFunction", "de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.Constituent");
@@ -138,7 +148,10 @@ public class Constituent_Type extends Annotation_Type {
 
 
   /** initialize variables to correspond with Cas Type and Features
-	* @generated */
+	 * @generated
+	 * @param jcas JCas
+	 * @param casType Type 
+	 */
   public Constituent_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());

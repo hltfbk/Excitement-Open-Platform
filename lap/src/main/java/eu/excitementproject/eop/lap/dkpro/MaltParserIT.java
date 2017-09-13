@@ -46,7 +46,8 @@ public class MaltParserIT extends LAP_ImplBaseAE {
 			descArr[1] = createEngineDescription(TreeTaggerPosTagger.class);
 			descArr[2] = createEngineDescription(MaltParser.class,
 					MaltParser.PARAM_VARIANT, modelVariant,
-					MaltParser.PARAM_PRINT_TAGSET, true);
+					MaltParser.PARAM_PRINT_TAGSET, true,
+					MaltParser.PARAM_IGNORE_MISSING_FEATURES, true);
 		} catch (ResourceInitializationException e) {
 			throw new LAPException("Unable to create AE descriptions", e);
 		}

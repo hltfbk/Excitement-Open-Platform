@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Tue Nov 04 18:05:45 CET 2014 */
+/* First created by JCasGen Wed Sep 13 18:11:14 CEST 2017 */
 package de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk;
 
 import org.apache.uima.jcas.JCas; 
@@ -9,20 +9,20 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 
-/** 
- * Updated by JCasGen Tue Nov 04 18:05:45 CET 2014
- * XML source: /Users/tailblues/progs/Excitement-Open-Platform/common/src/main/resources/desc/type/Chunks.xml
+/** verb particle
+ * Updated by JCasGen Wed Sep 13 18:11:14 CEST 2017
+ * XML source: /home/nira/informiz/Excitement-Open-Platform/common/target/jcasgen/typesystem.xml
  * @generated */
 public class PRT extends Chunk {
   /** @generated
    * @ordered 
    */
-//  @SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(PRT.class);
   /** @generated
    * @ordered 
    */
-//  @SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
   /** @generated
    * @return index of the type  

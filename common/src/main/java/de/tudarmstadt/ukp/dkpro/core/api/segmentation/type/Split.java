@@ -1,6 +1,6 @@
 
 
-/* First created by JCasGen Fri Oct 05 09:56:45 CEST 2012 */
+/* First created by JCasGen Wed Sep 13 18:11:14 CEST 2017 */
 package de.tudarmstadt.ukp.dkpro.core.api.segmentation.type;
 
 import org.apache.uima.jcas.JCas; 
@@ -11,22 +11,24 @@ import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.tcas.Annotation;
 
 
-/** A part of a compound word.
- * Updated by JCasGen Fri Oct 05 20:17:06 CEST 2012
- * XML source: /Users/tailblues/progs/github/Excitement-Open-Platform/common/src/main/resources/desc/type/LexicalUnits.xml
+/** This type represents a part of a decompounding word. A Split can be either a CompoundPart or a LinkingMorpheme.
+ * Updated by JCasGen Wed Sep 13 18:11:14 CEST 2017
+ * XML source: /home/nira/informiz/Excitement-Open-Platform/common/target/jcasgen/typesystem.xml
  * @generated */
 public class Split extends Annotation {
   /** @generated
    * @ordered 
    */
-  //@SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static int typeIndexID = JCasRegistry.register(Split.class);
   /** @generated
    * @ordered 
    */
-  //@SuppressWarnings ("hiding")
+  @SuppressWarnings ("hiding")
   public final static int type = typeIndexID;
-  /** @generated  */
+  /** @generated
+   * @return index of the type  
+   */
   @Override
   public              int getTypeIndexID() {return typeIndexID;}
  
@@ -35,19 +37,28 @@ public class Split extends Annotation {
   protected Split() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
-   * @generated */
+   * @generated
+   * @param addr low level Feature Structure reference
+   * @param type the type of this Feature Structure 
+   */
   public Split(int addr, TOP_Type type) {
     super(addr, type);
     readObject();
   }
   
-  /** @generated */
+  /** @generated
+   * @param jcas JCas to which this Feature Structure belongs 
+   */
   public Split(JCas jcas) {
     super(jcas);
     readObject();   
   } 
 
-  /** @generated */  
+  /** @generated
+   * @param jcas JCas to which this Feature Structure belongs
+   * @param begin offset to the begin spot in the SofA
+   * @param end offset to the end spot in the SofA 
+  */  
   public Split(JCas jcas, int begin, int end) {
     super(jcas);
     setBegin(begin);
@@ -55,51 +66,43 @@ public class Split extends Annotation {
     readObject();
   }   
 
-  /** <!-- begin-user-doc -->
-    * Write your own initialization here
-    * <!-- end-user-doc -->
-  @generated modifiable */
+  /** 
+   * <!-- begin-user-doc -->
+   * Write your own initialization here
+   * <!-- end-user-doc -->
+   *
+   * @generated modifiable 
+   */
   private void readObject() {/*default - does nothing empty block */}
      
  
     
   //*--------------*
-  //* Feature: category
-
-  /** getter for category - gets The type of morpheme. (morpheme or linking-morpheme)
-   * @generated */
-  public String getCategory() {
-    if (Split_Type.featOkTst && ((Split_Type)jcasType).casFeat_category == null)
-      jcasType.jcas.throwFeatMissing("category", "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Split");
-    return jcasType.ll_cas.ll_getStringValue(addr, ((Split_Type)jcasType).casFeatCode_category);}
-    
-  /** setter for category - sets The type of morpheme. (morpheme or linking-morpheme) 
-   * @generated */
-  public void setCategory(String v) {
-    if (Split_Type.featOkTst && ((Split_Type)jcasType).casFeat_category == null)
-      jcasType.jcas.throwFeatMissing("category", "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Split");
-    jcasType.ll_cas.ll_setStringValue(addr, ((Split_Type)jcasType).casFeatCode_category, v);}    
-   
-    
-  //*--------------*
   //* Feature: splits
 
   /** getter for splits - gets Sub-splits of the current split.
-   * @generated */
+   * @generated
+   * @return value of the feature 
+   */
   public FSArray getSplits() {
     if (Split_Type.featOkTst && ((Split_Type)jcasType).casFeat_splits == null)
       jcasType.jcas.throwFeatMissing("splits", "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Split");
     return (FSArray)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((Split_Type)jcasType).casFeatCode_splits)));}
     
   /** setter for splits - sets Sub-splits of the current split. 
-   * @generated */
+   * @generated
+   * @param v value to set into the feature 
+   */
   public void setSplits(FSArray v) {
     if (Split_Type.featOkTst && ((Split_Type)jcasType).casFeat_splits == null)
       jcasType.jcas.throwFeatMissing("splits", "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Split");
     jcasType.ll_cas.ll_setRefValue(addr, ((Split_Type)jcasType).casFeatCode_splits, jcasType.ll_cas.ll_getFSRef(v));}    
     
   /** indexed getter for splits - gets an indexed value - Sub-splits of the current split.
-   * @generated */
+   * @generated
+   * @param i index in the array to get
+   * @return value of the element at index i 
+   */
   public Split getSplits(int i) {
     if (Split_Type.featOkTst && ((Split_Type)jcasType).casFeat_splits == null)
       jcasType.jcas.throwFeatMissing("splits", "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Split");
@@ -107,7 +110,10 @@ public class Split extends Annotation {
     return (Split)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefArrayValue(jcasType.ll_cas.ll_getRefValue(addr, ((Split_Type)jcasType).casFeatCode_splits), i)));}
 
   /** indexed setter for splits - sets an indexed value - Sub-splits of the current split.
-   * @generated */
+   * @generated
+   * @param i index in the array to set
+   * @param v value to set into the array 
+   */
   public void setSplits(int i, Split v) { 
     if (Split_Type.featOkTst && ((Split_Type)jcasType).casFeat_splits == null)
       jcasType.jcas.throwFeatMissing("splits", "de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Split");

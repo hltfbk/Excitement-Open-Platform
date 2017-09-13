@@ -162,12 +162,12 @@
     	<dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
             <artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear</artifactId>
-            <version>20130511.0</version><!-- TODO: defined in "use-proprietary-resources" profile in maltparser-asl -->
+            <version>20130511.0</version><!-- TODO: available (only?) in the FBK repository, need an official build -->
         </dependency>
     	<dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
             <artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-it-linear</artifactId>
-            <version>20141002.0</version><!-- TODO: can't find this in dkpro-core codebase -->
+            <version>20141002.0</version><!-- TODO: available (only?) in the FBK repository, need an official build -->
         </dependency>
 
     	<!-- We are not using MST parser for 1.0 release.  -->

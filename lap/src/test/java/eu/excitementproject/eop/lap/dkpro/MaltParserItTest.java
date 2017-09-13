@@ -16,11 +16,23 @@ import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import eu.excitementproject.eop.lap.LAPAccess;
 import eu.excitementproject.eop.lap.LAPException;
 
+import java.net.URL;
+import java.net.URLClassLoader;
+
 public class MaltParserItTest {
 	
 	@Test
 	public void test() {
-		
+/*
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
+
+		URL[] urls = ((URLClassLoader)cl).getURLs();
+
+		for(URL url: urls){
+			System.out.println(url.getFile());
+		}
+*/
+
 		// Set Log4J for the test 
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
