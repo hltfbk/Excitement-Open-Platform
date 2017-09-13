@@ -68,6 +68,8 @@
   </dependencies>
 
 <!--
+// TODO: should re-generate classes from type descriptors during build, move them to generated-sources dir.
+// TODO: EOP generated classes were manually edited!! Should find a way to achieve same functionality with full automation
 	<build>
 		<plugins>
 			<plugin>

@@ -1,39 +1,26 @@
 package eu.excitementproject.eop.lap.dkpro;
 
-import static org.junit.Assert.fail;
-
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
+import eu.excitementproject.eop.lap.LAPAccess;
+import eu.excitementproject.eop.lap.LAPException;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
-//import org.junit.Ignore;
 import org.junit.Test;
-import org.apache.uima.fit.util.JCasUtil;
 
-import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
-import eu.excitementproject.eop.lap.LAPAccess;
-import eu.excitementproject.eop.lap.LAPException;
+import static org.junit.Assert.fail;
 
-import java.net.URL;
-import java.net.URLClassLoader;
+//import org.junit.Ignore;
 
 public class MaltParserItTest {
 	
 	@Test
 	public void test() {
-/*
-		ClassLoader cl = ClassLoader.getSystemClassLoader();
-
-		URL[] urls = ((URLClassLoader)cl).getURLs();
-
-		for(URL url: urls){
-			System.out.println(url.getFile());
-		}
-*/
-
-		// Set Log4J for the test 
+		// Set Log4J for the test
 		BasicConfigurator.resetConfiguration(); 
 		BasicConfigurator.configure(); 
 		Logger.getRootLogger().setLevel(Level.INFO);  // for UIMA (hiding < INFO) 
