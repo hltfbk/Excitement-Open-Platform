@@ -129,6 +129,7 @@
 	<!-- TreeTagger related dependencies --> 
 	<!-- if you want to use TreeTagger, and related LAPs, please read /lap/src/scripts/treetagger/README.txt, and follow the instructions --> 
  	
+<!--
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
@@ -145,6 +146,7 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-tagger-it-le</artifactId>
     	</dependency>
+-->
 	<!-- end of TreeTagger related dependencies -->
 
     	<dependency>
