@@ -554,13 +554,9 @@
 				<version>3.0.0</version>
 				<configuration>
 					<descriptors>
-						<descriptor>assembly.xml</descriptor>
+						<descriptor>distribution/assembly.xml</descriptor>
 					</descriptors>
 				</configuration>
-
-				<!-- when commented, run mvn assembly:assembly, otherwise mvn package 
-					<executions> <execution> <id>attach-assemblies</id> <phase>package</phase> 
-					<goals> <goal>single</goal> </goals> </execution> </executions> -->
 			</plugin>
 
 			<plugin>

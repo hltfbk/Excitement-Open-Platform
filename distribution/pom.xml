@@ -17,7 +17,7 @@
   <name>EOP Distribution</name>
   
   <!-- NOTE: These dependency declarations are only required to sort this project to the 
-       end of the line in the multimodule build (i.e to insure this module builds last). 
+       end of the line in the multimodule build (i.e to ensure this module builds last).
   -->
   <dependencies>
 	<dependency>
@@ -99,8 +99,10 @@
             </goals>
             <configuration>
               <descriptors>
-                <descriptor>assembly.xml</descriptor>
+                <descriptor>${project.basedir}/assembly.xml</descriptor>
               </descriptors>
+              <!-- TODO: this is bad practice. Build script should look for dist file under distribution/target/ -->
+              <outputDirectory>${project.basedir}/../target</outputDirectory>
             </configuration>
           </execution>
         </executions>
