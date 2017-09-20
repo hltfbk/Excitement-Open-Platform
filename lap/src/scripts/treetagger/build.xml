@@ -154,7 +154,7 @@
           - 2015-02-09 | 2015-11-19 | 17d93abadfd8786b9a36dfdfd12f8d98
           - 2015-11-19 | 2016-12-21 | 441b51369b6888387a17a26a5dc2d146 
           - 2016-12-21 | 2017-02-20 | ccf1bac5ff50d0d7bf3423aa82b2e6c1 
-          - 2017-02-20 | now        | 9a70c2da699c4a57d8cc361039cd0cc7 
+          - 2017-02-20 | now        | 9a70c2da699c4a57d8cc361039cd0cc7
 		  -->
     	<get 
     		src="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/english-par-linux-3.2-utf8.bin.gz" 
@@ -246,7 +246,8 @@
 		  - 2013-04-03 | 2013-10-07 | 30a9c4deed380e7986a4a76753ecde51
 		  - 2013-10-07 | 2014-05-20 | 8488c4319fac414802637b654a61db37
 		  - 2014-05-20 | 2015-07-24 | 48f14061833274842d6cf5ed3db7b903
-		  - 2015-07-24 | now        | ea8142cb5a0efc59226a0f5d41d690ac
+		  - 2015-07-24 | 2016-12-22 | ea8142cb5a0efc59226a0f5d41d690ac
+          - 2016-12-22 | now        | eb4b3ef771e4ba2e21aa715ca5a08d5f
 		  -->
     	<get 
     		src="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/spanish-par-linux-3.2-utf8.bin.gz" 
@@ -255,7 +256,7 @@
 		<gunzip src="target/download/spanish-par-linux-3.2-utf8.bin.gz"/>
     	<install-stub-and-upstream-file 
     		file="target/download/spanish-par-linux-3.2-utf8.bin" 
-    		md5="ea8142cb5a0efc59226a0f5d41d690ac"
+    		md5="eb4b3ef771e4ba2e21aa715ca5a08d5f"
     		groupId="de.tudarmstadt.ukp.dkpro.core" 
     		artifactIdBase="de.tudarmstadt.ukp.dkpro.core.treetagger"
     		upstreamVersion="20150724"
@@ -825,8 +826,7 @@
 	</target>
 	
 	<target name="install-executables">
-                <!-- The EOP uses 20130228.0 instead of 20131118.0 TODO: still?? -->
-		<property name="version.bin" value="20160430.0"/>                
+		<property name="version.bin" value="20160430.0"/>
 			
 		<fail unless="outputDir">No output directory set.</fail>
 		<mkdir dir="${outputDir}/bin"/>
@@ -841,7 +841,7 @@
 		  -->
 		<!-- FILE: tree-tagger-MacOSX-3.2-intel.tar.gz - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2010-11-19 | 2012-04-25 | 076c8002337b89a9a8581aae81d5d481
-		  - 2012-04-25 | now        | a47bac91b5f373c5ba8703faa5ec7dd7 : buffer flush after 10 lines with -prob 
+		  - 2012-04-25 | now        | a47bac91b5f373c5ba8703faa5ec7dd7 : buffer flush after 10 lines with -prob , the file dropped on 2016-11-24 the intel but is the same
 		  -->
 		<install-executable-file-tar url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-MacOSX-3.2.tar.gz"
 			platform="osx-x86_64" file="tree-tagger" md5="a47bac91b5f373c5ba8703faa5ec7dd7"/>
@@ -851,7 +851,7 @@
 		<!-- FILE: tree-tagger-MacOSX-3.2.tar.gz - - - - - - - - - - - - - - - - - - - - - - - - - -
 		  - 2010-11-19 | now        | 63560dcb3a5932bc5ae0e9aab8f48e42
 		<install-executable-file-tar url="http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-MacOSX-3.2.tar.gz"
-			platform="osx-ppc" file="tree-tagger" md5="a47bac91b5f373c5ba8703faa5ec7dd7"/> TODO: not necessary??
+			platform="osx-ppc" file="tree-tagger" md5="a47bac91b5f373c5ba8703faa5ec7dd7"/>
 		  -->
 		
 		<!-- FILE: tree-tagger-linux-3.2-64bit.tar.gz  - - - - - - - - - - - - - - - - - - - - - - - - - - 
