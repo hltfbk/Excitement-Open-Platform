@@ -328,6 +328,16 @@
 				<version>${dkpro-version}</version>
 			</dependency>
 			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.syntax-asl</artifactId>
+				<version>${dkpro-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.coref-asl</artifactId>
+				<version>${dkpro-version}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.ibm.icu</groupId>
 				<artifactId>icu4j</artifactId>
 				<version>4.0.1</version>

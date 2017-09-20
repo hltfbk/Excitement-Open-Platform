@@ -72,8 +72,12 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
     	</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>de.tudarmstadt.ukp.dkpro.core.api.coref-asl</artifactId>
+		</dependency>
 
-    	<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
+		<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
 		<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent</artifactId>
