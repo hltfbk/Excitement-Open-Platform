@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+	<parent>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>eop</artifactId>
+		<version>1.2.4-SNAPSHOT</version>
+	</parent>
+  
+  <artifactId>distribution</artifactId>
+ 
+  <packaging>pom</packaging>
+ 
+  <name>EOP Distribution</name>
+  
+  <!-- NOTE: These dependency declarations are only required to sort this project to the 
+       end of the line in the multimodule build (i.e to insure this module builds last). 
+  -->
+  <dependencies>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>core</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>common</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>biutee</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>lap</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>util</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>transformations</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>lexicalminer</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>distsim</artifactId>
+		<version>${eop-version}</version>
+    	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>globalgraphoptimizer</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>lexicalminer</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>alignmentedas</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>redis</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>eu.excitementproject</groupId>
+		<artifactId>adarte</artifactId>
+		<version>${eop-version}</version>
+	</dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>distro-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

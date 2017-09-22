@@ -13,6 +13,8 @@ target/
 *.war
 *.ear
 
+!core/lib/*.jar
+
 # Files created during tests #
 core/src/test/resources/gazetteer/nemexBOWAligner.txt
 core/src/test/resources/NemexWekaArff.arff0.arff

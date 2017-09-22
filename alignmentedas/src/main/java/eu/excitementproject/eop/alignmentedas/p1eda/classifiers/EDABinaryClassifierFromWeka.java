@@ -12,14 +12,12 @@ import eu.excitementproject.eop.alignmentedas.p1eda.subs.FeatureValue;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.LabeledInstance;
 import eu.excitementproject.eop.alignmentedas.p1eda.subs.ValueException;
 import eu.excitementproject.eop.common.DecisionLabel;
+import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 //import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.functions.Logistic;
-import weka.core.Attribute;
-import weka.core.FastVector;
-import weka.core.Instance;
-import weka.core.Instances;
+import weka.core.*;
 
 
 /**
@@ -68,7 +66,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 	 * @param classifierOptions Option String[] for the give classifier instance. null means, no passing of options
 	 * @throws ClassifierException
 	 */
-	public EDABinaryClassifierFromWeka(Classifier wekaClassifierInstance, String[] classifierOptions) throws ClassifierException
+	public EDABinaryClassifierFromWeka(AbstractClassifier wekaClassifierInstance, String[] classifierOptions) throws ClassifierException
 	{
 		this.modelReady = false; // this will become true, only after train (or load model) 
 		this.classifier = wekaClassifierInstance; 
@@ -129,7 +127,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 		// Make a new instance, with the given feature vector. 
 		Instance anInstance = null; 
 		try {
-			anInstance = new Instance(featureVector.size()); 
+			anInstance = new BinarySparseInstance(featureVector.size());
 			anInstance.setDataset(attributeInfo); 
 			for(int i=0; i < featureVector.size(); i++)
 			{
@@ -153,10 +151,12 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 		{
 			throw new ClassifierException("Reading a FeatureValue failed for some reason - must be a code bug! ", ve); 
 		}
-		
+		attributeInfo.add(anInstance);
+
 		// Okay, classify the newly prepared instance. 
 		double[] dist = null; 
 		try {
+			classifier.buildClassifier(attributeInfo);
 			dist = classifier.distributionForInstance(anInstance); 
 		}
 		catch (Exception e)
@@ -232,7 +232,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 		}
 		
 		try {
-			classifier = (Classifier) weka.core.SerializationHelper.read(path.getAbsolutePath());
+			classifier = (AbstractClassifier) weka.core.SerializationHelper.read(path.getAbsolutePath());
 		}
 		catch (Exception e)
 		{
@@ -433,7 +433,7 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 			}
 			
 			// prepare an instance with feature values ... 
-			Instance anInstance = new Instance(featureSize + 1); 
+			Instance anInstance = new BinarySparseInstance(featureSize + 1);
 			anInstance.setDataset(trainingSet); 
 			for(int i=0; i < featureSize; i++)
 			{
@@ -463,6 +463,6 @@ public class EDABinaryClassifierFromWeka implements EDAClassifierAbstraction {
 	
 	// private data 
 	
-	private Classifier classifier; 
+	private AbstractClassifier classifier;
 	private Boolean modelReady; 
 }

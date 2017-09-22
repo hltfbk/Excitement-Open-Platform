@@ -35,7 +35,7 @@
 		<module>globalgraphoptimizer</module>
 		<module>lexicalinferenceminer</module>
 		<module>alignmentedas</module> 
-		<module>adarte</module> 
+		<module>adarte</module>
 	</modules>
 
         <profiles>
@@ -124,8 +124,29 @@
 	   </profile>
 
 	   <!-- Other profiles go here .. -->
+		<profile>
+			<!-- A profile for building the distribution file -->
+			<id>release</id>
+			<modules>
+				<module>core</module>
+				<module>lap</module>
+				<module>common</module>
+				<!-- <module>infrastructure</module> -->
+				<!-- <module>engineml</module> -->
+				<module>transformations</module>
+				<module>biutee</module>
+				<module>util</module>
+				<module>redis</module>
+				<module>distsim</module>
+				<module>globalgraphoptimizer</module>
+				<module>lexicalinferenceminer</module>
+				<module>alignmentedas</module>
+				<module>adarte</module>
+				<module>distribution</module>
+			</modules>
+		</profile>
 
-	</profiles>
+		</profiles>
 
 	<dependencyManagement>
 		<dependencies>
@@ -292,13 +313,6 @@
 		<!-- Configuration for dependencies which otherwise have multiple versions on the classpath.
 		Putting these in the main pom for easier maintenance -->
 			<dependency>
-			<!-- TODO: NemexWekaClassificationEDATest throws "java.lang.Exception: liblinear classes not in CLASSPATH!".
-			This requires a wrapper but the one in https://github.com/bwaldvogel/liblinear-weka is outdated. -->
-				<groupId>de.bwaldvogel</groupId>
-				<artifactId>liblinear</artifactId>
-				<version>1.95</version>
-			</dependency>
-			<dependency>
 				<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
 				<artifactId>de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl</artifactId>
 				<version>${dkpro-version}</version>
@@ -346,7 +360,7 @@
 			<dependency>
 				<groupId>nz.ac.waikato.cms.weka</groupId>
 				<artifactId>weka-stable</artifactId>
-				<version>3.6.9</version> <!-- TODO: version 3.6.11 breaks the build -->
+				<version>3.8.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.ant</groupId>
@@ -903,6 +917,7 @@
 
 	</reporting>
 	<properties>
+		<eop-version>1.2.4-SNAPSHOT</eop-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<surefire.working.dir>${project.build.directory}/BIUTEE_Environment/biutee/workdir/</surefire.working.dir>
 		<dependency.output.dir>${project.build.directory}/BIUTEE_Environment/</dependency.output.dir>

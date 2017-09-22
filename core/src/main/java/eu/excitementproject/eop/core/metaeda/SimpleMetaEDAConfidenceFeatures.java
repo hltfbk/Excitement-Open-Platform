@@ -17,11 +17,7 @@ import org.uimafit.util.JCasUtil;
 
 //import weka.classifiers.Classifier;
 import weka.classifiers.functions.Logistic;
-import weka.core.Attribute;
-import weka.core.FastVector;
-import weka.core.Instance;
-import weka.core.Instances;
-import weka.core.SparseInstance;
+import weka.core.*;
 
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;
@@ -215,7 +211,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 				goldAnswers.add(goldAnswer);
 				
 				//add new instance to dataset
-				Instance instance = new Instance(scores.size());
+				Instance instance = new DenseInstance(scores.size());
 				instance.setDataset(instances);
 				for (int j = 0; j < scores.size(); j++){
 					Double score = scores.get(j);
@@ -316,7 +312,7 @@ public class SimpleMetaEDAConfidenceFeatures implements EDABasic<TEDecision>{
 				goldAnswers.add(goldAnswer);
 	
 				//add new instance to dataset
-				Instance instance = new Instance(scores.size());
+				Instance instance = new DenseInstance(scores.size());
 				instance.setDataset(instances);
 				for (int j = 0; j < scores.size(); j++){
 					Double score = scores.get(j);

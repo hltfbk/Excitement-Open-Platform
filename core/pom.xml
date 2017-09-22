@@ -11,16 +11,6 @@
 	<description>core</description>
 
 	<dependencies>
-	
-		<!-- Dependency for LibLinear weka wrapper -->
-		<dependency>
-  			<groupId>de.bwaldvogel</groupId>
-  			<artifactId>liblinear</artifactId>
-  			<version>1.5</version>
-			<type>pom</type>
-		</dependency>
-
-
 		<!-- Deeplearning4j dependencies -->
 		<dependency>
 			<groupId>org.deeplearning4j</groupId>
@@ -155,6 +145,16 @@
 		<dependency>
 			<groupId>de.bwaldvogel</groupId>
 			<artifactId>liblinear</artifactId>
+			<version>1.96</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/liblinear.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>liblinear</artifactId>
+			<version>1.9.8-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/liblinear-wrapper.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
