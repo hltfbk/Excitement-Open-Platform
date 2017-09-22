@@ -13,7 +13,7 @@ import java.io.File;
 import java.lang.reflect.Constructor;
 
 import org.apache.uima.jcas.JCas;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import eu.excitementproject.eop.common.DecisionLabel;
 import eu.excitementproject.eop.common.EDABasic;

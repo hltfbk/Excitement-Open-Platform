@@ -1,19 +1,17 @@
 package eu.excitementproject.eop.lap.implbase;
 
-import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
-
-//import java.util.Map;
-
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
+import eu.excitementproject.eop.lap.LAPException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
-import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
+
+//import java.util.Map;
 //import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 //import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
 //import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
-
-import eu.excitementproject.eop.lap.LAPException;
 
 /**
  * 
@@ -46,8 +44,8 @@ public class ExampleLAPAE extends LAP_ImplBaseAE {
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[2];
 		try 
 		{
-			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
-			descArr[1] = createPrimitiveDescription(OpenNlpPosTagger.class); 
+			descArr[0] = createEngineDescription(OpenNlpSegmenter.class);
+			descArr[1] = createEngineDescription(OpenNlpPosTagger.class);
 		}
 		catch (ResourceInitializationException e)
 		{

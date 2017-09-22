@@ -17,7 +17,7 @@ import opennlp.tools.util.Span;
 
 import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import de.dfki.lt.nemex.a.NEMEX_A;
 import de.dfki.lt.nemex.a.data.GazetteerNotLoadedException;

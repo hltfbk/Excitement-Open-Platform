@@ -2,7 +2,7 @@ package eu.excitementproject.eop.transformations.biu.en.predicatetruth;
 
 import java.io.File;
 
-import org.uimafit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import eu.excitementproject.eop.common.datastructures.Envelope;
 import eu.excitementproject.eop.transformations.uima.ae.truthteller.PredicateTruthAE;

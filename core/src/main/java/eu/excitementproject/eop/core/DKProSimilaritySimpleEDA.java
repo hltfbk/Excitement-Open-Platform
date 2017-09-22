@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.apache.uima.jcas.JCas;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import eu.excitement.type.entailment.Pair;
 import eu.excitementproject.eop.common.DecisionLabel;

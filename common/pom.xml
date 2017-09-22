@@ -61,10 +61,63 @@
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.collections-generic</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.uimafit</groupId>
-			<artifactId>uimafit</artifactId>
-			<version>1.4.0</version>
-		</dependency>
+	  <dependency>
+		  <groupId>org.apache.uima</groupId>
+		  <artifactId>uimafit-core</artifactId>
+	  </dependency>
+	  <dependency>
+		  <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+		  <artifactId>de.tudarmstadt.ukp.dkpro.core.api.segmentation-asl</artifactId>
+	  </dependency>
+	  <dependency>
+		  <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+		  <artifactId>de.tudarmstadt.ukp.dkpro.core.api.syntax-asl</artifactId>
+	  </dependency>
   </dependencies>
+
+<!--
+// TODO: should re-generate classes from type descriptors during build, move them to generated-sources dir.
+// TODO: EOP generated classes were manually edited!! Should find a way to achieve same functionality with full automation
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.uima</groupId>
+				<artifactId>jcasgen-maven-plugin</artifactId>
+				<version>2.10.1</version>
+				<executions>
+					<execution>
+						<goals><goal>generate</goal></goals>
+						<configuration>
+							<typeSystemIncludes>
+								&lt;!&ndash; one or more ant-like file patterns
+                                     identifying top level descriptors &ndash;&gt;
+								<typeSystemInclude>src/main/resources/desc/type/*.xml</typeSystemInclude>
+							</typeSystemIncludes>
+
+							<typeSystemExcludes>
+							</typeSystemExcludes>
+
+							&lt;!&ndash; OPTIONAL &ndash;&gt;
+							&lt;!&ndash; where the generated files go &ndash;&gt;
+							&lt;!&ndash; default value:
+                                 ${project.build.directory}/generated-sources/jcasgen" &ndash;&gt;
+							<outputDirectory>
+								src/main/java
+							</outputDirectory>
+
+							&lt;!&ndash; true or false, default = false &ndash;&gt;
+							&lt;!&ndash; if true, then although the complete merged type system
+                                 will be created internally, only those types whose
+                                 definition is contained within this maven project will be
+                                 generated.  The others will be presumed to be
+                                 available via other projects. &ndash;&gt;
+							&lt;!&ndash; OPTIONAL &ndash;&gt;
+							<limitToProject>false</limitToProject>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+-->
 </project>

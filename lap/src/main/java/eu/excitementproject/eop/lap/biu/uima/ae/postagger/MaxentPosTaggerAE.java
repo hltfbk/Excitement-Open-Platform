@@ -1,6 +1,6 @@
 package eu.excitementproject.eop.lap.biu.uima.ae.postagger;
 
-import org.uimafit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.descriptor.ConfigurationParameter;
 
 import de.tudarmstadt.ukp.dkpro.core.api.resources.MappingProvider;
 import eu.excitementproject.eop.common.datastructures.Envelope;

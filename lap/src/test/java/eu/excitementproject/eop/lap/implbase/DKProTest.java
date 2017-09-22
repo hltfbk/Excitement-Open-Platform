@@ -19,12 +19,12 @@ import org.apache.uima.util.XMLInputSource;
 import org.apache.uima.analysis_engine.AnalysisEngine;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 //import de.tudarmstadt.ukp.dkpro.core.tokit.BreakIteratorSegmenter;
-import static org.uimafit.factory.AnalysisEngineFactory.*;
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.*;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 
-import org.uimafit.component.xwriter.CASDumpWriter;
-import org.uimafit.factory.AggregateBuilder;
+import org.apache.uima.fit.component.CasDumpWriter;
+import org.apache.uima.fit.factory.AggregateBuilder;
 //import de.tudarmstadt.ukp.dkpro.core.treetagger.*; 
 //import de.tudarmstadt.ukp.dkpro.core.mstparser.MSTParser; 
 //import static org.uimafit.pipeline.SimplePipeline.*;
@@ -59,8 +59,8 @@ public class DKProTest {
 		//AnalysisEngineDescription lemma = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class); 
 		//AnalysisEngineDescription parse = createPrimitiveDescription(MSTParser.class); 
 		AnalysisEngineDescription cc = createPrimitiveDescription(
-			         CASDumpWriter.class,
-			         CASDumpWriter.PARAM_OUTPUT_FILE, "target/output.txt");
+				CasDumpWriter.class,
+				CasDumpWriter.PARAM_OUTPUT_FILE, "target/output.txt");
 		
 		//runPipeline(cr, seg, tagger,cc);
 		//runPipeline(cr, seg, cc); 

@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
-  <name>Parts-of-Speech</name>
+<?xml version="1.0" encoding="UTF-8"?><typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <name>Morphology</name>
   <description/>
-  <version>1.0</version>
-  <vendor/>
+  <version>${version}</version>
+  <vendor>Ubiquitous Knowledge Processing (UKP) Lab, Technische Universität Darmstadt</vendor>
   <types>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</name>
@@ -13,39 +12,39 @@
         <featureDescription>
           <name>PosValue</name>
           <description>The string representation of POS. Mostly it is the POS
-                        representation of the wrapped POS tagger.</description>
+            representation of the wrapped POS tagger.</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADJ</name>
-      <description>Adjective</description>
+      <description>Adjectives</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ADV</name>
-      <description>Adverb</description>
+      <description>Adverbs</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART</name>
-      <description>Article</description>
+      <description>Determiners and articles</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CARD</name>
-      <description>Cardinal number</description>
+      <description>Numerals</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.CONJ</name>
-      <description>Conjunction</description>
+      <description>Conjunctions</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.N</name>
-      <description>Noun</description>
+      <description>Nouns</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
@@ -55,17 +54,17 @@
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.NP</name>
-      <description>Proper noun</description>
+      <description>Noun phrase</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.N</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O</name>
-      <description>Exclamation</description>
+      <description>Catch-all for other categories such as abbreviations or foreign words</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PP</name>
-      <description>Preposition</description>
+      <description>Prepositions and postpositions</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
@@ -74,14 +73,59 @@
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PRT</name>
+      <description>Particles</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
+    </typeDescription>
+    <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.PUNC</name>
-      <description>Punctuation</description>
+      <description>Punctuation marks</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
     </typeDescription>
     <typeDescription>
       <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V</name>
-      <description>Verb and verb phrase</description>
+      <description>Verbs</description>
       <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.HASH</name>
+      <description>Hashtag (indicates topic/category for tweet)</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.AT</name>
+      <description>at-mention (indicates another user as a recipient of a tweet)</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.EMO</name>
+      <description>emoticon</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.DM</name>
+      <description>discourse marker, indications of continuation of a message across multiple tweets</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.URL</name>
+      <description>URL or email address</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.NNV</name>
+      <description>nominal + verbal</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.N</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.NPV</name>
+      <description>proper noun + verbal</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.N</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.INT</name>
+      <description>proper noun + verbal</description>
+      <supertypeName>de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.O</supertypeName>
     </typeDescription>
   </types>
 </typeSystemDescription>

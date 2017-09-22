@@ -14,7 +14,7 @@ import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import eu.excitementproject.eop.lap.LAPAccess;

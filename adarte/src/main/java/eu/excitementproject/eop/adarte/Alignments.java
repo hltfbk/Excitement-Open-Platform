@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.uima.jcas.JCas;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import eu.excitementproject.eop.core.component.alignment.lexicallink.LexicalAligner;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBase;

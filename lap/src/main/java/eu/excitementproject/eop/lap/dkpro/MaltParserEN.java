@@ -3,17 +3,16 @@
  */
 package eu.excitementproject.eop.lap.dkpro;
 
-import static org.uimafit.factory.AnalysisEngineFactory.createPrimitiveDescription;
-
-import org.apache.uima.analysis_engine.AnalysisEngineDescription;
-import org.apache.uima.resource.ResourceInitializationException;
-
 import de.tudarmstadt.ukp.dkpro.core.maltparser.MaltParser;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
-import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
+import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosTagger;
 import eu.excitementproject.eop.lap.LAPException;
 import eu.excitementproject.eop.lap.implbase.LAP_ImplBaseAE;
+import org.apache.uima.analysis_engine.AnalysisEngineDescription;
+import org.apache.uima.resource.ResourceInitializationException;
+
+import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
 
 /**
  * 
@@ -69,10 +68,10 @@ public class MaltParserEN extends LAP_ImplBaseAE {
 		AnalysisEngineDescription[] descArr = new AnalysisEngineDescription[4];
 		
 		try {
-			descArr[0] = createPrimitiveDescription(OpenNlpSegmenter.class);
-			descArr[1] = createPrimitiveDescription(TreeTaggerPosLemmaTT4J.class);
-			descArr[2] = createPrimitiveDescription(OpenNlpPosTagger.class);
-			descArr[3] = createPrimitiveDescription(MaltParser.class,
+			descArr[0] = createEngineDescription(OpenNlpSegmenter.class);
+			descArr[1] = createEngineDescription(TreeTaggerPosTagger.class);
+			descArr[2] = createEngineDescription(OpenNlpPosTagger.class);
+			descArr[3] = createEngineDescription(MaltParser.class,
 					MaltParser.PARAM_VARIANT, modelVariant,
 					MaltParser.PARAM_PRINT_TAGSET, true);
 		} catch (ResourceInitializationException e) {

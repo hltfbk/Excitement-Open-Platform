@@ -1,23 +1,22 @@
 package eu.excitementproject.eop.core.component.scoring;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Vector;
-
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import dkpro.similarity.algorithms.api.JCasTextSimilarityMeasure;
+import dkpro.similarity.algorithms.api.SimilarityException;
+import dkpro.similarity.algorithms.api.TextSimilarityMeasure;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
+import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
+import eu.excitementproject.eop.core.DKProSimilarityClassificationEDA;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.tcas.Annotation;
 import org.apache.uima.jcas.tcas.DocumentAnnotation;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
-import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
-import de.tudarmstadt.ukp.similarity.algorithms.api.JCasTextSimilarityMeasure;
-import de.tudarmstadt.ukp.similarity.algorithms.api.SimilarityException;
-import de.tudarmstadt.ukp.similarity.algorithms.api.TextSimilarityMeasure;
-import eu.excitementproject.eop.common.component.scoring.ScoringComponent;
-import eu.excitementproject.eop.common.component.scoring.ScoringComponentException;
-import eu.excitementproject.eop.core.DKProSimilarityClassificationEDA;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Vector;
 
 
 /**

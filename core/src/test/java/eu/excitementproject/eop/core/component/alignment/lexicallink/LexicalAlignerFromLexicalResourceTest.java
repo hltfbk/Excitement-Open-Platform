@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 import org.apache.uima.jcas.JCas;
 import org.junit.Assume;
 import org.junit.Test;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import eu.excitement.type.alignment.Link;
 import eu.excitementproject.eop.common.component.alignment.AlignmentComponent;

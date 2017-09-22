@@ -10,7 +10,7 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.cas.FSArray;
 import org.apache.uima.jcas.cas.TOP;
 import org.apache.uima.jcas.tcas.Annotation;
-import org.uimafit.util.JCasUtil;
+import org.apache.uima.fit.util.JCasUtil;
 
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 
@@ -60,7 +60,7 @@ public class LinkUtils {
 	 * The method will return all link instances, if one of its Targets hold 
 	 * the given the type.  
 	 * 
-	 * @param jCas the JCas with EOP views 
+	 * @param aJCas the JCas with EOP views
 	 * @param type target annotation class. 
 	 * @return a List<Link> that holds all links that satisfy the condition. If none satisfy the condition, it will return an empty List. 
 	 */

@@ -5,9 +5,8 @@ import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import dkpro.similarity.algorithms.api.TextSimilarityMeasure;
 import org.apache.uima.jcas.tcas.Annotation;
-
-import de.tudarmstadt.ukp.similarity.algorithms.api.TextSimilarityMeasure;
 
 import eu.excitementproject.eop.common.EDABasic;
 import eu.excitementproject.eop.common.EDAException;

@@ -72,8 +72,12 @@
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
     	</dependency>
+		<dependency>
+			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+			<artifactId>de.tudarmstadt.ukp.dkpro.core.api.coref-asl</artifactId>
+		</dependency>
 
-    	<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
+		<!--  open NLP models (sentence breaker, tokenizer, tagger) used by OpenNLP LAPAccess instances  -->
 		<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-en-maxent</artifactId>
@@ -125,23 +129,24 @@
 	<!-- TreeTagger related dependencies --> 
 	<!-- if you want to use TreeTagger, and related LAPs, please read /lap/src/scripts/treetagger/README.txt, and follow the instructions --> 
  	
+<!--
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
-     		<version>20130228.0</version><!-- TODO: the version specified in treetagger-asl breaks the build -->
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-de</artifactId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-tagger-de-le</artifactId>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-en</artifactId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-tagger-en-le</artifactId>
     	</dependency>
     	<dependency>
      		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-it</artifactId>
+     		<artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-tagger-it-le</artifactId>
     	</dependency>
+-->
 	<!-- end of TreeTagger related dependencies -->
 
     	<dependency>
@@ -163,12 +168,12 @@
     	<dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
             <artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-de-linear</artifactId>
-            <version>20130511.0</version><!-- TODO: defined in "use-proprietary-resources" profile in maltparser-asl -->
+            <version>20130511.0</version><!-- TODO: available (only?) in the FBK repository, need an official build -->
         </dependency>
     	<dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
             <artifactId>de.tudarmstadt.ukp.dkpro.core.maltparser-model-parser-it-linear</artifactId>
-            <version>20141002.0</version><!-- TODO: can't find this in dkpro-core codebase -->
+            <version>20141002.0</version><!-- TODO: available (only?) in the FBK repository, need an official build -->
         </dependency>
 
     	<!-- We are not using MST parser for 1.0 release.  -->
@@ -243,7 +248,7 @@
      		<dependency>
      			<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
      			<artifactId>de.tudarmstadt.ukp.dkpro.core-asl</artifactId>
-     			<version>1.4.0</version><!-- TODO: version 1.5.0 breaks the build -->
+     			<version>${dkpro-version}</version>
      			<type>pom</type>
      			<scope>import</scope>
      		</dependency>
