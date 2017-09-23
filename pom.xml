@@ -591,7 +591,8 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.5.2</version>
+				<!-- <version>2.5.2</version> -->
+				<version>3.0.5</version> <!-- to work with jdk 1.8 -->
 				<configuration>
 					<xmlOutput>true</xmlOutput>
 					<onlyAnalyze>eop.core.*,eop.lap.*,eop.common.*,eop.biutee.*,eop.transformations.*,eop.redis.*,eop.distsim.*,eop.util.*,eop.lexicalinferenceminer.*,eop.globalgraphoptimizer.*,eop.adarte.*</onlyAnalyze>
