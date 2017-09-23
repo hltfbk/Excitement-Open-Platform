@@ -554,7 +554,7 @@
 				<version>2.13</version>
 				<configuration>
 					<skipTests>false</skipTests>
-					<argLine>-Xms4G -Xmx4G</argLine>
+					<argLine>-Xms1000m -Xmx2000m</argLine>
 				</configuration>
 			</plugin>
 
