@@ -10,7 +10,7 @@
 		<version>1.2.4-SNAPSHOT</version>
 	</parent>
   
-  <artifactId>distribution</artifactId>
+  <artifactId>Excitement-Open-Platform</artifactId>
  
   <packaging>pom</packaging>
  
@@ -103,6 +103,7 @@
               </descriptors>
               <!-- TODO: this is bad practice. Build script should look for dist file under distribution/target/ -->
               <outputDirectory>${project.basedir}/../target</outputDirectory>
+              <appendAssemblyId>false</appendAssemblyId>
             </configuration>
           </execution>
         </executions>
