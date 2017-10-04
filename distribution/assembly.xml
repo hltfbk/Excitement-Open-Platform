@@ -3,10 +3,10 @@
           xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.0.0 http://maven.apache.org/xsd/assembly-2.0.0.xsd">
     <id>bin</id>
     <formats>
-        <format>tar.gz</format>
+        <format>zip</format>
     </formats>
     <includeBaseDirectory>true</includeBaseDirectory>
-    <baseDirectory>Excitement-Open-Platform-${artifact.version}</baseDirectory>
+    <baseDirectory>EOP-${artifact.version}</baseDirectory>
     <moduleSets>
         <moduleSet>
             <useAllReactorProjects>true</useAllReactorProjects>
@@ -37,6 +37,6 @@
             </binaries>
         </moduleSet>
     </moduleSets>
-    
+
 </assembly>
 

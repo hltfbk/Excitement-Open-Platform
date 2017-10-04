@@ -36,6 +36,7 @@
 		<module>lexicalinferenceminer</module>
 		<module>alignmentedas</module> 
 		<module>adarte</module>
+		<module>distribution</module>
 	</modules>
 
         <profiles>

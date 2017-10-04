@@ -99,11 +99,12 @@
             </goals>
             <configuration>
               <descriptors>
+                <descriptor>${project.basedir}/pack.xml</descriptor>
                 <descriptor>${project.basedir}/assembly.xml</descriptor>
               </descriptors>
               <!-- TODO: this is bad practice. Build script should look for dist file under distribution/target/ -->
               <outputDirectory>${project.basedir}/../target</outputDirectory>
-              <appendAssemblyId>false</appendAssemblyId>
+              <appendAssemblyId>true</appendAssemblyId>
             </configuration>
           </execution>
         </executions>
