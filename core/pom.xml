@@ -146,6 +146,12 @@
 			<groupId>nz.ac.waikato.cms.weka</groupId>
 			<artifactId>LibLINEAR</artifactId>
 			<version>1.9.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>nz.ac.waikato.cms.weka</groupId>
+					<artifactId>weka-dev</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>de.bwaldvogel</groupId>
