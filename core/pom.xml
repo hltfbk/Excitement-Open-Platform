@@ -143,18 +143,20 @@
 			<artifactId>opennlp-tools</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>de.bwaldvogel</groupId>
-			<artifactId>liblinear</artifactId>
-			<version>1.96</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/liblinear.jar</systemPath>
+			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<artifactId>LibLINEAR</artifactId>
+			<version>1.9.7</version>
+			<exclusions>
+				<exclusion>
+					<groupId>nz.ac.waikato.cms.weka</groupId>
+					<artifactId>weka-dev</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>nz.ac.waikato.cms.weka</groupId>
+			<groupId>de.bwaldvogel</groupId>
 			<artifactId>liblinear</artifactId>
-			<version>1.9.8-SNAPSHOT</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/liblinear-wrapper.jar</systemPath>
+			<version>2.11</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

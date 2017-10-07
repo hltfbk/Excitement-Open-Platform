@@ -3,20 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
 	<parent>
 		<groupId>eu.excitementproject</groupId>
 		<artifactId>eop</artifactId>
 		<version>1.2.4-SNAPSHOT</version>
 	</parent>
-  
-  <artifactId>distribution</artifactId>
- 
+
+  <artifactId>Excitement-Open-Platform</artifactId>
+
   <packaging>pom</packaging>
- 
+
   <name>EOP Distribution</name>
-  
-  <!-- NOTE: These dependency declarations are only required to sort this project to the 
+
+  <!-- NOTE: These dependency declarations are only required to sort this project to the
        end of the line in the multimodule build (i.e to ensure this module builds last).
   -->
   <dependencies>
@@ -99,14 +99,46 @@
             </goals>
             <configuration>
               <descriptors>
+                <descriptor>${project.basedir}/pack.xml</descriptor>
                 <descriptor>${project.basedir}/assembly.xml</descriptor>
               </descriptors>
               <!-- TODO: this is bad practice. Build script should look for dist file under distribution/target/ -->
               <outputDirectory>${project.basedir}/../target</outputDirectory>
+              <appendAssemblyId>true</appendAssemblyId>
             </configuration>
           </execution>
         </executions>
       </plugin>
-    </plugins>
+		<plugin>
+			<groupId>com.coderplus.maven.plugins</groupId>
+			<artifactId>copy-rename-maven-plugin</artifactId>
+			<version>1.0.1</version>
+			<executions>
+				<execution>
+					<id>rename-dist-files</id>
+					<phase>package</phase>
+					<goals>
+						<goal>rename</goal>
+					</goals>
+					<configuration>
+						<fileSets>
+							<fileSet>
+								<sourceFile>${project.basedir}/../target/Excitement-Open-Platform-${eop-version}-bin.zip</sourceFile>
+								<destinationFile>${project.basedir}/../target/eop-${eop-version}-bin.zip</destinationFile>
+							</fileSet>
+							<fileSet>
+								<sourceFile>${project.basedir}/../target/Excitement-Open-Platform-${eop-version}-project.zip</sourceFile>
+								<destinationFile>${project.basedir}/../target/Excitement-Open-Platform-${eop-version}.zip</destinationFile>
+							</fileSet>
+							<fileSet>
+								<sourceFile>${project.basedir}/../target/Excitement-Open-Platform-${eop-version}-project.tar.gz</sourceFile>
+								<destinationFile>${project.basedir}/../target/Excitement-Open-Platform-${eop-version}.tar.gz</destinationFile>
+							</fileSet>
+						</fileSets>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
   </build>
 </project>

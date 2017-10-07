@@ -36,6 +36,7 @@
 		<module>lexicalinferenceminer</module>
 		<module>alignmentedas</module> 
 		<module>adarte</module>
+		<module>distribution</module>
 	</modules>
 
         <profiles>
@@ -555,17 +556,6 @@
 				<configuration>
 					<skipTests>false</skipTests>
 					<argLine>-Xms1000m -Xmx2000m</argLine>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<descriptors>
-						<descriptor>distribution/assembly.xml</descriptor>
-					</descriptors>
 				</configuration>
 			</plugin>
 
